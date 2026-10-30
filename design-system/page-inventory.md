@@ -33,7 +33,7 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | [FAT and SAT](https://aquemi-official.github.io/aquemi-web/#svc-fat-sat) | Watch your water system run wet, against your protocol, before it ships | prose, table, band, steps, docs, table, options, table, steps, faq, docs, docs, related |
 | [Commissioning and qualification](https://aquemi-official.github.io/aquemi-web/#svc-cq) | A qualified water system your inspector can follow, from the first weld to a full year of data | prose, table, diagram, table (IQ), table (OQ), spec (PQ phases), table (sampling plan), band, table (alert/action levels), table (who signs), table (requalification), docs ×3, faq, related |
 | [Service and spare parts](https://aquemi-official.github.io/aquemi-web/#svc-service) | Service that keeps your water system running and keeps it qualified | prose, table (plan tiers), prose (response clock), table (GMP working), table (like for like), grid (PM visit), spec (calibration), table (critical spares), prose (spares), steps (fault response), grid (beyond the plan), docs (visit record), faq, docs (what to send), related |
-| [Upgrades and retrofits](https://aquemi-official.github.io/aquemi-web/#svc-upgrades) | Upgrade the system you have, with a requalification scope you can plan | grid, steps, prose, table, faq |
+| [Upgrades and retrofits](https://aquemi-official.github.io/aquemi-web/#svc-upgrades) | Upgrade the water system you already have, with the requalification scope known before the first cut | prose, table, band, prose, table, table, table, prose, table, prose, prose, table, steps, docs, faq, docs, related |
 
 ## Industries
 
