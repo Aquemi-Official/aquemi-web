@@ -1,6 +1,6 @@
 /* ProcessDiagram: treatment train as numbered stage boxes on one serpentine Flow pipe.
-   Desktop: rows of three, alternate rows run right to left (CSS direction), joined by vertical drops.
-   Phone: one column, the pipe drops alternate left and right. No run-time measuring. */
+   Desktop: rows of three (four with --4, chosen by dCols so no stage sits alone), alternate rows run right to left
+   (CSS direction), joined by vertical drops. Phone: compact hairline rows on one vertical pipe. No run-time measuring. */
 var DGLYPH={
  hx:'M8 18h56v20H8zM14 28l6-6 6 12 6-12 6 12 6-12 6 12 6-6M20 18v-8M52 38v8',
  ro:'M6 20h60v16H6zM6 36L66 20M2 28h4M66 28h4M20 36v8M52 36v8',
@@ -26,13 +26,15 @@ function dGlyph(t){var s=String(t).toLowerCase();for(var i=0;i<DKEYS.length;i++)
 /* Pipe fittings between stages: a valve, then an instrument bubble, alternating */
 var DVALVE='<svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6v12l18-12v12z"/></svg>';
 var DINST='<svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12V11M6.5 5.5a5.5 5.5 0 1 0 11 0a5.5 5.5 0 1 0-11 0M6.5 5.5h11"/></svg>';
-function wDiagram(b){var st=b.stages||[],n=st.length,k=0,s='';
- function link(cls){var c='aq-diagram__link'+cls+(k%2?' aq-diagram__link--alt':'');var f=k%2?DINST:DVALVE;k++;return '<span class="'+c+'">'+f+'</span>'}
+/* Stages per desktop row: three, or four when that balances the rows (4 -> one row, 7 -> 4 + 3, 8 -> 4 + 4) */
+function dCols(n){return n===4||n>=7?4:3}
+function wDiagram(b){var st=b.stages||[],n=st.length,k=0,s='',c=dCols(n);
+ function link(cls){var c='aq-diagram__link'+cls;var f=k%2?DINST:DVALVE;k++;return '<span class="'+c+'">'+f+'</span>'}
  function stage(t,i){return '<div class="aq-diagram__stage"><span class="aq-diagram__num">'+String(i+1).padStart(2,'0')+'</span><svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="'+dGlyph(t)+'"/></svg><span class="aq-diagram__label">'+tx(t)+'</span></div>'}
- for(var r=0;r*3<n;r++){var rev=r%2?' aq-diagram__row--rev':'';
+ for(var r=0;r*c<n;r++){var rev=r%2?' aq-diagram__row--rev':'';
   if(r)s+='<div class="aq-diagram__row aq-diagram__row--turn'+rev+'">'+link(' aq-diagram__link--turn')+'</div>';
   s+='<div class="aq-diagram__row'+rev+'">';
-  st.slice(r*3,r*3+3).forEach(function(t,j){var i=r*3+j;if(j)s+=link('');s+=stage(t,i)});
+  st.slice(r*c,r*c+c).forEach(function(t,j){var i=r*c+j;if(j)s+=link('');s+=stage(t,i)});
   s+='</div>'}
  var alt='Treatment train, '+n+' stages in order: '+st.map(function(t,i){return (i+1)+' '+t}).join(', ')+(b.base?'. Across all stages: '+b.base:'');
- return '<div class="aq-diagram'+(b.base?' aq-diagram--base':'')+'" role="img" aria-label="'+e(alt)+'"><div class="aq-diagram__train">'+s+'</div>'+(b.base?'<div class="aq-diagram__base"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+e(b.base)+'</span></div>':'')+'</div>'}
+ return '<div class="aq-diagram'+(c===4?' aq-diagram--4':'')+(b.base?' aq-diagram--base':'')+'" role="img" aria-label="'+e(alt)+'"><div class="aq-diagram__train">'+s+'</div>'+(b.base?'<div class="aq-diagram__base"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+e(b.base)+'</span></div>':'')+'</div>'}

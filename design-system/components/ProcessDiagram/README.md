@@ -18,8 +18,9 @@ ProcessDiagram draws a treatment train as numbered stage boxes joined by one dou
 ```
 
 - The website builds it from a `diagram` block: `stages` (names, in order), optional `base`, optional `caption` (`AQ.wDiagram`). Write markup by hand only where the renderer is not available.
-- **Rows of three.** Every second row carries `aq-diagram__row--rev`, which sets `direction: rtl` so its stages and arrows run right to left. A `--turn` row between them holds one vertical drop under the last stage of the row above. Nothing is measured at run time; it renders the same from the static string at any width.
-- **Links** (`aq-diagram__link`) alternate a valve and an instrument bubble; `aq-diagram__link--alt` marks every second one, which the phone layout uses to swing the pipe from left to right.
+- **Rows of three, or four.** `aq-diagram--4` sets four stages to a row; the renderer picks it when that balances the rows (4 stages: one row; 7: four then three; 8: four and four), so no stage sits alone on the last row. Every second row carries `aq-diagram__row--rev`, which sets `direction: rtl` so its stages and arrows run right to left. A `--turn` row between them holds one vertical drop under the last stage of the row above. Nothing is measured at run time; it renders the same from the static string at any width.
+- **Links** (`aq-diagram__link`) alternate a valve and an instrument bubble. Links are desktop only.
+- **Phone:** the boxes become compact hairline rows, `01 | pipe | glyph | name`, with the shared mono index, and one continuous vertical Flow pipe runs from the first stage's centre to the last's with a small node at each stage. Seven stages take about 400 px instead of 1,200.
 - **Glyphs** are single-path line drawings on a 72 × 56 viewBox, picked from keywords in the stage name: heat exchanger, RO or membrane, EDI, UV, softener, carbon, filter, column or still, pump, steam, loop or points of use, tank or storage, instrument, PLC/HMI/SCADA, and a water drop for feeds and "From … / To …" ends. Anything else gets a generic process block.
 - **Base:** `aq-diagram--base` draws a dashed control boundary round the whole train with the label at its foot, for what spans every stage (monitoring, controls, sanitisation). Leave `base` out when there is nothing to name.
 - **Text alternative:** the outer element is `role="img"` with an `aria-label` that lists every stage with its number, then the base. The boxes inside are hidden from assistive technology by that role, so the label must carry everything.
@@ -31,7 +32,7 @@ ProcessDiagram draws a treatment train as numbered stage boxes joined by one dou
 - Boxes: 1.5 px `line-strong` border on `surface`, `radius-sm`. Number in Geist Mono 300 in `flow`; name in Geist 500 in `ink`, sentence case as engineers write it ("RO pass 1", "Storage tank").
 - Glyphs and fittings: 1.5 px `ink-muted` stroke; fittings fill with `surface` so the pipe breaks behind them as on a P&ID. This assumes a `surface` section, which all site sections are.
 - Base boundary: 1 px dashed `line-strong`; label mono uppercase 11 px `ink-muted`.
-- Spacing from `--space-*` only. Phone rules live in the component's `@container (max-width: 860px)` block: rows dissolve into one column and each link becomes a vertical drop, alternating `space-12` in from the left and right edge.
+- Spacing from `--space-*` only. Phone rules live in the component's `@container (max-width: 860px)` block: rows dissolve into one column of hairline (`line`) rows, index in `ink-subtle` like every list, the pipe a 5 px double `flow` line with `surface`-filled nodes.
 
 ## When to use, when not
 
