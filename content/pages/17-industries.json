@@ -27,6 +27,7 @@
   }
  ],
  "primary_cta": "Request a water scope review",
+ "primary_cta_intent": "Water scope review for your products",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -376,7 +377,7 @@
     },
     {
      "q": "What does a scope review cost, and what comes back?",
-     "a": "[State whether the scope review is free, and its turnaround.] A process engineer replies within [response time] with the grade each process step needs, the systems to make and distribute it and the qualification scope, or the questions we need answered first."
+     "a": "[State whether the scope review is free, and its turnaround.] A process engineer replies within [proposal response time, working days] with the grade each process step needs, the systems to make and distribute it and the qualification scope, or the questions we need answered first."
     }
    ]
   },
@@ -432,13 +433,14 @@
  ],
  "cta": {
   "h": "Tell us what you make and where you ship it. We return the water grades and the system scope.",
-  "body": "A process engineer reads your products and markets and replies within [response time] with the grade each step needs, the systems that make and distribute it and the qualification scope, or the questions we need answered first. For an industry-specific review, use the scope review on your industry page.",
+  "body": "A process engineer reads your products and markets and replies within [proposal response time, working days] with the grade each step needs, the systems that make and distribute it and the qualification scope, or the questions we need answered first. For an industry-specific review, use the scope review on your industry page.",
   "button": "Request a water scope review",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Water scope review for your products"
  },
  "todo": [
   "Confirm the four industries are the target segments at launch",
-  "Response time for enquiries (FAQ, closing CTA); same value as the industry pages",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Is the scope review free, and its turnaround (FAQ)",
   "Industries where Aquemi has references available for a call, or 'none yet' per industry (FAQ)",
   "Projects per industry to link once case studies exist",

@@ -9,6 +9,7 @@
  "headline": "Water quality data you can release on and defend in an inspection",
  "lead": "We build the controls and online monitoring for Purified Water (PW) and Water for Injection (WFI) systems so every release decision rests on a record an inspector can trace: total organic carbon (TOC) against the USP <643> limit of 0.50 mg/L on an analyzer with documented system suitability, conductivity against the USP <645> stage 1 table on the raw, non-temperature-compensated reading, and an audit trail that meets 21 CFR Part 11 and EU GMP Annex 11. The software follows the GAMP 5 lifecycle, and the specifications, test records and traceability your validation team needs are written as we build it.",
  "primary_cta": "Request a controls specification review",
+ "primary_cta_intent": "Review of a document you have|Controls URS or functional specification",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -604,7 +605,7 @@
     },
     {
      "q": "Who calibrates the instruments and maintains the software after handover?",
-     "a": "Our service team, from [service locations], with a stated response time of [response time, hours]. A service plan covers calibration, TOC system suitability, UV lamps, ozone sensors, backups and software patches under your change control. Every visit ends with a signed report."
+     "a": "Our service team, from [service locations], with a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. A service plan covers calibration, TOC system suitability, UV lamps, ozone sensors, backups and software patches under your change control. Every visit ends with a signed report."
     }
    ],
    "nav": "FAQ"
@@ -659,9 +660,10 @@
  ],
  "cta": {
   "h": "Send your controls URS and data integrity requirements. We return a specification you can check.",
-  "body": "Include the water grades, your PLC and SCADA standard, record retention and remote access policy. An engineer replies within [response time] with questions or a draft functional specification outline.",
+  "body": "Include the water grades, your PLC and SCADA standard, record retention and remote access policy. An engineer replies within [proposal response time, working days] with questions or a draft functional specification outline.",
   "button": "Request a controls specification review",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Review of a document you have|Controls URS or functional specification"
  },
  "todo": [
   "PLC and SCADA platforms supported",
@@ -672,8 +674,8 @@
   "Panel certification held (UL 508A, CSA C22.2 No. 286) and whether panels are built in-house",
   "Whether Aquemi offers read-only telemetry and remote alarm review as a service, and its scope",
   "Whether supervised remote support sessions are offered",
-  "Service locations and response time (hours)",
-  "Enquiry response time commitment",
+  "Service locations and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Whether Aquemi writes PLC code in-house (page states 'we write and test the PLC code ourselves'; confirm or reword)",
   "Datasheet PDF; add a download link only once it exists",
   "A real controls project (new or upgrade) with scope and inspection outcome before adding a case study block",

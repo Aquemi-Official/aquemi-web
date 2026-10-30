@@ -7,8 +7,9 @@
  "path": "/systems/pretreatment/",
  "eyebrow": "PRETREATMENT · USP <1231> · HEALTH CANADA · US EPA NPDWR",
  "headline": "Pretreatment that keeps chlorine, chloramine and scale off your RO membranes in every season",
- "lead": "USP <1231> requires the feed to a Purified Water (PW) system to meet drinking water standards, such as the US EPA National Primary Drinking Water Regulations (NPDWR) or, for most Canadian sites, the Guidelines for Canadian Drinking Water Quality. Drinking water is not reverse osmosis (RO) feed. We design the pretreatment train from your water data across the seasons, so the RO inlet sees no detectable chlorine or chloramine, a silt density index (SDI) of 3 or less and hardness the membranes can live with, and the carbon bed is sanitized so it does not become the source of your bioburden.",
+ "lead": "USP <1231> names drinking water as the minimum source quality for a Purified Water (PW) system, under standards such as the US EPA National Primary Drinking Water Regulations (NPDWR) or, for most Canadian sites, the Guidelines for Canadian Drinking Water Quality. Drinking water is not reverse osmosis (RO) feed. We design the pretreatment train from your water data across the seasons, so the RO inlet sees no detectable chlorine or chloramine, a silt density index (SDI) of 3 or less and hardness the membranes can live with, and the carbon bed is sanitized so it does not become the source of your bioburden.",
  "primary_cta": "Request a feedwater review",
+ "primary_cta_intent": "Feedwater review",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -36,7 +37,7 @@
    "type": "prose",
    "h": "Drinking water standards protect people, not membranes",
    "body": [
-    "Every pharmacopoeial water starts as drinking water. USP <1231> sets the NPDWR, or equivalent EU, Japanese or WHO drinking water rules, as the minimum quality of the source. Ph. Eur. asks for water intended for human consumption. In Canada your municipality treats to the Guidelines for Canadian Drinking Water Quality and its provincial regulation. Meeting that standard is your starting point and, for a private well, something you have to show.",
+    "Every pharmacopoeial water starts as drinking water. USP <1231> names the NPDWR, or equivalent EU, Japanese or WHO drinking water rules, as the minimum quality of the source. Ph. Eur. asks for water intended for human consumption. In Canada your municipality treats to the Guidelines for Canadian Drinking Water Quality and its provincial regulation. Meeting that standard is your starting point and, for a private well, something you have to show.",
     "Those standards are set for health and taste, and they allow water that damages RO membranes. The NPDWR allows a chloramine residual up to 4 mg/L as Cl₂. Health Canada sets no limit for chloramine at all, because at drinking water levels it is not a health concern. Polyamide RO membranes are typically rated for less than 0.1 mg/L free chlorine. Hardness has no health limit; a few milligrams per litre of calcium in the RO concentrate is enough to scale it.",
     "Pretreatment closes that gap. It also creates a risk of its own: once the carbon removes the disinfectant residual, nothing in the water holds bacteria back. So we design removal and microbial control together, and we monitor the outlet that your validated system depends on."
    ]
@@ -401,7 +402,7 @@
     },
     {
      "q": "Do we have to prove our feed water meets drinking water standards?",
-     "a": "USP <1231> expects you to know that it does. For municipal supply, the utility's reports plus your own periodic testing at the plant inlet are the usual evidence. For a private well you are the utility, so you need a sampling programme against the Guidelines for Canadian Drinking Water Quality or the NPDWR, including microbiological tests. We can propose the parameters and frequency."
+     "a": "The USP and Ph. Eur. monographs make PW from drinking water, and USP <1231> names it as the minimum source quality, so an auditor will expect you to show it. For municipal supply, the utility's reports plus your own periodic testing at the plant inlet are the usual evidence. For a private well you are the utility, so you need a sampling programme against the Guidelines for Canadian Drinking Water Quality or the NPDWR, including microbiological tests. We can propose the parameters and frequency."
     },
     {
      "q": "Our municipality uses chloramine. Is standard carbon enough?",
@@ -429,7 +430,7 @@
     },
     {
      "q": "Who changes media, resin and cartridges after handover?",
-     "a": "Our service team, from [service locations], on a plan with a stated response time of [response time, hours]. Media, resin and cartridges for your train are stocked in [stocking location], and every visit ends with a signed report your quality unit can file."
+     "a": "Our service team, from [service locations], on a plan with a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. Media, resin and cartridges for your train are stocked in [stocking location], and every visit ends with a signed report your quality unit can file."
     }
    ],
    "nav": "FAQ"
@@ -484,9 +485,10 @@
  ],
  "cta": {
   "h": "Send a year of water data. We tell you which months set your design.",
-  "body": "Include your utility's monthly reports, the disinfectant it uses and the RO flow you need. A process engineer replies within [response time] with a seasonal design basis and the margin it leaves your RO, [cost of the feedwater review].",
+  "body": "Include your utility's monthly reports, the disinfectant it uses and the RO flow you need. A process engineer replies within [proposal response time, working days] with a seasonal design basis and the margin it leaves your RO, [cost of the feedwater review].",
   "button": "Request a feedwater review",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Feedwater review"
  },
  "todo": [
   "RO inlet total chlorine design limit (mg/L as Cl₂)",
@@ -499,8 +501,8 @@
   "Whether UV dechlorination is offered (remove the table row if not)",
   "Whether Aquemi measures SDI on site during the feedwater review (kit held)",
   "Whether the feedwater review is free or charged; fill the CTA placeholder",
-  "Enquiry response time commitment",
-  "Service locations, media and resin stocking location and service plan response time (hours)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Service locations, media and resin stocking location and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
   "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block",
   "Months of water history requested for a feedwater review",
   "Carbon replacement interval"

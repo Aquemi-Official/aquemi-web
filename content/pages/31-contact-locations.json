@@ -145,7 +145,7 @@
      "Head office and engineering, [head office, city and province]",
      "Process design, project management, validation documents, proposals",
      "[Street address], [city], [province] [postal code]",
-     "[Sales phone number] · [sales email]",
+     "[sales phone number] · [sales email]",
      "[Office days and hours, time zone]"
     ],
     [
@@ -165,7 +165,7 @@
      },
      "Field service technicians, calibration standards, [critical spares stock]",
      "[Street address, or confirm technicians work from home bases]",
-     "[Service phone number] · [service email]",
+     "[service phone number] · [service email]",
      "Service line [service phone hours, e.g. 24/7, answered by a service engineer]"
     ],
     [
@@ -539,7 +539,7 @@
   "Parts stock locations, parts email, parts desk hours, order cut-off and delivery commitment (same as svc-service)",
   "Service coverage area (same as svc-service and contact-service); response clock stop event (same as svc-service)",
   "Per region: main centres actually served, base and travel time (hours), severity 1 on-site response (hours), stocking point; which regions are scheduled visits only",
-  "Fastest severity 1 on-site response (hours) for the hero fact (same as contact-service)",
+  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service)",
   "Number of service technicians and number of stocking points (same headcount as about)",
   "Whether service partners are used, in which regions, under whose procedures, and who signs the service report; remove partner row if none",
   "CSA B51: Aquemi's CRN route (ASME certificate or vessel fabricator) and provinces where designs are registered (same as compliance)",
@@ -551,7 +551,7 @@
   "Visit practicalities: nearest airport and drive time, drive time from the Greater Toronto Area and Greater Montreal, hotels, reception hours, PPE visitors bring and what is provided, photography rules",
   "Remote witness platform (same as svc-fat-sat)",
   "Shipping: drain and drying method after wet FAT, instruments fitted or packed, crating standard and indicators, transit time to main centres (days)",
-  "Proposal response time (working days, same as contact-proposal)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Any-builder service: equipment types and makes covered (same as contact-service)",
   "Whether technicians are all Aquemi employees",
   "LocalBusiness schema per real location only, once addresses are confirmed"

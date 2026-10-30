@@ -10,5 +10,6 @@ Use classes on a `<button>` or `<a>`; the consumer provides the label and, for l
 
 - Labels are sentence-case verbs, two to four words. Avoid "Click here", and avoid a bare "Submit" when a specific verb fits.
 - An arrow (`<span class="aq-btn__arrow">→</span>`) is allowed on primary and link buttons that navigate. It nudges 3 px on hover.
+- A button that routes to an enquiry form may carry `data-intent="<option label>"` to pre-select that request type on arrival (see EnquiryForm, "Pre-set from the linking page").
 - Disabled buttons use the `disabled` attribute; say why nearby.
 - Height is 44 px, which meets the touch-target size without extra padding.

@@ -20,6 +20,7 @@
   "WHO TRS 1033 Annex 3"
  ],
  "primary_cta": "Request a system assessment",
+ "primary_cta_intent": "Assessment of an existing system, any make",
  "secondary_cta": {
   "label": "Water out of specification or system down now? Request service",
   "link": "contact-service"
@@ -574,9 +575,10 @@
  ],
  "cta": {
   "h": "Send us the system you have. Get back what to change and what it will take to requalify.",
-  "body": "Send the system's age, drawings, a year of data and the problem you want to solve. An engineer replies within [response time, working days] with the assessment scope, its time on site and its price, and the questions we need answered before we visit.",
+  "body": "Send the system's age, drawings, a year of data and the problem you want to solve. An engineer replies within [assessment response time, working days] with the assessment scope, its time on site and its price, and the questions we need answered before we visit.",
   "button": "Request a system assessment",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Assessment of an existing system, any make"
  },
  "todo": [
   "Confirm Aquemi upgrades and services systems it did not build, and the equipment types and makes covered (prose and FAQ placeholders)",
@@ -590,8 +592,8 @@
   "Confirm Aquemi builds panels and tests PLC programs against a simulator before site work (obsolete controllers prose, steps, FAQ)",
   "Payback figures from a delivered chemical DI to RO/EDI conversion, with client permission",
   "Delivered upgrade and retrofit references (what changed, requalification duration) for the experience FAQ and a future case block",
-  "Enquiry response time (working days) for the assessment request, same placeholder as other pages",
+  "Assessment response time, working days ([assessment response time, working days], same as the contact-proposal lookup table)",
   "Legal check on naming other suppliers and their acquisitions (Evoqua/Xylem, Mar Cor/STERIS, MECO and Newterra/Grundfos, Ovivo/Ecolab)",
-  "CTAs go to contact-proposal (it has 'Replacing or expanding an existing system' and 'Upgrade or retrofit'); contact-service requires an Aquemi serial number. Decide whether contact pages need a dedicated assessment intent"
+  "Confirm scope of upgrades and assessments on systems built by other suppliers (FAQ [Confirm scope.])"
  ]
 }

@@ -19,6 +19,7 @@
   "CSA C22.2 No. 286"
  ],
  "primary_cta": "Request a fabrication spec review",
+ "primary_cta_intent": "Review of a document you have|Fabrication or piping specification",
  "secondary_cta": {
   "label": "Get a sample fabrication dossier",
   "link": "cmp-documentation"
@@ -542,9 +543,10 @@
  ],
  "cta": {
   "h": "Send your fabrication spec. We return it marked against ASME BPE, with a sample weld log.",
-  "body": "Include your URS or piping standard, the finish and borescope extent you need and the province of installation. An engineer replies within [response time] with the clauses we meet, the ones we would change and a draft fabrication and inspection plan.",
+  "body": "Include your URS or piping standard, the finish and borescope extent you need and the province of installation. An engineer replies within [proposal response time, working days] with the clauses we meet, the ones we would change and a draft fabrication and inspection plan.",
   "button": "Request a fabrication spec review",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Review of a document you have|Fabrication or piping specification"
  },
  "todo": [
   "Share of product-contact welds borescoped (%), same placeholder as sys-storage",
@@ -561,7 +563,7 @@
   "Whether the weld rejection rate is reported in the dossier",
   "Shop location (city, province)",
   "Confirm a redacted weld log and dossier index can be shared under NDA",
-  "Enquiry response time commitment (same placeholder as the system pages)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Confirm the fabrication and inspection plan with hold and witness points is how Aquemi works (page says so)",
   "A real fabrication project (weld count, borescope coverage, rejection rate) before adding a case study block",
   "How components are marked or tagged for heat traceability"

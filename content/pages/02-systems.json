@@ -3,11 +3,11 @@
  "section": "Systems",
  "nav_label": "All systems",
  "title": "Pharmaceutical water systems: PW, WFI, pure steam | Aquemi",
- "meta": "Choose PW, WFI or pure steam systems by water grade and standard: USP <645> 1.3 µS/cm, USP <85> 0.25 EU/mL, EN 285. Seven families, each FAT tested.",
+ "meta": "Choose PW, WFI or pure steam systems by water grade and standard: USP <645> 1.3 µS/cm, USP <85> < 0.25 EU/mL, EN 285. Every skid wet tested at FAT.",
  "path": "/systems/",
  "eyebrow": "SYSTEMS · PW · WFI · PURE STEAM · USP · PH. EUR. · EU GMP ANNEX 1",
  "headline": "Find your compendial water route by grade, by standard or by flow",
- "lead": "Seven system families, each built to the limit your auditor will cite: USP <645> 1.3 µS/cm at 25 °C and USP <643> 500 ppb total organic carbon (TOC) for Purified Water (PW), plus the USP <85> endotoxin limit of 0.25 EU/mL for Water for Injection (WFI) and pure steam condensate. Those limits apply where the water is used, so we design the path as a whole, factory acceptance test (FAT) each system before it ships and hand over the installation and operational qualification (IQ/OQ) protocols with it.",
+ "lead": "Seven system families, each built to the limit your auditor will cite: USP <645> 1.3 µS/cm at 25 °C and USP <643> 500 ppb total organic carbon (TOC) for Purified Water (PW), plus the USP <85> endotoxin limit of < 0.25 EU/mL for Water for Injection (WFI) and pure steam condensate. Those limits apply where the water is used, so we design the path as a whole, wet factory acceptance test (FAT) every skid before it ships, prove the field-built loop piping on site, and hand over the installation and operational qualification (IQ/OQ) protocols with it.",
  "tags": [
   "USP <645>",
   "USP <643>",
@@ -18,6 +18,7 @@
   "ASME BPE"
  ],
  "primary_cta": "Submit your URS for a route assessment",
+ "primary_cta_intent": "Route assessment: which systems, which WFI route",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -36,7 +37,7 @@
     },
     {
      "t": "WFI by distillation",
-     "d": "Multi-effect and vapour compression stills making hot WFI below 0.25 EU/mL endotoxin, with the still type chosen on your steam, power and cooling water costs.",
+     "d": "Multi-effect and vapour compression stills making hot WFI at < 0.25 EU/mL endotoxin, with the still type chosen on your steam, power and cooling water costs.",
      "tag": "USP <85>",
      "link": "sys-wfi-distillation"
     },
@@ -351,7 +352,7 @@
     },
     {
      "t": "Fabrication and FAT",
-     "d": "Each system is built and wet tested in our test bay against a protocol you approve."
+     "d": "Each skid is built and wet tested in our test bay against a protocol you approve. Loop piping built on your site is proven at SAT and IQ."
     },
     {
      "t": "SAT and IQ/OQ",
@@ -426,7 +427,7 @@
     },
     {
      "q": "Do you build to standard platforms or to order?",
-     "a": "[State whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks.] Either way, materials, instrumentation and controls are adapted to your URS, and every system is tested at FAT before it ships."
+     "a": "[State whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks.] Either way, materials, instrumentation and controls are adapted to your URS, and every skid is wet tested at FAT before it ships; loop piping built on your site is proven at SAT and IQ."
     },
     {
      "q": "Who builds the stills and pure steam generators?",
@@ -434,7 +435,7 @@
     },
     {
      "q": "Do you supply water systems for laboratories, hospitals or industrial processes?",
-     "a": "The same RO and EDI platform can be built for hospital reprocessing water under CSA Z314, laboratory water under ASTM D1193 and industrial demineralized water. These pages describe the pharmaceutical build; ask for the standard you work to."
+     "a": "As adjacent uses, the same RO and EDI platform is used for hospital reprocessing water (CSA Z314), laboratory reagent water (ASTM D1193) and industrial demineralized water. [State Aquemi's scope for hospital, laboratory and industrial water: new systems, upgrades of existing systems, service only, or not offered.] These pages describe the pharmaceutical build; send the standard you work to and we will say plainly whether it is in our scope."
     },
     {
      "q": "Our system is already running and out of specification. Who do we contact?",
@@ -494,17 +495,18 @@
  ],
  "cta": {
   "h": "Send your water grade, your standard and your flow. We map the route.",
-  "body": "Include your feed water analysis, peak demand in L/h and the pharmacopoeias you release against. A process engineer replies within [response time] with questions or a written route assessment that names the systems, the WFI route if you need one, and the reasoning.",
+  "body": "Include your feed water analysis, peak demand in L/h and the pharmacopoeias you release against. A process engineer replies within [proposal response time, working days] with questions or a written route assessment that names the systems, the WFI route if you need one, and the reasoning.",
   "button": "Submit your URS for a route assessment",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Route assessment: which systems, which WFI route"
  },
  "todo": [
   "Whether Aquemi offers named standard platforms, their capacity ranges and standard lead time (weeks) (answers the 'standard platforms' FAQ)",
   "Whether Aquemi builds stills and pure steam generators in-house or supplies them from a named manufacturer (same open fact as sys-wfi-distillation and sys-pure-steam)",
   "Whether the route assessment is free or charged",
-  "Enquiry response time commitment (same placeholder as the system pages)",
-  "Confirm Aquemi builds RO/EDI for CSA Z314, ASTM D1193 and industrial demin (wording mirrors sys-pw)",
-  "Confirm every family, including loops and controls, is FAT tested before shipping (hero and steps say so; svc-fat-sat says every skid)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope: new systems, upgrades, service only or not offered (FAQ; same wording as industries, ind-meddevice and sys-pw)",
+  "Confirm every skid in every family (including the loop pump and heat exchanger skid, tanks and control panels) gets a wet FAT before shipping; field-built loop piping is proven at SAT/IQ (same as svc-fat-sat, home hero fact)",
   "Budget ranges (CAD) for each system family at a stated reference capacity, including FAT, IQ/OQ protocols and turnover package",
   "Standard battery limits for a typical scope"
  ]

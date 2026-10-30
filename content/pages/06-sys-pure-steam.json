@@ -9,6 +9,7 @@
  "headline": "Pure steam that passes EN 285 dryness, superheat and non-condensable gas tests at the sterilizer",
  "lead": "Our pure steam generators supply autoclaves and steam-in-place (SIP) with steam whose condensate meets Water for Injection (WFI) limits, as EU GMP Annex 1 paragraph 6.17 requires, and whose non-condensable gases (no more than 3.5 mL per 100 mL of condensate), dryness and superheat meet EN 285 where the steam is used. We size the generator and the distribution header as one system, because most steam quality failures start in the pipework, and we hand over the test records your validation team needs.",
  "primary_cta": "Submit your steam demand for a sizing proposal",
+ "primary_cta_intent": "Sizing and budget proposal for a new system|Pure steam generator",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -37,7 +38,7 @@
    "h": "Pure steam is qualified on two sets of tests, and only one is about the generator",
    "body": [
     "Pure steam sterilizes product-contact surfaces directly: porous and hard-goods loads in autoclaves, vessels and transfer lines by SIP, and stoppers in processors. EU GMP Annex 1 (2022), adopted by Health Canada as GUI-0119 and in force since 1 April 2024, sets two requirements for it in paragraph 6.17. The condensate must meet the current WFI monograph of the relevant pharmacopoeia, with microbial testing not mandatory. And the steam must be assessed periodically for non-condensable gases, dryness value and superheat against validated parameters.",
-    "The first set is chemistry. USP Pure Steam tests the condensate for total organic carbon (TOC), conductivity and, where the steam is used to make parenterals, bacterial endotoxin below 0.25 EU/mL. The generator controls these: droplet separation keeps feed water and its endotoxin out of the steam, and feed degassing keeps dissolved carbon dioxide (CO₂) from raising conductivity.",
+    "The first set is chemistry. USP Pure Steam tests the condensate for total organic carbon (TOC), conductivity and, where the steam is used to make parenterals, bacterial endotoxin (< 0.25 EU/mL). The generator controls these: droplet separation keeps feed water and its endotoxin out of the steam, and feed degassing keeps dissolved carbon dioxide (CO₂) from raising conductivity.",
     "The second set is physics, and EN 285 gives the acceptance criteria most sterilizer manufacturers and inspectors use. These tests are made at the sterilizer. A generator that delivers dry, gas-free steam at its outlet can still fail them at the point of use if the header collects condensate, leaks air in during shutdown, or reduces pressure in one large step. So we design, test and document the generator and its distribution together."
    ]
   },
@@ -417,7 +418,7 @@
     },
     {
      "q": "Does the condensate really have to meet WFI?",
-     "a": "For steam that sterilizes materials or product-contact surfaces directly, yes: Annex 1 paragraph 6.17 asks for condensate that meets the current WFI monograph, without microbial testing. USP Pure Steam applies its 0.25 EU/mL endotoxin limit when the steam is used to make parenterals. Steam that only heats jackets or coils, without product contact, can be plant steam; your contamination control strategy should say which users are which."
+     "a": "For steam that sterilizes materials or product-contact surfaces directly, yes: Annex 1 paragraph 6.17 asks for condensate that meets the current WFI monograph, without microbial testing. USP Pure Steam applies its < 0.25 EU/mL endotoxin limit when the steam is used to make parenterals. Steam that only heats jackets or coils, without product contact, can be plant steam; your contamination control strategy should say which users are which."
     },
     {
      "q": "EN 285 is a European sterilizer standard. Does it apply to us?",
@@ -512,9 +513,10 @@
  ],
  "cta": {
   "h": "Sized for your peak SIP demand and your header, not only the generator outlet. Send your steam load.",
-  "body": "Include steam demand per user in kg/h, the pressure each needs at its inlet and which cycles run at the same time. An engineer replies within [response time] with questions or a budget proposal.",
+  "body": "Include steam demand per user in kg/h, the pressure each needs at its inlet and which cycles run at the same time. An engineer replies within [proposal response time, working days] with questions or a budget proposal.",
   "button": "Submit your steam demand for a sizing proposal",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Sizing and budget proposal for a new system|Pure steam generator"
  },
  "todo": [
   "Whether Aquemi builds pure steam generators in-house or supplies them from a named manufacturer (answers the 'Who builds the generator?' FAQ)",
@@ -531,7 +533,7 @@
   "Scope of steam generation and condensate testing at FAT, depending on test bay heating supply",
   "Whether Aquemi offers EN 285 steam quality testing on existing systems, owns calibrated test equipment, and the visit lead time",
   "Spare parts list coverage period (months of operation)",
-  "Enquiry response time commitment",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Datasheet PDF; add a download link only once it exists",
   "A real pure steam project with measured steam quality results before adding a case study block",
   "Commissioning scope for header correction and EN 285 retest"

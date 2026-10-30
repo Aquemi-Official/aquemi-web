@@ -503,7 +503,7 @@
  ],
  "cta": {
   "h": "Review the sample FAT protocol. Check our acceptance criteria against your URS before you commit a shutdown window.",
-  "body": "We send the table of contents and a set of redacted test cases [confirm what can be shared, openly or under NDA]. Send your URS or functional specification with the request and an engineer replies within [response time] with a draft FAT test list, the tests we would mark for IQ/OQ leverage and the witness dates your schedule allows.",
+  "body": "We send the table of contents and a set of redacted test cases [confirm what can be shared, openly or under NDA]. Send your URS or functional specification with the request and an engineer replies within [proposal response time, working days] with a draft FAT test list, the tests we would mark for IQ/OQ leverage and the witness dates your schedule allows.",
   "button": "Request a sample FAT protocol",
   "link": "cmp-documentation"
  },
@@ -521,9 +521,9 @@
   "Whether endotoxin sampling is offered at FAT on WFI systems, and which laboratory tests it",
   "Whether FAT witness time, travel and remote witness are included in price or quoted separately",
   "Confirm Aquemi runs an internal dry run before every witnessed FAT (page says so)",
-  "Confirm every skid gets a wet FAT including the loop pump/heat exchanger skid (page says so; systems page says every system)",
+  "Confirm every skid gets a wet FAT including the loop pump/heat exchanger skid (same wording on systems and the home hero fact \"100 %\"); field-built loop piping is proven at SAT/IQ",
   "Confirm software checksum recorded at FAT (page says version and checksum)",
-  "Enquiry response time commitment (same placeholder as the system pages)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "FAT first-pass rate or a real FAT (deviations found, closure time) before adding a case study block",
   "Test instrument calibration interval and traceability",
   "Post-FAT drain, drying and sealing method for shipment",

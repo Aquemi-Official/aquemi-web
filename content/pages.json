@@ -11,6 +11,7 @@
    "headline": "Validation-ready Purified Water, WFI and pure steam systems, designed, built and serviced in Canada",
    "lead": "Your auditor judges water where it is used: Purified Water (PW) and Water for Injection (WFI) against USP <645> 1.3 µS/cm at 25 °C and USP <643> 500 ppb total organic carbon (TOC), and WFI against < 0.25 EU/mL endotoxin under USP <85>. We design each system to hold those limits at the furthest point of use, run every skid through a wet factory acceptance test (FAT) before it ships, and hand over installation and operational qualification (IQ/OQ) protocols your quality unit approves before execution, in a turnover package indexed to your user requirement specification (URS). Then we service it, so it stays qualified.",
    "primary_cta": "Submit your URS for a proposal",
+   "primary_cta_intent": "Sizing and budget proposal for a new system",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -126,7 +127,7 @@
       },
       {
        "t": "WFI by distillation",
-       "d": "Multi-effect and vapour compression stills making hot WFI below 0.25 EU/mL endotoxin, with the still type chosen on your steam, power and cooling water costs.",
+       "d": "Multi-effect and vapour compression stills making hot WFI at < 0.25 EU/mL endotoxin, with the still type chosen on your steam, power and cooling water costs.",
        "tag": "USP <85>",
        "link": "sys-wfi-distillation"
       },
@@ -215,7 +216,7 @@
       },
       {
        "p": "Other builders' systems",
-       "v": "Log a request with the make and model. No Aquemi serial number needed",
+       "v": "Log a request with the make and model ([makes and equipment types serviced]). No Aquemi serial number needed",
        "m": "Service request page. [Confirm equipment types and makes Aquemi services]"
       },
       {
@@ -340,16 +341,17 @@
     "h": "Send your water grade and flow, or your URS. An engineer replies.",
     "body": "A process engineer, not a sales desk, reads it and replies within [proposal response time, working days] with questions, a review or a budget proposal. For a system down now, call [service phone number].",
     "button": "Submit your URS for a proposal",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Sizing and budget proposal for a new system"
    },
    "todo": [
     "Hero photograph of a finished Aquemi skid or installed loop",
-    "Proposal response time, working days (one figure for all pages; other pages say [response time] or [proposal response time])",
-    "Severity 1 on-site response time, hours, and the service coverage area (same figure as contact-service, contact-locations, ind-cdmo; svc-service calls it [fastest on-site response, hours])",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+    "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service); service coverage area",
     "Service phone number and service phone hours",
     "Test bay location, city and province",
     "Service bases, cities",
-    "Equipment types and makes Aquemi services (any-builder service is stated on contact-service; confirm)",
+    "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
     "Whether FAT witness time, travel and remote witness are included in the equipment price or quoted separately",
     "Confirm reviews carry no obligation and may be used in the client's own tender",
     "Confirm French-language engineering, service and documentation",
@@ -363,11 +365,11 @@
    "section": "Systems",
    "nav_label": "All systems",
    "title": "Pharmaceutical water systems: PW, WFI, pure steam | Aquemi",
-   "meta": "Choose PW, WFI or pure steam systems by water grade and standard: USP <645> 1.3 µS/cm, USP <85> 0.25 EU/mL, EN 285. Seven families, each FAT tested.",
+   "meta": "Choose PW, WFI or pure steam systems by water grade and standard: USP <645> 1.3 µS/cm, USP <85> < 0.25 EU/mL, EN 285. Every skid wet tested at FAT.",
    "path": "/systems/",
    "eyebrow": "SYSTEMS · PW · WFI · PURE STEAM · USP · PH. EUR. · EU GMP ANNEX 1",
    "headline": "Find your compendial water route by grade, by standard or by flow",
-   "lead": "Seven system families, each built to the limit your auditor will cite: USP <645> 1.3 µS/cm at 25 °C and USP <643> 500 ppb total organic carbon (TOC) for Purified Water (PW), plus the USP <85> endotoxin limit of 0.25 EU/mL for Water for Injection (WFI) and pure steam condensate. Those limits apply where the water is used, so we design the path as a whole, factory acceptance test (FAT) each system before it ships and hand over the installation and operational qualification (IQ/OQ) protocols with it.",
+   "lead": "Seven system families, each built to the limit your auditor will cite: USP <645> 1.3 µS/cm at 25 °C and USP <643> 500 ppb total organic carbon (TOC) for Purified Water (PW), plus the USP <85> endotoxin limit of < 0.25 EU/mL for Water for Injection (WFI) and pure steam condensate. Those limits apply where the water is used, so we design the path as a whole, wet factory acceptance test (FAT) every skid before it ships, prove the field-built loop piping on site, and hand over the installation and operational qualification (IQ/OQ) protocols with it.",
    "tags": [
     "USP <645>",
     "USP <643>",
@@ -378,6 +380,7 @@
     "ASME BPE"
    ],
    "primary_cta": "Submit your URS for a route assessment",
+   "primary_cta_intent": "Route assessment: which systems, which WFI route",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -396,7 +399,7 @@
       },
       {
        "t": "WFI by distillation",
-       "d": "Multi-effect and vapour compression stills making hot WFI below 0.25 EU/mL endotoxin, with the still type chosen on your steam, power and cooling water costs.",
+       "d": "Multi-effect and vapour compression stills making hot WFI at < 0.25 EU/mL endotoxin, with the still type chosen on your steam, power and cooling water costs.",
        "tag": "USP <85>",
        "link": "sys-wfi-distillation"
       },
@@ -711,7 +714,7 @@
       },
       {
        "t": "Fabrication and FAT",
-       "d": "Each system is built and wet tested in our test bay against a protocol you approve."
+       "d": "Each skid is built and wet tested in our test bay against a protocol you approve. Loop piping built on your site is proven at SAT and IQ."
       },
       {
        "t": "SAT and IQ/OQ",
@@ -786,7 +789,7 @@
       },
       {
        "q": "Do you build to standard platforms or to order?",
-       "a": "[State whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks.] Either way, materials, instrumentation and controls are adapted to your URS, and every system is tested at FAT before it ships."
+       "a": "[State whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks.] Either way, materials, instrumentation and controls are adapted to your URS, and every skid is wet tested at FAT before it ships; loop piping built on your site is proven at SAT and IQ."
       },
       {
        "q": "Who builds the stills and pure steam generators?",
@@ -794,7 +797,7 @@
       },
       {
        "q": "Do you supply water systems for laboratories, hospitals or industrial processes?",
-       "a": "The same RO and EDI platform can be built for hospital reprocessing water under CSA Z314, laboratory water under ASTM D1193 and industrial demineralized water. These pages describe the pharmaceutical build; ask for the standard you work to."
+       "a": "As adjacent uses, the same RO and EDI platform is used for hospital reprocessing water (CSA Z314), laboratory reagent water (ASTM D1193) and industrial demineralized water. [State Aquemi's scope for hospital, laboratory and industrial water: new systems, upgrades of existing systems, service only, or not offered.] These pages describe the pharmaceutical build; send the standard you work to and we will say plainly whether it is in our scope."
       },
       {
        "q": "Our system is already running and out of specification. Who do we contact?",
@@ -854,17 +857,18 @@
    ],
    "cta": {
     "h": "Send your water grade, your standard and your flow. We map the route.",
-    "body": "Include your feed water analysis, peak demand in L/h and the pharmacopoeias you release against. A process engineer replies within [response time] with questions or a written route assessment that names the systems, the WFI route if you need one, and the reasoning.",
+    "body": "Include your feed water analysis, peak demand in L/h and the pharmacopoeias you release against. A process engineer replies within [proposal response time, working days] with questions or a written route assessment that names the systems, the WFI route if you need one, and the reasoning.",
     "button": "Submit your URS for a route assessment",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Route assessment: which systems, which WFI route"
    },
    "todo": [
     "Whether Aquemi offers named standard platforms, their capacity ranges and standard lead time (weeks) (answers the 'standard platforms' FAQ)",
     "Whether Aquemi builds stills and pure steam generators in-house or supplies them from a named manufacturer (same open fact as sys-wfi-distillation and sys-pure-steam)",
     "Whether the route assessment is free or charged",
-    "Enquiry response time commitment (same placeholder as the system pages)",
-    "Confirm Aquemi builds RO/EDI for CSA Z314, ASTM D1193 and industrial demin (wording mirrors sys-pw)",
-    "Confirm every family, including loops and controls, is FAT tested before shipping (hero and steps say so; svc-fat-sat says every skid)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+    "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope: new systems, upgrades, service only or not offered (FAQ; same wording as industries, ind-meddevice and sys-pw)",
+    "Confirm every skid in every family (including the loop pump and heat exchanger skid, tanks and control panels) gets a wet FAT before shipping; field-built loop piping is proven at SAT/IQ (same as svc-fat-sat, home hero fact)",
     "Budget ranges (CAD) for each system family at a stated reference capacity, including FAT, IQ/OQ protocols and turnover package",
     "Standard battery limits for a typical scope"
    ]
@@ -880,6 +884,7 @@
    "headline": "Purified Water sized for your coldest feed day, with a turnover package your auditor can follow",
    "lead": "Our reverse osmosis (RO) and electrodeionization (EDI) skids make Purified Water (PW) below the USP <645> limit of 1.3 µS/cm at 25 °C and the USP <643> limit of 500 ppb total organic carbon (TOC), with no regeneration chemicals. We size each skid at your lowest feed temperature, wet test it at factory acceptance testing (FAT) and ship the installation and operational qualification (IQ/OQ) protocols with it.",
    "primary_cta": "Request a sizing and budget proposal",
+   "primary_cta_intent": "Sizing and budget proposal for a new system|Purified Water (PW) generation",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -909,7 +914,7 @@
      "body": [
       "PW is the bulk water for non-parenteral formulation, the final rinse of most cleaning cycles and the feed to Water for Injection (WFI) stills and Pure Steam generators. USP and Ph. Eur. apply their limits at the point of use, after storage and distribution have had their effect.",
       "So the generator's job is margin. Carbon dioxide (CO₂) taken up through a tank vent raises conductivity. A loop that warms in summer adds microbial risk. We size the skid so its outlet sits well below the limit you release against under the worst feed water of the year, and we show that margin at FAT and again at site acceptance testing (SAT).",
-      "The same RO and EDI platform can be built for hospital reprocessing water under CSA Z314, laboratory water under ASTM D1193 and industrial demineralized water. This page describes the pharmaceutical build."
+      "Adjacent uses: the same RO and EDI platform is used for hospital reprocessing water (CSA Z314), laboratory reagent water (ASTM D1193) and industrial demineralized water. [State Aquemi's scope for hospital, laboratory and industrial water: new systems, upgrades of existing systems, service only, or not offered.] This page describes the pharmaceutical build."
      ]
     },
     {
@@ -1311,7 +1316,7 @@
       },
       {
        "q": "Who services the skid after handover?",
-       "a": "Our service team, from [service locations]. Membranes, EDI modules and seal kits for your skid are stocked in [stocking location], and a service plan gives you a stated response time of [response time, hours]. Every visit ends with a signed report your quality unit can file."
+       "a": "Our service team, from [service locations]. Membranes, EDI modules and seal kits for your skid are stocked in [stocking location], and a service plan gives you a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. Every visit ends with a signed report your quality unit can file."
       }
      ],
      "nav": "FAQ"
@@ -1366,9 +1371,10 @@
    ],
    "cta": {
     "h": "Send your feed water analysis. Get a skid sized for your coldest month.",
-    "body": "Include peak demand in L/h and the pharmacopoeia you release against. A process engineer replies within [response time] with questions or a sizing and budget proposal.",
+    "body": "Include peak demand in L/h and the pharmacopoeia you release against. A process engineer replies within [proposal response time, working days] with questions or a sizing and budget proposal.",
     "button": "Request a sizing and budget proposal",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Sizing and budget proposal for a new system|Purified Water (PW) generation"
    },
    "todo": [
     "Capacity range per skid (minimum–maximum, L/h)",
@@ -1383,14 +1389,15 @@
     "Control panel certification held (for example CSA or UL listing); state only what is held",
     "Typical footprint by capacity (m × m) and number of service-access sides",
     "Spare parts list coverage period (months of operation)",
-    "Service locations, spare parts stocking location and plan response time (hours)",
-    "Enquiry response time commitment",
+    "Service locations, spare parts stocking location and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Datasheet PDF; add a download link only once it exists",
     "A real PW project with measured outlet conductivity, TOC and capacity before adding a case study block",
     "Budget ranges (CAD) for three reference PW skid capacities",
     "Test bay location and remote witness platform (same as svc-fat-sat)",
     "Who registers pressure parts (CRN) and for which provinces; panel standard and certification mark held",
-    "Borescope inspection percentage (same as svc-fabrication)"
+    "Borescope inspection percentage (same as svc-fabrication)",
+    "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope: new systems, upgrades, service only or not offered (same wording as industries, ind-meddevice and systems FAQ)"
    ]
   },
   {
@@ -1398,12 +1405,13 @@
    "section": "Systems",
    "nav_label": "WFI by distillation",
    "title": "WFI stills: multi-effect and vapour compression | Aquemi",
-   "meta": "Multi-effect and vapour compression stills for WFI below USP <85> 0.25 EU/mL and USP <645> 1.3 µS/cm, sized on your steam and power costs.",
+   "meta": "Multi-effect and vapour compression stills for WFI at USP <85> < 0.25 EU/mL and USP <645> 1.3 µS/cm, sized on your steam and power costs.",
    "path": "/systems/wfi-distillation/",
    "eyebrow": "WATER FOR INJECTION · DISTILLATION · USP <85> · PH. EUR. 0169",
    "headline": "WFI stills sized on your utility costs, with endotoxin margin you can show an inspector",
-   "lead": "The multi-effect and vapour compression stills we supply make hot Water for Injection (WFI) below the USP <85> bacterial endotoxin limit of 0.25 EU/mL and the USP <645> conductivity limit of 1.3 µS/cm at 25 °C. We set the still's endotoxin reduction against your Purified Water (PW) feed, choose the still type on your steam, power and cooling water costs, and ship the factory acceptance test (FAT) report and installation and operational qualification (IQ/OQ) protocols with it.",
+   "lead": "The multi-effect and vapour compression stills we supply make hot Water for Injection (WFI) within the USP <85> bacterial endotoxin limit of < 0.25 EU/mL and the USP <645> conductivity limit of 1.3 µS/cm at 25 °C. We set the still's endotoxin reduction against your Purified Water (PW) feed, choose the still type on your steam, power and cooling water costs, and ship the factory acceptance test (FAT) report and installation and operational qualification (IQ/OQ) protocols with it.",
    "primary_cta": "Request a still sizing and utility cost proposal",
+   "primary_cta_intent": "Sizing and budget proposal for a new system|WFI by distillation",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -1806,7 +1814,7 @@
       },
       {
        "q": "How much endotoxin reduction can we count on?",
-       "a": "Only what the still manufacturer guarantees, which FDA's inspection guide puts at 2.5 to 3 log for many stills. A 3 log still fed at 250 EU/mL would deliver WFI at the 0.25 EU/mL limit, with no margin. So we set an endotoxin target for the PW feed well below that, and design the PW system and its sanitization to hold it."
+       "a": "Only what the still manufacturer guarantees, which FDA's inspection guide puts at 2.5 to 3 log for many stills. A 3 log still fed at 250 EU/mL would deliver WFI at 0.25 EU/mL, which already fails the < 0.25 EU/mL limit. So we set an endotoxin target for the PW feed well below that, and design the PW system and its sanitization to hold it."
       },
       {
        "q": "What feed water does the still need?",
@@ -1834,7 +1842,7 @@
       },
       {
        "q": "Who services the still after handover?",
-       "a": "Our service team, from [service locations]. Gaskets, instruments and compressor parts for your still are stocked in [stocking location], and a service plan gives you a stated response time of [response time, hours]. Every visit ends with a signed report your quality unit can file."
+       "a": "Our service team, from [service locations]. Gaskets, instruments and compressor parts for your still are stocked in [stocking location], and a service plan gives you a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. Every visit ends with a signed report your quality unit can file."
       }
      ],
      "nav": "FAQ"
@@ -1897,9 +1905,10 @@
    ],
    "cta": {
     "h": "Send your demand profile and utility costs. We compare both still types side by side.",
-    "body": "Include peak WFI demand in L/h, plant steam pressure and the pharmacopoeia you release against. An engineer replies within [response time] with questions or a budget proposal.",
+    "body": "Include peak WFI demand in L/h, plant steam pressure and the pharmacopoeia you release against. An engineer replies within [proposal response time, working days] with questions or a budget proposal.",
     "button": "Request a still sizing and utility cost proposal",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Sizing and budget proposal for a new system|WFI by distillation"
    },
    "todo": [
     "Whether Aquemi builds stills in-house or supplies them from a named manufacturer (answers the 'Who builds the still?' FAQ)",
@@ -1915,8 +1924,8 @@
     "Typical footprint (m × m) and overall height (m) by capacity",
     "Scope of hot run at FAT, depending on whether the test bay has plant steam",
     "Spare parts list coverage period (months of operation)",
-    "Service locations, spare parts stocking location and plan response time (hours)",
-    "Enquiry response time commitment",
+    "Service locations, spare parts stocking location and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Datasheet PDF; add a download link only once it exists",
     "A real still project with measured WFI quality, capacity and utility use before adding a case study block",
     "FAT protocol lead time before the test (weeks)"
@@ -1931,8 +1940,9 @@
    "path": "/systems/wfi-membrane/",
    "eyebrow": "WATER FOR INJECTION · MEMBRANE · PH. EUR. 0169 · USP · EU GMP ANNEX 1",
    "headline": "Water for Injection by membrane, with the control strategy and validation package your inspector will ask for",
-   "lead": "Our double-pass reverse osmosis (RO), electrodeionization (EDI) and ultrafiltration (UF) skids make Water for Injection (WFI) at ambient temperature, below the USP <85> bacterial endotoxin limit of 0.25 EU/mL and the USP <645> conductivity limit of 1.3 µS/cm at 25 °C, with no plant steam for generation. We design the biofilm and endotoxin controls the EMA expects from a non-distillation system into the skid, and tell you plainly when distillation is the better route.",
+   "lead": "Our double-pass reverse osmosis (RO), electrodeionization (EDI) and ultrafiltration (UF) skids make Water for Injection (WFI) at ambient temperature, within the USP <85> bacterial endotoxin limit of < 0.25 EU/mL and the USP <645> conductivity limit of 1.3 µS/cm at 25 °C, with no plant steam for generation. We design the biofilm and endotoxin controls the EMA expects from a non-distillation system into the skid, and tell you plainly when distillation is the better route.",
    "primary_cta": "Request a WFI route assessment",
+   "primary_cta_intent": "Route assessment: which systems, which WFI route",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -2454,7 +2464,7 @@
       },
       {
        "q": "Who services the skid after handover?",
-       "a": "Our service team, from [service locations]. RO and UF membranes, EDI modules and seal kits for your skid are stocked in [stocking location], and a service plan gives you a stated response time of [response time, hours]. Every visit, sanitization check and membrane change ends with a signed report your quality unit can file."
+       "a": "Our service team, from [service locations]. RO and UF membranes, EDI modules and seal kits for your skid are stocked in [stocking location], and a service plan gives you a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. Every visit, sanitization check and membrane change ends with a signed report your quality unit can file."
       }
      ],
      "nav": "FAQ"
@@ -2513,9 +2523,10 @@
    ],
    "cta": {
     "h": "Send your demand and feed water. We tell you which WFI route fits, and why.",
-    "body": "Include peak WFI demand in L/h, your feed water analysis, utility costs and the pharmacopoeias you release against. An engineer replies within [response time] with questions or a written route assessment.",
+    "body": "Include peak WFI demand in L/h, your feed water analysis, utility costs and the pharmacopoeias you release against. An engineer replies within [proposal response time, working days] with questions or a written route assessment.",
     "button": "Request a WFI route assessment",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Route assessment: which systems, which WFI route"
    },
    "todo": [
     "Confirm Aquemi builds membrane WFI skids in-house (same platform as PW) or with a partner",
@@ -2531,8 +2542,8 @@
     "Typical footprint by capacity (m × m) and number of service-access sides",
     "Energy, water to drain and consumables per m³ of WFI for membrane and distillation, from validated Aquemi design data",
     "Spare parts list coverage period (months of operation)",
-    "Service locations, spare parts stocking location and plan response time (hours)",
-    "Enquiry response time commitment",
+    "Service locations, spare parts stocking location and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Datasheet PDF; add a download link only once it exists",
     "A real membrane WFI project with measured WFI quality, capacity and energy use before adding a case study block",
     "Membrane WFI feed limits at the skid inlet: oxidant, hardness, SDI, temperature range",
@@ -2551,6 +2562,7 @@
    "headline": "Pure steam that passes EN 285 dryness, superheat and non-condensable gas tests at the sterilizer",
    "lead": "Our pure steam generators supply autoclaves and steam-in-place (SIP) with steam whose condensate meets Water for Injection (WFI) limits, as EU GMP Annex 1 paragraph 6.17 requires, and whose non-condensable gases (no more than 3.5 mL per 100 mL of condensate), dryness and superheat meet EN 285 where the steam is used. We size the generator and the distribution header as one system, because most steam quality failures start in the pipework, and we hand over the test records your validation team needs.",
    "primary_cta": "Submit your steam demand for a sizing proposal",
+   "primary_cta_intent": "Sizing and budget proposal for a new system|Pure steam generator",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -2579,7 +2591,7 @@
      "h": "Pure steam is qualified on two sets of tests, and only one is about the generator",
      "body": [
       "Pure steam sterilizes product-contact surfaces directly: porous and hard-goods loads in autoclaves, vessels and transfer lines by SIP, and stoppers in processors. EU GMP Annex 1 (2022), adopted by Health Canada as GUI-0119 and in force since 1 April 2024, sets two requirements for it in paragraph 6.17. The condensate must meet the current WFI monograph of the relevant pharmacopoeia, with microbial testing not mandatory. And the steam must be assessed periodically for non-condensable gases, dryness value and superheat against validated parameters.",
-      "The first set is chemistry. USP Pure Steam tests the condensate for total organic carbon (TOC), conductivity and, where the steam is used to make parenterals, bacterial endotoxin below 0.25 EU/mL. The generator controls these: droplet separation keeps feed water and its endotoxin out of the steam, and feed degassing keeps dissolved carbon dioxide (CO₂) from raising conductivity.",
+      "The first set is chemistry. USP Pure Steam tests the condensate for total organic carbon (TOC), conductivity and, where the steam is used to make parenterals, bacterial endotoxin (< 0.25 EU/mL). The generator controls these: droplet separation keeps feed water and its endotoxin out of the steam, and feed degassing keeps dissolved carbon dioxide (CO₂) from raising conductivity.",
       "The second set is physics, and EN 285 gives the acceptance criteria most sterilizer manufacturers and inspectors use. These tests are made at the sterilizer. A generator that delivers dry, gas-free steam at its outlet can still fail them at the point of use if the header collects condensate, leaks air in during shutdown, or reduces pressure in one large step. So we design, test and document the generator and its distribution together."
      ]
     },
@@ -2959,7 +2971,7 @@
       },
       {
        "q": "Does the condensate really have to meet WFI?",
-       "a": "For steam that sterilizes materials or product-contact surfaces directly, yes: Annex 1 paragraph 6.17 asks for condensate that meets the current WFI monograph, without microbial testing. USP Pure Steam applies its 0.25 EU/mL endotoxin limit when the steam is used to make parenterals. Steam that only heats jackets or coils, without product contact, can be plant steam; your contamination control strategy should say which users are which."
+       "a": "For steam that sterilizes materials or product-contact surfaces directly, yes: Annex 1 paragraph 6.17 asks for condensate that meets the current WFI monograph, without microbial testing. USP Pure Steam applies its < 0.25 EU/mL endotoxin limit when the steam is used to make parenterals. Steam that only heats jackets or coils, without product contact, can be plant steam; your contamination control strategy should say which users are which."
       },
       {
        "q": "EN 285 is a European sterilizer standard. Does it apply to us?",
@@ -3054,9 +3066,10 @@
    ],
    "cta": {
     "h": "Sized for your peak SIP demand and your header, not only the generator outlet. Send your steam load.",
-    "body": "Include steam demand per user in kg/h, the pressure each needs at its inlet and which cycles run at the same time. An engineer replies within [response time] with questions or a budget proposal.",
+    "body": "Include steam demand per user in kg/h, the pressure each needs at its inlet and which cycles run at the same time. An engineer replies within [proposal response time, working days] with questions or a budget proposal.",
     "button": "Submit your steam demand for a sizing proposal",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Sizing and budget proposal for a new system|Pure steam generator"
    },
    "todo": [
     "Whether Aquemi builds pure steam generators in-house or supplies them from a named manufacturer (answers the 'Who builds the generator?' FAQ)",
@@ -3073,7 +3086,7 @@
     "Scope of steam generation and condensate testing at FAT, depending on test bay heating supply",
     "Whether Aquemi offers EN 285 steam quality testing on existing systems, owns calibrated test equipment, and the visit lead time",
     "Spare parts list coverage period (months of operation)",
-    "Enquiry response time commitment",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Datasheet PDF; add a download link only once it exists",
     "A real pure steam project with measured steam quality results before adding a case study block",
     "Commissioning scope for header correction and EN 285 retest"
@@ -3090,6 +3103,7 @@
    "headline": "Storage and distribution loops that keep turbulent flow and compendial quality to the furthest point of use",
    "lead": "We design and build tanks and loops for Purified Water (PW) and Water for Injection (WFI) that keep flow turbulent at peak draw, as EU GMP Annex 1 paragraph 6.9 requires, hold every branch to the ASME BPE dead leg target of a length-to-diameter ratio (L/D) of 2 or less and drain completely. Hot WFI loops circulate above 70 °C (Annex 1, 6.10); ambient loops are sanitized by heat or ozone on a schedule you can defend. Every slope, weld and branch is recorded on the as-built isometrics your validation team qualifies against.",
    "primary_cta": "Send your points-of-use list for a loop review",
+   "primary_cta_intent": "Review of a document you have|Points-of-use list or loop design",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -3549,7 +3563,7 @@
       },
       {
        "q": "Who services the loop after handover?",
-       "a": "Our service team, from [service locations]. A service plan covers vent filter replacement and integrity tests, instrument calibration, pump seals, UV lamps and rouge inspection, with a stated response time of [response time, hours]. Every visit ends with a signed report your quality unit can file."
+       "a": "Our service team, from [service locations]. A service plan covers vent filter replacement and integrity tests, instrument calibration, pump seals, UV lamps and rouge inspection, with a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. Every visit ends with a signed report your quality unit can file."
       }
      ],
      "nav": "FAQ"
@@ -3608,9 +3622,10 @@
    ],
    "cta": {
     "h": "Designed around your peak simultaneous draw and sanitization schedule. Send your points of use.",
-    "body": "Include each outlet's flow in L/h, which open together and the water grade. An engineer replies within [response time] with questions or a loop concept showing tank size, velocities and the sanitization method.",
+    "body": "Include each outlet's flow in L/h, which open together and the water grade. An engineer replies within [proposal response time, working days] with questions or a loop concept showing tank size, velocities and the sanitization method.",
     "button": "Send your points-of-use list for a loop review",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Review of a document you have|Points-of-use list or loop design"
    },
    "todo": [
     "Design minimum return velocity at peak draw (m/s)",
@@ -3627,8 +3642,8 @@
     "Confirm TOC on the loop return is standard or an option for WFI loops",
     "Whether riboflavin spray coverage testing is performed in-house",
     "Typical shutdown for adding a point of use to an existing loop (days)",
-    "Service locations and plan response time (hours)",
-    "Enquiry response time commitment",
+    "Service locations and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Datasheet PDF; add a download link only once it exists",
     "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block",
     "Slope verification method on installed loops"
@@ -3643,8 +3658,9 @@
    "path": "/systems/pretreatment/",
    "eyebrow": "PRETREATMENT · USP <1231> · HEALTH CANADA · US EPA NPDWR",
    "headline": "Pretreatment that keeps chlorine, chloramine and scale off your RO membranes in every season",
-   "lead": "USP <1231> requires the feed to a Purified Water (PW) system to meet drinking water standards, such as the US EPA National Primary Drinking Water Regulations (NPDWR) or, for most Canadian sites, the Guidelines for Canadian Drinking Water Quality. Drinking water is not reverse osmosis (RO) feed. We design the pretreatment train from your water data across the seasons, so the RO inlet sees no detectable chlorine or chloramine, a silt density index (SDI) of 3 or less and hardness the membranes can live with, and the carbon bed is sanitized so it does not become the source of your bioburden.",
+   "lead": "USP <1231> names drinking water as the minimum source quality for a Purified Water (PW) system, under standards such as the US EPA National Primary Drinking Water Regulations (NPDWR) or, for most Canadian sites, the Guidelines for Canadian Drinking Water Quality. Drinking water is not reverse osmosis (RO) feed. We design the pretreatment train from your water data across the seasons, so the RO inlet sees no detectable chlorine or chloramine, a silt density index (SDI) of 3 or less and hardness the membranes can live with, and the carbon bed is sanitized so it does not become the source of your bioburden.",
    "primary_cta": "Request a feedwater review",
+   "primary_cta_intent": "Feedwater review",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -3672,7 +3688,7 @@
      "type": "prose",
      "h": "Drinking water standards protect people, not membranes",
      "body": [
-      "Every pharmacopoeial water starts as drinking water. USP <1231> sets the NPDWR, or equivalent EU, Japanese or WHO drinking water rules, as the minimum quality of the source. Ph. Eur. asks for water intended for human consumption. In Canada your municipality treats to the Guidelines for Canadian Drinking Water Quality and its provincial regulation. Meeting that standard is your starting point and, for a private well, something you have to show.",
+      "Every pharmacopoeial water starts as drinking water. USP <1231> names the NPDWR, or equivalent EU, Japanese or WHO drinking water rules, as the minimum quality of the source. Ph. Eur. asks for water intended for human consumption. In Canada your municipality treats to the Guidelines for Canadian Drinking Water Quality and its provincial regulation. Meeting that standard is your starting point and, for a private well, something you have to show.",
       "Those standards are set for health and taste, and they allow water that damages RO membranes. The NPDWR allows a chloramine residual up to 4 mg/L as Cl₂. Health Canada sets no limit for chloramine at all, because at drinking water levels it is not a health concern. Polyamide RO membranes are typically rated for less than 0.1 mg/L free chlorine. Hardness has no health limit; a few milligrams per litre of calcium in the RO concentrate is enough to scale it.",
       "Pretreatment closes that gap. It also creates a risk of its own: once the carbon removes the disinfectant residual, nothing in the water holds bacteria back. So we design removal and microbial control together, and we monitor the outlet that your validated system depends on."
      ]
@@ -4037,7 +4053,7 @@
       },
       {
        "q": "Do we have to prove our feed water meets drinking water standards?",
-       "a": "USP <1231> expects you to know that it does. For municipal supply, the utility's reports plus your own periodic testing at the plant inlet are the usual evidence. For a private well you are the utility, so you need a sampling programme against the Guidelines for Canadian Drinking Water Quality or the NPDWR, including microbiological tests. We can propose the parameters and frequency."
+       "a": "The USP and Ph. Eur. monographs make PW from drinking water, and USP <1231> names it as the minimum source quality, so an auditor will expect you to show it. For municipal supply, the utility's reports plus your own periodic testing at the plant inlet are the usual evidence. For a private well you are the utility, so you need a sampling programme against the Guidelines for Canadian Drinking Water Quality or the NPDWR, including microbiological tests. We can propose the parameters and frequency."
       },
       {
        "q": "Our municipality uses chloramine. Is standard carbon enough?",
@@ -4065,7 +4081,7 @@
       },
       {
        "q": "Who changes media, resin and cartridges after handover?",
-       "a": "Our service team, from [service locations], on a plan with a stated response time of [response time, hours]. Media, resin and cartridges for your train are stocked in [stocking location], and every visit ends with a signed report your quality unit can file."
+       "a": "Our service team, from [service locations], on a plan with a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. Media, resin and cartridges for your train are stocked in [stocking location], and every visit ends with a signed report your quality unit can file."
       }
      ],
      "nav": "FAQ"
@@ -4120,9 +4136,10 @@
    ],
    "cta": {
     "h": "Send a year of water data. We tell you which months set your design.",
-    "body": "Include your utility's monthly reports, the disinfectant it uses and the RO flow you need. A process engineer replies within [response time] with a seasonal design basis and the margin it leaves your RO, [cost of the feedwater review].",
+    "body": "Include your utility's monthly reports, the disinfectant it uses and the RO flow you need. A process engineer replies within [proposal response time, working days] with a seasonal design basis and the margin it leaves your RO, [cost of the feedwater review].",
     "button": "Request a feedwater review",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Feedwater review"
    },
    "todo": [
     "RO inlet total chlorine design limit (mg/L as Cl₂)",
@@ -4135,8 +4152,8 @@
     "Whether UV dechlorination is offered (remove the table row if not)",
     "Whether Aquemi measures SDI on site during the feedwater review (kit held)",
     "Whether the feedwater review is free or charged; fill the CTA placeholder",
-    "Enquiry response time commitment",
-    "Service locations, media and resin stocking location and service plan response time (hours)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+    "Service locations, media and resin stocking location and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
     "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block",
     "Months of water history requested for a feedwater review",
     "Carbon replacement interval"
@@ -4153,6 +4170,7 @@
    "headline": "Water quality data you can release on and defend in an inspection",
    "lead": "We build the controls and online monitoring for Purified Water (PW) and Water for Injection (WFI) systems so every release decision rests on a record an inspector can trace: total organic carbon (TOC) against the USP <643> limit of 0.50 mg/L on an analyzer with documented system suitability, conductivity against the USP <645> stage 1 table on the raw, non-temperature-compensated reading, and an audit trail that meets 21 CFR Part 11 and EU GMP Annex 11. The software follows the GAMP 5 lifecycle, and the specifications, test records and traceability your validation team needs are written as we build it.",
    "primary_cta": "Request a controls specification review",
+   "primary_cta_intent": "Review of a document you have|Controls URS or functional specification",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -4748,7 +4766,7 @@
       },
       {
        "q": "Who calibrates the instruments and maintains the software after handover?",
-       "a": "Our service team, from [service locations], with a stated response time of [response time, hours]. A service plan covers calibration, TOC system suitability, UV lamps, ozone sensors, backups and software patches under your change control. Every visit ends with a signed report."
+       "a": "Our service team, from [service locations], with a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. A service plan covers calibration, TOC system suitability, UV lamps, ozone sensors, backups and software patches under your change control. Every visit ends with a signed report."
       }
      ],
      "nav": "FAQ"
@@ -4803,9 +4821,10 @@
    ],
    "cta": {
     "h": "Send your controls URS and data integrity requirements. We return a specification you can check.",
-    "body": "Include the water grades, your PLC and SCADA standard, record retention and remote access policy. An engineer replies within [response time] with questions or a draft functional specification outline.",
+    "body": "Include the water grades, your PLC and SCADA standard, record retention and remote access policy. An engineer replies within [proposal response time, working days] with questions or a draft functional specification outline.",
     "button": "Request a controls specification review",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Review of a document you have|Controls URS or functional specification"
    },
    "todo": [
     "PLC and SCADA platforms supported",
@@ -4816,8 +4835,8 @@
     "Panel certification held (UL 508A, CSA C22.2 No. 286) and whether panels are built in-house",
     "Whether Aquemi offers read-only telemetry and remote alarm review as a service, and its scope",
     "Whether supervised remote support sessions are offered",
-    "Service locations and response time (hours)",
-    "Enquiry response time commitment",
+    "Service locations and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Whether Aquemi writes PLC code in-house (page states 'we write and test the PLC code ourselves'; confirm or reword)",
     "Datasheet PDF; add a download link only once it exists",
     "A real controls project (new or upgrade) with scope and inspection outcome before adding a case study block",
@@ -5122,7 +5141,7 @@
      "type": "band",
      "tone": "limestone",
      "h": "Service is half the system, so we sell it as a product",
-     "body": "A water system spends months in delivery and [design life, years] years in service. Our service plans state the on-site response for a critical fault, from [fastest on-site response, hours], fix the visit scope and calibration intervals in writing, and run every visit under your change control. They cover the systems we build and [confirm: systems from other builders, after an assessment], at a price per plan, not per call-out."
+     "body": "A water system spends months in delivery and [design life, years] years in service. Our service plans state the on-site response for a critical fault, from [severity 1 on-site response time, hours], fix the visit scope and calibration intervals in writing, and run every visit under your change control. They cover the systems we build and systems from other builders ([makes and equipment types serviced]), after an assessment, at a price per plan, not per call-out."
     },
     {
      "type": "table",
@@ -5181,7 +5200,7 @@
       },
       {
        "q": "Do you work on systems built by other suppliers?",
-       "a": "[Confirm any-builder scope and the equipment types covered.] We start with an assessment or a condition survey, because a quote without the as-built state and a year of data either carries contingency or leaves the validation to be found during the work. Send it as a proposal request: the service request form is for systems already registered with us."
+       "a": "Yes, for [makes and equipment types serviced]. We start with an assessment or a condition survey, because a quote without the as-built state and a year of data either carries contingency or leaves the validation to be found during the work. Send an upgrade or assessment as a proposal request. For a fault or a planned visit, the service request form takes systems from other builders with the make and model; no Aquemi serial number is needed."
       },
       {
        "q": "Where do you work?",
@@ -5232,21 +5251,21 @@
    ],
    "cta": {
     "h": "Tell us where your project stands. We reply with the next step and what it leaves in your file.",
-    "body": "Send your URS, your water grades and feed water data, or details of the system you already have. An engineer replies within [response time] with questions, the stage we would start at and the documents you will get from it. For a system down now, call [service phone number].",
+    "body": "Send your URS, your water grades and feed water data, or details of the system you already have. An engineer replies within [proposal response time, working days] with questions, the stage we would start at and the documents you will get from it. For a system down now, call [service phone number].",
     "button": "Request a proposal",
     "link": "contact-proposal"
    },
    "todo": [
-    "Enquiry response time commitment for the closing CTA (same [response time] placeholder as the system and service pages)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "URS review turnaround (business days), same placeholder as svc-design",
     "Quote response time for a service plan (working days), same placeholder as svc-service",
     "Service phone number (router table and closing CTA), same placeholder as svc-service and contact-service",
     "Outlet conductivity guarantee (µS/cm @ 25 °C) in the traced requirement, same placeholder as sys-pw and svc-design",
-    "Fastest on-site response for a critical fault (hours), same placeholder as svc-service",
+    "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service)",
     "Design life of a water system for the service band (years), or reword the band",
     "Typical durations for a packaged PW skid: design to DQ (weeks), approved design to FAT (weeks), IQ/OQ on site (days)",
     "Confirm one named project engineer or team carries a project from URS review to handover, and how handover to service works (FAQ)",
-    "Confirm Aquemi services, qualifies and upgrades systems built by other suppliers, and the equipment types covered (band, joining table, FAQ)",
+    "Confirm Aquemi qualifies and upgrades systems built by other suppliers (joining table); Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
     "Provinces and regions served for projects; service bases and coverage area (FAQ)",
     "Confirm Aquemi delivers each of the six services in-house or names partners (IQ/OQ execution, calibration and pressure vessel calculations are open on svc-cq, svc-service, svc-design)",
     "Confirm every service is sold separately as well as end to end (prose, grid intro, FAQ)",
@@ -5274,6 +5293,7 @@
     "GAMP 5"
    ],
    "primary_cta": "Submit your URS for a gap review",
+   "primary_cta_intent": "Review of a document you have|URS (gap review)",
    "secondary_cta": {
     "label": "Get a sample design package",
     "link": "cmp-documentation"
@@ -5714,14 +5734,15 @@
    ],
    "cta": {
     "h": "Send your URS, draft or final. We return it with every gap marked, before you commit to fabrication.",
-    "body": "Include your water grades, feed water analysis and peak demand in L/h. An engineer replies within [response time] with questions, and returns the URS compliance matrix within [URS review turnaround, business days].",
+    "body": "Include your water grades, feed water analysis and peak demand in L/h. An engineer replies within [proposal response time, working days] with questions, and returns the URS compliance matrix within [URS review turnaround, working days].",
     "button": "Submit your URS for a gap review",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Review of a document you have|URS (gap review)"
    },
    "todo": [
     "Concept estimate accuracy (± %) for the route assessment budget",
     "URS review turnaround (business days) after complete inputs",
-    "Enquiry response time commitment (same placeholder as the system pages)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Whether the URS review is free, and whether concept or design fees are credited against an equipment order (FAQ placeholder)",
     "Whether design-only or third-party design review engagements are sold separately from equipment, and how they are priced (FAQ placeholder; first pass already claimed design inside an architect-engineer's package)",
     "Whether drawings and pressure vessel calculations are sealed by a licensed P.Eng., and in which provinces (FAQ placeholder)",
@@ -5757,6 +5778,7 @@
     "CSA C22.2 No. 286"
    ],
    "primary_cta": "Request a fabrication spec review",
+   "primary_cta_intent": "Review of a document you have|Fabrication or piping specification",
    "secondary_cta": {
     "label": "Get a sample fabrication dossier",
     "link": "cmp-documentation"
@@ -6280,9 +6302,10 @@
    ],
    "cta": {
     "h": "Send your fabrication spec. We return it marked against ASME BPE, with a sample weld log.",
-    "body": "Include your URS or piping standard, the finish and borescope extent you need and the province of installation. An engineer replies within [response time] with the clauses we meet, the ones we would change and a draft fabrication and inspection plan.",
+    "body": "Include your URS or piping standard, the finish and borescope extent you need and the province of installation. An engineer replies within [proposal response time, working days] with the clauses we meet, the ones we would change and a draft fabrication and inspection plan.",
     "button": "Request a fabrication spec review",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Review of a document you have|Fabrication or piping specification"
    },
    "todo": [
     "Share of product-contact welds borescoped (%), same placeholder as sys-storage",
@@ -6299,7 +6322,7 @@
     "Whether the weld rejection rate is reported in the dossier",
     "Shop location (city, province)",
     "Confirm a redacted weld log and dossier index can be shared under NDA",
-    "Enquiry response time commitment (same placeholder as the system pages)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Confirm the fabrication and inspection plan with hold and witness points is how Aquemi works (page says so)",
     "A real fabrication project (weld count, borescope coverage, rejection rate) before adding a case study block",
     "How components are marked or tagged for heat traceability"
@@ -6810,7 +6833,7 @@
    ],
    "cta": {
     "h": "Review the sample FAT protocol. Check our acceptance criteria against your URS before you commit a shutdown window.",
-    "body": "We send the table of contents and a set of redacted test cases [confirm what can be shared, openly or under NDA]. Send your URS or functional specification with the request and an engineer replies within [response time] with a draft FAT test list, the tests we would mark for IQ/OQ leverage and the witness dates your schedule allows.",
+    "body": "We send the table of contents and a set of redacted test cases [confirm what can be shared, openly or under NDA]. Send your URS or functional specification with the request and an engineer replies within [proposal response time, working days] with a draft FAT test list, the tests we would mark for IQ/OQ leverage and the witness dates your schedule allows.",
     "button": "Request a sample FAT protocol",
     "link": "cmp-documentation"
    },
@@ -6828,9 +6851,9 @@
     "Whether endotoxin sampling is offered at FAT on WFI systems, and which laboratory tests it",
     "Whether FAT witness time, travel and remote witness are included in price or quoted separately",
     "Confirm Aquemi runs an internal dry run before every witnessed FAT (page says so)",
-    "Confirm every skid gets a wet FAT including the loop pump/heat exchanger skid (page says so; systems page says every system)",
+    "Confirm every skid gets a wet FAT including the loop pump/heat exchanger skid (same wording on systems and the home hero fact \"100 %\"); field-built loop piping is proven at SAT/IQ",
     "Confirm software checksum recorded at FAT (page says version and checksum)",
-    "Enquiry response time commitment (same placeholder as the system pages)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "FAT first-pass rate or a real FAT (deviations found, closure time) before adding a case study block",
     "Test instrument calibration interval and traceability",
     "Post-FAT drain, drying and sealing method for shipment",
@@ -6858,6 +6881,7 @@
     "Health Canada GUI-0001"
    ],
    "primary_cta": "Request a C&Q plan review",
+   "primary_cta_intent": "Review of a document you have|C&Q plan or validation master plan (VMP)",
    "secondary_cta": {
     "label": "How FAT feeds IQ and OQ",
     "link": "svc-fat-sat"
@@ -7484,15 +7508,16 @@
    ],
    "cta": {
     "h": "Send your URS or VMP. Get a draft C&Q plan back.",
-    "body": "Send your URS, the utilities section of your validation master plan and your points-of-use list. An engineer replies within [response time] with a draft C&Q plan: the IQ and OQ test list, the FAT tests we would mark for leverage, a PQ sampling plan by phase and the dates when your quality unit can expect to release water for use.",
+    "body": "Send your URS, the utilities section of your validation master plan and your points-of-use list. An engineer replies within [proposal response time, working days] with a draft C&Q plan: the IQ and OQ test list, the FAT tests we would mark for leverage, a PQ sampling plan by phase and the dates when your quality unit can expect to release water for use.",
     "button": "Request a C&Q plan review",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Review of a document you have|C&Q plan or validation master plan (VMP)"
    },
    "todo": [
     "Confirm Aquemi executes IQ/OQ with its own engineers or a named partner (who-signs table placeholder)",
     "Confirm PQ support scope: whether Aquemi staff take samples on site in phases 1 and 2, and through which laboratory (FAQ and who-signs table placeholders)",
     "Name the calibration laboratory and its accreditation (e.g. ISO/IEC 17025) for traceability",
-    "Enquiry response time commitment for the C&Q plan review (same placeholder as other pages)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Confirm Aquemi drafts the C&Q plan, risk assessment, PQ protocol, SOP drafts and alert level recommendation (page says so; svc-design open point too)",
     "Confirm whether the C&Q plan review offered in the CTA is free or charged, and its turnaround",
     "Confirm Aquemi offers gap assessments and requalification of systems it did not build",
@@ -7509,7 +7534,7 @@
    "path": "/services/service-spare-parts/",
    "eyebrow": "SERVICE PLANS · CALIBRATION · SPARE PARTS · EU GMP ANNEX 15 · USP <645> · USP <643>",
    "headline": "Service that keeps your water system running and keeps it qualified",
-   "lead": "Most water systems fall out of their qualified state on a maintenance day, not on a design drawing: a membrane of a different model, a calibration certificate nobody filed, a visit that never went through change control. Our service plans state the response time for each severity of fault, from [fastest on-site response, hours] for a critical fault, and fix the scope in writing. Every visit runs under your change control and maintenance procedures, calibrations meet USP <645> (cell constant known to ± 2 %) and USP <643> (system suitability 85–115 %), and the signed service report is written to go straight into your good manufacturing practice (GMP) records.",
+   "lead": "Most water systems fall out of their qualified state on a maintenance day, not on a design drawing: a membrane of a different model, a calibration certificate nobody filed, a visit that never went through change control. Our service plans state the response time for each severity of fault, from [severity 1 on-site response time, hours] for a critical fault, and fix the scope in writing. Every visit runs under your change control and maintenance procedures, calibrations meet USP <645> (cell constant known to ± 2 %) and USP <643> (system suitability 85–115 %), and the signed service report is written to go straight into your good manufacturing practice (GMP) records.",
    "tags": [
     "USP <645>",
     "USP <643>",
@@ -7588,16 +7613,16 @@
       ],
       [
        "Remote diagnosis, where your remote mode allows it",
-       "[response time, hours]",
-       "[response time, hours]",
-       "[response time, hours]",
+       "[remote response time, hours]",
+       "[remote response time, hours]",
+       "[remote response time, hours]",
        "Best effort"
       ],
       [
        "Severity 1, critical: technician on site",
-       "[hours]",
-       "[hours]",
-       "[hours]",
+       "[severity 1 on-site response time, hours]",
+       "[severity 1 on-site response time, hours]",
+       "[severity 1 on-site response time, hours]",
        "Next available technician"
       ],
       [
@@ -7947,7 +7972,7 @@
      "items": [
       {
        "t": "Call, or log the request",
-       "d": "Call [service phone number], [hours]. For severity 1, call; do not wait for a form. Have the alarm history, current readings and the serial number from the skid nameplate ready."
+       "d": "Call [service phone number], [service phone hours]. For severity 1, call; do not wait for a form. Have the alarm history, current readings and the serial number from the skid nameplate, or the make and model, ready."
       },
       {
        "t": "Triage by severity",
@@ -7978,7 +8003,7 @@
      "items": [
       {
        "t": "Systems we did not build",
-       "d": "[Confirm: equipment types and makes Aquemi services.] We start with a condition survey, a review of your drawings and qualification records, and a spares list, then quote a plan for that system."
+       "d": "For [makes and equipment types serviced], we start with a condition survey, a review of your drawings and qualification records, and a spares list, then quote a plan for that system."
       },
       {
        "t": "Bridge water during an outage or upgrade",
@@ -8053,7 +8078,7 @@
       },
       {
        "q": "Do you service systems built by another manufacturer?",
-       "a": "[Confirm scope.] We start with a condition survey and a review of the drawings, qualification records and spares the system has, because a like-for-like replacement needs a known original. Where records are missing, the survey report lists what to recover before the first planned visit."
+       "a": "Yes, for [makes and equipment types serviced]. No Aquemi serial number is needed: log a service request with the make and model. We start with a condition survey and a review of the drawings, qualification records and spares the system has, because a like-for-like replacement needs a known original. Where records are missing, the survey report lists what to recover before the first planned visit."
       },
       {
        "q": "Our IT policy allows no remote access to GMP equipment.",
@@ -8142,7 +8167,7 @@
     "Calibration intervals per tier (months), quality-critical and process instruments",
     "Phone support hours per tier, and whether 24/7 calls are answered by a service engineer or a dispatcher",
     "Remote diagnosis response time per tier (hours), and whether read-only telemetry and alarm review are offered",
-    "Severity 1 on-site response time per tier (hours) and severity 2 visit time per tier; fastest on-site response for the hero lead",
+    "Severity 1 on-site response time per tier, hours ([severity 1 on-site response time, hours], same figure as home, services, about, contact-service) and severity 2 visit time per tier",
     "Where the response clock stops (technician on site or another defined event)",
     "Remedy when a response time is missed (service credit or other)",
     "Service coverage area and nearest service base(s); travel terms outside the area",
@@ -8158,7 +8183,7 @@
     "Typical lead time (weeks) for each critical spare in the table",
     "Service phone number and hours",
     "Quote response time (working days)",
-    "Confirm any-brand service and the equipment types and makes covered",
+    "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
     "Confirm whether bridge or rental RO/EDI units are offered, flow range (m³/h) and lead time; remove the grid item if not",
     "Confirm operator training offering and format",
     "A real service record (response times achieved, uptime) with client permission before adding proof or a case block"
@@ -8186,6 +8211,7 @@
     "WHO TRS 1033 Annex 3"
    ],
    "primary_cta": "Request a system assessment",
+   "primary_cta_intent": "Assessment of an existing system, any make",
    "secondary_cta": {
     "label": "Water out of specification or system down now? Request service",
     "link": "contact-service"
@@ -8740,9 +8766,10 @@
    ],
    "cta": {
     "h": "Send us the system you have. Get back what to change and what it will take to requalify.",
-    "body": "Send the system's age, drawings, a year of data and the problem you want to solve. An engineer replies within [response time, working days] with the assessment scope, its time on site and its price, and the questions we need answered before we visit.",
+    "body": "Send the system's age, drawings, a year of data and the problem you want to solve. An engineer replies within [assessment response time, working days] with the assessment scope, its time on site and its price, and the questions we need answered before we visit.",
     "button": "Request a system assessment",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Assessment of an existing system, any make"
    },
    "todo": [
     "Confirm Aquemi upgrades and services systems it did not build, and the equipment types and makes covered (prose and FAQ placeholders)",
@@ -8756,9 +8783,9 @@
     "Confirm Aquemi builds panels and tests PLC programs against a simulator before site work (obsolete controllers prose, steps, FAQ)",
     "Payback figures from a delivered chemical DI to RO/EDI conversion, with client permission",
     "Delivered upgrade and retrofit references (what changed, requalification duration) for the experience FAQ and a future case block",
-    "Enquiry response time (working days) for the assessment request, same placeholder as other pages",
+    "Assessment response time, working days ([assessment response time, working days], same as the contact-proposal lookup table)",
     "Legal check on naming other suppliers and their acquisitions (Evoqua/Xylem, Mar Cor/STERIS, MECO and Newterra/Grundfos, Ovivo/Ecolab)",
-    "CTAs go to contact-proposal (it has 'Replacing or expanding an existing system' and 'Upgrade or retrofit'); contact-service requires an Aquemi serial number. Decide whether contact pages need a dedicated assessment intent"
+    "Confirm scope of upgrades and assessments on systems built by other suppliers (FAQ [Confirm scope.])"
    ]
   },
   {
@@ -8790,6 +8817,7 @@
     }
    ],
    "primary_cta": "Request a water scope review",
+   "primary_cta_intent": "Water scope review for your products",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -9139,7 +9167,7 @@
       },
       {
        "q": "What does a scope review cost, and what comes back?",
-       "a": "[State whether the scope review is free, and its turnaround.] A process engineer replies within [response time] with the grade each process step needs, the systems to make and distribute it and the qualification scope, or the questions we need answered first."
+       "a": "[State whether the scope review is free, and its turnaround.] A process engineer replies within [proposal response time, working days] with the grade each process step needs, the systems to make and distribute it and the qualification scope, or the questions we need answered first."
       }
      ]
     },
@@ -9195,13 +9223,14 @@
    ],
    "cta": {
     "h": "Tell us what you make and where you ship it. We return the water grades and the system scope.",
-    "body": "A process engineer reads your products and markets and replies within [response time] with the grade each step needs, the systems that make and distribute it and the qualification scope, or the questions we need answered first. For an industry-specific review, use the scope review on your industry page.",
+    "body": "A process engineer reads your products and markets and replies within [proposal response time, working days] with the grade each step needs, the systems that make and distribute it and the qualification scope, or the questions we need answered first. For an industry-specific review, use the scope review on your industry page.",
     "button": "Request a water scope review",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Water scope review for your products"
    },
    "todo": [
     "Confirm the four industries are the target segments at launch",
-    "Response time for enquiries (FAQ, closing CTA); same value as the industry pages",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Is the scope review free, and its turnaround (FAQ)",
     "Industries where Aquemi has references available for a call, or 'none yet' per industry (FAQ)",
     "Projects per industry to link once case studies exist",
@@ -9232,6 +9261,7 @@
     "EMA water guideline"
    ],
    "primary_cta": "Request a pharmaceutical water scope review",
+   "primary_cta_intent": "Water scope review for your products|Pharmaceutical drug products",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -9528,7 +9558,6 @@
     },
     {
      "type": "diagram",
-     "nav": "How it connects",
      "h": "How the systems connect in a pharmaceutical plant",
      "stages": [
       "Municipal or well feed",
@@ -9618,7 +9647,7 @@
      "type": "band",
      "tone": "limestone",
      "h": "Built, wet tested and serviced in Canada",
-     "body": "Your engineers witness FAT in [city], Ontario, not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a PW skid, weeks]."
+     "body": "Your engineers witness FAT in [test bay location, city and province], not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a PW skid, weeks]."
     },
     {
      "type": "faq",
@@ -9715,13 +9744,14 @@
    ],
    "cta": {
     "h": "Send your dosage forms, markets and daily water use. We return the water grades and the system scope.",
-    "body": "A process engineer reads your products and plans and replies within [response time] with the grade each product needs, the systems that make it and the qualification scope, or the questions we need answered first.",
+    "body": "A process engineer reads your products and plans and replies within [proposal response time, working days] with the grade each product needs, the systems that make it and the qualification scope, or the questions we need answered first.",
     "button": "Request a pharmaceutical water scope review",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Water scope review for your products|Pharmaceutical drug products"
    },
    "todo": [
-    "Response time for enquiries (closing CTA)",
-    "FAT and shop location: [city], Ontario (band)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+    "Test bay location, city and province (band; same as home, about)",
     "Spares stock locations (band)",
     "Service bases (band)",
     "Quotation currency (band)",
@@ -9755,6 +9785,7 @@
     "EU GMP Part IV (ATMP)"
    ],
    "primary_cta": "Request a biologics water scope review",
+   "primary_cta_intent": "Water scope review for your products|Biologics, vaccines, cell or gene therapy",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -10030,7 +10061,6 @@
     },
     {
      "type": "table",
-     "nav": "Inspectors",
      "h": "Who reads your water system, and where we answer it",
      "cols": [
       "Who inspects or reviews",
@@ -10090,7 +10120,6 @@
     },
     {
      "type": "diagram",
-     "nav": "How it connects",
      "h": "How the systems connect in a biologics plant",
      "stages": [
       "Municipal feed",
@@ -10157,7 +10186,6 @@
     },
     {
      "type": "grid",
-     "nav": "Our support",
      "h": "What we do, from URS to the last service visit",
      "intro": "One traceable record runs through every stage, so your quality unit can follow a requirement from the URS to the test that proved it.",
      "items": [
@@ -10203,7 +10231,7 @@
      "type": "band",
      "tone": "limestone",
      "h": "Built, wet tested and serviced in Canada",
-     "body": "Your engineers witness FAT in [city], Ontario, not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a membrane WFI skid, weeks]."
+     "body": "Your engineers witness FAT in [test bay location, city and province], not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a membrane WFI skid, weeks]."
     },
     {
      "type": "faq",
@@ -10300,13 +10328,14 @@
    ],
    "cta": {
     "h": "Send your products, process format and batch schedule. We return the water grades, the peak demand and the system scope.",
-    "body": "A process engineer reads your process and growth plan and replies within [response time] with the grade each step needs, the generation, storage and pure steam to supply it, the phase plan to commercial scale and the qualification scope, or the questions we need answered first.",
+    "body": "A process engineer reads your process and growth plan and replies within [proposal response time, working days] with the grade each step needs, the generation, storage and pure steam to supply it, the phase plan to commercial scale and the qualification scope, or the questions we need answered first.",
     "button": "Request a biologics water scope review",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Water scope review for your products|Biologics, vaccines, cell or gene therapy"
    },
    "todo": [
-    "Response time for enquiries (closing CTA)",
-    "FAT and shop location: [city], Ontario (band)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+    "Test bay location, city and province (band; same as home, about)",
     "Spares stock locations (band)",
     "Service bases (band)",
     "Quotation currency (band)",
@@ -10343,6 +10372,7 @@
     "EN 285"
    ],
    "primary_cta": "Request a device water scope review",
+   "primary_cta_intent": "Water scope review for your products|Medical devices",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -10575,7 +10605,7 @@
       },
       {
        "p": "Steam for sterilizers: dryness and superheat",
-       "v": "Dryness value ≥ 0.95; superheat ≤ 25 K on expansion to atmospheric pressure",
+       "v": "Dryness value ≥ 0.95 for metal loads and ≥ 0.90 for other loads; superheat ≤ 25 K on expansion to atmospheric pressure",
        "m": "EN 285",
        "hl": false
       }
@@ -10625,7 +10655,6 @@
     },
     {
      "type": "table",
-     "nav": "Auditors",
      "h": "Who audits your water system, and where we answer it",
      "cols": [
       "Who audits or reviews",
@@ -10685,7 +10714,6 @@
     },
     {
      "type": "diagram",
-     "nav": "How it connects",
      "h": "How the systems connect in a device plant",
      "stages": [
       "Municipal feed",
@@ -10738,7 +10766,6 @@
     },
     {
      "type": "grid",
-     "nav": "Our support",
      "h": "What we do, from URS to the last service visit",
      "intro": "One traceable record runs through every stage, so your quality unit can follow a requirement from the user requirement specification (URS) to the test that proved it.",
      "items": [
@@ -10784,7 +10811,7 @@
      "type": "band",
      "tone": "limestone",
      "h": "Built, wet tested and serviced in Canada",
-     "body": "Your engineers witness FAT in [city], Ontario, not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a PW system with point-of-use ultrafiltration, weeks]."
+     "body": "Your engineers witness FAT in [test bay location, city and province], not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a PW system with point-of-use ultrafiltration, weeks]."
     },
     {
      "type": "faq",
@@ -10881,14 +10908,15 @@
    ],
    "cta": {
     "h": "Send your devices, release limits and cleaning process. We return the rinse water specification and the system scope.",
-    "body": "A process engineer reads your devices and cleaning process and replies within [response time] with the rinse water limits worked back from your device limits, the system to hold them at the washer inlet and the qualification scope, or the questions we need answered first.",
+    "body": "A process engineer reads your devices and cleaning process and replies within [proposal response time, working days] with the rinse water limits worked back from your device limits, the system to hold them at the washer inlet and the qualification scope, or the questions we need answered first.",
     "button": "Request a device water scope review",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Water scope review for your products|Medical devices"
    },
    "todo": [
     "Confirm medical device manufacturing is a target segment",
-    "Response time for enquiries (closing CTA)",
-    "FAT and shop location: [city], Ontario (band)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+    "Test bay location, city and province (band; same as home, about)",
     "Spares stock locations (band)",
     "Service bases (band)",
     "Quotation currency (band)",
@@ -10926,6 +10954,7 @@
     "PIC/S PI 041-1"
    ],
    "primary_cta": "Request a CDMO water scope review",
+   "primary_cta_intent": "Water scope review for your products|CDMO or contract manufacturing",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
@@ -11451,7 +11480,7 @@
      "type": "band",
      "tone": "limestone",
      "h": "Built, wet tested and serviced in Canada",
-     "body": "Your engineers, and your clients' engineers, witness FAT in [city], Ontario, not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a duplex PW system, weeks]."
+     "body": "Your engineers, and your clients' engineers, witness FAT in [test bay location, city and province], not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a duplex PW system, weeks]."
     },
     {
      "type": "faq",
@@ -11547,18 +11576,19 @@
    ],
    "cta": {
     "h": "Send your client programmes, markets and uptime target. We return the specification and the system scope.",
-    "body": "A process engineer reads your programmes and pipeline and replies within [response time] with the strictest-of water specification, the generation, storage and redundancy to hold it, the qualification scope and what goes into your client audit pack, or the questions we need answered first.",
+    "body": "A process engineer reads your programmes and pipeline and replies within [proposal response time, working days] with the strictest-of water specification, the generation, storage and redundancy to hold it, the qualification scope and what goes into your client audit pack, or the questions we need answered first.",
     "button": "Request a CDMO water scope review",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Water scope review for your products|CDMO or contract manufacturing"
    },
    "todo": [
     "Confirm CDMOs and contract manufacturers are a target segment",
-    "Response time for enquiries (closing CTA)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Design share of peak demand per duplex train, % (uptime options)",
-    "Severity 1 on-site response time, hours, and service coverage area (uptime options); align with svc-service tiers",
+    "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service); service coverage area (uptime options)",
     "Gap check turnaround for a new client programme, working days (tech transfer steps)",
     "Typical span from order to release for a new point of use on a qualified loop, weeks (tech transfer steps)",
-    "FAT and shop location: [city], Ontario (band)",
+    "Test bay location, city and province (band; same as home, about)",
     "Spares stock locations (band)",
     "Service bases (band)",
     "Quotation currency (band)",
@@ -11602,6 +11632,7 @@
     }
    ],
    "primary_cta": "Request a compliance matrix",
+   "primary_cta_intent": "Compliance matrix for your URS",
    "primary_cta_link": "contact-proposal",
    "secondary_cta": {
     "label": "See the documentation package",
@@ -12289,7 +12320,8 @@
     "h": "Send your URS. We return a compliance matrix.",
     "body": "A process engineer maps each requirement to the standard on this page, the design feature that meets it and the test that proves it, and replies within [compliance matrix response time, working days], or with the questions we need answered first.",
     "button": "Request a compliance matrix",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Compliance matrix for your URS"
    },
    "todo": [
     "Certifications actually held: ISO 9001 status, certificate number, scope, registrar and expiry (or target date); downloadable copies",
@@ -13296,7 +13328,7 @@
    ],
    "cta": {
     "h": "Seen the sample? Send your URS and we list your documents.",
-    "body": "A process engineer replies within [proposal response time] with a scoped proposal that lists every document your system ships with, the stage that issues it and who approves it.",
+    "body": "A process engineer replies within [proposal response time, working days] with a scoped proposal that lists every document your system ships with, the stage that issues it and who approves it.",
     "button": "Submit your URS for a proposal",
     "link": "contact-proposal"
    },
@@ -13316,7 +13348,7 @@
     "PMI at receipt: standard or option (same as svc-fabrication)",
     "What a customer QA audit covers (fabrication shop, document control)",
     "Recommended spare parts coverage (months of operation) (same as system pages)",
-    "Proposal response time for the closing CTA",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Confirm Aquemi internal sign-off roles for fabrication records (written as 'Aquemi quality control') and control panel documents ('Aquemi engineering')",
     "Confirm practice stated here: comment log kept with each document; open documents at handover tracked as punch list items; Aquemi drafts SOPs and PQ protocol on request (same as svc-cq)",
     "Confirm the 12-section turnover index structure matches what Aquemi actually delivers"
@@ -13952,7 +13984,8 @@
     "h": "Qualify us before you shortlist us",
     "body": "Send your questionnaire, audit checklist or quality agreement. Our quality lead returns the pack, or proposes audit dates and an agenda, within [audit request response time, working days].",
     "button": "Request a supplier audit",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Supplier qualification: audit, references, shop visit|On-site supplier audit"
    },
    "todo": [
     "KEY: ISO 9001 status (hero lead, prose, certificates grid, FAQ): certified (registrar, certificate number, scope, expiry, downloadable copy) or QMS built to ISO 9001:2015 with target certification date. Never claim certification until held",
@@ -14555,7 +14588,8 @@
     "h": "Ask for the evidence, not the brochure",
     "body": "Tell us the system, the grade and the province. We arrange a reference call, a shop visit or a FAT witness where our clients agree, or send sample documents, within [reference request response time, working days].",
     "button": "Request a reference call",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Supplier qualification: audit, references, shop visit|Reference call"
    },
    "todo": [
     "KEY: real delivered projects for the case study template (at least one per system shown) with executed report numbers, or remove the template block before launch; the page must not launch with only placeholder outlines",
@@ -14608,6 +14642,7 @@
     "GAMP 5"
    ],
    "primary_cta": "Talk to an engineer",
+   "primary_cta_intent": "Not sure yet: talk to an engineer",
    "primary_cta_link": "contact-proposal",
    "secondary_cta": {
     "label": "Audit our quality system",
@@ -14682,7 +14717,7 @@
       [
        "Who answers a service call, and from where?",
        "Uptime after handover depends on travel time and parts on the shelf, not on the brochure",
-       "Our technicians, based in [service bases, cities], with parts stocked in [stock location or locations]. First on-site response within [fastest on-site response, hours]",
+       "Our technicians, based in [service bases, cities], with parts stocked in [stock location or locations]. First on-site response within [severity 1 on-site response time, hours]",
        {
         "t": "Service and spare parts",
         "link": "svc-service"
@@ -15025,7 +15060,7 @@
       },
       {
        "q": "Do you service systems you did not build?",
-       "a": "[Confirm any-brand service, and the equipment types and makes covered.]"
+       "a": "Yes, for [makes and equipment types serviced]. We start with a condition survey and a review of the drawings, qualification records and spares the system has. No Aquemi serial number is needed: log a service request with the make and model."
       },
       {
        "q": "Do you work outside Canada?",
@@ -15054,7 +15089,8 @@
     "h": "Talk to the engineer who would lead your project",
     "body": "Send your URS, a feed water analysis or just your questions. An engineer, not a sales desk, replies within [proposal response time, working days].",
     "button": "Talk to an engineer",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Not sure yet: talk to an engineer"
    },
    "todo": [
     "Founding year and city, province of founding (one figure, same on every page)",
@@ -15067,7 +15103,7 @@
     "Distance or travel time from the test bay to the main Canadian pharmaceutical clusters",
     "Remote FAT witnessing platform and terms",
     "CRN route (Aquemi submits or certified vessel fabricator) and provinces registered to date",
-    "Service bases (cities), spare parts stock locations, fastest on-site response (hours)",
+    "Service bases (cities), spare parts stock locations; Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service)",
     "Quoting terms in CAD; how imported components (membranes, EDI modules, instruments) and their duty are stated",
     "French-language capability: which roles work in French, which documents are offered in French, translation review",
     "Confirm the staffing model: project lead named from proposal to handover; FAT run by the engineers who wrote the functional specification",
@@ -15078,9 +15114,9 @@
     "Financial standing evidence offered to procurement (bank reference, bonding capacity)",
     "Capacity range Aquemi builds per system (L/h, kg/h)",
     "Adjacent uses Aquemi takes on (CSA Z314 hospital water, CLSI, ASTM D1193)",
-    "Any-brand service: equipment types and makes covered",
+    "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
     "Work outside Canada: where, and how FAT, registration and service are handled",
-    "Proposal response time (working days)"
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)"
    ]
   },
   {
@@ -16269,9 +16305,10 @@
    ],
    "cta": {
     "h": "A question you want answered now",
-    "body": "Send it to an engineer with your URS or system details. We reply within [proposal response time], and if the answer is useful to others it may become a note, with your name and company left out.",
+    "body": "Send it to an engineer with your URS or system details. We reply within [proposal response time, working days], and if the answer is useful to others it may become a note, with your name and company left out.",
     "button": "Ask an engineer",
-    "link": "contact-proposal"
+    "link": "contact-proposal",
+    "intent": "Not sure yet: talk to an engineer"
    },
    "todo": [
     "Target publication month for each of the 40 planned notes (replace every 'Planned · [target publication month]'); publish only notes that have passed review",
@@ -16282,7 +16319,7 @@
     "Newsletter platform with confirmation email (double opt-in), consent record (date, time, form wording) and one-click unsubscribe",
     "CASL sender identification: Aquemi legal entity name, mailing address, contact email; unsubscribe processing time (10 business days at most)",
     "Privacy notice link (PIPEDA, Quebec Law 25) covering subscriber data",
-    "Proposal response time (closing CTA)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "First company news items, each with client written permission where a project is named",
     "Schema: Article markup on each published note; FAQPage on this page"
    ],
@@ -16311,7 +16348,7 @@
    "section": "Contact",
    "nav_label": "Request a proposal",
    "title": "Request a proposal, review or assessment | Aquemi",
-   "meta": "Choose a sizing proposal, route assessment, URS, feedwater or C&Q review, or an existing system assessment. An engineer replies in [response time].",
+   "meta": "Sizing proposal, route assessment, URS, feedwater or C&Q review, or system assessment. An engineer replies in [proposal response time, working days].",
    "path": "/contact/proposal/",
    "eyebrow": "REQUEST A PROPOSAL OR REVIEW",
    "headline": "Tell us what you need sized, reviewed or assessed. An engineer answers in writing.",
@@ -16578,7 +16615,7 @@
          "kind": "text",
          "required": true,
          "when": "Assessment of an existing system, any make",
-         "help": "Any make. Service requests for an Aquemi system with a serial number go to the service request page."
+         "help": "Any make. Faults, maintenance and calibration go to the service request page, with or without an Aquemi serial number."
         },
         {
          "label": "Year installed",
@@ -17024,11 +17061,11 @@
       ],
       [
        {
-        "t": "Service on an installed Aquemi system",
+        "t": "Service on an installed system, any builder",
         "link": "contact-service"
        },
        "Not this form: use the service request",
-       "Serial number, severity, current readings",
+       "Aquemi serial number, or make and model; severity; current readings",
        "A service technician, by severity",
        "[service response time by severity]"
       ]
@@ -17160,7 +17197,7 @@
       },
       {
        "q": "Our system was built by another supplier. Which form do we use?",
-       "a": "This one: choose \"Assessment of an existing system, any make\". The service request form is for installed Aquemi systems with a serial number."
+       "a": "For an upgrade, more capacity or a full assessment, this one: choose \"Assessment of an existing system, any make\". For a fault, maintenance or calibration, use the service request form: it takes systems from other builders with the make and model, no Aquemi serial number needed. We service [makes and equipment types serviced]."
       },
       {
        "q": "We are a consulting or EPCM engineer writing a specification for a client. Can we ask?",
@@ -17204,7 +17241,7 @@
     "link": "#intake"
    },
    "todo": [
-    "Proposal response time, working days (one figure for every page that links here: [response time], [proposal response time])",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Budget proposal turnaround, working days",
     "Turnaround per request: feedwater review, URS review, loop review, controls review, fabrication review, C&Q plan review, FAT test list, scope review, route assessment, compliance matrix, existing system assessment, audit request, reference request",
     "Which reviews are free and which are charged: cost of the feedwater review, URS review cost, scope review cost, assessment price",
@@ -17221,7 +17258,8 @@
     "French-speaking engineers available for replies",
     "Regions served outside Canada",
     "CRM routing for each of the 9 requests (intent value in the submission) and source-page tracking",
-    "Optional: let other pages preselect the request (e.g. a link parameter) so the CTA lands on the right option"
+    "Optional: let other pages preselect the request (e.g. a link parameter) so the CTA lands on the right option",
+    "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)"
    ],
    "primary_cta_link": "#intake",
    "facts": [
@@ -17458,7 +17496,7 @@
           "Preventive maintenance and calibration",
           "A service plan for that system"
          ],
-         "help": "[Confirm: equipment types and makes Aquemi services.]"
+         "help": "We service [makes and equipment types serviced]."
         },
         {
          "label": "Service plan or contract number",
@@ -17945,7 +17983,7 @@
      "items": [
       {
        "q": "Our system was built by another company. Can we still request service?",
-       "a": "Yes. No Aquemi serial number is needed. For a fault, choose \"Fault now\" and give the make and model. For a first planned visit, choose \"First service on a system from another builder\": we start with a condition survey and a review of the drawings, qualification records and spares the system has. [Confirm: equipment types and makes Aquemi services.] For an upgrade, more capacity or a full assessment, use the proposal form and choose \"Assessment of an existing system, any make\"."
+       "a": "Yes. No Aquemi serial number is needed. For a fault, choose \"Fault now\" and give the make and model. For a first planned visit, choose \"First service on a system from another builder\": we start with a condition survey and a review of the drawings, qualification records and spares the system has. We service [makes and equipment types serviced]. For an upgrade, more capacity or a full assessment, use the proposal form and choose \"Assessment of an existing system, any make\"."
       },
       {
        "q": "Is the form enough for a severity 1 fault?",
@@ -18006,7 +18044,7 @@
     "Ticket acknowledgment time (minutes); whether forms are monitored out of hours and the out-of-hours form review time (hours)",
     "Who makes the triage call: service engineer or dispatcher",
     "Serial number format and confirmation it appears on the nameplate and the HMI About screen",
-    "Confirm any-builder service: equipment types and makes serviced, and whether parts are supplied for other makes",
+    "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal); whether parts are supplied for other makes",
     "Trend window to export before the first alarm (hours) and maximum upload size (MB)",
     "Reply times (working days) for maintenance booking, calibration booking, requalification support and other-builder requests; parts quote turnaround (working hours); quote response time (working days, same as svc-service)",
     "Parts email address and who receives parts orders (parts desk or stores team)",
@@ -18165,7 +18203,7 @@
        "Head office and engineering, [head office, city and province]",
        "Process design, project management, validation documents, proposals",
        "[Street address], [city], [province] [postal code]",
-       "[Sales phone number] · [sales email]",
+       "[sales phone number] · [sales email]",
        "[Office days and hours, time zone]"
       ],
       [
@@ -18185,7 +18223,7 @@
        },
        "Field service technicians, calibration standards, [critical spares stock]",
        "[Street address, or confirm technicians work from home bases]",
-       "[Service phone number] · [service email]",
+       "[service phone number] · [service email]",
        "Service line [service phone hours, e.g. 24/7, answered by a service engineer]"
       ],
       [
@@ -18559,7 +18597,7 @@
     "Parts stock locations, parts email, parts desk hours, order cut-off and delivery commitment (same as svc-service)",
     "Service coverage area (same as svc-service and contact-service); response clock stop event (same as svc-service)",
     "Per region: main centres actually served, base and travel time (hours), severity 1 on-site response (hours), stocking point; which regions are scheduled visits only",
-    "Fastest severity 1 on-site response (hours) for the hero fact (same as contact-service)",
+    "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service)",
     "Number of service technicians and number of stocking points (same headcount as about)",
     "Whether service partners are used, in which regions, under whose procedures, and who signs the service report; remove partner row if none",
     "CSA B51: Aquemi's CRN route (ASME certificate or vessel fabricator) and provinces where designs are registered (same as compliance)",
@@ -18571,7 +18609,7 @@
     "Visit practicalities: nearest airport and drive time, drive time from the Greater Toronto Area and Greater Montreal, hotels, reception hours, PPE visitors bring and what is provided, photography rules",
     "Remote witness platform (same as svc-fat-sat)",
     "Shipping: drain and drying method after wet FAT, instruments fitted or packed, crating standard and indicators, transit time to main centres (days)",
-    "Proposal response time (working days, same as contact-proposal)",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Any-builder service: equipment types and makes covered (same as contact-service)",
     "Whether technicians are all Aquemi employees",
     "LocalBusiness schema per real location only, once addresses are confirmed"

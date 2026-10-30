@@ -19,6 +19,7 @@
   "EMA water guideline"
  ],
  "primary_cta": "Request a pharmaceutical water scope review",
+ "primary_cta_intent": "Water scope review for your products|Pharmaceutical drug products",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -315,7 +316,6 @@
   },
   {
    "type": "diagram",
-   "nav": "How it connects",
    "h": "How the systems connect in a pharmaceutical plant",
    "stages": [
     "Municipal or well feed",
@@ -405,7 +405,7 @@
    "type": "band",
    "tone": "limestone",
    "h": "Built, wet tested and serviced in Canada",
-   "body": "Your engineers witness FAT in [city], Ontario, not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a PW skid, weeks]."
+   "body": "Your engineers witness FAT in [test bay location, city and province], not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a PW skid, weeks]."
   },
   {
    "type": "faq",
@@ -502,13 +502,14 @@
  ],
  "cta": {
   "h": "Send your dosage forms, markets and daily water use. We return the water grades and the system scope.",
-  "body": "A process engineer reads your products and plans and replies within [response time] with the grade each product needs, the systems that make it and the qualification scope, or the questions we need answered first.",
+  "body": "A process engineer reads your products and plans and replies within [proposal response time, working days] with the grade each product needs, the systems that make it and the qualification scope, or the questions we need answered first.",
   "button": "Request a pharmaceutical water scope review",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Water scope review for your products|Pharmaceutical drug products"
  },
  "todo": [
-  "Response time for enquiries (closing CTA)",
-  "FAT and shop location: [city], Ontario (band)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Test bay location, city and province (band; same as home, about)",
   "Spares stock locations (band)",
   "Service bases (band)",
   "Quotation currency (band)",

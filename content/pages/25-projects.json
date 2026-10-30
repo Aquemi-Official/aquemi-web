@@ -574,7 +574,8 @@
   "h": "Ask for the evidence, not the brochure",
   "body": "Tell us the system, the grade and the province. We arrange a reference call, a shop visit or a FAT witness where our clients agree, or send sample documents, within [reference request response time, working days].",
   "button": "Request a reference call",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Supplier qualification: audit, references, shop visit|Reference call"
  },
  "todo": [
   "KEY: real delivered projects for the case study template (at least one per system shown) with executed report numbers, or remove the template block before launch; the page must not launch with only placeholder outlines",

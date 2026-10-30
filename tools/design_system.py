@@ -226,6 +226,32 @@ def check():
     used = {c for c in re.findall(r'\baq-[a-z0-9_-]+', js) if not c.endswith('--')}
     for cls in sorted(used - defined - {'aq-ah'}):
         problems.append('assets/src uses a class no component style.css defines: ' + cls)
+    # Intent pre-sets (primary_cta_intent, cta.intent) must name options of a radio or checkbox group on the linked page's form
+    pdir = os.path.join(ROOT, 'content', 'pages')
+    pages = {}
+    for f in sorted(os.listdir(pdir)):
+        if f.endswith('.json'):
+            pg = json.load(open(os.path.join(pdir, f), encoding='utf8'))
+            pages[pg['id']] = pg
+    def form_options(pg):
+        opts = set()
+        for b in pg.get('blocks', []):
+            if b.get('type') == 'form':
+                for fd in b.get('fields', []) + [x for s in b.get('steps', []) for x in s.get('fields', [])]:
+                    if fd.get('kind') in ('radio', 'checkbox-group'):
+                        opts |= set(fd.get('options', []))
+        return opts
+    for pid, pg in pages.items():
+        pc = pg.get('primary_cta') or ''
+        hero = pg.get('primary_cta_link') or ('contact-service' if re.search('service', pc, re.I) else 'contact-proposal')
+        c = pg.get('cta') or {}
+        for where, intent, target in (('primary_cta_intent', pg.get('primary_cta_intent'), hero), ('cta.intent', c.get('intent'), c.get('link') or 'contact-proposal')):
+            if not intent:
+                continue
+            opts = form_options(pages.get(target, {}))
+            for label in intent.split('|'):
+                if label not in opts:
+                    problems.append('%s %s: "%s" is not a form option on %s' % (pid, where, label, target))
     for p in problems:
         print('PROBLEM', p)
     print('%d problem(s)' % len(problems))

@@ -7,7 +7,7 @@
  "path": "/services/service-spare-parts/",
  "eyebrow": "SERVICE PLANS · CALIBRATION · SPARE PARTS · EU GMP ANNEX 15 · USP <645> · USP <643>",
  "headline": "Service that keeps your water system running and keeps it qualified",
- "lead": "Most water systems fall out of their qualified state on a maintenance day, not on a design drawing: a membrane of a different model, a calibration certificate nobody filed, a visit that never went through change control. Our service plans state the response time for each severity of fault, from [fastest on-site response, hours] for a critical fault, and fix the scope in writing. Every visit runs under your change control and maintenance procedures, calibrations meet USP <645> (cell constant known to ± 2 %) and USP <643> (system suitability 85–115 %), and the signed service report is written to go straight into your good manufacturing practice (GMP) records.",
+ "lead": "Most water systems fall out of their qualified state on a maintenance day, not on a design drawing: a membrane of a different model, a calibration certificate nobody filed, a visit that never went through change control. Our service plans state the response time for each severity of fault, from [severity 1 on-site response time, hours] for a critical fault, and fix the scope in writing. Every visit runs under your change control and maintenance procedures, calibrations meet USP <645> (cell constant known to ± 2 %) and USP <643> (system suitability 85–115 %), and the signed service report is written to go straight into your good manufacturing practice (GMP) records.",
  "tags": [
   "USP <645>",
   "USP <643>",
@@ -86,16 +86,16 @@
     ],
     [
      "Remote diagnosis, where your remote mode allows it",
-     "[response time, hours]",
-     "[response time, hours]",
-     "[response time, hours]",
+     "[remote response time, hours]",
+     "[remote response time, hours]",
+     "[remote response time, hours]",
      "Best effort"
     ],
     [
      "Severity 1, critical: technician on site",
-     "[hours]",
-     "[hours]",
-     "[hours]",
+     "[severity 1 on-site response time, hours]",
+     "[severity 1 on-site response time, hours]",
+     "[severity 1 on-site response time, hours]",
      "Next available technician"
     ],
     [
@@ -445,7 +445,7 @@
    "items": [
     {
      "t": "Call, or log the request",
-     "d": "Call [service phone number], [hours]. For severity 1, call; do not wait for a form. Have the alarm history, current readings and the serial number from the skid nameplate ready."
+     "d": "Call [service phone number], [service phone hours]. For severity 1, call; do not wait for a form. Have the alarm history, current readings and the serial number from the skid nameplate, or the make and model, ready."
     },
     {
      "t": "Triage by severity",
@@ -476,7 +476,7 @@
    "items": [
     {
      "t": "Systems we did not build",
-     "d": "[Confirm: equipment types and makes Aquemi services.] We start with a condition survey, a review of your drawings and qualification records, and a spares list, then quote a plan for that system."
+     "d": "For [makes and equipment types serviced], we start with a condition survey, a review of your drawings and qualification records, and a spares list, then quote a plan for that system."
     },
     {
      "t": "Bridge water during an outage or upgrade",
@@ -551,7 +551,7 @@
     },
     {
      "q": "Do you service systems built by another manufacturer?",
-     "a": "[Confirm scope.] We start with a condition survey and a review of the drawings, qualification records and spares the system has, because a like-for-like replacement needs a known original. Where records are missing, the survey report lists what to recover before the first planned visit."
+     "a": "Yes, for [makes and equipment types serviced]. No Aquemi serial number is needed: log a service request with the make and model. We start with a condition survey and a review of the drawings, qualification records and spares the system has, because a like-for-like replacement needs a known original. Where records are missing, the survey report lists what to recover before the first planned visit."
     },
     {
      "q": "Our IT policy allows no remote access to GMP equipment.",
@@ -640,7 +640,7 @@
   "Calibration intervals per tier (months), quality-critical and process instruments",
   "Phone support hours per tier, and whether 24/7 calls are answered by a service engineer or a dispatcher",
   "Remote diagnosis response time per tier (hours), and whether read-only telemetry and alarm review are offered",
-  "Severity 1 on-site response time per tier (hours) and severity 2 visit time per tier; fastest on-site response for the hero lead",
+  "Severity 1 on-site response time per tier, hours ([severity 1 on-site response time, hours], same figure as home, services, about, contact-service) and severity 2 visit time per tier",
   "Where the response clock stops (technician on site or another defined event)",
   "Remedy when a response time is missed (service credit or other)",
   "Service coverage area and nearest service base(s); travel terms outside the area",
@@ -656,7 +656,7 @@
   "Typical lead time (weeks) for each critical spare in the table",
   "Service phone number and hours",
   "Quote response time (working days)",
-  "Confirm any-brand service and the equipment types and makes covered",
+  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
   "Confirm whether bridge or rental RO/EDI units are offered, flow range (m³/h) and lead time; remove the grid item if not",
   "Confirm operator training offering and format",
   "A real service record (response times achieved, uptime) with client permission before adding proof or a case block"

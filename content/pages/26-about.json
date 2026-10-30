@@ -35,6 +35,7 @@
   "GAMP 5"
  ],
  "primary_cta": "Talk to an engineer",
+ "primary_cta_intent": "Not sure yet: talk to an engineer",
  "primary_cta_link": "contact-proposal",
  "secondary_cta": {
   "label": "Audit our quality system",
@@ -109,7 +110,7 @@
     [
      "Who answers a service call, and from where?",
      "Uptime after handover depends on travel time and parts on the shelf, not on the brochure",
-     "Our technicians, based in [service bases, cities], with parts stocked in [stock location or locations]. First on-site response within [fastest on-site response, hours]",
+     "Our technicians, based in [service bases, cities], with parts stocked in [stock location or locations]. First on-site response within [severity 1 on-site response time, hours]",
      {
       "t": "Service and spare parts",
       "link": "svc-service"
@@ -452,7 +453,7 @@
     },
     {
      "q": "Do you service systems you did not build?",
-     "a": "[Confirm any-brand service, and the equipment types and makes covered.]"
+     "a": "Yes, for [makes and equipment types serviced]. We start with a condition survey and a review of the drawings, qualification records and spares the system has. No Aquemi serial number is needed: log a service request with the make and model."
     },
     {
      "q": "Do you work outside Canada?",
@@ -481,7 +482,8 @@
   "h": "Talk to the engineer who would lead your project",
   "body": "Send your URS, a feed water analysis or just your questions. An engineer, not a sales desk, replies within [proposal response time, working days].",
   "button": "Talk to an engineer",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Not sure yet: talk to an engineer"
  },
  "todo": [
   "Founding year and city, province of founding (one figure, same on every page)",
@@ -494,7 +496,7 @@
   "Distance or travel time from the test bay to the main Canadian pharmaceutical clusters",
   "Remote FAT witnessing platform and terms",
   "CRN route (Aquemi submits or certified vessel fabricator) and provinces registered to date",
-  "Service bases (cities), spare parts stock locations, fastest on-site response (hours)",
+  "Service bases (cities), spare parts stock locations; Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service)",
   "Quoting terms in CAD; how imported components (membranes, EDI modules, instruments) and their duty are stated",
   "French-language capability: which roles work in French, which documents are offered in French, translation review",
   "Confirm the staffing model: project lead named from proposal to handover; FAT run by the engineers who wrote the functional specification",
@@ -505,8 +507,8 @@
   "Financial standing evidence offered to procurement (bank reference, bonding capacity)",
   "Capacity range Aquemi builds per system (L/h, kg/h)",
   "Adjacent uses Aquemi takes on (CSA Z314 hospital water, CLSI, ASTM D1193)",
-  "Any-brand service: equipment types and makes covered",
+  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
   "Work outside Canada: where, and how FAT, registration and service are handled",
-  "Proposal response time (working days)"
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)"
  ]
 }

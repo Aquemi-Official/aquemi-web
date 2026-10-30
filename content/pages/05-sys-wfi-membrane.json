@@ -7,8 +7,9 @@
  "path": "/systems/wfi-membrane/",
  "eyebrow": "WATER FOR INJECTION · MEMBRANE · PH. EUR. 0169 · USP · EU GMP ANNEX 1",
  "headline": "Water for Injection by membrane, with the control strategy and validation package your inspector will ask for",
- "lead": "Our double-pass reverse osmosis (RO), electrodeionization (EDI) and ultrafiltration (UF) skids make Water for Injection (WFI) at ambient temperature, below the USP <85> bacterial endotoxin limit of 0.25 EU/mL and the USP <645> conductivity limit of 1.3 µS/cm at 25 °C, with no plant steam for generation. We design the biofilm and endotoxin controls the EMA expects from a non-distillation system into the skid, and tell you plainly when distillation is the better route.",
+ "lead": "Our double-pass reverse osmosis (RO), electrodeionization (EDI) and ultrafiltration (UF) skids make Water for Injection (WFI) at ambient temperature, within the USP <85> bacterial endotoxin limit of < 0.25 EU/mL and the USP <645> conductivity limit of 1.3 µS/cm at 25 °C, with no plant steam for generation. We design the biofilm and endotoxin controls the EMA expects from a non-distillation system into the skid, and tell you plainly when distillation is the better route.",
  "primary_cta": "Request a WFI route assessment",
+ "primary_cta_intent": "Route assessment: which systems, which WFI route",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -530,7 +531,7 @@
     },
     {
      "q": "Who services the skid after handover?",
-     "a": "Our service team, from [service locations]. RO and UF membranes, EDI modules and seal kits for your skid are stocked in [stocking location], and a service plan gives you a stated response time of [response time, hours]. Every visit, sanitization check and membrane change ends with a signed report your quality unit can file."
+     "a": "Our service team, from [service locations]. RO and UF membranes, EDI modules and seal kits for your skid are stocked in [stocking location], and a service plan gives you a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. Every visit, sanitization check and membrane change ends with a signed report your quality unit can file."
     }
    ],
    "nav": "FAQ"
@@ -589,9 +590,10 @@
  ],
  "cta": {
   "h": "Send your demand and feed water. We tell you which WFI route fits, and why.",
-  "body": "Include peak WFI demand in L/h, your feed water analysis, utility costs and the pharmacopoeias you release against. An engineer replies within [response time] with questions or a written route assessment.",
+  "body": "Include peak WFI demand in L/h, your feed water analysis, utility costs and the pharmacopoeias you release against. An engineer replies within [proposal response time, working days] with questions or a written route assessment.",
   "button": "Request a WFI route assessment",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Route assessment: which systems, which WFI route"
  },
  "todo": [
   "Confirm Aquemi builds membrane WFI skids in-house (same platform as PW) or with a partner",
@@ -607,8 +609,8 @@
   "Typical footprint by capacity (m × m) and number of service-access sides",
   "Energy, water to drain and consumables per m³ of WFI for membrane and distillation, from validated Aquemi design data",
   "Spare parts list coverage period (months of operation)",
-  "Service locations, spare parts stocking location and plan response time (hours)",
-  "Enquiry response time commitment",
+  "Service locations, spare parts stocking location and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Datasheet PDF; add a download link only once it exists",
   "A real membrane WFI project with measured WFI quality, capacity and energy use before adding a case study block",
   "Membrane WFI feed limits at the skid inlet: oxidant, hardness, SDI, temperature range",

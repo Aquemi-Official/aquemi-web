@@ -22,6 +22,7 @@
   "PIC/S PI 041-1"
  ],
  "primary_cta": "Request a CDMO water scope review",
+ "primary_cta_intent": "Water scope review for your products|CDMO or contract manufacturing",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -547,7 +548,7 @@
    "type": "band",
    "tone": "limestone",
    "h": "Built, wet tested and serviced in Canada",
-   "body": "Your engineers, and your clients' engineers, witness FAT in [city], Ontario, not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a duplex PW system, weeks]."
+   "body": "Your engineers, and your clients' engineers, witness FAT in [test bay location, city and province], not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a duplex PW system, weeks]."
   },
   {
    "type": "faq",
@@ -643,18 +644,19 @@
  ],
  "cta": {
   "h": "Send your client programmes, markets and uptime target. We return the specification and the system scope.",
-  "body": "A process engineer reads your programmes and pipeline and replies within [response time] with the strictest-of water specification, the generation, storage and redundancy to hold it, the qualification scope and what goes into your client audit pack, or the questions we need answered first.",
+  "body": "A process engineer reads your programmes and pipeline and replies within [proposal response time, working days] with the strictest-of water specification, the generation, storage and redundancy to hold it, the qualification scope and what goes into your client audit pack, or the questions we need answered first.",
   "button": "Request a CDMO water scope review",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Water scope review for your products|CDMO or contract manufacturing"
  },
  "todo": [
   "Confirm CDMOs and contract manufacturers are a target segment",
-  "Response time for enquiries (closing CTA)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Design share of peak demand per duplex train, % (uptime options)",
-  "Severity 1 on-site response time, hours, and service coverage area (uptime options); align with svc-service tiers",
+  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service); service coverage area (uptime options)",
   "Gap check turnaround for a new client programme, working days (tech transfer steps)",
   "Typical span from order to release for a new point of use on a qualified loop, weeks (tech transfer steps)",
-  "FAT and shop location: [city], Ontario (band)",
+  "Test bay location, city and province (band; same as home, about)",
   "Spares stock locations (band)",
   "Service bases (band)",
   "Quotation currency (band)",

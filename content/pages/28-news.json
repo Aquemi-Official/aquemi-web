@@ -663,9 +663,10 @@
  ],
  "cta": {
   "h": "A question you want answered now",
-  "body": "Send it to an engineer with your URS or system details. We reply within [proposal response time], and if the answer is useful to others it may become a note, with your name and company left out.",
+  "body": "Send it to an engineer with your URS or system details. We reply within [proposal response time, working days], and if the answer is useful to others it may become a note, with your name and company left out.",
   "button": "Ask an engineer",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Not sure yet: talk to an engineer"
  },
  "todo": [
   "Target publication month for each of the 40 planned notes (replace every 'Planned · [target publication month]'); publish only notes that have passed review",
@@ -676,7 +677,7 @@
   "Newsletter platform with confirmation email (double opt-in), consent record (date, time, form wording) and one-click unsubscribe",
   "CASL sender identification: Aquemi legal entity name, mailing address, contact email; unsubscribe processing time (10 business days at most)",
   "Privacy notice link (PIPEDA, Quebec Law 25) covering subscriber data",
-  "Proposal response time (closing CTA)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "First company news items, each with client written permission where a project is named",
   "Schema: Article markup on each published note; FAQPage on this page"
  ],

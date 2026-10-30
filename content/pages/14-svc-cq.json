@@ -18,6 +18,7 @@
   "Health Canada GUI-0001"
  ],
  "primary_cta": "Request a C&Q plan review",
+ "primary_cta_intent": "Review of a document you have|C&Q plan or validation master plan (VMP)",
  "secondary_cta": {
   "label": "How FAT feeds IQ and OQ",
   "link": "svc-fat-sat"
@@ -644,15 +645,16 @@
  ],
  "cta": {
   "h": "Send your URS or VMP. Get a draft C&Q plan back.",
-  "body": "Send your URS, the utilities section of your validation master plan and your points-of-use list. An engineer replies within [response time] with a draft C&Q plan: the IQ and OQ test list, the FAT tests we would mark for leverage, a PQ sampling plan by phase and the dates when your quality unit can expect to release water for use.",
+  "body": "Send your URS, the utilities section of your validation master plan and your points-of-use list. An engineer replies within [proposal response time, working days] with a draft C&Q plan: the IQ and OQ test list, the FAT tests we would mark for leverage, a PQ sampling plan by phase and the dates when your quality unit can expect to release water for use.",
   "button": "Request a C&Q plan review",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Review of a document you have|C&Q plan or validation master plan (VMP)"
  },
  "todo": [
   "Confirm Aquemi executes IQ/OQ with its own engineers or a named partner (who-signs table placeholder)",
   "Confirm PQ support scope: whether Aquemi staff take samples on site in phases 1 and 2, and through which laboratory (FAQ and who-signs table placeholders)",
   "Name the calibration laboratory and its accreditation (e.g. ISO/IEC 17025) for traceability",
-  "Enquiry response time commitment for the C&Q plan review (same placeholder as other pages)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Confirm Aquemi drafts the C&Q plan, risk assessment, PQ protocol, SOP drafts and alert level recommendation (page says so; svc-design open point too)",
   "Confirm whether the C&Q plan review offered in the CTA is free or charged, and its turnaround",
   "Confirm Aquemi offers gap assessments and requalification of systems it did not build",

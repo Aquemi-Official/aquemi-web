@@ -5,7 +5,7 @@
 (function(){
 var D={web:{pages:[]}};
 function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-var WP='home',WMENU=false;
+var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked link asked the next page's form to tick (data-intent) */
 var NAVSECT=[['Systems','systems'],['Services','services'],['Industries','industries'],['Compliance','compliance'],['Projects','projects'],['Company','about']];
 function W(){return (D.web&&D.web.pages)||[]}
 function wp(id){return W().filter(function(p){return p.id===id})[0]}

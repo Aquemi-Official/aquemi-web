@@ -295,7 +295,7 @@
    "type": "band",
    "tone": "limestone",
    "h": "Service is half the system, so we sell it as a product",
-   "body": "A water system spends months in delivery and [design life, years] years in service. Our service plans state the on-site response for a critical fault, from [fastest on-site response, hours], fix the visit scope and calibration intervals in writing, and run every visit under your change control. They cover the systems we build and [confirm: systems from other builders, after an assessment], at a price per plan, not per call-out."
+   "body": "A water system spends months in delivery and [design life, years] years in service. Our service plans state the on-site response for a critical fault, from [severity 1 on-site response time, hours], fix the visit scope and calibration intervals in writing, and run every visit under your change control. They cover the systems we build and systems from other builders ([makes and equipment types serviced]), after an assessment, at a price per plan, not per call-out."
   },
   {
    "type": "table",
@@ -354,7 +354,7 @@
     },
     {
      "q": "Do you work on systems built by other suppliers?",
-     "a": "[Confirm any-builder scope and the equipment types covered.] We start with an assessment or a condition survey, because a quote without the as-built state and a year of data either carries contingency or leaves the validation to be found during the work. Send it as a proposal request: the service request form is for systems already registered with us."
+     "a": "Yes, for [makes and equipment types serviced]. We start with an assessment or a condition survey, because a quote without the as-built state and a year of data either carries contingency or leaves the validation to be found during the work. Send an upgrade or assessment as a proposal request. For a fault or a planned visit, the service request form takes systems from other builders with the make and model; no Aquemi serial number is needed."
     },
     {
      "q": "Where do you work?",
@@ -405,21 +405,21 @@
  ],
  "cta": {
   "h": "Tell us where your project stands. We reply with the next step and what it leaves in your file.",
-  "body": "Send your URS, your water grades and feed water data, or details of the system you already have. An engineer replies within [response time] with questions, the stage we would start at and the documents you will get from it. For a system down now, call [service phone number].",
+  "body": "Send your URS, your water grades and feed water data, or details of the system you already have. An engineer replies within [proposal response time, working days] with questions, the stage we would start at and the documents you will get from it. For a system down now, call [service phone number].",
   "button": "Request a proposal",
   "link": "contact-proposal"
  },
  "todo": [
-  "Enquiry response time commitment for the closing CTA (same [response time] placeholder as the system and service pages)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "URS review turnaround (business days), same placeholder as svc-design",
   "Quote response time for a service plan (working days), same placeholder as svc-service",
   "Service phone number (router table and closing CTA), same placeholder as svc-service and contact-service",
   "Outlet conductivity guarantee (µS/cm @ 25 °C) in the traced requirement, same placeholder as sys-pw and svc-design",
-  "Fastest on-site response for a critical fault (hours), same placeholder as svc-service",
+  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service)",
   "Design life of a water system for the service band (years), or reword the band",
   "Typical durations for a packaged PW skid: design to DQ (weeks), approved design to FAT (weeks), IQ/OQ on site (days)",
   "Confirm one named project engineer or team carries a project from URS review to handover, and how handover to service works (FAQ)",
-  "Confirm Aquemi services, qualifies and upgrades systems built by other suppliers, and the equipment types covered (band, joining table, FAQ)",
+  "Confirm Aquemi qualifies and upgrades systems built by other suppliers (joining table); Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
   "Provinces and regions served for projects; service bases and coverage area (FAQ)",
   "Confirm Aquemi delivers each of the six services in-house or names partners (IQ/OQ execution, calibration and pressure vessel calculations are open on svc-cq, svc-service, svc-design)",
   "Confirm every service is sold separately as well as end to end (prose, grid intro, FAQ)",

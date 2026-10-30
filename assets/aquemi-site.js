@@ -5,7 +5,7 @@
 (function(){
 var D={web:{pages:[]}};
 function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-var WP='home',WMENU=false;
+var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked link asked the next page's form to tick (data-intent) */
 var NAVSECT=[['Systems','systems'],['Services','services'],['Industries','industries'],['Compliance','compliance'],['Projects','projects'],['Company','about']];
 function W(){return (D.web&&D.web.pages)||[]}
 function wp(id){return W().filter(function(p){return p.id===id})[0]}
@@ -22,13 +22,20 @@ function tcell(c){return c&&typeof c==='object'?(c.link&&wp(c.link)?wlink(c.link
 function gridItem(inner,link){return link&&wp(link)?'<a href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div>'+inner+'</div>'}
 /* Block renderers register here: BLOCKS[type] = function(block, heading) -> section HTML. See assets/src/blocks/. */
 var BLOCKS={};
-/* Button */
-function wBtn(label,link,kind){var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'">'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
+/* Button. intent (optional): option labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent) */
+function wBtn(label,link,kind,intent){var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'"'+(intent&&!j?' data-intent="'+e(intent)+'"':'')+'>'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
+/* EnquiryForm pre-set: tick the options named by the linking button's intent (WINTENT) and show the conditional fields they open,
+   with the same cascade rule as the change handler below (a tick inside a hidden field does not count). Sets f._show and f._on. */
+function wPreset(fs){var pre=WINTENT?WINTENT.split('|'):[];
+ function ticks(f){return f._show&&(f.kind==='radio'||f.kind==='checkbox-group')?(f.options||[]).filter(function(o){return pre.indexOf(o)>=0}).slice(0,f.kind==='radio'?1:99):[]}
+ fs.forEach(function(f){f._show=!f.when});
+ for(var k=0;k<3&&pre.length;k++){var on=[];fs.forEach(function(f){on=on.concat(ticks(f))});fs.forEach(function(f){if(f.when)f._show=f.when.split('|').some(function(v){return on.indexOf(v)>=0})})}
+ fs.forEach(function(f){f._on=ticks(f)})}
 /* EnquiryForm fields */
-function wField(f,i){var id='wf'+(f._n==null?i:f._n),when=f.when?' data-when="'+e(f.when)+'"'+' hidden':'',lab='<label class="aq-field__label" for="'+id+'">'+tx(f.label)+(f.required?'':' <span class="aq-field__optional">(optional)</span>')+'</label>',help=f.help?'<p class="aq-field__help">'+tx(f.help)+'</p>':'',inp;
+function wField(f,i){var id='wf'+(f._n==null?i:f._n),when=f.when?' data-when="'+e(f.when)+'"'+(f._show?'':' hidden'):'',lab='<label class="aq-field__label" for="'+id+'">'+tx(f.label)+(f.required?'':' <span class="aq-field__optional">(optional)</span>')+'</label>',help=f.help?'<p class="aq-field__help">'+tx(f.help)+'</p>':'',inp;
  if(f.kind==='select')inp='<select class="aq-field__input" id="'+id+'">'+['Choose…'].concat(f.options||[]).map(function(o){return '<option>'+e(o)+'</option>'}).join('')+'</select>';
  else if(f.kind==='textarea')inp='<textarea class="aq-field__input" id="'+id+'"></textarea>';
- else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+'><legend class="aq-field__label">'+tx(f.label)+(f.required?'':' <span class="aq-field__optional">(optional)</span>')+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio" name="'+id:'checkbox')+'" id="'+id+'_'+j+'" value="'+e(o)+'"> '+e(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
+ else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+'><legend class="aq-field__label">'+tx(f.label)+(f.required?'':' <span class="aq-field__optional">(optional)</span>')+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio" name="'+id:'checkbox')+'" id="'+id+'_'+j+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+e(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
  else if(f.kind==='file')inp='<input class="aq-field__file" id="'+id+'" type="file" multiple accept="'+e(f.accept||'.pdf,.docx,.xlsx,.csv,.png,.jpg')+'">';
  else inp=f.unit?'<div class="aq-field__suffix"><input class="aq-field__input" id="'+id+'" inputmode="numeric"><span class="aq-field__unit">'+e(f.unit)+'</span></div>':'<input class="aq-field__input" id="'+id+'" type="'+(f.kind==='email'?'email':f.kind==='tel'?'tel':'text')+'">';
  return '<div class="aq-field'+(f.kind==='textarea'||f.kind==='file'?' aq-form__full':'')+'"'+when+'>'+lab+inp+help+'</div>'}
@@ -49,7 +56,7 @@ function wFoot(){var cols=[['Systems',['sys-pw','sys-wfi-distillation','sys-wfi-
 /* Hero */
 function wHero(p){var home=p.id==='home',img=/^sys-|^svc-|^ind-/.test(p.id)||home;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
-  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p)):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
+  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
  var facts=p.facts&&p.facts.length?'<dl class="aq-key-facts">'+p.facts.map(function(f){return '<div><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'}).join('')+'</dl>':'';
  return '<section class="aq-hero'+(home?' aq-hero--home':'')+'"><div class="aq-in">'+(img?'<div class="aq-hero__grid">'+left+'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(home?'finished skid or installed loop, wide orderly view':(p.nav_label||p.headline))+' · 316L, cool even light]</div></div>':left)+facts+'</div>'+(home?ARC:'')+'</section>'}
@@ -100,7 +107,7 @@ function ctaLink(p){return p.primary_cta_link||(/service/i.test(p.primary_cta)?'
 function jid(b,i){return b.anchor||'s-'+i+'-'+String(b.nav).toLowerCase().replace(/[^a-z0-9]+/g,'-')}
 function wSectionNav(p){var bs=(p.blocks||[]),n=bs.filter(function(b){return b.nav});if(n.length<4)return '';
  return '<nav class="aq-section-nav" aria-label="On this page"><div class="aq-in"><span class="aq-section-nav__label">On this page</span>'+bs.map(function(b,i){return b.nav?'<a href="#'+e(p.id)+'" data-jump="'+jid(b,i)+'">'+e(b.nav)+'</a>':''}).join('')+
-  (p.primary_cta&&ctaLink(p).charAt(0)!=='#'?'<a class="aq-section-nav__cta" href="#'+e(ctaLink(p))+'" data-wp="'+e(ctaLink(p))+'">'+tx(p.primary_cta)+' →</a>':'')+'</div></nav>'}
+  (p.primary_cta&&ctaLink(p).charAt(0)!=='#'?'<a class="aq-section-nav__cta" href="#'+e(ctaLink(p))+'" data-wp="'+e(ctaLink(p))+'"'+(p.primary_cta_intent?' data-intent="'+e(p.primary_cta_intent)+'"':'')+'>'+tx(p.primary_cta)+' →</a>':'')+'</div></nav>'}
 /* WaterPath: system families as stops on one pipe, feed to point of use */
 var GLYPH={"sys-pretreatment": "M8 50V16a6 6 0 0 1 12 0v34M26 50V16a6 6 0 0 1 12 0v34M44 50V26a10 6 0 0 1 20 0v24M4 50h64M14 10V4h18v6", "sys-pw": "M6 50V10h60v40M4 50h64M12 18h48M12 26h48M12 34h48M12 42h48M60 14v32", "sys-wfi-distillation": "M10 50V12a6 6 0 0 1 12 0v38M30 50V20a6 6 0 0 1 12 0v30M22 16h8M42 24h8v-8h12v34M4 50h64", "sys-wfi-membrane": "M8 50V20h56v30M4 50h64M16 20V10M28 20V10M40 20V10M52 20V10M12 10h44M14 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0M30 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0M46 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0", "sys-pure-steam": "M10 50V20h40v30M4 50h64M18 20V6h6v14M16 30h16M16 36h16M16 42h16M50 30h14v20M58 30V22", "sys-storage": "M8 46V22a10 5 0 0 1 20 0v24M8 46l-2 4M28 46l2 4M34 46V14a12 6 0 0 1 24 0v32M34 46l-2 4M58 46l2 4M28 30h6M4 50h64", "sys-monitoring": "M6 50h60M10 50V14h28v36M16 22h16M16 28h10M16 34h13M44 30a10 10 0 1 0 20 0a10 10 0 1 0-20 0M54 30l6-6"};
 function wPath(b){var it=b.items||[],stop=function(x,i){var n=String(i+1).padStart(2,'0'),g=GLYPH[x.link];
@@ -162,7 +169,7 @@ BLOCKS['docs']=function(b,H){
 /* Block "faq" -> FAQ in SplitSection */
 BLOCKS['faq']=function(b,H){return split(H,'<div class="aq-faq">'+(b.items||[]).map(function(it){return '<details><summary>'+tx(it.q)+'</summary><p>'+tx(it.a)+'</p></details>'}).join('')+'</div>');};
 /* Block "form" -> EnquiryForm in SplitSection */
-BLOCKS['form']=function(b,H){return split(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':''),b.steps?wFormSteps(b):'<form class="aq-form wform" novalidate>'+(b.fields||[]).map(wField).join('')+'<div class="aq-form__actions"><button class="aq-btn aq-btn--primary" type="submit">'+tx(b.submit||'Send')+'</button><span class="aq-small wform-msg" role="status"></span></div></form>');};
+BLOCKS['form']=function(b,H){wPreset(b.steps?[].concat.apply([],b.steps.map(function(s){return s.fields||[]})):(b.fields||[]));return split(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':''),b.steps?wFormSteps(b):'<form class="aq-form wform" novalidate>'+(b.fields||[]).map(wField).join('')+'<div class="aq-form__actions"><button class="aq-btn aq-btn--primary" type="submit">'+tx(b.submit||'Send')+'</button><span class="aq-small wform-msg" role="status"></span></div></form>');};
 /* Block "grid" -> LinkGrid */
 BLOCKS['grid']=function(b,H){return sec('<div class="aq-stack">'+H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'</div><div class="aq-linkgrid">'+(b.items||[]).map(function(it){return gridItem('<span class="aq-h3">'+tx(it.t)+'</span><span class="aq-small">'+tx(it.d)+'</span>'+(it.tag?'<span class="aq-tags"><span class="aq-tag">'+e(it.tag)+'</span></span>':''),it.link)}).join('')+'</div>');};
 /* Block "options" -> OptionList: full-width section, numbered module tiles on a technical grid (numbers come from a CSS counter) */
@@ -199,14 +206,15 @@ function wBlock(b){var f=BLOCKS[b.type];return f?f(b,h1(b.h)):''}
 /* Page: NavBar, Hero, SectionNav, sections, closing Band, Footer */
 function wPage(p){var c=p.cta;
  return wHead(p.section)+wHero(p)+wSectionNav(p)+(p.blocks||[]).map(function(b,i){var h=wBlock(b);return b.nav?h.replace('<section class=','<section id="'+jid(b,i)+'" class='):h}).join('')+
-  (c&&c.h?'<section class="aq-section aq-band--navy aq-closing"><div class="aq-in aq-stack"><h2 class="aq-h1">'+tx(c.h)+'</h2>'+(c.body?'<p class="aq-lead">'+tx(c.body)+'</p>':'')+wBtn(c.button||'Request a proposal',c.link||'contact-proposal')+'</div>'+ARC+'</section>':'')+wFoot()}
+  (c&&c.h?'<section class="aq-section aq-band--navy aq-closing"><div class="aq-in aq-stack"><h2 class="aq-h1">'+tx(c.h)+'</h2>'+(c.body?'<p class="aq-lead">'+tx(c.body)+'</p>':'')+wBtn(c.button||'Request a proposal',c.link||'contact-proposal',null,c.intent)+'</div>'+ARC+'</section>':'')+wFoot()}
 document.addEventListener('click',function(ev){var g=ev.target.closest('[data-step-go]');if(g){var fm=g.closest('form'),to=+g.dataset.stepGo;fm.querySelectorAll('.aq-form__step').forEach(function(s){s.hidden=+s.dataset.step!==to});fm.querySelectorAll('.aq-form__progress li').forEach(function(l,i){if(i===to)l.setAttribute('aria-current','step');else l.removeAttribute('aria-current')});var lg=fm.querySelector('[data-step="'+to+'"] legend');if(lg){lg.tabIndex=-1;lg.focus()}fm.scrollIntoView({block:'start'});return}
  var j=ev.target.closest('[data-jump]');if(j){var s=document.getElementById(j.dataset.jump);if(s){ev.preventDefault();s.scrollIntoView({behavior:'smooth',block:'start'})}return}
- var t=ev.target.closest('[data-wp]');if(!t)return;ev.preventDefault();WP=t.dataset.wp;WMENU=false;
+ var t=ev.target.closest('[data-wp]');if(!t)return;ev.preventDefault();WP=t.dataset.wp;WMENU=false;WINTENT=t.dataset.intent||'';
  AQ.onNav(WP)});
 var AQ=window.AQ={e:e,tx:tx,wp:wp,wPage:wPage,wBlock:wBlock,wHead:wHead,wHero:wHero,wFoot:wFoot,wBtn:wBtn,wDiagram:wDiagram,wPath:wPath,ARC:ARC,
  setPages:function(p){D.web={pages:p}},pages:W,
  get page(){return WP},set page(v){WP=v},
  get menuOpen(){return WMENU},set menuOpen(v){WMENU=v},
+ get intent(){return WINTENT},set intent(v){WINTENT=v||''},
  onNav:function(id){location.href='index.html#'+id}};
 })();

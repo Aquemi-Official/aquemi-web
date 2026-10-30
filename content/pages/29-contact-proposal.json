@@ -3,7 +3,7 @@
  "section": "Contact",
  "nav_label": "Request a proposal",
  "title": "Request a proposal, review or assessment | Aquemi",
- "meta": "Choose a sizing proposal, route assessment, URS, feedwater or C&Q review, or an existing system assessment. An engineer replies in [response time].",
+ "meta": "Sizing proposal, route assessment, URS, feedwater or C&Q review, or system assessment. An engineer replies in [proposal response time, working days].",
  "path": "/contact/proposal/",
  "eyebrow": "REQUEST A PROPOSAL OR REVIEW",
  "headline": "Tell us what you need sized, reviewed or assessed. An engineer answers in writing.",
@@ -270,7 +270,7 @@
        "kind": "text",
        "required": true,
        "when": "Assessment of an existing system, any make",
-       "help": "Any make. Service requests for an Aquemi system with a serial number go to the service request page."
+       "help": "Any make. Faults, maintenance and calibration go to the service request page, with or without an Aquemi serial number."
       },
       {
        "label": "Year installed",
@@ -716,11 +716,11 @@
     ],
     [
      {
-      "t": "Service on an installed Aquemi system",
+      "t": "Service on an installed system, any builder",
       "link": "contact-service"
      },
      "Not this form: use the service request",
-     "Serial number, severity, current readings",
+     "Aquemi serial number, or make and model; severity; current readings",
      "A service technician, by severity",
      "[service response time by severity]"
     ]
@@ -852,7 +852,7 @@
     },
     {
      "q": "Our system was built by another supplier. Which form do we use?",
-     "a": "This one: choose \"Assessment of an existing system, any make\". The service request form is for installed Aquemi systems with a serial number."
+     "a": "For an upgrade, more capacity or a full assessment, this one: choose \"Assessment of an existing system, any make\". For a fault, maintenance or calibration, use the service request form: it takes systems from other builders with the make and model, no Aquemi serial number needed. We service [makes and equipment types serviced]."
     },
     {
      "q": "We are a consulting or EPCM engineer writing a specification for a client. Can we ask?",
@@ -896,7 +896,7 @@
   "link": "#intake"
  },
  "todo": [
-  "Proposal response time, working days (one figure for every page that links here: [response time], [proposal response time])",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Budget proposal turnaround, working days",
   "Turnaround per request: feedwater review, URS review, loop review, controls review, fabrication review, C&Q plan review, FAT test list, scope review, route assessment, compliance matrix, existing system assessment, audit request, reference request",
   "Which reviews are free and which are charged: cost of the feedwater review, URS review cost, scope review cost, assessment price",
@@ -913,7 +913,8 @@
   "French-speaking engineers available for replies",
   "Regions served outside Canada",
   "CRM routing for each of the 9 requests (intent value in the submission) and source-page tracking",
-  "Optional: let other pages preselect the request (e.g. a link parameter) so the CTA lands on the right option"
+  "Optional: let other pages preselect the request (e.g. a link parameter) so the CTA lands on the right option",
+  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)"
  ],
  "primary_cta_link": "#intake",
  "facts": [

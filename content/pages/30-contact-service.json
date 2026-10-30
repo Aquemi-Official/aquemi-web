@@ -213,7 +213,7 @@
         "Preventive maintenance and calibration",
         "A service plan for that system"
        ],
-       "help": "[Confirm: equipment types and makes Aquemi services.]"
+       "help": "We service [makes and equipment types serviced]."
       },
       {
        "label": "Service plan or contract number",
@@ -700,7 +700,7 @@
    "items": [
     {
      "q": "Our system was built by another company. Can we still request service?",
-     "a": "Yes. No Aquemi serial number is needed. For a fault, choose \"Fault now\" and give the make and model. For a first planned visit, choose \"First service on a system from another builder\": we start with a condition survey and a review of the drawings, qualification records and spares the system has. [Confirm: equipment types and makes Aquemi services.] For an upgrade, more capacity or a full assessment, use the proposal form and choose \"Assessment of an existing system, any make\"."
+     "a": "Yes. No Aquemi serial number is needed. For a fault, choose \"Fault now\" and give the make and model. For a first planned visit, choose \"First service on a system from another builder\": we start with a condition survey and a review of the drawings, qualification records and spares the system has. We service [makes and equipment types serviced]. For an upgrade, more capacity or a full assessment, use the proposal form and choose \"Assessment of an existing system, any make\"."
     },
     {
      "q": "Is the form enough for a severity 1 fault?",
@@ -761,7 +761,7 @@
   "Ticket acknowledgment time (minutes); whether forms are monitored out of hours and the out-of-hours form review time (hours)",
   "Who makes the triage call: service engineer or dispatcher",
   "Serial number format and confirmation it appears on the nameplate and the HMI About screen",
-  "Confirm any-builder service: equipment types and makes serviced, and whether parts are supplied for other makes",
+  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal); whether parts are supplied for other makes",
   "Trend window to export before the first alarm (hours) and maximum upload size (MB)",
   "Reply times (working days) for maintenance booking, calibration booking, requalification support and other-builder requests; parts quote turnaround (working hours); quote response time (working days, same as svc-service)",
   "Parts email address and who receives parts orders (parts desk or stores team)",

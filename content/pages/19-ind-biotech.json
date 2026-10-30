@@ -19,6 +19,7 @@
   "EU GMP Part IV (ATMP)"
  ],
  "primary_cta": "Request a biologics water scope review",
+ "primary_cta_intent": "Water scope review for your products|Biologics, vaccines, cell or gene therapy",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -294,7 +295,6 @@
   },
   {
    "type": "table",
-   "nav": "Inspectors",
    "h": "Who reads your water system, and where we answer it",
    "cols": [
     "Who inspects or reviews",
@@ -354,7 +354,6 @@
   },
   {
    "type": "diagram",
-   "nav": "How it connects",
    "h": "How the systems connect in a biologics plant",
    "stages": [
     "Municipal feed",
@@ -421,7 +420,6 @@
   },
   {
    "type": "grid",
-   "nav": "Our support",
    "h": "What we do, from URS to the last service visit",
    "intro": "One traceable record runs through every stage, so your quality unit can follow a requirement from the URS to the test that proved it.",
    "items": [
@@ -467,7 +465,7 @@
    "type": "band",
    "tone": "limestone",
    "h": "Built, wet tested and serviced in Canada",
-   "body": "Your engineers witness FAT in [city], Ontario, not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a membrane WFI skid, weeks]."
+   "body": "Your engineers witness FAT in [test bay location, city and province], not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a membrane WFI skid, weeks]."
   },
   {
    "type": "faq",
@@ -564,13 +562,14 @@
  ],
  "cta": {
   "h": "Send your products, process format and batch schedule. We return the water grades, the peak demand and the system scope.",
-  "body": "A process engineer reads your process and growth plan and replies within [response time] with the grade each step needs, the generation, storage and pure steam to supply it, the phase plan to commercial scale and the qualification scope, or the questions we need answered first.",
+  "body": "A process engineer reads your process and growth plan and replies within [proposal response time, working days] with the grade each step needs, the generation, storage and pure steam to supply it, the phase plan to commercial scale and the qualification scope, or the questions we need answered first.",
   "button": "Request a biologics water scope review",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Water scope review for your products|Biologics, vaccines, cell or gene therapy"
  },
  "todo": [
-  "Response time for enquiries (closing CTA)",
-  "FAT and shop location: [city], Ontario (band)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Test bay location, city and province (band; same as home, about)",
   "Spares stock locations (band)",
   "Service bases (band)",
   "Quotation currency (band)",

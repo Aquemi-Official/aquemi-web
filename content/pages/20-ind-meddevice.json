@@ -21,6 +21,7 @@
   "EN 285"
  ],
  "primary_cta": "Request a device water scope review",
+ "primary_cta_intent": "Water scope review for your products|Medical devices",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -253,7 +254,7 @@
     },
     {
      "p": "Steam for sterilizers: dryness and superheat",
-     "v": "Dryness value ≥ 0.95; superheat ≤ 25 K on expansion to atmospheric pressure",
+     "v": "Dryness value ≥ 0.95 for metal loads and ≥ 0.90 for other loads; superheat ≤ 25 K on expansion to atmospheric pressure",
      "m": "EN 285",
      "hl": false
     }
@@ -303,7 +304,6 @@
   },
   {
    "type": "table",
-   "nav": "Auditors",
    "h": "Who audits your water system, and where we answer it",
    "cols": [
     "Who audits or reviews",
@@ -363,7 +363,6 @@
   },
   {
    "type": "diagram",
-   "nav": "How it connects",
    "h": "How the systems connect in a device plant",
    "stages": [
     "Municipal feed",
@@ -416,7 +415,6 @@
   },
   {
    "type": "grid",
-   "nav": "Our support",
    "h": "What we do, from URS to the last service visit",
    "intro": "One traceable record runs through every stage, so your quality unit can follow a requirement from the user requirement specification (URS) to the test that proved it.",
    "items": [
@@ -462,7 +460,7 @@
    "type": "band",
    "tone": "limestone",
    "h": "Built, wet tested and serviced in Canada",
-   "body": "Your engineers witness FAT in [city], Ontario, not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a PW system with point-of-use ultrafiltration, weeks]."
+   "body": "Your engineers witness FAT in [test bay location, city and province], not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a PW system with point-of-use ultrafiltration, weeks]."
   },
   {
    "type": "faq",
@@ -559,14 +557,15 @@
  ],
  "cta": {
   "h": "Send your devices, release limits and cleaning process. We return the rinse water specification and the system scope.",
-  "body": "A process engineer reads your devices and cleaning process and replies within [response time] with the rinse water limits worked back from your device limits, the system to hold them at the washer inlet and the qualification scope, or the questions we need answered first.",
+  "body": "A process engineer reads your devices and cleaning process and replies within [proposal response time, working days] with the rinse water limits worked back from your device limits, the system to hold them at the washer inlet and the qualification scope, or the questions we need answered first.",
   "button": "Request a device water scope review",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Water scope review for your products|Medical devices"
  },
  "todo": [
   "Confirm medical device manufacturing is a target segment",
-  "Response time for enquiries (closing CTA)",
-  "FAT and shop location: [city], Ontario (band)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Test bay location, city and province (band; same as home, about)",
   "Spares stock locations (band)",
   "Service bases (band)",
   "Quotation currency (band)",

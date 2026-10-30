@@ -18,6 +18,7 @@
   "GAMP 5"
  ],
  "primary_cta": "Submit your URS for a gap review",
+ "primary_cta_intent": "Review of a document you have|URS (gap review)",
  "secondary_cta": {
   "label": "Get a sample design package",
   "link": "cmp-documentation"
@@ -458,14 +459,15 @@
  ],
  "cta": {
   "h": "Send your URS, draft or final. We return it with every gap marked, before you commit to fabrication.",
-  "body": "Include your water grades, feed water analysis and peak demand in L/h. An engineer replies within [response time] with questions, and returns the URS compliance matrix within [URS review turnaround, business days].",
+  "body": "Include your water grades, feed water analysis and peak demand in L/h. An engineer replies within [proposal response time, working days] with questions, and returns the URS compliance matrix within [URS review turnaround, working days].",
   "button": "Submit your URS for a gap review",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Review of a document you have|URS (gap review)"
  },
  "todo": [
   "Concept estimate accuracy (± %) for the route assessment budget",
   "URS review turnaround (business days) after complete inputs",
-  "Enquiry response time commitment (same placeholder as the system pages)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Whether the URS review is free, and whether concept or design fees are credited against an equipment order (FAQ placeholder)",
   "Whether design-only or third-party design review engagements are sold separately from equipment, and how they are priced (FAQ placeholder; first pass already claimed design inside an architect-engineer's package)",
   "Whether drawings and pressure vessel calculations are sealed by a licensed P.Eng., and in which provinces (FAQ placeholder)",

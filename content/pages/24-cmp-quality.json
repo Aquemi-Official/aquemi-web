@@ -609,7 +609,8 @@
   "h": "Qualify us before you shortlist us",
   "body": "Send your questionnaire, audit checklist or quality agreement. Our quality lead returns the pack, or proposes audit dates and an agenda, within [audit request response time, working days].",
   "button": "Request a supplier audit",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Supplier qualification: audit, references, shop visit|On-site supplier audit"
  },
  "todo": [
   "KEY: ISO 9001 status (hero lead, prose, certificates grid, FAQ): certified (registrar, certificate number, scope, expiry, downloadable copy) or QMS built to ISO 9001:2015 with target certification date. Never claim certification until held",

@@ -9,6 +9,7 @@
  "headline": "Storage and distribution loops that keep turbulent flow and compendial quality to the furthest point of use",
  "lead": "We design and build tanks and loops for Purified Water (PW) and Water for Injection (WFI) that keep flow turbulent at peak draw, as EU GMP Annex 1 paragraph 6.9 requires, hold every branch to the ASME BPE dead leg target of a length-to-diameter ratio (L/D) of 2 or less and drain completely. Hot WFI loops circulate above 70 °C (Annex 1, 6.10); ambient loops are sanitized by heat or ozone on a schedule you can defend. Every slope, weld and branch is recorded on the as-built isometrics your validation team qualifies against.",
  "primary_cta": "Send your points-of-use list for a loop review",
+ "primary_cta_intent": "Review of a document you have|Points-of-use list or loop design",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -468,7 +469,7 @@
     },
     {
      "q": "Who services the loop after handover?",
-     "a": "Our service team, from [service locations]. A service plan covers vent filter replacement and integrity tests, instrument calibration, pump seals, UV lamps and rouge inspection, with a stated response time of [response time, hours]. Every visit ends with a signed report your quality unit can file."
+     "a": "Our service team, from [service locations]. A service plan covers vent filter replacement and integrity tests, instrument calibration, pump seals, UV lamps and rouge inspection, with a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. Every visit ends with a signed report your quality unit can file."
     }
    ],
    "nav": "FAQ"
@@ -527,9 +528,10 @@
  ],
  "cta": {
   "h": "Designed around your peak simultaneous draw and sanitization schedule. Send your points of use.",
-  "body": "Include each outlet's flow in L/h, which open together and the water grade. An engineer replies within [response time] with questions or a loop concept showing tank size, velocities and the sanitization method.",
+  "body": "Include each outlet's flow in L/h, which open together and the water grade. An engineer replies within [proposal response time, working days] with questions or a loop concept showing tank size, velocities and the sanitization method.",
   "button": "Send your points-of-use list for a loop review",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Review of a document you have|Points-of-use list or loop design"
  },
  "todo": [
   "Design minimum return velocity at peak draw (m/s)",
@@ -546,8 +548,8 @@
   "Confirm TOC on the loop return is standard or an option for WFI loops",
   "Whether riboflavin spray coverage testing is performed in-house",
   "Typical shutdown for adding a point of use to an existing loop (days)",
-  "Service locations and plan response time (hours)",
-  "Enquiry response time commitment",
+  "Service locations and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Datasheet PDF; add a download link only once it exists",
   "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block",
   "Slope verification method on installed loops"

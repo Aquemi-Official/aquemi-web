@@ -1,8 +1,15 @@
+/* EnquiryForm pre-set: tick the options named by the linking button's intent (WINTENT) and show the conditional fields they open,
+   with the same cascade rule as the change handler below (a tick inside a hidden field does not count). Sets f._show and f._on. */
+function wPreset(fs){var pre=WINTENT?WINTENT.split('|'):[];
+ function ticks(f){return f._show&&(f.kind==='radio'||f.kind==='checkbox-group')?(f.options||[]).filter(function(o){return pre.indexOf(o)>=0}).slice(0,f.kind==='radio'?1:99):[]}
+ fs.forEach(function(f){f._show=!f.when});
+ for(var k=0;k<3&&pre.length;k++){var on=[];fs.forEach(function(f){on=on.concat(ticks(f))});fs.forEach(function(f){if(f.when)f._show=f.when.split('|').some(function(v){return on.indexOf(v)>=0})})}
+ fs.forEach(function(f){f._on=ticks(f)})}
 /* EnquiryForm fields */
-function wField(f,i){var id='wf'+(f._n==null?i:f._n),when=f.when?' data-when="'+e(f.when)+'"'+' hidden':'',lab='<label class="aq-field__label" for="'+id+'">'+tx(f.label)+(f.required?'':' <span class="aq-field__optional">(optional)</span>')+'</label>',help=f.help?'<p class="aq-field__help">'+tx(f.help)+'</p>':'',inp;
+function wField(f,i){var id='wf'+(f._n==null?i:f._n),when=f.when?' data-when="'+e(f.when)+'"'+(f._show?'':' hidden'):'',lab='<label class="aq-field__label" for="'+id+'">'+tx(f.label)+(f.required?'':' <span class="aq-field__optional">(optional)</span>')+'</label>',help=f.help?'<p class="aq-field__help">'+tx(f.help)+'</p>':'',inp;
  if(f.kind==='select')inp='<select class="aq-field__input" id="'+id+'">'+['Choose…'].concat(f.options||[]).map(function(o){return '<option>'+e(o)+'</option>'}).join('')+'</select>';
  else if(f.kind==='textarea')inp='<textarea class="aq-field__input" id="'+id+'"></textarea>';
- else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+'><legend class="aq-field__label">'+tx(f.label)+(f.required?'':' <span class="aq-field__optional">(optional)</span>')+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio" name="'+id:'checkbox')+'" id="'+id+'_'+j+'" value="'+e(o)+'"> '+e(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
+ else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+'><legend class="aq-field__label">'+tx(f.label)+(f.required?'':' <span class="aq-field__optional">(optional)</span>')+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio" name="'+id:'checkbox')+'" id="'+id+'_'+j+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+e(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
  else if(f.kind==='file')inp='<input class="aq-field__file" id="'+id+'" type="file" multiple accept="'+e(f.accept||'.pdf,.docx,.xlsx,.csv,.png,.jpg')+'">';
  else inp=f.unit?'<div class="aq-field__suffix"><input class="aq-field__input" id="'+id+'" inputmode="numeric"><span class="aq-field__unit">'+e(f.unit)+'</span></div>':'<input class="aq-field__input" id="'+id+'" type="'+(f.kind==='email'?'email':f.kind==='tel'?'tel':'text')+'">';
  return '<div class="aq-field'+(f.kind==='textarea'||f.kind==='file'?' aq-form__full':'')+'"'+when+'>'+lab+inp+help+'</div>'}

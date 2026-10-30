@@ -9,6 +9,7 @@
  "headline": "Validation-ready Purified Water, WFI and pure steam systems, designed, built and serviced in Canada",
  "lead": "Your auditor judges water where it is used: Purified Water (PW) and Water for Injection (WFI) against USP <645> 1.3 µS/cm at 25 °C and USP <643> 500 ppb total organic carbon (TOC), and WFI against < 0.25 EU/mL endotoxin under USP <85>. We design each system to hold those limits at the furthest point of use, run every skid through a wet factory acceptance test (FAT) before it ships, and hand over installation and operational qualification (IQ/OQ) protocols your quality unit approves before execution, in a turnover package indexed to your user requirement specification (URS). Then we service it, so it stays qualified.",
  "primary_cta": "Submit your URS for a proposal",
+ "primary_cta_intent": "Sizing and budget proposal for a new system",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
@@ -124,7 +125,7 @@
     },
     {
      "t": "WFI by distillation",
-     "d": "Multi-effect and vapour compression stills making hot WFI below 0.25 EU/mL endotoxin, with the still type chosen on your steam, power and cooling water costs.",
+     "d": "Multi-effect and vapour compression stills making hot WFI at < 0.25 EU/mL endotoxin, with the still type chosen on your steam, power and cooling water costs.",
      "tag": "USP <85>",
      "link": "sys-wfi-distillation"
     },
@@ -213,7 +214,7 @@
     },
     {
      "p": "Other builders' systems",
-     "v": "Log a request with the make and model. No Aquemi serial number needed",
+     "v": "Log a request with the make and model ([makes and equipment types serviced]). No Aquemi serial number needed",
      "m": "Service request page. [Confirm equipment types and makes Aquemi services]"
     },
     {
@@ -338,16 +339,17 @@
   "h": "Send your water grade and flow, or your URS. An engineer replies.",
   "body": "A process engineer, not a sales desk, reads it and replies within [proposal response time, working days] with questions, a review or a budget proposal. For a system down now, call [service phone number].",
   "button": "Submit your URS for a proposal",
-  "link": "contact-proposal"
+  "link": "contact-proposal",
+  "intent": "Sizing and budget proposal for a new system"
  },
  "todo": [
   "Hero photograph of a finished Aquemi skid or installed loop",
-  "Proposal response time, working days (one figure for all pages; other pages say [response time] or [proposal response time])",
-  "Severity 1 on-site response time, hours, and the service coverage area (same figure as contact-service, contact-locations, ind-cdmo; svc-service calls it [fastest on-site response, hours])",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service); service coverage area",
   "Service phone number and service phone hours",
   "Test bay location, city and province",
   "Service bases, cities",
-  "Equipment types and makes Aquemi services (any-builder service is stated on contact-service; confirm)",
+  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
   "Whether FAT witness time, travel and remote witness are included in the equipment price or quoted separately",
   "Confirm reviews carry no obligation and may be used in the client's own tender",
   "Confirm French-language engineering, service and documentation",
