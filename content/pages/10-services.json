@@ -6,14 +6,13 @@
  "meta": "Design, fabrication, FAT/SAT, IQ/OQ/PQ, service and upgrades for PW, WFI and pure steam, on one traceability record from URS on, per EU GMP Annex 15.",
  "path": "/services/",
  "eyebrow": "SERVICES · EU GMP ANNEX 15 · GAMP 5",
- "headline": "One team and one traceable record, from your URS to the last service visit",
- "lead": "We carry your Purified Water (PW), Water for Injection (WFI) or pure steam system from user requirement specification (URS) to service on one traceability matrix. Tell us where your project stands and we start there.",
+ "headline": "One team, one record, URS to service",
+ "lead": "We carry your PW, WFI or pure steam system from URS to service on one traceability matrix.",
  "tags": [
   "EU GMP Annex 15",
   "ASTM E2500",
   "GAMP 5",
-  "ASME BPE",
-  "USP <1231>"
+  "ASME BPE"
  ],
  "primary_cta": "Request a proposal",
  "secondary_cta": {
@@ -24,7 +23,7 @@
  "blocks": [
   {
    "type": "table",
-   "h": "Where your project stands, and where to start",
+   "h": "Where to start",
    "cols": [
     "Your situation",
     "Start with",
@@ -33,199 +32,149 @@
    ],
    "rows": [
     [
-     "New system: an idea, a draft URS or an approved one",
+     "New system: an idea or a draft URS",
      {
       "t": "Process design: request a URS review",
       "link": "svc-design"
      },
-     "URS or a short description, water grades, feed water analysis, peak demand in L/h",
-     "A URS compliance matrix marking every gap, conflict and untestable requirement, within [URS review turnaround, working days]"
+     "URS or a short description, water grades, feed water, peak L/h",
+     "A compliance matrix marking every gap, within [URS review turnaround, working days]"
     ],
     [
-     "Design approved, by us or by your engineering firm",
+     "Design approved, by us or another firm",
      {
-      "t": "Fabrication: request a fabrication spec review",
+      "t": "Fabrication: request a spec review",
       "link": "svc-fabrication"
      },
-     "Approved piping and instrumentation diagrams (P&IDs), piping specification, finish and borescope extent, province of installation",
-     "The ASME BPE clauses we meet, the ones we would change, and a draft fabrication and inspection plan"
+     "Approved P&IDs, piping specification, finish, province",
+     "The ASME BPE clauses we meet or would change; a draft inspection plan"
     ],
     [
-     "In delivery: skid in build, factory and site acceptance tests (FAT, SAT) ahead",
+     "Skid in build, FAT and SAT ahead",
      {
       "t": "FAT and SAT: request a sample FAT protocol",
       "link": "svc-fat-sat"
      },
-     "URS or functional specification, and your witness constraints",
-     "A draft FAT test list, the tests we would mark for leverage at qualification, and witness dates"
+     "URS or functional specification, witness constraints",
+     "A draft FAT test list with leverage marked, and witness dates"
     ],
     [
      "Installed or arriving: qualification to plan",
      {
-      "t": "Commissioning and qualification (C&Q): request a plan review",
+      "t": "C&Q: request a plan review",
       "link": "svc-cq"
      },
-     "URS, the utilities section of your validation master plan (VMP), your points-of-use list",
-     "A draft C&Q plan: installation and operational qualification (IQ, OQ) tests, performance qualification (PQ) sampling by phase, and water release dates"
+     "URS, utilities section of your VMP, points-of-use list",
+     "A draft C&Q plan with PQ sampling and water release dates"
     ],
     [
-     "System in service and qualified",
+     "In service and qualified",
      {
-      "t": "Service: request a service plan quote",
+      "t": "Service: request a plan quote",
       "link": "svc-service"
      },
-     "System, age, instruments, and how long production can run without it",
-     "A recommended plan, its annual price and the first-visit task list, within [quote response time, working days]"
+     "System, age, instruments, how long you can run without it",
+     "A plan, its annual price and first-visit tasks, within [quote response time, working days]"
     ],
     [
-     "Ageing, out of support, built by another supplier, or about to change",
+     "Ageing, out of support, or about to change",
      {
-      "t": "Upgrades: request a system assessment",
+      "t": "Upgrades: request an assessment",
       "link": "svc-upgrades"
      },
-     "System age, drawings, a year of water quality data, and the problem to solve",
-     "The assessment scope, time on site and price, then each option with its downtime and requalification scope"
+     "Age, drawings, a year of water data, the problem",
+     "Assessment scope and price, then options with downtime and requalification"
     ],
     [
-     "Production stopped or water out of specification now",
+     "Production stopped now",
      {
       "t": "Request urgent service",
       "link": "contact-service"
      },
-     "Call [service phone number]. Do not wait for a form reply.",
-     "A service engineer on the phone, then a technician on site within the response time of your plan"
+     "Call [service phone number]. Do not wait for a form.",
+     "An engineer on the phone, then a technician on site"
     ]
    ],
    "as": "router",
-   "nav": "Where to start",
-   "intro": "Pick the stage you are at. Each route names the first request, what to send and what comes back."
-  },
-  {
-   "type": "table",
-   "h": "Joining part way: what we need first",
-   "cols": [
-    "We join at",
-    "What we need",
-    "If it is missing"
-   ],
-   "rows": [
-    [
-     "Fabrication, to another engineer's design",
-     "Approved P&IDs, functional specification, URS, piping and finish specification",
-     "We review the design against ASME BPE and your URS, and return marked-up clauses before we quote"
-    ],
-    [
-     "FAT, SAT or qualification of a system someone else built",
-     "URS, design documents, turnover package (material certificates, weld logs, as-built drawings), software version",
-     "A gap assessment states which IQ checks can use records and which need field verification [qualifying other builders' systems, yes or no]"
-    ],
-    [
-     "Service of a system someone else built",
-     "Drawings, qualification file, maintenance and calibration history, spares list",
-     "A condition survey and document review first, then a plan priced for that system"
-    ],
-    [
-     "Upgrade where the builder has closed or changed hands",
-     "Whatever records exist; the programmable logic controller (PLC) program and passwords if you have them",
-     "The assessment lists what to recover and what recreating it costs, before any upgrade is designed"
-    ]
-   ],
-   "nav": "Joining part way"
+   "nav": "Where to start"
   },
   {
    "type": "steps",
-   "h": "What leaves each stage, and who signs it",
+   "h": "What leaves each stage",
    "as": "stages",
-   "intro": "EU GMP Annex 15, 3.2 makes your URS the reference for the whole lifecycle. Each requirement gets an ID at first review and keeps it in every document.",
+   "intro": "Your URS is the reference throughout (Annex 15, 3.2); every requirement keeps its ID.",
    "items": [
     {
      "t": "URS review and design",
-     "d": "Compliance matrix, basis of design, P&IDs, functional specification, risk assessment. Your quality unit approves design qualification (DQ). Annex 15, 3.2 and 3.3; ICH Q9(R1).",
+     "d": "Compliance matrix, basis of design, P&IDs, functional specification. Your quality unit approves DQ.",
      "icon": "pid"
     },
     {
      "t": "Fabrication",
-     "d": "Material log with EN 10204 3.1 certificates, weld maps and log, borescope, finish, passivation and pressure test records. You set hold points. ASME BPE.",
+     "d": "Material log with 3.1 certificates, weld maps, borescope, finish and pressure test records.",
      "icon": "weld"
     },
     {
-     "t": "Factory acceptance test",
-     "d": "Protocol approved before execution, executed protocol with raw data, deviation log, summary report. Both parties sign release to ship. Annex 15, 3.4 to 3.6.",
+     "t": "FAT",
+     "d": "Approved protocol, raw data, deviation log, report. Both parties sign release to ship.",
      "icon": "pump"
     },
     {
      "t": "Installation and SAT",
-     "d": "Installation and commissioning records, SAT on your feed water and utilities, traceability matrix with leveraged tests flagged. You sign the SAT report. Annex 15, 3.7.",
+     "d": "Installation records, SAT on your utilities, leveraged tests flagged. You sign the SAT report.",
      "icon": "wrench"
     },
     {
      "t": "IQ and OQ",
-     "d": "C&Q plan, IQ and OQ protocols and reports, draft operating procedures, training records. Your quality unit approves each. Annex 15, 3.9 to 3.12.",
+     "d": "IQ and OQ protocols and reports, draft procedures, training records. Your quality unit approves each.",
      "icon": "binder"
     },
     {
-     "t": "PQ: three phases, at least 12 months",
-     "d": "PQ protocol and sampling plan, phase reports, alert and action levels. Your quality unit releases water by phase. WHO TRS 1033 Annex 3.",
+     "t": "PQ, at least 12 months",
+     "d": "Protocol, sampling plan, phase reports, alert and action levels. Water released by phase.",
      "icon": "calendar"
     },
     {
      "t": "Service",
-     "d": "Signed report per visit, calibration certificates with as-found and as-left values, like-for-like parts record, annual system review. USP <645>, <643>; Annex 15, 4.1.",
+     "d": "Signed visit reports, calibration certificates as found and as left, annual system review.",
      "icon": "gauge"
     },
     {
      "t": "Upgrade or retrofit",
-     "d": "Assessment with gap list and options, each with downtime and requalification scope your quality unit approves. Annex 15, section 11; 21 CFR Part 11.",
+     "d": "Gap list and options, each with downtime and requalification scope.",
      "icon": "magnifier"
     }
    ],
    "nav": "Documents",
-   "fold": 4
-  },
-  {
-   "type": "band",
-   "tone": "limestone",
-   "h": "Service plans, not call-out charges",
-   "body": "Each plan states in writing the on-site response for a critical fault, from [severity 1 on-site response time, hours], the visit scope and calibration intervals. Every visit runs under your change control."
+   "fold": 4,
+   "ground": "light"
   },
   {
    "type": "faq",
-   "h": "Questions engineering, validation and quality teams ask",
+   "h": "Questions teams ask",
+   "nav": "FAQ",
    "items": [
     {
      "q": "Can the company that builds the system also qualify it?",
-     "a": "Yes, under your control. Annex 15, 2.6 asks that third-party protocols are confirmed by your own personnel before approval. Your quality unit approves every protocol before execution and every report after it; we write and execute. If your procedures require an independent contractor, we hand them the traceability matrix and records written to be leveraged."
+     "a": "Yes, under your control. Your quality unit approves every protocol before execution and every report after; we write and execute (Annex 15, 2.6)."
     },
     {
      "q": "Can we buy one stage only?",
-     "a": "Yes. Each service has its own first step and its own documents. The joining table above shows what we need when we join part way."
+     "a": "Yes. Each service has its own first step and its own documents."
     },
     {
      "q": "Do you work on systems built by other suppliers?",
-     "a": "Yes, for [makes and equipment types serviced]. We start with an assessment or condition survey: without the as-built state and a year of data, a quote either carries contingency or leaves validation gaps to be found during the work. For a fault or planned visit, use the service request form with make and model; no Aquemi serial number is needed."
+     "a": "Yes, for [makes and equipment types serviced]. We start with an assessment or condition survey, so the quote carries no hidden contingency."
     },
     {
-     "q": "How long from URS to water released for use?",
-     "a": "For a packaged PW skid, allow [design to DQ, weeks] for design, [approved design to FAT, weeks] to FAT and [IQ/OQ on site, days] for IQ and OQ on site. PQ runs at least two phases of two weeks; phase 2 water can be used in production if your quality unit accepts the data (WHO TRS 1033 Annex 3, 11.3)."
+     "q": "How long from URS to water released?",
+     "a": "For a packaged PW skid: [design to DQ, weeks] to DQ, [approved design to FAT, weeks] to FAT, [IQ/OQ on site, days] for IQ and OQ. Then PQ."
     },
     {
-     "q": "What does one traceability matrix look like in practice?",
-     "a": "URS-012: PW conductivity ≤ 1.3 µS/cm at 25 °C at every point of use (USP <645> stage 1). It becomes a functional specification divert clause, numbered sensor tees on weld maps, a FAT divert test flagged for OQ leverage, raw non-compensated readings at SAT and OQ, 12 months or more of PQ data and cell constant checks within ± 2 % per calibration."
-    },
-    {
-     "q": "Do we have to use your document templates?",
-     "a": "No. We write IQ, OQ and PQ documents in your templates where you have them, and keep our requirement IDs inside them so the trace survives. Where you have none, we use ours, and your quality unit approves the templates once, at the start."
-    },
-    {
-     "q": "Who is our contact across the stages?",
-     "a": "[project contact from URS review to handover] The traceability matrix and the turnover package go with the system, so the service engineer starts from the same record as the project team."
-    },
-    {
-     "q": "Where do you work?",
-     "a": "Projects in [project regions served]; service from [service bases, cities]. The response times in each service plan are stated for that coverage area."
+     "q": "What does one traceability matrix look like?",
+     "a": "URS-012, PW conductivity ≤ 1.3 µS/cm, becomes a divert clause, numbered sensor tees on weld maps, a FAT divert test flagged for OQ, and PQ data."
     }
-   ],
-   "nav": "FAQ"
+   ]
   },
   {
    "type": "related",
@@ -245,11 +194,9 @@
   "link": "contact-proposal",
   "include": [
    "Your URS, in any state",
-   "Water grades and pharmacopoeias",
+   "Water grades and peak demand, L/h",
    "Feed water analysis, ideally 12 months",
-   "Peak and daily demand in L/h",
-   "Existing system: builder, age, drawings",
-   "Target dates and shutdown windows"
+   "Existing system: builder, age, drawings"
   ],
   "turnaround": "[proposal response time, working days]",
   "returns": [

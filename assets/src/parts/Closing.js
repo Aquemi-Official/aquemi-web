@@ -7,12 +7,16 @@
    an exchange: what you send → turnaround → what comes back, each return with a small document mark. returns_label
    overrides "What comes back"; turnaround (a placeholder until confirmed) labels the arrow between the two lists. */
 function wClosing(c,p){if(!c||!c.h)return '';
- var f=c.proof&&c.proof.v?c.proof:null;
+ var f=c.proof&&c.proof.v?c.proof:null,inc=c.include&&c.include.length?c.include:null,ret=inc&&c.returns&&c.returns.length?c.returns:null;
+ var list=function(cls,label,items,doc){return '<div class="aq-closing__include'+cls+'"><p class="aq-closing__tag">'+tx(label)+'</p><ol>'+items.map(function(x,i){
+  return '<li>'+(doc?'<span class="aq-closing__doc is-'+(i%4+1)+'" aria-hidden="true"></span>':idx(i))+'<span>'+tx(x)+'</span></li>'}).join('')+'</ol></div>'};
+ var send=inc?list('',c.include_label||'What to send us',inc):'';
+ /* Exchange: a cream drawing plate on the navy (concept 49): what you send, the turnaround arrow, what comes back */
+ var swap=ret?wPlate('<div class="aq-closing__swap">'+send+'<p class="aq-closing__turn"><span>'+tx(c.turnaround||'')+'</span></p>'+list(' aq-closing__returns',c.returns_label||'What comes back',ret,true)+'</div>',{light:true,cls:'aq-closing__plate',block:['Aquemi','Send','Return']}):send;
  return '<section class="aq-section aq-band--navy aq-closing"><div class="aq-in"><div class="aq-closing__frame">'+
+  '<div class="aq-closing__strip" aria-hidden="true"><span>Aquemi</span><span>Next step · '+e((p&&p.nav_label)||'')+'</span><span>'+(ret?'01 Send · 02 Return':'01 Input')+'</span></div>'+
   '<h2 class="aq-closing__h">'+tx(c.h)+'</h2>'+
-  '<div class="aq-closing__body">'+(c.body?'<p class="aq-lead">'+tx(c.body)+'</p>':'')+
-  (c.include&&c.include.length?(c.returns&&c.returns.length?'<div class="aq-closing__swap">':'')+'<div class="aq-closing__include"><p class="aq-closing__tag">'+tx(c.include_label||'What to send us')+'</p><ol>'+c.include.map(function(x,i){return '<li>'+idx(i)+'<span>'+tx(x)+'</span></li>'}).join('')+'</ol></div>'
-   +(c.returns&&c.returns.length?'<p class="aq-closing__turn"><span>'+tx(c.turnaround||'')+'</span></p><div class="aq-closing__include aq-closing__returns"><p class="aq-closing__tag">'+tx(c.returns_label||'What comes back')+'</p><ol>'+c.returns.map(function(x){return '<li><span class="aq-closing__doc" aria-hidden="true"></span><span>'+tx(x)+'</span></li>'}).join('')+'</ol></div></div>':''):'')+
-  (f?'<div class="aq-closing__proof"><span class="aq-closing__tag">Proof</span><span class="aq-closing__value">'+tx(f.v)+'</span>'+(f.l?'<span class="aq-closing__label">'+tx(f.l)+'</span>':'')+'</div>':'')+
-  '</div><div class="aq-closing__action">'+wBtn(c.button||'Request a proposal',c.link||'contact-proposal',null,c.intent)+'</div>'+
+  (c.body||swap?'<div class="aq-closing__body">'+(c.body?'<p class="aq-lead">'+tx(c.body)+'</p>':'')+swap+'</div>':'')+
+  '<div class="aq-closing__foot">'+(f?'<div class="aq-closing__proof"><span class="aq-closing__tag">Proof</span><span class="aq-closing__value">'+tx(f.v)+'</span>'+(f.l?'<span class="aq-closing__label">'+tx(f.l)+'</span>':'')+'</div>':'')+
+  '<div class="aq-closing__action">'+wBtn(c.button||'Request a proposal',c.link||'contact-proposal',null,c.intent)+'</div></div>'+
   '</div></div></section>'}

@@ -37,3 +37,5 @@ On the site, `assets/src/blocks/options.js` writes it for an options block with 
 - Options that are not equipment (control platforms, commercial terms, service levels): use the plain OptionList rows.
 - Fewer than four options, or a page with no equipment drawing: plain OptionList.
 - More than eight: the columns grow taller than the drawing; use OptionList.
+
+- Block field `spot`: draw a Spot vignette as the base instead of the page drawing. Use it when the hero and ParameterCallouts already show the page drawing, so the same drawing does not appear three times.

@@ -10,23 +10,50 @@
 .aq-arc__outer { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
 .aq-arc__inner { fill: none; stroke: var(--flow); stroke-width: 1.5; }
 
-/* Figure: equipment drawing on a fading blueprint grid, with callouts carrying the page's key facts.
-   The box is 5:4 (viewBox 125 x 100 for the leaders); the drawing is a centred square 84 % of its height. */
-.aq-hero__figure { position: relative; z-index: 1; margin: 0; aspect-ratio: 5 / 4; }
-.aq-hero__figure::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--space-8) var(--space-8); background-position: center; -webkit-mask: radial-gradient(closest-side, var(--ink) 55%, transparent); mask: radial-gradient(closest-side, var(--ink) 55%, transparent); pointer-events: none; }
-.aq-hero__figure .aq-illustration { position: absolute; inset: 8% 16.4%; width: auto; max-width: none; aspect-ratio: auto; margin: 0; }
-.aq-hero__leaders { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+/* Figure: the equipment drawing large and dominant on a fading blueprint grid inside a dashed drawing frame, with the
+   page's key facts as callouts in the four corners joined to the drawing by leader lines (concept 02).
+   The box is 6:5 (viewBox 120 x 100 for the leaders); the drawing is a centred square 96 % of its height. */
+.aq-hero__grid--figure { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); align-items: center; column-gap: var(--space-8); }
+/* Headline at 72/70 so eight words sit in two or three lines beside the drawing */
+.aq-hero__grid--figure .aq-display { font-size: 72px; line-height: 70px; }
+/* A scale rule under the headline, like the dimension line under a drawing title */
+.aq-hero__grid--figure h1::after {
+  content: ""; display: block; height: var(--space-2); margin-top: var(--space-4); max-width: 100%;
+  background:
+    repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px var(--space-2)) left bottom / 100% 5px no-repeat,
+    repeating-linear-gradient(90deg, var(--ink-subtle) 0 1px, transparent 1px calc(var(--space-2) * 5)) left bottom / 100% 100% no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left bottom / 100% 1px no-repeat;
+}
+.aq-hero__figure { position: relative; z-index: 1; margin: 0; aspect-ratio: 6 / 5; }
+.aq-hero__figure::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--space-8) var(--space-8); background-position: center; -webkit-mask: radial-gradient(closest-side, var(--ink) 60%, transparent); mask: radial-gradient(closest-side, var(--ink) 60%, transparent); pointer-events: none; }
+/* Dashed drawing frame between the callout rows, with registration crosses at its corners */
+.aq-hero__figure::after {
+  content: ""; position: absolute; inset: 13% 0; pointer-events: none; border: 1px dashed var(--line-strong);
+  background:
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) left var(--space-2) top var(--space-1) / 1px var(--space-3) no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) left var(--space-1) top var(--space-2) / var(--space-3) 1px no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) right var(--space-2) bottom var(--space-1) / 1px var(--space-3) no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) right var(--space-1) bottom var(--space-2) / var(--space-3) 1px no-repeat;
+}
+.aq-hero__art { position: absolute; inset: 0; }
+.aq-hero__art .aq-illustration { position: absolute; inset: 2% 10%; width: auto; max-width: none; aspect-ratio: auto; margin: 0; }
+.aq-hero__leaders { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .aq-hero__leaders line { stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .aq-hero__leaders circle { fill: var(--flow); }
-.aq-hero__callouts { position: absolute; inset: 0; margin: 0; pointer-events: none; }
-.aq-hero__callout { position: absolute; width: 30%; display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: var(--space-1); padding-block: var(--space-2); background: var(--surface); border-top: 1px solid var(--flow); pointer-events: auto; }
-.aq-hero__callout:nth-child(1) { top: 0; left: 0; }
-.aq-hero__callout:nth-child(2) { top: 0; right: 0; }
-.aq-hero__callout:nth-child(3) { bottom: 0; left: 0; }
-.aq-hero__callout:nth-child(4) { bottom: 0; right: 0; }
-.aq-hero__callout:nth-child(n+3) { border-top: 0; border-bottom: 1px solid var(--flow); }
-.aq-hero__callout dd { margin: 0; font: 300 clamp(16px, 1.7cqi, 22px)/1.2 var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: anywhere; }
+.aq-hero__leaders circle.is-start { fill: var(--surface); stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-hero__leaders--narrow { display: none; }
+.aq-hero__callouts { position: absolute; inset: 0; z-index: 2; margin: 0; pointer-events: none; }
+.aq-hero__callout {
+  position: absolute; width: 27%; height: 13%; display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-1);
+  padding-block: var(--space-2); border-bottom: 1px solid var(--flow); pointer-events: auto;
+}
+.aq-hero__callouts--top .aq-hero__callout:nth-child(1) { top: 0; left: 0; }
+.aq-hero__callouts--top .aq-hero__callout:nth-child(2) { top: 0; right: 0; text-align: right; }
+.aq-hero__callouts--bottom .aq-hero__callout { bottom: 0; justify-content: flex-start; border-bottom: 0; border-top: 1px solid var(--flow); }
+.aq-hero__callouts--bottom .aq-hero__callout:nth-child(1) { left: 0; }
+.aq-hero__callouts--bottom .aq-hero__callout:nth-child(2) { right: 0; text-align: right; }
 .aq-hero__callout dt { font: 500 11px/15px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-hero__callout dd { margin: 0; font: 300 clamp(16px, 1.7cqi, 22px)/1.2 var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: break-word; }
 
 /* Index (hub and company pages): the other pages of this section, numbered, joined by one routed line.
    A 1 px line-strong rule runs down the left from a node to an arrowhead; each item has a dot on the rule and a
@@ -117,14 +144,20 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-hero__grid { row-gap: var(--space-8); }
   .aq-hero__grid, .aq-hero__grid--figure, .aq-hero__grid--index, .aq-hero__grid--loop { grid-template-columns: minmax(0, 1fr); }
   .aq-photo { min-height: 0; aspect-ratio: 2 / 1; }
-  .aq-hero__figure { aspect-ratio: auto; margin-top: 0; }
-  .aq-hero__figure::before { bottom: auto; aspect-ratio: 1; }
-  .aq-hero__figure .aq-illustration { position: relative; inset: auto; width: min(100%, calc(var(--space-32) + var(--space-12))); aspect-ratio: 1; margin-inline: auto; }
-  .aq-hero__leaders { display: none; }
-  .aq-hero__callouts { position: static; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: var(--space-4); border-top: 1px solid var(--line-strong); }
-  .aq-hero__callout, .aq-hero__callout:nth-child(n) { position: static; width: auto; background: none; border: 0; border-top: 1px solid var(--line); padding: var(--space-3) var(--space-3) var(--space-3) 0; }
-  .aq-hero__callout:nth-child(-n+2) { border-top: 0; }
-  .aq-hero__callout dd { font-size: 18px; }
+  /* Figure on phones: full width and bold. The top pair of callouts, the drawing row (5:4) with its own leaders,
+     then the bottom pair; each callout's rule faces the drawing and starts its leader. */
+  .aq-hero__grid--figure .aq-display { font-size: 44px; line-height: 42px; letter-spacing: 0; }
+  .aq-hero__grid--figure h1::after { margin-top: var(--space-3); }
+  .aq-hero__figure { aspect-ratio: auto; margin: 0; display: flex; flex-direction: column; }
+  .aq-hero__figure::after { inset: auto 0; top: 0; bottom: 0; border: 0; border-block: 1px dashed var(--line); }
+  .aq-hero__art { position: relative; inset: auto; aspect-ratio: 5 / 4; }
+  .aq-hero__art .aq-illustration { inset: 0 10%; }
+  .aq-hero__leaders--wide { display: none; }
+  .aq-hero__leaders--narrow { display: block; }
+  .aq-hero__callouts { position: relative; inset: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 6%; }
+  .aq-hero__callout, .aq-hero__callouts--top .aq-hero__callout:nth-child(n), .aq-hero__callouts--bottom .aq-hero__callout:nth-child(n) { position: static; width: auto; height: auto; }
+  .aq-hero__callout dt { font-size: 10px; line-height: 14px; letter-spacing: 0.04em; }
+  .aq-hero__callout dd { font-size: 20px; line-height: 24px; }
   /* Index: under the actions, smaller figures */
   .aq-hero__grid--index { row-gap: var(--space-8); }
   .aq-hero__index-label { margin-left: var(--space-6); }

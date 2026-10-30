@@ -5,16 +5,14 @@
  "title": "316L skid fabrication and orbital welding, ASME BPE | Aquemi",
  "meta": "316L skids and loops built to ASME BPE: EN 10204 3.1 heat traceability, ASME IX welders, weld maps, borescope records, ASTM A967 passivation, CRN vessels.",
  "path": "/services/fabrication/",
- "eyebrow": "FABRICATION · ASME BPE · EN 10204 3.1",
- "headline": "Fabrication your auditor can trace from any weld back to the mill heat",
- "lead": "We build 316L skids, tanks and loops to ASME BPE with orbital welds. Every product-contact weld is numbered and logged with its operator, procedure, coupon, inspection and EN 10204 3.1 heat numbers.",
+ "eyebrow": "SERVICES · FABRICATION · ASME BPE",
+ "headline": "Trace any weld back to its heat",
+ "lead": "We build 316L skids, tanks and loops to ASME BPE, every product-contact weld numbered and logged with its heat numbers.",
  "tags": [
   "ASME BPE",
   "ASME Section IX",
   "EN 10204 3.1",
-  "ASTM A967",
-  "ASME B31.3",
-  "CSA B51"
+  "ASTM A967"
  ],
  "primary_cta": "Request a fabrication spec review",
  "primary_cta_intent": "Review of a document you have|Fabrication or piping specification",
@@ -24,121 +22,8 @@
  },
  "blocks": [
   {
-   "type": "prose",
-   "h": "Weld evidence is made at the bench, or lost",
-   "body": [
-    "Weld evidence is made at the bench or not at all: an insulated weld cannot be re-inspected, and a cut tube loses its heat number. EU GMP Annex 15, 3.9 expects installation qualification (IQ) to check materials against the approved drawings.",
-    "Audit findings are rarely bad welds. They are missing inspection records, certificates that do not match the heats installed, and coupons never kept."
-   ]
-  },
-  {
-   "type": "spec",
-   "h": "Our fabrication standard, product-contact parts",
-   "caption": "FABRICATION · ASME BPE",
-   "cols": [
-    "Item",
-    "What we do",
-    "Standard and record"
-   ],
-   "note": "Bracketed values are confirmed in your fabrication and inspection plan. Where your user requirement specification (URS) is stricter, it governs.",
-   "rows": [
-    {
-     "p": "Material certificates",
-     "v": "Type 3.1 for every product-contact heat, checked against the marking on receipt",
-     "m": "EN 10204 3.1; material log",
-     "hl": true
-    },
-    {
-     "p": "Material",
-     "v": "316L, sulfur 0.005–0.017 % at weld ends",
-     "m": "ASME BPE; heat number marked on each part",
-     "hl": false
-    },
-    {
-     "p": "Welding",
-     "v": "Autogenous orbital gas tungsten arc, argon purge below [purge oxygen limit, ppm]",
-     "m": "ASME BPE; schedule recorded per weld",
-     "hl": false
-    },
-    {
-     "p": "Weld examination",
-     "v": "100 % visual outside; borescope inside on [share of product-contact welds borescoped, %]",
-     "m": "ASME BPE acceptance criteria",
-     "hl": false
-    },
-    {
-     "p": "Surface finish",
-     "v": "SF1 Ra ≤ 0.51 µm (20 µin); SF4 Ra ≤ 0.38 µm (15 µin)",
-     "m": "ASME BPE; profilometer report",
-     "hl": false
-    },
-    {
-     "p": "Procedures and operators",
-     "v": "Welding procedure specification (WPS) and procedure qualification record (PQR); [number of qualified orbital welding operators] operators",
-     "m": "ASME Section IX; operator qualification (WOPQ), continuity log",
-     "hl": false
-    },
-    {
-     "p": "Sample welds (coupons)",
-     "v": "Each shift start and on any change of operator, power supply, weld head, tube size or heat",
-     "m": "ASME BPE; coupons kept",
-     "hl": false
-    },
-    {
-     "p": "Positive material identification",
-     "v": "[PMI by X-ray fluorescence, standard or option]",
-     "m": "Alloy against certificate",
-     "hl": false
-    },
-    {
-     "p": "Passivation",
-     "v": "[passivation chemistry: citric or nitric acid], Purified Water rinse to a conductivity endpoint",
-     "m": "ASTM A967, ASTM A380; certificate",
-     "hl": false
-    },
-    {
-     "p": "Pressure test",
-     "v": "Hydrostatic ≥ 1.5 × design pressure, or pneumatic 1.1 ×",
-     "m": "ASME B31.3; witnessed certificate",
-     "hl": false
-    }
-   ],
-   "nav": "Our standard",
-   "fold": 5,
-   "fold_noun": "rows"
-  },
-  {
-   "type": "options",
-   "h": "Options",
-   "items": [
-    {
-     "t": "Electropolished components",
-     "d": "SF4 on [electropolished components offered: tubing, fittings, tanks] for hot Water for Injection (WFI), pure steam, tank interiors."
-    },
-    {
-     "t": "Third-party weld inspection",
-     "d": "Your inspector or an independent one witnesses coupons, borescope review and pressure tests."
-    },
-    {
-     "t": "Field welding",
-     "d": "Orbital welding on your site, with the same coupons, logs and borescope records as the shop."
-    },
-    {
-     "t": "Borescope video archive",
-     "d": "One file per inspected weld, named by weld number, delivered with the dossier."
-    },
-    {
-     "t": "Surface analysis",
-     "d": "Chromium-to-iron ratio by Auger or X-ray photoelectron spectroscopy, where your URS asks [laboratory name]."
-    }
-   ],
-   "nav": "Options",
-   "fold": 3,
-   "fold_noun": "options"
-  },
-  {
    "type": "table",
-   "h": "One weld, one log line: what each field proves",
+   "h": "One weld, one log line",
    "cols": [
     "Field in the weld log",
     "What it proves in an audit",
@@ -148,32 +33,32 @@
     [
      "Weld number",
      "Where this weld is in your plant",
-     "Weld map (isometric); number on the tube"
+     "Weld map; number on the tube"
     ],
     [
      "Heat numbers of both parts",
      "That the metal is the metal certified",
-     "Material log; EN 10204 3.1 certificates"
-    ],
-    [
-     "WPS and weld schedule",
-     "That a qualified procedure was used, with the settings that were run",
-     "WPS and PQR (ASME Section IX); power supply schedule"
+     "Material log; 3.1 certificates"
     ],
     [
      "Operator and qualification",
-     "That the person was qualified on the day",
+     "That the welder was qualified on the day",
      "WOPQ; continuity log"
     ],
     [
      "Visual and borescope result",
-     "That the inside and outside meet ASME BPE acceptance criteria",
-     "Inspector sign-off; borescope video file"
+     "That inside and outside meet ASME BPE",
+     "Inspector sign-off; borescope video"
+    ],
+    [
+     "WPS and weld schedule",
+     "That a qualified procedure ran with recorded settings",
+     "WPS and PQR; weld schedule"
     ],
     [
      "Coupon reference",
      "That the set-up was proven before production welds",
-     "Labelled coupon, kept with the dossier"
+     "Labelled coupon, kept"
     ],
     [
      "Date and inspector",
@@ -182,55 +67,101 @@
     ],
     [
      "Repair or cut-out",
-     "What happened to a rejected weld and how the replacement was accepted",
-     "Rejected weld closed; new weld number linked to the original"
+     "How a rejected weld was replaced and accepted",
+     "New weld number linked to the original"
     ]
    ],
    "nav": "Weld log",
    "as": "evidence",
-   "fold": 5,
+   "fold": 3,
    "fold_noun": "fields"
   },
   {
-   "type": "steps",
-   "h": "From tube to turnover, with your hold points",
-   "items": [
+   "type": "spec",
+   "h": "Our fabrication standard",
+   "caption": "FABRICATION · ASME BPE",
+   "cols": [
+    "Item",
+    "What we do",
+    "Standard and record"
+   ],
+   "rows": [
     {
-     "t": "Fabrication and inspection plan",
-     "d": "Agreed before material is ordered, from the approved design: standards, inspection extent, records, hold and witness points."
+     "p": "Material",
+     "v": "316L, sulfur 0.005–0.017 % at weld ends",
+     "m": "Heat number marked on each part",
+     "at": [
+      19,
+      21
+     ]
     },
     {
-     "t": "Receive and verify material",
-     "d": "Each heat checked against its 3.1 certificate and logged.",
-     "hold": "You"
+     "p": "Welding",
+     "v": "Autogenous orbital, argon purge below [purge oxygen limit, ppm]",
+     "m": "Schedule recorded per weld",
+     "at": [
+      47,
+      25
+     ]
     },
     {
-     "t": "Qualify the set-up",
-     "d": "Coupons made, cut open and accepted before any production weld. Witness point: coupons."
+     "p": "Sample welds",
+     "v": "Each shift start and on any change of operator, head, tube or heat",
+     "m": "Coupons kept",
+     "at": [
+      13,
+      46
+     ]
     },
     {
-     "t": "Weld and record",
-     "d": "Each weld numbered on the isometric and logged as it is made."
+     "p": "Weld examination",
+     "v": "Visual outside; borescope inside on [share of product-contact welds borescoped, %]",
+     "m": "ASME BPE acceptance criteria",
+     "at": [
+      57,
+      48
+     ]
     },
     {
-     "t": "Inspect",
-     "d": "Visual outside, borescope inside, signed in the log. Rejected welds are cut out and renumbered. Witness point: borescope review."
+     "p": "Surface finish",
+     "v": "SF1 Ra ≤ 0.51 µm; SF4 Ra ≤ 0.38 µm",
+     "m": "Profilometer report",
+     "at": [
+      93,
+      65
+     ]
     },
     {
-     "t": "Test and survey",
-     "d": "Pressure test, slope survey and dead leg check on every run.",
-     "hold": "You"
+     "p": "Material certificates",
+     "v": "Every product-contact heat checked against its marking on receipt",
+     "m": "EN 10204 3.1; material log"
     },
     {
-     "t": "Clean and passivate",
-     "d": "To ASTM A967 or ASTM A380, verified and certified, then factory acceptance testing (FAT)."
+     "p": "Procedures and operators",
+     "v": "WPS and PQR; [number of qualified orbital welding operators] operators",
+     "m": "ASME Section IX; continuity log"
     },
     {
-     "t": "Turnover dossier",
-     "d": "Indexed by weld number and system, issued with the FAT report, updated with field welds before site acceptance testing (SAT)."
+     "p": "Positive material identification",
+     "v": "[PMI by X-ray fluorescence, standard or option]",
+     "m": "Alloy against certificate",
+     "hl": false
+    },
+    {
+     "p": "Passivation",
+     "v": "[passivation chemistry: citric or nitric acid], PW rinse to a conductivity endpoint",
+     "m": "ASTM A967, ASTM A380"
+    },
+    {
+     "p": "Pressure test",
+     "v": "Hydrostatic ≥ 1.5 × design pressure, or pneumatic 1.1 ×",
+     "m": "ASME B31.3; witnessed"
     }
    ],
-   "nav": "Hold points"
+   "nav": "Our standard",
+   "fold": 5,
+   "fold_noun": "rows",
+   "as": "callouts"
   },
   {
    "type": "docs",
@@ -250,11 +181,11 @@
     },
     {
      "t": "Weld maps and weld log",
-     "d": "As-built isometrics, one line per weld, repairs and cut-outs included"
+     "d": "As-built isometrics, one line per weld, repairs included"
     },
     {
      "t": "Coupon records and borescope records",
-     "d": "Coupons labelled and kept; result per weld, with video"
+     "d": "Coupons kept; result per weld, with video"
     },
     {
      "t": "Pressure test certificates",
@@ -266,95 +197,86 @@
     },
     {
      "t": "Cleaning and passivation certificate",
-     "d": "ASTM A967 or ASTM A380, with verification test"
-    },
-    {
-     "t": "Slope survey and dead leg register",
-     "d": "Slope ≥ [design minimum slope, in/ft or %]; branches L/D ≤ 2"
-    },
-    {
-     "t": "Riboflavin spray coverage report",
-     "d": "Tank heads and walls; [in-house or subcontracted]"
-    },
-    {
-     "t": "Pressure vessel and control panel documents",
-     "d": "Data report and Canadian registration number (CRN); panel certification record and drawings"
+     "d": "With verification test"
     }
    ],
    "nav": "Dossier",
-   "fold": 6,
+   "fold": 4,
    "fold_noun": "documents"
   },
   {
+   "type": "steps",
+   "h": "From tube to turnover",
+   "items": [
+    {
+     "t": "Fabrication and inspection plan",
+     "d": "Agreed before material is ordered: standards, inspection extent, records, hold and witness points."
+    },
+    {
+     "t": "Receive and verify material",
+     "d": "Each heat checked against its 3.1 certificate and logged.",
+     "hold": "You"
+    },
+    {
+     "t": "Qualify the set-up",
+     "d": "Coupons made, cut open and accepted before any production weld. Witness point."
+    },
+    {
+     "t": "Weld, record and inspect",
+     "d": "Each weld numbered and logged; visual outside, borescope inside. Rejects cut out, renumbered. Witness point."
+    },
+    {
+     "t": "Test and survey",
+     "d": "Pressure test, slope survey and dead leg check on every run.",
+     "hold": "You"
+    },
+    {
+     "t": "Passivate and turn over",
+     "d": "To ASTM A967 or A380, then FAT. Dossier indexed by weld number, updated with field welds."
+    }
+   ],
+   "nav": "Hold points",
+   "intro": "An insulated weld cannot be re-inspected: evidence is made at the bench."
+  },
+  {
    "type": "faq",
-   "h": "Questions validation and quality teams ask",
+   "h": "Questions quality teams ask",
+   "nav": "FAQ",
    "items": [
     {
      "q": "Our specification says 3.1B certificates. Do you supply those?",
-     "a": "3.1B is the 1991 EN 10204 designation. The 2004 edition replaced it with 3.1: specific test results, validated by an inspection representative independent of manufacturing. We supply 3.1 and note the equivalence in the material log. A type 2.2 test report is not accepted for product-contact parts."
-    },
-    {
-     "q": "How do you tie 3.1 certificates to the tube and fittings?",
-     "a": "Heat numbers are checked against the certificate on receipt and [how components are marked or tagged]. Each weld log line names the heat numbers on both sides, so any weld traces back to its certificates."
+     "a": "3.1B is the 1991 designation; EN 10204:2004 replaced it with 3.1. We supply 3.1 and note the equivalence. A 2.2 report is not accepted for product contact."
     },
     {
      "q": "Do you borescope every weld?",
-     "a": "Our standard is [share of product-contact welds borescoped, %] of product-contact welds, stated in the plan before work starts. ASME BPE allows a random sample; most pharmaceutical owners specify more. A weld that cannot be reached, such as a final closure, is accepted on its coupon and the reason logged."
+     "a": "Our standard is [share of product-contact welds borescoped, %], stated in the plan. A weld that cannot be reached is accepted on its coupon, the reason logged."
     },
     {
      "q": "What happens to a rejected weld?",
-     "a": "It is cut out, not ground or re-fused. The replacement gets a new number, its own log line and inspection, and the log keeps the link to the rejected weld. Rejection rate in the dossier: [weld rejection rate reported, yes or no]."
+     "a": "It is cut out, not ground or re-fused. The replacement gets a new number and its own inspection, linked to the rejected weld. Rejection rate reported: [weld rejection rate reported, yes or no]."
     },
     {
      "q": "Can we audit the shop and see a real weld log?",
-     "a": "Yes to audits and witnessing. Hold and witness points are agreed in the plan, typically coupons, borescope review, pressure test and passivation. Shop: [shop location, city and province]. Sample log: [redacted weld log shareable under NDA, yes or no]. See quality management."
+     "a": "Yes. Shop: [shop location, city and province]. Sample log: [redacted weld log shareable under NDA, yes or no]."
     },
     {
      "q": "Do we need electropolish, and who passivates?",
-     "a": "Not by rule. SF1 is common for Purified Water (PW); we recommend SF4 for hot WFI, pure steam and tank interiors, where rouge is more likely. Welds made after electropolishing are passivated. Done by: [in-house or named subcontractor]. The certificate names standard, chemistry, temperature, contact time and verification test."
-    },
-    {
-     "q": "Who registers the pressure vessels?",
-     "a": "Vessels are designed to ASME Section VIII, Division 1 and registered under CSA B51 in the province of installation, which issues the CRN. Fabricator: [ASME certificate holder or certified vessel partner]. Registered in: [provinces where Aquemi registers]. Fittings and, in some provinces, piping also need registration; we confirm at design."
-    },
-    {
-     "q": "Are the control panels certified?",
-     "a": "Built by: [panel shop and certification mark held]. The marks that apply are CSA C22.2 No. 286 for Canada or UL 508A for US installations. An uncertified panel can be stopped at site by the electrical inspector, so we settle this before order."
+     "a": "Not by rule. SF1 is common for PW; we recommend SF4 for hot WFI, pure steam and tank interiors. Passivation by: [in-house or named subcontractor]."
     }
-   ],
-   "nav": "FAQ"
-  },
-  {
-   "type": "related",
-   "h": "Before and after the shop",
-   "items": [
-    "svc-design",
-    "svc-fat-sat",
-    "sys-storage",
-    "cmp-documentation",
-    "cmp-quality",
-    "svc-cq"
    ]
   }
  ],
  "cta": {
-  "h": "Send your fabrication spec. We mark it against ASME BPE.",
-  "body": "An engineer marks your specification clause by clause and drafts the plan with your hold and witness points.",
+  "h": "Send your fabrication spec",
+  "body": "We mark it clause by clause against ASME BPE and draft your hold and witness points.",
   "button": "Request a fabrication spec review",
   "link": "contact-proposal",
-  "proof": {
-   "v": "100 %",
-   "l": "Welds visually examined · ASME BPE"
-  },
   "intent": "Review of a document you have|Fabrication or piping specification",
   "include": [
    "URS or piping standard",
-   "Borescope extent, coupon frequency, witness points",
+   "Borescope extent and witness points",
    "Finish by system: SF1 or SF4",
-   "Passivation standard and surface analysis",
-   "Province, design pressure and temperature",
-   "Panel certification mark and supply voltage",
-   "Your weld log or dossier template"
+   "Province, design pressure and temperature"
   ],
   "returns": [
    "The clauses we meet",
@@ -386,19 +308,19 @@
  "facts": [
   {
    "v": "100 %",
-   "l": "Welds visually examined · ASME BPE"
+   "l": "Welds visually examined"
   },
   {
-   "v": "EN 10204 3.1",
-   "l": "Certificate per product-contact heat"
+   "v": "3.1",
+   "l": "Certificate per heat"
   },
   {
    "v": "Ra ≤ 0.38 µm",
-   "l": "SF4 electropolished · ASME BPE"
+   "l": "SF4 electropolished"
   },
   {
    "v": "L/D ≤ 2",
-   "l": "Dead legs · ASME BPE"
+   "l": "Dead legs"
   }
  ]
 }

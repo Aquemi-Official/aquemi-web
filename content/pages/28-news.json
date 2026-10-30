@@ -6,28 +6,16 @@
  "meta": "Answer-first notes on USP <645>, <1231>, Ph. Eur. 12.3, EU GMP Annex 1, ASME BPE and CSA B51 for PW, WFI and pure steam. Get each one by email.",
  "path": "/company/news/",
  "eyebrow": "TECHNICAL NOTES · PW · WFI · PURE STEAM",
- "headline": "Water system questions, answered in the first three sentences",
- "lead": "Notes for engineering, validation and quality teams running Purified Water (PW), Water for Injection (WFI) and pure steam systems. Each answers one question first and names its clause. None is published yet.",
- "tags": [
-  "USP <645>",
-  "USP <1231>",
-  "Ph. Eur. 12.3",
-  "EU GMP Annex 1",
-  "ASME BPE",
-  "CSA B51"
- ],
+ "headline": "Water questions, answered in three sentences",
+ "lead": "For teams running PW, WFI and pure steam: one question per note, answered first, clause named. None published yet.",
  "primary_cta": "Subscribe to technical notes",
- "secondary_cta": {
-  "label": "Standards we design to",
-  "link": "compliance"
- },
  "blocks": [
   {
    "type": "register",
    "nav": "Notes",
    "anchor": "notes",
-   "h": "The notes register, by topic",
-   "intro": "Every planned note, the standard it reads and the page where we apply the answer. No note has a date yet.",
+   "h": "The notes register",
+   "intro": "Each planned note, its standard and the page that applies it.",
    "topics": [
     "Standards",
     "Design",
@@ -181,7 +169,7 @@
      "link": "sys-pure-steam"
     }
    ],
-   "fold": 8,
+   "fold": 4,
    "fold_noun": "notes"
   },
   {
@@ -189,59 +177,70 @@
    "nav": "Subscribe",
    "anchor": "subscribe",
    "h": "Get each technical note by email",
-   "intro": "One email per published note, at most [send frequency, emails per month at most]. Pick your topics. We confirm by email first, send no sales mailings and never share your address.",
+   "intro": "Pick topics. Confirmed by email first; no sales mail; your address never shared.",
    "submit": "Subscribe",
-   "fields": [
+   "steps": [
     {
-     "label": "Email",
-     "kind": "email",
-     "required": true
-    },
-    {
-     "label": "First name",
-     "kind": "text",
-     "required": false
-    },
-    {
-     "label": "Your role",
-     "kind": "select",
-     "required": false,
-     "options": [
-      "Process or project engineering",
-      "Validation",
-      "Quality assurance",
-      "Operations or maintenance",
-      "Laboratory",
-      "Other"
+     "title": "Topics",
+     "next": "Continue",
+     "fields": [
+      {
+       "label": "Email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Topics",
+       "kind": "checkbox-group",
+       "required": false,
+       "options": [
+        "Standards and regulatory updates",
+        "Design",
+        "Qualification",
+        "Troubleshooting",
+        "Company news"
+       ],
+       "help": "Leave all unticked to receive every technical note."
+      }
      ]
     },
     {
-     "label": "Topics",
-     "kind": "checkbox-group",
-     "required": false,
-     "options": [
-      "Standards and regulatory updates",
-      "Design",
-      "Qualification",
-      "Troubleshooting",
-      "Company news"
-     ],
-     "help": "Leave all unticked to receive every technical note."
-    },
-    {
-     "label": "A question you would like answered",
-     "kind": "textarea",
-     "required": false,
-     "help": "If the answer is useful to others, it may become a note, without your name or company."
-    },
-    {
-     "label": "Consent",
-     "kind": "checkbox-group",
-     "required": true,
-     "options": [
-      "Yes, [Aquemi legal entity name] may email me technical notes and, if ticked above, company news. I can withdraw consent at any time."
-     ],
-     "help": "Sent by [Aquemi legal entity name], [mailing address], [contact email]. Every email has an unsubscribe link; we act on it within 10 business days, as Canada's anti-spam legislation (CASL) requires. Privacy: [privacy notice, link; PIPEDA and Quebec Law 25]."
+     "title": "About you",
+     "fields": [
+      {
+       "label": "First name",
+       "kind": "text",
+       "required": false
+      },
+      {
+       "label": "Your role",
+       "kind": "select",
+       "required": false,
+       "options": [
+        "Process or project engineering",
+        "Validation",
+        "Quality assurance",
+        "Operations or maintenance",
+        "Laboratory",
+        "Other"
+       ]
+      },
+      {
+       "label": "A question you would like answered",
+       "kind": "textarea",
+       "required": false,
+       "help": "If the answer is useful to others, it may become a note, without your name or company."
+      },
+      {
+       "label": "Consent",
+       "kind": "checkbox-group",
+       "required": true,
+       "options": [
+        "Yes, [Aquemi legal entity name] may email me technical notes and, if ticked above, company news. I can withdraw consent at any time."
+       ],
+       "help": "Sent by [Aquemi legal entity name], [mailing address], [contact email]. Every email has an unsubscribe link; we act on it within 10 business days, as Canada's anti-spam legislation (CASL) requires. Privacy: [privacy notice, link; PIPEDA and Quebec Law 25]."
+      }
+     ]
     }
    ]
   },
@@ -251,32 +250,16 @@
    "h": "Questions subscribers ask",
    "items": [
     {
-     "q": "How often will you email?",
-     "a": "Once per published note, at most [send frequency, emails per month at most]. If you tick topics, you receive only those. Company news goes only to people who tick it. We never use the list for sales: a proposal request goes through the proposal form."
-    },
-    {
      "q": "How is each note written and reviewed?",
-     "a": "A named Aquemi engineer writes it from a question we are asked on projects, and a second engineer checks it before publication. Each claim names the standard, clause and edition; numbers carry their units. The note shows its publication date and date of last review. [Named author for each topic group]"
+     "a": "A named engineer writes it from a question asked on projects; a second engineer checks it. Each claim names standard, clause and edition. [Named author for each topic group]"
     },
     {
      "q": "Can we cite a note in our validation documents?",
-     "a": "Cite the standard, not the note. A note is our reading of the clause, with the clause number so you can check it. Your quality unit decides how the standard applies to your site."
+     "a": "Cite the standard, not the note. A note is our reading of the clause; your quality unit decides how it applies to your site."
     },
     {
-     "q": "What happens when a standard changes after a note is published?",
-     "a": "We review the note against the new text, update it and change its date of last review. If the answer changes, the note says what changed and when, and subscribers to that topic get the update. Errors are fixed in place with a dated correction line, never silently."
-    },
-    {
-     "q": "Do you publish company news?",
-     "a": "Not yet. We will post FAT and handover milestones only with the client's written permission, and changes to our facilities, people and certifications that affect your projects. Each item carries its date; project news links to its case study."
-    },
-    {
-     "q": "How do I unsubscribe?",
-     "a": "Use the link at the foot of any email. It takes one click, and we act on it within 10 business days, as CASL requires; in practice [unsubscribe processing time]."
-    },
-    {
-     "q": "Our question is about our own system, not a general one.",
-     "a": "Send it through the proposal or service request form, so an engineer can answer it against your documents. We only turn questions into notes when the answer holds for most systems."
+     "q": "What happens when a standard changes?",
+     "a": "We review and update the note and its review date. If the answer changes, the note says what and when. Errors get a dated correction line."
     }
    ]
   }
@@ -314,19 +297,11 @@
  "facts": [
   {
    "v": "24 notes planned",
-   "l": "Standards, design, qualification and troubleshooting"
-  },
-  {
-   "v": "Answer first",
-   "l": "The answer in three sentences, then the clause and edition"
-  },
-  {
-   "v": "Reviewed and dated",
-   "l": "Checked by a second engineer; dated last review"
+   "l": "Standards, design, qualification, troubleshooting"
   },
   {
    "v": "[send frequency, emails per month at most]",
-   "l": "One email per published note. Unsubscribe in one click"
+   "l": "One email per note; one-click unsubscribe"
   }
  ]
 }

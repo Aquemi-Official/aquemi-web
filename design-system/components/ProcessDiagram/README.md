@@ -1,42 +1,61 @@
-ProcessDiagram draws a treatment train as numbered stage boxes joined by one double-line Flow pipe that snakes through them in reading order, with valve and instrument symbols on the pipe.
+ProcessDiagram draws a treatment train as an interactive piping flow on a drawing plate: each stage is a station with its equipment vignette, joined by one thick double-wall Flow pipe with arrows, and choosing a station fills its pipe run and opens that stage's detail.
 
 ## Markup
 
+The website builds it from a `diagram` block (`AQ.wDiagram`, which calls `wFlow` in `assets/src/parts/ProcessDiagram.js`). Write markup by hand only where the renderer is not available; `preview.html` is generated from the renderer.
+
 ```html
-<div class="aq-diagram aq-diagram--base" role="img" aria-label="Treatment train, 6 stages in order: 1 Pretreated feed, 2 Heat exchanger, … Across all stages: Monitoring and controls · TOC, conductivity, ozone">
-  <div class="aq-diagram__train">
-    <div class="aq-diagram__row">                                   <!-- stages 1-3, left to right -->
-      <div class="aq-diagram__stage"><span class="aq-diagram__num">01</span><svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="…"/></svg><span class="aq-diagram__label">Pretreated feed</span></div>
-      <span class="aq-diagram__link"><svg class="aq-diagram__fitting" …>valve</svg></span>
-      …
+<div class="aq-plate aq-plate--block aq-diagram__plate">
+  <div class="aq-diagram [aq-diagram--base]" style="--n:7">
+    <div class="aq-diagram__line" role="group" aria-label="7 stages in flow order; choose one to see its detail">
+      <button type="button" class="aq-diagram__st" id="…-s0" aria-pressed="true" aria-controls="…-d0" style="--i:0">
+        <span class="aq-diagram__run" aria-hidden="true"><span class="aq-diagram__fill"></span></span>
+        <span class="aq-diagram__fig" aria-hidden="true"><span class="aq-spot aq-spot--s aq-diagram__spot" style="mask-image:url(assets/spots/pretreatment.png)"></span></span>
+        <span class="aq-diagram__n">01</span><span class="aq-diagram__t">Softened, dechlorinated feed</span>
+      </button>
+      <div class="aq-diagram__d" id="…-d0" role="region" aria-labelledby="…-s0" style="--i:0">
+        <span class="aq-diagram__dn" aria-hidden="true">01<small>/07</small></span>
+        <div class="aq-diagram__db"><p class="aq-diagram__dt">…</p><p class="aq-diagram__dd">one line</p><p class="aq-diagram__dx">tag, link</p></div>
+        <p class="aq-diagram__io"><span><b>In</b> …</span><span><b>Out</b> Heat exchanger</span></p>
+      </div>
+      … one button and one detail per stage, in flow order (the last button also carries is-last) …
     </div>
-    <div class="aq-diagram__row aq-diagram__row--turn aq-diagram__row--rev"><span class="aq-diagram__link aq-diagram__link--turn">…</span></div>
-    <div class="aq-diagram__row aq-diagram__row--rev">…stages 4-6, right to left…</div>
+    <p class="aq-diagram__base"><svg …/><span>Monitoring and controls · TOC, conductivity, ozone</span></p>
   </div>
-  <div class="aq-diagram__base"><svg class="aq-diagram__fitting" …/><span>Monitoring and controls · TOC, conductivity, ozone</span></div>
+  <div class="aq-plate__block">…</div>
 </div>
 ```
 
-- The website builds it from a `diagram` block: `stages` (names, in order), optional `base`, optional `caption` (`AQ.wDiagram`). Write markup by hand only where the renderer is not available.
-- **Rows of three, or four.** `aq-diagram--4` sets four stages to a row; the renderer picks it when that balances the rows (4 stages: one row; 7: four then three; 8: four and four), so no stage sits alone on the last row. Every second row carries `aq-diagram__row--rev`, which sets `direction: rtl` so its stages and arrows run right to left. A `--turn` row between them holds one vertical drop under the last stage of the row above. Nothing is measured at run time; it renders the same from the static string at any width.
-- **Links** (`aq-diagram__link`) alternate a valve and an instrument bubble. Links are desktop only.
-- **Phone:** the boxes become compact hairline rows, `01 | pipe | glyph | name`, with the shared mono index, and one continuous vertical Flow pipe runs from the first stage's centre to the last's with a small node at each stage. Seven stages take about 400 px instead of 1,200.
-- **Glyphs** are single-path line drawings on a 72 × 56 viewBox, picked from keywords in the stage name: heat exchanger, RO or membrane, EDI, UV, softener, carbon, filter, column or still, pump, steam, loop or points of use, tank or storage, instrument, PLC/HMI/SCADA, and a water drop for feeds and "From … / To …" ends. Anything else gets a generic process block.
-- **Base:** `aq-diagram--base` draws a dashed control boundary round the whole train with the label at its foot, for what spans every stage (monitoring, controls, sanitisation). Leave `base` out when there is nothing to name.
-- **Text alternative:** the outer element is `role="img"` with an `aria-label` that lists every stage with its number, then the base. The boxes inside are hidden from assistive technology by that role, so the label must carry everything.
-- Put the caption in an `aq-small` paragraph under it.
+## Data (`diagram` block)
+
+- `stages`: 4 to 7 entries in flow order. Each is a name, or an object `{t, d, spot, icon, tag, link}`:
+  - `t` stage name, sentence case as engineers write it ("RO pass 1").
+  - `d` optional one line (≤ 16 words): what the stage removes or controls. Shown in the detail panel. Without it the panel shows the stage's In and Out connections only, so add `d` wherever the stage needs explaining.
+  - `spot` a Spot name (`assets/spots`: pretreatment, ro-skid, edi-stack, still, pure-steam-generator, storage-tank, pump, heat-exchanger, uv-ozone) or `icon` an Icon name for stages without a spot (valve, softener, carbon-filter, ro-membrane, conductivity, loop, tank …). With neither, a line glyph is picked from keywords in the name (heat exchanger, RO, EDI, UV, softener, carbon, filter, column, pump, steam, loop, tank, instrument, PLC/HMI/SCADA, drop for feeds).
+- `base` optional: what spans every stage (monitoring, controls, sanitisation); draws a dashed control boundary round the train with the label at its foot.
+- `from` / `to` optional pipe-end labels; `caption` an `aq-small` paragraph under the plate.
+
+## Behaviour
+
+- **Stations are toggle buttons** (`aria-pressed`, `aria-controls` the detail). Exactly one is pressed; the first by default. Click, or Arrow keys / Home / End within the row, selects and moves focus.
+- **Selected:** its incoming pipe run fills with Flow, the runs upstream tint (`flow-tint`, water has passed), the box, tag and vignette take Flow, and its detail shows; the others carry `hidden`.
+- **Motion:** with GSAP loaded the run fills in 0.55 s and the panel rises in 0.35 s, once per selection; nothing loops. Skipped under `prefers-reduced-motion`. `assets/motion.js` reveals the plate and wipes the vignettes in on scroll.
+- **Without script:** the page script adds `is-live` to `.aq-diagram` (a MutationObserver after each render). Without it every detail stays visible: its line under its own column on desktop, inline under each station on phones.
+
+## Layout
+
+- **Desktop:** one row of `--n` equal columns on the plate. Box 120 px high, up to 128 px wide, `line-strong` hairline on `surface`, Spot `s` (96 px) in `ink-muted`; number tag in its top-left corner (mono 12 px, `flow` border); name under it in mono 13 px, as written (no uppercase: it would turn "5 µm" into "5 µM"). The pipe is `space-4` high with 3 px `flow` walls (a double-wall line), entering from the plate edge and leaving it with an arrowhead; a small arrow sits mid-run. The detail panel spans the row under it, with a dashed `flow` leader up to the selected column: big mono number, title, line, tag and link, and In/Out labels at the right.
+- **Phone** (`@container (max-width: 860px)`): one vertical pipe through 96 px vignette boxes, the name beside each; the selected detail opens inline under its station, to the right of the pipe, with a dashed leader. No horizontal scroll.
 
 ## Token rules
 
-- Pipe: `5px double var(--flow)`, the same pipe as WaterPath. Arrowheads are `flow`. `flow` stays a line, never a fill.
-- Boxes: 1.5 px `line-strong` border on `surface`, `radius-sm`. Number in Geist Mono 300 in `flow`; name in Geist 500 in `ink`, sentence case as engineers write it ("RO pass 1", "Storage tank").
-- Glyphs and fittings: 1.5 px `ink-muted` stroke; fittings fill with `surface` so the pipe breaks behind them as on a P&ID. This assumes a `surface` section, which all site sections are.
-- Base boundary: 1 px dashed `line-strong`; label mono uppercase 11 px `ink-muted`.
-- Spacing from `--space-*` only. Phone rules live in the component's `@container (max-width: 860px)` block: rows dissolve into one column of hairline (`line`) rows, index in `ink-subtle` like every list, the pipe a 5 px double `flow` line with `surface`-filled nodes.
+- Pipe and arrows `flow`; fill `flow`, upstream tint `flow-tint`; `flow` stays a line or a fill inside the pipe, never a panel ground.
+- Boxes and panel: 1 px `line-strong`, `radius-sm`, `surface` ground; the panel's top edge 2 px `flow`. Text `ink`, detail line `ink-muted`.
+- Focus: 2 px `focus` outline round the station.
+- Spacing from `--space-*`; local geometry variables (`--fh`, `--fw`, `--g`, `--pw`, `--n`, `--i`) always with token fallbacks.
 
 ## When to use, when not
 
-- Use it for one linear treatment train of **five to seven stages** on a system page.
-- Fewer than four stages reads better as a sentence or a Steps list. More than seven: split the train (pretreatment, generation, storage) and link the pages.
-- Not for branched flows, recirculation drawings or real P&IDs; the pipe only runs one way. Link to the drawing package instead.
-- Not for project timelines or service steps; those are Steps.
+- One linear treatment train of four to seven stages on a system page. More than seven: split the train and link the pages.
+- Not for branched flows, recirculation drawings or real P&IDs; the pipe runs one way. Not for project timelines or service steps (ProcessSteps).
+- The system families from feed to point of use use the same drawing through WaterPath.

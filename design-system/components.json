@@ -283,10 +283,10 @@
    "readme": "design-system/components/ProcessDiagram/README.md",
    "preview": "design-system/components/ProcessDiagram/preview.html",
    "group": "Page sections",
-   "height": "640",
-   "width": "1100",
-   "subtitle": "Pretreatment train on a serpentine Flow pipe, four to a row",
-   "summary": "ProcessDiagram draws a treatment train as numbered stage boxes joined by one double-line Flow pipe that snakes through them in reading order, with valve and instrument symbols on the pipe."
+   "height": "760",
+   "width": "1200",
+   "subtitle": "PW skid treatment train as an interactive piping flow on a plate: stations are toggles, the selected run fills and its detail opens",
+   "summary": "ProcessDiagram draws a treatment train as an interactive piping flow on a drawing plate: each stage is a station with its equipment vignette, joined by one thick double-wall Flow pipe with arrows, and choosing a station fills its pipe run and opens that stage's detail."
   },
   {
    "name": "ProcessSteps",
@@ -393,10 +393,10 @@
    "readme": "design-system/components/WaterPath/README.md",
    "preview": "design-system/components/WaterPath/preview.html",
    "group": "Page sections",
-   "height": "760",
+   "height": "820",
    "width": "1200",
-   "subtitle": "Seven system families on one pipe, each with its equipment drawing",
-   "summary": "WaterPath shows the system families as numbered stops on one serpentine pipe, from city feed to point of use, so the reader sees how the systems connect before reading any description."
+   "subtitle": "Seven system families as stations on one pipe; the selected family opens its line, standard and link",
+   "summary": "WaterPath shows the system families as stations on one pipe, from city feed to point of use, so the reader sees how the systems connect and can open each one's line, standard and page from the drawing."
   },
   {
    "name": "CompareTable",

@@ -6,19 +6,9 @@
  "meta": "Sizing proposal, route assessment, URS, feedwater or C&Q review, or system assessment. An engineer replies in [proposal response time, working days].",
  "path": "/contact/proposal/",
  "eyebrow": "REQUEST A PROPOSAL OR REVIEW",
- "headline": "Tell us what you need sized, reviewed or assessed. An engineer answers in writing.",
- "lead": "Choose a review of your user requirement specification (URS) or feed water, a route assessment or a sizing proposal. The form asks only what that request needs. Nothing here commits you to buy.",
- "tags": [
-  "USP",
-  "Ph. Eur.",
-  "ASME BPE",
-  "EU GMP Annex 15"
- ],
+ "headline": "Tell us what you need. An engineer replies.",
+ "lead": "Pick a review, an assessment or a sizing proposal; the form asks only what it needs. Nothing commits you to buy.",
  "primary_cta": "Choose your request",
- "secondary_cta": {
-  "label": "System down or out of specification? Request service",
-  "link": "contact-service"
- },
  "blocks": [
   {
    "type": "contact-routes",
@@ -26,25 +16,25 @@
    "routes": [
     {
      "t": "Request a proposal or review",
-     "d": "New system, upgrade or document review: send your URS and water data.",
+     "d": "New system, upgrade or document review.",
      "steps": [
-      "Choose your request; send what you have",
-      "An engineer reads it and replies by name",
-      "Written answer, then a firm proposal"
+      "Send what you have",
+      "An engineer reads it",
+      "Written answer, then a proposal"
      ],
      "clock": "Written reply within [proposal response time, working days]",
      "link": "contact-proposal",
-     "current": true,
-     "action": "Choose your request"
+     "action": "Choose your request",
+     "current": true
     },
     {
-     "t": "Production stopped or water out of specification",
+     "t": "Production down or water off spec",
      "d": "Severity 1. Answered [service phone hours]. Do not wait for a form.",
      "phone": "[service phone number]",
      "steps": [
       "Call the service line",
-      "Triage call confirms the severity",
-      "Remote diagnosis, then a technician on site"
+      "Triage confirms severity",
+      "Remote diagnosis, then on site"
      ],
      "clock": "Technician on site within [severity 1 on-site response time, hours]",
      "link": "contact-service",
@@ -53,11 +43,11 @@
     },
     {
      "t": "Visit or audit the shop",
-     "d": "Shop tour, supplier audit or FAT witness at [shop location, city and province].",
+     "d": "Tour, supplier audit or FAT witness at [shop location, city and province].",
      "steps": [
-      "Tell us the purpose, dates and group",
-      "We reply with a date and an agenda",
-      "Records and test bay ready on the day"
+      "Purpose, dates, group",
+      "Date and agenda back",
+      "Records and test bay ready"
      ],
      "clock": "Date and agenda within [visit booking reply time, working days]",
      "link": "contact-locations",
@@ -69,10 +59,10 @@
    "type": "form",
    "anchor": "intake",
    "nav": "Send",
-   "h": "Choose your request, then send what you have",
-   "intro": "Rough numbers are fine. Files can follow by reply email.",
+   "h": "Choose your request, send what you have",
+   "intro": "Rough numbers are fine. Files can follow by email.",
    "submit": "Send my request to an engineer",
-   "note": "A process engineer replies within [proposal response time, working days]. Specifications stay confidential; NDA on request. Files kept in [file storage location and retention, months]. Details used for this request only. [Privacy notice link]",
+   "note": "Specifications stay confidential; NDA on request. Files kept [file storage location and retention, months]. [Privacy notice link]",
    "steps": [
     {
      "title": "Your request",
@@ -93,7 +83,7 @@
         "Supplier qualification: audit, references, shop visit",
         "Not sure yet: talk to an engineer"
        ],
-       "help": "One request per form. Name a second request in the notes."
+       "help": "No URS yet? Pick a water scope review. One request per form."
       },
       {
        "label": "Which document?",
@@ -121,7 +111,13 @@
         "Reference call",
         "Shop visit or factory acceptance test (FAT) witness"
        ]
-      },
+      }
+     ]
+    },
+    {
+     "title": "Details",
+     "next": "Continue to contact details",
+     "fields": [
       {
        "label": "What do you make?",
        "kind": "radio",
@@ -158,13 +154,7 @@
         "More than 12 months",
         "No date yet"
        ]
-      }
-     ]
-    },
-    {
-     "title": "Details",
-     "next": "Continue to contact details",
-     "fields": [
+      },
       {
        "label": "Water grades needed",
        "kind": "checkbox-group",
@@ -448,123 +438,6 @@
      ]
     }
    ]
-  },
-  {
-   "type": "options",
-   "nav": "Requests",
-   "h": "What you get back, and when",
-   "items": [
-    {
-     "t": "Sizing and budget proposal",
-     "d": "Process flow diagram, key specifications, budget price. Turnaround: [budget proposal turnaround, working days]."
-    },
-    {
-     "t": "URS gap review",
-     "d": "Gaps marked, with a compliance matrix. Turnaround: [URS review turnaround, working days]."
-    },
-    {
-     "t": "Route assessment",
-     "d": "Which systems and WFI route, and why. Turnaround: [route assessment turnaround, working days]."
-    },
-    {
-     "t": "Existing system assessment",
-     "d": "Scope, time on site and price. Turnaround: [assessment response time, working days]."
-    },
-    {
-     "t": "Feedwater review",
-     "d": "Seasonal design basis for pretreatment. Turnaround: [feedwater review turnaround, working days]."
-    },
-    {
-     "t": "Water scope review",
-     "d": "Grade per step, systems, qualification scope. Turnaround: [scope review turnaround, working days]."
-    },
-    {
-     "t": "Compliance matrix",
-     "d": "Requirement, standard, design feature, test. Turnaround: [compliance matrix response time, working days]."
-    },
-    {
-     "t": "Other document reviews",
-     "d": "Loop, controls or fabrication spec, commissioning and qualification (C&Q) plan, factory acceptance test (FAT) list. Turnaround: [document review turnaround, working days]."
-    },
-    {
-     "t": "Supplier audit or questionnaire",
-     "d": "Completed pack, or audit dates. Turnaround: [audit request response time, working days]."
-    },
-    {
-     "t": "Reference call or shop visit",
-     "d": "A reference where clients agree, or dates. Turnaround: [reference request response time, working days]."
-    }
-   ],
-   "fold": 5,
-   "fold_noun": "requests"
-  },
-  {
-   "type": "steps",
-   "nav": "Next steps",
-   "h": "What happens after you send it",
-   "items": [
-    {
-     "t": "An engineer reads it",
-     "d": "A process engineer replies by name within [proposal response time, working days]. No sales call unless you ask."
-    },
-    {
-     "t": "NDA, if you need one",
-     "d": "Yours or ours, returned signed within [NDA turnaround, working days]."
-    },
-    {
-     "t": "A short scoping call",
-     "d": "About [scoping call length, minutes], for proposals and assessments. Reviews often need none."
-    },
-    {
-     "t": "A written answer",
-     "d": "Signed by the engineer who wrote it. If we are not the right supplier, we say so."
-    },
-    {
-     "t": "A firm proposal when ready",
-     "d": "Fixed scope and price, documentation list and schedule, valid for [proposal validity, days]."
-    }
-   ],
-   "fold": 3,
-   "fold_noun": "steps"
-  },
-  {
-   "type": "faq",
-   "nav": "FAQ",
-   "h": "Questions before you send",
-   "items": [
-    {
-     "q": "We do not have a URS yet. Is it too early?",
-     "a": "No. Choose a water scope review or a route assessment. We return the grades, systems and qualification scope your URS should state, and you write it on that basis."
-    },
-    {
-     "q": "Does a review commit us to buying from you?",
-     "a": "No. A review or assessment is a written answer you keep. [Confirm reviews carry no obligation.] [Which reviews are free, which charged.] We quote any charge before work starts."
-    },
-    {
-     "q": "Our system was built by another supplier. Which form do we use?",
-     "a": "For an upgrade, more capacity or a full assessment, this one: choose \"Assessment of an existing system, any make\". For a fault, maintenance or calibration, use the service request form: it takes systems from other builders with the make and model, no Aquemi serial number needed. We service [makes and equipment types serviced]."
-    },
-    {
-     "q": "We are a consulting or EPCM engineer writing a specification for a client. Can we ask?",
-     "a": "Yes. Choose the document review or the route assessment and say who the end user is, if you can. We answer the specification question and do not contact your client."
-    },
-    {
-     "q": "We have a tender package with our own forms. Can you bid to it?",
-     "a": "Upload the package and the closing date and choose \"Sizing and budget proposal for a new system\". We reply within [proposal response time, working days] to confirm whether we will bid, with any clarification questions, before the deadline."
-    },
-    {
-     "q": "Will you sign our NDA before we share drawings?",
-     "a": "Yes. Choose \"Send our NDA first, then talk\" in step 3, or attach your NDA. We return it signed within [NDA turnaround, working days]."
-    }
-   ]
-  },
-  {
-   "type": "related",
-   "h": "Before you send",
-   "items": [
-    "cmp-documentation",
-    "cmp-quality"
-   ]
   }
  ],
  "cta": {
@@ -576,10 +449,7 @@
    "Peak demand, L/h",
    "Water grades and pharmacopoeias",
    "Feed water analysis, 12 months",
-   "Your URS, draft or approved",
-   "Points-of-use list with flows",
-   "Site constraints and shutdown window",
-   "Target dates: order, FAT, release"
+   "Your URS, draft or approved"
   ],
   "returns": [
    "A written answer, signed by its engineer",
@@ -613,19 +483,16 @@
  "facts": [
   {
    "v": "[proposal response time, working days]",
-   "l": "To a written reply from an engineer"
+   "l": "To an engineer's written reply"
   },
   {
    "v": "9 requests, 1 form",
-   "l": "Only the fields your request needs"
-  },
-  {
-   "v": "3 steps",
-   "l": "Request, technical details, contact"
+   "l": "Only the fields yours needs"
   },
   {
    "v": "[budget proposal turnaround, working days]",
-   "l": "From scoping call to budget proposal"
+   "l": "To a budget proposal"
   }
- ]
+ ],
+ "hero_index": false
 }

@@ -82,14 +82,18 @@ function wBtn(label,link,kind,intent){var j=link&&link.charAt(0)==='#';return '<
    an exchange: what you send → turnaround → what comes back, each return with a small document mark. returns_label
    overrides "What comes back"; turnaround (a placeholder until confirmed) labels the arrow between the two lists. */
 function wClosing(c,p){if(!c||!c.h)return '';
- var f=c.proof&&c.proof.v?c.proof:null;
+ var f=c.proof&&c.proof.v?c.proof:null,inc=c.include&&c.include.length?c.include:null,ret=inc&&c.returns&&c.returns.length?c.returns:null;
+ var list=function(cls,label,items,doc){return '<div class="aq-closing__include'+cls+'"><p class="aq-closing__tag">'+tx(label)+'</p><ol>'+items.map(function(x,i){
+  return '<li>'+(doc?'<span class="aq-closing__doc is-'+(i%4+1)+'" aria-hidden="true"></span>':idx(i))+'<span>'+tx(x)+'</span></li>'}).join('')+'</ol></div>'};
+ var send=inc?list('',c.include_label||'What to send us',inc):'';
+ /* Exchange: a cream drawing plate on the navy (concept 49): what you send, the turnaround arrow, what comes back */
+ var swap=ret?wPlate('<div class="aq-closing__swap">'+send+'<p class="aq-closing__turn"><span>'+tx(c.turnaround||'')+'</span></p>'+list(' aq-closing__returns',c.returns_label||'What comes back',ret,true)+'</div>',{light:true,cls:'aq-closing__plate',block:['Aquemi','Send','Return']}):send;
  return '<section class="aq-section aq-band--navy aq-closing"><div class="aq-in"><div class="aq-closing__frame">'+
+  '<div class="aq-closing__strip" aria-hidden="true"><span>Aquemi</span><span>Next step · '+e((p&&p.nav_label)||'')+'</span><span>'+(ret?'01 Send · 02 Return':'01 Input')+'</span></div>'+
   '<h2 class="aq-closing__h">'+tx(c.h)+'</h2>'+
-  '<div class="aq-closing__body">'+(c.body?'<p class="aq-lead">'+tx(c.body)+'</p>':'')+
-  (c.include&&c.include.length?(c.returns&&c.returns.length?'<div class="aq-closing__swap">':'')+'<div class="aq-closing__include"><p class="aq-closing__tag">'+tx(c.include_label||'What to send us')+'</p><ol>'+c.include.map(function(x,i){return '<li>'+idx(i)+'<span>'+tx(x)+'</span></li>'}).join('')+'</ol></div>'
-   +(c.returns&&c.returns.length?'<p class="aq-closing__turn"><span>'+tx(c.turnaround||'')+'</span></p><div class="aq-closing__include aq-closing__returns"><p class="aq-closing__tag">'+tx(c.returns_label||'What comes back')+'</p><ol>'+c.returns.map(function(x){return '<li><span class="aq-closing__doc" aria-hidden="true"></span><span>'+tx(x)+'</span></li>'}).join('')+'</ol></div></div>':''):'')+
-  (f?'<div class="aq-closing__proof"><span class="aq-closing__tag">Proof</span><span class="aq-closing__value">'+tx(f.v)+'</span>'+(f.l?'<span class="aq-closing__label">'+tx(f.l)+'</span>':'')+'</div>':'')+
-  '</div><div class="aq-closing__action">'+wBtn(c.button||'Request a proposal',c.link||'contact-proposal',null,c.intent)+'</div>'+
+  (c.body||swap?'<div class="aq-closing__body">'+(c.body?'<p class="aq-lead">'+tx(c.body)+'</p>':'')+swap+'</div>':'')+
+  '<div class="aq-closing__foot">'+(f?'<div class="aq-closing__proof"><span class="aq-closing__tag">Proof</span><span class="aq-closing__value">'+tx(f.v)+'</span>'+(f.l?'<span class="aq-closing__label">'+tx(f.l)+'</span>':'')+'</div>':'')+
+  '<div class="aq-closing__action">'+wBtn(c.button||'Request a proposal',c.link||'contact-proposal',null,c.intent)+'</div></div>'+
   '</div></div></section>'}
 /* EnquiryForm pre-set: tick the options named by the linking button's intent (WINTENT) and show the conditional fields they open,
    with the same cascade rule as the change handler below (a tick inside a hidden field does not count). Sets f._show and f._on. */
@@ -169,12 +173,25 @@ var ART={
  'ind-cdmo':'Two-room cleanroom suite with process vessels, a pass-through hatch and a shared water loop'
 };
 function artMask(id){var u='url(assets/illustrations/'+id+'.png)';return '-webkit-mask-image:'+u+';mask-image:'+u}
-/* Callout leaders in the figure's 125 x 100 viewBox: [start on the callout rule, anchor on the drawing]. Slot order: top left, top right, bottom left, bottom right. */
-var HERO_LEAD=[[37.5,0,54,38],[87.5,0,73,35],[37.5,100,51,67],[87.5,100,75,64]];
-function wHeroFigure(p,facts){
- var lines=facts.map(function(f,i){var s=HERO_LEAD[i];return '<line x1="'+s[0]+'" y1="'+s[1]+'" x2="'+s[2]+'" y2="'+s[3]+'"/><circle cx="'+s[2]+'" cy="'+s[3]+'" r="0.9"/>'}).join('');
- return '<figure class="aq-hero__figure"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span>'+
-  (facts.length?'<svg class="aq-hero__leaders" viewBox="0 0 125 100" preserveAspectRatio="none" aria-hidden="true">'+lines+'</svg><dl class="aq-hero__callouts">'+facts.map(function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'}).join('')+'</dl>':'')+'</figure>'}
+/* Equipment figure (sys-, svc-, ind- pages with a drawing): the drawing large and dominant, up to four key facts as
+   callouts round it, each joined to the drawing by a leader line ending in a dot. Callouts come in two lists: the top
+   pair and the bottom pair, so phones can stack them above and below the drawing.
+   HERO_AT: the anchor of each slot on the drawing, as fractions of the square drawing box (top left, top right, bottom
+   left, bottom right). Every drawing is a centred isometric skid, so the anchors land on equipment.
+   Desktop leaders: viewBox 120 x 100 (the figure is 6:5); drawing square x 12-108, y 2-98; callouts 27 % wide and 13 %
+   tall in the corners, each with a rule on its drawing side whose inner end starts the leader.
+   Phone leaders: viewBox 100 x 80 over the drawing row only (5:4); drawing square x 10-90; leaders start at the inner
+   end of the rule under (or over) each callout, on the row's top (or bottom) edge. */
+var HERO_AT=[[0.40,0.36],[0.62,0.32],[0.36,0.70],[0.65,0.665]];
+function heroLeaders(n,wide){var o='';for(var i=0;i<n;i++){var a=HERO_AT[i],top=i<2,left=i%2===0,x0,y0,x1,y1;
+  if(wide){x0=left?32.4:87.6;y0=top?13:87;x1=12+96*a[0];y1=2+96*a[1]}else{x0=left?47:53;y0=top?0:80;x1=10+80*a[0];y1=80*a[1]}
+  o+='<line x1="'+x0+'" y1="'+y0+'" x2="'+x1.toFixed(1)+'" y2="'+y1.toFixed(1)+'"/><circle cx="'+x1.toFixed(1)+'" cy="'+y1.toFixed(1)+'" r="'+(wide?0.9:1.1)+'"/><circle class="is-start" cx="'+x0+'" cy="'+y0+'" r="'+(wide?0.6:0.8)+'"/>'}
+ return '<svg class="aq-hero__leaders aq-hero__leaders--'+(wide?'wide':'narrow')+'" viewBox="0 0 '+(wide?'120 100':'100 80')+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+o+'</svg>'}
+function wHeroFigure(p,facts){var n=facts.length,co=function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'};
+ return '<figure class="aq-hero__figure">'
+  +(n?'<dl class="aq-hero__callouts aq-hero__callouts--top">'+facts.slice(0,2).map(co).join('')+'</dl>':'')
+  +'<div class="aq-hero__art"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span>'+(n?heroLeaders(n,true)+heroLeaders(n,false):'')+'</div>'
+  +(n>2?'<dl class="aq-hero__callouts aq-hero__callouts--bottom">'+facts.slice(2,4).map(co).join('')+'</dl>':'')+'</figure>'}
 /* Hub and company pages: an index of the other pages in this page's section, in pages.json order.
    A page whose first section already lists those pages (systems: the seven-families grid) sets "hero_index": false; its hero is then the text stack alone.
    A page alone in its section (projects) lists its own section headings instead; they link only when the block has a nav anchor. */
@@ -222,7 +239,9 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
   '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
- var all=p.facts||[],callouts=art?all.slice(0,4):[],rest=art?all.slice(4):all;
+ /* Callouts round the drawing only on sys-* pages, where the facts are measured values; service and industry pages
+    keep their facts (often counts) in the KeyFacts strip under the drawing. */
+ var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
  var right=home?wHomeLoop(p):art?wHeroFigure(p,callouts):detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · 316L, cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
  return '<section class="aq-hero'+(home?' aq-hero--home':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
@@ -230,7 +249,8 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
    Label "Conductivity at 25 °C · USP <645>" -> dt name + a second dd for the source (after the last " · ").
    Value "≤ 1.3 µS/cm" -> comparator, figure, unit; the unit is split off only when the tail after the last space
    (outside [placeholders]) has no digits and follows a figure, so "Part 11", "GAMP 5" and "[Ra, µm]" stay whole.
-   The "01 /" index and the ruler, frame and fixings are CSS only. */
+   The "01 /" index and the dial are aria-hidden spans; the ruler, frame and fixings are CSS only. The strip is a cream
+   data plate (data-theme="light") on the navy hero. */
 function kfValue(v){
  v=String(v==null?'':v);
  var cmp='',m=/^([<>≤≥])\s+/.exec(v);
@@ -241,11 +261,13 @@ function kfValue(v){
   if(tail.length<=8&&!/[0-9\[\]]/.test(tail)&&/[0-9\]]$/.test(head)){unit=tail;v=head}}
  return (cmp?'<span class="aq-key-facts__cmp">'+e(cmp)+'</span> ':'')+'<span class="aq-key-facts__fig">'+tx(v)+'</span>'+(unit?' <span class="aq-key-facts__unit">'+tx(unit)+'</span>':'');
 }
+/* A value that is words or a placeholder rather than a figure ("0 border crossings", "[founding year]") is set smaller */
+function kfLong(v){v=String(v==null?'':v);return v.length>10||/^\[/.test(v)}
 function wKeyFacts(facts){
  if(!facts||!facts.length)return '';
- return '<dl class="aq-key-facts">'+facts.map(function(f){
+ return '<dl class="aq-key-facts" data-theme="light">'+facts.map(function(f,i){
   var l=String(f.l==null?'':f.l),k=l.lastIndexOf(' · '),name=k>0?l.slice(0,k):l,src=k>0?l.slice(k+3):'';
-  return '<div><dt>'+tx(name)+'</dt><dd class="aq-key-facts__value">'+kfValue(f.v)+'</dd>'+(src?'<dd class="aq-key-facts__src">'+tx(src)+'</dd>':'')+'</div>';
+  return '<div><dt><span class="aq-key-facts__i" aria-hidden="true">'+(i<9?'0':'')+(i+1)+' / </span>'+tx(name)+'</dt><dd class="aq-key-facts__value'+(kfLong(f.v)?' is-long':'')+'">'+kfValue(f.v)+'</dd>'+(src?'<dd class="aq-key-facts__src">'+tx(src)+'</dd>':'')+'<span class="aq-key-facts__dial" aria-hidden="true"></span></div>';
  }).join('')+'</dl>';
 }
 /* NavBar: numbered section tabs, framed proposal button and, on phones, a menu with the sections and the page's section jump.
@@ -268,9 +290,11 @@ if(typeof document!=='undefined'){
  document.addEventListener('click',function(ev){if(ev.target&&ev.target.id==='wmenu'&&!ev.target.isConnected){var t=document.getElementById('wmenu');if(t)t.focus()}});
  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&WMENU){var t=document.getElementById('wmenu');if(t){t.click();t=document.getElementById('wmenu');if(t)t.focus()}}});
 }
-/* ProcessDiagram: treatment train as numbered stage boxes on one serpentine Flow pipe.
-   Desktop: rows of three (four with --4, chosen by dCols so no stage sits alone), alternate rows run right to left
-   (CSS direction), joined by vertical drops. Phone: compact hairline rows on one vertical pipe. No run-time measuring. */
+/* ProcessDiagram: a treatment train as an interactive piping flow on a drawing plate (also drawn by WaterPath).
+   Desktop: one bold row of stations (Spot vignette in a framed box, number tag, name) joined by a thick double-wall
+   Flow pipe with arrows; the stations are toggle buttons and the selected one fills its incoming pipe run and opens
+   its detail in the panel under the row. Phone: one vertical pipe, the selected detail opens inline under its station.
+   The markup is complete without script: every detail is visible until the page script marks the figure is-live. */
 var DGLYPH={
  hx:'M8 18h56v20H8zM14 28l6-6 6 12 6-12 6 12 6-12 6 12 6-6M20 18v-8M52 38v8',
  ro:'M6 20h60v16H6zM6 36L66 20M2 28h4M66 28h4M20 36v8M52 36v8',
@@ -293,21 +317,48 @@ var DKEYS=[['drop',/^(from|to)\b/],['hx',/heat|exchanger|preheat|condens|cooler/
  ['pump',/pump/],['steam',/steam|sterili|\bsip\b|header/],['loop',/loop|distribut|point|return|outlet/],['tank',/tank|storage|vessel/],
  ['instrument',/instrument|analy|\btoc\b|conductiv|sensor|monitor/],['screen',/plc|hmi|scada|network|historian|control/],['drop',/feed|water|wfi|\bpw\b/]];
 function dGlyph(t){var s=String(t).toLowerCase();for(var i=0;i<DKEYS.length;i++)if(DKEYS[i][1].test(s))return DGLYPH[DKEYS[i][0]];return DGLYPH.generic}
-/* Pipe fittings between stages: a valve, then an instrument bubble, alternating */
-var DVALVE='<svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6v12l18-12v12z"/></svg>';
-var DINST='<svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12V11M6.5 5.5a5.5 5.5 0 1 0 11 0a5.5 5.5 0 1 0-11 0M6.5 5.5h11"/></svg>';
-/* Stages per desktop row: three, or four when that balances the rows (4 -> one row, 7 -> 4 + 3, 8 -> 4 + 4) */
-function dCols(n){return n===4||n>=7?4:3}
-function wDiagram(b){var st=b.stages||[],n=st.length,k=0,s='',c=dCols(n);
- function link(cls){var c='aq-diagram__link'+cls;var f=k%2?DINST:DVALVE;k++;return '<span class="'+c+'">'+f+'</span>'}
- function stage(t,i){return '<div class="aq-diagram__stage"><span class="aq-diagram__num">'+String(i+1).padStart(2,'0')+'</span><svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="'+dGlyph(t)+'"/></svg><span class="aq-diagram__label">'+tx(t)+'</span></div>'}
- for(var r=0;r*c<n;r++){var rev=r%2?' aq-diagram__row--rev':'';
-  if(r)s+='<div class="aq-diagram__row aq-diagram__row--turn'+rev+'">'+link(' aq-diagram__link--turn')+'</div>';
-  s+='<div class="aq-diagram__row'+rev+'">';
-  st.slice(r*c,r*c+c).forEach(function(t,j){var i=r*c+j;if(j)s+=link('');s+=stage(t,i)});
-  s+='</div>'}
- var alt='Treatment train, '+n+' stages in order: '+st.map(function(t,i){return (i+1)+' '+t}).join(', ')+(b.base?'. Across all stages: '+b.base:'');
- return '<div class="aq-diagram'+(c===4?' aq-diagram--4':'')+(b.base?' aq-diagram--base':'')+'" role="img" aria-label="'+e(alt)+'"><div class="aq-diagram__train">'+s+'</div>'+(b.base?'<div class="aq-diagram__base"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+e(b.base)+'</span></div>':'')+'</div>'}
+function dSvg(d){return '<svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="'+d+'"/></svg>'}
+var FLN=0;
+/* wFlow(items, o): items [{t, d, tag, link, spot, icon}] in flow order. o: cls (extra root class), from / to (pipe-end
+   labels), base (what spans every stage), glyph(item) (fallback line drawing path), block (plate title block cells). */
+function wFlow(I,o){o=o||{};var n=I.length,id='fl'+(++FLN),num=function(i){return (i<9?'0':'')+(i+1)};
+ var st='',k=n<10?'0'+n:''+n;
+ I.forEach(function(x,i){var sid=id+'-s'+i,did=id+'-d'+i,on=i===0,
+   fig=isVig(x.spot)?wSpot(x.spot,'s','aq-diagram__spot'):isVig(x.icon)?wSpot(x.icon,'s','aq-diagram__spot'):dSvg((o.glyph&&o.glyph(x))||dGlyph(x.t));
+  st+='<button type="button" class="aq-diagram__st'+(i===n-1?' is-last':'')+'" id="'+sid+'" aria-pressed="'+on+'" aria-controls="'+did+'" style="--i:'+i+'">'
+   +'<span class="aq-diagram__run" aria-hidden="true"><span class="aq-diagram__fill"></span></span>'
+   +'<span class="aq-diagram__fig" aria-hidden="true">'+fig+'</span>'
+   +'<span class="aq-diagram__n">'+num(i)+'</span><span class="aq-diagram__t">'+tx(x.t)+'</span></button>';
+  var io=(i?'<span><b>In</b> '+tx(I[i-1].t)+'</span>':o.from?'<span><b>In</b> '+tx(o.from)+'</span>':'')+(i<n-1?'<span><b>Out</b> '+tx(I[i+1].t)+'</span>':o.to?'<span><b>Out</b> '+tx(o.to)+'</span>':'');
+  st+='<div class="aq-diagram__d" id="'+did+'" role="region" aria-labelledby="'+sid+'" style="--i:'+i+'">'
+   +'<span class="aq-diagram__dn" aria-hidden="true">'+num(i)+'<small>/'+k+'</small></span>'
+   +'<div class="aq-diagram__db"><p class="aq-diagram__dt">'+tx(x.t)+'</p>'
+   +(x.d?'<p class="aq-diagram__dd">'+tx(x.d)+'</p>':'')
+   +(x.tag||(x.link&&wp(x.link))?'<p class="aq-diagram__dx">'+(x.tag?'<span class="aq-tag">'+e(x.tag)+'</span>':'')+(x.link&&wp(x.link)?wlink(x.link):'')+'</p>':'')
+   +'</div>'+(io?'<p class="aq-diagram__io">'+io+'</p>':'')+'</div>'});
+ var ends=o.from||o.to?'<p class="aq-diagram__ends"><span>'+e(o.from||'')+'</span><span>'+e(o.to||'')+'</span></p>':'';
+ var base=o.base?'<p class="aq-diagram__base"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+e(o.base)+'</span></p>':'';
+ return wPlate('<div class="aq-diagram'+(o.base?' aq-diagram--base':'')+(o.cls?' '+o.cls:'')+'" style="--n:'+n+'">'+ends
+  +'<div class="aq-diagram__line" role="group" aria-label="'+e(n+' stages in flow order; choose one to see its detail')+'">'+st+'</div>'+base+'</div>',{cls:'aq-diagram__plate',block:o.block})}
+function wDiagram(b){var I=(b.stages||[]).map(function(s){return typeof s==='string'?{t:s}:s});
+ return wFlow(I,{base:b.base,from:b.from,to:b.to,block:['Process flow',I.length+' stages']})}
+/* Selecting a stage: one pressed station; its detail shown, the rest hidden; its pipe run fills (GSAP when loaded, < 1 s, once). */
+function flSel(w,b,anim){[].forEach.call(w.querySelectorAll('.aq-diagram__st'),function(x){var on=x===b,d=document.getElementById(x.getAttribute('aria-controls'));
+  x.setAttribute('aria-pressed',on?'true':'false');if(d)d.hidden=!on});
+ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(!anim||reduce||!window.gsap)return;var f=b.querySelector('.aq-diagram__fill'),d=document.getElementById(b.getAttribute('aria-controls')),v=f&&f.offsetHeight>f.offsetWidth;
+ if(f)gsap.fromTo(f,v?{scaleY:0}:{scaleX:0},{scaleX:1,scaleY:1,duration:0.55,ease:'power2.out',clearProps:'transform'});
+ if(d)gsap.fromTo(d,{autoAlpha:0,y:8},{autoAlpha:1,y:0,duration:0.35,delay:0.15,ease:'power2.out',clearProps:'opacity,visibility,transform'})}
+function flInit(){[].forEach.call(document.querySelectorAll('.aq-diagram:not(.is-live)'),function(w){w.classList.add('is-live');
+ var b=w.querySelector('.aq-diagram__st[aria-pressed="true"]')||w.querySelector('.aq-diagram__st');if(b)flSel(w,b,false)})}
+if(typeof document!=='undefined'&&document.addEventListener){
+ document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-diagram__st');if(!b)return;var w=b.closest('.aq-diagram');
+  if(b.getAttribute('aria-pressed')!=='true')flSel(w,b,true)});
+ document.addEventListener('keydown',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-diagram__st');if(!b)return;
+  var L=[].slice.call(b.closest('.aq-diagram').querySelectorAll('.aq-diagram__st')),i=L.indexOf(b),j={ArrowRight:i+1,ArrowDown:i+1,ArrowLeft:i-1,ArrowUp:i-1,Home:0,End:L.length-1}[ev.key];
+  if(j==null)return;ev.preventDefault();j=Math.max(0,Math.min(L.length-1,j));if(j!==i){L[j].focus();flSel(b.closest('.aq-diagram'),L[j],true)}});
+ if(typeof MutationObserver!=='undefined'){var flQ=0;new MutationObserver(function(){if(flQ)return;flQ=1;setTimeout(function(){flQ=0;flInit()},0)}).observe(document.documentElement,{childList:true,subtree:true})}
+ if(document.readyState!=='loading')setTimeout(flInit,0);else document.addEventListener('DOMContentLoaded',flInit)}
 /* SectionNav: sticky numbered jump links to blocks that carry a short nav label (four or more), with a page progress readout.
    Block section ids come from jid(). The scroll-spy below marks the section being read (aria-current) here and in the phone menu. */
 function ctaLink(p){return p.primary_cta_link||(/service/i.test(p.primary_cta)?'contact-service':'contact-proposal')}
@@ -317,9 +368,9 @@ function wSectionNav(p){var j=navJumps(p),segs='';if(!j.length)return '';for(var
  return '<nav class="aq-section-nav" aria-label="On this page"><div class="aq-in"><span class="aq-section-nav__label" aria-hidden="true">On this page <span>↓</span></span><ol class="aq-section-nav__links">'+
   j.map(function(x,i){return '<li><a href="#'+e(p.id)+'" data-jump="'+e(x.id)+'"><span class="aq-section-nav__num" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+e(x.label)+'</a></li>'}).join('')+'</ol>'+
   '<div class="aq-section-nav__progress"><span class="aq-section-nav__progress-label" aria-hidden="true">Page progress</span><span class="aq-section-nav__readout"><span class="aq-section-nav__meter" role="progressbar" aria-label="Page progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">'+segs+'</span><span class="aq-section-nav__pct" aria-hidden="true">0%</span></span></div></div></nav>'}
-/* Scroll-spy and progress: one passive scroll listener, batched to one update per frame; re-runs when the page re-renders. */
+/* Scroll-spy, progress and (phones) tuck-on-scroll-down: one passive scroll listener, batched to one update per frame; re-runs when the page re-renders. */
 (function(){if(typeof window==='undefined'||!window.addEventListener||!window.requestAnimationFrame)return;
- var q=0,rm=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
+ var q=0,lastY=0,rm=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):null,ph=window.matchMedia?window.matchMedia('(max-width: 860px)'):null;
  function sched(){if(!q)q=requestAnimationFrame(function(){q=0;spy()})}
  function reveal(a){var s=a.closest('.aq-section-nav__links');if(!s||s.scrollWidth<=s.clientWidth)return;var r=a.getBoundingClientRect(),sr=s.getBoundingClientRect();
   if(r.left<sr.left||r.right>sr.right)s.scrollTo({left:s.scrollLeft+r.left-sr.left-(sr.width-r.width)/2,behavior:rm&&rm.matches?'auto':'smooth'})}
@@ -327,6 +378,8 @@ function wSectionNav(p){var j=navJumps(p),segs='';if(!j.length)return '';for(var
   var de=document.documentElement,vh=window.innerHeight,y=window.scrollY||de.scrollTop,max=de.scrollHeight-vh,line=bar.getBoundingClientRect().bottom+vh*0.2,act=null,
    links=bar.querySelectorAll('a[data-jump]');
   /* nothing is current until the bar has stuck, i.e. the reader has scrolled past the hero */
+  /* Phones: the stuck bar tucks away while the reader scrolls down and comes back on any scroll up */
+  var stuck=bar.getBoundingClientRect().top<=1&&y>0;bar.classList.toggle('is-tucked',!!(ph&&ph.matches&&stuck&&(y>lastY+4||(bar.classList.contains('is-tucked')&&y>=lastY-4))));lastY=y;
   if(bar.getBoundingClientRect().top<=1)links.forEach(function(a){var s=document.getElementById(a.dataset.jump);if(s&&s.getBoundingClientRect().top<=line)act=a.dataset.jump});
   if(links.length&&max>0&&y>=max-2){var l=links[links.length-1],ls=document.getElementById(l.dataset.jump);if(ls&&ls.getBoundingClientRect().top<vh)act=l.dataset.jump}
   document.querySelectorAll('.aq-section-nav a[data-jump], .aq-menu a[data-jump]').forEach(function(a){var on=a.dataset.jump===act;
@@ -337,12 +390,12 @@ function wSectionNav(p){var j=navJumps(p),segs='';if(!j.length)return '';for(var
   var t=bar.querySelector('.aq-section-nav__pct');if(t&&t.firstChild)t.firstChild.nodeValue=pct+'%'}
  window.addEventListener('scroll',sched,{passive:true});window.addEventListener('resize',sched,{passive:true});window.addEventListener('load',sched);
  if(window.MutationObserver)new MutationObserver(sched).observe(document.documentElement,{childList:true,subtree:true});sched()})();
-/* WaterPath: system families as stops on one pipe, feed to point of use.
-   Each stop shows its page's line drawing when ART (parts/Hero.js) lists it, else the GLYPH below as fallback. */
+/* WaterPath: the system families as stations on one pipe, feed to point of use, drawn by the ProcessDiagram flow
+   (wFlow in parts/ProcessDiagram.js) with the aq-water-path modifier. Each station shows its item's spot (or icon);
+   without one, the GLYPH below keyed by the item's page id. The detail panel carries the item's line, tag and link. */
 var GLYPH={"sys-pretreatment": "M8 50V16a6 6 0 0 1 12 0v34M26 50V16a6 6 0 0 1 12 0v34M44 50V26a10 6 0 0 1 20 0v24M4 50h64M14 10V4h18v6", "sys-pw": "M6 50V10h60v40M4 50h64M12 18h48M12 26h48M12 34h48M12 42h48M60 14v32", "sys-wfi-distillation": "M10 50V12a6 6 0 0 1 12 0v38M30 50V20a6 6 0 0 1 12 0v30M22 16h8M42 24h8v-8h12v34M4 50h64", "sys-wfi-membrane": "M8 50V20h56v30M4 50h64M16 20V10M28 20V10M40 20V10M52 20V10M12 10h44M14 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0M30 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0M46 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0", "sys-pure-steam": "M10 50V20h40v30M4 50h64M18 20V6h6v14M16 30h16M16 36h16M16 42h16M50 30h14v20M58 30V22", "sys-storage": "M8 46V22a10 5 0 0 1 20 0v24M8 46l-2 4M28 46l2 4M34 46V14a12 6 0 0 1 24 0v32M34 46l-2 4M58 46l2 4M28 30h6M4 50h64", "sys-monitoring": "M6 50h60M10 50V14h28v36M16 22h16M16 28h10M16 34h13M44 30a10 10 0 1 0 20 0a10 10 0 1 0-20 0M54 30l6-6"};
-function wPath(b){var it=b.items||[],stop=function(x,i){var n=String(i+1).padStart(2,'0'),g=GLYPH[x.link];
-  return '<article class="aq-water-path__stop" data-n="'+n+'">'+(ART[x.link]?'<span class="aq-illustration aq-water-path__art" aria-hidden="true" style="'+artMask(x.link)+'"></span>':g?'<svg class="aq-water-path__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="'+g+'"/></svg>':'')+'<span class="aq-water-path__num">'+n+'</span><span class="aq-h3">'+(x.link&&wp(x.link)?'<a href="#'+e(x.link)+'" data-wp="'+e(x.link)+'">'+tx(x.t)+'</a>':tx(x.t))+'</span><span class="aq-small">'+tx(x.d)+'</span>'+(x.tag?'<span class="aq-tags"><span class="aq-tag">'+e(x.tag)+'</span></span>':'')+'</article>'};
- return '<div class="aq-water-path"><span class="aq-water-path__feed">'+e(b.from||'Feed water')+'</span><div class="aq-water-path__pipe"></div>'+it.slice(0,4).map(stop).join('')+'<div class="aq-water-path__bend"></div><div class="aq-water-path__pipe aq-water-path__pipe--return"></div>'+it.slice(4,7).map(function(x,i){return stop(x,i+4)}).join('')+'<span class="aq-water-path__outlet">'+e(b.to||'Point of use')+' ←</span></div>'}
+function wPath(b){var I=(b.items||[]).slice(0,7);
+ return wFlow(I,{cls:'aq-water-path',from:b.from||'Feed water',to:b.to||'Point of use',glyph:function(x){return GLYPH[x.link]},block:['Water path',I.length+' systems']})}
 /* Block "band" -> Band: one statement set very large in a framed panel, the body as a small supporting line, and a
    decorative pipework drawing at the right that fades behind the text. Fields: h, body, tone ("limestone" default or
    "sunken"), and optional mark: one word or phrase from h to frame with corner brackets. The mark is only wrapped where
@@ -611,7 +664,7 @@ BLOCKS['grid'].route=function(b,H){var I=b.items||[],n=I.length,C=n<=4?n:(n%4===
 /* Block "options" -> OptionList: configuration options as rows of the shared list grammar: index, title, one line.
    as: "modules" -> OptionModules: the options drawn as framed modules around the page's own equipment drawing (the base
    skid), joined to it by dashed connectors. Item fields: t, d, spot (Spot or Icon name, wSpot), tag (category label above
-   the box, optional). Block fields: art (drawing page id, default the current page), base (label, default "Base skid"). */
+   the box, optional). Block fields: art (drawing page id, default the current page), spot (a Spot name drawn as the base instead, so a page that already shows its drawing in the hero and callouts does not repeat it), base (label, default "Base skid"). */
 function wOptModule(it,i,b,side){var v=wSpot(it.spot||it.icon,'s','aq-spot--on-navy aq-option-modules__vig');
  return fli('<li class="aq-option-modules__m aq-option-modules__m--'+side+'">'+(it.tag?'<p class="aq-option-modules__cat">'+tx(it.tag)+'</p>':'')
   +'<div class="aq-option-modules__box'+(v?'':' aq-option-modules__box--bare')+'"><h3 class="aq-option-modules__t"><span>'+tx(it.t)+'</span><span class="aq-option-modules__plus" aria-hidden="true">[+]</span></h3>'
@@ -619,7 +672,8 @@ function wOptModule(it,i,b,side){var v=wSpot(it.spot||it.icon,'s','aq-spot--on-n
   +'<svg class="aq-option-modules__wire" aria-hidden="true"><line x1="0" y1="50%" x2="100%" y2="50%"/><circle cx="'+(side==='l'?'100%':'0')+'" cy="50%" r="2.5"/></svg></div></li>',b,i)}
 function wOptModules(b,H){var I=b.items||[],art=b.art||WP,pg=wp(art),half=Math.ceil(I.length/2),hasArt=!!ART[art];
  var L=I.slice(0,half),R=I.slice(half);
- var base=hasArt?wPlate('<figure class="aq-option-modules__fig"><span class="aq-illustration aq-option-modules__art" role="img" aria-label="'+e(ART[art])+'" style="'+artMask(art)+'"></span>'
+ var bs=b.spot&&isSpot(b.spot);hasArt=hasArt||bs;
+ var base=hasArt?wPlate('<figure class="aq-option-modules__fig">'+(bs?wSpot(b.spot,'l','aq-option-modules__art aq-option-modules__art--spot'):'<span class="aq-illustration aq-option-modules__art" role="img" aria-label="'+e(ART[art])+'" style="'+artMask(art)+'"></span>')
    +'<figcaption class="aq-option-modules__label"><span>'+tx(b.base||'Base skid')+'</span>'+(pg&&pg.nav_label?'<span>'+tx(pg.nav_label)+'</span>':'')+'</figcaption></figure>',{cls:'aq-option-modules__base'}):'';
  var list=function(X,o,side){return X.length?'<ol class="aq-option-modules__list aq-option-modules__list--'+side+'"'+(o?' start="'+(o+1)+'"':'')+'>'+X.map(function(it,k){return wOptModule(it,o+k,b,side)}).join('')+'</ol>':''};
  var inner='<div class="aq-options aq-option-modules'+(hasArt?'':' aq-option-modules--bare')+'">'+list(L,0,'l')+base+list(R,half,'r')+'</div>';
@@ -779,13 +833,21 @@ document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.targe
  r.querySelectorAll('tbody tr').forEach(function(tr){var on=!t||tr.getAttribute('data-topic')===t;tr.hidden=!on;if(on)n++});
  if(fd)fd.classList.toggle('is-filtered',!!t);
  r.querySelector('.aq-notes-register__count').textContent=n+(n===1?' note':' notes')+(t?' in '+t:'')});
-/* Block "related" -> RelatedLinks: the pages to read next. items: page ids. Each is one linked row: index, title, the
-   page's section as a mono label, and an arrow. Desktop: three to a row (four for 4, 7 or 8), each with its drawing from ART (parts/Hero.js)
-   when the page has one. Phones: compact rows, no drawings. */
-BLOCKS['related']=function(b,H){return sec(H+'<ol class="aq-related-links">'+(b.items||[]).filter(wp).map(function(id,i){var p=wp(id);
- return '<li><a class="aq-related-links__card" href="#'+e(id)+'" data-wp="'+e(id)+'">'+idx(i)
-  +'<span class="aq-related-links__title">'+tx(p.nav_label)+'</span><span class="aq-related-links__group">'+e(p.section)+'</span>'
-  +(ART[id]?'<span class="aq-illustration aq-related-links__art" aria-hidden="true" style="'+artMask(id)+'"></span>':'')+'</a></li>'}).join('')+'</ol>');};
+/* Block "related" -> RelatedLinks: the pages to read next (concept 17). items: page ids. Each is one linked card hung
+   from a drawn pipe: a junction node, a large flow number, a thumbnail of the target page, "01 / Systems" as a mono
+   label and the page's title in condensed capitals with an arrow. Thumbnail: the target page's Spot (REL_SPOT), else its
+   equipment drawing (ART in parts/Hero.js), else a fitting Icon (REL_ICON), else none. Desktop: up to four to a row,
+   every second card hung lower so the pipe reads as a route; phones: one vertical spine with a node per card. */
+var REL_SPOT={'sys-pretreatment':'pretreatment','sys-pw':'ro-skid','sys-wfi-distillation':'still','sys-wfi-membrane':'edi-stack','sys-pure-steam':'pure-steam-generator','sys-storage':'storage-tank'};
+var REL_ICON={'systems':'loop','services':'wrench','industries':'tank','compliance':'stamp','cmp-documentation':'binder','cmp-quality':'magnifier','projects':'pid','about':'weld','careers':'calendar','news':'calendar','contact-proposal':'pid','contact-service':'wrench','contact-locations':'gauge'};
+function relThumb(id){if(REL_SPOT[id])return wSpot(REL_SPOT[id],'m','aq-related-links__thumb');
+ if(ART[id])return '<span class="aq-illustration aq-related-links__thumb aq-related-links__art" aria-hidden="true" style="'+artMask(id)+'"></span>';
+ if(REL_ICON[id])return wIcon(REL_ICON[id],'aq-related-links__thumb aq-related-links__icon');return ''}
+BLOCKS['related']=function(b,H){var I=(b.items||[]).filter(wp);
+ return sec(H+'<ol class="aq-related-links" style="--n:'+I.length+'">'+I.map(function(id,i){var p=wp(id),n=(i<9?'0':'')+(i+1);
+ return '<li><a class="aq-related-links__card" href="#'+e(id)+'" data-wp="'+e(id)+'"><span class="aq-related-links__n" aria-hidden="true">'+n+'</span>'+relThumb(id)
+  +'<span class="aq-related-links__group"><span aria-hidden="true">'+n+' / </span>'+e(p.section)+'</span>'
+  +'<span class="aq-related-links__title">'+tx(p.nav_label)+'</span></a></li>'}).join('')+'</ol>');};
 /* Table as "roles" -> RoleMatrix: who writes, does or approves each document, like the signature blocks on a controlled
    document. Fields as a table: cols [document, then one column per role], rows. Each role cell is a stamp labelled
    with its column name; a cell that starts with "Aquemi" is ours (tinted flow), one that starts with "You" or "Your" is

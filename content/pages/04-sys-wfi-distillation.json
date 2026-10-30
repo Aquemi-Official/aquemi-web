@@ -5,10 +5,10 @@
  "title": "WFI stills: multi-effect and vapour compression | Aquemi",
  "meta": "Multi-effect and vapour compression stills for WFI at USP <85> < 0.25 EU/mL and USP <645> 1.3 µS/cm, sized on your steam and power costs.",
  "path": "/systems/wfi-distillation/",
- "eyebrow": "WATER FOR INJECTION · DISTILLATION · USP <85> · PH. EUR. 0169",
- "headline": "WFI stills sized on your utility costs, with endotoxin margin to show an inspector",
- "lead": "Multi-effect and vapour compression stills that make hot Water for Injection (WFI) within USP <85> (< 0.25 EU/mL) and USP <645> (1.3 µS/cm at 25 °C), chosen on your steam, power and cooling water costs.",
- "primary_cta": "Request a still sizing and utility cost proposal",
+ "eyebrow": "WFI · DISTILLATION · USP <85> · PH. EUR. 0169",
+ "headline": "WFI stills sized on your utility costs",
+ "lead": "Multi-effect and vapour compression stills for hot WFI, chosen on your steam, power and cooling water costs.",
+ "primary_cta": "Request a still sizing proposal",
  "primary_cta_intent": "Sizing and budget proposal for a new system|WFI by distillation",
  "secondary_cta": {
   "label": "Get a sample turnover package",
@@ -21,15 +21,15 @@
   },
   {
    "v": "< 0.25 EU/mL",
-   "l": "Bacterial endotoxins · USP <85>"
+   "l": "Endotoxin · USP <85>"
   },
   {
    "v": "≤ 1.3 µS/cm",
-   "l": "Conductivity at 25 °C · USP <645>"
+   "l": "Conductivity, 25 °C · USP <645>"
   },
   {
    "v": "[Ra, µm]",
-   "l": "Product-contact surface finish · ASME BPE"
+   "l": "Surface finish · ASME BPE"
   }
  ],
  "blocks": [
@@ -37,7 +37,6 @@
    "type": "spec",
    "h": "Water quality you release against",
    "caption": "WFI · USP and Ph. Eur. 0169",
-   "note": "Limits for WFI in bulk, applied at the point of use. Annex 1 paragraph 6.15 expects continuous TOC and conductivity monitoring; alert levels come from qualification data.",
    "cols": [
     "Parameter",
     "Limit",
@@ -53,39 +52,35 @@
     {
      "p": "Conductivity, USP",
      "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
-     "m": "USP <645>, non-compensated reading",
-     "hl": false
+     "m": "USP <645>"
     },
     {
      "p": "Conductivity, Ph. Eur.",
-     "v": "≤ 1.1 µS/cm @ 20 °C (stage 1); ≤ 2.1 µS/cm @ 25 °C (stage 2)",
-     "m": "Ph. Eur. 0169, three-stage method as USP <645>",
-     "hl": false
+     "v": "≤ 1.1 µS/cm @ 20 °C (stage 1)",
+     "m": "Ph. Eur. 0169"
     },
     {
      "p": "Total organic carbon (TOC)",
      "v": "≤ 0.50 mg/L (500 ppb)",
-     "m": "USP <643>; Ph. Eur. 2.2.44, method A",
-     "hl": false
+     "m": "USP <643>; Ph. Eur. 2.2.44"
     },
     {
      "p": "Microbial action level",
-     "v": "10 colony-forming units (CFU)/100 mL",
-     "m": "USP <1231> guidance; Ph. Eur. 0169: ≥ 200 mL filtered, R2A agar, 30–35 °C, ≥ 5 days",
-     "hl": false
+     "v": "10 CFU/100 mL",
+     "m": "USP <1231>; Ph. Eur. 0169"
     },
     {
      "p": "Still outlet, guaranteed",
      "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]; [endotoxin reduction guaranteed, log]",
-     "m": "Conductivity checked at factory and site acceptance tests (FAT, SAT); reduction per still maker, [challenge test data, if held]",
-     "hl": false
+     "m": "Checked at FAT and SAT"
     }
    ],
-   "nav": "Limits"
+   "nav": "Limits",
+   "as": "gauges"
   },
   {
    "type": "table",
-   "h": "Multi-effect or vapour compression: which fits your utilities",
+   "h": "Multi-effect or vapour compression?",
    "nav": "Still type",
    "cols": [
     "Factor",
@@ -94,43 +89,38 @@
    ],
    "rows": [
     [
-     "Main energy input",
-     "Plant steam to the first column",
-     "Electric compressor; steam or electric heat at start-up"
+     "Energy in",
+     "Plant steam to column 1",
+     "Electric compressor, plus start-up heat"
     ],
     [
      "Cooling water",
-     "Needed at the final condenser; falls as effects are added",
+     "Needed; falls as effects are added",
      "Little or none"
     ],
     [
      "Feed water",
-     "PW: the first column runs hot enough to scale on silica and hardness",
-     "Often tolerates softened or reverse osmosis (RO) feed at its lower boiling temperature; confirm the maker's limits"
+     "PW: column 1 runs hot enough to scale",
+     "Often softened or RO feed; confirm the maker's limits"
     ],
     [
-     "Capital and operating cost",
-     "More effects cost more to buy and less steam to run",
-     "Compressor adds purchase cost; runs cheaply where power costs less than steam"
+     "Cost",
+     "More effects: dearer to buy, less steam to run",
+     "Compressor adds cost; cheap where power costs less than steam"
     ],
     [
      "Moving parts",
      "Feed pump only",
-     "Compressor, with bearings and seals to maintain"
-    ],
-    [
-     "How it works",
-     "Plant steam boils PW in column 1; each column's vapour heats the next and condenses as WFI",
-     "A compressor raises the vapour's pressure so it condenses on the surface that boils more feed"
+     "Compressor bearings and seals to maintain"
     ],
     [
      "Fits when",
-     "Reliable plant steam at enough pressure and spare boiler capacity",
-     "Steam is costly or limited, cooling water scarce, or power cheap, as in several provinces"
+     "Reliable plant steam and spare boiler capacity",
+     "Steam costly or limited, cooling water scarce, or power cheap"
     ]
    ],
    "as": "versus",
-   "fold": 4
+   "fold": 3
   },
   {
    "type": "prose",
@@ -139,20 +129,16 @@
    "nav": "Endotoxin",
    "points": [
     {
-     "t": "A fixed factor, not a fixed level",
-     "d": "A still cuts endotoxin by a set number of logs, so what leaves it depends on what the Purified Water (PW) feed brings in."
+     "t": "A fixed log factor, not a level",
+     "d": "A still cuts endotoxin by set logs; many makers guarantee 2.5–3 (FDA high purity water inspection guide)."
     },
     {
-     "t": "Many stills guarantee 2.5 to 3 log",
-     "d": "That is the reduction many still makers guarantee, according to the FDA Guide to Inspections of High Purity Water Systems."
+     "t": "250 EU/mL in, 0.25 out",
+     "d": "A 3 log still fed 250 EU/mL delivers 0.25 EU/mL: already a fail."
     },
     {
-     "t": "250 EU/mL in, 0.25 EU/mL out",
-     "d": "A 3 log still fed at 250 EU/mL delivers 0.25 EU/mL, which already fails the < 0.25 EU/mL limit."
-    },
-    {
-     "t": "Still and feed designed as one",
-     "d": "The guaranteed reduction sets your PW endotoxin target in the functional specification, and we design the PW system to hold it."
+     "t": "Still and feed as one",
+     "d": "The guaranteed reduction sets your PW endotoxin target; we design the PW system to hold it."
     }
    ],
    "figure": {
@@ -167,35 +153,22 @@
       "label": "PW feed at 250 EU/mL",
       "v": 0.25,
       "note": "WFI after a 3 log still: 0.25 EU/mL, which fails",
-      "n": 3
+      "n": 2
      },
      {
       "label": "PW feed held to your target",
       "level": "below",
       "note": "WFI with margin under the limit",
-      "n": 4
+      "n": 3
      }
     ]
-   }
-  },
-  {
-   "type": "diagram",
-   "h": "How a multi-effect still works",
-   "stages": [
-    "PW feed",
-    "Preheaters",
-    "Column 1, plant steam",
-    "Columns 2 to n",
-    "Final condenser",
-    "Hot WFI to storage"
-   ],
-   "caption": "Distillate preheats the feed. Each column's vapour passes a droplet separator (Ph. Eur. 0169) and heats the next. Concentrate carrying rejected endotoxin drains from the last column, as does distillate off conductivity or temperature setpoint."
+   },
+   "ground": "light"
   },
   {
    "type": "spec",
    "h": "Still design parameters",
    "caption": "WFI still · design basis",
-   "note": "Bracketed values are confirmed in your heat balance and functional specification.",
    "cols": [
     "Parameter",
     "Design value",
@@ -205,105 +178,78 @@
     {
      "p": "Capacity",
      "v": "Multi-effect [minimum–maximum capacity, L/h], [range of effects offered] effects; vapour compression [minimum–maximum capacity, L/h]",
-     "m": "Multi-effect rated at your minimum steam pressure; vapour compression at your voltage and feed temperature",
-     "hl": true
+     "m": "At your minimum steam pressure, or your voltage and feed temperature",
+     "hl": true,
+     "at": [
+      22,
+      37
+     ]
     },
     {
      "p": "Heating, multi-effect",
      "v": "Plant steam at [minimum heating steam pressure, bar(g)]",
-     "m": "Steam per kg of WFI falls roughly in proportion to the number of effects",
-     "hl": false
+     "m": "Steam use falls roughly with the number of effects",
+     "at": [
+      21.8,
+      15.8
+     ]
+    },
+    {
+     "p": "Heat exchangers",
+     "v": "Double tube sheet on preheaters and condensers",
+     "m": "Stops feed leaking into distillate (FDA high purity water guide)",
+     "at": [
+      77,
+      46
+     ]
     },
     {
      "p": "Feed water",
-     "v": "PW to USP or Ph. Eur. 0008, plus still feed limits",
-     "m": "Conductivity, silica, chloride, total hardness and endotoxin limits in the functional specification, tested at FAT",
-     "hl": false
+     "v": "PW to USP or Ph. Eur. 0008, within still feed limits",
+     "m": "Silica, chloride, hardness and endotoxin limits, tested at FAT",
+     "at": [
+      83.8,
+      67
+     ]
+    },
+    {
+     "p": "Materials and finish",
+     "v": "316L, [standard finish, ASME BPE designation]",
+     "m": "SF1 Ra ≤ 0.51 µm or SF4 Ra ≤ 0.38 µm; EN 10204 3.1",
+     "at": [
+      57.4,
+      59
+     ]
     },
     {
      "p": "Distillate temperature",
      "v": "[distillate temperature range, °C], or cooled to order",
-     "m": "Hot loop above 70 °C (Annex 1, 6.10), or cooled for ambient use",
-     "hl": false
-    },
-    {
-     "p": "Materials and finish",
-     "v": "316L stainless steel, [standard finish, ASME BPE designation]",
-     "m": "ASME BPE SF1 Ra ≤ 0.51 µm mechanically polished, SF4 Ra ≤ 0.38 µm electropolished; EN 10204 3.1 certificates",
-     "hl": false
+     "m": "Hot loop above 70 °C (Annex 1, 6.10)"
     },
     {
      "p": "Pressure parts",
      "v": "ASME Section VIII, Division 1",
-     "m": "Canadian registration number (CRN) under CSA B51, [provinces where Aquemi registers]",
-     "hl": false
+     "m": "CRN under CSA B51, [provinces where Aquemi registers]"
     },
     {
-     "p": "Distillate quality",
-     "v": "Feed degassing, continuous venting, divert to drain on high conductivity or low temperature",
-     "m": "Dissolved carbon dioxide (CO₂) raises conductivity; every start-up diverts; lines drain on shutdown",
-     "hl": false
-    },
-    {
-     "p": "Heat exchangers",
-     "v": "Double tube sheet on feed preheaters and condensers",
-     "m": "FDA high purity water guide: double tube sheet or positive pressure against feed-to-distillate leaks",
-     "hl": false
+     "p": "Off-spec distillate",
+     "v": "Degassed feed, continuous venting, divert to drain",
+     "m": "Every start-up diverts; lines drain on shutdown"
     },
     {
      "p": "Instruments and controls",
-     "v": "Conductivity, temperature, online TOC [standard or option], endotoxin sample valve; programmable logic controller (PLC) with audit trail",
-     "m": "GAMP 5; 21 CFR Part 11; calibration certificates supplied",
-     "hl": false
+     "v": "Conductivity, temperature, TOC [standard or option], endotoxin sample valve; PLC with audit trail",
+     "m": "GAMP 5; 21 CFR Part 11"
     },
     {
      "p": "Footprint and height",
      "v": "[footprint and height by capacity, m]",
-     "m": "We check ceiling height and lifting access before layout",
-     "hl": false
+     "m": "Ceiling height and lifting access checked first"
     }
    ],
    "nav": "Still design",
-   "fold": 6
-  },
-  {
-   "type": "options",
-   "as": "modules",
-   "h": "Configurations and options",
-   "items": [
-    {
-     "t": "Number of effects",
-     "d": "From [range of effects offered], chosen on steam cost and capital budget in a side-by-side heat balance.",
-     "spot": "still"
-    },
-    {
-     "t": "Combined WFI and pure steam",
-     "d": "Column 1 delivers pure steam while the still makes WFI, at reduced WFI capacity.",
-     "spot": "pure-steam-generator"
-    },
-    {
-     "t": "Electric or combined heating",
-     "d": "Electric heating for sites without plant steam, or a combination for limited boiler capacity.",
-     "spot": "heat-exchanger"
-    },
-    {
-     "t": "Cooled distillate",
-     "d": "An outlet cooler for ambient storage, or point-of-use coolers on a hot loop.",
-     "spot": "heat-exchanger"
-    },
-    {
-     "t": "Proportional output",
-     "d": "Output follows tank level, cutting start-up dumps and thermal cycling.",
-     "spot": "storage-tank"
-    },
-    {
-     "t": "Online TOC and conductivity",
-     "d": "TOC to USP <643> and conductivity to USP <645> at the outlet, trended on the panel (Annex 1, 6.15).",
-     "spot": "toc"
-    }
-   ],
-   "nav": "Options",
-   "fold": 3
+   "fold": 5,
+   "as": "callouts"
   },
   {
    "type": "docs",
@@ -315,72 +261,60 @@
     },
     {
      "t": "Heat and mass balance",
-     "d": "Steam, power, cooling water and feed per m³ of WFI, at design and turndown"
+     "d": "Steam, power, cooling water and feed per m³ of WFI, design and turndown"
     },
     {
      "t": "Functional specification",
-     "d": "Feed limits, setpoints, divert logic and alarms; hardware and software design specifications to GAMP 5"
+     "d": "Feed limits, setpoints, divert logic and alarms; design specifications to GAMP 5"
     },
     {
-     "t": "FAT, SAT, IQ and OQ protocols and reports",
-     "d": "Deviations closed; installation and operational qualification (IQ/OQ) with a traceability matrix"
+     "t": "FAT, SAT, IQ and OQ protocols",
+     "d": "Executed reports, deviations closed, with a traceability matrix"
     },
     {
-     "t": "Pressure vessel calculations and CRN documents",
+     "t": "Pressure vessel calculations and CRN",
      "d": "ASME Section VIII, CSA B51; hydrostatic tests on both tube sheets"
     },
     {
-     "t": "Material certificates, weld log and borescope records",
-     "d": "EN 10204 3.1; welders to ASME Section IX; surface finish and passivation reports"
+     "t": "Material certificates and weld log",
+     "d": "EN 10204 3.1, ASME IX welders, borescope, finish and passivation reports"
     },
     {
-     "t": "Piping and instrumentation diagrams (P&IDs) and general arrangement drawings",
+     "t": "P&IDs and general arrangement drawings",
      "d": "As built"
     },
     {
-     "t": "Operation and maintenance manual and spares list",
-     "d": "Start-up, shutdown and descaling procedures; spares for [months of operation]"
+     "t": "O&M manual and spares list",
+     "d": "Start-up, shutdown and descaling; spares for [months of operation]"
     }
    ],
    "nav": "Documents",
-   "fold": 6,
+   "fold": 3,
    "fold_noun": "documents"
   },
   {
    "type": "faq",
-   "h": "Questions validation and engineering teams ask",
+   "h": "Questions validation teams ask",
    "items": [
     {
-     "q": "Who builds the still, and how do we check its quality?",
-     "a": "[still builder: in-house or named maker]. Ask for the sample turnover package: weld map, weld log, borescope records, material certificates by heat number and pressure vessel documents. Your QA team can audit [the shop that builds the still] and witness its hold points, and your quality unit approves the FAT protocol before we run it."
+     "q": "Who builds the still, and how do we check it?",
+     "a": "[still builder: in-house or named maker]. Audit the shop, witness its hold points and read the sample turnover package; your quality unit approves the FAT protocol."
     },
     {
-     "q": "When do the FAT and IQ/OQ documents reach us?",
-     "a": "The FAT protocol reaches you [protocol lead time, weeks] before the test. It covers sequences, alarms, interlocks, start-up divert, instrument loops and [hot run scope at FAT]. The executed report and deviation log arrive before the still ships, and the IQ/OQ protocols with it, so your team is not writing them during start-up."
+     "q": "When do the FAT and IQ/OQ documents arrive?",
+     "a": "The FAT protocol [protocol lead time, weeks] before the test. The executed report and the IQ/OQ protocols before the still ships, not during start-up."
     },
     {
-     "q": "Why distil when Ph. Eur. now allows membrane WFI?",
-     "a": "Since April 2017, Ph. Eur. 0169 accepts reverse osmosis coupled with other suitable techniques; USP has long accepted any process equivalent or superior to distillation. Distil for a hot loop, rely on the longest inspection record, or have steam or cheap power. Membrane saves energy where ambient storage suits. We model both when the choice is close."
+     "q": "Why distil when Ph. Eur. allows membrane WFI?",
+     "a": "Distil for a hot loop, the longest inspection record, or cheap steam or power. Membrane saves energy where ambient storage suits. We model both when the choice is close."
     },
     {
-     "q": "How much endotoxin reduction can we count on?",
-     "a": "Only what the still manufacturer guarantees, which FDA's inspection guide puts at 2.5 to 3 log for many stills. A 3 log still fed at 250 EU/mL delivers 0.25 EU/mL, which already fails the < 0.25 EU/mL limit. So we set a PW endotoxin target well below that and design the PW system and its sanitization to hold it."
-    },
-    {
-     "q": "Does an imported still need a Canadian registration number?",
-     "a": "Yes. Pressure vessels and fittings installed in Canada need a CRN under CSA B51 from the province of installation, and a still designed for another market may need design changes first. Registration is in the project schedule from the start, in [provinces where Aquemi registers]."
-    },
-    {
-     "q": "What happens at start-up and shutdown?",
-     "a": "Every start-up diverts distillate to drain until conductivity and temperature reach setpoint, and the condenser and distillate line drain on shutdown. FDA's inspection guide describes a still whose condenser held about 50 litres of WFI for up to several days between runs, a source of endotoxin; we design so that cannot happen."
-    },
-    {
-     "q": "Do hot WFI systems rouge, and who deals with it?",
-     "a": "Hot WFI and pure steam systems develop rouge, an iron oxide film on stainless steel, over time. We record the surface condition at handover and include inspection in the service plan, with derouging and repassivation when trends call for it."
+     "q": "Does an imported still need a CRN?",
+     "a": "Yes. Pressure parts installed in Canada need a CRN under CSA B51 from the province, and may need design changes first. We register in [provinces where Aquemi registers]."
     },
     {
      "q": "Who services the still after handover?",
-     "a": "Our service team, from [service locations]. Gaskets, instruments and compressor parts for your still are stocked in [stocking location], and a service plan states the on-site response to a severity 1 fault: [severity 1 on-site response time, hours]. Every visit ends with a signed report your quality unit can file."
+     "a": "Our team from [service locations], with spares in [stocking location]. A service plan states the severity 1 on-site response: [severity 1 on-site response time, hours]."
     }
    ],
    "nav": "FAQ"
@@ -392,33 +326,26 @@
     "sys-storage",
     "sys-pure-steam",
     "sys-wfi-membrane",
-    "sys-pw",
-    "svc-fat-sat",
-    "svc-service"
+    "svc-fat-sat"
    ]
   }
  ],
  "cta": {
-  "h": "Send your demand profile and utility costs. We compare both still types side by side.",
-  "body": "An engineer replies with questions on your data or a budget proposal.",
-  "button": "Request a still sizing and utility cost proposal",
+  "h": "Send your demand and utility costs",
+  "button": "Request a still sizing proposal",
   "link": "contact-proposal",
   "intent": "Sizing and budget proposal for a new system|WFI by distillation",
   "include": [
    "WFI demand: peak and average L/h",
-   "Plant steam pressure, spare capacity and cost",
+   "Steam pressure, spare capacity and cost",
    "Cooling water and power costs",
-   "PW quality data or design basis",
-   "Pharmacopoeia: USP, Ph. Eur. or both",
-   "Hot or ambient storage and loop",
-   "Site limits: ceiling height, access, province"
+   "Hot or ambient storage"
   ],
   "turnaround": "[proposal response time, working days]",
   "returns": [
-   "Both still types compared for your utilities",
-   "Still sizing for your WFI demand",
-   "Budget proposal",
-   "Questions on gaps in your data"
+   "Both still types compared",
+   "Still sizing for your demand",
+   "Budget proposal"
   ]
  },
  "todo": [

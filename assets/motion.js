@@ -2,10 +2,10 @@
    Blueprint behaviour, never decoration for its own sake:
    - section heads rise in; list rows, stations, folders and modules follow in a short stagger
    - solid line work in drawings draws itself on (pipes, gauge arcs, leaders, routes)
-   - dashed runs (routes, flow mains) creep slowly in the flow direction, like water moving
+   - dashed runs (routes, flow mains) creep once in the flow direction, like water moving (stops within 5 s: WCAG 2.2.2)
    - equipment drawings (Spot, Illustration masks) wipe in from the bottom like a print
    - gauge needles sweep up to the limit; key figures count up
-   - the home loop carries flow dots round the figure of eight
+   - the home loop sends flow dots once round the figure of eight, then they fade (under 5 s)
    Everything is skipped under prefers-reduced-motion and when GSAP did not load; the page is complete without it. */
 (function () {
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -32,7 +32,7 @@
         onComplete: function () { solid.forEach(function (el) { el.style.strokeDasharray = ''; el.style.strokeDashoffset = '' }) } }));
       dash.forEach(function (el) {
         var d = getComputedStyle(el).strokeDasharray.split(/[ ,]+/).reduce(function (a, v) { return a + (parseFloat(v) || 0) }, 0) || 12;
-        tw(gsap.fromTo(el, { strokeDashoffset: 0 }, { strokeDashoffset: -d * 4, duration: 3.2, ease: 'none', repeat: -1 }));
+        tw(gsap.fromTo(el, { strokeDashoffset: 0 }, { strokeDashoffset: -d * 6, duration: 5, ease: 'power1.out' }));
       });
     });
   }
@@ -101,7 +101,7 @@
       var svg = pipe.ownerSVGElement, ns = 'http://www.w3.org/2000/svg';
       for (var i = 0; i < 4; i++) {
         var c = document.createElementNS(ns, 'circle'); c.setAttribute('r', '3.5'); c.setAttribute('class', 'aq-loop__dot'); c.setAttribute('aria-hidden', 'true'); svg.appendChild(c);
-        tw(gsap.to(c, { duration: 9, repeat: -1, ease: 'none', delay: -i * 2.25, motionPath: { path: pipe, align: pipe, alignOrigin: [0.5, 0.5] } }));
+        tw(gsap.fromTo(c, { autoAlpha: 1 }, { duration: 4.5, ease: 'power1.inOut', delay: 0.6 + i * 0.25, motionPath: { path: pipe, align: pipe, alignOrigin: [0.5, 0.5], start: i * 0.25, end: i * 0.25 + 1 }, onComplete: function () { gsap.to(this.targets(), { autoAlpha: 0, duration: 0.6 }) } }));
       }
     }
     ScrollTrigger.refresh();

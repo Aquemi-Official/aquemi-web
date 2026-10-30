@@ -21,12 +21,25 @@ var ART={
  'ind-cdmo':'Two-room cleanroom suite with process vessels, a pass-through hatch and a shared water loop'
 };
 function artMask(id){var u='url(assets/illustrations/'+id+'.png)';return '-webkit-mask-image:'+u+';mask-image:'+u}
-/* Callout leaders in the figure's 125 x 100 viewBox: [start on the callout rule, anchor on the drawing]. Slot order: top left, top right, bottom left, bottom right. */
-var HERO_LEAD=[[37.5,0,54,38],[87.5,0,73,35],[37.5,100,51,67],[87.5,100,75,64]];
-function wHeroFigure(p,facts){
- var lines=facts.map(function(f,i){var s=HERO_LEAD[i];return '<line x1="'+s[0]+'" y1="'+s[1]+'" x2="'+s[2]+'" y2="'+s[3]+'"/><circle cx="'+s[2]+'" cy="'+s[3]+'" r="0.9"/>'}).join('');
- return '<figure class="aq-hero__figure"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span>'+
-  (facts.length?'<svg class="aq-hero__leaders" viewBox="0 0 125 100" preserveAspectRatio="none" aria-hidden="true">'+lines+'</svg><dl class="aq-hero__callouts">'+facts.map(function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'}).join('')+'</dl>':'')+'</figure>'}
+/* Equipment figure (sys-, svc-, ind- pages with a drawing): the drawing large and dominant, up to four key facts as
+   callouts round it, each joined to the drawing by a leader line ending in a dot. Callouts come in two lists: the top
+   pair and the bottom pair, so phones can stack them above and below the drawing.
+   HERO_AT: the anchor of each slot on the drawing, as fractions of the square drawing box (top left, top right, bottom
+   left, bottom right). Every drawing is a centred isometric skid, so the anchors land on equipment.
+   Desktop leaders: viewBox 120 x 100 (the figure is 6:5); drawing square x 12-108, y 2-98; callouts 27 % wide and 13 %
+   tall in the corners, each with a rule on its drawing side whose inner end starts the leader.
+   Phone leaders: viewBox 100 x 80 over the drawing row only (5:4); drawing square x 10-90; leaders start at the inner
+   end of the rule under (or over) each callout, on the row's top (or bottom) edge. */
+var HERO_AT=[[0.40,0.36],[0.62,0.32],[0.36,0.70],[0.65,0.665]];
+function heroLeaders(n,wide){var o='';for(var i=0;i<n;i++){var a=HERO_AT[i],top=i<2,left=i%2===0,x0,y0,x1,y1;
+  if(wide){x0=left?32.4:87.6;y0=top?13:87;x1=12+96*a[0];y1=2+96*a[1]}else{x0=left?47:53;y0=top?0:80;x1=10+80*a[0];y1=80*a[1]}
+  o+='<line x1="'+x0+'" y1="'+y0+'" x2="'+x1.toFixed(1)+'" y2="'+y1.toFixed(1)+'"/><circle cx="'+x1.toFixed(1)+'" cy="'+y1.toFixed(1)+'" r="'+(wide?0.9:1.1)+'"/><circle class="is-start" cx="'+x0+'" cy="'+y0+'" r="'+(wide?0.6:0.8)+'"/>'}
+ return '<svg class="aq-hero__leaders aq-hero__leaders--'+(wide?'wide':'narrow')+'" viewBox="0 0 '+(wide?'120 100':'100 80')+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+o+'</svg>'}
+function wHeroFigure(p,facts){var n=facts.length,co=function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'};
+ return '<figure class="aq-hero__figure">'
+  +(n?'<dl class="aq-hero__callouts aq-hero__callouts--top">'+facts.slice(0,2).map(co).join('')+'</dl>':'')
+  +'<div class="aq-hero__art"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span>'+(n?heroLeaders(n,true)+heroLeaders(n,false):'')+'</div>'
+  +(n>2?'<dl class="aq-hero__callouts aq-hero__callouts--bottom">'+facts.slice(2,4).map(co).join('')+'</dl>':'')+'</figure>'}
 /* Hub and company pages: an index of the other pages in this page's section, in pages.json order.
    A page whose first section already lists those pages (systems: the seven-families grid) sets "hero_index": false; its hero is then the text stack alone.
    A page alone in its section (projects) lists its own section headings instead; they link only when the block has a nav anchor. */
@@ -74,7 +87,9 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
   '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
- var all=p.facts||[],callouts=art?all.slice(0,4):[],rest=art?all.slice(4):all;
+ /* Callouts round the drawing only on sys-* pages, where the facts are measured values; service and industry pages
+    keep their facts (often counts) in the KeyFacts strip under the drawing. */
+ var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
  var right=home?wHomeLoop(p):art?wHeroFigure(p,callouts):detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · 316L, cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
  return '<section class="aq-hero'+(home?' aq-hero--home':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
