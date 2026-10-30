@@ -15,7 +15,7 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | Page | Headline | Sections |
 | --- | --- | --- |
 | [All systems](https://aquemi-official.github.io/aquemi-web/#systems) | Every system on the water path, from feed water to point of use. | diagram, grid, table, faq, related |
-| [Purified Water (PW) generation](https://aquemi-official.github.io/aquemi-web/#sys-pw) | Purified Water generation | spec, diagram, options, docs, faq, related |
+| [Purified Water (PW) generation](https://aquemi-official.github.io/aquemi-web/#sys-pw) | Purified Water that meets USP and Ph. Eur. with margin, on your coldest feed day | prose, spec, spec, diagram, table, options, steps, docs, faq, docs, related |
 | [WFI by distillation](https://aquemi-official.github.io/aquemi-web/#sys-wfi-distillation) | Water for Injection by distillation | spec, diagram, prose, options, docs, faq, related |
 | [WFI by membrane](https://aquemi-official.github.io/aquemi-web/#sys-wfi-membrane) | Water for Injection by membrane | prose, spec, diagram, table, options, docs, faq, related |
 | [Pure steam generators](https://aquemi-official.github.io/aquemi-web/#sys-pure-steam) | Pure steam generators | spec, diagram, options, docs, faq, related |
