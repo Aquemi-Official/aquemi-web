@@ -1,0 +1,53 @@
+/* ---------- Closing: the call to action at the end of every page, on the navy band ---------- */
+/* A framed panel with corner registration marks: a very large headline, then the lead sentence and one proof readout
+   on the left and the primary button bottom right. Sits on .aq-band--navy, which sets the ground, text colours and the
+   Limestone primary button; this file only lays it out. Frame lines are on-navy-muted at reduced strength. */
+.aq-closing { text-align: start; border-bottom: 1px solid var(--line-strong); }
+.aq-closing__frame {
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  column-gap: var(--space-12); row-gap: var(--space-8);
+  padding: var(--space-12);
+  border: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent);
+}
+/* Registration marks at the top-left and bottom-right corners */
+.aq-closing__frame::before, .aq-closing__frame::after {
+  content: ""; position: absolute; width: var(--space-4); height: var(--space-4); pointer-events: none;
+  border: 0 solid var(--on-navy-muted);
+}
+.aq-closing__frame::before { top: calc(-1 * var(--space-2)); left: calc(-1 * var(--space-2)); border-top-width: 1px; border-left-width: 1px; }
+.aq-closing__frame::after { bottom: calc(-1 * var(--space-2)); right: calc(-1 * var(--space-2)); border-bottom-width: 1px; border-right-width: 1px; }
+
+.aq-closing__h {
+  grid-column: 1 / -1; max-width: 18ch;
+  font: 300 88px/92px var(--font-sans); letter-spacing: -0.035em; color: var(--on-navy);
+  overflow-wrap: break-word;
+}
+.aq-closing__body { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-6); min-width: 0; }
+.aq-closing .aq-closing__body .aq-lead { color: var(--on-navy-muted); }
+.aq-closing__action { display: flex; align-items: flex-end; justify-content: flex-end; min-width: 0; }
+
+/* Proof readout: one confirmed figure from the page, in mono */
+.aq-closing__proof {
+  display: flex; flex-direction: column; gap: var(--space-1);
+  min-width: 0; max-width: 100%;
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--on-navy-muted) 60%, transparent);
+  border-radius: var(--radius-0);
+}
+.aq-closing__tag { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-closing__value {
+  font: 300 48px/52px var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+  color: var(--limestone); overflow-wrap: anywhere;
+}
+.aq-closing__label { font: 400 14px/22px var(--font-mono); color: var(--on-navy-muted); }
+
+@container (max-width: 860px) {
+  .aq-closing__frame { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); padding: var(--space-6) var(--space-4); }
+  .aq-closing__frame::before { top: calc(-1 * var(--space-1)); left: calc(-1 * var(--space-1)); }
+  .aq-closing__frame::after { bottom: calc(-1 * var(--space-1)); right: calc(-1 * var(--space-1)); }
+  .aq-closing__h { font-size: 40px; line-height: 44px; letter-spacing: -0.025em; }
+  .aq-closing__value { font-size: 36px; line-height: 40px; }
+  .aq-closing__action { justify-content: flex-start; }
+  .aq-closing__action .aq-btn { max-width: 100%; white-space: normal; height: auto; min-height: 44px; }
+}

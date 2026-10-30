@@ -36,6 +36,7 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 | `assets/src/parts/<Name>.js`, `core.js`, `page.js` | Shared helpers (`sec`, `split`, `tx`, `e`, `wp`), NavBar, Footer, Hero, Button and other pieces, and page assembly. |
 | `assets/aquemi-site.js` | **Generated** from `assets/src/`. The site and the guide load it. |
 | `assets/site.css` | Draft-bar chrome only. No brand styles here. |
+| `inspiration.html` | Gallery of every generated image: Gemini originals, section concepts, equipment drawings. Add new images to its lists. |
 | `design-system.html` | The visual guide. Generated at load time from the files above; normally needs no edits. |
 | `brand/` | Logo, lockup, mark and favicon SVGs. Use as they are. |
 | `tools/design_system.py` | `build`, `check`, `new`, `stage`. Python 3 standard library only. |

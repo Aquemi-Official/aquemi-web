@@ -80,19 +80,23 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | Site section | Component |
 | --- | --- |
 | page frame | Page, NavBar, Footer |
-| hero | Hero, with KeyFacts when the page has `facts` |
+| hero | Hero: the page's Illustration with callouts to its `facts` when it has a drawing, otherwise KeyFacts |
 | prose | Prose inside SplitSection |
-| grid, related | LinkGrid |
+| grid | LinkGrid |
+| related | RelatedLinks |
 | path | WaterPath |
 | options | OptionList inside SplitSection |
 | steps | ProcessSteps |
 | diagram | ProcessDiagram |
 | readout | Readout |
-| band, tags, closing call to action | Band (with StandardTag) |
+| band | Band |
+| tags | StandardsGrid (sunken band) |
+| closing call to action | Closing (navy band) |
 | faq | FAQ inside SplitSection |
 | docs | DocList inside SplitSection (sunken band) |
 | case | CaseStudy |
-| spec, table | SpecTable |
+| spec | SpecTable |
+| table | CompareTable |
 | form | EnquiryForm (with TextField and Button) inside SplitSection; with `steps` it renders the stepped variant |
 | block `nav` label | SectionNav (rendered by the page, not a block) |
 | `[bracketed facts]` in any copy | Placeholder |

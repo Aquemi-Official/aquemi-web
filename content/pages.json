@@ -14203,7 +14203,6 @@
     {
      "type": "case",
      "nav": "Template",
-     "layout": "sheet",
      "h": "Case study template: three outlines awaiting real projects",
      "intro": "Each outline is the structure a published case study will follow, by system. Nothing in square brackets is a result. [Remove this block, or replace each outline with a delivered project and its report numbers, before launch.]",
      "items": [
@@ -14233,7 +14232,9 @@
        "system": "[Pretreatment, double-pass RO and EDI, storage volume in L, ozone and UV destruct, number of points of use, as delivered]",
        "standard": "[USP PW monograph; Ph. Eur. 0008 if released in Europe; ASME BPE dead legs L/D ≤ 2; EU GMP Annex 15 for FAT, SAT, IQ and OQ]",
        "outcome": "[Conductivity, µS/cm @ 25 °C], [TOC, ppb], [microbial count, CFU/mL] and [nitrates, ppm, if Ph. Eur.] against their limits",
-       "method": "[Sampling points, number of samples and PQ phase or weeks]; from [executed OQ or PQ report number]. [Deviations raised and closed at FAT and SAT]"
+       "method": "[Sampling points, number of samples and PQ phase or weeks]; from [executed OQ or PQ report number]. [Deviations raised and closed at FAT and SAT]",
+       "figure": "[conductivity]",
+       "unit": "µS/cm @ 25 °C"
       },
       {
        "status": "Template · awaiting a real project",
@@ -14261,7 +14262,9 @@
        "system": "[Membrane train as delivered, hot storage temperature in °C, loop and points of use, continuous TOC and conductivity]",
        "standard": "[USP WFI monograph; Ph. Eur. 0169 if released in Europe; EU GMP Annex 1 (2022), 6.10 and 6.15]",
        "outcome": "[Endotoxin, EU/mL], [TOC, ppb], [conductivity, µS/cm @ 25 °C] and [microbial count, CFU/100 mL] against their limits",
-       "method": "[Sampling points, number of samples and PQ phase or weeks]; from [executed OQ or PQ report number]. [Energy use, kWh/m³, client-reported, with the period]"
+       "method": "[Sampling points, number of samples and PQ phase or weeks]; from [executed OQ or PQ report number]. [Energy use, kWh/m³, client-reported, with the period]",
+       "figure": "[endotoxin]",
+       "unit": "EU/mL"
       },
       {
        "status": "Template · awaiting a real project",
@@ -14289,7 +14292,9 @@
        "system": "[Generator as delivered, condensate cooler and sample point, header with trapped drop legs, sterilizers and SIP points served]",
        "standard": "EN 285 steam quality at each sterilizer; condensate to the WFI monograph (EU GMP Annex 1 (2022), 6.17)",
        "outcome": "[Non-condensable gases, mL per 100 mL of condensate], [dryness value] and [superheat, K] at each sterilizer, against EN 285; [condensate endotoxin, EU/mL]",
-       "method": "EN 285 steam quality tests at [number of sterilizers] sterilizers, from [SAT or OQ report number]. [Deviations raised and closed]"
+       "method": "EN 285 steam quality tests at [number of sterilizers] sterilizers, from [SAT or OQ report number]. [Deviations raised and closed]",
+       "figure": "[NCG]",
+       "unit": "mL per 100 mL"
       }
      ]
     },

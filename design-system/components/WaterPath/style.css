@@ -17,13 +17,16 @@
 .aq-water-path__stop:nth-of-type(7) { grid-row: 4; grid-column: 2; }
 .aq-water-path__stop::before { content: ""; position: absolute; top: -10px; left: var(--space-4); width: 15px; height: 15px; border: 1.5px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface); }
 .aq-water-path__stop::after { content: attr(data-n); position: absolute; right: 0; top: var(--space-4); font: 300 112px/1 var(--font-mono); letter-spacing: -0.04em; color: var(--line); pointer-events: none; }
+.aq-water-path__stop--art::after { content: none; }
 .aq-water-path__stop > * { position: relative; z-index: 1; }
 .aq-water-path__glyph { width: 72px; height: 56px; fill: none; stroke: var(--ink-muted); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; margin-bottom: var(--space-2); }
+.aq-water-path .aq-water-path__art { width: min(100%, 200px); margin: 0 0 var(--space-2); transition: background-color 120ms; }
 .aq-water-path__num { font: 300 32px/1 var(--font-mono); letter-spacing: -0.02em; color: var(--flow); }
 .aq-water-path__stop a { color: var(--ink); text-decoration: none; }
 .aq-water-path__stop a::after { content: "\a0\2192"; color: var(--flow); }
 .aq-water-path__stop:hover a { color: var(--flow); }
 .aq-water-path__stop:hover .aq-water-path__glyph { stroke: var(--flow); }
+.aq-water-path__stop:hover .aq-water-path__art { background-color: var(--flow); }
 .aq-water-path__stop .aq-tags { margin-top: var(--space-1); }
 
 @container (max-width: 860px) {
@@ -33,4 +36,5 @@
   .aq-water-path__stop { border-left: 5px double var(--flow); padding: var(--space-6) 0 var(--space-8) var(--space-6); }
   .aq-water-path__stop::before { top: var(--space-6); left: -10px; }
   .aq-water-path__stop::after { font-size: 72px; }
+  .aq-water-path .aq-water-path__art { width: 160px; }
 }

@@ -10,7 +10,7 @@ var NAVSECT=[['Systems','systems'],['Services','services'],['Industries','indust
 function W(){return (D.web&&D.web.pages)||[]}
 function wp(id){return W().filter(function(p){return p.id===id})[0]}
 /* Placeholder: [bracketed facts] in copy */
-function tx(s){return e(s).replace(/\[([^\]]{1,140})\]/g,'<span class="aq-ph">[$1]</span>')}
+function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return o+s.slice(st)}
 function wlink(id,label){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'">'+tx(label||(p&&p.nav_label)||id)+'</a>'}
 var ARC='<svg class="aq-arc" viewBox="0 0 420 300" aria-hidden="true"><path class="aq-arc__outer" d="M420 1.5 A 300 300 0 0 0 120 300"/><path class="aq-arc__inner" d="M420 120 A 180 180 0 0 0 240 300"/></svg>';
 function sec(inner,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-stack-l">'+inner+'</div></section>'}
