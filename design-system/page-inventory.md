@@ -19,7 +19,7 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | [WFI by distillation](https://aquemi-official.github.io/aquemi-web/#sys-wfi-distillation) | Water for Injection by distillation, with endotoxin margin you can show an inspector | prose, spec, spec, diagram, diagram, table, options, steps, docs, faq, docs, related |
 | [WFI by membrane](https://aquemi-official.github.io/aquemi-web/#sys-wfi-membrane) | Water for Injection by membrane, with the control strategy your inspector will ask for | prose, table, spec, spec, diagram, table, options, steps, docs, faq, docs, related |
 | [Pure steam generators](https://aquemi-official.github.io/aquemi-web/#sys-pure-steam) | Pure steam that passes EN 285 at the sterilizer, not just at the generator | prose, spec, spec, diagram, table, options, steps, docs, faq, docs, related |
-| [Storage and distribution loops](https://aquemi-official.github.io/aquemi-web/#sys-storage) | Storage and distribution loops | spec, diagram, table, options, docs, faq, related |
+| [Storage and distribution loops](https://aquemi-official.github.io/aquemi-web/#sys-storage) | Storage and distribution loops that deliver generator quality at the furthest point of use | prose, spec, diagram, table, table, options, steps, docs, faq, docs, related |
 | [Pretreatment](https://aquemi-official.github.io/aquemi-web/#sys-pretreatment) | Pretreatment | prose, spec, diagram, table, options, docs, faq, related |
 | [Monitoring and controls](https://aquemi-official.github.io/aquemi-web/#sys-monitoring) | Monitoring and controls | spec, diagram, prose, options, docs, faq, related |
 
