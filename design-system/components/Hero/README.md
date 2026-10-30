@@ -7,3 +7,5 @@ Hero opens every page: eyebrow, one display headline, one lead sentence, one pri
 - The arc motif (`<svg class="aq-arc">` with `aq-arc__outer` and `aq-arc__inner` paths) sits bottom right on the home hero only.
 - The eyebrow names the system family and the standard: "Water for Injection · USP <1231> · Ph. Eur. 0169".
 - One hero per page. No carousel, no background video.
+- Key facts: a KeyFacts strip (`aq-key-facts`) may close the hero, below the grid, with three or four figures from the page. It replaces hero tags on system pages.
+- The photo placeholder shows a `line` blueprint grid at `space-8` pitch so the draft looks designed, not empty. Replace it with the photograph as soon as one exists.

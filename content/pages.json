@@ -172,6 +172,20 @@
     "Whether French-language documentation is offered",
     "One real case study with client permission, system details and a measured outcome",
     "Confirm which standards Aquemi designs to routinely before publishing the compliance strip"
+   ],
+   "facts": [
+    {
+     "v": "7",
+     "l": "System families, feed water to point of use"
+    },
+    {
+     "v": "100 %",
+     "l": "Skids factory acceptance tested before shipping"
+    },
+    {
+     "v": "< 0.25 EU/mL",
+     "l": "WFI endotoxins at the furthest point of use"
+    }
    ]
   },
   {
@@ -394,12 +408,6 @@
    "eyebrow": "PURIFIED WATER · USP <645> · USP <643>",
    "headline": "Purified Water generation",
    "lead": "Our Purified Water (PW) systems combine reverse osmosis (RO) and electrodeionization (EDI) to hold conductivity below 1.3 µS/cm at 25 °C and total organic carbon (TOC) below 500 ppb, without regeneration chemicals.",
-   "tags": [
-    "USP",
-    "Ph. Eur.",
-    "ASME BPE",
-    "GAMP 5"
-   ],
    "primary_cta": "Request a proposal",
    "secondary_cta": {
     "label": "Download datasheet",
@@ -470,7 +478,8 @@
        "m": "ASME BPE",
        "hl": false
       }
-     ]
+     ],
+     "h": "Specifications"
     },
     {
      "type": "diagram",
@@ -580,6 +589,24 @@
     "Standard surface finish offered",
     "Datasheet PDF",
     "Confirm hot water sanitizable membranes are standard or an option"
+   ],
+   "facts": [
+    {
+     "v": "[500–20,000] L/h",
+     "l": "Capacity per skid"
+    },
+    {
+     "v": "≤ 1.3 µS/cm",
+     "l": "Conductivity at 25 °C · USP <645>"
+    },
+    {
+     "v": "≤ 500 ppb",
+     "l": "Total organic carbon · USP <643>"
+    },
+    {
+     "v": "80 °C",
+     "l": "Hot water sanitization, RO and EDI"
+    }
    ]
   },
   {
@@ -592,13 +619,6 @@
    "eyebrow": "WATER FOR INJECTION · DISTILLATION · USP · PH. EUR.",
    "headline": "Water for Injection by distillation",
    "lead": "Our multi-effect and vapour compression stills turn Purified Water into hot Water for Injection (WFI) with endotoxins below 0.25 EU/mL, the method with the longest inspection history in North America and Europe.",
-   "tags": [
-    "USP",
-    "Ph. Eur.",
-    "JP",
-    "ASME BPE",
-    "GAMP 5"
-   ],
    "primary_cta": "Request a proposal",
    "secondary_cta": {
     "label": "Download datasheet",
@@ -680,7 +700,8 @@
        "m": "Prevents cross-contamination from utility side",
        "hl": false
       }
-     ]
+     ],
+     "h": "Specifications"
     },
     {
      "type": "diagram",
@@ -791,6 +812,24 @@
     "Whether Aquemi builds stills in-house or partners with a still manufacturer",
     "CRN registration process and provinces covered",
     "Datasheet PDF"
+   ],
+   "facts": [
+    {
+     "v": "[300–15,000] L/h",
+     "l": "Capacity, multi-effect"
+    },
+    {
+     "v": "< 0.25 EU/mL",
+     "l": "Bacterial endotoxins · USP <85>"
+    },
+    {
+     "v": "≤ 1.3 µS/cm",
+     "l": "Conductivity at 25 °C · USP <645>"
+    },
+    {
+     "v": "Ra ≤ 0.5 µm",
+     "l": "Electropolished contact surfaces · ASME BPE"
+    }
    ]
   },
   {
@@ -803,13 +842,6 @@
    "eyebrow": "WATER FOR INJECTION · MEMBRANE · PH. EUR. 0169 · USP",
    "headline": "Water for Injection by membrane",
    "lead": "Our membrane systems produce Water for Injection (WFI) at ambient temperature from double-pass reverse osmosis (RO), electrodeionization (EDI) and ultrafiltration (UF), with no plant steam for generation.",
-   "tags": [
-    "Ph. Eur.",
-    "USP",
-    "EU GMP Annex 1",
-    "ASME BPE",
-    "GAMP 5"
-   ],
    "primary_cta": "Request a proposal",
    "secondary_cta": {
     "label": "Download datasheet",
@@ -887,7 +919,8 @@
        "m": "ASME BPE",
        "hl": false
       }
-     ]
+     ],
+     "h": "Specifications"
     },
     {
      "type": "diagram",
@@ -1019,6 +1052,24 @@
     "Energy per m³ figures for membrane and distillation from Aquemi design data",
     "Whether online microbial monitoring is offered and which instrument",
     "Datasheet PDF"
+   ],
+   "facts": [
+    {
+     "v": "[500–15,000] L/h",
+     "l": "Capacity per skid"
+    },
+    {
+     "v": "< 0.25 EU/mL",
+     "l": "Bacterial endotoxins · USP <85>"
+    },
+    {
+     "v": "≤ 1.1 µS/cm",
+     "l": "Conductivity at 20 °C · Ph. Eur. 0169"
+    },
+    {
+     "v": "80 °C",
+     "l": "Hot water sanitization, full skid"
+    }
    ]
   },
   {
@@ -1031,13 +1082,6 @@
    "eyebrow": "PURE STEAM · EN 285 · USP",
    "headline": "Pure steam generators",
    "lead": "Our pure steam generators supply sterilizers and steam-in-place with steam whose condensate meets Water for Injection (WFI) limits, and whose gas content, dryness and superheat are tested to EN 285.",
-   "tags": [
-    "EN 285",
-    "USP",
-    "Ph. Eur.",
-    "ASME BPE",
-    "CSA B51"
-   ],
    "primary_cta": "Request a proposal",
    "secondary_cta": {
     "label": "Download datasheet",
@@ -1108,7 +1152,8 @@
        "m": "Double tube sheet exchanger on steam-heated units",
        "hl": false
       }
-     ]
+     ],
+     "h": "Specifications"
     },
     {
      "type": "diagram",
@@ -1210,6 +1255,24 @@
     "Whether electric units are offered",
     "CRN registration process",
     "Datasheet PDF"
+   ],
+   "facts": [
+    {
+     "v": "[100–3,000] kg/h",
+     "l": "Capacity"
+    },
+    {
+     "v": "≤ 3.5 mL",
+     "l": "Non-condensable gases per 100 mL · EN 285"
+    },
+    {
+     "v": "≥ 0.95",
+     "l": "Dryness value · EN 285"
+    },
+    {
+     "v": "≤ 25 K",
+     "l": "Superheat above boiling point · EN 285"
+    }
    ]
   },
   {
@@ -1222,12 +1285,6 @@
    "eyebrow": "STORAGE AND DISTRIBUTION · ASME BPE · ISPE",
    "headline": "Storage and distribution loops",
    "lead": "Our tanks and loops keep Purified Water (PW) and Water for Injection (WFI) at the quality it left generation, out to the furthest point of use, with turbulent flow and no stagnant branches.",
-   "tags": [
-    "ASME BPE",
-    "ISPE Baseline Guide Vol. 4",
-    "USP <1231>",
-    "GAMP 5"
-   ],
    "primary_cta": "Request a proposal",
    "secondary_cta": {
     "label": "Download datasheet",
@@ -1298,7 +1355,8 @@
        "m": "ASME BPE",
        "hl": false
       }
-     ]
+     ],
+     "h": "Specifications"
     },
     {
      "type": "diagram",
@@ -1436,6 +1494,24 @@
     "Ozone concentration set points used in Aquemi designs",
     "Whether riboflavin coverage testing is performed in-house",
     "Datasheet PDF"
+   ],
+   "facts": [
+    {
+     "v": "[1,000–50,000] L",
+     "l": "Tank volume"
+    },
+    {
+     "v": "L/D ≤ 2",
+     "l": "Dead legs · ASME BPE"
+    },
+    {
+     "v": "≥ 1 m/s",
+     "l": "Loop return velocity at peak draw"
+    },
+    {
+     "v": "≥ 65 °C",
+     "l": "Hot loop temperature"
+    }
    ]
   },
   {
@@ -1448,12 +1524,6 @@
    "eyebrow": "PRETREATMENT · HEALTH CANADA · US EPA",
    "headline": "Pretreatment",
    "lead": "Pretreatment protects your reverse osmosis (RO) membranes and stills from chlorine, chloramine, hardness and particles, so the purification stage downstream runs to its design life.",
-   "tags": [
-    "USP <1231>",
-    "Health Canada",
-    "US EPA",
-    "ASME BPE"
-   ],
    "primary_cta": "Request a proposal",
    "secondary_cta": {
     "label": "Send a water analysis",
@@ -1514,7 +1584,8 @@
        "m": "Sized to generation demand",
        "hl": false
       }
-     ]
+     ],
+     "h": "Specifications"
     },
     {
      "type": "diagram",
@@ -1643,6 +1714,24 @@
     "Design feed temperature",
     "Whether UV dechlorination is offered",
     "Whether Aquemi offers a water analysis service"
+   ],
+   "facts": [
+    {
+     "v": "< 0.05 mg/L",
+     "l": "Free chlorine and chloramine as Cl₂"
+    },
+    {
+     "v": "< 1 mg/L",
+     "l": "Hardness as CaCO₃"
+    },
+    {
+     "v": "≤ 3",
+     "l": "Silt density index · ASTM D4189"
+    },
+    {
+     "v": "[1–30] m³/h",
+     "l": "Capacity"
+    }
    ]
   },
   {
@@ -1655,13 +1744,6 @@
    "eyebrow": "MONITORING AND CONTROLS · 21 CFR PART 11 · GAMP 5",
    "headline": "Monitoring and controls",
    "lead": "Our controls run your water system and record its quality continuously, with audit trails and electronic records that meet 21 CFR Part 11 and software validated to GAMP 5.",
-   "tags": [
-    "21 CFR Part 11",
-    "EU GMP Annex 11",
-    "GAMP 5",
-    "USP <643>",
-    "USP <645>"
-   ],
    "primary_cta": "Request a proposal",
    "secondary_cta": {
     "label": "Download datasheet",
@@ -1719,7 +1801,8 @@
        "m": "Your record retention policy",
        "hl": false
       }
-     ]
+     ],
+     "h": "Specifications"
     },
     {
      "type": "diagram",
@@ -1828,6 +1911,24 @@
     "Whether secure remote access is offered",
     "Whether panels are built to UL 508A or CSA in-house",
     "Datasheet PDF"
+   ],
+   "facts": [
+    {
+     "v": "≤ 500 ppb",
+     "l": "Online TOC limit · USP <643>"
+    },
+    {
+     "v": "≤ 1.3 µS/cm",
+     "l": "Conductivity limit at 25 °C · USP <645>"
+    },
+    {
+     "v": "Part 11",
+     "l": "Audit trail and e-signatures · 21 CFR"
+    },
+    {
+     "v": "GAMP 5",
+     "l": "Risk-based software lifecycle"
+    }
    ]
   },
   {

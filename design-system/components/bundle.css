@@ -162,7 +162,7 @@ textarea.aq-field__input { height: auto; min-height: 120px; padding: var(--space
 .aq-hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: stretch; }
 .aq-hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; margin-top: var(--space-2); }
 .aq-hero .aq-tags { margin-top: var(--space-2); }
-.aq-photo { position: relative; z-index: 1; aspect-ratio: 4 / 3; min-height: 100%; max-width: 100%; background: var(--surface-sunken); border: 1px solid var(--line); display: flex; align-items: flex-end; padding: var(--space-4); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.aq-photo { position: relative; z-index: 1; aspect-ratio: 4 / 3; min-height: 100%; max-width: 100%; background-color: var(--surface-sunken); background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--space-8) var(--space-8); background-position: -1px -1px; border: 1px solid var(--line); display: flex; align-items: flex-end; padding: var(--space-4); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
 .aq-arc { position: absolute; right: -1px; bottom: -1px; width: min(38%, 420px); height: auto; pointer-events: none; }
 .aq-arc__outer { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
 .aq-arc__inner { fill: none; stroke: var(--flow); stroke-width: 1.5; }
@@ -187,9 +187,10 @@ textarea.aq-field__input { height: auto; min-height: 120px; padding: var(--space
 .aq-options > div { padding-block: var(--space-4); border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: var(--space-1); }
 
 /* ---------- ProcessSteps: a real sequence, numbered by CSS ---------- */
-.aq-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); counter-reset: aq-step; border-top: 1px solid var(--line-strong); }
-.aq-steps > div { padding: var(--space-6) var(--space-6) 0 0; display: flex; flex-direction: column; gap: var(--space-2); }
-.aq-steps > div::before { counter-increment: aq-step; content: counter(aq-step, decimal-leading-zero); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--flow); }
+.aq-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); counter-reset: aq-step; }
+.aq-steps > div { position: relative; padding: var(--space-8) var(--space-6) 0 0; border-top: 1px solid var(--line-strong); display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-steps > div::before { counter-increment: aq-step; content: counter(aq-step, decimal-leading-zero); font: 300 32px/38px var(--font-mono); letter-spacing: -0.02em; color: var(--flow); margin-bottom: var(--space-2); }
+.aq-steps > div::after { content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px; border-radius: var(--radius-pill); background: var(--flow); }
 
 /* ---------- ProcessDiagram: stages of a treatment train, left to right ---------- */
 .aq-diagram { overflow-x: auto; }
@@ -202,7 +203,7 @@ textarea.aq-field__input { height: auto; min-height: 120px; padding: var(--space
 
 /* ---------- Readout: one measured value with its method ---------- */
 .aq-readout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); align-items: start; }
-.aq-readout__value { font: 300 40px/44px var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.aq-readout__value { font: 300 56px/60px var(--font-mono); color: var(--flow); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 
 /* ---------- DocList ---------- */
 .aq-docs { columns: 2 280px; column-gap: var(--space-12); margin: 0; padding: 0; list-style: none; }
@@ -240,6 +241,23 @@ textarea.aq-field__input { height: auto; min-height: 120px; padding: var(--space
 .aq-closing .aq-stack { align-items: center; }
 .aq-closing .aq-arc { left: -1px; top: -1px; right: auto; bottom: auto; width: min(30%, 300px); transform: rotate(180deg); }
 
+/* ---------- SplitSection: heading column left, content right ---------- */
+.aq-split-section { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--space-12); align-items: start; }
+.aq-split-section__head { position: sticky; top: var(--space-8); display: flex; flex-direction: column; gap: var(--space-4); }
+.aq-split-section__head .aq-h1 { font-size: 32px; line-height: 38px; }
+.aq-split-section__head .aq-lead { font-size: 16px; line-height: 26px; }
+.aq-split-section__body { min-width: 0; display: flex; flex-direction: column; gap: var(--space-6); }
+.aq-split-section__body .aq-prose p:first-child { font: 400 20px/30px var(--font-sans); color: var(--ink); }
+.aq-split-section__body .aq-prose p:not(:first-child) { color: var(--ink-muted); }
+
+/* ---------- KeyFacts: the three or four numbers a page stands on ---------- */
+.aq-key-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin: 0; border-top: 1px solid var(--line-strong); }
+.aq-key-facts > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: var(--space-2); padding: var(--space-6) var(--space-6) 0 0; min-width: 0; }
+.aq-key-facts > div + div { padding-left: var(--space-6); border-left: 1px solid var(--line); }
+.aq-key-facts dd { margin: 0; font: 300 clamp(24px, 2.6cqi, 32px)/1.2 var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--ink); }
+.aq-key-facts dt { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-hero .aq-key-facts { margin-top: var(--space-16); }
+
 /* ---------- Narrow containers (phones, narrow previews) ---------- */
 @container (max-width: 860px) {
   .aq-in { padding-inline: var(--space-4); }
@@ -254,6 +272,13 @@ textarea.aq-field__input { height: auto; min-height: 120px; padding: var(--space
   .aq-linkgrid > *:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; }
   .aq-cases:has(> :only-child) .aq-case dl { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); }
   .aq-photo { min-height: 0; }
+  .aq-split-section { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-split-section__head { position: static; }
+  .aq-key-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-key-facts > div, .aq-key-facts > div + div { padding: var(--space-4) var(--space-4) var(--space-4) 0; border-left: 0; border-top: 1px solid var(--line); }
+  .aq-key-facts dd { font-size: 24px; }
+  .aq-readout__value { font-size: 40px; line-height: 44px; }
+  .aq-hero .aq-key-facts { margin-top: var(--space-12); }
   .aq-footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 

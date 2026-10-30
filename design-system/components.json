@@ -40,6 +40,16 @@
    "summary": "Placeholder marks a fact only Aquemi can supply (a capacity, lead time, certificate, location, case-study figure) so an invented number never ships."
   },
   {
+   "name": "SplitSection",
+   "readme": "design-system/components/SplitSection/README.md",
+   "preview": "design-system/components/SplitSection/preview.html",
+   "group": "Foundations",
+   "height": "380",
+   "width": "1100",
+   "subtitle": "Heading column left, content right",
+   "summary": "SplitSection puts a section's heading in a sticky left column and its content on the right, so long pages alternate between full-width and two-column rhythm instead of stacking heading, text, heading, text."
+  },
+  {
    "name": "Button",
    "readme": "design-system/components/Button/README.md",
    "preview": "design-system/components/Button/preview.html",
@@ -177,6 +187,16 @@
    "width": "1100",
    "subtitle": "Proof in numbers (example data)",
    "summary": "Readout pairs one measured value with its method and a short explanation."
+  },
+  {
+   "name": "KeyFacts",
+   "readme": "design-system/components/KeyFacts/README.md",
+   "preview": "design-system/components/KeyFacts/preview.html",
+   "group": "Data",
+   "height": "200",
+   "width": "1100",
+   "subtitle": "The numbers a system page stands on",
+   "summary": "KeyFacts is a strip of three or four large figures, each with its unit and the standard behind it, that tells an engineer what a page stands on before they read a word of copy."
   },
   {
    "name": "SpecTable",

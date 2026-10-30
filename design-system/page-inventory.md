@@ -80,19 +80,19 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | Site section | Component |
 | --- | --- |
 | page frame | Page, NavBar, Footer |
-| hero | Hero |
-| prose | Prose |
+| hero | Hero, with KeyFacts when the page has `facts` |
+| prose | Prose inside SplitSection |
 | grid, related | LinkGrid |
-| options | OptionList |
+| options | OptionList inside SplitSection |
 | steps | ProcessSteps |
 | diagram | ProcessDiagram |
 | readout | Readout |
 | band, tags, closing call to action | Band (with StandardTag) |
-| faq | FAQ |
-| docs | DocList |
+| faq | FAQ inside SplitSection |
+| docs | DocList inside SplitSection (sunken band) |
 | case | CaseStudy |
 | spec, table | SpecTable |
-| form | EnquiryForm (with TextField and Button) |
+| form | EnquiryForm (with TextField and Button) inside SplitSection |
 | `[bracketed facts]` in any copy | Placeholder |
 
 Every site section has a component. A new kind of section needs a new component here first, then the site.
