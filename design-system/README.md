@@ -120,7 +120,7 @@ Two families from one design: **Geist** for everything you read and **Geist Mono
 ### Layout and spacing
 
 - 12-column grid, max width `content-max` (1280 px), gutters `space-6`. Side margins: `space-4` on phones, `space-8` on desktop.
-- Section padding: `space-24` on desktop, `space-16` on phones. Leave the space empty; resist filling it.
+- Section padding: `space-24` on desktop, `space-12` on phones (pages are long; denser rhythm keeps them scannable). Leave the space empty; resist filling it.
 - Headlines align left. Centred text is reserved for a single short line in a closing call-to-action band.
 - Separate with `line` hairlines and changes of surface, not boxes and shadows. `shadow-overlay` is for floating menus and dialogs only.
 - Corners are square (`radius-0`) by default. Controls take `radius-sm`; only standard tags are pills (`radius-pill`).
