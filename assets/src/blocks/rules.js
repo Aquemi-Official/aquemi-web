@@ -9,12 +9,12 @@
    number with its unit or a [placeholder]. A number sets the scale (0 to the next round number above it, gaugeScale:
    a ruler, not data). A placeholder draws the same bar unnumbered with the mark at mid-scale and the placeholder as the
    chip: the shape of the rule, its value still to come. */
-var RULE_UP=/\b(at least|minimum|min\.|no less than|not less than)\s*/i,RULE_DN=/\b(at most|maximum|max\.|no more than|not more than|up to)\s*/i;
+var RULE_UP=/\b(at least|minimum|min\.|no less than|not less than)/i,RULE_DN=/\b(at most|maximum|max\.|no more than|not more than|up to)/i;
 function ruleParse(r){var v=String(r.rule||r.v||''),m=v.match(/([≤<≥>])\s*/),c='',k;
   if(m){c=m[1]==='<'?'≤':m[1]==='>'?'≥':m[1];k=m.index+m[0].length}
   else{var bare=v.replace(/\[[^\]]*\]/g,function(x){return Array(x.length+1).join(' ')}),u=bare.match(RULE_UP),d=bare.match(RULE_DN),w=u&&(!d||u.index<d.index)?u:d;
     if(!w)return null;c=w===u?'≥':'≤';k=w.index+w[0].length}
-  var rest=v.slice(k),p=rest.match(/^\[[^\]]*\]/);
+  var rest=v.slice(k).replace(/^\s+/,''),p=rest.match(/^\[[^\]]*\]/);
   if(p)return {c:c,ph:p[0]};
   var n=rest.match(/^(\d+(?:\.\d+)?)\s*([^\s;,(]*(?:\s?\/\s?[^\s;,(]+)?)/);
   if(!n)return null;return {c:c,n:parseFloat(n[1]),t:n[1],u:n[2]&&n[2].length<=8?n[2]:''}}

@@ -10,6 +10,7 @@ ProcessSteps shows a real sequence (a project, a qualification, a service visit)
 ```
 
 - Block `steps` (`assets/src/blocks/steps.js`), items `{t, d, hold}`, in a full-width section with the standard section head.
+- Plain rows sit in the same hairline frame with big mono numbers as plain OptionList rows (styled in `OptionList/style.css`).
 - The index carries the order. No pipe, spine, stair or large numerals; hairlines between steps are the only structure. For a drawn flow of equipment use ProcessDiagram. The one exception is a sequence with hold points, below.
 
 ## Hold points: the piped flow

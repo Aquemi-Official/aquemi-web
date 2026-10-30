@@ -173,9 +173,9 @@
    "readme": "design-system/components/EvidenceMap/README.md",
    "preview": "design-system/components/EvidenceMap/preview.html",
    "group": "Page sections",
-   "height": "1100",
+   "height": "1860",
    "width": "1100",
-   "subtitle": "Standard, how we meet it, the document that proves it",
+   "subtitle": "Requirement, how we meet it, file chips or clause references",
    "summary": "EvidenceMap maps each requirement or standard to how we meet it and the documents that prove it, drawn as a mapping with leader lines and file-shaped chips, for the validation lead asking \"where is the proof?\"."
   },
   {
@@ -253,9 +253,9 @@
    "readme": "design-system/components/OptionList/README.md",
    "preview": "design-system/components/OptionList/preview.html",
    "group": "Page sections",
-   "height": "560",
+   "height": "1320",
    "width": "1200",
-   "subtitle": "Configuration options as hairline rows: index, option, one line",
+   "subtitle": "Options as framed rows with big numbers; decisions with a ? tag and fork",
    "summary": "OptionList shows the configuration choices for a system as rows of the shared list grammar: index, option name and one line on what it does."
   },
   {
@@ -293,9 +293,9 @@
    "readme": "design-system/components/ProcessSteps/README.md",
    "preview": "design-system/components/ProcessSteps/preview.html",
    "group": "Page sections",
-   "height": "1000",
+   "height": "1650",
    "width": "1100",
-   "subtitle": "A sequence as hairline rows; with hold points, a piped flow on a drawing plate with stamped hold stations",
+   "subtitle": "Steps as rows, hold flow, or stage strip with hold stamps",
    "summary": "ProcessSteps shows a real sequence (a project, a qualification, a service visit) as rows of the shared list grammar: index, step name and what happens."
   },
   {
@@ -343,9 +343,9 @@
    "readme": "design-system/components/Router/README.md",
    "preview": "design-system/components/Router/preview.html",
    "group": "Page sections",
-   "height": "780",
+   "height": "1620",
    "width": "1100",
-   "subtitle": "Pick a situation; one route opens: water, system, where to start",
+   "subtitle": "Pick your situation, see one route; pending stations dashed",
    "summary": "Router lets a buyer pick the situation they are in and see one route through what follows: the water they need, the system, and where to start with us."
   },
   {
@@ -373,9 +373,9 @@
    "readme": "design-system/components/Versus/README.md",
    "preview": "design-system/components/Versus/preview.html",
    "group": "Page sections",
-   "height": "920",
+   "height": "1870",
    "width": "1100",
-   "subtitle": "Two routes across a spine of factors, with a verdict for each",
+   "subtitle": "Two routes across a spine of factors, with a verdict or a conclusion band",
    "summary": "Versus sets two routes face to face across a spine of factors, for a buyer choosing one of two (hot or ambient WFI, multi-effect or vapour compression)."
   },
   {
@@ -423,9 +423,9 @@
    "readme": "design-system/components/LimitGauges/README.md",
    "preview": "design-system/components/LimitGauges/preview.html",
    "group": "Data",
-   "height": "1250",
+   "height": "2250",
    "width": "1100",
-   "subtitle": "Water limits as instrument faces on a drawing plate: scale, limit pointer and readout, the basis as tags",
+   "subtitle": "Release limits as dials; design rules as threshold bars",
    "summary": "LimitGauges shows a block of water or steam quality limits as instrument faces on a cream drawing plate, one dial per limit, so a reader sees at a glance where each limit sits and which side of it passes."
   },
   {

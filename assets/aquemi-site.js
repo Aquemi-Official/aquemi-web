@@ -702,7 +702,7 @@ function wOptModules(b,H){var I=b.items||[],art=b.art||WP,pg=wp(art),half=Math.c
    "Make media and buffers, or buy") gets a small fork mark; item by: "<stage>" adds a "Decide by: <stage>" caption. */
 var OPT_FORK='<svg class="aq-options__fork" viewBox="0 0 32 20" aria-hidden="true" focusable="false"><path d="M1 10 H12 C18 10 18 3 24 3 H31 M12 10 C18 10 18 17 24 17 H31"/><circle cx="12" cy="10" r="2"/></svg>';
 function wOptDecide(b,H){var I=b.items||[];
- return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options aq-options--decide">'+I.map(function(it,i){var fork=/or/i.test(String(it.t||''));
+ return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options aq-options--decide">'+I.map(function(it,i){var fork=/\bor\b/i.test(String(it.t||''));
   return fli('<li><div class="aq-rows__row"><span class="aq-options__q" aria-hidden="true">'+idx(i)+'<span class="aq-options__qt">?</span></span>'
    +'<h3 class="aq-rows__t">'+(fork?OPT_FORK:'')+tx(it.t)+'</h3>'
    +'<p class="aq-rows__d">'+(it.d?tx(it.d):'')+(it.by?'<span class="aq-options__by">Decide by: '+tx(it.by)+'</span>':'')+'</p></div></li>',b,i)}).join('')+'</ol>',b.fold_noun||'decisions'))}
@@ -924,12 +924,12 @@ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.targe
    number with its unit or a [placeholder]. A number sets the scale (0 to the next round number above it, gaugeScale:
    a ruler, not data). A placeholder draws the same bar unnumbered with the mark at mid-scale and the placeholder as the
    chip: the shape of the rule, its value still to come. */
-var RULE_UP=/\b(at least|minimum|min\.|no less than|not less than)\s*/i,RULE_DN=/\b(at most|maximum|max\.|no more than|not more than|up to)\s*/i;
+var RULE_UP=/\b(at least|minimum|min\.|no less than|not less than)/i,RULE_DN=/\b(at most|maximum|max\.|no more than|not more than|up to)/i;
 function ruleParse(r){var v=String(r.rule||r.v||''),m=v.match(/([≤<≥>])\s*/),c='',k;
   if(m){c=m[1]==='<'?'≤':m[1]==='>'?'≥':m[1];k=m.index+m[0].length}
   else{var bare=v.replace(/\[[^\]]*\]/g,function(x){return Array(x.length+1).join(' ')}),u=bare.match(RULE_UP),d=bare.match(RULE_DN),w=u&&(!d||u.index<d.index)?u:d;
     if(!w)return null;c=w===u?'≥':'≤';k=w.index+w[0].length}
-  var rest=v.slice(k),p=rest.match(/^\[[^\]]*\]/);
+  var rest=v.slice(k).replace(/^\s+/,''),p=rest.match(/^\[[^\]]*\]/);
   if(p)return {c:c,ph:p[0]};
   var n=rest.match(/^(\d+(?:\.\d+)?)\s*([^\s;,(]*(?:\s?\/\s?[^\s;,(]+)?)/);
   if(!n)return null;return {c:c,n:parseFloat(n[1]),t:n[1],u:n[2]&&n[2].length<=8?n[2]:''}}

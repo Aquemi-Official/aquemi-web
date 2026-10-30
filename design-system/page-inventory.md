@@ -98,6 +98,8 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | case | CaseStudy (an item with `art`, `outcomes` or `timeline` renders as the project record: drawing with what changed, outcome figures, order-to-release timeline; in use on projects) |
 | spec | SpecTable (`caption` shown as the section eyebrow; rows keep their order, `hl` rows tinted, optional row `link`) |
 | spec as gauges | LimitGauges (limits as dials; sys-pw, sys-wfi-membrane, sys-pure-steam, sys-pretreatment) |
+| spec as rules | LimitGauges rule variant (design rules as horizontal threshold bars; row `rule` sets the threshold; sys-storage) |
+| options `as: "decisions"` | OptionList decisions (framed rows, ? tag, fork mark on two-way decisions, optional `by`; ind-biotech) |
 | spec as callouts | ParameterCallouts (rows with `at` on the page's drawing, the rest as SpecTable; sys-pw, sys-wfi-membrane, sys-pure-steam, sys-storage, sys-monitoring) |
 | table | CompareTable (phones: records up to three value columns, tabs from four; link columns end each row) |
 | table `as: "plans"` | PlanTiers (navy: plans side by side, phones stacked; "Suits" and "Price" rows head each plan; optional `recommend`; one page-CTA button per plan) |

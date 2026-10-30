@@ -109,6 +109,9 @@
   .aq-steps--stages .aq-steps__t { grid-area: t; }
   .aq-steps--stages .aq-steps__d { grid-area: d; }
   .aq-steps--stages .aq-steps__hold { grid-area: h; margin: 0; }
+  /* every run (hold stages included) is the vertical pipe down the number column; nothing reaches past the strip */
+  .aq-steps--stages { overflow-x: clip; }
+  .aq-steps--stages .aq-steps__st > .aq-steps__run { left: calc(var(--space-12) / 2 - 6px / 2); top: var(--space-8); bottom: 0; width: 6px; height: auto; }
   .aq-steps--stages .aq-steps__st.is-hold { grid-template-areas: "n f t" "n d d" "n h h"; }
   .aq-steps--stages .aq-steps__st.is-hold .aq-steps__body { padding: 0; outline: 0; }
   .aq-steps--stages .aq-steps__st.is-hold .aq-steps__body::before { display: none; }
