@@ -64,7 +64,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | Page | Headline | Sections |
 | --- | --- | --- |
 | [About](https://aquemi-official.github.io/aquemi-web/#about) | A Canadian specialist in pharmaceutical water | prose, table (ask any supplier), grid (why Canadian), steps (one team), table (team, placeholders), spec (company facts), grid (principles), grid (verify), faq, related |
-| [Careers](https://aquemi-official.github.io/aquemi-web/#careers) | Build systems that pass inspection | prose, grid, table, steps, form |
+| [Careers](https://aquemi-official.github.io/aquemi-web/#careers) | Build systems that pass inspection | prose, table (roles), table (requirements, base, travel, pay), steps (one system), spec (pay and terms), grid (training), steps (hiring), form (apply or speculative), faq, related |
 | [News](https://aquemi-official.github.io/aquemi-web/#news) | Technical notes and company news | grid, table, grid, form |
 
 ## Contact

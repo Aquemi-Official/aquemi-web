@@ -2,184 +2,520 @@
  "id": "careers",
  "section": "Company",
  "nav_label": "Careers",
- "title": "Careers in pharmaceutical water engineering | Aquemi",
- "meta": "Join a Canadian team that designs, welds, tests and qualifies pharmaceutical water systems. Open roles in engineering, fabrication, validation and service.",
+ "title": "Careers: pharmaceutical water engineering jobs | Aquemi",
+ "meta": "Process, orbital welding (ASME IX), validation, controls, field service and quality jobs on PW and WFI systems in Canada. Pay range in every posting.",
  "path": "/company/careers/",
- "eyebrow": "CAREERS",
+ "eyebrow": "CAREERS · PROCESS · ORBITAL WELDING · VALIDATION · CONTROLS · FIELD SERVICE · QUALITY",
  "headline": "Build systems that pass inspection",
- "lead": "We hire engineers, welders, technicians and validation specialists who like exact work. You see a system through from drawing to qualified handover.",
+ "lead": "We design, weld, test, qualify and service Purified Water (PW), Water for Injection (WFI) and pure steam systems for plants that answer to Health Canada, FDA and EU inspectors. Every weld, test and change leaves a signed record, and the people who make those records are the people we hire. This page says what each job involves, what you need to bring, where it is based, how much it travels and what it pays, so you can decide before you apply.",
  "tags": [
   "ASME BPE",
-  "GAMP 5"
+  "ASME Section IX",
+  "USP <1231>",
+  "EU GMP Annex 15",
+  "GAMP 5",
+  "ISO 9001"
  ],
- "primary_cta": "See open roles",
+ "primary_cta": "See the roles",
  "secondary_cta": {
-  "label": "About Aquemi",
+  "label": "Meet the team",
   "link": "about"
  },
  "blocks": [
   {
    "type": "prose",
-   "h": "What the work is like",
+   "nav": "The work",
+   "h": "What the work is, and who it suits",
    "body": [
-    "Our projects are small enough that one engineer can know the whole system and regulated enough that every detail is recorded. You will read a URS, draw a P&ID, watch your design get welded and tested, and see it pass FAT with the client in the room.",
-    "We train people in pharmaceutical water practice. Many of our team members came from [food, dairy, power or general process work] and learned GMP documentation here."
-   ]
-  },
-  {
-   "type": "grid",
-   "h": "Roles we hire for",
-   "intro": "Current openings are listed below. If none fits, send a general application.",
-   "items": [
-    {
-     "t": "Process engineer",
-     "d": "Sizing and design of PW, WFI and Pure Steam systems; P&IDs and specifications.",
-     "tag": "[Open or closed]"
-    },
-    {
-     "t": "Automation engineer",
-     "d": "PLC and HMI programming, GAMP 5 software specifications, controls OQ.",
-     "tag": "[Open or closed]"
-    },
-    {
-     "t": "Orbital welder and pipefitter",
-     "d": "Sanitary 316L tube welding to ASME BPE, weld logs and borescope inspection.",
-     "tag": "[Open or closed]"
-    },
-    {
-     "t": "Validation specialist",
-     "d": "FAT, SAT and IQ/OQ protocol writing and execution.",
-     "tag": "[Open or closed]"
-    },
-    {
-     "t": "Field service technician",
-     "d": "Commissioning, preventive maintenance and calibration at client sites in [region].",
-     "tag": "[Open or closed]"
-    },
-    {
-     "t": "Project manager",
-     "d": "Schedule, cost and client communication from order to handover.",
-     "tag": "[Open or closed]"
-    }
+    "Our systems are small enough that one engineer can know the whole of one, and regulated enough that every detail is written down. A process engineer reads the user requirement specification (URS) and draws the piping and instrumentation diagram (P&ID). A welder joins the 316L tubing and logs each weld. A validation specialist tests the system against a protocol the client approved. A field technician keeps it running for years after. You see the system you worked on pass its factory acceptance test (FAT), often with the client's quality team in the room.",
+    "The work suits people who like exact work and do not mind showing it. Documentation is about half of every job here: a weld without its log entry, or a test without its signed record, does not count. Field roles travel, and plant shutdowns fall on weekends and holidays. We say that up front because it is the main reason people leave this kind of work.",
+    "You do not need pharmaceutical experience for every role. We train good documentation practice and the standards we design to. [Confirm how many of the current team came from other industries, for example food, dairy, power or general process work, before publishing this sentence]"
    ]
   },
   {
    "type": "table",
-   "h": "What we offer",
+   "nav": "Roles",
+   "anchor": "roles",
+   "h": "The roles we hire for, and where the work is described",
    "cols": [
-    "Area",
-    "Detail"
+    "Role",
+    "What you do",
+    "Where the work is described",
+    "Opening"
    ],
    "rows": [
     [
-     "Location",
-     "[City], [province]; field roles travel within [region]"
+     "Process engineer",
+     "Review the client's URS and feed water analysis, size PW, WFI and pure steam systems, draw P&IDs, write the functional and equipment specifications, and design to USP <1231>, ISPE Baseline Guide Vol. 4 and ASME BPE. You answer design questions at FAT and through change control after handover",
+     {
+      "t": "Process design",
+      "link": "svc-design"
+     },
+     "[Open or closed · posting reference]"
     ],
     [
-     "Training",
-     "[Welding qualification, GMP training, professional development budget]"
+     "Orbital welder",
+     "Make autogenous orbital welds in 316L stainless steel tubing to ASME BPE, from the weld map on the isometric. Run the sample weld (coupon), inspect by borescope, and log each weld with its procedure, weld schedule and the EN 10204 3.1 heat numbers of the parts it joins",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     },
+     "[Open or closed · posting reference]"
     ],
     [
-     "Benefits",
-     "[Health and dental, retirement plan, vacation]"
+     "Validation specialist (commissioning and qualification)",
+     "Write and execute FAT, site acceptance test (SAT), installation qualification (IQ) and operational qualification (OQ) protocols, support the client's performance qualification (PQ), raise and close deviations, and assemble the turnover package to EU GMP Annex 15",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     },
+     "[Open or closed · posting reference]"
     ],
     [
-     "Hours",
-     "[Standard hours and shift pattern; overtime policy for shutdowns]"
+     "Controls and automation engineer",
+     "Program the programmable logic controller (PLC) and human-machine interface (HMI), design alarms, interlocks and sanitization sequences, configure audit trails to 21 CFR Part 11 and EU GMP Annex 11, write the software specifications to GAMP 5, and test the software at FAT and OQ",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     },
+     "[Open or closed · posting reference]"
     ],
     [
-     "Professional status",
-     "[Support for P.Eng. or CET registration]"
+     "Field service technician",
+     "Commission systems on site, run preventive maintenance, calibrate conductivity, total organic carbon (TOC) and flow instruments, replace membranes and lamps, run sanitizations and find faults, all under the client's change control and with a signed service record",
+     {
+      "t": "Service and spare parts",
+      "link": "svc-service"
+     },
+     "[Open or closed · posting reference]"
+    ],
+    [
+     "Quality specialist",
+     "Run document control, nonconformance reports and corrective and preventive action (CAPA) under our ISO 9001 quality system, review material certificates and weld records, check each turnover package before it leaves, and host client supplier audits",
+     {
+      "t": "Quality management",
+      "link": "cmp-quality"
+     },
+     "[Open or closed · posting reference]"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Requirements",
+   "h": "What you need, where you work, how much you travel and what it pays",
+   "cols": [
+    "Role",
+    "Must have",
+    "Helps (we train the rest)",
+    "Based in",
+    "Travel",
+    "Pay range, CAD"
+   ],
+   "rows": [
+    [
+     "Process engineer",
+     "Engineering degree, chemical or mechanical, and a P.Eng. or ing. licence, or eligibility for one, in [province of licence]; [minimum years] in process design",
+     "Reverse osmosis (RO), electrodeionization (EDI) or distillation design; hygienic design; GMP projects",
+     "[engineering office, city and province] · [remote or hybrid days per week]",
+     "[process engineer travel, % of working days]: site surveys, FAT, SAT",
+     "[process engineer pay range, CAD per year]"
+    ],
+    [
+     "Orbital welder",
+     "Current ASME Section IX welding operator performance qualification (WOPQ) for orbital gas tungsten arc welding (GTAW), or the ability to pass one on our procedure at the practical interview; [provincial pressure welder registration, if required]",
+     "Red Seal Steamfitter/Pipefitter; sanitary or biopharmaceutical tubing; reading isometrics",
+     "[shop location, city and province]",
+     "[welder travel, % of working days]: site tie-ins and installation",
+     "[orbital welder pay range, CAD per hour]"
+    ],
+    [
+     "Validation specialist",
+     "Degree or diploma in science or engineering; [minimum years] writing or executing protocols in a GMP setting; good documentation practice",
+     "Water, steam or utility systems; GAMP 5; computerized system validation",
+     "[validation base, city and province]",
+     "[validation travel, % of working days]: client sites for SAT, IQ and OQ",
+     "[validation specialist pay range, CAD per year]"
+    ],
+    [
+     "Controls and automation engineer",
+     "Engineering degree or engineering technologist diploma; [PLC and HMI platforms we use]; a licence, or eligibility for one, where the role signs as an engineer",
+     "21 CFR Part 11 and Annex 11 configuration; supervisory control and data acquisition (SCADA) historians; GAMP 5 software testing",
+     "[engineering office, city and province]",
+     "[controls travel, % of working days]: FAT, commissioning, OQ",
+     "[controls engineer pay range, CAD per year]"
+    ],
+    [
+     "Field service technician",
+     "Technician diploma or trade, for example instrumentation and control or industrial mechanic (millwright); a valid driver's licence; ability to meet client site access and safety requirements",
+     "Water treatment, RO or instrument calibration; GMP gowning; French where the region needs it",
+     "[service base or bases, city and province]",
+     "[service travel, % of working days] · on call [on-call rota]",
+     "[field service technician pay range, CAD per hour]"
+    ],
+    [
+     "Quality specialist",
+     "Degree or diploma; [minimum years] in quality assurance in manufacturing; working knowledge of ISO 9001",
+     "ISO 9001 lead auditor; ASQ Certified Quality Auditor; weld inspection or pressure equipment records",
+     "[shop and office location, city and province]",
+     "[quality travel, % of working days]: supplier and client audits",
+     "[quality specialist pay range, CAD per year]"
     ]
    ]
   },
   {
    "type": "steps",
-   "h": "How we hire",
+   "nav": "A project",
+   "h": "Where each role touches one system",
+   "items": [
+    {
+     "t": "Design",
+     "d": "The process engineer sizes the system from the URS; the controls engineer writes the functional specification. Quality opens the project file."
+    },
+    {
+     "t": "Fabrication",
+     "d": "The welders build the skid and loop in our shop from the weld map. Quality reviews heat certificates and weld logs as the work goes, not at the end."
+    },
+    {
+     "t": "Factory acceptance test",
+     "d": "Validation runs the FAT wet in our test bay against the approved protocol, with the process and controls engineers there to answer the client."
+    },
+    {
+     "t": "Installation and qualification",
+     "d": "Field service installs and commissions on site; validation executes SAT, IQ and OQ and hands over the turnover package."
+    },
+    {
+     "t": "Service and requalification",
+     "d": "Field service maintains and calibrates the system under the client's change control. A change that touches the design goes back to the engineer who designed it."
+    }
+   ]
+  },
+  {
+   "type": "spec",
+   "nav": "Pay & terms",
+   "h": "Pay, benefits and terms",
+   "cols": [
+    "Item",
+    "Our terms",
+    "Note"
+   ],
+   "rows": [
+    {
+     "p": "Pay range",
+     "v": "Stated in every posting, in Canadian dollars per year or per hour. [Range for each role in the requirements table above]",
+     "m": "BC Pay Transparency Act, since 1 November 2023; Ontario Employment Standards Act, 2000, since 1 January 2026, for employers with 25 or more employees (range no wider than $50,000)",
+     "hl": true
+    },
+    {
+     "p": "Hours",
+     "v": "[standard weekly hours and core hours]",
+     "m": "[Flexible or hybrid arrangements by role]"
+    },
+    {
+     "p": "Overtime and shutdown work",
+     "v": "[Overtime pay or time off in lieu; how weekend shutdowns are scheduled and paid]",
+     "m": "Provincial employment standards set the minimum"
+    },
+    {
+     "p": "Travel",
+     "v": "[Per diem, accommodation, paid travel time, company vehicle for field roles]",
+     "m": "Travel share by role in the requirements table"
+    },
+    {
+     "p": "Health and dental",
+     "v": "[Plan, coverage and waiting period]",
+     "m": ""
+    },
+    {
+     "p": "Retirement",
+     "v": "[Group RRSP or pension, employer match]",
+     "m": ""
+    },
+    {
+     "p": "Vacation",
+     "v": "[Weeks of paid vacation in year one, and how it grows]",
+     "m": "Provincial employment standards set the minimum"
+    },
+    {
+     "p": "Training and qualification",
+     "v": "[Welding requalification paid by Aquemi; GMP and good documentation practice training; external course budget, CAD per year]",
+     "m": "See how we train, below"
+    },
+    {
+     "p": "Professional licence",
+     "v": "[P.Eng., ing. or CET dues and exam fees paid; supervised experience for engineers in training]",
+     "m": "Provincial engineering regulator, for example Ordre des ingénieurs du Québec in Quebec"
+    },
+    {
+     "p": "Safety equipment",
+     "v": "[Safety boots, prescription safety glasses, PPE allowance]",
+     "m": ""
+    },
+    {
+     "p": "Working language",
+     "v": "[English, French, or both, by role and region]",
+     "m": "Quebec's Charter of the French Language applies to work in Quebec"
+    }
+   ],
+   "note": "Every term in square brackets is set per posting. If a posting and this table disagree, the posting and the written offer govern."
+  },
+  {
+   "type": "grid",
+   "h": "How we train",
+   "intro": "Most people arrive knowing one of these well. We train the rest on real projects, with a named person who signs off each step.",
+   "items": [
+    {
+     "t": "Good documentation practice",
+     "d": "How to make a record an inspector accepts: attributable, legible, contemporaneous, original and accurate. In your first [training period, weeks].",
+     "tag": "GMP",
+     "link": "cmp-documentation"
+    },
+    {
+     "t": "The standards we design to",
+     "d": "Reading USP <1231>, USP <645>, USP <643>, ASME BPE and EU GMP Annex 15 against a real project file.",
+     "tag": "USP · ASME BPE",
+     "link": "compliance"
+    },
+    {
+     "t": "Qualification on our procedures",
+     "d": "Welders qualify on our welding procedure specifications; validation staff execute under supervision until signed off. [Sign-off criteria by role]",
+     "tag": "ASME Section IX",
+     "link": "svc-fabrication"
+    },
+    {
+     "t": "Shadow a FAT",
+     "d": "New engineers and specialists attend a full FAT before they lead one.",
+     "tag": "Annex 15",
+     "link": "svc-fat-sat"
+    }
+   ]
+  },
+  {
+   "type": "steps",
+   "nav": "Hiring",
+   "h": "How we hire, and how long each step takes",
    "items": [
     {
      "t": "Apply",
-     "d": "Send a CV and a short note on the work you are proudest of."
+     "d": "Use the form below for a posted opening or a speculative application. A CV and a few lines on the work you are proudest of is enough."
+    },
+    {
+     "t": "Reply",
+     "d": "The hiring manager replies within [application reply time, working days], yes or no. [State whether any automated or AI tool screens applications; Ontario requires postings to say so]"
     },
     {
      "t": "Conversation",
-     "d": "A [30]-minute call with the hiring manager."
+     "d": "A [first call length, minutes]-minute call about the role, the pay range, travel and your questions."
     },
     {
-     "t": "Technical interview",
-     "d": "A practical discussion: a P&ID, a weld sample or a protocol, depending on the role."
+     "t": "Practical interview",
+     "d": "Matched to the role: a P&ID review, a test weld on our procedure, a protocol walk-through or a fault-finding exercise. [Paid if longer than: hours]. Tell us any accommodation you need."
     },
     {
-     "t": "Shop visit",
-     "d": "Meet the team and see the work."
-    },
-    {
-     "t": "Offer",
-     "d": "Written offer within [number] working days of the final interview."
+     "t": "Shop visit and decision",
+     "d": "Meet the people you would work with and see the shop. A written offer or a decision within [offer time, working days] of the final interview, and never more than 45 days after it."
     }
    ]
   },
   {
    "type": "form",
-   "h": "General application",
-   "intro": "We read every application and reply within [number] working days.",
+   "nav": "Apply",
+   "anchor": "apply",
+   "h": "Apply for an opening, or send a speculative application",
+   "intro": "No current opening for your role? Choose a speculative application. We keep it for [retention period, months] and contact you when a matching role opens. We handle applications under our [applicant privacy notice, link; PIPEDA and Quebec Law 25].",
+   "submit": "Send my application",
    "fields": [
     {
-     "label": "Full name",
+     "kind": "radio",
+     "label": "Type of application",
+     "required": true,
+     "options": [
+      "A posted opening",
+      "Speculative application"
+     ]
+    },
+    {
      "kind": "text",
-     "required": true
+     "label": "Posting reference",
+     "required": false,
+     "when": "A posted opening",
+     "help": "From the posting, for example [posting reference format]."
     },
     {
-     "label": "Email",
-     "kind": "email",
-     "required": true
-    },
-    {
-     "label": "Phone",
-     "kind": "tel",
-     "required": false
-    },
-    {
-     "label": "Role of interest",
      "kind": "select",
+     "label": "Role",
+     "required": true,
      "options": [
       "Process engineer",
-      "Automation engineer",
-      "Orbital welder and pipefitter",
-      "Validation specialist",
+      "Orbital welder",
+      "Validation specialist (commissioning and qualification)",
+      "Controls and automation engineer",
       "Field service technician",
-      "Project manager",
+      "Quality specialist",
       "Other"
-     ],
-     "required": true
+     ]
     },
     {
-     "label": "Link to CV or LinkedIn profile",
-     "kind": "text",
-     "required": true
-    },
-    {
-     "label": "The work you are proudest of",
      "kind": "textarea",
-     "help": "Two or three sentences is enough.",
+     "label": "What you would do here",
+     "required": false,
+     "when": "Speculative application",
+     "help": "If your role is not listed, say what it is and which part of our work it would serve."
+    },
+    {
+     "kind": "text",
+     "label": "Full name",
+     "required": true
+    },
+    {
+     "kind": "email",
+     "label": "Email",
+     "required": true
+    },
+    {
+     "kind": "tel",
+     "label": "Phone",
      "required": false
+    },
+    {
+     "kind": "text",
+     "label": "City and province where you live",
+     "required": true
+    },
+    {
+     "kind": "radio",
+     "label": "Are you legally entitled to work in Canada?",
+     "required": true,
+     "options": [
+      "Yes",
+      "No, I would need a work permit"
+     ]
+    },
+    {
+     "kind": "text",
+     "label": "Qualifications and licences held",
+     "required": false,
+     "help": "For example P.Eng. or EIT, ASME Section IX WOPQ, Red Seal trade, ISO 9001 lead auditor."
+    },
+    {
+     "kind": "radio",
+     "label": "Travel you can accept",
+     "required": false,
+     "options": [
+      "Up to 10 % of working days",
+      "Up to 30 %",
+      "Up to 50 %",
+      "More than 50 %"
+     ]
+    },
+    {
+     "kind": "file",
+     "label": "CV",
+     "required": true,
+     "accept": ".pdf,.docx",
+     "help": "PDF or Word."
+    },
+    {
+     "kind": "textarea",
+     "label": "The work you are proudest of",
+     "required": false,
+     "help": "Two or three sentences is enough."
     }
-   ],
-   "submit": "Send application"
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions applicants ask",
+   "items": [
+    {
+     "q": "Do I need pharmaceutical experience?",
+     "a": "Not for every role. The requirements table says which roles need GMP experience before you start. Validation and quality roles do; welders, technicians and engineers from other process industries can learn GMP documentation here."
+    },
+    {
+     "q": "I am not ASME Section IX qualified on orbital welding yet. Can I apply?",
+     "a": "Yes, if you weld tube or pipe with GTAW. The practical interview includes a test weld on our procedure. [Confirm whether Aquemi qualifies welders who pass, and whether trainee welder positions exist]"
+    },
+    {
+     "q": "Do you require Canadian experience?",
+     "a": "No. We assess what you have done, wherever you did it. Engineers who sign drawings must hold a licence in the province concerned; provincial regulators assess experience gained abroad."
+    },
+    {
+     "q": "How much do field roles really travel?",
+     "a": "The share for each role is in the requirements table and in every posting, with how travel time, meals and accommodation are paid. Shutdown work is planned [notice for planned shutdown work, weeks] ahead where the client allows."
+    },
+    {
+     "q": "Why does every posting show a pay range?",
+     "a": "British Columbia has required it in public postings since 1 November 2023, and Ontario since 1 January 2026 for employers with 25 or more employees. We state it in every province because it saves both sides a call. The range is what we expect to pay for the role."
+    },
+    {
+     "q": "Is any part of the screening automated?",
+     "a": "[State whether an applicant tracking system or AI tool screens, assesses or selects applicants, and how. If none, say that a person reads every application]"
+    },
+    {
+     "q": "Do you support work permits?",
+     "a": "[State whether Aquemi supports a Labour Market Impact Assessment (LMIA) or other work permit routes, and for which roles]"
+    },
+    {
+     "q": "Do you take co-op students or apprentices?",
+     "a": "[State co-op terms, apprenticeship hours for Red Seal trades, and the schools or programs Aquemi works with]"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Read about the work before you apply",
+   "items": [
+    "about",
+    "svc-design",
+    "svc-fabrication",
+    "svc-cq",
+    "svc-service",
+    "cmp-quality"
+   ]
   }
  ],
  "cta": {
-  "h": "Not hiring for your role today",
-  "body": "Send a general application and we will contact you when a role opens.",
-  "button": "Send application",
-  "link": "careers"
+  "h": "No opening for your role today",
+  "body": "Send a speculative application. Tell us what you do and which part of our work it would serve. We reply within [application reply time, working days] and keep your application for [retention period, months].",
+  "button": "Send a speculative application",
+  "link": "#apply"
  },
  "todo": [
-  "List of open roles with status and location",
-  "Benefits, hours and training details",
-  "Hiring timeline commitments (reply time, offer time)",
-  "Background of current team members (to confirm the 'came from other industries' statement)",
-  "Applicant privacy notice (PIPEDA, Quebec Law 25) linked from the form",
-  "Careers inbox or applicant tracking system"
- ]
+  "Open roles: status and posting reference for each of the six roles; posting reference format",
+  "Pay range per role (CAD per year or per hour); confirm employee count against Ontario's 25-employee threshold and the provinces Aquemi posts in",
+  "Shop, engineering office, validation base and service base locations (city and province); remote or hybrid days per week by role",
+  "Travel share per role (% of working days) and for field roles overall; on-call rota for field service; notice for planned shutdown work (weeks)",
+  "Minimum years of experience per role; PLC and HMI platforms used; province of licence for engineers",
+  "Whether a provincial pressure welder registration is required for shop and site welders (e.g. TSSA, Technical Safety BC, ABSA) and who pays for it",
+  "Whether Aquemi qualifies welders who pass the test weld; trainee welder positions; sign-off criteria for training by role; documentation training period (weeks); external course budget (CAD per year)",
+  "Hours and core hours, overtime or time off in lieu, shutdown pay, per diem, accommodation, paid travel time and company vehicle policy",
+  "Health and dental plan, retirement plan and employer match, vacation in year one",
+  "Licence dues and exam fees policy (P.Eng., ing., CET); PPE allowance; working language by role and region",
+  "Application reply time (working days), first-call length (minutes), paid practical interview threshold (hours), offer time (working days); process for the 45-day post-interview notice (Ontario ESA)",
+  "Whether any automated or AI tool screens applications (must be disclosed in Ontario postings)",
+  "Work permit (LMIA) policy; co-op and apprenticeship programs",
+  "Applicant privacy notice link (PIPEDA, Quebec Law 25), retention period for applications (months), careers inbox or applicant tracking system behind the form",
+  "Confirm how many of the current team came from other industries before publishing that sentence",
+  "Legal review of the posting template against BC Pay Transparency Act and Ontario ESA rules (pay range, AI disclosure, existing-vacancy statement, no Canadian experience requirement, record retention)"
+ ],
+ "facts": [
+  {
+   "v": "6 roles",
+   "l": "Process, orbital welding, validation, controls, field service and quality · one team, one system"
+  },
+  {
+   "v": "Pay range in every posting",
+   "l": "In Canadian dollars, as the BC Pay Transparency Act and Ontario's Employment Standards Act require of public postings"
+  },
+  {
+   "v": "[application reply time, working days]",
+   "l": "From application to a reply from the hiring manager"
+  },
+  {
+   "v": "[shop and office location, city and province]",
+   "l": "Shop, test bay and engineering office · field roles travel [field travel share, % of working days]"
+  }
+ ],
+ "primary_cta_link": "#roles"
 }
