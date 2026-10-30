@@ -27,9 +27,20 @@ function idx(i){return '<span class="aq-index" aria-hidden="true">'+(i<9?'0':'')
 function wRow(i,t,d,link,art,tag){var inner=idx(i)+'<h3 class="aq-rows__t">'+tx(t)+'</h3>'+(d||tag?'<p class="aq-rows__d">'+(d?tx(d):'')+(tag?'<span class="aq-tags"><span class="aq-tag">'+e(tag)+'</span></span>':'')+'</p>':'')
   +(art&&ART[art]?'<span class="aq-illustration aq-rows__art" aria-hidden="true" style="'+artMask(art)+'"></span>':'');
  return '<li>'+(link&&wp(link)?'<a class="aq-rows__row" href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div class="aq-rows__row">'+inner+'</div>')+'</li>'}
+/* Fold (block field fold: N): the first N items show, the rest carry aq-fold-x and stay hidden until the button under
+   the list is pressed ("Show all 10 parameters" / "Show fewer"). Put the items that decide the choice first; fold only
+   secondary detail. fli(html, b, i) marks item i; wFold(b, count, inner, noun) adds the button when anything is folded. */
+var foldN=0;
+function fli(h,b,i){return b.fold&&i>=b.fold?h.replace(/^<(li|tr)( class="([^"]*)")?/,function(m,t,c,v){return '<'+t+' class="'+(v?v+' ':'')+'aq-fold-x"'}):h}
+function wFold(b,n,inner,noun){if(!(b.fold>0)||n<=b.fold)return inner;var id='fold-'+(++foldN),all='Show all '+n+' '+(noun||'rows');
+ return '<div class="aq-fold" id="'+id+'">'+inner+'<button type="button" class="aq-fold__btn" aria-expanded="false" aria-controls="'+id+'" data-more="'+e(all)+'">'+e(all)+'</button></div>'}
+document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-fold__btn');if(!t)return;var w=t.closest('.aq-fold'),o=!w.classList.contains('is-open');
+ w.classList.toggle('is-open',o);t.setAttribute('aria-expanded',o?'true':'false');t.textContent=o?'Show fewer':t.getAttribute('data-more');if(!o)w.scrollIntoView({block:'nearest'})});
 /* SpecTable cell: a string, or {t, link} to route the reader to another page (link must be a page id) */
 function tcell(c){return c&&typeof c==='object'?(c.link&&wp(c.link)?wlink(c.link,c.t):tx(c.t)):tx(c)}
 function gridItem(inner,link){return link&&wp(link)?'<a href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div>'+inner+'</div>'}
+/* Table shapes: a table block with as: "router" (and later shapes) renders through TABLE_AS[as] instead of the matrix. */
+var TABLE_AS={};
 /* Block renderers register here: BLOCKS[type] = function(block, heading) -> section HTML. See assets/src/blocks/. */
 var BLOCKS={};
 /* Button. intent (optional): option labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent) */
@@ -38,13 +49,17 @@ function wBtn(label,link,kind,intent){var j=link&&link.charAt(0)==='#';return '<
    c is the page's cta ({h, body, button, link, intent, include, include_label}); p is the page.
    include: optional checklist of short strings (what to send us, each ≤ 8 words), shown as a compact numbered list under
    the body, so a page's "what to send" docs block can fold into its closing. include_label overrides "What to send us". proof: optional {v, l}, one confirmed figure that evidences what the
-   closing asks for (an Aquemi commitment or a test we run). Without it there is no proof box; nothing is taken from the hero. */
+   closing asks for (an Aquemi commitment or a test we run). Without it there is no proof box; nothing is taken from the hero.
+   returns: optional list of what comes back (each ≤ 8 words: "Sizing note", "Block flow diagram"), shown beside include as
+   an exchange: what you send → turnaround → what comes back, each return with a small document mark. returns_label
+   overrides "What comes back"; turnaround (a placeholder until confirmed) labels the arrow between the two lists. */
 function wClosing(c,p){if(!c||!c.h)return '';
  var f=c.proof&&c.proof.v?c.proof:null;
  return '<section class="aq-section aq-band--navy aq-closing"><div class="aq-in"><div class="aq-closing__frame">'+
   '<h2 class="aq-closing__h">'+tx(c.h)+'</h2>'+
   '<div class="aq-closing__body">'+(c.body?'<p class="aq-lead">'+tx(c.body)+'</p>':'')+
-  (c.include&&c.include.length?'<div class="aq-closing__include"><p class="aq-closing__tag">'+tx(c.include_label||'What to send us')+'</p><ol>'+c.include.map(function(x,i){return '<li>'+idx(i)+'<span>'+tx(x)+'</span></li>'}).join('')+'</ol></div>':'')+
+  (c.include&&c.include.length?(c.returns&&c.returns.length?'<div class="aq-closing__swap">':'')+'<div class="aq-closing__include"><p class="aq-closing__tag">'+tx(c.include_label||'What to send us')+'</p><ol>'+c.include.map(function(x,i){return '<li>'+idx(i)+'<span>'+tx(x)+'</span></li>'}).join('')+'</ol></div>'
+   +(c.returns&&c.returns.length?'<p class="aq-closing__turn"><span>'+tx(c.turnaround||'')+'</span></p><div class="aq-closing__include aq-closing__returns"><p class="aq-closing__tag">'+tx(c.returns_label||'What comes back')+'</p><ol>'+c.returns.map(function(x){return '<li><span class="aq-closing__doc" aria-hidden="true"></span><span>'+tx(x)+'</span></li>'}).join('')+'</ol></div></div>':''):'')+
   (f?'<div class="aq-closing__proof"><span class="aq-closing__tag">Proof</span><span class="aq-closing__value">'+tx(f.v)+'</span>'+(f.l?'<span class="aq-closing__label">'+tx(f.l)+'</span>':'')+'</div>':'')+
   '</div><div class="aq-closing__action">'+wBtn(c.button||'Request a proposal',c.link||'contact-proposal',null,c.intent)+'</div>'+
   '</div></div></section>'}
@@ -372,15 +387,38 @@ BLOCKS['docs']=function(b,H){
   var codes=items.map(function(x){return x.code?[x.code,true]:docCode(x.t)});
   /* Codes only when most items are documents the lookup knows; a checklist of other things keeps just its numbers. */
   var coded=codes.filter(function(c){return c[1]}).length*2>=items.length;
-  return sec(H+'<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
-    return '<li>'+idx(i)+(coded?'<span class="aq-docs__code" aria-hidden="true">'+e(codes[i][0])+'</span>':'')
+  return sec(H+wFold(b,items.length,'<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
+    return fli('<li>',b,i)+idx(i)+(coded?'<span class="aq-docs__code" aria-hidden="true">'+e(codes[i][0])+'</span>':'')
       +'<span class="aq-docs__name">'+tx(x.t)+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span></li>';
-  }).join('')+'</ol>');
+  }).join('')+'</ol>','documents'));
 };
+/* Table as "evidence" -> EvidenceMap: a requirement, how we meet it, and where the proof sits. Fields as a table:
+   cols [requirement, how we meet it, then evidence columns], rows. Evidence columns: a column whose every cell is a page
+   link becomes the row's quiet link; every other column becomes document tags (cells split on ";"), labelled with the
+   column name when there is more than one. Desktop: requirement | how | a leader line to the tags. Phones: stacked. */
+TABLE_AS.evidence=function(b,H){var C=b.cols||[],R=b.rows||[];
+ var go=C.map(function(c,i){return i>1&&R.length>0&&R.every(function(r){var x=r[i];return x&&typeof x==='object'&&x.link})});
+ var ev=C.map(function(c,i){return i}).filter(function(i){return i>1&&!go[i]}),many=ev.length>1;
+ return sec(H+'<div class="aq-evidence"><div class="aq-evidence__head" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span><span>'+(many?'Reference':tx(C[ev[0]]||''))+'</span></div>'
+  +'<ol class="aq-evidence__rows">'+R.map(function(r,ri){
+   var tags=ev.map(function(i){var c=r[i],t=c&&typeof c==='object'?c.t:c;if(!t)return '';
+    return (many?'<span class="aq-evidence__k">'+tx(C[i])+'</span>':'')+String(t).split(/\s*;\s*/).map(function(x){return '<span class="aq-evidence__doc">'+tx(x.charAt(0).toUpperCase()+x.slice(1))+'</span>'}).join('')}).join('');
+   var links=C.map(function(c,i){return go[i]?tcell(r[i]):''}).join('');
+   return fli('<li class="aq-evidence__row">',b,ri)+'<h3 class="aq-evidence__t">'+tcell(r[0])+'</h3><p class="aq-evidence__how">'+tcell(r[1])+'</p>'
+    +'<p class="aq-evidence__proof">'+tags+(links?'<span class="aq-evidence__go">'+links+'</span>':'')+'</p></li>'}).join('')+'</ol></div>');};
 /* Block "faq" -> FAQ: hairline accordion rows (index, question, +/−), all closed; a shared name keeps one answer open.
    Desktop: heading left, questions right (SplitSection). */
 var faqN=0;
 BLOCKS['faq']=function(b,H){faqN++;return split(H,'<div class="aq-faq">'+(b.items||[]).map(function(it,i){return '<details name="faq-'+faqN+'"><summary>'+idx(i)+'<span class="aq-faq__q">'+tx(it.q)+'</span><span class="aq-faq__sign" aria-hidden="true"></span></summary><div class="aq-faq__a"><p>'+tx(it.a)+'</p></div></details>'}).join('')+'</div>');};
+/* Table as "failures" -> FaultList: where things fail and what we design against. Fields as a table: cols [the failure
+   column, then the columns revealed when a row opens, usually "Usual cause" and "What we design in"], rows. Each row is
+   a native <details>: index, the failure, a +/− sign; open, the other columns sit side by side, each under its column
+   name. The first row starts open; a shared name keeps one open at a time. Laid on a light sheet. */
+var faultN=0;
+TABLE_AS.failures=function(b,H){var C=b.cols||[],R=b.rows||[];faultN++;
+ return sec(H+'<div class="aq-faults">'+R.map(function(r,i){
+  return '<details name="faults-'+faultN+'"'+(i?'':' open')+'><summary>'+idx(i)+'<span class="aq-faults__t">'+tcell(r[0])+'</span><span class="aq-faults__sign" aria-hidden="true"></span></summary>'
+   +'<div class="aq-faults__body">'+r.slice(1).map(function(c,j){return '<div><p class="aq-faults__k">'+tx(C[j+1]||'')+'</p><p class="aq-faults__v">'+tcell(c)+'</p></div>'}).join('')+'</div></details>'}).join('')+'</div>');};
 /* Block "form" -> EnquiryForm (data sheet) in SplitSection. With "steps", wFormSteps renders one numbered section per step.
    wPreset ticks the options named by the linking button's intent before rendering.
    Fields split into numbered sections: 1.0 the requirement, 2.0 the trailing run of contact fields (name, company, role,
@@ -402,13 +440,30 @@ BLOCKS['form']=function(b,H){
   +'<div class="aq-form__actions"><button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button><span class="aq-small wform-msg" role="status"></span></div>'
   +'<div class="aq-form__strip" aria-hidden="true"><span>Rev. draft</span><span>'+F.length+' fields</span><span>Sheet 1 of 1</span></div>'
   +'</form>');};
+/* Table as "grades" -> GradeLanes: the minimum water grade, step by step. Fields as a table; the grade column is the
+   first whose name says grade or water (or b.grade, its index). Each row: index, the step (first other column), the
+   other columns as quieter lines, the grade cell in mono, and three lanes at the right (Potable, PW, WFI) running the
+   height of the list like pipes. The first grade named in the cell gets a filled tap, any alternative an open one;
+   a cell that names none ("same grade as the product") leaves the lanes empty. Phones keep the lanes. */
+var LANES=[['Potable',/potable|softened|drinking/i],['PW',/\bPW\b|purified/i],['WFI',/\bWFI\b|for injection/i]];
+TABLE_AS.grades=function(b,H){var C=b.cols||[],R=b.rows||[];
+ var g=b.grade!=null?b.grade:C.map(function(c,i){return /grade|water/i.test(c)?i:-1}).filter(function(i){return i>=0})[0];if(g==null)g=C.length-1;
+ var other=C.map(function(c,i){return i}).filter(function(i){return i!==g});
+ function lanes(cell){var s=String(cell&&cell.t||cell||''),hit=LANES.map(function(l){var m=l[1].exec(s);return m?m.index:-1}),first=Math.min.apply(null,hit.filter(function(x){return x>=0}));
+  return LANES.map(function(l,i){return '<span class="aq-grades__lane"><span class="aq-grades__tap'+(hit[i]<0?'':hit[i]===first?' is-min':' is-alt')+'"></span></span>'}).join('')}
+ return sec(H+'<div class="aq-grades"><div class="aq-grades__head"><span>'+tx(C[other[0]]||'')+'</span><span class="aq-grades__lanes">'+LANES.map(function(l){return '<span>'+l[0]+'</span>'}).join('')+'</span></div>'
+  +'<ol class="aq-grades__rows">'+R.map(function(r,i){var s=String(r[g]&&r[g].t||r[g]||'');
+   return fli('<li class="aq-grades__row">',b,i)+idx(i)+'<div class="aq-grades__step"><h3 class="aq-grades__t">'+tcell(r[other[0]])+'</h3>'
+    +other.slice(1).map(function(k){return r[k]?'<p class="aq-grades__d">'+tcell(r[k])+'</p>':''}).join('')
+    +'<p class="aq-grades__g">'+tcell(r[g])+'</p></div>'
+    +'<span class="aq-grades__lanes" role="img" aria-label="'+e(s)+'">'+lanes(r[g])+'</span></li>'}).join('')+'</ol></div>');};
 /* Block "grid" -> LinkGrid: choices as rows of the shared list grammar (.aq-rows): index, title, one line, optional tag.
    Fields: h, intro (section head), items [{t, d, link, tag}]. An item that links to a page is one <a>; one whose
    link page has a drawing in ART (parts/Hero.js) shows it small at the row's end on desktop (aria-hidden, hidden on phones). */
-BLOCKS['grid']=function(b,H){return sec(H+'<ol class="aq-rows aq-linkgrid">'+(b.items||[]).map(function(it,i){
- return wRow(i,it.t,it.d,it.link,it.link,it.tag)}).join('')+'</ol>');};
+BLOCKS['grid']=function(b,H){var I=b.items||[];return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-linkgrid">'+I.map(function(it,i){
+ return fli(wRow(i,it.t,it.d,it.link,it.link,it.tag),b,i)}).join('')+'</ol>'));};
 /* Block "options" -> OptionList: configuration options as rows of the shared list grammar: index, title, one line. */
-BLOCKS['options']=function(b,H){return sec(H+'<ol class="aq-rows aq-options">'+(b.items||[]).map(function(it,i){return wRow(i,it.t,it.d)}).join('')+'</ol>');};
+BLOCKS['options']=function(b,H){var I=b.items||[];return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d),b,i)}).join('')+'</ol>','options'));};
 /* Block "path" -> WaterPath */
 BLOCKS['path']=function(b,H){return sec(H+wPath(b));};
 /* Block "prose" -> Prose in SplitSection: heading left, text right. Fields: h, body (paragraphs).
@@ -455,6 +510,30 @@ BLOCKS['related']=function(b,H){return sec(H+'<ol class="aq-related-links">'+(b.
  return '<li><a class="aq-related-links__card" href="#'+e(id)+'" data-wp="'+e(id)+'">'+idx(i)
   +'<span class="aq-related-links__title">'+tx(p.nav_label)+'</span><span class="aq-related-links__group">'+e(p.section)+'</span>'
   +(ART[id]?'<span class="aq-illustration aq-related-links__art" aria-hidden="true" style="'+artMask(id)+'"></span>':'')+'</a></li>'}).join('')+'</ol>');};
+/* Table as "roles" -> RoleMatrix: who writes, does or approves each document, like the signature blocks on a controlled
+   document. Fields as a table: cols [document, then one column per role], rows. Each role cell is a stamp labelled
+   with its column name; a cell that starts with "Aquemi" is ours (tinted flow), one that starts with "You" or "Your" is
+   yours (outlined), anything else is shared (dashed). Desktop: index | document | stamps in a row. Phones: the stamps
+   sit side by side under the document. */
+function roleParty(c){var s=String(c&&c.t||c||'');return /^aquemi/i.test(s)?'ours':/^(you|your)\b/i.test(s)?'yours':'shared'}
+TABLE_AS.roles=function(b,H){var C=b.cols||[],R=b.rows||[];
+ return sec(H+'<div class="aq-roles"><p class="aq-roles__key" aria-hidden="true"><span class="aq-roles__stamp is-ours">Aquemi</span><span class="aq-roles__stamp is-yours">Your team</span><span class="aq-roles__stamp is-shared">Shared</span></p>'
+  +'<ol class="aq-roles__rows">'+R.map(function(r,i){return fli('<li class="aq-roles__row">',b,i)+idx(i)+'<h3 class="aq-roles__t">'+tcell(r[0])+'</h3><div class="aq-roles__stamps">'
+   +r.slice(1).map(function(c,j){return '<p class="aq-roles__stamp is-'+roleParty(c)+'"><span class="aq-roles__k">'+tx(C[j+1]||'')+'</span>'+tcell(c)+'</p>'}).join('')+'</div></li>'}).join('')+'</ol></div>');};
+/* Table as "router" -> Router: the buyer picks the situation they are in and sees one route through the columns that
+   follow (the water they need, the system, where to start). Fields as a table: cols (first is the situation column,
+   the rest name the stations), rows (first cell the situation, each other cell a string or {t, link}).
+   One situation is open at a time, the first by default. Desktop: situations on the left, the open route on the
+   right in a drawing frame, a pipe from the chosen situation to it. Phones: each route opens under its situation.
+   Every route is in the markup (hidden when closed), so nothing is lost to search or screen readers. */
+var routerN=0;
+TABLE_AS.router=function(b,H){var C=b.cols||[],R=b.rows||[],k=++routerN;
+ return sec(H+'<div class="aq-router">'+R.map(function(r,i){var id='route-'+k+'-'+i,s=r[0]&&typeof r[0]==='object'?r[0].t:r[0];
+  return '<button type="button" class="aq-router__opt" aria-expanded="'+(i?'false':'true')+'" aria-controls="'+id+'">'+idx(i)+'<span class="aq-router__t">'+tx(s)+'</span></button>'
+   +'<div class="aq-router__route" id="'+id+'" style="grid-row:1 / span '+R.length+'"'+(i?' hidden':'')+'><ol class="aq-router__stations">'+r.slice(1).map(function(c,j){
+    return '<li><p class="aq-router__k">'+tx(C[j+1]||'')+'</p><p class="aq-router__v">'+tcell(c)+'</p></li>'}).join('')+'</ol></div>'}).join('')+'</div>');};
+document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-router__opt');if(!t)return;var w=t.closest('.aq-router');
+ [].forEach.call(w.querySelectorAll('.aq-router__opt'),function(o){var on=o===t;o.setAttribute('aria-expanded',on?'true':'false');document.getElementById(o.getAttribute('aria-controls')).hidden=!on})});
 /* Block "spec" -> SpecTable (spec sheet: two-column matrix).
    Fields: h, caption, cols, rows [{p, v, m, hl, link}], note. Rows keep their order. hl rows at the top of the list are
    full-width bands (is-highlight is-lead); an hl row further down is tinted in place, so sequences are never broken.
@@ -464,17 +543,17 @@ BLOCKS['related']=function(b,H){return sec(H+'<ol class="aq-related-links">'+(b.
 BLOCKS['spec']=function(b,H){
   var cols=b.cols||['Parameter','Specification','Method or reference'];
   var rows=b.rows||[],lead=true;
-  var body=rows.map(function(r){
+  var body=rows.map(function(r,i){
     var hl=!!r.hl,cls=hl?(lead?'is-highlight is-lead':'is-highlight'):'';if(!hl)lead=false;
     var lp=r.link&&wp(r.link),lk=lp?'<a class="aq-spec__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(lp.nav_label||r.link)+'</a>':'';
-    return '<tr role="row"'+(cls?' class="'+cls+'"':'')+'><th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
+    return fli('<tr role="row"'+(cls?' class="'+cls+'"':''),b,i)+'><th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
   }).join('');
   var head=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro});
-  return sec(head+'<div class="aq-stack"><table class="aq-spec" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>'+(b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'')+'</div>');
+  return sec(head+'<div class="aq-stack">'+wFold(b,rows.length,'<table class="aq-spec" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>','parameters')+(b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'')+'</div>');
 };
 /* Block "steps" -> ProcessSteps: a real sequence as rows of the shared list grammar (index, step name, what happens),
    joined by one thin riser through the index column. */
-BLOCKS['steps']=function(b,H){return sec(H+'<ol class="aq-rows aq-steps">'+(b.items||[]).map(function(it,i){return wRow(i,it.t,it.d)}).join('')+'</ol>');};
+BLOCKS['steps']=function(b,H){var I=b.items||[];return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-steps">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d),b,i)}).join('')+'</ol>','steps'));};
 /* Block "table" -> CompareTable. cols: header labels (first is the row-label column); rows: cells, each a string or {t, link}.
    Three or more columns: a numbered matrix on desktop. A column whose every cell is a page link ("Where we show it") is a
    link column (aq-compare-table__go): on phones its link sits at the foot of the row, unlabelled, never a tab.
@@ -482,26 +561,46 @@ BLOCKS['steps']=function(b,H){return sec(H+'<ol class="aq-rows aq-steps">'+(b.it
    "Label: value" line (aq-compare-table__k carries the label, hidden on desktop), so nothing needs a tap.
    Phones, four or more value columns (--tabs): one tab per value column on a single scrolling strip, one column shown.
    Two columns: the numbered row list (--list). The CSS changes table display on phones, so explicit ARIA roles are set. */
-BLOCKS['table']=function(b,H){var C=b.cols||[],R=b.rows||[],list=C.length<=2;
+BLOCKS['table']=function(b,H){if(b.as&&TABLE_AS[b.as])return TABLE_AS[b.as](b,H);var C=b.cols||[],R=b.rows||[],list=C.length<=2;
  var go=C.map(function(c,i){return i>0&&R.length>0&&R.every(function(r){var x=r[i];return x&&typeof x==='object'&&x.link})});
  var vals=C.map(function(c,i){return i}).filter(function(i){return i>0&&!go[i]}),tabs=!list&&vals.length>=4;
  function cell(c,i){if(list)return '<td role="cell">'+tcell(c)+'</td>';
   var v=tcell(c);return '<td role="cell"'+(go[i]?' class="aq-compare-table__go"':'')+(v?'':' data-empty')+'>'+(go[i]||tabs||!C[i]?'':'<span class="aq-compare-table__k" aria-hidden="true">'+tx(C[i])+'</span>')+v+'</td>'}
  var strip=tabs?'<div class="aq-compare-table__tabs" role="group" aria-label="Column shown">'+vals.map(function(i,k){return '<button type="button" class="aq-compare-table__tab" data-col="'+i+'" aria-pressed="'+(k?'false':'true')+'">'+tx(C[i])+'</button>'}).join('')+'</div>':'';
- return sec(H+'<div class="aq-compare-table'+(list?' aq-compare-table--list':'')+(tabs?' aq-compare-table--tabs" data-col="'+vals[0]:'')+'">'+strip
+ return sec(H+wFold(b,R.length,'<div class="aq-compare-table'+(list?' aq-compare-table--list':'')+(tabs?' aq-compare-table--tabs" data-col="'+vals[0]:'')+'">'+strip
   +'<table class="aq-compare-table__table" role="table"><thead role="rowgroup"><tr role="row">'+C.map(function(c){return '<th scope="col" role="columnheader">'+tx(c)+'</th>'}).join('')+'</tr></thead>'
-  +'<tbody role="rowgroup">'+R.map(function(r){return '<tr role="row">'+r.map(function(c,i){return i?cell(c,i):'<th scope="row" role="rowheader">'+tcell(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>');};
+  +'<tbody role="rowgroup">'+R.map(function(r,ri){return fli('<tr role="row"',b,ri)+'>'+r.map(function(c,i){return i?cell(c,i):'<th scope="row" role="rowheader">'+tcell(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>'));};
 /* CompareTable tabs (--tabs, phones): show the pressed column */
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-compare-table__tab');if(!t)return;var w=t.closest('.aq-compare-table');w.setAttribute('data-col',t.getAttribute('data-col'));[].forEach.call(w.querySelectorAll('.aq-compare-table__tab'),function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});
 /* Block "tags" -> StandardsGrid section. items: strings (the standard's code) or {code, name} objects;
    name is the optional plain-language line. Cards link to Compliance when that page exists. */
 BLOCKS['tags']=function(b,H){var lk=wp('compliance');return '<section class="aq-section aq-band--sunken"><div class="aq-in aq-stack-l">'+H+'<ol class="aq-standards-grid">'+(b.items||[]).map(function(x){var o=typeof x==='string'?{code:x}:(x||{}),inner='<span class="aq-standards-grid__code">'+e(o.code)+'</span>'+(o.name?'<span class="aq-standards-grid__name">'+tx(o.name)+'</span>':'');return '<li class="aq-standards-grid__item'+(o.name?'':' aq-standards-grid__item--code')+'">'+(lk?'<a class="aq-standards-grid__card" href="#compliance" data-wp="compliance">'+inner+'</a>':'<div class="aq-standards-grid__card">'+inner+'</div>')+'</li>'}).join('')+'</ol>'+(b.body?'<p class="aq-small">'+tx(b.body)+'</p>':'')+'</div></section>';};
+/* Table as "versus" -> Versus: two routes facing each other across a spine of factors (hot or ambient WFI, multi-effect
+   or vapour compression). Fields as a table with exactly three columns: cols [factor label, route A, route B], rows
+   [factor, A, B]. A row whose factor starts "Fits when" (or "Choose") becomes the verdict: two closing lines,
+   "Choose <A> when …" and "Choose <B> when …", under the rows. Desktop: A right-aligned against the spine, the factor
+   on the spine, B left-aligned. Phones: each factor with A and B under it, each line tagged with its route. */
+TABLE_AS.versus=function(b,H){var C=b.cols||[],R=b.rows||[],A=tcell(C[1]),B=tcell(C[2]);
+ var fit=R.filter(function(r){return /^(fits when|choose)/i.test(String(r[0]&&r[0].t||r[0]))})[0],rows=R.filter(function(r){return r!==fit});
+ return sec(H+'<div class="aq-versus"><div class="aq-versus__head" aria-hidden="true"><p class="aq-versus__name">'+A+'</p><span class="aq-versus__vs">or</span><p class="aq-versus__name">'+B+'</p></div>'
+  +'<dl class="aq-versus__rows">'+rows.map(function(r){return '<div class="aq-versus__row"><dt>'+tcell(r[0])+'</dt><dd data-k="'+e(C[1])+'">'+tcell(r[1])+'</dd><dd data-k="'+e(C[2])+'">'+tcell(r[2])+'</dd></div>'}).join('')+'</dl>'
+  +(fit?'<div class="aq-versus__verdict"><div><p class="aq-eyebrow">Choose '+A+' when</p><p>'+tcell(fit[1])+'</p></div><div><p class="aq-eyebrow">Choose '+B+' when</p><p>'+tcell(fit[2])+'</p></div></div>':'')+'</div>');};
 /* One content section per block type in pages.json */
 function wBlock(b){var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}
-/* Page: NavBar, Hero, SectionNav, sections, Closing, Footer */
-function wPage(p){var c=p.cta;
- return wHead(p.section)+wHero(p)+wSectionNav(p)+(p.blocks||[]).map(function(b,i){var h=wBlock(b);return b.nav?h.replace('<section class=','<section id="'+jid(b,i)+'" class='):h}).join('')+
-  wClosing(c,p)+wFoot()}
+/* Ground: the page is a navy blueprint (data-theme="dark" on the page). Reading blocks (spec rows, tables, documents,
+   prose, FAQ, forms, case studies) are laid on light drawing sheets; diagrams, routes, options, grids and related links
+   stay on the navy. A block may set ground: "light" or "dark" to override. Consecutive light blocks share one sheet,
+   which ends in a small title block (page name, sheet number) like a drawing sheet. */
+var LIGHT={spec:1,table:1,docs:1,prose:1,faq:1,form:1,'case':1,failures:1,evidence:1};/* keyed by table shape (as) or block type */
+function ground(b){return b.ground==='light'||b.ground==='dark'?b.ground:LIGHT[b.as||b.type]?'light':'dark'}
+function wSheet(inner,p,n){return '<div class="aq-sheet" data-theme="light">'+inner+'<div class="aq-sheet__block" aria-hidden="true"><span>Aquemi</span><span>'+e(p.nav_label||p.id)+'</span><span>Sheet '+(n<10?'0':'')+n+'</span></div></div>'}
+/* Page: NavBar, Hero, SectionNav, sections (navy ground and light sheets), Closing, Footer */
+function wPage(p){var c=p.cta,out='',run='',n=0;
+ (p.blocks||[]).forEach(function(b,i){var h=wBlock(b);if(b.nav)h=h.replace('<section class=','<section id="'+jid(b,i)+'" class=');
+  if(ground(b)==='light'){run+=h;return}
+  if(run){out+=wSheet(run,p,++n);run=''}out+=h});
+ if(run)out+=wSheet(run,p,++n);
+ return wHead(p.section)+wHero(p)+wSectionNav(p)+out+wClosing(c,p)+wFoot()}
 document.addEventListener('click',function(ev){var g=ev.target.closest('[data-step-go]');if(g){var fm=g.closest('form'),to=+g.dataset.stepGo;fm.querySelectorAll('.aq-form__step').forEach(function(s){s.hidden=+s.dataset.step!==to});fm.querySelectorAll('.aq-form__progress li').forEach(function(l,i){if(i===to)l.setAttribute('aria-current','step');else l.removeAttribute('aria-current')});var lg=fm.querySelector('[data-step="'+to+'"] legend');if(lg){lg.tabIndex=-1;lg.focus()}fm.scrollIntoView({block:'start'});return}
  var j=ev.target.closest('[data-jump]');if(j){var s=document.getElementById(j.dataset.jump);if(s){ev.preventDefault();s.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}return}
  var t=ev.target.closest('[data-wp]');if(!t)return;ev.preventDefault();WP=t.dataset.wp;WMENU=false;WINTENT=t.dataset.intent||'';

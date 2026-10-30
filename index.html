@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="design-system/tokens.css">
 <link rel="stylesheet" href="design-system/components/bundle.css">
 <link rel="stylesheet" href="assets/site.css">
-<script src="assets/theme.js"></script>
 </head>
 <body>
 <div class="draftbar" role="region" aria-label="Draft tools">
@@ -20,7 +19,6 @@
  <span class="draftbar__tools">
   <label><input type="checkbox" id="wph" checked> Highlight placeholders</label>
   <label><input type="checkbox" id="wtodo"> Show open facts</label>
-  <select id="wtheme" aria-label="Theme"><option value="">System theme</option><option value="light">Light</option><option value="dark">Dark</option></select>
   <select id="wjump" aria-label="Jump to page"></select>
  </span>
 </div>
@@ -43,7 +41,6 @@ AQ.onNav=go;
 $('wph').onchange=function(){$('wsite').classList.toggle('is-clean',!this.checked)};
 $('wtodo').onchange=function(){$('wtodolist').hidden=!this.checked};
 $('wjump').onchange=function(){go(this.value)};
-AQTheme.bind($('wtheme'));
 window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h&&h!==AQ.page&&AQ.wp(h))go(h)});
 fetch('content/pages.json').then(function(r){return r.json()}).then(function(d){AQ.setPages(d.pages);
  $('wjump').innerHTML=AQ.pages().map(function(p){return '<option value="'+e(p.id)+'">'+e(p.section+' · '+p.nav_label)+'</option>'}).join('');

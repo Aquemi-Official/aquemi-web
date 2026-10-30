@@ -63,3 +63,7 @@ An optional list of short strings on the page's `cta`, rendered under the body a
 
 - Use it to fold a page's "what to send us" docs block into the closing: one ask, in one place. Three to seven items, each 8 words or fewer.
 - Rows on `on-navy-muted` hairlines at 30 % strength; text 15/22 `on-navy` (14/20 on phones); index in `on-navy-muted`.
+
+## Exchange (`cta.returns`, `cta.turnaround`)
+
+With `cta.returns` (two to four strings, each a document or answer the page already promises: "Skid sizing for your coldest feed", "Budget range, CAD") the checklist becomes an exchange across the full width of the frame: what you send, an arrow labelled with `cta.turnaround` (a placeholder until confirmed, `[proposal response time, working days]`), and what comes back, each return with a small document mark (`.aq-closing__doc`). `cta.returns_label` overrides "What comes back". Markup: `.aq-closing__swap` > `.aq-closing__include`, `p.aq-closing__turn`, `.aq-closing__include.aq-closing__returns`. Phones: stacked, the arrow pointing down. Never list a return the page doesn't already promise.

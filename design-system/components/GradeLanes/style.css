@@ -1,0 +1,28 @@
+/* ---------- GradeLanes: minimum water grade by process step (table block as "grades") ----------
+   Rows of the shared list grammar (index | step) with three lanes at the right, Potable, PW and WFI, drawn as vertical
+   pipes the full height of the list. A filled flow tap marks the minimum grade, an open tap an alternative. */
+.aq-grades { min-width: 0; }
+.aq-grades__head, .aq-grades__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr) calc(var(--space-16) * 3); column-gap: var(--space-6); }
+.aq-grades__head { padding-bottom: var(--space-2); border-bottom: 1px solid var(--line-strong); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-grades__head > span:first-child { grid-column: 2; }
+.aq-grades__lanes { grid-column: 3; display: grid; grid-template-columns: repeat(3, var(--space-16)); }
+.aq-grades__head .aq-grades__lanes > span { text-align: center; color: var(--flow); }
+.aq-grades__rows { list-style: none; margin: 0; padding: 0; }
+.aq-grades__row { align-items: stretch; border-bottom: 1px solid var(--line); }
+.aq-grades__row > .aq-index { padding-block: var(--space-4); }
+.aq-grades__step { min-width: 0; padding-block: var(--space-4); display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-grades__t { margin: 0; font: 500 16px/24px var(--font-sans); color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-grades__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+.aq-grades__g { margin: 0; font: 400 13px/20px var(--font-mono); color: var(--flow); }
+.aq-grades__lane { position: relative; display: grid; place-items: center; }
+.aq-grades__lane::before { content: ""; position: absolute; top: -1px; bottom: -1px; left: 50%; border-left: 1px solid var(--line-strong); }
+.aq-grades__tap { position: relative; width: 13px; height: 13px; border-radius: var(--radius-pill); }
+.aq-grades__tap.is-min { background: var(--flow); box-shadow: 0 0 0 3px var(--surface); }
+.aq-grades__tap.is-alt { background: var(--surface); border: 1px solid var(--flow); box-shadow: 0 0 0 3px var(--surface); }
+
+@container (max-width: 860px) {
+  .aq-grades__lanes { grid-template-columns: repeat(3, var(--space-8)); }
+  .aq-grades__head, .aq-grades__row { grid-template-columns: var(--space-8) minmax(0, 1fr) calc(var(--space-8) * 3); column-gap: var(--space-3); }
+  .aq-grades__head .aq-grades__lanes > span { font-size: 9px; letter-spacing: 0; }
+  .aq-grades__head > span:first-child { visibility: hidden; }
+}

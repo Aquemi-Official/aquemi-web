@@ -53,16 +53,32 @@ Every page reads as one system, on a phone first.
 - **One index style.** `01` in Geist Mono 13 px, `ink-subtle`, left column (`.aq-index`). Never `01 /`, `[01]`, ghost numerals or filled numbers.
 - **No grid paper behind reading text.** Blueprint grids only behind illustrations (hero drawing, diagram).
 - **Tables are for comparisons.** CompareTable only with three or more columns; parameter/value/basis lists are SpecTable, lists of things are DocList or rows.
+- **Table shapes.** Most tables carry one of a few recurring shapes. Give the `table` block `as` and it renders as the component built for that shape, from the same `cols` and `rows`:
 
-## Band rhythm
+  | `as` | Shape | Component |
+  | --- | --- | --- |
+  | `router` | your situation → water → system → where to start | Router |
+  | `versus` | two routes compared factor by factor, with a "Fits when" verdict row | Versus |
+  | `failures` | failure or symptom → cause → what we design in | FaultList |
+  | `evidence` | requirement or standard → how we meet it → document that proves it | EvidenceMap |
+  | `grades` | process step → minimum water grade | GradeLanes |
+  | `roles` | document → who writes → who reviews | RoleMatrix |
 
-- Sections sit on `surface` by default, separated by a `line` hairline. Padding `space-16` on desktop, `space-12` on phones.
-- At most **one** tinted band in the middle of a page: `aq-band--sunken` (the StandardsGrid block) or the limestone statement Band.
-- `aq-band--navy` is only for the closing call to action. Nothing else on the page is navy.
+  A plain CompareTable is left for true multi-way comparisons (three or more options, plan tiers).
+- **Fold secondary detail.** Any list, spec, docs or table block can set `fold: N`: the first N rows show, the rest sit behind "Show all …". Put the rows that decide the choice first; never fold the limits, the main standard or the scope. Folded rows don't count toward visible words.
+
+## Ground: a navy blueprint with light drawing sheets
+
+There is no light or dark theme to choose. The site is one composition: the page is the navy blueprint (`data-theme="dark"` on the page), and reading sits on light drawing sheets laid on it.
+
+- **Light sheets** (`.aq-sheet`, `data-theme="light"`) carry reading: SpecTable, CompareTable, DocList, Prose, FAQ, forms, case studies, FaultList, EvidenceMap. Consecutive light blocks share one sheet, which ends in a small title block (Aquemi · page · sheet number). Desktop: inset `space-8` from the page edge with a `line-strong` frame, navy around it; phones: edge to edge.
+- **Navy** carries the visual anchors: hero, diagrams and water paths, Router, Versus, GradeLanes, RoleMatrix, options, link grids, related pages, the closing.
+- A block can override with `ground: "light"` or `"dark"`; use it to break a long run of one ground, not to restyle a single block.
+- Sections are separated by a `line` hairline. Padding `space-16` on desktop, `space-12` on phones. The limestone statement Band stays limestone on either ground; at most one per page.
 
 ## Closing checklist
 
-The closing call to action can carry the page's "what to send us" list as `cta.include` (three to seven strings, 8 words or fewer each; `cta.include_label` overrides the label). Use it instead of a separate `docs` block for the same list: one ask, in one place. The proof box under it shows only an explicit `cta.proof` (`{"v", "l"}`): one confirmed figure that evidences the ask, such as an Aquemi commitment or a test we run, never a pharmacopoeia limit on its own. Leave it out otherwise; the closing does not borrow hero facts.
+The closing call to action can carry the page's "what to send us" list as `cta.include` (three to seven strings, 8 words or fewer each; `cta.include_label` overrides the label). Add `cta.returns` (two to four strings: what comes back, named as documents, only what the page already promises) and `cta.turnaround` (a placeholder until confirmed) and the closing shows the exchange: what you send → turnaround → what comes back. Use it instead of a separate `docs` block for the same list: one ask, in one place. The proof box under it shows only an explicit `cta.proof` (`{"v", "l"}`): one confirmed figure that evidences the ask, such as an Aquemi commitment or a test we run, never a pharmacopoeia limit on its own. Leave it out otherwise; the closing does not borrow hero facts.
 
 ## Content budgets
 
@@ -81,7 +97,7 @@ The closing call to action can carry the page's "what to send us" list as `cta.i
 | Table rows | ≤ 8 per table | table `rows` |
 | Blocks per page | ≤ 9 (closing not counted) | `blocks` |
 | Tinted bands per page | ≤ 1 | band and tags blocks |
-| Visible words per page | ≤ 1,300 (FAQ answers and conditional form fields excluded) | hero, facts, every block string, `cta` |
+| Visible words per page | ≤ 1,300 (FAQ answers, folded rows and conditional form fields excluded) | hero, facts, every block string, `cta` |
 | Placeholder text | ≤ 8 words | every `[...]`; the question goes in `todo` |
 
 ## Canonical page skeletons

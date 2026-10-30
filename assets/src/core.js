@@ -27,8 +27,19 @@ function idx(i){return '<span class="aq-index" aria-hidden="true">'+(i<9?'0':'')
 function wRow(i,t,d,link,art,tag){var inner=idx(i)+'<h3 class="aq-rows__t">'+tx(t)+'</h3>'+(d||tag?'<p class="aq-rows__d">'+(d?tx(d):'')+(tag?'<span class="aq-tags"><span class="aq-tag">'+e(tag)+'</span></span>':'')+'</p>':'')
   +(art&&ART[art]?'<span class="aq-illustration aq-rows__art" aria-hidden="true" style="'+artMask(art)+'"></span>':'');
  return '<li>'+(link&&wp(link)?'<a class="aq-rows__row" href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div class="aq-rows__row">'+inner+'</div>')+'</li>'}
+/* Fold (block field fold: N): the first N items show, the rest carry aq-fold-x and stay hidden until the button under
+   the list is pressed ("Show all 10 parameters" / "Show fewer"). Put the items that decide the choice first; fold only
+   secondary detail. fli(html, b, i) marks item i; wFold(b, count, inner, noun) adds the button when anything is folded. */
+var foldN=0;
+function fli(h,b,i){return b.fold&&i>=b.fold?h.replace(/^<(li|tr)( class="([^"]*)")?/,function(m,t,c,v){return '<'+t+' class="'+(v?v+' ':'')+'aq-fold-x"'}):h}
+function wFold(b,n,inner,noun){if(!(b.fold>0)||n<=b.fold)return inner;var id='fold-'+(++foldN),all='Show all '+n+' '+(noun||'rows');
+ return '<div class="aq-fold" id="'+id+'">'+inner+'<button type="button" class="aq-fold__btn" aria-expanded="false" aria-controls="'+id+'" data-more="'+e(all)+'">'+e(all)+'</button></div>'}
+document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-fold__btn');if(!t)return;var w=t.closest('.aq-fold'),o=!w.classList.contains('is-open');
+ w.classList.toggle('is-open',o);t.setAttribute('aria-expanded',o?'true':'false');t.textContent=o?'Show fewer':t.getAttribute('data-more');if(!o)w.scrollIntoView({block:'nearest'})});
 /* SpecTable cell: a string, or {t, link} to route the reader to another page (link must be a page id) */
 function tcell(c){return c&&typeof c==='object'?(c.link&&wp(c.link)?wlink(c.link,c.t):tx(c.t)):tx(c)}
 function gridItem(inner,link){return link&&wp(link)?'<a href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div>'+inner+'</div>'}
+/* Table shapes: a table block with as: "router" (and later shapes) renders through TABLE_AS[as] instead of the matrix. */
+var TABLE_AS={};
 /* Block renderers register here: BLOCKS[type] = function(block, heading) -> section HTML. See assets/src/blocks/. */
 var BLOCKS={};

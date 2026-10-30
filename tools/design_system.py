@@ -174,7 +174,7 @@ BUDGET = {
 }
 WORD = re.compile(r'\S*[A-Za-z0-9µ°]\S*')
 # Keys that are not visible copy
-NOT_COPY = {'type', 'nav', 'anchor', 'link', 'kind', 'tone', 'id', 'hl', 'required', 'unit', 'name', 'section', 'show_if', 'when', 'mark'}
+NOT_COPY = {'type', 'nav', 'anchor', 'link', 'kind', 'tone', 'id', 'hl', 'required', 'unit', 'name', 'section', 'show_if', 'when', 'mark', 'as', 'ground', 'fold', 'lean'}
 
 
 def words(s):
@@ -254,7 +254,17 @@ def budgets(pages):
         over('page', 'faq questions', faqs, 'faq_count')
         over('page', 'tinted bands (band, tags)', tinted, 'tinted_bands')
         hero = [pg.get(k) for k in ('eyebrow', 'headline', 'lead', 'primary_cta')] + list(strings(pg.get('facts', [])))
-        body = [s for b in blocks for s in strings(b, ('a',) if b.get('type') == 'faq' else (), shown=True)]
+        def unfolded(b):
+            # folded rows (index >= fold) sit behind "Show all", like collapsed FAQ answers
+            n = b.get('fold')
+            if not (isinstance(n, int) and n > 0):
+                return b
+            b = dict(b)
+            for k in ('items', 'rows'):
+                if isinstance(b.get(k), list):
+                    b[k] = b[k][:n]
+            return b
+        body = [s for b in blocks for s in strings(unfolded(b), ('a',) if b.get('type') == 'faq' else (), shown=True)]
         cta = list(strings(pg.get('cta') or {}, ('intent',)))
         over('page', 'visible words (FAQ answers excluded)', sum(words(x) for x in hero + body + cta), 'page_words')
         for where, src in (('hero', hero), ('blocks', body), ('cta', cta)):

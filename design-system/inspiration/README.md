@@ -27,6 +27,16 @@ AI-generated section concepts used as raw ideas for new components. See them all
 | `concept-u-home-hero.png` | Home page first screen, water at the limit | `Hero` on the home page: large headline beside a fine-line drawing of a distribution loop |
 | `concept-v-nav.png` | Main navigation and the "On this page" bar | `NavBar` and `SectionNav`: numbered tabs, the section you are reading marked, page progress |
 | `concept-w-keyfacts.png` | Key facts under a page header | `KeyFacts`: numbered cells on a measurement strip, value with unit and its source |
+| `concept-x-page-rhythm.png` | One long system page, mostly navy with light sections between | Page ground: navy blueprint page with light drawing sheets for reading (`.aq-sheet`); `41-concept-page-sheets` gave the sheet frame and title block |
+| `concept-y-router.png` | A situation router instead of a 4-column table | `Router`: situations on the left, one route through water, system and first step |
+| `concept-z-versus.png` | Hot or ambient WFI, two routes compared | `Versus`: two routes across a spine of factors, a verdict for each |
+| `concept-aa-failures.png` | Where steam quality fails, folded rows | `FaultList`: failures that open to cause and design control |
+| `concept-ab-evidence.png` | "Where is the proof?" for a validation lead | `EvidenceMap`: standard, how we meet it, document tags |
+| `concept-ac-grade-lanes.png` | Minimum water grade by process step | `GradeLanes`: taps into Potable, PW and WFI lanes |
+| `concept-ad-roles.png` | Who writes and reviews each C&Q document | `RoleMatrix`: signature-block stamps, ours tinted, yours outlined |
+| `concept-ae-send-back.png` | What you send, what comes back | `Closing` exchange (`cta.returns`): send → turnaround → documents back |
+
+`47-concept-plan-tiers` (service plans as a calibration sheet) is kept for a later plan component; the service plans stay a CompareTable for now.
 
 ## Keep every image
 

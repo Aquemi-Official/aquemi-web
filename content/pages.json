@@ -577,7 +577,8 @@
        "You want a hot loop, a market or corporate standard calls for distillation, or plant steam is on hand",
        "Your process uses ambient WFI, steam is costly or absent, and your quality unit will run a membrane control strategy"
       ]
-     ]
+     ],
+     "as": "versus"
     },
     {
      "type": "spec",
@@ -1104,7 +1105,7 @@
    ],
    "cta": {
     "h": "Send your feed water analysis. Get a skid sized for your coldest month.",
-    "body": "A process engineer replies within [proposal response time, working days] with questions or a sizing and budget proposal.",
+    "body": "A process engineer replies, with questions on your data or a proposal.",
     "button": "Request a sizing and budget proposal",
     "link": "contact-proposal",
     "intent": "Sizing and budget proposal for a new system|Purified Water (PW) generation",
@@ -1116,6 +1117,12 @@
      "Pharmacopoeia and any tighter internal limits",
      "Your URS, if you have one",
      "Site constraints and target FAT date"
+    ],
+    "turnaround": "[proposal response time, working days]",
+    "returns": [
+     "Skid sizing for your coldest feed",
+     "Budget range, CAD",
+     "Questions on gaps in your data"
     ]
    },
    "todo": [
@@ -1281,7 +1288,8 @@
        "Reliable plant steam at enough pressure and spare boiler capacity",
        "Steam is costly or limited, cooling water scarce, or power cheap, as in several provinces"
       ]
-     ]
+     ],
+     "as": "versus"
     },
     {
      "type": "diagram",
@@ -1605,7 +1613,8 @@
       ]
      ],
      "nav": "Membrane or still",
-     "intro": "The limits are the same for both routes; the burden of proof is not. Since 1 April 2017, Ph. Eur. 0169 accepts RO coupled with EDI, UF or nanofiltration (Annex 1, 6.10)."
+     "intro": "The limits are the same for both routes; the burden of proof is not. Since 1 April 2017, Ph. Eur. 0169 accepts RO coupled with EDI, UF or nanofiltration (Annex 1, 6.10).",
+     "as": "versus"
     },
     {
      "type": "spec",
@@ -1767,7 +1776,8 @@
       ]
      ],
      "nav": "Control strategy",
-     "intro": "The EMA's 2017 questions and answers (EMA/INS/GMP/443117/2017) call an ambient membrane system an ideal environment for biofilm, so they expect a documented strategy that prevents, detects and removes microbial growth and endotoxin."
+     "intro": "The EMA's 2017 questions and answers (EMA/INS/GMP/443117/2017) call an ambient membrane system an ideal environment for biofilm, so they expect a documented strategy that prevents, detects and removes microbial growth and endotoxin.",
+     "as": "failures"
     },
     {
      "type": "options",
@@ -2077,7 +2087,8 @@
        "Capacity sized on the simultaneous peak; pressure control shown at FAT"
       ]
      ],
-     "nav": "Where it fails"
+     "nav": "Where it fails",
+     "as": "failures"
     },
     {
      "type": "spec",
@@ -2857,7 +2868,8 @@
        "Hot water sanitizable carbon, samples around each bed, flow at no demand."
       ]
      ],
-     "nav": "Feed water"
+     "nav": "Feed water",
+     "as": "failures"
     },
     {
      "type": "table",
@@ -3369,7 +3381,8 @@
        "10, 11, 13"
       ]
      ],
-     "nav": "Data integrity"
+     "nav": "Data integrity",
+     "as": "evidence"
     },
     {
      "type": "table",
@@ -5068,7 +5081,8 @@
        "Aquemi drafts from executed records",
        "Your validation team"
       ]
-     ]
+     ],
+     "as": "roles"
     },
     {
      "type": "table",
@@ -5915,7 +5929,8 @@
        "21 CFR 211.180; Annex 11, 17",
        "Verified migration, or old records kept readable"
       ]
-     ]
+     ],
+     "as": "failures"
     },
     {
      "type": "docs",
@@ -6250,7 +6265,8 @@
         "link": "svc-upgrades"
        }
       ]
-     ]
+     ],
+     "as": "router"
     },
     {
      "type": "band",
@@ -6529,7 +6545,8 @@
        "Same grade as the product",
        "PW for non-parenteral products; WFI for sterile parenterals"
       ]
-     ]
+     ],
+     "as": "grades"
     },
     {
      "type": "spec",
@@ -6644,7 +6661,8 @@
         "link": "sys-pw"
        }
       ]
-     ]
+     ],
+     "as": "evidence"
     },
     {
      "type": "options",
@@ -6963,7 +6981,8 @@
        "Formulation before sterile lyophilization",
        "WFI"
       ]
-     ]
+     ],
+     "as": "grades"
     },
     {
      "type": "spec",
@@ -7314,7 +7333,8 @@
        "PW or WFI to the monograph",
        "USP, Ph. Eur., 21 CFR Part 4 and Health Canada GUI-0001"
       ]
-     ]
+     ],
+     "as": "grades"
     },
     {
      "type": "spec",
@@ -7439,7 +7459,8 @@
         "link": "ind-pharma"
        }
       ]
-     ]
+     ],
+     "as": "evidence"
     },
     {
      "type": "grid",
@@ -7515,7 +7536,8 @@
        "A filter can be breached, or grow the biofilm it was meant to stop",
        "Integrity testing, a change interval set from data, sampling downstream of the filter"
       ]
-     ]
+     ],
+     "as": "failures"
     },
     {
      "type": "options",
@@ -8252,7 +8274,8 @@
         "link": "ind-pharma"
        }
       ]
-     ]
+     ],
+     "as": "evidence"
     },
     {
      "type": "table",
@@ -8328,7 +8351,8 @@
         "link": "svc-design"
        }
       ]
-     ]
+     ],
+     "as": "evidence"
     },
     {
      "type": "table",
@@ -8413,7 +8437,8 @@
         "link": "sys-monitoring"
        }
       ]
-     ]
+     ],
+     "as": "evidence"
     },
     {
      "type": "grid",
@@ -9033,7 +9058,8 @@
        "Audit reports; management review minutes",
        "9.2; 9.3"
       ]
-     ]
+     ],
+     "as": "evidence"
     },
     {
      "type": "steps",

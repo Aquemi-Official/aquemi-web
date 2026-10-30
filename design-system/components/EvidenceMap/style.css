@@ -1,0 +1,30 @@
+/* ---------- EvidenceMap: requirement -> how we meet it -> the document that proves it (table block as "evidence") ----------
+   Desktop: three columns per row; the proof column opens with a short leader line from the text, then document tags
+   (mono, 1px frame) and a quiet page link. Phones: requirement, how, then tags and link. */
+.aq-evidence { min-width: 0; }
+.aq-evidence__head, .aq-evidence__row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 5fr) minmax(0, 4fr); column-gap: var(--space-8); }
+.aq-evidence__head { padding-bottom: var(--space-2); border-bottom: 1px solid var(--line-strong); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-evidence__rows { list-style: none; margin: 0; padding: 0; }
+.aq-evidence__row { align-items: start; padding-block: var(--space-4); border-bottom: 1px solid var(--line); }
+.aq-evidence__t { margin: 0; font: 500 16px/24px var(--font-sans); color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-evidence__how { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-evidence__proof { position: relative; margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2); padding-left: var(--space-6); }
+.aq-evidence__proof::before { content: ""; position: absolute; left: 0; top: 12px; width: var(--space-4); border-top: 1px solid var(--flow); }
+.aq-evidence__proof::after { content: ""; position: absolute; left: calc(var(--space-4) - 2px); top: 10px; width: 5px; height: 5px; border-radius: var(--radius-pill); background: var(--flow); }
+.aq-evidence__doc {
+  position: relative; display: inline-block; padding: 1px var(--space-3) 1px var(--space-2);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  font: 400 12px/20px var(--font-mono); color: var(--ink); overflow-wrap: anywhere;
+}
+.aq-evidence__k { flex-basis: 100%; font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-evidence__k ~ .aq-evidence__k { margin-top: var(--space-1); }
+.aq-evidence__go { flex-basis: 100%; font: 500 14px/22px var(--font-sans); }
+.aq-evidence__go a { text-decoration: none; }
+.aq-evidence__go a::after { content: "\a0\2192"; }
+.aq-evidence__go a:hover { text-decoration: underline; }
+
+@container (max-width: 860px) {
+  .aq-evidence__head { display: none; }
+  .aq-evidence__row { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); }
+  .aq-evidence__row:first-child { border-top: 1px solid var(--line); }
+}

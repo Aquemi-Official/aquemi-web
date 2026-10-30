@@ -140,7 +140,8 @@
      "Same grade as the product",
      "PW for non-parenteral products; WFI for sterile parenterals"
     ]
-   ]
+   ],
+   "as": "grades"
   },
   {
    "type": "spec",
@@ -255,7 +256,8 @@
       "link": "sys-pw"
      }
     ]
-   ]
+   ],
+   "as": "evidence"
   },
   {
    "type": "options",

@@ -366,7 +366,7 @@
  ],
  "cta": {
   "h": "Send your feed water analysis. Get a skid sized for your coldest month.",
-  "body": "A process engineer replies within [proposal response time, working days] with questions or a sizing and budget proposal.",
+  "body": "A process engineer replies, with questions on your data or a proposal.",
   "button": "Request a sizing and budget proposal",
   "link": "contact-proposal",
   "intent": "Sizing and budget proposal for a new system|Purified Water (PW) generation",
@@ -378,6 +378,12 @@
    "Pharmacopoeia and any tighter internal limits",
    "Your URS, if you have one",
    "Site constraints and target FAT date"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Skid sizing for your coldest feed",
+   "Budget range, CAD",
+   "Questions on gaps in your data"
   ]
  },
  "todo": [

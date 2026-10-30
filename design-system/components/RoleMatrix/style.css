@@ -1,0 +1,23 @@
+/* ---------- RoleMatrix: who writes and who approves (table block as "roles") ----------
+   Rows: index | document | stamps. A stamp is a small framed box with its role in mono above the party:
+   ours = flow tint with a flow frame, yours = outlined in ink, shared = dashed. A key above the rows names the three. */
+.aq-roles { min-width: 0; }
+.aq-roles__key { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0 0 var(--space-4); }
+.aq-roles__key .aq-roles__stamp { padding: 2px var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.aq-roles__rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.aq-roles__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 4fr) minmax(0, 7fr); column-gap: var(--space-6); align-items: start; padding-block: var(--space-4); border-bottom: 1px solid var(--line); }
+.aq-roles__row > .aq-index { padding-top: var(--space-2); }
+.aq-roles__t { margin: 0; padding-top: var(--space-1); font: 500 17px/24px var(--font-sans); color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-roles__stamps { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--space-3); }
+.aq-roles__stamp { margin: 0; padding: var(--space-2) var(--space-3); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); font: 400 14px/20px var(--font-sans); color: var(--ink); overflow-wrap: break-word; }
+.aq-roles__stamp.is-ours { background: var(--flow-tint); border-color: var(--flow); }
+.aq-roles__stamp.is-yours { border-color: var(--ink-muted); }
+.aq-roles__stamp.is-shared { border-style: dashed; }
+.aq-roles__k { display: block; margin-bottom: 2px; font: 500 10px/14px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-roles__stamp.is-ours .aq-roles__k { color: var(--flow); }
+
+@container (max-width: 860px) {
+  .aq-roles__row { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-3); }
+  .aq-roles__stamps { grid-column: 2; gap: var(--space-2); }
+  .aq-roles__stamp { padding: var(--space-2); font-size: 13px; line-height: 18px; }
+}
