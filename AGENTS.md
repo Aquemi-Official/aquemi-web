@@ -52,6 +52,8 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 
 **Add a new kind of section.** Add the component to the design system first (above), then a block type in `wBlock()` in `assets/aquemi-site.js` that outputs that component's markup, then use it in `pages.json`. Add it to the mapping table in `page-inventory.md`.
 
+**Explore a new section idea.** Generate a loose concept image (Gemini works well), save it in `design-system/inspiration/` and rebuild the idea as a token-only component. Steps and the prompt recipe are in `design-system/inspiration/README.md`.
+
 **Publish to the Claude design system.** After design-system changes land, publish them so Claude chats, decks and designs use the same system. Claude Code does this with the `aquemi-design-system` skill in `.claude/skills/`. Other agents: tell the person it needs publishing.
 
 ## Before you push

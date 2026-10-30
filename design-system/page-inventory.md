@@ -8,7 +8,7 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [Home](https://aquemi-official.github.io/aquemi-web/#home) | Compendial water that passes on the first audit. | grid, readout, steps, tags, case, prose |
+| [Home](https://aquemi-official.github.io/aquemi-web/#home) | Compendial water that passes on the first audit. | path, readout, steps, tags, case, prose |
 
 ## Systems
 
@@ -83,6 +83,7 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | hero | Hero, with KeyFacts when the page has `facts` |
 | prose | Prose inside SplitSection |
 | grid, related | LinkGrid |
+| path | WaterPath |
 | options | OptionList inside SplitSection |
 | steps | ProcessSteps |
 | diagram | ProcessDiagram |

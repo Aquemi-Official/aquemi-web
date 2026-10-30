@@ -189,6 +189,16 @@
    "summary": "Readout pairs one measured value with its method and a short explanation."
   },
   {
+   "name": "WaterPath",
+   "readme": "design-system/components/WaterPath/README.md",
+   "preview": "design-system/components/WaterPath/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1200",
+   "subtitle": "Seven system families on one pipe, feed to point of use",
+   "summary": "WaterPath shows the system families as numbered stops on one serpentine pipe, from city feed to point of use, so the reader sees how the systems connect before reading any description."
+  },
+  {
    "name": "KeyFacts",
    "readme": "design-system/components/KeyFacts/README.md",
    "preview": "design-system/components/KeyFacts/preview.html",

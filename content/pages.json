@@ -17,10 +17,16 @@
    },
    "blocks": [
     {
-     "type": "grid",
+     "type": "path",
      "h": "Seven system families, one water path",
-     "intro": "Each system is specified against the standard your user requirement specification names. Choose one, or let us take the whole path from feed water to point of use.",
+     "intro": "Choose one system, or let us take the whole path from feed water to point of use.",
      "items": [
+      {
+       "t": "Pretreatment",
+       "d": "Multimedia, softening and carbon or bisulfite trains sized for your municipal water.",
+       "tag": "Health Canada · US EPA",
+       "link": "sys-pretreatment"
+      },
       {
        "t": "Purified Water (PW) generation",
        "d": "Reverse osmosis (RO) and electrodeionization (EDI) skids that hold conductivity below USP <645> stage 1.",
@@ -52,18 +58,14 @@
        "link": "sys-storage"
       },
       {
-       "t": "Pretreatment",
-       "d": "Multimedia, softening and carbon or bisulfite trains sized for your municipal water.",
-       "tag": "Health Canada · US EPA",
-       "link": "sys-pretreatment"
-      },
-      {
        "t": "Monitoring and controls",
        "d": "Online total organic carbon (TOC), conductivity and ozone, with audit-trailed data.",
        "tag": "21 CFR Part 11",
        "link": "sys-monitoring"
       }
-     ]
+     ],
+     "from": "City feed",
+     "to": "Point of use"
     },
     {
      "type": "readout",
