@@ -72,7 +72,8 @@
    "stages": [
     {
      "t": "Instruments",
-     "d": "Measure TOC, conductivity and temperature online."
+     "d": "Measure TOC, conductivity and temperature online.",
+     "icon": "toc"
     },
     {
      "t": "PLC",
@@ -80,11 +81,13 @@
     },
     {
      "t": "Operator panel (HMI)",
-     "d": "Where operators see alarms, trends and sanitization status."
+     "d": "Where operators see alarms, trends and sanitization status.",
+     "icon": "gauge"
     },
     {
      "t": "Supervisory control (SCADA) historian",
-     "d": "Keeps audit-trailed records to 21 CFR Part 11."
+     "d": "Keeps audit-trailed records to 21 CFR Part 11.",
+     "icon": "binder"
     },
     {
      "t": "Plant network",
@@ -92,7 +95,8 @@
     },
     {
      "t": "Remote support",
-     "d": "None, one-way telemetry, or supervised sessions you open."
+     "d": "None, one-way telemetry, or supervised sessions you open.",
+     "icon": "wrench"
     }
    ],
    "nav": "Architecture"

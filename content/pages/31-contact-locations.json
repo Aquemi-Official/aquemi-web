@@ -56,6 +56,116 @@
    ]
   },
   {
+   "type": "table",
+   "anchor": "locations",
+   "nav": "Sites",
+   "h": "Where to find us",
+   "cols": [
+    "Site",
+    "What happens here",
+    "Address",
+    "Contact and hours"
+   ],
+   "rows": [
+    [
+     "Head office and engineering, [head office, city and province]",
+     "Process design, projects, validation documents, proposals",
+     "[Street address], [city], [province] [postal code]",
+     "[sales phone number] · [sales email] · [office hours, time zone]"
+    ],
+    [
+     {
+      "t": "Shop and test bay, [shop location, city and province]",
+      "link": "svc-fabrication"
+     },
+     "Fabrication, orbital welding, panels, wet FAT, witness visits",
+     "[Street address], [city], [province] [postal code] · [map link]",
+     "[shop phone number] · [shop hours, time zone]"
+    ],
+    [
+     {
+      "t": "Service base, [service base, city and province]",
+      "link": "svc-service"
+     },
+     "Field technicians, calibration standards, [critical spares stock]",
+     "[street address, or home-based technicians]",
+     "[service phone number], [service phone hours] · [service email]"
+    ],
+    [
+     "Parts stock, [stock location or locations]",
+     "Spare parts and consumables, [order cut-off and delivery commitment]",
+     "[street address, or shipped from the shop]",
+     "[parts email] · [parts desk hours, time zone]"
+    ]
+   ],
+   "fold": 2,
+   "fold_noun": "sites"
+  },
+  {
+   "type": "table",
+   "anchor": "coverage",
+   "nav": "Coverage",
+   "h": "Can you support my site?",
+   "intro": "Outside [service coverage area], we write a travel response into the plan.",
+   "cols": [
+    "Your region",
+    "Severity 1: technician on site",
+    "Technician and parts from",
+    "CRN and engineering seal"
+   ],
+   "rows": [
+    [
+     "Ontario",
+     "[severity 1 on-site response time in Ontario, hours]",
+     "[service base, city] · [stocking point for Ontario, city]. Greater Toronto Area; [other Ontario centres served]",
+     "CRN: TSSA. Seal: PEO · [certificate of authorization: yes or no]"
+    ],
+    [
+     "Quebec",
+     "[severity 1 on-site response time in Quebec, hours]",
+     "[service base, city] · [stocking point for Quebec, city]. Greater Montreal; [other Quebec centres served]",
+     "CRN: RBQ. Seal: OIQ"
+    ],
+    [
+     "British Columbia",
+     "[severity 1 on-site response time in BC, hours]",
+     "[service base or partner, city] · [BC stocking point, city]. Metro Vancouver; [other BC centres served]",
+     "CRN: Technical Safety BC. Seal: EGBC · [firm permit to practice: yes or no]"
+    ],
+    [
+     "Alberta",
+     "[severity 1 on-site response time in Alberta, hours]",
+     "[service base or partner, city] · [Alberta stocking point, city]. [Alberta centres served]",
+     "CRN: ABSA. Seal: APEGA · [permit to practice: yes or no]"
+    ],
+    [
+     "Saskatchewan and Manitoba",
+     "[severity 1 response, hours, or visits only]",
+     "[service base or partner, city] · [stocking point, city]. [centres served]",
+     "CRN and seal: authorities in the province of installation"
+    ],
+    [
+     "Atlantic Canada",
+     "[severity 1 response, hours, or visits only]",
+     "[service base or partner, city] · [stocking point, city]. [centres served]",
+     "CRN and seal: authorities in the province of installation"
+    ],
+    [
+     "Territories and remote sites",
+     "[Travel response agreed in the plan]",
+     "[Site spares kit recommended: confirm]. [By arrangement: confirm]",
+     "CRN and seal: territorial authorities"
+    ],
+    [
+     "United States",
+     "[US on-site response, hours, or visits only]",
+     "[US service base and parts route]",
+     "No CRN; state rules apply. Seal: [US state licence route, if any]"
+    ]
+   ],
+   "as": "router"
+  },
+  {
    "type": "form",
    "anchor": "visit",
    "nav": "Visit",
@@ -142,116 +252,6 @@
      ]
     }
    ]
-  },
-  {
-   "type": "table",
-   "anchor": "coverage",
-   "nav": "Coverage",
-   "h": "Can you support my site?",
-   "intro": "Outside [service coverage area], we write a travel response into the plan.",
-   "cols": [
-    "Your region",
-    "Severity 1: technician on site",
-    "Technician and parts from",
-    "CRN and engineering seal"
-   ],
-   "rows": [
-    [
-     "Ontario",
-     "[severity 1 on-site response time in Ontario, hours]",
-     "[service base, city] · [stocking point for Ontario, city]. Greater Toronto Area; [other Ontario centres served]",
-     "CRN: TSSA. Seal: PEO · [certificate of authorization: yes or no]"
-    ],
-    [
-     "Quebec",
-     "[severity 1 on-site response time in Quebec, hours]",
-     "[service base, city] · [stocking point for Quebec, city]. Greater Montreal; [other Quebec centres served]",
-     "CRN: RBQ. Seal: OIQ"
-    ],
-    [
-     "British Columbia",
-     "[severity 1 on-site response time in BC, hours]",
-     "[service base or partner, city] · [BC stocking point, city]. Metro Vancouver; [other BC centres served]",
-     "CRN: Technical Safety BC. Seal: EGBC · [firm permit to practice: yes or no]"
-    ],
-    [
-     "Alberta",
-     "[severity 1 on-site response time in Alberta, hours]",
-     "[service base or partner, city] · [Alberta stocking point, city]. [Alberta centres served]",
-     "CRN: ABSA. Seal: APEGA · [permit to practice: yes or no]"
-    ],
-    [
-     "Saskatchewan and Manitoba",
-     "[severity 1 response, hours, or visits only]",
-     "[service base or partner, city] · [stocking point, city]. [centres served]",
-     "CRN and seal: authorities in the province of installation"
-    ],
-    [
-     "Atlantic Canada",
-     "[severity 1 response, hours, or visits only]",
-     "[service base or partner, city] · [stocking point, city]. [centres served]",
-     "CRN and seal: authorities in the province of installation"
-    ],
-    [
-     "Territories and remote sites",
-     "[Travel response agreed in the plan]",
-     "[Site spares kit recommended: confirm]. [By arrangement: confirm]",
-     "CRN and seal: territorial authorities"
-    ],
-    [
-     "United States",
-     "[US on-site response, hours, or visits only]",
-     "[US service base and parts route]",
-     "No CRN; state rules apply. Seal: [US state licence route, if any]"
-    ]
-   ],
-   "as": "router"
-  },
-  {
-   "type": "table",
-   "anchor": "locations",
-   "nav": "Sites",
-   "h": "Where to find us",
-   "cols": [
-    "Site",
-    "What happens here",
-    "Address",
-    "Contact and hours"
-   ],
-   "rows": [
-    [
-     "Head office and engineering, [head office, city and province]",
-     "Process design, projects, validation documents, proposals",
-     "[Street address], [city], [province] [postal code]",
-     "[sales phone number] · [sales email] · [office hours, time zone]"
-    ],
-    [
-     {
-      "t": "Shop and test bay, [shop location, city and province]",
-      "link": "svc-fabrication"
-     },
-     "Fabrication, orbital welding, panels, wet FAT, witness visits",
-     "[Street address], [city], [province] [postal code] · [map link]",
-     "[shop phone number] · [shop hours, time zone]"
-    ],
-    [
-     {
-      "t": "Service base, [service base, city and province]",
-      "link": "svc-service"
-     },
-     "Field technicians, calibration standards, [critical spares stock]",
-     "[street address, or home-based technicians]",
-     "[service phone number], [service phone hours] · [service email]"
-    ],
-    [
-     "Parts stock, [stock location or locations]",
-     "Spare parts and consumables, [order cut-off and delivery commitment]",
-     "[street address, or shipped from the shop]",
-     "[parts email] · [parts desk hours, time zone]"
-    ]
-   ],
-   "fold": 2,
-   "fold_noun": "sites"
   }
  ],
  "cta": {

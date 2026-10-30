@@ -152,24 +152,28 @@
     {
      "t": "Quality management system",
      "d": "[ISO 9001 status, registrar and expiry]",
-     "tag": "ISO 9001"
+     "tag": "ISO 9001",
+     "icon": "stamp"
     },
     {
      "t": "Welding",
      "d": "[welding certification held, e.g. CWB CSA W47.1]",
      "tag": "ASME IX",
-     "link": "svc-fabrication"
+     "link": "svc-fabrication",
+     "icon": "weld"
     },
     {
      "t": "Pressure equipment",
      "d": "[ASME certificate holder or certified vessel partner]",
      "tag": "CSA B51",
-     "link": "compliance"
+     "link": "compliance",
+     "icon": "tank"
     },
     {
      "t": "Control panels",
      "d": "[panel shop and certification mark held]",
-     "tag": "CSA C22.2 No. 286"
+     "tag": "CSA C22.2 No. 286",
+     "icon": "gauge"
     }
    ]
   },

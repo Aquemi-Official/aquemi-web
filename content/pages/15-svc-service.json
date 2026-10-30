@@ -14,11 +14,11 @@
  ],
  "facts": [
   {
-   "v": "[severity 1 on-site response time, hours]",
+   "v": "[hours]",
    "l": "Severity 1: technician on site"
   },
   {
-   "v": "[report turnaround, working days]",
+   "v": "[working days]",
    "l": "Signed service report"
   }
  ],
@@ -114,13 +114,13 @@
    "rows": [
     {
      "p": "Conductivity cell and transmitter",
-     "v": "Cell constant ± 2 %; transmitter ± 0.1 µS/cm; temperature ± 2 °C",
+     "v": "Cell constant ± 2 %; transmitter ± 0.1 µS/cm; temperature ± 2 °C",
      "m": "USP <645>",
      "hl": true
     },
     {
      "p": "Online TOC analyzer",
-     "v": "System suitability: response efficiency 85–115 %",
+     "v": "System suitability: response efficiency 85–115 %",
      "m": "USP <643>; Ph. Eur. 2.2.44"
     },
     {

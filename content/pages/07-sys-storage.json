@@ -42,19 +42,20 @@
    "rows": [
     {
      "p": "Flow regime",
-     "v": "Turbulent in every section at peak draw; return at [design minimum return velocity, m/s]",
+     "v": "Turbulent in every section at peak draw",
      "m": "Annex 1, 6.9; return flow alarmed",
      "hl": true,
      "rule": "≥ [design minimum return velocity, m/s]"
     },
     {
      "p": "Slope and drainage",
-     "v": "Continuous fall to low-point drains, at least [design minimum slope, in/ft or %]",
-     "m": "ASME BPE drainability"
+     "v": "Continuous fall to low-point drains",
+     "m": "ASME BPE drainability",
+     "rule": "≥ [design minimum slope, in/ft or %]"
     },
     {
      "p": "Heat sanitization, ambient loops",
-     "v": "[sanitization temperature, °C] for [hold time, minutes] at the coldest probe",
+     "v": "Held [hold time, minutes] at the coldest probe",
      "m": "USP <1231>: 65–80 °C most common",
      "rule": "≥ [sanitization temperature, °C]"
     },

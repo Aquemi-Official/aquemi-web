@@ -11,7 +11,7 @@
  "facts": [
   {
    "v": "1 report per figure",
-   "l": "Each outcome cites its executed report"
+   "l": "Executed report"
   },
   {
    "v": "[reference clients available, number]",
@@ -44,7 +44,8 @@
      "d": "A second engineer checks it; the client's quality unit approves the text, deviations included."
     }
    ],
-   "nav": "Proof"
+   "nav": "Proof",
+   "ground": "light"
   },
   {
    "type": "case",

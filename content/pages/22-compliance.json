@@ -18,6 +18,54 @@
  "index": true,
  "blocks": [
   {
+   "type": "spec",
+   "as": "gauges",
+   "nav": "Limits",
+   "anchor": "limits",
+   "h": "Release limits at the point of use",
+   "intro": "Where USP and Ph. Eur. differ, we design to the stricter value.",
+   "caption": "PW · WFI · PURE STEAM",
+   "cols": [
+    "Parameter",
+    "Limit",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity, PW and WFI",
+     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+     "m": "USP <645>",
+     "hl": true
+    },
+    {
+     "p": "Endotoxin, WFI",
+     "v": "< 0.25 EU/mL",
+     "m": "USP <85>; Ph. Eur. 2.6.14"
+    },
+    {
+     "p": "TOC, PW and WFI",
+     "v": "≤ 0.50 mg/L (500 ppb)",
+     "m": "USP <643>; Ph. Eur. 2.2.44"
+    },
+    {
+     "p": "Nitrates, PW",
+     "v": "≤ 0.2 ppm",
+     "m": "Ph. Eur. 0008; no USP test"
+    },
+    {
+     "p": "Action level, WFI",
+     "v": "10 CFU/100 mL",
+     "m": "USP <1231>; Ph. Eur. 0169"
+    },
+    {
+     "p": "Sterilizer steam, non-condensable gases",
+     "v": "≤ 3.5 mL per 100 mL condensate",
+     "m": "EN 285"
+    }
+   ],
+   "note": "Ph. Eur. conductivity: PW ≤ 5.1 µS/cm @ 25 °C, WFI ≤ 1.1 µS/cm @ 20 °C. PW action level 100 CFU/mL. Steam dryness ≥ 0.95, superheat ≤ 25 K. Pure steam condensate meets the WFI monograph."
+  },
+  {
    "type": "standards-map",
    "nav": "Map",
    "anchor": "map",
@@ -108,59 +156,11 @@
    ]
   },
   {
-   "type": "spec",
-   "as": "gauges",
-   "nav": "Limits",
-   "anchor": "limits",
-   "h": "Release limits at the point of use",
-   "intro": "Where USP and Ph. Eur. differ, we design to the stricter value.",
-   "caption": "PW · WFI · PURE STEAM",
-   "cols": [
-    "Parameter",
-    "Limit",
-    "Reference"
-   ],
-   "rows": [
-    {
-     "p": "Conductivity, PW and WFI",
-     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
-     "m": "USP <645>",
-     "hl": true
-    },
-    {
-     "p": "Endotoxin, WFI",
-     "v": "< 0.25 EU/mL",
-     "m": "USP <85>; Ph. Eur. 2.6.14"
-    },
-    {
-     "p": "TOC, PW and WFI",
-     "v": "≤ 0.50 mg/L (500 ppb)",
-     "m": "USP <643>; Ph. Eur. 2.2.44"
-    },
-    {
-     "p": "Nitrates, PW",
-     "v": "≤ 0.2 ppm",
-     "m": "Ph. Eur. 0008; no USP test"
-    },
-    {
-     "p": "Action level, WFI",
-     "v": "10 CFU/100 mL",
-     "m": "USP <1231>; Ph. Eur. 0169"
-    },
-    {
-     "p": "Sterilizer steam, non-condensable gases",
-     "v": "≤ 3.5 mL per 100 mL condensate",
-     "m": "EN 285"
-    }
-   ],
-   "note": "Ph. Eur. conductivity: PW ≤ 5.1 µS/cm @ 25 °C, WFI ≤ 1.1 µS/cm @ 20 °C. PW action level 100 CFU/mL. Steam dryness ≥ 0.95, superheat ≤ 25 K. Pure steam condensate meets the WFI monograph."
-  },
-  {
    "type": "table",
    "as": "evidence",
    "nav": "Pharmacopoeia",
    "anchor": "pharmacopoeia",
-   "ground": "dark",
+   "ground": "light",
    "h": "Pharmacopoeias, and where the proof sits",
    "cols": [
     "Standard",
@@ -314,14 +314,14 @@
     ]
    ],
    "fold": 2,
-   "fold_noun": "standards"
+   "fold_noun": "standards",
+   "ground": "dark"
   },
   {
    "type": "table",
    "as": "evidence",
    "nav": "Engineering",
    "anchor": "engineering",
-   "ground": "dark",
    "h": "Engineering, materials and pressure equipment",
    "cols": [
     "Standard",

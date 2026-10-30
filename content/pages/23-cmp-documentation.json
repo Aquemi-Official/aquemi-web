@@ -15,53 +15,6 @@
  },
  "blocks": [
   {
-   "type": "table",
-   "as": "evidence",
-   "nav": "Master index",
-   "ground": "dark",
-   "h": "What each stage issues",
-   "intro": "Your proposal lists the subset for your system.",
-   "cols": [
-    "Stage",
-    "Your step, and who approves",
-    "Documents issued"
-   ],
-   "rows": [
-    [
-     "Specify and design",
-     "Design qualification (Annex 15, 3.3). Your quality unit approves DQ; your engineering lead, drawings.",
-     "URS compliance matrix; basis of design; risk assessment; P&IDs; functional specification; C&Q plan; traceability matrix"
-    ],
-    [
-     "Fabrication",
-     "IQ evidence (Annex 15, 3.9). Aquemi quality control approves; your team again at IQ.",
-     "Material log with 3.1 certificates; welding qualifications; weld map and log; borescope, finish and pressure test records"
-    ],
-    [
-     "FAT and SAT",
-     "Leveraged tests and OQ (Annex 15, 3.6). Your quality unit approves before execution.",
-     "Approved protocol; executed protocol with raw data; code review; software version record; deviation log; summary report"
-    ],
-    [
-     "Qualification",
-     "IQ, OQ and PQ (Annex 15, 3.9–3.11). Your quality unit approves before execution and at report.",
-     "IQ and OQ protocols and reports; sanitization temperature mapping; PQ protocol and sampling plan; alert and action levels"
-    ],
-    [
-     "Handover",
-     "Any record found in minutes at inspection. Your system owner approves.",
-     "Document register; as-built drawings; calibration certificates; software backup; O&M manual; SOP drafts; spare parts list"
-    ],
-    [
-     "Service and change",
-     "Periodic review and change control (Annex 15, 4.1 and 11), through your change control.",
-     "Signed service reports; calibration certificates; annual system review; updated as-builts; change-scoped test records"
-    ]
-   ],
-   "fold": 2,
-   "fold_noun": "stages"
-  },
-  {
    "type": "docs",
    "nav": "Package",
    "h": "The turnover package, section by section",
@@ -119,6 +72,82 @@
    ],
    "fold": 4,
    "fold_noun": "sections"
+  },
+  {
+   "type": "spec",
+   "nav": "Delivery",
+   "h": "Delivery and signatures",
+   "caption": "TURNOVER PACKAGE FORMAT",
+   "cols": [
+    "Item",
+    "How we deliver it",
+    "Note"
+   ],
+   "rows": [
+    {
+     "p": "Documents we write",
+     "v": "Searchable PDF, bookmarked, number and revision on every page",
+     "m": "Never a scan of a printout",
+     "hl": true
+    },
+    {
+     "p": "Signatures",
+     "v": "[electronic signature method]; wet ink, scanned; or your validation system",
+     "m": "[meets 21 CFR Part 11 and Annex 11?]"
+    },
+    {
+     "p": "Retention",
+     "v": "Aquemi keeps a copy for [retention period, years]",
+     "m": "A lost document is reissued on request"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Master index",
+   "ground": "dark",
+   "h": "What each stage issues",
+   "intro": "Your proposal lists the subset for your system.",
+   "cols": [
+    "Stage",
+    "Your step, and who approves",
+    "Documents issued"
+   ],
+   "rows": [
+    [
+     "Specify and design",
+     "Design qualification (Annex 15, 3.3). Your quality unit approves DQ; your engineering lead, drawings.",
+     "URS compliance matrix; basis of design; risk assessment; P&IDs; functional specification; C&Q plan; traceability matrix"
+    ],
+    [
+     "Fabrication",
+     "IQ evidence (Annex 15, 3.9). Aquemi quality control approves; your team again at IQ.",
+     "Material log with 3.1 certificates; welding qualifications; weld map and log; borescope, finish and pressure test records"
+    ],
+    [
+     "FAT and SAT",
+     "Leveraged tests and OQ (Annex 15, 3.6). Your quality unit approves before execution.",
+     "Approved protocol; executed protocol with raw data; code review; software version record; deviation log; summary report"
+    ],
+    [
+     "Qualification",
+     "IQ, OQ and PQ (Annex 15, 3.9–3.11). Your quality unit approves before execution and at report.",
+     "IQ and OQ protocols and reports; sanitization temperature mapping; PQ protocol and sampling plan; alert and action levels"
+    ],
+    [
+     "Handover",
+     "Any record found in minutes at inspection. Your system owner approves.",
+     "Document register; as-built drawings; calibration certificates; software backup; O&M manual; SOP drafts; spare parts list"
+    ],
+    [
+     "Service and change",
+     "Periodic review and change control (Annex 15, 4.1 and 11), through your change control.",
+     "Signed service reports; calibration certificates; annual system review; updated as-builts; change-scoped test records"
+    ]
+   ],
+   "fold": 2,
+   "fold_noun": "stages"
   },
   {
    "type": "steps",
@@ -194,36 +223,6 @@
      "kind": "text",
      "label": "Company",
      "required": true
-    }
-   ]
-  },
-  {
-   "type": "spec",
-   "nav": "Delivery",
-   "ground": "dark",
-   "h": "Delivery and signatures",
-   "caption": "TURNOVER PACKAGE FORMAT",
-   "cols": [
-    "Item",
-    "How we deliver it",
-    "Note"
-   ],
-   "rows": [
-    {
-     "p": "Documents we write",
-     "v": "Searchable PDF, bookmarked, number and revision on every page",
-     "m": "Never a scan of a printout",
-     "hl": true
-    },
-    {
-     "p": "Signatures",
-     "v": "[electronic signature method]; wet ink, scanned; or your validation system",
-     "m": "[meets 21 CFR Part 11 and Annex 11?]"
-    },
-    {
-     "p": "Retention",
-     "v": "Aquemi keeps a copy for [retention period, years]",
-     "m": "A lost document is reissued on request"
     }
    ]
   },
