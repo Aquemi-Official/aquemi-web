@@ -6,7 +6,7 @@ Use classes on a `<button>` or `<a>`; the consumer provides the label and, for l
 | --- | --- | --- |
 | Primary | `aq-btn aq-btn--primary` | The one main action in a view: "Request a proposal", "Submit request". One per screen region. |
 | Secondary | `aq-btn aq-btn--secondary` | Alternatives beside a primary: "Download datasheet". |
-| Link | `aq-btn aq-btn--link` | Low-emphasis navigation: "Explore systems →". Uses `flow`. |
+| Link | `aq-btn aq-btn--link` | Low-emphasis navigation: "Explore systems →". Uses `flow`. No padding; 44 px tall on phones so it stays a touch target. |
 
 - Labels are sentence-case verbs, two to four words. Avoid "Click here", and avoid a bare "Submit" when a specific verb fits.
 - An arrow (`<span class="aq-btn__arrow">→</span>`) is allowed on primary and link buttons that navigate. It nudges 3 px on hover.

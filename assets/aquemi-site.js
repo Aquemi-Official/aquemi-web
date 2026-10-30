@@ -251,18 +251,25 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
    (outside [placeholders]) has no digits and follows a figure, so "Part 11", "GAMP 5" and "[Ra, µm]" stay whole.
    The "01 /" index and the dial are aria-hidden spans; the ruler, frame and fixings are CSS only. The strip is a cream
    data plate (data-theme="light") on the navy hero. */
-function kfValue(v){
+function kfParts(v){
  v=String(v==null?'':v);
  var cmp='',m=/^([<>≤≥])\s+/.exec(v);
  if(m&&/[\d\[]/.test(v.charAt(m[0].length))){cmp=m[1];v=v.slice(m[0].length)}
+ /* A leading number keeps a short unit tail whole at its first space: "10 CFU/100 mL" -> "10" + "CFU/100 mL" */
+ var n=/^(\d[\d.,]*) ([^\d\s\[][^\[]*)$/.exec(v);
+ if(n&&n[2].length<=12&&n[2].indexOf(' · ')<0&&n[2].indexOf(',')<0)return {cmp:cmp,fig:n[1],unit:n[2]};
  var unit='',d=0,cut=-1;
  for(var i=0;i<v.length;i++){var c=v.charAt(i);if(c==='[')d++;else if(c===']'&&d)d--;else if(c===' '&&!d)cut=i}
  if(cut>0){var head=v.slice(0,cut),tail=v.slice(cut+1);
   if(tail.length<=8&&!/[0-9\[\]]/.test(tail)&&/[0-9\]]$/.test(head)){unit=tail;v=head}}
- return (cmp?'<span class="aq-key-facts__cmp">'+e(cmp)+'</span> ':'')+'<span class="aq-key-facts__fig">'+tx(v)+'</span>'+(unit?' <span class="aq-key-facts__unit">'+tx(unit)+'</span>':'');
+ return {cmp:cmp,fig:v,unit:unit};
 }
-/* A value that is words or a placeholder rather than a figure ("0 border crossings", "[founding year]") is set smaller */
-function kfLong(v){v=String(v==null?'':v);return v.length>10||/^\[/.test(v)}
+function kfValue(v){var p=kfParts(v);
+ return (p.cmp?'<span class="aq-key-facts__cmp">'+e(p.cmp)+'</span> ':'')+'<span class="aq-key-facts__fig">'+tx(p.fig)+'</span>'+(p.unit?' <span class="aq-key-facts__unit">'+tx(p.unit)+'</span>':'');
+}
+/* A figure that is words or a placeholder rather than a number ("USP + Ph. Eur.", "[founding year]") is set smaller.
+   Only the figure is measured, so a short number with a long unit ("10 CFU/100 mL") stays large. */
+function kfLong(v){var f=kfParts(v).fig;return f.length>7||/^\[/.test(f)}
 function wKeyFacts(facts){
  if(!facts||!facts.length)return '';
  return '<dl class="aq-key-facts" data-theme="light">'+facts.map(function(f,i){
@@ -310,12 +317,14 @@ var DGLYPH={
  tank:'M18 48V18a18 8 0 0 1 36 0v30zM10 48h52M24 32h24M36 10V4',
  instrument:'M22 24a14 14 0 1 0 28 0a14 14 0 1 0-28 0M22 24h28M36 38v12M24 50h24',
  screen:'M10 8h52v32H10zM28 50h16M36 40v10M18 30l8-10 8 6 10-12 8 8',
+ plc:'M14 6h44v44H14zM14 16h44M20 22v22M28 22v22M36 22v22M44 22v22M52 22v22M20 11h4M30 11h4',
+ network:'M30 10a6 6 0 1 0 12 0a6 6 0 1 0-12 0M8 46a6 6 0 1 0 12 0a6 6 0 1 0-12 0M52 46a6 6 0 1 0 12 0a6 6 0 1 0-12 0M32 26h8v8h-8zM36 16v10M32 33L19 42M40 33l13 9',
  drop:'M36 6c-10 14-16 22-16 30a16 16 0 0 0 32 0c0-8-6-16-16-30zM28 38a8 8 0 0 0 8 8',
  generic:'M12 14h48v28H12zM4 28h8M60 28h8M20 22h20M20 30h28'};
 var DKEYS=[['drop',/^(from|to)\b/],['hx',/heat|exchanger|preheat|condens|cooler/],['ro',/\bro\b|reverse osmosis|membrane|ultrafiltr|\buf\b|generation/],['edi',/\bedi\b|electrodeion/],['uv',/\buv\b|ultraviolet/],
  ['softener',/soften/],['carbon',/carbon|bisulfite|dechlor/],['filter',/filt|pretreat|multimedia|cartridge/],['column',/still|column|evaporat|separat|degas|distil/],
  ['pump',/pump/],['steam',/steam|sterili|\bsip\b|header/],['loop',/loop|distribut|point|return|outlet/],['tank',/tank|storage|vessel/],
- ['instrument',/instrument|analy|\btoc\b|conductiv|sensor|monitor/],['screen',/plc|hmi|scada|network|historian|control/],['drop',/feed|water|wfi|\bpw\b/]];
+ ['instrument',/instrument|analy|\btoc\b|conductiv|sensor|monitor/],['plc',/\bplcs?\b|controller|\bi\/o\b/],['network',/network|server|cloud|ethernet/],['screen',/hmi|scada|control|screen|display/],['drop',/feed|water|wfi|\bpw\b/]];
 function dGlyph(t){var s=String(t).toLowerCase();for(var i=0;i<DKEYS.length;i++)if(DKEYS[i][1].test(s))return DGLYPH[DKEYS[i][0]];return DGLYPH.generic}
 function dSvg(d){return '<svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="'+d+'"/></svg>'}
 var FLN=0;
@@ -559,9 +568,10 @@ BLOCKS['docs']=function(b,H){
   var noun=b.fold_noun||'documents',one=noun.replace(/s$/,'');
   var ol='<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
     var cls=(key[i]?' is-key':'')+(wo[i]?' aq-docs__w':''),name=x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t);
-    var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x);
+    /* A tag with no letter or digit ("+") reads as a missing label: draw an open (dashed, empty) tab instead */
+    var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x),open=tag&&!/[A-Za-z0-9]/.test(tag);if(open)tag='';
     return fli('<li'+(cls?' class="'+cls.slice(1)+'"':'')+'>',b,i)
-      +'<span class="aq-docs__tab" aria-hidden="true">'+(tag?'<span class="aq-docs__code">'+e(tag)+'</span>':'')+'</span>'
+      +'<span class="aq-docs__tab'+(open?' is-open':'')+'" aria-hidden="true">'+(tag?'<span class="aq-docs__code">'+e(tag)+'</span>':'')+'</span>'
       +'<span class="aq-docs__card"><span class="aq-docs__top" aria-hidden="true"><span class="aq-docs__n">'+docNum(i)+'</span>'+(ic?wIcon(ic,key[i]?'aq-icon--flow':''):'')+'</span>'
       +'<span class="aq-docs__name">'+name+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span>'
       +'<span class="aq-docs__foot" aria-hidden="true"><span>'+e((key[i]?'Key ':'')+one)+'</span><span>'+docNum(i)+' of '+docNum(n-1)+'</span></span></span></li>';

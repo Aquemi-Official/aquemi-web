@@ -31,6 +31,8 @@
   background: var(--surface-raised); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 .aq-docs__code { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Open tab: an item with no code of its own (tag "+" and the like): a dashed, empty tab, an added folder */
+.aq-docs__tab.is-open { border-style: dashed; background: none; }
 /* Plain lists (no codes): a short empty tab, the folder shape alone */
 .aq-docs--plain .aq-docs__tab { min-width: var(--space-16); }
 /* Card: the folder body, with two sheets showing behind it */

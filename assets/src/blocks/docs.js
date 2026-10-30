@@ -55,9 +55,10 @@ BLOCKS['docs']=function(b,H){
   var noun=b.fold_noun||'documents',one=noun.replace(/s$/,'');
   var ol='<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
     var cls=(key[i]?' is-key':'')+(wo[i]?' aq-docs__w':''),name=x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t);
-    var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x);
+    /* A tag with no letter or digit ("+") reads as a missing label: draw an open (dashed, empty) tab instead */
+    var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x),open=tag&&!/[A-Za-z0-9]/.test(tag);if(open)tag='';
     return fli('<li'+(cls?' class="'+cls.slice(1)+'"':'')+'>',b,i)
-      +'<span class="aq-docs__tab" aria-hidden="true">'+(tag?'<span class="aq-docs__code">'+e(tag)+'</span>':'')+'</span>'
+      +'<span class="aq-docs__tab'+(open?' is-open':'')+'" aria-hidden="true">'+(tag?'<span class="aq-docs__code">'+e(tag)+'</span>':'')+'</span>'
       +'<span class="aq-docs__card"><span class="aq-docs__top" aria-hidden="true"><span class="aq-docs__n">'+docNum(i)+'</span>'+(ic?wIcon(ic,key[i]?'aq-icon--flow':''):'')+'</span>'
       +'<span class="aq-docs__name">'+name+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span>'
       +'<span class="aq-docs__foot" aria-hidden="true"><span>'+e((key[i]?'Key ':'')+one)+'</span><span>'+docNum(i)+' of '+docNum(n-1)+'</span></span></span></li>';

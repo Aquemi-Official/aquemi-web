@@ -97,7 +97,11 @@
   }
   .aq-standards-map__zone.is-up::before, .aq-standards-map__zone.is-down::before { top: calc(var(--space-6) - 4px); bottom: auto; left: calc(-1 * var(--space-6) + 1px); }
   .aq-standards-map__t { font-size: 16px; line-height: 24px; }
-  .aq-standards-map__code { font-size: 12px; line-height: 20px; }
+  .aq-standards-map__code { position: relative; padding-block: var(--space-1); font-size: 12px; line-height: 20px; }
+  /* 44 px hit area on each chip and zone link */
+  .aq-standards-map__code::before { content: ""; position: absolute; inset: calc(-1 * var(--space-2)) 0; }
+  .aq-standards-map__t a { padding-block: calc(var(--space-3) + var(--space-1) / 2); }
+  .aq-standards-map__codes { row-gap: var(--space-3); }
   /* with spots: the vignette floats at the zone's right, the name and codes run beside and under it */
   .aq-standards-map__plate { padding-top: var(--space-4); }
   .aq-standards-map--spots .aq-standards-map__zones { background-image: none; }
@@ -111,5 +115,5 @@
   .aq-standards-map--spots .aq-standards-map__head::before, .aq-standards-map--spots .aq-standards-map__head::after { display: none; }
   .aq-standards-map--spots .aq-standards-map__t { font-size: 13px; line-height: 20px; }
   .aq-standards-map--spots .aq-standards-map__codes { display: block; }
-  .aq-standards-map--spots .aq-standards-map__codes li { display: inline-block; margin: 0 var(--space-1) var(--space-1) 0; }
+  .aq-standards-map--spots .aq-standards-map__codes li { display: inline-block; margin: 0 var(--space-1) var(--space-3) 0; }
 }

@@ -132,3 +132,8 @@ a.aq-contact-routes__num:hover { text-decoration: underline; }
   .aq-contact-routes__arrow::before { left: 2px; right: 2px; }
   .aq-contact-routes__arrow::after { right: 2px; }
 }
+
+/* Phones: every label people read is 12 px or more */
+@container (max-width: 860px) {
+  .aq-contact-routes__rn, .aq-contact-routes__mark, .aq-contact-routes__k, .aq-contact-routes__n { font-size: 12px; }
+}

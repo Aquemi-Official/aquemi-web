@@ -27,7 +27,8 @@
   content: ""; position: absolute; z-index: 1; top: calc(50% - 5px); right: -6px; width: 11px; height: 11px;
   border: 1px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface);
 }
-.aq-router__route { grid-column: 2; position: relative; align-self: stretch; padding: var(--space-6); border: 1px solid var(--line-strong); }
+/* The route frame spans every situation row; its station chain sits centred in it (not stranded at the top) */
+.aq-router__route { grid-column: 2; position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: center; padding: var(--space-6); border: 1px solid var(--line-strong); }
 .aq-router__route[hidden] { display: none; }
 .aq-router__hit { position: absolute; inset: 0; z-index: 0; }
 .aq-router__route.is-link:hover { border-color: var(--flow); }
@@ -43,6 +44,10 @@
   content: ""; position: absolute; top: calc(var(--space-6) + 12px); right: calc(-1 * var(--space-6)); width: var(--space-6); height: 9px;
   background: var(--flow); clip-path: polygon(0 4px, calc(100% - 7px) 4px, calc(100% - 7px) 0, 100% 50%, calc(100% - 7px) 100%, calc(100% - 7px) 5px, 0 5px);
 }
+/* Four or more stations: two per row (a 2 x 2 for four), so each box keeps a readable measure; the pipe runs along
+   each row and the station numbers carry the order across the turn */
+.aq-router__stations:has(> li:nth-child(4)) { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--space-6); }
+.aq-router__stations:has(> li:nth-child(4)) > li:nth-child(2n)::after { display: none; }
 .aq-router__k {
   margin: 0; padding: var(--space-2) var(--space-3); border: 1px solid var(--line-strong); border-bottom-color: var(--line);
   font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
@@ -73,14 +78,18 @@
   .aq-router__opt[aria-expanded="true"]::after { top: auto; bottom: calc(-1 * var(--space-3) - 1px); right: auto; left: calc(var(--space-6) - 4px); width: 9px; height: var(--space-3); clip-path: polygon(4px 0, 5px 0, 5px calc(100% - 7px), 100% calc(100% - 7px), 50% 100%, 0 calc(100% - 7px), 4px calc(100% - 7px)); }
   .aq-router__opt[aria-expanded="true"]::before { top: auto; right: auto; bottom: -6px; left: calc(var(--space-6) - 6px); }
   .aq-router__route { grid-column: 1; grid-row: auto !important; margin: var(--space-3) 0 var(--space-3); padding: var(--space-3); }
-  .aq-router__stations { grid-auto-flow: row; row-gap: var(--space-3); }
+  .aq-router__stations, .aq-router__stations:has(> li:nth-child(4)) { grid-auto-flow: row; grid-template-columns: minmax(0, 1fr); row-gap: var(--space-3); }
+  .aq-router__stations:has(> li:nth-child(4)) > li:nth-child(2n):not(:last-child)::after { display: block; }
   .aq-router__stations > li { padding-top: 0; }
   .aq-router__stations > li::before { display: none; }
-  .aq-router__k { padding: var(--space-1) var(--space-3); }
+  .aq-router__k { padding: var(--space-1) var(--space-3); font-size: 12px; }
+  .aq-router__tbc { font-size: 12px; }
   .aq-router__k::before { content: "0" counter(aq-station) "  "; white-space: pre; color: inherit; }
   .aq-router__stations > li:not(:last-child)::after {
     top: auto; bottom: calc(-1 * var(--space-3)); right: auto; left: calc(var(--space-6) - 4px); width: 9px; height: var(--space-3);
     clip-path: polygon(4px 0, 5px 0, 5px calc(100% - 7px), 100% calc(100% - 7px), 50% 100%, 0 calc(100% - 7px), 4px calc(100% - 7px));
   }
   .aq-router__v { padding: var(--space-2) var(--space-3); font-size: 14px; line-height: 21px; }
+  /* 44 px hit area on the inline link without moving the line */
+  .aq-router__v a { padding-block: calc(var(--space-3) + var(--space-1) / 2); }
 }

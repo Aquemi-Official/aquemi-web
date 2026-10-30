@@ -42,7 +42,7 @@ DocList shows the documents delivered with a system as a turnover binder: number
 The renderer derives each code from the document name with a lookup of common validation documents (FS, URS, DQ, RA, P&ID, GA, ISO, MAT, WLD, WPS & PQR, SRF, PAS, CAL, FAT & SAT, IQ & OQ, PQ, O&M, SOP, SPR, TM, DEV, CC …). A name the lookup misses uses the acronym it gives in brackets, else the initials of its first three words. If fewer than half the items match the lookup, the list renders plain, numbers only. The lookup also covers loop and fabrication records: HMB (heat and mass balance), SB (steam balance), FIP (fabrication and inspection plan), DLR (dead leg register), SLP (slope survey or verification), SLP & DLR, RIB (riboflavin spray coverage), PAS (passivation), SMP (sampling plan), SVR (software version record), ASB (as-built drawings), CIA (change impact assessment), LFL, ASR, CSV and the CDMO audit pack (SD, CM, TRD, EXC, CL, DI).
 
 - **New document types:** add them to `DOC_CODES` in `assets/src/blocks/docs.js`. Never reword a document's name to hit a known code; name it as the validation team does.
-- **Explicit code:** an item may set `code` (`{"t": "Added by system", "code": "+"}`) when no lookup entry fits or the derived code would mislead. An explicit code counts as a recognised one. Use it sparingly; a lookup entry serves every page.
+- **Explicit code:** an item may set `code` (`{"t": "Added by system", "code": "+"}`) when no lookup entry fits or the derived code would mislead. An explicit code counts as a recognised one. A code with no letter or digit (`"+"`) draws an open tab (`is-open`: dashed, empty) so it never reads as a missing label. Use it sparingly; a lookup entry serves every page.
 
 ## Token rules
 

@@ -23,15 +23,16 @@
 /* Hold station: double frame (outline plus an inner rule), the stamp and the signature line */
 .aq-steps__st.is-hold { outline: 1px solid var(--line-strong); }
 .aq-steps__st.is-hold::before { content: ""; position: absolute; inset: var(--space-1); border: 1px solid var(--line-strong); pointer-events: none; }
-.aq-steps__hold { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); margin: var(--space-2) 0 0; }
+/* margin-top clears the stamp's -3deg tilt: its right end rises about 15 px over a full-width stamp */
+.aq-steps .aq-steps__hold { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); margin: var(--space-6) 0 0; }
 .aq-steps__stamp {
   display: inline-flex; align-items: center; gap: var(--space-2); max-width: 100%; padding: var(--space-1) var(--space-2);
   border: 3px double var(--flow); border-radius: var(--radius-sm); transform: rotate(-3deg); transform-origin: left center;
-  font: 600 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--flow);
+  font: 600 12px/16px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--flow);
 }
 .aq-steps__stamp-k { flex: none; padding: 0 var(--space-1); background: var(--flow); color: var(--surface); font-size: 14px; line-height: 20px; }
 .aq-steps__who { min-width: 0; }
-.aq-steps__sign { align-self: stretch; display: flex; align-items: baseline; gap: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-steps__sign { align-self: stretch; display: flex; align-items: baseline; gap: var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
 .aq-steps__sign::after { content: ""; flex: 1; border-bottom: 1px solid var(--line-strong); }
 
 /* Run: the pipe from a station to the next, in the gap between them, with an arrow into the next station */
@@ -77,7 +78,7 @@
 .aq-steps--stages .aq-steps__st.is-hold::before { display: none; }
 .aq-steps--stages .aq-steps__st.is-hold .aq-steps__frame { border: 2px solid var(--flow); }
 .aq-steps--stages .aq-steps__st.is-hold .aq-steps__frame::before { border-color: var(--flow); }
-.aq-steps--stages .aq-steps__hold { margin-top: var(--space-1); }
+.aq-steps--stages .aq-steps__hold { margin-top: var(--space-4); }
 
 @container (max-width: 860px) {
   /* Phone: one vertical pipe down the number column, stations along it; hold stations framed and stamped */
@@ -108,7 +109,7 @@
   .aq-steps--stages .aq-steps__body { display: contents; }
   .aq-steps--stages .aq-steps__t { grid-area: t; }
   .aq-steps--stages .aq-steps__d { grid-area: d; }
-  .aq-steps--stages .aq-steps__hold { grid-area: h; margin: 0; }
+  .aq-steps--stages .aq-steps__hold { grid-area: h; margin: var(--space-3) 0 0; }
   /* every run (hold stages included) is the vertical pipe down the number column; nothing reaches past the strip */
   .aq-steps--stages { overflow-x: clip; }
   .aq-steps--stages .aq-steps__st > .aq-steps__run { left: calc(var(--space-12) / 2 - 6px / 2); top: var(--space-8); bottom: 0; width: 6px; height: auto; }

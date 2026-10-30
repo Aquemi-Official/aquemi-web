@@ -13,22 +13,25 @@
   padding: 0 var(--space-12) var(--space-12);
   border: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent);
 }
-/* With a checklist or an exchange: two columns, the list (or the plate) on the right */
+/* With a checklist or an exchange: the headline across the full width (so a 6-word headline never stacks one word
+   a line in a narrow column), then two columns, the lead and action left, the list (or the plate) on the right */
 .aq-closing__frame:has(.aq-closing__include) {
   display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--space-8); row-gap: var(--space-6); padding-bottom: var(--space-8);
-  grid-template-areas: "strip strip" "h plate" "lead plate" "foot plate"; grid-template-rows: auto auto auto 1fr; align-items: start;
+  grid-template-areas: "strip strip" "h h" "lead plate" "foot plate"; grid-template-rows: auto auto auto 1fr; align-items: start;
 }
 .aq-closing__frame:has(.aq-closing__include) .aq-closing__body { display: contents; }
 .aq-closing__frame:has(.aq-closing__include) .aq-closing__strip { grid-area: strip; }
-.aq-closing__frame:has(.aq-closing__include) .aq-closing__h { grid-area: h; font-size: clamp(52px, 5cqi, 68px); }
+.aq-closing__frame:has(.aq-closing__include) .aq-closing__h { grid-area: h; max-width: none; font-size: clamp(52px, 6cqi, 80px); }
 .aq-closing__frame:has(.aq-closing__include) .aq-closing__body > .aq-lead { grid-area: lead; }
-.aq-closing__frame:has(.aq-closing__include) .aq-closing__plate, .aq-closing__body > .aq-closing__include { grid-area: plate; align-self: stretch; margin-top: var(--space-6); }
+.aq-closing__frame:has(.aq-closing__include) .aq-closing__plate, .aq-closing__body > .aq-closing__include { grid-area: plate; align-self: stretch; }
 .aq-closing__body > .aq-closing__include ol { columns: 1; }
 .aq-closing__body > .aq-closing__include li { padding-block: var(--space-3); font-size: 17px; line-height: 24px; }
 .aq-closing__frame:has(.aq-closing__include) .aq-closing__foot { grid-area: foot; align-self: end; flex-direction: column; align-items: flex-start; }
 .aq-closing__frame:has(.aq-closing__include) .aq-closing__action { margin-left: 0; max-width: 100%; }
 .aq-closing__frame:has(.aq-closing__include) .aq-closing__action .aq-btn { white-space: normal; padding-inline: var(--space-6); font-size: 24px; line-height: 28px; }
 .aq-closing__frame:has(.aq-closing__include) .aq-closing__foot { min-width: 0; }
+/* no lead: the action sits right under the headline, as in the hero */
+.aq-closing__frame:has(.aq-closing__include):not(:has(.aq-closing__body > .aq-lead)) .aq-closing__foot { align-self: start; }
 /* Registration marks at the top-left and bottom-right corners */
 .aq-closing__frame::before, .aq-closing__frame::after {
   content: ""; position: absolute; width: var(--space-4); height: var(--space-4); pointer-events: none;
@@ -50,7 +53,7 @@
 .aq-closing__h {
   max-width: 16ch; margin-top: var(--space-4);
   font: 600 clamp(60px, 7.2cqi, 96px)/0.92 var(--font-display); letter-spacing: -0.005em; text-transform: uppercase;
-  color: var(--on-navy); overflow-wrap: break-word;
+  color: var(--on-navy); overflow-wrap: break-word; text-wrap: balance;
 }
 .aq-closing__body { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-6); min-width: 0; }
 /* The lead in its own ruled box */

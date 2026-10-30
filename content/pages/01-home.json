@@ -148,43 +148,36 @@
    ]
   },
   {
-   "type": "spec",
+   "type": "grid",
    "h": "Service is half the system",
-   "intro": "Systems drift out of qualification on maintenance days. Every plan fixes these terms.",
-   "cols": [
-    "Commitment",
-    "What it means",
-    "Basis"
-   ],
-   "rows": [
+   "intro": "Every service plan fixes these terms before you sign.",
+   "ground": "light",
+   "items": [
     {
-     "p": "Response time",
-     "v": "Stated for 4 severities; severity 1 inside [service coverage area]",
-     "m": "Service plans",
-     "hl": true
+     "t": "Response time",
+     "d": "Stated for four severities; severity 1 inside [service coverage area].",
+     "icon": "calendar",
+     "link": "svc-service"
     },
     {
-     "p": "Your change control",
-     "v": "Like-for-like parts, or the change goes through your change control first",
-     "m": "EU GMP Annex 15, 11"
+     "t": "Your change control",
+     "d": "Like-for-like parts, or the change goes through your change control first.",
+     "icon": "stamp",
+     "link": "svc-service"
     },
     {
-     "p": "Price",
-     "v": "A fixed annual price per plan, with visits, calibrations and spares listed",
-     "m": "Service plans"
+     "t": "Fixed annual price",
+     "d": "Visits, calibrations and spares listed per plan.",
+     "icon": "wrench",
+     "link": "svc-service"
     },
     {
-     "p": "Record",
-     "v": "A signed service report after every visit, for your GMP records",
-     "m": "21 CFR 211.67"
-    },
-    {
-     "p": "Other builders' systems",
-     "v": "[makes and equipment types serviced]",
-     "m": "Service request"
+     "t": "Signed record",
+     "d": "A signed service report after every visit, for your GMP file.",
+     "icon": "binder",
+     "link": "svc-service"
     }
-   ],
-   "fold": 3
+   ]
   },
   {
    "type": "table",

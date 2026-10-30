@@ -36,7 +36,7 @@ On desktop the rows flow into two columns. Each cell stacks the parameter, the l
 - Not for test results with several values per parameter (limit, result, status): use CompareTable (`aq-compare-table`), and never show a result without its method.
 - Not for options compared against criteria: use CompareTable.
 - The consumer provides the data; never fill a `[placeholder]` with a guessed value.
-- Phones: two lines per row, parameter then value · basis; the column-label strip is visually hidden (it stays for screen readers).
+- Phones: three lines per row, parameter, value, then the basis (13 px, own line) and any row link (44 px hit area); the column-label strip is visually hidden (it stays for screen readers).
 
 ## Caption and section head
 

@@ -15,7 +15,7 @@ OptionList shows the configuration choices for a system as rows of the shared li
 
 ## Plain rows
 
-A list without icons (OptionList, and plain ProcessSteps rows) sits in a 1 px `line-strong` frame with `space-6` inner padding, and its index grows to a big light mono number (Mono 300 32/36 `flow`, 24/28 on phones), so a list with no pictures still reads as a drawn schedule. Rows with icons keep the open list.
+A list without icons (OptionList, and plain ProcessSteps rows) has a fixed 280 px title column (titles 18/26) with the line straight after it, capped at `--text-max`, so short titles leave no gap. It sits in a 1 px `line-strong` frame with `space-6` inner padding, and its index grows to a big light mono number (Mono 300 32/36 `flow`, 24/28 on phones), so a list with no pictures still reads as a drawn schedule. Rows with icons keep the open list.
 
 ## Variant: decisions
 

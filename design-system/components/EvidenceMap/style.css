@@ -56,6 +56,7 @@
 .aq-evidence__go a { text-decoration: none; }
 .aq-evidence__go a::after { content: "\a0\2192"; }
 .aq-evidence__go a:hover { text-decoration: underline; }
+@container (max-width: 860px) { .aq-evidence__go a { padding-block: calc(var(--space-3) + var(--space-1) / 2); } }
 
 /* References: clause numbers are not files. On the fan they print as mono text (the standard's name as a small caps
    caption when there are several columns), with the same tick and arrow but no sheet. */
@@ -90,4 +91,9 @@
   .aq-evidence__doc::before { width: var(--space-6); }
   .aq-evidence__ref { font-size: 12px; line-height: 18px; margin-top: var(--space-1); }
   .aq-evidence__clause { font-size: 14px; line-height: 24px; }
+}
+
+/* Phones: every label people read is 12 px or more */
+@container (max-width: 860px) {
+  .aq-evidence__rk { font-size: 12px; }
 }

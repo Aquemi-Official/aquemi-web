@@ -119,6 +119,8 @@
   .aq-compare-table__table tbody tr { display: flex; flex-direction: column; }
   .aq-compare-table__table td.aq-compare-table__go { order: 1; margin-top: var(--space-1); }
   .aq-compare-table__table td a { font: 500 14px/22px var(--font-sans); letter-spacing: 0; text-transform: none; }
+  /* 44 px hit area on inline links (row-head and link-column) without moving the line */
+  .aq-compare-table__table td a, .aq-compare-table__table th a { padding-block: calc(var(--space-3) + var(--space-1) / 2); }
   .aq-compare-table__table td a::after { content: "\a0\2192"; content: "\a0\2192" / ""; }
 
   /* Tabs (four or more value columns): one strip of tabs that scrolls inside itself, never two lines; each row the

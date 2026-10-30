@@ -106,3 +106,8 @@
   .aq-notes-register__std { grid-column: 2 / -1; grid-row: 3; padding: var(--space-1) 0 var(--space-3) !important; font-size: 12px; }
   .aq-notes-register .aq-fold.is-filtered .aq-fold-x { display: grid; }
 }
+
+/* Phones: every label people read is 12 px or more */
+@container (max-width: 860px) {
+  .aq-notes-register__fk, .aq-notes-register__flabel span, .aq-notes-register__planned, .aq-notes-register__topic { font-size: 12px; }
+}

@@ -32,3 +32,8 @@
   .aq-roles__k { font-size: 12px; line-height: 16px; }
   .aq-roles__stamp { padding: var(--space-2); font-size: 13px; line-height: 18px; }
 }
+
+/* Phones: every label people read is 12 px or more */
+@container (max-width: 860px) {
+  .aq-roles__key > span, .aq-roles__key > .aq-roles__keyk, .aq-roles__key .aq-roles__stamp { font-size: 12px; }
+}

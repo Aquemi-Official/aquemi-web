@@ -114,7 +114,7 @@
   .aq-footer__colhead::after { content: "+"; margin-left: auto; font: 400 20px/20px var(--font-mono); color: var(--on-navy-muted); }
   .aq-footer__col[open] .aq-footer__colhead::after { content: "\2212"; }
   .aq-footer__links { padding: 0 0 var(--space-3) var(--space-8); }
-  .aq-footer a { padding-block: var(--space-2); }
+  .aq-footer a { padding-block: var(--space-3); }
   .aq-footer__block { grid-column: 1; border-left: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .aq-footer__cell--wide { grid-column: span 1; }
   .aq-footer__cell:nth-child(n) { border-right: 0; }

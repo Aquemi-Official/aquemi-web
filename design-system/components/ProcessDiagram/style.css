@@ -133,3 +133,8 @@
   .aq-diagram__io:first-child { margin-top: 0; }
   .aq-diagram__base { margin-top: var(--space-4); }
 }
+
+/* Phones: every label people read is 12 px or more */
+@container (max-width: 860px) {
+  .aq-diagram__n, .aq-diagram__base { font-size: 12px; }
+}

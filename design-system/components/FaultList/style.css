@@ -48,6 +48,6 @@
   .aq-faults__sign { font-size: 18px; }
   .aq-faults__body { grid-auto-flow: row; margin-left: var(--space-12); }
   .aq-faults__body > div + div { border-left: 0; border-top: 1px solid var(--line-strong); }
-  .aq-faults__k { padding: var(--space-1) var(--space-3); font-size: 11px; }
+  .aq-faults__k { padding: var(--space-1) var(--space-3); font-size: 12px; }
   .aq-faults__v { padding: var(--space-3) var(--space-3) var(--space-4); font-size: 14px; line-height: 22px; }
 }

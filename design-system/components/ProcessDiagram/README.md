@@ -31,7 +31,7 @@ The website builds it from a `diagram` block (`AQ.wDiagram`, which calls `wFlow`
 - `stages`: 4 to 7 entries in flow order. Each is a name, or an object `{t, d, spot, icon, tag, link}`:
   - `t` stage name, sentence case as engineers write it ("RO pass 1").
   - `d` optional one line (≤ 16 words): what the stage removes or controls. Shown in the detail panel. Without it the panel shows the stage's In and Out connections only, so add `d` wherever the stage needs explaining.
-  - `spot` a Spot name (`assets/spots`: pretreatment, ro-skid, edi-stack, still, pure-steam-generator, storage-tank, pump, heat-exchanger, uv-ozone) or `icon` an Icon name for stages without a spot (valve, softener, carbon-filter, ro-membrane, conductivity, loop, tank …). With neither, a line glyph is picked from keywords in the name (heat exchanger, RO, EDI, UV, softener, carbon, filter, column, pump, steam, loop, tank, instrument, PLC/HMI/SCADA, drop for feeds).
+  - `spot` a Spot name (`assets/spots`: pretreatment, ro-skid, edi-stack, still, pure-steam-generator, storage-tank, pump, heat-exchanger, uv-ozone) or `icon` an Icon name for stages without a spot (valve, softener, carbon-filter, ro-membrane, conductivity, loop, tank …). With neither, a line glyph is picked from keywords in the name (heat exchanger, RO, EDI, UV, softener, carbon, filter, column, pump, steam, loop, tank, instrument, PLC or controller (rack), network or server (nodes), HMI/SCADA/control (screen), drop for feeds).
 - `base` optional: what spans every stage (monitoring, controls, sanitisation); draws a dashed control boundary round the train with the label at its foot.
 - `from` / `to` optional pipe-end labels; `caption` an `aq-small` paragraph under the plate.
 

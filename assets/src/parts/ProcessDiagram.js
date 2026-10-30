@@ -18,12 +18,14 @@ var DGLYPH={
  tank:'M18 48V18a18 8 0 0 1 36 0v30zM10 48h52M24 32h24M36 10V4',
  instrument:'M22 24a14 14 0 1 0 28 0a14 14 0 1 0-28 0M22 24h28M36 38v12M24 50h24',
  screen:'M10 8h52v32H10zM28 50h16M36 40v10M18 30l8-10 8 6 10-12 8 8',
+ plc:'M14 6h44v44H14zM14 16h44M20 22v22M28 22v22M36 22v22M44 22v22M52 22v22M20 11h4M30 11h4',
+ network:'M30 10a6 6 0 1 0 12 0a6 6 0 1 0-12 0M8 46a6 6 0 1 0 12 0a6 6 0 1 0-12 0M52 46a6 6 0 1 0 12 0a6 6 0 1 0-12 0M32 26h8v8h-8zM36 16v10M32 33L19 42M40 33l13 9',
  drop:'M36 6c-10 14-16 22-16 30a16 16 0 0 0 32 0c0-8-6-16-16-30zM28 38a8 8 0 0 0 8 8',
  generic:'M12 14h48v28H12zM4 28h8M60 28h8M20 22h20M20 30h28'};
 var DKEYS=[['drop',/^(from|to)\b/],['hx',/heat|exchanger|preheat|condens|cooler/],['ro',/\bro\b|reverse osmosis|membrane|ultrafiltr|\buf\b|generation/],['edi',/\bedi\b|electrodeion/],['uv',/\buv\b|ultraviolet/],
  ['softener',/soften/],['carbon',/carbon|bisulfite|dechlor/],['filter',/filt|pretreat|multimedia|cartridge/],['column',/still|column|evaporat|separat|degas|distil/],
  ['pump',/pump/],['steam',/steam|sterili|\bsip\b|header/],['loop',/loop|distribut|point|return|outlet/],['tank',/tank|storage|vessel/],
- ['instrument',/instrument|analy|\btoc\b|conductiv|sensor|monitor/],['screen',/plc|hmi|scada|network|historian|control/],['drop',/feed|water|wfi|\bpw\b/]];
+ ['instrument',/instrument|analy|\btoc\b|conductiv|sensor|monitor/],['plc',/\bplcs?\b|controller|\bi\/o\b/],['network',/network|server|cloud|ethernet/],['screen',/hmi|scada|control|screen|display/],['drop',/feed|water|wfi|\bpw\b/]];
 function dGlyph(t){var s=String(t).toLowerCase();for(var i=0;i<DKEYS.length;i++)if(DKEYS[i][1].test(s))return DGLYPH[DKEYS[i][0]];return DGLYPH.generic}
 function dSvg(d){return '<svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="'+d+'"/></svg>'}
 var FLN=0;

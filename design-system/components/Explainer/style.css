@@ -15,8 +15,15 @@
 .aq-explainer__d { margin: 0; max-width: var(--text-max); font: 400 15px/24px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
 .aq-explainer:has(.aq-explainer__fig--art) { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
 .aq-explainer--bare { grid-template-columns: minmax(0, 1fr); }
-.aq-explainer--bare .aq-explainer__points { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-12); border-bottom: 0; }
-.aq-explainer--bare .aq-explainer__points > li { padding-top: var(--space-6); border-top: 1px solid var(--line); }
+/* Bare (no figure): the points side by side in one row (up to four), each on a heavy ink rule with a flow node and a
+   display-size number, so the row reads as one strong strip rather than a half-empty 2 x 2 */
+.aq-explainer--bare .aq-explainer__points { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); column-gap: var(--space-8); border-bottom: 0; }
+.aq-explainer--bare .aq-explainer__points:has(> li:nth-child(5)) { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.aq-explainer--bare .aq-explainer__points > li { position: relative; padding-top: var(--space-6); border-top: 2px solid var(--ink); }
+.aq-explainer--bare .aq-explainer__points > li::before { content: ""; position: absolute; top: calc(-1 * var(--space-1) - 1px); left: 0; width: var(--space-2); height: var(--space-2); background: var(--flow); }
+.aq-explainer--bare .aq-explainer__n { font-size: 72px; line-height: 72px; }
+.aq-explainer--bare .aq-explainer__t { font-size: 16px; line-height: 24px; }
+.aq-explainer--bare .aq-explainer__d { font-size: 16px; line-height: 26px; color: var(--ink); }
 
 /* Number marker, on a bar or pinned on a drawing */
 .aq-explainer__mark { display: inline-grid; place-items: center; width: var(--space-6); height: var(--space-6); border-radius: var(--radius-pill); background: var(--flow); color: var(--surface); font: 500 12px/1 var(--font-mono); }
@@ -60,7 +67,11 @@
   .aq-explainer, .aq-explainer:has(.aq-explainer__fig--art), .aq-explainer--bare .aq-explainer__points { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .aq-explainer__points > li { padding-block: var(--space-4); }
   .aq-explainer__points > li:first-child { padding-top: var(--space-4); border-top: 1px solid var(--line); }
-  .aq-explainer--bare .aq-explainer__points { row-gap: 0; }
+  .aq-explainer--bare .aq-explainer__points { grid-auto-flow: row; row-gap: var(--space-4); }
+  .aq-explainer--bare .aq-explainer__points > li:first-child { border-top-width: 2px; border-top-color: var(--ink); }
+  .aq-explainer--bare .aq-explainer__n { font-size: 44px; line-height: 48px; }
+  .aq-explainer--bare .aq-explainer__t { font-size: 14px; line-height: 20px; }
+  .aq-explainer--bare .aq-explainer__d { font-size: 15px; line-height: 24px; }
   .aq-explainer__n { font-size: 32px; line-height: 36px; }
   .aq-explainer__t { font-size: 14px; line-height: 20px; }
   .aq-explainer__d { font-size: 14px; line-height: 22px; }
@@ -76,4 +87,9 @@
   .aq-levels__key { text-align: left; }
   .aq-levels__label { font-size: 11px; line-height: 16px; }
   .aq-levels__note { font-size: 13px; line-height: 20px; }
+}
+
+/* Phones: every label people read is 12 px or more */
+@container (max-width: 860px) {
+  .aq-levels__v, .aq-levels__gap, .aq-levels__limit > span, .aq-levels__label, .aq-explainer__unit { font-size: 12px; }
 }

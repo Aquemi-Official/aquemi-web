@@ -18,7 +18,7 @@ ProcessSteps shows a real sequence (a project, a qualification, a service visit)
 An item may carry `"hold": "<who signs>"` ("Your quality unit", "Both parties", "You"). A steps block with at least one hold no longer renders as rows: it draws as a process flow on a cream drawing plate (Plate, `wPlate(…, {light: true})`, title block "Aquemi | <nav>"), after the hold-point concept (inspiration 53).
 
 - Desktop: numbered stations in a grid, up to four per row (longer flows split into two even rows: 6 → 3 + 3, 7 → 4 + 3, 8 → 4 + 4). Each station: a big Geist Mono number with a tick, then the step name in uppercase mono and its text, behind a hairline. Stations are joined by pipe runs (two `line-strong` walls with an arrow into the next station); at the end of a row the pipe elbows into the right gutter, runs back under the row, elbows down the left gutter and into the next row. A closed `flow` valve sits on the run into every hold station.
-- Hold station: double frame (outline plus inner rule), a tilted stamp, filled `HOLD` plus "Signed by your quality unit", and a `SIGN:` line.
+- Hold station: double frame (outline plus inner rule), a tilted stamp (`space-6` above it clears the tilt), filled `HOLD` plus "Signed by your quality unit", and a `SIGN:` line.
 - Phone: one vertical pipe down the number column with arrows and valves, stations along it; hold stations framed and stamped. No horizontal scroll.
 
 ```html

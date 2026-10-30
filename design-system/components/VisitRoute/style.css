@@ -17,7 +17,9 @@
 /* the figure: plate-coloured so the route stops at its edge, the vignette centred, the tag in its top-left corner */
 .aq-visit-route__fig { position: relative; display: grid; place-items: center; width: var(--m, var(--space-8)); height: var(--mh, var(--space-8)); margin-bottom: var(--space-2); background: var(--surface); }
 .aq-visit-route__spot { background-color: var(--ink); }
-.aq-visit-route__spot.aq-spot--icon { background-color: var(--ink-muted); }
+/* An Icon standing in for a spot draws at the spot's size (not the 64 px icon size), so every stop's vignette reads
+   at the same visual size along the route; muted, because its heavier icon stroke would otherwise outweigh the spots */
+.aq-visit-route__spot.aq-spot--icon { width: calc(var(--space-24) + var(--space-4)); height: calc(var(--space-24) + var(--space-4)); background-color: var(--ink-muted); }
 /* corner brackets frame every vignette (spot or icon) the same way */
 .aq-visit-route--spots .aq-visit-route__fig::before, .aq-visit-route--spots .aq-visit-route__fig::after { content: ""; position: absolute; width: var(--space-3); height: var(--space-3); border: 0 solid var(--line-strong); pointer-events: none; }
 .aq-visit-route--spots .aq-visit-route__fig::before { top: 0; right: 0; border-width: 1px 1px 0 0; }
@@ -61,8 +63,10 @@ a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-
   .aq-visit-route__stop { grid-column: 1; grid-row: auto; padding-bottom: var(--space-6); }
   .aq-visit-route__body { display: grid; grid-template-columns: var(--m, var(--space-8)) minmax(0, 1fr); align-content: start; column-gap: var(--space-3); row-gap: var(--space-1); }
   .aq-visit-route__fig { grid-row: 1 / span 3; margin: 0; }
-  .aq-visit-route .aq-visit-route__spot:not(.aq-spot--icon) { width: var(--space-24); height: var(--space-24); }
-  .aq-visit-route__n { min-width: var(--space-6); height: var(--space-6); font-size: 11px; }
+  .aq-visit-route .aq-visit-route__spot { width: var(--space-24); height: var(--space-24); }
+  .aq-visit-route .aq-visit-route__spot.aq-spot--icon { width: calc(var(--space-16) + var(--space-3)); height: calc(var(--space-16) + var(--space-3)); }
+  .aq-visit-route__n { min-width: var(--space-6); height: var(--space-6); font-size: 12px; }
+  .aq-visit-route__cap { font-size: 12px; }
   .aq-visit-route__cap, .aq-visit-route__t, .aq-visit-route__d { grid-column: 2; }
   .aq-visit-route__t { font-size: 13px; line-height: 20px; }
   .aq-visit-route__d { font-size: 14px; line-height: 22px; }

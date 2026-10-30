@@ -38,7 +38,7 @@
 .aq-section-nav__seg.is-on { background: var(--flow); }
 .aq-section-nav__pct { min-width: 4ch; text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
 
-/* Jumped-to sections clear the sticky bar (56 px desktop, 52 px phones) with room above the heading */
+/* Jumped-to sections clear the sticky bar (56 px desktop, 44 px phones) with room above the heading */
 .aq-page:has(.aq-section-nav) section[id] { scroll-margin-top: var(--space-16); }
 
 @media (prefers-reduced-motion: reduce) {
@@ -46,14 +46,14 @@
 }
 
 @container (max-width: 860px) {
-  /* Phones: a slim 40 px strip of mono links; the progress meter becomes a 2 px flow line along its bottom edge, and
+  /* Phones: a slim 44 px strip of mono links; the progress meter becomes a 2 px flow line along its bottom edge, and
      the bar tucks away while the reader scrolls down (is-tucked, set by SectionNav.js), so it never sits on content. */
   .aq-section-nav { border-bottom-color: var(--line); }
   .aq-section-nav.is-tucked { transform: translateY(calc(-100% - 2px)); }
-  .aq-section-nav .aq-in { position: relative; min-height: 40px; padding-inline: 0; }
+  .aq-section-nav .aq-in { position: relative; min-height: 44px; padding-inline: 0; }
   .aq-section-nav__label, .aq-section-nav__progress-label, .aq-section-nav__pct { display: none; }
   .aq-section-nav__links { padding: 0 var(--space-2); gap: 0; }
-  .aq-section-nav__links a { align-items: center; min-height: 40px; padding: 0 var(--space-3); border: 0; font-size: 12px; line-height: 16px; }
+  .aq-section-nav__links a { align-items: center; min-height: 44px; padding: 0 var(--space-3); border: 0; font-size: 12px; line-height: 16px; }
   .aq-section-nav__links a[aria-current="true"] { background: none; box-shadow: inset 0 -2px 0 var(--ink); }
   .aq-section-nav__progress { position: absolute; left: 0; right: 0; bottom: -1px; padding: 0; border: 0; pointer-events: none; }
   .aq-section-nav__readout { width: 100%; }
@@ -61,4 +61,9 @@
   .aq-section-nav__seg { flex: 1; width: auto; height: 2px; background: transparent; }
   .aq-section-nav__seg.is-on { background: var(--flow); }
   .aq-page:has(.aq-section-nav) section[id] { scroll-margin-top: var(--space-12); }
+}
+
+/* Phones: every label people read is 12 px or more */
+@container (max-width: 860px) {
+  .aq-section-nav__num { font-size: 12px; }
 }

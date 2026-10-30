@@ -85,17 +85,19 @@
 .aq-hero .aq-key-facts { margin-top: var(--space-16); }
 
 @container (max-width: 860px) {
-  /* Phones: one cell per row, the name and source on the left, the figure and dial on the right; no fixings */
+  /* Phones: one cell per row; the name full width on top, then the figure on the left, the source and dial on the
+     right; no fixings. Every label 12 px. */
   .aq-key-facts { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: minmax(0, 1fr); padding: var(--space-3) var(--space-1); }
-  .aq-key-facts > div { grid-template-columns: minmax(0, 1fr) auto auto; grid-template-areas: "dt v dial" "src v dial"; row-gap: var(--space-1); padding: var(--space-3); border-bottom: 0; }
+  .aq-key-facts > div { grid-template-columns: minmax(0, 1fr) auto auto; grid-template-areas: "dt dt dt" "v src dial"; row-gap: var(--space-2); padding: var(--space-3); border-bottom: 0; }
   .aq-key-facts > div + div { border-left: 0; }
   .aq-key-facts > div:last-child { border-bottom: 1px solid var(--line-strong); }
   .aq-key-facts > div::before, .aq-key-facts > div::after, .aq-key-facts::before, .aq-key-facts::after { content: none; }
-  .aq-key-facts dt { align-self: end; padding-bottom: 0; border-bottom: 0; font-size: 11px; line-height: 15px; letter-spacing: 0.06em; }
-  .aq-key-facts dd.aq-key-facts__src { align-self: start; padding-top: 0; border-top: 0; font-size: 11px; line-height: 15px; }
-  .aq-key-facts dd:first-of-type, .aq-key-facts:has(> :nth-child(5)) dd:first-of-type { justify-content: flex-end; text-align: right; max-width: 52cqi; font-size: 28px; line-height: 1.1; }
+  .aq-key-facts dt { padding-bottom: var(--space-1); font-size: 12px; line-height: 16px; letter-spacing: 0.06em; }
+  .aq-key-facts dd.aq-key-facts__src { align-self: center; padding-top: 0; border-top: 0; font-size: 12px; line-height: 16px; text-align: right; }
+  .aq-key-facts dd:first-of-type, .aq-key-facts:has(> :nth-child(5)) dd:first-of-type { justify-content: flex-start; text-align: left; font-size: 28px; line-height: 1.1; }
+  .aq-key-facts__unit { flex-basis: auto; margin-left: var(--space-1); }
   .aq-key-facts dd.is-long { font-size: 17px; line-height: 1.25; }
-  .aq-key-facts__unit { font-size: 11px; }
+  .aq-key-facts__unit { font-size: 12px; }
   .aq-key-facts__dial { width: var(--space-6); height: var(--space-6); }
   .aq-hero .aq-key-facts { margin-top: var(--space-8); }
 }

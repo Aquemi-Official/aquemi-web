@@ -6,6 +6,8 @@
    the basis under a hairline. The full value is in the DOM for screen readers (the chip and readout show it). A row
    without a number is a readout cell: the same cell without the dial, the value shown. */
 .aq-limit-gauges { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+/* Exactly four (or one more than a full row, seven): four across, so no row is left with empty cells */
+.aq-limit-gauges:has(> li:nth-child(4):last-child), .aq-limit-gauges:has(> li:nth-child(7):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .aq-limit-gauges__item { position: relative; display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; padding: var(--space-4) var(--space-4) var(--space-4); border: 1px solid var(--line-strong); }
 /* Registration cross, top right of every cell */
 .aq-limit-gauges__item::after {
@@ -14,7 +16,7 @@
               linear-gradient(var(--ink-subtle), var(--ink-subtle)) center / 100% 1px no-repeat;
 }
 .aq-limit-gauges__item.is-key { box-shadow: inset 0 2px 0 var(--flow); }
-.aq-limit-gauges__p { margin: 0; padding-right: var(--space-6); font: 500 14px/20px var(--font-mono); letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink); }
+.aq-limit-gauges__p { margin: 0; padding-right: var(--space-6); font: 500 14px/20px var(--font-mono); letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink); text-wrap: balance; }
 .aq-limit-gauges__p::after { content: ""; display: block; width: var(--space-6); height: 3px; margin-top: var(--space-2); background: var(--flow); }
 
 /* Dial: starts right under the title; the bottom margin holds the readout caption under its hairline */
@@ -110,33 +112,34 @@
 
 @container (max-width: 860px) {
   /* Phone: two compact instruments per row (dial about 135-150 px), widened a little into the plate's side padding.
-     Scale numbers only at the two ends, at 18 viewBox units (about 10 px); the chip drops its "LIMIT" word; the
+     No scale numbers (at a legible 12 px they collide with the arc; the chip and readout carry the
+     value); every label at 12 px minimum; the chip drops its "LIMIT" word; the
      readout moves under the dial; the basis keeps only its standard tags (the wording between them is hidden). */
-  .aq-limit-gauges { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); margin-inline: calc(-1 * var(--space-2)); }
+  .aq-limit-gauges, .aq-limit-gauges:has(> li:nth-child(4):last-child), .aq-limit-gauges:has(> li:nth-child(7):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); margin-inline: calc(-1 * var(--space-2)); }
   .aq-limit-gauges__item { padding: var(--space-2) var(--space-2) var(--space-3); gap: var(--space-1); }
   .aq-limit-gauges__item::after { top: var(--space-1); right: var(--space-1); width: 9px; height: 9px; }
-  .aq-limit-gauges__p { padding-right: var(--space-3); font-size: 11px; line-height: 15px; letter-spacing: 0.03em; }
+  .aq-limit-gauges__p { padding-right: var(--space-3); font-size: 12px; line-height: 16px; letter-spacing: 0.02em; }
   .aq-limit-gauges__p::after { width: var(--space-4); height: 2px; margin-top: var(--space-1); }
   .aq-limit-gauges__dial { margin: var(--space-6) 0 0; }
-  .aq-limit-gauges__nums text { font-size: 18px; }
-  .aq-limit-gauges__nums text:not(.is-end) { display: none; }
-  .aq-limit-gauges__mark { font-size: 10px; line-height: 16px; padding: 0 var(--space-1); }
+  .aq-limit-gauges__nums text { display: none; }
+  .aq-limit-gauges__mark { font-size: 12px; line-height: 18px; padding: 0 var(--space-1); }
   .aq-limit-gauges__mark.is-right { transform: translateY(calc(-1 * var(--space-4))); }
   .aq-limit-gauges__mark-k { display: none; }
   .aq-limit-gauges__read { margin-top: calc(-1 * var(--space-1)); }
   .aq-limit-gauges__line { position: static; display: block; padding: 0; }
   .aq-limit-gauges__num { font-size: 18px; line-height: 22px; letter-spacing: -0.03em; }
-  .aq-limit-gauges__unit { font-size: 10px; line-height: 14px; }
-  .aq-limit-gauges__cap { padding-top: 0; font-size: 10px; line-height: 14px; letter-spacing: 0.04em; }
-  .aq-limit-gauges__cap.is-q { font-size: 11px; line-height: 14px; letter-spacing: 0; }
+  .aq-limit-gauges__unit { font-size: 12px; line-height: 16px; }
+  .aq-limit-gauges__cap { padding-top: 0; font-size: 12px; line-height: 16px; letter-spacing: 0.02em; white-space: normal; }
+  .aq-limit-gauges__cap.is-q { font-size: 12px; line-height: 16px; letter-spacing: 0; }
   .aq-limit-gauges__foot { padding-top: var(--space-1); }
   .aq-limit-gauges__spec > div { padding-left: 0; }
   .aq-limit-gauges__spec > div::before, .aq-limit-gauges__spec dt { display: none; }
-  .aq-limit-gauges__m { font-size: 11px; line-height: 16px; }
+  .aq-limit-gauges__m { font-size: 12px; line-height: 18px; }
   .aq-limit-gauges__item:not(.is-readout) .aq-limit-gauges__mt { display: none; }
-  .aq-limit-gauges__m .aq-tag { font-size: 10px; line-height: 14px; padding: 0 var(--space-1); white-space: nowrap; }
+  .aq-limit-gauges__m .aq-tag { font-size: 12px; line-height: 18px; padding: 0 var(--space-1); white-space: nowrap; }
   .aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child { padding: var(--space-2) 0; }
-  .aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child dt { display: block; }
+  .aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child dt { display: block; font-size: 12px; }
+  .aq-limit-gauges__chip, .aq-limit-gauges__ends, .aq-limit-gauges__spec dt { font-size: 12px; }
   .aq-limit-gauges__item.is-readout .aq-limit-gauges__v { font-size: 13px; line-height: 18px; }
   /* Rules on phones: number and name on one line, then the bar full width, the rule as written, the basis tags */
   .aq-limit-gauges--rules { margin-inline: 0; }

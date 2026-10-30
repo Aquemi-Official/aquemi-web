@@ -9,7 +9,10 @@ ol.aq-rows.aq-options:not(:has(.aq-rows__lead)), ol.aq-rows.aq-steps:not(:has(.a
 ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) > li:first-child, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) > li:first-child { border-top: 0; }
 ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row > .aq-index, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__row > .aq-index,
 .aq-options__q > .aq-index { font: 300 32px/36px var(--font-mono); letter-spacing: -0.02em; color: var(--flow); }
-ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__row { grid-template-columns: var(--space-16) minmax(0, 4fr) minmax(0, 7fr); padding-block: var(--space-6); }
+/* The title column is a fixed 280 px and the line follows straight after it (capped at the reading measure), so short
+   titles never leave a 400 px gap before their line; the title set larger so the schedule has a strong left edge */
+ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__row { grid-template-columns: var(--space-16) calc(var(--space-32) * 2 + var(--space-6)) minmax(0, var(--text-max)); column-gap: var(--space-8); padding-block: var(--space-6); }
+ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__t, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__t { font-size: 18px; line-height: 26px; }
 
 /* Decisions (as: "decisions"): number with a framed "?" tag, an optional fork mark before a two-way decision, an
    optional "Decide by" caption under the line. */
@@ -25,10 +28,16 @@ ol.aq-options--decide .aq-rows__d { padding-top: var(--space-1); }
 
 @container (max-width: 860px) {
   ol.aq-rows.aq-options:not(:has(.aq-rows__lead)), ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) { padding-inline: var(--space-4); }
-  ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__row { grid-template-columns: var(--space-12) minmax(0, 1fr); padding-block: var(--space-4); }
+  ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__row { grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-3); padding-block: var(--space-4); }
+  ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__t, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__t { font-size: 16px; line-height: 24px; }
   ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row > .aq-index, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__row > .aq-index,
   .aq-options__q > .aq-index { font-size: 24px; line-height: 28px; }
   .aq-options__q { grid-row: span 2; }
   .aq-options__qt { width: var(--space-4); height: var(--space-4); font-size: 11px; }
   .aq-options__fork { width: var(--space-6); height: 16px; }
+}
+
+/* Phones: every label people read is 12 px or more */
+@container (max-width: 860px) {
+  .aq-options__qt { font-size: 12px; }
 }

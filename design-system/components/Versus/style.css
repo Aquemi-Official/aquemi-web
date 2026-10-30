@@ -85,3 +85,8 @@
   .aq-versus__end-v[data-k]::before { content: attr(data-k); display: block; font: 500 10px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
   .aq-versus__end-v:nth-of-type(3)::before { color: var(--flow); }
 }
+
+/* Phones: every label people read is 12 px or more */
+@container (max-width: 860px) {
+  .aq-versus__vs, .aq-versus__end-k { font-size: 12px; }
+}
