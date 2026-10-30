@@ -12,4 +12,8 @@ function wFormSteps(b){var n=0,S=b.steps,k=S.length;S.forEach(function(s){(s.fie
   S.map(function(s,i){return '<fieldset class="aq-form__step" data-step="'+i+'"'+(i?' hidden':'')+'><legend class="aq-h3">Step '+(i+1)+' of '+k+': '+tx(s.title)+'</legend>'+(s.intro?'<p class="aq-small aq-form__full">'+tx(s.intro)+'</p>':'')+(s.fields||[]).map(wField).join('')+
    '<div class="aq-form__actions">'+(i?'<button class="aq-btn aq-btn--secondary" type="button" data-step-go="'+(i-1)+'">Back</button>':'')+(i<k-1?'<button class="aq-btn aq-btn--primary" type="button" data-step-go="'+(i+1)+'">'+tx(s.next||'Continue')+' <span class="aq-btn__arrow">→</span></button>':'<button class="aq-btn aq-btn--primary" type="submit">'+tx(b.submit||'Send')+'</button>')+'</div>'+
    (i===k-1&&b.note?'<p class="aq-small aq-form__full">'+tx(b.note)+'</p>':'')+(i===k-1?'<span class="aq-small wform-msg aq-form__full" role="status"></span>':'')+'</fieldset>'}).join('')+'</form>'}
-document.addEventListener('change',function(ev){var fm=ev.target.closest('form');if(!fm)return;var on=[].map.call(fm.querySelectorAll('input:checked'),function(x){return x.value});fm.querySelectorAll('[data-when]').forEach(function(w){w.hidden=on.indexOf(w.dataset.when)<0})});
+/* Conditional fields: data-when="A|B" shows the field while any listed option is ticked. Ticks inside a hidden field do not count,
+   so a follow-up question disappears with its parent (three passes cover two levels of nesting). */
+document.addEventListener('change',function(ev){var fm=ev.target.closest('form');if(!fm)return;var ws=fm.querySelectorAll('[data-when]');
+ for(var k=0;k<3;k++){var on=[].filter.call(fm.querySelectorAll('input:checked'),function(x){var w=x.closest('[data-when]');return !w||!w.hidden}).map(function(x){return x.value});
+  ws.forEach(function(w){w.hidden=!w.dataset.when.split('|').some(function(v){return on.indexOf(v)>=0})})}});
