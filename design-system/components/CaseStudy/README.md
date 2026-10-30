@@ -76,10 +76,10 @@ Origin: `inspiration/gemini/60-concept-project-record.png`. The same case told a
   <div class="aq-case__brief">
     <dl class="aq-case__entries"><div class="aq-case__entry"><dt>Client</dt><dd>…</dd></div>…</dl>
     <figure class="aq-case__drawing">
-      <div class="aq-case__art"><div class="aq-case__plate">
+      <div class="aq-plate aq-plate--block aq-case__art"><div class="aq-case__plate">
         <span class="aq-illustration" role="img" aria-label="Purified Water skid: …" style="mask-image:url(assets/illustrations/sys-pw.png)"></span>
         <span class="aq-case__pin" style="left:14%;top:45%"><span class="aq-case__mark" aria-hidden="true">1</span></span>
-      </div></div>
+      </div><div class="aq-plate__block" aria-hidden="true"><span>Fig. 01</span><span>What changed</span></div></div>
       <figcaption class="aq-case__changes"><p class="aq-case__label">What changed</p><ol><li><span class="aq-case__mark" aria-hidden="true">1</span><span>Reverse osmosis (RO) vessels: [new or replaced]</span></li></ol></figcaption>
     </figure>
   </div>
@@ -94,14 +94,14 @@ Origin: `inspiration/gemini/60-concept-project-record.png`. The same case told a
 
 | Field | Shown as |
 | --- | --- |
-| `art` | A page id from `ART` in `parts/Hero.js` (`"sys-pw"`): that equipment drawing on a `surface-raised` plate, beside the facts |
+| `art` | A page id from `ART` in `parts/Hero.js` (`"sys-pw"`): that equipment drawing on a framed Plate (`wPlate`, ruler ticks, registration crosses, title block "Fig. 01 · What changed"), beside the facts |
 | `changed` | `[{t, at: [x%, y%]}]`, up to 4: numbered `flow` pins on the drawing (positions are % of the square drawing) and the same numbers listed under it as "What changed" |
-| `outcomes` | `[{v, unit, l, method}]`, 3-4: the value large in mono `flow`, unit beside it, what was measured (`l`) as the label, the method and report beneath in `ink-muted`. An empty `v` prints `[value]` |
-| `timeline` | `[{t, when}]`: milestones from order to water release on one line, the last stop filled |
+| `outcomes` | `[{v, unit, l, method}]`, 3-4, the hero of the record: the value at display size in mono `ink` (a `[value]` placeholder keeps full size), the unit in mono beside it, what was measured (`l`) as an uppercase mono caption, the method and report beneath in `ink-muted`. An empty `v` prints `[value]` |
+| `timeline` | `[{t, when}]`: milestones from order to water release: 32 px ringed nodes on a 2 px `ink` line, uppercase mono labels and dates below, the last stop filled |
 | `client`, `problem`, `system`, `standard`, `status`, `profile`, `outcome`, `method` | As above; facts become hairline rows, `outcome` a sentence above the figures, `method` the dashed box at the end |
 
 - The pins and numbers are decoration (`aria-hidden`); the "What changed" list carries the text. Every value is real DOM text.
-- Desktop: facts (5 parts) beside the drawing (7 parts); outcomes in one row of up to four columns, each with a 2 px `flow` top edge; timeline horizontal. Phones: drawing first, then the facts, outcomes 2 × 2, then a vertical timeline (stops on a rule at the left, date on the right).
+- Desktop: facts (5 parts) beside the drawing (7 parts); outcomes two per row on a hairline, numbers 48-68 px; timeline horizontal. Phones: drawing plate first, then the facts, outcomes one per row at 40-52 px, then a vertical timeline (stops on a rule at the left, date on the right).
 - Never invent a figure, week or change: until a project is delivered, `v`, `when` and the change status stay `[placeholders]`. Mark only equipment the drawing really shows.
 
 ## When not to use it

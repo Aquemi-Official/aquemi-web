@@ -22,12 +22,23 @@ function h1(s){return s?'<h2 class="aq-h1">'+tx(s)+'</h2>':''}
    Renderers receive it as H and never print their own heading, intro or a mono caption above their content. */
 function wSecHead(b){b=b||{};if(!b.h&&!b.eyebrow&&!b.intro)return '';
  return '<header class="aq-sec-head">'+(b.eyebrow?'<p class="aq-eyebrow">'+tx(b.eyebrow)+'</p>':'')+h1(b.h)+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'</header>'}
+/* Plate: frame a figure as a drawing plate (base.css .aq-plate). o.light: cream plate on the navy; o.block: title-block
+   cells, e.g. ["Aquemi","Limits","PW"] (decorative). */
+function wPlate(inner,o){o=o||{};var bl=o.block&&o.block.length?'<div class="aq-plate__block" aria-hidden="true">'+o.block.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'</div>':'';
+ return '<div class="aq-plate'+(bl?' aq-plate--block':'')+(o.cls?' '+o.cls:'')+'"'+(o.light?' data-theme="light"':'')+'>'+inner+bl+'</div>'}
 /* Index: the one numbering style, "01" (aria-hidden: the list already announces position) */
 function idx(i){return '<span class="aq-index" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}
 /* Icon: a line-art spot from assets/icons/<name>.png, painted with a token through a mask (design-system/components/Icon). */
 var ICONS=' softener carbon-filter ro-membrane edi still pure-steam tank loop valve heat-exchanger uv ozone conductivity toc pump weld borescope gauge pid binder stamp calendar wrench magnifier ';
 function isIcon(n){return typeof n==='string'&&/^[a-z-]+$/.test(n)&&ICONS.indexOf(' '+n+' ')>=0}
 function wIcon(n,cls){var u='url(assets/icons/'+n+'.png)';return '<span class="aq-icon'+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
+/* Spot: a larger equipment vignette from assets/spots/<name>.png (design-system/components/Spot), 96/128/160 px by size s|m|l.
+   A name from the Icon set instead draws that icon at 64 px in the same place (aq-spot--icon), for stops with no spot yet. */
+var SPOTS=' pretreatment ro-skid edi-stack still pure-steam-generator storage-tank pump heat-exchanger uv-ozone ';
+function isSpot(n){return typeof n==='string'&&/^[a-z-]+$/.test(n)&&SPOTS.indexOf(' '+n+' ')>=0}
+function isVig(n){return isSpot(n)||isIcon(n)}
+function wSpot(n,size,cls){var sp=isSpot(n);if(!sp&&!isIcon(n))return '';var u='url(assets/'+(sp?'spots':'icons')+'/'+n+'.png)';
+ return '<span class="aq-spot'+(!sp?' aq-spot--icon':size==='s'?' aq-spot--s':size==='l'?' aq-spot--l':'')+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
 /* Row icons for a block: item.icon wins; with block "icons": "auto" a title naming one piece of equipment picks it, but only
    when every row gets one (a half-iconed list reads as broken). First match wins: pure steam before still. */
 var ICON_AUTO=[[/softener/i,'softener'],[/carbon filter|activated carbon/i,'carbon-filter'],[/reverse osmosis|\bRO\b/,'ro-membrane'],[/\bEDI\b|electrodeioni/i,'edi'],

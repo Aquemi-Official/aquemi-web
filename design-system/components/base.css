@@ -44,6 +44,37 @@
 .aq-sheet__block span { padding: var(--space-2) var(--space-4); }
 .aq-sheet__block span + span { border-left: 1px solid var(--line); }
 .aq-sheet__block span:last-child { color: var(--ink); }
+/* ---------- Plate: a framed drawing plate inside a section (core.js wPlate) ----------
+   The figure a concept draws on: hairline frame, corner registration crosses, ruler ticks along the top and left
+   edges, and an optional title block bottom right. On the navy ground a plate can be a cream sheet of its own
+   (data-theme="light", wPlate(..., {light:true})); on a light sheet it is just the frame. Decoration only. */
+.aq-plate {
+  position: relative; border: 1px solid var(--line-strong); padding: var(--space-12) var(--space-8) var(--space-8);
+  background-color: var(--surface); color: var(--ink);
+  background-image:
+    repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px var(--space-4)),
+    repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px calc(var(--space-4) * 5)),
+    repeating-linear-gradient(180deg, var(--line-strong) 0 1px, transparent 1px var(--space-4)),
+    repeating-linear-gradient(180deg, var(--line-strong) 0 1px, transparent 1px calc(var(--space-4) * 5));
+  background-size: 100% 4px, 100% 9px, 4px 100%, 9px 100%;
+  background-position: 0 0, 0 0, 0 0, 0 0; background-repeat: no-repeat;
+}
+.aq-plate::before, .aq-plate::after {
+  content: ""; position: absolute; width: 15px; height: 15px; pointer-events: none;
+  background: linear-gradient(var(--ink-subtle), var(--ink-subtle)) center / 1px 100% no-repeat,
+              linear-gradient(var(--ink-subtle), var(--ink-subtle)) center / 100% 1px no-repeat;
+}
+.aq-plate::before { top: var(--space-3); right: var(--space-3); }
+.aq-plate::after { bottom: var(--space-3); left: var(--space-3); }
+.aq-plate__block {
+  position: absolute; right: -1px; bottom: -1px; display: flex;
+  border: 1px solid var(--line-strong); background: var(--surface);
+  font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle);
+}
+.aq-plate__block span { padding: var(--space-1) var(--space-3); }
+.aq-plate__block span + span { border-left: 1px solid var(--line); }
+.aq-plate__block span:last-child { color: var(--ink); }
+.aq-plate--block { padding-bottom: calc(var(--space-8) + var(--space-6)); }
 /* ---------- Fold: secondary rows behind "Show all N" (core.js wFold, block field fold) ---------- */
 .aq-fold:not(.is-open) .aq-fold-x { display: none; }
 .aq-fold__btn {
@@ -52,7 +83,7 @@
   font: 500 13px/20px var(--font-mono); letter-spacing: 0.04em; color: var(--flow); text-align: left;
 }
 .aq-fold__btn::before { content: "+"; display: inline-grid; place-items: center; width: 20px; height: 20px; border: 1px solid currentColor; border-radius: var(--radius-sm); font: 400 14px/1 var(--font-mono); }
-.aq-fold.is-open .aq-fold__btn::before { content: "2"; }
+.aq-fold.is-open .aq-fold__btn::before { content: "−"; }
 .aq-fold__btn:hover { color: var(--ink); }
 .aq-stack { display: flex; flex-direction: column; gap: var(--space-4); }
 .aq-stack-l { display: flex; flex-direction: column; gap: var(--space-8); }
@@ -101,6 +132,8 @@ a.aq-rows__row:focus-visible { outline: 2px solid var(--focus); outline-offset: 
   .aq-in { padding-inline: var(--space-4); }
   .aq-section { padding-block: var(--space-12); }
   .aq-sheet { margin: 0; border-inline: 0; }
+  .aq-plate { padding: var(--space-8) var(--space-4) var(--space-6); }
+  .aq-plate--block { padding-bottom: calc(var(--space-6) + var(--space-6)); }
   .aq-display-xl { font-size: 44px; line-height: 48px; }
   .aq-display { font-size: 38px; line-height: 42px; }
   .aq-h1 { font-size: 30px; line-height: 36px; }

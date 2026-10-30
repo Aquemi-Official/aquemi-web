@@ -166,36 +166,43 @@
    "items": [
     {
      "t": "Data review first",
-     "d": "Conductivity, total organic carbon (TOC), temperature, flow and alarm history since the last visit, so the work answers the trend."
+     "d": "Conductivity, total organic carbon (TOC), temperature, flow and alarm history since the last visit, so the work answers the trend.",
+     "spot": "toc"
     },
     {
      "t": "Pretreatment",
      "d": "Softener hardness leakage, carbon bed or bisulfite performance, total chlorine at the RO inlet.",
-     "link": "sys-pretreatment"
+     "link": "sys-pretreatment",
+     "spot": "pretreatment"
     },
     {
      "t": "RO and EDI performance",
      "d": "Reverse osmosis (RO) and electrodeionization (EDI): normalized flow, salt passage and differential pressure to ASTM D4516 against the commissioning baseline.",
-     "link": "sys-pw"
+     "link": "sys-pw",
+     "spot": "ro-skid"
     },
     {
      "t": "Ultraviolet (UV), ozone and sanitization",
      "d": "Lamp intensity, ozone below the release limit, sanitization checked at its coldest or weakest point.",
-     "link": "sys-monitoring"
+     "link": "sys-monitoring",
+     "spot": "uv-ozone"
     },
     {
      "t": "Loop hydraulics",
      "d": "Return flow against the qualified minimum, pump and heat exchanger condition, point-of-use valves.",
-     "link": "sys-storage"
+     "link": "sys-storage",
+     "spot": "pump"
     },
     {
      "t": "Wearing parts and filters",
-     "d": "Seals, gaskets and diaphragms replaced like for like, lot numbers recorded; vent filters integrity tested."
+     "d": "Seals, gaskets and diaphragms replaced like for like, lot numbers recorded; vent filters integrity tested.",
+     "spot": "wrench"
     },
     {
      "t": "Signed service report",
      "d": "As-found and as-left condition and return-to-service results, signed before we leave.",
-     "end": true
+     "end": true,
+     "spot": "stamp"
     }
    ],
    "as": "route"

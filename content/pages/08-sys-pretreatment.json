@@ -251,31 +251,38 @@
   },
   {
    "type": "options",
+   "as": "modules",
    "h": "Configurations and options",
    "items": [
     {
      "t": "Duplex softeners",
-     "d": "One vessel in service while the other regenerates, on measured hardness or volume."
+     "d": "One vessel in service while the other regenerates, on measured hardness or volume.",
+     "spot": "softener"
     },
     {
      "t": "Iron and manganese removal",
-     "d": "Oxidation and catalytic media filtration for well water, ahead of the softener."
+     "d": "Oxidation and catalytic media filtration for well water, ahead of the softener.",
+     "spot": "carbon-filter"
     },
     {
      "t": "Ultrafiltration",
-     "d": "Where media filtration cannot hold SDI or organics through spring runoff."
+     "d": "Where media filtration cannot hold SDI or organics through spring runoff.",
+     "spot": "ro-membrane"
     },
     {
      "t": "Antiscalant dosing",
-     "d": "Where softening alone does not control silica or other scaling ions at your recovery."
+     "d": "Where softening alone does not control silica or other scaling ions at your recovery.",
+     "spot": "pump"
     },
     {
      "t": "Feed heat exchanger",
-     "d": "Holds RO feed at design temperature through winter, with the heating medium you have."
+     "d": "Holds RO feed at design temperature through winter, with the heating medium you have.",
+     "spot": "heat-exchanger"
     },
     {
      "t": "Online monitoring",
-     "d": "Total chlorine, ORP, hardness, pressure drop and temperature, trended on the operator panel."
+     "d": "Total chlorine, ORP, hardness, pressure drop and temperature, trended on the operator panel.",
+     "spot": "conductivity"
     }
    ],
    "nav": "Options",

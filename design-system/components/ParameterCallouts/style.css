@@ -29,12 +29,14 @@
   .aq-parameter-callouts__fig { aspect-ratio: auto; }
   .aq-parameter-callouts__fig::before { inset: 0 0 auto; aspect-ratio: 1; }
   .aq-parameter-callouts__leaders { display: none; }
-  .aq-parameter-callouts__art { position: relative; inset: auto; width: min(100%, calc(var(--space-32) * 2.5)); aspect-ratio: 1; margin-inline: auto; }
-  .aq-parameter-callouts__pin { font-size: 10px; line-height: 16px; }
+  /* the drawing runs edge to edge (into the section gutters) as a full-width square, pins at a readable size */
+  .aq-parameter-callouts__fig::before { inset: 0 calc(-1 * var(--space-4)) auto; }
+  .aq-parameter-callouts__art { position: relative; inset: auto; width: calc(100% + 2 * var(--space-4)); aspect-ratio: 1; margin-inline: calc(-1 * var(--space-4)); }
+  .aq-parameter-callouts__pin, .aq-parameter-callouts__item > .aq-index { min-width: var(--space-8); padding: var(--space-1) var(--space-2); box-sizing: border-box; text-align: center; border: 1px solid var(--flow); border-radius: var(--radius-sm); background: var(--surface); font: 500 13px/16px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); }
   .aq-parameter-callouts__list { margin-top: var(--space-4); border-bottom: 1px solid var(--line); }
   /* List rows as SpecTable phone rows: the parameter, then the value and " · " basis in one run */
-  .aq-parameter-callouts__item, .aq-parameter-callouts__item.is-l, .aq-parameter-callouts__item.is-r, .aq-parameter-callouts__item.is-up { position: relative; display: block; width: auto; padding: var(--space-3) 0 var(--space-3) var(--space-8); border: 0; border-top: 1px solid var(--line); }
-  .aq-parameter-callouts__item > .aq-index { position: absolute; left: 0; top: var(--space-3); line-height: 22px; }
+  .aq-parameter-callouts__item, .aq-parameter-callouts__item.is-l, .aq-parameter-callouts__item.is-r, .aq-parameter-callouts__item.is-up { position: relative; display: block; width: auto; padding: var(--space-4) 0 var(--space-4) var(--space-12); border: 0; border-top: 1px solid var(--line); }
+  .aq-parameter-callouts__item > .aq-index { position: absolute; left: 0; top: var(--space-4); }
   .aq-parameter-callouts__p { margin-bottom: var(--space-1); }
   .aq-parameter-callouts__v, .aq-parameter-callouts__m { display: inline; }
   .aq-parameter-callouts__m::before { content: "\a0\b7\a0"; content: "\a0\b7\a0" / ""; color: var(--ink-subtle); }

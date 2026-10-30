@@ -23,20 +23,30 @@ BLOCKS['prose']=function(b,H){
    it unnumbered; n puts a point's number on the bar), or {kind: "art", art: "<page id>"} shows that page's equipment
    drawing (ART in parts/Hero.js) with the points' numbers on it. No figure: the callouts alone, two columns. */
 function exNum(n){return '<span class="aq-explainer__mark" aria-hidden="true">'+n+'</span>'}
+/* Point heads are set in uppercase mono; units keep their case ("EU/mL", not "EU/ML"). */
+var EX_UNIT=/(EU\/mL|µS\/cm|mg\/L|ng\/L|cfu\/\d+\s?mL|mL|ppb|ppm|pH|°C|m³\/h|L\/h|kg|nm)/;
+function exHead(t){return String(t||'').split(EX_UNIT).map(function(x,i){return i%2?'<span class="aq-explainer__unit">'+tx(x)+'</span>':tx(x)}).join('')}
+/* Levels: test-tube columns with a scale, filled to a value; the limit a dashed fail rule labelled in fail. Each bar is
+   annotated from its own position against the limit: below it a dimension line marks the margin, at or above it
+   "No margin". */
 function exLevels(f){var L=f.limit||{},u=L.unit?' '+L.unit:'',AT=70;
  var bars=(f.bars||[]).map(function(r){var h,lv=r.level,num=typeof r.v==='number'&&typeof L.v==='number'&&L.v>0;
   if(num){var q=r.v/L.v;h=Math.max(6,Math.min(96,AT*q));lv=q<1?'below':q>1?'above':'at'}else h=lv==='at'?AT:lv==='above'?92:AT*0.4;
   return {r:r,h:Math.round(h),lv:lv||'below',num:num}});
  return '<figure class="aq-explainer__fig aq-levels" style="--cols:'+bars.length+'">'
-  +'<div class="aq-levels__plot" aria-hidden="true"><div class="aq-levels__limit" style="--at:'+AT+'%"><span>'+tx(L.label||((L.v!=null?L.v:'')+u+' limit'))+'</span></div>'
-  +bars.map(function(x){return '<div class="aq-levels__col"><span class="aq-levels__tube"><span class="aq-levels__fill is-'+x.lv+'" style="--h:'+x.h+'%">'
-   +(x.r.n?exNum(x.r.n):'')+(x.num?'<span class="aq-levels__v">'+tx((x.r.shown||x.r.v)+u)+'</span>':'')+'</span></span></div>'}).join('')+'</div>'
-  +'<figcaption class="aq-levels__keys">'+bars.map(function(x){return '<p class="aq-levels__key"><span class="aq-levels__label">'+tx(x.r.label)+'</span>'
+  +'<div class="aq-levels__plot" aria-hidden="true" style="--at:'+AT/100+'"><div class="aq-levels__limit"><span>'+tx(L.label||((L.v!=null?L.v:'')+u+' limit'))+'</span></div>'
+  +bars.map(function(x){return '<div class="aq-levels__col"><span class="aq-levels__tube" style="--h:'+x.h+'%"><span class="aq-levels__glass"><span class="aq-levels__fill is-'+x.lv+'"></span></span>'
+   +'<span class="aq-levels__top">'+(x.r.n?exNum(x.r.n):'')+(x.num?'<span class="aq-levels__v">'+tx((x.r.shown||x.r.v)+u)+'</span>':'')+'</span>'
+   +(x.lv==='below'?'<span class="aq-levels__gap is-margin"><span>Margin</span></span>':'<span class="aq-levels__gap is-none"><span>No margin</span></span>')
+   +'</span></div>'}).join('')+'</div>'
+  +'<figcaption class="aq-levels__keys">'+bars.map(function(x){return '<p class="aq-levels__key"><span class="aq-levels__label">'+exHead(x.r.label)+'</span>'
    +(x.r.note?'<span class="aq-levels__note">'+tx(x.r.note)+'</span>':'')+'</p>'}).join('')+'</figcaption></figure>'}
 function exArt(f,P){var id=f.art;if(!id||!ART[id])return '';
  return '<figure class="aq-explainer__fig aq-explainer__fig--art"><span class="aq-illustration" role="img" aria-label="'+e(ART[id])+'" style="'+artMask(id)+'"></span>'
   +P.map(function(p,i){var a=p.at;return a&&a.length===2?'<span class="aq-explainer__pin" style="left:'+(+a[0])+'%;top:'+(+a[1])+'%">'+exNum(i+1)+'</span>':''}).join('')+'</figure>'}
+/* The figure sits on a cream drawing Plate (wPlate light) with the section's nav name in its title block. */
 function explainer(b,H){var P=b.points.slice(0,4),f=b.figure||{},fig=f.kind==='levels'?exLevels(f):f.kind==='art'?exArt(f,P):'';
+ if(fig)fig=wPlate(fig,{light:true,cls:'aq-explainer__plate',block:['Aquemi',b.nav||'Figure']});
  return sec(H+'<div class="aq-explainer'+(fig?'':' aq-explainer--bare')+'">'+fig+'<ol class="aq-explainer__points">'+P.map(function(p,i){
-  return '<li>'+idx(i).replace('aq-index','aq-index aq-explainer__n')+'<h3 class="aq-explainer__t">'+tx(p.t)+'</h3>'+(p.d?'<p class="aq-explainer__d">'+tx(p.d)+'</p>':'')+'</li>'}).join('')+'</ol></div>')}
+  return '<li>'+idx(i).replace('aq-index','aq-index aq-explainer__n')+'<h3 class="aq-explainer__t">'+exHead(p.t)+'</h3>'+(p.d?'<p class="aq-explainer__d">'+tx(p.d)+'</p>':'')+'</li>'}).join('')+'</ol></div>')}
 })();

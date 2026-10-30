@@ -148,6 +148,7 @@
     {
      "type": "steps",
      "h": "How a project runs",
+     "as": "stages",
      "items": [
       {
        "t": "Design",
@@ -395,7 +396,7 @@
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
-   "hero_index": false,
+   "index": true,
    "blocks": [
     {
      "type": "grid",
@@ -1073,31 +1074,38 @@
     },
     {
      "type": "options",
+     "as": "modules",
      "h": "Configurations and options",
      "items": [
       {
        "t": "Hot water sanitizable softener",
-       "d": "Stainless steel softener on the skid, regenerated on measured hardness breakthrough rather than a fixed volume."
+       "d": "Stainless steel softener on the skid, regenerated on measured hardness breakthrough rather than a fixed volume.",
+       "spot": "pretreatment"
       },
       {
        "t": "Membrane degasser",
-       "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high."
+       "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high.",
+       "spot": "ro-membrane"
       },
       {
        "t": "Duplex trains",
-       "d": "Two trains at 50 or 100 % of demand each, so one runs while the other is sanitized or serviced."
+       "d": "Two trains at 50 or 100 % of demand each, so one runs while the other is sanitized or serviced.",
+       "spot": "ro-skid"
       },
       {
        "t": "Recirculation at no demand",
-       "d": "The skid circulates when storage is full instead of stopping, so water never stands in the membranes."
+       "d": "The skid circulates when storage is full instead of stopping, so water never stands in the membranes.",
+       "spot": "loop"
       },
       {
        "t": "Ultrafiltration or 254 nm UV",
-       "d": "Downstream of EDI where your microbial target or a WFI feed needs more margin."
+       "d": "Downstream of EDI where your microbial target or a WFI feed needs more margin.",
+       "spot": "uv-ozone"
       },
       {
        "t": "Recovery enhancement",
-       "d": "A concentrate recovery RO stage to cut water sent to drain where sewer charges or supply limits matter."
+       "d": "A concentrate recovery RO stage to cut water sent to drain where sewer charges or supply limits matter.",
+       "spot": "pump"
       }
      ],
      "nav": "Options",
@@ -1520,31 +1528,38 @@
     },
     {
      "type": "options",
+     "as": "modules",
      "h": "Configurations and options",
      "items": [
       {
        "t": "Number of effects",
-       "d": "From [range of effects offered], chosen on steam cost and capital budget in a side-by-side heat balance."
+       "d": "From [range of effects offered], chosen on steam cost and capital budget in a side-by-side heat balance.",
+       "spot": "still"
       },
       {
        "t": "Combined WFI and pure steam",
-       "d": "Column 1 delivers pure steam while the still makes WFI, at reduced WFI capacity."
+       "d": "Column 1 delivers pure steam while the still makes WFI, at reduced WFI capacity.",
+       "spot": "pure-steam-generator"
       },
       {
        "t": "Electric or combined heating",
-       "d": "Electric heating for sites without plant steam, or a combination for limited boiler capacity."
+       "d": "Electric heating for sites without plant steam, or a combination for limited boiler capacity.",
+       "spot": "heat-exchanger"
       },
       {
        "t": "Cooled distillate",
-       "d": "An outlet cooler for ambient storage, or point-of-use coolers on a hot loop."
+       "d": "An outlet cooler for ambient storage, or point-of-use coolers on a hot loop.",
+       "spot": "heat-exchanger"
       },
       {
        "t": "Proportional output",
-       "d": "Output follows tank level, cutting start-up dumps and thermal cycling."
+       "d": "Output follows tank level, cutting start-up dumps and thermal cycling.",
+       "spot": "storage-tank"
       },
       {
        "t": "Online TOC and conductivity",
-       "d": "TOC to USP <643> and conductivity to USP <645> at the outlet, trended on the panel (Annex 1, 6.15)."
+       "d": "TOC to USP <643> and conductivity to USP <645> at the outlet, trended on the panel (Annex 1, 6.15).",
+       "spot": "toc"
       }
      ],
      "nav": "Options",
@@ -1910,27 +1925,33 @@
     },
     {
      "type": "options",
+     "as": "modules",
      "h": "Configurations and options",
      "items": [
       {
        "t": "Duplex final UF",
-       "d": "One UF train is tested, sanitized or replaced while the other supplies WFI."
+       "d": "One UF train is tested, sanitized or replaced while the other supplies WFI.",
+       "spot": "ro-membrane"
       },
       {
        "t": "Shared PW and WFI platform",
-       "d": "One RO and EDI train makes Purified Water (PW), with a WFI branch through the final UF."
+       "d": "One RO and EDI train makes Purified Water (PW), with a WFI branch through the final UF.",
+       "spot": "ro-skid"
       },
       {
        "t": "Ambient ozonated or hot storage",
-       "d": "Ozonated ambient loop with ultraviolet (UV) destruction, or a hot loop above 70 °C."
+       "d": "Ozonated ambient loop with ultraviolet (UV) destruction, or a hot loop above 70 °C.",
+       "spot": "storage-tank"
       },
       {
        "t": "Rapid microbiological monitoring",
-       "d": "Online bioburden or rapid endotoxin instruments: [rapid instruments offered]."
+       "d": "Online bioburden or rapid endotoxin instruments: [rapid instruments offered].",
+       "spot": "toc"
       },
       {
        "t": "Conversion of an existing PW system",
-       "d": "Sound, hot water sanitizable RO and EDI: we add a final UF, monitoring and controls, then requalify."
+       "d": "Sound, hot water sanitizable RO and EDI: we add a final UF, monitoring and controls, then requalify.",
+       "spot": "edi-stack"
       }
      ],
      "fold": 3
@@ -2424,31 +2445,38 @@
     },
     {
      "type": "options",
+     "as": "modules",
      "h": "Configurations and options",
      "items": [
       {
        "t": "Distribution header design",
-       "d": "Sizing, slope, traps, separators, vents and pressure reduction to every user, verified by EN 285 tests at SAT."
+       "d": "Sizing, slope, traps, separators, vents and pressure reduction to every user, verified by EN 285 tests at SAT.",
+       "spot": "valve"
       },
       {
        "t": "Steam or electric heating",
-       "d": "Electric for sites without plant steam, or for a single user. [electric units offered, kW range]"
+       "d": "Electric for sites without plant steam, or for a single user. [electric units offered, kW range]",
+       "spot": "heat-exchanger"
       },
       {
        "t": "Redundant generation",
-       "d": "Two generators, either one covering critical demand, where an outage stops sterile production."
+       "d": "Two generators, either one covering critical demand, where an outage stops sterile production.",
+       "spot": "pure-steam-generator"
       },
       {
        "t": "Combined with a WFI still",
-       "d": "The first column of a multi-effect still delivers pure steam while WFI output drops. Suits small, intermittent demand."
+       "d": "The first column of a multi-effect still delivers pure steam while WFI output drops. Suits small, intermittent demand.",
+       "spot": "still"
       },
       {
        "t": "Online condensate monitoring",
-       "d": "Conductivity and TOC on cooled condensate at the outlet, trended with alarm limits."
+       "d": "Conductivity and TOC on cooled condensate at the outlet, trended with alarm limits.",
+       "spot": "conductivity"
       },
       {
        "t": "Clean steam for humidification",
-       "d": "Cleanroom humidification without boiler additives, where your contamination control strategy asks."
+       "d": "Cleanroom humidification without boiler additives, where your contamination control strategy asks.",
+       "spot": "pure-steam"
       }
      ],
      "nav": "Options",
@@ -2791,31 +2819,38 @@
     },
     {
      "type": "options",
+     "as": "modules",
      "h": "Configurations and options",
      "items": [
       {
        "t": "Cooled sub-loops",
-       "d": "Cooled through a double tube sheet exchanger from a hot main, for groups of ambient users."
+       "d": "Cooled through a double tube sheet exchanger from a hot main, for groups of ambient users.",
+       "spot": "heat-exchanger"
       },
       {
        "t": "Point-of-use coolers",
-       "d": "Single-user coolers on a hot loop that flush to drain until temperature and time setpoints are met."
+       "d": "Single-user coolers on a hot loop that flush to drain until temperature and time setpoints are met.",
+       "spot": "valve"
       },
       {
        "t": "Ozone package for PW tanks",
-       "d": "Ozone generator, 254 nm UV destruct unit, three ozone sensors and a vent ozone destructor."
+       "d": "Ozone generator, 254 nm UV destruct unit, three ozone sensors and a vent ozone destructor.",
+       "spot": "uv-ozone"
       },
       {
        "t": "Prefabricated loop modules",
-       "d": "Pump, exchanger, UV and instruments on one skid, wet tested at factory acceptance testing (FAT)."
+       "d": "Pump, exchanger, UV and instruments on one skid, wet tested at factory acceptance testing (FAT).",
+       "spot": "pump"
       },
       {
        "t": "Provision for future points of use",
-       "d": "Zero-static valve bodies at planned locations, so a new outlet needs no weld into a qualified loop."
+       "d": "Zero-static valve bodies at planned locations, so a new outlet needs no weld into a qualified loop.",
+       "spot": "loop"
       },
       {
        "t": "Central sampling panel",
-       "d": "Return and tank sample valves grouped where your laboratory staff can reach them."
+       "d": "Return and tank sample valves grouped where your laboratory staff can reach them.",
+       "spot": "toc"
       }
      ],
      "nav": "Options",
@@ -3226,31 +3261,38 @@
     },
     {
      "type": "options",
+     "as": "modules",
      "h": "Configurations and options",
      "items": [
       {
        "t": "Duplex softeners",
-       "d": "One vessel in service while the other regenerates, on measured hardness or volume."
+       "d": "One vessel in service while the other regenerates, on measured hardness or volume.",
+       "spot": "softener"
       },
       {
        "t": "Iron and manganese removal",
-       "d": "Oxidation and catalytic media filtration for well water, ahead of the softener."
+       "d": "Oxidation and catalytic media filtration for well water, ahead of the softener.",
+       "spot": "carbon-filter"
       },
       {
        "t": "Ultrafiltration",
-       "d": "Where media filtration cannot hold SDI or organics through spring runoff."
+       "d": "Where media filtration cannot hold SDI or organics through spring runoff.",
+       "spot": "ro-membrane"
       },
       {
        "t": "Antiscalant dosing",
-       "d": "Where softening alone does not control silica or other scaling ions at your recovery."
+       "d": "Where softening alone does not control silica or other scaling ions at your recovery.",
+       "spot": "pump"
       },
       {
        "t": "Feed heat exchanger",
-       "d": "Holds RO feed at design temperature through winter, with the heating medium you have."
+       "d": "Holds RO feed at design temperature through winter, with the heating medium you have.",
+       "spot": "heat-exchanger"
       },
       {
        "t": "Online monitoring",
-       "d": "Total chlorine, ORP, hardness, pressure drop and temperature, trended on the operator panel."
+       "d": "Total chlorine, ORP, hardness, pressure drop and temperature, trended on the operator panel.",
+       "spot": "conductivity"
       }
      ],
      "nav": "Options",
@@ -3881,6 +3923,7 @@
     "label": "System already running? See service plans",
     "link": "svc-service"
    },
+   "index": true,
    "blocks": [
     {
      "type": "table",
@@ -3995,6 +4038,7 @@
     {
      "type": "steps",
      "h": "What leaves each stage, and who signs it",
+     "as": "stages",
      "intro": "EU GMP Annex 15, 3.2 makes your URS the reference for the whole lifecycle. Each requirement gets an ID at first review and keeps it in every document.",
      "items": [
       {
@@ -5863,36 +5907,43 @@
      "items": [
       {
        "t": "Data review first",
-       "d": "Conductivity, total organic carbon (TOC), temperature, flow and alarm history since the last visit, so the work answers the trend."
+       "d": "Conductivity, total organic carbon (TOC), temperature, flow and alarm history since the last visit, so the work answers the trend.",
+       "spot": "toc"
       },
       {
        "t": "Pretreatment",
        "d": "Softener hardness leakage, carbon bed or bisulfite performance, total chlorine at the RO inlet.",
-       "link": "sys-pretreatment"
+       "link": "sys-pretreatment",
+       "spot": "pretreatment"
       },
       {
        "t": "RO and EDI performance",
        "d": "Reverse osmosis (RO) and electrodeionization (EDI): normalized flow, salt passage and differential pressure to ASTM D4516 against the commissioning baseline.",
-       "link": "sys-pw"
+       "link": "sys-pw",
+       "spot": "ro-skid"
       },
       {
        "t": "Ultraviolet (UV), ozone and sanitization",
        "d": "Lamp intensity, ozone below the release limit, sanitization checked at its coldest or weakest point.",
-       "link": "sys-monitoring"
+       "link": "sys-monitoring",
+       "spot": "uv-ozone"
       },
       {
        "t": "Loop hydraulics",
        "d": "Return flow against the qualified minimum, pump and heat exchanger condition, point-of-use valves.",
-       "link": "sys-storage"
+       "link": "sys-storage",
+       "spot": "pump"
       },
       {
        "t": "Wearing parts and filters",
-       "d": "Seals, gaskets and diaphragms replaced like for like, lot numbers recorded; vent filters integrity tested."
+       "d": "Seals, gaskets and diaphragms replaced like for like, lot numbers recorded; vent filters integrity tested.",
+       "spot": "wrench"
       },
       {
        "t": "Signed service report",
        "d": "As-found and as-left condition and return-to-service results, signed before we leave.",
-       "end": true
+       "end": true,
+       "spot": "stamp"
       }
      ],
      "as": "route"
@@ -6616,6 +6667,7 @@
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
+   "index": true,
    "blocks": [
     {
      "type": "grid",
@@ -8687,6 +8739,7 @@
     "label": "See the documentation package",
     "link": "cmp-documentation"
    },
+   "index": true,
    "blocks": [
     {
      "type": "standards-map",
@@ -8704,7 +8757,8 @@
         "USP <643>",
         "Ph. Eur. 0008",
         "Ph. Eur. 0169"
-       ]
+       ],
+       "spot": "ro-skid"
       },
       {
        "t": "Storage and distribution",
@@ -8717,7 +8771,8 @@
          "to": "pharmacopoeia"
         },
         "ASME BPE"
-       ]
+       ],
+       "spot": "storage-tank"
       },
       {
        "t": "Pure steam",
@@ -8729,7 +8784,8 @@
          "t": "EN 285",
          "to": "limits"
         }
-       ]
+       ],
+       "spot": "pure-steam-generator"
       },
       {
        "t": "Controls and data",
@@ -8743,7 +8799,8 @@
          "t": "CSA C22.2 No. 286",
          "to": "engineering"
         }
-       ]
+       ],
+       "spot": "gauge"
       },
       {
        "t": "Fabrication",
@@ -8757,7 +8814,8 @@
         "ASME B31.3",
         "EN 10204 3.1",
         "ASTM A967"
-       ]
+       ],
+       "spot": "weld"
       },
       {
        "t": "Qualification",
@@ -8768,7 +8826,8 @@
         "WHO TRS 1033",
         "ASTM E2500",
         "ICH Q9(R1)"
-       ]
+       ],
+       "spot": "binder"
       }
      ]
     },
@@ -9299,6 +9358,7 @@
       },
       {
        "t": "Requirements and design basis",
+       "key": true,
        "d": "URS matrix, basis of design, risk assessment, C&Q plan, design review, traceability matrix"
       },
       {
@@ -10533,28 +10593,33 @@
       {
        "t": "Design office",
        "link": "svc-design",
-       "d": "Process and automation engineers turn your URS and feed water analysis into the functional specification, piping and instrumentation diagrams (P&IDs) and traceability matrix."
+       "d": "Process and automation engineers turn your URS and feed water analysis into the functional specification, piping and instrumentation diagrams (P&IDs) and traceability matrix.",
+       "spot": "pid"
       },
       {
        "t": "Fabrication shop",
        "link": "svc-fabrication",
-       "d": "Welding operators qualified to ASME Section IX build to ASME BPE. Every product-contact weld and heat number goes in the weld log."
+       "d": "Welding operators qualified to ASME Section IX build to ASME BPE. Every product-contact weld and heat number goes in the weld log.",
+       "spot": "weld"
       },
       {
        "t": "Factory test bay",
        "link": "svc-fat-sat",
-       "d": "The engineers who wrote the functional specification run the wet factory acceptance test (FAT) against your approved protocol. Deviations close before the skid ships."
+       "d": "The engineers who wrote the functional specification run the wet factory acceptance test (FAT) against your approved protocol. Deviations close before the skid ships.",
+       "spot": "ro-skid"
       },
       {
        "t": "Qualification on site",
        "link": "svc-cq",
-       "d": "Our validation lead executes the site acceptance test (SAT) and installation and operational qualification (IQ/OQ). Your quality unit approves every protocol first."
+       "d": "Our validation lead executes the site acceptance test (SAT) and installation and operational qualification (IQ/OQ). Your quality unit approves every protocol first.",
+       "spot": "binder"
       },
       {
        "t": "Service",
        "link": "svc-service",
        "end": true,
-       "d": "Technicians take over with the as-built drawings, FAT results and the engineers who made them, through to requalification."
+       "d": "Technicians take over with the as-built drawings, FAT results and the engineers who made them, through to requalification.",
+       "spot": "wrench"
       }
      ]
     },

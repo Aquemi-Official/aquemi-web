@@ -23,8 +23,8 @@ function card(it){
 }
 function record(it){
   var ch=(it.changed||[]).slice(0,4),art=it.art&&ART[it.art]?it.art:'';
-  var drawing=art?'<figure class="aq-case__drawing"><div class="aq-case__art"><div class="aq-case__plate"><span class="aq-illustration" role="img" aria-label="'+e(ART[art])+'" style="'+artMask(art)+'"></span>'
-     +ch.map(function(c,i){var a=c.at;return a&&a.length===2?'<span class="aq-case__pin" style="left:'+(+a[0])+'%;top:'+(+a[1])+'%">'+mark(i+1)+'</span>':''}).join('')+'</div></div>'
+  var drawing=art?'<figure class="aq-case__drawing">'+wPlate('<div class="aq-case__plate"><span class="aq-illustration" role="img" aria-label="'+e(ART[art])+'" style="'+artMask(art)+'"></span>'
+     +ch.map(function(c,i){var a=c.at;return a&&a.length===2?'<span class="aq-case__pin" style="left:'+(+a[0])+'%;top:'+(+a[1])+'%">'+mark(i+1)+'</span>':''}).join('')+'</div>',{cls:'aq-case__art',block:['Fig. 01','What changed']})
      +(ch.length?'<figcaption class="aq-case__changes"><p class="aq-case__label">What changed</p><ol>'+ch.map(function(c,i){return '<li>'+mark(i+1)+'<span>'+tx(c.t)+'</span></li>'}).join('')+'</ol></figcaption>':'')+'</figure>':'';
   var f=facts(it,'aq-case__entry'),O=(it.outcomes||[]).slice(0,4),T=it.timeline||[];
   var outs=O.length?'<div class="aq-case__outcomes"><p class="aq-case__label">Measured outcomes</p>'+(it.outcome?'<p class="aq-case__result">'+tx(it.outcome)+'</p>':'')

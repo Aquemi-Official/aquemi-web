@@ -304,31 +304,38 @@
   },
   {
    "type": "options",
+   "as": "modules",
    "h": "Configurations and options",
    "items": [
     {
      "t": "Distribution header design",
-     "d": "Sizing, slope, traps, separators, vents and pressure reduction to every user, verified by EN 285 tests at SAT."
+     "d": "Sizing, slope, traps, separators, vents and pressure reduction to every user, verified by EN 285 tests at SAT.",
+     "spot": "valve"
     },
     {
      "t": "Steam or electric heating",
-     "d": "Electric for sites without plant steam, or for a single user. [electric units offered, kW range]"
+     "d": "Electric for sites without plant steam, or for a single user. [electric units offered, kW range]",
+     "spot": "heat-exchanger"
     },
     {
      "t": "Redundant generation",
-     "d": "Two generators, either one covering critical demand, where an outage stops sterile production."
+     "d": "Two generators, either one covering critical demand, where an outage stops sterile production.",
+     "spot": "pure-steam-generator"
     },
     {
      "t": "Combined with a WFI still",
-     "d": "The first column of a multi-effect still delivers pure steam while WFI output drops. Suits small, intermittent demand."
+     "d": "The first column of a multi-effect still delivers pure steam while WFI output drops. Suits small, intermittent demand.",
+     "spot": "still"
     },
     {
      "t": "Online condensate monitoring",
-     "d": "Conductivity and TOC on cooled condensate at the outlet, trended with alarm limits."
+     "d": "Conductivity and TOC on cooled condensate at the outlet, trended with alarm limits.",
+     "spot": "conductivity"
     },
     {
      "t": "Clean steam for humidification",
-     "d": "Cleanroom humidification without boiler additives, where your contamination control strategy asks."
+     "d": "Cleanroom humidification without boiler additives, where your contamination control strategy asks.",
+     "spot": "pure-steam"
     }
    ],
    "nav": "Options",

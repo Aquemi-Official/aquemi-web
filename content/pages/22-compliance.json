@@ -33,6 +33,7 @@
   "label": "See the documentation package",
   "link": "cmp-documentation"
  },
+ "index": true,
  "blocks": [
   {
    "type": "standards-map",
@@ -50,7 +51,8 @@
       "USP <643>",
       "Ph. Eur. 0008",
       "Ph. Eur. 0169"
-     ]
+     ],
+     "spot": "ro-skid"
     },
     {
      "t": "Storage and distribution",
@@ -63,7 +65,8 @@
        "to": "pharmacopoeia"
       },
       "ASME BPE"
-     ]
+     ],
+     "spot": "storage-tank"
     },
     {
      "t": "Pure steam",
@@ -75,7 +78,8 @@
        "t": "EN 285",
        "to": "limits"
       }
-     ]
+     ],
+     "spot": "pure-steam-generator"
     },
     {
      "t": "Controls and data",
@@ -89,7 +93,8 @@
        "t": "CSA C22.2 No. 286",
        "to": "engineering"
       }
-     ]
+     ],
+     "spot": "gauge"
     },
     {
      "t": "Fabrication",
@@ -103,7 +108,8 @@
       "ASME B31.3",
       "EN 10204 3.1",
       "ASTM A967"
-     ]
+     ],
+     "spot": "weld"
     },
     {
      "t": "Qualification",
@@ -114,7 +120,8 @@
       "WHO TRS 1033",
       "ASTM E2500",
       "ICH Q9(R1)"
-     ]
+     ],
+     "spot": "binder"
     }
    ]
   },

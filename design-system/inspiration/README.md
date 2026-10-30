@@ -59,6 +59,7 @@ Each asked for one section "with very little text" and left the layout to the mo
 | `gemini/61-concept-shop-route.png` | How a system moves through the shop | About: numbered route through the shop floor |
 | `gemini/62-concept-contact-routes.png` | Three ways in, what happens next, service map | Contact: situation routes with next steps |
 | `gemini/63-concept-notes-register.png` | News and technical notes as a revision register | News: register table with a featured note |
+| `gemini/64-spots-generation.png` | Specimen sheet of 9 equipment vignettes (pretreatment, RO skid, EDI, still, pure steam generator, tank, pump, heat exchanger, UV and ozone) | Cut into Spot masks in `assets/spots/` with `tools/icon_sheet.py --max 256 --bold 0`; used on routes, the standards map and option modules |
 
 ## Keep every image
 

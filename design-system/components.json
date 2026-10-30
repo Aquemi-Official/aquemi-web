@@ -70,6 +70,16 @@
    "summary": "SplitSection puts a section's heading in a sticky left column and its content on the right, so long pages alternate between full-width and two-column rhythm instead of stacking heading, text, heading, text."
   },
   {
+   "name": "Spot",
+   "readme": "design-system/components/Spot/README.md",
+   "preview": "design-system/components/Spot/preview.html",
+   "group": "Foundations",
+   "height": "760",
+   "width": "1100",
+   "subtitle": "Equipment vignettes at 96, 128 and 160 px, on a cream plate and on navy",
+   "summary": "Spot is a larger line drawing of one piece of water-system equipment or one stage of the work (a still, an RO skid, a storage tank, a pump), painted with a colour token, that stands for a stop on a route or a zone of a plant map the way the concept drawings do."
+  },
+  {
    "name": "Button",
    "readme": "design-system/components/Button/README.md",
    "preview": "design-system/components/Button/preview.html",
@@ -143,20 +153,20 @@
    "readme": "design-system/components/ContactRoutes/README.md",
    "preview": "design-system/components/ContactRoutes/preview.html",
    "group": "Page sections",
-   "height": "820",
+   "height": "1300",
    "width": "1100",
-   "subtitle": "Three ways in: proposal (this page), urgent service with the phone line, shop visit; each with steps and a response clock",
-   "summary": "ContactRoutes sets the ways into Aquemi side by side as cards, each with its own next steps (1 → 2 → 3) and response clock, so a visitor on a contact page sees which route fits before the form: request a proposal, production stopped (call the service line), or visit the shop."
+   "subtitle": "Three ways in as route sheets on a plate: proposal (this page), urgent service with its call bar, shop visit; each with a 1-2-3 strip and a response clock",
+   "summary": "ContactRoutes sets the ways into Aquemi as labelled route sheets on a drawing plate, each with its own numbered 1 → 2 → 3 strip and response clock, so a visitor on a contact page sees which route fits before the form: request a proposal, production stopped (call the service line), or visit the shop."
   },
   {
    "name": "DocList",
    "readme": "design-system/components/DocList/README.md",
    "preview": "design-system/components/DocList/preview.html",
    "group": "Page sections",
-   "height": "760",
+   "height": "980",
    "width": "1100",
-   "subtitle": "Turnover binder: folder cards with index and code tabs, key documents first",
-   "summary": "DocList shows the documents delivered with a system as a turnover binder: numbered folder cards in a binder frame, each folder tab carrying the short code a validation team files it under, with the deciding documents first and emphasized."
+   "subtitle": "Turnover binder: folder cards on a drawing plate, code tabs, key documents first",
+   "summary": "DocList shows the documents delivered with a system as a turnover binder: numbered folder cards on a drawing plate with paper stacked behind, each folder tab carrying the short code a validation team files it under, with the deciding documents first and emphasized."
   },
   {
    "name": "EvidenceMap",
@@ -166,14 +176,14 @@
    "height": "1100",
    "width": "1100",
    "subtitle": "Standard, how we meet it, the document that proves it",
-   "summary": "EvidenceMap maps each requirement or standard to how we meet it and the document that proves it, for the validation lead asking \"where is the proof?\"."
+   "summary": "EvidenceMap maps each requirement or standard to how we meet it and the documents that prove it, drawn as a mapping with leader lines and file-shaped chips, for the validation lead asking \"where is the proof?\"."
   },
   {
    "name": "Explainer",
    "readme": "design-system/components/Explainer/README.md",
    "preview": "design-system/components/Explainer/preview.html",
    "group": "Page sections",
-   "height": "720",
+   "height": "820",
    "width": "1100",
    "subtitle": "One idea as a token-drawn figure plus numbered callouts: endotoxin margin",
    "summary": "Explainer sets out one idea as a figure plus three or four short numbered callouts instead of paragraphs, for a mechanism a reader should see at a glance (endotoxin margin set by the feed, what an upgrade costs in requalification)."
@@ -203,7 +213,7 @@
    "readme": "design-system/components/GradeLanes/README.md",
    "preview": "design-system/components/GradeLanes/preview.html",
    "group": "Page sections",
-   "height": "1000",
+   "height": "1160",
    "width": "1100",
    "subtitle": "Minimum water grade by step, on three lanes",
    "summary": "GradeLanes shows the minimum water grade step by step: each step drops a tap into one of three lanes, Potable, PW and WFI."
@@ -249,6 +259,16 @@
    "summary": "OptionList shows the configuration choices for a system as rows of the shared list grammar: index, option name and one line on what it does."
   },
   {
+   "name": "OptionModules",
+   "readme": "design-system/components/OptionModules/README.md",
+   "preview": "design-system/components/OptionModules/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1200",
+   "subtitle": "System options as framed modules wired to the base skid drawing, on the navy",
+   "summary": "OptionModules draws a system's equipment options as framed modules around the page's own equipment drawing (the base skid), each wired to it by a dashed hairline; it is the `as: \"modules\"` shape of the options block (OptionList)."
+  },
+  {
    "name": "ParameterCallouts",
    "readme": "design-system/components/ParameterCallouts/README.md",
    "preview": "design-system/components/ParameterCallouts/preview.html",
@@ -275,7 +295,7 @@
    "group": "Page sections",
    "height": "1000",
    "width": "1100",
-   "subtitle": "A sequence as hairline rows, routed through hold points the client signs",
+   "subtitle": "A sequence as hairline rows; with hold points, a piped flow on a drawing plate with stamped hold stations",
    "summary": "ProcessSteps shows a real sequence (a project, a qualification, a service visit) as rows of the shared list grammar: index, step name and what happens."
   },
   {
@@ -313,7 +333,7 @@
    "readme": "design-system/components/RoleMatrix/README.md",
    "preview": "design-system/components/RoleMatrix/preview.html",
    "group": "Page sections",
-   "height": "900",
+   "height": "1060",
    "width": "1100",
    "subtitle": "Who writes and who reviews, as signature stamps",
    "summary": "RoleMatrix shows who writes, does and approves each document, like the signature blocks on a controlled document, so the split between our work and your sign-off is visible at a glance."
@@ -323,7 +343,7 @@
    "readme": "design-system/components/Router/README.md",
    "preview": "design-system/components/Router/preview.html",
    "group": "Page sections",
-   "height": "620",
+   "height": "780",
    "width": "1100",
    "subtitle": "Pick a situation; one route opens: water, system, where to start",
    "summary": "Router lets a buyer pick the situation they are in and see one route through what follows: the water they need, the system, and where to start with us."
@@ -353,7 +373,7 @@
    "readme": "design-system/components/Versus/README.md",
    "preview": "design-system/components/Versus/preview.html",
    "group": "Page sections",
-   "height": "760",
+   "height": "920",
    "width": "1100",
    "subtitle": "Two routes across a spine of factors, with a verdict for each",
    "summary": "Versus sets two routes face to face across a spine of factors, for a buyer choosing one of two (hot or ambient WFI, multi-effect or vapour compression)."
@@ -366,7 +386,7 @@
    "height": "780",
    "width": "1100",
    "subtitle": "A preventive maintenance visit as numbered stops on one route, ending in sign-off",
-   "summary": "VisitRoute lays a visit's checks out as numbered stops on one dashed route, for a walk-round whose order matters, such as what a preventive maintenance visit covers, ending at the sign-off."
+   "summary": "VisitRoute lays a visit's checks out as numbered stops on one dashed route drawn on a cream plate, each stop a line drawing of the equipment it covers, for a walk-round whose order matters, such as what a preventive maintenance visit covers, ending at the sign-off."
   },
   {
    "name": "WaterPath",
@@ -403,10 +423,10 @@
    "readme": "design-system/components/LimitGauges/README.md",
    "preview": "design-system/components/LimitGauges/preview.html",
    "group": "Data",
-   "height": "1000",
+   "height": "1250",
    "width": "1100",
-   "subtitle": "Water limits as a panel of instruments: the limit marked on each dial, the basis as tags",
-   "summary": "LimitGauges shows a block of water or steam quality limits as a panel of small instruments, one dial per limit, so a reader sees at a glance which side of each number passes."
+   "subtitle": "Water limits as instrument faces on a drawing plate: scale, limit pointer and readout, the basis as tags",
+   "summary": "LimitGauges shows a block of water or steam quality limits as instrument faces on a cream drawing plate, one dial per limit, so a reader sees at a glance where each limit sits and which side of it passes."
   },
   {
    "name": "PlanTiers",
@@ -416,7 +436,7 @@
    "height": "1000",
    "width": "1100",
    "subtitle": "Service plans side by side: who each suits, price, terms, one action per plan",
-   "summary": "PlanTiers sets service plans side by side, each with who it suits, its price, its terms and one action, for a buyer choosing a plan tier."
+   "summary": "PlanTiers compares service plans in one table on a cream drawing plate: numbered terms down the left, one column per plan, a \"Fits when\" row and one action per plan, for a buyer choosing a plan tier."
   },
   {
    "name": "SpecTable",

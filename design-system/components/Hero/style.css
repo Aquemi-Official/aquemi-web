@@ -56,6 +56,39 @@ a.aq-hero__index-item:hover::after, a.aq-hero__index-item:focus-visible::after {
 .aq-hero__index li:has(> a:hover, > a:focus-visible)::before { background: var(--flow); }
 a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
 
+/* System index (hero field "index", concept 35): the same index at display scale on a framed area with corner crosses.
+   Numbers Geist Mono 300 44/56 in ink, titles 16/22 mono caps, dashed leaders, flow dots on the spine, a small down
+   arrow between entries and the label set vertically beside the spine. Row centre: space-1 padding + 28px (half of 56). */
+.aq-hero__grid--big-index { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
+.aq-hero__index--big { align-self: center; padding: var(--space-8) var(--space-8) var(--space-6) var(--space-16); }
+.aq-hero__index--big::before { content: ""; position: absolute; inset: var(--space-3); border: 1px solid var(--line); pointer-events: none; }
+.aq-hero__index--big::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(var(--line-strong), var(--line-strong)) left 0 top var(--space-3) / calc(var(--space-6) + 1px) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left var(--space-3) top 0 / 1px calc(var(--space-6) + 1px) no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right 0 top var(--space-3) / calc(var(--space-6) + 1px) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right var(--space-3) top 0 / 1px calc(var(--space-6) + 1px) no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left 0 bottom var(--space-3) / calc(var(--space-6) + 1px) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left var(--space-3) bottom 0 / 1px calc(var(--space-6) + 1px) no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right 0 bottom var(--space-3) / calc(var(--space-6) + 1px) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right var(--space-3) bottom 0 / 1px calc(var(--space-6) + 1px) no-repeat;
+}
+.aq-hero__index--big .aq-hero__index-label { position: absolute; top: 50%; left: var(--space-6); margin: 0; writing-mode: vertical-rl; transform: translateY(-50%) rotate(180deg); white-space: nowrap; }
+.aq-hero__index--big ol { padding-bottom: var(--space-6); }
+.aq-hero__index--big ol::before { top: calc(var(--space-1) + 28px); }
+.aq-hero__index--big li + li { margin-top: var(--space-3); }
+.aq-hero__index--big li::before { top: calc(var(--space-1) + 28px - 3px); background: var(--flow); }
+.aq-hero__index--big li::after { top: calc(var(--space-1) + 28px); border-top-style: dashed; }
+.aq-hero__index--big .aq-hero__index-item { gap: var(--space-4); padding-block: var(--space-1); }
+.aq-hero__index--big .aq-hero__index-item::before { font: 300 44px/56px var(--font-mono); letter-spacing: -0.02em; color: var(--ink); transition: color 120ms; }
+.aq-hero__index--big .aq-hero__index-item::after { top: calc(var(--space-1) + 28px - 4px); }
+.aq-hero__index--big .aq-hero__index-t { font-size: 16px; line-height: 22px; }
+.aq-hero__index--big a.aq-hero__index-item:hover::before, .aq-hero__index--big a.aq-hero__index-item:focus-visible::before { color: var(--flow); }
+/* Down arrow between two entries, centred under the number column (2ch of the 44 px figures) */
+.aq-hero__index-down { position: absolute; top: 100%; left: 0; width: 2ch; height: var(--space-3); font: 300 44px/1 var(--font-mono); text-align: center; color: var(--ink-subtle); }
+.aq-hero__index-down::before { content: "\2193"; content: "\2193" / ""; display: block; font: 400 13px/12px var(--font-mono); }
+
 /* Home: fine-line drawing of a figure-eight distribution loop. Pipe in ink-muted (currentColor), guides in line,
    scale rule and leaders in line-strong, flow arrows in flow, annotations in Geist Mono caps. */
 .aq-hero__grid--loop { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; }
@@ -71,7 +104,7 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 .aq-loop__text .aq-loop__tag { fill: var(--ink); font-size: 8px; letter-spacing: 0.02em; }
 
 @media (prefers-reduced-motion: reduce) {
-  .aq-hero__index li::before, .aq-hero__index-item::after, .aq-hero__index-t { transition: none; }
+  .aq-hero__index li::before, .aq-hero__index-item::before, .aq-hero__index-item::after, .aq-hero__index-t { transition: none; }
 }
 
 @container (max-width: 860px) {
@@ -101,6 +134,21 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-hero__index-item { gap: var(--space-3); padding-block: var(--space-2); }
   .aq-hero__index-item::before { line-height: 36px; }
   .aq-hero__index-item::after { top: calc(var(--space-2) + 18px - 4px); }
+  /* System index: under the actions as a compact numbered list on a heavier flow spine; label on top, no down arrows */
+  .aq-hero__grid--big-index { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
+  .aq-hero__index--big { padding: var(--space-6) var(--space-4) var(--space-6) var(--space-6); }
+  .aq-hero__index--big .aq-hero__index-label { position: static; margin: 0 0 var(--space-1); writing-mode: horizontal-tb; transform: none; white-space: normal; }
+  .aq-hero__index--big ol { padding-left: var(--space-6); padding-bottom: var(--space-2); }
+  .aq-hero__index--big ol::before { top: 16px; border-left: 2px solid var(--flow); left: -0.5px; }
+  .aq-hero__index--big ol::after { border-top-color: var(--flow); }
+  .aq-hero__index--big li + li { margin-top: var(--space-1); }
+  .aq-hero__index--big li::before { top: calc(16px - 3px); left: calc(-1 * var(--space-6) - 3px); }
+  .aq-hero__index--big li::after { top: 16px; left: calc(-1 * var(--space-6)); width: calc(var(--space-4) - 6px); }
+  .aq-hero__index--big .aq-hero__index-item { gap: var(--space-3); padding-block: 0; }
+  .aq-hero__index--big .aq-hero__index-item::before { font-size: 24px; line-height: 32px; }
+  .aq-hero__index--big .aq-hero__index-item::after { top: calc(16px - 4px); }
+  .aq-hero__index--big .aq-hero__index-t { font-size: 13px; line-height: 16px; }
+  .aq-hero__index-down { display: none; }
   /* Loop drawing: below the actions, capped so annotations stay legible */
   .aq-hero__grid--loop { row-gap: var(--space-8); }
   .aq-hero__loop { width: min(100%, calc(var(--space-32) + var(--space-24))); margin-inline: auto; }

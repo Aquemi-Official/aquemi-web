@@ -1,22 +1,31 @@
-DocList shows the documents delivered with a system as a turnover binder: numbered folder cards in a binder frame, each folder tab carrying the short code a validation team files it under, with the deciding documents first and emphasized.
+DocList shows the documents delivered with a system as a turnover binder: numbered folder cards on a drawing plate with paper stacked behind, each folder tab carrying the short code a validation team files it under, with the deciding documents first and emphasized.
 
 ## Markup
 
 ```html
-<ol class="aq-docs">
-  <li class="is-key aq-docs__w">
-    <span class="aq-docs__tab" aria-hidden="true"><span class="aq-index">01</span><span class="aq-docs__code">URS</span></span>
-    <span class="aq-docs__card"><span class="aq-docs__name">User requirement specification (URS) compliance matrix<span class="aq-docs__d">Each requirement, how we meet it and where it is verified</span></span></span>
-  </li>
-  …
-</ol>
+<div class="aq-docs-binder"><div class="aq-plate aq-plate--block aq-docs-plate">
+  <ol class="aq-docs">
+    <li class="is-key aq-docs__w">
+      <span class="aq-docs__tab" aria-hidden="true"><span class="aq-docs__code">URS</span></span>
+      <span class="aq-docs__card">
+        <span class="aq-docs__top" aria-hidden="true"><span class="aq-docs__n">01</span><span class="aq-icon aq-icon--flow" style="mask-image:url(assets/icons/stamp.png)"></span></span>
+        <span class="aq-docs__name">User requirement specification (URS) compliance matrix<span class="aq-docs__d">Each requirement, how we meet it and where it is verified</span></span>
+        <span class="aq-docs__foot" aria-hidden="true"><span>Key document</span><span>01 of 10</span></span>
+      </span>
+    </li>
+    …
+  </ol>
+  <div class="aq-plate__block" aria-hidden="true"><span>Aquemi</span><span>10 documents</span></div>
+</div></div>
 ```
 
-- An ordered list, one `<li>` per document. The tab (number and code) is `aria-hidden`; screen readers get the list numbering and the full name.
-- `aq-docs__name` holds the document name as QA would write it: "Material certificates (EN 10204 3.1)", "FAT and SAT protocols and reports". An optional `<span class="aq-docs__d">` inside it adds one line of detail. An item with `link` (a page id) makes the name a link.
+- The binder is a drawing plate (`wPlate`, base.css `.aq-plate`) on `surface-sunken`, inside `aq-docs-binder`, which draws two loose sheets stacked behind its top-right corner. The title block reads Aquemi, the block's `nav` (when it differs from the noun) and the count, "12 sections".
+- An ordered list, one `<li>` per document, each a folder: the tab (the document code), the big number and icon (`aq-docs__top`), the name, and a footer rule with a caption ("Key document", "03 of 10"). Tab, number, icon and footer are `aria-hidden`; screen readers get the list numbering and the full name.
+- `aq-docs__name` holds the document name as QA would write it, in sentence case in the source; CSS sets it in uppercase mono. An optional `<span class="aq-docs__d">` inside it adds the detail in sans, smaller, under the title. An item with `link` (a page id) makes the name a link.
+- Icon: from the name (`DOC_ICONS` in the renderer: borescope, weld, pid for drawings, gauge for calibration and pressure, wrench for maintenance and spares, calendar for plans, stamp for certificates and statements, magnifier for reviews and inspections, binder for indexes, registers, manuals and logs), only where the drawing says what the document is; others get none. An item's `icon` field wins; `"icon": "none"` removes it.
+- Tab: the derived code, or an item's `tag` when the data has a category. Plain lists (`aq-docs--plain`, items that are not documents with recognised codes) keep an empty tab: the folder shape alone.
 - `is-key` marks a deciding document. `aq-docs__w` makes a card span half the row; `aq-docs__wf` does the same only while the list is folded. The renderer sets both so no row ends short.
-- Add `aq-docs--plain` to the `<ol>` and leave out the code when the items are not documents with recognised codes (a proposal checklist, for example, or package sections). Tabs then show only the number.
-- Every docs block renders this way (no opt-in): it sits on a light sheet, full width under the standard section head. The site renderer (`assets/src/blocks/docs.js`, block type `docs`) builds it from `{h, items, fold, fold_noun, key}`.
+- Every docs block renders this way (no opt-in), full width under the standard section head. The site renderer (`assets/src/blocks/docs.js`, block type `docs`) builds it from `{h, nav, items, fold, fold_noun, key}`; items `{t, d, code, tag, icon, key, link}`. The fold button sits under the plate.
 
 ## Key documents
 
@@ -25,8 +34,8 @@ DocList shows the documents delivered with a system as a turnover binder: number
 
 ## Layout
 
-- **Desktop:** a binder frame (`surface-sunken`, `line-strong` edge, a second sheet drawn offset behind its top-right corner) holding folder cards on a 6-column grid, three to a row. Each card: a tab on its top edge with the index and the code, then the name and detail on `surface-raised`, one sheet showing behind it. Rows that would end short widen to two cards: 12 items read 3, 3, 3, 3; 10 with a key pair read 2, 3, 3, 2. Folded lists are laid out for the cards that show (fold 6 reads 3, 3).
-- **Phone** (container 860 px and below): no frame and no cards; a compact list, "01  FS  Functional specification", index and codes in aligned columns, a hairline between rows. Key documents keep their code in `flow` and the name in medium weight. Never a tall card per document on a phone.
+- **Desktop:** folder cards on a 6-column grid, three to a row, on the plate. Each folder: tab on its top edge, number in Mono 32/36 with a 32 px line icon top right, name in Mono 500 16/22 uppercase, detail in Geist 14/20 `ink-muted`, then a footer rule with an 11 px mono caption. Two sheets show behind each folder. Rows that would end short widen to two cards: 12 items read 3, 3, 3, 3; 10 with a key pair read 2, 3, 3, 2. Folded lists are laid out for the cards that show (fold 6 reads 3, 3).
+- **Phone** (container 860 px and below): still a binder. A smaller plate with tighter sheets, folders one to a row, compact: tab, the number (Mono 24) beside the name (Mono 14/20 uppercase) with the detail under it. Icon and footer caption drop. Key folders keep their flow tab and tint.
 
 ## Codes
 
@@ -37,10 +46,9 @@ The renderer derives each code from the document name with a lookup of common va
 
 ## Token rules
 
-- Frame: `surface-sunken`, 1 px `line-strong`; the offset sheet is a hard-edged box-shadow in `surface` and `line-strong` (a drawn sheet, not elevation). Card: `surface-raised`, 1 px `line-strong`, `radius-sm`, an offset sheet in `line`. Spacing `space-*` only.
-- Tab: the shared `.aq-index` and the code in Geist Mono 500 14/20 `ink` (Mono 14/22 on phones).
-- Key: tab filled `flow` with `surface` text, card on `flow-tint` with a `flow` edge, name 500. `flow` is the section's only colour.
-- Name: Geist (`--font-sans`) 15/22 px in `ink`, sentence case. Detail 14 px in `ink-muted`.
+- Plate: `.aq-plate` (unchanged) on `surface-sunken`; stacked sheets are hard-edged box-shadows in `surface-raised` with `line-strong` and `line` edges (drawn paper, not elevation).
+- Folder: `surface-raised`, 1 px `line-strong`, `radius-sm`, two offset sheets. Tab: `radius-md` top corners, code in Mono 500 12/16 uppercase `ink`. Footer: 1 px `line` rule, Mono 500 11/16 uppercase `ink-subtle`. Icon `ink-muted` (`flow` on key folders). Spacing `space-*` only.
+- Key: tab filled `flow` with `surface` text, folder on `flow-tint` with a `flow` edge, number in `flow`, footer rule in `flow`. `flow` is the section's only colour.
 
 ## When not to use it
 

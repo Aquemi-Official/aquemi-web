@@ -221,27 +221,33 @@
   },
   {
    "type": "options",
+   "as": "modules",
    "h": "Configurations and options",
    "items": [
     {
      "t": "Duplex final UF",
-     "d": "One UF train is tested, sanitized or replaced while the other supplies WFI."
+     "d": "One UF train is tested, sanitized or replaced while the other supplies WFI.",
+     "spot": "ro-membrane"
     },
     {
      "t": "Shared PW and WFI platform",
-     "d": "One RO and EDI train makes Purified Water (PW), with a WFI branch through the final UF."
+     "d": "One RO and EDI train makes Purified Water (PW), with a WFI branch through the final UF.",
+     "spot": "ro-skid"
     },
     {
      "t": "Ambient ozonated or hot storage",
-     "d": "Ozonated ambient loop with ultraviolet (UV) destruction, or a hot loop above 70 °C."
+     "d": "Ozonated ambient loop with ultraviolet (UV) destruction, or a hot loop above 70 °C.",
+     "spot": "storage-tank"
     },
     {
      "t": "Rapid microbiological monitoring",
-     "d": "Online bioburden or rapid endotoxin instruments: [rapid instruments offered]."
+     "d": "Online bioburden or rapid endotoxin instruments: [rapid instruments offered].",
+     "spot": "toc"
     },
     {
      "t": "Conversion of an existing PW system",
-     "d": "Sound, hot water sanitizable RO and EDI: we add a final UF, monitoring and controls, then requalify."
+     "d": "Sound, hot water sanitizable RO and EDI: we add a final UF, monitoring and controls, then requalify.",
+     "spot": "edi-stack"
     }
    ],
    "fold": 3

@@ -22,12 +22,23 @@ function h1(s){return s?'<h2 class="aq-h1">'+tx(s)+'</h2>':''}
    Renderers receive it as H and never print their own heading, intro or a mono caption above their content. */
 function wSecHead(b){b=b||{};if(!b.h&&!b.eyebrow&&!b.intro)return '';
  return '<header class="aq-sec-head">'+(b.eyebrow?'<p class="aq-eyebrow">'+tx(b.eyebrow)+'</p>':'')+h1(b.h)+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'</header>'}
+/* Plate: frame a figure as a drawing plate (base.css .aq-plate). o.light: cream plate on the navy; o.block: title-block
+   cells, e.g. ["Aquemi","Limits","PW"] (decorative). */
+function wPlate(inner,o){o=o||{};var bl=o.block&&o.block.length?'<div class="aq-plate__block" aria-hidden="true">'+o.block.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'</div>':'';
+ return '<div class="aq-plate'+(bl?' aq-plate--block':'')+(o.cls?' '+o.cls:'')+'"'+(o.light?' data-theme="light"':'')+'>'+inner+bl+'</div>'}
 /* Index: the one numbering style, "01" (aria-hidden: the list already announces position) */
 function idx(i){return '<span class="aq-index" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}
 /* Icon: a line-art spot from assets/icons/<name>.png, painted with a token through a mask (design-system/components/Icon). */
 var ICONS=' softener carbon-filter ro-membrane edi still pure-steam tank loop valve heat-exchanger uv ozone conductivity toc pump weld borescope gauge pid binder stamp calendar wrench magnifier ';
 function isIcon(n){return typeof n==='string'&&/^[a-z-]+$/.test(n)&&ICONS.indexOf(' '+n+' ')>=0}
 function wIcon(n,cls){var u='url(assets/icons/'+n+'.png)';return '<span class="aq-icon'+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
+/* Spot: a larger equipment vignette from assets/spots/<name>.png (design-system/components/Spot), 96/128/160 px by size s|m|l.
+   A name from the Icon set instead draws that icon at 64 px in the same place (aq-spot--icon), for stops with no spot yet. */
+var SPOTS=' pretreatment ro-skid edi-stack still pure-steam-generator storage-tank pump heat-exchanger uv-ozone ';
+function isSpot(n){return typeof n==='string'&&/^[a-z-]+$/.test(n)&&SPOTS.indexOf(' '+n+' ')>=0}
+function isVig(n){return isSpot(n)||isIcon(n)}
+function wSpot(n,size,cls){var sp=isSpot(n);if(!sp&&!isIcon(n))return '';var u='url(assets/'+(sp?'spots':'icons')+'/'+n+'.png)';
+ return '<span class="aq-spot'+(!sp?' aq-spot--icon':size==='s'?' aq-spot--s':size==='l'?' aq-spot--l':'')+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
 /* Row icons for a block: item.icon wins; with block "icons": "auto" a title naming one piece of equipment picks it, but only
    when every row gets one (a half-iconed list reads as broken). First match wins: pure steam before still. */
 var ICON_AUTO=[[/softener/i,'softener'],[/carbon filter|activated carbon/i,'carbon-filter'],[/reverse osmosis|\bRO\b/,'ro-membrane'],[/\bEDI\b|electrodeioni/i,'edi'],
@@ -172,10 +183,16 @@ function heroIndex(p){var sib=W().filter(function(q){return q.section===p.sectio
   items:sib.map(function(q){return {t:q.nav_label||q.headline,wp:q.id}})};
  var bs=(p.blocks||[]),items=[];bs.forEach(function(b,i){if(b.h&&b.type!=='related'&&items.length<7)items.push({t:b.h,jump:b.nav?jid(b,i):''})});
  return items.length>1?{label:'On this page',aria:'On this page',items:items}:null}
-function wHeroIndex(x){
- return '<nav class="aq-hero__index" aria-label="'+e(x.aria)+'"><p class="aq-hero__index-label">'+e(x.label)+'</p><ol>'+x.items.map(function(it){
+/* System index (opt-in hero field "index", concept 35): the hub's child pages as a large numbered index on a framed area
+   with corner crosses. index: true takes the other pages of this page's section (as heroIndex); index: ["sys-pw", …]
+   lists those page ids in that order. Overrides hero_index. Returns heroIndex-shaped data with big: true, or null. */
+function heroBigIndex(p){var v=p.index,pages=Array.isArray(v)?v.map(wp).filter(Boolean):v===true?W().filter(function(q){return q.section===p.section&&q.id!==p.id}):[];
+ return pages.length?{big:true,label:p.section+' index · '+pages.length+' pages',aria:'Pages in '+p.section,items:pages.map(function(q){return {t:q.nav_label||q.headline,wp:q.id}})}:null}
+function wHeroIndex(x){var n=x.items.length;
+ return '<nav class="aq-hero__index'+(x.big?' aq-hero__index--big':'')+'" aria-label="'+e(x.aria)+'"><p class="aq-hero__index-label">'+e(x.label)+'</p><ol>'+x.items.map(function(it,i){
   var t='<span class="aq-hero__index-t">'+tx(it.t)+'</span>';
-  return '<li>'+(it.wp?'<a class="aq-hero__index-item" href="#'+e(it.wp)+'" data-wp="'+e(it.wp)+'">'+t+'</a>':it.jump?'<a class="aq-hero__index-item" href="#'+e(WP)+'" data-jump="'+e(it.jump)+'">'+t+'</a>':'<span class="aq-hero__index-item">'+t+'</span>')+'</li>'}).join('')+'</ol></nav>'}
+  return '<li>'+(it.wp?'<a class="aq-hero__index-item" href="#'+e(it.wp)+'" data-wp="'+e(it.wp)+'">'+t+'</a>':it.jump?'<a class="aq-hero__index-item" href="#'+e(WP)+'" data-jump="'+e(it.jump)+'">'+t+'</a>':'<span class="aq-hero__index-item">'+t+'</span>')+
+   (x.big&&i<n-1?'<span class="aq-hero__index-down" aria-hidden="true"></span>':'')+'</li>'}).join('')+'</ol></nav>'}
 /* Home: fine-line drawing of a figure-eight distribution loop (viewBox 440 x 520). Strokes are currentColor and tokens in style.css.
    Annotations are the home page's own standards and its endotoxin fact; nothing else is claimed. */
 function wHomeLoop(p){
@@ -201,13 +218,13 @@ function wHomeLoop(p){
   label(76,132,'Filter','end')+label(76,362,'Heat','end')+label(76,374,'exchanger','end')+
   label(244,483,'Furthest point of use')+(ef?label(244,497,'Endotoxin '+ef.v):'')+
  '</g></svg></figure>'}
-function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^svc-|^ind-/.test(p.id),idx=!home&&!detail&&p.hero_index!==false?heroIndex(p):null;
+function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^svc-|^ind-/.test(p.id),idx=home||detail?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
   '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
  var all=p.facts||[],callouts=art?all.slice(0,4):[],rest=art?all.slice(4):all;
  var right=home?wHomeLoop(p):art?wHeroFigure(p,callouts):detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · 316L, cool even light]</div>':idx?wHeroIndex(idx):'';
- var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':idx?' aq-hero__grid--index':'';
+ var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
  return '<section class="aq-hero'+(home?' aq-hero--home':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
 /* KeyFacts: the measurement strip under the Hero. facts = [{l, v}].
    Label "Conductivity at 25 °C · USP <645>" -> dt name + a second dd for the source (after the last " · ").
@@ -376,8 +393,8 @@ function card(it){
 }
 function record(it){
   var ch=(it.changed||[]).slice(0,4),art=it.art&&ART[it.art]?it.art:'';
-  var drawing=art?'<figure class="aq-case__drawing"><div class="aq-case__art"><div class="aq-case__plate"><span class="aq-illustration" role="img" aria-label="'+e(ART[art])+'" style="'+artMask(art)+'"></span>'
-     +ch.map(function(c,i){var a=c.at;return a&&a.length===2?'<span class="aq-case__pin" style="left:'+(+a[0])+'%;top:'+(+a[1])+'%">'+mark(i+1)+'</span>':''}).join('')+'</div></div>'
+  var drawing=art?'<figure class="aq-case__drawing">'+wPlate('<div class="aq-case__plate"><span class="aq-illustration" role="img" aria-label="'+e(ART[art])+'" style="'+artMask(art)+'"></span>'
+     +ch.map(function(c,i){var a=c.at;return a&&a.length===2?'<span class="aq-case__pin" style="left:'+(+a[0])+'%;top:'+(+a[1])+'%">'+mark(i+1)+'</span>':''}).join('')+'</div>',{cls:'aq-case__art',block:['Fig. 01','What changed']})
      +(ch.length?'<figcaption class="aq-case__changes"><p class="aq-case__label">What changed</p><ol>'+ch.map(function(c,i){return '<li>'+mark(i+1)+'<span>'+tx(c.t)+'</span></li>'}).join('')+'</ol></figcaption>':'')+'</figure>':'';
   var f=facts(it,'aq-case__entry'),O=(it.outcomes||[]).slice(0,4),T=it.timeline||[];
   var outs=O.length?'<div class="aq-case__outcomes"><p class="aq-case__label">Measured outcomes</p>'+(it.outcome?'<p class="aq-case__result">'+tx(it.outcome)+'</p>':'')
@@ -392,13 +409,15 @@ BLOCKS['case']=function(b,H){return sec(H+'<div class="aq-cases">'+(b.items||[])
   return it.art||(it.outcomes&&it.outcomes.length)||(it.timeline&&it.timeline.length)?record(it):card(it);
 }).join('')+'</div>');};
 })();
-/* Block "contact-routes" -> ContactRoutes: the ways into Aquemi as cards, each with its own next steps (1 → 2 → 3) and
-   response clock. Fields: routes [{t, d, steps: [3 strings], clock, link: "<page id>", phone?, urgent?, current?,
-   action?, intent?}]. The route for the page being read (current: true, or link = this page) is marked "This page"
-   and its action scrolls to this page's form; the others link to their pages (action label defaults to that page's
-   nav label; intent ticks options on its form). An urgent route sits on limestone with its phone number set large
-   (a tel: link once the number is real) and comes first in the markup, so phones show it first; desktop keeps the
-   data order. Every clock stays the page's own placeholder until confirmed. */
+/* Block "contact-routes" -> ContactRoutes: the ways into Aquemi as labelled route sheets on a drawing plate, joined by a
+   dashed route line, each with a numbered 1 → 2 → 3 strip and its response clock. Fields: routes [{t, d, steps:
+   [3 strings], clock, link: "<page id>", phone?, urgent?, current?, action?, intent?}]. Each sheet carries a folder
+   tab "Route N" (data order). The route for the page being read (current: true, or link = this page) is marked
+   "This page" and its action scrolls to this page's form; the others link to their pages (action label defaults to
+   that page's nav label; intent ticks options on its form). Ordinary routes are cream sheets (data-theme="light");
+   the urgent route is a navy panel (data-theme="dark") with a full-width call bar (a tel: link once the number is
+   real) and comes first in the markup, so phones show it first; desktop keeps the data order. Every clock stays the
+   page's own placeholder until confirmed. */
 var CR_CLOCK='<svg class="aq-contact-routes__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8L10.5 9.5"/></svg>';
 var CR_PHONE='<svg class="aq-contact-routes__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5.5 1.5H3.5A1.5 1.5 0 0 0 2 3C2 9 7 14 13 14A1.5 1.5 0 0 0 14.5 12.5V10.5L11.5 9.5L10 11C8 10 6 8 5 6L6.5 4.5Z"/></svg>';
 function crPhone(s){s=String(s||'');var n=s.replace(/[^\d+]/g,'');
@@ -409,24 +428,29 @@ BLOCKS['contact-routes']=function(b,H){var R=b.routes||[];
  var fid=fi>=0&&PB[fi].nav?jid(PB[fi],fi):'';
  var order=R.map(function(r,i){return i}).sort(function(a,c){return (R[c].urgent?1:0)-(R[a].urgent?1:0)||a-c});
  var cards=order.map(function(i){var r=R[i],cur=!!(r.current||(r.link&&r.link===p.id)),urg=!!r.urgent,S=r.steps||[];
-  var go=cur?'<a class="aq-btn aq-btn--'+(urg?'secondary':'primary')+'" href="#'+e(p.id||WP)+'" '+(fid?'data-jump="'+e(fid)+'"':'data-routes-form=""')+'>'+tx(r.action||'Use the form below')+' <span class="aq-btn__arrow" aria-hidden="true">↓</span></a>'
+  var go=cur?'<a class="aq-btn aq-btn--primary" href="#'+e(p.id||WP)+'" '+(fid?'data-jump="'+e(fid)+'"':'data-routes-form=""')+'>'+tx(r.action||'Use the form below')+' <span class="aq-btn__arrow" aria-hidden="true">↓</span></a>'
    :r.link&&wp(r.link)?wBtn(r.action||wp(r.link).nav_label||r.link,r.link,'secondary',r.intent):'';
-  return '<li class="aq-contact-routes__route'+(urg?' is-urgent':'')+(cur?' is-current':'')+'" style="--o:'+i+'"'+(urg?' data-theme="light"':'')+(cur?' aria-current="page"':'')+'>'
-   +(cur||urg?'<p class="aq-contact-routes__mark">'+(urg?'<span class="aq-contact-routes__dot" aria-hidden="true"></span>Urgent':'')+(urg&&cur?' · ':'')+(cur?'This page':'')+'</p>':'')
-   +'<h3 class="aq-contact-routes__t">'+tx(r.t)+'</h3>'
-   +(r.d?'<p class="aq-contact-routes__d">'+tx(r.d)+'</p>':'')
-   +(r.phone?'<p class="aq-contact-routes__phone">'+CR_PHONE+'<span class="aq-contact-routes__k">Call</span>'+crPhone(r.phone)+'</p>':'')
-   +(S.length?'<ol class="aq-contact-routes__steps">'+S.map(function(s,k){return '<li><span class="aq-contact-routes__n" aria-hidden="true">'+(k+1)+'</span><span class="aq-contact-routes__s">'+tx(s)+'</span></li>'}).join('')+'</ol>':'')
-   +(r.clock?'<p class="aq-contact-routes__clock">'+CR_CLOCK+'<span class="aq-contact-routes__k">Response</span><span class="aq-contact-routes__v">'+tx(r.clock)+'</span></p>':'')
-   +(go?'<div class="aq-contact-routes__action">'+go+'</div>':'')+'</li>'}).join('');
- return sec(H+'<ul class="aq-contact-routes" style="--routes:'+R.length+'">'+cards+'</ul>');};
+  return '<li class="aq-contact-routes__route'+(urg?' is-urgent':'')+(cur?' is-current':'')+'" style="--o:'+i+'" data-theme="'+(urg?'dark':'light')+'"'+(cur?' aria-current="page"':'')+'>'
+   +'<p class="aq-contact-routes__tab"><span class="aq-contact-routes__rn">Route '+(i+1)+'</span>'
+    +(urg?'<span class="aq-contact-routes__mark"><span class="aq-contact-routes__dot" aria-hidden="true"></span>Urgent</span>':'')
+    +(cur?'<span class="aq-contact-routes__mark">This page</span>':'')+'</p>'
+   +'<div class="aq-contact-routes__head"><div class="aq-contact-routes__main">'
+    +'<h3 class="aq-contact-routes__t">'+tx(r.t)+'</h3>'
+    +(r.d?'<p class="aq-contact-routes__d">'+tx(r.d)+'</p>':'')+'</div>'
+    +'<div class="aq-contact-routes__side">'
+    +(r.clock?'<p class="aq-contact-routes__clock">'+CR_CLOCK+'<span class="aq-contact-routes__k">Response</span><span class="aq-contact-routes__v">'+tx(r.clock)+'</span></p>':'')
+    +(go?'<div class="aq-contact-routes__action">'+go+'</div>':'')+'</div></div>'
+   +(r.phone?'<p class="aq-contact-routes__call">'+CR_PHONE+'<span class="aq-contact-routes__k">Call</span>'+crPhone(r.phone)+'</p>':'')
+   +(S.length?'<ol class="aq-contact-routes__steps">'+S.map(function(s,k){return '<li><span class="aq-contact-routes__n" aria-hidden="true">'+(k+1)+'</span><span class="aq-contact-routes__s">'+tx(s)+'</span>'+(k<S.length-1?'<span class="aq-contact-routes__arrow" aria-hidden="true"></span>':'')+'</li>'}).join('')+'</ol>':'')
+   +'</li>'}).join('');
+ return sec(H+wPlate('<ul class="aq-contact-routes" style="--routes:'+R.length+'">'+cards+'</ul>',{cls:'aq-contact-routes__plate'}));};
 /* Fallback for a page whose form has no nav id: scroll to the first form after the routes */
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('[data-routes-form]');if(!a)return;var f=document.querySelector('.wform');if(!f)return;ev.preventDefault();
  (f.closest('section')||f).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})});
 /* Block "diagram" -> ProcessDiagram. Fields: stages [names, 5 to 7], optional base (what spans every stage), caption. */
 BLOCKS['diagram']=function(b,H){return sec(H+wDiagram(b)+(b.caption?'<p class="aq-small aq-prose">'+tx(b.caption)+'</p>':''));};
 /* Block "docs" -> DocList: the turnover binder. Documents as folder cards in a binder frame, each folder tab carrying the
-   index and the short document code (derived from its name); the deciding documents lead, emphasized. Rows on phones. */
+   index and the short document code (derived from its name); the deciding documents lead, emphasized. On phones the folders stack one to a row on a smaller plate. */
 /* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT). */
 var DOC_CODES=[
   [/^urs\b.*traceability/i,'URS & TM'],[/traceability matrix/i,'TM'],[/user requirement|\burs\b/i,'URS'],
@@ -459,8 +483,18 @@ function docCode(name){
    pair, used when the cards after them fill rows of three (or end in a pair). n visible cards; returns indexes that span 3. */
 function docWide(n,lead){lead=lead&&(n-2)%3!==1;var w={},s=lead?2:0,m=n-s,i;if(lead){w[0]=w[1]=1}
   var k=m%3===1&&m>=4?4:m%3===2?2:0;for(i=n-k;i<n;i++)w[i]=1;return w}
+/* Folder icons (assets/icons masks), from the document name; first match wins. Only where the drawing says what the
+   document is; anything else gets no icon. An item's icon field wins ("icon": "none" for none). */
+var DOC_ICONS=[[/borescope/i,'borescope'],[/\bweld|\bwps\b|welder/i,'weld'],[/p&id|instrumentation diagram|drawing|isometric|general arrangement/i,'pid'],
+  [/calibration|pressure (test|vessel|equipment)/i,'gauge'],[/\btoc\b/i,'toc'],[/conductivity/i,'conductivity'],
+  [/maintenance|spare|\bparts\b/i,'wrench'],[/annual|plan\b|schedule/i,'calendar'],
+  [/certificate|compliance matrix|statement|signed/i,'stamp'],[/risk assessment|inspection|review|observation|audit|survey/i,'magnifier'],
+  [/index|register|summary|manual|\blog\b|dossier|description/i,'binder']];
+function docIcon(x){if(x.icon==='none')return '';if(isIcon(x.icon))return x.icon;var t=String(x.t||'');
+  for(var i=0;i<DOC_ICONS.length;i++)if(DOC_ICONS[i][0].test(t))return DOC_ICONS[i][1];return ''}
+function docNum(i){return (i<9?'0':'')+(i+1)}
 BLOCKS['docs']=function(b,H){
-  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link}});
+  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link,icon:x.icon,tag:x.tag}});
   var n=items.length,codes=items.map(function(x){return x.code?[x.code,true]:docCode(x.t)});
   /* Codes only when most items are documents the lookup knows; a checklist of other things keeps just its numbers. */
   var coded=codes.filter(function(c){return c[1]}).length*2>=n;
@@ -469,27 +503,37 @@ BLOCKS['docs']=function(b,H){
   var key=items.map(function(x,i){return marked?!!x.key:i<nk});
   var vis=b.fold>0&&n>b.fold?b.fold:n,lead=key[0]&&key[1]&&!key.slice(2).some(Boolean);
   var wo=docWide(n,lead),wf=vis<n?docWide(vis,lead):{};
-  return sec(H+wFold(b,n,'<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
+  var noun=b.fold_noun||'documents',one=noun.replace(/s$/,'');
+  var ol='<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
     var cls=(key[i]?' is-key':'')+(wo[i]?' aq-docs__w':'')+(wf[i]?' aq-docs__wf':''),name=x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t);
-    return fli('<li'+(cls?' class="'+cls.slice(1)+'"':'')+'>',b,i)+'<span class="aq-docs__tab" aria-hidden="true">'+idx(i).replace(' aria-hidden="true"','')
-      +(coded?'<span class="aq-docs__code">'+e(codes[i][0])+'</span>':'')+'</span>'
-      +'<span class="aq-docs__card"><span class="aq-docs__name">'+name+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span></span></li>';
-  }).join('')+'</ol>',b.fold_noun||'documents'));
+    var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x);
+    return fli('<li'+(cls?' class="'+cls.slice(1)+'"':'')+'>',b,i)
+      +'<span class="aq-docs__tab" aria-hidden="true">'+(tag?'<span class="aq-docs__code">'+e(tag)+'</span>':'')+'</span>'
+      +'<span class="aq-docs__card"><span class="aq-docs__top" aria-hidden="true"><span class="aq-docs__n">'+docNum(i)+'</span>'+(ic?wIcon(ic,key[i]?'aq-icon--flow':''):'')+'</span>'
+      +'<span class="aq-docs__name">'+name+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span>'
+      +'<span class="aq-docs__foot" aria-hidden="true"><span>'+e((key[i]?'Key ':'')+one)+'</span><span>'+docNum(i)+' of '+docNum(n-1)+'</span></span></span></li>';
+  }).join('')+'</ol>';
+  /* The binder: folder cards on a drawing plate (core.js wPlate) with stacked sheets behind it and a title block. */
+  var plate='<div class="aq-docs-binder">'+wPlate(ol,{block:['Aquemi'].concat(b.nav&&b.nav.toLowerCase()!==noun.toLowerCase()?[b.nav]:[],[n+' '+noun]),cls:'aq-docs-plate'})+'</div>';
+  return sec(H+wFold(b,n,plate,noun));
 };
-/* Table as "evidence" -> EvidenceMap: a requirement, how we meet it, and where the proof sits. Fields as a table:
-   cols [requirement, how we meet it, then evidence columns], rows. Evidence columns: a column whose every cell is a page
-   link becomes the row's quiet link; every other column becomes document tags (cells split on ";"), labelled with the
-   column name when there is more than one. Desktop: requirement | how | a leader line to the tags. Phones: stacked. */
+/* Table as "evidence" -> EvidenceMap: a requirement, how we meet it, and where the proof sits, drawn as a mapping.
+   Fields as a table: cols [requirement, how we meet it, then evidence columns], rows. Evidence columns: a column whose
+   every cell is a page link becomes the row's quiet link; every other column becomes document chips shaped like files
+   (cells split on ";"), grouped under the column name when there is more than one.
+   A real table: the requirement is the row header, display-sized with a mono number (01 …); leader lines run from it to
+   "how", then fan out to each file chip. Phones: rows stack; the chips keep their files and the fan on the left. */
 TABLE_AS.evidence=function(b,H){var C=b.cols||[],R=b.rows||[];
  var go=C.map(function(c,i){return i>1&&R.length>0&&R.every(function(r){var x=r[i];return x&&typeof x==='object'&&x.link})});
  var ev=C.map(function(c,i){return i}).filter(function(i){return i>1&&!go[i]}),many=ev.length>1;
- return sec(H+'<div class="aq-evidence"><div class="aq-evidence__head" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span><span>'+(many?'Reference':tx(C[ev[0]]||''))+'</span></div>'
-  +wFold(b,R.length,'<ol class="aq-evidence__rows">'+R.map(function(r,ri){
-   var tags=ev.map(function(i){var c=r[i],t=c&&typeof c==='object'?c.t:c;if(!t)return '';
-    return (many?'<span class="aq-evidence__k">'+tx(C[i])+'</span>':'')+String(t).split(/\s*;\s*/).map(function(x){return '<span class="aq-evidence__doc">'+tx(x.charAt(0).toUpperCase()+x.slice(1))+'</span>'}).join('')}).join('');
+ var head='<thead><tr><th scope="col">'+tx(C[0]||'')+'</th><th scope="col">'+tx(C[1]||'')+'</th><th scope="col">'+(many?'Reference':tx(C[ev[0]]||C[2]||''))+'</th></tr></thead>';
+ return sec(H+'<div class="aq-evidence">'+wFold(b,R.length,'<table class="aq-evidence__table">'+head+'<tbody>'+R.map(function(r,ri){
+   var files=ev.map(function(i){var c=r[i],t=c&&typeof c==='object'?c.t:c;if(!t)return '';
+    return (many?'<p class="aq-evidence__k">'+tx(C[i])+'</p>':'')+'<ul class="aq-evidence__docs">'+String(t).split(/\s*;\s*/).map(function(x){return '<li class="aq-evidence__doc"><span class="aq-evidence__file">'+tx(x.charAt(0).toUpperCase()+x.slice(1))+'</span></li>'}).join('')+'</ul>'}).join('');
    var links=C.map(function(c,i){return go[i]?tcell(r[i]):''}).join('');
-   return fli('<li class="aq-evidence__row">',b,ri)+'<h3 class="aq-evidence__t">'+tcell(r[0])+'</h3><p class="aq-evidence__how">'+tcell(r[1])+'</p>'
-    +'<p class="aq-evidence__proof">'+tags+(links?'<span class="aq-evidence__go">'+links+'</span>':'')+'</p></li>'}).join('')+'</ol>',b.fold_noun||'requirements')+'</div>');};
+   return fli('<tr class="aq-evidence__row">',b,ri)+'<th scope="row" class="aq-evidence__t"><span class="aq-evidence__n" aria-hidden="true">'+(ri<9?'0':'')+(ri+1)+'</span><span class="aq-evidence__name">'+tcell(r[0])+'</span></th>'
+    +'<td class="aq-evidence__how">'+tcell(r[1])+'</td>'
+    +'<td class="aq-evidence__proof">'+files+(links?'<p class="aq-evidence__go">'+links+'</p>':'')+'</td></tr>'}).join('')+'</tbody></table>',b.fold_noun||'requirements')+'</div>');};
 /* Block "faq" -> FAQ: hairline accordion rows (index, question, +/−), all closed; a shared name keeps one answer open.
    Desktop: heading left, questions right (SplitSection). */
 var faqN=0;
@@ -529,63 +573,98 @@ BLOCKS['form']=function(b,H){
    first whose name says grade or water (or b.grade, its index). Each row: index, the step (first other column), the
    other columns as quieter lines, the grade cell in mono, and three lanes at the right (Potable, PW, WFI) running the
    height of the list like pipes. The first grade named in the cell gets a filled tap, any alternative an open one;
-   a cell that names none ("same grade as the product") leaves the lanes empty. Phones keep the lanes. */
+   a branch pipe runs from the step to that tap. A cell that names none but says "same" ("same grade as the product") gets
+   an open dashed tap on every lane under a "= product" mark; any other cell leaves the lanes empty. On a plate; phones
+   keep the lanes. */
 var LANES=[['Potable',/potable|softened|drinking/i],['PW',/\bPW\b|purified/i],['WFI',/\bWFI\b|for injection/i]];
 TABLE_AS.grades=function(b,H){var C=b.cols||[],R=b.rows||[];
  var g=b.grade!=null?b.grade:C.map(function(c,i){return /grade|water/i.test(c)?i:-1}).filter(function(i){return i>=0})[0];if(g==null)g=C.length-1;
  var other=C.map(function(c,i){return i}).filter(function(i){return i!==g});
- function lanes(cell){var s=String(cell&&cell.t||cell||''),hit=LANES.map(function(l){var m=l[1].exec(s);return m?m.index:-1}),first=Math.min.apply(null,hit.filter(function(x){return x>=0}));
-  return LANES.map(function(l,i){return '<span class="aq-grades__lane"><span class="aq-grades__tap'+(hit[i]<0?'':hit[i]===first?' is-min':' is-alt')+'"></span></span>'}).join('')}
- return sec(H+'<div class="aq-grades"><div class="aq-grades__head"><span>'+tx(C[other[0]]||'')+'</span><span class="aq-grades__lanes">'+LANES.map(function(l){return '<span>'+l[0]+'</span>'}).join('')+'</span></div>'
+ function lanes(cell){var s=String(cell&&cell.t||cell||''),hit=LANES.map(function(l){var m=l[1].exec(s);return m?m.index:-1}),pos=hit.filter(function(x){return x>=0}),first=Math.min.apply(null,pos);
+  if(!pos.length&&/same/i.test(s))return '<span class="aq-grades__lanes is-same" aria-label="'+e(s)+'" role="img">'+LANES.map(function(){return '<span class="aq-grades__lane"><span class="aq-grades__tap is-same"></span></span>'}).join('')+'<span class="aq-grades__same" aria-hidden="true">= product</span></span>';
+  var m=hit.indexOf(first);
+  return '<span class="aq-grades__lanes'+(pos.length?' is-hit-'+m:'')+'" role="img" aria-label="'+e(s)+'">'+LANES.map(function(l,i){return '<span class="aq-grades__lane"><span class="aq-grades__tap'+(hit[i]<0?'':hit[i]===first?' is-min':' is-alt')+'"></span></span>'}).join('')+'</span>'}
+ return sec(H+wPlate('<div class="aq-grades"><div class="aq-grades__head"><span>'+tx(C[other[0]]||'')+'</span><span class="aq-grades__lanes">'+LANES.map(function(l){return '<span>'+l[0]+'</span>'}).join('')+'</span></div>'
   +wFold(b,R.length,'<ol class="aq-grades__rows">'+R.map(function(r,i){var s=String(r[g]&&r[g].t||r[g]||'');
    return fli('<li class="aq-grades__row">',b,i)+idx(i)+'<div class="aq-grades__step"><h3 class="aq-grades__t">'+tcell(r[other[0]])+'</h3>'
     +other.slice(1).map(function(k){return r[k]?'<p class="aq-grades__d">'+tcell(r[k])+'</p>':''}).join('')
     +'<p class="aq-grades__g">'+tcell(r[g])+'</p></div>'
-    +'<span class="aq-grades__lanes" role="img" aria-label="'+e(s)+'">'+lanes(r[g])+'</span></li>'}).join('')+'</ol>',b.fold_noun||'steps')+'</div>');};
+    +lanes(r[g])+'</li>'}).join('')+'</ol>',b.fold_noun||'steps')+'</div>',{block:['Aquemi',b.nav||'Water grades',R.length+' steps']}));};
 /* Block "grid" -> LinkGrid: choices as rows of the shared list grammar (.aq-rows): index, title, one line, optional tag.
    Fields: h, intro (section head), items [{t, d, link, tag}]; "as": "route" (below). An item that links to a page is one <a>; one whose
    link page has a drawing in ART (parts/Hero.js) shows it small at the row's end on desktop (aria-hidden, hidden on phones). */
 BLOCKS['grid']=function(b,H){if(b.as==='route'&&(b.items||[]).length)return BLOCKS['grid'].route(b,H);var I=b.items||[],IC=wIcons(b);return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-linkgrid">'+I.map(function(it,i){
  return fli(wRow(i,it.t,it.d,it.link,it.link,it.tag,IC[i]),b,i)}).join('')+'</ol>',b.fold_noun||'items'));};
-/* "as": "route" -> VisitRoute: the items as numbered stops on one dashed route (a visit's order). Desktop: rows of
-   3 or 4 stops that run left to right, then right to left, joined by U-turns; phones: one vertical route. DOM order is
-   the route order. Items keep {t, d, link}; "end": true on the last item makes it the sign-off (a tick, not a number).
-   No fold: a route shows every stop. */
-BLOCKS['grid'].route=function(b,H){var I=b.items||[],n=I.length,C=n<=4?n:(n%4===0||n%4===3)?4:3;
- return sec(H+'<ol class="aq-visit-route" style="--cols:'+C+'">'+I.map(function(it,i){var r=Math.floor(i/C),k=i%C,rtl=r%2===1,inRow=Math.min(C,n-r*C),
-  c=rtl?C-k:k+1,cls=['aq-visit-route__stop',rtl?'is-rtl':'is-ltr'];
-  if(k===0&&i>0)cls.push('is-in');if(i===n-1)cls.push('is-last');else if(k===inRow-1)cls.push('is-turn');if(it.end&&i===n-1)cls.push('is-end');
-  var mark=it.end&&i===n-1?'<span class="aq-visit-route__n" aria-hidden="true"><svg viewBox="0 0 16 16" focusable="false"><path d="M3 8.5 6.5 12 13 4.5"/></svg></span>':'<span class="aq-visit-route__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>',
-   inner=mark+'<h3 class="aq-visit-route__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-visit-route__d">'+tx(it.d)+'</p>':'');
-  return '<li class="'+cls.join(' ')+'" style="--c:'+c+';--r:'+(r+1)+'">'+(it.link&&wp(it.link)?'<a class="aq-visit-route__body" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-visit-route__body">'+inner+'</div>')+'</li>'}).join('')+'</ol>');};
-/* Block "options" -> OptionList: configuration options as rows of the shared list grammar: index, title, one line. */
-BLOCKS['options']=function(b,H){var I=b.items||[],IC=wIcons(b);return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d,0,0,0,IC[i]),b,i)}).join('')+'</ol>',b.fold_noun||'options'));};
+/* "as": "route" -> VisitRoute: the items as numbered stops on one dashed route (a visit's order), drawn on a cream plate.
+   Desktop: rows of 3 or 4 stops that run left to right, then right to left, joined by U-turns; phones: one vertical route.
+   DOM order is the route order. Items keep {t, d, link, spot}; spot: a Spot name (assets/spots) or, failing a fitting spot, an Icon name, the stop's vignette, used
+   only when every stop has one (otherwise the stops are bare numbered tags). "end": true on the last item makes it the
+   sign-off (a tick, not a number, and a "Sign-off" caption). No fold: a route shows every stop. */
+BLOCKS['grid'].route=function(b,H){var I=b.items||[],n=I.length,C=n<=4?n:(n%4===0||n%4===3)?4:3,sp=I.every(function(it){return isVig(it.spot)});
+ return sec(H+wPlate('<ol class="aq-visit-route'+(sp?' aq-visit-route--spots':'')+'" style="--cols:'+C+'">'+I.map(function(it,i){var r=Math.floor(i/C),k=i%C,rtl=r%2===1,inRow=Math.min(C,n-r*C),
+  c=rtl?C-k:k+1,cls=['aq-visit-route__stop',rtl?'is-rtl':'is-ltr'],end=it.end&&i===n-1;
+  if(k===0&&i>0)cls.push('is-in');if(i===n-1)cls.push('is-last');else if(k===inRow-1)cls.push('is-turn');if(end)cls.push('is-end');
+  var tag='<span class="aq-visit-route__n">'+(end?'<svg viewBox="0 0 16 16" focusable="false"><path d="M3 8.5 6.5 12 13 4.5"/></svg>':(i<9?'0':'')+(i+1))+'</span>',
+   inner='<span class="aq-visit-route__fig" aria-hidden="true">'+(sp?wSpot(it.spot,'l','aq-visit-route__spot'):'')+tag+'</span>'
+    +(end?'<span class="aq-visit-route__cap">Sign-off</span>':'')+'<h3 class="aq-visit-route__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-visit-route__d">'+tx(it.d)+'</p>':'');
+  return '<li class="'+cls.join(' ')+'" style="--c:'+c+';--r:'+(r+1)+'">'+(it.link&&wp(it.link)?'<a class="aq-visit-route__body" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-visit-route__body">'+inner+'</div>')+'</li>'}).join('')+'</ol>',{light:true,cls:'aq-visit-route__plate',block:['Route','Stops '+(n<10?'0':'')+n]}));};
+/* Block "options" -> OptionList: configuration options as rows of the shared list grammar: index, title, one line.
+   as: "modules" -> OptionModules: the options drawn as framed modules around the page's own equipment drawing (the base
+   skid), joined to it by dashed connectors. Item fields: t, d, spot (Spot or Icon name, wSpot), tag (category label above
+   the box, optional). Block fields: art (drawing page id, default the current page), base (label, default "Base skid"). */
+function wOptModule(it,i,b,side){var v=wSpot(it.spot||it.icon,'s','aq-spot--on-navy aq-option-modules__vig');
+ return fli('<li class="aq-option-modules__m aq-option-modules__m--'+side+'">'+(it.tag?'<p class="aq-option-modules__cat">'+tx(it.tag)+'</p>':'')
+  +'<div class="aq-option-modules__box'+(v?'':' aq-option-modules__box--bare')+'"><h3 class="aq-option-modules__t"><span>'+tx(it.t)+'</span><span class="aq-option-modules__plus" aria-hidden="true">[+]</span></h3>'
+  +v+(it.d?'<p class="aq-option-modules__d">'+tx(it.d)+'</p>':'')
+  +'<svg class="aq-option-modules__wire" aria-hidden="true"><line x1="0" y1="50%" x2="100%" y2="50%"/><circle cx="'+(side==='l'?'100%':'0')+'" cy="50%" r="2.5"/></svg></div></li>',b,i)}
+function wOptModules(b,H){var I=b.items||[],art=b.art||WP,pg=wp(art),half=Math.ceil(I.length/2),hasArt=!!ART[art];
+ var L=I.slice(0,half),R=I.slice(half);
+ var base=hasArt?wPlate('<figure class="aq-option-modules__fig"><span class="aq-illustration aq-option-modules__art" role="img" aria-label="'+e(ART[art])+'" style="'+artMask(art)+'"></span>'
+   +'<figcaption class="aq-option-modules__label"><span>'+tx(b.base||'Base skid')+'</span>'+(pg&&pg.nav_label?'<span>'+tx(pg.nav_label)+'</span>':'')+'</figcaption></figure>',{cls:'aq-option-modules__base'}):'';
+ var list=function(X,o,side){return X.length?'<ol class="aq-option-modules__list aq-option-modules__list--'+side+'"'+(o?' start="'+(o+1)+'"':'')+'>'+X.map(function(it,k){return wOptModule(it,o+k,b,side)}).join('')+'</ol>':''};
+ var inner='<div class="aq-options aq-option-modules'+(hasArt?'':' aq-option-modules--bare')+'">'+list(L,0,'l')+base+list(R,half,'r')+'</div>';
+ return sec(H+wFold(b,I.length,inner,b.fold_noun||'options'))}
+BLOCKS['options']=function(b,H){if(b.as==='modules')return wOptModules(b,H);var I=b.items||[],IC=wIcons(b);return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d,0,0,0,IC[i]),b,i)}).join('')+'</ol>',b.fold_noun||'options'));};
 /* Block "path" -> WaterPath */
 BLOCKS['path']=function(b,H){return sec(H+wPath(b));};
-/* Table as "plans" -> PlanTiers: service plans side by side, one action per plan. Fields as a table: cols [row label,
-   plan A, plan B, …], rows [feature, value per plan]. A row whose label starts "Suits" becomes each plan's one-line
-   subtitle under its name; a row starting "Price" shows prominently under it. A column named "No plan…" is the
-   baseline: quieter, last, no button. b.recommend (column index or plan name) raises that plan with a quiet
-   "Most chosen" marker; only when the page says so. Each plan ends with the page's own CTA (primary_cta, its link and
-   intent; else cta.button), so no new intents. Desktop: a label column, then the plans, rows aligned across plans
-   (subgrid). Phones: plans stacked, each feature labelled. fold: N shows the first N features in every plan. */
+/* Table as "plans" -> PlanTiers: service plans compared in one table on a cream drawing plate, one action per plan.
+   Fields as a table: cols [row label, plan A, plan B, …], rows [feature, value per plan]. A row whose label starts
+   "Suits" becomes the "Fits when" row under the table; every other row is a numbered feature row (01, 02 …). A column
+   named "No plan…" is the baseline: quieter, last, no button. b.recommend (column index or plan name) frames that
+   plan in a thick flow outline with a "Recommended" tab and a flow-tint fill; only when the page says so. Each plan
+   ends with the page's own CTA (primary_cta, its link and intent; else cta.button), so no new intents.
+   Desktop: a real table, label column then one column per plan. Phones: a tier switcher (buttons with aria-pressed)
+   shows one plan's column at a time; every tier stays in the DOM and the renderer only sets data-show, so with no
+   script all tiers show, each value captioned with its plan. fold: N shows the first N feature rows. */
 TABLE_AS.plans=function(b,H){var C=b.cols||[],R=b.rows||[],lab=function(r){return String(r[0]&&r[0].t||r[0]||'')};
- var suits=R.filter(function(r){return /^suits/i.test(lab(r))})[0],price=R.filter(function(r){return /^price/i.test(lab(r))})[0];
- var rows=R.filter(function(r){return r!==suits&&r!==price});
+ var suits=R.filter(function(r){return /^suits/i.test(lab(r))})[0],rows=R.filter(function(r){return r!==suits});
  var p=W().filter(function(q){return (q.blocks||[]).indexOf(b)>=0})[0]||wp(WP)||{},c=p.cta||{};
  var label=p.primary_cta||c.button||'Request a proposal',link=p.primary_cta?ctaLink(p):(c.link||'contact-proposal'),intent=p.primary_cta?p.primary_cta_intent:c.intent;
- var rec=typeof b.recommend==='number'?b.recommend:b.recommend?C.map(function(x){return String(x&&x.t||x)}).indexOf(String(b.recommend)):-1;
- var feats=function(r,i){return fli('<div class="aq-plan-tiers__row">',b,i)};
- var plans=C.slice(1).map(function(name,k){var j=k+1,n=String(name&&name.t||name),base=/^no\b/i.test(n);
-  return '<article class="aq-plan-tiers__plan'+(j===rec?' is-rec':'')+(base?' is-base':'')+'">'
-   +'<header class="aq-plan-tiers__head">'+(j===rec?'<p class="aq-plan-tiers__mark">Most chosen</p>':'')
-   +'<h3 class="aq-plan-tiers__name">'+tcell(name)+'</h3>'
-   +(suits&&suits[j]?'<p class="aq-plan-tiers__suits">'+tcell(suits[j])+'</p>':'')
-   +(price&&price[j]?'<p class="aq-plan-tiers__price"><span class="aq-plan-tiers__k">'+tcell(price[0])+'</span>'+tcell(price[j])+'</p>':'')+'</header>'
-   +'<dl class="aq-plan-tiers__rows">'+rows.map(function(r,i){return feats(r,i)+'<dt>'+tcell(r[0])+'</dt><dd>'+tcell(r[j])+'</dd></div>'}).join('')+'</dl>'
-   +'<div class="aq-plan-tiers__action">'+(base?'':wBtn(label,link,j===rec?null:'secondary',intent).replace('<a ','<a aria-label="'+e(label+': '+n)+'" '))+'</div></article>'}).join('');
- var labels='<div class="aq-plan-tiers__labels" aria-hidden="true"><div class="aq-plan-tiers__lhead"></div>'+rows.map(function(r,i){return fli('<div class="aq-plan-tiers__label">',b,i)+tcell(r[0])+'</div>'}).join('')+'<div></div></div>';
- return sec(H+wFold(b,rows.length,'<div class="aq-plan-tiers'+(rec>0?' has-rec':'')+'" style="--plan-rows:'+rows.length+'">'+labels+plans+'</div>',b.fold_noun||'features'));};
+ var names=C.map(function(x){return String(x&&x.t||x||'')});
+ var rec=typeof b.recommend==='number'?b.recommend:b.recommend?names.indexOf(String(b.recommend)):-1;
+ var T=C.slice(1).map(function(x,k){var j=k+1;return {j:j,n:names[j],base:/^no\b/i.test(names[j]),rec:j===rec}});
+ var show=rec>0?rec:(T.filter(function(t){return !t.base})[0]||T[0]||{j:1}).j;
+ var cls=function(t,x){return ' class="aq-plan-tiers__c t'+t.j+(t.rec?' is-rec':'')+(t.base?' is-base':'')+(x?' '+x:'')+'"'};
+ var cap=function(t){return '<span class="aq-plan-tiers__cap" aria-hidden="true">'+tx(t.n)+'</span>'};
+ var head='<thead><tr><td class="aq-plan-tiers__corner"></td>'+T.map(function(t){return '<th scope="col"'+cls(t,'aq-plan-tiers__name')+'>'
+  +(t.rec?'<span class="aq-plan-tiers__mark">Recommended</span>':'')+tx(t.n)+'</th>'}).join('')+'</tr></thead>';
+ var body='<tbody>'+rows.map(function(r,i){return fli('<tr class="aq-plan-tiers__row">',b,i)
+  +'<th scope="row" class="aq-plan-tiers__label"><span class="aq-index" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span>'+tcell(r[0])+'</span></th>'
+  +T.map(function(t){return '<td'+cls(t)+'>'+cap(t)+'<span class="aq-plan-tiers__v">'+tcell(r[t.j])+'</span></td>'}).join('')+'</tr>'}).join('')+'</tbody>';
+ var foot='<tbody class="aq-plan-tiers__foot">'+(suits?'<tr class="aq-plan-tiers__fits"><th scope="row" class="aq-plan-tiers__label"><span>Fits when</span></th>'
+  +T.map(function(t){return '<td'+cls(t)+'>'+cap(t)+(suits[t.j]?tcell(suits[t.j]):'')+'</td>'}).join('')+'</tr>':'')
+  +'<tr class="aq-plan-tiers__actions"><td class="aq-plan-tiers__corner"></td>'+T.map(function(t){return '<td'+cls(t)+'>'
+  +(t.base?'':wBtn(label,link,t.rec?null:'secondary',intent).replace('<a ','<a aria-label="'+e(label+': '+t.n)+'" '))+'</td>'}).join('')+'</tr></tbody>';
+ var sw='<div class="aq-plan-tiers__switch" role="group" aria-label="Show one plan">'+T.map(function(t){return '<button type="button" class="aq-plan-tiers__tab'+(t.rec?' is-rec':'')+'" data-tier="'+t.j+'" aria-pressed="'+(t.j===show?'true':'false')+'">'
+  +(t.rec?'<span class="aq-plan-tiers__tabmark">Recommended</span>':'')+'<span>'+tx(t.n)+'</span></button>'}).join('')+'</div>';
+ var table='<div class="aq-plan-tiers'+(rec>0?' has-rec':'')+'" data-show="'+show+'" style="--tiers:'+T.length+'">'+sw
+  +'<table class="aq-plan-tiers__table">'+head+body+foot+'</table></div>';
+ return sec(H+wPlate(wFold(b,rows.length,table,b.fold_noun||'features'),{light:true,cls:'aq-plan-tiers__plate',block:['Aquemi',b.nav||'Plans',T.length+' plans']}));};
+/* Tier switcher (phones): show the pressed plan's column; arrow keys move between the buttons */
+document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-plan-tiers__tab');if(!t)return;var w=t.closest('.aq-plan-tiers');
+ w.setAttribute('data-show',t.getAttribute('data-tier'));w.querySelectorAll('.aq-plan-tiers__tab').forEach(function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});
+document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-plan-tiers__tab');if(!t||(ev.key!=='ArrowRight'&&ev.key!=='ArrowLeft'))return;
+ var a=[].slice.call(t.parentNode.querySelectorAll('.aq-plan-tiers__tab')),n=a[(a.indexOf(t)+(ev.key==='ArrowRight'?1:a.length-1))%a.length];ev.preventDefault();n.focus();n.click()});
 /* Block "prose" -> Prose in SplitSection: heading left, text right. Fields: h, body (paragraphs); "as": "explainer" (below).
    The first sentence of body[0] is set as the lead; the rest follow as plain paragraphs. No grid, frame or margin notes
    (an old "notes" field is ignored). Standards and figures stay inline in the text. */
@@ -611,22 +690,32 @@ BLOCKS['prose']=function(b,H){
    it unnumbered; n puts a point's number on the bar), or {kind: "art", art: "<page id>"} shows that page's equipment
    drawing (ART in parts/Hero.js) with the points' numbers on it. No figure: the callouts alone, two columns. */
 function exNum(n){return '<span class="aq-explainer__mark" aria-hidden="true">'+n+'</span>'}
+/* Point heads are set in uppercase mono; units keep their case ("EU/mL", not "EU/ML"). */
+var EX_UNIT=/(EU\/mL|µS\/cm|mg\/L|ng\/L|cfu\/\d+\s?mL|mL|ppb|ppm|pH|°C|m³\/h|L\/h|kg|nm)/;
+function exHead(t){return String(t||'').split(EX_UNIT).map(function(x,i){return i%2?'<span class="aq-explainer__unit">'+tx(x)+'</span>':tx(x)}).join('')}
+/* Levels: test-tube columns with a scale, filled to a value; the limit a dashed fail rule labelled in fail. Each bar is
+   annotated from its own position against the limit: below it a dimension line marks the margin, at or above it
+   "No margin". */
 function exLevels(f){var L=f.limit||{},u=L.unit?' '+L.unit:'',AT=70;
  var bars=(f.bars||[]).map(function(r){var h,lv=r.level,num=typeof r.v==='number'&&typeof L.v==='number'&&L.v>0;
   if(num){var q=r.v/L.v;h=Math.max(6,Math.min(96,AT*q));lv=q<1?'below':q>1?'above':'at'}else h=lv==='at'?AT:lv==='above'?92:AT*0.4;
   return {r:r,h:Math.round(h),lv:lv||'below',num:num}});
  return '<figure class="aq-explainer__fig aq-levels" style="--cols:'+bars.length+'">'
-  +'<div class="aq-levels__plot" aria-hidden="true"><div class="aq-levels__limit" style="--at:'+AT+'%"><span>'+tx(L.label||((L.v!=null?L.v:'')+u+' limit'))+'</span></div>'
-  +bars.map(function(x){return '<div class="aq-levels__col"><span class="aq-levels__tube"><span class="aq-levels__fill is-'+x.lv+'" style="--h:'+x.h+'%">'
-   +(x.r.n?exNum(x.r.n):'')+(x.num?'<span class="aq-levels__v">'+tx((x.r.shown||x.r.v)+u)+'</span>':'')+'</span></span></div>'}).join('')+'</div>'
-  +'<figcaption class="aq-levels__keys">'+bars.map(function(x){return '<p class="aq-levels__key"><span class="aq-levels__label">'+tx(x.r.label)+'</span>'
+  +'<div class="aq-levels__plot" aria-hidden="true" style="--at:'+AT/100+'"><div class="aq-levels__limit"><span>'+tx(L.label||((L.v!=null?L.v:'')+u+' limit'))+'</span></div>'
+  +bars.map(function(x){return '<div class="aq-levels__col"><span class="aq-levels__tube" style="--h:'+x.h+'%"><span class="aq-levels__glass"><span class="aq-levels__fill is-'+x.lv+'"></span></span>'
+   +'<span class="aq-levels__top">'+(x.r.n?exNum(x.r.n):'')+(x.num?'<span class="aq-levels__v">'+tx((x.r.shown||x.r.v)+u)+'</span>':'')+'</span>'
+   +(x.lv==='below'?'<span class="aq-levels__gap is-margin"><span>Margin</span></span>':'<span class="aq-levels__gap is-none"><span>No margin</span></span>')
+   +'</span></div>'}).join('')+'</div>'
+  +'<figcaption class="aq-levels__keys">'+bars.map(function(x){return '<p class="aq-levels__key"><span class="aq-levels__label">'+exHead(x.r.label)+'</span>'
    +(x.r.note?'<span class="aq-levels__note">'+tx(x.r.note)+'</span>':'')+'</p>'}).join('')+'</figcaption></figure>'}
 function exArt(f,P){var id=f.art;if(!id||!ART[id])return '';
  return '<figure class="aq-explainer__fig aq-explainer__fig--art"><span class="aq-illustration" role="img" aria-label="'+e(ART[id])+'" style="'+artMask(id)+'"></span>'
   +P.map(function(p,i){var a=p.at;return a&&a.length===2?'<span class="aq-explainer__pin" style="left:'+(+a[0])+'%;top:'+(+a[1])+'%">'+exNum(i+1)+'</span>':''}).join('')+'</figure>'}
+/* The figure sits on a cream drawing Plate (wPlate light) with the section's nav name in its title block. */
 function explainer(b,H){var P=b.points.slice(0,4),f=b.figure||{},fig=f.kind==='levels'?exLevels(f):f.kind==='art'?exArt(f,P):'';
+ if(fig)fig=wPlate(fig,{light:true,cls:'aq-explainer__plate',block:['Aquemi',b.nav||'Figure']});
  return sec(H+'<div class="aq-explainer'+(fig?'':' aq-explainer--bare')+'">'+fig+'<ol class="aq-explainer__points">'+P.map(function(p,i){
-  return '<li>'+idx(i).replace('aq-index','aq-index aq-explainer__n')+'<h3 class="aq-explainer__t">'+tx(p.t)+'</h3>'+(p.d?'<p class="aq-explainer__d">'+tx(p.d)+'</p>':'')+'</li>'}).join('')+'</ol></div>')}
+  return '<li>'+idx(i).replace('aq-index','aq-index aq-explainer__n')+'<h3 class="aq-explainer__t">'+exHead(p.t)+'</h3>'+(p.d?'<p class="aq-explainer__d">'+tx(p.d)+'</p>':'')+'</li>'}).join('')+'</ol></div>')}
 })();
 /* Block "readout" -> Readout: one figure on an instrument face, unit set vertically beside it, the method in a boxed
    tag on the reference line, the body as caption, and a decorative tick scale. The value string is only split, never
@@ -657,20 +746,24 @@ BLOCKS['readout']=function(b,H){
      topic · standard · status.
    - Featured panel beside the register (above it on phones): the item with featured: true, else the first item of
      the first topic, labelled "Latest" when it has a date, "Next planned" when not. Shows its number, title, d (one
-     line), standard and the page it links to; that page's equipment drawing (ART) when it has one, aria-hidden.
-   - fold: N shows the first N rows under "All"; fold_noun names them ("Show all 24 notes"). Navy by default; works on
-     a light sheet with ground: "light". */
+     line), standard and the page it links to; an equipment Spot vignette (item.spot, else REG_SPOT by its link page),
+     aria-hidden.
+   - Drawn on a cream plate (wPlate light, title block "Aquemi | Notes register"), chips as [bracketed] mono tags in a
+     framed filter bar, the register a fully ruled table.
+   - fold: N shows the first N rows under "All"; fold_noun names them ("Show all 24 notes"). */
+var REG_SPOT={'sys-monitoring':'toc','sys-pw':'ro-skid','sys-wfi-membrane':'ro-skid','sys-wfi-distillation':'still','sys-pure-steam':'pure-steam-generator',
+ 'sys-storage':'storage-tank','sys-pretreatment':'pretreatment','svc-service':'filter-service','svc-fabrication':'orbital-welder','svc-fat-sat':'test-bay','svc-design':'design-desk','svc-cq':'signed-report','cmp-documentation':'binder-docs'};
 BLOCKS['register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)return sec(H);
  var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){return it.date?tx(it.date):'<span class="aq-notes-register__planned">Planned</span>'};
  var fi=-1;I.forEach(function(it,i){if(fi<0&&it.featured)fi=i});if(fi<0)I.forEach(function(it,i){if(fi<0&&it.topic===T[0])fi=i});if(fi<0)fi=0;
- var f=I[fi],fl=f.link&&wp(f.link);
- var chips='<div class="aq-notes-register__filter" role="group" aria-label="Filter notes by topic"><button type="button" class="aq-notes-register__chip" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+'</span></button>'
+ var f=I[fi],fl=f.link&&wp(f.link),sp=f.spot||REG_SPOT[f.link]||'';sp=isVig(sp)?sp:'';
+ var chips='<div class="aq-notes-register__filter" role="group" aria-label="Filter notes by topic"><span class="aq-notes-register__fk" aria-hidden="true">Filter</span><button type="button" class="aq-notes-register__chip" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+'</span></button>'
   +T.map(function(t){var n=I.filter(function(it){return it.topic===t}).length;return '<button type="button" class="aq-notes-register__chip" aria-pressed="false" data-topic="'+e(t)+'">'+tx(t)+' <span aria-hidden="true">'+n+'</span></button>'}).join('')+'</div>';
  var panel='<aside class="aq-notes-register__feature" aria-label="'+(f.date?'Latest note':'Next planned note')+'">'
   +'<p class="aq-notes-register__flabel"><span>'+(f.date?'Latest':'Next planned')+'</span><span>No. '+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
   +'<h3 class="aq-notes-register__ft">'+tx(f.t)+'</h3>'+(f.d?'<p class="aq-notes-register__fd">'+tx(f.d)+'</p>':'')
   +(f.std?'<p class="aq-tags"><span class="aq-tag">'+e(f.std)+'</span></p>':'')
-  +(fl&&typeof ART!=='undefined'&&ART[f.link]?'<span class="aq-illustration aq-notes-register__art" aria-hidden="true" style="'+artMask(f.link)+'"></span>':'')
+  +(sp?'<span class="aq-notes-register__vig">'+wSpot(sp,'l','aq-notes-register__spot')+'</span>':'')
   +(fl?'<p class="aq-notes-register__go">Applied on '+wlink(f.link)+'</p>':'')+'</aside>';
  var rows=I.map(function(it,i){var tt=it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t);
   return fli('<tr'+(i===fi?' class="is-featured"':'')+' data-topic="'+e(it.topic||'')+'">',b,i)
@@ -678,8 +771,8 @@ BLOCKS['register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)r
    +'<td class="aq-notes-register__topic">'+tx(it.topic||'')+'</td><th scope="row" class="aq-notes-register__t">'+tt+'</th>'
    +'<td class="aq-notes-register__std">'+tx(it.std||'')+'</td></tr>'}).join('');
  var table='<table class="aq-notes-register__table"><thead><tr><th scope="col">Date</th><th scope="col">No.</th><th scope="col">Topic</th><th scope="col">Title</th><th scope="col">Standard</th></tr></thead><tbody>'+rows+'</tbody></table>';
- return sec(H+'<div class="aq-notes-register">'+chips+'<p class="aq-notes-register__count" aria-live="polite">'+I.length+' notes</p>'+panel
-  +'<div class="aq-notes-register__reg">'+wFold(b,I.length,table,b.fold_noun||'notes')+'</div></div>');};
+ return sec(H+wPlate('<div class="aq-notes-register">'+chips+'<p class="aq-notes-register__count" aria-live="polite">'+I.length+' notes</p>'+panel
+  +'<div class="aq-notes-register__reg">'+wFold(b,I.length,table,b.fold_noun||'notes')+'</div></div>',{light:true,cls:'aq-notes-register__plate',block:['Aquemi','Notes register']}));};
 document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.target.closest('.aq-notes-register__chip');if(!c)return;
  var r=c.closest('.aq-notes-register'),t=c.getAttribute('data-topic'),n=0,fd=r.querySelector('.aq-fold');
  r.querySelectorAll('.aq-notes-register__chip').forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
@@ -696,25 +789,35 @@ BLOCKS['related']=function(b,H){return sec(H+'<ol class="aq-related-links">'+(b.
 /* Table as "roles" -> RoleMatrix: who writes, does or approves each document, like the signature blocks on a controlled
    document. Fields as a table: cols [document, then one column per role], rows. Each role cell is a stamp labelled
    with its column name; a cell that starts with "Aquemi" is ours (tinted flow), one that starts with "You" or "Your" is
-   yours (outlined), anything else is shared (dashed). Desktop: index | document | stamps in a row. Phones: the stamps
-   sit side by side under the document. */
+   yours (outlined), anything else is shared (dashed). On a drawing plate, under a key strip. Each document is a framed
+   signature block: desktop, index and document in the first cell, then one ruled cell per role (label above stamp);
+   phones, the document as the block's header bar and the role cells side by side under it. */
 function roleParty(c){var s=String(c&&c.t||c||'');return /^aquemi/i.test(s)?'ours':/^(you|your)\b/i.test(s)?'yours':'shared'}
 TABLE_AS.roles=function(b,H){var C=b.cols||[],R=b.rows||[];
- return sec(H+'<div class="aq-roles"><p class="aq-roles__key" aria-hidden="true"><span class="aq-roles__stamp is-ours">Aquemi</span><span class="aq-roles__stamp is-yours">Your team</span><span class="aq-roles__stamp is-shared">Shared</span></p>'
+ return sec(H+wPlate('<div class="aq-roles"><p class="aq-roles__key" aria-hidden="true"><span class="aq-roles__keyk">Key</span><span class="aq-roles__stamp is-ours">Aquemi</span><span class="aq-roles__stamp is-yours">Your team</span><span class="aq-roles__stamp is-shared">Shared</span></p>'
   +wFold(b,R.length,'<ol class="aq-roles__rows">'+R.map(function(r,i){return fli('<li class="aq-roles__row">',b,i)+idx(i)+'<h3 class="aq-roles__t">'+tcell(r[0])+'</h3><div class="aq-roles__stamps">'
-   +r.slice(1).map(function(c,j){return '<p class="aq-roles__stamp is-'+roleParty(c)+'"><span class="aq-roles__k">'+tx(C[j+1]||'')+'</span>'+tcell(c)+'</p>'}).join('')+'</div></li>'}).join('')+'</ol>',b.fold_noun||'documents')+'</div>');};
+   +r.slice(1).map(function(c,j){return '<div class="aq-roles__cell"><p class="aq-roles__k">'+tx(C[j+1]||'')+'</p><p class="aq-roles__stamp is-'+roleParty(c)+'">'+tcell(c)+'</p></div>'}).join('')+'</div></li>'}).join('')+'</ol>',b.fold_noun||'documents')+'</div>',{block:['Aquemi',b.nav||'Roles',R.length+' documents']}));};
 /* Table as "router" -> Router: the buyer picks the situation they are in and sees one route through the columns that
    follow (the water they need, the system, where to start). Fields as a table: cols (first is the situation column,
    the rest name the stations), rows (first cell the situation, each other cell a string or {t, link}).
-   One situation is open at a time, the first by default. Desktop: situations on the left, the open route on the
-   right in a drawing frame, a pipe from the chosen situation to it. Phones: each route opens under its situation.
+   One situation is open at a time, the first by default. The whole router sits on a drawing plate. Desktop: situations
+   on the left, the open route on the right as framed stations joined by flow pipes with arrowheads, a pipe from the
+   chosen situation into it. Phones: each route opens under its situation, its stations down a riser.
+   A route whose cells link somewhere (the last link wins, usually "Start with") is clickable as a whole: the frame
+   carries a pointer-only overlay to that page; the real link inside stays the keyboard and screen reader target, and
+   that station is drawn as the filled end station.
    Every route is in the markup (hidden when closed), so nothing is lost to search or screen readers. */
 var routerN=0;
 TABLE_AS.router=function(b,H){var C=b.cols||[],R=b.rows||[],k=++routerN;
- return sec(H+'<div class="aq-router">'+R.map(function(r,i){var id='route-'+k+'-'+i,s=r[0]&&typeof r[0]==='object'?r[0].t:r[0];
+ function lnk(c){return c&&typeof c==='object'&&c.link&&wp(c.link)?c.link:''}
+ var inner='<div class="aq-router">'+R.map(function(r,i){var id='route-'+k+'-'+i,s=r[0]&&typeof r[0]==='object'?r[0].t:r[0],st=r.slice(1),go=-1;
+  st.forEach(function(c,j){if(lnk(c))go=j});var to=go>=0?lnk(st[go]):'';
   return '<button type="button" class="aq-router__opt" aria-expanded="'+(i?'false':'true')+'" aria-controls="'+id+'">'+idx(i)+'<span class="aq-router__t">'+tx(s)+'</span></button>'
-   +'<div class="aq-router__route" id="'+id+'" style="grid-row:1 / span '+R.length+'"'+(i?' hidden':'')+'><ol class="aq-router__stations">'+r.slice(1).map(function(c,j){
-    return '<li><p class="aq-router__k">'+tx(C[j+1]||'')+'</p><p class="aq-router__v">'+tcell(c)+'</p></li>'}).join('')+'</ol></div>'}).join('')+'</div>');};
+   +'<div class="aq-router__route'+(to?' is-link':'')+'" id="'+id+'" style="grid-row:1 / span '+R.length+'"'+(i?' hidden':'')+'>'
+   +(to?'<a class="aq-router__hit" href="#'+e(to)+'" data-wp="'+e(to)+'" tabindex="-1" aria-hidden="true"></a>':'')
+   +'<ol class="aq-router__stations">'+st.map(function(c,j){
+    return '<li'+(j===go?' class="is-go"':'')+'><p class="aq-router__k">'+tx(C[j+1]||'')+'</p><p class="aq-router__v">'+tcell(c)+'</p></li>'}).join('')+'</ol></div>'}).join('')+'</div>';
+ return sec(H+wPlate(inner,{block:['Aquemi',b.nav||'Router',R.length+' routes']}));};
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-router__opt');if(!t)return;var w=t.closest('.aq-router');
  [].forEach.call(w.querySelectorAll('.aq-router__opt'),function(o){var on=o===t;o.setAttribute('aria-expanded',on?'true':'false');document.getElementById(o.getAttribute('aria-controls')).hidden=!on})});
 /* Block "spec" -> SpecTable (spec sheet: two-column matrix).
@@ -743,40 +846,70 @@ BLOCKS['spec']=function(b,H){
 };
 
 /* ---------- "as": "gauges" -> LimitGauges ----------
-   Each row becomes a small instrument: an arc scale with the limit marked at three quarters of the arc and the side
-   that passes drawn in flow (below the limit for ≤ and <, above it for ≥ and >). Only the row's own number is used:
-   the first "≤ 1.3 µS/cm" in v (outside [placeholders]), or a v that opens with a number (an action level, read as an
-   upper limit). The scale has no other numbers, so nothing is invented. A row with no number (placeholder, "Not
-   required") is a plain readout cell. A row named "outlet" or "guaranteed" whose v has a number in the same unit as a
-   limit below it adds a second marker on that gauge, in proportion; a placeholder adds nothing.
-   The basis (m) prints under the value with standard names (USP <645>, Ph. Eur. 0008, EN 285 …) as tags. */
+   Each row becomes an instrument face on a cream drawing plate: a heavy scale arc with major and minor ticks and scale
+   numbers, the limit as an ink pointer with a "LIMIT ≤ 1.3" tag, a needle from the pivot resting on the limit (there is
+   no measured value, so the needle never shows a reading), the side that passes as a flow band (below the limit for ≤
+   and <, above it for ≥ and >), the limit as a large mono readout bottom right and the full value and basis as a small
+   spec list bottom left. Only the row's own number is used: the first "≤ 1.3 µS/cm" in v (outside [placeholders]), or a
+   v that opens with a number (an action level, read as an upper limit). The scale is derived from that limit alone:
+   0 to the next round number at least 20 % above it (5 % for ≥ and >), so its numbers are a ruler, not data.
+   A row with no number (placeholder, "Not required") is a readout cell: the same cell, the value as the readout, no dial.
+   A row named "outlet" or "guaranteed" whose v has a number in the same unit as a limit adds a dashed second marker on
+   that dial, at its place on the scale; a placeholder adds nothing.
+   The basis (m) prints with standard names (USP <645>, Ph. Eur. 0008, EN 285 …) as tags. */
 var GAUGE_STD=/(USP <\d+>|Ph\. Eur\. \d[\d.]*|EN \d+|ASTM [A-Z]\d+|Annex 1(?:, \d+\.\d+)?|ISO \d+|ASME BPE|GAMP 5|21 CFR Part 11)/;
-function gaugeParse(v){var s=String(v||'').replace(/\[[^\]]*\]/g,' '),m=s.match(/([≤<≥>])\s*(\d+(?:\.\d+)?)\s*([^@(;,]*)/),c;
+/* q: the rest of the value around "≤ 1.3 µS/cm" (qualifiers such as "@ 25 °C (stage 1)"); a unit too long for the
+   readout (over 8 characters) stays in q. Placeholders are blanked at their own length so indexes match v. */
+function gaugeParse(v){v=String(v||'');var s=v.replace(/\[[^\]]*\]/g,function(x){return Array(x.length+1).join(' ')}),m=s.match(/([≤<≥>])\s*(\d+(?:\.\d+)?)\s*([^@(;,]*)/),c;
   if(m)c=m[1];else{m=s.match(/^\s*()(\d+(?:\.\d+)?)\s*([^@(;,]*)/);c=''}
   if(!m)return null;
-  return {c:c,n:parseFloat(m[2]),t:m[2],u:m[3].replace(/\s+(on|of|at|in|for|to|when|before|after)\s.*$/,'').trim()}}
-function gaugeBasis(m){var p=String(m||'').split(GAUGE_STD);return p.map(function(s,i){return i%2?'<span class="aq-tag">'+e(s)+'</span>':i&&i<p.length-1&&/^\s*;\s*$/.test(s)?' ':tx(s)}).join('')}
-function gaugePt(f,r){var a=(160-140*f)*Math.PI/180;return [100+r*Math.cos(a),98-r*Math.sin(a)]}
+  var u=m[3].replace(/\s+(on|of|at|in|for|to|when|before|after)\s.*$/,'').trim(),k=m.index+m[0].length-m[3].length,
+   end=u&&u.length<=8?k+m[3].indexOf(u)+u.length:k,pre=v.slice(0,m.index).trim(),post=v.slice(end).trim();
+  return {c:c,n:parseFloat(m[2]),t:m[2],u:u,q:(pre&&post?pre+' · '+post:pre||post)}}
+function gaugeBasis(m){var p=String(m||'').split(GAUGE_STD);return p.map(function(s,i){return i%2?'<span class="aq-tag">'+e(s)+'</span>':i&&i<p.length-1&&/^\s*;\s*$/.test(s)?' ':/\S/.test(s)?'<span class="aq-limit-gauges__mt">'+tx(s)+'</span>':tx(s)}).join('')}
+/* Scale from the limit only: [max, major divisions]. Round maxima 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8 (x 10^k). */
+function gaugeScale(n,up){var t=n>0?n*(up?1.05:1.2):1,k=Math.pow(10,Math.floor(Math.log(t)/Math.LN10)),M=[[1,5],[1.5,3],[2,4],[2.5,5],[3,3],[4,4],[5,5],[6,3],[8,4],[10,5]];
+  for(var i=0;i<M.length;i++)if(M[i][0]*k>=t*(1-1e-9))return [M[i][0]*k,M[i][1]];return [10*k,5]}
+function gaugeNum(v){return String(parseFloat(v.toFixed(6)))}
+/* Geometry: viewBox 0 10 240 144, pivot (120,128), the scale sweeps 160° to 20°. The readout sits bottom right on a
+   hairline at y 146 run from the pivot's vertical (number above it, caption below), as on a panel meter. */
+function gaugePt(f,r){var a=(160-140*f)*Math.PI/180;return [120+r*Math.cos(a),128-r*Math.sin(a)]}
 function gaugeArc(f0,f1,r){var p=gaugePt(f0,r),q=gaugePt(f1,r);return 'M'+p[0].toFixed(1)+' '+p[1].toFixed(1)+' A'+r+' '+r+' 0 0 1 '+q[0].toFixed(1)+' '+q[1].toFixed(1)}
-function wDial(g,second){var L=0.75,up=g.c==='≥'||g.c==='>',ticks='',i;
-  for(i=0;i<=20;i++){var f=i/20,maj=i%5===0,p=gaugePt(f,86),q=gaugePt(f,maj?77:81);ticks+='<line x1="'+p[0].toFixed(1)+'" y1="'+p[1].toFixed(1)+'" x2="'+q[0].toFixed(1)+'" y2="'+q[1].toFixed(1)+'"'+(maj?' class="is-major"':'')+'/>'}
-  var a=gaugePt(L,92),b2=gaugePt(L,62),pos=function(f){var p=gaugePt(f,92);return 'left:'+(p[0]/2).toFixed(1)+'%;top:'+((p[1]+14)/94*100).toFixed(1)+'%'};
-  var two=second?'<line class="aq-limit-gauges__second" x1="'+gaugePt(second.f,92)[0].toFixed(1)+'" y1="'+gaugePt(second.f,92)[1].toFixed(1)+'" x2="'+gaugePt(second.f,62)[0].toFixed(1)+'" y2="'+gaugePt(second.f,62)[1].toFixed(1)+'"/>':'';
-  return '<div class="aq-limit-gauges__dial" aria-hidden="true"><svg viewBox="0 -14 200 94" focusable="false">'
-   +'<path class="aq-limit-gauges__track" d="'+gaugeArc(0,1,86)+'"/><g class="aq-limit-gauges__ticks">'+ticks+'</g>'
-   +'<path class="aq-limit-gauges__pass" d="'+(up?gaugeArc(L,1,70):gaugeArc(0,L,70))+'"/>'
-   +two+'<line class="aq-limit-gauges__limit" x1="'+a[0].toFixed(1)+'" y1="'+a[1].toFixed(1)+'" x2="'+b2[0].toFixed(1)+'" y2="'+b2[1].toFixed(1)+'"/></svg>'
-   +'<span class="aq-limit-gauges__mark" style="'+pos(L)+'">'+e((g.c?g.c+' ':'')+g.t)+'</span>'
-   +(second?'<span class="aq-limit-gauges__mark aq-limit-gauges__mark--second" style="'+pos(second.f)+'">'+e(second.t)+'</span>':'')+'</div>'}
+function gaugeLn(f,r0,r1,cls){var p=gaugePt(f,r0),q=gaugePt(f,r1);return '<line'+(cls?' class="'+cls+'"':'')+' x1="'+p[0].toFixed(1)+'" y1="'+p[1].toFixed(1)+'" x2="'+q[0].toFixed(1)+'" y2="'+q[1].toFixed(1)+'"/>'}
+function wDial(g,second,read){var up=g.c==='≥'||g.c==='>',S=gaugeScale(g.n,up),max=S[0],div=S[1],L=Math.min(g.n/max,1),i,ticks='',nums='';
+  for(i=0;i<=div*5;i++){var f=i/(div*5),maj=i%5===0;ticks+=gaugeLn(f,96,maj?85:90,maj?'is-major':'');
+    if(maj&&Math.abs(f-L)>0.09){var p=gaugePt(f,107);nums+='<text'+(i===0||i===div*5?' class="is-end"':'')+' x="'+p[0].toFixed(1)+'" y="'+(p[1]+3).toFixed(1)+'">'+gaugeNum(max*i/(div*5))+'</text>'}}
+  var a=(160-140*L)*Math.PI/180,tip=gaugePt(L,97),w1=gaugePt(L,104),ca=Math.cos(a),sa=Math.sin(a),
+   ptr='M'+tip[0].toFixed(1)+' '+tip[1].toFixed(1)+' L'+(w1[0]-4*sa).toFixed(1)+' '+(w1[1]-4*ca).toFixed(1)+' L'+(w1[0]+4*sa).toFixed(1)+' '+(w1[1]+4*ca).toFixed(1)+'Z';
+  /* Limit chip: beside the pointer on the left half of the arc; past the crown it parks in the dial's top right corner,
+     clear of the scale, so it never sits on the ticks of a limit near the end of the scale */
+  var tag=gaugePt(L,112),right=tag[0]>150,pos=right?'right:0;top:0':'left:'+(tag[0]/2.4).toFixed(1)+'%;top:'+((tag[1]-10)/144*100).toFixed(1)+'%';
+  var two=second?gaugeLn(Math.min(second.f,1),96,66,'aq-limit-gauges__second'):'',p2=second&&gaugePt(Math.min(second.f,1),58);
+  return '<div class="aq-limit-gauges__dial" aria-hidden="true"><svg viewBox="0 10 240 144" focusable="false">'
+   +'<path class="aq-limit-gauges__inner" d="'+gaugeArc(0,1,68)+'"/>'
+   +'<path class="aq-limit-gauges__pass" d="'+(up?gaugeArc(L,1,76):gaugeArc(0,L,76))+'"/>'
+   +'<path class="aq-limit-gauges__track" d="'+gaugeArc(0,1,96)+'"/><g class="aq-limit-gauges__ticks">'+ticks+'</g>'
+   +'<g class="aq-limit-gauges__nums">'+nums+'</g>'+two
+   +'<g class="aq-limit-gauges__cross"><line x1="106" y1="128" x2="134" y2="128"/><line x1="120" y1="104" x2="120" y2="154"/><line x1="120" y1="146" x2="240" y2="146"/></g>'
+   +gaugeLn(L,0,92,'aq-limit-gauges__needle')+'<circle class="aq-limit-gauges__pivot" cx="120" cy="128" r="3"/>'
+   +gaugeLn(L,96,82,'aq-limit-gauges__limit')+'<path class="aq-limit-gauges__ptr" d="'+ptr+'"/></svg>'
+   +'<span class="aq-limit-gauges__mark'+(right?' is-right':'')+'" style="'+pos+'"><span class="aq-limit-gauges__mark-k">Limit </span>'+e((g.c?g.c+' ':'')+g.t)+'</span>'
+   +(second?'<span class="aq-limit-gauges__mark aq-limit-gauges__mark--second" style="left:'+(p2[0]/2.4).toFixed(1)+'%;top:'+((p2[1]-10)/144*100).toFixed(1)+'%">'+e(second.t)+'</span>':'')+(read||'')+'</div>'}
 function wGauges(b,rows){
   var P=rows.map(function(r){return gaugeParse(r.v)}),outlet=/outlet|guarantee/i,sec2={};
   rows.forEach(function(r,i){var o=P[i];if(!o||!outlet.test(r.p))return;
-    P.forEach(function(g,j){if(sec2[j]||j===i||!g||outlet.test(rows[j].p)||g.u!==o.u||g.c==='≥'||g.c==='>'||!(o.n<g.n))return;sec2[j]={f:0.75*o.n/g.n,t:o.t}});P[i]=null});
-  var list=rows.map(function(r,i){var g=P[i];
+    P.forEach(function(g,j){if(sec2[j]||j===i||!g||outlet.test(rows[j].p)||g.u!==o.u||g.c==='≥'||g.c==='>'||!(o.n<g.n))return;sec2[j]={f:o.n/gaugeScale(g.n,false)[0],t:o.t}});P[i]=null});
+  var list=rows.map(function(r,i){var g=P[i],up=g&&(g.c==='≥'||g.c==='>');
+    /* Readout: the limit with a short unit; a long one ("mL per 100 mL") stays in the spec list only */
+    var read=g?'<span class="aq-limit-gauges__read"><span class="aq-limit-gauges__line"><span class="aq-limit-gauges__num">'+e((g.c?g.c+' ':'')+g.t)+'</span>'+(g.u&&g.u.length<=8?' <span class="aq-limit-gauges__unit">'+tx(g.u)+'</span>':'')
+      +'</span><span class="aq-limit-gauges__cap'+(g.q?' is-q">'+tx(g.q):'">'+(up?'Lower limit':'Upper limit'))+'</span></span>':'';
+    /* With a dial the chip and readout show the limit, so the full value is kept for screen readers only */
+    var spec='<dl class="aq-limit-gauges__spec"><div'+(g?' class="aq-limit-gauges__sr"':'')+'><dt>'+(g?'Limit':'Value')+'</dt><dd class="aq-limit-gauges__v">'+tx(r.v)+'</dd></div>'
+      +(r.m?'<div><dt>Basis</dt><dd class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</dd></div>':'')+'</dl>';
     return fli('<li class="aq-limit-gauges__item'+(g?'':' is-readout')+(r.hl?' is-key':'')+'">',b,i)
-     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i]):'')
-     +'<p class="aq-limit-gauges__v">'+tx(r.v)+'</p>'+(r.m?'<p class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</p>':'')+'</li>'}).join('');
-  return wFold(b,rows.length,'<ul class="aq-limit-gauges" role="list">'+list+'</ul>',b.fold_noun||'limits')}
+     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read):'')
+     +'<div class="aq-limit-gauges__foot">'+spec+'</div></li>'}).join('');
+  return wPlate(wFold(b,rows.length,'<ul class="aq-limit-gauges" role="list">'+list+'</ul>',b.fold_noun||'limits'),{light:true,block:['Aquemi',b.caption||'Limits']})}
 
 /* ---------- "as": "callouts" -> ParameterCallouts ----------
    The page's own equipment drawing (ART[page id], the Illustration mask the hero uses) with leader lines to numbered
@@ -808,20 +941,23 @@ function wCallouts(b,rows){
   return fig+'</div>'}
 /* Block "standards-map" -> StandardsMap: a plant map of the water system, each zone (generation, storage and distribution,
    pure steam, controls and data, fabrication, qualification) a dashed framed area hanging off one pipe header, labelled with
-   the standards that govern it. Fields: zones [{t, codes: ["USP <645>", ...], to, icon}]. to: the id of the section that
+   the standards that govern it. Fields: zones [{t, codes: ["USP <645>", ...], to, spot, icon}]. to: the id of the section that
    holds the proof (a block's anchor, or its nav id s-N-label); the zone title jumps there. Each code is a chip that scrolls
    to the row naming it: first inside the zone's section, then anywhere on the page; a folded row is unfolded first and
-   flashes once. A code may be {t, to} to send that one code to another section. icon: an Icon name (optional; all or none).
+   flashes once. A code may be {t, to} to send that one code to another section. spot: a Spot name (assets/spots) or an Icon name, the zone's equipment vignette, all or none; with
+   spots the map sits on a drawing plate. icon: an Icon name, used only without spots (all or none).
    Desktop: the first half of the zones above the pipe, the rest below, a branch from each to the pipe. Phones: zones stacked
    as compact rows on a vertical pipe, codes as chips. Navy ground. Only standards the page already lists. */
-BLOCKS['standards-map']=function(b,H){var Z=b.zones||[],top=Math.ceil(Z.length/2),ic=Z.length&&Z.every(function(z){return isIcon(z.icon)});
- return sec(H+'<div class="aq-standards-map"><ol class="aq-standards-map__zones" style="--cols:'+Math.max(top,1)+'">'+Z.map(function(z,i){var up=i<top,
+BLOCKS['standards-map']=function(b,H){var Z=b.zones||[],top=Math.ceil(Z.length/2),sp=Z.length&&Z.every(function(z){return isVig(z.spot)}),ic=!sp&&Z.length&&Z.every(function(z){return isIcon(z.icon)});
+ var map='<div class="aq-standards-map'+(sp?' aq-standards-map--spots':'')+'"><ol class="aq-standards-map__zones" style="--cols:'+Math.max(top,1)+'">'+Z.map(function(z,i){var up=i<top,
    to=z.to||'',t=to?'<a href="#'+e(WP)+'" data-jump="'+e(to)+'">'+tx(z.t)+'</a>':tx(z.t);
    return '<li class="aq-standards-map__zone '+(up?'is-up':'is-down')+'" style="grid-area:'+(up?1:3)+' / '+((up?i:i-top)+1)+'">'
-    +'<div class="aq-standards-map__head">'+(ic?wIcon(z.icon,'aq-standards-map__icon'):idx(i))+'<h3 class="aq-standards-map__t">'+t+'</h3></div>'
+    +(sp?'<span class="aq-standards-map__fig" aria-hidden="true">'+wSpot(z.spot,'m','aq-standards-map__spot')+'</span>':'')
+    +'<div class="aq-standards-map__label"><div class="aq-standards-map__head">'+(sp?'':ic?wIcon(z.icon,'aq-standards-map__icon'):idx(i))+'<h3 class="aq-standards-map__t">'+t+'</h3></div>'
     +'<ul class="aq-standards-map__codes">'+(z.codes||[]).map(function(c){var ct=c&&typeof c==='object'?c.t:c,cto=(c&&typeof c==='object'&&c.to)||to;
-     return '<li><a class="aq-standards-map__code" href="#'+e(WP)+'" data-smap-code="'+e(ct)+'" data-smap-to="'+e(cto)+'">'+tx(ct)+'</a></li>'}).join('')+'</ul></li>'}).join('')
-  +'</ol></div>');};
+     return '<li><a class="aq-standards-map__code" href="#'+e(WP)+'" data-smap-code="'+e(ct)+'" data-smap-to="'+e(cto)+'">'+tx(ct)+'</a></li>'}).join('')+'</ul></div></li>'}).join('')
+  +'</ol></div>';
+ return sec(H+(sp?wPlate(map,{cls:'aq-standards-map__plate'}):map));};
 /* Code chip -> the row that proves it. Rows: EvidenceMap rows (matched on their title), spec and table rows, list rows. */
 function smapRow(scope,code){if(!scope)return null;var re=new RegExp('(^|[^A-Za-z0-9])'+code.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![A-Za-z0-9])'),R=scope.querySelectorAll('.aq-evidence__row, tr, li');
  for(var i=0;i<R.length;i++){var r=R[i];if(r.closest('.aq-standards-map,.aq-section-nav,.aq-menu,.aq-hero,.aq-closing,nav,footer'))continue;var t=r.querySelector('.aq-evidence__t'),P=t?[t]:r.children.length?[].slice.call(r.children):[r];/* cell by cell: textContent runs cells together */
@@ -834,18 +970,38 @@ document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.targe
  r.scrollIntoView({behavior:rm?'auto':'smooth',block:'center'});if(!r.hasAttribute('tabindex'))r.setAttribute('tabindex','-1');r.focus({preventScroll:true});
  r.classList.remove('aq-standards-map-hit');void r.offsetWidth;r.classList.add('aq-standards-map-hit');setTimeout(function(){r.classList.remove('aq-standards-map-hit')},2400)});
 /* Block "steps" -> ProcessSteps: a real sequence as rows of the shared list grammar (index, step name, what happens).
-   Hold points: an item may carry hold: "<who signs>" ("Your quality unit"). That step gets a stamped hold-point card with
-   a signature line, and the list becomes a routed line through the index column with a closed valve at each hold.
-   Icons: item icon (Icon component) sits beside the number; a list with hold points keeps plain numbers (the route owns that column). */
-function stepHold(who){who=String(who);return '<span class="aq-steps__hold"><span class="aq-steps__stamp">Hold point</span>'
-  +'<span class="aq-steps__who">Signed by '+tx(/^[A-Z][a-z]/.test(who)?who.charAt(0).toLowerCase()+who.slice(1):who)+'</span>'
-  +'<span class="aq-steps__sign" aria-hidden="true">Sign</span></span>'}
-var STEP_VALVE='<svg class="aq-steps__valve" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1 L12 15 L4 15 L12 1 Z"/><path d="M8 8 H15 M15 4 V12"/></svg>';
-BLOCKS['steps']=function(b,H){var I=b.items||[],hold=I.some(function(it){return it.hold}),IC=hold?[]:wIcons(b);
-  return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-steps'+(hold?' aq-steps--hold':'')+'">'+I.map(function(it,i){
-    var r=wRow(i,it.t,it.d,0,0,0,IC[i],1);
-    if(it.hold)r=r.replace(/^<li>/,'<li class="is-hold">').replace(/<\/div><\/li>$/,'<span class="aq-steps__gate">'+STEP_VALVE+'</span>'+stepHold(it.hold)+'</div></li>');
-    return fli(r,b,i)}).join('')+'</ol>',b.fold_noun||'steps'));};
+   Hold points: an item may carry hold: "<who signs>" ("Your quality unit"). The block then draws as a process flow on a
+   cream drawing plate: numbered stations joined by pipe runs, left to right in rows that return under each other, a
+   closed valve on the run into every hold station, and hold stations double-framed with a tilted HOLD stamp naming who
+   signs and a SIGN line. Phones: one vertical pipe with the stations along it. Every step's name and text stay real text.
+   Icons: item icon (Icon component) sits beside the number in a plain list; a flow keeps plain numbers. */
+function stepWho(who){who=String(who);return tx(/^[A-Z][a-z]/.test(who)?who.charAt(0).toLowerCase()+who.slice(1):who)}
+var STEP_VALVE='<svg class="aq-steps__valve" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6 L21 18 L21 6 L3 18 Z"/><path d="M12 12 V3 M7 3 H17"/></svg>';
+/* Stations per row: up to 4 in one row; longer flows split into two even rows (6 -> 3+3, 7 -> 4+3, 8 -> 4+4). */
+function stepFlow(b,H){var I=b.items||[],n=I.length,cols=n<=4?n:Math.ceil(n/2),o='';
+ I.forEach(function(it,i){var c=i%cols,last=i===n-1,eol=!last&&c===cols-1,bol=i>0&&c===0,next=I[i+1];
+  o+='<li class="aq-steps__st'+(it.hold?' is-hold':'')+(eol?' is-eol':'')+(bol?' is-bol':'')+'">'
+   +'<span class="aq-steps__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   +'<div class="aq-steps__body"><h3 class="aq-steps__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-steps__d">'+tx(it.d)+'</p>':'')
+   +(it.hold?'<p class="aq-steps__hold"><span class="aq-steps__stamp"><span class="aq-steps__stamp-k">Hold</span> <span class="aq-steps__who">Signed by '+stepWho(it.hold)+'</span></span>'
+     +'<span class="aq-steps__sign" aria-hidden="true">Sign:</span></p>':'')+'</div>'
+   +(last?'':'<span class="aq-steps__run'+(next&&next.hold?' is-valve':'')+'" aria-hidden="true">'+(next&&next.hold?STEP_VALVE:'')+'</span>')
+   +(eol?'<span class="aq-steps__turn" aria-hidden="true"></span>':'')+(bol?'<span class="aq-steps__turn aq-steps__turn--in" aria-hidden="true"></span>':'')
+   +'</li>'+(eol?'<li class="aq-steps__ret" aria-hidden="true"><span class="aq-steps__ret-arrow"></span>'+(next&&next.hold?STEP_VALVE:'')+'</li>':'')});
+ return sec(H+wPlate('<ol class="aq-steps aq-steps--hold" style="--cols:'+cols+'">'+o+'</ol>',{light:true,block:['Aquemi',b.nav||'Sequence']}))}
+/* Stage strip (as: "stages", steps without holds, every item with an icon): stations in one row of up to six (longer lists
+   wrap in rows of four), each an icon in a framed square, a big mono number, the name in uppercase mono and its text,
+   joined by the hold flow's pipe runs. Phones: the hold flow's vertical pipe, the framed icon beside each number. Keeps fold. */
+function stepStages(b,H,IC){var I=b.items||[],n=I.length,cols=n<=6?n:4;
+ return sec(H+wFold(b,n,'<ol class="aq-steps aq-steps--stages" style="--cols:'+cols+'">'+I.map(function(it,i){var eol=i<n-1&&i%cols===cols-1;
+  return fli('<li class="aq-steps__st'+(eol?' is-eol':'')+'"><span class="aq-steps__frame" aria-hidden="true">'+wIcon(IC[i],'aq-icon--ink')+'</span>'
+   +'<span class="aq-steps__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   +'<div class="aq-steps__body"><h3 class="aq-steps__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-steps__d">'+tx(it.d)+'</p>':'')+'</div>'
+   +(i<n-1?'<span class="aq-steps__run" aria-hidden="true"></span>':'')+'</li>',b,i)}).join('')+'</ol>',b.fold_noun||'steps'))}
+BLOCKS['steps']=function(b,H){var I=b.items||[];if(I.some(function(it){return it.hold}))return stepFlow(b,H);var IC=wIcons(b);
+  if(b.as==='stages'&&I.length&&IC.every(Boolean))return stepStages(b,H,IC);
+  return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-steps">'+I.map(function(it,i){
+    return fli(wRow(i,it.t,it.d,0,0,0,IC[i],1),b,i)}).join('')+'</ol>',b.fold_noun||'steps'));};
 /* Block "table" -> CompareTable. cols: header labels (first is the row-label column); rows: cells, each a string or {t, link}.
    Three or more columns: a numbered matrix on desktop. A column whose every cell is a page link ("Where we show it") is a
    link column (aq-compare-table__go): on phones its link sits at the foot of the row, unlabelled, never a tab.
@@ -872,12 +1028,14 @@ BLOCKS['tags']=function(b,H){var lk=wp('compliance');return '<section class="aq-
    [factor, A, B]. A row whose factor starts "Fits when" (or "Choose") becomes the verdict: two closing lines,
    "Choose <A> when …" and "Choose <B> when …", under the rows. Desktop: A right-aligned against the spine, the factor
    on the spine, B left-aligned. Phones: each factor with A and B under it, each line tagged with its route.
+   Drawn on a plate (wPlate): the two route names face each other across an "or" node, each factor is a numbered node on
+   the spine with leader lines out to both answers.
    fold: N shows the first N factors (the verdict always shows); put the deciding factors first. */
 TABLE_AS.versus=function(b,H){var C=b.cols||[],R=b.rows||[],A=tcell(C[1]),B=tcell(C[2]);
  var fit=R.filter(function(r){return /^(fits when|choose)/i.test(String(r[0]&&r[0].t||r[0]))})[0],rows=R.filter(function(r){return r!==fit});
- return sec(H+'<div class="aq-versus"><div class="aq-versus__head" aria-hidden="true"><p class="aq-versus__name">'+A+'</p><span class="aq-versus__vs">or</span><p class="aq-versus__name">'+B+'</p></div>'
-  +wFold(b,rows.length,'<dl class="aq-versus__rows">'+rows.map(function(r,i){return fli('<div class="aq-versus__row">',b,i)+'<dt>'+tcell(r[0])+'</dt><dd data-k="'+e(C[1])+'">'+tcell(r[1])+'</dd><dd data-k="'+e(C[2])+'">'+tcell(r[2])+'</dd></div>'}).join('')+'</dl>',b.fold_noun||'factors')
-  +(fit?'<div class="aq-versus__verdict"><div><p class="aq-eyebrow">Choose '+A+' when</p><p>'+tcell(fit[1])+'</p></div><div><p class="aq-eyebrow">Choose '+B+' when</p><p>'+tcell(fit[2])+'</p></div></div>':'')+'</div>');};
+ return sec(H+wPlate('<div class="aq-versus"><div class="aq-versus__head" aria-hidden="true"><p class="aq-versus__name">'+A+'</p><span class="aq-versus__vs">or</span><p class="aq-versus__name">'+B+'</p></div>'
+  +wFold(b,rows.length,'<dl class="aq-versus__rows">'+rows.map(function(r,i){return fli('<div class="aq-versus__row">',b,i)+'<dt><span class="aq-versus__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+tcell(r[0])+'</dt><dd data-k="'+e(C[1])+'">'+tcell(r[1])+'</dd><dd data-k="'+e(C[2])+'">'+tcell(r[2])+'</dd></div>'}).join('')+'</dl>',b.fold_noun||'factors')
+  +(fit?'<div class="aq-versus__verdict"><div><p class="aq-eyebrow">Choose '+A+' when</p><p>'+tcell(fit[1])+'</p></div><div><p class="aq-eyebrow">Choose '+B+' when</p><p>'+tcell(fit[2])+'</p></div></div>':'')+'</div>',{block:['Aquemi',b.nav||'Comparison',rows.length+' factors']}));};
 /* One content section per block type in pages.json */
 function wBlock(b){var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}
 /* Ground: the page is a navy blueprint (data-theme="dark" on the page). Reading blocks (spec rows, tables, documents,

@@ -52,28 +52,33 @@
     {
      "t": "Design office",
      "link": "svc-design",
-     "d": "Process and automation engineers turn your URS and feed water analysis into the functional specification, piping and instrumentation diagrams (P&IDs) and traceability matrix."
+     "d": "Process and automation engineers turn your URS and feed water analysis into the functional specification, piping and instrumentation diagrams (P&IDs) and traceability matrix.",
+     "spot": "pid"
     },
     {
      "t": "Fabrication shop",
      "link": "svc-fabrication",
-     "d": "Welding operators qualified to ASME Section IX build to ASME BPE. Every product-contact weld and heat number goes in the weld log."
+     "d": "Welding operators qualified to ASME Section IX build to ASME BPE. Every product-contact weld and heat number goes in the weld log.",
+     "spot": "weld"
     },
     {
      "t": "Factory test bay",
      "link": "svc-fat-sat",
-     "d": "The engineers who wrote the functional specification run the wet factory acceptance test (FAT) against your approved protocol. Deviations close before the skid ships."
+     "d": "The engineers who wrote the functional specification run the wet factory acceptance test (FAT) against your approved protocol. Deviations close before the skid ships.",
+     "spot": "ro-skid"
     },
     {
      "t": "Qualification on site",
      "link": "svc-cq",
-     "d": "Our validation lead executes the site acceptance test (SAT) and installation and operational qualification (IQ/OQ). Your quality unit approves every protocol first."
+     "d": "Our validation lead executes the site acceptance test (SAT) and installation and operational qualification (IQ/OQ). Your quality unit approves every protocol first.",
+     "spot": "binder"
     },
     {
      "t": "Service",
      "link": "svc-service",
      "end": true,
-     "d": "Technicians take over with the as-built drawings, FAT results and the engineers who made them, through to requalification."
+     "d": "Technicians take over with the as-built drawings, FAT results and the engineers who made them, through to requalification.",
+     "spot": "wrench"
     }
    ]
   },

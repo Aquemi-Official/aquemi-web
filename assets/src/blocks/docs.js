@@ -1,5 +1,5 @@
 /* Block "docs" -> DocList: the turnover binder. Documents as folder cards in a binder frame, each folder tab carrying the
-   index and the short document code (derived from its name); the deciding documents lead, emphasized. Rows on phones. */
+   index and the short document code (derived from its name); the deciding documents lead, emphasized. On phones the folders stack one to a row on a smaller plate. */
 /* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT). */
 var DOC_CODES=[
   [/^urs\b.*traceability/i,'URS & TM'],[/traceability matrix/i,'TM'],[/user requirement|\burs\b/i,'URS'],
@@ -32,8 +32,18 @@ function docCode(name){
    pair, used when the cards after them fill rows of three (or end in a pair). n visible cards; returns indexes that span 3. */
 function docWide(n,lead){lead=lead&&(n-2)%3!==1;var w={},s=lead?2:0,m=n-s,i;if(lead){w[0]=w[1]=1}
   var k=m%3===1&&m>=4?4:m%3===2?2:0;for(i=n-k;i<n;i++)w[i]=1;return w}
+/* Folder icons (assets/icons masks), from the document name; first match wins. Only where the drawing says what the
+   document is; anything else gets no icon. An item's icon field wins ("icon": "none" for none). */
+var DOC_ICONS=[[/borescope/i,'borescope'],[/\bweld|\bwps\b|welder/i,'weld'],[/p&id|instrumentation diagram|drawing|isometric|general arrangement/i,'pid'],
+  [/calibration|pressure (test|vessel|equipment)/i,'gauge'],[/\btoc\b/i,'toc'],[/conductivity/i,'conductivity'],
+  [/maintenance|spare|\bparts\b/i,'wrench'],[/annual|plan\b|schedule/i,'calendar'],
+  [/certificate|compliance matrix|statement|signed/i,'stamp'],[/risk assessment|inspection|review|observation|audit|survey/i,'magnifier'],
+  [/index|register|summary|manual|\blog\b|dossier|description/i,'binder']];
+function docIcon(x){if(x.icon==='none')return '';if(isIcon(x.icon))return x.icon;var t=String(x.t||'');
+  for(var i=0;i<DOC_ICONS.length;i++)if(DOC_ICONS[i][0].test(t))return DOC_ICONS[i][1];return ''}
+function docNum(i){return (i<9?'0':'')+(i+1)}
 BLOCKS['docs']=function(b,H){
-  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link}});
+  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link,icon:x.icon,tag:x.tag}});
   var n=items.length,codes=items.map(function(x){return x.code?[x.code,true]:docCode(x.t)});
   /* Codes only when most items are documents the lookup knows; a checklist of other things keeps just its numbers. */
   var coded=codes.filter(function(c){return c[1]}).length*2>=n;
@@ -42,10 +52,17 @@ BLOCKS['docs']=function(b,H){
   var key=items.map(function(x,i){return marked?!!x.key:i<nk});
   var vis=b.fold>0&&n>b.fold?b.fold:n,lead=key[0]&&key[1]&&!key.slice(2).some(Boolean);
   var wo=docWide(n,lead),wf=vis<n?docWide(vis,lead):{};
-  return sec(H+wFold(b,n,'<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
+  var noun=b.fold_noun||'documents',one=noun.replace(/s$/,'');
+  var ol='<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
     var cls=(key[i]?' is-key':'')+(wo[i]?' aq-docs__w':'')+(wf[i]?' aq-docs__wf':''),name=x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t);
-    return fli('<li'+(cls?' class="'+cls.slice(1)+'"':'')+'>',b,i)+'<span class="aq-docs__tab" aria-hidden="true">'+idx(i).replace(' aria-hidden="true"','')
-      +(coded?'<span class="aq-docs__code">'+e(codes[i][0])+'</span>':'')+'</span>'
-      +'<span class="aq-docs__card"><span class="aq-docs__name">'+name+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span></span></li>';
-  }).join('')+'</ol>',b.fold_noun||'documents'));
+    var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x);
+    return fli('<li'+(cls?' class="'+cls.slice(1)+'"':'')+'>',b,i)
+      +'<span class="aq-docs__tab" aria-hidden="true">'+(tag?'<span class="aq-docs__code">'+e(tag)+'</span>':'')+'</span>'
+      +'<span class="aq-docs__card"><span class="aq-docs__top" aria-hidden="true"><span class="aq-docs__n">'+docNum(i)+'</span>'+(ic?wIcon(ic,key[i]?'aq-icon--flow':''):'')+'</span>'
+      +'<span class="aq-docs__name">'+name+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span>'
+      +'<span class="aq-docs__foot" aria-hidden="true"><span>'+e((key[i]?'Key ':'')+one)+'</span><span>'+docNum(i)+' of '+docNum(n-1)+'</span></span></span></li>';
+  }).join('')+'</ol>';
+  /* The binder: folder cards on a drawing plate (core.js wPlate) with stacked sheets behind it and a title block. */
+  var plate='<div class="aq-docs-binder">'+wPlate(ol,{block:['Aquemi'].concat(b.nav&&b.nav.toLowerCase()!==noun.toLowerCase()?[b.nav]:[],[n+' '+noun]),cls:'aq-docs-plate'})+'</div>';
+  return sec(H+wFold(b,n,plate,noun));
 };

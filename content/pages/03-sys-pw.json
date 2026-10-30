@@ -261,31 +261,38 @@
   },
   {
    "type": "options",
+   "as": "modules",
    "h": "Configurations and options",
    "items": [
     {
      "t": "Hot water sanitizable softener",
-     "d": "Stainless steel softener on the skid, regenerated on measured hardness breakthrough rather than a fixed volume."
+     "d": "Stainless steel softener on the skid, regenerated on measured hardness breakthrough rather than a fixed volume.",
+     "spot": "pretreatment"
     },
     {
      "t": "Membrane degasser",
-     "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high."
+     "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high.",
+     "spot": "ro-membrane"
     },
     {
      "t": "Duplex trains",
-     "d": "Two trains at 50 or 100 % of demand each, so one runs while the other is sanitized or serviced."
+     "d": "Two trains at 50 or 100 % of demand each, so one runs while the other is sanitized or serviced.",
+     "spot": "ro-skid"
     },
     {
      "t": "Recirculation at no demand",
-     "d": "The skid circulates when storage is full instead of stopping, so water never stands in the membranes."
+     "d": "The skid circulates when storage is full instead of stopping, so water never stands in the membranes.",
+     "spot": "loop"
     },
     {
      "t": "Ultrafiltration or 254 nm UV",
-     "d": "Downstream of EDI where your microbial target or a WFI feed needs more margin."
+     "d": "Downstream of EDI where your microbial target or a WFI feed needs more margin.",
+     "spot": "uv-ozone"
     },
     {
      "t": "Recovery enhancement",
-     "d": "A concentrate recovery RO stage to cut water sent to drain where sewer charges or supply limits matter."
+     "d": "A concentrate recovery RO stage to cut water sent to drain where sewer charges or supply limits matter.",
+     "spot": "pump"
     }
    ],
    "nav": "Options",

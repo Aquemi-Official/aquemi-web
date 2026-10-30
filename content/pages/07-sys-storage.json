@@ -240,31 +240,38 @@
   },
   {
    "type": "options",
+   "as": "modules",
    "h": "Configurations and options",
    "items": [
     {
      "t": "Cooled sub-loops",
-     "d": "Cooled through a double tube sheet exchanger from a hot main, for groups of ambient users."
+     "d": "Cooled through a double tube sheet exchanger from a hot main, for groups of ambient users.",
+     "spot": "heat-exchanger"
     },
     {
      "t": "Point-of-use coolers",
-     "d": "Single-user coolers on a hot loop that flush to drain until temperature and time setpoints are met."
+     "d": "Single-user coolers on a hot loop that flush to drain until temperature and time setpoints are met.",
+     "spot": "valve"
     },
     {
      "t": "Ozone package for PW tanks",
-     "d": "Ozone generator, 254 nm UV destruct unit, three ozone sensors and a vent ozone destructor."
+     "d": "Ozone generator, 254 nm UV destruct unit, three ozone sensors and a vent ozone destructor.",
+     "spot": "uv-ozone"
     },
     {
      "t": "Prefabricated loop modules",
-     "d": "Pump, exchanger, UV and instruments on one skid, wet tested at factory acceptance testing (FAT)."
+     "d": "Pump, exchanger, UV and instruments on one skid, wet tested at factory acceptance testing (FAT).",
+     "spot": "pump"
     },
     {
      "t": "Provision for future points of use",
-     "d": "Zero-static valve bodies at planned locations, so a new outlet needs no weld into a qualified loop."
+     "d": "Zero-static valve bodies at planned locations, so a new outlet needs no weld into a qualified loop.",
+     "spot": "loop"
     },
     {
      "t": "Central sampling panel",
-     "d": "Return and tank sample valves grouped where your laboratory staff can reach them."
+     "d": "Return and tank sample valves grouped where your laboratory staff can reach them.",
+     "spot": "toc"
     }
    ],
    "nav": "Options",

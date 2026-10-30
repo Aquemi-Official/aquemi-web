@@ -24,40 +24,70 @@ BLOCKS['spec']=function(b,H){
 };
 
 /* ---------- "as": "gauges" -> LimitGauges ----------
-   Each row becomes a small instrument: an arc scale with the limit marked at three quarters of the arc and the side
-   that passes drawn in flow (below the limit for ≤ and <, above it for ≥ and >). Only the row's own number is used:
-   the first "≤ 1.3 µS/cm" in v (outside [placeholders]), or a v that opens with a number (an action level, read as an
-   upper limit). The scale has no other numbers, so nothing is invented. A row with no number (placeholder, "Not
-   required") is a plain readout cell. A row named "outlet" or "guaranteed" whose v has a number in the same unit as a
-   limit below it adds a second marker on that gauge, in proportion; a placeholder adds nothing.
-   The basis (m) prints under the value with standard names (USP <645>, Ph. Eur. 0008, EN 285 …) as tags. */
+   Each row becomes an instrument face on a cream drawing plate: a heavy scale arc with major and minor ticks and scale
+   numbers, the limit as an ink pointer with a "LIMIT ≤ 1.3" tag, a needle from the pivot resting on the limit (there is
+   no measured value, so the needle never shows a reading), the side that passes as a flow band (below the limit for ≤
+   and <, above it for ≥ and >), the limit as a large mono readout bottom right and the full value and basis as a small
+   spec list bottom left. Only the row's own number is used: the first "≤ 1.3 µS/cm" in v (outside [placeholders]), or a
+   v that opens with a number (an action level, read as an upper limit). The scale is derived from that limit alone:
+   0 to the next round number at least 20 % above it (5 % for ≥ and >), so its numbers are a ruler, not data.
+   A row with no number (placeholder, "Not required") is a readout cell: the same cell, the value as the readout, no dial.
+   A row named "outlet" or "guaranteed" whose v has a number in the same unit as a limit adds a dashed second marker on
+   that dial, at its place on the scale; a placeholder adds nothing.
+   The basis (m) prints with standard names (USP <645>, Ph. Eur. 0008, EN 285 …) as tags. */
 var GAUGE_STD=/(USP <\d+>|Ph\. Eur\. \d[\d.]*|EN \d+|ASTM [A-Z]\d+|Annex 1(?:, \d+\.\d+)?|ISO \d+|ASME BPE|GAMP 5|21 CFR Part 11)/;
-function gaugeParse(v){var s=String(v||'').replace(/\[[^\]]*\]/g,' '),m=s.match(/([≤<≥>])\s*(\d+(?:\.\d+)?)\s*([^@(;,]*)/),c;
+/* q: the rest of the value around "≤ 1.3 µS/cm" (qualifiers such as "@ 25 °C (stage 1)"); a unit too long for the
+   readout (over 8 characters) stays in q. Placeholders are blanked at their own length so indexes match v. */
+function gaugeParse(v){v=String(v||'');var s=v.replace(/\[[^\]]*\]/g,function(x){return Array(x.length+1).join(' ')}),m=s.match(/([≤<≥>])\s*(\d+(?:\.\d+)?)\s*([^@(;,]*)/),c;
   if(m)c=m[1];else{m=s.match(/^\s*()(\d+(?:\.\d+)?)\s*([^@(;,]*)/);c=''}
   if(!m)return null;
-  return {c:c,n:parseFloat(m[2]),t:m[2],u:m[3].replace(/\s+(on|of|at|in|for|to|when|before|after)\s.*$/,'').trim()}}
-function gaugeBasis(m){var p=String(m||'').split(GAUGE_STD);return p.map(function(s,i){return i%2?'<span class="aq-tag">'+e(s)+'</span>':i&&i<p.length-1&&/^\s*;\s*$/.test(s)?' ':tx(s)}).join('')}
-function gaugePt(f,r){var a=(160-140*f)*Math.PI/180;return [100+r*Math.cos(a),98-r*Math.sin(a)]}
+  var u=m[3].replace(/\s+(on|of|at|in|for|to|when|before|after)\s.*$/,'').trim(),k=m.index+m[0].length-m[3].length,
+   end=u&&u.length<=8?k+m[3].indexOf(u)+u.length:k,pre=v.slice(0,m.index).trim(),post=v.slice(end).trim();
+  return {c:c,n:parseFloat(m[2]),t:m[2],u:u,q:(pre&&post?pre+' · '+post:pre||post)}}
+function gaugeBasis(m){var p=String(m||'').split(GAUGE_STD);return p.map(function(s,i){return i%2?'<span class="aq-tag">'+e(s)+'</span>':i&&i<p.length-1&&/^\s*;\s*$/.test(s)?' ':/\S/.test(s)?'<span class="aq-limit-gauges__mt">'+tx(s)+'</span>':tx(s)}).join('')}
+/* Scale from the limit only: [max, major divisions]. Round maxima 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8 (x 10^k). */
+function gaugeScale(n,up){var t=n>0?n*(up?1.05:1.2):1,k=Math.pow(10,Math.floor(Math.log(t)/Math.LN10)),M=[[1,5],[1.5,3],[2,4],[2.5,5],[3,3],[4,4],[5,5],[6,3],[8,4],[10,5]];
+  for(var i=0;i<M.length;i++)if(M[i][0]*k>=t*(1-1e-9))return [M[i][0]*k,M[i][1]];return [10*k,5]}
+function gaugeNum(v){return String(parseFloat(v.toFixed(6)))}
+/* Geometry: viewBox 0 10 240 144, pivot (120,128), the scale sweeps 160° to 20°. The readout sits bottom right on a
+   hairline at y 146 run from the pivot's vertical (number above it, caption below), as on a panel meter. */
+function gaugePt(f,r){var a=(160-140*f)*Math.PI/180;return [120+r*Math.cos(a),128-r*Math.sin(a)]}
 function gaugeArc(f0,f1,r){var p=gaugePt(f0,r),q=gaugePt(f1,r);return 'M'+p[0].toFixed(1)+' '+p[1].toFixed(1)+' A'+r+' '+r+' 0 0 1 '+q[0].toFixed(1)+' '+q[1].toFixed(1)}
-function wDial(g,second){var L=0.75,up=g.c==='≥'||g.c==='>',ticks='',i;
-  for(i=0;i<=20;i++){var f=i/20,maj=i%5===0,p=gaugePt(f,86),q=gaugePt(f,maj?77:81);ticks+='<line x1="'+p[0].toFixed(1)+'" y1="'+p[1].toFixed(1)+'" x2="'+q[0].toFixed(1)+'" y2="'+q[1].toFixed(1)+'"'+(maj?' class="is-major"':'')+'/>'}
-  var a=gaugePt(L,92),b2=gaugePt(L,62),pos=function(f){var p=gaugePt(f,92);return 'left:'+(p[0]/2).toFixed(1)+'%;top:'+((p[1]+14)/94*100).toFixed(1)+'%'};
-  var two=second?'<line class="aq-limit-gauges__second" x1="'+gaugePt(second.f,92)[0].toFixed(1)+'" y1="'+gaugePt(second.f,92)[1].toFixed(1)+'" x2="'+gaugePt(second.f,62)[0].toFixed(1)+'" y2="'+gaugePt(second.f,62)[1].toFixed(1)+'"/>':'';
-  return '<div class="aq-limit-gauges__dial" aria-hidden="true"><svg viewBox="0 -14 200 94" focusable="false">'
-   +'<path class="aq-limit-gauges__track" d="'+gaugeArc(0,1,86)+'"/><g class="aq-limit-gauges__ticks">'+ticks+'</g>'
-   +'<path class="aq-limit-gauges__pass" d="'+(up?gaugeArc(L,1,70):gaugeArc(0,L,70))+'"/>'
-   +two+'<line class="aq-limit-gauges__limit" x1="'+a[0].toFixed(1)+'" y1="'+a[1].toFixed(1)+'" x2="'+b2[0].toFixed(1)+'" y2="'+b2[1].toFixed(1)+'"/></svg>'
-   +'<span class="aq-limit-gauges__mark" style="'+pos(L)+'">'+e((g.c?g.c+' ':'')+g.t)+'</span>'
-   +(second?'<span class="aq-limit-gauges__mark aq-limit-gauges__mark--second" style="'+pos(second.f)+'">'+e(second.t)+'</span>':'')+'</div>'}
+function gaugeLn(f,r0,r1,cls){var p=gaugePt(f,r0),q=gaugePt(f,r1);return '<line'+(cls?' class="'+cls+'"':'')+' x1="'+p[0].toFixed(1)+'" y1="'+p[1].toFixed(1)+'" x2="'+q[0].toFixed(1)+'" y2="'+q[1].toFixed(1)+'"/>'}
+function wDial(g,second,read){var up=g.c==='≥'||g.c==='>',S=gaugeScale(g.n,up),max=S[0],div=S[1],L=Math.min(g.n/max,1),i,ticks='',nums='';
+  for(i=0;i<=div*5;i++){var f=i/(div*5),maj=i%5===0;ticks+=gaugeLn(f,96,maj?85:90,maj?'is-major':'');
+    if(maj&&Math.abs(f-L)>0.09){var p=gaugePt(f,107);nums+='<text'+(i===0||i===div*5?' class="is-end"':'')+' x="'+p[0].toFixed(1)+'" y="'+(p[1]+3).toFixed(1)+'">'+gaugeNum(max*i/(div*5))+'</text>'}}
+  var a=(160-140*L)*Math.PI/180,tip=gaugePt(L,97),w1=gaugePt(L,104),ca=Math.cos(a),sa=Math.sin(a),
+   ptr='M'+tip[0].toFixed(1)+' '+tip[1].toFixed(1)+' L'+(w1[0]-4*sa).toFixed(1)+' '+(w1[1]-4*ca).toFixed(1)+' L'+(w1[0]+4*sa).toFixed(1)+' '+(w1[1]+4*ca).toFixed(1)+'Z';
+  /* Limit chip: beside the pointer on the left half of the arc; past the crown it parks in the dial's top right corner,
+     clear of the scale, so it never sits on the ticks of a limit near the end of the scale */
+  var tag=gaugePt(L,112),right=tag[0]>150,pos=right?'right:0;top:0':'left:'+(tag[0]/2.4).toFixed(1)+'%;top:'+((tag[1]-10)/144*100).toFixed(1)+'%';
+  var two=second?gaugeLn(Math.min(second.f,1),96,66,'aq-limit-gauges__second'):'',p2=second&&gaugePt(Math.min(second.f,1),58);
+  return '<div class="aq-limit-gauges__dial" aria-hidden="true"><svg viewBox="0 10 240 144" focusable="false">'
+   +'<path class="aq-limit-gauges__inner" d="'+gaugeArc(0,1,68)+'"/>'
+   +'<path class="aq-limit-gauges__pass" d="'+(up?gaugeArc(L,1,76):gaugeArc(0,L,76))+'"/>'
+   +'<path class="aq-limit-gauges__track" d="'+gaugeArc(0,1,96)+'"/><g class="aq-limit-gauges__ticks">'+ticks+'</g>'
+   +'<g class="aq-limit-gauges__nums">'+nums+'</g>'+two
+   +'<g class="aq-limit-gauges__cross"><line x1="106" y1="128" x2="134" y2="128"/><line x1="120" y1="104" x2="120" y2="154"/><line x1="120" y1="146" x2="240" y2="146"/></g>'
+   +gaugeLn(L,0,92,'aq-limit-gauges__needle')+'<circle class="aq-limit-gauges__pivot" cx="120" cy="128" r="3"/>'
+   +gaugeLn(L,96,82,'aq-limit-gauges__limit')+'<path class="aq-limit-gauges__ptr" d="'+ptr+'"/></svg>'
+   +'<span class="aq-limit-gauges__mark'+(right?' is-right':'')+'" style="'+pos+'"><span class="aq-limit-gauges__mark-k">Limit </span>'+e((g.c?g.c+' ':'')+g.t)+'</span>'
+   +(second?'<span class="aq-limit-gauges__mark aq-limit-gauges__mark--second" style="left:'+(p2[0]/2.4).toFixed(1)+'%;top:'+((p2[1]-10)/144*100).toFixed(1)+'%">'+e(second.t)+'</span>':'')+(read||'')+'</div>'}
 function wGauges(b,rows){
   var P=rows.map(function(r){return gaugeParse(r.v)}),outlet=/outlet|guarantee/i,sec2={};
   rows.forEach(function(r,i){var o=P[i];if(!o||!outlet.test(r.p))return;
-    P.forEach(function(g,j){if(sec2[j]||j===i||!g||outlet.test(rows[j].p)||g.u!==o.u||g.c==='≥'||g.c==='>'||!(o.n<g.n))return;sec2[j]={f:0.75*o.n/g.n,t:o.t}});P[i]=null});
-  var list=rows.map(function(r,i){var g=P[i];
+    P.forEach(function(g,j){if(sec2[j]||j===i||!g||outlet.test(rows[j].p)||g.u!==o.u||g.c==='≥'||g.c==='>'||!(o.n<g.n))return;sec2[j]={f:o.n/gaugeScale(g.n,false)[0],t:o.t}});P[i]=null});
+  var list=rows.map(function(r,i){var g=P[i],up=g&&(g.c==='≥'||g.c==='>');
+    /* Readout: the limit with a short unit; a long one ("mL per 100 mL") stays in the spec list only */
+    var read=g?'<span class="aq-limit-gauges__read"><span class="aq-limit-gauges__line"><span class="aq-limit-gauges__num">'+e((g.c?g.c+' ':'')+g.t)+'</span>'+(g.u&&g.u.length<=8?' <span class="aq-limit-gauges__unit">'+tx(g.u)+'</span>':'')
+      +'</span><span class="aq-limit-gauges__cap'+(g.q?' is-q">'+tx(g.q):'">'+(up?'Lower limit':'Upper limit'))+'</span></span>':'';
+    /* With a dial the chip and readout show the limit, so the full value is kept for screen readers only */
+    var spec='<dl class="aq-limit-gauges__spec"><div'+(g?' class="aq-limit-gauges__sr"':'')+'><dt>'+(g?'Limit':'Value')+'</dt><dd class="aq-limit-gauges__v">'+tx(r.v)+'</dd></div>'
+      +(r.m?'<div><dt>Basis</dt><dd class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</dd></div>':'')+'</dl>';
     return fli('<li class="aq-limit-gauges__item'+(g?'':' is-readout')+(r.hl?' is-key':'')+'">',b,i)
-     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i]):'')
-     +'<p class="aq-limit-gauges__v">'+tx(r.v)+'</p>'+(r.m?'<p class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</p>':'')+'</li>'}).join('');
-  return wFold(b,rows.length,'<ul class="aq-limit-gauges" role="list">'+list+'</ul>',b.fold_noun||'limits')}
+     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read):'')
+     +'<div class="aq-limit-gauges__foot">'+spec+'</div></li>'}).join('');
+  return wPlate(wFold(b,rows.length,'<ul class="aq-limit-gauges" role="list">'+list+'</ul>',b.fold_noun||'limits'),{light:true,block:['Aquemi',b.caption||'Limits']})}
 
 /* ---------- "as": "callouts" -> ParameterCallouts ----------
    The page's own equipment drawing (ART[page id], the Illustration mask the hero uses) with leader lines to numbered

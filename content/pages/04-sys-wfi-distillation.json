@@ -268,31 +268,38 @@
   },
   {
    "type": "options",
+   "as": "modules",
    "h": "Configurations and options",
    "items": [
     {
      "t": "Number of effects",
-     "d": "From [range of effects offered], chosen on steam cost and capital budget in a side-by-side heat balance."
+     "d": "From [range of effects offered], chosen on steam cost and capital budget in a side-by-side heat balance.",
+     "spot": "still"
     },
     {
      "t": "Combined WFI and pure steam",
-     "d": "Column 1 delivers pure steam while the still makes WFI, at reduced WFI capacity."
+     "d": "Column 1 delivers pure steam while the still makes WFI, at reduced WFI capacity.",
+     "spot": "pure-steam-generator"
     },
     {
      "t": "Electric or combined heating",
-     "d": "Electric heating for sites without plant steam, or a combination for limited boiler capacity."
+     "d": "Electric heating for sites without plant steam, or a combination for limited boiler capacity.",
+     "spot": "heat-exchanger"
     },
     {
      "t": "Cooled distillate",
-     "d": "An outlet cooler for ambient storage, or point-of-use coolers on a hot loop."
+     "d": "An outlet cooler for ambient storage, or point-of-use coolers on a hot loop.",
+     "spot": "heat-exchanger"
     },
     {
      "t": "Proportional output",
-     "d": "Output follows tank level, cutting start-up dumps and thermal cycling."
+     "d": "Output follows tank level, cutting start-up dumps and thermal cycling.",
+     "spot": "storage-tank"
     },
     {
      "t": "Online TOC and conductivity",
-     "d": "TOC to USP <643> and conductivity to USP <645> at the outlet, trended on the panel (Annex 1, 6.15)."
+     "d": "TOC to USP <643> and conductivity to USP <645> at the outlet, trended on the panel (Annex 1, 6.15).",
+     "spot": "toc"
     }
    ],
    "nav": "Options",

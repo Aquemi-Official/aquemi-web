@@ -1,19 +1,22 @@
 /* Block "standards-map" -> StandardsMap: a plant map of the water system, each zone (generation, storage and distribution,
    pure steam, controls and data, fabrication, qualification) a dashed framed area hanging off one pipe header, labelled with
-   the standards that govern it. Fields: zones [{t, codes: ["USP <645>", ...], to, icon}]. to: the id of the section that
+   the standards that govern it. Fields: zones [{t, codes: ["USP <645>", ...], to, spot, icon}]. to: the id of the section that
    holds the proof (a block's anchor, or its nav id s-N-label); the zone title jumps there. Each code is a chip that scrolls
    to the row naming it: first inside the zone's section, then anywhere on the page; a folded row is unfolded first and
-   flashes once. A code may be {t, to} to send that one code to another section. icon: an Icon name (optional; all or none).
+   flashes once. A code may be {t, to} to send that one code to another section. spot: a Spot name (assets/spots) or an Icon name, the zone's equipment vignette, all or none; with
+   spots the map sits on a drawing plate. icon: an Icon name, used only without spots (all or none).
    Desktop: the first half of the zones above the pipe, the rest below, a branch from each to the pipe. Phones: zones stacked
    as compact rows on a vertical pipe, codes as chips. Navy ground. Only standards the page already lists. */
-BLOCKS['standards-map']=function(b,H){var Z=b.zones||[],top=Math.ceil(Z.length/2),ic=Z.length&&Z.every(function(z){return isIcon(z.icon)});
- return sec(H+'<div class="aq-standards-map"><ol class="aq-standards-map__zones" style="--cols:'+Math.max(top,1)+'">'+Z.map(function(z,i){var up=i<top,
+BLOCKS['standards-map']=function(b,H){var Z=b.zones||[],top=Math.ceil(Z.length/2),sp=Z.length&&Z.every(function(z){return isVig(z.spot)}),ic=!sp&&Z.length&&Z.every(function(z){return isIcon(z.icon)});
+ var map='<div class="aq-standards-map'+(sp?' aq-standards-map--spots':'')+'"><ol class="aq-standards-map__zones" style="--cols:'+Math.max(top,1)+'">'+Z.map(function(z,i){var up=i<top,
    to=z.to||'',t=to?'<a href="#'+e(WP)+'" data-jump="'+e(to)+'">'+tx(z.t)+'</a>':tx(z.t);
    return '<li class="aq-standards-map__zone '+(up?'is-up':'is-down')+'" style="grid-area:'+(up?1:3)+' / '+((up?i:i-top)+1)+'">'
-    +'<div class="aq-standards-map__head">'+(ic?wIcon(z.icon,'aq-standards-map__icon'):idx(i))+'<h3 class="aq-standards-map__t">'+t+'</h3></div>'
+    +(sp?'<span class="aq-standards-map__fig" aria-hidden="true">'+wSpot(z.spot,'m','aq-standards-map__spot')+'</span>':'')
+    +'<div class="aq-standards-map__label"><div class="aq-standards-map__head">'+(sp?'':ic?wIcon(z.icon,'aq-standards-map__icon'):idx(i))+'<h3 class="aq-standards-map__t">'+t+'</h3></div>'
     +'<ul class="aq-standards-map__codes">'+(z.codes||[]).map(function(c){var ct=c&&typeof c==='object'?c.t:c,cto=(c&&typeof c==='object'&&c.to)||to;
-     return '<li><a class="aq-standards-map__code" href="#'+e(WP)+'" data-smap-code="'+e(ct)+'" data-smap-to="'+e(cto)+'">'+tx(ct)+'</a></li>'}).join('')+'</ul></li>'}).join('')
-  +'</ol></div>');};
+     return '<li><a class="aq-standards-map__code" href="#'+e(WP)+'" data-smap-code="'+e(ct)+'" data-smap-to="'+e(cto)+'">'+tx(ct)+'</a></li>'}).join('')+'</ul></div></li>'}).join('')
+  +'</ol></div>';
+ return sec(H+(sp?wPlate(map,{cls:'aq-standards-map__plate'}):map));};
 /* Code chip -> the row that proves it. Rows: EvidenceMap rows (matched on their title), spec and table rows, list rows. */
 function smapRow(scope,code){if(!scope)return null;var re=new RegExp('(^|[^A-Za-z0-9])'+code.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![A-Za-z0-9])'),R=scope.querySelectorAll('.aq-evidence__row, tr, li');
  for(var i=0;i<R.length;i++){var r=R[i];if(r.closest('.aq-standards-map,.aq-section-nav,.aq-menu,.aq-hero,.aq-closing,nav,footer'))continue;var t=r.querySelector('.aq-evidence__t'),P=t?[t]:r.children.length?[].slice.call(r.children):[r];/* cell by cell: textContent runs cells together */

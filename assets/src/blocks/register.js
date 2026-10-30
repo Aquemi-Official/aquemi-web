@@ -7,20 +7,24 @@
      topic · standard · status.
    - Featured panel beside the register (above it on phones): the item with featured: true, else the first item of
      the first topic, labelled "Latest" when it has a date, "Next planned" when not. Shows its number, title, d (one
-     line), standard and the page it links to; that page's equipment drawing (ART) when it has one, aria-hidden.
-   - fold: N shows the first N rows under "All"; fold_noun names them ("Show all 24 notes"). Navy by default; works on
-     a light sheet with ground: "light". */
+     line), standard and the page it links to; an equipment Spot vignette (item.spot, else REG_SPOT by its link page),
+     aria-hidden.
+   - Drawn on a cream plate (wPlate light, title block "Aquemi | Notes register"), chips as [bracketed] mono tags in a
+     framed filter bar, the register a fully ruled table.
+   - fold: N shows the first N rows under "All"; fold_noun names them ("Show all 24 notes"). */
+var REG_SPOT={'sys-monitoring':'toc','sys-pw':'ro-skid','sys-wfi-membrane':'ro-skid','sys-wfi-distillation':'still','sys-pure-steam':'pure-steam-generator',
+ 'sys-storage':'storage-tank','sys-pretreatment':'pretreatment','svc-service':'filter-service','svc-fabrication':'orbital-welder','svc-fat-sat':'test-bay','svc-design':'design-desk','svc-cq':'signed-report','cmp-documentation':'binder-docs'};
 BLOCKS['register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)return sec(H);
  var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){return it.date?tx(it.date):'<span class="aq-notes-register__planned">Planned</span>'};
  var fi=-1;I.forEach(function(it,i){if(fi<0&&it.featured)fi=i});if(fi<0)I.forEach(function(it,i){if(fi<0&&it.topic===T[0])fi=i});if(fi<0)fi=0;
- var f=I[fi],fl=f.link&&wp(f.link);
- var chips='<div class="aq-notes-register__filter" role="group" aria-label="Filter notes by topic"><button type="button" class="aq-notes-register__chip" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+'</span></button>'
+ var f=I[fi],fl=f.link&&wp(f.link),sp=f.spot||REG_SPOT[f.link]||'';sp=isVig(sp)?sp:'';
+ var chips='<div class="aq-notes-register__filter" role="group" aria-label="Filter notes by topic"><span class="aq-notes-register__fk" aria-hidden="true">Filter</span><button type="button" class="aq-notes-register__chip" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+'</span></button>'
   +T.map(function(t){var n=I.filter(function(it){return it.topic===t}).length;return '<button type="button" class="aq-notes-register__chip" aria-pressed="false" data-topic="'+e(t)+'">'+tx(t)+' <span aria-hidden="true">'+n+'</span></button>'}).join('')+'</div>';
  var panel='<aside class="aq-notes-register__feature" aria-label="'+(f.date?'Latest note':'Next planned note')+'">'
   +'<p class="aq-notes-register__flabel"><span>'+(f.date?'Latest':'Next planned')+'</span><span>No. '+no(fi)+'</span>'+(f.date?'<span>'+tx(f.date)+'</span>':'')+'</p>'
   +'<h3 class="aq-notes-register__ft">'+tx(f.t)+'</h3>'+(f.d?'<p class="aq-notes-register__fd">'+tx(f.d)+'</p>':'')
   +(f.std?'<p class="aq-tags"><span class="aq-tag">'+e(f.std)+'</span></p>':'')
-  +(fl&&typeof ART!=='undefined'&&ART[f.link]?'<span class="aq-illustration aq-notes-register__art" aria-hidden="true" style="'+artMask(f.link)+'"></span>':'')
+  +(sp?'<span class="aq-notes-register__vig">'+wSpot(sp,'l','aq-notes-register__spot')+'</span>':'')
   +(fl?'<p class="aq-notes-register__go">Applied on '+wlink(f.link)+'</p>':'')+'</aside>';
  var rows=I.map(function(it,i){var tt=it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t);
   return fli('<tr'+(i===fi?' class="is-featured"':'')+' data-topic="'+e(it.topic||'')+'">',b,i)
@@ -28,8 +32,8 @@ BLOCKS['register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)r
    +'<td class="aq-notes-register__topic">'+tx(it.topic||'')+'</td><th scope="row" class="aq-notes-register__t">'+tt+'</th>'
    +'<td class="aq-notes-register__std">'+tx(it.std||'')+'</td></tr>'}).join('');
  var table='<table class="aq-notes-register__table"><thead><tr><th scope="col">Date</th><th scope="col">No.</th><th scope="col">Topic</th><th scope="col">Title</th><th scope="col">Standard</th></tr></thead><tbody>'+rows+'</tbody></table>';
- return sec(H+'<div class="aq-notes-register">'+chips+'<p class="aq-notes-register__count" aria-live="polite">'+I.length+' notes</p>'+panel
-  +'<div class="aq-notes-register__reg">'+wFold(b,I.length,table,b.fold_noun||'notes')+'</div></div>');};
+ return sec(H+wPlate('<div class="aq-notes-register">'+chips+'<p class="aq-notes-register__count" aria-live="polite">'+I.length+' notes</p>'+panel
+  +'<div class="aq-notes-register__reg">'+wFold(b,I.length,table,b.fold_noun||'notes')+'</div></div>',{light:true,cls:'aq-notes-register__plate',block:['Aquemi','Notes register']}));};
 document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.target.closest('.aq-notes-register__chip');if(!c)return;
  var r=c.closest('.aq-notes-register'),t=c.getAttribute('data-topic'),n=0,fd=r.querySelector('.aq-fold');
  r.querySelectorAll('.aq-notes-register__chip').forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});

@@ -20,6 +20,7 @@
   "label": "System already running? See service plans",
   "link": "svc-service"
  },
+ "index": true,
  "blocks": [
   {
    "type": "table",
@@ -134,6 +135,7 @@
   {
    "type": "steps",
    "h": "What leaves each stage, and who signs it",
+   "as": "stages",
    "intro": "EU GMP Annex 15, 3.2 makes your URS the reference for the whole lifecycle. Each requirement gets an ID at first review and keeps it in every document.",
    "items": [
     {
