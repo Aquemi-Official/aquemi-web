@@ -1,6 +1,6 @@
 ProcessDiagram draws the stages of a treatment train left to right: numbered boxes joined by Flow Blue arrows.
 
-- Markup: `<div class="aq-diagram">` holding one inline `<svg role="img" aria-label="Stage 1 to Stage 2 to …">`. Each stage is a `rect.aq-diagram__box` with `text.aq-diagram__label` (up to two lines, about 15 characters each) and a `text.aq-diagram__num` ("01") above it. Arrows are `line.aq-diagram__arrow` with an arrowhead marker; a `line.aq-diagram__base` rule runs underneath.
-- Geometry: 170 units per stage, boxes 136 × 52, viewBox height 110. The website builds it from a list of stage names (`AQ.wDiagram`).
+- Markup: `<div class="aq-diagram">` holding one inline `<svg role="img" aria-label="Stage 1 to Stage 2 to …">`. Each stage is a `rect.aq-diagram__box` with `text.aq-diagram__label` (up to two lines, about 15 characters each) and a `text.aq-diagram__num` ("01") above it. Arrows are `line.aq-diagram__arrow` with an arrowhead marker; an optional `line.aq-diagram__base` rule runs underneath, labelled in `aq-diagram__num` style with what spans every stage ("Monitoring and controls · TOC, conductivity, ozone"). Leave the rule out when there is nothing to label.
+- Geometry: 170 units per stage, boxes 136 × 52, viewBox height 96 (124 with the base rule). The SVG carries its natural `width`, so it never scales up: a four-stage diagram stays at 13 px labels instead of stretching across the page. The website builds it from `stages` and optional `base` (`AQ.wDiagram`).
 - Four to seven stages. Name stages as engineers do: "Multimedia filter", "Softener", "RO", "EDI", "Storage tank", "Loop".
-- It scrolls sideways below 560 px rather than shrinking the text. Put the caption in an `aq-small` paragraph under it.
+- It shrinks to fit narrower containers down to 560 px, then scrolls sideways rather than shrinking the text further. Put the caption in an `aq-small` paragraph under it.

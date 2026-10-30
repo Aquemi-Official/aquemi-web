@@ -4,5 +4,6 @@ Specification tables present water quality limits and test results, the most per
 - Columns: parameter (`<th scope="row">`), value (`aq-spec__value`: mono with tabular figures), method or reference (`aq-spec__method`), and optionally status.
 - Write limits exactly as the pharmacopoeia states them, with units: `≤ 1.3 µS/cm @ 25 °C`, `≤ 500 ppb`, `< 0.25 EU/mL`.
 - Status cells use `aq-status aq-status--pass`, `--caution` or `--fail`, and always include the word.
+- Comparison tables (rows of options against criteria, not one system's spec) add `aq-spec--compare`: fixed layout, first column 22 %, the option columns share the rest equally so neither option looks favoured. They scroll below 640 px.
 - Highlight at most one row, with `is-highlight` (`flow-tint`).
 - The consumer provides the data. Never show a result without its method.
