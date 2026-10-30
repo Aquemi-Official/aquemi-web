@@ -40,7 +40,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | Page | Headline | Sections |
 | --- | --- | --- |
 | [Industries](https://aquemi-official.github.io/aquemi-web/#industries) | Water systems for regulated manufacturing | grid, table, band, related |
-| [Pharmaceutical](https://aquemi-official.github.io/aquemi-web/#ind-pharma) | Water that passes release testing, and the audit after it | prose, grid, spec, options, grid, faq |
+| [Pharmaceutical](https://aquemi-official.github.io/aquemi-web/#ind-pharma) | Pharmaceutical water matched to your dosage forms, and documented for every inspector who walks the plant | prose, table (situation routing), table (grade by dosage form), prose, spec, table (inspectors), diagram, options, grid, band, faq, docs, related |
 | [Biotechnology](https://aquemi-official.github.io/aquemi-web/#ind-biotech) | Water for biologics, from clinical supply to commercial scale | readout, prose, grid, options, faq, related |
 | [Medical devices](https://aquemi-official.github.io/aquemi-web/#ind-meddevice) | Rinse water you can defend in your cleaning validation | prose, spec, grid, options, faq |
 | [Contract manufacturing (CDMO)](https://aquemi-official.github.io/aquemi-web/#ind-cdmo) | A water system that stands up to every client's audit | prose, grid, options, band, grid, faq |
