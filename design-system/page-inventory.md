@@ -29,7 +29,7 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | --- | --- | --- |
 | [Services](https://aquemi-official.github.io/aquemi-web/#services) | One team from the first requirement to the last service visit | steps, grid, table, band, faq, related |
 | [Process design and engineering](https://aquemi-official.github.io/aquemi-web/#svc-design) | A water system design your quality unit can trace, approve at DQ and qualify against | prose, table (deliverables), diagram (URS to IQ/OQ trace), table (one requirement traced), steps, table (design decisions, linked), table (traditional vs ASTM E2500), faq, docs (what to send), related |
-| [Fabrication](https://aquemi-official.github.io/aquemi-web/#svc-fabrication) | Every weld logged, inspected and traceable to its heat | spec, steps, prose, options, docs, faq |
+| [Fabrication](https://aquemi-official.github.io/aquemi-web/#svc-fabrication) | Fabrication your auditor can trace from any weld back to the mill heat | prose, spec (fabrication standard), table (weld log fields), table (inspection and acceptance), steps (hold points), table (finish and passivation), options, docs (dossier), faq, docs (what to send), related |
 | [FAT and SAT](https://aquemi-official.github.io/aquemi-web/#svc-fat-sat) | Your system runs in our test bay before it ships | prose, table, steps, band, docs, faq |
 | [Commissioning and qualification](https://aquemi-official.github.io/aquemi-web/#svc-cq) | Qualified to protocol, with a year of data behind it | grid, spec, prose, docs, faq, related |
 | [Service and spare parts](https://aquemi-official.github.io/aquemi-web/#svc-service) | Keep the system in its qualified state, on a plan you can read | table, grid, spec, steps, prose, docs, faq |
