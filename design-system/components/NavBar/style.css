@@ -45,8 +45,8 @@
 .aq-nav__frame:hover, .aq-nav__frame:focus-within { color: var(--flow); }
 /* The one action in mono capitals, bracketed like a drawing reference: [ Request a proposal ] */
 .aq-nav__frame .aq-btn { font: 500 13px/16px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; }
-.aq-nav__frame .aq-btn::before { content: "[0"; content: "[0" / ""; }
-.aq-nav__frame .aq-btn::after { content: "0]"; content: "0]" / ""; }
+.aq-nav__frame .aq-btn::before { content: "[\a0"; content: "[\a0" / ""; }
+.aq-nav__frame .aq-btn::after { content: "\a0]"; content: "\a0]" / ""; }
 .aq-nav__frame .aq-btn .aq-btn__arrow { display: none; }
 .aq-nav__toggle { display: none; }
 

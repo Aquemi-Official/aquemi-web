@@ -106,8 +106,9 @@
    "items": [
     {
      "t": "URS review and design",
-     "d": "Compliance matrix, basis of design, P&IDs, functional specification. Your quality unit approves DQ.",
-     "icon": "pid"
+     "d": "Compliance matrix, basis of design, P&IDs, functional specification, DQ.",
+     "icon": "pid",
+     "hold": "Your quality unit"
     },
     {
      "t": "Fabrication",
@@ -116,18 +117,21 @@
     },
     {
      "t": "FAT",
-     "d": "Approved protocol, raw data, deviation log, report. Both parties sign release to ship.",
-     "icon": "pump"
+     "d": "Approved protocol, raw data, deviation log, report. Release to ship.",
+     "icon": "pump",
+     "hold": "Both parties"
     },
     {
      "t": "Installation and SAT",
-     "d": "Installation records, SAT on your utilities, leveraged tests flagged. You sign the SAT report.",
-     "icon": "wrench"
+     "d": "Installation records, SAT on your utilities, leveraged tests flagged, SAT report.",
+     "icon": "wrench",
+     "hold": "You"
     },
     {
      "t": "IQ and OQ",
-     "d": "IQ and OQ protocols and reports, draft procedures, training records. Your quality unit approves each.",
-     "icon": "binder"
+     "d": "IQ and OQ protocols and reports, draft procedures, training records.",
+     "icon": "binder",
+     "hold": "Your quality unit"
     },
     {
      "t": "PQ, at least 12 months",

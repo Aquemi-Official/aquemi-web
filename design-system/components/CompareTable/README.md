@@ -70,3 +70,8 @@ The site has over a hundred tables; most are lists in disguise. Use CompareTable
 - A label with one line of text: OptionList or LinkGrid rows.
 
 Eight rows or fewer per table, 25 words or fewer per cell (content budgets).
+
+## Concept 34 (ruled matrix)
+
+- Desktop: the table is drawn in ink: a 1 px `ink` frame with a second `line-strong` frame `space-1` outside it, `line-strong` cell rules, column heads in 13/18 mono caps `ink` over an `ink` rule, row labels in `font-display` 600 22/24 caps with a bracketed `[01]` index in `flow` above.
+- Phones: each record is a ruled card (`line-strong`, `surface`) whose title bar (`surface-sunken`) carries the row label in condensed caps and the `[01]` tag at the right; the "Label: value" lines follow. List and tabs variants keep a plain label line inside the card.

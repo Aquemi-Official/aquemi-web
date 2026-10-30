@@ -7,7 +7,9 @@
    A route whose cells link somewhere (the last link wins, usually "Start with") is clickable as a whole: the frame
    carries a pointer-only overlay to that page; the real link inside stays the keyboard and screen reader target, and
    that station is drawn as the filled end station.
-   Every route is in the markup (hidden when closed), so nothing is lost to search or screen readers. */
+   Every route is in the markup (hidden when closed), so nothing is lost to search or screen readers.
+   Pending station: a value that opens with a [placeholder] ("[days]; DI runs until release") is a fact still to come,
+   drawn in a dashed frame with a small "To confirm" caption, so it reads as a value on order, not an empty box. */
 var routerN=0;
 TABLE_AS.router=function(b,H){var C=b.cols||[],R=b.rows||[],k=++routerN;
  function lnk(c){return c&&typeof c==='object'&&c.link&&wp(c.link)?c.link:''}
@@ -17,7 +19,8 @@ TABLE_AS.router=function(b,H){var C=b.cols||[],R=b.rows||[],k=++routerN;
    +'<div class="aq-router__route'+(to?' is-link':'')+'" id="'+id+'" style="grid-row:1 / span '+R.length+'"'+(i?' hidden':'')+'>'
    +(to?'<a class="aq-router__hit" href="#'+e(to)+'" data-wp="'+e(to)+'" tabindex="-1" aria-hidden="true"></a>':'')
    +'<ol class="aq-router__stations">'+st.map(function(c,j){
-    return '<li'+(j===go?' class="is-go"':'')+'><p class="aq-router__k">'+tx(C[j+1]||'')+'</p><p class="aq-router__v">'+tcell(c)+'</p></li>'}).join('')+'</ol></div>'}).join('')+'</div>';
+    var pend=j!==go&&/^\s*\[/.test(c&&typeof c==='object'?c.t:c),cl=(j===go?' is-go':'')+(pend?' is-pending':'');
+    return '<li'+(cl?' class="'+cl.slice(1)+'"':'')+'><p class="aq-router__k">'+tx(C[j+1]||'')+'</p><p class="aq-router__v">'+tcell(c)+(pend?'<span class="aq-router__tbc">To confirm</span>':'')+'</p></li>'}).join('')+'</ol></div>'}).join('')+'</div>';
  return sec(H+wPlate(inner,{block:['Aquemi',b.nav||'Router',R.length+' routes']}));};
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-router__opt');if(!t)return;var w=t.closest('.aq-router');
  [].forEach.call(w.querySelectorAll('.aq-router__opt'),function(o){var on=o===t;o.setAttribute('aria-expanded',on?'true':'false');document.getElementById(o.getAttribute('aria-controls')).hidden=!on})});

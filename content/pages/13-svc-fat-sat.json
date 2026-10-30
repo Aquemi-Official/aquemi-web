@@ -76,11 +76,6 @@
      "Power, heating, cooling, drains, air; loop hydraulics at peak draw"
     ],
     [
-     "Leverage into IQ/OQ",
-     "Candidate where transport and installation cannot change the result (Annex 15, 3.6)",
-     "Feed water, utilities and field piping: proven on site only"
-    ],
-    [
      "Sanitization",
      "Full hot water cycle: every probe at setpoint for the hold time",
      "Full cycle on the installed loop, coldest point of use included"
@@ -107,7 +102,12 @@
     ]
    ],
    "fold": 3,
-   "fold_noun": "tests"
+   "fold_noun": "tests",
+   "conclusion": [
+    "Leverage into IQ/OQ",
+    "Candidate where transport and installation cannot change the result (Annex 15, 3.6)",
+    "Feed water, utilities and field piping: proven on site only"
+   ]
   },
   {
    "type": "steps",

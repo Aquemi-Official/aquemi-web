@@ -554,11 +554,11 @@ BLOCKS['docs']=function(b,H){
   /* Key (deciding) documents: items marked key: true; else the first b.key (default 2 in a coded list of five or more; key: 0 for none). */
   var marked=items.some(function(x){return x.key}),nk=b.key!=null?+b.key:(coded&&n>=5?2:0);
   var key=items.map(function(x,i){return marked?!!x.key:i<nk});
-  var vis=b.fold>0&&n>b.fold?b.fold:n,lead=key[0]&&key[1]&&!key.slice(2).some(Boolean);
-  var wo=docWide(n,lead),wf=vis<n?docWide(vis,lead):{};
+  var lead=key[0]&&key[1]&&!key.slice(2).some(Boolean);
+  var wo=docWide(n,lead);/* fold applies on phones only (DocList style.css): desktop lays out every folder */
   var noun=b.fold_noun||'documents',one=noun.replace(/s$/,'');
   var ol='<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
-    var cls=(key[i]?' is-key':'')+(wo[i]?' aq-docs__w':'')+(wf[i]?' aq-docs__wf':''),name=x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t);
+    var cls=(key[i]?' is-key':'')+(wo[i]?' aq-docs__w':''),name=x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t);
     var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x);
     return fli('<li'+(cls?' class="'+cls.slice(1)+'"':'')+'>',b,i)
       +'<span class="aq-docs__tab" aria-hidden="true">'+(tag?'<span class="aq-docs__code">'+e(tag)+'</span>':'')+'</span>'
@@ -574,18 +574,37 @@ BLOCKS['docs']=function(b,H){
    Fields as a table: cols [requirement, how we meet it, then evidence columns], rows. Evidence columns: a column whose
    every cell is a page link becomes the row's quiet link; every other column becomes document chips shaped like files
    (cells split on ";"), grouped under the column name when there is more than one.
+   Reference columns: a column listed in b.ref (column names or indexes), or whose every filled cell is only clause
+   numbers ("11.10(e)", "7; 17", "6.3, 8.5.6"), prints as mono clause text on the fan, not as file chips.
+   Clauses inside cells: a requirement written "Change control · ISO 9001 6.3, 8.5.6" shows the part after " · " as a
+   mono reference line under the name; a "how" cell whose every ";" part opens with a clause number ("6.7 no dead legs;
+   6.10 WFI > 70 °C") becomes a short clause list, the numbers in a mono column.
    A real table: the requirement is the row header, display-sized with a mono number (01 …); leader lines run from it to
    "how", then fan out to each file chip. Phones: rows stack; the chips keep their files and the fan on the left. */
-TABLE_AS.evidence=function(b,H){var C=b.cols||[],R=b.rows||[];
+var EV_CLAUSE=/^\s*(?:§\s*)?\d+(?:\.\d+)*(?:\s?\([a-z0-9]+\))*(?:\s*(?:[,;–-]|and)\s*(?:\(?[a-z0-9]+\)|\d+(?:\.\d+)*(?:\s?\([a-z0-9]+\))*))*\s*$/i;
+function evText(c){return c&&typeof c==='object'?c.t:c}
+/* Requirement cell: "Name · Standard clause" -> name, then the reference in mono */
+function evName(c){var t=String(evText(c)||''),m=t.match(/^(.+?)\s+·\s+(.*\d.*)$/);
+ if(!m||typeof c==='object')return '<span class="aq-evidence__name">'+tcell(c)+'</span>';
+ return '<span class="aq-evidence__name">'+tx(m[1])+'<span class="aq-evidence__ref">'+tx(m[2])+'</span></span>'}
+/* How cell: every ";" part opens with a clause number -> a clause list */
+function evHow(c){var t=String(evText(c)||''),P=t.split(/\s*;\s*/),Q=P.map(function(x){return x.match(/^(\d+(?:\.\d+)+)\s+(.+)$/)});
+ if(typeof c==='object'||P.length<2||!Q.every(Boolean))return tcell(c);
+ return '<ul class="aq-evidence__clauses">'+Q.map(function(q){return '<li><span class="aq-evidence__cl">'+e(q[1])+'</span><span>'+tx(q[2])+'</span></li>'}).join('')+'</ul>'}
+TABLE_AS.evidence=function(b,H){var C=b.cols||[],R=b.rows||[],RF=[].concat(b.ref||[]);
  var go=C.map(function(c,i){return i>1&&R.length>0&&R.every(function(r){var x=r[i];return x&&typeof x==='object'&&x.link})});
+ var isRef=C.map(function(c,i){if(i<2||go[i])return false;if(RF.indexOf(i)>=0||RF.indexOf(c)>=0)return true;
+  var f=R.map(function(r){return evText(r[i])}).filter(Boolean);return f.length>0&&f.every(function(t){return EV_CLAUSE.test(String(t))})});
  var ev=C.map(function(c,i){return i}).filter(function(i){return i>1&&!go[i]}),many=ev.length>1;
  var head='<thead><tr><th scope="col">'+tx(C[0]||'')+'</th><th scope="col">'+tx(C[1]||'')+'</th><th scope="col">'+(many?'Reference':tx(C[ev[0]]||C[2]||''))+'</th></tr></thead>';
  return sec(H+'<div class="aq-evidence">'+wFold(b,R.length,'<table class="aq-evidence__table">'+head+'<tbody>'+R.map(function(r,ri){
-   var files=ev.map(function(i){var c=r[i],t=c&&typeof c==='object'?c.t:c;if(!t)return '';
+   var refs=ev.filter(function(i){return isRef[i]}).map(function(i){var t=evText(r[i]);if(!t)return '';
+    return '<li class="aq-evidence__doc is-ref">'+(many?'<span class="aq-evidence__rk">'+tx(C[i])+'</span>':'')+'<span class="aq-evidence__clause">'+tx(t)+'</span></li>'}).join('');
+   var files=(refs?'<ul class="aq-evidence__docs aq-evidence__refs">'+refs+'</ul>':'')+ev.filter(function(i){return !isRef[i]}).map(function(i){var c=r[i],t=c&&typeof c==='object'?c.t:c;if(!t)return '';
     return (many?'<p class="aq-evidence__k">'+tx(C[i])+'</p>':'')+'<ul class="aq-evidence__docs">'+String(t).split(/\s*;\s*/).map(function(x){return '<li class="aq-evidence__doc"><span class="aq-evidence__file">'+tx(x.charAt(0).toUpperCase()+x.slice(1))+'</span></li>'}).join('')+'</ul>'}).join('');
    var links=C.map(function(c,i){return go[i]?tcell(r[i]):''}).join('');
-   return fli('<tr class="aq-evidence__row">',b,ri)+'<th scope="row" class="aq-evidence__t"><span class="aq-evidence__n" aria-hidden="true">'+(ri<9?'0':'')+(ri+1)+'</span><span class="aq-evidence__name">'+tcell(r[0])+'</span></th>'
-    +'<td class="aq-evidence__how">'+tcell(r[1])+'</td>'
+   return fli('<tr class="aq-evidence__row">',b,ri)+'<th scope="row" class="aq-evidence__t"><span class="aq-evidence__n" aria-hidden="true">'+(ri<9?'0':'')+(ri+1)+'</span>'+evName(r[0])+'</th>'
+    +'<td class="aq-evidence__how">'+evHow(r[1])+'</td>'
     +'<td class="aq-evidence__proof">'+files+(links?'<p class="aq-evidence__go">'+links+'</p>':'')+'</td></tr>'}).join('')+'</tbody></table>',b.fold_noun||'requirements')+'</div>');};
 /* Block "faq" -> FAQ: hairline accordion rows (index, question, +/−), all closed; a shared name keeps one answer open.
    Desktop: heading left, questions right (SplitSection). */
@@ -678,7 +697,16 @@ function wOptModules(b,H){var I=b.items||[],art=b.art||WP,pg=wp(art),half=Math.c
  var list=function(X,o,side){return X.length?'<ol class="aq-option-modules__list aq-option-modules__list--'+side+'"'+(o?' start="'+(o+1)+'"':'')+'>'+X.map(function(it,k){return wOptModule(it,o+k,b,side)}).join('')+'</ol>':''};
  var inner='<div class="aq-options aq-option-modules'+(hasArt?'':' aq-option-modules--bare')+'">'+list(L,0,'l')+base+list(R,half,'r')+'</div>';
  return sec(H+wFold(b,I.length,inner,b.fold_noun||'options'))}
-BLOCKS['options']=function(b,H){if(b.as==='modules')return wOptModules(b,H);var I=b.items||[],IC=wIcons(b);return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d,0,0,0,IC[i]),b,i)}).join('')+'</ol>',b.fold_noun||'options'));};
+/* as: "decisions" -> OptionList decisions: choices the buyer settles (before the URS, before design). Each row: the big
+   mono number with a framed "?" tag, the decision, its line. A decision named as two options ("Hot loop or ambient",
+   "Make media and buffers, or buy") gets a small fork mark; item by: "<stage>" adds a "Decide by: <stage>" caption. */
+var OPT_FORK='<svg class="aq-options__fork" viewBox="0 0 32 20" aria-hidden="true" focusable="false"><path d="M1 10 H12 C18 10 18 3 24 3 H31 M12 10 C18 10 18 17 24 17 H31"/><circle cx="12" cy="10" r="2"/></svg>';
+function wOptDecide(b,H){var I=b.items||[];
+ return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options aq-options--decide">'+I.map(function(it,i){var fork=/or/i.test(String(it.t||''));
+  return fli('<li><div class="aq-rows__row"><span class="aq-options__q" aria-hidden="true">'+idx(i)+'<span class="aq-options__qt">?</span></span>'
+   +'<h3 class="aq-rows__t">'+(fork?OPT_FORK:'')+tx(it.t)+'</h3>'
+   +'<p class="aq-rows__d">'+(it.d?tx(it.d):'')+(it.by?'<span class="aq-options__by">Decide by: '+tx(it.by)+'</span>':'')+'</p></div></li>',b,i)}).join('')+'</ol>',b.fold_noun||'decisions'))}
+BLOCKS['options']=function(b,H){if(b.as==='modules')return wOptModules(b,H);if(b.as==='decisions')return wOptDecide(b,H);var I=b.items||[],IC=wIcons(b);return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d,0,0,0,IC[i]),b,i)}).join('')+'</ol>',b.fold_noun||'options'));};
 /* Block "path" -> WaterPath */
 BLOCKS['path']=function(b,H){return sec(H+wPath(b));};
 /* Table as "plans" -> PlanTiers: service plans compared in one table on a cream drawing plate, one action per plan.
@@ -868,7 +896,9 @@ TABLE_AS.roles=function(b,H){var C=b.cols||[],R=b.rows||[];
    A route whose cells link somewhere (the last link wins, usually "Start with") is clickable as a whole: the frame
    carries a pointer-only overlay to that page; the real link inside stays the keyboard and screen reader target, and
    that station is drawn as the filled end station.
-   Every route is in the markup (hidden when closed), so nothing is lost to search or screen readers. */
+   Every route is in the markup (hidden when closed), so nothing is lost to search or screen readers.
+   Pending station: a value that opens with a [placeholder] ("[days]; DI runs until release") is a fact still to come,
+   drawn in a dashed frame with a small "To confirm" caption, so it reads as a value on order, not an empty box. */
 var routerN=0;
 TABLE_AS.router=function(b,H){var C=b.cols||[],R=b.rows||[],k=++routerN;
  function lnk(c){return c&&typeof c==='object'&&c.link&&wp(c.link)?c.link:''}
@@ -878,22 +908,60 @@ TABLE_AS.router=function(b,H){var C=b.cols||[],R=b.rows||[],k=++routerN;
    +'<div class="aq-router__route'+(to?' is-link':'')+'" id="'+id+'" style="grid-row:1 / span '+R.length+'"'+(i?' hidden':'')+'>'
    +(to?'<a class="aq-router__hit" href="#'+e(to)+'" data-wp="'+e(to)+'" tabindex="-1" aria-hidden="true"></a>':'')
    +'<ol class="aq-router__stations">'+st.map(function(c,j){
-    return '<li'+(j===go?' class="is-go"':'')+'><p class="aq-router__k">'+tx(C[j+1]||'')+'</p><p class="aq-router__v">'+tcell(c)+'</p></li>'}).join('')+'</ol></div>'}).join('')+'</div>';
+    var pend=j!==go&&/^\s*\[/.test(c&&typeof c==='object'?c.t:c),cl=(j===go?' is-go':'')+(pend?' is-pending':'');
+    return '<li'+(cl?' class="'+cl.slice(1)+'"':'')+'><p class="aq-router__k">'+tx(C[j+1]||'')+'</p><p class="aq-router__v">'+tcell(c)+(pend?'<span class="aq-router__tbc">To confirm</span>':'')+'</p></li>'}).join('')+'</ol></div>'}).join('')+'</div>';
  return sec(H+wPlate(inner,{block:['Aquemi',b.nav||'Router',R.length+' routes']}));};
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-router__opt');if(!t)return;var w=t.closest('.aq-router');
  [].forEach.call(w.querySelectorAll('.aq-router__opt'),function(o){var on=o===t;o.setAttribute('aria-expanded',on?'true':'false');document.getElementById(o.getAttribute('aria-controls')).hidden=!on})});
+/* ---------- spec "as": "rules" -> LimitGauges, rule variant ----------
+   Design rules that are not release limits (L/D ≤ 2, return velocity ≥ x, sanitization ≥ 65 °C), on the gauges' cream
+   plate: one ruled row per rule, its big mono number, the rule name, then a compact horizontal threshold bar (the scale
+   with ticks, the threshold mark with its chip, the passing side shaded flow) with the rule as written under it, and the
+   basis with standard names as tags. A rule without a threshold (a part, a method) keeps the row with its value between
+   dashed rules, so the sheet reads as one list.
+   Threshold: the row's rule field ("≥ [design minimum return velocity, m/s]", "≤ 2") or else its value: a ≤ < ≥ >
+   sign, or "at least / minimum / no less than" (≥) or "at most / maximum / no more than / up to" (≤), followed by a
+   number with its unit or a [placeholder]. A number sets the scale (0 to the next round number above it, gaugeScale:
+   a ruler, not data). A placeholder draws the same bar unnumbered with the mark at mid-scale and the placeholder as the
+   chip: the shape of the rule, its value still to come. */
+var RULE_UP=/\b(at least|minimum|min\.|no less than|not less than)\s*/i,RULE_DN=/\b(at most|maximum|max\.|no more than|not more than|up to)\s*/i;
+function ruleParse(r){var v=String(r.rule||r.v||''),m=v.match(/([≤<≥>])\s*/),c='',k;
+  if(m){c=m[1]==='<'?'≤':m[1]==='>'?'≥':m[1];k=m.index+m[0].length}
+  else{var bare=v.replace(/\[[^\]]*\]/g,function(x){return Array(x.length+1).join(' ')}),u=bare.match(RULE_UP),d=bare.match(RULE_DN),w=u&&(!d||u.index<d.index)?u:d;
+    if(!w)return null;c=w===u?'≥':'≤';k=w.index+w[0].length}
+  var rest=v.slice(k),p=rest.match(/^\[[^\]]*\]/);
+  if(p)return {c:c,ph:p[0]};
+  var n=rest.match(/^(\d+(?:\.\d+)?)\s*([^\s;,(]*(?:\s?\/\s?[^\s;,(]+)?)/);
+  if(!n)return null;return {c:c,n:parseFloat(n[1]),t:n[1],u:n[2]&&n[2].length<=8?n[2]:''}}
+function wRuleBar(g){var up=g.c==='≥',f,ends='';
+  if(g.ph)f=0.5;else{var S=gaugeScale(g.n,up);f=Math.min(g.n/S[0],1);ends='<span class="aq-limit-gauges__ends"><span>0</span><span>'+gaugeNum(S[0])+'</span></span>'}
+  var chip=e(g.c)+' '+(g.ph?tx(g.ph):e(g.t)+(g.u?' '+tx(g.u):''));
+  return '<div class="aq-limit-gauges__bar'+(up?' is-up':'')+(g.ph?' is-open':'')+'" aria-hidden="true" style="--f:'+f.toFixed(3)+'">'
+   +'<span class="aq-limit-gauges__chip">'+chip+'</span><span class="aq-limit-gauges__scale"><span class="aq-limit-gauges__band"></span><span class="aq-limit-gauges__tick"></span></span>'+ends+'</div>'}
+function wRules(b,rows){
+  var list=rows.map(function(r,i){var g=ruleParse(r);
+    return fli('<li class="aq-limit-gauges__rule'+(g?'':' is-text')+(r.hl?' is-key':'')+'">',b,i)
+     +'<span class="aq-limit-gauges__rn" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'
+     +'<div class="aq-limit-gauges__rv">'+(g?wRuleBar(g):'')+'<p class="aq-limit-gauges__rt">'+tx(r.v)+'</p></div>'
+     +(r.m?'<p class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</p>':'')+'</li>'}).join('');
+  return wPlate(wFold(b,rows.length,'<ol class="aq-limit-gauges aq-limit-gauges--rules" role="list">'+list+'</ol>',b.fold_noun||'rules'),{light:true,block:['Aquemi',b.caption||'Design rules']})}
 /* Block "spec" -> SpecTable (spec sheet: two-column matrix).
    Fields: h, caption, cols, rows [{p, v, m, hl, link}], note. Rows keep their order. hl rows at the top of the list are
    full-width bands (is-highlight is-lead); an hl row further down is tinted in place, so sequences are never broken.
    link: a page id, shown as a quiet "Page name →" link after the basis. The caption is the section's eyebrow (above h)
    and the table's visually hidden <caption>; it is never printed a second time above the table.
    CSS changes the table's display, so explicit ARIA table roles keep its semantics in every browser.
-   Shapes (field as): "gauges" -> LimitGauges, "callouts" -> ParameterCallouts (below). */
+   A lead hl row whose value holds a number is a readout: its limit set huge on a navy panel (aria-hidden; the value
+   cell still carries the full text).
+   Shapes (field as): "gauges" -> LimitGauges, "rules" -> LimitGauges rule bars (rules.js), "callouts" -> ParameterCallouts (below). */
 function wSpecTable(b,rows,foldAt,noun){var cols=b.cols||['Parameter','Specification','Method or reference'],lead=true;
   var body=rows.map(function(r,i){
     var hl=!!r.hl,cls=hl?(lead?'is-highlight is-lead':'is-highlight'):'';if(!hl)lead=false;
     var lp=r.link&&wp(r.link),lk=lp?'<a class="aq-spec__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(lp.nav_label||r.link)+'</a>':'';
-    return fli('<tr role="row"'+(cls?' class="'+cls+'"':''),{fold:foldAt===0?-1:foldAt},i)+'><th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
+    /* Lead rows with a number become a readout (concept 26): the limit huge in condensed figures on a navy panel */
+    var g=hl&&lead?gaugeParse(r.v):null,rd=g?'<td class="aq-spec__read" aria-hidden="true"><span class="aq-spec__read-n">'+e((g.c?g.c+' ':'')+g.t)+'</span>'+(g.u?'<span class="aq-spec__read-u">'+tx(g.u)+'</span>':'')+'</td>':'';
+    return fli('<tr role="row"'+(cls?' class="'+cls+(rd?' is-readout" data-theme="dark"':'"'):''),{fold:foldAt===0?-1:foldAt},i)+'>'+rd+'<th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
   }).join('');
   var t='<table class="aq-spec'+(foldAt===0?' aq-fold-x':'')+'" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>';
   if(!(foldAt>=0)||rows.length<=foldAt)return t;
@@ -903,6 +971,7 @@ function wSpecTable(b,rows,foldAt,noun){var cols=b.cols||['Parameter','Specifica
 BLOCKS['spec']=function(b,H){
   var rows=b.rows||[],head=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro}),note=b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'';
   if(b.as==='gauges')return sec(head+'<div class="aq-stack">'+wGauges(b,rows)+note+'</div>');
+  if(b.as==='rules')return sec(head+'<div class="aq-stack">'+wRules(b,rows)+note+'</div>');/* blocks/rules.js */
   if(b.as==='callouts'&&ART[WP]){var c=wCallouts(b,rows);if(c)return sec(head+c+note)}
   return sec(head+'<div class="aq-stack">'+(b.fold>0?wSpecTable(b,rows,b.fold,b.fold_noun):wSpecTable(b,rows))+note+'</div>');
 };
@@ -1051,17 +1120,21 @@ function stepFlow(b,H){var I=b.items||[],n=I.length,cols=n<=4?n:Math.ceil(n/2),o
    +(eol?'<span class="aq-steps__turn" aria-hidden="true"></span>':'')+(bol?'<span class="aq-steps__turn aq-steps__turn--in" aria-hidden="true"></span>':'')
    +'</li>'+(eol?'<li class="aq-steps__ret" aria-hidden="true"><span class="aq-steps__ret-arrow"></span>'+(next&&next.hold?STEP_VALVE:'')+'</li>':'')});
  return sec(H+wPlate('<ol class="aq-steps aq-steps--hold" style="--cols:'+cols+'">'+o+'</ol>',{light:true,block:['Aquemi',b.nav||'Sequence']}))}
-/* Stage strip (as: "stages", steps without holds, every item with an icon): stations in one row of up to six (longer lists
-   wrap in rows of four), each an icon in a framed square, a big mono number, the name in uppercase mono and its text,
-   joined by the hold flow's pipe runs. Phones: the hold flow's vertical pipe, the framed icon beside each number. Keeps fold. */
+/* Stage strip (as: "stages", every item with an icon): stations in one row of up to six (longer lists wrap in rows of
+   four), each an icon in a framed square, a big mono number, the name in uppercase mono and its text, joined by the hold
+   flow's pipe runs. A stage may carry hold: "<who signs>": it is stamped like the hold flow (HOLD, signed by …), its icon
+   frame turns flow and a closed valve sits on the run into it. Phones: the hold flow's vertical pipe, the framed icon
+   beside each number. Keeps fold. */
 function stepStages(b,H,IC){var I=b.items||[],n=I.length,cols=n<=6?n:4;
- return sec(H+wFold(b,n,'<ol class="aq-steps aq-steps--stages" style="--cols:'+cols+'">'+I.map(function(it,i){var eol=i<n-1&&i%cols===cols-1;
-  return fli('<li class="aq-steps__st'+(eol?' is-eol':'')+'"><span class="aq-steps__frame" aria-hidden="true">'+wIcon(IC[i],'aq-icon--ink')+'</span>'
+ return sec(H+wFold(b,n,'<ol class="aq-steps aq-steps--stages" style="--cols:'+cols+'">'+I.map(function(it,i){var eol=i<n-1&&i%cols===cols-1,next=I[i+1],v=next&&next.hold&&!eol;
+  return fli('<li class="aq-steps__st'+(it.hold?' is-hold':'')+(eol?' is-eol':'')+'"><span class="aq-steps__frame" aria-hidden="true">'+wIcon(IC[i],it.hold?'aq-icon--flow':'aq-icon--ink')+'</span>'
    +'<span class="aq-steps__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-   +'<div class="aq-steps__body"><h3 class="aq-steps__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-steps__d">'+tx(it.d)+'</p>':'')+'</div>'
-   +(i<n-1?'<span class="aq-steps__run" aria-hidden="true"></span>':'')+'</li>',b,i)}).join('')+'</ol>',b.fold_noun||'steps'))}
-BLOCKS['steps']=function(b,H){var I=b.items||[];if(I.some(function(it){return it.hold}))return stepFlow(b,H);var IC=wIcons(b);
+   +'<div class="aq-steps__body"><h3 class="aq-steps__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-steps__d">'+tx(it.d)+'</p>':'')
+   +(it.hold?'<p class="aq-steps__hold"><span class="aq-steps__stamp"><span class="aq-steps__stamp-k">Hold</span> <span class="aq-steps__who">Signed by '+stepWho(it.hold)+'</span></span></p>':'')+'</div>'
+   +(i<n-1?'<span class="aq-steps__run'+(v?' is-valve':'')+'" aria-hidden="true">'+(v?STEP_VALVE:'')+'</span>':'')+'</li>',b,i)}).join('')+'</ol>',b.fold_noun||'steps'))}
+BLOCKS['steps']=function(b,H){var I=b.items||[],IC=wIcons(b);
   if(b.as==='stages'&&I.length&&IC.every(Boolean))return stepStages(b,H,IC);
+  if(I.some(function(it){return it.hold}))return stepFlow(b,H);
   return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-steps">'+I.map(function(it,i){
     return fli(wRow(i,it.t,it.d,0,0,0,IC[i],1),b,i)}).join('')+'</ol>',b.fold_noun||'steps'));};
 /* Block "table" -> CompareTable. cols: header labels (first is the row-label column); rows: cells, each a string or {t, link}.
@@ -1092,19 +1165,25 @@ BLOCKS['tags']=function(b,H){var lk=wp('compliance');return '<section class="aq-
    on the spine, B left-aligned. Phones: each factor with A and B under it, each line tagged with its route.
    Drawn on a plate (wPlate): the two route names face each other across an "or" node, each factor is a numbered node on
    the spine with leader lines out to both answers.
-   fold: N shows the first N factors (the verdict always shows); put the deciding factors first. */
+   fold: N shows the first N factors (the verdict always shows); put the deciding factors first.
+   conclusion: [label, A, B] (or a string): a closing line that is not a choice (what carries into IQ/OQ), drawn as a
+   footer band across the plate under the factors, the label on the spine. ground: "light" sets it on the cream sheet
+   (the plate goes sunken so it still reads as a drawing on the sheet). */
 TABLE_AS.versus=function(b,H){var C=b.cols||[],R=b.rows||[],A=tcell(C[1]),B=tcell(C[2]);
  var fit=R.filter(function(r){return /^(fits when|choose)/i.test(String(r[0]&&r[0].t||r[0]))})[0],rows=R.filter(function(r){return r!==fit});
  return sec(H+wPlate('<div class="aq-versus"><div class="aq-versus__head" aria-hidden="true"><p class="aq-versus__name">'+A+'</p><span class="aq-versus__vs">or</span><p class="aq-versus__name">'+B+'</p></div>'
   +wFold(b,rows.length,'<dl class="aq-versus__rows">'+rows.map(function(r,i){return fli('<div class="aq-versus__row">',b,i)+'<dt><span class="aq-versus__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+tcell(r[0])+'</dt><dd data-k="'+e(C[1])+'">'+tcell(r[1])+'</dd><dd data-k="'+e(C[2])+'">'+tcell(r[2])+'</dd></div>'}).join('')+'</dl>',b.fold_noun||'factors')
-  +(fit?'<div class="aq-versus__verdict"><div><p class="aq-eyebrow">Choose '+A+' when</p><p>'+tcell(fit[1])+'</p></div><div><p class="aq-eyebrow">Choose '+B+' when</p><p>'+tcell(fit[2])+'</p></div></div>':'')+'</div>',{block:['Aquemi',b.nav||'Comparison',rows.length+' factors']}));};
+  +(fit?'<div class="aq-versus__verdict"><div><p class="aq-eyebrow">Choose '+A+' when</p><p>'+tcell(fit[1])+'</p></div><div><p class="aq-eyebrow">Choose '+B+' when</p><p>'+tcell(fit[2])+'</p></div></div>':'')+wVsEnd(b.conclusion,C)+'</div>',{block:['Aquemi',b.nav||'Comparison',rows.length+' factors'],cls:b.ground==='light'?'aq-versus-plate--light':''}));};
+function wVsEnd(c,C){if(!c)return '';var one=typeof c==='string'||c.length<3;
+ return '<div class="aq-versus__end'+(one?' is-one':'')+'"><p class="aq-versus__end-k">'+(one?'Either way':tcell(c[0]))+'</p>'
+  +(one?'<p class="aq-versus__end-v">'+tcell(typeof c==='string'?c:c[c.length-1])+'</p>':'<p class="aq-versus__end-v" data-k="'+e(C[1])+'">'+tcell(c[1])+'</p><p class="aq-versus__end-v" data-k="'+e(C[2])+'">'+tcell(c[2])+'</p>')+'</div>'}
 /* One content section per block type in pages.json */
 function wBlock(b){var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}
 /* Ground: the page is a navy blueprint (data-theme="dark" on the page). Reading blocks (spec rows, tables, documents,
    prose, FAQ, forms, case studies) are laid on light drawing sheets; diagrams, routes, options, grids and related links
    stay on the navy. A block may set ground: "light" or "dark" to override. Consecutive light blocks share one sheet,
    which ends in a small title block (page name, sheet number) like a drawing sheet. */
-var LIGHT={spec:1,table:1,docs:1,prose:1,faq:1,form:1,'case':1,failures:1,evidence:1,gauges:1};/* keyed by table shape (as) or block type */
+var LIGHT={spec:1,table:1,docs:1,prose:1,faq:1,form:1,'case':1,failures:1,evidence:1,gauges:1,rules:1};/* keyed by table shape (as) or block type */
 function ground(b){return b.ground==='light'||b.ground==='dark'?b.ground:LIGHT[b.as||b.type]?'light':'dark'}
 function wSheet(inner,p,n){return '<div class="aq-sheet" data-theme="light">'+inner+'<div class="aq-sheet__block" aria-hidden="true"><span>Aquemi</span><span>'+e(p.nav_label||p.id)+'</span><span>Sheet '+(n<10?'0':'')+n+'</span></div></div>'}
 /* Page: NavBar, Hero, SectionNav, sections (navy ground and light sheets), Closing, Footer */

@@ -24,8 +24,8 @@ DocList shows the documents delivered with a system as a turnover binder: number
 - `aq-docs__name` holds the document name as QA would write it, in sentence case in the source; CSS sets it in uppercase mono. An optional `<span class="aq-docs__d">` inside it adds the detail in sans, smaller, under the title. An item with `link` (a page id) makes the name a link.
 - Icon: from the name (`DOC_ICONS` in the renderer: borescope, weld, pid for drawings, gauge for calibration and pressure, wrench for maintenance and spares, calendar for plans, stamp for certificates and statements, magnifier for reviews and inspections, binder for indexes, registers, manuals and logs), only where the drawing says what the document is; others get none. An item's `icon` field wins; `"icon": "none"` removes it.
 - Tab: the derived code, or an item's `tag` when the data has a category. Plain lists (`aq-docs--plain`, items that are not documents with recognised codes) keep an empty tab: the folder shape alone.
-- `is-key` marks a deciding document. `aq-docs__w` makes a card span half the row; `aq-docs__wf` does the same only while the list is folded. The renderer sets both so no row ends short.
-- Every docs block renders this way (no opt-in), full width under the standard section head. The site renderer (`assets/src/blocks/docs.js`, block type `docs`) builds it from `{h, nav, items, fold, fold_noun, key}`; items `{t, d, code, tag, icon, key, link}`. The fold button sits under the plate.
+- `is-key` marks a deciding document. `aq-docs__w` makes a card span half the row; the renderer sets it so no row ends short.
+- Every docs block renders this way (no opt-in), full width under the standard section head. The site renderer (`assets/src/blocks/docs.js`, block type `docs`) builds it from `{h, nav, items, fold, fold_noun, key}`; items `{t, d, code, tag, icon, key, link}`. `fold` works on phones only (as in OptionModules): on desktop the whole binder shows and the "Show all" button is hidden; on phones the first `fold` folders show and the button sits under the plate.
 
 ## Key documents
 
@@ -34,7 +34,7 @@ DocList shows the documents delivered with a system as a turnover binder: number
 
 ## Layout
 
-- **Desktop:** folder cards on a 6-column grid, three to a row, on the plate. Each folder: tab on its top edge, number in Mono 32/36 with a 32 px line icon top right, name in Mono 500 16/22 uppercase, detail in Geist 14/20 `ink-muted`, then a footer rule with an 11 px mono caption. Two sheets show behind each folder. Rows that would end short widen to two cards: 12 items read 3, 3, 3, 3; 10 with a key pair read 2, 3, 3, 2. Folded lists are laid out for the cards that show (fold 6 reads 3, 3).
+- **Desktop:** folder cards on a 6-column grid, three to a row, on the plate. Each folder: tab on its top edge, number in Mono 32/36 with a 32 px line icon top right, name in Mono 500 16/22 uppercase, detail in Geist 14/20 `ink-muted`, then a footer rule with an 11 px mono caption. Two sheets show behind each folder. Rows that would end short widen to two cards: 12 items read 3, 3, 3, 3; 10 with a key pair read 2, 3, 3, 2.
 - **Phone** (container 860 px and below): still a binder. A smaller plate with tighter sheets, folders one to a row, compact: tab, the number (Mono 24) beside the name (Mono 14/20 uppercase) with the detail under it. Icon and footer caption drop. Key folders keep their flow tab and tint.
 
 ## Codes

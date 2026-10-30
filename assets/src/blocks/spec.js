@@ -4,12 +4,16 @@
    link: a page id, shown as a quiet "Page name →" link after the basis. The caption is the section's eyebrow (above h)
    and the table's visually hidden <caption>; it is never printed a second time above the table.
    CSS changes the table's display, so explicit ARIA table roles keep its semantics in every browser.
-   Shapes (field as): "gauges" -> LimitGauges, "callouts" -> ParameterCallouts (below). */
+   A lead hl row whose value holds a number is a readout: its limit set huge on a navy panel (aria-hidden; the value
+   cell still carries the full text).
+   Shapes (field as): "gauges" -> LimitGauges, "rules" -> LimitGauges rule bars (rules.js), "callouts" -> ParameterCallouts (below). */
 function wSpecTable(b,rows,foldAt,noun){var cols=b.cols||['Parameter','Specification','Method or reference'],lead=true;
   var body=rows.map(function(r,i){
     var hl=!!r.hl,cls=hl?(lead?'is-highlight is-lead':'is-highlight'):'';if(!hl)lead=false;
     var lp=r.link&&wp(r.link),lk=lp?'<a class="aq-spec__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(lp.nav_label||r.link)+'</a>':'';
-    return fli('<tr role="row"'+(cls?' class="'+cls+'"':''),{fold:foldAt===0?-1:foldAt},i)+'><th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
+    /* Lead rows with a number become a readout (concept 26): the limit huge in condensed figures on a navy panel */
+    var g=hl&&lead?gaugeParse(r.v):null,rd=g?'<td class="aq-spec__read" aria-hidden="true"><span class="aq-spec__read-n">'+e((g.c?g.c+' ':'')+g.t)+'</span>'+(g.u?'<span class="aq-spec__read-u">'+tx(g.u)+'</span>':'')+'</td>':'';
+    return fli('<tr role="row"'+(cls?' class="'+cls+(rd?' is-readout" data-theme="dark"':'"'):''),{fold:foldAt===0?-1:foldAt},i)+'>'+rd+'<th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
   }).join('');
   var t='<table class="aq-spec'+(foldAt===0?' aq-fold-x':'')+'" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>';
   if(!(foldAt>=0)||rows.length<=foldAt)return t;
@@ -19,6 +23,7 @@ function wSpecTable(b,rows,foldAt,noun){var cols=b.cols||['Parameter','Specifica
 BLOCKS['spec']=function(b,H){
   var rows=b.rows||[],head=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro}),note=b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'';
   if(b.as==='gauges')return sec(head+'<div class="aq-stack">'+wGauges(b,rows)+note+'</div>');
+  if(b.as==='rules')return sec(head+'<div class="aq-stack">'+wRules(b,rows)+note+'</div>');/* blocks/rules.js */
   if(b.as==='callouts'&&ART[WP]){var c=wCallouts(b,rows);if(c)return sec(head+c+note)}
   return sec(head+'<div class="aq-stack">'+(b.fold>0?wSpecTable(b,rows,b.fold,b.fold_noun):wSpecTable(b,rows))+note+'</div>');
 };

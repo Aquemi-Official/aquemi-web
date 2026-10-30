@@ -1,4 +1,4 @@
-FAQ answers the questions engineers and QA ask before they call, as hairline accordion rows: index, question and a +/− sign, with the answer opening under the question.
+FAQ answers the questions engineers and QA ask before they call, as framed question cards hung from one junction spine: index, question in condensed capitals and a [ + ] sign, with the answer opening inside the card.
 
 ## Markup
 
@@ -17,14 +17,14 @@ FAQ answers the questions engineers and QA ask before they call, as hairline acc
 - The index is the shared `.aq-index` (`01`, mono, `ink-subtle`). `aq-faq__sign` stays empty; CSS writes `+` or `−`.
 - The site renderer (`assets/src/blocks/faq.js`) puts it in a SplitSection: the standard section head on the left, the rows on the right (stacked on phones).
 
-## Layout
+## Layout (concept 15)
 
-- One grammar at every width: `line` hairline rows, an index column (`space-12` on desktop, `space-8` on phones), the question, the sign. No cards, no grid paper.
-- A collapsed row is about 56 px on phones. The open row's sign turns `flow`; nothing else changes colour.
+- Every question is a framed card (`line-strong`, `surface`) hung from one vertical spine on the left by a short connector with a round junction node (CSS only). The summary reads `01 /` (the shared index plus a CSS slash, `ink-subtle`), the question in condensed capitals (`font-display` 600, 22/24; 20/22 on phones, where the index and sign sit on a line above it) and a bracketed `[ + ]` / `[ − ]` sign in mono.
+- The open card turns `flow`: frame, a 3 px inner rule on the left, connector, a filled node, index and sign. Its answer sits under the question column below a dashed `line-strong` rule.
 
 ## Token rules
 
-- Question `font-sans` 500 at 17/24 (16/24 on phones). Answer 15/24 in `ink-muted` within `text-max`, indented to the question column.
+- Answer 16/26 (15/24 on phones) in `ink-muted` within `text-max`.
 - Focus: 2 px `focus` ring with 2 px offset on the summary. The answer fades in over 400 ms; with reduced motion it only fades.
 
 ## Writing

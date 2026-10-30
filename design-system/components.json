@@ -143,10 +143,10 @@
    "readme": "design-system/components/Closing/README.md",
    "preview": "design-system/components/Closing/preview.html",
    "group": "Page sections",
-   "height": "680",
+   "height": "720",
    "width": "1200",
-   "subtitle": "Closing call to action with a what-to-send checklist and an explicit proof readout",
-   "summary": "Closing is the call to action at the end of every page: a very large headline in a framed panel on the navy band, one lead sentence, an optional proof readout with one confirmed figure, and the primary button."
+   "subtitle": "Closing in condensed capitals; the exchange (what you send, what comes back) on a cream plate",
+   "summary": "Closing is the call to action at the end of every page: a very large headline in condensed capitals in a framed panel on the navy band, one lead sentence, an optional checklist or send-and-return exchange, an optional proof readout with one confirmed figure, and the primary button."
   },
   {
    "name": "ContactRoutes",
@@ -196,7 +196,7 @@
    "height": "480",
    "width": "1000",
    "subtitle": "Hairline accordion rows, second one open",
-   "summary": "FAQ answers the questions engineers and QA ask before they call, as hairline accordion rows: index, question and a +/− sign, with the answer opening under the question."
+   "summary": "FAQ answers the questions engineers and QA ask before they call, as framed question cards hung from one junction spine: index, question in condensed capitals and a [ + ] sign, with the answer opening inside the card."
   },
   {
    "name": "FaultList",
@@ -305,8 +305,8 @@
    "group": "Page sections",
    "height": "560",
    "width": "1100",
-   "subtitle": "Heading left; lead sentence, then plain paragraphs on the plain ground",
-   "summary": "Prose is running text in a SplitSection: the heading on the left, the first sentence set as a light lead, then plain paragraphs on the plain section ground."
+   "subtitle": "Heading left; a large lead, then paragraphs tagged [01], [02] with leaders on a drawing grid",
+   "summary": "Prose is running text in a SplitSection: the heading on the left, the first sentence as a large lead, then paragraphs tagged [01], [02] in the margin on a faint drawing grid."
   },
   {
    "name": "Readout",
@@ -325,8 +325,8 @@
    "group": "Page sections",
    "height": "420",
    "width": "1100",
-   "subtitle": "Four related pages: index, section label, title, drawing where the page has one",
-   "summary": "RelatedLinks closes a page with the three to six pages to read next: on desktop, hairline-topped columns with the index, the page's drawing, its section label and title; on phones, compact rows of the shared list grammar."
+   "subtitle": "Four pages hung from a pipe: number, thumbnail, section and title in condensed capitals",
+   "summary": "RelatedLinks closes a page with the pages to read next as cards hung from a drawn pipe: a large number, a thumbnail of the target page, its section and its title in condensed capitals."
   },
   {
    "name": "RoleMatrix",
@@ -415,7 +415,7 @@
    "group": "Data",
    "height": "520",
    "width": "1200",
-   "subtitle": "The numbers a system page stands on, as a measurement strip",
+   "subtitle": "The numbers a page stands on, as a cream data plate between rulers",
    "summary": "KeyFacts is a measurement strip of three to six figures, each with its unit and the standard behind it, that tells an engineer what a page stands on before they read a word of copy."
   },
   {
@@ -445,7 +445,7 @@
    "group": "Data",
    "height": "900",
    "width": "900",
-   "subtitle": "WFI spec sheet with the critical limit as a band, and a comparison table",
+   "subtitle": "WFI spec sheet with the critical limit as a navy readout, and a comparison table",
    "summary": "Specification sheets present water quality limits as a two-column matrix with the one critical limit pulled out as a full-width band, the most persuasive content Aquemi has."
   },
   {

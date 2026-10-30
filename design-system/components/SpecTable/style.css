@@ -25,7 +25,7 @@
   padding-block: var(--space-4); border-top: 1px solid var(--line); margin-top: -1px;
 }
 .aq-spec:not(.aq-spec--compare) tbody tr > * { display: block; padding: 0; border: 0; }
-.aq-spec:not(.aq-spec--compare) tbody th { grid-area: p; font: 400 16px/24px var(--font-sans); }
+.aq-spec:not(.aq-spec--compare) tbody th { grid-area: p; font: 500 13px/20px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
 .aq-spec:not(.aq-spec--compare) .aq-spec__value { grid-area: v; font: 400 14px/20px var(--font-mono); font-variant-numeric: tabular-nums; }
 /* Placeholders keep their style but at the row's text size */
 .aq-spec .aq-spec__value .aq-ph { font-size: inherit; }
@@ -47,11 +47,30 @@
 }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr.is-lead { border-top: 1px solid var(--surface-raised); }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr:not(.is-lead), .aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr:not(.is-lead) + tr { border-top: 0; }
-.aq-spec:not(.aq-spec--compare) tbody tr.is-lead th { font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead th { font: 600 30px/32px var(--font-display); letter-spacing: 0.01em; text-transform: uppercase; }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-lead .aq-spec__value { align-self: center; font: 400 20px/28px var(--font-mono); letter-spacing: -0.01em; }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-lead .aq-spec__status { justify-self: start; }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight:not(.is-lead) { margin-inline: calc(var(--space-4) * -1); padding-inline: calc(var(--space-4) - 2px) var(--space-4); border-left: 2px solid var(--flow); background: var(--flow-tint); }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { color: var(--ink-muted); }
+
+/* Readout lead row (concept 26): a lead row whose value holds a number is a navy panel (data-theme="dark" on the row)
+   with the limit set huge in condensed figures, the unit set vertically beside it, a scale rule along the foot, and the
+   parameter, full value and basis to the right. The big figure is aria-hidden; the value cell keeps the full text. */
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead.is-readout {
+  grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "r p" "r v" "r m" "r s"; grid-template-rows: auto auto auto 1fr;
+  column-gap: var(--space-12); row-gap: var(--space-2); align-items: start;
+  padding: var(--space-8) var(--space-8) var(--space-12); border-left: 0; background-color: var(--surface); color: var(--ink);
+  background-image: repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px var(--space-2)), repeating-linear-gradient(90deg, var(--ink-subtle) 0 1px, transparent 1px var(--space-16)), linear-gradient(var(--line-strong), var(--line-strong));
+  background-size: calc(100% - var(--space-16)) var(--space-2), calc(100% - var(--space-16)) var(--space-3), calc(100% - var(--space-16)) 1px;
+  background-position: var(--space-8) calc(100% - var(--space-6)), var(--space-8) calc(100% - var(--space-6)), var(--space-8) calc(100% - var(--space-6));
+  background-repeat: no-repeat;
+}
+.aq-spec:not(.aq-spec--compare) tbody tr.is-readout > .aq-spec__read { grid-area: r; display: flex; align-items: flex-start; gap: var(--space-2); align-self: center; }
+.aq-spec__read-n { font: 600 132px/0.86 var(--font-display); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
+.aq-spec__read-u { writing-mode: vertical-rl; font: 400 36px/1 var(--font-display); letter-spacing: 0.02em; color: var(--ink-muted); }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-readout th { align-self: end; font: 600 32px/32px var(--font-display); letter-spacing: 0.01em; text-transform: uppercase; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-readout .aq-spec__value { align-self: start; display: inline-block; justify-self: start; padding: var(--space-1) var(--space-3); border: 1px solid var(--flow); color: var(--flow); font: 400 15px/22px var(--font-mono); }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-readout .aq-spec__method { color: var(--ink-muted); }
 
 /* Row link (rows[].link): a quiet page link under the basis, "FAT and SAT →" */
 .aq-spec__link { display: block; margin-top: var(--space-1); font: 500 14px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
@@ -78,11 +97,20 @@
   .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr.is-highlight { border-top: 1px solid var(--surface); }
   .aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr:not(.is-lead) + tr:not(.is-highlight) { border-top: 1px solid var(--line); }
   .aq-spec:not(.aq-spec--compare) tbody th,
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-lead th { display: block; margin-bottom: var(--space-1); font: 400 15px/22px var(--font-sans); }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-lead th { display: block; margin-bottom: var(--space-1); font: 500 12px/18px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-lead th { font: 600 24px/26px var(--font-display); letter-spacing: 0.01em; }
   .aq-spec:not(.aq-spec--compare) .aq-spec__value,
   .aq-spec:not(.aq-spec--compare) tbody tr.is-lead .aq-spec__value { display: inline; font: 400 14px/22px var(--font-mono); letter-spacing: 0; }
   .aq-spec:not(.aq-spec--compare) .aq-spec__method,
   .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { display: inline; font-size: 12px; line-height: 18px; }
   .aq-spec__link { display: inline; margin: 0; font-size: 12px; line-height: 18px; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-lead.is-readout { display: block; padding: var(--space-6) var(--space-4) var(--space-12); background-size: calc(100% - var(--space-8)) var(--space-2), calc(100% - var(--space-8)) var(--space-3), calc(100% - var(--space-8)) 1px; background-position: var(--space-4) calc(100% - var(--space-4)), var(--space-4) calc(100% - var(--space-4)), var(--space-4) calc(100% - var(--space-4)); }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-readout > .aq-spec__read { display: flex; margin-bottom: var(--space-3); }
+  .aq-spec__read-n { font-size: 88px; }
+  .aq-spec__read-u { font-size: 26px; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-readout th { font: 600 26px/28px var(--font-display); text-transform: uppercase; margin-bottom: var(--space-2); }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-readout .aq-spec__value { display: inline-block; margin-bottom: var(--space-2); font-size: 13px; line-height: 20px; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-readout .aq-spec__method { display: block; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-readout .aq-spec__method::before { content: none; }
   .aq-spec:not(.aq-spec--compare) .aq-spec__method:not(:empty)::before { content: "\a0\b7\a0"; content: "\a0\b7\a0" / ""; color: var(--ink-subtle); }
 }

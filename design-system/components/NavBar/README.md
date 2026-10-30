@@ -12,3 +12,8 @@ The site header: logo, six numbered section tabs and one framed call to action, 
   3. The proposal button in `<span class="aq-nav__frame aq-menu__cta">`, full width.
 - The menu is hidden at desktop widths even when open. The site renderer closes it when a section jump is chosen or Escape is pressed, and keeps focus on the toggle.
 - The header scrolls with the page; the SectionNav is what sticks on long pages.
+
+## Concept 38 (drawing-set header)
+
+- Desktop: 80 px bar with a `line-strong` bottom rule; section tabs in Geist Mono 14/18 caps in `ink`, the index above in 11 px mono, cells ruled with `line-strong` (a closing rule after the last). The framed action reads in 13 px mono caps between brackets, `[ Request a proposal ]` (brackets from CSS with empty alt text; no arrow).
+- Phones: 64 px bar; the open menu is a ruled panel (`line-strong` frame) inset `space-4`, sections in 20/28 mono caps with their numbers in `ink-subtle`, the section jump in 15/24 mono caps, the proposal button in mono caps.

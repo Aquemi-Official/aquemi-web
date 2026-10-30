@@ -71,6 +71,13 @@
 .aq-steps__frame::before { content: ""; position: absolute; inset: var(--space-1); border: 1px solid var(--line); pointer-events: none; }
 .aq-steps__frame .aq-icon { width: calc(var(--space-12) + var(--space-2)); height: calc(var(--space-12) + var(--space-2)); }
 .aq-steps--stages .aq-steps__st > .aq-steps__run { left: calc(var(--space-16) + var(--space-4)); top: calc((var(--space-16) + var(--space-4)) / 2 - 6px / 2); width: calc(100% - (var(--space-16) + var(--space-4)) + var(--space-8)); }
+/* Hold stage (item hold): the hold flow's stamp under the text, the icon frame drawn in flow with a flow inner rule, the
+   icon in flow, a closed valve on the run into it. The station itself takes no outline (the frame carries the hold). */
+.aq-steps--stages .aq-steps__st.is-hold { outline: 0; }
+.aq-steps--stages .aq-steps__st.is-hold::before { display: none; }
+.aq-steps--stages .aq-steps__st.is-hold .aq-steps__frame { border: 2px solid var(--flow); }
+.aq-steps--stages .aq-steps__st.is-hold .aq-steps__frame::before { border-color: var(--flow); }
+.aq-steps--stages .aq-steps__hold { margin-top: var(--space-1); }
 
 @container (max-width: 860px) {
   /* Phone: one vertical pipe down the number column, stations along it; hold stations framed and stamped */
@@ -101,4 +108,8 @@
   .aq-steps--stages .aq-steps__body { display: contents; }
   .aq-steps--stages .aq-steps__t { grid-area: t; }
   .aq-steps--stages .aq-steps__d { grid-area: d; }
+  .aq-steps--stages .aq-steps__hold { grid-area: h; margin: 0; }
+  .aq-steps--stages .aq-steps__st.is-hold { grid-template-areas: "n f t" "n d d" "n h h"; }
+  .aq-steps--stages .aq-steps__st.is-hold .aq-steps__body { padding: 0; outline: 0; }
+  .aq-steps--stages .aq-steps__st.is-hold .aq-steps__body::before { display: none; }
 }

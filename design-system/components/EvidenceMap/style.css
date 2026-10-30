@@ -57,6 +57,19 @@
 .aq-evidence__go a::after { content: "\a0\2192"; }
 .aq-evidence__go a:hover { text-decoration: underline; }
 
+/* References: clause numbers are not files. On the fan they print as mono text (the standard's name as a small caps
+   caption when there are several columns), with the same tick and arrow but no sheet. */
+.aq-evidence__doc.is-ref { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); }
+.aq-evidence__rk { font: 500 11px/20px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-evidence__clause { font: 500 15px/26px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: anywhere; }
+.aq-evidence__refs + .aq-evidence__k, .aq-evidence__refs + .aq-evidence__docs { margin-top: var(--space-4); }
+/* A clause written into the requirement ("· ISO 9001 6.3, 8.5.6"): a mono reference line under the name */
+.aq-evidence__ref { display: block; margin-top: var(--space-2); font: 400 13px/20px var(--font-mono); letter-spacing: 0; font-variant-numeric: tabular-nums; color: var(--ink-muted); }
+/* "How" as a clause list: the clause numbers in a mono column */
+.aq-evidence__clauses { display: grid; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
+.aq-evidence__clauses li { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); }
+.aq-evidence__cl { font: 500 13px/24px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+
 @container (max-width: 860px) {
   .aq-evidence__table, .aq-evidence__table tbody, .aq-evidence__row, .aq-evidence__row > * { display: block; }
   .aq-evidence__table thead { display: none; }
@@ -75,4 +88,6 @@
   .aq-evidence__proof:has(> .aq-evidence__k:first-child)::before { top: calc(-1 * var(--space-4)); height: calc(var(--space-4) + var(--space-2) + 29px); }
   .aq-evidence__docs::before { left: calc(-1 * var(--space-6)); top: 0; }
   .aq-evidence__doc::before { width: var(--space-6); }
+  .aq-evidence__ref { font-size: 12px; line-height: 18px; margin-top: var(--space-1); }
+  .aq-evidence__clause { font-size: 14px; line-height: 24px; }
 }

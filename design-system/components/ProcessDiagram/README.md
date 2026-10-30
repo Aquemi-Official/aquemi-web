@@ -45,7 +45,7 @@ The website builds it from a `diagram` block (`AQ.wDiagram`, which calls `wFlow`
 ## Layout
 
 - **Desktop:** one row of `--n` equal columns on the plate. Box 120 px high, up to 128 px wide, `line-strong` hairline on `surface`, Spot `s` (96 px) in `ink-muted`; number tag in its top-left corner (mono 12 px, `flow` border); name under it in mono 13 px, as written (no uppercase: it would turn "5 µm" into "5 µM"). The pipe is `space-4` high with 3 px `flow` walls (a double-wall line), entering from the plate edge and leaving it with an arrowhead; a small arrow sits mid-run. The detail panel spans the row under it, with a dashed `flow` leader up to the selected column: big mono number, title, line, tag and link, and In/Out labels at the right.
-- **Phone** (`@container (max-width: 860px)`): one vertical pipe through 96 px vignette boxes, the name beside each; the selected detail opens inline under its station, to the right of the pipe, with a dashed leader. No horizontal scroll.
+- **Phone** (`@container (max-width: 860px)`): one vertical pipe (12 px, 2 px walls) through compact 56 px boxes (Spot drawn at 48 px, Icon at 36 px), number tag in the box corner, name beside it; 4 px between stations. The selected detail tucks in under its name, beside the box, so a seven-stage train is about 450 px. In/Out labels show only for stages without a `d`; the plate title block is hidden. No horizontal scroll.
 
 ## Token rules
 

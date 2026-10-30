@@ -364,7 +364,6 @@
        "d": "Where production draws water from the loop."
       }
      ],
-     "caption": "Each arrow is an interface in the functional specification. Monitoring spans the path.",
      "base": "Monitoring and controls · TOC, conductivity, ozone"
     },
     {
@@ -777,7 +776,6 @@
        "d": "Off-spec water diverts until it recovers; the rest goes to storage."
       }
      ],
-     "caption": "Feed is warmed to design temperature. CO₂ is removed before EDI. Off-spec water diverts.",
      "nav": "How it works"
     },
     {
@@ -2205,7 +2203,8 @@
        "p": "Flow regime",
        "v": "Turbulent in every section at peak draw; return at [design minimum return velocity, m/s]",
        "m": "Annex 1, 6.9; return flow alarmed",
-       "hl": true
+       "hl": true,
+       "rule": "≥ [design minimum return velocity, m/s]"
       },
       {
        "p": "Slope and drainage",
@@ -2215,7 +2214,8 @@
       {
        "p": "Heat sanitization, ambient loops",
        "v": "[sanitization temperature, °C] for [hold time, minutes] at the coldest probe",
-       "m": "USP <1231>: 65–80 °C most common"
+       "m": "USP <1231>: 65–80 °C most common",
+       "rule": "≥ [sanitization temperature, °C]"
       },
       {
        "p": "Ozone, ambient loops",
@@ -2239,7 +2239,8 @@
       }
      ],
      "fold": 4,
-     "fold_noun": "rules"
+     "fold_noun": "rules",
+     "as": "rules"
     },
     {
      "type": "diagram",
@@ -2281,7 +2282,6 @@
        "d": "Wets the whole tank head so no surface stays dry."
       }
      ],
-     "caption": "Water enters under a heated vent filter, passes every outlet and returns past the sensors through a spray ball.",
      "nav": "How it works"
     },
     {
@@ -2667,7 +2667,6 @@
       }
      ],
      "base": "Online monitoring · total chlorine, ORP, hardness, pressure drop",
-     "caption": "The softener sits ahead of the carbon, so the chlorine residual still protects the resin.",
      "nav": "The train"
     },
     {
@@ -2988,7 +2987,6 @@
        "d": "None, one-way telemetry, or supervised sessions you open."
       }
      ],
-     "caption": "The PLC runs sequences, interlocks and divert, and keeps running if every layer above fails.",
      "nav": "Architecture"
     },
     {
@@ -3369,8 +3367,9 @@
      "items": [
       {
        "t": "URS review and design",
-       "d": "Compliance matrix, basis of design, P&IDs, functional specification. Your quality unit approves DQ.",
-       "icon": "pid"
+       "d": "Compliance matrix, basis of design, P&IDs, functional specification, DQ.",
+       "icon": "pid",
+       "hold": "Your quality unit"
       },
       {
        "t": "Fabrication",
@@ -3379,18 +3378,21 @@
       },
       {
        "t": "FAT",
-       "d": "Approved protocol, raw data, deviation log, report. Both parties sign release to ship.",
-       "icon": "pump"
+       "d": "Approved protocol, raw data, deviation log, report. Release to ship.",
+       "icon": "pump",
+       "hold": "Both parties"
       },
       {
        "t": "Installation and SAT",
-       "d": "Installation records, SAT on your utilities, leveraged tests flagged. You sign the SAT report.",
-       "icon": "wrench"
+       "d": "Installation records, SAT on your utilities, leveraged tests flagged, SAT report.",
+       "icon": "wrench",
+       "hold": "You"
       },
       {
        "t": "IQ and OQ",
-       "d": "IQ and OQ protocols and reports, draft procedures, training records. Your quality unit approves each.",
-       "icon": "binder"
+       "d": "IQ and OQ protocols and reports, draft procedures, training records.",
+       "icon": "binder",
+       "hold": "Your quality unit"
       },
       {
        "t": "PQ, at least 12 months",
@@ -4133,11 +4135,6 @@
        "Power, heating, cooling, drains, air; loop hydraulics at peak draw"
       ],
       [
-       "Leverage into IQ/OQ",
-       "Candidate where transport and installation cannot change the result (Annex 15, 3.6)",
-       "Feed water, utilities and field piping: proven on site only"
-      ],
-      [
        "Sanitization",
        "Full hot water cycle: every probe at setpoint for the hold time",
        "Full cycle on the installed loop, coldest point of use included"
@@ -4164,7 +4161,12 @@
       ]
      ],
      "fold": 3,
-     "fold_noun": "tests"
+     "fold_noun": "tests",
+     "conclusion": [
+      "Leverage into IQ/OQ",
+      "Candidate where transport and installation cannot change the result (Annex 15, 3.6)",
+      "Feed water, utilities and field piping: proven on site only"
+     ]
     },
     {
      "type": "steps",
@@ -6193,7 +6195,8 @@
        "t": "Make media and buffers, or buy",
        "d": "Bought liquid concentrates move WFI demand off site; hydrating powder adds to your peak."
       }
-     ]
+     ],
+     "as": "decisions"
     },
     {
      "type": "steps",

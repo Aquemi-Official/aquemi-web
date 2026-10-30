@@ -44,7 +44,8 @@
      "p": "Flow regime",
      "v": "Turbulent in every section at peak draw; return at [design minimum return velocity, m/s]",
      "m": "Annex 1, 6.9; return flow alarmed",
-     "hl": true
+     "hl": true,
+     "rule": "≥ [design minimum return velocity, m/s]"
     },
     {
      "p": "Slope and drainage",
@@ -54,7 +55,8 @@
     {
      "p": "Heat sanitization, ambient loops",
      "v": "[sanitization temperature, °C] for [hold time, minutes] at the coldest probe",
-     "m": "USP <1231>: 65–80 °C most common"
+     "m": "USP <1231>: 65–80 °C most common",
+     "rule": "≥ [sanitization temperature, °C]"
     },
     {
      "p": "Ozone, ambient loops",
@@ -78,7 +80,8 @@
     }
    ],
    "fold": 4,
-   "fold_noun": "rules"
+   "fold_noun": "rules",
+   "as": "rules"
   },
   {
    "type": "diagram",
@@ -120,7 +123,6 @@
      "d": "Wets the whole tank head so no surface stays dry."
     }
    ],
-   "caption": "Water enters under a heated vent filter, passes every outlet and returns past the sensors through a spray ball.",
    "nav": "How it works"
   },
   {

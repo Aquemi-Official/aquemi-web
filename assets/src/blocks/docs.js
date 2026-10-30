@@ -50,11 +50,11 @@ BLOCKS['docs']=function(b,H){
   /* Key (deciding) documents: items marked key: true; else the first b.key (default 2 in a coded list of five or more; key: 0 for none). */
   var marked=items.some(function(x){return x.key}),nk=b.key!=null?+b.key:(coded&&n>=5?2:0);
   var key=items.map(function(x,i){return marked?!!x.key:i<nk});
-  var vis=b.fold>0&&n>b.fold?b.fold:n,lead=key[0]&&key[1]&&!key.slice(2).some(Boolean);
-  var wo=docWide(n,lead),wf=vis<n?docWide(vis,lead):{};
+  var lead=key[0]&&key[1]&&!key.slice(2).some(Boolean);
+  var wo=docWide(n,lead);/* fold applies on phones only (DocList style.css): desktop lays out every folder */
   var noun=b.fold_noun||'documents',one=noun.replace(/s$/,'');
   var ol='<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
-    var cls=(key[i]?' is-key':'')+(wo[i]?' aq-docs__w':'')+(wf[i]?' aq-docs__wf':''),name=x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t);
+    var cls=(key[i]?' is-key':'')+(wo[i]?' aq-docs__w':''),name=x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t);
     var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x);
     return fli('<li'+(cls?' class="'+cls.slice(1)+'"':'')+'>',b,i)
       +'<span class="aq-docs__tab" aria-hidden="true">'+(tag?'<span class="aq-docs__code">'+e(tag)+'</span>':'')+'</span>'

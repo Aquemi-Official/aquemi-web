@@ -16,7 +16,7 @@ LinkGrid sets out a list of choices (services, industries, systems, upgrade type
 - Block `grid` (`assets/src/blocks/grid.js`): `h` and `intro` go in the standard section head; `items` are `{t, d, link, tag}`.
 - A linked item is one `<a class="aq-rows__row">`: the title carries a `flow` arrow and turns `flow` on hover, and so does the drawing. Without a link the row is a `<div>`.
 - Drawings appear only when the linked page has one in `ART` (`parts/Hero.js`), `space-12` wide on desktop. Phones never show them.
-- No routed line, frame, staggered columns or large numerals: the index column carries the order.
+- Concept 33: the rows are stations on one route. No hairlines; a 2 px `ink` spine runs between the index column and the titles and ends in an arrowhead; each row has a `flow` node on the spine at its title. Numbers in Geist Mono 300 28/32 `flow` (20/28 on phones), titles in `font-display` 600 26/32 caps (22/28). An item icon (`icon`) replaces the number as in the row grammar. Spine, nodes and arrowhead are CSS only.
 
 ## Writing
 

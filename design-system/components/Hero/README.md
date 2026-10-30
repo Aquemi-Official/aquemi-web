@@ -18,13 +18,14 @@ Hero opens every page: eyebrow, one display headline, one lead sentence, one pri
 
 ## Equipment figure (pages with a drawing)
 
-- Markup: `aq-hero__grid aq-hero__grid--figure` (text 5 parts, figure 7 parts, vertically centred), and on the right `<figure class="aq-hero__figure">` holding, in order: an Illustration (`<span class="aq-illustration" role="img" aria-label="…">` with the drawing as inline `mask-image`), `<svg class="aq-hero__leaders" viewBox="0 0 125 100" preserveAspectRatio="none" aria-hidden="true">` with one `<line>` and one `<circle r="0.9">` per callout, then `<dl class="aq-hero__callouts">` with up to four `<div class="aq-hero__callout"><dt>label</dt><dd>value</dd></div>`.
-- Concept B in `design-system/inspiration/`: the drawing sits large on a `line` blueprint grid at `space-8` pitch that fades out towards the edges, and callouts carry the page's own key facts. Callouts are the KeyFacts of that page, so a page with a figure shows no KeyFacts strip (the renderer moves a fifth fact or later into a strip below).
-- Callouts sit in the four corners (order: top left, top right, bottom left, bottom right), each 30 % wide on `surface`, with a `flow` rule on the side facing the drawing. Values use Geist Mono 300 in `ink`, labels the 11 px mono caps in `ink-muted`. Leaders are 1 px `flow` lines from the inner end of the rule to a fixed point on the drawing, ending in a `flow` dot. The anchors are fixed per slot (`HERO_LEAD` in `assets/src/parts/Hero.js`): every drawing is a centred isometric skid, so they land on equipment.
-- The figure box is 5:4; the drawing is a centred square 84 % of its height. Keep that ratio if you change the viewBox.
-- Narrow containers: the drawing goes below the text at up to 320 px wide, leaders are hidden and the callouts become a two-column list with `line` hairlines, like KeyFacts.
-- **Adding a drawing**: put the mask in `assets/illustrations/<page id>.png` (see Illustration), then add one line to `ART` in `assets/src/parts/Hero.js`: `'svc-fabrication':'Skid on the shop floor: orbital welder at a sanitary tube joint'`. The text is the drawing's `aria-label`. The page's hero then shows the figure, and the WaterPath stop for that page uses the same drawing. Then `python tools/design_system.py build`.
-- Pages listed today: all seven `sys-*` pages and `svc-design`.
+Concept 02 in `design-system/inspiration/gemini/`: the equipment drawing large and dominant beside the headline, its key facts as callouts joined to the drawing by leader lines.
+
+- Markup: `aq-hero__grid aq-hero__grid--figure` (text and figure 6 parts each, vertically centred; the headline steps down to 72/70 so eight words sit in two or three lines, with a scale rule drawn under it). On the right `<figure class="aq-hero__figure">` holding, in order: `<dl class="aq-hero__callouts aq-hero__callouts--top">` (the first two facts), `<div class="aq-hero__art">` with the Illustration (`role="img"`, `aria-label` from `ART`) and two leader SVGs (`aq-hero__leaders--wide`, viewBox 120 x 100, and `aq-hero__leaders--narrow`, viewBox 100 x 80; both `aria-hidden`), then `<dl class="aq-hero__callouts aq-hero__callouts--bottom">` (facts three and four). Each callout is `<div class="aq-hero__callout"><dt>label</dt><dd>value</dd></div>`.
+- **Callouts only on `sys-*` pages**, whose facts are measured values (`≤ 1.3 µS/cm`). Service and industry pages show the drawing alone and keep their facts (often counts) in the KeyFacts strip under the grid. A fifth fact or later always goes to the strip.
+- Desktop: the figure is 6:5; the drawing is a centred square 96 % of its height on a `line` blueprint grid that fades out, inside a dashed `line-strong` frame with registration crosses. Callouts sit in the four corners (27 % wide, 13 % tall): label in 11 px mono caps `ink-muted`, value Geist Mono 300 in `ink`, a `flow` rule on the side facing the drawing. A 1 px `flow` leader runs from the inner end of that rule (an open node) to a fixed point on the drawing (a `flow` dot). Anchors per slot are `HERO_AT` in `assets/src/parts/Hero.js`: every drawing is a centred isometric skid, so they land on equipment.
+- Phones: the figure goes full width under the actions: the top pair of callouts, the drawing row (5:4) with its own leaders, the bottom pair. Headline 44/42 on figure pages.
+- **Adding a drawing**: put the mask in `assets/illustrations/<page id>.png` (see Illustration), then add one line to `ART` in `assets/src/parts/Hero.js`. The text is the drawing's `aria-label`. Then `python tools/design_system.py build`.
+- Pages listed today: every `sys-*`, `svc-*` and `ind-*` page.
 
 ## Photograph (detail pages without a drawing)
 
@@ -66,4 +67,4 @@ Concept 35 in `design-system/inspiration/gemini/`: the hub's child pages as a la
 The hero must fit about 1.5 phone screens including its facts, and the primary button must be in the first screen when the lead is 35 words or fewer (content budget).
 
 - Padding `space-12` top and bottom. Headline: `display` 34/38, `display-xl` 40/44; lead 17/26.
-- Order: eyebrow, headline, lead, actions, then the figure. The equipment drawing is at most 176 px square (`space-32` + `space-12`); its callouts and the KeyFacts strip are compact 2 x 2 grids. The photograph placeholder is 2:1.
+- Order: eyebrow, headline, lead, actions, then the figure. The equipment figure is full width with its callouts above and below the drawing (see above); the KeyFacts strip lists one fact per row. The photograph placeholder is 2:1.

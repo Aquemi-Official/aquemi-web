@@ -2,3 +2,33 @@
 /* Layout comes from .aq-rows in base.css (index | option | one line on desktop; index | option, line below on phones).
    This file only adds the hook; options never get a box, a grid ground or a decorative glyph. */
 .aq-options { min-width: 0; }
+
+/* Plain rows (no icons, OptionList and plain ProcessSteps): the list sits in a hairline frame and the index grows to a
+   big light mono number, so a list without pictures still reads as a drawn schedule, not leftover text. */
+ol.aq-rows.aq-options:not(:has(.aq-rows__lead)), ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) { padding-inline: var(--space-6); border: 1px solid var(--line-strong); }
+ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) > li:first-child, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) > li:first-child { border-top: 0; }
+ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row > .aq-index, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__row > .aq-index,
+.aq-options__q > .aq-index { font: 300 32px/36px var(--font-mono); letter-spacing: -0.02em; color: var(--flow); }
+ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__row { grid-template-columns: var(--space-16) minmax(0, 4fr) minmax(0, 7fr); padding-block: var(--space-6); }
+
+/* Decisions (as: "decisions"): number with a framed "?" tag, an optional fork mark before a two-way decision, an
+   optional "Decide by" caption under the line. */
+.aq-options__q { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+.aq-options__qt { display: grid; place-items: center; width: var(--space-6); height: var(--space-6); border: 1px solid var(--flow); border-radius: var(--radius-sm); font: 500 14px/1 var(--font-mono); color: var(--flow); }
+.aq-options__fork { display: inline-block; width: var(--space-8); height: 20px; margin-right: var(--space-2); vertical-align: -4px; overflow: visible; }
+.aq-options__fork path { fill: none; stroke: var(--flow); stroke-width: 1.5; }
+.aq-options__fork circle { fill: var(--flow); }
+.aq-options__by { display: block; margin-top: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+ol.aq-options--decide .aq-rows__row { align-items: start; }
+ol.aq-options--decide .aq-rows__t { padding-top: var(--space-1); }
+ol.aq-options--decide .aq-rows__d { padding-top: var(--space-1); }
+
+@container (max-width: 860px) {
+  ol.aq-rows.aq-options:not(:has(.aq-rows__lead)), ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) { padding-inline: var(--space-4); }
+  ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__row { grid-template-columns: var(--space-12) minmax(0, 1fr); padding-block: var(--space-4); }
+  ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row > .aq-index, ol.aq-rows.aq-steps:not(:has(.aq-rows__lead)) .aq-rows__row > .aq-index,
+  .aq-options__q > .aq-index { font-size: 24px; line-height: 28px; }
+  .aq-options__q { grid-row: span 2; }
+  .aq-options__qt { width: var(--space-4); height: var(--space-4); font-size: 11px; }
+  .aq-options__fork { width: var(--space-6); height: 16px; }
+}

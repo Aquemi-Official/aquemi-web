@@ -8,3 +8,7 @@ Footer closes every page on navy as an engineering drawing sheet: zone frame, lo
 - Contact and legal line: `aq-footer__legal`, mono, along the bottom edge. Contact details stay `[email address]` and `[phone number]` until Aquemi supplies them.
 - Lines are `on-navy-muted` mixed toward transparent (35% hairlines, 60% frame). Links use `on-navy-muted` and turn `on-navy` on hover; focus is a 2 px Limestone ring, since `focus` is too dark on navy. The footer is navy in both themes.
 - Don't add columns beyond four or put marketing copy in the title block; it holds facts.
+
+## Concept 36
+
+- Logo 220 px (180 px on phones), description 22/30. Column heads in 16/20 mono caps `on-navy` over a `flow` rule, their numbers in `flow`; links in 14/20 Geist Mono `on-navy`. Open arrowheads mark the middle of the sheet's left and right edges (centring marks, CSS only). On phones the column numbers are `flow` chips.

@@ -1,4 +1,4 @@
-Closing is the call to action at the end of every page: a very large headline in a framed panel on the navy band, one lead sentence, an optional proof readout with one confirmed figure, and the primary button.
+Closing is the call to action at the end of every page: a very large headline in condensed capitals in a framed panel on the navy band, one lead sentence, an optional checklist or send-and-return exchange, an optional proof readout with one confirmed figure, and the primary button.
 
 ## Markup
 
@@ -21,18 +21,11 @@ Closing is the call to action at the end of every page: a very large headline in
 - `aq-closing__body` holds an optional `aq-lead` and an optional `aq-closing__proof`. `aq-closing__action` holds exactly one primary button.
 - On the site, `wClosing(c, p)` in `assets/src/parts/Closing.js` renders it from the page's `cta` (`h`, `body`, `button`, `link`, `intent`, `include`, `proof`). The proof box shows `cta.proof` (`{"v": "100 %", "l": "Welds visually examined · ASME BPE"}`) and nothing else; without `cta.proof` there is no proof box. It never falls back to the hero facts.
 
-## Layout
+## Layout (concepts 18 and 49)
 
-- **Desktop:** the headline spans the frame at 88/92 px, weight 300, at most 18 characters per line. Below it, lead and proof sit on the left (7 of 12 columns); the button sits bottom right.
-- **Phone** (`@container (max-width: 860px)`): one column, headline 40/44 px, checklist in one column, proof value 36/40 px, button left-aligned and allowed to wrap. Nothing overflows at 375 px.
-
-## Token rules
-
-- Frame: 1 px `on-navy-muted` at 35 % strength, `space-12` padding (`space-6` / `space-4` on phones), square corners, with two corner registration marks in `on-navy-muted`.
-- Headline in `font-sans` 300, `on-navy`. Lead in `on-navy-muted`.
-- Proof: 1 px `on-navy-muted` border at 60 %, `radius-0`. Tag in the eyebrow style (`font-mono` 12 px, uppercase), value in `font-mono` 300 and `limestone`, label in `font-mono` 14 px `on-navy-muted`.
-- Contrast: `on-navy`, `on-navy-muted` and `limestone` all pass WCAG AA on `navy` in both themes.
-- The closing band ends with a `line-strong` hairline so it stays distinct from the navy footer.
+- Markup order inside `aq-closing__frame`: `aq-closing__strip` (three ruled mono cells, `aria-hidden`: "Aquemi", "Next step · page", the step), `h2.aq-closing__h`, `aq-closing__body` (only when there is a body or a list: the `aq-lead`, then the checklist or the exchange plate), then `aq-closing__foot` (proof, then `aq-closing__action`).
+- **Desktop:** headline in `font-display` 600 caps, 60 to 96 px, at most 16 characters per line; the lead in a ruled box. With a checklist or an exchange the frame becomes two columns (4 : 8): headline, lead, proof and button on the left, the list (or the plate) on the right, so the band stays under about 650 px. The exchange sits on a cream Plate (`wPlate(…, {light: true, cls: "aq-closing__plate", block: ["Aquemi", "Send", "Return"]})`): two ruled tables with a header cell, numbered send rows, return rows each with a small document drawing (`aq-closing__doc is-1` to `is-4`: chart, flow, table, list), and between them the turnaround in a heavy ruled box with an arrowhead. The button is the Limestone primary at closing scale (`font-display` caps 24 to 26 px, 64 px tall).
+- **Phone** (`@container (max-width: 860px)`): compact and plain, about 500 px. No strip, frame boxes, plate, returns or proof: the headline (44 px caps), the lead, at most four send rows on hairlines, the turnaround line and a full-width button.
 
 ## Writing
 
@@ -45,7 +38,7 @@ Closing is the call to action at the end of every page: a very large headline in
 - Only once per page, last before the footer. Never next to another navy band.
 - Not for mid-page prompts; use a Button in the section instead.
 
-Origin: concept J in `design-system/inspiration/`, generated in Gemini and rebuilt with Aquemi tokens (sentence case and Geist Light in place of the concept's condensed capitals).
+Origin: concepts 18 (closing) and 49 (send and return) in `design-system/inspiration/gemini/`, rebuilt with Aquemi tokens.
 
 ## Checklist (`cta.include`)
 

@@ -4,7 +4,12 @@ SectionNav is a sticky bar of numbered jump links to the sections of a long tech
 - Each link's `data-jump` is the `id` of a `<section>` on the page; the site renderer adds those ids from the block nav labels and scrolls on click (page ids own the URL hash, so links do not change it). Those sections get `scroll-margin-top` so the bar never covers their heading.
 - The section being read is boxed: `aria-current="true"`, `surface-sunken` with a `flow` border and index number. The site's scroll-spy (one passive scroll listener, one update per frame) sets it here and in the phone menu's section jump, scrolls the active link into view inside the bar, and updates the progress segments and percentage.
 - Sticks to the top of the viewport (`position: sticky`, `top: 0`) on `surface` with a `line` bottom border; label and progress cells are ruled off with `line`. Transitions are dropped under `prefers-reduced-motion`.
-- The links scroll sideways rather than wrapping, so the bar is always one row. On phones the label and segments hide and only the percentage stays; each link is at least 44 px tall.
+- The links scroll sideways rather than wrapping, so the bar is always one row. Phones: see below.
 - Every jump target (`section[id]`) gets `scroll-margin-top: var(--space-16)`, so the sticky bar never covers the heading after a jump.
 - Use short labels (one to three words: "Limits", "Design", "Documents", "FAQ"). Eight links at most.
 - Only on pages with four or more labelled sections. Short pages and the home page do without it; the NavBar is the site-level navigation and carries the proposal button.
+
+## Concept 38 and phones
+
+- Links are 13/20 Geist Mono caps; the bar has a `line-strong` bottom rule on desktop.
+- Phones: a slim 40 px strip. No label or percentage; the progress segments become a 2 px `flow` line along the bar's bottom edge, the current link gets a 2 px `ink` underline. While the reader scrolls down, the stuck bar tucks up out of view (`is-tucked`, a `transform` set by the scroll listener in `SectionNav.js`; no transition under reduced motion) and it returns on any scroll up, so it never sits on content. Jump targets get `scroll-margin-top: var(--space-12)`. The strip scrolls sideways inside itself and never widens the page.

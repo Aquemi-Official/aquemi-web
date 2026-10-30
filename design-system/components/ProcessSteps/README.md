@@ -39,10 +39,11 @@ An item may carry `"hold": "<who signs>"` ("Your quality unit", "Both parties", 
 
 ## Stage strip (`as: "stages"`)
 
-A steps block without holds whose items all carry an `icon` (Icon names, or `icons: "auto"` resolving every row) can set `"as": "stages"` (on today: home "How a project runs", services "What leaves each stage, and who signs it"). It draws on the section ground with the hold flow's station, number and pipe styling (concept 57 icons):
+A steps block whose items all carry an `icon` (Icon names, or `icons: "auto"` resolving every row) can set `"as": "stages"` (on today: home "How a project runs", services "What leaves each stage, and who signs it"). It draws on the section ground with the hold flow's station, number and pipe styling (concept 57 icons):
 
 - Desktop: one row of stations (up to six; longer lists wrap in rows of four, each row its own run). Each station: the icon at 56 px in `ink` inside a framed square (80 px, `line-strong` rule with a `line` inner rule), the big `flow` number with its tick, the name in uppercase mono and the text behind the hairline. Pipe runs (two `line-strong` walls with an arrow) leave each frame at its centre and end at the next frame.
 - Phone: the hold flow's vertical pipe down the number column; the framed icon (48 px, icon 36 px) sits beside the number with the name, the text runs underneath.
+- Holds: a stage may carry `hold` (as in the hold flow). It keeps its place in the strip and is stamped like a hold station: the HOLD stamp naming who signs under its text, the icon frame drawn in a 2 px `flow` rule with a `flow` inner rule, the icon in `flow`, and a closed `flow` valve on the run into it. With `as: "stages"` and an icon on every item, holds no longer push the block onto the hold flow plate; without the icons they still do.
 - `fold` still works (services shows four, then "Show all 8 steps" adds the second row). Without an icon on every item the block falls back to plain rows.
 
 ```html
