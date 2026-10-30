@@ -21,7 +21,7 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | [Pure steam generators](https://aquemi-official.github.io/aquemi-web/#sys-pure-steam) | Pure steam that passes EN 285 at the sterilizer, not just at the generator | prose, spec, spec, diagram, table, options, steps, docs, faq, docs, related |
 | [Storage and distribution loops](https://aquemi-official.github.io/aquemi-web/#sys-storage) | Storage and distribution loops that deliver generator quality at the furthest point of use | prose, spec, diagram, table, table, options, steps, docs, faq, docs, related |
 | [Pretreatment](https://aquemi-official.github.io/aquemi-web/#sys-pretreatment) | Pretreatment that keeps chlorine, chloramine and scale off your RO membranes in every season | prose, table, spec, diagram, table, table, options, steps, docs, faq, docs, related |
-| [Monitoring and controls](https://aquemi-official.github.io/aquemi-web/#sys-monitoring) | Monitoring and controls | spec, diagram, prose, options, docs, faq, related |
+| [Monitoring and controls](https://aquemi-official.github.io/aquemi-web/#sys-monitoring) | Water quality data you can release on and defend in an inspection | prose, spec, table, prose, table, diagram, table, table, table, prose, table, options, steps, docs, faq, docs, related |
 
 ## Services
 
