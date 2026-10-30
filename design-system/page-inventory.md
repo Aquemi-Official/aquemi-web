@@ -72,7 +72,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | Page | Headline | Sections |
 | --- | --- | --- |
 | [Request a proposal](https://aquemi-official.github.io/aquemi-web/#contact-proposal) | Tell us what you need sized, reviewed or assessed. An engineer answers in writing. | form (9-request intent selector, conditional fields), table, docs, steps, spec, faq, related |
-| [Service request](https://aquemi-official.github.io/aquemi-web/#contact-service) | Service for your installed system | band, table, form, grid, steps |
+| [Service request](https://aquemi-official.github.io/aquemi-web/#contact-service) | Service for your installed system, on a response clock you can check | band (severity 1 phone line), table (severity 1–4), form (7-request intent selector, conditional fields, no serial required), table, steps, grid, docs, faq, related |
 | [Locations](https://aquemi-official.github.io/aquemi-web/#contact-locations) | Where we are and where we serve | table, prose, table, grid, band |
 
 ## Site sections and their components
