@@ -9397,23 +9397,23 @@
    "meta": "Case studies that state flow in L/h, USP <645> conductivity, TOC and EN 285 results with the method and report. Ask for a reference call or FAT witness.",
    "path": "/projects/",
    "eyebrow": "PROJECTS · CASE STUDIES · REFERENCES · FAT · SAT · IQ/OQ",
-   "headline": "A case study you can audit: the figure, the method and the report it came from",
-   "lead": "Most water system case studies end with \"met all customer requirements\". Your validation team needs the number, the unit, the sampling point and the executed report behind it. Ours state each outcome against the limit as the standard writes it, from USP <645> conductivity to EN 285 non-condensable gases in mL per 100 mL of condensate, and name the factory acceptance test (FAT), site acceptance test (SAT) or qualification report it comes from. Until a case study for your segment is published here, check the same evidence directly: a reference call, a shop visit or a witnessed FAT, sample documents and a compliance matrix for your user requirement specification (URS).",
+   "headline": "A case study you can audit: the figure, the method and the report",
+   "lead": "Every figure in our case studies carries its unit, method and executed report. Until one covers your segment, check the evidence directly: a reference call, shop visit or witnessed factory acceptance test (FAT).",
    "facts": [
     {
      "v": "1 report per figure",
-     "l": "Every outcome cites the executed FAT, SAT, OQ or PQ report it comes from"
+     "l": "Every outcome cites the executed test or qualification report"
     },
     {
      "v": "≤ 1.3 µS/cm",
-     "l": "PW and WFI conductivity at 25 °C, reported against its limit · USP <645>"
+     "l": "Purified water and water for injection conductivity at 25 °C"
     },
     {
      "v": "≤ 3.5 mL",
      "l": "Non-condensable gases per 100 mL of condensate · EN 285"
     },
     {
-     "v": "[number of clients available for a reference call]",
+     "v": "[reference clients available, number]",
      "l": "Clients who agree to take a reference call"
     }
    ],
@@ -9434,77 +9434,10 @@
    "blocks": [
     {
      "type": "prose",
-     "h": "What a case study on this page has to prove",
+     "h": "What a case study on this page proves",
      "body": [
-      "A case study is evidence only if an engineer can check it. Each one we publish opens with a project profile (segment, province, system, capacity, grade, standards and timeline), then states the problem, the system delivered, the standard met and the measured outcome. Every figure carries its unit, its reference temperature, the test method, the sampling point, the number of samples or the period, and the number of the executed report it comes from.",
-      "We name a client only with written permission. Otherwise we describe it by segment and province, for example \"biologics CDMO, Ontario\". The client's quality unit approves the text before it is published, and figures from the client's own performance qualification (PQ) data are labelled as theirs. Deviations raised at FAT and SAT are stated with how each was closed, because a record with no deviations is the one an auditor trusts least."
-     ]
-    },
-    {
-     "type": "table",
-     "nav": "Profile",
-     "h": "The project profile every case study opens with",
-     "cols": [
-      "Field",
-      "What it states",
-      "Unit or reference",
-      "Source document"
-     ],
-     "rows": [
-      [
-       "Segment and location",
-       "Industry and dosage form or modality, and the province of installation. The client's name only with written permission",
-       "For example \"oral solid dose, Quebec\"",
-       "Client's written approval of the case study"
-      ],
-      [
-       "System and production route",
-       "Purified Water (PW) by double-pass reverse osmosis (RO) and electrodeionization (EDI), Water for Injection (WFI) by distillation or by membrane, pure steam, storage and distribution, pretreatment, monitoring",
-       {
-        "t": "Systems",
-        "link": "systems"
-       },
-       "Basis of design"
-      ],
-      [
-       "Capacity",
-       "Design generation rate, storage volume and peak draw at the points of use",
-       "L/h, L and L/min; kg/h for pure steam",
-       "Basis of design; sizing calculation"
-      ],
-      [
-       "Grade and pharmacopoeia",
-       "PW, WFI or pure steam, released to USP, Ph. Eur. or both, at the stricter value on each attribute",
-       {
-        "t": "Standards we design to",
-        "link": "compliance"
-       },
-       "Functional specification"
-      ],
-      [
-       "Distribution",
-       "Loop temperature, sanitization method, number of points of use and dead legs",
-       "°C; L/D ≤ 2 at every branch (ASME BPE)",
-       "Dead leg register; hydraulic calculation"
-      ],
-      [
-       "Qualification reached",
-       "The last milestone with an executed report: FAT, SAT, installation qualification (IQ), operational qualification (OQ) or a PQ phase",
-       "EU GMP Annex 15 (2015), 3.4 to 3.11",
-       "Executed FAT, SAT, IQ and OQ reports"
-      ],
-      [
-       "Deviations",
-       "Deviations raised at FAT and SAT, and how each was closed",
-       "Number raised; number closed before release to ship",
-       "Deviation log; punch list"
-      ],
-      [
-       "Timeline",
-       "Order to FAT, FAT to SAT, and shutdown days for tie-in on an operating site",
-       "Weeks; days",
-       "Project schedule, as executed"
-      ]
+      "A case study is evidence only if your engineers can check it. Each one opens with a profile: segment, province, system, capacity, grade, standards and timeline. Every figure carries its unit, reference temperature, method, sampling point, number of samples and the executed report it comes from: FAT, site acceptance test (SAT), or installation, operational or performance qualification (IQ, OQ, PQ).",
+      "We name a client only with written permission; otherwise by segment and province. A second engineer checks every figure against its report, then the client's quality unit approves the text. Deviations raised at FAT and SAT are stated with how each was closed, because a record with no deviations is the one an auditor trusts least."
      ]
     },
     {
@@ -9514,243 +9447,103 @@
      "cols": [
       "Outcome",
       "Limit, as the standard states it",
-      "How it is measured",
       "Where the figure comes from"
      ],
      "rows": [
       [
-       "Conductivity, PW and WFI",
-       "≤ 1.3 µS/cm @ 25 °C, stage 1 (USP <645>); ≤ 5.1 µS/cm @ 25 °C for PW (Ph. Eur. 0008); ≤ 1.1 µS/cm @ 20 °C for WFI (Ph. Eur. 0169)",
-       "Non-temperature-compensated reading on a calibrated online sensor, at the return of the loop and at points of use",
-       "Executed OQ and PQ, with the raw readings"
+       "Conductivity, Purified Water (PW) and Water for Injection (WFI)",
+       "≤ 1.3 µS/cm @ 25 °C, stage 1 (USP <645>); ≤ 5.1 µS/cm @ 25 °C PW (Ph. Eur. 0008); ≤ 1.1 µS/cm @ 20 °C WFI (Ph. Eur. 0169)",
+       "Online sensor, not temperature-compensated, at loop return and points of use; executed OQ and PQ"
       ],
       [
        "Total organic carbon (TOC)",
        "≤ 0.50 mg/L (500 ppb) (USP <643>; Ph. Eur. 2.2.44)",
-       "Online analyzer that passed system suitability, or laboratory samples",
-       "System suitability record; OQ and PQ reports"
+       "Online analyzer that passed system suitability, or laboratory samples; OQ and PQ reports"
       ],
       [
        "Bacterial endotoxins, WFI",
        "< 0.25 EU/mL (USP <85>); < 0.25 IU/mL (Ph. Eur. 2.6.14)",
-       "Samples at each point of use under the PQ sampling plan",
-       "Laboratory report, by point of use and date"
+       "Samples at each point of use under the PQ sampling plan; laboratory report"
       ],
       [
        "Microbial count",
        "Action levels of 100 CFU/mL for PW and 10 CFU/100 mL for WFI (USP <1231> guidance)",
-       "Samples under the site's sampling plan; the case states method, number of samples and weeks",
        "Client's PQ data, published with its approval"
       ],
       [
-       "Nitrates, PW to Ph. Eur.",
-       "≤ 0.2 ppm (Ph. Eur. 0008). USP has no nitrates test",
-       "Laboratory test on samples taken at FAT and in PQ",
-       "FAT report; PQ report"
-      ],
-      [
        "Pure steam quality",
-       "Non-condensable gases ≤ 3.5 mL per 100 mL of condensate; dryness value ≥ 0.95 for metal loads and ≥ 0.90 for other loads; superheat ≤ 25 K on expansion to atmospheric pressure (EN 285)",
-       "EN 285 steam quality tests at each sterilizer, on calibrated test equipment",
+       "Non-condensable gases ≤ 3.5 mL per 100 mL of condensate; dryness ≥ 0.95 metal, ≥ 0.90 other loads; superheat ≤ 25 K (EN 285)",
        {
         "t": "EN 285 test report per sterilizer",
         "link": "sys-pure-steam"
        }
       ],
       [
-       "Pure steam condensate",
-       "Meets the WFI monograph; microbial testing not required (EU GMP Annex 1 (2022), 6.17)",
-       "Condensate sampled through a cooler at the sample point",
-       "Laboratory report; SAT or OQ report"
-      ],
-      [
        "Operating outcomes",
-       "No pharmacopoeial limit: uptime, regeneration eliminated, water recovery, energy use",
-       "Stated with the period and the source, and marked as client-reported where the data is the client's",
-       "Client data or service reports, with the period stated"
+       "No pharmacopoeial limit: uptime, water recovery, energy use",
+       "Client or service data, period stated, marked client-reported"
       ]
      ]
     },
     {
-     "type": "band",
-     "tone": "limestone",
-     "h": "A case study without a signed report behind it is worse than none",
-     "body": "We publish a case study only when every figure in it traces to an executed report and the client has approved the text in writing. The outlines below show exactly what each one will state. Every value in them is a placeholder until a delivered project supplies it."
-    },
-    {
      "type": "case",
      "nav": "Template",
-     "h": "Case study template: three outlines awaiting real projects",
-     "intro": "Each outline is the structure a published case study will follow, by system. Nothing in square brackets is a result. [Remove this block, or replace each outline with a delivered project and its report numbers, before launch.]",
+     "h": "Case study outlines awaiting real projects",
+     "intro": "We publish a case only when every figure traces to an executed report and the client approves the text. Until then, these outlines show what each will state. [Replace with delivered projects before launch]",
      "items": [
       {
        "status": "Template · awaiting a real project",
-       "t": "USP Purified Water RO/EDI system and ozonated loop for [segment] in [city, province]",
+       "t": "Purified Water system and ozonated loop for [segment, province]",
        "profile": [
         {
          "v": "[capacity, L/h]",
-         "l": "PW generation · double-pass RO and EDI"
-        },
-        {
-         "v": "[conductivity, µS/cm @ 25 °C]",
-         "l": "Return of loop, PQ · USP <645>"
-        },
-        {
-         "v": "[TOC, ppb]",
-         "l": "Return of loop, PQ · USP <643>"
+         "l": "PW generation rate"
         },
         {
          "v": "[weeks]",
          "l": "Order to FAT"
         }
        ],
-       "client": "[Segment and dosage form, province. Client name only with written permission]",
-       "problem": "[The risk in the client's words: the limit, the capacity in L/h or the deadline that started the project]",
-       "system": "[Pretreatment, double-pass RO and EDI, storage volume in L, ozone and UV destruct, number of points of use, as delivered]",
-       "standard": "[USP PW monograph; Ph. Eur. 0008 if released in Europe; ASME BPE dead legs L/D ≤ 2; EU GMP Annex 15 for FAT, SAT, IQ and OQ]",
-       "outcome": "[Conductivity, µS/cm @ 25 °C], [TOC, ppb], [microbial count, CFU/mL] and [nitrates, ppm, if Ph. Eur.] against their limits",
-       "method": "[Sampling points, number of samples and PQ phase or weeks]; from [executed OQ or PQ report number]. [Deviations raised and closed at FAT and SAT]",
+       "client": "[segment and dosage form, province]",
+       "problem": "[limit, capacity or deadline that started it]",
+       "system": "[pretreatment, membranes, storage, ozone, points of use]",
+       "standard": "USP PW monograph; Ph. Eur. 0008 if released in Europe; ASME BPE dead legs L/D ≤ 2; EU GMP Annex 15",
+       "outcome": "[conductivity], [TOC], [microbial count] and [nitrates, if Ph. Eur.] against their limits",
+       "method": "[sampling points, samples and PQ weeks]; from [executed OQ or PQ report number]. [deviations raised and closed]",
        "figure": "[conductivity]",
        "unit": "µS/cm @ 25 °C"
       },
       {
        "status": "Template · awaiting a real project",
-       "t": "WFI by membrane with hot storage and loop for [segment] in [city, province]",
-       "profile": [
-        {
-         "v": "[capacity, L/h]",
-         "l": "WFI generation · membrane route"
-        },
-        {
-         "v": "[endotoxin, EU/mL]",
-         "l": "Points of use, PQ · USP <85>"
-        },
-        {
-         "v": "[conductivity, µS/cm @ 25 °C]",
-         "l": "Return of loop · USP <645>"
-        },
-        {
-         "v": "[weeks]",
-         "l": "FAT to SAT"
-        }
-       ],
-       "client": "[Segment and modality, province. Client name only with written permission]",
-       "problem": "[The driver: the WFI demand in L/h, the footprint or energy limit, the line start date]",
-       "system": "[Membrane train as delivered, hot storage temperature in °C, loop and points of use, continuous TOC and conductivity]",
-       "standard": "[USP WFI monograph; Ph. Eur. 0169 if released in Europe; EU GMP Annex 1 (2022), 6.10 and 6.15]",
-       "outcome": "[Endotoxin, EU/mL], [TOC, ppb], [conductivity, µS/cm @ 25 °C] and [microbial count, CFU/100 mL] against their limits",
-       "method": "[Sampling points, number of samples and PQ phase or weeks]; from [executed OQ or PQ report number]. [Energy use, kWh/m³, client-reported, with the period]",
-       "figure": "[endotoxin]",
-       "unit": "EU/mL"
-      },
-      {
-       "status": "Template · awaiting a real project",
-       "t": "Pure steam generator and distribution header for [segment] in [city, province]",
+       "t": "Pure steam generator and header for [segment, province]",
        "profile": [
         {
          "v": "[capacity, kg/h]",
-         "l": "Pure steam generation"
-        },
-        {
-         "v": "[NCG, mL per 100 mL]",
-         "l": "Non-condensable gases in condensate · EN 285"
-        },
-        {
-         "v": "[superheat, K]",
-         "l": "On expansion to atmospheric pressure · EN 285"
+         "l": "Pure steam generation rate"
         },
         {
          "v": "[days]",
          "l": "Shutdown for tie-in"
         }
        ],
-       "client": "[Segment, province. Client name only with written permission]",
-       "problem": "[The driver: EN 285 results at the sterilizers, steam demand in kg/h, sterilizer availability, replacement window]",
-       "system": "[Generator as delivered, condensate cooler and sample point, header with trapped drop legs, sterilizers and SIP points served]",
+       "client": "[segment, province]",
+       "problem": "[EN 285 results, steam demand or replacement window]",
+       "system": "[generator, condensate cooler, header, sterilizers served]",
        "standard": "EN 285 steam quality at each sterilizer; condensate to the WFI monograph (EU GMP Annex 1 (2022), 6.17)",
-       "outcome": "[Non-condensable gases, mL per 100 mL of condensate], [dryness value] and [superheat, K] at each sterilizer, against EN 285; [condensate endotoxin, EU/mL]",
-       "method": "EN 285 steam quality tests at [number of sterilizers] sterilizers, from [SAT or OQ report number]. [Deviations raised and closed]",
+       "outcome": "Non-condensable gases [NCG], [dryness value] and [superheat, K] at each sterilizer against EN 285; [condensate endotoxin, EU/mL]",
+       "method": "EN 285 tests at [number of sterilizers] sterilizers, from [SAT or OQ report number]. [deviations raised and closed]",
        "figure": "[NCG]",
        "unit": "mL per 100 mL"
       }
      ]
     },
     {
-     "type": "steps",
-     "h": "How a project becomes a case study",
-     "items": [
-      {
-       "t": "Milestone reached",
-       "d": "A FAT, SAT, OQ or PQ phase closes with an executed, signed report."
-      },
-      {
-       "t": "Figures extracted",
-       "d": "Each figure is copied from the report with its unit, method and report number. Nothing is rounded into a pass."
-      },
-      {
-       "t": "Engineering check",
-       "d": "A second engineer checks every figure against the report and every limit against the standard's text."
-      },
-      {
-       "t": "Client approval",
-       "d": "Your quality unit approves the text, the figures and whether you are named. You can withdraw approval at any time."
-      },
-      {
-       "t": "Published and updated",
-       "d": "Published at the milestone it reached and updated when the next report closes, so a FAT result is never presented as PQ."
-      }
-     ]
-    },
-    {
-     "type": "grid",
+     "type": "table",
      "nav": "Verify today",
      "h": "What you can verify before a case study exists",
-     "intro": "Each route lets you check, at the source, the evidence a case study would summarize. Ask for one or several in the request below.",
-     "items": [
-      {
-       "t": "Reference call",
-       "d": "A call with an engineering or quality lead at a client site, where the client agrees. [Segments and systems for which a reference is available]",
-       "tag": "Client"
-      },
-      {
-       "t": "Shop visit",
-       "d": "See fabrication, orbital welding, weld logs and material traceability at [shop location, city and province].",
-       "tag": "ASME BPE",
-       "link": "svc-fabrication"
-      },
-      {
-       "t": "Witness a FAT",
-       "d": "Watch a system run wet against an approved protocol, with that client's permission, or review our FAT protocol for yours.",
-       "tag": "Annex 15, 3.6",
-       "link": "svc-fat-sat"
-      },
-      {
-       "t": "Sample documents",
-       "d": "A sample turnover package and FAT protocol table of contents, so you judge the record before you buy it.",
-       "tag": "EN 10204 3.1",
-       "link": "cmp-documentation"
-      },
-      {
-       "t": "Compliance matrix",
-       "d": "Send your URS. We map each requirement to the standard, the design feature and the test that proves it.",
-       "tag": "USP · Ph. Eur.",
-       "link": "compliance"
-      },
-      {
-       "t": "Supplier audit",
-       "d": "Audit our quality system remotely or on site, or start with our quality questionnaire pack.",
-       "tag": "ISO 9001:2015",
-       "link": "cmp-quality"
-      }
-     ]
-    },
-    {
-     "type": "table",
-     "nav": "Evidence",
-     "h": "What each route proves, and what it cannot",
+     "intro": "Each route checks, at the source, what a case study would summarize. Ask for any of them below.",
      "cols": [
       "Route",
-      "What you see",
       "What it proves",
       "What it does not prove",
       "Time to arrange"
@@ -9758,54 +9551,54 @@
      "rows": [
       [
        "Reference call",
-       "A client's engineering or quality lead, without us on the line if you prefer",
-       "How we handled schedule, deviations and service after handover",
+       "How we handled schedule, deviations and service after handover, from the client's engineering or quality lead",
        "Performance on your feed water",
        "[reference call lead time, working days]"
       ],
       [
-       "Shop visit",
-       "Welding, inspection, material log, work in progress",
-       "That fabrication records are produced as the work is done",
+       {
+        "t": "Shop visit",
+        "link": "svc-fabrication"
+       },
+       "Welding, weld logs and material traceability recorded as the work is done, at [shop location, city and province]",
        "System performance; that is the FAT",
        "[shop visit notice, working days]"
       ],
       [
-       "FAT witness",
-       "A system running wet against an approved protocol, deviations logged",
-       "Function, alarms, interlocks and controls before shipment",
+       {
+        "t": "FAT witness",
+        "link": "svc-fat-sat"
+       },
+       "Function, alarms, interlocks and controls before shipment, against an approved protocol",
        "Performance on your feed water, which SAT and OQ test",
        "[FAT witness notice, working days]"
       ],
       [
-       "Sample turnover package",
-       "Document index, sample protocols and records, redacted",
-       "What your validation file will contain and how it traces to the URS",
-       "That a given project's records are complete",
        {
-        "t": "[sample package response time, working days]",
+        "t": "Sample turnover package",
         "link": "cmp-documentation"
-       }
+       },
+       "What your validation file will contain and how it traces to your user requirement specification (URS)",
+       "That a given project's records are complete",
+       "[sample package response time, working days]"
       ],
       [
-       "Compliance matrix",
-       "Your URS mapped line by line to standards, design features and tests",
-       "That we read your requirements before we quote",
-       "Delivered performance",
        {
-        "t": "[compliance matrix response time, working days]",
+        "t": "Compliance matrix",
         "link": "compliance"
-       }
+       },
+       "That we read your URS line by line before we quote",
+       "Delivered performance",
+       "[compliance matrix response time, working days]"
       ],
       [
-       "Supplier audit",
-       "Procedures, records and a sample traced end to end",
+       {
+        "t": "Supplier audit",
+        "link": "cmp-quality"
+       },
        "That the quality system behind the documents works",
        "A specific system's performance",
-       {
-        "t": "[on-site audit notice, working days]",
-        "link": "cmp-quality"
-       }
+       "[on-site audit notice, working days]"
       ]
      ]
     },
@@ -9814,7 +9607,7 @@
      "nav": "Request",
      "anchor": "verify",
      "h": "Request a reference call, shop visit or FAT witness",
-     "intro": "Tell us what you are buying and what your team needs to see. We reply within [reference request response time, working days] with names, dates or documents, or with the questions we need answered first. References and FAT witnessing depend on our clients' permission.",
+     "intro": "Tell us what you are buying and what your team needs to see. We reply within [reference request response time, working days]. References and FAT witnessing depend on our clients' permission.",
      "submit": "Send my request",
      "fields": [
       {
@@ -9825,8 +9618,7 @@
         "Reference call",
         "Shop visit",
         "Witness a FAT",
-        "Sample turnover package",
-        "Sample FAT protocol",
+        "Sample turnover package or FAT protocol",
         "Compliance matrix for our URS",
         "Supplier audit or quality questionnaire"
        ]
@@ -9848,45 +9640,15 @@
        ]
       },
       {
-       "kind": "select",
-       "label": "Your sector",
-       "required": false,
-       "options": [
-        "Pharmaceutical",
-        "Biotechnology",
-        "Medical devices",
-        "Contract manufacturing (CDMO)",
-        "Hospital or laboratory",
-        "Industrial or process",
-        "Other"
-       ]
-      },
-      {
        "kind": "text",
        "label": "Province of installation",
        "required": false
-      },
-      {
-       "kind": "text",
-       "label": "Preferred dates",
-       "required": false,
-       "help": "For a call, a shop visit or a FAT witness."
       },
       {
        "kind": "file",
        "label": "Your URS or questions",
        "required": false,
        "help": "PDF, Word or Excel. A draft is enough."
-      },
-      {
-       "kind": "radio",
-       "label": "Non-disclosure agreement",
-       "required": false,
-       "options": [
-        "Send us yours",
-        "We need our company's NDA signed",
-        "Not sure yet"
-       ]
       },
       {
        "kind": "text",
@@ -9902,19 +9664,6 @@
        "kind": "text",
        "label": "Company",
        "required": true
-      },
-      {
-       "kind": "select",
-       "label": "Role",
-       "required": false,
-       "options": [
-        "Process or project engineering",
-        "Validation",
-        "Quality assurance",
-        "Procurement",
-        "Facilities or utilities",
-        "Other"
-       ]
       }
      ]
     },
@@ -9929,7 +9678,7 @@
       },
       {
        "q": "Can we speak to a client in our segment?",
-       "a": "Ask, and say which system and grade you are buying. [State the segments and systems for which Aquemi can offer a reference call, and how many.] If no reference matches your segment, we say so and offer the closest system match instead."
+       "a": "Ask, and say which system and grade you are buying. We can offer [reference segments and systems, and how many]. If no reference matches your segment, we say so and offer the closest system match instead."
       },
       {
        "q": "Are the figures from your tests or from the client?",
@@ -9937,7 +9686,7 @@
       },
       {
        "q": "Can we witness another client's FAT?",
-       "a": "Only with that client's permission, and usually under a non-disclosure agreement. [Confirm whether Aquemi offers witnessing of other clients' FATs, and on what terms.] If none can be arranged, we walk you through a redacted FAT protocol and report, and you witness your own FAT against a protocol you approved."
+       "a": "Only with that client's permission, and usually under a non-disclosure agreement. [witnessing other clients' FATs: offered, terms] If none can be arranged, we walk you through a redacted FAT protocol and report, and you witness your own FAT against a protocol you approved."
       },
       {
        "q": "Will our project become a case study?",
@@ -9961,23 +9710,30 @@
       "compliance",
       "svc-fat-sat",
       "cmp-quality",
-      "svc-cq",
-      "systems"
+      "svc-cq"
      ]
     }
    ],
    "cta": {
     "h": "Ask for the evidence, not the brochure",
-    "body": "Tell us the system, the grade and the province. We arrange a reference call, a shop visit or a FAT witness where our clients agree, or send sample documents, within [reference request response time, working days].",
+    "body": "Tell us the system, the grade and the province. We arrange a reference call, shop visit or FAT witness where our clients agree, or send sample documents, within [reference request response time, working days].",
     "button": "Request a reference call",
     "link": "contact-proposal",
-    "intent": "Supplier qualification: audit, references, shop visit|Reference call"
+    "intent": "Supplier qualification: audit, references, shop visit|Reference call",
+    "include": [
+     "System and grade you are buying",
+     "Province of installation",
+     "Your URS, a draft is enough",
+     "What your team needs to see",
+     "Preferred dates for a visit"
+    ],
+    "include_label": "What to tell us"
    },
    "todo": [
-    "KEY: real delivered projects for the case study template (at least one per system shown) with executed report numbers, or remove the template block before launch; the page must not launch with only placeholder outlines",
+    "KEY: real delivered projects for the two case study outlines (PW, pure steam) with executed report numbers, or remove the block before launch; the page must not launch with only placeholder outlines",
     "Written client approval for each case study and each named reference; client quality unit sign-off on text and figures",
-    "Measured figures for each case: capacity (L/h or kg/h), conductivity (µS/cm @ 25 °C), TOC (ppb), endotoxin (EU/mL), microbial (CFU/mL or CFU/100 mL), nitrates (ppm), EN 285 NCG (mL per 100 mL), dryness value, superheat (K), timeline (weeks, days), deviations raised and closed, energy use (kWh/m³, client-reported)",
-    "Hero fact and FAQ: number of clients available for a reference call, and the segments and systems they cover (grid item too)",
+    "Measured figures for each case: capacity (L/h or kg/h), conductivity (µS/cm @ 25 °C), TOC (ppb), microbial (CFU/mL), nitrates (ppm), EN 285 NCG (mL per 100 mL), dryness value, superheat (K), condensate endotoxin (EU/mL), timeline (weeks, days), deviations raised and closed",
+    "Hero fact and FAQ: number of clients available for a reference call, and the segments and systems they cover",
     "Shop location (city and province) for shop visits (same as cmp-quality)",
     "Lead times: reference call (working days), shop visit notice, FAT witness notice, sample package response, compliance matrix response, on-site audit notice (align with cmp-documentation, compliance, cmp-quality)",
     "Reference request response time (working days) for the form intro and closing CTA",
