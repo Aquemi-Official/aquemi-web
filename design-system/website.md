@@ -65,7 +65,7 @@ Every page reads as one system, on a phone first.
   | `roles` | document → who writes → who reviews | RoleMatrix |
 
   A plain CompareTable is left for true multi-way comparisons (three or more options, plan tiers).
-- **Fold secondary detail.** Any list, spec, docs or table block can set `fold: N`: the first N rows show, the rest sit behind "Show all …". Put the rows that decide the choice first; never fold the limits, the main standard or the scope. Folded rows don't count toward visible words.
+- **Fold secondary detail.** Any list, spec, docs, tags or table block (including the router-free table shapes: versus, failures, evidence) can set `fold: N`: the first N rows show, the rest sit behind "Show all …"; `fold_noun` names them on the button ("Show all 9 documents"). A versus keeps its verdict visible. Put the rows that decide the choice first; never fold the limits, the main standard or the scope. Folded rows don't count toward visible words.
 
 ## Ground: a navy blueprint with light drawing sheets
 

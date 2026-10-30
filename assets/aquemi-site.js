@@ -31,7 +31,7 @@ function wRow(i,t,d,link,art,tag){var inner=idx(i)+'<h3 class="aq-rows__t">'+tx(
    the list is pressed ("Show all 10 parameters" / "Show fewer"). Put the items that decide the choice first; fold only
    secondary detail. fli(html, b, i) marks item i; wFold(b, count, inner, noun) adds the button when anything is folded. */
 var foldN=0;
-function fli(h,b,i){return b.fold&&i>=b.fold?h.replace(/^<(li|tr)( class="([^"]*)")?/,function(m,t,c,v){return '<'+t+' class="'+(v?v+' ':'')+'aq-fold-x"'}):h}
+function fli(h,b,i){return b.fold&&i>=b.fold?h.replace(/^<(li|tr|div|details)( class="([^"]*)")?/,function(m,t,c,v){return '<'+t+' class="'+(v?v+' ':'')+'aq-fold-x"'}):h}
 function wFold(b,n,inner,noun){if(!(b.fold>0)||n<=b.fold)return inner;var id='fold-'+(++foldN),all='Show all '+n+' '+(noun||'rows');
  return '<div class="aq-fold" id="'+id+'">'+inner+'<button type="button" class="aq-fold__btn" aria-expanded="false" aria-controls="'+id+'" data-more="'+e(all)+'">'+e(all)+'</button></div>'}
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-fold__btn');if(!t)return;var w=t.closest('.aq-fold'),o=!w.classList.contains('is-open');
@@ -413,12 +413,13 @@ BLOCKS['faq']=function(b,H){faqN++;return split(H,'<div class="aq-faq">'+(b.item
 /* Table as "failures" -> FaultList: where things fail and what we design against. Fields as a table: cols [the failure
    column, then the columns revealed when a row opens, usually "Usual cause" and "What we design in"], rows. Each row is
    a native <details>: index, the failure, a +/− sign; open, the other columns sit side by side, each under its column
-   name. The first row starts open; a shared name keeps one open at a time. Laid on a light sheet. */
+   name. The first row starts open; a shared name keeps one open at a time. Laid on a light sheet.
+   fold: N shows the first N failures; the rest sit behind "Show all N risks". */
 var faultN=0;
 TABLE_AS.failures=function(b,H){var C=b.cols||[],R=b.rows||[];faultN++;
- return sec(H+'<div class="aq-faults">'+R.map(function(r,i){
-  return '<details name="faults-'+faultN+'"'+(i?'':' open')+'><summary>'+idx(i)+'<span class="aq-faults__t">'+tcell(r[0])+'</span><span class="aq-faults__sign" aria-hidden="true"></span></summary>'
-   +'<div class="aq-faults__body">'+r.slice(1).map(function(c,j){return '<div><p class="aq-faults__k">'+tx(C[j+1]||'')+'</p><p class="aq-faults__v">'+tcell(c)+'</p></div>'}).join('')+'</div></details>'}).join('')+'</div>');};
+ return sec(H+wFold(b,R.length,'<div class="aq-faults">'+R.map(function(r,i){
+  return fli('<details name="faults-'+faultN+'"'+(i?'':' open')+'>',b,i)+'<summary>'+idx(i)+'<span class="aq-faults__t">'+tcell(r[0])+'</span><span class="aq-faults__sign" aria-hidden="true"></span></summary>'
+   +'<div class="aq-faults__body">'+r.slice(1).map(function(c,j){return '<div><p class="aq-faults__k">'+tx(C[j+1]||'')+'</p><p class="aq-faults__v">'+tcell(c)+'</p></div>'}).join('')+'</div></details>'}).join('')+'</div>',b.fold_noun||'risks'));};
 /* Block "form" -> EnquiryForm (data sheet) in SplitSection. With "steps", wFormSteps renders one numbered section per step.
    wPreset ticks the options named by the linking button's intent before rendering.
    Fields split into numbered sections: 1.0 the requirement, 2.0 the trailing run of contact fields (name, company, role,
@@ -579,11 +580,12 @@ BLOCKS['tags']=function(b,H){var lk=wp('compliance');return '<section class="aq-
    or vapour compression). Fields as a table with exactly three columns: cols [factor label, route A, route B], rows
    [factor, A, B]. A row whose factor starts "Fits when" (or "Choose") becomes the verdict: two closing lines,
    "Choose <A> when …" and "Choose <B> when …", under the rows. Desktop: A right-aligned against the spine, the factor
-   on the spine, B left-aligned. Phones: each factor with A and B under it, each line tagged with its route. */
+   on the spine, B left-aligned. Phones: each factor with A and B under it, each line tagged with its route.
+   fold: N shows the first N factors (the verdict always shows); put the deciding factors first. */
 TABLE_AS.versus=function(b,H){var C=b.cols||[],R=b.rows||[],A=tcell(C[1]),B=tcell(C[2]);
  var fit=R.filter(function(r){return /^(fits when|choose)/i.test(String(r[0]&&r[0].t||r[0]))})[0],rows=R.filter(function(r){return r!==fit});
  return sec(H+'<div class="aq-versus"><div class="aq-versus__head" aria-hidden="true"><p class="aq-versus__name">'+A+'</p><span class="aq-versus__vs">or</span><p class="aq-versus__name">'+B+'</p></div>'
-  +'<dl class="aq-versus__rows">'+rows.map(function(r){return '<div class="aq-versus__row"><dt>'+tcell(r[0])+'</dt><dd data-k="'+e(C[1])+'">'+tcell(r[1])+'</dd><dd data-k="'+e(C[2])+'">'+tcell(r[2])+'</dd></div>'}).join('')+'</dl>'
+  +wFold(b,rows.length,'<dl class="aq-versus__rows">'+rows.map(function(r,i){return fli('<div class="aq-versus__row">',b,i)+'<dt>'+tcell(r[0])+'</dt><dd data-k="'+e(C[1])+'">'+tcell(r[1])+'</dd><dd data-k="'+e(C[2])+'">'+tcell(r[2])+'</dd></div>'}).join('')+'</dl>',b.fold_noun||'factors')
   +(fit?'<div class="aq-versus__verdict"><div><p class="aq-eyebrow">Choose '+A+' when</p><p>'+tcell(fit[1])+'</p></div><div><p class="aq-eyebrow">Choose '+B+' when</p><p>'+tcell(fit[2])+'</p></div></div>':'')+'</div>');};
 /* One content section per block type in pages.json */
 function wBlock(b){var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}

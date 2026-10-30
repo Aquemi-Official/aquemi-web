@@ -37,7 +37,7 @@
    "type": "spec",
    "h": "Water quality you release against",
    "caption": "Purified Water · USP and Ph. Eur.",
-   "note": "Ph. Eur. 0008 as revised in Ph. Eur. 12.3, in force 1 July 2026. Ph. Eur. adds aluminium ≤ 10 ppb and bacterial endotoxins < 0.25 IU/mL only for PW used to make dialysis solutions. Alert and action levels come from qualification trend data.",
+   "note": "Ph. Eur. 0008 as revised in Ph. Eur. 12.3, in force 1 July 2026. For PW used in dialysis solutions only, Ph. Eur. adds aluminium ≤ 10 ppb and bacterial endotoxins < 0.25 IU/mL. Alert and action levels come from qualification trend data.",
    "cols": [
     "Parameter",
     "Limit",
@@ -82,7 +82,7 @@
     }
    ],
    "nav": "Limits",
-   "intro": "USP and Ph. Eur. apply these limits at the point of use, after storage and distribution. We size the skid so its outlet holds margin on your worst feed water of the year."
+   "intro": "USP and Ph. Eur. apply these limits at the point of use, after storage and distribution. We size the skid to hold margin on your worst feed water of the year."
   },
   {
    "type": "diagram",
@@ -101,35 +101,66 @@
   },
   {
    "type": "table",
-   "h": "Which purification train fits your feed water",
+   "h": "Match your feed water to a purification train",
    "cols": [
+    "Your feed water",
     "Train",
-    "Fits when",
     "Trade-off"
    ],
    "rows": [
     [
+     "Moderate dissolved solids and alkalinity after softening; PW is the end product",
      "Single-pass RO + EDI",
-     "Moderate dissolved solids and alkalinity after softening; PW is the end product.",
      "Fewest stages, lowest energy. CO₂ control is part of the design."
     ],
     [
+     "High dissolved solids, alkalinity or silica, or the PW feeds a Water for Injection (WFI) still or Pure Steam generator",
      "Double-pass RO + EDI",
-     "High dissolved solids, alkalinity or silica, or the PW feeds a Water for Injection (WFI) still or Pure Steam generator.",
      "Most margin on conductivity, TOC and silica. More pumps and membranes; second-pass concentrate returns to the first pass."
     ],
     [
+     "Soft, low-CO₂ feed, and you prefer one membrane technology to maintain",
      "Double-pass RO, no EDI",
-     "Soft, low-CO₂ feed, and you prefer one membrane technology to maintain.",
      "Least margin against 1.3 µS/cm. pH adjustment between passes is usually needed."
     ],
     [
+     "Small or temporary demand, or a bridge while a generator is replaced",
      "RO + mixed-bed ion exchange",
-     "Small or temporary demand, or a bridge while a generator is replaced.",
      "Resin exhaustion and microbial growth in resin beds become deviations. We rarely propose it for new plants."
     ]
    ],
-   "nav": "Choosing a train"
+   "nav": "Choosing a train",
+   "as": "router",
+   "intro": "Pick the case closest to your feed after softening to see the train we would start from and its trade-off."
+  },
+  {
+   "type": "spec",
+   "h": "Budget ranges by skid capacity",
+   "caption": "PW skid · Canadian dollars, before tax",
+   "cols": [
+    "Capacity",
+    "Typical budget",
+    "Basis"
+   ],
+   "note": "For a capital request; your proposal is priced on your feed water, URS and site. Ranges include FAT, IQ/OQ protocols and the turnover package. Installation and the distribution loop are quoted separately.",
+   "rows": [
+    {
+     "p": "[small reference capacity, L/h]",
+     "v": "[budget range, CAD]",
+     "m": "Single-pass RO + EDI, hot water sanitizable"
+    },
+    {
+     "p": "[mid reference capacity, L/h]",
+     "v": "[budget range, CAD]",
+     "m": "Single-pass RO + EDI, hot water sanitizable"
+    },
+    {
+     "p": "[large reference capacity, L/h]",
+     "v": "[budget range, CAD]",
+     "m": "Double-pass RO + EDI, duplex trains"
+    }
+   ],
+   "nav": "Budget"
   },
   {
    "type": "spec",
@@ -155,12 +186,6 @@
      "hl": false
     },
     {
-     "p": "System recovery",
-     "v": "[design recovery, %]",
-     "m": "Second-pass RO and EDI concentrate recycled where feed chemistry allows",
-     "hl": false
-    },
-    {
      "p": "Sanitization",
      "v": "Hot water ≥ 80 °C through RO and EDI, held [hold time, minutes]",
      "m": "Heat-rated membranes and EDI modules [standard or option]; verified at the coldest probe",
@@ -179,15 +204,21 @@
      "hl": false
     },
     {
-     "p": "Instrumentation",
-     "v": "Conductivity and temperature after each stage; flow, pressure; online TOC [standard or option]",
-     "m": "Calibration certificates in the turnover package",
-     "hl": false
-    },
-    {
      "p": "Off-spec water",
      "v": "Automatic divert to drain or recirculation",
      "m": "Setpoint below your alert level; return to service only after conductivity recovers",
+     "hl": false
+    },
+    {
+     "p": "System recovery",
+     "v": "[design recovery, %]",
+     "m": "Second-pass RO and EDI concentrate recycled where feed chemistry allows",
+     "hl": false
+    },
+    {
+     "p": "Instrumentation",
+     "v": "Conductivity and temperature after each stage; flow, pressure; online TOC [standard or option]",
+     "m": "Calibration certificates in the turnover package",
      "hl": false
     },
     {
@@ -203,7 +234,8 @@
      "hl": false
     }
    ],
-   "nav": "Skid design"
+   "nav": "Skid design",
+   "fold": 5
   },
   {
    "type": "options",
@@ -234,36 +266,8 @@
      "d": "A concentrate recovery RO stage to cut water sent to drain where sewer charges or supply limits matter."
     }
    ],
-   "nav": "Options"
-  },
-  {
-   "type": "spec",
-   "h": "Budget framework",
-   "caption": "PW skid · Canadian dollars, before tax",
-   "cols": [
-    "Capacity",
-    "Typical budget",
-    "Basis"
-   ],
-   "note": "For a capital request; your proposal is priced on your feed water, URS and site. Ranges include FAT, IQ/OQ protocols and the turnover package. Installation and the distribution loop are quoted separately.",
-   "rows": [
-    {
-     "p": "[small reference capacity, L/h]",
-     "v": "[budget range, CAD]",
-     "m": "Single-pass RO + EDI, hot water sanitizable"
-    },
-    {
-     "p": "[mid reference capacity, L/h]",
-     "v": "[budget range, CAD]",
-     "m": "Single-pass RO + EDI, hot water sanitizable"
-    },
-    {
-     "p": "[large reference capacity, L/h]",
-     "v": "[budget range, CAD]",
-     "m": "Double-pass RO + EDI, duplex trains"
-    }
-   ],
-   "nav": "Budget"
+   "nav": "Options",
+   "fold": 3
   },
   {
    "type": "docs",
@@ -282,6 +286,14 @@
      "d": "As built"
     },
     {
+     "t": "FAT and SAT protocols and reports",
+     "d": "Deviations listed and closed; SAT run on your feed water"
+    },
+    {
+     "t": "IQ and OQ protocols",
+     "d": "With a requirements traceability matrix"
+    },
+    {
      "t": "Material certificates",
      "d": "EN 10204 3.1, every product-contact component"
     },
@@ -298,19 +310,13 @@
      "d": "Membrane and EDI modules with serial numbers; instruments traceable to national standards"
     },
     {
-     "t": "FAT and SAT protocols and reports",
-     "d": "Deviations listed and closed; SAT run on your feed water"
-    },
-    {
-     "t": "IQ and OQ protocols",
-     "d": "With a requirements traceability matrix"
-    },
-    {
      "t": "Operation and maintenance manual, spare parts list",
      "d": "Sanitization and membrane cleaning procedures; spares for the first [months of operation]"
     }
    ],
-   "nav": "Documents"
+   "nav": "Documents",
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
    "type": "faq",

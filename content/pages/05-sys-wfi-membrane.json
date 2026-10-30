@@ -6,7 +6,7 @@
  "meta": "Water for Injection by RO, EDI and ultrafiltration, as Ph. Eur. 0169 allows since 2017: < 0.25 EU/mL endotoxin, a written control strategy, ambient.",
  "path": "/systems/wfi-membrane/",
  "eyebrow": "WATER FOR INJECTION · MEMBRANE · PH. EUR. 0169",
- "headline": "Water for Injection by membrane, with the control strategy your inspector will ask for",
+ "headline": "Water for Injection by membrane, with the control strategy inspectors ask for",
  "lead": "Double-pass reverse osmosis (RO), electrodeionization (EDI) and ultrafiltration (UF) make WFI at ambient temperature, with no plant steam. We build in the controls the European Medicines Agency (EMA) expects, and say when distillation fits better.",
  "primary_cta": "Request a WFI route assessment",
  "primary_cta_intent": "Route assessment: which systems, which WFI route",
@@ -45,12 +45,12 @@
     [
      "Energy",
      "Electricity for pumps and EDI; heat only for sanitization; no cooling water",
-     "Plant steam (multi-effect, with cooling water) or an electric compressor (vapour compression)"
+     "Plant steam and cooling water (multi-effect), or an electric compressor (vapour compression)"
     ],
     [
      "Outlet temperature",
      "Ambient. Heating it for a hot loop gives back much of the energy saving.",
-     "Hot, so it fills a loop above 70 °C without reheating"
+     "Hot: fills a loop above 70 °C without reheating"
     ],
     [
      "Endotoxin control",
@@ -59,7 +59,7 @@
     ],
     [
      "Regulatory steps",
-     "Ph. Eur.: notice to your GMP supervisory authority before implementation. USP: normal qualification only.",
+     "Ph. Eur.: notify your GMP supervisory authority before implementation. USP: normal qualification.",
      "Normal qualification only"
     ],
     [
@@ -70,7 +70,7 @@
     [
      "Fits when",
      "Ambient WFI, costly or no steam, and a quality unit ready to run a membrane control strategy",
-     "Hot WFI, a corporate standard or market that calls for distillation, or plant steam on hand"
+     "Hot WFI, plant steam on hand, or a corporate standard or market that calls for distillation"
     ]
    ],
    "nav": "Membrane or still",
@@ -81,7 +81,7 @@
    "type": "spec",
    "h": "Water quality you release against",
    "caption": "WFI · USP AND PH. EUR. 0169",
-   "note": "Same limits for membrane and distilled WFI, at the point of use. Ph. Eur. 0169 also requires in-process conductivity, TOC and microbial monitoring, and start-up water discarded; Annex 1, 6.15 expects continuous TOC and conductivity.",
+   "note": "Same limits for membrane and distilled WFI, at the point of use. Ph. Eur. 0169 also requires in-process conductivity, TOC and microbial monitoring, and start-up water discarded. Annex 1, 6.15 expects continuous TOC and conductivity.",
    "cols": [
     "Parameter",
     "Limit",
@@ -138,70 +138,6 @@
    "nav": "How it works"
   },
   {
-   "type": "spec",
-   "h": "Skid design parameters",
-   "caption": "MEMBRANE WFI SKID · DESIGN BASIS",
-   "cols": [
-    "Parameter",
-    "Design value",
-    "Basis"
-   ],
-   "rows": [
-    {
-     "p": "Capacity",
-     "v": "[minimum–maximum capacity, L/h] per skid",
-     "m": "After the final UF, at your lowest feed temperature; duplex trains above that",
-     "hl": true
-    },
-    {
-     "p": "Feed water",
-     "v": "Drinking water quality, softened and dechlorinated, or PW",
-     "m": "Ph. Eur. 0169; [inlet limits: oxidant, hardness, silt density, temperature]"
-    },
-    {
-     "p": "Oxidant protection",
-     "v": "Oxidation-reduction potential (ORP) or free chlorine before RO pass 1, with shutdown",
-     "m": "EMA/INS/GMP/443117/2017"
-    },
-    {
-     "p": "Purification train",
-     "v": "Double-pass RO, CO₂ removal, EDI, final UF",
-     "m": "Ph. Eur. 0169; EMA names double-pass RO and UF as added assurance"
-    },
-    {
-     "p": "Final barrier",
-     "v": "Hot water sanitizable UF, [UF molecular weight cut-off, Da], [single or duplex]",
-     "m": "Endotoxin-reducing (EMA); integrity tested at FAT and on schedule"
-    },
-    {
-     "p": "Sanitization",
-     "v": "Hot water ≥ 80 °C through RO, EDI and UF, held [hold time, minutes]",
-     "m": "Coldest probe verified; frequency from PQ data (Annex 1, 6.12)"
-    },
-    {
-     "p": "Membrane replacement",
-     "v": "[RO and UF membrane replacement interval, months] maximum, or earlier on trends",
-     "m": "EMA asks for maximum time limits on RO membrane use"
-    },
-    {
-     "p": "Monitoring and sampling",
-     "v": "Conductivity after each stage; TOC after pretreatment and final UF [TOC positions standard or option]",
-     "m": "Sample valves on feed, before and after RO, after UF; Annex 1, 6.15"
-    },
-    {
-     "p": "Off-spec water",
-     "v": "Divert to drain or recirculate; every start-up diverted until setpoints are met",
-     "m": "Ph. Eur. 0169 first-portion discard"
-    },
-    {
-     "p": "Construction",
-     "v": "316L stainless steel, [standard finish, ASME BPE designation], dead legs L/D ≤ 2",
-     "m": "ASME BPE; EN 10204 3.1; Annex 1, 6.7"
-    }
-   ],
-   "nav": "Skid design"
-  },
-  {
    "type": "table",
    "h": "The control strategy, risk by risk",
    "cols": [
@@ -237,8 +173,50 @@
     ]
    ],
    "nav": "Control strategy",
-   "intro": "The EMA's 2017 questions and answers (EMA/INS/GMP/443117/2017) call an ambient membrane system an ideal environment for biofilm, so they expect a documented strategy that prevents, detects and removes microbial growth and endotoxin.",
-   "as": "failures"
+   "intro": "The EMA's 2017 questions and answers (EMA/INS/GMP/443117/2017) call an ambient membrane system an ideal environment for biofilm. They expect a documented strategy to prevent, detect and remove microbial growth and endotoxin.",
+   "as": "failures",
+   "fold": 3
+  },
+  {
+   "type": "docs",
+   "h": "Documents for your validation file",
+   "items": [
+    {
+     "t": "Contamination control strategy input",
+     "d": "Risks, controls and monitoring mapped to the EMA and Annex 1"
+    },
+    {
+     "t": "User requirement specification (URS) matrix and functional specification",
+     "d": "Where each requirement is verified; setpoints, divert logic, alarms"
+    },
+    {
+     "t": "Installation and operational qualification (IQ, OQ) protocols and PQ plan",
+     "d": "Traceability matrix; PQ sampling plan written with your validation team"
+    },
+    {
+     "t": "FAT and SAT protocols and reports",
+     "d": "Deviations listed and closed; SAT on your feed water"
+    },
+    {
+     "t": "Membrane data and UF integrity test records",
+     "d": "Manufacturer data, temperature ratings, FAT results"
+    },
+    {
+     "t": "P&IDs, general arrangement and design specifications",
+     "d": "Piping and instrumentation diagrams; GAMP 5 specifications; as built"
+    },
+    {
+     "t": "Material certificates, weld and surface records",
+     "d": "EN 10204 3.1; weld and borescope records (ASME Section IX); passivation"
+    },
+    {
+     "t": "Operation and maintenance manual and spares",
+     "d": "Sanitization, membrane and integrity test procedures; spares for [months of operation]"
+    }
+   ],
+   "nav": "Documents",
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
    "type": "options",
@@ -264,46 +242,74 @@
      "t": "Conversion of an existing PW system",
      "d": "Sound, hot water sanitizable RO and EDI: we add a final UF, monitoring and controls, then requalify."
     }
-   ]
+   ],
+   "fold": 3
   },
   {
-   "type": "docs",
-   "h": "Documentation delivered with the skid",
-   "items": [
+   "type": "spec",
+   "h": "Skid design parameters",
+   "caption": "MEMBRANE WFI SKID · DESIGN BASIS",
+   "cols": [
+    "Parameter",
+    "Design value",
+    "Basis"
+   ],
+   "rows": [
     {
-     "t": "Contamination control strategy input",
-     "d": "Risks, controls and monitoring mapped to the EMA and Annex 1"
+     "p": "Capacity",
+     "v": "[minimum–maximum capacity, L/h] per skid",
+     "m": "After the final UF, at your lowest feed temperature; duplex trains above that",
+     "hl": true
     },
     {
-     "t": "User requirement specification (URS) matrix and functional specification",
-     "d": "Where each requirement is verified; setpoints, divert logic, alarms"
+     "p": "Purification train",
+     "v": "Double-pass RO, CO₂ removal, EDI, final UF",
+     "m": "Ph. Eur. 0169; EMA names double-pass RO and UF as added assurance"
     },
     {
-     "t": "P&IDs, general arrangement and design specifications",
-     "d": "Piping and instrumentation diagrams; GAMP 5 specifications; as built"
+     "p": "Final barrier",
+     "v": "Hot water sanitizable UF, [UF molecular weight cut-off, Da], [single or duplex]",
+     "m": "Endotoxin-reducing (EMA); integrity tested at FAT and on schedule"
     },
     {
-     "t": "Material certificates, weld and surface records",
-     "d": "EN 10204 3.1; weld and borescope records (ASME Section IX); passivation"
+     "p": "Sanitization",
+     "v": "Hot water ≥ 80 °C through RO, EDI and UF, held [hold time, minutes]",
+     "m": "Coldest probe verified; frequency from PQ data (Annex 1, 6.12)"
     },
     {
-     "t": "Membrane data and UF integrity test records",
-     "d": "Manufacturer data, temperature ratings, FAT results"
+     "p": "Membrane replacement",
+     "v": "[RO and UF membrane replacement interval, months] maximum, or earlier on trends",
+     "m": "EMA asks for maximum time limits on RO membrane use"
     },
     {
-     "t": "FAT and SAT protocols and reports",
-     "d": "Deviations listed and closed; SAT on your feed water"
+     "p": "Feed water",
+     "v": "Drinking water quality, softened and dechlorinated, or PW",
+     "m": "Ph. Eur. 0169; [inlet limits: oxidant, hardness, silt density, temperature]"
     },
     {
-     "t": "Installation and operational qualification (IQ, OQ) protocols and PQ plan",
-     "d": "Traceability matrix; PQ sampling plan written with your validation team"
+     "p": "Oxidant protection",
+     "v": "Oxidation-reduction potential (ORP) or free chlorine before RO pass 1, with shutdown",
+     "m": "EMA/INS/GMP/443117/2017"
     },
     {
-     "t": "Operation and maintenance manual and spares",
-     "d": "Sanitization, membrane and integrity test procedures; spares for [months of operation]"
+     "p": "Monitoring and sampling",
+     "v": "Conductivity after each stage; TOC after pretreatment and final UF [TOC positions standard or option]",
+     "m": "Sample valves on feed, before and after RO, after UF; Annex 1, 6.15"
+    },
+    {
+     "p": "Off-spec water",
+     "v": "Divert to drain or recirculate; every start-up diverted until setpoints are met",
+     "m": "Ph. Eur. 0169 first-portion discard"
+    },
+    {
+     "p": "Construction",
+     "v": "316L stainless steel, [standard finish, ASME BPE designation], dead legs L/D ≤ 2",
+     "m": "ASME BPE; EN 10204 3.1; Annex 1, 6.7"
     }
    ],
-   "nav": "Documents"
+   "nav": "Skid design",
+   "fold": 5,
+   "fold_noun": "parameters"
   },
   {
    "type": "faq",
@@ -359,7 +365,7 @@
  ],
  "cta": {
   "h": "Send your demand and feed water. We tell you which WFI route fits, and why.",
-  "body": "An engineer replies within [proposal response time, working days] with questions or a written route assessment: membrane or distillation, with the reasons.",
+  "body": "An engineer replies with questions on your data or a written route assessment.",
   "include_label": "What to send for a route assessment",
   "include": [
    "Peak and average WFI demand, L/h",
@@ -372,7 +378,13 @@
   ],
   "button": "Request a WFI route assessment",
   "link": "contact-proposal",
-  "intent": "Route assessment: which systems, which WFI route"
+  "intent": "Route assessment: which systems, which WFI route",
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Written route assessment",
+   "Membrane or distillation, with the reasons",
+   "Questions on gaps in your data"
+  ]
  },
  "todo": [
   "Confirm Aquemi builds membrane WFI skids in-house (same platform as PW) or with a partner",

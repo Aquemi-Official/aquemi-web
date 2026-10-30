@@ -380,6 +380,15 @@ def check(show_budgets=False, only=None):
         print('%d budget overrun(s)%s' % (len(shown), ' on ' + only if only else ''))
     else:
         print('%d budget overruns (run check --budgets for detail)' % len(over))
+    # The site script must parse; node is optional (skipped where it isn't installed, e.g. some CI images).
+    node = shutil.which('node')
+    if node:
+        import subprocess
+        js = os.path.join(ROOT, 'assets', 'aquemi-site.js')
+        r = subprocess.run([node, '--check', js], capture_output=True, text=True)
+        if r.returncode:
+            problems.append('assets/aquemi-site.js does not parse: ' + (r.stderr.strip().splitlines() or ['?'])[-1])
+            print(problems[-1])
     print('%d problem(s)' % len(problems))
     return not problems
 

@@ -5,3 +5,4 @@ FaultList lists where things fail and what we design against; each failure opens
 - Desktop: the revealed columns side by side under the failure; phones: stacked.
 - Ground: a light sheet (reading). Name failures as the test that fails or the symptom ("Dryness value below 0.95"), never as a sentence.
 - Not for questions (FAQ) or for options to choose (OptionList).
+- Supports `fold: N` (first N failures show, the rest behind "Show all N risks").

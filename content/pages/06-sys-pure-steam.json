@@ -37,7 +37,7 @@
    "type": "spec",
    "h": "Steam quality you qualify against",
    "caption": "Pure steam · Annex 1, USP and EN 285",
-   "intro": "Annex 1, 6.17: condensate meets the current WFI monograph, and the steam is assessed periodically for non-condensable gases, dryness and superheat. EN 285 gives the numbers most sites use.",
+   "intro": "Annex 1, 6.17: condensate meets the current WFI monograph, and the steam is assessed periodically for non-condensable gases, dryness and superheat. Most sites use the EN 285 numbers.",
    "note": "Ph. Eur. has no separate pure steam monograph, so Annex 1 points to WFI (0169). Physical tests are made at each sterilizer, worst case first.",
    "cols": [
     "Parameter",
@@ -97,22 +97,8 @@
    "nav": "Steam quality"
   },
   {
-   "type": "diagram",
-   "h": "How a pure steam generator works",
-   "stages": [
-    "Purified water feed",
-    "Preheat and degassing",
-    "Evaporator",
-    "Droplet separator",
-    "Pure steam header",
-    "Autoclaves and SIP"
-   ],
-   "caption": "Feed is preheated and vented to strip air and carbon dioxide (CO₂). The evaporator boils it behind a double tube sheet; a separator returns droplets, and their endotoxin, to the evaporator. Blowdown removes concentrate.",
-   "nav": "How it works"
-  },
-  {
    "type": "table",
-   "h": "Where steam quality fails, and what we design against",
+   "h": "Where steam fails at the sterilizer, and our fix",
    "intro": "EN 285 tests are made at the sterilizer, so a generator that passes at its outlet can still fail there.",
    "cols": [
     "Test failed",
@@ -152,7 +138,23 @@
     ]
    ],
    "nav": "Where it fails",
-   "as": "failures"
+   "as": "failures",
+   "fold": 3,
+   "fold_noun": "failures"
+  },
+  {
+   "type": "diagram",
+   "h": "How a pure steam generator works",
+   "stages": [
+    "Purified water feed",
+    "Preheat and degassing",
+    "Evaporator",
+    "Droplet separator",
+    "Pure steam header",
+    "Autoclaves and SIP"
+   ],
+   "caption": "Feed is preheated and vented to strip air and carbon dioxide (CO₂). The evaporator boils it behind a double tube sheet; a separator returns droplets, and their endotoxin, to the evaporator. Blowdown removes concentrate.",
+   "nav": "How it works"
   },
   {
    "type": "spec",
@@ -178,9 +180,9 @@
      "hl": false
     },
     {
-     "p": "Turndown",
-     "v": "[turndown range, % of rated output]",
-     "m": "Follows demand without start-stop cycling",
+     "p": "Heating",
+     "v": "Plant steam at [minimum heating steam pressure, bar(g)], or electric [electric units offered, kW range]",
+     "m": "Plant steam pressure must exceed pure steam pressure; checked in the steam balance",
      "hl": false
     },
     {
@@ -190,9 +192,9 @@
      "hl": false
     },
     {
-     "p": "Heating",
-     "v": "Plant steam at [minimum heating steam pressure, bar(g)], or electric [electric units offered, kW range]",
-     "m": "Plant steam pressure must exceed pure steam pressure; checked in the steam balance",
+     "p": "Turndown",
+     "v": "[turndown range, % of rated output]",
+     "m": "Follows demand without start-stop cycling",
      "hl": false
     },
     {
@@ -226,42 +228,12 @@
      "hl": false
     }
    ],
-   "nav": "Generator design"
-  },
-  {
-   "type": "options",
-   "h": "Configurations and options",
-   "items": [
-    {
-     "t": "Steam or electric heating",
-     "d": "Electric for sites without plant steam, or for a single user. [electric units offered, kW range]"
-    },
-    {
-     "t": "Combined with a WFI still",
-     "d": "The first column of a multi-effect still delivers pure steam while WFI output drops. Suits small, intermittent demand."
-    },
-    {
-     "t": "Distribution header design",
-     "d": "Sizing, slope, traps, separators, vents and pressure reduction to every user, verified by EN 285 tests at SAT."
-    },
-    {
-     "t": "Online condensate monitoring",
-     "d": "Conductivity and TOC on cooled condensate at the outlet, trended with alarm limits."
-    },
-    {
-     "t": "Redundant generation",
-     "d": "Two generators, either one covering critical demand, where an outage stops sterile production."
-    },
-    {
-     "t": "Clean steam for humidification",
-     "d": "Cleanroom humidification without boiler additives, where your contamination control strategy asks."
-    }
-   ],
-   "nav": "Options"
+   "nav": "Generator design",
+   "fold": 5
   },
   {
    "type": "docs",
-   "h": "Documentation delivered with the generator",
+   "h": "Documents delivered with the generator",
    "items": [
     {
      "t": "URS compliance matrix",
@@ -270,6 +242,18 @@
     {
      "t": "Steam balance",
      "d": "Demand by user, heating, feed and blowdown at design and turndown"
+    },
+    {
+     "t": "EN 285 steam quality and condensate test reports",
+     "d": "Gases, dryness and superheat at each sterilizer; conductivity, TOC and endotoxin at outlet and users; laboratory named"
+    },
+    {
+     "t": "FAT protocol and executed report",
+     "d": "Deviations listed and closed; [FAT steam and condensate test scope]"
+    },
+    {
+     "t": "SAT, IQ and OQ protocols and reports",
+     "d": "Installation and operational qualification (IQ/OQ), with a requirements traceability matrix"
     },
     {
      "t": "Functional, hardware and software design specifications",
@@ -288,23 +272,45 @@
      "d": "EN 10204 3.1, weld map and log, borescope, ASME Section IX qualifications, passivation"
     },
     {
-     "t": "FAT protocol and executed report",
-     "d": "Deviations listed and closed; [FAT steam and condensate test scope]"
-    },
-    {
-     "t": "EN 285 steam quality and condensate test reports",
-     "d": "Gases, dryness and superheat at each sterilizer; conductivity, TOC and endotoxin at outlet and users; laboratory named"
-    },
-    {
-     "t": "SAT, IQ and OQ protocols and reports",
-     "d": "Installation and operational qualification (IQ/OQ), with a requirements traceability matrix"
-    },
-    {
      "t": "Operation and maintenance manual and spare parts list",
      "d": "Start-up, shutdown, blowdown and descaling; spares for [spares coverage, months of operation]"
     }
    ],
-   "nav": "Documents"
+   "nav": "Documents",
+   "fold": 6,
+   "fold_noun": "documents"
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "Distribution header design",
+     "d": "Sizing, slope, traps, separators, vents and pressure reduction to every user, verified by EN 285 tests at SAT."
+    },
+    {
+     "t": "Steam or electric heating",
+     "d": "Electric for sites without plant steam, or for a single user. [electric units offered, kW range]"
+    },
+    {
+     "t": "Redundant generation",
+     "d": "Two generators, either one covering critical demand, where an outage stops sterile production."
+    },
+    {
+     "t": "Combined with a WFI still",
+     "d": "The first column of a multi-effect still delivers pure steam while WFI output drops. Suits small, intermittent demand."
+    },
+    {
+     "t": "Online condensate monitoring",
+     "d": "Conductivity and TOC on cooled condensate at the outlet, trended with alarm limits."
+    },
+    {
+     "t": "Clean steam for humidification",
+     "d": "Cleanroom humidification without boiler additives, where your contamination control strategy asks."
+    }
+   ],
+   "nav": "Options",
+   "fold": 3
   },
   {
    "type": "faq",
@@ -360,7 +366,7 @@
  ],
  "cta": {
   "h": "Send your steam load. We size for peak demand and the header.",
-  "body": "An engineer replies within [proposal response time, working days] with questions or a budget proposal.",
+  "body": "An engineer replies with questions on your data or a budget proposal.",
   "button": "Submit your steam demand for a sizing proposal",
   "link": "contact-proposal",
   "intent": "Sizing and budget proposal for a new system|Pure steam generator",
@@ -372,6 +378,12 @@
    "Feed PW quality trends or design basis",
    "Header isometrics or layout with distances",
    "Pharmacopoeia, failed EN 285 results, your URS"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Generator and header sized for peak demand",
+   "Budget proposal",
+   "Questions on gaps in your data"
   ]
  },
  "todo": [

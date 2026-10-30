@@ -34,15 +34,6 @@
  ],
  "blocks": [
   {
-   "type": "prose",
-   "h": "Endotoxin margin depends on your PW feed",
-   "nav": "Endotoxin",
-   "body": [
-    "A still reduces endotoxin by a fixed factor, not to a fixed level, so the margin depends on your Purified Water (PW) feed. The FDA Guide to Inspections of High Purity Water Systems notes that many still fabricators guarantee only a 2.5 to 3 log reduction, and describes stills making WFI above 0.25 EU/mL from poorly treated feed. So we design still and feed as one: the guaranteed reduction sets your PW endotoxin target in the functional specification.",
-    "Ph. Eur. 0169 asks for a still with an effective device to prevent the entrainment of droplets. Distillate leaves hot, so it fills a loop circulating above 70 °C, the example EU GMP Annex 1 (2022) gives, without reheating."
-   ]
-  },
-  {
    "type": "spec",
    "h": "Water quality you release against",
    "caption": "WFI · USP and Ph. Eur. 0169",
@@ -94,7 +85,7 @@
   },
   {
    "type": "table",
-   "h": "Multi-effect or vapour compression: which fits",
+   "h": "Multi-effect or vapour compression: which fits your utilities",
    "nav": "Still type",
    "cols": [
     "Factor",
@@ -102,11 +93,6 @@
     "Vapour compression"
    ],
    "rows": [
-    [
-     "How it works",
-     "Plant steam boils PW in column 1; each column's vapour heats the next and condenses as WFI",
-     "A compressor raises the vapour's pressure so it condenses on the surface that boils more feed"
-    ],
     [
      "Main energy input",
      "Plant steam to the first column",
@@ -119,8 +105,13 @@
     ],
     [
      "Feed water",
-     "PW, because the first column runs hot enough to scale on silica and hardness",
-     "Often tolerates softened or reverse osmosis (RO) feed at its lower boiling temperature; confirm the maker's feed limits"
+     "PW: the first column runs hot enough to scale on silica and hardness",
+     "Often tolerates softened or reverse osmosis (RO) feed at its lower boiling temperature; confirm the maker's limits"
+    ],
+    [
+     "Capital and operating cost",
+     "More effects cost more to buy and less steam to run",
+     "Compressor adds purchase cost; runs cheaply where power costs less than steam"
     ],
     [
      "Moving parts",
@@ -128,9 +119,9 @@
      "Compressor, with bearings and seals to maintain"
     ],
     [
-     "Capital and operating cost",
-     "More effects cost more to buy and less steam to run",
-     "Compressor adds purchase cost; running cost is low where power is cheaper than steam"
+     "How it works",
+     "Plant steam boils PW in column 1; each column's vapour heats the next and condenses as WFI",
+     "A compressor raises the vapour's pressure so it condenses on the surface that boils more feed"
     ],
     [
      "Fits when",
@@ -138,7 +129,16 @@
      "Steam is costly or limited, cooling water scarce, or power cheap, as in several provinces"
     ]
    ],
-   "as": "versus"
+   "as": "versus",
+   "fold": 4
+  },
+  {
+   "type": "prose",
+   "h": "Endotoxin margin starts at your PW feed",
+   "nav": "Endotoxin",
+   "body": [
+    "A still cuts endotoxin by a fixed factor, not to a fixed level, so your margin depends on the Purified Water (PW) feed. The FDA Guide to Inspections of High Purity Water Systems says many still makers guarantee only a 2.5 to 3 log reduction. So we design still and feed as one: the guaranteed reduction sets your PW endotoxin target in the functional specification."
+   ]
   },
   {
    "type": "diagram",
@@ -151,7 +151,7 @@
     "Final condenser",
     "Hot WFI to storage"
    ],
-   "caption": "Distillate preheats the feed. Each column's vapour passes a droplet separator and heats the next. Concentrate carrying the rejected endotoxin drains from the last column, as does distillate off conductivity or temperature setpoint."
+   "caption": "Distillate preheats the feed. Each column's vapour passes a droplet separator (Ph. Eur. 0169) and heats the next. Concentrate carrying rejected endotoxin drains from the last column, as does distillate off conductivity or temperature setpoint."
   },
   {
    "type": "spec",
@@ -189,18 +189,6 @@
      "hl": false
     },
     {
-     "p": "Distillate quality",
-     "v": "Feed degassing, continuous venting, divert to drain on high conductivity or low temperature",
-     "m": "Dissolved carbon dioxide (CO₂) raises conductivity; every start-up diverts; lines drain on shutdown",
-     "hl": false
-    },
-    {
-     "p": "Heat exchangers",
-     "v": "Double tube sheet on feed preheaters and condensers",
-     "m": "FDA high purity water guide: double tube sheet or positive pressure against feed-to-distillate leaks",
-     "hl": false
-    },
-    {
      "p": "Materials and finish",
      "v": "316L stainless steel, [standard finish, ASME BPE designation]",
      "m": "ASME BPE SF1 Ra ≤ 0.51 µm mechanically polished, SF4 Ra ≤ 0.38 µm electropolished; EN 10204 3.1 certificates",
@@ -210,6 +198,18 @@
      "p": "Pressure parts",
      "v": "ASME Section VIII, Division 1",
      "m": "Canadian registration number (CRN) under CSA B51, [provinces where Aquemi registers]",
+     "hl": false
+    },
+    {
+     "p": "Distillate quality",
+     "v": "Feed degassing, continuous venting, divert to drain on high conductivity or low temperature",
+     "m": "Dissolved carbon dioxide (CO₂) raises conductivity; every start-up diverts; lines drain on shutdown",
+     "hl": false
+    },
+    {
+     "p": "Heat exchangers",
+     "v": "Double tube sheet on feed preheaters and condensers",
+     "m": "FDA high purity water guide: double tube sheet or positive pressure against feed-to-distillate leaks",
      "hl": false
     },
     {
@@ -225,7 +225,8 @@
      "hl": false
     }
    ],
-   "nav": "Still design"
+   "nav": "Still design",
+   "fold": 6
   },
   {
    "type": "options",
@@ -256,7 +257,8 @@
      "d": "TOC to USP <643> and conductivity to USP <645> at the outlet, trended on the panel (Annex 1, 6.15)."
     }
    ],
-   "nav": "Options"
+   "nav": "Options",
+   "fold": 3
   },
   {
    "type": "docs",
@@ -275,8 +277,8 @@
      "d": "Feed limits, setpoints, divert logic and alarms; hardware and software design specifications to GAMP 5"
     },
     {
-     "t": "Piping and instrumentation diagrams (P&IDs) and general arrangement drawings",
-     "d": "As built"
+     "t": "FAT, SAT, IQ and OQ protocols and reports",
+     "d": "Deviations closed; installation and operational qualification (IQ/OQ) with a traceability matrix"
     },
     {
      "t": "Pressure vessel calculations and CRN documents",
@@ -287,15 +289,17 @@
      "d": "EN 10204 3.1; welders to ASME Section IX; surface finish and passivation reports"
     },
     {
-     "t": "FAT, SAT, IQ and OQ protocols and reports",
-     "d": "Deviations closed; installation and operational qualification (IQ/OQ) with a traceability matrix"
+     "t": "Piping and instrumentation diagrams (P&IDs) and general arrangement drawings",
+     "d": "As built"
     },
     {
      "t": "Operation and maintenance manual and spares list",
      "d": "Start-up, shutdown and descaling procedures; spares for [months of operation]"
     }
    ],
-   "nav": "Documents"
+   "nav": "Documents",
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
    "type": "faq",
@@ -351,7 +355,7 @@
  ],
  "cta": {
   "h": "Send your demand profile and utility costs. We compare both still types side by side.",
-  "body": "An engineer replies within [proposal response time, working days] with questions or a budget proposal.",
+  "body": "An engineer replies with questions on your data or a budget proposal.",
   "button": "Request a still sizing and utility cost proposal",
   "link": "contact-proposal",
   "intent": "Sizing and budget proposal for a new system|WFI by distillation",
@@ -363,6 +367,13 @@
    "Pharmacopoeia: USP, Ph. Eur. or both",
    "Hot or ambient storage and loop",
    "Site limits: ceiling height, access, province"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Both still types compared for your utilities",
+   "Still sizing for your WFI demand",
+   "Budget proposal",
+   "Questions on gaps in your data"
   ]
  },
  "todo": [

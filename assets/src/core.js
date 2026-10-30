@@ -31,7 +31,7 @@ function wRow(i,t,d,link,art,tag){var inner=idx(i)+'<h3 class="aq-rows__t">'+tx(
    the list is pressed ("Show all 10 parameters" / "Show fewer"). Put the items that decide the choice first; fold only
    secondary detail. fli(html, b, i) marks item i; wFold(b, count, inner, noun) adds the button when anything is folded. */
 var foldN=0;
-function fli(h,b,i){return b.fold&&i>=b.fold?h.replace(/^<(li|tr)( class="([^"]*)")?/,function(m,t,c,v){return '<'+t+' class="'+(v?v+' ':'')+'aq-fold-x"'}):h}
+function fli(h,b,i){return b.fold&&i>=b.fold?h.replace(/^<(li|tr|div|details)( class="([^"]*)")?/,function(m,t,c,v){return '<'+t+' class="'+(v?v+' ':'')+'aq-fold-x"'}):h}
 function wFold(b,n,inner,noun){if(!(b.fold>0)||n<=b.fold)return inner;var id='fold-'+(++foldN),all='Show all '+n+' '+(noun||'rows');
  return '<div class="aq-fold" id="'+id+'">'+inner+'<button type="button" class="aq-fold__btn" aria-expanded="false" aria-controls="'+id+'" data-more="'+e(all)+'">'+e(all)+'</button></div>'}
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-fold__btn');if(!t)return;var w=t.closest('.aq-fold'),o=!w.classList.contains('is-open');
