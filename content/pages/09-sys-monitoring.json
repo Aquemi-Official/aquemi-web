@@ -37,7 +37,7 @@
    "type": "spec",
    "h": "What we measure online, and the limit",
    "caption": "ONLINE MONITORING · USP <643> · USP <645>",
-   "intro": "Raw conductivity and temperature are the compendial record; the value compensated to 25 °C is for trending only, and labelled so.",
+   "intro": "Raw conductivity and temperature are the compendial record. The value compensated to 25 °C is for trending only, and labelled so.",
    "cols": [
     "Measurement",
     "Limit or design value",
@@ -53,13 +53,31 @@
     {
      "p": "Conductivity, USP",
      "v": "Stage 1 table limit at measured temperature, rounded down to 5 °C; 1.3 µS/cm at 25 °C",
-     "m": "USP <645> stage 1, non-compensated. Stages 2 and 3 in the laboratory",
+     "m": "USP <645> stage 1, non-compensated; stages 2 and 3 in the laboratory",
      "hl": true
     },
     {
      "p": "Conductivity, Ph. Eur.",
      "v": "WFI 1.1 µS/cm at 20 °C; PW ≤ 4.3 µS/cm at 20 °C, ≤ 5.1 µS/cm at 25 °C",
      "m": "Ph. Eur. 0169, 0008; tighter limit where you release to both",
+     "hl": false
+    },
+    {
+     "p": "Temperature",
+     "v": "Generation, tank, loop supply and return, coldest sanitization point",
+     "m": "Hot WFI loops > 70 °C, Annex 1, 6.10",
+     "hl": false
+    },
+    {
+     "p": "Divert",
+     "v": "Below your alert level, to drain or recirculation",
+     "m": "Value, time and duration recorded",
+     "hl": false
+    },
+    {
+     "p": "Flow and pressure",
+     "v": "Return flow alarmed below [qualified minimum return flow, L/min]; pressure across filters and membranes",
+     "m": "Annex 1, 6.9",
      "hl": false
     },
     {
@@ -81,24 +99,6 @@
      "hl": false
     },
     {
-     "p": "Temperature",
-     "v": "Generation, tank, loop supply and return, coldest sanitization point",
-     "m": "Hot WFI loops > 70 °C, Annex 1, 6.10",
-     "hl": false
-    },
-    {
-     "p": "Flow and pressure",
-     "v": "Return flow alarmed below [qualified minimum return flow, L/min]; pressure across filters and membranes",
-     "m": "Annex 1, 6.9",
-     "hl": false
-    },
-    {
-     "p": "Divert",
-     "v": "Below your alert level, to drain or recirculation",
-     "m": "Value, time and duration recorded",
-     "hl": false
-    },
-    {
      "p": "Data recording",
      "v": "Every quality value at [recording interval, seconds], time-stamped",
      "m": "Part 11; Annex 11, 7 and 9; one site time source",
@@ -106,12 +106,14 @@
     }
    ],
    "note": "Limits apply to water as used. Sensor locations set by risk assessment, Annex 1, 6.15.",
-   "nav": "Measurements"
+   "nav": "Measurements",
+   "fold": 6,
+   "fold_noun": "measurements"
   },
   {
    "type": "table",
    "h": "Alert levels, action levels and trend rules",
-   "intro": "You set the levels with our input: alert levels from qualification data, as Annex 1, 6.13 expects, reassessed as history builds.",
+   "intro": "You set the levels with our input. Alert levels come from qualification data, as Annex 1, 6.13 expects, and are reassessed as history builds.",
    "cols": [
     "Line",
     "How it is set",
@@ -122,19 +124,19 @@
     [
      "Specification",
      "Compendial limit, or your tighter internal limit",
-     "Diverts, stops supply where specified, alarm needs a reason",
+     "Diverts, stops supply where specified; alarm needs a reason",
      "USP and Ph. Eur. monographs"
     ],
     [
      "Action level",
      "From qualification data. USP <1231>: 100 colony-forming units (CFU)/mL PW, 10 CFU/100 mL WFI generally appropriate maxima",
-     "Quality alarm to the quality unit; logged for investigation",
+     "Quality alarm to the quality unit, logged for investigation",
      "Annex 1, 6.14: root cause and product impact"
     ],
     [
      "Alert level",
      "From qualification data; reassessed after requalification and investigations",
-     "Alarm with a comment; counted for trends",
+     "Alarm with a comment, counted for trends",
      "Annex 1, 6.13, 6.14; USP <1231>"
     ],
     [
@@ -161,41 +163,6 @@
    "nav": "Architecture"
   },
   {
-   "type": "options",
-   "h": "Configurations and options",
-   "items": [
-    {
-     "t": "PLC and SCADA platform",
-     "d": "[PLC and SCADA platforms supported], matched to your site standard."
-    },
-    {
-     "t": "Integration",
-     "d": "OPC UA, Modbus TCP, EtherNet/IP, PROFINET or BACnet to your plant historian, control or building management system."
-    },
-    {
-     "t": "Historian and Part 11 boundary",
-     "d": "Our historian, or your validated plant historian with ours as a buffer; the functional specification names the original record."
-    },
-    {
-     "t": "Electronic reports",
-     "d": "Sanitization records, daily quality summaries and audit trail review reports, electronically signed."
-    },
-    {
-     "t": "Control panels",
-     "d": "Built and labelled to UL 508A or CSA C22.2 No. 286 [panel certification held and where panels are built]."
-    },
-    {
-     "t": "Additional online analyzers",
-     "d": "Sample lines and signals for online bioburden or extra TOC points your contamination control strategy calls for."
-    },
-    {
-     "t": "Remote access",
-     "d": "None, one-way telemetry through your DMZ, or supervised sessions your staff open and log. [remote alarm review service offered, scope]"
-    }
-   ],
-   "nav": "Options"
-  },
-  {
    "type": "table",
    "h": "Where each data integrity requirement lives",
    "intro": "Mapped to 21 CFR Part 11 and EU GMP Annex 11 (2011).",
@@ -207,8 +174,32 @@
    ],
    "rows": [
     [
+     "Audit trail",
+     "Who, when, old and new value and reason for every change; cannot be switched off",
+     "11.10(e)",
+     "9"
+    ],
+    [
+     "Access control",
+     "Individual accounts, role-based rights, automatic logout; each role tested at factory acceptance testing (FAT)",
+     "11.10(d), (g)",
+     "12"
+    ],
+    [
+     "Electronic signatures",
+     "Signer, time and meaning, linked to the record signed",
+     "11.50, 11.70, 11.100–11.300",
+     "14"
+    ],
+    [
+     "Record protection",
+     "No edit or delete; backups at [backup interval] kept [data retention, years]; restore tested at OQ",
+     "11.10(c)",
+     "7; 17"
+    ],
+    [
      "Validation",
-     "GAMP 5 lifecycle, user requirement specification (URS) to operational qualification (OQ), traceability matrix",
+     "GAMP 5 lifecycle from user requirement specification (URS) to operational qualification (OQ), with a traceability matrix",
      "11.10(a)",
      "4"
     ],
@@ -219,49 +210,27 @@
      "8"
     ],
     [
-     "Record protection",
-     "No edit or delete; backups at [backup interval] kept [data retention, years]; restore tested at OQ",
-     "11.10(c)",
-     "7, 17"
-    ],
-    [
-     "Access control",
-     "Individual accounts, role-based rights, automatic logout; each role tested at factory acceptance testing (FAT)",
-     "11.10(d), (g)",
-     "12"
-    ],
-    [
-     "Audit trail",
-     "Who, when, old and new value and reason for every change; cannot be switched off",
-     "11.10(e)",
-     "9"
-    ],
-    [
      "Sequence and device checks",
      "Steps enforced in order; a failed sensor never reads as good water",
      "11.10(f), (h)",
-     "5, 6"
-    ],
-    [
-     "Electronic signatures",
-     "Signer, time and meaning, linked to the record signed",
-     "11.50, 11.70, 11.100–11.300",
-     "14"
+     "5; 6"
     ],
     [
      "Change control and review",
      "Change control, baseline backup, audit trail review report for periodic review",
      "11.10(k); FDA data integrity guidance",
-     "10, 11, 13"
+     "10; 11; 13"
     ]
    ],
    "nav": "Data integrity",
-   "as": "evidence"
+   "as": "evidence",
+   "fold": 5,
+   "fold_noun": "requirements"
   },
   {
    "type": "table",
    "h": "GAMP 5 software categories and their tests",
-   "intro": "GAMP 5 and FDA computer software assurance (CSA) guidance scale testing to risk: divert, quality alarms, sanitization and audit trail get scripted tests.",
+   "intro": "GAMP 5 and FDA computer software assurance (CSA) guidance scale testing to risk. Divert, quality alarms, sanitization and audit trail get scripted tests.",
    "cols": [
     "Category",
     "What it is here",
@@ -269,14 +238,9 @@
    ],
    "rows": [
     [
-     "1, infrastructure",
-     "Operating systems, network, database engine",
-     "Recorded and qualified as infrastructure"
-    ],
-    [
-     "3, non-configured product",
-     "Firmware of TOC, conductivity, ozone and UV instruments",
-     "Supplier assessment, version recorded, verified at FAT and OQ"
+     "5, custom application",
+     "PLC code for your sequences, interlocks, divert and custom reports",
+     "Design specification, code review, module and full functional tests at FAT"
     ],
     [
      "4, configured product",
@@ -284,32 +248,68 @@
      "Configuration specification, risk-based tests"
     ],
     [
-     "5, custom application",
-     "PLC code for your sequences, interlocks, divert and custom reports",
-     "Design specification, code review, module and full functional tests at FAT"
+     "3, non-configured product",
+     "Firmware of TOC, conductivity, ozone and UV instruments",
+     "Supplier assessment, version recorded, verified at FAT and OQ"
+    ],
+    [
+     "1, infrastructure",
+     "Operating systems, network, database engine",
+     "Recorded and qualified as infrastructure"
     ]
    ],
-   "nav": "Testing"
+   "nav": "Testing",
+   "fold": 2,
+   "fold_noun": "categories"
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "PLC and SCADA platform",
+     "d": "[PLC and SCADA platforms supported], matched to your site standard."
+    },
+    {
+     "t": "Historian and Part 11 boundary",
+     "d": "Our historian, or your validated plant historian with ours as a buffer; the functional specification names the original record."
+    },
+    {
+     "t": "Remote access",
+     "d": "None, one-way telemetry through your DMZ, or supervised sessions your staff open and log. [remote alarm review service offered, scope]"
+    },
+    {
+     "t": "Integration",
+     "d": "OPC UA, Modbus TCP, EtherNet/IP, PROFINET or BACnet to your plant historian, control or building management system."
+    },
+    {
+     "t": "Control panels",
+     "d": "Built and labelled to UL 508A or CSA C22.2 No. 286 [panel certification held and where panels are built]."
+    },
+    {
+     "t": "Electronic reports",
+     "d": "Sanitization records, daily quality summaries and audit trail review reports, electronically signed."
+    },
+    {
+     "t": "Additional online analyzers",
+     "d": "Sample lines and signals for online bioburden or extra TOC points your contamination control strategy calls for."
+    }
+   ],
+   "nav": "Options",
+   "fold": 3,
+   "fold_noun": "options"
   },
   {
    "type": "docs",
    "h": "Documentation delivered with the controls",
    "items": [
     {
-     "t": "Risk assessment",
-     "d": "Quality-critical functions, Part 11 and Annex 11 boundary, test strategy"
-    },
-    {
      "t": "Functional specification",
      "d": "Sequences, interlocks, divert, alarms, roles, reports and interfaces"
     },
     {
-     "t": "Hardware and software design specifications",
-     "d": "Panels, networks, PLC code structure, SCADA configuration; code review record"
-    },
-    {
-     "t": "Alarm and interlock list",
-     "d": "Class, set point, delay and response for every alarm"
+     "t": "Risk assessment",
+     "d": "Quality-critical functions, Part 11 and Annex 11 boundary, test strategy"
     },
     {
      "t": "Part 11 and Annex 11 assessment",
@@ -320,6 +320,18 @@
      "d": "Each requirement to where it is met and tested"
     },
     {
+     "t": "FAT, SAT, IQ and OQ protocols and reports",
+     "d": "Executed, deviations closed, computerized system tests included"
+    },
+    {
+     "t": "Alarm and interlock list",
+     "d": "Class, set point, delay and response for every alarm"
+    },
+    {
+     "t": "Hardware and software design specifications",
+     "d": "Panels, networks, PLC code structure, SCADA configuration; code review record"
+    },
+    {
      "t": "Electrical drawings and panel layouts",
      "d": "With network architecture and IP address list"
     },
@@ -328,15 +340,13 @@
      "d": "Traceable to national standards"
     },
     {
-     "t": "FAT, SAT, IQ and OQ protocols and reports",
-     "d": "Executed, deviations closed, computerized system tests included"
-    },
-    {
      "t": "Operation and maintenance manual",
      "d": "User administration, backup, restore and audit trail review procedures"
     }
    ],
-   "nav": "Documents"
+   "nav": "Documents",
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
    "type": "faq",
@@ -392,7 +402,7 @@
  ],
  "cta": {
   "h": "Send your controls URS. Get a specification you can check.",
-  "body": "An engineer replies within [proposal response time, working days] with questions or a draft functional specification outline.",
+  "body": "An engineer replies with questions on your URS or a draft functional specification outline.",
   "button": "Request a controls specification review",
   "link": "contact-proposal",
   "intent": "Review of a document you have|Controls URS or functional specification",
@@ -404,6 +414,11 @@
    "Remote access policy",
    "Online measurement points and alert levels",
    "Your URS and validation procedures, if available"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Draft functional specification outline",
+   "Questions on your URS"
   ]
  },
  "todo": [

@@ -112,6 +112,9 @@ a.aq-rows__row:focus-visible { outline: 2px solid var(--focus); outline-offset: 
   .aq-rows__art { display: none; }
 }
 
+/* A micro sign inside uppercase labels stays µ (µS/cm), never M */
+.aq-unit { text-transform: none; }
+
 /* ---------- Illustration: line art painted with a colour token through a mask ---------- */
 .aq-illustration { display: block; width: 100%; aspect-ratio: var(--ratio, 1); background-color: var(--ink-muted); -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
 /* The drawing comes in through an inline mask-image so its URL resolves against the page, not this stylesheet. */

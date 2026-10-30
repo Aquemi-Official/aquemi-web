@@ -94,12 +94,47 @@
      "Call [service phone number]. Do not wait for a form reply.",
      "A service engineer on the phone, then a technician on site within the response time of your plan"
     ]
-   ]
+   ],
+   "as": "router",
+   "nav": "Where to start",
+   "intro": "Pick the stage you are at. Each route names the first request, what to send and what comes back."
+  },
+  {
+   "type": "table",
+   "h": "Joining part way: what we need first",
+   "cols": [
+    "We join at",
+    "What we need",
+    "If it is missing"
+   ],
+   "rows": [
+    [
+     "Fabrication, to another engineer's design",
+     "Approved P&IDs, functional specification, URS, piping and finish specification",
+     "We review the design against ASME BPE and your URS, and return marked-up clauses before we quote"
+    ],
+    [
+     "FAT, SAT or qualification of a system someone else built",
+     "URS, design documents, turnover package (material certificates, weld logs, as-built drawings), software version",
+     "A gap assessment states which IQ checks can use records and which need field verification [qualifying other builders' systems, yes or no]"
+    ],
+    [
+     "Service of a system someone else built",
+     "Drawings, qualification file, maintenance and calibration history, spares list",
+     "A condition survey and document review first, then a plan priced for that system"
+    ],
+    [
+     "Upgrade where the builder has closed or changed hands",
+     "Whatever records exist; the programmable logic controller (PLC) program and passwords if you have them",
+     "The assessment lists what to recover and what recreating it costs, before any upgrade is designed"
+    ]
+   ],
+   "nav": "Joining part way"
   },
   {
    "type": "steps",
    "h": "What leaves each stage, and who signs it",
-   "intro": "EU GMP Annex 15, 3.2 makes your URS the reference for the whole validation lifecycle. Each requirement gets an ID at the first review and keeps it in every document below.",
+   "intro": "EU GMP Annex 15, 3.2 makes your URS the reference for the whole lifecycle. Each requirement gets an ID at first review and keeps it in every document.",
    "items": [
     {
      "t": "URS review and design",
@@ -133,44 +168,15 @@
      "t": "Upgrade or retrofit",
      "d": "Assessment with gap list and options, each with downtime and requalification scope your quality unit approves. Annex 15, section 11; 21 CFR Part 11."
     }
-   ]
-  },
-  {
-   "type": "table",
-   "h": "Joining part way: what we need first",
-   "cols": [
-    "We join at",
-    "What we need",
-    "If it is missing"
    ],
-   "rows": [
-    [
-     "Fabrication, to another engineer's design",
-     "Approved P&IDs, functional specification, URS, piping and finish specification",
-     "We review the design against ASME BPE and your URS, and return marked-up clauses before we quote"
-    ],
-    [
-     "FAT, SAT or qualification of a system someone else built",
-     "URS, design documents, turnover package (material certificates, weld logs, as-built drawings), software version",
-     "A gap assessment states which IQ checks can use records and which need field verification [qualifying other builders' systems, yes or no]"
-    ],
-    [
-     "Service of a system someone else built",
-     "Drawings, qualification file, maintenance and calibration history, spares list",
-     "A condition survey and document review first, then a plan priced for that system"
-    ],
-    [
-     "Upgrade where the builder has closed or changed hands",
-     "Whatever records exist; the programmable logic controller (PLC) program and passwords if you have them",
-     "The assessment lists what to recover and what recreating it costs, before any upgrade is designed"
-    ]
-   ]
+   "nav": "Documents",
+   "fold": 4
   },
   {
    "type": "band",
    "tone": "limestone",
-   "h": "Service sold as a product, not per call-out",
-   "body": "Our service plans state the on-site response for a critical fault, from [severity 1 on-site response time, hours], fix visit scope and calibration intervals in writing, and run every visit under your change control."
+   "h": "Service plans, not call-out charges",
+   "body": "Each plan states in writing the on-site response for a critical fault, from [severity 1 on-site response time, hours], the visit scope and calibration intervals. Every visit runs under your change control."
   },
   {
    "type": "faq",
@@ -208,7 +214,8 @@
      "q": "Where do you work?",
      "a": "Projects in [project regions served]; service from [service bases, cities]. The response times in each service plan are stated for that coverage area."
     }
-   ]
+   ],
+   "nav": "FAQ"
   },
   {
    "type": "related",
@@ -223,7 +230,7 @@
  ],
  "cta": {
   "h": "Tell us where your project stands",
-  "body": "An engineer replies within [proposal response time, working days] with questions, the stage we would start at and the documents it leaves in your file. For a system down now, call [service phone number].",
+  "body": "For a system down now, call [service phone number].",
   "button": "Request a proposal",
   "link": "contact-proposal",
   "include": [
@@ -233,6 +240,12 @@
    "Peak and daily demand in L/h",
    "Existing system: builder, age, drawings",
    "Target dates and shutdown windows"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "The stage we would start at",
+   "The documents it leaves in your file",
+   "Questions on gaps in your data"
   ]
  },
  "todo": [

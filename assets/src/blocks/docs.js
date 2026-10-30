@@ -36,5 +36,5 @@ BLOCKS['docs']=function(b,H){
   return sec(H+wFold(b,items.length,'<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
     return fli('<li>',b,i)+idx(i)+(coded?'<span class="aq-docs__code" aria-hidden="true">'+e(codes[i][0])+'</span>':'')
       +'<span class="aq-docs__name">'+tx(x.t)+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span></li>';
-  }).join('')+'</ol>','documents'));
+  }).join('')+'</ol>',b.fold_noun||'documents'));
 };

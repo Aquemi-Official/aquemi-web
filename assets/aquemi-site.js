@@ -10,7 +10,8 @@ var NAVSECT=[['Systems','systems'],['Services','services'],['Industries','indust
 function W(){return (D.web&&D.web.pages)||[]}
 function wp(id){return W().filter(function(p){return p.id===id})[0]}
 /* Placeholder: [bracketed facts] in copy */
-function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return o+s.slice(st)}
+/* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM) */
+function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
 function wlink(id,label){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'">'+tx(label||(p&&p.nav_label)||id)+'</a>'}
 var ARC='<svg class="aq-arc" viewBox="0 0 420 300" aria-hidden="true"><path class="aq-arc__outer" d="M420 1.5 A 300 300 0 0 0 120 300"/><path class="aq-arc__inner" d="M420 120 A 180 180 0 0 0 240 300"/></svg>';
 function sec(inner,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-stack-l">'+inner+'</div></section>'}
@@ -390,7 +391,7 @@ BLOCKS['docs']=function(b,H){
   return sec(H+wFold(b,items.length,'<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
     return fli('<li>',b,i)+idx(i)+(coded?'<span class="aq-docs__code" aria-hidden="true">'+e(codes[i][0])+'</span>':'')
       +'<span class="aq-docs__name">'+tx(x.t)+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span></li>';
-  }).join('')+'</ol>','documents'));
+  }).join('')+'</ol>',b.fold_noun||'documents'));
 };
 /* Table as "evidence" -> EvidenceMap: a requirement, how we meet it, and where the proof sits. Fields as a table:
    cols [requirement, how we meet it, then evidence columns], rows. Evidence columns: a column whose every cell is a page
@@ -462,9 +463,9 @@ TABLE_AS.grades=function(b,H){var C=b.cols||[],R=b.rows||[];
    Fields: h, intro (section head), items [{t, d, link, tag}]. An item that links to a page is one <a>; one whose
    link page has a drawing in ART (parts/Hero.js) shows it small at the row's end on desktop (aria-hidden, hidden on phones). */
 BLOCKS['grid']=function(b,H){var I=b.items||[];return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-linkgrid">'+I.map(function(it,i){
- return fli(wRow(i,it.t,it.d,it.link,it.link,it.tag),b,i)}).join('')+'</ol>'));};
+ return fli(wRow(i,it.t,it.d,it.link,it.link,it.tag),b,i)}).join('')+'</ol>',b.fold_noun||'items'));};
 /* Block "options" -> OptionList: configuration options as rows of the shared list grammar: index, title, one line. */
-BLOCKS['options']=function(b,H){var I=b.items||[];return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d),b,i)}).join('')+'</ol>','options'));};
+BLOCKS['options']=function(b,H){var I=b.items||[];return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d),b,i)}).join('')+'</ol>',b.fold_noun||'options'));};
 /* Block "path" -> WaterPath */
 BLOCKS['path']=function(b,H){return sec(H+wPath(b));};
 /* Block "prose" -> Prose in SplitSection: heading left, text right. Fields: h, body (paragraphs).
@@ -554,7 +555,7 @@ BLOCKS['spec']=function(b,H){
 };
 /* Block "steps" -> ProcessSteps: a real sequence as rows of the shared list grammar (index, step name, what happens),
    joined by one thin riser through the index column. */
-BLOCKS['steps']=function(b,H){var I=b.items||[];return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-steps">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d),b,i)}).join('')+'</ol>','steps'));};
+BLOCKS['steps']=function(b,H){var I=b.items||[];return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-steps">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d),b,i)}).join('')+'</ol>',b.fold_noun||'steps'));};
 /* Block "table" -> CompareTable. cols: header labels (first is the row-label column); rows: cells, each a string or {t, link}.
    Three or more columns: a numbered matrix on desktop. A column whose every cell is a page link ("Where we show it") is a
    link column (aq-compare-table__go): on phones its link sits at the foot of the row, unlabelled, never a tab.
@@ -570,7 +571,7 @@ BLOCKS['table']=function(b,H){if(b.as&&TABLE_AS[b.as])return TABLE_AS[b.as](b,H)
  var strip=tabs?'<div class="aq-compare-table__tabs" role="group" aria-label="Column shown">'+vals.map(function(i,k){return '<button type="button" class="aq-compare-table__tab" data-col="'+i+'" aria-pressed="'+(k?'false':'true')+'">'+tx(C[i])+'</button>'}).join('')+'</div>':'';
  return sec(H+wFold(b,R.length,'<div class="aq-compare-table'+(list?' aq-compare-table--list':'')+(tabs?' aq-compare-table--tabs" data-col="'+vals[0]:'')+'">'+strip
   +'<table class="aq-compare-table__table" role="table"><thead role="rowgroup"><tr role="row">'+C.map(function(c){return '<th scope="col" role="columnheader">'+tx(c)+'</th>'}).join('')+'</tr></thead>'
-  +'<tbody role="rowgroup">'+R.map(function(r,ri){return fli('<tr role="row"',b,ri)+'>'+r.map(function(c,i){return i?cell(c,i):'<th scope="row" role="rowheader">'+tcell(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>'));};
+  +'<tbody role="rowgroup">'+R.map(function(r,ri){return fli('<tr role="row"',b,ri)+'>'+r.map(function(c,i){return i?cell(c,i):'<th scope="row" role="rowheader">'+tcell(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>',b.fold_noun||'rows'));};
 /* CompareTable tabs (--tabs, phones): show the pressed column */
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-compare-table__tab');if(!t)return;var w=t.closest('.aq-compare-table');w.setAttribute('data-col',t.getAttribute('data-col'));[].forEach.call(w.querySelectorAll('.aq-compare-table__tab'),function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});
 /* Block "tags" -> StandardsGrid section. items: strings (the standard's code) or {code, name} objects;

@@ -5,7 +5,7 @@
  "title": "316L skid fabrication and orbital welding, ASME BPE | Aquemi",
  "meta": "316L skids and loops built to ASME BPE: EN 10204 3.1 heat traceability, ASME IX welders, weld maps, borescope records, ASTM A967 passivation, CRN vessels.",
  "path": "/services/fabrication/",
- "eyebrow": "FABRICATION · ASME BPE · ASME SECTION IX · EN 10204 3.1 · ASTM A967",
+ "eyebrow": "FABRICATION · ASME BPE · EN 10204 3.1",
  "headline": "Fabrication your auditor can trace from any weld back to the mill heat",
  "lead": "We build 316L skids, tanks and loops to ASME BPE with orbital welds. Every product-contact weld is numbered and logged with its operator, procedure, coupon, inspection and EN 10204 3.1 heat numbers.",
  "tags": [
@@ -27,9 +27,8 @@
    "type": "prose",
    "h": "Weld evidence is made at the bench, or lost",
    "body": [
-    "A weld cannot be re-inspected once the loop is insulated, and a heat number is gone once the tube is cut. EU GMP Annex 15, 3.9 expects installation qualification (IQ) to check materials against the approved drawings, so the record has to exist.",
-    "Audit findings are rarely bad welds. They are welds with no inspection record, certificates that do not match the heats installed, coupons never kept and slopes never measured.",
-    "So we work to a written fabrication and inspection plan, agreed with you before the first cut. It names each standard, record and hold point, and the records become one indexed dossier."
+    "Weld evidence is made at the bench or not at all: an insulated weld cannot be re-inspected, and a cut tube loses its heat number. EU GMP Annex 15, 3.9 expects installation qualification (IQ) to check materials against the approved drawings.",
+    "Audit findings are rarely bad welds. They are missing inspection records, certificates that do not match the heats installed, and coupons never kept."
    ]
   },
   {
@@ -56,27 +55,9 @@
      "hl": false
     },
     {
-     "p": "Positive material identification",
-     "v": "[PMI by X-ray fluorescence, standard or option]",
-     "m": "Alloy against certificate",
-     "hl": false
-    },
-    {
      "p": "Welding",
      "v": "Autogenous orbital gas tungsten arc, argon purge below [purge oxygen limit, ppm]",
      "m": "ASME BPE; schedule recorded per weld",
-     "hl": false
-    },
-    {
-     "p": "Procedures and operators",
-     "v": "Welding procedure specification (WPS) and procedure qualification record (PQR); [number of qualified orbital welding operators] operators",
-     "m": "ASME Section IX; operator qualification (WOPQ), continuity log",
-     "hl": false
-    },
-    {
-     "p": "Sample welds (coupons)",
-     "v": "Each shift start and on any change of operator, power supply, weld head, tube size or heat",
-     "m": "ASME BPE; coupons kept",
      "hl": false
     },
     {
@@ -92,6 +73,24 @@
      "hl": false
     },
     {
+     "p": "Procedures and operators",
+     "v": "Welding procedure specification (WPS) and procedure qualification record (PQR); [number of qualified orbital welding operators] operators",
+     "m": "ASME Section IX; operator qualification (WOPQ), continuity log",
+     "hl": false
+    },
+    {
+     "p": "Sample welds (coupons)",
+     "v": "Each shift start and on any change of operator, power supply, weld head, tube size or heat",
+     "m": "ASME BPE; coupons kept",
+     "hl": false
+    },
+    {
+     "p": "Positive material identification",
+     "v": "[PMI by X-ray fluorescence, standard or option]",
+     "m": "Alloy against certificate",
+     "hl": false
+    },
+    {
      "p": "Passivation",
      "v": "[passivation chemistry: citric or nitric acid], Purified Water rinse to a conductivity endpoint",
      "m": "ASTM A967, ASTM A380; certificate",
@@ -104,7 +103,9 @@
      "hl": false
     }
    ],
-   "nav": "Our standard"
+   "nav": "Our standard",
+   "fold": 5,
+   "fold_noun": "rows"
   },
   {
    "type": "options",
@@ -115,10 +116,6 @@
      "d": "SF4 on [electropolished components offered: tubing, fittings, tanks] for hot Water for Injection (WFI), pure steam, tank interiors."
     },
     {
-     "t": "Borescope video archive",
-     "d": "One file per inspected weld, named by weld number, delivered with the dossier."
-    },
-    {
      "t": "Third-party weld inspection",
      "d": "Your inspector or an independent one witnesses coupons, borescope review and pressure tests."
     },
@@ -127,11 +124,72 @@
      "d": "Orbital welding on your site, with the same coupons, logs and borescope records as the shop."
     },
     {
+     "t": "Borescope video archive",
+     "d": "One file per inspected weld, named by weld number, delivered with the dossier."
+    },
+    {
      "t": "Surface analysis",
      "d": "Chromium-to-iron ratio by Auger or X-ray photoelectron spectroscopy, where your URS asks [laboratory name]."
     }
    ],
-   "nav": "Options"
+   "nav": "Options",
+   "fold": 3,
+   "fold_noun": "options"
+  },
+  {
+   "type": "table",
+   "h": "One weld, one log line: what each field proves",
+   "cols": [
+    "Field in the weld log",
+    "What it proves in an audit",
+    "Record"
+   ],
+   "rows": [
+    [
+     "Weld number",
+     "Where this weld is in your plant",
+     "Weld map (isometric); number on the tube"
+    ],
+    [
+     "Heat numbers of both parts",
+     "That the metal is the metal certified",
+     "Material log; EN 10204 3.1 certificates"
+    ],
+    [
+     "WPS and weld schedule",
+     "That a qualified procedure was used, with the settings that were run",
+     "WPS and PQR (ASME Section IX); power supply schedule"
+    ],
+    [
+     "Operator and qualification",
+     "That the person was qualified on the day",
+     "WOPQ; continuity log"
+    ],
+    [
+     "Visual and borescope result",
+     "That the inside and outside meet ASME BPE acceptance criteria",
+     "Inspector sign-off; borescope video file"
+    ],
+    [
+     "Coupon reference",
+     "That the set-up was proven before production welds",
+     "Labelled coupon, kept with the dossier"
+    ],
+    [
+     "Date and inspector",
+     "Who accepted it, and when",
+     "Signature or electronic sign-off"
+    ],
+    [
+     "Repair or cut-out",
+     "What happened to a rejected weld and how the replacement was accepted",
+     "Rejected weld closed; new weld number linked to the original"
+    ]
+   ],
+   "nav": "Weld log",
+   "as": "evidence",
+   "fold": 5,
+   "fold_noun": "fields"
   },
   {
    "type": "steps",
@@ -139,7 +197,7 @@
    "items": [
     {
      "t": "Fabrication and inspection plan",
-     "d": "Agreed before material is ordered: standards, inspection extent, records, hold and witness points. Built from the approved design."
+     "d": "Agreed before material is ordered, from the approved design: standards, inspection extent, records, hold and witness points."
     },
     {
      "t": "Receive and verify material",
@@ -155,7 +213,7 @@
     },
     {
      "t": "Inspect",
-     "d": "Visual outside, borescope inside, signed in the log. Rejected welds cut out and renumbered. Witness point: borescope review."
+     "d": "Visual outside, borescope inside, signed in the log. Rejected welds are cut out and renumbered. Witness point: borescope review."
     },
     {
      "t": "Test and survey",
@@ -171,58 +229,6 @@
     }
    ],
    "nav": "Hold points"
-  },
-  {
-   "type": "table",
-   "h": "One weld, one log line: what each field proves",
-   "cols": [
-    "Field in the weld log",
-    "What it answers in an audit",
-    "Where it comes from"
-   ],
-   "rows": [
-    [
-     "Weld number",
-     "Where this weld is in your plant",
-     "Isometric drawing (weld map), same number on the tube"
-    ],
-    [
-     "Heat numbers of both parts",
-     "That the metal is the metal certified",
-     "Material log, cross-referenced to each EN 10204 3.1 certificate"
-    ],
-    [
-     "WPS and weld schedule",
-     "That a qualified procedure was used, with the settings that were run",
-     "WPS and PQR to ASME Section IX; schedule from the power supply"
-    ],
-    [
-     "Operator and qualification",
-     "That the person was qualified on the day",
-     "WOPQ and continuity log"
-    ],
-    [
-     "Coupon reference",
-     "That the set-up was proven before production welds",
-     "Labelled sample weld, kept with the dossier"
-    ],
-    [
-     "Visual and borescope result",
-     "That the inside and outside meet ASME BPE acceptance criteria",
-     "Inspector's sign-off and borescope video file name"
-    ],
-    [
-     "Date and inspector",
-     "Who accepted it, and when",
-     "Signature or electronic sign-off"
-    ],
-    [
-     "Repair or cut-out",
-     "What happened to a rejected weld and how the replacement was accepted",
-     "Rejected weld closed, new weld number issued, link kept to the original"
-    ]
-   ],
-   "nav": "Weld log"
   },
   {
    "type": "docs",
@@ -249,12 +255,12 @@
      "d": "Coupons labelled and kept; result per weld, with video"
     },
     {
-     "t": "Surface finish report",
-     "d": "Profilometer readings; electropolish certificates for SF4"
-    },
-    {
      "t": "Pressure test certificates",
      "d": "ASME B31.3 and ASME Section VIII"
+    },
+    {
+     "t": "Surface finish report",
+     "d": "Profilometer readings; electropolish certificates for SF4"
     },
     {
      "t": "Cleaning and passivation certificate",
@@ -273,7 +279,9 @@
      "d": "Data report and Canadian registration number (CRN); panel certification record and drawings"
     }
    ],
-   "nav": "Dossier"
+   "nav": "Dossier",
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
    "type": "faq",
@@ -329,7 +337,7 @@
  ],
  "cta": {
   "h": "Send your fabrication spec. We mark it against ASME BPE.",
-  "body": "An engineer replies within [proposal response time, working days] with the clauses we meet, the ones we would change and a draft fabrication and inspection plan.",
+  "body": "An engineer marks your specification clause by clause and drafts the plan with your hold and witness points.",
   "button": "Request a fabrication spec review",
   "link": "contact-proposal",
   "proof": {
@@ -345,7 +353,13 @@
    "Province, design pressure and temperature",
    "Panel certification mark and supply voltage",
    "Your weld log or dossier template"
-  ]
+  ],
+  "returns": [
+   "The clauses we meet",
+   "The clauses we would change",
+   "A draft fabrication and inspection plan"
+  ],
+  "turnaround": "[proposal response time, working days]"
  },
  "todo": [
   "Share of product-contact welds borescoped (%), same placeholder as sys-storage",

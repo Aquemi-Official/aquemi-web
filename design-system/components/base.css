@@ -109,3 +109,6 @@ a.aq-rows__row:focus-visible { outline: 2px solid var(--focus); outline-offset: 
   .aq-rows__d { grid-column: 2; font-size: 14px; line-height: 22px; }
   .aq-rows__art { display: none; }
 }
+
+/* A micro sign inside uppercase labels stays µ (µS/cm), never M */
+.aq-unit { text-transform: none; }

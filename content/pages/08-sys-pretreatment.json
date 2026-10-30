@@ -37,7 +37,7 @@
    "type": "spec",
    "h": "Water quality at the RO inlet",
    "caption": "RO FEED · DESIGN TARGETS",
-   "intro": "Drinking water standards protect people, not membranes. These targets close the gap and are confirmed in the design basis for the membranes and still you select.",
+   "intro": "Drinking water standards protect people, not membranes. These targets close the gap; the design basis confirms them for the membranes and still you select.",
    "note": "The membrane data sheet takes precedence; typical polyamide elements state SDI ≤ 5, turbidity ≤ 1 NTU and free chlorine < 0.1 mg/L.",
    "cols": [
     "Parameter",
@@ -103,7 +103,7 @@
   {
    "type": "table",
    "h": "Canadian feed water and what it does",
-   "intro": "Water changes with season and source; each condition sets part of the design.",
+   "intro": "Season and source change the water; each condition sets part of the design.",
    "cols": [
     "Feed condition",
     "Effect on your RO",
@@ -147,50 +147,54 @@
     ]
    ],
    "nav": "Feed water",
-   "as": "failures"
+   "as": "failures",
+   "fold": 4,
+   "fold_noun": "feed conditions"
   },
   {
    "type": "table",
    "h": "Chlorine or chloramine: choosing the removal step",
    "cols": [
-    "Method",
+    "Your supply",
+    "Removal step",
     "Removes",
-    "Strengths",
     "Watch for"
    ],
    "rows": [
     [
-     "Granular activated carbon",
-     "Free chlorine in minutes; chloramine only slowly",
-     "No chemicals; removes some organics",
-     "Biofilm once the residual is gone; needs heat sanitization, backwash and media replacement"
-    ],
-    [
+     "Your utility chloraminates",
      "Catalytic carbon",
      "Free chlorine and chloramine, with less contact time",
-     "The usual choice where the utility chloraminates",
      "Bed sized on empty bed contact time at peak flow and winter temperature"
     ],
     [
+     "Chloramine, and you want a check on breakthrough",
      "Two carbon beds in series",
-     "Both; the second bed catches breakthrough",
-     "Sample point between beds; dialysis practice (ISO 23500) uses it for chloramine",
+     "Both; the second bed catches breakthrough, with a sample point between beds. Dialysis practice (ISO 23500) uses it for chloramine.",
      "Two vessels to sanitize and maintain"
     ],
     [
+     "Free chlorine only, and no dosed chemicals",
+     "Granular activated carbon",
+     "Free chlorine in minutes, some organics; chloramine only slowly",
+     "Biofilm once the residual is gone; needs heat sanitization, backwash and media replacement"
+    ],
+    [
+     "Little floor space, or no carbon bed to colonize",
      "Sodium bisulfite dosing",
-     "Both, by chemical reduction",
-     "Small footprint, fast response, no carbon bed to colonize",
+     "Both, by chemical reduction, with fast response",
      "Overdose feeds sulfate-reducing bacteria; ammonia passes to the RO; verify on ORP"
     ],
     [
+     "No chemicals and no carbon bed, on low-turbidity feed",
      "UV dechlorination (high intensity)",
-     "Both, by photolysis",
-     "No chemicals or carbon bed; also reduces bacteria",
-     "High lamp power; needs low turbidity; total chlorine analyser downstream as lamps decay"
+     "Both, by photolysis; also reduces bacteria",
+     "High lamp power; total chlorine analyser downstream as lamps decay"
     ]
    ],
-   "nav": "Chlorine or chloramine"
+   "nav": "Chlorine or chloramine",
+   "as": "router",
+   "intro": "Pick the case closest to your supply to see the removal step that fits and what to watch."
   },
   {
    "type": "spec",
@@ -225,14 +229,14 @@
      "m": "Low-flow weekends cause Monday counts"
     },
     {
-     "p": "Media replacement",
-     "v": "On measured breakthrough or [media replacement interval, months]",
-     "m": "Media certificates in the maintenance record"
-    },
-    {
      "p": "Sampling",
      "v": "Before and after every bed and softener",
      "m": "Alert and action levels set from qualification data"
+    },
+    {
+     "p": "Media replacement",
+     "v": "On measured breakthrough or [media replacement interval, months]",
+     "m": "Media certificates in the maintenance record"
     },
     {
      "p": "UV after carbon",
@@ -240,7 +244,9 @@
      "m": "Where your counts need more margin"
     }
    ],
-   "nav": "Carbon beds"
+   "nav": "Carbon beds",
+   "fold": 5,
+   "fold_noun": "controls"
   },
   {
    "type": "options",
@@ -271,7 +277,9 @@
      "d": "Total chlorine, ORP, hardness, pressure drop and temperature, trended on the operator panel."
     }
    ],
-   "nav": "Options"
+   "nav": "Options",
+   "fold": 3,
+   "fold_noun": "options"
   },
   {
    "type": "docs",
@@ -294,14 +302,6 @@
      "d": "Piping and instrumentation diagrams, as built"
     },
     {
-     "t": "Media, resin and material certificates",
-     "d": "Lot numbers, NSF/ANSI 61 where the media maker holds it, EN 10204 3.1 for stainless steel"
-    },
-    {
-     "t": "Instrument calibration certificates",
-     "d": "Traceable to national standards"
-    },
-    {
      "t": "FAT and SAT protocols and reports",
      "d": "Factory and site acceptance tests; deviations listed and closed"
     },
@@ -310,11 +310,21 @@
      "d": "Installation and operational qualification, where your risk assessment brings pretreatment into scope"
     },
     {
+     "t": "Media, resin and material certificates",
+     "d": "Lot numbers, NSF/ANSI 61 where the media maker holds it, EN 10204 3.1 for stainless steel"
+    },
+    {
+     "t": "Instrument calibration certificates",
+     "d": "Traceable to national standards"
+    },
+    {
      "t": "Sampling plan and operating manual",
      "d": "Sample points and frequencies; regeneration, sanitization and media change procedures"
     }
    ],
-   "nav": "Documents"
+   "nav": "Documents",
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
    "type": "faq",
@@ -370,7 +380,7 @@
  ],
  "cta": {
   "h": "Send a year of water data. We tell you which months set your design.",
-  "body": "A process engineer replies within [proposal response time, working days] with a seasonal design basis and the margin it leaves your RO, [cost of the feedwater review].",
+  "body": "A process engineer reads your data and replies. Review cost: [cost of the feedwater review].",
   "button": "Request a feedwater review",
   "link": "contact-proposal",
   "intent": "Feedwater review",
@@ -383,6 +393,12 @@
    "RO or PW skid flow, m³/h",
    "Current problems, if you have a train",
    "Room, drain and brine discharge limits"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Seasonal design basis, month by month",
+   "The margin it leaves your RO",
+   "Which months set your design"
   ]
  },
  "todo": [
@@ -393,7 +409,7 @@
   "Carbon bed sanitization temperature (°C) and hold time (minutes)",
   "Default media replacement interval (months)",
   "Initial carbon bed sanitization interval (days)",
-  "Whether UV dechlorination is offered (remove the table row if not)",
+  "Whether UV dechlorination is offered (remove the router row if not)",
   "Whether Aquemi measures SDI on site during the feedwater review (kit held)",
   "Whether the feedwater review is free or charged; fill the CTA placeholder",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",

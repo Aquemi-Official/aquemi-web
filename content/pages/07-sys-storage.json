@@ -61,11 +61,6 @@
      "m": "ASME BPE, L from the main pipe inside wall to the seal point; Annex 1, 6.7"
     },
     {
-     "p": "Point-of-use valves",
-     "v": "Zero-static diaphragm valves welded into the loop",
-     "m": "ASME BPE"
-    },
-    {
      "p": "Slope and drainage",
      "v": "Continuous fall to low-point drains, minimum [design minimum slope, in/ft or %]",
      "m": "ASME BPE drainability; 1/8 to 1/4 in/ft is common practice"
@@ -86,6 +81,11 @@
      "m": "ISPE Baseline Guide Vol. 4: 0.02–0.2 ppm"
     },
     {
+     "p": "Point-of-use valves",
+     "v": "Zero-static diaphragm valves welded into the loop",
+     "m": "ASME BPE"
+    },
+    {
      "p": "Tank vent",
      "v": "Hydrophobic 0.2 µm vent filter, heated on hot tanks",
      "m": "Annex 1, 6.11; integrity tested before installation and after use"
@@ -96,7 +96,9 @@
      "m": "Annex 1, 6.15"
     }
    ],
-   "nav": "Design rules"
+   "nav": "Design rules",
+   "fold": 6,
+   "fold_noun": "rules"
   },
   {
    "type": "diagram",
@@ -127,7 +129,7 @@
      "Hot, above 70 °C",
      "Continuous temperature; the FDA inspection guide calls hot 65–80 °C systems self-sanitizing",
      "Hot WFI from a still, the example Annex 1, 6.10 gives",
-     "Simplest to defend. Insulation, energy to hold temperature, point-of-use coolers and the highest rouge risk."
+     "Simplest to defend. Costs insulation, holding energy, point-of-use coolers and the highest rouge risk."
     ],
     [
      "Ambient, periodic heat",
@@ -139,7 +141,7 @@
      "Ambient, ozonated",
      "Ozone held in the tank and destroyed by UV; UV off on a schedule to sanitize the loop",
      "PW and membrane WFI where heat cycles are unwanted",
-     "No heat cycles or heat-rated piping. Ozone measured at three points, absent at use, vented safely, compatible seals."
+     "No heat cycles or heat-rated piping. Needs ozone measured at three points, absent at use, safe venting and compatible seals."
     ],
     [
      "Cold, chilled",
@@ -166,26 +168,6 @@
      "m": "Sized from your demand profile against the generation rate"
     },
     {
-     "p": "Tank spray device",
-     "v": "Spray ball on the return wets the head space and walls continuously",
-     "m": "Riboflavin coverage test, ASME BPE"
-    },
-    {
-     "p": "Pressure-rated tanks",
-     "v": "ASME Section VIII, Division 1, with rupture disc or relief device",
-     "m": "Canadian registration number (CRN), CSA B51: [provinces where Aquemi registers]"
-    },
-    {
-     "p": "Heat exchangers",
-     "v": "Sanitary double tube sheet",
-     "m": "FDA Guide to Inspections of High Purity Water Systems"
-    },
-    {
-     "p": "Pumps",
-     "v": "Sanitary centrifugal, variable speed; [duty and standby pumps, standard or option]",
-     "m": "Head and net positive suction head checked at hot loop temperature"
-    },
-    {
      "p": "Materials, product contact",
      "v": "316L stainless steel",
      "m": "EN 10204 3.1 material certificates"
@@ -201,9 +183,29 @@
      "m": "ASME BPE acceptance criteria; ASME Section IX qualifications"
     },
     {
+     "p": "Pressure-rated tanks",
+     "v": "ASME Section VIII, Division 1, with rupture disc or relief device",
+     "m": "Canadian registration number (CRN), CSA B51: [provinces where Aquemi registers]"
+    },
+    {
      "p": "Passivation",
      "v": "Cleaned and passivated after fabrication, before first use",
      "m": "ASME BPE; [passivation standard and method]"
+    },
+    {
+     "p": "Heat exchangers",
+     "v": "Sanitary double tube sheet",
+     "m": "FDA Guide to Inspections of High Purity Water Systems"
+    },
+    {
+     "p": "Pumps",
+     "v": "Sanitary centrifugal, variable speed; [duty and standby pumps, standard or option]",
+     "m": "Head and net positive suction head checked at hot loop temperature"
+    },
+    {
+     "p": "Tank spray device",
+     "v": "Spray ball on the return wets the head space and walls continuously",
+     "m": "Riboflavin coverage test, ASME BPE"
     },
     {
      "p": "Controls",
@@ -211,7 +213,9 @@
      "m": "GAMP 5; 21 CFR Part 11"
     }
    ],
-   "nav": "Fabrication"
+   "nav": "Fabrication",
+   "fold": 5,
+   "fold_noun": "parameters"
   },
   {
    "type": "options",
@@ -242,12 +246,33 @@
      "d": "Return and tank sample valves grouped where your laboratory staff can reach them."
     }
    ],
-   "nav": "Options"
+   "nav": "Options",
+   "fold": 3
   },
   {
    "type": "docs",
    "h": "Documentation delivered with the loop",
    "items": [
+    {
+     "t": "Hydraulic calculation",
+     "d": "Velocity and Reynolds number in every section for each operating case"
+    },
+    {
+     "t": "Dead leg register",
+     "d": "L/D for every branch, instrument tee and sample valve"
+    },
+    {
+     "t": "P&IDs and as-built isometrics",
+     "d": "Piping and instrumentation diagrams; flow direction, slopes, diameters and lengths, as Annex 1, 6.5 lists"
+    },
+    {
+     "t": "Material certificates and weld log",
+     "d": "EN 10204 3.1 certificates, weld map and borescope records"
+    },
+    {
+     "t": "FAT, SAT, IQ and OQ protocols",
+     "d": "Factory and site acceptance tests (SAT); installation and operational qualification (IQ, OQ), with traceability matrix"
+    },
     {
      "t": "URS compliance matrix",
      "d": "Each user requirement specification (URS) item, how we meet it and where it is verified"
@@ -255,22 +280,6 @@
     {
      "t": "Functional specification",
      "d": "Operating and sanitization sequences, alarms, setpoints and interlocks"
-    },
-    {
-     "t": "Hydraulic calculation",
-     "d": "Velocity and Reynolds number in every section for each operating case"
-    },
-    {
-     "t": "P&IDs and as-built isometrics",
-     "d": "Piping and instrumentation diagrams; flow direction, slopes, diameters and lengths, as Annex 1, 6.5 lists"
-    },
-    {
-     "t": "Dead leg register",
-     "d": "L/D for every branch, instrument tee and sample valve"
-    },
-    {
-     "t": "Material certificates and weld log",
-     "d": "EN 10204 3.1 certificates, weld map and borescope records"
     },
     {
      "t": "Pressure test, passivation and finish reports",
@@ -285,15 +294,13 @@
      "d": "Filter integrity records; temperature mapping proving the coldest point"
     },
     {
-     "t": "FAT, SAT, IQ and OQ protocols",
-     "d": "Factory and site acceptance tests (SAT); installation and operational qualification (IQ, OQ), with traceability matrix"
-    },
-    {
      "t": "Operation and maintenance manual",
      "d": "Sanitization, vent filter replacement and rouge inspection; calibration certificates"
     }
    ],
-   "nav": "Documents"
+   "nav": "Documents",
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
    "type": "faq",
@@ -349,7 +356,7 @@
  ],
  "cta": {
   "h": "Send your points of use. We design to your peak draw.",
-  "body": "An engineer replies within [proposal response time, working days] with questions or a loop concept: tank size, velocities and sanitization method.",
+  "body": "An engineer replies with questions on your data or a loop concept sized to your peak draw.",
   "button": "Send your points-of-use list for a loop review",
   "link": "contact-proposal",
   "proof": {
@@ -365,7 +372,14 @@
    "Layout drawings with outlet locations",
    "Existing isometrics and monitoring data, if extending",
    "Your URS and target dates, if available"
-  ]
+  ],
+  "returns": [
+   "Loop concept for your peak draw",
+   "Tank size and loop velocities",
+   "Sanitization method",
+   "Questions on gaps in your data"
+  ],
+  "turnaround": "[proposal response time, working days]"
  },
  "todo": [
   "Design minimum return velocity at peak draw (m/s)",
