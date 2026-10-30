@@ -181,17 +181,20 @@ def words(s):
     return len(WORD.findall(str(s or '')))
 
 
-def strings(x, skip=()):
-    """Every visible string in a block, page fragment or list (keys in NOT_COPY and skip are left out)."""
+def strings(x, skip=(), shown=False):
+    """Every visible string in a block, page fragment or list (keys in NOT_COPY and skip are left out).
+    shown=True also leaves out conditional form fields (with `when` or `show_if`), hidden until triggered."""
+    if shown and isinstance(x, dict) and ('when' in x or 'show_if' in x):
+        return
     if isinstance(x, str):
         yield x
     elif isinstance(x, list):
         for v in x:
-            yield from strings(v, skip)
+            yield from strings(v, skip, shown)
     elif isinstance(x, dict):
         for k, v in x.items():
             if k not in NOT_COPY and k not in skip:
-                yield from strings(v, skip)
+                yield from strings(v, skip, shown)
 
 
 def placeholders(s):
@@ -251,7 +254,7 @@ def budgets(pages):
         over('page', 'faq questions', faqs, 'faq_count')
         over('page', 'tinted bands (band, tags)', tinted, 'tinted_bands')
         hero = [pg.get(k) for k in ('eyebrow', 'headline', 'lead', 'primary_cta')] + list(strings(pg.get('facts', [])))
-        body = [s for b in blocks for s in strings(b, ('a',) if b.get('type') == 'faq' else ())]
+        body = [s for b in blocks for s in strings(b, ('a',) if b.get('type') == 'faq' else (), shown=True)]
         cta = list(strings(pg.get('cta') or {}, ('intent',)))
         over('page', 'visible words (FAQ answers excluded)', sum(words(x) for x in hero + body + cta), 'page_words')
         for where, src in (('hero', hero), ('blocks', body), ('cta', cta)):

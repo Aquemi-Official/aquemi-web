@@ -81,7 +81,7 @@ The closing call to action can carry the page's "what to send us" list as `cta.i
 | Table rows | ≤ 8 per table | table `rows` |
 | Blocks per page | ≤ 9 (closing not counted) | `blocks` |
 | Tinted bands per page | ≤ 1 | band and tags blocks |
-| Visible words per page | ≤ 1,300 (FAQ answers excluded) | hero, facts, every block string, `cta` |
+| Visible words per page | ≤ 1,300 (FAQ answers and conditional form fields excluded) | hero, facts, every block string, `cta` |
 | Placeholder text | ≤ 8 words | every `[...]`; the question goes in `todo` |
 
 ## Canonical page skeletons
