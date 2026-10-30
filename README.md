@@ -1,6 +1,6 @@
 # Aquemi website (draft)
 
-Working draft of the Aquemi customer site, built with the Aquemi design system. Hosted on GitHub Pages for review: https://daniilki.github.io/aquemi-web/
+Working draft of the Aquemi customer site, built with the Aquemi design system. Hosted on GitHub Pages for review: https://aquemi-official.github.io/aquemi-web/
 
 This is for drafting and testing. Every page carries a `noindex` tag so search engines skip it.
 
@@ -10,7 +10,7 @@ This is for drafting and testing. Every page carries a `noindex` tag so search e
 | --- | --- |
 | `content/pages.json` | All 31 pages: hero, content blocks, closing band, SEO title and meta, and the open facts (`todo`) per page. **Edit copy here.** |
 | `index.html` | The site shell: draft bar, page routing, loads the content. |
-| `design-system.html` | The design system documented live: logo, colour tokens with contrast ratios, type scale, spacing, components, and every page block rendered from real site content. https://daniilki.github.io/aquemi-web/design-system.html |
+| `design-system.html` | The design system documented live: logo, colour tokens with contrast ratios, type scale, spacing, components, and every page block rendered from real site content. https://aquemi-official.github.io/aquemi-web/design-system.html |
 | `assets/aquemi.css` | All styles: design tokens (light and dark), components (`aq-btn`, `aq-nav`, `aq-spec`, `aq-tag`, `aq-field`) and page-block layouts. **Edit for styling.** |
 | `assets/aquemi-site.js` | The page renderer shared by the site and the docs (`window.AQ`). Edit to add or change block types. |
 | `assets/theme.js` | System / light / dark switch, remembered per browser. |
