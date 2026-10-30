@@ -191,8 +191,8 @@ def stage(dest):
     for base, _, files in os.walk(DS):
         for f in files:
             rel = os.path.relpath(os.path.join(base, f), DS).replace('\\', '/')
-            if rel in NOT_PUBLISHED:
-                continue
+            if rel in NOT_PUBLISHED or rel.startswith('inspiration/'):
+                continue  # inspiration images carry invented branding; keep them in the repo only
             target = os.path.join(out, rel)
             os.makedirs(os.path.dirname(target), exist_ok=True)
             shutil.copyfile(os.path.join(base, f), target)
