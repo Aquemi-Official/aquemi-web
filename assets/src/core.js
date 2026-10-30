@@ -17,6 +17,16 @@ function sec(inner,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'">
 function split(head,body,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-split-section"><div class="aq-split-section__head">'+head+'</div><div class="aq-split-section__body">'+body+'</div></div></section>'}
 function first(s){var m=String(s||'').match(/^.*?[.!?](?=\s|$)/);return m?m[0]:String(s||'')}
 function h1(s){return s?'<h2 class="aq-h1">'+tx(s)+'</h2>':''}
+/* Section head, the one way every block opens: optional eyebrow (b.eyebrow), h2 (b.h), optional one-sentence intro (b.intro).
+   Renderers receive it as H and never print their own heading, intro or a mono caption above their content. */
+function wSecHead(b){b=b||{};if(!b.h&&!b.eyebrow&&!b.intro)return '';
+ return '<header class="aq-sec-head">'+(b.eyebrow?'<p class="aq-eyebrow">'+tx(b.eyebrow)+'</p>':'')+h1(b.h)+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'</header>'}
+/* Index: the one numbering style, "01" (aria-hidden: the list already announces position) */
+function idx(i){return '<span class="aq-index" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}
+/* Rows: one list row of the shared list grammar (.aq-rows). link: a page id; the whole row becomes the link. art: drawing page id. */
+function wRow(i,t,d,link,art,tag){var inner=idx(i)+'<h3 class="aq-rows__t">'+tx(t)+'</h3>'+(d||tag?'<p class="aq-rows__d">'+(d?tx(d):'')+(tag?'<span class="aq-tags"><span class="aq-tag">'+e(tag)+'</span></span>':'')+'</p>':'')
+  +(art&&ART[art]?'<span class="aq-illustration aq-rows__art" aria-hidden="true" style="'+artMask(art)+'"></span>':'');
+ return '<li>'+(link&&wp(link)?'<a class="aq-rows__row" href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div class="aq-rows__row">'+inner+'</div>')+'</li>'}
 /* SpecTable cell: a string, or {t, link} to route the reader to another page (link must be a page id) */
 function tcell(c){return c&&typeof c==='object'?(c.link&&wp(c.link)?wlink(c.link,c.t):tx(c.t)):tx(c)}
 function gridItem(inner,link){return link&&wp(link)?'<a href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div>'+inner+'</div>'}

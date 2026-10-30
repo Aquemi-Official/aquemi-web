@@ -35,7 +35,7 @@ Hero opens every page: eyebrow, one display headline, one lead sentence, one pri
 ## Section index (hub and company pages)
 
 - Markup: `aq-hero__grid aq-hero__grid--index` (text 7 parts, index 5 parts, vertically centred). On the right `<nav class="aq-hero__index" aria-label="Pages in Systems">` holding `<p class="aq-hero__index-label">Systems · 7 pages</p>` and an `<ol>` of `<li><a class="aq-hero__index-item" href="#sys-pw" data-wp="sys-pw"><span class="aq-hero__index-t">Purified Water (PW) generation</span></a></li>`. An item that cannot link is a `<span class="aq-hero__index-item">`.
-- Concept S in `design-system/inspiration/`: the numbers `01`–`0N` are Geist Mono 300 at 40/48 px in `ink` (28/36 px on phones), from a CSS counter with empty alt text; never write them in the markup. Titles are 13 px mono caps in `ink`; linked titles end in a `flow` arrow.
+- Concept S in `design-system/inspiration/`: the numbers `01`–`0N` are the shared index style (Geist Mono 13 px, `ink-subtle`) on a 48 px row (36 px on phones), from a CSS counter with empty alt text; never write them in the markup. Titles are 13 px mono caps in `ink`; linked titles end in a `flow` arrow.
 - One 1 px `line-strong` route runs down the left and ends in an arrowhead; each item has a dot on it and a short leader ending in an arrowhead at its number. Hover and focus turn the title, number, dot and arrowhead `flow`; focus adds the 2 px `focus` ring. No fills or cards: the line is the structure, as in LinkGrid.
 - Data: the pages whose `section` equals this page's `section`, other than the page itself, in `pages.json` order. On the section's own hub (the page NAVSECT links to: systems, services, industries, compliance, projects, about) the label reads "Systems · 7 pages"; on any other page of the section (cmp-*, careers, news, contact-*) it reads "Also in Company", so the index works as a section switcher.
 - Fallback: a page alone in its section (today only `projects`) lists its own section headings (`blocks[].h`, leaving out `related`, at most seven) under "On this page". Headings link only when their block has a `nav` anchor; the rest are plain items. With fewer than two headings the hero stays text-only.
@@ -49,4 +49,11 @@ Hero opens every page: eyebrow, one display headline, one lead sentence, one pri
 - Colours: the pipe and parts use `currentColor` (`ink-muted` on the figure), guides `line` (dashed), rules and leaders `line-strong`, arrows `flow`, part fills `surface` so the pipe breaks behind them. Strokes are 1 px (pipe 1.5 px) with `vector-effect: non-scaling-stroke`. No literal colours.
 - Annotations only state what the home page states: ASME BPE, USP <645> at the conductivity sensor, USP <643> at the TOC sensor, and the endotoxin fact (the home `facts` entry whose value contains "EU/mL") at the furthest point of use. Never add figures the page does not claim.
 - The home hero has no photograph slot and no arc motif any more (the `aq-arc` styles remain for `AQ.ARC`). Its KeyFacts strip follows the grid.
-- Phones: the drawing goes under the actions at up to 400 px wide, centred.
+- Phones: the drawing goes under the actions at up to 224 px wide (`space-32` + `space-24`), centred.
+
+## Phones
+
+The hero must fit about 1.5 phone screens including its facts, and the primary button must be in the first screen when the lead is 35 words or fewer (content budget).
+
+- Padding `space-12` top and bottom. Headline: `display` 34/38, `display-xl` 40/44; lead 17/26.
+- Order: eyebrow, headline, lead, actions, then the figure. The equipment drawing is at most 176 px square (`space-32` + `space-12`); its callouts and the KeyFacts strip are compact 2 x 2 grids. The photograph placeholder is 2:1.

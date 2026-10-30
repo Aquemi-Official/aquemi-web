@@ -2,7 +2,7 @@ Specification sheets present water quality limits as a two-column matrix with th
 
 ## Spec sheet (default)
 
-On desktop the rows flow into two columns. Each cell stacks the parameter, the limit in large Geist Mono with its unit, and the method or reference beneath. The highlighted row spans both columns as a `flow-tint` band with a `flow` rule on the left and a `readout`-sized value. On phones (container 860 px or less) it becomes one list of compact rows, parameter and reference on the left, value right-aligned, and the highlighted row becomes a card at the top. No sideways scroll is needed.
+On desktop the rows flow into two columns. Each cell stacks the parameter, the limit in `data` (Geist Mono 14/20) with its unit, and the method or reference beneath. The highlighted row spans both columns as a `flow-tint` band with a `flow` rule on the left and a value one step larger (20/28). On phones (container 860 px or less) it becomes compact two-line rows on hairlines: the parameter, then the value followed by ` · ` and the basis in small muted type; the highlighted row keeps its tint. No sideways scroll is needed.
 
 ```html
 <table class="aq-spec" role="table">
@@ -25,7 +25,7 @@ On desktop the rows flow into two columns. Each cell stacks the parameter, the l
 ## Token rules
 
 - Surfaces: label strip `surface-sunken`, matrix body `surface-raised`, rules `line`. Band `flow-tint` with a 2 px `flow` left rule; text on it stays `ink` and `ink-muted`.
-- Type: caption and header labels in `eyebrow`; parameter in `body` (phone 14/20); matrix values Geist Mono 20/28 with tabular figures (phone 16/24); band value in `readout` 40/44 (phone 28/34); method in `small` metrics, `ink-muted`.
+- Type: header labels in `eyebrow`; parameter in `body` (phone 15/22); values in `data` (Geist Mono 14/20, tabular figures) at every width; band value 20/28 on desktop, `data` on phones. `readout` size belongs to KeyFacts and Readout only. Placeholders in values keep the Placeholder style at the row's text size. Method in `small`, `ink-muted` (12/18 on phones).
 - Spacing only from `--space-*`: cells `space-4` vertical, matrix columns `space-12` apart, band padding `space-6` (`space-4` on phones).
 - Status words use `aq-status aq-status--pass`, `--caution` or `--fail`, and always include the word.
 
@@ -35,4 +35,9 @@ On desktop the rows flow into two columns. Each cell stacks the parameter, the l
 - Not for test results with several values per parameter (limit, result, status): use CompareTable (`aq-compare-table`), and never show a result without its method.
 - Not for options compared against criteria: use CompareTable.
 - The consumer provides the data; never fill a `[placeholder]` with a guessed value.
-- Phones: every row stacks parameter, value (18/26 mono, left-aligned so long values like "Hot water at 80 °C, RO and EDI" wrap cleanly), then method; the critical card value is 24/30.
+- Phones: two lines per row, parameter then value · basis; the column-label strip is visually hidden (it stays for screen readers).
+
+## Caption and section head
+
+- The `<caption>` is visually hidden. On the site, block `spec`'s `caption` is shown once, as the eyebrow of the standard section head above `h` (`assets/src/blocks/spec.js`). Never print a second mono caption above the table.
+- Ten rows or fewer per table (content budget). Split a longer sheet by topic.

@@ -1,2 +1,2 @@
-/* Block "options" -> OptionList: full-width section, numbered module tiles on a technical grid (numbers come from a CSS counter) */
-BLOCKS['options']=function(b,H){return sec(H+'<ul class="aq-options" role="list">'+(b.items||[]).map(function(it){return '<li class="aq-options__item"><span class="aq-options__tag" aria-hidden="true"><span class="aq-options__mark"></span></span><h3 class="aq-h3">'+tx(it.t)+'</h3><p class="aq-small">'+tx(it.d)+'</p></li>'}).join('')+'</ul>');};
+/* Block "options" -> OptionList: configuration options as rows of the shared list grammar: index, title, one line. */
+BLOCKS['options']=function(b,H){return sec(H+'<ol class="aq-rows aq-options">'+(b.items||[]).map(function(it,i){return wRow(i,it.t,it.d)}).join('')+'</ol>');};

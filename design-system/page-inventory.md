@@ -82,23 +82,23 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | page frame | Page, NavBar, Footer |
 | hero | Hero: the page's Illustration with callouts to its `facts` when it has a drawing, otherwise KeyFacts |
 | prose | Prose inside SplitSection |
-| grid | LinkGrid |
+| grid | LinkGrid (rows) |
 | related | RelatedLinks |
 | path | WaterPath |
-| options | OptionList inside SplitSection |
-| steps | ProcessSteps |
+| options | OptionList (rows) |
+| steps | ProcessSteps (rows) |
 | diagram | ProcessDiagram |
 | readout | Readout |
 | band | Band |
 | tags | StandardsGrid (sunken band) |
-| closing call to action | Closing (navy band) |
+| closing call to action | Closing (navy band), optional `include` checklist |
 | faq | FAQ inside SplitSection |
-| docs | DocList inside SplitSection (sunken band) |
+| docs | DocList |
 | case | CaseStudy |
-| spec | SpecTable |
+| spec | SpecTable (`caption` shown as the section eyebrow) |
 | table | CompareTable |
 | form | EnquiryForm (with TextField and Button) inside SplitSection; with `steps` it renders the stepped variant |
 | block `nav` label | SectionNav (rendered by the page, not a block) |
 | `[bracketed facts]` in any copy | Placeholder |
 
-Every site section has a component. A new kind of section needs a new component here first, then the site.
+Every block opens with the standard section head (`wSecHead`: optional eyebrow, `h`, optional `intro`). Every site section has a component. A new kind of section needs a new component here first, then the site.

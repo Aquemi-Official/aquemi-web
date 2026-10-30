@@ -17,10 +17,10 @@ StandardsGrid lists the standards Aquemi designs to as numbered cards joined by 
 </ol>
 ```
 
-- A semantic ordered list. CSS writes the number (`01 //`) before the code; screen readers skip it where the browser supports alt text on `content`.
+- A semantic ordered list. CSS writes the number (`01`, the shared index style) before the code; screen readers skip it where the browser supports alt text on `content`.
 - `aq-standards-grid__card` is an `<a>` to the Compliance page when that page exists, otherwise a `<div>`. The whole card is the hit area.
 - With a name: the code is the small mono line beside the number and the name is the large line below. Without one: add `aq-standards-grid__item--code` and the code itself takes the large line.
-- Put it in a full-width section headed with `aq-display` (the site uses `aq-band--sunken`).
+- Put it in a full-width section under the standard section head (the site uses `aq-band--sunken`; it counts as the page's one tinted band).
 
 ## On the site
 
@@ -29,7 +29,7 @@ Block type `tags` (`assets/src/blocks/tags.js`). `items` is a list of strings (t
 ## Layout
 
 - **Desktop:** three cards to a row on a `line` dot grid. A horizontal connector joins each card to the next in its row at number height; a vertical connector drops from each card into the one below.
-- **Phone** (`@container (max-width: 860px)`): one column. A ruler (`line-strong` line with ticks every `space-2`) runs down the left edge, and each card is tapped off it at number height.
+- **Phone** (`@container (max-width: 860px)`): compact hairline rows, index then code, two to a row when items are codes only and one to a row when they carry a plain-language name. No frame, cards, ruler or connectors.
 
 ## Token rules
 

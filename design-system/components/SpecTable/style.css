@@ -11,7 +11,8 @@
 /* Spec sheet (default): a two-column specification matrix with the critical row as a full-width band.
    Table elements change display, so the renderer also sets explicit ARIA table roles. */
 .aq-spec:not(.aq-spec--compare) { display: block; }
-.aq-spec:not(.aq-spec--compare) caption { display: block; }
+/* The caption is the section eyebrow on screen (blocks/spec.js); here it stays for screen readers only */
+.aq-spec:not(.aq-spec--compare) caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; padding: 0; }
 .aq-spec:not(.aq-spec--compare) thead { display: block; background: var(--surface-sunken); border: 1px solid var(--line); }
 .aq-spec:not(.aq-spec--compare) thead tr { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-2); padding: var(--space-2) var(--space-6); }
 .aq-spec:not(.aq-spec--compare) thead th { padding: 0; border: 0; background: none; }
@@ -25,12 +26,14 @@
 }
 .aq-spec:not(.aq-spec--compare) tbody tr > * { display: block; padding: 0; border: 0; }
 .aq-spec:not(.aq-spec--compare) tbody th { grid-area: p; font: 400 16px/24px var(--font-sans); }
-.aq-spec:not(.aq-spec--compare) .aq-spec__value { grid-area: v; font: 400 20px/28px var(--font-mono); font-variant-numeric: tabular-nums; }
+.aq-spec:not(.aq-spec--compare) .aq-spec__value { grid-area: v; font: 400 14px/20px var(--font-mono); font-variant-numeric: tabular-nums; }
+/* Placeholders keep their style but at the row's text size */
+.aq-spec .aq-spec__value .aq-ph { font-size: inherit; }
 .aq-spec:not(.aq-spec--compare) .aq-spec__method { grid-area: m; font: 400 14px/20px var(--font-sans); }
 .aq-spec:not(.aq-spec--compare) .aq-spec__method:empty { display: none; }
 .aq-spec:not(.aq-spec--compare) .aq-spec__status { grid-area: s; }
 
-/* Critical row: one full-width band with a readout-sized value */
+/* Critical row: one full-width band; its value one step larger than the rows (readout size is for KeyFacts and Readout only) */
 .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight {
   order: -1; grid-column: 1 / -1;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
@@ -43,7 +46,7 @@
 }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr, .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr + tr { border-top: 0; }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight th { font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; }
-.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__value { align-self: center; font: 300 40px/44px var(--font-mono); letter-spacing: -0.02em; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__value { align-self: center; font: 400 20px/28px var(--font-mono); letter-spacing: -0.01em; }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { color: var(--ink-muted); }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__status { justify-self: start; }
 
@@ -54,29 +57,20 @@
 .aq-status--fail { color: var(--fail); }
 
 @container (max-width: 860px) {
-  /* Phone: a stacked list of compact rows; the critical row becomes a highlighted card */
-  .aq-spec:not(.aq-spec--compare) thead tr { padding-inline: var(--space-4); }
-  .aq-spec:not(.aq-spec--compare) tbody { grid-template-columns: minmax(0, 1fr); padding-inline: var(--space-4); }
-  .aq-spec:not(.aq-spec--compare) tbody tr {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "p" "v" "m" "s";
-    grid-template-rows: none;
-    row-gap: var(--space-1);
-    padding-block: var(--space-3);
-  }
-  .aq-spec:not(.aq-spec--compare) tbody th { font-size: 14px; line-height: 20px; }
-  .aq-spec:not(.aq-spec--compare) .aq-spec__value { font-size: 18px; line-height: 26px; text-align: left; }
-  .aq-spec:not(.aq-spec--compare) .aq-spec__method { font-size: 12px; line-height: 16px; }
+  /* Phone: compact two-line rows on hairlines. Line 1 the parameter; line 2 the value, then " · " and the basis in small
+     muted type. The column-label strip is hidden on screen (kept for screen readers). */
+  .aq-spec:not(.aq-spec--compare) thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-spec:not(.aq-spec--compare) tbody { display: block; padding-inline: 0; background: none; border: 0; border-bottom: 1px solid var(--line); }
+  .aq-spec:not(.aq-spec--compare) tbody tr,
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight { display: block; margin: 0; padding: var(--space-3) 0; border-top: 1px solid var(--line); }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight { padding-inline: var(--space-3); border-top: 0; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr { border-top: 0; }
   .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr + tr { border-top: 1px solid var(--line); }
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "p" "v" "m" "s";
-    grid-template-rows: none;
-    row-gap: var(--space-2);
-    margin-inline: calc(var(--space-4) * -1);
-    padding: var(--space-4);
-  }
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight th { font-size: 16px; line-height: 24px; }
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__value { font-size: 24px; line-height: 30px; text-align: left; }
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { font-size: 14px; line-height: 20px; }
+  .aq-spec:not(.aq-spec--compare) tbody th,
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight th { display: block; margin-bottom: var(--space-1); font: 400 15px/22px var(--font-sans); }
+  .aq-spec:not(.aq-spec--compare) .aq-spec__value,
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__value { display: inline; font: 400 14px/22px var(--font-mono); letter-spacing: 0; }
+  .aq-spec:not(.aq-spec--compare) .aq-spec__method,
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { display: inline; font-size: 12px; line-height: 18px; }
+  .aq-spec:not(.aq-spec--compare) .aq-spec__method:not(:empty)::before { content: "\a0\b7\a0"; content: "\a0\b7\a0" / ""; color: var(--ink-subtle); }
 }

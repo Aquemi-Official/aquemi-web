@@ -1,4 +1,5 @@
-/* Block "docs" -> DocList: numbered document tiles, each with a short document code derived from its name */
+/* Block "docs" -> DocList: numbered document tiles (rows on phones), each with a short document code derived from its name.
+   On the default surface: the page rhythm allows one tinted band mid-page, and that is not this list. */
 /* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT). */
 var DOC_CODES=[
   [/^urs\b.*traceability/i,'URS & TM'],[/traceability matrix/i,'TM'],[/user requirement|\burs\b/i,'URS'],
@@ -33,8 +34,7 @@ BLOCKS['docs']=function(b,H){
   /* Codes only when most items are documents the lookup knows; a checklist of other things keeps just its numbers. */
   var coded=codes.filter(function(c){return c[1]}).length*2>=items.length;
   return sec(H+'<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
-    var n=(i<9?'0':'')+(i+1);
-    return '<li><span class="aq-docs__code" aria-hidden="true"><span class="aq-docs__n">'+n+'</span>'+(coded?'<span class="aq-docs__sep"> / </span>'+e(codes[i][0]):'')+'</span>'
+    return '<li>'+idx(i)+(coded?'<span class="aq-docs__code" aria-hidden="true">'+e(codes[i][0])+'</span>':'')
       +'<span class="aq-docs__name">'+tx(x.t)+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span></li>';
-  }).join('')+'</ol>','aq-band--sunken');
+  }).join('')+'</ol>');
 };

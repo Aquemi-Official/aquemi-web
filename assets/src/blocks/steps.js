@@ -1,2 +1,3 @@
-/* Block "steps" -> ProcessSteps: an ordered list drawn as a stepped pipe run; CSS writes the numbers */
-BLOCKS['steps']=function(b,H){return sec(H+'<ol class="aq-steps">'+(b.items||[]).map(function(it){return '<li><h3 class="aq-steps__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-steps__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('')+'</ol>');};
+/* Block "steps" -> ProcessSteps: a real sequence as rows of the shared list grammar (index, step name, what happens),
+   joined by one thin riser through the index column. */
+BLOCKS['steps']=function(b,H){return sec(H+'<ol class="aq-rows aq-steps">'+(b.items||[]).map(function(it,i){return wRow(i,it.t,it.d)}).join('')+'</ol>');};

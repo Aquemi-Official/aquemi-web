@@ -1,5 +1,5 @@
 /* One content section per block type in pages.json */
-function wBlock(b){var f=BLOCKS[b.type];return f?f(b,h1(b.h)):''}
+function wBlock(b){var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}
 /* Page: NavBar, Hero, SectionNav, sections, Closing, Footer */
 function wPage(p){var c=p.cta;
  return wHead(p.section)+wHero(p)+wSectionNav(p)+(p.blocks||[]).map(function(b,i){var h=wBlock(b);return b.nav?h.replace('<section class=','<section id="'+jid(b,i)+'" class='):h}).join('')+

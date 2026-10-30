@@ -1,92 +1,48 @@
-/* ---------- RelatedLinks: linked cards hung off one pipe, staggered, each under a large ghost number ---------- */
-/* Desktop: one row, every card on a riser from a header pipe; even cards drop lower so the row reads as a pipeline.
-   The whole card is the link. Numbers come from a CSS counter. */
+/* ---------- RelatedLinks: the pages to read next ---------- */
+/* Desktop: three to a row (four for 4, 7 or 8 pages), each a hairline-topped column: the shared index, the page's drawing (when it has one),
+   its section as a mono label and its title with an arrow. Phones: compact rows of the shared list grammar,
+   index | title, section label below, arrow at the right; no drawings. The whole item is the link. */
 .aq-related-links {
-  counter-reset: aq-related-links;
-  position: relative;
-  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr);
-  align-items: start; column-gap: var(--space-6);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--space-6);
   margin: 0; padding: 0; list-style: none;
 }
-/* Header pipe */
-.aq-related-links::before {
-  content: ""; position: absolute; top: 0; left: 0; right: 0;
-  border-top: 2px solid var(--line-strong);
-}
-.aq-related-links > li {
-  counter-increment: aq-related-links;
-  position: relative; min-width: 0;
-  display: flex; flex-direction: column;
-  padding-top: var(--space-6);
-}
-.aq-related-links > li:nth-child(even) { padding-top: calc(var(--space-16) + var(--space-6)); }
-/* Riser from the pipe down behind the card */
-.aq-related-links > li::before {
-  content: ""; position: absolute; top: 0; bottom: var(--space-8); left: var(--space-6);
-  border-left: 1px solid var(--line-strong);
-}
-/* Ghost number, right of the riser, above its card */
-.aq-related-links > li::after {
-  content: counter(aq-related-links, decimal-leading-zero);
-  order: -1; align-self: flex-end;
-  margin-bottom: var(--space-2);
-  font: 300 64px/1 var(--font-mono); letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums; color: var(--line);
-  pointer-events: none; transition: color 120ms;
-}
-
+/* Four, seven or eight pages: four to a row */
+.aq-related-links:has(> :nth-child(4)):not(:has(> :nth-child(5))),
+.aq-related-links:has(> :nth-child(7)) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.aq-related-links > li { min-width: 0; display: flex; border-top: 1px solid var(--line-strong); }
 .aq-related-links__card {
-  position: relative; z-index: 1;
-  display: flex; flex-direction: column; gap: var(--space-2);
-  padding: var(--space-6);
-  background: var(--surface-raised);
-  border: 1px solid var(--line-strong); border-radius: var(--radius-0);
+  flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "i art" "g g" "t t";
+  align-items: start; align-content: start; row-gap: var(--space-2);
+  padding: var(--space-3) 0 var(--space-6);
   color: var(--ink); text-decoration: none;
-  transition: border-color 120ms, box-shadow 120ms;
 }
-/* Valve node where the riser meets the card */
-.aq-related-links__card::before {
-  content: ""; position: absolute; top: -5px; left: calc(var(--space-6) - 5px);
-  width: 9px; height: 9px; box-sizing: border-box;
-  border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill);
-  background: var(--surface);
-}
-.aq-related-links__art { width: 96px; margin-bottom: var(--space-2); transition: background-color 120ms; }
-.aq-related-links__title { overflow-wrap: break-word; text-wrap: pretty; }
+:where(.aq-page) a.aq-related-links__card { color: var(--ink); }
+.aq-related-links__card .aq-index { grid-area: i; }
+.aq-related-links__art { grid-area: art; width: var(--space-16); margin-bottom: var(--space-2); transition: background-color 120ms; }
+.aq-related-links__group { grid-area: g; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-related-links__title { grid-area: t; font: 500 17px/24px var(--font-sans); overflow-wrap: break-word; text-wrap: pretty; transition: color 120ms; }
 .aq-related-links__title::after { content: "\a0\2192"; color: var(--flow); }
-.aq-related-links__card .aq-small { color: var(--ink-muted); }
-
-.aq-related-links__card:hover,
-.aq-related-links__card:focus-visible { border-color: var(--flow); box-shadow: inset 0 2px 0 var(--flow); }
-.aq-related-links__card:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .aq-related-links__card:hover .aq-related-links__title { color: var(--flow); }
 .aq-related-links__card:hover .aq-related-links__art { background-color: var(--flow); }
-.aq-related-links__card:hover::before,
-.aq-related-links__card:focus-visible::before { border-color: var(--flow); }
-.aq-related-links > li:has(> a:hover, > a:focus-visible)::after { color: var(--flow); }
-.aq-related-links > li:has(> a:hover, > a:focus-visible)::before { border-left-color: var(--flow); }
+.aq-related-links > li:has(> a:hover) { border-top-color: var(--flow); }
+.aq-related-links__card:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .aq-related-links > li::after, .aq-related-links__card, .aq-related-links__art { transition: none; }
+  .aq-related-links__card, .aq-related-links__art, .aq-related-links__title { transition: none; }
 }
 
 @container (max-width: 860px) {
-  /* Phones: one column; the pipe runs down the left edge and a short stub feeds each card */
-  .aq-related-links {
-    grid-auto-flow: row; grid-template-columns: minmax(0, 1fr); grid-auto-columns: auto;
-    row-gap: var(--space-4); padding-left: var(--space-6);
+  .aq-related-links, .aq-related-links:has(> :nth-child(4)):not(:has(> :nth-child(5))),
+  .aq-related-links:has(> :nth-child(7)) { grid-template-columns: minmax(0, 1fr); border-bottom: 1px solid var(--line); }
+  .aq-related-links > li { border-top-color: var(--line); }
+  .aq-related-links__card {
+    grid-template-columns: var(--space-8) minmax(0, 1fr);
+    grid-template-areas: "i t" ". g";
+    column-gap: var(--space-3); row-gap: 0; align-items: baseline;
+    padding: var(--space-3) 0;
   }
-  .aq-related-links::before { right: auto; bottom: 0; border-top: 0; border-left: 2px solid var(--line-strong); }
-  .aq-related-links > li,
-  .aq-related-links > li:nth-child(even) { padding-top: 0; }
-  .aq-related-links > li::after { align-self: flex-start; font-size: 40px; }
-  .aq-related-links > li::before {
-    top: calc(40px + var(--space-2) + var(--space-6)); bottom: auto;
-    left: calc(-1 * var(--space-6)); width: var(--space-6); height: 0;
-    border-left: 0; border-top: 1px solid var(--line-strong);
-  }
-  .aq-related-links > li:has(> a:hover, > a:focus-visible)::before { border-top-color: var(--flow); }
-  .aq-related-links__card { padding: var(--space-4); }
-  .aq-related-links__card::before { top: calc(var(--space-6) - 6px); left: -5px; }
-  .aq-related-links__art { width: 72px; }
+  .aq-related-links__art { display: none; }
+  .aq-related-links__title { font-size: 16px; }
 }

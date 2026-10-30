@@ -24,7 +24,7 @@ Closing is the call to action at the end of every page: a very large headline in
 ## Layout
 
 - **Desktop:** the headline spans the frame at 88/92 px, weight 300, at most 18 characters per line. Below it, lead and proof sit on the left (7 of 12 columns); the button sits bottom right.
-- **Phone** (`@container (max-width: 860px)`): one column, headline 40/44 px, proof value 36/40 px, button left-aligned and allowed to wrap. Nothing overflows at 375 px.
+- **Phone** (`@container (max-width: 860px)`): one column, headline 40/44 px, checklist in one column, proof value 36/40 px, button left-aligned and allowed to wrap. Nothing overflows at 375 px.
 
 ## Token rules
 
@@ -46,3 +46,20 @@ Closing is the call to action at the end of every page: a very large headline in
 - Not for mid-page prompts; use a Button in the section instead.
 
 Origin: concept J in `design-system/inspiration/`, generated in Gemini and rebuilt with Aquemi tokens (sentence case and Geist Light in place of the concept's condensed capitals).
+
+## Checklist (`cta.include`)
+
+An optional list of short strings on the page's `cta`, rendered under the body as a compact numbered checklist (two columns on desktop, one on phones), headed "What to send us" (override with `cta.include_label`).
+
+```json
+"cta": {"h": "Send your feed water analysis.", "body": "…", "button": "Request a sizing proposal", "link": "contact-proposal",
+        "include": ["Feed water analysis, last 12 months", "Peak and average demand, L/h", "Lowest feed temperature"]}
+```
+
+```html
+<div class="aq-closing__include"><p class="aq-closing__tag">What to send us</p>
+  <ol><li><span class="aq-index" aria-hidden="true">01</span><span>Feed water analysis, last 12 months</span></li>…</ol></div>
+```
+
+- Use it to fold a page's "what to send us" docs block into the closing: one ask, in one place. Three to seven items, each 8 words or fewer.
+- Rows on `on-navy-muted` hairlines at 30 % strength; text 15/22 `on-navy` (14/20 on phones); index in `on-navy-muted`.

@@ -15,12 +15,12 @@ DocList names the documents delivered with a system as a grid of numbered tiles,
 - An ordered list, one `<li>` per document. The visible number and code are `aria-hidden`; screen readers get the list numbering and the full name.
 - `aq-docs__name` holds the document name as QA would write it: "Material certificates (EN 10204 3.1)", "FAT and SAT protocols and reports". An optional `<span class="aq-docs__d">` inside it adds one line of detail.
 - Add `aq-docs--plain` to the `<ol>` and leave out the separator and code when the items are not documents with recognised codes (a proposal checklist, for example). Tiles then show only the number.
-- Place it full width under an `aq-h1` heading on `aq-band--sunken`. The site renderer (`assets/src/blocks/docs.js`, block type `docs`) builds all of this from `{h, items}`.
+- Place it full width under the standard section head on the default `surface` (the page allows one tinted band mid-page, and it is not this list). The site renderer (`assets/src/blocks/docs.js`, block type `docs`) builds all of this from `{h, items}`.
 
 ## Layout
 
 - **Desktop:** three tiles per row on a 6-column grid, separated by `line` hairlines. Rows that would end short widen to two tiles: 10 items read 3, 3, 2, 2; 8 items read 3, 3, 2. Works for 4 to 12 items.
-- **Phone** (container 860 px and below): a compact list, "01 FS  Functional specification", with codes in one aligned column and a hairline between rows.
+- **Phone** (container 860 px and below): a compact list, "01  FS  Functional specification", with the index and codes in aligned columns and a hairline between rows.
 
 ## Codes
 
@@ -28,7 +28,7 @@ The renderer derives each code from the document name with a lookup of common va
 
 ## Token rules
 
-- Tiles: `surface-raised` on the sunken band, hairlines `line`, spacing `space-*` only.
+- Tiles: `surface` with `line` hairlines (the 1 px grid gap), spacing `space-*` only. The number is the shared `.aq-index`; the code is Geist Mono 20/24 in `ink` (14/22 on phones).
 - Accent: a 2 px `flow` bar at the top of each tile, `space-12` wide. It is the section's only colour.
 - Code: Geist Mono light (`--font-mono`), 28/34 px desktop, 15/22 px phone, `ink`; number and separator in `ink-subtle`.
 - Name: Geist (`--font-sans`) 15/22 px in `ink`, sentence case. Detail in `ink-muted`.

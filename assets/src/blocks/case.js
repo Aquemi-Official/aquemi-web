@@ -3,8 +3,8 @@
    With no figure the slot shows a [bracketed] placeholder; a number is never derived or invented here.
    Optional per item: status (label above the title, e.g. a template awaiting a real project), profile [{v,l}] (a KeyFacts strip of
    headline KPIs under the title), standard (a "Standard met" fact box) and method ("How it was measured", full width under the boxes).
-   Optional on the block: intro (lead paragraph above the cases). */
-BLOCKS['case']=function(b,H){return sec(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'<div class="aq-cases">'+(b.items||[]).map(function(it){
+   Optional on the block: intro (in the standard section head). */
+BLOCKS['case']=function(b,H){return sec(H+'<div class="aq-cases">'+(b.items||[]).map(function(it){
   var facts=[['Client',it.client],['Problem',it.problem],['System delivered',it.system],['Standard met',it.standard]].filter(function(x){return x[1]}).map(function(x){return '<div class="aq-case__fact"><dt>'+x[0]+'</dt><dd>'+tx(x[1])+'</dd></div>'}).join('');
   var fig=it.figure!=null&&String(it.figure)!==''
     ?'<span class="aq-case__figure"><span class="aq-case__num">'+tx(it.figure)+'</span>'+(it.unit?'<span class="aq-case__unit">'+tx(it.unit)+'</span>':'')+'</span>'

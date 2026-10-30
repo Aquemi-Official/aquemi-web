@@ -1,10 +1,9 @@
 /* ---------- KeyFacts: the numbers a page stands on, as a measurement strip ---------- */
 /* One framed strip between two rulers (tick bands inside the top and bottom of the frame). Each fact is a cell:
-   "01 / NAME" index, a large mono figure with its unit set smaller beside it, and the source standard on the last line.
+   the name, a large mono figure with its unit set smaller beside it, and the source standard on the last line.
    Small round fixings sit where the cell dividers meet the rulers, like the screws of a data plate.
-   Index, rulers and fixings are CSS only (the index uses alt text "" so screen readers skip it). */
+   Rulers and fixings are CSS only. No index: facts are not a sequence. */
 .aq-key-facts {
-  counter-reset: aq-kf;
   position: relative; margin: 0;
   display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr);
   padding: var(--space-3) 0;
@@ -44,10 +43,9 @@
 
 /* Index and name */
 .aq-key-facts dt {
-  counter-increment: aq-kf;
   font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted);
 }
-.aq-key-facts dt::before { content: counter(aq-kf, decimal-leading-zero) " / "; content: counter(aq-kf, decimal-leading-zero) " / " / ""; color: var(--flow); }
+
 
 /* Figure with its comparator and unit */
 .aq-key-facts dd { margin: 0; }
@@ -73,14 +71,17 @@
 .aq-hero .aq-key-facts { margin-top: var(--space-16); }
 
 @container (max-width: 860px) {
-  /* A vertical list, same anatomy: rulers stay on the top and bottom edge of the frame */
-  .aq-key-facts { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: minmax(0, 1fr); }
-  .aq-key-facts > div { padding: var(--space-4); border-bottom: 0; }
+  /* Phones: a compact 2 x 2 (or 2 x n) grid between the same rulers; no fixings */
+  .aq-key-facts { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-key-facts > div { gap: var(--space-2); padding: var(--space-3); border-bottom: 0; }
   .aq-key-facts > div + div { border-left: 0; }
-  .aq-key-facts > div:last-child { border-bottom: 1px solid var(--line); }
-  /* Fixings at both ends of each divider; the dl's pair closes the bottom edge */
-  .aq-key-facts > div::after { bottom: auto; top: 0; left: auto; right: 0; transform: translate(50%, -50%); }
-  .aq-key-facts::before { top: auto; bottom: var(--space-3); right: auto; left: 0; transform: translate(-50%, 50%); }
-  .aq-key-facts dd:first-of-type, .aq-key-facts:has(> :nth-child(5)) dd:first-of-type { font-size: 36px; }
-  .aq-hero .aq-key-facts { margin-top: var(--space-12); }
+  .aq-key-facts > div:nth-child(even) { border-left: 1px solid var(--line); }
+  .aq-key-facts > div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .aq-key-facts > div:last-child, .aq-key-facts > div:nth-last-child(2):nth-child(odd) { border-bottom: 1px solid var(--line); }
+  .aq-key-facts > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .aq-key-facts > div::before, .aq-key-facts > div::after, .aq-key-facts::before, .aq-key-facts::after { content: none; }
+  .aq-key-facts dt { font-size: 11px; line-height: 15px; letter-spacing: 0.06em; }
+  .aq-key-facts dd:first-of-type, .aq-key-facts:has(> :nth-child(5)) dd:first-of-type { font-size: 22px; line-height: 1.15; }
+  .aq-key-facts dd.aq-key-facts__src { font-size: 11px; line-height: 15px; }
+  .aq-hero .aq-key-facts { margin-top: var(--space-8); }
 }

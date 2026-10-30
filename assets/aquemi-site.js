@@ -17,6 +17,16 @@ function sec(inner,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'">
 function split(head,body,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-split-section"><div class="aq-split-section__head">'+head+'</div><div class="aq-split-section__body">'+body+'</div></div></section>'}
 function first(s){var m=String(s||'').match(/^.*?[.!?](?=\s|$)/);return m?m[0]:String(s||'')}
 function h1(s){return s?'<h2 class="aq-h1">'+tx(s)+'</h2>':''}
+/* Section head, the one way every block opens: optional eyebrow (b.eyebrow), h2 (b.h), optional one-sentence intro (b.intro).
+   Renderers receive it as H and never print their own heading, intro or a mono caption above their content. */
+function wSecHead(b){b=b||{};if(!b.h&&!b.eyebrow&&!b.intro)return '';
+ return '<header class="aq-sec-head">'+(b.eyebrow?'<p class="aq-eyebrow">'+tx(b.eyebrow)+'</p>':'')+h1(b.h)+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'</header>'}
+/* Index: the one numbering style, "01" (aria-hidden: the list already announces position) */
+function idx(i){return '<span class="aq-index" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}
+/* Rows: one list row of the shared list grammar (.aq-rows). link: a page id; the whole row becomes the link. art: drawing page id. */
+function wRow(i,t,d,link,art,tag){var inner=idx(i)+'<h3 class="aq-rows__t">'+tx(t)+'</h3>'+(d||tag?'<p class="aq-rows__d">'+(d?tx(d):'')+(tag?'<span class="aq-tags"><span class="aq-tag">'+e(tag)+'</span></span>':'')+'</p>':'')
+  +(art&&ART[art]?'<span class="aq-illustration aq-rows__art" aria-hidden="true" style="'+artMask(art)+'"></span>':'');
+ return '<li>'+(link&&wp(link)?'<a class="aq-rows__row" href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div class="aq-rows__row">'+inner+'</div>')+'</li>'}
 /* SpecTable cell: a string, or {t, link} to route the reader to another page (link must be a page id) */
 function tcell(c){return c&&typeof c==='object'?(c.link&&wp(c.link)?wlink(c.link,c.t):tx(c.t)):tx(c)}
 function gridItem(inner,link){return link&&wp(link)?'<a href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div>'+inner+'</div>'}
@@ -25,13 +35,16 @@ var BLOCKS={};
 /* Button. intent (optional): option labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent) */
 function wBtn(label,link,kind,intent){var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'"'+(intent&&!j?' data-intent="'+e(intent)+'"':'')+'>'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
 /* Closing: the call to action at the end of every page, on the navy band.
-   c is the page's cta ({h, body, button, link, intent}); p is the page. The proof readout shows the page's first confirmed fact
+   c is the page's cta ({h, body, button, link, intent, include, include_label}); p is the page.
+   include: optional checklist of short strings (what to send us, each ≤ 8 words), shown as a compact numbered list under
+   the body, so a page's "what to send" docs block can fold into its closing. include_label overrides "What to send us". The proof readout shows the page's first confirmed fact
    (the first p.facts item whose value has no [placeholder]); with none, the box is left out. Never pass invented figures. */
 function wClosing(c,p){if(!c||!c.h)return '';
  var f=((p&&p.facts)||[]).filter(function(x){return x&&x.v&&String(x.v).indexOf('[')<0})[0];
  return '<section class="aq-section aq-band--navy aq-closing"><div class="aq-in"><div class="aq-closing__frame">'+
   '<h2 class="aq-closing__h">'+tx(c.h)+'</h2>'+
   '<div class="aq-closing__body">'+(c.body?'<p class="aq-lead">'+tx(c.body)+'</p>':'')+
+  (c.include&&c.include.length?'<div class="aq-closing__include"><p class="aq-closing__tag">'+tx(c.include_label||'What to send us')+'</p><ol>'+c.include.map(function(x,i){return '<li>'+idx(i)+'<span>'+tx(x)+'</span></li>'}).join('')+'</ol></div>':'')+
   (f?'<div class="aq-closing__proof"><span class="aq-closing__tag">Proof</span><span class="aq-closing__value">'+tx(f.v)+'</span>'+(f.l?'<span class="aq-closing__label">'+tx(f.l)+'</span>':'')+'</div>':'')+
   '</div><div class="aq-closing__action">'+wBtn(c.button||'Request a proposal',c.link||'contact-proposal',null,c.intent)+'</div>'+
   '</div></div></section>'}
@@ -276,7 +289,7 @@ function wSectionNav(p){var j=navJumps(p),segs='';if(!j.length)return '';for(var
    Each stop shows its page's line drawing when ART (parts/Hero.js) lists it, else the GLYPH below as fallback. */
 var GLYPH={"sys-pretreatment": "M8 50V16a6 6 0 0 1 12 0v34M26 50V16a6 6 0 0 1 12 0v34M44 50V26a10 6 0 0 1 20 0v24M4 50h64M14 10V4h18v6", "sys-pw": "M6 50V10h60v40M4 50h64M12 18h48M12 26h48M12 34h48M12 42h48M60 14v32", "sys-wfi-distillation": "M10 50V12a6 6 0 0 1 12 0v38M30 50V20a6 6 0 0 1 12 0v30M22 16h8M42 24h8v-8h12v34M4 50h64", "sys-wfi-membrane": "M8 50V20h56v30M4 50h64M16 20V10M28 20V10M40 20V10M52 20V10M12 10h44M14 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0M30 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0M46 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0", "sys-pure-steam": "M10 50V20h40v30M4 50h64M18 20V6h6v14M16 30h16M16 36h16M16 42h16M50 30h14v20M58 30V22", "sys-storage": "M8 46V22a10 5 0 0 1 20 0v24M8 46l-2 4M28 46l2 4M34 46V14a12 6 0 0 1 24 0v32M34 46l-2 4M58 46l2 4M28 30h6M4 50h64", "sys-monitoring": "M6 50h60M10 50V14h28v36M16 22h16M16 28h10M16 34h13M44 30a10 10 0 1 0 20 0a10 10 0 1 0-20 0M54 30l6-6"};
 function wPath(b){var it=b.items||[],stop=function(x,i){var n=String(i+1).padStart(2,'0'),g=GLYPH[x.link];
-  return '<article class="aq-water-path__stop'+(ART[x.link]?' aq-water-path__stop--art':'')+'" data-n="'+n+'">'+(ART[x.link]?'<span class="aq-illustration aq-water-path__art" aria-hidden="true" style="'+artMask(x.link)+'"></span>':g?'<svg class="aq-water-path__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="'+g+'"/></svg>':'')+'<span class="aq-water-path__num">'+n+'</span><span class="aq-h3">'+(x.link&&wp(x.link)?'<a href="#'+e(x.link)+'" data-wp="'+e(x.link)+'">'+tx(x.t)+'</a>':tx(x.t))+'</span><span class="aq-small">'+tx(x.d)+'</span>'+(x.tag?'<span class="aq-tags"><span class="aq-tag">'+e(x.tag)+'</span></span>':'')+'</article>'};
+  return '<article class="aq-water-path__stop" data-n="'+n+'">'+(ART[x.link]?'<span class="aq-illustration aq-water-path__art" aria-hidden="true" style="'+artMask(x.link)+'"></span>':g?'<svg class="aq-water-path__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="'+g+'"/></svg>':'')+'<span class="aq-water-path__num">'+n+'</span><span class="aq-h3">'+(x.link&&wp(x.link)?'<a href="#'+e(x.link)+'" data-wp="'+e(x.link)+'">'+tx(x.t)+'</a>':tx(x.t))+'</span><span class="aq-small">'+tx(x.d)+'</span>'+(x.tag?'<span class="aq-tags"><span class="aq-tag">'+e(x.tag)+'</span></span>':'')+'</article>'};
  return '<div class="aq-water-path"><span class="aq-water-path__feed">'+e(b.from||'Feed water')+'</span><div class="aq-water-path__pipe"></div>'+it.slice(0,4).map(stop).join('')+'<div class="aq-water-path__bend"></div><div class="aq-water-path__pipe aq-water-path__pipe--return"></div>'+it.slice(4,7).map(function(x,i){return stop(x,i+4)}).join('')+'<span class="aq-water-path__outlet">'+e(b.to||'Point of use')+' ←</span></div>'}
 /* Block "band" -> Band: one statement set very large in a framed panel, the body as a small supporting line, and a
    decorative pipework drawing at the right that fades behind the text. Fields: h, body, tone ("limestone" default or
@@ -308,8 +321,8 @@ BLOCKS['band']=function(b,H){
    With no figure the slot shows a [bracketed] placeholder; a number is never derived or invented here.
    Optional per item: status (label above the title, e.g. a template awaiting a real project), profile [{v,l}] (a KeyFacts strip of
    headline KPIs under the title), standard (a "Standard met" fact box) and method ("How it was measured", full width under the boxes).
-   Optional on the block: intro (lead paragraph above the cases). */
-BLOCKS['case']=function(b,H){return sec(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'<div class="aq-cases">'+(b.items||[]).map(function(it){
+   Optional on the block: intro (in the standard section head). */
+BLOCKS['case']=function(b,H){return sec(H+'<div class="aq-cases">'+(b.items||[]).map(function(it){
   var facts=[['Client',it.client],['Problem',it.problem],['System delivered',it.system],['Standard met',it.standard]].filter(function(x){return x[1]}).map(function(x){return '<div class="aq-case__fact"><dt>'+x[0]+'</dt><dd>'+tx(x[1])+'</dd></div>'}).join('');
   var fig=it.figure!=null&&String(it.figure)!==''
     ?'<span class="aq-case__figure"><span class="aq-case__num">'+tx(it.figure)+'</span>'+(it.unit?'<span class="aq-case__unit">'+tx(it.unit)+'</span>':'')+'</span>'
@@ -321,7 +334,8 @@ BLOCKS['case']=function(b,H){return sec(H+(b.intro?'<p class="aq-lead">'+tx(b.in
 }).join('')+'</div>');};
 /* Block "diagram" -> ProcessDiagram. Fields: stages [names, 5 to 7], optional base (what spans every stage), caption. */
 BLOCKS['diagram']=function(b,H){return sec(H+wDiagram(b)+(b.caption?'<p class="aq-small aq-prose">'+tx(b.caption)+'</p>':''));};
-/* Block "docs" -> DocList: numbered document tiles, each with a short document code derived from its name */
+/* Block "docs" -> DocList: numbered document tiles (rows on phones), each with a short document code derived from its name.
+   On the default surface: the page rhythm allows one tinted band mid-page, and that is not this list. */
 /* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT). */
 var DOC_CODES=[
   [/^urs\b.*traceability/i,'URS & TM'],[/traceability matrix/i,'TM'],[/user requirement|\burs\b/i,'URS'],
@@ -356,21 +370,21 @@ BLOCKS['docs']=function(b,H){
   /* Codes only when most items are documents the lookup knows; a checklist of other things keeps just its numbers. */
   var coded=codes.filter(function(c){return c[1]}).length*2>=items.length;
   return sec(H+'<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
-    var n=(i<9?'0':'')+(i+1);
-    return '<li><span class="aq-docs__code" aria-hidden="true"><span class="aq-docs__n">'+n+'</span>'+(coded?'<span class="aq-docs__sep"> / </span>'+e(codes[i][0]):'')+'</span>'
+    return '<li>'+idx(i)+(coded?'<span class="aq-docs__code" aria-hidden="true">'+e(codes[i][0])+'</span>':'')
       +'<span class="aq-docs__name">'+tx(x.t)+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span></li>';
-  }).join('')+'</ol>','aq-band--sunken');
+  }).join('')+'</ol>');
 };
-/* Block "faq" -> FAQ: numbered question cards, first one open; a shared name keeps one answer open at a time */
+/* Block "faq" -> FAQ: hairline accordion rows (index, question, +/−), all closed; a shared name keeps one answer open.
+   Desktop: heading left, questions right (SplitSection). */
 var faqN=0;
-BLOCKS['faq']=function(b,H){faqN++;return sec(H+'<div class="aq-faq">'+(b.items||[]).map(function(it,i){return '<details name="faq-'+faqN+'"'+(i?'':' open')+'><summary><span class="aq-faq__tag"></span><span class="aq-faq__q">'+tx(it.q)+'</span></summary><div class="aq-faq__a"><p>'+tx(it.a)+'</p></div></details>'}).join('')+'</div>');};
+BLOCKS['faq']=function(b,H){faqN++;return split(H,'<div class="aq-faq">'+(b.items||[]).map(function(it,i){return '<details name="faq-'+faqN+'"><summary>'+idx(i)+'<span class="aq-faq__q">'+tx(it.q)+'</span><span class="aq-faq__sign" aria-hidden="true"></span></summary><div class="aq-faq__a"><p>'+tx(it.a)+'</p></div></details>'}).join('')+'</div>');};
 /* Block "form" -> EnquiryForm (data sheet) in SplitSection. With "steps", wFormSteps renders one numbered section per step.
    wPreset ticks the options named by the linking button's intent before rendering.
    Fields split into numbered sections: 1.0 the requirement, 2.0 the trailing run of contact fields (name, company, role,
    email, phone, site, contract). A field with "section": "<legend>" starts a new section; "sections": [..] renames them. */
 BLOCKS['form']=function(b,H){
  wPreset(b.steps?[].concat.apply([],b.steps.map(function(s){return s.fields||[]})):(b.fields||[]));
- if(b.steps)return split(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':''),wFormSteps(b));
+ if(b.steps)return split(H,wFormSteps(b));
  var F=b.fields||[],cut=F.length,C=/\b(name|company|role|e-?mail|phone|site|contract)\b/i,G=[],req=0;
  while(cut>0&&F[cut-1].kind!=='textarea'&&F[cut-1].kind!=='checkbox-group'&&C.test(F[cut-1].label||''))cut--;
  if(cut===0)cut=F.length;
@@ -378,63 +392,37 @@ BLOCKS['form']=function(b,H){
   L2=F.slice(cut).some(function(f){return /\bsite\b/i.test(f.label||'')})?'Site and contact':'Contact';
  F.forEach(function(f,i){if(f.required)req++;var l=f.section||(i===0?L1:i===cut?L2:'');if(l||!G.length)G.push({l:l||L1,f:[]});G[G.length-1].f.push(i)});
  var body=G.map(function(g,gi){var n=gi+1;return '<fieldset class="aq-form__section"><legend class="aq-form__legend"><span class="aq-form__num">'+n+'.0</span> '+tx((b.sections&&b.sections[gi])||g.l)+'</legend><div class="aq-form__grid">'+g.f.map(function(i,k){return wField(F[i],i,n+'.'+(k+1))}).join('')+'</div></fieldset>'}).join('');
- return split(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':''),
+ return split(H,
   '<form class="aq-form wform" novalidate>'
   +'<p class="aq-form__title"><span>Data sheet</span><span>'+G.length+' section'+(G.length>1?'s':'')+' · '+req+' required</span></p>'
   +body
   +'<div class="aq-form__actions"><button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button><span class="aq-small wform-msg" role="status"></span></div>'
   +'<div class="aq-form__strip" aria-hidden="true"><span>Rev. draft</span><span>'+F.length+' fields</span><span>Sheet 1 of 1</span></div>'
   +'</form>');};
-/* Block "grid" -> LinkGrid: numbered choices in two staggered columns joined by one routed line (numbers are a CSS counter).
-   An item that links to a page is one <a>; one whose link page has a drawing in ART (parts/Hero.js) shows it small, aria-hidden. */
-BLOCKS['grid']=function(b,H){return sec('<div class="aq-stack">'+H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'</div><ol class="aq-linkgrid">'+(b.items||[]).map(function(it){
- var l=it.link&&wp(it.link)?it.link:'';
- var inner='<div class="aq-linkgrid__head"><h3 class="aq-h3 aq-linkgrid__t">'+tx(it.t)+'</h3>'+(l&&ART[l]?'<span class="aq-illustration aq-linkgrid__art" aria-hidden="true" style="'+artMask(l)+'"></span>':'')+'</div>'+
-  (it.d?'<p class="aq-small aq-linkgrid__d">'+tx(it.d)+'</p>':'')+(it.tag?'<span class="aq-tags"><span class="aq-tag">'+e(it.tag)+'</span></span>':'');
- return '<li>'+(l?'<a class="aq-linkgrid__item" href="#'+e(l)+'" data-wp="'+e(l)+'">'+inner+'</a>':'<div class="aq-linkgrid__item">'+inner+'</div>')+'</li>'}).join('')+'</ol>');};
-/* Block "options" -> OptionList: full-width section, numbered module tiles on a technical grid (numbers come from a CSS counter) */
-BLOCKS['options']=function(b,H){return sec(H+'<ul class="aq-options" role="list">'+(b.items||[]).map(function(it){return '<li class="aq-options__item"><span class="aq-options__tag" aria-hidden="true"><span class="aq-options__mark"></span></span><h3 class="aq-h3">'+tx(it.t)+'</h3><p class="aq-small">'+tx(it.d)+'</p></li>'}).join('')+'</ul>');};
+/* Block "grid" -> LinkGrid: choices as rows of the shared list grammar (.aq-rows): index, title, one line, optional tag.
+   Fields: h, intro (section head), items [{t, d, link, tag}]. An item that links to a page is one <a>; one whose
+   link page has a drawing in ART (parts/Hero.js) shows it small at the row's end on desktop (aria-hidden, hidden on phones). */
+BLOCKS['grid']=function(b,H){return sec(H+'<ol class="aq-rows aq-linkgrid">'+(b.items||[]).map(function(it,i){
+ return wRow(i,it.t,it.d,it.link,it.link,it.tag)}).join('')+'</ol>');};
+/* Block "options" -> OptionList: configuration options as rows of the shared list grammar: index, title, one line. */
+BLOCKS['options']=function(b,H){return sec(H+'<ol class="aq-rows aq-options">'+(b.items||[]).map(function(it,i){return wRow(i,it.t,it.d)}).join('')+'</ol>');};
 /* Block "path" -> WaterPath */
-BLOCKS['path']=function(b,H){return sec('<div class="aq-stack">'+H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'</div>'+wPath(b));};
-/* Block "prose" -> Prose as a drawing sheet, in SplitSection.
-   Fields: h (heading), body (paragraphs), optional notes (strings quoted verbatim from body; [] turns notes off).
-   The first sentence of body[0] becomes the lead; the rest sits in a narrow column with margin notes.
-   Notes only ever quote the text: given in `notes`, or found automatically (named standards, figures with units).
-   Nothing inside a [placeholder] is annotated. */
+BLOCKS['path']=function(b,H){return sec(H+wPath(b));};
+/* Block "prose" -> Prose in SplitSection: heading left, text right. Fields: h, body (paragraphs).
+   The first sentence of body[0] is set as the lead; the rest follow as plain paragraphs. No grid, frame or margin notes
+   (an old "notes" field is ignored). Standards and figures stay inline in the text. */
 (function(){
 var ABBR=/(?:^|[\s(])(?:Ph|Eur|e\.g|i\.e|No|St|Dr|vs|etc|approx|Fig|Inc|Ltd|Co)$/;
-var STD='USP ?<\\d+>|USP|Ph\\. ?Eur\\.(?: monograph \\d{3,4})?|European Pharmacopoeia|EU GMP Annex \\d+|Annex \\d+|GAMP ?\\d|ISO \\d{3,5}(?::\\d{4})?|ASME BPE(?:-\\d{4})?|21 CFR Part \\d+|EN \\d{3,5}|ICH Q\\d+[A-Z]?|US EPA|WHO TRS \\d+|Guidelines for Canadian Drinking Water Quality';
-var UNIT='°C|[µμ]S\\/cm|mS\\/cm|MΩ·cm|L\\/h|L\\/min|m[³3]\\/h|ppb|ppm|mg\\/L|[µμ]g\\/L|EU\\/mL|CFU\\/mL|cfu\\/mL|kWh|kW|barg|bar|psi|[µμ]m';
-var NUM='\\d+(?:[.,]\\d+)?(?: ?[–-] ?\\d+(?:[.,]\\d+)?)? ?(?:'+UNIT+')';
-var AUTO_MAX=3;
 /* [start,end) ranges inside square brackets, nesting-aware */
 function holes(s){var r=[],d=0,st=0;for(var i=0;i<s.length;i++){var c=s.charAt(i);if(c==='['){if(!d)st=i;d++}else if(c===']'&&d){d--;if(!d)r.push([st,i+1])}}if(d)r.push([st,s.length]);return r}
 function inHole(h,a,b){for(var i=0;i<h.length;i++)if(a<h[i][1]&&b>h[i][0])return true;return false}
 /* Split off the first sentence: ends at . ! ? outside brackets, before a capital, digit or bracket, not after an abbreviation */
 function lead(s){var h=holes(s);for(var i=0;i<s.length;i++){var c=s.charAt(i);if((c==='.'||c==='!'||c==='?')&&!inHole(h,i,i+1)){var m=s.slice(i+1).match(/^\s+(?=[A-Z0-9\[“"])/);if(m&&!ABBR.test(s.slice(0,i)))return [s.slice(0,i+1),s.slice(i+1+m[0].length)]}}return [s,'']}
-function word(c){return /[A-Za-z0-9µμ]/.test(c||'')}
-function auto(paras){var seen={};return paras.map(function(p){var h=holes(p),out=[],re=new RegExp(STD+'|'+NUM,'g'),m;
- while((m=re.exec(p))&&out.length<AUTO_MAX){var a=m.index,b=a+m[0].length,k=m[0].toLowerCase();
-  if(word(p.charAt(a-1))||p.charAt(a-1)==='.'||(word(p.charAt(b))&&p.charAt(b-1)!=='.')||inHole(h,a,b)||seen[k])continue;
-  seen[k]=1;out.push({a:a,b:b})}
- return out})}
-function given(notes,paras){var out=paras.map(function(){return []});
- notes.forEach(function(t){t=String(t||'');if(!t)return;paras.some(function(p,i){var h=holes(p),a=p.indexOf(t);
-  while(a>-1&&inHole(h,a,a+t.length))a=p.indexOf(t,a+1);
-  if(a>-1&&!out[i].some(function(m){return a<m.b&&a+t.length>m.a})){out[i].push({a:a,b:a+t.length});return true}})});
- return out.map(function(ms){return ms.sort(function(x,y){return x.a-y.a})})}
 BLOCKS['prose']=function(b,H){
  var body=(b.body||[]).filter(function(x){return x}).map(String);
  if(!body.length)return split(H,'<div class="aq-prose"></div>');
  var l=lead(body[0]),paras=(l[1]?[l[1]]:[]).concat(body.slice(1));
- var marks=Array.isArray(b.notes)?given(b.notes,paras):auto(paras),n=0;
- var rows=paras.map(function(p,i){var html='',notes='',at=0;
-  marks[i].forEach(function(m){n++;var k=(n<10?'0':'')+n,q=tx(p.slice(m.a,m.b));
-   html+=tx(p.slice(at,m.a))+'<span class="aq-prose__ref" data-n="'+k+'">'+q+'</span>';at=m.b;
-   notes+='<li><span class="aq-prose__n">'+k+'</span><span class="aq-prose__q">'+q+'</span></li>'});
-  html+=tx(p.slice(at));
-  return '<div class="aq-prose__row"><p>'+html+'</p>'+(notes?'<ol class="aq-prose__notes" aria-hidden="true">'+notes+'</ol>':'')+'</div>'});
- return split(H,'<div class="aq-prose aq-prose--sheet"><p class="aq-prose__lead">'+tx(l[0])+'</p>'+rows.join('')+'</div>');
+ return split(H,'<div class="aq-prose aq-prose--sheet"><p class="aq-prose__lead">'+tx(l[0])+'</p>'+paras.map(function(p){return '<p>'+tx(p)+'</p>'}).join('')+'</div>');
 };
 })();
 /* Block "readout" -> Readout: one figure on an instrument face, unit set vertically beside it, the method in a boxed
@@ -457,12 +445,16 @@ BLOCKS['readout']=function(b,H){
     +(b.body?'<p class="aq-lead aq-readout__caption">'+tx(b.body)+'</p>':'')
     +'<div class="aq-readout__scale" aria-hidden="true"></div></div></div></section>';
 };
-/* Block "related" -> RelatedLinks: staggered linked cards on one pipe. Eyebrow, title, and the lead's first sentence only when it is 130 characters or fewer.
-   Pages with a drawing in ART (parts/Hero.js) show it small in their card. */
-BLOCKS['related']=function(b,H){return sec(H+'<ol class="aq-related-links">'+(b.items||[]).filter(wp).map(function(id){var p=wp(id),s=first(p.lead);
- return '<li><a class="aq-related-links__card" href="#'+e(id)+'" data-wp="'+e(id)+'">'+(ART[id]?'<span class="aq-illustration aq-related-links__art" aria-hidden="true" style="'+artMask(id)+'"></span>':'')+
-  '<span class="aq-eyebrow">'+e(p.section)+'</span><span class="aq-h3 aq-related-links__title">'+tx(p.nav_label)+'</span>'+(s&&s.length<=130?'<span class="aq-small">'+tx(s)+'</span>':'')+'</a></li>'}).join('')+'</ol>');};
+/* Block "related" -> RelatedLinks: the pages to read next. items: page ids. Each is one linked row: index, title, the
+   page's section as a mono label, and an arrow. Desktop: three to a row (four for 4, 7 or 8), each with its drawing from ART (parts/Hero.js)
+   when the page has one. Phones: compact rows, no drawings. */
+BLOCKS['related']=function(b,H){return sec(H+'<ol class="aq-related-links">'+(b.items||[]).filter(wp).map(function(id,i){var p=wp(id);
+ return '<li><a class="aq-related-links__card" href="#'+e(id)+'" data-wp="'+e(id)+'">'+idx(i)
+  +'<span class="aq-related-links__title">'+tx(p.nav_label)+'</span><span class="aq-related-links__group">'+e(p.section)+'</span>'
+  +(ART[id]?'<span class="aq-illustration aq-related-links__art" aria-hidden="true" style="'+artMask(id)+'"></span>':'')+'</a></li>'}).join('')+'</ol>');};
 /* Block "spec" -> SpecTable (spec sheet: two-column matrix, the hl row first as a full-width band).
+   Fields: h, caption, cols, rows [{p, v, m, hl}], note. The caption is the section's eyebrow (above h) and the table's
+   visually hidden <caption>; it is never printed a second time above the table.
    CSS changes the table's display, so explicit ARIA table roles keep its semantics in every browser. */
 BLOCKS['spec']=function(b,H){
   var cols=b.cols||['Parameter','Specification','Method or reference'];
@@ -473,10 +465,12 @@ BLOCKS['spec']=function(b,H){
     var hl=k>=0&&i===0;
     return '<tr role="row"'+(hl?' class="is-highlight"':'')+'><th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+'</td></tr>';
   }).join('');
-  return sec(H+'<div class="aq-stack"><table class="aq-spec" role="table"><caption>'+tx(b.caption||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>'+(b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'')+'</div>');
+  var head=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro});
+  return sec(head+'<div class="aq-stack"><table class="aq-spec" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>'+(b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'')+'</div>');
 };
-/* Block "steps" -> ProcessSteps: an ordered list drawn as a stepped pipe run; CSS writes the numbers */
-BLOCKS['steps']=function(b,H){return sec(H+'<ol class="aq-steps">'+(b.items||[]).map(function(it){return '<li><h3 class="aq-steps__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-steps__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('')+'</ol>');};
+/* Block "steps" -> ProcessSteps: a real sequence as rows of the shared list grammar (index, step name, what happens),
+   joined by one thin riser through the index column. */
+BLOCKS['steps']=function(b,H){return sec(H+'<ol class="aq-rows aq-steps">'+(b.items||[]).map(function(it,i){return wRow(i,it.t,it.d)}).join('')+'</ol>');};
 /* Block "table" -> CompareTable. cols: header labels (first is the row-label column); rows: cells, each a string or {t, link}.
    Three or more columns: a numbered matrix, with column tabs on phones. Two columns: the numbered row list (aq-compare-table--list).
    The CSS changes table display on phones, so explicit ARIA table roles are set. */
@@ -489,9 +483,9 @@ BLOCKS['table']=function(b,H){var C=b.cols||[],list=C.length<=2,
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-compare-table__tab');if(!t)return;var w=t.closest('.aq-compare-table');w.setAttribute('data-col',t.getAttribute('data-col'));[].forEach.call(w.querySelectorAll('.aq-compare-table__tab'),function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});
 /* Block "tags" -> StandardsGrid section. items: strings (the standard's code) or {code, name} objects;
    name is the optional plain-language line. Cards link to Compliance when that page exists. */
-BLOCKS['tags']=function(b,H){var lk=wp('compliance');return '<section class="aq-section aq-band--sunken"><div class="aq-in aq-stack-l">'+(b.h?'<h2 class="aq-display">'+tx(b.h)+'</h2>':H)+'<ol class="aq-standards-grid">'+(b.items||[]).map(function(x){var o=typeof x==='string'?{code:x}:(x||{}),inner='<span class="aq-standards-grid__code">'+e(o.code)+'</span>'+(o.name?'<span class="aq-standards-grid__name">'+tx(o.name)+'</span>':'');return '<li class="aq-standards-grid__item'+(o.name?'':' aq-standards-grid__item--code')+'">'+(lk?'<a class="aq-standards-grid__card" href="#compliance" data-wp="compliance">'+inner+'</a>':'<div class="aq-standards-grid__card">'+inner+'</div>')+'</li>'}).join('')+'</ol>'+(b.body?'<p class="aq-small">'+tx(b.body)+'</p>':'')+'</div></section>';};
+BLOCKS['tags']=function(b,H){var lk=wp('compliance');return '<section class="aq-section aq-band--sunken"><div class="aq-in aq-stack-l">'+H+'<ol class="aq-standards-grid">'+(b.items||[]).map(function(x){var o=typeof x==='string'?{code:x}:(x||{}),inner='<span class="aq-standards-grid__code">'+e(o.code)+'</span>'+(o.name?'<span class="aq-standards-grid__name">'+tx(o.name)+'</span>':'');return '<li class="aq-standards-grid__item'+(o.name?'':' aq-standards-grid__item--code')+'">'+(lk?'<a class="aq-standards-grid__card" href="#compliance" data-wp="compliance">'+inner+'</a>':'<div class="aq-standards-grid__card">'+inner+'</div>')+'</li>'}).join('')+'</ol>'+(b.body?'<p class="aq-small">'+tx(b.body)+'</p>':'')+'</div></section>';};
 /* One content section per block type in pages.json */
-function wBlock(b){var f=BLOCKS[b.type];return f?f(b,h1(b.h)):''}
+function wBlock(b){var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}
 /* Page: NavBar, Hero, SectionNav, sections, Closing, Footer */
 function wPage(p){var c=p.cta;
  return wHead(p.section)+wHero(p)+wSectionNav(p)+(p.blocks||[]).map(function(b,i){var h=wBlock(b);return b.nav?h.replace('<section class=','<section id="'+jid(b,i)+'" class='):h}).join('')+

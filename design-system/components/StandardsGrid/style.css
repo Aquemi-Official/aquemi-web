@@ -1,4 +1,4 @@
-/* ---------- StandardsGrid: numbered standard cards on a dot grid, joined by thin connector lines ---------- */
+/* ---------- StandardsGrid: numbered standard cards in a plain frame, joined by thin connector lines ---------- */
 /* Desktop: three cards to a row; a horizontal connector runs from each card to the next in its row at number height,
    and a vertical connector drops from every card into the one below. Phones: one column beside a measuring ruler. */
 .aq-standards-grid {
@@ -8,8 +8,6 @@
   padding: var(--space-6);
   border: 1px solid var(--line);
   background-color: var(--surface);
-  background-image: radial-gradient(var(--line) 1px, transparent 1px);
-  background-size: var(--space-4) var(--space-4);
 }
 .aq-standards-grid__item { counter-increment: aq-standards; position: relative; min-width: 0; display: flex; }
 
@@ -37,9 +35,9 @@
   color: var(--ink); text-decoration: none;
 }
 .aq-standards-grid__card::before {
-  content: counter(aq-standards, decimal-leading-zero) " //";
-  content: counter(aq-standards, decimal-leading-zero) " //" / "";
-  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em;
+  content: counter(aq-standards, decimal-leading-zero);
+  content: counter(aq-standards, decimal-leading-zero) / "";
+  font: 400 13px/16px var(--font-mono); letter-spacing: 0.02em;
   font-variant-numeric: tabular-nums; color: var(--ink-subtle);
 }
 a.aq-standards-grid__card:hover { border-color: var(--flow); box-shadow: inset 0 2px 0 var(--flow); }
@@ -63,24 +61,21 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
 }
 
 @container (max-width: 860px) {
-  /* Phones: one column, a ruler with ticks every space-2 down the left, each card tapped off it at number height */
+  /* Phones: compact hairline rows, two to a row for code-only standards (one when a plain-language name is given);
+     no frame, cards, ruler or connectors */
   .aq-standards-grid {
-    grid-template-columns: minmax(0, 1fr); gap: var(--space-3);
-    padding: var(--space-4) var(--space-4) var(--space-4) var(--space-8);
-    background-image:
-      linear-gradient(var(--line-strong), var(--line-strong)),
-      repeating-linear-gradient(to bottom, var(--line-strong) 0 1px, transparent 1px var(--space-2));
-    background-size: 1px 100%, var(--space-2) 100%;
-    background-position: var(--space-4) 0, var(--space-2) 0;
-    background-repeat: no-repeat;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-4); row-gap: 0;
+    padding: 0; border: 0; background: none;
   }
-  .aq-standards-grid__item::before { content: none; }
-  .aq-standards-grid__item::after {
-    top: calc(var(--space-4) + var(--space-2) - 1px);
-    left: calc(var(--space-4) - var(--space-8)); width: calc(var(--space-4) - 1px);
-    border-top: 1px solid var(--line-strong);
+  .aq-standards-grid:has(.aq-standards-grid__name) { grid-template-columns: minmax(0, 1fr); }
+  .aq-standards-grid__item::before, .aq-standards-grid__item::after { content: none; }
+  .aq-standards-grid__card {
+    flex-wrap: nowrap; column-gap: var(--space-3);
+    padding: var(--space-3) 0; background: none; border: 0; border-top: 1px solid var(--line);
   }
-  .aq-standards-grid__card { padding: var(--space-4); }
+  .aq-standards-grid:has(.aq-standards-grid__name) .aq-standards-grid__card { flex-wrap: wrap; }
+  a.aq-standards-grid__card:hover { box-shadow: none; }
   .aq-standards-grid__name,
-  .aq-standards-grid__item--code .aq-standards-grid__code { font-size: 20px; line-height: 26px; }
+  .aq-standards-grid__item--code .aq-standards-grid__code { font-size: 16px; line-height: 22px; }
+  .aq-standards-grid__name { padding-left: calc(2ch + var(--space-3)); }
 }

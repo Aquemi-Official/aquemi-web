@@ -4,7 +4,7 @@
    email, phone, site, contract). A field with "section": "<legend>" starts a new section; "sections": [..] renames them. */
 BLOCKS['form']=function(b,H){
  wPreset(b.steps?[].concat.apply([],b.steps.map(function(s){return s.fields||[]})):(b.fields||[]));
- if(b.steps)return split(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':''),wFormSteps(b));
+ if(b.steps)return split(H,wFormSteps(b));
  var F=b.fields||[],cut=F.length,C=/\b(name|company|role|e-?mail|phone|site|contract)\b/i,G=[],req=0;
  while(cut>0&&F[cut-1].kind!=='textarea'&&F[cut-1].kind!=='checkbox-group'&&C.test(F[cut-1].label||''))cut--;
  if(cut===0)cut=F.length;
@@ -12,7 +12,7 @@ BLOCKS['form']=function(b,H){
   L2=F.slice(cut).some(function(f){return /\bsite\b/i.test(f.label||'')})?'Site and contact':'Contact';
  F.forEach(function(f,i){if(f.required)req++;var l=f.section||(i===0?L1:i===cut?L2:'');if(l||!G.length)G.push({l:l||L1,f:[]});G[G.length-1].f.push(i)});
  var body=G.map(function(g,gi){var n=gi+1;return '<fieldset class="aq-form__section"><legend class="aq-form__legend"><span class="aq-form__num">'+n+'.0</span> '+tx((b.sections&&b.sections[gi])||g.l)+'</legend><div class="aq-form__grid">'+g.f.map(function(i,k){return wField(F[i],i,n+'.'+(k+1))}).join('')+'</div></fieldset>'}).join('');
- return split(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':''),
+ return split(H,
   '<form class="aq-form wform" novalidate>'
   +'<p class="aq-form__title"><span>Data sheet</span><span>'+G.length+' section'+(G.length>1?'s':'')+' · '+req+' required</span></p>'
   +body

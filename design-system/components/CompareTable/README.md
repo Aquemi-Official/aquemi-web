@@ -1,4 +1,4 @@
-CompareTable sets options against criteria as a system matrix in a drawing frame, with numbered column heads, row labels in a narrow left column and, on phones, one tab per column instead of a sideways scroll.
+CompareTable sets three or more options against criteria as a hairline matrix, with eyebrow column heads, numbered row labels in a narrow left column and, on phones, one tab per column with compact key/value rows instead of a sideways scroll.
 
 ## Markup
 
@@ -26,7 +26,7 @@ CompareTable sets options against criteria as a system matrix in a drawing frame
 ```
 
 - It stays a real `<table>`: `<th scope="col">` heads, and the first cell of each row is `<th scope="row">`. The phone layout changes the table's `display`, so always add the ARIA roles shown; they keep row and column semantics for screen readers.
-- CSS numbers the option columns `[01]`, `[02]` … above each head and the rows `01`, `02` … above each row label. The numbers are decoration and hidden from screen readers where the browser supports alt text on `content`. The brackets are drawn by CSS, never typed into copy, so they are not confused with `[placeholders]`.
+- CSS numbers the rows `01`, `02` … above each row label on desktop, in the shared index style (mono 13 px, `ink-subtle`). Columns are not numbered. The numbers are decoration and hidden from screen readers where the browser supports alt text on `content`.
 - One `aq-compare-table__tab` button per option column, in column order, `data-col` counting from 1 after the row-label column. The wrapper's `data-col` names the column shown on phones (start at `1`). The site's delegated click listener in `assets/src/blocks/table.js` updates `data-col` and `aria-pressed`. On desktop the tabs are hidden.
 - Routing links: a cell may hold one plain link naming the destination page (`PW generation`), in the last column. It is set in mono caps in `flow` with a trailing arrow, like "View spec →".
 
@@ -35,7 +35,7 @@ CompareTable sets options against criteria as a system matrix in a drawing frame
 - **Matrix (three to six columns).** Fixed layout; the row-label column takes 22 % and the option columns share the rest equally so no option looks favoured. Cells are separated by `line` hairlines.
 - **List (`aq-compare-table--list`, two columns).** A label and one value is a list, not a matrix: no tabs, each row is a numbered label beside its value (1 : 2), and the column heads are a label strip. On phones the label sits above the value.
 - **Long prose.** Tables of three or more columns stay a matrix on desktop even when cells run to several sentences; the phone sheet shows one column at a time, which reads prose well. Beyond five options with long prose, split the content into sections instead.
-- **Phones** (`@container (max-width: 860px)`): the tabs wrap onto as many lines as they need, two or more to a row, and the table becomes a stack of row sheets, each the row label in small mono above the chosen column's value. The column heads are visually hidden but stay in the accessibility tree. Nothing scrolls sideways.
+- **Phones** (`@container (max-width: 860px)`): no frame. The tabs (at least 44 px tall) wrap onto as many lines as they need, and every row becomes one compact key/value pair on a hairline: the row label left (13/20, `ink-muted`), the chosen column's value right (14/22). The column heads are visually hidden but stay in the accessibility tree. Nothing scrolls sideways.
 
 ## On the site
 
@@ -61,3 +61,13 @@ Block type `table` (`assets/src/blocks/table.js`): `{ "h": "…", "cols": ["…"
 - Not for more than six columns: split the comparison.
 
 Origin: concept R in `design-system/inspiration/`, generated in Gemini and rebuilt with Aquemi tokens.
+
+## Use it sparingly
+
+The site has over a hundred tables; most are lists in disguise. Use CompareTable only for a real comparison with **three or more columns** (two or more options against the same criteria). Otherwise:
+
+- A parameter with a value and a basis: SpecTable.
+- A list of documents, deliverables or things to send: DocList (or the closing `cta.include` checklist).
+- A label with one line of text: OptionList or LinkGrid rows.
+
+Eight rows or fewer per table, 25 words or fewer per cell (content budgets).

@@ -1,7 +1,5 @@
-/* Block "grid" -> LinkGrid: numbered choices in two staggered columns joined by one routed line (numbers are a CSS counter).
-   An item that links to a page is one <a>; one whose link page has a drawing in ART (parts/Hero.js) shows it small, aria-hidden. */
-BLOCKS['grid']=function(b,H){return sec('<div class="aq-stack">'+H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'</div><ol class="aq-linkgrid">'+(b.items||[]).map(function(it){
- var l=it.link&&wp(it.link)?it.link:'';
- var inner='<div class="aq-linkgrid__head"><h3 class="aq-h3 aq-linkgrid__t">'+tx(it.t)+'</h3>'+(l&&ART[l]?'<span class="aq-illustration aq-linkgrid__art" aria-hidden="true" style="'+artMask(l)+'"></span>':'')+'</div>'+
-  (it.d?'<p class="aq-small aq-linkgrid__d">'+tx(it.d)+'</p>':'')+(it.tag?'<span class="aq-tags"><span class="aq-tag">'+e(it.tag)+'</span></span>':'');
- return '<li>'+(l?'<a class="aq-linkgrid__item" href="#'+e(l)+'" data-wp="'+e(l)+'">'+inner+'</a>':'<div class="aq-linkgrid__item">'+inner+'</div>')+'</li>'}).join('')+'</ol>');};
+/* Block "grid" -> LinkGrid: choices as rows of the shared list grammar (.aq-rows): index, title, one line, optional tag.
+   Fields: h, intro (section head), items [{t, d, link, tag}]. An item that links to a page is one <a>; one whose
+   link page has a drawing in ART (parts/Hero.js) shows it small at the row's end on desktop (aria-hidden, hidden on phones). */
+BLOCKS['grid']=function(b,H){return sec(H+'<ol class="aq-rows aq-linkgrid">'+(b.items||[]).map(function(it,i){
+ return wRow(i,it.t,it.d,it.link,it.link,it.tag)}).join('')+'</ol>');};

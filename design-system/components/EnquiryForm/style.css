@@ -72,7 +72,7 @@
 
 /* Hidden conditional fields, file upload */
 .aq-form [hidden] { display: none; }
-.aq-field__file { font: 400 14px/22px var(--font-sans); color: var(--ink); padding: var(--space-4); border: 1px dashed var(--line-strong); border-radius: var(--radius-0); background: var(--surface-sunken); }
+.aq-field__file { font: 400 14px/22px var(--font-sans); color: var(--ink); padding: var(--space-4); border: 1px dashed var(--line-strong); border-radius: var(--radius-0); width: 100%; min-width: 0; background: var(--surface-sunken); }
 .aq-field__file:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
 /* Stepped variant: each step is one numbered section; the progress list sits under the title row */

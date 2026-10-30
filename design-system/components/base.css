@@ -44,10 +44,42 @@
 .aq-ph { background: var(--caution-tint); color: var(--ink); font-family: var(--font-mono); font-size: 0.86em; padding: 0 3px; border-radius: var(--radius-sm); }
 .is-clean .aq-ph { background: none; color: inherit; font-family: inherit; font-size: inherit; padding: 0; }
 
+/* ---------- Section head: optional eyebrow, h2, optional one-sentence intro (core.js wSecHead) ---------- */
+.aq-sec-head { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.aq-sec-head > .aq-eyebrow { margin: 0; }
+.aq-sec-head > .aq-lead { margin-top: var(--space-1); }
+
+/* ---------- Index: the one numbering style ("01"), mono, ink-subtle, in the left column of a row ---------- */
+.aq-index { font: 400 13px/24px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-subtle); white-space: nowrap; }
+
+/* ---------- Rows: the one list grammar. Hairline-separated rows; index column, title, one line of detail ----------
+   Desktop: index | title | detail on one line (and an optional drawing at the right). Phones: index | title, detail below. */
+.aq-rows { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+.aq-rows > li { border-top: 1px solid var(--line); min-width: 0; }
+.aq-rows__row {
+  display: grid; grid-template-columns: var(--space-12) minmax(0, 4fr) minmax(0, 7fr);
+  column-gap: var(--space-6); align-items: baseline;
+  padding-block: var(--space-4); color: var(--ink); text-decoration: none;
+}
+.aq-rows:has(.aq-rows__art) .aq-rows__row { grid-template-columns: var(--space-12) minmax(0, 4fr) minmax(0, 7fr) var(--space-12); }
+.aq-rows__t { margin: 0; min-width: 0; font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-rows__d { grid-column: 3; margin: 0; min-width: 0; max-width: var(--text-max); font: 400 15px/24px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-rows__d .aq-tags { margin-top: var(--space-2); }
+.aq-rows__art { grid-column: 4; grid-row: 1; align-self: center; width: var(--space-12); }
+:where(.aq-page) a.aq-rows__row { color: var(--ink); }
+a.aq-rows__row .aq-rows__t::after { content: "\a0\2192"; color: var(--flow); }
+a.aq-rows__row:hover .aq-rows__t { color: var(--flow); }
+a.aq-rows__row:hover .aq-rows__art { background-color: var(--flow); }
+a.aq-rows__row:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
 @container (max-width: 860px) {
   .aq-in { padding-inline: var(--space-4); }
   .aq-section { padding-block: var(--space-12); }
   .aq-display-xl { font-size: 44px; line-height: 48px; }
   .aq-display { font-size: 38px; line-height: 42px; }
   .aq-h1 { font-size: 30px; line-height: 36px; }
+  .aq-rows__row, .aq-rows:has(.aq-rows__art) .aq-rows__row { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); padding-block: var(--space-3); }
+  .aq-rows__t { font-size: 16px; line-height: 24px; }
+  .aq-rows__d { grid-column: 2; font-size: 14px; line-height: 22px; }
+  .aq-rows__art { display: none; }
 }
