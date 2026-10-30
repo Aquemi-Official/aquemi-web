@@ -17,7 +17,7 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | [All systems](https://aquemi-official.github.io/aquemi-web/#systems) | Every system on the water path, from feed water to point of use. | diagram, grid, table, faq, related |
 | [Purified Water (PW) generation](https://aquemi-official.github.io/aquemi-web/#sys-pw) | Purified Water that meets USP and Ph. Eur. with margin, on your coldest feed day | prose, spec, spec, diagram, table, options, steps, docs, faq, docs, related |
 | [WFI by distillation](https://aquemi-official.github.io/aquemi-web/#sys-wfi-distillation) | Water for Injection by distillation, with endotoxin margin you can show an inspector | prose, spec, spec, diagram, diagram, table, options, steps, docs, faq, docs, related |
-| [WFI by membrane](https://aquemi-official.github.io/aquemi-web/#sys-wfi-membrane) | Water for Injection by membrane | prose, spec, diagram, table, options, docs, faq, related |
+| [WFI by membrane](https://aquemi-official.github.io/aquemi-web/#sys-wfi-membrane) | Water for Injection by membrane, with the control strategy your inspector will ask for | prose, table, spec, spec, diagram, table, options, steps, docs, faq, docs, related |
 | [Pure steam generators](https://aquemi-official.github.io/aquemi-web/#sys-pure-steam) | Pure steam generators | spec, diagram, options, docs, faq, related |
 | [Storage and distribution loops](https://aquemi-official.github.io/aquemi-web/#sys-storage) | Storage and distribution loops | spec, diagram, table, options, docs, faq, related |
 | [Pretreatment](https://aquemi-official.github.io/aquemi-web/#sys-pretreatment) | Pretreatment | prose, spec, diagram, table, options, docs, faq, related |
