@@ -8,7 +8,10 @@
 <link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0F2A47">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="assets/aquemi.css">
+<!-- The Aquemi design system: tokens, then components. Site chrome last. -->
+<link rel="stylesheet" href="design-system/tokens.css">
+<link rel="stylesheet" href="design-system/components/bundle.css">
+<link rel="stylesheet" href="assets/site.css">
 <script src="assets/theme.js"></script>
 </head>
 <body>
@@ -21,14 +24,14 @@
   <select id="wjump" aria-label="Jump to page"></select>
  </span>
 </div>
-<div class="ws" id="wsite"><p style="padding:64px 32px;font-family:var(--font-mono);color:var(--ink-muted)">Loading…</p></div>
+<div class="aq-page" id="wsite"><p style="padding:64px 32px;font-family:var(--font-mono);color:var(--ink-muted)">Loading…</p></div>
 <div class="todo" id="wtodolist" hidden></div>
 <script src="assets/aquemi-site.js"></script>
 <script>
 (function(){
 var $=function(id){return document.getElementById(id)},e=AQ.e;
 function render(){var p=AQ.wp(AQ.page)||AQ.pages()[0];if(!p)return;AQ.page=p.id;
- $('wsite').innerHTML=AQ.wPage(p);$('wsite').classList.toggle('clean',!$('wph').checked);
+ $('wsite').innerHTML=AQ.wPage(p);$('wsite').classList.toggle('is-clean',!$('wph').checked);
  document.title=p.title||'Aquemi';
  $('wjump').value=p.id;
  var t=p.todo||[];$('wtodolist').innerHTML='<h2>Open facts on this page ('+t.length+')</h2>'+(t.length?'<ul>'+t.map(function(x){return '<li>'+e(x)+'</li>'}).join('')+'</ul>':'<p>None.</p>');
@@ -37,7 +40,7 @@ function render(){var p=AQ.wp(AQ.page)||AQ.pages()[0];if(!p)return;AQ.page=p.id;
  document.querySelectorAll('.wform').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();f.querySelector('.wform-msg').textContent='Draft site: this form does not send anything yet.'})})}
 function go(id){AQ.page=id;AQ.menuOpen=false;try{history.replaceState(null,'','#'+id)}catch(x){}render();window.scrollTo(0,0)}
 AQ.onNav=go;
-$('wph').onchange=function(){$('wsite').classList.toggle('clean',!this.checked)};
+$('wph').onchange=function(){$('wsite').classList.toggle('is-clean',!this.checked)};
 $('wtodo').onchange=function(){$('wtodolist').hidden=!this.checked};
 $('wjump').onchange=function(){go(this.value)};
 AQTheme.bind($('wtheme'));

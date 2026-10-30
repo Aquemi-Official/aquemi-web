@@ -1,0 +1,23 @@
+name: Design system check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rules (tokens, components, renderer classes)
+        run: python tools/design_system.py check
+      - name: Generated files are current
+        run: |
+          python tools/design_system.py build
+          if ! git diff --exit-code -- design-system/tokens.css design-system/components.json; then
+            echo "::error::tokens.css or components.json is out of date. Run: python tools/design_system.py build, then commit."
+            exit 1
+          fi

@@ -1,25 +1,26 @@
-# Aquemi website (draft)
+# Aquemi website (draft) and design system
 
-Working draft of the Aquemi customer site, built with the Aquemi design system. Hosted on GitHub Pages for review: https://aquemi-official.github.io/aquemi-web/
+Working draft of the Aquemi customer site and the Aquemi design system it is built from.
 
-This is for drafting and testing. Every page carries a `noindex` tag so search engines skip it.
+- Site: https://aquemi-official.github.io/aquemi-web/
+- Design system guide: https://aquemi-official.github.io/aquemi-web/design-system.html
+- Claude design system (for Claude chats, decks and designs): https://claude.ai/artifact/3DHFfts7CMzKm1ZFYt7p99
 
-## Files
+This is for drafting and testing. Every page carries a `noindex` tag. Push to `main` and Pages updates in a minute or two.
 
-| Path | What |
-| --- | --- |
-| `content/pages.json` | All 31 pages: hero, content blocks, closing band, SEO title and meta, and the open facts (`todo`) per page. **Edit copy here.** |
-| `index.html` | The site shell: draft bar, page routing, loads the content. |
-| `design-system.html` | The design system documented live: logo, colour tokens with contrast ratios, type scale, spacing, components, and every page block rendered from real site content. https://aquemi-official.github.io/aquemi-web/design-system.html |
-| `assets/aquemi.css` | All styles: design tokens (light and dark), components (`aq-btn`, `aq-nav`, `aq-spec`, `aq-tag`, `aq-field`) and page-block layouts. **Edit for styling.** |
-| `assets/aquemi-site.js` | The page renderer shared by the site and the docs (`window.AQ`). Edit to add or change block types. |
-| `assets/theme.js` | System / light / dark switch, remembered per browser. |
-| `design/` | Copies of the design system's `tokens.json`, brand book and website plan. The docs page reads `tokens.json` directly. |
-| `brand/` | Logo, lockup, mark and favicon from the Aquemi design system. Use these files as they are. |
+**Working on it, by hand or with an AI agent: read [AGENTS.md](AGENTS.md).** It covers the file map, the rules and step-by-step workflows for changing tokens, adding components, adding pages and publishing to Claude.
 
-If the design system changes, update `design/tokens.json` and the matching custom properties at the top of `assets/aquemi.css`.
+## In short
 
-No build step. Edit, commit, push; Pages updates in a minute or two.
+- `design-system/` is the source of truth for everything visual: tokens, component styles, guidelines and previews. The site, the guide page and the Claude design system all read from it.
+- `content/pages.json` holds all 31 pages of copy. **Edit copy here.**
+- `tools/design_system.py` builds generated files, checks the rules, scaffolds components and stages the system for Claude:
+
+```bash
+python tools/design_system.py build
+python tools/design_system.py check
+python tools/design_system.py new PullQuote "Page sections"
+```
 
 Preview locally:
 
@@ -27,14 +28,10 @@ Preview locally:
 python -m http.server 8000
 ```
 
-Then open http://localhost:8000/#home. Pages are addressed by id, e.g. `#sys-pw`, `#svc-service`, `#contact-proposal`.
+Then open http://localhost:8000/ (pages by id, e.g. `#sys-pw`) and http://localhost:8000/design-system.html.
 
 ## Drafting conventions
 
-- Text in `[square brackets]` is a placeholder for a fact only Aquemi can supply (capacities, locations, certificates, response times, case-study figures). The draft bar highlights them. Tick "Show open facts" to list what each page still needs.
-- Follow the voice rules in the design system: name the standard, give the number with its unit, no hype words, sentence case.
-- Standards limits quoted on the systems, services and compliance pages should get a technical review before launch.
-
-## Page blocks
-
-Each page in `content/pages.json` has `blocks`, rendered in order. Types: `prose`, `grid`, `spec`, `steps`, `diagram`, `options`, `docs`, `readout`, `tags`, `faq`, `table`, `band`, `form`, `case`, `related`. Look at an existing page for the shape of each.
+- Text in `[square brackets]` is a placeholder for a fact only Aquemi can supply. The draft bar highlights them; tick "Show open facts" to list what each page still needs.
+- Follow the voice rules in the brand book: name the standard, give the number with its unit, no hype words, sentence case.
+- Standards limits on the systems, services and compliance pages need a technical review before launch.

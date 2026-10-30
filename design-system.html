@@ -6,280 +6,201 @@
 <title>Aquemi design system</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#0F2A47">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="assets/aquemi.css">
+<link rel="stylesheet" href="design-system/tokens.css">
+<link rel="stylesheet" href="design-system/components/bundle.css">
+<link rel="stylesheet" href="assets/site.css">
 <script src="assets/theme.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 <style>
-/* Documentation layout: sticky contents rail + one reading column; live examples sit in .ws containers so they render exactly as on the site. */
-body{font:400 16px/26px var(--font-sans)}
-.dh{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
-.dh .in2{max-width:var(--content-max);margin:0 auto;padding:0 var(--space-8);height:64px;display:flex;align-items:center;gap:var(--space-6)}
-.dh img{width:132px;height:auto;display:block}.dh img.on-dark{display:none}
-.dh .t{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);border-left:1px solid var(--line);padding-left:var(--space-4)}
-.dh .sp{flex:1}
-.dh select{font:400 13px var(--font-sans);color:var(--ink);background:var(--surface-raised);border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:4px 8px}
-.doc{max-width:var(--content-max);margin:0 auto;padding:0 var(--space-8);display:grid;grid-template-columns:200px minmax(0,1fr);gap:var(--space-12)}
-.toc{position:sticky;top:88px;align-self:start;padding-top:var(--space-12);display:flex;flex-direction:column;gap:2px}
-.toc a{color:var(--ink-muted);text-decoration:none;font:500 14px/20px var(--font-sans);padding:6px 0}
-.toc a:hover{color:var(--ink)}
-.toc .eb{margin-bottom:var(--space-2)}
-.dm>section{padding-block:var(--space-16);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:var(--space-8);scroll-margin-top:72px}
-.dm>section:last-child{border-bottom:0}
-.eb{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
-.dx{font:300 56px/60px var(--font-sans);letter-spacing:-.025em;margin:0}
-.d1{font:400 40px/46px var(--font-sans);letter-spacing:-.02em;margin:0}
-.d2{font:400 28px/34px var(--font-sans);letter-spacing:-.01em;margin:0}
-.d3{font:500 20px/28px var(--font-sans);letter-spacing:-.005em;margin:0}
-.lead{font:400 18px/28px var(--font-sans);color:var(--ink-muted);max-width:var(--text-max);margin:0}
-.p{max-width:var(--text-max);margin:0}
-.muted{color:var(--ink-muted)}
-.sm{font:400 14px/22px var(--font-sans);color:var(--ink-muted)}
-.mono{font:400 13px/20px var(--font-mono);font-variant-numeric:tabular-nums}
-.rules{margin:0;padding-left:18px;max-width:var(--text-max);display:flex;flex-direction:column;gap:6px}
-.principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line-strong)}
-.principles>div{padding:var(--space-6) var(--space-6) 0 0;display:flex;flex-direction:column;gap:var(--space-2)}
-.principles>div::before{content:attr(data-n);font:500 12px/16px var(--font-mono);letter-spacing:.08em;color:var(--flow)}
-.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-6)}
-.logos figure{margin:0;display:flex;flex-direction:column;gap:var(--space-2)}
-.logos .tile{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);padding:var(--space-8)}
-.logos .tile img{max-height:64px;width:auto;max-width:80%}
-.logos .tile.sq img{max-height:72px}
-.on-surface{background:#FAF8F6}.on-navy{background:#0F2A47;border-color:#0F2A47}.on-lime{background:#EBDFD6;border-color:#EBDFD6}
-.logos figcaption{font:400 13px/20px var(--font-mono);color:var(--ink-muted)}
-.sw{display:flex;flex-direction:column}
-.swr{display:grid;grid-template-columns:96px minmax(140px,200px) minmax(0,1fr) 120px;gap:var(--space-6);align-items:start;padding-block:var(--space-4);border-top:1px solid var(--line)}
-.chipx{display:grid;grid-template-columns:1fr 1fr;height:48px;border:1px solid var(--line)}
-.chipx span{display:block}
-.swr .nm{font:500 15px/22px var(--font-mono)}
-.swr .vals{font:400 12px/18px var(--font-mono);color:var(--ink-muted)}
-.cr{font:400 12px/18px var(--font-mono);color:var(--ink-muted);text-align:right}
-.share{display:flex;height:28px;border:1px solid var(--line)}
-.share span{display:block;height:100%}
-.typ{display:flex;flex-direction:column}
-.typr{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:var(--space-6);padding-block:var(--space-6);border-top:1px solid var(--line);align-items:baseline}
-.typr .meta{font:400 12px/18px var(--font-mono);color:var(--ink-muted)}
-.typr .meta b{display:block;font-weight:500;color:var(--ink);font-size:13px}
-.scale{display:flex;flex-direction:column;gap:var(--space-2)}
-.scale>div{display:grid;grid-template-columns:110px 70px minmax(0,1fr);gap:var(--space-4);align-items:center;font:400 13px/20px var(--font-mono)}
-.scale i{display:block;height:12px;background:var(--flow)}
-.radii{display:flex;gap:var(--space-6);flex-wrap:wrap}
-.radii>div{display:flex;flex-direction:column;gap:var(--space-2);font:400 12px/18px var(--font-mono);color:var(--ink-muted)}
-.radii i{display:block;width:96px;height:64px;border:1.5px solid var(--line-strong);background:var(--surface-raised)}
-.comp{display:flex;flex-direction:column;gap:var(--space-4)}
-.stage{border:1px solid var(--line);background:var(--surface);padding:var(--space-8);overflow-x:auto}
-.stage.flush{padding:0}
-.stage .row{display:flex;gap:var(--space-4);flex-wrap:wrap;align-items:center}
-.code{position:relative}
-.code pre{margin:0;background:var(--surface-sunken);border:1px solid var(--line);padding:var(--space-4);overflow-x:auto;font:400 12.5px/20px var(--font-mono);color:var(--ink);white-space:pre}
-.code button{position:absolute;top:8px;right:8px;font:500 12px/16px var(--font-sans);background:var(--surface-raised);color:var(--ink);border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:4px 10px;cursor:pointer}
-details.json summary{cursor:pointer;font:500 13px/20px var(--font-mono);color:var(--flow)}
-details.json pre{margin:var(--space-2) 0 0;max-height:320px;overflow:auto;background:var(--surface-sunken);border:1px solid var(--line);padding:var(--space-4);font:400 12px/18px var(--font-mono);white-space:pre-wrap}
-.blk{display:flex;flex-direction:column;gap:var(--space-3);padding-top:var(--space-6);border-top:1px solid var(--line-strong)}
-.blk .hd{display:flex;gap:var(--space-4);align-items:baseline;flex-wrap:wrap}
-.blk .stage .ws section{padding-block:var(--space-8)}
-.blk .stage .ws .in{padding-inline:var(--space-6)}
-.voice{width:100%;border-collapse:collapse;max-width:900px}
-.voice th,.voice td{text-align:left;padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--line);vertical-align:top;font-size:15px}
-.voice thead th{background:var(--surface-sunken);font:500 14px/20px var(--font-sans);color:var(--ink-muted)}
-.voice td.not{color:var(--ink-muted);text-decoration:line-through;text-decoration-color:var(--fail)}
-.ftr{font:400 13px/20px var(--font-sans);color:var(--ink-muted);padding-block:var(--space-8) var(--space-16)}
-@media (max-width:900px){
- .dh .in2,.doc{padding:0 var(--space-4)}
- .doc{grid-template-columns:minmax(0,1fr)}
- .toc{display:none}
- .dx{font-size:40px;line-height:44px}.d1{font-size:30px;line-height:36px}
- .principles{grid-template-columns:minmax(0,1fr)}
- .swr{grid-template-columns:64px minmax(0,1fr);gap:var(--space-3)}
- .swr .usage,.swr .cr{grid-column:1/-1;text-align:left}
- .typr{grid-template-columns:minmax(0,1fr)}
- .dh .t{display:none}
+/* Guide layout: contents rail + one reading column. Everything on this page is generated from design-system/:
+   tokens.json, components.json (from tools/design_system.py build), each component's preview.html and README.md,
+   and the brand book markdown. Add a component there and it appears here. */
+.dh { position: sticky; top: 0; z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.dh__in { display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; max-width: 1440px; margin: 0 auto; padding: var(--space-3) max(16px, var(--space-6)); }
+.dh__in img { width: 120px; height: auto; }
+.dh__t { font: 500 12px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+.dh__sp { flex: 1; }
+.dh a.lnk { font: 500 14px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
+.dh a.lnk:hover { text-decoration: underline; }
+.dh select { font: 400 13px/18px var(--font-sans); color: var(--ink); background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 4px 6px; }
+.doc { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--space-12); max-width: 1440px; margin: 0 auto; padding: var(--space-8) max(16px, var(--space-6)) var(--space-24); }
+.toc { position: sticky; top: 72px; align-self: start; max-height: calc(100vh - 96px); overflow: auto; display: flex; flex-direction: column; gap: 2px; font: 400 14px/22px var(--font-sans); }
+.toc a { color: var(--ink-muted); text-decoration: none; padding: 2px 0; }
+.toc a:hover { color: var(--ink); }
+.toc .g { margin-top: var(--space-4); font: 500 11px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-subtle); }
+.dm { min-width: 0; display: flex; flex-direction: column; gap: var(--space-16); }
+.dm section { display: flex; flex-direction: column; gap: var(--space-6); scroll-margin-top: 80px; }
+.eb { font: 500 12px/16px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); }
+.dt { margin: 0; font: 300 48px/52px var(--font-sans); letter-spacing: -.025em; color: var(--ink); }
+.d1 { margin: 0; font: 400 32px/38px var(--font-sans); letter-spacing: -.015em; color: var(--ink); }
+.d2 { margin: 0; font: 500 20px/28px var(--font-sans); color: var(--ink); }
+.lead { margin: 0; font: 400 18px/28px var(--font-sans); color: var(--ink-muted); max-width: 72ch; }
+.sm { font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+.sm a { color: var(--flow); }
+code, pre { font-family: var(--font-mono); font-size: 13px; }
+:not(pre) > code { background: var(--surface-sunken); padding: 1px 4px; border-radius: var(--radius-sm); }
+.md { max-width: 80ch; font: 400 16px/26px var(--font-sans); color: var(--ink); }
+.md h1 { font: 400 32px/38px var(--font-sans); margin: var(--space-8) 0 var(--space-4); }
+.md h2 { font: 400 24px/30px var(--font-sans); margin: var(--space-8) 0 var(--space-3); padding-top: var(--space-6); border-top: 1px solid var(--line); }
+.md h3 { font: 500 18px/26px var(--font-sans); margin: var(--space-6) 0 var(--space-2); }
+.md table { border-collapse: collapse; width: 100%; font-size: 14px; display: block; overflow-x: auto; }
+.md th, .md td { text-align: left; border-bottom: 1px solid var(--line); padding: 6px 10px; vertical-align: top; }
+.md th { background: var(--surface-sunken); font-weight: 500; }
+.md a { color: var(--flow); }
+.md blockquote { margin: 0; padding-left: var(--space-4); border-left: 2px solid var(--line-strong); color: var(--ink-muted); }
+.md > :first-child { margin-top: 0; }
+.how { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0 var(--space-8); border-top: 1px solid var(--line-strong); }
+.how > div { padding-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.how pre { margin: 0; padding: var(--space-3); background: var(--surface-sunken); overflow-x: auto; white-space: pre-wrap; color: var(--ink); }
+.sw { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-4); }
+.sw > div { border: 1px solid var(--line); background: var(--surface-raised); display: flex; flex-direction: column; }
+.sw .chip { display: grid; grid-template-columns: 1fr 1fr; height: 64px; border-bottom: 1px solid var(--line); }
+.sw .meta { padding: var(--space-3); display: flex; flex-direction: column; gap: 2px; }
+.sw b { font: 500 14px/20px var(--font-mono); color: var(--ink); }
+.sw .v { font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.typr { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: var(--space-6); padding: var(--space-4) 0; border-top: 1px solid var(--line); align-items: baseline; }
+.typr .meta { font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.typr .meta b { display: block; color: var(--ink); font-weight: 500; }
+.bars > div { display: grid; grid-template-columns: 120px 70px minmax(0, 1fr); gap: var(--space-3); align-items: center; padding: 4px 0; font: 400 13px/18px var(--font-mono); color: var(--ink); }
+.bars i { display: block; height: 10px; background: var(--flow); }
+.comp { border-top: 1px solid var(--line-strong); padding-top: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); scroll-margin-top: 80px; }
+.comp__hd { display: flex; gap: var(--space-4); align-items: baseline; flex-wrap: wrap; }
+.comp__hd .sp { flex: 1; }
+.comp__links { display: flex; gap: var(--space-4); flex-wrap: wrap; font: 400 13px/18px var(--font-sans); }
+.comp__links a { color: var(--flow); }
+.stage { border: 1px solid var(--line); background: var(--surface); overflow-x: auto; }
+.stage__bar { display: flex; gap: var(--space-2); align-items: center; justify-content: space-between; padding: 6px var(--space-3); border-bottom: 1px solid var(--line); background: var(--surface-sunken); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.stage__bar button { font: inherit; color: var(--ink); background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 1px 8px; cursor: pointer; }
+.stage__body { min-width: 0; }
+.stage__body.is-narrow { max-width: 390px; border-right: 1px dashed var(--line-strong); }
+details.src summary { cursor: pointer; font: 400 13px/20px var(--font-sans); color: var(--ink-muted); }
+details.src pre { margin: var(--space-2) 0 0; padding: var(--space-3); background: var(--surface-sunken); color: var(--ink); overflow-x: auto; max-height: 420px; }
+.blk { display: flex; flex-direction: column; gap: var(--space-3); }
+.blk .stage .aq-section { padding-block: var(--space-8); }
+.err { color: var(--fail); }
+@media (max-width: 900px) {
+  .doc { grid-template-columns: minmax(0, 1fr); }
+  .toc { position: static; max-height: none; flex-direction: row; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
+  .toc .g { width: 100%; margin-top: var(--space-2); }
+  .typr { grid-template-columns: minmax(0, 1fr); gap: var(--space-2); }
+  .dt { font-size: 36px; line-height: 40px; }
 }
 </style>
 </head>
 <body>
-<header class="dh"><div class="in2">
- <a href="index.html#home" aria-label="Aquemi site"><img class="on-light" src="brand/lockup-navy.svg" alt="aquemi"><img class="on-dark" src="brand/lockup-limestone.svg" alt="aquemi"></a>
- <span class="t">Design system</span><span class="sp"></span>
+<header class="dh"><div class="dh__in">
+ <a href="index.html#home" aria-label="Aquemi site"><img class="aq-logo--on-light" src="brand/lockup-navy.svg" alt="aquemi"><img class="aq-logo--on-dark" src="brand/lockup-limestone.svg" alt="aquemi"></a>
+ <span class="dh__t">Design system</span><span class="dh__sp"></span>
+ <a class="lnk" href="index.html#home">Site</a>
+ <a class="lnk" id="artlink" href="https://claude.ai/artifact/3DHFfts7CMzKm1ZFYt7p99">Claude design system</a>
+ <a class="lnk" href="https://github.com/Aquemi-Official/aquemi-web/tree/main/design-system">Source on GitHub</a>
  <select id="wtheme" aria-label="Theme"><option value="">System theme</option><option value="light">Light</option><option value="dark">Dark</option></select>
- <a class="aq-btn aq-btn--secondary" href="index.html#home" style="height:36px;padding:0 14px">View the site</a>
 </div></header>
 <div class="doc">
-<nav class="toc" aria-label="Contents"><span class="eb">Contents</span>
- <a href="#principles">Principles</a><a href="#logo">Logo</a><a href="#colour">Colour</a><a href="#type">Typography</a><a href="#space">Space and shape</a><a href="#components">Components</a><a href="#blocks">Page blocks</a><a href="#voice">Voice and writing</a><a href="#imagery">Imagery and motion</a>
+<nav class="toc" aria-label="Contents" id="toc">
+ <span class="g">Start</span><a href="#overview">Overview</a><a href="#extend">Change or extend it</a>
+ <span class="g">Foundations</span><a href="#colour">Colour</a><a href="#type">Typography</a><a href="#space">Space and shape</a>
 </nav>
 <main class="dm">
 
-<section id="principles">
- <span class="eb">Aquemi design system · v1</span>
- <h1 class="dx">Precise, quiet, finished.</h1>
- <p class="lead">Aquemi designs and fabricates clean water systems for pharmaceutical manufacturing. The people we talk to are engineers, validation leads and quality managers who read specifications closely and answer to auditors. The brand should feel like the equipment: nothing extra.</p>
- <div class="principles">
-  <div data-n="01"><h3 class="d3">Precision over persuasion</h3><p class="sm">Show the number, the standard and the method. Let the specification make the case.</p></div>
-  <div data-n="02"><h3 class="d3">Space is a material</h3><p class="sm">Generous white space, few elements, square edges. A page should read like a clean room looks.</p></div>
-  <div data-n="03"><h3 class="d3">One flowing line</h3><p class="sm">The swash from <i>e</i> into <i>m</i> is the single expressive gesture. Use it through the logo and the arc motif only.</p></div>
+<section id="overview">
+ <span class="eb">Aquemi design system</span>
+ <h1 class="dt">Precise, quiet, finished.</h1>
+ <p class="lead">Every token, component and page block on this page is read from <code>design-system/</code> in the repository: the same files the website loads and the Claude design system is published from. Change a file there and this page, the site and the next Claude session all follow.</p>
+ <p class="sm" id="counts"></p>
+</section>
+
+<section id="extend">
+ <span class="eb">Working on the system</span>
+ <h2 class="d1">Change or extend it</h2>
+ <div class="how">
+  <div><h3 class="d2">Change a colour, size or space</h3><p class="sm">Edit <code>design-system/tokens.json</code>, then rebuild. Every component and page updates.</p><pre>python tools/design_system.py build</pre></div>
+  <div><h3 class="d2">Adjust a component</h3><p class="sm">Styles are in <code>design-system/components/bundle.css</code>, rules in the component's <code>README.md</code>, the example in its <code>preview.html</code>. Each component below links to all three.</p></div>
+  <div><h3 class="d2">Add a component</h3><p class="sm">Scaffold it, write the README and preview with real copy, style it with tokens only, then build and check.</p><pre>python tools/design_system.py new PullQuote "Page sections"
+python tools/design_system.py build
+python tools/design_system.py check</pre></div>
+  <div><h3 class="d2">With Claude</h3><p class="sm">Open this repository in Claude Code and ask, for example, "add a comparison table component to the design system". <code>CLAUDE.md</code> gives the agent the workflow, including publishing to the Claude design system.</p></div>
  </div>
 </section>
 
-<section id="logo">
- <span class="eb">Identity</span><h2 class="d1">Logo, mark and lockup</h2>
- <p class="lead">Three parts: the lowercase wordmark, the four-dot mark, and the lockup that pairs them. Use the supplied files; never redraw, recolour or re-letter them.</p>
- <div class="logos">
-  <figure><div class="tile on-surface"><img src="brand/lockup-navy.svg" alt="Aquemi lockup, navy"></div><figcaption>lockup-navy.svg · on surface, raised, limestone · header on wide screens · min 140 px</figcaption></figure>
-  <figure><div class="tile on-navy"><img src="brand/lockup-limestone.svg" alt="Aquemi lockup, limestone"></div><figcaption>lockup-limestone.svg · on navy only</figcaption></figure>
-  <figure><div class="tile on-lime"><img src="brand/logo-navy.svg" alt="Aquemi wordmark, navy"></div><figcaption>logo-navy.svg · wordmark alone · phone navigation · min 96 px</figcaption></figure>
-  <figure><div class="tile on-navy"><img src="brand/logo-limestone.svg" alt="Aquemi wordmark, limestone"></div><figcaption>logo-limestone.svg · footer at 160 px</figcaption></figure>
-  <figure><div class="tile sq on-surface"><img src="brand/mark-navy.svg" alt="Aquemi mark, navy"></div><figcaption>mark-navy.svg · favicons, avatars, badges · min 16 px</figcaption></figure>
-  <figure><div class="tile sq on-navy"><img src="brand/mark-limestone.svg" alt="Aquemi mark, limestone"></div><figcaption>mark-limestone.svg · on navy</figcaption></figure>
- </div>
- <ul class="rules">
-  <li>Clear space equal to the height of the <i>a</i> around the wordmark and lockup; half the mark's width around the mark.</li>
-  <li>Placement: top left in navigation at 112 px (wordmark) or 152 px (lockup); bottom left in the footer at 160 px.</li>
-  <li>Don't stretch, outline, shadow, rotate or place the logo on <code>flow</code> or a busy image.</li>
- </ul>
-</section>
+<section id="colour"><span class="eb">Foundations</span><h2 class="d1">Colour</h2><p class="lead">Light value left, dark value right. Text colours show their contrast on <code>surface</code> in each theme.</p><div class="sw" id="swatches"></div></section>
+<section id="type"><span class="eb">Foundations</span><h2 class="d1">Typography</h2><div id="typescale"></div></section>
+<section id="space"><span class="eb">Foundations</span><h2 class="d1">Space and shape</h2><div class="bars" id="spacing"></div><div class="bars" id="radii"></div></section>
 
-<section id="colour">
- <span class="eb">Colour · tokens.json</span><h2 class="d1">Mostly neutral, one accent</h2>
- <p class="lead">Navy carries the brand, Limestone softens it, Flow Blue is the only accent. Each swatch shows the light value on the left and the dark-theme value on the right.</p>
- <div><div class="share" aria-label="Share of a typical page"><span style="flex:70;background:#FAF8F6" title="Surfaces 70%"></span><span style="flex:20;background:#0F2A47" title="Navy / action 20%"></span><span style="flex:8;background:#EBDFD6" title="Limestone 8%"></span><span style="flex:2;background:#24679A" title="Flow 2%"></span></div>
- <p class="sm" style="margin-top:8px">Share of a typical page: surfaces about 70% · navy and actions 20% · limestone 8% · flow 2% or less.</p></div>
- <div class="sw" id="swatches"><p class="sm">Loading tokens…</p></div>
- <ul class="rules">
-  <li>Set text in <code>ink</code>; <code>ink-muted</code> for secondary copy; <code>ink-subtle</code> for metadata on surface and surface-raised only.</li>
-  <li>Use <code>flow</code> as a line or a word: links, chart lines, one highlighted figure. Never a large fill, never a button.</li>
-  <li>Status colours appear only in data and always with a word or icon.</li>
-  <li>No gradients, no tinted shadows, no colour outside these tokens.</li>
- </ul>
-</section>
-
-<section id="type">
- <span class="eb">Typography · Geist and Geist Mono</span><h2 class="d1">Read in Geist, measure in Geist Mono</h2>
- <p class="lead">Headlines run light and tightly tracked; size and space make the hierarchy, not bold. 500 is the heaviest weight, for <code>h3</code> and <code>label</code> only. Every measurement is set in mono with tabular figures.</p>
- <div class="typ" id="typescale"></div>
-</section>
-
-<section id="space">
- <span class="eb">Space and shape</span><h2 class="d1">Spacing, radius, layout</h2>
- <p class="lead">A 12-column grid, 1280 px wide, 24 px gutters. Section padding 96 px on desktop, 64 px on phones. Corners are square by default.</p>
- <div class="scale" id="spacing"></div>
- <div class="radii" id="radii"></div>
- <p class="sm" id="layoutTokens"></p>
-</section>
-
-<section id="components">
- <span class="eb">Components</span><h2 class="d1">Components</h2>
- <p class="lead">Five components from the design system. Class names are the contract; all values come from the tokens.</p>
-
- <div class="comp"><h3 class="d2">Button</h3><p class="p muted">One primary per screen region. Labels are sentence-case verbs, two to four words. Height 44 px.</p>
-  <div class="stage"><div class="row"><a class="aq-btn aq-btn--primary" href="#components">Request a proposal <span class="aq-btn__arrow">→</span></a><button class="aq-btn aq-btn--secondary" type="button">Download datasheet</button><a class="aq-btn aq-btn--link" href="#components">Explore systems <span class="aq-btn__arrow">→</span></a><button class="aq-btn aq-btn--primary" type="button" disabled style="background:var(--surface-sunken);color:var(--ink-subtle)!important;cursor:not-allowed">Submit request</button></div></div>
-  <div class="code"><pre>&lt;a class="aq-btn aq-btn--primary" href="…"&gt;Request a proposal &lt;span class="aq-btn__arrow"&gt;→&lt;/span&gt;&lt;/a&gt;
-&lt;button class="aq-btn aq-btn--secondary" type="button"&gt;Download datasheet&lt;/button&gt;
-&lt;a class="aq-btn aq-btn--link" href="…"&gt;Explore systems &lt;span class="aq-btn__arrow"&gt;→&lt;/span&gt;&lt;/a&gt;</pre><button type="button" class="cp">Copy</button></div></div>
-
- <div class="comp"><h3 class="d2">Navigation bar</h3><p class="p muted">Logo left, six sections, one call to action. Below 860 px the links collapse into a menu toggle and the wordmark replaces the lockup.</p>
-  <div class="stage flush"><div class="ws" id="navdemo"></div></div></div>
-
- <div class="comp"><h3 class="d2">Specification table</h3><p class="p muted">Parameter, value in mono with its unit, then the method or pharmacopoeia reference. Highlight at most one row. Status always carries its word.</p>
-  <div class="stage"><div class="aq-scroll"><table class="aq-spec"><caption>Water for Injection · USP / Ph. Eur. · example data</caption><thead><tr><th>Parameter</th><th>Limit</th><th>Example result</th><th>Method</th><th>Status</th></tr></thead><tbody>
-  <tr><th scope="row">Conductivity</th><td class="aq-spec__value">≤ 1.3 µS/cm @ 25 °C</td><td class="aq-spec__value">0.62 µS/cm</td><td class="aq-spec__method">USP &lt;645&gt; stage 1</td><td><span style="color:var(--pass);font-weight:500">✓ Pass</span></td></tr>
-  <tr><th scope="row">Total organic carbon</th><td class="aq-spec__value">≤ 500 ppb</td><td class="aq-spec__value">48 ppb</td><td class="aq-spec__method">USP &lt;643&gt;</td><td><span style="color:var(--pass);font-weight:500">✓ Pass</span></td></tr>
-  <tr class="is-highlight"><th scope="row">Bacterial endotoxins</th><td class="aq-spec__value">&lt; 0.25 EU/mL</td><td class="aq-spec__value">&lt; 0.05 EU/mL</td><td class="aq-spec__method">USP &lt;85&gt;</td><td><span style="color:var(--pass);font-weight:500">✓ Pass</span></td></tr>
-  <tr><th scope="row">Microbial count</th><td class="aq-spec__value">≤ 10 CFU/100 mL</td><td class="aq-spec__value">6 CFU/100 mL</td><td class="aq-spec__method">USP &lt;1231&gt;</td><td><span style="color:var(--caution);font-weight:500">! Alert</span></td></tr>
-  </tbody></table></div></div>
-  <div class="code"><pre>&lt;div class="aq-scroll"&gt;&lt;table class="aq-spec"&gt;
-  &lt;caption&gt;Water for Injection · USP / Ph. Eur.&lt;/caption&gt;
-  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Parameter&lt;/th&gt;&lt;th&gt;Limit&lt;/th&gt;&lt;th&gt;Method&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-  &lt;tbody&gt;&lt;tr class="is-highlight"&gt;&lt;th scope="row"&gt;Bacterial endotoxins&lt;/th&gt;
-    &lt;td class="aq-spec__value"&gt;&amp;lt; 0.25 EU/mL&lt;/td&gt;&lt;td class="aq-spec__method"&gt;USP &amp;lt;85&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
-&lt;/table&gt;&lt;/div&gt;</pre><button type="button" class="cp">Copy</button></div></div>
-
- <div class="comp"><h3 class="d2">Standard tag</h3><p class="p muted">Names the code a system is built to, exactly as published. The only pill shape in the system. List only standards a system genuinely meets.</p>
-  <div class="stage"><div class="aq-tags"><span class="aq-tag">USP &lt;645&gt;</span><span class="aq-tag">Ph. Eur.</span><span class="aq-tag">ASME BPE</span><span class="aq-tag">GAMP 5</span><span class="aq-tag">21 CFR Part 11</span><span class="aq-tag">EN 285</span><span class="aq-tag">ISPE Baseline Guide Vol. 4</span></div></div>
-  <div class="code"><pre>&lt;div class="aq-tags"&gt;&lt;span class="aq-tag"&gt;ASME BPE&lt;/span&gt;&lt;span class="aq-tag"&gt;GAMP 5&lt;/span&gt;&lt;/div&gt;</pre><button type="button" class="cp">Copy</button></div></div>
-
- <div class="comp"><h3 class="d2">Text field</h3><p class="p muted">Label above, help below. Units sit inside the field in mono. Errors say what to enter, not just that something is wrong.</p>
-  <div class="stage"><div class="form ws" style="background:none"><div class="aq-field"><label class="aq-field__label" for="tf1">Company</label><input class="aq-field__input" id="tf1" placeholder="e.g. Northfield Biologics"></div>
-  <div class="aq-field"><label class="aq-field__label" for="tf2">Required capacity</label><div class="aq-field__suffix"><input class="aq-field__input" id="tf2" value="2,500" inputmode="numeric"><span class="aq-field__unit">L/h</span></div><p class="aq-field__help">Peak demand at points of use.</p></div>
-  <div class="aq-field"><label class="aq-field__label" for="tf3">Loop temperature</label><div class="aq-field__suffix"><input class="aq-field__input" id="tf3" value="140" aria-invalid="true" style="border-color:var(--fail)"><span class="aq-field__unit">°C</span></div><p class="aq-field__help" style="color:var(--fail)">Enter a temperature between 4 and 95 °C.</p></div></div></div>
-  <div class="code"><pre>&lt;div class="aq-field"&gt;
-  &lt;label class="aq-field__label" for="cap"&gt;Required capacity&lt;/label&gt;
-  &lt;div class="aq-field__suffix"&gt;&lt;input class="aq-field__input" id="cap" inputmode="numeric"&gt;&lt;span class="aq-field__unit"&gt;L/h&lt;/span&gt;&lt;/div&gt;
-  &lt;p class="aq-field__help"&gt;Peak demand at points of use.&lt;/p&gt;
-&lt;/div&gt;</pre><button type="button" class="cp">Copy</button></div></div>
-</section>
+<div id="components" style="display:contents"></div>
 
 <section id="blocks">
- <span class="eb">Page blocks · content/pages.json</span><h2 class="d1">Page blocks</h2>
- <p class="lead">Every page on the site is a hero, a list of blocks and a closing band. Each example below is a real block taken from the site's content, rendered by the same code the site uses. Open the JSON to see its shape.</p>
- <div id="blocklib" class="comp"><p class="sm">Loading blocks…</p></div>
+ <span class="eb">From the live site</span>
+ <h2 class="d1">Page blocks with real content</h2>
+ <p class="lead">Each block type in <code>content/pages.json</code>, rendered with its first real example on the site.</p>
+ <div id="blocklib" class="dm" style="gap:var(--space-12)"></div>
 </section>
 
-<section id="voice">
- <span class="eb">Voice and writing</span><h2 class="d1">Write like a senior process engineer</h2>
- <p class="lead">Plain, exact and confident without selling. We for Aquemi, you for the client. Lead with the outcome, then the evidence, and name the standard every time a claim depends on one.</p>
- <div class="aq-scroll"><table class="voice"><thead><tr><th>Write</th><th>Not</th></tr></thead><tbody>
-  <tr><td>Every skid is factory acceptance tested before it ships.</td><td class="not">Our rigorous quality processes ensure excellence.</td></tr>
-  <tr><td>Hot water sanitization at 80 °C, no chemicals in the loop.</td><td class="not">Cutting-edge sanitization technology.</td></tr>
-  <tr><td>Validation documents follow GAMP 5 and arrive with the equipment.</td><td class="not">Seamless validation support!</td></tr>
-  <tr><td>Conductivity holds below 1.1 µS/cm at 25 °C across the loop.</td><td class="not">Industry-leading water quality.</td></tr>
- </tbody></table></div>
- <ul class="rules">
-  <li><b>Sentence case</b> for every heading, button and nav item. Uppercase only in the eyebrow style.</li>
-  <li><b>Units:</b> a space between number and unit (80 °C, 1.1 µS/cm, 500 ppb TOC). SI units; imperial in brackets only on US-facing documents.</li>
-  <li><b>Abbreviations:</b> spell out on first use per page, then abbreviate: Water for Injection (WFI), Purified Water (PW), Clean-in-place (CIP).</li>
-  <li><b>Never write</b> revolutionary, world-class, cutting-edge, best-in-class, seamless or solutions-driven. No emoji, no exclamation marks.</li>
-  <li><b>Placeholders:</b> on this draft, any fact only Aquemi can supply is written in <span class="ws" style="display:inline"><span class="ph">[square brackets]</span></span> until it is confirmed. Never publish an invented figure.</li>
- </ul>
-</section>
-
-<section id="imagery">
- <span class="eb">Imagery, motion, states</span><h2 class="d1">Imagery and motion</h2>
- <div class="principles">
-  <div data-n="IMAGERY"><h3 class="d3">The work itself</h3><p class="sm">Electropolished 316L, orbital welds, sanitary valves, skids on the shop floor, installed loops. Cool, even light; true whites. Avoid lab-coat stock, splashing water, glowing molecules, globes and handshakes.</p></div>
-  <div data-n="MOTION"><h3 class="d3">Steady flow</h3><p class="sm">200 ms for controls, 400–600 ms for section reveals, ease cubic-bezier(0.2, 0, 0, 1). Fade and move at most 16 px. Respect reduced motion.</p></div>
-  <div data-n="STATES"><h3 class="d3">Visible focus</h3><p class="sm">A 2 px focus ring in <code>focus</code> with a 2 px offset on every interactive element. Primary hover shifts to <code>action-hover</code>; links underline on hover.</p></div>
- </div>
- <div class="stage" style="position:relative;overflow:hidden;min-height:200px"><div class="ws" style="background:none"><svg viewBox="0 0 420 300" style="position:absolute;right:-1px;bottom:-1px;width:min(50%,360px);height:auto" aria-hidden="true"><path d="M420 1.5 A 300 300 0 0 0 120 300" fill="none" style="stroke:var(--line-strong)" stroke-width="1.5"/><path d="M420 120 A 180 180 0 0 0 240 300" fill="none" style="stroke:var(--flow)" stroke-width="1.5"/></svg></div>
-  <p class="eb">The arc motif</p><p class="p" style="max-width:420px;margin-top:8px">Quarter-circle arcs in one 1.5 px stroke of <code>line-strong</code>, <code>flow</code>, or limestone on navy, cut at the edge of a band. At most one arc composition per screen. Never animated on a loop, never filled.</p></div>
- <p class="sm">Interface icons: none supplied yet. Until they are, use Lucide at a 1.5 px stroke, 20 px, coloured <code>ink</code> or <code>ink-muted</code>. Process diagrams use ISA-5.1 / P&amp;ID symbols.</p>
-</section>
-
-<p class="ftr">Source of truth: the Aquemi design system. Copies in this repo: <a href="design/tokens.json">design/tokens.json</a>, <a href="design/brand-book.md">design/brand-book.md</a>, <a href="design/website.md">design/website.md</a>. Styles: <a href="assets/aquemi.css">assets/aquemi.css</a>.</p>
+<div id="docs" style="display:contents"></div>
 </main>
 </div>
-
 <script src="assets/aquemi-site.js"></script>
 <script>
 (function(){
 var $=function(id){return document.getElementById(id)},e=AQ.e;
+var REPO='https://github.com/Aquemi-Official/aquemi-web';
 AQTheme.bind($('wtheme'));
-document.addEventListener('click',function(ev){var b=ev.target.closest('.cp');if(!b)return;var t=b.previousElementSibling.textContent;
- navigator.clipboard.writeText(t).then(function(){b.textContent='Copied'},function(){var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'})});
+function get(u,kind){return fetch(u,{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(u+' '+r.status);return kind==='json'?r.json():r.text()})}
+function md(s){return window.marked?marked.parse(s):'<pre>'+e(s)+'</pre>'}
+function toc(group,items){$('toc').insertAdjacentHTML('beforeend','<span class="g">'+e(group)+'</span>'+items.map(function(x){return '<a href="#'+e(x[0])+'">'+e(x[1])+'</a>'}).join(''))}
+
+/* Foundations, from tokens.json */
 function hex(c){c=String(c).replace('#','');if(c.length===3)c=c.split('').map(function(x){return x+x}).join('');var n=parseInt(c.slice(0,6),16);return [n>>16&255,n>>8&255,n&255]}
 function lum(c){return hex(c).map(function(v){v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)}).reduce(function(a,v,i){return a+v*[.2126,.7152,.0722][i]},0)}
-function ratio(a,b){var x=lum(a),y=lum(b);return ((Math.max(x,y)+.05)/(Math.min(x,y)+.05)).toFixed(1)}
-fetch('design/tokens.json').then(function(r){return r.json()}).then(function(T){
+function ratio(a,b){if(!/^#/.test(a)||!/^#/.test(b))return '';var x=lum(a),y=lum(b);return ((Math.max(x,y)+.05)/(Math.min(x,y)+.05)).toFixed(1)}
+get('design-system/tokens.json','json').then(function(T){
  var col={};T.color.tokens.forEach(function(t){col[t.name]=typeof t.value==='string'?{light:t.value,dark:t.value}:t.value});
- $('swatches').innerHTML=T.color.tokens.map(function(t){var v=col[t.name],L=v.light,Dk=v.dark||L;
-  var cr=/^(ink|flow|line-strong|pass|caution|fail|focus)/.test(t.name)?'vs surface '+ratio(L,col.surface.light)+':1 · '+ratio(Dk,col.surface.dark)+':1':(t.name==='on-action'?'vs action '+ratio(L,col.action.light)+':1 · '+ratio(Dk,col.action.dark)+':1':'');
-  return '<div class="swr"><div class="chipx"><span style="background:'+e(L)+'"></span><span style="background:'+e(Dk)+'"></span></div><div><div class="nm">'+e(t.name)+'</div><div class="vals">'+e(L)+' · '+e(Dk)+'</div></div><p class="sm usage">'+e(t.usage||'')+'</p><div class="cr">'+e(cr)+'</div></div>'}).join('');
- $('typescale').innerHTML=T.type.groups.map(function(g){return g.styles.map(function(s){var fam=T.type.families[g.family]||'';
-  var st='font-family:'+fam.replace(/"/g,"'")+';font-size:'+s.fontSize+';line-height:'+s.lineHeight+';font-weight:'+s.fontWeight+(s.letterSpacing?';letter-spacing:'+s.letterSpacing:'')+(s.name==='eyebrow'?';text-transform:uppercase':'')+(g.family==='mono'?';font-variant-numeric:tabular-nums':'')+';overflow-wrap:anywhere';
-  return '<div class="typr"><div style="'+e(st)+'">'+e(s.sample||s.name)+'</div><div class="meta"><b>'+e(s.name)+'</b>'+e(g.family==='mono'?'Geist Mono':'Geist')+' · '+e(s.fontSize)+' / '+e(s.lineHeight)+' · '+e(s.fontWeight)+(s.letterSpacing?' · '+e(s.letterSpacing):'')+'<br>'+e(s.usage||'')+'</div></div>'}).join('')}).join('');
+ $('swatches').innerHTML=T.color.tokens.map(function(t){var v=col[t.name],L=v.light,Dk=v.dark||L,txt=/^(ink|flow|pass|caution|fail|focus|line-strong)/.test(t.name);
+  var cr=txt?ratio(L,col.surface.light)+':1 · '+ratio(Dk,col.surface.dark)+':1 on surface':'';
+  return '<div><div class="chip"><span style="background:'+e(L)+'"></span><span style="background:'+e(Dk)+'"></span></div><div class="meta"><b>'+e(t.name)+'</b><span class="v">'+e(L)+' · '+e(Dk)+(cr?' · '+e(cr):'')+'</span><span class="sm">'+e(t.usage||'')+'</span></div></div>'}).join('');
+ $('typescale').innerHTML=T.type.groups.map(function(g){return g.styles.map(function(s){var fam=T.type.families[s.family||g.family]||'';
+  var st='font-family:'+fam.replace(/"/g,"'")+';font-size:'+s.fontSize+';line-height:'+s.lineHeight+';font-weight:'+s.fontWeight+(s.letterSpacing?';letter-spacing:'+s.letterSpacing:'')+(s.name==='eyebrow'?';text-transform:uppercase':'')+';overflow-wrap:anywhere;color:var(--ink)';
+  return '<div class="typr"><div style="'+e(st)+'">'+e(s.sample||s.name)+'</div><div class="meta"><b>'+e(s.name)+'</b>'+e(s.fontSize+' / '+s.lineHeight+' · '+s.fontWeight)+'<br>'+e(s.usage||'')+'</div></div>'}).join('')}).join('');
  var px=function(v){return parseFloat(v)||0},mx=Math.max.apply(null,T.spacing.tokens.map(function(t){return px(t.value)}));
- $('spacing').innerHTML=T.spacing.tokens.map(function(t){return '<div><span>'+e(t.name)+'</span><span class="muted">'+e(t.value)+'</span><i style="width:'+(100*px(t.value)/mx).toFixed(1)+'%" title="'+e(t.usage||'')+'"></i></div>'}).join('');
- $('radii').innerHTML=T.radius.tokens.map(function(t){return '<div><i style="border-radius:'+e(t.value)+'"></i><span><b style="color:var(--ink);font-weight:500">'+e(t.name)+'</b> · '+e(t.value)+'</span><span style="max-width:160px">'+e(t.usage||'')+'</span></div>'}).join('')+
-  (T.shadow?T.shadow.tokens.map(function(t){return '<div><i style="box-shadow:var(--shadow-overlay);border-color:var(--line)"></i><span><b style="color:var(--ink);font-weight:500">'+e(t.name)+'</b></span><span style="max-width:160px">'+e(t.usage||'')+'</span></div>'}).join(''):'');
- $('layoutTokens').textContent=(T.layout?T.layout.tokens:[]).map(function(t){return t.name+' '+t.value+': '+t.usage}).join('  ·  ');
-}).catch(function(err){$('swatches').innerHTML='<p class="sm">Tokens could not load: '+e(err.message)+'</p>'});
-var BLOCKS=[['prose','Running text','Headline and paragraphs, kept to the 680 px text measure.'],['grid','Hairline grid','Items in a three-column grid separated by hairlines, not cards. Items can link to pages and carry a standard tag.'],['spec','Specification table','The SpecTable component. Use for limits, ranges and test methods.'],['steps','Sequence','Numbered only because the order is real: a project or process sequence.'],['diagram','Process diagram','Single-weight line art; the water path in flow. Three to seven stages.'],['options','Configurations and options','Two-column list of options with one line each.'],['docs','Documentation list','Deliverables on a sunken band.'],['readout','Readout','One headline measurement with its method. Only a standard limit or a confirmed figure.'],['tags','Standards strip','Standard tags on a sunken band, linking to Compliance.'],['faq','Questions','Collapsible questions and answers.'],['table','Table','A general comparison table in the SpecTable style.'],['band','Emphasis band','A quiet limestone band with one statement.'],['form','Form','TextField components with units and help text. Forms on the draft do not send.'],['case','Case study','Client, problem, system delivered, measured outcome.'],['related','Related pages','Links to related pages with their section and lead.']];
-fetch('content/pages.json').then(function(r){return r.json()}).then(function(d){AQ.setPages(d.pages);
- $('navdemo').innerHTML=AQ.wHead('Systems');
+ $('spacing').innerHTML=T.spacing.tokens.map(function(t){return '<div title="'+e(t.usage||'')+'"><span>'+e(t.name)+'</span><span class="sm">'+e(t.value)+'</span><i style="width:'+(100*px(t.value)/mx).toFixed(1)+'%"></i></div>'}).join('');
+ $('radii').innerHTML=T.radius.tokens.concat(T.layout?T.layout.tokens:[]).map(function(t){return '<div><span>'+e(t.name)+'</span><span class="sm">'+e(t.value)+'</span><span class="sm">'+e(t.usage||'')+'</span></div>'}).join('');
+}).catch(function(err){$('swatches').innerHTML='<p class="err">Tokens could not load: '+e(err.message)+'</p>'});
+
+/* Components, from components.json: live preview, guidelines, links to the source */
+get('design-system/components.json','json').then(function(M){
+ if(M.artifact)$('artlink').href=M.artifact;
+ var groups={};M.components.forEach(function(c){var g=c.group||'Other';(groups[g]=groups[g]||[]).push(c)});
+ var order=M.groups.filter(function(g){return groups[g]}).concat(Object.keys(groups).filter(function(g){return M.groups.indexOf(g)<0}));
+ $('counts').textContent=M.components.length+' components in '+order.length+' groups.';
+ $('components').innerHTML=order.map(function(g){var id='g-'+g.toLowerCase().replace(/\W+/g,'-');
+  return '<section id="'+id+'"><span class="eb">Components</span><h2 class="d1">'+e(g)+'</h2>'+groups[g].map(function(c){
+   var base=REPO+'/blob/main/design-system/components/'+c.name+'/';
+   return '<article class="comp" id="c-'+e(c.name)+'"><div class="comp__hd"><h3 class="d1" style="font-size:26px;line-height:32px">'+e(c.name)+'</h3><span class="sm">'+e(c.subtitle||'')+'</span><span class="sp"></span><span class="comp__links"><a href="'+base+'README.md">README</a><a href="'+base+'preview.html">Preview</a><a href="'+REPO+'/blob/main/design-system/components/bundle.css">Styles</a></span></div>'+
+    '<div class="stage"><div class="stage__bar"><span>preview.html</span><button type="button" data-narrow>Phone width</button></div><div class="stage__body" data-preview><p class="sm" style="padding:16px">Loading…</p></div></div>'+
+    '<div class="md" data-readme></div><details class="src"><summary>Show preview code</summary><pre data-code></pre></details></article>'}).join('')+'</section>'}).join('');
+ order.forEach(function(g){toc(g,groups[g].map(function(c){return ['c-'+c.name,c.name]}))});
+ toc('From the site',[['blocks','Page blocks']]);
+ M.components.forEach(function(c){var el=document.getElementById('c-'+c.name);
+  get(c.preview).then(function(h){var code=h;Object.keys(M.assets||{}).forEach(function(k){h=h.split(k).join(M.assets[k])});
+   el.querySelector('[data-preview]').innerHTML=h.replace(/^<!--[\s\S]*?-->\s*/,'');el.querySelector('[data-code]').textContent=code}).catch(function(err){el.querySelector('[data-preview]').innerHTML='<p class="err" style="padding:16px">'+e(err.message)+'</p>'});
+  get(c.readme).then(function(t){el.querySelector('[data-readme]').innerHTML=md(t)}).catch(function(){el.querySelector('[data-readme]').innerHTML='<p class="err">No README.md yet.</p>'})});
+ docs()}).catch(function(err){$('components').innerHTML='<section><p class="err">components.json could not load ('+e(err.message)+'). Run: python tools/design_system.py build</p></section>'});
+document.addEventListener('click',function(ev){var b=ev.target.closest('[data-narrow]');if(!b)return;var body=b.closest('.stage').querySelector('.stage__body');body.classList.toggle('is-narrow');b.textContent=body.classList.contains('is-narrow')?'Full width':'Phone width'});
+
+/* Brand book, website plan and page inventory, rendered from markdown */
+function docs(){var D=[['brand','Brand book','design-system/README.md'],['website','Website plan','design-system/website.md'],['inventory','Page inventory','design-system/page-inventory.md']];
+ $('docs').innerHTML=D.map(function(d){return '<section id="'+d[0]+'"><span class="eb">Guidelines</span><h2 class="d1">'+e(d[1])+'</h2><p class="sm"><a href="'+REPO+'/blob/main/'+d[2]+'">'+e(d[2])+'</a></p><div class="md" data-doc="'+e(d[2])+'"></div></section>'}).join('');
+ toc('Guidelines',D.map(function(d){return [d[0],d[1]]}));
+ D.forEach(function(d){var box=document.querySelector('[data-doc="'+d[2]+'"]');get(d[2]).then(function(t){box.innerHTML=md(t.replace(/^#\s.*\n/,''))}).catch(function(err){box.innerHTML='<p class="err">'+e(err.message)+'</p>'})})}
+
+/* Page blocks with real content from content/pages.json */
+var BLOCKS=[['prose','Prose'],['grid','LinkGrid'],['options','OptionList'],['steps','ProcessSteps'],['diagram','ProcessDiagram'],['readout','Readout'],['spec','SpecTable'],['table','SpecTable (table)'],['docs','DocList'],['tags','Band with StandardTag'],['band','Band'],['faq','FAQ'],['case','CaseStudy'],['form','EnquiryForm'],['related','LinkGrid (related pages)']];
+get('content/pages.json','json').then(function(d){AQ.setPages(d.pages);
  $('blocklib').innerHTML=BLOCKS.map(function(b){var src=null;d.pages.some(function(p){return (p.blocks||[]).some(function(x){if(x.type===b[0]){src={p:p,b:x};return true}})});
   if(!src)return '';
-  return '<div class="blk"><div class="hd"><h3 class="d2">'+e(b[1])+'</h3><code class="mono muted">"type": "'+e(b[0])+'"</code></div><p class="p muted">'+e(b[2])+' Example from <a href="index.html#'+e(src.p.id)+'">'+e(src.p.nav_label)+'</a>.</p><div class="stage flush"><div class="ws">'+AQ.wBlock(src.b)+'</div></div><details class="json"><summary>Show JSON</summary><pre>'+e(JSON.stringify(src.b,null,1))+'</pre></details></div>'}).join('');
-}).catch(function(err){$('blocklib').innerHTML='<p class="sm">Blocks could not load: '+e(err.message)+'</p>'});
+  return '<div class="blk"><div class="comp__hd"><h3 class="d2">'+e(b[1])+'</h3><code>"type": "'+e(b[0])+'"</code><span class="sp"></span><span class="sm">from <a href="index.html#'+e(src.p.id)+'">'+e(src.p.nav_label)+'</a></span></div><div class="stage"><div class="aq-page">'+AQ.wBlock(src.b)+'</div></div><details class="src"><summary>Show JSON</summary><pre>'+e(JSON.stringify(src.b,null,1))+'</pre></details></div>'}).join('');
+}).catch(function(err){$('blocklib').innerHTML='<p class="err">Blocks could not load: '+e(err.message)+'</p>'});
 })();
 </script>
 </body>
