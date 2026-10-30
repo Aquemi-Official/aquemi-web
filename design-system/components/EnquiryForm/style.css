@@ -70,6 +70,22 @@
 .aq-form .aq-checks input { flex: none; width: var(--space-4); height: var(--space-4); margin: 0; accent-color: var(--flow); }
 .aq-form .aq-checks input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
+/* Hidden conditional fields, file upload */
+.aq-form [hidden] { display: none; }
+.aq-field__file { font: 400 14px/22px var(--font-sans); color: var(--ink); padding: var(--space-4); border: 1px dashed var(--line-strong); border-radius: var(--radius-0); background: var(--surface-sunken); }
+.aq-field__file:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Stepped variant: each step is one numbered section; the progress list sits under the title row */
+.aq-form--steps { gap: var(--space-6); }
+.aq-form__progress { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); margin: 0; padding: 0; list-style: none; counter-reset: aq-form-step; }
+.aq-form__progress li { counter-increment: aq-form-step; font: 500 14px/20px var(--font-sans); color: var(--ink-subtle); }
+.aq-form__progress li::before { content: counter(aq-form-step) ".0 "; font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle); }
+.aq-form__progress li[aria-current="step"], .aq-form__progress li[aria-current="step"]::before { color: var(--flow); }
+.aq-form__step[hidden] { display: none; }
+.aq-form__step > .aq-form__actions { margin-top: var(--space-8); }
+.aq-form__note { margin: var(--space-4) 0 0; }
+.aq-form__step > .wform-msg { display: block; margin-top: var(--space-2); }
+
 /* Submit band and revision strip */
 .aq-form__actions {
   display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap;

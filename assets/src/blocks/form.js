@@ -1,7 +1,8 @@
-/* Block "form" -> EnquiryForm (data sheet) in SplitSection.
+/* Block "form" -> EnquiryForm (data sheet) in SplitSection. With "steps", wFormSteps renders one numbered section per step.
    Fields split into numbered sections: 1.0 the requirement, 2.0 the trailing run of contact fields (name, company, role,
    email, phone, site, contract). A field with "section": "<legend>" starts a new section; "sections": [..] renames them. */
 BLOCKS['form']=function(b,H){
+ if(b.steps)return split(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':''),wFormSteps(b));
  var F=b.fields||[],cut=F.length,C=/\b(name|company|role|e-?mail|phone|site|contract)\b/i,G=[],req=0;
  while(cut>0&&F[cut-1].kind!=='textarea'&&F[cut-1].kind!=='checkbox-group'&&C.test(F[cut-1].label||''))cut--;
  if(cut===0)cut=F.length;

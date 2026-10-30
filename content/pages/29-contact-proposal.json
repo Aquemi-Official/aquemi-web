@@ -6,17 +6,17 @@
  "meta": "Tell us the project stage, system type and capacity in L/h. An engineer replies within [response time] with questions or a budget proposal.",
  "path": "/contact/proposal/",
  "eyebrow": "REQUEST A PROPOSAL",
- "headline": "Request a proposal",
- "lead": "Tell us what stage your project is at, which system you need and how much water, in L/h. An engineer reads every request and replies within [response time].",
+ "headline": "Submit your URS or system parameters for an engineering review",
+ "lead": "Three short steps: system scope, sizing and contact. A process engineer, not a sales representative, reads every request and replies within [response time]. Not sure of a value? Choose \"Not sure yet\" and we work it out with you.",
  "tags": [
   "USP",
   "Ph. Eur.",
   "ASME BPE"
  ],
- "primary_cta": "Request a proposal",
+ "primary_cta": "Start the review request",
  "secondary_cta": {
-  "label": "Existing system? Request service",
-  "link": "contact-service"
+  "label": "Not ready yet? Get a sample turnover package",
+  "link": "cmp-documentation"
  },
  "blocks": [
   {
@@ -34,135 +34,184 @@
   },
   {
    "type": "form",
-   "h": "Project details",
-   "intro": "Fields marked required are the minimum we need to reply with useful questions. Attach documents by reply email after you submit.",
-   "fields": [
+   "anchor": "intake",
+   "nav": "Request",
+   "h": "Request an engineering review",
+   "intro": "Send what you have. Every technical question has a \"Not sure yet\" answer, and documents are optional.",
+   "submit": "Submit for engineering review",
+   "note": "An engineer replies within [response time]. Your specifications stay confidential [confidentiality terms, e.g. under NDA on request]. No unsolicited sales calls. [Privacy notice link]",
+   "steps": [
     {
-     "label": "Project stage",
-     "kind": "select",
-     "options": [
-      "Feasibility or budget estimate",
-      "Basic design or URS in preparation",
-      "URS ready, requesting proposals",
-      "Replacing or expanding an existing system"
-     ],
-     "required": true
+     "title": "System scope",
+     "next": "Continue to sizing",
+     "fields": [
+      {
+       "label": "Project stage",
+       "kind": "radio",
+       "required": true,
+       "options": [
+        "Feasibility or budget estimate",
+        "URS in preparation",
+        "URS ready, requesting proposals",
+        "Replacing or expanding an existing system"
+       ]
+      },
+      {
+       "label": "System type",
+       "kind": "checkbox-group",
+       "required": true,
+       "options": [
+        "Purified Water (PW) generation",
+        "Water for Injection (WFI) by distillation",
+        "WFI by membrane",
+        "Pure steam generator",
+        "Storage and distribution loop",
+        "Pretreatment",
+        "Monitoring and controls",
+        "Upgrade or retrofit",
+        "Not sure yet"
+       ],
+       "help": "Tick every part you need. Not sure? Tick \"Not sure yet\" and describe the use in step 2."
+      },
+      {
+       "label": "Pharmacopoeia",
+       "kind": "checkbox-group",
+       "required": true,
+       "options": [
+        "USP",
+        "Ph. Eur.",
+        "JP",
+        "Not sure yet"
+       ],
+       "help": "Every pharmacopoeia your water must meet. Exporting to several markets? Tick each one."
+      },
+      {
+       "label": "Target date for water on site",
+       "kind": "select",
+       "required": true,
+       "options": [
+        "Under 3 months",
+        "3 to 6 months",
+        "6 to 12 months",
+        "More than 12 months",
+        "Budgeting only, no date yet"
+       ]
+      }
+     ]
     },
     {
-     "label": "System type",
-     "kind": "checkbox-group",
-     "options": [
-      "Purified Water (PW) generation",
-      "Water for Injection (WFI) by distillation",
-      "WFI by membrane",
-      "Pure Steam generator",
-      "Storage and distribution loop",
-      "Pretreatment",
-      "Monitoring and controls",
-      "Upgrade or retrofit",
-      "Not sure yet"
-     ],
-     "required": true
+     "title": "Sizing",
+     "next": "Continue to contact details",
+     "intro": "Rough numbers are fine. If you do not know a value, leave it blank: we size from your facility type and points of use.",
+     "fields": [
+      {
+       "label": "Required capacity",
+       "kind": "number",
+       "unit": "L/h",
+       "help": "Peak hourly demand at the points of use. Not sure? Leave blank and give the daily volume or the number of points of use.",
+       "required": false
+      },
+      {
+       "label": "Daily volume",
+       "kind": "number",
+       "unit": "L/day",
+       "required": false
+      },
+      {
+       "label": "Pure steam capacity",
+       "kind": "number",
+       "unit": "kg/h",
+       "help": "Total for sterilizers and steam-in-place users.",
+       "required": false,
+       "when": "Pure steam generator"
+      },
+      {
+       "label": "Number of points of use",
+       "kind": "number",
+       "required": false
+      },
+      {
+       "label": "Feed water source",
+       "kind": "select",
+       "options": [
+        "Municipal, chlorinated",
+        "Municipal, chloraminated",
+        "Well water",
+        "Already pretreated supply",
+        "Not sure yet"
+       ],
+       "required": true,
+       "help": "Chlorine or chloramine, and hardness, decide the pretreatment ahead of the RO."
+      },
+      {
+       "label": "URS, water analysis or drawings",
+       "kind": "file",
+       "required": false,
+       "help": "PDF, Word, Excel or images, up to [maximum upload size, MB]. No files yet? Skip this; you can send them by reply email later."
+      },
+      {
+       "label": "Constraints or notes",
+       "kind": "textarea",
+       "required": false
+      }
+     ]
     },
     {
-     "label": "Required capacity",
-     "kind": "number",
-     "unit": "L/h",
-     "help": "Peak demand at points of use. If you know only daily volume, enter it below.",
-     "required": true
-    },
-    {
-     "label": "Daily volume",
-     "kind": "number",
-     "unit": "L/day",
-     "required": false
-    },
-    {
-     "label": "Pure Steam capacity",
-     "kind": "number",
-     "unit": "kg/h",
-     "help": "Only if you need a Pure Steam generator.",
-     "required": false
-    },
-    {
-     "label": "Pharmacopoeia",
-     "kind": "checkbox-group",
-     "options": [
-      "USP",
-      "Ph. Eur.",
-      "JP",
-      "Not sure"
-     ],
-     "required": false
-    },
-    {
-     "label": "Number of points of use",
-     "kind": "number",
-     "required": false
-    },
-    {
-     "label": "Feed water source",
-     "kind": "select",
-     "options": [
-      "Municipal, chlorinated",
-      "Municipal, chloraminated",
-      "Well water",
-      "Not sure"
-     ],
-     "required": false
-    },
-    {
-     "label": "Target date for water on site",
-     "kind": "text",
-     "help": "Month and year.",
-     "required": false
-    },
-    {
-     "label": "Anything else we should know",
-     "kind": "textarea",
-     "required": false
-    },
-    {
-     "label": "Full name",
-     "kind": "text",
-     "required": true
-    },
-    {
-     "label": "Company",
-     "kind": "text",
-     "required": true
-    },
-    {
-     "label": "Role",
-     "kind": "select",
-     "options": [
-      "Process or project engineering",
-      "Validation",
-      "Quality",
-      "Facilities or maintenance",
-      "Procurement",
-      "Consulting engineer",
-      "Other"
-     ],
-     "required": false
-    },
-    {
-     "label": "Email",
-     "kind": "email",
-     "required": true
-    },
-    {
-     "label": "Phone",
-     "kind": "tel",
-     "required": false
-    },
-    {
-     "label": "Site province or state",
-     "kind": "text",
-     "required": true
+     "title": "Contact",
+     "fields": [
+      {
+       "label": "Full name",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Work email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Company",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Role",
+       "kind": "select",
+       "options": [
+        "Process or project engineering",
+        "Validation",
+        "Quality",
+        "Facilities or maintenance",
+        "Procurement",
+        "Consulting engineer",
+        "Other"
+       ],
+       "required": true
+      },
+      {
+       "label": "Site province or state",
+       "kind": "text",
+       "required": true,
+       "help": "Sets pressure vessel registration (CRN) and service coverage."
+      },
+      {
+       "label": "Phone",
+       "kind": "tel",
+       "required": false
+      },
+      {
+       "label": "How should we follow up?",
+       "kind": "radio",
+       "required": false,
+       "options": [
+        "Email technical questions first",
+        "Book a 15-minute call with an engineer",
+        "Send the sample turnover package first"
+       ]
+      }
+     ]
     }
-   ],
-   "submit": "Request a proposal"
+   ]
   },
   {
    "type": "steps",
@@ -211,8 +260,11 @@
   "Response time commitment for enquiries",
   "Proposal turnaround in working days",
   "Sales phone number and hours",
-  "File upload support in the form tool (URS, water analysis) or a secure upload link",
   "Privacy notice and consent wording (PIPEDA, CASL, Quebec Law 25)",
-  "CRM routing for form submissions"
- ]
+  "CRM routing for form submissions",
+  "Maximum upload size and where uploaded files are stored",
+  "Confidentiality terms for submitted specifications",
+  "Privacy notice link under the form"
+ ],
+ "primary_cta_link": "#intake"
 }

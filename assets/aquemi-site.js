@@ -17,11 +17,13 @@ function sec(inner,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'">
 function split(head,body,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-split-section"><div class="aq-split-section__head">'+head+'</div><div class="aq-split-section__body">'+body+'</div></div></section>'}
 function first(s){var m=String(s||'').match(/^.*?[.!?](?=\s|$)/);return m?m[0]:String(s||'')}
 function h1(s){return s?'<h2 class="aq-h1">'+tx(s)+'</h2>':''}
+/* SpecTable cell: a string, or {t, link} to route the reader to another page (link must be a page id) */
+function tcell(c){return c&&typeof c==='object'?(c.link&&wp(c.link)?wlink(c.link,c.t):tx(c.t)):tx(c)}
 function gridItem(inner,link){return link&&wp(link)?'<a href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div>'+inner+'</div>'}
 /* Block renderers register here: BLOCKS[type] = function(block, heading) -> section HTML. See assets/src/blocks/. */
 var BLOCKS={};
 /* Button */
-function wBtn(label,link,kind){return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(link||'contact-proposal')+'" data-wp="'+e(link||'contact-proposal')+'">'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
+function wBtn(label,link,kind){var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'">'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
 /* Closing: the call to action at the end of every page, on the navy band.
    c is the page's cta ({h, body, button, link}); p is the page. The proof readout shows the page's first confirmed fact
    (the first p.facts item whose value has no [placeholder]); with none, the box is left out. Never pass invented figures. */
@@ -35,15 +37,28 @@ function wClosing(c,p){if(!c||!c.h)return '';
   '</div></div></section>'}
 /* EnquiryForm fields. ref is the data-sheet item number ("1.3"), shown before the label and hidden from screen readers. */
 function wSlug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
-function wField(f,i,ref){var id='wf'+i,nm=wSlug(f.label),req=f.required?' required':'',hid=id+'_help',
- num=ref?'<span class="aq-form__ref" aria-hidden="true">'+e(ref)+'</span>':'',
- lab='<label class="aq-field__label" for="'+id+'">'+num+tx(f.label)+(f.required?'':' <span class="aq-field__optional">(optional)</span>')+'</label>',
+function wField(f,i,ref){var id='wf'+(f._n==null?i:f._n),nm=wSlug(f.label),req=f.required?' required':'',hid=id+'_help',
+ when=f.when?' data-when="'+e(f.when)+'" hidden':'',
+ num=ref?'<span class="aq-form__ref" aria-hidden="true">'+e(ref)+'</span>':'',opt=f.required?'':' <span class="aq-field__optional">(optional)</span>',
+ lab='<label class="aq-field__label" for="'+id+'">'+num+tx(f.label)+opt+'</label>',
  help=f.help?'<p class="aq-field__help" id="'+hid+'">'+tx(f.help)+'</p>':'',desc=f.help?' aria-describedby="'+hid+'"':'',inp;
  if(f.kind==='select')inp='<select class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'>'+'<option value="">Choose…</option>'+(f.options||[]).map(function(o){return '<option>'+e(o)+'</option>'}).join('')+'</select>';
  else if(f.kind==='textarea')inp='<textarea class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'></textarea>';
- else if(f.kind==='checkbox-group')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+(f.help?' aria-describedby="'+hid+'"':'')+'><legend class="aq-field__label">'+num+tx(f.label)+(f.required?'':' <span class="aq-field__optional">(optional)</span>')+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="checkbox" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"> '+e(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
+ else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+desc+'><legend class="aq-field__label">'+num+tx(f.label)+opt+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio':'checkbox')+'" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"> '+e(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
+ else if(f.kind==='file')inp='<input class="aq-field__file" id="'+id+'" name="'+nm+'" type="file" multiple accept="'+e(f.accept||'.pdf,.docx,.xlsx,.csv,.png,.jpg')+'"'+desc+'>';
  else inp=f.unit?'<div class="aq-field__suffix"><input class="aq-field__input" id="'+id+'" name="'+nm+'" inputmode="numeric"'+req+desc+'><span class="aq-field__unit">'+e(f.unit)+'</span></div>':'<input class="aq-field__input" id="'+id+'" name="'+nm+'" type="'+(f.kind==='email'?'email':f.kind==='tel'?'tel':'text')+'"'+(f.kind==='email'?' autocomplete="email"':f.kind==='tel'?' autocomplete="tel"':'')+req+desc+'>';
- return '<div class="aq-field'+(f.kind==='textarea'?' aq-form__full':'')+'">'+lab+inp+help+'</div>'}
+ return '<div class="aq-field'+(f.kind==='textarea'||f.kind==='file'?' aq-form__full':'')+'"'+when+'>'+lab+inp+help+'</div>'}
+/* EnquiryForm in steps: each step is one numbered sheet section (Step 1 = 1.0), with a progress list, Back and Continue */
+function wFormSteps(b){var n=0,req=0,S=b.steps,k=S.length;S.forEach(function(s){(s.fields||[]).forEach(function(fd){fd._n=n++;if(fd.required)req++})});
+ return '<form class="aq-form aq-form--steps wform" novalidate>'
+  +'<p class="aq-form__title"><span>Data sheet</span><span>'+k+' steps · '+req+' required</span></p>'
+  +'<ol class="aq-form__progress">'+S.map(function(s,i){return '<li'+(i?'':' aria-current="step"')+'>'+tx(s.title)+'</li>'}).join('')+'</ol>'
+  +S.map(function(s,i){return '<fieldset class="aq-form__section aq-form__step" data-step="'+i+'"'+(i?' hidden':'')+'><legend class="aq-form__legend"><span class="aq-form__num">'+(i+1)+'.0</span> Step '+(i+1)+' of '+k+': '+tx(s.title)+'</legend>'
+   +'<div class="aq-form__grid">'+(s.intro?'<p class="aq-small aq-form__full">'+tx(s.intro)+'</p>':'')+(s.fields||[]).map(function(fd,j){return wField(fd,fd._n,(i+1)+'.'+(j+1))}).join('')+'</div>'
+   +'<div class="aq-form__actions">'+(i?'<button class="aq-btn aq-btn--secondary" type="button" data-step-go="'+(i-1)+'">Back</button>':'')+(i<k-1?'<button class="aq-btn aq-btn--primary" type="button" data-step-go="'+(i+1)+'">'+tx(s.next||'Continue')+' <span class="aq-btn__arrow">→</span></button>':'<button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button>')+'</div>'
+   +(i===k-1&&b.note?'<p class="aq-small aq-form__note">'+tx(b.note)+'</p>':'')+(i===k-1?'<span class="aq-small wform-msg" role="status"></span>':'')+'</fieldset>'}).join('')
+  +'<div class="aq-form__strip" aria-hidden="true"><span>Rev. draft</span><span>'+n+' fields</span><span>Sheet 1 of 1</span></div></form>'}
+document.addEventListener('change',function(ev){var fm=ev.target.closest('form');if(!fm)return;var on=[].map.call(fm.querySelectorAll('input:checked'),function(x){return x.value});fm.querySelectorAll('[data-when]').forEach(function(w){w.hidden=on.indexOf(w.dataset.when)<0})});
 /* Footer */
 function wFoot(){var cols=[['Systems',['sys-pw','sys-wfi-distillation','sys-wfi-membrane','sys-pure-steam','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['ind-pharma','ind-biotech','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','contact-proposal','contact-service','contact-locations']]];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols"><div class="aq-stack"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-small">Clean water systems for pharmaceutical manufacturing. Designed, fabricated and tested in <span class="aq-ph">[city], Ontario</span>.</p></div>'+cols.map(function(c){return '<div><h5>'+c[0]+'</h5>'+c[1].filter(wp).map(function(id){return wlink(id)}).join('')+'</div>'}).join('')+'</div><div class="aq-footer__legal"><span>© 2026 Aquemi <span class="aq-ph">[legal entity name]</span></span><span>Privacy · Terms · Accessibility</span></div></div></footer>'}
@@ -78,7 +93,7 @@ function wHeroFigure(p,facts){
   (facts.length?'<svg class="aq-hero__leaders" viewBox="0 0 125 100" preserveAspectRatio="none" aria-hidden="true">'+lines+'</svg><dl class="aq-hero__callouts">'+facts.map(function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'}).join('')+'</dl>':'')+'</figure>'}
 function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,img=/^sys-|^svc-|^ind-/.test(p.id)||home;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
-  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,/service/i.test(p.primary_cta)?'contact-service':'contact-proposal'):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
+  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p)):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
  var all=p.facts||[],callouts=art?all.slice(0,4):[],rest=art?all.slice(4):all;
  var facts=rest.length?'<dl class="aq-key-facts">'+rest.map(function(f){return '<div><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'}).join('')+'</dl>':'';
@@ -126,6 +141,12 @@ function wDiagram(b){var st=b.stages||[],n=st.length,k=0,s='';
   s+='</div>'}
  var alt='Treatment train, '+n+' stages in order: '+st.map(function(t,i){return (i+1)+' '+t}).join(', ')+(b.base?'. Across all stages: '+b.base:'');
  return '<div class="aq-diagram'+(b.base?' aq-diagram--base':'')+'" role="img" aria-label="'+e(alt)+'"><div class="aq-diagram__train">'+s+'</div>'+(b.base?'<div class="aq-diagram__base"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+e(b.base)+'</span></div>':'')+'</div>'}
+/* SectionNav: sticky jump links to blocks that carry a short nav label (four or more). Block section ids come from jid(). */
+function ctaLink(p){return p.primary_cta_link||(/service/i.test(p.primary_cta)?'contact-service':'contact-proposal')}
+function jid(b,i){return b.anchor||'s-'+i+'-'+String(b.nav).toLowerCase().replace(/[^a-z0-9]+/g,'-')}
+function wSectionNav(p){var bs=(p.blocks||[]),n=bs.filter(function(b){return b.nav});if(n.length<4)return '';
+ return '<nav class="aq-section-nav" aria-label="On this page"><div class="aq-in"><span class="aq-section-nav__label">On this page</span>'+bs.map(function(b,i){return b.nav?'<a href="#'+e(p.id)+'" data-jump="'+jid(b,i)+'">'+e(b.nav)+'</a>':''}).join('')+
+  (p.primary_cta&&ctaLink(p).charAt(0)!=='#'?'<a class="aq-section-nav__cta" href="#'+e(ctaLink(p))+'" data-wp="'+e(ctaLink(p))+'">'+tx(p.primary_cta)+' →</a>':'')+'</div></nav>'}
 /* WaterPath: system families as stops on one pipe, feed to point of use.
    Each stop shows its page's line drawing when ART (parts/Hero.js) lists it, else the GLYPH below as fallback. */
 var GLYPH={"sys-pretreatment": "M8 50V16a6 6 0 0 1 12 0v34M26 50V16a6 6 0 0 1 12 0v34M44 50V26a10 6 0 0 1 20 0v24M4 50h64M14 10V4h18v6", "sys-pw": "M6 50V10h60v40M4 50h64M12 18h48M12 26h48M12 34h48M12 42h48M60 14v32", "sys-wfi-distillation": "M10 50V12a6 6 0 0 1 12 0v38M30 50V20a6 6 0 0 1 12 0v30M22 16h8M42 24h8v-8h12v34M4 50h64", "sys-wfi-membrane": "M8 50V20h56v30M4 50h64M16 20V10M28 20V10M40 20V10M52 20V10M12 10h44M14 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0M30 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0M46 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0", "sys-pure-steam": "M10 50V20h40v30M4 50h64M18 20V6h6v14M16 30h16M16 36h16M16 42h16M50 30h14v20M58 30V22", "sys-storage": "M8 46V22a10 5 0 0 1 20 0v24M8 46l-2 4M28 46l2 4M34 46V14a12 6 0 0 1 24 0v32M34 46l-2 4M58 46l2 4M28 30h6M4 50h64", "sys-monitoring": "M6 50h60M10 50V14h28v36M16 22h16M16 28h10M16 34h13M44 30a10 10 0 1 0 20 0a10 10 0 1 0-20 0M54 30l6-6"};
@@ -212,10 +233,11 @@ BLOCKS['docs']=function(b,H){
 /* Block "faq" -> FAQ: numbered question cards, first one open; a shared name keeps one answer open at a time */
 var faqN=0;
 BLOCKS['faq']=function(b,H){faqN++;return sec(H+'<div class="aq-faq">'+(b.items||[]).map(function(it,i){return '<details name="faq-'+faqN+'"'+(i?'':' open')+'><summary><span class="aq-faq__tag"></span><span class="aq-faq__q">'+tx(it.q)+'</span></summary><div class="aq-faq__a"><p>'+tx(it.a)+'</p></div></details>'}).join('')+'</div>');};
-/* Block "form" -> EnquiryForm (data sheet) in SplitSection.
+/* Block "form" -> EnquiryForm (data sheet) in SplitSection. With "steps", wFormSteps renders one numbered section per step.
    Fields split into numbered sections: 1.0 the requirement, 2.0 the trailing run of contact fields (name, company, role,
    email, phone, site, contract). A field with "section": "<legend>" starts a new section; "sections": [..] renames them. */
 BLOCKS['form']=function(b,H){
+ if(b.steps)return split(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':''),wFormSteps(b));
  var F=b.fields||[],cut=F.length,C=/\b(name|company|role|e-?mail|phone|site|contract)\b/i,G=[],req=0;
  while(cut>0&&F[cut-1].kind!=='textarea'&&F[cut-1].kind!=='checkbox-group'&&C.test(F[cut-1].label||''))cut--;
  if(cut===0)cut=F.length;
@@ -323,17 +345,19 @@ BLOCKS['spec']=function(b,H){
 /* Block "steps" -> ProcessSteps: an ordered list drawn as a stepped pipe run; CSS writes the numbers */
 BLOCKS['steps']=function(b,H){return sec(H+'<ol class="aq-steps">'+(b.items||[]).map(function(it){return '<li><h3 class="aq-steps__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-steps__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('')+'</ol>');};
 /* Block "table" -> SpecTable aq-spec--compare (real table layout, scrolls sideways below 640 px) */
-BLOCKS['table']=function(b,H){return sec(H+'<div class="aq-scroll"><table class="aq-spec aq-spec--compare"><thead><tr>'+(b.cols||[]).map(function(c){return '<th scope="col">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody>'+(b.rows||[]).map(function(r){return '<tr>'+r.map(function(c,i){return i?'<td class="aq-spec__text">'+tx(c)+'</td>':'<th scope="row">'+tx(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>');};
+BLOCKS['table']=function(b,H){return sec(H+'<div class="aq-scroll"><table class="aq-spec aq-spec--compare"><thead><tr>'+(b.cols||[]).map(function(c){return '<th scope="col">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody>'+(b.rows||[]).map(function(r){return '<tr>'+r.map(function(c,i){return i?'<td class="aq-spec__text">'+tcell(c)+'</td>':'<th scope="row">'+tcell(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>');};
 /* Block "tags" -> StandardsGrid section. items: strings (the standard's code) or {code, name} objects;
    name is the optional plain-language line. Cards link to Compliance when that page exists. */
 BLOCKS['tags']=function(b,H){var lk=wp('compliance');return '<section class="aq-section aq-band--sunken"><div class="aq-in aq-stack-l">'+(b.h?'<h2 class="aq-display">'+tx(b.h)+'</h2>':H)+'<ol class="aq-standards-grid">'+(b.items||[]).map(function(x){var o=typeof x==='string'?{code:x}:(x||{}),inner='<span class="aq-standards-grid__code">'+e(o.code)+'</span>'+(o.name?'<span class="aq-standards-grid__name">'+tx(o.name)+'</span>':'');return '<li class="aq-standards-grid__item'+(o.name?'':' aq-standards-grid__item--code')+'">'+(lk?'<a class="aq-standards-grid__card" href="#compliance" data-wp="compliance">'+inner+'</a>':'<div class="aq-standards-grid__card">'+inner+'</div>')+'</li>'}).join('')+'</ol>'+(b.body?'<p class="aq-small">'+tx(b.body)+'</p>':'')+'</div></section>';};
 /* One content section per block type in pages.json */
 function wBlock(b){var f=BLOCKS[b.type];return f?f(b,h1(b.h)):''}
-/* Page: NavBar, Hero, sections, closing Band, Footer */
+/* Page: NavBar, Hero, SectionNav, sections, Closing, Footer */
 function wPage(p){var c=p.cta;
- return wHead(p.section)+wHero(p)+(p.blocks||[]).map(wBlock).join('')+
+ return wHead(p.section)+wHero(p)+wSectionNav(p)+(p.blocks||[]).map(function(b,i){var h=wBlock(b);return b.nav?h.replace('<section class=','<section id="'+jid(b,i)+'" class='):h}).join('')+
   wClosing(c,p)+wFoot()}
-document.addEventListener('click',function(ev){var t=ev.target.closest('[data-wp]');if(!t)return;ev.preventDefault();WP=t.dataset.wp;WMENU=false;
+document.addEventListener('click',function(ev){var g=ev.target.closest('[data-step-go]');if(g){var fm=g.closest('form'),to=+g.dataset.stepGo;fm.querySelectorAll('.aq-form__step').forEach(function(s){s.hidden=+s.dataset.step!==to});fm.querySelectorAll('.aq-form__progress li').forEach(function(l,i){if(i===to)l.setAttribute('aria-current','step');else l.removeAttribute('aria-current')});var lg=fm.querySelector('[data-step="'+to+'"] legend');if(lg){lg.tabIndex=-1;lg.focus()}fm.scrollIntoView({block:'start'});return}
+ var j=ev.target.closest('[data-jump]');if(j){var s=document.getElementById(j.dataset.jump);if(s){ev.preventDefault();s.scrollIntoView({behavior:'smooth',block:'start'})}return}
+ var t=ev.target.closest('[data-wp]');if(!t)return;ev.preventDefault();WP=t.dataset.wp;WMENU=false;
  AQ.onNav(WP)});
 var AQ=window.AQ={e:e,tx:tx,wp:wp,wPage:wPage,wBlock:wBlock,wHead:wHead,wHero:wHero,wFoot:wFoot,wBtn:wBtn,wDiagram:wDiagram,wPath:wPath,ARC:ARC,
  setPages:function(p){D.web={pages:p}},pages:W,

@@ -6,18 +6,56 @@
  "meta": "We design, fabricate and qualify Purified Water, WFI and pure steam systems for pharmaceutical plants in Canada, built to USP and ASME BPE.",
  "path": "/",
  "eyebrow": "PHARMACEUTICAL WATER SYSTEMS · USP · PH. EUR. · ASME BPE",
- "headline": "Compendial water that passes on the first audit.",
- "lead": "We design, fabricate and qualify Purified Water (PW), Water for Injection (WFI) and pure steam systems for pharmaceutical plants, and every one is factory acceptance tested before it ships to you.",
- "primary_cta": "Request a proposal",
+ "headline": "Validation-ready Purified Water, WFI and pure steam systems for pharmaceutical plants",
+ "lead": "Built to USP <645> and <643>, Ph. Eur. and ASME BPE. Every system runs a wet factory acceptance test (FAT) before it ships, and arrives with its installation and operational qualification (IQ/OQ) protocols and a complete turnover package.",
+ "primary_cta": "Submit your URS for a proposal",
  "secondary_cta": {
-  "label": "Explore systems",
-  "link": "systems"
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
  },
+ "facts": [
+  {
+   "v": "7",
+   "l": "System families, feed water to point of use"
+  },
+  {
+   "v": "100 %",
+   "l": "Skids factory acceptance tested before shipping"
+  },
+  {
+   "v": "< 0.25 EU/mL",
+   "l": "WFI endotoxins at the furthest point of use"
+  }
+ ],
  "blocks": [
+  {
+   "type": "tags",
+   "h": "Standards we design and document to",
+   "items": [
+    "USP <645>",
+    "USP <643>",
+    "USP <85>",
+    "USP <1231>",
+    "Ph. Eur.",
+    "EN 285",
+    "ASME BPE",
+    "GAMP 5",
+    "21 CFR Part 11",
+    "EU GMP Annex 1",
+    "Health Canada GUI-0001",
+    "ISPE Baseline Guide Vol. 4"
+   ]
+  },
+  {
+   "type": "readout",
+   "value": "< 0.25 EU/mL",
+   "method": "Bacterial endotoxins · USP <85>",
+   "body": "This is the endotoxin limit for WFI. We design every WFI system and loop to meet it at the furthest point of use, not only at the still outlet, and we show you the factory acceptance test data before the skid leaves our shop."
+  },
   {
    "type": "path",
    "h": "Seven system families, one water path",
-   "intro": "Choose one system, or let us take the whole path from feed water to point of use.",
+   "intro": "Choose one system, or let us take the whole path from feed water to point of use. Every limit is judged where the water is used, so we say where our scope ends and your plant ties in.",
    "items": [
     {
      "t": "Pretreatment",
@@ -66,65 +104,28 @@
    "to": "Point of use"
   },
   {
-   "type": "readout",
-   "value": "< 0.25 EU/mL",
-   "method": "Bacterial endotoxins · USP <85>",
-   "body": "This is the endotoxin limit for WFI. We design every WFI system and loop to meet it at the furthest point of use, not only at the still outlet, and we show you the factory acceptance test data before the skid leaves our shop."
-  },
-  {
    "type": "steps",
-   "h": "How a project runs",
+   "h": "How a project runs, and what you can check at each step",
    "items": [
     {
      "t": "Design",
-     "d": "We turn your user requirement specification (URS) into a functional specification, piping and instrumentation diagrams (P&IDs) and a risk assessment you can review line by line."
+     "d": "We turn your user requirement specification (URS) into a functional specification, piping and instrumentation diagrams (P&IDs) and a risk assessment you review line by line."
     },
     {
      "t": "Fabricate",
      "d": "316L stainless steel, orbital welds with weld logs and borescope records, and surface finishes specified to ASME BPE."
     },
     {
-     "t": "Test",
-     "d": "A wet factory acceptance test (FAT) in our shop with your team present, then a site acceptance test (SAT) after installation."
+     "t": "FAT",
+     "d": "A wet factory acceptance test in our shop, to a protocol your quality unit approves, with your team present in person or remotely."
     },
     {
-     "t": "Qualify",
-     "d": "Installation and operational qualification (IQ/OQ) protocols written to GAMP 5, executed with your validation team, and support through performance qualification (PQ)."
+     "t": "SAT and IQ/OQ",
+     "d": "A site acceptance test (SAT) on your feed water, then IQ/OQ protocols written to GAMP 5 and executed with your validation team."
     },
     {
      "t": "Support",
-     "d": "Preventive maintenance, calibration and spare parts, documented so the system stays in its qualified state."
-    }
-   ]
-  },
-  {
-   "type": "tags",
-   "h": "Standards we design to",
-   "items": [
-    "USP <645>",
-    "USP <643>",
-    "USP <85>",
-    "USP <1231>",
-    "Ph. Eur.",
-    "EN 285",
-    "ASME BPE",
-    "GAMP 5",
-    "21 CFR Part 11",
-    "EU GMP Annex 1",
-    "Health Canada GUI-0001",
-    "ISPE Baseline Guide Vol. 4"
-   ]
-  },
-  {
-   "type": "case",
-   "h": "Recent project",
-   "items": [
-    {
-     "t": "[Project title]",
-     "client": "[Client type, e.g. sterile injectables manufacturer], [city], [province]",
-     "problem": "[The constraint the client faced, e.g. a new fill line needing WFI within a fixed shutdown window]",
-     "system": "[System delivered, e.g. membrane WFI at [x] L/h with a hot sanitized ambient loop of [n] points of use]",
-     "outcome": "[Measured outcome in one sentence, e.g. IQ/OQ completed in [n] weeks with no open deviations]"
+     "d": "Preventive maintenance, calibration and spare parts, documented so the system stays in its qualified state through performance qualification (PQ) and after."
     }
    ]
   },
@@ -138,53 +139,57 @@
   },
   {
    "type": "grid",
-   "h": "Where would you like to start?",
+   "h": "Where are you in your project?",
+   "intro": "Pick the step that matches where you are. Each one goes to an engineer, not a sales queue.",
    "items": [
     {
-     "t": "A new system",
-     "d": "Send us your URS or a one-page brief and we reply with a scoped proposal.",
+     "t": "URS ready, requesting proposals",
+     "d": "Send your URS and feed water analysis. We reply with questions or a scoped proposal within [proposal response time].",
+     "tag": "Proposal",
      "link": "contact-proposal"
     },
     {
-     "t": "Service on an existing system",
-     "d": "Any make of PW, WFI or pure steam equipment. Response within [response time].",
+     "t": "Writing or checking a URS",
+     "d": "We mark up your draft against USP, Ph. Eur., ASME BPE and EU GMP Annex 1 and return it with comments.",
+     "tag": "URS review",
+     "link": "svc-design"
+    },
+    {
+     "t": "Early research or budgeting",
+     "d": "Get a sample turnover package: the FAT protocol contents, IQ/OQ index and weld log format we hand over.",
+     "tag": "Sample documents",
+     "link": "cmp-documentation"
+    },
+    {
+     "t": "A system already in service",
+     "d": "Service, calibration or an out-of-specification result on any make of PW, WFI or pure steam equipment. Response within [service response time].",
+     "tag": "Service",
      "link": "contact-service"
     },
     {
      "t": "An upgrade or retrofit",
      "d": "Controls, sanitization or capacity changes to a system already in qualified use.",
+     "tag": "Upgrade",
      "link": "svc-upgrades"
     }
    ]
   }
  ],
  "cta": {
-  "h": "Tell us the water grade and the flow. We'll do the rest.",
-  "body": "Send your URS or a short brief and an engineer will reply with questions, not a sales script.",
-  "button": "Request a proposal",
+  "h": "Send your water grade and flow, or your URS. An engineer replies.",
+  "body": "A process engineer, not a sales representative, reads it and replies within [proposal response time] with questions or a budget proposal.",
+  "button": "Submit your URS for a proposal",
   "link": "contact-proposal"
  },
  "todo": [
   "Hero photograph of a finished Aquemi skid or installed loop",
   "Fabrication shop city and province",
   "Service cities",
-  "Service response time commitment",
   "Whether French-language documentation is offered",
-  "One real case study with client permission, system details and a measured outcome",
-  "Confirm which standards Aquemi designs to routinely before publishing the compliance strip"
- ],
- "facts": [
-  {
-   "v": "7",
-   "l": "System families, feed water to point of use"
-  },
-  {
-   "v": "100 %",
-   "l": "Skids factory acceptance tested before shipping"
-  },
-  {
-   "v": "< 0.25 EU/mL",
-   "l": "WFI endotoxins at the furthest point of use"
-  }
+  "Confirm which standards Aquemi designs to routinely before publishing the compliance strip",
+  "Proposal response time (business days) for the URS / proposal route",
+  "Service response time for existing systems",
+  "What the sample turnover package contains and whether it is shared openly or under NDA",
+  "One real case study with client permission (removed from home until it exists)"
  ]
 }

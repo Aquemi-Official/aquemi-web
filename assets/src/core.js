@@ -17,6 +17,8 @@ function sec(inner,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'">
 function split(head,body,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-split-section"><div class="aq-split-section__head">'+head+'</div><div class="aq-split-section__body">'+body+'</div></div></section>'}
 function first(s){var m=String(s||'').match(/^.*?[.!?](?=\s|$)/);return m?m[0]:String(s||'')}
 function h1(s){return s?'<h2 class="aq-h1">'+tx(s)+'</h2>':''}
+/* SpecTable cell: a string, or {t, link} to route the reader to another page (link must be a page id) */
+function tcell(c){return c&&typeof c==='object'?(c.link&&wp(c.link)?wlink(c.link,c.t):tx(c.t)):tx(c)}
 function gridItem(inner,link){return link&&wp(link)?'<a href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div>'+inner+'</div>'}
 /* Block renderers register here: BLOCKS[type] = function(block, heading) -> section HTML. See assets/src/blocks/. */
 var BLOCKS={};

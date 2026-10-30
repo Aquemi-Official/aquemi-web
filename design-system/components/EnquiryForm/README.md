@@ -57,3 +57,7 @@ Origin: concept L in design-system/inspiration/ (`concept-l-form.png`), rebuilt 
 ## When not to use
 
 Not for a one-field signup in a footer or a search box; those don't need a data sheet frame.
+- Radio group (one answer): the checkbox-group markup with `type="radio"` and a shared `name`.
+- File upload: `<input class="aq-field__file" type="file" multiple>` in a full-width `aq-field`, always optional, with help text naming the formats and saying files can be sent later.
+- Conditional field: add `data-when="<option label>"` and `hidden`; the site shows it only while that option is ticked (for example pure steam capacity when "Pure steam generator" is chosen).
+- Steps, for long intake forms: `<form class="aq-form aq-form--steps">` keeps the data sheet's title row and revision strip, adds `<ol class="aq-form__progress">` (one `<li>` per step, `aria-current="step"` on the active one), and makes each step one numbered section: `<fieldset class="aq-form__section aq-form__step" data-step="0">` with `<legend class="aq-form__legend"><span class="aq-form__num">1.0</span> Step 1 of 3: System scope</legend>`, its fields in `aq-form__grid` numbered 1.1, 1.2 … Inactive steps carry `hidden`. Each step ends in an `aq-form__actions` with Back (`aq-btn--secondary`) and Continue (`data-step-go="<index>"`); only the last has the submit. Technical questions first, contact details last; three steps at most. On the site, a form block with `steps` renders this way.

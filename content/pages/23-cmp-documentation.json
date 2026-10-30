@@ -15,12 +15,87 @@
   "21 CFR Part 11",
   "ASTM E2500"
  ],
- "primary_cta": "Request a proposal",
+ "primary_cta": "Request the sample turnover package",
  "secondary_cta": {
-  "label": "Request a sample turnover index",
+  "label": "Ready to buy? Submit your URS",
   "link": "contact-proposal"
  },
  "blocks": [
+  {
+   "type": "docs",
+   "h": "Documents for review before order",
+   "items": [
+    "Sample turnover package index",
+    "Redacted FAT protocol",
+    "Redacted IQ/OQ protocol table of contents",
+    "Sample weld log and weld map",
+    "Sample requirements traceability matrix"
+   ],
+   "nav": "What you can see"
+  },
+  {
+   "type": "form",
+   "h": "Request the sample turnover package",
+   "nav": "Request samples",
+   "intro": "Check our documents before you shortlist us. Tell us which samples you want; we send [what is shared openly and what under NDA] within [sample package response time]. No sales call needed.",
+   "submit": "Send me the samples",
+   "fields": [
+    {
+     "kind": "checkbox-group",
+     "label": "Samples you want",
+     "required": true,
+     "options": [
+      "Turnover package index",
+      "FAT protocol: contents and sample test cases",
+      "IQ/OQ protocol table of contents",
+      "Weld log and weld map",
+      "Requirements traceability matrix"
+     ]
+    },
+    {
+     "kind": "select",
+     "label": "Where your project is",
+     "required": true,
+     "options": [
+      "Early research or budgeting",
+      "Writing the URS",
+      "URS ready, requesting proposals",
+      "Existing system: upgrade or requalification"
+     ]
+    },
+    {
+     "kind": "text",
+     "label": "Full name",
+     "required": true
+    },
+    {
+     "kind": "email",
+     "label": "Work email",
+     "required": true,
+     "help": "We send the samples here."
+    },
+    {
+     "kind": "text",
+     "label": "Company",
+     "required": true
+    },
+    {
+     "kind": "select",
+     "label": "Role",
+     "required": false,
+     "options": [
+      "Validation",
+      "Quality",
+      "Process or project engineering",
+      "Facilities or maintenance",
+      "Procurement",
+      "Consulting engineer",
+      "Other"
+     ]
+    }
+   ],
+   "anchor": "samples"
+  },
   {
    "type": "steps",
    "h": "Documents by project phase",
@@ -53,7 +128,8 @@
      "t": "Hand over",
      "d": "Turnover package, operation and maintenance manual, spare parts list, training records."
     }
-   ]
+   ],
+   "nav": "By phase"
   },
   {
    "type": "table",
@@ -124,24 +200,14 @@
      "Training plan, attendance records, operator quick reference",
      "PDF"
     ]
-   ]
+   ],
+   "nav": "Contents"
   },
   {
    "type": "band",
    "tone": "limestone",
    "h": "Your templates or ours",
    "body": "If your site has validation templates, we write the FAT, SAT and IQ/OQ protocols in them. If not, we use ours, built on GAMP 5 and the ISPE commissioning and qualification guide."
-  },
-  {
-   "type": "docs",
-   "h": "Documents for review before order",
-   "items": [
-    "Sample turnover package index",
-    "Redacted FAT protocol",
-    "Redacted IQ/OQ protocol table of contents",
-    "Sample weld log and weld map",
-    "Sample requirements traceability matrix"
-   ]
   },
   {
    "type": "faq",
@@ -159,7 +225,8 @@
      "q": "Can FAT results count towards qualification?",
      "a": "Where your quality unit agrees, yes. We follow the ASTM E2500 and ISPE approach: engineering tests carried out under good documentation practice can be leveraged in IQ/OQ."
     }
-   ]
+   ],
+   "nav": "FAQ"
   },
   {
    "type": "related",
@@ -173,9 +240,9 @@
   }
  ],
  "cta": {
-  "h": "See a sample before you commit",
-  "body": "We share a redacted turnover index and FAT protocol with your validation lead.",
-  "button": "Request a proposal",
+  "h": "Seen the samples? Send your URS for a proposal.",
+  "body": "A process engineer replies within [proposal response time] with questions or a scoped proposal that lists the documents you will receive.",
+  "button": "Submit your URS for a proposal",
   "link": "contact-proposal"
  },
  "todo": [
@@ -183,6 +250,10 @@
   "Confirm material certificate type delivered (EN 10204 3.1) for all product-contact parts",
   "Confirm borescope inspection coverage offered as standard",
   "Prepare redacted sample documents for download",
-  "Confirm whether native drawing formats (DWG, RVT) are offered"
- ]
+  "Confirm whether native drawing formats (DWG, RVT) are offered",
+  "What sample documents are shared openly and what only under NDA",
+  "Response time for sample package requests",
+  "Back-end for the sample request form (where submissions go)"
+ ],
+ "primary_cta_link": "#samples"
 }

@@ -26,6 +26,8 @@ On desktop the rows flow into two columns. Each cell stacks the parameter, the l
 
 Rows of options against criteria, not one system's spec. A normal table: fixed layout, first column 22 %, the option columns share the rest equally so neither option looks favoured. Wrap it in `<div class="aq-scroll">`; it scrolls sideways below 640 px. Cells use `aq-spec__text`. Header labels match the spec sheet's label strip (mono, uppercase, `surface-sunken`).
 
+Routing tables (a selector that sends the reader to the page that answers their row, such as "start from your water grade") put a plain link in a cell: `<td class="aq-spec__text"><a href="#sys-pw">PW generation</a></td>`. Link text names the destination page. One link per cell, in the last column, so the table still reads as data. In a page file a `table` cell written as `{"t": "PW generation", "link": "sys-pw"}` renders this way.
+
 ## Token rules
 
 - Surfaces: label strip `surface-sunken`, matrix and comparison body `surface-raised`, rules `line`. Band `flow-tint` with a 2 px `flow` left rule; text on it stays `ink` and `ink-muted`.
