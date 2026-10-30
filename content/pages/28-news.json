@@ -1,0 +1,133 @@
+{
+ "id": "news",
+ "section": "Company",
+ "nav_label": "News",
+ "title": "News and technical notes | Aquemi",
+ "meta": "Technical notes on pharmaceutical water: Ph. Eur. membrane WFI, EU GMP Annex 1 for water systems, sanitization choices. Plus Aquemi project news.",
+ "path": "/company/news/",
+ "eyebrow": "NEWS · TECHNICAL NOTES",
+ "headline": "Technical notes and company news",
+ "lead": "Short, answer-first notes on the standards and design choices behind pharmaceutical water systems, written by our engineers. Company news sits alongside.",
+ "tags": [
+  "Ph. Eur.",
+  "USP",
+  "EU GMP Annex 1"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Standards we design to",
+  "link": "compliance"
+ },
+ "blocks": [
+  {
+   "type": "grid",
+   "h": "Categories",
+   "items": [
+    {
+     "t": "Technical notes",
+     "d": "Standards, design decisions and operating questions, answered first and explained after."
+    },
+    {
+     "t": "Project news",
+     "d": "FAT and handover milestones, published with client permission.",
+     "link": "projects"
+    },
+    {
+     "t": "Company",
+     "d": "People, facilities and events."
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Post format",
+   "cols": [
+    "Element",
+    "Rule"
+   ],
+   "rows": [
+    [
+     "Title",
+     "The question the reader typed, or the change in one line"
+    ],
+    [
+     "Summary",
+     "The answer in two or three sentences, before any background"
+    ],
+    [
+     "Byline",
+     "Engineer's name, role and date; date of last review for standards content"
+    ],
+    [
+     "Body",
+     "Short sections, each standard named and cited, numbers with units"
+    ],
+    [
+     "Close",
+     "What it means for your system, and a link to the relevant system page"
+    ]
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Placeholder post outlines",
+   "intro": "Outlines for the first three technical notes. Each is drafted by an Aquemi engineer and reviewed before publication.",
+   "items": [
+    {
+     "t": "What changed when Ph. Eur. accepted membrane WFI",
+     "d": "Answer: since April 2017, Ph. Eur. 0169 allows WFI by a purification process equivalent to distillation, such as RO coupled with EDI or ultrafiltration. Sections: the old and new wording; the EMA questions and answers; what inspectors look for (sanitization, monitoring, biofilm control); when distillation is still the better choice; [Aquemi engineer] view.",
+     "tag": "Ph. Eur. 0169",
+     "link": "sys-wfi-membrane"
+    },
+    {
+     "t": "EU GMP Annex 1 (2022) and your water system",
+     "d": "Answer: Annex 1 sets explicit expectations for WFI generation, storage, distribution and continuous monitoring. Sections: the clauses on water and steam; continuous TOC and conductivity monitoring; biofilm and sanitization; Pure Steam quality; a checklist for an existing system; [date of review].",
+     "tag": "EU GMP Annex 1",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "Hot water or ozone: choosing a sanitization method for a PW loop",
+     "d": "Answer: hot water sanitization at 80 °C needs no chemicals but uses energy and needs rated components; ozone runs at ambient temperature and needs UV destruction before use. Sections: how each works; materials and temperature limits; energy and cycle time [figures]; validation of ozone removal; how to choose.",
+     "tag": "USP <1231>",
+     "link": "sys-storage"
+    }
+   ]
+  },
+  {
+   "type": "form",
+   "h": "Get new technical notes by email",
+   "intro": "One email when a note is published. No other mailings. Unsubscribe at any time.",
+   "fields": [
+    {
+     "label": "Email",
+     "kind": "email",
+     "required": true
+    },
+    {
+     "label": "Topics",
+     "kind": "checkbox-group",
+     "options": [
+      "Technical notes",
+      "Project news",
+      "Company news"
+     ],
+     "required": false
+    }
+   ],
+   "submit": "Subscribe"
+  }
+ ],
+ "cta": {
+  "h": "Have a question we should answer",
+  "body": "Send it to an engineer; if it is useful to others, it may become a note.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Named author engineer for each note",
+  "Technical review of each outline against the current text of Ph. Eur. 0169, the EMA Q&A and EU GMP Annex 1 before writing",
+  "Energy and cycle-time figures for the sanitization note",
+  "Newsletter platform and consent wording (CASL)",
+  "First company news items"
+ ]
+}

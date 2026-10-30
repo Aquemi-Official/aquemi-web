@@ -170,7 +170,7 @@ Specifications are the brand's strongest content. Present them as clean tables (
 
 ## Where this system lives and how it grows
 
-- **Source:** the `design-system/` folder of the GitHub repository `Aquemi-Official/aquemi-web`. Tokens, component styles (`components/bundle.css`), guidelines and previews are edited there and published here.
+- **Source:** the `design-system/` folder of the GitHub repository `Aquemi-Official/aquemi-web`. Tokens, component styles (`components/<Name>/style.css`, built into `components/bundle.css`), guidelines and previews are edited there and published here.
 - **Visual guide:** https://aquemi-official.github.io/aquemi-web/design-system.html renders every token and component from those files, in light, dark and phone width.
 - **In use:** the draft website https://aquemi-official.github.io/aquemi-web/ loads the same `tokens.css` and `bundle.css`. The Page inventory section lists every page and the components it uses.
 - **Building with it:** compose pages from the components (Page, NavBar, Hero, sections, closing Band, Footer) and the type classes (`aq-display`, `aq-h1`, `aq-lead` …). If something you need is missing, propose a new component in the repository rather than styling one-off.

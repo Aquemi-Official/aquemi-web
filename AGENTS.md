@@ -22,14 +22,19 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 | Path | What |
 | --- | --- |
 | `design-system/tokens.json` | All tokens: colour (light and dark), type, spacing, radius, shadow, layout. **Edit to change the look everywhere.** |
-| `design-system/components/bundle.css` | Every component's styles, token-only. |
+| `design-system/components/<Name>/style.css` | One component's styles, token-only, including its own `@container (max-width: 860px)` phone rules. |
+| `design-system/components/base.css` | Fonts, base type scale, page layout (`aq-in`, `aq-section`), placeholder, logo swap. |
+| `design-system/components/bundle.css` | **Generated**: base.css plus every style.css. What the site and the artifact load. |
 | `design-system/components/<Name>/README.md` | Guidelines for one component: markup, rules, when to use it. First sentence is its summary. |
 | `design-system/components/<Name>/preview.html` | A live example with real Aquemi copy. Line 1 is `<!-- @dsCard group="…" height=… width=… subtitle="…" -->`. |
 | `design-system/README.md`, `website.md`, `page-inventory.md` | Brand book, website plan, list of all site pages and which components each uses. |
-| `design-system/tokens.css`, `components.json` | **Generated** by `python tools/design_system.py build`. Never edit by hand. |
+| `design-system/tokens.css`, `components.json` | **Generated** by `python tools/design_system.py build`. Never edit any generated file by hand. |
 | `design-system/artifact.json` | Where the Claude design system lives and its uploaded asset ids. |
-| `content/pages.json` | All page copy. Each page: hero fields, `blocks` (one per section), closing `cta`, `todo` (open facts). |
-| `assets/aquemi-site.js` | Renders pages from `pages.json` into `aq-*` markup (one function per block type). |
+| `content/pages/NN-<id>.json` | One page's copy: hero fields, optional `facts`, `blocks` (one per section), closing `cta`, `todo` (open facts). `NN` sets the order. |
+| `content/pages.json` | **Generated** from `content/pages/`. The site fetches it. |
+| `assets/src/blocks/<type>.js` | Renderer for one block type: `BLOCKS['<type>']=function(b,H){...}` returns that section's `aq-*` markup. |
+| `assets/src/parts/<Name>.js`, `core.js`, `page.js` | Shared helpers (`sec`, `split`, `tx`, `e`, `wp`), NavBar, Footer, Hero, Button and other pieces, and page assembly. |
+| `assets/aquemi-site.js` | **Generated** from `assets/src/`. The site and the guide load it. |
 | `assets/site.css` | Draft-bar chrome only. No brand styles here. |
 | `design-system.html` | The visual guide. Generated at load time from the files above; normally needs no edits. |
 | `brand/` | Logo, lockup, mark and favicon SVGs. Use as they are. |
@@ -39,20 +44,26 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 
 **Change a colour, type size or spacing step.** Edit `design-system/tokens.json` (keep the list shape and a `usage` note on every token), then `python tools/design_system.py build`. Check both themes in the guide.
 
-**Adjust a component.** Edit its rules in `bundle.css`, update its `README.md` if behaviour changed and its `preview.html` if the markup changed. If the site renders it, update the matching function in `assets/aquemi-site.js`.
+**Adjust a component.** Edit its `style.css`, update its `README.md` if behaviour changed and its `preview.html` if the markup changed. If the site renders it, update its renderer in `assets/src/blocks/` or `assets/src/parts/`. Then `build`.
 
 **Add a component.**
 1. `python tools/design_system.py new <PascalName> "<Group>"` (groups: Foundations, Actions, Navigation, Page sections, Data, Forms).
 2. Write the README (what it is, markup, token rules, when not to use it) and a preview with real Aquemi copy.
-3. Style `.aq-<name>` in `bundle.css` with tokens only.
+3. Style `.aq-<name>` in its `style.css` with tokens only, phone rules in the same file.
 4. `python tools/design_system.py build` then `python tools/design_system.py check` (must report 0 problems).
 5. Open `design-system.html` locally and review it in light, dark and phone width.
 
-**Add or edit a page.** Edit `content/pages.json`. Use existing block types; the guide's "Page blocks" section shows each with real content. Update `design-system/page-inventory.md` when pages are added or renamed.
+**Add or edit a page.** Edit its file in `content/pages/`, then `build`. Use existing block types; the guide's "Page blocks" section shows each with real content. Update `design-system/page-inventory.md` when pages are added or renamed.
 
-**Add a new kind of section.** Add the component to the design system first (above), then a block type in `wBlock()` in `assets/aquemi-site.js` that outputs that component's markup, then use it in `pages.json`. Add it to the mapping table in `page-inventory.md`.
+**Add a new kind of section.** Add the component to the design system first (above), then a renderer `assets/src/blocks/<type>.js` that outputs that component's markup, then use it in a page file in `content/pages/`. Add it to the mapping table in `page-inventory.md`.
+
+**Explore a new section idea.** Generate a loose concept image (Gemini works well), save it in `design-system/inspiration/` and rebuild the idea as a token-only component. Steps and the prompt recipe are in `design-system/inspiration/README.md`.
 
 **Publish to the Claude design system.** After design-system changes land, publish them so Claude chats, decks and designs use the same system. Claude Code does this with the `aquemi-design-system` skill in `.claude/skills/`. Other agents: tell the person it needs publishing.
+
+## Working in parallel
+
+The sources are split so several people or agents can work at the same time without editing the same file: one component's `style.css`, `README.md` and `preview.html`; one block renderer; one page file. Give each agent its own files. Generated files (`bundle.css`, `aquemi-site.js`, `pages.json`, `tokens.css`, `components.json`) are rebuilt from the sources, so concurrent `build` runs are safe; whoever commits runs `build` and `check` last.
 
 ## Before you push
 

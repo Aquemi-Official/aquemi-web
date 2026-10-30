@@ -1,0 +1,124 @@
+{
+ "id": "industries",
+ "section": "Industries",
+ "nav_label": "Industries",
+ "title": "Industries we serve | Aquemi",
+ "meta": "Water systems for pharmaceutical, biotechnology, medical device and contract manufacturers, designed to USP, Ph. Eur. and the GMP rules they work under.",
+ "path": "/industries/",
+ "eyebrow": "INDUSTRIES · USP · PH. EUR. · GMP",
+ "headline": "Water systems for regulated manufacturing",
+ "lead": "Each industry draws on the same water grades but uses them differently. We start from your process, your products and the regulator you answer to.",
+ "tags": [
+  "USP",
+  "Ph. Eur.",
+  "Health Canada GMP",
+  "FDA cGMP",
+  "EU GMP Annex 1"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Explore systems",
+  "link": "systems"
+ },
+ "blocks": [
+  {
+   "type": "grid",
+   "h": "Choose your industry",
+   "items": [
+    {
+     "t": "Pharmaceutical",
+     "d": "Purified Water for oral solid and liquid dosage, Water for Injection and Pure Steam for sterile products.",
+     "tag": "USP <1231>",
+     "link": "ind-pharma"
+    },
+    {
+     "t": "Biotechnology",
+     "d": "High WFI demand for media, buffers and cleaning, with tight endotoxin control.",
+     "tag": "USP <85>",
+     "link": "ind-biotech"
+    },
+    {
+     "t": "Medical devices",
+     "d": "Rinse and process water with limits set from your product's risk.",
+     "tag": "ISO 13485",
+     "link": "ind-meddevice"
+    },
+    {
+     "t": "Contract manufacturing (CDMO)",
+     "d": "Systems that pass many clients' audits and grow with new programmes.",
+     "tag": "Health Canada GMP",
+     "link": "ind-cdmo"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Which water each industry uses most",
+   "cols": [
+    "Industry",
+    "Purified Water (PW)",
+    "Water for Injection (WFI)",
+    "Pure Steam (PS)"
+   ],
+   "rows": [
+    [
+     "Pharmaceutical, non-sterile",
+     "Main grade",
+     "Rare",
+     "Equipment sterilization"
+    ],
+    [
+     "Pharmaceutical, sterile",
+     "Pretreatment and early washes",
+     "Main grade",
+     "Autoclaves, sterilize-in-place (SIP)"
+    ],
+    [
+     "Biotechnology",
+     "Cleaning, upstream support",
+     "Main grade",
+     "SIP, autoclaves"
+    ],
+    [
+     "Medical devices",
+     "Rinsing, cleaning",
+     "Final rinse for low-endotoxin products",
+     "Steam sterilization, where used"
+    ],
+    [
+     "Contract manufacturing",
+     "Depends on client portfolio",
+     "Depends on client portfolio",
+     "Depends on client portfolio"
+    ]
+   ]
+  },
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "The same standards, applied to your process",
+   "body": "Pharmacopoeia limits do not change by industry. What changes is where the water touches your product, how much you use and when. That is what we design around."
+  },
+  {
+   "type": "related",
+   "h": "Systems",
+   "items": [
+    "sys-pw",
+    "sys-wfi-distillation",
+    "sys-wfi-membrane",
+    "sys-pure-steam",
+    "sys-storage"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Tell us what you make",
+  "body": "We will tell you which water grades your process needs and how we would supply them.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Confirm the four industries are the target segments at launch",
+  "Projects per industry to link once case studies exist"
+ ]
+}

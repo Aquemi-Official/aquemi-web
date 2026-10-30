@@ -1,0 +1,9 @@
+/* ---------- Illustration: line art painted with a colour token through a mask ---------- */
+.aq-illustration { display: block; width: 100%; aspect-ratio: var(--ratio, 1); background-color: var(--ink-muted); -webkit-mask: var(--art, none) center / contain no-repeat; mask: var(--art, none) center / contain no-repeat; }
+.aq-illustration--ink { background-color: var(--ink); }
+.aq-illustration--flow { background-color: var(--flow); }
+.aq-illustration--on-navy { background-color: var(--on-navy-muted); }
+
+@container (max-width: 860px) {
+  .aq-illustration { max-width: 480px; margin-inline: auto; }
+}

@@ -1,0 +1,13 @@
+/* ---------- Band ---------- */
+.aq-band--sunken { background: var(--surface-sunken); }
+.aq-band--limestone { background: var(--limestone); color: var(--on-limestone); }
+.aq-band--limestone .aq-lead, .aq-band--limestone .aq-small { color: var(--on-limestone-muted); }
+.aq-band--navy { background: var(--navy); color: var(--on-navy); position: relative; overflow: hidden; }
+.aq-band--navy .aq-lead, .aq-band--navy .aq-small { color: var(--on-navy-muted); }
+.aq-band--navy .aq-btn--primary { background: var(--limestone); color: var(--navy); }
+.aq-band--navy .aq-btn--primary:hover { background: var(--on-navy); }
+.aq-band--navy .aq-arc__outer { stroke: var(--on-navy-muted); opacity: 0.5; }
+.aq-band--navy .aq-arc__inner { stroke: var(--limestone); }
+.aq-closing { text-align: center; border-bottom: 1px solid var(--line-strong); }
+.aq-closing .aq-stack { align-items: center; }
+.aq-closing .aq-arc { left: -1px; top: -1px; right: auto; bottom: auto; width: min(30%, 300px); transform: rotate(180deg); }

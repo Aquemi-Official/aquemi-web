@@ -10,20 +10,25 @@
    "eyebrow": "PHARMACEUTICAL WATER SYSTEMS · USP · PH. EUR. · ASME BPE",
    "headline": "Validation-ready Purified Water, WFI and pure steam systems for pharmaceutical plants",
    "lead": "Built to USP <645> and <643>, Ph. Eur. and ASME BPE. Every system runs a wet factory acceptance test (FAT) before it ships, and arrives with its installation and operational qualification (IQ/OQ) protocols and a complete turnover package.",
-   "tags": [
-    "USP",
-    "Ph. Eur.",
-    "ASME BPE",
-    "GAMP 5",
-    "21 CFR Part 11",
-    "EN 285",
-    "ISPE Baseline Guide Vol. 4"
-   ],
    "primary_cta": "Submit your URS for a proposal",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
+   "facts": [
+    {
+     "v": "7",
+     "l": "System families, feed water to point of use"
+    },
+    {
+     "v": "100 %",
+     "l": "Skids factory acceptance tested before shipping"
+    },
+    {
+     "v": "< 0.25 EU/mL",
+     "l": "WFI endotoxins at the furthest point of use"
+    }
+   ],
    "blocks": [
     {
      "type": "tags",
@@ -50,10 +55,16 @@
      "body": "This is the endotoxin limit for WFI. We design every WFI system and loop to meet it at the furthest point of use, not only at the still outlet, and we show you the factory acceptance test data before the skid leaves our shop."
     },
     {
-     "type": "grid",
+     "type": "path",
      "h": "Seven system families, one water path",
-     "intro": "Each system is specified against the standard your user requirement specification names. Choose one, or let us take the whole path from feed water to point of use.",
+     "intro": "Choose one system, or let us take the whole path from feed water to point of use. Every limit is judged where the water is used, so we say where our scope ends and your plant ties in.",
      "items": [
+      {
+       "t": "Pretreatment",
+       "d": "Multimedia, softening and carbon or bisulfite trains sized for your municipal water.",
+       "tag": "Health Canada · US EPA",
+       "link": "sys-pretreatment"
+      },
       {
        "t": "Purified Water (PW) generation",
        "d": "Reverse osmosis (RO) and electrodeionization (EDI) skids that hold conductivity below USP <645> stage 1.",
@@ -85,31 +96,14 @@
        "link": "sys-storage"
       },
       {
-       "t": "Pretreatment",
-       "d": "Multimedia, softening and carbon or bisulfite trains sized for your municipal water.",
-       "tag": "Health Canada · US EPA",
-       "link": "sys-pretreatment"
-      },
-      {
        "t": "Monitoring and controls",
        "d": "Online total organic carbon (TOC), conductivity and ozone, with audit-trailed data.",
        "tag": "21 CFR Part 11",
        "link": "sys-monitoring"
       }
-     ]
-    },
-    {
-     "type": "diagram",
-     "h": "One water path, from your feed to the point of use",
-     "stages": [
-      "Feed water",
-      "Pretreatment",
-      "PW generation",
-      "WFI or pure steam",
-      "Storage and loop",
-      "Point of use"
      ],
-     "caption": "Every limit is judged where the water is used. We design the path as a whole, or the part you need, and say where our scope ends and your plant ties in."
+     "from": "City feed",
+     "to": "Point of use"
     },
     {
      "type": "steps",
@@ -533,7 +527,8 @@
       "Distribution loop",
       "Points of use"
      ],
-     "caption": "Monitoring and controls run along the whole path. Each arrow is an interface we write into the functional specification: the feed limits the next stage needs, and the quality, temperature and flow the stage before must deliver."
+     "caption": "Monitoring and controls run along the whole path. Each arrow is an interface we write into the functional specification: the feed limits the next stage needs, and the quality, temperature and flow the stage before must deliver.",
+     "base": "Monitoring and controls · TOC, conductivity, ozone"
     },
     {
      "type": "steps",
@@ -721,18 +716,29 @@
    "eyebrow": "PURIFIED WATER · USP <645> · USP <643> · PH. EUR. 0008",
    "headline": "Purified Water sized for your coldest feed day, with a turnover package your auditor can follow",
    "lead": "Our reverse osmosis (RO) and electrodeionization (EDI) skids make Purified Water (PW) below the USP <645> limit of 1.3 µS/cm at 25 °C and the USP <643> limit of 500 ppb total organic carbon (TOC), with no regeneration chemicals. We size each skid at your lowest feed temperature, wet test it at factory acceptance testing (FAT) and ship the installation and operational qualification (IQ/OQ) protocols with it.",
-   "tags": [
-    "USP <645>",
-    "USP <643>",
-    "Ph. Eur. 0008",
-    "ASME BPE",
-    "GAMP 5"
-   ],
    "primary_cta": "Request a sizing and budget proposal",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
+   "facts": [
+    {
+     "v": "[500–20,000] L/h",
+     "l": "Capacity per skid"
+    },
+    {
+     "v": "≤ 1.3 µS/cm",
+     "l": "Conductivity at 25 °C · USP <645>"
+    },
+    {
+     "v": "≤ 500 ppb",
+     "l": "Total organic carbon · USP <643>"
+    },
+    {
+     "v": "80 °C",
+     "l": "Hot water sanitization, RO and EDI"
+    }
+   ],
    "blocks": [
     {
      "type": "prose",
@@ -1234,19 +1240,29 @@
    "eyebrow": "WATER FOR INJECTION · DISTILLATION · USP <85> · PH. EUR. 0169",
    "headline": "WFI stills sized on your utility costs, with endotoxin margin you can show an inspector",
    "lead": "The multi-effect and vapour compression stills we supply make hot Water for Injection (WFI) below the USP <85> bacterial endotoxin limit of 0.25 EU/mL and the USP <645> conductivity limit of 1.3 µS/cm at 25 °C. We set the still's endotoxin reduction against your Purified Water (PW) feed, choose the still type on your steam, power and cooling water costs, and ship the factory acceptance test (FAT) report and installation and operational qualification (IQ/OQ) protocols with it.",
-   "tags": [
-    "USP <85>",
-    "USP <645>",
-    "Ph. Eur. 0169",
-    "EU GMP Annex 1",
-    "ASME BPE",
-    "CSA B51"
-   ],
    "primary_cta": "Request a still sizing and utility cost proposal",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
+   "facts": [
+    {
+     "v": "[300–15,000] L/h",
+     "l": "Capacity, multi-effect"
+    },
+    {
+     "v": "< 0.25 EU/mL",
+     "l": "Bacterial endotoxins · USP <85>"
+    },
+    {
+     "v": "≤ 1.3 µS/cm",
+     "l": "Conductivity at 25 °C · USP <645>"
+    },
+    {
+     "v": "[Ra, µm]",
+     "l": "Product-contact surface finish · ASME BPE"
+    }
+   ],
    "blocks": [
     {
      "type": "prose",
@@ -1753,19 +1769,29 @@
    "eyebrow": "WATER FOR INJECTION · MEMBRANE · PH. EUR. 0169 · USP · EU GMP ANNEX 1",
    "headline": "Water for Injection by membrane, with the control strategy and validation package your inspector will ask for",
    "lead": "Our double-pass reverse osmosis (RO), electrodeionization (EDI) and ultrafiltration (UF) skids make Water for Injection (WFI) at ambient temperature, below the USP <85> bacterial endotoxin limit of 0.25 EU/mL and the USP <645> conductivity limit of 1.3 µS/cm at 25 °C, with no plant steam for generation. We design the biofilm and endotoxin controls the EMA expects from a non-distillation system into the skid, and tell you plainly when distillation is the better route.",
-   "tags": [
-    "Ph. Eur. 0169",
-    "USP <85>",
-    "USP <645>",
-    "EU GMP Annex 1",
-    "ASME BPE",
-    "GAMP 5"
-   ],
    "primary_cta": "Request a WFI route assessment",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
+   "facts": [
+    {
+     "v": "[500–15,000] L/h",
+     "l": "Capacity per skid"
+    },
+    {
+     "v": "< 0.25 EU/mL",
+     "l": "Bacterial endotoxins · USP <85>"
+    },
+    {
+     "v": "≤ 1.1 µS/cm",
+     "l": "Conductivity at 20 °C · Ph. Eur. 0169"
+    },
+    {
+     "v": "80 °C",
+     "l": "Hot water sanitization, full skid"
+    }
+   ],
    "blocks": [
     {
      "type": "prose",
@@ -2361,19 +2387,29 @@
    "eyebrow": "PURE STEAM · EU GMP ANNEX 1 · EN 285 · USP",
    "headline": "Pure steam that passes EN 285 dryness, superheat and non-condensable gas tests at the sterilizer",
    "lead": "Our pure steam generators supply autoclaves and steam-in-place (SIP) with steam whose condensate meets Water for Injection (WFI) limits, as EU GMP Annex 1 paragraph 6.17 requires, and whose non-condensable gases (no more than 3.5 mL per 100 mL of condensate), dryness and superheat meet EN 285 where the steam is used. We size the generator and the distribution header as one system, because most steam quality failures start in the pipework, and we hand over the test records your validation team needs.",
-   "tags": [
-    "EU GMP Annex 1",
-    "EN 285",
-    "USP Pure Steam",
-    "Ph. Eur. 0169",
-    "ASME BPE",
-    "CSA B51"
-   ],
    "primary_cta": "Submit your steam demand for a sizing proposal",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
+   "facts": [
+    {
+     "v": "[100–3,000] kg/h",
+     "l": "Capacity"
+    },
+    {
+     "v": "≤ 3.5 mL",
+     "l": "Non-condensable gases per 100 mL · EN 285"
+    },
+    {
+     "v": "≥ 0.95",
+     "l": "Dryness value · EN 285"
+    },
+    {
+     "v": "≤ 25 K",
+     "l": "Superheat above boiling point · EN 285"
+    }
+   ],
    "blocks": [
     {
      "type": "prose",
@@ -2890,18 +2926,29 @@
    "eyebrow": "STORAGE AND DISTRIBUTION · EU GMP ANNEX 1 · ASME BPE",
    "headline": "Storage and distribution loops that keep turbulent flow and compendial quality to the furthest point of use",
    "lead": "We design and build tanks and loops for Purified Water (PW) and Water for Injection (WFI) that keep flow turbulent at peak draw, as EU GMP Annex 1 paragraph 6.9 requires, hold every branch to the ASME BPE dead leg target of a length-to-diameter ratio (L/D) of 2 or less and drain completely. Hot WFI loops circulate above 70 °C (Annex 1, 6.10); ambient loops are sanitized by heat or ozone on a schedule you can defend. Every slope, weld and branch is recorded on the as-built isometrics your validation team qualifies against.",
-   "tags": [
-    "EU GMP Annex 1",
-    "ASME BPE",
-    "USP <1231>",
-    "ISPE Baseline Guide Vol. 4",
-    "GAMP 5"
-   ],
    "primary_cta": "Send your points-of-use list for a loop review",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
+   "facts": [
+    {
+     "v": "[1,000–50,000] L",
+     "l": "Tank volume"
+    },
+    {
+     "v": "L/D ≤ 2",
+     "l": "Dead legs · ASME BPE"
+    },
+    {
+     "v": "≥ 1 m/s",
+     "l": "Loop return velocity at peak draw"
+    },
+    {
+     "v": "≥ 65 °C",
+     "l": "Hot loop temperature"
+    }
+   ],
    "blocks": [
     {
      "type": "prose",
@@ -3434,18 +3481,29 @@
    "eyebrow": "PRETREATMENT · USP <1231> · HEALTH CANADA · US EPA NPDWR",
    "headline": "Pretreatment that keeps chlorine, chloramine and scale off your RO membranes in every season",
    "lead": "USP <1231> requires the feed to a Purified Water (PW) system to meet drinking water standards, such as the US EPA National Primary Drinking Water Regulations (NPDWR) or, for most Canadian sites, the Guidelines for Canadian Drinking Water Quality. Drinking water is not reverse osmosis (RO) feed. We design the pretreatment train from your water data across the seasons, so the RO inlet sees no detectable chlorine or chloramine, a silt density index (SDI) of 3 or less and hardness the membranes can live with, and the carbon bed is sanitized so it does not become the source of your bioburden.",
-   "tags": [
-    "USP <1231>",
-    "Health Canada",
-    "US EPA NPDWR",
-    "ASTM D4189",
-    "ASME BPE"
-   ],
    "primary_cta": "Request a feedwater review",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
+   "facts": [
+    {
+     "v": "< 0.05 mg/L",
+     "l": "Free chlorine and chloramine as Cl₂"
+    },
+    {
+     "v": "< 1 mg/L",
+     "l": "Hardness as CaCO₃"
+    },
+    {
+     "v": "≤ 3",
+     "l": "Silt density index · ASTM D4189"
+    },
+    {
+     "v": "[1–30] m³/h",
+     "l": "Capacity"
+    }
+   ],
    "blocks": [
     {
      "type": "prose",
@@ -3931,20 +3989,29 @@
    "eyebrow": "MONITORING AND CONTROLS · USP <643> · USP <645> · 21 CFR PART 11 · GAMP 5",
    "headline": "Water quality data you can release on and defend in an inspection",
    "lead": "We build the controls and online monitoring for Purified Water (PW) and Water for Injection (WFI) systems so every release decision rests on a record an inspector can trace: total organic carbon (TOC) against the USP <643> limit of 0.50 mg/L on an analyzer with documented system suitability, conductivity against the USP <645> stage 1 table on the raw, non-temperature-compensated reading, and an audit trail that meets 21 CFR Part 11 and EU GMP Annex 11. The software follows the GAMP 5 lifecycle, and the specifications, test records and traceability your validation team needs are written as we build it.",
-   "tags": [
-    "USP <643>",
-    "USP <645>",
-    "USP <1231>",
-    "21 CFR Part 11",
-    "EU GMP Annex 11",
-    "GAMP 5",
-    "ALCOA+"
-   ],
    "primary_cta": "Request a controls specification review",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
+   "facts": [
+    {
+     "v": "≤ 500 ppb",
+     "l": "Online TOC limit · USP <643>"
+    },
+    {
+     "v": "≤ 1.3 µS/cm",
+     "l": "Conductivity limit at 25 °C · USP <645>"
+    },
+    {
+     "v": "Part 11",
+     "l": "Audit trail and e-signatures · 21 CFR"
+    },
+    {
+     "v": "GAMP 5",
+     "l": "Risk-based software lifecycle"
+    }
+   ],
    "blocks": [
     {
      "type": "prose",

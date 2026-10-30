@@ -4,3 +4,4 @@ ProcessSteps shows the project sequence as numbered columns.
 - Markup: `<div class="aq-steps">` with one `<div>` per step holding `<span class="aq-h3">` and `<span class="aq-small">`.
 - Three to six steps. Columns wrap at 170 px, so they stack on phones.
 - Name each step with a verb or the document it produces (URS, FDS, FAT report).
+- Reads as a timeline: each step sits on a `line-strong` rule with a 9 px Flow dot at its start, and its number is set large (Geist Mono 300, 32/38 px, `flow`) above the step name.

@@ -1,0 +1,683 @@
+{
+ "id": "sys-monitoring",
+ "section": "Systems",
+ "nav_label": "Monitoring and controls",
+ "title": "Water system monitoring, controls and Part 11 | Aquemi",
+ "meta": "Online TOC to USP <643>, conductivity to USP <645> stage 1 and audit trails to 21 CFR Part 11 and Annex 11, on PLC and SCADA validated to GAMP 5.",
+ "path": "/systems/monitoring-and-controls/",
+ "eyebrow": "MONITORING AND CONTROLS · USP <643> · USP <645> · 21 CFR PART 11 · GAMP 5",
+ "headline": "Water quality data you can release on and defend in an inspection",
+ "lead": "We build the controls and online monitoring for Purified Water (PW) and Water for Injection (WFI) systems so every release decision rests on a record an inspector can trace: total organic carbon (TOC) against the USP <643> limit of 0.50 mg/L on an analyzer with documented system suitability, conductivity against the USP <645> stage 1 table on the raw, non-temperature-compensated reading, and an audit trail that meets 21 CFR Part 11 and EU GMP Annex 11. The software follows the GAMP 5 lifecycle, and the specifications, test records and traceability your validation team needs are written as we build it.",
+ "primary_cta": "Request a controls specification review",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "facts": [
+  {
+   "v": "≤ 500 ppb",
+   "l": "Online TOC limit · USP <643>"
+  },
+  {
+   "v": "≤ 1.3 µS/cm",
+   "l": "Conductivity limit at 25 °C · USP <645>"
+  },
+  {
+   "v": "Part 11",
+   "l": "Audit trail and e-signatures · 21 CFR"
+  },
+  {
+   "v": "GAMP 5",
+   "l": "Risk-based software lifecycle"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "Your water is released on data. The data is what gets inspected.",
+   "body": [
+    "Once online TOC and conductivity are qualified, the numbers they record are the release evidence for every batch that used the water. An inspector reviewing your water system does not stop at the result. They ask for the raw conductivity and temperature behind it, the last TOC system suitability test, who changed an alarm limit and why, which alarms were acknowledged without action, and whether the audit trail has been reviewed.",
+    "Data integrity findings in water systems usually come from a small set of gaps: a transmitter that shows only a temperature-compensated value, an operator panel with shared logins, a historian whose clock drifts from the programmable logic controller (PLC), alarm limits changed with no reason recorded, or an audit trail that exists but nobody reviews. The FDA's 2018 questions and answers on data integrity and current good manufacturing practice (CGMP), the PIC/S guidance PI 041-1 and the MHRA's GxP data integrity guidance all address them. Health Canada is a PIC/S member and applies the same expectations.",
+    "We design against each of those gaps at the specification stage, test them at factory acceptance testing (FAT), and hand you the evidence, so the controls are something your quality unit can defend rather than something it has to work around."
+   ]
+  },
+  {
+   "type": "spec",
+   "h": "What we measure online, and the standard each measurement answers to",
+   "caption": "Online monitoring · compendial and design basis",
+   "note": "Compendial limits apply to water as used. Sensor positions are set by risk assessment in the functional specification; Annex 1, 6.15 asks for sensor locations based on risk. Values in brackets are set for your system.",
+   "cols": [
+    "Measurement",
+    "Limit or design value",
+    "Basis and method"
+   ],
+   "rows": [
+    {
+     "p": "Total organic carbon",
+     "v": "≤ 0.50 mg/L (500 ppb), PW and WFI",
+     "m": "USP <643>; Ph. Eur. 2.2.44. Online analyzer with system suitability against sucrose and 1,4-benzoquinone standards, acceptance 85–115 % response efficiency.",
+     "hl": true
+    },
+    {
+     "p": "Conductivity, USP",
+     "v": "Stage 1 table limit at the measured temperature, rounded down to the 5 °C step; 1.3 µS/cm at 25 °C",
+     "m": "USP <645> stage 1, on the non-temperature-compensated reading with temperature recorded alongside. Stages 2 and 3 are laboratory tests.",
+     "hl": true
+    },
+    {
+     "p": "Conductivity, Ph. Eur.",
+     "v": "WFI: 1.1 µS/cm at 20 °C, three-stage test as USP. PW: ≤ 4.3 µS/cm at 20 °C, ≤ 5.1 µS/cm at 25 °C",
+     "m": "Ph. Eur. 0169 and 0008. Where you release to both, the system applies the tighter limit.",
+     "hl": false
+    },
+    {
+     "p": "Conductivity instrument",
+     "v": "Cell constant known to ± 2 %; instrument accuracy ± 0.1 µS/cm excluding the cell; temperature ± 2 °C",
+     "m": "USP <645> instrument requirements. Calibration certificates traceable to national standards.",
+     "hl": false
+    },
+    {
+     "p": "Dissolved ozone, ambient ozonated loops",
+     "v": "Tank at [ozone set point in tank, ppb]; below [ozone detection limit used to release, ppb] after the ultraviolet (UV) destruct unit and on the return",
+     "m": "ISPE Baseline Guide Vol. 4 range 0.02–0.2 ppm in the tank. Measured at three points; sensor after the UV interlocked to stop supply.",
+     "hl": false
+    },
+    {
+     "p": "UV units",
+     "v": "Lamp intensity at 254 nm, lamp hours and lamp failure on every UV unit",
+     "m": "Low intensity alarms before ozone breakthrough; lamp change logged with the user and time",
+     "hl": false
+    },
+    {
+     "p": "Temperature",
+     "v": "Each generation stage, tank, loop supply and return, and the coldest point of every sanitization cycle",
+     "m": "Sanitization proven by temperature and hold time at the coldest probe; hot WFI loops above 70 °C, Annex 1, 6.10",
+     "hl": false
+    },
+    {
+     "p": "Flow and pressure",
+     "v": "Loop return flow alarmed below [qualified minimum return flow, L/min]; pressures across filters and membranes",
+     "m": "Annex 1, 6.9: flow established at qualification and routinely monitored",
+     "hl": false
+    },
+    {
+     "p": "Divert",
+     "v": "Off-specification water diverted to drain or recirculation at a set point below your alert level",
+     "m": "Divert events recorded with value, time and duration; return to service only after the reading recovers",
+     "hl": false
+    },
+    {
+     "p": "Data recording",
+     "v": "Every quality value at [recording interval, seconds], with time stamp, tag and instrument status",
+     "m": "21 CFR Part 11; EU GMP Annex 11, 7 and 9. Clocks synchronized to one site time source.",
+     "hl": false
+    }
+   ],
+   "nav": "Measurements"
+  },
+  {
+   "type": "table",
+   "h": "Conductivity stage 1: why the raw reading decides",
+   "cols": [
+    "Measured temperature",
+    "Table row used",
+    "Stage 1 limit, non-compensated",
+    "Where you see it"
+   ],
+   "rows": [
+    [
+     "23.8 °C",
+     "20 °C",
+     "1.1 µS/cm",
+     "Ambient PW or membrane WFI loop; rounding down the temperature tightens the limit"
+    ],
+    [
+     "25.0 °C",
+     "25 °C",
+     "1.3 µS/cm",
+     "The figure most specifications quote"
+    ],
+    [
+     "67 °C",
+     "65 °C",
+     "2.4 µS/cm",
+     "Ambient loop during a hot water sanitization"
+    ],
+    [
+     "72 °C",
+     "70 °C",
+     "2.5 µS/cm",
+     "Hot WFI loop at the low end of its range"
+    ],
+    [
+     "82 °C",
+     "80 °C",
+     "2.7 µS/cm",
+     "Hot WFI loop or still outlet"
+    ]
+   ]
+  },
+  {
+   "type": "prose",
+   "h": "The temperature-compensation caveat",
+   "body": [
+    "Most conductivity transmitters display a value compensated to 25 °C, because it is easier to trend. USP <645> stage 1 does not use it. The test compares the uncompensated conductivity with the table value for the measured temperature, rounded down to the next 5 °C step. Compensation algorithms are written for ordinary waters, and in ultrapure water at loop temperatures they can move the reading enough to pass water that the compendial test would send to stage 2, or the reverse.",
+    "So we record both. The historian stores the raw conductivity and the temperature as the compendial record, and the stage 1 limit is looked up for each reading from the USP table. The compensated value is kept for trending and is labelled as such on every screen and report, so nobody releases on the wrong number."
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Alert levels, action levels and the trend before either",
+   "cols": [
+    "Line",
+    "How it is set",
+    "What the system does",
+    "Basis"
+   ],
+   "rows": [
+    [
+     "Specification",
+     "The compendial limit, or your tighter internal limit",
+     "Diverts water, stops supply where specified, records a quality alarm that needs an acknowledged reason",
+     "USP and Ph. Eur. monographs"
+    ],
+    [
+     "Action level",
+     "Below the specification, from your qualification data and process capability. For microbial counts, USP <1231> describes 100 colony-forming units (CFU)/mL for PW and 10 CFU/100 mL for WFI as generally appropriate maximum action levels.",
+     "Quality alarm to the operator and the quality unit; the event is logged for investigation",
+     "Annex 1, 6.14: each action excursion investigated for root cause and product impact"
+    ],
+    [
+     "Alert level",
+     "From initial qualification data, reassessed after requalification, routine monitoring and investigations",
+     "Alarm with an acknowledged comment; counted for trend review",
+     "Annex 1, 6.13 and 6.14; USP <1231>"
+    ],
+    [
+     "Trend rule",
+     "Agreed with your quality unit: for example a run of rising readings, or a shift in the daily mean, well inside the alert level",
+     "Flags drift on the operator panel and in the periodic report before any limit is reached",
+     "Annex 1, 6.13: review of monitoring data to identify adverse trends"
+    ]
+   ]
+  },
+  {
+   "type": "diagram",
+   "h": "How the controls are built",
+   "stages": [
+    "Instruments",
+    "PLC",
+    "Operator panel (HMI)",
+    "SCADA historian",
+    "Plant network",
+    "Remote support"
+   ],
+   "caption": "Instruments report to a programmable logic controller (PLC) that runs sequences, interlocks, divert and sanitization, and keeps running if every layer above it fails. Operators work at a local human-machine interface (HMI) with individual logins. A supervisory control and data acquisition (SCADA) system and historian stores the quality data, the audit trail and the alarm history, with clocks synchronized to one time source. The historian connects to your plant network, building management system or plant historian through a firewall and demilitarized zone (DMZ) segmented in line with ISA/IEC 62443. Remote support, where you choose it, enters only through a connection you open, control and log.",
+   "nav": "Architecture"
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "PLC and SCADA platform",
+     "d": "[PLC and SCADA platforms supported], to match your site standard, so your maintenance team supports one platform."
+    },
+    {
+     "t": "Integration",
+     "d": "OPC UA, Modbus TCP, EtherNet/IP, PROFINET or BACnet to your plant historian, distributed control system or building management system. The Part 11 boundary is agreed in the functional specification."
+    },
+    {
+     "t": "Historian",
+     "d": "A system historian supplied with the skid, or data sent to your validated plant historian with ours as a buffer."
+    },
+    {
+     "t": "Electronic batch and periodic reports",
+     "d": "Sanitization cycle records, daily quality summaries and audit trail review reports, electronically signed."
+    },
+    {
+     "t": "Control panels",
+     "d": "Built and labelled to UL 508A or CSA C22.2 No. 286 [panel certification held and where panels are built]."
+    },
+    {
+     "t": "Power and continuity",
+     "d": "Uninterruptible power for the PLC, HMI and historian, so records continue through a supply interruption."
+    },
+    {
+     "t": "Additional online analyzers",
+     "d": "Space, sample lines and signals for an online bioburden analyzer or additional TOC points where your contamination control strategy (CCS) calls for them."
+    },
+    {
+     "t": "Controls upgrades",
+     "d": "Replace an obsolete PLC, a paper chart recorder or a system without an audit trail on an existing water system, keeping the process unchanged. See upgrades and requalification."
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Where each data integrity requirement lives in the system",
+   "cols": [
+    "Requirement",
+    "21 CFR Part 11",
+    "EU GMP Annex 11",
+    "How the controls meet it, and how it is tested"
+   ],
+   "rows": [
+    [
+     "Validation",
+     "11.10(a)",
+     "4",
+     "GAMP 5 lifecycle from your user requirement specification (URS) to operational qualification (OQ), with a requirements traceability matrix"
+    ],
+    [
+     "Accurate and complete copies",
+     "11.10(b)",
+     "8",
+     "Reports and exports in human-readable and electronic form, with the audit trail; tested by comparing a report against the stored record"
+    ],
+    [
+     "Record protection and retention",
+     "11.10(c)",
+     "7, 17",
+     "Records cannot be edited or deleted from the HMI or SCADA; backups at [backup interval] kept for [data retention, years]; restore tested at OQ"
+    ],
+    [
+     "Access control",
+     "11.10(d), (g)",
+     "12",
+     "Individual accounts, role-based rights (operator, supervisor, engineer, administrator), password rules and automatic logout; each role challenged at FAT"
+    ],
+    [
+     "Audit trail",
+     "11.10(e)",
+     "9",
+     "Secure, computer-generated and time-stamped: who changed a set point, alarm limit, recipe or user account, the old and new values, and the reason; cannot be switched off by users"
+    ],
+    [
+     "Sequence and device checks",
+     "11.10(f), (h)",
+     "5, 6",
+     "Steps enforced in order, inputs range-checked, instrument faults flagged so a failed sensor never reads as good water"
+    ],
+    [
+     "Electronic signatures",
+     "11.50, 11.70, 11.100–11.300",
+     "14",
+     "Signature shows the signer, date, time and meaning, and is linked to the record it signs; used for sanitization records, alarm limit changes and periodic reports"
+    ],
+    [
+     "Change and configuration control",
+     "11.10(k)",
+     "10",
+     "Software versions and configuration under change control, with a baseline backup at handover"
+    ],
+    [
+     "Periodic review and incidents",
+     "No direct clause; FDA data integrity guidance expects audit trail review",
+     "11, 13",
+     "Audit trail review report and alarm summary built for your periodic review; incidents and failures logged"
+    ]
+   ],
+   "nav": "Data integrity"
+  },
+  {
+   "type": "table",
+   "h": "ALCOA+ at the level of a single conductivity reading",
+   "cols": [
+    "Principle",
+    "What it means for water data",
+    "How the controls deliver it"
+   ],
+   "rows": [
+    [
+     "Attributable",
+     "Every entry, acknowledgement and change has a named person",
+     "Individual logins on HMI and SCADA; no shared accounts"
+    ],
+    [
+     "Legible",
+     "Readable for the whole retention period",
+     "Units, tag names and instrument identity on every record and report"
+    ],
+    [
+     "Contemporaneous",
+     "Recorded when it happened",
+     "PLC and historian time stamps from one synchronized time source"
+    ],
+    [
+     "Original",
+     "The first capture is kept, or a verified true copy",
+     "Raw conductivity and temperature stored as the compendial record; compensated value marked as derived"
+    ],
+    [
+     "Accurate",
+     "Correct, with errors visible",
+     "Calibrated instruments, range checks, sensor fault flags"
+    ],
+    [
+     "Complete",
+     "Nothing missing, including repeats and failures",
+     "Data gaps from communication loss flagged and buffered where the instrument allows, not filled in"
+    ],
+    [
+     "Consistent",
+     "Same sequence and time base everywhere",
+     "One clock, one tag list, one alarm list across PLC, HMI and historian"
+    ],
+    [
+     "Enduring",
+     "Survives hardware failure and software upgrades",
+     "Backups, restore tested at OQ, export formats agreed for archive"
+    ],
+    [
+     "Available",
+     "Can be retrieved for review or inspection",
+     "Reports and audit trail searchable by date, tag, user and event"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "h": "GAMP 5 software categories in a water system",
+   "cols": [
+    "Category",
+    "What it is here",
+    "How it is assured"
+   ],
+   "rows": [
+    [
+     "1, infrastructure",
+     "Operating systems, network, virtualization, database engine",
+     "Recorded and managed; qualified as infrastructure, not tested function by function"
+    ],
+    [
+     "3, non-configured product",
+     "Instrument firmware: TOC analyzer, conductivity transmitters, ozone and UV monitors",
+     "Supplier assessment, version recorded, function verified at FAT and OQ"
+    ],
+    [
+     "4, configured product",
+     "SCADA and historian package, HMI runtime, alarm and report configuration",
+     "Configuration specification and risk-based testing of the configured functions"
+    ],
+    [
+     "5, custom application",
+     "The PLC application code we write for your sequences, interlocks and divert logic, and any custom reports",
+     "Software design specification, code review, module testing and full functional testing at FAT"
+    ]
+   ]
+  },
+  {
+   "type": "prose",
+   "h": "Risk-based testing, not a stack of screenshots",
+   "body": [
+    "GAMP 5 (second edition, 2022) and the FDA's computer software assurance (CSA) guidance for production and quality system software (finalized in 2025, revised in 2026, written for medical device manufacturers and widely applied in pharma), both ask for testing scaled to risk and for the use of supplier testing where it is well documented. We apply that thinking within your validation policy. Functions that touch product quality, such as divert, quality alarms, sanitization temperature and the audit trail, get scripted tests with recorded evidence. Low-risk display functions can be verified with unscripted or exploratory testing.",
+    "Because we write and test the PLC code ourselves and run FAT on the full system, your team can leverage the FAT records in OQ instead of repeating them, if your procedures allow it and the protocols are approved before execution. Your validation team approves the strategy and owns the final computerized system validation."
+   ],
+   "nav": "Testing"
+  },
+  {
+   "type": "table",
+   "h": "Remote monitoring: choose what leaves your site",
+   "cols": [
+    "Mode",
+    "What leaves the site",
+    "Who controls access",
+    "What it gives you"
+   ],
+   "rows": [
+    [
+     "No remote connection",
+     "Nothing",
+     "Not applicable",
+     "Fully isolated system; service diagnostics on site only"
+    ],
+    [
+     "Read-only telemetry",
+     "A copy of selected tags and alarms, one way, through your DMZ",
+     "Your IT; no path back to the PLC",
+     "[Confirm offering: alarm notification and trend review by Aquemi service engineers]"
+    ],
+    [
+     "Supervised remote session",
+     "Screen view of the HMI or SCADA during a session you open",
+     "Your staff open and close each session; every session logged with user and time",
+     "Faster diagnosis of an alarm before anyone travels; any change made under your change control"
+    ],
+    [
+     "Your own remote access",
+     "Whatever your site policy allows",
+     "Your IT and quality unit",
+     "Plant-wide dashboards fed from our historian through standard protocols"
+    ]
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered with the controls",
+   "items": [
+    {
+     "t": "URS compliance matrix",
+     "d": "Each requirement, how it is met and where it is tested"
+    },
+    {
+     "t": "Risk assessment",
+     "d": "Quality-critical functions, Part 11 and Annex 11 boundary, test strategy"
+    },
+    {
+     "t": "Functional specification",
+     "d": "Sequences, interlocks, divert, alarms, roles, reports and interfaces"
+    },
+    {
+     "t": "Hardware and software design specifications",
+     "d": "Panels, networks, PLC code structure and SCADA configuration"
+    },
+    {
+     "t": "Alarm and interlock list",
+     "d": "Every alarm with class, set point, delay and response"
+    },
+    {
+     "t": "Part 11 and Annex 11 assessment",
+     "d": "Clause by clause: technical control in the system, or procedural control at your site"
+    },
+    {
+     "t": "Requirements traceability matrix",
+     "d": "From URS through specifications to executed tests"
+    },
+    {
+     "t": "Code review record",
+     "d": "PLC application code reviewed against the software design specification"
+    },
+    {
+     "t": "Electrical drawings and panel layouts",
+     "d": "With network architecture and IP address list"
+    },
+    {
+     "t": "Instrument calibration certificates and TOC system suitability record",
+     "d": "Traceable to national standards"
+    },
+    {
+     "t": "FAT and SAT protocols and executed reports",
+     "d": "Deviations listed and closed"
+    },
+    {
+     "t": "IQ and OQ protocols",
+     "d": "Including computerized system validation tests"
+    },
+    {
+     "t": "Software and configuration backup",
+     "d": "Baseline at handover, with version list and restore procedure"
+    },
+    {
+     "t": "Operation and maintenance manual",
+     "d": "Including user administration, backup and audit trail review procedures"
+    }
+   ],
+   "nav": "Documents"
+  },
+  {
+   "type": "steps",
+   "h": "From your requirements to validated controls",
+   "items": [
+    {
+     "t": "Requirements and risk assessment",
+     "d": "We review your URS, or help write it, and run a risk assessment with your team to decide which functions are quality-critical, where the Part 11 boundary sits and which remote mode, if any, you allow."
+    },
+    {
+     "t": "Functional specification",
+     "d": "Sequences, interlocks, divert logic, alarm philosophy with alert and action levels, user roles, audit trail content, reports and interfaces, in a document you approve before coding starts."
+    },
+    {
+     "t": "Design specifications",
+     "d": "Hardware design specification (HDS) for panels and networks; software design specification (SDS) for the PLC code and SCADA configuration."
+    },
+    {
+     "t": "Build, code review and FAT",
+     "d": "Code reviewed against the SDS, then full functional testing at FAT: every alarm, interlock, divert, role, audit trail entry, report and backup restore, against protocols you approve."
+    },
+    {
+     "t": "Site acceptance testing (SAT) and instrument qualification",
+     "d": "Loop checks, calibration, TOC system suitability and network tests on site, then communication tests with your plant systems."
+    },
+    {
+     "t": "IQ and OQ, handover",
+     "d": "Installation and operational qualification (IQ/OQ) including the computerized system validation tests, a baseline software backup and training by role. Then change control and periodic review under your procedures."
+    }
+   ],
+   "nav": "Process"
+  },
+  {
+   "type": "faq",
+   "h": "Questions validation, QA and IT teams ask",
+   "items": [
+    {
+     "q": "How can our QA team check your controls and validation approach without a prior plant audit record?",
+     "a": "Before you order, review the sample FAT protocol and turnover package, the functional and design specifications for your system and the traceability matrix from each requirement to its test. Your QA team can audit [our software development and change control procedure] and witness the controls FAT."
+    },
+    {
+     "q": "Do we get full access to the PLC and HMI code, or are we locked in?",
+     "a": "[Confirm: application code delivered unlocked with the turnover package, and who owns it.] The software version and checksum seen at FAT are recorded, so you can show an inspector that the code running is the code that was tested."
+    },
+    {
+     "q": "How do you test the controls at FAT before shipment?",
+     "a": "Every input and output is checked, every sequence, alarm and interlock is run on water, and audit trail entries, user access levels and recovery after a power failure are tested against the functional specification. The FAT and SAT page lists each test case and what IQ/OQ can leverage."
+    },
+    {
+     "q": "Can you fit new controls to a skid or loop from another manufacturer?",
+     "a": "Yes, as an upgrade: we survey the instruments and valves you keep, write the functional specification against your current qualified state and plan the cut-over and requalification. See Upgrades and retrofits."
+    },
+    {
+     "q": "Can we release water on online TOC and conductivity?",
+     "a": "Yes, for those two attributes, when the instruments are qualified, the sample point represents the water used and your procedures say so. USP <643> and <645> both allow online measurement. Online conductivity covers stage 1 only; a stage 1 failure goes to stages 2 and 3 in the laboratory. Microbial counts and, for WFI, bacterial endotoxin stay laboratory tests unless you qualify an alternative method."
+    },
+    {
+     "q": "Our transmitters show temperature-compensated conductivity. Is that a problem?",
+     "a": "For trending, no. For USP <645> stage 1, the compendial record must be the uncompensated conductivity with the measured temperature, compared with the table value for that temperature rounded down to the 5 °C step. We configure transmitters and the historian to store both and label which is which. On an existing system, this is one of the first things we check."
+    },
+    {
+     "q": "How often does the online TOC analyzer need system suitability?",
+     "a": "USP <643> requires system suitability, with a response efficiency between 85 % and 115 % on the sucrose and 1,4-benzoquinone standards, but does not fix the interval for online instruments. It is set in your procedures, usually after calibration and at a frequency you justify from the analyzer's history. We perform it at SAT and write the procedure into the maintenance manual."
+    },
+    {
+     "q": "Is your system Part 11 compliant?",
+     "a": "No system is compliant on its own; your site is, by technical controls in the system plus procedures. We supply the technical controls: audit trail, access control, electronic signatures, record protection and backups. The Part 11 and Annex 11 assessment shows, clause by clause, which controls are in the system and which need a procedure at your site, such as account administration and audit trail review."
+    },
+    {
+     "q": "Who validates the software?",
+     "a": "Your validation team approves the strategy and owns the computerized system validation. We supply the specifications, the risk assessment, the traceability matrix and executed FAT, SAT and OQ records written so they can be leveraged under your procedures."
+    },
+    {
+     "q": "Can you connect to our plant historian, and where does the Part 11 boundary sit?",
+     "a": "Yes, through OPC UA or another standard protocol. We agree in the functional specification which system holds the original record. If your plant historian is the record, ours buffers data through a network loss so nothing is missing; if ours is the record, yours receives a copy for dashboards."
+    },
+    {
+     "q": "Our IT team will not allow remote access to GMP equipment.",
+     "a": "Then we do not install it. The system runs and records fully without any outside connection. If you later allow read-only telemetry or supervised sessions, they connect through your DMZ under your IT and change control, with every session logged."
+    },
+    {
+     "q": "Who sets the alert and action levels?",
+     "a": "You do, with our input. At handover there is little data, so we start from your specification and the generator's design margin, then recommend alert levels from qualification data, as Annex 1, 6.13 expects, and reassess them once routine monitoring builds history."
+    },
+    {
+     "q": "Can you fix data integrity gaps on an existing water system?",
+     "a": "Yes. We start with a gap assessment against Part 11, Annex 11 and USP <645>: shared logins, missing audit trail, compensated-only conductivity, unsynchronized clocks, paper recorders. Then we propose an upgrade scoped to the gaps, with a requalification plan agreed with your quality unit before work starts. See upgrades and requalification."
+    },
+    {
+     "q": "Who calibrates the instruments and maintains the software after handover?",
+     "a": "Our service team, from [service locations], with a stated response time of [response time, hours]. A service plan covers calibration, TOC system suitability, UV lamps, ozone sensors, backups and software patches under your change control. Every visit ends with a signed report."
+    }
+   ],
+   "nav": "FAQ"
+  },
+  {
+   "type": "docs",
+   "h": "What to send for a controls specification review",
+   "items": [
+    {
+     "t": "Water grades and pharmacopoeias",
+     "d": "PW, WFI or both; USP, Ph. Eur. or both; any internal limits tighter than the monograph"
+    },
+    {
+     "t": "Systems to control",
+     "d": "Generation, storage and loops, new or existing, and the supplier of any equipment we do not build"
+    },
+    {
+     "t": "Site automation standards",
+     "d": "PLC and SCADA platform, network rules, historian and any standard software libraries"
+    },
+    {
+     "t": "Data integrity requirements",
+     "d": "Your Part 11 and Annex 11 interpretation, user roles, record retention period and where the original record must live"
+    },
+    {
+     "t": "Remote access policy",
+     "d": "Whether any outside connection is allowed, and on what terms"
+    },
+    {
+     "t": "Monitoring plan",
+     "d": "Required online measurement points, current alert and action levels, and recent trend data for an existing system"
+    },
+    {
+     "t": "Your URS and validation procedures",
+     "d": "If you have them; we can help write the URS if not"
+    }
+   ],
+   "nav": "What to send"
+  },
+  {
+   "type": "related",
+   "h": "Where the controls connect",
+   "items": [
+    "sys-storage",
+    "sys-pw",
+    "sys-wfi-membrane",
+    "svc-upgrades",
+    "svc-cq",
+    "cmp-documentation"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your controls URS and data integrity requirements. We return a specification you can check.",
+  "body": "Include the water grades, your PLC and SCADA standard, record retention and remote access policy. An engineer replies within [response time] with questions or a draft functional specification outline.",
+  "button": "Request a controls specification review",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "PLC and SCADA platforms supported",
+  "Ozone set point in the tank (ppb) and ozone detection limit used to release after the UV (ppb)",
+  "Qualified minimum return flow default (L/min) or note that it is set per loop",
+  "Historian recording interval for quality values (seconds)",
+  "Backup interval and default data retention (years)",
+  "Panel certification held (UL 508A, CSA C22.2 No. 286) and whether panels are built in-house",
+  "Whether Aquemi offers read-only telemetry and remote alarm review as a service, and its scope",
+  "Whether supervised remote support sessions are offered",
+  "Service locations and response time (hours)",
+  "Enquiry response time commitment",
+  "Whether Aquemi writes PLC code in-house (page states 'we write and test the PLC code ourselves'; confirm or reword)",
+  "Datasheet PDF; add a download link only once it exists",
+  "A real controls project (new or upgrade) with scope and inspection outcome before adding a case study block",
+  "Whether PLC/HMI application code is delivered unlocked and who owns it",
+  "Software development and change control procedure available for client audit"
+ ]
+}

@@ -1,0 +1,107 @@
+{
+ "id": "projects",
+ "section": "Projects",
+ "nav_label": "Case studies",
+ "title": "Pharmaceutical water system case studies | Aquemi",
+ "meta": "Projects told as problem, system delivered and measured outcome, with flow in L/h, conductivity, TOC and the standard met. Filter by system and industry.",
+ "path": "/projects/",
+ "eyebrow": "PROJECTS · CASE STUDIES",
+ "headline": "Problem, system delivered, measured outcome",
+ "lead": "Each case study states what the client needed, what we built and what was measured at handover. Figures come from executed FAT, SAT or qualification reports.",
+ "tags": [
+  "USP",
+  "Ph. Eur.",
+  "ASME BPE"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Explore systems",
+  "link": "systems"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "How we write case studies",
+   "body": [
+    "Every project page opens with a project profile: industry, location by province, system, capacity in L/h, water grade and the standard met. Then three short sections: the problem, the system we delivered and the measured outcome.",
+    "We publish client names only with written permission. Every figure is taken from a signed test report."
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Filter projects",
+   "intro": "Projects can be filtered by system, industry and province.",
+   "items": [
+    {
+     "t": "By system",
+     "d": "PW generation, WFI by distillation, WFI by membrane, Pure Steam, storage and distribution, upgrades.",
+     "link": "systems"
+    },
+    {
+     "t": "By industry",
+     "d": "Pharmaceutical, biotechnology, medical devices, contract manufacturing.",
+     "link": "industries"
+    },
+    {
+     "t": "By province",
+     "d": "[Provinces with completed projects]"
+    }
+   ]
+  },
+  {
+   "type": "case",
+   "h": "Placeholder case studies (outlines only, not for publication until real figures are supplied)",
+   "items": [
+    {
+     "t": "[Placeholder] Purified Water generation and loop for an oral solid dose plant",
+     "client": "[Oral solid dose manufacturer], [city], [province]",
+     "problem": "An existing chemical deionization system produced PW with conductivity drift toward [value] µS/cm and needed resin regeneration every [number] days. A planned capacity increase raised peak demand to [value] L/h.",
+     "system": "Double-pass RO with electrodeionization (EDI), [volume] L 316L storage tank, ambient loop with ozone and UV ozone destruction, [number] points of use, factory acceptance tested before shipment.",
+     "outcome": "[Conductivity at return of loop, µS/cm @ 25 °C], [TOC, ppb], [microbial count, CFU/mL] over [number] weeks of PQ; chemical regeneration eliminated; [shutdown duration] days for tie-in."
+    },
+    {
+     "t": "[Placeholder] WFI by membrane for a biologics fill-finish expansion",
+     "client": "[Biotechnology company], [city], [province]",
+     "problem": "A new fill-finish line needed [value] L/h of WFI in a room too small for a multi-effect still, with a [energy or footprint target].",
+     "system": "Pretreatment, double-pass RO, EDI and ultrafiltration, hot WFI storage at [temperature] °C, hot loop, continuous TOC and conductivity monitoring, design rationale written to Ph. Eur. 0169.",
+     "outcome": "[Endotoxin result, EU/mL], [TOC, ppb], [conductivity, µS/cm @ 25 °C] at OQ; [energy use compared with distillation, kWh/m³]; FAT to SAT in [number] weeks."
+    },
+    {
+     "t": "[Placeholder] Pure Steam generator and loop replacement for a CDMO",
+     "client": "[Contract development and manufacturing organization], [city], [province]",
+     "problem": "An ageing Pure Steam generator failed EN 285 non-condensable gas tests and limited autoclave availability to [value]%.",
+     "system": "[Capacity] kg/h Pure Steam generator, condensate cooler and sample point, re-routed distribution header with trapped drop legs, replacement installed during a [number]-day shutdown.",
+     "outcome": "[Non-condensable gases, %], [superheat, K], [dryness value] at SAT; condensate met WFI conductivity and endotoxin limits; autoclave availability restored to [value]%."
+    }
+   ]
+  },
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "Want to see a project in person",
+   "body": "Where clients agree, we arrange a reference call or a site visit with their engineering or quality lead."
+  },
+  {
+   "type": "related",
+   "h": "Related pages",
+   "items": [
+    "systems",
+    "svc-fat-sat",
+    "industries"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Have a project like these",
+  "body": "Tell us the grade, the capacity and the date you need water.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Replace all three placeholder outlines with real projects before launch, or do not publish the page",
+  "Written client permission for each named reference",
+  "Measured figures from executed FAT, SAT or qualification reports for each project",
+  "Project photographs",
+  "Provinces with completed projects for the filter"
+ ]
+}

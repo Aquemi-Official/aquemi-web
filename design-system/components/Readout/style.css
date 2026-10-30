@@ -1,0 +1,8 @@
+/* ---------- Readout: one measured value with its method ---------- */
+.aq-readout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); align-items: start; }
+.aq-readout__value { font: 300 56px/60px var(--font-mono); color: var(--flow); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+
+@container (max-width: 860px) {
+  .aq-readout { grid-template-columns: minmax(0, 1fr); }
+  .aq-readout__value { font-size: 40px; line-height: 44px; }
+}

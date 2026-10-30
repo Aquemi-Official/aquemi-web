@@ -1,0 +1,166 @@
+{
+ "id": "cmp-quality",
+ "section": "Compliance",
+ "nav_label": "Quality management",
+ "title": "Quality management and traceability | Aquemi",
+ "meta": "How we control quality: QMS, material traceability to heat number, orbital weld inspection, calibrated instruments and documented change control.",
+ "path": "/compliance/quality/",
+ "eyebrow": "QUALITY · ISO 9001 · ASME BPE",
+ "headline": "Quality you can audit, from heat number to handover",
+ "lead": "Our quality management system controls design, purchasing, fabrication and testing. Your auditors can follow any product-contact component from the mill certificate to the weld log to the FAT report.",
+ "tags": [
+  "ISO 9001",
+  "ASME BPE",
+  "ASME IX",
+  "GAMP 5"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Book a supplier audit",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "Quality management system",
+   "body": [
+    "Our quality management system (QMS) is [certified to ISO 9001:2015 by [registrar], certificate [number]] [or: built to ISO 9001:2015, with certification planned for [date]]. It is described in a quality manual and controlled procedures for design review, purchasing, fabrication, inspection, testing, nonconformance and corrective action.",
+    "We welcome supplier audits. Your quality unit can review procedures, records and the shop floor on [number] working days' notice."
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "What we control",
+   "items": [
+    {
+     "t": "Material traceability",
+     "d": "Every product-contact component is received against an EN 10204 type 3.1 certificate and tracked by heat number to its weld and drawing.",
+     "tag": "EN 10204"
+    },
+    {
+     "t": "Orbital welding",
+     "d": "Welds are made to qualified procedures by qualified welders, logged by number and shown on the weld map.",
+     "tag": "ASME IX"
+    },
+    {
+     "t": "Weld inspection",
+     "d": "Visual and borescope inspection to ASME BPE acceptance criteria, with [percentage]% of product-contact welds borescoped and recorded.",
+     "tag": "ASME BPE"
+    },
+    {
+     "t": "Surface finish",
+     "d": "Ra measured and recorded on product-contact surfaces; electropolished to Ra ≤ 0.5 µm on request.",
+     "tag": "ASME BPE"
+    },
+    {
+     "t": "Calibration",
+     "d": "Test and measuring instruments are calibrated on schedule against references traceable to national standards, with certificates in the package.",
+     "tag": "ISO 9001"
+    },
+    {
+     "t": "Change control",
+     "d": "Once you approve a design document, every change is raised, assessed for impact, approved and recorded before work continues.",
+     "tag": "GAMP 5"
+    },
+    {
+     "t": "Nonconformance and CAPA",
+     "d": "Deviations found in fabrication or testing are recorded, dispositioned and closed with a corrective and preventive action (CAPA) where needed."
+    },
+    {
+     "t": "Supplier control",
+     "d": "Critical suppliers of tube, fittings, valves, membranes and instruments are approved and reviewed on a schedule."
+    }
+   ]
+  },
+  {
+   "type": "steps",
+   "h": "How a weld is controlled",
+   "items": [
+    {
+     "t": "Qualify",
+     "d": "Welding procedure specification and procedure qualification record approved; welder qualified to the procedure."
+    },
+    {
+     "t": "Prepare",
+     "d": "Tube and fitting heat numbers checked against certificates; coupons welded at the start of each shift or set-up."
+    },
+    {
+     "t": "Weld",
+     "d": "Orbital weld made and numbered; weld parameters recorded."
+    },
+    {
+     "t": "Inspect",
+     "d": "Visual and borescope inspection against ASME BPE criteria; result entered in the weld log."
+    },
+    {
+     "t": "Close",
+     "d": "Weld log reconciled with the isometric drawing and the weld map before pressure testing."
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Certificates",
+   "intro": "Download links appear here only for certificates we hold.",
+   "items": [
+    {
+     "t": "[ISO 9001 certificate]",
+     "d": "[Registrar, scope, certificate number, expiry date]",
+     "tag": "ISO 9001"
+    },
+    {
+     "t": "[Pressure equipment programme]",
+     "d": "[CSA B51 or ASME certificate and number]",
+     "tag": "CSA B51"
+    },
+    {
+     "t": "[Welding certification]",
+     "d": "[For example CWB CSA W47.1 division and number]",
+     "tag": "CWB"
+    },
+    {
+     "t": "[Control panel certification]",
+     "d": "[CSA or UL file number]",
+     "tag": "CSA"
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Quality records in every turnover package",
+   "items": [
+    "Material certificates indexed by heat number",
+    "Weld map, weld log and borescope records",
+    "Welder and procedure qualifications",
+    "Surface finish and passivation reports",
+    "Pressure test certificates",
+    "Instrument calibration certificates",
+    "Deviation and nonconformance log with closure",
+    "Change control register"
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related pages",
+   "items": [
+    "compliance",
+    "cmp-documentation",
+    "svc-fabrication",
+    "svc-fat-sat"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Audit us before you order",
+  "body": "Tell us when your quality unit would like to visit the shop.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "ISO 9001 status: certified (registrar, number, expiry) or roadmap date",
+  "Borescope coverage percentage for product-contact welds",
+  "Supplier audit notice period ([number] working days)",
+  "Welding, pressure and panel certifications actually held",
+  "Calibration provider and accreditation (for example ISO/IEC 17025)"
+ ]
+}

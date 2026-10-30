@@ -1,20 +1,27 @@
-<!-- @dsCard group="Page sections" height=280 width=1000 subtitle="Purified Water treatment train" -->
+<!-- @dsCard group="Page sections" height=760 width=1100 subtitle="Pretreatment train on a serpentine Flow pipe" -->
 <div class="aq-page"><section class="aq-section"><div class="aq-in aq-stack-l">
   <h2 class="aq-h1">How it works</h2>
-  <div class="aq-diagram">
-    <svg viewBox="0 0 850 110" role="img" aria-label="Multimedia filter to Softener to Reverse osmosis to EDI to Storage and loop">
-      <defs><marker id="aq-ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path class="aq-diagram__arrow" d="M0 0L8 4L0 8"/></marker></defs>
-      <text class="aq-diagram__num" x="10" y="18">01</text><rect class="aq-diagram__box" x="10" y="28" width="136" height="52"/><text class="aq-diagram__label" x="78" y="58" text-anchor="middle">Multimedia filter</text>
-      <line class="aq-diagram__arrow" x1="146" y1="54" x2="178" y2="54" marker-end="url(#aq-ah)"/>
-      <text class="aq-diagram__num" x="180" y="18">02</text><rect class="aq-diagram__box" x="180" y="28" width="136" height="52"/><text class="aq-diagram__label" x="248" y="58" text-anchor="middle">Softener</text>
-      <line class="aq-diagram__arrow" x1="316" y1="54" x2="348" y2="54" marker-end="url(#aq-ah)"/>
-      <text class="aq-diagram__num" x="350" y="18">03</text><rect class="aq-diagram__box" x="350" y="28" width="136" height="52"/><text class="aq-diagram__label" x="418" y="58" text-anchor="middle">Reverse osmosis</text>
-      <line class="aq-diagram__arrow" x1="486" y1="54" x2="518" y2="54" marker-end="url(#aq-ah)"/>
-      <text class="aq-diagram__num" x="520" y="18">04</text><rect class="aq-diagram__box" x="520" y="28" width="136" height="52"/><text class="aq-diagram__label" x="588" y="58" text-anchor="middle">EDI</text>
-      <line class="aq-diagram__arrow" x1="656" y1="54" x2="688" y2="54" marker-end="url(#aq-ah)"/>
-      <text class="aq-diagram__num" x="690" y="18">05</text><rect class="aq-diagram__box" x="690" y="28" width="136" height="52"/><text class="aq-diagram__label" x="758" y="50" text-anchor="middle">Storage</text><text class="aq-diagram__label" x="758" y="67" text-anchor="middle">and loop</text>
-      <line class="aq-diagram__base" x1="10" y1="100" x2="826" y2="100"/>
-    </svg>
-  </div>
-  <p class="aq-small">Example train for a Purified Water system to USP &lt;1231&gt;.</p>
+  <div class="aq-diagram aq-diagram--base" role="img" aria-label="Treatment train, 7 stages in order: 1 Municipal water, 2 Break tank, 3 Multimedia filter, 4 Softener, 5 Carbon or bisulfite, 6 Cartridge filter, 7 To RO. Across all stages: Monitoring and controls · TOC, conductivity, ozone">
+    <div class="aq-diagram__train">
+    <div class="aq-diagram__row">
+    <div class="aq-diagram__stage"><span class="aq-diagram__num">01</span><svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="M36 6c-10 14-16 22-16 30a16 16 0 0 0 32 0c0-8-6-16-16-30zM28 38a8 8 0 0 0 8 8"/></svg><span class="aq-diagram__label">Municipal water</span></div>
+    <span class="aq-diagram__link"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6v12l18-12v12z"/></svg></span>
+    <div class="aq-diagram__stage"><span class="aq-diagram__num">02</span><svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="M18 48V18a18 8 0 0 1 36 0v30zM10 48h52M24 32h24M36 10V4"/></svg><span class="aq-diagram__label">Break tank</span></div>
+    <span class="aq-diagram__link aq-diagram__link--alt"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12V11M6.5 5.5a5.5 5.5 0 1 0 11 0a5.5 5.5 0 1 0-11 0M6.5 5.5h11"/></svg></span>
+    <div class="aq-diagram__stage"><span class="aq-diagram__num">03</span><svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="M22 50V14a14 6 0 0 1 28 0v36zM22 28h28M22 36h28M22 44h28M36 8V2"/></svg><span class="aq-diagram__label">Multimedia filter</span></div></div>
+    <div class="aq-diagram__row aq-diagram__row--turn aq-diagram__row--rev">
+    <span class="aq-diagram__link aq-diagram__link--turn"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6v12l18-12v12z"/></svg></span></div>
+    <div class="aq-diagram__row aq-diagram__row--rev">
+    <div class="aq-diagram__stage"><span class="aq-diagram__num">04</span><svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="M8 48V18a8 4 0 0 1 16 0v30M30 48V18a8 4 0 0 1 16 0v30M52 48V28h12v20M4 48h64M24 22h6"/></svg><span class="aq-diagram__label">Softener</span></div>
+    <span class="aq-diagram__link aq-diagram__link--alt"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12V11M6.5 5.5a5.5 5.5 0 1 0 11 0a5.5 5.5 0 1 0-11 0M6.5 5.5h11"/></svg></span>
+    <div class="aq-diagram__stage"><span class="aq-diagram__num">05</span><svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="M22 50V14a14 6 0 0 1 28 0v36zM30 26h1M41 30h1M32 36h1M42 41h1M29 44h1M36 8V2"/></svg><span class="aq-diagram__label">Carbon or bisulfite</span></div>
+    <span class="aq-diagram__link"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6v12l18-12v12z"/></svg></span>
+    <div class="aq-diagram__stage"><span class="aq-diagram__num">06</span><svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="M22 50V14a14 6 0 0 1 28 0v36zM22 28h28M22 36h28M22 44h28M36 8V2"/></svg><span class="aq-diagram__label">Cartridge filter</span></div></div>
+    <div class="aq-diagram__row aq-diagram__row--turn">
+    <span class="aq-diagram__link aq-diagram__link--turn aq-diagram__link--alt"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12V11M6.5 5.5a5.5 5.5 0 1 0 11 0a5.5 5.5 0 1 0-11 0M6.5 5.5h11"/></svg></span></div>
+    <div class="aq-diagram__row">
+    <div class="aq-diagram__stage"><span class="aq-diagram__num">07</span><svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="M36 6c-10 14-16 22-16 30a16 16 0 0 0 32 0c0-8-6-16-16-30zM28 38a8 8 0 0 0 8 8"/></svg><span class="aq-diagram__label">To RO</span></div></div></div>
+    <div class="aq-diagram__base"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>Monitoring and controls · TOC, conductivity, ozone</span>
+  </div></div>
+  <p class="aq-small aq-prose">Pretreatment ahead of an RO and EDI Purified Water generator. Softener and carbon sizing follow your feed water analysis.</p>
 </div></section></div>

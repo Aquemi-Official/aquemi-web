@@ -1,0 +1,134 @@
+{
+ "id": "contact-locations",
+ "section": "Contact",
+ "nav_label": "Locations",
+ "title": "Aquemi locations and service coverage",
+ "meta": "Our office, fabrication shop and service coverage across Canada. Addresses, phone numbers and how far our technicians travel.",
+ "path": "/contact/locations/",
+ "eyebrow": "LOCATIONS · SERVICE COVERAGE",
+ "headline": "Where we are and where we serve",
+ "lead": "Design, fabrication and factory testing happen in [city], [province]. Service technicians cover [coverage area].",
+ "tags": [],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Request service",
+  "link": "contact-service"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "h": "Offices and shop",
+   "cols": [
+    "Location",
+    "What happens here",
+    "Address",
+    "Phone"
+   ],
+   "rows": [
+    [
+     "Head office, [city]",
+     "Engineering, project management, validation",
+     "[Street address], [city], [province] [postal code]",
+     "[Phone number]"
+    ],
+    [
+     "Fabrication shop, [city]",
+     "Skid fabrication, orbital welding, factory acceptance testing",
+     "[Street address], [city], [province] [postal code]",
+     "[Phone number]"
+    ],
+    [
+     "Service base, [city]",
+     "Field service, spare parts stock",
+     "[Street address], [city], [province] [postal code]",
+     "[Phone number]"
+    ]
+   ]
+  },
+  {
+   "type": "prose",
+   "h": "Visiting the shop",
+   "body": [
+    "Clients attend FAT at our shop in [city]. The test bay has [utilities available: feed water, power, steam] so the system runs with water before it ships.",
+    "Visits are by appointment. Wear safety footwear; we provide glasses and hearing protection. [Parking and access details.]"
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Service coverage",
+   "cols": [
+    "Region",
+    "Coverage",
+    "Typical on-site response"
+   ],
+   "rows": [
+    [
+     "[Province or region]",
+     "[Full coverage from [city]]",
+     "[Time]"
+    ],
+    [
+     "[Province or region]",
+     "[Full coverage from [city]]",
+     "[Time]"
+    ],
+    [
+     "[Province or region]",
+     "[Scheduled visits; emergency by arrangement]",
+     "[Time]"
+    ],
+    [
+     "United States",
+     "[Coverage, if any]",
+     "[Time]"
+    ]
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Contact by purpose",
+   "items": [
+    {
+     "t": "New system",
+     "d": "Request a proposal and an engineer replies within [response time].",
+     "link": "contact-proposal"
+    },
+    {
+     "t": "Service",
+     "d": "Service request form, or call [service phone] for critical issues.",
+     "link": "contact-service"
+    },
+    {
+     "t": "Parts",
+     "d": "[Parts email]"
+    },
+    {
+     "t": "Careers",
+     "d": "Open roles and general applications.",
+     "link": "careers"
+    }
+   ]
+  },
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "Hours",
+   "body": "Office: [days and hours, time zone]. Service line: [hours]."
+  }
+ ],
+ "cta": {
+  "h": "Attend a FAT at our shop",
+  "body": "Ask for a shop visit when you request a proposal.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Office, shop and service base addresses and phone numbers",
+  "Coverage regions and typical response times",
+  "Whether US clients are served, and how",
+  "Test bay utilities available for FAT",
+  "Office and service hours with time zone",
+  "Parts email address",
+  "LocalBusiness schema per real location only"
+ ]
+}

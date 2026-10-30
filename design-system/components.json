@@ -20,6 +20,16 @@
  },
  "components": [
   {
+   "name": "Illustration",
+   "readme": "design-system/components/Illustration/README.md",
+   "preview": "design-system/components/Illustration/preview.html",
+   "group": "Foundations",
+   "height": "420",
+   "width": "900",
+   "subtitle": "Equipment line art painted with a token",
+   "summary": "Illustration shows an isometric line drawing of Aquemi equipment, painted with a colour token so the same file works in light and dark themes."
+  },
+  {
    "name": "Page",
    "readme": "design-system/components/Page/README.md",
    "preview": "design-system/components/Page/preview.html",
@@ -38,6 +48,16 @@
    "width": "900",
    "subtitle": "Highlighted and clean",
    "summary": "Placeholder marks a fact only Aquemi can supply (a capacity, lead time, certificate, location, case-study figure) so an invented number never ships."
+  },
+  {
+   "name": "SplitSection",
+   "readme": "design-system/components/SplitSection/README.md",
+   "preview": "design-system/components/SplitSection/preview.html",
+   "group": "Foundations",
+   "height": "380",
+   "width": "1100",
+   "subtitle": "Heading column left, content right",
+   "summary": "SplitSection puts a section's heading in a sticky left column and its content on the right, so long pages alternate between full-width and two-column rhythm instead of stacking heading, text, heading, text."
   },
   {
    "name": "Button",
@@ -103,10 +123,10 @@
    "readme": "design-system/components/DocList/README.md",
    "preview": "design-system/components/DocList/preview.html",
    "group": "Page sections",
-   "height": "320",
+   "height": "760",
    "width": "1000",
    "subtitle": "Documentation package",
-   "summary": "DocList names the documents delivered with a system, which is the list validation teams check first."
+   "summary": "DocList names the documents delivered with a system as a grid of numbered tiles, each led by the short code a validation team files it under."
   },
   {
    "name": "FAQ",
@@ -143,20 +163,20 @@
    "readme": "design-system/components/OptionList/README.md",
    "preview": "design-system/components/OptionList/preview.html",
    "group": "Page sections",
-   "height": "320",
-   "width": "1000",
-   "subtitle": "Configuration options",
-   "summary": "OptionList shows configuration choices for a system in two columns separated by hairlines."
+   "height": "640",
+   "width": "1200",
+   "subtitle": "Configuration options as numbered module tiles",
+   "summary": "OptionList shows the configuration choices for a system as numbered module tiles on a technical grid, joined by a thin flow line, like the modules of a configurator."
   },
   {
    "name": "ProcessDiagram",
    "readme": "design-system/components/ProcessDiagram/README.md",
    "preview": "design-system/components/ProcessDiagram/preview.html",
    "group": "Page sections",
-   "height": "280",
-   "width": "1000",
-   "subtitle": "Purified Water treatment train",
-   "summary": "ProcessDiagram draws the stages of a treatment train left to right: numbered boxes joined by Flow Blue arrows."
+   "height": "760",
+   "width": "1100",
+   "subtitle": "Pretreatment train on a serpentine Flow pipe",
+   "summary": "ProcessDiagram draws a treatment train as numbered stage boxes joined by one double-line Flow pipe that snakes through them in reading order, with valve and instrument symbols on the pipe."
   },
   {
    "name": "ProcessSteps",
@@ -189,14 +209,34 @@
    "summary": "Readout pairs one measured value with its method and a short explanation."
   },
   {
+   "name": "WaterPath",
+   "readme": "design-system/components/WaterPath/README.md",
+   "preview": "design-system/components/WaterPath/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1200",
+   "subtitle": "Seven system families on one pipe, feed to point of use",
+   "summary": "WaterPath shows the system families as numbered stops on one serpentine pipe, from city feed to point of use, so the reader sees how the systems connect before reading any description."
+  },
+  {
+   "name": "KeyFacts",
+   "readme": "design-system/components/KeyFacts/README.md",
+   "preview": "design-system/components/KeyFacts/preview.html",
+   "group": "Data",
+   "height": "200",
+   "width": "1100",
+   "subtitle": "The numbers a system page stands on",
+   "summary": "KeyFacts is a strip of three or four large figures, each with its unit and the standard behind it, that tells an engineer what a page stands on before they read a word of copy."
+  },
+  {
    "name": "SpecTable",
    "readme": "design-system/components/SpecTable/README.md",
    "preview": "design-system/components/SpecTable/preview.html",
    "group": "Data",
-   "height": "560",
+   "height": "900",
    "width": "900",
-   "subtitle": "WFI quality limits with example results, and a routing table with links",
-   "summary": "Specification tables present water quality limits and test results, the most persuasive content Aquemi has."
+   "subtitle": "WFI spec sheet with the critical limit as a band, and a comparison table",
+   "summary": "Specification sheets present water quality limits as a two-column matrix with the one critical limit pulled out as a full-width band, the most persuasive content Aquemi has."
   },
   {
    "name": "StandardTag",

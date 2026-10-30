@@ -8,7 +8,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [Home](https://aquemi-official.github.io/aquemi-web/#home) | Validation-ready Purified Water, WFI and pure steam systems for pharmaceutical plants | tags, readout, grid, diagram, steps, prose, grid |
+| [Home](https://aquemi-official.github.io/aquemi-web/#home) | Validation-ready Purified Water, WFI and pure steam systems for pharmaceutical plants | tags, readout, path, steps, prose, grid |
 
 ## Systems
 
@@ -40,9 +40,9 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | Page | Headline | Sections |
 | --- | --- | --- |
 | [Industries](https://aquemi-official.github.io/aquemi-web/#industries) | Water systems for regulated manufacturing | grid, table, band, related |
-| [Pharmaceutical](https://aquemi-official.github.io/aquemi-web/#ind-pharma) | Pharmaceutical water matched to your dosage forms, and documented for every inspector who walks the plant | prose, table (situation routing), table (grade by dosage form), prose, spec, table (inspectors), diagram, options, grid, band, faq, docs, related |
-| [Biotechnology](https://aquemi-official.github.io/aquemi-web/#ind-biotech) | WFI for biologics that holds endotoxin at every point of use, from the clinical suite to the commercial plant | prose, table (situation routing), table (grade by biologic step), prose, spec, table (endotoxin sources), table (inspectors), diagram, steps (phased capacity), options, grid, band, faq, docs, related |
-| [Medical devices](https://aquemi-official.github.io/aquemi-web/#ind-meddevice) | Final rinse water you can defend in your cleaning validation and at your next MDSAP audit | prose, table (situation), table (grade by step), prose, spec, table (contamination), table (auditors), diagram, options, prose (hospital reprocessing), grid, band, faq, docs, related |
+| [Pharmaceutical](https://aquemi-official.github.io/aquemi-web/#ind-pharma) | Pharmaceutical water matched to your dosage forms, and documented for every inspector who walks the plant | prose, table, table, prose, spec, table, diagram, options, grid, band, faq, docs, related |
+| [Biotechnology](https://aquemi-official.github.io/aquemi-web/#ind-biotech) | WFI for biologics that holds endotoxin at every point of use, from the clinical suite to the commercial plant | prose, table, table, prose, spec, table, table, diagram, steps, options, grid, band, faq, docs, related |
+| [Medical devices](https://aquemi-official.github.io/aquemi-web/#ind-meddevice) | Final rinse water you can defend in your cleaning validation and at your next MDSAP audit | prose, table, table, prose, spec, table, table, diagram, options, prose, grid, band, faq, docs, related |
 | [Contract manufacturing (CDMO)](https://aquemi-official.github.io/aquemi-web/#ind-cdmo) | A water system that stands up to every client's audit | prose, grid, options, band, grid, faq |
 
 ## Compliance
@@ -80,19 +80,20 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | Site section | Component |
 | --- | --- |
 | page frame | Page, NavBar, Footer |
-| hero | Hero |
-| prose | Prose |
+| hero | Hero, with KeyFacts when the page has `facts` |
+| prose | Prose inside SplitSection |
 | grid, related | LinkGrid |
-| options | OptionList |
+| path | WaterPath |
+| options | OptionList inside SplitSection |
 | steps | ProcessSteps |
 | diagram | ProcessDiagram |
 | readout | Readout |
 | band, tags, closing call to action | Band (with StandardTag) |
-| faq | FAQ |
-| docs | DocList |
+| faq | FAQ inside SplitSection |
+| docs | DocList inside SplitSection (sunken band) |
 | case | CaseStudy |
-| spec, table (cells may link to a page: routing tables) | SpecTable |
-| form | EnquiryForm (with TextField and Button); with `steps` it renders the stepped variant |
+| spec, table | SpecTable |
+| form | EnquiryForm (with TextField and Button) inside SplitSection; with `steps` it renders the stepped variant |
 | block `nav` label | SectionNav (rendered by the page, not a block) |
 | `[bracketed facts]` in any copy | Placeholder |
 
