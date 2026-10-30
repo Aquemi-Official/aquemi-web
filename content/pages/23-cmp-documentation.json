@@ -2,54 +2,878 @@
  "id": "cmp-documentation",
  "section": "Compliance",
  "nav_label": "Documentation package",
- "title": "Validation documentation package | Aquemi",
- "meta": "Every document we deliver by phase: functional specification, P&IDs, material certificates, weld logs, FAT, SAT and IQ/OQ protocols, turnover package.",
+ "title": "Turnover package and validation documents | Aquemi",
+ "meta": "Every document we deliver, by stage: URS matrix, P&IDs, EN 10204 3.1 certificates, weld log, FAT and IQ/OQ. Request a redacted sample package.",
  "path": "/compliance/documentation/",
- "eyebrow": "DOCUMENTATION · GAMP 5 · ASME BPE",
- "headline": "The documents arrive with the equipment",
- "lead": "We write the documentation package as we design and build, not after shipment. Your validation team receives drafts for review at each phase and a complete turnover package at handover.",
+ "eyebrow": "DOCUMENTATION · EU GMP ANNEX 15 · GAMP 5 · ASME BPE · 21 CFR PART 11",
+ "headline": "Every document your auditor will ask for, issued as we build and indexed to your URS",
+ "lead": "At installation qualification (IQ) your team checks the system against its drawings, certificates and specifications; when a document is late, IQ waits. We write the package as we design, fabricate and test, send each document for your review at the stage that issues it, and hand over one turnover package indexed to your user requirement specification (URS): material certificates to EN 10204 3.1, weld logs to ASME BPE, and factory acceptance test (FAT) and installation and operational qualification (IQ/OQ) protocols your quality unit approves before execution (EU GMP Annex 15, 2.6). Check the format first: request a redacted sample.",
  "tags": [
+  "EU GMP Annex 15",
   "GAMP 5",
   "ASME BPE",
-  "ISPE",
+  "EN 10204 3.1",
   "21 CFR Part 11",
   "ASTM E2500"
  ],
- "primary_cta": "Request the sample turnover package",
+ "primary_cta": "Request a sample turnover package",
  "secondary_cta": {
-  "label": "Ready to buy? Submit your URS",
-  "link": "contact-proposal"
+  "label": "See the standards each document proves",
+  "link": "compliance"
  },
  "blocks": [
   {
-   "type": "docs",
-   "h": "Documents for review before order",
-   "items": [
-    "Sample turnover package index",
-    "Redacted FAT protocol",
-    "Redacted IQ/OQ protocol table of contents",
-    "Sample weld log and weld map",
-    "Sample requirements traceability matrix"
+   "type": "prose",
+   "h": "The package is the record your inspector reads",
+   "body": [
+    "An inspector does not test your water system. They read its record: why each design decision was made, what each part is made of, how each weld was inspected and which test proved each requirement. At IQ your team checks the installation against that record, line by line (EU GMP Annex 15, 3.9). When a document is missing or late, IQ waits for it, and so does your release.",
+    "So we write the package as we go. Each document is issued at the stage that produces it, goes to your team for review while the work is still open, and lands in one turnover package indexed to your URS. The index below is the full list: every document our system and service pages promise, what it proves, when you see it, its format and who approves it. Your proposal lists the subset that applies to your system."
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Master index, part 1: specify and design",
+   "cols": [
+    "Document",
+    "What it proves",
+    "Issued",
+    "Format",
+    "Approved by"
    ],
-   "nav": "What you can see"
+   "rows": [
+    [
+     "URS review and URS compliance matrix",
+     "Each requirement of your user requirement specification (URS), how the design meets it and where it will be verified; gaps and untestable requirements listed with a proposed wording",
+     "First, before any sizing",
+     "PDF, signed; native [spreadsheet format]",
+     "Your system owner and quality unit; the reference for design qualification (DQ)"
+    ],
+    [
+     "Feedwater review and demand profile",
+     "The design months for your feed water, and point-of-use draw hour by hour, including simultaneous draws and sanitization windows",
+     "With the URS review",
+     "PDF, signed; native [spreadsheet format]",
+     "Your engineering lead"
+    ],
+    [
+     "Basis of design",
+     "Water grade, pharmacopoeias, route, microbial control method, capacity and margins, each with its reasoning",
+     "End of concept; frozen before detailed design",
+     "PDF, signed",
+     "Your engineering and quality leads"
+    ],
+    [
+     "Process flow diagram (PFD) and balance",
+     "Flows, recoveries and quality at each stage at minimum and maximum feed temperature: heat and mass balance for stills, steam balance for pure steam, hydraulic calculation for loops, membrane projections for pretreatment",
+     "End of concept, updated at basic design",
+     "PDF, signed; native [spreadsheet format]",
+     "Your engineering lead"
+    ],
+    [
+     "System risk assessment",
+     "Which functions and components affect water quality, how they fail and the control for each; critical aspects and critical design elements, and the Part 11 and Annex 11 boundary for controls",
+     "Basic design, revisited at detailed design",
+     "PDF, signed",
+     "Your quality unit"
+    ],
+    [
+     "Control strategy input (membrane WFI)",
+     "Risks, controls and monitoring mapped to EMA/INS/GMP/443117/2017 and EU GMP Annex 1, for your contamination control strategy",
+     "Basic design",
+     "PDF, signed",
+     "Your quality unit"
+    ],
+    [
+     "Piping and instrumentation diagrams (P&IDs)",
+     "Every line, valve, instrument and tag, with slopes, drains, sample points and dead leg dimensions; critical design elements marked",
+     "Basic design for review, approved at detailed design, as built at handover",
+     "PDF; native CAD [drawing format]",
+     "Your engineering lead; IQ verifies the installation against them (EU GMP Annex 15, 3.9)"
+    ],
+    [
+     "Functional specification",
+     "Operating and sanitization sequences, setpoints, alarms, interlocks, divert logic, user roles and records, each clause testable",
+     "Draft at basic design, approved before detailed design ends",
+     "PDF, signed",
+     "Your system owner and quality unit; OQ tests are written against it"
+    ],
+    [
+     "Hardware and software design specifications",
+     "Panel, network, instrument and programmable logic controller (PLC) code structure, to the GAMP 5 lifecycle",
+     "Detailed design",
+     "PDF, signed",
+     "Your automation and computerized system validation leads"
+    ],
+    [
+     "General arrangement (GA) drawings and isometrics",
+     "Footprint, service access, nozzle positions, routing heights and slopes, so building design and fabrication agree",
+     "Basic design, approved at detailed design",
+     "PDF; native CAD [drawing format]",
+     "Your engineering firm"
+    ],
+    [
+     "Instrument, valve, alarm and interlock lists",
+     "Range, accuracy and calibration need for every instrument; class, setpoint, delay and response for every alarm",
+     "Detailed design",
+     "PDF, signed; native [spreadsheet format]",
+     "Your metrology and validation teams"
+    ],
+    [
+     "Part 11 and Annex 11 assessment",
+     "Clause by clause, which control is technical in the system and which is procedural at your site",
+     "Detailed design, confirmed at FAT",
+     "PDF, signed",
+     "Your quality unit"
+    ],
+    [
+     "Pressure vessel calculations and CRN documents",
+     "Design of pressure-retaining stills, generators and tanks to ASME Section VIII, Division 1 for registration under CSA B51",
+     "Detailed design, before fabrication",
+     "PDF, signed",
+     "The pressure equipment authority of your province, which issues the Canadian registration number (CRN)"
+    ],
+    [
+     "Commissioning and qualification (C&Q) plan",
+     "Which test happens where (FAT, SAT, IQ or OQ), which results your quality unit can leverage, and the acceptance criteria",
+     "Detailed design",
+     "PDF, signed",
+     "Your quality unit"
+    ],
+    [
+     "Design review report and requirements traceability matrix",
+     "That the approved design meets every URS requirement and critical design element, with open points listed",
+     "Design freeze, before fabrication starts",
+     "PDF, signed; native [spreadsheet format]",
+     "Your quality unit, to approve DQ"
+    ]
+   ],
+   "nav": "Master index"
+  },
+  {
+   "type": "table",
+   "h": "Part 2: fabrication dossier",
+   "cols": [
+    "Document",
+    "What it proves",
+    "Issued",
+    "Format",
+    "Approved by"
+   ],
+   "rows": [
+    [
+     "Fabrication and inspection plan",
+     "The standards, inspection extent and hold and witness points the build follows",
+     "Before fabrication starts",
+     "PDF, signed",
+     "Aquemi quality control; you agree the hold and witness points"
+    ],
+    [
+     "Material log and EN 10204 3.1 certificates",
+     "Every product-contact component traced by heat number to a 3.1 certificate with test results for the delivered product",
+     "During fabrication",
+     "Log: PDF, signed. Certificates: issuer's original, as PDF",
+     "Aquemi quality control; checked again at IQ"
+    ],
+    [
+     "Component certificates",
+     "Elastomers to USP <88> Class VI and FDA 21 CFR 177.2600; membrane, electrodeionization (EDI) and ultrafiltration (UF) certificates with serial numbers; media and resin certificates with lot numbers",
+     "During fabrication",
+     "Issuer's original, as PDF",
+     "Aquemi quality control"
+    ],
+    [
+     "Welding procedure specifications (WPS) and procedure qualification records (PQR)",
+     "Each welding procedure used is qualified to ASME Section IX",
+     "Before production welding",
+     "Issuer's original, as PDF",
+     "Aquemi quality control"
+    ],
+    [
+     "Welding operator qualifications (WOPQ) and continuity log",
+     "Each operator named in the weld log was qualified, and the qualification had not lapsed",
+     "Before production welding, updated through fabrication",
+     "PDF, signed",
+     "Aquemi quality control"
+    ],
+    [
+     "Weld maps",
+     "Every weld numbered on the as-built isometrics",
+     "During fabrication, final as built",
+     "PDF; native CAD [drawing format]",
+     "Aquemi quality control; your team at IQ"
+    ],
+    [
+     "Weld log",
+     "One line per weld: operator, date, inspection result, repairs and cut-outs",
+     "During fabrication",
+     "PDF, signed; native [spreadsheet format]",
+     "Aquemi quality control; your team at IQ"
+    ],
+    [
+     "Coupon records",
+     "Each set-up coupon cut open and examined to the same ASME BPE criteria as production welds; coupons labelled and kept",
+     "During fabrication",
+     "PDF, signed",
+     "Aquemi quality control"
+    ],
+    [
+     "Borescope records",
+     "Inside-surface result per weld against ASME BPE, [share of product-contact welds borescoped, %]",
+     "During fabrication",
+     "PDF log, signed; video files",
+     "Aquemi quality control"
+    ],
+    [
+     "Surface finish report",
+     "Profilometer Ra readings against the specified ASME BPE designation, for example SF1 (Ra ≤ 0.51 µm) or SF4 (Ra ≤ 0.38 µm); electropolish certificates for SF4 parts",
+     "After fabrication",
+     "PDF, signed",
+     "Aquemi quality control"
+    ],
+    [
+     "Pressure test certificates",
+     "Hydrostatic test at no less than 1.5 times design pressure under ASME B31.3, vessels under ASME Section VIII, including both tube sheets of each double tube sheet exchanger",
+     "After fabrication",
+     "PDF, signed",
+     "Aquemi quality control; witnessed"
+    ],
+    [
+     "Cleaning and passivation certificate",
+     "Passivation to ASTM A967 or ASTM A380, with the verification test result",
+     "After pressure test",
+     "PDF, signed",
+     "Aquemi quality control"
+    ],
+    [
+     "Slope survey and dead leg register",
+     "Measured fall on each run, and L/D ≤ 2 to ASME BPE for every branch, instrument tee and sample valve",
+     "As built, after fabrication and again after field installation",
+     "PDF, signed; native [spreadsheet format]",
+     "Aquemi quality control; your team at IQ"
+    ],
+    [
+     "Spray device coverage test report",
+     "Riboflavin test: full wetting of each tank head and wall under ultraviolet light",
+     "After tank fabrication",
+     "PDF, signed",
+     "Aquemi quality control"
+    ],
+    [
+     "Vent filter integrity test records",
+     "Each vent filter integral before installation, with the replacement and retest procedure",
+     "Before installation",
+     "Issuer's original, as PDF",
+     "Aquemi quality control"
+    ],
+    [
+     "Pressure vessel documents",
+     "Manufacturer's data report and CRN registration for the province of installation",
+     "Before shipment",
+     "Issuer's original, as PDF",
+     "The provincial pressure equipment authority"
+    ],
+    [
+     "Control panel documents",
+     "Certification label record, electrical drawings and panel layouts, network architecture and IP address list, bill of materials",
+     "Before FAT",
+     "PDF; native CAD [drawing format]",
+     "Aquemi engineering; your automation lead"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Part 3: factory and site acceptance tests",
+   "cols": [
+    "Document",
+    "What it proves",
+    "Issued",
+    "Format",
+    "Approved by"
+   ],
+   "rows": [
+    [
+     "FAT protocol",
+     "What will be tested, against which revision of the URS and functional specification, and the acceptance criterion for each test case",
+     "[protocol issue before FAT, weeks] before testing",
+     "PDF, signed",
+     "Your quality unit, before execution (EU GMP Annex 15, 2.6)"
+    ],
+    [
+     "Code review record",
+     "PLC application code reviewed against the software design specification",
+     "Before FAT",
+     "PDF, signed",
+     "Your computerized system validation lead"
+    ],
+    [
+     "Executed FAT protocol and test instrument calibration certificates",
+     "Results as found, raw data, alarm and event logs, and the calibrated instrument behind every reading",
+     "At FAT",
+     "PDF, signed by both parties; raw data in [export format]",
+     "Signed by both parties; reviewed by your validation team"
+    ],
+    [
+     "Software version record",
+     "The version and checksum tested at FAT, and every change after it under change control",
+     "At FAT, updated to SAT",
+     "PDF, signed",
+     "Your computerized system validation lead"
+    ],
+    [
+     "FAT deviation log and punch list",
+     "Each deviation investigated, corrected, retested and closed; each open item with an owner and the stage it closes",
+     "At FAT",
+     "PDF, signed; native [spreadsheet format]",
+     "Your quality unit"
+    ],
+    [
+     "FAT summary report",
+     "Results against acceptance criteria, open items and the release-to-ship decision",
+     "End of FAT",
+     "PDF, signed",
+     "Your quality unit"
+    ],
+    [
+     "SAT protocol and executed SAT report",
+     "Performance on your feed water, utilities and network after tie-in",
+     "Protocol before SAT; report at SAT",
+     "PDF, signed",
+     "Your quality unit approves the protocol; report signed by both parties"
+    ],
+    [
+     "EN 285 steam quality test report (pure steam)",
+     "Non-condensable gases ≤ 3.5 mL per 100 mL of condensate, dryness value and superheat ≤ 25 K at each sterilizer, with test equipment calibration records",
+     "At SAT or OQ",
+     "PDF, signed",
+     "Your quality unit"
+    ],
+    [
+     "Condensate test results (pure steam)",
+     "Conductivity, TOC and endotoxin at the generator outlet and at users, with the laboratory named",
+     "At SAT or OQ",
+     "Issuer's original, as PDF",
+     "Your quality unit"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Part 4: qualification",
+   "cols": [
+    "Document",
+    "What it proves",
+    "Issued",
+    "Format",
+    "Approved by"
+   ],
+   "rows": [
+    [
+     "Commissioning plan and records",
+     "Start-up, flushing, pressure test, passivation and punch list closure, written to good documentation practice so they can be leveraged",
+     "Plan before site work; records during commissioning",
+     "PDF, signed",
+     "Your validation team"
+    ],
+    [
+     "IQ protocol and executed report",
+     "The system as installed matches the approved drawings, materials, welds, finishes, instruments and software (Annex 15, 3.9)",
+     "Protocol after FAT; executed after installation",
+     "PDF, signed",
+     "Your quality unit, before execution and at report approval"
+    ],
+    [
+     "OQ protocol and executed report",
+     "Each function of the functional specification operates as specified, including sanitization and computerized system tests",
+     "Protocol after FAT; executed after IQ",
+     "PDF, signed; raw data, trends and alarm logs in [export format]",
+     "Your quality unit, before execution and at report approval"
+    ],
+    [
+     "Sanitization temperature mapping report",
+     "The coldest point of the loop or skid identified and proven to reach the sanitization temperature",
+     "At OQ",
+     "PDF, signed",
+     "Your quality unit"
+    ],
+    [
+     "IQ and OQ deviation log",
+     "Each deviation raised, investigated, corrected and closed",
+     "During IQ and OQ",
+     "PDF, signed; native [spreadsheet format]",
+     "Your quality unit"
+    ],
+    [
+     "Requirements traceability matrix, final",
+     "Every URS requirement traced to the FAT, SAT, IQ, OQ or PQ test that proves it",
+     "Updated at each stage; final after OQ",
+     "PDF, signed; native [spreadsheet format]",
+     "Your quality unit"
+    ],
+    [
+     "PQ protocol and sampling plan, by phase",
+     "Point-of-use map, sample IDs, volumes, methods and frequencies for each phase",
+     "Before PQ starts",
+     "PDF, signed",
+     "Your quality unit. You write it, or Aquemi drafts it for you"
+    ],
+    [
+     "Alert and action level recommendation",
+     "Levels set from your system's own data",
+     "Provisional after phase 2, final from the full PQ data set",
+     "PDF, signed",
+     "Your quality control and quality unit"
+    ],
+    [
+     "Phase reports and final qualification summary",
+     "Results against acceptance criteria and the release recommendation for each phase",
+     "End of each PQ phase",
+     "PDF, signed",
+     "Your quality unit (Annex 15, 2.9 and 2.10)"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Part 5: handover",
+   "cols": [
+    "Document",
+    "What it proves",
+    "Issued",
+    "Format",
+    "Approved by"
+   ],
+   "rows": [
+    [
+     "Turnover package index and document register",
+     "Every document in the package, with its number, current revision and approval status",
+     "At handover, updated at each later change",
+     "PDF, signed; native [spreadsheet format]",
+     "Your system owner"
+    ],
+    [
+     "As-built drawings",
+     "P&IDs, isometrics, GA and electrical drawings as installed, including field piping built after FAT",
+     "At handover",
+     "PDF; native CAD [drawing format]",
+     "Your engineering lead"
+    ],
+    [
+     "Instrument list and calibration certificates",
+     "Every installed instrument calibrated and traceable to national standards; TOC system suitability record",
+     "At handover",
+     "Issuer's original, as PDF",
+     "Your metrology team"
+    ],
+    [
+     "Software and configuration backup",
+     "The baseline at handover, with version list and restore procedure",
+     "At handover",
+     "Media or secure transfer; PDF record, signed",
+     "Your computerized system validation lead"
+    ],
+    [
+     "Operation and maintenance manual",
+     "Start-up, shutdown, sanitization, cleaning, filter and membrane replacement, user administration, backup and audit trail review",
+     "Draft at FAT, final at handover",
+     "PDF, signed",
+     "Your engineering and maintenance leads"
+    ],
+    [
+     "SOP drafts",
+     "Operation, sanitization, sampling, alarm response and restart after shutdown, ready for your document system",
+     "Draft before OQ, finalized after OQ",
+     "Native [word processing format]",
+     "Your quality unit, in your SOP system"
+    ],
+    [
+     "Recommended spare parts list and preventive maintenance schedule",
+     "Critical spares and maintenance intervals for the first [months of operation]",
+     "At handover",
+     "PDF, signed; native [spreadsheet format]",
+     "Your maintenance lead"
+    ],
+    [
+     "Training records",
+     "Who was trained, by role (operators, maintenance, quality control), on what and when",
+     "During OQ and handover",
+     "PDF, signed",
+     "Your training coordinator"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Part 6: service and change, over the life of the system",
+   "cols": [
+    "Document",
+    "What it proves",
+    "Issued",
+    "Format",
+    "Approved by"
+   ],
+   "rows": [
+    [
+     "Signed service report",
+     "Your work order number, work done, as-found and as-left condition and return-to-service results, signed by technician and reviewer",
+     "Every visit",
+     "PDF, signed",
+     "Your system owner"
+    ],
+    [
+     "Calibration certificates, per visit",
+     "As-found and as-left values against a traceable reference standard, one per instrument",
+     "Every calibration",
+     "PDF, signed",
+     "Your metrology team"
+    ],
+    [
+     "Parts record and like-for-like statement",
+     "Part, lot or serial numbers and material certificates for each wetted part fitted, and whether each matches the qualified design",
+     "Every visit",
+     "PDF, signed",
+     "Your system owner; a change goes to your change control"
+    ],
+    [
+     "Observations for your quality system",
+     "Anything that may need a deviation, change request or corrective and preventive action (CAPA), written so you can raise it",
+     "Every visit, when found",
+     "PDF, signed",
+     "Your quality unit"
+    ],
+    [
+     "Annual system review",
+     "A year of trends, maintenance, changes and excursions, laid out for your periodic review (EU GMP Annex 15, 4.1)",
+     "Yearly, on plans that include it",
+     "PDF, signed",
+     "Your quality unit"
+    ],
+    [
+     "Change impact assessment input",
+     "Scope of an upgrade, the critical aspects it touches and the requalification rationale",
+     "Before a change is approved",
+     "PDF, signed",
+     "Your quality unit, through your change control"
+    ],
+    [
+     "Updated as-builts, dead leg register and register entries",
+     "The file still matches the system after the change",
+     "After each change",
+     "PDF; native CAD [drawing format]",
+     "Your engineering lead"
+    ],
+    [
+     "Change-scoped FAT, IQ and OQ, and computerized system validation records",
+     "The change works and nothing it could affect has moved, including data migration for controls work",
+     "With each change",
+     "PDF, signed",
+     "Your quality unit"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "h": "How the turnover package is organized",
+   "nav": "Package",
+   "cols": [
+    "Section",
+    "Contents",
+    "Format"
+   ],
+   "rows": [
+    [
+     "1. Index and project summary",
+     "Document register with current revisions, scope, purchase order references, system tag list, battery limits",
+     "Searchable PDF, bookmarked"
+    ],
+    [
+     "2. Requirements and design basis",
+     "URS compliance matrix, feedwater review, basis of design, risk assessment, C&Q plan, design review report, requirements traceability matrix",
+     "PDF; matrices also native"
+    ],
+    [
+     "3. Specifications",
+     "Functional specification, hardware and software design specifications, alarm and interlock list, Part 11 and Annex 11 assessment",
+     "PDF"
+    ],
+    [
+     "4. Drawings and calculations",
+     "As-built P&IDs, GA drawings, isometrics, electrical drawings and panel layouts, process balances, hydraulic calculation, pressure vessel calculations",
+     "PDF and native CAD [drawing format]"
+    ],
+    [
+     "5. Materials",
+     "Material log with EN 10204 3.1 certificates by heat number, elastomer compliance statements, membrane, EDI, UF, media and resin certificates",
+     "Log PDF; certificates as issued"
+    ],
+    [
+     "6. Welding",
+     "WPS and PQR, WOPQ and continuity log, weld maps, weld log, coupon records, borescope records",
+     "PDF; borescope video files"
+    ],
+    [
+     "7. Surface, cleaning and drainability",
+     "Surface finish report, passivation certificate, slope survey, dead leg register, spray device coverage report",
+     "PDF"
+    ],
+    [
+     "8. Pressure equipment and panels",
+     "Pressure test certificates, manufacturer's data reports, CRN registration, control panel certification record",
+     "PDF"
+    ],
+    [
+     "9. Instruments and calibration",
+     "Instrument list and datasheets, calibration certificates, TOC system suitability record, vent filter integrity records",
+     "PDF"
+    ],
+    [
+     "10. Software",
+     "Software version and checksum record, code review record, configuration backup and restore procedure",
+     "PDF and backup media"
+    ],
+    [
+     "11. Testing and qualification",
+     "FAT, SAT, IQ and OQ protocols and executed reports, deviation logs, punch list closure, EN 285 report, sanitization mapping, PQ protocol, sampling plan and phase reports",
+     "PDF; raw data in [export format]"
+    ],
+    [
+     "12. Operation, maintenance and training",
+     "Operation and maintenance manual, SOP drafts, spare parts list, preventive maintenance schedule, training records",
+     "PDF; SOP drafts native"
+    ]
+   ]
+  },
+  {
+   "type": "steps",
+   "h": "How each document reaches your file",
+   "nav": "Review cycle",
+   "items": [
+    {
+     "t": "Draft",
+     "d": "Issued at the stage that produces it, with a document number, revision and the URS or functional specification clauses it answers."
+    },
+    {
+     "t": "Your review",
+     "d": "Your team comments within the review turnaround agreed at kick-off, [standard review period, working days] unless your procedures set another."
+    },
+    {
+     "t": "Revision",
+     "d": "We answer each comment in a comment log, revise and reissue. The log stays with the document."
+    },
+    {
+     "t": "Approval",
+     "d": "Protocols are approved by your quality unit before execution. Specifications and plans are approved at the design gate they belong to."
+    },
+    {
+     "t": "Execution or as built",
+     "d": "Executed records carry results as found, raw data and both parties' signatures. Drawings are reissued as built."
+    },
+    {
+     "t": "Turnover",
+     "d": "The register lists every document and its current revision. A document still open at handover is a punch list item with an owner and a date."
+    }
+   ]
+  },
+  {
+   "type": "spec",
+   "h": "Electronic delivery, signatures and language",
+   "nav": "Delivery",
+   "cols": [
+    "Item",
+    "How we deliver it",
+    "Note"
+   ],
+   "caption": "Format of the turnover package",
+   "rows": [
+    {
+     "p": "Documents we write",
+     "v": "Text-searchable PDF, bookmarked, with the document number and revision on every page, linked from the register in section 1",
+     "m": "Never a scan of a printout",
+     "hl": true
+    },
+    {
+     "p": "Native files",
+     "v": "[Native formats delivered: CAD drawings, spreadsheets for lists, matrices and calculations, protocol source files]",
+     "m": "Ownership and licence terms are stated in the proposal"
+    },
+    {
+     "p": "Third-party certificates",
+     "v": "Material, component and calibration certificates delivered as the issuer sent them, never retyped, indexed by heat, lot or serial number",
+     "m": "The material log cross-references each one"
+    },
+    {
+     "p": "Signatures",
+     "v": "[Electronic signature method, and whether it meets 21 CFR Part 11 and EU GMP Annex 11, 14], or wet ink, scanned",
+     "m": "Part 11 applies to how your site uses the records; we supply the technical controls. Protocols can be executed in your electronic validation system under your procedures"
+    },
+    {
+     "p": "Raw data",
+     "v": "Trend exports, alarm and event logs attached to executed protocols in [export format] as well as PDF",
+     "m": "So your reviewer can check a reading, not just its summary"
+    },
+    {
+     "p": "Language",
+     "v": "English. French: [confirm which documents are offered in French, and how translations are controlled]",
+     "m": "For a system installed in Quebec, ask your legal team which documents the Charter of the French language requires in French"
+    },
+    {
+     "p": "Transfer and paper",
+     "v": "[Secure transfer method or client portal]; paper sets [number of paper sets, if offered]",
+     "m": "Your document control decides which copy is the master"
+    },
+    {
+     "p": "Retention",
+     "v": "Aquemi keeps a copy of the package for [retention period, years] and reissues a lost document on request",
+     "m": "Your site's record retention still applies to your master copy"
+    }
+   ],
+   "note": "Your templates, numbering and good documentation practice rules can replace ours for any document; send them with the URS."
+  },
+  {
+   "type": "table",
+   "h": "Where each document lands in your own validation",
+   "nav": "Your validation",
+   "cols": [
+    "Your step",
+    "What it must show",
+    "Documents from the package",
+    "Reference"
+   ],
+   "rows": [
+    [
+     "Design qualification (DQ)",
+     "The approved design meets the URS and every critical design element",
+     "Design review report, requirements traceability matrix, risk assessment, basis of design",
+     "EU GMP Annex 15, 3.3; ASTM E2500"
+    ],
+    [
+     "Leveraging supplier tests",
+     "Which FAT and commissioning results stand without repetition, and why",
+     "C&Q plan, approved FAT protocol with leveraged tests flagged, executed FAT",
+     "EU GMP Annex 15, 3.6; ISPE Baseline Guide Vol. 5"
+    ],
+    [
+     "Installation qualification (IQ)",
+     "Installed as designed: drawings, materials, welds, instruments and software; supplier documentation collected",
+     "As-built drawings, material log, weld documentation, surface finish report, dead leg register, calibration certificates, software version record, operation and maintenance manual",
+     "EU GMP Annex 15, 3.9"
+    ],
+    [
+     "Operational qualification (OQ)",
+     "Each function operates as specified across its range",
+     "Functional specification, alarm and interlock list, executed FAT, sanitization mapping, Part 11 and Annex 11 assessment",
+     "EU GMP Annex 15, 3.10 and 3.11"
+    ],
+    [
+     "Performance qualification (PQ)",
+     "Water meets the monograph at your points of use over time",
+     "PQ protocol and sampling plan, alert and action level recommendation, phase reports",
+     "WHO TRS 1033, Annex 3, 11.3; USP <1231>"
+    ],
+    [
+     "Computerized system validation",
+     "Controls specified, tested and protected to their risk",
+     "Hardware and software design specifications, code review record, traceability matrix, Part 11 and Annex 11 assessment, configuration backup",
+     {
+      "t": "GAMP 5, second edition; 21 CFR Part 11; EU GMP Annex 11",
+      "link": "compliance"
+     }
+    ],
+    [
+     "Periodic review",
+     "The system is still in its qualified state",
+     "Annual system review, service reports, calibration certificates",
+     "EU GMP Annex 15, 4.1"
+    ],
+    [
+     "Change control",
+     "A change was assessed, tested and recorded",
+     "Change impact assessment input, updated as-builts and dead leg register, change-scoped test records",
+     "EU GMP Annex 15, section 11"
+    ],
+    [
+     "Inspection",
+     "The record behind any design decision, found in minutes",
+     "Turnover package index, document register, requirements traceability matrix",
+     "Health Canada GUI-0001; 21 CFR Part 211"
+    ]
+   ]
+  },
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "Your templates or ours",
+   "body": "If your site has protocol templates, numbering and good documentation practice rules, we write the FAT, SAT, IQ and OQ protocols in them. If not, we use ours, built on EU GMP Annex 15, GAMP 5 and the ISPE commissioning and qualification guides. Either way every test case carries a URS or functional specification reference, so it lands in your traceability matrix."
+  },
+  {
+   "type": "docs",
+   "h": "What the sample turnover package contains",
+   "items": [
+    {
+     "t": "Turnover package index",
+     "d": "All 12 sections and the document register, from a delivered system"
+    },
+    {
+     "t": "FAT protocol",
+     "d": "Table of contents and a set of sample test cases"
+    },
+    {
+     "t": "IQ and OQ protocol table of contents",
+     "d": "With sample check sheets"
+    },
+    {
+     "t": "Weld map and weld log extract",
+     "d": "With the borescope record format"
+    },
+    {
+     "t": "Material log extract",
+     "d": "Cross-referenced by heat number to EN 10204 3.1 certificates"
+    },
+    {
+     "t": "Requirements traceability matrix extract",
+     "d": "URS to FAT, IQ and OQ test case, leveraged tests flagged"
+    },
+    {
+     "t": "Signed service report",
+     "d": "The format every service visit leaves in your file"
+    }
+   ]
   },
   {
    "type": "form",
-   "h": "Request the sample turnover package",
-   "nav": "Request samples",
-   "intro": "Check our documents before you shortlist us. Tell us which samples you want; we send [what is shared openly and what under NDA] within [sample package response time]. No sales call needed.",
-   "submit": "Send me the samples",
+   "h": "Request a sample turnover package",
+   "nav": "Request a sample",
+   "anchor": "samples",
+   "intro": "Check the format before you shortlist us. Customer names and project data are redacted. [Confirm which samples are shared openly and which under a non-disclosure agreement (NDA).] We send them within [sample package response time, working days]. No sales call needed.",
+   "submit": "Send me the sample",
    "fields": [
     {
      "kind": "checkbox-group",
-     "label": "Samples you want",
+     "label": "Documents you want",
      "required": true,
      "options": [
       "Turnover package index",
       "FAT protocol: contents and sample test cases",
-      "IQ/OQ protocol table of contents",
-      "Weld log and weld map",
-      "Requirements traceability matrix"
+      "IQ and OQ protocol table of contents",
+      "Weld map and weld log extract",
+      "Material log extract",
+      "Requirements traceability matrix extract",
+      "Signed service report"
+     ]
+    },
+    {
+     "kind": "select",
+     "label": "System it should match",
+     "required": false,
+     "options": [
+      "Purified Water (PW) generation",
+      "WFI by distillation",
+      "WFI by membrane",
+      "Pure steam generator",
+      "Storage and distribution loop",
+      "Pretreatment",
+      "Monitoring and controls",
+      "Not decided yet"
      ]
     },
     {
@@ -64,6 +888,16 @@
      ]
     },
     {
+     "kind": "radio",
+     "label": "Non-disclosure agreement",
+     "required": false,
+     "options": [
+      "Send us yours",
+      "We need our company's NDA signed",
+      "Not sure yet"
+     ]
+    },
+    {
      "kind": "text",
      "label": "Full name",
      "required": true
@@ -72,7 +906,7 @@
      "kind": "email",
      "label": "Work email",
      "required": true,
-     "help": "We send the samples here."
+     "help": "We send the sample here."
     },
     {
      "kind": "text",
@@ -92,168 +926,111 @@
       "Consulting engineer",
       "Other"
      ]
+    },
+    {
+     "kind": "textarea",
+     "label": "What your validation team wants to check",
+     "required": false,
+     "help": "For example your template, your numbering or a clause of your URS."
     }
-   ],
-   "anchor": "samples"
-  },
-  {
-   "type": "steps",
-   "h": "Documents by project phase",
-   "items": [
-    {
-     "t": "Specify",
-     "d": "URS review and response, compliance matrix, basis of design, functional specification (FS), initial risk assessment."
-    },
-    {
-     "t": "Design",
-     "d": "Piping and instrumentation diagrams (P&IDs), general arrangement drawings, isometric drawings, design specification, software and hardware design specifications, requirements traceability matrix."
-    },
-    {
-     "t": "Fabricate",
-     "d": "Material certificates, weld map and weld log, welder and procedure qualifications, borescope records, surface finish and passivation reports, pressure test records."
-    },
-    {
-     "t": "Test in the factory",
-     "d": "FAT protocol for your approval before testing, executed FAT report with deviations and their closure."
-    },
-    {
-     "t": "Install and commission",
-     "d": "SAT protocol and report, loop and instrument check sheets, punch list and close-out."
-    },
-    {
-     "t": "Qualify",
-     "d": "Installation qualification (IQ) and operational qualification (OQ) protocols, executed reports, support for your performance qualification (PQ)."
-    },
-    {
-     "t": "Hand over",
-     "d": "Turnover package, operation and maintenance manual, spare parts list, training records."
-    }
-   ],
-   "nav": "By phase"
-  },
-  {
-   "type": "table",
-   "h": "Turnover package contents",
-   "cols": [
-    "Section",
-    "Contents",
-    "Format"
-   ],
-   "rows": [
-    [
-     "1. Project summary",
-     "Scope, purchase order references, system tag list, approved document register",
-     "PDF"
-    ],
-    [
-     "2. Specifications",
-     "FS, design specification, software design specification, configuration specification",
-     "PDF, native on request"
-    ],
-    [
-     "3. Drawings",
-     "As-built P&IDs, general arrangement, isometrics with weld numbers, electrical schematics, panel layout",
-     "PDF and DWG"
-    ],
-    [
-     "4. Materials",
-     "Material certificates (EN 10204 type 3.1) for product-contact components, elastomer compliance statements (FDA 21 CFR 177, USP <88> Class VI)",
-     "PDF"
-    ],
-    [
-     "5. Welding",
-     "Weld map, weld log, welding procedure specifications (WPS), procedure qualification records (PQR), welder qualifications, borescope records",
-     "PDF"
-    ],
-    [
-     "6. Surface and cleaning",
-     "Surface finish reports, cleaning and passivation certificate, slope verification",
-     "PDF"
-    ],
-    [
-     "7. Pressure and code",
-     "Pressure test certificates, CRN registration, vessel data reports",
-     "PDF"
-    ],
-    [
-     "8. Instruments",
-     "Instrument list, datasheets, calibration certificates traceable to national standards",
-     "PDF"
-    ],
-    [
-     "9. Software",
-     "Software version record, alarm list, backup of the control program, Part 11 assessment",
-     "PDF and media"
-    ],
-    [
-     "10. Testing",
-     "Executed FAT and SAT, IQ/OQ protocols and reports, deviation log",
-     "PDF"
-    ],
-    [
-     "11. Operation",
-     "Operation and maintenance manual, recommended spare parts, preventive maintenance schedule",
-     "PDF"
-    ],
-    [
-     "12. Training",
-     "Training plan, attendance records, operator quick reference",
-     "PDF"
-    ]
-   ],
-   "nav": "Contents"
-  },
-  {
-   "type": "band",
-   "tone": "limestone",
-   "h": "Your templates or ours",
-   "body": "If your site has validation templates, we write the FAT, SAT and IQ/OQ protocols in them. If not, we use ours, built on GAMP 5 and the ISPE commissioning and qualification guide."
+   ]
   },
   {
    "type": "faq",
-   "h": "Questions we hear",
+   "h": "Questions validation and quality teams ask",
+   "nav": "FAQ",
    "items": [
     {
-     "q": "When do we see the protocols?",
-     "a": "The FAT protocol goes to you for approval [number] weeks before testing. IQ/OQ protocols follow the FAT so that results can be referenced, not repeated."
+     "q": "Can we see real documents before we order?",
+     "a": "Yes, redacted. The sample turnover package above shows the index, protocol contents and record formats from a delivered system, with customer names and data removed. [Confirm which samples are shared openly and which under NDA.] Your QA team can also audit how the records are produced: [what an audit covers, for example the fabrication shop and document control]."
     },
     {
-     "q": "Do you deliver documents electronically?",
-     "a": "Yes, as indexed and bookmarked PDF files, with native drawings on request. Paper copies are available if your site requires them."
+     "q": "When do we see the protocols?",
+     "a": "The FAT protocol reaches your quality unit [protocol issue before FAT, weeks] before testing, for approval before execution (EU GMP Annex 15, 2.6). IQ and OQ protocols follow the FAT, so they can reference its results rather than repeat them."
     },
     {
      "q": "Can FAT results count towards qualification?",
-     "a": "Where your quality unit agrees, yes. We follow the ASTM E2500 and ISPE approach: engineering tests carried out under good documentation practice can be leveraged in IQ/OQ."
+     "a": "Where your quality unit agrees, yes. EU GMP Annex 15, 3.6 lets FAT tests stand where transport and installation cannot affect them, and the ISPE approach leverages engineering tests carried out under good documentation practice. We mark candidate test cases in the C&Q plan at detailed design, so the leverage is planned, not argued afterwards. Water quality on your feed is never leveraged."
+    },
+    {
+     "q": "Do you check third-party certificates, or just forward them?",
+     "a": "We check them. At receipt, material markings are checked against the certificate [PMI, standard or option], and the material log ties each product-contact component to its EN 10204 3.1 certificate by heat number. Certificates are delivered as the issuer sent them, never retyped, so your reviewer sees the original."
+    },
+    {
+     "q": "Are your electronic signatures 21 CFR Part 11 compliant?",
+     "a": "[State the electronic signature method used on protocols and reports, and whether it meets 21 CFR Part 11 and EU GMP Annex 11, 14.] Part 11 applies to how your site uses the records. If your procedures require it, we execute protocols in your electronic validation system under your accounts, or sign in wet ink and scan."
+    },
+    {
+     "q": "Do we own the native files?",
+     "a": "[State what the customer receives: drawing formats (PDF and native CAD), ownership or licence terms, and the design software used.] The PDF set in the turnover package is yours to keep and reproduce for your records either way."
+    },
+    {
+     "q": "Is the documentation available in French?",
+     "a": "[Confirm which documents are offered in French, for example the operation and maintenance manual, SOP drafts and training material, and how translations are reviewed.] For a system installed in Quebec, your legal team can tell you which documents the Charter of the French language requires in French."
+    },
+    {
+     "q": "What happens to the package after handover?",
+     "a": "It stays current. Every service visit adds a signed report, calibration certificates and a parts record; every change adds updated as-builts, an updated dead leg register and change-scoped test records. Aquemi keeps a copy for [retention period, years], so a lost document can be reissued."
     }
-   ],
-   "nav": "FAQ"
+   ]
   },
   {
    "type": "related",
    "h": "Related pages",
    "items": [
     "compliance",
-    "cmp-quality",
     "svc-fat-sat",
-    "svc-cq"
+    "svc-cq",
+    "svc-design",
+    "svc-fabrication",
+    "cmp-quality"
    ]
   }
  ],
  "cta": {
-  "h": "Seen the samples? Send your URS for a proposal.",
-  "body": "A process engineer replies within [proposal response time] with questions or a scoped proposal that lists the documents you will receive.",
+  "h": "Seen the sample? Send your URS and we list your documents.",
+  "body": "A process engineer replies within [proposal response time] with a scoped proposal that lists every document your system ships with, the stage that issues it and who approves it.",
   "button": "Submit your URS for a proposal",
   "link": "contact-proposal"
  },
  "todo": [
-  "Lead time for FAT protocol submission before testing ([number] weeks)",
-  "Confirm material certificate type delivered (EN 10204 3.1) for all product-contact parts",
-  "Confirm borescope inspection coverage offered as standard",
-  "Prepare redacted sample documents for download",
-  "Confirm whether native drawing formats (DWG, RVT) are offered",
-  "What sample documents are shared openly and what only under NDA",
-  "Response time for sample package requests",
-  "Back-end for the sample request form (where submissions go)"
+  "KEY: which samples are shared openly and which under NDA (hero CTA, form intro, FAQ); whether Aquemi uses its own mutual NDA",
+  "Prepare the redacted sample package from a delivered system: turnover index, FAT protocol TOC and sample test cases, IQ/OQ TOC and check sheets, weld map and weld log extract, material log extract, RTM extract, signed service report",
+  "Sample package response time (working days) and form back-end (where submissions go)",
+  "Protocol issue before FAT (weeks); same placeholder as svc-fat-sat",
+  "Standard document review period (working days) in the review cycle",
+  "Native formats delivered: CAD drawing format (e.g. DWG), spreadsheet format, word processing format for SOP drafts and protocol source files; ownership and licence terms (same as svc-design FAQ)",
+  "Raw data export format for trends, alarm and event logs (e.g. CSV)",
+  "Electronic signature method on protocols and reports, and whether it meets 21 CFR Part 11 and EU GMP Annex 11, 14 (same as svc-fat-sat)",
+  "French-language documentation: which documents, how translations are controlled (same open question as home page)",
+  "Secure transfer method or client portal; number of paper sets, if offered",
+  "Retention period (years) for Aquemi's copy of the turnover package, and reissue on request",
+  "Borescope share of product-contact welds (%) (same placeholder as svc-fabrication, compliance)",
+  "PMI at receipt: standard or option (same as svc-fabrication)",
+  "What a customer QA audit covers (fabrication shop, document control)",
+  "Recommended spare parts coverage (months of operation) (same as system pages)",
+  "Proposal response time for the closing CTA",
+  "Confirm Aquemi internal sign-off roles for fabrication records (written as 'Aquemi quality control') and control panel documents ('Aquemi engineering')",
+  "Confirm practice stated here: comment log kept with each document; open documents at handover tracked as punch list items; Aquemi drafts SOPs and PQ protocol on request (same as svc-cq)",
+  "Confirm the 12-section turnover index structure matches what Aquemi actually delivers"
  ],
- "primary_cta_link": "#samples"
+ "primary_cta_link": "#samples",
+ "facts": [
+  {
+   "v": "EN 10204 3.1",
+   "l": "Material certificate for every product-contact component, by heat number"
+  },
+  {
+   "v": "1 line per weld",
+   "l": "Weld log with repairs and cut-outs · ASME BPE"
+  },
+  {
+   "v": "Annex 15, 3.6",
+   "l": "FAT tests written so IQ and OQ can reference them"
+  },
+  {
+   "v": "12 sections",
+   "l": "One turnover package, every document traced to your URS"
+  }
+ ]
 }

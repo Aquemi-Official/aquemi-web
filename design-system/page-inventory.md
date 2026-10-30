@@ -50,7 +50,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | Page | Headline | Sections |
 | --- | --- | --- |
 | [Standards we design to](https://aquemi-official.github.io/aquemi-web/#compliance) | Every standard we cite, the number it sets and the document that proves it | prose, spec, table ×6, grid, faq, docs, related |
-| [Documentation package](https://aquemi-official.github.io/aquemi-web/#cmp-documentation) | The documents arrive with the equipment | docs, form, steps, table, band, faq, related |
+| [Documentation package](https://aquemi-official.github.io/aquemi-web/#cmp-documentation) | Every document your auditor will ask for, issued as we build and indexed to your URS | prose, table ×6 (master index by stage), table (package sections), steps, spec, table (validation use), band, docs, form, faq, related |
 | [Quality management](https://aquemi-official.github.io/aquemi-web/#cmp-quality) | Quality you can audit, from heat number to handover | prose, grid, steps, grid, docs, related |
 
 ## Projects
