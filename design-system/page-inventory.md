@@ -49,7 +49,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [Standards we design to](https://aquemi-official.github.io/aquemi-web/#compliance) | Standards we design to, and where you will find the evidence | prose, spec, table, readout, grid, faq, related |
+| [Standards we design to](https://aquemi-official.github.io/aquemi-web/#compliance) | Every standard we cite, the number it sets and the document that proves it | prose, spec, table ×6, grid, faq, docs, related |
 | [Documentation package](https://aquemi-official.github.io/aquemi-web/#cmp-documentation) | The documents arrive with the equipment | docs, form, steps, table, band, faq, related |
 | [Quality management](https://aquemi-official.github.io/aquemi-web/#cmp-quality) | Quality you can audit, from heat number to handover | prose, grid, steps, grid, docs, related |
 
