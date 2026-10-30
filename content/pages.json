@@ -4325,197 +4325,429 @@
    "id": "services",
    "section": "Services",
    "nav_label": "Services",
-   "title": "Pharmaceutical water system services | Aquemi",
-   "meta": "From user requirement specification to IQ/OQ, handover and service: one Aquemi team designs, builds, tests, qualifies and maintains your water system.",
+   "title": "Pharma water system services, URS to service | Aquemi",
+   "meta": "Design, fabrication, FAT/SAT, IQ/OQ/PQ, service and upgrades for PW, WFI and pure steam, on one traceability record from URS on, per EU GMP Annex 15.",
    "path": "/services/",
-   "eyebrow": "SERVICES · URS TO HANDOVER",
-   "headline": "One team from the first requirement to the last service visit",
-   "lead": "We take your water system from user requirement specification to qualified handover, then keep it in its qualified state. The same engineers carry the project through every phase, so nothing is lost between design, the shop floor and your site.",
+   "eyebrow": "SERVICES · URS TO THE LAST SERVICE VISIT · EU GMP ANNEX 15 · ASTM E2500 · GAMP 5",
+   "headline": "One team and one traceable record, from your URS to the last service visit",
+   "lead": "EU GMP Annex 15, 3.2 makes the user requirement specification (URS) the point of reference throughout the validation lifecycle. That reference usually breaks at the hand-offs: a designer, a fabricator, a qualification contractor and a service company, each with their own documents. We carry your Purified Water (PW), Water for Injection (WFI) or pure steam system through design, fabrication, factory and site acceptance testing (FAT and SAT), installation, operational and performance qualification (IQ, OQ, PQ) and service on one traceability matrix, so every requirement keeps the test that proves it and every later change shows what it touches. Tell us where your project stands and we start there.",
    "tags": [
+    "EU GMP Annex 15",
+    "ASTM E2500",
     "GAMP 5",
-    "ASME BPE",
-    "ISPE Baseline Guide Vol. 4",
+    "ISPE Baseline Guide Vol. 5",
     "USP <1231>",
+    "ASME BPE",
     "21 CFR Part 11"
    ],
    "primary_cta": "Request a proposal",
    "secondary_cta": {
-    "label": "Request service on an existing system",
-    "link": "contact-service"
+    "label": "System already running? See service plans",
+    "link": "svc-service"
    },
    "blocks": [
     {
-     "type": "steps",
-     "h": "How a project runs",
-     "items": [
-      {
-       "t": "Requirements",
-       "d": "We review your user requirement specification (URS), or help you write one, and confirm water grades, demand profile and feedwater analysis."
-      },
-      {
-       "t": "Design",
-       "d": "Basis of design, process and instrumentation diagrams (P&IDs), functional specification and a design review against your URS."
-      },
-      {
-       "t": "Fabrication",
-       "d": "316L stainless steel skids built in our shop with orbital welds, weld logs and full material traceability."
-      },
-      {
-       "t": "Factory acceptance test",
-       "d": "The skid runs in our test bay against an approved protocol before it ships. You or your delegate witness it."
-      },
-      {
-       "t": "Installation and site acceptance",
-       "d": "We install, connect and repeat the tests that matter after transport and tie-in."
-      },
-      {
-       "t": "Commissioning and qualification",
-       "d": "Installation qualification (IQ) and operational qualification (OQ) executed to approved protocols, then support through performance qualification (PQ)."
-      },
-      {
-       "t": "Service",
-       "d": "Preventive maintenance, calibration and spare parts that keep the system in its validated state."
-      }
+     "type": "table",
+     "h": "Where your project stands, and where to start",
+     "cols": [
+      "Your situation",
+      "Start with",
+      "What to send",
+      "What comes back"
+     ],
+     "rows": [
+      [
+       "New system: an idea, a draft URS or an approved one",
+       {
+        "t": "Process design: request a URS review",
+        "link": "svc-design"
+       },
+       "URS or a short description, water grades, feed water analysis, peak demand in L/h",
+       "The URS compliance matrix with every gap, conflict and untestable requirement marked, within [URS review turnaround, business days]"
+      ],
+      [
+       "Design approved, by us or by your engineering firm",
+       {
+        "t": "Fabrication: request a fabrication spec review",
+        "link": "svc-fabrication"
+       },
+       "Approved piping and instrumentation diagrams (P&IDs), piping specification, finish and borescope extent, province of installation",
+       "The ASME BPE clauses we meet, the ones we would change, and a draft fabrication and inspection plan"
+      ],
+      [
+       "In delivery: skid in build, FAT on the schedule",
+       {
+        "t": "FAT and SAT: request a sample FAT protocol",
+        "link": "svc-fat-sat"
+       },
+       "URS or functional specification, and your witness constraints",
+       "A draft FAT test list, the tests we would mark for IQ/OQ leverage, and witness dates"
+      ],
+      [
+       "Installed or arriving: qualification to plan",
+       {
+        "t": "Commissioning and qualification: request a C&Q plan review",
+        "link": "svc-cq"
+       },
+       "URS, the utilities section of your validation master plan (VMP), your points-of-use list",
+       "A draft commissioning and qualification (C&Q) plan: IQ and OQ test list, PQ sampling plan by phase, and the dates your quality unit can expect to release water"
+      ],
+      [
+       "System in service and qualified",
+       {
+        "t": "Service: request a service plan quote",
+        "link": "svc-service"
+       },
+       "System, age, instruments, and how long production can run without it",
+       "A recommended plan, its annual price and the first-visit task list, within [quote response time, working days]"
+      ],
+      [
+       "Ageing, out of support, built by another supplier, or about to change",
+       {
+        "t": "Upgrades: request a system assessment",
+        "link": "svc-upgrades"
+       },
+       "System age, drawings, a year of water quality data, and the problem to solve",
+       "The assessment scope, its time on site and price, then each option with its downtime and requalification scope"
+      ],
+      [
+       "Production stopped or water out of specification now",
+       {
+        "t": "Request urgent service",
+        "link": "contact-service"
+       },
+       "Call [service phone number]. Do not wait for a form reply.",
+       "A service engineer on the phone, then a technician on site within the response time of your plan"
+      ]
+     ]
+    },
+    {
+     "type": "prose",
+     "h": "Qualification evidence is lost between suppliers, not inside them",
+     "body": [
+      "Each stage of a water system produces evidence the next one depends on. IQ verifies the installation against the approved P&IDs (Annex 15, 3.9). FAT results stand in for IQ/OQ tests only where the protocol was written to be leveraged and transport and installation cannot affect the function (Annex 15, 3.6). PQ alert levels come from data on a system whose design intent is known. Service keeps that state only if every part fitted and every calibration traces back to the qualified design, and every change goes through change control (Annex 15, section 11).",
+      "When four companies hold four sets of documents, your validation team becomes the integrator: reconciling tag numbers, repeating tests already run at the factory because the protocol was not approved in time, rebuilding a dead leg register at IQ. We write each document from the one before it, against the same requirement IDs, and send drafts at each stage so your quality unit reviews as we go rather than at the end.",
+      "Each service can also be bought alone. When we join a project part way, we tell you at the start what we need from the parties before us for the record to hold together."
+     ]
+    },
+    {
+     "type": "diagram",
+     "h": "The lifecycle we carry, on one traceability matrix",
+     "stages": [
+      "URS review",
+      "Design and DQ",
+      "Fabrication",
+      "Factory acceptance test",
+      "Site acceptance test",
+      "IQ and OQ",
+      "PQ, 12 months",
+      "Service and change control"
+     ],
+     "caption": "Each requirement in your URS gets an ID at the first review. The same ID appears in the functional specification, on the P&IDs, in the FAT, SAT, IQ and OQ test cases and in the PQ sampling plan, and is the reference when a service visit or an upgrade changes the system. An upgrade re-enters the lifecycle at design, with its requalification scope stated first."
+    },
+    {
+     "type": "table",
+     "h": "What leaves each stage, and who signs it",
+     "cols": [
+      "Stage",
+      "Documents you receive",
+      "Your decision point",
+      "Basis"
+     ],
+     "rows": [
+      [
+       {
+        "t": "URS review and design",
+        "link": "svc-design"
+       },
+       "URS compliance matrix, basis of design, process flow diagram and mass balance, P&IDs, functional specification, system risk assessment, design review report and traceability matrix",
+       "Your quality unit approves design qualification (DQ); the design freezes and later changes go through change control",
+       "Annex 15, 3.2 and 3.3; ICH Q9(R1); ASTM E2500"
+      ],
+      [
+       {
+        "t": "Fabrication",
+        "link": "svc-fabrication"
+       },
+       "Fabrication dossier: material log with EN 10204 3.1 certificates, weld maps and weld log, borescope records, surface finish report, passivation certificate, pressure test certificates, pressure vessel registration (CRN) documents",
+       "The hold and witness points you choose in the fabrication and inspection plan; release to FAT",
+       "ASME BPE; ASME Section IX; ASTM A967 or ASTM A380"
+      ],
+      [
+       {
+        "t": "Factory acceptance test (FAT)",
+        "link": "svc-fat-sat"
+       },
+       "FAT protocol approved before execution, executed protocol with raw data, deviation log, punch list, software version record, FAT summary report",
+       "Release to ship, signed by both parties",
+       "Annex 15, 3.4 to 3.6; GAMP 5"
+      ],
+      [
+       {
+        "t": "Installation and SAT",
+        "link": "svc-fat-sat"
+       },
+       "Installation and commissioning records, executed SAT on your feed water and utilities, traceability matrix with leveraged tests flagged",
+       "SAT report sign-off",
+       "Annex 15, 3.7; ISPE Baseline Guide Vol. 5"
+      ],
+      [
+       {
+        "t": "IQ and OQ",
+        "link": "svc-cq"
+       },
+       "C&Q plan, IQ and OQ protocols and executed reports, deviation log, standard operating procedure (SOP) drafts, training records",
+       "Your quality unit approves each protocol before execution and each report before release to PQ",
+       "Annex 15, 2.6 and 3.9 to 3.12"
+      ],
+      [
+       {
+        "t": "Performance qualification (PQ)",
+        "link": "svc-cq"
+       },
+       "PQ protocol and sampling plan by phase, phase reports, alert and action level recommendation, final qualification summary",
+       "Your quality unit releases water for use, phase by phase",
+       "WHO TRS 1033 Annex 3; USP <1231>; FDA high purity water guide"
+      ],
+      [
+       {
+        "t": "Service",
+        "link": "svc-service"
+       },
+       "Signed service report for each visit, calibration certificates with as-found and as-left values, parts record and like-for-like statement, annual system review",
+       "Your maintenance, calibration and change control procedures",
+       "USP <645>; USP <643>; Annex 15, 4.1; 21 CFR 211.67 and 211.68"
+      ],
+      [
+       {
+        "t": "Upgrade or retrofit",
+        "link": "svc-upgrades"
+       },
+       "Assessment report with gap list and each option with its downtime and requalification scope, then design, test and requalification records for the change",
+       "Your change request; your quality unit approves the requalification scope",
+       "Annex 15, section 11; EU GMP Annex 11; 21 CFR Part 11"
+      ]
+     ]
+    },
+    {
+     "type": "table",
+     "h": "One requirement, followed from URS to year five of service",
+     "cols": [
+      "Stage",
+      "URS-012: Purified Water conductivity ≤ 1.3 µS/cm at 25 °C at every point of use (USP <645> stage 1)"
+     ],
+     "rows": [
+      [
+       "URS review",
+       "Accepted as testable. Linked to the generator outlet guarantee of [outlet conductivity guarantee, µS/cm @ 25 °C] and to loop return monitoring."
+      ],
+      [
+       "Design",
+       "Functional specification clause: water above the divert setpoint, set below your alert level, goes to drain until it recovers. Conductivity sensors and the divert valve marked as critical design elements in the risk assessment."
+      ],
+      [
+       "Fabrication",
+       "Sensor tees welded, numbered on the weld map, borescoped and listed in the dead leg register at L/D ≤ 2."
+      ],
+      [
+       "FAT",
+       "Divert tested at setpoint with a simulated signal; sensor calibration certificates checked; test case flagged for leverage at OQ."
+      ],
+      [
+       "SAT and OQ",
+       "Conductivity on your feed water, read on the raw, non-temperature-compensated value, at peak draw and after sanitization."
+      ],
+      [
+       "PQ",
+       "Conductivity at every point of use through three phases and at least 12 months; alert level set from your data, inside the 1.3 µS/cm limit."
+      ],
+      [
+       "Service",
+       "Cell constant verified to within ± 2 % at each calibration (USP <645>) and the as-found value recorded. An out-of-tolerance as-found is written up for your quality system, with the release decisions it may affect."
+      ],
+      [
+       "Upgrade",
+       "A new generation step re-opens this line of the matrix: what the change can affect, what is retested, and how long sampling runs before release."
+      ]
      ]
     },
     {
      "type": "grid",
-     "h": "What we do at each stage",
-     "intro": "Each service can be bought alone. Most clients buy the full sequence so one team stays accountable for the result.",
+     "h": "Six services, each with its own first step",
+     "intro": "Every service page publishes its scope, its documents and the standards it is held to, and offers a first step you can take before committing to a project.",
      "items": [
       {
        "t": "Process design and engineering",
-       "d": "URS review, sizing from your demand profile, P&IDs and functional specification.",
-       "tag": "ISPE Vol. 4",
+       "d": "URS review, basis of design, P&IDs, functional specification and ICH Q9(R1) risk assessment, ready for DQ. First step: a URS review.",
+       "tag": "EU GMP Annex 15",
        "link": "svc-design"
       },
       {
        "t": "Fabrication",
-       "d": "316L, orbital welding, borescope inspection, passivation and electropolish.",
+       "d": "316L skids, tanks and loops, orbital welds by ASME Section IX qualified operators, each weld traced to its EN 10204 3.1 heat numbers. First step: a fabrication spec review.",
        "tag": "ASME BPE",
        "link": "svc-fabrication"
       },
       {
        "t": "FAT and SAT",
-       "d": "Wet factory acceptance testing and site acceptance testing to written protocols.",
-       "tag": "GAMP 5",
+       "d": "A wet FAT on every skid to a protocol your quality unit approves, written so IQ/OQ can leverage it, then SAT on your feed water. First step: a sample FAT protocol.",
+       "tag": "Annex 15, 3.6",
        "link": "svc-fat-sat"
       },
       {
        "t": "Commissioning and qualification",
-       "d": "IQ/OQ execution and the three-phase PQ approach for water systems.",
-       "tag": "USP <1231>",
+       "d": "IQ and OQ to approved protocols, then PQ in three phases over at least 12 months, with alert levels set from your data. First step: a C&Q plan review.",
+       "tag": "WHO TRS 1033",
        "link": "svc-cq"
       },
       {
        "t": "Service and spare parts",
-       "d": "Named service plans, calibration, critical spares and emergency response.",
+       "d": "Service plans with a stated response time per fault severity, calibration to USP <645> and <643>, like-for-like spares and reports fit for your GMP records. First step: a service plan quote.",
        "tag": "USP <645>",
        "link": "svc-service"
       },
       {
        "t": "Upgrades and retrofits",
-       "d": "Controls upgrades, capacity increases and the move to membrane Water for Injection (WFI).",
-       "tag": "Ph. Eur.",
+       "d": "RO/EDI conversions, sanitization changes, online TOC and Part 11 controls on systems from any builder, with the requalification scope known before the first cut. First step: a system assessment.",
+       "tag": "Annex 15, section 11",
        "link": "svc-upgrades"
       }
      ]
     },
     {
+     "type": "band",
+     "tone": "limestone",
+     "h": "Service is half the system, so we sell it as a product",
+     "body": "A water system spends months in delivery and [design life, years] years in service. Our service plans state the on-site response for a critical fault, from [fastest on-site response, hours], fix the visit scope and calibration intervals in writing, and run every visit under your change control. They cover the systems we build and [confirm: systems from other builders, after an assessment], at a price per plan, not per call-out."
+    },
+    {
      "type": "table",
-     "h": "What you receive at each phase",
+     "h": "Joining part way: what we need from the parties before us",
      "cols": [
-      "Phase",
-      "Main deliverables",
-      "Your approval point"
+      "We join at",
+      "What we need",
+      "If it is missing"
      ],
      "rows": [
       [
-       "Requirements",
-       "URS review comments, feedwater analysis, demand profile",
-       "URS sign-off"
+       "Fabrication, to another engineer's design",
+       "Approved P&IDs, functional specification, URS, piping and finish specification",
+       "We review the design against ASME BPE and your URS and return marked-up clauses before we quote"
       ],
       [
-       "Design",
-       "Basis of design, P&IDs, functional specification, design review report",
-       "Design qualification (DQ)"
+       "FAT, SAT or qualification of a system someone else built",
+       "URS, design documents, turnover package (material certificates, weld logs, as-built drawings), software version",
+       "A gap assessment states which IQ checks can be made from records and which need field verification [confirm Aquemi qualifies systems it did not build]"
       ],
       [
-       "Fabrication",
-       "Material certificates (EN 10204 3.1), weld logs, weld maps, borescope records, passivation certificate",
-       "Release to FAT"
+       "Service of a system someone else built",
+       "Drawings, qualification file, maintenance and calibration history, spares list",
+       "A condition survey and document review come first, then a plan priced for that system"
       ],
       [
-       "FAT",
-       "Approved FAT protocol, executed results, deviation log, punch list",
-       "FAT report sign-off"
-      ],
-      [
-       "Installation and SAT",
-       "Installation records, SAT protocol and results",
-       "SAT report sign-off"
-      ],
-      [
-       "Qualification",
-       "IQ and OQ protocols and reports, PQ sampling plan support",
-       "Release to PQ"
-      ],
-      [
-       "Handover",
-       "Turnover package, operating and maintenance manuals, training records",
-       "Handover certificate"
+       "An upgrade on a system whose builder has closed or changed hands",
+       "Whatever records exist, and the programmable logic controller (PLC) program and passwords if you have them",
+       "The assessment lists what to recover and what it costs to recreate, before any upgrade is designed"
       ]
      ]
     },
     {
-     "type": "band",
-     "tone": "limestone",
-     "h": "The documents arrive with the equipment",
-     "body": "Validation documents follow GAMP 5 and are written as the system is built, not reconstructed afterwards. Your validation team reviews drafts at each phase, so the final package holds no surprises."
-    },
-    {
      "type": "faq",
-     "h": "Questions we hear",
+     "h": "Questions engineering, validation and quality teams ask",
      "items": [
       {
-       "q": "Can we buy only part of the sequence?",
-       "a": "Yes. We can fabricate to another engineer's design, or qualify a system someone else built. We tell you at the start what we need from other parties for the documents to hold together."
+       "q": "Can the company that builds the system also qualify it?",
+       "a": "Yes, under your control. Annex 15, 2.6 asks that protocols and documents supplied by a third party are confirmed by your own personnel as suitable and compliant with your procedures before approval. Your quality unit approves every protocol before execution and every report after it; we write and execute. If your procedures call for an independent qualification contractor, we hand them the traceability matrix and FAT and commissioning records written to be leveraged."
       },
       {
-       "q": "Who writes the URS?",
-       "a": "You own it. We can draft it with you from your process needs and the applicable pharmacopoeia, then review it against what the design must prove."
+       "q": "Do we have to use your document templates?",
+       "a": "No. We write IQ, OQ and PQ documents in your templates where you have them, and keep our requirement IDs inside them so the trace survives. Where you have none, we use ours, and your quality unit approves the templates once, at the start."
       },
       {
-       "q": "Do you service systems you did not build?",
-       "a": "Yes. We start with a condition survey and a document review, then propose a service plan for that system."
+       "q": "How long from URS to water released for use?",
+       "a": "It depends on scope and your approval cycles. For a packaged PW skid, plan on [design to DQ, weeks] for design, [approved design to FAT, weeks] to FAT and [IQ/OQ on site, days] on site for IQ and OQ. PQ then needs at least two phases of two weeks each; water may be used for manufacturing during phase 2 if the data show the required quality and your quality unit approves it (WHO TRS 1033 Annex 3, 11.3). We give you a dated schedule with the proposal."
       },
       {
-       "q": "How long does a typical project take?",
-       "a": "It depends on scope and on your approval cycles. A packaged Purified Water skid typically takes [weeks] from approved design to FAT. We give you a dated schedule with the proposal."
+       "q": "Who is our contact across the stages?",
+       "a": "[Confirm: one named project engineer from URS review to handover, and how the system passes to the service team.] The traceability matrix and the turnover package go with the system, so the service engineer starts from the same record as the project team."
+      },
+      {
+       "q": "Can we buy one stage only?",
+       "a": "Yes. Each service has its own first step and its own documents. The table above shows what we need when we join part way."
+      },
+      {
+       "q": "Do you work on systems built by other suppliers?",
+       "a": "[Confirm any-builder scope and the equipment types covered.] We start with an assessment or a condition survey, because a quote without the as-built state and a year of data either carries contingency or leaves the validation to be found during the work. Send it as a proposal request: the service request form is for systems already registered with us."
+      },
+      {
+       "q": "Where do you work?",
+       "a": "[Provinces and regions served for projects, and service bases with their coverage area.] The response times in each service plan are stated for that coverage area."
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Not sure where to start? Send any of these",
+     "items": [
+      {
+       "t": "Your URS, in any state",
+       "d": "Draft, approved, or a page of notes"
+      },
+      {
+       "t": "Water grades and pharmacopoeias",
+       "d": "For example PW to USP and Ph. Eur., WFI, pure steam"
+      },
+      {
+       "t": "Feed water analysis",
+       "d": "Ideally twelve months, including your coldest month"
+      },
+      {
+       "t": "Demand",
+       "d": "Peak and daily draw in L/h, and the number of points of use"
+      },
+      {
+       "t": "Existing system, if any",
+       "d": "Builder, age, drawings, last periodic review"
+      },
+      {
+       "t": "Your schedule",
+       "d": "Target dates for FAT, installation and water release, and any shutdown window"
       }
      ]
     },
     {
      "type": "related",
-     "h": "Related pages",
+     "h": "Where buyers go next",
      "items": [
-      "compliance",
       "cmp-documentation",
+      "compliance",
       "systems",
       "projects"
      ]
     }
    ],
    "cta": {
-    "h": "Start with your requirements",
-    "body": "Send us your URS or a short description of the water you need, and an engineer will reply with questions and a scope.",
+    "h": "Tell us where your project stands. We reply with the next step and what it leaves in your file.",
+    "body": "Send your URS, your water grades and feed water data, or details of the system you already have. An engineer replies within [response time] with questions, the stage we would start at and the documents you will get from it. For a system down now, call [service phone number].",
     "button": "Request a proposal",
     "link": "contact-proposal"
    },
    "todo": [
-    "Typical duration from approved design to FAT for a packaged PW skid [weeks]",
-    "Confirm Aquemi offers each of the six services in-house or names partners",
-    "Confirm services are sold separately as well as end to end"
+    "Enquiry response time commitment for the closing CTA (same [response time] placeholder as the system and service pages)",
+    "URS review turnaround (business days), same placeholder as svc-design",
+    "Quote response time for a service plan (working days), same placeholder as svc-service",
+    "Service phone number (router table and closing CTA), same placeholder as svc-service and contact-service",
+    "Outlet conductivity guarantee (µS/cm @ 25 °C) in the traced requirement, same placeholder as sys-pw and svc-design",
+    "Fastest on-site response for a critical fault (hours), same placeholder as svc-service",
+    "Design life of a water system for the service band (years), or reword the band",
+    "Typical durations for a packaged PW skid: design to DQ (weeks), approved design to FAT (weeks), IQ/OQ on site (days)",
+    "Confirm one named project engineer or team carries a project from URS review to handover, and how handover to service works (FAQ)",
+    "Confirm Aquemi services, qualifies and upgrades systems built by other suppliers, and the equipment types covered (band, joining table, FAQ)",
+    "Provinces and regions served for projects; service bases and coverage area (FAQ)",
+    "Confirm Aquemi delivers each of the six services in-house or names partners (IQ/OQ execution, calibration and pressure vessel calculations are open on svc-cq, svc-service, svc-design)",
+    "Confirm every service is sold separately as well as end to end (prose, grid intro, FAQ)",
+    "Confirm Aquemi writes IQ/OQ/PQ documents in client templates (FAQ)",
+    "Service programme brand name, if one is adopted, for the service band and grid (open on svc-service)"
    ]
   },
   {
