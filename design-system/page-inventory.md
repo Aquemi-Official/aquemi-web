@@ -57,7 +57,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [Case studies](https://aquemi-official.github.io/aquemi-web/#projects) | Problem, system delivered, measured outcome | prose, grid, case, band, related |
+| [Case studies](https://aquemi-official.github.io/aquemi-web/#projects) | A case study you can audit: the figure, the method and the report it came from | prose, table (profile), table (outcomes), band, case (sheet, template with profile and status), steps, grid (verify today), table (evidence), form, faq, related |
 
 ## Company
 

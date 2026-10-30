@@ -104,8 +104,15 @@ function wPath(b){var it=b.items||[],stop=function(x,i){var n=String(i+1).padSta
  return '<div class="aq-water-path"><span class="aq-water-path__feed">'+e(b.from||'Feed water')+'</span><div class="aq-water-path__pipe"></div>'+it.slice(0,4).map(stop).join('')+'<div class="aq-water-path__bend"></div><div class="aq-water-path__pipe aq-water-path__pipe--return"></div>'+it.slice(4,7).map(function(x,i){return stop(x,i+4)}).join('')+'<span class="aq-water-path__outlet">'+e(b.to||'Point of use')+' ←</span></div>'}
 /* Block "band" -> Band */
 BLOCKS['band']=function(b,H){return '<section class="aq-section aq-band--'+(b.tone==='sunken'?'sunken':'limestone')+'"><div class="aq-in aq-stack"><h2 class="aq-h2">'+tx(b.h)+'</h2>'+(b.body?'<p class="aq-lead">'+tx(b.body)+'</p>':'')+'</div></section>';};
-/* Block "case" -> CaseStudy */
-BLOCKS['case']=function(b,H){return sec(H+'<div class="aq-cases">'+(b.items||[]).map(function(it){return '<div class="aq-case"><span class="aq-h3">'+tx(it.t)+'</span><dl>'+[['Client',it.client],['Problem',it.problem],['System delivered',it.system],['Measured outcome',it.outcome]].filter(function(x){return x[1]}).map(function(x){return '<dt>'+x[0]+'</dt><dd>'+tx(x[1])+'</dd>'}).join('')+'</dl></div>'}).join('')+'</div>');};
+/* Block "case" -> CaseStudy. Optional per item: status (label above the title), profile [{v,l}] (KeyFacts strip of headline KPIs),
+   standard (Standard met) and method (How it was measured). Block layout "sheet" stacks one case per row as a spec sheet. */
+BLOCKS['case']=function(b,H){
+  return sec(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'<div class="aq-cases'+(b.layout==='sheet'?' aq-cases--sheet':'')+'">'+(b.items||[]).map(function(it){
+    return '<div class="aq-case">'+(it.status?'<span class="aq-case__status">'+tx(it.status)+'</span>':'')+'<span class="aq-h3">'+tx(it.t)+'</span>'
+      +(it.profile&&it.profile.length?'<dl class="aq-key-facts aq-case__profile">'+it.profile.map(function(f){return '<div><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'}).join('')+'</dl>':'')
+      +'<dl>'+[['Client',it.client],['Problem',it.problem],['System delivered',it.system],['Standard met',it.standard],['Measured outcome',it.outcome],['How it was measured',it.method]].filter(function(x){return x[1]}).map(function(x){return '<dt>'+x[0]+'</dt><dd>'+tx(x[1])+'</dd>'}).join('')+'</dl></div>';
+  }).join('')+'</div>');
+};
 /* Block "diagram" -> ProcessDiagram. Fields: stages [names, 5 to 7], optional base (what spans every stage), caption. */
 BLOCKS['diagram']=function(b,H){return sec(H+wDiagram(b)+(b.caption?'<p class="aq-small aq-prose">'+tx(b.caption)+'</p>':''));};
 /* Block "docs" -> DocList: numbered document tiles, each with a short document code derived from its name */
