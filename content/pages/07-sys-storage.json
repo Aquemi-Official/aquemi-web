@@ -6,8 +6,8 @@
  "meta": "PW and WFI loops with turbulent flow per EU GMP Annex 1, dead legs to ASME BPE L/D ≤ 2, full drainage, and hot, ozone or heat sanitization.",
  "path": "/systems/storage-and-distribution/",
  "eyebrow": "STORAGE AND DISTRIBUTION · EU GMP ANNEX 1 · ASME BPE",
- "headline": "Storage and distribution loops that keep turbulent flow and compendial quality to the furthest point of use",
- "lead": "We design and build tanks and loops for Purified Water (PW) and Water for Injection (WFI) that keep flow turbulent at peak draw, as EU GMP Annex 1 paragraph 6.9 requires, hold every branch to the ASME BPE dead leg target of a length-to-diameter ratio (L/D) of 2 or less and drain completely. Hot WFI loops circulate above 70 °C (Annex 1, 6.10); ambient loops are sanitized by heat or ozone on a schedule you can defend. Every slope, weld and branch is recorded on the as-built isometrics your validation team qualifies against.",
+ "headline": "Storage and distribution loops that hold compendial quality to the furthest point of use",
+ "lead": "Tanks and loops for Purified Water (PW) and Water for Injection (WFI) that stay turbulent at peak draw, drain fully and keep every branch to a length-to-diameter ratio (L/D) of 2 or less.",
  "primary_cta": "Send your points-of-use list for a loop review",
  "primary_cta_intent": "Review of a document you have|Points-of-use list or loop design",
  "secondary_cta": {
@@ -25,28 +25,19 @@
   },
   {
    "v": "≥ 1 m/s",
-   "l": "Loop return velocity at peak draw"
+   "l": "Return velocity at peak draw · common practice"
   },
   {
-   "v": "≥ 65 °C",
-   "l": "Hot loop temperature"
+   "v": "> 70 °C",
+   "l": "Hot WFI loop · Annex 1, 6.10"
   }
  ],
  "blocks": [
   {
-   "type": "prose",
-   "h": "Water is released at the point of use. That is where the loop is judged.",
-   "body": [
-    "USP and Ph. Eur. apply their PW and WFI limits to water as it is used, after it has sat in a tank and travelled through tens or hundreds of metres of pipe. A generator that makes water well below the limit gives you margin. The storage and distribution system decides how much of that margin reaches the furthest valve.",
-    "Most microbial excursions that trace back to the loop have the same short list of causes: a branch that holds still water, a run that does not drain, flow that drops to laminar when several valves open at once, a wet vent filter, or a sanitization cycle that never reaches the coldest point. EU GMP Annex 1, which Health Canada applies as GUI-0119, names most of them directly: drainable slopes and no dead legs (6.7), turbulent flow that is monitored (6.9), heated and integrity-tested vent filters (6.11) and sanitization on a predetermined schedule (6.12).",
-    "We design against each of those causes, then record the evidence on drawings and test reports, so the question an inspector asks about any branch has an answer on paper."
-   ]
-  },
-  {
    "type": "spec",
    "h": "Design rules we build every loop to",
-   "caption": "Storage and distribution · design basis",
-   "note": "Values in brackets are set for your loop in the functional specification and confirmed by hydraulic calculation. Velocity and Reynolds number targets are design practice, not compendial limits; Annex 1 asks for turbulent flow, established at qualification and monitored.",
+   "caption": "LOOP · EU GMP ANNEX 1 · ASME BPE",
+   "intro": "Water is judged where it is used. These rules decide how much of the generator's margin reaches the furthest valve.",
    "cols": [
     "Parameter",
     "Design value",
@@ -55,218 +46,57 @@
    "rows": [
     {
      "p": "Flow regime",
-     "v": "Turbulent in every section, at every operating case including peak simultaneous draw",
-     "m": "EU GMP Annex 1, 6.9: flow rate established during qualification and routinely monitored. Return flow measured and alarmed.",
+     "v": "Turbulent in every section at peak simultaneous draw",
+     "m": "Annex 1, 6.9; return flow measured and alarmed",
      "hl": true
     },
     {
      "p": "Return velocity at peak draw",
      "v": "[design minimum return velocity, m/s]",
-     "m": "Hydraulic calculation for each operating case. About 1 m/s is common practice and keeps the Reynolds number above 10,000 in sanitary tube sizes; turbulence begins near 4,000.",
-     "hl": false
+     "m": "Hydraulic calculation; about 1 m/s is common practice (Reynolds number above 10,000)"
     },
     {
      "p": "Dead legs",
-     "v": "L/D ≤ 2 at every point-of-use branch, instrument tee and sample valve",
-     "m": "ASME BPE: L from the inside wall of the main pipe to the valve seal point, D the inside diameter of the branch. Annex 1, 6.7.",
-     "hl": true
+     "v": "L/D ≤ 2 at every branch, instrument tee and sample valve",
+     "m": "ASME BPE, L from the main pipe inside wall to the seal point; Annex 1, 6.7"
     },
     {
      "p": "Point-of-use valves",
      "v": "Zero-static diaphragm valves welded into the loop",
-     "m": "ASME BPE; seal point flush with the main pipe wall",
-     "hl": false
+     "m": "ASME BPE"
     },
     {
      "p": "Slope and drainage",
      "v": "Continuous fall to low-point drains, minimum [design minimum slope, in/ft or %]",
-     "m": "ASME BPE drainability. Common practice is 1/8 to 1/4 in/ft (about 1 to 2 %). Slopes recorded on the as-built isometrics, as Annex 1, 6.5 expects in system records.",
-     "hl": false
+     "m": "ASME BPE drainability; 1/8 to 1/4 in/ft is common practice"
     },
     {
      "p": "Hot WFI loop",
-     "v": "Continuous circulation above 70 °C, at [hot loop operating temperature, °C]",
-     "m": "Annex 1, 6.10 gives circulation above 70 °C as an example of storage that minimizes microbial growth",
-     "hl": false
+     "v": "Circulation above 70 °C, at [hot loop operating temperature, °C]",
+     "m": "Annex 1, 6.10"
     },
     {
      "p": "Thermal sanitization, ambient loops",
-     "v": "[sanitization temperature, °C] held [hold time, minutes] at the coldest probe",
-     "m": "USP <1231>: 65–80 °C most commonly used for thermal sanitization. Schedule predetermined, Annex 1, 6.12.",
-     "hl": false
+     "v": "[sanitization temperature, °C] for [hold time, minutes] at the coldest probe",
+     "m": "USP <1231>: 65–80 °C most common; predetermined schedule, Annex 1, 6.12"
     },
     {
      "p": "Ozone, ambient loops",
-     "v": "Dissolved ozone in the tank at [ozone set point in tank, ppb], destroyed by 254 nm ultraviolet (UV) before the loop supply",
-     "m": "ISPE Baseline Guide Vol. 4 range 0.02–0.2 ppm. Ozone measured in the tank, after the UV and on the return.",
-     "hl": false
+     "v": "[ozone set point in tank, ppb] in the tank, destroyed by 254 nm ultraviolet (UV) before supply",
+     "m": "ISPE Baseline Guide Vol. 4: 0.02–0.2 ppm"
     },
     {
      "p": "Tank vent",
-     "v": "Hydrophobic, bacteria-retentive 0.2 µm vent filter; heated on hot tanks",
-     "m": "Annex 1, 6.11: no condensation on the filter, integrity tested before installation and after use",
-     "hl": false
-    },
-    {
-     "p": "Tank spray device",
-     "v": "Spray ball on the loop return wets the head space and walls continuously",
-     "m": "Coverage verified with a riboflavin spray device coverage test, ASME BPE",
-     "hl": false
-    },
-    {
-     "p": "Tank volume",
-     "v": "[tank volume range, L]",
-     "m": "Sized from your demand profile against the generation rate, so the tank refills between peaks without starving the loop",
-     "hl": false
-    },
-    {
-     "p": "Pressure-rated tanks",
-     "v": "Designed to ASME Section VIII, Division 1, with rupture disc or relief device",
-     "m": "Canadian registration number (CRN) under CSA B51 in the province of installation [provinces where Aquemi registers]",
-     "hl": false
-    },
-    {
-     "p": "Heat exchangers",
-     "v": "Sanitary double tube sheet on loop heaters, coolers and point-of-use coolers",
-     "m": "FDA Guide to Inspections of High Purity Water Systems: double tube sheet to prevent contamination through a leak",
-     "hl": false
-    },
-    {
-     "p": "Pumps",
-     "v": "Sanitary centrifugal pump, variable speed on return flow or pressure; [duty and standby pumps, standard or option]",
-     "m": "Pump head and net positive suction head checked at the hot loop temperature",
-     "hl": false
-    },
-    {
-     "p": "Materials, product contact",
-     "v": "316L stainless steel",
-     "m": "ASME BPE; EN 10204 3.1 material certificates",
-     "hl": false
-    },
-    {
-     "p": "Surface finish, product contact",
-     "v": "[standard finish, ASME BPE designation]",
-     "m": "ASME BPE SF1: Ra ≤ 0.51 µm mechanically polished. SF4: Ra ≤ 0.38 µm electropolished.",
-     "hl": false
-    },
-    {
-     "p": "Welding and inspection",
-     "v": "Orbital welds, each numbered on the isometric; [share of product-contact welds borescoped, %] inspected internally",
-     "m": "ASME BPE acceptance criteria; welder and procedure qualifications to ASME Section IX",
-     "hl": false
-    },
-    {
-     "p": "Passivation",
-     "v": "Cleaned and passivated after fabrication, before first use",
-     "m": "ASME BPE; [passivation standard and method used, for example ASTM A967 or ASTM A380]",
-     "hl": false
+     "v": "Hydrophobic 0.2 µm vent filter, heated on hot tanks",
+     "m": "Annex 1, 6.11; integrity tested before installation and after use"
     },
     {
      "p": "Online monitoring",
-     "v": "Conductivity, temperature and flow on the return; total organic carbon (TOC) on WFI loops [TOC position, standard or option]",
-     "m": "Annex 1, 6.15: continuous TOC and conductivity on WFI systems, sensor locations based on risk",
-     "hl": false
-    },
-    {
-     "p": "Controls",
-     "v": "Programmable logic controller (PLC) and operator panel (HMI) with audit trail and electronic records",
-     "m": "GAMP 5 lifecycle; 21 CFR Part 11",
-     "hl": false
+     "v": "Conductivity, temperature and flow on the return; total organic carbon (TOC) on WFI [TOC position, standard or option]",
+     "m": "Annex 1, 6.15"
     }
    ],
    "nav": "Design rules"
-  },
-  {
-   "type": "table",
-   "h": "Where loops lose water quality, and what we design against",
-   "cols": [
-    "What the data shows",
-    "Usual cause",
-    "What we design in",
-    "How you see the evidence"
-   ],
-   "rows": [
-    [
-     "Counts high at one point of use",
-     "A dead leg, an outlet used rarely, or a hose left attached and wet",
-     "L/D ≤ 2 at every branch, zero-static valves, hose and flush practice written into the sampling plan",
-     "Dead leg register with L/D for every branch; point-of-use results in performance qualification (PQ)"
-    ],
-    [
-     "Counts rising across the whole loop",
-     "Flow too low at peak draw, a warm ambient loop, or biofilm after a missed sanitization",
-     "Hydraulic calculation at peak simultaneous draw, variable speed pump on return flow, low-return-flow alarm",
-     "Flow test at site acceptance testing (SAT) with the worst-case outlets open; return flow trended"
-    ],
-    [
-     "Water left in the loop after draining",
-     "Flat runs, sags between supports, low points with no drain",
-     "Continuous slope, support spacing that holds it, low-point drains",
-     "Slope survey recorded on the as-built isometrics"
-    ],
-    [
-     "Contamination from the tank head space",
-     "A wet or blocked vent filter, or spray coverage that misses part of the wall",
-     "Heated vent filter, integrity tests, spray ball sized for full coverage at the return flow",
-     "Filter integrity certificates; riboflavin coverage test report"
-    ],
-    [
-     "Sanitization that does not reach temperature everywhere",
-     "Probes in the wrong places, sub-loops or coolers left out of the cycle",
-     "Temperature probes at the coldest points, every sub-loop and cooler included in the sequence",
-     "Temperature mapping of a full sanitization cycle at SAT and operational qualification (OQ)"
-    ],
-    [
-     "Ozone at the point of use",
-     "UV lamp failure or a dose too low for the flow",
-     "UV intensity monitoring, ozone sensor after the UV interlocked to stop supply",
-     "Interlock tests in the factory acceptance test (FAT) and OQ protocols; residual ozone test after each loop sanitization"
-    ],
-    [
-     "Rouge on wetted surfaces",
-     "Heat, chloride residues from construction or cleaning, pump erosion, iron carried in from a still",
-     "Controlled finish, passivation after fabrication, chloride-free test water, inspection points at the tank and pump",
-     "Passivation and finish reports; inspection points you can trend"
-    ]
-   ],
-   "nav": "Where loops fail"
-  },
-  {
-   "type": "table",
-   "h": "Hot, ambient, ozonated or cold: choosing the microbial control",
-   "cols": [
-    "Loop type",
-    "How it controls microbes",
-    "Fits",
-    "Trade-offs"
-   ],
-   "rows": [
-    [
-     "Hot, above 70 °C",
-     "Continuous temperature; the FDA inspection guide calls hot 65–80 °C systems self-sanitizing",
-     "Hot WFI from a still; the example Annex 1, 6.10 gives",
-     "Simplest to defend. Insulated piping, energy to hold temperature, point-of-use coolers for ambient users, and the highest rouge risk."
-    ],
-    [
-     "Ambient, periodic heat",
-     "Hot water sanitization of tank and loop on a predetermined schedule, temperature proven at the coldest probe",
-     "PW, and WFI from membrane where your contamination control strategy (CCS) justifies ambient storage",
-     "Lower running energy. The loop is out of use during heat-up, hold and cool-down, and heat cycles still drive rouge."
-    ],
-    [
-     "Ambient, ozonated",
-     "Dissolved ozone held in the tank; UV destroys it before the loop supply; UV switched off on a schedule so ozone sanitizes the whole loop to the point-of-use valves",
-     "PW and membrane WFI where heat cycles are unwanted",
-     "No heat cycles, and the tank and piping need not be rated or insulated for heat. Ozone must be measured at three points, proven absent at the point of use before release, vented safely and matched to ozone-compatible seals."
-    ],
-    [
-     "Cold, chilled",
-     "Low temperature slows growth but does not kill; periodic heat or ozone sanitization does",
-     "Processes that need chilled water at the point of use",
-     "Chiller load, condensation on piping and longer sanitization cycles. Choose it for the process, not for microbial control."
-    ]
-   ],
-   "nav": "Microbial control"
   },
   {
    "type": "diagram",
@@ -280,78 +110,108 @@
     "Return sensors",
     "Spray ball"
    ],
-   "caption": "Water from the generator enters a tank fitted with a heated hydrophobic vent filter. A variable speed pump drives it through a heat exchanger that holds loop temperature, or through a 254 nm UV unit that destroys ozone on an ambient ozonated loop, then past every point of use on a continuously sloped main. Water not drawn passes conductivity, temperature, flow and TOC sensors on the return and re-enters the tank through a spray ball, so the head space stays wet and the flow never stops. Points of use that need cooler water are served by a cooled sub-loop or a point-of-use cooler that flushes to drain before use."
+   "caption": "Water enters the tank under a heated vent filter, is pumped through a heat exchanger or 254 nm UV unit, past every point of use, and returns past the sensors through a spray ball.",
+   "nav": "How it works"
   },
   {
-   "type": "docs",
-   "h": "Documentation delivered with the loop",
-   "items": [
+   "type": "table",
+   "h": "Hot, ambient, ozonated or cold: choosing microbial control",
+   "cols": [
+    "Loop type",
+    "How it controls microbes",
+    "Fits",
+    "Trade-offs"
+   ],
+   "rows": [
+    [
+     "Hot, above 70 °C",
+     "Continuous temperature; the FDA inspection guide calls hot 65–80 °C systems self-sanitizing",
+     "Hot WFI from a still, the example Annex 1, 6.10 gives",
+     "Simplest to defend. Insulation, energy to hold temperature, point-of-use coolers and the highest rouge risk."
+    ],
+    [
+     "Ambient, periodic heat",
+     "Hot water sanitization on a predetermined schedule, proven at the coldest probe",
+     "PW; membrane WFI where your contamination control strategy (CCS) justifies ambient storage",
+     "Lower energy. The loop is out of use for each cycle, and heat still drives rouge."
+    ],
+    [
+     "Ambient, ozonated",
+     "Ozone held in the tank and destroyed by UV; UV off on a schedule to sanitize the loop",
+     "PW and membrane WFI where heat cycles are unwanted",
+     "No heat cycles or heat-rated piping. Ozone measured at three points, absent at use, vented safely, compatible seals."
+    ],
+    [
+     "Cold, chilled",
+     "Slows growth but does not kill; periodic heat or ozone sanitizes",
+     "Processes that need chilled water at the point of use",
+     "Chiller load, condensation and longer cycles. Choose it for the process, not microbial control."
+    ]
+   ],
+   "nav": "Microbial control"
+  },
+  {
+   "type": "spec",
+   "h": "Tank, pipework and controls",
+   "caption": "FABRICATION · ASME BPE",
+   "cols": [
+    "Parameter",
+    "Design value",
+    "Basis"
+   ],
+   "rows": [
     {
-     "t": "URS compliance matrix",
-     "d": "Each requirement of your user requirement specification (URS), how we meet it and where it is verified"
+     "p": "Tank volume",
+     "v": "[tank volume range, L]",
+     "m": "Sized from your demand profile against the generation rate"
     },
     {
-     "t": "Functional specification",
-     "d": "Operating and sanitization sequences, alarms, setpoints and interlocks"
+     "p": "Tank spray device",
+     "v": "Spray ball on the return wets the head space and walls continuously",
+     "m": "Riboflavin coverage test, ASME BPE"
     },
     {
-     "t": "Hydraulic calculation",
-     "d": "Velocity and Reynolds number in every section for each operating case"
+     "p": "Pressure-rated tanks",
+     "v": "ASME Section VIII, Division 1, with rupture disc or relief device",
+     "m": "Canadian registration number (CRN), CSA B51: [provinces where Aquemi registers]"
     },
     {
-     "t": "Piping and instrumentation diagrams (P&IDs) and as-built isometric drawings",
-     "d": "Flow direction, slopes, diameters and lengths, as Annex 1, 6.5 lists for system records"
+     "p": "Heat exchangers",
+     "v": "Sanitary double tube sheet",
+     "m": "FDA Guide to Inspections of High Purity Water Systems"
     },
     {
-     "t": "Dead leg register",
-     "d": "L/D for every point-of-use branch, instrument tee and sample valve"
+     "p": "Pumps",
+     "v": "Sanitary centrifugal, variable speed; [duty and standby pumps, standard or option]",
+     "m": "Head and net positive suction head checked at hot loop temperature"
     },
     {
-     "t": "Material certificates",
-     "d": "EN 10204 3.1, every product-contact component"
+     "p": "Materials, product contact",
+     "v": "316L stainless steel",
+     "m": "EN 10204 3.1 material certificates"
     },
     {
-     "t": "Weld map, weld log and borescope records",
-     "d": "Welder and procedure qualifications to ASME Section IX"
+     "p": "Surface finish, product contact",
+     "v": "[standard finish, ASME BPE designation]",
+     "m": "SF1: Ra ≤ 0.51 µm mechanically polished; SF4: Ra ≤ 0.38 µm electropolished"
     },
     {
-     "t": "Pressure test, passivation and surface finish reports",
-     "d": "ASME BPE"
+     "p": "Welding and inspection",
+     "v": "Orbital welds numbered on the isometric; [share of product-contact welds borescoped, %] borescoped",
+     "m": "ASME BPE acceptance criteria; ASME Section IX qualifications"
     },
     {
-     "t": "Slope survey",
-     "d": "Measured fall on each run, recorded on the as-built isometrics"
+     "p": "Passivation",
+     "v": "Cleaned and passivated after fabrication, before first use",
+     "m": "ASME BPE; [passivation standard and method]"
     },
     {
-     "t": "Spray device coverage test report",
-     "d": "Riboflavin test on each tank"
-    },
-    {
-     "t": "Vent filter integrity test records",
-     "d": "Before installation, with the replacement and retest procedure"
-    },
-    {
-     "t": "Sanitization temperature mapping report",
-     "d": "Coldest point identified and proven"
-    },
-    {
-     "t": "Instrument calibration certificates",
-     "d": "Traceable to national standards"
-    },
-    {
-     "t": "FAT and SAT protocols and executed reports",
-     "d": "Deviations listed and closed"
-    },
-    {
-     "t": "IQ and OQ protocols",
-     "d": "With a requirements traceability matrix"
-    },
-    {
-     "t": "Operation and maintenance manual",
-     "d": "Including sanitization, vent filter replacement and rouge inspection procedures"
+     "p": "Controls",
+     "v": "Programmable logic controller (PLC) and human-machine interface (HMI) with audit trail",
+     "m": "GAMP 5; 21 CFR Part 11"
     }
    ],
-   "nav": "Documents"
+   "nav": "Fabrication"
   },
   {
    "type": "options",
@@ -359,7 +219,7 @@
    "items": [
     {
      "t": "Cooled sub-loops",
-     "d": "A sub-loop from a hot main, cooled through a double tube sheet exchanger and returned, for groups of ambient users."
+     "d": "Cooled through a double tube sheet exchanger from a hot main, for groups of ambient users."
     },
     {
      "t": "Point-of-use coolers",
@@ -371,57 +231,69 @@
     },
     {
      "t": "Prefabricated loop modules",
-     "d": "Pump, exchanger, UV and instruments on one skid, wet tested at FAT before shipment."
+     "d": "Pump, exchanger, UV and instruments on one skid, wet tested at factory acceptance testing (FAT)."
     },
     {
      "t": "Provision for future points of use",
-     "d": "Zero-static valve bodies installed at planned locations, so a new outlet does not need a weld into a qualified loop."
-    },
-    {
-     "t": "Duty and standby pumps",
-     "d": "Two loop pumps with automatic changeover, so circulation continues through a pump failure or seal change."
+     "d": "Zero-static valve bodies at planned locations, so a new outlet needs no weld into a qualified loop."
     },
     {
      "t": "Central sampling panel",
-     "d": "Sample valves for the loop return and tank grouped where your laboratory staff can reach them."
-    },
-    {
-     "t": "Online TOC and conductivity on the return",
-     "d": "Continuous data at the end of the loop, trended on the operator panel. See monitoring and controls."
+     "d": "Return and tank sample valves grouped where your laboratory staff can reach them."
     }
    ],
    "nav": "Options"
   },
   {
-   "type": "steps",
-   "h": "From your points-of-use list to a qualified loop",
+   "type": "docs",
+   "h": "Documentation delivered with the loop",
    "items": [
     {
-     "t": "Points-of-use survey",
-     "d": "For each outlet: location, flow in L/h, temperature, how often it is used, and which outlets open at the same time. We ask for what is missing, including outlets you plan to add."
+     "t": "URS compliance matrix",
+     "d": "Each user requirement specification (URS) item, how we meet it and where it is verified"
     },
     {
-     "t": "Loop concept and hydraulic calculation",
-     "d": "Tank size against generation rate, microbial control method, pipe sizes and pump duty, with return velocity shown for every operating case in a functional specification you approve."
+     "t": "Functional specification",
+     "d": "Operating and sanitization sequences, alarms, setpoints and interlocks"
     },
     {
-     "t": "Isometrics and design review",
-     "d": "Routing, slopes, flow direction, diameters, branch lengths and sample points on isometric drawings, with a dead leg register you review before fabrication."
+     "t": "Hydraulic calculation",
+     "d": "Velocity and Reynolds number in every section for each operating case"
     },
     {
-     "t": "Fabrication and FAT",
-     "d": "Orbital welds numbered on the isometrics and traceable to material heat numbers. Loop modules wet tested at FAT against a protocol you approve."
+     "t": "P&IDs and as-built isometrics",
+     "d": "Piping and instrumentation diagrams; flow direction, slopes, diameters and lengths, as Annex 1, 6.5 lists"
     },
     {
-     "t": "Installation and SAT",
-     "d": "Pressure test, passivation, slope survey, spray coverage test, a flow test with worst-case outlets open and a full sanitization cycle with temperature mapping."
+     "t": "Dead leg register",
+     "d": "L/D for every branch, instrument tee and sample valve"
     },
     {
-     "t": "IQ, OQ and PQ support",
-     "d": "We execute installation and operational qualification (IQ/OQ), then support PQ sampling at every point of use. Annex 1, 6.8 expects seasonal variation to be taken into account, so plan PQ data over a year."
+     "t": "Material certificates and weld log",
+     "d": "EN 10204 3.1 certificates, weld map and borescope records"
+    },
+    {
+     "t": "Pressure test, passivation and finish reports",
+     "d": "ASME BPE"
+    },
+    {
+     "t": "Slope verification and spray coverage",
+     "d": "Measured fall on each run; riboflavin test on each tank"
+    },
+    {
+     "t": "Vent filter integrity tests and mapping",
+     "d": "Filter integrity records; temperature mapping proving the coldest point"
+    },
+    {
+     "t": "FAT, SAT, IQ and OQ protocols",
+     "d": "Factory and site acceptance tests (SAT); installation and operational qualification (IQ, OQ), with traceability matrix"
+    },
+    {
+     "t": "Operation and maintenance manual",
+     "d": "Sanitization, vent filter replacement and rouge inspection; calibration certificates"
     }
    ],
-   "nav": "Process"
+   "nav": "Documents"
   },
   {
    "type": "faq",
@@ -429,89 +301,38 @@
    "items": [
     {
      "q": "Does a WFI loop have to be hot?",
-     "a": "Not by rule. Annex 1 paragraph 6.10 gives constant circulation above 70 °C as an example of storage that minimizes microbial growth, not the only acceptable method. Ambient WFI loops with ozone or periodic heat sanitization are in use, but your contamination control strategy has to justify the choice and your monitoring data has to support it. Where a still delivers hot WFI, a hot loop is usually the simplest to defend; with membrane WFI, the energy case often favours ambient storage. We set out both for your demand."
+     "a": "Not by rule: Annex 1, 6.10 gives circulation above 70 °C only as an example. Ambient WFI loops with ozone or periodic heat are in use, if your CCS justifies the choice and monitoring supports it. With a still, a hot loop is usually simplest to defend; with membrane WFI, energy often favours ambient. We set out both."
     },
     {
      "q": "Which L/D do you design to, and how do you measure it?",
-     "a": "L/D ≤ 2, the ASME BPE target: L from the inside wall of the main pipe to the valve seal point, D the inside diameter of the branch. It applies to instrument tees and sample valves as well as points of use. The older six-diameter rule comes from the FDA's 1993 inspection guide, which notes it was developed for hot 75–80 °C systems; we do not design to it. Every branch is listed with its L/D in the dead leg register."
+     "a": "L/D ≤ 2, the ASME BPE target: L from the inside wall of the main pipe to the valve seal point, D the branch inside diameter, at every tee and sample valve too. We do not design to the six-diameter rule of the FDA's 1993 guide, written for hot 75–80 °C systems. Every branch is in the dead leg register."
     },
     {
      "q": "How do you keep flow turbulent when several points of use open at once?",
-     "a": "We take the worst-case combination of outlets from your survey, not the average, and size the pipe and pump so the return stays turbulent with all of them open. A variable speed pump holds return flow or pressure as demand changes, and a low-return-flow alarm tells you when it cannot. At SAT we open the worst-case outlets together and record the return flow, which gives you the qualified flow rate Annex 1, 6.9 asks you to monitor."
-    },
-    {
-     "q": "Ozone or periodic heat for an ambient PW loop?",
-     "a": "Ozone keeps the tank under continuous control and sanitizes the loop without heat cycles or insulated piping, at the cost of ozone and UV monitoring, ozone-compatible seals and an extra test after each sanitization. Periodic heat needs no residual test but takes the loop out of use for each cycle and needs heating capacity. Your utilities, your tolerance for downtime and any existing equipment usually decide it; we show both against your schedule."
+     "a": "We size pipe and pump for the worst-case combination of outlets from your survey, not the average. A variable speed pump holds return flow or pressure, and a low-return-flow alarm tells you when it cannot. At SAT we open those outlets together and record return flow: the qualified rate Annex 1, 6.9 asks you to monitor."
     },
     {
      "q": "How do you prove there is no ozone at the point of use?",
-     "a": "An ozone sensor after the UV destruct unit is interlocked to stop supply if ozone breaks through, and the UV intensity is monitored. After each loop sanitization the water is tested for residual ozone before the loop returns to use, in line with Annex 1, 6.12, which asks for water to be tested after disinfection. The interlock is tested at FAT and OQ."
+     "a": "An ozone sensor after the UV destruct unit is interlocked to stop supply on breakthrough, and UV intensity is monitored. After each loop sanitization the water is tested for residual ozone before use, as Annex 1, 6.12 asks for testing after disinfection. The interlock is tested at FAT and OQ."
     },
     {
      "q": "How should points of use be sampled?",
-     "a": "The way the water is used. The FDA inspection guide says that if a hose is usually attached, the sample should be taken at the end of the hose, and flush times should match production practice. Annex 1, 6.13 asks for a sampling programme that covers all outlets and points of use at a specified interval, with at least one representative sample every day of water used in manufacturing. We place sample valves for the return and the tank, and write point-of-use sampling into the PQ protocol."
+     "a": "The way the water is used: if a hose is usually attached, the FDA guide says sample at its end. Annex 1, 6.13 asks for all outlets at a set interval and a representative sample daily. We write this into the performance qualification (PQ) protocol; Annex 1, 6.8 expects seasonal variation, so plan PQ data over a year."
     },
     {
      "q": "What about rouge?",
-     "a": "Rouge, the iron oxide film that forms on stainless steel, is found mainly in hot WFI and pure steam systems and in systems with frequent heat cycles. On its own it does not usually move conductivity or TOC, but loose rouge that migrates is a particle risk, and your quality unit will expect it to be inspected and trended. We limit the causes at design (finish, passivation, chloride control during construction, pump selection), give you inspection points at the tank and pump, and plan derouging and repassivation as maintenance rather than an emergency."
+     "a": "Rouge, the iron oxide film on stainless steel, forms mainly in hot WFI, pure steam and heat-cycled systems. Loose rouge is a particle risk your quality unit will expect inspected and trended. We limit the causes at design (finish, passivation, chloride control, pump selection), add inspection points at the tank and pump, and plan derouging as maintenance."
     },
     {
      "q": "Can you add points of use to an existing loop?",
-     "a": "Yes, after a hydraulic check of the whole loop at the new peak draw. Each new branch is cut in with a zero-static valve, orbitally welded, passivated and added to the isometrics and dead leg register, under your change control, with a requalification scope agreed before work starts. Shutdown length depends on the tie-ins: [typical shutdown for a point-of-use addition, days]. See upgrades and requalification."
+     "a": "Yes, after a hydraulic check of the whole loop at the new peak draw. Each branch is cut in with a zero-static valve, orbitally welded, passivated and added to the isometrics and dead leg register under your change control. Shutdown depends on the tie-ins: [typical shutdown for a point-of-use addition, days]. See upgrades and requalification."
     },
     {
      "q": "Can the loop connect to a generator from another supplier?",
-     "a": "Yes. We define the interface in the functional specification: water quality and flow at the tank inlet, the signals exchanged, and how a generator divert or a low tank level is handled, so the loop and the generator are qualified as one system."
-    },
-    {
-     "q": "How do you document slope, orbital welds and borescope inspection in the turnover package?",
-     "a": "Slope is recorded line by line on the as-built isometric drawings, [slope verification method]. Every weld has a line in the weld log tied to the weld map and the material heat numbers, with [borescope inspection percentage] borescope inspection recorded. The Fabrication page shows each field and what it proves."
-    },
-    {
-     "q": "Who services the loop after handover?",
-     "a": "Our service team, from [service locations]. A service plan covers vent filter replacement and integrity tests, instrument calibration, pump seals, UV lamps and rouge inspection, with a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. Every visit ends with a signed report your quality unit can file."
+     "a": "Yes. The functional specification defines the interface: water quality and flow at the tank inlet, the signals exchanged, and how a generator divert or low tank level is handled, so loop and generator are qualified as one system."
     }
    ],
    "nav": "FAQ"
-  },
-  {
-   "type": "docs",
-   "h": "What to send for a loop design review",
-   "items": [
-    {
-     "t": "Points-of-use list",
-     "d": "Each outlet's location, flow in L/h, required temperature and how often it is used"
-    },
-    {
-     "t": "Simultaneous draw",
-     "d": "Which outlets open at the same time, and the peak combined draw in L/h"
-    },
-    {
-     "t": "Water grade and pharmacopoeia",
-     "d": "PW or WFI; USP, Ph. Eur. or both; any internal limits tighter than the monograph"
-    },
-    {
-     "t": "Generation",
-     "d": "Generator type and rate in L/h, existing or planned, and whether it delivers hot or ambient water"
-    },
-    {
-     "t": "Microbial control preference",
-     "d": "Hot, ambient with heat, ozonated or cold, or the constraints that decide it: steam, chilled water and power available"
-    },
-    {
-     "t": "Layout",
-     "d": "Building drawings with outlet locations, routing heights and room classifications"
-    },
-    {
-     "t": "Existing loop details",
-     "d": "Isometrics, dead leg register and recent monitoring data, if you are extending or replacing a loop"
-    },
-    {
-     "t": "Your URS and target dates",
-     "d": "If you have a URS; we can help write it if not. Dates for order, installation and water in use."
-    }
-   ],
-   "nav": "What to send"
   },
   {
    "type": "related",
@@ -527,11 +348,20 @@
   }
  ],
  "cta": {
-  "h": "Designed around your peak simultaneous draw and sanitization schedule. Send your points of use.",
-  "body": "Include each outlet's flow in L/h, which open together and the water grade. An engineer replies within [proposal response time, working days] with questions or a loop concept showing tank size, velocities and the sanitization method.",
+  "h": "Send your points of use. We design to your peak draw.",
+  "body": "An engineer replies within [proposal response time, working days] with questions or a loop concept: tank size, velocities and sanitization method.",
   "button": "Send your points-of-use list for a loop review",
   "link": "contact-proposal",
-  "intent": "Review of a document you have|Points-of-use list or loop design"
+  "intent": "Review of a document you have|Points-of-use list or loop design",
+  "include": [
+   "Points of use: location, L/h, temperature",
+   "Outlets open together and peak draw, L/h",
+   "Water grade, pharmacopoeia and internal limits",
+   "Generator type, rate, hot or ambient",
+   "Layout drawings with outlet locations",
+   "Existing isometrics and monitoring data, if extending",
+   "Your URS and target dates, if available"
+  ]
  },
  "todo": [
   "Design minimum return velocity at peak draw (m/s)",
@@ -544,14 +374,12 @@
   "Whether duty and standby loop pumps are standard or an option",
   "Standard product-contact surface finish (ASME BPE designation) and whether SF4 electropolish is offered",
   "Share of product-contact welds borescoped (%)",
-  "Passivation standard and method used (for example ASTM A967 or ASTM A380), and whether it is done in-house",
+  "Passivation standard and method ([passivation standard and method], for example ASTM A967 or ASTM A380), and whether it is done in-house",
   "Confirm TOC on the loop return is standard or an option for WFI loops",
   "Whether riboflavin spray coverage testing is performed in-house",
   "Typical shutdown for adding a point of use to an existing loop (days)",
-  "Service locations and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Datasheet PDF; add a download link only once it exists",
-  "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block",
-  "Slope verification method on installed loops"
+  "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block"
  ]
 }
