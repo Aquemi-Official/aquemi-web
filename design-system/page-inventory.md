@@ -51,7 +51,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | --- | --- | --- |
 | [Standards we design to](https://aquemi-official.github.io/aquemi-web/#compliance) | Every standard we cite, the number it sets and the document that proves it | prose, spec, table ×6, grid, faq, docs, related |
 | [Documentation package](https://aquemi-official.github.io/aquemi-web/#cmp-documentation) | Every document your auditor will ask for, issued as we build and indexed to your URS | prose, table ×6 (master index by stage), table (package sections), steps, spec, table (validation use), band, docs, form, faq, related |
-| [Quality management](https://aquemi-official.github.io/aquemi-web/#cmp-quality) | Quality you can audit, from heat number to handover | prose, grid, steps, grid, docs, related |
+| [Quality management](https://aquemi-official.github.io/aquemi-web/#cmp-quality) | Audit our quality system before you award the contract | prose, table, steps, table, table, spec, grid, table, docs, form, faq, related |
 
 ## Projects
 
