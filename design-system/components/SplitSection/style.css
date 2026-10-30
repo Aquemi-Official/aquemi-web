@@ -8,6 +8,10 @@
 .aq-split-section__body .aq-prose p:not(:first-child) { color: var(--ink-muted); }
 
 @container (max-width: 860px) {
-  .aq-split-section { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  /* Phones: the head stacks above the body with the same head as every other section (aq-h1 30/36, lead 18/28)
+     and the same space-8 gap to the content, so split and stacked sections keep one rhythm. */
+  .aq-split-section { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
   .aq-split-section__head { position: static; }
+  .aq-split-section__head .aq-h1 { font-size: 30px; line-height: 36px; }
+  .aq-split-section__head .aq-lead { font-size: 18px; line-height: 28px; }
 }

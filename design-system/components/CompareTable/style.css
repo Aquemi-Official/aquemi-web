@@ -110,7 +110,11 @@
   .aq-compare-table__table tbody td[data-empty] { display: none; }
   .aq-compare-table__k { display: inline; margin-right: var(--space-2); font: 500 13px/22px var(--font-sans); color: var(--ink-muted); }
   .aq-compare-table__k::after { content: ":"; }
-  .aq-compare-table__table td.aq-compare-table__go { margin-top: var(--space-1); }
+  /* Link column: last in the record wherever it sits in the table, as a quiet sans link that never strands its arrow */
+  .aq-compare-table__table tbody tr { display: flex; flex-direction: column; }
+  .aq-compare-table__table td.aq-compare-table__go { order: 1; margin-top: var(--space-1); }
+  .aq-compare-table__table td a { font: 500 14px/22px var(--font-sans); letter-spacing: 0; text-transform: none; }
+  .aq-compare-table__table td a::after { content: "\a0\2192"; content: "\a0\2192" / ""; }
 
   /* Tabs (four or more value columns): one strip of tabs that scrolls inside itself, never two lines; each row the
      label left (13/20 ink-muted) and the chosen column's value right. */

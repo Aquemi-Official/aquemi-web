@@ -99,11 +99,15 @@
 .aq-case__profile { background-color: var(--surface-raised); }
 
 @container (max-width: 860px) {
-  /* Phones: one column, outcome box after the facts, figure scaled to the screen */
+  /* Phones: one column. The facts and the method are hairline rows (label above text), not boxes; the outcome
+     keeps its box as the case's one accent, after the facts, figure scaled to the screen. */
   .aq-cases { gap: var(--space-6); }
   .aq-case { padding: var(--space-4); }
-  .aq-case__facts { grid-template-columns: minmax(0, 1fr); gap: var(--space-2); }
+  .aq-case__facts { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .aq-case__fact, .aq-case__outcome { grid-column: 1; grid-row: auto; padding: var(--space-4); }
+  .aq-case__fact, .aq-case__method { gap: var(--space-1); padding: var(--space-3) 0; background: none; border: 0; border-top: 1px solid var(--line); }
+  .aq-case__fact:first-child { border-top: 0; padding-top: 0; }
+  .aq-case__outcome { margin-block: var(--space-3) var(--space-1); }
   .aq-case__method { grid-column: 1; }
   .aq-case__fact dd { font-size: 15px; line-height: 24px; }
   .aq-case__outcome dd { gap: var(--space-4); }

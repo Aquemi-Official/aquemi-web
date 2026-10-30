@@ -49,7 +49,7 @@ The figure comes only from `figure`. The renderer never pulls a number out of `o
 ## Layout
 
 - **Desktop:** cases stack, each in its own frame. Fact boxes fill a 5-part left column; the outcome box spans their full height in a 7-part right column, figure at the top, result sentence at the bottom.
-- **Phone** (`@container (max-width: 860px)`): one column, outcome box last; the figure scales to 20% of the container width (56 to 96 px) and wraps rather than overflowing.
+- **Phone** (`@container (max-width: 860px)`): one column. Client, problem, system, standard and "How it was measured" become hairline rows (label above text) instead of boxes, so a case is not a stack of frames; the outcome keeps its `flow`-edged box after the facts. The figure scales to 20% of the container width (56 to 96 px) and wraps rather than overflowing.
 
 ## Token rules
 
