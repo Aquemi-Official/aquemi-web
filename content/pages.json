@@ -8,8 +8,8 @@
    "meta": "We design, fabricate and qualify Purified Water, WFI and pure steam systems for pharmaceutical plants in Canada, built to USP and ASME BPE.",
    "path": "/",
    "eyebrow": "PHARMACEUTICAL WATER SYSTEMS · USP · PH. EUR. · ASME BPE",
-   "headline": "Compendial water that passes on the first audit.",
-   "lead": "We design, fabricate and qualify Purified Water (PW), Water for Injection (WFI) and pure steam systems for pharmaceutical plants, and every one is factory acceptance tested before it ships to you.",
+   "headline": "Validation-ready Purified Water, WFI and pure steam systems for pharmaceutical plants",
+   "lead": "Built to USP <645> and <643>, Ph. Eur. and ASME BPE. Every system runs a wet factory acceptance test (FAT) before it ships, and arrives with its installation and operational qualification (IQ/OQ) protocols and a complete turnover package.",
    "tags": [
     "USP",
     "Ph. Eur.",
@@ -19,12 +19,36 @@
     "EN 285",
     "ISPE Baseline Guide Vol. 4"
    ],
-   "primary_cta": "Request a proposal",
+   "primary_cta": "Submit your URS for a proposal",
    "secondary_cta": {
-    "label": "Explore systems",
-    "link": "systems"
+    "label": "Get a sample turnover package",
+    "link": "cmp-documentation"
    },
    "blocks": [
+    {
+     "type": "tags",
+     "h": "Standards we design and document to",
+     "items": [
+      "USP <645>",
+      "USP <643>",
+      "USP <85>",
+      "USP <1231>",
+      "Ph. Eur.",
+      "EN 285",
+      "ASME BPE",
+      "GAMP 5",
+      "21 CFR Part 11",
+      "EU GMP Annex 1",
+      "Health Canada GUI-0001",
+      "ISPE Baseline Guide Vol. 4"
+     ]
+    },
+    {
+     "type": "readout",
+     "value": "< 0.25 EU/mL",
+     "method": "Bacterial endotoxins · USP <85>",
+     "body": "This is the endotoxin limit for WFI. We design every WFI system and loop to meet it at the furthest point of use, not only at the still outlet, and we show you the factory acceptance test data before the skid leaves our shop."
+    },
     {
      "type": "grid",
      "h": "Seven system families, one water path",
@@ -75,65 +99,41 @@
      ]
     },
     {
-     "type": "readout",
-     "value": "< 0.25 EU/mL",
-     "method": "Bacterial endotoxins · USP <85>",
-     "body": "This is the endotoxin limit for WFI. We design every WFI system and loop to meet it at the furthest point of use, not only at the still outlet, and we show you the factory acceptance test data before the skid leaves our shop."
+     "type": "diagram",
+     "h": "One water path, from your feed to the point of use",
+     "stages": [
+      "Feed water",
+      "Pretreatment",
+      "PW generation",
+      "WFI or pure steam",
+      "Storage and loop",
+      "Point of use"
+     ],
+     "caption": "Every limit is judged where the water is used. We design the path as a whole, or the part you need, and say where our scope ends and your plant ties in."
     },
     {
      "type": "steps",
-     "h": "How a project runs",
+     "h": "How a project runs, and what you can check at each step",
      "items": [
       {
        "t": "Design",
-       "d": "We turn your user requirement specification (URS) into a functional specification, piping and instrumentation diagrams (P&IDs) and a risk assessment you can review line by line."
+       "d": "We turn your user requirement specification (URS) into a functional specification, piping and instrumentation diagrams (P&IDs) and a risk assessment you review line by line."
       },
       {
        "t": "Fabricate",
        "d": "316L stainless steel, orbital welds with weld logs and borescope records, and surface finishes specified to ASME BPE."
       },
       {
-       "t": "Test",
-       "d": "A wet factory acceptance test (FAT) in our shop with your team present, then a site acceptance test (SAT) after installation."
+       "t": "FAT",
+       "d": "A wet factory acceptance test in our shop, to a protocol your quality unit approves, with your team present in person or remotely."
       },
       {
-       "t": "Qualify",
-       "d": "Installation and operational qualification (IQ/OQ) protocols written to GAMP 5, executed with your validation team, and support through performance qualification (PQ)."
+       "t": "SAT and IQ/OQ",
+       "d": "A site acceptance test (SAT) on your feed water, then IQ/OQ protocols written to GAMP 5 and executed with your validation team."
       },
       {
        "t": "Support",
-       "d": "Preventive maintenance, calibration and spare parts, documented so the system stays in its qualified state."
-      }
-     ]
-    },
-    {
-     "type": "tags",
-     "h": "Standards we design to",
-     "items": [
-      "USP <645>",
-      "USP <643>",
-      "USP <85>",
-      "USP <1231>",
-      "Ph. Eur.",
-      "EN 285",
-      "ASME BPE",
-      "GAMP 5",
-      "21 CFR Part 11",
-      "EU GMP Annex 1",
-      "Health Canada GUI-0001",
-      "ISPE Baseline Guide Vol. 4"
-     ]
-    },
-    {
-     "type": "case",
-     "h": "Recent project",
-     "items": [
-      {
-       "t": "[Project title]",
-       "client": "[Client type, e.g. sterile injectables manufacturer], [city], [province]",
-       "problem": "[The constraint the client faced, e.g. a new fill line needing WFI within a fixed shutdown window]",
-       "system": "[System delivered, e.g. membrane WFI at [x] L/h with a hot sanitized ambient loop of [n] points of use]",
-       "outcome": "[Measured outcome in one sentence, e.g. IQ/OQ completed in [n] weeks with no open deviations]"
+       "d": "Preventive maintenance, calibration and spare parts, documented so the system stays in its qualified state through performance qualification (PQ) and after."
       }
      ]
     },
@@ -147,40 +147,58 @@
     },
     {
      "type": "grid",
-     "h": "Where would you like to start?",
+     "h": "Where are you in your project?",
+     "intro": "Pick the step that matches where you are. Each one goes to an engineer, not a sales queue.",
      "items": [
       {
-       "t": "A new system",
-       "d": "Send us your URS or a one-page brief and we reply with a scoped proposal.",
+       "t": "URS ready, requesting proposals",
+       "d": "Send your URS and feed water analysis. We reply with questions or a scoped proposal within [proposal response time].",
+       "tag": "Proposal",
        "link": "contact-proposal"
       },
       {
-       "t": "Service on an existing system",
-       "d": "Any make of PW, WFI or pure steam equipment. Response within [response time].",
+       "t": "Writing or checking a URS",
+       "d": "We mark up your draft against USP, Ph. Eur., ASME BPE and EU GMP Annex 1 and return it with comments.",
+       "tag": "URS review",
+       "link": "svc-design"
+      },
+      {
+       "t": "Early research or budgeting",
+       "d": "Get a sample turnover package: the FAT protocol contents, IQ/OQ index and weld log format we hand over.",
+       "tag": "Sample documents",
+       "link": "cmp-documentation"
+      },
+      {
+       "t": "A system already in service",
+       "d": "Service, calibration or an out-of-specification result on any make of PW, WFI or pure steam equipment. Response within [service response time].",
+       "tag": "Service",
        "link": "contact-service"
       },
       {
        "t": "An upgrade or retrofit",
        "d": "Controls, sanitization or capacity changes to a system already in qualified use.",
+       "tag": "Upgrade",
        "link": "svc-upgrades"
       }
      ]
     }
    ],
    "cta": {
-    "h": "Tell us the water grade and the flow. We'll do the rest.",
-    "body": "Send your URS or a short brief and an engineer will reply with questions, not a sales script.",
-    "button": "Request a proposal",
+    "h": "Send your water grade and flow, or your URS. An engineer replies.",
+    "body": "A process engineer, not a sales representative, reads it and replies within [proposal response time] with questions or a budget proposal.",
+    "button": "Submit your URS for a proposal",
     "link": "contact-proposal"
    },
    "todo": [
     "Hero photograph of a finished Aquemi skid or installed loop",
     "Fabrication shop city and province",
     "Service cities",
-    "Service response time commitment",
     "Whether French-language documentation is offered",
-    "One real case study with client permission, system details and a measured outcome",
-    "Confirm which standards Aquemi designs to routinely before publishing the compliance strip"
+    "Confirm which standards Aquemi designs to routinely before publishing the compliance strip",
+    "Proposal response time (business days) for the URS / proposal route",
+    "Service response time for existing systems",
+    "What the sample turnover package contains and whether it is shared openly or under NDA",
+    "One real case study with client permission (removed from home until it exists)"
    ]
   },
   {
@@ -191,8 +209,8 @@
    "meta": "Choose PW, WFI or pure steam systems by water grade and standard: USP <645> 1.3 µS/cm, USP <85> 0.25 EU/mL, EN 285. Seven families, each FAT tested.",
    "path": "/systems/",
    "eyebrow": "SYSTEMS · PW · WFI · PURE STEAM · USP · PH. EUR. · EU GMP ANNEX 1",
-   "headline": "Start from the water you must release. We map the route that meets it at the point of use.",
-   "lead": "Purified Water (PW) is released against the USP <645> conductivity limit of 1.3 µS/cm at 25 °C and the USP <643> limit of 500 ppb total organic carbon (TOC). Water for Injection (WFI) and pure steam condensate add the USP <85> bacterial endotoxin limit of 0.25 EU/mL. Those limits apply where the water is used, so we design pretreatment, generation, storage, distribution and monitoring as one path, factory acceptance test (FAT) each system before it ships, and hand over the installation and operational qualification (IQ/OQ) protocols with it.",
+   "headline": "Find your compendial water route by grade, by standard or by flow",
+   "lead": "Seven system families, each built to the limit your auditor will cite: USP <645> 1.3 µS/cm at 25 °C and USP <643> 500 ppb total organic carbon (TOC) for Purified Water (PW), plus the USP <85> endotoxin limit of 0.25 EU/mL for Water for Injection (WFI) and pure steam condensate. Those limits apply where the water is used, so we design the path as a whole, factory acceptance test (FAT) each system before it ships and hand over the installation and operational qualification (IQ/OQ) protocols with it.",
    "tags": [
     "USP <645>",
     "USP <643>",
@@ -202,20 +220,71 @@
     "EN 285",
     "ASME BPE"
    ],
-   "primary_cta": "Request a route assessment",
+   "primary_cta": "Submit your URS for a route assessment",
    "secondary_cta": {
-    "label": "System already in service? Upgrades and requalification",
-    "link": "svc-upgrades"
+    "label": "Get a sample turnover package",
+    "link": "cmp-documentation"
    },
    "blocks": [
     {
-     "type": "prose",
-     "h": "The limit applies at the outlet, so the path is judged as a whole",
-     "body": [
-      "Your user requirement specification (URS) names a water grade and a pharmacopoeia. Your quality unit releases that water at the outlet your process draws from, not at the generator. A generator with margin at its outlet can still fail at a dead leg, and a still with a good endotoxin reduction can still fail on a poor feed.",
-      "So we specify every system family by its interfaces: the feed limits it needs from the stage before, and the quality, temperature and flow it hands to the stage after. Those limits go into the functional specification, are tested at FAT and site acceptance testing (SAT), and are recorded where your validation team qualifies against them.",
-      "You can buy one family on its own, to fit equipment already on your site, or the whole path. The two tables below take you from your water grade, or from the standard your auditor will cite, to the page with the specifications."
-     ]
+     "type": "grid",
+     "h": "Seven system families",
+     "intro": "Each family has its own page with the limits it is built to, its design parameters, options and the documents it ships with. Choose one, or send your URS and we map the whole path.",
+     "items": [
+      {
+       "t": "Purified Water (PW) generation",
+       "d": "RO and EDI skids that make PW below 1.3 µS/cm at 25 °C and 500 ppb TOC, sized at your coldest feed temperature and hot water sanitizable.",
+       "tag": "USP <645>",
+       "link": "sys-pw"
+      },
+      {
+       "t": "WFI by distillation",
+       "d": "Multi-effect and vapour compression stills making hot WFI below 0.25 EU/mL endotoxin, with the still type chosen on your steam, power and cooling water costs.",
+       "tag": "USP <85>",
+       "link": "sys-wfi-distillation"
+      },
+      {
+       "t": "WFI by membrane",
+       "d": "Double-pass RO, EDI and UF making ambient WFI with no plant steam for generation, and the biofilm and endotoxin controls the EMA expects.",
+       "tag": "Ph. Eur. 0169",
+       "link": "sys-wfi-membrane"
+      },
+      {
+       "t": "Pure steam generators",
+       "d": "Condensate that meets WFI limits and steam that passes EN 285 at the sterilizer, with the generator and header sized as one system.",
+       "tag": "EN 285",
+       "link": "sys-pure-steam"
+      },
+      {
+       "t": "Storage and distribution loops",
+       "d": "Turbulent flow at peak draw, every branch at L/D ≤ 2, hot WFI loops above 70 °C and ambient loops sanitized by heat or ozone.",
+       "tag": "ASME BPE",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Pretreatment",
+       "d": "Media, softening and carbon or bisulfite trains that hold the RO inlet at no detectable chlorine or chloramine and a silt density index (SDI) of 3 or less, in every season.",
+       "tag": "USP <1231>",
+       "link": "sys-pretreatment"
+      },
+      {
+       "t": "Monitoring and controls",
+       "d": "Programmable logic controller (PLC) and supervisory control and data acquisition (SCADA) with online TOC and conductivity on the raw reading, and audit trails that meet Part 11 and Annex 11.",
+       "tag": "21 CFR Part 11",
+       "link": "sys-monitoring"
+      },
+      {
+       "t": "Process design and engineering",
+       "d": "A demand profile, a feedwater analysis and the interface limits between systems, each decision traced back to your URS.",
+       "link": "svc-design"
+      },
+      {
+       "t": "Upgrades and retrofits",
+       "d": "More capacity, new points of use or new controls on a system in service, with the requalification scope stated before work starts.",
+       "link": "svc-upgrades"
+      }
+     ],
+     "nav": "Systems"
     },
     {
      "type": "table",
@@ -268,7 +337,8 @@
         "link": "sys-pure-steam"
        }
       ]
-     ]
+     ],
+     "nav": "By water grade"
     },
     {
      "type": "table",
@@ -351,80 +421,52 @@
         "link": "compliance"
        }
       ]
-     ]
-    },
-    {
-     "type": "diagram",
-     "h": "How the systems fit together",
-     "stages": [
-      "Municipal feed",
-      "Pretreatment",
-      "PW generation",
-      "WFI or pure steam",
-      "Storage",
-      "Distribution loop",
-      "Points of use"
      ],
-     "caption": "Monitoring and controls run along the whole path. Each arrow is an interface we write into the functional specification: the feed limits the next stage needs, and the quality, temperature and flow the stage before must deliver."
+     "nav": "By standard"
     },
     {
-     "type": "grid",
-     "h": "Seven system families",
-     "intro": "Each family has its own page with the limits it is built to, its design parameters, options and the documents it ships with. The last two items are where a whole new path, or a change to one already running, starts.",
-     "items": [
+     "type": "spec",
+     "h": "Budget framework, before you ask for a quote",
+     "caption": "Typical budget ranges · Canadian dollars, before tax",
+     "cols": [
+      "System",
+      "Typical budget",
+      "What the range assumes"
+     ],
+     "note": "Ranges to help you plan a capital request and shortlist suppliers. Your proposal is priced on your URS, feed water and site. Each range includes FAT, the IQ/OQ protocols and the turnover package; installation, field piping and site utilities are quoted separately.",
+     "rows": [
       {
-       "t": "Purified Water (PW) generation",
-       "d": "RO and EDI skids that make PW below 1.3 µS/cm at 25 °C and 500 ppb TOC, sized at your coldest feed temperature and hot water sanitizable.",
-       "tag": "USP <645>",
-       "link": "sys-pw"
+       "p": "PW generation, RO + EDI, [reference capacity, L/h]",
+       "v": "[budget range, CAD]",
+       "m": "Single-pass RO with EDI, hot water sanitizable, on municipal feed"
       },
       {
-       "t": "WFI by distillation",
-       "d": "Multi-effect and vapour compression stills making hot WFI below 0.25 EU/mL endotoxin, with the still type chosen on your steam, power and cooling water costs.",
-       "tag": "USP <85>",
-       "link": "sys-wfi-distillation"
+       "p": "WFI by distillation, [reference capacity, L/h]",
+       "v": "[budget range, CAD]",
+       "m": "Multi-effect still on plant steam"
       },
       {
-       "t": "WFI by membrane",
-       "d": "Double-pass RO, EDI and UF making ambient WFI with no plant steam for generation, and the biofilm and endotoxin controls the EMA expects.",
-       "tag": "Ph. Eur. 0169",
-       "link": "sys-wfi-membrane"
+       "p": "WFI by membrane, [reference capacity, L/h]",
+       "v": "[budget range, CAD]",
+       "m": "Double-pass RO, EDI and ultrafiltration"
       },
       {
-       "t": "Pure steam generators",
-       "d": "Condensate that meets WFI limits and steam that passes EN 285 at the sterilizer, with the generator and header sized as one system.",
-       "tag": "EN 285",
-       "link": "sys-pure-steam"
+       "p": "Pure steam generator, [reference capacity, kg/h]",
+       "v": "[budget range, CAD]",
+       "m": "Generator on plant steam"
       },
       {
-       "t": "Storage and distribution loops",
-       "d": "Turbulent flow at peak draw, every branch at L/D ≤ 2, hot WFI loops above 70 °C and ambient loops sanitized by heat or ozone.",
-       "tag": "ASME BPE",
-       "link": "sys-storage"
+       "p": "Storage tank and loop, [reference size: tank volume L, points of use]",
+       "v": "[budget range, CAD]",
+       "m": "Hot or ozonated loop, field piping excluded"
       },
       {
-       "t": "Pretreatment",
-       "d": "Media, softening and carbon or bisulfite trains that hold the RO inlet at no detectable chlorine or chloramine and a silt density index (SDI) of 3 or less, in every season.",
-       "tag": "USP <1231>",
-       "link": "sys-pretreatment"
-      },
-      {
-       "t": "Monitoring and controls",
-       "d": "Programmable logic controller (PLC) and supervisory control and data acquisition (SCADA) with online TOC and conductivity on the raw reading, and audit trails that meet Part 11 and Annex 11.",
-       "tag": "21 CFR Part 11",
-       "link": "sys-monitoring"
-      },
-      {
-       "t": "Process design and engineering",
-       "d": "A demand profile, a feedwater analysis and the interface limits between systems, each decision traced back to your URS.",
-       "link": "svc-design"
-      },
-      {
-       "t": "Upgrades and retrofits",
-       "d": "More capacity, new points of use or new controls on a system in service, with the requalification scope stated before work starts.",
-       "link": "svc-upgrades"
+       "p": "Pretreatment train, [reference capacity, L/h]",
+       "v": "[budget range, CAD]",
+       "m": "Multimedia, softener and carbon or bisulfite"
       }
-     ]
+     ],
+     "nav": "Budget"
     },
     {
      "type": "table",
@@ -476,7 +518,22 @@
         "link": "sys-wfi-membrane"
        }
       ]
-     ]
+     ],
+     "nav": "Hot or ambient WFI"
+    },
+    {
+     "type": "diagram",
+     "h": "How the systems fit together",
+     "stages": [
+      "Municipal feed",
+      "Pretreatment",
+      "PW generation",
+      "WFI or pure steam",
+      "Storage",
+      "Distribution loop",
+      "Points of use"
+     ],
+     "caption": "Monitoring and controls run along the whole path. Each arrow is an interface we write into the functional specification: the feed limits the next stage needs, and the quality, temperature and flow the stage before must deliver."
     },
     {
      "type": "steps",
@@ -542,7 +599,8 @@
        "t": "Added by system",
        "d": "heat and mass balance for stills, steam balance and EN 285 test report for pure steam, hydraulic calculation and dead leg register for loops, membrane projections for pretreatment, Part 11 and Annex 11 assessment for controls"
       }
-     ]
+     ],
+     "nav": "Documents"
     },
     {
      "type": "faq",
@@ -559,6 +617,10 @@
       {
        "q": "Why have one supplier design generation and the loop?",
        "a": "Because the water is released at the point of use. When generation and distribution are specified separately, the margin between them is nobody's job. If you split the scope, we still write the interface limits into our functional specification and test our side against them at FAT and SAT."
+      },
+      {
+       "q": "Where does your scope end and our plant begin?",
+       "a": "We state the battery limits in the proposal and the functional specification, connection by connection: feed water inlet, drains, utilities, network and the point-of-use valves. A typical scope runs from [standard battery limits, e.g. the feed water inlet flange to the point-of-use valve outlets]. Anything outside that line, and who supplies it, is listed so nothing is left between two contracts."
       },
       {
        "q": "How do we size generation against storage?",
@@ -580,7 +642,8 @@
        "q": "Our system is already running and out of specification. Who do we contact?",
        "a": "Use the service request page, with the serial number and current readings, for anything out of specification now. For planned changes such as more capacity, new points of use or new controls, see upgrades and retrofits."
       }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "docs",
@@ -618,7 +681,8 @@
        "t": "Your URS",
        "d": "a draft is enough"
       }
-     ]
+     ],
+     "nav": "What to send"
     },
     {
      "type": "related",
@@ -631,9 +695,9 @@
     }
    ],
    "cta": {
-    "h": "Not sure which route? Send your water and your standard. We map the route.",
-    "body": "Include your feed water analysis, peak demand in L/h and the pharmacopoeias you release against. An engineer replies within [response time] with questions or a written route assessment that names the systems, the WFI route if you need one, and the reasoning.",
-    "button": "Request a route assessment",
+    "h": "Send your water grade, your standard and your flow. We map the route.",
+    "body": "Include your feed water analysis, peak demand in L/h and the pharmacopoeias you release against. A process engineer replies within [response time] with questions or a written route assessment that names the systems, the WFI route if you need one, and the reasoning.",
+    "button": "Submit your URS for a route assessment",
     "link": "contact-proposal"
    },
    "todo": [
@@ -642,7 +706,9 @@
     "Whether the route assessment is free or charged",
     "Enquiry response time commitment (same placeholder as the system pages)",
     "Confirm Aquemi builds RO/EDI for CSA Z314, ASTM D1193 and industrial demin (wording mirrors sys-pw)",
-    "Confirm every family, including loops and controls, is FAT tested before shipping (hero and steps say so; svc-fat-sat says every skid)"
+    "Confirm every family, including loops and controls, is FAT tested before shipping (hero and steps say so; svc-fat-sat says every skid)",
+    "Budget ranges (CAD) for each system family at a stated reference capacity, including FAT, IQ/OQ protocols and turnover package",
+    "Standard battery limits for a typical scope"
    ]
   },
   {
@@ -653,7 +719,7 @@
    "meta": "RO and EDI skids that make Purified Water below USP <645> 1.3 µS/cm and USP <643> 500 ppb TOC, sized for your coldest feed water and wet tested at FAT.",
    "path": "/systems/purified-water/",
    "eyebrow": "PURIFIED WATER · USP <645> · USP <643> · PH. EUR. 0008",
-   "headline": "Purified Water that meets USP and Ph. Eur. with margin, on your coldest feed day",
+   "headline": "Purified Water sized for your coldest feed day, with a turnover package your auditor can follow",
    "lead": "Our reverse osmosis (RO) and electrodeionization (EDI) skids make Purified Water (PW) below the USP <645> limit of 1.3 µS/cm at 25 °C and the USP <643> limit of 500 ppb total organic carbon (TOC), with no regeneration chemicals. We size each skid at your lowest feed temperature, wet test it at factory acceptance testing (FAT) and ship the installation and operational qualification (IQ/OQ) protocols with it.",
    "tags": [
     "USP <645>",
@@ -662,9 +728,9 @@
     "ASME BPE",
     "GAMP 5"
    ],
-   "primary_cta": "Request a sizing proposal",
+   "primary_cta": "Request a sizing and budget proposal",
    "secondary_cta": {
-    "label": "See the documentation package",
+    "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
    "blocks": [
@@ -724,7 +790,40 @@
        "m": "Measured at the skid outlet at FAT and SAT. This is the margin your loop spends.",
        "hl": false
       }
-     ]
+     ],
+     "nav": "Limits"
+    },
+    {
+     "type": "table",
+     "h": "Which purification train fits your feed water",
+     "cols": [
+      "Train",
+      "Fits when",
+      "Trade-off"
+     ],
+     "rows": [
+      [
+       "Single-pass RO + EDI",
+       "Feed is moderate in dissolved solids and alkalinity after softening. PW is the end product.",
+       "Fewest stages and lowest energy. Carbon dioxide and silica reach the EDI directly, so CO₂ control is part of the design."
+      ],
+      [
+       "Double-pass RO + EDI",
+       "Feed is high in dissolved solids, alkalinity or silica, or the PW also feeds a WFI still or Pure Steam generator with tight feed limits.",
+       "Most margin on conductivity, TOC and silica. More pumps and membranes; second-pass concentrate is recycled to the first pass."
+      ],
+      [
+       "Double-pass RO, no EDI",
+       "Feed is soft and low in carbon dioxide, and you prefer one membrane technology to maintain.",
+       "Least margin against 1.3 µS/cm. pH adjustment between passes is usually needed to hold the limit."
+      ],
+      [
+       "RO + mixed-bed ion exchange",
+       "Small or temporary demand, or a bridge while a generator is replaced.",
+       "Resin exhaustion, cylinder exchanges and microbial growth in resin beds become deviations to manage. We rarely propose it for new plants."
+      ]
+     ],
+     "nav": "Choosing a train"
     },
     {
      "type": "spec",
@@ -815,7 +914,8 @@
        "m": "Service access on [number] sides",
        "hl": false
       }
-     ]
+     ],
+     "nav": "Skid design"
     },
     {
      "type": "diagram",
@@ -830,101 +930,6 @@
       "To PW storage"
      ],
      "caption": "Pretreated feed arrives softened and free of chlorine and chloramine. A heat exchanger brings winter feed up to membrane design temperature. The first RO pass removes most dissolved ions, organics, particles and bacteria. Carbon dioxide passes RO as a gas, so we convert it with caustic dosing or strip it with a membrane degasser before it loads the EDI. A second RO pass, where your feed needs one, adds margin on conductivity and silica. EDI polishes the permeate in an electric field, with no acid or caustic regeneration. Water below the conductivity setpoint goes to storage; anything above it diverts until it recovers."
-    },
-    {
-     "type": "table",
-     "h": "Which purification train fits your feed water",
-     "cols": [
-      "Train",
-      "Fits when",
-      "Trade-off"
-     ],
-     "rows": [
-      [
-       "Single-pass RO + EDI",
-       "Feed is moderate in dissolved solids and alkalinity after softening. PW is the end product.",
-       "Fewest stages and lowest energy. Carbon dioxide and silica reach the EDI directly, so CO₂ control is part of the design."
-      ],
-      [
-       "Double-pass RO + EDI",
-       "Feed is high in dissolved solids, alkalinity or silica, or the PW also feeds a WFI still or Pure Steam generator with tight feed limits.",
-       "Most margin on conductivity, TOC and silica. More pumps and membranes; second-pass concentrate is recycled to the first pass."
-      ],
-      [
-       "Double-pass RO, no EDI",
-       "Feed is soft and low in carbon dioxide, and you prefer one membrane technology to maintain.",
-       "Least margin against 1.3 µS/cm. pH adjustment between passes is usually needed to hold the limit."
-      ],
-      [
-       "RO + mixed-bed ion exchange",
-       "Small or temporary demand, or a bridge while a generator is replaced.",
-       "Resin exhaustion, cylinder exchanges and microbial growth in resin beds become deviations to manage. We rarely propose it for new plants."
-      ]
-     ]
-    },
-    {
-     "type": "options",
-     "h": "Configurations and options",
-     "items": [
-      {
-       "t": "Hot water sanitizable softener",
-       "d": "Stainless steel softener on the skid, regenerated on measured hardness breakthrough rather than a fixed volume."
-      },
-      {
-       "t": "Membrane degasser",
-       "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high."
-      },
-      {
-       "t": "Duplex trains",
-       "d": "Two trains at 50 or 100 % of demand each, so one runs while the other is sanitized or serviced."
-      },
-      {
-       "t": "Variable speed high-pressure pumps",
-       "d": "Constant permeate flow as feed temperature and membrane fouling change through the year."
-      },
-      {
-       "t": "Recirculation at no demand",
-       "d": "The skid circulates when storage is full instead of stopping, so water never stands in the membranes."
-      },
-      {
-       "t": "Ultrafiltration or 254 nm UV",
-       "d": "Downstream of EDI where your microbial target or a WFI feed needs more margin."
-      },
-      {
-       "t": "Recovery enhancement",
-       "d": "A concentrate recovery RO stage to cut water sent to drain where sewer charges or supply limits matter."
-      },
-      {
-       "t": "Online TOC and bioburden monitoring",
-       "d": "TOC to USP <643> at the skid outlet, with trends on the operator panel. See monitoring and controls."
-      }
-     ]
-    },
-    {
-     "type": "steps",
-     "h": "From your feed water analysis to qualified water",
-     "items": [
-      {
-       "t": "Feed water review",
-       "d": "We read your feed water analyses, seasonal temperature range, peak and average demand and your user requirement specification (URS), and ask for what is missing."
-      },
-      {
-       "t": "Sizing and functional specification",
-       "d": "Process flow diagram and mass balance at your minimum and maximum feed temperature, then a functional specification you approve before detailed design."
-      },
-      {
-       "t": "Design review and fabrication",
-       "d": "Piping and instrumentation diagrams (P&IDs) and general arrangement drawings issued for your review. Product-contact welds logged, inspected and traceable to material heat numbers."
-      },
-      {
-       "t": "Wet FAT",
-       "d": "The skid runs in our test bay against a protocol you approve: sequences, alarms, interlocks, diverts, a full hot water sanitization cycle and outlet quality."
-      },
-      {
-       "t": "SAT, IQ and OQ",
-       "d": "After tie-in we repeat the critical tests on your feed water, then execute IQ and OQ and support the performance qualification (PQ) sampling that follows."
-      }
-     ]
     },
     {
      "type": "docs",
@@ -986,12 +991,123 @@
        "t": "Recommended spare parts list",
        "d": "Covering the first [months of operation]"
       }
+     ],
+     "nav": "Documents"
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Hot water sanitizable softener",
+       "d": "Stainless steel softener on the skid, regenerated on measured hardness breakthrough rather than a fixed volume."
+      },
+      {
+       "t": "Membrane degasser",
+       "d": "Strips carbon dioxide ahead of EDI without dosing caustic, where feed alkalinity is high."
+      },
+      {
+       "t": "Duplex trains",
+       "d": "Two trains at 50 or 100 % of demand each, so one runs while the other is sanitized or serviced."
+      },
+      {
+       "t": "Variable speed high-pressure pumps",
+       "d": "Constant permeate flow as feed temperature and membrane fouling change through the year."
+      },
+      {
+       "t": "Recirculation at no demand",
+       "d": "The skid circulates when storage is full instead of stopping, so water never stands in the membranes."
+      },
+      {
+       "t": "Ultrafiltration or 254 nm UV",
+       "d": "Downstream of EDI where your microbial target or a WFI feed needs more margin."
+      },
+      {
+       "t": "Recovery enhancement",
+       "d": "A concentrate recovery RO stage to cut water sent to drain where sewer charges or supply limits matter."
+      },
+      {
+       "t": "Online TOC and bioburden monitoring",
+       "d": "TOC to USP <643> at the skid outlet, with trends on the operator panel. See monitoring and controls."
+      }
+     ],
+     "nav": "Options"
+    },
+    {
+     "type": "spec",
+     "h": "Budget framework",
+     "caption": "PW generation skid · typical budget, Canadian dollars, before tax",
+     "cols": [
+      "Capacity",
+      "Typical budget",
+      "Basis"
+     ],
+     "note": "For planning a capital request. Your proposal is priced on your feed water, URS and site. Ranges include FAT, IQ/OQ protocols and the turnover package; installation and the distribution loop are quoted separately.",
+     "rows": [
+      {
+       "p": "[small reference capacity, L/h]",
+       "v": "[budget range, CAD]",
+       "m": "Single-pass RO + EDI, hot water sanitizable"
+      },
+      {
+       "p": "[mid reference capacity, L/h]",
+       "v": "[budget range, CAD]",
+       "m": "Single-pass RO + EDI, hot water sanitizable"
+      },
+      {
+       "p": "[large reference capacity, L/h]",
+       "v": "[budget range, CAD]",
+       "m": "Double-pass RO + EDI, duplex trains"
+      }
+     ],
+     "nav": "Budget"
+    },
+    {
+     "type": "steps",
+     "h": "From your feed water analysis to qualified water",
+     "items": [
+      {
+       "t": "Feed water review",
+       "d": "We read your feed water analyses, seasonal temperature range, peak and average demand and your user requirement specification (URS), and ask for what is missing."
+      },
+      {
+       "t": "Sizing and functional specification",
+       "d": "Process flow diagram and mass balance at your minimum and maximum feed temperature, then a functional specification you approve before detailed design."
+      },
+      {
+       "t": "Design review and fabrication",
+       "d": "Piping and instrumentation diagrams (P&IDs) and general arrangement drawings issued for your review. Product-contact welds logged, inspected and traceable to material heat numbers."
+      },
+      {
+       "t": "Wet FAT",
+       "d": "The skid runs in our test bay against a protocol you approve: sequences, alarms, interlocks, diverts, a full hot water sanitization cycle and outlet quality."
+      },
+      {
+       "t": "SAT, IQ and OQ",
+       "d": "After tie-in we repeat the critical tests on your feed water, then execute IQ and OQ and support the performance qualification (PQ) sampling that follows."
+      }
      ]
     },
     {
      "type": "faq",
      "h": "Questions validation and engineering teams ask",
      "items": [
+      {
+       "q": "You are a new supplier. How do we know the skid will pass IQ/OQ on schedule?",
+       "a": "You do not have to take it on trust. Your quality unit approves the FAT protocol before we start. You witness a wet FAT in which every sequence, alarm, interlock and divert runs on water, and you review the executed report and the turnover package before the skid ships. Deviations found at FAT are closed in our shop, not on your site. Ask for the sample turnover package to check the format before you order."
+      },
+      {
+       "q": "Can our engineering and QA teams witness the FAT?",
+       "a": "Yes: in person at [test bay location], remotely over [remote witness platform], or both. The FAT and SAT page lists what a remote witness can and cannot see."
+      },
+      {
+       "q": "Are the skids registered for pressure and the panels certified?",
+       "a": "Pressure-retaining parts are registered under CSA B51 with a Canadian registration number (CRN) for your province [confirm who registers and for which provinces]. Control panels are built and marked to [panel standard and certification mark held]."
+      },
+      {
+       "q": "How do you document material traceability and weld quality?",
+       "a": "Every product-contact component is traced to its EN 10204 3.1 certificate by heat number. Every weld has a line in the weld log, tied to the weld map, with [borescope inspection percentage] borescope inspection recorded. The Fabrication page shows each field and what it proves."
+      },
       {
        "q": "What does FAT prove if the skid runs on your test water, not our feed?",
        "a": "FAT proves function: every sequence, alarm, interlock and divert, a sanitization cycle reaching temperature at every probe, instrument loop checks and outlet quality on our test water. Performance on your feed water is proven at SAT and OQ. We write the protocols so your quality unit can leverage FAT results in qualification, in line with ASTM E2500 and ISPE commissioning and qualification guidance, where it accepts that approach."
@@ -1028,7 +1144,8 @@
        "q": "Who services the skid after handover?",
        "a": "Our service team, from [service locations]. Membranes, EDI modules and seal kits for your skid are stocked in [stocking location], and a service plan gives you a stated response time of [response time, hours]. Every visit ends with a signed report your quality unit can file."
       }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "docs",
@@ -1062,7 +1179,8 @@
        "t": "Target dates",
        "d": "Order, FAT and water on site"
       }
-     ]
+     ],
+     "nav": "What to send"
     },
     {
      "type": "related",
@@ -1078,9 +1196,9 @@
     }
    ],
    "cta": {
-    "h": "Send your feed water analysis. We size the skid for your coldest month.",
-    "body": "Include peak demand in L/h and the pharmacopoeia you release against. An engineer replies within [response time] with questions or a budget proposal.",
-    "button": "Request a sizing proposal",
+    "h": "Send your feed water analysis. Get a skid sized for your coldest month.",
+    "body": "Include peak demand in L/h and the pharmacopoeia you release against. A process engineer replies within [response time] with questions or a sizing and budget proposal.",
+    "button": "Request a sizing and budget proposal",
     "link": "contact-proposal"
    },
    "todo": [
@@ -1099,7 +1217,11 @@
     "Service locations, spare parts stocking location and plan response time (hours)",
     "Enquiry response time commitment",
     "Datasheet PDF; add a download link only once it exists",
-    "A real PW project with measured outlet conductivity, TOC and capacity before adding a case study block"
+    "A real PW project with measured outlet conductivity, TOC and capacity before adding a case study block",
+    "Budget ranges (CAD) for three reference PW skid capacities",
+    "Test bay location and remote witness platform (same as svc-fat-sat)",
+    "Who registers pressure parts (CRN) and for which provinces; panel standard and certification mark held",
+    "Borescope inspection percentage (same as svc-fabrication)"
    ]
   },
   {
@@ -1110,7 +1232,7 @@
    "meta": "Multi-effect and vapour compression stills for WFI below USP <85> 0.25 EU/mL and USP <645> 1.3 µS/cm, sized on your steam and power costs.",
    "path": "/systems/wfi-distillation/",
    "eyebrow": "WATER FOR INJECTION · DISTILLATION · USP <85> · PH. EUR. 0169",
-   "headline": "Water for Injection by distillation, with endotoxin margin you can show an inspector",
+   "headline": "WFI stills sized on your utility costs, with endotoxin margin you can show an inspector",
    "lead": "The multi-effect and vapour compression stills we supply make hot Water for Injection (WFI) below the USP <85> bacterial endotoxin limit of 0.25 EU/mL and the USP <645> conductivity limit of 1.3 µS/cm at 25 °C. We set the still's endotoxin reduction against your Purified Water (PW) feed, choose the still type on your steam, power and cooling water costs, and ship the factory acceptance test (FAT) report and installation and operational qualification (IQ/OQ) protocols with it.",
    "tags": [
     "USP <85>",
@@ -1120,10 +1242,10 @@
     "ASME BPE",
     "CSA B51"
    ],
-   "primary_cta": "Request a still sizing proposal",
+   "primary_cta": "Request a still sizing and utility cost proposal",
    "secondary_cta": {
-    "label": "Compare with membrane WFI",
-    "link": "sys-wfi-membrane"
+    "label": "Get a sample turnover package",
+    "link": "cmp-documentation"
    },
    "blocks": [
     {
@@ -1182,7 +1304,77 @@
        "m": "Conductivity measured at the still outlet at FAT and site acceptance testing (SAT). Endotoxin reduction as stated by the still manufacturer and shown by [challenge test data, if held].",
        "hl": false
       }
-     ]
+     ],
+     "nav": "Limits"
+    },
+    {
+     "type": "table",
+     "h": "Multi-effect or vapour compression: how each works and which fits",
+     "cols": [
+      "Factor",
+      "Multi-effect",
+      "Vapour compression"
+     ],
+     "rows": [
+      [
+       "Main energy input",
+       "Plant steam to the first column",
+       "Electric compressor; steam or electric heat at start-up"
+      ],
+      [
+       "Cooling water",
+       "Needed at the final condenser; falls as effects are added",
+       "Little or none"
+      ],
+      [
+       "Feed water",
+       "PW quality, because the first column runs hot enough to scale on silica and hardness",
+       "Often tolerates softened or reverse osmosis (RO) feed, because it boils at lower temperature; confirm against the manufacturer's feed limits"
+      ],
+      [
+       "Moving parts",
+       "Feed pump only",
+       "Compressor, with bearings and seals to maintain"
+      ],
+      [
+       "Capital and operating cost",
+       "More effects cost more to buy and less steam to run",
+       "The compressor adds purchase cost; running cost is low where power is cheaper than steam"
+      ],
+      [
+       "Fits when",
+       "Your site has reliable plant steam at enough pressure and spare boiler capacity",
+       "Steam is expensive or limited, cooling water is scarce or costly, or power is cheap, as it is in several provinces"
+      ]
+     ],
+     "nav": "Still type"
+    },
+    {
+     "type": "diagram",
+     "h": "How a multi-effect still works",
+     "stages": [
+      "PW feed",
+      "Preheaters",
+      "Column 1, plant steam",
+      "Columns 2 to n",
+      "Final condenser",
+      "Hot WFI to storage"
+     ],
+     "caption": "PW is preheated by the distillate and fed to the first column, where plant steam boils it. The pure vapour from each column, after droplet separation, heats the next column and condenses there as WFI. Vapour from the last column condenses in a cooling-water condenser. Concentrated feed carrying the rejected endotoxin and solids leaves to drain from the last column. Distillate below the conductivity setpoint and above the temperature setpoint goes to storage; anything else diverts to drain."
+    },
+    {
+     "type": "diagram",
+     "h": "How a vapour compression still works",
+     "stages": [
+      "Feed",
+      "Feed preheat by distillate",
+      "Evaporator",
+      "Droplet separator",
+      "Compressor",
+      "Condensing side",
+      "Hot WFI to storage"
+     ],
+     "caption": "Feed water boils in the evaporator. The vapour passes a droplet separator, then a compressor raises its pressure and temperature so it can condense on the other side of the same heat transfer surface, boiling more feed as it does. The condensed WFI and the blowdown preheat incoming feed. Plant steam or electric heaters bring the still to temperature at start-up; after that the compressor supplies most of the energy, and little or no cooling water is needed."
     },
     {
      "type": "spec",
@@ -1285,131 +1477,8 @@
        "m": "Column height sets the room: we check ceiling height and lifting access before layout",
        "hl": false
       }
-     ]
-    },
-    {
-     "type": "diagram",
-     "h": "How a multi-effect still works",
-     "stages": [
-      "PW feed",
-      "Preheaters",
-      "Column 1, plant steam",
-      "Columns 2 to n",
-      "Final condenser",
-      "Hot WFI to storage"
      ],
-     "caption": "PW is preheated by the distillate and fed to the first column, where plant steam boils it. The pure vapour from each column, after droplet separation, heats the next column and condenses there as WFI. Vapour from the last column condenses in a cooling-water condenser. Concentrated feed carrying the rejected endotoxin and solids leaves to drain from the last column. Distillate below the conductivity setpoint and above the temperature setpoint goes to storage; anything else diverts to drain."
-    },
-    {
-     "type": "diagram",
-     "h": "How a vapour compression still works",
-     "stages": [
-      "Feed",
-      "Feed preheat by distillate",
-      "Evaporator",
-      "Droplet separator",
-      "Compressor",
-      "Condensing side",
-      "Hot WFI to storage"
-     ],
-     "caption": "Feed water boils in the evaporator. The vapour passes a droplet separator, then a compressor raises its pressure and temperature so it can condense on the other side of the same heat transfer surface, boiling more feed as it does. The condensed WFI and the blowdown preheat incoming feed. Plant steam or electric heaters bring the still to temperature at start-up; after that the compressor supplies most of the energy, and little or no cooling water is needed."
-    },
-    {
-     "type": "table",
-     "h": "Multi-effect or vapour compression",
-     "cols": [
-      "Factor",
-      "Multi-effect",
-      "Vapour compression"
-     ],
-     "rows": [
-      [
-       "Main energy input",
-       "Plant steam to the first column",
-       "Electric compressor; steam or electric heat at start-up"
-      ],
-      [
-       "Cooling water",
-       "Needed at the final condenser; falls as effects are added",
-       "Little or none"
-      ],
-      [
-       "Feed water",
-       "PW quality, because the first column runs hot enough to scale on silica and hardness",
-       "Often tolerates softened or reverse osmosis (RO) feed, because it boils at lower temperature; confirm against the manufacturer's feed limits"
-      ],
-      [
-       "Moving parts",
-       "Feed pump only",
-       "Compressor, with bearings and seals to maintain"
-      ],
-      [
-       "Capital and operating cost",
-       "More effects cost more to buy and less steam to run",
-       "The compressor adds purchase cost; running cost is low where power is cheaper than steam"
-      ],
-      [
-       "Fits when",
-       "Your site has reliable plant steam at enough pressure and spare boiler capacity",
-       "Steam is expensive or limited, cooling water is scarce or costly, or power is cheap, as it is in several provinces"
-      ]
-     ]
-    },
-    {
-     "type": "options",
-     "h": "Configurations and options",
-     "items": [
-      {
-       "t": "Number of effects",
-       "d": "From [range of effects offered], chosen from your steam cost and capital budget in a side-by-side heat balance."
-      },
-      {
-       "t": "Combined WFI and pure steam",
-       "d": "The first column of a multi-effect still delivers pure steam while the still produces WFI, with the WFI capacity reduced while it does. See pure steam generators."
-      },
-      {
-       "t": "Electric or combined heating",
-       "d": "Electric heating for sites without plant steam, or a combination for limited boiler capacity."
-      },
-      {
-       "t": "Cooled distillate",
-       "d": "An outlet cooler for ambient storage, or point-of-use coolers on a hot loop so users draw WFI at process temperature."
-      },
-      {
-       "t": "Proportional output",
-       "d": "Production that follows storage tank level instead of start-stop cycling, which cuts start-up dumps and thermal cycling."
-      },
-      {
-       "t": "Online TOC and conductivity",
-       "d": "TOC to USP <643> and conductivity to USP <645> at the still outlet, trended on the operator panel, as Annex 1 paragraph 6.15 expects for WFI systems."
-      }
-     ]
-    },
-    {
-     "type": "steps",
-     "h": "From your demand profile to qualified WFI",
-     "items": [
-      {
-       "t": "Demand and utility review",
-       "d": "We read your WFI demand profile, PW quality, plant steam pressure, cooling water and power costs, and your user requirement specification (URS)."
-      },
-      {
-       "t": "Heat balance and still selection",
-       "d": "Multi-effect at several effect counts and vapour compression, compared on capital, steam, power and cooling water per cubic metre of WFI."
-      },
-      {
-       "t": "Functional specification and registration",
-       "d": "Feed limits, setpoints, divert logic and alarms in a functional specification you approve. Pressure parts submitted for CRN registration in your province."
-      },
-      {
-       "t": "FAT",
-       "d": "The still is tested against a protocol you approve: sequences, alarms, interlocks, start-up divert, instrument loops and [scope of hot run at FAT, depending on test bay steam supply]."
-      },
-      {
-       "t": "SAT, IQ and OQ",
-       "d": "After tie-in we run the still on your PW and utilities, execute IQ and OQ, and support the performance qualification (PQ) sampling that follows."
-      }
-     ]
+     "nav": "Still design"
     },
     {
      "type": "docs",
@@ -1479,12 +1548,79 @@
        "t": "Recommended spare parts list",
        "d": "Covering the first [months of operation]"
       }
-     ]
+     ],
+     "nav": "Documents"
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Number of effects",
+       "d": "From [range of effects offered], chosen from your steam cost and capital budget in a side-by-side heat balance."
+      },
+      {
+       "t": "Combined WFI and pure steam",
+       "d": "The first column of a multi-effect still delivers pure steam while the still produces WFI, with the WFI capacity reduced while it does. See pure steam generators."
+      },
+      {
+       "t": "Electric or combined heating",
+       "d": "Electric heating for sites without plant steam, or a combination for limited boiler capacity."
+      },
+      {
+       "t": "Cooled distillate",
+       "d": "An outlet cooler for ambient storage, or point-of-use coolers on a hot loop so users draw WFI at process temperature."
+      },
+      {
+       "t": "Proportional output",
+       "d": "Production that follows storage tank level instead of start-stop cycling, which cuts start-up dumps and thermal cycling."
+      },
+      {
+       "t": "Online TOC and conductivity",
+       "d": "TOC to USP <643> and conductivity to USP <645> at the still outlet, trended on the operator panel, as Annex 1 paragraph 6.15 expects for WFI systems."
+      }
+     ],
+     "nav": "Options"
+    },
+    {
+     "type": "steps",
+     "h": "From your demand profile to qualified WFI",
+     "items": [
+      {
+       "t": "Demand and utility review",
+       "d": "We read your WFI demand profile, PW quality, plant steam pressure, cooling water and power costs, and your user requirement specification (URS)."
+      },
+      {
+       "t": "Heat balance and still selection",
+       "d": "Multi-effect at several effect counts and vapour compression, compared on capital, steam, power and cooling water per cubic metre of WFI."
+      },
+      {
+       "t": "Functional specification and registration",
+       "d": "Feed limits, setpoints, divert logic and alarms in a functional specification you approve. Pressure parts submitted for CRN registration in your province."
+      },
+      {
+       "t": "FAT",
+       "d": "The still is tested against a protocol you approve: sequences, alarms, interlocks, start-up divert, instrument loops and [scope of hot run at FAT, depending on test bay steam supply]."
+      },
+      {
+       "t": "SAT, IQ and OQ",
+       "d": "After tie-in we run the still on your PW and utilities, execute IQ and OQ, and support the performance qualification (PQ) sampling that follows."
+      }
+     ],
+     "nav": "Process"
     },
     {
      "type": "faq",
      "h": "Questions validation and engineering teams ask",
      "items": [
+      {
+       "q": "You are a new supplier. How do we check still fabrication quality before we order?",
+       "a": "Ask for the sample turnover package. It shows the fabrication dossier format: weld map, weld log, borescope records, material certificates by heat number and the pressure vessel documents. Your QA team can audit [the shop that builds the still] and witness its hold points, and your quality unit approves the FAT protocol before we run it."
+      },
+      {
+       "q": "Which FAT and turnover documents keep our validation team on schedule?",
+       "a": "The documentation list on this page is what ships with the still. The FAT protocol reaches you [protocol lead time, weeks] before the test for review, the executed report and deviation log before the still ships, and the IQ/OQ protocols with the still, so your team is not writing them during start-up."
+      },
       {
        "q": "Why distil when Ph. Eur. now allows membrane WFI?",
        "a": "Since April 2017, Ph. Eur. 0169 accepts reverse osmosis coupled with other suitable techniques, and USP has long accepted any process equivalent or superior to distillation. Distillation still makes sense when you want hot WFI for a hot loop, when your contamination control strategy relies on the longest inspection record, or when steam or cheap power is on hand. Membrane WFI saves energy where ambient storage suits your process. We model both on your data when the choice is close."
@@ -1521,7 +1657,8 @@
        "q": "Who services the still after handover?",
        "a": "Our service team, from [service locations]. Gaskets, instruments and compressor parts for your still are stocked in [stocking location], and a service plan gives you a stated response time of [response time, hours]. Every visit ends with a signed report your quality unit can file."
       }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "docs",
@@ -1563,7 +1700,8 @@
        "t": "Target dates",
        "d": "Order, FAT and WFI on site"
       }
-     ]
+     ],
+     "nav": "What to send"
     },
     {
      "type": "related",
@@ -1579,9 +1717,9 @@
     }
    ],
    "cta": {
-    "h": "Send your demand profile and utility costs. We compare both still types for you.",
+    "h": "Send your demand profile and utility costs. We compare both still types side by side.",
     "body": "Include peak WFI demand in L/h, plant steam pressure and the pharmacopoeia you release against. An engineer replies within [response time] with questions or a budget proposal.",
-    "button": "Request a still sizing proposal",
+    "button": "Request a still sizing and utility cost proposal",
     "link": "contact-proposal"
    },
    "todo": [
@@ -1601,7 +1739,8 @@
     "Service locations, spare parts stocking location and plan response time (hours)",
     "Enquiry response time commitment",
     "Datasheet PDF; add a download link only once it exists",
-    "A real still project with measured WFI quality, capacity and utility use before adding a case study block"
+    "A real still project with measured WFI quality, capacity and utility use before adding a case study block",
+    "FAT protocol lead time before the test (weeks)"
    ]
   },
   {
@@ -1612,7 +1751,7 @@
    "meta": "Water for Injection by RO, EDI and ultrafiltration, as Ph. Eur. 0169 allows since 2017: < 0.25 EU/mL endotoxin, a written control strategy, ambient.",
    "path": "/systems/wfi-membrane/",
    "eyebrow": "WATER FOR INJECTION · MEMBRANE · PH. EUR. 0169 · USP · EU GMP ANNEX 1",
-   "headline": "Water for Injection by membrane, with the control strategy your inspector will ask for",
+   "headline": "Water for Injection by membrane, with the control strategy and validation package your inspector will ask for",
    "lead": "Our double-pass reverse osmosis (RO), electrodeionization (EDI) and ultrafiltration (UF) skids make Water for Injection (WFI) at ambient temperature, below the USP <85> bacterial endotoxin limit of 0.25 EU/mL and the USP <645> conductivity limit of 1.3 µS/cm at 25 °C, with no plant steam for generation. We design the biofilm and endotoxin controls the EMA expects from a non-distillation system into the skid, and tell you plainly when distillation is the better route.",
    "tags": [
     "Ph. Eur. 0169",
@@ -1624,8 +1763,8 @@
    ],
    "primary_cta": "Request a WFI route assessment",
    "secondary_cta": {
-    "label": "Compare with distilled WFI",
-    "link": "sys-wfi-distillation"
+    "label": "Get a sample turnover package",
+    "link": "cmp-documentation"
    },
    "blocks": [
     {
@@ -1686,7 +1825,8 @@
        "Your process uses ambient WFI, steam is costly or unavailable, and your quality unit is ready to run a membrane control strategy",
        "You want hot WFI for a hot loop, your corporate water standard or a market you supply still calls for distillation, or plant steam is on hand"
       ]
-     ]
+     ],
+     "nav": "Membrane or still"
     },
     {
      "type": "spec",
@@ -1735,7 +1875,47 @@
        "m": "Measured after the final UF at factory acceptance testing (FAT) and site acceptance testing (SAT). This is the margin your loop spends.",
        "hl": false
       }
-     ]
+     ],
+     "nav": "Limits"
+    },
+    {
+     "type": "spec",
+     "h": "Feed water the skid needs",
+     "caption": "Membrane WFI skid · feed requirements",
+     "cols": [
+      "Parameter",
+      "Requirement at the skid inlet",
+      "Why it matters"
+     ],
+     "note": "Membrane WFI fails early when its feed is not characterized. We confirm these against your water analysis before design, and size pretreatment to meet them in every season.",
+     "rows": [
+      {
+       "p": "Source",
+       "v": "Drinking water quality, through pretreatment",
+       "m": "USP and Ph. Eur. both require water of drinking water quality as the starting point"
+      },
+      {
+       "p": "Free chlorine and chloramine",
+       "v": "[maximum at the RO inlet, mg/L]",
+       "m": "Polyamide RO membranes do not tolerate oxidants"
+      },
+      {
+       "p": "Hardness",
+       "v": "[maximum, mg/L as CaCO₃]",
+       "m": "Scale on the RO and EDI"
+      },
+      {
+       "p": "Silt density index (SDI)",
+       "v": "[maximum]",
+       "m": "Particulate and colloidal fouling of the first pass"
+      },
+      {
+       "p": "Temperature",
+       "v": "[design range, °C]",
+       "m": "Sets membrane area and output in winter"
+      }
+     ],
+     "nav": "Feed water"
     },
     {
      "type": "spec",
@@ -1844,7 +2024,8 @@
        "m": "Service access on [number] sides",
        "hl": false
       }
-     ]
+     ],
+     "nav": "Skid design"
     },
     {
      "type": "diagram",
@@ -1904,67 +2085,8 @@
        "Space and ports for rapid microbiological methods, as the EMA questions and answers suggest considering",
        "Method validation to Ph. Eur. 5.1.6, run by your laboratory"
       ]
-     ]
-    },
-    {
-     "type": "options",
-     "h": "Configurations and options",
-     "items": [
-      {
-       "t": "Duplex final UF",
-       "d": "Two UF trains so one can be integrity tested, sanitized or replaced while the other supplies WFI."
-      },
-      {
-       "t": "Shared PW and WFI platform",
-       "d": "One RO and EDI train makes Purified Water (PW), with a WFI branch through the final UF. Both grades stay on one control strategy."
-      },
-      {
-       "t": "Ambient ozonated or hot storage",
-       "d": "Feed an ozonated ambient loop with UV destruction ahead of the points of use, or a hot loop above 70 °C if your process needs hot WFI. See storage and distribution."
-      },
-      {
-       "t": "Rapid microbiological monitoring",
-       "d": "Online bioburden or rapid endotoxin instruments alongside grab sampling, where your strategy needs faster detection. [Instruments offered]"
-      },
-      {
-       "t": "Conversion of an existing PW system",
-       "d": "Where your RO and EDI are in good condition and hot water sanitizable, we add a final UF, monitoring and controls, then requalify."
-      },
-      {
-       "t": "Electric pure steam alongside",
-       "d": "A plant with no boiler can pair membrane WFI with an electrically heated pure steam generator. See pure steam generators."
-      }
-     ]
-    },
-    {
-     "type": "steps",
-     "h": "From route decision to qualified WFI",
-     "items": [
-      {
-       "t": "Route assessment",
-       "d": "We read your WFI demand, feed water analyses, utility costs, storage temperature and the pharmacopoeias and markets you release into, then recommend membrane or distillation in writing, with the reasons."
-      },
-      {
-       "t": "Control strategy and functional specification",
-       "d": "Risks, design controls, sanitization, monitoring and maintenance written into a control strategy input and a functional specification you approve. These are the documents your notice to the authority draws on."
-      },
-      {
-       "t": "Design review and fabrication",
-       "d": "Piping and instrumentation diagrams (P&IDs) and general arrangement drawings issued for your review. Product-contact welds logged, inspected and traceable to material heat numbers."
-      },
-      {
-       "t": "Wet FAT",
-       "d": "The skid runs in our test bay against a protocol you approve: sequences, alarms, oxidant and divert interlocks, a full hot water sanitization cycle, UF integrity test and outlet quality."
-      },
-      {
-       "t": "SAT, IQ and OQ",
-       "d": "After tie-in we repeat the critical tests on your feed water, then execute installation and operational qualification (IQ and OQ)."
-      },
-      {
-       "t": "Performance qualification",
-       "d": "An initial phase with daily sampling at every point, then a year of data to capture seasonal feed changes, as the EMA questions and answers describe. We write the sampling plan with your validation team and support the sampling."
-      }
-     ]
+     ],
+     "nav": "Control strategy"
     },
     {
      "type": "docs",
@@ -2034,12 +2156,81 @@
        "t": "Recommended spare parts list",
        "d": "Covering the first [months of operation]"
       }
+     ],
+     "nav": "Documents"
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Duplex final UF",
+       "d": "Two UF trains so one can be integrity tested, sanitized or replaced while the other supplies WFI."
+      },
+      {
+       "t": "Shared PW and WFI platform",
+       "d": "One RO and EDI train makes Purified Water (PW), with a WFI branch through the final UF. Both grades stay on one control strategy."
+      },
+      {
+       "t": "Ambient ozonated or hot storage",
+       "d": "Feed an ozonated ambient loop with UV destruction ahead of the points of use, or a hot loop above 70 °C if your process needs hot WFI. See storage and distribution."
+      },
+      {
+       "t": "Rapid microbiological monitoring",
+       "d": "Online bioburden or rapid endotoxin instruments alongside grab sampling, where your strategy needs faster detection. [Instruments offered]"
+      },
+      {
+       "t": "Conversion of an existing PW system",
+       "d": "Where your RO and EDI are in good condition and hot water sanitizable, we add a final UF, monitoring and controls, then requalify."
+      },
+      {
+       "t": "Electric pure steam alongside",
+       "d": "A plant with no boiler can pair membrane WFI with an electrically heated pure steam generator. See pure steam generators."
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "h": "From route decision to qualified WFI",
+     "items": [
+      {
+       "t": "Route assessment",
+       "d": "We read your WFI demand, feed water analyses, utility costs, storage temperature and the pharmacopoeias and markets you release into, then recommend membrane or distillation in writing, with the reasons."
+      },
+      {
+       "t": "Control strategy and functional specification",
+       "d": "Risks, design controls, sanitization, monitoring and maintenance written into a control strategy input and a functional specification you approve. These are the documents your notice to the authority draws on."
+      },
+      {
+       "t": "Design review and fabrication",
+       "d": "Piping and instrumentation diagrams (P&IDs) and general arrangement drawings issued for your review. Product-contact welds logged, inspected and traceable to material heat numbers."
+      },
+      {
+       "t": "Wet FAT",
+       "d": "The skid runs in our test bay against a protocol you approve: sequences, alarms, oxidant and divert interlocks, a full hot water sanitization cycle, UF integrity test and outlet quality."
+      },
+      {
+       "t": "SAT, IQ and OQ",
+       "d": "After tie-in we repeat the critical tests on your feed water, then execute installation and operational qualification (IQ and OQ)."
+      },
+      {
+       "t": "Performance qualification",
+       "d": "An initial phase with daily sampling at every point, then a year of data to capture seasonal feed changes, as the EMA questions and answers describe. We write the sampling plan with your validation team and support the sampling."
+      }
      ]
     },
     {
      "type": "faq",
      "h": "Questions validation and quality teams ask",
      "items": [
+      {
+       "q": "Without published plant case studies, how do you show the skid controls microbes and endotoxin?",
+       "a": "With the control strategy on this page, risk by risk, and the evidence behind each line: online total organic carbon (TOC) and conductivity, [ultrafiltration integrity test method and frequency], sanitization proven by temperature at the coldest point, and endotoxin results from FAT and SAT sampling. You review the protocols before FAT, and the sample turnover package shows the format."
+      },
+      {
+       "q": "Will you support us during the regulatory notification and inspections?",
+       "a": "We supply the design basis, the control strategy and the qualification data your notification and inspection file need. [Confirm: whether Aquemi engineers attend inspections or answer inspector questions, and on what terms.]"
+      },
       {
        "q": "Will Health Canada and the FDA accept membrane WFI?",
        "a": "Both inspect against the pharmacopoeia you release to, and USP has allowed WFI by any process equivalent or superior to distillation for many years. Health Canada recognizes USP and Ph. Eur. as Schedule B publications, and its GUI-0119 adopts Annex 1, which names RO coupled with EDI, UF or nanofiltration. Acceptance rests on your data: a sound design, a documented control strategy and a PQ that covers seasonal feed changes."
@@ -2076,7 +2267,8 @@
        "q": "Who services the skid after handover?",
        "a": "Our service team, from [service locations]. RO and UF membranes, EDI modules and seal kits for your skid are stocked in [stocking location], and a service plan gives you a stated response time of [response time, hours]. Every visit, sanitization check and membrane change ends with a signed report your quality unit can file."
       }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "docs",
@@ -2114,7 +2306,8 @@
        "t": "Target dates",
        "d": "Order, FAT, WFI on site and the end of PQ"
       }
-     ]
+     ],
+     "nav": "What to send"
     },
     {
      "type": "related",
@@ -2152,7 +2345,10 @@
     "Service locations, spare parts stocking location and plan response time (hours)",
     "Enquiry response time commitment",
     "Datasheet PDF; add a download link only once it exists",
-    "A real membrane WFI project with measured WFI quality, capacity and energy use before adding a case study block"
+    "A real membrane WFI project with measured WFI quality, capacity and energy use before adding a case study block",
+    "Membrane WFI feed limits at the skid inlet: oxidant, hardness, SDI, temperature range",
+    "Ultrafiltration integrity test method and frequency",
+    "Whether Aquemi supports clients at inspections and on what terms"
    ]
   },
   {
@@ -2163,7 +2359,7 @@
    "meta": "Pure steam whose condensate meets WFI limits (EU GMP Annex 1, 6.17) and passes EN 285 gas, dryness and superheat tests at your sterilizers.",
    "path": "/systems/pure-steam/",
    "eyebrow": "PURE STEAM · EU GMP ANNEX 1 · EN 285 · USP",
-   "headline": "Pure steam that passes EN 285 at the sterilizer, not just at the generator",
+   "headline": "Pure steam that passes EN 285 dryness, superheat and non-condensable gas tests at the sterilizer",
    "lead": "Our pure steam generators supply autoclaves and steam-in-place (SIP) with steam whose condensate meets Water for Injection (WFI) limits, as EU GMP Annex 1 paragraph 6.17 requires, and whose non-condensable gases (no more than 3.5 mL per 100 mL of condensate), dryness and superheat meet EN 285 where the steam is used. We size the generator and the distribution header as one system, because most steam quality failures start in the pipework, and we hand over the test records your validation team needs.",
    "tags": [
     "EU GMP Annex 1",
@@ -2173,10 +2369,10 @@
     "ASME BPE",
     "CSA B51"
    ],
-   "primary_cta": "Request a pure steam sizing proposal",
+   "primary_cta": "Submit your steam demand for a sizing proposal",
    "secondary_cta": {
-    "label": "Compare with a combined WFI still",
-    "link": "sys-wfi-distillation"
+    "label": "Get a sample turnover package",
+    "link": "cmp-documentation"
    },
    "blocks": [
     {
@@ -2247,7 +2443,50 @@
        "m": "Measured at the generator sample cooler at factory acceptance testing (FAT) and at site acceptance testing (SAT); endotoxin reduction as [stated by the generator manufacturer and shown by challenge test data, if held]",
        "hl": false
       }
-     ]
+     ],
+     "nav": "Steam quality"
+    },
+    {
+     "type": "table",
+     "h": "Where steam quality fails, and what we design against",
+     "cols": [
+      "Test failed",
+      "Usual cause",
+      "What we design in"
+     ],
+     "rows": [
+      [
+       "Non-condensable gases above 3.5 mL per 100 mL",
+       "Feed not degassed; air drawn into the header as it cools overnight; no vents at high points and branch ends",
+       "Feed degassing at the generator; air vents at high points and branch ends; a header that stays under pressure or is purged before the first cycle"
+      ],
+      [
+       "Dryness value below 0.95 (or 0.90)",
+       "Condensate collecting in the header: missing traps, flat or sagging runs, damaged insulation, dead legs, steam velocity too high",
+       "Header sloped in the direction of flow, with drain traps at low points and along long runs, a separator at each sterilizer connection, and line sizes checked against peak flow"
+      ],
+      [
+       "Superheat above 25 K",
+       "Dry steam reduced in pressure in one large step, or through an undersized valve or orifice close to the sterilizer",
+       "Staged pressure reduction where needed, placed far enough upstream for the steam to return to saturation"
+      ],
+      [
+       "Condensate conductivity above limit",
+       "CO₂ or ammonia from the feed carried into the steam; droplet carryover",
+       "Feed degassing, feed limits on conductivity, separator sized for peak output"
+      ],
+      [
+       "Condensate endotoxin above limit",
+       "Droplet carryover at peak output or low pressure; poor feed quality",
+       "Separation sized at the highest steam velocity in the design, feed endotoxin target set from the guaranteed reduction"
+      ],
+      [
+       "Pressure dips during cycles",
+       "Generator undersized for simultaneous demand; slow control response",
+       "Capacity sized on the simultaneous peak; pressure control tuned and shown at FAT"
+      ]
+     ],
+     "nav": "Where it fails"
     },
     {
      "type": "spec",
@@ -2350,7 +2589,8 @@
        "m": "GAMP 5 lifecycle; 21 CFR Part 11",
        "hl": false
       }
-     ]
+     ],
+     "nav": "Generator design"
     },
     {
      "type": "diagram",
@@ -2364,103 +2604,6 @@
       "Autoclaves and SIP"
      ],
      "caption": "PW is preheated and vented, so dissolved air and CO₂ leave before evaporation. Plant steam or electric heaters boil it in the evaporator, on the far side of a double tube sheet. The vapour rises through a separation stage that returns droplets, and the endotoxin and solids they carry, to the evaporator. Pure steam leaves at a controlled pressure, through a sample cooler, to a drained and insulated header. Blowdown removes the concentrated feed."
-    },
-    {
-     "type": "table",
-     "h": "Where steam quality fails, and what we design against",
-     "cols": [
-      "Test failed",
-      "Usual cause",
-      "What we design in"
-     ],
-     "rows": [
-      [
-       "Non-condensable gases above 3.5 mL per 100 mL",
-       "Feed not degassed; air drawn into the header as it cools overnight; no vents at high points and branch ends",
-       "Feed degassing at the generator; air vents at high points and branch ends; a header that stays under pressure or is purged before the first cycle"
-      ],
-      [
-       "Dryness value below 0.95 (or 0.90)",
-       "Condensate collecting in the header: missing traps, flat or sagging runs, damaged insulation, dead legs, steam velocity too high",
-       "Header sloped in the direction of flow, with drain traps at low points and along long runs, a separator at each sterilizer connection, and line sizes checked against peak flow"
-      ],
-      [
-       "Superheat above 25 K",
-       "Dry steam reduced in pressure in one large step, or through an undersized valve or orifice close to the sterilizer",
-       "Staged pressure reduction where needed, placed far enough upstream for the steam to return to saturation"
-      ],
-      [
-       "Condensate conductivity above limit",
-       "CO₂ or ammonia from the feed carried into the steam; droplet carryover",
-       "Feed degassing, feed limits on conductivity, separator sized for peak output"
-      ],
-      [
-       "Condensate endotoxin above limit",
-       "Droplet carryover at peak output or low pressure; poor feed quality",
-       "Separation sized at the highest steam velocity in the design, feed endotoxin target set from the guaranteed reduction"
-      ],
-      [
-       "Pressure dips during cycles",
-       "Generator undersized for simultaneous demand; slow control response",
-       "Capacity sized on the simultaneous peak; pressure control tuned and shown at FAT"
-      ]
-     ]
-    },
-    {
-     "type": "options",
-     "h": "Configurations and options",
-     "items": [
-      {
-       "t": "Steam or electric heating",
-       "d": "Electric heating for sites without plant steam, or for a single sterilizer or SIP user. [Confirm electric units are offered and their range.]"
-      },
-      {
-       "t": "Combined with a WFI still",
-       "d": "The first column of a multi-effect still can deliver pure steam, with WFI output reduced while it does. It saves a separate generator where demand is small and intermittent. See WFI by distillation."
-      },
-      {
-       "t": "Distribution header design",
-       "d": "Line sizing, slope, traps, separators, vents and pressure reduction for every user, drawn on your isometrics and verified with the EN 285 tests at SAT."
-      },
-      {
-       "t": "Online condensate monitoring",
-       "d": "Conductivity and TOC on cooled condensate at the generator outlet, trended on the operator panel with alarm limits."
-      },
-      {
-       "t": "Redundant generation",
-       "d": "Two generators sized so either one covers critical demand, for sites where a generator outage stops sterile production."
-      },
-      {
-       "t": "Clean steam for humidification",
-       "d": "The same generator can supply cleanroom humidification, where your contamination control strategy calls for steam without boiler additives."
-      }
-     ]
-    },
-    {
-     "type": "steps",
-     "h": "From your steam demand to qualified pure steam",
-     "items": [
-      {
-       "t": "Demand and header review",
-       "d": "We read the steam demand of each sterilizer and SIP circuit, the cycle schedule, your PW quality, plant steam pressure and the existing or planned header layout."
-      },
-      {
-       "t": "Steam balance and functional specification",
-       "d": "Capacity on the simultaneous peak, outlet pressure, feed limits, blowdown, alarms and divert logic in a functional specification you approve. Pressure parts submitted for CRN registration in your province."
-      },
-      {
-       "t": "FAT",
-       "d": "The generator is tested against a protocol you approve: sequences, alarms, interlocks, pressure control and instrument loops, with [scope of steam generation and condensate testing at FAT, depending on test bay heating supply]."
-      },
-      {
-       "t": "SAT and EN 285 tests at each user",
-       "d": "After tie-in we run the generator on your PW and utilities, sample condensate for conductivity, TOC and endotoxin, and run the non-condensable gas, dryness and superheat tests at each sterilizer, worst case first."
-      },
-      {
-       "t": "IQ and OQ",
-       "d": "We execute installation and operational qualification (IQ/OQ) and support the performance qualification (PQ) sampling and the routine test schedule that follows."
-      }
-     ]
     },
     {
      "type": "docs",
@@ -2538,12 +2681,79 @@
        "t": "Recommended spare parts list",
        "d": "Covering the first [months of operation]"
       }
-     ]
+     ],
+     "nav": "Documents"
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Steam or electric heating",
+       "d": "Electric heating for sites without plant steam, or for a single sterilizer or SIP user. [Confirm electric units are offered and their range.]"
+      },
+      {
+       "t": "Combined with a WFI still",
+       "d": "The first column of a multi-effect still can deliver pure steam, with WFI output reduced while it does. It saves a separate generator where demand is small and intermittent. See WFI by distillation."
+      },
+      {
+       "t": "Distribution header design",
+       "d": "Line sizing, slope, traps, separators, vents and pressure reduction for every user, drawn on your isometrics and verified with the EN 285 tests at SAT."
+      },
+      {
+       "t": "Online condensate monitoring",
+       "d": "Conductivity and TOC on cooled condensate at the generator outlet, trended on the operator panel with alarm limits."
+      },
+      {
+       "t": "Redundant generation",
+       "d": "Two generators sized so either one covers critical demand, for sites where a generator outage stops sterile production."
+      },
+      {
+       "t": "Clean steam for humidification",
+       "d": "The same generator can supply cleanroom humidification, where your contamination control strategy calls for steam without boiler additives."
+      }
+     ],
+     "nav": "Options"
+    },
+    {
+     "type": "steps",
+     "h": "From your steam demand to qualified pure steam",
+     "items": [
+      {
+       "t": "Demand and header review",
+       "d": "We read the steam demand of each sterilizer and SIP circuit, the cycle schedule, your PW quality, plant steam pressure and the existing or planned header layout."
+      },
+      {
+       "t": "Steam balance and functional specification",
+       "d": "Capacity on the simultaneous peak, outlet pressure, feed limits, blowdown, alarms and divert logic in a functional specification you approve. Pressure parts submitted for CRN registration in your province."
+      },
+      {
+       "t": "FAT",
+       "d": "The generator is tested against a protocol you approve: sequences, alarms, interlocks, pressure control and instrument loops, with [scope of steam generation and condensate testing at FAT, depending on test bay heating supply]."
+      },
+      {
+       "t": "SAT and EN 285 tests at each user",
+       "d": "After tie-in we run the generator on your PW and utilities, sample condensate for conductivity, TOC and endotoxin, and run the non-condensable gas, dryness and superheat tests at each sterilizer, worst case first."
+      },
+      {
+       "t": "IQ and OQ",
+       "d": "We execute installation and operational qualification (IQ/OQ) and support the performance qualification (PQ) sampling and the routine test schedule that follows."
+      }
+     ],
+     "nav": "Process"
     },
     {
      "type": "faq",
      "h": "Questions validation and engineering teams ask",
      "items": [
+      {
+       "q": "You are a new firm. How do you back your FAT and SAT results without an installed base?",
+       "a": "With evidence you can check rather than references: a FAT protocol your quality unit approves, a witnessed test on steam, test instruments with calibration certificates in the report and the raw readings in the executed protocol. At SAT we test steam quality at the sterilizer, where EN 285 is judged, not only at the generator."
+      },
+      {
+       "q": "What happens if our steam fails EN 285 at the sterilizer during commissioning?",
+       "a": "We size the generator and the header together, so a header problem is ours to find. We check traps, separators, slope, insulation and pressure reduction, correct them and test again. [Confirm commissioning scope: header correction and retest included or quoted separately.]"
+      },
       {
        "q": "Our sterilizer fails the dryness test. Is it the generator?",
        "a": "Usually it is the header. Condensate that collects in flat or sagging runs, missing or failed traps, damaged insulation and dead legs all produce wet steam at the sterilizer from a generator that tests dry at its outlet. We survey the header and the generator together, test at the generator and at the sterilizer, and the difference tells you where the water comes from."
@@ -2584,7 +2794,8 @@
        "q": "Does an imported generator need a Canadian registration number?",
        "a": "Yes. Pressure vessels and fittings installed in Canada need a CRN under CSA B51 from the province of installation, and a generator designed for another market may need design changes before it is accepted. We include registration in the project schedule from the start. [Confirm Aquemi's CRN process and the provinces covered.]"
       }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "docs",
@@ -2626,7 +2837,8 @@
        "t": "Site and dates",
        "d": "Ceiling height, drain capacity, province of installation, and target dates for order, FAT and steam on site"
       }
-     ]
+     ],
+     "nav": "What to send"
     },
     {
      "type": "related",
@@ -2642,9 +2854,9 @@
     }
    ],
    "cta": {
-    "h": "Send your sterilizer and SIP demand. We size the generator and the header together.",
+    "h": "Sized for your peak SIP demand and your header, not only the generator outlet. Send your steam load.",
     "body": "Include steam demand per user in kg/h, the pressure each needs at its inlet and which cycles run at the same time. An engineer replies within [response time] with questions or a budget proposal.",
-    "button": "Request a pure steam sizing proposal",
+    "button": "Submit your steam demand for a sizing proposal",
     "link": "contact-proposal"
    },
    "todo": [
@@ -2664,7 +2876,8 @@
     "Spare parts list coverage period (months of operation)",
     "Enquiry response time commitment",
     "Datasheet PDF; add a download link only once it exists",
-    "A real pure steam project with measured steam quality results before adding a case study block"
+    "A real pure steam project with measured steam quality results before adding a case study block",
+    "Commissioning scope for header correction and EN 285 retest"
    ]
   },
   {
@@ -2675,7 +2888,7 @@
    "meta": "PW and WFI loops with turbulent flow per EU GMP Annex 1, dead legs to ASME BPE L/D ≤ 2, full drainage, and hot, ozone or heat sanitization.",
    "path": "/systems/storage-and-distribution/",
    "eyebrow": "STORAGE AND DISTRIBUTION · EU GMP ANNEX 1 · ASME BPE",
-   "headline": "Storage and distribution loops that deliver generator quality at the furthest point of use",
+   "headline": "Storage and distribution loops that keep turbulent flow and compendial quality to the furthest point of use",
    "lead": "We design and build tanks and loops for Purified Water (PW) and Water for Injection (WFI) that keep flow turbulent at peak draw, as EU GMP Annex 1 paragraph 6.9 requires, hold every branch to the ASME BPE dead leg target of a length-to-diameter ratio (L/D) of 2 or less and drain completely. Hot WFI loops circulate above 70 °C (Annex 1, 6.10); ambient loops are sanitized by heat or ozone on a schedule you can defend. Every slope, weld and branch is recorded on the as-built isometrics your validation team qualifies against.",
    "tags": [
     "EU GMP Annex 1",
@@ -2684,10 +2897,10 @@
     "ISPE Baseline Guide Vol. 4",
     "GAMP 5"
    ],
-   "primary_cta": "Request a loop design review",
+   "primary_cta": "Send your points-of-use list for a loop review",
    "secondary_cta": {
-    "label": "Loop already in service? Upgrades and requalification",
-    "link": "svc-upgrades"
+    "label": "Get a sample turnover package",
+    "link": "cmp-documentation"
    },
    "blocks": [
     {
@@ -2830,57 +3043,8 @@
        "m": "GAMP 5 lifecycle; 21 CFR Part 11",
        "hl": false
       }
-     ]
-    },
-    {
-     "type": "diagram",
-     "h": "How a loop works",
-     "stages": [
-      "From generation",
-      "Storage tank",
-      "Loop pump",
-      "Heat exchanger",
-      "Points of use",
-      "Return sensors",
-      "Spray ball"
      ],
-     "caption": "Water from the generator enters a tank fitted with a heated hydrophobic vent filter. A variable speed pump drives it through a heat exchanger that holds loop temperature, or through a 254 nm UV unit that destroys ozone on an ambient ozonated loop, then past every point of use on a continuously sloped main. Water not drawn passes conductivity, temperature, flow and TOC sensors on the return and re-enters the tank through a spray ball, so the head space stays wet and the flow never stops. Points of use that need cooler water are served by a cooled sub-loop or a point-of-use cooler that flushes to drain before use."
-    },
-    {
-     "type": "table",
-     "h": "Hot, ambient, ozonated or cold: choosing the microbial control",
-     "cols": [
-      "Loop type",
-      "How it controls microbes",
-      "Fits",
-      "Trade-offs"
-     ],
-     "rows": [
-      [
-       "Hot, above 70 °C",
-       "Continuous temperature; the FDA inspection guide calls hot 65–80 °C systems self-sanitizing",
-       "Hot WFI from a still; the example Annex 1, 6.10 gives",
-       "Simplest to defend. Insulated piping, energy to hold temperature, point-of-use coolers for ambient users, and the highest rouge risk."
-      ],
-      [
-       "Ambient, periodic heat",
-       "Hot water sanitization of tank and loop on a predetermined schedule, temperature proven at the coldest probe",
-       "PW, and WFI from membrane where your contamination control strategy (CCS) justifies ambient storage",
-       "Lower running energy. The loop is out of use during heat-up, hold and cool-down, and heat cycles still drive rouge."
-      ],
-      [
-       "Ambient, ozonated",
-       "Dissolved ozone held in the tank; UV destroys it before the loop supply; UV switched off on a schedule so ozone sanitizes the whole loop to the point-of-use valves",
-       "PW and membrane WFI where heat cycles are unwanted",
-       "No heat cycles, and the tank and piping need not be rated or insulated for heat. Ozone must be measured at three points, proven absent at the point of use before release, vented safely and matched to ozone-compatible seals."
-      ],
-      [
-       "Cold, chilled",
-       "Low temperature slows growth but does not kill; periodic heat or ozone sanitization does",
-       "Processes that need chilled water at the point of use",
-       "Chiller load, condensation on piping and longer sanitization cycles. Choose it for the process, not for microbial control."
-      ]
-     ]
+     "nav": "Design rules"
     },
     {
      "type": "table",
@@ -2934,75 +3098,59 @@
        "Controlled finish, passivation after fabrication, chloride-free test water, inspection points at the tank and pump",
        "Passivation and finish reports; inspection points you can trend"
       ]
-     ]
+     ],
+     "nav": "Where loops fail"
     },
     {
-     "type": "options",
-     "h": "Configurations and options",
-     "items": [
-      {
-       "t": "Cooled sub-loops",
-       "d": "A sub-loop from a hot main, cooled through a double tube sheet exchanger and returned, for groups of ambient users."
-      },
-      {
-       "t": "Point-of-use coolers",
-       "d": "Single-user coolers on a hot loop that flush to drain until temperature and time setpoints are met."
-      },
-      {
-       "t": "Ozone package for PW tanks",
-       "d": "Ozone generator, 254 nm UV destruct unit, three ozone sensors and a vent ozone destructor."
-      },
-      {
-       "t": "Prefabricated loop modules",
-       "d": "Pump, exchanger, UV and instruments on one skid, wet tested at FAT before shipment."
-      },
-      {
-       "t": "Provision for future points of use",
-       "d": "Zero-static valve bodies installed at planned locations, so a new outlet does not need a weld into a qualified loop."
-      },
-      {
-       "t": "Duty and standby pumps",
-       "d": "Two loop pumps with automatic changeover, so circulation continues through a pump failure or seal change."
-      },
-      {
-       "t": "Central sampling panel",
-       "d": "Sample valves for the loop return and tank grouped where your laboratory staff can reach them."
-      },
-      {
-       "t": "Online TOC and conductivity on the return",
-       "d": "Continuous data at the end of the loop, trended on the operator panel. See monitoring and controls."
-      }
-     ]
+     "type": "table",
+     "h": "Hot, ambient, ozonated or cold: choosing the microbial control",
+     "cols": [
+      "Loop type",
+      "How it controls microbes",
+      "Fits",
+      "Trade-offs"
+     ],
+     "rows": [
+      [
+       "Hot, above 70 °C",
+       "Continuous temperature; the FDA inspection guide calls hot 65–80 °C systems self-sanitizing",
+       "Hot WFI from a still; the example Annex 1, 6.10 gives",
+       "Simplest to defend. Insulated piping, energy to hold temperature, point-of-use coolers for ambient users, and the highest rouge risk."
+      ],
+      [
+       "Ambient, periodic heat",
+       "Hot water sanitization of tank and loop on a predetermined schedule, temperature proven at the coldest probe",
+       "PW, and WFI from membrane where your contamination control strategy (CCS) justifies ambient storage",
+       "Lower running energy. The loop is out of use during heat-up, hold and cool-down, and heat cycles still drive rouge."
+      ],
+      [
+       "Ambient, ozonated",
+       "Dissolved ozone held in the tank; UV destroys it before the loop supply; UV switched off on a schedule so ozone sanitizes the whole loop to the point-of-use valves",
+       "PW and membrane WFI where heat cycles are unwanted",
+       "No heat cycles, and the tank and piping need not be rated or insulated for heat. Ozone must be measured at three points, proven absent at the point of use before release, vented safely and matched to ozone-compatible seals."
+      ],
+      [
+       "Cold, chilled",
+       "Low temperature slows growth but does not kill; periodic heat or ozone sanitization does",
+       "Processes that need chilled water at the point of use",
+       "Chiller load, condensation on piping and longer sanitization cycles. Choose it for the process, not for microbial control."
+      ]
+     ],
+     "nav": "Microbial control"
     },
     {
-     "type": "steps",
-     "h": "From your points-of-use list to a qualified loop",
-     "items": [
-      {
-       "t": "Points-of-use survey",
-       "d": "For each outlet: location, flow in L/h, temperature, how often it is used, and which outlets open at the same time. We ask for what is missing, including outlets you plan to add."
-      },
-      {
-       "t": "Loop concept and hydraulic calculation",
-       "d": "Tank size against generation rate, microbial control method, pipe sizes and pump duty, with return velocity shown for every operating case in a functional specification you approve."
-      },
-      {
-       "t": "Isometrics and design review",
-       "d": "Routing, slopes, flow direction, diameters, branch lengths and sample points on isometric drawings, with a dead leg register you review before fabrication."
-      },
-      {
-       "t": "Fabrication and FAT",
-       "d": "Orbital welds numbered on the isometrics and traceable to material heat numbers. Loop modules wet tested at FAT against a protocol you approve."
-      },
-      {
-       "t": "Installation and SAT",
-       "d": "Pressure test, passivation, slope survey, spray coverage test, a flow test with worst-case outlets open and a full sanitization cycle with temperature mapping."
-      },
-      {
-       "t": "IQ, OQ and PQ support",
-       "d": "We execute installation and operational qualification (IQ/OQ), then support PQ sampling at every point of use. Annex 1, 6.8 expects seasonal variation to be taken into account, so plan PQ data over a year."
-      }
-     ]
+     "type": "diagram",
+     "h": "How a loop works",
+     "stages": [
+      "From generation",
+      "Storage tank",
+      "Loop pump",
+      "Heat exchanger",
+      "Points of use",
+      "Return sensors",
+      "Spray ball"
+     ],
+     "caption": "Water from the generator enters a tank fitted with a heated hydrophobic vent filter. A variable speed pump drives it through a heat exchanger that holds loop temperature, or through a 254 nm UV unit that destroys ozone on an ambient ozonated loop, then past every point of use on a continuously sloped main. Water not drawn passes conductivity, temperature, flow and TOC sensors on the return and re-enters the tank through a spray ball, so the head space stays wet and the flow never stops. Points of use that need cooler water are served by a cooled sub-loop or a point-of-use cooler that flushes to drain before use."
     },
     {
      "type": "docs",
@@ -3072,7 +3220,78 @@
        "t": "Operation and maintenance manual",
        "d": "Including sanitization, vent filter replacement and rouge inspection procedures"
       }
-     ]
+     ],
+     "nav": "Documents"
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Cooled sub-loops",
+       "d": "A sub-loop from a hot main, cooled through a double tube sheet exchanger and returned, for groups of ambient users."
+      },
+      {
+       "t": "Point-of-use coolers",
+       "d": "Single-user coolers on a hot loop that flush to drain until temperature and time setpoints are met."
+      },
+      {
+       "t": "Ozone package for PW tanks",
+       "d": "Ozone generator, 254 nm UV destruct unit, three ozone sensors and a vent ozone destructor."
+      },
+      {
+       "t": "Prefabricated loop modules",
+       "d": "Pump, exchanger, UV and instruments on one skid, wet tested at FAT before shipment."
+      },
+      {
+       "t": "Provision for future points of use",
+       "d": "Zero-static valve bodies installed at planned locations, so a new outlet does not need a weld into a qualified loop."
+      },
+      {
+       "t": "Duty and standby pumps",
+       "d": "Two loop pumps with automatic changeover, so circulation continues through a pump failure or seal change."
+      },
+      {
+       "t": "Central sampling panel",
+       "d": "Sample valves for the loop return and tank grouped where your laboratory staff can reach them."
+      },
+      {
+       "t": "Online TOC and conductivity on the return",
+       "d": "Continuous data at the end of the loop, trended on the operator panel. See monitoring and controls."
+      }
+     ],
+     "nav": "Options"
+    },
+    {
+     "type": "steps",
+     "h": "From your points-of-use list to a qualified loop",
+     "items": [
+      {
+       "t": "Points-of-use survey",
+       "d": "For each outlet: location, flow in L/h, temperature, how often it is used, and which outlets open at the same time. We ask for what is missing, including outlets you plan to add."
+      },
+      {
+       "t": "Loop concept and hydraulic calculation",
+       "d": "Tank size against generation rate, microbial control method, pipe sizes and pump duty, with return velocity shown for every operating case in a functional specification you approve."
+      },
+      {
+       "t": "Isometrics and design review",
+       "d": "Routing, slopes, flow direction, diameters, branch lengths and sample points on isometric drawings, with a dead leg register you review before fabrication."
+      },
+      {
+       "t": "Fabrication and FAT",
+       "d": "Orbital welds numbered on the isometrics and traceable to material heat numbers. Loop modules wet tested at FAT against a protocol you approve."
+      },
+      {
+       "t": "Installation and SAT",
+       "d": "Pressure test, passivation, slope survey, spray coverage test, a flow test with worst-case outlets open and a full sanitization cycle with temperature mapping."
+      },
+      {
+       "t": "IQ, OQ and PQ support",
+       "d": "We execute installation and operational qualification (IQ/OQ), then support PQ sampling at every point of use. Annex 1, 6.8 expects seasonal variation to be taken into account, so plan PQ data over a year."
+      }
+     ],
+     "nav": "Process"
     },
     {
      "type": "faq",
@@ -3115,10 +3334,15 @@
        "a": "Yes. We define the interface in the functional specification: water quality and flow at the tank inlet, the signals exchanged, and how a generator divert or a low tank level is handled, so the loop and the generator are qualified as one system."
       },
       {
+       "q": "How do you document slope, orbital welds and borescope inspection in the turnover package?",
+       "a": "Slope is recorded line by line on the as-built isometric drawings, [slope verification method]. Every weld has a line in the weld log tied to the weld map and the material heat numbers, with [borescope inspection percentage] borescope inspection recorded. The Fabrication page shows each field and what it proves."
+      },
+      {
        "q": "Who services the loop after handover?",
        "a": "Our service team, from [service locations]. A service plan covers vent filter replacement and integrity tests, instrument calibration, pump seals, UV lamps and rouge inspection, with a stated response time of [response time, hours]. Every visit ends with a signed report your quality unit can file."
       }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "docs",
@@ -3156,7 +3380,8 @@
        "t": "Your URS and target dates",
        "d": "If you have a URS; we can help write it if not. Dates for order, installation and water in use."
       }
-     ]
+     ],
+     "nav": "What to send"
     },
     {
      "type": "related",
@@ -3172,9 +3397,9 @@
     }
    ],
    "cta": {
-    "h": "Send your points of use and peak draw. We return a loop concept you can check.",
+    "h": "Designed around your peak simultaneous draw and sanitization schedule. Send your points of use.",
     "body": "Include each outlet's flow in L/h, which open together and the water grade. An engineer replies within [response time] with questions or a loop concept showing tank size, velocities and the sanitization method.",
-    "button": "Request a loop design review",
+    "button": "Send your points-of-use list for a loop review",
     "link": "contact-proposal"
    },
    "todo": [
@@ -3195,7 +3420,8 @@
     "Service locations and plan response time (hours)",
     "Enquiry response time commitment",
     "Datasheet PDF; add a download link only once it exists",
-    "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block"
+    "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block",
+    "Slope verification method on installed loops"
    ]
   },
   {
@@ -3217,8 +3443,8 @@
    ],
    "primary_cta": "Request a feedwater review",
    "secondary_cta": {
-    "label": "RO fouling or chlorine breakthrough now? Request service",
-    "link": "contact-service"
+    "label": "Get a sample turnover package",
+    "link": "cmp-documentation"
    },
    "blocks": [
     {
@@ -3349,22 +3575,8 @@
        "m": "Sized to RO feed flow, including concentrate and regeneration water",
        "hl": false
       }
-     ]
-    },
-    {
-     "type": "diagram",
-     "h": "How the train is built",
-     "stages": [
-      "Municipal or well water",
-      "Backflow preventer and break tank",
-      "Media filter",
-      "Duplex softener",
-      "Carbon or bisulfite",
-      "Antiscalant, where needed",
-      "5 µm cartridge filter",
-      "To RO"
      ],
-     "caption": "A backflow preventer and break tank isolate the plant from the supply and give the feed pump a steady suction. A multimedia filter removes particles; on well water an oxidation and catalytic media stage removes iron and manganese first. Duplex softeners exchange calcium and magnesium for sodium, with one vessel in service while the other regenerates. We usually place the softener ahead of the carbon, so the chlorine residual still limits bacterial growth in the resin. Activated carbon, or sodium bisulfite dosing, then removes chlorine and chloramine. Antiscalant is dosed where the membrane projection shows silica or other scaling at your recovery. A 5 µm cartridge filter protects the high-pressure pump and the membranes."
+     "nav": "RO inlet limits"
     },
     {
      "type": "table",
@@ -3406,7 +3618,8 @@
        "No chemicals and no carbon bed. Also reduces bacteria.",
        "High lamp power at high chlorine levels. Needs low turbidity feed, and a total chlorine analyser downstream because lamp output decays."
       ]
-     ]
+     ],
+     "nav": "Chlorine or chloramine"
     },
     {
      "type": "table",
@@ -3442,75 +3655,24 @@
        "You cannot trend what you do not sample.",
        "Sample valves before and after every bed and softener. A 254 nm UV unit at the carbon outlet where your counts need more margin."
       ]
-     ]
+     ],
+     "nav": "Carbon beds"
     },
     {
-     "type": "options",
-     "h": "Configurations and options",
-     "items": [
-      {
-       "t": "Duplex softeners",
-       "d": "Alternating vessels, regenerated on measured hardness breakthrough or volume, so regeneration never interrupts supply."
-      },
-      {
-       "t": "Hot water sanitizable carbon",
-       "d": "Stainless steel vessels sanitized with hot water or steam, with temperature verified in the bed."
-      },
-      {
-       "t": "Catalytic carbon or two beds in series",
-       "d": "For chloraminated supplies, sized on empty bed contact time at peak flow and winter temperature."
-      },
-      {
-       "t": "Bisulfite dosing with ORP control",
-       "d": "Where footprint or microbial risk rules out carbon, dosed on flow and trimmed on ORP."
-      },
-      {
-       "t": "Iron and manganese removal",
-       "d": "Oxidation and catalytic media filtration for well water, ahead of the softener."
-      },
-      {
-       "t": "Ultrafiltration",
-       "d": "Where surface water SDI or organics cannot be held by media filtration through spring runoff."
-      },
-      {
-       "t": "Antiscalant dosing",
-       "d": "Where softening alone does not control silica or other scaling ions at your recovery."
-      },
-      {
-       "t": "Feed heat exchanger",
-       "d": "Holds RO feed at design temperature through Canadian winters, with the heating medium you already have."
-      },
-      {
-       "t": "Online monitoring",
-       "d": "Total chlorine, ORP, hardness, pressure drop and temperature at the RO inlet, trended on the operator panel. See monitoring and controls."
-      }
-     ]
-    },
-    {
-     "type": "steps",
-     "h": "From your water data to a pretreatment design basis",
-     "items": [
-      {
-       "t": "Collect the water data",
-       "d": "Your utility's annual water quality reports, your own analyses and, for a well, results from more than one season. We list what is missing and how to sample it."
-      },
-      {
-       "t": "Feedwater review",
-       "d": "We check the data against drinking water standards and against the limits of the membranes and stills downstream, and tell you which months set the design."
-      },
-      {
-       "t": "Design basis",
-       "d": "Membrane projections at your coldest and warmest feed, the treatment train, vessel sizes and contact times, and the RO inlet targets, issued for your approval."
-      },
-      {
-       "t": "Fabrication and FAT",
-       "d": "Valve sequences, regeneration, backwash, sanitization and alarms tested at factory acceptance testing (FAT) against a protocol you approve."
-      },
-      {
-       "t": "SAT on your water",
-       "d": "At site acceptance testing (SAT) we measure SDI, total chlorine, hardness and temperature at the RO inlet on your feed, and hand over the sampling plan."
-      }
-     ]
+     "type": "diagram",
+     "h": "How the train is built",
+     "stages": [
+      "Municipal or well water",
+      "Backflow preventer and break tank",
+      "Media filter",
+      "Duplex softener",
+      "Carbon or bisulfite",
+      "Antiscalant, where needed",
+      "5 µm cartridge filter",
+      "To RO"
+     ],
+     "caption": "A backflow preventer and break tank isolate the plant from the supply and give the feed pump a steady suction. A multimedia filter removes particles; on well water an oxidation and catalytic media stage removes iron and manganese first. Duplex softeners exchange calcium and magnesium for sodium, with one vessel in service while the other regenerates. We usually place the softener ahead of the carbon, so the chlorine residual still limits bacterial growth in the resin. Activated carbon, or sodium bisulfite dosing, then removes chlorine and chloramine. Antiscalant is dosed where the membrane projection shows silica or other scaling at your recovery. A 5 µm cartridge filter protects the high-pressure pump and the membranes.",
+     "nav": "The train"
     },
     {
      "type": "docs",
@@ -3560,12 +3722,94 @@
        "t": "Operation and maintenance manual",
        "d": "Regeneration, sanitization, media change and cartridge change procedures"
       }
+     ],
+     "nav": "Documents"
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Duplex softeners",
+       "d": "Alternating vessels, regenerated on measured hardness breakthrough or volume, so regeneration never interrupts supply."
+      },
+      {
+       "t": "Hot water sanitizable carbon",
+       "d": "Stainless steel vessels sanitized with hot water or steam, with temperature verified in the bed."
+      },
+      {
+       "t": "Catalytic carbon or two beds in series",
+       "d": "For chloraminated supplies, sized on empty bed contact time at peak flow and winter temperature."
+      },
+      {
+       "t": "Bisulfite dosing with ORP control",
+       "d": "Where footprint or microbial risk rules out carbon, dosed on flow and trimmed on ORP."
+      },
+      {
+       "t": "Iron and manganese removal",
+       "d": "Oxidation and catalytic media filtration for well water, ahead of the softener."
+      },
+      {
+       "t": "Ultrafiltration",
+       "d": "Where surface water SDI or organics cannot be held by media filtration through spring runoff."
+      },
+      {
+       "t": "Antiscalant dosing",
+       "d": "Where softening alone does not control silica or other scaling ions at your recovery."
+      },
+      {
+       "t": "Feed heat exchanger",
+       "d": "Holds RO feed at design temperature through Canadian winters, with the heating medium you already have."
+      },
+      {
+       "t": "Online monitoring",
+       "d": "Total chlorine, ORP, hardness, pressure drop and temperature at the RO inlet, trended on the operator panel. See monitoring and controls."
+      }
+     ],
+     "nav": "Options"
+    },
+    {
+     "type": "steps",
+     "h": "From your water data to a pretreatment design basis",
+     "items": [
+      {
+       "t": "Collect the water data",
+       "d": "Your utility's annual water quality reports, your own analyses and, for a well, results from more than one season. We list what is missing and how to sample it."
+      },
+      {
+       "t": "Feedwater review",
+       "d": "We check the data against drinking water standards and against the limits of the membranes and stills downstream, and tell you which months set the design."
+      },
+      {
+       "t": "Design basis",
+       "d": "Membrane projections at your coldest and warmest feed, the treatment train, vessel sizes and contact times, and the RO inlet targets, issued for your approval."
+      },
+      {
+       "t": "Fabrication and FAT",
+       "d": "Valve sequences, regeneration, backwash, sanitization and alarms tested at factory acceptance testing (FAT) against a protocol you approve."
+      },
+      {
+       "t": "SAT on your water",
+       "d": "At site acceptance testing (SAT) we measure SDI, total chlorine, hardness and temperature at the RO inlet on your feed, and hand over the sampling plan."
+      }
      ]
     },
     {
      "type": "faq",
      "h": "Questions validation and engineering teams ask",
      "items": [
+      {
+       "q": "As a new supplier, how do you check your design protects our RO through seasonal swings before we order?",
+       "a": "We ask for [months of history] of utility and site data, find the worst month for each parameter (temperature, turbidity, organics, chlorine or chloramine dose, hardness) and size every bed and the softener against those months. You see the design basis, month by month, before you place the order."
+      },
+      {
+       "q": "Is pretreatment inside the turnover package and the validation boundary?",
+       "a": "It is in the turnover package either way: drawings, material certificates, media and resin certificates, calibration certificates, FAT records. Whether it sits inside the validated boundary is your call in the risk assessment; we design and document it so either answer holds up."
+      },
+      {
+       "q": "How do you control bioburden in carbon beds without chemical carryover to the RO?",
+       "a": "Carbon beds are sanitized with [hot water or steam, at the temperature and hold time on this page], backwashed on a schedule and replaced at [carbon replacement interval]. No biocide is dosed ahead of the RO, so there is nothing to carry over."
+      },
       {
        "q": "Is pretreatment part of the validated system?",
        "a": "It depends on where your risk assessment draws the boundary. Many sites qualify from the RO inlet onward and treat pretreatment as supporting equipment under good engineering practice. Its performance still decides whether the RO meets its limits, so we document it to the same standard, test it at FAT and SAT, and supply installation and operational qualification (IQ/OQ) protocols where you bring it into scope."
@@ -3602,7 +3846,8 @@
        "q": "Who changes media, resin and cartridges after handover?",
        "a": "Our service team, from [service locations], on a plan with a stated response time of [response time, hours]. Media, resin and cartridges for your train are stocked in [stocking location], and every visit ends with a signed report your quality unit can file."
       }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "docs",
@@ -3636,7 +3881,8 @@
        "t": "Site constraints",
        "d": "Room size, drain capacity for backwash and regeneration, brine discharge limits and available heating medium"
       }
-     ]
+     ],
+     "nav": "What to send"
     },
     {
      "type": "related",
@@ -3652,8 +3898,8 @@
     }
    ],
    "cta": {
-    "h": "Send your water analysis. We tell you which months set your design.",
-    "body": "Include your source, the disinfectant your utility uses and the RO flow you need. An engineer replies within [response time] with the gaps in your data and a feedwater review, [cost of the feedwater review].",
+    "h": "Send a year of water data. We tell you which months set your design.",
+    "body": "Include your utility's monthly reports, the disinfectant it uses and the RO flow you need. A process engineer replies within [response time] with a seasonal design basis and the margin it leaves your RO, [cost of the feedwater review].",
     "button": "Request a feedwater review",
     "link": "contact-proposal"
    },
@@ -3670,7 +3916,9 @@
     "Whether the feedwater review is free or charged; fill the CTA placeholder",
     "Enquiry response time commitment",
     "Service locations, media and resin stocking location and service plan response time (hours)",
-    "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block"
+    "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block",
+    "Months of water history requested for a feedwater review",
+    "Carbon replacement interval"
    ]
   },
   {
@@ -3694,8 +3942,8 @@
    ],
    "primary_cta": "Request a controls specification review",
    "secondary_cta": {
-    "label": "Existing system on obsolete controls or paper recorders? Upgrades",
-    "link": "svc-upgrades"
+    "label": "Get a sample turnover package",
+    "link": "cmp-documentation"
    },
    "blocks": [
     {
@@ -3778,7 +4026,8 @@
        "m": "21 CFR Part 11; EU GMP Annex 11, 7 and 9. Clocks synchronized to one site time source.",
        "hl": false
       }
-     ]
+     ],
+     "nav": "Measurements"
     },
     {
      "type": "table",
@@ -3877,7 +4126,46 @@
       "Plant network",
       "Remote support"
      ],
-     "caption": "Instruments report to a programmable logic controller (PLC) that runs sequences, interlocks, divert and sanitization, and keeps running if every layer above it fails. Operators work at a local human-machine interface (HMI) with individual logins. A supervisory control and data acquisition (SCADA) system and historian stores the quality data, the audit trail and the alarm history, with clocks synchronized to one time source. The historian connects to your plant network, building management system or plant historian through a firewall and demilitarized zone (DMZ) segmented in line with ISA/IEC 62443. Remote support, where you choose it, enters only through a connection you open, control and log."
+     "caption": "Instruments report to a programmable logic controller (PLC) that runs sequences, interlocks, divert and sanitization, and keeps running if every layer above it fails. Operators work at a local human-machine interface (HMI) with individual logins. A supervisory control and data acquisition (SCADA) system and historian stores the quality data, the audit trail and the alarm history, with clocks synchronized to one time source. The historian connects to your plant network, building management system or plant historian through a firewall and demilitarized zone (DMZ) segmented in line with ISA/IEC 62443. Remote support, where you choose it, enters only through a connection you open, control and log.",
+     "nav": "Architecture"
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "PLC and SCADA platform",
+       "d": "[PLC and SCADA platforms supported], to match your site standard, so your maintenance team supports one platform."
+      },
+      {
+       "t": "Integration",
+       "d": "OPC UA, Modbus TCP, EtherNet/IP, PROFINET or BACnet to your plant historian, distributed control system or building management system. The Part 11 boundary is agreed in the functional specification."
+      },
+      {
+       "t": "Historian",
+       "d": "A system historian supplied with the skid, or data sent to your validated plant historian with ours as a buffer."
+      },
+      {
+       "t": "Electronic batch and periodic reports",
+       "d": "Sanitization cycle records, daily quality summaries and audit trail review reports, electronically signed."
+      },
+      {
+       "t": "Control panels",
+       "d": "Built and labelled to UL 508A or CSA C22.2 No. 286 [panel certification held and where panels are built]."
+      },
+      {
+       "t": "Power and continuity",
+       "d": "Uninterruptible power for the PLC, HMI and historian, so records continue through a supply interruption."
+      },
+      {
+       "t": "Additional online analyzers",
+       "d": "Space, sample lines and signals for an online bioburden analyzer or additional TOC points where your contamination control strategy (CCS) calls for them."
+      },
+      {
+       "t": "Controls upgrades",
+       "d": "Replace an obsolete PLC, a paper chart recorder or a system without an audit trail on an existing water system, keeping the process unchanged. See upgrades and requalification."
+      }
+     ]
     },
     {
      "type": "table",
@@ -3943,7 +4231,8 @@
        "11, 13",
        "Audit trail review report and alarm summary built for your periodic review; incidents and failures logged"
       ]
-     ]
+     ],
+     "nav": "Data integrity"
     },
     {
      "type": "table",
@@ -4038,7 +4327,8 @@
      "body": [
       "GAMP 5 (second edition, 2022) and the FDA's computer software assurance (CSA) guidance for production and quality system software (finalized in 2025, revised in 2026, written for medical device manufacturers and widely applied in pharma), both ask for testing scaled to risk and for the use of supplier testing where it is well documented. We apply that thinking within your validation policy. Functions that touch product quality, such as divert, quality alarms, sanitization temperature and the audit trail, get scripted tests with recorded evidence. Low-risk display functions can be verified with unscripted or exploratory testing.",
       "Because we write and test the PLC code ourselves and run FAT on the full system, your team can leverage the FAT records in OQ instead of repeating them, if your procedures allow it and the protocols are approved before execution. Your validation team approves the strategy and owns the final computerized system validation."
-     ]
+     ],
+     "nav": "Testing"
     },
     {
      "type": "table",
@@ -4074,74 +4364,6 @@
        "Your IT and quality unit",
        "Plant-wide dashboards fed from our historian through standard protocols"
       ]
-     ]
-    },
-    {
-     "type": "options",
-     "h": "Configurations and options",
-     "items": [
-      {
-       "t": "PLC and SCADA platform",
-       "d": "[PLC and SCADA platforms supported], to match your site standard, so your maintenance team supports one platform."
-      },
-      {
-       "t": "Integration",
-       "d": "OPC UA, Modbus TCP, EtherNet/IP, PROFINET or BACnet to your plant historian, distributed control system or building management system. The Part 11 boundary is agreed in the functional specification."
-      },
-      {
-       "t": "Historian",
-       "d": "A system historian supplied with the skid, or data sent to your validated plant historian with ours as a buffer."
-      },
-      {
-       "t": "Electronic batch and periodic reports",
-       "d": "Sanitization cycle records, daily quality summaries and audit trail review reports, electronically signed."
-      },
-      {
-       "t": "Control panels",
-       "d": "Built and labelled to UL 508A or CSA C22.2 No. 286 [panel certification held and where panels are built]."
-      },
-      {
-       "t": "Power and continuity",
-       "d": "Uninterruptible power for the PLC, HMI and historian, so records continue through a supply interruption."
-      },
-      {
-       "t": "Additional online analyzers",
-       "d": "Space, sample lines and signals for an online bioburden analyzer or additional TOC points where your contamination control strategy (CCS) calls for them."
-      },
-      {
-       "t": "Controls upgrades",
-       "d": "Replace an obsolete PLC, a paper chart recorder or a system without an audit trail on an existing water system, keeping the process unchanged. See upgrades and requalification."
-      }
-     ]
-    },
-    {
-     "type": "steps",
-     "h": "From your requirements to validated controls",
-     "items": [
-      {
-       "t": "Requirements and risk assessment",
-       "d": "We review your URS, or help write it, and run a risk assessment with your team to decide which functions are quality-critical, where the Part 11 boundary sits and which remote mode, if any, you allow."
-      },
-      {
-       "t": "Functional specification",
-       "d": "Sequences, interlocks, divert logic, alarm philosophy with alert and action levels, user roles, audit trail content, reports and interfaces, in a document you approve before coding starts."
-      },
-      {
-       "t": "Design specifications",
-       "d": "Hardware design specification (HDS) for panels and networks; software design specification (SDS) for the PLC code and SCADA configuration."
-      },
-      {
-       "t": "Build, code review and FAT",
-       "d": "Code reviewed against the SDS, then full functional testing at FAT: every alarm, interlock, divert, role, audit trail entry, report and backup restore, against protocols you approve."
-      },
-      {
-       "t": "Site acceptance testing (SAT) and instrument qualification",
-       "d": "Loop checks, calibration, TOC system suitability and network tests on site, then communication tests with your plant systems."
-      },
-      {
-       "t": "IQ and OQ, handover",
-       "d": "Installation and operational qualification (IQ/OQ) including the computerized system validation tests, a baseline software backup and training by role. Then change control and periodic review under your procedures."
-      }
      ]
     },
     {
@@ -4204,12 +4426,60 @@
        "t": "Operation and maintenance manual",
        "d": "Including user administration, backup and audit trail review procedures"
       }
-     ]
+     ],
+     "nav": "Documents"
+    },
+    {
+     "type": "steps",
+     "h": "From your requirements to validated controls",
+     "items": [
+      {
+       "t": "Requirements and risk assessment",
+       "d": "We review your URS, or help write it, and run a risk assessment with your team to decide which functions are quality-critical, where the Part 11 boundary sits and which remote mode, if any, you allow."
+      },
+      {
+       "t": "Functional specification",
+       "d": "Sequences, interlocks, divert logic, alarm philosophy with alert and action levels, user roles, audit trail content, reports and interfaces, in a document you approve before coding starts."
+      },
+      {
+       "t": "Design specifications",
+       "d": "Hardware design specification (HDS) for panels and networks; software design specification (SDS) for the PLC code and SCADA configuration."
+      },
+      {
+       "t": "Build, code review and FAT",
+       "d": "Code reviewed against the SDS, then full functional testing at FAT: every alarm, interlock, divert, role, audit trail entry, report and backup restore, against protocols you approve."
+      },
+      {
+       "t": "Site acceptance testing (SAT) and instrument qualification",
+       "d": "Loop checks, calibration, TOC system suitability and network tests on site, then communication tests with your plant systems."
+      },
+      {
+       "t": "IQ and OQ, handover",
+       "d": "Installation and operational qualification (IQ/OQ) including the computerized system validation tests, a baseline software backup and training by role. Then change control and periodic review under your procedures."
+      }
+     ],
+     "nav": "Process"
     },
     {
      "type": "faq",
      "h": "Questions validation, QA and IT teams ask",
      "items": [
+      {
+       "q": "How can our QA team check your controls and validation approach without a prior plant audit record?",
+       "a": "Before you order, review the sample FAT protocol and turnover package, the functional and design specifications for your system and the traceability matrix from each requirement to its test. Your QA team can audit [our software development and change control procedure] and witness the controls FAT."
+      },
+      {
+       "q": "Do we get full access to the PLC and HMI code, or are we locked in?",
+       "a": "[Confirm: application code delivered unlocked with the turnover package, and who owns it.] The software version and checksum seen at FAT are recorded, so you can show an inspector that the code running is the code that was tested."
+      },
+      {
+       "q": "How do you test the controls at FAT before shipment?",
+       "a": "Every input and output is checked, every sequence, alarm and interlock is run on water, and audit trail entries, user access levels and recovery after a power failure are tested against the functional specification. The FAT and SAT page lists each test case and what IQ/OQ can leverage."
+      },
+      {
+       "q": "Can you fit new controls to a skid or loop from another manufacturer?",
+       "a": "Yes, as an upgrade: we survey the instruments and valves you keep, write the functional specification against your current qualified state and plan the cut-over and requalification. See Upgrades and retrofits."
+      },
       {
        "q": "Can we release water on online TOC and conductivity?",
        "a": "Yes, for those two attributes, when the instruments are qualified, the sample point represents the water used and your procedures say so. USP <643> and <645> both allow online measurement. Online conductivity covers stage 1 only; a stage 1 failure goes to stages 2 and 3 in the laboratory. Microbial counts and, for WFI, bacterial endotoxin stay laboratory tests unless you qualify an alternative method."
@@ -4250,7 +4520,8 @@
        "q": "Who calibrates the instruments and maintains the software after handover?",
        "a": "Our service team, from [service locations], with a stated response time of [response time, hours]. A service plan covers calibration, TOC system suitability, UV lamps, ozone sensors, backups and software patches under your change control. Every visit ends with a signed report."
       }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "docs",
@@ -4284,7 +4555,8 @@
        "t": "Your URS and validation procedures",
        "d": "If you have them; we can help write the URS if not"
       }
-     ]
+     ],
+     "nav": "What to send"
     },
     {
      "type": "related",
@@ -4300,7 +4572,7 @@
     }
    ],
    "cta": {
-    "h": "Send your data integrity requirements. We return a controls specification you can check.",
+    "h": "Send your controls URS and data integrity requirements. We return a specification you can check.",
     "body": "Include the water grades, your PLC and SCADA standard, record retention and remote access policy. An engineer replies within [response time] with questions or a draft functional specification outline.",
     "button": "Request a controls specification review",
     "link": "contact-proposal"
@@ -4318,7 +4590,9 @@
     "Enquiry response time commitment",
     "Whether Aquemi writes PLC code in-house (page states 'we write and test the PLC code ourselves'; confirm or reword)",
     "Datasheet PDF; add a download link only once it exists",
-    "A real controls project (new or upgrade) with scope and inspection outcome before adding a case study block"
+    "A real controls project (new or upgrade) with scope and inspection outcome before adding a case study block",
+    "Whether PLC/HMI application code is delivered unlocked and who owns it",
+    "Software development and change control procedure available for client audit"
    ]
   },
   {
@@ -4758,7 +5032,7 @@
    "meta": "Water system design your quality unit can qualify: URS review, basis of design, P&IDs, functional specification and ICH Q9 risk assessment, ready for DQ.",
    "path": "/services/process-design/",
    "eyebrow": "PROCESS DESIGN · URS TO DESIGN QUALIFICATION · EU GMP ANNEX 15 · ASTM E2500 · ICH Q9",
-   "headline": "A water system design your quality unit can trace, approve at DQ and qualify against",
+   "headline": "Water system design traced to your URS, approved at DQ and built to qualify",
    "lead": "EU GMP Annex 15 makes the user requirement specification (URS) the point of reference for the whole validation lifecycle, and asks that design qualification (DQ) verify every one of its requirements. We turn your URS into a basis of design, mass balance, piping and instrumentation diagrams (P&IDs) and a functional specification in which each requirement carries an ID, traced to the drawing that meets it and the test that proves it at factory acceptance testing (FAT), site acceptance testing (SAT) and installation and operational qualification (IQ/OQ). A risk assessment to ICH Q9(R1) marks the critical design elements, so qualification effort goes where water quality is decided.",
    "tags": [
     "EU GMP Annex 15",
@@ -4769,9 +5043,9 @@
     "ASME BPE",
     "GAMP 5"
    ],
-   "primary_cta": "Request a URS review",
+   "primary_cta": "Submit your URS for a gap review",
    "secondary_cta": {
-    "label": "See the full documentation package",
+    "label": "Get a sample design package",
     "link": "cmp-documentation"
    },
    "blocks": [
@@ -4782,7 +5056,8 @@
       "A loop sized on an average draw fails turbulent flow at peak. A branch drawn without its length fails the dead leg check at IQ. A divert setpoint that lives only in the programmer's head becomes an OQ deviation. Each of these is cheap to fix on a drawing and expensive to fix in a qualified room.",
       "So we write the design to be checked. Every URS line gets an ID and a written answer: met, met with a condition, or not met and why. The basis of design records each sizing decision with the data behind it. The functional specification states every setpoint, alarm and interlock as a testable sentence. The P&IDs carry the instrument tags and dead leg dimensions the IQ protocol will verify.",
       "That is what Annex 15 (3.2 and 3.3) asks of a URS and a DQ, and what ASTM E2500 and the ISPE Baseline Guide Vol. 5 for commissioning and qualification (C&Q) build on: specify from product and process requirements, find the critical aspects by risk assessment, and verify them once, at the point where the evidence is best."
-     ]
+     ],
+     "nav": "Why design"
     },
     {
      "type": "table",
@@ -4872,92 +5147,8 @@
        "Your quality unit, to approve DQ",
        "Design freeze, before fabrication starts"
       ]
-     ]
-    },
-    {
-     "type": "diagram",
-     "h": "How a requirement travels from your URS to qualification",
-     "stages": [
-      "URS",
-      "Basis of design",
-      "FS and P&IDs",
-      "Risk assessment",
-      "Design review / DQ",
-      "FAT and SAT",
-      "IQ and OQ"
      ],
-     "caption": "Each URS line carries its ID through every document. The basis of design says how it is met, the functional specification (FS) and P&IDs show where, the risk assessment says how critical it is, design review confirms it before steel is cut, and the commissioning and qualification plan names the test that proves it. Nothing reaches IQ or OQ without a requirement behind it, and no requirement is left without a test."
-    },
-    {
-     "type": "table",
-     "h": "One requirement, traced: what your validation team sees",
-     "cols": [
-      "Document",
-      "URS-012: Purified Water conductivity ≤ 1.3 µS/cm at 25 °C at every point of use (USP <645> stage 1)",
-      "URS-027: no dead leg longer than L/D 2 (ASME BPE)"
-     ],
-     "rows": [
-      [
-       "URS compliance matrix",
-       "Met. Generator outlet designed to [outlet conductivity guarantee, µS/cm @ 25 °C]; loop return monitored.",
-       "Met. Every branch, instrument tee and sample valve listed in the dead leg register."
-      ],
-      [
-       "Basis of design",
-       "Double-pass reverse osmosis (RO) and electrodeionization (EDI) chosen from your feed water analysis; carbon dioxide control stated",
-       "Zero-static point-of-use valves welded into the loop; instrument tees sized to hold L/D ≤ 2"
-      ],
-      [
-       "Functional specification",
-       "FS clause: water above the divert setpoint, set below your alert level, goes to drain until conductivity recovers",
-       "Not applicable"
-      ],
-      [
-       "P&IDs and isometrics",
-       "Conductivity elements at the generator outlet and the loop return, each tagged",
-       "Branch length and diameter dimensioned at every outlet"
-      ],
-      [
-       "Risk assessment",
-       "Critical aspect: conductivity. Critical design elements: conductivity sensors, divert valve and its logic.",
-       "Critical design element: branch geometry"
-      ],
-      [
-       "Verification",
-       "FAT: divert at setpoint with a simulated signal. SAT and OQ: conductivity on your feed water, on the raw, non-temperature-compensated reading.",
-       "IQ: as-built L/D measured against the register (Annex 15, 3.9 i)"
-      ]
-     ]
-    },
-    {
-     "type": "steps",
-     "h": "Design stages, and what you approve at each",
-     "items": [
-      {
-       "t": "URS review and feedwater review",
-       "d": "We read your URS line by line and return the compliance matrix with questions, gaps and suggested wording, plus the feed water data still missing. No URS yet: we help you write one from your process needs, and it stays your document."
-      },
-      {
-       "t": "Concept and route assessment",
-       "d": "Demand profile, route options, PFD, mass balance and a budget estimate at [concept estimate accuracy, ± %]. You approve the basis of design, so detailed work starts from agreed numbers."
-      },
-      {
-       "t": "Basic design",
-       "d": "P&IDs and GA drawings for review, a draft functional specification and the system risk assessment, run with your quality and engineering leads. Comments are logged and answered in writing on a comment resolution sheet."
-      },
-      {
-       "t": "Detailed design",
-       "d": "Approved P&IDs, isometrics, instrument and alarm lists, hardware and software design specifications, pressure vessel calculations and the commissioning and qualification plan."
-      },
-      {
-       "t": "Design review and design freeze",
-       "d": "A documented review against the URS and every critical design element, with the traceability matrix. Your quality unit approves DQ; changes after this point go through change control with their effect on qualification stated."
-      },
-      {
-       "t": "Into fabrication",
-       "d": "The approved design goes to our shop, and the FAT protocol is written from the same functional specification. See fabrication and FAT and SAT."
-      }
-     ]
+     "nav": "What you receive"
     },
     {
      "type": "table",
@@ -5050,6 +5241,63 @@
         "link": "compliance"
        }
       ]
+     ],
+     "nav": "Basis of design"
+    },
+    {
+     "type": "diagram",
+     "h": "How a requirement travels from your URS to qualification",
+     "stages": [
+      "URS",
+      "Basis of design",
+      "FS and P&IDs",
+      "Risk assessment",
+      "Design review / DQ",
+      "FAT and SAT",
+      "IQ and OQ"
+     ],
+     "caption": "Each URS line carries its ID through every document. The basis of design says how it is met, the functional specification (FS) and P&IDs show where, the risk assessment says how critical it is, design review confirms it before steel is cut, and the commissioning and qualification plan names the test that proves it. Nothing reaches IQ or OQ without a requirement behind it, and no requirement is left without a test.",
+     "nav": "Traceability"
+    },
+    {
+     "type": "table",
+     "h": "One requirement, traced: what your validation team sees",
+     "cols": [
+      "Document",
+      "URS-012: Purified Water conductivity ≤ 1.3 µS/cm at 25 °C at every point of use (USP <645> stage 1)",
+      "URS-027: no dead leg longer than L/D 2 (ASME BPE)"
+     ],
+     "rows": [
+      [
+       "URS compliance matrix",
+       "Met. Generator outlet designed to [outlet conductivity guarantee, µS/cm @ 25 °C]; loop return monitored.",
+       "Met. Every branch, instrument tee and sample valve listed in the dead leg register."
+      ],
+      [
+       "Basis of design",
+       "Double-pass reverse osmosis (RO) and electrodeionization (EDI) chosen from your feed water analysis; carbon dioxide control stated",
+       "Zero-static point-of-use valves welded into the loop; instrument tees sized to hold L/D ≤ 2"
+      ],
+      [
+       "Functional specification",
+       "FS clause: water above the divert setpoint, set below your alert level, goes to drain until conductivity recovers",
+       "Not applicable"
+      ],
+      [
+       "P&IDs and isometrics",
+       "Conductivity elements at the generator outlet and the loop return, each tagged",
+       "Branch length and diameter dimensioned at every outlet"
+      ],
+      [
+       "Risk assessment",
+       "Critical aspect: conductivity. Critical design elements: conductivity sensors, divert valve and its logic.",
+       "Critical design element: branch geometry"
+      ],
+      [
+       "Verification",
+       "FAT: divert at setpoint with a simulated signal. SAT and OQ: conductivity on your feed water, on the raw, non-temperature-compensated reading.",
+       "IQ: as-built L/D measured against the register (Annex 15, 3.9 i)"
+      ]
      ]
     },
     {
@@ -5087,6 +5335,37 @@
        "The same documents, with critical design elements marked and FAT tests written to be leveraged"
       ]
      ]
+    },
+    {
+     "type": "steps",
+     "h": "Design stages, and what you approve at each",
+     "items": [
+      {
+       "t": "URS review and feedwater review",
+       "d": "We read your URS line by line and return the compliance matrix with questions, gaps and suggested wording, plus the feed water data still missing. No URS yet: we help you write one from your process needs, and it stays your document."
+      },
+      {
+       "t": "Concept and route assessment",
+       "d": "Demand profile, route options, PFD, mass balance and a budget estimate at [concept estimate accuracy, ± %]. You approve the basis of design, so detailed work starts from agreed numbers."
+      },
+      {
+       "t": "Basic design",
+       "d": "P&IDs and GA drawings for review, a draft functional specification and the system risk assessment, run with your quality and engineering leads. Comments are logged and answered in writing on a comment resolution sheet."
+      },
+      {
+       "t": "Detailed design",
+       "d": "Approved P&IDs, isometrics, instrument and alarm lists, hardware and software design specifications, pressure vessel calculations and the commissioning and qualification plan."
+      },
+      {
+       "t": "Design review and design freeze",
+       "d": "A documented review against the URS and every critical design element, with the traceability matrix. Your quality unit approves DQ; changes after this point go through change control with their effect on qualification stated."
+      },
+      {
+       "t": "Into fabrication",
+       "d": "The approved design goes to our shop, and the FAT protocol is written from the same functional specification. See fabrication and FAT and SAT."
+      }
+     ],
+     "nav": "Stages"
     },
     {
      "type": "faq",
@@ -5135,8 +5414,17 @@
       {
        "q": "Is design charged separately, or credited against the equipment?",
        "a": "[State whether the URS review is free, and whether concept or design fees are credited against an equipment order.]"
+      },
+      {
+       "q": "How can our quality unit audit your quality system before awarding a design contract?",
+       "a": "[Confirm: the quality management system Aquemi runs and the standard it follows.] We welcome a supplier audit before you award the contract, on site at [engineering office location] or remote, and share our quality manual [openly or under NDA]."
+      },
+      {
+       "q": "What happens if a gap shows up at DQ or at IQ/OQ?",
+       "a": "If it traces to a requirement we accepted in the basis of design, we correct the design, revise the drawings and update the affected qualification documents [at our cost, or under the stated design warranty terms]. If it is a new requirement, it goes through change control with its cost and schedule effect stated before any work starts."
       }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "docs",
@@ -5178,7 +5466,8 @@
        "t": "Target dates",
        "d": "Design freeze, order, FAT and water on site"
       }
-     ]
+     ],
+     "nav": "What to send"
     },
     {
      "type": "related",
@@ -5194,9 +5483,9 @@
     }
    ],
    "cta": {
-    "h": "Send your URS, even in draft. We return it with every gap marked.",
+    "h": "Send your URS, draft or final. We return it with every gap marked, before you commit to fabrication.",
     "body": "Include your water grades, feed water analysis and peak demand in L/h. An engineer replies within [response time] with questions, and returns the URS compliance matrix within [URS review turnaround, business days].",
-    "button": "Request a URS review",
+    "button": "Submit your URS for a gap review",
     "link": "contact-proposal"
    },
    "todo": [
@@ -5211,7 +5500,10 @@
     "Confirm Aquemi runs FMEA-style system risk assessments with the customer, and writes the commissioning and qualification plan (page says so)",
     "Confirm Aquemi designs WFI by distillation and pure steam in-house or with a partner (same open fact as sys-wfi-distillation and sys-pure-steam)",
     "Confirm Aquemi does pressure vessel calculations in-house or through a partner, and the provinces where it registers CRNs",
-    "A real design project (scope, URS lines, design-to-DQ duration) before adding a case study block"
+    "A real design project (scope, URS lines, design-to-DQ duration) before adding a case study block",
+    "Quality management system and the standard it follows; whether the quality manual is shared openly or under NDA",
+    "Engineering office location for supplier audits",
+    "Who pays for design gaps found at DQ or IQ/OQ (design warranty terms)"
    ]
   },
   {
@@ -5236,7 +5528,7 @@
    ],
    "primary_cta": "Request a fabrication spec review",
    "secondary_cta": {
-    "label": "See what the turnover package contains",
+    "label": "Get a sample fabrication dossier",
     "link": "cmp-documentation"
    },
    "blocks": [
@@ -5356,7 +5648,45 @@
        "m": "CSA C22.2 No. 286 for Canada; UL 508A for US installations",
        "hl": false
       }
-     ]
+     ],
+     "nav": "Our standard"
+    },
+    {
+     "type": "table",
+     "h": "Choosing finish and passivation",
+     "cols": [
+      "Choice",
+      "What it is",
+      "Fits",
+      "What to weigh"
+     ],
+     "rows": [
+      [
+       "SF1, mechanically polished",
+       "Ra ≤ 0.51 µm, ASME BPE",
+       "Most Purified Water (PW) systems and ambient loops",
+       "Lower cost and shorter lead time. Passivation still required after fabrication."
+      ],
+      [
+       "SF4, electropolished",
+       "Ra ≤ 0.38 µm, electropolished, ASME BPE",
+       "Hot Water for Injection (WFI) loops, pure steam, tanks where rouge and cleanability matter most",
+       "A chromium-rich surface and smoother profile. Cost and lead time of electropolished components: [SF4 lead time effect, weeks]. Welds made after electropolishing are passivated, not electropolished."
+      ],
+      [
+       "Citric acid passivation",
+       "Chelating acid treatment, ASTM A967 citric methods",
+       "Most new systems and site passivation",
+       "Easier to handle and dispose of on site"
+      ],
+      [
+       "Nitric acid passivation",
+       "Oxidizing acid treatment, ASTM A967 nitric methods",
+       "Shop components where your standard calls for it",
+       "Stronger handling and waste controls"
+      ]
+     ],
+     "nav": "Finish and passivation"
     },
     {
      "type": "table",
@@ -5407,7 +5737,8 @@
        "What happened to a rejected weld and how the replacement was accepted",
        "Rejected weld closed, new weld number issued, link kept to the original"
       ]
-     ]
+     ],
+     "nav": "Weld log"
     },
     {
      "type": "table",
@@ -5479,111 +5810,8 @@
        "ASME BPE length-to-diameter ratio (L/D) ≤ 2",
        "Dead leg register"
       ]
-     ]
-    },
-    {
-     "type": "steps",
-     "h": "From tube to turnover, with the hold points you can witness",
-     "items": [
-      {
-       "t": "Fabrication and inspection plan",
-       "d": "Agreed with you before material is ordered: standards, inspection extent, records, and your hold and witness points. It comes from the approved design and isometrics. See process design."
-      },
-      {
-       "t": "Receive and verify material",
-       "d": "Each heat checked against its 3.1 certificate, then logged. Hold point: material review."
-      },
-      {
-       "t": "Qualify the set-up",
-       "d": "Coupons made, cut open and accepted before any production weld on that set-up. Witness point: coupons."
-      },
-      {
-       "t": "Weld and record",
-       "d": "Each production weld numbered on the isometric and logged as it is made: operator, schedule, heats, coupon."
-      },
-      {
-       "t": "Inspect",
-       "d": "Visual outside, borescope inside, results signed in the log. Rejected welds cut out and replaced under a new number. Witness point: borescope review."
-      },
-      {
-       "t": "Pressure test, slope survey and dead leg check",
-       "d": "Test to ASME B31.3 or Section VIII, every run measured, every branch listed. Hold point: pressure test."
-      },
-      {
-       "t": "Clean and passivate",
-       "d": "To ASTM A967 or ASTM A380, rinsed with Purified Water, verified and certified. Then factory acceptance testing (FAT) and, after installation, site acceptance testing (SAT). See FAT and SAT."
-      },
-      {
-       "t": "Turnover dossier",
-       "d": "Records indexed by weld number and system, issued for your review with the FAT report, and updated with field welds after installation."
-      }
-     ]
-    },
-    {
-     "type": "table",
-     "h": "Choosing finish and passivation",
-     "cols": [
-      "Choice",
-      "What it is",
-      "Fits",
-      "What to weigh"
      ],
-     "rows": [
-      [
-       "SF1, mechanically polished",
-       "Ra ≤ 0.51 µm, ASME BPE",
-       "Most Purified Water (PW) systems and ambient loops",
-       "Lower cost and shorter lead time. Passivation still required after fabrication."
-      ],
-      [
-       "SF4, electropolished",
-       "Ra ≤ 0.38 µm, electropolished, ASME BPE",
-       "Hot Water for Injection (WFI) loops, pure steam, tanks where rouge and cleanability matter most",
-       "A chromium-rich surface and smoother profile. Cost and lead time of electropolished components: [SF4 lead time effect, weeks]. Welds made after electropolishing are passivated, not electropolished."
-      ],
-      [
-       "Citric acid passivation",
-       "Chelating acid treatment, ASTM A967 citric methods",
-       "Most new systems and site passivation",
-       "Easier to handle and dispose of on site"
-      ],
-      [
-       "Nitric acid passivation",
-       "Oxidizing acid treatment, ASTM A967 nitric methods",
-       "Shop components where your standard calls for it",
-       "Stronger handling and waste controls"
-      ]
-     ]
-    },
-    {
-     "type": "options",
-     "h": "Configurations and options",
-     "items": [
-      {
-       "t": "Electropolished tubing, fittings and tanks",
-       "d": "SF4 for hot WFI, pure steam and tank interiors."
-      },
-      {
-       "t": "Borescope video archive",
-       "d": "A video file for each inspected weld, named by weld number and delivered with the dossier."
-      },
-      {
-       "t": "Third-party weld inspection",
-       "d": "Your inspector or an independent one, witnessing coupons, borescope review and pressure tests."
-      },
-      {
-       "t": "Field welding",
-       "d": "Orbital welding on your site for loop installation and tie-ins, with the same coupons, logs and borescope records as the shop."
-      },
-      {
-       "t": "Surface analysis",
-       "d": "Chromium-to-iron ratio by Auger or X-ray photoelectron spectroscopy (XPS) on representative surfaces, where your URS asks for it [offered through: laboratory name]."
-      },
-      {
-       "t": "Pressure vessel registration",
-       "d": "CRN registration with the provincial authority in the province of installation, for vessels and, where required, piping."
-      }
-     ]
+     "nav": "Inspection"
     },
     {
      "type": "docs",
@@ -5645,7 +5873,77 @@
        "t": "Control panel documents",
        "d": "Certification label record, electrical drawings, bill of materials"
       }
+     ],
+     "nav": "Dossier"
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Electropolished tubing, fittings and tanks",
+       "d": "SF4 for hot WFI, pure steam and tank interiors."
+      },
+      {
+       "t": "Borescope video archive",
+       "d": "A video file for each inspected weld, named by weld number and delivered with the dossier."
+      },
+      {
+       "t": "Third-party weld inspection",
+       "d": "Your inspector or an independent one, witnessing coupons, borescope review and pressure tests."
+      },
+      {
+       "t": "Field welding",
+       "d": "Orbital welding on your site for loop installation and tie-ins, with the same coupons, logs and borescope records as the shop."
+      },
+      {
+       "t": "Surface analysis",
+       "d": "Chromium-to-iron ratio by Auger or X-ray photoelectron spectroscopy (XPS) on representative surfaces, where your URS asks for it [offered through: laboratory name]."
+      },
+      {
+       "t": "Pressure vessel registration",
+       "d": "CRN registration with the provincial authority in the province of installation, for vessels and, where required, piping."
+      }
      ]
+    },
+    {
+     "type": "steps",
+     "h": "From tube to turnover, with the hold points you can witness",
+     "items": [
+      {
+       "t": "Fabrication and inspection plan",
+       "d": "Agreed with you before material is ordered: standards, inspection extent, records, and your hold and witness points. It comes from the approved design and isometrics. See process design."
+      },
+      {
+       "t": "Receive and verify material",
+       "d": "Each heat checked against its 3.1 certificate, then logged. Hold point: material review."
+      },
+      {
+       "t": "Qualify the set-up",
+       "d": "Coupons made, cut open and accepted before any production weld on that set-up. Witness point: coupons."
+      },
+      {
+       "t": "Weld and record",
+       "d": "Each production weld numbered on the isometric and logged as it is made: operator, schedule, heats, coupon."
+      },
+      {
+       "t": "Inspect",
+       "d": "Visual outside, borescope inside, results signed in the log. Rejected welds cut out and replaced under a new number. Witness point: borescope review."
+      },
+      {
+       "t": "Pressure test, slope survey and dead leg check",
+       "d": "Test to ASME B31.3 or Section VIII, every run measured, every branch listed. Hold point: pressure test."
+      },
+      {
+       "t": "Clean and passivate",
+       "d": "To ASTM A967 or ASTM A380, rinsed with Purified Water, verified and certified. Then factory acceptance testing (FAT) and, after installation, site acceptance testing (SAT). See FAT and SAT."
+      },
+      {
+       "t": "Turnover dossier",
+       "d": "Records indexed by weld number and system, issued for your review with the FAT report, and updated with field welds after installation."
+      }
+     ],
+     "nav": "Hold points"
     },
     {
      "type": "faq",
@@ -5654,6 +5952,14 @@
       {
        "q": "Our specification says 3.1B certificates. Do you supply those?",
        "a": "3.1B is the designation from the 1991 edition of EN 10204. The 2004 edition replaced it with 3.1: an inspection certificate with specific test results for the delivered product, validated by an inspection representative independent of manufacturing. We supply 3.1 and can note the equivalence in the material log so your reviewer does not raise it. A type 2.2 test report is not accepted for product-contact parts."
+      },
+      {
+       "q": "Which welder qualifications and sample weld procedures do you keep for product-contact tubing?",
+       "a": "Welding procedures are qualified to ASME Section IX with a welding procedure specification (WPS) and procedure qualification record (PQR). Orbital operators hold a welding operator performance qualification (WOPQ); [number of qualified orbital operators]. A sample weld is made at the start of each shift and on any change of operator, power supply, weld head or tube size, examined and kept with the weld log."
+      },
+      {
+       "q": "How do you tie 3.1 certificates to the physical tube and fittings?",
+       "a": "Heat numbers are checked against the certificate when material arrives and [how components are marked or tagged]. Each weld log line names the heat numbers on both sides of the weld, so any weld traces back to its certificates."
       },
       {
        "q": "Do you borescope every weld?",
@@ -5691,7 +5997,8 @@
        "q": "Can we see a real weld log before we order?",
        "a": "[Confirm a redacted weld log and dossier index from a recent project can be shared under a non-disclosure agreement.] Ask with your fabrication spec review."
       }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "docs",
@@ -5725,7 +6032,8 @@
        "t": "Document templates",
        "d": "Your weld log, turnover index or dossier format, if you want them used"
       }
-     ]
+     ],
+     "nav": "What to send"
     },
     {
      "type": "related",
@@ -5741,7 +6049,7 @@
     }
    ],
    "cta": {
-    "h": "Send your fabrication spec. We return it marked against ASME BPE.",
+    "h": "Send your fabrication spec. We return it marked against ASME BPE, with a sample weld log.",
     "body": "Include your URS or piping standard, the finish and borescope extent you need and the province of installation. An engineer replies within [response time] with the clauses we meet, the ones we would change and a draft fabrication and inspection plan.",
     "button": "Request a fabrication spec review",
     "link": "contact-proposal"
@@ -5763,7 +6071,8 @@
     "Confirm a redacted weld log and dossier index can be shared under NDA",
     "Enquiry response time commitment (same placeholder as the system pages)",
     "Confirm the fabrication and inspection plan with hold and witness points is how Aquemi works (page says so)",
-    "A real fabrication project (weld count, borescope coverage, rejection rate) before adding a case study block"
+    "A real fabrication project (weld count, borescope coverage, rejection rate) before adding a case study block",
+    "How components are marked or tagged for heat traceability"
    ]
   },
   {
@@ -5774,7 +6083,7 @@
    "meta": "Wet FAT on every skid to a protocol you approve, then SAT on your feed water. Written to EU GMP Annex 15, 3.6 so IQ and OQ can leverage results.",
    "path": "/services/fat-sat/",
    "eyebrow": "FAT · SAT · EU GMP ANNEX 15 · GAMP 5 · ISPE BASELINE GUIDE VOL. 5",
-   "headline": "Watch your water system run wet, against your protocol, before it ships",
+   "headline": "Watch your water system run wet, against a protocol you approved, before it leaves our test bay",
    "lead": "Every skid runs in our test bay through a wet factory acceptance test (FAT): water in every line, every sequence, alarm, interlock and divert, a full sanitization cycle and outlet quality, to a protocol your quality unit approves before we start. EU GMP Annex 15, 3.6 lets tests performed at FAT stand without repeating them at installation and operational qualification (IQ/OQ) where transport and installation cannot affect them, so we write each test case to be leveraged. After tie-in, a site acceptance test (SAT) proves what only your site can: your feed water, your utilities and your network.",
    "tags": [
     "EU GMP Annex 15",
@@ -5786,8 +6095,8 @@
    ],
    "primary_cta": "Request a sample FAT protocol",
    "secondary_cta": {
-    "label": "How FAT feeds IQ and OQ",
-    "link": "svc-cq"
+    "label": "Arrange a test bay visit or audit",
+    "link": "contact-proposal"
    },
    "blocks": [
     {
@@ -5798,6 +6107,48 @@
       "So we test wet, not dry. A dry FAT checks wiring and screens. A wet FAT fills the skid, runs the pumps against real pressure, heats to sanitization temperature and measures conductivity and total organic carbon (TOC) at the outlet. Leaks, sequence errors and instrument faults show up while the skid is still on our floor.",
       "And we write it once. Annex 15, 3.5 expects equipment to be confirmed against the user requirement specification (URS) and functional specification at the vendor, where applicable. GAMP 5 (second edition) and ASTM E2500 both tell the regulated company to leverage well-documented supplier testing rather than repeat it, and the ISPE Baseline Guide Vol. 5 and the ISPE Good Practice Guide on commissioning and qualification (C&Q) of water and steam systems (third edition, 2025) apply that lifecycle to water systems. A FAT executed to an approved protocol, with calibrated instruments, raw data and signatures, is evidence your validation team can reference. A FAT run from a checklist is a demonstration, and gets repeated."
      ]
+    },
+    {
+     "type": "table",
+     "h": "Test bay capability",
+     "cols": [
+      "Item",
+      "What we have",
+      "What it means for your FAT"
+     ],
+     "rows": [
+      [
+       "Feed water",
+       "[test-bay feed water source, treatment and typical conductivity, µS/cm]",
+       "Outlet quality at FAT is on this water, not yours"
+      ],
+      [
+       "Power",
+       "[available supply: voltage, phases, frequency, kW]",
+       "Skids for another supply voltage are tested [state how: transformer or site test]"
+      ],
+      [
+       "Heating medium",
+       "[plant steam, kg/h at bar(g), or electric heating, kW]",
+       "Sets whether a hot water sanitization, a still or a pure steam generator runs at full rate"
+      ],
+      [
+       "Space and lifting",
+       "[largest skid footprint and height, m; crane capacity, t]",
+       "Larger systems are tested as modules and joined at SAT"
+      ],
+      [
+       "Drainage",
+       "[drain capacity, L/min]",
+       "Sets how long a full flow test can run"
+      ],
+      [
+       "Network",
+       "[remote witness connection and platform]",
+       "Agreed with your IT before the date"
+      ]
+     ],
+     "nav": "Test bay"
     },
     {
      "type": "table",
@@ -5881,13 +6232,8 @@
        "Power quality, heating and cooling media, drains, compressed air, loop hydraulics at peak draw",
        "SAT and OQ only"
       ]
-     ]
-    },
-    {
-     "type": "band",
-     "tone": "limestone",
-     "h": "What a FAT cannot prove, however well it is run",
-     "body": "Our test bay runs on [test-bay feed water source and treatment], so outlet conductivity and TOC at FAT prove the skid can perform, not that it meets USP <645> and USP <643> on your water. Your feed water, its winter temperature, your utilities, your network and the field-built loop exist only on site. Microbial control is proven by sampling over time: performance qualification (PQ) is commonly run in three phases across about a year. FAT moves the functional risk off your site. It does not replace SAT, IQ, OQ or PQ."
+     ],
+     "nav": "FAT, SAT and leverage"
     },
     {
      "type": "steps",
@@ -5922,6 +6268,107 @@
        "d": "After mechanical completion, the SAT protocol re-runs the critical tests with your utilities and feed water, closes the punch list and hands the system to IQ and OQ. See commissioning and qualification."
       }
      ]
+    },
+    {
+     "type": "band",
+     "tone": "limestone",
+     "h": "What a FAT cannot prove, however well it is run",
+     "body": "Our test bay runs on [test-bay feed water source and treatment], so outlet conductivity and TOC at FAT prove the skid can perform, not that it meets USP <645> and USP <643> on your water. Your feed water, its winter temperature, your utilities, your network and the field-built loop exist only on site. Microbial control is proven by sampling over time: performance qualification (PQ) is commonly run in three phases across about a year. FAT moves the functional risk off your site. It does not replace SAT, IQ, OQ or PQ."
+    },
+    {
+     "type": "steps",
+     "h": "SAT: what changes once the skid is on your floor",
+     "items": [
+      {
+       "t": "Arrival and installation checks",
+       "d": "Transport damage, shock indicators, tag and label check against the FAT record, anchoring and access."
+      },
+      {
+       "t": "Field piping and tie-in",
+       "d": "Field welds logged, inspected and added to the weld maps; loop slopes and branch lengths measured; pressure test and passivation of the field-built loop."
+      },
+      {
+       "t": "Utilities and interfaces",
+       "d": "Power, heating and cooling media, drains and compressed air at design conditions; I/O to your SCADA or BMS; time server and user accounts."
+      },
+      {
+       "t": "Critical tests repeated",
+       "d": "Critical alarms and interlocks, sequences, divert and a full sanitization on the installed loop with your coldest point of use measured."
+      },
+      {
+       "t": "Your water",
+       "d": "Outlet conductivity and TOC on your feed water, read raw, without temperature compensation, as USP <645> stage 1 requires. The margin shown at FAT, now on your supply."
+      },
+      {
+       "t": "Close-out and handover",
+       "d": "Punch list closed, SAT report signed, training delivered and the system handed to IQ and OQ."
+      }
+     ],
+     "nav": "SAT"
+    },
+    {
+     "type": "table",
+     "h": "Deviation or punch list item: how we tell them apart",
+     "cols": [
+      "Aspect",
+      "Deviation",
+      "Punch list item"
+     ],
+     "rows": [
+      [
+       "What it is",
+       "A result that fails a pre-defined acceptance criterion, or a change to the approved protocol during execution",
+       "A defect or open action that does not change any test result: a missing label, a drawing to update, insulation to finish"
+      ],
+      [
+       "Basis",
+       "Annex 15, 2.7 and 2.8: recorded, scientifically justified or fully investigated, and discussed in the report",
+       "Your commissioning procedure and ours"
+      ],
+      [
+       "What happens",
+       "Root cause, correction, retest of the affected test cases and any test the fix could touch",
+       "Fixed and signed off, before shipment or at SAT as agreed"
+      ],
+      [
+       "Can the skid ship with it open?",
+       "Only on a documented assessment, approved by your quality unit, that it has no significant impact on installation or SAT",
+       "Yes, where you agree and the item is assigned to SAT"
+      ],
+      [
+       "Who closes it",
+       "Both parties sign the closure",
+       "Aquemi closes; you verify at SAT"
+      ]
+     ],
+     "nav": "Deviations"
+    },
+    {
+     "type": "options",
+     "h": "How you witness",
+     "items": [
+      {
+       "t": "In person",
+       "d": "Your validation, engineering or quality leads on our test floor for the full protocol. You can touch, listen and look inside panels, which no camera replaces. [Test bay location, city and province.]"
+      },
+      {
+       "t": "Remote",
+       "d": "A fixed camera on the operator screen, a handheld camera on the skid, the executed protocol shared live and raw data sent the same day. Signatures by [electronic signature method] or scanned wet ink, as your procedures allow."
+      },
+      {
+       "t": "Hybrid",
+       "d": "One person on site for the physical checks and sanitization cycle; the rest of your team joins remotely for sequences, alarms and data integrity tests."
+      },
+      {
+       "t": "Your consultant or third party",
+       "d": "A delegate you name witnesses and signs on your behalf, under your approved protocol."
+      },
+      {
+       "t": "Review only",
+       "d": "We execute without a witness and send the executed protocol with raw data and video for your review. Your quality unit decides whether that is enough to leverage."
+      }
+     ],
+     "nav": "Witnessing"
     },
     {
      "type": "docs",
@@ -5975,140 +6422,51 @@
        "t": "Attachments",
        "d": "Raw data, alarm and event logs, trend exports, calibration certificates, redlined drawings"
       }
-     ]
-    },
-    {
-     "type": "table",
-     "h": "Deviation or punch list item: how we tell them apart",
-     "cols": [
-      "Aspect",
-      "Deviation",
-      "Punch list item"
      ],
-     "rows": [
-      [
-       "What it is",
-       "A result that fails a pre-defined acceptance criterion, or a change to the approved protocol during execution",
-       "A defect or open action that does not change any test result: a missing label, a drawing to update, insulation to finish"
-      ],
-      [
-       "Basis",
-       "Annex 15, 2.7 and 2.8: recorded, scientifically justified or fully investigated, and discussed in the report",
-       "Your commissioning procedure and ours"
-      ],
-      [
-       "What happens",
-       "Root cause, correction, retest of the affected test cases and any test the fix could touch",
-       "Fixed and signed off, before shipment or at SAT as agreed"
-      ],
-      [
-       "Can the skid ship with it open?",
-       "Only on a documented assessment, approved by your quality unit, that it has no significant impact on installation or SAT",
-       "Yes, where you agree and the item is assigned to SAT"
-      ],
-      [
-       "Who closes it",
-       "Both parties sign the closure",
-       "Aquemi closes; you verify at SAT"
-      ]
-     ]
+     "nav": "Sample protocol"
     },
     {
-     "type": "options",
-     "h": "How you witness",
+     "type": "docs",
+     "h": "What you receive",
      "items": [
       {
-       "t": "In person",
-       "d": "Your validation, engineering or quality leads on our test floor for the full protocol. You can touch, listen and look inside panels, which no camera replaces. [Test bay location, city and province.]"
+       "t": "FAT protocol",
+       "d": "Approved by your quality unit before execution"
       },
       {
-       "t": "Remote",
-       "d": "A fixed camera on the operator screen, a handheld camera on the skid, the executed protocol shared live and raw data sent the same day. Signatures by [electronic signature method] or scanned wet ink, as your procedures allow."
+       "t": "Executed FAT protocol",
+       "d": "Results as found, raw data, signatures for both parties"
       },
       {
-       "t": "Hybrid",
-       "d": "One person on site for the physical checks and sanitization cycle; the rest of your team joins remotely for sequences, alarms and data integrity tests."
+       "t": "Test instrument calibration certificates",
+       "d": "Traceable to national standards"
       },
       {
-       "t": "Your consultant or third party",
-       "d": "A delegate you name witnesses and signs on your behalf, under your approved protocol."
+       "t": "Deviation log",
+       "d": "Investigation, correction, retest and closure for each deviation"
       },
       {
-       "t": "Review only",
-       "d": "We execute without a witness and send the executed protocol with raw data and video for your review. Your quality unit decides whether that is enough to leverage."
+       "t": "Punch list",
+       "d": "With owner and stage for every item"
+      },
+      {
+       "t": "FAT summary report",
+       "d": "Release-to-ship decision and open items"
+      },
+      {
+       "t": "Software version record",
+       "d": "Version and checksum tested, and the change log after FAT"
+      },
+      {
+       "t": "SAT protocol and executed SAT report",
+       "d": "On your feed water and utilities"
+      },
+      {
+       "t": "Traceability matrix",
+       "d": "URS and functional specification to FAT and SAT test case, with leveraged tests flagged for IQ/OQ"
       }
-     ]
-    },
-    {
-     "type": "table",
-     "h": "Test bay capability",
-     "cols": [
-      "Item",
-      "What we have",
-      "What it means for your FAT"
      ],
-     "rows": [
-      [
-       "Feed water",
-       "[test-bay feed water source, treatment and typical conductivity, µS/cm]",
-       "Outlet quality at FAT is on this water, not yours"
-      ],
-      [
-       "Power",
-       "[available supply: voltage, phases, frequency, kW]",
-       "Skids for another supply voltage are tested [state how: transformer or site test]"
-      ],
-      [
-       "Heating medium",
-       "[plant steam, kg/h at bar(g), or electric heating, kW]",
-       "Sets whether a hot water sanitization, a still or a pure steam generator runs at full rate"
-      ],
-      [
-       "Space and lifting",
-       "[largest skid footprint and height, m; crane capacity, t]",
-       "Larger systems are tested as modules and joined at SAT"
-      ],
-      [
-       "Drainage",
-       "[drain capacity, L/min]",
-       "Sets how long a full flow test can run"
-      ],
-      [
-       "Network",
-       "[remote witness connection and platform]",
-       "Agreed with your IT before the date"
-      ]
-     ]
-    },
-    {
-     "type": "steps",
-     "h": "SAT: what changes once the skid is on your floor",
-     "items": [
-      {
-       "t": "Arrival and installation checks",
-       "d": "Transport damage, shock indicators, tag and label check against the FAT record, anchoring and access."
-      },
-      {
-       "t": "Field piping and tie-in",
-       "d": "Field welds logged, inspected and added to the weld maps; loop slopes and branch lengths measured; pressure test and passivation of the field-built loop."
-      },
-      {
-       "t": "Utilities and interfaces",
-       "d": "Power, heating and cooling media, drains and compressed air at design conditions; I/O to your SCADA or BMS; time server and user accounts."
-      },
-      {
-       "t": "Critical tests repeated",
-       "d": "Critical alarms and interlocks, sequences, divert and a full sanitization on the installed loop with your coldest point of use measured."
-      },
-      {
-       "t": "Your water",
-       "d": "Outlet conductivity and TOC on your feed water, read raw, without temperature compensation, as USP <645> stage 1 requires. The margin shown at FAT, now on your supply."
-      },
-      {
-       "t": "Close-out and handover",
-       "d": "Punch list closed, SAT report signed, training delivered and the system handed to IQ and OQ."
-      }
-     ]
+     "nav": "What you receive"
     },
     {
      "type": "faq",
@@ -6153,50 +6511,21 @@
       {
        "q": "Is witness travel part of the price?",
        "a": "[State whether FAT witness time, travel and remote witness are included in the equipment price or quoted separately.]"
+      },
+      {
+       "q": "Are your test bay instruments calibrated, and do the certificates ship with the FAT report?",
+       "a": "Yes. Test instruments are calibrated [calibration interval and traceability] and their certificates are bound into the executed FAT report, so your reviewer can check every reading against a calibrated instrument."
+      },
+      {
+       "q": "How do you protect the skid between a wet FAT and your site?",
+       "a": "After FAT the skid is drained and [drying, capping and any gas blanket used]. Openings are sealed and tagged, its condition is recorded at dispatch and checked again on arrival, before SAT starts."
+      },
+      {
+       "q": "Will the engineers who run our FAT be on site for SAT?",
+       "a": "[Confirm staffing: the same lead engineer from FAT through SAT and IQ/OQ support, and who covers the controls.]"
       }
-     ]
-    },
-    {
-     "type": "docs",
-     "h": "What you receive",
-     "items": [
-      {
-       "t": "FAT protocol",
-       "d": "Approved by your quality unit before execution"
-      },
-      {
-       "t": "Executed FAT protocol",
-       "d": "Results as found, raw data, signatures for both parties"
-      },
-      {
-       "t": "Test instrument calibration certificates",
-       "d": "Traceable to national standards"
-      },
-      {
-       "t": "Deviation log",
-       "d": "Investigation, correction, retest and closure for each deviation"
-      },
-      {
-       "t": "Punch list",
-       "d": "With owner and stage for every item"
-      },
-      {
-       "t": "FAT summary report",
-       "d": "Release-to-ship decision and open items"
-      },
-      {
-       "t": "Software version record",
-       "d": "Version and checksum tested, and the change log after FAT"
-      },
-      {
-       "t": "SAT protocol and executed SAT report",
-       "d": "On your feed water and utilities"
-      },
-      {
-       "t": "Traceability matrix",
-       "d": "URS and functional specification to FAT and SAT test case, with leveraged tests flagged for IQ/OQ"
-      }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "docs",
@@ -6250,10 +6579,10 @@
     }
    ],
    "cta": {
-    "h": "Ask for the sample FAT protocol. Mark it up against your URS.",
+    "h": "Review the sample FAT protocol. Check our acceptance criteria against your URS before you commit a shutdown window.",
     "body": "We send the table of contents and a set of redacted test cases [confirm what can be shared, openly or under NDA]. Send your URS or functional specification with the request and an engineer replies within [response time] with a draft FAT test list, the tests we would mark for IQ/OQ leverage and the witness dates your schedule allows.",
     "button": "Request a sample FAT protocol",
-    "link": "contact-proposal"
+    "link": "cmp-documentation"
    },
    "todo": [
     "Confirm a redacted FAT protocol (table of contents and sample test cases) can be shared, openly or under NDA; this is the page's primary CTA",
@@ -6272,8 +6601,12 @@
     "Confirm every skid gets a wet FAT including the loop pump/heat exchanger skid (page says so; systems page says every system)",
     "Confirm software checksum recorded at FAT (page says version and checksum)",
     "Enquiry response time commitment (same placeholder as the system pages)",
-    "FAT first-pass rate or a real FAT (deviations found, closure time) before adding a case study block"
-   ]
+    "FAT first-pass rate or a real FAT (deviations found, closure time) before adding a case study block",
+    "Test instrument calibration interval and traceability",
+    "Post-FAT drain, drying and sealing method for shipment",
+    "Staffing continuity from FAT through SAT and IQ/OQ"
+   ],
+   "primary_cta_link": "cmp-documentation"
   },
   {
    "id": "svc-cq",
@@ -9240,12 +9573,87 @@
     "21 CFR Part 11",
     "ASTM E2500"
    ],
-   "primary_cta": "Request a proposal",
+   "primary_cta": "Request the sample turnover package",
    "secondary_cta": {
-    "label": "Request a sample turnover index",
+    "label": "Ready to buy? Submit your URS",
     "link": "contact-proposal"
    },
    "blocks": [
+    {
+     "type": "docs",
+     "h": "Documents for review before order",
+     "items": [
+      "Sample turnover package index",
+      "Redacted FAT protocol",
+      "Redacted IQ/OQ protocol table of contents",
+      "Sample weld log and weld map",
+      "Sample requirements traceability matrix"
+     ],
+     "nav": "What you can see"
+    },
+    {
+     "type": "form",
+     "h": "Request the sample turnover package",
+     "nav": "Request samples",
+     "intro": "Check our documents before you shortlist us. Tell us which samples you want; we send [what is shared openly and what under NDA] within [sample package response time]. No sales call needed.",
+     "submit": "Send me the samples",
+     "fields": [
+      {
+       "kind": "checkbox-group",
+       "label": "Samples you want",
+       "required": true,
+       "options": [
+        "Turnover package index",
+        "FAT protocol: contents and sample test cases",
+        "IQ/OQ protocol table of contents",
+        "Weld log and weld map",
+        "Requirements traceability matrix"
+       ]
+      },
+      {
+       "kind": "select",
+       "label": "Where your project is",
+       "required": true,
+       "options": [
+        "Early research or budgeting",
+        "Writing the URS",
+        "URS ready, requesting proposals",
+        "Existing system: upgrade or requalification"
+       ]
+      },
+      {
+       "kind": "text",
+       "label": "Full name",
+       "required": true
+      },
+      {
+       "kind": "email",
+       "label": "Work email",
+       "required": true,
+       "help": "We send the samples here."
+      },
+      {
+       "kind": "text",
+       "label": "Company",
+       "required": true
+      },
+      {
+       "kind": "select",
+       "label": "Role",
+       "required": false,
+       "options": [
+        "Validation",
+        "Quality",
+        "Process or project engineering",
+        "Facilities or maintenance",
+        "Procurement",
+        "Consulting engineer",
+        "Other"
+       ]
+      }
+     ],
+     "anchor": "samples"
+    },
     {
      "type": "steps",
      "h": "Documents by project phase",
@@ -9278,7 +9686,8 @@
        "t": "Hand over",
        "d": "Turnover package, operation and maintenance manual, spare parts list, training records."
       }
-     ]
+     ],
+     "nav": "By phase"
     },
     {
      "type": "table",
@@ -9349,24 +9758,14 @@
        "Training plan, attendance records, operator quick reference",
        "PDF"
       ]
-     ]
+     ],
+     "nav": "Contents"
     },
     {
      "type": "band",
      "tone": "limestone",
      "h": "Your templates or ours",
      "body": "If your site has validation templates, we write the FAT, SAT and IQ/OQ protocols in them. If not, we use ours, built on GAMP 5 and the ISPE commissioning and qualification guide."
-    },
-    {
-     "type": "docs",
-     "h": "Documents for review before order",
-     "items": [
-      "Sample turnover package index",
-      "Redacted FAT protocol",
-      "Redacted IQ/OQ protocol table of contents",
-      "Sample weld log and weld map",
-      "Sample requirements traceability matrix"
-     ]
     },
     {
      "type": "faq",
@@ -9384,7 +9783,8 @@
        "q": "Can FAT results count towards qualification?",
        "a": "Where your quality unit agrees, yes. We follow the ASTM E2500 and ISPE approach: engineering tests carried out under good documentation practice can be leveraged in IQ/OQ."
       }
-     ]
+     ],
+     "nav": "FAQ"
     },
     {
      "type": "related",
@@ -9398,9 +9798,9 @@
     }
    ],
    "cta": {
-    "h": "See a sample before you commit",
-    "body": "We share a redacted turnover index and FAT protocol with your validation lead.",
-    "button": "Request a proposal",
+    "h": "Seen the samples? Send your URS for a proposal.",
+    "body": "A process engineer replies within [proposal response time] with questions or a scoped proposal that lists the documents you will receive.",
+    "button": "Submit your URS for a proposal",
     "link": "contact-proposal"
    },
    "todo": [
@@ -9408,8 +9808,12 @@
     "Confirm material certificate type delivered (EN 10204 3.1) for all product-contact parts",
     "Confirm borescope inspection coverage offered as standard",
     "Prepare redacted sample documents for download",
-    "Confirm whether native drawing formats (DWG, RVT) are offered"
-   ]
+    "Confirm whether native drawing formats (DWG, RVT) are offered",
+    "What sample documents are shared openly and what only under NDA",
+    "Response time for sample package requests",
+    "Back-end for the sample request form (where submissions go)"
+   ],
+   "primary_cta_link": "#samples"
   },
   {
    "id": "cmp-quality",
@@ -10136,17 +10540,17 @@
    "meta": "Tell us the project stage, system type and capacity in L/h. An engineer replies within [response time] with questions or a budget proposal.",
    "path": "/contact/proposal/",
    "eyebrow": "REQUEST A PROPOSAL",
-   "headline": "Request a proposal",
-   "lead": "Tell us what stage your project is at, which system you need and how much water, in L/h. An engineer reads every request and replies within [response time].",
+   "headline": "Submit your URS or system parameters for an engineering review",
+   "lead": "Three short steps: system scope, sizing and contact. A process engineer, not a sales representative, reads every request and replies within [response time]. Not sure of a value? Choose \"Not sure yet\" and we work it out with you.",
    "tags": [
     "USP",
     "Ph. Eur.",
     "ASME BPE"
    ],
-   "primary_cta": "Request a proposal",
+   "primary_cta": "Start the review request",
    "secondary_cta": {
-    "label": "Existing system? Request service",
-    "link": "contact-service"
+    "label": "Not ready yet? Get a sample turnover package",
+    "link": "cmp-documentation"
    },
    "blocks": [
     {
@@ -10164,135 +10568,184 @@
     },
     {
      "type": "form",
-     "h": "Project details",
-     "intro": "Fields marked required are the minimum we need to reply with useful questions. Attach documents by reply email after you submit.",
-     "fields": [
+     "anchor": "intake",
+     "nav": "Request",
+     "h": "Request an engineering review",
+     "intro": "Send what you have. Every technical question has a \"Not sure yet\" answer, and documents are optional.",
+     "submit": "Submit for engineering review",
+     "note": "An engineer replies within [response time]. Your specifications stay confidential [confidentiality terms, e.g. under NDA on request]. No unsolicited sales calls. [Privacy notice link]",
+     "steps": [
       {
-       "label": "Project stage",
-       "kind": "select",
-       "options": [
-        "Feasibility or budget estimate",
-        "Basic design or URS in preparation",
-        "URS ready, requesting proposals",
-        "Replacing or expanding an existing system"
-       ],
-       "required": true
+       "title": "System scope",
+       "next": "Continue to sizing",
+       "fields": [
+        {
+         "label": "Project stage",
+         "kind": "radio",
+         "required": true,
+         "options": [
+          "Feasibility or budget estimate",
+          "URS in preparation",
+          "URS ready, requesting proposals",
+          "Replacing or expanding an existing system"
+         ]
+        },
+        {
+         "label": "System type",
+         "kind": "checkbox-group",
+         "required": true,
+         "options": [
+          "Purified Water (PW) generation",
+          "Water for Injection (WFI) by distillation",
+          "WFI by membrane",
+          "Pure steam generator",
+          "Storage and distribution loop",
+          "Pretreatment",
+          "Monitoring and controls",
+          "Upgrade or retrofit",
+          "Not sure yet"
+         ],
+         "help": "Tick every part you need. Not sure? Tick \"Not sure yet\" and describe the use in step 2."
+        },
+        {
+         "label": "Pharmacopoeia",
+         "kind": "checkbox-group",
+         "required": true,
+         "options": [
+          "USP",
+          "Ph. Eur.",
+          "JP",
+          "Not sure yet"
+         ],
+         "help": "Every pharmacopoeia your water must meet. Exporting to several markets? Tick each one."
+        },
+        {
+         "label": "Target date for water on site",
+         "kind": "select",
+         "required": true,
+         "options": [
+          "Under 3 months",
+          "3 to 6 months",
+          "6 to 12 months",
+          "More than 12 months",
+          "Budgeting only, no date yet"
+         ]
+        }
+       ]
       },
       {
-       "label": "System type",
-       "kind": "checkbox-group",
-       "options": [
-        "Purified Water (PW) generation",
-        "Water for Injection (WFI) by distillation",
-        "WFI by membrane",
-        "Pure Steam generator",
-        "Storage and distribution loop",
-        "Pretreatment",
-        "Monitoring and controls",
-        "Upgrade or retrofit",
-        "Not sure yet"
-       ],
-       "required": true
+       "title": "Sizing",
+       "next": "Continue to contact details",
+       "intro": "Rough numbers are fine. If you do not know a value, leave it blank: we size from your facility type and points of use.",
+       "fields": [
+        {
+         "label": "Required capacity",
+         "kind": "number",
+         "unit": "L/h",
+         "help": "Peak hourly demand at the points of use. Not sure? Leave blank and give the daily volume or the number of points of use.",
+         "required": false
+        },
+        {
+         "label": "Daily volume",
+         "kind": "number",
+         "unit": "L/day",
+         "required": false
+        },
+        {
+         "label": "Pure steam capacity",
+         "kind": "number",
+         "unit": "kg/h",
+         "help": "Total for sterilizers and steam-in-place users.",
+         "required": false,
+         "when": "Pure steam generator"
+        },
+        {
+         "label": "Number of points of use",
+         "kind": "number",
+         "required": false
+        },
+        {
+         "label": "Feed water source",
+         "kind": "select",
+         "options": [
+          "Municipal, chlorinated",
+          "Municipal, chloraminated",
+          "Well water",
+          "Already pretreated supply",
+          "Not sure yet"
+         ],
+         "required": true,
+         "help": "Chlorine or chloramine, and hardness, decide the pretreatment ahead of the RO."
+        },
+        {
+         "label": "URS, water analysis or drawings",
+         "kind": "file",
+         "required": false,
+         "help": "PDF, Word, Excel or images, up to [maximum upload size, MB]. No files yet? Skip this; you can send them by reply email later."
+        },
+        {
+         "label": "Constraints or notes",
+         "kind": "textarea",
+         "required": false
+        }
+       ]
       },
       {
-       "label": "Required capacity",
-       "kind": "number",
-       "unit": "L/h",
-       "help": "Peak demand at points of use. If you know only daily volume, enter it below.",
-       "required": true
-      },
-      {
-       "label": "Daily volume",
-       "kind": "number",
-       "unit": "L/day",
-       "required": false
-      },
-      {
-       "label": "Pure Steam capacity",
-       "kind": "number",
-       "unit": "kg/h",
-       "help": "Only if you need a Pure Steam generator.",
-       "required": false
-      },
-      {
-       "label": "Pharmacopoeia",
-       "kind": "checkbox-group",
-       "options": [
-        "USP",
-        "Ph. Eur.",
-        "JP",
-        "Not sure"
-       ],
-       "required": false
-      },
-      {
-       "label": "Number of points of use",
-       "kind": "number",
-       "required": false
-      },
-      {
-       "label": "Feed water source",
-       "kind": "select",
-       "options": [
-        "Municipal, chlorinated",
-        "Municipal, chloraminated",
-        "Well water",
-        "Not sure"
-       ],
-       "required": false
-      },
-      {
-       "label": "Target date for water on site",
-       "kind": "text",
-       "help": "Month and year.",
-       "required": false
-      },
-      {
-       "label": "Anything else we should know",
-       "kind": "textarea",
-       "required": false
-      },
-      {
-       "label": "Full name",
-       "kind": "text",
-       "required": true
-      },
-      {
-       "label": "Company",
-       "kind": "text",
-       "required": true
-      },
-      {
-       "label": "Role",
-       "kind": "select",
-       "options": [
-        "Process or project engineering",
-        "Validation",
-        "Quality",
-        "Facilities or maintenance",
-        "Procurement",
-        "Consulting engineer",
-        "Other"
-       ],
-       "required": false
-      },
-      {
-       "label": "Email",
-       "kind": "email",
-       "required": true
-      },
-      {
-       "label": "Phone",
-       "kind": "tel",
-       "required": false
-      },
-      {
-       "label": "Site province or state",
-       "kind": "text",
-       "required": true
+       "title": "Contact",
+       "fields": [
+        {
+         "label": "Full name",
+         "kind": "text",
+         "required": true
+        },
+        {
+         "label": "Work email",
+         "kind": "email",
+         "required": true
+        },
+        {
+         "label": "Company",
+         "kind": "text",
+         "required": true
+        },
+        {
+         "label": "Role",
+         "kind": "select",
+         "options": [
+          "Process or project engineering",
+          "Validation",
+          "Quality",
+          "Facilities or maintenance",
+          "Procurement",
+          "Consulting engineer",
+          "Other"
+         ],
+         "required": true
+        },
+        {
+         "label": "Site province or state",
+         "kind": "text",
+         "required": true,
+         "help": "Sets pressure vessel registration (CRN) and service coverage."
+        },
+        {
+         "label": "Phone",
+         "kind": "tel",
+         "required": false
+        },
+        {
+         "label": "How should we follow up?",
+         "kind": "radio",
+         "required": false,
+         "options": [
+          "Email technical questions first",
+          "Book a 15-minute call with an engineer",
+          "Send the sample turnover package first"
+         ]
+        }
+       ]
       }
-     ],
-     "submit": "Request a proposal"
+     ]
     },
     {
      "type": "steps",
@@ -10341,10 +10794,13 @@
     "Response time commitment for enquiries",
     "Proposal turnaround in working days",
     "Sales phone number and hours",
-    "File upload support in the form tool (URS, water analysis) or a secure upload link",
     "Privacy notice and consent wording (PIPEDA, CASL, Quebec Law 25)",
-    "CRM routing for form submissions"
-   ]
+    "CRM routing for form submissions",
+    "Maximum upload size and where uploaded files are stored",
+    "Confidentiality terms for submitted specifications",
+    "Privacy notice link under the form"
+   ],
+   "primary_cta_link": "#intake"
   },
   {
    "id": "contact-service",

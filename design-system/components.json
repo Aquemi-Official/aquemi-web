@@ -69,6 +69,16 @@
    "summary": "The site header: logo, primary sections and one call to action."
   },
   {
+   "name": "SectionNav",
+   "readme": "design-system/components/SectionNav/README.md",
+   "preview": "design-system/components/SectionNav/preview.html",
+   "group": "Navigation",
+   "height": "200",
+   "width": "1100",
+   "subtitle": "Jump links on a system page",
+   "summary": "SectionNav is a sticky row of jump links to the sections of a long technical page, so a reader can go straight to the limits, the documents or the FAQ."
+  },
+  {
    "name": "Band",
    "readme": "design-system/components/Band/README.md",
    "preview": "design-system/components/Band/preview.html",

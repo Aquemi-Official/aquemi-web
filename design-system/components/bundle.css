@@ -154,6 +154,16 @@ textarea.aq-field__input { height: auto; min-height: 120px; padding: var(--space
 .aq-form .aq-field { max-width: none; }
 .aq-form__full { grid-column: 1 / -1; }
 .aq-form__actions { grid-column: 1 / -1; display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; }
+.aq-field__file { font: 400 14px/22px var(--font-sans); color: var(--ink); padding: var(--space-4); border: 1px dashed var(--line-strong); border-radius: var(--radius-sm); background: var(--surface-sunken); }
+.aq-field__file:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-form--steps { gap: var(--space-8); }
+.aq-form__progress { grid-column: 1 / -1; display: flex; gap: var(--space-6); margin: 0; padding: 0 0 var(--space-4); list-style: none; counter-reset: aq-form-step; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.aq-form__progress li { counter-increment: aq-form-step; font: 500 14px/20px var(--font-sans); color: var(--ink-subtle); }
+.aq-form__progress li::before { content: counter(aq-form-step, decimal-leading-zero) ' '; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--ink-subtle); }
+.aq-form__progress li[aria-current="step"], .aq-form__progress li[aria-current="step"]::before { color: var(--flow); }
+.aq-form__step { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); border: 0; margin: 0; padding: 0; min-width: 0; }
+.aq-form__step[hidden], .aq-form [hidden] { display: none; }
+.aq-form__step > legend { grid-column: 1 / -1; padding: 0; margin-bottom: var(--space-2); }
 
 /* ---------- Hero ---------- */
 .aq-hero { position: relative; overflow: hidden; padding-block: var(--space-24) var(--space-16); }
@@ -233,6 +243,16 @@ textarea.aq-field__input { height: auto; min-height: 120px; padding: var(--space
 .aq-closing .aq-stack { align-items: center; }
 .aq-closing .aq-arc { left: -1px; top: -1px; right: auto; bottom: auto; width: min(30%, 300px); transform: rotate(180deg); }
 
+/* ---------- SectionNav ---------- */
+/* ---------- SectionNav ---------- */
+.aq-section-nav { position: sticky; top: 0; z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.aq-section-nav .aq-in { display: flex; align-items: center; gap: var(--space-6); min-height: 48px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+.aq-section-nav .aq-in::-webkit-scrollbar { display: none; }
+.aq-section-nav__label { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-section-nav a { font: 500 14px/20px var(--font-sans); color: var(--ink-muted); text-decoration: none; padding-block: var(--space-3); border-bottom: 2px solid transparent; }
+.aq-section-nav a:hover, .aq-section-nav a[aria-current="true"] { color: var(--ink); border-bottom-color: var(--flow); }
+.aq-section-nav a.aq-section-nav__cta { margin-left: auto; color: var(--action); }
+
 /* ---------- Narrow containers (phones, narrow previews) ---------- */
 @container (max-width: 860px) {
   .aq-in { padding-inline: var(--space-4); }
@@ -242,7 +262,7 @@ textarea.aq-field__input { height: auto; min-height: 120px; padding: var(--space
   .aq-display { font-size: 38px; line-height: 42px; }
   .aq-h1 { font-size: 30px; line-height: 36px; }
   .aq-hero__grid, .aq-readout { grid-template-columns: minmax(0, 1fr); }
-  .aq-linkgrid, .aq-options, .aq-form { grid-template-columns: minmax(0, 1fr); }
+  .aq-linkgrid, .aq-options, .aq-form, .aq-form__step { grid-template-columns: minmax(0, 1fr); }
   .aq-linkgrid > * { padding-left: 0; border-left: 0; }
   .aq-linkgrid > *:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; }
   .aq-footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -2,37 +2,37 @@
 
 The draft website at https://aquemi-official.github.io/aquemi-web/ has 31 pages built from this system. The repository is `Aquemi-Official/aquemi-web`; page copy lives in `content/pages.json`. Use this list when you design or write any page, deck or document so page names and structure match the site.
 
-Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The sections each page uses are listed below.
+Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a short `nav` label, four or more), content sections, a closing navy Band, Footer. The sections each page uses are listed below.
 
 ## Home
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [Home](https://aquemi-official.github.io/aquemi-web/#home) | Compendial water that passes on the first audit. | grid, readout, steps, tags, case, prose |
+| [Home](https://aquemi-official.github.io/aquemi-web/#home) | Validation-ready Purified Water, WFI and pure steam systems for pharmaceutical plants | tags, readout, grid, diagram, steps, prose, grid |
 
 ## Systems
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [All systems](https://aquemi-official.github.io/aquemi-web/#systems) | Start from the water you must release. We map the route that meets it at the point of use. | prose, table, table, diagram, grid, table, steps, docs, faq, docs, related |
-| [Purified Water (PW) generation](https://aquemi-official.github.io/aquemi-web/#sys-pw) | Purified Water that meets USP and Ph. Eur. with margin, on your coldest feed day | prose, spec, spec, diagram, table, options, steps, docs, faq, docs, related |
-| [WFI by distillation](https://aquemi-official.github.io/aquemi-web/#sys-wfi-distillation) | Water for Injection by distillation, with endotoxin margin you can show an inspector | prose, spec, spec, diagram, diagram, table, options, steps, docs, faq, docs, related |
-| [WFI by membrane](https://aquemi-official.github.io/aquemi-web/#sys-wfi-membrane) | Water for Injection by membrane, with the control strategy your inspector will ask for | prose, table, spec, spec, diagram, table, options, steps, docs, faq, docs, related |
-| [Pure steam generators](https://aquemi-official.github.io/aquemi-web/#sys-pure-steam) | Pure steam that passes EN 285 at the sterilizer, not just at the generator | prose, spec, spec, diagram, table, options, steps, docs, faq, docs, related |
-| [Storage and distribution loops](https://aquemi-official.github.io/aquemi-web/#sys-storage) | Storage and distribution loops that deliver generator quality at the furthest point of use | prose, spec, diagram, table, table, options, steps, docs, faq, docs, related |
-| [Pretreatment](https://aquemi-official.github.io/aquemi-web/#sys-pretreatment) | Pretreatment that keeps chlorine, chloramine and scale off your RO membranes in every season | prose, table, spec, diagram, table, table, options, steps, docs, faq, docs, related |
-| [Monitoring and controls](https://aquemi-official.github.io/aquemi-web/#sys-monitoring) | Water quality data you can release on and defend in an inspection | prose, spec, table, prose, table, diagram, table, table, table, prose, table, options, steps, docs, faq, docs, related |
+| [All systems](https://aquemi-official.github.io/aquemi-web/#systems) | Find your compendial water route by grade, by standard or by flow | grid, table, table, spec, table, diagram, steps, docs, faq, docs, related |
+| [Purified Water (PW) generation](https://aquemi-official.github.io/aquemi-web/#sys-pw) | Purified Water sized for your coldest feed day, with a turnover package your auditor can follow | prose, spec, table, spec, diagram, docs, options, spec, steps, faq, docs, related |
+| [WFI by distillation](https://aquemi-official.github.io/aquemi-web/#sys-wfi-distillation) | WFI stills sized on your utility costs, with endotoxin margin you can show an inspector | prose, spec, table, diagram, diagram, spec, docs, options, steps, faq, docs, related |
+| [WFI by membrane](https://aquemi-official.github.io/aquemi-web/#sys-wfi-membrane) | Water for Injection by membrane, with the control strategy and validation package your inspector will ask for | prose, table, spec, spec, spec, diagram, table, docs, options, steps, faq, docs, related |
+| [Pure steam generators](https://aquemi-official.github.io/aquemi-web/#sys-pure-steam) | Pure steam that passes EN 285 dryness, superheat and non-condensable gas tests at the sterilizer | prose, spec, table, spec, diagram, docs, options, steps, faq, docs, related |
+| [Storage and distribution loops](https://aquemi-official.github.io/aquemi-web/#sys-storage) | Storage and distribution loops that keep turbulent flow and compendial quality to the furthest point of use | prose, spec, table, table, diagram, docs, options, steps, faq, docs, related |
+| [Pretreatment](https://aquemi-official.github.io/aquemi-web/#sys-pretreatment) | Pretreatment that keeps chlorine, chloramine and scale off your RO membranes in every season | prose, table, spec, table, table, diagram, docs, options, steps, faq, docs, related |
+| [Monitoring and controls](https://aquemi-official.github.io/aquemi-web/#sys-monitoring) | Water quality data you can release on and defend in an inspection | prose, spec, table, prose, table, diagram, options, table, table, table, prose, table, docs, steps, faq, docs, related |
 
 ## Services
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [Services](https://aquemi-official.github.io/aquemi-web/#services) | One team and one traceable record, from your URS to the last service visit | table (situation router), prose, diagram, table, table, grid, band, table, faq, docs, related |
-| [Process design and engineering](https://aquemi-official.github.io/aquemi-web/#svc-design) | A water system design your quality unit can trace, approve at DQ and qualify against | prose, table (deliverables), diagram (URS to IQ/OQ trace), table (one requirement traced), steps, table (design decisions, linked), table (traditional vs ASTM E2500), faq, docs (what to send), related |
-| [Fabrication](https://aquemi-official.github.io/aquemi-web/#svc-fabrication) | Fabrication your auditor can trace from any weld back to the mill heat | prose, spec (fabrication standard), table (weld log fields), table (inspection and acceptance), steps (hold points), table (finish and passivation), options, docs (dossier), faq, docs (what to send), related |
-| [FAT and SAT](https://aquemi-official.github.io/aquemi-web/#svc-fat-sat) | Watch your water system run wet, against your protocol, before it ships | prose, table, band, steps, docs, table, options, table, steps, faq, docs, docs, related |
-| [Commissioning and qualification](https://aquemi-official.github.io/aquemi-web/#svc-cq) | A qualified water system your inspector can follow, from the first weld to a full year of data | prose, table, diagram, table (IQ), table (OQ), spec (PQ phases), table (sampling plan), band, table (alert/action levels), table (who signs), table (requalification), docs ×3, faq, related |
-| [Service and spare parts](https://aquemi-official.github.io/aquemi-web/#svc-service) | Service that keeps your water system running and keeps it qualified | prose, table (plan tiers), prose (response clock), table (GMP working), table (like for like), grid (PM visit), spec (calibration), table (critical spares), prose (spares), steps (fault response), grid (beyond the plan), docs (visit record), faq, docs (what to send), related |
+| [Services](https://aquemi-official.github.io/aquemi-web/#services) | One team and one traceable record, from your URS to the last service visit | table, prose, diagram, table, table, grid, band, table, faq, docs, related |
+| [Process design and engineering](https://aquemi-official.github.io/aquemi-web/#svc-design) | Water system design traced to your URS, approved at DQ and built to qualify | prose, table, table, diagram, table, table, steps, faq, docs, related |
+| [Fabrication](https://aquemi-official.github.io/aquemi-web/#svc-fabrication) | Fabrication your auditor can trace from any weld back to the mill heat | prose, spec, table, table, table, docs, options, steps, faq, docs, related |
+| [FAT and SAT](https://aquemi-official.github.io/aquemi-web/#svc-fat-sat) | Watch your water system run wet, against a protocol you approved, before it leaves our test bay | prose, table, table, steps, band, steps, table, options, docs, docs, faq, docs, related |
+| [Commissioning and qualification](https://aquemi-official.github.io/aquemi-web/#svc-cq) | A qualified water system your inspector can follow, from the first weld to a full year of data | prose, table, diagram, table, table, spec, table, band, table, table, table, docs, docs, docs, faq, related |
+| [Service and spare parts](https://aquemi-official.github.io/aquemi-web/#svc-service) | Service that keeps your water system running and keeps it qualified | prose, table, prose, table, table, grid, spec, table, prose, steps, grid, docs, faq, docs, related |
 | [Upgrades and retrofits](https://aquemi-official.github.io/aquemi-web/#svc-upgrades) | Upgrade the water system you already have, with the requalification scope known before the first cut | prose, table, band, prose, table, table, table, prose, table, prose, prose, table, steps, docs, faq, docs, related |
 
 ## Industries
@@ -40,18 +40,18 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | Page | Headline | Sections |
 | --- | --- | --- |
 | [Industries](https://aquemi-official.github.io/aquemi-web/#industries) | Water systems for regulated manufacturing | grid, table, band, related |
-| [Pharmaceutical](https://aquemi-official.github.io/aquemi-web/#ind-pharma) | Water that passes release testing, and the audit after it | prose, grid, spec, options, faq |
+| [Pharmaceutical](https://aquemi-official.github.io/aquemi-web/#ind-pharma) | Water that passes release testing, and the audit after it | prose, grid, spec, options, grid, faq |
 | [Biotechnology](https://aquemi-official.github.io/aquemi-web/#ind-biotech) | Water for biologics, from clinical supply to commercial scale | readout, prose, grid, options, faq, related |
 | [Medical devices](https://aquemi-official.github.io/aquemi-web/#ind-meddevice) | Rinse water you can defend in your cleaning validation | prose, spec, grid, options, faq |
-| [Contract manufacturing (CDMO)](https://aquemi-official.github.io/aquemi-web/#ind-cdmo) | A water system that stands up to every client's audit | prose, grid, options, band, faq |
+| [Contract manufacturing (CDMO)](https://aquemi-official.github.io/aquemi-web/#ind-cdmo) | A water system that stands up to every client's audit | prose, grid, options, band, grid, faq |
 
 ## Compliance
 
 | Page | Headline | Sections |
 | --- | --- | --- |
 | [Standards we design to](https://aquemi-official.github.io/aquemi-web/#compliance) | Standards we design to, and where you will find the evidence | prose, spec, table, readout, grid, faq, related |
-| [Documentation package](https://aquemi-official.github.io/aquemi-web/#cmp-documentation) | The documents arrive with the equipment | steps, table, band, docs, faq, related |
-| [Quality management](https://aquemi-official.github.io/aquemi-web/#cmp-quality) | Quality you can audit, from heat number to handover | prose, grid, steps, docs, related |
+| [Documentation package](https://aquemi-official.github.io/aquemi-web/#cmp-documentation) | The documents arrive with the equipment | docs, form, steps, table, band, faq, related |
+| [Quality management](https://aquemi-official.github.io/aquemi-web/#cmp-quality) | Quality you can audit, from heat number to handover | prose, grid, steps, grid, docs, related |
 
 ## Projects
 
@@ -65,15 +65,15 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | --- | --- | --- |
 | [About](https://aquemi-official.github.io/aquemi-web/#about) | A Canadian specialist in pharmaceutical water | prose, steps, grid, readout, band, related |
 | [Careers](https://aquemi-official.github.io/aquemi-web/#careers) | Build systems that pass inspection | prose, grid, table, steps, form |
-| [News](https://aquemi-official.github.io/aquemi-web/#news) | Technical notes and company news | grid, table, form |
+| [News](https://aquemi-official.github.io/aquemi-web/#news) | Technical notes and company news | grid, table, grid, form |
 
 ## Contact
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [Request a proposal](https://aquemi-official.github.io/aquemi-web/#contact-proposal) | Request a proposal | docs, form, steps, faq |
+| [Request a proposal](https://aquemi-official.github.io/aquemi-web/#contact-proposal) | Submit your URS or system parameters for an engineering review | docs, form, steps, faq |
 | [Service request](https://aquemi-official.github.io/aquemi-web/#contact-service) | Service for your installed system | band, table, form, grid, steps |
-| [Locations](https://aquemi-official.github.io/aquemi-web/#contact-locations) | Where we are and where we serve | table, prose, grid, band |
+| [Locations](https://aquemi-official.github.io/aquemi-web/#contact-locations) | Where we are and where we serve | table, prose, table, grid, band |
 
 ## Site sections and their components
 
@@ -92,7 +92,8 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | docs | DocList |
 | case | CaseStudy |
 | spec, table (cells may link to a page: routing tables) | SpecTable |
-| form | EnquiryForm (with TextField and Button) |
+| form | EnquiryForm (with TextField and Button); with `steps` it renders the stepped variant |
+| block `nav` label | SectionNav (rendered by the page, not a block) |
 | `[bracketed facts]` in any copy | Placeholder |
 
 Every site section has a component. A new kind of section needs a new component here first, then the site.
