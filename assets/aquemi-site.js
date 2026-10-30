@@ -59,9 +59,26 @@ function wFormSteps(b){var n=0,req=0,S=b.steps,k=S.length;S.forEach(function(s){
    +(i===k-1&&b.note?'<p class="aq-small aq-form__note">'+tx(b.note)+'</p>':'')+(i===k-1?'<span class="aq-small wform-msg" role="status"></span>':'')+'</fieldset>'}).join('')
   +'<div class="aq-form__strip" aria-hidden="true"><span>Rev. draft</span><span>'+n+' fields</span><span>Sheet 1 of 1</span></div></form>'}
 document.addEventListener('change',function(ev){var fm=ev.target.closest('form');if(!fm)return;var on=[].map.call(fm.querySelectorAll('input:checked'),function(x){return x.value});fm.querySelectorAll('[data-when]').forEach(function(w){w.hidden=on.indexOf(w.dataset.when)<0})});
-/* Footer */
-function wFoot(){var cols=[['Systems',['sys-pw','sys-wfi-distillation','sys-wfi-membrane','sys-pure-steam','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['ind-pharma','ind-biotech','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','contact-proposal','contact-service','contact-locations']]];
- return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols"><div class="aq-stack"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-small">Clean water systems for pharmaceutical manufacturing. Designed, fabricated and tested in <span class="aq-ph">[city], Ontario</span>.</p></div>'+cols.map(function(c){return '<div><h5>'+c[0]+'</h5>'+c[1].filter(wp).map(function(id){return wlink(id)}).join('')+'</div>'}).join('')+'</div><div class="aq-footer__legal"><span>© 2026 Aquemi <span class="aq-ph">[legal entity name]</span></span><span>Privacy · Terms · Accessibility</span></div></div></footer>'}
+/* Footer: an engineering drawing sheet. Zone frame (aria-hidden), head, four numbered link columns
+   (<details open>; footMQ closes them on phones only), a title block and the contact and legal line. */
+/* Phones (860 px and below) get collapsed rows; wider screens keep every column open and the summary out of the tab order. */
+var footMQ=window.matchMedia?window.matchMedia('(max-width: 860px)'):null;
+function footSync(){var ph=!!(footMQ&&footMQ.matches);[].forEach.call(document.querySelectorAll('.aq-footer__col'),function(d){d.open=!ph;var s=d.querySelector('summary');if(s){if(ph)s.removeAttribute('tabindex');else s.setAttribute('tabindex','-1')}})}
+if(footMQ){if(footMQ.addEventListener)footMQ.addEventListener('change',footSync);else if(footMQ.addListener)footMQ.addListener(footSync)}
+function wFoot(){var ph=!!(footMQ&&footMQ.matches);setTimeout(footSync,0);var cols=[['Systems',['sys-pw','sys-wfi-distillation','sys-wfi-membrane','sys-pure-steam','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['ind-pharma','ind-biotech','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','contact-proposal','contact-service','contact-locations']]];
+ function zones(side,marks){return '<div class="aq-footer__zones aq-footer__zones--'+side+'" aria-hidden="true">'+marks.map(function(m){return '<span>'+m+'</span>'}).join('')+'</div>'}
+ function cell(label,value,cls){return '<div class="aq-footer__cell'+(cls?' '+cls:'')+'"><span class="aq-footer__label">'+label+'</span><span class="aq-footer__value">'+value+'</span></div>'}
+ var cur=wp(WP),sheet=cur?tx(cur.nav_label||cur.id):'Home';
+ return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__sheet">'+zones('top',[1,2,3,4])+zones('left',['A','B','C','D'])
+  +'<div class="aq-footer__body">'
+  +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">Clean water systems for pharmaceutical manufacturing.</p></div>'
+  +'<nav class="aq-footer__cols" aria-label="Site map">'+cols.map(function(c,i){return '<details class="aq-footer__col"'+(ph?'':' open')+'><summary class="aq-footer__colhead"'+(ph?'':' tabindex="-1"')+'><span class="aq-footer__num">0'+(i+1)+'</span> '+e(c[0])+'</summary><div class="aq-footer__links">'+c[1].filter(wp).map(function(id){return wlink(id)}).join('')+'</div></details>'}).join('')+'</nav>'
+  +'<div class="aq-footer__block">'
+   +cell('Copyright','© 2026 Aquemi','aq-footer__cell--wide')+cell('Rev.','Draft')
+   +cell('Legal entity','<span class="aq-ph">[legal entity name]</span>')+cell('Made in','<span class="aq-ph">[city]</span>, Ontario')+cell('Sheet',sheet)
+  +'</div>'
+  +'<div class="aq-footer__legal"><span><span class="aq-ph">[email address]</span> · <span class="aq-ph">[phone number]</span></span><span>Privacy · Terms · Accessibility</span></div>'
+  +'</div>'+zones('right',['A','B','C','D'])+zones('bottom',[1,2,3,4])+'</div></div></footer>'}
 /* Hero */
 /* Pages with an equipment drawing in assets/illustrations/<page id>.png. Adding one is one line: 'page-id': 'what the drawing shows' (its aria-label).
    Used by the Hero figure and by WaterPath stops. */
@@ -91,18 +108,92 @@ function wHeroFigure(p,facts){
  var lines=facts.map(function(f,i){var s=HERO_LEAD[i];return '<line x1="'+s[0]+'" y1="'+s[1]+'" x2="'+s[2]+'" y2="'+s[3]+'"/><circle cx="'+s[2]+'" cy="'+s[3]+'" r="0.9"/>'}).join('');
  return '<figure class="aq-hero__figure"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span>'+
   (facts.length?'<svg class="aq-hero__leaders" viewBox="0 0 125 100" preserveAspectRatio="none" aria-hidden="true">'+lines+'</svg><dl class="aq-hero__callouts">'+facts.map(function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'}).join('')+'</dl>':'')+'</figure>'}
-function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,img=/^sys-|^svc-|^ind-/.test(p.id)||home;
+/* Hub and company pages: an index of the other pages in this page's section, in pages.json order.
+   A page alone in its section (projects) lists its own section headings instead; they link only when the block has a nav anchor. */
+function heroIndex(p){var sib=W().filter(function(q){return q.section===p.section&&q.id!==p.id}),hub=NAVSECT.filter(function(n){return n[1]===p.id})[0];
+ if(sib.length)return {label:hub?p.section+' · '+sib.length+' pages':'Also in '+p.section,aria:hub?'Pages in '+p.section:'Other pages in '+p.section,
+  items:sib.map(function(q){return {t:q.nav_label||q.headline,wp:q.id}})};
+ var bs=(p.blocks||[]),items=[];bs.forEach(function(b,i){if(b.h&&b.type!=='related'&&items.length<7)items.push({t:b.h,jump:b.nav?jid(b,i):''})});
+ return items.length>1?{label:'On this page',aria:'On this page',items:items}:null}
+function wHeroIndex(x){
+ return '<nav class="aq-hero__index" aria-label="'+e(x.aria)+'"><p class="aq-hero__index-label">'+e(x.label)+'</p><ol>'+x.items.map(function(it){
+  var t='<span class="aq-hero__index-t">'+tx(it.t)+'</span>';
+  return '<li>'+(it.wp?'<a class="aq-hero__index-item" href="#'+e(it.wp)+'" data-wp="'+e(it.wp)+'">'+t+'</a>':it.jump?'<a class="aq-hero__index-item" href="#'+e(WP)+'" data-jump="'+e(it.jump)+'">'+t+'</a>':'<span class="aq-hero__index-item">'+t+'</span>')+'</li>'}).join('')+'</ol></nav>'}
+/* Home: fine-line drawing of a figure-eight distribution loop (viewBox 440 x 520). Strokes are currentColor and tokens in style.css.
+   Annotations are the home page's own standards and its endotoxin fact; nothing else is claimed. */
+function wHomeLoop(p){
+ var ef=(p.facts||[]).filter(function(f){return /EU\/mL/.test(f.v)})[0],tick='',i;
+ for(i=0;i<=44;i++){var y=30+i*10,m=i%5===0;tick+='<line x1="'+(m?422:427)+'" y1="'+y+'" x2="434" y2="'+y+'"/>'}
+ for(i=0;i<=16;i++){var x=140+i*10,mm=i%4===0;tick+='<line x1="'+x+'" y1="514" x2="'+x+'" y2="'+(mm?506:510)+'"/>'}
+ var arrow=function(x,y,r){return '<path class="aq-loop__arrow" d="M-5,-3.5 L4,0 L-5,3.5 Z" transform="translate('+x+' '+y+') rotate('+r+')"/>'};
+ var label=function(x,y,s,a){return '<text x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>'};
+ return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a filter and a heat exchanger on the loop, conductivity and TOC sensors on the return, flow arrows and a scale rule'+(ef?', endotoxin '+e(ef.v)+' at the furthest point of use':'')+'.">'+
+ '<svg viewBox="0 0 440 520" aria-hidden="true" focusable="false">'+
+ '<g class="aq-loop__guide"><line x1="220" y1="8" x2="220" y2="492"/><line x1="120" y1="110" x2="320" y2="110"/><line x1="120" y1="390" x2="320" y2="390"/><circle cx="220" cy="110" r="30"/><circle cx="220" cy="110" r="52"/><circle cx="220" cy="390" r="30"/><circle cx="220" cy="390" r="52"/></g>'+
+ '<g class="aq-loop__rule">'+tick+'<line x1="434" y1="30" x2="434" y2="470"/><line x1="140" y1="514" x2="300" y2="514"/></g>'+
+ '<path class="aq-loop__pipe" d="M140,390 A80,80 0 0 0 300,390 L300,340 C300,270 140,230 140,160 L140,110 A80,80 0 0 1 300,110 L300,160 C300,230 140,270 140,340 Z"/>'+
+ arrow(220,30,0)+arrow(180,459.3,30)+arrow(275,292,224)+arrow(275,208,136)+
+ '<g class="aq-loop__part"><rect x="133" y="113" width="14" height="44" rx="7"/><line x1="136" y1="125" x2="144" y2="125"/><line x1="136" y1="135" x2="144" y2="135"/><line x1="136" y1="145" x2="144" y2="145"/>'+
+ '<rect x="129" y="354" width="22" height="22"/><line x1="129" y1="354" x2="151" y2="376"/><line x1="151" y1="354" x2="129" y2="376"/>'+
+ '<line x1="300" y1="118" x2="324" y2="118"/><circle cx="336" cy="118" r="12"/><line x1="300" y1="152" x2="324" y2="152"/><circle cx="336" cy="152" r="12"/>'+
+ '<path d="M220,470 L220,480 M206,480 L206,492 L234,480 L234,492 Z"/></g>'+
+ '<g class="aq-loop__lead"><line x1="80" y1="135" x2="130" y2="135"/><line x1="80" y1="365" x2="126" y2="365"/></g>'+
+ '<g class="aq-loop__text">'+label(0,14,'Distribution loop · ASME BPE')+
+  '<text class="aq-loop__tag" x="336" y="121" text-anchor="middle">CE</text><text class="aq-loop__tag" x="336" y="155" text-anchor="middle">TOC</text>'+
+  label(352,122,'USP <645>')+label(352,156,'USP <643>')+
+  label(76,132,'Filter','end')+label(76,362,'Heat','end')+label(76,374,'exchanger','end')+
+  label(244,483,'Furthest point of use')+(ef?label(244,497,'Endotoxin '+ef.v):'')+
+ '</g></svg></figure>'}
+function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^svc-|^ind-/.test(p.id),idx=!home&&!detail?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
   '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p)):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
  var all=p.facts||[],callouts=art?all.slice(0,4):[],rest=art?all.slice(4):all;
- var facts=rest.length?'<dl class="aq-key-facts">'+rest.map(function(f){return '<div><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'}).join('')+'</dl>':'';
- var right=art?wHeroFigure(p,callouts):'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(home?'finished skid or installed loop, wide orderly view':(p.nav_label||p.headline))+' · 316L, cool even light]</div>';
- return '<section class="aq-hero'+(home?' aq-hero--home':'')+'"><div class="aq-in">'+(img?'<div class="aq-hero__grid'+(art?' aq-hero__grid--figure':'')+'">'+left+right+'</div>':left)+facts+'</div>'+(home?ARC:'')+'</section>'}
-/* NavBar */
-function wHead(section){var cur=(NAVSECT.filter(function(n){return n[0]===section})[0]||[])[1];
- return '<nav class="aq-nav" aria-label="Main"><a class="aq-nav__home" href="#home" data-wp="home" aria-label="Aquemi home"><img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-light" src="brand/lockup-navy.svg" alt="aquemi"><img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-dark" src="brand/lockup-limestone.svg" alt="aquemi"></a><ul class="aq-nav__links">'+NAVSECT.map(function(n){return '<li><a href="#'+n[1]+'" data-wp="'+n[1]+'"'+(n[1]===cur?' aria-current="page"':'')+'>'+n[0]+'</a></li>'}).join('')+'</ul><span class="aq-nav__spacer"></span><a class="aq-btn aq-btn--primary" href="#contact-proposal" data-wp="contact-proposal">Request a proposal</a><button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'">Menu</button></nav>'+
- (WMENU?'<div class="aq-menu">'+NAVSECT.concat([['Contact','contact-proposal']]).map(function(n){return '<a href="#'+n[1]+'" data-wp="'+n[1]+'">'+n[0]+'</a>'}).join('')+'</div>':'')}
+ var right=home?wHomeLoop(p):art?wHeroFigure(p,callouts):detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · 316L, cool even light]</div>':idx?wHeroIndex(idx):'';
+ var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':idx?' aq-hero__grid--index':'';
+ return '<section class="aq-hero'+(home?' aq-hero--home':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
+/* KeyFacts: the measurement strip under the Hero. facts = [{l, v}].
+   Label "Conductivity at 25 °C · USP <645>" -> dt name + a second dd for the source (after the last " · ").
+   Value "≤ 1.3 µS/cm" -> comparator, figure, unit; the unit is split off only when the tail after the last space
+   (outside [placeholders]) has no digits and follows a figure, so "Part 11", "GAMP 5" and "[Ra, µm]" stay whole.
+   The "01 /" index and the ruler, frame and fixings are CSS only. */
+function kfValue(v){
+ v=String(v==null?'':v);
+ var cmp='',m=/^([<>≤≥])\s+/.exec(v);
+ if(m&&/[\d\[]/.test(v.charAt(m[0].length))){cmp=m[1];v=v.slice(m[0].length)}
+ var unit='',d=0,cut=-1;
+ for(var i=0;i<v.length;i++){var c=v.charAt(i);if(c==='[')d++;else if(c===']'&&d)d--;else if(c===' '&&!d)cut=i}
+ if(cut>0){var head=v.slice(0,cut),tail=v.slice(cut+1);
+  if(tail.length<=8&&!/[0-9\[\]]/.test(tail)&&/[0-9\]]$/.test(head)){unit=tail;v=head}}
+ return (cmp?'<span class="aq-key-facts__cmp">'+e(cmp)+'</span> ':'')+'<span class="aq-key-facts__fig">'+tx(v)+'</span>'+(unit?' <span class="aq-key-facts__unit">'+tx(unit)+'</span>':'');
+}
+function wKeyFacts(facts){
+ if(!facts||!facts.length)return '';
+ return '<dl class="aq-key-facts">'+facts.map(function(f){
+  var l=String(f.l==null?'':f.l),k=l.lastIndexOf(' · '),name=k>0?l.slice(0,k):l,src=k>0?l.slice(k+3):'';
+  return '<div><dt>'+tx(name)+'</dt><dd class="aq-key-facts__value">'+kfValue(f.v)+'</dd>'+(src?'<dd class="aq-key-facts__src">'+tx(src)+'</dd>':'')+'</div>';
+ }).join('')+'</dl>';
+}
+/* NavBar: numbered section tabs, framed proposal button and, on phones, a menu with the sections and the page's section jump.
+   The menu's jump links come from navJumps() in SectionNav.js, for the page being shown (WP). */
+function navNum(i){return '<span class="aq-nav__num" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}
+function wHead(section){var cur=(NAVSECT.filter(function(n){return n[0]===section})[0]||[])[1],pg=wp(WP),jumps=navJumps(pg);
+ var cta=function(extra){return '<span class="aq-nav__frame'+(extra||'')+'"><a class="aq-btn aq-btn--primary" href="#contact-proposal" data-wp="contact-proposal">Request a proposal</a></span>'};
+ return '<nav class="aq-nav" aria-label="Main"><a class="aq-nav__home" href="#home" data-wp="home" aria-label="Aquemi home"><img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-light" src="brand/lockup-navy.svg" alt="aquemi"><img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-dark" src="brand/lockup-limestone.svg" alt="aquemi"></a>'+
+  '<ul class="aq-nav__links">'+NAVSECT.map(function(n,i){return '<li><a href="#'+n[1]+'" data-wp="'+n[1]+'"'+(n[1]===cur?' aria-current="page"':'')+'>'+navNum(i)+'<span class="aq-nav__label">'+n[0]+'</span></a></li>'}).join('')+'</ul>'+
+  '<span class="aq-nav__spacer"></span>'+cta()+
+  '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'>'+(WMENU?'Close':'Menu')+'</button></nav>'+
+ (WMENU?'<div class="aq-menu" id="wmenu-panel">'+
+  '<nav aria-label="Sections"><ol class="aq-menu__list">'+NAVSECT.map(function(n,i){return '<li><a href="#'+n[1]+'" data-wp="'+n[1]+'"'+(n[1]===cur?' aria-current="page"':'')+'>'+navNum(i)+n[0]+'</a></li>'}).join('')+'</ol></nav>'+
+  (jumps.length?'<nav class="aq-menu__jump" aria-labelledby="wmenu-jump"><p class="aq-menu__label" id="wmenu-jump">Section jump</p><ol class="aq-menu__list aq-menu__list--jump">'+jumps.map(function(j,i){return '<li><a href="#'+e(pg.id)+'" data-jump="'+e(j.id)+'">'+navNum(i)+e(j.label)+'</a></li>'}).join('')+'</ol></nav>':'')+
+  cta(' aq-menu__cta')+'</div>':'')}
+/* Menu behaviour: a section jump closes the menu before the page scrolls; Escape closes it; focus stays on the toggle after it re-renders. */
+if(typeof document!=='undefined'){
+ document.addEventListener('click',function(ev){var j=ev.target.closest&&ev.target.closest('.aq-menu a[data-jump]');if(!j||!WMENU)return;
+  WMENU=false;var m=document.getElementById('wmenu-panel'),t=document.getElementById('wmenu');if(m)m.remove();if(t){t.setAttribute('aria-expanded','false');t.removeAttribute('aria-controls');t.textContent='Menu'}},true);
+ document.addEventListener('click',function(ev){if(ev.target&&ev.target.id==='wmenu'&&!ev.target.isConnected){var t=document.getElementById('wmenu');if(t)t.focus()}});
+ document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&WMENU){var t=document.getElementById('wmenu');if(t){t.click();t=document.getElementById('wmenu');if(t)t.focus()}}});
+}
 /* ProcessDiagram: treatment train as numbered stage boxes on one serpentine Flow pipe.
    Desktop: rows of three, alternate rows run right to left (CSS direction), joined by vertical drops.
    Phone: one column, the pipe drops alternate left and right. No run-time measuring. */
@@ -141,12 +232,35 @@ function wDiagram(b){var st=b.stages||[],n=st.length,k=0,s='';
   s+='</div>'}
  var alt='Treatment train, '+n+' stages in order: '+st.map(function(t,i){return (i+1)+' '+t}).join(', ')+(b.base?'. Across all stages: '+b.base:'');
  return '<div class="aq-diagram'+(b.base?' aq-diagram--base':'')+'" role="img" aria-label="'+e(alt)+'"><div class="aq-diagram__train">'+s+'</div>'+(b.base?'<div class="aq-diagram__base"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+e(b.base)+'</span></div>':'')+'</div>'}
-/* SectionNav: sticky jump links to blocks that carry a short nav label (four or more). Block section ids come from jid(). */
+/* SectionNav: sticky numbered jump links to blocks that carry a short nav label (four or more), with a page progress readout.
+   Block section ids come from jid(). The scroll-spy below marks the section being read (aria-current) here and in the phone menu. */
 function ctaLink(p){return p.primary_cta_link||(/service/i.test(p.primary_cta)?'contact-service':'contact-proposal')}
 function jid(b,i){return b.anchor||'s-'+i+'-'+String(b.nav).toLowerCase().replace(/[^a-z0-9]+/g,'-')}
-function wSectionNav(p){var bs=(p.blocks||[]),n=bs.filter(function(b){return b.nav});if(n.length<4)return '';
- return '<nav class="aq-section-nav" aria-label="On this page"><div class="aq-in"><span class="aq-section-nav__label">On this page</span>'+bs.map(function(b,i){return b.nav?'<a href="#'+e(p.id)+'" data-jump="'+jid(b,i)+'">'+e(b.nav)+'</a>':''}).join('')+
-  (p.primary_cta&&ctaLink(p).charAt(0)!=='#'?'<a class="aq-section-nav__cta" href="#'+e(ctaLink(p))+'" data-wp="'+e(ctaLink(p))+'">'+tx(p.primary_cta)+' →</a>':'')+'</div></nav>'}
+function navJumps(p){var o=[];((p&&p.blocks)||[]).forEach(function(b,i){if(b.nav)o.push({id:jid(b,i),label:b.nav})});return o.length<4?[]:o}
+function wSectionNav(p){var j=navJumps(p),segs='';if(!j.length)return '';for(var i=0;i<10;i++)segs+='<i class="aq-section-nav__seg"></i>';
+ return '<nav class="aq-section-nav" aria-label="On this page"><div class="aq-in"><span class="aq-section-nav__label" aria-hidden="true">On this page <span>↓</span></span><ol class="aq-section-nav__links">'+
+  j.map(function(x,i){return '<li><a href="#'+e(p.id)+'" data-jump="'+e(x.id)+'"><span class="aq-section-nav__num" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+e(x.label)+'</a></li>'}).join('')+'</ol>'+
+  '<div class="aq-section-nav__progress"><span class="aq-section-nav__progress-label" aria-hidden="true">Page progress</span><span class="aq-section-nav__readout"><span class="aq-section-nav__meter" role="progressbar" aria-label="Page progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">'+segs+'</span><span class="aq-section-nav__pct" aria-hidden="true">0%</span></span></div></div></nav>'}
+/* Scroll-spy and progress: one passive scroll listener, batched to one update per frame; re-runs when the page re-renders. */
+(function(){if(typeof window==='undefined'||!window.addEventListener||!window.requestAnimationFrame)return;
+ var q=0,rm=window.matchMedia?window.matchMedia('(prefers-reduced-motion: reduce)'):null;
+ function sched(){if(!q)q=requestAnimationFrame(function(){q=0;spy()})}
+ function reveal(a){var s=a.closest('.aq-section-nav__links');if(!s||s.scrollWidth<=s.clientWidth)return;var r=a.getBoundingClientRect(),sr=s.getBoundingClientRect();
+  if(r.left<sr.left||r.right>sr.right)s.scrollTo({left:s.scrollLeft+r.left-sr.left-(sr.width-r.width)/2,behavior:rm&&rm.matches?'auto':'smooth'})}
+ function spy(){var bar=document.querySelector('.aq-section-nav');if(!bar)return;
+  var de=document.documentElement,vh=window.innerHeight,y=window.scrollY||de.scrollTop,max=de.scrollHeight-vh,line=bar.getBoundingClientRect().bottom+vh*0.2,act=null,
+   links=bar.querySelectorAll('a[data-jump]');
+  /* nothing is current until the bar has stuck, i.e. the reader has scrolled past the hero */
+  if(bar.getBoundingClientRect().top<=1)links.forEach(function(a){var s=document.getElementById(a.dataset.jump);if(s&&s.getBoundingClientRect().top<=line)act=a.dataset.jump});
+  if(links.length&&max>0&&y>=max-2){var l=links[links.length-1],ls=document.getElementById(l.dataset.jump);if(ls&&ls.getBoundingClientRect().top<vh)act=l.dataset.jump}
+  document.querySelectorAll('.aq-section-nav a[data-jump], .aq-menu a[data-jump]').forEach(function(a){var on=a.dataset.jump===act;
+   if(on===(a.getAttribute('aria-current')==='true'))return;if(on){a.setAttribute('aria-current','true');reveal(a)}else a.removeAttribute('aria-current')});
+  var pct=max>0?Math.max(0,Math.min(100,Math.round(y/max*100))):100,m=bar.querySelector('.aq-section-nav__meter');
+  if(!m||m.getAttribute('aria-valuenow')===String(pct))return;m.setAttribute('aria-valuenow',pct);
+  var on=Math.round(pct/10);m.querySelectorAll('.aq-section-nav__seg').forEach(function(s,i){s.classList.toggle('is-on',i<on)});
+  var t=bar.querySelector('.aq-section-nav__pct');if(t&&t.firstChild)t.firstChild.nodeValue=pct+'%'}
+ window.addEventListener('scroll',sched,{passive:true});window.addEventListener('resize',sched,{passive:true});window.addEventListener('load',sched);
+ if(window.MutationObserver)new MutationObserver(sched).observe(document.documentElement,{childList:true,subtree:true});sched()})();
 /* WaterPath: system families as stops on one pipe, feed to point of use.
    Each stop shows its page's line drawing when ART (parts/Hero.js) lists it, else the GLYPH below as fallback. */
 var GLYPH={"sys-pretreatment": "M8 50V16a6 6 0 0 1 12 0v34M26 50V16a6 6 0 0 1 12 0v34M44 50V26a10 6 0 0 1 20 0v24M4 50h64M14 10V4h18v6", "sys-pw": "M6 50V10h60v40M4 50h64M12 18h48M12 26h48M12 34h48M12 42h48M60 14v32", "sys-wfi-distillation": "M10 50V12a6 6 0 0 1 12 0v38M30 50V20a6 6 0 0 1 12 0v30M22 16h8M42 24h8v-8h12v34M4 50h64", "sys-wfi-membrane": "M8 50V20h56v30M4 50h64M16 20V10M28 20V10M40 20V10M52 20V10M12 10h44M14 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0M30 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0M46 34a6 6 0 1 0 12 0a6 6 0 1 0-12 0", "sys-pure-steam": "M10 50V20h40v30M4 50h64M18 20V6h6v14M16 30h16M16 36h16M16 42h16M50 30h14v20M58 30V22", "sys-storage": "M8 46V22a10 5 0 0 1 20 0v24M8 46l-2 4M28 46l2 4M34 46V14a12 6 0 0 1 24 0v32M34 46l-2 4M58 46l2 4M28 30h6M4 50h64", "sys-monitoring": "M6 50h60M10 50V14h28v36M16 22h16M16 28h10M16 34h13M44 30a10 10 0 1 0 20 0a10 10 0 1 0-20 0M54 30l6-6"};
@@ -344,8 +458,16 @@ BLOCKS['spec']=function(b,H){
 };
 /* Block "steps" -> ProcessSteps: an ordered list drawn as a stepped pipe run; CSS writes the numbers */
 BLOCKS['steps']=function(b,H){return sec(H+'<ol class="aq-steps">'+(b.items||[]).map(function(it){return '<li><h3 class="aq-steps__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-steps__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('')+'</ol>');};
-/* Block "table" -> SpecTable aq-spec--compare (real table layout, scrolls sideways below 640 px) */
-BLOCKS['table']=function(b,H){return sec(H+'<div class="aq-scroll"><table class="aq-spec aq-spec--compare"><thead><tr>'+(b.cols||[]).map(function(c){return '<th scope="col">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody>'+(b.rows||[]).map(function(r){return '<tr>'+r.map(function(c,i){return i?'<td class="aq-spec__text">'+tcell(c)+'</td>':'<th scope="row">'+tcell(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>');};
+/* Block "table" -> CompareTable. cols: header labels (first is the row-label column); rows: cells, each a string or {t, link}.
+   Three or more columns: a numbered matrix, with column tabs on phones. Two columns: the numbered row list (aq-compare-table--list).
+   The CSS changes table display on phones, so explicit ARIA table roles are set. */
+BLOCKS['table']=function(b,H){var C=b.cols||[],list=C.length<=2,
+ tabs=list?'':'<div class="aq-compare-table__tabs" role="group" aria-label="Column shown">'+C.slice(1).map(function(c,i){return '<button type="button" class="aq-compare-table__tab" data-col="'+(i+1)+'" aria-pressed="'+(i?'false':'true')+'">'+tx(c)+'</button>'}).join('')+'</div>';
+ return sec(H+'<div class="aq-compare-table'+(list?' aq-compare-table--list':'')+'"'+(list?'':' data-col="1"')+'>'+tabs
+  +'<table class="aq-compare-table__table" role="table"><thead role="rowgroup"><tr role="row">'+C.map(function(c){return '<th scope="col" role="columnheader">'+tx(c)+'</th>'}).join('')+'</tr></thead>'
+  +'<tbody role="rowgroup">'+(b.rows||[]).map(function(r){return '<tr role="row">'+r.map(function(c,i){return i?'<td role="cell">'+tcell(c)+'</td>':'<th scope="row" role="rowheader">'+tcell(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>');};
+/* CompareTable tabs: show the pressed column on phones */
+document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-compare-table__tab');if(!t)return;var w=t.closest('.aq-compare-table');w.setAttribute('data-col',t.getAttribute('data-col'));[].forEach.call(w.querySelectorAll('.aq-compare-table__tab'),function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});
 /* Block "tags" -> StandardsGrid section. items: strings (the standard's code) or {code, name} objects;
    name is the optional plain-language line. Cards link to Compliance when that page exists. */
 BLOCKS['tags']=function(b,H){var lk=wp('compliance');return '<section class="aq-section aq-band--sunken"><div class="aq-in aq-stack-l">'+(b.h?'<h2 class="aq-display">'+tx(b.h)+'</h2>':H)+'<ol class="aq-standards-grid">'+(b.items||[]).map(function(x){var o=typeof x==='string'?{code:x}:(x||{}),inner='<span class="aq-standards-grid__code">'+e(o.code)+'</span>'+(o.name?'<span class="aq-standards-grid__name">'+tx(o.name)+'</span>':'');return '<li class="aq-standards-grid__item'+(o.name?'':' aq-standards-grid__item--code')+'">'+(lk?'<a class="aq-standards-grid__card" href="#compliance" data-wp="compliance">'+inner+'</a>':'<div class="aq-standards-grid__card">'+inner+'</div>')+'</li>'}).join('')+'</ol>'+(b.body?'<p class="aq-small">'+tx(b.body)+'</p>':'')+'</div></section>';};
@@ -356,7 +478,7 @@ function wPage(p){var c=p.cta;
  return wHead(p.section)+wHero(p)+wSectionNav(p)+(p.blocks||[]).map(function(b,i){var h=wBlock(b);return b.nav?h.replace('<section class=','<section id="'+jid(b,i)+'" class='):h}).join('')+
   wClosing(c,p)+wFoot()}
 document.addEventListener('click',function(ev){var g=ev.target.closest('[data-step-go]');if(g){var fm=g.closest('form'),to=+g.dataset.stepGo;fm.querySelectorAll('.aq-form__step').forEach(function(s){s.hidden=+s.dataset.step!==to});fm.querySelectorAll('.aq-form__progress li').forEach(function(l,i){if(i===to)l.setAttribute('aria-current','step');else l.removeAttribute('aria-current')});var lg=fm.querySelector('[data-step="'+to+'"] legend');if(lg){lg.tabIndex=-1;lg.focus()}fm.scrollIntoView({block:'start'});return}
- var j=ev.target.closest('[data-jump]');if(j){var s=document.getElementById(j.dataset.jump);if(s){ev.preventDefault();s.scrollIntoView({behavior:'smooth',block:'start'})}return}
+ var j=ev.target.closest('[data-jump]');if(j){var s=document.getElementById(j.dataset.jump);if(s){ev.preventDefault();s.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}return}
  var t=ev.target.closest('[data-wp]');if(!t)return;ev.preventDefault();WP=t.dataset.wp;WMENU=false;
  AQ.onNav(WP)});
 var AQ=window.AQ={e:e,tx:tx,wp:wp,wPage:wPage,wBlock:wBlock,wHead:wHead,wHero:wHero,wFoot:wFoot,wBtn:wBtn,wDiagram:wDiagram,wPath:wPath,ARC:ARC,

@@ -20,3 +20,9 @@
 @media (prefers-reduced-motion: reduce) {
   .aq-btn, .aq-btn__arrow { transition: none; }
 }
+
+/* Narrow containers: long labels wrap inside the button instead of running off the screen */
+@container (max-width: 860px) {
+  .aq-btn { height: auto; min-height: 44px; max-width: 100%; padding-block: var(--space-3); white-space: normal; text-align: left; }
+  .aq-btn--link { min-height: 0; padding: 0; }
+}

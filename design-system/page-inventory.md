@@ -95,7 +95,8 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | faq | FAQ inside SplitSection |
 | docs | DocList inside SplitSection (sunken band) |
 | case | CaseStudy |
-| spec, table | SpecTable |
+| spec | SpecTable |
+| table | CompareTable |
 | form | EnquiryForm (with TextField and Button) inside SplitSection; with `steps` it renders the stepped variant |
 | block `nav` label | SectionNav (rendered by the page, not a block) |
 | `[bracketed facts]` in any copy | Placeholder |

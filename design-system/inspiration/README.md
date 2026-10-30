@@ -21,6 +21,12 @@ AI-generated section concepts used as raw ideas for new components. See them all
 | `concept-o-prose.png` | Explanatory text without a wall of text | `Prose`: pulled-out lead, narrow column, margin notes |
 | `concept-p-band.png` | One statement between two sections | `Band`: one large sentence in a framed panel with a faint technical motif |
 | `concept-q-grid.png` | A set of choices that is not a card grid | `LinkGrid`: staggered numbered choices joined by one routed line |
+| `concept-r-table.png` | Comparing water grades without a wall of text | `CompareTable`: numbered column heads in a drawing frame; on phones, one column at a time behind tabs |
+| `concept-s-hub-hero.png` | Header of a hub page that lists one area | `Hero` on hub and company pages: numbered index of the pages inside the area, joined by a routed line |
+| `concept-t-footer.png` | Footer as the border of a drawing sheet | `Footer`: zone-referenced sheet border, numbered link columns, title block |
+| `concept-u-home-hero.png` | Home page first screen, water at the limit | `Hero` on the home page: large headline beside a fine-line drawing of a distribution loop |
+| `concept-v-nav.png` | Main navigation and the "On this page" bar | `NavBar` and `SectionNav`: numbered tabs, the section you are reading marked, page progress |
+| `concept-w-keyfacts.png` | Key facts under a page header | `KeyFacts`: numbered cells on a measurement strip, value with unit and its source |
 
 ## Keep every image
 
