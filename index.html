@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0F2A47">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
 <!-- The Aquemi design system: tokens, then components. Site chrome last. -->
 <link rel="stylesheet" href="design-system/tokens.css">
 <link rel="stylesheet" href="design-system/components/bundle.css">
@@ -24,7 +24,11 @@
 </div>
 <div class="aq-page" id="wsite"><p style="padding:64px 32px;font-family:var(--font-mono);color:var(--ink-muted)">Loading…</p></div>
 <div class="todo" id="wtodolist" hidden></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
 <script src="assets/aquemi-site.js"></script>
+<script src="assets/motion.js"></script>
 <script>
 (function(){
 var $=function(id){return document.getElementById(id)},e=AQ.e;
@@ -35,6 +39,7 @@ function render(){var p=AQ.wp(AQ.page)||AQ.pages()[0];if(!p)return;AQ.page=p.id;
  var t=p.todo||[];$('wtodolist').innerHTML='<h2>Open facts on this page ('+t.length+')</h2>'+(t.length?'<ul>'+t.map(function(x){return '<li>'+e(x)+'</li>'}).join('')+'</ul>':'<p>None.</p>');
  $('wtodolist').hidden=!$('wtodo').checked;
  var m=$('wmenu');if(m)m.onclick=function(){AQ.menuOpen=!AQ.menuOpen;render()};
+ if(window.AQmotion)requestAnimationFrame(function(){AQmotion.run($('wsite'))});
  document.querySelectorAll('.wform').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();f.querySelector('.wform-msg').textContent='Draft site: this form does not send anything yet.'})})}
 function go(id){AQ.page=id;AQ.menuOpen=false;try{history.replaceState(null,'','#'+id)}catch(x){}render();window.scrollTo(0,0)}
 AQ.onNav=go;

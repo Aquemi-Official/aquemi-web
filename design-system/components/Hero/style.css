@@ -153,3 +153,6 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-hero__grid--loop { row-gap: var(--space-8); }
   .aq-hero__loop { width: min(100%, calc(var(--space-32) + var(--space-24))); margin-inline: auto; }
 }
+
+/* Flow dots added by assets/motion.js on the home loop (decoration) */
+.aq-loop__dot { fill: var(--flow); }

@@ -92,9 +92,11 @@
 .aq-eyebrow { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
 .aq-lead { font: 400 18px/28px var(--font-sans); color: var(--ink-muted); max-width: var(--text-max); }
 .aq-small { font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
-.aq-display-xl { font: 300 72px/76px var(--font-sans); letter-spacing: -0.03em; }
-.aq-display { font: 300 56px/60px var(--font-sans); letter-spacing: -0.025em; }
-.aq-h1 { font: 400 40px/46px var(--font-sans); letter-spacing: -0.02em; }
+.aq-display-xl { font: 600 92px/88px var(--font-display); letter-spacing: -0.01em; text-transform: uppercase; text-wrap: balance; }
+.aq-display { font: 600 76px/74px var(--font-display); letter-spacing: -0.005em; text-transform: uppercase; text-wrap: balance; }
+.aq-h1 { font: 600 52px/52px var(--font-display); letter-spacing: 0; text-transform: uppercase; text-wrap: balance; max-width: 22ch; }
+/* Section openers carry a short flow bar under the title, like the concept title blocks */
+.aq-sec-head > .aq-h1::after { content: ""; display: block; width: var(--space-12); height: 4px; margin-top: var(--space-4); background: var(--flow); }
 .aq-h2 { font: 400 28px/34px var(--font-sans); letter-spacing: -0.01em; }
 .aq-h3 { font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; }
 
@@ -136,9 +138,10 @@ a.aq-rows__row:focus-visible { outline: 2px solid var(--focus); outline-offset: 
   .aq-sheet { margin: 0; border-inline: 0; }
   .aq-plate { padding: var(--space-8) var(--space-4) var(--space-6); }
   .aq-plate--block { padding-bottom: calc(var(--space-6) + var(--space-6)); }
-  .aq-display-xl { font-size: 44px; line-height: 48px; }
-  .aq-display { font-size: 38px; line-height: 42px; }
-  .aq-h1 { font-size: 30px; line-height: 36px; }
+  .aq-display-xl { font-size: 54px; line-height: 52px; }
+  .aq-display { font-size: 46px; line-height: 45px; }
+  .aq-h1 { font-size: 36px; line-height: 36px; }
+  .aq-sec-head > .aq-h1::after { width: var(--space-8); height: 3px; margin-top: var(--space-3); }
   .aq-rows__row, .aq-rows:has(.aq-rows__art) .aq-rows__row { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); padding-block: var(--space-3); }
   .aq-rows__t { font-size: 16px; line-height: 24px; }
   .aq-rows__d { grid-column: 2; font-size: 14px; line-height: 22px; }
@@ -1588,6 +1591,9 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-hero__grid--loop { row-gap: var(--space-8); }
   .aq-hero__loop { width: min(100%, calc(var(--space-32) + var(--space-24))); margin-inline: auto; }
 }
+
+/* Flow dots added by assets/motion.js on the home loop (decoration) */
+.aq-loop__dot { fill: var(--flow); }
 
 /* ---------- LinkGrid: choices (usually pages) as rows of the shared list grammar ---------- */
 /* Layout from .aq-rows (base.css): index | title (→ when it links) | one line and an optional standard tag, with the
