@@ -54,6 +54,16 @@
   .aq-h1 { font-size: 30px; line-height: 36px; }
 }
 
+/* ---------- Illustration: line art painted with a colour token through a mask ---------- */
+.aq-illustration { display: block; width: 100%; aspect-ratio: var(--ratio, 1); background-color: var(--ink-muted); -webkit-mask: var(--art, none) center / contain no-repeat; mask: var(--art, none) center / contain no-repeat; }
+.aq-illustration--ink { background-color: var(--ink); }
+.aq-illustration--flow { background-color: var(--flow); }
+.aq-illustration--on-navy { background-color: var(--on-navy-muted); }
+
+@container (max-width: 860px) {
+  .aq-illustration { max-width: 480px; margin-inline: auto; }
+}
+
 /* ---------- SplitSection: heading column left, content right ---------- */
 .aq-split-section { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--space-12); align-items: start; }
 .aq-split-section__head { position: sticky; top: var(--space-8); display: flex; flex-direction: column; gap: var(--space-4); }
@@ -157,9 +167,29 @@
 }
 
 /* ---------- DocList ---------- */
-.aq-docs { columns: 2 280px; column-gap: var(--space-12); margin: 0; padding: 0; list-style: none; }
-.aq-docs li { break-inside: avoid; padding: var(--space-3) 0; border-top: 1px solid var(--line); display: flex; gap: var(--space-3); }
-.aq-docs li::before { content: ""; flex: 0 0 10px; height: 12px; margin-top: 6px; border: 1px solid var(--line-strong); border-top-right-radius: 3px; }
+/* Desktop: tiles on a 6-column grid, three to a row; hairlines are the 1px grid gap showing the list's line background. */
+.aq-docs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--line); border: 1px solid var(--line); }
+.aq-docs > li { grid-column: span 2; position: relative; min-width: 0; display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-8) var(--space-6) var(--space-6); background: var(--surface-raised); }
+/* Last rows widen to two tiles so no row is left short: 3n+2 items end with one row of two, 3n+1 items with two rows of two. */
+.aq-docs > li:where(:nth-child(3n+1):nth-last-child(2), :nth-child(3n+1):nth-last-child(2) ~ li,
+  :nth-child(3n+1):nth-last-child(4), :nth-child(3n+1):nth-last-child(4) ~ li) { grid-column: span 3; }
+.aq-docs > li::before { content: ""; position: absolute; top: 0; left: var(--space-6); width: var(--space-12); height: 2px; background: var(--flow); }
+.aq-docs__code { font: 300 28px/34px var(--font-mono); letter-spacing: -0.01em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.aq-docs__n, .aq-docs__sep { color: var(--ink-subtle); }
+.aq-docs__sep { white-space: pre; }
+.aq-docs--plain .aq-docs__n { color: var(--ink-muted); }
+.aq-docs__name { font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-docs__d { display: block; margin-top: var(--space-1); font-size: 14px; color: var(--ink-muted); }
+
+/* Phone: a compact numbered list, "01 FS  Functional specification", codes in one aligned column. */
+@container (max-width: 860px) {
+  .aq-docs { grid-template-columns: auto minmax(0, 1fr); gap: 0; background: none; border: 0; border-bottom: 1px solid var(--line); }
+  .aq-docs > li { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; column-gap: var(--space-4); align-items: baseline; padding: var(--space-3) 0; background: none; border-top: 1px solid var(--line); }
+  .aq-docs > li::before { display: none; }
+  .aq-docs__code { font: 400 15px/22px var(--font-mono); letter-spacing: 0; white-space: nowrap; }
+  .aq-docs__n { margin-right: var(--space-2); }
+  .aq-docs__sep { display: none; }
+}
 
 /* ---------- FAQ ---------- */
 .aq-faq details { border-top: 1px solid var(--line); padding-block: var(--space-4); }
@@ -204,22 +234,122 @@
   .aq-linkgrid > *:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; }
 }
 
-/* ---------- OptionList: configuration choices, two columns ---------- */
-.aq-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--space-12); }
-.aq-options > div { padding-block: var(--space-4); border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: var(--space-1); }
+/* ---------- OptionList: configuration options as numbered module tiles on a technical grid ---------- */
+/* Columns: at most 4 (4, 7 or 8 options) or 3 (5 or 6 options); tiles never narrower than 240 px, so the grid
+   steps down by itself at tablet width. Gap and grid padding are both the same step, so each flow segment exactly spans it. */
+.aq-options {
+  counter-reset: aq-option;
+  list-style: none; margin: 0;
+  display: grid; gap: var(--space-6);
+  grid-template-columns: repeat(auto-fill, minmax(max(calc(var(--space-24) * 2.5), calc((100% - 3 * var(--space-6)) / 4)), 1fr));
+  padding: var(--space-6);
+  border: 1px solid var(--line);
+  background-color: var(--surface);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: var(--space-6) var(--space-6);
+  background-position: -1px -1px;
+}
+.aq-options:has(> :nth-child(5)):not(:has(> :nth-child(7))) { grid-template-columns: repeat(auto-fill, minmax(max(calc(var(--space-24) * 2.5), calc((100% - 2 * var(--space-6)) / 3)), 1fr)); }
+
+.aq-options__item {
+  counter-increment: aq-option;
+  position: relative; min-width: 0;
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-4) var(--space-6) var(--space-6);
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-0);
+}
+/* Flow line: an inlet segment into every tile at the height of its number, spanning the gap or the grid padding */
+.aq-options__item::before,
+.aq-options__item:last-child::after {
+  content: ""; position: absolute;
+  top: calc(var(--space-4) + var(--space-2) - 1px);
+  width: var(--space-6);
+  border-top: 2px solid var(--flow);
+}
+.aq-options__item::before { left: calc(-1 * var(--space-6) - 1px); }
+/* Outlet after the last tile, out to the grid edge */
+.aq-options__item:last-child::after { right: calc(-1 * var(--space-6) - 1px); }
+
+/* Tag row: module number and a decorative "available option" mark, above a hairline */
+.aq-options__tag {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-2);
+  padding-bottom: var(--space-3); margin-bottom: var(--space-2);
+  border-bottom: 1px solid var(--line);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+  font-variant-numeric: tabular-nums; color: var(--flow);
+}
+.aq-options__tag::before { content: counter(aq-option, decimal-leading-zero); }
+.aq-options__mark {
+  position: relative; flex: none;
+  width: calc(var(--space-6) + var(--space-1)); height: var(--space-4);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+}
+.aq-options__mark::after {
+  content: ""; position: absolute; top: 2px; bottom: 2px; right: 2px; aspect-ratio: 1;
+  background: var(--flow); border-radius: var(--radius-sm);
+}
+.aq-options__item .aq-h3, .aq-options__item .aq-small { margin: 0; }
 
 @container (max-width: 860px) {
-  .aq-options { grid-template-columns: minmax(0, 1fr); }
+  /* Phones: one stacked column; the flow line turns vertical and drops into each tile beside its number */
+  .aq-options { gap: var(--space-4); padding: var(--space-4); }
+  .aq-options, .aq-options:has(> :nth-child(5)):not(:has(> :nth-child(7))) { grid-template-columns: minmax(0, 1fr); }
+  .aq-options__item { padding: var(--space-4); }
+  .aq-options__item::before,
+  .aq-options__item:last-child::after {
+    left: calc(var(--space-4) + var(--space-2) - 1px); right: auto;
+    width: 0; height: var(--space-4);
+    border-top: 0; border-left: 2px solid var(--flow);
+  }
+  .aq-options__item::before { top: calc(-1 * var(--space-4) - 1px); }
+  .aq-options__item:last-child::after { top: auto; bottom: calc(-1 * var(--space-4) - 1px); }
 }
 
-/* ---------- ProcessDiagram: stages of a treatment train, left to right ---------- */
-.aq-diagram { overflow-x: auto; }
-.aq-diagram svg { display: block; max-width: 100%; min-width: 560px; height: auto; }
-.aq-diagram__box { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
-.aq-diagram__label { fill: var(--ink); font: 400 13px var(--font-sans); }
-.aq-diagram__num { fill: var(--ink-muted); font: 500 10px var(--font-mono); letter-spacing: 0.08em; }
-.aq-diagram__arrow { fill: none; stroke: var(--flow); stroke-width: 1.5; }
-.aq-diagram__base { stroke: var(--line); stroke-width: 1; }
+/* ---------- ProcessDiagram: treatment train as numbered stages on one serpentine Flow pipe ---------- */
+/* Rows of three stages; every second row runs right to left (direction: rtl), so the pipe snakes down
+   without any run-time measuring. Pipe = 5px double border in flow, the same language as WaterPath. */
+.aq-diagram { min-width: 0; }
+.aq-diagram__train { display: flex; flex-direction: column; }
+.aq-diagram--base { border: 1px dashed var(--line-strong); border-radius: var(--radius-md); padding: var(--space-6); }
+.aq-diagram__row { display: grid; grid-template-columns: minmax(0, 1fr) var(--space-16) minmax(0, 1fr) var(--space-16) minmax(0, 1fr); }
+.aq-diagram__row--rev { direction: rtl; }
+.aq-diagram__row > * { direction: ltr; }
+.aq-diagram__row--turn { align-items: start; }
+
+/* Stage box: number top left, equipment glyph top right, name at the foot */
+.aq-diagram__stage { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto 1fr; column-gap: var(--space-4); row-gap: var(--space-4); padding: var(--space-6) var(--space-4) var(--space-4) var(--space-6); border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); min-width: 0; }
+.aq-diagram__num { grid-column: 1; grid-row: 1; font: 300 32px/1 var(--font-mono); letter-spacing: -0.02em; color: var(--flow); }
+.aq-diagram__glyph { grid-column: 2; grid-row: 1 / 3; width: 72px; height: 56px; fill: none; stroke: var(--ink-muted); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.aq-diagram__label { grid-column: 1; grid-row: 2; align-self: end; font: 500 16px/22px var(--font-sans); color: var(--ink); overflow-wrap: anywhere; }
+
+/* Pipe between stages: horizontal in a row, vertical (--turn) between rows */
+.aq-diagram__link { position: relative; align-self: center; height: 0; border-top: 5px double var(--flow); }
+.aq-diagram__link::after { content: ""; position: absolute; top: -8.5px; right: -1px; border: 6px solid transparent; border-left: 9px solid var(--flow); border-right: 0; }
+.aq-diagram__row--rev .aq-diagram__link::after { right: auto; left: -1px; border-left: 0; border-right: 9px solid var(--flow); }
+.aq-diagram__link--turn { align-self: auto; justify-self: center; width: 0; height: var(--space-12); border-top: 0; border-left: 5px double var(--flow); }
+.aq-diagram__row .aq-diagram__link--turn::after { top: auto; right: auto; bottom: -1px; left: -8.5px; border: 6px solid transparent; border-top: 9px solid var(--flow); border-bottom: 0; }
+
+/* Valve and instrument symbols sit on the pipe; the surface fill breaks the line as on a P&ID */
+.aq-diagram__fitting { position: absolute; left: 50%; top: -2.5px; width: 28px; height: 28px; transform: translate(-50%, -50%); fill: var(--surface); stroke: var(--ink-muted); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-diagram__link--turn .aq-diagram__fitting { left: -2.5px; top: 50%; transform: translate(-50%, -50%) rotate(90deg); }
+
+/* What spans every stage: a dashed control boundary round the train, labelled at its foot */
+.aq-diagram__base { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-6); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-diagram__base .aq-diagram__fitting { position: static; flex: none; transform: none; fill: none; }
+
+@container (max-width: 860px) {
+  .aq-diagram--base { padding: var(--space-4); }
+  .aq-diagram__row { display: contents; }
+  .aq-diagram__link, .aq-diagram__link--turn { align-self: flex-start; justify-self: auto; width: 0; height: var(--space-12); margin-left: var(--space-12); border-top: 0; border-left: 5px double var(--flow); }
+  .aq-diagram__link--alt { align-self: flex-end; margin-left: 0; margin-right: var(--space-12); }
+  .aq-diagram__row .aq-diagram__link::after { top: auto; right: auto; bottom: -1px; left: -8.5px; border: 6px solid transparent; border-top: 9px solid var(--flow); border-bottom: 0; }
+  .aq-diagram__link .aq-diagram__fitting { left: -2.5px; top: 50%; transform: translate(-50%, -50%) rotate(90deg); }
+  .aq-diagram__stage { padding: var(--space-4); row-gap: var(--space-3); }
+  .aq-diagram__num { font-size: 24px; }
+  .aq-diagram__glyph { width: 54px; height: 42px; }
+}
 
 /* ---------- ProcessSteps: a real sequence, numbered by CSS ---------- */
 .aq-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); counter-reset: aq-step; }
@@ -292,22 +422,95 @@
 }
 
 /* ---------- SpecTable ---------- */
-.aq-spec { width: 100%; border-collapse: collapse; background: var(--surface-raised); font-family: var(--font-sans); }
+/* Shared: caption, header labels, cell type. Used by the spec sheet and by aq-spec--compare. */
+.aq-spec { width: 100%; border-collapse: collapse; font-family: var(--font-sans); color: var(--ink); }
 .aq-spec caption { text-align: left; padding-bottom: var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
 .aq-spec th, .aq-spec td { text-align: left; padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--line); vertical-align: top; }
-.aq-spec thead th { background: var(--surface-sunken); font: 500 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-spec thead th { background: var(--surface-sunken); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
 .aq-spec tbody th { font: 400 16px/24px var(--font-sans); color: var(--ink); }
-.aq-spec__value { font: 400 14px/24px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
-.aq-spec__method { font: 400 14px/24px var(--font-sans); color: var(--ink-muted); }
-.aq-spec__text { font: 400 14px/24px var(--font-sans); color: var(--ink); }
-.aq-spec tr.is-highlight > * { background: var(--flow-tint); }
-.aq-spec--compare { table-layout: fixed; min-width: 640px; }
+.aq-spec__value { font: 400 14px/20px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: break-word; }
+.aq-spec__method { font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-spec__text { font: 400 14px/22px var(--font-sans); color: var(--ink); }
+
+/* Spec sheet (default): a two-column specification matrix with the critical row as a full-width band.
+   Table elements change display, so the renderer also sets explicit ARIA table roles. */
+.aq-spec:not(.aq-spec--compare) { display: block; }
+.aq-spec:not(.aq-spec--compare) caption { display: block; }
+.aq-spec:not(.aq-spec--compare) thead { display: block; background: var(--surface-sunken); border: 1px solid var(--line); }
+.aq-spec:not(.aq-spec--compare) thead tr { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-2); padding: var(--space-2) var(--space-6); }
+.aq-spec:not(.aq-spec--compare) thead th { padding: 0; border: 0; background: none; }
+.aq-spec:not(.aq-spec--compare) thead th + th::before { content: "·"; content: "·" / ""; margin-right: var(--space-2); }
+.aq-spec:not(.aq-spec--compare) tbody { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-12); padding-inline: var(--space-6); background: var(--surface-raised); border: 1px solid var(--line); border-top: 0; }
+.aq-spec:not(.aq-spec--compare) tbody tr {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "p s" "v v" "m m";
+  row-gap: var(--space-1); column-gap: var(--space-4);
+  padding-block: var(--space-4); border-top: 1px solid var(--line); margin-top: -1px;
+}
+.aq-spec:not(.aq-spec--compare) tbody tr > * { display: block; padding: 0; border: 0; }
+.aq-spec:not(.aq-spec--compare) tbody th { grid-area: p; font: 400 16px/24px var(--font-sans); }
+.aq-spec:not(.aq-spec--compare) .aq-spec__value { grid-area: v; font: 400 20px/28px var(--font-mono); font-variant-numeric: tabular-nums; }
+.aq-spec:not(.aq-spec--compare) .aq-spec__method { grid-area: m; font: 400 14px/20px var(--font-sans); }
+.aq-spec:not(.aq-spec--compare) .aq-spec__method:empty { display: none; }
+.aq-spec:not(.aq-spec--compare) .aq-spec__status { grid-area: s; }
+
+/* Critical row: one full-width band with a readout-sized value */
+.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight {
+  order: -1; grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  grid-template-areas: "p v" "m v" "s v";
+  grid-template-rows: auto auto 1fr;
+  column-gap: var(--space-8);
+  margin-inline: calc(var(--space-6) * -1); margin-top: 0;
+  padding: var(--space-6); border-top: 0; border-left: 2px solid var(--flow);
+  background: var(--flow-tint);
+}
+.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr, .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr + tr { border-top: 0; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight th { font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__value { align-self: center; font: 300 40px/44px var(--font-mono); letter-spacing: -0.02em; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { color: var(--ink-muted); }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__status { justify-self: start; }
+
+/* Comparison table: options against criteria, real table layout, equal option columns */
+.aq-spec--compare { table-layout: fixed; min-width: 640px; background: var(--surface-raised); border: 1px solid var(--line); }
 .aq-spec--compare tr > :first-child { width: 22%; }
+.aq-spec--compare tbody th { font-weight: 500; }
+.aq-spec--compare tbody tr:last-child > * { border-bottom: 0; }
+
+/* Status words for results */
 .aq-status { display: inline-flex; align-items: center; gap: var(--space-1); font: 500 14px/24px var(--font-sans); }
 .aq-status--pass { color: var(--pass); }
 .aq-status--caution { color: var(--caution); }
 .aq-status--fail { color: var(--fail); }
 .aq-scroll { overflow-x: auto; }
+
+@container (max-width: 860px) {
+  /* Phone: a stacked list of compact rows; the critical row becomes a highlighted card */
+  .aq-spec:not(.aq-spec--compare) thead tr { padding-inline: var(--space-4); }
+  .aq-spec:not(.aq-spec--compare) tbody { grid-template-columns: minmax(0, 1fr); padding-inline: var(--space-4); }
+  .aq-spec:not(.aq-spec--compare) tbody tr {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "p" "v" "m" "s";
+    grid-template-rows: none;
+    row-gap: var(--space-1);
+    padding-block: var(--space-3);
+  }
+  .aq-spec:not(.aq-spec--compare) tbody th { font-size: 14px; line-height: 20px; }
+  .aq-spec:not(.aq-spec--compare) .aq-spec__value { font-size: 18px; line-height: 26px; text-align: left; }
+  .aq-spec:not(.aq-spec--compare) .aq-spec__method { font-size: 12px; line-height: 16px; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr + tr { border-top: 1px solid var(--line); }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "p" "v" "m" "s";
+    grid-template-rows: none;
+    row-gap: var(--space-2);
+    margin-inline: calc(var(--space-4) * -1);
+    padding: var(--space-4);
+  }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight th { font-size: 16px; line-height: 24px; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__value { font-size: 24px; line-height: 30px; text-align: left; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { font-size: 14px; line-height: 20px; }
+}
 
 /* ---------- StandardTag ---------- */
 .aq-tag {
