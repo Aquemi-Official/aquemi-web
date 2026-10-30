@@ -2,7 +2,7 @@ Specification sheets present water quality limits as a two-column matrix with th
 
 ## Spec sheet (default)
 
-On desktop the rows flow into two columns. Each cell stacks the parameter, the limit in `data` (Geist Mono 14/20) with its unit, and the method or reference beneath. The highlighted row spans both columns as a `flow-tint` band with a `flow` rule on the left and a value one step larger (20/28). On phones (container 860 px or less) it becomes compact two-line rows on hairlines: the parameter, then the value followed by ` · ` and the basis in small muted type; the highlighted row keeps its tint. No sideways scroll is needed.
+On desktop the rows flow into two columns. Each cell stacks the parameter, the limit in `data` (Geist Mono 14/20) with its unit, and the method or reference beneath. Highlighted rows at the top span both columns as a `flow-tint` band with a `flow` rule on the left and a value one step larger (20/28). On phones (container 860 px or less) it becomes compact two-line rows on hairlines: the parameter, then the value followed by ` · ` and the basis in small muted type; the highlighted row keeps its tint. No sideways scroll is needed.
 
 ```html
 <table class="aq-spec" role="table">
@@ -11,7 +11,7 @@ On desktop the rows flow into two columns. Each cell stacks the parameter, the l
     <th scope="col" role="columnheader">Parameter</th><th scope="col" role="columnheader">Specification</th><th scope="col" role="columnheader">Method or reference</th>
   </tr></thead>
   <tbody role="rowgroup">
-    <tr role="row" class="is-highlight"><th scope="row" role="rowheader">Bacterial endotoxins</th><td role="cell" class="aq-spec__value">&lt; 0.25 EU/mL</td><td role="cell" class="aq-spec__method">USP &lt;85&gt;</td></tr>
+    <tr role="row" class="is-highlight is-lead"><th scope="row" role="rowheader">Bacterial endotoxins</th><td role="cell" class="aq-spec__value">&lt; 0.25 EU/mL</td><td role="cell" class="aq-spec__method">USP &lt;85&gt;</td></tr>
     <tr role="row"><th scope="row" role="rowheader">Conductivity</th><td role="cell" class="aq-spec__value">≤ 1.3 µS/cm @ 25 °C</td><td role="cell" class="aq-spec__method">USP &lt;645&gt; stage 1</td></tr>
   </tbody>
 </table>
@@ -20,7 +20,8 @@ On desktop the rows flow into two columns. Each cell stacks the parameter, the l
 - It stays a real `<table>`: `<caption>` naming the system and standard, a `<thead>` (shown as one label strip), one `<tr>` per parameter with `<th scope="row">`. The CSS changes the table's `display`, so always add the ARIA roles shown above; they keep row and column semantics for screen readers in every browser.
 - Cells: parameter (`th`), value (`aq-spec__value`), method or reference (`aq-spec__method`; may be empty). An optional `aq-spec__status` cell holding an `aq-status` sits top right of the cell, or under the reference in the band.
 - Write limits exactly as the pharmacopoeia states them, comparison sign and unit included: `≤ 1.3 µS/cm @ 25 °C`, `≤ 500 ppb`, `< 0.25 EU/mL`. Never round or reword them for the layout.
-- Highlight at most one row, with `is-highlight`, and put it first in the source so reading order matches what is seen (the `spec` block renderer moves the `hl` row first). Choose the limit a QA reader checks first: endotoxins for WFI, conductivity for PW, non-condensable gases for pure steam.
+- **Highlights.** Mark critical rows with `is-highlight` (block field `hl`). Rows always keep their source order; nothing is moved. Highlighted rows at the top of the list also carry `is-lead` and become full-width bands; a highlighted row further down (a step in a sequence, say) is tinted in place with the same `flow` rule and `flow-tint`. Put the limit a QA reader checks first at the top and highlight it: endotoxins for WFI, conductivity for PW, non-condensable gases for pure steam. Two or three highlights at most, or nothing stands out.
+- **Row link.** A row may point to the page that explains it (block field `link`, a page id): a quiet `aq-spec__link` after the basis, the page's nav label and an arrow in `flow` (`<a class="aq-spec__link" href="#svc-fat-sat">FAT and SAT</a>`). Use it instead of writing "See the … page" into the basis.
 
 ## Token rules
 

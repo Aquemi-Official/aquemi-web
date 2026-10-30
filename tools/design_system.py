@@ -354,6 +354,10 @@ def check(show_budgets=False, only=None):
             for label in intent.split('|'):
                 if label not in opts:
                     problems.append('%s %s: "%s" is not a form option on %s' % (pid, where, label, target))
+        # Closing proof: explicit {v, l}, a confirmed figure (no [placeholder]); nothing is taken from the hero facts
+        pr = c.get('proof')
+        if pr is not None and (not isinstance(pr, dict) or not pr.get('v') or '[' in str(pr.get('v'))):
+            problems.append('%s cta.proof: needs {"v", "l"} with a confirmed value, no [placeholder]' % pid)
     for p in problems:
         print('PROBLEM', p)
     over = budgets(pages)

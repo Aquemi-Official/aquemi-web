@@ -33,9 +33,10 @@
 .aq-spec:not(.aq-spec--compare) .aq-spec__method:empty { display: none; }
 .aq-spec:not(.aq-spec--compare) .aq-spec__status { grid-area: s; }
 
-/* Critical row: one full-width band; its value one step larger than the rows (readout size is for KeyFacts and Readout only) */
-.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight {
-  order: -1; grid-column: 1 / -1;
+/* Critical rows. Rows keep their source order. hl rows at the top (is-lead) are full-width bands, their value one step
+   larger (readout size is for KeyFacts and Readout only); an hl row further down is tinted in place, same rule and tint. */
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead {
+  grid-column: 1 / -1;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   grid-template-areas: "p v" "m v" "s v";
   grid-template-rows: auto auto 1fr;
@@ -44,11 +45,19 @@
   padding: var(--space-6); border-top: 0; border-left: 2px solid var(--flow);
   background: var(--flow-tint);
 }
-.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr, .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr + tr { border-top: 0; }
-.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight th { font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; }
-.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__value { align-self: center; font: 400 20px/28px var(--font-mono); letter-spacing: -0.01em; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr.is-lead { border-top: 1px solid var(--surface-raised); }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr:not(.is-lead), .aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr:not(.is-lead) + tr { border-top: 0; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead th { font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead .aq-spec__value { align-self: center; font: 400 20px/28px var(--font-mono); letter-spacing: -0.01em; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead .aq-spec__status { justify-self: start; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight:not(.is-lead) { margin-inline: calc(var(--space-4) * -1); padding-inline: calc(var(--space-4) - 2px) var(--space-4); border-left: 2px solid var(--flow); background: var(--flow-tint); }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { color: var(--ink-muted); }
-.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__status { justify-self: start; }
+
+/* Row link (rows[].link): a quiet page link under the basis, "FAT and SAT →" */
+.aq-spec__link { display: block; margin-top: var(--space-1); font: 500 14px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
+.aq-spec__link::after { content: "\a0\2192"; content: "\a0\2192" / ""; }
+.aq-spec__link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.aq-spec__link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
 /* Status words for results */
 .aq-status { display: inline-flex; align-items: center; gap: var(--space-1); font: 500 14px/24px var(--font-sans); }
@@ -63,14 +72,17 @@
   .aq-spec:not(.aq-spec--compare) tbody { display: block; padding-inline: 0; background: none; border: 0; border-bottom: 1px solid var(--line); }
   .aq-spec:not(.aq-spec--compare) tbody tr,
   .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight { display: block; margin: 0; padding: var(--space-3) 0; border-top: 1px solid var(--line); }
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight { padding-inline: var(--space-3); border-top: 0; }
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr { border-top: 0; }
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr + tr { border-top: 1px solid var(--line); }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight,
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight:not(.is-lead) { margin: 0; padding-inline: var(--space-3); border-top: 0; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr:not(.is-highlight) { border-top: 0; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr.is-highlight { border-top: 1px solid var(--surface); }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr:not(.is-lead) + tr:not(.is-highlight) { border-top: 1px solid var(--line); }
   .aq-spec:not(.aq-spec--compare) tbody th,
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight th { display: block; margin-bottom: var(--space-1); font: 400 15px/22px var(--font-sans); }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-lead th { display: block; margin-bottom: var(--space-1); font: 400 15px/22px var(--font-sans); }
   .aq-spec:not(.aq-spec--compare) .aq-spec__value,
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__value { display: inline; font: 400 14px/22px var(--font-mono); letter-spacing: 0; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-lead .aq-spec__value { display: inline; font: 400 14px/22px var(--font-mono); letter-spacing: 0; }
   .aq-spec:not(.aq-spec--compare) .aq-spec__method,
   .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { display: inline; font-size: 12px; line-height: 18px; }
+  .aq-spec__link { display: inline; margin: 0; font-size: 12px; line-height: 18px; }
   .aq-spec:not(.aq-spec--compare) .aq-spec__method:not(:empty)::before { content: "\a0\b7\a0"; content: "\a0\b7\a0" / ""; color: var(--ink-subtle); }
 }

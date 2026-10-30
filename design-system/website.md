@@ -62,7 +62,7 @@ Every page reads as one system, on a phone first.
 
 ## Closing checklist
 
-The closing call to action can carry the page's "what to send us" list as `cta.include` (three to seven strings, 8 words or fewer each; `cta.include_label` overrides the label). Use it instead of a separate `docs` block for the same list: one ask, in one place.
+The closing call to action can carry the page's "what to send us" list as `cta.include` (three to seven strings, 8 words or fewer each; `cta.include_label` overrides the label). Use it instead of a separate `docs` block for the same list: one ask, in one place. The proof box under it shows only an explicit `cta.proof` (`{"v", "l"}`): one confirmed figure that evidences the ask, such as an Aquemi commitment or a test we run, never a pharmacopoeia limit on its own. Leave it out otherwise; the closing does not borrow hero facts.
 
 ## Content budgets
 

@@ -328,6 +328,10 @@
   "body": "Tell us the system, the grade and the province. We arrange a reference call, shop visit or FAT witness where our clients agree, or send sample documents, within [reference request response time, working days].",
   "button": "Request a reference call",
   "link": "contact-proposal",
+  "proof": {
+   "v": "1 report per figure",
+   "l": "Every outcome cites the executed test or qualification report"
+  },
   "intent": "Supplier qualification: audit, references, shop visit|Reference call",
   "include": [
    "System and grade you are buying",

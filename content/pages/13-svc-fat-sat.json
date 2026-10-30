@@ -307,6 +307,10 @@
   "body": "We send the protocol's table of contents and redacted test cases [shared openly or under NDA]. Send your URS and an engineer replies within [proposal response time, working days] with a draft FAT test list and leverage candidates.",
   "button": "Request a sample FAT protocol",
   "link": "cmp-documentation",
+  "proof": {
+   "v": "0, 50, 100 %",
+   "l": "Every analog loop checked at FAT, every I/O point"
+  },
   "include": [
    "Approved URS and functional specification",
    "Your protocol template and added test cases",

@@ -352,6 +352,10 @@
   "body": "An engineer replies within [proposal response time, working days] with questions or a loop concept: tank size, velocities and sanitization method.",
   "button": "Send your points-of-use list for a loop review",
   "link": "contact-proposal",
+  "proof": {
+   "v": "≥ 1 m/s",
+   "l": "Return velocity at peak draw · common practice"
+  },
   "intent": "Review of a document you have|Points-of-use list or loop design",
   "include": [
    "Points of use: location, L/h, temperature",

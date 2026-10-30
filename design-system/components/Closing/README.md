@@ -1,25 +1,25 @@
-Closing is the call to action at the end of every page: a very large headline in a framed panel on the navy band, one lead sentence, one proof readout with a confirmed figure from the page, and the primary button.
+Closing is the call to action at the end of every page: a very large headline in a framed panel on the navy band, one lead sentence, an optional proof readout with one confirmed figure, and the primary button.
 
 ## Markup
 
 ```html
 <section class="aq-section aq-band--navy aq-closing"><div class="aq-in"><div class="aq-closing__frame">
-  <h2 class="aq-closing__h">Compare a still against your utility costs.</h2>
+  <h2 class="aq-closing__h">Send your fabrication spec. We mark it against ASME BPE.</h2>
   <div class="aq-closing__body">
-    <p class="aq-lead">Send your WFI demand and steam, power and cooling water costs and we'll model both still types.</p>
+    <p class="aq-lead">An engineer replies with the clauses we meet, the ones we would change and a draft inspection plan.</p>
     <div class="aq-closing__proof">
       <span class="aq-closing__tag">Proof</span>
-      <span class="aq-closing__value">&lt; 0.25 EU/mL</span>
-      <span class="aq-closing__label">Bacterial endotoxins · USP &lt;85&gt;</span>
+      <span class="aq-closing__value">100 %</span>
+      <span class="aq-closing__label">Welds visually examined · ASME BPE</span>
     </div>
   </div>
-  <div class="aq-closing__action"><a class="aq-btn aq-btn--primary" href="#contact-proposal">Request a proposal <span class="aq-btn__arrow">→</span></a></div>
+  <div class="aq-closing__action"><a class="aq-btn aq-btn--primary" href="#contact-proposal">Request a fabrication spec review <span class="aq-btn__arrow">→</span></a></div>
 </div></div></section>
 ```
 
 - Always on `aq-band--navy` (see Band): it sets the navy ground, `on-navy` text and turns the primary button Limestone.
 - `aq-closing__body` holds an optional `aq-lead` and an optional `aq-closing__proof`. `aq-closing__action` holds exactly one primary button.
-- On the site, `wClosing(c, p)` in `assets/src/parts/Closing.js` renders it from the page's `cta` (`h`, `body`, `button`, `link`). The proof shows the page's first `facts` item whose value is confirmed (no `[placeholder]`); a page with no such fact gets no proof box.
+- On the site, `wClosing(c, p)` in `assets/src/parts/Closing.js` renders it from the page's `cta` (`h`, `body`, `button`, `link`, `intent`, `include`, `proof`). The proof box shows `cta.proof` (`{"v": "100 %", "l": "Welds visually examined · ASME BPE"}`) and nothing else; without `cta.proof` there is no proof box. It never falls back to the hero facts.
 
 ## Layout
 
@@ -38,7 +38,7 @@ Closing is the call to action at the end of every page: a very large headline in
 
 - Headline: one sentence, sentence case, naming what the reader should send or ask for. Not a slogan.
 - Lead: what to send and what comes back.
-- Proof: only a figure the page already states, with its unit and standard. Never invent or round a number for this box; leave it out instead.
+- Proof: set `cta.proof` only when one figure the page already states evidences what the closing asks for: an Aquemi commitment or a test we run ("100 % of welds visually examined" under "Send your fabrication spec"). A pharmacopoeia limit alone is not proof of anything we do; a count of system families is not proof either. Value with its unit, label with its standard. Never invent or round a number for this box, and never use a `[placeholder]` (`check` rejects it); leave the box out instead.
 
 ## When not to use it
 

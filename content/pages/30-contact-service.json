@@ -641,6 +641,10 @@
   "body": "A service plan fixes response times, visits, calibrations and spares in writing, at a fixed annual price. For a fault now, call [service phone number].",
   "button": "Compare service plans",
   "link": "svc-service",
+  "proof": {
+   "v": "4 levels",
+   "l": "Severities, the same as every service plan"
+  },
   "include_label": "Have ready when you call",
   "include": [
    "Serial number, or make and model",
