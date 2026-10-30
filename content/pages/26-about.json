@@ -5,13 +5,13 @@
  "title": "About Aquemi: pharmaceutical water, built in Canada | Aquemi",
  "meta": "One Canadian team designs, welds, FAT tests, qualifies and services your PW, WFI and pure steam system to USP, ASME BPE and CSA B51. Meet the people.",
  "path": "/company/about/",
- "eyebrow": "ABOUT AQUEMI · PW · WFI · PURE STEAM · DESIGNED, BUILT AND SERVICED IN CANADA",
+ "eyebrow": "ABOUT AQUEMI · DESIGNED, BUILT AND SERVICED IN CANADA",
  "headline": "A Canadian specialist in pharmaceutical water",
- "lead": "When an inspector asks who designed your water system, who welded it, who tested it and who services it now, your answer should be one company and a list of names. We design, fabricate, factory test, qualify and service Purified Water (PW), Water for Injection (WFI) and pure steam systems for plants inspected by Health Canada, the FDA or EU inspectors. We do that work in Canada, with one team, and nothing else. This page names that team, gives the company facts in one place, and shows where you can check each claim before you shortlist us.",
+ "lead": "We design, fabricate, test, qualify and service Purified Water (PW), Water for Injection (WFI) and pure steam systems in Canada, with one team. Below: the people, the company facts and how to check them.",
  "facts": [
   {
    "v": "0 border crossings",
-   "l": "For the assembled skid, from our shop in [shop location, city and province] to a site in Canada"
+   "l": "Assembled skid, from our shop in [shop location, city and province] to a Canadian site"
   },
   {
    "v": "5 stages · 1 team",
@@ -46,243 +46,122 @@
    "type": "prose",
    "h": "Why a specialist, why Canadian, why one team",
    "body": [
-    "A Canadian plant that buys a pharmaceutical water system today usually chooses between three kinds of supplier. A large overseas manufacturer has the product depth, but sells into Canada through an agent or a sales office, runs the FAT on another continent and sends service engineers from abroad. A Canadian service company is close by, but services equipment it did not design or build. A general water treatment firm builds in Canada, but pharmaceutical water is one line among municipal, industrial and residential work.",
-    "Each of these can deliver a good system. Each also leaves a gap your team fills: a FAT you fly to, a design question nobody local can answer, a service call that waits for a visa, a validation package assembled from three suppliers' documents.",
-    "We set Aquemi up to close those gaps. We work only on high-purity water for regulated manufacturing. We design, weld, test, qualify and service in Canada, so your engineers can drive to the FAT and our technicians can drive to your plant. And one team carries your project from the user requirement specification (URS) to requalification, so the people who answer your auditor's questions are the people who made the decisions."
-   ]
-  },
-  {
-   "type": "table",
-   "nav": "Ask any supplier",
-   "h": "Questions to ask any pharmaceutical water supplier, and our answers",
-   "cols": [
-    "Question",
-    "Why your team should ask it",
-    "Our answer",
-    "Where to check"
-   ],
-   "rows": [
-    [
-     "Who designs the system, and where?",
-     "Design questions come back at FAT, IQ and every change after handover. A design team on another continent answers in another time zone",
-     "Our engineers in [engineering office, city and province], from your URS and a feed water analysis",
-     {
-      "t": "Process design",
-      "link": "svc-design"
-     }
-    ],
-    [
-     "Who welds the product-contact tubing, and who keeps the weld log?",
-     "Weld records are sampled at IQ and at supplier audits. Subcontracted welding adds a supplier your quality unit must qualify",
-     "Our welding operators, qualified to ASME Section IX, in our shop. Every product-contact weld is numbered and logged to ASME BPE, with EN 10204 3.1 material certificates by heat number",
-     {
-      "t": "Fabrication",
-      "link": "svc-fabrication"
-     }
-    ],
-    [
-     "Where is the FAT run, and can we witness it without flying?",
-     "EU GMP Annex 15, 3.6 lets FAT tests stand at installation and operational qualification (IQ/OQ) without repeating them, where transport and installation do not affect them. A FAT your team saw is easier to leverage",
-     "In our test bay in [test bay location, city and province], wet, against a protocol you approved. [Remote witnessing: platform and terms]",
-     {
-      "t": "FAT and SAT",
-      "link": "svc-fat-sat"
-     }
-    ],
-    [
-     "Who executes IQ and OQ, and who approves the protocols?",
-     "If the supplier only delivers equipment, your validation team writes and runs everything",
-     "We write and execute the protocols; your quality unit approves them before execution and signs the reports",
-     {
-      "t": "Commissioning and qualification",
-      "link": "svc-cq"
-     }
-    ],
-    [
-     "Is the pressure equipment registered for our province?",
-     "Under CSA B51, the province of installation must register the design with a Canadian registration number (CRN) before the equipment can be used. A foreign design can need changes to get one",
-     "Designed to CSA B51 from the start. [CRN route: Aquemi submits, or the certified vessel fabricator we use; provinces registered to date]",
-     {
-      "t": "Standards we design to",
-      "link": "compliance"
-     }
-    ],
-    [
-     "Who answers a service call, and from where?",
-     "Uptime after handover depends on travel time and parts on the shelf, not on the brochure",
-     "Our technicians, based in [service bases, cities], with parts stocked in [stock location or locations]. First on-site response within [severity 1 on-site response time, hours]",
-     {
-      "t": "Service and spare parts",
-      "link": "svc-service"
-     }
-    ],
-    [
-     "What crosses the border, and in which currency is the quote?",
-     "Import duty, customs brokerage, cross-border freight and exchange rate can all move after the purchase order",
-     "The assembled skid does not cross a border to reach a Canadian site. Quotes are in Canadian dollars. Components we import, such as membranes, electrodeionization (EDI) modules and some instruments, carry the duty that applies to them. [Confirm how imported content and its duty are stated in a quote]",
-     {
-      "t": "Request a proposal",
-      "link": "contact-proposal"
-     }
-    ],
-    [
-     "Can we work and receive documents in French?",
-     "Operators, quality staff and, in Quebec, the law may need French documents",
-     "[Confirm which people work in French, and which documents are offered in French and how translations are reviewed]",
-     {
-      "t": "Documentation package",
-      "link": "cmp-documentation"
-     }
-    ],
-    [
-     "Can we audit you, and speak to a client, before award?",
-     "Your quality unit has to qualify the supplier, not only the equipment",
-     "Yes. A remote or on-site supplier audit, a questionnaire pack, and a reference call where a client agrees",
-     {
-      "t": "Quality management",
-      "link": "cmp-quality"
-     }
-    ]
-   ]
-  },
-  {
-   "type": "grid",
-   "nav": "Why Canadian",
-   "h": "What changes when your water system is built and serviced in Canada",
-   "intro": "Being Canadian is not a quality claim. It changes travel, registration, currency and response time, and each of those has a cost you can estimate.",
-   "items": [
-    {
-     "t": "A FAT you can drive to",
-     "d": "Your engineers and quality staff witness the wet FAT in [test bay location, city and province], at [distance or travel time from the main Canadian pharmaceutical clusters]. More of your team attends, and a failed test point is retested the same week.",
-     "tag": "EU GMP Annex 15",
-     "link": "svc-fat-sat"
-    },
-    {
-     "t": "Registered for your province from the first drawing",
-     "d": "Stills, pure steam generators and pressure-rated tanks are designed to CSA B51 so the CRN application does not send the design back for changes after award.",
-     "tag": "CSA B51",
-     "link": "compliance"
-    },
-    {
-     "t": "Designed for Canadian feed water",
-     "d": "Chloramine disinfection, cold winter intakes and seasonal swings are design inputs for pretreatment and reverse osmosis (RO) sizing, not surprises at SAT.",
-     "tag": "USP <1231>",
-     "link": "sys-pretreatment"
-    },
-    {
-     "t": "Quoted in Canadian dollars",
-     "d": "No import of the assembled skid, no customs broker on the main shipment and no exchange rate clause on our own labour. [Confirm quoting terms and how imported components are priced]",
-     "tag": "CAD"
-    },
-    {
-     "t": "Service by road",
-     "d": "Technicians based in [service bases, cities], spares held in [stock location or locations], and no work permit or border delay between a fault and a visit.",
-     "tag": "Uptime",
-     "link": "svc-service"
-    },
-    {
-     "t": "English and French",
-     "d": "Quebec is one of Canada's main pharmaceutical and biotechnology manufacturing regions, and few high-purity water suppliers publish pharmaceutical content in French. [Confirm French-language engineering, service and documentation before publishing]",
-     "tag": "EN · FR",
-     "link": "contact-locations"
-    }
+    "A Canadian plant buying a pharmaceutical water system usually chooses between three kinds of supplier. An overseas manufacturer has product depth, but sells through an agent, runs the FAT on another continent and sends service engineers from abroad. A Canadian service company is close, but services equipment it did not build. A general water treatment firm builds in Canada, but pharmaceutical water is one line among many.",
+    "Each leaves a gap your team fills: a FAT you fly to, a design question nobody local can answer, a validation package assembled from three suppliers.",
+    "We close those gaps. We work only on high-purity water for regulated manufacturing, in Canada, with one team from the user requirement specification (URS) to requalification."
    ]
   },
   {
    "type": "steps",
    "nav": "One team",
    "h": "One team from URS to requalification",
+   "intro": "The people who answer your auditor's questions are the people who made the decisions. [confirm project lead named through handover]",
    "items": [
     {
      "t": "Design",
-     "d": "Process and automation engineers turn your URS and feed water analysis into the functional specification, piping and instrumentation diagrams (P&IDs) and a requirements traceability matrix your validation team can follow."
+     "d": "Process and automation engineers turn your URS and feed water analysis into the functional specification, piping and instrumentation diagrams (P&IDs) and a traceability matrix."
     },
     {
      "t": "Fabricate",
-     "d": "Our welding operators build the skid and loop to ASME BPE, and every product-contact weld and heat number lands in the weld log as the work is done."
+     "d": "Our welding operators, qualified to ASME Section IX, build to ASME BPE. Every product-contact weld and heat number goes into the weld log."
     },
     {
      "t": "Factory test",
-     "d": "The engineers who wrote the functional specification run the wet FAT against the protocol you approved. Deviations are closed before the skid ships."
+     "d": "The engineers who wrote the functional specification run the wet FAT against the protocol you approved. Deviations close before the skid ships."
     },
     {
      "t": "Qualify",
-     "d": "Our validation lead executes the site acceptance test (SAT), IQ and OQ with your team, and supports your performance qualification (PQ) sampling. [Confirm that the project lead stays named from proposal to handover]"
+     "d": "Our validation lead executes the site acceptance test (SAT) and installation and operational qualification (IQ/OQ). Your quality unit approves every protocol first."
     },
     {
      "t": "Service",
-     "d": "Our service technicians take over with the as-built drawings, the FAT results and the people who made them one phone call away, for preventive maintenance, calibration, change control and requalification."
+     "d": "Our technicians take over with the as-built drawings, the FAT results and the engineers who made them: maintenance, calibration, change control and requalification."
     }
    ]
   },
   {
-   "type": "table",
+   "type": "grid",
+   "nav": "Why Canadian",
+   "h": "What changes when your system is built in Canada",
+   "intro": "Being Canadian is not a quality claim. It changes travel, registration, currency and response time, and each has a cost you can estimate.",
+   "items": [
+    {
+     "t": "A FAT you can drive to",
+     "d": "Witness the wet FAT in [test bay location, city and province] or remotely by [remote witnessing platform]. A failed point is retested the same week.",
+     "tag": "FAT",
+     "link": "svc-fat-sat"
+    },
+    {
+     "t": "Registered for your province from the first drawing",
+     "d": "Stills, pure steam generators and pressure-rated tanks are designed to CSA B51 for a Canadian registration number (CRN). [CRN route and provinces registered]",
+     "tag": "CSA B51",
+     "link": "compliance"
+    },
+    {
+     "t": "Designed for Canadian feed water",
+     "d": "Chloramine, cold winter intakes and seasonal swings are design inputs for pretreatment and reverse osmosis (RO) sizing, not surprises at SAT.",
+     "tag": "USP <1231>",
+     "link": "sys-pretreatment"
+    },
+    {
+     "t": "Quoted in Canadian dollars",
+     "d": "The assembled skid crosses no border to a Canadian site. Imported membranes, electrodeionization (EDI) modules and instruments carry their own duty. [quoting terms, imported content]",
+     "tag": "CAD"
+    },
+    {
+     "t": "Service by road",
+     "d": "Technicians in [service bases, cities], spares in [stock location or locations], first on-site response within [severity 1 on-site response time, hours].",
+     "tag": "Uptime",
+     "link": "svc-service"
+    },
+    {
+     "t": "English and French",
+     "d": "Quebec is one of Canada's main pharmaceutical and biotechnology manufacturing regions; few high-purity water suppliers publish pharmaceutical content in French. [French roles and documents]",
+     "tag": "EN · FR",
+     "link": "contact-locations"
+    }
+   ]
+  },
+  {
+   "type": "grid",
    "nav": "Team",
    "h": "The people you would work with",
-   "cols": [
-    "Role",
-    "Name",
-    "Credentials",
-    "Years in regulated water",
-    "Ask them about"
-   ],
-   "rows": [
-    [
-     "[Founder or managing director]",
-     "[Full name]",
-     "[Designation, for example P.Eng. or ing., licensing body and province]",
-     "[years]",
-     "Contract terms, company scope, references"
-    ],
-    [
-     "Process engineering lead",
-     "[Full name]",
-     "[P.Eng. or ing., licensing body and province; ISPE or other memberships]",
-     "[years]",
-     "Sizing, production route, URS review, design to USP <1231> and ISPE Baseline Guide Vol. 4"
-    ],
-    [
-     "Automation and controls lead",
-     "[Full name]",
-     "[Designation; programmable logic controller (PLC) and supervisory control and data acquisition (SCADA) platforms]",
-     "[years]",
-     "Control system, data integrity, 21 CFR Part 11, GAMP 5 category and software validation"
-    ],
-    [
-     "Fabrication and welding supervisor",
-     "[Full name]",
-     "[Welding qualifications, for example ASME Section IX welding operator; inspection credentials]",
-     "[years]",
-     "Orbital welding, borescope inspection, weld log, passivation and electropolish"
-    ],
-    [
-     "Validation lead",
-     "[Full name]",
-     "[Designation or training, for example engineering degree, commissioning, qualification and validation (CQV) experience]",
-     "[years]",
-     "FAT, SAT, IQ and OQ protocols, deviations, the turnover package"
-    ],
-    [
-     "Quality lead",
-     "[Full name]",
-     "[Designation, for example ISO 9001 lead auditor]",
-     "[years]",
-     "Supplier audits, change control, nonconformance and corrective and preventive action (CAPA), certificates"
-    ],
-    [
-     "Service manager",
-     "[Full name]",
-     "[Designation, for example Certified Engineering Technologist (CET); service regions covered]",
-     "[years]",
-     "Service plans, response times, spare parts, requalification support"
-    ]
+   "items": [
+    {
+     "t": "[Founder or managing director]",
+     "d": "[Full name] · [licence, body and province] · [years in regulated water]. Ask about contract terms, company scope and references."
+    },
+    {
+     "t": "Process engineering lead",
+     "d": "[Full name] · [P.Eng. or ing., body, province] · [years in regulated water]. Ask about sizing, URS review, USP <1231> and ISPE Baseline Guide Vol. 4."
+    },
+    {
+     "t": "Automation and controls lead",
+     "d": "[Full name] · [designation; control platforms] · [years in regulated water]. Ask about data integrity, 21 CFR Part 11 and GAMP 5."
+    },
+    {
+     "t": "Fabrication and welding supervisor",
+     "d": "[Full name] · [ASME Section IX qualifications] · [years in regulated water]. Ask about orbital welding, borescope inspection, passivation and electropolish."
+    },
+    {
+     "t": "Validation lead",
+     "d": "[Full name] · [degree or qualification experience] · [years in regulated water]. Ask about FAT, SAT, IQ and OQ protocols, deviations and turnover."
+    },
+    {
+     "t": "Quality lead",
+     "d": "[Full name] · [designation, e.g. ISO 9001 lead auditor] · [years in regulated water]. Ask about supplier audits, change control, corrective and preventive action (CAPA)."
+    },
+    {
+     "t": "Service manager",
+     "d": "[Full name] · [designation; service regions covered] · [years in regulated water]. Ask about service plans, response times, spare parts and requalification."
+    }
    ]
   },
   {
    "type": "spec",
    "nav": "Company",
    "h": "Company facts, in one place",
-   "caption": "Aquemi company facts · the same figures appear on every page and in every proposal",
+   "caption": "Company facts · one figure everywhere",
    "cols": [
     "Item",
     "Fact",
@@ -291,19 +170,14 @@
    "rows": [
     {
      "p": "Scope",
-     "v": "Design, fabrication, FAT, qualification and service of PW, WFI, pure steam, storage and distribution, pretreatment and monitoring systems. No residential or municipal products",
+     "v": "PW, WFI and pure steam systems, loops, pretreatment and monitoring, from design to service. No residential or municipal products",
      "m": "Services and systems pages",
      "hl": true
     },
     {
-     "p": "Founded",
-     "v": "[founding year], in [city, province]",
-     "m": "[Corporate registration: federal or provincial, and number]"
-    },
-    {
-     "p": "Ownership",
-     "v": "[Ownership: independent, privately held, or parent company]",
-     "m": "[Corporate registry entry]"
+     "p": "Founded and ownership",
+     "v": "[founding year], in [city, province] · [ownership: independent or parent company]",
+     "m": "[corporate registration, jurisdiction and number]"
     },
     {
      "p": "Head office and engineering",
@@ -312,79 +186,36 @@
     },
     {
      "p": "Shop and test bay",
-     "v": "[shop location, city and province] · [floor area, m²] · [test bay capacity: largest skid, m, and test water supply, L/h]",
+     "v": "[shop location, city and province] · [floor area, m²] · [largest skid, m; test water, L/h]",
      "m": "Shop visit or FAT witness"
     },
     {
      "p": "People",
-     "v": "[headcount] in total: [number] engineers, [number] welding operators, [number] validation staff, [number] service technicians",
+     "v": "[headcount] in total · [headcount by discipline]",
      "m": "Organization chart in the quality questionnaire pack"
     },
     {
      "p": "Professional licences",
-     "v": "[number of licensed engineers] P.Eng. or ing. in [provinces of licence] · [engineering firm permit or certificate of authorization, by province where required]",
-     "m": "[Licensing body registers]"
-    },
-    {
-     "p": "Service bases and stock",
-     "v": "[service bases, cities] · parts stocked in [stock location or locations]",
-     "m": "Service and spare parts page"
+     "v": "[number of licensed engineers] P.Eng. or ing. in [provinces of licence] · [engineering firm permit, by province]",
+     "m": "[licensing body registers]"
     },
     {
      "p": "Systems delivered",
-     "v": "[number of systems delivered, by system type and province, verified]",
-     "m": "Reference list, shared on request where clients agree"
-    },
-    {
-     "p": "Languages",
-     "v": "English · [French: confirm which roles and documents]",
-     "m": "Documentation package page"
+     "v": "[systems delivered, by type and province]",
+     "m": "Reference list, where clients agree"
     },
     {
      "p": "Quality system",
-     "v": "[ISO 9001 status: certificate number, registrar and expiry, or target certification date]",
+     "v": "[ISO 9001 status, registrar and expiry]",
      "m": "Quality management page"
     },
     {
      "p": "Insurance",
-     "v": "[Commercial general liability and professional liability limits, CAD]",
+     "v": "[general and professional liability limits, CAD]",
      "m": "Certificates in the quality questionnaire pack"
     }
    ],
-   "note": "Any figure in square brackets is not yet published. We state a figure once it is verified, and we keep one figure everywhere: a founding year, a headcount or an installed base that differs between pages is a reason to doubt the rest."
-  },
-  {
-   "type": "grid",
-   "nav": "Principles",
-   "h": "How we work",
-   "intro": "Five rules we hold ourselves to. Each one is something you can test on this site or in a proposal.",
-   "items": [
-    {
-     "t": "Precision over persuasion",
-     "d": "We give the number, the unit, the standard and the test method, for example ≤ 1.3 µS/cm at 25 °C to USP <645>, and let the specification make the case.",
-     "link": "compliance"
-    },
-    {
-     "t": "Specifications on the page",
-     "d": "Design ranges, materials, finishes and controls are published on each system page, so you can shortlist before you call.",
-     "link": "systems"
-    },
-    {
-     "t": "Documents arrive with the equipment",
-     "d": "Weld logs, material certificates, FAT results and the turnover package are delivered with the skid, not chased after it.",
-     "link": "cmp-documentation"
-    },
-    {
-     "t": "You approve before we execute",
-     "d": "Protocols, specifications and changes to anything you approved go to your team before the work, so your change control stays intact.",
-     "link": "cmp-quality"
-    },
-    {
-     "t": "We say what we do not know",
-     "d": "Where a figure depends on your feed water, demand or site, we state the assumption and the range instead of a promise.",
-     "link": "svc-design"
-    }
-   ]
+   "note": "A figure in square brackets is not yet published. We state it once verified, and keep one figure on every page."
   },
   {
    "type": "grid",
@@ -394,19 +225,19 @@
    "items": [
     {
      "t": "Read the standards we design to",
-     "d": "Every standard the site cites, with the clause or limit, the page that applies it and the document that proves it.",
+     "d": "Every standard we cite, with the clause or limit, the page that applies it and the document that proves it.",
      "tag": "Compliance matrix",
      "link": "compliance"
     },
     {
      "t": "Audit our quality system",
-     "d": "Document control, change control, CAPA, supplier control and calibration, each with the record it leaves. Remote, on site or by questionnaire.",
-     "tag": "ISO 9001:2015",
+     "d": "Document control, change control, CAPA, supplier control and calibration, each with its record. Remote, on site or by questionnaire.",
+     "tag": "Supplier audit",
      "link": "cmp-quality"
     },
     {
-     "t": "Ask for a reference or a FAT witness",
-     "d": "A call with a client's engineering or quality lead where the client agrees, a shop visit, or a seat at a FAT.",
+     "t": "Ask for a reference, a FAT seat or a shop visit",
+     "d": "A reference call where the client agrees, a seat at a FAT, or a visit to [shop location, city and province].",
      "tag": "References",
      "link": "projects"
     },
@@ -421,12 +252,6 @@
      "d": "Service plans, response times, stocked parts and requalification support, written as terms.",
      "tag": "Service",
      "link": "svc-service"
-    },
-    {
-     "t": "Visit the shop",
-     "d": "See orbital welding, borescope inspection and the material log in [shop location, city and province].",
-     "tag": "ASME BPE",
-     "link": "svc-fabrication"
     }
    ]
   },
@@ -437,7 +262,7 @@
    "items": [
     {
      "q": "You are smaller than the global manufacturers. Why take the risk?",
-     "a": "Judge the risk on evidence, not size. Audit our quality system, witness a FAT, read a sample turnover package and speak to a reference. A large supplier's size does not shorten your FAT travel, your service response or your CRN review. Ours lets the engineer who designed your system answer your auditor directly. [Add financial standing evidence offered to procurement, for example bank reference or bonding capacity]"
+     "a": "Judge the risk on evidence, not size: audit our quality system, witness a FAT, read a sample turnover package, speak to a reference. Size does not shorten your FAT travel, service response or CRN review. Ours lets the engineer who designed your system answer your auditor directly. [financial standing evidence for procurement]"
     },
     {
      "q": "What happens to our system if a key person leaves Aquemi?",
@@ -445,11 +270,11 @@
     },
     {
      "q": "Do you build WFI and pure steam, or only Purified Water?",
-     "a": "Purified Water, WFI by distillation and by membrane, pure steam, and the storage and distribution loops that carry them. [Confirm the range of capacities Aquemi builds for each system, L/h or kg/h]"
+     "a": "Purified Water, WFI by distillation and by membrane, pure steam, and the storage and distribution loops that carry them. [capacity range per system, L/h or kg/h]"
     },
     {
      "q": "Do you work outside pharmaceutical manufacturing?",
-     "a": "Our clients are pharmaceutical, biotechnology, medical device and contract manufacturers. The same RO and EDI platforms also serve hospital water for medical device reprocessing (CSA Z314), clinical laboratory reagent water (CLSI GP40) and laboratory water to ASTM D1193. [Confirm which adjacent uses Aquemi takes on] We do not sell residential or municipal products."
+     "a": "Our clients are pharmaceutical, biotechnology, medical device and contract manufacturers. The same RO and EDI platforms also serve hospital water for medical device reprocessing (CSA Z314), clinical laboratory reagent water (CLSI GP40) and laboratory water to ASTM D1193. [adjacent uses Aquemi takes on] We do not sell residential or municipal products."
     },
     {
      "q": "Do you service systems you did not build?",
@@ -457,11 +282,11 @@
     },
     {
      "q": "Do you work outside Canada?",
-     "a": "[State whether Aquemi delivers to sites outside Canada, where, and how FAT, CRN-equivalent registration and service are handled there.]"
+     "a": "[where Aquemi works outside Canada]"
     },
     {
      "q": "Who owns Aquemi?",
-     "a": "[State ownership: independent and privately held, or the parent company, and whether any equipment manufacturer holds a stake.]"
+     "a": "[ownership; any equipment maker's stake]"
     }
    ]
   },
@@ -489,20 +314,19 @@
   "Founding year and city, province of founding (one figure, same on every page)",
   "Headcount in total and by discipline (engineers, welding operators, validation staff, service technicians)",
   "Number of licensed engineers (P.Eng. or ing.), licensing bodies and provinces; engineering firm permit or certificate of authorization where required",
-  "Names, roles, credentials and years in regulated water for each team member listed, with each person's consent to be named; remove rows with no real person",
+  "Team rows: names, roles, credentials (licence, welding qualifications, control platforms, qualification experience) and years in regulated water, with each person's consent to be named; remove rows with no real person",
   "Founder or managing director title",
   "Head office and engineering office, city and province",
   "Shop and test bay location, floor area (m²), test bay capacity (largest skid, m; test water supply, L/h)",
-  "Distance or travel time from the test bay to the main Canadian pharmaceutical clusters",
   "Remote FAT witnessing platform and terms",
   "CRN route (Aquemi submits or certified vessel fabricator) and provinces registered to date",
   "Service bases (cities), spare parts stock locations; Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service)",
-  "Quoting terms in CAD; how imported components (membranes, EDI modules, instruments) and their duty are stated",
-  "French-language capability: which roles work in French, which documents are offered in French, translation review",
+  "Quoting terms in CAD; how imported components (membranes, EDI modules, instruments) and their duty are stated ([quoting terms, imported content])",
+  "French-language capability: which roles work in French, which documents are offered in French, translation review ([French roles and documents])",
   "Confirm the staffing model: project lead named from proposal to handover; FAT run by the engineers who wrote the functional specification",
   "Corporate registration (federal or provincial, number) and ownership; whether any equipment manufacturer holds a stake",
   "Systems delivered, by system type and province (verified), and reference list terms",
-  "ISO 9001 status (same wording as cmp-quality)",
+  "ISO 9001 status (same wording as cmp-quality): certificate number, registrar, expiry or target date",
   "Insurance: commercial general liability and professional liability limits (CAD)",
   "Financial standing evidence offered to procurement (bank reference, bonding capacity)",
   "Capacity range Aquemi builds per system (L/h, kg/h)",
