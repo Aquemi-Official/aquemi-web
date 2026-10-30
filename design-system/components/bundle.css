@@ -866,6 +866,8 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 .aq-diagram__train { display: flex; flex-direction: column; }
 .aq-diagram--base { border: 1px dashed var(--line-strong); border-radius: var(--radius-md); padding: var(--space-6); }
 .aq-diagram__row { display: grid; grid-template-columns: minmax(0, 1fr) var(--space-16) minmax(0, 1fr) var(--space-16) minmax(0, 1fr); }
+/* Four to a row when that balances the rows (seven stages: 4 + 3, never 3 + 3 + 1) */
+.aq-diagram--4 .aq-diagram__row { grid-template-columns: minmax(0, 1fr) var(--space-12) minmax(0, 1fr) var(--space-12) minmax(0, 1fr) var(--space-12) minmax(0, 1fr); }
 .aq-diagram__row--rev { direction: rtl; }
 .aq-diagram__row > * { direction: ltr; }
 .aq-diagram__row--turn { align-items: start; }
@@ -891,16 +893,24 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 .aq-diagram__base { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-6); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
 .aq-diagram__base .aq-diagram__fitting { position: static; flex: none; transform: none; fill: none; }
 
+/* Phone: compact hairline rows "01 | pipe | glyph | name" on one vertical Flow pipe; the boxes, fittings and
+   row-to-row links are desktop only. A seven-stage train is about 400 px tall instead of 1,200. */
 @container (max-width: 860px) {
-  .aq-diagram--base { padding: var(--space-4); }
+  .aq-diagram--base { padding: var(--space-2) var(--space-4) var(--space-4); }
+  .aq-diagram__train { border-bottom: 1px solid var(--line); }
   .aq-diagram__row { display: contents; }
-  .aq-diagram__link, .aq-diagram__link--turn { align-self: flex-start; justify-self: auto; width: 0; height: var(--space-12); margin-left: var(--space-12); border-top: 0; border-left: 5px double var(--flow); }
-  .aq-diagram__link--alt { align-self: flex-end; margin-left: 0; margin-right: var(--space-12); }
-  .aq-diagram__row .aq-diagram__link::after { top: auto; right: auto; bottom: -1px; left: -8.5px; border: 6px solid transparent; border-top: 9px solid var(--flow); border-bottom: 0; }
-  .aq-diagram__link .aq-diagram__fitting { left: -2.5px; top: 50%; transform: translate(-50%, -50%) rotate(90deg); }
-  .aq-diagram__stage { padding: var(--space-4); row-gap: var(--space-3); }
-  .aq-diagram__num { font-size: 24px; }
-  .aq-diagram__glyph { width: 54px; height: 42px; }
+  .aq-diagram__link { display: none; }
+  .aq-diagram__stage { position: relative; grid-template-columns: var(--space-8) var(--space-4) var(--space-12) minmax(0, 1fr); grid-template-rows: auto; align-items: center; column-gap: var(--space-2); padding: var(--space-2) 0; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: none; }
+  .aq-diagram__row:first-child > .aq-diagram__stage:first-child { border-top: 0; }
+  .aq-diagram__num { grid-column: 1; grid-row: 1; font: 400 13px/24px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+  .aq-diagram__glyph { grid-column: 3; grid-row: 1; width: var(--space-12); height: var(--space-8); }
+  .aq-diagram__label { grid-column: 4; grid-row: 1; align-self: center; font-size: 15px; line-height: 22px; }
+  /* The pipe: a 5 px double Flow line down column 2 through every row, from the first stage's centre to the last's, with a node at each stage */
+  .aq-diagram__stage::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--space-8) + var(--space-2) + var(--space-2) - 2.5px); border-left: 5px double var(--flow); }
+  .aq-diagram__row:first-child > .aq-diagram__stage:first-child::before { top: 50%; }
+  .aq-diagram__row:last-child > .aq-diagram__stage:last-child::before { bottom: 50%; }
+  .aq-diagram__stage::after { content: ""; position: absolute; top: 50%; left: calc(var(--space-8) + var(--space-2) + var(--space-2)); width: var(--space-2); height: var(--space-2); border: 1.5px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface); transform: translate(-50%, -50%); }
+  .aq-diagram__base { margin-top: var(--space-3); }
 }
 
 /* ---------- ProcessSteps: a real sequence as rows of the shared list grammar ---------- */
@@ -1220,15 +1230,15 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
 
 /* ---------- CompareTable ---------- */
 /* A comparison matrix: column heads as eyebrow labels, numbered row labels in a narrow left column, hairline cells.
-   Desktop: a real table. Phones: a row of column tabs shows one column at a time as a stacked label/value sheet.
+   Desktop: a real table. Phones: each row is a record, its first cell the title and every other cell a "Label value" line.
    The --list variant (two columns) is a numbered row list at every width. */
 .aq-compare-table {
   counter-reset: aq-compare-row;
   color: var(--ink);
   min-width: 0;
 }
-/* Column tabs: phones only */
-.aq-compare-table__tabs { display: none; }
+/* Column label inside each cell, and the column tabs: phones only (the thead names the column on desktop) */
+.aq-compare-table__k, .aq-compare-table__tabs { display: none; }
 
 .aq-compare-table__table {
   width: 100%; table-layout: fixed; border-collapse: collapse;
@@ -1288,14 +1298,14 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
 .aq-compare-table--list tr > * { width: auto; }
 .aq-compare-table--list tr > :first-child { width: auto; }
 
-/* Tab button (phones) */
+/* Tab button (--tabs, phones) */
 .aq-compare-table__tab {
-  appearance: none; margin: 0; min-width: 0; cursor: pointer;
-  display: flex; flex-direction: column; justify-content: flex-start;
-  padding: var(--space-3);
+  appearance: none; flex: none; width: var(--space-32); margin: 0; cursor: pointer;
+  display: flex; align-items: flex-start; min-height: 44px;
+  padding: var(--space-2) var(--space-3);
   border: 1px solid var(--line); border-radius: var(--radius-0);
   background: var(--surface-sunken);
-  font: 500 14px/20px var(--font-sans); text-align: left; color: var(--ink-muted);
+  font: 500 13px/18px var(--font-sans); text-align: left; color: var(--ink-muted);
   overflow-wrap: break-word;
 }
 .aq-compare-table__tab[aria-pressed="true"] {
@@ -1304,44 +1314,53 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
 }
 
 @container (max-width: 860px) {
-  /* Phones: no frame; tabs pick the column; each row is one compact key/value pair on a hairline
-     (row label left in small mono, the chosen column's value right). No sideways scroll. */
+  /* Phones: no frame, no sideways scroll, no tabs. Each row is a record on a hairline: index and title (the row label),
+     then one line per other column, "Label  value", the label in small muted type. Link-only columns (__go) end the
+     record as a plain link. The column heads stay for screen readers only. */
   .aq-compare-table { padding: 0; border: 0; background: none; }
-  .aq-compare-table__tabs {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--space-32)), 1fr));
-    gap: var(--space-1); margin-bottom: var(--space-2);
-  }
-  .aq-compare-table__tab { min-height: 44px; padding: var(--space-2) var(--space-3); }
   .aq-compare-table__table,
   .aq-compare-table__table tbody,
+  .aq-compare-table__table tr,
   .aq-compare-table__table th,
   .aq-compare-table__table td { display: block; width: auto; }
   .aq-compare-table__table { background: none; border: 0; border-bottom: 1px solid var(--line); }
   .aq-compare-table__table tr > :first-child { width: auto; }
-  /* Column heads stay for screen readers; the pressed tab names the column on screen */
   .aq-compare-table__table thead {
     position: absolute; width: 1px; height: 1px; overflow: hidden;
     clip-path: inset(50%); white-space: nowrap;
   }
-  .aq-compare-table__table tbody tr {
-    display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); column-gap: var(--space-4); align-items: baseline;
-    padding: var(--space-3) 0; border-top: 1px solid var(--line);
-  }
+  .aq-compare-table__table tbody tr { padding: var(--space-3) 0; border-top: 1px solid var(--line); }
   .aq-compare-table__table th,
   .aq-compare-table__table td { padding: 0; border: 0; }
-  .aq-compare-table__table tbody th { font: 500 13px/20px var(--font-sans); color: var(--ink-muted); }
-  .aq-compare-table__table tbody th::before { display: none; }
-  .aq-compare-table__table tbody td { font-size: 14px; line-height: 22px; }
+  .aq-compare-table__table tbody tr:last-child > * { border: 0; }
+  /* Title line: the shared index in the left column, the row label beside it */
+  .aq-compare-table__table tbody th { position: relative; padding-left: calc(var(--space-8) + var(--space-3)); font: 500 16px/24px var(--font-sans); color: var(--ink); }
+  .aq-compare-table__table tbody th::before { position: absolute; left: 0; top: 0; margin: 0; }
+  .aq-compare-table__table tbody td { margin-top: 0; padding-left: calc(var(--space-8) + var(--space-3)); font-size: 14px; line-height: 22px; }
+  .aq-compare-table__table tbody td[data-empty] { display: none; }
+  .aq-compare-table__k { display: inline; margin-right: var(--space-2); font: 500 13px/22px var(--font-sans); color: var(--ink-muted); }
+  .aq-compare-table__k::after { content: ":"; }
+  .aq-compare-table__table td.aq-compare-table__go { margin-top: var(--space-1); }
 
-  /* Only the chosen column (data-col = its position after the row label) is shown */
-  .aq-compare-table[data-col="1"] tbody td:not(:nth-child(2)),
-  .aq-compare-table[data-col="2"] tbody td:not(:nth-child(3)),
-  .aq-compare-table[data-col="3"] tbody td:not(:nth-child(4)),
-  .aq-compare-table[data-col="4"] tbody td:not(:nth-child(5)),
-  .aq-compare-table[data-col="5"] tbody td:not(:nth-child(6)) { display: none; }
+  /* Tabs (four or more value columns): one strip of tabs that scrolls inside itself, never two lines; each row the
+     label left (13/20 ink-muted) and the chosen column's value right. */
+  .aq-compare-table--tabs .aq-compare-table__tabs { display: flex; gap: var(--space-1); margin-bottom: var(--space-2); overflow-x: auto; scrollbar-width: thin; overscroll-behavior-x: contain; }
+  .aq-compare-table--tabs .aq-compare-table__table tbody tr { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); column-gap: var(--space-4); align-items: baseline; }
+  .aq-compare-table--tabs .aq-compare-table__table tbody th { padding-left: 0; font: 500 13px/20px var(--font-sans); color: var(--ink-muted); }
+  .aq-compare-table--tabs .aq-compare-table__table tbody th::before { display: none; }
+  .aq-compare-table--tabs .aq-compare-table__table tbody td { grid-column: 2; margin: 0; padding-left: 0; }
+  .aq-compare-table--tabs .aq-compare-table__table tbody td[data-empty] { display: block; }
+  .aq-compare-table--tabs[data-col="1"] tbody td:not(:nth-child(2)):not(.aq-compare-table__go),
+  .aq-compare-table--tabs[data-col="2"] tbody td:not(:nth-child(3)):not(.aq-compare-table__go),
+  .aq-compare-table--tabs[data-col="3"] tbody td:not(:nth-child(4)):not(.aq-compare-table__go),
+  .aq-compare-table--tabs[data-col="4"] tbody td:not(:nth-child(5)):not(.aq-compare-table__go),
+  .aq-compare-table--tabs[data-col="5"] tbody td:not(:nth-child(6)):not(.aq-compare-table__go),
+  .aq-compare-table--tabs[data-col="6"] tbody td:not(:nth-child(7)):not(.aq-compare-table__go) { display: none; }
 
-  /* List variant (two columns): no tabs; the same key/value rows */
-  .aq-compare-table--list .aq-compare-table__tabs { display: none; }
+  /* List variant (two columns): label above value */
+  .aq-compare-table--list .aq-compare-table__table tbody th { padding-left: 0; font: 500 13px/20px var(--font-sans); color: var(--ink-muted); }
+  .aq-compare-table--list .aq-compare-table__table tbody th::before { display: none; }
+  .aq-compare-table--list .aq-compare-table__table tbody td { padding-left: 0; }
 }
 
 /* ---------- KeyFacts: the numbers a page stands on, as a measurement strip ---------- */
@@ -1467,9 +1486,10 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
 .aq-spec:not(.aq-spec--compare) .aq-spec__method:empty { display: none; }
 .aq-spec:not(.aq-spec--compare) .aq-spec__status { grid-area: s; }
 
-/* Critical row: one full-width band; its value one step larger than the rows (readout size is for KeyFacts and Readout only) */
-.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight {
-  order: -1; grid-column: 1 / -1;
+/* Critical rows. Rows keep their source order. hl rows at the top (is-lead) are full-width bands, their value one step
+   larger (readout size is for KeyFacts and Readout only); an hl row further down is tinted in place, same rule and tint. */
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead {
+  grid-column: 1 / -1;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   grid-template-areas: "p v" "m v" "s v";
   grid-template-rows: auto auto 1fr;
@@ -1478,11 +1498,19 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
   padding: var(--space-6); border-top: 0; border-left: 2px solid var(--flow);
   background: var(--flow-tint);
 }
-.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr, .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr + tr { border-top: 0; }
-.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight th { font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; }
-.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__value { align-self: center; font: 400 20px/28px var(--font-mono); letter-spacing: -0.01em; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr.is-lead { border-top: 1px solid var(--surface-raised); }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr:not(.is-lead), .aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr:not(.is-lead) + tr { border-top: 0; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead th { font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead .aq-spec__value { align-self: center; font: 400 20px/28px var(--font-mono); letter-spacing: -0.01em; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-lead .aq-spec__status { justify-self: start; }
+.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight:not(.is-lead) { margin-inline: calc(var(--space-4) * -1); padding-inline: calc(var(--space-4) - 2px) var(--space-4); border-left: 2px solid var(--flow); background: var(--flow-tint); }
 .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { color: var(--ink-muted); }
-.aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__status { justify-self: start; }
+
+/* Row link (rows[].link): a quiet page link under the basis, "FAT and SAT →" */
+.aq-spec__link { display: block; margin-top: var(--space-1); font: 500 14px/20px var(--font-sans); color: var(--flow); text-decoration: none; }
+.aq-spec__link::after { content: "\a0\2192"; content: "\a0\2192" / ""; }
+.aq-spec__link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.aq-spec__link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
 /* Status words for results */
 .aq-status { display: inline-flex; align-items: center; gap: var(--space-1); font: 500 14px/24px var(--font-sans); }
@@ -1497,15 +1525,18 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
   .aq-spec:not(.aq-spec--compare) tbody { display: block; padding-inline: 0; background: none; border: 0; border-bottom: 1px solid var(--line); }
   .aq-spec:not(.aq-spec--compare) tbody tr,
   .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight { display: block; margin: 0; padding: var(--space-3) 0; border-top: 1px solid var(--line); }
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight { padding-inline: var(--space-3); border-top: 0; }
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr { border-top: 0; }
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr + tr { border-top: 1px solid var(--line); }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight,
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight:not(.is-lead) { margin: 0; padding-inline: var(--space-3); border-top: 0; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr:not(.is-highlight) { border-top: 0; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight + tr.is-highlight { border-top: 1px solid var(--surface); }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-lead + tr:not(.is-lead) + tr:not(.is-highlight) { border-top: 1px solid var(--line); }
   .aq-spec:not(.aq-spec--compare) tbody th,
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight th { display: block; margin-bottom: var(--space-1); font: 400 15px/22px var(--font-sans); }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-lead th { display: block; margin-bottom: var(--space-1); font: 400 15px/22px var(--font-sans); }
   .aq-spec:not(.aq-spec--compare) .aq-spec__value,
-  .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__value { display: inline; font: 400 14px/22px var(--font-mono); letter-spacing: 0; }
+  .aq-spec:not(.aq-spec--compare) tbody tr.is-lead .aq-spec__value { display: inline; font: 400 14px/22px var(--font-mono); letter-spacing: 0; }
   .aq-spec:not(.aq-spec--compare) .aq-spec__method,
   .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { display: inline; font-size: 12px; line-height: 18px; }
+  .aq-spec__link { display: inline; margin: 0; font-size: 12px; line-height: 18px; }
   .aq-spec:not(.aq-spec--compare) .aq-spec__method:not(:empty)::before { content: "\a0\b7\a0"; content: "\a0\b7\a0" / ""; color: var(--ink-subtle); }
 }
 

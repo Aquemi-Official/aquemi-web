@@ -37,10 +37,10 @@ function wBtn(label,link,kind,intent){var j=link&&link.charAt(0)==='#';return '<
 /* Closing: the call to action at the end of every page, on the navy band.
    c is the page's cta ({h, body, button, link, intent, include, include_label}); p is the page.
    include: optional checklist of short strings (what to send us, each ≤ 8 words), shown as a compact numbered list under
-   the body, so a page's "what to send" docs block can fold into its closing. include_label overrides "What to send us". The proof readout shows the page's first confirmed fact
-   (the first p.facts item whose value has no [placeholder]); with none, the box is left out. Never pass invented figures. */
+   the body, so a page's "what to send" docs block can fold into its closing. include_label overrides "What to send us". proof: optional {v, l}, one confirmed figure that evidences what the
+   closing asks for (an Aquemi commitment or a test we run). Without it there is no proof box; nothing is taken from the hero. */
 function wClosing(c,p){if(!c||!c.h)return '';
- var f=((p&&p.facts)||[]).filter(function(x){return x&&x.v&&String(x.v).indexOf('[')<0})[0];
+ var f=c.proof&&c.proof.v?c.proof:null;
  return '<section class="aq-section aq-band--navy aq-closing"><div class="aq-in"><div class="aq-closing__frame">'+
   '<h2 class="aq-closing__h">'+tx(c.h)+'</h2>'+
   '<div class="aq-closing__body">'+(c.body?'<p class="aq-lead">'+tx(c.body)+'</p>':'')+
@@ -133,6 +133,7 @@ function wHeroFigure(p,facts){
  return '<figure class="aq-hero__figure"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span>'+
   (facts.length?'<svg class="aq-hero__leaders" viewBox="0 0 125 100" preserveAspectRatio="none" aria-hidden="true">'+lines+'</svg><dl class="aq-hero__callouts">'+facts.map(function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'}).join('')+'</dl>':'')+'</figure>'}
 /* Hub and company pages: an index of the other pages in this page's section, in pages.json order.
+   A page whose first section already lists those pages (systems: the seven-families grid) sets "hero_index": false; its hero is then the text stack alone.
    A page alone in its section (projects) lists its own section headings instead; they link only when the block has a nav anchor. */
 function heroIndex(p){var sib=W().filter(function(q){return q.section===p.section&&q.id!==p.id}),hub=NAVSECT.filter(function(n){return n[1]===p.id})[0];
  if(sib.length)return {label:hub?p.section+' · '+sib.length+' pages':'Also in '+p.section,aria:hub?'Pages in '+p.section:'Other pages in '+p.section,
@@ -168,7 +169,7 @@ function wHomeLoop(p){
   label(76,132,'Filter','end')+label(76,362,'Heat','end')+label(76,374,'exchanger','end')+
   label(244,483,'Furthest point of use')+(ef?label(244,497,'Endotoxin '+ef.v):'')+
  '</g></svg></figure>'}
-function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^svc-|^ind-/.test(p.id),idx=!home&&!detail?heroIndex(p):null;
+function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^svc-|^ind-/.test(p.id),idx=!home&&!detail&&p.hero_index!==false?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
   '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
@@ -219,8 +220,8 @@ if(typeof document!=='undefined'){
  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&WMENU){var t=document.getElementById('wmenu');if(t){t.click();t=document.getElementById('wmenu');if(t)t.focus()}}});
 }
 /* ProcessDiagram: treatment train as numbered stage boxes on one serpentine Flow pipe.
-   Desktop: rows of three, alternate rows run right to left (CSS direction), joined by vertical drops.
-   Phone: one column, the pipe drops alternate left and right. No run-time measuring. */
+   Desktop: rows of three (four with --4, chosen by dCols so no stage sits alone), alternate rows run right to left
+   (CSS direction), joined by vertical drops. Phone: compact hairline rows on one vertical pipe. No run-time measuring. */
 var DGLYPH={
  hx:'M8 18h56v20H8zM14 28l6-6 6 12 6-12 6 12 6-12 6 12 6-6M20 18v-8M52 38v8',
  ro:'M6 20h60v16H6zM6 36L66 20M2 28h4M66 28h4M20 36v8M52 36v8',
@@ -246,16 +247,18 @@ function dGlyph(t){var s=String(t).toLowerCase();for(var i=0;i<DKEYS.length;i++)
 /* Pipe fittings between stages: a valve, then an instrument bubble, alternating */
 var DVALVE='<svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6v12l18-12v12z"/></svg>';
 var DINST='<svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12V11M6.5 5.5a5.5 5.5 0 1 0 11 0a5.5 5.5 0 1 0-11 0M6.5 5.5h11"/></svg>';
-function wDiagram(b){var st=b.stages||[],n=st.length,k=0,s='';
- function link(cls){var c='aq-diagram__link'+cls+(k%2?' aq-diagram__link--alt':'');var f=k%2?DINST:DVALVE;k++;return '<span class="'+c+'">'+f+'</span>'}
+/* Stages per desktop row: three, or four when that balances the rows (4 -> one row, 7 -> 4 + 3, 8 -> 4 + 4) */
+function dCols(n){return n===4||n>=7?4:3}
+function wDiagram(b){var st=b.stages||[],n=st.length,k=0,s='',c=dCols(n);
+ function link(cls){var c='aq-diagram__link'+cls;var f=k%2?DINST:DVALVE;k++;return '<span class="'+c+'">'+f+'</span>'}
  function stage(t,i){return '<div class="aq-diagram__stage"><span class="aq-diagram__num">'+String(i+1).padStart(2,'0')+'</span><svg class="aq-diagram__glyph" viewBox="0 0 72 56" aria-hidden="true"><path d="'+dGlyph(t)+'"/></svg><span class="aq-diagram__label">'+tx(t)+'</span></div>'}
- for(var r=0;r*3<n;r++){var rev=r%2?' aq-diagram__row--rev':'';
+ for(var r=0;r*c<n;r++){var rev=r%2?' aq-diagram__row--rev':'';
   if(r)s+='<div class="aq-diagram__row aq-diagram__row--turn'+rev+'">'+link(' aq-diagram__link--turn')+'</div>';
   s+='<div class="aq-diagram__row'+rev+'">';
-  st.slice(r*3,r*3+3).forEach(function(t,j){var i=r*3+j;if(j)s+=link('');s+=stage(t,i)});
+  st.slice(r*c,r*c+c).forEach(function(t,j){var i=r*c+j;if(j)s+=link('');s+=stage(t,i)});
   s+='</div>'}
  var alt='Treatment train, '+n+' stages in order: '+st.map(function(t,i){return (i+1)+' '+t}).join(', ')+(b.base?'. Across all stages: '+b.base:'');
- return '<div class="aq-diagram'+(b.base?' aq-diagram--base':'')+'" role="img" aria-label="'+e(alt)+'"><div class="aq-diagram__train">'+s+'</div>'+(b.base?'<div class="aq-diagram__base"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+e(b.base)+'</span></div>':'')+'</div>'}
+ return '<div class="aq-diagram'+(c===4?' aq-diagram--4':'')+(b.base?' aq-diagram--base':'')+'" role="img" aria-label="'+e(alt)+'"><div class="aq-diagram__train">'+s+'</div>'+(b.base?'<div class="aq-diagram__base"><svg class="aq-diagram__fitting" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+e(b.base)+'</span></div>':'')+'</div>'}
 /* SectionNav: sticky numbered jump links to blocks that carry a short nav label (four or more), with a page progress readout.
    Block section ids come from jid(). The scroll-spy below marks the section being read (aria-current) here and in the phone menu. */
 function ctaLink(p){return p.primary_cta_link||(/service/i.test(p.primary_cta)?'contact-service':'contact-proposal')}
@@ -339,34 +342,34 @@ BLOCKS['diagram']=function(b,H){return sec(H+wDiagram(b)+(b.caption?'<p class="a
 /* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT). */
 var DOC_CODES=[
   [/^urs\b.*traceability/i,'URS & TM'],[/traceability matrix/i,'TM'],[/user requirement|\burs\b/i,'URS'],
-  [/functional (design )?spec/i,'FS'],[/hardware and software design/i,'HDS & SDS'],[/basis of design/i,'BOD'],
+  [/functional and design spec/i,'FDS'],[/functional (design )?spec/i,'FS'],[/hardware and software design/i,'HDS & SDS'],[/basis of design/i,'BOD'],[/mass balance/i,'HMB'],[/steam balance/i,'SB'],[/membrane projection/i,'PRJ'],
   [/design review|\bdq\b/i,'DQ'],[/risk assessment/i,'RA'],[/contamination control/i,'CCS'],
-  [/feed water analysis/i,'FWA'],[/demand profile|sizing calc/i,'SIZ'],[/heat balance/i,'HB'],[/hydraulic calc/i,'HYD'],
+  [/feed ?water (analysis|review)/i,'FWA'],[/demand profile|sizing calc/i,'SIZ'],[/heat balance/i,'HB'],[/hydraulic calc/i,'HYD'],
   [/p&id|instrumentation diagram/i,'P&ID'],[/general arrangement/i,'GA'],[/isometric/i,'ISO'],
   [/instrument and valve list/i,'I&V'],[/alarm and interlock/i,'ALM'],[/electrical drawing/i,'ELE'],
   [/part 11/i,'Part 11'],[/source code/i,'SRC'],[/pressure vessel|\bcrn\b/i,'CRN'],
-  [/operation and maintenance/i,'O&M'],[/standard operating procedure|\bsop\b/i,'SOP'],
-  [/material cert/i,'MAT'],[/media and resin/i,'MED'],
-  [/welding procedure/i,'WPS & PQR'],[/welder and procedure/i,'WQR & PQR'],[/welder qualif/i,'WQR'],
+  [/operation and maintenance/i,'O&M'],[/standard operating procedure|\bsops?\b/i,'SOP'],
+  [/fabrication and inspection plan/i,'FIP'],[/fabrication record/i,'FAB'],[/material (cert|log)/i,'MAT'],[/media and resin/i,'MED'],
+  [/welding procedure|\bwps\b/i,'WPS & PQR'],[/welder and procedure/i,'WQR & PQR'],[/welder qualif/i,'WQR'],
   [/weld (log|map)/i,'WLD'],[/borescope/i,'BOR'],[/pressure test/i,'PT'],
-  [/surface finish/i,'SRF'],[/passivation/i,'PAS'],[/slope verif/i,'SLP'],[/riboflavin|spray ball/i,'RIB'],
+  [/slope (verif|survey).*dead leg/i,'SLP & DLR'],[/dead leg/i,'DLR'],[/surface finish/i,'SRF'],[/passivation/i,'PAS'],[/slope (verif|survey|check)/i,'SLP'],[/riboflavin|spray ball/i,'RIB'],
   [/integrity test/i,'INT'],[/calibration/i,'CAL'],[/en 285/i,'EN 285'],
   [/executed fat/i,'FAT RPT'],[/\bfat\b.*\bsat\b/i,'FAT & SAT'],[/\bfat\b/i,'FAT'],[/\bsat\b/i,'SAT'],
   [/\biq\b.*\boq\b/i,'IQ & OQ'],[/\biq\b/i,'IQ'],[/\boq\b/i,'OQ'],[/\bpq\b/i,'PQ'],
-  [/commissioning/i,'CX'],[/qualification summary/i,'QSR'],[/training/i,'TRN'],
-  [/nonconformance/i,'DEV & NCR'],[/deviation/i,'DEV'],[/change control/i,'CC'],[/punch list/i,'PL'],
-  [/spare/i,'SPR'],[/parts replaced/i,'PRT'],[/service report/i,'SVC'],[/health report/i,'AHR'],[/turnover package/i,'TOP']
+  [/commissioning/i,'CX'],[/sampling plan/i,'SMP'],[/software version/i,'SVR'],[/computeri[sz]ed system validation/i,'CSV'],[/data integrity/i,'DI'],[/qualification summary/i,'QSR'],[/training/i,'TRN'],
+  [/nonconformance/i,'DEV & NCR'],[/deviation/i,'DEV'],[/change control/i,'CC'],[/change impact/i,'CIA'],[/change log/i,'CL'],[/as-built/i,'ASB'],[/like-for-like|like for like/i,'LFL'],[/observation/i,'OBS'],[/annual system review/i,'ASR'],[/trend report/i,'TRD'],[/excursion/i,'EXC'],[/system description/i,'SD'],[/compliance matrix/i,'CM'],[/punch list/i,'PL'],
+  [/spare/i,'SPR'],[/parts (replaced|record)/i,'PRT'],[/service report/i,'SVC'],[/health report/i,'AHR'],[/turnover package/i,'TOP']
 ];
 var DOC_STOP=/^(and|or|of|the|for|with|to|in|on|a|an|your|by|from)$/i;
-/* Lookup code, else an acronym the name already gives in brackets, else initials of its first three words. Second value: matched the lookup. */
+/* Codes: an item's explicit code wins (items [{t, code}]); then this lookup, else an acronym the name already gives in brackets, else initials of its first three words. Second value: matched the lookup. */
 function docCode(name){
   for(var i=0;i<DOC_CODES.length;i++)if(DOC_CODES[i][0].test(name))return [DOC_CODES[i][1],true];
   var m=name.match(/\(([A-Z][A-Z&]{1,5})s?\)/);if(m)return [m[1],false];
   return [name.replace(/\(.*?\)/g,'').split(/[\s,\/-]+/).filter(function(w){return w&&!DOC_STOP.test(w)}).slice(0,3).map(function(w){return w.charAt(0).toUpperCase()}).join(''),false];
 }
 BLOCKS['docs']=function(b,H){
-  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d}});
-  var codes=items.map(function(x){return docCode(x.t)});
+  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code}});
+  var codes=items.map(function(x){return x.code?[x.code,true]:docCode(x.t)});
   /* Codes only when most items are documents the lookup knows; a checklist of other things keeps just its numbers. */
   var coded=codes.filter(function(c){return c[1]}).length*2>=items.length;
   return sec(H+'<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
@@ -452,18 +455,19 @@ BLOCKS['related']=function(b,H){return sec(H+'<ol class="aq-related-links">'+(b.
  return '<li><a class="aq-related-links__card" href="#'+e(id)+'" data-wp="'+e(id)+'">'+idx(i)
   +'<span class="aq-related-links__title">'+tx(p.nav_label)+'</span><span class="aq-related-links__group">'+e(p.section)+'</span>'
   +(ART[id]?'<span class="aq-illustration aq-related-links__art" aria-hidden="true" style="'+artMask(id)+'"></span>':'')+'</a></li>'}).join('')+'</ol>');};
-/* Block "spec" -> SpecTable (spec sheet: two-column matrix, the hl row first as a full-width band).
-   Fields: h, caption, cols, rows [{p, v, m, hl}], note. The caption is the section's eyebrow (above h) and the table's
-   visually hidden <caption>; it is never printed a second time above the table.
+/* Block "spec" -> SpecTable (spec sheet: two-column matrix).
+   Fields: h, caption, cols, rows [{p, v, m, hl, link}], note. Rows keep their order. hl rows at the top of the list are
+   full-width bands (is-highlight is-lead); an hl row further down is tinted in place, so sequences are never broken.
+   link: a page id, shown as a quiet "Page name →" link after the basis. The caption is the section's eyebrow (above h)
+   and the table's visually hidden <caption>; it is never printed a second time above the table.
    CSS changes the table's display, so explicit ARIA table roles keep its semantics in every browser. */
 BLOCKS['spec']=function(b,H){
   var cols=b.cols||['Parameter','Specification','Method or reference'];
-  var rows=(b.rows||[]).slice(),k=-1;
-  rows.forEach(function(r,i){if(r.hl&&k<0)k=i});
-  if(k>0)rows.unshift(rows.splice(k,1)[0]);
-  var body=rows.map(function(r,i){
-    var hl=k>=0&&i===0;
-    return '<tr role="row"'+(hl?' class="is-highlight"':'')+'><th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+'</td></tr>';
+  var rows=b.rows||[],lead=true;
+  var body=rows.map(function(r){
+    var hl=!!r.hl,cls=hl?(lead?'is-highlight is-lead':'is-highlight'):'';if(!hl)lead=false;
+    var lp=r.link&&wp(r.link),lk=lp?'<a class="aq-spec__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(lp.nav_label||r.link)+'</a>':'';
+    return '<tr role="row"'+(cls?' class="'+cls+'"':'')+'><th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
   }).join('');
   var head=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro});
   return sec(head+'<div class="aq-stack"><table class="aq-spec" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>'+(b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'')+'</div>');
@@ -472,14 +476,22 @@ BLOCKS['spec']=function(b,H){
    joined by one thin riser through the index column. */
 BLOCKS['steps']=function(b,H){return sec(H+'<ol class="aq-rows aq-steps">'+(b.items||[]).map(function(it,i){return wRow(i,it.t,it.d)}).join('')+'</ol>');};
 /* Block "table" -> CompareTable. cols: header labels (first is the row-label column); rows: cells, each a string or {t, link}.
-   Three or more columns: a numbered matrix, with column tabs on phones. Two columns: the numbered row list (aq-compare-table--list).
-   The CSS changes table display on phones, so explicit ARIA table roles are set. */
-BLOCKS['table']=function(b,H){var C=b.cols||[],list=C.length<=2,
- tabs=list?'':'<div class="aq-compare-table__tabs" role="group" aria-label="Column shown">'+C.slice(1).map(function(c,i){return '<button type="button" class="aq-compare-table__tab" data-col="'+(i+1)+'" aria-pressed="'+(i?'false':'true')+'">'+tx(c)+'</button>'}).join('')+'</div>';
- return sec(H+'<div class="aq-compare-table'+(list?' aq-compare-table--list':'')+'"'+(list?'':' data-col="1"')+'>'+tabs
+   Three or more columns: a numbered matrix on desktop. A column whose every cell is a page link ("Where we show it") is a
+   link column (aq-compare-table__go): on phones its link sits at the foot of the row, unlabelled, never a tab.
+   Phones, up to three value columns: every row is a record, the first cell its title and each other cell one
+   "Label: value" line (aq-compare-table__k carries the label, hidden on desktop), so nothing needs a tap.
+   Phones, four or more value columns (--tabs): one tab per value column on a single scrolling strip, one column shown.
+   Two columns: the numbered row list (--list). The CSS changes table display on phones, so explicit ARIA roles are set. */
+BLOCKS['table']=function(b,H){var C=b.cols||[],R=b.rows||[],list=C.length<=2;
+ var go=C.map(function(c,i){return i>0&&R.length>0&&R.every(function(r){var x=r[i];return x&&typeof x==='object'&&x.link})});
+ var vals=C.map(function(c,i){return i}).filter(function(i){return i>0&&!go[i]}),tabs=!list&&vals.length>=4;
+ function cell(c,i){if(list)return '<td role="cell">'+tcell(c)+'</td>';
+  var v=tcell(c);return '<td role="cell"'+(go[i]?' class="aq-compare-table__go"':'')+(v?'':' data-empty')+'>'+(go[i]||tabs||!C[i]?'':'<span class="aq-compare-table__k" aria-hidden="true">'+tx(C[i])+'</span>')+v+'</td>'}
+ var strip=tabs?'<div class="aq-compare-table__tabs" role="group" aria-label="Column shown">'+vals.map(function(i,k){return '<button type="button" class="aq-compare-table__tab" data-col="'+i+'" aria-pressed="'+(k?'false':'true')+'">'+tx(C[i])+'</button>'}).join('')+'</div>':'';
+ return sec(H+'<div class="aq-compare-table'+(list?' aq-compare-table--list':'')+(tabs?' aq-compare-table--tabs" data-col="'+vals[0]:'')+'">'+strip
   +'<table class="aq-compare-table__table" role="table"><thead role="rowgroup"><tr role="row">'+C.map(function(c){return '<th scope="col" role="columnheader">'+tx(c)+'</th>'}).join('')+'</tr></thead>'
-  +'<tbody role="rowgroup">'+(b.rows||[]).map(function(r){return '<tr role="row">'+r.map(function(c,i){return i?'<td role="cell">'+tcell(c)+'</td>':'<th scope="row" role="rowheader">'+tcell(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>');};
-/* CompareTable tabs: show the pressed column on phones */
+  +'<tbody role="rowgroup">'+R.map(function(r){return '<tr role="row">'+r.map(function(c,i){return i?cell(c,i):'<th scope="row" role="rowheader">'+tcell(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>');};
+/* CompareTable tabs (--tabs, phones): show the pressed column */
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-compare-table__tab');if(!t)return;var w=t.closest('.aq-compare-table');w.setAttribute('data-col',t.getAttribute('data-col'));[].forEach.call(w.querySelectorAll('.aq-compare-table__tab'),function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});
 /* Block "tags" -> StandardsGrid section. items: strings (the standard's code) or {code, name} objects;
    name is the optional plain-language line. Cards link to Compliance when that page exists. */

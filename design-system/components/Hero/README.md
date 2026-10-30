@@ -14,7 +14,7 @@ Hero opens every page: eyebrow, one display headline, one lead sentence, one pri
 | `sys-*`, `svc-*`, `ind-*` without a drawing | Photograph placeholder | `aq-hero__grid` |
 | Hub and company pages (everything else) | Section index (concept S) | `aq-hero__grid--index` |
 
-`wHero` in `assets/src/parts/Hero.js` picks the variant from the page id; content files need no extra fields.
+`wHero` in `assets/src/parts/Hero.js` picks the variant from the page id; content files need no extra fields (except `hero_index: false`, below).
 
 ## Equipment figure (pages with a drawing)
 
@@ -40,6 +40,7 @@ Hero opens every page: eyebrow, one display headline, one lead sentence, one pri
 - Data: the pages whose `section` equals this page's `section`, other than the page itself, in `pages.json` order. On the section's own hub (the page NAVSECT links to: systems, services, industries, compliance, projects, about) the label reads "Systems · 7 pages"; on any other page of the section (cmp-*, careers, news, contact-*) it reads "Also in Company", so the index works as a section switcher.
 - Fallback: a page alone in its section (today only `projects`) lists its own section headings (`blocks[].h`, leaving out `related`, at most seven) under "On this page". Headings link only when their block has a `nav` anchor; the rest are plain items. With fewer than two headings the hero stays text-only.
 - Keep the page's hero tags under the actions: the index replaces the photograph, not the standards.
+- **Turning it off:** when the section right under the hero already lists the same pages with more to say (the systems hub's seven-families grid), set `"hero_index": false` on the page. The hero is then the text stack alone at full width; no other page changes. Don't repeat a list the reader sees one scroll later.
 - Phones (`@container (max-width: 860px)`): the index stacks under the tags, full width, with a shorter leader.
 
 ## Loop drawing (home)

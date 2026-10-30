@@ -14,6 +14,7 @@
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
  },
+ "hero_index": false,
  "blocks": [
   {
    "type": "grid",
@@ -306,6 +307,7 @@
     },
     {
      "t": "Added by system",
+     "code": "+",
      "d": "still heat and mass balance, EN 285 test report, loop hydraulics and dead leg register, membrane projections, Part 11 and Annex 11 assessment"
     }
    ]

@@ -318,6 +318,10 @@
     "body": "A process engineer, not a sales desk, replies within [proposal response time, working days]. For a system down now, call [service phone number].",
     "button": "Submit your URS for a proposal",
     "link": "contact-proposal",
+    "proof": {
+     "v": "100 %",
+     "l": "Skids wet tested at FAT before shipping"
+    },
     "intent": "Sizing and budget proposal for a new system",
     "include": [
      "Your URS, approved or in draft",
@@ -357,6 +361,7 @@
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
+   "hero_index": false,
    "blocks": [
     {
      "type": "grid",
@@ -649,6 +654,7 @@
       },
       {
        "t": "Added by system",
+       "code": "+",
        "d": "still heat and mass balance, EN 285 test report, loop hydraulics and dead leg register, membrane projections, Part 11 and Annex 11 assessment"
       }
      ]
@@ -2668,6 +2674,10 @@
     "body": "An engineer replies within [proposal response time, working days] with questions or a loop concept: tank size, velocities and sanitization method.",
     "button": "Send your points-of-use list for a loop review",
     "link": "contact-proposal",
+    "proof": {
+     "v": "≥ 1 m/s",
+     "l": "Return velocity at peak draw · common practice"
+    },
     "intent": "Review of a document you have|Points-of-use list or loop design",
     "include": [
      "Points of use: location, L/h, temperature",
@@ -4407,6 +4417,10 @@
     "body": "An engineer replies within [proposal response time, working days] with the clauses we meet, the ones we would change and a draft fabrication and inspection plan.",
     "button": "Request a fabrication spec review",
     "link": "contact-proposal",
+    "proof": {
+     "v": "100 %",
+     "l": "Welds visually examined · ASME BPE"
+    },
     "intent": "Review of a document you have|Fabrication or piping specification",
     "include": [
      "URS or piping standard",
@@ -4766,6 +4780,10 @@
     "body": "We send the protocol's table of contents and redacted test cases [shared openly or under NDA]. Send your URS and an engineer replies within [proposal response time, working days] with a draft FAT test list and leverage candidates.",
     "button": "Request a sample FAT protocol",
     "link": "cmp-documentation",
+    "proof": {
+     "v": "0, 50, 100 %",
+     "l": "Every analog loop checked at FAT, every I/O point"
+    },
     "include": [
      "Approved URS and functional specification",
      "Your protocol template and added test cases",
@@ -6267,6 +6285,7 @@
       },
       {
        "t": "Added by industry",
+       "code": "+",
        "d": "contamination control strategy inputs for sterile drugs, a rinse water specification for devices, a client audit pack for CDMOs"
       }
      ],
@@ -8866,6 +8885,10 @@
     "body": "A process engineer replies within [proposal response time, working days] with a scoped proposal listing every document your system ships with, the stage that issues it and who approves it.",
     "button": "Submit your URS for a proposal",
     "link": "contact-proposal",
+    "proof": {
+     "v": "12 sections",
+     "l": "One turnover package, every document traced to your URS"
+    },
     "include": [
      "Your URS, current revision",
      "Your protocol templates, if any",
@@ -9700,6 +9723,10 @@
     "body": "Tell us the system, the grade and the province. We arrange a reference call, shop visit or FAT witness where our clients agree, or send sample documents, within [reference request response time, working days].",
     "button": "Request a reference call",
     "link": "contact-proposal",
+    "proof": {
+     "v": "1 report per figure",
+     "l": "Every outcome cites the executed test or qualification report"
+    },
     "intent": "Supplier qualification: audit, references, shop visit|Reference call",
     "include": [
      "System and grade you are buying",
@@ -10034,6 +10061,10 @@
     "body": "Send your URS, a feed water analysis or just your questions. An engineer, not a sales desk, replies within [proposal response time, working days].",
     "button": "Talk to an engineer",
     "link": "contact-proposal",
+    "proof": {
+     "v": "5 stages · 1 team",
+     "l": "Design, fabrication, FAT, qualification and service"
+    },
     "intent": "Not sure yet: talk to an engineer"
    },
    "todo": [
@@ -12049,6 +12080,10 @@
     "body": "A service plan fixes response times, visits, calibrations and spares in writing, at a fixed annual price. For a fault now, call [service phone number].",
     "button": "Compare service plans",
     "link": "svc-service",
+    "proof": {
+     "v": "4 levels",
+     "l": "Severities, the same as every service plan"
+    },
     "include_label": "Have ready when you call",
     "include": [
      "Serial number, or make and model",
@@ -12386,7 +12421,7 @@
       {
        "p": "FAT witness",
        "v": "In person at [shop location, city and province], remotely over [remote witness platform], or both",
-       "m": "See the FAT and SAT page"
+       "link": "svc-fat-sat"
       },
       {
        "p": "On-site work",
