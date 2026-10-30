@@ -9,8 +9,15 @@ This is for drafting and testing. Every page carries a `noindex` tag so search e
 | Path | What |
 | --- | --- |
 | `content/pages.json` | All 31 pages: hero, content blocks, closing band, SEO title and meta, and the open facts (`todo`) per page. **Edit copy here.** |
-| `index.html` | Design-system styles and the page renderer. Edit for layout and styling. |
+| `index.html` | The site shell: draft bar, page routing, loads the content. |
+| `design-system.html` | The design system documented live: logo, colour tokens with contrast ratios, type scale, spacing, components, and every page block rendered from real site content. https://daniilki.github.io/aquemi-web/design-system.html |
+| `assets/aquemi.css` | All styles: design tokens (light and dark), components (`aq-btn`, `aq-nav`, `aq-spec`, `aq-tag`, `aq-field`) and page-block layouts. **Edit for styling.** |
+| `assets/aquemi-site.js` | The page renderer shared by the site and the docs (`window.AQ`). Edit to add or change block types. |
+| `assets/theme.js` | System / light / dark switch, remembered per browser. |
+| `design/` | Copies of the design system's `tokens.json`, brand book and website plan. The docs page reads `tokens.json` directly. |
 | `brand/` | Logo, lockup, mark and favicon from the Aquemi design system. Use these files as they are. |
+
+If the design system changes, update `design/tokens.json` and the matching custom properties at the top of `assets/aquemi.css`.
 
 No build step. Edit, commit, push; Pages updates in a minute or two.
 
