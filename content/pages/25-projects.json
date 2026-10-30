@@ -323,5 +323,13 @@
   "Project photographs for each published case (with client permission)",
   "Industry and system filter, once there are enough published case studies (removed in this pass)"
  ],
- "hero_index": false
+ "hero_index": false,
+ "figure": {
+  "spots": [
+   "ro-skid",
+   "still",
+   "storage-tank"
+  ],
+  "label": "Figure · method · report"
+ }
 }

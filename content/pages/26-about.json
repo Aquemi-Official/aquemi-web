@@ -291,5 +291,13 @@
   "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
   "Work outside Canada: where, and how FAT, registration and service are handled",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)"
- ]
+ ],
+ "figure": {
+  "spots": [
+   "ro-skid",
+   "still",
+   "pure-steam-generator"
+  ],
+  "label": "PW · WFI · pure steam"
+ }
 }

@@ -603,5 +603,21 @@
   "Confirm French-language service replies are available",
   "Contact routes: proposal response time (same as contact-proposal); shop location and visit booking reply time (same as contact-locations)"
  ],
- "hero_index": false
+ "hero_index": false,
+ "figure": {
+  "spots": [
+   {
+    "spot": "pump",
+    "t": "Loop pumps"
+   },
+   {
+    "spot": "uv-ozone",
+    "t": "UV and ozone"
+   },
+   {
+    "spot": "wrench",
+    "t": "Parts and repair"
+   }
+  ]
+ }
 }

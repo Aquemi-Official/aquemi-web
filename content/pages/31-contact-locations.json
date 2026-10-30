@@ -300,5 +300,12 @@
    "l": "Parts stocked in [stock location or locations]"
   }
  ],
- "hero_index": false
+ "hero_index": false,
+ "figure": {
+  "spots": [
+   "pretreatment",
+   "ro-skid",
+   "pure-steam-generator"
+  ]
+ }
 }

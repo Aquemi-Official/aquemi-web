@@ -5,6 +5,7 @@
    - dashed runs (routes, flow mains) creep once in the flow direction, like water moving (stops within 5 s: WCAG 2.2.2)
    - equipment drawings (Spot, Illustration masks) wipe in from the bottom like a print
    - gauge needles sweep up to the limit; key figures count up
+   - drawn hero figures: folders and stops rise in, the release stamp strikes once
    - the home loop sends flow dots once round the figure of eight, then they fade (under 5 s)
    Everything is skipped under prefers-reduced-motion and when GSAP did not load; the page is complete without it. */
 (function () {
@@ -47,6 +48,11 @@
     if (hero) {
       var parts = hero.querySelectorAll('.aq-eyebrow, h1, .aq-lead, .aq-hero__actions, .aq-btn, .aq-key-facts, .aq-hero__index');
       tw(gsap.from(parts, { y: 28, autoAlpha: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08, clearProps: 'transform,opacity,visibility' }));
+      // Drawn hero figure: folders and the record slide in, route stops pop in order, the stamp strikes last
+      var sheets = hero.querySelectorAll('.aq-hero__folder, .aq-hero__record, .aq-hero__stop');
+      if (sheets.length) tw(gsap.from(sheets, { y: 24, autoAlpha: 0, duration: 0.8, ease: 'power3.out', delay: 0.3, stagger: 0.12, clearProps: 'transform,opacity,visibility' }));
+      var stamp = hero.querySelector('.aq-hero__stamp');
+      if (stamp) tw(gsap.from(stamp, { scale: 1.5, autoAlpha: 0, duration: 0.45, ease: 'power4.in', delay: 1.1, clearProps: 'transform,opacity,visibility' }));
     }
 
     // Section heads and their content

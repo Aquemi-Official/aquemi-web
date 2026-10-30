@@ -12,6 +12,7 @@ Hero opens every page: eyebrow, one display headline, one lead sentence, one pri
 | `home` | Loop drawing (concept U) | `aq-hero__grid--loop` |
 | `sys-*`, `svc-*`, `ind-*` with a drawing in `ART` | Equipment figure with callouts (concept B) | `aq-hero__grid--figure` |
 | `sys-*`, `svc-*`, `ind-*` without a drawing | Photograph placeholder | `aq-hero__grid` |
+| Pages without a drawing that set `figure` (compliance, cmp-*, projects, about, careers, news, contact-*) | Drawn figure: spots cluster, binder, stamp or route | `aq-hero__grid--figure aq-hero__grid--drawn` |
 | Hub and company pages (everything else) | Section index (concept S) | `aq-hero__grid--index` |
 
 `wHero` in `assets/src/parts/Hero.js` picks the variant from the page id; content files need no extra fields (except `hero_index: false` and the opt-in `index`, below).
@@ -26,6 +27,22 @@ Concept 02 in `design-system/inspiration/gemini/`: the equipment drawing large a
 - Phones: the figure goes full width under the actions: the top pair of callouts, the drawing row (5:4) with its own leaders, the bottom pair. Headline 44/42 on figure pages.
 - **Adding a drawing**: put the mask in `assets/illustrations/<page id>.png` (see Illustration), then add one line to `ART` in `assets/src/parts/Hero.js`. The text is the drawing's `aria-label`. Then `python tools/design_system.py build`.
 - Pages listed today: every `sys-*`, `svc-*` and `ind-*` page.
+
+## Drawn figure (opt-in hero field `figure`)
+
+For pages with no equipment drawing, a bold decorative figure in place of the index, built from what the system already has (Spots, Icons, SVG and CSS; no new raster art). Concepts 02 and 37 (the drawing beside the headline), 51 (binder), 62 (contact routes). On today: `compliance`, `cmp-documentation`, `cmp-quality`, `projects`, `about`, `careers`, `news`, `contact-proposal`, `contact-service`, `contact-locations`.
+
+- Data, one of:
+  - `"figure": {"spots": ["ro-skid", "storage-tank", "pure-steam-generator"], "label": "Generation · storage · pure steam"}`: 2–4 Spot vignettes in a zig-zag, joined along their bases by one drawn `flow` pipe ending in an arrow, each tagged `01 RO skid` (number in `flow`, name in `ink-muted` mono caps on a `surface` chip so the pipe passes behind). An entry may be `{"spot": "pid", "t": "Design"}`; an Icon name falls back to the icon (as `wSpot`). Names come from `SPOT_NAME` in `Hero.js`.
+  - `"figure": {"plate": "binder", "label": "Turnover package", "items": [...], "foot": "Indexed to your URS"}`: a stack of cream folders (`data-theme="light"`), numbered divider tabs staggered up and right, the front folder with a `flow` tab, the title in display caps over a 2 px rule, the index (`items`, at most 6; 4 on phones) on dashed rows and the foot caption.
+  - `"figure": {"plate": "stamp", "label": "Released", "title": "Release record", "items": [...], "ring": "…", "ring2": "…", "sub": "QA"}`: a cream release record whose rows end in ticked boxes, with a large `flow` rubber stamp struck across it at −14°: double outer ring, ring text on the top and bottom arcs, the word on a band, a tick and `sub`.
+  - `"figure": {"plate": "route", "stops": ["Your request", "Engineer review", "Written reply"]}`: one 2 px `flow` route from an open start node through three numbered stops (Geist Mono 300 in a ringed `surface` disc) to an arrow, over a dashed ground line. Labels sit right of stop 1, under stop 2, over stop 3.
+  - `label` (any kind) is a small mono caption inside the frame, top left.
+- Only state what the page states. Stop names, folder names and record rows paraphrase the page's own sections; never add figures.
+- Markup: `<figure class="aq-hero__drawn aq-hero__drawn--spots|binder|stamp|route" aria-hidden="true">` (decorative: the headline and lead carry the meaning). Line work is an SVG with viewBox 120 x 100 over the 6:5 frame (non-scaling strokes); stops, vignettes and folders are positioned in percent. `figure` wins over `index` and `hero_index`; ignored on `home` and on pages with a drawing in `ART`. Built by `wHeroDrawn(p.figure)` in `Hero.js`.
+- Desktop: text and figure 6 parts each, headline 72/70 with its scale rule (as the equipment figure). The frame is the equipment figure's: fading `line` grid, dashed `line-strong` border, `ink-subtle` registration crosses in all four corners. Sizes inside scale with the frame (container units).
+- Phone: under the actions, `min(100%, 312px)` wide at 6:5, so at most 260 px tall; smaller tabs and captions, the binder shows four rows and no icon.
+- Motion (`assets/motion.js`): the pipe and route draw on, spots wipe in, folders, the record and the stops rise in, the stamp strikes once. All of it is skipped under reduced motion.
 
 ## Photograph (detail pages without a drawing)
 

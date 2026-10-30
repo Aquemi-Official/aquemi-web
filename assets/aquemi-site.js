@@ -235,15 +235,60 @@ function wHomeLoop(p){
   label(76,132,'Filter','end')+label(76,362,'Heat','end')+label(76,374,'exchanger','end')+
   label(244,483,'Furthest point of use')+(ef?label(244,497,'Endotoxin '+ef.v):'')+
  '</g></svg></figure>'}
-function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^svc-|^ind-/.test(p.id),idx=home||detail?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
+/* Drawn figure (opt-in hero field "figure", pages with no equipment drawing): a bold decorative device on a blueprint
+   frame (dashed frame, registration crosses, fading grid), always aria-hidden; the headline and lead carry the meaning.
+   - {"spots": ["ro-skid", "storage-tank", "pure-steam-generator"], "label": "…"}: 2-4 Spot vignettes (an Icon name
+     falls back to the icon) set out in a zig-zag and joined along their bases by one drawn flow pipe ending in an arrow,
+     each tagged 01, 02 … with its name. An entry may be {"spot": "pid", "t": "Design"} to name it.
+   - {"plate": "binder", "label": "Turnover package", "items": [...], "foot": "…"}: a stack of folders, divider tabs
+     numbered, the front folder holding the index (items, at most 6).
+   - {"plate": "stamp", "label": "Released", "ring": "…", "ring2": "…", "items": [...]}: a release record (items = its checked rows)
+     with a large rubber-stamp seal across it.
+   - {"plate": "route", "stops": ["Your request", "Engineer review", "Written reply"]}: one route from a start node
+     through three numbered stops to an arrow.
+   Geometry is in percent of the 6:5 frame; line work in an SVG viewBox 120 x 100 (non-scaling strokes). */
+var SPOT_NAME={'ro-skid':'RO skid','edi-stack':'EDI stack','pure-steam-generator':'Pure steam generator','storage-tank':'Storage tank','heat-exchanger':'Heat exchanger','uv-ozone':'UV and ozone',pid:'P&ID',edi:'EDI',toc:'TOC',uv:'UV','ro-membrane':'RO membrane','carbon-filter':'Carbon filter','pure-steam':'Pure steam'};
+var SPOT_AT={2:[[30,46,40],[72,58,40]],3:[[19,58,36],[50,38,36],[81,58,36]],4:[[16,42,27],[39,60,27],[62,42,27],[85,60,27]]};
+function spotName(n){return SPOT_NAME[n]||(n.charAt(0).toUpperCase()+n.slice(1).replace(/-/g,' '))}
+function heroFrame(kind,inner,label){return '<figure class="aq-hero__drawn aq-hero__drawn--'+kind+'" aria-hidden="true">'+(label?'<span class="aq-hero__drawn-label">'+tx(label)+'</span>':'')+inner+'</figure>'}
+function wHeroSpots(f){var sp=(f.spots||[]).map(function(s){return typeof s==='string'?{spot:s}:s}).filter(function(s){return s&&isVig(s.spot)}).slice(0,4),n=sp.length;if(n<2)return '';
+ var at=SPOT_AT[n],pts=at.map(function(a){return [a[0]*1.2,a[1]+a[2]*0.6*0.86]}),d='M2,'+pts[0][1].toFixed(1)+' H'+pts[0][0].toFixed(1),dots='';
+ for(var i=1;i<n;i++){var m=((pts[i-1][0]+pts[i][0])/2).toFixed(1);d+=' H'+m+' V'+pts[i][1].toFixed(1)+' H'+pts[i][0].toFixed(1)}
+ d+=' H114';pts.forEach(function(q){dots+='<circle cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)+'" r="1.1"/>'});
+ var y=pts[n-1][1].toFixed(1),svg='<svg class="aq-hero__pipe" viewBox="0 0 120 100" preserveAspectRatio="none" focusable="false"><path class="aq-hero__pipe-run" d="'+d+'"/><path class="aq-hero__pipe-arrow" d="M113,'+(+y-2.2).toFixed(1)+' L118,'+y+' L113,'+(+y+2.2).toFixed(1)+' Z"/>'+dots+'</svg>';
+ var cells=sp.map(function(s,i){var a=at[i],pos='left:'+a[0]+'%;top:'+a[1]+'%;--w:'+a[2]+'%';
+  return '<span class="aq-hero__vig" style="'+pos+'">'+wSpot(s.spot,'l','aq-spot--muted')+'<span class="aq-hero__vig-t"><b>'+(i<9?'0':'')+(i+1)+'</b> '+tx(s.t||spotName(s.spot))+'</span></span>'}).join('');
+ return heroFrame('spots',svg+cells,f.label)}
+function wHeroBinder(f){var it=(f.items||[]).slice(0,6),k=Math.max(3,Math.min(4,it.length||3)),back='';
+ for(var i=k-1;i>0;i--)back+='<span class="aq-hero__folder" style="--k:'+i+'"><span class="aq-hero__folder-tab">'+(i<9?'0':'')+(i+1)+'</span></span>';
+ var list=it.map(function(t,i){return '<li><b>'+(i<9?'0':'')+(i+1)+'</b><span>'+tx(t)+'</span></li>'}).join('');
+ return heroFrame('binder','<div class="aq-hero__binder" data-theme="light">'+back+'<div class="aq-hero__folder is-front" style="--k:0"><span class="aq-hero__folder-tab">01</span><div class="aq-hero__folder-body">'
+  +'<div class="aq-hero__folder-head"><span class="aq-hero__folder-n">'+tx(f.label||'Turnover package')+'</span>'+(isIcon('binder')?wIcon('binder'):'')+'</div>'
+  +(list?'<ol class="aq-hero__folder-list">'+list+'</ol>':'')+(f.foot?'<span class="aq-hero__folder-foot">'+tx(f.foot)+'</span>':'')+'</div></div></div>')}
+function wHeroStamp(f){var it=(f.items||['Inspection','Test','Documents']).slice(0,4);
+ var rec='<div class="aq-hero__record" data-theme="light"><span class="aq-hero__record-h">'+tx(f.title||'Release record')+'</span><ul>'+it.map(function(t){return '<li><span>'+tx(t)+'</span><i></i></li>'}).join('')+'</ul><span class="aq-hero__record-sign">Signed · QA</span></div>';
+ var svg='<svg class="aq-hero__stamp" viewBox="0 0 240 240" focusable="false"><defs><path id="hero-stamp-top" d="M36,120 A84,84 0 0,1 204,120"/><path id="hero-stamp-bot" d="M26,120 A94,94 0 0,0 214,120"/></defs>'
+  +'<circle class="aq-hero__stamp-o" cx="120" cy="120" r="112"/><circle cx="120" cy="120" r="104"/><circle cx="120" cy="120" r="66"/>'
+  +'<text class="aq-hero__stamp-ring"><textPath href="#hero-stamp-top" startOffset="50%" text-anchor="middle">'+e(f.ring||'Quality unit · Inspected')+'</textPath></text>'
+  +'<text class="aq-hero__stamp-ring"><textPath href="#hero-stamp-bot" startOffset="50%" text-anchor="middle">'+e(f.ring2||'Tested · Reviewed')+'</textPath></text>'
+  +'<rect class="aq-hero__stamp-band" x="10" y="96" width="220" height="48"/><text class="aq-hero__stamp-word" x="120" y="133" text-anchor="middle" textLength="190" lengthAdjust="spacingAndGlyphs">'+e(f.label||'Released')+'</text>'
+  +'<path class="aq-hero__stamp-tick" d="M104,76 l10,10 l22,-22"/><text class="aq-hero__stamp-sub" x="120" y="170" text-anchor="middle">'+e(f.sub||'QA')+'</text></svg>';
+ return heroFrame('stamp',rec+svg,f.caption)}
+function wHeroRoute(f){var st=(f.stops||['Request','Review','Reply']).slice(0,3),P=[[22,30],[52,58],[84,32]];
+ var d='M3,12 H'+(P[0][0]*1.2).toFixed(1)+' V'+P[0][1]+' V'+P[1][1]+' H'+(P[1][0]*1.2).toFixed(1)+' H'+(P[2][0]*1.2-14).toFixed(1)+' V'+P[2][1]+' H'+(P[2][0]*1.2).toFixed(1)+' V84 H115';
+ var svg='<svg class="aq-hero__route" viewBox="0 0 120 100" preserveAspectRatio="none" focusable="false"><path class="aq-hero__route-guide" d="M3,92 H117"/><path class="aq-hero__route-run" d="'+d+'"/><circle class="aq-hero__route-start" cx="3" cy="12" r="1.6"/><path class="aq-hero__route-arrow" d="M113,81.6 L118,84 L113,86.4 Z"/></svg>';
+ var stops=st.map(function(t,i){return '<span class="aq-hero__stop aq-hero__stop--'+['r','b','t'][i]+'" style="left:'+P[i][0]+'%;top:'+P[i][1]+'%"><b>'+(i+1)+'</b><span>'+tx(t)+'</span></span>'}).join('');
+ return heroFrame('route',svg+stops,f.label)}
+function wHeroDrawn(f){if(!f||typeof f!=='object')return '';return f.spots?wHeroSpots(f):f.plate==='binder'?wHeroBinder(f):f.plate==='stamp'?wHeroStamp(f):f.plate==='route'?wHeroRoute(f):''}
+function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^svc-|^ind-/.test(p.id),drawn=home||art?'':wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
   '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
  /* Callouts round the drawing only on sys-* pages, where the facts are measured values; service and industry pages
     keep their facts (often counts) in the KeyFacts strip under the drawing. */
  var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
- var right=home?wHomeLoop(p):art?wHeroFigure(p,callouts):detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · 316L, cool even light]</div>':idx?wHeroIndex(idx):'';
- var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
+ var right=home?wHomeLoop(p):art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · 316L, cool even light]</div>':idx?wHeroIndex(idx):'';
+ var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
  return '<section class="aq-hero'+(home?' aq-hero--home':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
 /* KeyFacts: the measurement strip under the Hero. facts = [{l, v}].
    Label "Conductivity at 25 °C · USP <645>" -> dt name + a second dd for the source (after the last " · ").

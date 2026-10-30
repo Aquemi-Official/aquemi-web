@@ -298,5 +298,16 @@
   "Role that releases a system to ship and its independence from production; quality organization chart",
   "Quality record retention (years); turnover package copy retention is on cmp-documentation",
   "Prepare the questionnaire pack: standard supplier questionnaire, procedure list, redacted NCR/CAPA, change request, calibration certificate and training matrix extract"
- ]
+ ],
+ "figure": {
+  "plate": "stamp",
+  "label": "Released",
+  "title": "Release record",
+  "items": [
+   "Inspection record",
+   "Test record",
+   "Nonconformances closed",
+   "Records reviewed"
+  ]
+ }
 }

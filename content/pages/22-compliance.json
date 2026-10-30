@@ -474,5 +474,13 @@
   "Compliance matrix response time (working days) for the closing CTA",
   "Confirm Aquemi practice stated on other pages and repeated here: FMEA as usual ICH Q9(R1) method; stricter-of basis; nitrates tested at FAT for Ph. Eur. releases; corporate standard conflicts flagged in the functional specification",
   "Quality review of each standard row (edition, clause numbers, limits) before publication"
- ]
+ ],
+ "figure": {
+  "spots": [
+   "ro-skid",
+   "storage-tank",
+   "pure-steam-generator"
+  ],
+  "label": "Generation · storage · pure steam"
+ }
 }

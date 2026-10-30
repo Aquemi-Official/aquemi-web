@@ -7357,7 +7357,15 @@
     "Compliance matrix response time (working days) for the closing CTA",
     "Confirm Aquemi practice stated on other pages and repeated here: FMEA as usual ICH Q9(R1) method; stricter-of basis; nitrates tested at FAT for Ph. Eur. releases; corporate standard conflicts flagged in the functional specification",
     "Quality review of each standard row (edition, clause numbers, limits) before publication"
-   ]
+   ],
+   "figure": {
+    "spots": [
+     "ro-skid",
+     "storage-tank",
+     "pure-steam-generator"
+    ],
+    "label": "Generation · storage · pure steam"
+   }
   },
   {
    "id": "cmp-documentation",
@@ -7674,7 +7682,20 @@
      "v": "Annex 15, 3.6",
      "l": "FAT reused in qualification"
     }
-   ]
+   ],
+   "figure": {
+    "plate": "binder",
+    "label": "Turnover package",
+    "items": [
+     "Index and project summary",
+     "Requirements and design basis",
+     "Specifications",
+     "Drawings and calculations",
+     "Materials",
+     "Welding"
+    ],
+    "foot": "Indexed to your URS"
+   }
   },
   {
    "id": "cmp-quality",
@@ -7976,7 +7997,18 @@
     "Role that releases a system to ship and its independence from production; quality organization chart",
     "Quality record retention (years); turnover package copy retention is on cmp-documentation",
     "Prepare the questionnaire pack: standard supplier questionnaire, procedure list, redacted NCR/CAPA, change request, calibration certificate and training matrix extract"
-   ]
+   ],
+   "figure": {
+    "plate": "stamp",
+    "label": "Released",
+    "title": "Release record",
+    "items": [
+     "Inspection record",
+     "Test record",
+     "Nonconformances closed",
+     "Records reviewed"
+    ]
+   }
   },
   {
    "id": "projects",
@@ -8303,7 +8335,15 @@
     "Project photographs for each published case (with client permission)",
     "Industry and system filter, once there are enough published case studies (removed in this pass)"
    ],
-   "hero_index": false
+   "hero_index": false,
+   "figure": {
+    "spots": [
+     "ro-skid",
+     "still",
+     "storage-tank"
+    ],
+    "label": "Figure · method · report"
+   }
   },
   {
    "id": "about",
@@ -8598,7 +8638,15 @@
     "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
     "Work outside Canada: where, and how FAT, registration and service are handled",
     "Proposal response time, working days ([proposal response time, working days]; one figure on every page)"
-   ]
+   ],
+   "figure": {
+    "spots": [
+     "ro-skid",
+     "still",
+     "pure-steam-generator"
+    ],
+    "label": "PW · WFI · pure steam"
+   }
   },
   {
    "id": "careers",
@@ -8947,7 +8995,24 @@
     }
    ],
    "primary_cta_link": "#roles",
-   "hero_index": false
+   "hero_index": false,
+   "figure": {
+    "spots": [
+     {
+      "spot": "pid",
+      "t": "Design"
+     },
+     {
+      "spot": "ro-skid",
+      "t": "Build"
+     },
+     {
+      "spot": "wrench",
+      "t": "Service"
+     }
+    ],
+    "label": "Design · build · service"
+   }
   },
   {
    "id": "news",
@@ -9254,7 +9319,15 @@
      "v": "[send frequency, emails per month at most]",
      "l": "One email per note; one-click unsubscribe"
     }
-   ]
+   ],
+   "figure": {
+    "spots": [
+     "edi-stack",
+     "storage-tank",
+     "heat-exchanger"
+    ],
+    "label": "One question per note"
+   }
   },
   {
    "id": "contact-proposal",
@@ -9752,7 +9825,14 @@
      "l": "To a budget proposal"
     }
    ],
-   "hero_index": false
+   "hero_index": false,
+   "figure": {
+    "spots": [
+     "ro-skid",
+     "still",
+     "storage-tank"
+    ]
+   }
   },
   {
    "id": "contact-service",
@@ -10359,7 +10439,23 @@
     "Confirm French-language service replies are available",
     "Contact routes: proposal response time (same as contact-proposal); shop location and visit booking reply time (same as contact-locations)"
    ],
-   "hero_index": false
+   "hero_index": false,
+   "figure": {
+    "spots": [
+     {
+      "spot": "pump",
+      "t": "Loop pumps"
+     },
+     {
+      "spot": "uv-ozone",
+      "t": "UV and ozone"
+     },
+     {
+      "spot": "wrench",
+      "t": "Parts and repair"
+     }
+    ]
+   }
   },
   {
    "id": "contact-locations",
@@ -10663,7 +10759,14 @@
      "l": "Parts stocked in [stock location or locations]"
     }
    ],
-   "hero_index": false
+   "hero_index": false,
+   "figure": {
+    "spots": [
+     "pretreatment",
+     "ro-skid",
+     "pure-steam-generator"
+    ]
+   }
   }
  ]
 }
