@@ -1,0 +1,10 @@
+PlanTiers sets service plans side by side, each with who it suits, its price, its terms and one action, for a buyer choosing a plan tier.
+
+- Data: a `table` block with `"as": "plans"`: `cols` [row label, plan A, plan B, plan C …], `rows` [feature, value per plan]. A row whose label starts "Suits" becomes each plan's one-line subtitle under its name; a row starting "Price" shows prominently under the subtitle, its label as a mono caption. Every other row is a feature.
+- `recommend` (column index or plan name) raises that plan: `flow-tint` ground, `flow` frame, a quiet "Most chosen" marker on its top edge, and the only primary button. Set it only when the page states which plan most clients choose; never pick one to look persuasive. Without it no plan is raised and every button is secondary.
+- A column named "No plan…" (call-out, pay as you go) is the baseline: quieter `ink-muted` text, no button. Keep it last.
+- Action: every plan ends with the page's own CTA (`primary_cta`, its link and `primary_cta_intent`; else `cta.button`), labelled for screen readers with the plan name. No new intents.
+- Markup (`blocks/plans.js`): `.aq-plan-tiers` (inline `--plan-rows`) > `.aq-plan-tiers__labels` (aria-hidden label column) and one `article.aq-plan-tiers__plan` per plan (`is-rec`, `is-base`): `header.aq-plan-tiers__head` (`.aq-plan-tiers__mark`, `h3.aq-plan-tiers__name`, `.aq-plan-tiers__suits`, `.aq-plan-tiers__price` with `.aq-plan-tiers__k`), `dl.aq-plan-tiers__rows` of `.aq-plan-tiers__row` (`dt`, `dd`), `.aq-plan-tiers__action`.
+- Desktop: a 200 px mono label column, then the plans in equal columns; each plan is a CSS subgrid, so a feature sits on one line across all plans. Phones (`@container (max-width: 860px)`): plans stack, each feature labelled in mono beside its value, buttons full width.
+- Supports `fold: N` and `fold_noun` (first N features show in every plan; "Show all 6 terms"). Put response times and scope first; fold commercial detail.
+- Ground: the navy page (a decision anchor). Keep plans to 2–4 and cells to one fact. Two routes rather than tiers: Versus. A comparison of things that are not plans you buy: CompareTable.

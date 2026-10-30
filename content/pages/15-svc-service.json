@@ -41,19 +41,10 @@
  },
  "blocks": [
   {
-   "type": "prose",
-   "nav": "Why service",
-   "h": "Qualified once. Service decides whether it stays qualified.",
-   "body": [
-    "After performance qualification (PQ), a Purified Water (PW) or Water for Injection (WFI) system stays qualified only if every part, calibration and repair is controlled. 21 CFR 211.67 and 211.68 require maintenance and calibration to a written programme, with records. EU GMP Chapter 3 asks that maintenance present no hazard to product and that control equipment be calibrated at defined intervals. Health Canada expects the same under C.02.005, as GUI-0001 interprets it.",
-    "So every plan states its response times, visits, calibrations and reports before you sign, and every task runs inside your change control (EU GMP Annex 15, section 11)."
-   ]
-  },
-  {
    "type": "table",
    "nav": "Plans",
    "h": "Service plans: response, scope and price",
-   "intro": "All fixed in the plan schedule before you sign. Remote diagnosis only where you allow it.",
+   "intro": "21 CFR 211.67 and 211.68, EU GMP Chapter 3 and Health Canada GUI-0001 require maintenance and calibration to a written programme. Each plan fixes response, visits, calibration and reports before you sign.",
    "cols": [
     "",
     "[tier 1 plan name]",
@@ -77,25 +68,25 @@
      "[call-out and hourly rates, CAD] · none"
     ],
     [
-     "Preventive visits · calibration interval",
+     "On site, severity 1 · 2",
+     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+     "Next available technician"
+    ],
+    [
+     "Visits a year · calibration",
      "[visits per year] · [calibration interval, months]",
      "[visits per year] · [calibration interval, months]",
      "[visits per year] · [calibration interval, months]",
      "On request"
     ],
     [
-     "Phone support · remote diagnosis",
+     "Phone · remote diagnosis",
      "[service phone hours] · [remote response time, hours]",
      "[service phone hours] · [remote response time, hours]",
      "[service phone hours] · [remote response time, hours]",
      "[service phone hours] · best effort"
-    ],
-    [
-     "On site: severity 1 · severity 2",
-     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
-     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
-     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
-     "Next available technician"
     ],
     [
      "Critical spares",
@@ -118,43 +109,10 @@
      "Yes, with a trend review meeting",
      "No"
     ]
-   ]
-  },
-  {
-   "type": "grid",
-   "nav": "Visits",
-   "h": "What a preventive maintenance visit covers",
-   "intro": "Written from your design and qualification records, agreed before the first visit.",
-   "items": [
-    {
-     "t": "Data review first",
-     "d": "Conductivity, total organic carbon (TOC), temperature, flow and alarm history since the last visit, so the work answers the trend."
-    },
-    {
-     "t": "RO and EDI performance",
-     "d": "Reverse osmosis (RO) and electrodeionization (EDI): normalized flow, salt passage and differential pressure to ASTM D4516 against the commissioning baseline.",
-     "link": "sys-pw"
-    },
-    {
-     "t": "Pretreatment",
-     "d": "Softener hardness leakage, carbon bed or bisulfite performance, total chlorine at the RO inlet.",
-     "link": "sys-pretreatment"
-    },
-    {
-     "t": "Wearing parts and filters",
-     "d": "Seals, gaskets and diaphragms replaced like for like with lot numbers recorded; vent filters integrity tested."
-    },
-    {
-     "t": "Ultraviolet (UV), ozone and sanitization",
-     "d": "Lamp intensity, ozone below the release limit, sanitization checked at its coldest or weakest point.",
-     "link": "sys-monitoring"
-    },
-    {
-     "t": "Loop hydraulics",
-     "d": "Return flow against the qualified minimum, pump and heat exchanger condition, point-of-use valves.",
-     "link": "sys-storage"
-    }
-   ]
+   ],
+   "as": "plans",
+   "fold": 3,
+   "fold_noun": "terms"
   },
   {
    "type": "spec",
@@ -201,10 +159,48 @@
    "note": "Certificates show as-found and as-left values, limits and the reference standard used. Calibrations by [calibration provider and accreditation held]."
   },
   {
+   "type": "grid",
+   "nav": "Visits",
+   "h": "What a preventive maintenance visit covers",
+   "intro": "Written from your design and qualification records, agreed before the first visit.",
+   "items": [
+    {
+     "t": "Data review first",
+     "d": "Conductivity, total organic carbon (TOC), temperature, flow and alarm history since the last visit, so the work answers the trend."
+    },
+    {
+     "t": "RO and EDI performance",
+     "d": "Reverse osmosis (RO) and electrodeionization (EDI): normalized flow, salt passage and differential pressure to ASTM D4516 against the commissioning baseline.",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Wearing parts and filters",
+     "d": "Seals, gaskets and diaphragms replaced like for like, lot numbers recorded; vent filters integrity tested."
+    },
+    {
+     "t": "Loop hydraulics",
+     "d": "Return flow against the qualified minimum, pump and heat exchanger condition, point-of-use valves.",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Pretreatment",
+     "d": "Softener hardness leakage, carbon bed or bisulfite performance, total chlorine at the RO inlet.",
+     "link": "sys-pretreatment"
+    },
+    {
+     "t": "Ultraviolet (UV), ozone and sanitization",
+     "d": "Lamp intensity, ozone below the release limit, sanitization checked at its coldest or weakest point.",
+     "link": "sys-monitoring"
+    }
+   ],
+   "fold": 4,
+   "fold_noun": "checks"
+  },
+  {
    "type": "table",
    "nav": "Like for like",
    "h": "Like for like, or a change?",
-   "intro": "Anything not like for like goes through your change control before it is fitted.",
+   "intro": "Anything not like for like goes through your change control (EU GMP Annex 15, section 11) before it is fitted.",
    "cols": [
     "Part",
     "Like for like when",
@@ -219,6 +215,24 @@
      "Operational qualification (OQ) at design recovery, closer sampling"
     ],
     [
+     "Instruments and transmitters",
+     "Same model, range and configuration",
+     "A different model, range or data path",
+     "Installation qualification (IQ), loop check, audit trail check"
+    ],
+    [
+     "Diaphragms, gaskets and pump seals",
+     "Same compound and certificates (USP <88> Class VI, 21 CFR 177.2600)",
+     "A different elastomer or PTFE grade",
+     "Material and extractables review"
+    ],
+    [
+     "Control system software and firmware",
+     "Never like for like",
+     "Any version, logic or configuration change",
+     "Regression tests (EU GMP Annex 11, GAMP 5); version and checksum recorded"
+    ],
+    [
      "EDI modules",
      "Same maker and model, at qualified current and flow",
      "A different model or operating window",
@@ -231,30 +245,14 @@
      "Intensity check and OQ of the UV alarm"
     ],
     [
-     "Diaphragms, gaskets and pump seals",
-     "Same compound and certificates (USP <88> Class VI, 21 CFR 177.2600)",
-     "A different elastomer or PTFE grade",
-     "Material and extractables review"
-    ],
-    [
      "Hydrophobic vent filters",
      "Same maker, membrane and pore rating",
      "A different membrane, rating or housing",
      "Integrity test, sanitization cycle review"
-    ],
-    [
-     "Instruments and transmitters",
-     "Same model, range and configuration",
-     "A different model, range or data path",
-     "Installation qualification (IQ), loop check, audit trail check"
-    ],
-    [
-     "Control system software and firmware",
-     "Never like for like",
-     "Any version, logic or configuration change",
-     "Regression tests (EU GMP Annex 11, GAMP 5); version and checksum recorded"
     ]
-   ]
+   ],
+   "fold": 4,
+   "fold_noun": "parts"
   },
   {
    "type": "steps",
@@ -276,7 +274,7 @@
     },
     {
      "t": "Dispatch with the likely parts",
-     "d": "A technician arrives within your plan’s response time, with the parts the diagnosis points to and calibrated references."
+     "d": "A technician arrives within your plan’s response time with the parts the diagnosis points to and calibrated references."
     },
     {
      "t": "Restore and return to service",
@@ -373,7 +371,7 @@
  ],
  "cta": {
   "h": "Send your system details. Get a fixed plan price.",
-  "body": "An engineer replies within [quote response time, working days] with a recommended plan, annual price and first-visit tasks. For a fault now, call [service phone number].",
+  "body": "For a fault now, call [service phone number].",
   "button": "Request a service plan quote",
   "link": "contact-service",
   "include_label": "What to send for a plan quote",
@@ -385,6 +383,12 @@
    "Remote access policy",
    "Last year’s excursions and open deviations",
    "Site address and access requirements"
+  ],
+  "turnaround": "[quote response time, working days]",
+  "returns": [
+   "Recommended plan for your system",
+   "Fixed annual price, CAD",
+   "First-visit tasks"
   ]
  },
  "todo": [

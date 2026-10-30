@@ -329,6 +329,16 @@
    "summary": "KeyFacts is a measurement strip of three to six figures, each with its unit and the standard behind it, that tells an engineer what a page stands on before they read a word of copy."
   },
   {
+   "name": "PlanTiers",
+   "readme": "design-system/components/PlanTiers/README.md",
+   "preview": "design-system/components/PlanTiers/preview.html",
+   "group": "Data",
+   "height": "1000",
+   "width": "1100",
+   "subtitle": "Service plans side by side: who each suits, price, terms, one action per plan",
+   "summary": "PlanTiers sets service plans side by side, each with who it suits, its price, its terms and one action, for a buyer choosing a plan tier."
+  },
+  {
    "name": "SpecTable",
    "readme": "design-system/components/SpecTable/README.md",
    "preview": "design-system/components/SpecTable/preview.html",

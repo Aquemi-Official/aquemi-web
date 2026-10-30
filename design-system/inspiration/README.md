@@ -35,8 +35,9 @@ AI-generated section concepts used as raw ideas for new components. See them all
 | `concept-ac-grade-lanes.png` | Minimum water grade by process step | `GradeLanes`: taps into Potable, PW and WFI lanes |
 | `concept-ad-roles.png` | Who writes and reviews each C&Q document | `RoleMatrix`: signature-block stamps, ours tinted, yours outlined |
 | `concept-ae-send-back.png` | What you send, what comes back | `Closing` exchange (`cta.returns`): send → turnaround → documents back |
+| `gemini/47-concept-plan-tiers.png` | Service plans: response, scope and price | `PlanTiers`: plans side by side on a label column, one action per plan |
 
-`47-concept-plan-tiers` (service plans as a calibration sheet) is kept for a later plan component; the service plans stay a CompareTable for now.
+`gemini/47-concept-plan-tiers` (service plans as a calibration sheet) became `PlanTiers` (`as: "plans"` on the service page): plans side by side on a label column, a recommended plan raised only when the page says which.
 
 ## Keep every image
 

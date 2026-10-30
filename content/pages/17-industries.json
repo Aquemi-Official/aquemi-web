@@ -37,7 +37,7 @@
    "type": "grid",
    "nav": "Industries",
    "h": "Choose your industry",
-   "intro": "Each page gives the grades per process step, the limits you release against, what each inspector reads and the documents we hand over.",
+   "intro": "Each page gives the grade per process step, the limits you release against, what each inspector reads and the documents we hand over.",
    "items": [
     {
      "t": "Pharmaceutical",
@@ -63,49 +63,6 @@
      "tag": "USP and Ph. Eur.",
      "link": "ind-cdmo"
     }
-   ]
-  },
-  {
-   "type": "table",
-   "nav": "By industry",
-   "h": "Grade, limit and inspector by industry",
-   "cols": [
-    "Industry",
-    "Main water grades and where they are used",
-    "Limit that decides the design",
-    "Who inspects or audits the water system"
-   ],
-   "rows": [
-    [
-     "Pharmaceutical, non-sterile: oral solids, liquids, creams, natural health products",
-     "PW for granulation, coating, excipient use and final rinse",
-     "USP <645> 1.3 µS/cm at 25 °C and 500 ppb total organic carbon (TOC); Ph. Eur. 0008 nitrates",
-     "Health Canada under GUI-0001 (GUI-0158 for natural health products); FDA under 21 CFR Part 211"
-    ],
-    [
-     "Pharmaceutical, sterile: injectables, irrigation, lyophilized products",
-     "WFI as excipient and final rinse; pure steam for autoclaves and sterilize-in-place (SIP)",
-     "USP <85> < 0.25 EU/mL at point of use; EU GMP Annex 1 (2022) 6.10 and 6.15",
-     "Health Canada under GUI-0119 (its adoption of Annex 1); FDA and EU authorities for export"
-    ],
-    [
-     "Biotechnology: biologics, vaccines, cell and gene therapy",
-     "WFI for media, buffers and CIP final rinse; pure steam for SIP",
-     "USP <85> < 0.25 EU/mL at the furthest outlet at peak draw",
-     "Health Canada under GUI-0001 and GUI-0027, BRDD on submissions; FDA CBER or CDER"
-    ],
-    [
-     "Medical devices: implants, sterile and combination devices",
-     "PW final rinse with a written endotoxin limit, or WFI; pure steam for sterilizers",
-     "USP <161> 20.0 EU per device; ISO 11737-1 bioburden; EN 285 steam quality",
-     "An MDSAP auditor against ISO 13485:2016; FDA under 21 CFR 820 QMSR; EU notified bodies"
-    ],
-    [
-     "Contract manufacturing (CDMO)",
-     "PW, WFI and pure steam, as your client portfolio needs them",
-     "The stricter of USP and Ph. Eur. on each attribute, for example Ph. Eur. nitrates 0.2 ppm",
-     "Health Canada, FDA pre-approval inspections, PIC/S authorities and each client's quality unit"
-    ]
    ]
   },
   {
@@ -213,10 +170,47 @@
    "as": "router"
   },
   {
-   "type": "band",
-   "tone": "limestone",
-   "h": "Same limits, applied where water touches product",
-   "body": "A tablet maker, a biologics plant and an implant maker all release against USP <645> and <643>. They differ in which step uses which grade, peak draw and which record the auditor opens first."
+   "type": "table",
+   "nav": "By industry",
+   "h": "Grade, limit and inspector by industry",
+   "cols": [
+    "Industry",
+    "Grades and where they are used",
+    "Limit that decides the design",
+    "Who inspects or audits"
+   ],
+   "rows": [
+    [
+     "Pharmaceutical, non-sterile: oral solids, liquids, creams, natural health products",
+     "PW for granulation, coating, excipient and final rinse",
+     "USP <645> 1.3 µS/cm at 25 °C and 500 ppb total organic carbon (TOC); Ph. Eur. 0008 nitrates",
+     "Health Canada under GUI-0001 (GUI-0158 for natural health products); FDA under 21 CFR Part 211"
+    ],
+    [
+     "Pharmaceutical, sterile: injectables, irrigation, lyophilized products",
+     "WFI as excipient and final rinse; pure steam for autoclaves and sterilize-in-place (SIP)",
+     "USP <85> < 0.25 EU/mL at point of use; EU GMP Annex 1 (2022) 6.10 and 6.15",
+     "Health Canada under GUI-0119 (its Annex 1 adoption); FDA and EU authorities for export"
+    ],
+    [
+     "Biotechnology: biologics, vaccines, cell and gene therapy",
+     "WFI for media, buffers and CIP final rinse; pure steam for SIP",
+     "USP <85> < 0.25 EU/mL at the furthest outlet at peak draw",
+     "Health Canada under GUI-0001 and GUI-0027, BRDD on submissions; FDA CBER or CDER"
+    ],
+    [
+     "Medical devices: implants, sterile and combination devices",
+     "PW final rinse with a written endotoxin limit, or WFI; pure steam for sterilizers",
+     "USP <161> 20.0 EU per device; ISO 11737-1 bioburden; EN 285 steam quality",
+     "An MDSAP auditor against ISO 13485:2016; FDA under 21 CFR 820 QMSR; EU notified bodies"
+    ],
+    [
+     "Contract manufacturing (CDMO)",
+     "PW, WFI and pure steam, as your clients need them",
+     "The stricter of USP and Ph. Eur. on each attribute, for example Ph. Eur. nitrates 0.2 ppm",
+     "Health Canada, FDA pre-approval inspections, PIC/S authorities and each client's quality unit"
+    ]
+   ]
   },
   {
    "type": "docs",
@@ -249,35 +243,29 @@
      "d": "contamination control strategy inputs for sterile drugs, a rinse water specification for devices, a client audit pack for CDMOs"
     }
    ],
-   "intro": "We factory acceptance test each system before it ships and hand these over with it."
+   "intro": "We factory acceptance test each system before it ships and hand these over with it.",
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
-   "type": "table",
+   "type": "options",
    "nav": "Adjacent uses",
    "h": "Adjacent uses outside drug and device manufacturing",
-   "cols": [
-    "Use",
-    "Standard it works to",
-    "What it changes in the system"
-   ],
-   "rows": [
-    [
-     "Hospital medical device reprocessing (MDRD) or sterile processing",
-     "CSA Z314; in the United States, ANSI/AAMI ST108:2023",
-     "Critical water for final rinse and steam, usually duplex or N+1 because an MDRD cannot stop"
-    ],
-    [
-     "Research and university laboratories, central lab water loops",
-     "ASTM D1193, reagent water Types I to IV",
-     "Type I above 18 MΩ·cm at 25 °C; a central RO and EDI loop, Type I polished at the bench"
-    ],
-    [
-     "Industrial demineralized water: boiler feed, process rinse",
-     "No pharmacopoeial standard: limits come from your process or the boiler maker",
-     "RO and EDI in place of regenerated ion exchange: no acid or caustic regenerations"
-    ]
-   ],
-   "intro": "The same reverse osmosis (RO) and electrodeionization (EDI) platform. Our scope: [hospital, lab and industrial water scope]. Send the standard you work to and we answer plainly."
+   "intro": "The same reverse osmosis (RO) and electrodeionization (EDI) platform. Our scope: [hospital, lab and industrial water scope]. Send the standard you work to and we answer plainly.",
+   "items": [
+    {
+     "t": "Hospital medical device reprocessing (MDRD) or sterile processing",
+     "d": "CSA Z314; in the United States, ANSI/AAMI ST108:2023. Critical water for final rinse and steam, usually duplex or N+1 because an MDRD cannot stop."
+    },
+    {
+     "t": "Research and university laboratories, central lab water loops",
+     "d": "ASTM D1193, Types I to IV. Type I above 18 MΩ·cm at 25 °C: a central RO and EDI loop, polished at the bench."
+    },
+    {
+     "t": "Industrial demineralized water: boiler feed, process rinse",
+     "d": "No pharmacopoeial standard: limits come from your process or the boiler maker. RO and EDI replace regenerated ion exchange: no acid or caustic regenerations."
+    }
+   ]
   },
   {
    "type": "faq",
@@ -323,7 +311,7 @@
  ],
  "cta": {
   "h": "Tell us what you make and where you ship it.",
-  "body": "A process engineer replies within [proposal response time, working days] with the grade each step needs, the systems to make and distribute it and the qualification scope.",
+  "body": "A process engineer replies, with our questions first if your data has gaps.",
   "button": "Request a water scope review",
   "link": "contact-proposal",
   "intent": "Water scope review for your products",
@@ -335,6 +323,12 @@
    "Feed water analysis, summer and winter",
    "Equipment you want to keep",
    "Your user requirement specification (URS), even a draft"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "The grade each process step needs",
+   "Systems to make and distribute it",
+   "Your qualification scope"
   ]
  },
  "todo": [

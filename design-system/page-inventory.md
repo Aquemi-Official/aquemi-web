@@ -32,7 +32,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | [Fabrication](https://aquemi-official.github.io/aquemi-web/#svc-fabrication) | Fabrication your auditor can trace from any weld back to the mill heat | prose (Weld evidence is made at the bench, or lost), spec (Our standard), options (Options), steps (Hold points), table (Weld log), docs (Dossier), faq (FAQ), related (Before and after the shop), closing (checklist, proof) |
 | [FAT and SAT](https://aquemi-official.github.io/aquemi-web/#svc-fat-sat) | Watch your water system run wet, against a protocol you approved, before it ships | prose (Found at FAT, a fault costs a day), table (FAT, SAT and leverage), band (What a FAT cannot prove, however well run), steps (Process), options (Witnessing), spec (Test bay), docs (What you receive), faq (FAQ), related (Before and after the test bay), closing (checklist, proof) |
 | [Commissioning and qualification](https://aquemi-official.github.io/aquemi-web/#svc-cq) | IQ, OQ and a year of PQ your inspector can follow | steps (Stages), spec (IQ and OQ), spec (PQ), spec (Alert levels), table (Who signs), table (Requalification), docs (Documents), faq (FAQ), related (Before and after qualification), closing (checklist) |
-| [Service and spare parts](https://aquemi-official.github.io/aquemi-web/#svc-service) | Service that keeps your water system running and keeps it qualified | prose (Why service), table (Plans), grid (Visits), spec (Calibration), table (Like for like), steps (Faults), docs (Records), faq (FAQ), related (Where service connects), closing (checklist) |
+| [Service and spare parts](https://aquemi-official.github.io/aquemi-web/#svc-service) | Service that keeps your water system running and keeps it qualified | table as plans (Plans), spec (Calibration), grid (Visits), table (Like for like), steps (Faults), docs (Records), faq (FAQ), related (Where service connects), closing (checklist, returns) |
 | [Upgrades and retrofits](https://aquemi-official.github.io/aquemi-web/#svc-upgrades) | Upgrade the water system you have, with the requalification scope known first | prose (Why upgrade), table (Upgrades), options (Assessment), steps (How it runs), table (Downtime), table (Controls), docs (Documents), faq (FAQ), related (Related pages), closing (checklist) |
 
 ## Industries
@@ -97,6 +97,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | case | CaseStudy |
 | spec | SpecTable (`caption` shown as the section eyebrow; rows keep their order, `hl` rows tinted, optional row `link`) |
 | table | CompareTable (phones: records up to three value columns, tabs from four; link columns end each row) |
+| table `as: "plans"` | PlanTiers (navy: plans side by side, phones stacked; "Suits" and "Price" rows head each plan; optional `recommend`; one page-CTA button per plan) |
 | form | EnquiryForm (with TextField and Button) inside SplitSection; with `steps` it renders the stepped variant |
 | block `nav` label | SectionNav (rendered by the page, not a block) |
 | `[bracketed facts]` in any copy | Placeholder |

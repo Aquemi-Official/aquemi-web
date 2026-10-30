@@ -23,9 +23,8 @@
    "type": "prose",
    "h": "Found at FAT, a fault costs a day",
    "body": [
-    "Most start-up faults show with water running: a valve opening in the wrong step, an interlock on the wrong input, a divert that never fires. Here the fix is a cable, a line of code or a fitting, made the same afternoon. On your site it waits for a permit, a contractor and a production gap.",
-    "A wet FAT fills the skid, runs the pumps against real pressure, heats to sanitization temperature and measures conductivity and total organic carbon (TOC) at the outlet.",
-    "GAMP 5 and ASTM E2500 tell you to leverage well-documented supplier testing. A FAT run to an approved protocol, with calibrated instruments and raw data, is that evidence. A FAT run from a checklist gets repeated."
+    "Most start-up faults show only with water running: a valve opening in the wrong step, an interlock on the wrong input, a divert that never fires. Here the fix is a cable, a line of code or a fitting, made that afternoon. On your site it waits for a permit, a contractor and a production gap.",
+    "So every skid runs wet: pumps against real pressure, heated to sanitization temperature, conductivity and total organic carbon (TOC) measured at the outlet. Run to an approved protocol with calibrated instruments and raw data, it is supplier evidence you can leverage (GAMP 5, ASTM E2500). Run from a checklist, it gets repeated."
    ]
   },
   {
@@ -39,24 +38,6 @@
     "Leverage into IQ/OQ"
    ],
    "rows": [
-    [
-     "Document review",
-     "Drawings, software version, material and calibration certificates, weld log, against the user requirement specification (URS)",
-     "Changes since FAT, field weld records, as-built updates",
-     "Usually leveraged, with the SAT update"
-    ],
-    [
-     "Piping and instrumentation diagram (P&ID) walkdown",
-     "Every line, valve, instrument and tag; skid slopes, drain points and dead legs",
-     "Skid after transport; field piping, loop slopes, low points, branch lengths",
-     "Skid: candidate. Field piping and loop: IQ."
-    ],
-    [
-     "Instruments and I/O",
-     "Every input and output point; analog loops at 0, 50 and 100 %; critical instruments against a calibrated reference",
-     "Points to your supervisory control (SCADA) or building management system (BMS); critical instruments re-checked",
-     "Skid I/O: candidate. Calibration: your metrology procedure."
-    ],
     [
      "Sequences, alarms and interlocks",
      "Start, production, standby, flush, restart after power loss; each alarm, interlock and divert, real or simulated",
@@ -76,19 +57,39 @@
      "Not leveraged: feed water differs"
     ],
     [
+     "Utilities and loop integration",
+     "Not possible: the skid runs on our power, water and heating medium",
+     "Power, heating and cooling media, drains, compressed air, loop hydraulics at peak draw",
+     "SAT and OQ only"
+    ],
+    [
+     "Instruments and I/O",
+     "Every input and output point; analog loops at 0, 50 and 100 %; critical instruments against a calibrated reference",
+     "Points to your supervisory control (SCADA) or building management system (BMS); critical instruments re-checked",
+     "Skid I/O: candidate. Calibration: your metrology procedure."
+    ],
+    [
      "Data integrity",
      "User roles, audit trail, time sync, alarm and event records, backup and restore",
      "Same on the networked system, with your accounts and time server",
      "Candidate for stand-alone functions"
     ],
     [
-     "Utilities and loop integration",
-     "Not possible: the skid runs on our power, water and heating medium",
-     "Power, heating and cooling media, drains, compressed air, loop hydraulics at peak draw",
-     "SAT and OQ only"
+     "Piping and instrumentation diagram (P&ID) walkdown",
+     "Every line, valve, instrument and tag; skid slopes, drain points and dead legs",
+     "Skid after transport; field piping, loop slopes, low points, branch lengths",
+     "Skid: candidate. Field piping and loop: IQ."
+    ],
+    [
+     "Document review",
+     "Drawings, software version, material and calibration certificates, weld log, against the user requirement specification (URS)",
+     "Changes since FAT, field weld records, as-built updates",
+     "Usually leveraged, with the SAT update"
     ]
    ],
-   "nav": "FAT, SAT and leverage"
+   "nav": "FAT, SAT and leverage",
+   "fold": 5,
+   "fold_noun": "tests"
   },
   {
    "type": "band",
@@ -102,34 +103,89 @@
    "items": [
     {
      "t": "Draft protocol",
-     "d": "Written from the approved functional specification and sent [protocol issue before FAT, weeks] ahead; every test case has an acceptance criterion and a URS reference."
+     "d": "From the approved functional specification, sent [protocol issue before FAT, weeks] ahead. Every test case has an acceptance criterion and a URS reference."
     },
     {
      "t": "Your review and approval",
-     "d": "Your validation team comments and may add test cases (Annex 15, 2.6); we answer in writing and reissue. Nothing runs before your quality unit signs."
+     "d": "Your validation team comments and may add test cases (Annex 15, 2.6); we answer in writing. Nothing runs before your quality unit signs."
     },
     {
      "t": "Internal dry run",
-     "d": "We run the full protocol ourselves first and fix what it finds. The witnessed FAT should confirm the system, not debug it."
+     "d": "We run the full protocol ourselves first and fix what it finds, so the witnessed FAT confirms the system rather than debugs it."
     },
     {
      "t": "Witnessed execution",
-     "d": "Your team on our floor, remote or both. Results recorded as found, raw data attached, fabrication hold points already closed."
+     "d": "On our floor, remote or both. Results recorded as found, raw data attached, fabrication hold points already closed."
     },
     {
      "t": "Deviations and punch list",
-     "d": "A failed acceptance criterion is a deviation: investigated, fixed and retested (Annex 15, 2.8). A defect that changes no result goes on the punch list."
+     "d": "A failed acceptance criterion is a deviation: investigated, fixed, retested (Annex 15, 2.8). A defect that changes no result goes on the punch list."
     },
     {
      "t": "Report and release to ship",
-     "d": "Report signed by both parties. Open deviations ship only on a quality-unit-approved assessment of no impact. Skid drained, then [post-FAT drying and sealing method]."
+     "d": "Signed by both parties. Open deviations ship only on a quality-unit-approved no-impact assessment. Skid drained, then [post-FAT drying and sealing method]."
     },
     {
      "t": "SAT on your site",
-     "d": "Critical tests re-run on your feed water, utilities and loop, conductivity read uncompensated (USP <645> stage 1). Punch list closed, system handed to IQ/OQ."
+     "d": "Critical tests re-run on your feed water, utilities and loop, conductivity read uncompensated (USP <645> stage 1). Then handed to IQ/OQ."
     }
    ],
    "nav": "Process"
+  },
+  {
+   "type": "spec",
+   "caption": "TEST BAY",
+   "h": "Test bay capability",
+   "cols": [
+    "Item",
+    "What we have",
+    "What it means for your FAT"
+   ],
+   "rows": [
+    {
+     "p": "Feed water",
+     "v": "[feed water source and conductivity, µS/cm]",
+     "m": "FAT outlet quality is on this water"
+    },
+    {
+     "p": "Power",
+     "v": "[voltage, phases, frequency, kW]",
+     "m": "Other voltages: [transformer or site test]"
+    },
+    {
+     "p": "Heating medium",
+     "v": "[plant steam, kg/h, or electric, kW]",
+     "m": "Sets which units run at full rate"
+    },
+    {
+     "p": "Space and lifting",
+     "v": "[largest skid size, m; crane, t]",
+     "m": "Larger systems tested as modules, joined at SAT"
+    },
+    {
+     "p": "Test instruments",
+     "v": "Calibrated [calibration interval and traceability]",
+     "m": "Certificates bound into the FAT report"
+    },
+    {
+     "p": "Remote witness",
+     "v": "[remote witness platform]; [electronic signature method]",
+     "m": "Agreed with your IT before the date"
+    },
+    {
+     "p": "Drainage",
+     "v": "[drain capacity, L/min]",
+     "m": "Sets how long a full flow test runs"
+    },
+    {
+     "p": "Location",
+     "v": "[test bay location, city and province]",
+     "m": "In-person witness travel"
+    }
+   ],
+   "nav": "Test bay",
+   "fold": 4,
+   "fold_noun": "rows"
   },
   {
    "type": "options",
@@ -156,60 +212,9 @@
      "d": "We execute unwitnessed and send protocol, raw data and video. Your quality unit decides whether it can be leveraged."
     }
    ],
-   "nav": "Witnessing"
-  },
-  {
-   "type": "spec",
-   "caption": "TEST BAY",
-   "h": "Test bay capability",
-   "cols": [
-    "Item",
-    "What we have",
-    "What it means for your FAT"
-   ],
-   "rows": [
-    {
-     "p": "Location",
-     "v": "[test bay location, city and province]",
-     "m": "In-person witness travel"
-    },
-    {
-     "p": "Feed water",
-     "v": "[feed water source and conductivity, µS/cm]",
-     "m": "FAT outlet quality is on this water"
-    },
-    {
-     "p": "Power",
-     "v": "[voltage, phases, frequency, kW]",
-     "m": "Other voltages: [transformer or site test]"
-    },
-    {
-     "p": "Heating medium",
-     "v": "[plant steam, kg/h, or electric, kW]",
-     "m": "Sets which units run at full rate"
-    },
-    {
-     "p": "Space and lifting",
-     "v": "[largest skid size, m; crane, t]",
-     "m": "Larger systems tested as modules, joined at SAT"
-    },
-    {
-     "p": "Drainage",
-     "v": "[drain capacity, L/min]",
-     "m": "Sets how long a full flow test runs"
-    },
-    {
-     "p": "Remote witness",
-     "v": "[remote witness platform]; [electronic signature method]",
-     "m": "Agreed with your IT before the date"
-    },
-    {
-     "p": "Test instruments",
-     "v": "Calibrated [calibration interval and traceability]",
-     "m": "Certificates bound into the FAT report"
-    }
-   ],
-   "nav": "Test bay"
+   "nav": "Witnessing",
+   "fold": 3,
+   "fold_noun": "options"
   },
   {
    "type": "docs",
@@ -224,20 +229,12 @@
      "d": "Results as found, raw data, signatures for both parties"
     },
     {
-     "t": "Test instrument calibration certificates",
-     "d": "Traceable to national standards"
-    },
-    {
-     "t": "Deviation log and punch list",
-     "d": "Investigation, retest and closure; owner and stage for every item"
-    },
-    {
      "t": "FAT summary report",
      "d": "Release-to-ship decision and open items"
     },
     {
-     "t": "Software version record",
-     "d": "Version and checksum tested, and the change log after FAT"
+     "t": "Deviation log and punch list",
+     "d": "Investigation, retest and closure; owner and stage for every item"
     },
     {
      "t": "SAT protocol and executed SAT report",
@@ -246,9 +243,19 @@
     {
      "t": "Traceability matrix",
      "d": "URS and functional specification to FAT and SAT test case, leveraged tests flagged for IQ/OQ"
+    },
+    {
+     "t": "Test instrument calibration certificates",
+     "d": "Traceable to national standards"
+    },
+    {
+     "t": "Software version record",
+     "d": "Version and checksum tested, and the change log after FAT"
     }
    ],
-   "nav": "What you receive"
+   "nav": "What you receive",
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
    "type": "faq",
@@ -304,7 +311,7 @@
  ],
  "cta": {
   "h": "Check our acceptance criteria against your URS first",
-  "body": "We send the protocol's table of contents and redacted test cases [shared openly or under NDA]. Send your URS and an engineer replies within [proposal response time, working days] with a draft FAT test list and leverage candidates.",
+  "body": "Send your URS. We share protocol extracts [shared openly or under NDA] and draft your FAT test list against it.",
   "button": "Request a sample FAT protocol",
   "link": "cmp-documentation",
   "proof": {
@@ -317,6 +324,13 @@
    "Reviewers, witnesses and quality unit signatory",
    "Remote witness platform and e-signature rules",
    "FAT tests your IQ/OQ will reference"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Protocol table of contents",
+   "Redacted sample test cases",
+   "Draft FAT test list",
+   "IQ/OQ leverage candidates"
   ]
  },
  "todo": [
@@ -340,5 +354,23 @@
   "Test instrument calibration interval and traceability",
   "Post-FAT drying, capping and any gas blanket used for shipment ([post-FAT drying and sealing method])"
  ],
- "primary_cta_link": "cmp-documentation"
+ "primary_cta_link": "cmp-documentation",
+ "facts": [
+  {
+   "v": "100 %",
+   "l": "Skids wet tested at FAT before shipping"
+  },
+  {
+   "v": "Annex 15, 3.6",
+   "l": "Basis for leveraging FAT into IQ/OQ"
+  },
+  {
+   "v": "5",
+   "l": "Ways to witness, in person to review only"
+  },
+  {
+   "v": "8",
+   "l": "Documents, protocol to traceability matrix"
+  }
+ ]
 }

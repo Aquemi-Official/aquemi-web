@@ -22,7 +22,7 @@
    "cols": [
     "Your situation",
     "Water you need",
-    "Systems",
+    "System",
     "Start with"
    ],
    "rows": [
@@ -51,7 +51,7 @@
      }
     ],
     [
-     "Cell and gene therapy, or a university or hospital advanced therapy medicinal product (ATMP) facility",
+     "Cell and gene therapy, including university or hospital advanced therapy medicinal product (ATMP) facilities",
      "WFI for cell-based products not sterilized afterwards; Purified Water (PW) for washers and autoclave feed",
      {
       "t": "PW generation",
@@ -76,7 +76,7 @@
     ],
     [
      "Endotoxin or bioburden excursions at a point of use",
-     "Where it starts, a corrective action that holds, trend data that shows it",
+     "Find where it starts, a corrective action that holds, trend data that shows it",
      {
       "t": "Storage and distribution loops",
       "link": "sys-storage"
@@ -98,13 +98,14 @@
       "link": "svc-cq"
      }
     ]
-   ]
+   ],
+   "as": "router"
   },
   {
    "type": "table",
    "nav": "Grade by step",
    "h": "Minimum water grade by product and process step",
-   "intro": "Minimums from the EMA water guideline (EMA/CHMP/CVMP/QWP/496873/2018, Tables 1, 3, 4, 5), in effect since 1 February 2021. Most biologics plants use WFI for media and buffers anyway.",
+   "intro": "Minimums from the EMA water guideline (EMA/CHMP/CVMP/QWP/496873/2018, Tables 1, 3, 4, 5), in force since 1 February 2021. Most biologics plants use WFI for media and buffers anyway.",
    "cols": [
     "Product type",
     "Process step",
@@ -112,7 +113,7 @@
    ],
    "rows": [
     [
-     "Biologics, including vaccines and ATMPs, finished product",
+     "Finished biologics, including vaccines and ATMPs",
      "Excipient in the final formulation",
      "WFI"
     ],
@@ -152,7 +153,9 @@
      "WFI"
     ]
    ],
-   "as": "grades"
+   "as": "grades",
+   "fold": 6,
+   "fold_noun": "steps"
   },
   {
    "type": "spec",
@@ -211,75 +214,39 @@
    ]
   },
   {
-   "type": "spec",
-   "nav": "Inspectors",
-   "h": "What each inspector reads on your water system",
-   "caption": "Health Canada · FDA · EU",
-   "cols": [
-    "Inspector or reviewer",
-    "What they read",
-    "On the water system"
-   ],
-   "rows": [
-    {
-     "p": "Health Canada, biologics",
-     "v": "GUI-0001 with Annex 2, GUI-0027 (4 July 2024)",
-     "m": "Design, qualification, sanitization, monitoring, trending"
-    },
-    {
-     "p": "Health Canada, sterile biologics",
-     "v": "GUI-0119, adoption of EU GMP Annex 1 (2022)",
-     "m": "6.7 dead legs, 6.9 flow, 6.10 WFI route, 6.15 total organic carbon (TOC)"
-    },
-    {
-     "p": "Health Canada, Biologic and Radiopharmaceutical Drugs Directorate (BRDD)",
-     "v": "Clinical trial and new drug submissions; lot release",
-     "m": "Utilities description matches the site"
-    },
-    {
-     "p": "Health Canada, cell and gene therapies",
-     "v": "PIC/S GMP Annex 2A until a separate guide is issued",
-     "m": "Your regulatory team confirms"
-    },
-    {
-     "p": "FDA",
-     "v": "21 CFR Parts 600 to 680 with Part 211; CBER (biologics) or CDER (drugs)",
-     "m": "Pre-license inspection; Guide to Inspections of High Purity Water Systems"
-    },
-    {
-     "p": "EU authorities and importers",
-     "v": "EU GMP Annex 1, 2, 15 and Part IV (ATMPs); EMA water guideline",
-     "m": "Membrane WFI: notice before use"
-    }
-   ]
-  },
-  {
-   "type": "options",
+   "type": "table",
+   "as": "failures",
    "nav": "Endotoxin",
    "h": "Where endotoxin gets in, and what we design against",
-   "intro": "Endotoxin is heat stable: sanitization kills bacteria but not what they already released. So we design out the places biofilm grows.",
-   "items": [
-    {
-     "t": "Cooled sub-loops and point-of-use exchangers",
-     "d": "Double tubesheet exchangers, drainable layout, scheduled hot sanitization, a sample point after each cooler."
-    },
-    {
-     "t": "Low flow at peak draw",
-     "d": "Loop and pump sized to the batch schedule; return flow alarmed; turbulent flow as EU GMP Annex 1, 6.9 requires."
-    },
-    {
-     "t": "Dead legs and capped tie-ins",
-     "d": "Every branch to L/D ≤ 2 to ASME BPE; future tie-ins as valved points, not capped stubs."
-    },
-    {
-     "t": "Ambient PW ahead of the generator",
-     "d": "Where most biofilm lives. Hot water or ozone sanitization on a stated schedule."
-    },
-    {
-     "t": "Membrane WFI and ultrafiltration",
-     "d": "Integrity testing, continuous TOC and conductivity, and the control strategy the EMA expects for non-distillation WFI."
-    }
-   ]
+   "intro": "Endotoxin is heat stable: sanitization kills bacteria, not what they released. So we design out the places biofilm grows.",
+   "cols": [
+    "Where it gets in",
+    "What we design in"
+   ],
+   "rows": [
+    [
+     "Cooled sub-loops and point-of-use exchangers",
+     "Double tubesheet exchangers, drainable layout, scheduled hot sanitization, a sample point after each cooler."
+    ],
+    [
+     "Low flow at peak draw",
+     "Loop and pump sized to the batch schedule; return flow alarmed; turbulent flow as EU GMP Annex 1, 6.9 requires."
+    ],
+    [
+     "Dead legs and capped tie-ins",
+     "Every branch to L/D ≤ 2 to ASME BPE; future tie-ins as valved points, not capped stubs."
+    ],
+    [
+     "Ambient PW ahead of the generator",
+     "Where most biofilm lives. Hot water or ozone sanitization on a stated schedule."
+    ],
+    [
+     "Membrane WFI and ultrafiltration",
+     "Integrity testing, continuous TOC and conductivity, and the control strategy the EMA expects for non-distillation WFI."
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "entry points"
   },
   {
    "type": "options",
@@ -310,7 +277,54 @@
      "t": "Canadian feed water",
      "d": "Feed swings from near freezing to over 20 °C; some supplies use chloramine. We size membranes for your coldest month."
     }
-   ]
+   ],
+   "fold": 3,
+   "fold_noun": "decisions"
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Inspectors",
+   "h": "What each inspector reads on your water system",
+   "cols": [
+    "Inspector or reviewer",
+    "What they read",
+    "What they check on the water system"
+   ],
+   "rows": [
+    [
+     "Health Canada, biologics",
+     "GUI-0001 with Annex 2, GUI-0027 (4 July 2024)",
+     "Design; qualification; sanitization; monitoring; trending"
+    ],
+    [
+     "FDA",
+     "21 CFR Parts 600 to 680 with Part 211; CBER (biologics) or CDER (drugs)",
+     "Pre-license inspection; Guide to Inspections of High Purity Water Systems"
+    ],
+    [
+     "EU authorities and importers",
+     "EU GMP Annex 1, 2, 15 and Part IV (ATMPs); EMA water guideline",
+     "Membrane WFI: notice before use"
+    ],
+    [
+     "Health Canada, sterile biologics",
+     "GUI-0119, adoption of EU GMP Annex 1 (2022)",
+     "6.7 dead legs; 6.9 flow; 6.10 WFI route; 6.15 total organic carbon (TOC)"
+    ],
+    [
+     "Health Canada, Biologic and Radiopharmaceutical Drugs Directorate (BRDD)",
+     "Clinical trial and new drug submissions; lot release",
+     "Utilities description matches the site"
+    ],
+    [
+     "Health Canada, cell and gene therapies",
+     "PIC/S GMP Annex 2A until a separate guide is issued",
+     "Your regulatory team confirms"
+    ]
+   ],
+   "fold": 4,
+   "fold_noun": "inspectors"
   },
   {
    "type": "steps",
@@ -390,7 +404,7 @@
  ],
  "cta": {
   "h": "Send your products, process format and batch schedule.",
-  "body": "A process engineer replies within [proposal response time, working days] with the grade each step needs, the systems to supply it and a phase plan to commercial scale.",
+  "body": "A process engineer reviews it and replies with a water plan for your process.",
   "button": "Request a biologics water scope review",
   "link": "contact-proposal",
   "intent": "Water scope review for your products|Biologics, vaccines, cell or gene therapy",
@@ -403,7 +417,13 @@
    "Markets and pharmacopoeias named",
    "Feed water analyses, winter and summer",
    "Growth plan and target dates"
-  ]
+  ],
+  "returns": [
+   "The minimum grade each step needs",
+   "The systems to supply each grade",
+   "A phase plan to commercial scale"
+  ],
+  "turnaround": "[proposal response time, working days]"
  },
  "todo": [
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",

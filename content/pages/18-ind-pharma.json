@@ -7,24 +7,36 @@
  "path": "/industries/pharmaceutical/",
  "eyebrow": "PHARMACEUTICAL · HEALTH CANADA · FDA · EU GMP",
  "headline": "Pharmaceutical water matched to your dosage forms, documented for every inspector",
- "lead": "Your dosage forms set the water grade: Purified Water (PW), or Water for Injection (WFI) and pure steam. We design, build and wet test systems that hold USP <645> and <643> at point of use.",
- "tags": [
-  "USP <645>",
-  "USP <643>",
-  "Ph. Eur. 0008 and 0169",
-  "Health Canada GUI-0119"
- ],
+ "lead": "Dosage forms set the grade: Purified Water (PW), or Water for Injection (WFI) and pure steam. We design, build and wet test systems in Canada that hold USP <645> and <643> at point of use.",
  "primary_cta": "Request a pharmaceutical water scope review",
  "primary_cta_intent": "Water scope review for your products|Pharmaceutical drug products",
  "secondary_cta": {
   "label": "Get a sample turnover package",
   "link": "cmp-documentation"
  },
+ "facts": [
+  {
+   "v": "≤ 1.3 µS/cm",
+   "l": "Conductivity at 25 °C · USP <645>"
+  },
+  {
+   "v": "≤ 500 ppb",
+   "l": "Total organic carbon · USP <643>"
+  },
+  {
+   "v": "< 0.25 EU/mL",
+   "l": "Bacterial endotoxins, WFI · USP <85>"
+  },
+  {
+   "v": "100 %",
+   "l": "Skids wet tested at FAT before shipping"
+  }
+ ],
  "blocks": [
   {
    "type": "table",
    "nav": "Where to start",
-   "h": "Your situation, the water you need, the system",
+   "h": "Your situation, the water, the system",
    "cols": [
     "Your situation",
     "Water you need",
@@ -87,13 +99,14 @@
       "link": "svc-upgrades"
      }
     ]
-   ]
+   ],
+   "as": "router"
   },
   {
    "type": "table",
    "nav": "Grade by dosage form",
    "h": "Minimum water grade by dosage form",
-   "intro": "Minimums from the EMA guideline on water for pharmaceutical use (EMA/CHMP/CVMP/QWP/496873/2018, in effect 1 February 2021). Your product file can set a higher grade, never a lower one.",
+   "intro": "Minimums from the EMA water guideline (EMA/CHMP/CVMP/QWP/496873/2018, in effect 1 February 2021). Your product file can set a higher grade, never a lower one.",
    "cols": [
     "Product or process step",
     "Minimum grade",
@@ -131,17 +144,19 @@
      "PW before non-sterile lyophilization"
     ],
     [
-     "Active substance synthesis before final isolation",
-     "Potable water",
-     "PW where the chemistry needs it; PW or WFI for final isolation"
-    ],
-    [
      "Final rinse of equipment, containers and closures",
      "Same grade as the product",
      "PW for non-parenteral products; WFI for sterile parenterals"
+    ],
+    [
+     "Active substance synthesis before final isolation",
+     "Potable water",
+     "PW where the chemistry needs it; PW or WFI for final isolation"
     ]
    ],
-   "as": "grades"
+   "as": "grades",
+   "fold": 6,
+   "fold_noun": "steps"
   },
   {
    "type": "spec",
@@ -257,7 +272,9 @@
      }
     ]
    ],
-   "as": "evidence"
+   "as": "evidence",
+   "fold": 4,
+   "fold_noun": "inspectors"
   },
   {
    "type": "options",
@@ -289,7 +306,9 @@
      "t": "Shutdown windows",
      "d": "Duplex trains and isolable loop sections let you sanitize, service or tie in points of use without stopping every line."
     }
-   ]
+   ],
+   "fold": 3,
+   "fold_noun": "decisions"
   },
   {
    "type": "grid",
@@ -303,42 +322,38 @@
      "link": "svc-design"
     },
     {
-     "t": "Fabrication",
-     "d": "316L product-contact piping with weld logs, borescope records and material certificates traceable to the mill heat.",
-     "tag": "ASME BPE",
-     "link": "svc-fabrication"
-    },
-    {
      "t": "FAT and SAT",
-     "d": "Wet factory acceptance testing (FAT) in our test bay to a protocol you approve, then site acceptance testing (SAT) on your feed water.",
+     "d": "Wet factory acceptance testing (FAT) to a protocol you approve, then site acceptance testing (SAT) on your feed.",
      "tag": "Annex 15, 3.4–3.7",
      "link": "svc-fat-sat"
     },
     {
      "t": "Commissioning and qualification",
-     "d": "Installation and operational qualification (IQ/OQ) to protocols your quality unit approves, then support through performance qualification (PQ).",
+     "d": "Installation and operational qualification (IQ/OQ) to protocols your quality unit approves, then support through PQ.",
      "tag": "WHO TRS 1033",
      "link": "svc-cq"
     },
     {
+     "t": "Fabrication",
+     "d": "316L product-contact piping with weld logs, borescope records and mill-heat material certificates.",
+     "tag": "ASME BPE",
+     "link": "svc-fabrication"
+    },
+    {
      "t": "Service",
-     "d": "Plans with stated response times, calibration to the USP <645> and <643> instrument requirements, reports for your GMP records.",
+     "d": "Plans with stated response times, USP <645> and <643> instrument calibration, reports for your GMP records.",
      "tag": "21 CFR 211.67",
      "link": "svc-service"
     },
     {
      "t": "Upgrades and retrofits",
-     "d": "Capacity, online TOC, sanitization and controls upgrades on systems from any builder, with the requalification scope stated first.",
+     "d": "Capacity, online TOC, sanitization and controls upgrades on any builder's system, requalification scope stated first.",
      "tag": "Change control",
      "link": "svc-upgrades"
     }
-   ]
-  },
-  {
-   "type": "band",
-   "tone": "limestone",
-   "h": "Built, wet tested and serviced in Canada",
-   "body": "Your engineers witness FAT in [test bay location, city and province]. Spares in [stock locations], service engineers in [service bases]. Quotes in [quotation currency]; standard lead time [PW skid lead time, weeks]."
+   ],
+   "fold": 3,
+   "fold_noun": "services"
   },
   {
    "type": "faq",
@@ -394,7 +409,7 @@
  ],
  "cta": {
   "h": "Send your dosage forms, markets and water use. We return the grades and the system scope.",
-  "body": "A process engineer replies within [proposal response time, working days] with the grade each product needs, the systems and the qualification scope, or our questions.",
+  "body": "A process engineer replies, with the scope or our questions.",
   "button": "Request a pharmaceutical water scope review",
   "link": "contact-proposal",
   "intent": "Water scope review for your products|Pharmaceutical drug products",
@@ -406,15 +421,16 @@
    "Feed water analyses and yearly temperature range",
    "Existing system drawings and a year of trends",
    "Upcoming inspections and open water observations"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "The grade each product needs",
+   "The systems to supply them",
+   "The qualification scope"
   ]
  },
  "todo": [
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-  "Test bay location, city and province (band; same as home, about)",
-  "Spares stock locations (band)",
-  "Service bases (band)",
-  "Quotation currency (band)",
-  "PW skid lead time, weeks ([PW skid lead time, weeks]; band)",
   "Stills and generators: in-house or named maker ([stills and generators: in-house or named maker]; FAQ; same wording as systems)",
   "Pharmaceutical references available for a call, or a plain 'none yet' ([pharmaceutical references available for a call]; FAQ)",
   "A pharmaceutical case study with measured outcome; add a case block when one exists",

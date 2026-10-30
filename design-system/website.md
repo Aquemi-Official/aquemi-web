@@ -63,16 +63,17 @@ Every page reads as one system, on a phone first.
   | `evidence` | requirement or standard → how we meet it → document that proves it | EvidenceMap |
   | `grades` | process step → minimum water grade | GradeLanes |
   | `roles` | document → who writes → who reviews | RoleMatrix |
+  | `plans` | service plans: feature → value per plan, with "Suits" and "Price" rows and an optional `recommend` | PlanTiers |
 
-  A plain CompareTable is left for true multi-way comparisons (three or more options, plan tiers).
-- **Fold secondary detail.** Any list, spec, docs, tags or table block (including the router-free table shapes: versus, failures, evidence) can set `fold: N`: the first N rows show, the rest sit behind "Show all …"; `fold_noun` names them on the button ("Show all 9 documents"). A versus keeps its verdict visible. Put the rows that decide the choice first; never fold the limits, the main standard or the scope. Folded rows don't count toward visible words.
+  A plain CompareTable is left for true multi-way comparisons (three or more options that are not plans you buy).
+- **Fold secondary detail.** Any list, spec, docs, tags or table block (including the router-free table shapes: versus, failures, evidence, plans) can set `fold: N`: the first N rows show, the rest sit behind "Show all …"; `fold_noun` names them on the button ("Show all 9 documents"). A versus keeps its verdict visible. Put the rows that decide the choice first; never fold the limits, the main standard or the scope. Folded rows don't count toward visible words.
 
 ## Ground: a navy blueprint with light drawing sheets
 
 There is no light or dark theme to choose. The site is one composition: the page is the navy blueprint (`data-theme="dark"` on the page), and reading sits on light drawing sheets laid on it.
 
 - **Light sheets** (`.aq-sheet`, `data-theme="light"`) carry reading: SpecTable, CompareTable, DocList, Prose, FAQ, forms, case studies, FaultList, EvidenceMap. Consecutive light blocks share one sheet, which ends in a small title block (Aquemi · page · sheet number). Desktop: inset `space-8` from the page edge with a `line-strong` frame, navy around it; phones: edge to edge.
-- **Navy** carries the visual anchors: hero, diagrams and water paths, Router, Versus, GradeLanes, RoleMatrix, options, link grids, related pages, the closing.
+- **Navy** carries the visual anchors: hero, diagrams and water paths, Router, Versus, GradeLanes, RoleMatrix, PlanTiers, options, link grids, related pages, the closing.
 - A block can override with `ground: "light"` or `"dark"`; use it to break a long run of one ground, not to restyle a single block.
 - Sections are separated by a `line` hairline. Padding `space-16` on desktop, `space-12` on phones. The limestone statement Band stays limestone on either ground; at most one per page.
 

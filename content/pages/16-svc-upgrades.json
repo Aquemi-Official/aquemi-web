@@ -26,8 +26,8 @@
    "nav": "Why upgrade",
    "h": "Newer rules, older controls, and a requalification bill",
    "body": [
-    "Each upgrade has two costs: the work, and the installation, operational and performance qualification (IQ, OQ, PQ) that follows it. The revised EU GMP Annex 1 (in force from August 2023, adopted by Health Canada as GUI-0119) expects continuous total organic carbon (TOC) and conductivity monitoring on WFI and a sanitization schedule set from data. 21 CFR Part 11 and EU GMP Annex 11 now reach the controls cabinet, and the programmable logic controller (PLC) may be out of production.",
-    "WHO TRS 1033 Annex 3 lets a documented risk assessment set the PQ after a change. We size requalification by what the change reaches."
+    "Each upgrade has two costs: the work, and the installation, operational and performance qualification (IQ, OQ, PQ) after it. The revised EU GMP Annex 1 (in force from August 2023) expects continuous total organic carbon (TOC) and conductivity monitoring on WFI, and 21 CFR Part 11 now reaches the controls cabinet.",
+    "WHO TRS 1033 Annex 3 lets a risk assessment set the PQ. We size requalification by what the change reaches."
    ]
   },
   {
@@ -35,149 +35,93 @@
    "nav": "Upgrades",
    "h": "Common upgrades and the requalification to plan",
    "cols": [
-    "Upgrade",
+    "Your upgrade",
     "What changes",
     "Requalification to plan",
-    "Basis"
+    "Basis",
+    "Start with"
    ],
    "rows": [
     [
-     {
-      "t": "Chemical deionization (DI) to reverse osmosis (RO) and electrodeionization (EDI)",
-      "link": "sys-pw"
-     },
+     "Chemical deionization (DI) to reverse osmosis (RO) and electrodeionization (EDI)",
      "New generation skid and RO pretreatment; the loop usually stays",
      "IQ and OQ leveraging factory acceptance tests (FAT); intensive sampling at return and points of use, then a reduced plan",
-     "Annex 15, section 11; WHO TRS 1033 Annex 3, 11.3"
+     "Annex 15, section 11; WHO TRS 1033 Annex 3, 11.3",
+     {
+      "t": "Purified Water (PW) generation",
+      "link": "sys-pw"
+     }
     ],
     [
-     {
-      "t": "Hot water or ozone sanitization on an ambient loop",
-      "link": "sys-storage"
-     },
+     "Hot water or ozone sanitization on an ambient loop",
      "Heat exchanger and coldest-point probes, or ozone with 254 nm ultraviolet (UV) destruct and sensors",
      "IQ of ratings and seals; OQ of the cycle at the coldest point and of ozone absent after the UV; sampling",
-     "USP <1231> (65–80 °C); ISPE Baseline Guide Vol. 4 (0.02–0.2 ppm); Annex 1, 6.12"
+     "USP <1231> (65–80 °C); ISPE Baseline Guide Vol. 4 (0.02–0.2 ppm); Annex 1, 6.12",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
     ],
     [
-     {
-      "t": "Online TOC and conductivity, or real-time release",
-      "link": "sys-monitoring"
-     },
+     "Online TOC and conductivity, or real-time release",
      "Analyzer and sample line at the risk-based location, data path to the historian",
      "OQ with USP <643> system suitability (85–115 %) and audit trail checks; parallel laboratory results before online release",
-     "USP <643>; USP <645>; Ph. Eur. 2.2.44; Annex 1, 6.15"
+     "USP <643>; USP <645>; Ph. Eur. 2.2.44; Annex 1, 6.15",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
     ],
     [
-     {
-      "t": "PLC, operator panel (HMI) and SCADA replacement",
-      "link": "sys-monitoring"
-     },
+     "Programmable logic controller (PLC), operator panel (HMI) and SCADA replacement",
      "New controller, panel and logic, electronic records",
      "GAMP 5 validation with software FAT on a simulator; short water sampling if the process is unchanged",
-     "21 CFR Part 11; EU GMP Annex 11; GAMP 5"
+     "21 CFR Part 11; EU GMP Annex 11; GAMP 5",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
     ],
     [
-     {
-      "t": "Dead leg removal and loop changes",
-      "link": "svc-fabrication"
-     },
+     "Dead leg removal and loop changes",
      "Branches cut to the ASME BPE target of L/D ≤ 2, orbital welds, slope corrected, passivation",
      "IQ of the section; updated isometrics and dead leg register; sampling at affected and neighbouring points",
-     "ASME BPE; Annex 1, 6.7; WHO TRS 1033 Annex 3"
+     "ASME BPE; Annex 1, 6.7; WHO TRS 1033 Annex 3",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
     ],
     [
-     {
-      "t": "Capacity increase",
-      "link": "sys-pw"
-     },
+     "Capacity increase",
      "Second RO train or larger skid, tank, pump or sub-loop",
      "IQ and OQ of new equipment, loop hydraulics at the new peak draw; sampling near the change",
-     "Annex 1, 6.9; Annex 15, section 11"
+     "Annex 1, 6.9; Annex 15, section 11",
+     {
+      "t": "Purified Water (PW) generation",
+      "link": "sys-pw"
+     }
     ],
     [
-     {
-      "t": "WFI route change: distillation to membrane, or back",
-      "link": "sys-wfi-membrane"
-     },
+     "WFI route change: distillation to membrane, or back",
      "New generator built alongside the existing one",
      "Full IQ, OQ and three-phase PQ; for membrane WFI in Ph. Eur. markets, notice to your authority first",
-     "Ph. Eur. 0169; EMA/INS/GMP/443117/2017; WHO TRS 1033 Annex 3"
+     "Ph. Eur. 0169; EMA/INS/GMP/443117/2017; WHO TRS 1033 Annex 3",
+     {
+      "t": "WFI by membrane",
+      "link": "sys-wfi-membrane"
+     }
     ],
     [
      "Rouge remediation",
      "Derouging and repassivation, surfaces inspected before and after",
      "Records under change control; flushing with conductivity and TOC checks, then closer sampling",
-     "ASME BPE; [passivation standard, ASTM A967 or A380]"
+     "ASME BPE; [passivation standard, ASTM A967 or A380]",
+     "The system assessment"
     ]
-   ]
-  },
-  {
-   "type": "options",
-   "nav": "Assessment",
-   "h": "The system assessment: what we review",
-   "intro": "The report gives each option with scope, [budget range, CAD], downtime, supply plan and the requalification it triggers.",
-   "items": [
-    {
-     "t": "Records",
-     "d": "Qualification file, change controls, drawings and dead leg register: what is missing and what each gap costs."
-    },
-    {
-     "t": "Water quality data",
-     "d": "Twelve months of conductivity, TOC, microbial and endotoxin results, against alert and action levels."
-    },
-    {
-     "t": "Generation",
-     "d": "Performance on today's feed water and remaining capacity at your coldest feed temperature."
-    },
-    {
-     "t": "Storage and distribution",
-     "d": "Walkdown: dead legs over L/D 2, drainability, rouge and contamination routes."
-    },
-    {
-     "t": "Sanitization",
-     "d": "Whether your monitoring results support the schedule, as Annex 1, 6.12 asks."
-    },
-    {
-     "t": "Controls and data integrity",
-     "d": "Versions, support status, access, audit trail and backups, with a gap list against Part 11 and Annex 11."
-    },
-    {
-     "t": "Spares",
-     "d": "Parts at risk, lead times and current equivalents."
-    }
-   ]
-  },
-  {
-   "type": "steps",
-   "nav": "How it runs",
-   "h": "How an upgrade runs",
-   "items": [
-    {
-     "t": "System assessment",
-     "d": "On site for [assessment duration, days]; report within [report turnaround, working days]."
-    },
-    {
-     "t": "Options and impact",
-     "d": "Scope, cost, downtime and requalification per option, so you compare total cost, not equipment price."
-    },
-    {
-     "t": "Change control input",
-     "d": "We write the technical content of your change request and impact assessment. Your quality unit approves it."
-    },
-    {
-     "t": "Design, build and FAT",
-     "d": "Skids, panels and spools tested at our shop, software against a simulator, so the site window stays short."
-    },
-    {
-     "t": "Cutover",
-     "d": "In a planned window under your permits, flushed and sanitized before sampling."
-    },
-    {
-     "t": "Requalification and records",
-     "d": "IQ and OQ of what changed, the agreed sampling, and updated drawings, register and standard operating procedures (SOPs)."
-    }
-   ]
+   ],
+   "as": "router",
+   "intro": "Pick your upgrade to see what changes, the requalification to plan and its basis."
   },
   {
    "type": "table",
@@ -224,7 +168,47 @@
      "As above",
      "[temporary RO or EDI units, flow m³/h]"
     ]
-   ]
+   ],
+   "fold": 4,
+   "fold_noun": "cases"
+  },
+  {
+   "type": "options",
+   "nav": "Assessment",
+   "h": "The system assessment: what we review",
+   "intro": "The report gives each option with scope, [budget range, CAD], downtime, supply plan and the requalification it triggers.",
+   "items": [
+    {
+     "t": "Records",
+     "d": "Qualification file, change controls, drawings and dead leg register: what is missing and what each gap costs."
+    },
+    {
+     "t": "Water quality data",
+     "d": "Twelve months of conductivity, TOC, microbial and endotoxin results, against alert and action levels."
+    },
+    {
+     "t": "Generation",
+     "d": "Performance on today's feed water and remaining capacity at your coldest feed temperature."
+    },
+    {
+     "t": "Storage and distribution",
+     "d": "Walkdown: dead legs over L/D 2, drainability, rouge and contamination routes."
+    },
+    {
+     "t": "Sanitization",
+     "d": "Whether your monitoring results support the schedule, as Annex 1, 6.12 asks."
+    },
+    {
+     "t": "Controls and data integrity",
+     "d": "Versions, support status, access, audit trail and backups, with a gap list against Part 11 and Annex 11."
+    },
+    {
+     "t": "Spares",
+     "d": "Parts at risk, lead times and current equivalents."
+    }
+   ],
+   "fold": 4,
+   "fold_noun": "review areas"
   },
   {
    "type": "table",
@@ -263,7 +247,40 @@
      "Verified migration, or old records kept readable"
     ]
    ],
-   "as": "failures"
+   "as": "failures",
+   "fold": 3,
+   "fold_noun": "gaps"
+  },
+  {
+   "type": "steps",
+   "nav": "How it runs",
+   "h": "How an upgrade runs",
+   "items": [
+    {
+     "t": "System assessment",
+     "d": "On site for [assessment duration, days]; report within [report turnaround, working days]."
+    },
+    {
+     "t": "Options and impact",
+     "d": "Scope, cost, downtime and requalification per option, so you compare total cost, not equipment price."
+    },
+    {
+     "t": "Change control input",
+     "d": "We write the technical content of your change request and impact assessment. Your quality unit approves it."
+    },
+    {
+     "t": "Design, build and FAT",
+     "d": "Skids, panels and spools tested at our shop, software against a simulator, so the site window stays short."
+    },
+    {
+     "t": "Cutover",
+     "d": "In a planned window under your permits, flushed and sanitized before sampling."
+    },
+    {
+     "t": "Requalification and records",
+     "d": "IQ and OQ of what changed, the agreed sampling, and updated drawings, register and standard operating procedures (SOPs)."
+    }
+   ]
   },
   {
    "type": "docs",
@@ -302,7 +319,9 @@
      "t": "Updated SOPs and spares list",
      "d": "Revised for the new equipment, with training records"
     }
-   ]
+   ],
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
    "type": "faq",
@@ -345,7 +364,7 @@
   },
   {
    "type": "related",
-   "h": "Related pages",
+   "h": "Before and after the upgrade",
    "items": [
     "svc-cq",
     "svc-service",
@@ -358,7 +377,7 @@
  ],
  "cta": {
   "h": "Send us the system you have. We return what to change and how to requalify.",
-  "body": "An engineer replies within [assessment response time, working days] with scope, time on site and price.",
+  "body": "An engineer reviews what you send and replies.",
   "button": "Request a system assessment",
   "link": "contact-proposal",
   "intent": "Assessment of an existing system, any make",
@@ -370,6 +389,12 @@
    "Twelve months of water quality and alarm data",
    "PLC and HMI models, program and passwords held",
    "Shutdown windows and storage ride-through time"
+  ],
+  "turnaround": "[assessment response time, working days]",
+  "returns": [
+   "Scope, time on site and price",
+   "What to change, option by option",
+   "How to requalify each option"
   ]
  },
  "todo": [
@@ -385,5 +410,23 @@
   "Payback figures from a delivered chemical DI to RO/EDI conversion, with client permission ([payback figures from a delivered conversion], FAQ)",
   "Delivered upgrade and retrofit references ([delivered upgrades, what changed, requalification time], FAQ) for a future case block",
   "Assessment response time, working days ([assessment response time, working days], same as the contact-proposal lookup table)"
+ ],
+ "facts": [
+  {
+   "v": "8",
+   "l": "Common upgrades, each with its requalification"
+  },
+  {
+   "v": "Annex 15, 11",
+   "l": "EU GMP basis for the requalification scope"
+  },
+  {
+   "v": "12 months",
+   "l": "Water quality data the assessment reviews"
+  },
+  {
+   "v": "L/D ≤ 2",
+   "l": "Dead leg target, ASME BPE"
+  }
  ]
 }

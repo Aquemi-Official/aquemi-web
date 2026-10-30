@@ -4731,9 +4731,8 @@
      "type": "prose",
      "h": "Found at FAT, a fault costs a day",
      "body": [
-      "Most start-up faults show with water running: a valve opening in the wrong step, an interlock on the wrong input, a divert that never fires. Here the fix is a cable, a line of code or a fitting, made the same afternoon. On your site it waits for a permit, a contractor and a production gap.",
-      "A wet FAT fills the skid, runs the pumps against real pressure, heats to sanitization temperature and measures conductivity and total organic carbon (TOC) at the outlet.",
-      "GAMP 5 and ASTM E2500 tell you to leverage well-documented supplier testing. A FAT run to an approved protocol, with calibrated instruments and raw data, is that evidence. A FAT run from a checklist gets repeated."
+      "Most start-up faults show only with water running: a valve opening in the wrong step, an interlock on the wrong input, a divert that never fires. Here the fix is a cable, a line of code or a fitting, made that afternoon. On your site it waits for a permit, a contractor and a production gap.",
+      "So every skid runs wet: pumps against real pressure, heated to sanitization temperature, conductivity and total organic carbon (TOC) measured at the outlet. Run to an approved protocol with calibrated instruments and raw data, it is supplier evidence you can leverage (GAMP 5, ASTM E2500). Run from a checklist, it gets repeated."
      ]
     },
     {
@@ -4747,24 +4746,6 @@
       "Leverage into IQ/OQ"
      ],
      "rows": [
-      [
-       "Document review",
-       "Drawings, software version, material and calibration certificates, weld log, against the user requirement specification (URS)",
-       "Changes since FAT, field weld records, as-built updates",
-       "Usually leveraged, with the SAT update"
-      ],
-      [
-       "Piping and instrumentation diagram (P&ID) walkdown",
-       "Every line, valve, instrument and tag; skid slopes, drain points and dead legs",
-       "Skid after transport; field piping, loop slopes, low points, branch lengths",
-       "Skid: candidate. Field piping and loop: IQ."
-      ],
-      [
-       "Instruments and I/O",
-       "Every input and output point; analog loops at 0, 50 and 100 %; critical instruments against a calibrated reference",
-       "Points to your supervisory control (SCADA) or building management system (BMS); critical instruments re-checked",
-       "Skid I/O: candidate. Calibration: your metrology procedure."
-      ],
       [
        "Sequences, alarms and interlocks",
        "Start, production, standby, flush, restart after power loss; each alarm, interlock and divert, real or simulated",
@@ -4784,19 +4765,39 @@
        "Not leveraged: feed water differs"
       ],
       [
+       "Utilities and loop integration",
+       "Not possible: the skid runs on our power, water and heating medium",
+       "Power, heating and cooling media, drains, compressed air, loop hydraulics at peak draw",
+       "SAT and OQ only"
+      ],
+      [
+       "Instruments and I/O",
+       "Every input and output point; analog loops at 0, 50 and 100 %; critical instruments against a calibrated reference",
+       "Points to your supervisory control (SCADA) or building management system (BMS); critical instruments re-checked",
+       "Skid I/O: candidate. Calibration: your metrology procedure."
+      ],
+      [
        "Data integrity",
        "User roles, audit trail, time sync, alarm and event records, backup and restore",
        "Same on the networked system, with your accounts and time server",
        "Candidate for stand-alone functions"
       ],
       [
-       "Utilities and loop integration",
-       "Not possible: the skid runs on our power, water and heating medium",
-       "Power, heating and cooling media, drains, compressed air, loop hydraulics at peak draw",
-       "SAT and OQ only"
+       "Piping and instrumentation diagram (P&ID) walkdown",
+       "Every line, valve, instrument and tag; skid slopes, drain points and dead legs",
+       "Skid after transport; field piping, loop slopes, low points, branch lengths",
+       "Skid: candidate. Field piping and loop: IQ."
+      ],
+      [
+       "Document review",
+       "Drawings, software version, material and calibration certificates, weld log, against the user requirement specification (URS)",
+       "Changes since FAT, field weld records, as-built updates",
+       "Usually leveraged, with the SAT update"
       ]
      ],
-     "nav": "FAT, SAT and leverage"
+     "nav": "FAT, SAT and leverage",
+     "fold": 5,
+     "fold_noun": "tests"
     },
     {
      "type": "band",
@@ -4810,34 +4811,89 @@
      "items": [
       {
        "t": "Draft protocol",
-       "d": "Written from the approved functional specification and sent [protocol issue before FAT, weeks] ahead; every test case has an acceptance criterion and a URS reference."
+       "d": "From the approved functional specification, sent [protocol issue before FAT, weeks] ahead. Every test case has an acceptance criterion and a URS reference."
       },
       {
        "t": "Your review and approval",
-       "d": "Your validation team comments and may add test cases (Annex 15, 2.6); we answer in writing and reissue. Nothing runs before your quality unit signs."
+       "d": "Your validation team comments and may add test cases (Annex 15, 2.6); we answer in writing. Nothing runs before your quality unit signs."
       },
       {
        "t": "Internal dry run",
-       "d": "We run the full protocol ourselves first and fix what it finds. The witnessed FAT should confirm the system, not debug it."
+       "d": "We run the full protocol ourselves first and fix what it finds, so the witnessed FAT confirms the system rather than debugs it."
       },
       {
        "t": "Witnessed execution",
-       "d": "Your team on our floor, remote or both. Results recorded as found, raw data attached, fabrication hold points already closed."
+       "d": "On our floor, remote or both. Results recorded as found, raw data attached, fabrication hold points already closed."
       },
       {
        "t": "Deviations and punch list",
-       "d": "A failed acceptance criterion is a deviation: investigated, fixed and retested (Annex 15, 2.8). A defect that changes no result goes on the punch list."
+       "d": "A failed acceptance criterion is a deviation: investigated, fixed, retested (Annex 15, 2.8). A defect that changes no result goes on the punch list."
       },
       {
        "t": "Report and release to ship",
-       "d": "Report signed by both parties. Open deviations ship only on a quality-unit-approved assessment of no impact. Skid drained, then [post-FAT drying and sealing method]."
+       "d": "Signed by both parties. Open deviations ship only on a quality-unit-approved no-impact assessment. Skid drained, then [post-FAT drying and sealing method]."
       },
       {
        "t": "SAT on your site",
-       "d": "Critical tests re-run on your feed water, utilities and loop, conductivity read uncompensated (USP <645> stage 1). Punch list closed, system handed to IQ/OQ."
+       "d": "Critical tests re-run on your feed water, utilities and loop, conductivity read uncompensated (USP <645> stage 1). Then handed to IQ/OQ."
       }
      ],
      "nav": "Process"
+    },
+    {
+     "type": "spec",
+     "caption": "TEST BAY",
+     "h": "Test bay capability",
+     "cols": [
+      "Item",
+      "What we have",
+      "What it means for your FAT"
+     ],
+     "rows": [
+      {
+       "p": "Feed water",
+       "v": "[feed water source and conductivity, µS/cm]",
+       "m": "FAT outlet quality is on this water"
+      },
+      {
+       "p": "Power",
+       "v": "[voltage, phases, frequency, kW]",
+       "m": "Other voltages: [transformer or site test]"
+      },
+      {
+       "p": "Heating medium",
+       "v": "[plant steam, kg/h, or electric, kW]",
+       "m": "Sets which units run at full rate"
+      },
+      {
+       "p": "Space and lifting",
+       "v": "[largest skid size, m; crane, t]",
+       "m": "Larger systems tested as modules, joined at SAT"
+      },
+      {
+       "p": "Test instruments",
+       "v": "Calibrated [calibration interval and traceability]",
+       "m": "Certificates bound into the FAT report"
+      },
+      {
+       "p": "Remote witness",
+       "v": "[remote witness platform]; [electronic signature method]",
+       "m": "Agreed with your IT before the date"
+      },
+      {
+       "p": "Drainage",
+       "v": "[drain capacity, L/min]",
+       "m": "Sets how long a full flow test runs"
+      },
+      {
+       "p": "Location",
+       "v": "[test bay location, city and province]",
+       "m": "In-person witness travel"
+      }
+     ],
+     "nav": "Test bay",
+     "fold": 4,
+     "fold_noun": "rows"
     },
     {
      "type": "options",
@@ -4864,60 +4920,9 @@
        "d": "We execute unwitnessed and send protocol, raw data and video. Your quality unit decides whether it can be leveraged."
       }
      ],
-     "nav": "Witnessing"
-    },
-    {
-     "type": "spec",
-     "caption": "TEST BAY",
-     "h": "Test bay capability",
-     "cols": [
-      "Item",
-      "What we have",
-      "What it means for your FAT"
-     ],
-     "rows": [
-      {
-       "p": "Location",
-       "v": "[test bay location, city and province]",
-       "m": "In-person witness travel"
-      },
-      {
-       "p": "Feed water",
-       "v": "[feed water source and conductivity, µS/cm]",
-       "m": "FAT outlet quality is on this water"
-      },
-      {
-       "p": "Power",
-       "v": "[voltage, phases, frequency, kW]",
-       "m": "Other voltages: [transformer or site test]"
-      },
-      {
-       "p": "Heating medium",
-       "v": "[plant steam, kg/h, or electric, kW]",
-       "m": "Sets which units run at full rate"
-      },
-      {
-       "p": "Space and lifting",
-       "v": "[largest skid size, m; crane, t]",
-       "m": "Larger systems tested as modules, joined at SAT"
-      },
-      {
-       "p": "Drainage",
-       "v": "[drain capacity, L/min]",
-       "m": "Sets how long a full flow test runs"
-      },
-      {
-       "p": "Remote witness",
-       "v": "[remote witness platform]; [electronic signature method]",
-       "m": "Agreed with your IT before the date"
-      },
-      {
-       "p": "Test instruments",
-       "v": "Calibrated [calibration interval and traceability]",
-       "m": "Certificates bound into the FAT report"
-      }
-     ],
-     "nav": "Test bay"
+     "nav": "Witnessing",
+     "fold": 3,
+     "fold_noun": "options"
     },
     {
      "type": "docs",
@@ -4932,20 +4937,12 @@
        "d": "Results as found, raw data, signatures for both parties"
       },
       {
-       "t": "Test instrument calibration certificates",
-       "d": "Traceable to national standards"
-      },
-      {
-       "t": "Deviation log and punch list",
-       "d": "Investigation, retest and closure; owner and stage for every item"
-      },
-      {
        "t": "FAT summary report",
        "d": "Release-to-ship decision and open items"
       },
       {
-       "t": "Software version record",
-       "d": "Version and checksum tested, and the change log after FAT"
+       "t": "Deviation log and punch list",
+       "d": "Investigation, retest and closure; owner and stage for every item"
       },
       {
        "t": "SAT protocol and executed SAT report",
@@ -4954,9 +4951,19 @@
       {
        "t": "Traceability matrix",
        "d": "URS and functional specification to FAT and SAT test case, leveraged tests flagged for IQ/OQ"
+      },
+      {
+       "t": "Test instrument calibration certificates",
+       "d": "Traceable to national standards"
+      },
+      {
+       "t": "Software version record",
+       "d": "Version and checksum tested, and the change log after FAT"
       }
      ],
-     "nav": "What you receive"
+     "nav": "What you receive",
+     "fold": 6,
+     "fold_noun": "documents"
     },
     {
      "type": "faq",
@@ -5012,7 +5019,7 @@
    ],
    "cta": {
     "h": "Check our acceptance criteria against your URS first",
-    "body": "We send the protocol's table of contents and redacted test cases [shared openly or under NDA]. Send your URS and an engineer replies within [proposal response time, working days] with a draft FAT test list and leverage candidates.",
+    "body": "Send your URS. We share protocol extracts [shared openly or under NDA] and draft your FAT test list against it.",
     "button": "Request a sample FAT protocol",
     "link": "cmp-documentation",
     "proof": {
@@ -5025,6 +5032,13 @@
      "Reviewers, witnesses and quality unit signatory",
      "Remote witness platform and e-signature rules",
      "FAT tests your IQ/OQ will reference"
+    ],
+    "turnaround": "[proposal response time, working days]",
+    "returns": [
+     "Protocol table of contents",
+     "Redacted sample test cases",
+     "Draft FAT test list",
+     "IQ/OQ leverage candidates"
     ]
    },
    "todo": [
@@ -5048,7 +5062,25 @@
     "Test instrument calibration interval and traceability",
     "Post-FAT drying, capping and any gas blanket used for shipment ([post-FAT drying and sealing method])"
    ],
-   "primary_cta_link": "cmp-documentation"
+   "primary_cta_link": "cmp-documentation",
+   "facts": [
+    {
+     "v": "100 %",
+     "l": "Skids wet tested at FAT before shipping"
+    },
+    {
+     "v": "Annex 15, 3.6",
+     "l": "Basis for leveraging FAT into IQ/OQ"
+    },
+    {
+     "v": "5",
+     "l": "Ways to witness, in person to review only"
+    },
+    {
+     "v": "8",
+     "l": "Documents, protocol to traceability matrix"
+    }
+   ]
   },
   {
    "id": "svc-cq",
@@ -5077,11 +5109,11 @@
      "type": "steps",
      "nav": "Stages",
      "h": "What each stage proves",
-     "intro": "Inspectors fault the evidence, not the water. Commissioning is documented but does not replace qualification (WHO TRS 1033, 11.2). We plan every stage in one commissioning and qualification (C&Q) plan your quality unit approves.",
+     "intro": "Inspectors fault the evidence, not the water. Commissioning does not replace qualification (WHO TRS 1033, 11.2), so one commissioning and qualification (C&Q) plan, approved by your quality unit, covers every stage.",
      "items": [
       {
        "t": "Commissioning",
-       "d": "Flushing, pressure test, passivation, loop checks, start-up, punch list. Leverageable where documented to good documentation practice."
+       "d": "Flushing, pressure test, passivation, loop checks, start-up, punch list. Leverageable if documented to good documentation practice."
       },
       {
        "t": "Factory and site acceptance tests (FAT/SAT)",
@@ -5122,19 +5154,9 @@
        "m": "As-built issue; dead leg register, length-to-diameter (L/D) per branch"
       },
       {
-       "p": "IQ · Materials",
-       "v": "316L or specified alloy; elastomers to specification",
-       "m": "EN 10204 type 3.1 certificates · Annex 15, 3.9 v"
-      },
-      {
        "p": "IQ · Welds and finish",
        "v": "Weld map, log, borescope; SF1 (Ra ≤ 0.51 µm) or SF4 (Ra ≤ 0.38 µm)",
        "m": "ASME BPE and your specification"
-      },
-      {
-       "p": "IQ · Instruments",
-       "v": "Installed, ranged, calibrated; critical ones identified",
-       "m": "Traceable via [calibration laboratory and accreditation]"
       },
       {
        "p": "OQ · Sequences, alarms, interlocks",
@@ -5157,6 +5179,16 @@
        "m": "Positive return pressure, design minimum velocity · Annex 1, 6.11"
       },
       {
+       "p": "IQ · Materials",
+       "v": "316L or specified alloy; elastomers to specification",
+       "m": "EN 10204 type 3.1 certificates · Annex 15, 3.9 v"
+      },
+      {
+       "p": "IQ · Instruments",
+       "v": "Installed, ranged, calibrated; critical ones identified",
+       "m": "Traceable via [calibration laboratory and accreditation]"
+      },
+      {
        "p": "OQ · Data integrity",
        "v": "Roles, audit trail, time sync, backup, restore",
        "m": "21 CFR Part 11; EU GMP Annex 11"
@@ -5166,7 +5198,60 @@
        "v": "Non-condensable gases, dryness, superheat at each use point",
        "m": "EN 285; condensate to the Water for Injection (WFI) monograph · Annex 1, 6.17"
       }
-     ]
+     ],
+     "fold": 6,
+     "fold_noun": "checks"
+    },
+    {
+     "type": "table",
+     "nav": "Who signs",
+     "h": "Who writes and reviews each document",
+     "intro": "The validation master plan (VMP) stays yours. Your quality unit approves every protocol before execution and every phase release (Annex 15, 2.6 and 2.10).",
+     "cols": [
+      "Document or activity",
+      "Written or done by",
+      "Reviewed by"
+     ],
+     "rows": [
+      [
+       "Risk assessment and C&Q plan",
+       "Aquemi drafts, from the user requirement specification (URS)",
+       "Your validation team, with ours"
+      ],
+      [
+       "FAT, SAT, IQ and OQ protocols",
+       "Aquemi, in your template",
+       "Your validation team"
+      ],
+      [
+       "IQ and OQ execution",
+       "Aquemi [executing staff: own engineers or named partner], with your witness",
+       "Your validation team"
+      ],
+      [
+       "PQ sampling and testing",
+       "Your operators and laboratory, or [contract laboratory, if Aquemi arranges one]",
+       "Your quality control"
+      ],
+      [
+       "Alert and action levels",
+       "Aquemi recommends from the data",
+       "Your quality control"
+      ],
+      [
+       "PQ protocol and sampling plan",
+       "You, or Aquemi drafts for you",
+       "Both teams and your laboratory"
+      ],
+      [
+       "Phase reports and final summary",
+       "Aquemi drafts from executed records",
+       "Your validation team"
+      ]
+     ],
+     "as": "roles",
+     "fold": 5,
+     "fold_noun": "documents"
     },
     {
      "type": "spec",
@@ -5188,7 +5273,7 @@
       {
        "p": "Phase 2",
        "v": "≥ 2 further weeks",
-       "m": "Same sampling, standard operating procedures (SOPs) in use. Water usable if data show quality and your quality unit approves · WHO TRS 1033, 11.3"
+       "m": "Same sampling, standard operating procedures (SOPs) in use. Water usable if data show quality and your quality unit approves (WHO TRS 1033, 11.3)"
       },
       {
        "p": "Phase 3",
@@ -5216,7 +5301,9 @@
        "m": "Physical tests repeated periodically · Annex 1, 6.17"
       }
      ],
-     "note": "For a change to an existing system, WHO allows the phases to be set by risk assessment."
+     "note": "For a change to an existing system, WHO allows the phases to be set by risk assessment.",
+     "fold": 3,
+     "fold_noun": "rows"
     },
     {
      "type": "spec",
@@ -5254,62 +5341,8 @@
     },
     {
      "type": "table",
-     "nav": "Who signs",
-     "h": "Who writes and reviews each document",
-     "intro": "Your quality unit approves every protocol before execution and every phase release (Annex 15, 2.6 and 2.10).",
-     "cols": [
-      "Document or activity",
-      "Written or done by",
-      "Reviewed by"
-     ],
-     "rows": [
-      [
-       "Validation master plan (VMP)",
-       "You",
-       "Your validation and quality teams"
-      ],
-      [
-       "Risk assessment and C&Q plan",
-       "Aquemi drafts, from the user requirement specification (URS)",
-       "Your validation team, with ours"
-      ],
-      [
-       "FAT, SAT, IQ and OQ protocols",
-       "Aquemi, in your template",
-       "Your validation team"
-      ],
-      [
-       "IQ and OQ execution",
-       "Aquemi [executing staff: own engineers or named partner], with your witness",
-       "Your validation team"
-      ],
-      [
-       "PQ protocol and sampling plan",
-       "You, or Aquemi drafts for you",
-       "Both teams and your laboratory"
-      ],
-      [
-       "PQ sampling and testing",
-       "Your operators and laboratory, or [contract laboratory, if Aquemi arranges one]",
-       "Your quality control"
-      ],
-      [
-       "Alert and action levels",
-       "Aquemi recommends from the data",
-       "Your quality control"
-      ],
-      [
-       "Phase reports and final summary",
-       "Aquemi drafts from executed records",
-       "Your validation team"
-      ]
-     ],
-     "as": "roles"
-    },
-    {
-     "type": "table",
      "nav": "Requalification",
-     "h": "What triggers requalification, and the usual scope",
+     "h": "What triggers requalification, and its scope",
      "intro": "Scope is set by risk assessment under change control (Annex 15, 11.4).",
      "cols": [
       "Trigger",
@@ -5319,7 +5352,7 @@
      "rows": [
       [
        "Periodic review",
-       "Review of the year's data and changes; testing only where needed",
+       "Review of the year's data and changes; test only where needed",
        "Annex 15, 4.1 and 4.2; WHO TRS 1033, 14.1"
       ],
       [
@@ -5337,7 +5370,8 @@
        "Pretreatment review, OQ of affected steps, intensive sampling",
        "USP <1231>; WHO TRS 1033, 4.2.17"
       ]
-     ]
+     ],
+     "as": "router"
     },
     {
      "type": "docs",
@@ -5376,7 +5410,9 @@
        "t": "Phase reports and final qualification summary",
        "d": "With the alert and action level recommendation"
       }
-     ]
+     ],
+     "fold": 6,
+     "fold_noun": "documents"
     },
     {
      "type": "faq",
@@ -5389,7 +5425,7 @@
       },
       {
        "q": "Can IQ and OQ be combined into one protocol?",
-       "a": "Yes. Annex 15, 2.5 and 3.10 allow a combined installation and operational qualification (IOQ) where the system's complexity allows. On a packaged PW skid it often saves a review cycle; on a full generation, storage and pure steam system we usually keep them apart so IQ deviations do not hold up OQ testing of unaffected parts."
+       "a": "Yes. Annex 15, 2.5 and 3.10 allow a combined installation and operational qualification (IOQ) where complexity allows. On a packaged PW skid it often saves a review cycle; on a full generation, storage and pure steam system we keep them apart so IQ deviations do not hold up OQ."
       },
       {
        "q": "How much of IQ and OQ can FAT replace?",
@@ -5409,7 +5445,7 @@
       },
       {
        "q": "How often should we requalify?",
-       "a": "Annex 15, 4.1 and 4.2 ask for evaluation at a justified frequency, not a full repeat. Most sites review the system annually, as WHO TRS 1033, 14.1 suggests, and requalify only what a change, a trend or the review points to. Repeating a full IQ/OQ every year by habit costs downtime and proves little."
+       "a": "Annex 15, 4.1 and 4.2 ask for evaluation at a justified frequency, not a full repeat. Most sites review annually, as WHO TRS 1033, 14.1 suggests, and requalify only what a change, a trend or the review points to."
       },
       {
        "q": "Can you qualify or requalify a system you did not build?",
@@ -5432,7 +5468,7 @@
    ],
    "cta": {
     "h": "Send your URS or VMP. Get a draft C&Q plan back.",
-    "body": "An engineer replies within [proposal response time, working days] with a draft C&Q plan: IQ and OQ tests, FAT tests to leverage, a PQ sampling plan and water release dates.",
+    "body": "An engineer reads your URS or VMP and drafts the C&Q plan in your templates.",
     "button": "Request a C&Q plan review",
     "link": "contact-proposal",
     "intent": "Review of a document you have|C&Q plan or validation master plan (VMP)",
@@ -5443,7 +5479,14 @@
      "Points of use and draw pattern",
      "Laboratory methods and sample turnaround",
      "Existing system: qualification file and trends"
-    ]
+    ],
+    "returns": [
+     "A draft C&Q plan",
+     "IQ and OQ tests, FAT tests to leverage",
+     "A PQ sampling plan",
+     "Water release dates"
+    ],
+    "turnaround": "[proposal response time, working days]"
    },
    "todo": [
     "Confirm Aquemi executes IQ/OQ with its own engineers or a named partner (who-signs table placeholder)",
@@ -5518,19 +5561,10 @@
    },
    "blocks": [
     {
-     "type": "prose",
-     "nav": "Why service",
-     "h": "Qualified once. Service decides whether it stays qualified.",
-     "body": [
-      "After performance qualification (PQ), a Purified Water (PW) or Water for Injection (WFI) system stays qualified only if every part, calibration and repair is controlled. 21 CFR 211.67 and 211.68 require maintenance and calibration to a written programme, with records. EU GMP Chapter 3 asks that maintenance present no hazard to product and that control equipment be calibrated at defined intervals. Health Canada expects the same under C.02.005, as GUI-0001 interprets it.",
-      "So every plan states its response times, visits, calibrations and reports before you sign, and every task runs inside your change control (EU GMP Annex 15, section 11)."
-     ]
-    },
-    {
      "type": "table",
      "nav": "Plans",
      "h": "Service plans: response, scope and price",
-     "intro": "All fixed in the plan schedule before you sign. Remote diagnosis only where you allow it.",
+     "intro": "21 CFR 211.67 and 211.68, EU GMP Chapter 3 and Health Canada GUI-0001 require maintenance and calibration to a written programme. Each plan fixes response, visits, calibration and reports before you sign.",
      "cols": [
       "",
       "[tier 1 plan name]",
@@ -5554,25 +5588,25 @@
        "[call-out and hourly rates, CAD] · none"
       ],
       [
-       "Preventive visits · calibration interval",
+       "On site, severity 1 · 2",
+       "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+       "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+       "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+       "Next available technician"
+      ],
+      [
+       "Visits a year · calibration",
        "[visits per year] · [calibration interval, months]",
        "[visits per year] · [calibration interval, months]",
        "[visits per year] · [calibration interval, months]",
        "On request"
       ],
       [
-       "Phone support · remote diagnosis",
+       "Phone · remote diagnosis",
        "[service phone hours] · [remote response time, hours]",
        "[service phone hours] · [remote response time, hours]",
        "[service phone hours] · [remote response time, hours]",
        "[service phone hours] · best effort"
-      ],
-      [
-       "On site: severity 1 · severity 2",
-       "[severity 1 on-site response time, hours] · [severity 2 visit time]",
-       "[severity 1 on-site response time, hours] · [severity 2 visit time]",
-       "[severity 1 on-site response time, hours] · [severity 2 visit time]",
-       "Next available technician"
       ],
       [
        "Critical spares",
@@ -5595,43 +5629,10 @@
        "Yes, with a trend review meeting",
        "No"
       ]
-     ]
-    },
-    {
-     "type": "grid",
-     "nav": "Visits",
-     "h": "What a preventive maintenance visit covers",
-     "intro": "Written from your design and qualification records, agreed before the first visit.",
-     "items": [
-      {
-       "t": "Data review first",
-       "d": "Conductivity, total organic carbon (TOC), temperature, flow and alarm history since the last visit, so the work answers the trend."
-      },
-      {
-       "t": "RO and EDI performance",
-       "d": "Reverse osmosis (RO) and electrodeionization (EDI): normalized flow, salt passage and differential pressure to ASTM D4516 against the commissioning baseline.",
-       "link": "sys-pw"
-      },
-      {
-       "t": "Pretreatment",
-       "d": "Softener hardness leakage, carbon bed or bisulfite performance, total chlorine at the RO inlet.",
-       "link": "sys-pretreatment"
-      },
-      {
-       "t": "Wearing parts and filters",
-       "d": "Seals, gaskets and diaphragms replaced like for like with lot numbers recorded; vent filters integrity tested."
-      },
-      {
-       "t": "Ultraviolet (UV), ozone and sanitization",
-       "d": "Lamp intensity, ozone below the release limit, sanitization checked at its coldest or weakest point.",
-       "link": "sys-monitoring"
-      },
-      {
-       "t": "Loop hydraulics",
-       "d": "Return flow against the qualified minimum, pump and heat exchanger condition, point-of-use valves.",
-       "link": "sys-storage"
-      }
-     ]
+     ],
+     "as": "plans",
+     "fold": 3,
+     "fold_noun": "terms"
     },
     {
      "type": "spec",
@@ -5678,10 +5679,48 @@
      "note": "Certificates show as-found and as-left values, limits and the reference standard used. Calibrations by [calibration provider and accreditation held]."
     },
     {
+     "type": "grid",
+     "nav": "Visits",
+     "h": "What a preventive maintenance visit covers",
+     "intro": "Written from your design and qualification records, agreed before the first visit.",
+     "items": [
+      {
+       "t": "Data review first",
+       "d": "Conductivity, total organic carbon (TOC), temperature, flow and alarm history since the last visit, so the work answers the trend."
+      },
+      {
+       "t": "RO and EDI performance",
+       "d": "Reverse osmosis (RO) and electrodeionization (EDI): normalized flow, salt passage and differential pressure to ASTM D4516 against the commissioning baseline.",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Wearing parts and filters",
+       "d": "Seals, gaskets and diaphragms replaced like for like, lot numbers recorded; vent filters integrity tested."
+      },
+      {
+       "t": "Loop hydraulics",
+       "d": "Return flow against the qualified minimum, pump and heat exchanger condition, point-of-use valves.",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Pretreatment",
+       "d": "Softener hardness leakage, carbon bed or bisulfite performance, total chlorine at the RO inlet.",
+       "link": "sys-pretreatment"
+      },
+      {
+       "t": "Ultraviolet (UV), ozone and sanitization",
+       "d": "Lamp intensity, ozone below the release limit, sanitization checked at its coldest or weakest point.",
+       "link": "sys-monitoring"
+      }
+     ],
+     "fold": 4,
+     "fold_noun": "checks"
+    },
+    {
      "type": "table",
      "nav": "Like for like",
      "h": "Like for like, or a change?",
-     "intro": "Anything not like for like goes through your change control before it is fitted.",
+     "intro": "Anything not like for like goes through your change control (EU GMP Annex 15, section 11) before it is fitted.",
      "cols": [
       "Part",
       "Like for like when",
@@ -5696,6 +5735,24 @@
        "Operational qualification (OQ) at design recovery, closer sampling"
       ],
       [
+       "Instruments and transmitters",
+       "Same model, range and configuration",
+       "A different model, range or data path",
+       "Installation qualification (IQ), loop check, audit trail check"
+      ],
+      [
+       "Diaphragms, gaskets and pump seals",
+       "Same compound and certificates (USP <88> Class VI, 21 CFR 177.2600)",
+       "A different elastomer or PTFE grade",
+       "Material and extractables review"
+      ],
+      [
+       "Control system software and firmware",
+       "Never like for like",
+       "Any version, logic or configuration change",
+       "Regression tests (EU GMP Annex 11, GAMP 5); version and checksum recorded"
+      ],
+      [
        "EDI modules",
        "Same maker and model, at qualified current and flow",
        "A different model or operating window",
@@ -5708,30 +5765,14 @@
        "Intensity check and OQ of the UV alarm"
       ],
       [
-       "Diaphragms, gaskets and pump seals",
-       "Same compound and certificates (USP <88> Class VI, 21 CFR 177.2600)",
-       "A different elastomer or PTFE grade",
-       "Material and extractables review"
-      ],
-      [
        "Hydrophobic vent filters",
        "Same maker, membrane and pore rating",
        "A different membrane, rating or housing",
        "Integrity test, sanitization cycle review"
-      ],
-      [
-       "Instruments and transmitters",
-       "Same model, range and configuration",
-       "A different model, range or data path",
-       "Installation qualification (IQ), loop check, audit trail check"
-      ],
-      [
-       "Control system software and firmware",
-       "Never like for like",
-       "Any version, logic or configuration change",
-       "Regression tests (EU GMP Annex 11, GAMP 5); version and checksum recorded"
       ]
-     ]
+     ],
+     "fold": 4,
+     "fold_noun": "parts"
     },
     {
      "type": "steps",
@@ -5753,7 +5794,7 @@
       },
       {
        "t": "Dispatch with the likely parts",
-       "d": "A technician arrives within your plan’s response time, with the parts the diagnosis points to and calibrated references."
+       "d": "A technician arrives within your plan’s response time with the parts the diagnosis points to and calibrated references."
       },
       {
        "t": "Restore and return to service",
@@ -5850,7 +5891,7 @@
    ],
    "cta": {
     "h": "Send your system details. Get a fixed plan price.",
-    "body": "An engineer replies within [quote response time, working days] with a recommended plan, annual price and first-visit tasks. For a fault now, call [service phone number].",
+    "body": "For a fault now, call [service phone number].",
     "button": "Request a service plan quote",
     "link": "contact-service",
     "include_label": "What to send for a plan quote",
@@ -5862,6 +5903,12 @@
      "Remote access policy",
      "Last year’s excursions and open deviations",
      "Site address and access requirements"
+    ],
+    "turnaround": "[quote response time, working days]",
+    "returns": [
+     "Recommended plan for your system",
+     "Fixed annual price, CAD",
+     "First-visit tasks"
     ]
    },
    "todo": [
@@ -5915,8 +5962,8 @@
      "nav": "Why upgrade",
      "h": "Newer rules, older controls, and a requalification bill",
      "body": [
-      "Each upgrade has two costs: the work, and the installation, operational and performance qualification (IQ, OQ, PQ) that follows it. The revised EU GMP Annex 1 (in force from August 2023, adopted by Health Canada as GUI-0119) expects continuous total organic carbon (TOC) and conductivity monitoring on WFI and a sanitization schedule set from data. 21 CFR Part 11 and EU GMP Annex 11 now reach the controls cabinet, and the programmable logic controller (PLC) may be out of production.",
-      "WHO TRS 1033 Annex 3 lets a documented risk assessment set the PQ after a change. We size requalification by what the change reaches."
+      "Each upgrade has two costs: the work, and the installation, operational and performance qualification (IQ, OQ, PQ) after it. The revised EU GMP Annex 1 (in force from August 2023) expects continuous total organic carbon (TOC) and conductivity monitoring on WFI, and 21 CFR Part 11 now reaches the controls cabinet.",
+      "WHO TRS 1033 Annex 3 lets a risk assessment set the PQ. We size requalification by what the change reaches."
      ]
     },
     {
@@ -5924,149 +5971,93 @@
      "nav": "Upgrades",
      "h": "Common upgrades and the requalification to plan",
      "cols": [
-      "Upgrade",
+      "Your upgrade",
       "What changes",
       "Requalification to plan",
-      "Basis"
+      "Basis",
+      "Start with"
      ],
      "rows": [
       [
-       {
-        "t": "Chemical deionization (DI) to reverse osmosis (RO) and electrodeionization (EDI)",
-        "link": "sys-pw"
-       },
+       "Chemical deionization (DI) to reverse osmosis (RO) and electrodeionization (EDI)",
        "New generation skid and RO pretreatment; the loop usually stays",
        "IQ and OQ leveraging factory acceptance tests (FAT); intensive sampling at return and points of use, then a reduced plan",
-       "Annex 15, section 11; WHO TRS 1033 Annex 3, 11.3"
+       "Annex 15, section 11; WHO TRS 1033 Annex 3, 11.3",
+       {
+        "t": "Purified Water (PW) generation",
+        "link": "sys-pw"
+       }
       ],
       [
-       {
-        "t": "Hot water or ozone sanitization on an ambient loop",
-        "link": "sys-storage"
-       },
+       "Hot water or ozone sanitization on an ambient loop",
        "Heat exchanger and coldest-point probes, or ozone with 254 nm ultraviolet (UV) destruct and sensors",
        "IQ of ratings and seals; OQ of the cycle at the coldest point and of ozone absent after the UV; sampling",
-       "USP <1231> (65–80 °C); ISPE Baseline Guide Vol. 4 (0.02–0.2 ppm); Annex 1, 6.12"
+       "USP <1231> (65–80 °C); ISPE Baseline Guide Vol. 4 (0.02–0.2 ppm); Annex 1, 6.12",
+       {
+        "t": "Storage and distribution loops",
+        "link": "sys-storage"
+       }
       ],
       [
-       {
-        "t": "Online TOC and conductivity, or real-time release",
-        "link": "sys-monitoring"
-       },
+       "Online TOC and conductivity, or real-time release",
        "Analyzer and sample line at the risk-based location, data path to the historian",
        "OQ with USP <643> system suitability (85–115 %) and audit trail checks; parallel laboratory results before online release",
-       "USP <643>; USP <645>; Ph. Eur. 2.2.44; Annex 1, 6.15"
+       "USP <643>; USP <645>; Ph. Eur. 2.2.44; Annex 1, 6.15",
+       {
+        "t": "Monitoring and controls",
+        "link": "sys-monitoring"
+       }
       ],
       [
-       {
-        "t": "PLC, operator panel (HMI) and SCADA replacement",
-        "link": "sys-monitoring"
-       },
+       "Programmable logic controller (PLC), operator panel (HMI) and SCADA replacement",
        "New controller, panel and logic, electronic records",
        "GAMP 5 validation with software FAT on a simulator; short water sampling if the process is unchanged",
-       "21 CFR Part 11; EU GMP Annex 11; GAMP 5"
+       "21 CFR Part 11; EU GMP Annex 11; GAMP 5",
+       {
+        "t": "Monitoring and controls",
+        "link": "sys-monitoring"
+       }
       ],
       [
-       {
-        "t": "Dead leg removal and loop changes",
-        "link": "svc-fabrication"
-       },
+       "Dead leg removal and loop changes",
        "Branches cut to the ASME BPE target of L/D ≤ 2, orbital welds, slope corrected, passivation",
        "IQ of the section; updated isometrics and dead leg register; sampling at affected and neighbouring points",
-       "ASME BPE; Annex 1, 6.7; WHO TRS 1033 Annex 3"
+       "ASME BPE; Annex 1, 6.7; WHO TRS 1033 Annex 3",
+       {
+        "t": "Fabrication",
+        "link": "svc-fabrication"
+       }
       ],
       [
-       {
-        "t": "Capacity increase",
-        "link": "sys-pw"
-       },
+       "Capacity increase",
        "Second RO train or larger skid, tank, pump or sub-loop",
        "IQ and OQ of new equipment, loop hydraulics at the new peak draw; sampling near the change",
-       "Annex 1, 6.9; Annex 15, section 11"
+       "Annex 1, 6.9; Annex 15, section 11",
+       {
+        "t": "Purified Water (PW) generation",
+        "link": "sys-pw"
+       }
       ],
       [
-       {
-        "t": "WFI route change: distillation to membrane, or back",
-        "link": "sys-wfi-membrane"
-       },
+       "WFI route change: distillation to membrane, or back",
        "New generator built alongside the existing one",
        "Full IQ, OQ and three-phase PQ; for membrane WFI in Ph. Eur. markets, notice to your authority first",
-       "Ph. Eur. 0169; EMA/INS/GMP/443117/2017; WHO TRS 1033 Annex 3"
+       "Ph. Eur. 0169; EMA/INS/GMP/443117/2017; WHO TRS 1033 Annex 3",
+       {
+        "t": "WFI by membrane",
+        "link": "sys-wfi-membrane"
+       }
       ],
       [
        "Rouge remediation",
        "Derouging and repassivation, surfaces inspected before and after",
        "Records under change control; flushing with conductivity and TOC checks, then closer sampling",
-       "ASME BPE; [passivation standard, ASTM A967 or A380]"
+       "ASME BPE; [passivation standard, ASTM A967 or A380]",
+       "The system assessment"
       ]
-     ]
-    },
-    {
-     "type": "options",
-     "nav": "Assessment",
-     "h": "The system assessment: what we review",
-     "intro": "The report gives each option with scope, [budget range, CAD], downtime, supply plan and the requalification it triggers.",
-     "items": [
-      {
-       "t": "Records",
-       "d": "Qualification file, change controls, drawings and dead leg register: what is missing and what each gap costs."
-      },
-      {
-       "t": "Water quality data",
-       "d": "Twelve months of conductivity, TOC, microbial and endotoxin results, against alert and action levels."
-      },
-      {
-       "t": "Generation",
-       "d": "Performance on today's feed water and remaining capacity at your coldest feed temperature."
-      },
-      {
-       "t": "Storage and distribution",
-       "d": "Walkdown: dead legs over L/D 2, drainability, rouge and contamination routes."
-      },
-      {
-       "t": "Sanitization",
-       "d": "Whether your monitoring results support the schedule, as Annex 1, 6.12 asks."
-      },
-      {
-       "t": "Controls and data integrity",
-       "d": "Versions, support status, access, audit trail and backups, with a gap list against Part 11 and Annex 11."
-      },
-      {
-       "t": "Spares",
-       "d": "Parts at risk, lead times and current equivalents."
-      }
-     ]
-    },
-    {
-     "type": "steps",
-     "nav": "How it runs",
-     "h": "How an upgrade runs",
-     "items": [
-      {
-       "t": "System assessment",
-       "d": "On site for [assessment duration, days]; report within [report turnaround, working days]."
-      },
-      {
-       "t": "Options and impact",
-       "d": "Scope, cost, downtime and requalification per option, so you compare total cost, not equipment price."
-      },
-      {
-       "t": "Change control input",
-       "d": "We write the technical content of your change request and impact assessment. Your quality unit approves it."
-      },
-      {
-       "t": "Design, build and FAT",
-       "d": "Skids, panels and spools tested at our shop, software against a simulator, so the site window stays short."
-      },
-      {
-       "t": "Cutover",
-       "d": "In a planned window under your permits, flushed and sanitized before sampling."
-      },
-      {
-       "t": "Requalification and records",
-       "d": "IQ and OQ of what changed, the agreed sampling, and updated drawings, register and standard operating procedures (SOPs)."
-      }
-     ]
+     ],
+     "as": "router",
+     "intro": "Pick your upgrade to see what changes, the requalification to plan and its basis."
     },
     {
      "type": "table",
@@ -6113,7 +6104,47 @@
        "As above",
        "[temporary RO or EDI units, flow m³/h]"
       ]
-     ]
+     ],
+     "fold": 4,
+     "fold_noun": "cases"
+    },
+    {
+     "type": "options",
+     "nav": "Assessment",
+     "h": "The system assessment: what we review",
+     "intro": "The report gives each option with scope, [budget range, CAD], downtime, supply plan and the requalification it triggers.",
+     "items": [
+      {
+       "t": "Records",
+       "d": "Qualification file, change controls, drawings and dead leg register: what is missing and what each gap costs."
+      },
+      {
+       "t": "Water quality data",
+       "d": "Twelve months of conductivity, TOC, microbial and endotoxin results, against alert and action levels."
+      },
+      {
+       "t": "Generation",
+       "d": "Performance on today's feed water and remaining capacity at your coldest feed temperature."
+      },
+      {
+       "t": "Storage and distribution",
+       "d": "Walkdown: dead legs over L/D 2, drainability, rouge and contamination routes."
+      },
+      {
+       "t": "Sanitization",
+       "d": "Whether your monitoring results support the schedule, as Annex 1, 6.12 asks."
+      },
+      {
+       "t": "Controls and data integrity",
+       "d": "Versions, support status, access, audit trail and backups, with a gap list against Part 11 and Annex 11."
+      },
+      {
+       "t": "Spares",
+       "d": "Parts at risk, lead times and current equivalents."
+      }
+     ],
+     "fold": 4,
+     "fold_noun": "review areas"
     },
     {
      "type": "table",
@@ -6152,7 +6183,40 @@
        "Verified migration, or old records kept readable"
       ]
      ],
-     "as": "failures"
+     "as": "failures",
+     "fold": 3,
+     "fold_noun": "gaps"
+    },
+    {
+     "type": "steps",
+     "nav": "How it runs",
+     "h": "How an upgrade runs",
+     "items": [
+      {
+       "t": "System assessment",
+       "d": "On site for [assessment duration, days]; report within [report turnaround, working days]."
+      },
+      {
+       "t": "Options and impact",
+       "d": "Scope, cost, downtime and requalification per option, so you compare total cost, not equipment price."
+      },
+      {
+       "t": "Change control input",
+       "d": "We write the technical content of your change request and impact assessment. Your quality unit approves it."
+      },
+      {
+       "t": "Design, build and FAT",
+       "d": "Skids, panels and spools tested at our shop, software against a simulator, so the site window stays short."
+      },
+      {
+       "t": "Cutover",
+       "d": "In a planned window under your permits, flushed and sanitized before sampling."
+      },
+      {
+       "t": "Requalification and records",
+       "d": "IQ and OQ of what changed, the agreed sampling, and updated drawings, register and standard operating procedures (SOPs)."
+      }
+     ]
     },
     {
      "type": "docs",
@@ -6191,7 +6255,9 @@
        "t": "Updated SOPs and spares list",
        "d": "Revised for the new equipment, with training records"
       }
-     ]
+     ],
+     "fold": 6,
+     "fold_noun": "documents"
     },
     {
      "type": "faq",
@@ -6234,7 +6300,7 @@
     },
     {
      "type": "related",
-     "h": "Related pages",
+     "h": "Before and after the upgrade",
      "items": [
       "svc-cq",
       "svc-service",
@@ -6247,7 +6313,7 @@
    ],
    "cta": {
     "h": "Send us the system you have. We return what to change and how to requalify.",
-    "body": "An engineer replies within [assessment response time, working days] with scope, time on site and price.",
+    "body": "An engineer reviews what you send and replies.",
     "button": "Request a system assessment",
     "link": "contact-proposal",
     "intent": "Assessment of an existing system, any make",
@@ -6259,6 +6325,12 @@
      "Twelve months of water quality and alarm data",
      "PLC and HMI models, program and passwords held",
      "Shutdown windows and storage ride-through time"
+    ],
+    "turnaround": "[assessment response time, working days]",
+    "returns": [
+     "Scope, time on site and price",
+     "What to change, option by option",
+     "How to requalify each option"
     ]
    },
    "todo": [
@@ -6274,6 +6346,24 @@
     "Payback figures from a delivered chemical DI to RO/EDI conversion, with client permission ([payback figures from a delivered conversion], FAQ)",
     "Delivered upgrade and retrofit references ([delivered upgrades, what changed, requalification time], FAQ) for a future case block",
     "Assessment response time, working days ([assessment response time, working days], same as the contact-proposal lookup table)"
+   ],
+   "facts": [
+    {
+     "v": "8",
+     "l": "Common upgrades, each with its requalification"
+    },
+    {
+     "v": "Annex 15, 11",
+     "l": "EU GMP basis for the requalification scope"
+    },
+    {
+     "v": "12 months",
+     "l": "Water quality data the assessment reviews"
+    },
+    {
+     "v": "L/D ≤ 2",
+     "l": "Dead leg target, ASME BPE"
+    }
    ]
   },
   {
@@ -6315,7 +6405,7 @@
      "type": "grid",
      "nav": "Industries",
      "h": "Choose your industry",
-     "intro": "Each page gives the grades per process step, the limits you release against, what each inspector reads and the documents we hand over.",
+     "intro": "Each page gives the grade per process step, the limits you release against, what each inspector reads and the documents we hand over.",
      "items": [
       {
        "t": "Pharmaceutical",
@@ -6341,49 +6431,6 @@
        "tag": "USP and Ph. Eur.",
        "link": "ind-cdmo"
       }
-     ]
-    },
-    {
-     "type": "table",
-     "nav": "By industry",
-     "h": "Grade, limit and inspector by industry",
-     "cols": [
-      "Industry",
-      "Main water grades and where they are used",
-      "Limit that decides the design",
-      "Who inspects or audits the water system"
-     ],
-     "rows": [
-      [
-       "Pharmaceutical, non-sterile: oral solids, liquids, creams, natural health products",
-       "PW for granulation, coating, excipient use and final rinse",
-       "USP <645> 1.3 µS/cm at 25 °C and 500 ppb total organic carbon (TOC); Ph. Eur. 0008 nitrates",
-       "Health Canada under GUI-0001 (GUI-0158 for natural health products); FDA under 21 CFR Part 211"
-      ],
-      [
-       "Pharmaceutical, sterile: injectables, irrigation, lyophilized products",
-       "WFI as excipient and final rinse; pure steam for autoclaves and sterilize-in-place (SIP)",
-       "USP <85> < 0.25 EU/mL at point of use; EU GMP Annex 1 (2022) 6.10 and 6.15",
-       "Health Canada under GUI-0119 (its adoption of Annex 1); FDA and EU authorities for export"
-      ],
-      [
-       "Biotechnology: biologics, vaccines, cell and gene therapy",
-       "WFI for media, buffers and CIP final rinse; pure steam for SIP",
-       "USP <85> < 0.25 EU/mL at the furthest outlet at peak draw",
-       "Health Canada under GUI-0001 and GUI-0027, BRDD on submissions; FDA CBER or CDER"
-      ],
-      [
-       "Medical devices: implants, sterile and combination devices",
-       "PW final rinse with a written endotoxin limit, or WFI; pure steam for sterilizers",
-       "USP <161> 20.0 EU per device; ISO 11737-1 bioburden; EN 285 steam quality",
-       "An MDSAP auditor against ISO 13485:2016; FDA under 21 CFR 820 QMSR; EU notified bodies"
-      ],
-      [
-       "Contract manufacturing (CDMO)",
-       "PW, WFI and pure steam, as your client portfolio needs them",
-       "The stricter of USP and Ph. Eur. on each attribute, for example Ph. Eur. nitrates 0.2 ppm",
-       "Health Canada, FDA pre-approval inspections, PIC/S authorities and each client's quality unit"
-      ]
      ]
     },
     {
@@ -6491,10 +6538,47 @@
      "as": "router"
     },
     {
-     "type": "band",
-     "tone": "limestone",
-     "h": "Same limits, applied where water touches product",
-     "body": "A tablet maker, a biologics plant and an implant maker all release against USP <645> and <643>. They differ in which step uses which grade, peak draw and which record the auditor opens first."
+     "type": "table",
+     "nav": "By industry",
+     "h": "Grade, limit and inspector by industry",
+     "cols": [
+      "Industry",
+      "Grades and where they are used",
+      "Limit that decides the design",
+      "Who inspects or audits"
+     ],
+     "rows": [
+      [
+       "Pharmaceutical, non-sterile: oral solids, liquids, creams, natural health products",
+       "PW for granulation, coating, excipient and final rinse",
+       "USP <645> 1.3 µS/cm at 25 °C and 500 ppb total organic carbon (TOC); Ph. Eur. 0008 nitrates",
+       "Health Canada under GUI-0001 (GUI-0158 for natural health products); FDA under 21 CFR Part 211"
+      ],
+      [
+       "Pharmaceutical, sterile: injectables, irrigation, lyophilized products",
+       "WFI as excipient and final rinse; pure steam for autoclaves and sterilize-in-place (SIP)",
+       "USP <85> < 0.25 EU/mL at point of use; EU GMP Annex 1 (2022) 6.10 and 6.15",
+       "Health Canada under GUI-0119 (its Annex 1 adoption); FDA and EU authorities for export"
+      ],
+      [
+       "Biotechnology: biologics, vaccines, cell and gene therapy",
+       "WFI for media, buffers and CIP final rinse; pure steam for SIP",
+       "USP <85> < 0.25 EU/mL at the furthest outlet at peak draw",
+       "Health Canada under GUI-0001 and GUI-0027, BRDD on submissions; FDA CBER or CDER"
+      ],
+      [
+       "Medical devices: implants, sterile and combination devices",
+       "PW final rinse with a written endotoxin limit, or WFI; pure steam for sterilizers",
+       "USP <161> 20.0 EU per device; ISO 11737-1 bioburden; EN 285 steam quality",
+       "An MDSAP auditor against ISO 13485:2016; FDA under 21 CFR 820 QMSR; EU notified bodies"
+      ],
+      [
+       "Contract manufacturing (CDMO)",
+       "PW, WFI and pure steam, as your clients need them",
+       "The stricter of USP and Ph. Eur. on each attribute, for example Ph. Eur. nitrates 0.2 ppm",
+       "Health Canada, FDA pre-approval inspections, PIC/S authorities and each client's quality unit"
+      ]
+     ]
     },
     {
      "type": "docs",
@@ -6527,35 +6611,29 @@
        "d": "contamination control strategy inputs for sterile drugs, a rinse water specification for devices, a client audit pack for CDMOs"
       }
      ],
-     "intro": "We factory acceptance test each system before it ships and hand these over with it."
+     "intro": "We factory acceptance test each system before it ships and hand these over with it.",
+     "fold": 6,
+     "fold_noun": "documents"
     },
     {
-     "type": "table",
+     "type": "options",
      "nav": "Adjacent uses",
      "h": "Adjacent uses outside drug and device manufacturing",
-     "cols": [
-      "Use",
-      "Standard it works to",
-      "What it changes in the system"
-     ],
-     "rows": [
-      [
-       "Hospital medical device reprocessing (MDRD) or sterile processing",
-       "CSA Z314; in the United States, ANSI/AAMI ST108:2023",
-       "Critical water for final rinse and steam, usually duplex or N+1 because an MDRD cannot stop"
-      ],
-      [
-       "Research and university laboratories, central lab water loops",
-       "ASTM D1193, reagent water Types I to IV",
-       "Type I above 18 MΩ·cm at 25 °C; a central RO and EDI loop, Type I polished at the bench"
-      ],
-      [
-       "Industrial demineralized water: boiler feed, process rinse",
-       "No pharmacopoeial standard: limits come from your process or the boiler maker",
-       "RO and EDI in place of regenerated ion exchange: no acid or caustic regenerations"
-      ]
-     ],
-     "intro": "The same reverse osmosis (RO) and electrodeionization (EDI) platform. Our scope: [hospital, lab and industrial water scope]. Send the standard you work to and we answer plainly."
+     "intro": "The same reverse osmosis (RO) and electrodeionization (EDI) platform. Our scope: [hospital, lab and industrial water scope]. Send the standard you work to and we answer plainly.",
+     "items": [
+      {
+       "t": "Hospital medical device reprocessing (MDRD) or sterile processing",
+       "d": "CSA Z314; in the United States, ANSI/AAMI ST108:2023. Critical water for final rinse and steam, usually duplex or N+1 because an MDRD cannot stop."
+      },
+      {
+       "t": "Research and university laboratories, central lab water loops",
+       "d": "ASTM D1193, Types I to IV. Type I above 18 MΩ·cm at 25 °C: a central RO and EDI loop, polished at the bench."
+      },
+      {
+       "t": "Industrial demineralized water: boiler feed, process rinse",
+       "d": "No pharmacopoeial standard: limits come from your process or the boiler maker. RO and EDI replace regenerated ion exchange: no acid or caustic regenerations."
+      }
+     ]
     },
     {
      "type": "faq",
@@ -6601,7 +6679,7 @@
    ],
    "cta": {
     "h": "Tell us what you make and where you ship it.",
-    "body": "A process engineer replies within [proposal response time, working days] with the grade each step needs, the systems to make and distribute it and the qualification scope.",
+    "body": "A process engineer replies, with our questions first if your data has gaps.",
     "button": "Request a water scope review",
     "link": "contact-proposal",
     "intent": "Water scope review for your products",
@@ -6613,6 +6691,12 @@
      "Feed water analysis, summer and winter",
      "Equipment you want to keep",
      "Your user requirement specification (URS), even a draft"
+    ],
+    "turnaround": "[proposal response time, working days]",
+    "returns": [
+     "The grade each process step needs",
+     "Systems to make and distribute it",
+     "Your qualification scope"
     ]
    },
    "todo": [
@@ -6634,24 +6718,36 @@
    "path": "/industries/pharmaceutical/",
    "eyebrow": "PHARMACEUTICAL · HEALTH CANADA · FDA · EU GMP",
    "headline": "Pharmaceutical water matched to your dosage forms, documented for every inspector",
-   "lead": "Your dosage forms set the water grade: Purified Water (PW), or Water for Injection (WFI) and pure steam. We design, build and wet test systems that hold USP <645> and <643> at point of use.",
-   "tags": [
-    "USP <645>",
-    "USP <643>",
-    "Ph. Eur. 0008 and 0169",
-    "Health Canada GUI-0119"
-   ],
+   "lead": "Dosage forms set the grade: Purified Water (PW), or Water for Injection (WFI) and pure steam. We design, build and wet test systems in Canada that hold USP <645> and <643> at point of use.",
    "primary_cta": "Request a pharmaceutical water scope review",
    "primary_cta_intent": "Water scope review for your products|Pharmaceutical drug products",
    "secondary_cta": {
     "label": "Get a sample turnover package",
     "link": "cmp-documentation"
    },
+   "facts": [
+    {
+     "v": "≤ 1.3 µS/cm",
+     "l": "Conductivity at 25 °C · USP <645>"
+    },
+    {
+     "v": "≤ 500 ppb",
+     "l": "Total organic carbon · USP <643>"
+    },
+    {
+     "v": "< 0.25 EU/mL",
+     "l": "Bacterial endotoxins, WFI · USP <85>"
+    },
+    {
+     "v": "100 %",
+     "l": "Skids wet tested at FAT before shipping"
+    }
+   ],
    "blocks": [
     {
      "type": "table",
      "nav": "Where to start",
-     "h": "Your situation, the water you need, the system",
+     "h": "Your situation, the water, the system",
      "cols": [
       "Your situation",
       "Water you need",
@@ -6714,13 +6810,14 @@
         "link": "svc-upgrades"
        }
       ]
-     ]
+     ],
+     "as": "router"
     },
     {
      "type": "table",
      "nav": "Grade by dosage form",
      "h": "Minimum water grade by dosage form",
-     "intro": "Minimums from the EMA guideline on water for pharmaceutical use (EMA/CHMP/CVMP/QWP/496873/2018, in effect 1 February 2021). Your product file can set a higher grade, never a lower one.",
+     "intro": "Minimums from the EMA water guideline (EMA/CHMP/CVMP/QWP/496873/2018, in effect 1 February 2021). Your product file can set a higher grade, never a lower one.",
      "cols": [
       "Product or process step",
       "Minimum grade",
@@ -6758,17 +6855,19 @@
        "PW before non-sterile lyophilization"
       ],
       [
-       "Active substance synthesis before final isolation",
-       "Potable water",
-       "PW where the chemistry needs it; PW or WFI for final isolation"
-      ],
-      [
        "Final rinse of equipment, containers and closures",
        "Same grade as the product",
        "PW for non-parenteral products; WFI for sterile parenterals"
+      ],
+      [
+       "Active substance synthesis before final isolation",
+       "Potable water",
+       "PW where the chemistry needs it; PW or WFI for final isolation"
       ]
      ],
-     "as": "grades"
+     "as": "grades",
+     "fold": 6,
+     "fold_noun": "steps"
     },
     {
      "type": "spec",
@@ -6884,7 +6983,9 @@
        }
       ]
      ],
-     "as": "evidence"
+     "as": "evidence",
+     "fold": 4,
+     "fold_noun": "inspectors"
     },
     {
      "type": "options",
@@ -6916,7 +7017,9 @@
        "t": "Shutdown windows",
        "d": "Duplex trains and isolable loop sections let you sanitize, service or tie in points of use without stopping every line."
       }
-     ]
+     ],
+     "fold": 3,
+     "fold_noun": "decisions"
     },
     {
      "type": "grid",
@@ -6930,42 +7033,38 @@
        "link": "svc-design"
       },
       {
-       "t": "Fabrication",
-       "d": "316L product-contact piping with weld logs, borescope records and material certificates traceable to the mill heat.",
-       "tag": "ASME BPE",
-       "link": "svc-fabrication"
-      },
-      {
        "t": "FAT and SAT",
-       "d": "Wet factory acceptance testing (FAT) in our test bay to a protocol you approve, then site acceptance testing (SAT) on your feed water.",
+       "d": "Wet factory acceptance testing (FAT) to a protocol you approve, then site acceptance testing (SAT) on your feed.",
        "tag": "Annex 15, 3.4–3.7",
        "link": "svc-fat-sat"
       },
       {
        "t": "Commissioning and qualification",
-       "d": "Installation and operational qualification (IQ/OQ) to protocols your quality unit approves, then support through performance qualification (PQ).",
+       "d": "Installation and operational qualification (IQ/OQ) to protocols your quality unit approves, then support through PQ.",
        "tag": "WHO TRS 1033",
        "link": "svc-cq"
       },
       {
+       "t": "Fabrication",
+       "d": "316L product-contact piping with weld logs, borescope records and mill-heat material certificates.",
+       "tag": "ASME BPE",
+       "link": "svc-fabrication"
+      },
+      {
        "t": "Service",
-       "d": "Plans with stated response times, calibration to the USP <645> and <643> instrument requirements, reports for your GMP records.",
+       "d": "Plans with stated response times, USP <645> and <643> instrument calibration, reports for your GMP records.",
        "tag": "21 CFR 211.67",
        "link": "svc-service"
       },
       {
        "t": "Upgrades and retrofits",
-       "d": "Capacity, online TOC, sanitization and controls upgrades on systems from any builder, with the requalification scope stated first.",
+       "d": "Capacity, online TOC, sanitization and controls upgrades on any builder's system, requalification scope stated first.",
        "tag": "Change control",
        "link": "svc-upgrades"
       }
-     ]
-    },
-    {
-     "type": "band",
-     "tone": "limestone",
-     "h": "Built, wet tested and serviced in Canada",
-     "body": "Your engineers witness FAT in [test bay location, city and province]. Spares in [stock locations], service engineers in [service bases]. Quotes in [quotation currency]; standard lead time [PW skid lead time, weeks]."
+     ],
+     "fold": 3,
+     "fold_noun": "services"
     },
     {
      "type": "faq",
@@ -7021,7 +7120,7 @@
    ],
    "cta": {
     "h": "Send your dosage forms, markets and water use. We return the grades and the system scope.",
-    "body": "A process engineer replies within [proposal response time, working days] with the grade each product needs, the systems and the qualification scope, or our questions.",
+    "body": "A process engineer replies, with the scope or our questions.",
     "button": "Request a pharmaceutical water scope review",
     "link": "contact-proposal",
     "intent": "Water scope review for your products|Pharmaceutical drug products",
@@ -7033,15 +7132,16 @@
      "Feed water analyses and yearly temperature range",
      "Existing system drawings and a year of trends",
      "Upcoming inspections and open water observations"
+    ],
+    "turnaround": "[proposal response time, working days]",
+    "returns": [
+     "The grade each product needs",
+     "The systems to supply them",
+     "The qualification scope"
     ]
    },
    "todo": [
     "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-    "Test bay location, city and province (band; same as home, about)",
-    "Spares stock locations (band)",
-    "Service bases (band)",
-    "Quotation currency (band)",
-    "PW skid lead time, weeks ([PW skid lead time, weeks]; band)",
     "Stills and generators: in-house or named maker ([stills and generators: in-house or named maker]; FAQ; same wording as systems)",
     "Pharmaceutical references available for a call, or a plain 'none yet' ([pharmaceutical references available for a call]; FAQ)",
     "A pharmaceutical case study with measured outcome; add a case block when one exists",
@@ -7074,7 +7174,7 @@
      "cols": [
       "Your situation",
       "Water you need",
-      "Systems",
+      "System",
       "Start with"
      ],
      "rows": [
@@ -7103,7 +7203,7 @@
        }
       ],
       [
-       "Cell and gene therapy, or a university or hospital advanced therapy medicinal product (ATMP) facility",
+       "Cell and gene therapy, including university or hospital advanced therapy medicinal product (ATMP) facilities",
        "WFI for cell-based products not sterilized afterwards; Purified Water (PW) for washers and autoclave feed",
        {
         "t": "PW generation",
@@ -7128,7 +7228,7 @@
       ],
       [
        "Endotoxin or bioburden excursions at a point of use",
-       "Where it starts, a corrective action that holds, trend data that shows it",
+       "Find where it starts, a corrective action that holds, trend data that shows it",
        {
         "t": "Storage and distribution loops",
         "link": "sys-storage"
@@ -7150,13 +7250,14 @@
         "link": "svc-cq"
        }
       ]
-     ]
+     ],
+     "as": "router"
     },
     {
      "type": "table",
      "nav": "Grade by step",
      "h": "Minimum water grade by product and process step",
-     "intro": "Minimums from the EMA water guideline (EMA/CHMP/CVMP/QWP/496873/2018, Tables 1, 3, 4, 5), in effect since 1 February 2021. Most biologics plants use WFI for media and buffers anyway.",
+     "intro": "Minimums from the EMA water guideline (EMA/CHMP/CVMP/QWP/496873/2018, Tables 1, 3, 4, 5), in force since 1 February 2021. Most biologics plants use WFI for media and buffers anyway.",
      "cols": [
       "Product type",
       "Process step",
@@ -7164,7 +7265,7 @@
      ],
      "rows": [
       [
-       "Biologics, including vaccines and ATMPs, finished product",
+       "Finished biologics, including vaccines and ATMPs",
        "Excipient in the final formulation",
        "WFI"
       ],
@@ -7204,7 +7305,9 @@
        "WFI"
       ]
      ],
-     "as": "grades"
+     "as": "grades",
+     "fold": 6,
+     "fold_noun": "steps"
     },
     {
      "type": "spec",
@@ -7263,75 +7366,39 @@
      ]
     },
     {
-     "type": "spec",
-     "nav": "Inspectors",
-     "h": "What each inspector reads on your water system",
-     "caption": "Health Canada · FDA · EU",
-     "cols": [
-      "Inspector or reviewer",
-      "What they read",
-      "On the water system"
-     ],
-     "rows": [
-      {
-       "p": "Health Canada, biologics",
-       "v": "GUI-0001 with Annex 2, GUI-0027 (4 July 2024)",
-       "m": "Design, qualification, sanitization, monitoring, trending"
-      },
-      {
-       "p": "Health Canada, sterile biologics",
-       "v": "GUI-0119, adoption of EU GMP Annex 1 (2022)",
-       "m": "6.7 dead legs, 6.9 flow, 6.10 WFI route, 6.15 total organic carbon (TOC)"
-      },
-      {
-       "p": "Health Canada, Biologic and Radiopharmaceutical Drugs Directorate (BRDD)",
-       "v": "Clinical trial and new drug submissions; lot release",
-       "m": "Utilities description matches the site"
-      },
-      {
-       "p": "Health Canada, cell and gene therapies",
-       "v": "PIC/S GMP Annex 2A until a separate guide is issued",
-       "m": "Your regulatory team confirms"
-      },
-      {
-       "p": "FDA",
-       "v": "21 CFR Parts 600 to 680 with Part 211; CBER (biologics) or CDER (drugs)",
-       "m": "Pre-license inspection; Guide to Inspections of High Purity Water Systems"
-      },
-      {
-       "p": "EU authorities and importers",
-       "v": "EU GMP Annex 1, 2, 15 and Part IV (ATMPs); EMA water guideline",
-       "m": "Membrane WFI: notice before use"
-      }
-     ]
-    },
-    {
-     "type": "options",
+     "type": "table",
+     "as": "failures",
      "nav": "Endotoxin",
      "h": "Where endotoxin gets in, and what we design against",
-     "intro": "Endotoxin is heat stable: sanitization kills bacteria but not what they already released. So we design out the places biofilm grows.",
-     "items": [
-      {
-       "t": "Cooled sub-loops and point-of-use exchangers",
-       "d": "Double tubesheet exchangers, drainable layout, scheduled hot sanitization, a sample point after each cooler."
-      },
-      {
-       "t": "Low flow at peak draw",
-       "d": "Loop and pump sized to the batch schedule; return flow alarmed; turbulent flow as EU GMP Annex 1, 6.9 requires."
-      },
-      {
-       "t": "Dead legs and capped tie-ins",
-       "d": "Every branch to L/D ≤ 2 to ASME BPE; future tie-ins as valved points, not capped stubs."
-      },
-      {
-       "t": "Ambient PW ahead of the generator",
-       "d": "Where most biofilm lives. Hot water or ozone sanitization on a stated schedule."
-      },
-      {
-       "t": "Membrane WFI and ultrafiltration",
-       "d": "Integrity testing, continuous TOC and conductivity, and the control strategy the EMA expects for non-distillation WFI."
-      }
-     ]
+     "intro": "Endotoxin is heat stable: sanitization kills bacteria, not what they released. So we design out the places biofilm grows.",
+     "cols": [
+      "Where it gets in",
+      "What we design in"
+     ],
+     "rows": [
+      [
+       "Cooled sub-loops and point-of-use exchangers",
+       "Double tubesheet exchangers, drainable layout, scheduled hot sanitization, a sample point after each cooler."
+      ],
+      [
+       "Low flow at peak draw",
+       "Loop and pump sized to the batch schedule; return flow alarmed; turbulent flow as EU GMP Annex 1, 6.9 requires."
+      ],
+      [
+       "Dead legs and capped tie-ins",
+       "Every branch to L/D ≤ 2 to ASME BPE; future tie-ins as valved points, not capped stubs."
+      ],
+      [
+       "Ambient PW ahead of the generator",
+       "Where most biofilm lives. Hot water or ozone sanitization on a stated schedule."
+      ],
+      [
+       "Membrane WFI and ultrafiltration",
+       "Integrity testing, continuous TOC and conductivity, and the control strategy the EMA expects for non-distillation WFI."
+      ]
+     ],
+     "fold": 3,
+     "fold_noun": "entry points"
     },
     {
      "type": "options",
@@ -7362,7 +7429,54 @@
        "t": "Canadian feed water",
        "d": "Feed swings from near freezing to over 20 °C; some supplies use chloramine. We size membranes for your coldest month."
       }
-     ]
+     ],
+     "fold": 3,
+     "fold_noun": "decisions"
+    },
+    {
+     "type": "table",
+     "as": "evidence",
+     "nav": "Inspectors",
+     "h": "What each inspector reads on your water system",
+     "cols": [
+      "Inspector or reviewer",
+      "What they read",
+      "What they check on the water system"
+     ],
+     "rows": [
+      [
+       "Health Canada, biologics",
+       "GUI-0001 with Annex 2, GUI-0027 (4 July 2024)",
+       "Design; qualification; sanitization; monitoring; trending"
+      ],
+      [
+       "FDA",
+       "21 CFR Parts 600 to 680 with Part 211; CBER (biologics) or CDER (drugs)",
+       "Pre-license inspection; Guide to Inspections of High Purity Water Systems"
+      ],
+      [
+       "EU authorities and importers",
+       "EU GMP Annex 1, 2, 15 and Part IV (ATMPs); EMA water guideline",
+       "Membrane WFI: notice before use"
+      ],
+      [
+       "Health Canada, sterile biologics",
+       "GUI-0119, adoption of EU GMP Annex 1 (2022)",
+       "6.7 dead legs; 6.9 flow; 6.10 WFI route; 6.15 total organic carbon (TOC)"
+      ],
+      [
+       "Health Canada, Biologic and Radiopharmaceutical Drugs Directorate (BRDD)",
+       "Clinical trial and new drug submissions; lot release",
+       "Utilities description matches the site"
+      ],
+      [
+       "Health Canada, cell and gene therapies",
+       "PIC/S GMP Annex 2A until a separate guide is issued",
+       "Your regulatory team confirms"
+      ]
+     ],
+     "fold": 4,
+     "fold_noun": "inspectors"
     },
     {
      "type": "steps",
@@ -7442,7 +7556,7 @@
    ],
    "cta": {
     "h": "Send your products, process format and batch schedule.",
-    "body": "A process engineer replies within [proposal response time, working days] with the grade each step needs, the systems to supply it and a phase plan to commercial scale.",
+    "body": "A process engineer reviews it and replies with a water plan for your process.",
     "button": "Request a biologics water scope review",
     "link": "contact-proposal",
     "intent": "Water scope review for your products|Biologics, vaccines, cell or gene therapy",
@@ -7455,7 +7569,13 @@
      "Markets and pharmacopoeias named",
      "Feed water analyses, winter and summer",
      "Growth plan and target dates"
-    ]
+    ],
+    "returns": [
+     "The minimum grade each step needs",
+     "The systems to supply each grade",
+     "A phase plan to commercial scale"
+    ],
+    "turnaround": "[proposal response time, working days]"
    },
    "todo": [
     "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",

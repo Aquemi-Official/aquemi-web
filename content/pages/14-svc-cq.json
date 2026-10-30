@@ -25,11 +25,11 @@
    "type": "steps",
    "nav": "Stages",
    "h": "What each stage proves",
-   "intro": "Inspectors fault the evidence, not the water. Commissioning is documented but does not replace qualification (WHO TRS 1033, 11.2). We plan every stage in one commissioning and qualification (C&Q) plan your quality unit approves.",
+   "intro": "Inspectors fault the evidence, not the water. Commissioning does not replace qualification (WHO TRS 1033, 11.2), so one commissioning and qualification (C&Q) plan, approved by your quality unit, covers every stage.",
    "items": [
     {
      "t": "Commissioning",
-     "d": "Flushing, pressure test, passivation, loop checks, start-up, punch list. Leverageable where documented to good documentation practice."
+     "d": "Flushing, pressure test, passivation, loop checks, start-up, punch list. Leverageable if documented to good documentation practice."
     },
     {
      "t": "Factory and site acceptance tests (FAT/SAT)",
@@ -70,19 +70,9 @@
      "m": "As-built issue; dead leg register, length-to-diameter (L/D) per branch"
     },
     {
-     "p": "IQ · Materials",
-     "v": "316L or specified alloy; elastomers to specification",
-     "m": "EN 10204 type 3.1 certificates · Annex 15, 3.9 v"
-    },
-    {
      "p": "IQ · Welds and finish",
      "v": "Weld map, log, borescope; SF1 (Ra ≤ 0.51 µm) or SF4 (Ra ≤ 0.38 µm)",
      "m": "ASME BPE and your specification"
-    },
-    {
-     "p": "IQ · Instruments",
-     "v": "Installed, ranged, calibrated; critical ones identified",
-     "m": "Traceable via [calibration laboratory and accreditation]"
     },
     {
      "p": "OQ · Sequences, alarms, interlocks",
@@ -105,6 +95,16 @@
      "m": "Positive return pressure, design minimum velocity · Annex 1, 6.11"
     },
     {
+     "p": "IQ · Materials",
+     "v": "316L or specified alloy; elastomers to specification",
+     "m": "EN 10204 type 3.1 certificates · Annex 15, 3.9 v"
+    },
+    {
+     "p": "IQ · Instruments",
+     "v": "Installed, ranged, calibrated; critical ones identified",
+     "m": "Traceable via [calibration laboratory and accreditation]"
+    },
+    {
      "p": "OQ · Data integrity",
      "v": "Roles, audit trail, time sync, backup, restore",
      "m": "21 CFR Part 11; EU GMP Annex 11"
@@ -114,7 +114,60 @@
      "v": "Non-condensable gases, dryness, superheat at each use point",
      "m": "EN 285; condensate to the Water for Injection (WFI) monograph · Annex 1, 6.17"
     }
-   ]
+   ],
+   "fold": 6,
+   "fold_noun": "checks"
+  },
+  {
+   "type": "table",
+   "nav": "Who signs",
+   "h": "Who writes and reviews each document",
+   "intro": "The validation master plan (VMP) stays yours. Your quality unit approves every protocol before execution and every phase release (Annex 15, 2.6 and 2.10).",
+   "cols": [
+    "Document or activity",
+    "Written or done by",
+    "Reviewed by"
+   ],
+   "rows": [
+    [
+     "Risk assessment and C&Q plan",
+     "Aquemi drafts, from the user requirement specification (URS)",
+     "Your validation team, with ours"
+    ],
+    [
+     "FAT, SAT, IQ and OQ protocols",
+     "Aquemi, in your template",
+     "Your validation team"
+    ],
+    [
+     "IQ and OQ execution",
+     "Aquemi [executing staff: own engineers or named partner], with your witness",
+     "Your validation team"
+    ],
+    [
+     "PQ sampling and testing",
+     "Your operators and laboratory, or [contract laboratory, if Aquemi arranges one]",
+     "Your quality control"
+    ],
+    [
+     "Alert and action levels",
+     "Aquemi recommends from the data",
+     "Your quality control"
+    ],
+    [
+     "PQ protocol and sampling plan",
+     "You, or Aquemi drafts for you",
+     "Both teams and your laboratory"
+    ],
+    [
+     "Phase reports and final summary",
+     "Aquemi drafts from executed records",
+     "Your validation team"
+    ]
+   ],
+   "as": "roles",
+   "fold": 5,
+   "fold_noun": "documents"
   },
   {
    "type": "spec",
@@ -136,7 +189,7 @@
     {
      "p": "Phase 2",
      "v": "≥ 2 further weeks",
-     "m": "Same sampling, standard operating procedures (SOPs) in use. Water usable if data show quality and your quality unit approves · WHO TRS 1033, 11.3"
+     "m": "Same sampling, standard operating procedures (SOPs) in use. Water usable if data show quality and your quality unit approves (WHO TRS 1033, 11.3)"
     },
     {
      "p": "Phase 3",
@@ -164,7 +217,9 @@
      "m": "Physical tests repeated periodically · Annex 1, 6.17"
     }
    ],
-   "note": "For a change to an existing system, WHO allows the phases to be set by risk assessment."
+   "note": "For a change to an existing system, WHO allows the phases to be set by risk assessment.",
+   "fold": 3,
+   "fold_noun": "rows"
   },
   {
    "type": "spec",
@@ -202,62 +257,8 @@
   },
   {
    "type": "table",
-   "nav": "Who signs",
-   "h": "Who writes and reviews each document",
-   "intro": "Your quality unit approves every protocol before execution and every phase release (Annex 15, 2.6 and 2.10).",
-   "cols": [
-    "Document or activity",
-    "Written or done by",
-    "Reviewed by"
-   ],
-   "rows": [
-    [
-     "Validation master plan (VMP)",
-     "You",
-     "Your validation and quality teams"
-    ],
-    [
-     "Risk assessment and C&Q plan",
-     "Aquemi drafts, from the user requirement specification (URS)",
-     "Your validation team, with ours"
-    ],
-    [
-     "FAT, SAT, IQ and OQ protocols",
-     "Aquemi, in your template",
-     "Your validation team"
-    ],
-    [
-     "IQ and OQ execution",
-     "Aquemi [executing staff: own engineers or named partner], with your witness",
-     "Your validation team"
-    ],
-    [
-     "PQ protocol and sampling plan",
-     "You, or Aquemi drafts for you",
-     "Both teams and your laboratory"
-    ],
-    [
-     "PQ sampling and testing",
-     "Your operators and laboratory, or [contract laboratory, if Aquemi arranges one]",
-     "Your quality control"
-    ],
-    [
-     "Alert and action levels",
-     "Aquemi recommends from the data",
-     "Your quality control"
-    ],
-    [
-     "Phase reports and final summary",
-     "Aquemi drafts from executed records",
-     "Your validation team"
-    ]
-   ],
-   "as": "roles"
-  },
-  {
-   "type": "table",
    "nav": "Requalification",
-   "h": "What triggers requalification, and the usual scope",
+   "h": "What triggers requalification, and its scope",
    "intro": "Scope is set by risk assessment under change control (Annex 15, 11.4).",
    "cols": [
     "Trigger",
@@ -267,7 +268,7 @@
    "rows": [
     [
      "Periodic review",
-     "Review of the year's data and changes; testing only where needed",
+     "Review of the year's data and changes; test only where needed",
      "Annex 15, 4.1 and 4.2; WHO TRS 1033, 14.1"
     ],
     [
@@ -285,7 +286,8 @@
      "Pretreatment review, OQ of affected steps, intensive sampling",
      "USP <1231>; WHO TRS 1033, 4.2.17"
     ]
-   ]
+   ],
+   "as": "router"
   },
   {
    "type": "docs",
@@ -324,7 +326,9 @@
      "t": "Phase reports and final qualification summary",
      "d": "With the alert and action level recommendation"
     }
-   ]
+   ],
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
    "type": "faq",
@@ -337,7 +341,7 @@
     },
     {
      "q": "Can IQ and OQ be combined into one protocol?",
-     "a": "Yes. Annex 15, 2.5 and 3.10 allow a combined installation and operational qualification (IOQ) where the system's complexity allows. On a packaged PW skid it often saves a review cycle; on a full generation, storage and pure steam system we usually keep them apart so IQ deviations do not hold up OQ testing of unaffected parts."
+     "a": "Yes. Annex 15, 2.5 and 3.10 allow a combined installation and operational qualification (IOQ) where complexity allows. On a packaged PW skid it often saves a review cycle; on a full generation, storage and pure steam system we keep them apart so IQ deviations do not hold up OQ."
     },
     {
      "q": "How much of IQ and OQ can FAT replace?",
@@ -357,7 +361,7 @@
     },
     {
      "q": "How often should we requalify?",
-     "a": "Annex 15, 4.1 and 4.2 ask for evaluation at a justified frequency, not a full repeat. Most sites review the system annually, as WHO TRS 1033, 14.1 suggests, and requalify only what a change, a trend or the review points to. Repeating a full IQ/OQ every year by habit costs downtime and proves little."
+     "a": "Annex 15, 4.1 and 4.2 ask for evaluation at a justified frequency, not a full repeat. Most sites review annually, as WHO TRS 1033, 14.1 suggests, and requalify only what a change, a trend or the review points to."
     },
     {
      "q": "Can you qualify or requalify a system you did not build?",
@@ -380,7 +384,7 @@
  ],
  "cta": {
   "h": "Send your URS or VMP. Get a draft C&Q plan back.",
-  "body": "An engineer replies within [proposal response time, working days] with a draft C&Q plan: IQ and OQ tests, FAT tests to leverage, a PQ sampling plan and water release dates.",
+  "body": "An engineer reads your URS or VMP and drafts the C&Q plan in your templates.",
   "button": "Request a C&Q plan review",
   "link": "contact-proposal",
   "intent": "Review of a document you have|C&Q plan or validation master plan (VMP)",
@@ -391,7 +395,14 @@
    "Points of use and draw pattern",
    "Laboratory methods and sample turnaround",
    "Existing system: qualification file and trends"
-  ]
+  ],
+  "returns": [
+   "A draft C&Q plan",
+   "IQ and OQ tests, FAT tests to leverage",
+   "A PQ sampling plan",
+   "Water release dates"
+  ],
+  "turnaround": "[proposal response time, working days]"
  },
  "todo": [
   "Confirm Aquemi executes IQ/OQ with its own engineers or a named partner (who-signs table placeholder)",

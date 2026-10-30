@@ -10,8 +10,8 @@ TABLE_AS.grades=function(b,H){var C=b.cols||[],R=b.rows||[];
  function lanes(cell){var s=String(cell&&cell.t||cell||''),hit=LANES.map(function(l){var m=l[1].exec(s);return m?m.index:-1}),first=Math.min.apply(null,hit.filter(function(x){return x>=0}));
   return LANES.map(function(l,i){return '<span class="aq-grades__lane"><span class="aq-grades__tap'+(hit[i]<0?'':hit[i]===first?' is-min':' is-alt')+'"></span></span>'}).join('')}
  return sec(H+'<div class="aq-grades"><div class="aq-grades__head"><span>'+tx(C[other[0]]||'')+'</span><span class="aq-grades__lanes">'+LANES.map(function(l){return '<span>'+l[0]+'</span>'}).join('')+'</span></div>'
-  +'<ol class="aq-grades__rows">'+R.map(function(r,i){var s=String(r[g]&&r[g].t||r[g]||'');
+  +wFold(b,R.length,'<ol class="aq-grades__rows">'+R.map(function(r,i){var s=String(r[g]&&r[g].t||r[g]||'');
    return fli('<li class="aq-grades__row">',b,i)+idx(i)+'<div class="aq-grades__step"><h3 class="aq-grades__t">'+tcell(r[other[0]])+'</h3>'
     +other.slice(1).map(function(k){return r[k]?'<p class="aq-grades__d">'+tcell(r[k])+'</p>':''}).join('')
     +'<p class="aq-grades__g">'+tcell(r[g])+'</p></div>'
-    +'<span class="aq-grades__lanes" role="img" aria-label="'+e(s)+'">'+lanes(r[g])+'</span></li>'}).join('')+'</ol></div>');};
+    +'<span class="aq-grades__lanes" role="img" aria-label="'+e(s)+'">'+lanes(r[g])+'</span></li>'}).join('')+'</ol>',b.fold_noun||'steps')+'</div>');};

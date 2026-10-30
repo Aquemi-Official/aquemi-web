@@ -454,11 +454,11 @@ TABLE_AS.grades=function(b,H){var C=b.cols||[],R=b.rows||[];
  function lanes(cell){var s=String(cell&&cell.t||cell||''),hit=LANES.map(function(l){var m=l[1].exec(s);return m?m.index:-1}),first=Math.min.apply(null,hit.filter(function(x){return x>=0}));
   return LANES.map(function(l,i){return '<span class="aq-grades__lane"><span class="aq-grades__tap'+(hit[i]<0?'':hit[i]===first?' is-min':' is-alt')+'"></span></span>'}).join('')}
  return sec(H+'<div class="aq-grades"><div class="aq-grades__head"><span>'+tx(C[other[0]]||'')+'</span><span class="aq-grades__lanes">'+LANES.map(function(l){return '<span>'+l[0]+'</span>'}).join('')+'</span></div>'
-  +'<ol class="aq-grades__rows">'+R.map(function(r,i){var s=String(r[g]&&r[g].t||r[g]||'');
+  +wFold(b,R.length,'<ol class="aq-grades__rows">'+R.map(function(r,i){var s=String(r[g]&&r[g].t||r[g]||'');
    return fli('<li class="aq-grades__row">',b,i)+idx(i)+'<div class="aq-grades__step"><h3 class="aq-grades__t">'+tcell(r[other[0]])+'</h3>'
     +other.slice(1).map(function(k){return r[k]?'<p class="aq-grades__d">'+tcell(r[k])+'</p>':''}).join('')
     +'<p class="aq-grades__g">'+tcell(r[g])+'</p></div>'
-    +'<span class="aq-grades__lanes" role="img" aria-label="'+e(s)+'">'+lanes(r[g])+'</span></li>'}).join('')+'</ol></div>');};
+    +'<span class="aq-grades__lanes" role="img" aria-label="'+e(s)+'">'+lanes(r[g])+'</span></li>'}).join('')+'</ol>',b.fold_noun||'steps')+'</div>');};
 /* Block "grid" -> LinkGrid: choices as rows of the shared list grammar (.aq-rows): index, title, one line, optional tag.
    Fields: h, intro (section head), items [{t, d, link, tag}]. An item that links to a page is one <a>; one whose
    link page has a drawing in ART (parts/Hero.js) shows it small at the row's end on desktop (aria-hidden, hidden on phones). */
@@ -468,6 +468,30 @@ BLOCKS['grid']=function(b,H){var I=b.items||[];return sec(H+wFold(b,I.length,'<o
 BLOCKS['options']=function(b,H){var I=b.items||[];return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d),b,i)}).join('')+'</ol>',b.fold_noun||'options'));};
 /* Block "path" -> WaterPath */
 BLOCKS['path']=function(b,H){return sec(H+wPath(b));};
+/* Table as "plans" -> PlanTiers: service plans side by side, one action per plan. Fields as a table: cols [row label,
+   plan A, plan B, …], rows [feature, value per plan]. A row whose label starts "Suits" becomes each plan's one-line
+   subtitle under its name; a row starting "Price" shows prominently under it. A column named "No plan…" is the
+   baseline: quieter, last, no button. b.recommend (column index or plan name) raises that plan with a quiet
+   "Most chosen" marker; only when the page says so. Each plan ends with the page's own CTA (primary_cta, its link and
+   intent; else cta.button), so no new intents. Desktop: a label column, then the plans, rows aligned across plans
+   (subgrid). Phones: plans stacked, each feature labelled. fold: N shows the first N features in every plan. */
+TABLE_AS.plans=function(b,H){var C=b.cols||[],R=b.rows||[],lab=function(r){return String(r[0]&&r[0].t||r[0]||'')};
+ var suits=R.filter(function(r){return /^suits/i.test(lab(r))})[0],price=R.filter(function(r){return /^price/i.test(lab(r))})[0];
+ var rows=R.filter(function(r){return r!==suits&&r!==price});
+ var p=W().filter(function(q){return (q.blocks||[]).indexOf(b)>=0})[0]||wp(WP)||{},c=p.cta||{};
+ var label=p.primary_cta||c.button||'Request a proposal',link=p.primary_cta?ctaLink(p):(c.link||'contact-proposal'),intent=p.primary_cta?p.primary_cta_intent:c.intent;
+ var rec=typeof b.recommend==='number'?b.recommend:b.recommend?C.map(function(x){return String(x&&x.t||x)}).indexOf(String(b.recommend)):-1;
+ var feats=function(r,i){return fli('<div class="aq-plan-tiers__row">',b,i)};
+ var plans=C.slice(1).map(function(name,k){var j=k+1,n=String(name&&name.t||name),base=/^no\b/i.test(n);
+  return '<article class="aq-plan-tiers__plan'+(j===rec?' is-rec':'')+(base?' is-base':'')+'">'
+   +'<header class="aq-plan-tiers__head">'+(j===rec?'<p class="aq-plan-tiers__mark">Most chosen</p>':'')
+   +'<h3 class="aq-plan-tiers__name">'+tcell(name)+'</h3>'
+   +(suits&&suits[j]?'<p class="aq-plan-tiers__suits">'+tcell(suits[j])+'</p>':'')
+   +(price&&price[j]?'<p class="aq-plan-tiers__price"><span class="aq-plan-tiers__k">'+tcell(price[0])+'</span>'+tcell(price[j])+'</p>':'')+'</header>'
+   +'<dl class="aq-plan-tiers__rows">'+rows.map(function(r,i){return feats(r,i)+'<dt>'+tcell(r[0])+'</dt><dd>'+tcell(r[j])+'</dd></div>'}).join('')+'</dl>'
+   +'<div class="aq-plan-tiers__action">'+(base?'':wBtn(label,link,j===rec?null:'secondary',intent).replace('<a ','<a aria-label="'+e(label+': '+n)+'" '))+'</div></article>'}).join('');
+ var labels='<div class="aq-plan-tiers__labels" aria-hidden="true"><div class="aq-plan-tiers__lhead"></div>'+rows.map(function(r,i){return fli('<div class="aq-plan-tiers__label">',b,i)+tcell(r[0])+'</div>'}).join('')+'<div></div></div>';
+ return sec(H+wFold(b,rows.length,'<div class="aq-plan-tiers'+(rec>0?' has-rec':'')+'" style="--plan-rows:'+rows.length+'">'+labels+plans+'</div>',b.fold_noun||'features'));};
 /* Block "prose" -> Prose in SplitSection: heading left, text right. Fields: h, body (paragraphs).
    The first sentence of body[0] is set as the lead; the rest follow as plain paragraphs. No grid, frame or margin notes
    (an old "notes" field is ignored). Standards and figures stay inline in the text. */
@@ -520,8 +544,8 @@ BLOCKS['related']=function(b,H){return sec(H+'<ol class="aq-related-links">'+(b.
 function roleParty(c){var s=String(c&&c.t||c||'');return /^aquemi/i.test(s)?'ours':/^(you|your)\b/i.test(s)?'yours':'shared'}
 TABLE_AS.roles=function(b,H){var C=b.cols||[],R=b.rows||[];
  return sec(H+'<div class="aq-roles"><p class="aq-roles__key" aria-hidden="true"><span class="aq-roles__stamp is-ours">Aquemi</span><span class="aq-roles__stamp is-yours">Your team</span><span class="aq-roles__stamp is-shared">Shared</span></p>'
-  +'<ol class="aq-roles__rows">'+R.map(function(r,i){return fli('<li class="aq-roles__row">',b,i)+idx(i)+'<h3 class="aq-roles__t">'+tcell(r[0])+'</h3><div class="aq-roles__stamps">'
-   +r.slice(1).map(function(c,j){return '<p class="aq-roles__stamp is-'+roleParty(c)+'"><span class="aq-roles__k">'+tx(C[j+1]||'')+'</span>'+tcell(c)+'</p>'}).join('')+'</div></li>'}).join('')+'</ol></div>');};
+  +wFold(b,R.length,'<ol class="aq-roles__rows">'+R.map(function(r,i){return fli('<li class="aq-roles__row">',b,i)+idx(i)+'<h3 class="aq-roles__t">'+tcell(r[0])+'</h3><div class="aq-roles__stamps">'
+   +r.slice(1).map(function(c,j){return '<p class="aq-roles__stamp is-'+roleParty(c)+'"><span class="aq-roles__k">'+tx(C[j+1]||'')+'</span>'+tcell(c)+'</p>'}).join('')+'</div></li>'}).join('')+'</ol>',b.fold_noun||'documents')+'</div>');};
 /* Table as "router" -> Router: the buyer picks the situation they are in and sees one route through the columns that
    follow (the water they need, the system, where to start). Fields as a table: cols (first is the situation column,
    the rest name the stations), rows (first cell the situation, each other cell a string or {t, link}).
