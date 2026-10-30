@@ -4,3 +4,4 @@ CaseStudy summarizes a delivered project as client, problem, system delivered an
 - The outcome is a measured figure with its unit and method. Use real figures or don't publish the case; until then write placeholders in square brackets.
 - Name the client only with written permission; otherwise describe it ("Mid-size biologics CDMO, Ontario").
 - Columns wrap at 260 px.
+- A single case (`aq-cases` with one child) lays its `dl` out as a two-column spec sheet: labels left, facts right. On phones it stacks again.
