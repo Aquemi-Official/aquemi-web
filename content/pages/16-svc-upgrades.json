@@ -5,44 +5,39 @@
  "title": "Water system upgrades and retrofits, any builder | Aquemi",
  "meta": "Upgrade a PW or WFI system from any builder: RO/EDI, sanitization, online TOC, Part 11 controls, dead legs, with the EU GMP Annex 15 requalification scope.",
  "path": "/services/upgrades-retrofits/",
- "eyebrow": "UPGRADES · RETROFITS · ANY BUILDER · EU GMP ANNEX 15 · 21 CFR PART 11 · ASME BPE",
- "headline": "Upgrade the water system you already have, with the requalification scope known before the first cut",
- "lead": "Most upgrade projects that overrun do so in validation, not in fabrication: a controls swap that turns into a full software revalidation, a new branch that moves the coldest point of the loop, a route change nobody told the regulator about. We start with an assessment of your Purified Water (PW), Water for Injection (WFI) or pure steam system, whoever built it, and give you each option with its downtime and the installation, operational and performance qualification (IQ, OQ, PQ) it triggers under EU GMP Annex 15, section 11, before you raise the change request.",
+ "eyebrow": "UPGRADES · RETROFITS · EU GMP ANNEX 15 · 21 CFR PART 11",
+ "headline": "Upgrade the water system you have, with the requalification scope known first",
+ "lead": "We assess your Purified Water (PW), Water for Injection (WFI) or pure steam system, whoever built it, and give each option its downtime and the requalification it triggers under EU GMP Annex 15, section 11.",
  "tags": [
   "EU GMP Annex 15",
   "EU GMP Annex 1",
   "21 CFR Part 11",
-  "EU GMP Annex 11",
-  "GAMP 5",
-  "USP <1231>",
-  "Ph. Eur. 0169",
-  "ASME BPE",
-  "WHO TRS 1033 Annex 3"
+  "GAMP 5"
  ],
  "primary_cta": "Request a system assessment",
  "primary_cta_intent": "Assessment of an existing system, any make",
  "secondary_cta": {
-  "label": "Water out of specification or system down now? Request service",
+  "label": "System down now? Request service",
   "link": "contact-service"
  },
  "blocks": [
   {
    "type": "prose",
-   "h": "Your system is older than its controls and younger than the rules it is now judged by",
+   "nav": "Why upgrade",
+   "h": "Newer rules, older controls, and a requalification bill",
    "body": [
-    "A PW or WFI system installed fifteen years ago was qualified against the expectations of its day. Since then the revised EU GMP Annex 1 (2022, in force from August 2023 and adopted by Health Canada as GUI-0119) has asked for continuous total organic carbon (TOC) and conductivity monitoring on WFI systems, a sanitization schedule set from monitoring results and a contamination control strategy that covers water. Data integrity expectations under 21 CFR Part 11 and EU GMP Annex 11 have reached the controls cabinet. And the programmable logic controller (PLC) that runs the system may now be a part its maker no longer sells.",
-    "None of that forces a new system. It forces decisions, and each decision has two costs: the work itself and the requalification that follows it. Annex 15, section 11 asks that every planned change is assessed for its effect on the qualified state before it is made, and WHO TRS 1033 Annex 3 allows the PQ phases and their length for a change to an existing system to be set by documented risk assessment rather than repeated in full. Used well, that saves months. Used badly, it produces either a short PQ an inspector questions or a full year of sampling nobody needed.",
-    "So we price the requalification with the work. Every option in an assessment report states what changes physically, which documents and tests it touches, how long the water is unavailable, and how you keep supplying production while it is done."
+    "Each upgrade has two costs: the work, and the installation, operational and performance qualification (IQ, OQ, PQ) that follows it. The revised EU GMP Annex 1 (in force from August 2023, adopted by Health Canada as GUI-0119) expects continuous total organic carbon (TOC) and conductivity monitoring on WFI and a sanitization schedule set from data. 21 CFR Part 11 and EU GMP Annex 11 now reach the controls cabinet, and the programmable logic controller (PLC) may be out of production.",
+    "WHO TRS 1033 Annex 3 lets a documented risk assessment set the PQ after a change. We size requalification by what the change reaches."
    ]
   },
   {
    "type": "table",
-   "h": "Common upgrades, and the requalification scope to plan for each",
+   "nav": "Upgrades",
+   "h": "Common upgrades and the requalification to plan",
    "cols": [
     "Upgrade",
-    "Why sites do it",
-    "What changes on the system",
-    "Requalification scope to plan",
+    "What changes",
+    "Requalification to plan",
     "Basis"
    ],
    "rows": [
@@ -51,39 +46,26 @@
       "t": "Chemical deionization (DI) to reverse osmosis (RO) and electrodeionization (EDI)",
       "link": "sys-pw"
      },
-     "Remove acid and caustic regeneration or exchange-tank deliveries, get steadier conductivity, and take resin beds that stand at ambient temperature out of the generation step",
-     "New generation skid, pretreatment matched to RO (chlorine removal, softening, antiscalant), new drain and reject routing; the loop usually stays",
-     "IQ and OQ of the new generation skid, leveraging factory acceptance tests (FAT) where your quality unit accepts them. Intensive sampling after each step, at the loop return and at points of use for a risk-assessed period, then a reduced plan; alert levels reviewed on the new data",
+     "New generation skid and RO pretreatment; the loop usually stays",
+     "IQ and OQ leveraging factory acceptance tests (FAT); intensive sampling at return and points of use, then a reduced plan",
      "Annex 15, section 11; WHO TRS 1033 Annex 3, 11.3"
     ],
     [
      {
-      "t": "Hot water sanitization on an ambient loop",
+      "t": "Hot water or ozone sanitization on an ambient loop",
       "link": "sys-storage"
      },
-     "Replace chemical sanitization, or meet Annex 1, 6.12 with a schedule your data support",
-     "Loop heater on a sanitary double tube sheet heat exchanger, temperature probes at the coldest points, heated vent filter, allowance for expansion; every component checked for its rating at the sanitization temperature",
-     "IQ of the new equipment and of material and pressure ratings. OQ of the full cycle with temperature recorded at the coldest probe for the hold time, then sampling long enough to show control at the new frequency",
-     "USP <1231> (65–80 °C commonly used); Annex 1, 6.12"
-    ],
-    [
-     {
-      "t": "Ozone and destruct UV on an ambient loop",
-      "link": "sys-storage"
-     },
-     "Sanitize PW or membrane WFI loops without heat cycles, or loops whose piping is not rated for heat",
-     "Ozone generator and injection at the tank, 254 nm ultraviolet (UV) destruct before the loop supply, dissolved ozone sensors in the tank, after the UV and on the return, ozone-compatible seals and diaphragms, a room gas monitor and a safe vent route",
-     "IQ, including an elastomer compatibility review. OQ of the tank ozone set point, of ozone absent after the UV and at points of use before release, and of the loop sanitization with the UV off. Intensive microbial sampling through the first sanitization intervals",
-     "ISPE Baseline Guide Vol. 4 (0.02–0.2 ppm); Annex 1, 6.12"
+     "Heat exchanger and coldest-point probes, or ozone with 254 nm ultraviolet (UV) destruct and sensors",
+     "IQ of ratings and seals; OQ of the cycle at the coldest point and of ozone absent after the UV; sampling",
+     "USP <1231> (65–80 °C); ISPE Baseline Guide Vol. 4 (0.02–0.2 ppm); Annex 1, 6.12"
     ],
     [
      {
       "t": "Online TOC and conductivity, or real-time release",
       "link": "sys-monitoring"
      },
-     "Annex 1, 6.15 expects continuous TOC and conductivity on WFI; online release cuts laboratory load",
-     "Analyzer and sample line at the risk-based location, data path to the PLC or historian, alarms",
-     "IQ of the instrument and data path. OQ including USP <643> system suitability (85–115 %) and audit trail checks. A period of parallel online and laboratory results before your quality unit moves release to the online value",
+     "Analyzer and sample line at the risk-based location, data path to the historian",
+     "OQ with USP <643> system suitability (85–115 %) and audit trail checks; parallel laboratory results before online release",
      "USP <643>; USP <645>; Ph. Eur. 2.2.44; Annex 1, 6.15"
     ],
     [
@@ -91,19 +73,17 @@
       "t": "PLC, operator panel (HMI) and SCADA replacement",
       "link": "sys-monitoring"
      },
-     "End-of-life hardware, unpatched operating systems, no audit trail, shared logins, paper chart recorders",
-     "New controller and panel, rewritten or converted logic, new historian or electronic records, often new instruments on digital communication",
-     "Computerized system validation under GAMP 5: specifications, risk assessment, software FAT on a simulator, IQ of hardware and software, OQ of every sequence, alarm and interlock, data integrity tests, and migration or retention of legacy records. Short water sampling after cutover where the process itself is unchanged",
+     "New controller, panel and logic, electronic records",
+     "GAMP 5 validation with software FAT on a simulator; short water sampling if the process is unchanged",
      "21 CFR Part 11; EU GMP Annex 11; GAMP 5"
     ],
     [
      {
-      "t": "Dead leg removal and loop modifications",
+      "t": "Dead leg removal and loop changes",
       "link": "svc-fabrication"
      },
-     "Branches beyond the ASME BPE target of L/D ≤ 2, abandoned outlets, inspection findings",
-     "Branches cut out, new zero-static point-of-use valves, orbital welds, slope corrected, new piping cleaned and passivated",
-     "IQ of the modified section (weld map and log, borescope records, slope, L/D, passivation). Updated isometrics and dead leg register. OQ of sanitization if the coldest point moves, and intensive sampling at the affected and neighbouring points",
+     "Branches cut to the ASME BPE target of L/D ≤ 2, orbital welds, slope corrected, passivation",
+     "IQ of the section; updated isometrics and dead leg register; sampling at affected and neighbouring points",
      "ASME BPE; Annex 1, 6.7; WHO TRS 1033 Annex 3"
     ],
     [
@@ -111,265 +91,97 @@
       "t": "Capacity increase",
       "link": "sys-pw"
      },
-     "New products, a new suite, or a generator that no longer refills the tank between peaks",
-     "Second RO train or larger skid, larger tank, bigger loop pump or a new sub-loop; pretreatment rechecked at the new flow and the coldest feed temperature",
-     "IQ and OQ of new equipment. OQ of loop hydraulics at the new peak draw, with return flow and pressure inside the design range. For a new tank, spray device coverage. Sampling at new points of use and at the points nearest the change",
+     "Second RO train or larger skid, tank, pump or sub-loop",
+     "IQ and OQ of new equipment, loop hydraulics at the new peak draw; sampling near the change",
      "Annex 1, 6.9; Annex 15, section 11"
     ],
     [
      {
-      "t": "Changing the WFI route: distillation to membrane, or back",
+      "t": "WFI route change: distillation to membrane, or back",
       "link": "sys-wfi-membrane"
      },
-     "Steam cost or availability, energy targets, or a move to hot WFI or to a market that calls for distillation",
-     "New generation system, usually built alongside the existing one; storage temperature and sanitization reviewed with the route",
-     "Full IQ and OQ of the new generator and a three-phase PQ at generation and points of use, with the existing still or skid kept as supply until your quality unit releases the new water. For membrane WFI in Ph. Eur. markets, notice to your GMP supervisory authority before implementation",
+     "New generator built alongside the existing one",
+     "Full IQ, OQ and three-phase PQ; for membrane WFI in Ph. Eur. markets, notice to your authority first",
      "Ph. Eur. 0169; EMA/INS/GMP/443117/2017; WHO TRS 1033 Annex 3"
     ],
     [
      "Rouge remediation",
-     "Visible rouge on tank walls, spray devices or hot loop surfaces; inspection findings",
-     "Derouging and repassivation of the affected surfaces, with surfaces inspected before and after",
-     "Cleaning and passivation records reviewed under change control, return-to-service flushing with conductivity and TOC checks, then closer sampling for a short period",
-     "ASME BPE; [passivation standard used, e.g. ASTM A967 or ASTM A380]"
-    ],
-    [
-     "Full replacement",
-     "A system beyond economic repair, or several of the upgrades above at once",
-     "New generation, storage and distribution, built alongside the old system where space allows",
-     "As a new system: FAT, commissioning, IQ, OQ and a three-phase PQ to at least 12 months, with cutover planned so the old system supplies production until release",
-     {
-      "t": "See commissioning and qualification",
-      "link": "svc-cq"
-     }
+     "Derouging and repassivation, surfaces inspected before and after",
+     "Records under change control; flushing with conductivity and TOC checks, then closer sampling",
+     "ASME BPE; [passivation standard, ASTM A967 or A380]"
     ]
    ]
   },
   {
-   "type": "band",
-   "tone": "limestone",
-   "h": "We size requalification by what the change can affect, not by habit",
-   "body": "For each option we list the critical aspects the change can reach: water quality at generation, in the loop and at the points of use, the sanitization cycle, and the data your release depends on. Anything outside that reach is left alone, and the reasoning goes into the change impact assessment so your quality unit can sign it and an inspector can follow it. Where the risk assessment is borderline, we say so and propose the longer sampling period."
+   "type": "options",
+   "nav": "Assessment",
+   "h": "The system assessment: what we review",
+   "intro": "The report gives each option with scope, [budget range, CAD], downtime, supply plan and the requalification it triggers.",
+   "items": [
+    {
+     "t": "Records",
+     "d": "Qualification file, change controls, drawings and dead leg register: what is missing and what each gap costs."
+    },
+    {
+     "t": "Water quality data",
+     "d": "Twelve months of conductivity, TOC, microbial and endotoxin results, against alert and action levels."
+    },
+    {
+     "t": "Generation",
+     "d": "Performance on today's feed water and remaining capacity at your coldest feed temperature."
+    },
+    {
+     "t": "Storage and distribution",
+     "d": "Walkdown: dead legs over L/D 2, drainability, rouge and contamination routes."
+    },
+    {
+     "t": "Sanitization",
+     "d": "Whether your monitoring results support the schedule, as Annex 1, 6.12 asks."
+    },
+    {
+     "t": "Controls and data integrity",
+     "d": "Versions, support status, access, audit trail and backups, with a gap list against Part 11 and Annex 11."
+    },
+    {
+     "t": "Spares",
+     "d": "Parts at risk, lead times and current equivalents."
+    }
+   ]
   },
   {
-   "type": "prose",
-   "h": "Systems whose builder has changed hands",
-   "body": [
-    "Many PW and WFI systems in service in North America were built by companies that have since been sold, merged or renamed. Evoqua became part of Xylem in 2023, a year after buying the renal business that Mar Cor and Cantel had operated under STERIS. Grundfos agreed to acquire MECO in 2021 and completed its acquisition of Newterra in 2025. Ecolab bought Ovivo's electronics ultrapure water business in 2025. Systems keep running through changes like these. What tends to change is who answers the phone, which part numbers are current, and who still holds the software.",
-    "We work on systems we did not build. [Confirm the equipment types and makes Aquemi services and upgrades.] The first step is the same as for our own: an assessment of the system as it stands and of the records behind it, so that every later replacement is checked like for like against a known original, and every upgrade starts from a drawing that matches the pipework."
+   "type": "steps",
+   "nav": "How it runs",
+   "h": "How an upgrade runs",
+   "items": [
+    {
+     "t": "System assessment",
+     "d": "On site for [assessment duration, days]; report within [report turnaround, working days]."
+    },
+    {
+     "t": "Options and impact",
+     "d": "Scope, cost, downtime and requalification per option, so you compare total cost, not equipment price."
+    },
+    {
+     "t": "Change control input",
+     "d": "We write the technical content of your change request and impact assessment. Your quality unit approves it."
+    },
+    {
+     "t": "Design, build and FAT",
+     "d": "Skids, panels and spools tested at our shop, software against a simulator, so the site window stays short."
+    },
+    {
+     "t": "Cutover",
+     "d": "In a planned window under your permits, flushed and sanitized before sampling."
+    },
+    {
+     "t": "Requalification and records",
+     "d": "IQ and OQ of what changed, the agreed sampling, and updated drawings, register and standard operating procedures (SOPs)."
+    }
    ]
   },
   {
    "type": "table",
-   "h": "What goes missing on an orphaned system, and how we recover it",
-   "cols": [
-    "Gap",
-    "Why it matters",
-    "How we close it"
-   ],
-   "rows": [
-    [
-     "PLC program, HMI project files and passwords",
-     "Without the source, no change can be made or tested; without passwords, nobody can make it",
-     "Check your purchase contract for software ownership, request the files from the original supplier, and back up what runs today. Where the source cannot be recovered, plan a controls replacement rather than a modification"
-    ],
-    [
-     "Software licences and engineering tools",
-     "Old programming software may need a licence or an operating system you no longer have",
-     "List the versions installed, the licences held and what a supported replacement needs"
-    ],
-    [
-     "As-built drawings and isometrics",
-     "IQ of any change checks against drawings; outdated ones become IQ deviations",
-     "Walk down and redline, then reissue piping and instrumentation diagrams (P&IDs) and isometrics as built for the areas to be changed"
-    ],
-    [
-     "Dead leg register",
-     "Inspectors ask for it, and without it nobody can show that a change adds no dead legs",
-     "Measure each branch against L/D ≤ 2 and issue a register with drawing references"
-    ],
-    [
-     "Bill of materials and part numbers",
-     "Rebranded parts and discontinued models break the like-for-like check",
-     {
-      "t": "Rebuild the bill of materials from nameplates and certificates, name current equivalents, and flag where an equivalent is a change, as set out under service and spare parts",
-      "link": "svc-service"
-     }
-    ],
-    [
-     "Qualification file",
-     "Requalification scope depends on what was proven originally",
-     "Gap assessment of the IQ, OQ and PQ records and the last periodic review against current Annex 15 and Annex 1 expectations"
-    ]
-   ]
-  },
-  {
-   "type": "table",
-   "h": "The system assessment: what we look at and what you get",
-   "cols": [
-    "Area",
-    "What we review",
-    "What the report states"
-   ],
-   "rows": [
-    [
-     "Records",
-     "Qualification file, last periodic review, change controls since PQ, drawings, dead leg register, maintenance and calibration history",
-     "Which records are current, which are missing, and what each gap means for the next change"
-    ],
-    [
-     "Water quality data",
-     "Twelve months of conductivity, TOC, microbial and endotoxin results by sample point, with alarm and divert history",
-     "Trends against alert and action levels, points that drift, seasonal patterns"
-    ],
-    [
-     "Generation",
-     "RO normalized flow and salt passage, EDI current and product quality, still or skid condition, pretreatment performance on the feed water you have now",
-     "Remaining capacity at your coldest feed temperature, condition, and what limits output"
-    ],
-    [
-     "Storage and distribution",
-     "Walkdown of tank, loop and points of use: branch measurements, slopes, valve types, heat exchanger design, vent filter, rouge where the tank can be inspected",
-     "Dead legs over L/D 2, drainability, contamination routes and surface condition"
-    ],
-    [
-     "Sanitization",
-     "Method, frequency, and records of temperature or ozone at the coldest or most remote point",
-     "Whether your monitoring results support the schedule, as Annex 1, 6.12 asks"
-    ],
-    [
-     "Controls and data integrity",
-     "PLC, HMI and SCADA versions and support status, user access, audit trail, time synchronization, backup and restore, paper records",
-     "A written gap list against 21 CFR Part 11 and Annex 11, and the end-of-support date for each component where its maker publishes one"
-    ],
-    [
-     "Spares and support",
-     "Critical spares on site and the current availability of each part",
-     "Parts at risk, lead times and current equivalents"
-    ],
-    [
-     "Options",
-     "Each upgrade that answers the findings",
-     "Scope, [budget range, CAD], site downtime, how supply continues and the requalification it triggers"
-    ]
-   ]
-  },
-  {
-   "type": "table",
-   "h": "Chemical DI or RO with EDI: the running costs to compare",
-   "cols": [
-    "Cost or risk",
-    "Chemical DI, regenerated on site or by exchange tanks",
-    "RO with EDI"
-   ],
-   "rows": [
-    [
-     "Chemicals",
-     "Acid and caustic for regeneration, or the exchange-tank service charge",
-     "Antiscalant and RO cleaning chemicals; no regenerant for the EDI"
-    ],
-    [
-     "Waste",
-     "Regenerant neutralization and discharge, or none on site with exchange tanks",
-     "RO reject and EDI concentrate to drain, often reusable for a non-GMP duty"
-    ],
-    [
-     "Consumables",
-     "Resin at the end of its life",
-     "RO membranes and EDI modules at their service life; cartridge filters"
-    ],
-    [
-     "Energy",
-     "Low",
-     "RO high-pressure pump and the EDI power supply"
-    ],
-    [
-     "Water quality behaviour",
-     "Conductivity rises as the bed exhausts; quality depends on regeneration timing",
-     "Continuous output once the system is in control"
-    ],
-    [
-     "Microbial risk",
-     "Resin beds standing at ambient temperature between regenerations",
-     "No regenerated beds; RO and EDI sanitized on a schedule"
-    ],
-    [
-     "Handling and safety",
-     "Concentrated acid and caustic stored and handled on site, or tank exchanges by a contractor",
-     "No regenerant chemicals on site for the generation step"
-    ]
-   ]
-  },
-  {
-   "type": "prose",
-   "h": "Where the conversion pays back",
-   "body": [
-    "EDI module makers present continuous electrodeionization as a chemical-free alternative to mixed-bed DI with lower operating and maintenance cost. Whether that holds for your plant depends on your water volume, your exchange-tank or chemical cost, your drain charges and your power cost, so the assessment works the comparison out per cubic metre of water for your system rather than quoting a percentage. [Add Aquemi payback figures from a delivered conversion once a client allows them to be published.]"
-   ]
-  },
-  {
-   "type": "table",
-   "h": "Controls upgrades: the data integrity gaps we find most often",
-   "cols": [
-    "What we find",
-    "Requirement it misses",
-    "What the upgrade does"
-   ],
-   "rows": [
-    [
-     "One shared operator login, or none",
-     "21 CFR 11.10(d) and 11.300; Annex 11, 12",
-     "Individual accounts with roles, password rules and automatic logoff"
-    ],
-    [
-     "No audit trail for set point, alarm limit or sequence changes",
-     "21 CFR 11.10(e); Annex 11, 9",
-     "An audit trail of who changed what, when and why, reviewed under your procedure"
-    ],
-    [
-     "A paper chart recorder or HMI trend as the only record of release data",
-     "21 CFR 211.68; Annex 11, 4",
-     "Electronic records in a validated historian, or a defined paper record where you choose to keep one"
-    ],
-    [
-     "Controller and panel clocks not synchronized",
-     "ALCOA+ (contemporaneous records)",
-     "Time synchronization to a site time server, tested at OQ"
-    ],
-    [
-     "Backups taken but never restored",
-     "Annex 11, 7.2",
-     "A backup routine with a restore test recorded at OQ and repeated on a schedule"
-    ],
-    [
-     "An HMI on an operating system its maker no longer patches",
-     "Annex 11, 12 (security); your IT policy",
-     "Supported hardware and operating system, with a patching route agreed with your IT team"
-    ],
-    [
-     "Historical records held only in the old system",
-     "21 CFR 211.180 (record retention); Annex 11, 17",
-     "Migration verified against the source, or the old records kept readable for their retention period"
-    ]
-   ]
-  },
-  {
-   "type": "prose",
-   "h": "Obsolete controllers: replace them before the last spare is used",
-   "body": [
-    "Several controller families common on water systems are discontinued or in phase-out, for example Allen-Bradley PLC-5 and SLC 500 and Siemens S5 and S7-300. Replacing the controller is never like for like: even a converted program is new software under Annex 11 and GAMP 5, and every sequence, alarm and interlock is tested again. We build the new panel and test the program against a simulator at our shop, so site work is the swap, the IQ and the OQ, in a window of [controls swap window, days]. Monitoring and controls describes the validated architecture we replace them with."
-   ]
-  },
-  {
-   "type": "prose",
-   "h": "Changing the WFI route",
-   "body": [
-    "Since 1 April 2017, Ph. Eur. 0169 accepts WFI made by reverse osmosis coupled with other suitable techniques, and USP has long allowed any process equivalent or superior to distillation. A move from a still to membrane WFI saves plant steam and cooling water, but it replaces one phase change with several barriers in series and a documented control strategy, as the EMA questions and answers on non-distillation WFI (EMA/INS/GMP/443117/2017) expect. For Ph. Eur. markets it also needs notice to your GMP supervisory authority before implementation.",
-    "The move can run the other way. A site that needs hot WFI for a hot loop, or that supplies a market or works to a corporate standard that still calls for distillation, may replace a membrane skid with a still. In both directions we build the new generator alongside the old one where space allows, so the existing system supplies production until your quality unit releases the new water, and the route assessment checks every market you release into. Ask your regulatory team whether your marketing authorizations or site master file describe the WFI route; if they do, the change may need a filing as well as change control."
-   ]
-  },
-  {
-   "type": "table",
+   "nav": "Downtime",
    "h": "Downtime, and how supply continues",
    "cols": [
     "Upgrade",
@@ -380,220 +192,197 @@
     [
      "PLC, HMI and SCADA replacement",
      "[days]",
-     "Swap in a planned shutdown with the tank full and the shutdown sized to storage"
+     "Planned shutdown with the tank full"
     ],
     [
      "New RO train or EDI",
      "[days]",
-     "New train tied in while the existing train runs; short shutdown for the final connection"
+     "Tied in while the existing train runs"
     ],
     [
      "Chemical DI to RO and EDI",
      "[days]",
-     "New skid built and commissioned beside the DI system; DI stays in service until the new water is released"
+     "DI stays in service until the new water is released"
     ],
     [
-     "Hot water or ozone sanitization added",
+     "Hot water or ozone sanitization",
      "[days]",
-     "Tie-in during a planned shutdown; first cycles run at OQ, before release"
+     "Tie-in during a planned shutdown"
     ],
     [
-     "New sub-loop, points of use or dead leg removal",
+     "Sub-loop, points of use, dead legs",
      "[days]",
-     "Cut-ins during a planned shutdown, followed by sanitization and sampling before release"
+     "Planned shutdown, then sanitization and sampling"
     ],
     [
-     "WFI route change or full replacement",
-     "[weeks] for the final cutover",
-     "New generator or system built alongside; the existing one supplies until release"
+     "WFI route change or replacement",
+     "[weeks] at final cutover",
+     "Existing system supplies until release"
     ],
     [
-     "Any of the above, where storage cannot ride through the shutdown",
+     "Storage cannot ride through",
      "As above",
-     "[Confirm whether Aquemi offers temporary RO or EDI units, flow range in m³/h]"
+     "[temporary RO or EDI units, flow m³/h]"
     ]
    ]
   },
   {
-   "type": "steps",
-   "h": "How an upgrade runs",
-   "items": [
-    {
-     "t": "System assessment",
-     "d": "Records, data, walkdown and controls review, on site for [assessment duration, days], with a written report and options within [report turnaround, working days]."
-    },
-    {
-     "t": "Options and impact",
-     "d": "Each option with scope, [budget range, CAD], downtime, supply plan and the requalification it triggers, so you compare total cost, not equipment price."
-    },
-    {
-     "t": "Change control input",
-     "d": "We write the technical content for your change request and impact assessment: what changes, what it can affect, and the IQ, OQ and sampling proposed. Your quality unit approves it."
-    },
-    {
-     "t": "Design, build and FAT",
-     "d": "New skids, panels and spools built and tested at our shop, with software tested against a simulator, so the site window stays short."
-    },
-    {
-     "t": "Cutover",
-     "d": "Executed in a planned window under your permits and change control, with flushing and sanitization before water is released for sampling."
-    },
-    {
-     "t": "Requalification and records",
-     "d": "IQ and OQ for what changed, the agreed sampling period, and updated drawings, dead leg register, spares list and standard operating procedures (SOPs) ready for your periodic review."
-    }
+   "type": "table",
+   "nav": "Controls",
+   "h": "Controls upgrades: the data integrity gaps we find",
+   "intro": "Allen-Bradley PLC-5, SLC 500 and Siemens S5, S7-300 are discontinued or in phase-out. A converted program is new software under GAMP 5; site work takes [controls swap window, days].",
+   "cols": [
+    "What we find",
+    "Requirement it misses",
+    "What the upgrade does"
+   ],
+   "rows": [
+    [
+     "Shared operator login, or none",
+     "21 CFR 11.10(d), 11.300; Annex 11, 12",
+     "Individual accounts, roles, automatic logoff"
+    ],
+    [
+     "No audit trail for set point or alarm changes",
+     "21 CFR 11.10(e); Annex 11, 9",
+     "Audit trail of who, what, when and why"
+    ],
+    [
+     "Chart recorder or HMI trend as the release record",
+     "21 CFR 211.68; Annex 11, 4",
+     "Validated historian, or a defined paper record"
+    ],
+    [
+     "Backups never restored",
+     "Annex 11, 7.2",
+     "Restore test at OQ, repeated on a schedule"
+    ],
+    [
+     "Records only in the old system",
+     "21 CFR 211.180; Annex 11, 17",
+     "Verified migration, or old records kept readable"
+    ]
    ]
   },
   {
    "type": "docs",
+   "nav": "Documents",
    "h": "What the upgrade leaves in your file",
    "items": [
     {
      "t": "Change impact assessment input",
-     "d": "Scope, critical aspects affected and the requalification rationale, written for your change record"
+     "d": "Critical aspects affected and the requalification rationale"
     },
     {
      "t": "Updated as-built drawings",
-     "d": "P&IDs and isometrics reissued for every area that changed"
+     "d": "Piping and instrumentation diagrams (P&IDs) and isometrics"
     },
     {
      "t": "Updated dead leg register",
-     "d": "Every new or modified branch with its measured L/D"
+     "d": "Each new or modified branch with its L/D"
     },
     {
      "t": "Fabrication records",
-     "d": "Weld map and log, welder qualifications, borescope records, EN 10204 3.1 material certificates, passivation record"
+     "d": "Weld log, borescope records, EN 10204 3.1 certificates, passivation"
     },
     {
      "t": "FAT, IQ and OQ protocols and reports",
-     "d": "Scoped to the change, in your template if you have one"
+     "d": "Scoped to the change, in your template"
     },
     {
-     "t": "Computerized system validation documents",
-     "d": "For controls work: specifications, risk assessment, test records, traceability matrix, version and checksum record, data migration report"
+     "t": "Computerized system validation",
+     "d": "Specifications, tests, traceability matrix, checksum record, data migration report"
     },
     {
      "t": "Sampling plan for the change",
-     "d": "Points, frequency and duration for the post-change period, and the alert level review it feeds"
+     "d": "Points, frequency and duration"
     },
     {
-     "t": "Updated SOPs, spares list and training records",
-     "d": "Operation, sanitization and maintenance procedures revised for the new equipment"
+     "t": "Updated SOPs and spares list",
+     "d": "Revised for the new equipment, with training records"
     }
    ]
   },
   {
    "type": "faq",
-   "h": "Questions engineering, validation and quality teams ask",
+   "nav": "FAQ",
+   "h": "Questions validation and quality teams ask",
    "items": [
     {
      "q": "Our system was built by another supplier. Will you work on it?",
-     "a": "[Confirm scope.] Yes, starting with an assessment. We need whatever records you have. Where drawings, the PLC program or the qualification file are missing, the assessment report lists what to recover and what it costs to recreate it, before any upgrade is designed."
+     "a": "Yes, for [makes and equipment types serviced]. We start with an assessment. Where records are missing, we walk down and redline the drawings, measure each branch for a dead leg register, rebuild the bill of materials from nameplates, and recover or back up the PLC program. Without its source or passwords, we plan a controls replacement rather than a modification."
     },
     {
      "q": "Will an upgrade restart our PQ from zero?",
-     "a": "Not usually. WHO TRS 1033 Annex 3 allows the PQ phases and their length after a change to an existing system to be set by documented risk assessment. A new generation step or a route change justifies an intensive phase; a new branch justifies sampling at that branch and its neighbours; a controller swap with the process unchanged may justify only short sampling after cutover. Your quality unit decides; we write the rationale it needs."
+     "a": "Not usually. WHO TRS 1033 Annex 3 lets a documented risk assessment set the PQ phases and their length after a change. A new generation step or route change justifies an intensive phase; a new branch, sampling at that branch and its neighbours; a controller swap with the process unchanged, short sampling. Your quality unit decides; we write the rationale."
     },
     {
      "q": "Can we keep producing water during the upgrade?",
-     "a": "Usually. Most generation upgrades are built alongside the running system and tied in during a short shutdown. Loop work needs a planned shutdown, followed by sanitization and sampling before release, so we plan it against your production schedule and your storage volume. Where the shutdown is longer than storage can cover, the options say so."
+     "a": "Usually. Generation upgrades are built alongside the running system and tied in during a short shutdown. Loop work needs a planned shutdown, then sanitization and sampling before release, planned against your production schedule and storage volume. Where the shutdown is longer than storage can cover, the options say so."
     },
     {
      "q": "Is a PLC replacement really a full revalidation?",
-     "a": "Of the control system, yes, because the software is new even when the logic is converted. Of the water system, no: if sequences, set points and equipment are unchanged, the process qualification stands and the water sampling after cutover is short. Testing the software against a simulator before site work keeps the on-site part of that validation short."
-    },
-    {
-     "q": "We cannot get the PLC program or passwords from the original supplier.",
-     "a": "Then a modification cannot be validated, and we plan a replacement. We document the running system first, from its inputs and outputs, observed sequences, set points and alarms and your functional requirements, so the new program is specified from evidence rather than memory."
-    },
-    {
-     "q": "Does adding ozone or hot water sanitization change our microbial limits?",
-     "a": "No. Limits come from the pharmacopoeia and your specification. What changes is how the system holds them, so the OQ proves the new cycle at the coldest or most remote point, and the sampling period afterwards shows the new frequency works. Alert levels are then reviewed on the new data."
+     "a": "Of the control system, yes: the software is new even when the logic is converted. Of the water system, no: with sequences, set points and equipment unchanged, the process qualification stands and sampling after cutover is short. If the program is lost, we specify the new one from the running system's inputs, outputs, sequences and alarms."
     },
     {
      "q": "Do we need to tell a regulator about the change?",
-     "a": "For most upgrades, change control is enough. The exceptions to check are a move to membrane WFI, where Ph. Eur. 0169 asks for notice to your GMP supervisory authority before implementation, and any change to something your marketing authorization or site master file describes. Your regulatory team decides; we supply the technical documents behind it."
+     "a": "For most upgrades, change control is enough. Check two exceptions: a move to membrane WFI, where Ph. Eur. 0169 (since 1 April 2017) asks for notice to your GMP supervisory authority before implementation, and anything your marketing authorization or site master file describes, which may need a filing. Your regulatory team decides; we supply the technical documents."
     },
     {
-     "q": "What does an assessment cost, and is it worth it if we already know what we want?",
-     "a": "[Assessment price or 'from' price, CAD, and whether it is credited against the upgrade.] Even a known upgrade needs the as-built state, the data and the requalification scope to be priced properly. Without them, a quote either carries contingency or leaves the validation to be discovered during the work."
+     "q": "Does converting chemical DI to RO and EDI pay back?",
+     "a": "It removes regenerant acid and caustic or exchange-tank charges, and ambient resin beds, and adds membranes, EDI modules and power. The payback depends on your water volume, chemical or exchange cost, drain charges and power price, so the assessment works it out per cubic metre for your plant. [payback figures from a delivered conversion]"
+    },
+    {
+     "q": "Is an assessment worth it if we know what we want?",
+     "a": "[assessment price, CAD, credit against upgrade] Even a known upgrade needs the as-built state, the data and the requalification scope to be priced properly. Without them, a quote either carries contingency or leaves the validation to be discovered during the work."
     },
     {
      "q": "Have you done this before?",
-     "a": "[State the upgrades and retrofits Aquemi has delivered, with what changed and how long requalification took, once clients allow them to be published.]"
-    }
-   ]
-  },
-  {
-   "type": "docs",
-   "h": "What to send for a system assessment",
-   "items": [
-    {
-     "t": "The system",
-     "d": "Generation type (PW, WFI, pure steam), storage and loops, builder, year installed, and the problem or goal behind the upgrade"
-    },
-    {
-     "t": "Drawings",
-     "d": "P&IDs and isometrics, current or not, and the dead leg register if one exists"
-    },
-    {
-     "t": "Qualification history",
-     "d": "Original IQ, OQ and PQ summary, last periodic review, and open change controls or deviations on the system"
-    },
-    {
-     "t": "Twelve months of data",
-     "d": "Conductivity, TOC, microbial and endotoxin results by point, and alarm and divert history"
-    },
-    {
-     "t": "Controls",
-     "d": "PLC and HMI make and model, software versions, whether you hold the program and passwords, and your remote access policy"
-    },
-    {
-     "t": "Demand",
-     "d": "Current and expected peak draw, points of use to add, and the date the change must be in service"
-    },
-    {
-     "t": "Constraints",
-     "d": "Shutdown windows, how long storage can ride through, space for a parallel system, and site access and induction rules"
+     "a": "[delivered upgrades, what changed, requalification time]"
     }
    ]
   },
   {
    "type": "related",
-   "h": "Where an upgrade connects",
+   "h": "Related pages",
    "items": [
     "svc-cq",
     "svc-service",
     "sys-monitoring",
     "sys-storage",
     "sys-wfi-membrane",
-    "sys-pw",
-    "svc-fat-sat",
     "cmp-documentation"
    ]
   }
  ],
  "cta": {
-  "h": "Send us the system you have. Get back what to change and what it will take to requalify.",
-  "body": "Send the system's age, drawings, a year of data and the problem you want to solve. An engineer replies within [assessment response time, working days] with the assessment scope, its time on site and its price, and the questions we need answered before we visit.",
+  "h": "Send us the system you have. We return what to change and how to requalify.",
+  "body": "An engineer replies within [assessment response time, working days] with scope, time on site and price.",
   "button": "Request a system assessment",
   "link": "contact-proposal",
-  "intent": "Assessment of an existing system, any make"
+  "intent": "Assessment of an existing system, any make",
+  "include_label": "What to send for a system assessment",
+  "include": [
+   "System type, builder, year installed, your goal",
+   "P&IDs, isometrics and dead leg register",
+   "IQ, OQ, PQ summary, last periodic review",
+   "Twelve months of water quality and alarm data",
+   "PLC and HMI models, program and passwords held",
+   "Shutdown windows and storage ride-through time"
+  ]
  },
  "todo": [
-  "Confirm Aquemi upgrades and services systems it did not build, and the equipment types and makes covered (prose and FAQ placeholders)",
-  "Assessment price or 'from' price (CAD) and whether it is credited against the upgrade (FAQ)",
-  "Assessment duration on site (days) and report turnaround (working days) (steps)",
-  "Budget range per option (CAD) as shown in assessment reports, or remove the placeholder (assessment table, steps)",
-  "Typical site downtime per upgrade type ([days], [weeks]) in the downtime table, and controls swap window (days) in the obsolete controllers prose",
-  "Confirm whether temporary or rental RO/EDI units are offered, flow range (m³/h) and lead time; remove the downtime table row if not",
-  "Passivation standard and method used for rouge remediation and new piping (e.g. ASTM A967 or ASTM A380), and whether derouging is in-house or by a partner",
+  "Makes and equipment types Aquemi assesses and upgrades on other builders' systems ([makes and equipment types serviced], same wording as svc-service; FAQ)",
+  "Assessment price (CAD) and whether it is credited against the upgrade ([assessment price, CAD, credit against upgrade], FAQ)",
+  "Assessment duration on site ([assessment duration, days]) and report turnaround ([report turnaround, working days]) (steps)",
+  "Budget range per option as shown in assessment reports ([budget range, CAD], assessment intro), or remove it",
+  "Typical site downtime per upgrade type ([days], [weeks]) in the downtime table, and [controls swap window, days] in the controls intro",
+  "Whether temporary or rental RO/EDI units are offered, flow range and lead time ([temporary RO or EDI units, flow m³/h]); remove the downtime row if not",
+  "Passivation standard and method for rouge remediation and new piping ([passivation standard, ASTM A967 or A380]), and whether derouging is in-house or by a partner",
   "Confirm WFI route changes (membrane and distillation) are offered in-house or with a partner (same open point as sys-wfi-membrane)",
-  "Confirm Aquemi builds panels and tests PLC programs against a simulator before site work (obsolete controllers prose, steps, FAQ)",
-  "Payback figures from a delivered chemical DI to RO/EDI conversion, with client permission",
-  "Delivered upgrade and retrofit references (what changed, requalification duration) for the experience FAQ and a future case block",
-  "Assessment response time, working days ([assessment response time, working days], same as the contact-proposal lookup table)",
-  "Legal check on naming other suppliers and their acquisitions (Evoqua/Xylem, Mar Cor/STERIS, MECO and Newterra/Grundfos, Ovivo/Ecolab)",
-  "Confirm scope of upgrades and assessments on systems built by other suppliers (FAQ [Confirm scope.])"
+  "Confirm Aquemi builds panels and tests PLC programs against a simulator before site work (upgrades table, steps)",
+  "Payback figures from a delivered chemical DI to RO/EDI conversion, with client permission ([payback figures from a delivered conversion], FAQ)",
+  "Delivered upgrade and retrofit references ([delivered upgrades, what changed, requalification time], FAQ) for a future case block",
+  "Assessment response time, working days ([assessment response time, working days], same as the contact-proposal lookup table)"
  ]
 }
