@@ -2,6 +2,7 @@
 .aq-hero { position: relative; overflow: hidden; padding-block: var(--space-24) var(--space-16); }
 .aq-hero--home { padding-block: var(--space-32) var(--space-24); }
 .aq-hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: stretch; }
+.aq-hero__grid--figure { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; }
 .aq-hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; margin-top: var(--space-2); }
 .aq-hero .aq-tags { margin-top: var(--space-2); }
 .aq-photo { position: relative; z-index: 1; aspect-ratio: 4 / 3; min-height: 100%; max-width: 100%; background-color: var(--surface-sunken); background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--space-8) var(--space-8); background-position: -1px -1px; border: 1px solid var(--line); display: flex; align-items: flex-end; padding: var(--space-4); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
@@ -9,9 +10,35 @@
 .aq-arc__outer { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
 .aq-arc__inner { fill: none; stroke: var(--flow); stroke-width: 1.5; }
 
+/* Figure: equipment drawing on a fading blueprint grid, with callouts carrying the page's key facts.
+   The box is 5:4 (viewBox 125 x 100 for the leaders); the drawing is a centred square 84 % of its height. */
+.aq-hero__figure { position: relative; z-index: 1; margin: 0; aspect-ratio: 5 / 4; }
+.aq-hero__figure::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--space-8) var(--space-8); background-position: center; -webkit-mask: radial-gradient(closest-side, var(--ink) 55%, transparent); mask: radial-gradient(closest-side, var(--ink) 55%, transparent); pointer-events: none; }
+.aq-hero__figure .aq-illustration { position: absolute; inset: 8% 16.4%; width: auto; max-width: none; aspect-ratio: auto; margin: 0; }
+.aq-hero__leaders { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.aq-hero__leaders line { stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-hero__leaders circle { fill: var(--flow); }
+.aq-hero__callouts { position: absolute; inset: 0; margin: 0; pointer-events: none; }
+.aq-hero__callout { position: absolute; width: 30%; display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: var(--space-1); padding-block: var(--space-2); background: var(--surface); border-top: 1px solid var(--flow); pointer-events: auto; }
+.aq-hero__callout:nth-child(1) { top: 0; left: 0; }
+.aq-hero__callout:nth-child(2) { top: 0; right: 0; }
+.aq-hero__callout:nth-child(3) { bottom: 0; left: 0; }
+.aq-hero__callout:nth-child(4) { bottom: 0; right: 0; }
+.aq-hero__callout:nth-child(n+3) { border-top: 0; border-bottom: 1px solid var(--flow); }
+.aq-hero__callout dd { margin: 0; font: 300 clamp(16px, 1.7cqi, 22px)/1.2 var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: anywhere; }
+.aq-hero__callout dt { font: 500 11px/15px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+
 @container (max-width: 860px) {
   .aq-hero, .aq-hero--home { padding-block: var(--space-16) var(--space-12); }
-  .aq-hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .aq-hero__grid, .aq-hero__grid--figure { grid-template-columns: minmax(0, 1fr); }
   .aq-photo { min-height: 0; }
   .aq-hero .aq-key-facts { margin-top: var(--space-12); }
+  .aq-hero__figure { aspect-ratio: auto; margin-top: var(--space-4); }
+  .aq-hero__figure::before { bottom: auto; aspect-ratio: 1; }
+  .aq-hero__figure .aq-illustration { position: relative; inset: auto; width: min(100%, 320px); aspect-ratio: 1; margin-inline: auto; }
+  .aq-hero__leaders { display: none; }
+  .aq-hero__callouts { position: static; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: var(--space-6); border-top: 1px solid var(--line-strong); }
+  .aq-hero__callout, .aq-hero__callout:nth-child(n) { position: static; width: auto; background: none; border: 0; border-top: 1px solid var(--line); padding: var(--space-4) var(--space-4) var(--space-4) 0; }
+  .aq-hero__callout:nth-child(-n+2) { border-top: 0; }
+  .aq-hero__callout dd { font-size: 20px; }
 }

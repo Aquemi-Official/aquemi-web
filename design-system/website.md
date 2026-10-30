@@ -18,7 +18,7 @@ The site has one job: help a pharmaceutical engineering or quality team decide t
 
 1. **Hero.** `eyebrow`, one `display-xl` line, one `body-lg` sentence, one primary button ("Request a proposal") and one secondary link ("Explore systems"). A wide photograph of a finished skid or an installed loop on `navy` or `surface`. No carousel.
 2. **Systems index.** The system families in a 3-column grid on desktop, 1 column on phones. Each item: `h3` name, one line of description, the governing standard as a tag. Hairlines between items, not cards.
-3. **Proof in numbers.** One `readout` measurement with its method, beside a short paragraph. Only real, sourced figures.
+3. **Proof in numbers.** One `readout`: a single large measurement with its method on the limit tag and a one-sentence caption below. Only real, sourced figures.
 4. **How we work.** The project sequence (Design → Fabricate → Test → Qualify → Support) as a horizontal sequence. This is a genuine order, so numbering is appropriate here.
 5. **Compliance strip.** Standard tags on `surface-sunken` with a link to the Compliance page.
 6. **Case study.** One project, full-bleed image, outcome in one sentence.

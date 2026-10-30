@@ -80,15 +80,18 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | Site section | Component |
 | --- | --- |
 | page frame | Page, NavBar, Footer |
-| hero | Hero, with KeyFacts when the page has `facts` |
+| hero | Hero: the page's Illustration with callouts to its `facts` when it has a drawing, otherwise KeyFacts |
 | prose | Prose inside SplitSection |
-| grid, related | LinkGrid |
+| grid | LinkGrid |
+| related | RelatedLinks |
 | path | WaterPath |
 | options | OptionList inside SplitSection |
 | steps | ProcessSteps |
 | diagram | ProcessDiagram |
 | readout | Readout |
-| band, tags, closing call to action | Band (with StandardTag) |
+| band | Band |
+| tags | StandardsGrid (sunken band) |
+| closing call to action | Closing (navy band) |
 | faq | FAQ inside SplitSection |
 | docs | DocList inside SplitSection (sunken band) |
 | case | CaseStudy |

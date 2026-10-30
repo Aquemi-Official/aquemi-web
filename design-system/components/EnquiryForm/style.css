@@ -1,9 +1,99 @@
-/* ---------- EnquiryForm ---------- */
-.aq-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); max-width: 880px; }
+/* ---------- EnquiryForm: the enquiry as an engineering specification data sheet ---------- */
+/* A drawing frame (double rule, ruler ticks on the top and left edges) around a title row, numbered fieldsets
+   (1.0, 2.0) with numbered items (1.1, 1.2), one submit band and a revision strip along the bottom edge. */
+.aq-form {
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8);
+  max-width: 880px; min-width: 0; box-sizing: border-box;
+  padding: var(--space-12) var(--space-8) 0 var(--space-12);
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  box-shadow: inset 0 0 0 var(--space-1) var(--surface-raised), inset 0 0 0 calc(var(--space-1) + 1px) var(--line);
+}
+/* Ruler ticks: a major tick every 96 px and a minor one every 24 px, top edge then left edge */
+.aq-form::before, .aq-form::after { content: ""; position: absolute; pointer-events: none; background-repeat: no-repeat; }
+.aq-form::before {
+  top: var(--space-3); left: var(--space-12); right: var(--space-8); height: var(--space-3);
+  background-image:
+    repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px var(--space-24)),
+    repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px var(--space-6));
+  background-size: 100% 100%, 100% 50%;
+}
+.aq-form::after {
+  top: var(--space-12); bottom: var(--space-16); left: var(--space-3); width: var(--space-3);
+  background-image:
+    repeating-linear-gradient(180deg, var(--line-strong) 0 1px, transparent 1px var(--space-24)),
+    repeating-linear-gradient(180deg, var(--line) 0 1px, transparent 1px var(--space-6));
+  background-size: 100% 100%, 50% 100%;
+}
 .aq-form .aq-field { max-width: none; }
 .aq-form__full { grid-column: 1 / -1; }
-.aq-form__actions { grid-column: 1 / -1; display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap; }
+
+/* Title row */
+.aq-form__title {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2) var(--space-6);
+  margin: 0; padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--ink);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+  font-variant-numeric: tabular-nums; color: var(--ink-muted);
+}
+.aq-form__title > :first-child { color: var(--ink); }
+
+/* Numbered sections */
+.aq-form__section { border: 0; margin: 0; padding: 0; min-width: 0; }
+.aq-form__legend {
+  float: left; width: 100%; box-sizing: border-box;
+  display: flex; align-items: baseline; gap: var(--space-3);
+  margin: 0 0 var(--space-6); padding: var(--space-2) var(--space-3);
+  background: var(--surface-sunken);
+  border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line);
+  font: 500 15px/24px var(--font-sans); color: var(--ink);
+}
+.aq-form__num { font: 500 13px/24px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--flow); }
+.aq-form__grid { clear: both; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
+.aq-form__ref {
+  margin-right: var(--space-2);
+  font: 400 12px/20px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle);
+}
+.aq-form .aq-field__input { border-radius: var(--radius-0); }
+
+/* Checkbox groups: each option is a 44 px row cell; a ticked cell takes the flow edge */
+.aq-form .aq-checks { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: var(--space-2); }
+.aq-form .aq-checks label {
+  display: flex; gap: var(--space-3); align-items: center;
+  min-height: 44px; box-sizing: border-box; padding: var(--space-2) var(--space-3);
+  background: var(--surface); border: 1px solid var(--line);
+  cursor: pointer; overflow-wrap: anywhere;
+}
+.aq-form .aq-checks label:hover { border-color: var(--ink-muted); }
+.aq-form .aq-checks label:has(:checked) { border-color: var(--flow); background: var(--flow-tint); box-shadow: inset 2px 0 0 var(--flow); }
+.aq-form .aq-checks input { flex: none; width: var(--space-4); height: var(--space-4); margin: 0; accent-color: var(--flow); }
+.aq-form .aq-checks input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Submit band and revision strip */
+.aq-form__actions {
+  display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap;
+  padding-top: var(--space-6); border-top: 1px solid var(--line-strong);
+}
+.aq-form__strip {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0 calc(-1 * var(--space-8)) 0 calc(-1 * var(--space-12));
+  border-top: 1px solid var(--line-strong);
+  font: 400 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase;
+  font-variant-numeric: tabular-nums; color: var(--ink-muted);
+}
+.aq-form__strip > span { padding: var(--space-2) var(--space-3); min-width: 0; overflow-wrap: anywhere; }
+.aq-form__strip > span + span { border-left: 1px solid var(--line-strong); }
+.aq-form__strip > :last-child { text-align: right; }
 
 @container (max-width: 860px) {
-  .aq-form { grid-template-columns: minmax(0, 1fr); }
+  /* Phones: narrower frame, ticks only on the top edge, one column, full-width submit */
+  .aq-form { gap: var(--space-6); padding: var(--space-8) var(--space-4) 0; }
+  .aq-form::before { top: var(--space-2); left: var(--space-4); right: var(--space-4); height: var(--space-3); }
+  .aq-form::after { display: none; }
+  .aq-form__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .aq-form__legend { margin-bottom: var(--space-4); }
+  .aq-form__submit { width: 100%; justify-content: center; }
+  .aq-form__strip { margin: 0 calc(-1 * var(--space-4)); }
+  .aq-form__strip > span { padding: var(--space-2); }
 }
