@@ -6,3 +6,4 @@ Specification tables present water quality limits and test results, the most per
 - Status cells use `aq-status aq-status--pass`, `--caution` or `--fail`, and always include the word.
 - Highlight at most one row, with `is-highlight` (`flow-tint`).
 - The consumer provides the data. Never show a result without its method.
+- Routing tables (a selector that sends the reader to the page that answers their row, such as "start from your water grade") put a plain link in a cell: `<td class="aq-spec__text"><a href="#sys-pw">PW generation</a></td>`. Link text names the destination page. One link per cell, in the last column, so the table still reads as data. In `pages.json` a `table` cell written as `{"t": "PW generation", "link": "sys-pw"}` renders this way.

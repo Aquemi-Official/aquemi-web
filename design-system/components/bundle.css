@@ -110,6 +110,7 @@
 .aq-spec__method { font: 400 14px/24px var(--font-sans); color: var(--ink-muted); }
 .aq-spec__text { font: 400 14px/24px var(--font-sans); color: var(--ink); }
 .aq-spec tr.is-highlight > * { background: var(--flow-tint); }
+.aq-spec td a, .aq-spec th a { color: var(--flow); font-weight: 500; text-underline-offset: 0.2em; }
 .aq-status { display: inline-flex; align-items: center; gap: var(--space-1); font: 500 14px/24px var(--font-sans); }
 .aq-status--pass { color: var(--pass); }
 .aq-status--caution { color: var(--caution); }

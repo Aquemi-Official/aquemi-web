@@ -14,7 +14,7 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [All systems](https://aquemi-official.github.io/aquemi-web/#systems) | Every system on the water path, from feed water to point of use. | diagram, grid, table, faq, related |
+| [All systems](https://aquemi-official.github.io/aquemi-web/#systems) | Start from the water you must release. We map the route that meets it at the point of use. | prose, table, table, diagram, grid, table, steps, docs, faq, docs, related |
 | [Purified Water (PW) generation](https://aquemi-official.github.io/aquemi-web/#sys-pw) | Purified Water that meets USP and Ph. Eur. with margin, on your coldest feed day | prose, spec, spec, diagram, table, options, steps, docs, faq, docs, related |
 | [WFI by distillation](https://aquemi-official.github.io/aquemi-web/#sys-wfi-distillation) | Water for Injection by distillation, with endotoxin margin you can show an inspector | prose, spec, spec, diagram, diagram, table, options, steps, docs, faq, docs, related |
 | [WFI by membrane](https://aquemi-official.github.io/aquemi-web/#sys-wfi-membrane) | Water for Injection by membrane, with the control strategy your inspector will ask for | prose, table, spec, spec, diagram, table, options, steps, docs, faq, docs, related |
@@ -91,7 +91,7 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | faq | FAQ |
 | docs | DocList |
 | case | CaseStudy |
-| spec, table | SpecTable |
+| spec, table (cells may link to a page: routing tables) | SpecTable |
 | form | EnquiryForm (with TextField and Button) |
 | `[bracketed facts]` in any copy | Placeholder |
 
