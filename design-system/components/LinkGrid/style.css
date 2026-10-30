@@ -1,0 +1,16 @@
+/* ---------- LinkGrid: hairline grid, no cards ---------- */
+.aq-linkgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.aq-linkgrid > * { padding: var(--space-6) var(--space-6) var(--space-6) 0; border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: var(--space-2); text-decoration: none; color: var(--ink); min-width: 0; }
+.aq-linkgrid > *:not(:nth-child(3n+1)) { padding-left: var(--space-6); border-left: 1px solid var(--line); }
+.aq-linkgrid a .aq-h3::after { content: "\a0\2192"; color: var(--flow); }
+.aq-linkgrid a:hover .aq-h3 { color: var(--flow); }
+.aq-linkgrid a:focus-visible { outline: 2px solid var(--flow); outline-offset: -2px; }
+.aq-linkgrid > :last-child:nth-child(3n+1) { grid-column: 1 / -1; }
+.aq-linkgrid > :last-child:nth-child(3n+1) > .aq-small { max-width: var(--text-max); }
+.aq-linkgrid .aq-tags { margin-top: var(--space-1); }
+
+@container (max-width: 860px) {
+  .aq-linkgrid { grid-template-columns: minmax(0, 1fr); }
+  .aq-linkgrid > * { padding-left: 0; border-left: 0; }
+  .aq-linkgrid > *:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; }
+}

@@ -12,9 +12,9 @@ description: Change, extend, review or publish the Aquemi design system in this 
 1. Read `design-system/README.md` (brand book) and the README of every component you touch.
 2. Make the change:
    - Tokens: edit `design-system/tokens.json`. Keep the list shape `{"tokens":[{"name","value","usage"}]}`; colours as `{"light": "#…", "dark": "#…"}` hex; every token has a usage note. Text colours need 4.5:1 on their ground in both themes.
-   - New component: `python tools/design_system.py new <PascalName> "<Group>"`, then fill in README.md, preview.html (real Aquemi copy, line 1 the `@dsCard` marker) and the `.aq-<name>` rules in `components/bundle.css` (tokens only).
-   - Existing component: edit `bundle.css`, its README and preview together.
-   - New section type on the site: component first, then a block in `wBlock()` in `assets/aquemi-site.js`, then content in `content/pages.json`, then the mapping table in `design-system/page-inventory.md`.
+   - New component: `python tools/design_system.py new <PascalName> "<Group>"`, then fill in README.md, preview.html (real Aquemi copy, line 1 the `@dsCard` marker) and `style.css` (tokens only).
+   - Existing component: edit its `style.css`, README and preview together (`bundle.css` is generated).
+   - New section type on the site: component first, then a renderer `assets/src/blocks/<type>.js`, then content in a page file in `content/pages/`, then the mapping table in `design-system/page-inventory.md`.
 3. Run `python tools/design_system.py build` and `python tools/design_system.py check`. Fix every problem it reports.
 4. Review visually: serve the repo (`python -m http.server 8000`) and open `/design-system.html` and the affected site pages. Check light, dark and the "Phone width" toggle on the component.
 5. Commit to `main` and push. GitHub Pages updates in a minute or two.

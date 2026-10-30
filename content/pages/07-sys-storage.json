@@ -1,0 +1,239 @@
+{
+ "id": "sys-storage",
+ "section": "Systems",
+ "nav_label": "Storage and distribution loops",
+ "title": "Pharmaceutical water storage and distribution loops | Aquemi",
+ "meta": "Tanks and hot, ambient or cold loops for PW and WFI. Turbulent flow, dead legs within ASME BPE limits, sanitized by heat at 80 °C or by ozone.",
+ "path": "/systems/storage-and-distribution/",
+ "eyebrow": "STORAGE AND DISTRIBUTION · ASME BPE · ISPE",
+ "headline": "Storage and distribution loops",
+ "lead": "Our tanks and loops keep Purified Water (PW) and Water for Injection (WFI) at the quality it left generation, out to the furthest point of use, with turbulent flow and no stagnant branches.",
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Download datasheet",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "spec",
+   "caption": "Storage and distribution · ASME BPE",
+   "note": "Velocity and return values are common design practice consistent with ISPE guidance; we confirm them for your loop with a hydraulic calculation.",
+   "cols": [
+    "Parameter",
+    "Specification",
+    "Method or reference"
+   ],
+   "rows": [
+    {
+     "p": "Tank volume",
+     "v": "[1,000–50,000] L",
+     "m": "Sized to demand profile",
+     "hl": false
+    },
+    {
+     "p": "Loop return velocity",
+     "v": "≥ 1 m/s at peak draw",
+     "m": "Design practice, turbulent flow",
+     "hl": false
+    },
+    {
+     "p": "Dead legs",
+     "v": "L/D ≤ 2",
+     "m": "ASME BPE",
+     "hl": true
+    },
+    {
+     "p": "Hot loop temperature",
+     "v": "≥ 65 °C, typically 70–85 °C",
+     "m": "Design practice",
+     "hl": false
+    },
+    {
+     "p": "Hot water sanitization",
+     "v": "80 °C at loop return",
+     "m": "Hold time per your risk assessment",
+     "hl": false
+    },
+    {
+     "p": "Ozone in tank, ambient loop",
+     "v": "[0.02–0.2] mg/L dissolved",
+     "m": "Removed by 254 nm UV before points of use",
+     "hl": false
+    },
+    {
+     "p": "Materials, product contact",
+     "v": "316L stainless steel",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Surface finish",
+     "v": "Ra ≤ 0.5 µm electropolished, Ra ≤ 0.8 µm mechanical",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Slope",
+     "v": "Fully drainable, [1:100] minimum",
+     "m": "ASME BPE",
+     "hl": false
+    }
+   ],
+   "h": "Specifications"
+  },
+  {
+   "type": "diagram",
+   "h": "How it works",
+   "stages": [
+    "From generation",
+    "Storage tank",
+    "Pump",
+    "Heat exchanger",
+    "Points of use",
+    "Loop return"
+   ],
+   "caption": "Water enters a tank fitted with a spray ball and a hydrophobic vent filter. A variable speed pump drives it through a heat exchanger and out to the points of use. Water not drawn returns through a spray ball, so the tank head space stays wet and the flow never stops."
+  },
+  {
+   "type": "table",
+   "h": "Hot, ambient or cold loops",
+   "cols": [
+    "Loop type",
+    "Microbial control",
+    "Typical use",
+    "Trade-offs"
+   ],
+   "rows": [
+    [
+     "Hot (65–85 °C)",
+     "Continuous temperature",
+     "Hot WFI from a still",
+     "Lowest microbial risk; insulated piping, cooling at points of use needing ambient water"
+    ],
+    [
+     "Ambient with periodic heat",
+     "Hot water sanitization at 80 °C on a schedule",
+     "PW and membrane WFI",
+     "Lower energy; downtime during sanitization cycles"
+    ],
+    [
+     "Ambient with ozone",
+     "Ozone in the tank, UV destruct before points of use, periodic ozonation of the loop",
+     "PW and membrane WFI",
+     "No heat cycles; ozone and UV monitoring required"
+    ],
+    [
+     "Cold (4–10 °C)",
+     "Low temperature plus periodic heat sanitization",
+     "Biotech processes that need cold water",
+     "Chiller load; slower microbial growth but no kill"
+    ]
+   ]
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "Sub-loops",
+     "d": "Cooled or heated sub-loops from a main loop, each with its own return."
+    },
+    {
+     "t": "Point-of-use coolers",
+     "d": "Heat exchangers that deliver ambient water from a hot loop, with automatic flushing."
+    },
+    {
+     "t": "Zero-static valves",
+     "d": "Diaphragm valves welded into the loop so branches meet ASME BPE dead leg limits."
+    },
+    {
+     "t": "Jacketed tanks",
+     "d": "Tank jackets for temperature holding or rapid heating during sanitization."
+    },
+    {
+     "t": "Rupture disc and vent filter heating",
+     "d": "Heated hydrophobic vent filters to prevent condensate blockage."
+    },
+    {
+     "t": "Loop modules",
+     "d": "Prefabricated pump, exchanger and instrument modules, tested at FAT."
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "Functional specification",
+    "Piping and instrumentation diagrams (P&IDs)",
+    "Isometric drawings with slope verification",
+    "Hydraulic calculation for loop velocity",
+    "Material certificates (EN 10204 3.1)",
+    "Weld logs, weld maps and borescope records",
+    "Passivation and surface finish reports",
+    "Riboflavin spray ball coverage test report",
+    "FAT and SAT protocols and reports",
+    "IQ and OQ protocols"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "How do you keep flow turbulent when every point of use is open?",
+     "a": "We size the pump and pipe for peak draw with the minimum return velocity still met, and use variable speed pumps that hold return flow or pressure as demand changes."
+    },
+    {
+     "q": "What about rouge?",
+     "a": "Rouge forms in hot WFI and pure steam systems over time. We specify finishes and passivation that slow it and include inspection points so you can trend it and plan derouging."
+    },
+    {
+     "q": "Can you add points of use to an existing loop?",
+     "a": "Yes, with a hydraulic check of the whole loop first. Each new branch is welded in with a zero-static valve and requalified."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related systems",
+   "items": [
+    "sys-pw",
+    "sys-wfi-distillation",
+    "sys-wfi-membrane",
+    "sys-monitoring"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send us your points of use and draw rates.",
+  "body": "We'll return a loop concept with velocities, tank size and sanitization method.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Tank volume range",
+  "Standard minimum slope specified",
+  "Ozone concentration set points used in Aquemi designs",
+  "Whether riboflavin coverage testing is performed in-house",
+  "Datasheet PDF"
+ ],
+ "facts": [
+  {
+   "v": "[1,000–50,000] L",
+   "l": "Tank volume"
+  },
+  {
+   "v": "L/D ≤ 2",
+   "l": "Dead legs · ASME BPE"
+  },
+  {
+   "v": "≥ 1 m/s",
+   "l": "Loop return velocity at peak draw"
+  },
+  {
+   "v": "≥ 65 °C",
+   "l": "Hot loop temperature"
+  }
+ ]
+}

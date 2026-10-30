@@ -1,0 +1,17 @@
+/* ---------- Hero ---------- */
+.aq-hero { position: relative; overflow: hidden; padding-block: var(--space-24) var(--space-16); }
+.aq-hero--home { padding-block: var(--space-32) var(--space-24); }
+.aq-hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: stretch; }
+.aq-hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; margin-top: var(--space-2); }
+.aq-hero .aq-tags { margin-top: var(--space-2); }
+.aq-photo { position: relative; z-index: 1; aspect-ratio: 4 / 3; min-height: 100%; max-width: 100%; background-color: var(--surface-sunken); background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--space-8) var(--space-8); background-position: -1px -1px; border: 1px solid var(--line); display: flex; align-items: flex-end; padding: var(--space-4); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.aq-arc { position: absolute; right: -1px; bottom: -1px; width: min(38%, 420px); height: auto; pointer-events: none; }
+.aq-arc__outer { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-arc__inner { fill: none; stroke: var(--flow); stroke-width: 1.5; }
+
+@container (max-width: 860px) {
+  .aq-hero, .aq-hero--home { padding-block: var(--space-16) var(--space-12); }
+  .aq-hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .aq-photo { min-height: 0; }
+  .aq-hero .aq-key-facts { margin-top: var(--space-12); }
+}

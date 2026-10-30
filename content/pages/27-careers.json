@@ -1,0 +1,185 @@
+{
+ "id": "careers",
+ "section": "Company",
+ "nav_label": "Careers",
+ "title": "Careers in pharmaceutical water engineering | Aquemi",
+ "meta": "Join a Canadian team that designs, welds, tests and qualifies pharmaceutical water systems. Open roles in engineering, fabrication, validation and service.",
+ "path": "/company/careers/",
+ "eyebrow": "CAREERS",
+ "headline": "Build systems that pass inspection",
+ "lead": "We hire engineers, welders, technicians and validation specialists who like exact work. You see a system through from drawing to qualified handover.",
+ "tags": [
+  "ASME BPE",
+  "GAMP 5"
+ ],
+ "primary_cta": "See open roles",
+ "secondary_cta": {
+  "label": "About Aquemi",
+  "link": "about"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "What the work is like",
+   "body": [
+    "Our projects are small enough that one engineer can know the whole system and regulated enough that every detail is recorded. You will read a URS, draw a P&ID, watch your design get welded and tested, and see it pass FAT with the client in the room.",
+    "We train people in pharmaceutical water practice. Many of our team members came from [food, dairy, power or general process work] and learned GMP documentation here."
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Roles we hire for",
+   "intro": "Current openings are listed below. If none fits, send a general application.",
+   "items": [
+    {
+     "t": "Process engineer",
+     "d": "Sizing and design of PW, WFI and Pure Steam systems; P&IDs and specifications.",
+     "tag": "[Open or closed]"
+    },
+    {
+     "t": "Automation engineer",
+     "d": "PLC and HMI programming, GAMP 5 software specifications, controls OQ.",
+     "tag": "[Open or closed]"
+    },
+    {
+     "t": "Orbital welder and pipefitter",
+     "d": "Sanitary 316L tube welding to ASME BPE, weld logs and borescope inspection.",
+     "tag": "[Open or closed]"
+    },
+    {
+     "t": "Validation specialist",
+     "d": "FAT, SAT and IQ/OQ protocol writing and execution.",
+     "tag": "[Open or closed]"
+    },
+    {
+     "t": "Field service technician",
+     "d": "Commissioning, preventive maintenance and calibration at client sites in [region].",
+     "tag": "[Open or closed]"
+    },
+    {
+     "t": "Project manager",
+     "d": "Schedule, cost and client communication from order to handover.",
+     "tag": "[Open or closed]"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "h": "What we offer",
+   "cols": [
+    "Area",
+    "Detail"
+   ],
+   "rows": [
+    [
+     "Location",
+     "[City], [province]; field roles travel within [region]"
+    ],
+    [
+     "Training",
+     "[Welding qualification, GMP training, professional development budget]"
+    ],
+    [
+     "Benefits",
+     "[Health and dental, retirement plan, vacation]"
+    ],
+    [
+     "Hours",
+     "[Standard hours and shift pattern; overtime policy for shutdowns]"
+    ],
+    [
+     "Professional status",
+     "[Support for P.Eng. or CET registration]"
+    ]
+   ]
+  },
+  {
+   "type": "steps",
+   "h": "How we hire",
+   "items": [
+    {
+     "t": "Apply",
+     "d": "Send a CV and a short note on the work you are proudest of."
+    },
+    {
+     "t": "Conversation",
+     "d": "A [30]-minute call with the hiring manager."
+    },
+    {
+     "t": "Technical interview",
+     "d": "A practical discussion: a P&ID, a weld sample or a protocol, depending on the role."
+    },
+    {
+     "t": "Shop visit",
+     "d": "Meet the team and see the work."
+    },
+    {
+     "t": "Offer",
+     "d": "Written offer within [number] working days of the final interview."
+    }
+   ]
+  },
+  {
+   "type": "form",
+   "h": "General application",
+   "intro": "We read every application and reply within [number] working days.",
+   "fields": [
+    {
+     "label": "Full name",
+     "kind": "text",
+     "required": true
+    },
+    {
+     "label": "Email",
+     "kind": "email",
+     "required": true
+    },
+    {
+     "label": "Phone",
+     "kind": "tel",
+     "required": false
+    },
+    {
+     "label": "Role of interest",
+     "kind": "select",
+     "options": [
+      "Process engineer",
+      "Automation engineer",
+      "Orbital welder and pipefitter",
+      "Validation specialist",
+      "Field service technician",
+      "Project manager",
+      "Other"
+     ],
+     "required": true
+    },
+    {
+     "label": "Link to CV or LinkedIn profile",
+     "kind": "text",
+     "required": true
+    },
+    {
+     "label": "The work you are proudest of",
+     "kind": "textarea",
+     "help": "Two or three sentences is enough.",
+     "required": false
+    }
+   ],
+   "submit": "Send application"
+  }
+ ],
+ "cta": {
+  "h": "Not hiring for your role today",
+  "body": "Send a general application and we will contact you when a role opens.",
+  "button": "Send application",
+  "link": "careers"
+ },
+ "todo": [
+  "List of open roles with status and location",
+  "Benefits, hours and training details",
+  "Hiring timeline commitments (reply time, offer time)",
+  "Background of current team members (to confirm the 'came from other industries' statement)",
+  "Applicant privacy notice (PIPEDA, Quebec Law 25) linked from the form",
+  "Careers inbox or applicant tracking system"
+ ]
+}

@@ -1,0 +1,169 @@
+{
+ "id": "svc-fat-sat",
+ "section": "Services",
+ "nav_label": "FAT and SAT",
+ "title": "Factory and site acceptance testing (FAT/SAT) | Aquemi",
+ "meta": "Wet factory acceptance testing in our test bay and site acceptance testing after installation, to written protocols you approve, following GAMP 5.",
+ "path": "/services/fat-sat/",
+ "eyebrow": "FAT · SAT · GAMP 5",
+ "headline": "Your system runs in our test bay before it ships",
+ "lead": "Every skid passes a wet factory acceptance test (FAT) against a protocol you approve. After installation, a site acceptance test (SAT) confirms nothing changed in transport or tie-in. Results are written so your qualification team can rely on them.",
+ "tags": [
+  "GAMP 5",
+  "ASTM E2500",
+  "ISPE Baseline Guide Vol. 4",
+  "21 CFR Part 11"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "See a sample FAT protocol",
+  "link": "cmp-documentation"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "Find problems where they are cheap to fix",
+   "body": [
+    "A fault found in our shop costs a day. The same fault found on your site can cost a shutdown window. We run the system wet, with water flowing through every line, so leaks, sequence errors and instrument faults show up before shipment.",
+    "GAMP 5 allows qualification to use well-documented supplier testing. We write the FAT so that your IQ and OQ can reference it rather than repeat it, when your quality unit agrees."
+   ]
+  },
+  {
+   "type": "table",
+   "h": "What we test, and where",
+   "cols": [
+    "Test",
+    "FAT",
+    "SAT"
+   ],
+   "rows": [
+    [
+     "Documentation and drawing review",
+     "Yes",
+     "Updates only"
+    ],
+    [
+     "P&ID walkdown and tag verification",
+     "Yes",
+     "Yes"
+    ],
+    [
+     "Material certificates and weld log review",
+     "Yes",
+     "Field welds"
+    ],
+    [
+     "Input and output (I/O) checks",
+     "Yes",
+     "Yes"
+    ],
+    [
+     "Alarms and interlocks",
+     "Yes",
+     "Critical alarms"
+    ],
+    [
+     "Operating sequences",
+     "Yes",
+     "Yes"
+    ],
+    [
+     "Sanitization cycle, temperature at every point",
+     "Yes",
+     "Yes"
+    ],
+    [
+     "Product water conductivity and TOC on-line",
+     "Yes, on test-bay feedwater",
+     "Yes, on site feedwater"
+    ],
+    [
+     "Audit trail and electronic records",
+     "Yes",
+     "Yes"
+    ],
+    [
+     "Utility connections and loop integration",
+     "No",
+     "Yes"
+    ]
+   ]
+  },
+  {
+   "type": "steps",
+   "h": "How a FAT runs",
+   "items": [
+    {
+     "t": "Draft protocol",
+     "d": "Sent [weeks] before the test, with acceptance criteria for each test."
+    },
+    {
+     "t": "Your approval",
+     "d": "Your quality unit approves the protocol before execution."
+    },
+    {
+     "t": "Execution",
+     "d": "You or your delegate witness on site or by video. Every result is recorded as found."
+    },
+    {
+     "t": "Deviations",
+     "d": "Each one logged, assessed and closed or carried to SAT with your agreement."
+    },
+    {
+     "t": "Report",
+     "d": "Executed protocol, deviation log and punch list, signed by both parties."
+    }
+   ]
+  },
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "A note on water quality at FAT",
+   "body": "Our test bay runs on our own feedwater. Conductivity and total organic carbon (TOC) at FAT prove the system can perform. Compliance with USP <645> and USP <643> on your site is confirmed during SAT and qualification, on your feedwater."
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "FAT protocol with acceptance criteria",
+    "Executed FAT protocol with raw data",
+    "Calibration certificates for test instruments",
+    "Deviation log and closure records",
+    "Punch list",
+    "SAT protocol and executed SAT report",
+    "Traceability matrix from URS to test"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Can we witness the FAT remotely?",
+     "a": "Yes. We run a video link with a second camera on the HMI. Signatures can be collected electronically."
+    },
+    {
+     "q": "Do you test with our software version?",
+     "a": "Yes. The PLC and HMI software tested at FAT is the version that ships, under version control."
+    },
+    {
+     "q": "How long does a FAT take?",
+     "a": "Typically [days] for a packaged Purified Water skid, longer for a full generation and distribution system."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Plan your FAT with us",
+  "body": "Ask for our standard FAT protocol structure and adapt it to your URS.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Protocol lead time before FAT [weeks]",
+  "Typical FAT duration [days]",
+  "Test bay capabilities: feedwater, power, max skid size",
+  "Confirm remote witness and electronic signature process",
+  "Confirm a redacted FAT protocol can be published"
+ ]
+}

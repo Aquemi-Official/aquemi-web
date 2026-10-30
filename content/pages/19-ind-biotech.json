@@ -1,0 +1,142 @@
+{
+ "id": "ind-biotech",
+ "section": "Industries",
+ "nav_label": "Biotechnology",
+ "title": "Water systems for biotechnology and biologics | Aquemi",
+ "meta": "WFI, Purified Water and Pure Steam systems for cell culture, buffer preparation and cleaning, with endotoxin control to USP <85> and room to scale.",
+ "path": "/industries/biotechnology/",
+ "eyebrow": "BIOTECHNOLOGY · USP <85>",
+ "headline": "Water for biologics, from clinical supply to commercial scale",
+ "lead": "Biologics plants use Water for Injection (WFI) in volume: for media, buffers, cleaning and final rinses. We design systems that hold endotoxin and bioburden down at every point of use and grow when your programme does.",
+ "tags": [
+  "USP <85>",
+  "USP <1231>",
+  "Ph. Eur.",
+  "EU GMP Annex 1",
+  "ASME BPE",
+  "21 CFR Part 11"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Explore WFI systems",
+  "link": "sys-wfi-distillation"
+ },
+ "blocks": [
+  {
+   "type": "readout",
+   "value": "< 0.25 EU/mL",
+   "method": "Bacterial endotoxins, WFI · USP <85>",
+   "body": "The limit every WFI point of use must meet. In a biologics plant, an endotoxin excursion can put a batch of media or buffer at risk, so we design the loop around it."
+  },
+  {
+   "type": "prose",
+   "h": "What makes biotech water different",
+   "body": [
+    "Demand is uneven. Buffer and media preparation draw large volumes in short windows, then the loop sits idle. Storage, not generation, often sets the design.",
+    "Many points of use need cool water while the loop runs hot. Sub-loops and point-of-use heat exchangers must be sanitizable and drainable, or they become the weak spot.",
+    "Single-use equipment reduces cleaning water but not WFI for media and buffers. Plan the system for the process you will run, not the one in the brochure."
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Systems biotechnology plants use most",
+   "items": [
+    {
+     "t": "WFI by distillation",
+     "d": "Multi-effect or vapour compression stills with hot storage.",
+     "tag": "USP <85>",
+     "link": "sys-wfi-distillation"
+    },
+    {
+     "t": "WFI by membrane",
+     "d": "Ambient generation with ozone-sanitized storage, lower energy use.",
+     "tag": "Ph. Eur.",
+     "link": "sys-wfi-membrane"
+    },
+    {
+     "t": "Storage and distribution loops",
+     "d": "Hot loops with cooled sub-loops and point-of-use coolers.",
+     "tag": "ASME BPE",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Pure Steam (PS) generators",
+     "d": "For sterilize-in-place (SIP) of bioreactors, vessels and transfer lines.",
+     "tag": "EN 285",
+     "link": "sys-pure-steam"
+    },
+    {
+     "t": "Purified Water (PW) generation",
+     "d": "Feed to the WFI still and water for cleaning-in-place (CIP).",
+     "tag": "USP <645>",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Monitoring and controls",
+     "d": "On-line total organic carbon (TOC) and conductivity, with trends your quality unit can review.",
+     "tag": "USP <643>",
+     "link": "sys-monitoring"
+    }
+   ]
+  },
+  {
+   "type": "options",
+   "h": "Design considerations",
+   "items": [
+    {
+     "t": "Peak draw versus average",
+     "d": "We size storage and loop velocity from your batch schedule, not from a daily total."
+    },
+    {
+     "t": "Cool points of use",
+     "d": "Sub-loops or point-of-use exchangers, each with a documented sanitization route."
+    },
+    {
+     "t": "Scale-up",
+     "d": "Capped tie-in points and spare generation capacity for the next suite."
+    },
+    {
+     "t": "Clinical to commercial",
+     "d": "Qualification approach that carries forward when the facility moves from clinical supply to licensed production."
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Hot or ambient WFI storage?",
+     "a": "Hot storage at 80 °C or above controls microbes continuously but costs energy for cooled points of use. Ambient storage with ozone uses less energy but needs a tested ozone removal step before use. We compare both on your demand profile."
+    },
+    {
+     "q": "We are a start-up with one clinical product. Is a full WFI system justified?",
+     "a": "Sometimes not. Purchased bulk WFI or a smaller membrane system can bridge to commercial scale. We will tell you which fits."
+    },
+    {
+     "q": "How do you control endotoxin?",
+     "a": "By keeping the loop turbulent, sanitized and free of dead legs, and by verifying at every point of use during qualification."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related services",
+   "items": [
+    "svc-design",
+    "svc-cq",
+    "svc-service"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Plan the water around your batch schedule",
+  "body": "Send us your process and expected batch schedule. We will size storage and generation from it.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "A biotechnology case study with measured outcome",
+  "Confirm whether Aquemi offers temporary or bulk WFI supply options"
+ ]
+}

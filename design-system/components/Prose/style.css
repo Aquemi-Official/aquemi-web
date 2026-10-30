@@ -1,0 +1,3 @@
+/* ---------- Prose ---------- */
+.aq-prose { max-width: var(--text-max); }
+.aq-prose p + p { margin-top: var(--space-4); }

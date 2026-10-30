@@ -1,0 +1,227 @@
+{
+ "id": "svc-service",
+ "section": "Services",
+ "nav_label": "Service and spare parts",
+ "title": "Water system service plans and spare parts | Aquemi",
+ "meta": "Named service plans with stated response times, preventive maintenance, USP <645> and <643> instrument calibration, critical spares and emergency response.",
+ "path": "/services/service-spare-parts/",
+ "eyebrow": "SERVICE · CALIBRATION · SPARE PARTS",
+ "headline": "Keep the system in its qualified state, on a plan you can read",
+ "lead": "Choose a service plan with stated response times and a fixed scope. Every visit ends with a signed report your quality unit can file, and every calibration carries a certificate.",
+ "tags": [
+  "USP <645>",
+  "USP <643>",
+  "USP <1231>",
+  "ISPE Baseline Guide Vol. 4",
+  "GAMP 5"
+ ],
+ "primary_cta": "Get plan pricing",
+ "secondary_cta": {
+  "label": "Request service now",
+  "link": "contact-service"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "h": "Service plans",
+   "cols": [
+    "",
+    "[Care Essential]",
+    "[Care Plus]",
+    "[Care Critical]"
+   ],
+   "rows": [
+    [
+     "Preventive maintenance visits per year",
+     "[1]",
+     "[2]",
+     "[4]"
+    ],
+    [
+     "Instrument calibration (conductivity, TOC, temperature, pressure, flow)",
+     "Annual",
+     "Annual",
+     "Semi-annual"
+    ],
+    [
+     "Phone support from an engineer",
+     "Business hours",
+     "Business hours",
+     "24/7"
+    ],
+    [
+     "On-site response, critical fault",
+     "[response time]",
+     "[response time]",
+     "[response time]"
+    ],
+    [
+     "Critical spares kit held for you",
+     "No",
+     "Optional",
+     "Yes"
+    ],
+    [
+     "Annual system health report and trend review",
+     "No",
+     "Yes",
+     "Yes"
+    ],
+    [
+     "Remote monitoring review",
+     "No",
+     "Optional",
+     "Yes"
+    ],
+    [
+     "Labour discount on unplanned work",
+     "[%]",
+     "[%]",
+     "[%]"
+    ]
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "What a preventive maintenance visit covers",
+   "items": [
+    {
+     "t": "Process data review",
+     "d": "Conductivity, total organic carbon (TOC), pressures and temperatures since the last visit, before any work starts."
+    },
+    {
+     "t": "Membranes and modules",
+     "d": "Reverse osmosis (RO) normalized performance, cleaning when needed, electrodeionization (EDI) checks."
+    },
+    {
+     "t": "Seals, gaskets and diaphragms",
+     "d": "Replaced on a documented schedule, with lot numbers recorded."
+    },
+    {
+     "t": "Filters and vent filters",
+     "d": "Replacement and integrity testing of hydrophobic vent filters."
+    },
+    {
+     "t": "Ultraviolet (UV) and ozone",
+     "d": "Lamp hours, intensity, ozone generator output and destruct checks."
+    },
+    {
+     "t": "Sanitization verification",
+     "d": "Temperature or ozone concentration confirmed at the far end of the loop."
+    }
+   ]
+  },
+  {
+   "type": "spec",
+   "caption": "Calibration · critical instruments",
+   "cols": [
+    "Instrument",
+    "Check",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity cell",
+     "v": "Cell constant verified with a traceable standard; temperature sensor checked",
+     "m": "USP <645>",
+     "hl": false
+    },
+    {
+     "p": "TOC analyzer",
+     "v": "System suitability, response efficiency 85–115 %",
+     "m": "USP <643>",
+     "hl": true
+    },
+    {
+     "p": "Temperature sensors",
+     "v": "Comparison against a calibrated reference at operating and sanitization temperature",
+     "m": "Calibration procedure",
+     "hl": false
+    },
+    {
+     "p": "Pressure and flow",
+     "v": "Comparison against calibrated references across range",
+     "m": "Calibration procedure",
+     "hl": false
+    }
+   ]
+  },
+  {
+   "type": "steps",
+   "h": "When something goes wrong",
+   "items": [
+    {
+     "t": "Call",
+     "d": "An engineer answers at [phone number], [hours]. You describe the symptom; we ask for the alarm history."
+    },
+    {
+     "t": "Remote diagnosis",
+     "d": "Where remote access is approved, we review trends with you within [time]."
+    },
+    {
+     "t": "Dispatch",
+     "d": "A technician with the likely parts is on site within your plan's response time."
+    },
+    {
+     "t": "Restore and report",
+     "d": "We restore operation, record what changed and give you the input your change control needs."
+    }
+   ]
+  },
+  {
+   "type": "prose",
+   "h": "Spare parts",
+   "body": [
+    "Each system ships with a recommended spares list ranked by criticality: parts whose failure stops production, parts with long lead times, and routine consumables.",
+    "We hold stock for Aquemi systems at [stocking location]. We use standard, non-proprietary membranes, EDI modules and instruments where possible, so you are not locked into a single source."
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "Signed service report for every visit",
+    "Calibration certificates, traceable to national standards",
+    "Parts replaced, with lot numbers",
+    "Deviation and change-control input",
+    "Annual system health report with trends",
+    "Recommended spares list"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Do you service other manufacturers' systems?",
+     "a": "Yes. We start with a condition survey and document review, then offer a plan for that system."
+    },
+    {
+     "q": "Will service work affect our qualified state?",
+     "a": "Like-for-like replacement under a documented procedure normally does not. Anything else goes through your change control, and we give you the information to assess it."
+    },
+    {
+     "q": "Where do you provide service?",
+     "a": "[Service regions]. Outside them we work through [partner network or travel terms]."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Choose a plan",
+  "body": "Tell us your system and its age, and we return plan pricing and a first-visit scope.",
+  "button": "Get plan pricing",
+  "link": "contact-service"
+ },
+ "todo": [
+  "Service plan names and tier structure (placeholders [Care Essential], [Care Plus], [Care Critical])",
+  "Visits per year per tier",
+  "On-site response time per tier [response time]",
+  "Service phone number and hours",
+  "Remote diagnosis response time",
+  "Stocking location(s) for spares",
+  "Service regions and partner network",
+  "Labour discount per tier",
+  "Confirm any-brand service is offered"
+ ]
+}

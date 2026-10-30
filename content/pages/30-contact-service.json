@@ -1,0 +1,207 @@
+{
+ "id": "contact-service",
+ "section": "Contact",
+ "nav_label": "Service request",
+ "title": "Service request for an installed system | Aquemi",
+ "meta": "Request service for an Aquemi system: give the serial number, issue severity and current readings. Urgent? Call [service phone], [hours].",
+ "path": "/contact/service/",
+ "eyebrow": "SERVICE REQUEST",
+ "headline": "Service for your installed system",
+ "lead": "Give us the serial number, how severe the issue is and the current readings. A service technician replies within [response time] for urgent requests.",
+ "tags": [
+  "USP",
+  "GAMP 5"
+ ],
+ "primary_cta": "Submit service request",
+ "secondary_cta": {
+  "label": "Order spare parts",
+  "link": "svc-service"
+ },
+ "blocks": [
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "Water out of specification or production stopped",
+   "body": "Call [service phone number], available [hours]. Do not wait for a reply to this form."
+  },
+  {
+   "type": "table",
+   "h": "Issue severity",
+   "cols": [
+    "Severity",
+    "Meaning",
+    "Our response"
+   ],
+   "rows": [
+    [
+     "1. Critical",
+     "Production stopped or water out of specification at points of use",
+     "Phone response within [time]; technician on site within [time] in [coverage area]"
+    ],
+    [
+     "2. Major",
+     "System running with an alarm, reduced capacity or a trend toward an alert level",
+     "Response within [time]; visit scheduled within [time]"
+    ],
+    [
+     "3. Minor",
+     "Fault with no effect on water quality or supply",
+     "Response within [time]"
+    ],
+    [
+     "4. Planned",
+     "Preventive maintenance, calibration, requalification support, training",
+     "Scheduled at a date agreed with you"
+    ]
+   ]
+  },
+  {
+   "type": "form",
+   "h": "Service request",
+   "intro": "The serial number is on the nameplate on the skid frame and on the HMI 'About' screen.",
+   "fields": [
+    {
+     "label": "System serial number",
+     "kind": "text",
+     "help": "Format [AQ-YYYY-NNN].",
+     "required": true
+    },
+    {
+     "label": "System type",
+     "kind": "select",
+     "options": [
+      "PW generation",
+      "WFI by distillation",
+      "WFI by membrane",
+      "Pure Steam generator",
+      "Storage and distribution loop",
+      "Pretreatment",
+      "Monitoring and controls",
+      "Not an Aquemi system"
+     ],
+     "required": true
+    },
+    {
+     "label": "Issue severity",
+     "kind": "select",
+     "options": [
+      "1. Critical",
+      "2. Major",
+      "3. Minor",
+      "4. Planned"
+     ],
+     "required": true
+    },
+    {
+     "label": "What is happening",
+     "kind": "textarea",
+     "help": "Alarms shown, when it started, what has changed.",
+     "required": true
+    },
+    {
+     "label": "Current conductivity",
+     "kind": "number",
+     "unit": "µS/cm @ 25 °C",
+     "required": false
+    },
+    {
+     "label": "Current TOC",
+     "kind": "number",
+     "unit": "ppb",
+     "required": false
+    },
+    {
+     "label": "Current flow",
+     "kind": "number",
+     "unit": "L/h",
+     "required": false
+    },
+    {
+     "label": "Site name and address",
+     "kind": "text",
+     "required": true
+    },
+    {
+     "label": "Contact name",
+     "kind": "text",
+     "required": true
+    },
+    {
+     "label": "Email",
+     "kind": "email",
+     "required": true
+    },
+    {
+     "label": "Phone",
+     "kind": "tel",
+     "help": "A number we can reach you on today.",
+     "required": true
+    },
+    {
+     "label": "Service contract number",
+     "kind": "text",
+     "help": "If you have one.",
+     "required": false
+    }
+   ],
+   "submit": "Submit service request"
+  },
+  {
+   "type": "grid",
+   "h": "Spare parts",
+   "intro": "For parts, use the parts path so your request goes straight to the stores team.",
+   "items": [
+    {
+     "t": "Recommended spares list",
+     "d": "Your turnover package lists recommended spares by tag number. Quote the tag and serial number.",
+     "link": "cmp-documentation"
+    },
+    {
+     "t": "Consumables",
+     "d": "RO membranes, cartridge filters, UV lamps, vent filters, gaskets and diaphragms.",
+     "link": "svc-service"
+    },
+    {
+     "t": "Parts quote",
+     "d": "Email [parts email] with serial number, tag and quantity. Quote within [time]."
+    },
+    {
+     "t": "Stock held",
+     "d": "[Parts stocked in [location] for systems under service contract.]"
+    }
+   ]
+  },
+  {
+   "type": "steps",
+   "h": "What happens next",
+   "items": [
+    {
+     "t": "Logged",
+     "d": "Your request receives a ticket number by email."
+    },
+    {
+     "t": "Triaged",
+     "d": "A technician reviews the readings and calls you within the response time for the severity."
+    },
+    {
+     "t": "Resolved",
+     "d": "Remote guidance or a site visit, followed by a signed service report for your GMP records."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Planning preventive maintenance",
+  "body": "Ask about a service agreement with scheduled visits and calibration.",
+  "button": "See service plans",
+  "link": "svc-service"
+ },
+ "todo": [
+  "Service phone number and hours (confirm whether 24/7)",
+  "Response and on-site times per severity level",
+  "Serial number format",
+  "Parts email and quote turnaround",
+  "Spare parts stock location and policy",
+  "Decide whether non-Aquemi systems are serviced; adjust the system type field"
+ ]
+}

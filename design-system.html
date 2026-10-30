@@ -116,7 +116,7 @@ details.src pre { margin: var(--space-2) 0 0; padding: var(--space-3); backgroun
  <h2 class="d1">Change or extend it</h2>
  <div class="how">
   <div><h3 class="d2">Change a colour, size or space</h3><p class="sm">Edit <code>design-system/tokens.json</code>, then rebuild. Every component and page updates.</p><pre>python tools/design_system.py build</pre></div>
-  <div><h3 class="d2">Adjust a component</h3><p class="sm">Styles are in <code>design-system/components/bundle.css</code>, rules in the component's <code>README.md</code>, the example in its <code>preview.html</code>. Each component below links to all three.</p></div>
+  <div><h3 class="d2">Adjust a component</h3><p class="sm">Styles are in the component's <code>style.css</code> (built into <code>bundle.css</code>), rules in the component's <code>README.md</code>, the example in its <code>preview.html</code>. Each component below links to all three.</p></div>
   <div><h3 class="d2">Add a component</h3><p class="sm">Scaffold it, write the README and preview with real copy, style it with tokens only, then build and check.</p><pre>python tools/design_system.py new PullQuote "Page sections"
 python tools/design_system.py build
 python tools/design_system.py check</pre></div>
@@ -133,7 +133,7 @@ python tools/design_system.py check</pre></div>
 <section id="blocks">
  <span class="eb">From the live site</span>
  <h2 class="d1">Page blocks with real content</h2>
- <p class="lead">Each block type in <code>content/pages.json</code>, rendered with its first real example on the site.</p>
+ <p class="lead">Each block type in <code>content/pages/</code> (renderer in <code>assets/src/blocks/</code>), rendered with its first real example on the site.</p>
  <div id="blocklib" class="dm" style="gap:var(--space-12)"></div>
 </section>
 
@@ -176,7 +176,7 @@ get('design-system/components.json','json').then(function(M){
  $('components').innerHTML=order.map(function(g){var id='g-'+g.toLowerCase().replace(/\W+/g,'-');
   return '<section id="'+id+'"><span class="eb">Components</span><h2 class="d1">'+e(g)+'</h2>'+groups[g].map(function(c){
    var base=REPO+'/blob/main/design-system/components/'+c.name+'/';
-   return '<article class="comp" id="c-'+e(c.name)+'"><div class="comp__hd"><h3 class="d1" style="font-size:26px;line-height:32px">'+e(c.name)+'</h3><span class="sm">'+e(c.subtitle||'')+'</span><span class="sp"></span><span class="comp__links"><a href="'+base+'README.md">README</a><a href="'+base+'preview.html">Preview</a><a href="'+REPO+'/blob/main/design-system/components/bundle.css">Styles</a></span></div>'+
+   return '<article class="comp" id="c-'+e(c.name)+'"><div class="comp__hd"><h3 class="d1" style="font-size:26px;line-height:32px">'+e(c.name)+'</h3><span class="sm">'+e(c.subtitle||'')+'</span><span class="sp"></span><span class="comp__links"><a href="'+base+'README.md">README</a><a href="'+base+'preview.html">Preview</a><a href="'+base+'style.css">Styles</a></span></div>'+
     '<div class="stage"><div class="stage__bar"><span>preview.html</span><button type="button" data-narrow>Phone width</button></div><div class="stage__body" data-preview><p class="sm" style="padding:16px">Loading…</p></div></div>'+
     '<div class="md" data-readme></div><details class="src"><summary>Show preview code</summary><pre data-code></pre></details></article>'}).join('')+'</section>'}).join('');
  order.forEach(function(g){toc(g,groups[g].map(function(c){return ['c-'+c.name,c.name]}))});

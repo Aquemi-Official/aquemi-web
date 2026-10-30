@@ -1,0 +1,240 @@
+{
+ "id": "sys-wfi-membrane",
+ "section": "Systems",
+ "nav_label": "WFI by membrane",
+ "title": "Membrane WFI systems: RO, EDI, ultrafiltration | Aquemi",
+ "meta": "Ambient Water for Injection by double-pass RO, EDI and ultrafiltration, compliant with Ph. Eur. 0169 since 2017 and USP. Less steam, lower energy.",
+ "path": "/systems/wfi-membrane/",
+ "eyebrow": "WATER FOR INJECTION · MEMBRANE · PH. EUR. 0169 · USP",
+ "headline": "Water for Injection by membrane",
+ "lead": "Our membrane systems produce Water for Injection (WFI) at ambient temperature from double-pass reverse osmosis (RO), electrodeionization (EDI) and ultrafiltration (UF), with no plant steam for generation.",
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Download datasheet",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "What changed in 2017",
+   "body": [
+    "USP has long allowed WFI from any process equivalent or superior to distillation. The European Pharmacopoeia did not. In April 2017 the revised Ph. Eur. monograph 0169 began to allow WFI by reverse osmosis, single or double pass, coupled with other suitable techniques such as EDI, ultrafiltration or nanofiltration.",
+    "The quality limits did not change. Membrane WFI must meet the same conductivity, TOC and endotoxin limits as distilled WFI. What changed is the evidence inspectors expect: a contamination control strategy, as EU GMP Annex 1 describes, that shows how the system controls microbes and endotoxins without the heat of distillation."
+   ]
+  },
+  {
+   "type": "spec",
+   "caption": "WFI by membrane · Ph. Eur. 0169 and USP",
+   "cols": [
+    "Parameter",
+    "Specification",
+    "Method or reference"
+   ],
+   "rows": [
+    {
+     "p": "Capacity",
+     "v": "[500–15,000] L/h per skid",
+     "m": "At 15 °C feed",
+     "hl": false
+    },
+    {
+     "p": "Bacterial endotoxins",
+     "v": "< 0.25 EU/mL",
+     "m": "USP <85>, Ph. Eur. 2.6.14",
+     "hl": true
+    },
+    {
+     "p": "Conductivity",
+     "v": "≤ 1.3 µS/cm @ 25 °C",
+     "m": "USP <645> stage 1",
+     "hl": false
+    },
+    {
+     "p": "Conductivity (Ph. Eur.)",
+     "v": "≤ 1.1 µS/cm @ 20 °C",
+     "m": "Ph. Eur. 0169",
+     "hl": false
+    },
+    {
+     "p": "Total organic carbon",
+     "v": "≤ 500 ppb",
+     "m": "USP <643>, Ph. Eur. 2.2.44",
+     "hl": false
+    },
+    {
+     "p": "Microbial action level",
+     "v": "10 CFU/100 mL",
+     "m": "USP <1231> guidance",
+     "hl": false
+    },
+    {
+     "p": "Sanitization",
+     "v": "Hot water at 80 °C, full skid",
+     "m": "Daily or weekly, set by your risk assessment",
+     "hl": false
+    },
+    {
+     "p": "Materials, product contact",
+     "v": "316L stainless steel",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Surface finish",
+     "v": "Ra ≤ 0.5 µm electropolished",
+     "m": "ASME BPE",
+     "hl": false
+    }
+   ],
+   "h": "Specifications"
+  },
+  {
+   "type": "diagram",
+   "h": "How it works",
+   "stages": [
+    "Pretreated feed",
+    "RO pass 1",
+    "RO pass 2",
+    "EDI",
+    "Ultrafiltration",
+    "Ambient WFI"
+   ],
+   "caption": "Two RO passes remove dissolved solids, organics and most microbes. EDI polishes conductivity. The final ultrafiltration membrane retains endotoxins and bacteria. The skid is hot water sanitized on a fixed cycle, and online TOC and conductivity confirm quality before water reaches storage."
+  },
+  {
+   "type": "table",
+   "h": "Membrane or distillation: the figures to compare",
+   "cols": [
+    "Factor",
+    "Membrane",
+    "Distillation"
+   ],
+   "rows": [
+    [
+     "Plant steam for generation",
+     "None",
+     "Multi-effect: yes; vapour compression: start-up only"
+    ],
+    [
+     "Cooling water",
+     "None for generation",
+     "Needed for multi-effect"
+    ],
+    [
+     "Output temperature",
+     "Ambient",
+     "Hot"
+    ],
+    [
+     "Microbial control",
+     "Sanitization, UF barrier, continuous monitoring",
+     "Inherent in the process"
+    ],
+    [
+     "Energy per m³",
+     "[x] kWh, Aquemi design data",
+     "[x] kWh equivalent, Aquemi design data"
+    ]
+   ]
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "Ultrafiltration as final barrier",
+     "d": "Hot water sanitizable UF modules with integrity testing."
+    },
+    {
+     "t": "Shared PW and WFI platform",
+     "d": "One skid produces PW, with a WFI branch through the final barrier."
+    },
+    {
+     "t": "Online microbial monitoring",
+     "d": "Rapid bioburden instruments alongside grab sampling, where your strategy needs it."
+    },
+    {
+     "t": "Ozone or hot storage",
+     "d": "Connect to an ozonated ambient loop or a hot loop, depending on your process."
+    },
+    {
+     "t": "Duplex final barrier",
+     "d": "Two UF trains so one can be tested or replaced without interrupting supply."
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "Functional specification",
+    "Contamination control strategy inputs for the water system",
+    "Piping and instrumentation diagrams (P&IDs)",
+    "Material certificates (EN 10204 3.1)",
+    "Weld logs and borescope records",
+    "Membrane and UF integrity test records",
+    "FAT and SAT protocols and reports",
+    "IQ and OQ protocols",
+    "Operation and maintenance manual"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Will Health Canada and the FDA accept membrane WFI?",
+     "a": "USP has allowed it for decades and both agencies inspect against it. The burden is on your data: a sound design, a documented contamination control strategy and a performance qualification that covers seasonal feed water changes."
+    },
+    {
+     "q": "How long should performance qualification run?",
+     "a": "Common practice is a three-phase PQ over about a year, so seasonal variation in feed water is captured. We write the sampling plan with your validation team."
+    },
+    {
+     "q": "Can we convert an existing PW system to membrane WFI?",
+     "a": "Often, if the existing RO and EDI are in good condition. We assess it and add a final barrier, sanitization and instrumentation as needed."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related systems",
+   "items": [
+    "sys-wfi-distillation",
+    "sys-pw",
+    "sys-storage",
+    "sys-monitoring"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "See whether membrane WFI suits your plant.",
+  "body": "Send your demand, feed analysis and current steam costs and we'll compare both routes with your figures.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Capacity range per skid",
+  "Energy per m³ figures for membrane and distillation from Aquemi design data",
+  "Whether online microbial monitoring is offered and which instrument",
+  "Datasheet PDF"
+ ],
+ "facts": [
+  {
+   "v": "[500–15,000] L/h",
+   "l": "Capacity per skid"
+  },
+  {
+   "v": "< 0.25 EU/mL",
+   "l": "Bacterial endotoxins · USP <85>"
+  },
+  {
+   "v": "≤ 1.1 µS/cm",
+   "l": "Conductivity at 20 °C · Ph. Eur. 0169"
+  },
+  {
+   "v": "80 °C",
+   "l": "Hot water sanitization, full skid"
+  }
+ ]
+}

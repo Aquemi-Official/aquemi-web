@@ -17,7 +17,7 @@ jobs:
       - name: Generated files are current
         run: |
           python tools/design_system.py build
-          if ! git diff --exit-code -- design-system/tokens.css design-system/components.json; then
-            echo "::error::tokens.css or components.json is out of date. Run: python tools/design_system.py build, then commit."
+          if ! git diff --exit-code -- design-system/tokens.css design-system/components.json design-system/components/bundle.css assets/aquemi-site.js content/pages.json; then
+            echo "::error::A generated file is out of date. Run: python tools/design_system.py build, then commit."
             exit 1
           fi

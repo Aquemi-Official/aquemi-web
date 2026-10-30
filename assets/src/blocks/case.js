@@ -1,0 +1,2 @@
+/* Block "case" -> CaseStudy */
+BLOCKS['case']=function(b,H){return sec(H+'<div class="aq-cases">'+(b.items||[]).map(function(it){return '<div class="aq-case"><span class="aq-h3">'+tx(it.t)+'</span><dl>'+[['Client',it.client],['Problem',it.problem],['System delivered',it.system],['Measured outcome',it.outcome]].filter(function(x){return x[1]}).map(function(x){return '<dt>'+x[0]+'</dt><dd>'+tx(x[1])+'</dd>'}).join('')+'</dl></div>'}).join('')+'</div>');};

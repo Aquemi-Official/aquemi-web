@@ -1,0 +1,223 @@
+{
+ "id": "sys-wfi-distillation",
+ "section": "Systems",
+ "nav_label": "WFI by distillation",
+ "title": "WFI by distillation: multi-effect and VC stills | Aquemi",
+ "meta": "Multi-effect and vapour compression stills producing Water for Injection to USP and Ph. Eur., endotoxin < 0.25 EU/mL, FAT tested before shipping.",
+ "path": "/systems/wfi-distillation/",
+ "eyebrow": "WATER FOR INJECTION · DISTILLATION · USP · PH. EUR.",
+ "headline": "Water for Injection by distillation",
+ "lead": "Our multi-effect and vapour compression stills turn Purified Water into hot Water for Injection (WFI) with endotoxins below 0.25 EU/mL, the method with the longest inspection history in North America and Europe.",
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Download datasheet",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "spec",
+   "caption": "WFI by distillation · USP and Ph. Eur.",
+   "cols": [
+    "Parameter",
+    "Specification",
+    "Method or reference"
+   ],
+   "rows": [
+    {
+     "p": "Capacity, multi-effect",
+     "v": "[300–15,000] L/h",
+     "m": "[3–8] effects",
+     "hl": false
+    },
+    {
+     "p": "Capacity, vapour compression",
+     "v": "[200–10,000] L/h",
+     "m": "Electric drive",
+     "hl": false
+    },
+    {
+     "p": "Bacterial endotoxins",
+     "v": "< 0.25 EU/mL",
+     "m": "USP <85>",
+     "hl": true
+    },
+    {
+     "p": "Conductivity",
+     "v": "≤ 1.3 µS/cm @ 25 °C",
+     "m": "USP <645> stage 1",
+     "hl": false
+    },
+    {
+     "p": "Conductivity (Ph. Eur.)",
+     "v": "≤ 1.1 µS/cm @ 20 °C",
+     "m": "Ph. Eur. 0169",
+     "hl": false
+    },
+    {
+     "p": "Total organic carbon",
+     "v": "≤ 500 ppb",
+     "m": "USP <643>",
+     "hl": false
+    },
+    {
+     "p": "Microbial action level",
+     "v": "10 CFU/100 mL",
+     "m": "USP <1231> guidance",
+     "hl": false
+    },
+    {
+     "p": "Distillate temperature",
+     "v": "[85–95] °C, or cooled to order",
+     "m": "Design value",
+     "hl": false
+    },
+    {
+     "p": "Materials, product contact",
+     "v": "316L stainless steel",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Surface finish",
+     "v": "Ra ≤ 0.5 µm electropolished",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Heat exchangers",
+     "v": "Double tube sheet",
+     "m": "Prevents cross-contamination from utility side",
+     "hl": false
+    }
+   ],
+   "h": "Specifications"
+  },
+  {
+   "type": "diagram",
+   "h": "How multi-effect distillation works",
+   "stages": [
+    "PW feed",
+    "Preheaters",
+    "Column 1",
+    "Columns 2 to n",
+    "Condenser",
+    "Hot WFI"
+   ],
+   "caption": "Plant steam boils feed water in the first column. The pure vapour from each column heats the next one, so one kilogram of plant steam produces several kilograms of WFI. Droplets and endotoxins are separated before the vapour condenses. Concentrate leaves to drain from the last column."
+  },
+  {
+   "type": "prose",
+   "h": "Multi-effect or vapour compression",
+   "body": [
+    "A multi-effect still uses plant steam and reuses its energy across several columns. More effects mean less steam per litre but a higher purchase cost. It needs cooling water at the final condenser and suits sites with spare plant steam.",
+    "A vapour compression still uses an electric compressor to raise the pressure of its own vapour, then condenses it to heat incoming feed. It needs little or no cooling water and plant steam only for start-up, and it can accept softened, dechlorinated feed in many designs. It suits sites where steam is expensive or capacity is limited.",
+    "We size both against your daily demand profile and your utility costs, and show you the steam, power and cooling water figures side by side."
+   ]
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "Number of effects",
+     "d": "From [3] to [8], chosen against steam cost and capital budget."
+    },
+    {
+     "t": "Heating source",
+     "d": "Plant steam, electric, or a combination for sites with limited boiler capacity."
+    },
+    {
+     "t": "Combined WFI and pure steam",
+     "d": "The first column delivers pure steam while the still produces WFI."
+    },
+    {
+     "t": "Cooled distillate",
+     "d": "An outlet cooler for ambient storage where your loop runs below 80 °C."
+    },
+    {
+     "t": "Turndown",
+     "d": "Variable production to match demand instead of start-stop cycling."
+    },
+    {
+     "t": "Online instruments",
+     "d": "Conductivity and temperature on the distillate, optional online TOC and endotoxin sampling valve."
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "Functional specification",
+    "Piping and instrumentation diagrams (P&IDs)",
+    "Material certificates (EN 10204 3.1)",
+    "Weld logs and borescope records",
+    "Pressure vessel registration documents (CSA B51, CRN)",
+    "Heat balance and utility consumption data",
+    "FAT and SAT protocols and reports",
+    "IQ and OQ protocols",
+    "Operation and maintenance manual"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "What feed water does a still need?",
+     "a": "Usually Purified Water or RO permeate free of chlorine, with low silica and hardness to limit scaling. We state the exact feed limits in the functional specification and size the Purified Water skid to match."
+    },
+    {
+     "q": "Do your pressure vessels carry a Canadian registration number?",
+     "a": "Pressure parts are designed for registration under CSA B51 in the province of installation. [Confirm Aquemi's CRN process and provinces]."
+    },
+    {
+     "q": "Why choose distillation if membrane WFI is allowed?",
+     "a": "Distillation removes endotoxins by phase change and delivers hot WFI that suits hot storage. It has the longest inspection record. Membrane WFI saves steam. We help you choose on your site data."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related systems",
+   "items": [
+    "sys-wfi-membrane",
+    "sys-pure-steam",
+    "sys-storage",
+    "sys-pw"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Compare a still against your utility costs.",
+  "body": "Send your WFI demand and steam, power and cooling water costs and we'll model both still types.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Capacity ranges for multi-effect and vapour compression stills",
+  "Number of effects offered",
+  "Distillate temperature range",
+  "Whether Aquemi builds stills in-house or partners with a still manufacturer",
+  "CRN registration process and provinces covered",
+  "Datasheet PDF"
+ ],
+ "facts": [
+  {
+   "v": "[300–15,000] L/h",
+   "l": "Capacity, multi-effect"
+  },
+  {
+   "v": "< 0.25 EU/mL",
+   "l": "Bacterial endotoxins · USP <85>"
+  },
+  {
+   "v": "≤ 1.3 µS/cm",
+   "l": "Conductivity at 25 °C · USP <645>"
+  },
+  {
+   "v": "Ra ≤ 0.5 µm",
+   "l": "Electropolished contact surfaces · ASME BPE"
+  }
+ ]
+}

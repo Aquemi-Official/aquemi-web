@@ -1,0 +1,220 @@
+{
+ "id": "sys-pretreatment",
+ "section": "Systems",
+ "nav_label": "Pretreatment",
+ "title": "Pretreatment for pharmaceutical water systems | Aquemi",
+ "meta": "Multimedia, softening, carbon and bisulfite pretreatment sized to Canadian municipal water, including chloramine removal and cold winter feed.",
+ "path": "/systems/pretreatment/",
+ "eyebrow": "PRETREATMENT · HEALTH CANADA · US EPA",
+ "headline": "Pretreatment",
+ "lead": "Pretreatment protects your reverse osmosis (RO) membranes and stills from chlorine, chloramine, hardness and particles, so the purification stage downstream runs to its design life.",
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Send a water analysis",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "Start from the water you have",
+   "body": [
+    "USP requires feed water for pharmaceutical water to meet drinking water standards such as those of the US EPA, and in Canada most sites draw municipal water that meets the Guidelines for Canadian Drinking Water Quality. Drinking water standards protect people, not membranes.",
+    "Many Canadian municipal supplies use chloramine as a secondary disinfectant, and it passes through softeners and attacks polyamide RO membranes. Spring runoff raises turbidity and organic load, and winter supply can fall to 2–5 °C. We design pretreatment from a year of your water data, not one sample."
+   ]
+  },
+  {
+   "type": "spec",
+   "caption": "Pretreatment outlet · typical RO feed targets",
+   "note": "Targets are typical membrane maker limits; final values follow the membrane and still selected.",
+   "cols": [
+    "Parameter",
+    "Target at RO feed",
+    "Method or reference"
+   ],
+   "rows": [
+    {
+     "p": "Free chlorine and chloramine",
+     "v": "< 0.05 mg/L as Cl₂",
+     "m": "Online ORP or total chlorine analyser",
+     "hl": true
+    },
+    {
+     "p": "Hardness",
+     "v": "< 1 mg/L as CaCO₃",
+     "m": "Softener outlet, hardness test",
+     "hl": false
+    },
+    {
+     "p": "Silt density index",
+     "v": "≤ 3",
+     "m": "ASTM D4189",
+     "hl": false
+    },
+    {
+     "p": "Turbidity",
+     "v": "< 1 NTU",
+     "m": "Multimedia filter outlet",
+     "hl": false
+    },
+    {
+     "p": "Temperature",
+     "v": "[15] °C design, controlled by heat exchanger",
+     "m": "Design value",
+     "hl": false
+    },
+    {
+     "p": "Capacity",
+     "v": "[1–30] m³/h",
+     "m": "Sized to generation demand",
+     "hl": false
+    }
+   ],
+   "h": "Specifications"
+  },
+  {
+   "type": "diagram",
+   "h": "How it works",
+   "stages": [
+    "Municipal water",
+    "Break tank",
+    "Multimedia filter",
+    "Softener",
+    "Carbon or bisulfite",
+    "Cartridge filter",
+    "To RO"
+   ],
+   "caption": "A break tank isolates the plant from the municipal supply. Multimedia filtration removes particles. Duplex softeners exchange calcium and magnesium for sodium. Activated carbon or sodium bisulfite dosing removes chlorine and chloramine. A 5 µm cartridge filter protects the RO pumps."
+  },
+  {
+   "type": "table",
+   "h": "Chlorine or chloramine: which removal method",
+   "cols": [
+    "Method",
+    "Removes",
+    "Strengths",
+    "Watch for"
+   ],
+   "rows": [
+    [
+     "Granular activated carbon",
+     "Free chlorine; chloramine with catalytic carbon and longer contact",
+     "No chemicals; also removes organics",
+     "Bacterial growth in the bed; needs hot water or steam sanitization"
+    ],
+    [
+     "Sodium bisulfite dosing",
+     "Free chlorine and chloramine",
+     "Small footprint; fast response",
+     "Dosing control and online verification; ammonia from chloramine passes to RO"
+    ],
+    [
+     "UV dechlorination (high intensity)",
+     "Free chlorine and chloramine",
+     "No chemicals, no carbon bed",
+     "Higher power use; needs low turbidity feed"
+    ]
+   ]
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "Duplex softeners",
+     "d": "Alternating vessels so regeneration never interrupts supply."
+    },
+    {
+     "t": "Hot water sanitizable carbon",
+     "d": "Stainless steel carbon vessels sanitized with hot water or steam."
+    },
+    {
+     "t": "Antiscalant dosing",
+     "d": "Where softening alone does not control silica or other scaling ions."
+    },
+    {
+     "t": "Feed heat exchanger",
+     "d": "Holds RO feed at design temperature through Canadian winters."
+    },
+    {
+     "t": "Ammonia management",
+     "d": "Where chloramine is removed, design for the ammonia that remains."
+    },
+    {
+     "t": "Online monitoring",
+     "d": "Total chlorine or ORP, hardness and silt density index at the RO inlet."
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "Feed water analysis review and design basis",
+    "Functional specification",
+    "Piping and instrumentation diagrams (P&IDs)",
+    "Media and resin certificates",
+    "FAT and SAT protocols and reports",
+    "IQ and OQ protocols",
+    "Operation and maintenance manual with regeneration and media change schedule"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "What water analysis do you need?",
+     "a": "At minimum: hardness, alkalinity, total dissolved solids, silica, iron, manganese, total and free chlorine, TOC, turbidity and temperature. Seasonal data is better than one sample."
+    },
+    {
+     "q": "Our municipality switched to chloramine. What changes?",
+     "a": "Standard carbon beds remove chloramine slowly. We check contact time, consider catalytic carbon or bisulfite, and verify at the RO inlet with an online analyser."
+    },
+    {
+     "q": "Is pretreatment part of the validated system?",
+     "a": "Usually pretreatment is outside the GMP boundary but its performance affects the validated system. We document it and monitor its outlet to support your risk assessment."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related systems",
+   "items": [
+    "sys-pw",
+    "sys-wfi-distillation",
+    "sys-monitoring",
+    "sys-pure-steam"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send us your water analysis.",
+  "body": "We'll review it and recommend a pretreatment train for your feed, with the reasoning.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Pretreatment capacity range",
+  "Design feed temperature",
+  "Whether UV dechlorination is offered",
+  "Whether Aquemi offers a water analysis service"
+ ],
+ "facts": [
+  {
+   "v": "< 0.05 mg/L",
+   "l": "Free chlorine and chloramine as Cl₂"
+  },
+  {
+   "v": "< 1 mg/L",
+   "l": "Hardness as CaCO₃"
+  },
+  {
+   "v": "≤ 3",
+   "l": "Silt density index · ASTM D4189"
+  },
+  {
+   "v": "[1–30] m³/h",
+   "l": "Capacity"
+  }
+ ]
+}

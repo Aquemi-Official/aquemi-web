@@ -1,0 +1,2 @@
+/* Block "grid" -> LinkGrid */
+BLOCKS['grid']=function(b,H){return sec('<div class="aq-stack">'+H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'</div><div class="aq-linkgrid">'+(b.items||[]).map(function(it){return gridItem('<span class="aq-h3">'+tx(it.t)+'</span><span class="aq-small">'+tx(it.d)+'</span>'+(it.tag?'<span class="aq-tags"><span class="aq-tag">'+e(it.tag)+'</span></span>':''),it.link)}).join('')+'</div>');};

@@ -1,0 +1,2 @@
+/* Block "table" -> SpecTable aq-spec--compare */
+BLOCKS['table']=function(b,H){return sec(H+'<div class="aq-scroll"><table class="aq-spec aq-spec--compare"><thead><tr>'+(b.cols||[]).map(function(c){return '<th>'+e(c)+'</th>'}).join('')+'</tr></thead><tbody>'+(b.rows||[]).map(function(r){return '<tr>'+r.map(function(c,i){return i?'<td class="aq-spec__text">'+tx(c)+'</td>':'<th scope="row">'+tx(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>');};

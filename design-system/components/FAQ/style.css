@@ -1,0 +1,7 @@
+/* ---------- FAQ ---------- */
+.aq-faq details { border-top: 1px solid var(--line); padding-block: var(--space-4); }
+.aq-faq summary { cursor: pointer; font: 500 17px/26px var(--font-sans); list-style: none; display: flex; justify-content: space-between; gap: var(--space-4); }
+.aq-faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--ink-muted); }
+.aq-faq details[open] summary::after { content: "\2212"; }
+.aq-faq summary::-webkit-details-marker { display: none; }
+.aq-faq details p { margin-top: var(--space-2); color: var(--ink-muted); max-width: var(--text-max); }

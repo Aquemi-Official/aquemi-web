@@ -1,0 +1,203 @@
+{
+ "id": "sys-pure-steam",
+ "section": "Systems",
+ "nav_label": "Pure steam generators",
+ "title": "Pure steam generators to EN 285 | Aquemi",
+ "meta": "Pure steam generators for autoclaves and steam-in-place. Condensate meets WFI limits; non-condensable gases, dryness and superheat tested to EN 285.",
+ "path": "/systems/pure-steam/",
+ "eyebrow": "PURE STEAM · EN 285 · USP",
+ "headline": "Pure steam generators",
+ "lead": "Our pure steam generators supply sterilizers and steam-in-place with steam whose condensate meets Water for Injection (WFI) limits, and whose gas content, dryness and superheat are tested to EN 285.",
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Download datasheet",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "spec",
+   "caption": "Pure steam · EN 285 and USP Pure Steam",
+   "note": "EN 285 physical tests are made at the point of use, so header design matters as much as the generator. We test at the generator outlet at FAT and at the sterilizer at SAT.",
+   "cols": [
+    "Parameter",
+    "Specification",
+    "Method or reference"
+   ],
+   "rows": [
+    {
+     "p": "Capacity",
+     "v": "[100–3,000] kg/h",
+     "m": "At [3] bar(g)",
+     "hl": false
+    },
+    {
+     "p": "Operating pressure",
+     "v": "[2–6] bar(g)",
+     "m": "Design value",
+     "hl": false
+    },
+    {
+     "p": "Non-condensable gases",
+     "v": "≤ 3.5 mL per 100 mL condensate",
+     "m": "EN 285",
+     "hl": true
+    },
+    {
+     "p": "Dryness value",
+     "v": "≥ 0.95 (≥ 0.90 for metal loads)",
+     "m": "EN 285",
+     "hl": false
+    },
+    {
+     "p": "Superheat",
+     "v": "≤ 25 K above boiling point",
+     "m": "EN 285",
+     "hl": false
+    },
+    {
+     "p": "Condensate conductivity",
+     "v": "≤ 1.3 µS/cm @ 25 °C",
+     "m": "USP <645>, USP Pure Steam",
+     "hl": false
+    },
+    {
+     "p": "Condensate endotoxins",
+     "v": "< 0.25 EU/mL",
+     "m": "USP <85>",
+     "hl": false
+    },
+    {
+     "p": "Materials, product contact",
+     "v": "316L stainless steel",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Heating",
+     "v": "Plant steam or electric",
+     "m": "Double tube sheet exchanger on steam-heated units",
+     "hl": false
+    }
+   ],
+   "h": "Specifications"
+  },
+  {
+   "type": "diagram",
+   "h": "How it works",
+   "stages": [
+    "PW feed",
+    "Degassing",
+    "Evaporator",
+    "Separator",
+    "Pure steam header",
+    "Sterilizer or SIP"
+   ],
+   "caption": "Feed water is preheated and degassed to remove non-condensable gases. Plant steam or electric heaters boil it in the evaporator. A separator removes droplets that carry endotoxins and solids. Pure steam leaves at a controlled pressure, and blowdown removes concentrated impurities."
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "Steam or electric heating",
+     "d": "Electric units for sites without plant steam or for small sterilizers."
+    },
+    {
+     "t": "Feed degassing",
+     "d": "Thermal degassing of feed to keep non-condensable gases within EN 285."
+    },
+    {
+     "t": "Sampling cooler and panel",
+     "d": "Condensate sample point with cooler for conductivity, TOC and endotoxin testing."
+    },
+    {
+     "t": "Online condensate conductivity",
+     "d": "Continuous monitoring with alarm and divert."
+    },
+    {
+     "t": "Load-following control",
+     "d": "Pressure-controlled output from [0–100] % to follow sterilizer demand."
+    },
+    {
+     "t": "Combined with a multi-effect still",
+     "d": "Pure steam from the first column of a WFI still."
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "Functional specification",
+    "Piping and instrumentation diagrams (P&IDs)",
+    "Pressure vessel registration documents (CSA B51, CRN)",
+    "Material certificates (EN 10204 3.1)",
+    "Weld logs and borescope records",
+    "EN 285 steam quality test protocol and FAT results",
+    "FAT and SAT protocols and reports",
+    "IQ and OQ protocols",
+    "Operation and maintenance manual"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Our sterilizer fails dryness tests. Is it the generator?",
+     "a": "Often it is the header: long runs, missing traps or poor insulation produce wet steam at the point of use. We survey the distribution and the generator together."
+    },
+    {
+     "q": "What feed water does a pure steam generator need?",
+     "a": "Purified Water or RO permeate, free of chlorine and low in silica. Feed quality determines blowdown rate and the cleaning interval."
+    },
+    {
+     "q": "Do you test to EN 285 at FAT?",
+     "a": "Yes. We run the non-condensable gas, dryness and superheat tests on the generator outlet during FAT, then repeat them at the point of use during SAT."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related systems",
+   "items": [
+    "sys-wfi-distillation",
+    "sys-pw",
+    "sys-monitoring",
+    "sys-storage"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Specify pure steam for your sterilizers.",
+  "body": "Send your sterilizer and steam-in-place demand in kg/h and the pressure at the point of use.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Capacity range in kg/h",
+  "Operating pressure range",
+  "Turndown range",
+  "Whether electric units are offered",
+  "CRN registration process",
+  "Datasheet PDF"
+ ],
+ "facts": [
+  {
+   "v": "[100–3,000] kg/h",
+   "l": "Capacity"
+  },
+  {
+   "v": "≤ 3.5 mL",
+   "l": "Non-condensable gases per 100 mL · EN 285"
+  },
+  {
+   "v": "≥ 0.95",
+   "l": "Dryness value · EN 285"
+  },
+  {
+   "v": "≤ 25 K",
+   "l": "Superheat above boiling point · EN 285"
+  }
+ ]
+}
