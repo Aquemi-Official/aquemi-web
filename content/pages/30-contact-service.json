@@ -21,16 +21,8 @@
  },
  "facts": [
   {
-   "v": "[service phone number]",
-   "l": "Severity 1: call. Answered [service phone hours]"
-  },
-  {
    "v": "4 levels",
    "l": "Severities, the same as every service plan"
-  },
-  {
-   "v": "[severity 1 on-site response time, hours]",
-   "l": "Severity 1 on site, inside [service coverage area]"
   },
   {
    "v": "No serial needed",
@@ -39,10 +31,48 @@
  ],
  "blocks": [
   {
-   "type": "band",
-   "tone": "limestone",
-   "h": "Severity 1? Call [service phone number] now",
-   "body": "Answered [service phone hours]. Service calls only; sales are on [sales phone number]. Log the form as well if you can, but do not wait for its reply."
+   "type": "contact-routes",
+   "h": "Three ways in",
+   "routes": [
+    {
+     "t": "Request a proposal or review",
+     "d": "New system, upgrade or document review: send your URS and water data.",
+     "steps": [
+      "Choose your request; send what you have",
+      "An engineer reads it and replies by name",
+      "Written answer, then a firm proposal"
+     ],
+     "clock": "Written reply within [proposal response time, working days]",
+     "link": "contact-proposal"
+    },
+    {
+     "t": "Production stopped or water out of specification",
+     "d": "Severity 1. Answered [service phone hours]. Service calls only; sales are on [sales phone number].",
+     "phone": "[service phone number]",
+     "steps": [
+      "Call the service line",
+      "Triage call confirms the severity",
+      "Remote diagnosis, then a technician on site"
+     ],
+     "clock": "Technician on site within [severity 1 on-site response time, hours]",
+     "link": "contact-service",
+     "urgent": true,
+     "action": "Log it in the form below too",
+     "current": true
+    },
+    {
+     "t": "Visit or audit the shop",
+     "d": "Shop tour, supplier audit or FAT witness at [shop location, city and province].",
+     "steps": [
+      "Tell us the purpose, dates and group",
+      "We reply with a date and an agenda",
+      "Records and test bay ready on the day"
+     ],
+     "clock": "Date and agenda within [visit booking reply time, working days]",
+     "link": "contact-locations",
+     "action": "Book a visit"
+    }
+   ]
   },
   {
    "type": "form",
@@ -478,9 +508,9 @@
    "type": "table",
    "nav": "Response times",
    "h": "Response times by request",
-   "intro": "Severities are the same four levels as every service plan. Without a plan, faults are a call-out with the next available technician.",
+   "intro": "The same four severities as every service plan. Without a plan, a fault is a call-out with the next available technician.",
    "cols": [
-    "Request",
+    "Your request",
     "First response, on a plan",
     "What follows"
    ],
@@ -491,7 +521,7 @@
      "Remote diagnosis within [remote response time, hours], where your remote mode allows"
     ],
     [
-     "Severity 2: alarm, reduced capacity or trend toward an alert level",
+     "Severity 2: alarm, reduced capacity or adverse trend",
      "Reply in [severity 2 reply time, hours]",
      "Visit within [severity 2 visit time, hours or working days]"
     ],
@@ -501,8 +531,8 @@
      "Fixed at the next or a booked visit"
     ],
     [
-     "Maintenance or calibration (severity 4), booked [planning lead time, weeks] ahead",
-     "Date within [maintenance booking reply time, working days]; calibration [calibration booking reply time, working days]",
+     "Maintenance or calibration (severity 4)",
+     "Booked [planning lead time, weeks] ahead. Date within [maintenance booking reply time, working days]; calibration [calibration booking reply time, working days]",
      "Scope sent [visit scope lead time, working days] ahead; certificates to USP <645> (cell constant ± 2 %) and USP <643> (85–115 %)"
     ],
     [
@@ -525,7 +555,8 @@
      "Reply within [other-builder request reply time, working days]",
      "A condition survey quote: time on site, records needed, spares list from the nameplates"
     ]
-   ]
+   ],
+   "as": "router"
   },
   {
    "type": "steps",
@@ -552,7 +583,9 @@
      "t": "Signed service report",
      "d": "Within [service report turnaround, working days]: work done, as-found and as-left values, parts with lot numbers."
     }
-   ]
+   ],
+   "fold": 3,
+   "fold_noun": "steps"
   },
   {
    "type": "grid",
@@ -561,13 +594,13 @@
    "intro": "Choose \"Parts and consumables\" in the form, or email [parts email address]. Orders go to [the parts desk or stores team], not the fault queue.",
    "items": [
     {
+     "t": "Restore a stopped system",
+     "d": "Call [service phone number]. Stocked parts ship from [spares stock location] [order cut-off and delivery commitment]."
+    },
+    {
      "t": "Order from your spares list",
      "d": "Quote the tag number from your turnover package, the serial or make and model, and the quantity.",
      "link": "cmp-documentation"
-    },
-    {
-     "t": "Restore a stopped system",
-     "d": "Call [service phone number]. Stocked parts ship from [spares stock location] [order cut-off and delivery commitment]."
     },
     {
      "t": "Like for like, with the certificates",
@@ -582,7 +615,9 @@
      "t": "Standard parts, named makers",
      "d": "Membranes, electrodeionization (EDI) modules and instruments from named manufacturers where the design allows, so you are not tied to one source."
     }
-   ]
+   ],
+   "fold": 2,
+   "fold_noun": "ways to order"
   },
   {
    "type": "faq",
@@ -592,10 +627,6 @@
     {
      "q": "Our system is from another builder. Can you service it?",
      "a": "Yes, no Aquemi serial number is needed. For a fault, choose \"Fault now\" and give the make and model. For a first planned visit, choose \"First service, other make\": we start with a condition survey and a records review. We service [makes and equipment types serviced]. Upgrades and assessments go to the proposal form."
-    },
-    {
-     "q": "Is the form enough for a severity 1 fault?",
-     "a": "Call [service phone number]. The form logs the readings and files and starts the clock, but a call reaches [a service engineer or dispatcher] at once, while out of hours a form is read within [out-of-hours form review time, hours]."
     },
     {
      "q": "Who decides whether water already used is affected?",
@@ -614,10 +645,6 @@
      "a": "Yes. Name your standard operating procedures (SOPs) and forms in \"Site access requirements\" and \"Whose forms do we work to?\". We send training records with the visit plan and complete your work orders, logbooks or calibration forms as well as, or instead of, ours."
     },
     {
-     "q": "Can we send data from our historian or SCADA?",
-     "a": "Send an export as CSV, Excel or PDF. It is a copy for diagnosis; the original record and its audit trail stay in your system, as EU GMP Annex 11 expects."
-    },
-    {
      "q": "Is our site inside your service area?",
      "a": "Response times apply inside [service coverage area]. Outside it, we give a travel response time in the first reply, and plan holders have it written into the plan schedule. Service bases are on the locations page."
     }
@@ -628,23 +655,16 @@
    "h": "Where service connects",
    "items": [
     "svc-service",
-    "sys-monitoring",
-    "svc-cq",
     "svc-upgrades",
-    "cmp-documentation",
-    "contact-locations"
+    "svc-cq"
    ]
   }
  ],
  "cta": {
-  "h": "Planning ahead rather than fixing a fault?",
-  "body": "A service plan fixes response times, visits, calibrations and spares in writing, at a fixed annual price. For a fault now, call [service phone number].",
+  "h": "Planning ahead, not fixing a fault?",
+  "body": "A service plan fixes response times, visits, calibrations and spares in writing, at a fixed annual price.",
   "button": "Compare service plans",
   "link": "svc-service",
-  "proof": {
-   "v": "4 levels",
-   "l": "Severities, the same as every service plan"
-  },
   "include_label": "Have ready when you call",
   "include": [
    "Serial number, or make and model",
@@ -673,6 +693,7 @@
   "Service report turnaround (working days, same as svc-service)",
   "Service coverage area (same as svc-service and contact-locations)",
   "Privacy notice link (PIPEDA, Quebec Law 25)",
-  "Confirm French-language service replies are available"
+  "Confirm French-language service replies are available",
+  "Contact routes: proposal response time (same as contact-proposal); shop location and visit booking reply time (same as contact-locations)"
  ]
 }

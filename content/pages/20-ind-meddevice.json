@@ -7,7 +7,7 @@
  "path": "/industries/medical-devices/",
  "eyebrow": "MEDICAL DEVICES · ISO 13485 · MDSAP · FDA QMSR",
  "headline": "Final rinse water you can defend in cleaning validation and MDSAP audits",
- "lead": "Endotoxin and bioburden left by the last rinse count against the device. We design Purified Water (PW) and Water for Injection (WFI) systems that hold your limits at the washer inlet.",
+ "lead": "Final-rinse endotoxin and bioburden count against the device. We design, build and wet test Purified Water (PW) and Water for Injection (WFI) systems in Canada that hold your limits at the washer inlet.",
  "primary_cta": "Request a device water scope review",
  "primary_cta_intent": "Water scope review for your products|Medical devices",
  "secondary_cta": {
@@ -67,7 +67,9 @@
      "USP, Ph. Eur., 21 CFR Part 4 and Health Canada GUI-0001"
     ]
    ],
-   "as": "grades"
+   "as": "grades",
+   "fold": 6,
+   "fold_noun": "steps"
   },
   {
    "type": "spec",
@@ -132,7 +134,9 @@
      "v": "≤ 25 K on expansion to atmospheric pressure",
      "m": "EN 285"
     }
-   ]
+   ],
+   "fold": 6,
+   "fold_noun": "limits"
   },
   {
    "type": "table",
@@ -193,7 +197,9 @@
      }
     ]
    ],
-   "as": "evidence"
+   "as": "evidence",
+   "fold": 4,
+   "fold_noun": "auditors"
   },
   {
    "type": "grid",
@@ -237,7 +243,9 @@
      "tag": "Change control",
      "link": "svc-upgrades"
     }
-   ]
+   ],
+   "fold": 3,
+   "fold_noun": "systems and services"
   },
   {
    "type": "table",
@@ -270,7 +278,9 @@
      "Integrity testing, a change interval set from data, sampling downstream of the filter"
     ]
    ],
-   "as": "failures"
+   "as": "failures",
+   "fold": 3,
+   "fold_noun": "risks"
   },
   {
    "type": "options",
@@ -292,13 +302,10 @@
      "t": "Canadian feed water",
      "d": "Feed runs from near freezing to over 20 °C and may carry chloramine. Membranes sized for the coldest month; chloramine removed before reverse osmosis (RO)."
     }
-   ]
-  },
-  {
-   "type": "band",
-   "tone": "limestone",
-   "h": "Built, wet tested and serviced in Canada",
-   "body": "Your engineers witness the factory acceptance test (FAT) in [test bay location, city and province]. Spares in [stock locations], engineers in [service bases]. Quotes in [quotation currency]; lead time [PW skid lead time, weeks]."
+   ],
+   "nav": "Decisions",
+   "fold": 3,
+   "fold_noun": "decisions"
   },
   {
    "type": "faq",
@@ -354,7 +361,7 @@
  ],
  "cta": {
   "h": "Send your devices, release limits and cleaning process",
-  "body": "A process engineer replies within [proposal response time, working days] with rinse water limits worked back from your device limits, and the system and qualification scope to hold them.",
+  "body": "A process engineer replies, with the scope or our questions.",
   "button": "Request a device water scope review",
   "link": "contact-proposal",
   "intent": "Water scope review for your products|Medical devices",
@@ -366,16 +373,17 @@
    "Washer fills per hour and L per fill",
    "Feed water analyses and yearly temperature range",
    "Recent audit findings that touch water"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Rinse water limits from your device limits",
+   "The system scope to hold them",
+   "The qualification scope"
   ]
  },
  "todo": [
   "Confirm medical device manufacturing is a target segment",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-  "Test bay location, city and province (band; same as home, about)",
-  "Spares stock locations (band)",
-  "Service bases (band)",
-  "Quotation currency (band)",
-  "PW skid lead time, weeks (band; same wording as ind-pharma). Was 'PW system with point-of-use ultrafiltration'; say if that differs",
   "Quality certifications Aquemi holds (ISO 9001 / ISO 13485), scope and registrar (FAQ)",
   "Device maker references available for a call, or a plain 'none yet' (FAQ)",
   "A device-manufacturing case study with measured outcome; add a case block when one exists",

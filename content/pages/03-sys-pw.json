@@ -82,7 +82,8 @@
     }
    ],
    "nav": "Limits",
-   "intro": "USP and Ph. Eur. apply these limits at the point of use, after storage and distribution. We size the skid to hold margin on your worst feed water of the year."
+   "intro": "USP and Ph. Eur. apply these limits at the point of use, after storage and distribution. We size the skid to hold margin on your worst feed water of the year.",
+   "as": "gauges"
   },
   {
    "type": "diagram",
@@ -177,31 +178,51 @@
      "p": "Capacity",
      "v": "[minimum–maximum capacity, L/h] per skid",
      "m": "Rated at your lowest feed temperature, not 25 °C. Parallel or duplex trains above that.",
-     "hl": true
+     "hl": true,
+     "at": [
+      14.7,
+      51.5
+     ]
     },
     {
      "p": "Membrane design temperature",
      "v": "[feed heat exchanger design temperature, °C]",
      "m": "Where specified; otherwise sized at your site minimum",
-     "hl": false
+     "hl": false,
+     "at": [
+      57.0,
+      12.0
+     ]
     },
     {
      "p": "Sanitization",
      "v": "Hot water ≥ 80 °C through RO and EDI, held [hold time, minutes]",
      "m": "Heat-rated membranes and EDI modules [standard or option]; verified at the coldest probe",
-     "hl": false
+     "hl": false,
+     "at": [
+      74.8,
+      29.7
+     ]
     },
     {
      "p": "Materials and dead legs",
      "v": "316L stainless steel; L/D ≤ 2, sloped to drain",
      "m": "ASME BPE; EN 10204 3.1 material certificates",
-     "hl": false
+     "hl": false,
+     "at": [
+      23.3,
+      69.2
+     ]
     },
     {
      "p": "Surface finish, product contact",
      "v": "[standard finish, ASME BPE designation]",
      "m": "ASME BPE SF1: Ra ≤ 0.51 µm mechanically polished. SF4: Ra ≤ 0.38 µm electropolished.",
-     "hl": false
+     "hl": false,
+     "at": [
+      62.8,
+      68.6
+     ]
     },
     {
      "p": "Off-spec water",
@@ -235,7 +256,8 @@
     }
    ],
    "nav": "Skid design",
-   "fold": 5
+   "fold": 5,
+   "as": "callouts"
   },
   {
    "type": "options",

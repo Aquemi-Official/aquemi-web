@@ -35,11 +35,95 @@
  },
  "blocks": [
   {
+   "type": "standards-map",
+   "nav": "Map",
+   "anchor": "map",
+   "h": "Which standard governs which part of the system",
+   "intro": "Each code links to the row that proves it.",
+   "zones": [
+    {
+     "t": "Generation",
+     "icon": "ro-membrane",
+     "to": "pharmacopoeia",
+     "codes": [
+      "USP <645>",
+      "USP <643>",
+      "Ph. Eur. 0008",
+      "Ph. Eur. 0169"
+     ]
+    },
+    {
+     "t": "Storage and distribution",
+     "icon": "loop",
+     "to": "gmp",
+     "codes": [
+      "EU GMP Annex 1",
+      {
+       "t": "USP <1231>",
+       "to": "pharmacopoeia"
+      },
+      "ASME BPE"
+     ]
+    },
+    {
+     "t": "Pure steam",
+     "icon": "pure-steam",
+     "to": "pharmacopoeia",
+     "codes": [
+      "USP <85>",
+      {
+       "t": "EN 285",
+       "to": "limits"
+      }
+     ]
+    },
+    {
+     "t": "Controls and data",
+     "icon": "gauge",
+     "to": "gmp",
+     "codes": [
+      "21 CFR Part 11",
+      "EU GMP Annex 11",
+      "GAMP 5",
+      {
+       "t": "CSA C22.2 No. 286",
+       "to": "engineering"
+      }
+     ]
+    },
+    {
+     "t": "Fabrication",
+     "icon": "weld",
+     "to": "engineering",
+     "codes": [
+      "ASME BPE",
+      "CSA B51",
+      "ASME Section VIII",
+      "ASME Section IX",
+      "ASME B31.3",
+      "EN 10204 3.1",
+      "ASTM A967"
+     ]
+    },
+    {
+     "t": "Qualification",
+     "icon": "binder",
+     "to": "gmp",
+     "codes": [
+      "EU GMP Annex 15",
+      "WHO TRS 1033",
+      "ASTM E2500",
+      "ICH Q9(R1)"
+     ]
+    }
+   ]
+  },
+  {
    "type": "spec",
    "nav": "Limits",
    "caption": "PW · WFI · PURE STEAM",
    "h": "Release limits, as the pharmacopoeias state them",
-   "intro": "Standards limit water; they do not approve equipment. Where USP and Ph. Eur. differ, we design to the stricter value.",
+   "intro": "Where USP and Ph. Eur. differ, we design to the stricter value.",
    "cols": [
     "Parameter",
     "Limit",
@@ -53,6 +137,21 @@
      "hl": true
     },
     {
+     "p": "Bacterial endotoxins, WFI",
+     "v": "< 0.25 EU/mL (USP); < 0.25 IU/mL (Ph. Eur.)",
+     "m": "USP <85>; Ph. Eur. 2.6.14; equivalent units"
+    },
+    {
+     "p": "Total organic carbon (TOC), PW and WFI",
+     "v": "≤ 0.50 mg/L (500 ppb)",
+     "m": "USP <643>; Ph. Eur. 2.2.44"
+    },
+    {
+     "p": "Steam quality for sterilizers",
+     "v": "Non-condensable gases ≤ 3.5 mL per 100 mL of condensate; dryness ≥ 0.95 metal loads, ≥ 0.90 other loads; superheat ≤ 25 K",
+     "m": "EN 285, clause 21"
+    },
+    {
      "p": "Conductivity, PW, Ph. Eur.",
      "v": "≤ 5.1 µS/cm @ 25 °C (≤ 4.3 µS/cm @ 20 °C)",
      "m": "Ph. Eur. 0008"
@@ -63,19 +162,9 @@
      "m": "Ph. Eur. 0169"
     },
     {
-     "p": "Total organic carbon (TOC), PW and WFI",
-     "v": "≤ 0.50 mg/L (500 ppb)",
-     "m": "USP <643>; Ph. Eur. 2.2.44"
-    },
-    {
      "p": "Nitrates, PW",
      "v": "≤ 0.2 ppm",
      "m": "Ph. Eur. 0008; no USP test"
-    },
-    {
-     "p": "Bacterial endotoxins, WFI",
-     "v": "< 0.25 EU/mL (USP); < 0.25 IU/mL (Ph. Eur.)",
-     "m": "USP <85>; Ph. Eur. 2.6.14; equivalent units"
     },
     {
      "p": "Microbial action level, PW",
@@ -91,14 +180,12 @@
      "p": "Pure steam condensate",
      "v": "Meets the WFI monograph; microbial testing not required",
      "m": "USP Pure Steam; Annex 1, 6.17"
-    },
-    {
-     "p": "Steam quality for sterilizers",
-     "v": "Non-condensable gases ≤ 3.5 mL per 100 mL of condensate; dryness ≥ 0.95 metal loads, ≥ 0.90 other loads; superheat ≤ 25 K",
-     "m": "EN 285, clause 21"
     }
    ],
-   "note": "Limits apply at the point of use. Microbial action levels are guidance: your site sets its own from qualification data."
+   "note": "Limits apply at the point of use. Microbial action levels are guidance: your site sets its own from qualification data.",
+   "anchor": "limits",
+   "fold": 6,
+   "fold_noun": "limits"
   },
   {
    "type": "table",
@@ -140,24 +227,6 @@
      }
     ],
     [
-     "USP monographs: PW, WFI, Pure Steam",
-     "Made from drinking water; WFI by distillation or an equivalent or superior process",
-     "Basis of design: grade and route per point of use",
-     {
-      "t": "WFI by membrane",
-      "link": "sys-wfi-membrane"
-     }
-    ],
-    [
-     "USP <1231> Water for pharmaceutical purposes",
-     "Informational; 65–80 °C most commonly used for thermal sanitization",
-     "Sampling plan; alert and action level rationale",
-     {
-      "t": "Storage and distribution loops",
-      "link": "sys-storage"
-     }
-    ],
-    [
      "Ph. Eur. 0008 Purified water",
      "Revised in Ph. Eur. 12.3, in force 1 July 2026; stricter-of basis with USP",
      "Functional specification; nitrates tested at FAT for European release",
@@ -176,6 +245,24 @@
      }
     ],
     [
+     "USP monographs: PW, WFI, Pure Steam",
+     "Made from drinking water; WFI by distillation or an equivalent or superior process",
+     "Basis of design: grade and route per point of use",
+     {
+      "t": "WFI by membrane",
+      "link": "sys-wfi-membrane"
+     }
+    ],
+    [
+     "USP <1231> Water for pharmaceutical purposes",
+     "Informational; 65–80 °C most commonly used for thermal sanitization",
+     "Sampling plan; alert and action level rationale",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
      "EMA guideline on water for pharmaceutical use",
      "WFI for parenterals and biologics; PW minimum for most non-sterile forms; final rinse at product grade",
      "Water grade for each point of use in the basis of design",
@@ -185,7 +272,10 @@
      }
     ]
    ],
-   "as": "evidence"
+   "as": "evidence",
+   "anchor": "pharmacopoeia",
+   "fold": 4,
+   "fold_noun": "standards"
   },
   {
    "type": "table",
@@ -262,7 +352,11 @@
      }
     ]
    ],
-   "as": "evidence"
+   "as": "evidence",
+   "anchor": "gmp",
+   "fold": 4,
+   "fold_noun": "standards",
+   "ground": "dark"
   },
   {
    "type": "table",
@@ -285,9 +379,9 @@
      }
     ],
     [
-     "ASME Section IX",
-     "Qualified procedure and operator for every orbital weld; continuity log",
-     "Procedure and operator qualification records",
+     "CSA B51",
+     "A Canadian registration number (CRN) from the province of installation for pressure-retaining stills, generators, tanks and fittings",
+     "CRN registration; vessel data reports",
      {
       "t": "Fabrication",
       "link": "svc-fabrication"
@@ -300,6 +394,15 @@
      {
       "t": "Process design and engineering",
       "link": "svc-design"
+     }
+    ],
+    [
+     "ASME Section IX",
+     "Qualified procedure and operator for every orbital weld; continuity log",
+     "Procedure and operator qualification records",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
      }
     ],
     [
@@ -330,15 +433,6 @@
      }
     ],
     [
-     "CSA B51",
-     "A Canadian registration number (CRN) from the province of installation for pressure-retaining stills, generators, tanks and fittings",
-     "CRN registration; vessel data reports",
-     {
-      "t": "Fabrication",
-      "link": "svc-fabrication"
-     }
-    ],
-    [
      "CSA C22.2 No. 286; UL 508A",
      "Panels built and marked to [panel certification mark held, or field evaluation used]",
      "Panel certification label and report",
@@ -348,7 +442,10 @@
      }
     ]
    ],
-   "as": "evidence"
+   "as": "evidence",
+   "anchor": "engineering",
+   "fold": 4,
+   "fold_noun": "standards"
   },
   {
    "type": "grid",
@@ -420,7 +517,7 @@
   },
   {
    "type": "related",
-   "h": "Related pages",
+   "h": "Where the proof lives",
    "items": [
     "cmp-documentation",
     "cmp-quality",
@@ -433,7 +530,7 @@
  ],
  "cta": {
   "h": "Send your URS. We return a compliance matrix.",
-  "body": "A process engineer maps each requirement to a standard, design feature and test, and replies within [compliance matrix response time, working days].",
+  "body": "A process engineer maps each requirement to a standard, design feature and test.",
   "button": "Request a compliance matrix",
   "link": "contact-proposal",
   "intent": "Compliance matrix for your URS",
@@ -445,7 +542,12 @@
    "Province of installation",
    "Validation approach and protocol templates",
    "Supplier questionnaire or quality agreement"
-  ]
+  ],
+  "returns": [
+   "Compliance matrix for your URS",
+   "Standard, design feature and test per requirement"
+  ],
+  "turnaround": "[compliance matrix response time, working days]"
  },
  "todo": [
   "Certifications actually held: ISO 9001 status, certificate number, scope, registrar and expiry (or target date); downloadable copies",

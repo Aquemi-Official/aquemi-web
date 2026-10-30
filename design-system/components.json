@@ -20,6 +20,16 @@
  },
  "components": [
   {
+   "name": "Icon",
+   "readme": "design-system/components/Icon/README.md",
+   "preview": "design-system/components/Icon/preview.html",
+   "group": "Foundations",
+   "height": "1180",
+   "width": "1100",
+   "subtitle": "24 line-art spots in list rows",
+   "summary": "Icon is a small line-art spot of one piece of water-system equipment or one document, painted with a colour token, that lets a list row be recognised before it is read."
+  },
+  {
    "name": "Illustration",
    "readme": "design-system/components/Illustration/README.md",
    "preview": "design-system/components/Illustration/preview.html",
@@ -113,9 +123,9 @@
    "readme": "design-system/components/CaseStudy/README.md",
    "preview": "design-system/components/CaseStudy/preview.html",
    "group": "Page sections",
-   "height": "1700",
+   "height": "3000",
    "width": "1100",
-   "subtitle": "Fact boxes and outcome figure; second awaits its figure; third is a template with status, profile and method",
+   "subtitle": "Fact boxes and outcome figure; second awaits its figure; third is a template with status, profile and method; fourth is a project record (drawing, outcomes, timeline)",
    "summary": "CaseStudy summarizes a delivered project as framed fact boxes (client, problem, system delivered) beside one large measured-outcome figure."
   },
   {
@@ -129,14 +139,24 @@
    "summary": "Closing is the call to action at the end of every page: a very large headline in a framed panel on the navy band, one lead sentence, an optional proof readout with one confirmed figure, and the primary button."
   },
   {
+   "name": "ContactRoutes",
+   "readme": "design-system/components/ContactRoutes/README.md",
+   "preview": "design-system/components/ContactRoutes/preview.html",
+   "group": "Page sections",
+   "height": "820",
+   "width": "1100",
+   "subtitle": "Three ways in: proposal (this page), urgent service with the phone line, shop visit; each with steps and a response clock",
+   "summary": "ContactRoutes sets the ways into Aquemi side by side as cards, each with its own next steps (1 → 2 → 3) and response clock, so a visitor on a contact page sees which route fits before the form: request a proposal, production stopped (call the service line), or visit the shop."
+  },
+  {
    "name": "DocList",
    "readme": "design-system/components/DocList/README.md",
    "preview": "design-system/components/DocList/preview.html",
    "group": "Page sections",
-   "height": "640",
-   "width": "1000",
-   "subtitle": "Documentation package: index, document code, name",
-   "summary": "DocList names the documents delivered with a system as a grid of numbered tiles, each led by the short code a validation team files it under."
+   "height": "760",
+   "width": "1100",
+   "subtitle": "Turnover binder: folder cards with index and code tabs, key documents first",
+   "summary": "DocList shows the documents delivered with a system as a turnover binder: numbered folder cards in a binder frame, each folder tab carrying the short code a validation team files it under, with the deciding documents first and emphasized."
   },
   {
    "name": "EvidenceMap",
@@ -147,6 +167,16 @@
    "width": "1100",
    "subtitle": "Standard, how we meet it, the document that proves it",
    "summary": "EvidenceMap maps each requirement or standard to how we meet it and the document that proves it, for the validation lead asking \"where is the proof?\"."
+  },
+  {
+   "name": "Explainer",
+   "readme": "design-system/components/Explainer/README.md",
+   "preview": "design-system/components/Explainer/preview.html",
+   "group": "Page sections",
+   "height": "720",
+   "width": "1100",
+   "subtitle": "One idea as a token-drawn figure plus numbered callouts: endotoxin margin",
+   "summary": "Explainer sets out one idea as a figure plus three or four short numbered callouts instead of paragraphs, for a mechanism a reader should see at a glance (endotoxin margin set by the feed, what an upgrade costs in requalification)."
   },
   {
    "name": "FAQ",
@@ -199,6 +229,16 @@
    "summary": "LinkGrid sets out a list of choices (services, industries, systems, upgrade types) as rows of the shared list grammar: index, title with an arrow when it links, one line, an optional standard tag, and the linked page's drawing small at the row end on desktop."
   },
   {
+   "name": "NotesRegister",
+   "readme": "design-system/components/NotesRegister/README.md",
+   "preview": "design-system/components/NotesRegister/preview.html",
+   "group": "Page sections",
+   "height": "980",
+   "width": "1100",
+   "subtitle": "Planned notes as a revision register, filtered by topic",
+   "summary": "NotesRegister lists technical notes as an engineering drawing register (a revision table): date, note number, topic, title and standard, with topic filter chips and the latest or next planned note in a larger panel beside it."
+  },
+  {
    "name": "OptionList",
    "readme": "design-system/components/OptionList/README.md",
    "preview": "design-system/components/OptionList/preview.html",
@@ -207,6 +247,16 @@
    "width": "1200",
    "subtitle": "Configuration options as hairline rows: index, option, one line",
    "summary": "OptionList shows the configuration choices for a system as rows of the shared list grammar: index, option name and one line on what it does."
+  },
+  {
+   "name": "ParameterCallouts",
+   "readme": "design-system/components/ParameterCallouts/README.md",
+   "preview": "design-system/components/ParameterCallouts/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1100",
+   "subtitle": "Skid design parameters called out on the equipment drawing, the rest folded below",
+   "summary": "ParameterCallouts lays a system's design parameters on its own equipment drawing, with leader lines from numbered labels to the part each one is about."
   },
   {
    "name": "ProcessDiagram",
@@ -223,9 +273,9 @@
    "readme": "design-system/components/ProcessSteps/README.md",
    "preview": "design-system/components/ProcessSteps/preview.html",
    "group": "Page sections",
-   "height": "480",
+   "height": "1000",
    "width": "1100",
-   "subtitle": "How a project runs, as numbered hairline rows",
+   "subtitle": "A sequence as hairline rows, routed through hold points the client signs",
    "summary": "ProcessSteps shows a real sequence (a project, a qualification, a service visit) as rows of the shared list grammar: index, step name and what happens."
   },
   {
@@ -289,6 +339,16 @@
    "summary": "StandardsGrid lists the standards Aquemi designs to as numbered cards joined by thin connector lines, as a section of its own under a large headline."
   },
   {
+   "name": "StandardsMap",
+   "readme": "design-system/components/StandardsMap/README.md",
+   "preview": "design-system/components/StandardsMap/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1100",
+   "subtitle": "Zones of the water system on one pipe, each labelled with the standards that govern it",
+   "summary": "StandardsMap is a plant map of the water system: each zone (generation, storage and distribution, pure steam, controls and data, fabrication, qualification) is a framed area labelled with the standards that govern it, and every code jumps to the row further down the page that proves it."
+  },
+  {
    "name": "Versus",
    "readme": "design-system/components/Versus/README.md",
    "preview": "design-system/components/Versus/preview.html",
@@ -297,6 +357,16 @@
    "width": "1100",
    "subtitle": "Two routes across a spine of factors, with a verdict for each",
    "summary": "Versus sets two routes face to face across a spine of factors, for a buyer choosing one of two (hot or ambient WFI, multi-effect or vapour compression)."
+  },
+  {
+   "name": "VisitRoute",
+   "readme": "design-system/components/VisitRoute/README.md",
+   "preview": "design-system/components/VisitRoute/preview.html",
+   "group": "Page sections",
+   "height": "780",
+   "width": "1100",
+   "subtitle": "A preventive maintenance visit as numbered stops on one route, ending in sign-off",
+   "summary": "VisitRoute lays a visit's checks out as numbered stops on one dashed route, for a walk-round whose order matters, such as what a preventive maintenance visit covers, ending at the sign-off."
   },
   {
    "name": "WaterPath",
@@ -327,6 +397,16 @@
    "width": "1200",
    "subtitle": "The numbers a system page stands on, as a measurement strip",
    "summary": "KeyFacts is a measurement strip of three to six figures, each with its unit and the standard behind it, that tells an engineer what a page stands on before they read a word of copy."
+  },
+  {
+   "name": "LimitGauges",
+   "readme": "design-system/components/LimitGauges/README.md",
+   "preview": "design-system/components/LimitGauges/preview.html",
+   "group": "Data",
+   "height": "1000",
+   "width": "1100",
+   "subtitle": "Water limits as a panel of instruments: the limit marked on each dial, the basis as tags",
+   "summary": "LimitGauges shows a block of water or steam quality limits as a panel of small instruments, one dial per limit, so a reader sees at a glance which side of each number passes."
   },
   {
    "name": "PlanTiers",

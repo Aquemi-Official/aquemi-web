@@ -7,7 +7,7 @@
  "path": "/compliance/quality/",
  "eyebrow": "QUALITY · SUPPLIER AUDIT · ISO 9001:2015",
  "headline": "Audit our quality system before you award the contract",
- "lead": "Your quality unit has to qualify us as a supplier. Here is how our quality management system (QMS) works, the record each process leaves, and how to audit it. [ISO 9001 status, registrar and expiry]",
+ "lead": "Your quality unit must qualify us as a supplier. Here is our quality management system (QMS), the record each process leaves, and how to audit it. [ISO 9001 status, registrar and expiry]",
  "facts": [
   {
    "v": "EN 10204 3.1",
@@ -43,7 +43,7 @@
    "type": "table",
    "nav": "Processes",
    "h": "Our quality processes and the record each leaves",
-   "intro": "An auditor picks a weld, a certificate or a change and asks how it was controlled. Each process leaves a record; where your quality agreement asks more, it governs.",
+   "intro": "An auditor picks a weld, a certificate or a change and asks how it was controlled. Your quality agreement governs where it asks more.",
    "cols": [
     "Process",
     "What it controls",
@@ -53,13 +53,13 @@
    "rows": [
     [
      "Document control",
-     "Numbered, approved documents; only the current revision is issued, superseded ones withdrawn and kept",
+     "Only the current approved revision is issued; superseded ones withdrawn and kept",
      "Document register; client comment logs",
      "7.5"
     ],
     [
      "Change control",
-     "Changes after approval assessed for impact and approved before work continues; changes to documents you approved need your approval",
+     "Impact assessed and approved before work continues; your approval for documents you approved",
      "Change request with impact assessment; change control register",
      "6.3; 8.5.6"
     ],
@@ -71,13 +71,13 @@
     ],
     [
      "Supplier control",
-     "Product-contact and special-process suppliers approved before use and reviewed on a schedule",
+     "Product-contact and special-process suppliers approved before use, reviewed on a schedule",
      "Approved supplier list; incoming inspection records",
      "8.4"
     ],
     [
      "Identification and traceability",
-     "Every product-contact component traced by heat, lot or serial number to its weld and drawing",
+     "Product-contact components traced by heat, lot or serial number to weld and drawing",
      "Material log against EN 10204 3.1 certificates; weld log and maps",
      "8.5.2"
     ],
@@ -94,12 +94,13 @@
      "9.2; 9.3"
     ]
    ],
-   "as": "evidence"
+   "as": "evidence",
+   "fold": 4,
+   "fold_noun": "processes"
   },
   {
    "type": "steps",
    "nav": "NCR and CAPA",
-   "eyebrow": "NONCONFORMANCE AND CAPA",
    "h": "How a defect is found, held and closed",
    "items": [
     {
@@ -108,15 +109,16 @@
     },
     {
      "t": "Disposition",
-     "d": "Aquemi quality decides: reject, rework or accept as is. Accept as is, or a repair outside an approved document, needs your approval."
+     "d": "Aquemi quality decides: reject, rework or accept as is. Accept as is, or a repair outside an approved document, needs your approval.",
+     "hold": "You"
     },
     {
      "t": "Repair",
-     "d": "A rejected product-contact weld is cut out, not ground or re-fused; its replacement gets a new weld number."
+     "d": "A rejected product-contact weld is cut out, never ground or re-fused; the replacement gets a new weld number."
     },
     {
      "t": "Root cause and CAPA",
-     "d": "For repeat, systemic or client-reported nonconformances we find the cause, change the procedure, training, supplier or equipment, and check other work at risk."
+     "d": "Repeat, systemic or client-reported: we find the cause, change the procedure, training, supplier or equipment, and check other work at risk."
     },
     {
      "t": "Effectiveness check",
@@ -132,7 +134,7 @@
    "type": "table",
    "nav": "Suppliers",
    "h": "What we require from our suppliers",
-   "intro": "Each approved supplier is reviewed every [supplier review interval, months]. A supplier with an open CAPA is not used for your order until it closes.",
+   "intro": "Approved suppliers are reviewed every [supplier review interval, months]. One with an open CAPA is not used for your order until it closes.",
    "cols": [
     "Supply",
     "What we require",
@@ -150,11 +152,6 @@
      "Compound and grade checked; like-for-like replacement only"
     ],
     [
-     "Membranes, electrodeionization (EDI) and resin",
-     "Manufacturer's certificates with serial or lot numbers",
-     "Serial and lot numbers recorded at receipt and installation"
-    ],
-    [
      "Electropolishing",
      "SF4: Ra ≤ 0.38 µm (15 µin) to ASME BPE; [in-house or named subcontractor]",
      "Profilometer Ra readings at receipt; certificate per component"
@@ -165,11 +162,18 @@
      "Certificate checked for chemistry, temperature, contact time and verification test"
     ],
     [
+     "Membranes, electrodeionization (EDI) and resin",
+     "Manufacturer's certificates with serial or lot numbers",
+     "Serial and lot numbers recorded at receipt and installation"
+    ],
+    [
      "Pressure vessels and control panels",
      "ASME VIII Div. 1 vessels with a Canadian registration number (CRN) under CSA B51; CSA C22.2 No. 286 or UL 508A panels",
      "Data reports reviewed; panel label checked"
     ]
-   ]
+   ],
+   "fold": 3,
+   "fold_noun": "supply categories"
   },
   {
    "type": "spec",
@@ -194,16 +198,6 @@
      "m": "Instrument number on every record it produced"
     },
     {
-     "p": "Interval and reference",
-     "v": "[calibration interval by instrument type, months]",
-     "m": "[calibration provider and accreditation held]"
-    },
-    {
-     "p": "Your installed instruments",
-     "v": "Calibrated before handover; one as-found and as-left certificate each",
-     "m": "Turnover package"
-    },
-    {
      "p": "Welders and inspectors",
      "v": "Orbital welders qualified to ASME Section IX, with a continuity log; borescope inspectors trained to ASME BPE criteria",
      "m": "[weld inspector qualification, e.g. CWB or AWS]"
@@ -212,19 +206,37 @@
      "p": "Good documentation practice",
      "v": "Trained before signing any test record: contemporaneous entries, corrections struck through and initialled, no blank fields",
      "m": "Training matrix by role"
+    },
+    {
+     "p": "Your installed instruments",
+     "v": "Calibrated before handover; one as-found and as-left certificate each",
+     "m": "Turnover package"
+    },
+    {
+     "p": "Interval and reference",
+     "v": "[calibration interval by instrument type, months]",
+     "m": "[calibration provider and accreditation held]"
     }
-   ]
+   ],
+   "fold": 3,
+   "fold_noun": "controls"
   },
   {
    "type": "grid",
    "nav": "Certificates",
    "h": "Certifications we hold",
-   "intro": "A certificate appears here only once we hold it, with its number, scope, expiry and a copy. The standards on this page are what we work to.",
+   "intro": "A certificate appears here only once we hold it, with number, scope, expiry and a copy.",
    "items": [
     {
      "t": "Quality management system",
      "d": "[ISO 9001 status, registrar and expiry]",
      "tag": "ISO 9001"
+    },
+    {
+     "t": "Welding",
+     "d": "[welding certification held, e.g. CWB CSA W47.1]",
+     "tag": "ASME IX",
+     "link": "svc-fabrication"
     },
     {
      "t": "Pressure equipment",
@@ -238,12 +250,6 @@
      "tag": "CSA C22.2 No. 286"
     },
     {
-     "t": "Welding",
-     "d": "[welding certification held, e.g. CWB CSA W47.1]",
-     "tag": "ASME IX",
-     "link": "svc-fabrication"
-    },
-    {
      "t": "Health and safety",
      "d": "[safety certification held, e.g. provincial COR]",
      "tag": "COR"
@@ -253,38 +259,31 @@
      "d": "[contractor platforms registered on, or none]",
      "tag": "Prequalification"
     }
-   ]
+   ],
+   "fold": 2,
+   "fold_noun": "certificates"
   },
   {
-   "type": "table",
+   "type": "options",
    "nav": "Audit us",
    "h": "Four ways to qualify us as a supplier",
-   "cols": [
-    "Route",
-    "What you get",
-    "When it fits"
-   ],
-   "rows": [
-    [
-     "Quality questionnaire pack",
-     "Our questionnaire, certificates, procedure list and redacted sample records; yours completed within [questionnaire turnaround, working days]",
-     "Onboarding, a request for proposal, or prequalification"
-    ],
-    [
-     "Remote audit",
-     "A video walkthrough with our quality lead, records traced end to end; [live shop view offered, yes or no]",
-     "Desk audits, or before a visit. Notice: [remote audit notice, working days]"
-    ],
-    [
-     "On-site supplier audit",
-     "Your auditors at [shop location, city and province]: NCR, CAPA, change and calibration files, training records, shop floor",
-     "Before award, or periodic requalification. Notice: [on-site audit notice, working days]"
-    ],
-    [
-     "Witness and hold points",
-     "Your inspector at agreed points: material review, coupons, borescope review, pressure test, passivation and factory acceptance test (FAT)",
-     "After you order, agreed before fabrication"
-    ]
+   "items": [
+    {
+     "t": "Quality questionnaire pack",
+     "d": "Our questionnaire, certificates, procedure list and redacted sample records, or yours completed within [questionnaire turnaround, working days]. For onboarding, tenders or prequalification."
+    },
+    {
+     "t": "Remote audit",
+     "d": "A video walkthrough, records traced end to end; [live shop view offered, yes or no]. For desk audits; [remote audit notice, working days] notice."
+    },
+    {
+     "t": "On-site supplier audit",
+     "d": "NCR, CAPA, change, calibration and training files and the shop floor, at [shop location, city and province]. Before award; [on-site audit notice, working days] notice."
+    },
+    {
+     "t": "Witness and hold points",
+     "d": "Your inspector at material review, coupons, borescope review, pressure test, passivation and factory acceptance test (FAT), agreed before fabrication."
+    }
    ]
   },
   {
@@ -292,7 +291,7 @@
    "nav": "Request",
    "anchor": "audit",
    "h": "Request an audit or questionnaire pack",
-   "intro": "Our quality lead replies within [audit request response time, working days] with the pack or proposed audit dates and an agenda. No sales call needed.",
+   "intro": "Our quality lead replies within [audit request response time, working days] with the pack, or proposed audit dates and an agenda.",
    "submit": "Send my request",
    "fields": [
     {
@@ -301,7 +300,7 @@
      "required": true,
      "options": [
       "Quality questionnaire pack",
-      "Complete our own supplier questionnaire",
+      "Complete our own questionnaire",
       "Remote audit",
       "On-site supplier audit",
       "Review of our quality agreement"
@@ -325,19 +324,13 @@
      ]
     },
     {
-     "kind": "text",
-     "label": "Preferred audit dates",
-     "required": false,
-     "help": "For a remote or on-site audit."
-    },
-    {
      "kind": "file",
      "label": "Your questionnaire, audit checklist or quality agreement",
      "required": false,
      "help": "PDF, Word or Excel."
     },
     {
-     "kind": "radio",
+     "kind": "select",
      "label": "Non-disclosure agreement",
      "required": false,
      "options": [
@@ -404,20 +397,18 @@
   },
   {
    "type": "related",
-   "h": "Related pages",
+   "h": "What auditors read next",
    "items": [
     "cmp-documentation",
-    "compliance",
     "svc-fabrication",
     "svc-fat-sat",
-    "svc-cq",
-    "ind-cdmo"
+    "svc-cq"
    ]
   }
  ],
  "cta": {
   "h": "Qualify us before you shortlist us",
-  "body": "Send your questionnaire, audit checklist or quality agreement. Our quality lead replies within [audit request response time, working days].",
+  "body": "Send your questionnaire, audit checklist or quality agreement.",
   "button": "Request a supplier audit",
   "link": "contact-proposal",
   "intent": "Supplier qualification: audit, references, shop visit|On-site supplier audit",
@@ -425,9 +416,13 @@
    "Your questionnaire or supplier portal link",
    "The scope you are buying",
    "Audit agenda and records to sample",
-   "Hold and witness points, once ordered",
-   "Your NDA, if your procedures need one"
-  ]
+   "Hold and witness points, once ordered"
+  ],
+  "returns": [
+   "Our pack, or your questionnaire completed",
+   "Proposed audit dates and an agenda"
+  ],
+  "turnaround": "[audit request response time, working days]"
  },
  "todo": [
   "KEY: ISO 9001 status (hero lead, certificates grid, FAQ): certified (registrar, certificate number, scope, expiry, downloadable copy) or QMS built to ISO 9001:2015 with target certification date. Never claim certification until held",

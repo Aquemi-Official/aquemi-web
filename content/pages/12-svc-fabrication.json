@@ -201,7 +201,8 @@
     },
     {
      "t": "Receive and verify material",
-     "d": "Each heat checked against its 3.1 certificate and logged. Hold point: material review."
+     "d": "Each heat checked against its 3.1 certificate and logged.",
+     "hold": "You"
     },
     {
      "t": "Qualify the set-up",
@@ -217,7 +218,8 @@
     },
     {
      "t": "Test and survey",
-     "d": "Pressure test, slope survey and dead leg check on every run. Hold point: pressure test."
+     "d": "Pressure test, slope survey and dead leg check on every run.",
+     "hold": "You"
     },
     {
      "t": "Clean and passivate",

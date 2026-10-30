@@ -106,7 +106,8 @@
     },
     {
      "t": "Concept and route assessment",
-     "d": "Demand profile, route options, PFD, mass balance and a budget at [concept estimate accuracy, ± %]. You approve the basis of design."
+     "d": "Demand profile, route options, PFD, mass balance and a budget at [concept estimate accuracy, ± %]. You approve the basis of design.",
+     "hold": "You"
     },
     {
      "t": "Basic design",
@@ -118,7 +119,8 @@
     },
     {
      "t": "Design review and design freeze",
-     "d": "Review against the URS and every critical design element. Your quality unit approves DQ; later changes go through change control."
+     "d": "Review against the URS and every critical design element. Your quality unit approves DQ; later changes go through change control.",
+     "hold": "Your quality unit"
     },
     {
      "t": "Into fabrication",

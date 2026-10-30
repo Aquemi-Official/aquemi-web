@@ -21,6 +21,51 @@
  },
  "blocks": [
   {
+   "type": "contact-routes",
+   "h": "Three ways in",
+   "routes": [
+    {
+     "t": "Request a proposal or review",
+     "d": "New system, upgrade or document review: send your URS and water data.",
+     "steps": [
+      "Choose your request; send what you have",
+      "An engineer reads it and replies by name",
+      "Written answer, then a firm proposal"
+     ],
+     "clock": "Written reply within [proposal response time, working days]",
+     "link": "contact-proposal",
+     "current": true,
+     "action": "Choose your request"
+    },
+    {
+     "t": "Production stopped or water out of specification",
+     "d": "Severity 1. Answered [service phone hours]. Do not wait for a form.",
+     "phone": "[service phone number]",
+     "steps": [
+      "Call the service line",
+      "Triage call confirms the severity",
+      "Remote diagnosis, then a technician on site"
+     ],
+     "clock": "Technician on site within [severity 1 on-site response time, hours]",
+     "link": "contact-service",
+     "urgent": true,
+     "action": "Log a service request"
+    },
+    {
+     "t": "Visit or audit the shop",
+     "d": "Shop tour, supplier audit or FAT witness at [shop location, city and province].",
+     "steps": [
+      "Tell us the purpose, dates and group",
+      "We reply with a date and an agenda",
+      "Records and test bay ready on the day"
+     ],
+     "clock": "Date and agenda within [visit booking reply time, working days]",
+     "link": "contact-locations",
+     "action": "Book a visit"
+    }
+   ]
+  },
+  {
    "type": "form",
    "anchor": "intake",
    "nav": "Send",
@@ -405,66 +450,53 @@
    ]
   },
   {
-   "type": "spec",
+   "type": "options",
    "nav": "Requests",
    "h": "What you get back, and when",
-   "cols": [
-    "Request",
-    "What you get back",
-    "Turnaround"
-   ],
-   "rows": [
+   "items": [
     {
-     "p": "Feedwater review",
-     "v": "Seasonal design basis for pretreatment",
-     "m": "[feedwater review turnaround, working days]"
+     "t": "Sizing and budget proposal",
+     "d": "Process flow diagram, key specifications, budget price. Turnaround: [budget proposal turnaround, working days]."
     },
     {
-     "p": "URS gap review",
-     "v": "Gaps marked, with a compliance matrix",
-     "m": "[URS review turnaround, working days]"
+     "t": "URS gap review",
+     "d": "Gaps marked, with a compliance matrix. Turnaround: [URS review turnaround, working days]."
     },
     {
-     "p": "Other document reviews",
-     "v": "Loop, controls or fabrication spec, commissioning and qualification (C&Q) plan, factory acceptance test (FAT) list",
-     "m": "[document review turnaround, working days]"
+     "t": "Route assessment",
+     "d": "Which systems and WFI route, and why. Turnaround: [route assessment turnaround, working days]."
     },
     {
-     "p": "Water scope review",
-     "v": "Grade per step, systems, qualification scope",
-     "m": "[scope review turnaround, working days]"
+     "t": "Existing system assessment",
+     "d": "Scope, time on site and price. Turnaround: [assessment response time, working days]."
     },
     {
-     "p": "Route assessment",
-     "v": "Which systems and WFI route, and why",
-     "m": "[route assessment turnaround, working days]"
+     "t": "Feedwater review",
+     "d": "Seasonal design basis for pretreatment. Turnaround: [feedwater review turnaround, working days]."
     },
     {
-     "p": "Compliance matrix",
-     "v": "Requirement, standard, design feature, test",
-     "m": "[compliance matrix response time, working days]"
+     "t": "Water scope review",
+     "d": "Grade per step, systems, qualification scope. Turnaround: [scope review turnaround, working days]."
     },
     {
-     "p": "Sizing and budget proposal",
-     "v": "Process flow diagram, key specifications, budget price",
-     "m": "[budget proposal turnaround, working days]"
+     "t": "Compliance matrix",
+     "d": "Requirement, standard, design feature, test. Turnaround: [compliance matrix response time, working days]."
     },
     {
-     "p": "Existing system assessment",
-     "v": "Scope, time on site and price",
-     "m": "[assessment response time, working days]"
+     "t": "Other document reviews",
+     "d": "Loop, controls or fabrication spec, commissioning and qualification (C&Q) plan, factory acceptance test (FAT) list. Turnaround: [document review turnaround, working days]."
     },
     {
-     "p": "Supplier audit or questionnaire",
-     "v": "Completed pack, or audit dates",
-     "m": "[audit request response time, working days]"
+     "t": "Supplier audit or questionnaire",
+     "d": "Completed pack, or audit dates. Turnaround: [audit request response time, working days]."
     },
     {
-     "p": "Reference call or shop visit",
-     "v": "A reference where clients agree, or dates",
-     "m": "[reference request response time, working days]"
+     "t": "Reference call or shop visit",
+     "d": "A reference where clients agree, or dates. Turnaround: [reference request response time, working days]."
     }
-   ]
+   ],
+   "fold": 5,
+   "fold_noun": "requests"
   },
   {
    "type": "steps",
@@ -491,7 +523,9 @@
      "t": "A firm proposal when ready",
      "d": "Fixed scope and price, documentation list and schedule, valid for [proposal validity, days]."
     }
-   ]
+   ],
+   "fold": 3,
+   "fold_noun": "steps"
   },
   {
    "type": "faq",
@@ -526,10 +560,8 @@
   },
   {
    "type": "related",
-   "h": "Before you send, or instead",
+   "h": "Before you send",
    "items": [
-    "contact-service",
-    "contact-locations",
     "cmp-documentation",
     "cmp-quality"
    ]
@@ -548,7 +580,13 @@
    "Points-of-use list with flows",
    "Site constraints and shutdown window",
    "Target dates: order, FAT, release"
-  ]
+  ],
+  "returns": [
+   "A written answer, signed by its engineer",
+   "Marked-up URS or compliance matrix",
+   "Process flow diagram and budget price"
+  ],
+  "turnaround": "[proposal response time, working days]"
  },
  "todo": [
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
@@ -568,7 +606,8 @@
   "French-speaking engineers available for replies",
   "Regions served outside Canada",
   "CRM routing for each of the 9 requests (intent value in the submission) and source-page tracking",
-  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)"
+  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
+  "Contact routes: service phone number and hours and severity 1 on-site response time (same as contact-service); shop location and visit booking reply time (same as contact-locations)"
  ],
  "primary_cta_link": "#intake",
  "facts": [

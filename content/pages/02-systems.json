@@ -26,43 +26,50 @@
      "t": "Purified Water (PW) generation",
      "d": "Reverse osmosis (RO) and electrodeionization (EDI) skids: PW below 1.3 µS/cm at 25 °C and 500 ppb total organic carbon (TOC), hot water sanitizable.",
      "tag": "USP <645>",
-     "link": "sys-pw"
+     "link": "sys-pw",
+     "icon": "ro-membrane"
     },
     {
      "t": "WFI by distillation",
      "d": "Multi-effect and vapour compression stills making hot WFI at < 0.25 EU/mL endotoxin.",
      "tag": "USP <85>",
-     "link": "sys-wfi-distillation"
+     "link": "sys-wfi-distillation",
+     "icon": "still"
     },
     {
      "t": "WFI by membrane",
      "d": "Double-pass RO, EDI and ultrafiltration (UF): ambient WFI without plant steam for generation.",
      "tag": "Ph. Eur. 0169",
-     "link": "sys-wfi-membrane"
+     "link": "sys-wfi-membrane",
+     "icon": "edi"
     },
     {
      "t": "Pure steam generators",
      "d": "Condensate that meets WFI limits; steam that passes EN 285 at the sterilizer.",
      "tag": "EN 285",
-     "link": "sys-pure-steam"
+     "link": "sys-pure-steam",
+     "icon": "pure-steam"
     },
     {
      "t": "Storage and distribution loops",
      "d": "Turbulent flow at peak draw, branches at L/D ≤ 2, hot WFI loops above 70 °C, ambient loops sanitized by heat or ozone.",
      "tag": "ASME BPE",
-     "link": "sys-storage"
+     "link": "sys-storage",
+     "icon": "loop"
     },
     {
      "t": "Pretreatment",
      "d": "Media, softening and carbon or bisulfite: no detectable chlorine or chloramine at the RO inlet, silt density index (SDI) ≤ 3.",
      "tag": "USP <1231>",
-     "link": "sys-pretreatment"
+     "link": "sys-pretreatment",
+     "icon": "softener"
     },
     {
      "t": "Monitoring and controls",
      "d": "Online TOC and conductivity on the raw reading; audit trails that meet 21 CFR Part 11 and EU GMP Annex 11.",
      "tag": "21 CFR Part 11",
-     "link": "sys-monitoring"
+     "link": "sys-monitoring",
+     "icon": "toc"
     }
    ]
   },

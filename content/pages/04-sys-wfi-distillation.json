@@ -134,11 +134,49 @@
   },
   {
    "type": "prose",
+   "as": "explainer",
    "h": "Endotoxin margin starts at your PW feed",
    "nav": "Endotoxin",
-   "body": [
-    "A still cuts endotoxin by a fixed factor, not to a fixed level, so your margin depends on the Purified Water (PW) feed. The FDA Guide to Inspections of High Purity Water Systems says many still makers guarantee only a 2.5 to 3 log reduction. So we design still and feed as one: the guaranteed reduction sets your PW endotoxin target in the functional specification."
-   ]
+   "points": [
+    {
+     "t": "A fixed factor, not a fixed level",
+     "d": "A still cuts endotoxin by a set number of logs, so what leaves it depends on what the Purified Water (PW) feed brings in."
+    },
+    {
+     "t": "Many stills guarantee 2.5 to 3 log",
+     "d": "That is the reduction many still makers guarantee, according to the FDA Guide to Inspections of High Purity Water Systems."
+    },
+    {
+     "t": "250 EU/mL in, 0.25 EU/mL out",
+     "d": "A 3 log still fed at 250 EU/mL delivers 0.25 EU/mL, which already fails the < 0.25 EU/mL limit."
+    },
+    {
+     "t": "Still and feed designed as one",
+     "d": "The guaranteed reduction sets your PW endotoxin target in the functional specification, and we design the PW system to hold it."
+    }
+   ],
+   "figure": {
+    "kind": "levels",
+    "limit": {
+     "v": 0.25,
+     "unit": "EU/mL",
+     "label": "< 0.25 EU/mL limit"
+    },
+    "bars": [
+     {
+      "label": "PW feed at 250 EU/mL",
+      "v": 0.25,
+      "note": "WFI after a 3 log still: 0.25 EU/mL, which fails",
+      "n": 3
+     },
+     {
+      "label": "PW feed held to your target",
+      "level": "below",
+      "note": "WFI with margin under the limit",
+      "n": 4
+     }
+    ]
+   }
   },
   {
    "type": "diagram",

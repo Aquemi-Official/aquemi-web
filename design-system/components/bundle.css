@@ -115,6 +115,36 @@ a.aq-rows__row:focus-visible { outline: 2px solid var(--focus); outline-offset: 
 /* A micro sign inside uppercase labels stays µ (µS/cm), never M */
 .aq-unit { text-transform: none; }
 
+/* ---------- Icon: a small line-art spot (assets/icons/<name>.png) painted with a colour token through a mask ---------- */
+/* The file comes in through an inline mask-image so its URL resolves against the page, not this stylesheet. */
+.aq-icon {
+  display: inline-block; flex: none; width: var(--space-8); height: var(--space-8);
+  background-color: var(--ink-muted);
+  -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+}
+.aq-icon--ink { background-color: var(--ink); }
+.aq-icon--flow { background-color: var(--flow); }
+.aq-icon--on-navy { background-color: var(--on-navy-muted); }
+
+/* In a row (core.js wRow, item field icon): the icon takes the index column. It is taller than the title's line, so it
+   starts at the row's top and overhangs the line equally above and below instead of pushing the row taller. */
+.aq-rows__lead { display: flex; align-items: center; gap: var(--space-2); align-self: start; margin-block: calc(var(--space-1) * -1); }
+.aq-rows__lead .aq-index { line-height: var(--space-8); }
+/* Ordered steps keep their number beside the icon, so the index column widens. */
+.aq-rows:has(.aq-rows__lead--n) .aq-rows__row { grid-template-columns: var(--space-16) minmax(0, 4fr) minmax(0, 7fr); }
+a.aq-rows__row .aq-icon { transition: background-color 120ms; }
+a.aq-rows__row:hover .aq-icon { background-color: var(--flow); }
+@media (prefers-reduced-motion: reduce) { a.aq-rows__row .aq-icon { transition: none; } }
+
+/* Phones: 28 px (24 px is too small for these drawings), overhanging the 24 px title line by 2 px each side. */
+@container (max-width: 860px) {
+  .aq-icon { width: calc(var(--space-6) + var(--space-1)); height: calc(var(--space-6) + var(--space-1)); }
+  .aq-rows__lead { margin-block: calc(var(--space-1) / -2); gap: var(--space-1); }
+  .aq-rows__lead .aq-index { line-height: var(--space-6); }
+  .aq-rows:has(.aq-rows__lead--n) .aq-rows__row { grid-template-columns: var(--space-12) minmax(0, 1fr); }
+}
+
 /* ---------- Illustration: line art painted with a colour token through a mask ---------- */
 .aq-illustration { display: block; width: 100%; aspect-ratio: var(--ratio, 1); background-color: var(--ink-muted); -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
 /* The drawing comes in through an inline mask-image so its URL resolves against the page, not this stylesheet. */
@@ -651,6 +681,78 @@ a.aq-rows__row:focus-visible { outline: 2px solid var(--focus); outline-offset: 
   .aq-case__figure.is-empty .aq-ph { font-size: 15px; }
 }
 
+/* ---------- Project record (.aq-case--record): the case told as an engineering record ----------
+   Facts as hairline rows beside the system's equipment drawing with what changed pinned on it, then the measured
+   outcomes as large figures with the method beneath, then the order-to-release milestones. Same frame as a case. */
+.aq-case__label { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-case__brief { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); align-items: start; }
+.aq-case__brief.is-bare { grid-template-columns: minmax(0, 1fr); }
+.aq-case__entries { margin: 0; display: flex; flex-direction: column; }
+.aq-case__entry { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-3) 0; border-top: 1px solid var(--line); }
+.aq-case__entry:first-child { border-top: 0; padding-top: 0; }
+.aq-case__entry dd { font: 400 16px/26px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-case--record .aq-case__method { padding: var(--space-4); }
+
+/* Drawing: the page's equipment mask on a quiet raised panel; numbered flow marks pin what changed */
+.aq-case__drawing { margin: 0; display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
+.aq-case__art { padding: var(--space-4); background: var(--surface-raised); border: 1px solid var(--line); }
+/* The plate is the drawing's own square, so pin positions (% of the drawing) land on the equipment at any width */
+.aq-case__plate { position: relative; width: min(100%, 26rem); margin-inline: auto; }
+.aq-case__art .aq-illustration { max-width: none; }
+.aq-case__mark { flex: none; display: inline-grid; place-items: center; width: var(--space-6); height: var(--space-6); border-radius: var(--radius-pill); background: var(--flow); color: var(--surface); font: 500 12px/1 var(--font-mono); }
+.aq-case__pin { position: absolute; transform: translate(-50%, -50%); display: flex; border-radius: var(--radius-pill); box-shadow: 0 0 0 var(--space-1) var(--surface-raised), 0 0 0 calc(var(--space-1) + 1px) var(--flow); }
+.aq-case__changes { display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-case__changes ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-case__changes li { display: flex; align-items: flex-start; gap: var(--space-3); font: 400 15px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+
+/* Outcomes: 3-4 large figures in a row, each with its unit, what it is, and the method beneath */
+.aq-case__outcomes { display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-6); border-top: 1px solid var(--line-strong); }
+.aq-case__outcomes > .aq-case__result { margin: 0; font-size: 16px; line-height: 26px; }
+.aq-case__figures { margin: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: var(--space-6); }
+.aq-case__fig { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; padding-top: var(--space-4); box-shadow: inset 0 2px 0 var(--flow); }
+.aq-case__fig dt { order: 2; }
+.aq-case__fig dd { display: contents; }
+.aq-case__val { order: 1; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); row-gap: var(--space-1); min-width: 0; }
+.aq-case__fig .aq-case__num { font: 300 clamp(40px, 4.4cqi, 64px)/1 var(--font-mono); letter-spacing: -0.03em; overflow-wrap: anywhere; }
+.aq-case__fig .aq-case__num .aq-ph { font-size: 0.5em; vertical-align: middle; }
+.aq-case__fig .aq-case__unit { font: 400 18px/24px var(--font-sans); letter-spacing: 0; color: var(--ink); }
+.aq-case__how { order: 3; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; overflow-wrap: break-word; }
+
+/* Timeline: order to release, milestones as stops on one line */
+.aq-case__timeline { display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-6); border-top: 1px solid var(--line-strong); }
+.aq-case__timeline ol { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); }
+.aq-case__timeline li { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-1); padding-top: var(--space-6); text-align: center; min-width: 0; }
+.aq-case__timeline li::before { content: ""; position: absolute; top: calc(var(--space-2) - 0.5px); left: 0; right: 0; border-top: 1px solid var(--line-strong); }
+.aq-case__timeline li:first-child::before { left: 50%; }
+.aq-case__timeline li:last-child::before { right: 50%; }
+.aq-case__stop { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: var(--space-4); height: var(--space-4); border-radius: var(--radius-pill); background: var(--surface); border: 2px solid var(--flow); }
+.aq-case__timeline li:last-child .aq-case__stop { background: var(--flow); }
+.aq-case__mt { font: 500 14px/20px var(--font-sans); color: var(--ink); overflow-wrap: break-word; }
+.aq-case__when { font: 400 13px/20px var(--font-mono); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+
+@container (max-width: 860px) {
+  /* Phones: drawing first, then the facts, outcomes 2 x 2, then a vertical timeline */
+  .aq-case__brief { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .aq-case__drawing { order: -1; }
+  .aq-case__art { padding: var(--space-2); }
+  .aq-case__plate { width: min(100%, 17.5rem); }
+  .aq-case__entry { padding: var(--space-3) 0; }
+  .aq-case__entry dd { font-size: 15px; line-height: 24px; }
+  .aq-case__changes li { font-size: 14px; line-height: 22px; }
+  .aq-case__outcomes, .aq-case__timeline { padding-top: var(--space-4); }
+  .aq-case__figures { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+  .aq-case__fig .aq-case__num { font-size: clamp(32px, 11cqi, 44px); }
+  .aq-case__fig .aq-case__unit { font-size: 15px; line-height: 20px; }
+  .aq-case__how { font-size: 13px; line-height: 20px; }
+  .aq-case__timeline ol { grid-template-columns: minmax(0, 1fr); }
+  .aq-case__timeline li { flex-direction: row; flex-wrap: wrap; align-items: baseline; justify-content: space-between; column-gap: var(--space-3); padding: 0 0 var(--space-2) var(--space-8); text-align: left; }
+  .aq-case__timeline li::before { top: var(--space-2); bottom: 0; left: calc(var(--space-2) - 0.5px); right: auto; border-top: 0; border-left: 1px solid var(--line-strong); }
+  .aq-case__timeline li:first-child::before { left: calc(var(--space-2) - 0.5px); }
+  .aq-case__timeline li:last-child::before { display: none; }
+  .aq-case__timeline li:last-child { padding-bottom: 0; }
+  .aq-case__stop { top: var(--space-1); left: 0; transform: none; }
+}
+
 /* ---------- Closing: the call to action at the end of every page, on the navy band ---------- */
 /* A framed panel with corner registration marks: a very large headline, then the lead sentence and one proof readout
    on the left and the primary button bottom right. Sits on .aq-band--navy, which sets the ground, text colours and the
@@ -736,25 +838,153 @@ a.aq-rows__row:focus-visible { outline: 2px solid var(--focus); outline-offset: 
   .aq-closing__action .aq-btn { max-width: 100%; white-space: normal; height: auto; min-height: 44px; }
 }
 
-/* ---------- DocList ---------- */
-/* Desktop: tiles on a 6-column grid, three to a row; hairlines are the 1px grid gap showing the list's line background.
-   Each tile: the shared index (.aq-index) and the document code on one line, the name below. */
-.aq-docs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--line); border: 1px solid var(--line); }
-.aq-docs > li { grid-column: span 2; position: relative; min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-3); row-gap: var(--space-3); padding: var(--space-6); background: var(--surface); }
-/* Last rows widen to two tiles so no row is left short: 3n+2 items end with one row of two, 3n+1 items with two rows of two. */
-.aq-docs > li:where(:nth-child(3n+1):nth-last-child(2), :nth-child(3n+1):nth-last-child(2) ~ li,
-  :nth-child(3n+1):nth-last-child(4), :nth-child(3n+1):nth-last-child(4) ~ li) { grid-column: span 3; }
-.aq-docs__code { font: 400 20px/24px var(--font-mono); letter-spacing: -0.01em; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.aq-docs__name { flex-basis: 100%; min-width: 0; font: 400 15px/22px var(--font-sans); color: var(--ink); }
-.aq-docs__d { display: block; margin-top: var(--space-1); font-size: 14px; color: var(--ink-muted); }
+/* ---------- ContactRoutes: the ways in, each with its next steps and response clock (block contact-routes) ----------
+   Desktop: one card per route in equal columns on the navy, in data order (--o). Each card: marker, title, one line,
+   numbered steps on a riser, the response clock, then one action at the foot. The route for this page (is-current)
+   is framed in flow with a "This page" marker on its top edge. The urgent route (is-urgent, data-theme="light") sits
+   on limestone with its phone number set large. Phones: cards stack, urgent first (markup order). */
+.aq-contact-routes {
+  list-style: none; margin: 0; padding: var(--space-4) 0 0;
+  display: grid; grid-template-columns: repeat(var(--routes, 3), minmax(0, 1fr)); gap: var(--space-4); align-items: stretch;
+}
+.aq-contact-routes__route {
+  order: var(--o, 0); position: relative; min-width: 0;
+  display: flex; flex-direction: column; gap: var(--space-4);
+  padding: var(--space-8) var(--space-6) var(--space-6);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-sm); color: var(--ink);
+}
+.aq-contact-routes__route.is-current { background: var(--flow-tint); border-color: var(--flow); box-shadow: inset 0 0 0 1px var(--flow); }
+.aq-contact-routes__route.is-urgent { background: var(--limestone); color: var(--on-limestone); border-color: var(--line-strong); }
 
-/* Phone: a compact numbered list, "01  FS  Functional specification", index and codes in aligned columns. */
+/* Marker on the card's top edge: "This page", "Urgent" */
+.aq-contact-routes__mark {
+  position: absolute; top: 0; left: var(--space-6); transform: translateY(-50%); margin: 0;
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: 2px var(--space-2); background: var(--surface); border: 1px solid var(--flow); border-radius: var(--radius-sm);
+  font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--flow);
+}
+.aq-contact-routes__route.is-urgent .aq-contact-routes__mark { background: var(--limestone); border-color: var(--on-limestone); color: var(--on-limestone); }
+.aq-contact-routes__dot { width: 8px; height: 8px; border-radius: var(--radius-pill); background: var(--fail); }
+
+.aq-contact-routes__t { margin: 0; font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; color: inherit; overflow-wrap: break-word; text-wrap: balance; }
+.aq-contact-routes__d { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+.aq-contact-routes__route.is-urgent .aq-contact-routes__d { color: var(--on-limestone-muted); }
+
+/* Phone: the urgent route's number, set large */
+.aq-contact-routes__phone {
+  margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: var(--space-2); row-gap: var(--space-1);
+  padding: var(--space-4) 0; border-block: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+}
+.aq-contact-routes__phone .aq-contact-routes__icon { width: 16px; height: 16px; }
+.aq-contact-routes__num {
+  grid-column: 1 / -1; font: 500 28px/34px var(--font-sans); letter-spacing: -0.01em; color: inherit; text-decoration: none; overflow-wrap: anywhere;
+}
+a.aq-contact-routes__num:hover { text-decoration: underline; }
+
+/* Steps: numbered rings on a riser */
+.aq-contact-routes__steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-contact-routes__steps > li { position: relative; display: grid; grid-template-columns: var(--space-6) minmax(0, 1fr); column-gap: var(--space-3); align-items: start; }
+.aq-contact-routes__steps > li:not(:last-child)::after {
+  content: ""; position: absolute; left: calc(var(--space-6) / 2); top: var(--space-6); bottom: calc(-1 * var(--space-3));
+  border-left: 1px solid var(--flow);
+}
+.aq-contact-routes__route.is-urgent .aq-contact-routes__steps > li:not(:last-child)::after { border-left-color: var(--line-strong); }
+.aq-contact-routes__n {
+  display: grid; place-items: center; width: var(--space-6); height: var(--space-6); box-sizing: border-box;
+  border: 1px solid var(--flow); border-radius: var(--radius-pill);
+  font: 500 11px/1 var(--font-mono); color: var(--flow);
+}
+.aq-contact-routes__route.is-urgent .aq-contact-routes__n { border-color: var(--on-limestone); color: var(--on-limestone); }
+.aq-contact-routes__s { padding-top: 1px; font: 400 15px/22px var(--font-sans); color: inherit; overflow-wrap: break-word; text-wrap: pretty; }
+
+/* Response clock */
+.aq-contact-routes__clock {
+  margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: var(--space-2); row-gap: var(--space-1);
+  padding-top: var(--space-4); border-top: 1px solid var(--line);
+}
+.aq-contact-routes__icon { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; color: var(--ink-muted); }
+.aq-contact-routes__route.is-urgent .aq-contact-routes__icon { color: var(--on-limestone-muted); }
+.aq-contact-routes__k { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-contact-routes__route.is-urgent .aq-contact-routes__k { color: var(--on-limestone-muted); }
+.aq-contact-routes__route.is-urgent .aq-contact-routes__clock { border-top-color: color-mix(in srgb, currentColor 35%, transparent); }
+.aq-contact-routes__v { grid-column: 1 / -1; font: 500 15px/22px var(--font-sans); color: inherit; overflow-wrap: break-word; }
+
+/* Action at the foot of every card */
+.aq-contact-routes__action { margin-top: auto; padding-top: var(--space-2); }
+.aq-contact-routes__action .aq-btn { width: 100%; height: auto; min-height: 44px; padding-block: var(--space-2); justify-content: center; text-align: center; white-space: normal; }
+.aq-contact-routes__route.is-urgent .aq-btn--secondary { color: var(--on-limestone); border-color: var(--on-limestone); }
+
 @container (max-width: 860px) {
-  .aq-docs { grid-template-columns: var(--space-8) auto minmax(0, 1fr); gap: 0; background: none; border: 0; border-bottom: 1px solid var(--line); }
-  .aq-docs > li { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; column-gap: var(--space-3); align-items: baseline; padding: var(--space-3) 0; background: none; border-top: 1px solid var(--line); }
+  .aq-contact-routes { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding-top: var(--space-2); }
+  .aq-contact-routes__route { order: 0; gap: var(--space-3); padding: var(--space-6) var(--space-4) var(--space-4); }
+  /* the mono labels ("Call", "Response") stay for screen readers; the icon carries them on a phone */
+  .aq-contact-routes__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .aq-contact-routes__phone, .aq-contact-routes__clock { align-items: start; }
+  .aq-contact-routes__phone .aq-contact-routes__num, .aq-contact-routes__v { grid-column: 2; }
+  .aq-contact-routes__phone .aq-contact-routes__icon { margin-top: 7px; }
+  .aq-contact-routes__clock .aq-contact-routes__icon { margin-top: 3px; }
+  .aq-contact-routes__mark { left: var(--space-4); }
+  .aq-contact-routes__t { font-size: 20px; line-height: 26px; }
+  .aq-contact-routes__d { font-size: 14px; line-height: 20px; }
+  .aq-contact-routes__num { font-size: 24px; line-height: 30px; }
+  .aq-contact-routes__phone { padding-block: var(--space-3); }
+  .aq-contact-routes__steps { gap: var(--space-2); }
+  .aq-contact-routes__steps > li:not(:last-child)::after { bottom: calc(-1 * var(--space-2)); }
+  .aq-contact-routes__s { font-size: 14px; line-height: 20px; }
+  .aq-contact-routes__clock { padding-top: var(--space-3); }
+  .aq-contact-routes__v { font-size: 14px; line-height: 20px; }
+}
+
+/* ---------- DocList: the turnover binder ---------- */
+/* Desktop: a binder frame (surface-sunken, line-strong edge, a second sheet drawn offset behind it) holding folder cards
+   on a 6-column grid, three to a row. Each card is a folder: a tab on its top edge (index and document code) and the
+   name below. Key documents (.is-key) fill their tab with flow on a flow-tint card. Wide cards (span 3) are chosen by
+   the renderer: .aq-docs__w when the list is open, .aq-docs__wf while it is folded, so no row ends short. */
+.aq-docs {
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: var(--space-4); row-gap: var(--space-6);
+  margin: 0 var(--space-2) 0 0; padding: var(--space-8) var(--space-6) var(--space-6); list-style: none;
+  background: var(--surface-sunken); border: 1px solid var(--line-strong);
+  box-shadow: var(--space-2) calc(-1 * var(--space-2)) 0 -1px var(--surface), var(--space-2) calc(-1 * var(--space-2)) 0 0 var(--line-strong);
+}
+.aq-docs > li { grid-column: span 2; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
+.aq-docs > li.aq-docs__w { grid-column: span 3; }
+.aq-fold:not(.is-open) .aq-docs > li { grid-column: span 2; }
+.aq-fold:not(.is-open) .aq-docs > li.aq-docs__wf { grid-column: span 3; }
+
+/* Folder tab: index and code, sitting on the card's top edge (overlaps its border by 1px) */
+.aq-docs__tab {
+  position: relative; z-index: 1; display: inline-flex; align-items: baseline; gap: var(--space-3); margin-bottom: -1px; max-width: 100%;
+  padding: var(--space-1) var(--space-4) var(--space-1) var(--space-3);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+.aq-docs__tab .aq-index { line-height: 20px; }
+.aq-docs__code { font: 500 14px/20px var(--font-mono); letter-spacing: 0.02em; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Card: the folder body, with one sheet showing behind it */
+.aq-docs__card {
+  flex: 1; align-self: stretch; display: block; min-width: 0; padding: var(--space-4) var(--space-4) var(--space-6);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm);
+  box-shadow: var(--space-1) var(--space-1) 0 -1px var(--surface-sunken), var(--space-1) var(--space-1) 0 0 var(--line);
+}
+.aq-docs__name { display: block; min-width: 0; font: 400 15px/22px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-docs__d { display: block; margin-top: var(--space-1); font-size: 14px; color: var(--ink-muted); }
+/* Key documents: the ones that decide the review */
+.aq-docs > li.is-key .aq-docs__tab { background: var(--flow); border-color: var(--flow); }
+.aq-docs > li.is-key .aq-docs__tab .aq-index, .aq-docs > li.is-key .aq-docs__code { color: var(--surface); }
+.aq-docs > li.is-key .aq-docs__card { background: var(--flow-tint); border-color: var(--flow); }
+.aq-docs > li.is-key .aq-docs__name { font-weight: 500; }
+
+/* Phone: no frame, a compact numbered list, "01  FS  Functional specification", index and codes in aligned columns.
+   Key documents keep their code in flow and the name in medium weight. */
+@container (max-width: 860px) {
+  .aq-docs { grid-template-columns: var(--space-8) auto minmax(0, 1fr); gap: 0; margin: 0; padding: 0; background: none; border: 0; border-bottom: 1px solid var(--line); box-shadow: none; }
+  .aq-docs > li, .aq-docs > li.aq-docs__w, .aq-fold:not(.is-open) .aq-docs > li, .aq-fold:not(.is-open) .aq-docs > li.aq-docs__wf { grid-column: 1 / -1; }
+  .aq-docs > li { display: grid; grid-template-columns: subgrid; column-gap: var(--space-3); align-items: baseline; padding: var(--space-3) 0; border-top: 1px solid var(--line); }
+  .aq-docs__tab, .aq-docs__card { display: contents; }
+  .aq-docs__tab .aq-index { line-height: 24px; }
   .aq-docs__code { font: 400 14px/22px var(--font-mono); letter-spacing: 0; }
   .aq-docs--plain .aq-docs__name { grid-column: 2 / -1; }
-  .aq-docs__name { font-size: 15px; }
+  .aq-docs > li.is-key .aq-docs__tab .aq-index { color: var(--ink-subtle); }
+  .aq-docs > li.is-key .aq-docs__code { color: var(--flow); }
 }
 
 /* ---------- EvidenceMap: requirement -> how we meet it -> the document that proves it (table block as "evidence") ----------
@@ -786,6 +1016,58 @@ a.aq-rows__row:focus-visible { outline: 2px solid var(--focus); outline-offset: 
   .aq-evidence__head { display: none; }
   .aq-evidence__row { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); }
   .aq-evidence__row:first-child { border-top: 1px solid var(--line); }
+}
+
+/* ---------- Explainer: one idea as a figure plus 3-4 numbered callouts (prose block as "explainer") ----------
+   Desktop: the figure in a line-strong frame on the left, the numbered callouts on the right. Phones: figure first,
+   callouts under it. Figures: "levels" (bars against a dashed limit, drawn from tokens) or "art" (the page's equipment
+   drawing with the callouts' numbers pinned on it). Numbers on a figure are aria-hidden; the text says it all. */
+.aq-explainer { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; }
+.aq-explainer__fig { position: relative; margin: 0; padding: var(--space-6); border: 1px solid var(--line-strong); }
+.aq-explainer__points { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+.aq-explainer__points > li { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-1); padding-block: var(--space-4); border-top: 1px solid var(--line); }
+.aq-explainer__n { grid-row: 1 / span 2; font: 400 28px/32px var(--font-mono); letter-spacing: -0.01em; color: var(--flow); }
+.aq-explainer__t { margin: 0; font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); text-wrap: pretty; }
+.aq-explainer__d { grid-column: 2; margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-explainer:has(.aq-explainer__fig--art) { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+.aq-explainer--bare { grid-template-columns: minmax(0, 1fr); }
+.aq-explainer--bare .aq-explainer__points { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-12); }
+
+/* Number marker, on a bar or pinned on a drawing */
+.aq-explainer__mark { display: inline-grid; place-items: center; width: var(--space-6); height: var(--space-6); border-radius: var(--radius-pill); background: var(--flow); color: var(--surface); font: 500 12px/1 var(--font-mono); }
+.aq-explainer__fig--art { padding: 0; }
+.aq-explainer__pin { position: absolute; transform: translate(-50%, -50%); display: flex; box-shadow: 0 0 0 var(--space-1) var(--surface); border-radius: var(--radius-pill); }
+
+/* Levels: tubes filled to a value, the limit a dashed fail-coloured rule across them */
+.aq-levels { display: flex; flex-direction: column; gap: var(--space-6); }
+.aq-levels__plot { position: relative; display: grid; grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); column-gap: var(--space-6); height: calc(var(--space-32) * 2); border-bottom: 1px solid var(--line-strong); }
+.aq-levels__col { display: flex; justify-content: center; height: 100%; }
+.aq-levels__tube { position: relative; width: var(--space-16); height: 100%; border: 1px solid var(--line-strong); border-top: 0; border-bottom: 0; }
+.aq-levels__fill { position: absolute; left: 0; right: 0; bottom: 0; height: var(--h, 0%); background: var(--flow-tint); border-top: 2px solid var(--flow); }
+.aq-levels__fill.is-at, .aq-levels__fill.is-above { border-top-color: var(--fail); }
+.aq-levels__fill > .aq-explainer__mark { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); }
+.aq-levels__v { position: absolute; left: 100%; top: 0; padding: var(--space-1) 0 0 var(--space-2); white-space: nowrap; font: 500 12px/16px var(--font-mono); color: var(--ink); }
+.aq-levels__limit { position: absolute; left: 0; right: 0; bottom: var(--at, 70%); border-top: 1px dashed var(--fail); }
+.aq-levels__limit > span { position: absolute; right: 0; bottom: var(--space-1); padding-inline: var(--space-2); background: var(--surface); font: 500 12px/16px var(--font-mono); color: var(--ink-muted); }
+.aq-levels__keys { display: grid; grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); column-gap: var(--space-6); }
+.aq-levels__key { display: flex; flex-direction: column; gap: var(--space-1); margin: 0; text-align: center; }
+.aq-levels__label { font: 500 15px/22px var(--font-sans); color: var(--ink); }
+.aq-levels__note { font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+
+@container (max-width: 860px) {
+  .aq-explainer, .aq-explainer:has(.aq-explainer__fig--art), .aq-explainer--bare .aq-explainer__points { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-explainer__fig { padding: var(--space-4); }
+  .aq-explainer__fig--art { padding: 0; }
+  .aq-explainer__points > li { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); padding-block: var(--space-3); }
+  .aq-explainer__n { font-size: 20px; line-height: 24px; }
+  .aq-explainer__t { font-size: 16px; line-height: 24px; }
+  .aq-explainer__d { font-size: 14px; line-height: 22px; }
+  .aq-levels { gap: var(--space-4); }
+  .aq-levels__plot { height: calc(var(--space-32) * 1.5); column-gap: var(--space-4); }
+  .aq-levels__tube { width: var(--space-12); }
+  .aq-levels__keys { column-gap: var(--space-4); }
+  .aq-levels__label { font-size: 14px; line-height: 20px; }
+  .aq-levels__note { font-size: 13px; line-height: 20px; }
 }
 
 /* ---------- FAQ: hairline accordion rows ---------- */
@@ -1006,10 +1288,146 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 .aq-linkgrid .aq-rows__t { transition: color 120ms; }
 @media (prefers-reduced-motion: reduce) { .aq-linkgrid .aq-rows__art, .aq-linkgrid .aq-rows__t { transition: none; } }
 
+/* ---------- NotesRegister: technical notes as a drawing register (block "register") ----------
+   Desktop: topic chips across the top; the featured note in a framed panel on the left, the register (date, no.,
+   topic, title, standard) on the right, framed like a revision table. Phones: chips scroll sideways, the panel sits
+   above, rows become two lines (title; topic · standard · status). Works on the navy and on a light sheet. */
+.aq-notes-register {
+  display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  grid-template-areas: "filter filter" "count count" "feature reg"; column-gap: var(--space-8); align-items: start;
+}
+.aq-notes-register__filter { grid-area: filter; display: flex; flex-wrap: wrap; gap: var(--space-2); padding-bottom: var(--space-6); }
+.aq-notes-register__chip {
+  display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; padding: 0 var(--space-4); margin: 0;
+  background: transparent; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); cursor: pointer;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap;
+}
+.aq-notes-register__chip span { color: var(--ink-subtle); }
+.aq-notes-register__chip:hover { border-color: var(--ink); color: var(--ink); }
+.aq-notes-register__chip[aria-pressed="true"] { background: var(--flow-tint); border-color: var(--flow); color: var(--ink); }
+.aq-notes-register__chip[aria-pressed="true"] span { color: var(--flow); }
+.aq-notes-register__count { grid-area: count; position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Featured note: a framed panel with a mono title strip, like a drawing's title block */
+.aq-notes-register__feature {
+  grid-area: feature; display: flex; flex-direction: column; gap: var(--space-4);
+  padding: var(--space-6); border: 1px solid var(--line-strong); box-shadow: inset 0 2px 0 var(--flow);
+}
+.aq-notes-register__flabel { display: flex; flex-wrap: wrap; margin: 0 0 var(--space-2); border: 1px solid var(--line); width: fit-content; }
+.aq-notes-register__flabel span { padding: var(--space-1) var(--space-3); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-notes-register__flabel span + span { border-left: 1px solid var(--line); }
+.aq-notes-register__flabel span:first-child { color: var(--flow); }
+.aq-notes-register__ft { margin: 0; font: 400 22px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-notes-register__fd { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+/* Phones set .aq-tag to height: auto; keep its pill padded */
+.aq-notes-register__feature .aq-tag { padding-block: var(--space-1); }
+.aq-notes-register__art { --ratio: 4 / 3; max-width: 220px; margin-top: var(--space-2); }
+.aq-notes-register__go { margin: 0; padding-top: var(--space-4); border-top: 1px solid var(--line); font: 500 12px/18px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-notes-register__go a { margin-left: var(--space-1); text-decoration: none; }
+.aq-notes-register__go a:hover { text-decoration: underline; }
+
+/* Register: a revision table in a hairline frame */
+.aq-notes-register__reg { grid-area: reg; min-width: 0; }
+.aq-notes-register__table { width: 100%; border-collapse: collapse; border: 1px solid var(--line-strong); }
+.aq-notes-register__table thead th {
+  padding: var(--space-3); border-bottom: 1px solid var(--line-strong); text-align: left; vertical-align: bottom;
+  font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle);
+}
+.aq-notes-register__table tbody tr { position: relative; border-bottom: 1px solid var(--line); }
+.aq-notes-register__table tbody tr[hidden] { display: none; }
+.aq-notes-register__table tbody tr:hover { background: var(--flow-tint); }
+.aq-notes-register__table td, .aq-notes-register__table tbody th { padding: var(--space-3); text-align: left; vertical-align: top; }
+.aq-notes-register__table th + th, .aq-notes-register__table td + td, .aq-notes-register__table td + th, .aq-notes-register__table th + td { border-left: 1px solid var(--line); }
+.aq-notes-register__date, .aq-notes-register__no, .aq-notes-register__topic, .aq-notes-register__std {
+  font: 400 12px/22px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted);
+}
+.aq-notes-register__date, .aq-notes-register__no { white-space: nowrap; }
+.aq-notes-register__topic { text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }
+.aq-notes-register__std { width: 26%; color: var(--ink); }
+.aq-notes-register__planned { color: var(--ink-subtle); text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }
+.aq-notes-register__t { font: 400 15px/22px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-notes-register__t a { color: var(--ink); text-decoration: none; }
+.aq-notes-register__t a::after { content: ""; position: absolute; inset: 0; }
+.aq-notes-register__t a:hover { color: var(--flow); }
+.aq-notes-register__table tr.is-featured .aq-notes-register__no { color: var(--flow); }
+/* A topic filter shows every matching row, folded or not, and hides the fold button */
+.aq-notes-register .aq-fold.is-filtered .aq-fold-x { display: table-row; }
+.aq-notes-register .aq-fold.is-filtered .aq-fold-x[hidden] { display: none; }
+.aq-notes-register .aq-fold.is-filtered .aq-fold__btn { display: none; }
+
+@container (max-width: 860px) {
+  .aq-notes-register { grid-template-columns: minmax(0, 1fr); grid-template-areas: "filter" "count" "feature" "reg"; }
+  .aq-notes-register__filter {
+    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: var(--space-4);
+    margin-inline: calc(-1 * var(--space-4)); padding-inline: var(--space-4); scroll-padding-inline: var(--space-4);
+  }
+  .aq-notes-register__filter::-webkit-scrollbar { display: none; }
+  .aq-notes-register__chip { flex: none; }
+  .aq-notes-register__feature { padding: var(--space-4); gap: var(--space-3); margin-bottom: var(--space-6); }
+  .aq-notes-register__ft { font-size: 19px; line-height: 26px; }
+  .aq-notes-register__art { display: none; }
+  .aq-notes-register__table, .aq-notes-register__table tbody { display: block; border: 0; }
+  .aq-notes-register__table thead { display: none; }
+  .aq-notes-register__table tbody tr { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-2); padding-block: var(--space-3); }
+  .aq-notes-register__table tbody tr:first-child { border-top: 1px solid var(--line-strong); }
+  .aq-notes-register__table td, .aq-notes-register__table tbody th { padding: 0; border-left: 0 !important; }
+  .aq-notes-register__t { order: -1; flex: 1 0 100%; font-size: 15px; line-height: 22px; }
+  .aq-notes-register__no { display: none; }
+  .aq-notes-register__topic, .aq-notes-register__std, .aq-notes-register__date { width: auto; line-height: 18px; font-size: 11px; }
+  .aq-notes-register__date { order: 1; }
+  .aq-notes-register__std::before, .aq-notes-register__date::before { content: "·"; margin-right: var(--space-2); color: var(--ink-subtle); }
+  .aq-notes-register .aq-fold.is-filtered .aq-fold-x { display: flex; }
+}
+
 /* ---------- OptionList: configuration options as rows of the shared list grammar ---------- */
 /* Layout comes from .aq-rows in base.css (index | option | one line on desktop; index | option, line below on phones).
    This file only adds the hook; options never get a box, a grid ground or a decorative glyph. */
 .aq-options { min-width: 0; }
+
+/* ---------- ParameterCallouts ---------- */
+/* Design parameters called out on the page's equipment drawing. Desktop: a 2:1 figure (viewBox 200 x 100 for the
+   leaders): label columns 0-25 % and 75-100 %, the drawing a centred square between them on a fading blueprint grid.
+   Labels hang from a flow rule (the bottom label of a side stands on one); flow leaders run from the rule's inner end
+   to a numbered pin on the drawing. Any rows that are not called out follow as a SpecTable. */
+.aq-parameter-callouts { display: flex; flex-direction: column; gap: var(--space-8); }
+.aq-parameter-callouts__fig { position: relative; aspect-ratio: 2 / 1; }
+.aq-parameter-callouts__fig::before { content: ""; position: absolute; inset: 0 25%; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--space-8) var(--space-8); background-position: center; -webkit-mask: radial-gradient(closest-side, var(--ink) 55%, transparent); mask: radial-gradient(closest-side, var(--ink) 55%, transparent); pointer-events: none; }
+.aq-parameter-callouts__art { position: absolute; top: 0; bottom: 0; left: 25%; right: 25%; }
+.aq-parameter-callouts__art .aq-illustration { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; aspect-ratio: auto; margin: 0; }
+.aq-parameter-callouts__pins { position: absolute; inset: 0; }
+.aq-parameter-callouts__pin { position: absolute; transform: translate(-50%, -50%); padding: 0 var(--space-1); border: 1px solid var(--flow); border-radius: var(--radius-sm); background: var(--surface); font: 500 11px/18px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+.aq-parameter-callouts__leaders { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.aq-parameter-callouts__leaders line { stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-parameter-callouts__list { list-style: none; margin: 0; padding: 0; }
+.aq-parameter-callouts__item { position: absolute; width: 25%; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); align-content: start; padding-top: var(--space-2); border-top: 1px solid var(--flow); }
+.aq-parameter-callouts__item.is-l { left: 0; padding-right: var(--space-4); }
+.aq-parameter-callouts__item.is-r { right: 0; padding-left: var(--space-4); }
+.aq-parameter-callouts__item.is-up { border-top: 0; padding-top: 0; padding-bottom: var(--space-2); border-bottom: 1px solid var(--flow); }
+.aq-parameter-callouts__item > .aq-index { grid-row: 1 / span 3; }
+.aq-parameter-callouts__p { grid-column: 2; margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-parameter-callouts__v { grid-column: 2; margin: 0; font: 400 16px/22px var(--font-mono); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: break-word; }
+.aq-parameter-callouts__v .aq-ph { font-size: inherit; }
+.aq-parameter-callouts__m { grid-column: 2; margin: 0; font: 400 13px/18px var(--font-sans); color: var(--ink-muted); }
+
+@container (max-width: 860px) {
+  /* Phone: the drawing with its numbered pins on top, the numbered list below on hairlines */
+  .aq-parameter-callouts { gap: var(--space-6); }
+  .aq-parameter-callouts__fig { aspect-ratio: auto; }
+  .aq-parameter-callouts__fig::before { inset: 0 0 auto; aspect-ratio: 1; }
+  .aq-parameter-callouts__leaders { display: none; }
+  .aq-parameter-callouts__art { position: relative; inset: auto; width: min(100%, calc(var(--space-32) * 2.5)); aspect-ratio: 1; margin-inline: auto; }
+  .aq-parameter-callouts__pin { font-size: 10px; line-height: 16px; }
+  .aq-parameter-callouts__list { margin-top: var(--space-4); border-bottom: 1px solid var(--line); }
+  /* List rows as SpecTable phone rows: the parameter, then the value and " · " basis in one run */
+  .aq-parameter-callouts__item, .aq-parameter-callouts__item.is-l, .aq-parameter-callouts__item.is-r, .aq-parameter-callouts__item.is-up { position: relative; display: block; width: auto; padding: var(--space-3) 0 var(--space-3) var(--space-8); border: 0; border-top: 1px solid var(--line); }
+  .aq-parameter-callouts__item > .aq-index { position: absolute; left: 0; top: var(--space-3); line-height: 22px; }
+  .aq-parameter-callouts__p { margin-bottom: var(--space-1); }
+  .aq-parameter-callouts__v, .aq-parameter-callouts__m { display: inline; }
+  .aq-parameter-callouts__m::before { content: "\a0\b7\a0"; content: "\a0\b7\a0" / ""; color: var(--ink-subtle); }
+  .aq-parameter-callouts__p { font: 400 15px/22px var(--font-sans); letter-spacing: 0; text-transform: none; color: var(--ink); }
+  .aq-parameter-callouts__v { font-size: 14px; line-height: 22px; letter-spacing: 0; }
+  .aq-parameter-callouts__m { font-size: 12px; line-height: 18px; }
+}
 
 /* ---------- ProcessDiagram: treatment train as numbered stages on one serpentine Flow pipe ---------- */
 /* Rows of three stages; every second row runs right to left (direction: rtl), so the pipe snakes down
@@ -1066,9 +1484,44 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 }
 
 /* ---------- ProcessSteps: a real sequence as rows of the shared list grammar ---------- */
-/* Layout from .aq-rows (base.css): index | step name | what happens. The index already carries the order, so there is
-   no pipe, spine or stair: hairlines between steps are the only structure. */
+/* Layout from .aq-rows (base.css): index | step name | what happens. The index already carries the order, so a plain
+   list has no pipe, spine or stair: hairlines between steps are the only structure. */
 .aq-steps { min-width: 0; }
+
+/* Hold points (.aq-steps--hold, items with hold): the steps become one routed line, a line-strong pipe through the index
+   column from each index to the next, with a closed valve (flow) under the index of every hold step. The hold step
+   carries a stamped card under its text, joined to its valve by a dashed flow branch: "Hold point" stamp, who signs, and a signature line. */
+.aq-steps--hold > li { position: relative; }
+.aq-steps--hold > li:not(:last-child)::before {
+  content: ""; position: absolute; left: var(--space-2); width: 1px; z-index: 0;
+  top: calc(var(--space-4) + 24px + var(--space-1)); bottom: calc(var(--space-1) - var(--space-4));
+  background: var(--line-strong);
+}
+.aq-fold:not(.is-open) .aq-steps--hold > li:has(+ .aq-fold-x)::before { display: none; }
+.aq-steps__gate { grid-column: 1 / 3; grid-row: 2; align-self: center; position: relative; z-index: 1; display: flex; align-items: center; margin: var(--space-3) calc(-1 * var(--space-6)) 0 0; line-height: 0; }
+/* Branch: from the valve to the hold card, so the hold reads as a stop on the line */
+.aq-steps__gate::after { content: ""; flex: 1; border-top: 1px dashed var(--flow); }
+.aq-steps__valve { display: block; width: var(--space-4); height: var(--space-4); overflow: visible; }
+.aq-steps__valve path:first-child { fill: var(--flow); stroke: var(--flow); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-steps__valve path + path { fill: none; stroke: var(--flow); stroke-width: 1.5; }
+.aq-steps__hold {
+  grid-column: 3; grid-row: 2; display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--space-4); row-gap: var(--space-3);
+  max-width: var(--text-max); margin-top: var(--space-3); padding: var(--space-3) var(--space-4) var(--space-4);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+}
+.aq-steps__stamp {
+  padding: 0 var(--space-2); border: 3px double var(--flow); border-radius: var(--radius-sm); transform: rotate(-2deg);
+  font: 600 12px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--flow); white-space: nowrap;
+}
+.aq-steps__who { font: 500 14px/20px var(--font-sans); color: var(--ink); }
+.aq-steps__sign { flex-basis: 100%; display: flex; align-items: baseline; gap: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-steps__sign::after { content: ""; flex: 1; max-width: calc(var(--space-16) * 4); border-bottom: 1px solid var(--line-strong); }
+
+@container (max-width: 860px) {
+  .aq-steps--hold > li:not(:last-child)::before { top: calc(var(--space-3) + 24px + var(--space-1)); bottom: calc(var(--space-1) - var(--space-3)); }
+  .aq-steps__gate { grid-column: 1; grid-row: 3; margin-right: calc(-1 * var(--space-3)); }
+  .aq-steps__hold { grid-column: 2; grid-row: 3; margin-top: var(--space-2); padding: var(--space-3); column-gap: var(--space-3); }
+}
 
 /* ---------- Prose ---------- */
 /* Plain: a few paragraphs within text-max (also used for captions). */
@@ -1408,6 +1861,75 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
   .aq-standards-grid__name { padding-left: calc(2ch + var(--space-3)); }
 }
 
+/* ---------- StandardsMap: a plant map of the water system, each zone labelled with the standards that govern it ----------
+   Desktop: zones as dashed framed areas in two rows, a flow-coloured pipe header between them, a branch from each zone to
+   the pipe. Phones: zones stacked as compact rows on a vertical pipe at the left, codes as chips. Navy ground. */
+.aq-standards-map { min-width: 0; }
+.aq-standards-map__zones {
+  position: relative; list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); grid-template-rows: auto var(--space-16) auto;
+  column-gap: var(--space-8);
+}
+/* the pipe header: one flow line across the middle row, an arrow at its end */
+.aq-standards-map__zones::before {
+  content: ""; grid-row: 2; grid-column: 1 / -1; align-self: center; height: 0;
+  border-top: 2px solid var(--flow);
+}
+.aq-standards-map__zones::after {
+  content: ""; grid-row: 2; grid-column: -2 / -1; justify-self: end; align-self: center; margin-right: -2px;
+  width: 0; height: 0; border-left: var(--space-2) solid var(--flow); border-block: 5px solid transparent;
+}
+.aq-standards-map__zone {
+  position: relative; display: flex; flex-direction: column; gap: var(--space-4); min-width: 0;
+  padding: var(--space-6); border: 1px dashed var(--line-strong);
+}
+/* branch from each zone to the pipe, with a node where it joins */
+.aq-standards-map__zone::after {
+  content: ""; position: absolute; left: var(--space-12); height: calc(var(--space-8) - 1px); border-left: 2px solid var(--flow);
+}
+.aq-standards-map__zone.is-up::after { top: 100%; }
+.aq-standards-map__zone.is-down::after { bottom: 100%; }
+.aq-standards-map__zone::before {
+  content: ""; position: absolute; left: calc(var(--space-12) - 3px); width: var(--space-2); height: var(--space-2);
+  border-radius: var(--radius-pill); background: var(--flow);
+}
+.aq-standards-map__zone.is-up::before { top: calc(100% + var(--space-8) - 4px); }
+.aq-standards-map__zone.is-down::before { bottom: calc(100% + var(--space-8) - 4px); }
+.aq-standards-map__head { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+.aq-standards-map__head .aq-index { flex: none; }
+.aq-standards-map__icon { flex: none; background-color: var(--flow); }
+.aq-standards-map__t { margin: 0; font: 500 18px/26px var(--font-sans); color: var(--ink); text-wrap: balance; }
+.aq-standards-map__t a { color: inherit; text-decoration: none; }
+.aq-standards-map__t a:hover { color: var(--flow); text-decoration: underline; }
+.aq-standards-map__codes { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.aq-standards-map__code {
+  display: inline-block; padding: 1px var(--space-2); border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  font: 400 13px/22px var(--font-mono); color: var(--ink); text-decoration: none; white-space: nowrap;
+}
+.aq-standards-map__code::after { content: "\a0\2193"; color: var(--ink-subtle); }
+.aq-standards-map__code:hover { border-color: var(--flow); color: var(--flow); }
+.aq-standards-map__code:hover::after { color: var(--flow); }
+.aq-standards-map__code:focus-visible, .aq-standards-map__t a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* the row a code jumped to flashes once (it may sit on a light sheet) */
+.aq-standards-map-hit { outline: 2px solid var(--flow); outline-offset: var(--space-1); animation: aq-standards-map-hit 2.4s ease-out forwards; }
+.aq-standards-map-hit:focus { outline: 2px solid var(--flow); }
+@keyframes aq-standards-map-hit { 0%, 60% { outline-color: var(--flow); } 100% { outline-color: transparent; } }
+@media (prefers-reduced-motion: reduce) { .aq-standards-map-hit { animation: none; } }
+
+@container (max-width: 860px) {
+  .aq-standards-map__zones { display: flex; flex-direction: column; gap: var(--space-3); padding-left: var(--space-6); }
+  .aq-standards-map__zones::before { position: absolute; align-self: auto; left: var(--space-1); top: var(--space-4); bottom: var(--space-4); height: auto; border-top: 0; border-left: 2px solid var(--flow); }
+  .aq-standards-map__zones::after { display: none; }
+  .aq-standards-map__zone { gap: var(--space-2); padding: var(--space-3) var(--space-4); }
+  .aq-standards-map__zone.is-up::after, .aq-standards-map__zone.is-down::after {
+    top: calc(var(--space-6) - 1px); bottom: auto; left: calc(-1 * var(--space-6) + var(--space-1)); width: calc(var(--space-6) - var(--space-1)); height: 0;
+    border-left: 0; border-top: 2px solid var(--flow);
+  }
+  .aq-standards-map__zone.is-up::before, .aq-standards-map__zone.is-down::before { top: calc(var(--space-6) - 4px); bottom: auto; left: calc(-1 * var(--space-6) + 1px); }
+  .aq-standards-map__t { font-size: 16px; line-height: 24px; }
+  .aq-standards-map__code { font-size: 12px; line-height: 20px; }
+}
+
 /* ---------- Versus: two routes facing each other across a spine of factors (table block as "versus") ----------
    Desktop: route A | factor on the spine | route B, the spine a hairline down the middle column; the verdict closes it
    as two framed lines. Phones: the factor, then A and B each tagged with its route name; verdicts stacked. */
@@ -1443,6 +1965,53 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
   .aq-versus__head { order: -2; }
   .aq-versus__verdict { order: -1; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); margin: var(--space-4) 0 var(--space-6); }
   .aq-versus__verdict > div { padding: var(--space-4); }
+}
+
+/* ---------- VisitRoute: a visit's stops on one dashed route (grid block as "route") ----------
+   Desktop: rows of 3 or 4 stops; odd rows run left to right, even rows right to left, joined by U-turns at the ends
+   (placement from --c / --r set by the renderer; DOM order is the route order). Each stop: a ring with its number on
+   the route, the title and one line under it. Phones: one vertical route down the left, ring | text. */
+.aq-visit-route { --m: var(--space-12); list-style: none; margin: 0; padding: 0 var(--space-8); display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); column-gap: var(--space-8); }
+.aq-visit-route__stop { position: relative; grid-column: var(--c, auto); grid-row: var(--r, auto); min-width: 0; padding-bottom: var(--space-12); }
+.aq-visit-route__stop.is-last { padding-bottom: 0; }
+.aq-visit-route__body { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--space-2); }
+:where(.aq-page) a.aq-visit-route__body { color: var(--ink); text-decoration: none; }
+.aq-visit-route__n { display: inline-grid; place-items: center; width: var(--m, var(--space-12)); height: var(--m, var(--space-12)); margin-bottom: var(--space-2); border: 1px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface); font: 500 14px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--flow); }
+.aq-visit-route__n svg { width: var(--space-6); height: var(--space-6); fill: none; stroke: currentColor; stroke-width: 2; }
+.aq-visit-route__stop.is-end .aq-visit-route__n { background: var(--flow); color: var(--surface); }
+.aq-visit-route__t { margin: 0; font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); text-wrap: pretty; }
+.aq-visit-route__d { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
+a.aq-visit-route__body .aq-visit-route__t::after { content: "\a0\2192"; color: var(--flow); }
+a.aq-visit-route__body:hover .aq-visit-route__t { color: var(--flow); }
+a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* The route: ::after runs to the next stop in the row (or to the column edge before a U-turn); ::before is the U-turn
+   at the row end, or the lead-in from the column edge on a right-to-left row. */
+.aq-visit-route__stop::before, .aq-visit-route__stop::after { content: ""; position: absolute; top: calc(var(--m, var(--space-12)) / 2); border: 0 dashed var(--flow); pointer-events: none; }
+.aq-visit-route__stop.is-ltr::after { left: calc(var(--m, var(--space-12)) / 2); width: calc(100% + var(--space-8)); border-top-width: 1px; }
+.aq-visit-route__stop.is-rtl::after { right: calc(100% - var(--m, var(--space-12)) / 2); width: calc(100% + var(--space-8)); border-top-width: 1px; }
+.aq-visit-route__stop.is-ltr.is-turn::after { width: calc(100% - var(--m, var(--space-12)) / 2); }
+.aq-visit-route__stop.is-rtl.is-turn::after, .aq-visit-route__stop.is-last::after { display: none; }
+.aq-visit-route__stop.is-turn::before { height: 100%; width: var(--space-8); border-width: 1px 0; }
+.aq-visit-route__stop.is-ltr.is-turn::before { left: 100%; border-right-width: 1px; border-radius: 0 var(--radius-pill) var(--radius-pill) 0; }
+.aq-visit-route__stop.is-rtl.is-turn::before { right: 100%; border-left-width: 1px; border-radius: var(--radius-pill) 0 0 var(--radius-pill); }
+.aq-visit-route__stop.is-rtl.is-in::before { left: calc(var(--m, var(--space-12)) / 2); right: 0; border-top-width: 1px; }
+
+@media (prefers-reduced-motion: no-preference) { .aq-visit-route__t { transition: color 120ms; } }
+
+@container (max-width: 860px) {
+  .aq-visit-route { --m: var(--space-8); padding: 0; grid-template-columns: minmax(0, 1fr); }
+  .aq-visit-route__stop { grid-column: 1; grid-row: auto; padding-bottom: var(--space-6); }
+  .aq-visit-route__body { display: grid; grid-template-columns: var(--m, var(--space-12)) minmax(0, 1fr); column-gap: var(--space-3); row-gap: var(--space-1); }
+  .aq-visit-route__n { grid-row: 1 / span 2; margin: 0; font-size: 12px; }
+  .aq-visit-route__n svg { width: var(--space-4); height: var(--space-4); }
+  .aq-visit-route__t { font-size: 16px; line-height: 24px; padding-top: var(--space-1); }
+  .aq-visit-route__d { grid-column: 2; font-size: 14px; line-height: 22px; }
+  .aq-visit-route__stop::before, .aq-visit-route__stop.is-rtl.is-in::before { display: none; }
+  .aq-visit-route__stop::after, .aq-visit-route__stop.is-ltr::after, .aq-visit-route__stop.is-rtl::after, .aq-visit-route__stop.is-ltr.is-turn::after, .aq-visit-route__stop.is-rtl.is-turn::after {
+    display: block; left: calc(var(--m, var(--space-12)) / 2); right: auto; width: 0; height: 100%; border-width: 0 0 0 1px;
+  }
+  .aq-visit-route__stop.is-last::after { display: none; }
 }
 
 /* ---------- WaterPath: system families as stops on one serpentine pipe ---------- */
@@ -1716,6 +2285,43 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
   .aq-key-facts dd:first-of-type, .aq-key-facts:has(> :nth-child(5)) dd:first-of-type { font-size: 22px; line-height: 1.15; }
   .aq-key-facts dd.aq-key-facts__src { font-size: 11px; line-height: 15px; }
   .aq-hero .aq-key-facts { margin-top: var(--space-8); }
+}
+
+/* ---------- LimitGauges ---------- */
+/* Limits as a panel of small instruments: one cell per limit, hairline grid on the sheet, three across.
+   Cell: parameter, arc dial (scale line-strong, the side that passes in flow, the limit as an ink needle-mark with its
+   number on an ink chip), the full value in mono, the basis in small muted type with standards as tags.
+   A row without a number is a readout cell: the same cell without the dial. */
+.aq-limit-gauges { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--surface-raised); border: 1px solid var(--line); }
+.aq-limit-gauges__item { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; padding: var(--space-4) var(--space-6) var(--space-6); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 -1px -1px 0; }
+.aq-limit-gauges__item.is-key { box-shadow: inset 0 2px 0 var(--flow); }
+.aq-limit-gauges__p { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+.aq-limit-gauges__dial { position: relative; width: 80%; margin: var(--space-4) auto var(--space-1); }
+.aq-limit-gauges__dial svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-limit-gauges__track { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__ticks line { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__ticks line.is-major { stroke: var(--ink-muted); }
+.aq-limit-gauges__pass { fill: none; stroke: var(--flow); stroke-width: 4; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__limit { stroke: var(--ink); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__second { stroke: var(--flow); stroke-width: 2; stroke-dasharray: 3 2; vector-effect: non-scaling-stroke; }
+/* Limit chip: sits just above the mark, never past the dial's right edge */
+.aq-limit-gauges__mark { position: absolute; transform: translate(-50%, calc(-100% - var(--space-1))); padding: 0 var(--space-1); border-radius: var(--radius-sm); background: var(--ink); color: var(--surface); font: 500 11px/18px var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.aq-limit-gauges__mark--second { background: var(--surface-raised); color: var(--flow); border: 1px solid var(--flow); transform: translate(-50%, var(--space-1)); }
+.aq-limit-gauges__v { margin: 0; font: 400 16px/22px var(--font-mono); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: break-word; }
+.aq-limit-gauges__v .aq-ph { font-size: inherit; }
+.aq-limit-gauges__m { margin: 0; font: 400 13px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-limit-gauges__m .aq-tag { height: auto; padding: 0 var(--space-2); font-size: 11px; line-height: 18px; color: var(--ink); vertical-align: baseline; }
+
+@container (max-width: 860px) {
+  /* Phone: two instruments per row, compact */
+  .aq-limit-gauges { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-limit-gauges__item { gap: var(--space-1); padding: var(--space-3); }
+  .aq-limit-gauges__p { font-size: 11px; line-height: 15px; letter-spacing: 0.04em; }
+  .aq-limit-gauges__dial { width: 84%; margin: var(--space-4) 0 0; }
+  .aq-limit-gauges__mark { font-size: 10px; line-height: 16px; }
+  .aq-limit-gauges__v { font-size: 13px; line-height: 18px; letter-spacing: 0; }
+  .aq-limit-gauges__m { font-size: 11px; line-height: 18px; }
+  .aq-limit-gauges__m .aq-tag { font-size: 10px; line-height: 16px; padding: 0 var(--space-1); white-space: nowrap; }
 }
 
 /* ---------- PlanTiers: service plans side by side, one action per plan (table block as "plans") ----------

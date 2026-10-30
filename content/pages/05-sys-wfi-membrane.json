@@ -120,7 +120,8 @@
      "m": "After the final UF at factory and site acceptance testing (FAT, SAT)"
     }
    ],
-   "nav": "Limits"
+   "nav": "Limits",
+   "as": "gauges"
   },
   {
    "type": "diagram",
@@ -259,27 +260,47 @@
      "p": "Capacity",
      "v": "[minimum–maximum capacity, L/h] per skid",
      "m": "After the final UF, at your lowest feed temperature; duplex trains above that",
-     "hl": true
+     "hl": true,
+     "at": [
+      54.9,
+      16.7
+     ]
     },
     {
      "p": "Purification train",
      "v": "Double-pass RO, CO₂ removal, EDI, final UF",
-     "m": "Ph. Eur. 0169; EMA names double-pass RO and UF as added assurance"
+     "m": "Ph. Eur. 0169; EMA names double-pass RO and UF as added assurance",
+     "at": [
+      13.6,
+      40.2
+     ]
     },
     {
      "p": "Final barrier",
      "v": "Hot water sanitizable UF, [UF molecular weight cut-off, Da], [single or duplex]",
-     "m": "Endotoxin-reducing (EMA); integrity tested at FAT and on schedule"
+     "m": "Endotoxin-reducing (EMA); integrity tested at FAT and on schedule",
+     "at": [
+      84.4,
+      42.4
+     ]
     },
     {
      "p": "Sanitization",
      "v": "Hot water ≥ 80 °C through RO, EDI and UF, held [hold time, minutes]",
-     "m": "Coldest probe verified; frequency from PQ data (Annex 1, 6.12)"
+     "m": "Coldest probe verified; frequency from PQ data (Annex 1, 6.12)",
+     "at": [
+      67.1,
+      67.0
+     ]
     },
     {
      "p": "Membrane replacement",
      "v": "[RO and UF membrane replacement interval, months] maximum, or earlier on trends",
-     "m": "EMA asks for maximum time limits on RO membrane use"
+     "m": "EMA asks for maximum time limits on RO membrane use",
+     "at": [
+      14.7,
+      65.8
+     ]
     },
     {
      "p": "Feed water",
@@ -309,7 +330,8 @@
    ],
    "nav": "Skid design",
    "fold": 5,
-   "fold_noun": "parameters"
+   "fold_noun": "parameters",
+   "as": "callouts"
   },
   {
    "type": "faq",

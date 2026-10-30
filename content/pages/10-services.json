@@ -138,35 +138,43 @@
    "items": [
     {
      "t": "URS review and design",
-     "d": "Compliance matrix, basis of design, P&IDs, functional specification, risk assessment. Your quality unit approves design qualification (DQ). Annex 15, 3.2 and 3.3; ICH Q9(R1)."
+     "d": "Compliance matrix, basis of design, P&IDs, functional specification, risk assessment. Your quality unit approves design qualification (DQ). Annex 15, 3.2 and 3.3; ICH Q9(R1).",
+     "icon": "pid"
     },
     {
      "t": "Fabrication",
-     "d": "Material log with EN 10204 3.1 certificates, weld maps and log, borescope, finish, passivation and pressure test records. You set hold points. ASME BPE."
+     "d": "Material log with EN 10204 3.1 certificates, weld maps and log, borescope, finish, passivation and pressure test records. You set hold points. ASME BPE.",
+     "icon": "weld"
     },
     {
      "t": "Factory acceptance test",
-     "d": "Protocol approved before execution, executed protocol with raw data, deviation log, summary report. Both parties sign release to ship. Annex 15, 3.4 to 3.6."
+     "d": "Protocol approved before execution, executed protocol with raw data, deviation log, summary report. Both parties sign release to ship. Annex 15, 3.4 to 3.6.",
+     "icon": "pump"
     },
     {
      "t": "Installation and SAT",
-     "d": "Installation and commissioning records, SAT on your feed water and utilities, traceability matrix with leveraged tests flagged. You sign the SAT report. Annex 15, 3.7."
+     "d": "Installation and commissioning records, SAT on your feed water and utilities, traceability matrix with leveraged tests flagged. You sign the SAT report. Annex 15, 3.7.",
+     "icon": "wrench"
     },
     {
      "t": "IQ and OQ",
-     "d": "C&Q plan, IQ and OQ protocols and reports, draft operating procedures, training records. Your quality unit approves each. Annex 15, 3.9 to 3.12."
+     "d": "C&Q plan, IQ and OQ protocols and reports, draft operating procedures, training records. Your quality unit approves each. Annex 15, 3.9 to 3.12.",
+     "icon": "binder"
     },
     {
      "t": "PQ: three phases, at least 12 months",
-     "d": "PQ protocol and sampling plan, phase reports, alert and action levels. Your quality unit releases water by phase. WHO TRS 1033 Annex 3."
+     "d": "PQ protocol and sampling plan, phase reports, alert and action levels. Your quality unit releases water by phase. WHO TRS 1033 Annex 3.",
+     "icon": "calendar"
     },
     {
      "t": "Service",
-     "d": "Signed report per visit, calibration certificates with as-found and as-left values, like-for-like parts record, annual system review. USP <645>, <643>; Annex 15, 4.1."
+     "d": "Signed report per visit, calibration certificates with as-found and as-left values, like-for-like parts record, annual system review. USP <645>, <643>; Annex 15, 4.1.",
+     "icon": "gauge"
     },
     {
      "t": "Upgrade or retrofit",
-     "d": "Assessment with gap list and options, each with downtime and requalification scope your quality unit approves. Annex 15, section 11; 21 CFR Part 11."
+     "d": "Assessment with gap list and options, each with downtime and requalification scope your quality unit approves. Annex 15, section 11; 21 CFR Part 11.",
+     "icon": "magnifier"
     }
    ],
    "nav": "Documents",

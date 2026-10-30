@@ -1,26 +1,32 @@
-DocList names the documents delivered with a system as a grid of numbered tiles, each led by the short code a validation team files it under.
+DocList shows the documents delivered with a system as a turnover binder: numbered folder cards in a binder frame, each folder tab carrying the short code a validation team files it under, with the deciding documents first and emphasized.
 
 ## Markup
 
 ```html
 <ol class="aq-docs">
-  <li>
-    <span class="aq-docs__code" aria-hidden="true"><span class="aq-docs__n">01</span><span class="aq-docs__sep"> / </span>FS</span>
-    <span class="aq-docs__name">Functional specification</span>
+  <li class="is-key aq-docs__w">
+    <span class="aq-docs__tab" aria-hidden="true"><span class="aq-index">01</span><span class="aq-docs__code">URS</span></span>
+    <span class="aq-docs__card"><span class="aq-docs__name">User requirement specification (URS) compliance matrix<span class="aq-docs__d">Each requirement, how we meet it and where it is verified</span></span></span>
   </li>
   …
 </ol>
 ```
 
-- An ordered list, one `<li>` per document. The visible number and code are `aria-hidden`; screen readers get the list numbering and the full name.
-- `aq-docs__name` holds the document name as QA would write it: "Material certificates (EN 10204 3.1)", "FAT and SAT protocols and reports". An optional `<span class="aq-docs__d">` inside it adds one line of detail.
-- Add `aq-docs--plain` to the `<ol>` and leave out the separator and code when the items are not documents with recognised codes (a proposal checklist, for example). Tiles then show only the number.
-- Place it full width under the standard section head on the default `surface` (the page allows one tinted band mid-page, and it is not this list). The site renderer (`assets/src/blocks/docs.js`, block type `docs`) builds all of this from `{h, items}`.
+- An ordered list, one `<li>` per document. The tab (number and code) is `aria-hidden`; screen readers get the list numbering and the full name.
+- `aq-docs__name` holds the document name as QA would write it: "Material certificates (EN 10204 3.1)", "FAT and SAT protocols and reports". An optional `<span class="aq-docs__d">` inside it adds one line of detail. An item with `link` (a page id) makes the name a link.
+- `is-key` marks a deciding document. `aq-docs__w` makes a card span half the row; `aq-docs__wf` does the same only while the list is folded. The renderer sets both so no row ends short.
+- Add `aq-docs--plain` to the `<ol>` and leave out the code when the items are not documents with recognised codes (a proposal checklist, for example, or package sections). Tabs then show only the number.
+- Every docs block renders this way (no opt-in): it sits on a light sheet, full width under the standard section head. The site renderer (`assets/src/blocks/docs.js`, block type `docs`) builds it from `{h, items, fold, fold_noun, key}`.
+
+## Key documents
+
+- Item `"key": true` marks the documents that decide the review. Without any marked item, the first `key` items of the block are key: default 2 in a coded list of five or more, `"key": 0` for none. Order the list so the deciding documents come first (the same rule as fold).
+- When exactly the first two are key, they open the binder as a pair of half-width cards, provided the rest then fill rows of three or end in a pair; otherwise they stay in the three-up grid, still emphasized.
 
 ## Layout
 
-- **Desktop:** three tiles per row on a 6-column grid, separated by `line` hairlines. Rows that would end short widen to two tiles: 10 items read 3, 3, 2, 2; 8 items read 3, 3, 2. Works for 4 to 12 items.
-- **Phone** (container 860 px and below): a compact list, "01  FS  Functional specification", with the index and codes in aligned columns and a hairline between rows.
+- **Desktop:** a binder frame (`surface-sunken`, `line-strong` edge, a second sheet drawn offset behind its top-right corner) holding folder cards on a 6-column grid, three to a row. Each card: a tab on its top edge with the index and the code, then the name and detail on `surface-raised`, one sheet showing behind it. Rows that would end short widen to two cards: 12 items read 3, 3, 3, 3; 10 with a key pair read 2, 3, 3, 2. Folded lists are laid out for the cards that show (fold 6 reads 3, 3).
+- **Phone** (container 860 px and below): no frame and no cards; a compact list, "01  FS  Functional specification", index and codes in aligned columns, a hairline between rows. Key documents keep their code in `flow` and the name in medium weight. Never a tall card per document on a phone.
 
 ## Codes
 
@@ -31,10 +37,10 @@ The renderer derives each code from the document name with a lookup of common va
 
 ## Token rules
 
-- Tiles: `surface` with `line` hairlines (the 1 px grid gap), spacing `space-*` only. The number is the shared `.aq-index`; the code is Geist Mono 20/24 in `ink` (14/22 on phones).
-- Accent: a 2 px `flow` bar at the top of each tile, `space-12` wide. It is the section's only colour.
-- Code: Geist Mono light (`--font-mono`), 28/34 px desktop, 15/22 px phone, `ink`; number and separator in `ink-subtle`.
-- Name: Geist (`--font-sans`) 15/22 px in `ink`, sentence case. Detail in `ink-muted`.
+- Frame: `surface-sunken`, 1 px `line-strong`; the offset sheet is a hard-edged box-shadow in `surface` and `line-strong` (a drawn sheet, not elevation). Card: `surface-raised`, 1 px `line-strong`, `radius-sm`, an offset sheet in `line`. Spacing `space-*` only.
+- Tab: the shared `.aq-index` and the code in Geist Mono 500 14/20 `ink` (Mono 14/22 on phones).
+- Key: tab filled `flow` with `surface` text, card on `flow-tint` with a `flow` edge, name 500. `flow` is the section's only colour.
+- Name: Geist (`--font-sans`) 15/22 px in `ink`, sentence case. Detail 14 px in `ink-muted`.
 
 ## When not to use it
 

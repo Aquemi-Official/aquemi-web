@@ -94,7 +94,8 @@
      "hl": false
     }
    ],
-   "nav": "Steam quality"
+   "nav": "Steam quality",
+   "as": "gauges"
   },
   {
    "type": "table",
@@ -171,31 +172,51 @@
      "p": "Capacity",
      "v": "[minimum–maximum capacity, kg/h]",
      "m": "Sized on the simultaneous peak of sterilizer and SIP cycles",
-     "hl": true
+     "hl": true,
+     "at": [
+      53.3,
+      45.9
+     ]
     },
     {
      "p": "Outlet pressure",
      "v": "[operating pressure range, bar(g)]",
      "m": "Highest user inlet pressure plus header losses",
-     "hl": false
+     "hl": false,
+     "at": [
+      70.7,
+      11.5
+     ]
     },
     {
      "p": "Heating",
      "v": "Plant steam at [minimum heating steam pressure, bar(g)], or electric [electric units offered, kW range]",
      "m": "Plant steam pressure must exceed pure steam pressure; checked in the steam balance",
-     "hl": false
+     "hl": false,
+     "at": [
+      48.7,
+      54.0
+     ]
     },
     {
      "p": "Feed water",
      "v": "Purified water (PW) or reverse osmosis (RO) permeate, chlorine-free",
      "m": "Annex 1, 6.16; conductivity, silica, chloride and hardness limits in the functional specification",
-     "hl": false
+     "hl": false,
+     "at": [
+      34.9,
+      79.2
+     ]
     },
     {
      "p": "Turndown",
      "v": "[turndown range, % of rated output]",
      "m": "Follows demand without start-stop cycling",
-     "hl": false
+     "hl": false,
+     "at": [
+      71.6,
+      50.5
+     ]
     },
     {
      "p": "Degassing, separation, blowdown",
@@ -229,7 +250,8 @@
     }
    ],
    "nav": "Generator design",
-   "fold": 5
+   "fold": 5,
+   "as": "callouts"
   },
   {
    "type": "docs",

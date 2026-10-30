@@ -1,5 +1,5 @@
-/* Block "docs" -> DocList: numbered document tiles (rows on phones), each with a short document code derived from its name.
-   On the default surface: the page rhythm allows one tinted band mid-page, and that is not this list. */
+/* Block "docs" -> DocList: the turnover binder. Documents as folder cards in a binder frame, each folder tab carrying the
+   index and the short document code (derived from its name); the deciding documents lead, emphasized. Rows on phones. */
 /* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT). */
 var DOC_CODES=[
   [/^urs\b.*traceability/i,'URS & TM'],[/traceability matrix/i,'TM'],[/user requirement|\burs\b/i,'URS'],
@@ -28,13 +28,24 @@ function docCode(name){
   var m=name.match(/\(([A-Z][A-Z&]{1,5})s?\)/);if(m)return [m[1],false];
   return [name.replace(/\(.*?\)/g,'').split(/[\s,\/-]+/).filter(function(w){return w&&!DOC_STOP.test(w)}).slice(0,3).map(function(w){return w.charAt(0).toUpperCase()}).join(''),false];
 }
+/* Wide cards (span 3 of the 6-column grid) so no row ends short. lead: the first two are key and open the binder as a
+   pair, used when the cards after them fill rows of three (or end in a pair). n visible cards; returns indexes that span 3. */
+function docWide(n,lead){lead=lead&&(n-2)%3!==1;var w={},s=lead?2:0,m=n-s,i;if(lead){w[0]=w[1]=1}
+  var k=m%3===1&&m>=4?4:m%3===2?2:0;for(i=n-k;i<n;i++)w[i]=1;return w}
 BLOCKS['docs']=function(b,H){
-  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code}});
-  var codes=items.map(function(x){return x.code?[x.code,true]:docCode(x.t)});
+  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link}});
+  var n=items.length,codes=items.map(function(x){return x.code?[x.code,true]:docCode(x.t)});
   /* Codes only when most items are documents the lookup knows; a checklist of other things keeps just its numbers. */
-  var coded=codes.filter(function(c){return c[1]}).length*2>=items.length;
-  return sec(H+wFold(b,items.length,'<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
-    return fli('<li>',b,i)+idx(i)+(coded?'<span class="aq-docs__code" aria-hidden="true">'+e(codes[i][0])+'</span>':'')
-      +'<span class="aq-docs__name">'+tx(x.t)+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span></li>';
+  var coded=codes.filter(function(c){return c[1]}).length*2>=n;
+  /* Key (deciding) documents: items marked key: true; else the first b.key (default 2 in a coded list of five or more; key: 0 for none). */
+  var marked=items.some(function(x){return x.key}),nk=b.key!=null?+b.key:(coded&&n>=5?2:0);
+  var key=items.map(function(x,i){return marked?!!x.key:i<nk});
+  var vis=b.fold>0&&n>b.fold?b.fold:n,lead=key[0]&&key[1]&&!key.slice(2).some(Boolean);
+  var wo=docWide(n,lead),wf=vis<n?docWide(vis,lead):{};
+  return sec(H+wFold(b,n,'<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
+    var cls=(key[i]?' is-key':'')+(wo[i]?' aq-docs__w':'')+(wf[i]?' aq-docs__wf':''),name=x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t);
+    return fli('<li'+(cls?' class="'+cls.slice(1)+'"':'')+'>',b,i)+'<span class="aq-docs__tab" aria-hidden="true">'+idx(i).replace(' aria-hidden="true"','')
+      +(coded?'<span class="aq-docs__code">'+e(codes[i][0])+'</span>':'')+'</span>'
+      +'<span class="aq-docs__card"><span class="aq-docs__name">'+name+(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')+'</span></span></li>';
   }).join('')+'</ol>',b.fold_noun||'documents'));
 };

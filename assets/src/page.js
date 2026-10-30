@@ -4,7 +4,7 @@ function wBlock(b){var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}
    prose, FAQ, forms, case studies) are laid on light drawing sheets; diagrams, routes, options, grids and related links
    stay on the navy. A block may set ground: "light" or "dark" to override. Consecutive light blocks share one sheet,
    which ends in a small title block (page name, sheet number) like a drawing sheet. */
-var LIGHT={spec:1,table:1,docs:1,prose:1,faq:1,form:1,'case':1,failures:1,evidence:1};/* keyed by table shape (as) or block type */
+var LIGHT={spec:1,table:1,docs:1,prose:1,faq:1,form:1,'case':1,failures:1,evidence:1,gauges:1};/* keyed by table shape (as) or block type */
 function ground(b){return b.ground==='light'||b.ground==='dark'?b.ground:LIGHT[b.as||b.type]?'light':'dark'}
 function wSheet(inner,p,n){return '<div class="aq-sheet" data-theme="light">'+inner+'<div class="aq-sheet__block" aria-hidden="true"><span>Aquemi</span><span>'+e(p.nav_label||p.id)+'</span><span>Sheet '+(n<10?'0':'')+n+'</span></div></div>'}
 /* Page: NavBar, Hero, SectionNav, sections (navy ground and light sheets), Closing, Footer */

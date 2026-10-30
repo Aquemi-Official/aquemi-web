@@ -24,9 +24,25 @@ function wSecHead(b){b=b||{};if(!b.h&&!b.eyebrow&&!b.intro)return '';
  return '<header class="aq-sec-head">'+(b.eyebrow?'<p class="aq-eyebrow">'+tx(b.eyebrow)+'</p>':'')+h1(b.h)+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'</header>'}
 /* Index: the one numbering style, "01" (aria-hidden: the list already announces position) */
 function idx(i){return '<span class="aq-index" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}
-/* Rows: one list row of the shared list grammar (.aq-rows). link: a page id; the whole row becomes the link. art: drawing page id. */
-function wRow(i,t,d,link,art,tag){var inner=idx(i)+'<h3 class="aq-rows__t">'+tx(t)+'</h3>'+(d||tag?'<p class="aq-rows__d">'+(d?tx(d):'')+(tag?'<span class="aq-tags"><span class="aq-tag">'+e(tag)+'</span></span>':'')+'</p>':'')
-  +(art&&ART[art]?'<span class="aq-illustration aq-rows__art" aria-hidden="true" style="'+artMask(art)+'"></span>':'');
+/* Icon: a line-art spot from assets/icons/<name>.png, painted with a token through a mask (design-system/components/Icon). */
+var ICONS=' softener carbon-filter ro-membrane edi still pure-steam tank loop valve heat-exchanger uv ozone conductivity toc pump weld borescope gauge pid binder stamp calendar wrench magnifier ';
+function isIcon(n){return typeof n==='string'&&/^[a-z-]+$/.test(n)&&ICONS.indexOf(' '+n+' ')>=0}
+function wIcon(n,cls){var u='url(assets/icons/'+n+'.png)';return '<span class="aq-icon'+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
+/* Row icons for a block: item.icon wins; with block "icons": "auto" a title naming one piece of equipment picks it, but only
+   when every row gets one (a half-iconed list reads as broken). First match wins: pure steam before still. */
+var ICON_AUTO=[[/softener/i,'softener'],[/carbon filter|activated carbon/i,'carbon-filter'],[/reverse osmosis|\bRO\b/,'ro-membrane'],[/\bEDI\b|electrodeioni/i,'edi'],
+ [/pure steam/i,'pure-steam'],[/\bstills?\b|distillation/i,'still'],[/storage tank/i,'tank'],[/distribution loop/i,'loop'],[/heat exchanger/i,'heat-exchanger'],[/\bUV\b|ultraviolet/,'uv'],
+ [/ozone/i,'ozone'],[/conductivity/i,'conductivity'],[/\bTOC\b|total organic carbon/i,'toc'],[/\bpumps?\b/i,'pump'],[/orbital weld/i,'weld'],[/borescope/i,'borescope'],[/P&ID|instrumentation diagram/i,'pid']];
+function wIcons(b){var I=b.items||[],r=I.map(function(it){return it&&isIcon(it.icon)?it.icon:''});
+ if(b.icons==='auto'){var a=r.map(function(n,i){if(n)return n;var t=String(I[i]&&I[i].t||'');for(var k=0;k<ICON_AUTO.length;k++)if(ICON_AUTO[k][0].test(t))return ICON_AUTO[k][1];return ''});if(a.every(Boolean))r=a}
+ return r}
+/* Rows: one list row of the shared list grammar (.aq-rows). link: a page id; the whole row becomes the link. art: drawing page id.
+   ic: icon name (wIcons) shown in the index column instead of the number; num: keep the number beside it (ordered steps).
+   An icon replaces the row-end drawing (art): at 48 px a drawing reads as texture, the icon reads as the thing. */
+function wRow(i,t,d,link,art,tag,ic,num){ic=isIcon(ic)?ic:'';var hasArt=!ic&&art&&ART[art];
+ var lead=ic?'<span class="aq-rows__lead'+(num?' aq-rows__lead--n':'')+'" aria-hidden="true">'+(num?idx(i):'')+wIcon(ic)+'</span>':idx(i);
+ var inner=lead+'<h3 class="aq-rows__t">'+tx(t)+'</h3>'+(d||tag?'<p class="aq-rows__d">'+(d?tx(d):'')+(tag?'<span class="aq-tags"><span class="aq-tag">'+e(tag)+'</span></span>':'')+'</p>':'')
+  +(hasArt?'<span class="aq-illustration aq-rows__art" aria-hidden="true" style="'+artMask(art)+'"></span>':'');
  return '<li>'+(link&&wp(link)?'<a class="aq-rows__row" href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div class="aq-rows__row">'+inner+'</div>')+'</li>'}
 /* Fold (block field fold: N): the first N items show, the rest carry aq-fold-x and stay hidden until the button under
    the list is pressed ("Show all 10 parameters" / "Show fewer"). Put the items that decide the choice first; fold only

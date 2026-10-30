@@ -6,14 +6,8 @@
  "meta": "PW and WFI for CDMOs, built to the stricter of USP and Ph. Eur. on each attribute, with Part 11 trend data and an audit pack every client can follow.",
  "path": "/industries/cdmo/",
  "eyebrow": "CONTRACT MANUFACTURING · USP AND PH. EUR.",
- "headline": "One water system, audited by every client and every regulator they ship to",
- "lead": "A contract development and manufacturing organization (CDMO) answers every client's auditor with one water system. We build Purified Water (PW) and Water for Injection (WFI) to the stricter of USP and Ph. Eur.",
- "tags": [
-  "USP <645>",
-  "USP <643>",
-  "Ph. Eur. 0008 and 0169",
-  "21 CFR Part 11"
- ],
+ "headline": "Water built to the stricter of USP and Ph. Eur., for every client's auditor",
+ "lead": "A contract development and manufacturing organization (CDMO) runs one water system for every client. We design, build and wet test its Purified Water (PW) and Water for Injection (WFI) in Canada.",
  "primary_cta": "Request a CDMO water scope review",
  "primary_cta_intent": "Water scope review for your products|CDMO or contract manufacturing",
  "secondary_cta": {
@@ -111,13 +105,14 @@
       "link": "sys-pure-steam"
      }
     ]
-   ]
+   ],
+   "as": "router"
   },
   {
    "type": "table",
    "nav": "Strictest of",
    "h": "Where USP and Ph. Eur. differ, and our value",
-   "intro": "Send each client programme's markets; we write every attribute into the compliance matrix before design. Ph. Eur. 0008 as revised in Ph. Eur. 12.3, in force 1 July 2026.",
+   "intro": "Send each programme's markets; every attribute goes into the compliance matrix before design. Ph. Eur. 0008 as revised in Ph. Eur. 12.3, in force 1 July 2026.",
    "cols": [
     "Attribute",
     "USP",
@@ -132,34 +127,16 @@
      "USP <645>, the stricter value"
     ],
     [
-     "Conductivity, WFI",
-     "≤ 1.3 µS/cm @ 25 °C, stage 1 (USP <645>)",
-     "≤ 1.1 µS/cm @ 20 °C, stage 1, same three-stage method (Ph. Eur. 0169)",
-     "Both, from the same stage 1 table"
-    ],
-    [
-     "Total organic carbon (TOC)",
-     "≤ 0.50 mg/L (USP <643>)",
-     "≤ 0.50 mg/L (Ph. Eur. 2.2.44)",
-     "0.50 mg/L, one validated method"
-    ],
-    [
      "Nitrates, PW",
      "No test",
      "≤ 0.2 ppm (Ph. Eur. 0008)",
      "Tested at FAT and release where clients file in Europe"
     ],
     [
-     "Bacterial endotoxins, WFI",
-     "< 0.25 EU/mL (USP <85>)",
-     "< 0.25 IU/mL (Ph. Eur. 2.6.14)",
-     "< 0.25 EU/mL; the units are equivalent"
-    ],
-    [
-     "Microbial action level",
-     "PW 100 CFU/mL, WFI 10 CFU/100 mL, as guidance (USP <1231>)",
-     "Same values (Ph. Eur. 0008, 0169), test method in the monograph",
-     "One agreed method; site alert and action levels from qualification data"
+     "Conductivity, WFI",
+     "≤ 1.3 µS/cm @ 25 °C, stage 1 (USP <645>)",
+     "≤ 1.1 µS/cm @ 20 °C, stage 1, same three-stage method (Ph. Eur. 0169)",
+     "Both, from the same stage 1 table"
     ],
     [
      "WFI production route",
@@ -172,14 +149,34 @@
      "Monograph: condensate meets WFI attributes",
      "No monograph; EU GMP Annex 1 (2022) 6.17, EN 285 test methods",
      "WFI monograph, plus non-condensable gases, dryness and superheat"
+    ],
+    [
+     "Total organic carbon (TOC)",
+     "≤ 0.50 mg/L (USP <643>)",
+     "≤ 0.50 mg/L (Ph. Eur. 2.2.44)",
+     "0.50 mg/L, one validated method"
+    ],
+    [
+     "Bacterial endotoxins, WFI",
+     "< 0.25 EU/mL (USP <85>)",
+     "< 0.25 IU/mL (Ph. Eur. 2.6.14)",
+     "< 0.25 EU/mL; the units are equivalent"
+    ],
+    [
+     "Microbial action level",
+     "PW 100 CFU/mL, WFI 10 CFU/100 mL, as guidance (USP <1231>)",
+     "Same values (Ph. Eur. 0008, 0169), test method in the monograph",
+     "One agreed method; site alert and action levels from qualification data"
     ]
-   ]
+   ],
+   "fold": 5,
+   "fold_noun": "attributes"
   },
   {
    "type": "docs",
    "nav": "Audit pack",
    "h": "The client audit pack we set up at handover",
-   "intro": "Your quality agreements decide what each client sees. We make each answer an export by date range, point of use and suite, with no other client's data.",
+   "intro": "Your quality agreements decide what each client sees. Each answer is an export by date range, point of use and suite, with no other client's data.",
    "items": [
     {
      "t": "System description",
@@ -213,7 +210,9 @@
      "t": "Data integrity statement",
      "d": "Access, audit trails and review frequency to 21 CFR Part 11, EU GMP Annex 11, PIC/S PI 041-1"
     }
-   ]
+   ],
+   "fold": 6,
+   "fold_noun": "documents"
   },
   {
    "type": "options",
@@ -244,7 +243,9 @@
      "t": "Sized for the pipeline",
      "d": "Sized for signed and expected programmes, with spare skid space and valved tie-ins qualified with the original system."
     }
-   ]
+   ],
+   "fold": 3,
+   "fold_noun": "options"
   },
   {
    "type": "steps",
@@ -289,16 +290,16 @@
      "link": "svc-design"
     },
     {
-     "t": "Fabrication",
-     "d": "316L piping with weld logs, borescope records and mill-heat material certificates.",
-     "tag": "ASME BPE",
-     "link": "svc-fabrication"
-    },
-    {
      "t": "FAT and SAT",
      "d": "Wet FAT your clients' engineers can witness, then SAT on your feed water.",
      "tag": "Witnessed FAT",
      "link": "svc-fat-sat"
+    },
+    {
+     "t": "Upgrades and retrofits",
+     "d": "Capacity, duplex trains, new loops and Part 11 controls on any builder's system.",
+     "tag": "Change control",
+     "link": "svc-upgrades"
     },
     {
      "t": "Commissioning and qualification",
@@ -307,24 +308,20 @@
      "link": "svc-cq"
     },
     {
+     "t": "Fabrication",
+     "d": "316L piping with weld logs, borescope records and mill-heat material certificates.",
+     "tag": "ASME BPE",
+     "link": "svc-fabrication"
+    },
+    {
      "t": "Service",
      "d": "Stated response times, calibration by tag number and reports filed for client audits.",
      "tag": "21 CFR 211.67",
      "link": "svc-service"
-    },
-    {
-     "t": "Upgrades and retrofits",
-     "d": "Capacity, duplex trains, new loops and Part 11 controls on any builder's system.",
-     "tag": "Change control",
-     "link": "svc-upgrades"
     }
-   ]
-  },
-  {
-   "type": "band",
-   "tone": "limestone",
-   "h": "Built, wet tested and serviced in Canada",
-   "body": "Your clients' engineers witness FAT in [test bay location, city and province]. Spares in [stock locations], service engineers in [service bases]. Quotes in [quotation currency]; standard lead time [duplex PW system lead time, weeks]."
+   ],
+   "fold": 3,
+   "fold_noun": "services"
   },
   {
    "type": "faq",
@@ -380,7 +377,7 @@
  ],
  "cta": {
   "h": "Send your client programmes, markets and uptime target. We return the scope.",
-  "body": "A process engineer replies within [proposal response time, working days] with the specification, the redundancy to hold it and the qualification scope, or our questions.",
+  "body": "A process engineer replies, with the scope or our questions.",
   "button": "Request a CDMO water scope review",
   "link": "contact-proposal",
   "intent": "Water scope review for your products|CDMO or contract manufacturing",
@@ -392,7 +389,13 @@
    "Existing system and how records are kept",
    "Recent findings that touch water",
    "Contract, tech transfer and PPQ dates"
-  ]
+  ],
+  "returns": [
+   "The specification",
+   "The redundancy to hold it",
+   "The qualification scope"
+  ],
+  "turnaround": "[proposal response time, working days]"
  },
  "todo": [
   "Confirm CDMOs and contract manufacturers are a target segment",
@@ -401,11 +404,6 @@
   "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service); service coverage area (hero fact, uptime options)",
   "Gap check turnaround for a new client programme, working days (tech transfer steps)",
   "Typical span from order to release for a new point of use on a qualified loop, weeks ([new point of use, order to release, weeks]; tech transfer steps)",
-  "Test bay location, city and province (band; same as home, about)",
-  "Spares stock locations (band)",
-  "Service bases (band)",
-  "Quotation currency (band)",
-  "Standard lead time for a duplex PW system, weeks ([duplex PW system lead time, weeks]; band)",
   "Confirm Aquemi attends client audits and inspections as supplier, in person or by video, and on what terms: in a service plan or per day ([client audit attendance and terms]; FAQ)",
   "Confirm whether Aquemi provides a water system capability sheet and questionnaire support for CDMO business development, and whether service plans include it ([capability sheet and questionnaire support]; FAQ)",
   "Confirm the client audit pack is part of the handover scope or an option, and whether service plans refresh its trend reports (audit pack)",

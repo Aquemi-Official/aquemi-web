@@ -6,8 +6,8 @@
  "meta": "Can we support your site? On-site response time, parts stock, CSA B51 registration, engineering licence and language, region by region. Book a shop visit.",
  "path": "/contact/locations/",
  "eyebrow": "LOCATIONS · SERVICE COVERAGE",
- "headline": "Where we are and where we serve",
- "lead": "Check your site against the coverage table: severity 1 on-site response, where the technician and parts come from, and who registers and seals the design. Shop and test bay: [shop location, city and province].",
+ "headline": "Where we are, how fast we reach your site, and how to visit",
+ "lead": "Pick your region to see severity 1 on-site response, where the technician and parts come from, and who registers and seals the design.",
  "tags": [
   "CSA B51",
   "CRN",
@@ -20,85 +20,47 @@
  },
  "blocks": [
   {
-   "type": "table",
-   "anchor": "coverage",
-   "nav": "Coverage",
-   "eyebrow": "SERVICE COVERAGE BY REGION",
-   "h": "Can you support my site?",
-   "intro": "Severity 1 means production stopped or water out of specification. Times are plan figures inside [service coverage area]; outside it, we write a travel response into the plan before you sign.",
-   "cols": [
-    "Region",
-    "Main centres",
-    "Base and parts stock",
-    "Severity 1: technician on site",
-    "Canadian registration number (CRN) from",
-    "Design sealed under"
-   ],
-   "rows": [
-    [
-     "Ontario",
-     "Greater Toronto Area, including Mississauga; [other Ontario centres served]",
-     "[service base, city] · [stocking point for Ontario, city]",
-     "[severity 1 on-site response time in Ontario, hours]",
-     "Technical Standards and Safety Authority (TSSA)",
-     "Professional Engineers Ontario (PEO) · [certificate of authorization: yes or no]"
-    ],
-    [
-     "Quebec",
-     "Greater Montreal, including Laval; [other Quebec centres served]",
-     "[service base, city] · [stocking point for Quebec, city]",
-     "[severity 1 on-site response time in Quebec, hours]",
-     "Régie du bâtiment du Québec (RBQ)",
-     "Ordre des ingénieurs du Québec (OIQ)"
-    ],
-    [
-     "British Columbia",
-     "Metro Vancouver; [other BC centres served]",
-     "[service base or partner, city] · [BC stocking point, city]",
-     "[severity 1 on-site response time in BC, hours]",
-     "Technical Safety BC",
-     "Engineers and Geoscientists BC (EGBC) · [firm permit to practice: yes or no]"
-    ],
-    [
-     "Alberta",
-     "[Alberta centres served]",
-     "[service base or partner, city] · [Alberta stocking point, city]",
-     "[severity 1 on-site response time in Alberta, hours]",
-     "ABSA, the pressure equipment safety authority",
-     "APEGA · [permit to practice: yes or no]"
-    ],
-    [
-     "Saskatchewan and Manitoba",
-     "[centres served]",
-     "[service base or partner, city] · [stocking point, city]",
-     "[severity 1 response, hours, or visits only]",
-     "Authority in the province of installation",
-     "Provincial engineering regulator"
-    ],
-    [
-     "Atlantic Canada",
-     "[centres served]",
-     "[service base or partner, city] · [stocking point, city]",
-     "[severity 1 response, hours, or visits only]",
-     "Authority in the province of installation",
-     "Provincial engineering regulator"
-    ],
-    [
-     "Territories and remote sites",
-     "[By arrangement: confirm]",
-     "[Site spares kit recommended: confirm]",
-     "[Travel response agreed in the plan]",
-     "Territorial authority",
-     "Territorial engineering regulator"
-    ],
-    [
-     "United States",
-     "See United States sites below",
-     "[US service base and parts route]",
-     "[US on-site response, hours, or visits only]",
-     "No CRN; state rules apply",
-     "[US state licence route, if any]"
-    ]
+   "type": "contact-routes",
+   "h": "Three ways in",
+   "routes": [
+    {
+     "t": "Request a proposal or review",
+     "d": "New system, upgrade or document review: send your URS and water data.",
+     "steps": [
+      "Choose your request; send what you have",
+      "An engineer reads it and replies by name",
+      "Written answer, then a firm proposal"
+     ],
+     "clock": "Written reply within [proposal response time, working days]",
+     "link": "contact-proposal"
+    },
+    {
+     "t": "Production stopped or water out of specification",
+     "d": "Severity 1. Answered [service phone hours]. Do not wait for a form.",
+     "phone": "[service phone number]",
+     "steps": [
+      "Call the service line",
+      "Triage call confirms the severity",
+      "Remote diagnosis, then a technician on site"
+     ],
+     "clock": "Technician on site within [severity 1 on-site response time, hours]",
+     "link": "contact-service",
+     "urgent": true,
+     "action": "Log a service request"
+    },
+    {
+     "t": "Visit or audit the shop",
+     "d": "Shop tour, supplier audit or FAT witness at [shop location, city and province].",
+     "steps": [
+      "Tell us the purpose, dates and group",
+      "We reply with a date and an agenda",
+      "Records and test bay ready on the day"
+     ],
+     "clock": "Date and agenda within [visit booking reply time, working days]",
+     "link": "contact-locations",
+     "action": "Book a visit below",
+     "current": true
+    }
    ]
   },
   {
@@ -109,79 +71,89 @@
    "intro": "Tell us why you are coming and who is in the group. An audit gets the quality records out; a factory acceptance test (FAT) witness gets the approved protocol and a calibrated test bay.",
    "submit": "Request a visit",
    "note": "We reply with a date and an agenda within [visit booking reply time, working days]. Visitors sign [visitor confidentiality and safety terms] on arrival. [privacy notice link, PIPEDA and Law 25]",
-   "fields": [
+   "steps": [
     {
-     "label": "Purpose of the visit",
-     "kind": "radio",
-     "required": true,
-     "options": [
-      "Shop tour before shortlisting",
-      "Supplier or quality audit",
-      "Witness the FAT on our project",
-      "Pre-FAT walk-down or protocol review",
-      "Training at the test bay before handover"
-     ],
-     "help": "An audit can also run remotely or by questionnaire; see the quality management page."
-    },
-    {
-     "label": "Project or purchase order number",
-     "kind": "text",
-     "required": false,
-     "when": "Witness the FAT on our project|Pre-FAT walk-down or protocol review|Training at the test bay before handover"
-    },
-    {
-     "label": "Preferred dates",
-     "kind": "text",
-     "required": true,
-     "help": "Two or three dates, or a week. A FAT date is set in the project schedule; this books your travel around it."
-    },
-    {
-     "label": "Number of visitors",
-     "kind": "text",
-     "required": true,
-     "unit": "people"
-    },
-    {
-     "label": "Language for the day",
-     "kind": "radio",
-     "required": false,
-     "options": [
-      "English",
-      "French"
+     "title": "Your visit",
+     "next": "Continue to group and contact",
+     "fields": [
+      {
+       "label": "Purpose of the visit",
+       "kind": "radio",
+       "required": true,
+       "options": [
+        "Shop tour before shortlisting",
+        "Supplier or quality audit",
+        "Witness the FAT on our project",
+        "Pre-FAT walk-down or protocol review",
+        "Training at the test bay before handover"
+       ],
+       "help": "An audit can also run remotely or by questionnaire; see the quality management page."
+      },
+      {
+       "label": "Project or purchase order number",
+       "kind": "text",
+       "required": false,
+       "when": "Witness the FAT on our project|Pre-FAT walk-down or protocol review|Training at the test bay before handover"
+      },
+      {
+       "label": "Preferred dates",
+       "kind": "text",
+       "required": true,
+       "help": "Two or three dates, or a week. A FAT date is set in the project schedule; this books your travel around it."
+      },
+      {
+       "label": "Number of visitors",
+       "kind": "text",
+       "required": true,
+       "unit": "people"
+      }
      ]
     },
     {
-     "label": "Access or safety needs",
-     "kind": "textarea",
-     "required": false,
-     "help": "Mobility access, a site induction your company requires, or remote attendees joining the group."
-    },
-    {
-     "label": "Name",
-     "kind": "text",
-     "required": true
-    },
-    {
-     "label": "Company and site",
-     "kind": "text",
-     "required": true
-    },
-    {
-     "label": "Work email",
-     "kind": "email",
-     "required": true
-    },
-    {
-     "label": "Phone",
-     "kind": "tel",
-     "required": false
+     "title": "Group and contact",
+     "fields": [
+      {
+       "label": "Language for the day",
+       "kind": "radio",
+       "required": false,
+       "options": [
+        "English",
+        "French"
+       ]
+      },
+      {
+       "label": "Access or safety needs",
+       "kind": "textarea",
+       "required": false,
+       "help": "Mobility access, a site induction your company requires, or remote attendees joining the group."
+      },
+      {
+       "label": "Name",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Company and site",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Work email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Phone",
+       "kind": "tel",
+       "required": false
+      }
+     ]
     }
    ]
   },
   {
    "type": "spec",
    "nav": "Visiting",
-   "caption": "SHOP AND TEST BAY",
    "h": "Visiting the shop",
    "cols": [
     "Item",
@@ -221,13 +193,79 @@
      "m": "Depends on the work that day"
     }
    ],
-   "note": "A FAT witness day follows the approved protocol; bring the people who sign it."
+   "note": "A FAT witness day follows the approved protocol; bring the people who sign it.",
+   "fold": 2,
+   "fold_noun": "visit details"
+  },
+  {
+   "type": "table",
+   "anchor": "coverage",
+   "nav": "Coverage",
+   "h": "Can you support my site?",
+   "intro": "Plan times apply inside [service coverage area]. Outside it, we write a travel response into the plan before you sign.",
+   "cols": [
+    "Your region",
+    "Severity 1: technician on site",
+    "Technician and parts from",
+    "Who registers and seals the design"
+   ],
+   "rows": [
+    [
+     "Ontario",
+     "[severity 1 on-site response time in Ontario, hours]",
+     "[service base, city] · [stocking point for Ontario, city]. Serves Greater Toronto Area, including Mississauga; [other Ontario centres served]",
+     "CRN from the Technical Standards and Safety Authority (TSSA). Sealed under Professional Engineers Ontario (PEO) · [certificate of authorization: yes or no]"
+    ],
+    [
+     "Quebec",
+     "[severity 1 on-site response time in Quebec, hours]",
+     "[service base, city] · [stocking point for Quebec, city]. Serves Greater Montreal, including Laval; [other Quebec centres served]",
+     "CRN from the Régie du bâtiment du Québec (RBQ). Sealed under Ordre des ingénieurs du Québec (OIQ)"
+    ],
+    [
+     "British Columbia",
+     "[severity 1 on-site response time in BC, hours]",
+     "[service base or partner, city] · [BC stocking point, city]. Serves Metro Vancouver; [other BC centres served]",
+     "CRN from Technical Safety BC. Sealed under Engineers and Geoscientists BC (EGBC) · [firm permit to practice: yes or no]"
+    ],
+    [
+     "Alberta",
+     "[severity 1 on-site response time in Alberta, hours]",
+     "[service base or partner, city] · [Alberta stocking point, city]. Serves [Alberta centres served]",
+     "CRN from ABSA, the pressure equipment safety authority. Sealed under APEGA · [permit to practice: yes or no]"
+    ],
+    [
+     "Saskatchewan and Manitoba",
+     "[severity 1 response, hours, or visits only]",
+     "[service base or partner, city] · [stocking point, city]. Serves [centres served]",
+     "CRN from the authority in the province of installation. Sealed under the provincial engineering regulator"
+    ],
+    [
+     "Atlantic Canada",
+     "[severity 1 response, hours, or visits only]",
+     "[service base or partner, city] · [stocking point, city]. Serves [centres served]",
+     "CRN from the authority in the province of installation. Sealed under the provincial engineering regulator"
+    ],
+    [
+     "Territories and remote sites",
+     "[Travel response agreed in the plan]",
+     "[Site spares kit recommended: confirm]. [By arrangement: confirm]",
+     "CRN from the territorial authority. Sealed under the territorial engineering regulator"
+    ],
+    [
+     "United States",
+     "[US on-site response, hours, or visits only]",
+     "[US service base and parts route]",
+     "No CRN; state rules apply. Sealed under [US state licence route, if any]"
+    ]
+   ],
+   "as": "router"
   },
   {
    "type": "table",
    "anchor": "locations",
    "nav": "Sites",
-   "h": "Our sites and how to reach them",
+   "h": "Where to find us",
    "cols": [
     "Site",
     "What happens here",
@@ -271,15 +309,16 @@
      "[partner city and province]",
      "Through the Aquemi service line"
     ]
-   ]
+   ],
+   "fold": 2,
+   "fold_noun": "sites"
   },
   {
    "type": "spec",
    "anchor": "us-sites",
    "nav": "US sites",
-   "caption": "UNITED STATES",
    "h": "Sites in the United States",
-   "intro": "[US sites served: states and system types]. What changes when the skid crosses the border:",
+   "intro": "[US sites served: states and system types]. What changes at the border:",
    "cols": [
     "Topic",
     "What applies",
@@ -316,51 +355,9 @@
      "v": "Response time is limited by travel and the border",
      "m": "[US service: response, partner or scheduled visits]"
     }
-   ]
-  },
-  {
-   "type": "grid",
-   "nav": "Contact",
-   "h": "Contact by purpose",
-   "intro": "Each request goes to the people who answer it.",
-   "items": [
-    {
-     "t": "Fault now, severity 1",
-     "d": "Call [service phone number], [service phone hours]. Do not wait for a form.",
-     "tag": "Service line",
-     "link": "contact-service"
-    },
-    {
-     "t": "Service, calibration or parts",
-     "d": "Log a service request with any builder's make and model, or email [parts email].",
-     "tag": "Ticket",
-     "link": "contact-service"
-    },
-    {
-     "t": "New system or upgrade",
-     "d": "A process engineer replies within [proposal response time, working days].",
-     "tag": "Proposal",
-     "link": "contact-proposal"
-    },
-    {
-     "t": "Service plan for your site",
-     "d": "Response times, visits, calibrations and stocked spares for your address.",
-     "tag": "Service plans",
-     "link": "svc-service"
-    },
-    {
-     "t": "Supplier qualification",
-     "d": "Quality questionnaire, ISO 9001 status, audit booking.",
-     "tag": "Quality",
-     "link": "cmp-quality"
-    },
-    {
-     "t": "Careers",
-     "d": "Open roles, including field service.",
-     "tag": "Careers",
-     "link": "careers"
-    }
-   ]
+   ],
+   "fold": 2,
+   "fold_noun": "topics"
   },
   {
    "type": "faq",
@@ -392,10 +389,6 @@
      "a": "[French service: people, reports and documents]. For a system installed in Quebec, ask your legal team which documents the Charter of the French language requires in French."
     },
     {
-     "q": "Can we witness the FAT without travelling?",
-     "a": "Yes: remotely over [remote witness platform], in person, or both. Checks that need a person, such as noise, heat or the inside of a panel, are agreed in the protocol; the FAT and SAT page lists them."
-    },
-    {
      "q": "How does the skid get from FAT to our dock?",
      "a": "After the FAT is signed and released: [drain and drying method after wet FAT], open ends capped and sealed, [crating standard and shock indicators], by road from the shop in [transit time to main centres, days]. Skid condition and seals are checked on arrival against the shipping record, before installation and the SAT."
     }
@@ -404,7 +397,7 @@
  ],
  "cta": {
   "h": "Get the coverage for your site in writing",
-  "body": "We reply with the on-site response time, the base and stocking point that serve you, the CRN route and the licensed engineer for your province.",
+  "body": "In writing: the on-site response time, the base and stocking point that serve you, the CRN route and the licensed engineer for your province.",
   "include": [
    "Site address and province",
    "New system, or service plan for existing equipment",
@@ -450,10 +443,6 @@
   {
    "v": "[number of stocking points]",
    "l": "Spare parts stocked in [stock location or locations]"
-  },
-  {
-   "v": "[shop location, city and province]",
-   "l": "Shop and test bay. Visits by appointment"
   }
  ]
 }

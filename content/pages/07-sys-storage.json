@@ -165,27 +165,47 @@
     {
      "p": "Tank volume",
      "v": "[tank volume range, L]",
-     "m": "Sized from your demand profile against the generation rate"
+     "m": "Sized from your demand profile against the generation rate",
+     "at": [
+      28.5,
+      48.6
+     ]
     },
     {
      "p": "Materials, product contact",
      "v": "316L stainless steel",
-     "m": "EN 10204 3.1 material certificates"
+     "m": "EN 10204 3.1 material certificates",
+     "at": [
+      86.7,
+      71.4
+     ]
     },
     {
      "p": "Surface finish, product contact",
      "v": "[standard finish, ASME BPE designation]",
-     "m": "SF1: Ra ≤ 0.51 µm mechanically polished; SF4: Ra ≤ 0.38 µm electropolished"
+     "m": "SF1: Ra ≤ 0.51 µm mechanically polished; SF4: Ra ≤ 0.38 µm electropolished",
+     "at": [
+      43.3,
+      20.1
+     ]
     },
     {
      "p": "Welding and inspection",
      "v": "Orbital welds numbered on the isometric; [share of product-contact welds borescoped, %] borescoped",
-     "m": "ASME BPE acceptance criteria; ASME Section IX qualifications"
+     "m": "ASME BPE acceptance criteria; ASME Section IX qualifications",
+     "at": [
+      78.7,
+      56.0
+     ]
     },
     {
      "p": "Pressure-rated tanks",
      "v": "ASME Section VIII, Division 1, with rupture disc or relief device",
-     "m": "Canadian registration number (CRN), CSA B51: [provinces where Aquemi registers]"
+     "m": "Canadian registration number (CRN), CSA B51: [provinces where Aquemi registers]",
+     "at": [
+      50.7,
+      29.2
+     ]
     },
     {
      "p": "Passivation",
@@ -215,7 +235,8 @@
    ],
    "nav": "Fabrication",
    "fold": 5,
-   "fold_noun": "parameters"
+   "fold_noun": "parameters",
+   "as": "callouts"
   },
   {
    "type": "options",

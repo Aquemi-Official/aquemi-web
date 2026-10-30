@@ -174,7 +174,7 @@ BUDGET = {
 }
 WORD = re.compile(r'\S*[A-Za-z0-9µ°]\S*')
 # Keys that are not visible copy
-NOT_COPY = {'type', 'nav', 'anchor', 'link', 'kind', 'tone', 'id', 'hl', 'required', 'unit', 'name', 'section', 'show_if', 'when', 'mark', 'as', 'ground', 'fold', 'fold_noun', 'lean'}
+NOT_COPY = {'type', 'nav', 'anchor', 'link', 'kind', 'tone', 'id', 'hl', 'required', 'unit', 'name', 'section', 'show_if', 'when', 'mark', 'as', 'ground', 'fold', 'fold_noun', 'lean', 'to', 'at', 'icon', 'icons', 'end', 'art', 'key'}
 
 
 def words(s):

@@ -7,7 +7,7 @@
  "path": "/compliance/documentation/",
  "eyebrow": "DOCUMENTATION · EU GMP ANNEX 15 · GAMP 5 · ASME BPE",
  "headline": "Every document your auditor will ask for, indexed to your requirements",
- "lead": "We write the package as we design, build and test, send each document for review at the stage that issues it, and hand over a turnover package indexed to your user requirement specification (URS).",
+ "lead": "We write each document as we design, build and test, and hand over a package indexed to your user requirement specification (URS).",
  "tags": [
   "EU GMP Annex 15",
   "GAMP 5",
@@ -29,54 +29,50 @@
    "intro": "Each document is issued at the stage that produces it. Your proposal lists the subset for your system.",
    "cols": [
     "Stage",
-    "Documents issued",
-    "Your step it supports",
-    "Approved by"
+    "Your step it supports, and who approves",
+    "Documents issued"
    ],
    "rows": [
     [
      "Specify and design",
-     "URS compliance matrix, basis of design, risk assessment, piping and instrumentation diagrams (P&IDs), functional specification, commissioning and qualification (C&Q) plan, traceability matrix",
-     "Design qualification (DQ) and computerized system validation · EU GMP Annex 15, 3.3; ASTM E2500; GAMP 5",
-     "Your quality unit approves DQ; your engineering lead approves the drawings"
+     "Design qualification (DQ) and computerized system validation · EU GMP Annex 15, 3.3; ASTM E2500; GAMP 5. Your quality unit approves DQ; your engineering lead, drawings.",
+     "URS compliance matrix; basis of design; risk assessment; piping and instrumentation diagrams (P&IDs); functional specification; commissioning and qualification (C&Q) plan; traceability matrix"
     ],
     [
      "Fabrication",
-     "Material log with EN 10204 3.1 certificates, welding qualifications, weld map and log, borescope, surface finish, pressure test, passivation and dead leg records",
-     "Installation qualification (IQ) · EU GMP Annex 15, 3.9",
-     "Aquemi quality control; your team checks them again at IQ"
+     "Installation qualification (IQ) · EU GMP Annex 15, 3.9. Approved by: Aquemi quality control; your team again at IQ.",
+     "Material log with EN 10204 3.1 certificates; welding qualifications; weld map and log; borescope, surface finish and pressure test records; passivation and dead leg records"
     ],
     [
      "Factory and site acceptance tests (FAT, SAT)",
-     "Protocol approved before execution, executed protocol with raw data, code review, software version record, deviation log, summary report; EN 285 steam test for pure steam",
-     "Leveraged tests and operational qualification (OQ) · EU GMP Annex 15, 3.6",
-     "Your quality unit, before execution (EU GMP Annex 15, 2.6)"
+     "Leveraged tests and operational qualification (OQ) · EU GMP Annex 15, 3.6. Approved by: your quality unit, before execution (EU GMP Annex 15, 2.6).",
+     "Protocol approved before execution; executed protocol with raw data; code review; software version record; deviation log; summary report; EN 285 steam test (pure steam)"
     ],
     [
      "Qualification",
-     "IQ and OQ protocols and reports, sanitization temperature mapping, traceability matrix, performance qualification (PQ) protocol and sampling plan, alert and action levels, phase reports",
-     "IQ, OQ and PQ · EU GMP Annex 15, 3.9 to 3.11; WHO TRS 1033; USP <1231>",
-     "Your quality unit, before execution and at report approval"
+     "IQ, OQ and PQ · EU GMP Annex 15, 3.9 to 3.11; WHO TRS 1033; USP <1231>. Your quality unit approves before execution and at report.",
+     "IQ and OQ protocols and reports; sanitization temperature mapping; traceability matrix; performance qualification (PQ) protocol and sampling plan; alert and action levels; phase reports"
     ],
     [
      "Handover",
-     "Document register, as-built drawings, calibration certificates, software backup, operation and maintenance manual, standard operating procedure (SOP) drafts, spare parts list, training records",
-     "Inspection: any record found in minutes · Health Canada GUI-0001; 21 CFR Part 211",
-     "Your system owner, with your engineering, metrology and quality leads"
+     "Inspection: any record found in minutes · Health Canada GUI-0001; 21 CFR Part 211. Approved by: your system owner, with your engineering, metrology and quality leads.",
+     "Document register; as-built drawings; calibration certificates; software backup; operation and maintenance manual; standard operating procedure (SOP) drafts; spare parts list; training records"
     ],
     [
      "Service and change",
-     "Signed service reports, calibration certificates, parts records, annual system review, change impact input, updated as-builts, change-scoped test records",
-     "Periodic review and change control · EU GMP Annex 15, 4.1 and section 11",
-     "Your quality unit, through your change control"
+     "Periodic review and change control · EU GMP Annex 15, 4.1 and section 11. Approved by: your quality unit, through your change control.",
+     "Signed service reports; calibration certificates; parts records; annual system review; change impact input; updated as-builts; change-scoped test records"
     ]
-   ]
+   ],
+   "as": "evidence",
+   "fold": 4,
+   "fold_noun": "stages"
   },
   {
    "type": "docs",
    "h": "The turnover package, section by section",
    "nav": "Package",
-   "intro": "Searchable PDF in 12 sections, bookmarked and linked from the register in section 1.",
+   "intro": "Searchable, bookmarked PDF in 12 sections, each linked from the register in section 1.",
    "items": [
     {
      "t": "Index and project summary",
@@ -126,7 +122,9 @@
      "t": "Operation, maintenance and training",
      "d": "Manual, SOP drafts, spare parts for the first [months of operation], maintenance schedule, training records"
     }
-   ]
+   ],
+   "fold": 6,
+   "fold_noun": "sections"
   },
   {
    "type": "steps",
@@ -143,78 +141,21 @@
     },
     {
      "t": "Revision",
-     "d": "We answer each comment in a comment log, revise and reissue. The log stays with the document."
+     "d": "We answer each comment in a comment log that stays with the document, revise and reissue."
     },
     {
      "t": "Approval",
-     "d": "Your quality unit approves protocols before execution; specifications and plans at their design gate."
+     "d": "Your quality unit approves protocols before execution, and specifications and plans at their design gate.",
+     "hold": "Your quality unit"
     },
     {
      "t": "Execution or as built",
-     "d": "Executed records carry results as found, raw data and both parties' signatures. Drawings are reissued as built."
+     "d": "Executed records carry results as found, raw data and both parties' signatures. Drawings are reissued as built.",
+     "hold": "Both parties"
     },
     {
      "t": "Turnover",
-     "d": "The register lists every current revision. A document open at handover is a punch list item with an owner and a date."
-    }
-   ]
-  },
-  {
-   "type": "spec",
-   "h": "Delivery, signatures and language",
-   "nav": "Delivery",
-   "caption": "TURNOVER PACKAGE FORMAT",
-   "cols": [
-    "Item",
-    "How we deliver it",
-    "Note"
-   ],
-   "rows": [
-    {
-     "p": "Documents we write",
-     "v": "Searchable PDF, bookmarked, number and revision on every page",
-     "m": "Never a scan of a printout",
-     "hl": true
-    },
-    {
-     "p": "Native files",
-     "v": "[native formats delivered]",
-     "m": "Ownership and licence terms stated in the proposal"
-    },
-    {
-     "p": "Third-party certificates",
-     "v": "As the issuer sent them, never retyped, indexed by heat, lot or serial number",
-     "m": "Cross-referenced in the material log"
-    },
-    {
-     "p": "Signatures",
-     "v": "[electronic signature method]; wet ink, scanned; or your electronic validation system",
-     "m": "[meets 21 CFR Part 11 and Annex 11?]"
-    },
-    {
-     "p": "Raw data",
-     "v": "Trends, alarm and event logs in [export format] as well as PDF",
-     "m": "Attached to executed protocols"
-    },
-    {
-     "p": "Templates",
-     "v": "Your protocol templates, numbering and good documentation practice rules, or ours",
-     "m": "Ours follow EU GMP Annex 15, GAMP 5 and the ISPE guides"
-    },
-    {
-     "p": "Language",
-     "v": "English. French: [French documents offered]",
-     "m": "In Quebec, ask your legal team what must be in French"
-    },
-    {
-     "p": "Transfer and paper",
-     "v": "[secure transfer method or portal]; [paper sets offered]",
-     "m": "Your document control decides the master copy"
-    },
-    {
-     "p": "Retention",
-     "v": "Aquemi keeps a copy for [retention period, years]",
-     "m": "A lost document is reissued on request"
+     "d": "The register lists every current revision. A document still open is a punch list item with an owner and a date."
     }
    ]
   },
@@ -223,7 +164,7 @@
    "h": "Request a sample turnover package",
    "nav": "Request a sample",
    "anchor": "samples",
-   "intro": "Check the format before you shortlist us: index, protocol extracts and record formats from a delivered system, redacted. Shared [openly or under a non-disclosure agreement (NDA)]. We reply within [sample package response time, working days].",
+   "intro": "Index, protocol extracts and record formats from a delivered system, redacted. Shared [openly or under a non-disclosure agreement (NDA)]. We reply within [sample package response time, working days].",
    "submit": "Send me the sample",
    "fields": [
     {
@@ -232,11 +173,11 @@
      "required": true,
      "options": [
       "Turnover package index",
-      "FAT protocol: contents and sample test cases",
-      "IQ and OQ protocol table of contents",
+      "FAT protocol: contents and test cases",
+      "IQ and OQ protocol contents",
       "Weld map and weld log extract",
       "Material log extract",
-      "Requirements traceability matrix extract",
+      "Traceability matrix extract",
       "Signed service report"
      ]
     },
@@ -267,7 +208,7 @@
      ]
     },
     {
-     "kind": "radio",
+     "kind": "select",
      "label": "Non-disclosure agreement (NDA)",
      "required": false,
      "options": [
@@ -296,9 +237,70 @@
      "kind": "textarea",
      "label": "What your validation team wants to check",
      "required": false,
-     "help": "For example your template, your numbering or a clause of your URS."
+     "help": "Your template, numbering or a URS clause, for example."
     }
    ]
+  },
+  {
+   "type": "spec",
+   "h": "Delivery, signatures and language",
+   "nav": "Delivery",
+   "caption": "TURNOVER PACKAGE FORMAT",
+   "cols": [
+    "Item",
+    "How we deliver it",
+    "Note"
+   ],
+   "rows": [
+    {
+     "p": "Documents we write",
+     "v": "Searchable PDF, bookmarked, number and revision on every page",
+     "m": "Never a scan of a printout",
+     "hl": true
+    },
+    {
+     "p": "Signatures",
+     "v": "[electronic signature method]; wet ink, scanned; or your electronic validation system",
+     "m": "[meets 21 CFR Part 11 and Annex 11?]"
+    },
+    {
+     "p": "Third-party certificates",
+     "v": "As the issuer sent them, never retyped, indexed by heat, lot or serial number",
+     "m": "Cross-referenced in the material log"
+    },
+    {
+     "p": "Native files",
+     "v": "[native formats delivered]",
+     "m": "Ownership and licence terms stated in the proposal"
+    },
+    {
+     "p": "Raw data",
+     "v": "Trends, alarm and event logs in [export format] as well as PDF",
+     "m": "Attached to executed protocols"
+    },
+    {
+     "p": "Templates",
+     "v": "Your protocol templates, numbering and good documentation practice rules, or ours",
+     "m": "Ours follow EU GMP Annex 15, GAMP 5 and the ISPE guides"
+    },
+    {
+     "p": "Language",
+     "v": "English. French: [French documents offered]",
+     "m": "In Quebec, ask your legal team what must be in French"
+    },
+    {
+     "p": "Transfer and paper",
+     "v": "[secure transfer method or portal]; [paper sets offered]",
+     "m": "Your document control decides the master copy"
+    },
+    {
+     "p": "Retention",
+     "v": "Aquemi keeps a copy for [retention period, years]",
+     "m": "A lost document is reissued on request"
+    }
+   ],
+   "fold": 4,
+   "fold_noun": "items"
   },
   {
    "type": "faq",
@@ -341,7 +343,7 @@
   },
   {
    "type": "related",
-   "h": "Related pages",
+   "h": "Where each document comes from",
    "items": [
     "compliance",
     "svc-fat-sat",
@@ -353,8 +355,8 @@
   }
  ],
  "cta": {
-  "h": "Seen the sample? Send your URS for your document list.",
-  "body": "A process engineer replies within [proposal response time, working days] with a scoped proposal listing every document your system ships with, the stage that issues it and who approves it.",
+  "h": "Send your URS for your document list.",
+  "body": "A process engineer replies with a scoped proposal for your system.",
   "button": "Submit your URS for a proposal",
   "link": "contact-proposal",
   "proof": {
@@ -364,9 +366,14 @@
   "include": [
    "Your URS, current revision",
    "Your protocol templates, if any",
-   "Your document numbering rules",
-   "Your good documentation practice rules",
+   "Your numbering and good documentation practice rules",
    "Your electronic validation system, if used"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Every document your system ships with",
+   "The stage that issues each one",
+   "Who approves each document"
   ]
  },
  "todo": [

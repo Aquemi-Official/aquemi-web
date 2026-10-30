@@ -7,7 +7,7 @@
  "path": "/company/careers/",
  "eyebrow": "CAREERS · ENGINEERING · WELDING · VALIDATION · SERVICE · QUALITY",
  "headline": "Build systems that pass inspection",
- "lead": "We design, build, qualify and service Purified Water (PW), Water for Injection (WFI) and pure steam systems for plants inspected by Health Canada, FDA and EU. Each role below states its base, travel and pay.",
+ "lead": "We design, build, qualify and service Purified Water (PW), Water for Injection (WFI) and pure steam systems for plants inspected by Health Canada, FDA and EU.",
  "tags": [
   "ASME BPE",
   "ASME Section IX",
@@ -23,96 +23,63 @@
  },
  "blocks": [
   {
-   "type": "prose",
-   "nav": "The work",
-   "h": "What the work is, and who it suits",
-   "body": [
-    "Our systems are small enough that one engineer can know the whole of one, and regulated enough that every detail is written down. You see the system you worked on pass its factory acceptance test (FAT), often with the client's quality team in the room.",
-    "Documentation is about half of every job: a weld without its log entry, or a test without its signed record, does not count. Field roles travel, and plant shutdowns fall on weekends and holidays. We say so up front because it is the main reason people leave this kind of work.",
-    "We train good documentation practice and the standards we design to. [share of team from other process industries, %]"
-   ]
-  },
-  {
    "type": "table",
    "nav": "Roles",
    "anchor": "roles",
-   "h": "Roles, requirements, base and pay",
+   "h": "Six roles, base and pay",
    "cols": [
     "Role",
     "What you do",
     "Must have",
     "Base and travel",
-    "Pay range, CAD",
-    "Opening"
+    "Pay, CAD, and opening"
    ],
    "rows": [
     [
-     {
-      "t": "Process engineer",
-      "link": "svc-design"
-     },
+     "Process engineer",
      "Size water and steam systems, draw piping and instrumentation diagrams (P&IDs) and design to USP <1231>, ISPE Baseline Guide Vol. 4 and ASME BPE",
      "Chemical or mechanical engineering degree; P.Eng. or ing. licence, or eligibility, in [province of licence]; [minimum years] in process design",
      "[engineering office, city and province] · [hybrid days per week] · travel [% of working days]",
-     "[process engineer pay range, CAD per year]",
-     "[Open or closed · posting reference]"
+     "[process engineer pay range, CAD per year] · [Open or closed · posting reference]"
     ],
     [
-     {
-      "t": "Orbital welder",
-      "link": "svc-fabrication"
-     },
+     "Orbital welder",
      "Make orbital welds in 316L tubing to ASME BPE, inspect by borescope and log each weld with its procedure and EN 10204 3.1 heat numbers",
      "ASME Section IX welding operator performance qualification (WOPQ) for orbital gas tungsten arc welding (GTAW), or pass it at interview; [provincial welder registration, if required]",
      "[shop location, city and province] · travel [% of working days]",
-     "[orbital welder pay range, CAD per hour]",
-     "[Open or closed · posting reference]"
+     "[orbital welder pay range, CAD per hour] · [Open or closed · posting reference]"
     ],
     [
-     {
-      "t": "Validation specialist",
-      "link": "svc-cq"
-     },
+     "Validation specialist",
      "Execute FAT, site acceptance test (SAT), installation and operational qualification (IQ, OQ) protocols, close deviations and assemble the turnover package to EU GMP Annex 15",
      "Science or engineering degree or diploma; [minimum years] executing protocols in a GMP setting; good documentation practice",
      "[validation base, city and province] · travel [% of working days]",
-     "[validation specialist pay range, CAD per year]",
-     "[Open or closed · posting reference]"
+     "[validation specialist pay range, CAD per year] · [Open or closed · posting reference]"
     ],
     [
-     {
-      "t": "Controls and automation engineer",
-      "link": "sys-monitoring"
-     },
+     "Controls and automation engineer",
      "Program the programmable logic controller (PLC) and human-machine interface (HMI), configure audit trails to 21 CFR Part 11 and Annex 11; test to GAMP 5",
      "Engineering degree or technologist diploma; [PLC and HMI platforms we use]; a licence, or eligibility, where the role signs as an engineer",
      "[engineering office, city and province] · travel [% of working days]",
-     "[controls engineer pay range, CAD per year]",
-     "[Open or closed · posting reference]"
+     "[controls engineer pay range, CAD per year] · [Open or closed · posting reference]"
     ],
     [
-     {
-      "t": "Field service technician",
-      "link": "svc-service"
-     },
+     "Field service technician",
      "Commission systems on site, run preventive maintenance, calibrate conductivity and total organic carbon (TOC) instruments, and run sanitizations under the client's change control",
      "Instrumentation and control or millwright trade or diploma; a valid driver's licence; able to meet client site access and safety requirements",
      "[service base or bases, city and province] · travel [% of working days] · on call [on-call rota]",
-     "[field service technician pay range, CAD per hour]",
-     "[Open or closed · posting reference]"
+     "[field service technician pay range, CAD per hour] · [Open or closed · posting reference]"
     ],
     [
-     {
-      "t": "Quality specialist",
-      "link": "cmp-quality"
-     },
+     "Quality specialist",
      "Run document control, nonconformances and corrective and preventive action (CAPA) under ISO 9001, review weld records and certificates, check turnover packages and host audits",
      "Degree or diploma; [minimum years] in manufacturing quality assurance; working knowledge of ISO 9001",
      "[shop and office location, city and province] · travel [% of working days]",
-     "[quality specialist pay range, CAD per year]",
-     "[Open or closed · posting reference]"
+     "[quality specialist pay range, CAD per year] · [Open or closed · posting reference]"
     ]
-   ]
+   ],
+   "as": "router",
+   "intro": "One engineer can know a whole system and see it pass its factory acceptance test (FAT). Documentation is half the job. Field roles travel; shutdowns fall on weekends and holidays."
   },
   {
    "type": "spec",
@@ -136,14 +103,14 @@
      "m": "[hybrid arrangements by role]"
     },
     {
-     "p": "Overtime and shutdown work",
-     "v": "[overtime pay or time off in lieu] · [shutdown scheduling and pay]",
-     "m": "Provincial minimum applies"
-    },
-    {
      "p": "Travel",
      "v": "[per diem, accommodation and paid travel time] · [company vehicle for field roles]",
      "m": "By role, in the roles table"
+    },
+    {
+     "p": "Overtime and shutdown work",
+     "v": "[overtime pay or time off in lieu] · [shutdown scheduling and pay]",
+     "m": "Provincial minimum applies"
     },
     {
      "p": "Health, dental and retirement",
@@ -176,24 +143,22 @@
      "m": "Quebec's Charter of the French Language applies to work in Quebec"
     }
    ],
-   "note": "Bracketed terms are set per posting. The posting and the written offer govern."
+   "note": "Bracketed terms are set per posting. The posting and the written offer govern.",
+   "fold": 5,
+   "fold_noun": "terms"
   },
   {
    "type": "steps",
    "nav": "Hiring",
-   "h": "How we hire, and how long each step takes",
+   "h": "How we hire, step by step",
    "items": [
     {
      "t": "Apply",
-     "d": "Use the form below for a posted opening or a speculative application."
-    },
-    {
-     "t": "Reply",
-     "d": "The hiring manager replies yes or no within [application reply time, working days]."
+     "d": "Use the form below. The hiring manager replies yes or no within [application reply time, working days]."
     },
     {
      "t": "Conversation",
-     "d": "A [first call length, minutes]-minute call about the role, the pay range, travel and your questions."
+     "d": "A [first call length, minutes]-minute call on the role, pay range, travel and your questions."
     },
     {
      "t": "Practical interview",
@@ -364,15 +329,18 @@
  ],
  "cta": {
   "h": "No opening for your role today",
-  "body": "Tell us what you do and which part of our work it would serve. We reply within [application reply time, working days].",
+  "body": "Tell us what you do and which part of our work it would serve.",
   "button": "Send a speculative application",
   "link": "#apply",
   "include": [
    "Your CV, PDF or Word",
    "Posting reference, if there is one",
-   "Qualifications and licences held",
-   "Travel you can accept",
-   "Two or three lines on your proudest work"
+   "Qualifications and licences held"
+  ],
+  "turnaround": "[application reply time, working days]",
+  "returns": [
+   "A yes or no from the hiring manager",
+   "A call on role, pay and travel"
   ]
  },
  "todo": [
@@ -390,7 +358,6 @@
   "Whether any automated or AI tool screens applications (must be disclosed in Ontario postings)",
   "Work permit (LMIA) policy; co-op and apprenticeship programs",
   "Applicant privacy notice link (PIPEDA, Quebec Law 25), retention period for applications (months), careers inbox or applicant tracking system behind the form",
-  "Share of the current team that came from other process industries (food, dairy, power, general process), before publishing that sentence",
   "Legal review of the posting template against BC Pay Transparency Act and Ontario ESA rules (pay range, AI disclosure, existing-vacancy statement, no Canadian experience requirement, record retention)"
  ],
  "facts": [

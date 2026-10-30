@@ -169,13 +169,19 @@
      "d": "Conductivity, total organic carbon (TOC), temperature, flow and alarm history since the last visit, so the work answers the trend."
     },
     {
+     "t": "Pretreatment",
+     "d": "Softener hardness leakage, carbon bed or bisulfite performance, total chlorine at the RO inlet.",
+     "link": "sys-pretreatment"
+    },
+    {
      "t": "RO and EDI performance",
      "d": "Reverse osmosis (RO) and electrodeionization (EDI): normalized flow, salt passage and differential pressure to ASTM D4516 against the commissioning baseline.",
      "link": "sys-pw"
     },
     {
-     "t": "Wearing parts and filters",
-     "d": "Seals, gaskets and diaphragms replaced like for like, lot numbers recorded; vent filters integrity tested."
+     "t": "Ultraviolet (UV), ozone and sanitization",
+     "d": "Lamp intensity, ozone below the release limit, sanitization checked at its coldest or weakest point.",
+     "link": "sys-monitoring"
     },
     {
      "t": "Loop hydraulics",
@@ -183,18 +189,16 @@
      "link": "sys-storage"
     },
     {
-     "t": "Pretreatment",
-     "d": "Softener hardness leakage, carbon bed or bisulfite performance, total chlorine at the RO inlet.",
-     "link": "sys-pretreatment"
+     "t": "Wearing parts and filters",
+     "d": "Seals, gaskets and diaphragms replaced like for like, lot numbers recorded; vent filters integrity tested."
     },
     {
-     "t": "Ultraviolet (UV), ozone and sanitization",
-     "d": "Lamp intensity, ozone below the release limit, sanitization checked at its coldest or weakest point.",
-     "link": "sys-monitoring"
+     "t": "Signed service report",
+     "d": "As-found and as-left condition and return-to-service results, signed before we leave.",
+     "end": true
     }
    ],
-   "fold": 4,
-   "fold_noun": "checks"
+   "as": "route"
   },
   {
    "type": "table",

@@ -23,12 +23,47 @@
  "blocks": [
   {
    "type": "prose",
+   "as": "explainer",
    "nav": "Why upgrade",
    "h": "Newer rules, older controls, and a requalification bill",
-   "body": [
-    "Each upgrade has two costs: the work, and the installation, operational and performance qualification (IQ, OQ, PQ) after it. The revised EU GMP Annex 1 (in force from August 2023) expects continuous total organic carbon (TOC) and conductivity monitoring on WFI, and 21 CFR Part 11 now reaches the controls cabinet.",
-    "WHO TRS 1033 Annex 3 lets a risk assessment set the PQ. We size requalification by what the change reaches."
-   ]
+   "points": [
+    {
+     "t": "Every upgrade has two costs",
+     "d": "The work itself, and the installation, operational and performance qualification (IQ, OQ, PQ) that follows it.",
+     "at": [
+      55,
+      34
+     ]
+    },
+    {
+     "t": "Annex 1 expects WFI monitoring",
+     "d": "The revised EU GMP Annex 1, in force from August 2023, expects continuous total organic carbon (TOC) and conductivity monitoring on WFI.",
+     "at": [
+      66,
+      53
+     ]
+    },
+    {
+     "t": "Part 11 reaches the controls",
+     "d": "21 CFR Part 11 now reaches the controls cabinet, so an older panel's records come into scope.",
+     "at": [
+      90,
+      46
+     ]
+    },
+    {
+     "t": "Requalify what the change reaches",
+     "d": "WHO TRS 1033 Annex 3 lets a risk assessment set the PQ, so we size requalification by what the change reaches.",
+     "at": [
+      45,
+      62
+     ]
+    }
+   ],
+   "figure": {
+    "kind": "art",
+    "art": "svc-upgrades"
+   }
   },
   {
    "type": "table",

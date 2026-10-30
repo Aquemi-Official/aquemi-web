@@ -65,6 +65,45 @@ The figure comes only from `figure`. The renderer never pulls a number out of `o
 - Project profile: an optional `<dl class="aq-key-facts aq-case__profile">` between the title and the facts, the KeyFacts markup with three or four headline KPIs (capacity, conductivity, TOC, timeline), on `surface-raised`. Same rules as KeyFacts: value with unit and standard, unconfirmed values in square brackets.
 - Status: an optional `<span class="aq-case__status">` above the title, mono on `caution-tint`, for a case that is a template or still awaiting client approval ("Template · awaiting a real project"). Remove it when the case is published.
 
+## Project record (`aq-case--record`)
+
+Origin: `inspiration/gemini/60-concept-project-record.png`. The same case told as an engineering record: the system's equipment drawing with what changed marked, three or four measured outcomes as large figures with their method, and the order-to-release milestones. The renderer uses it for any item with `art`, `outcomes` or `timeline`; other items keep the fact-box layout.
+
+```html
+<article class="aq-case aq-case--record">
+  <span class="aq-case__status">Template · awaiting a real project</span>
+  <h3 class="aq-h3 aq-case__title">Purified Water system and ozonated loop for [segment, province]</h3>
+  <div class="aq-case__brief">
+    <dl class="aq-case__entries"><div class="aq-case__entry"><dt>Client</dt><dd>…</dd></div>…</dl>
+    <figure class="aq-case__drawing">
+      <div class="aq-case__art"><div class="aq-case__plate">
+        <span class="aq-illustration" role="img" aria-label="Purified Water skid: …" style="mask-image:url(assets/illustrations/sys-pw.png)"></span>
+        <span class="aq-case__pin" style="left:14%;top:45%"><span class="aq-case__mark" aria-hidden="true">1</span></span>
+      </div></div>
+      <figcaption class="aq-case__changes"><p class="aq-case__label">What changed</p><ol><li><span class="aq-case__mark" aria-hidden="true">1</span><span>Reverse osmosis (RO) vessels: [new or replaced]</span></li></ol></figcaption>
+    </figure>
+  </div>
+  <div class="aq-case__outcomes"><p class="aq-case__label">Measured outcomes</p>
+    <dl class="aq-case__figures" style="--n:4"><div class="aq-case__fig"><dt>Conductivity, loop return</dt><dd>
+      <span class="aq-case__val"><span class="aq-case__num">[value]</span><span class="aq-case__unit">µS/cm @ 25 °C</span></span>
+      <span class="aq-case__how">Online sensor; [OQ or PQ report number]</span></dd></div>…</dl></div>
+  <div class="aq-case__timeline"><p class="aq-case__label">Order to release</p>
+    <ol style="--n:6"><li><span class="aq-case__stop" aria-hidden="true"></span><span class="aq-case__mt">Order</span><span class="aq-case__when">[week 0]</span></li>…</ol></div>
+</article>
+```
+
+| Field | Shown as |
+| --- | --- |
+| `art` | A page id from `ART` in `parts/Hero.js` (`"sys-pw"`): that equipment drawing on a `surface-raised` plate, beside the facts |
+| `changed` | `[{t, at: [x%, y%]}]`, up to 4: numbered `flow` pins on the drawing (positions are % of the square drawing) and the same numbers listed under it as "What changed" |
+| `outcomes` | `[{v, unit, l, method}]`, 3-4: the value large in mono `flow`, unit beside it, what was measured (`l`) as the label, the method and report beneath in `ink-muted`. An empty `v` prints `[value]` |
+| `timeline` | `[{t, when}]`: milestones from order to water release on one line, the last stop filled |
+| `client`, `problem`, `system`, `standard`, `status`, `profile`, `outcome`, `method` | As above; facts become hairline rows, `outcome` a sentence above the figures, `method` the dashed box at the end |
+
+- The pins and numbers are decoration (`aria-hidden`); the "What changed" list carries the text. Every value is real DOM text.
+- Desktop: facts (5 parts) beside the drawing (7 parts); outcomes in one row of up to four columns, each with a 2 px `flow` top edge; timeline horizontal. Phones: drawing first, then the facts, outcomes 2 × 2, then a vertical timeline (stops on a rule at the left, date on the right).
+- Never invent a figure, week or change: until a project is delivered, `v`, `when` and the change status stay `[placeholders]`. Mark only equipment the drawing really shows.
+
 ## When not to use it
 
 - Not for testimonials or quotes, and not for projects without a measured result.

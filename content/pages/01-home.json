@@ -149,23 +149,28 @@
    "items": [
     {
      "t": "Design",
-     "d": "Your user requirement specification (URS) becomes a functional specification, piping and instrumentation diagrams and an ICH Q9(R1) risk assessment, verified at design qualification (DQ)."
+     "d": "Your user requirement specification (URS) becomes a functional specification, piping and instrumentation diagrams and an ICH Q9(R1) risk assessment, verified at design qualification (DQ).",
+     "icon": "pid"
     },
     {
      "t": "Fabricate",
-     "d": "316L stainless steel to ASME BPE, orbital welds by ASME Section IX qualified operators, each product-contact weld logged with EN 10204 3.1 heat numbers."
+     "d": "316L stainless steel to ASME BPE, orbital welds by ASME Section IX qualified operators, each product-contact weld logged with EN 10204 3.1 heat numbers.",
+     "icon": "weld"
     },
     {
      "t": "FAT",
-     "d": "A wet FAT to a protocol your quality unit approves, witnessed in person or remotely, that qualification can reference (EU GMP Annex 15, 3.6)."
+     "d": "A wet FAT to a protocol your quality unit approves, witnessed in person or remotely, that qualification can reference (EU GMP Annex 15, 3.6).",
+     "icon": "pump"
     },
     {
      "t": "SAT and IQ/OQ",
-     "d": "A site acceptance test (SAT) on your feed water and utilities, then installation and operational qualification (IQ/OQ) to protocols your quality unit approved."
+     "d": "A site acceptance test (SAT) on your feed water and utilities, then installation and operational qualification (IQ/OQ) to protocols your quality unit approved.",
+     "icon": "binder"
     },
     {
      "t": "PQ and service",
-     "d": "Performance qualification (PQ) support through three phases and at least 12 months of data (WHO TRS 1033, Annex 3), then service that keeps it qualified."
+     "d": "Performance qualification (PQ) support through three phases and at least 12 months of data (WHO TRS 1033, Annex 3), then service that keeps it qualified.",
+     "icon": "calendar"
     }
    ]
   },

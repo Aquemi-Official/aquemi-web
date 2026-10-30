@@ -107,7 +107,8 @@
     },
     {
      "t": "Your review and approval",
-     "d": "Your validation team comments and may add test cases (Annex 15, 2.6); we answer in writing. Nothing runs before your quality unit signs."
+     "d": "Your validation team comments and may add test cases (Annex 15, 2.6); we answer in writing. Nothing runs before your quality unit signs.",
+     "hold": "Your quality unit"
     },
     {
      "t": "Internal dry run",
@@ -123,7 +124,8 @@
     },
     {
      "t": "Report and release to ship",
-     "d": "Signed by both parties. Open deviations ship only on a quality-unit-approved no-impact assessment. Skid drained, then [post-FAT drying and sealing method]."
+     "d": "Signed by both parties. Open deviations ship only on a quality-unit-approved no-impact assessment. Skid drained, then [post-FAT drying and sealing method].",
+     "hold": "Both parties"
     },
     {
      "t": "SAT on your site",
