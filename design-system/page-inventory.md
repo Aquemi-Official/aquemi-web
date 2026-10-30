@@ -28,7 +28,7 @@ Every page is: NavBar, Hero, content sections, a closing navy Band, Footer. The 
 | Page | Headline | Sections |
 | --- | --- | --- |
 | [Services](https://aquemi-official.github.io/aquemi-web/#services) | One team from the first requirement to the last service visit | steps, grid, table, band, faq, related |
-| [Process design and engineering](https://aquemi-official.github.io/aquemi-web/#svc-design) | A design that can be built, tested and qualified | prose, steps, spec, grid, docs, faq |
+| [Process design and engineering](https://aquemi-official.github.io/aquemi-web/#svc-design) | A water system design your quality unit can trace, approve at DQ and qualify against | prose, table (deliverables), diagram (URS to IQ/OQ trace), table (one requirement traced), steps, table (design decisions, linked), table (traditional vs ASTM E2500), faq, docs (what to send), related |
 | [Fabrication](https://aquemi-official.github.io/aquemi-web/#svc-fabrication) | Every weld logged, inspected and traceable to its heat | spec, steps, prose, options, docs, faq |
 | [FAT and SAT](https://aquemi-official.github.io/aquemi-web/#svc-fat-sat) | Your system runs in our test bay before it ships | prose, table, steps, band, docs, faq |
 | [Commissioning and qualification](https://aquemi-official.github.io/aquemi-web/#svc-cq) | Qualified to protocol, with a year of data behind it | grid, spec, prose, docs, faq, related |
