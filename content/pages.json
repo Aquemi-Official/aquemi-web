@@ -2949,97 +2949,173 @@
    "id": "sys-pretreatment",
    "section": "Systems",
    "nav_label": "Pretreatment",
-   "title": "Pretreatment for pharmaceutical water systems | Aquemi",
-   "meta": "Multimedia, softening, carbon and bisulfite pretreatment sized to Canadian municipal water, including chloramine removal and cold winter feed.",
+   "title": "RO pretreatment for pharmaceutical water systems | Aquemi",
+   "meta": "Pretreatment that takes drinking water meeting USP <1231> and holds RO feed at no detectable chlorine or chloramine and SDI ≤ 3, in every Canadian season.",
    "path": "/systems/pretreatment/",
-   "eyebrow": "PRETREATMENT · HEALTH CANADA · US EPA",
-   "headline": "Pretreatment",
-   "lead": "Pretreatment protects your reverse osmosis (RO) membranes and stills from chlorine, chloramine, hardness and particles, so the purification stage downstream runs to its design life.",
+   "eyebrow": "PRETREATMENT · USP <1231> · HEALTH CANADA · US EPA NPDWR",
+   "headline": "Pretreatment that keeps chlorine, chloramine and scale off your RO membranes in every season",
+   "lead": "USP <1231> requires the feed to a Purified Water (PW) system to meet drinking water standards, such as the US EPA National Primary Drinking Water Regulations (NPDWR) or, for most Canadian sites, the Guidelines for Canadian Drinking Water Quality. Drinking water is not reverse osmosis (RO) feed. We design the pretreatment train from your water data across the seasons, so the RO inlet sees no detectable chlorine or chloramine, a silt density index (SDI) of 3 or less and hardness the membranes can live with, and the carbon bed is sanitized so it does not become the source of your bioburden.",
    "tags": [
     "USP <1231>",
     "Health Canada",
-    "US EPA",
+    "US EPA NPDWR",
+    "ASTM D4189",
     "ASME BPE"
    ],
-   "primary_cta": "Request a proposal",
+   "primary_cta": "Request a feedwater review",
    "secondary_cta": {
-    "label": "Send a water analysis",
-    "link": "contact-proposal"
+    "label": "RO fouling or chlorine breakthrough now? Request service",
+    "link": "contact-service"
    },
    "blocks": [
     {
      "type": "prose",
-     "h": "Start from the water you have",
+     "h": "Drinking water standards protect people, not membranes",
      "body": [
-      "USP requires feed water for pharmaceutical water to meet drinking water standards such as those of the US EPA, and in Canada most sites draw municipal water that meets the Guidelines for Canadian Drinking Water Quality. Drinking water standards protect people, not membranes.",
-      "Many Canadian municipal supplies use chloramine as a secondary disinfectant, and it passes through softeners and attacks polyamide RO membranes. Spring runoff raises turbidity and organic load, and winter supply can fall to 2–5 °C. We design pretreatment from a year of your water data, not one sample."
+      "Every pharmacopoeial water starts as drinking water. USP <1231> sets the NPDWR, or equivalent EU, Japanese or WHO drinking water rules, as the minimum quality of the source. Ph. Eur. asks for water intended for human consumption. In Canada your municipality treats to the Guidelines for Canadian Drinking Water Quality and its provincial regulation. Meeting that standard is your starting point and, for a private well, something you have to show.",
+      "Those standards are set for health and taste, and they allow water that damages RO membranes. The NPDWR allows a chloramine residual up to 4 mg/L as Cl₂. Health Canada sets no limit for chloramine at all, because at drinking water levels it is not a health concern. Polyamide RO membranes are typically rated for less than 0.1 mg/L free chlorine. Hardness has no health limit; a few milligrams per litre of calcium in the RO concentrate is enough to scale it.",
+      "Pretreatment closes that gap. It also creates a risk of its own: once the carbon removes the disinfectant residual, nothing in the water holds bacteria back. So we design removal and microbial control together, and we monitor the outlet that your validated system depends on."
+     ]
+    },
+    {
+     "type": "table",
+     "h": "Canadian feed water: what changes, and what it does to your RO",
+     "cols": [
+      "Feed reality",
+      "Where you see it",
+      "Effect downstream",
+      "What we design for"
+     ],
+     "rows": [
+      [
+       "Chloramine instead of free chlorine",
+       "Many large municipal utilities use chloramine as the residual disinfectant in the distribution system. Some switch temporarily to free chlorine for system maintenance.",
+       "Oxidizes polyamide RO membranes. Reacts slowly on standard carbon. Breaking it releases ammonia, which can reach the EDI.",
+       "Carbon contact time sized for chloramine, catalytic carbon or bisulfite, total chlorine measured at the RO inlet, and an ammonia and CO₂ strategy agreed with the PW skid design."
+      ],
+      [
+       "Cold winters, warm summers",
+       "Surface water intakes can fall to near 2 °C in winter and pass 20 °C in late summer.",
+       "Cold water cuts RO output and lowers silica and calcium solubility. Warm water speeds bacterial growth in carbon beds and softeners.",
+       "Membranes sized at your coldest month or a feed heat exchanger, scaling checked at both ends of the range, sanitization frequency set for summer."
+      ],
+      [
+       "Spring runoff and fall turnover",
+       "Rivers and lakes carry more turbidity, colour and natural organic matter in the freshet and when lakes turn over.",
+       "Higher SDI and total organic carbon (TOC) foul membranes and load the carbon. TOC at the RO inlet moves TOC at the PW outlet.",
+       "Media filter sized for the worst month, SDI tested on site, ultrafiltration where SDI cannot be held by media alone."
+      ],
+      [
+       "Hardness and alkalinity",
+       "Great Lakes water is moderately hard. Many groundwaters in Ontario, the Prairies and Quebec are much harder.",
+       "Calcium carbonate scales the last RO elements. Alkalinity becomes carbon dioxide that loads the EDI.",
+       "Duplex softeners regenerated on measured hardness, concentrate Langelier saturation index (LSI) checked, alkalinity handed to the PW skid's CO₂ removal."
+      ],
+      [
+       "Silica",
+       "Higher in groundwater and some prairie and Shield-region surface water.",
+       "Silica passes softeners. It scales RO concentrate, limits recovery and loads the EDI and any still downstream.",
+       "Recovery limited by silica at your coldest feed, antiscalant where projections need it, and silica in the feed limits of the WFI still or Pure Steam generator."
+      ],
+      [
+       "Iron and manganese",
+       "Mostly well water, sometimes in older municipal mains. Health Canada sets an aesthetic objective of 0.1 mg/L for iron and a maximum acceptable concentration of 0.12 mg/L for manganese.",
+       "Oxidized iron and manganese foul membranes and coat softener resin, often at levels drinking water allows.",
+       "Oxidation and catalytic media filtration ahead of the softener, sized on analyses from more than one season."
+      ],
+      [
+       "No disinfectant residual after carbon",
+       "Every dechlorinated train, worst in summer and after low-flow weekends.",
+       "Carbon beds and softeners grow biofilm that sheds into the RO and raises bioburden in PW.",
+       "Hot water sanitizable carbon, sampling before and after each bed, and continuous flow or recirculation at no demand."
+      ]
      ]
     },
     {
      "type": "spec",
-     "caption": "Pretreatment outlet · typical RO feed targets",
-     "note": "Targets are typical membrane maker limits; final values follow the membrane and still selected.",
+     "h": "Water quality at the RO inlet",
+     "caption": "Pretreatment outlet · design targets at the RO feed",
+     "note": "Limits for RO elements come from the membrane maker's data sheet, which takes precedence; typical polyamide elements state SDI ≤ 5, turbidity ≤ 1 NTU and free chlorine < 0.1 mg/L. Our design targets sit inside those limits and are confirmed in the design basis for the membranes and still selected.",
      "cols": [
       "Parameter",
-      "Target at RO feed",
-      "Method or reference"
+      "Design target",
+      "Measured by"
      ],
      "rows": [
       {
-       "p": "Free chlorine and chloramine",
-       "v": "< 0.05 mg/L as Cl₂",
-       "m": "Online ORP or total chlorine analyser",
+       "p": "Free and total chlorine",
+       "v": "Not detectable; [design limit, mg/L as Cl₂]",
+       "m": "Online total chlorine analyser at the RO inlet, so chloramine is measured, not only free chlorine; oxidation-reduction potential (ORP) where bisulfite is dosed",
        "hl": true
       },
       {
-       "p": "Hardness",
-       "v": "< 1 mg/L as CaCO₃",
-       "m": "Softener outlet, hardness test",
-       "hl": false
-      },
-      {
        "p": "Silt density index",
-       "v": "≤ 3",
-       "m": "ASTM D4189",
-       "hl": false
+       "v": "SDI₁₅ ≤ 3",
+       "m": "ASTM D4189, measured on site at the cartridge filter outlet",
+       "hl": true
       },
       {
        "p": "Turbidity",
        "v": "< 1 NTU",
-       "m": "Multimedia filter outlet",
+       "m": "Media filter outlet",
+       "hl": false
+      },
+      {
+       "p": "Hardness",
+       "v": "< 1 mg/L as CaCO₃",
+       "m": "Online or manual hardness test at the softener outlet; regeneration triggered on breakthrough or volume",
+       "hl": false
+      },
+      {
+       "p": "Iron and manganese",
+       "v": "[design limit, mg/L each], set with the membrane maker",
+       "m": "Laboratory analysis at commissioning and on the sampling plan",
+       "hl": false
+      },
+      {
+       "p": "Silica and scaling ions",
+       "v": "Below saturation in the RO concentrate at design recovery",
+       "m": "Membrane projection at your coldest and warmest feed; LSI of the concentrate",
        "hl": false
       },
       {
        "p": "Temperature",
-       "v": "[15] °C design, controlled by heat exchanger",
-       "m": "Design value",
+       "v": "[design temperature held by the feed heat exchanger, °C]",
+       "m": "Where specified; otherwise membranes are sized at your site minimum",
+       "hl": false
+      },
+      {
+       "p": "Bioburden after carbon",
+       "v": "Trended; alert and action levels set from qualification data",
+       "m": "Sample valves before and after each carbon bed and softener",
        "hl": false
       },
       {
        "p": "Capacity",
-       "v": "[1–30] m³/h",
-       "m": "Sized to generation demand",
+       "v": "[pretreatment capacity range, m³/h]",
+       "m": "Sized to RO feed flow, including concentrate and regeneration water",
        "hl": false
       }
      ]
     },
     {
      "type": "diagram",
-     "h": "How it works",
+     "h": "How the train is built",
      "stages": [
-      "Municipal water",
-      "Break tank",
-      "Multimedia filter",
-      "Softener",
+      "Municipal or well water",
+      "Backflow preventer and break tank",
+      "Media filter",
+      "Duplex softener",
       "Carbon or bisulfite",
-      "Cartridge filter",
+      "Antiscalant, where needed",
+      "5 µm cartridge filter",
       "To RO"
      ],
-     "caption": "A break tank isolates the plant from the municipal supply. Multimedia filtration removes particles. Duplex softeners exchange calcium and magnesium for sodium. Activated carbon or sodium bisulfite dosing removes chlorine and chloramine. A 5 µm cartridge filter protects the RO pumps."
+     "caption": "A backflow preventer and break tank isolate the plant from the supply and give the feed pump a steady suction. A multimedia filter removes particles; on well water an oxidation and catalytic media stage removes iron and manganese first. Duplex softeners exchange calcium and magnesium for sodium, with one vessel in service while the other regenerates. We usually place the softener ahead of the carbon, so the chlorine residual still limits bacterial growth in the resin. Activated carbon, or sodium bisulfite dosing, then removes chlorine and chloramine. Antiscalant is dosed where the membrane projection shows silica or other scaling at your recovery. A 5 µm cartridge filter protects the high-pressure pump and the membranes."
     },
     {
      "type": "table",
-     "h": "Chlorine or chloramine: which removal method",
+     "h": "Chlorine or chloramine: choosing the removal step",
      "cols": [
       "Method",
       "Removes",
@@ -3049,21 +3125,69 @@
      "rows": [
       [
        "Granular activated carbon",
-       "Free chlorine; chloramine with catalytic carbon and longer contact",
-       "No chemicals; also removes organics",
-       "Bacterial growth in the bed; needs hot water or steam sanitization"
+       "Free chlorine within a few minutes of contact. Chloramine only slowly.",
+       "No chemicals. Also removes some organics.",
+       "Biofilm in the bed once the residual is gone. Needs hot water or steam sanitization, backwashing and planned media replacement."
+      ],
+      [
+       "Catalytic carbon",
+       "Free chlorine and chloramine, with less contact time than standard carbon.",
+       "The usual choice where the utility chloraminates.",
+       "Same microbial control as any carbon bed. Bed volume is set by empty bed contact time at peak flow and your winter temperature, when the reaction is slowest."
+      ],
+      [
+       "Two carbon beds in series",
+       "Free chlorine and chloramine, with a second bed that catches breakthrough from the first.",
+       "Sample point between beds shows breakthrough before it reaches the RO. Dialysis water practice (ISO 23500) uses this arrangement for chloraminated supplies.",
+       "Two vessels to sanitize and maintain."
       ],
       [
        "Sodium bisulfite dosing",
-       "Free chlorine and chloramine",
-       "Small footprint; fast response",
-       "Dosing control and online verification; ammonia from chloramine passes to RO"
+       "Free chlorine and chloramine, by chemical reduction.",
+       "Small footprint, fast response. No carbon bed to colonise.",
+       "Dose control and online verification. Overdosing feeds sulfate-reducing bacteria on the membranes. Ammonia from chloramine passes to the RO."
       ],
       [
        "UV dechlorination (high intensity)",
-       "Free chlorine and chloramine",
-       "No chemicals, no carbon bed",
-       "Higher power use; needs low turbidity feed"
+       "Free chlorine and chloramine, by photolysis.",
+       "No chemicals and no carbon bed. Also reduces bacteria.",
+       "High lamp power at high chlorine levels. Needs low turbidity feed, and a total chlorine analyser downstream because lamp output decays."
+      ]
+     ]
+    },
+    {
+     "type": "table",
+     "h": "Microbial control in carbon beds",
+     "cols": [
+      "Control",
+      "Why it matters",
+      "How we specify it"
+     ],
+     "rows": [
+      [
+       "Hot water or steam sanitization",
+       "USP <1231> names carbon beds as a site of microbial growth, and heat is the control that leaves no residual to rinse out.",
+       "Stainless steel vessel, hot water rated media and internals, bed held at [sanitization temperature, °C] for [hold time, minutes], verified at the coldest point of the bed."
+      ],
+      [
+       "Frequency from trend data",
+       "Growth rate follows temperature, flow and organics, so a fixed calendar either over- or under-sanitizes.",
+       "Starting frequency of [initial sanitization interval, days], reset from counts before and after the bed during qualification."
+      ],
+      [
+       "Backwash and flow",
+       "Stagnant beds channel and grow biofilm; low-flow weekends are the usual source of a Monday count.",
+       "Automatic backwash on pressure drop or time, and recirculation or a minimum flow when the RO is off."
+      ],
+      [
+       "Media replacement",
+       "Exhausted carbon stops removing chloramine and organics before it stops passing water.",
+       "Replacement on measured breakthrough or [media replacement interval, months], with media certificates in the maintenance record."
+      ],
+      [
+       "Sampling and UV after the bed",
+       "You cannot trend what you do not sample.",
+       "Sample valves before and after every bed and softener. A 254 nm UV unit at the carbon outlet where your counts need more margin."
       ]
      ]
     },
@@ -3073,27 +3197,65 @@
      "items": [
       {
        "t": "Duplex softeners",
-       "d": "Alternating vessels so regeneration never interrupts supply."
+       "d": "Alternating vessels, regenerated on measured hardness breakthrough or volume, so regeneration never interrupts supply."
       },
       {
        "t": "Hot water sanitizable carbon",
-       "d": "Stainless steel carbon vessels sanitized with hot water or steam."
+       "d": "Stainless steel vessels sanitized with hot water or steam, with temperature verified in the bed."
+      },
+      {
+       "t": "Catalytic carbon or two beds in series",
+       "d": "For chloraminated supplies, sized on empty bed contact time at peak flow and winter temperature."
+      },
+      {
+       "t": "Bisulfite dosing with ORP control",
+       "d": "Where footprint or microbial risk rules out carbon, dosed on flow and trimmed on ORP."
+      },
+      {
+       "t": "Iron and manganese removal",
+       "d": "Oxidation and catalytic media filtration for well water, ahead of the softener."
+      },
+      {
+       "t": "Ultrafiltration",
+       "d": "Where surface water SDI or organics cannot be held by media filtration through spring runoff."
       },
       {
        "t": "Antiscalant dosing",
-       "d": "Where softening alone does not control silica or other scaling ions."
+       "d": "Where softening alone does not control silica or other scaling ions at your recovery."
       },
       {
        "t": "Feed heat exchanger",
-       "d": "Holds RO feed at design temperature through Canadian winters."
-      },
-      {
-       "t": "Ammonia management",
-       "d": "Where chloramine is removed, design for the ammonia that remains."
+       "d": "Holds RO feed at design temperature through Canadian winters, with the heating medium you already have."
       },
       {
        "t": "Online monitoring",
-       "d": "Total chlorine or ORP, hardness and silt density index at the RO inlet."
+       "d": "Total chlorine, ORP, hardness, pressure drop and temperature at the RO inlet, trended on the operator panel. See monitoring and controls."
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "h": "From your water data to a pretreatment design basis",
+     "items": [
+      {
+       "t": "Collect the water data",
+       "d": "Your utility's annual water quality reports, your own analyses and, for a well, results from more than one season. We list what is missing and how to sample it."
+      },
+      {
+       "t": "Feedwater review",
+       "d": "We check the data against drinking water standards and against the limits of the membranes and stills downstream, and tell you which months set the design."
+      },
+      {
+       "t": "Design basis",
+       "d": "Membrane projections at your coldest and warmest feed, the treatment train, vessel sizes and contact times, and the RO inlet targets, issued for your approval."
+      },
+      {
+       "t": "Fabrication and FAT",
+       "d": "Valve sequences, regeneration, backwash, sanitization and alarms tested at factory acceptance testing (FAT) against a protocol you approve."
+      },
+      {
+       "t": "SAT on your water",
+       "d": "At site acceptance testing (SAT) we measure SDI, total chlorine, hardness and temperature at the RO inlet on your feed, and hand over the sampling plan."
       }
      ]
     },
@@ -3101,55 +3263,161 @@
      "type": "docs",
      "h": "Documentation delivered",
      "items": [
-      "Feed water analysis review and design basis",
-      "Functional specification",
-      "Piping and instrumentation diagrams (P&IDs)",
-      "Media and resin certificates",
-      "FAT and SAT protocols and reports",
-      "IQ and OQ protocols",
-      "Operation and maintenance manual with regeneration and media change schedule"
+      {
+       "t": "Feedwater review and design basis",
+       "d": "Data used, design months, RO inlet targets and the reasoning"
+      },
+      {
+       "t": "Membrane projections",
+       "d": "At minimum and maximum feed temperature"
+      },
+      {
+       "t": "Functional specification",
+       "d": "Regeneration, backwash, sanitization, alarms and interlocks"
+      },
+      {
+       "t": "P&IDs and general arrangement drawings",
+       "d": "Piping and instrumentation diagrams, as built"
+      },
+      {
+       "t": "Media and resin certificates",
+       "d": "With lot numbers, and NSF/ANSI 61 certification where the media maker holds it"
+      },
+      {
+       "t": "Material certificates",
+       "d": "EN 10204 3.1 for stainless steel vessels and piping"
+      },
+      {
+       "t": "Instrument calibration certificates",
+       "d": "Traceable to national standards"
+      },
+      {
+       "t": "FAT and SAT protocols and reports",
+       "d": "Deviations listed and closed"
+      },
+      {
+       "t": "IQ and OQ protocols",
+       "d": "Where your risk assessment brings pretreatment into qualification scope"
+      },
+      {
+       "t": "Sampling plan",
+       "d": "Points, parameters and starting frequencies for trend data"
+      },
+      {
+       "t": "Operation and maintenance manual",
+       "d": "Regeneration, sanitization, media change and cartridge change procedures"
+      }
      ]
     },
     {
      "type": "faq",
-     "h": "Questions we hear",
+     "h": "Questions validation and engineering teams ask",
      "items": [
       {
-       "q": "What water analysis do you need?",
-       "a": "At minimum: hardness, alkalinity, total dissolved solids, silica, iron, manganese, total and free chlorine, TOC, turbidity and temperature. Seasonal data is better than one sample."
-      },
-      {
-       "q": "Our municipality switched to chloramine. What changes?",
-       "a": "Standard carbon beds remove chloramine slowly. We check contact time, consider catalytic carbon or bisulfite, and verify at the RO inlet with an online analyser."
-      },
-      {
        "q": "Is pretreatment part of the validated system?",
-       "a": "Usually pretreatment is outside the GMP boundary but its performance affects the validated system. We document it and monitor its outlet to support your risk assessment."
+       "a": "It depends on where your risk assessment draws the boundary. Many sites qualify from the RO inlet onward and treat pretreatment as supporting equipment under good engineering practice. Its performance still decides whether the RO meets its limits, so we document it to the same standard, test it at FAT and SAT, and supply installation and operational qualification (IQ/OQ) protocols where you bring it into scope."
+      },
+      {
+       "q": "Do we have to prove our feed water meets drinking water standards?",
+       "a": "USP <1231> expects you to know that it does. For municipal supply, the utility's reports plus your own periodic testing at the plant inlet are the usual evidence. For a private well you are the utility, so you need a sampling programme against the Guidelines for Canadian Drinking Water Quality or the NPDWR, including microbiological tests. We can propose the parameters and frequency."
+      },
+      {
+       "q": "Our municipality uses chloramine. Is standard carbon enough?",
+       "a": "Usually not at a reasonable bed size. Chloramine reacts on carbon far more slowly than free chlorine, and slower still in cold water. We size catalytic carbon or two beds in series on contact time at peak flow and winter temperature, or dose bisulfite, and measure total chlorine at the RO inlet, because a free chlorine analyser does not see chloramine."
+      },
+      {
+       "q": "What happens to the ammonia from chloramine?",
+       "a": "Removing chloramine releases ammonia. RO rejects it well as ammonium, but at the higher pH used to control carbon dioxide more of it is dissolved ammonia gas, which passes the membrane and loads the EDI. So the chloramine removal here and the CO₂ strategy on the PW skid are designed together. See Purified Water generation."
+      },
+      {
+       "q": "Why do our carbon bed counts spike?",
+       "a": "Carbon removes the disinfectant and adsorbs organics, so it grows biofilm, faster in summer and when flow stops. Counts after the bed that rise between sanitizations usually mean the interval is too long, the bed stagnates at no demand or the media is exhausted. We trend counts before and after the bed and set sanitization from that data."
+      },
+      {
+       "q": "Why measure SDI on site rather than from the utility report?",
+       "a": "Utilities report turbidity, not SDI, and SDI depends on what the water picks up between the treatment plant and your tap. ASTM D4189 measures it in 15 minutes at your cartridge filter outlet. We test during the feedwater review where we can, and again at SAT."
+      },
+      {
+       "q": "Can we keep our existing pretreatment when we replace the RO?",
+       "a": "Often, if it meets the new RO inlet targets. We review its sizing, media age, sanitization capability and monitoring against your feed data, and tell you what to keep, upgrade or replace. See upgrades and retrofits."
+      },
+      {
+       "q": "Our utility switches to free chlorine for a few weeks each year. Does that matter?",
+       "a": "Yes, in both directions. Free chlorine reaches the carbon at a higher oxidant level, and the switch back changes what the bed must remove. Ask your utility for its schedule; we design for both disinfectants and alarm on total chlorine at the RO inlet."
+      },
+      {
+       "q": "Who changes media, resin and cartridges after handover?",
+       "a": "Our service team, from [service locations], on a plan with a stated response time of [response time, hours]. Media, resin and cartridges for your train are stocked in [stocking location], and every visit ends with a signed report your quality unit can file."
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "What to send for a feedwater review",
+     "items": [
+      {
+       "t": "Source",
+       "d": "Municipal supply (name the utility) or private well, and whether the residual disinfectant is chlorine or chloramine"
+      },
+      {
+       "t": "Water analyses",
+       "d": "Hardness, alkalinity, pH, conductivity or total dissolved solids, silica, iron, manganese, free and total chlorine, TOC, turbidity and SDI if you have it, ideally from more than one season"
+      },
+      {
+       "t": "Utility reports",
+       "d": "The last annual water quality report, and any notice of disinfectant changes"
+      },
+      {
+       "t": "Feed temperature range",
+       "d": "Lowest and highest through the year, in °C"
+      },
+      {
+       "t": "Downstream equipment",
+       "d": "The RO or PW skid it feeds, its flow in m³/h, and any WFI still or Pure Steam generator further down"
+      },
+      {
+       "t": "Current problems",
+       "d": "Membrane cleaning frequency, carbon bed counts, softener breakthrough, if you have an existing train"
+      },
+      {
+       "t": "Site constraints",
+       "d": "Room size, drain capacity for backwash and regeneration, brine discharge limits and available heating medium"
       }
      ]
     },
     {
      "type": "related",
-     "h": "Related systems",
+     "h": "Where pretreated water goes next",
      "items": [
       "sys-pw",
       "sys-wfi-distillation",
+      "sys-storage",
       "sys-monitoring",
-      "sys-pure-steam"
+      "svc-upgrades",
+      "svc-service"
      ]
     }
    ],
    "cta": {
-    "h": "Send us your water analysis.",
-    "body": "We'll review it and recommend a pretreatment train for your feed, with the reasoning.",
-    "button": "Request a proposal",
+    "h": "Send your water analysis. We tell you which months set your design.",
+    "body": "Include your source, the disinfectant your utility uses and the RO flow you need. An engineer replies within [response time] with the gaps in your data and a feedwater review, [cost of the feedwater review].",
+    "button": "Request a feedwater review",
     "link": "contact-proposal"
    },
    "todo": [
-    "Pretreatment capacity range",
-    "Design feed temperature",
-    "Whether UV dechlorination is offered",
-    "Whether Aquemi offers a water analysis service"
+    "RO inlet total chlorine design limit (mg/L as Cl₂)",
+    "Iron and manganese design limit at the RO inlet (mg/L each)",
+    "Feed heat exchanger design temperature (°C), consistent with sys-pw",
+    "Pretreatment capacity range (m³/h)",
+    "Carbon bed hot water sanitization temperature (°C) and hold time (minutes)",
+    "Initial carbon bed sanitization interval (days)",
+    "Default carbon media replacement interval (months)",
+    "Whether UV dechlorination is offered (remove the table row if not)",
+    "Whether Aquemi measures SDI on site during the feedwater review (kit held)",
+    "Whether the feedwater review is free or charged; fill the CTA placeholder",
+    "Enquiry response time commitment",
+    "Service locations, media and resin stocking location and service plan response time (hours)",
+    "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block"
    ]
   },
   {
