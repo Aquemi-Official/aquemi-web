@@ -9768,38 +9768,201 @@
    "id": "ind-meddevice",
    "section": "Industries",
    "nav_label": "Medical devices",
-   "title": "Water systems for medical device manufacturing | Aquemi",
-   "meta": "Rinse and process water systems for medical device makers, with endotoxin and bioburden limits set from product risk and documented for ISO 13485 audits.",
+   "title": "Medical device water: rinse, WFI and pure steam | Aquemi",
+   "meta": "Final rinse water for implants and sterile devices, set from USP <161> endotoxin and ISO 11737 bioburden, documented for ISO 13485, MDSAP and FDA QMSR.",
    "path": "/industries/medical-devices/",
-   "eyebrow": "MEDICAL DEVICES · ISO 13485",
-   "headline": "Rinse water you can defend in your cleaning validation",
-   "lead": "For many devices, the last thing to touch the product before packaging is water. We design Purified Water and Water for Injection (WFI) systems whose quality matches your product's risk, with records that fit an ISO 13485 quality system.",
+   "eyebrow": "MEDICAL DEVICES · IMPLANTS, STERILE AND COMBINATION DEVICES · ISO 13485 · MDSAP · FDA QMSR",
+   "headline": "Final rinse water you can defend in your cleaning validation and at your next MDSAP audit",
+   "lead": "For most devices the last thing to touch the product before packaging is water. Endotoxin and bioburden left by that rinse count against the device: USP <161> sets 20.0 EU per device, and 2.15 EU per device for cerebrospinal fluid contact, and the bioburden you measure to ISO 11737-1 sets your sterilization dose. We design Purified Water (PW) and Water for Injection (WFI) systems that hold USP <645> 1.3 µS/cm at 25 °C, 500 ppb total organic carbon (TOC) and the endotoxin and microbial limits your risk assessment sets, at the washer inlet, and we hand over factory acceptance test (FAT) and installation and operational qualification (IQ/OQ) records that fit an ISO 13485 quality system.",
    "tags": [
-    "ISO 13485",
-    "FDA 21 CFR Part 820",
+    "ISO 13485:2016",
+    "MDSAP",
+    "FDA 21 CFR 820 (QMSR)",
+    "Health Canada SOR/98-282",
     "USP <161>",
     "USP <85>",
-    "USP <1231>",
-    "Health Canada MDR"
+    "ISO 11737-1",
+    "ISO 19227",
+    "ISO 17665",
+    "EN 285"
    ],
-   "primary_cta": "Request a proposal",
+   "primary_cta": "Request a device water scope review",
    "secondary_cta": {
-    "label": "Explore Purified Water systems",
-    "link": "sys-pw"
+    "label": "Get a sample turnover package",
+    "link": "cmp-documentation"
    },
    "blocks": [
     {
      "type": "prose",
-     "h": "Water grade follows product risk",
+     "nav": "Overview",
+     "h": "In a device plant, rinse water is part of a validated process",
      "body": [
-      "There is no single water standard for device manufacturing. You set the water quality from what the device contacts and how it is finished.",
-      "A non-sterile device for intact skin may need only Purified Water (PW). An implant or a device that contacts blood is often rinsed in low-endotoxin water, because residual endotoxin on the device counts against its release limit. We help you document that decision."
+      "No standard sets one water grade for medical device manufacturing. ISO 13485:2016 asks you to control product cleanliness (7.5.2) and contamination (6.4.2), to validate any process whose output you cannot fully verify (7.5.6), and to maintain the infrastructure behind it (6.3). Cleaning is such a process, so the water at the end of it is part of your validation, and a water excursion is a cleaning deviation.",
+      "Three things set the grade: what the device contacts, how it is sterilized, and the release limits on the finished device. A non-sterile device for intact skin can be rinsed in PW. An implant, a blood-contacting device or anything for the central nervous system is usually rinsed in water with a written endotoxin limit, because endotoxin is heat stable and survives every common sterilization method. A device sterilized by radiation or ethylene oxide (EO) carries the bioburden its last rinse left, and that bioburden sets the dose.",
+      "Since 2 February 2026 the FDA Quality Management System Regulation (QMSR, 21 CFR 820) incorporates ISO 13485:2016 by reference. Health Canada licenses Class II to IV devices on an ISO 13485 certificate issued under the Medical Device Single Audit Program (MDSAP). One set of water system records can now answer both."
+     ]
+    },
+    {
+     "type": "table",
+     "nav": "Where to start",
+     "h": "Your situation, the water you need and where to start",
+     "cols": [
+      "Your situation",
+      "Water you need",
+      "Systems",
+      "Start with"
+     ],
+     "rows": [
+      [
+       "Orthopaedic, spinal and dental implants machined, cleaned and passivated before packaging",
+       "PW final rinse with a written endotoxin limit, a conductivity endpoint for passivation rinses and cleanliness acceptance to ISO 19227",
+       {
+        "t": "Purified Water (PW) generation",
+        "link": "sys-pw"
+       },
+       {
+        "t": "Process design: request a URS review",
+        "link": "svc-design"
+       }
+      ],
+      [
+       "Cardiovascular, neurological and other blood or cerebrospinal fluid contact devices",
+       "Low-endotoxin final rinse: WFI, or PW polished by ultrafiltration, held to a limit derived from 20.0 or 2.15 EU per device",
+       {
+        "t": "WFI by membrane",
+        "link": "sys-wfi-membrane"
+       },
+       {
+        "t": "Commissioning and qualification",
+        "link": "svc-cq"
+       }
+      ],
+      [
+       "Single-use sterile devices sterilized by radiation or EO after packaging",
+       "PW with a microbial action level low enough that device bioburden stays inside your ISO 11137-2 or ISO 11135 validation",
+       {
+        "t": "Storage and distribution loops",
+        "link": "sys-storage"
+       },
+       {
+        "t": "Monitoring and controls",
+        "link": "sys-monitoring"
+       }
+      ],
+      [
+       "Devices or instruments steam sterilized in your plant",
+       "Pure steam or clean steam made from PW, tested for non-condensable gases, dryness and superheat to EN 285 and validated under ISO 17665",
+       {
+        "t": "Pure steam generators",
+        "link": "sys-pure-steam"
+       },
+       {
+        "t": "FAT and SAT",
+        "link": "svc-fat-sat"
+       }
+      ],
+      [
+       "Devices that contain water, and drug-device combination products",
+       "PW or WFI as an ingredient, made to the pharmacopoeial monograph, with drug GMP applying to the drug part",
+       {
+        "t": "WFI by distillation",
+        "link": "sys-wfi-distillation"
+       },
+       {
+        "t": "Pharmaceutical industry page",
+        "link": "ind-pharma"
+       }
+      ],
+      [
+       "Endotoxin or bioburden results drifting on finished devices",
+       "Evidence: whether the rinse water, the washer or handling is the source, a corrective action that holds and trend data that shows it",
+       {
+        "t": "Storage and distribution loops",
+        "link": "sys-storage"
+       },
+       {
+        "t": "Upgrades: request a system assessment",
+        "link": "svc-upgrades"
+       }
+      ],
+      [
+       "An MDSAP or FDA finding on your water system, or a QMSR gap assessment",
+       "Qualification records, calibration, sanitization and trend review that an auditor can trace to your risk file",
+       {
+        "t": "Commissioning and qualification",
+        "link": "svc-cq"
+       },
+       {
+        "t": "Documentation package",
+        "link": "cmp-documentation"
+       }
+      ]
+     ]
+    },
+    {
+     "type": "table",
+     "nav": "Grade by use",
+     "h": "Water grade by device process step, as device makers commonly set it",
+     "cols": [
+      "Process step",
+      "Typical water",
+      "What sets the specification"
+     ],
+     "rows": [
+      [
+       "Pre-clean and gross wash, before validated cleaning",
+       "Potable or softened water",
+       "Your cleaning validation; later rinses must remove what this water leaves"
+      ],
+      [
+       "Intermediate rinses, and final rinse of non-sterile devices for intact skin",
+       "PW",
+       "ISO 13485 7.5.2 and your cleaning validation"
+      ],
+      [
+       "Final rinse of devices sterilized by radiation or EO",
+       "PW with a microbial action level, often with 0.2 µm filtration or ultrafiltration at the point of use",
+       "ISO 11737-1 bioburden; ISO 11137-2 dose setting and dose audits; ISO 11135 for EO"
+      ],
+      [
+       "Final rinse of implants and blood-contact devices",
+       "PW with a written endotoxin limit, or WFI",
+       "USP <161> 20.0 EU per device, tested to USP <85> and ANSI/AAMI ST72; ISO 19227 for orthopaedic implant cleanliness"
+      ],
+      [
+       "Final rinse of devices for cerebrospinal fluid or intrathecal contact",
+       "WFI, or water held to the WFI endotoxin limit",
+       "USP <161> 2.15 EU per device"
+      ],
+      [
+       "Passivation and electropolish rinses",
+       "PW, with rinse conductivity as the endpoint",
+       "ASTM A967 or ASTM F86 for the passivation itself; your cleaning validation for the endpoint"
+      ],
+      [
+       "Feed to steam sterilizers and clean steam generators",
+       "PW, or the feed water the generator maker specifies",
+       "EN 285 Annex B contaminant limits for feed water and condensate; ISO 17665"
+      ],
+      [
+       "Water as an ingredient, or the drug part of a combination product",
+       "PW or WFI to the monograph",
+       "USP, Ph. Eur., 21 CFR Part 4 and Health Canada GUI-0001 for the drug part"
+      ]
+     ]
+    },
+    {
+     "type": "prose",
+     "body": [
+      "This table is common practice, not a regulation: unlike pharmaceuticals, no device standard lists a minimum water grade per step. Your risk assessment and cleaning validation set the grade, and ASTM F3127 is the usual guide for validating cleaning processes in device manufacture. We help you write that rationale and size the system to it."
      ]
     },
     {
      "type": "spec",
-     "caption": "Reference limits · device and rinse water",
-     "note": "Device endotoxin limits apply to the finished device, not the water. They are listed because rinse water quality is chosen to protect them.",
+     "nav": "Limits",
+     "h": "Limits that decide your rinse water specification",
+     "caption": "Device, water and steam limits · USP, EN 285 · applied at the point of use",
+     "note": "Device endotoxin limits apply to the finished device, tested on an extract, not to the water. They are listed because the rinse water limit is derived from them. Water and steam limits are as the pharmacopoeia and EN 285 state them; alert and action levels for your site are set from qualification data and sit inside them.",
      "cols": [
       "Attribute",
       "Limit",
@@ -9809,121 +9972,378 @@
       {
        "p": "Device endotoxin limit, general",
        "v": "20.0 EU per device",
-       "m": "USP <161>",
-       "hl": false
+       "m": "USP <161>; FDA guidance, Pyrogen and endotoxins testing: questions and answers (2012)",
+       "hl": true
       },
       {
        "p": "Device endotoxin limit, cerebrospinal fluid contact",
        "v": "2.15 EU per device",
        "m": "USP <161>",
-       "hl": false
+       "hl": true
       },
       {
        "p": "Bacterial endotoxins, WFI",
        "v": "< 0.25 EU/mL",
-       "m": "USP <85>",
-       "hl": true
+       "m": "USP <85>; Ph. Eur. 2.6.14",
+       "hl": false
       },
       {
        "p": "Conductivity, PW and WFI",
        "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
-       "m": "USP <645>",
+       "m": "USP <645>, non-temperature-compensated reading",
        "hl": false
       },
       {
-       "p": "Total organic carbon (TOC)",
-       "v": "≤ 500 ppb",
+       "p": "Total organic carbon, PW and WFI",
+       "v": "≤ 0.50 mg/L (500 ppb)",
        "m": "USP <643>",
        "hl": false
+      },
+      {
+       "p": "Microbial action level, PW",
+       "v": "100 CFU/mL",
+       "m": "USP <1231> guidance; many device makers set a tighter limit for final rinse",
+       "hl": false
+      },
+      {
+       "p": "Microbial action level, WFI",
+       "v": "10 CFU/100 mL",
+       "m": "USP <1231> guidance",
+       "hl": false
+      },
+      {
+       "p": "Steam for sterilizers: non-condensable gases",
+       "v": "≤ 3.5 mL per 100 mL of condensate",
+       "m": "EN 285",
+       "hl": false
+      },
+      {
+       "p": "Steam for sterilizers: dryness and superheat",
+       "v": "Dryness value ≥ 0.95; superheat ≤ 25 K on expansion to atmospheric pressure",
+       "m": "EN 285",
+       "hl": false
       }
+     ]
+    },
+    {
+     "type": "table",
+     "nav": "Contamination",
+     "h": "Where rinse water puts endotoxin and bioburden on devices, and what we design against",
+     "cols": [
+      "Where it starts",
+      "Why it happens",
+      "What we design and test"
+     ],
+     "rows": [
+      [
+       "Washer and ultrasonic tanks",
+       "Water sits warm in a tank between batches and grows biofilm the supply loop never sees",
+       "A sample point at the washer inlet and a drain-and-refill rule you can validate; supply sized so tanks refill fast"
+      ],
+      [
+       "Short, high-flow draws",
+       "Several washers fill at once, loop pressure drops and the far end of the loop stagnates",
+       "Storage and pump sized to your washer fill profile, return flow monitored and alarmed"
+      ],
+      [
+       "Ambient PW loops",
+       "Most device plants run PW at ambient temperature, where biofilm forms if sanitization lapses",
+       "Ozone or ultraviolet (UV) control with ozone removal proven before use, or hot water sanitization on a stated schedule"
+      ],
+      [
+       "Dead legs and drops to cleanroom washers",
+       "Branches and long drops to points of use hold stagnant water",
+       "Branches to an L/D of 2 or less to ASME BPE, drops kept short and drainable"
+      ],
+      [
+       "Point-of-use filters and ultrafilters",
+       "A filter or ultrafilter can be breached, or grow the biofilm it was meant to stop",
+       "Integrity testing, a change interval set from data and sampling downstream of the filter"
+      ],
+      [
+       "Hoses, spray wands and sampling",
+       "Water picks up contamination after the outlet valve, then the result reads as a loop failure",
+       "Sampling procedures that match how production draws water, and investigation records that separate the two"
+      ]
+     ]
+    },
+    {
+     "type": "table",
+     "nav": "Auditors",
+     "h": "Who audits your water system, and where we answer it",
+     "cols": [
+      "Who audits or reviews",
+      "What they read on the water system",
+      "Where we answer it"
+     ],
+     "rows": [
+      [
+       "Health Canada, device licensing",
+       "Medical Devices Regulations (SOR/98-282): Class II to IV licences need an ISO 13485:2016 certificate issued under MDSAP. Health Canada reads your water system through that audit, not a separate water inspection",
+       {
+        "t": "Standards we design to",
+        "link": "compliance"
+       }
+      ],
+      [
+       "MDSAP auditing organization",
+       "ISO 13485:2016 with Canadian, US, Brazilian, Australian and Japanese requirements: infrastructure and maintenance (6.3), contamination control (6.4.2), cleanliness (7.5.2), process validation (7.5.6), sterilization validation (7.5.7), calibration (7.6)",
+       {
+        "t": "Commissioning and qualification",
+        "link": "svc-cq"
+       }
+      ],
+      [
+       "FDA, sites selling devices in the United States",
+       "21 CFR 820 QMSR, in effect since 2 February 2026, which incorporates ISO 13485:2016 by reference. Investigators read the same process validation, maintenance and monitoring records, and electronic records to 21 CFR Part 11",
+       {
+        "t": "Monitoring and controls",
+        "link": "sys-monitoring"
+       }
+      ],
+      [
+       "EU notified body",
+       "EU MDR 2017/745 Annex I, sections 10.2 and 11 on contamination, residues and microbial contamination, audited against EN ISO 13485:2016",
+       {
+        "t": "Documentation package",
+        "link": "cmp-documentation"
+       }
+      ],
+      [
+       "Sterilization validation reviewer, in house or contract",
+       "Bioburden to ISO 11737-1 and dose audits under ISO 11137-2 for radiation, ISO 11135 for EO, ISO 17665 and EN 285 steam quality for moist heat",
+       {
+        "t": "Pure steam generators",
+        "link": "sys-pure-steam"
+       }
+      ],
+      [
+       "Drug GMP inspector, for combination products",
+       "Health Canada GUI-0001, or 21 CFR Part 4 with Part 211, for the drug part, which brings pharmaceutical water expectations with it",
+       {
+        "t": "Pharmaceutical industry page",
+        "link": "ind-pharma"
+       }
+      ]
+     ]
+    },
+    {
+     "type": "diagram",
+     "nav": "How it connects",
+     "h": "How the systems connect in a device plant",
+     "stages": [
+      "Municipal feed",
+      "Pretreatment",
+      "PW generation",
+      "PW storage and loop",
+      "Point-of-use polishing",
+      "Washers, passivation and steam"
+     ],
+     "caption": "Reverse osmosis (RO) with electrodeionization (EDI) makes PW, stored and circulated in an ambient loop under ozone or UV control, or hot where the demand profile suits it. Final rinse points for implants and blood-contact devices take water through ultrafiltration or from a membrane WFI skid; general rinses and passivation lines take PW from the loop. A clean steam generator fed with PW serves in-house steam sterilizers. Monitoring and controls run across all of it, with audit-trailed records under 21 CFR Part 11."
+    },
+    {
+     "type": "options",
+     "h": "Decisions to settle before the URS is approved",
+     "items": [
+      {
+       "t": "An endotoxin limit on PW, or WFI",
+       "d": "Many device makers rinse in PW held to a written endotoxin limit, polished by ultrafiltration at the point of use. WFI is simpler to defend for CSF-contact devices. We work the rinse water limit back from your device limit and extraction volume, then compare both routes."
+      },
+      {
+       "t": "Where the specification applies",
+       "d": "Water quality at the generator is not the water on your device. We put the specification and the sample point at the washer inlet, where your cleaning validation needs it."
+      },
+      {
+       "t": "Washer fill profile, not daily total",
+       "d": "Washers and ultrasonic baths fill fast and then stop. Storage, pump and loop are sized from how many fill at once, how much and how fast."
+      },
+      {
+       "t": "Ambient loop or hot loop",
+       "d": "Ambient loops with ozone suit most device plants and use less energy; they need ozone removal proven before use. A hot loop suits plants that also need WFI or rinse hot. We compare them on your demand."
+      },
+      {
+       "t": "A rinse endpoint you can measure",
+       "d": "A final rinse validated to a conductivity or TOC endpoint at the washer drain gives you a release check on every cycle, not only during validation."
+      },
+      {
+       "t": "Canadian feed water",
+       "d": "Feed temperature can swing from near freezing in winter to over 20 °C in summer, and some municipal supplies use chloramine. We size membranes at your coldest month and design chloramine removal ahead of the RO."
+      }
+     ]
+    },
+    {
+     "type": "prose",
+     "nav": "Hospital reprocessing",
+     "h": "Adjacent use: water for hospital device reprocessing (MDRD)",
+     "body": [
+      "Hospitals that reprocess reusable devices in a medical device reprocessing department (MDRD), or sterile processing department, work to different rules from device makers. In Canada that is CSA Z314, Canadian medical device reprocessing; in the United States, ANSI/AAMI ST108:2023, Water for the processing of medical devices, which replaced AAMI TIR34. ST108 sets categories for utility water, critical water for final rinse and steam generation, and steam. There is no ISO 13485 product release behind it, but the risk is the same: water left on an instrument goes into a patient.",
+      "The same RO and EDI platform we build for device makers can be built for hospital reprocessing water under CSA Z314, usually with duplex or N+1 redundancy because an MDRD cannot stop. [State Aquemi's scope for hospital MDRD and sterile processing water: new systems, upgrades of existing systems, service only, or not offered; and whether Aquemi bids hospital and health authority tenders.] If you run an MDRD, send the standard you work to with a scope review request and we will say plainly what we can supply."
      ]
     },
     {
      "type": "grid",
-     "h": "Systems device makers use most",
+     "nav": "Our support",
+     "h": "What we do, from URS to the last service visit",
+     "intro": "One traceable record runs through every stage, so your quality unit can follow a requirement from the user requirement specification (URS) to the test that proved it.",
      "items": [
       {
-       "t": "Purified Water (PW) generation",
-       "d": "Reverse osmosis (RO) with electrodeionization (EDI) for washing and rinsing.",
-       "tag": "USP <645>",
-       "link": "sys-pw"
+       "t": "Process design",
+       "d": "URS review, rinse water limits worked back from your device limits, washer fill profile, mass balance at your coldest and warmest feed, and design qualification (DQ) support.",
+       "tag": "ISO 13485 7.5.6",
+       "link": "svc-design"
       },
       {
-       "t": "WFI by membrane",
-       "d": "Low-endotoxin final rinse without the energy cost of distillation.",
-       "tag": "USP <85>",
-       "link": "sys-wfi-membrane"
-      },
-      {
-       "t": "Storage and distribution loops",
-       "d": "Loops to washers and cleanroom points of use.",
+       "t": "Fabrication",
+       "d": "316L product-contact piping with weld logs, borescope records and material certificates traceable to the mill heat.",
        "tag": "ASME BPE",
-       "link": "sys-storage"
+       "link": "svc-fabrication"
       },
       {
-       "t": "Pretreatment",
-       "d": "Matched to your feedwater to protect the RO.",
-       "link": "sys-pretreatment"
+       "t": "FAT and SAT",
+       "d": "Wet FAT in our test bay to a protocol you approve, then site acceptance testing (SAT) on your feed water.",
+       "tag": "Witnessed FAT",
+       "link": "svc-fat-sat"
       },
       {
-       "t": "Monitoring and controls",
-       "d": "Continuous conductivity and TOC with audit-trailed records.",
-       "tag": "21 CFR Part 11",
-       "link": "sys-monitoring"
+       "t": "Commissioning and qualification",
+       "d": "IQ and OQ to protocols your quality unit approves, endotoxin and microbial sampling at each washer inlet, then support through performance qualification (PQ).",
+       "tag": "GHTF SG3/N99-10",
+       "link": "svc-cq"
+      },
+      {
+       "t": "Service",
+       "d": "Plans with stated response times, sanitization support, filter integrity checks and calibration records written for your ISO 13485 files.",
+       "tag": "ISO 13485 6.3, 7.6",
+       "link": "svc-service"
+      },
+      {
+       "t": "Upgrades and retrofits",
+       "d": "Added capacity, point-of-use ultrafiltration, new washer lines and excursion fixes on systems from any builder, with the requalification scope stated first.",
+       "tag": "Change control",
+       "link": "svc-upgrades"
       }
      ]
     },
     {
-     "type": "options",
-     "h": "Design considerations",
-     "items": [
-      {
-       "t": "Washers and ultrasonic baths",
-       "d": "Short, high-flow draws. We size storage and loop pressure for them."
-      },
-      {
-       "t": "Cleaning validation",
-       "d": "Water quality at the washer inlet is part of your validated process. We provide points to sample it."
-      },
-      {
-       "t": "Combination products",
-       "d": "Where a device contains a drug, pharmaceutical GMP expectations for water may also apply."
-      },
-      {
-       "t": "Quality system fit",
-       "d": "Our documents map to ISO 13485 records for equipment, calibration and change control."
-      }
-     ]
+     "type": "band",
+     "tone": "limestone",
+     "h": "Built, wet tested and serviced in Canada",
+     "body": "Your engineers witness FAT in [city], Ontario, not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a PW system with point-of-use ultrafiltration, weeks]."
     },
     {
      "type": "faq",
-     "h": "Questions we hear",
+     "nav": "FAQ",
+     "h": "Questions device engineering, validation and QA leads ask",
      "items": [
       {
-       "q": "Do we need WFI?",
-       "a": "Only if your risk assessment says rinse water endotoxin must be controlled to that level. Many device makers use PW with an endotoxin specification instead."
+       "q": "Do we need WFI for our final rinse?",
+       "a": "Only if your risk assessment says the rinse water must meet the WFI endotoxin limit, which is common for devices that contact cerebrospinal fluid. For most implants and blood-contact devices, PW with a written endotoxin limit and point-of-use ultrafiltration does the job at lower cost. We show the calculation from your device limit either way."
       },
       {
-       "q": "Is this the same as water for reprocessing devices in hospitals?",
-       "a": "No. Hospital reprocessing follows AAMI ST108 and CSA Z314. This page covers water used to manufacture devices."
+       "q": "Our rinse water meets USP Purified Water. Is that enough for implant cleaning validation?",
+       "a": "Not on its own. The USP PW monograph sets conductivity and TOC but no endotoxin limit, and its microbial level is guidance in USP <1231>, not a monograph limit. If endotoxin or bioburden on the device matters, write those limits into the water specification and sample at the washer inlet."
       },
       {
-       "q": "Will our auditor accept your qualification documents?",
-       "a": "They are written to GAMP 5 and fit an ISO 13485 system. Your quality unit approves them before execution."
+       "q": "How does rinse water affect our radiation sterilization dose?",
+       "a": "Your dose is set and audited from device bioburden measured to ISO 11737-1. A rise in rinse water bioburden shows up as higher device bioburden and can fail a dose audit under ISO 11137-2. Stable, trended rinse water is one of the cheapest ways to protect a validated dose."
+      },
+      {
+       "q": "What changed for our water system under the QMSR?",
+       "a": "The FDA requirements now read as ISO 13485:2016 clauses: infrastructure, contamination control, process validation, calibration. If your water system already sits in an ISO 13485 system, the records are largely the same. We map our documents to those clauses so one package serves MDSAP, Health Canada and the FDA."
+      },
+      {
+       "q": "Is the water system validated or qualified?",
+       "a": "Both words get used. Under ISO 13485 7.5.6 the cleaning process is validated; the water system that supplies it is qualified by IQ and OQ, with PQ evidence from routine sampling. We follow GHTF SG3/N99-10, the process validation guidance most device auditors know."
+      },
+      {
+       "q": "Are you ISO 13485 certified?",
+       "a": "[State the quality management certifications Aquemi holds, such as ISO 9001 or ISO 13485, their scope and registrar; or state that the water system is supplied under Aquemi's own quality system and qualified by you as a supplier under ISO 13485 7.4.]"
+      },
+      {
+       "q": "Is hospital reprocessing water the same as manufacturing rinse water?",
+       "a": "No. Hospital MDRDs work to CSA Z314 and ANSI/AAMI ST108; device makers set their own specification under ISO 13485. The treatment platform overlaps. The hospital reprocessing section above sets out our scope."
+      },
+      {
+       "q": "Can we talk to a device maker you have delivered to?",
+       "a": "[Number and type of medical device manufacturing references Aquemi can offer for a call; or a plain statement if none can be named yet.]"
       }
+     ]
+    },
+    {
+     "type": "docs",
+     "nav": "What to send",
+     "h": "What to send for a device water scope review",
+     "items": [
+      {
+       "t": "Devices",
+       "d": "Device types, class in Canada, the US and the EU, and what each contacts: intact skin, tissue, blood or cerebrospinal fluid"
+      },
+      {
+       "t": "Sterilization",
+       "d": "Radiation, EO, steam or supplied non-sterile, and the standard each is validated to"
+      },
+      {
+       "t": "Release limits",
+       "d": "Device endotoxin and bioburden limits, and the extraction volume used for testing, in mL"
+      },
+      {
+       "t": "Cleaning process",
+       "d": "Washers and ultrasonic baths, passivation lines, rinse steps and the current rinse water specification"
+      },
+      {
+       "t": "Fill profile",
+       "d": "Washer fills per hour, volume per fill in L and how many run at once"
+      },
+      {
+       "t": "Feed water",
+       "d": "Recent analyses and the feed temperature range through the year, in °C"
+      },
+      {
+       "t": "Audit history",
+       "d": "Recent MDSAP, FDA or notified body findings that touch water, if any"
+      },
+      {
+       "t": "Target dates",
+       "d": "Order, FAT, water on site, cleaning revalidation"
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Where device buyers go next",
+     "items": [
+      "sys-pw",
+      "sys-wfi-membrane",
+      "sys-storage",
+      "sys-pure-steam",
+      "sys-monitoring",
+      "svc-cq",
+      "cmp-documentation",
+      "ind-pharma"
      ]
     }
    ],
    "cta": {
-    "h": "Match the water to the device",
-    "body": "Tell us what your devices contact and how they are cleaned, and we will propose a water grade and a system.",
-    "button": "Request a proposal",
+    "h": "Send your devices, release limits and cleaning process. We return the rinse water specification and the system scope.",
+    "body": "A process engineer reads your devices and cleaning process and replies within [response time] with the rinse water limits worked back from your device limits, the system to hold them at the washer inlet and the qualification scope, or the questions we need answered first.",
+    "button": "Request a device water scope review",
     "link": "contact-proposal"
    },
    "todo": [
     "Confirm medical device manufacturing is a target segment",
-    "A device-manufacturing reference project",
-    "Confirm whether Aquemi also serves hospital MDRD water (separate page if so)"
+    "Response time for enquiries (closing CTA)",
+    "FAT and shop location: [city], Ontario (band)",
+    "Spares stock locations (band)",
+    "Service bases (band)",
+    "Quotation currency (band)",
+    "Standard lead time for a PW system with point-of-use ultrafiltration, weeks (band)",
+    "Quality certifications Aquemi holds (ISO 9001 / ISO 13485), scope and registrar (FAQ)",
+    "Medical device manufacturing references available for a call, or a plain 'none yet' (FAQ)",
+    "A device-manufacturing case study with measured outcome; add a case block when one exists",
+    "Hospital MDRD / sterile processing water scope: new systems, upgrades, service only or not offered; tender bidding (hospital reprocessing section). Keep wording in line with sys-pw and systems FAQ",
+    "Confirm Aquemi supplies point-of-use ultrafiltration and clean steam generators for sterilizer feed (situation table, diagram)",
+    "Is the scope review free, and its turnaround",
+    "Contact-proposal page: add a 'device water scope review' intent with device class, sterilization method and release limit fields"
    ]
   },
   {
