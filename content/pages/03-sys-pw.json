@@ -6,8 +6,8 @@
  "meta": "RO and EDI skids that make Purified Water below USP <645> 1.3 µS/cm and USP <643> 500 ppb TOC, sized for your coldest feed water and wet tested at FAT.",
  "path": "/systems/purified-water/",
  "eyebrow": "PURIFIED WATER · USP <645> · USP <643> · PH. EUR. 0008",
- "headline": "Purified Water sized for your coldest feed day, with a turnover package your auditor can follow",
- "lead": "Our reverse osmosis (RO) and electrodeionization (EDI) skids make Purified Water (PW) below the USP <645> limit of 1.3 µS/cm at 25 °C and the USP <643> limit of 500 ppb total organic carbon (TOC), with no regeneration chemicals. We size each skid at your lowest feed temperature, wet test it at factory acceptance testing (FAT) and ship the installation and operational qualification (IQ/OQ) protocols with it.",
+ "headline": "Purified Water skids sized for your coldest feed day, documented for your auditor",
+ "lead": "Our reverse osmosis (RO) and electrodeionization (EDI) skids make Purified Water (PW) below the USP <645> and <643> limits, without regeneration chemicals. Sized at your lowest feed temperature, wet tested at factory acceptance testing (FAT).",
  "primary_cta": "Request a sizing and budget proposal",
  "primary_cta_intent": "Sizing and budget proposal for a new system|Purified Water (PW) generation",
  "secondary_cta": {
@@ -34,19 +34,10 @@
  ],
  "blocks": [
   {
-   "type": "prose",
-   "h": "Margin at the generator protects the point of use",
-   "body": [
-    "PW is the bulk water for non-parenteral formulation, the final rinse of most cleaning cycles and the feed to Water for Injection (WFI) stills and Pure Steam generators. USP and Ph. Eur. apply their limits at the point of use, after storage and distribution have had their effect.",
-    "So the generator's job is margin. Carbon dioxide (CO₂) taken up through a tank vent raises conductivity. A loop that warms in summer adds microbial risk. We size the skid so its outlet sits well below the limit you release against under the worst feed water of the year, and we show that margin at FAT and again at site acceptance testing (SAT).",
-    "Adjacent uses: the same RO and EDI platform is used for hospital reprocessing water (CSA Z314), laboratory reagent water (ASTM D1193) and industrial demineralized water. [State Aquemi's scope for hospital, laboratory and industrial water: new systems, upgrades of existing systems, service only, or not offered.] This page describes the pharmaceutical build."
-   ]
-  },
-  {
    "type": "spec",
    "h": "Water quality you release against",
-   "caption": "Purified Water limits · USP and Ph. Eur.",
-   "note": "Limits as the pharmacopoeias state them, applied at the point of use (Ph. Eur. 0008 as revised in Ph. Eur. 12.3, in force 1 July 2026). Ph. Eur. adds aluminium ≤ 10 ppb and bacterial endotoxins < 0.25 IU/mL only where PW is used to make dialysis solutions. Your alert and action levels are set from trend data during qualification.",
+   "caption": "Purified Water · USP and Ph. Eur.",
+   "note": "Ph. Eur. 0008 as revised in Ph. Eur. 12.3, in force 1 July 2026. Ph. Eur. adds aluminium ≤ 10 ppb and bacterial endotoxins < 0.25 IU/mL only for PW used to make dialysis solutions. Alert and action levels come from qualification trend data.",
    "cols": [
     "Parameter",
     "Limit",
@@ -62,11 +53,11 @@
     {
      "p": "Conductivity, Ph. Eur.",
      "v": "≤ 5.1 µS/cm @ 25 °C (≤ 4.3 µS/cm @ 20 °C)",
-     "m": "Ph. Eur. 0008, Purified water in bulk",
+     "m": "Ph. Eur. 0008, purified water in bulk",
      "hl": false
     },
     {
-     "p": "Total organic carbon",
+     "p": "Total organic carbon (TOC)",
      "v": "≤ 0.50 mg/L (500 ppb)",
      "m": "USP <643>; Ph. Eur. 2.2.44, method A",
      "hl": false
@@ -86,11 +77,27 @@
     {
      "p": "Skid outlet, guaranteed",
      "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]",
-     "m": "Measured at the skid outlet at FAT and SAT. This is the margin your loop spends.",
+     "m": "Measured at FAT and at site acceptance testing (SAT): the margin your loop spends",
      "hl": false
     }
    ],
-   "nav": "Limits"
+   "nav": "Limits",
+   "intro": "USP and Ph. Eur. apply these limits at the point of use, after storage and distribution. We size the skid so its outlet holds margin on your worst feed water of the year."
+  },
+  {
+   "type": "diagram",
+   "h": "How water moves through the skid",
+   "stages": [
+    "Softened, dechlorinated feed",
+    "Heat exchanger",
+    "RO pass 1",
+    "CO₂ removal",
+    "RO pass 2",
+    "EDI",
+    "To PW storage"
+   ],
+   "caption": "A heat exchanger brings winter feed to design temperature. Carbon dioxide (CO₂) passes RO as a gas, so we dose caustic or degas before EDI. Off-spec water diverts until it recovers.",
+   "nav": "How it works"
   },
   {
    "type": "table",
@@ -103,23 +110,23 @@
    "rows": [
     [
      "Single-pass RO + EDI",
-     "Feed is moderate in dissolved solids and alkalinity after softening. PW is the end product.",
-     "Fewest stages and lowest energy. Carbon dioxide and silica reach the EDI directly, so CO₂ control is part of the design."
+     "Moderate dissolved solids and alkalinity after softening; PW is the end product.",
+     "Fewest stages, lowest energy. CO₂ control is part of the design."
     ],
     [
      "Double-pass RO + EDI",
-     "Feed is high in dissolved solids, alkalinity or silica, or the PW also feeds a WFI still or Pure Steam generator with tight feed limits.",
-     "Most margin on conductivity, TOC and silica. More pumps and membranes; second-pass concentrate is recycled to the first pass."
+     "High dissolved solids, alkalinity or silica, or the PW feeds a Water for Injection (WFI) still or Pure Steam generator.",
+     "Most margin on conductivity, TOC and silica. More pumps and membranes; second-pass concentrate returns to the first pass."
     ],
     [
      "Double-pass RO, no EDI",
-     "Feed is soft and low in carbon dioxide, and you prefer one membrane technology to maintain.",
-     "Least margin against 1.3 µS/cm. pH adjustment between passes is usually needed to hold the limit."
+     "Soft, low-CO₂ feed, and you prefer one membrane technology to maintain.",
+     "Least margin against 1.3 µS/cm. pH adjustment between passes is usually needed."
     ],
     [
      "RO + mixed-bed ion exchange",
      "Small or temporary demand, or a bridge while a generator is replaced.",
-     "Resin exhaustion, cylinder exchanges and microbial growth in resin beds become deviations to manage. We rarely propose it for new plants."
+     "Resin exhaustion and microbial growth in resin beds become deviations. We rarely propose it for new plants."
     ]
    ],
    "nav": "Choosing a train"
@@ -128,7 +135,7 @@
    "type": "spec",
    "h": "Skid design parameters",
    "caption": "PW generation skid · design basis",
-   "note": "Values in brackets depend on your feed water and demand; we confirm each one in the functional specification before detailed design.",
+   "note": "Bracketed values depend on your feed water and demand; we confirm each in the functional specification.",
    "cols": [
     "Parameter",
     "Design value",
@@ -138,36 +145,30 @@
     {
      "p": "Capacity",
      "v": "[minimum–maximum capacity, L/h] per skid",
-     "m": "Rated at your lowest feed temperature, not at 25 °C. Higher demand on parallel or duplex trains.",
+     "m": "Rated at your lowest feed temperature, not 25 °C. Parallel or duplex trains above that.",
      "hl": true
     },
     {
-     "p": "Feed water",
-     "v": "Drinking water quality",
-     "m": "USP Purified Water monograph; Ph. Eur. 0008 (water intended for human consumption)",
-     "hl": false
-    },
-    {
      "p": "Membrane design temperature",
-     "v": "[design temperature held by the feed heat exchanger, °C]",
-     "m": "Where specified; otherwise membranes sized at your site minimum",
+     "v": "[feed heat exchanger design temperature, °C]",
+     "m": "Where specified; otherwise sized at your site minimum",
      "hl": false
     },
     {
      "p": "System recovery",
      "v": "[design recovery, %]",
-     "m": "Second-pass RO and EDI concentrate recycled to the RO feed where feed chemistry allows",
+     "m": "Second-pass RO and EDI concentrate recycled where feed chemistry allows",
      "hl": false
     },
     {
      "p": "Sanitization",
      "v": "Hot water ≥ 80 °C through RO and EDI, held [hold time, minutes]",
-     "m": "Hot water sanitizable membranes and EDI modules [standard or option]; temperature verified at the coldest probe",
+     "m": "Heat-rated membranes and EDI modules [standard or option]; verified at the coldest probe",
      "hl": false
     },
     {
-     "p": "Materials, product contact",
-     "v": "316L stainless steel",
+     "p": "Materials and dead legs",
+     "v": "316L stainless steel; L/D ≤ 2, sloped to drain",
      "m": "ASME BPE; EN 10204 3.1 material certificates",
      "hl": false
     },
@@ -178,14 +179,8 @@
      "hl": false
     },
     {
-     "p": "Dead legs",
-     "v": "L/D ≤ 2, sloped to drain",
-     "m": "ASME BPE",
-     "hl": false
-    },
-    {
      "p": "Instrumentation",
-     "v": "Conductivity and temperature after each stage; flow and pressure; online TOC at outlet [standard or option]",
+     "v": "Conductivity and temperature after each stage; flow, pressure; online TOC [standard or option]",
      "m": "Calibration certificates in the turnover package",
      "hl": false
     },
@@ -202,96 +197,13 @@
      "hl": false
     },
     {
-     "p": "Electrical",
-     "v": "[supply voltage, V / phase / Hz]",
-     "m": "Control panel certified to [panel certification held]",
-     "hl": false
-    },
-    {
-     "p": "Footprint",
-     "v": "[typical footprint, m × m, by capacity]",
-     "m": "Service access on [number] sides",
+     "p": "Electrical and footprint",
+     "v": "[supply voltage, V / phase / Hz]; [typical footprint, m × m, by capacity]",
+     "m": "Panel certified to [panel certification held]; service access: [service-access sides, number]",
      "hl": false
     }
    ],
    "nav": "Skid design"
-  },
-  {
-   "type": "diagram",
-   "h": "How water moves through the skid",
-   "stages": [
-    "Softened, dechlorinated feed",
-    "Heat exchanger",
-    "RO pass 1",
-    "CO₂ removal",
-    "RO pass 2",
-    "EDI",
-    "To PW storage"
-   ],
-   "caption": "Pretreated feed arrives softened and free of chlorine and chloramine. A heat exchanger brings winter feed up to membrane design temperature. The first RO pass removes most dissolved ions, organics, particles and bacteria. Carbon dioxide passes RO as a gas, so we convert it with caustic dosing or strip it with a membrane degasser before it loads the EDI. A second RO pass, where your feed needs one, adds margin on conductivity and silica. EDI polishes the permeate in an electric field, with no acid or caustic regeneration. Water below the conductivity setpoint goes to storage; anything above it diverts until it recovers."
-  },
-  {
-   "type": "docs",
-   "h": "Documentation delivered with the skid",
-   "items": [
-    {
-     "t": "URS compliance matrix",
-     "d": "Each requirement, how we meet it and where it is verified"
-    },
-    {
-     "t": "Functional specification",
-     "d": "Operating sequences, alarms, setpoints and interlocks"
-    },
-    {
-     "t": "Hardware and software design specifications",
-     "d": "GAMP 5"
-    },
-    {
-     "t": "P&IDs and general arrangement drawings",
-     "d": "As built"
-    },
-    {
-     "t": "Material certificates",
-     "d": "EN 10204 3.1, every product-contact component"
-    },
-    {
-     "t": "Weld map, weld log and borescope records",
-     "d": "Welder and procedure qualifications to ASME Section IX"
-    },
-    {
-     "t": "Surface finish and passivation reports",
-     "d": "ASME BPE"
-    },
-    {
-     "t": "Membrane and EDI module certificates of conformance",
-     "d": "With serial numbers"
-    },
-    {
-     "t": "Instrument calibration certificates",
-     "d": "Traceable to national standards"
-    },
-    {
-     "t": "FAT protocol and executed report",
-     "d": "Deviations listed and closed"
-    },
-    {
-     "t": "SAT protocol and report",
-     "d": "On your feed water"
-    },
-    {
-     "t": "IQ and OQ protocols",
-     "d": "With a requirements traceability matrix"
-    },
-    {
-     "t": "Operation and maintenance manual",
-     "d": "Including sanitization and membrane cleaning procedures"
-    },
-    {
-     "t": "Recommended spare parts list",
-     "d": "Covering the first [months of operation]"
-    }
-   ],
-   "nav": "Documents"
   },
   {
    "type": "options",
@@ -310,10 +222,6 @@
      "d": "Two trains at 50 or 100 % of demand each, so one runs while the other is sanitized or serviced."
     },
     {
-     "t": "Variable speed high-pressure pumps",
-     "d": "Constant permeate flow as feed temperature and membrane fouling change through the year."
-    },
-    {
      "t": "Recirculation at no demand",
      "d": "The skid circulates when storage is full instead of stopping, so water never stands in the membranes."
     },
@@ -324,10 +232,6 @@
     {
      "t": "Recovery enhancement",
      "d": "A concentrate recovery RO stage to cut water sent to drain where sewer charges or supply limits matter."
-    },
-    {
-     "t": "Online TOC and bioburden monitoring",
-     "d": "TOC to USP <643> at the skid outlet, with trends on the operator panel. See monitoring and controls."
     }
    ],
    "nav": "Options"
@@ -335,13 +239,13 @@
   {
    "type": "spec",
    "h": "Budget framework",
-   "caption": "PW generation skid · typical budget, Canadian dollars, before tax",
+   "caption": "PW skid · Canadian dollars, before tax",
    "cols": [
     "Capacity",
     "Typical budget",
     "Basis"
    ],
-   "note": "For planning a capital request. Your proposal is priced on your feed water, URS and site. Ranges include FAT, IQ/OQ protocols and the turnover package; installation and the distribution loop are quoted separately.",
+   "note": "For a capital request; your proposal is priced on your feed water, URS and site. Ranges include FAT, IQ/OQ protocols and the turnover package. Installation and the distribution loop are quoted separately.",
    "rows": [
     {
      "p": "[small reference capacity, L/h]",
@@ -362,124 +266,90 @@
    "nav": "Budget"
   },
   {
-   "type": "steps",
-   "h": "From your feed water analysis to qualified water",
+   "type": "docs",
+   "h": "Documentation delivered with the skid",
    "items": [
     {
-     "t": "Feed water review",
-     "d": "We read your feed water analyses, seasonal temperature range, peak and average demand and your user requirement specification (URS), and ask for what is missing."
+     "t": "User requirement specification (URS) compliance matrix",
+     "d": "Each requirement, how we meet it and where it is verified"
     },
     {
-     "t": "Sizing and functional specification",
-     "d": "Process flow diagram and mass balance at your minimum and maximum feed temperature, then a functional specification you approve before detailed design."
+     "t": "Functional and design specifications",
+     "d": "Sequences, alarms, setpoints and interlocks; hardware and software design to GAMP 5"
     },
     {
-     "t": "Design review and fabrication",
-     "d": "Piping and instrumentation diagrams (P&IDs) and general arrangement drawings issued for your review. Product-contact welds logged, inspected and traceable to material heat numbers."
+     "t": "Piping and instrumentation diagrams (P&IDs) and general arrangement drawings",
+     "d": "As built"
     },
     {
-     "t": "Wet FAT",
-     "d": "The skid runs in our test bay against a protocol you approve: sequences, alarms, interlocks, diverts, a full hot water sanitization cycle and outlet quality."
+     "t": "Material certificates",
+     "d": "EN 10204 3.1, every product-contact component"
     },
     {
-     "t": "SAT, IQ and OQ",
-     "d": "After tie-in we repeat the critical tests on your feed water, then execute IQ and OQ and support the performance qualification (PQ) sampling that follows."
+     "t": "Weld map, weld log and borescope records",
+     "d": "[borescope inspection percentage] borescope inspection; welder and procedure qualifications to ASME Section IX"
+    },
+    {
+     "t": "Surface finish and passivation reports",
+     "d": "ASME BPE"
+    },
+    {
+     "t": "Component and calibration certificates",
+     "d": "Membrane and EDI modules with serial numbers; instruments traceable to national standards"
+    },
+    {
+     "t": "FAT and SAT protocols and reports",
+     "d": "Deviations listed and closed; SAT run on your feed water"
+    },
+    {
+     "t": "IQ and OQ protocols",
+     "d": "With a requirements traceability matrix"
+    },
+    {
+     "t": "Operation and maintenance manual, spare parts list",
+     "d": "Sanitization and membrane cleaning procedures; spares for the first [months of operation]"
     }
-   ]
+   ],
+   "nav": "Documents"
   },
   {
    "type": "faq",
    "h": "Questions validation and engineering teams ask",
    "items": [
     {
-     "q": "You are a new supplier. How do we know the skid will pass IQ/OQ on schedule?",
-     "a": "You do not have to take it on trust. Your quality unit approves the FAT protocol before we start. You witness a wet FAT in which every sequence, alarm, interlock and divert runs on water, and you review the executed report and the turnover package before the skid ships. Deviations found at FAT are closed in our shop, not on your site. Ask for the sample turnover package to check the format before you order."
-    },
-    {
-     "q": "Can our engineering and QA teams witness the FAT?",
-     "a": "Yes: in person at [test bay location], remotely over [remote witness platform], or both. The FAT and SAT page lists what a remote witness can and cannot see."
+     "q": "You are a new supplier. How do we know the skid will pass installation and operational qualification (IQ/OQ)?",
+     "a": "Your quality unit approves the FAT protocol. You witness a wet FAT, in person at [test bay location] or over [remote witness platform], and review the executed report and turnover package before the skid ships. FAT proves function on our test water; SAT and OQ prove performance on your feed. FAT deviations close in our shop."
     },
     {
      "q": "Are the skids registered for pressure and the panels certified?",
      "a": "Pressure-retaining parts are registered under CSA B51 with a Canadian registration number (CRN) for your province [confirm who registers and for which provinces]. Control panels are built and marked to [panel standard and certification mark held]."
     },
     {
-     "q": "How do you document material traceability and weld quality?",
-     "a": "Every product-contact component is traced to its EN 10204 3.1 certificate by heat number. Every weld has a line in the weld log, tied to the weld map, with [borescope inspection percentage] borescope inspection recorded. The Fabrication page shows each field and what it proves."
-    },
-    {
-     "q": "What does FAT prove if the skid runs on your test water, not our feed?",
-     "a": "FAT proves function: every sequence, alarm, interlock and divert, a sanitization cycle reaching temperature at every probe, instrument loop checks and outlet quality on our test water. Performance on your feed water is proven at SAT and OQ. We write the protocols so your quality unit can leverage FAT results in qualification, in line with ASTM E2500 and ISPE commissioning and qualification guidance, where it accepts that approach."
-    },
-    {
      "q": "How do you handle cold feed water in winter?",
-     "a": "RO output falls as water cools. A membrane array rated at 25 °C can lose a third or more of its output at 5 °C, and many Canadian supplies reach that in winter. We size the array at your lowest recorded feed temperature, or add a heat exchanger that holds a design temperature, and we show the capacity at both ends of your range in the mass balance."
-    },
-    {
-     "q": "Why EDI instead of mixed-bed ion exchange?",
-     "a": "EDI regenerates continuously in an electric field. There are no acid or caustic deliveries, no regeneration downtime, no resin exhaustion events to investigate and no resin beds for bacteria to colonise between exchanges."
-    },
-    {
-     "q": "Single or double pass RO?",
-     "a": "Your feed water decides. High alkalinity, dissolved solids or silica, or a WFI still or Pure Steam generator downstream, point to double pass. Soft, low-alkalinity feed that makes PW only usually suits a single pass ahead of EDI. We show both options against your analysis when the choice is close."
+     "a": "RO output falls as water cools. An array rated at 25 °C can lose a third or more of its output at 5 °C, and many Canadian supplies reach that in winter. We size at your lowest recorded feed temperature, or add a heat exchanger, and show capacity at both ends of your range in the mass balance."
     },
     {
      "q": "Our municipal supply is chloraminated. What changes?",
-     "a": "Chloramine must be removed before the RO, because polyamide membranes do not tolerate it. Breaking it releases ammonia. RO rejects ammonium well, but if we raise pH to control carbon dioxide, more of it becomes dissolved ammonia gas, which passes the membrane and reaches the EDI. So we design the chloramine removal and the CO₂ strategy together. Pretreatment covers the removal step."
-    },
-    {
-     "q": "Hot water or chemical sanitization?",
-     "a": "Hot water at 80 °C or more leaves no residual to rinse out and test for, and the cycle is proven by temperature at the coldest point. Chemical sanitization suits membranes that are not rated for heat, but adds a residual test to every cycle. Sanitization frequency is set from your trend data during PQ, not fixed at design."
-    },
-    {
-     "q": "Can the same skid feed a WFI still or a Pure Steam generator?",
-     "a": "Yes. We size it for your PW draw plus the still or generator feed demand, and design to that equipment's feed limits, typically on conductivity, silica, chloride and total hardness. Those limits go into the functional specification so they are tested at FAT."
+     "a": "Polyamide RO membranes do not tolerate chloramine, so it is removed first, which releases ammonia. RO rejects ammonium well, but raising pH to control CO₂ turns more of it into dissolved ammonia gas, which passes the membrane to the EDI. So we design chloramine removal and the CO₂ strategy together. Pretreatment covers the removal step."
     },
     {
      "q": "Our feed comes from a private well. Is that a problem?",
      "a": "Not in itself. USP and Ph. Eur. require PW to be made from water of drinking water quality, so you need to show your well meets it. Iron, manganese, hardness and silica then drive the pretreatment, and we ask for analyses from more than one season because well chemistry moves."
     },
     {
+     "q": "Hot water or chemical sanitization?",
+     "a": "Hot water at 80 °C or more leaves no residual to rinse out and test for, and the cycle is proven by temperature at the coldest point. Chemical sanitization suits membranes not rated for heat, but adds a residual test to every cycle. Frequency is set from your trend data during performance qualification (PQ)."
+    },
+    {
      "q": "Who services the skid after handover?",
      "a": "Our service team, from [service locations]. Membranes, EDI modules and seal kits for your skid are stocked in [stocking location], and a service plan gives you a stated on-site response for a severity 1 fault of [severity 1 on-site response time, hours]. Every visit ends with a signed report your quality unit can file."
+    },
+    {
+     "q": "Do you build hospital, laboratory or industrial water systems?",
+     "a": "The same RO and EDI platform is used for hospital reprocessing water (CSA Z314), laboratory reagent water (ASTM D1193) and industrial demineralized water. Our scope there: [hospital, lab and industrial water scope]. This page describes the pharmaceutical build."
     }
    ],
    "nav": "FAQ"
-  },
-  {
-   "type": "docs",
-   "h": "What to send for a sizing proposal",
-   "items": [
-    {
-     "t": "Feed water analysis",
-     "d": "Conductivity, pH, hardness, alkalinity, silica, free and total chlorine, iron, manganese, TOC and silt density index (SDI), ideally from more than one season"
-    },
-    {
-     "t": "Feed temperature range",
-     "d": "Lowest and highest through the year, in °C"
-    },
-    {
-     "t": "Demand",
-     "d": "Peak and average PW draw in L/h, daily volume, and any WFI still or Pure Steam generator it must feed"
-    },
-    {
-     "t": "Pharmacopoeia",
-     "d": "USP, Ph. Eur. or both, and any internal limits tighter than the monograph"
-    },
-    {
-     "t": "Your URS",
-     "d": "If you have one; we can help write it if not"
-    },
-    {
-     "t": "Site constraints",
-     "d": "Room size and ceiling height, power supply, drain capacity and available heating medium"
-    },
-    {
-     "t": "Target dates",
-     "d": "Order, FAT and water on site"
-    }
-   ],
-   "nav": "What to send"
   },
   {
    "type": "related",
@@ -496,15 +366,24 @@
  ],
  "cta": {
   "h": "Send your feed water analysis. Get a skid sized for your coldest month.",
-  "body": "Include peak demand in L/h and the pharmacopoeia you release against. A process engineer replies within [proposal response time, working days] with questions or a sizing and budget proposal.",
+  "body": "A process engineer replies within [proposal response time, working days] with questions or a sizing and budget proposal.",
   "button": "Request a sizing and budget proposal",
   "link": "contact-proposal",
-  "intent": "Sizing and budget proposal for a new system|Purified Water (PW) generation"
+  "intent": "Sizing and budget proposal for a new system|Purified Water (PW) generation",
+  "include": [
+   "Feed water analysis, ideally from two seasons",
+   "Lowest and highest feed temperature, °C",
+   "Peak and average demand, L/h",
+   "Any WFI still or Pure Steam generator fed",
+   "Pharmacopoeia and any tighter internal limits",
+   "Your URS, if you have one",
+   "Site constraints and target FAT date"
+  ]
  },
  "todo": [
   "Capacity range per skid (minimum–maximum, L/h)",
   "Guaranteed conductivity at the skid outlet (µS/cm at 25 °C)",
-  "Membrane design temperature held by the feed heat exchanger (°C)",
+  "Membrane design temperature held by the feed heat exchanger, °C ([feed heat exchanger design temperature, °C])",
   "Design system recovery (%)",
   "Hot water sanitization hold time (minutes)",
   "Confirm hot water sanitizable membranes and EDI modules are standard or an option",
@@ -512,7 +391,7 @@
   "Confirm online TOC at the skid outlet is standard or an option",
   "Supply voltage options (V / phase / Hz)",
   "Control panel certification held (for example CSA or UL listing); state only what is held",
-  "Typical footprint by capacity (m × m) and number of service-access sides",
+  "Typical footprint by capacity (m × m) and number of service-access sides ([service-access sides, number])",
   "Spare parts list coverage period (months of operation)",
   "Service locations, spare parts stocking location and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
@@ -522,6 +401,6 @@
   "Test bay location and remote witness platform (same as svc-fat-sat)",
   "Who registers pressure parts (CRN) and for which provinces; panel standard and certification mark held",
   "Borescope inspection percentage (same as svc-fabrication)",
-  "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope: new systems, upgrades, service only or not offered (same wording as industries, ind-meddevice and systems FAQ)"
+  "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope ([hospital, lab and industrial water scope]): new systems, upgrades, service only or not offered (same wording as industries, ind-meddevice and systems FAQ)"
  ]
 }
