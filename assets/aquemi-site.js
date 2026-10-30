@@ -400,12 +400,12 @@ TABLE_AS.evidence=function(b,H){var C=b.cols||[],R=b.rows||[];
  var go=C.map(function(c,i){return i>1&&R.length>0&&R.every(function(r){var x=r[i];return x&&typeof x==='object'&&x.link})});
  var ev=C.map(function(c,i){return i}).filter(function(i){return i>1&&!go[i]}),many=ev.length>1;
  return sec(H+'<div class="aq-evidence"><div class="aq-evidence__head" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span><span>'+(many?'Reference':tx(C[ev[0]]||''))+'</span></div>'
-  +'<ol class="aq-evidence__rows">'+R.map(function(r,ri){
+  +wFold(b,R.length,'<ol class="aq-evidence__rows">'+R.map(function(r,ri){
    var tags=ev.map(function(i){var c=r[i],t=c&&typeof c==='object'?c.t:c;if(!t)return '';
     return (many?'<span class="aq-evidence__k">'+tx(C[i])+'</span>':'')+String(t).split(/\s*;\s*/).map(function(x){return '<span class="aq-evidence__doc">'+tx(x.charAt(0).toUpperCase()+x.slice(1))+'</span>'}).join('')}).join('');
    var links=C.map(function(c,i){return go[i]?tcell(r[i]):''}).join('');
    return fli('<li class="aq-evidence__row">',b,ri)+'<h3 class="aq-evidence__t">'+tcell(r[0])+'</h3><p class="aq-evidence__how">'+tcell(r[1])+'</p>'
-    +'<p class="aq-evidence__proof">'+tags+(links?'<span class="aq-evidence__go">'+links+'</span>':'')+'</p></li>'}).join('')+'</ol></div>');};
+    +'<p class="aq-evidence__proof">'+tags+(links?'<span class="aq-evidence__go">'+links+'</span>':'')+'</p></li>'}).join('')+'</ol>',b.fold_noun||'requirements')+'</div>');};
 /* Block "faq" -> FAQ: hairline accordion rows (index, question, +/−), all closed; a shared name keeps one answer open.
    Desktop: heading left, questions right (SplitSection). */
 var faqN=0;
@@ -549,7 +549,7 @@ BLOCKS['spec']=function(b,H){
     return fli('<tr role="row"'+(cls?' class="'+cls+'"':''),b,i)+'><th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
   }).join('');
   var head=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro});
-  return sec(head+'<div class="aq-stack">'+wFold(b,rows.length,'<table class="aq-spec" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>','parameters')+(b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'')+'</div>');
+  return sec(head+'<div class="aq-stack">'+wFold(b,rows.length,'<table class="aq-spec" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>',b.fold_noun||'parameters')+(b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'')+'</div>');
 };
 /* Block "steps" -> ProcessSteps: a real sequence as rows of the shared list grammar (index, step name, what happens),
    joined by one thin riser through the index column. */
@@ -574,7 +574,7 @@ BLOCKS['table']=function(b,H){if(b.as&&TABLE_AS[b.as])return TABLE_AS[b.as](b,H)
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-compare-table__tab');if(!t)return;var w=t.closest('.aq-compare-table');w.setAttribute('data-col',t.getAttribute('data-col'));[].forEach.call(w.querySelectorAll('.aq-compare-table__tab'),function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});
 /* Block "tags" -> StandardsGrid section. items: strings (the standard's code) or {code, name} objects;
    name is the optional plain-language line. Cards link to Compliance when that page exists. */
-BLOCKS['tags']=function(b,H){var lk=wp('compliance');return '<section class="aq-section aq-band--sunken"><div class="aq-in aq-stack-l">'+H+'<ol class="aq-standards-grid">'+(b.items||[]).map(function(x){var o=typeof x==='string'?{code:x}:(x||{}),inner='<span class="aq-standards-grid__code">'+e(o.code)+'</span>'+(o.name?'<span class="aq-standards-grid__name">'+tx(o.name)+'</span>':'');return '<li class="aq-standards-grid__item'+(o.name?'':' aq-standards-grid__item--code')+'">'+(lk?'<a class="aq-standards-grid__card" href="#compliance" data-wp="compliance">'+inner+'</a>':'<div class="aq-standards-grid__card">'+inner+'</div>')+'</li>'}).join('')+'</ol>'+(b.body?'<p class="aq-small">'+tx(b.body)+'</p>':'')+'</div></section>';};
+BLOCKS['tags']=function(b,H){var lk=wp('compliance');return '<section class="aq-section aq-band--sunken"><div class="aq-in aq-stack-l">'+H+wFold(b,(b.items||[]).length,'<ol class="aq-standards-grid">'+(b.items||[]).map(function(x,i){var o=typeof x==='string'?{code:x}:(x||{}),inner='<span class="aq-standards-grid__code">'+e(o.code)+'</span>'+(o.name?'<span class="aq-standards-grid__name">'+tx(o.name)+'</span>':'');return fli('<li class="aq-standards-grid__item'+(o.name?'':' aq-standards-grid__item--code')+'">',b,i)+(lk?'<a class="aq-standards-grid__card" href="#compliance" data-wp="compliance">'+inner+'</a>':'<div class="aq-standards-grid__card">'+inner+'</div>')+'</li>'}).join('')+'</ol>',b.fold_noun||'standards')+(b.body?'<p class="aq-small">'+tx(b.body)+'</p>':'')+'</div></section>';};
 /* Table as "versus" -> Versus: two routes facing each other across a spine of factors (hot or ambient WFI, multi-effect
    or vapour compression). Fields as a table with exactly three columns: cols [factor label, route A, route B], rows
    [factor, A, B]. A row whose factor starts "Fits when" (or "Choose") becomes the verdict: two closing lines,

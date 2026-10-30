@@ -13,5 +13,5 @@ BLOCKS['spec']=function(b,H){
     return fli('<tr role="row"'+(cls?' class="'+cls+'"':''),b,i)+'><th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
   }).join('');
   var head=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro});
-  return sec(head+'<div class="aq-stack">'+wFold(b,rows.length,'<table class="aq-spec" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>','parameters')+(b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'')+'</div>');
+  return sec(head+'<div class="aq-stack">'+wFold(b,rows.length,'<table class="aq-spec" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>',b.fold_noun||'parameters')+(b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'')+'</div>');
 };
