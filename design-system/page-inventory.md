@@ -8,7 +8,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [Home](https://aquemi-official.github.io/aquemi-web/#home) | Validation-ready Purified Water, WFI and pure steam systems for pharmaceutical plants | tags, readout, path, steps, prose, grid |
+| [Home](https://aquemi-official.github.io/aquemi-web/#home) | Validation-ready Purified Water, WFI and pure steam systems, designed, built and serviced in Canada | tags, grid (intent router), readout, path, steps, spec (service terms), grid (industries), prose, grid (verify), faq |
 
 ## Systems
 
