@@ -4,6 +4,8 @@
                                                        design-system/tokens.css, components/bundle.css, components.json,
                                                        assets/aquemi-site.js and content/pages.json
   python tools/design_system.py check                  Check tokens and components for the rules agents must follow
+                                                       (content budget overruns are counted, never fail the check)
+  python tools/design_system.py check --budgets [id]   Also list every content budget overrun (or one page's)
   python tools/design_system.py new <Name> "<Group>"   Scaffold design-system/components/<Name>/ (README.md, preview.html, style.css)
   python tools/design_system.py stage <dir>            Copy the system into <dir>/project/ for publishing to the Claude artifact
 
@@ -164,7 +166,104 @@ def tokens_css():
     print('wrote', os.path.relpath(path, ROOT))
 
 
-def check():
+# Content budgets (design-system/website.md, "Content budgets"). Reported by check, never failing it (yet).
+BUDGET = {
+    'headline': 14, 'lead': 35, 'h': 9, 'intro': 35, 'item': 25, 'prose': 120,
+    'faq_count': 8, 'faq_answer': 60, 'spec_rows': 10, 'table_rows': 8, 'blocks': 9,
+    'page_words': 1300, 'placeholder': 8, 'tinted_bands': 1,
+}
+WORD = re.compile(r'\S*[A-Za-z0-9µ°]\S*')
+# Keys that are not visible copy
+NOT_COPY = {'type', 'nav', 'anchor', 'link', 'kind', 'tone', 'id', 'hl', 'required', 'unit', 'name', 'section', 'show_if', 'mark'}
+
+
+def words(s):
+    return len(WORD.findall(str(s or '')))
+
+
+def strings(x, skip=()):
+    """Every visible string in a block, page fragment or list (keys in NOT_COPY and skip are left out)."""
+    if isinstance(x, str):
+        yield x
+    elif isinstance(x, list):
+        for v in x:
+            yield from strings(v, skip)
+    elif isinstance(x, dict):
+        for k, v in x.items():
+            if k not in NOT_COPY and k not in skip:
+                yield from strings(v, skip)
+
+
+def placeholders(s):
+    out, d, st = [], 0, 0
+    for i, c in enumerate(s):
+        if c == '[':
+            if not d:
+                st = i
+            d += 1
+        elif c == ']' and d:
+            d -= 1
+            if not d:
+                out.append(s[st + 1:i])
+    return out
+
+
+def budgets(pages):
+    """[(page id, where, field, count, limit)] for every overrun of the content budgets."""
+    out = []
+    for pid, pg in pages.items():
+        def over(where, field, n, key):
+            if n > BUDGET[key]:
+                out.append((pid, where, field, n, BUDGET[key]))
+        over('hero', 'headline', words(pg.get('headline')), 'headline')
+        over('hero', 'lead', words(pg.get('lead')), 'lead')
+        blocks = pg.get('blocks', [])
+        over('page', 'blocks', len(blocks), 'blocks')
+        faqs, tinted = 0, 0
+        for i, b in enumerate(blocks):
+            t = b.get('type')
+            w = 'block %d (%s)' % (i, t)
+            over(w, 'h', words(b.get('h')), 'h')
+            for f in ('intro',):
+                over(w, f, words(b.get(f)), 'intro')
+            if t in ('band', 'tags', 'readout', 'diagram'):
+                over(w, 'body' if t != 'diagram' else 'caption', words(b.get('body') or b.get('caption')), 'intro')
+            if t == 'band' or t == 'tags':
+                tinted += 1
+            items = b.get('items', [])
+            if t in ('grid', 'options', 'steps', 'docs'):
+                for j, it in enumerate(items):
+                    if isinstance(it, dict):
+                        over(w, 'items[%d].d' % j, words(it.get('d')), 'item')
+            if t == 'table':
+                over(w, 'rows', len(b.get('rows', [])), 'table_rows')
+                for j, r in enumerate(b.get('rows', [])):
+                    for k, c in enumerate(r):
+                        over(w, 'rows[%d][%d]' % (j, k), words(c.get('t') if isinstance(c, dict) else c), 'item')
+            if t == 'spec':
+                over(w, 'rows', len(b.get('rows', [])), 'spec_rows')
+            if t == 'prose':
+                over(w, 'body', sum(words(x) for x in b.get('body', [])), 'prose')
+            if t == 'faq':
+                faqs += len(items)
+                for j, it in enumerate(items):
+                    over(w, 'items[%d].a' % j, words(it.get('a')), 'faq_answer')
+        over('page', 'faq questions', faqs, 'faq_count')
+        over('page', 'tinted bands (band, tags)', tinted, 'tinted_bands')
+        hero = [pg.get(k) for k in ('eyebrow', 'headline', 'lead', 'primary_cta')] + list(strings(pg.get('facts', [])))
+        body = [s for b in blocks for s in strings(b, ('a',) if b.get('type') == 'faq' else ())]
+        cta = list(strings(pg.get('cta') or {}, ('intent',)))
+        over('page', 'visible words (FAQ answers excluded)', sum(words(x) for x in hero + body + cta), 'page_words')
+        for where, src in (('hero', hero), ('blocks', body), ('cta', cta)):
+            for s in src:
+                for ph in placeholders(str(s or '')):
+                    n = words(ph)
+                    if n > BUDGET['placeholder']:
+                        out.append((pid, where, 'placeholder "[%s]"' % (ph[:60] + ('...' if len(ph) > 60 else '')), n, BUDGET['placeholder']))
+    return out
+
+
+def check(show_budgets=False, only=None):
     t = load_tokens()
     names = set()
     problems = []
@@ -254,6 +353,16 @@ def check():
                     problems.append('%s %s: "%s" is not a form option on %s' % (pid, where, label, target))
     for p in problems:
         print('PROBLEM', p)
+    over = budgets(pages)
+    if show_budgets:
+        shown = [o for o in over if not only or o[0] == only]
+        if only and only not in pages:
+            print('no page with id ' + only)
+        for pid, where, field, n, lim in shown:
+            print('BUDGET %s %s %s: %d/%d' % (pid, where, field, n, lim))
+        print('%d budget overrun(s)%s' % (len(shown), ' on ' + only if only else ''))
+    else:
+        print('%d budget overruns (run check --budgets for detail)' % len(over))
     print('%d problem(s)' % len(problems))
     return not problems
 
@@ -283,7 +392,9 @@ if __name__ == '__main__':
     elif cmd == 'new' and len(sys.argv) > 3:
         new(sys.argv[2], sys.argv[3])
     elif cmd == 'check':
-        sys.exit(0 if check() else 1)
+        b = '--budgets' in sys.argv
+        rest = [a for a in sys.argv[2:] if a != '--budgets']
+        sys.exit(0 if check(b, rest[0] if b and rest else None) else 1)
     elif cmd == 'stage' and len(sys.argv) > 2:
         stage(sys.argv[2])
     else:
