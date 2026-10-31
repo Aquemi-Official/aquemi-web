@@ -4,7 +4,7 @@ Working draft of the Aquemi customer site and the Aquemi design system it is bui
 
 - Site: https://aquemi-official.github.io/aquemi-web/
 - Design system guide: https://aquemi-official.github.io/aquemi-web/design-system.html
-- Claude design system (for Claude chats, decks and designs): https://claude.ai/artifact/3DHFfts7CMzKm1ZFYt7p99
+- Claude design system (for Claude chats, decks and designs): https://claude.ai/artifact/Qk92oQ4PLCDVzKjaixEmDc
 
 This is for drafting and testing. Every page carries a `noindex` tag. Push to `main` and Pages updates in a minute or two.
 

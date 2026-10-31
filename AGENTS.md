@@ -4,7 +4,7 @@ This is the draft Aquemi website and the **Aquemi design system** it is built fr
 
 - Site: https://aquemi-official.github.io/aquemi-web/
 - Design system guide (generated from this repo): https://aquemi-official.github.io/aquemi-web/design-system.html
-- Claude design system (for Claude chats, decks and designs): https://claude.ai/artifact/3DHFfts7CMzKm1ZFYt7p99
+- Claude design system (for Claude chats, decks and designs): https://claude.ai/artifact/Qk92oQ4PLCDVzKjaixEmDc
 
 We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a minute or two. No branches or reviews needed unless someone asks for one.
 
