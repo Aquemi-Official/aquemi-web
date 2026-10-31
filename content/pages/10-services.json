@@ -125,7 +125,7 @@
     },
     {
      "t": "Performance qualification (PQ), at least 12 months",
-     "d": "Protocol, sampling plan, phase reports, alert and action levels. Use from phase 2, after at least two weeks (WHO TRS 1033).",
+     "d": "Protocol, sampling plan, phase reports, alert and action levels. Use from phase 2, after at least 2 weeks (WHO TRS 1033).",
      "hold": "Your quality unit"
     }
    ],
@@ -155,7 +155,7 @@
     },
     {
      "q": "How long from URS to water released?",
-     "a": "About [design to DQ, weeks] to an approved design, then [approved design to FAT, weeks] to the factory acceptance test and [IQ/OQ on site, days] of testing on site. Under WHO TRS 1033, water can be used after at least two weeks of sampling, with your quality unit's approval. Sampling continues for a year."
+     "a": "Design takes [design to DQ, weeks], fabrication [approved design to FAT, weeks] and the factory acceptance test [FAT duration, days]. Installation and site acceptance take [installation and SAT, days], then [IQ/OQ on site, days] of qualification testing. Under WHO TRS 1033, water can be used after at least 2 weeks of sampling, with your quality unit's approval. Sampling continues for a year."
     }
    ]
   },
@@ -177,9 +177,9 @@
   "link": "contact-proposal",
   "intent": "Not sure yet: talk to an engineer",
   "include": [
-   "Your URS, if you have one",
+   "Your URS, if any",
    "Peak demand in L/h",
-   "Feed water analysis, ideally 12 months",
+   "Feed water analysis, if any",
    "Existing system: builder, age, drawings"
   ],
   "turnaround": "[proposal response time, working days]",
@@ -195,7 +195,7 @@
   "Cost of talking to an engineer ([fit check cost or free]; contact-proposal's requests table names it; FD-02), shown in the closing beside its button (DR-005 rule 4, DR-006 rule 5)",
   "Router row 3 shows svc-fat-sat's draft offer, a specimen FAT protocol (FD-47). At launch, if no specimen exists, the row takes svc-fat-sat's fallback: \"FAT and SAT: request a FAT test list\", send \"URS or functional specification\", back \"A draft FAT test list, reusable tests marked, within [document review turnaround, working days]\" (DR-006 rule 6)",
   "Service phone number and hours ([service phone number], [service phone hours]; same names as the nav, svc-service and contact-service; FD-27). The closing's line keeps the urgent-route wording \"Production stopped or water out of specification\" (contact-service, contact-locations)",
-  "Stage durations for a modular PW package, as figures Aquemi commits to (FD-08, DR-005 rule 5): [design to DQ, weeks], [approved design to FAT, weeks], [FAT duration, days] (same name as svc-fat-sat, DR-010), [installation and SAT, days] (new: not yet an FD-08 item), [IQ/OQ on site, days] (same as svc-cq). Say for each whether it includes the client's review time at the hold point. The FAQ total keeps E11's words; it does not yet add FAT, installation and SAT time",
+  "Stage durations for a modular PW package, as figures Aquemi commits to (FD-08, DR-005 rule 5): [design to DQ, weeks], [approved design to FAT, weeks], [FAT duration, days] (same name as svc-fat-sat, DR-010), [installation and SAT, days], [IQ/OQ on site, days] (same as svc-cq). Say for each whether it includes the client's review time at the hold point. The FAQ answer keeps E11's words with all five durations; once filled, its figures agree with these steps figure for figure, and it says where a figure includes the client's review time",
   "[installation scope]: who installs and makes field joints (Aquemi, the client's contractor or a partner); same name as systems' site requirements (FD-26; issue #2 §4)",
   "[executing staff: own engineers or named partner]: who executes IQ/OQ; same name as svc-cq (FD-46, DR-004 rule 4)",
   "[services sold separately, yes or no]: whether each service is sold on its own as well as end to end (FD-25). If yes, the router's \"Design approved\" row may say again \"by us or another firm\"",

@@ -472,9 +472,9 @@
    "readme": "design-system/components/EnquiryForm/README.md",
    "preview": "design-system/components/EnquiryForm/preview.html",
    "group": "Forms",
-   "height": "1860",
+   "height": "3000",
    "width": "1000",
-   "subtitle": "A numbered data sheet; the stepped form's first step, with a note that sends supplier audits to their own form",
+   "subtitle": "A numbered data sheet with its note under the submit; the stepped form's first step, with a note that sends supplier audits to their own form; an application step with a placeholder option chosen and a required upload left empty",
    "summary": "EnquiryForm lays out a proposal, service or application request as a numbered data sheet on a quiet panel: numbered sections, numbered items and one submit."
   },
   {

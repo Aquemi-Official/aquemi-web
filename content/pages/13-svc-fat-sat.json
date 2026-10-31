@@ -2,16 +2,13 @@
  "id": "svc-fat-sat",
  "section": "Services",
  "nav_label": "FAT and SAT",
- "title": "Water system FAT and SAT to EU GMP Annex 15 | Aquemi",
+ "title": "Purified Water system FAT and SAT to EU GMP Annex 15 | Aquemi",
  "meta": "Factory acceptance test (FAT) of your Purified Water package in polypropylene, to a protocol your quality unit approves, then a site acceptance test (SAT) on your feed water. Protocols written for reuse in IQ/OQ under EU GMP Annex 15, 3.6 and GUI-0029, 8.1.",
  "path": "/services/fat-sat/",
  "eyebrow": "FAT · SAT · EU GMP ANNEX 15 · GUI-0029",
  "headline": "Watch it run on water before it ships",
  "lead": "Your quality unit approves the protocol; we run the factory acceptance test (FAT) on your Purified Water package. A site acceptance test (SAT) proves the rest on your site.",
- "tags": [
-  "EU GMP Annex 15",
-  "GUI-0029"
- ],
+ "tags": [],
  "primary_cta": "Request a specimen FAT protocol",
  "secondary_cta": {
   "label": "Book a test bay visit",
@@ -176,11 +173,14 @@
   {
    "type": "faq",
    "nav": "FAQ",
+   "anchor": "faq",
    "h": "Questions validation teams ask",
    "items": [
     {
      "q": "Will our quality unit accept FAT results in place of IQ/OQ tests?",
-     "a": "Yes, if it approves the reuse before the factory acceptance test (FAT) and has assessed us (ASTM E2500). Under EU good manufacturing practice (GMP) Annex 15, 3.6, and GUI-0029, 8.1, transport and installation must not change the result. We propose candidate tests for installation and operational qualification (IQ, OQ)."
+     "a": "Yes, if it approves the reuse before the factory acceptance test (FAT) and has assessed us (ASTM E2500). Under EU good manufacturing practice (GMP) Annex 15, 3.6, and GUI-0029, 8.1, transport and installation must not change the result. We propose candidate tests for installation and operational qualification (IQ, OQ).",
+     "link": "cmp-quality#audit",
+     "link_label": "Request a supplier audit"
     },
     {
      "q": "What if a test fails while you are watching?",
@@ -188,7 +188,7 @@
     },
     {
      "q": "Is the software we see at FAT the software that ships?",
-     "a": "Yes. Its version and checksum are recorded at the factory acceptance test (FAT) [confirm]. Any later change goes through change control and is shown again at the site acceptance test (SAT)."
+     "a": "Its version and checksum are recorded at the factory acceptance test (FAT) [confirm]. Any later change goes through change control and is shown again at the site acceptance test (SAT)."
     },
     {
      "q": "How long does a FAT take?",
@@ -229,7 +229,7 @@
   "Shop and test bay ready for visits and witnessed FAT ([shop and test bay ready for visits]; FD-44): the witnessing intro. At launch the secondary link and the witnessing block show only if it holds a date that has passed (the bay can host a FAT); otherwise both are removed (DR-004 class 2, DR-006 rule 6)",
   "Whether FAT witness time, travel and remote witnessing are included in the price or quoted separately ([FAT witness costs, included or quoted]; FD-44). At launch an unset cost leaves the intro (DR-005 rule 8)",
   "Wet FAT share: confirm every skid, distribution pump module included, is tested with water at FAT, or state the real share (\"[100 %] · Skids tested with water · at FAT\", the same label as home; FD-45; DR-009 rule 5, DR-010). Field-built loop piping is proven at SAT and IQ. At launch an unset fact goes",
-  "FD-45 practices the page marks [confirm]: an internal dry run before every witnessed FAT (Process, step 3); software version and checksum recorded at FAT (FAQ 3). Also confirm that the comparison table's FAT column (every sequence, I/O point and P&ID line) is the standard protocol scope",
+  "FD-45 practices the page marks [confirm]: an internal dry run before every witnessed FAT (Process, step 3); software version and checksum recorded at FAT (FAQ 3, whose answer regains its opening Yes once confirmed). Also confirm that the comparison table's FAT column (every sequence, I/O point and P&ID line) is the standard protocol scope",
   "Protocol issue before FAT, weeks ([protocol issue before FAT, weeks]; same name as cmp-documentation; FD-45)",
   "FAT duration for the full package, pretreatment to distribution ([FAT duration, days]: hero fact and FAQ 4; same name as services, DR-010, DR-011) and for one module ([typical FAT duration, single module, days]) (FD-08, FD-45). At launch an unset fact goes",
   "PP loop sanitization method run at FAT and SAT ([PP loop sanitization method]; same name as home, systems, svc-cq, svc-upgrades), with its residual test, or its temperature and hold time if a hot cycle is chosen (FD-14; DR-013 wording). Also whether FAT runs the generation skid's own cycle ([sanitization method for the PP skid], DR-013 rule 5): the table's FAT cell names only the loop method",

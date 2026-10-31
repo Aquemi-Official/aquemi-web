@@ -2,7 +2,7 @@
  "id": "svc-service",
  "section": "Services",
  "nav_label": "Service and spare parts",
- "title": "GMP water system service plans and spare parts | Aquemi",
+ "title": "Purified Water system service plans and spare parts | Aquemi",
  "meta": "Service plans for Purified Water systems: response times by severity, USP <645> and <643> calibration, like-for-like parts and signed reports.",
  "path": "/services/service-spare-parts/",
  "eyebrow": "SERVICE AND SPARE PARTS · USP <645>",
@@ -211,7 +211,7 @@
     {
      "t": "Ultraviolet (UV) and sanitization",
      "d": "Lamp intensity and hours; sanitization verified at the coldest point.",
-     "link": "sys-storage",
+     "link": "sys-storage#sanitization",
      "spot": "uv"
     },
     {
@@ -265,7 +265,7 @@
     ],
     [
      "Gaskets, diaphragms, seals",
-     "Same compound and certificates (USP <88> Class VI)",
+     "Same compound and certificates",
      "A different elastomer or polytetrafluoroethylene (PTFE) grade",
      "Material and extractables review"
     ],
@@ -338,7 +338,7 @@
     },
     {
      "q": "Will you work to our SOPs and forms?",
-     "a": "Yes. We follow your standard operating procedures (SOPs) and fill in your work orders and logbooks. We also take your site induction and good manufacturing practice (GMP) training."
+     "a": "On request, we follow your standard operating procedures (SOPs) and fill in your work orders and logbooks. We take your site induction and good manufacturing practice (GMP) training."
     },
     {
      "q": "What does a service plan cost?",
@@ -385,6 +385,7 @@
   "UV (FD-16, DR-013): [UV, standard or option], sys-storage's name. If UV is not in the package, drop the UV items in the running cost, calibration, visit and like-for-like blocks. Ozone stays off this page until a PP maker's written rating for dissolved and headspace ozone exists (DR-013 rule 4).",
   "Calibration (FD-32): [calibration provider and accreditation held], the name svc-cq, cmp-documentation and cmp-quality also use (DR-011 rule 2): Aquemi or a named laboratory, and its accreditation (for example ISO/IEC 17025).",
   "Plan quote and service desk (FD-02, FD-31, FD-11): [quote response time, working days], the plan quote's turnaround (services' router row uses the same name; it is not the first reply, [proposal response time, working days]), and [plan quote cost or free] beside the closing button (DR-006 rule 5); who replies to a plan quote (the closing says an engineer, DR-006 rule 7); the fault report's turnaround and whether a second Aquemi reviewer signs service reports; spares stock location, order cut-off and delivery, before any stocking claim.",
+  "Working to the client's SOPs and forms (FAQ 4, \"On request\"; contact-service's \"Whose forms do we work to?\" takes the choice) and taking each site's induction and GMP training: confirm as Aquemi practice (DR-011 rule 1). No FD row yet; nearest FD-31",
   "Other builders' systems (FD-30): [makes and equipment types serviced] (same name on services, svc-cq, svc-upgrades, sys-pretreatment, ind-cdmo, about, contact-service and contact-proposal); [parts supplied for other makes]; whether WFI stills, pure steam generators or stainless loops by others are excluded; qualification of systems Aquemi did not build stays off this page until FD-30 answers it. If none are served, the lead and FAQ drop the bracket and the FAQ answers \"No\".",
   "Proof (DR-004 class 3): a real service record (response times achieved, uptime) only with the client's written permission, before any proof or case block."
  ]

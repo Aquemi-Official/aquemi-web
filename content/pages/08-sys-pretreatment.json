@@ -21,11 +21,11 @@
    "l": "Total chlorine, RO inlet · online analyzer"
   },
   {
-   "v": "< 1 mg/L as CaCO₃",
+   "v": "< 1 mg/L as CaCO₃ [confirm]",
    "l": "Hardness, softener outlet · online analyzer"
   },
   {
-   "v": "≤ 3",
+   "v": "≤ 3 [confirm]",
    "l": "Silt density index, RO inlet · ASTM D4189"
   },
   {
@@ -53,7 +53,7 @@
     },
     {
      "p": "Silt density index",
-     "v": "SDI₁₅ ≤ 3",
+     "v": "SDI₁₅ ≤ 3 [confirm]",
      "m": "ASTM D4189, at the cartridge filter outlet"
     },
     {
@@ -63,7 +63,7 @@
     },
     {
      "p": "Hardness",
-     "v": "< 1 mg/L as CaCO₃",
+     "v": "< 1 mg/L as CaCO₃ [confirm]",
      "m": "Online analyzer, softener outlet"
     },
     {
@@ -334,7 +334,7 @@
   ]
  },
  "todo": [
-  "RO inlet total chlorine design target, mg/L as Cl₂: the draft \"< 0.05 mg/L\" shows \"[confirm]\" in the hero fact and the inlet table until engineering confirms it (FD-21; DR-010)",
+  "RO feed design targets, three drafts (FD-21; DR-010): total chlorine at the RO inlet, mg/L as Cl₂ (\"< 0.05 mg/L\"); silt density index at the RO inlet, SDI₁₅ to ASTM D4189 (\"≤ 3\"); hardness at the softener outlet, mg/L as CaCO₃ (\"< 1 mg/L\"). Each shows \"[confirm]\" in its hero fact and inlet table row until engineering confirms it (DR-011 rule 1)",
   "Iron and manganese design limit at the RO inlet, mg/L each ([design limit, mg/L each]; FD-21)",
   "Pretreatment capacity range per train, L/h of RO feed at the coldest feed ([pretreatment capacity range, L/h], hero fact; FD-20). Unfilled at launch, the fact goes (DR-010 rule 5)",
   "Budget band for the pretreatment train: [budget range, CAD] at [reference capacity, L/h], as of [month year], the systems budget row word for word (FAQ, linked to systems#budget; DR-005 rules 1 and 3; FD-03). Unfilled at launch, the cost question goes (DR-005 rule 8)",

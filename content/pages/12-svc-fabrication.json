@@ -166,7 +166,8 @@
      "t": "Joint records",
      "d": "[PP joint records kept]",
      "key": true,
-     "link": "cmp-documentation#samples"
+     "link": "cmp-documentation#samples",
+     "intent": "Joint records extract"
     },
     {
      "t": "Material log and PP certificates",
@@ -210,7 +211,8 @@
     },
     {
      "t": "Clean and turn over",
-     "d": "Flushed and rinsed with PW before factory acceptance testing. Dossier indexed by joint number, updated with field joints."
+     "d": "Flushed and rinsed with PW before factory acceptance testing. Dossier indexed by joint number, updated with field joints.",
+     "link": "cmp-documentation#index"
     }
    ],
    "nav": "Hold points",
@@ -238,7 +240,7 @@
     },
     {
      "q": "What happens to a rejected joint?",
-     "a": "It is cut out and remade. The replacement gets a new number and its own inspection, linked to the rejected joint. Rejection rate reported: [joint rejection rate reported, yes or no]."
+     "a": "It is cut out and remade to [PP joint repair rule], under a new number. Rejection rate reported: [joint rejection rate reported, yes or no]."
     },
     {
      "q": "How is a PP loop cleaned before first use?",
@@ -279,11 +281,11 @@
   "PP pressure test method (medium, pressure or test factor, hold time) and the standard it follows ([PP pressure test method], as on compliance and cmp-documentation; [PP pressure test standard]; FD-19 recommends hydrostatic only, never air or gas)",
   "Pre-commissioning flush and cleaning procedure for PP ([pre-commissioning flush and cleaning procedure for PP]; as on sys-storage; FD-19)",
   "Whether the joint rejection rate is reported in the dossier ([joint rejection rate reported, yes or no]; FD-18)",
-  "Shop location ([shop location, city and province], FD-33) and the date the shop and test bay are ready for visits ([shop and test bay ready for visits], FD-44). Launch rule (DR-004 class 2, DR-006 rule 6): the hero's \"Book a shop visit\" and the FAQ's visit sentence show only if that date is filled and has passed, and the sentence then drops its \"once\" clause; otherwise both are removed, and the secondary becomes the next check that exists: \"Request a specimen package\" (cmp-documentation#samples, intent \"Joint map and joint log extract\"), else \"Talk to an engineer\" (contact-proposal, intent \"Not sure yet: talk to an engineer\")",
+  "Shop location ([shop location, city and province], FD-33) and the date the shop and test bay are ready for visits ([shop and test bay ready for visits], FD-44). Launch rule (DR-004 class 2, DR-006 rule 6): the hero's \"Book a shop visit\" and the FAQ's visit sentence show only if that date is filled and has passed, and the sentence then drops its \"once\" clause; otherwise both are removed, and the secondary becomes the next check that exists: \"Request a specimen package\" (cmp-documentation#samples, intent \"Joint records extract\"), else \"Talk to an engineer\" (contact-proposal, intent \"Not sure yet: talk to an engineer\")",
   "Date the quality system is ready for a supplier audit ([quality system ready for audit, date]; FD-48). Launch rule (DR-004 class 2, DR-006 rule 6): the FAQ's audit sentence and its \"Request a supplier audit\" link show only if that date is filled and has passed, and the sentence then drops its \"from\" clause; otherwise both are removed. If the visit, audit and specimen sentences all go, the answer says \"a new company\" and names the checks that exist (DR-004 rule 1), with the link \"Talk to an engineer\" (contact-proposal, intent \"Not sure yet: talk to an engineer\")",
-  "Aquemi-written specimen joint map and joint log extract ([specimen joint log]; FD-47; the option \"Joint map and joint log extract\" on cmp-documentation's specimen form), shared [openly or under NDA] as cmp-documentation says. Launch rule (DR-004 class 2, DR-006 rule 6, cmp-documentation's own): the FAQ's specimen sentence and the dossier's link to cmp-documentation#samples show only if the specimen exists, the brackets then removed; otherwise both are removed. A redacted project log only after a delivered project, with the client's written consent (DR-004 class 3)",
+  "Aquemi-written specimen joint records extract ([specimen joint log]; FD-47, FD-18; the option \"Joint records extract\" on cmp-documentation's specimen form), shared [openly or under NDA] as cmp-documentation says. Launch rule (DR-004 class 2, DR-006 rule 6, cmp-documentation's own): the FAQ's specimen sentence and the dossier's link to cmp-documentation#samples show only if the specimen exists, the brackets then removed; otherwise both are removed. A redacted project log only after a delivered project, with the client's written consent (DR-004 class 3)",
   "Document review cost and turnaround ([document review cost], [document review turnaround, working days]; FD-01, FD-02; defined in contact-proposal's requests table). At launch an unset turnaround reads \"An engineer replies in writing\" (DR-006 rule 7)",
-  "Before launch, confirm the practice the page states (FD-18, FD-19): every product-contact joint numbered and logged with its welder, settings and material (the headline and lead promise it); each lot's marking checked against its certificate on receipt; test joints before production joints; rejects cut out and remade under a new number; the fabrication and inspection plan agreed before material is ordered, with its hold and witness points; a pressure test, slope survey and dead leg check before cleaning, their extent set in the plan; the final rinse with Purified Water to conductivity and TOC limits, recorded; field joints added to the dossier. A practice not confirmed is bracketed or cut, the headline and lead first (DR-011 rule 1)",
+  "Before launch, confirm the practice the page states (FD-18, FD-19): every product-contact joint numbered and logged with its welder, settings and material (the headline and lead promise it); each lot's marking checked against its certificate on receipt; test joints before production joints; rejects cut out and remade under a new number ([PP joint repair rule], cmp-quality's name, in FAQ 4); the fabrication and inspection plan agreed before material is ordered, with its hold and witness points; a pressure test, slope survey and dead leg check before cleaning, their extent set in the plan; the final rinse with Purified Water to conductivity and TOC limits, recorded; field joints added to the dossier. A practice not confirmed is bracketed or cut, the headline and lead first (DR-011 rule 1)",
   "Who makes field joints on site ([installation scope], FD-26; the full answer lives on systems#site), and whether they follow the same procedure and log (step 6 says the dossier includes them)",
   "A real fabrication project (joint count, rejection rate) before adding a case study block (DR-016)"
  ]

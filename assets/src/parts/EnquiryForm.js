@@ -5,8 +5,29 @@ function wPreset(fs){var pre=WINTENT?WINTENT.split('|'):[];
  fs.forEach(function(f){f._show=!f.when});
  for(var k=0;k<3&&pre.length;k++){var on=[];fs.forEach(function(f){on=on.concat(ticks(f))});fs.forEach(function(f){if(f.when)f._show=f.when.split('|').some(function(v){return on.indexOf(v)>=0})})}
  fs.forEach(function(f){f._on=ticks(f)})}
+/* In-page pre-set: a jump within the page (Button "#anchor", page.js) whose link carries an intent ticks those options on
+   the form in the block it jumps to, as wPreset does for a form reached from another page: only in fields showing (a
+   tick inside a hidden conditional field does not count; three passes cover two levels of follow-ups), the first
+   matching option of a radio. Each tick fires "change", so conditional fields, the required count and any error line
+   follow as if the visitor had ticked it; the visitor's other answers stay. A stepped form whose open step comes after
+   the first option ticked goes back to that step, as Back does (no check, the step marker slides). */
+function wTick(sc,intent){var pre=String(intent||'').split('|').filter(Boolean);if(!sc||!pre.length)return;
+ [].forEach.call(sc.querySelectorAll('form.wform'),function(fm){var first=null,one={};
+  for(var k=0;k<3;k++)[].forEach.call(fm.querySelectorAll('input[type="radio"],input[type="checkbox"]'),function(x){var w=x.closest('[data-when]');
+   if(w&&w.hidden||pre.indexOf(x.value)<0||x.type==='radio'&&one[x.name])return;if(x.type==='radio')one[x.name]=1;if(!first)first=x;
+   if(!x.checked){x.checked=true;x.dispatchEvent(new Event('change',{bubbles:true}))}});
+  var st=first&&first.closest('.aq-form__step'),cur=fm.querySelector('.aq-form__step:not([hidden])');
+  if(st&&cur&&+st.dataset.step<+cur.dataset.step){var g=document.createElement('button');g.type='button';g.hidden=true;g.setAttribute('data-step-go',st.dataset.step);cur.appendChild(g);g.click();g.remove()}})}
 /* EnquiryForm fields. ref is the data-sheet item number ("1.3"), shown before the label and hidden from screen readers. */
 function wSlug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
+/* Option labels: through tx like any copy, so a [placeholder] in an option shows in the Placeholder style (careers'
+   "[PP fabrication job title]", news' consent line). A checkbox or radio label holding markup (a placeholder, µ) wraps
+   its text in one <span>, so it flows as one line in the flex cell. A select's <option> holds text only: an option with
+   a placeholder takes aq-ph itself (the browser's list draws it on the Placeholder's ground where it can, and the closed
+   select shows it so once chosen, EnquiryForm style.css). The option's value stays its label word for word: intents
+   (wPreset) and conditional fields (data-when) match on it. */
+function wOptT(o){var t=tx(o);return t===e(o)?t:'<span>'+t+'</span>'}
+function wOptPh(o){return /\[[^\]]+\]/.test(String(o||''))}
 /* Elsewhere note (field kind "note"): a request this form does not take, sent to another page's form (DR-014 rule 2:
    "I am qualifying suppliers" -> cmp-quality#audit). {kind: "note", when, label, link, action, intent}: label is the
    line, link a page id or page#anchor, action the link's words (default the linked block's heading, else the page's
@@ -29,10 +50,12 @@ function wField(f,i,ref){if(f.kind==='note')return wFormNote(f);var id='wf'+(f._
  num=ref?'<span class="aq-form__ref" aria-hidden="true">'+e(ref)+'</span>':'',opt=f.required?'':' <span class="aq-field__optional">(optional)</span>',
  lab='<label class="aq-field__label" for="'+id+'">'+num+tx(f.label)+opt+'</label>',
  help=f.help?'<p class="aq-field__help" id="'+hid+'">'+tx(f.help)+'</p>':'',desc=f.help?' aria-describedby="'+hid+'"':'',inp;
- if(f.kind==='select')inp='<select class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'>'+'<option value="">Choose…</option>'+(f.options||[]).map(function(o){return '<option>'+e(o)+'</option>'}).join('')+'</select>';
+ if(f.kind==='select')inp='<select class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'>'+'<option value="">Choose…</option>'+(f.options||[]).map(function(o){return '<option'+(wOptPh(o)?' class="aq-ph"':'')+'>'+e(o)+'</option>'}).join('')+'</select>';
  else if(f.kind==='textarea')inp='<textarea class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'></textarea>';
- else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+desc+(f.required?' data-required=""':'')+'><legend class="aq-field__label">'+num+tx(f.label)+opt+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio':'checkbox')+'" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+e(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
- else if(f.kind==='file')inp='<input class="aq-field__file" id="'+id+'" name="'+nm+'" type="file" multiple accept="'+e(f.accept||'.pdf,.docx,.xlsx,.csv,.png,.jpg')+'"'+desc+'>';
+ else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+desc+(f.required?' data-required=""':'')+'><legend class="aq-field__label">'+num+tx(f.label)+opt+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio':'checkbox')+'" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+wOptT(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
+ /* File: optional unless the request cannot go without it (careers' CV); a required one is marked and checked like any
+    field: required on the input, no "(optional)", counted in the title row, and Continue or Send asks for a file */
+ else if(f.kind==='file')inp='<input class="aq-field__file" id="'+id+'" name="'+nm+'" type="file" multiple accept="'+e(f.accept||'.pdf,.docx,.xlsx,.csv,.png,.jpg')+'"'+req+desc+'>';
  else inp=f.unit?'<div class="aq-field__suffix"><input class="aq-field__input" id="'+id+'" name="'+nm+'" inputmode="numeric"'+req+desc+'><span class="aq-field__unit">'+e(f.unit)+'</span></div>':'<input class="aq-field__input" id="'+id+'" name="'+nm+'" type="'+(f.kind==='email'?'email':f.kind==='tel'?'tel':'text')+'"'+(f.kind==='email'?' autocomplete="email"':f.kind==='tel'?' autocomplete="tel"':'')+req+desc+'>';
  return '<div class="aq-field'+(f.kind==='textarea'||f.kind==='file'?' aq-form__full':'')+'"'+when+'>'+lab+inp+help+'</div>'}
 /* EnquiryForm in steps: each step is one numbered sheet section (Step 1 = 1.0), with a progress list, Back and Continue.
@@ -60,7 +83,7 @@ document.addEventListener('change',function(ev){var fm=ev.target.closest('form')
    inputs aria-invalid. The form fires "aq:invalid" with the bad fields so the motion layer can nudge them. */
 function wFieldErr(fd){var ins=[].slice.call(fd.querySelectorAll('input,select,textarea')),grp=fd.tagName==='FIELDSET';
  if(grp)return fd.hasAttribute('data-required')&&!ins.some(function(x){return x.checked})?(ins[0]&&ins[0].type==='radio'?'Choose one.':'Choose at least one.'):'';
- var x=ins[0];if(!x||x.type==='file')return '';var v=String(x.value||'').trim();
+ var x=ins[0];if(!x)return '';if(x.type==='file')return x.required&&!(x.files&&x.files.length)?'Attach a file.':'';var v=String(x.value||'').trim();
  if(x.required&&!v)return x.tagName==='SELECT'?'Choose one.':'Required.';
  if(v&&x.type==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))return 'Enter an email address, like name@company.com.';
  if(v&&x.type==='tel'&&(v.replace(/\D/g,'').length<7))return 'Enter a phone number with its area code.';

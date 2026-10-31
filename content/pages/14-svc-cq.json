@@ -7,13 +7,13 @@
  "path": "/services/commissioning-qualification/",
  "eyebrow": "IQ, OQ, PQ · EU GMP ANNEX 15 · GUI-0029",
  "headline": "IQ, OQ and a year of PQ",
- "lead": "We commission and test your polypropylene (PP) Purified Water (PW) package on site. Your quality unit approves each protocol and the first production use, after at least 2 weeks.",
+ "lead": "We commission and test your polypropylene (PP) Purified Water package on site. Your quality unit approves each protocol and first production use, after at least 2 weeks of sampling.",
  "primary_cta": "Request a C&Q plan review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have a URS or a draft|Review of another document|Commissioning and qualification (C&Q) plan or validation master plan (VMP)",
  "secondary_cta": {
   "label": "FAT results reused at IQ/OQ",
-  "link": "svc-fat-sat"
+  "link": "svc-fat-sat#faq"
  },
  "blocks": [
   {
@@ -119,7 +119,7 @@
     {
      "p": "IQ · Joints",
      "v": "[PP joint records kept] for [PP joining method]",
-     "m": "[PP piping standard]"
+     "m": "[PP joining standard]"
     },
     {
      "p": "OQ · Drain on high conductivity",
@@ -194,7 +194,7 @@
    "rows": [
     {
      "p": "Microbial action level",
-     "v": "100 CFU/mL",
+     "v": "≤ 100 CFU/mL",
      "level": "action",
      "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
      "hl": true,
@@ -231,7 +231,7 @@
     },
     {
      "q": "Can you qualify a system you did not build?",
-     "a": "For [makes and equipment types serviced]: we start with a gap assessment of its qualification file and the installed system.",
+     "a": "For [makes and equipment types serviced]: we start with a system assessment of its qualification file and the installed system.",
      "link": "svc-upgrades"
     }
    ]
@@ -256,11 +256,10 @@
   "include": [
    "Your URS, or what you make",
    "Validation master plan, protocol templates",
-   "Points of use and demand pattern",
-   "Existing system: qualification file, trends"
+   "Points of use and demand pattern"
   ],
   "returns": [
-   "A draft C&Q plan",
+   "A draft C&Q plan, or a qualification scope",
    "IQ/OQ tests and reusable FAT tests",
    "A PQ sampling plan"
   ],
@@ -275,7 +274,7 @@
   "C&Q plan review: cost and turnaround ([document review cost], [document review turnaround, working days]; the names in contact-proposal's requests table; FD-01, FD-02)",
   "Calibration provider and its accreditation, for example ISO/IEC 17025 ([calibration provider and accreditation held]; svc-service's name; FD-32)",
   "Qualification and requalification of systems Aquemi did not build, and of which makes ([makes and equipment types serviced]; FD-30; the full answer lives on svc-service and svc-upgrades)",
-  "PP joining method, joint records kept and the PP piping standard checked at IQ ([PP joining method], [PP joint records kept], [PP piping standard]; FD-17, FD-18). Joint records, for example the joint map and per-joint log; the example stays out of the brackets",
+  "PP joining method, joint records kept and the PP joining standard checked at IQ ([PP joining method], [PP joint records kept], [PP joining standard], the name compliance and svc-fabrication use; FD-18). Joint records, for example the joint map and per-joint log; the example stays out of the brackets",
   "Material certificates verified at IQ ([PP material certificates], [certificates supplied for PVC parts]; the names compliance, cmp-quality and sys-pretreatment use; FD-17)",
   "PP loop sanitization method proven at OQ, with its contact time and residual test ([PP loop sanitization method]; FD-14, DR-013)",
   "A real qualification project (phase dates, deviations, water release date) before any case block (DR-016, FD-42)"

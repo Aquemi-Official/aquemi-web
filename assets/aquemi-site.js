@@ -129,13 +129,15 @@ if(typeof document!=='undefined'){
    notes all use it.
    link: a page id, "page#anchor" (opens that page at the block with that anchor; page.js), "#anchor" (scrolls to that
    block on this page) or "tel:<number>" (a call, below). intent (optional): option labels, "|"-separated, that the
-   linked page's EnquiryForm ticks on arrival (data-intent); an in-page "#anchor" or a tel: link carries none.
+   linked page's EnquiryForm ticks on arrival (data-intent). An in-page "#anchor" carries it too: the jump ticks those
+   options on the form in the block it lands on, in place, the visitor's other answers kept (wTick, parts/EnquiryForm.js;
+   page.js). A tel: link carries none.
    Call (link "tel:[sales phone number]"): the number follows wnum in core.js, the rule the NavBar and Footer numbers use
    (wtel). Once it is confirmed (no [square brackets]) the button dials it, its digit groups kept on one line, with no
    arrow (it opens no page); until then the label shows as plain text with the placeholder (aq-btn--pending), never a
    link. The label names the number ("Call [sales phone number]"); a label that leaves it out gets it added. */
 function wBtn(label,link,kind,intent){if(/^tel:/i.test(link||''))return wCall(label,link.slice(4),kind);
- var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'"'+(intent&&!j?' data-intent="'+e(intent)+'"':'')+'>'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
+ var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'"'+(intent?' data-intent="'+e(intent)+'"':'')+'>'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
 function wCall(label,num,kind){num=String(num||'').trim();label=String(label||'');var n=wnum(num),s=tx(num),t=tx(label.indexOf(num)<0?(label?label+' ':'')+num:label);
  return n?'<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="tel:'+e(n)+'">'+t.split(s).join(s.replace(/ /g,'\u00a0'))+'</a>':'<span class="aq-btn aq-btn--pending">'+t+'</span>'}
 /* Closing: the call to action at the end of every page, on the navy band.
@@ -170,8 +172,29 @@ function wPreset(fs){var pre=WINTENT?WINTENT.split('|'):[];
  fs.forEach(function(f){f._show=!f.when});
  for(var k=0;k<3&&pre.length;k++){var on=[];fs.forEach(function(f){on=on.concat(ticks(f))});fs.forEach(function(f){if(f.when)f._show=f.when.split('|').some(function(v){return on.indexOf(v)>=0})})}
  fs.forEach(function(f){f._on=ticks(f)})}
+/* In-page pre-set: a jump within the page (Button "#anchor", page.js) whose link carries an intent ticks those options on
+   the form in the block it jumps to, as wPreset does for a form reached from another page: only in fields showing (a
+   tick inside a hidden conditional field does not count; three passes cover two levels of follow-ups), the first
+   matching option of a radio. Each tick fires "change", so conditional fields, the required count and any error line
+   follow as if the visitor had ticked it; the visitor's other answers stay. A stepped form whose open step comes after
+   the first option ticked goes back to that step, as Back does (no check, the step marker slides). */
+function wTick(sc,intent){var pre=String(intent||'').split('|').filter(Boolean);if(!sc||!pre.length)return;
+ [].forEach.call(sc.querySelectorAll('form.wform'),function(fm){var first=null,one={};
+  for(var k=0;k<3;k++)[].forEach.call(fm.querySelectorAll('input[type="radio"],input[type="checkbox"]'),function(x){var w=x.closest('[data-when]');
+   if(w&&w.hidden||pre.indexOf(x.value)<0||x.type==='radio'&&one[x.name])return;if(x.type==='radio')one[x.name]=1;if(!first)first=x;
+   if(!x.checked){x.checked=true;x.dispatchEvent(new Event('change',{bubbles:true}))}});
+  var st=first&&first.closest('.aq-form__step'),cur=fm.querySelector('.aq-form__step:not([hidden])');
+  if(st&&cur&&+st.dataset.step<+cur.dataset.step){var g=document.createElement('button');g.type='button';g.hidden=true;g.setAttribute('data-step-go',st.dataset.step);cur.appendChild(g);g.click();g.remove()}})}
 /* EnquiryForm fields. ref is the data-sheet item number ("1.3"), shown before the label and hidden from screen readers. */
 function wSlug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
+/* Option labels: through tx like any copy, so a [placeholder] in an option shows in the Placeholder style (careers'
+   "[PP fabrication job title]", news' consent line). A checkbox or radio label holding markup (a placeholder, µ) wraps
+   its text in one <span>, so it flows as one line in the flex cell. A select's <option> holds text only: an option with
+   a placeholder takes aq-ph itself (the browser's list draws it on the Placeholder's ground where it can, and the closed
+   select shows it so once chosen, EnquiryForm style.css). The option's value stays its label word for word: intents
+   (wPreset) and conditional fields (data-when) match on it. */
+function wOptT(o){var t=tx(o);return t===e(o)?t:'<span>'+t+'</span>'}
+function wOptPh(o){return /\[[^\]]+\]/.test(String(o||''))}
 /* Elsewhere note (field kind "note"): a request this form does not take, sent to another page's form (DR-014 rule 2:
    "I am qualifying suppliers" -> cmp-quality#audit). {kind: "note", when, label, link, action, intent}: label is the
    line, link a page id or page#anchor, action the link's words (default the linked block's heading, else the page's
@@ -194,10 +217,12 @@ function wField(f,i,ref){if(f.kind==='note')return wFormNote(f);var id='wf'+(f._
  num=ref?'<span class="aq-form__ref" aria-hidden="true">'+e(ref)+'</span>':'',opt=f.required?'':' <span class="aq-field__optional">(optional)</span>',
  lab='<label class="aq-field__label" for="'+id+'">'+num+tx(f.label)+opt+'</label>',
  help=f.help?'<p class="aq-field__help" id="'+hid+'">'+tx(f.help)+'</p>':'',desc=f.help?' aria-describedby="'+hid+'"':'',inp;
- if(f.kind==='select')inp='<select class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'>'+'<option value="">Choose…</option>'+(f.options||[]).map(function(o){return '<option>'+e(o)+'</option>'}).join('')+'</select>';
+ if(f.kind==='select')inp='<select class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'>'+'<option value="">Choose…</option>'+(f.options||[]).map(function(o){return '<option'+(wOptPh(o)?' class="aq-ph"':'')+'>'+e(o)+'</option>'}).join('')+'</select>';
  else if(f.kind==='textarea')inp='<textarea class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'></textarea>';
- else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+desc+(f.required?' data-required=""':'')+'><legend class="aq-field__label">'+num+tx(f.label)+opt+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio':'checkbox')+'" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+e(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
- else if(f.kind==='file')inp='<input class="aq-field__file" id="'+id+'" name="'+nm+'" type="file" multiple accept="'+e(f.accept||'.pdf,.docx,.xlsx,.csv,.png,.jpg')+'"'+desc+'>';
+ else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+desc+(f.required?' data-required=""':'')+'><legend class="aq-field__label">'+num+tx(f.label)+opt+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio':'checkbox')+'" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+wOptT(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
+ /* File: optional unless the request cannot go without it (careers' CV); a required one is marked and checked like any
+    field: required on the input, no "(optional)", counted in the title row, and Continue or Send asks for a file */
+ else if(f.kind==='file')inp='<input class="aq-field__file" id="'+id+'" name="'+nm+'" type="file" multiple accept="'+e(f.accept||'.pdf,.docx,.xlsx,.csv,.png,.jpg')+'"'+req+desc+'>';
  else inp=f.unit?'<div class="aq-field__suffix"><input class="aq-field__input" id="'+id+'" name="'+nm+'" inputmode="numeric"'+req+desc+'><span class="aq-field__unit">'+e(f.unit)+'</span></div>':'<input class="aq-field__input" id="'+id+'" name="'+nm+'" type="'+(f.kind==='email'?'email':f.kind==='tel'?'tel':'text')+'"'+(f.kind==='email'?' autocomplete="email"':f.kind==='tel'?' autocomplete="tel"':'')+req+desc+'>';
  return '<div class="aq-field'+(f.kind==='textarea'||f.kind==='file'?' aq-form__full':'')+'"'+when+'>'+lab+inp+help+'</div>'}
 /* EnquiryForm in steps: each step is one numbered sheet section (Step 1 = 1.0), with a progress list, Back and Continue.
@@ -225,7 +250,7 @@ document.addEventListener('change',function(ev){var fm=ev.target.closest('form')
    inputs aria-invalid. The form fires "aq:invalid" with the bad fields so the motion layer can nudge them. */
 function wFieldErr(fd){var ins=[].slice.call(fd.querySelectorAll('input,select,textarea')),grp=fd.tagName==='FIELDSET';
  if(grp)return fd.hasAttribute('data-required')&&!ins.some(function(x){return x.checked})?(ins[0]&&ins[0].type==='radio'?'Choose one.':'Choose at least one.'):'';
- var x=ins[0];if(!x||x.type==='file')return '';var v=String(x.value||'').trim();
+ var x=ins[0];if(!x)return '';if(x.type==='file')return x.required&&!(x.files&&x.files.length)?'Attach a file.':'';var v=String(x.value||'').trim();
  if(x.required&&!v)return x.tagName==='SELECT'?'Choose one.':'Required.';
  if(v&&x.type==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))return 'Enter an email address, like name@company.com.';
  if(v&&x.type==='tel'&&(v.replace(/\D/g,'').length<7))return 'Enter a phone number with its area code.';
@@ -684,7 +709,9 @@ BLOCKS['diagram']=function(b,H){return sec(H+wDiagram(b)+(b.caption?'<p class="a
    Block link (optional): link (a page id or page#anchor), link_label (its words; default the linked block's heading,
    else the page's name, wlabel) and intent (options the linked form ticks on arrival) print one Button link under the
    list ("Full index →"), so a module page keeps its deciding documents and points to the full package without another
-   row. A link to a missing page prints nothing. */
+   row. A link to a missing page prints nothing. Item link (optional): an item's link (a page id or page#anchor) makes
+   its name a link, and its intent ticks those options on the linked page's form, as a block link's does
+   (svc-fabrication's "Joint records" to cmp-documentation#samples). */
 /* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT,
    a URS compliance matrix before the URS itself). */
 var DOC_CODES=[
@@ -698,7 +725,7 @@ var DOC_CODES=[
   [/operation and maintenance/i,'O&M'],[/standard operating procedure|\bsops?\b/i,'SOP'],
   [/fabrication and inspection plan/i,'FIP'],[/fabrication record/i,'FAB'],[/material (cert|log)/i,'MAT'],[/media and resin/i,'MED'],
   [/welding procedure|\bwps\b/i,'WPS & PQR'],[/welder and procedure/i,'WQR & PQR'],[/welder qualif/i,'WQR'],
-  [/weld (log|map)/i,'WLD'],[/joint (map|log)|joining log/i,'JNT'],[/borescope/i,'BOR'],[/pressure test/i,'PT'],
+  [/weld (log|map)/i,'WLD'],[/joint (map|log|records)|joining log/i,'JNT'],[/borescope/i,'BOR'],[/pressure test/i,'PT'],
   [/slope (verif|survey).*dead leg/i,'SLP & DLR'],[/dead leg/i,'DLR'],[/surface finish/i,'SRF'],[/passivation/i,'PAS'],[/slope (verif|survey|check)/i,'SLP'],[/riboflavin|spray ball/i,'RIB'],
   [/integrity test/i,'INT'],[/calibration/i,'CAL'],[/en 285/i,'EN 285'],
   [/executed fat/i,'FAT RPT'],[/\bfat\b.*\bsat\b/i,'FAT & SAT'],[/\bfat\b/i,'FAT'],[/\bsat\b/i,'SAT'],
@@ -724,7 +751,7 @@ var DOC_ICONS=[[/borescope/i,'borescope'],[/\bweld|\bwps\b|welder/i,'weld'],[/p&
 function docIcon(x){if(x.icon==='none')return '';if(isIcon(x.icon))return x.icon;var t=String(x.t||'');
   for(var i=0;i<DOC_ICONS.length;i++)if(DOC_ICONS[i][0].test(t))return DOC_ICONS[i][1];return ''}
 BLOCKS['docs']=function(b,H){
-  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link,icon:x.icon,tag:x.tag}});
+  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link,intent:x.intent,icon:x.icon,tag:x.tag}});
   var n=items.length,codes=items.map(function(x){return x.code?[x.code,true]:docCode(x.t)});
   /* Codes only when most items are documents the lookup knows; a checklist of other things keeps just its numbers. */
   var coded=codes.filter(function(c){return c[1]}).length*2>=n;
@@ -734,7 +761,8 @@ BLOCKS['docs']=function(b,H){
   /* fold applies on phones only (DocList style.css): desktop shows every row */
   var noun=b.fold_noun||'documents';
   var ol='<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
-    var name=x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t);
+    /* Item link: the name links its page or page#anchor; intent (options that page's form ticks on arrival) rides on it, as a table cell's */
+    var name=x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
     /* A tag with no letter or digit ("+") would read as a missing label: leave the code cell empty */
     var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x);if(tag&&!/[A-Za-z0-9]/.test(tag))tag='';
     return fli('<li'+(key[i]?' class="is-key"':'')+'>',b,i)+idx(i)
@@ -806,7 +834,10 @@ TABLE_AS.failures=function(b,H){var C=b.cols||[],R=b.rows||[];faultN++;
    wPreset ticks the options named by the linking button's intent before rendering.
    Fields split into numbered sections: 1.0 the requirement, 2.0 the trailing run of contact fields (name, company, role,
    email, phone, site, contract). A field with "section": "<legend>" starts a new section; "sections": [..] renames them.
-   A note (kind "note", parts/EnquiryForm.js) takes no number. The title row counts the required fields showing (wReq). */
+   A note (kind "note", parts/EnquiryForm.js) takes no number. The title row counts the required fields showing (wReq).
+   Block note (b.note, one line such as the privacy notice link): under the submit, in both shapes. A stepped form draws
+   it under its last step's actions; a single sheet in its submit band, on its own line under the button (aq-form__note,
+   the same small line). */
 BLOCKS['form']=function(b,H){
  wPreset(b.steps?[].concat.apply([],b.steps.map(function(s){return s.fields||[]})):(b.fields||[]));
  if(b.steps)return split(H,wFormSteps(b));
@@ -821,7 +852,7 @@ BLOCKS['form']=function(b,H){
   '<form class="aq-form wform" novalidate>'
   +'<p class="aq-form__title"><span>Data sheet</span><span>'+G.length+' section'+(G.length>1?'s':'')+' · '+wReqText(wReq(F))+'</span></p>'
   +body
-  +'<div class="aq-form__actions"><button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button><span class="aq-small wform-msg" role="status"></span></div>'
+  +'<div class="aq-form__actions"><button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button><span class="aq-small wform-msg" role="status"></span>'+(b.note?'<p class="aq-small aq-form__note">'+tx(b.note)+'</p>':'')+'</div>'
   +'</form>');};
 /* Table as "grades" -> GradeLanes: the minimum water grade, step by step. Fields as a table; the grade column is the
    first whose name says grade or water (or b.grade, its index). Each row: index, the step (first other column), the
@@ -1429,7 +1460,8 @@ function wgoat(id){if(typeof requestAnimationFrame==='undefined'||!id)return;req
  s.scrollIntoView({block:'start'});var y=window.scrollY,f=s.querySelector('h2')||s;if(!f.hasAttribute('tabindex'))f.setAttribute('tabindex','-1');f.focus({preventScroll:true});
  if(document.fonts&&document.fonts.status!=='loaded')document.fonts.ready.then(function(){if(s.isConnected&&Math.abs(window.scrollY-y)<2)s.scrollIntoView({block:'start'})})})}
 document.addEventListener('click',function(ev){var g=ev.target.closest('[data-step-go]');if(g){var fm=g.closest('form'),to=+g.dataset.stepGo;fm.querySelectorAll('.aq-form__step').forEach(function(s){s.hidden=+s.dataset.step!==to});fm.querySelectorAll('.aq-form__progress li').forEach(function(l,i){if(i===to)l.setAttribute('aria-current','step');else l.removeAttribute('aria-current')});var lg=fm.querySelector('[data-step="'+to+'"] legend');if(lg){lg.tabIndex=-1;lg.focus()}fm.scrollIntoView({block:'start'});return}
- var j=ev.target.closest('[data-jump]');if(j){var s=document.getElementById(j.dataset.jump);if(s){ev.preventDefault();s.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}return}
+ /* A jump within the page; with an intent (a hero or closing button's "#anchor") it first ticks those options on the form there (wTick) */
+ var j=ev.target.closest('[data-jump]');if(j){var s=document.getElementById(j.dataset.jump);if(s){ev.preventDefault();if(j.dataset.intent)wTick(s,j.dataset.intent);s.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}return}
  var t=ev.target.closest('[data-wp]');if(!t)return;ev.preventDefault();var to=wsplit(t.dataset.wp);WP=to[0];WAT=to[1]?to:null;WMENU=false;WINTENT=t.dataset.intent||'';
  AQ.onNav(t.dataset.wp)});
 var AQ=window.AQ={e:e,tx:tx,wp:wp,wPage:wPage,wBlock:wBlock,wHead:wHead,wHero:wHero,wFoot:wFoot,wBtn:wBtn,wDiagram:wDiagram,wPath:wPath,ARC:ARC,

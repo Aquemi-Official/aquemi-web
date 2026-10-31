@@ -44,7 +44,8 @@
     },
     {
      "p": "Microbial action level",
-     "v": "100 CFU/mL",
+     "v": "≤ 100 CFU/mL",
+     "level": "action",
      "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009"
     }
    ],
@@ -160,7 +161,7 @@
     ],
     [
      "USP <643> Total organic carbon",
-     "System suitability at 85 % to 115 % response efficiency",
+     "System suitability: response efficiency 85 % to 115 %",
      "Suitability records; analyzer calibration; OQ report",
      {
       "t": "Monitoring and controls",
@@ -231,7 +232,7 @@
     ],
     [
      "EU GMP Annex 15 (2015); GUI-0029",
-     "3.2 URS; 3.3 design qualification (DQ); 3.6 FAT not repeated where transport cannot affect it",
+     "3.2 URS; 3.3 design qualification (DQ); 3.6 FAT reused where transport and installation cannot affect it",
      "Traceability matrix; DQ report; executed FAT to OQ",
      {
       "t": "FAT and SAT",
@@ -248,7 +249,7 @@
      }
     ],
     [
-     "GAMP 5 (2022); FDA computer software assurance",
+     "GAMP 5 (2022); FDA computer software assurance (devices)",
      "Tests scaled to risk; scripted for divert, quality alarms, sanitization and audit trail",
      "Software and configuration specifications; controls OQ",
      {
@@ -312,7 +313,7 @@
     ],
     [
      "[PP piping standard]",
-     "PP pipe, fittings and valves; dead legs to [dead leg design limit, L/D]",
+     "PP pipe, fittings and valves; dead legs ≤ [dead leg design limit, L/D]",
      "Dead leg register; pressure test to [PP pressure test method]",
      {
       "t": "Storage and distribution loops",
@@ -321,7 +322,7 @@
     ],
     [
      "[PP material standard]",
-     "Product-contact PP, [PP grade]; polyvinyl chloride (PVC) in pretreatment only",
+     "Unpigmented product-contact PP, [PP grade]; polyvinyl chloride (PVC) in pretreatment only",
      "[PP material certificates] traced by lot",
      {
       "t": "Fabrication",
@@ -364,7 +365,9 @@
     },
     {
      "q": "Who registers our pressure equipment, and when?",
-     "a": "The safety authority of each province where the item is used, before it is built. Each pressure-rated item needs a Canadian registration number (CRN) under CSA B51, unless exempt. [Aquemi CRN process and provinces covered]"
+     "a": "The safety authority of each province where the item is used, before it is built. Each pressure-rated item needs a Canadian registration number (CRN) under CSA B51, unless exempt. [Aquemi CRN process and provinces covered]",
+     "link": "contact-locations#coverage",
+     "link_label": "Check coverage for your site"
     }
    ]
   },

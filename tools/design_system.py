@@ -6,7 +6,8 @@
   python tools/design_system.py check                  Check tokens and components for the rules agents must follow
                                                        (content budget overruns and content warnings are counted, never
                                                        fail the check; an intent label that ticks no option on the
-                                                       linked form is a problem and fails it, DR-014)
+                                                       linked form, a docs item's link and an in-page button's jump
+                                                       included, is a problem and fails it, DR-014)
   python tools/design_system.py check --budgets [id]   Also list every content budget overrun (or one page's, then that
                                                        page's visible-word count, overrun or not, and that page's
                                                        warning summary)
@@ -677,19 +678,28 @@ def form_notes(b, w):
     return [(p, f) for p, f in fs if isinstance(f, dict) and f.get('kind') == 'note']
 
 
+def jid(b, i):
+    """A block's section id, as jid in assets/src/parts/SectionNav.js: its anchor, else s-<index>-<nav label>."""
+    return b.get('anchor') or 's-%d-%s' % (i, re.sub(r'[^a-z0-9]+', '-', str(b.get('nav')).lower()))
+
+
 def intent_problems(pages):
     """DR-014: intent labels that tick nothing on the linked page's form: no such option, or an option the intent never
     opens ("situation|follow-up" names the situation first). Read from the hero button and secondary link, the closing,
     contact routes, table and router cells ({t, link, intent}), plan columns ({t, intent}, on the page's own CTA link),
-    FAQ links, form notes, a docs block's link and gauge and rule rows. An intent on an in-page or phone (tel:) link,
-    or with no link, ticks nothing. Each one is a problem that fails check (it was a content warning while the page
-    passes rewrote the forms and the intents that link to them; pass B left none, aquemi-web 7027d23)."""
+    FAQ links, form notes, a docs block's link and its items' links, and gauge and rule rows. The buttons wBtn draws
+    (the hero's two, the closing's, the plans') may jump within the page ("#anchor"): that intent ticks the form in the
+    block it lands on (wTick in assets/src/parts/EnquiryForm.js), so it is read against that block's fields, and a jump to
+    a block that holds no form ticks nothing. An intent on any other in-page link, on a phone (tel:) link or with no link
+    ticks nothing. Each one is a problem that fails check (it was a content warning while the page passes rewrote the
+    forms and the intents that link to them; pass B left none, aquemi-web 7027d23)."""
     out = []
     for pid, pg in pages.items():
         pc, c, sc = pg.get('primary_cta') or '', pg.get('cta') or {}, pg.get('secondary_cta') or {}
         links = [('primary_cta_intent', pg.get('primary_cta_intent'), pg.get('primary_cta_link') or ('contact-service' if re.search('service', pc, re.I) else 'contact-proposal')),
                  ('secondary_cta.intent', sc.get('intent'), sc.get('link') or 'systems'),
                  ('cta.intent', c.get('intent'), c.get('link') or 'contact-proposal')]
+        jumps = {'primary_cta_intent', 'secondary_cta.intent', 'cta.intent'}  # wBtn links, where "#anchor" jumps in the page
         for i, b in enumerate(pg.get('blocks', [])):
             w = 'blocks[%d]' % i
             links += [('%s.routes[%d].intent' % (w, j), r.get('intent'), r.get('link') or '') for j, r in enumerate(b.get('routes') or [])
@@ -703,20 +713,31 @@ def intent_problems(pages):
                 links += [(p + '.intent', f.get('intent'), f.get('link') or '') for p, f in form_notes(b, w)]
             if b.get('type') == 'docs':
                 links.append(('%s.intent' % w, b.get('intent'), b.get('link') or ''))
+                links += [('%s.items[%d].intent' % (w, j), it.get('intent'), it.get('link') or '') for j, it in enumerate(b.get('items') or []) if isinstance(it, dict)]
             if b.get('type') == 'spec' and b.get('as') in ('gauges', 'rules'):
                 links += [('%s.rows[%d].intent' % (w, j), r.get('intent'), r.get('link') or '') for j, r in enumerate(b.get('rows') or []) if isinstance(r, dict)]
             if b.get('type') == 'table' and b.get('as') == 'plans':
                 # each plan's button follows the page's own CTA (blocks/plans.js): primary_cta and its link, else cta.link
                 to = (pg.get('primary_cta_link') or ('contact-service' if re.search('service', pc, re.I) else 'contact-proposal')) if pc else (c.get('link') or 'contact-proposal')
                 links += [('%s.cols[%d].intent' % (w, k), x.get('intent'), to) for k, x in enumerate(b.get('cols') or []) if k and isinstance(x, dict)]
+                jumps |= {'%s.cols[%d].intent' % (w, k) for k in range(1, len(b.get('cols') or []))}
         for where, intent, link in links:
             if not intent:
                 continue
-            if not link or link.startswith('#') or link.lower().startswith('tel:'):
+            if link.startswith('#') and where in jumps:
+                # an in-page jump ticks the form in the block it lands on (wTick), the page's own
+                target = pid + link
+                blk = next((b for i, b in enumerate(pg.get('blocks', [])) if (b.get('nav') or b.get('anchor')) and jid(b, i) == link[1:]), None)
+                fields = form_fields({'blocks': [blk]}) if blk and blk.get('type') == 'form' else []
+                if not fields:
+                    out.append(('intent', '', (pid,), where, 'on an in-page link (%s) to %s, which ticks nothing' % (link, 'a block with no form' if blk else 'no block on this page')))
+                    continue
+            elif not link or link.startswith('#') or link.lower().startswith('tel:'):
                 out.append(('intent', '', (pid,), where, 'on %s, which ticks nothing' % ('no link' if not link else 'an in-page link (%s)' % link if link.startswith('#') else 'a phone link (%s)' % link)))
                 continue
-            target = link.split('#')[0]
-            fields = form_fields(pages.get(target, {}))
+            else:
+                target = link.split('#')[0]
+                fields = form_fields(pages.get(target, {}))
             options = {o for f in fields if f.get('kind') in ('radio', 'checkbox-group') for o in f.get('options', [])}
             on = preset(fields, intent.split('|'))
             for label in intent.split('|'):
@@ -738,7 +759,7 @@ def link_warnings(pages):
     not exist, a page#anchor or #anchor whose page has no block with that anchor (jid in assets/src/parts/SectionNav.js),
     or an in-page #anchor outside the hero and closing buttons (wBtn), which are the only links that jump within a page."""
     def ids(pg):
-        return {b.get('anchor') or 's-%d-%s' % (i, re.sub(r'[^a-z0-9]+', '-', str(b.get('nav')).lower())) for i, b in enumerate(pg.get('blocks', [])) if b.get('nav') or b.get('anchor')}
+        return {jid(b, i) for i, b in enumerate(pg.get('blocks', [])) if b.get('nav') or b.get('anchor')}
     def walk(x, path=''):
         if isinstance(x, dict):
             for k, v in x.items():

@@ -26,7 +26,7 @@
     [
      "Process engineer",
      "Size systems from pretreatment to the loop, draw piping and instrumentation diagrams (P&IDs), design to USP <1231>",
-     "Chemical or mechanical engineering degree; P.Eng. or ing., or eligible, in [province of licence]; [minimum years]",
+     "Chemical or mechanical engineering degree; P.Eng. or ing., or eligible, in [provinces of licence]; [minimum years]",
      "[head office, city and province] · [hybrid days per week] · travel [% of working days]",
      "[process engineer pay range, CAD per year] · [status, posting reference]"
     ],
@@ -106,7 +106,7 @@
     },
     {
      "p": "Training and qualification",
-     "v": "[PP joining qualification paid by Aquemi, yes or no] · [external course budget, CAD per year]",
+     "v": "[joining qualification paid by Aquemi, yes or no] · [external course budget, CAD per year]",
      "m": ""
     },
     {
@@ -274,7 +274,7 @@
     },
     {
      "q": "I have not joined PP piping before. Can I apply?",
-     "a": "Yes, if you weld or fuse thermoplastic or metal pipe. The practical interview includes a polypropylene (PP) test joint by [PP joining method]. Production joints need qualification to [welder qualification standard for thermoplastics]; [PP joining qualification paid by Aquemi, yes or no]."
+     "a": "Yes, if you weld or fuse thermoplastic or metal pipe. The practical interview includes a polypropylene (PP) test joint by [PP joining method]. Production joints need qualification to [welder qualification standard for thermoplastics]; [joining qualification paid by Aquemi, yes or no]."
     },
     {
      "q": "Do you require Canadian experience?",
@@ -296,6 +296,7 @@
   "h": "No opening for your role today?",
   "button": "Send a speculative application",
   "link": "#apply",
+  "intent": "Speculative application",
   "include": [
    "Your CV, PDF or Word",
    "What you would do here",
@@ -309,14 +310,14 @@
  },
  "todo": [
   "Open roles: status and posting reference for each of the six roles ([status, posting reference]); posting reference format. At launch list only open roles, in the table, the form's role options and the meta; if none is open, say so in the roles intro and lead with the speculative application: the hero button becomes \"Send a speculative application\" to #apply (FD-40)",
-  "Pay range per role (CAD per year or per hour), and the lead's commitment \"Every posting states its pay range\" (the meta's \"Pay range in every posting\" with it; FD-40); confirm employee count against Ontario's 25-employee threshold and the provinces Aquemi posts in. The legal basis (\"as BC and Ontario law require\") left the page until counsel confirms it applies (OQ-87)",
+  "Pay range per role (CAD per year or per hour), and the lead's commitment \"Every posting states its pay range\" (the meta's \"Pay range in every posting\" and the title's \"and pay\" with it; FD-40); confirm employee count against Ontario's 25-employee threshold and the provinces Aquemi posts in. The legal basis (\"as BC and Ontario law require\") left the page until counsel confirms it applies (OQ-87)",
   "Team line in the roles intro: keep it identical to about's people (MISSION: a commercial lead and two technical partners) until FD-34 names them with consent; never list a role here as held",
-  "Locations by role: [head office, city and province] (about's name, head office and engineering), [shop location, city and province] (DR-011), [service bases, cities] (about and contact-locations), [validation base, city and province]; remote or hybrid days per week by role (FD-33)",
+  "Locations by role: [head office, city and province] (about's name; where engineering works waits on FD-33), [shop location, city and province] (DR-011), [service bases, cities] (about and contact-locations), [validation base, city and province]; remote or hybrid days per week by role (FD-33)",
   "Travel share per role (% of working days) and for field roles overall; on-call rota for field service; notice for planned shutdown work (weeks)",
-  "Minimum years of experience per role; PLC and SCADA platforms ([PLC and SCADA platforms supported], sys-monitoring's name; FD-23); province of licence for engineers",
+  "Minimum years of experience per role; PLC and SCADA platforms ([PLC and SCADA platforms supported], sys-monitoring's name; FD-23); provinces of licence for engineers ([provinces of licence], about's name)",
   "PP fabrication role: job title, for example thermoplastic welder ([PP fabrication job title]); joining method ([PP joining method], one name on every page; FD-18 recommends infrared (IR) or bead-and-crevice-free (BCF) fusion and no socket fusion, a recommendation, not a decision); qualification required ([welder qualification standard for thermoplastics], svc-fabrication's name; for example DVS 2212); the joint records the fabricator keeps ([PP joint records kept], the shared name until FD-18 is signed off; for example a joint map and a per-joint log)",
   "Whether any provincial or trade certification is required for PP fabricators in the shop and on site, and who pays for it",
-  "Whether Aquemi qualifies and pays for fabricators who pass the test joint ([PP joining qualification paid by Aquemi, yes or no], one name for the training row and FAQ 2); trainee fabricator positions; external course budget (CAD per year); where test joints are made at interview",
+  "Whether Aquemi qualifies and pays for fabricators who pass the test joint ([joining qualification paid by Aquemi, yes or no], one name for the training row and FAQ 2); trainee fabricator positions; external course budget (CAD per year); where test joints are made at interview",
   "Quality specialist: the quality system standard the role works under, once FD-48 states it (the row no longer says \"under ISO 9001\", DR-004 rule 3)",
   "Hours and core hours, overtime or time off in lieu, shutdown pay, per diem, accommodation, paid travel time and company vehicle policy. Whether the provincial overtime and vacation minimums cover every role (Ontario's ESA guide lists engineers and engineering students among those not entitled to overtime pay or vacation with pay, O. Reg. 285/01; counsel, OQ-87): the note \"Provincial minimum applies\" left both rows until counsel answers",
   "Health and dental plan, retirement plan and employer match, vacation in year one",

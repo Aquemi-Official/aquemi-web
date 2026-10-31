@@ -2487,12 +2487,14 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
 }
 .aq-versus__n { font: 400 13px/24px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
 .aq-versus__row dd { position: relative; grid-row: 1; margin: 0; padding-top: var(--space-6); font: 400 16px/26px var(--font-sans); color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
-/* leader lines from each answer to the spine */
+/* leader lines from each answer to the spine, drawn inside the answer's own box: a space-6 padding on its spine side,
+   taken back out of the column gap by an equal negative margin, so the text keeps its column and the box measures
+   what it draws (a leader hung outside the box made each A answer 24 px wider than its box to an overflow check) */
 .aq-versus__row dd::after { content: ""; position: absolute; top: calc(var(--space-6) + 13px); width: var(--space-6); border-top: 1px solid var(--line); }
-.aq-versus__row dd:nth-of-type(1) { grid-column: 1; text-align: right; }
-.aq-versus__row dd:nth-of-type(1)::after { right: calc(-1 * var(--space-6)); }
-.aq-versus__row dd:nth-of-type(2) { grid-column: 3; }
-.aq-versus__row dd:nth-of-type(2)::after { left: calc(-1 * var(--space-6)); border-top-color: var(--flow); }
+.aq-versus__row dd:nth-of-type(1) { grid-column: 1; text-align: right; margin-right: calc(-1 * var(--space-6)); padding-right: var(--space-6); }
+.aq-versus__row dd:nth-of-type(1)::after { right: 0; }
+.aq-versus__row dd:nth-of-type(2) { grid-column: 3; margin-left: calc(-1 * var(--space-6)); padding-left: var(--space-6); }
+.aq-versus__row dd:nth-of-type(2)::after { left: 0; border-top-color: var(--flow); }
 /* Verdict: two columns, each opening on a hairline (B's in flow) */
 .aq-versus__verdict { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); margin-top: var(--space-6); }
 .aq-versus__verdict > div { display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-4); border-top: 1px solid var(--line-strong); }
@@ -2527,7 +2529,7 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
   .aq-versus__row::before { left: var(--space-3); }
   .aq-versus__row dt { grid-column: 1; justify-self: start; flex-direction: row; align-items: baseline; gap: var(--space-2); padding: 0; background: none; text-align: left; font-size: 16px; line-height: 24px; }
   .aq-versus__n { position: absolute; left: calc(-1 * var(--space-8)); top: 0; width: var(--space-6); background: var(--surface-raised); text-align: center; font-size: 12px; }
-  .aq-versus__row dd, .aq-versus__row dd:nth-of-type(1), .aq-versus__row dd:nth-of-type(2) { grid-column: 1; grid-row: auto; padding: 0 0 0 var(--space-3); text-align: left; font-size: 15px; line-height: 23px; border-left: 1px solid var(--line-strong); }
+  .aq-versus__row dd, .aq-versus__row dd:nth-of-type(1), .aq-versus__row dd:nth-of-type(2) { grid-column: 1; grid-row: auto; margin: 0; padding: 0 0 0 var(--space-3); text-align: left; font-size: 15px; line-height: 23px; border-left: 1px solid var(--line-strong); }
   .aq-versus__row dd:nth-of-type(2) { border-left-color: var(--flow); }
   .aq-versus__row dd::after, .aq-versus__row dd:nth-of-type(1)::after, .aq-versus__row dd:nth-of-type(2)::after { display: none; }
   .aq-versus__row dd::before { content: attr(data-k); display: block; font: 500 12px/18px var(--font-sans); color: var(--ink-muted); }
@@ -3261,6 +3263,12 @@ a.aq-tag:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .aq-form .aq-checks label:has(:checked) { border-color: var(--flow); color: var(--ink); }
 .aq-form .aq-checks input { flex: none; width: var(--space-4); height: var(--space-4); margin: 0; accent-color: var(--flow); }
 .aq-form .aq-checks input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* A [placeholder] in an option: in a checkbox or radio cell the label text sits in one span and the placeholder is the
+   Placeholder's chip inside it; a select option holds text only, so an option with a placeholder takes aq-ph itself
+   (the browser's list draws its ground where it can) and the closed select shows the chosen one on the same mono and
+   caution-tint ground. The site's placeholder switch (is-clean) turns it back to a plain field. */
+.aq-form select.aq-field__input:has(> option.aq-ph:checked) { font-family: var(--font-mono); background-color: var(--caution-tint); }
+.is-clean .aq-form select.aq-field__input:has(> option.aq-ph:checked) { font-family: var(--font-sans); background-color: var(--surface-raised); }
 
 /* Elsewhere note (field kind "note"): a request this form does not take, sent to another page's form while its option
    is ticked. A full-width row like an option cell (surface, line border, radius-sm): the line in ink-muted, then the
@@ -3285,6 +3293,8 @@ a.aq-tag:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .aq-field__file:hover::file-selector-button { border-color: var(--ink); }
 .aq-field__file:hover { border-color: var(--ink-subtle); }
 .aq-field__file:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* A required upload left empty (careers' CV): TextField's error, the fail border and its 3 px fail edge */
+.aq-field.is-error .aq-field__file { border-color: var(--fail); box-shadow: inset 3px 0 0 var(--fail); }
 @media (prefers-reduced-motion: reduce) { .aq-field__file::file-selector-button { transition: none; } }
 
 /* Stepped variant: each step is one numbered section; the progress list sits under the title row */
@@ -3296,7 +3306,9 @@ a.aq-tag:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .aq-form__progress li[aria-current="step"]::before { color: var(--ink-muted); }
 .aq-form__step[hidden] { display: none; }
 .aq-form__step > .aq-form__actions { margin-top: var(--space-8); }
-.aq-form__note { margin: var(--space-4) 0 0; }
+/* The block note under the last step's actions, space-4 below the buttons (scoped so the page's p reset, .aq-page p,
+   does not set it flush against them) */
+.aq-form .aq-form__note { margin: var(--space-4) 0 0; }
 .aq-form__step > .wform-msg { display: block; margin-top: var(--space-2); }
 
 /* Submit band */
@@ -3304,6 +3316,12 @@ a.aq-tag:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
   display: flex; gap: var(--space-4); align-items: center; flex-wrap: wrap;
   padding-top: var(--space-6); border-top: 1px solid var(--line);
 }
+/* A single sheet's block note (the privacy notice link) sits in its submit band, on its own line under the button:
+   space-4 below it, as a stepped form's note under its last step's actions */
+.aq-form .aq-form__actions > .aq-form__note { flex: 1 0 100%; margin: 0; }
+/* Until it has something to say, the band's status line takes no place (out of the flex flow, still a live region), so
+   on phones, where the button fills the line, it adds no empty row above the note */
+.aq-form__actions > .wform-msg:empty { position: absolute; }
 
 /* With motion the current-step underline is one marker (aq-form__mark, made by EnquiryForm/motion.js) that slides to
    the new step with Flip; has-mark on the list hides the per-step underline. */

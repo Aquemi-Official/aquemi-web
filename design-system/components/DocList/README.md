@@ -16,11 +16,11 @@ DocList shows the documents delivered with a system as a quiet hairline list: ea
 ```
 
 - An ordered list, one `<li>` per document, separated by `line` hairlines (the `.aq-rows` grammar). Index and code are `aria-hidden`: screen readers get the list numbering and the full name.
-- `aq-docs__name` holds the document name as QA writes it, in sentence case. An item with `link` (a page id) makes the name a link. `aq-docs__d` is the optional detail.
+- `aq-docs__name` holds the document name as QA writes it, in sentence case. An item with `link` (a page id or `page#anchor`) makes the name a link; its `intent` (options the linked page's form ticks on arrival, as on a button) rides on that link: `{"t": "Joint records", "link": "cmp-documentation#samples", "intent": "Joint records extract"}` draws `<a href="#cmp-documentation#samples" data-wp="cmp-documentation#samples" data-intent="Joint records extract">Joint records</a>`, and `check` fails a label that ticks nothing there (DR-014), as for every intent. `aq-docs__d` is the optional detail.
 - Icon (`aq-docs__icon`, optional, `ink-muted`, desktop only): from the name (`DOC_ICONS` in the renderer: borescope, weld, pid for drawings, gauge for calibration and pressure, wrench for maintenance and spares, calendar for plans, stamp for certificates and statements, magnifier for reviews and inspections, binder for indexes, registers, manuals and logs), only where the drawing says what the document is. An item's `icon` field wins; `"icon": "none"` removes it.
 - Code: the derived code, or an item's `tag` when the data has a category. Plain lists (`aq-docs--plain`: items that are not documents with recognised codes) drop the code column.
 - `is-key` marks a deciding document: its code turns `flow`. Nothing else changes; no fills, tints or badges.
-- Every docs block renders this way, full width under the standard section head. The site renderer (`assets/src/blocks/docs.js`, block type `docs`) builds it from `{h, nav, items, fold, fold_noun, key, link, link_label, intent}`; items `{t, d, code, tag, icon, key, link}`. `fold` works on phones only: on desktop every row shows and the "Show all" button is hidden; on phones the first `fold` rows show and the button sits under the list.
+- Every docs block renders this way, full width under the standard section head. The site renderer (`assets/src/blocks/docs.js`, block type `docs`) builds it from `{h, nav, items, fold, fold_noun, key, link, link_label, intent}`; items `{t, d, code, tag, icon, key, link, intent}`. `fold` works on phones only: on desktop every row shows and the "Show all" button is hidden; on phones the first `fold` rows show and the button sits under the list.
 
 ## Block link
 

@@ -75,7 +75,7 @@
     {
      "t": "Medical devices",
      "d": "PW for rinse and process steps, with the grade worked back from your device limits.",
-     "tag": "USP <1231>",
+     "tag": "USP <161>",
      "link": "ind-meddevice"
     },
     {
@@ -93,23 +93,28 @@
    "items": [
     {
      "t": "Design",
-     "d": "We turn your user requirement specification (URS) into a design you approve before anything is built."
+     "d": "We turn your user requirement specification (URS) into a design you approve before anything is built.",
+     "link": "svc-design"
     },
     {
      "t": "Fabricate",
-     "d": "We build the PP skids and record each joint."
+     "d": "We build the PP skids and record each joint.",
+     "link": "svc-fabrication"
     },
     {
      "t": "Test",
-     "d": "A factory acceptance test (FAT) with water, to a protocol your quality unit approves."
+     "d": "A factory acceptance test (FAT) with water, to a protocol your quality unit approves.",
+     "link": "svc-fat-sat"
     },
     {
      "t": "Qualify",
-     "d": "Site acceptance tests on your utilities, then installation and operational qualification (IQ/OQ) to protocols your quality unit approves."
+     "d": "Site acceptance tests on your utilities, then installation and operational qualification (IQ/OQ) to protocols your quality unit approves.",
+     "link": "svc-cq"
     },
     {
      "t": "Support",
-     "d": "Performance qualification (PQ) support through 12 months of data, then service and spare parts."
+     "d": "Performance qualification (PQ) support through 12 months of data, then service and spare parts.",
+     "link": "svc-service"
     }
    ]
   },
@@ -207,10 +212,11 @@
     [
      "Production stopped or water out of specification",
      "A call to [service phone number], [service phone hours]",
-     "On site in [severity 1 on-site response time, hours] inside [service coverage area], on a service plan",
+     "On site within [severity 1 on-site response time, hours], on a plan, inside [service coverage area]",
      {
       "t": "Service request",
-      "link": "contact-service"
+      "link": "contact-service",
+      "intent": "Fault now|Severity 1: production stopped or water out of specification"
      }
     ]
    ]
@@ -232,7 +238,7 @@
     },
     {
      "q": "We have no URS yet. Is it too early to ask?",
-     "a": "No. Ask for a water scope review and tell us what you make. In [scope review turnaround, working days] we return the grade each step needs, the package and its qualification scope. Cost: [scope review cost or free]. [Confirm: no obligation, usable in your tender]",
+     "a": "No. Ask for a water scope review and tell us what you make. In [scope review turnaround, working days] we return the grade each step needs, the package and its qualification scope. Cost: [scope review cost or free]. [review obligation and use in your tender]",
      "link": "contact-proposal",
      "link_label": "Request a water scope review",
      "intent": "I know my product, not my water spec"
@@ -248,12 +254,12 @@
   "intent": "Not sure yet: talk to an engineer",
   "include": [
    "Your URS, or your product and flow",
-   "Feed water analysis, if you have one",
+   "Feed water analysis, if any",
    "Where your site is"
   ],
   "returns": [
    "A written answer from an engineer",
-   "A scope review, budget range or proposal"
+   "Then a scope review, budget range or proposal"
   ],
   "turnaround": "[proposal response time, working days]"
  },
@@ -267,7 +273,7 @@
   "Service phone number and service phone hours ([service phone number], [service phone hours]; FD-27)",
   "Lowest service plan price, CAD per year ([lowest plan price, CAD per year]; same placeholder as svc-service's running cost, which the 'Running cost' item links; FD-29). Write 'fixed' only if FD-29 makes plans fixed-price (DR-005)",
   "Water scope review turnaround and cost ([scope review turnaround, working days], [scope review cost or free]; same placeholders as industries; FD-01, FD-02)",
-  "Confirm reviews carry no obligation and may be used in the client's own tender ([Confirm: no obligation, usable in your tender]; FD-02)",
+  "Confirm reviews carry no obligation and may be used in the client's own tender ([review obligation and use in your tender]; FD-02)",
   "Date the quality system is ready for a supplier audit ([quality system ready for audit, date]; FD-48) and date the shop and test bay are ready for visits and witnessed FAT ([shop and test bay ready for visits]; FD-44). At launch the risk FAQ drops each check whose date is unset (DR-004, DR-006 rule 6)",
   "Sanitization method for the PP tank and loop ([PP loop sanitization method]; FD-14); any temperature wording follows DR-013",
   "\"Record each joint\" (How a project runs) repeats svc-fabrication's joint-log practice: it follows that page's FD-18 launch gate, and becomes [PP joint records kept] if the practice is not confirmed",

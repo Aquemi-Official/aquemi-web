@@ -135,7 +135,7 @@
    "rows": [
     [
      "Health Canada, all drug sites",
-     "GUI-0001 C.02.009: PW ≤ 100 colony-forming units (CFU)/mL; objectionable organisms by route",
+     "GUI-0001 C.02.009: PW ≤ 100 CFU/mL (colony-forming units); objectionable organisms by route",
      {
       "t": "Commissioning and qualification",
       "link": "svc-cq"
@@ -145,13 +145,13 @@
      "FDA",
      "21 CFR 211.65 (non-reactive surfaces); water guide: dead legs, a year's data",
      {
-      "t": "Monitoring and controls",
-      "link": "sys-monitoring"
+      "t": "Good manufacturing practice",
+      "link": "compliance#gmp"
      }
     ],
     [
      "Health Canada, natural health products",
-     "GUI-0158: potable minimum, test records, qualified treatment",
+     "GUI-0158 s. 45: potable minimum, test records, qualified treatment",
      {
       "t": "Natural health products",
       "link": "ind-pharma#nhp"
@@ -188,7 +188,7 @@
     },
     {
      "t": "USP, Ph. Eur. or both",
-     "d": "Both is cheap at design and costly later."
+     "d": "Both: cheap at design, costly later."
     },
     {
      "t": "Loop sanitization route",
@@ -309,6 +309,6 @@
   "Sanitization: this page states only the PP rating (DR-013 rule 1), and its decision row links sys-storage#sanitization, where the method and the maximum temperature ([maximum loop sanitization temperature for PP, °C]) live (FD-14)",
   "Shutdown windows (decisions, folded): duplex trains are named as a choice for the URS, with no train shares; if the owner drops duplex trains as a configuration (FD-20, FD-21), the line keeps isolable sections only. Shares stay on sys-pw and ind-cdmo under one placeholder name (DR-011)",
   "FAT practice (FAQ \"Can one system supply…\"): confirm which USP and Ph. Eur. attributes the factory acceptance test checks, and how (FD-45). The share of skids tested with water is svc-fat-sat's figure, not this page's (DR-010)",
-  "Anchors: \"nhp\" (industries' router and grade table and ind-cdmo's router link ind-pharma#nhp) and \"grades\" (industries' first-system item \"Your product's grade\" links ind-pharma#grades). This page links svc-upgrades#observation, compliance#limits, industries#first-system and sys-storage#sanitization"
+  "Anchors: \"nhp\" (industries' router and grade table and ind-cdmo's router link ind-pharma#nhp) and \"grades\" (industries' first-system item \"Your product's grade\" links ind-pharma#grades). This page links svc-upgrades#observation, compliance#limits, compliance#gmp, industries#first-system and sys-storage#sanitization"
  ]
 }

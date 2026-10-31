@@ -26,12 +26,14 @@
 }
 .aq-versus__n { font: 400 13px/24px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
 .aq-versus__row dd { position: relative; grid-row: 1; margin: 0; padding-top: var(--space-6); font: 400 16px/26px var(--font-sans); color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
-/* leader lines from each answer to the spine */
+/* leader lines from each answer to the spine, drawn inside the answer's own box: a space-6 padding on its spine side,
+   taken back out of the column gap by an equal negative margin, so the text keeps its column and the box measures
+   what it draws (a leader hung outside the box made each A answer 24 px wider than its box to an overflow check) */
 .aq-versus__row dd::after { content: ""; position: absolute; top: calc(var(--space-6) + 13px); width: var(--space-6); border-top: 1px solid var(--line); }
-.aq-versus__row dd:nth-of-type(1) { grid-column: 1; text-align: right; }
-.aq-versus__row dd:nth-of-type(1)::after { right: calc(-1 * var(--space-6)); }
-.aq-versus__row dd:nth-of-type(2) { grid-column: 3; }
-.aq-versus__row dd:nth-of-type(2)::after { left: calc(-1 * var(--space-6)); border-top-color: var(--flow); }
+.aq-versus__row dd:nth-of-type(1) { grid-column: 1; text-align: right; margin-right: calc(-1 * var(--space-6)); padding-right: var(--space-6); }
+.aq-versus__row dd:nth-of-type(1)::after { right: 0; }
+.aq-versus__row dd:nth-of-type(2) { grid-column: 3; margin-left: calc(-1 * var(--space-6)); padding-left: var(--space-6); }
+.aq-versus__row dd:nth-of-type(2)::after { left: 0; border-top-color: var(--flow); }
 /* Verdict: two columns, each opening on a hairline (B's in flow) */
 .aq-versus__verdict { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); margin-top: var(--space-6); }
 .aq-versus__verdict > div { display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-4); border-top: 1px solid var(--line-strong); }
@@ -66,7 +68,7 @@
   .aq-versus__row::before { left: var(--space-3); }
   .aq-versus__row dt { grid-column: 1; justify-self: start; flex-direction: row; align-items: baseline; gap: var(--space-2); padding: 0; background: none; text-align: left; font-size: 16px; line-height: 24px; }
   .aq-versus__n { position: absolute; left: calc(-1 * var(--space-8)); top: 0; width: var(--space-6); background: var(--surface-raised); text-align: center; font-size: 12px; }
-  .aq-versus__row dd, .aq-versus__row dd:nth-of-type(1), .aq-versus__row dd:nth-of-type(2) { grid-column: 1; grid-row: auto; padding: 0 0 0 var(--space-3); text-align: left; font-size: 15px; line-height: 23px; border-left: 1px solid var(--line-strong); }
+  .aq-versus__row dd, .aq-versus__row dd:nth-of-type(1), .aq-versus__row dd:nth-of-type(2) { grid-column: 1; grid-row: auto; margin: 0; padding: 0 0 0 var(--space-3); text-align: left; font-size: 15px; line-height: 23px; border-left: 1px solid var(--line-strong); }
   .aq-versus__row dd:nth-of-type(2) { border-left-color: var(--flow); }
   .aq-versus__row dd::after, .aq-versus__row dd:nth-of-type(1)::after, .aq-versus__row dd:nth-of-type(2)::after { display: none; }
   .aq-versus__row dd::before { content: attr(data-k); display: block; font: 500 12px/18px var(--font-sans); color: var(--ink-muted); }

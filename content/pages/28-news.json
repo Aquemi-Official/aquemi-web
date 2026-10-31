@@ -90,7 +90,7 @@
     {
      "t": "FDA computer software assurance and water system controls",
      "topic": "Standards",
-     "std": "FDA computer software assurance; GAMP 5 (2022)",
+     "std": "FDA computer software assurance (devices); GAMP 5 (2022)",
      "link": "sys-monitoring"
     },
     {
@@ -120,7 +120,7 @@
     {
      "t": "Cold feed water and RO output in a Canadian winter",
      "topic": "Design",
-     "std": "Design practice (no limit set by a standard)",
+     "std": "Design practice; no standard sets a limit",
      "link": "sys-pw"
     },
     {
@@ -150,7 +150,7 @@
     {
      "t": "Alert and action levels from qualification data",
      "topic": "Qualification",
-     "std": "WHO TRS 1033, 11.3, 12.7; USP <1231>",
+     "std": "WHO TRS 1033, 11.3, 12.7, 12.8; USP <1231>",
      "link": "svc-cq"
     },
     {
@@ -236,13 +236,13 @@
      "title": "About you",
      "fields": [
       {
-       "label": "Your role",
+       "label": "Role",
        "kind": "select",
        "required": false,
        "options": [
         "Process or project engineering",
         "Validation",
-        "Quality assurance",
+        "Quality",
         "Operations or maintenance",
         "Laboratory",
         "Other"
@@ -261,7 +261,7 @@
        "options": [
         "Yes, [legal entity name] may email me technical notes and, if ticked above, company news. I can withdraw consent at any time."
        ],
-       "help": "Sent by [legal entity name], [mailing address], [contact email]. Every email has an unsubscribe link; we act on it within 10 business days, as Canada's anti-spam legislation (CASL) requires. Privacy: [privacy notice link]."
+       "help": "Sent by [legal entity name], [mailing address], [sales email]. Every email has an unsubscribe link; we act on it within 10 business days, as Canada's anti-spam legislation (CASL) requires. Privacy: [privacy notice link]."
       }
      ]
     }
@@ -286,12 +286,12 @@
   "intent": "Not sure yet: talk to an engineer"
  },
  "todo": [
-  "First note publication month ([first note publication month, year]) and a target month for each of the 25 planned notes (add a status line per row once set); publish only notes that have passed review",
+  "First note publication month ([first note publication month, year]; FD-53) and a target month for each of the 25 planned notes (add a status line per row once set); publish only notes that have passed review",
   "Named author (engineer, with role) and named reviewer for each topic group ([named author and reviewer, by topic group]); whether bylines may name a partner's former employer (FD-34, FD-35)",
-  "Technical review of each note against the current text of its standard before writing: USP <645>, <643>, <1231> (revision official 1 April 2027); Ph. Eur. 0008, 2.2.44 (12.3); WHO TRS 1033; GUI-0001, GUI-0029; 21 CFR 211; EU GMP Annex 15; CSA B51; FDA computer software assurance guidance; GAMP 5; Annex 1 and GUI-0119 for the sterile-site note only. ISPE Baseline Guide Vol. 4 (2019) is named, not read: read the chapters a note relies on before writing it (DR-007 rule 3)",
+  "Technical review of each note against the current text of its standard before writing: USP <645>, <643>, <1231> (revision official 1 April 2027); Ph. Eur. 0008, 2.2.44 (12.3); WHO TRS 1033; GUI-0001, GUI-0029; 21 CFR 211; EU GMP Annex 15; CSA B51; FDA computer software assurance guidance (final, 3 February 2026; medical-device production and quality system software under 21 CFR 820, not drug GMP: say so in the note); GAMP 5; Annex 1 and GUI-0119 for the sterile-site note only. ISPE Baseline Guide Vol. 4 (2019) is named, not read: read the chapters a note relies on before writing it (DR-007 rule 3)",
   "Send frequency ([send frequency, emails per month at most]; FD-39). The value opens the form's intro: fill it as a phrase, for example \"At most 2 emails a month\"",
   "Newsletter platform with confirmation email (double opt-in), consent record (date, time, form wording) and one-click unsubscribe (FD-39)",
-  "CASL sender identification: [legal entity name] (the footer's name), [mailing address], [contact email] (FD-33); unsubscribe processing time (10 business days at most; CASL s. 11 not read by the library: counsel, OQ-81)",
+  "CASL sender identification: [legal entity name] (the footer's name), [mailing address] and [sales email], contact-locations' head office address and email (issue #2 §2; FD-33); unsubscribe processing time (10 business days at most; CASL s. 11 not read by the library: counsel, OQ-81)",
   "Privacy notice link ([privacy notice link]; PIPEDA, Quebec Law 25) covering subscriber data (FD-39)",
   "Proposal response time and the cost of a question ([proposal response time, working days]; [fit check cost or free]), as in contact-proposal's requests table (FD-01, FD-02)",
   "First company news items, each with client written permission where a project is named",
@@ -299,7 +299,7 @@
   "Dead-leg limit ([dead leg design limit, L/D]) before writing the dead-legs note (FD-19)",
   "Exchange DI breakeven ([exchange DI breakeven, L/day], systems FAQ; FD-49) before writing the exchange-DI note",
   "Note on PW as feed to your own WFI still: off the register until FD-25 confirms that scope (DR-002 rule 7)",
-  "When the first reviewed note is published: hero button back to \"Subscribe to technical notes\" (#subscribe), with \"Talk to an engineer\" as the secondary (DR-006); the note's row gets its date",
+  "When the first reviewed note is published: hero button back to \"Subscribe to technical notes\" (#subscribe), with \"Talk to an engineer\" as the secondary (DR-006); the note's row gets its date, and the page it applies on links it in one line (DR-009 rule 1; DR-015 rule 5); until then news stays a footer destination",
   "Schema: Article markup on each published note; FAQPage on this page"
  ],
  "primary_cta_link": "contact-proposal",

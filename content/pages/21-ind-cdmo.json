@@ -3,7 +3,7 @@
  "section": "Industries",
  "nav_label": "Contract manufacturing (CDMO)",
  "title": "Purified Water systems for CDMOs and contract manufacturers | Aquemi",
- "meta": "A polypropylene Purified Water (PW) package for CDMOs and natural health product contract makers: the stricter of USP and Ph. Eur., a client audit pack, redundancy. No WFI.",
+ "meta": "Polypropylene Purified Water package for CDMOs and natural health product contract makers: stricter of USP and Ph. Eur., client audit pack, redundancy. No WFI.",
  "path": "/industries/cdmo/",
  "eyebrow": "CONTRACT MANUFACTURING · USP · PH. EUR.",
  "headline": "One water system, every client's auditor",
@@ -42,8 +42,8 @@
       "link": "sys-storage"
      },
      {
-      "t": "Process design",
-      "link": "svc-design"
+      "t": "Upgrades: system assessment",
+      "link": "svc-upgrades"
      }
     ],
     [
@@ -54,7 +54,7 @@
       "link": "sys-pw"
      },
      {
-      "t": "Standards we design to",
+      "t": "Purified Water limits",
       "link": "compliance#limits"
      }
     ],
@@ -155,12 +155,14 @@
     {
      "t": "Sanitize between campaigns",
      "spot": "heat-exchanger",
-     "d": "[PP loop sanitization method] in campaign gaps, residual tested before use; duplex trains sanitized one at a time."
+     "d": "[PP loop sanitization method] in campaign gaps, residual tested before use; duplex trains sanitized one at a time.",
+     "link": "sys-storage#sanitization"
     },
     {
      "t": "Spares on your site",
      "spot": "wrench",
-     "d": "Critical spares on a service plan: [kit on site, replenished after use]."
+     "d": "Critical spares on a service plan: [kit on site, replenished after use].",
+     "link": "svc-service"
     },
     {
      "t": "Room for new programs",
@@ -213,12 +215,12 @@
     },
     {
      "q": "A client's standard requires stainless or a hot-held loop. Can polypropylene work?",
-     "a": "No, unless the standard allows exceptions. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+     "a": "A hot-held loop needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]. A standard that requires stainless rules out polypropylene, unless it allows exceptions.",
      "link": "sys-storage#sanitization",
-     "link_label": "See PP loop sanitization"
+     "link_label": "Compare sanitization methods"
     },
     {
-     "q": "Our system is another builder's, with paper records. Where do we start?",
+     "q": "Our system is another maker's, with paper records. Where do we start?",
      "a": "For [makes and equipment types serviced]: with a system assessment of drawings, qualification file, trends and data integrity against your clients' markets.",
      "link": "svc-upgrades",
      "link_label": "See the system assessment"
@@ -263,6 +265,7 @@
   "Duplex train shares ([duplex train shares offered], redundancy option 1; sys-pw's duplex option carries the same name in the same sentence; FD-20, FD-21): the share of peak demand each train covers, for example 50 % or 100 %, and whether both are offered. One wording on both pages (DR-011)",
   "Duty and standby pumps, standard or option ([duty and standby pumps, standard or option]; same name as sys-storage; FD-21)",
   "Loop sanitization method used in campaign gaps ([PP loop sanitization method]; same name as home, systems and sys-storage; FD-14). Any temperature wording follows DR-013",
+  "[whether we quote PVDF] (FAQ 4): whether Aquemi quotes a PVDF loop where a client needs a hot-held loop, or refers the buyer; same name as sys-storage and svc-upgrades (FD-15, DR-013 rule 2)",
   "Critical spares kit on site ([kit on site, replenished after use], redundancy option 5): svc-service's name, its plans table's tier 3 term (tier 2: [kit held at Aquemi or on site]). Which plans include an on-site kit and on what terms, one wording with svc-service (FD-11, FD-29; DR-011). At launch an unset kit drops the option (DR-004 class 2)",
   "Typical span from order to release for a new point of use on a qualified loop, weeks ([new point of use, order to release, weeks]; tech transfer step 4; FD-08). Only a figure Aquemi commits to (DR-005 rule 5)",
   "Reporting by suite, outlet and date, and how one client's data is kept from another's ([reporting by suite, outlet and date]; audit pack intro, FAQ 2; FD-23). Align with sys-monitoring",

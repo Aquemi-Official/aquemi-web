@@ -13,7 +13,7 @@
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have a system already",
  "secondary_cta": {
-  "label": "System down now? Request service",
+  "label": "Production stopped? Request urgent service",
   "link": "contact-service",
   "intent": "Fault now|Severity 1: production stopped or water out of specification"
  },
@@ -253,7 +253,7 @@
    "h": "Common questions",
    "items": [
     {
-     "q": "Will you upgrade another supplier’s system?",
+     "q": "Will you upgrade another maker’s system?",
      "a": "For [makes and equipment types serviced]: we assess it, then add or replace modules from our package. Without drawings, we walk the system down and measure dead legs. Polypropylene (PP) joins other piping by [tie-in method to existing piping]. A hot-held loop, or routine 80 °C sanitization at loop pressure, needs polyvinylidene fluoride (PVDF) or stainless [whether we quote PVDF]."
     },
     {
@@ -297,7 +297,7 @@
  },
  "todo": [
   "[makes and equipment types serviced] (lead, FAQ 1): the makes and equipment types Aquemi assesses and upgrades on systems it did not build, and any exclusions (WFI stills, pure steam generators, stainless loops); same name on home, services, svc-service, svc-cq, about, contact-service and contact-proposal (FD-30, DR-011). FAQ 1 gets its yes or no once FD-30 is answered",
-  "[assessment duration, days] (hero fact, steps): days on site for one system assessment; not yet an FD row (FD-02 holds the assessment's price)",
+  "[assessment duration, days] (hero fact, steps): days on site for one system assessment; FD-02 names it, beside the assessment's price",
   "[report turnaround, working days] (steps): working days from the site visit to the costed options report (FD-01). A different fact from [assessment response time, working days], which ends before the visit; a QA head with 15 working days to answer FDA needs both",
   "[assessment response time, working days] (closing arrow): first reply to an assessment request, with its scope, days on site and price; the options follow the visit. Same name as services' router row 6 ('Scope and price within…') and contact-proposal's requests table (FD-01)",
   "[assessment price, CAD, credit against upgrade] (closing body): price in CAD before tax, or free, and whether it is credited against the upgrade; same name as contact-proposal's requests table (FD-02, DR-005 rule 4)",
@@ -310,7 +310,8 @@
   "Confirm the upgrade types on other builders' systems: PVC pretreatment, PP loops, online TOC and conductivity, controller (PLC, HMI, SCADA) replacement; remove a router row Aquemi will not deliver (FD-23, FD-30)",
   "Confirm software is tested before site work, and whether against a simulator ('on a simulator' was cut until FD-23 says so)",
   "Budget range per option in the assessment report (FD-03): the page says 'costed options' without a figure until Aquemi's costed configurations exist (DR-005 rule 2)",
-  "Future case block: a delivered upgrade with what changed, downtime, requalification time and, for a DI to RO and EDI conversion, payback; only with the client's written approval (FD-42; DR-004 class 3; DR-016 rule 8). The ten-year cost sheet is FD-49"
+  "Future case block: a delivered upgrade with what changed, downtime, requalification time and, for a DI to RO and EDI conversion, payback; only with the client's written approval (FD-42; DR-004 class 3; DR-016 rule 8). The ten-year cost sheet is FD-49",
+  "Re-map the Annex 11 clause numbers when the revised Annex 11 is adopted (2025 draft; technical-checks.md §3)."
  ],
  "facts": [
   {

@@ -2,7 +2,7 @@
  "id": "sys-storage",
  "section": "Systems",
  "nav_label": "Storage and distribution loops",
- "title": "PW storage and distribution loops in polypropylene | Aquemi",
+ "title": "Purified Water storage and distribution loops in polypropylene | Aquemi",
  "meta": "Polypropylene PW tanks and loops with turbulent flow (WHO TRS 1033), short dead legs, full drainage and sanitization inside the PP maker's pressure and temperature rating.",
  "path": "/systems/storage-and-distribution/",
  "eyebrow": "SYSTEMS · STORAGE AND DISTRIBUTION · USP <645>, <643>",
@@ -320,7 +320,8 @@
     },
     {
      "q": "Can we add points of use later?",
-     "a": "Yes, after a hydraulic check at the new peak demand. Each branch is cut in with [PP point-of-use valve type] under your change control. Shutdown: [typical shutdown for a point-of-use addition, days]."
+     "a": "Yes, after a hydraulic check at the new peak demand. Each branch is cut in with [PP point-of-use valve type] under your change control. Shutdown: [typical shutdown for a point-of-use addition, days].",
+     "link": "svc-upgrades"
     }
    ]
   }

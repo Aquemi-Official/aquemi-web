@@ -35,8 +35,9 @@
       "Triage confirms severity",
       "Remote diagnosis, then on site"
      ],
-     "clock": "On site in [severity 1 on-site response time, hours], on a plan, inside [service coverage area]",
+     "clock": "Answered within [severity 1 phone answer time, minutes]",
      "link": "contact-service",
+     "intent": "Fault now|Severity 1: production stopped or water out of specification",
      "urgent": true,
      "action": "Log a service request"
     },
@@ -70,7 +71,7 @@
     [
      "Head office, [head office, city and province]",
      "",
-     "[Street address], [postal code]",
+     "[mailing address]",
      "[sales phone number] · [sales email] · [office hours, time zone]"
     ],
     [
@@ -79,7 +80,7 @@
       "link": "svc-fabrication"
      },
      "Skid and piping fabrication, FAT",
-     "[Street address], [postal code] · [map link]",
+     "[shop address] · [map link]",
      "[shop phone number] · [shop hours, time zone]"
     ],
     [
@@ -115,7 +116,7 @@
    "rows": [
     [
      "Ontario",
-     "[severity 1 on-site response time in Ontario, hours] in [Ontario centres served]",
+     "[severity 1 on-site response time, hours] in [Ontario centres served]",
      "[service base, city] · [stocking point for Ontario, city]",
      "CRN: Technical Standards and Safety Authority (TSSA). Seal: Professional Engineers Ontario (PEO) · [certificate of authorization: yes or no]"
     ],
@@ -200,22 +201,13 @@
      "title": "Group and contact",
      "fields": [
       {
-       "label": "Language for the day",
-       "kind": "radio",
-       "required": false,
-       "options": [
-        "English",
-        "French"
-       ]
-      },
-      {
        "label": "Access or safety needs",
        "kind": "textarea",
        "required": false,
        "help": "Mobility access or a site induction your company requires."
       },
       {
-       "label": "Name",
+       "label": "Full name",
        "kind": "text",
        "required": true
       },
@@ -257,21 +249,21 @@
   "intent": "Not sure yet: talk to an engineer"
  },
  "todo": [
-  "Head office: street address, sales phone and email, office hours with time zone (same placeholders as about and contact-proposal). Its \"What happens here\" cell stays empty, as about's row says just \"Head office\", until FD-33 says where engineering works",
-  "Shop and test bay: street address, phone, hours, map link (shop location same as about)",
+  "Head office: full address ([mailing address], news' CASL sender address too), sales phone and email ([sales email], news' contact email too), office hours with time zone (same placeholders as about and contact-proposal). Its \"What happens here\" cell stays empty, as about's row says just \"Head office\", until FD-33 says where engineering works",
+  "Shop and test bay: address ([shop address]), phone, hours, map link (shop location same as about)",
   "Shop and test bay ready for visits and witnessed FAT, and from which date ([shop and test bay ready for visits], same name as home, sys-pw, svc-fabrication, svc-fat-sat and projects; FD-44). Route 3 and the form intro both show it. Until then route 3 and the visit form are draft only; at launch they go if not ready, and the next existing check replaces them (DR-004, DR-006 rule 6)",
   "Service bases: cities and addresses, or confirm technicians work from home bases; service email; service phone and hours (same as contact-service)",
   "Parts stock locations, parts email ([parts email address], contact-service's name), parts desk hours, order cut-off and delivery commitment (FD-11, FD-31)",
   "Service coverage area (same as home, svc-service and contact-service); it travels with every severity 1 time (DR-011 rule 4)",
   "Per region (Ontario, Quebec, British Columbia, Alberta, other provinces and territories): centres served, service base or partner, stocking point, severity 1 on-site response in hours or \"visits only\" (FD-27, FD-28). Centres served sit with the time they apply to (DR-011 rule 4)",
-  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service). Every on-site time on this page carries svc-service's condition \"on a plan, inside [service coverage area]\"; without a plan, a call-out with the next available technician (contact-service). If the owner sets times for every caller, drop \"on a plan\" on all pages at once (DR-011 rules 3 and 4)",
+  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, Ontario's coverage row included, per plan on svc-service). Every on-site time on this page carries svc-service's condition \"on a plan, inside [service coverage area]\"; without a plan, a call-out with the next available technician (contact-service). If the owner sets times for every caller, drop \"on a plan\" on all pages at once (DR-011 rules 3 and 4). Route 2's clock is the phone answer time, [severity 1 phone answer time, minutes], as on contact-service and contact-proposal (FD-27)",
   "Number of service technicians (same headcount as about). If no one holds the role at launch, the whole hero fact goes, not just its number (DR-004 rule 4)",
   "Whether technicians are all Aquemi employees; if partners are used: regions, under whose procedures, who signs the service report, partners for remote regions; remove \"or partner\" from the cells if none",
   "CSA B51: Aquemi's CRN route (ASME certificate or vessel fabricator) and provinces where designs are registered (same as compliance)",
   "Which components of the PP PW package need a CRN, if any (the coverage table names each province's authority \"where required\"; FD-24, OQ-79)",
   "Engineering licences: licensed engineers per province (P.Eng. or ing.), PEO certificate of authorization, EGBC and APEGA permits to practice, an OIQ member on staff for Quebec, engineer of record route where not licensed (same as about; FD-24, FD-34)",
   "French: [language of service in Quebec] (technicians, service reports, documents); New Brunswick (FD-36, DR-012)",
-  "Language for the day (visit form): keep only once a named French-speaking engineer can host on the same terms; otherwise remove the field at launch (FD-36, DR-012 rule 2)",
+  "Language for the day (visit form): the field (English, French) returns to step 2 only once a named French-speaking engineer can host on the same terms, as on contact-proposal (FD-36, DR-012 rule 2 and consequences)",
   "Other provinces and territories, remote sites: whether served, travel response or visits only, site spares kit for remote sites",
   "United States: row removed until FD-37 decides whether Aquemi delivers there. If it does, add a row: states and system types; US service base and parts route; ASME certificate or vessel partner and National Board registration; panel mark for US; Incoterms rule and transit time; who travels for installation, SAT and IQ/OQ and entry route; US response; state licence route",
   "Visit booking reply time (working days); visitor confidentiality and safety terms, and when visitors sign them (sent with the agenda, or on arrival); privacy notice ([privacy notice link], contact-proposal's and contact-service's name; PIPEDA, Quebec Law 25; FD-39)",

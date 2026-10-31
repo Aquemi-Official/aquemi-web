@@ -4,7 +4,9 @@
    Block link (optional): link (a page id or page#anchor), link_label (its words; default the linked block's heading,
    else the page's name, wlabel) and intent (options the linked form ticks on arrival) print one Button link under the
    list ("Full index →"), so a module page keeps its deciding documents and points to the full package without another
-   row. A link to a missing page prints nothing. */
+   row. A link to a missing page prints nothing. Item link (optional): an item's link (a page id or page#anchor) makes
+   its name a link, and its intent ticks those options on the linked page's form, as a block link's does
+   (svc-fabrication's "Joint records" to cmp-documentation#samples). */
 /* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT,
    a URS compliance matrix before the URS itself). */
 var DOC_CODES=[
@@ -18,7 +20,7 @@ var DOC_CODES=[
   [/operation and maintenance/i,'O&M'],[/standard operating procedure|\bsops?\b/i,'SOP'],
   [/fabrication and inspection plan/i,'FIP'],[/fabrication record/i,'FAB'],[/material (cert|log)/i,'MAT'],[/media and resin/i,'MED'],
   [/welding procedure|\bwps\b/i,'WPS & PQR'],[/welder and procedure/i,'WQR & PQR'],[/welder qualif/i,'WQR'],
-  [/weld (log|map)/i,'WLD'],[/joint (map|log)|joining log/i,'JNT'],[/borescope/i,'BOR'],[/pressure test/i,'PT'],
+  [/weld (log|map)/i,'WLD'],[/joint (map|log|records)|joining log/i,'JNT'],[/borescope/i,'BOR'],[/pressure test/i,'PT'],
   [/slope (verif|survey).*dead leg/i,'SLP & DLR'],[/dead leg/i,'DLR'],[/surface finish/i,'SRF'],[/passivation/i,'PAS'],[/slope (verif|survey|check)/i,'SLP'],[/riboflavin|spray ball/i,'RIB'],
   [/integrity test/i,'INT'],[/calibration/i,'CAL'],[/en 285/i,'EN 285'],
   [/executed fat/i,'FAT RPT'],[/\bfat\b.*\bsat\b/i,'FAT & SAT'],[/\bfat\b/i,'FAT'],[/\bsat\b/i,'SAT'],
@@ -44,7 +46,7 @@ var DOC_ICONS=[[/borescope/i,'borescope'],[/\bweld|\bwps\b|welder/i,'weld'],[/p&
 function docIcon(x){if(x.icon==='none')return '';if(isIcon(x.icon))return x.icon;var t=String(x.t||'');
   for(var i=0;i<DOC_ICONS.length;i++)if(DOC_ICONS[i][0].test(t))return DOC_ICONS[i][1];return ''}
 BLOCKS['docs']=function(b,H){
-  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link,icon:x.icon,tag:x.tag}});
+  var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:{t:x.t||'',d:x.d,code:x.code,key:x.key,link:x.link,intent:x.intent,icon:x.icon,tag:x.tag}});
   var n=items.length,codes=items.map(function(x){return x.code?[x.code,true]:docCode(x.t)});
   /* Codes only when most items are documents the lookup knows; a checklist of other things keeps just its numbers. */
   var coded=codes.filter(function(c){return c[1]}).length*2>=n;
@@ -54,7 +56,8 @@ BLOCKS['docs']=function(b,H){
   /* fold applies on phones only (DocList style.css): desktop shows every row */
   var noun=b.fold_noun||'documents';
   var ol='<ol class="aq-docs'+(coded?'':' aq-docs--plain')+'">'+items.map(function(x,i){
-    var name=x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t);
+    /* Item link: the name links its page or page#anchor; intent (options that page's form ticks on arrival) rides on it, as a table cell's */
+    var name=x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
     /* A tag with no letter or digit ("+") would read as a missing label: leave the code cell empty */
     var tag=x.tag||(coded?codes[i][0]:''),ic=docIcon(x);if(tag&&!/[A-Za-z0-9]/.test(tag))tag='';
     return fli('<li'+(key[i]?' class="is-key"':'')+'>',b,i)+idx(i)

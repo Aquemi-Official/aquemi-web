@@ -57,7 +57,8 @@
     },
     {
      "p": "Microbial action level",
-     "v": "100 CFU/mL",
+     "v": "≤ 100 CFU/mL",
+     "level": "action",
      "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
      "hl": false
     },
@@ -156,7 +157,7 @@
     },
     {
      "p": "Materials and dead legs",
-     "v": "Unpigmented polypropylene (PP), [PP grade]; dead legs [dead leg design limit, L/D], sloped to drain",
+     "v": "Unpigmented polypropylene (PP), [PP grade]; dead legs ≤ [dead leg design limit, L/D], sloped to drain",
      "m": "[PP piping standard]; [PP material certificates]",
      "hl": false,
      "at": [
@@ -203,7 +204,7 @@
     },
     {
      "p": "Utilities and footprint",
-     "v": "[supply voltage, V / phase / Hz]; [feed pressure and drain flow, per skid]; [typical footprint, m × m]",
+     "v": "[supply voltage options]; [feed pressure and drain flow, per skid]; [typical footprint, m × m]",
      "m": "Electrical: [panel certification mark held, or field evaluation used]",
      "hl": false,
      "link": "systems#site"
@@ -335,7 +336,7 @@
   "returns": [
    "Skid sizing for your coldest feed",
    "Budget range and its class",
-   "Questions on gaps in your data"
+   "Questions on missing data"
   ]
  },
  "todo": [
@@ -351,7 +352,7 @@
   "Whether both DI and EDI are offered, and for DI whether resin is service exchange or regenerated on site ([DI resin: service exchange or on-site regeneration]; FD-21)",
   "Online TOC at the skid outlet: standard or option ([online TOC at the outlet, standard or option]; FD-21)",
   "RO high-pressure section material and pressure class (PN), from its maker's rating; the section may not be PP ([RO high-pressure section material and pressure class]; FD-22). If it needs a CRN, use compliance's name [pressure-rated items in the PW package] (FD-24)",
-  "Per-skid utilities: supply voltage options ([supply voltage, V / phase / Hz]), feed pressure and drain flow ([feed pressure and drain flow, per skid]), room temperature range, service clearances, typical footprint by capacity ([typical footprint, m × m]) and service-access sides (FD-26). Package-level site requirements stay on systems#site, which the row links (DR-009 rule 5)",
+  "Per-skid utilities: supply voltage options ([supply voltage options], systems' name; give them as V / phase / Hz), feed pressure and drain flow ([feed pressure and drain flow, per skid]), room temperature range, service clearances, typical footprint by capacity ([typical footprint, m × m]) and service-access sides (FD-26). Package-level site requirements stay on systems#site, which the row links (DR-009 rule 5)",
   "Electrical approval route for the assembled skid, not a panel-only label: a certified panel shop's mark or a per-unit field evaluation ([panel certification mark held, or field evaluation used], the name systems, sys-monitoring, compliance and cmp-quality use; state only what is held; FD-24)",
   "PW generation budget band, as on systems' budget table ([budget range, CAD] at [reference capacity, L/h]; one figure on both pages; FD-03, DR-005 rule 3). Once filled it may also be a hero fact (DR-010); unfilled at launch, the row goes",
   "Whether a sizing proposal is free or charged ([proposal cost or free], the name contact-proposal's requests table uses; FD-02)",

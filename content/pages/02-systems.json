@@ -2,12 +2,12 @@
  "id": "systems",
  "section": "Systems",
  "nav_label": "All systems",
- "title": "Purified Water systems: pretreatment, RO, DI/EDI, distribution | Aquemi",
+ "title": "Purified Water system modules and budget ranges | Aquemi",
  "meta": "One modular Purified Water package in polypropylene with PVC pretreatment, designed to meet USP <645> and <643>: modules, budget ranges and site requirements.",
  "path": "/systems/",
  "eyebrow": "SYSTEMS · PW · RO · DI/EDI",
  "headline": "Purified Water systems, designed to meet USP limits",
- "lead": "One modular polypropylene package, with PVC pretreatment, makes Purified Water (PW) and delivers it to every point of use. No Water for Injection, pure steam or stainless steel systems.",
+ "lead": "One modular polypropylene package, with polyvinyl chloride (PVC) pretreatment, makes Purified Water (PW) for every point of use. No Water for Injection, pure steam or stainless steel systems.",
  "primary_cta": "Get a budget range",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have water data, no system yet|Modules and a budget range",
@@ -211,7 +211,7 @@
     },
     {
      "q": "Do you build to standard platforms or to order?",
-     "a": "[standard platforms, capacity ranges, lead time in weeks]. Either way, we adapt instruments and controls to your user requirement specification (URS)."
+     "a": "[standard platforms and capacity ranges]; [lead time from drawing approval, weeks]. Either way, we adapt instruments and controls to your user requirement specification (URS)."
     }
    ]
   },
@@ -222,7 +222,7 @@
     "services",
     "svc-design",
     "cmp-documentation",
-    "svc-service#running-cost"
+    "svc-service"
    ]
   }
  ],
@@ -236,7 +236,7 @@
    "Peak and average demand, L/h",
    "Number of points of use",
    "What you make, and where you sell it",
-   "Feed source, and any water analysis"
+   "Feed water source, and any analysis"
   ],
   "turnaround": "[budget proposal turnaround, working days]",
   "returns": [
@@ -246,7 +246,7 @@
   ]
  },
  "todo": [
-  "Budget bands (FD-03, DR-005): a whole-package row, then three module rows, each a CAD range costed from Aquemi's own configuration at its reference size ([budget range, CAD], [reference capacity, L/h], [reference tank volume L, points of use]); the table's estimate class and accuracy ([estimate class and accuracy]) and price date ([month year]); never MISSION's internal band. Unfilled at launch: the table goes, the two note lines and \"Get a budget range\" stay (DR-005 rule 8)",
+  "Budget bands (FD-03, DR-005): a whole-package row, then three module rows, each a CAD range costed from Aquemi's own configuration at its reference size ([budget range, CAD], [reference capacity, L/h], [reference tank volume L, points of use]); the table's estimate class and accuracy ([estimate class and accuracy]) and price date ([month year]); never MISSION's internal band. Unfilled at launch: the table goes, the two note lines and \"Get a budget range\" stay (DR-005 rule 8), and the title and meta drop \"budget ranges\"",
   "Confirm the band boundary in the whole-package row (supply, FAT, IQ/OQ protocols, turnover package) and the exclusions in the note (installation, tie-ins, utilities, PQ lab testing, temporary water) (FD-03)",
   "Smallest project quoted, if the owner publishes one: one plain line under the budget table (FD-04, DR-005 rule 2)",
   "Whether the budget range is free or charged ([budget range cost or free], closing; FD-02)",
@@ -255,8 +255,8 @@
   "Site requirements (FD-20, FD-21, FD-24, FD-26): [standard battery limits, typical scope]; [typical footprint and weight, by capacity]; [supply voltage options]; [feed and drain flows, L/h]; [installation scope] (who installs and makes field joints); [panel certification mark held, or field evaluation used] (compliance's and sys-monitoring's name: a certified panel shop or a per-unit field evaluation, FD-24); [pressure-rated items in the PW package] (same as compliance and cmp-quality); [typical shutdown for tie-in, days]; [lockable isolation points and lockout diagram]",
   "Sanitization method for the PP tank and loop ([PP loop sanitization method], budget and site tables; FD-14, DR-013)",
   "Exchange DI breakeven, L/day, from the ten-year cost sheet ([exchange DI breakeven, L/day], FAQ; FD-49, DR-015)",
-  "Check the current USP <1231> text still says exchange canisters can contaminate the water (FAQ); the library read only the 2006 text (H2O-01)",
-  "Whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks ([standard platforms, capacity ranges, lead time in weeks], FAQ; FD-20, FD-08). The answer opens with this fact: unfilled at launch, the question goes (DR-003 rule 3, DR-005 rule 8)",
+  "Check USP <1231> §5.1.6 in the texts official 1 Dec 2021 and 1 Apr 2027.",
+  "Whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks ([standard platforms and capacity ranges], FAQ; FD-20; the lead time is cmp-quality's [lead time from drawing approval, weeks], FD-08). The answer opens with this fact: unfilled at launch, the question goes (DR-003 rule 3, DR-005 rule 8)",
   "Whether single modules (pretreatment, RO and DI/EDI skid, distribution) are supplied alone or only as the full package ([Whether single modules are supplied alone], FAQ; FD-20). The answer opens with this fact: unfilled at launch, the question goes (DR-003 rule 3, DR-005 rule 8)",
   "Standard the PP piping and loop are designed to (dead legs, drainability); the ASME BPE row was removed",
   "Once the project-facts sheet exists (DR-001 rule 5), it becomes the hero's secondary link (DR-006)"

@@ -267,7 +267,7 @@
         "No remote connection",
         "Read-only telemetry through your demilitarized zone (DMZ)",
         "Supervised session your staff open",
-        "Ask our IT first"
+        "Your IT decides"
        ],
        "help": "No connection? We diagnose from your readings and a call; on-site times do not change."
       },
@@ -348,7 +348,7 @@
        "when": "Parts and consumables",
        "options": [
         "Material certificates for wetted parts",
-        "USP <88> Class VI and FDA 21 CFR 177.2600 for elastomers",
+        "Elastomer certificates",
         "Certificate of conformance",
         "Calibration certificate"
        ]
@@ -372,8 +372,8 @@
        "required": false,
        "when": "Service plan quote",
        "options": [
-        "Our own team",
-        "Our team and a contractor",
+        "Your own team",
+        "Your team and a contractor",
         "A contractor",
         "No regular maintenance"
        ]
@@ -442,7 +442,14 @@
        "label": "Phone you can be reached on today",
        "kind": "tel",
        "required": true,
+       "when": "Fault now",
        "help": "A mobile: the triage call comes here."
+      },
+      {
+       "label": "Phone",
+       "kind": "tel",
+       "required": false,
+       "when": "Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change|First service, other make"
       },
       {
        "label": "Work email",
@@ -461,11 +468,11 @@
        "help": "And the parts delivery address if different."
       },
       {
-       "label": "Your role",
+       "label": "Role",
        "kind": "select",
        "required": false,
        "options": [
-        "Maintenance or facilities",
+        "Facilities or maintenance",
         "Production or operations",
         "Quality",
         "Validation",
@@ -479,15 +486,6 @@
        "kind": "text",
        "required": false,
        "help": "Induction, good manufacturing practice (GMP) training, gowning, permits."
-      },
-      {
-       "label": "Language for the reply",
-       "kind": "radio",
-       "required": false,
-       "options": [
-        "English",
-        "French"
-       ]
       }
      ]
     }
@@ -535,7 +533,7 @@
      "Checked like for like against your qualified parts list, with certificates"
     ],
     [
-     "Another builder's system",
+     "First service, other make",
      "Reply within [other-builder request reply time, working days]",
      "For [makes and equipment types serviced]: a condition survey quote"
     ]
@@ -572,18 +570,18 @@
   ]
  },
  "todo": [
-  "Service phone (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use. Fill the hero's call link (secondary_cta, tel:) in the same commit; if the number is still open at launch, it goes with the urgent route (DR-008). Who answers out of hours and makes the triage call: service engineer or dispatcher.",
-  "Severity 1 clocks (FD-27, FD-28): [severity 1 phone answer time, minutes], [remote response time, hours] and [severity 1 on-site response time, hours] per plan, inside [service coverage area] (the name on home and contact-locations). Confirm the phone answer time applies to every caller: the urgent route shows it without a plan condition.",
+  "Service phone (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use. Fill the hero's call link (secondary_cta, tel:) in the same commit; if the number is still open at launch, it goes with the urgent route (DR-008). Who answers out of hours and makes the triage call: service engineer, dispatcher or nobody; if nobody, route 2 and the phone menu say so, with the form note's [out-of-hours form review time, hours] (buyer panel 2026-10-31).",
+  "Severity 1 clocks (FD-27, FD-28): [severity 1 phone answer time, minutes], [remote response time, hours] and [severity 1 on-site response time, hours] per plan, inside [service coverage area] (the name on home and contact-locations). Confirm the phone answer time applies to every caller: the urgent route shows it without a plan condition, here and on contact-proposal and contact-locations.",
   "Severity 2 and 3 clocks (FD-27): [severity 2 reply time, hours], [severity 2 visit time] (svc-service's name), [severity 3 reply time, working days].",
   "Severity definitions (FD-27): svc-service, their home (DR-009, DR-011), now uses this page's wording word for word (form options and table rows, severity 4 included). Confirm one wording for both pages; the form options keep their names so other pages' intents still match.",
   "Call-out and hourly rates without a plan (FD-29): [call-out and hourly rates, CAD], svc-service's name.",
   "Service desk (FD-31): [ticket acknowledgment time, minutes]; whether forms are read out of hours, and [out-of-hours form review time, hours]; [serial number format], and that it is on the nameplate; [trend window, hours]; [parts email address] (contact-locations uses it too) and who receives parts orders.",
   "Reply times (FD-31): [maintenance booking reply time, working days], one time for maintenance and calibration unless you set two; [requalification support reply time, working days]; [other-builder request reply time, working days]; [parts quote turnaround, working hours].",
-  "Other builders' systems (FD-30): [makes and equipment types serviced], one name on every page that offers it (DR-011); whether parts are supplied for other makes; whether WFI stills, pure steam generators or stainless loops by others are excluded (the form lists PW systems only). If none are served, the other-builder option, branch, row and help lines go; the headline names no maker.",
+  "Other builders' systems (FD-30): [makes and equipment types serviced], one name on every page that offers it (DR-011); whether parts are supplied for other makes; whether WFI stills, pure steam generators or stainless loops by others are excluded (the form lists PW systems only). If none are served, the other-builder option, branch, row and help lines go; the headline names no maker. Also whether a fault on another builder's system runs on the severity clocks as a call-out or starts with a condition survey: the table's last row, \"First service, other make\", times only that request (buyer panel 2026-10-31).",
   "Ozone and UV (FD-16, FD-30): the calibration list and the hero figure show UV only. UV stays if the package has it ([UV, standard or option], sys-storage's name) or FD-30 covers other makes with UV; ozone sensor calibration returns only if FD-30 covers other makers' ozone systems (DR-013).",
-  "Certificates shipped with wetted PP and PVC spare parts (FD-17); sys-pw names them [PP material certificates]. The form's option names no material, so it fits any builder's system.",
+  "Certificates shipped with wetted PP and PVC spare parts (FD-17); sys-pw names them [PP material certificates]. The form's option names no material, so it fits any builder's system; the elastomer option names no standard ([elastomer certificates per compound] is cmp-quality's name for what ships; FD-17).",
   "Uploads and privacy (FD-39): [maximum upload size, MB], as on contact-proposal; [privacy notice link], contact-proposal's name, covering PIPEDA and Quebec Law 25 after counsel's check (OQ-81).",
-  "Language for the reply (FD-36, DR-012): keep French only if a French-speaking technician or engineer replies within the same times; otherwise the field leaves the form at launch.",
+  "Language for the reply (FD-36, DR-012): the field (English, French) returns to step 3 only once a named French-speaking technician or engineer replies within the same times, as on contact-proposal (DR-012 rule 2 and consequences).",
   "Contact routes: [proposal response time, working days] (FD-01), as on contact-proposal; the coverage route's written answer is contact-locations' closing, which uses the same time. Shop visits stay on contact-locations, offered once the shop and test bay are ready (FD-44, DR-004)."
  ],
  "hero_index": false,
