@@ -18,7 +18,6 @@
    "nav": "Checks",
    "anchor": "verify",
    "h": "Verify before a case study exists",
-   "intro": "Pick what your team needs to see.",
    "cols": [
     "What you check",
     "Route",
@@ -30,7 +29,8 @@
      "The engineer who would lead your project",
      {
       "t": "Talk to an engineer",
-      "link": "contact-proposal"
+      "link": "contact-proposal",
+      "intent": "Not sure yet: talk to an engineer"
      },
      "Delivery on schedule and budget",
      "[proposal response time, working days]"
@@ -39,16 +39,18 @@
      "How we join and trace PP parts, in [shop location, city and province]",
      {
       "t": "Shop visit",
-      "link": "contact-locations#visit"
+      "link": "contact-locations#visit",
+      "intent": "Shop tour before shortlisting"
      },
      "How your system will perform",
-     "[shop visit notice, working days]"
+     "[shop visit notice, working days], once [shop and test bay ready for visits]"
     ],
     [
      "What your validation file will contain",
      {
       "t": "Specimen package",
-      "link": "cmp-documentation#samples"
+      "link": "cmp-documentation#samples",
+      "intent": "Turnover package index"
      },
      "That a project's records are complete",
      "[sample package response time, working days]"
@@ -57,16 +59,18 @@
      "That our quality system works",
      {
       "t": "Supplier audit",
-      "link": "cmp-quality#audit"
+      "link": "cmp-quality#audit",
+      "intent": "On-site supplier audit"
      },
      "A specific system's performance",
-     "[on-site audit notice, working days]"
+     "[on-site audit notice, working days], from [quality system ready for audit, date]"
     ],
     [
      "That we read your user requirement specification (URS) line by line",
      {
       "t": "Compliance matrix",
-      "link": "compliance"
+      "link": "contact-proposal",
+      "intent": "I have a URS or a draft|Compliance matrix"
      },
      "How the installed system performs",
      "[compliance matrix response time, working days]"
@@ -75,10 +79,11 @@
      "Your system's alarms, interlocks and controls, before it ships",
      {
       "t": "Factory acceptance test (FAT) witness",
-      "link": "contact-locations#visit"
+      "link": "contact-locations#visit",
+      "intent": "Witness the FAT on our project"
      },
      "Performance on your feed water",
-     "[FAT witness notice, working days]"
+     "[FAT witness notice, working days], once [shop and test bay ready for visits]"
     ]
    ]
   },
@@ -86,22 +91,22 @@
    "type": "prose",
    "as": "explainer",
    "h": "What a case study proves",
-   "intro": "Each figure in a published case study will carry four things your team can check.",
+   "intro": "Each published figure will carry four things your team can check.",
    "points": [
     {
-     "t": "The figure",
+     "t": "Figure",
      "d": "Measured value, unit and reference temperature, against the pharmacopoeia limit."
     },
     {
-     "t": "The method",
+     "t": "Method",
      "d": "Sampling point, number of samples and period."
     },
     {
-     "t": "The report",
-     "d": "The executed acceptance test or qualification report, with its number."
+     "t": "Report",
+     "d": "Executed acceptance test or qualification report, with its number."
     },
     {
-     "t": "The approval",
+     "t": "Approval",
      "d": "A second engineer checks it [confirm]; the client's quality unit approves the text in writing, deviations included."
     }
    ],
@@ -114,7 +119,7 @@
    "h": "Questions buyers ask",
    "items": [
     {
-     "q": "Why are there no named clients on this page?",
+     "q": "Why are there no named clients?",
      "a": "We are a new Ontario company, and no case study is published yet. We publish one only with the client's written approval of its text and figures. A client may stay unnamed; the case then names only its segment and province."
     },
     {
@@ -134,12 +139,12 @@
  ],
  "cta": {
   "h": "Ask the engineer who would lead your project",
-  "body": "Tell us what your supplier approval asks for. We show what exists today and when the rest will be ready.",
+  "body": "Tell us what your supplier approval asks for. We show what exists today. Cost: [fit check cost or free].",
   "button": "Talk to an engineer",
   "link": "contact-proposal",
   "intent": "Not sure yet: talk to an engineer",
   "include": [
-   "What you make and the system you need",
+   "What you make",
    "Province of installation",
    "Your URS, if you have one"
   ],
@@ -153,10 +158,11 @@
  "todo": [
   "KEY (DR-016 rule 8; FD-42): after the first delivered project is accepted and its client approves text and figures in writing, add one case record in language/register.md E13's pattern: \"[client segment, province]: [problem in plain words], [measured outcome with unit] in [weeks]\", then capacity (L/h), conductivity (µS/cm @ 25 °C), TOC (ppb), microbial (CFU/mL), each with method and report number; system as supplied, including [PP loop sanitization method]; timeline from order to PQ; equipment new or replaced; deviations raised and closed. The template record taken off the page in pass A is in git at aquemi-web dbee6fc (block \"The record each case study fills\"); the CaseStudy component renders it",
   "After project 1 (DR-016 rule 8): nav_label may revert; one measured hero figure may return (DR-010); a reference-call row and button only once [reference clients available, number] is 1 or more (FD-41), with [reference call lead time, working days]",
-  "Launch (DR-004 class 2; DR-006 rule 6): keep each check row only once it exists, else drop it: shop visit and FAT witness ([shop and test bay ready for visits], FD-44), specimen package (FD-47), supplier audit (FD-48). The hero and closing button becomes the first check that exists, shop visit first; until one exists, \"Talk to an engineer\" (DR-016 rule 5)",
+  "Launch (DR-004 class 2; DR-006 rule 6): keep each check row only once it exists, else drop it: shop visit and FAT witness ([shop and test bay ready for visits], FD-44), specimen package (FD-47), supplier audit ([quality system ready for audit, date], FD-48). A kept row loses its \"once\" or \"from\" clause. The hero and closing button becomes the first check that exists, shop visit first; until one exists, \"Talk to an engineer\" (DR-016 rule 5)",
   "References (FD-41): [reference clients available, number], per segment, for the FAQ answer; once answered, the number by segment or \"Not yet.\"; never \"we can offer\" (DR-016 rule 7)",
   "Confirm as Aquemi practice: second engineer checks each published figure ([confirm] in \"The approval\"); the client may withdraw approval; deviations stated in each case; case updated at each milestone; a redacted FAT protocol and report can be shown",
-  "Times in working days, one name each: [shop visit notice], [FAT witness notice] (with svc-fat-sat and contact-locations), [sample package response time] (cmp-documentation), [on-site audit notice] (cmp-quality), [compliance matrix response time] (compliance), first reply [proposal response time] (every page). At launch an unset time is cut (DR-006 rule 7)",
+  "Times in working days, one name each: [shop visit notice], [FAT witness notice] (FD-44), [sample package response time] (cmp-documentation), [on-site audit notice] (cmp-quality), [compliance matrix response time] (compliance), first reply [proposal response time] (every page). At launch an unset time is cut (DR-006 rule 7)",
+  "Fit check cost ([fit check cost or free], FD-02; contact-proposal's requests table): \"Free\" or the figure in CAD beside the closing button (DR-005 rule 4); unset at launch, the cost line goes (DR-005 rule 8)",
   "Shop location ([shop location, city and province], FD-33), the same name as about, careers and cmp-quality",
   "Whether a prospect may witness another client's FAT before award, and on what terms (NDA, that client's written permission) (FD-44)",
   "Project photographs for each published case (with the client's permission)",

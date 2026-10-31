@@ -7,7 +7,7 @@
  "path": "/systems/",
  "eyebrow": "SYSTEMS · PW · RO · DI/EDI",
  "headline": "Purified Water systems, designed to meet USP limits",
- "lead": "One modular polypropylene package, with PVC pretreatment, makes Purified Water (PW) and delivers it to every point of use. Not Water for Injection, pure steam or stainless steel.",
+ "lead": "One modular polypropylene package, with PVC pretreatment, makes Purified Water (PW) and delivers it to every point of use. No Water for Injection, pure steam or stainless steel systems.",
  "primary_cta": "Get a budget range",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I have water data, no system yet|Modules and a budget range",
@@ -44,8 +44,7 @@
     },
     {
      "t": "Points of use",
-     "icon": "valve",
-     "d": "Where production takes water from the loop."
+     "icon": "valve"
     }
    ],
    "base": "Monitoring and controls · conductivity and TOC"
@@ -115,9 +114,9 @@
     },
     {
      "p": "Electrical and pressure approvals",
-     "v": "Electrical: [panel certification held]",
+     "v": "Electrical: [panel certification mark held, or field evaluation used]",
      "m": "Pressure: a Canadian registration number (CRN) for [pressure-rated items in the PW package]",
-     "link": "compliance"
+     "link": "compliance#engineering"
     },
     {
      "p": "Tie-in and shutdown",
@@ -191,11 +190,14 @@
    "items": [
     {
      "q": "We pay for exchange DI. When does a package make sense?",
-     "a": "When your daily use exceeds [exchange DI breakeven, L/day]. Below that, exchange deionization (DI) can cost less. USP <1231> warns that exchange canisters can contaminate the water. Send your daily use and exchange cost with your budget request."
+     "a": "When your daily use exceeds [exchange DI breakeven, L/day]. Below that, exchange deionization (DI) can cost less. USP <1231> warns that exchange canisters can contaminate the water. Send your daily use and exchange cost with your budget request.",
+     "link": "svc-service#running-cost"
     },
     {
      "q": "When is polypropylene the wrong choice?",
-     "a": "When the loop must run hot. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats. Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]."
+     "a": "When the loop must run hot. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+     "link": "sys-storage#sanitization",
+     "link_label": "Compare sanitization methods"
     },
     {
      "q": "Can you supply one part, or should one supplier design it all?",
@@ -207,7 +209,7 @@
     },
     {
      "q": "Do you build to standard platforms or to order?",
-     "a": "[standard platforms, capacity ranges, lead time in weeks]. Either way, we adapt materials, instruments and controls to your user requirement specification (URS)."
+     "a": "[standard platforms, capacity ranges, lead time in weeks]. Either way, we adapt instruments and controls to your user requirement specification (URS)."
     }
    ]
   },
@@ -218,7 +220,7 @@
     "services",
     "svc-design",
     "cmp-documentation",
-    "svc-upgrades"
+    "svc-service#running-cost"
    ]
   }
  ],
@@ -248,13 +250,12 @@
   "Whether the budget range is free or charged ([budget range cost or free], closing; FD-02)",
   "Budget proposal turnaround, working days ([budget proposal turnaround, working days], closing; the figure contact-proposal's requests table defines; FD-01)",
   "Intent \"I have water data, no system yet|Modules and a budget range\" (hero and closing) must match contact-proposal's situation and follow-up labels (DR-014 rules 2 and 11)",
-  "Site requirements (FD-20, FD-21, FD-24, FD-26): [standard battery limits, typical scope]; [typical footprint and weight, by capacity]; [supply voltage options]; [feed and drain flows, L/h]; [installation scope] (who installs and makes field joints); [panel certification held] (same as sys-pw); [pressure-rated items in the PW package] (same as compliance and cmp-quality); [typical shutdown for tie-in, days]; [lockable isolation points and lockout diagram]",
+  "Site requirements (FD-20, FD-21, FD-24, FD-26): [standard battery limits, typical scope]; [typical footprint and weight, by capacity]; [supply voltage options]; [feed and drain flows, L/h]; [installation scope] (who installs and makes field joints); [panel certification mark held, or field evaluation used] (compliance's and sys-monitoring's name: a certified panel shop or a per-unit field evaluation, FD-24; sys-pw still shows [panel certification held]); [pressure-rated items in the PW package] (same as compliance and cmp-quality); [typical shutdown for tie-in, days]; [lockable isolation points and lockout diagram]",
   "Sanitization method for the PP tank and loop ([PP loop sanitization method], budget and site tables; FD-14, DR-013)",
-  "Whether Aquemi quotes PVDF for hot loops ([whether we quote PVDF], FAQ; FD-15)",
   "Exchange DI breakeven, L/day, from the ten-year cost sheet ([exchange DI breakeven, L/day], FAQ; FD-49, DR-015)",
   "Check the current USP <1231> text still says exchange canisters can contaminate the water (FAQ); the library read only the 2006 text (H2O-01)",
-  "Whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks ([standard platforms, capacity ranges, lead time in weeks], FAQ; FD-20, FD-08)",
-  "Whether single modules (pretreatment, RO and DI/EDI skid, distribution) are supplied alone or only as the full package ([Whether single modules are supplied alone], FAQ; FD-20)",
+  "Whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks ([standard platforms, capacity ranges, lead time in weeks], FAQ; FD-20, FD-08). The answer opens with this fact: unfilled at launch, the question goes (DR-003 rule 3, DR-005 rule 8)",
+  "Whether single modules (pretreatment, RO and DI/EDI skid, distribution) are supplied alone or only as the full package ([Whether single modules are supplied alone], FAQ; FD-20). The answer opens with this fact: unfilled at launch, the question goes (DR-003 rule 3, DR-005 rule 8)",
   "Standard the PP piping and loop are designed to (dead legs, drainability); the ASME BPE row was removed",
   "Once the project-facts sheet exists (DR-001 rule 5), it becomes the hero's secondary link (DR-006)"
  ]

@@ -7,9 +7,13 @@
  "path": "/contact/service/",
  "eyebrow": "SERVICE REQUEST · PURIFIED WATER",
  "headline": "Service for Aquemi systems and [makes and equipment types serviced]",
- "lead": "Production stopped? Call [service phone number], [service phone hours]. For anything else, the form asks only what your request needs.",
+ "lead": "Production stopped? Call [service phone number], [service phone hours]. Anything else? The form asks only what your request needs.",
  "primary_cta": "Log a service request",
  "primary_cta_link": "#request",
+ "secondary_cta": {
+  "label": "Call [service phone number]",
+  "link": "tel:[service phone number]"
+ },
  "facts": [
   {
    "v": "[severity 1 on-site response time, hours]",
@@ -50,13 +54,12 @@
     },
     {
      "t": "Can you support my site?",
-     "d": "On-site time, service base and parts stock by region.",
      "steps": [
       "Find your region",
       "On-site time, base, parts",
       "Ask for it in writing"
      ],
-     "clock": "Written answer within [proposal response time, working days]",
+     "clock": "Written reply within [proposal response time, working days]",
      "link": "contact-locations#coverage",
      "action": "Check coverage for your site"
     }
@@ -132,7 +135,7 @@
         "Controls: PLC, HMI or SCADA",
         "One instrument"
        ],
-       "help": "PLC: programmable logic controller; HMI: operator panel; SCADA: supervisory control and historian."
+       "help": "Controller (PLC), operator panel (HMI) or supervisory control (SCADA)."
       }
      ]
     },
@@ -344,7 +347,7 @@
        "required": false,
        "when": "Parts and consumables",
        "options": [
-        "Material certificates for wetted PP and PVC parts",
+        "Material certificates for wetted parts",
         "USP <88> Class VI and FDA 21 CFR 177.2600 for elastomers",
         "Certificate of conformance",
         "Calibration certificate"
@@ -517,7 +520,7 @@
      "Fixed at the next or a booked visit"
     ],
     [
-     "Maintenance or calibration (severity 4)",
+     "Severity 4: maintenance or calibration",
      "Date within [maintenance booking reply time, working days]",
      "Signed report; calibration certificates to USP <645> and <643>"
     ],
@@ -569,16 +572,16 @@
   ]
  },
  "todo": [
-  "Service phone (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use. Who answers out of hours and makes the triage call: service engineer or dispatcher.",
+  "Service phone (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use. Fill the hero's call link (secondary_cta, tel:) in the same commit; if the number is still open at launch, it goes with the urgent route (DR-008). Who answers out of hours and makes the triage call: service engineer or dispatcher.",
   "Severity 1 clocks (FD-27, FD-28): [severity 1 phone answer time, minutes], [remote response time, hours] and [severity 1 on-site response time, hours] per plan, inside [service coverage area] (the name on home and contact-locations). Confirm the phone answer time applies to every caller: the urgent route shows it without a plan condition.",
   "Severity 2 and 3 clocks (FD-27): [severity 2 reply time, hours], [severity 2 visit time] (svc-service's name), [severity 3 reply time, working days].",
-  "Severity definitions (FD-27): one wording here (form options and table rows, word for word) and on svc-service, their home (DR-009, DR-011). svc-service's FAQ words severities 2 and 3 differently today.",
+  "Severity definitions (FD-27): svc-service, their home (DR-009, DR-011), now uses this page's wording word for word (form options and table rows, severity 4 included). Confirm one wording for both pages; the form options keep their names so other pages' intents still match.",
   "Call-out and hourly rates without a plan (FD-29): [call-out and hourly rates, CAD], svc-service's name.",
-  "Service desk (FD-31): [ticket acknowledgment time, minutes]; whether forms are read out of hours, and [out-of-hours form review time, hours]; [serial number format], and that it is on the nameplate; [trend window, hours]; [parts email address] and who receives parts orders (contact-locations writes [parts email]: one name for both).",
+  "Service desk (FD-31): [ticket acknowledgment time, minutes]; whether forms are read out of hours, and [out-of-hours form review time, hours]; [serial number format], and that it is on the nameplate; [trend window, hours]; [parts email address] (contact-locations uses it too) and who receives parts orders.",
   "Reply times (FD-31): [maintenance booking reply time, working days], one time for maintenance and calibration unless you set two; [requalification support reply time, working days]; [other-builder request reply time, working days]; [parts quote turnaround, working hours].",
   "Other builders' systems (FD-30): [makes and equipment types serviced], one name on every page that offers it (DR-011); whether parts are supplied for other makes; whether WFI stills, pure steam generators or stainless loops by others are excluded (the form lists PW systems only). If none are served, the headline becomes \"Service for Aquemi systems\" and the other-builder option, branch, row and help lines go.",
-  "Ozone (FD-16, FD-30): the calibration list offers UV only. Ozone sensor calibration returns only if FD-30 covers other makers' ozone systems (DR-013).",
-  "Certificates shipped with wetted PP and PVC spare parts (FD-17); sys-pw names them [certificates supplied for PP and PVC product-contact parts].",
+  "Ozone and UV (FD-16, FD-30): the calibration list and the hero figure show UV only. UV stays if the package has it ([UV, standard or option], sys-storage's name) or FD-30 covers other makes with UV; ozone sensor calibration returns only if FD-30 covers other makers' ozone systems (DR-013).",
+  "Certificates shipped with wetted PP and PVC spare parts (FD-17); sys-pw names them [certificates supplied for PP and PVC product-contact parts]. The form's option names no material, so it fits any builder's system.",
   "Uploads and privacy (FD-39): [maximum upload size, MB], as on contact-proposal; [Privacy notice link], contact-proposal's name, covering PIPEDA and Quebec Law 25 after counsel's check (OQ-81).",
   "Language for the reply (FD-36, DR-012): keep French only if a French-speaking technician or engineer replies within the same times; otherwise the field leaves the form at launch.",
   "Contact routes: [proposal response time, working days] (FD-01), as on contact-proposal; the coverage route's written answer is contact-locations' closing, which uses the same time. Shop visits stay on contact-locations, offered once the shop and test bay are ready (FD-44, DR-004)."

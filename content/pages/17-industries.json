@@ -7,7 +7,7 @@
  "path": "/industries/",
  "eyebrow": "INDUSTRIES · USP · PH. EUR.",
  "headline": "Your product sets the grade",
- "lead": "One Purified Water (PW) package in polypropylene, not Water for Injection. Limits are the same in every industry; what changes is where water touches product and who reads the record.",
+ "lead": "One Purified Water (PW) package in polypropylene. No Water for Injection, pure steam or stainless steel systems. PW limits are the same in every industry.",
  "primary_cta": "Request a water scope review",
  "primary_cta_link": "contact-proposal",
  "primary_cta_intent": "I know my product, not my water spec",
@@ -15,7 +15,11 @@
   "label": "Plan your first PW system",
   "link": "industries#first-system"
  },
- "index": true,
+ "index": [
+  "ind-pharma",
+  "ind-cdmo",
+  "ind-meddevice"
+ ],
  "blocks": [
   {
    "type": "table",
@@ -24,17 +28,12 @@
    "h": "Your situation and where to start",
    "cols": [
     "Your situation",
-    "Industry page",
     "System",
     "Start with"
    ],
    "rows": [
     [
      "A new oral or topical drug line",
-     {
-      "t": "Pharmaceutical",
-      "link": "ind-pharma"
-     },
      {
       "t": "PW generation",
       "link": "sys-pw"
@@ -47,10 +46,6 @@
     [
      "A new client program with a tech transfer date",
      {
-      "t": "Contract manufacturing",
-      "link": "ind-cdmo"
-     },
-     {
       "t": "Storage and distribution loops",
       "link": "sys-storage"
      },
@@ -62,10 +57,6 @@
     [
      "Endotoxin or bioburden drifting on finished devices",
      {
-      "t": "Medical devices",
-      "link": "ind-meddevice"
-     },
-     {
       "t": "Storage and distribution loops",
       "link": "sys-storage"
      },
@@ -76,19 +67,14 @@
     ],
     [
      "Natural health products: does this line need PW?",
-     {
-      "t": "Pharmaceutical",
-      "link": "ind-pharma"
-     },
      "PW generation, if needed",
      {
-      "t": "Natural health products section",
+      "t": "Pharmaceutical: natural health products",
       "link": "ind-pharma#nhp"
      }
     ],
     [
      "A water observation, or out-of-trend results",
-     "Any industry",
      {
       "t": "Monitoring and controls",
       "link": "sys-monitoring"
@@ -184,6 +170,11 @@
      "link": "systems#budget"
     },
     {
+     "t": "Running cost",
+     "d": "Service plan, consumables, energy and water to drain.",
+     "link": "svc-service#running-cost"
+    },
+    {
      "t": "Your team’s first year",
      "d": "First use after at least 2 weeks of daily sampling, if your quality unit approves. [staff hours in year one: sampling, logs, sanitization].",
      "link": "svc-cq"
@@ -199,19 +190,18 @@
    "type": "options",
    "nav": "Adjacent uses",
    "h": "Outside drug and device manufacturing",
-   "intro": "Our scope: [hospital water scope]; [lab water scope]; [industrial water scope].",
    "items": [
     {
      "t": "Hospital reprocessing (MDRD)",
-     "d": "CSA Z314:23; ANSI/AAMI ST108:2023. Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit."
+     "d": "[hospital water scope]. CSA Z314:23; ANSI/AAMI ST108:2023. Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit."
     },
     {
      "t": "Research laboratories",
-     "d": "ASTM D1193: a central reverse osmosis (RO) and electrodeionization (EDI) loop; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers]."
+     "d": "[lab water scope]. ASTM D1193-24: central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers]."
     },
     {
      "t": "Industrial demineralized water",
-     "d": "Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange."
+     "d": "[industrial water scope]. Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange."
     }
    ]
   },
@@ -223,11 +213,11 @@
    "items": [
     {
      "q": "Do you supply Water for Injection (WFI)?",
-     "a": "No. We build one Purified Water (PW) package: pretreatment, reverse osmosis, deionization or electrodeionization, and distribution. We do not supply Water for Injection (WFI), pure steam, stills or stainless steel piped systems. Where your product needs WFI, you generate it on site; PW is the usual feed to a WFI still."
+     "a": "No: we supply a Purified Water (PW) package in polypropylene, not Water for Injection (WFI), pure steam or stainless steel. It covers pretreatment, reverse osmosis, deionization or electrodeionization, and distribution; no stills. Where your product needs WFI, you generate it; PW is the usual feed to a WFI still."
     },
     {
      "q": "Do natural health products or cosmetics need PW?",
-     "a": "Not always. Under GUI-0158, natural health products need potable water at minimum. Purified Water (PW) is needed where the specification or a monograph calls for it. For cosmetics, the product’s legal class sets the grade: cosmetic-only lines follow your written specification; any drug line needs PW. For another product, send the standard you work to."
+     "a": "Not always. Under Health Canada’s GUI-0158, natural health products need potable water at minimum. Purified Water (PW) is needed where the specification or a monograph calls for it. For cosmetics, the product’s legal class sets the grade: cosmetic-only lines follow your written specification; any drug line needs PW."
     }
    ]
   },
@@ -262,12 +252,12 @@
  "todo": [
   "Target segments at launch (FD-38): pharmaceutical with natural health products, CDMO and medical devices, in that order (DR-002); confirm cosmetics and personal care makers with drug or natural health product lines stay a named row",
   "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]) is defined in contact-proposal's requests table (DR-014) and shown here as the figure only",
-  "One scope sentence per adjacent use (FD-25, DR-002 rule 6), the same words on ind-meddevice and about: [hospital water scope] (for example 'not offered today', or replacements and upgrades in Ontario and Quebec through your consultant or mechanical contractor), [lab water scope], [industrial water scope]",
+  "One scope sentence per adjacent use (FD-25, DR-002 rule 6), opening that use's row and in the same words on ind-meddevice and about: [hospital water scope] (for example 'not offered today', or replacements and upgrades in Ontario and Quebec through your consultant or mechanical contractor), [lab water scope], [industrial water scope]",
   "Laboratory Type I water: [whether Aquemi integrates third-party polishers] (DR-002 rule 5)",
   "Staff time in year one for sampling, logs and sanitization ([staff hours in year one: sampling, logs, sanitization], first-system path); not yet an FD row (DR-015)",
   "WFI wording (FAQ, sterile row): Aquemi supplies PW only (MISSION). PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it until the owner confirms",
   "References per segment, or 'none yet' (FD-41): no reference call or case block here until a client agrees in writing (DR-004, DR-016); link projects per industry once a case study exists (FD-42)",
-  "Anchors this page links to: ind-pharma#nhp (the natural health products section, DR-002), svc-upgrades#observation (the water observation block, DR-015), systems#budget (DR-005). Until a block carries its anchor, the link opens that page at the top",
+  "Anchors this page links to: ind-pharma#nhp (the natural health products section, DR-002; router and grade table), svc-upgrades#observation (the water observation block, DR-015), systems#budget (DR-005 rule 1), svc-service#running-cost (DR-005 rule 6; the path's running-cost row). Until a block carries its anchor, the link opens that page at the top",
   "Device inspector cell: Health Canada requires an ISO 13485 certificate for Class II to IV licences; whether it must come from an MDSAP audit is unverified in the library (IMD-22, IMD-28). Keep the cell in line with ind-meddevice's auditor table",
   "Whether a scope without a loop is offered for dry-dose natural health product lines (FD-20); until then the router's natural health products row reads 'PW generation, if needed'"
  ]

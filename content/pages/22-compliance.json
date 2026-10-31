@@ -33,7 +33,7 @@
    "rows": [
     {
      "p": "Conductivity",
-     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1, uncompensated)",
      "m": "USP <645>",
      "hl": true
     },
@@ -55,6 +55,7 @@
    "nav": "Map",
    "anchor": "map",
    "h": "Which standard governs each part",
+   "intro": "Each standard links to its proof below.",
    "zones": [
     {
      "t": "Generation",
@@ -144,7 +145,7 @@
    "cols": [
     "Standard",
     "What we design to",
-    "Document that proves it",
+    "Proof",
     "Where we show it"
    ],
    "rows": [
@@ -159,7 +160,7 @@
     ],
     [
      "USP <643> Total organic carbon",
-     "≤ 0.50 mg/L; system suitability at 85 % to 115 % response efficiency",
+     "System suitability at 85 % to 115 % response efficiency",
      "Suitability records; analyzer calibration; OQ report",
      {
       "t": "Monitoring and controls",
@@ -168,7 +169,7 @@
     ],
     [
      "Ph. Eur. 0008 Purified water",
-     "Revised in Ph. Eur. 12.3, in force 1 July 2026",
+     "As revised in 12.3, in force 1 July 2026",
      "Functional specification",
      {
       "t": "PW generation",
@@ -206,7 +207,7 @@
    "cols": [
     "Standard",
     "What we design to",
-    "Document that proves it",
+    "Proof",
     "Where we show it"
    ],
    "rows": [
@@ -287,7 +288,7 @@
    "cols": [
     "Standard",
     "What we design to",
-    "Document that proves it",
+    "Proof",
     "Where we show it"
    ],
    "rows": [
@@ -303,7 +304,7 @@
     [
      "[panel standard]",
      "Panels built and marked to [panel certification mark held, or field evaluation used]",
-     "Panel certification label and report",
+     "Panel label and report",
      {
       "t": "Monitoring and controls",
       "link": "sys-monitoring"
@@ -311,7 +312,7 @@
     ],
     [
      "[PP piping standard]",
-     "PP pipe, fittings and valves; dead legs to [dead leg rule for the PP loop]",
+     "PP pipe, fittings and valves; dead legs to [dead leg design limit, L/D]",
      "Dead leg register; pressure test to [PP pressure test method]",
      {
       "t": "Storage and distribution loops",
@@ -329,7 +330,7 @@
     ],
     [
      "[PP joining standard]",
-     "Joints by [PP joining method, for example butt fusion or IR welding], to [PP joint procedure and operator qualification]",
+     "Joints by [PP joining method], to [PP joint procedure and operator qualification]",
      "[PP joint records kept]",
      {
       "t": "Fabrication",
@@ -400,11 +401,11 @@
   "Certifications actually held: ISO 9001 status, certificate number, scope, registrar and expiry (or target date); downloadable copies. The status line lives on cmp-quality, a related link here; never list a certificate here that is not held (DR-004 rule 3, FD-48)",
   "Pressure equipment: which items in the PW package are pressure-rated and need a CRN (for example RO membrane housings), which are exempt by written determination, the vessel code they are built to, and the certificate holder or certified vessel fabricator used ([pressure-rated items in the PW package]; FD-24)",
   "CRN: provinces where Aquemi has registered designs; who prepares and submits the CRN application and at which design stage ([Aquemi CRN process and provinces covered], FAQ; FD-24)",
-  "Panel approval route ([panel standard]; [panel certification mark held, or field evaluation used]): the CSA standard the certification body applies (C22.2 No. 14 or No. 286), whether UL 508A applies for US sites, the label's scope (panel only, or the whole skid as assembled) and file number. Get it in writing from the certification body before the page names a standard (DR-007 rule 4, FD-24)",
+  "Panel approval route ([panel standard]; [panel certification mark held, or field evaluation used]): the CSA standard the certification body applies (C22.2 No. 14 or No. 286), whether UL 508A applies for US sites, the label's scope (panel only, or the whole skid as assembled) and file number. Get it in writing from the certification body before the page names a standard; then name the label and report in the engineering table's proof cell (DR-007 rule 4, FD-24)",
   "PP piping standard Aquemi designs and buys to ([PP piping standard]; map, engineering table); PP pressure test method and test factor ([PP pressure test method]; FD-17, FD-19)",
   "PP material standard, grade and certificates for product-contact parts ([PP material standard], [grade, for example PP-R], [PP material certificates]; names shared with sys-storage, svc-fabrication, cmp-quality and cmp-documentation; FD-17)",
-  "PP joining: method (for example butt fusion or IR welding), the standard followed, procedure and operator qualification, and the joint records delivered ([PP joining standard], [PP joining method, for example butt fusion or IR welding], [PP joint procedure and operator qualification], [PP joint records kept]; FD-18)",
-  "Dead leg rule applied to the PP loop ([dead leg rule for the PP loop]; FD-19)",
+  "PP joining: method (FD-18 recommends IR or BCF fusion for product-contact PP, no socket fusion), the standard followed, procedure and operator qualification, and the joint records delivered ([PP joining standard], [PP joining method], [PP joint procedure and operator qualification], [PP joint records kept]; the joining method keeps one name site-wide; FD-18)",
+  "Dead leg design limit, L/D, for PP piping on the skid and the loop ([dead leg design limit, L/D]; engineering table; the name sys-pw and svc-design use; FD-19)",
   "Maximum loop sanitization temperature for PP, °C ([maximum loop sanitization temperature for PP, °C]; USP <1231> row); same placeholder as ind-pharma and sys-storage; any temperature wording follows DR-013 (FD-14)",
   "WHO TRS 1033, 7.2.1 justification for PP, point by point, written before launch: the FAQ 'Our auditor expects stainless' offers it (FD-49 proof backlog)",
   "Risk assessment method Aquemi uses for ASTM E2500 and ICH Q9(R1) critical aspects ([risk assessment method], GMP table; the same placeholder as svc-design; FD-46). Never fill it with FMEA because a notebook suggested it",
