@@ -130,9 +130,6 @@
        "required": false,
        "options": [
         "Purified Water (PW) generation",
-        "Water for Injection (WFI) by distillation",
-        "WFI by membrane",
-        "Pure steam generator",
         "Storage and distribution loop",
         "Pretreatment",
         "Controls: PLC, HMI or SCADA",
@@ -350,7 +347,7 @@
        "required": false,
        "when": "Parts and consumables",
        "options": [
-        "EN 10204 3.1 for wetted metal",
+        "Material certificates for wetted parts, [standard for PP and PVC certificates]",
         "USP <88> Class VI and FDA 21 CFR 177.2600 for elastomers",
         "Certificate of conformance",
         "Calibration certificate"
@@ -600,6 +597,8 @@
   "Service report turnaround (working days, same as svc-service)",
   "Service coverage area (same as svc-service and contact-locations)",
   "Privacy notice link (PIPEDA, Quebec Law 25)",
+  "Material certificate shipped with wetted PP and PVC parts ([standard for PP and PVC certificates]); replaces EN 10204 3.1 for wetted metal",
+  "Whether any-builder service still covers WFI stills, pure steam generators or stainless loops installed by others; the form now lists PW systems only",
   "Confirm French-language service replies are available",
   "Contact routes: proposal response time (same as contact-proposal); shop location and visit booking reply time (same as contact-locations)"
  ],

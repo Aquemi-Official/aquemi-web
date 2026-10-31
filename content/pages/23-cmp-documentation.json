@@ -3,9 +3,9 @@
  "section": "Compliance",
  "nav_label": "Documentation package",
  "title": "Turnover package and validation documents | Aquemi",
- "meta": "Every document we deliver, by stage: URS matrix, P&IDs, EN 10204 3.1 certificates, weld log, FAT and IQ/OQ. Request a redacted sample package.",
+ "meta": "Every document we deliver with a Purified Water system, by stage: URS matrix, P&IDs, material certificates, joint records, FAT and IQ/OQ. Request a redacted sample package.",
  "path": "/compliance/documentation/",
- "eyebrow": "DOCUMENTATION · EU GMP ANNEX 15 · GAMP 5 · ASME BPE",
+ "eyebrow": "DOCUMENTATION · EU GMP ANNEX 15 · GAMP 5 · PART 11",
  "headline": "Every document your auditor asks for",
  "lead": "We write each document as we design, build and test, and index the package to your URS.",
  "primary_cta": "Request a sample turnover package",
@@ -35,23 +35,23 @@
     },
     {
      "t": "Drawings and calculations",
-     "d": "As-built drawings, process balances, ASME VIII vessel calculations"
+     "d": "As-built drawings, process balances, loop hydraulics"
     },
     {
      "t": "Materials",
-     "d": "Each product-contact part by heat number; elastomers to USP <88> Class VI"
+     "d": "Each product-contact PP part by lot, to [PP material standard]; elastomers to USP <88> Class VI"
     },
     {
-     "t": "Welding",
-     "d": "ASME IX procedures, operator qualifications, weld maps and log, borescope ([share of product-contact welds borescoped, %])"
+     "t": "Joining",
+     "d": "[PP joining method] procedures, operator qualifications, joint maps and log"
     },
     {
-     "t": "Surface, cleaning and drainability",
-     "d": "ASME BPE SF1 or SF4 finish, passivation to ASTM A967 or A380, dead legs L/D ≤ 2"
+     "t": "Cleaning and drainability",
+     "d": "Slopes and low-point drains, dead legs to [dead leg rule for the PP loop], [PP flush and cleaning procedure]"
     },
     {
      "t": "Pressure equipment and panels",
-     "d": "Hydrostatic tests to ASME B31.3, CRN under CSA B51, panel certification"
+     "d": "Pressure tests to [PP pressure test method], CRN under CSA B51 where required, panel certification"
     },
     {
      "t": "Instruments and calibration",
@@ -63,7 +63,7 @@
     },
     {
      "t": "Testing and qualification",
-     "d": "FAT, SAT, IQ, OQ and PQ protocols and reports, deviation logs, EN 285 report"
+     "d": "FAT, SAT, IQ, OQ and PQ protocols and reports, deviation logs, sanitization records"
     },
     {
      "t": "Operation, maintenance and training",
@@ -123,7 +123,7 @@
     [
      "Fabrication",
      "IQ evidence (Annex 15, 3.9). Aquemi quality control approves; your team again at IQ.",
-     "Material log with 3.1 certificates; welding qualifications; weld map and log; borescope, finish and pressure test records"
+     "Material log with certificates; joining qualifications; joint map and log; pressure test records"
     ],
     [
      "FAT and SAT",
@@ -194,7 +194,7 @@
       "Turnover package index",
       "FAT protocol: contents and test cases",
       "IQ and OQ protocol contents",
-      "Weld map and weld log extract"
+      "Joint map and joint log extract"
      ]
     },
     {
@@ -245,7 +245,7 @@
     },
     {
      "q": "Do you check third-party certificates, or just forward them?",
-     "a": "We check them: markings against the certificate at receipt, [PMI, standard or option]. Certificates reach you as the issuer sent them, never retyped."
+     "a": "We check them: markings and lot numbers against the certificate at receipt. Certificates reach you as the issuer sent them, never retyped."
     }
    ]
   },
@@ -280,7 +280,7 @@
  },
  "todo": [
   "KEY: which samples are shared openly and which under NDA ([openly or under NDA]: form intro, FAQ); whether Aquemi uses its own mutual NDA",
-  "Prepare the redacted sample package from a delivered system: turnover index, FAT protocol TOC and sample test cases, IQ/OQ TOC and check sheets, weld map and weld log extract, material log extract, RTM extract, signed service report",
+  "Prepare the redacted sample package from a delivered system: turnover index, FAT protocol TOC and sample test cases, IQ/OQ TOC and check sheets, joint map and joint log extract, material log extract, RTM extract, signed service report",
   "Sample package response time (working days) and form back-end (where submissions go)",
   "Protocol issue before FAT (weeks); same placeholder as svc-fat-sat",
   "Standard document review period (working days) in the review cycle",
@@ -290,8 +290,10 @@
   "[French documents offered]: which documents are offered in French and how translations are controlled (same open question as home page)",
   "[secure transfer method or portal]; [paper sets offered]: number of paper sets, if any",
   "Retention period (years) for Aquemi's copy of the turnover package, and reissue on request",
-  "Borescope share of product-contact welds (%) (same placeholder as svc-fabrication, compliance)",
-  "PMI at receipt: standard or option (same as svc-fabrication)",
+  "PP material standard and certificate type per lot ([PP material standard]; same as compliance)",
+  "PP joining method and the joint records delivered: procedures, operator qualifications, joint map and log ([PP joining method]; same as compliance, svc-fabrication)",
+  "Dead leg rule for the PP loop and the flush and cleaning procedure before handover ([dead leg rule for the PP loop], [PP flush and cleaning procedure])",
+  "PP pressure test method and test factor ([PP pressure test method]; same as compliance); which items need a CRN under CSA B51",
   "[what a QA audit covers]: e.g. the fabrication shop and document control",
   "Recommended spare parts coverage (months of operation) (same as system pages)",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
@@ -302,12 +304,12 @@
  "primary_cta_link": "#samples",
  "facts": [
   {
-   "v": "EN 10204 3.1",
-   "l": "Per product-contact part"
+   "v": "USP <88> Class VI",
+   "l": "Elastomer certificates"
   },
   {
-   "v": "1 line per weld",
-   "l": "Weld log · ASME BPE"
+   "v": "Part 11 + Annex 11",
+   "l": "Assessment in the specifications"
   },
   {
    "v": "Annex 15, 3.6",
@@ -323,7 +325,7 @@
    "Specifications",
    "Drawings and calculations",
    "Materials",
-   "Welding"
+   "Joining"
   ],
   "foot": "Indexed to your URS"
  }

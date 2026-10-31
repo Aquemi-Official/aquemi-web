@@ -20,7 +20,7 @@
    "as": "evidence",
    "nav": "Processes",
    "h": "Each process, and the record it leaves",
-   "intro": "An auditor picks a weld, a certificate or a change and asks how.",
+   "intro": "An auditor picks a joint, a certificate or a change and asks how.",
    "cols": [
     "Process",
     "What it controls",
@@ -39,8 +39,8 @@
     ],
     [
      "Identification and traceability · ISO 9001 8.5.2",
-     "Product-contact parts traced by heat, lot or serial number to weld and drawing",
-     "Material log against EN 10204 3.1 certificates; weld log and maps"
+     "Product-contact parts traced by lot or serial number to joint and drawing",
+     "Material log against [PP material certificates]; joint log and maps"
     ],
     [
      "Calibration · ISO 9001 7.1.5",
@@ -82,7 +82,7 @@
     },
     {
      "t": "Repair",
-     "d": "A rejected product-contact weld is cut out, never ground or re-fused; it gets a new number."
+     "d": "A rejected product-contact joint is cut out and remade to [PP joint repair rule]; it gets a new number."
     },
     {
      "t": "Root cause and CAPA",
@@ -110,24 +110,19 @@
    ],
    "rows": [
     [
-     "Tubing and fittings",
-     "316L to ASME BPE, an EN 10204 3.1 certificate per heat; never a 2.2 report",
-     "Heat marking checked against the certificate; [PMI by X-ray fluorescence, standard or option]"
+     "PP pipe, fittings and valves",
+     "PP to [PP piping standard], [PP material certificates] per lot",
+     "Lot marking checked against the certificate at receipt"
+    ],
+    [
+     "Pretreatment piping",
+     "PVC to [PVC pipe standard], manufacturer's certificate",
+     "Markings checked against the order at receipt"
     ],
     [
      "Elastomers and gaskets",
      "USP <88> Class VI and 21 CFR 177.2600, certificate per compound",
      "Compound and grade checked; like-for-like replacement only"
-    ],
-    [
-     "Electropolishing",
-     "SF4: Ra ≤ 0.38 µm (15 µin) to ASME BPE; [in-house or named subcontractor]",
-     "Profilometer Ra readings at receipt; certificate per component"
-    ],
-    [
-     "Passivation",
-     "ASTM A967, or ASTM A380 for assembled systems; [in-house or named subcontractor]",
-     "Certificate checked for chemistry, temperature, contact time and verification test"
     ],
     [
      "Membranes, EDI and resin",
@@ -136,7 +131,7 @@
     ],
     [
      "Pressure vessels and panels",
-     "ASME VIII vessels with a CRN (CSA B51); CSA C22.2 No. 286 or UL 508A panels",
+     "[pressure-rated items in the PW package] with a CRN (CSA B51); CSA C22.2 No. 286 or UL 508A panels",
      "Data reports reviewed; panel label checked"
     ]
    ],
@@ -156,15 +151,15 @@
      "icon": "stamp"
     },
     {
-     "t": "Welding",
-     "d": "[welding certification held, e.g. CWB CSA W47.1]",
-     "tag": "ASME IX",
+     "t": "PP joining",
+     "d": "[PP joining qualification held]",
+     "tag": "[PP joining standard]",
      "link": "svc-fabrication",
      "icon": "weld"
     },
     {
      "t": "Pressure equipment",
-     "d": "[ASME certificate holder or certified vessel partner]",
+     "d": "[pressure vessel certificate holder or certified vessel partner]",
      "tag": "CSA B51",
      "link": "compliance",
      "icon": "tank"
@@ -282,12 +277,14 @@
   "Confirm NCR practice: accept-as-is and repairs departing from approved documents need client approval; no shipment with an open product-contact NCR without client-approved disposition",
   "Notification time for nonconformances found after shipment (working days)",
   "Supplier review interval (months); whether Aquemi audits critical subcontractors on site and how often; supplier audit practice",
-  "Whether electropolishing and shop passivation are in-house or by a named subcontractor (same as svc-fabrication); whether site passivation is done by Aquemi staff (no longer asked on this page)",
-  "PMI by X-ray fluorescence at receipt: standard or option (same as svc-fabrication, cmp-documentation)",
+  "PP piping standard and PP material certificate type per lot for pipe, fittings and valves ([PP piping standard], [PP material certificates]; same as compliance)",
+  "PVC pipe standard for pretreatment piping ([PVC pipe standard])",
+  "Repair rule for a rejected PP joint ([PP joint repair rule])",
+  "Which items in the PW package are pressure-rated and need a CRN ([pressure-rated items in the PW package]; same as compliance)",
   "Calibration provider and accreditation (for example ISO/IEC 17025); calibration intervals by instrument type (months)",
-  "Weld inspector qualification (for example CWB or AWS certified welding inspector)",
-  "Pressure vessel route (certified vessel fabricator or ASME certificate of authorization) and panel shop and mark (same as compliance)",
-  "Welding certification held (for example CWB CSA W47.1) (same as compliance)",
+  "Joint inspector qualification for PP joints, if any",
+  "Pressure vessel route for pressure-rated items and panel shop and mark (same as compliance)",
+  "PP joining qualification held and the standard it follows ([PP joining qualification held], [PP joining standard]; same as compliance)",
   "Safety programme certification (for example provincial COR), workers' compensation clearance, contractor platforms registered on (Avetta, ISNetworld, ComplyWorks) or none",
   "Certificates of insurance: general and professional liability limits for the questionnaire pack",
   "Quality manual and critical supplier names shared openly or under NDA (same as svc-design: openly or under NDA)",

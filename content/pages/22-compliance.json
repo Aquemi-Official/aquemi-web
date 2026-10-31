@@ -2,12 +2,12 @@
  "id": "compliance",
  "section": "Compliance",
  "nav_label": "Standards we design to",
- "title": "Water system standards: USP, Ph. Eur., ASME BPE | Aquemi",
- "meta": "Every standard behind our PW, WFI and pure steam systems: USP <645> 1.3 µS/cm, EN 285, ASME BPE, CSA B51 CRN, and the document that proves each.",
+ "title": "Purified Water system standards: USP, Ph. Eur., GMP | Aquemi",
+ "meta": "Every standard behind our Purified Water (PW) systems: USP <645> 1.3 µS/cm, USP <643>, Ph. Eur. 0008, GAMP 5, Part 11, CSA B51 CRN, and the document that proves each.",
  "path": "/compliance/",
- "eyebrow": "COMPLIANCE · USP · PH. EUR. · ASME BPE · CSA B51",
+ "eyebrow": "COMPLIANCE · USP · PH. EUR. · GMP · CSA B51",
  "headline": "Every standard, its number, its proof",
- "lead": "Each standard behind our PW, WFI and pure steam systems, with its limit and the document that proves it.",
+ "lead": "Each standard behind our Purified Water (PW) systems, with its limit and the document that proves it.",
  "primary_cta": "Request a compliance matrix",
  "primary_cta_intent": "Compliance matrix for your URS",
  "primary_cta_link": "contact-proposal",
@@ -24,7 +24,7 @@
    "anchor": "limits",
    "h": "Release limits at the point of use",
    "intro": "Where USP and Ph. Eur. differ, we design to the stricter value.",
-   "caption": "PW · WFI · PURE STEAM",
+   "caption": "PW · USP AND PH. EUR.",
    "cols": [
     "Parameter",
     "Limit",
@@ -32,18 +32,13 @@
    ],
    "rows": [
     {
-     "p": "Conductivity, PW and WFI",
+     "p": "Conductivity, PW",
      "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
      "m": "USP <645>",
      "hl": true
     },
     {
-     "p": "Endotoxin, WFI",
-     "v": "< 0.25 EU/mL",
-     "m": "USP <85>; Ph. Eur. 2.6.14"
-    },
-    {
-     "p": "TOC, PW and WFI",
+     "p": "TOC, PW",
      "v": "≤ 0.50 mg/L (500 ppb)",
      "m": "USP <643>; Ph. Eur. 2.2.44"
     },
@@ -53,17 +48,12 @@
      "m": "Ph. Eur. 0008; no USP test"
     },
     {
-     "p": "Action level, WFI",
-     "v": "10 CFU/100 mL",
-     "m": "USP <1231>; Ph. Eur. 0169"
-    },
-    {
-     "p": "Sterilizer steam, non-condensable gases",
-     "v": "≤ 3.5 mL per 100 mL condensate",
-     "m": "EN 285"
+     "p": "Action level, PW",
+     "v": "100 CFU/mL",
+     "m": "USP <1231>; Ph. Eur. 0008"
     }
    ],
-   "note": "Ph. Eur. conductivity: PW ≤ 5.1 µS/cm @ 25 °C, WFI ≤ 1.1 µS/cm @ 20 °C. PW action level 100 CFU/mL. Steam dryness ≥ 0.95, superheat ≤ 25 K. Pure steam condensate meets the WFI monograph."
+   "note": "Ph. Eur. conductivity for PW: ≤ 5.1 µS/cm @ 25 °C. Where you generate Water for Injection (WFI) from our PW, the WFI limits apply at the outlet of your still, not to our system."
   },
   {
    "type": "standards-map",
@@ -79,8 +69,7 @@
      "codes": [
       "USP <645>",
       "USP <643>",
-      "Ph. Eur. 0008",
-      "Ph. Eur. 0169"
+      "Ph. Eur. 0008"
      ],
      "spot": "ro-skid"
     },
@@ -94,22 +83,12 @@
        "t": "USP <1231>",
        "to": "pharmacopoeia"
       },
-      "ASME BPE"
-     ],
-     "spot": "storage-tank"
-    },
-    {
-     "t": "Pure steam",
-     "icon": "pure-steam",
-     "to": "pharmacopoeia",
-     "codes": [
-      "USP <85>",
       {
-       "t": "EN 285",
-       "to": "limits"
+       "t": "[PP piping standard]",
+       "to": "engineering"
       }
      ],
-     "spot": "pure-steam-generator"
+     "spot": "storage-tank"
     },
     {
      "t": "Controls and data",
@@ -127,17 +106,13 @@
      "spot": "gauge"
     },
     {
-     "t": "Fabrication",
+     "t": "Materials and fabrication",
      "icon": "weld",
      "to": "engineering",
      "codes": [
-      "ASME BPE",
-      "CSA B51",
-      "ASME Section VIII",
-      "ASME Section IX",
-      "ASME B31.3",
-      "EN 10204 3.1",
-      "ASTM A967"
+      "[PP material standard]",
+      "[PP joining standard]",
+      "CSA B51"
      ],
      "spot": "weld"
     },
@@ -188,15 +163,6 @@
      }
     ],
     [
-     "USP <85> Bacterial endotoxins",
-     "< 0.25 EU/mL at the outlet, WFI and pure steam condensate",
-     "Endotoxin reduction in the functional specification; PQ sampling plan",
-     {
-      "t": "WFI by distillation",
-      "link": "sys-wfi-distillation"
-     }
-    ],
-    [
      "Ph. Eur. 0008 Purified water",
      "Revised in Ph. Eur. 12.3, in force 1 July 2026; stricter of USP",
      "Functional specification; nitrates tested at FAT",
@@ -206,17 +172,8 @@
      }
     ],
     [
-     "Ph. Eur. 0169 Water for injections",
-     "RO with other techniques since 1 April 2017, after notice to the GMP authority",
-     "Membrane WFI control strategy; functional specification",
-     {
-      "t": "WFI by membrane",
-      "link": "sys-wfi-membrane"
-     }
-    ],
-    [
      "USP <1231> Water for pharmaceutical purposes",
-     "Informational; 65–80 °C most used for thermal sanitization",
+     "Informational; sanitization within [maximum loop sanitization temperature for PP, °C]; alert and action levels",
      "Sampling plan; alert and action level rationale",
      {
       "t": "Storage and distribution loops",
@@ -225,7 +182,7 @@
     ],
     [
      "EMA guideline on water for pharmaceutical use",
-     "WFI for parenterals and biologics; PW minimum for most non-sterile forms",
+     "PW minimum for most non-sterile forms; WFI, which you generate, for parenterals",
      "Water grade per point of use in the basis of design",
      {
       "t": "Pharmaceutical",
@@ -251,7 +208,7 @@
    "rows": [
     [
      "EU GMP Annex 1 (2022); Health Canada GUI-0119",
-     "6.7 no dead legs; 6.10 WFI > 70 °C; 6.12 sanitization; 6.15 online TOC",
+     "6.7 no dead legs; 6.12 sanitization; [other Annex 1 clauses that apply to PW]",
      "Dead leg register; hydraulics; sanitization OQ",
      {
       "t": "Storage and distribution loops",
@@ -287,7 +244,7 @@
     ],
     [
      "FDA Guide to Inspections of High Purity Water Systems (1993)",
-     "A full year of data; WFI samples 100–300 mL",
+     "A full year of data; dead legs and sanitization reviewed",
      "Sampling plan; dead leg register",
      {
       "t": "Commissioning and qualification",
@@ -331,9 +288,27 @@
    ],
    "rows": [
     [
-     "ASME BPE",
-     "Dead legs L/D ≤ 2; SF4 Ra ≤ 0.38 µm (15 µin) electropolished",
-     "Dead leg register; finish report; weld log and borescope records ([share of product-contact welds borescoped, %])",
+     "[PP piping standard]",
+     "Polypropylene (PP) pipe, fittings and valves; dead legs to [dead leg rule for the PP loop]",
+     "Dead leg register; pressure test to [PP pressure test method], witnessed",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "[PP material standard]",
+     "Product-contact PP from [PP resin grade]; PVC in pretreatment only",
+     "[PP material certificates] traced by lot",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
+    ],
+    [
+     "[PP joining standard]",
+     "Joints by [PP joining method, for example butt fusion or IR welding], to [PP joint procedure and operator qualification]",
+     "[PP joint records, for example joint map and log]",
      {
       "t": "Fabrication",
       "link": "svc-fabrication"
@@ -341,53 +316,8 @@
     ],
     [
      "CSA B51",
-     "A Canadian registration number (CRN) from the province of installation",
+     "A Canadian registration number (CRN) from the province of installation for [pressure-rated items in the PW package]",
      "CRN registration; vessel data reports",
-     {
-      "t": "Fabrication",
-      "link": "svc-fabrication"
-     }
-    ],
-    [
-     "ASME Section VIII, Division 1",
-     "Tanks, stills and pure steam generators; relief on pressure-rated tanks",
-     "Pressure vessel calculations; manufacturer's data report",
-     {
-      "t": "Process design",
-      "link": "svc-design"
-     }
-    ],
-    [
-     "ASME Section IX",
-     "Qualified procedure and operator for every orbital weld; continuity log",
-     "Procedure and operator qualification records",
-     {
-      "t": "Fabrication",
-      "link": "svc-fabrication"
-     }
-    ],
-    [
-     "ASME B31.3",
-     "Hydrostatic test at ≥ 1.5 times design pressure; pneumatic at 1.1 times",
-     "Pressure test certificate, witnessed",
-     {
-      "t": "Fabrication",
-      "link": "svc-fabrication"
-     }
-    ],
-    [
-     "EN 10204 3.1",
-     "A 3.1 certificate for every product-contact component",
-     "Material log traced by heat number",
-     {
-      "t": "Fabrication",
-      "link": "svc-fabrication"
-     }
-    ],
-    [
-     "ASTM A967; ASTM A380",
-     "Citric or nitric passivation, verified by water immersion or high humidity",
-     "Passivation certificate per system",
      {
       "t": "Fabrication",
       "link": "svc-fabrication"
@@ -425,7 +355,7 @@
     },
     {
      "q": "Who registers our pressure equipment, and when?",
-     "a": "Vessels and fittings installed in Canada need a CRN under CSA B51 from the province of installation, scheduled from the start. [Aquemi CRN process and provinces covered]"
+     "a": "Pressure-rated items installed in Canada need a CRN under CSA B51 from the province of installation, scheduled from the start. [Aquemi CRN process and provinces covered]"
     },
     {
      "q": "Does our corporate engineering standard replace yours?",
@@ -464,11 +394,15 @@
  },
  "todo": [
   "Certifications actually held: ISO 9001 status, certificate number, scope, registrar and expiry (or target date); downloadable copies",
-  "Pressure equipment: ASME certificate of authorization, CSA B51 quality programme or certified vessel fabricator used; certificate number",
+  "Pressure equipment: which items in the PW package are pressure-rated and need a CRN (for example RO membrane housings), the vessel code they are built to, and the certificate holder or certified vessel fabricator used ([pressure-rated items in the PW package])",
   "CRN: provinces where Aquemi has registered designs; who prepares and submits the CRN application and at which design stage (FAQ)",
   "Control panel certification mark held (CSA C22.2 No. 286 / UL 508A) and file number, or whether field evaluation is used",
-  "Welding certification held (for example CWB CSA W47.1) and division/number",
-  "Share of product-contact welds borescoped, % (ASME BPE row; same placeholder as sys-pw and svc-fabrication)",
+  "PP piping standard Aquemi designs and buys to ([PP piping standard]; map, engineering table); PP pressure test method and test factor ([PP pressure test method])",
+  "PP material standard and resin grade for product-contact parts, and the certificate type supplied ([PP material standard], [PP resin grade], [PP material certificates])",
+  "PP joining: method (for example butt fusion or IR welding), the standard followed, procedure and operator qualification, and the joint records delivered ([PP joining standard], [PP joining method, for example butt fusion or IR welding], [PP joint procedure and operator qualification], [PP joint records, for example joint map and log])",
+  "Dead leg rule applied to the PP loop ([dead leg rule for the PP loop])",
+  "Maximum loop sanitization temperature for PP, °C ([maximum loop sanitization temperature for PP, °C]; USP <1231> row); same placeholder as ind-pharma",
+  "Quality review: which EU GMP Annex 1 clauses apply to a PW system and should be cited ([other Annex 1 clauses that apply to PW])",
   "Scope for hospital MDRD water (CSA Z314 / ANSI/AAMI ST108) and laboratory water (ASTM D1193): new systems, upgrades, service only or not offered",
   "Supplier questionnaire and quality agreement: confirm returned with the quote (yes or no), and questionnaire turnaround in working days",
   "Compliance matrix response time (working days) for the closing CTA",
@@ -477,10 +411,10 @@
  ],
  "figure": {
   "spots": [
+   "pretreatment",
    "ro-skid",
-   "storage-tank",
-   "pure-steam-generator"
+   "storage-tank"
   ],
-  "label": "Generation · storage · pure steam"
+  "label": "Pretreatment · RO and EDI · storage"
  }
 }

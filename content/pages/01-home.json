@@ -2,12 +2,12 @@
  "id": "home",
  "section": "Home",
  "nav_label": "Home",
- "title": "Pharmaceutical water systems: PW, WFI, pure steam | Aquemi",
- "meta": "Purified Water, WFI and pure steam systems built to USP <645>, <643>, <85> and ASME BPE, wet FAT tested, qualified and serviced in Canada.",
+ "title": "Purified Water systems: pretreatment, RO, DI/EDI | Aquemi",
+ "meta": "One modular Purified Water package: PVC pretreatment, polypropylene RO, DI or EDI and distribution, built to USP <645> and <643>, wet FAT tested, qualified and serviced in Canada.",
  "path": "/",
- "eyebrow": "PW · WFI · PURE STEAM · USP · PH. EUR. · ASME BPE",
- "headline": "Pharmaceutical water, engineered to the limit",
- "lead": "Purified Water, WFI and pure steam systems built to USP and Ph. Eur., designed, built and serviced in Canada.",
+ "eyebrow": "PW · RO · DI/EDI · USP <645>, <643> · PH. EUR. 0008",
+ "headline": "Modular Purified Water systems, from pretreatment to the point of use",
+ "lead": "One modular package makes Purified Water (PW): PVC pretreatment, polypropylene (PP) RO and DI or EDI, and distribution. Designed, built and serviced in Canada.",
  "primary_cta": "Request a proposal",
  "primary_cta_intent": "Sizing and budget proposal for a new system",
  "secondary_cta": {
@@ -20,57 +20,36 @@
    "l": "Skids wet tested at FAT"
   },
   {
-   "v": "< 0.25 EU/mL",
-   "l": "WFI endotoxin, furthest outlet · USP <85>"
+   "v": "≤ 1.3 µS/cm",
+   "l": "PW conductivity at 25 °C · USP <645>"
   }
  ],
  "blocks": [
   {
    "type": "path",
-   "h": "Seven systems, one water path",
-   "intro": "One system or the whole path. We state where our scope ends.",
+   "h": "One package, one water path",
+   "intro": "Pretreatment to point of use in one modular package. We state where our scope ends.",
    "from": "City feed",
    "to": "Point of use",
    "items": [
     {
      "t": "Pretreatment",
-     "d": "No detectable chlorine or chloramine at the RO inlet, SDI ≤ 3, every season.",
+     "d": "A PVC train: no detectable chlorine or chloramine at the RO inlet, SDI ≤ 3, every season.",
      "tag": "USP <1231>",
      "link": "sys-pretreatment",
      "spot": "pretreatment"
     },
     {
      "t": "PW generation",
-     "d": "RO and EDI below 1.3 µS/cm at 25 °C and 500 ppb TOC.",
+     "d": "A PP skid with RO and DI or EDI, below 1.3 µS/cm at 25 °C and 500 ppb TOC.",
      "tag": "USP <645>",
      "link": "sys-pw",
      "spot": "ro-skid"
     },
     {
-     "t": "WFI by distillation",
-     "d": "Multi-effect and vapour compression stills making hot WFI below 0.25 EU/mL.",
-     "tag": "USP <85>",
-     "link": "sys-wfi-distillation",
-     "spot": "still"
-    },
-    {
-     "t": "WFI by membrane",
-     "d": "Double-pass RO, EDI and ultrafiltration: ambient WFI without plant steam.",
-     "tag": "Ph. Eur. 0169",
-     "link": "sys-wfi-membrane",
-     "spot": "edi-stack"
-    },
-    {
-     "t": "Pure steam generators",
-     "d": "Condensate at WFI limits; steam that passes EN 285 at the sterilizer.",
-     "tag": "EN 285",
-     "link": "sys-pure-steam",
-     "spot": "pure-steam-generator"
-    },
-    {
-     "t": "Storage and loops",
-     "d": "Turbulent flow at peak draw, branches at L/D ≤ 2, sanitized by heat or ozone.",
-     "tag": "ASME BPE",
+     "t": "Storage and distribution",
+     "d": "PP tank and loop: turbulent flow at peak draw, sanitized by [PP loop sanitization method].",
+     "tag": "EU GMP Annex 1",
      "link": "sys-storage",
      "spot": "storage-tank"
     },
@@ -90,20 +69,14 @@
    "items": [
     {
      "t": "Pharmaceutical",
-     "d": "PW for oral products; WFI and pure steam for parenterals. Inspected under GUI-0001.",
+     "d": "PW for oral and topical products, and as feed to the WFI still you run. Inspected under GUI-0001.",
      "tag": "GUI-0001",
      "link": "ind-pharma"
     },
     {
-     "t": "Biotechnology",
-     "d": "WFI in volume for media, buffers and every CIP final rinse.",
-     "tag": "USP <85>",
-     "link": "ind-biotech"
-    },
-    {
      "t": "Medical devices",
-     "d": "Final rinse water worked back from the device limit of 20.0 EU per device.",
-     "tag": "USP <161>",
+     "d": "PW for rinse and process steps, with the grade worked back from your device limits.",
+     "tag": "USP <1231>",
      "link": "ind-meddevice"
     },
     {
@@ -125,7 +98,7 @@
     },
     {
      "t": "Fabricate",
-     "d": "316L to ASME BPE, orbital welds, each product-contact weld logged with its heat number."
+     "d": "PP skids to [PP piping standard], joined by [PP joining method, for example butt fusion or IR welding], each joint logged."
     },
     {
      "t": "FAT",
@@ -246,7 +219,7 @@
     },
     {
      "q": "What does being Canadian change?",
-     "a": "Travel, registration and response. Your team drives to the FAT in [test bay location, city and province]; pressure parts are designed for a CRN under CSA B51."
+     "a": "Travel, registration and response. Your team drives to the FAT in [test bay location, city and province]; [parts that carry a CRN under CSA B51, if any]."
     },
     {
      "q": "We do not have a URS yet. Is it too early to ask?",
@@ -286,8 +259,12 @@
   "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
   "FAT witness costs: whether FAT witness time, travel and remote witness are included in the equipment price or quoted separately",
   "Confirm reviews carry no obligation and may be used in the client's own tender",
-  "Confirm every skid is wet tested at FAT for every system family (hero fact 100 %); loops fabricated on site are tested at SAT",
+  "Confirm every skid in the PW package is wet tested at FAT (hero fact 100 %); loops fabricated on site are tested at SAT",
   "Confirm the standards strip against the standards Aquemi designs to routinely",
+  "Standard the PP skid and loop piping is designed to ([PP piping standard])",
+  "PP joining method ([PP joining method, for example butt fusion or IR welding])",
+  "Sanitization method for the PP tank and loop, and its maximum temperature ([PP loop sanitization method])",
+  "Which package parts, if any, carry a CRN under CSA B51 ([parts that carry a CRN under CSA B51, if any])",
   "One real case study with client permission (home shows proof routes until it exists)"
  ]
 }

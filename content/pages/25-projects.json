@@ -3,7 +3,7 @@
  "section": "Projects",
  "nav_label": "Case studies",
  "title": "Water system case studies and references | Aquemi",
- "meta": "Case studies that state flow in L/h, USP <645> conductivity, TOC and EN 285 results with the method and report. Ask for a reference call or FAT witness.",
+ "meta": "Purified Water case studies that state flow in L/h, USP <645> conductivity and USP <643> TOC with the method and report. Ask for a reference call or FAT witness.",
  "path": "/projects/",
  "eyebrow": "PROJECTS · CASE STUDIES",
  "headline": "Projects you can audit: figure, method, report",
@@ -55,11 +55,11 @@
    "items": [
     {
      "status": "Template · awaiting a real project",
-     "t": "PW and ozonated loop, [segment, province]",
+     "t": "Modular PW package and PP loop, [segment, province]",
      "client": "[segment and dosage form, province]",
      "problem": "[limit, capacity or deadline that started it]",
-     "system": "[pretreatment, membranes, storage, ozone, points of use]",
-     "standard": "USP PW monograph; Ph. Eur. 0008; ASME BPE dead legs L/D ≤ 2; EU GMP Annex 15",
+     "system": "[PVC pretreatment, RO, EDI, PP storage and loop, sanitization method, points of use]",
+     "standard": "USP PW monograph; Ph. Eur. 0008; EU GMP Annex 15; [PP piping standard and dead-leg rule]",
      "art": "sys-pw",
      "changed": [
       {
@@ -160,7 +160,7 @@
      "[FAT witness notice, working days]"
     ],
     [
-     "Weld logs and traceability at [shop location, city and province]",
+     "[PP joining records] and material traceability at [shop location, city and province]",
      {
       "t": "Shop visit",
       "link": "svc-fabrication"
@@ -227,9 +227,6 @@
        "required": false,
        "options": [
         "Purified Water (PW) generation",
-        "WFI by distillation",
-        "WFI by membrane",
-        "Pure steam generator",
         "Storage and distribution loop",
         "Pretreatment",
         "Monitoring and controls",
@@ -313,7 +310,9 @@
  "todo": [
   "KEY: real delivered projects for the case study record (PW) with executed report numbers, or remove the block before launch; the page must not launch with only a placeholder record",
   "Written client approval for each case study and each named reference; client quality unit sign-off on text and figures",
-  "Measured figures for each case: capacity (L/h or kg/h), conductivity (µS/cm @ 25 °C), TOC (ppb), microbial (CFU/mL), nitrates (ppm), EN 285 timeline milestones (weeks), equipment new or replaced, deviations raised and closed",
+  "Measured figures for each case: capacity (L/h), conductivity (µS/cm @ 25 °C), TOC (ppb), microbial (CFU/mL), nitrates (ppm), timeline milestones (weeks), equipment new or replaced, deviations raised and closed",
+  "PP joining records shown on a shop visit (what replaces a weld log for PP: [PP joining method, for example butt fusion or IR welding]) and the PP piping standard and dead-leg rule cited in the case study record",
+  "Sanitization method stated for the PP loop in the case study record ([PP loop sanitization method])",
   "Hero fact and FAQ: number of clients available for a reference call, and the segments and systems they cover",
   "Shop location (city and province) for shop visits (same as cmp-quality)",
   "Lead times: reference call (working days), shop visit notice, FAT witness notice, sample package response, compliance matrix response, on-site audit notice (align with cmp-documentation, compliance, cmp-quality)",
@@ -327,7 +326,7 @@
  "figure": {
   "spots": [
    "ro-skid",
-   "still",
+   "edi-stack",
    "storage-tank"
   ],
   "label": "Figure · method · report"

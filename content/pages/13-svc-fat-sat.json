@@ -33,8 +33,8 @@
      ]
     },
     {
-     "t": "Run hot, read at the outlet",
-     "d": "Pumps against real pressure, heated to sanitization temperature, conductivity and TOC measured at the outlet.",
+     "t": "Run it, read at the outlet",
+     "d": "Pumps against real pressure, a full [PP loop sanitization method] cycle, conductivity and TOC measured at the outlet.",
      "at": [
       75,
       58
@@ -72,16 +72,16 @@
     ],
     [
      "Utilities and loop",
-     "Not possible: the skid runs on our power, water and heating",
-     "Power, heating, cooling, drains, air; loop hydraulics at peak draw"
+     "Not possible: the modules run on our power and water",
+     "Power, drains, air, any heating or cooling; loop hydraulics at peak draw"
     ],
     [
      "Sanitization",
-     "Full hot water cycle: every probe at setpoint for the hold time",
+     "Full [PP loop sanitization method] cycle: every probe at setpoint for the hold time",
      "Full cycle on the installed loop, coldest point of use included"
     ],
     [
-     "Generator performance",
+     "RO and DI/EDI performance",
      "Flow, recovery and outlet quality on our feed water",
      "The same on your feed water, in the season you are in"
     ],
@@ -212,7 +212,7 @@
     },
     {
      "q": "How long does a FAT take?",
-     "a": "A PW skid takes [typical FAT duration, PW skid, days]; generation and storage, [typical FAT duration, generation and storage, days]. Skids over [largest skid size, m] are tested as modules."
+     "a": "A single PW module takes [typical FAT duration, single module, days]; the full package, pretreatment to distribution, [typical FAT duration, full PW package, days]. Packages over [largest skid size, m] are tested module by module."
     }
    ]
   },
@@ -250,18 +250,18 @@
  "todo": [
   "Confirm a redacted FAT protocol (table of contents and sample test cases) can be shared, openly or under NDA; this is the page's primary CTA",
   "Protocol issue before FAT (weeks)",
-  "Typical FAT duration (days) for a packaged PW skid, and for a generation and storage system",
+  "Typical FAT duration (days) for a single PW module and for the full modular package, pretreatment to distribution",
+  "PP loop sanitization method run at FAT ([PP loop sanitization method]; same placeholder as home and projects), with its temperature or chemical and hold time",
   "FAT date confirmation lead (weeks) after dry run",
   "Test bay location (city, province)",
   "Test bay feed water source, treatment and typical conductivity (µS/cm) ([feed water source and conductivity, µS/cm])",
   "Test bay power: voltage, phases, frequency, kW ([voltage, phases, frequency, kW]); how skids for another voltage are tested ([transformer or site test])",
-  "Test bay heating medium: plant steam (kg/h at bar(g)) or electric (kW); whether stills and pure steam generators run at full rate",
+  "Test bay heating, if the PP sanitization cycle needs any: medium and capacity (kW)",
   "Largest skid footprint and height (m) and crane capacity (t) ([largest skid size, m; crane, t]); drain capacity (L/min)",
   "Remote witness platform and connection; electronic signature method (and whether 21 CFR Part 11 compliant)",
-  "Whether endotoxin sampling is offered at FAT on WFI systems, and which laboratory tests it",
   "Whether FAT witness time, travel and remote witness are included in price or quoted separately",
   "Confirm Aquemi runs an internal dry run before every witnessed FAT (page says so)",
-  "Confirm every skid gets a wet FAT including the loop pump/heat exchanger skid (same wording on systems and the home hero fact \"100 %\"); field-built loop piping is proven at SAT/IQ",
+  "Confirm every skid gets a wet FAT including the distribution pump module (same wording on systems and the home hero fact \"100 %\"); field-built loop piping is proven at SAT/IQ",
   "Confirm software checksum recorded at FAT (page says version and checksum)",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "FAT first-pass rate or a real FAT (deviations found, closure time) before adding a case study block",

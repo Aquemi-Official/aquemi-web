@@ -3,11 +3,11 @@
  "section": "Systems",
  "nav_label": "Pretreatment",
  "title": "RO pretreatment for pharmaceutical water systems | Aquemi",
- "meta": "Pretreatment that takes drinking water meeting USP <1231> and holds RO feed at no detectable chlorine or chloramine and SDI ≤ 3, in every Canadian season.",
+ "meta": "PVC pretreatment that takes drinking water meeting USP <1231> and holds RO feed at no detectable chlorine or chloramine and SDI ≤ 3, in every Canadian season.",
  "path": "/systems/pretreatment/",
- "eyebrow": "SYSTEMS · PRETREATMENT · USP <1231>",
+ "eyebrow": "SYSTEMS · PVC PRETREATMENT · USP <1231>",
  "headline": "Keep chlorine and scale off your membranes",
- "lead": "We design from your seasonal water data, so the RO inlet sees no detectable chlorine or chloramine all year.",
+ "lead": "We design the PVC pretreatment train from your seasonal water data, so the RO inlet sees no detectable chlorine or chloramine all year.",
  "primary_cta": "Request a feedwater review",
  "primary_cta_intent": "Feedwater review",
  "secondary_cta": {
@@ -164,7 +164,7 @@
     [
      "No disinfectant after carbon",
      "Biofilm in carbon and softeners sheds into the RO",
-     "Hot water sanitizable carbon, samples around each bed, flow at no demand"
+     "[carbon bed sanitization method within PVC limits], samples around each bed, flow at no demand"
     ]
    ],
    "nav": "Feed water",
@@ -198,7 +198,7 @@
      "Free chlorine only, no dosed chemicals",
      "Granular activated carbon",
      "Free chlorine and some organics; chloramine only slowly",
-     "Biofilm; needs heat sanitization and backwash"
+     "Biofilm; needs regular sanitization and backwash"
     ],
     [
      "Little floor space, or no carbon bed",
@@ -242,7 +242,7 @@
     },
     {
      "t": "Media, resin and material certificates",
-     "d": "Lot numbers; NSF/ANSI 61 where held; 3.1 for stainless"
+     "d": "Lot numbers; NSF/ANSI 61 where held; [certificates supplied for PVC parts]"
     }
    ],
    "nav": "Documents",
@@ -297,7 +297,11 @@
     },
     {
      "q": "How do you keep carbon beds clean?",
-     "a": "Hot water or steam at [sanitization temperature, °C] for [hold time, minutes], every [initial sanitization interval, days] to start, reset from counts during qualification."
+     "a": "[carbon bed sanitization method within PVC limits] at [sanitization temperature, °C] for [hold time, minutes], every [initial sanitization interval, days] to start, reset from counts during qualification."
+    },
+    {
+     "q": "What is the pretreatment built from?",
+     "a": "PVC, as the first module of the Purified Water package. [PVC pipe standard and schedule]; [vessel material for media, softener and carbon beds]."
     },
     {
      "q": "What happens to the ammonia from chloramine?",
@@ -331,7 +335,9 @@
   "Iron and manganese design limit at the RO inlet (mg/L each)",
   "Feed heat exchanger design temperature (°C) ([feed heat exchanger design temperature, °C]; keep consistent with sys-pw)",
   "Pretreatment capacity range, m³/h (hero fact shows [range] m³/h)",
-  "Carbon bed sanitization temperature (°C) and hold time (minutes)",
+  "Carbon bed sanitization method that PVC allows, its temperature (°C) and hold time (minutes) ([carbon bed sanitization method within PVC limits])",
+  "PVC pipe standard and schedule, and vessel material for media, softener and carbon beds (FAQ)",
+  "Material certificates supplied for PVC parts ([certificates supplied for PVC parts], documents)",
   "Default media replacement interval (months)",
   "Initial carbon bed sanitization interval (days)",
   "Whether UV dechlorination is offered (remove the router row if not)",

@@ -3,11 +3,11 @@
  "section": "Company",
  "nav_label": "Careers",
  "title": "Careers: pharmaceutical water engineering jobs | Aquemi",
- "meta": "Process, orbital welding (ASME IX), validation, controls, field service and quality jobs on PW and WFI systems in Canada. Pay range in every posting.",
+ "meta": "Process, PP fabrication, validation, controls, field service and quality jobs on Purified Water (PW) systems in Canada. Pay range in every posting.",
  "path": "/company/careers/",
  "eyebrow": "CAREERS",
  "headline": "Build systems that pass inspection",
- "lead": "We design, build, qualify and service PW, WFI and pure steam systems for plants inspected by Health Canada, FDA and EU.",
+ "lead": "We design, build, qualify and service modular Purified Water (PW) systems for plants inspected by Health Canada, FDA and EU.",
  "primary_cta": "See the roles",
  "blocks": [
   {
@@ -25,17 +25,17 @@
    "rows": [
     [
      "Process engineer",
-     "Size water and steam systems, draw P&IDs, design to USP <1231> and ASME BPE",
+     "Size PW systems from pretreatment to the loop, draw P&IDs, design to USP <1231>",
      "Chemical or mechanical degree; P.Eng. or ing., or eligible, in [province of licence]; [minimum years]",
      "[engineering office, city and province] · [hybrid days per week] · travel [% of working days]",
      "[process engineer pay range, CAD per year] · [Open or closed · posting reference]"
     ],
     [
-     "Orbital welder",
-     "Orbital welds in 316L tubing to ASME BPE; borescope each weld and log its heat numbers",
-     "ASME Section IX qualification for orbital GTAW, or pass it at interview",
+     "[PP fabrication role, for example thermoplastic welder]",
+     "Build PP skids and piping by [PP joining method, for example butt fusion or IR welding]; record each joint",
+     "[PP joining qualification or certification], or pass a test joint at interview",
      "[shop location, city and province] · travel [% of working days]",
-     "[orbital welder pay range, CAD per hour] · [Open or closed · posting reference]"
+     "[PP fabrication role pay range, CAD per hour] · [Open or closed · posting reference]"
     ],
     [
      "Validation specialist",
@@ -60,7 +60,7 @@
     ],
     [
      "Quality specialist",
-     "Document control, nonconformances and CAPA under ISO 9001; review weld records; host audits",
+     "Document control, nonconformances and CAPA under ISO 9001; review fabrication records; host audits",
      "Degree or diploma; [minimum years] in manufacturing quality",
      "[shop and office location, city and province] · travel [% of working days]",
      "[quality specialist pay range, CAD per year] · [Open or closed · posting reference]"
@@ -106,7 +106,7 @@
     },
     {
      "p": "Training and qualification",
-     "v": "[welding requalification paid by Aquemi, yes or no] · [external course budget, CAD per year]",
+     "v": "[PP joining qualification paid by Aquemi, yes or no] · [external course budget, CAD per year]",
      "m": ""
     },
     {
@@ -139,7 +139,7 @@
     },
     {
      "t": "Practical interview",
-     "d": "A P&ID review, test weld, protocol walk-through or fault-finding exercise."
+     "d": "A P&ID review, test joint, protocol walk-through or fault-finding exercise."
     },
     {
      "t": "Shop visit and decision",
@@ -181,7 +181,7 @@
        "required": true,
        "options": [
         "Process engineer",
-        "Orbital welder",
+        "[PP fabrication role, for example thermoplastic welder]",
         "Validation specialist (commissioning and qualification)",
         "Controls and automation engineer",
         "Field service technician",
@@ -240,7 +240,7 @@
        "kind": "text",
        "label": "Qualifications and licences held",
        "required": false,
-       "help": "For example P.Eng. or EIT, ASME Section IX WOPQ, Red Seal trade, ISO 9001 lead auditor."
+       "help": "For example P.Eng. or EIT, [PP joining certification], Red Seal trade, ISO 9001 lead auditor."
       },
       {
        "kind": "radio",
@@ -270,11 +270,11 @@
    "items": [
     {
      "q": "Do I need pharmaceutical experience?",
-     "a": "Not for every role. Validation and quality need GMP experience; welders, technicians and engineers from other process industries learn it here, on a real project file."
+     "a": "Not for every role. Validation and quality need GMP experience; fabricators, technicians and engineers from other process industries learn it here, on a real project file."
     },
     {
-     "q": "I am not ASME Section IX qualified on orbital welding yet. Can I apply?",
-     "a": "Yes, if you weld tube or pipe with GTAW. The practical interview includes a test weld on our procedure. [qualification offered to welders who pass, yes or no]"
+     "q": "I have not joined PP piping before. Can I apply?",
+     "a": "Yes, if you weld or fuse thermoplastic or metal pipe. The practical interview includes a test joint on our procedure. [qualification offered to fabricators who pass, yes or no]"
     },
     {
      "q": "Do you require Canadian experience?",
@@ -314,8 +314,9 @@
   "Shop, engineering office, validation base and service base locations (city and province); remote or hybrid days per week by role",
   "Travel share per role (% of working days) and for field roles overall; on-call rota for field service; notice for planned shutdown work (weeks)",
   "Minimum years of experience per role; PLC and HMI platforms used; province of licence for engineers",
-  "Whether a provincial pressure welder registration is required for shop and site welders (e.g. TSSA, Technical Safety BC, ABSA) and who pays for it",
-  "Whether Aquemi qualifies welders who pass the test weld; trainee welder positions; external course budget (CAD per year)",
+  "PP fabrication role: job title, PP joining method (for example butt fusion or IR welding), qualification or certification required, and the joint record kept",
+  "Whether any provincial or trade certification is required for PP fabricators in the shop and on site, and who pays for it",
+  "Whether Aquemi qualifies fabricators who pass the test joint; trainee fabricator positions; external course budget (CAD per year)",
   "Hours and core hours, overtime or time off in lieu, shutdown pay, per diem, accommodation, paid travel time and company vehicle policy",
   "Health and dental plan, retirement plan and employer match, vacation in year one",
   "Licence dues and exam fees policy (P.Eng., ing., CET); PPE allowance; working language by role and region",

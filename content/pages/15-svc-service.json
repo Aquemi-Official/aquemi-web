@@ -3,7 +3,7 @@
  "section": "Services",
  "nav_label": "Service and spare parts",
  "title": "GMP water system service plans and spare parts | Aquemi",
- "meta": "Service plans with stated response times, calibration to USP <645> and <643>, like-for-like spares and service reports fit for your GMP records.",
+ "meta": "Service plans for modular PW systems with stated response times, calibration to USP <645> and <643>, like-for-like spares and service reports fit for your GMP records.",
  "path": "/services/service-spare-parts/",
  "eyebrow": "SERVICE AND SPARE PARTS · USP <645>",
  "headline": "Service that keeps it qualified",
@@ -45,8 +45,8 @@
     [
      "Suits",
      "PW with in-house maintenance and spare capacity",
-     "A PW or WFI system production depends on",
-     "WFI, pure steam or no standby",
+     "A PW system production depends on",
+     "PW that feeds your own WFI still, or no standby",
      "Sites with their own team and spares"
     ],
     [
@@ -159,7 +159,7 @@
      "spot": "pretreatment"
     },
     {
-     "t": "RO and EDI",
+     "t": "RO and DI/EDI",
      "d": "Normalized flow, salt passage and pressure drop against the baseline.",
      "link": "sys-pw",
      "spot": "ro-skid"
@@ -350,6 +350,8 @@
   "Who performs calibrations (Aquemi or named partner) and laboratory accreditation held, e.g. ISO/IEC 17025 ([calibration provider and accreditation held])",
   "Spares stock location(s) and order cut-off and delivery commitment",
   "Service phone number",
+  "Confirm whether ozone and UV are part of the modular PP package (calibration row, visit stop and UV lamp row); remove them if not",
+  "PP loop sanitization method and temperature, for the temperature sensor calibration point and the sanitization check on visits ([PP loop sanitization method]; same placeholder as home and projects)",
   "Quote response time (working days)",
   "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
   "A real service record (response times achieved, uptime) with client permission before adding proof or a case block"

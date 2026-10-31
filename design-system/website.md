@@ -6,9 +6,9 @@ The site has one job: help a pharmaceutical engineering or quality team decide t
 
 | Section | Pages | Purpose |
 | --- | --- | --- |
-| Systems | Purified Water (PW) generation · Water for Injection (WFI) by distillation · WFI by membrane · Pure Steam generators · Storage and distribution loops · Pretreatment · Monitoring and controls | One page per system family: what it does, key specifications, configuration options, documentation delivered. |
+| Systems | Purified Water (PW) generation · Storage and distribution loops · Pretreatment · Monitoring and controls | One page per module of the PP package: what it does, key specifications, configuration options, documentation delivered. WFI, pure steam and stainless steel systems are not offered; their pages are archived in `content/retired/`. |
 | Services | Process design and engineering · Fabrication · FAT and SAT · Commissioning and qualification (IQ/OQ/PQ) · Service and spare parts · Upgrades and retrofits | How a project runs from user requirement specification to handover and beyond. |
-| Industries | Pharmaceutical · Biotechnology · Medical devices · Contract manufacturing (CDMO) | Each industry page links to the systems it uses most. |
+| Industries | Pharmaceutical · Medical devices · Contract manufacturing (CDMO) | Each industry page links to the systems it uses most. |
 | Compliance | Standards we design to · Documentation package · Quality management | The page validation and QA teams will look for first. Only list certifications Aquemi actually holds. |
 | Projects | Case studies | Problem, system delivered, measured outcome. Use real figures or don't publish. |
 | Company | About · Careers · News | |
@@ -28,10 +28,10 @@ The site has one job: help a pharmaceutical engineering or quality team decide t
 ## System page template
 
 1. Hero: `eyebrow` with the system family and standard, `display` name, `body-lg` summary, image.
-2. Key specifications as a SpecTable (capacity range, product water quality, sanitization method, materials, surface finish such as Ra ≤ 0.5 µm electropolished).
+2. Key specifications as a SpecTable (capacity range, product water quality, sanitization method, materials such as PP or PVC).
 3. How it works: a line-art process diagram with the water path in `flow`.
 4. Configurations and options, in a two-column list.
-5. Documentation delivered: functional specification, P&IDs, material certificates, weld logs, FAT/SAT protocols, IQ/OQ protocols.
+5. Documentation delivered: functional specification, P&IDs, material certificates, joint logs, FAT/SAT protocols, IQ/OQ protocols.
 6. Related systems and a closing call to action.
 
 ## Navigation

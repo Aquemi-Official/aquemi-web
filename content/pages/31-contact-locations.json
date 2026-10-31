@@ -78,7 +78,7 @@
       "t": "Shop and test bay, [shop location, city and province]",
       "link": "svc-fabrication"
      },
-     "Fabrication, orbital welding, panels, wet FAT, witness visits",
+     "PP skid and piping fabrication, panels, wet FAT, witness visits",
      "[Street address], [city], [province] [postal code] · [map link]",
      "[shop phone number] · [shop hours, time zone]"
     ],
@@ -277,6 +277,7 @@
   "Number of service technicians and number of stocking points (same headcount as about)",
   "Whether technicians are all Aquemi employees; if partners are used: regions, under whose procedures, who signs the service report, partners for remote regions; remove partner row if none",
   "CSA B51: Aquemi's CRN route (ASME certificate or vessel fabricator) and provinces where designs are registered (same as compliance)",
+  "Which components of the PP PW package need a CRN, if any (the coverage table states a CRN route per region)",
   "Engineering licences: licensed engineers per province (P.Eng. or ing.), firm permits or certificates of authorization (Ontario, BC, Alberta), engineer of record route where not licensed (same as about)",
   "French: technicians, service reports and documents in French; Quebec and New Brunswick",
   "Territories and remote sites: whether served, travel response, site spares kit recommendation",
@@ -305,7 +306,7 @@
   "spots": [
    "pretreatment",
    "ro-skid",
-   "pure-steam-generator"
+   "storage-tank"
   ]
  }
 }

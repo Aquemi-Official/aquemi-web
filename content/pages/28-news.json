@@ -3,11 +3,11 @@
  "section": "Company",
  "nav_label": "News",
  "title": "Pharmaceutical water technical notes | Aquemi",
- "meta": "Answer-first notes on USP <645>, <1231>, Ph. Eur. 12.3, EU GMP Annex 1, ASME BPE and CSA B51 for PW, WFI and pure steam. Get each one by email.",
+ "meta": "Answer-first notes on USP <645>, <643>, <1231>, Ph. Eur. 12.3, EU GMP Annex 1 and CSA B51 for Purified Water (PW) systems. Get each one by email.",
  "path": "/company/news/",
- "eyebrow": "TECHNICAL NOTES · PW · WFI · PURE STEAM",
+ "eyebrow": "TECHNICAL NOTES · PURIFIED WATER",
  "headline": "Water questions, answered in three sentences",
- "lead": "For teams running PW, WFI and pure steam: one question per note, answered first, clause named. None published yet.",
+ "lead": "For teams running Purified Water (PW) systems: one question per note, answered first, clause named. None published yet.",
  "primary_cta": "Subscribe to technical notes",
  "blocks": [
   {
@@ -37,15 +37,15 @@
      "link": "compliance"
     },
     {
-     "t": "Membrane WFI under Ph. Eur. 0169",
+     "t": "PW as feed to your own WFI still: what Ph. Eur. 0008 and USP set",
      "topic": "Standards",
-     "std": "Ph. Eur. 0169; EMA Q&A (2017)",
-     "link": "sys-wfi-membrane"
+     "std": "Ph. Eur. 0008; USP PW monograph",
+     "link": "sys-pw"
     },
     {
-     "t": "Dead legs: how ASME BPE measures L/D",
+     "t": "Dead legs in a PW loop: how L/D is measured",
      "topic": "Standards",
-     "std": "ASME BPE; EU GMP Annex 1 6.7",
+     "std": "EU GMP Annex 1 6.7; [dead-leg rule for PP piping]",
      "link": "sys-storage"
     },
     {
@@ -57,11 +57,11 @@
     {
      "t": "Ph. Eur. 12.3: what changed for water",
      "topic": "Standards",
-     "std": "Ph. Eur. 0008, 0169, 2.2.44",
+     "std": "Ph. Eur. 0008, 2.2.44",
      "link": "sys-pw"
     },
     {
-     "t": "EU GMP Annex 1 (2022) for water and steam",
+     "t": "EU GMP Annex 1 (2022) for water systems",
      "topic": "Standards",
      "std": "EU GMP Annex 1; GUI-0119",
      "link": "compliance"
@@ -73,19 +73,19 @@
      "link": "sys-monitoring"
     },
     {
-     "t": "Distillation or membrane WFI",
+     "t": "RO with EDI or RO with DI for PW",
      "topic": "Design",
-     "std": "Ph. Eur. 0169; USP WFI monograph",
+     "std": "USP <1231>; ISPE Baseline Guide Vol. 4",
      "link": "systems"
     },
     {
-     "t": "Hot or ambient WFI storage",
+     "t": "Storage tank size for a PW loop",
      "topic": "Design",
-     "std": "EU GMP Annex 1 6.10; USP <1231>",
+     "std": "USP <1231>; ISPE Baseline Guide Vol. 4",
      "link": "sys-storage"
     },
     {
-     "t": "Ozone or hot water sanitization for a PW loop",
+     "t": "Sanitization options for a PW loop",
      "topic": "Design",
      "std": "USP <1231>; ISPE Baseline Guide Vol. 4",
      "link": "sys-storage"
@@ -105,7 +105,7 @@
     {
      "t": "Questions to ask when comparing water system proposals",
      "topic": "Design",
-     "std": "EU GMP Annex 15 3.2; ASME BPE",
+     "std": "EU GMP Annex 15 3.2",
      "link": "contact-proposal"
     },
     {
@@ -163,10 +163,10 @@
      "link": "sys-storage"
     },
     {
-     "t": "The sterilizer fails the dryness test",
+     "t": "Chlorine breakthrough to the RO membranes",
      "topic": "Troubleshooting",
-     "std": "EN 285",
-     "link": "sys-pure-steam"
+     "std": "Membrane manufacturer data; USP <1231>",
+     "link": "sys-pretreatment"
     }
    ],
    "fold": 6,
@@ -284,13 +284,15 @@
  "todo": [
   "Target publication month for each of the 24 planned notes (add a status line per row once set); publish only notes that have passed review",
   "Named author engineer (and role) for each note and each topic group; named second-engineer reviewer",
-  "Technical review of each note against the current text of its standard before writing: USP <645>, <643>, <1231>; Ph. Eur. 0008, 0169, 2.2.44 (12.3); EMA Q&A on membrane WFI; EN 285; ASME BPE (current edition); CSA B51; EU GMP Annex 1, 15; GUI-0119; FDA CSA guidance (2025, revised 2026)",
+  "Technical review of each note against the current text of its standard before writing: USP <645>, <643>, <1231>; Ph. Eur. 0008, 2.2.44 (12.3); CSA B51; EU GMP Annex 1, 15; GUI-0119; FDA CSA guidance (2025, revised 2026)",
   "Send frequency (emails per month at most)",
   "Newsletter platform with confirmation email (double opt-in), consent record (date, time, form wording) and one-click unsubscribe",
   "CASL sender identification: Aquemi legal entity name, mailing address, contact email; unsubscribe processing time (10 business days at most)",
   "Privacy notice link (PIPEDA, Quebec Law 25) covering subscriber data",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "First company news items, each with client written permission where a project is named",
+  "Sanitization methods offered for the PP loop ([PP loop sanitization method]; [maximum loop sanitization temperature for PP, °C]) before writing the sanitization note",
+  "Dead-leg rule applied to PP piping ([dead-leg rule for PP piping]) before writing the dead-legs note",
   "Schema: Article markup on each published note; FAQPage on this page"
  ],
  "primary_cta_link": "#subscribe",
@@ -308,7 +310,7 @@
   "spots": [
    "edi-stack",
    "storage-tank",
-   "heat-exchanger"
+   "pretreatment"
   ],
   "label": "One question per note"
  }

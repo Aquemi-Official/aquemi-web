@@ -76,7 +76,7 @@
         "Feedwater review",
         "Review of a document you have",
         "Water scope review for your products",
-        "Route assessment: which systems, which WFI route",
+        "Route assessment: which modules your water needs",
         "Compliance matrix for your URS",
         "Sizing and budget proposal for a new system",
         "Assessment of an existing system, any make",
@@ -161,8 +161,6 @@
        "required": false,
        "options": [
         "Purified Water (PW)",
-        "Water for Injection (WFI)",
-        "Pure steam",
         "Laboratory, hospital or process water"
        ]
       },
@@ -185,9 +183,6 @@
        "when": "Sizing and budget proposal for a new system|Assessment of an existing system, any make",
        "options": [
         "Purified Water (PW) generation",
-        "WFI by distillation",
-        "WFI by membrane",
-        "Pure steam generator",
         "Storage and distribution loop",
         "Pretreatment",
         "Monitoring and controls",
@@ -200,22 +195,6 @@
        "unit": "L/h",
        "required": false,
        "help": "Highest hourly draw at the points of use."
-      },
-      {
-       "label": "Pure steam demand",
-       "kind": "number",
-       "unit": "kg/h",
-       "required": false,
-       "when": "Pure steam generator|Pure steam",
-       "help": "Steam-in-place (SIP) and sterilizer users running at once."
-      },
-      {
-       "label": "Plant steam pressure available",
-       "kind": "number",
-       "unit": "bar(g)",
-       "required": false,
-       "when": "WFI by distillation|Route assessment: which systems, which WFI route",
-       "help": "We compare multiple-effect and vapour compression stills; add utility costs in the notes."
       },
       {
        "label": "Number of points of use",
@@ -243,11 +222,11 @@
        "when": "Controls URS or functional specification"
       },
       {
-       "label": "Finish and inspection you specify",
+       "label": "Material, joining and inspection you specify",
        "kind": "text",
        "required": false,
        "when": "Fabrication or piping specification",
-       "help": "For example ASME BPE finish, electropolishing, borescope share."
+       "help": "For example piping material and standard, joining method or joint inspection."
       },
       {
        "label": "Make, model and year installed",
@@ -265,7 +244,7 @@
         "More capacity or points of use",
         "Out-of-specification water or alarms",
         "Obsolete PLC or HMI",
-        "Rouge, dead legs or sanitization",
+        "Dead legs or sanitization",
         "Energy, water or chemical use",
         "Replace or relocate"
        ]
@@ -475,6 +454,9 @@
   "Maximum upload size, MB; file upload support in the form tool or a secure upload link",
   "French-speaking engineers available for replies",
   "Regions served outside Canada",
+  "What the reply says when a request needs WFI or pure steam: Aquemi supplies the PW package only (PW can feed the client's own WFI still); whether Aquemi refers that scope elsewhere",
+  "Route assessment scope now that it covers PW modules only (pretreatment, RO, DI or EDI, distribution): what the written answer contains",
+  "Fabrication or piping specification review: which PP and PVC piping standards and joining methods Aquemi reviews against ([PP piping standard], [PP joining method])",
   "CRM routing for each of the 9 requests (intent value in the submission) and source-page tracking",
   "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
   "Contact routes: service phone number and hours and severity 1 on-site response time (same as contact-service); shop location and visit booking reply time (same as contact-locations)"
@@ -498,7 +480,7 @@
  "figure": {
   "spots": [
    "ro-skid",
-   "still",
+   "edi-stack",
    "storage-tank"
   ]
  }

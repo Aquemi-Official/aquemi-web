@@ -1,4 +1,4 @@
-Aquemi designs and fabricates clean water systems for pharmaceutical manufacturing: purified water, Water for Injection, pure steam and the loops that carry them. The people we talk to are engineers, validation leads and quality managers. They read specifications closely and they are accountable to auditors. The brand should feel like the equipment: precise, quiet, finished to a high standard, with nothing extra.
+Aquemi designs and fabricates clean water systems for pharmaceutical manufacturing: modular Purified Water packages in polypropylene (PP) with PVC pretreatment, covering pretreatment, reverse osmosis, DI/EDI and the distribution loop. We do not offer Water for Injection, pure steam, stills or stainless steel piped systems at this time; never present them as Aquemi products. The people we talk to are engineers, validation leads and quality managers. They read specifications closely and they are accountable to auditors. The brand should feel like the equipment: precise, quiet, finished to a high standard, with nothing extra.
 
 Three principles guide every decision:
 
@@ -14,7 +14,7 @@ Write the way a senior process engineer explains a system to a peer: plain, exac
 
 - Use **we** for Aquemi and **you** for the client. Never "the customer".
 - Lead with the outcome, then the evidence. "Conductivity holds below 1.1 µS/cm at 25 °C across the loop" beats "Industry-leading water quality".
-- Name the standard every time a claim depends on one: USP <645>, USP <643>, Ph. Eur., ASME BPE, GAMP 5, 21 CFR Part 11.
+- Name the standard every time a claim depends on one: USP <645>, USP <643>, Ph. Eur., GAMP 5, 21 CFR Part 11.
 - Use short sentences and active verbs. One idea per sentence.
 - Don't hype. Never write *revolutionary*, *world-class*, *cutting-edge*, *best-in-class*, *seamless* or *solutions-driven*.
 - No emoji, no exclamation marks.
@@ -22,7 +22,7 @@ Write the way a senior process engineer explains a system to a peer: plain, exac
 | Write | Not |
 | --- | --- |
 | Every skid is factory acceptance tested before it ships. | Our rigorous quality processes ensure excellence. |
-| Hot water sanitization at 80 °C, no chemicals in the loop. | Cutting-edge sanitization technology. |
+| Loop conductivity is trended against the USP <645> limit at 25 °C. | Cutting-edge monitoring technology. |
 | Validation documents follow GAMP 5 and arrive with the equipment. | Seamless validation support! |
 
 ### Mechanics
@@ -30,7 +30,7 @@ Write the way a senior process engineer explains a system to a peer: plain, exac
 - **Sentence case** for every heading, button and nav item: "Request a proposal", not "Request A Proposal".
 - **Uppercase** only in the `eyebrow` style.
 - **Units:** a space between number and unit (`80 °C`, `1.1 µS/cm`, `< 0.1 EU/mL`, `500 ppb TOC`). Use SI units; give imperial in brackets only on US-facing documents.
-- **Abbreviations:** spell out on first use per page, then abbreviate: "Water for Injection (WFI)", "Purified Water (PW)", "Pure Steam (PS)", "Clean-in-place (CIP)".
+- **Abbreviations:** spell out on first use per page, then abbreviate: "Purified Water (PW)", "Reverse osmosis (RO)", "Electrodeionization (EDI)", "Polypropylene (PP)".
 - **Numbers:** numerals for all measurements; words for one to nine in prose counts.
 - **Product and system names** are set in the body face, never in the wordmark's letterforms.
 
@@ -150,7 +150,7 @@ The swash in the wordmark is a quarter-arc rising into a straight stem. Use the 
 
 ### Imagery
 
-- **Subjects:** the work itself. Electropolished 316L stainless steel, orbital welds, sanitary valves, skids on the shop floor, installed loops in clean rooms, engineers reviewing drawings.
+- **Subjects:** the work itself. PP skids and pipework, thermoplastic welds, PVC pretreatment vessels, sanitary valves, skids on the shop floor, installed loops in clean rooms, engineers reviewing drawings.
 - **Light:** cool, even, natural or diffused. True whites, no colour filters, no lens flare.
 - **Framing:** tight details or wide orderly views with strong verticals. Leave negative space for headlines.
 - **Avoid:** stock lab coats with pipettes, splashing water, droplets on leaves, glowing blue molecules, globes and handshakes.

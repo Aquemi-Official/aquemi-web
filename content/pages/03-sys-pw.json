@@ -2,12 +2,12 @@
  "id": "sys-pw",
  "section": "Systems",
  "nav_label": "Purified Water (PW) generation",
- "title": "Purified Water (PW) systems, RO and EDI | Aquemi",
- "meta": "RO and EDI skids that make Purified Water below USP <645> 1.3 µS/cm and USP <643> 500 ppb TOC, sized for your coldest feed water and wet tested at FAT.",
+ "title": "Purified Water (PW) systems, PP RO and DI/EDI | Aquemi",
+ "meta": "Polypropylene RO and DI or EDI skids, fed by PVC pretreatment, that make Purified Water below USP <645> 1.3 µS/cm and USP <643> 500 ppb TOC, sized for your coldest feed and wet tested at FAT.",
  "path": "/systems/purified-water/",
- "eyebrow": "PW · USP <645>, <643> · PH. EUR. 0008",
+ "eyebrow": "PW · RO · DI/EDI · USP <645>, <643> · PH. EUR. 0008",
  "headline": "Purified Water, sized for your coldest day",
- "lead": "RO and EDI skids that make PW below the USP <645> and <643> limits, without regeneration chemicals.",
+ "lead": "A polypropylene (PP) RO and DI or EDI skid, fed by PVC pretreatment, makes PW below the USP <645> and <643> limits.",
  "primary_cta": "Request a sizing and budget proposal",
  "primary_cta_intent": "Sizing and budget proposal for a new system|Purified Water (PW) generation",
  "secondary_cta": {
@@ -92,7 +92,7 @@
     {
      "t": "Softened, dechlorinated feed",
      "spot": "pretreatment",
-     "d": "Arrives free of chlorine and hardness, so the membranes last."
+     "d": "Arrives from the PVC pretreatment free of chlorine and hardness, so the membranes last."
     },
     {
      "t": "Heat exchanger",
@@ -115,9 +115,9 @@
      "d": "Adds margin on conductivity, TOC and silica."
     },
     {
-     "t": "EDI",
+     "t": "DI or EDI",
      "spot": "edi-stack",
-     "d": "Removes the remaining ions without regeneration chemicals."
+     "d": "Removes the remaining ions: EDI without regeneration chemicals, DI by [DI resin: service exchange or on-site regeneration]."
     },
     {
      "t": "To PW storage",
@@ -159,8 +159,8 @@
     },
     {
      "p": "Sanitization",
-     "v": "Hot water ≥ 80 °C through RO and EDI, held [hold time, minutes]",
-     "m": "Verified at the coldest probe; heat-rated modules [standard or option]",
+     "v": "[sanitization method for the PP skid] up to [maximum sanitization temperature for PP, °C], held [hold time, minutes]",
+     "m": "Verified at the coldest probe; rated membranes and EDI modules [standard or option]",
      "hl": false,
      "at": [
       74.8,
@@ -169,8 +169,8 @@
     },
     {
      "p": "Materials and dead legs",
-     "v": "316L stainless steel; L/D ≤ 2, sloped to drain",
-     "m": "ASME BPE; EN 10204 3.1",
+     "v": "Polypropylene (PP), [PP material grade]; dead legs [dead leg design limit, L/D], sloped to drain",
+     "m": "[PP piping standard]; [certificates supplied for PP product-contact parts]",
      "hl": false,
      "at": [
       23.3,
@@ -178,9 +178,9 @@
      ]
     },
     {
-     "p": "Surface finish, product contact",
-     "v": "[standard finish, ASME BPE designation]",
-     "m": "SF1: Ra ≤ 0.51 µm polished. SF4: Ra ≤ 0.38 µm electropolished",
+     "p": "Joints, product contact",
+     "v": "[PP joining method, for example butt fusion or IR welding]",
+     "m": "Each joint logged; [joint inspection method and extent]",
      "hl": false,
      "at": [
       62.8,
@@ -230,8 +230,8 @@
    "h": "Configurations and options",
    "items": [
     {
-     "t": "Hot water sanitizable softener",
-     "d": "Stainless softener on the skid, regenerated on measured hardness breakthrough, not a fixed volume.",
+     "t": "Softener on demand",
+     "d": "Softener in the PVC pretreatment, regenerated on measured hardness breakthrough, not a fixed volume.",
      "spot": "pretreatment"
     },
     {
@@ -251,7 +251,7 @@
     },
     {
      "t": "Ultrafiltration or 254 nm UV",
-     "d": "Downstream of EDI where your microbial target or a WFI feed needs more margin.",
+     "d": "Downstream of DI or EDI where your microbial target, or the WFI still you feed, needs more margin.",
      "spot": "uv-ozone"
     },
     {
@@ -290,15 +290,11 @@
     },
     {
      "t": "Material certificates",
-     "d": "EN 10204 3.1, every product-contact part"
+     "d": "[certificates supplied for PP and PVC product-contact parts]"
     },
     {
-     "t": "Weld map, log and borescope records",
-     "d": "[borescope inspection percentage] borescoped; ASME Section IX"
-    },
-    {
-     "t": "Surface finish and passivation reports",
-     "d": "ASME BPE"
+     "t": "Joint map and joining log",
+     "d": "[PP joining method]; [joint inspection records supplied]"
     },
     {
      "t": "Component and calibration certificates",
@@ -319,7 +315,7 @@
    "items": [
     {
      "q": "Single-pass or double-pass RO?",
-     "a": "Single-pass RO and EDI suits moderate solids. Double pass adds margin on conductivity, TOC and silica, for high-solids feed or PW feeding a WFI still or pure steam generator."
+     "a": "Single-pass RO and EDI suits moderate solids. Double pass adds margin on conductivity, TOC and silica, for high-solids feed, or for PW feeding a WFI still you run."
     },
     {
      "q": "How do you handle cold winter feed?",
@@ -330,8 +326,8 @@
      "a": "Chloramine damages RO membranes, so it is removed first, which releases ammonia. Ammonia can pass RO when pH is raised for CO₂ control, so we design both together."
     },
     {
-     "q": "Hot water or chemical sanitization?",
-     "a": "Hot water leaves no residual to test for and is proven at the coldest point. Chemical sanitization suits membranes not rated for heat, but adds a residual test."
+     "q": "How is the PP skid sanitized?",
+     "a": "[sanitization method for the PP skid, and its maximum temperature, °C]. Hot water leaves no residual to test for; chemical sanitization adds a residual test."
     },
     {
      "q": "How do we know it will pass IQ/OQ?",
@@ -346,7 +342,6 @@
    "items": [
     "sys-pretreatment",
     "sys-storage",
-    "sys-wfi-distillation",
     "sys-monitoring"
    ]
   }
@@ -361,7 +356,7 @@
    "Feed water analysis, ideally two seasons",
    "Feed temperature range, °C",
    "Peak and average demand, L/h",
-   "Pharmacopoeia, and any WFI or steam fed"
+   "Pharmacopoeia, and any WFI still you feed"
   ],
   "turnaround": "[proposal response time, working days]",
   "returns": [
@@ -375,9 +370,12 @@
   "Guaranteed conductivity at the skid outlet (µS/cm at 25 °C)",
   "Membrane design temperature held by the feed heat exchanger, °C ([feed heat exchanger design temperature, °C])",
   "Design system recovery (%)",
-  "Hot water sanitization hold time (minutes)",
-  "Confirm hot water sanitizable membranes and EDI modules are standard or an option",
-  "Standard product-contact surface finish (ASME BPE designation) and whether SF4 electropolish is offered",
+  "Sanitization method for the PP skid, maximum sanitization temperature for PP (°C) and hold time (minutes)",
+  "Confirm membranes and EDI modules rated for that sanitization are standard or an option",
+  "PP material grade, PP piping standard and dead leg design limit (L/D)",
+  "PP joining method (for example butt fusion or IR welding), joint inspection method and extent, and joint records supplied",
+  "Material certificates supplied for PP and PVC product-contact parts",
+  "Whether both DI and EDI are offered, and for DI whether resin is service exchange or regenerated on site",
   "Confirm online TOC at the skid outlet is standard or an option",
   "Supply voltage options (V / phase / Hz)",
   "Control panel certification held (for example CSA or UL listing); state only what is held",
@@ -390,7 +388,6 @@
   "Budget ranges (CAD) for three reference PW skid capacities",
   "Test bay location and remote witness platform (same as svc-fat-sat)",
   "Who registers pressure parts (CRN) and for which provinces; panel standard and certification mark held",
-  "Borescope inspection percentage (same as svc-fabrication)",
   "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope ([hospital, lab and industrial water scope]): new systems, upgrades, service only or not offered (same wording as industries, ind-meddevice and systems FAQ)"
  ]
 }

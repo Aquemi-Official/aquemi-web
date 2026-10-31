@@ -2,12 +2,12 @@
  "id": "ind-meddevice",
  "section": "Industries",
  "nav_label": "Medical devices",
- "title": "Medical device water: rinse, WFI and pure steam | Aquemi",
- "meta": "Final rinse water for implants and sterile devices, set from USP <161> endotoxin and ISO 11737 bioburden, documented for ISO 13485, MDSAP and FDA QMSR.",
+ "title": "Medical device water: Purified Water for final rinse | Aquemi",
+ "meta": "Purified Water (PW) for device final rinse, with limits set from USP <161> endotoxin and ISO 11737 bioburden, documented for ISO 13485, MDSAP and FDA QMSR.",
  "path": "/industries/medical-devices/",
  "eyebrow": "DEVICES · ISO 13485 · MDSAP · FDA QMSR",
  "headline": "Final rinse water you can defend at audit",
- "lead": "PW and WFI systems that hold your endotoxin and bioburden limits at the washer inlet.",
+ "lead": "We supply Purified Water (PW) systems, built to the endotoxin and bioburden limits you set at the washer inlet.",
  "primary_cta": "Request a device water scope review",
  "primary_cta_intent": "Water scope review for your products|Medical devices",
  "secondary_cta": {
@@ -20,7 +20,7 @@
    "as": "grades",
    "nav": "Grade by step",
    "h": "Water grade by process step",
-   "intro": "No device standard sets a grade per step; this is common practice.",
+   "intro": "No device standard sets a grade per step; this is common practice. We supply PW; where a step needs WFI, you generate it, usually from PW feed.",
    "cols": [
     "Process step",
     "Typical water",
@@ -48,9 +48,9 @@
      "USP <161> 2.15 EU per device"
     ],
     [
-     "Feed to sterilizers and clean steam generators",
+     "Feed to your sterilizers and clean steam generators",
      "PW, or the feed the generator maker specifies",
-     "EN 285 Annex B; ISO 17665"
+     "ISO 17665; the generator maker's feed specification"
     ]
    ],
    "fold": 3,
@@ -109,23 +109,23 @@
     {
      "t": "PW generation",
      "icon": "ro-membrane",
-     "d": "Final rinse for implants and passivation lines, with a written endotoxin limit.",
+     "d": "Final rinse for implants and sterile devices, with a written endotoxin limit.",
      "tag": "USP <645>",
      "link": "sys-pw"
     },
     {
-     "t": "WFI by membrane",
-     "icon": "edi",
-     "d": "Low-endotoxin rinse for blood and CSF contact, held to a limit from yours.",
-     "tag": "USP <161>",
-     "link": "sys-wfi-membrane"
+     "t": "Storage and distribution loops",
+     "icon": "loop",
+     "d": "Tank and pumps sized to your washer fill profile, sampled at each washer inlet.",
+     "tag": "USP <1231>",
+     "link": "sys-storage"
     },
     {
-     "t": "Pure steam generators",
-     "icon": "pure-steam",
-     "d": "Steam for in-house sterilizers, tested for non-condensable gases, dryness and superheat.",
-     "tag": "EN 285",
-     "link": "sys-pure-steam"
+     "t": "Monitoring and controls",
+     "icon": "conductivity",
+     "d": "Conductivity and TOC trended against your alert and action levels, with an audit trail.",
+     "tag": "21 CFR Part 11",
+     "link": "sys-monitoring"
     },
     {
      "t": "Upgrades and retrofits",
@@ -173,10 +173,10 @@
     ],
     [
      "Sterilization reviewer",
-     "ISO 11737-1; ISO 11137-2 or ISO 11135; ISO 17665 and EN 285",
+     "ISO 11737-1; ISO 11137-2 or ISO 11135; ISO 17665",
      {
-      "t": "Pure steam generators",
-      "link": "sys-pure-steam"
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
      }
     ],
     [
@@ -202,7 +202,7 @@
     },
     {
      "q": "Do we need WFI for our final rinse?",
-     "a": "Only if your risk assessment says so, as is common for CSF contact. For most implants, PW with an endotoxin limit and point-of-use ultrafiltration costs less. We show the calculation."
+     "a": "Only if your risk assessment says so, as is common for CSF contact. We supply PW; WFI is generated on your site, usually from PW feed. For most implants, PW with an endotoxin limit and point-of-use ultrafiltration costs less."
     },
     {
      "q": "How does rinse water affect our radiation dose?",
@@ -255,7 +255,9 @@
   "Device maker references available for a call, or a plain 'none yet' (FAQ)",
   "A device-manufacturing case study with measured outcome; add a case block when one exists",
   "Hospital, lab and industrial water scope (FAQ): for hospital MDRD say new systems, upgrades, service only or not offered, and whether Aquemi bids hospital and health authority tenders. Keep wording in line with sys-pw and systems FAQ",
-  "Confirm Aquemi supplies point-of-use ultrafiltration and clean steam generators for sterilizer feed (grade table, grid, options)",
+  "Confirm Aquemi supplies point-of-use ultrafiltration as part of the PW package (FAQ)",
+  "Confirm the WFI wording (grade table intro, FAQ): Aquemi supplies PW only; device makers who need WFI generate it on site",
+  "Confirm the grid's storage and monitoring descriptions match sys-storage and sys-monitoring (washer fill sizing, sampling at washer inlet, Part 11 audit trail)",
   "Is the scope review free, and its turnaround",
   "Contact-proposal page: add a 'device water scope review' intent with device class, sterilization method and release limit fields"
  ],
@@ -269,8 +271,8 @@
    "l": "Per device, CSF contact · USP <161>"
   },
   {
-   "v": "< 0.25 EU/mL",
-   "l": "WFI endotoxin · USP <85>"
+   "v": "100 CFU/mL",
+   "l": "PW action level · USP <1231>"
   }
  ]
 }

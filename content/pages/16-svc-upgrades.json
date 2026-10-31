@@ -3,11 +3,11 @@
  "section": "Services",
  "nav_label": "Upgrades and retrofits",
  "title": "Water system upgrades and retrofits, any builder | Aquemi",
- "meta": "Upgrade a PW or WFI system from any builder: RO/EDI, sanitization, online TOC, Part 11 controls, dead legs, with the EU GMP Annex 15 requalification scope.",
+ "meta": "Assess a water system from any builder, then upgrade it with PP pretreatment, RO, DI/EDI or distribution modules, with the EU GMP Annex 15 requalification scope.",
  "path": "/services/upgrades-retrofits/",
  "eyebrow": "UPGRADES · RETROFITS · EU GMP ANNEX 15",
  "headline": "Upgrade the system you have",
- "lead": "Any builder’s PW, WFI or pure steam system: each option with its downtime and the requalification it triggers.",
+ "lead": "We assess any builder’s system and upgrade it with PP pretreatment, RO, DI/EDI or distribution modules, each with its downtime and requalification.",
  "tags": [],
  "primary_cta": "Request a system assessment",
  "primary_cta_intent": "Assessment of an existing system, any make",
@@ -32,8 +32,8 @@
      ]
     },
     {
-     "t": "Annex 1 expects WFI monitoring",
-     "d": "Continuous TOC and conductivity on WFI since August 2023.",
+     "t": "Controls age out",
+     "d": "Discontinued PLCs mean scarce spares and gaps in the audit trail.",
      "at": [
       66,
       53
@@ -77,9 +77,19 @@
      }
     ],
     [
-     "Hot water or ozone sanitization",
-     "Heat exchanger and probes, or ozone with UV destruct",
-     "OQ of the cycle at the coldest point; ozone absent after the UV",
+     "New pretreatment",
+     "PVC pretreatment module ahead of the RO",
+     "IQ/OQ of the module; chlorine and hardness at the RO inlet; downstream sampling",
+     "[days]; existing pretreatment runs until cutover",
+     {
+      "t": "Pretreatment",
+      "link": "sys-pretreatment"
+     }
+    ],
+    [
+     "Distribution loop replacement",
+     "PP loop and pump module, points of use re-tied",
+     "IQ of the loop and dead leg register; OQ of hydraulics and [PP loop sanitization method]; sampling at every point of use",
      "[days], planned shutdown",
      {
       "t": "Storage and distribution loops",
@@ -107,33 +117,13 @@
      }
     ],
     [
-     "Dead legs and loop changes",
-     "Branches cut to L/D ≤ 2 (ASME BPE), slope corrected, passivated",
-     "IQ of the section, updated register; sampling at nearby points",
-     "[days], planned shutdown",
-     {
-      "t": "Fabrication",
-      "link": "svc-fabrication"
-     }
-    ],
-    [
      "Capacity increase",
-     "Second RO train, larger tank, pump or sub-loop",
+     "Second RO train, DI/EDI module, pump or PP sub-loop",
      "IQ/OQ of new equipment; loop hydraulics at the new peak",
      "[days]; tied in while running",
      {
       "t": "PW generation",
       "link": "sys-pw"
-     }
-    ],
-    [
-     "WFI route change",
-     "New generator built alongside the existing one",
-     "Full IQ, OQ and three-phase PQ; EU membrane WFI needs notice first",
-     "[weeks] at final cutover",
-     {
-      "t": "WFI by membrane",
-      "link": "sys-wfi-membrane"
      }
     ]
    ]
@@ -193,7 +183,7 @@
     },
     {
      "t": "Water quality data",
-     "d": "Twelve months of conductivity, TOC, microbial and endotoxin results.",
+     "d": "Twelve months of conductivity, TOC and microbial results.",
      "spot": "toc"
     },
     {
@@ -203,7 +193,7 @@
     },
     {
      "t": "Storage and distribution",
-     "d": "Dead legs, drainability, rouge and contamination routes.",
+     "d": "Dead legs, drainability, biofilm and contamination routes.",
      "spot": "storage-tank"
     },
     {
@@ -235,7 +225,7 @@
     },
     {
      "t": "Design, build, FAT",
-     "d": "Skids and software tested at our shop, so the site window stays short."
+     "d": "Modules and software tested at our shop, so the site window stays short."
     },
     {
      "t": "Cutover",
@@ -307,17 +297,18 @@
   "Budget range per option as shown in assessment reports ([budget range, CAD], assessment intro), or remove it",
   "Typical site downtime per upgrade type ([days], [weeks]) in the downtime table, and [controls swap window, days] in the controls intro",
   "Whether temporary or rental RO/EDI units are offered, flow range and lead time ([temporary RO or EDI units, flow m³/h]); remove the downtime row if not",
-  "Passivation standard and method for rouge remediation and new piping ([passivation standard, ASTM A967 or A380]), and whether derouging is in-house or by a partner",
-  "Confirm WFI route changes (membrane and distillation) are offered in-house or with a partner (same open point as sys-wfi-membrane)",
+  "Confirm Aquemi replaces pretreatment and distribution loops on other builders' systems with its PVC and PP modules, and how PP ties in to existing piping of another material ([tie-in method to existing piping])",
+  "Confirm Aquemi delivers online TOC/conductivity and PLC/HMI/SCADA upgrades on existing systems, or only as part of its PP modules; remove those router rows if not",
+  "PP loop sanitization method proven after a loop replacement ([PP loop sanitization method]; same placeholder as home and projects)",
   "Confirm Aquemi builds panels and tests PLC programs against a simulator before site work (upgrades table, steps)",
   "Payback figures from a delivered chemical DI to RO/EDI conversion, with client permission ([payback figures from a delivered conversion], FAQ)",
   "Delivered upgrade and retrofit references ([delivered upgrades, what changed, requalification time], FAQ) for a future case block",
   "Assessment response time, working days ([assessment response time, working days], same as the contact-proposal lookup table)",
-  "Site downtime (days) for an online TOC/conductivity retrofit and for rouge remediation (router \"Site downtime\" station)"
+  "Site downtime (days) for an online TOC/conductivity retrofit, a pretreatment replacement and a loop replacement (router \"Site downtime\" station)"
  ],
  "facts": [
   {
-   "v": "7",
+   "v": "6",
    "l": "Common upgrades, each with its requalification"
   },
   {

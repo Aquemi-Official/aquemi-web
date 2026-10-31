@@ -2,12 +2,12 @@
  "id": "sys-storage",
  "section": "Systems",
  "nav_label": "Storage and distribution loops",
- "title": "PW and WFI storage and distribution loops | Aquemi",
- "meta": "PW and WFI loops with turbulent flow per EU GMP Annex 1, dead legs to ASME BPE L/D ≤ 2, full drainage, and hot, ozone or heat sanitization.",
+ "title": "PW storage and distribution loops in polypropylene | Aquemi",
+ "meta": "Polypropylene PW tanks and loops with turbulent flow per EU GMP Annex 1, short dead legs, full drainage and a sanitization method matched to the PP rating.",
  "path": "/systems/storage-and-distribution/",
  "eyebrow": "SYSTEMS · STORAGE AND DISTRIBUTION",
  "headline": "Loops that hold quality to every outlet",
- "lead": "PW and WFI tanks and loops that stay turbulent at peak draw, drain fully and keep every branch short.",
+ "lead": "Polypropylene (PP) tanks and loops for Purified Water (PW) that stay turbulent at peak draw, drain fully and keep every branch short.",
  "primary_cta": "Send your points-of-use list for a loop review",
  "primary_cta_intent": "Review of a document you have|Points-of-use list or loop design",
  "secondary_cta": {
@@ -16,23 +16,23 @@
  },
  "facts": [
   {
-   "v": "L/D ≤ 2",
-   "l": "Dead legs · ASME BPE"
-  },
-  {
    "v": "≥ 1 m/s",
    "l": "Return at peak draw"
   },
   {
-   "v": "> 70 °C",
-   "l": "Hot WFI loop · Annex 1"
+   "v": "PP",
+   "l": "Tank and loop pipework"
+  },
+  {
+   "v": "USP <645>",
+   "l": "Conductivity on the return"
   }
  ],
  "blocks": [
   {
    "type": "spec",
    "h": "Loop design rules",
-   "caption": "LOOP · EU GMP ANNEX 1 · ASME BPE",
+   "caption": "PW LOOP · EU GMP ANNEX 1",
    "cols": [
     "Rule",
     "Design value",
@@ -50,34 +50,40 @@
     {
      "p": "Slope and drainage",
      "v": "Continuous fall to low-point drains",
-     "m": "ASME BPE drainability",
+     "m": "Measured fall on each run",
      "rule": "≥ [design minimum slope, in/ft or %]"
     },
     {
-     "p": "Heat sanitization, ambient loops",
-     "v": "Held [hold time, minutes] at the coldest probe",
-     "m": "USP <1231>: 65–80 °C most common",
-     "rule": "≥ [sanitization temperature, °C]"
+     "p": "Dead legs",
+     "v": "Every branch, instrument tee and sample valve kept short",
+     "m": "Measured and listed in the dead leg register",
+     "rule": "≤ [dead leg limit for the PP loop, L/D]"
     },
     {
-     "p": "Ozone, ambient loops",
+     "p": "Loop sanitization",
+     "v": "[loop sanitization methods offered for PP: ozone, UV, chemical or hot water]",
+     "m": "Hot water held [hold time, minutes] at the coldest probe",
+     "rule": "≤ [maximum loop sanitization temperature for PP, °C]"
+    },
+    {
+     "p": "Ozone, if chosen",
      "v": "[ozone set point in tank, ppb] in the tank, destroyed by 254 nm UV before supply",
      "m": "ISPE Baseline Guide Vol. 4: 0.02–0.2 ppm"
     },
     {
      "p": "Point-of-use valves",
-     "v": "Zero-static diaphragm valves welded into the loop",
-     "m": "ASME BPE"
+     "v": "[PP point-of-use valve type, for example zero-static diaphragm] joined into the loop",
+     "m": "[PP joining method for valves]"
     },
     {
      "p": "Tank vent",
-     "v": "Hydrophobic 0.2 µm filter, heated on hot tanks",
+     "v": "Hydrophobic 0.2 µm filter",
      "m": "Annex 1, 6.11"
     },
     {
      "p": "Online monitoring",
-     "v": "Conductivity, temperature and flow on the return; TOC on WFI [TOC position, standard or option]",
-     "m": "Annex 1, 6.15"
+     "v": "Conductivity, temperature and flow on the return; TOC [TOC on the return, standard or option]",
+     "m": "USP <645>; USP <643>"
     }
    ],
    "fold": 4,
@@ -91,7 +97,7 @@
     {
      "t": "From generation",
      "icon": "droplet",
-     "d": "Enters the tank under a heated vent filter."
+     "d": "PW enters the tank under a vent filter."
     },
     {
      "t": "Storage tank",
@@ -106,7 +112,7 @@
     {
      "t": "Heat exchanger",
      "spot": "heat-exchanger",
-     "d": "Heats the loop for sanitization or cools it to use temperature."
+     "d": "Holds loop temperature; heats for hot water sanitization within the PP limit. [heat exchanger, standard or option]"
     },
     {
      "t": "Points of use",
@@ -128,7 +134,7 @@
   },
   {
    "type": "table",
-   "h": "Hot, ambient, ozone or cold",
+   "h": "Ozone, UV, chemical or hot water",
    "nav": "Microbial control",
    "cols": [
     "Loop",
@@ -138,35 +144,35 @@
    ],
    "rows": [
     [
-     "Hot",
-     "Continuous heat; the FDA calls 65–80 °C systems self-sanitizing",
-     "Hot WFI from a still",
-     "Simplest to defend; most energy and rouge"
-    ],
-    [
-     "Ambient, heat-sanitized",
-     "Hot water on a schedule, proven at the coldest probe",
-     "PW; membrane WFI if your CCS allows",
-     "Less energy; loop out of use each cycle"
-    ],
-    [
      "Ambient, ozonated",
      "Ozone in the tank, destroyed by UV before use",
-     "PW and membrane WFI",
+     "PW, if the PP grade is rated for ozone [confirm]",
      "No heat cycles; needs ozone sensors and safe venting"
     ],
     [
-     "Cold",
-     "Slows growth, does not kill; heat or ozone sanitizes",
-     "Chilled water at use",
-     "Chiller load; choose it for the process"
+     "Ambient, UV",
+     "254 nm UV on the supply reduces viable count; it does not sanitize the loop alone",
+     "PW, alongside a periodic method",
+     "No chemicals in the water; lamps need replacing"
+    ],
+    [
+     "Chemical",
+     "[chemical sanitant compatible with PP] on a schedule, rinsed to conductivity",
+     "PW",
+     "Loop out of use each cycle; rinse must be proven"
+    ],
+    [
+     "Ambient, hot water",
+     "Hot water on a schedule up to [maximum loop sanitization temperature for PP, °C], proven at the coldest probe",
+     "PW",
+     "Limited by the PP temperature rating; loop out of use each cycle"
     ]
    ]
   },
   {
    "type": "spec",
    "h": "Tank, pipework and controls",
-   "caption": "FABRICATION · ASME BPE",
+   "caption": "FABRICATION · POLYPROPYLENE",
    "cols": [
     "Parameter",
     "Design value",
@@ -184,54 +190,54 @@
     },
     {
      "p": "Product contact",
-     "v": "316L stainless steel",
-     "m": "EN 10204 3.1 certificates",
+     "v": "Polypropylene, [PP grade, for example PP-H or PP-R]",
+     "m": "[certificate type for PP resin and pipe]",
      "at": [
       86.7,
       71.4
      ]
     },
     {
-     "p": "Surface finish",
-     "v": "[standard finish, ASME BPE designation]",
-     "m": "SF1 Ra ≤ 0.51 µm; SF4 Ra ≤ 0.38 µm electropolished",
+     "p": "Internal surface",
+     "v": "[PP internal surface specification, Ra µm]",
+     "m": "[basis for the PP surface specification]",
      "at": [
       43.3,
       20.1
      ]
     },
     {
-     "p": "Welds",
-     "v": "Orbital welds numbered on the isometric; [share of product-contact welds borescoped, %] borescoped",
-     "m": "ASME BPE; ASME Section IX",
+     "p": "Joints",
+     "v": "[PP joining method, for example butt fusion or IR welding]; each joint numbered on the isometric",
+     "m": "[welder qualification standard for thermoplastics, for example DVS 2212]",
      "at": [
       78.7,
       56.0
      ]
     },
     {
-     "p": "Pressure-rated tanks",
-     "v": "ASME Section VIII, Div. 1, with relief device",
-     "m": "CRN, CSA B51: [provinces where Aquemi registers]",
+     "p": "Tank design",
+     "v": "[PP tank design: atmospheric or pressure-rated]",
+     "m": "[PP tank design standard, for example DVS 2205]",
      "at": [
       50.7,
       29.2
      ]
     },
     {
-     "p": "Passivation",
-     "v": "After fabrication, before first use",
-     "m": "ASME BPE; [passivation standard and method]"
+     "p": "Cleaning before first use",
+     "v": "[pre-commissioning flush and cleaning procedure for PP]",
+     "m": "Rinsed with PW to a conductivity endpoint"
     },
     {
      "p": "Heat exchangers",
-     "v": "Sanitary double tube sheet",
+     "v": "Double tube sheet [heat exchanger, standard or option]",
      "m": "FDA high purity water guide"
     },
     {
      "p": "Pumps",
      "v": "Sanitary centrifugal, variable speed; [duty and standby pumps, standard or option]",
-     "m": "Checked at hot loop temperature"
+     "m": "Sized for the worst-case outlet combination"
     },
     {
      "p": "Spray ball",
@@ -269,8 +275,8 @@
      "d": "Flow direction, slopes, diameters and lengths"
     },
     {
-     "t": "Material certificates and weld log",
-     "d": "3.1 certificates, weld map and borescope records"
+     "t": "Material certificates and joint log",
+     "d": "[certificate type for PP resin and pipe]; joint map and joint records"
     },
     {
      "t": "FAT, SAT, IQ and OQ protocols",
@@ -285,8 +291,8 @@
      "d": "Measured fall on each run; riboflavin test on each tank"
     },
     {
-     "t": "Pressure test, passivation and finish reports",
-     "d": "ASME BPE"
+     "t": "Pressure test and cleaning reports",
+     "d": "[PP pressure test standard and method]"
     }
    ]
   },
@@ -296,9 +302,9 @@
    "h": "Options",
    "items": [
     {
-     "t": "Cooled sub-loops",
-     "d": "Ambient user groups fed from a hot main through a double tube sheet exchanger.",
-     "spot": "heat-exchanger"
+     "t": "UV on the supply",
+     "d": "254 nm UV after the tank, before the first outlet. [UV, standard or option]",
+     "spot": "uv-ozone"
     },
     {
      "t": "Point-of-use coolers",
@@ -325,8 +331,8 @@
    "nav": "FAQ",
    "items": [
     {
-     "q": "Does a WFI loop have to be hot?",
-     "a": "No. Annex 1, 6.10 gives above 70 °C as an example. Ambient WFI with ozone or periodic heat works if your CCS justifies it. We set out both."
+     "q": "How hot can a PP loop be sanitized?",
+     "a": "Hot water runs no higher than [maximum loop sanitization temperature for PP, °C]. Where your CCS needs more, we set out ozone, UV or chemical sanitization [confirm methods offered]."
     },
     {
      "q": "How do you measure L/D?",
@@ -342,7 +348,7 @@
     },
     {
      "q": "Can you add points of use to an existing loop?",
-     "a": "Yes, after a hydraulic check at the new peak draw. Each branch is cut in with a zero-static valve under your change control. Shutdown: [typical shutdown for a point-of-use addition, days]."
+     "a": "Yes, after a hydraulic check at the new peak draw. Each branch is cut in with [PP point-of-use valve type] under your change control. Shutdown: [typical shutdown for a point-of-use addition, days]."
     }
    ]
   }
@@ -356,7 +362,7 @@
   "include": [
    "Points of use: location, L/h, temperature",
    "Outlets open together, peak L/h",
-   "Water grade and generator type",
+   "PW specification and current generation, if any",
    "Layout drawings with outlet locations"
   ],
   "returns": [
@@ -370,17 +376,24 @@
  "todo": [
   "Design minimum return velocity at peak draw (m/s)",
   "Standard minimum slope specified (in/ft or %)",
-  "Hot loop operating temperature (°C)",
-  "Thermal sanitization temperature (°C) and hold time (minutes) for ambient loops",
-  "Ozone set point in the tank (ppb) used in Aquemi designs",
+  "Dead leg limit (L/D) used for PP loops",
+  "Loop sanitization methods offered for PP loops (ozone, UV, chemical, hot water) and which is standard",
+  "Maximum loop sanitization temperature for the PP system (°C) and hold time (minutes)",
+  "Whether the PP grade used is rated for ozone, and the ozone set point in the tank (ppb)",
+  "Chemical sanitant compatible with the PP system, if chemical sanitization is offered",
+  "PP grade for tank and loop (for example PP-H or PP-R) and certificate type for resin and pipe",
+  "PP internal surface specification (Ra) and its basis",
+  "PP joining method and welder qualification standard (for example DVS 2212)",
+  "PP point-of-use valve type and how it is joined into the loop",
+  "Whether PP tanks are atmospheric or pressure-rated, and the tank design standard (for example DVS 2205)",
+  "Pre-commissioning flush and cleaning procedure for PP",
+  "PP pressure test standard and method",
+  "Whether a heat exchanger and UV on the supply are standard or an option",
   "Tank volume range (L)",
-  "Provinces where Aquemi registers pressure-rated tanks (CRN under CSA B51)",
   "Whether duty and standby loop pumps are standard or an option",
-  "Standard product-contact surface finish (ASME BPE designation) and whether SF4 electropolish is offered",
-  "Share of product-contact welds borescoped (%)",
-  "Passivation standard and method ([passivation standard and method], for example ASTM A967 or ASTM A380), and whether it is done in-house",
-  "Confirm TOC on the loop return is standard or an option for WFI loops",
+  "Confirm TOC on the loop return is standard or an option",
   "Whether riboflavin spray coverage testing is performed in-house",
+  "Hero drawing shows a stainless tank; replace it with a PP tank and loop drawing, keeping callout positions",
   "Typical shutdown for adding a point of use to an existing loop (days)",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Datasheet PDF; add a download link only once it exists",

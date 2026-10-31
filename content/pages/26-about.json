@@ -3,11 +3,11 @@
  "section": "Company",
  "nav_label": "About",
  "title": "About Aquemi: pharmaceutical water, built in Canada | Aquemi",
- "meta": "One Canadian team designs, welds, FAT tests, qualifies and services your PW, WFI and pure steam system to USP, ASME BPE and CSA B51. Meet the people.",
+ "meta": "One Canadian team designs, builds, FAT tests, qualifies and services your modular Purified Water (PW) package to USP <645> and <643>. Meet the people.",
  "path": "/company/about/",
  "eyebrow": "ABOUT AQUEMI · BUILT IN CANADA",
  "headline": "Pharmaceutical water, one Canadian team",
- "lead": "We work only on PW, WFI and pure steam for regulated manufacturing, from URS to requalification.",
+ "lead": "We work only on Purified Water (PW) for regulated manufacturing: one modular package, from URS to requalification.",
  "facts": [
   {
    "v": "0 crossings",
@@ -42,7 +42,7 @@
     },
     {
      "t": "Fabricate",
-     "d": "Skids are built in our shop in [city], with orbital welding, traceable materials and a weld log for every product-contact joint."
+     "d": "PP skids with PVC pretreatment are built in our shop in [city], joined by [PP joining method, for example butt fusion or IR welding], with traceable materials."
     },
     {
      "t": "Test",
@@ -74,7 +74,7 @@
     {
      "t": "Fabrication shop",
      "link": "svc-fabrication",
-     "d": "ASME Section IX welders build to ASME BPE; every weld and heat number is logged.",
+     "d": "[PP joining qualification] fabricators build the PP system to [PP piping standard]; [PP joint records kept].",
      "spot": "weld"
     },
     {
@@ -111,7 +111,7 @@
    "rows": [
     {
      "p": "Scope",
-     "v": "PW, WFI, pure steam, loops, pretreatment and monitoring, design to service. Not residential or municipal",
+     "v": "Modular PW package: PVC pretreatment, RO, DI/EDI, PP storage and distribution, monitoring; design to service. Not WFI, pure steam or stainless steel systems; not residential or municipal",
      "m": "Services and systems pages",
      "hl": true
     },
@@ -175,7 +175,7 @@
     },
     {
      "t": "Registered for your province",
-     "d": "Pressure equipment designed to CSA B51 for a CRN. [CRN route and provinces registered]",
+     "d": "Pressure equipment registered under CSA B51 where it applies. [which PP package components need a CRN; CRN route and provinces registered]",
      "tag": "CSA B51",
      "link": "compliance",
      "icon": "stamp"
@@ -220,8 +220,8 @@
      "d": "[Full name] · [licence or qualification]. Ask about data integrity, 21 CFR Part 11 and GAMP 5."
     },
     {
-     "t": "Fabrication and welding supervisor",
-     "d": "[Full name] · [licence or qualification]. Ask about orbital welding, borescope inspection and passivation."
+     "t": "Fabrication supervisor",
+     "d": "[Full name] · [licence or qualification]. Ask about PP joining, joint inspection and material traceability."
     },
     {
      "t": "Validation lead",
@@ -251,7 +251,7 @@
     },
     {
      "q": "What happens to our system if a key person leaves?",
-     "a": "The knowledge sits in the records: specification, as-built drawings, weld log, FAT and qualification reports, change history. A replacement engineer works from the same records."
+     "a": "The knowledge sits in the records: specification, as-built drawings, fabrication records, FAT and qualification reports, change history. A replacement engineer works from the same records."
     },
     {
      "q": "Do you work outside pharmaceutical manufacturing?",
@@ -297,9 +297,9 @@
  },
  "todo": [
   "Founding year and city, province of founding (one figure, same on every page)",
-  "Headcount in total and by discipline (engineers, welding operators, validation staff, service technicians)",
+  "Headcount in total and by discipline (engineers, PP fabricators, validation staff, service technicians)",
   "Number of licensed engineers (P.Eng. or ing.), licensing bodies and provinces; engineering firm permit or certificate of authorization where required",
-  "Team rows: names, roles, credentials (licence, welding qualifications, control platforms, qualification experience) and years in regulated water, with each person's consent to be named; remove rows with no real person",
+  "Team rows: names, roles, credentials (licence, PP joining qualifications, control platforms, qualification experience) and years in regulated water, with each person's consent to be named; remove rows with no real person",
   "Founder or managing director title",
   "Head office and engineering office, city and province",
   "Shop and test bay location, floor area (m²), test bay capacity (largest skid, m; test water supply, L/h)",
@@ -314,7 +314,9 @@
   "ISO 9001 status (same wording as cmp-quality): certificate number, registrar, expiry or target date",
   "Insurance: commercial general liability and professional liability limits (CAD)",
   "Financial standing evidence offered to procurement (bank reference, bonding capacity)",
-  "Capacity range Aquemi builds per system (L/h, kg/h)",
+  "Capacity range of the modular PW package (L/h)",
+  "PP fabrication: joining method (for example butt fusion or IR welding), fabricator qualification, PP piping standard and the joint records kept (Fabricate step, fabrication shop row)",
+  "CSA B51: which components of the PP package need a CRN, if any, and the CRN route",
   "Adjacent uses Aquemi takes on (CSA Z314 hospital water, CLSI, ASTM D1193)",
   "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
   "Work outside Canada: where, and how FAT, registration and service are handled",
@@ -322,10 +324,10 @@
  ],
  "figure": {
   "spots": [
+   "pretreatment",
    "ro-skid",
-   "still",
-   "pure-steam-generator"
+   "edi-stack"
   ],
-  "label": "PW · WFI · pure steam"
+  "label": "Pretreatment · RO · EDI"
  }
 }
