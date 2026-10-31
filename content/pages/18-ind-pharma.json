@@ -3,7 +3,7 @@
  "section": "Industries",
  "nav_label": "Pharmaceutical",
  "title": "Pharmaceutical water systems: Purified Water (PW) | Aquemi",
- "meta": "PW for oral, liquid and topical drugs, and PW feed for your WFI still, to USP <645>, Ph. Eur., Health Canada GUI-0001 and GUI-0119, with FAT and IQ/OQ records.",
+ "meta": "PW for oral, liquid and topical drugs to USP <645>, Ph. Eur. and Health Canada GUI-0001, with FAT and IQ/OQ records.",
  "path": "/industries/pharmaceutical/",
  "eyebrow": "PHARMA · HEALTH CANADA · FDA · EU GMP",
  "headline": "Water matched to your dosage forms",
@@ -20,7 +20,7 @@
    "l": "Stricter value on each attribute"
   },
   {
-   "v": "100 %",
+   "v": "[100 %: confirm it is policy]",
    "l": "Skids wet tested at FAT"
   }
  ],
@@ -53,14 +53,6 @@
      }
     ],
     [
-     "Sterile and parenteral products",
-     "WFI, which you generate; PW is the usual feed to your still",
-     {
-      "t": "PW generation",
-      "link": "sys-pw"
-     }
-    ],
-    [
      "Inspection due, or a water observation open",
      "Drawings that match the plant, a full qualification file",
      {
@@ -82,6 +74,14 @@
      {
       "t": "Pretreatment",
       "link": "sys-pretreatment"
+     }
+    ],
+    [
+     "Sterile and parenteral products",
+     "WFI, which you generate; PW is the usual feed to your still",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
      }
     ],
     [
@@ -123,11 +123,6 @@
      "m": "USP <643>; Ph. Eur. 2.2.44"
     },
     {
-     "p": "Nitrates, PW",
-     "v": "≤ 0.2 ppm",
-     "m": "Ph. Eur. 0008; no USP test"
-    },
-    {
      "p": "Microbial action level, PW",
      "v": "100 CFU/mL",
      "m": "USP <1231>; Ph. Eur. 0008"
@@ -147,29 +142,14 @@
    ],
    "rows": [
     [
-     "Parenterals, biologics and vaccines",
-     "WFI",
-     "Also dialysis and irrigation solutions; generated on your site"
-    ],
-    [
-     "Sterile eye, nose, ear and skin preparations",
+     "Oral preparations and nebulizers",
      "PW",
-     "Higher if your risk assessment calls for it"
-    ],
-    [
-     "Oral preparations and nebulisers",
-     "PW",
-     "WFI for sterile, non-pyrogenic nebulisers"
+     "WFI for sterile, non-pyrogenic nebulizers"
     ],
     [
      "Granulation and tablet coating",
      "PW",
      "Even water that leaves during drying"
-    ],
-    [
-     "Formulation before sterile lyophilization",
-     "WFI",
-     "PW before non-sterile lyophilization"
     ],
     [
      "Non-sterile skin, nasal, ear, rectal and vaginal",
@@ -184,7 +164,22 @@
     [
      "API synthesis before final isolation",
      "Potable water",
-     "PW or WFI for final isolation"
+     "Potable to WFI, by end use"
+    ],
+    [
+     "Parenterals, biologics and vaccines",
+     "WFI",
+     "Also dialysis and irrigation solutions; generated on your site"
+    ],
+    [
+     "Sterile eye, nose, ear and skin preparations",
+     "PW",
+     "Higher if your risk assessment calls for it"
+    ],
+    [
+     "Formulation before sterile lyophilization",
+     "WFI",
+     "PW before non-sterile lyophilization"
     ]
    ],
    "fold": 4,
@@ -203,7 +198,7 @@
    "rows": [
     [
      "Health Canada, all drug sites",
-     "GUI-0001: design, qualification, maintenance, calibration, trend review",
+     "GUI-0001 C.02.009: PW spec ≤ 100 CFU/mL, objectionable organisms",
      {
       "t": "Commissioning and qualification",
       "link": "svc-cq"
@@ -219,7 +214,7 @@
     ],
     [
      "FDA",
-     "21 CFR 211.63 to 211.68 and its water guide: dead legs, sanitization, a year of data",
+     "21 CFR 211.65 (non-reactive surfaces) and its water guide: dead legs, a year of data",
      {
       "t": "Monitoring and controls",
       "link": "sys-monitoring"
@@ -338,6 +333,7 @@
   "Is the scope review free, and its turnaround",
   "Maximum loop sanitization temperature for the PP loop, °C, and the sanitization routes Aquemi supports ([maximum loop sanitization temperature for PP, °C]; decisions)",
   "Confirm Aquemi sizes PW generation as feed to customer WFI stills, to the still maker's feed specification (decisions, FAQ)",
-  "Contact-proposal page: add a 'pharmaceutical scope review' intent or dosage-form and market fields so the CTA lands on a matching form"
+  "Contact-proposal page: add a 'pharmaceutical scope review' intent or dosage-form and market fields so the CTA lands on a matching form",
+  "Share of skids wet tested at FAT (%); confirm 100 % is policy"
  ]
 }

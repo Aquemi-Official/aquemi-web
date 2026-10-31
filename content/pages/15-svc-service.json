@@ -134,7 +134,7 @@
      "m": "21 CFR 211.68"
     },
     {
-     "p": "Ozone and UV intensity",
+     "p": "Ozone and UV intensity [PP ozone rating]",
      "v": "Against a reference sensor or the maker’s method",
      "m": "Maker’s procedure"
     }
@@ -333,7 +333,7 @@
   ]
  },
  "todo": [
-  "Service programme brand and plan names for the three tiers ([tier 1/2/3 plan name])",
+  "Service program brand and plan names for the three tiers ([tier 1/2/3 plan name])",
   "Annual price per tier (CAD), minimum term per tier (months), and call-out and hourly rates without a plan",
   "Lowest plan price (CAD per year) for the pricing FAQ",
   "Preventive maintenance visits per year and calibration interval per tier (months); state separately for quality-critical and process instruments if they differ",
@@ -354,6 +354,7 @@
   "PP loop sanitization method and temperature, for the temperature sensor calibration point and the sanitization check on visits ([PP loop sanitization method]; same placeholder as home and projects)",
   "Quote response time (working days)",
   "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
-  "A real service record (response times achieved, uptime) with client permission before adding proof or a case block"
+  "A real service record (response times achieved, uptime) with client permission before adding proof or a case block",
+  "PP ozone rating for dissolved and headspace ozone (ppm), from the PP maker's rating"
  ]
 }

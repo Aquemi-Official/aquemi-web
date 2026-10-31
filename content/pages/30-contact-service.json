@@ -204,7 +204,7 @@
        "required": false,
        "unit": "µS/cm",
        "when": "Fault now",
-       "help": "Raw reading with temperature, for USP <645> stage 1."
+       "help": "Uncompensated reading with temperature, for USP <645> stage 1."
       },
       {
        "label": "Temperature at the conductivity sensor",
@@ -600,7 +600,8 @@
   "Material certificate shipped with wetted PP and PVC parts ([standard for PP and PVC certificates]); replaces EN 10204 3.1 for wetted metal",
   "Whether any-builder service still covers WFI stills, pure steam generators or stainless loops installed by others; the form now lists PW systems only",
   "Confirm French-language service replies are available",
-  "Contact routes: proposal response time (same as contact-proposal); shop location and visit booking reply time (same as contact-locations)"
+  "Contact routes: proposal response time (same as contact-proposal); shop location and visit booking reply time (same as contact-locations)",
+  "PP ozone rating for dissolved and headspace ozone (ppm), from the PP maker's rating"
  ],
  "hero_index": false,
  "figure": {
@@ -611,7 +612,7 @@
    },
    {
     "spot": "uv-ozone",
-    "t": "UV and ozone"
+    "t": "UV and ozone [PP ozone rating]"
    },
    {
     "spot": "wrench",

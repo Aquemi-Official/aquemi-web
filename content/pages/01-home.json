@@ -49,13 +49,13 @@
     {
      "t": "Storage and distribution",
      "d": "PP tank and loop: turbulent flow at peak draw, sanitized by [PP loop sanitization method].",
-     "tag": "EU GMP Annex 1",
+     "tag": "WHO TRS 1033",
      "link": "sys-storage",
      "spot": "storage-tank"
     },
     {
      "t": "Monitoring and controls",
-     "d": "Online TOC and conductivity on the raw reading, audit trails to 21 CFR Part 11.",
+     "d": "Online TOC and conductivity on the uncompensated reading, audit trails to 21 CFR Part 11.",
      "tag": "21 CFR Part 11",
      "link": "sys-monitoring",
      "icon": "conductivity"

@@ -62,21 +62,6 @@
      }
     ],
     [
-     "A sterile suite that needs PW, or PW feed for the WFI still you run",
-     {
-      "t": "Pharmaceutical",
-      "link": "ind-pharma"
-     },
-     {
-      "t": "PW generation",
-      "link": "sys-pw"
-     },
-     {
-      "t": "Commissioning and qualification",
-      "link": "svc-cq"
-     }
-    ],
-    [
      "Endotoxin or bioburden drifting on finished devices",
      {
       "t": "Medical devices",
@@ -92,7 +77,7 @@
      }
     ],
     [
-     "A new client programme with a tech transfer date",
+     "A new client program with a tech transfer date",
      {
       "t": "Contract manufacturing",
       "link": "ind-cdmo"
@@ -140,7 +125,7 @@
       "link": "ind-pharma"
      },
      "PW for granulation, coating and rinse",
-     "USP <645> and <643>; Ph. Eur. nitrates",
+     "USP <645> and <643>; nitrates (waived at WFI conductivity, Ph. Eur. 11.4)",
      "Health Canada GUI-0001; FDA 21 CFR 211"
     ],
     [
@@ -166,7 +151,7 @@
       "t": "Contract manufacturing",
       "link": "ind-cdmo"
      },
-     "PW per client programme, and PW feed to any WFI still on site",
+     "PW per client program, and PW feed to any WFI still on site",
      "The stricter of USP and Ph. Eur. on each attribute",
      "Regulators and each client’s quality unit"
     ]

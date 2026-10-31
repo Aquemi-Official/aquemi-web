@@ -51,7 +51,7 @@
      "d": "Where production draws water from the loop."
     }
    ],
-   "base": "Monitoring and controls · TOC, conductivity, ozone"
+   "base": "Monitoring and controls · TOC, conductivity, ozone [PP ozone rating]"
   },
   {
    "type": "table",
@@ -65,14 +65,14 @@
    "rows": [
     [
      "USP <645>, <643>; Ph. Eur. 0008",
-     "Conductivity on the raw reading; TOC ≤ 0.50 mg/L on a suitable analyzer",
+     "Conductivity on the uncompensated reading; TOC ≤ 0.50 mg/L on a suitable analyzer",
      {
       "t": "Monitoring and controls",
       "link": "sys-monitoring"
      }
     ],
     [
-     "EU GMP Annex 1, 6.9–6.15",
+     "WHO TRS 1033",
      "Turbulent flow, water stored to limit microbial growth, continuous TOC and conductivity",
      {
       "t": "Storage and distribution loops",
@@ -240,7 +240,8 @@
   "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope: new systems, upgrades, service only or not offered ([hospital, lab and industrial water scope], FAQ; same wording as sys-pw)",
   "Confirm every skid in the PW package (including the loop pump skid, tanks and control panels) gets a wet FAT before shipping; field-built loop piping is proven at SAT/IQ (hero fact, FAQ; same as svc-fat-sat and home)",
   "Budget ranges (CAD) for each module at a stated reference capacity or tank size, including FAT, IQ/OQ protocols and turnover package ([budget range, CAD], [reference capacity, L/h], [reference tank volume L, points of use])",
-  "Standard battery limits for a typical scope ([standard battery limits, typical scope])"
+  "Standard battery limits for a typical scope ([standard battery limits, typical scope])",
+  "PP ozone rating for dissolved and headspace ozone (ppm), from the PP maker's rating"
  ],
  "facts": [
   {

@@ -43,17 +43,12 @@
      "m": "USP <643>; Ph. Eur. 2.2.44"
     },
     {
-     "p": "Nitrates, PW",
-     "v": "≤ 0.2 ppm",
-     "m": "Ph. Eur. 0008; no USP test"
-    },
-    {
      "p": "Action level, PW",
      "v": "100 CFU/mL",
      "m": "USP <1231>; Ph. Eur. 0008"
     }
    ],
-   "note": "Ph. Eur. conductivity for PW: ≤ 5.1 µS/cm @ 25 °C. Where you generate Water for Injection (WFI) from our PW, the WFI limits apply at the outlet of your still, not to our system."
+   "note": "Ph. Eur. PW: ≤ 5.1 µS/cm @ 25 °C. Nitrates ≤ 0.2 ppm, a test waived when the water meets Water for Injection (WFI) conductivity (Ph. Eur. 11.4)."
   },
   {
    "type": "standards-map",
@@ -78,7 +73,7 @@
      "icon": "loop",
      "to": "gmp",
      "codes": [
-      "EU GMP Annex 1",
+      "WHO TRS 1033",
       {
        "t": "USP <1231>",
        "to": "pharmacopoeia"
@@ -147,7 +142,7 @@
     [
      "USP <645> Water conductivity",
      "Stage 1, uncompensated; cell constant ± 2 %, instrument ± 0.1 µS/cm",
-     "Calibration certificates; FAT, SAT and OQ raw readings",
+     "Calibration certificates; FAT, SAT and OQ uncompensated readings",
      {
       "t": "Monitoring and controls",
       "link": "sys-monitoring"
@@ -165,7 +160,7 @@
     [
      "Ph. Eur. 0008 Purified water",
      "Revised in Ph. Eur. 12.3, in force 1 July 2026; stricter of USP",
-     "Functional specification; nitrates tested at FAT",
+     "Functional specification; nitrates (waived at WFI conductivity, Ph. Eur. 11.4)",
      {
       "t": "PW generation",
       "link": "sys-pw"
@@ -208,7 +203,7 @@
    "rows": [
     [
      "EU GMP Annex 1 (2022); Health Canada GUI-0119",
-     "6.7 no dead legs; 6.12 sanitization; [other Annex 1 clauses that apply to PW]",
+     "6.5 records; 6.7 dead legs; 6.9 flow; 6.12 sanitization; 6.13 alert levels",
      "Dead leg register; hydraulics; sanitization OQ",
      {
       "t": "Storage and distribution loops",
@@ -402,11 +397,10 @@
   "PP joining: method (for example butt fusion or IR welding), the standard followed, procedure and operator qualification, and the joint records delivered ([PP joining standard], [PP joining method, for example butt fusion or IR welding], [PP joint procedure and operator qualification], [PP joint records, for example joint map and log])",
   "Dead leg rule applied to the PP loop ([dead leg rule for the PP loop])",
   "Maximum loop sanitization temperature for PP, °C ([maximum loop sanitization temperature for PP, °C]; USP <1231> row); same placeholder as ind-pharma",
-  "Quality review: which EU GMP Annex 1 clauses apply to a PW system and should be cited ([other Annex 1 clauses that apply to PW])",
   "Scope for hospital MDRD water (CSA Z314 / ANSI/AAMI ST108) and laboratory water (ASTM D1193): new systems, upgrades, service only or not offered",
   "Supplier questionnaire and quality agreement: confirm returned with the quote (yes or no), and questionnaire turnaround in working days",
   "Compliance matrix response time (working days) for the closing CTA",
-  "Confirm Aquemi practice stated on other pages and repeated here: FMEA as usual ICH Q9(R1) method; stricter-of basis; nitrates tested at FAT for Ph. Eur. releases; corporate standard conflicts flagged in the functional specification",
+  "Confirm Aquemi practice stated on other pages and repeated here: FMEA as usual ICH Q9(R1) method; stricter-of basis; corporate standard conflicts flagged in the functional specification",
   "Quality review of each standard row (edition, clause numbers, limits) before publication"
  ],
  "figure": {

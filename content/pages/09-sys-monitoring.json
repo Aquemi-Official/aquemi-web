@@ -50,7 +50,7 @@
     {
      "p": "Conductivity, USP",
      "v": "≤ 1.3 µS/cm at 25 °C (stage 1 table)",
-     "m": "USP <645>, non-compensated",
+     "m": "USP <645>, uncompensated",
      "hl": true
     },
     {
@@ -59,7 +59,7 @@
      "m": "Ph. Eur. 0008"
     }
    ],
-   "note": "Raw conductivity is the record; the 25 °C compensated value is for trending only."
+   "note": "Uncompensated conductivity is the record; the 25 °C compensated value is for trending only."
   },
   {
    "type": "diagram",
@@ -132,7 +132,7 @@
   {
    "type": "spec",
    "h": "Sensors and signals",
-   "caption": "MONITORING · ANNEX 1, 6.15",
+   "caption": "MONITORING · WHO TRS 1033",
    "cols": [
     "Signal",
     "Design value",
@@ -140,7 +140,7 @@
    ],
    "rows": [
     {
-     "p": "TOC analyser",
+     "p": "TOC analyzer",
      "v": "Online, system suitability 85–115 %",
      "m": "USP <643>",
      "at": [
@@ -184,7 +184,7 @@
      ]
     },
     {
-     "p": "Dissolved ozone",
+     "p": "Dissolved ozone [PP ozone rating]",
      "v": "Tank [ozone set point in tank, ppb]; below [ozone detection limit used to release, ppb] after UV",
      "m": "Post-UV sensor stops supply"
     },
@@ -310,11 +310,11 @@
    "items": [
     {
      "q": "Can we release water on online TOC and conductivity?",
-     "a": "For those two, yes, when the instruments are qualified and the sample point represents the water used. Microbial counts stay laboratory tests."
+     "a": "For those two, yes, once qualification shows the online readings match point-of-use samples. Microbial counts stay laboratory tests."
     },
     {
      "q": "Our transmitters show compensated conductivity. Is that a problem?",
-     "a": "For trending, no. USP <645> stage 1 uses the raw reading against the table row for the measured temperature. Compensation can pass water stage 1 would fail. We store both."
+     "a": "For trending, no. USP <645> stage 1 compares the uncompensated reading with the table row at or below the measured temperature. Compensation can pass water stage 1 would fail. We store both."
     },
     {
      "q": "Is your system Part 11 compliant?",
@@ -363,6 +363,7 @@
   "Datasheet PDF; add a download link only once it exists",
   "A real controls project (new or upgrade) with scope and inspection outcome before adding a case study block",
   "Whether PLC/HMI application code is delivered unlocked and who owns it",
-  "Software development and change control procedure available for client audit"
+  "Software development and change control procedure available for client audit",
+  "PP ozone rating for dissolved and headspace ozone (ppm), from the PP maker's rating"
  ]
 }

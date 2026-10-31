@@ -3,11 +3,11 @@
  "section": "Systems",
  "nav_label": "Purified Water (PW) generation",
  "title": "Purified Water (PW) systems, PP RO and DI/EDI | Aquemi",
- "meta": "Polypropylene RO and DI or EDI skids, fed by PVC pretreatment, that make Purified Water below USP <645> 1.3 µS/cm and USP <643> 500 ppb TOC, sized for your coldest feed and wet tested at FAT.",
+ "meta": "Polypropylene RO and DI or EDI skids, fed by PVC pretreatment, designed to meet USP <645> 1.3 µS/cm and USP <643> 500 ppb TOC, sized for your coldest feed and wet tested at FAT.",
  "path": "/systems/purified-water/",
  "eyebrow": "PW · RO · DI/EDI · USP <645>, <643> · PH. EUR. 0008",
  "headline": "Purified Water, sized for your coldest day",
- "lead": "A polypropylene (PP) RO and DI or EDI skid, fed by PVC pretreatment, makes PW below the USP <645> and <643> limits.",
+ "lead": "A polypropylene (PP) RO and DI or EDI skid, fed by PVC pretreatment, designed to meet USP <645> and <643>.",
  "primary_cta": "Request a sizing and budget proposal",
  "primary_cta_intent": "Sizing and budget proposal for a new system|Purified Water (PW) generation",
  "secondary_cta": {
@@ -60,12 +60,6 @@
      "p": "Total organic carbon (TOC)",
      "v": "≤ 0.50 mg/L (500 ppb)",
      "m": "USP <643>; Ph. Eur. 2.2.44, method A",
-     "hl": false
-    },
-    {
-     "p": "Nitrates",
-     "v": "≤ 0.2 ppm",
-     "m": "Ph. Eur. 0008",
      "hl": false
     },
     {
@@ -169,7 +163,7 @@
     },
     {
      "p": "Materials and dead legs",
-     "v": "Polypropylene (PP), [PP material grade]; dead legs [dead leg design limit, L/D], sloped to drain",
+     "v": "Unpigmented PP, [PP material grade]; dead legs [dead leg design limit, L/D], sloped to drain",
      "m": "[PP piping standard]; [certificates supplied for PP product-contact parts]",
      "hl": false,
      "at": [
@@ -186,6 +180,12 @@
       62.8,
       68.6
      ]
+    },
+    {
+     "p": "High-pressure RO section",
+     "v": "[RO high-pressure section material and pressure class]",
+     "m": "Rated for the highest feed pressure at the coldest feed",
+     "hl": false
     },
     {
      "p": "Off-spec water",
@@ -251,7 +251,7 @@
     },
     {
      "t": "Ultrafiltration or 254 nm UV",
-     "d": "Downstream of DI or EDI where your microbial target, or the WFI still you feed, needs more margin.",
+     "d": "Downstream of DI or EDI where your microbial target needs more margin.",
      "spot": "uv-ozone"
     },
     {
@@ -388,6 +388,7 @@
   "Budget ranges (CAD) for three reference PW skid capacities",
   "Test bay location and remote witness platform (same as svc-fat-sat)",
   "Who registers pressure parts (CRN) and for which provinces; panel standard and certification mark held",
-  "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope ([hospital, lab and industrial water scope]): new systems, upgrades, service only or not offered (same wording as industries, ind-meddevice and systems FAQ)"
+  "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope ([hospital, lab and industrial water scope]): new systems, upgrades, service only or not offered (same wording as industries, ind-meddevice and systems FAQ)",
+  "RO high-pressure section material and pressure class (PN), from the PP maker's rating"
  ]
 }

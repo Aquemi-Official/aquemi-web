@@ -3,7 +3,7 @@
  "section": "Systems",
  "nav_label": "Pretreatment",
  "title": "RO pretreatment for pharmaceutical water systems | Aquemi",
- "meta": "PVC pretreatment that takes drinking water meeting USP <1231> and holds RO feed at no detectable chlorine or chloramine and SDI ≤ 3, in every Canadian season.",
+ "meta": "PVC pretreatment that takes drinking water (EPA, EU, Japan or WHO limits) and holds RO feed at no detectable chlorine or chloramine and SDI ≤ 3, all year.",
  "path": "/systems/pretreatment/",
  "eyebrow": "SYSTEMS · PVC PRETREATMENT · USP <1231>",
  "headline": "Keep chlorine and scale off your membranes",
@@ -46,8 +46,8 @@
    "rows": [
     {
      "p": "Free and total chlorine",
-     "v": "Not detectable; [design limit, mg/L as Cl₂]",
-     "m": "Online total chlorine analyser; ORP where bisulfite is dosed",
+     "v": "< 0.05 mg/L as Cl₂ [confirm]",
+     "m": "Online total chlorine analyzer; ORP where bisulfite is dosed",
      "hl": true
     },
     {
@@ -164,7 +164,7 @@
     [
      "No disinfectant after carbon",
      "Biofilm in carbon and softeners sheds into the RO",
-     "[carbon bed sanitization method within PVC limits], samples around each bed, flow at no demand"
+     "Carbon replaced every [months] or bisulfite instead; samples around each bed"
     ]
    ],
    "nav": "Feed water",
@@ -210,7 +210,7 @@
      "No chemicals and no carbon, low turbidity",
      "UV dechlorination",
      "Both, by photolysis; also reduces bacteria",
-     "High lamp power; chlorine analyser downstream"
+     "High lamp power; chlorine analyzer downstream"
     ]
    ],
    "nav": "Chlorine or chloramine",
@@ -293,15 +293,15 @@
     },
     {
      "q": "Is pretreatment part of the validated system?",
-     "a": "Your risk assessment draws that boundary; many sites qualify from the RO inlet. Either way it is in the turnover package, with IQ/OQ where in scope."
+     "a": "Your risk assessment draws the boundary; WHO accepts potable build up to the RO. Either way it is in the turnover package, IQ/OQ where in scope."
     },
     {
      "q": "How do you keep carbon beds clean?",
-     "a": "[carbon bed sanitization method within PVC limits] at [sanitization temperature, °C] for [hold time, minutes], every [initial sanitization interval, days] to start, reset from counts during qualification."
+     "a": "PVC is rated to 60 °C, too low for hot water. We backwash and replace carbon every [months], an interval reset from counts during qualification."
     },
     {
      "q": "What is the pretreatment built from?",
-     "a": "PVC, as the first module of the Purified Water package. [PVC pipe standard and schedule]; [vessel material for media, softener and carbon beds]."
+     "a": "PVC ([PVC joining method]), upstream of the RO only. [PVC pipe standard and schedule]; [vessel material for media, softener and carbon beds]."
     },
     {
      "q": "What happens to the ammonia from chloramine?",
@@ -335,17 +335,18 @@
   "Iron and manganese design limit at the RO inlet (mg/L each)",
   "Feed heat exchanger design temperature (°C) ([feed heat exchanger design temperature, °C]; keep consistent with sys-pw)",
   "Pretreatment capacity range, m³/h (hero fact shows [range] m³/h)",
-  "Carbon bed sanitization method that PVC allows, its temperature (°C) and hold time (minutes) ([carbon bed sanitization method within PVC limits])",
+  "Whether bisulfite dosing is offered instead of carbon (feed water table)",
   "PVC pipe standard and schedule, and vessel material for media, softener and carbon beds (FAQ)",
   "Material certificates supplied for PVC parts ([certificates supplied for PVC parts], documents)",
   "Default media replacement interval (months)",
-  "Initial carbon bed sanitization interval (days)",
   "Whether UV dechlorination is offered (remove the router row if not)",
   "Whether Aquemi measures SDI on site during the feedwater review (kit held)",
   "Whether the feedwater review is free or charged; fill the CTA placeholder",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Service locations, media and resin stocking location and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
   "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block",
-  "Months of water history requested for a feedwater review"
+  "Months of water history requested for a feedwater review",
+  "Carbon replacement interval (months), reset from counts during qualification",
+  "PVC joining method for the pretreatment pipework, upstream of the RO"
  ]
 }

@@ -88,7 +88,7 @@
    "rows": [
     {
      "p": "Material",
-     "v": "Polypropylene, [PP resin grade, for example PP-H or PP-R]",
+     "v": "Unpigmented PP, [grade, for example PP-R]",
      "m": "[how PP parts are marked for traceability]",
      "at": [
       19,
@@ -97,7 +97,7 @@
     },
     {
      "p": "Joining",
-     "v": "[PP joining method, for example butt fusion or IR welding]",
+     "v": "[IR or bead-and-crevice-free fusion; no socket fusion]",
      "m": "Parameters recorded per joint",
      "at": [
       47,
@@ -148,7 +148,7 @@
     },
     {
      "p": "Cleaning before first use",
-     "v": "[pre-commissioning flush and cleaning procedure for PP], PW rinse to a conductivity endpoint",
+     "v": "[pre-commissioning flush and cleaning procedure for PP], PW rinse to conductivity and TOC limits",
      "m": "Cleaning certificate"
     },
     {
@@ -260,7 +260,7 @@
     },
     {
      "q": "How is a PP loop cleaned before first use?",
-     "a": "[pre-commissioning flush and cleaning procedure for PP]. The final rinse is PW, run to a conductivity endpoint and recorded."
+     "a": "[pre-commissioning flush and cleaning procedure for PP]. The final rinse is PW, run to conductivity and TOC limits and recorded."
     }
    ]
   }
@@ -285,12 +285,12 @@
   "turnaround": "[proposal response time, working days]"
  },
  "todo": [
-  "PP joining method used in the shop (for example butt fusion or IR welding)",
+  "PP joining method used in the shop (IR or bead-and-crevice-free fusion, no socket fusion)",
   "Welder qualification standard for thermoplastics (for example DVS 2212) and number of qualified welders",
   "What each joint record holds (for example temperature, pressure, heating and cooling times, machine ID)",
   "Joint acceptance criteria used (for example DVS 2202-1) and share of product-contact joints visually examined (%)",
   "When test joints are made and how they are examined (bend or tensile test)",
-  "PP resin grade (for example PP-H or PP-R) and certificate type for resin and pipe",
+  "PP resin grade (unpigmented PP, for example PP-R) and certificate type for resin and pipe",
   "How PP parts are marked or tagged for lot traceability",
   "Joining machine calibration interval and whether machines log parameters automatically",
   "PP internal surface specification (Ra) and how it is recorded, if specified",

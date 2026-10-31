@@ -7,7 +7,7 @@
  "path": "/industries/cdmo/",
  "eyebrow": "CONTRACT MANUFACTURING · USP AND PH. EUR.",
  "headline": "One water system, every client's auditor",
- "lead": "PW systems built to the stricter of USP and Ph. Eur., with records each client can audit. Where a programme needs WFI, you generate it from our PW.",
+ "lead": "PW systems built to the stricter of USP and Ph. Eur., with records each client can audit. Where a program needs WFI, you generate it from our PW.",
  "primary_cta": "Request a CDMO water scope review",
  "primary_cta_intent": "Water scope review for your products|CDMO or contract manufacturing",
  "secondary_cta": {
@@ -38,7 +38,7 @@
    ],
    "rows": [
     [
-     "A new client programme with a tech transfer date",
+     "A new client program with a tech transfer date",
      "Spare peak capacity and a new outlet, qualified before PPQ batches",
      {
       "t": "Storage and distribution loops",
@@ -91,7 +91,7 @@
    "type": "table",
    "nav": "Strictest of",
    "h": "Where USP and Ph. Eur. differ",
-   "intro": "Each programme's markets go into the compliance matrix before design.",
+   "intro": "Each program's markets go into the compliance matrix before design.",
    "cols": [
     "Attribute",
     "USP",
@@ -104,12 +104,6 @@
      "≤ 1.3 µS/cm @ 25 °C, stage 1",
      "≤ 5.1 µS/cm @ 25 °C",
      "USP <645>, the stricter"
-    ],
-    [
-     "Nitrates, PW",
-     "No test",
-     "≤ 0.2 ppm (Ph. Eur. 0008, revised 1 July 2026)",
-     "Tested at FAT where clients file in Europe"
     ]
    ]
   },
@@ -148,7 +142,7 @@
     {
      "t": "Sized for the pipeline",
      "spot": "pid",
-     "d": "Spare skid space and valved tie-ins for expected programmes, qualified with the original system."
+     "d": "Spare skid space and valved tie-ins for expected programs, qualified with the original system."
     }
    ],
    "fold": 3,
@@ -193,11 +187,11 @@
   {
    "type": "steps",
    "nav": "Tech transfer",
-   "h": "From signed programme to released water",
+   "h": "From signed program to released water",
    "items": [
     {
      "t": "Intake and gap check",
-     "d": "Grade, markets, peak draw and PPQ dates; within [gap check turnaround, working days], what the programme needs."
+     "d": "Grade, markets, peak draw and PPQ dates; within [gap check turnaround, working days], what the program needs."
     },
     {
      "t": "Change control",
@@ -248,13 +242,13 @@
   }
  ],
  "cta": {
-  "h": "Send your programmes and uptime target",
+  "h": "Send your programs and uptime target",
   "body": "A process engineer replies, with the scope or our questions.",
   "button": "Request a CDMO water scope review",
   "link": "contact-proposal",
   "intent": "Water scope review for your products|CDMO or contract manufacturing",
   "include": [
-   "Client programmes and the grade each needs",
+   "Client programs and the grade each needs",
    "Markets each client files in",
    "Peak draw by suite, L/h",
    "Longest acceptable outage, hours, and its cost"
@@ -271,7 +265,7 @@
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Design share of peak demand per duplex train, % (uptime options)",
   "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service); service coverage area (hero fact, uptime options)",
-  "Gap check turnaround for a new client programme, working days (tech transfer steps)",
+  "Gap check turnaround for a new client program, working days (tech transfer steps)",
   "Typical span from order to release for a new point of use on a qualified loop, weeks ([new point of use, order to release, weeks]; tech transfer steps)",
   "Confirm Aquemi attends client audits and inspections as supplier, in person or by video, and on what terms: in a service plan or per day ([client audit attendance and terms]; FAQ)",
   "Confirm whether Aquemi provides a water system capability sheet and questionnaire support for CDMO business development, and whether service plans include it ([capability sheet and questionnaire support]; FAQ)",
@@ -281,6 +275,6 @@
   "A CDMO case study with measured outcome; add a case block when one exists",
   "Is the scope review free, and its turnaround",
   "Confirm the WFI wording (lead): Aquemi supplies PW only; a CDMO that needs WFI generates it on site from Aquemi PW",
-  "Contact-proposal page: add a 'CDMO water scope review' intent with client programme, market and uptime fields"
+  "Contact-proposal page: add a 'CDMO water scope review' intent with client program, market and uptime fields"
  ]
 }

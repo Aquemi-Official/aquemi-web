@@ -3,7 +3,7 @@
  "section": "Systems",
  "nav_label": "Storage and distribution loops",
  "title": "PW storage and distribution loops in polypropylene | Aquemi",
- "meta": "Polypropylene PW tanks and loops with turbulent flow per EU GMP Annex 1, short dead legs, full drainage and a sanitization method matched to the PP rating.",
+ "meta": "Polypropylene PW tanks and loops with turbulent flow (WHO TRS 1033), short dead legs, full drainage and sanitization matched to the PP rating.",
  "path": "/systems/storage-and-distribution/",
  "eyebrow": "SYSTEMS · STORAGE AND DISTRIBUTION",
  "headline": "Loops that hold quality to every outlet",
@@ -15,10 +15,6 @@
   "link": "cmp-documentation"
  },
  "facts": [
-  {
-   "v": "≥ 1 m/s",
-   "l": "Return at peak draw"
-  },
   {
    "v": "PP",
    "l": "Tank and loop pipework"
@@ -32,7 +28,7 @@
   {
    "type": "spec",
    "h": "Loop design rules",
-   "caption": "PW LOOP · EU GMP ANNEX 1",
+   "caption": "PW LOOP · WHO TRS 1033",
    "cols": [
     "Rule",
     "Design value",
@@ -61,14 +57,14 @@
     },
     {
      "p": "Loop sanitization",
-     "v": "[loop sanitization methods offered for PP: ozone, UV, chemical or hot water]",
+     "v": "[loop sanitization methods offered for PP: chemical, hot water or ozone]",
      "m": "Hot water held [hold time, minutes] at the coldest probe",
      "rule": "≤ [maximum loop sanitization temperature for PP, °C]"
     },
     {
      "p": "Ozone, if chosen",
      "v": "[ozone set point in tank, ppb] in the tank, destroyed by 254 nm UV before supply",
-     "m": "ISPE Baseline Guide Vol. 4: 0.02–0.2 ppm"
+     "m": "[ozone range, ppb, and its source]"
     },
     {
      "p": "Point-of-use valves",
@@ -78,7 +74,7 @@
     {
      "p": "Tank vent",
      "v": "Hydrophobic 0.2 µm filter",
-     "m": "Annex 1, 6.11"
+     "m": "USP <1231>"
     },
     {
      "p": "Online monitoring",
@@ -157,7 +153,7 @@
     ],
     [
      "Chemical",
-     "[chemical sanitant compatible with PP] on a schedule, rinsed to conductivity",
+     "[chemical sanitant compatible with PP] on a schedule; residual tested",
      "PW",
      "Loop out of use each cycle; rinse must be proven"
     ],
@@ -190,7 +186,7 @@
     },
     {
      "p": "Product contact",
-     "v": "Polypropylene, [PP grade, for example PP-H or PP-R]",
+     "v": "Unpigmented PP, [grade, for example PP-R]",
      "m": "[certificate type for PP resin and pipe]",
      "at": [
       86.7,
@@ -227,7 +223,7 @@
     {
      "p": "Cleaning before first use",
      "v": "[pre-commissioning flush and cleaning procedure for PP]",
-     "m": "Rinsed with PW to a conductivity endpoint"
+     "m": "PW rinse to conductivity and TOC limits"
     },
     {
      "p": "Heat exchangers",
@@ -313,7 +309,7 @@
     },
     {
      "t": "Ozone package for PW",
-     "d": "Ozone generator, 254 nm UV destruct, three ozone sensors, vent destructor.",
+     "d": "Generator, UV destruct, three sensors, vent destructor. [PP ozone rating]",
      "spot": "ozone"
     },
     {
@@ -332,7 +328,7 @@
    "items": [
     {
      "q": "How hot can a PP loop be sanitized?",
-     "a": "Hot water runs no higher than [maximum loop sanitization temperature for PP, °C]. Where your CCS needs more, we set out ozone, UV or chemical sanitization [confirm methods offered]."
+     "a": "Hot water runs no higher than [maximum loop sanitization temperature for PP, °C]; natural PP is rated to 80 °C. Above that we quote PVDF, or sanitize chemically."
     },
     {
      "q": "How do you measure L/D?",
@@ -377,11 +373,11 @@
   "Design minimum return velocity at peak draw (m/s)",
   "Standard minimum slope specified (in/ft or %)",
   "Dead leg limit (L/D) used for PP loops",
-  "Loop sanitization methods offered for PP loops (ozone, UV, chemical, hot water) and which is standard",
+  "Loop sanitization methods offered for PP loops (ozone, chemical, hot water) and which is standard",
   "Maximum loop sanitization temperature for the PP system (°C) and hold time (minutes)",
   "Whether the PP grade used is rated for ozone, and the ozone set point in the tank (ppb)",
   "Chemical sanitant compatible with the PP system, if chemical sanitization is offered",
-  "PP grade for tank and loop (for example PP-H or PP-R) and certificate type for resin and pipe",
+  "PP grade for tank and loop (for example PP-R) and certificate type for resin and pipe",
   "PP internal surface specification (Ra) and its basis",
   "PP joining method and welder qualification standard (for example DVS 2212)",
   "PP point-of-use valve type and how it is joined into the loop",
@@ -397,6 +393,8 @@
   "Typical shutdown for adding a point of use to an existing loop (days)",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
   "Datasheet PDF; add a download link only once it exists",
-  "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block"
+  "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block",
+  "PP ozone rating for dissolved and headspace ozone (ppm), from the PP maker's rating",
+  "Ozone range in the tank (ppb) and its published source"
  ]
 }
