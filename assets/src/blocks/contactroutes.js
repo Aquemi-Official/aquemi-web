@@ -8,8 +8,8 @@
    until confirmed. */
 var CR_CLOCK=wIcon('clock','aq-contact-routes__icon');
 var CR_PHONE=wIcon('phone','aq-contact-routes__icon');
-function crPhone(s){s=String(s||'');var n=s.replace(/[^\d+]/g,'');
- return s.indexOf('[')<0&&n.length>=7?'<a class="aq-contact-routes__num" href="tel:'+e(n)+'">'+tx(s)+'</a>':'<span class="aq-contact-routes__num">'+tx(s)+'</span>'}
+/* The call line's number: wtel in core.js, the one phone rule (a tel: link once confirmed, the placeholder until then) */
+function crPhone(s){return wtel(s,'aq-contact-routes__num')}
 BLOCKS['contact-routes']=function(b,H){var R=b.routes||[];
  var p=W().filter(function(q){return (q.blocks||[]).indexOf(b)>=0})[0]||wp(WP)||{},PB=p.blocks||[],fi=-1;
  PB.forEach(function(x,i){if(fi<0&&x.type==='form')fi=i});

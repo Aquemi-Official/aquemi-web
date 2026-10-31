@@ -17,6 +17,21 @@ FAQ answers the questions engineers and QA ask before they call, as hairline acc
 - The index is the shared `.aq-index` (`01`, mono, `ink-subtle`). `aq-faq__sign` stays empty; CSS writes `+` or `−`.
 - The site renderer (`assets/src/blocks/faq.js`) puts it in a SplitSection: the standard section head on the left, the rows on the right (stacked on phones).
 
+## One link per answer
+
+DR-009's "one line and a link": an answer whose full version lives on another page says one line and links there. The link is a field of the item, never markup inside the answer (the answer stays plain text, so nothing in page content is parsed as HTML):
+
+```json
+{"q": "Which limits apply to Purified Water?", "a": "The stricter of USP and Ph. Eur. on each attribute.", "link": "compliance#limits"}
+{"q": "We do not have a URS yet. Is it too early to ask?", "a": "No. Tell us what you make and ask for a water scope review.",
+ "link": "contact-proposal", "link_label": "Request a water scope review", "intent": "I know my product, not my water spec"}
+```
+
+- `link`: a page id or `page#anchor` (opens that page at the block with that `anchor`). A link to a page that does not exist renders nothing, and `check` warns on it and on a missing anchor.
+- `link_label` (optional): the link's words, five or fewer (`check` counts them with the buttons). Without it a `page#anchor` link reads the target block's heading ("Purified Water limits") and a page link the page's name.
+- `intent` (optional): option labels the linked page's form ticks on arrival, as on a button (`check` warns on labels that tick nothing).
+- Markup: after the answer's paragraph, `<p class="aq-faq__more">` holding the Button link variant (`aq-btn aq-btn--link`, `flow`, with its arrow), `space-3` under the answer. One link per item; the link sits inside the answer, so it counts with the answer (not in the page's visible words).
+
 ## Layout
 
 - Each question is a row between 1 px `line` hairlines, no frame. The summary reads the shared index (`01`, `ink-subtle`), the question in Geist 500 20/28 `ink`, sentence case (18/26 on phones), and a plain `+` / `−` sign in Geist Mono `ink-subtle` at the right. The summary is at least 44 px tall.

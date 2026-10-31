@@ -15,7 +15,7 @@ LinkGrid sets out a list of choices (services, industries, systems, upgrade type
 
 - Block `grid` (`assets/src/blocks/grid.js`): `h` and `intro` go in the standard section head; `items` are `{t, d, link, tag}`.
 - A linked item is one `<a class="aq-rows__row">`: the title carries a `flow` arrow and turns `flow` on hover, and so does the icon. Without a link the row is a `<div>`.
-- The row-end icon is the linked page's icon (`PAGE_ICON` in `core.js`), 24 px in `ink-muted`, top-aligned with the title, on desktop only.
+- The row-end icon is the linked page's icon (`PAGE_ICON` in `core.js`, looked up by `pageIcon`), 24 px in `ink-muted`, top-aligned with the title, on desktop only. A `page#anchor` link (`systems#budget`) shows its page's icon, like a plain page link.
 - Rows of the `.aq-rows` grammar with `line` hairlines between them, nothing else: index (`aq-index`, mono 13 `ink-subtle`), title in Geist 500 20/28 `ink` (18/26 on phones), the line in 15/24 `ink-muted`. An item icon (`icon`) replaces the number as in the row grammar.
 
 ## Writing

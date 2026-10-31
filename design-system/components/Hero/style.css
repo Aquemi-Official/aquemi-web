@@ -77,6 +77,11 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 .aq-loop__arrow { fill: var(--flow); }
 .aq-loop__text text { fill: var(--ink-muted); font: 400 11px var(--font-sans); }
 .aq-loop__text .aq-loop__tag { fill: var(--ink); font: 400 8px var(--font-mono); }
+/* A placeholder in the drawing ("[heat exchanger, standard or option]"): the Placeholder's mono and ink, brackets
+   kept (SVG text has no ground for the caution-tint chip); with the site's placeholder highlight off (is-clean) it reads
+   like the other labels */
+.aq-loop__text .aq-loop__ph { fill: var(--ink); font: 400 9px var(--font-mono); }
+.is-clean .aq-loop__text .aq-loop__ph { fill: var(--ink-muted); font: 400 11px var(--font-sans); }
 
 /* Drawn figure (hero field "figure", pages with no equipment drawing): a quiet line-art device in a 6:5 area on
    `surface`, no frame. Decorative: aria-hidden. */
@@ -92,7 +97,8 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 .aq-hero__vig { position: absolute; z-index: 1; width: var(--w, 33%); transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; }
 .aq-hero__vig .aq-spot, .aq-hero__vig .aq-spot--l { width: 100%; height: auto; aspect-ratio: 1; }
 .aq-hero__vig .aq-spot.aq-spot--icon { width: 56%; height: auto; margin-block: 22%; }
-.aq-hero__vig-t { position: absolute; top: calc(100% + var(--space-2)); left: 50%; transform: translateX(-50%); width: max-content; max-width: 130%; padding: 0 var(--space-1); background: var(--surface); text-align: center; font: 400 13px/18px var(--font-sans); color: var(--ink-muted); text-wrap: balance; }
+/* --tw (set by wHeroSpots on a vignette with a riser beside its tag) keeps the tag inside the gap between the risers */
+.aq-hero__vig-t { position: absolute; top: calc(100% + var(--space-2)); left: 50%; transform: translateX(-50%); width: max-content; max-width: min(130%, var(--tw, 130%)); padding: 0 var(--space-1); background: var(--surface); text-align: center; font: 400 13px/18px var(--font-sans); color: var(--ink-muted); text-wrap: balance; }
 .aq-hero__vig-t b { font: 400 12px/18px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
 
 /* Binder: a stack of folders drawn in hairlines on surface tones, divider tabs staggered up and right, the front folder
@@ -185,7 +191,7 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-hero__loop { width: min(100%, calc(var(--space-32) + var(--space-24))); margin-inline: auto; }
   /* Drawn figure: under the actions, compact (312 x 260 at most) */
   .aq-hero__drawn { width: min(100%, calc(var(--space-32) * 2 + var(--space-12) + var(--space-2))); }
-  .aq-hero__vig-t { font-size: 12px; line-height: 16px; top: calc(100% + var(--space-1)); max-width: 104%; }
+  .aq-hero__vig-t { font-size: 12px; line-height: 16px; top: calc(100% + var(--space-1)); max-width: min(104%, var(--tw, 104%)); }
   /* binder: the first four index rows, title on one line, no icon */
   .aq-hero__folder-list li:nth-child(n+5) { display: none; }
   .aq-hero__folder-n, .aq-hero__record-h { font-size: 17px; }

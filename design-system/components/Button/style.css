@@ -17,6 +17,10 @@
 .aq-btn--link { height: auto; padding: 0; color: var(--flow); background: none; }
 .aq-btn--link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .aq-btn[disabled] { background: var(--surface-sunken); color: var(--ink-subtle); border-color: transparent; cursor: not-allowed; }
+/* Pending call: a call button whose number is still a [placeholder]. A <span>, not a link: the label as plain text in the
+   ground's own colour, no fill or frame, so the draft shows the missing number and nothing pretends to dial */
+.aq-btn.aq-btn--pending { padding: 0; background: none; border-color: transparent; color: inherit; cursor: default; }
+.aq-btn.aq-btn--pending:active { transform: none; }
 .aq-btn__arrow { transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-btn:hover .aq-btn__arrow, .aq-btn:focus-visible .aq-btn__arrow { transform: translateX(4px); }
 

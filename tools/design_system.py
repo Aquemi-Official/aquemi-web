@@ -6,7 +6,8 @@
   python tools/design_system.py check                  Check tokens and components for the rules agents must follow
                                                        (content budget overruns and content warnings are counted, never
                                                        fail the check)
-  python tools/design_system.py check --budgets [id]   Also list every content budget overrun (or one page's)
+  python tools/design_system.py check --budgets [id]   Also list every content budget overrun (or one page's, then that
+                                                       page's visible-word count, overrun or not)
   python tools/design_system.py check --warnings [id]  Also list every content warning (or one page's, or one type's:
                                                        register, faq, fact, intent, contact, link)
   python tools/design_system.py new <Name> "<Group>"   Scaffold design-system/components/<Name>/ (README.md, preview.html, style.css)
@@ -185,8 +186,10 @@ BUDGET = {
     'page_words': 1300, 'placeholder': 8, 'tinted_bands': 1,
 }
 WORD = re.compile(r'\S*[A-Za-z0-9µ°]\S*')
-# Keys that are not visible copy
-NOT_COPY = {'type', 'nav', 'anchor', 'link', 'kind', 'tone', 'id', 'hl', 'required', 'unit', 'name', 'section', 'show_if', 'when', 'mark', 'as', 'ground', 'fold', 'fold_noun', 'lean', 'to', 'at', 'icon', 'icons', 'end', 'art', 'key'}
+# Keys that are not visible copy: settings, link targets, and names the renderer turns into a drawing or an attribute
+# (spot and icon vignettes, intents on links, a file field's accept list)
+NOT_COPY = {'type', 'nav', 'anchor', 'link', 'kind', 'tone', 'id', 'hl', 'required', 'unit', 'name', 'section', 'show_if', 'when', 'mark', 'as', 'ground', 'fold', 'fold_noun', 'lean', 'to', 'at', 'icon', 'icons', 'end', 'art', 'key',
+            'spot', 'intent', 'accept'}
 
 
 def words(s):
@@ -221,6 +224,92 @@ def placeholders(s):
             if not d:
                 out.append(s[st + 1:i])
     return out
+
+
+# Block types whose renderer folds (fold: N, a "Show all" button) in every shape; grid, steps and table fold in most
+# (folds). DocList folds on phones only and is counted folded: pages are read on a phone first.
+FOLDS = {'docs', 'options', 'spec', 'tags', 'register'}
+
+
+def folds(b):
+    """Whether the renderer folds this block: the shapes with a "Show all" button, not those that draw every item (steps
+    with a hold point, the hold-point flow, or as a row; a grid as a route; the router)."""
+    n, t, a = b.get('fold'), b.get('type'), b.get('as')
+    if not (isinstance(n, int) and n > 0):
+        return False
+    if t == 'steps':
+        return a != 'row' and not any(isinstance(it, dict) and it.get('hold') for it in b.get('items') or [])
+    return t in FOLDS or (t == 'grid' and a != 'route') or (t == 'table' and a != 'router')
+
+
+def first_at(rows, rx):
+    """Index of the first row whose label (its first cell, or that cell's t) matches rx, as versus and plans find their
+    verdict and "Suits" rows; None without one."""
+    for i, r in enumerate(rows):
+        c = r[0] if isinstance(r, list) and r else ''
+        if rx.match(str((c.get('t') if isinstance(c, dict) else c) or '')):
+            return i
+    return None
+
+
+def drawn(b):
+    """A block as its renderer draws it, for the visible-word count: the rows and items behind "Show all" left out where
+    the shape folds (folds; a versus verdict and a plans "Suits" row always show), and strings the renderer never prints:
+    related-page ids (each card shows its page's own name), the column heads a shape leaves out (the router's,
+    failures', roles', versus' and plans' first column; grades' all but the step column; an evidence table's link
+    column; dials' and rule bars' heads) and register lines outside the featured panel. Spot, icon and intent names and a
+    file field's accept list are never copy (NOT_COPY); FAQ answers and conditional form fields are left to the caller."""
+    t, a, n, fold = b.get('type'), b.get('as'), b.get('fold'), folds(b)
+    b = dict(b)
+    items, rows, cols = list(b.get('items') or []), list(b.get('rows') or []), list(b.get('cols') or [])
+    if t == 'related':
+        b['items'] = []
+        return b
+    if t == 'register' and items:
+        topics = b.get('topics') or []
+        fi = next((i for i, it in enumerate(items) if isinstance(it, dict) and it.get('featured')), None)
+        if fi is None:
+            fi = next((i for i, it in enumerate(items) if topics and isinstance(it, dict) and it.get('topic') == topics[0]), 0)
+        shown, f = items[:n] if fold else items, items[fi] if isinstance(items[fi], dict) else {}
+        # rows show date, topic, title and standard; the panel adds the featured note's line, or all of it when its row is folded
+        b['items'] = [{k: v for k, v in it.items() if k != 'd'} if isinstance(it, dict) else it for it in shown] + [
+            {k: f.get(k) for k in (('d',) if fi < len(shown) else ('t', 'd', 'std'))}]
+        return b
+    if t == 'table':
+        hide = set()
+        if a in ('router', 'failures', 'roles', 'versus', 'plans'):
+            hide = {0}
+        elif a == 'grades':
+            g = b.get('grade')
+            if g is None:
+                g = next((i for i, c in enumerate(cols) if re.search('grade|water', str(c), re.I)), len(cols) - 1)
+            hide = set(range(len(cols))) - set([i for i in range(len(cols)) if i != g][:1])
+        elif a == 'evidence':
+            go = {i for i in range(2, len(cols)) if rows and all(isinstance(r, list) and i < len(r) and isinstance(r[i], dict) and r[i].get('link') for r in rows)}
+            hide = go - (set() if set(range(2, len(cols))) - go else {2})  # with no file column the third head is printed
+        b['cols'] = [c for i, c in enumerate(cols) if i not in hide]
+        k = first_at(rows, re.compile(r'(fits when|choose)' if a == 'versus' else r'suits', re.I)) if fold and a in ('versus', 'plans') else None
+        if k is not None:
+            b['rows'] = [r for i, r in enumerate(rows) if i != k][:n] + [rows[k]]
+            return b
+    if t == 'spec' and a in ('gauges', 'rules'):
+        b['cols'] = []
+    if fold:
+        for key in ('items', 'rows'):
+            if isinstance(b.get(key), list):
+                b[key] = b[key][:n]
+    return b
+
+
+def visible_words(pg):
+    """((hero, blocks, closing) word counts, (hero, blocks, closing) strings): what a reader sees on the page. The hero's
+    eyebrow, headline, lead, button and facts; every block as drawn (drawn), FAQ answers (and their link) and conditional
+    form fields left out; the closing."""
+    hero = [pg.get(k) for k in ('eyebrow', 'headline', 'lead', 'primary_cta')] + list(strings(pg.get('facts', [])))
+    body = [s for b in pg.get('blocks', []) for s in strings(drawn(b), ('a', 'link_label') if b.get('type') == 'faq' else (), shown=True)]
+    cta = list(strings(pg.get('cta') or {}))
+    src = (hero, body, cta)
+    return tuple(sum(words(x) for x in s) for s in src), src
 
 
 def budgets(pages):
@@ -265,20 +354,8 @@ def budgets(pages):
                     over(w, 'items[%d].a' % j, words(it.get('a')), 'faq_answer')
         over('page', 'faq questions', faqs, 'faq_count')
         over('page', 'tinted bands (band, tags)', tinted, 'tinted_bands')
-        hero = [pg.get(k) for k in ('eyebrow', 'headline', 'lead', 'primary_cta')] + list(strings(pg.get('facts', [])))
-        def unfolded(b):
-            # folded rows (index >= fold) sit behind "Show all", like collapsed FAQ answers
-            n = b.get('fold')
-            if not (isinstance(n, int) and n > 0):
-                return b
-            b = dict(b)
-            for k in ('items', 'rows'):
-                if isinstance(b.get(k), list):
-                    b[k] = b[k][:n]
-            return b
-        body = [s for b in blocks for s in strings(unfolded(b), ('a',) if b.get('type') == 'faq' else (), shown=True)]
-        cta = list(strings(pg.get('cta') or {}, ('intent',)))
-        over('page', 'visible words (FAQ answers excluded)', sum(words(x) for x in hero + body + cta), 'page_words')
+        counts, (hero, body, cta) = visible_words(pg)
+        over('page', 'visible words (FAQ answers excluded)', sum(counts), 'page_words')
         for where, src in (('hero', hero), ('blocks', body), ('cta', cta)):
             for s in src:
                 for ph in placeholders(str(s or '')):
@@ -439,6 +516,9 @@ def register_warnings(pages):
             btn += [('blocks[%d].routes[%d].action' % (i, j), r.get('action')) for j, r in enumerate(b.get('routes') or []) if isinstance(r, dict)]
             btn += [('blocks[%d].steps[%d].next' % (i, j), s.get('next')) for j, s in enumerate(b.get('steps') or []) if isinstance(s, dict)]
             btn.append(('blocks[%d].submit' % i, b.get('submit')))
+            # links drawn as the Button link variant: an FAQ answer's link and a form note's action
+            btn += [('blocks[%d].items[%d].link_label' % (i, j), it.get('link_label')) for j, it in enumerate(b.get('items') or []) if b.get('type') == 'faq' and isinstance(it, dict)]
+            btn += [(p + '.action', f.get('action')) for p, f in (form_notes(b, 'blocks[%d]' % i) if b.get('type') == 'form' else [])]
         for where, s in btn:
             if s and swords(s) > REGISTER['button']:
                 out.append(('register', 'button', (pid,), where, '%d words, at most %d: "%s"' % (swords(s), REGISTER['button'], s)))
@@ -523,22 +603,40 @@ def preset(fields, labels):
     return {o for i in range(len(fields)) for o in ticks(i)}
 
 
+def form_notes(b, w):
+    """(JSON path, field) for each note (field kind "note") of a form block at path w."""
+    fs = [('%s.fields[%d]' % (w, j), f) for j, f in enumerate(b.get('fields') or [])]
+    fs += [('%s.steps[%d].fields[%d]' % (w, s, j), f) for s, st in enumerate(b.get('steps') or []) for j, f in enumerate(st.get('fields') or [])]
+    return [(p, f) for p, f in fs if isinstance(f, dict) and f.get('kind') == 'note']
+
+
 def intent_warnings(pages):
-    """DR-014: intent labels (hero, closing, contact routes) that tick nothing on the linked page's form: no such option,
-    or an option the intent never opens ("situation|follow-up" names the situation first)."""
+    """DR-014: intent labels that tick nothing on the linked page's form: no such option, or an option the intent never
+    opens ("situation|follow-up" names the situation first). Read from the hero button and secondary link, the closing,
+    contact routes, table and router cells ({t, link, intent}), FAQ links and form notes. An intent on an in-page or
+    phone (tel:) link, or with no link, ticks nothing."""
     out = []
     for pid, pg in pages.items():
-        pc, c = pg.get('primary_cta') or '', pg.get('cta') or {}
+        pc, c, sc = pg.get('primary_cta') or '', pg.get('cta') or {}, pg.get('secondary_cta') or {}
         links = [('primary_cta_intent', pg.get('primary_cta_intent'), pg.get('primary_cta_link') or ('contact-service' if re.search('service', pc, re.I) else 'contact-proposal')),
+                 ('secondary_cta.intent', sc.get('intent'), sc.get('link') or 'systems'),
                  ('cta.intent', c.get('intent'), c.get('link') or 'contact-proposal')]
         for i, b in enumerate(pg.get('blocks', [])):
-            links += [('blocks[%d].routes[%d].intent' % (i, j), r.get('intent'), r.get('link') or '') for j, r in enumerate(b.get('routes') or [])
+            w = 'blocks[%d]' % i
+            links += [('%s.routes[%d].intent' % (w, j), r.get('intent'), r.get('link') or '') for j, r in enumerate(b.get('routes') or [])
                       if isinstance(r, dict) and r.get('link') and not r.get('current') and r.get('link') != pid]
+            if b.get('type') == 'table':
+                links += [('%s.rows[%d][%d].intent' % (w, j, k), x.get('intent'), x.get('link') or '') for j, r in enumerate(b.get('rows') or [])
+                          if isinstance(r, list) for k, x in enumerate(r) if isinstance(x, dict)]
+            if b.get('type') == 'faq':
+                links += [('%s.items[%d].intent' % (w, j), it.get('intent'), it.get('link') or '') for j, it in enumerate(b.get('items') or []) if isinstance(it, dict)]
+            if b.get('type') == 'form':
+                links += [(p + '.intent', f.get('intent'), f.get('link') or '') for p, f in form_notes(b, w)]
         for where, intent, link in links:
             if not intent:
                 continue
-            if link.startswith('#'):
-                out.append(('intent', '', (pid,), where, 'on an in-page link (%s), which ticks nothing' % link))
+            if not link or link.startswith('#') or link.lower().startswith('tel:'):
+                out.append(('intent', '', (pid,), where, 'on %s, which ticks nothing' % ('no link' if not link else 'an in-page link (%s)' % link if link.startswith('#') else 'a phone link (%s)' % link)))
                 continue
             target = link.split('#')[0]
             fields = form_fields(pages.get(target, {}))
@@ -701,6 +799,10 @@ def check(show_budgets=False, only=None, show_warnings=False):
         for pid, where, field, n, lim in shown:
             print('BUDGET %s %s %s: %d/%d' % (pid, where, field, n, lim))
         print('%d budget overrun(s)%s' % (len(shown), ' on ' + only if only else ''))
+        if only in pages:
+            (h, bl, c), _ = visible_words(pages[only])
+            print('%s: %d visible words of %d (hero %d, blocks %d, closing %d; FAQ answers, folded rows, conditional form '
+                  'fields and strings the renderer never prints left out)' % (only, h + bl + c, BUDGET['page_words'], h, bl, c))
     else:
         print('%d budget overruns (run check --budgets for detail)' % len(over))
     if show_warnings and only and only not in pages and only not in [w[0] for w in WARN_TYPES]:

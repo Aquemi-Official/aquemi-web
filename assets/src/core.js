@@ -19,15 +19,23 @@ function wsplit(id){var s=String(id==null?'':id),k=s.indexOf('#');return k<0?[s,
 function wp(id){var k=wsplit(id)[0];return W().filter(function(p){return p.id===k})[0]}
 /* whas: the page exists and, for page#anchor, has a block with that anchor (or nav id), so a link never points at a missing block */
 function whas(id){var s=wsplit(id),p=wp(s[0]);return !!p&&(!s[1]||(p.blocks||[]).some(function(b,i){return (b.nav||b.anchor)&&jid(b,i)===s[1]}))}
+/* wlabel: the words for a link to id when the content gives none: page#anchor names its block (the block's heading),
+   a page id its nav label */
+function wlabel(id){var s=wsplit(id),p=wp(s[0]),B=(p&&p.blocks)||[];if(!p)return String(id||'');
+ if(s[1])for(var i=0;i<B.length;i++)if((B[i].nav||B[i].anchor)&&jid(B[i],i)===s[1]&&B[i].h)return B[i].h;
+ return p.nav_label||p.id}
 /* Phone number: once confirmed it renders as a tel: link (class cls, an optional lead label inside) and keeps its digit
-   groups on one line; a value still in [square brackets] stays the placeholder and is never a tel: link */
-function wtel(s,cls,lead){s=String(s||'');var n=s.replace(/[^\d+]/g,''),c=cls?' class="'+cls+'"':'',ok=s.indexOf('[')<0&&n.length>=7,t=(lead||'')+(ok?tx(s).replace(/ /g,'\u00a0'):tx(s));
- return ok?'<a'+c+' href="tel:'+e(n)+'">'+t+'</a>':'<span'+c+'>'+t+'</span>'}
+   groups on one line; a value still in [square brackets] stays the placeholder and is never a tel: link.
+   wnum is the rule: the digits to dial once s is confirmed (no [square brackets], seven digits or more), else ''. */
+function wnum(s){s=String(s||'');var n=s.replace(/[^\d+]/g,'');return s.indexOf('[')<0&&n.length>=7?n:''}
+function wtel(s,cls,lead){s=String(s||'');var n=wnum(s),c=cls?' class="'+cls+'"':'',t=(lead||'')+(n?tx(s).replace(/ /g,'\u00a0'):tx(s));
+ return n?'<a'+c+' href="tel:'+e(n)+'">'+t+'</a>':'<span'+c+'>'+t+'</span>'}
 /* Placeholder: [bracketed facts] in copy */
 /* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM) */
 function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
-/* wlink: a link to a page id or to page#anchor (label defaults to the page's nav label) */
-function wlink(id,label){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'">'+tx(label||(p&&p.nav_label)||id)+'</a>'}
+/* wlink: a link to a page id or to page#anchor (label defaults to the page's nav label). intent (optional): option
+   labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent, as Button) */
+function wlink(id,label,intent){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'"'+(intent?' data-intent="'+e(intent)+'"':'')+'>'+tx(label||(p&&p.nav_label)||id)+'</a>'}
 var ARC='<svg class="aq-arc" viewBox="0 0 420 300" aria-hidden="true"><path class="aq-arc__outer" d="M420 1.5 A 300 300 0 0 0 120 300"/><path class="aq-arc__inner" d="M420 120 A 180 180 0 0 0 240 300"/></svg>';
 function sec(inner,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-stack-l">'+inner+'</div></section>'}
 function split(head,body,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-split-section"><div class="aq-split-section__head">'+head+'</div><div class="aq-split-section__body">'+body+'</div></div></section>'}
@@ -54,6 +62,8 @@ var PAGE_ICON={systems:'loop','sys-pw':'ro-membrane','sys-wfi-distillation':'sti
  'svc-service':'wrench','svc-upgrades':'valve',industries:'building','ind-pharma':'pill','ind-biotech':'dna','ind-meddevice':'syringe','ind-cdmo':'factory',
  compliance:'shield','cmp-documentation':'binder','cmp-quality':'magnifier',projects:'checklist',about:'people',careers:'briefcase',news:'newspaper',
  'contact-proposal':'document','contact-service':'lifebuoy','contact-locations':'pin'};
+/* pageIcon: PAGE_ICON for a link, looked up by its page part, so page#anchor (systems#budget) shows its page's icon */
+function pageIcon(id){return PAGE_ICON[wsplit(id)[0]]}
 /* Spot: an icon drawn larger in a figure (a diagram stop, an option module, a route stop), design-system/components/Spot.
    Older equipment spot names map to their icon, so every figure uses the one line set. */
 var SPOT_ICON={pretreatment:'softener','ro-skid':'ro-membrane','edi-stack':'edi',still:'still','pure-steam-generator':'pure-steam','storage-tank':'tank',
@@ -70,10 +80,11 @@ var ICON_AUTO=[[/softener/i,'softener'],[/carbon filter|activated carbon/i,'carb
 function wIcons(b){var I=b.items||[],r=I.map(function(it){return it&&isIcon(it.icon)?it.icon:''});
  if(b.icons==='auto'){var a=r.map(function(n,i){if(n)return n;var t=String(I[i]&&I[i].t||'');for(var k=0;k<ICON_AUTO.length;k++)if(ICON_AUTO[k][0].test(t))return ICON_AUTO[k][1];return ''});if(a.every(Boolean))r=a}
  return r}
-/* Rows: one list row of the shared list grammar (.aq-rows). link: a page id; the whole row becomes the link. art: drawing page id.
+/* Rows: one list row of the shared list grammar (.aq-rows). link: a page id or page#anchor; the whole row becomes the
+   link. art: the page whose icon ends the row (a link's page part counts, so systems#budget shows the systems icon).
    ic: icon name (wIcons) shown in the index column instead of the number; num: keep the number beside it (ordered steps).
    An icon replaces the row-end drawing (art): at 48 px a drawing reads as texture, the icon reads as the thing. */
-function wRow(i,t,d,link,art,tag,ic,num){ic=isIcon(ic)?ic:'';var endIc=!ic&&art&&PAGE_ICON[art];
+function wRow(i,t,d,link,art,tag,ic,num){ic=isIcon(ic)?ic:'';var endIc=!ic&&art&&pageIcon(art);
  var lead=ic?'<span class="aq-rows__lead'+(num?' aq-rows__lead--n':'')+'" aria-hidden="true">'+(num?idx(i):'')+wIcon(ic)+'</span>':idx(i);
  var inner=lead+'<h3 class="aq-rows__t">'+tx(t)+'</h3>'+(d||tag?'<p class="aq-rows__d">'+(d?tx(d):'')+(tag?'<span class="aq-tags"><span class="aq-tag">'+e(tag)+'</span></span>':'')+'</p>':'')
   +(endIc?wIcon(endIc,'aq-rows__art'):'');
@@ -87,8 +98,11 @@ function wFold(b,n,inner,noun){if(!(b.fold>0)||n<=b.fold)return inner;var id='fo
  return '<div class="aq-fold" id="'+id+'">'+inner+'<button type="button" class="aq-fold__btn" aria-expanded="false" aria-controls="'+id+'" data-more="'+e(all)+'">'+e(all)+'</button></div>'}
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-fold__btn');if(!t)return;var w=t.closest('.aq-fold'),o=!w.classList.contains('is-open');
  w.classList.toggle('is-open',o);t.setAttribute('aria-expanded',o?'true':'false');t.textContent=o?'Show fewer':t.getAttribute('data-more');if(!o)w.scrollIntoView({block:'nearest'})});
-/* SpecTable cell: a string, or {t, link} to route the reader to another page (link must be a page id) */
-function tcell(c){return c&&typeof c==='object'?(c.link&&wp(c.link)?wlink(c.link,c.t):tx(c.t)):tx(c)}
+/* Table cell (every table shape, the router included): a string, or {t, link, intent} to route the reader to another
+   page. link: a page id or page#anchor (shown only when the page exists); intent (optional): option labels,
+   "|"-separated, that the linked page's form ticks on arrival, as a button's (each check links to its own form, DR-016
+   rule 6 and DR-014 rule 12; labels name "situation|follow-up", DR-014 rule 11) */
+function tcell(c){return c&&typeof c==='object'?(c.link&&wp(c.link)?wlink(c.link,c.t,c.intent):tx(c.t)):tx(c)}
 function gridItem(inner,link){return link&&wp(link)?'<a href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div>'+inner+'</div>'}
 /* Table shapes: a table block with as: "router" (and later shapes) renders through TABLE_AS[as] instead of the matrix. */
 var TABLE_AS={};

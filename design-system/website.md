@@ -16,7 +16,7 @@ The site has one job: let everyone who must agree to the purchase (who specifies
 
 ## Home page
 
-1. **Hero.** `eyebrow`, one `display-xl` line, one `body-lg` sentence, one primary button ("Talk to an engineer") and one secondary link ("Explore systems"). A wide photograph of a finished skid or an installed loop on `navy` or `surface`. No carousel.
+1. **Hero.** `eyebrow`, one `display-xl` line, one `body-lg` sentence, one primary button ("Talk to an engineer") and one secondary link to the systems ("See the systems"). Beside them, on `surface`, the fine-line drawing of a figure-eight distribution loop (Hero, "Loop drawing"): the pipe in `flow` with its arrows, the conductivity and TOC sensors labelled with their USP chapters, the heat exchanger under its placeholder until Aquemi says whether it is standard, and a valve at the furthest point of use. No figure is drawn on it and no filter sits on the loop. The KeyFacts strip of Aquemi's own figures follows. No photograph, no carousel.
 2. **Systems index.** The system families in a 3-column grid on desktop, 1 column on phones. Each item: `h3` name, one line of description, the governing standard as a tag. Hairlines between items, not cards.
 3. **Proof in numbers.** One `readout`: a single large measurement with its method on the limit tag and a one-sentence caption below. Only real, sourced figures.
 4. **How we work.** The project sequence (Design → Fabricate → Test → Qualify → Support) as a horizontal sequence. This is a genuine order, so numbering is appropriate here.
@@ -41,7 +41,9 @@ The site has one job: let everyone who must agree to the purchase (who specifies
 - The menu opens with the urgent block, the urgent contact route, on `limestone`: "Production stopped?", the service number as a `tel:` link (placeholder text, never a link, until it is confirmed) with the hours it is answered, then a "Service request" row. The number never shows without its hours, so the block never promises round-the-clock help. Then the sections, the page's section jump and the proposal button.
 - **Launch rule for the urgent block.** The code has no draft or launch switch, so this is a release step: while the service number is unconfirmed, take the urgent block out of the menu (`aq-menu__urgent` in `assets/src/parts/NavBar.js`) and keep its "Service request" row, first in the menu. The block comes back when the number and its hours are filled together.
 - The service number and hours in the menu, and in the footer the description's shop location and the contact line (service and sales numbers, head office), come from one source, `CONTACT` in `assets/src/core.js`, under the pages' placeholder names, filled in the same commit as the page files that repeat them. `check` warns on a `CONTACT` value no page file carries.
-- A link in a page file may name a block: `page#anchor` (`cmp-quality#buying`, `systems#budget`) opens that page at the block whose `anchor` (or nav id) matches; without a match the page opens at the top. It works in every link field: the hero's button and secondary link, the closing button, contact routes, table cells, rows, related links and the footer. `#anchor` scrolls to a block on the same page, in the hero's button and secondary link and the closing button (`primary_cta_link`, `secondary_cta.link`, `cta.link`); elsewhere write `page#anchor`. `check` warns on a link whose page or anchor does not exist.
+- A link in a page file may name a block: `page#anchor` (`cmp-quality#buying`, `systems#budget`) opens that page at the block whose `anchor` (or nav id) matches; without a match the page opens at the top. It works in every link field: the hero's button and secondary link, the closing button, contact routes, table cells, rows, FAQ links, form notes, related links and the footer. `#anchor` scrolls to a block on the same page, in the hero's button and secondary link and the closing button (`primary_cta_link`, `secondary_cta.link`, `cta.link`); elsewhere write `page#anchor`. `check` warns on a link whose page or anchor does not exist.
+- The same three fields take a call: `tel:[sales phone number]` (DR-006, "Call [sales phone number]"). While the number is a placeholder the action shows as text with the placeholder, never a link; once filled it dials (Button, "Call"). Fill the label and the link in the same commit as the pages that repeat the number.
+- Any link to a page with a form may carry `intent` (the options that form ticks on arrival): the hero's `primary_cta_intent` and `secondary_cta.intent`, `cta.intent`, contact routes, table and router cells `{t, link, intent}`, FAQ items and form notes (EnquiryForm, "Pre-set from the linking page").
 - Mega-menus list system pages in plain text columns with no icons.
 
 ## What we learned from category leaders
@@ -98,7 +100,9 @@ The closing call to action can carry the page's "what to send us" list as `cta.i
 
 ## Content budgets
 
-`python tools/design_system.py check` counts overruns (one line, never fails the check yet); `check --budgets` lists them all and `check --budgets <pageId>` lists one page, as `BUDGET <page> <where> <field>: count/limit`. Words are counted as whitespace-separated tokens containing a letter or digit.
+`python tools/design_system.py check` counts overruns (one line, never fails the check yet); `check --budgets` lists them all and `check --budgets <pageId>` lists one page, as `BUDGET <page> <where> <field>: count/limit`, then that page's visible-word count with its hero, blocks and closing shares, overrun or not (for before-and-after numbers). Words are counted as whitespace-separated tokens containing a letter or digit.
+
+Visible words follow what the renderer draws. Rows behind "Show all" are left out only where the shape folds: steps with a hold point (the hold-point flow), steps as a row, a grid as a route and the router draw every row whatever `fold` says, and a versus verdict or a plans "Suits" row always shows. Strings the renderer never prints are left out: spot and icon names, intents, a file field's accept list, related-page ids, the column heads a shape does not show (the router's, failures', roles', versus' and plans' first column; grades' heads beside the step column; an evidence table's link column such as "Where we show it"; the heads of dials and rule bars) and register lines outside the featured panel.
 
 | Field | Budget | Where the check reads it |
 | --- | --- | --- |
@@ -113,7 +117,7 @@ The closing call to action can carry the page's "what to send us" list as `cta.i
 | Table rows | ≤ 8 per table | table `rows` |
 | Blocks per page | ≤ 9 (closing not counted) | `blocks` |
 | Tinted bands per page | ≤ 1 | band and tags blocks |
-| Visible words per page | ≤ 1,300 (FAQ answers, folded rows and conditional form fields excluded) | hero, facts, every block string, `cta` |
+| Visible words per page | ≤ 1,300 (FAQ answers and their links, folded rows, conditional form fields and strings never drawn excluded; above) | hero (eyebrow, headline, lead, button, facts), every block as drawn, `cta` |
 | Placeholder text | ≤ 8 words | every `[...]`; the question goes in `todo` |
 
 ## Content warnings
@@ -122,10 +126,10 @@ The closing call to action can carry the page's "what to send us" list as `cta.i
 
 | Type | Warns on | Record |
 | --- | --- | --- |
-| `register` | A hero lead with more than 2 codes. A code a page uses (eyebrows included) that its reading text never spells out as "words (CODE)", "CODE (words)" or the full form. EU, CSA or DI in their second meaning (endotoxin units, software assurance, data integrity). A sentence over 20 words. A button or secondary link over 5 words. Codes are runs of two or more capitals, so the count over-flags; standards, their bodies, places and currency are cited as they are. | DR-003 |
+| `register` | A hero lead with more than 2 codes. A code a page uses (eyebrows included) that its reading text never spells out as "words (CODE)", "CODE (words)" or the full form. EU, CSA or DI in their second meaning (endotoxin units, software assurance, data integrity). A sentence over 20 words. A button or secondary link over 5 words (FAQ links and form-note actions included). Codes are runs of two or more capitals, so the count over-flags; standards, their bodies, places and currency are cited as they are. | DR-003 |
 | `faq` | One FAQ question on two or more pages, unless every page gives it the same one-line answer. Paraphrases are not caught. | DR-009 |
 | `fact` | A hero fact equal to a public limit (a figure the site states with a pharmacopoeia or regulator), a code, clause or material as the value, or a label without its " · " basis. | DR-010 |
-| `intent` | An intent label that ticks nothing on the linked page's form: no such option, or an option the intent never opens (name the situation first: `situation\|follow-up`). | DR-014 |
+| `intent` | An intent label that ticks nothing on the linked page's form: no such option, or an option the intent never opens (name the situation first: `situation\|follow-up`). Read wherever an intent sits: the hero's button and secondary link, the closing, contact routes, table and router cells, FAQ links and form notes. An intent on an in-page or phone link, or on a cell with no link, ticks nothing. | DR-014 |
 | `contact` | A `CONTACT` value that no page file carries. | DR-008 |
 | `link` | A link to a page that does not exist, a `page#anchor` or `#anchor` whose page has no block with that anchor, or an in-page `#anchor` where only `page#anchor` works. | DR-008 |
 

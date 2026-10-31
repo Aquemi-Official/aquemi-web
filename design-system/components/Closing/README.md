@@ -16,6 +16,7 @@ Closing is the call to action at the end of every page: one centred headline in 
 
 - Always on `aq-band--navy` (see Band): it sets the navy ground, `on-navy` text and turns the primary button Limestone.
 - On the site, `wClosing(c, p)` in `assets/src/parts/Closing.js` renders it from the page's `cta` (`h`, `body`, `button`, `link`, `intent`, `include`, `returns`, `turnaround`, `proof`). `aq-closing__more` appears only when the page has a checklist, an exchange or `cta.proof`. The proof shows `cta.proof` and nothing else; it never falls back to the hero facts.
+- The closing action can be a call (DR-006, contact-proposal: "Call [sales phone number]"): `"cta": {"button": "Call [sales phone number]", "link": "tel:[sales phone number]"}`. While the number is a placeholder the action is that line as plain `on-navy` text with the placeholder, no button and no link (`aq-btn--pending`, see Button); once the number is filled in both, it is the Limestone button and dials it.
 
 ## Layout
 

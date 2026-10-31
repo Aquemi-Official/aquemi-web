@@ -85,7 +85,7 @@
    "preview": "design-system/components/Button/preview.html",
    "group": "Actions",
    "height": "150",
-   "subtitle": "Primary, secondary, link and disabled",
+   "subtitle": "Primary, secondary, link and disabled; a call whose number is still a placeholder",
    "summary": "Buttons start an action or move someone to the next step of an enquiry."
   },
   {
@@ -203,9 +203,9 @@
    "readme": "design-system/components/FAQ/README.md",
    "preview": "design-system/components/FAQ/preview.html",
    "group": "Page sections",
-   "height": "480",
+   "height": "520",
    "width": "1000",
-   "subtitle": "Hairline accordion rows, second one open",
+   "subtitle": "Hairline accordion rows, second one open with its one link",
    "summary": "FAQ answers the questions engineers and QA ask before they call, as hairline accordion rows: index, question and a + sign, with the answer opening under the question."
   },
   {
@@ -423,10 +423,10 @@
    "readme": "design-system/components/KeyFacts/README.md",
    "preview": "design-system/components/KeyFacts/preview.html",
    "group": "Data",
-   "height": "520",
+   "height": "420",
    "width": "1200",
-   "subtitle": "The numbers a page stands on, as a quiet strip between hairlines",
-   "summary": "KeyFacts is a measurement strip of three to six figures, each with its unit and the standard behind it, that tells an engineer what a page stands on before they read a word of copy."
+   "subtitle": "Aquemi's own figures, each with its unit and basis, as a quiet strip between hairlines (home and sys-storage, placeholders until confirmed)",
+   "summary": "KeyFacts is a strip of up to four of Aquemi's own figures, each with its unit and the basis a reader can hold us to, that tells an engineer what a page stands on before they read a word of copy."
   },
   {
    "name": "LimitGauges",
@@ -472,9 +472,9 @@
    "readme": "design-system/components/EnquiryForm/README.md",
    "preview": "design-system/components/EnquiryForm/preview.html",
    "group": "Forms",
-   "height": "1120",
+   "height": "1860",
    "width": "1000",
-   "subtitle": "Request a proposal as a numbered data sheet",
+   "subtitle": "A numbered data sheet; the stepped form's first step, with a note that sends supplier audits to their own form",
    "summary": "EnquiryForm lays out a proposal, service or application request as a numbered data sheet on a quiet panel: numbered sections, numbered items and one submit."
   },
   {

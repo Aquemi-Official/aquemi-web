@@ -53,7 +53,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [Case studies](https://aquemi-official.github.io/aquemi-web/#projects) | Projects you can audit: figure, method, report | prose as explainer (Proof), case (Record), table as router (Verify today), form (Request), faq (FAQ), closing (checklist, returns) |
+| [Projects](https://aquemi-official.github.io/aquemi-web/#projects) | Check us at the source before our first case study | table as router (Checks: each check links to its own form), prose as explainer (Standard), faq (FAQ), closing (checklist, returns). No hero facts, no case record, reference call or form of its own until the first delivered project's client approves its text (DR-016) |
 
 ## Company
 
@@ -89,22 +89,22 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | band | Band |
 | tags | StandardsGrid (sunken band) |
 | closing call to action | Closing (navy band), optional `include` checklist, optional `proof` box (explicit `cta.proof` only) |
-| faq | FAQ inside SplitSection |
+| faq | FAQ inside SplitSection (an item may add `link`, a page id or `page#anchor`, with optional `link_label` and `intent`: one link after the answer, DR-009) |
 | docs | DocList as a turnover binder (folder cards, tab = index and code from `DOC_CODES` or an item's explicit `code`; item `key` or block `key: N` emphasizes the deciding documents; rows on phones) |
-| case | CaseStudy (an item with `art`, `outcomes` or `timeline` renders as the project record: drawing with what changed, outcome figures, order-to-release timeline; in use on projects) |
+| case | CaseStudy (an item with `art`, `outcomes` or `timeline` renders as the project record: drawing with what changed, outcome figures, order-to-release timeline). No page uses it today: the record returns on projects after the first delivered project, with its client's written approval (DR-016 rule 8); the template taken off the page is in git at dbee6fc |
 | spec | SpecTable (`caption` shown as the section eyebrow; rows keep their order, `hl` rows tinted, optional row `link`) |
 | spec as gauges | LimitGauges (limits as dials; sys-pw, sys-pretreatment, sys-monitoring, svc-cq, ind-pharma, compliance) |
 | spec as rules | LimitGauges rule variant (design rules as horizontal threshold bars; row `rule` sets the threshold; sys-storage) |
 | options `as: "decisions"` | OptionList decisions (framed rows, ? tag, fork mark on two-way decisions, optional `by`; ind-pharma) |
 | spec as callouts | ParameterCallouts (rows with `at` on the page's drawing, the rest as SpecTable; sys-pw, sys-storage, sys-monitoring, svc-fabrication) |
-| table | CompareTable (phones: records up to three value columns, tabs from four; link columns end each row) |
+| table | CompareTable (phones: records up to three value columns, tabs from four; link columns end each row; a cell is a string or `{t, link, intent}` in every table shape) |
 | table `as: "plans"` | PlanTiers (plans side by side, phones stacked; "Suits" and "Price" rows head each plan; optional `recommend`; one page-CTA button per plan) |
 | steps `as: "row"` | ProcessSteps row (a short sequence read across: rule on top, flow number, name, one sentence; in use on about) |
 | contact-routes | ContactRoutes (the ways in as cards, each with three next steps and a response clock; `current` route marked "This page" and jumps to the form; `urgent` route on limestone with the phone set large, first on phones; in use on contact-proposal, contact-service, contact-locations) |
 | register | NotesRegister (topic filter chips, featured note panel, register table date · no. · topic · title · standard; undated items show "Planned"; phones two-line rows, chips scroll; in use on news) |
 | standards-map | StandardsMap (zones of the water system on one pipe, each labelled with its standards; code chips scroll to the row that proves them; phones stacked rows with chips) |
 | prose `as: "explainer"` | Explainer (one idea as a figure plus 3-4 numbered callouts; `figure` kind `levels` (bars against a dashed limit) or `art` (the page's drawing with numbered pins)) |
-| form | EnquiryForm (with TextField and Button) inside SplitSection; with `steps` it renders the stepped variant |
+| form | EnquiryForm (with TextField and Button) inside SplitSection; with `steps` it renders the stepped variant; a field of kind `note` (with `when`, `label`, `link`, `action`) sends a request this form does not take to another page's form |
 | block `nav` label | SectionNav (rendered by the page, not a block) |
 | `[bracketed facts]` in any copy | Placeholder |
 

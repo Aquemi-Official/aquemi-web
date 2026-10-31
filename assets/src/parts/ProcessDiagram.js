@@ -29,8 +29,9 @@ function wFlow(I,o){o=o||{};var n=I.length,id='fl'+(++FLN),num=function(i){retur
    +(x.d?'<p class="aq-diagram__dd">'+tx(x.d)+'</p>':'')
    +(x.tag||(x.link&&wp(x.link))?'<p class="aq-diagram__dx">'+(x.tag?'<span class="aq-tag">'+e(x.tag)+'</span>':'')+(x.link&&wp(x.link)?wlink(x.link):'')+'</p>':'')
    +'</div>'+(io?'<p class="aq-diagram__io">'+io+'</p>':'')+'</div>'});
- var ends=o.from||o.to?'<p class="aq-diagram__ends"><span>'+e(o.from||'')+'</span><span>'+e(o.to||'')+'</span></p>':'';
- var base=o.base?'<p class="aq-diagram__base"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+e(o.base)+'</span></p>':'';
+ /* Pipe-end labels and the base go through tx, as every other string: a [placeholder] there shows as one */
+ var ends=o.from||o.to?'<p class="aq-diagram__ends"><span>'+tx(o.from||'')+'</span><span>'+tx(o.to||'')+'</span></p>':'';
+ var base=o.base?'<p class="aq-diagram__base"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+tx(o.base)+'</span></p>':'';
  return wPlate('<div class="aq-diagram'+(o.base?' aq-diagram--base':'')+(o.cls?' '+o.cls:'')+'" style="--n:'+n+'">'+ends
   +'<div class="aq-diagram__line" role="group" aria-label="'+e(n+' stages in flow order; choose one to see its detail')+'">'+st+'</div>'+base+'</div>',{cls:'aq-diagram__plate',block:o.block})}
 function wDiagram(b){var I=(b.stages||[]).map(function(s){return typeof s==='string'?{t:s}:s});

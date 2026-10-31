@@ -49,6 +49,15 @@
 .aq-form .aq-checks input { flex: none; width: var(--space-4); height: var(--space-4); margin: 0; accent-color: var(--flow); }
 .aq-form .aq-checks input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
+/* Elsewhere note (field kind "note"): a request this form does not take, sent to another page's form while its option
+   is ticked. A full-width row like an option cell (surface, line border, radius-sm): the line in ink-muted, then the
+   Button link variant (flow, arrow). Not a field: no number, no label, nothing to validate. */
+.aq-form__elsewhere {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-1) var(--space-6);
+  padding: var(--space-3) var(--space-4); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
+}
+.aq-form__elsewhere-t { flex: 1 1 20rem; margin: 0; max-width: var(--text-max); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+
 /* Hidden conditional fields, file upload */
 .aq-form [hidden] { display: none; }
 /* The drop zone: a sunken field with a line border; the browser's button drawn as aq-btn--secondary, the chosen file names

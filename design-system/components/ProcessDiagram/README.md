@@ -20,7 +20,7 @@ The website builds it from a `diagram` block (`AQ.wDiagram`, which calls `wFlow`
       </div>
       … one button and one detail per stage, in flow order (the last button also carries is-last) …
     </div>
-    <p class="aq-diagram__base"><svg …/><span>Monitoring and controls · TOC, conductivity, ozone</span></p>
+    <p class="aq-diagram__base"><svg …/><span>Monitoring and controls · TOC and conductivity</span></p>
   </div>
   <div class="aq-plate__block">…</div>
 </div>
@@ -34,6 +34,7 @@ The website builds it from a `diagram` block (`AQ.wDiagram`, which calls `wFlow`
   - `spot` a Spot name (`assets/spots`: pretreatment, ro-skid, edi-stack, still, pure-steam-generator, storage-tank, pump, heat-exchanger, uv-ozone) or `icon` an Icon name for stages without a spot (valve, softener, carbon-filter, ro-membrane, conductivity, loop, tank …). With neither, a line glyph is picked from keywords in the name (heat exchanger, RO, EDI, UV, softener, carbon, filter, column, pump, steam, loop, tank, instrument, PLC or controller (rack), network or server (nodes), HMI/SCADA/control (screen), drop for feeds).
 - `base` optional: what spans every stage (monitoring, controls, sanitisation); draws a dashed control boundary round the train with the label at its foot.
 - `from` / `to` optional pipe-end labels; `caption` an `aq-small` paragraph under the plate.
+- Every string, `base`, `from` and `to` included, goes through the Placeholder helper (`tx`), so a `[bracketed fact]` there shows as a placeholder, as everywhere else.
 
 ## Behaviour
 

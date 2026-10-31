@@ -17,10 +17,16 @@ BLOCKS['standards-map']=function(b,H){var Z=b.zones||[],top=Math.ceil(Z.length/2
      return '<li><a class="aq-standards-map__code" href="#'+e(WP)+'" data-smap-code="'+e(ct)+'" data-smap-to="'+e(cto)+'">'+tx(ct)+'</a></li>'}).join('')+'</ul></div></li>'}).join('')
   +'</ol></div>';
  return sec(H+(sp?wPlate(map,{cls:'aq-standards-map__plate'}):map));};
-/* Code chip -> the row that proves it. Rows: EvidenceMap rows (matched on their title), spec and table rows, list rows. */
-function smapRow(scope,code){if(!scope)return null;var re=new RegExp('(^|[^A-Za-z0-9])'+code.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![A-Za-z0-9])'),R=scope.querySelectorAll('.aq-evidence__row, tr, li');
- for(var i=0;i<R.length;i++){var r=R[i];if(r.closest('.aq-standards-map,.aq-section-nav,.aq-menu,.aq-hero,.aq-closing,nav,footer'))continue;var t=r.querySelector('.aq-evidence__t'),P=t?[t]:r.children.length?[].slice.call(r.children):[r];/* cell by cell: textContent runs cells together */
-  if(P.some(function(x){return re.test(x.textContent)}))return r}return null}
+/* Code chip -> the row that proves it. EvidenceMap rows first, matched on the requirement's name (.aq-evidence__name):
+   its own text and its mono reference apart, and never the row's title cell (.aq-evidence__t), whose hidden number
+   "01" runs into a code that opens the name ("01USP <645>"). Then spec and table rows cell by cell, and list rows;
+   the cells and file chips inside an evidence row never answer for it. */
+function smapRow(scope,code){if(!scope)return null;var re=new RegExp('(^|[^A-Za-z0-9])'+code.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![A-Za-z0-9])'),
+  out=function(r){return r.closest('.aq-standards-map,.aq-section-nav,.aq-menu,.aq-hero,.aq-closing,nav,footer')},
+  hit=function(P){return [].some.call(P,function(x){return re.test(x.textContent)})},E=scope.querySelectorAll('.aq-evidence__row'),R=scope.querySelectorAll('tr, li');
+ for(var i=0;i<E.length;i++){var nm=E[i].querySelector('.aq-evidence__name');if(nm&&!out(E[i])&&hit(nm.childNodes))return E[i]}
+ for(var j=0;j<R.length;j++){var r=R[j];if(out(r)||r.closest('.aq-evidence__row'))continue;/* cell by cell: textContent runs cells together */
+  if(hit(r.children.length?r.children:[r]))return r}return null}
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('[data-smap-code]');if(!a)return;ev.preventDefault();
  var code=a.getAttribute('data-smap-code'),s=document.getElementById(a.getAttribute('data-smap-to')||''),r=smapRow(s,code)||smapRow(document.querySelector('main')||document.body,code),
   rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -32,6 +32,8 @@
 }
 .aq-faq__a p { margin: 0; max-width: var(--text-max); font: 400 16px/26px var(--font-sans); color: var(--ink-muted); }
 .aq-faq__a p + p { margin-top: var(--space-2); }
+/* The answer's one link (item link): the Button link variant on its own line under the answer */
+.aq-faq__a .aq-faq__more { margin-top: var(--space-3); }
 @keyframes aq-faq-in { from { opacity: 0; transform: translateY(var(--space-2)); } to { opacity: 1; transform: none; } }
 @keyframes aq-faq-fade { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .aq-faq__a { animation-name: aq-faq-fade; } .aq-faq__q, .aq-faq__sign, .aq-faq__glyph, .aq-faq__glyph::before, .aq-faq__glyph::after { transition: none; } }

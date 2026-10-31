@@ -19,15 +19,23 @@ function wsplit(id){var s=String(id==null?'':id),k=s.indexOf('#');return k<0?[s,
 function wp(id){var k=wsplit(id)[0];return W().filter(function(p){return p.id===k})[0]}
 /* whas: the page exists and, for page#anchor, has a block with that anchor (or nav id), so a link never points at a missing block */
 function whas(id){var s=wsplit(id),p=wp(s[0]);return !!p&&(!s[1]||(p.blocks||[]).some(function(b,i){return (b.nav||b.anchor)&&jid(b,i)===s[1]}))}
+/* wlabel: the words for a link to id when the content gives none: page#anchor names its block (the block's heading),
+   a page id its nav label */
+function wlabel(id){var s=wsplit(id),p=wp(s[0]),B=(p&&p.blocks)||[];if(!p)return String(id||'');
+ if(s[1])for(var i=0;i<B.length;i++)if((B[i].nav||B[i].anchor)&&jid(B[i],i)===s[1]&&B[i].h)return B[i].h;
+ return p.nav_label||p.id}
 /* Phone number: once confirmed it renders as a tel: link (class cls, an optional lead label inside) and keeps its digit
-   groups on one line; a value still in [square brackets] stays the placeholder and is never a tel: link */
-function wtel(s,cls,lead){s=String(s||'');var n=s.replace(/[^\d+]/g,''),c=cls?' class="'+cls+'"':'',ok=s.indexOf('[')<0&&n.length>=7,t=(lead||'')+(ok?tx(s).replace(/ /g,'\u00a0'):tx(s));
- return ok?'<a'+c+' href="tel:'+e(n)+'">'+t+'</a>':'<span'+c+'>'+t+'</span>'}
+   groups on one line; a value still in [square brackets] stays the placeholder and is never a tel: link.
+   wnum is the rule: the digits to dial once s is confirmed (no [square brackets], seven digits or more), else ''. */
+function wnum(s){s=String(s||'');var n=s.replace(/[^\d+]/g,'');return s.indexOf('[')<0&&n.length>=7?n:''}
+function wtel(s,cls,lead){s=String(s||'');var n=wnum(s),c=cls?' class="'+cls+'"':'',t=(lead||'')+(n?tx(s).replace(/ /g,'\u00a0'):tx(s));
+ return n?'<a'+c+' href="tel:'+e(n)+'">'+t+'</a>':'<span'+c+'>'+t+'</span>'}
 /* Placeholder: [bracketed facts] in copy */
 /* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM) */
 function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
-/* wlink: a link to a page id or to page#anchor (label defaults to the page's nav label) */
-function wlink(id,label){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'">'+tx(label||(p&&p.nav_label)||id)+'</a>'}
+/* wlink: a link to a page id or to page#anchor (label defaults to the page's nav label). intent (optional): option
+   labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent, as Button) */
+function wlink(id,label,intent){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'"'+(intent?' data-intent="'+e(intent)+'"':'')+'>'+tx(label||(p&&p.nav_label)||id)+'</a>'}
 var ARC='<svg class="aq-arc" viewBox="0 0 420 300" aria-hidden="true"><path class="aq-arc__outer" d="M420 1.5 A 300 300 0 0 0 120 300"/><path class="aq-arc__inner" d="M420 120 A 180 180 0 0 0 240 300"/></svg>';
 function sec(inner,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-stack-l">'+inner+'</div></section>'}
 function split(head,body,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-split-section"><div class="aq-split-section__head">'+head+'</div><div class="aq-split-section__body">'+body+'</div></div></section>'}
@@ -54,6 +62,8 @@ var PAGE_ICON={systems:'loop','sys-pw':'ro-membrane','sys-wfi-distillation':'sti
  'svc-service':'wrench','svc-upgrades':'valve',industries:'building','ind-pharma':'pill','ind-biotech':'dna','ind-meddevice':'syringe','ind-cdmo':'factory',
  compliance:'shield','cmp-documentation':'binder','cmp-quality':'magnifier',projects:'checklist',about:'people',careers:'briefcase',news:'newspaper',
  'contact-proposal':'document','contact-service':'lifebuoy','contact-locations':'pin'};
+/* pageIcon: PAGE_ICON for a link, looked up by its page part, so page#anchor (systems#budget) shows its page's icon */
+function pageIcon(id){return PAGE_ICON[wsplit(id)[0]]}
 /* Spot: an icon drawn larger in a figure (a diagram stop, an option module, a route stop), design-system/components/Spot.
    Older equipment spot names map to their icon, so every figure uses the one line set. */
 var SPOT_ICON={pretreatment:'softener','ro-skid':'ro-membrane','edi-stack':'edi',still:'still','pure-steam-generator':'pure-steam','storage-tank':'tank',
@@ -70,10 +80,11 @@ var ICON_AUTO=[[/softener/i,'softener'],[/carbon filter|activated carbon/i,'carb
 function wIcons(b){var I=b.items||[],r=I.map(function(it){return it&&isIcon(it.icon)?it.icon:''});
  if(b.icons==='auto'){var a=r.map(function(n,i){if(n)return n;var t=String(I[i]&&I[i].t||'');for(var k=0;k<ICON_AUTO.length;k++)if(ICON_AUTO[k][0].test(t))return ICON_AUTO[k][1];return ''});if(a.every(Boolean))r=a}
  return r}
-/* Rows: one list row of the shared list grammar (.aq-rows). link: a page id; the whole row becomes the link. art: drawing page id.
+/* Rows: one list row of the shared list grammar (.aq-rows). link: a page id or page#anchor; the whole row becomes the
+   link. art: the page whose icon ends the row (a link's page part counts, so systems#budget shows the systems icon).
    ic: icon name (wIcons) shown in the index column instead of the number; num: keep the number beside it (ordered steps).
    An icon replaces the row-end drawing (art): at 48 px a drawing reads as texture, the icon reads as the thing. */
-function wRow(i,t,d,link,art,tag,ic,num){ic=isIcon(ic)?ic:'';var endIc=!ic&&art&&PAGE_ICON[art];
+function wRow(i,t,d,link,art,tag,ic,num){ic=isIcon(ic)?ic:'';var endIc=!ic&&art&&pageIcon(art);
  var lead=ic?'<span class="aq-rows__lead'+(num?' aq-rows__lead--n':'')+'" aria-hidden="true">'+(num?idx(i):'')+wIcon(ic)+'</span>':idx(i);
  var inner=lead+'<h3 class="aq-rows__t">'+tx(t)+'</h3>'+(d||tag?'<p class="aq-rows__d">'+(d?tx(d):'')+(tag?'<span class="aq-tags"><span class="aq-tag">'+e(tag)+'</span></span>':'')+'</p>':'')
   +(endIc?wIcon(endIc,'aq-rows__art'):'');
@@ -87,8 +98,11 @@ function wFold(b,n,inner,noun){if(!(b.fold>0)||n<=b.fold)return inner;var id='fo
  return '<div class="aq-fold" id="'+id+'">'+inner+'<button type="button" class="aq-fold__btn" aria-expanded="false" aria-controls="'+id+'" data-more="'+e(all)+'">'+e(all)+'</button></div>'}
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-fold__btn');if(!t)return;var w=t.closest('.aq-fold'),o=!w.classList.contains('is-open');
  w.classList.toggle('is-open',o);t.setAttribute('aria-expanded',o?'true':'false');t.textContent=o?'Show fewer':t.getAttribute('data-more');if(!o)w.scrollIntoView({block:'nearest'})});
-/* SpecTable cell: a string, or {t, link} to route the reader to another page (link must be a page id) */
-function tcell(c){return c&&typeof c==='object'?(c.link&&wp(c.link)?wlink(c.link,c.t):tx(c.t)):tx(c)}
+/* Table cell (every table shape, the router included): a string, or {t, link, intent} to route the reader to another
+   page. link: a page id or page#anchor (shown only when the page exists); intent (optional): option labels,
+   "|"-separated, that the linked page's form ticks on arrival, as a button's (each check links to its own form, DR-016
+   rule 6 and DR-014 rule 12; labels name "situation|follow-up", DR-014 rule 11) */
+function tcell(c){return c&&typeof c==='object'?(c.link&&wp(c.link)?wlink(c.link,c.t,c.intent):tx(c.t)):tx(c)}
 function gridItem(inner,link){return link&&wp(link)?'<a href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div>'+inner+'</div>'}
 /* Table shapes: a table block with as: "router" (and later shapes) renders through TABLE_AS[as] instead of the matrix. */
 var TABLE_AS={};
@@ -106,11 +120,19 @@ if(typeof document!=='undefined'){
   window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
   var home=document.querySelector('.aq-nav__home');if(home)home.focus({preventScroll:true});b.classList.remove('is-shown')});
 }
-/* Button: the hero's primary and secondary links (kind "link"), the closing and the contact routes all use it.
-   link: a page id, "page#anchor" (opens that page at the block with that anchor; page.js) or "#anchor" (scrolls to that
-   block on this page). intent (optional): option labels, "|"-separated, that the linked page's EnquiryForm ticks on
-   arrival (data-intent); an in-page "#anchor" link carries none. */
-function wBtn(label,link,kind,intent){var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'"'+(intent&&!j?' data-intent="'+e(intent)+'"':'')+'>'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
+/* Button: the hero's primary and secondary links (kind "link"), the closing, the contact routes, FAQ links and form
+   notes all use it.
+   link: a page id, "page#anchor" (opens that page at the block with that anchor; page.js), "#anchor" (scrolls to that
+   block on this page) or "tel:<number>" (a call, below). intent (optional): option labels, "|"-separated, that the
+   linked page's EnquiryForm ticks on arrival (data-intent); an in-page "#anchor" or a tel: link carries none.
+   Call (link "tel:[sales phone number]"): the number follows wnum in core.js, the rule the NavBar and Footer numbers use
+   (wtel). Once it is confirmed (no [square brackets]) the button dials it, its digit groups kept on one line, with no
+   arrow (it opens no page); until then the label shows as plain text with the placeholder (aq-btn--pending), never a
+   link. The label names the number ("Call [sales phone number]"); a label that leaves it out gets it added. */
+function wBtn(label,link,kind,intent){if(/^tel:/i.test(link||''))return wCall(label,link.slice(4),kind);
+ var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'"'+(intent&&!j?' data-intent="'+e(intent)+'"':'')+'>'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
+function wCall(label,num,kind){num=String(num||'').trim();label=String(label||'');var n=wnum(num),s=tx(num),t=tx(label.indexOf(num)<0?(label?label+' ':'')+num:label);
+ return n?'<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="tel:'+e(n)+'">'+t.split(s).join(s.replace(/ /g,'\u00a0'))+'</a>':'<span class="aq-btn aq-btn--pending">'+t+'</span>'}
 /* Closing: the call to action at the end of every page, on the navy band.
    c is the page's cta ({h, body, button, link, intent, include, include_label}); p is the page.
    include: optional checklist of short strings (what to send us, each ≤ 8 words), shown as a compact numbered list under
@@ -145,7 +167,20 @@ function wPreset(fs){var pre=WINTENT?WINTENT.split('|'):[];
  fs.forEach(function(f){f._on=ticks(f)})}
 /* EnquiryForm fields. ref is the data-sheet item number ("1.3"), shown before the label and hidden from screen readers. */
 function wSlug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
-function wField(f,i,ref){var id='wf'+(f._n==null?i:f._n),nm=wSlug(f.label),req=f.required?' required':'',hid=id+'_help',
+/* Elsewhere note (field kind "note"): a request this form does not take, sent to another page's form (DR-014 rule 2:
+   "I am qualifying suppliers" -> cmp-quality#audit). {kind: "note", when, label, link, action, intent}: label is the
+   line, link a page id or page#anchor, action the link's words (default the linked block's heading, else the page's
+   name), intent the options that form ticks on arrival. With when it shows only while that option is ticked, like any
+   conditional field. Not a field: no number, never required, nothing sent, never validated. */
+function wFormNote(f){var lk=f.link&&wp(f.link)?wBtn(f.action||wlabel(f.link),f.link,'link',f.intent):'';
+ return '<div class="aq-form__elsewhere aq-form__full"'+(f.when?' data-when="'+e(f.when)+'"'+(f._show?'':' hidden'):'')+'>'+(f.label?'<p class="aq-form__elsewhere-t">'+tx(f.label)+'</p>':'')+lk+'</div>'}
+/* Required count for the title row: the required fields showing when the form opens (conditional ones only once their
+   trigger is ticked, by the visitor or the linking page's intent; f._show from wPreset). The change handler below keeps
+   it current as answers open or close follow-ups (wReqNow). */
+function wReq(fs){return fs.filter(function(f){return f.required&&f.kind!=='note'&&f._show!==false}).length}
+function wReqNow(fm){return [].filter.call(fm.querySelectorAll('[required],[data-required]'),function(x){var w=x.closest('[data-when]');return !w||!w.hidden}).length}
+function wReqText(n){return '<span class="wform-req">'+n+' required</span>'}
+function wField(f,i,ref){if(f.kind==='note')return wFormNote(f);var id='wf'+(f._n==null?i:f._n),nm=wSlug(f.label),req=f.required?' required':'',hid=id+'_help',
  when=f.when?' data-when="'+e(f.when)+'"'+(f._show?'':' hidden'):'',
  num=ref?'<span class="aq-form__ref" aria-hidden="true">'+e(ref)+'</span>':'',opt=f.required?'':' <span class="aq-field__optional">(optional)</span>',
  lab='<label class="aq-field__label" for="'+id+'">'+num+tx(f.label)+opt+'</label>',
@@ -156,21 +191,24 @@ function wField(f,i,ref){var id='wf'+(f._n==null?i:f._n),nm=wSlug(f.label),req=f
  else if(f.kind==='file')inp='<input class="aq-field__file" id="'+id+'" name="'+nm+'" type="file" multiple accept="'+e(f.accept||'.pdf,.docx,.xlsx,.csv,.png,.jpg')+'"'+desc+'>';
  else inp=f.unit?'<div class="aq-field__suffix"><input class="aq-field__input" id="'+id+'" name="'+nm+'" inputmode="numeric"'+req+desc+'><span class="aq-field__unit">'+e(f.unit)+'</span></div>':'<input class="aq-field__input" id="'+id+'" name="'+nm+'" type="'+(f.kind==='email'?'email':f.kind==='tel'?'tel':'text')+'"'+(f.kind==='email'?' autocomplete="email"':f.kind==='tel'?' autocomplete="tel"':'')+req+desc+'>';
  return '<div class="aq-field'+(f.kind==='textarea'||f.kind==='file'?' aq-form__full':'')+'"'+when+'>'+lab+inp+help+'</div>'}
-/* EnquiryForm in steps: each step is one numbered sheet section (Step 1 = 1.0), with a progress list, Back and Continue */
-function wFormSteps(b){var n=0,req=0,S=b.steps,k=S.length;S.forEach(function(s){(s.fields||[]).forEach(function(fd){fd._n=n++;if(fd.required)req++})});
+/* EnquiryForm in steps: each step is one numbered sheet section (Step 1 = 1.0), with a progress list, Back and Continue.
+   Items are numbered 1.1, 1.2 … in order; notes take no number. */
+function wFormSteps(b){var n=0,S=b.steps,k=S.length,all=[];S.forEach(function(s){(s.fields||[]).forEach(function(fd){fd._n=n++;all.push(fd)})});
  return '<form class="aq-form aq-form--steps wform" novalidate>'
-  +'<p class="aq-form__title"><span>Data sheet</span><span>'+k+' steps · '+req+' required</span></p>'
+  +'<p class="aq-form__title"><span>Data sheet</span><span>'+k+' steps · '+wReqText(wReq(all))+'</span></p>'
   +'<ol class="aq-form__progress">'+S.map(function(s,i){return '<li'+(i?'':' aria-current="step"')+'>'+tx(s.title)+'</li>'}).join('')+'</ol>'
-  +S.map(function(s,i){return '<fieldset class="aq-form__section aq-form__step" data-step="'+i+'"'+(i?' hidden':'')+'><legend class="aq-form__legend"><span class="aq-form__num">'+(i+1)+'.0</span> Step '+(i+1)+' of '+k+': '+tx(s.title)+'</legend>'
-   +'<div class="aq-form__grid">'+(s.intro?'<p class="aq-small aq-form__full">'+tx(s.intro)+'</p>':'')+(s.fields||[]).map(function(fd,j){return wField(fd,fd._n,(i+1)+'.'+(j+1))}).join('')+'</div>'
+  +S.map(function(s,i){var q=0;return '<fieldset class="aq-form__section aq-form__step" data-step="'+i+'"'+(i?' hidden':'')+'><legend class="aq-form__legend"><span class="aq-form__num">'+(i+1)+'.0</span> Step '+(i+1)+' of '+k+': '+tx(s.title)+'</legend>'
+   +'<div class="aq-form__grid">'+(s.intro?'<p class="aq-small aq-form__full">'+tx(s.intro)+'</p>':'')+(s.fields||[]).map(function(fd){return wField(fd,fd._n,fd.kind==='note'?'':(i+1)+'.'+(++q))}).join('')+'</div>'
    +'<div class="aq-form__actions">'+(i?'<button class="aq-btn aq-btn--secondary" type="button" data-step-go="'+(i-1)+'">Back</button>':'')+(i<k-1?'<button class="aq-btn aq-btn--primary" type="button" data-step-go="'+(i+1)+'">'+tx(s.next||'Continue')+' <span class="aq-btn__arrow">→</span></button>':'<button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button>')+'</div>'
    +(i===k-1&&b.note?'<p class="aq-small aq-form__note">'+tx(b.note)+'</p>':'')+(i===k-1?'<span class="aq-small wform-msg" role="status"></span>':'')+'</fieldset>'}).join('')
   +'</form>'}
 /* Conditional fields: data-when="A|B" shows the field while any listed option is ticked. Ticks inside a hidden field do not count,
-   so a follow-up question disappears with its parent (three passes cover two levels of nesting). */
+   so a follow-up question disappears with its parent (three passes cover two levels of nesting). Then the title row's
+   required count follows what now shows. */
 document.addEventListener('change',function(ev){var fm=ev.target.closest('form');if(!fm)return;var ws=fm.querySelectorAll('[data-when]');
  for(var k=0;k<3;k++){var on=[].filter.call(fm.querySelectorAll('input:checked'),function(x){var w=x.closest('[data-when]');return !w||!w.hidden}).map(function(x){return x.value});
-  ws.forEach(function(w){w.hidden=!w.dataset.when.split('|').some(function(v){return on.indexOf(v)>=0})})}});
+  ws.forEach(function(w){w.hidden=!w.dataset.when.split('|').some(function(v){return on.indexOf(v)>=0})})}
+ var rq=fm.querySelector('.wform-req');if(rq)rq.textContent=wReqNow(fm)+' required'});
 /* Validation feedback (the form is novalidate, so the messages are ours and read the same everywhere). A field is checked
    when the visitor leaves it after typing, re-checked live while it shows an error, and every visible field of the step
    is checked on Continue and on Send: the first problem takes focus and the step does not advance. Each error is a
@@ -279,23 +317,26 @@ function wHeroIndex(x){var n=x.items.length;
    (x.big&&i<n-1?'':'')+'</li>'}).join('')+'</ol></nav>'}
 /* Home: fine-line drawing of a figure-eight distribution loop (viewBox 440 x 520). Strokes are currentColor and tokens in style.css.
    Annotations name the loop, its parts and the two USP test chapters at the sensors. No figure is drawn: hero facts are
-   Aquemi's own figures and sit in the KeyFacts strip, and a pharmacopoeia limit is never drawn as if it were ours (DR-010). */
+   Aquemi's own figures and sit in the KeyFacts strip, and a pharmacopoeia limit is never drawn as if it were ours (DR-010).
+   No filter: WHO TRS 1033 says filtration should not be used in distribution loops or at take-off points, and the
+   drawing has no generation or tank to show one upstream. The heat exchanger is labelled with sys-storage's placeholder,
+   "[heat exchanger, standard or option]" (aq-loop__ph, the placeholder's mono), since drawn as standard it would read as
+   hot-water sanitization (DR-013). The weight sits on the diagonal: sensors top right, heat exchanger bottom left. */
 function wHomeLoop(){
  var arrow=function(x,y,r){return '<path class="aq-loop__arrow" d="M-5,-3.5 L4,0 L-5,3.5 Z" transform="translate('+x+' '+y+') rotate('+r+')"/>'};
- var label=function(x,y,s,a){return '<text x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>'};
- return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a filter and a heat exchanger on the loop, conductivity and TOC sensors on the return, a valve at the furthest point of use, and flow arrows.">'+
+ var label=function(x,y,s,a,c){return '<text'+(c?' class="'+c+'"':'')+' x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>'};
+ return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a heat exchanger on the loop, standard or option still to be confirmed, conductivity and TOC sensors on the return, a valve at the furthest point of use, and flow arrows.">'+
  '<svg viewBox="0 0 440 520" aria-hidden="true" focusable="false">'+
  '<path class="aq-loop__pipe" d="M140,390 A80,80 0 0 0 300,390 L300,340 C300,270 140,230 140,160 L140,110 A80,80 0 0 1 300,110 L300,160 C300,230 140,270 140,340 Z"/>'+
  arrow(220,30,0)+arrow(180,459.3,30)+arrow(275,292,224)+arrow(275,208,136)+
- '<g class="aq-loop__part"><rect x="133" y="113" width="14" height="44" rx="7"/><line x1="136" y1="125" x2="144" y2="125"/><line x1="136" y1="135" x2="144" y2="135"/><line x1="136" y1="145" x2="144" y2="145"/>'+
- '<rect x="129" y="354" width="22" height="22"/><line x1="129" y1="354" x2="151" y2="376"/><line x1="151" y1="354" x2="129" y2="376"/>'+
+ '<g class="aq-loop__part"><rect x="129" y="354" width="22" height="22"/><line x1="129" y1="354" x2="151" y2="376"/><line x1="151" y1="354" x2="129" y2="376"/>'+
  '<line x1="300" y1="118" x2="324" y2="118"/><circle cx="336" cy="118" r="12"/><line x1="300" y1="152" x2="324" y2="152"/><circle cx="336" cy="152" r="12"/>'+
  '<path d="M220,470 L220,480 M206,480 L206,492 L234,480 L234,492 Z"/></g>'+
- '<g class="aq-loop__lead"><line x1="80" y1="135" x2="130" y2="135"/><line x1="80" y1="365" x2="126" y2="365"/></g>'+
+ '<g class="aq-loop__lead"><line x1="108" y1="365" x2="126" y2="365"/></g>'+
  '<g class="aq-loop__text">'+label(0,14,'Distribution loop · PP')+
   '<text class="aq-loop__tag" x="336" y="121" text-anchor="middle">CE</text><text class="aq-loop__tag" x="336" y="155" text-anchor="middle">TOC</text>'+
   label(352,122,'USP <645>')+label(352,156,'USP <643>')+
-  label(76,132,'Filter','end')+label(76,362,'Heat','end')+label(76,374,'exchanger','end')+
+  label(104,362,'[heat exchanger,','end','aq-loop__ph')+label(104,374,'standard or option]','end','aq-loop__ph')+
   label(244,483,'Furthest point of use')+
  '</g></svg></figure>'}
 /* Drawn figure (opt-in hero field "figure", pages with no equipment drawing): a quiet line-art device in a 6:5 area
@@ -309,8 +350,12 @@ function wHomeLoop(){
      checked rows) closed by a status line: a flow tick and the label, "Signed · <sub>" beside it.
    - {"plate": "route", "stops": ["Your request", "Engineer review", "Written reply"]}: one route from a start node
      through three numbered stops to an arrow.
-   Geometry is in percent of the 6:5 frame; line work in an SVG viewBox 120 x 100 (non-scaling strokes). */
-var SPOT_NAME={'ro-skid':'RO skid','edi-stack':'EDI stack','pure-steam-generator':'Pure steam generator','storage-tank':'Storage tank','heat-exchanger':'Heat exchanger','uv-ozone':'UV',pid:'P&ID',edi:'EDI',toc:'TOC',uv:'UV','ro-membrane':'RO membrane','carbon-filter':'Carbon filter','pure-steam':'Pure steam'};
+   Geometry is in percent of the 6:5 frame; line work in an SVG viewBox 120 x 100 (non-scaling strokes).
+   SPOT_NAME: the tag each spot gets when the entry names none. Reverse osmosis and electrodeionization are spelled out:
+   the tag may be the only place a page names that equipment (projects). A page that wants the short form names the
+   entry itself: {"spot": "ro-skid", "t": "RO skid"}. "Electrodeionization" carries a soft hyphen, so a narrow tag
+   breaks it "Electro-deionization" rather than running past its width. */
+var SPOT_NAME={'ro-skid':'Reverse osmosis skid','edi-stack':'Electro\u00addeionization stack','pure-steam-generator':'Pure steam generator','storage-tank':'Storage tank','heat-exchanger':'Heat exchanger','uv-ozone':'UV',pid:'P&ID',edi:'Electro\u00addeionization',toc:'TOC',uv:'UV','ro-membrane':'Reverse osmosis membrane','carbon-filter':'Carbon filter','pure-steam':'Pure steam'};
 var SPOT_AT={2:[[30,46,40],[72,58,40]],3:[[19,58,36],[50,38,36],[81,58,36]],4:[[16,42,27],[39,60,27],[62,42,27],[85,60,27]]};
 function spotName(n){return SPOT_NAME[n]||(n.charAt(0).toUpperCase()+n.slice(1).replace(/-/g,' '))}
 function heroFrame(kind,inner,label){return '<figure class="aq-hero__drawn aq-hero__drawn--'+kind+'" aria-hidden="true">'+(label?'<span class="aq-hero__drawn-label">'+tx(label)+'</span>':'')+inner+'</figure>'}
@@ -319,7 +364,12 @@ function wHeroSpots(f){var sp=(f.spots||[]).map(function(s){return typeof s==='s
  for(var i=1;i<n;i++){var m=((pts[i-1][0]+pts[i][0])/2).toFixed(1);d+=' H'+m+' V'+pts[i][1].toFixed(1)+' H'+pts[i][0].toFixed(1)}
  d+=' H114';pts.forEach(function(q){dots+='<circle cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)+'" r="1.1"/>'});
  var y=pts[n-1][1].toFixed(1),svg='<svg class="aq-hero__pipe" viewBox="0 0 120 100" preserveAspectRatio="none" focusable="false"><path class="aq-hero__pipe-run" d="'+d+'"/><path class="aq-hero__pipe-arrow" d="M113,'+(+y-2.2).toFixed(1)+' L118,'+y+' L113,'+(+y+2.2).toFixed(1)+' Z"/>'+dots+'</svg>';
- var cells=sp.map(function(s,i){var a=at[i],pos='left:'+a[0]+'%;top:'+a[1]+'%;--w:'+a[2]+'%';
+ /* A tag hangs under its vignette. Where the pipe drops from this base to a lower neighbour, the riser (at the midpoint
+    between the two) runs down beside the tag, so the tag is kept inside that gap with 1.5 % clear: --tw, a share of
+    the vignette's width, caps the tag's own max-width (style.css). A long name then wraps instead of covering the pipe. */
+ function tw(i){var a=at[i],lim=[];if(i>0&&pts[i-1][1]>pts[i][1])lim.push(a[0]-(pts[i-1][0]+pts[i][0])/2.4);if(i<n-1&&pts[i+1][1]>pts[i][1])lim.push((pts[i][0]+pts[i+1][0])/2.4-a[0]);
+  return lim.length?';--tw:'+Math.floor((2*Math.min.apply(null,lim)-1.5)/a[2]*100)+'%':''}
+ var cells=sp.map(function(s,i){var a=at[i],pos='left:'+a[0]+'%;top:'+a[1]+'%;--w:'+a[2]+'%'+tw(i);
   return '<span class="aq-hero__vig" style="'+pos+'">'+wSpot(s.spot,'l','aq-spot--muted')+'<span class="aq-hero__vig-t"><b>'+(i<9?'0':'')+(i+1)+'</b> '+tx(s.t||spotName(s.spot))+'</span></span>'}).join('');
  return heroFrame('spots',svg+cells,f.label)}
 function wHeroBinder(f){var it=(f.items||[]).slice(0,6),k=Math.max(3,Math.min(4,it.length||3)),back='';
@@ -341,7 +391,7 @@ function wHeroRoute(f){var st=(f.stops||['Request','Review','Reply']).slice(0,3)
 function wHeroDrawn(f){if(!f||typeof f!=='object')return '';return f.spots?wHeroSpots(f):f.plate==='binder'?wHeroBinder(f):f.plate==='stamp'?wHeroStamp(f):f.plate==='route'?wHeroRoute(f):''}
 function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^svc-|^ind-/.test(p.id),drawn=home||art?'':wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
-  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?wBtn(p.secondary_cta.label,p.secondary_cta.link||'systems','link'):'')+'</div>'+
+  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?wBtn(p.secondary_cta.label,p.secondary_cta.link||'systems','link',p.secondary_cta.intent):'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
  /* Callouts round the drawing only on sys-* pages, where each fact is a figure of the drawn module (a design value,
     guarantee or capacity, "what, where · basis", DR-010); service and industry pages keep their facts in the KeyFacts
@@ -438,8 +488,9 @@ function wFlow(I,o){o=o||{};var n=I.length,id='fl'+(++FLN),num=function(i){retur
    +(x.d?'<p class="aq-diagram__dd">'+tx(x.d)+'</p>':'')
    +(x.tag||(x.link&&wp(x.link))?'<p class="aq-diagram__dx">'+(x.tag?'<span class="aq-tag">'+e(x.tag)+'</span>':'')+(x.link&&wp(x.link)?wlink(x.link):'')+'</p>':'')
    +'</div>'+(io?'<p class="aq-diagram__io">'+io+'</p>':'')+'</div>'});
- var ends=o.from||o.to?'<p class="aq-diagram__ends"><span>'+e(o.from||'')+'</span><span>'+e(o.to||'')+'</span></p>':'';
- var base=o.base?'<p class="aq-diagram__base"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+e(o.base)+'</span></p>':'';
+ /* Pipe-end labels and the base go through tx, as every other string: a [placeholder] there shows as one */
+ var ends=o.from||o.to?'<p class="aq-diagram__ends"><span>'+tx(o.from||'')+'</span><span>'+tx(o.to||'')+'</span></p>':'';
+ var base=o.base?'<p class="aq-diagram__base"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0M3 12h18"/></svg><span>'+tx(o.base)+'</span></p>':'';
  return wPlate('<div class="aq-diagram'+(o.base?' aq-diagram--base':'')+(o.cls?' '+o.cls:'')+'" style="--n:'+n+'">'+ends
   +'<div class="aq-diagram__line" role="group" aria-label="'+e(n+' stages in flow order; choose one to see its detail')+'">'+st+'</div>'+base+'</div>',{cls:'aq-diagram__plate',block:o.block})}
 function wDiagram(b){var I=(b.stages||[]).map(function(s){return typeof s==='string'?{t:s}:s});
@@ -510,9 +561,10 @@ function wSectionNav(p){var j=navJumps(p),segs='';if(!j.length)return '';for(var
  if(window.MutationObserver)new MutationObserver(sched).observe(document.documentElement,{childList:true,subtree:true});sched()})();
 /* WaterPath: the system families as stations on one pipe, feed to point of use, drawn by the ProcessDiagram flow
    (wFlow in parts/ProcessDiagram.js) with the aq-water-path modifier. Each station shows its item's spot (or icon);
-   without one, the linked page's icon (PAGE_ICON in core.js). The detail panel carries the item's line, tag and link. */
+   without one, the linked page's icon (pageIcon in core.js, so page#anchor counts). The detail panel carries the item's
+   line, tag and link. */
 function wPath(b){var I=(b.items||[]).slice(0,7);
- return wFlow(I,{cls:'aq-water-path',from:b.from||'Feed water',to:b.to||'Point of use',icon:function(x){return PAGE_ICON[x.link]},block:['Water path',I.length+' systems']})}
+ return wFlow(I,{cls:'aq-water-path',from:b.from||'Feed water',to:b.to||'Point of use',icon:function(x){return pageIcon(x.link)},block:['Water path',I.length+' systems']})}
 /* Block "band" -> Band: one statement set large on a limestone or sunken ground, the body as a supporting line, and a
    faint pipework line drawing at the right (desktop only). Fields: h, body, tone ("limestone" default or
    "sunken"), and optional mark: one word or phrase from h to underline with a flow hairline. The mark is only wrapped where
@@ -588,8 +640,8 @@ BLOCKS['case']=function(b,H){return sec(H+'<div class="aq-cases">'+(b.items||[])
    until confirmed. */
 var CR_CLOCK=wIcon('clock','aq-contact-routes__icon');
 var CR_PHONE=wIcon('phone','aq-contact-routes__icon');
-function crPhone(s){s=String(s||'');var n=s.replace(/[^\d+]/g,'');
- return s.indexOf('[')<0&&n.length>=7?'<a class="aq-contact-routes__num" href="tel:'+e(n)+'">'+tx(s)+'</a>':'<span class="aq-contact-routes__num">'+tx(s)+'</span>'}
+/* The call line's number: wtel in core.js, the one phone rule (a tel: link once confirmed, the placeholder until then) */
+function crPhone(s){return wtel(s,'aq-contact-routes__num')}
 BLOCKS['contact-routes']=function(b,H){var R=b.routes||[];
  var p=W().filter(function(q){return (q.blocks||[]).indexOf(b)>=0})[0]||wp(WP)||{},PB=p.blocks||[],fi=-1;
  PB.forEach(function(x,i){if(fi<0&&x.type==='form')fi=i});
@@ -717,9 +769,14 @@ TABLE_AS.evidence=function(b,H){var C=b.cols||[],R=b.rows||[],RF=[].concat(b.ref
     +'<td class="aq-evidence__proof">'+files+(links?'<p class="aq-evidence__go">'+links+'</p>':'')+'</td></tr>'}).join('')+'</tbody></table>',b.fold_noun||'requirements')+'</div>');};
 /* Block "faq" -> FAQ: hairline accordion rows (index, question, +/−), all closed; a shared name keeps one answer open.
    The sign is [ glyph ]: a drawn plus whose upright turns flat (minus) when open. FAQ/motion.js eases the height on open/close.
-   Desktop: heading left, questions right (SplitSection). */
+   Desktop: heading left, questions right (SplitSection).
+   One link per answer (DR-009: one line and a link): an item may carry link (a page id or page#anchor), link_label (its
+   words; default the linked block's heading, else the page's name, wlabel) and intent (options the linked form ticks
+   on arrival). It follows the answer as the Button link variant (wBtn), so page#anchor and intents work as on every
+   button. Answer text stays plain: no markup is parsed out of "a". A link to a missing page renders nothing. */
 var faqN=0;
-BLOCKS['faq']=function(b,H){faqN++;return split(H,'<div class="aq-faq">'+(b.items||[]).map(function(it,i){return '<details name="faq-'+faqN+'"><summary>'+idx(i)+'<span class="aq-faq__q">'+tx(it.q)+'</span><span class="aq-faq__sign" aria-hidden="true"><span class="aq-faq__glyph"></span></span></summary><div class="aq-faq__a"><p>'+tx(it.a)+'</p></div></details>'}).join('')+'</div>');};
+function faqMore(it){return it.link&&wp(it.link)?'<p class="aq-faq__more">'+wBtn(it.link_label||wlabel(it.link),it.link,'link',it.intent)+'</p>':''}
+BLOCKS['faq']=function(b,H){faqN++;return split(H,'<div class="aq-faq">'+(b.items||[]).map(function(it,i){return '<details name="faq-'+faqN+'"><summary>'+idx(i)+'<span class="aq-faq__q">'+tx(it.q)+'</span><span class="aq-faq__sign" aria-hidden="true"><span class="aq-faq__glyph"></span></span></summary><div class="aq-faq__a"><p>'+tx(it.a)+'</p>'+faqMore(it)+'</div></details>'}).join('')+'</div>');};
 /* Table as "failures" -> FaultList: where things fail and what we design against. Fields as a table: cols [the failure
    column, then the columns revealed when a row opens, usually "Usual cause" and "What we design in"], rows. Each row is
    a native <details>: index, the failure, a +/− sign; open, the other columns sit side by side, each under its column
@@ -733,20 +790,21 @@ TABLE_AS.failures=function(b,H){var C=b.cols||[],R=b.rows||[];faultN++;
 /* Block "form" -> EnquiryForm (data sheet) in SplitSection. With "steps", wFormSteps renders one numbered section per step.
    wPreset ticks the options named by the linking button's intent before rendering.
    Fields split into numbered sections: 1.0 the requirement, 2.0 the trailing run of contact fields (name, company, role,
-   email, phone, site, contract). A field with "section": "<legend>" starts a new section; "sections": [..] renames them. */
+   email, phone, site, contract). A field with "section": "<legend>" starts a new section; "sections": [..] renames them.
+   A note (kind "note", parts/EnquiryForm.js) takes no number. The title row counts the required fields showing (wReq). */
 BLOCKS['form']=function(b,H){
  wPreset(b.steps?[].concat.apply([],b.steps.map(function(s){return s.fields||[]})):(b.fields||[]));
  if(b.steps)return split(H,wFormSteps(b));
- var F=b.fields||[],cut=F.length,C=/\b(name|company|role|e-?mail|phone|site|contract)\b/i,G=[],req=0;
- while(cut>0&&F[cut-1].kind!=='textarea'&&F[cut-1].kind!=='checkbox-group'&&C.test(F[cut-1].label||''))cut--;
+ var F=b.fields||[],cut=F.length,C=/\b(name|company|role|e-?mail|phone|site|contract)\b/i,G=[];
+ while(cut>0&&F[cut-1].kind!=='textarea'&&F[cut-1].kind!=='checkbox-group'&&F[cut-1].kind!=='note'&&C.test(F[cut-1].label||''))cut--;
  if(cut===0)cut=F.length;
  var L1=F.some(function(f){return f.unit})?'System data':'Details',
   L2=F.slice(cut).some(function(f){return /\bsite\b/i.test(f.label||'')})?'Site and contact':'Contact';
- F.forEach(function(f,i){if(f.required)req++;var l=f.section||(i===0?L1:i===cut?L2:'');if(l||!G.length)G.push({l:l||L1,f:[]});G[G.length-1].f.push(i)});
- var body=G.map(function(g,gi){var n=gi+1;return '<fieldset class="aq-form__section"><legend class="aq-form__legend"><span class="aq-form__num">'+n+'.0</span> '+tx((b.sections&&b.sections[gi])||g.l)+'</legend><div class="aq-form__grid">'+g.f.map(function(i,k){return wField(F[i],i,n+'.'+(k+1))}).join('')+'</div></fieldset>'}).join('');
+ F.forEach(function(f,i){var l=f.section||(i===0?L1:i===cut?L2:'');if(l||!G.length)G.push({l:l||L1,f:[]});G[G.length-1].f.push(i)});
+ var body=G.map(function(g,gi){var n=gi+1,q=0;return '<fieldset class="aq-form__section"><legend class="aq-form__legend"><span class="aq-form__num">'+n+'.0</span> '+tx((b.sections&&b.sections[gi])||g.l)+'</legend><div class="aq-form__grid">'+g.f.map(function(i){return wField(F[i],i,F[i].kind==='note'?'':n+'.'+(++q))}).join('')+'</div></fieldset>'}).join('');
  return split(H,
   '<form class="aq-form wform" novalidate>'
-  +'<p class="aq-form__title"><span>Data sheet</span><span>'+G.length+' section'+(G.length>1?'s':'')+' · '+req+' required</span></p>'
+  +'<p class="aq-form__title"><span>Data sheet</span><span>'+G.length+' section'+(G.length>1?'s':'')+' · '+wReqText(wReq(F))+'</span></p>'
   +body
   +'<div class="aq-form__actions"><button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button><span class="aq-small wform-msg" role="status"></span></div>'
   +'</form>');};
@@ -974,8 +1032,8 @@ document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.targe
  if(S)Flip.from(S,{targets:R,duration:0.45,ease:'power2.inOut',onEnter:function(x){return gsap.fromTo(x,{autoAlpha:0,x:-12},{autoAlpha:1,x:0,duration:0.4,stagger:0.03,clearProps:'transform,opacity,visibility'})}})});
 /* Block "related" -> RelatedLinks: the pages to read next. items: page ids. Each is one linked card under a hairline: the
    index, a thumbnail of the target page, "01 / Systems" as an eyebrow label and the page's title with an arrow.
-   Thumbnail: the target page's icon (PAGE_ICON in core.js). Desktop: up to four to a row; phones: one column of rows. */
-function relThumb(id){return PAGE_ICON[id]?wIcon(PAGE_ICON[id],'aq-related-links__thumb aq-related-links__icon'):''}
+   Thumbnail: the target page's icon (pageIcon in core.js). Desktop: up to four to a row; phones: one column of rows. */
+function relThumb(id){var n=pageIcon(id);return n?wIcon(n,'aq-related-links__thumb aq-related-links__icon'):''}
 BLOCKS['related']=function(b,H){var I=(b.items||[]).filter(wp);
  return sec(H+'<ol class="aq-related-links" style="--n:'+I.length+'">'+I.map(function(id,i){var p=wp(id),n=(i<9?'0':'')+(i+1);
  return '<li><a class="aq-related-links__card" href="#'+e(id)+'" data-wp="'+e(id)+'"><span class="aq-related-links__n" aria-hidden="true">'+n+'</span>'+relThumb(id)
@@ -1000,7 +1058,8 @@ TABLE_AS.roles=function(b,H){var C=b.cols||[],R=b.rows||[];
    chosen situation into it. Phones: each route opens under its situation, its stations down a riser.
    A route whose cells link somewhere (the last link wins, usually "Start with") is clickable as a whole: the frame
    carries a pointer-only overlay to that page; the real link inside stays the keyboard and screen reader target, and
-   that station is drawn as the tinted end station.
+   that station is drawn as the tinted end station. A cell's intent ({t, link, intent}: option labels the linked form
+   ticks on arrival) rides on both, so a click anywhere on the route lands with the same options ticked.
    Every route is in the markup (hidden when closed), so nothing is lost to search or screen readers.
    Pending station: a value that opens with a [placeholder] ("[days]; DI runs until release") is a fact still to come,
    drawn with a dashed hairline and a small "To confirm" eyebrow, so it reads as a value on order, not a gap. */
@@ -1008,10 +1067,10 @@ var routerN=0;
 TABLE_AS.router=function(b,H){var C=b.cols||[],R=b.rows||[],k=++routerN;
  function lnk(c){return c&&typeof c==='object'&&c.link&&wp(c.link)?c.link:''}
  var inner='<div class="aq-router">'+R.map(function(r,i){var id='route-'+k+'-'+i,s=r[0]&&typeof r[0]==='object'?r[0].t:r[0],st=r.slice(1),go=-1;
-  st.forEach(function(c,j){if(lnk(c))go=j});var to=go>=0?lnk(st[go]):'';
+  st.forEach(function(c,j){if(lnk(c))go=j});var to=go>=0?lnk(st[go]):'',ti=to&&st[go].intent;
   return '<button type="button" class="aq-router__opt" aria-expanded="'+(i?'false':'true')+'" aria-controls="'+id+'">'+idx(i)+'<span class="aq-router__t">'+tx(s)+'</span></button>'
    +'<div class="aq-router__route'+(to?' is-link':'')+'" id="'+id+'" style="grid-row:1 / span '+R.length+'"'+(i?' hidden':'')+'>'
-   +(to?'<a class="aq-router__hit" href="#'+e(to)+'" data-wp="'+e(to)+'" tabindex="-1" aria-hidden="true"></a>':'')
+   +(to?'<a class="aq-router__hit" href="#'+e(to)+'" data-wp="'+e(to)+'"'+(ti?' data-intent="'+e(ti)+'"':'')+' tabindex="-1" aria-hidden="true"></a>':'')
    +'<ol class="aq-router__stations">'+st.map(function(c,j){
     var pend=j!==go&&/^\s*\[/.test(c&&typeof c==='object'?c.t:c),cl=(j===go?' is-go':'')+(pend?' is-pending':'');
     return '<li'+(cl?' class="'+cl.slice(1)+'"':'')+'><p class="aq-router__k">'+tx(C[j+1]||'')+'</p><p class="aq-router__v">'+tcell(c)+(pend?'<span class="aq-router__tbc">To confirm</span>':'')+'</p></li>'}).join('')+'</ol></div>'}).join('')+'</div>';
@@ -1205,10 +1264,16 @@ BLOCKS['standards-map']=function(b,H){var Z=b.zones||[],top=Math.ceil(Z.length/2
      return '<li><a class="aq-standards-map__code" href="#'+e(WP)+'" data-smap-code="'+e(ct)+'" data-smap-to="'+e(cto)+'">'+tx(ct)+'</a></li>'}).join('')+'</ul></div></li>'}).join('')
   +'</ol></div>';
  return sec(H+(sp?wPlate(map,{cls:'aq-standards-map__plate'}):map));};
-/* Code chip -> the row that proves it. Rows: EvidenceMap rows (matched on their title), spec and table rows, list rows. */
-function smapRow(scope,code){if(!scope)return null;var re=new RegExp('(^|[^A-Za-z0-9])'+code.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![A-Za-z0-9])'),R=scope.querySelectorAll('.aq-evidence__row, tr, li');
- for(var i=0;i<R.length;i++){var r=R[i];if(r.closest('.aq-standards-map,.aq-section-nav,.aq-menu,.aq-hero,.aq-closing,nav,footer'))continue;var t=r.querySelector('.aq-evidence__t'),P=t?[t]:r.children.length?[].slice.call(r.children):[r];/* cell by cell: textContent runs cells together */
-  if(P.some(function(x){return re.test(x.textContent)}))return r}return null}
+/* Code chip -> the row that proves it. EvidenceMap rows first, matched on the requirement's name (.aq-evidence__name):
+   its own text and its mono reference apart, and never the row's title cell (.aq-evidence__t), whose hidden number
+   "01" runs into a code that opens the name ("01USP <645>"). Then spec and table rows cell by cell, and list rows;
+   the cells and file chips inside an evidence row never answer for it. */
+function smapRow(scope,code){if(!scope)return null;var re=new RegExp('(^|[^A-Za-z0-9])'+code.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![A-Za-z0-9])'),
+  out=function(r){return r.closest('.aq-standards-map,.aq-section-nav,.aq-menu,.aq-hero,.aq-closing,nav,footer')},
+  hit=function(P){return [].some.call(P,function(x){return re.test(x.textContent)})},E=scope.querySelectorAll('.aq-evidence__row'),R=scope.querySelectorAll('tr, li');
+ for(var i=0;i<E.length;i++){var nm=E[i].querySelector('.aq-evidence__name');if(nm&&!out(E[i])&&hit(nm.childNodes))return E[i]}
+ for(var j=0;j<R.length;j++){var r=R[j];if(out(r)||r.closest('.aq-evidence__row'))continue;/* cell by cell: textContent runs cells together */
+  if(hit(r.children.length?r.children:[r]))return r}return null}
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('[data-smap-code]');if(!a)return;ev.preventDefault();
  var code=a.getAttribute('data-smap-code'),s=document.getElementById(a.getAttribute('data-smap-to')||''),r=smapRow(s,code)||smapRow(document.querySelector('main')||document.body,code),
   rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
