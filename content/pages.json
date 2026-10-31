@@ -1250,7 +1250,7 @@
      "items": [
       {
        "q": "How hot can a PP loop be sanitized?",
-       "a": "Hot water runs no higher than [maximum loop sanitization temperature for PP, °C]; natural PP is rated to 80 °C. Above that we quote PVDF, or sanitize chemically."
+       "a": "Hot water runs no higher than [maximum loop sanitization temperature for PP, °C]; natural PP is rated to 80 °C. Above that, sanitize chemically, or the loop needs PVDF [whether we quote PVDF]."
       },
       {
        "q": "How do you measure L/D?",
@@ -1317,7 +1317,8 @@
     "Datasheet PDF; add a download link only once it exists",
     "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block",
     "PP ozone rating for dissolved and headspace ozone (ppm), from the PP maker's rating",
-    "Ozone range in the tank (ppb) and its published source"
+    "Ozone range in the tank (ppb) and its published source",
+    "Whether Aquemi quotes PVDF loops for hot-water sanitization above the PP rating (the current offer is the PP package only)"
    ]
   },
   {
