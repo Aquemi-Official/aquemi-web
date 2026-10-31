@@ -85,6 +85,8 @@ To get originals at full size with Claude in Chrome: open the image's `=s1600` U
 
 `art/` holds the black-on-white source drawings; `tools/line_art.py` turns each into the transparent mask in `assets/illustrations/` that the Illustration component paints with a token. One file per page id (`sys-pw.png`, `svc-cq.png`, `ind-pharma.png` …). Prompt recipe: see the Illustration component README.
 
+A replaced drawing stays for the record: its old source is renamed with a suffix that says why, and `ART_REPLACED` in `tools/gallery.py` shows it as superseded. On 2026-10-31 three drawings that contradicted the offer were redrawn for the polypropylene PW package: `art/svc-fabrication-stainless.png` (orbital weld head with tri-clamps), `art/sys-storage-stainless.png` (stainless tank) and `art/ind-pharma-sterile.png` (vial filling machine), Gemini originals `gemini/14`, `08` and `22`. Their replacements are `art/svc-fabrication.png` (butt-fusion machine), `art/sys-storage.png` (PP tank and loop) and `art/ind-pharma.png` (mixing vessel fed by a PW point-of-use valve), originals `gemini/65`–`67`.
+
 ## How to make a new concept
 
 1. In Gemini (image generation), describe the section broadly: who Aquemi is, what the section must say, the palette (deep navy, warm limestone off-white, one steel-blue accent, thin precise lines), "flat desktop UI mockup, no device frame, no people", and ask it to surprise you with the layout. Don't dictate the layout.

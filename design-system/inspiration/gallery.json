@@ -117,9 +117,9 @@
 "src": "design-system/inspiration/gemini/08-art-sys-storage.png",
 "thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__08-art-sys-storage.jpg",
 "cat": "gemini",
-"status": "source",
+"status": "superseded",
 "title": "Sys storage",
-"note": "Equipment drawing for the sys-storage page; cleaned into assets/illustrations/sys-storage.png",
+"note": "Retired 2026-10-31: the stainless storage tank, replaced by the polypropylene package drawing for the sys-storage page",
 "component": "Illustration",
 "group": null,
 "order": 8,
@@ -213,9 +213,9 @@
 "src": "design-system/inspiration/gemini/14-art-svc-fabrication.png",
 "thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__14-art-svc-fabrication.jpg",
 "cat": "gemini",
-"status": "source",
+"status": "superseded",
 "title": "Svc fabrication",
-"note": "Equipment drawing for the svc-fabrication page; cleaned into assets/illustrations/svc-fabrication.png",
+"note": "Retired 2026-10-31: the orbital weld head on a sanitary stainless tube with tri-clamps, replaced by the polypropylene package drawing for the svc-fabrication page",
 "component": "Illustration",
 "group": null,
 "order": 14,
@@ -341,9 +341,9 @@
 "src": "design-system/inspiration/gemini/22-art-ind-pharma.png",
 "thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__22-art-ind-pharma.jpg",
 "cat": "gemini",
-"status": "source",
+"status": "superseded",
 "title": "Ind pharma",
-"note": "Equipment drawing for the ind-pharma page; cleaned into assets/illustrations/ind-pharma.png",
+"note": "Retired 2026-10-31: the sterile vial filling machine, replaced by the polypropylene package drawing for the ind-pharma page",
 "component": "Illustration",
 "group": null,
 "order": 22,
@@ -1026,6 +1026,54 @@
 "kb": 347
 },
 {
+"src": "design-system/inspiration/gemini/65-art-svc-fabrication.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__65-art-svc-fabrication.jpg",
+"cat": "gemini",
+"status": "source",
+"title": "Svc fabrication",
+"note": "PP replacement (2026-10-31) for the orbital weld head on a sanitary stainless tube with tri-clamps. Equipment drawing for the svc-fabrication page; cleaned into assets/illustrations/svc-fabrication.png",
+"component": "Illustration",
+"group": null,
+"order": 65,
+"size": [
+1024,
+1024
+],
+"kb": 407
+},
+{
+"src": "design-system/inspiration/gemini/66-art-sys-storage.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__66-art-sys-storage.jpg",
+"cat": "gemini",
+"status": "source",
+"title": "Sys storage",
+"note": "PP replacement (2026-10-31) for the stainless storage tank. Equipment drawing for the sys-storage page; cleaned into assets/illustrations/sys-storage.png",
+"component": "Illustration",
+"group": null,
+"order": 66,
+"size": [
+1024,
+1024
+],
+"kb": 478
+},
+{
+"src": "design-system/inspiration/gemini/67-art-ind-pharma.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__gemini__67-art-ind-pharma.jpg",
+"cat": "gemini",
+"status": "source",
+"title": "Ind pharma",
+"note": "PP replacement (2026-10-31) for the sterile vial filling machine. Equipment drawing for the ind-pharma page; cleaned into assets/illustrations/ind-pharma.png",
+"component": "Illustration",
+"group": null,
+"order": 67,
+"size": [
+1024,
+1024
+],
+"kb": 247
+},
+{
 "src": "design-system/inspiration/concept-a.jpg",
 "thumb": "design-system/inspiration/thumbs/design-system__inspiration__concept-a.jpg",
 "cat": "capture",
@@ -1570,12 +1618,12 @@
 "kb": 357
 },
 {
-"src": "design-system/inspiration/art/ind-pharma.png",
-"thumb": "design-system/inspiration/thumbs/design-system__inspiration__art__ind-pharma.jpg",
+"src": "design-system/inspiration/art/ind-pharma-sterile.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__art__ind-pharma-sterile.jpg",
 "cat": "source",
-"status": "source",
-"title": "ind-pharma",
-"note": "Source drawing for assets/illustrations/ind-pharma.png",
+"status": "superseded",
+"title": "ind-pharma-sterile",
+"note": "Retired 2026-10-31: the sterile vial filling machine, replaced by the polypropylene package drawing for the ind-pharma page",
 "component": "Illustration",
 "group": null,
 "order": 0,
@@ -1584,6 +1632,22 @@
 904
 ],
 "kb": 422
+},
+{
+"src": "design-system/inspiration/art/ind-pharma.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__art__ind-pharma.jpg",
+"cat": "source",
+"status": "source",
+"title": "ind-pharma",
+"note": "PP replacement (2026-10-31) for the sterile vial filling machine. Source drawing for assets/illustrations/ind-pharma.png",
+"component": "Illustration",
+"group": null,
+"order": 0,
+"size": [
+1024,
+1024
+],
+"kb": 247
 },
 {
 "src": "design-system/inspiration/art/svc-cq.png",
@@ -1618,12 +1682,12 @@
 "kb": 423
 },
 {
-"src": "design-system/inspiration/art/svc-fabrication.png",
-"thumb": "design-system/inspiration/thumbs/design-system__inspiration__art__svc-fabrication.jpg",
+"src": "design-system/inspiration/art/svc-fabrication-stainless.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__art__svc-fabrication-stainless.jpg",
 "cat": "source",
-"status": "source",
-"title": "svc-fabrication",
-"note": "Source drawing for assets/illustrations/svc-fabrication.png",
+"status": "superseded",
+"title": "svc-fabrication-stainless",
+"note": "Retired 2026-10-31: the orbital weld head on a sanitary stainless tube with tri-clamps, replaced by the polypropylene package drawing for the svc-fabrication page",
 "component": "Illustration",
 "group": null,
 "order": 0,
@@ -1632,6 +1696,22 @@
 904
 ],
 "kb": 327
+},
+{
+"src": "design-system/inspiration/art/svc-fabrication.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__art__svc-fabrication.jpg",
+"cat": "source",
+"status": "source",
+"title": "svc-fabrication",
+"note": "PP replacement (2026-10-31) for the orbital weld head on a sanitary stainless tube with tri-clamps. Source drawing for assets/illustrations/svc-fabrication.png",
+"component": "Illustration",
+"group": null,
+"order": 0,
+"size": [
+1024,
+1024
+],
+"kb": 407
 },
 {
 "src": "design-system/inspiration/art/svc-fat-sat.png",
@@ -1746,12 +1826,12 @@
 "kb": 532
 },
 {
-"src": "design-system/inspiration/art/sys-storage.png",
-"thumb": "design-system/inspiration/thumbs/design-system__inspiration__art__sys-storage.jpg",
+"src": "design-system/inspiration/art/sys-storage-stainless.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__art__sys-storage-stainless.jpg",
 "cat": "source",
-"status": "source",
-"title": "sys-storage",
-"note": "Source drawing for assets/illustrations/sys-storage.png",
+"status": "superseded",
+"title": "sys-storage-stainless",
+"note": "Retired 2026-10-31: the stainless storage tank, replaced by the polypropylene package drawing for the sys-storage page",
 "component": "Illustration",
 "group": null,
 "order": 0,
@@ -1760,6 +1840,22 @@
 904
 ],
 "kb": 251
+},
+{
+"src": "design-system/inspiration/art/sys-storage.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__art__sys-storage.jpg",
+"cat": "source",
+"status": "source",
+"title": "sys-storage",
+"note": "PP replacement (2026-10-31) for the stainless storage tank. Source drawing for assets/illustrations/sys-storage.png",
+"component": "Illustration",
+"group": null,
+"order": 0,
+"size": [
+1024,
+1024
+],
+"kb": 478
 },
 {
 "src": "design-system/inspiration/art/sys-wfi-distillation.png",
@@ -2341,7 +2437,7 @@
 "src": "assets/illustrations/ind-biotech.png",
 "thumb": "design-system/inspiration/thumbs/assets__illustrations__ind-biotech.jpg",
 "cat": "drawing",
-"status": "live",
+"status": "kit",
 "title": "ind biotech",
 "note": "assets/illustrations/ind-biotech.png",
 "component": "Illustration",
@@ -2396,10 +2492,10 @@
 "group": null,
 "order": 0,
 "size": [
-824,
-852
+474,
+900
 ],
-"kb": 141
+"kb": 80
 },
 {
 "src": "assets/illustrations/svc-cq.png",
@@ -2444,10 +2540,10 @@
 "group": null,
 "order": 0,
 "size": [
-795,
-755
+900,
+786
 ],
-"kb": 114
+"kb": 152
 },
 {
 "src": "assets/illustrations/svc-fat-sat.png",
@@ -2533,7 +2629,7 @@
 "src": "assets/illustrations/sys-pure-steam.png",
 "thumb": "design-system/inspiration/thumbs/assets__illustrations__sys-pure-steam.jpg",
 "cat": "drawing",
-"status": "live",
+"status": "kit",
 "title": "sys pure steam",
 "note": "assets/illustrations/sys-pure-steam.png",
 "component": "Illustration",
@@ -2572,16 +2668,16 @@
 "group": null,
 "order": 0,
 "size": [
-877,
-825
+900,
+898
 ],
-"kb": 80
+"kb": 176
 },
 {
 "src": "assets/illustrations/sys-wfi-distillation.png",
 "thumb": "design-system/inspiration/thumbs/assets__illustrations__sys-wfi-distillation.jpg",
 "cat": "drawing",
-"status": "live",
+"status": "kit",
 "title": "sys wfi distillation",
 "note": "assets/illustrations/sys-wfi-distillation.png",
 "component": "Illustration",
@@ -2597,7 +2693,7 @@
 "src": "assets/illustrations/sys-wfi-membrane.png",
 "thumb": "design-system/inspiration/thumbs/assets__illustrations__sys-wfi-membrane.jpg",
 "cat": "drawing",
-"status": "live",
+"status": "kit",
 "title": "sys wfi membrane",
 "note": "assets/illustrations/sys-wfi-membrane.png",
 "component": "Illustration",

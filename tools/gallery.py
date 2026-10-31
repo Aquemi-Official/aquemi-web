@@ -35,6 +35,15 @@ GEMINI_USE = {
     '64': 'Spot'}
 GEMINI_REFERENCE = {'58'}
 RETIRED = {'57': 'the cut icons were later replaced by the Lucide-style SVG set; see Archive', '64': 'the cut spots were retired when the site returned to the brand book; see Archive'}  # looked at as a target, not rebuilt as one thing
+# Equipment drawings redrawn on 2026-10-31 to match the offer (polypropylene PW package: no stainless piping, no sterile
+# products). page id -> (number of the old Gemini original, old source renamed in art/, what the old drawing showed).
+# The old ones show as superseded, the new ones as the PP replacements.
+ART_REPLACED = {
+    'svc-fabrication': ('14', 'svc-fabrication-stainless', 'orbital weld head on a sanitary stainless tube with tri-clamps'),
+    'sys-storage': ('08', 'sys-storage-stainless', 'stainless storage tank'),
+    'ind-pharma': ('22', 'ind-pharma-sterile', 'sterile vial filling machine')}
+ART_RETIRED_NOTE = 'Retired 2026-10-31: the %s, replaced by the polypropylene package drawing for the %s page'
+ART_PP_NOTE = 'PP replacement (2026-10-31) for the %s. '
 
 RECORD_SETS = [  # (folder in record/, label, order)
     ('pass7', 'Pass 7: the site today'),
@@ -214,7 +223,12 @@ def build():
         prompt, became = rows.get(name + '.png', ('', ''))
         if '-art-' in name:
             pid = name.split('-art-')[1]
-            add(f, 'gemini', 'source', title_of(name), 'Equipment drawing for the %s page; cleaned into assets/illustrations/%s.png' % (pid, pid), 'Illustration', order=int(num))
+            old = ART_REPLACED.get(pid)
+            if old and old[0] == num:
+                add(f, 'gemini', 'superseded', title_of(name), ART_RETIRED_NOTE % (old[2], pid), 'Illustration', order=int(num))
+            else:
+                note = 'Equipment drawing for the %s page; cleaned into assets/illustrations/%s.png' % (pid, pid)
+                add(f, 'gemini', 'source', title_of(name), (ART_PP_NOTE % old[2] if old else '') + note, 'Illustration', order=int(num))
         elif num in GEMINI_REFERENCE:
             add(f, 'gemini', 'reference', title_of(name), prompt or 'Looked at as a target for the page rhythm', order=int(num))
         else:
@@ -230,9 +244,15 @@ def build():
         comp = re.match(r'(\w+)', became).group(1) if became else None
         add(f, 'capture', 'built' if became else 'reference', title_of(b.rsplit('.', 1)[0]), (prompt + ' → ' + became) if became else prompt, comp)
 
+    retired_art = {v[1]: (pid, v[2]) for pid, v in ART_REPLACED.items()}
     for f in sorted(glob.glob(os.path.join(INS, 'art', '*.png'))):
         pid = os.path.basename(f)[:-4]
-        add(f, 'source', 'source', pid, 'Source drawing for assets/illustrations/%s.png' % pid, 'Illustration')
+        if pid in retired_art:
+            page, what = retired_art[pid]
+            add(f, 'source', 'superseded', pid, ART_RETIRED_NOTE % (what, page), 'Illustration')
+            continue
+        old = ART_REPLACED.get(pid)
+        add(f, 'source', 'source', pid, (ART_PP_NOTE % old[2] if old else '') + 'Source drawing for assets/illustrations/%s.png' % pid, 'Illustration')
 
     ARCHIVE = {'': ('Replaced concepts', 'Replaced by a later version; kept for the record', False),
                'retired-icons': ('Raster icons (retired)', 'Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set', True),
