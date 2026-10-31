@@ -30,6 +30,18 @@ python -m http.server 8000
 
 Then open http://localhost:8000/ (pages by id, e.g. `#sys-pw`) and http://localhost:8000/design-system.html.
 
+## Page speed
+
+The site is built to load like a parts catalogue: everything from one origin, the critical files first, nothing in the way, and repeat visits served from the device.
+
+- **One origin.** Geist and Geist Mono are self-hosted in `assets/fonts/` (latin and latin-ext WOFF2, SIL OFL) and GSAP 3.13 with its plugins is one file in `assets/vendor/`. No third-party request on page load.
+- **Critical files first, in parallel.** `index.html` preloads the two latin fonts and the page content, and its boot script starts fetching `content/pages.min.json` in `<head>`, alongside the CSS. All scripts are `defer`. On a page with an equipment drawing the boot script preloads it too.
+- **Smaller files.** `build` writes site copies `bundle.min.css` (half the gzipped size of `bundle.css`) and `pages.min.json`. Illustrations are served as lossless WebP (`python tools/images.py` after adding or changing a PNG in `assets/illustrations/`; needs Pillow). The PNGs stay the source.
+- **Cache for good, stay fresh.** `build` stamps each file's content hash into `index.html` (`?v=…`) and a cache name into `sw.js`. The service worker serves versioned files and the static folders (fonts, icons, illustrations, brand, vendor) from the device, but always asks the network first for the page itself, so a push shows on the next load. It runs only over https and leaves `versions/` alone.
+- **Motion never holds the page.** Headings wait at most 0.8 s for fonts before animating.
+
+The guide (`design-system.html`) and the Claude design system keep loading the readable `bundle.css` and `pages.json`.
+
 ## Drafting conventions
 
 - Text in `[square brackets]` is a placeholder for a fact only Aquemi can supply. The draft bar highlights them; tick "Show open facts" to list what each page still needs.

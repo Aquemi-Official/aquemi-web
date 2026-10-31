@@ -38,11 +38,15 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 | `design-system/components/<Name>/motion.js`, `assets/src/motion/core.js` | Motion (GSAP 3.13): the core animates every section the same way; a component's `motion.js` adds its own choreography with `AQmotion.fx('<Name>', fn)`. Plays once, under 5 s, nothing under reduced motion. |
 | `assets/motion.js` | **Generated** from the motion sources above. The site loads it. |
 | `assets/site.css` | Draft-bar chrome only. No brand styles here. |
+| `design-system/components/bundle.min.css`, `content/pages.min.json` | **Generated** minified site copies that `index.html` loads. The guide keeps the readable files. |
+| `assets/fonts/`, `assets/vendor/` | Self-hosted Geist fonts (with `fonts.css`, the same rules inlined in `index.html`) and GSAP 3.13 as one file. |
+| `sw.js` | Service worker: page loads from the network first, versioned and static files from the device. Its cache name is stamped by `build`. |
+| `tools/images.py` | Writes the WebP copy of each PNG in `assets/illustrations/`; run it after adding or changing one (needs Pillow). The site uses the WebP. |
 | `inspiration.html` | Media gallery of every image made or considered, used or not, tagged by what became of it. Reads `design-system/inspiration/gallery.json`; after adding an image run `python tools/gallery.py`. |
 | `versions.html`, `versions/` | Page history: any page as it was at each big checkpoint (the default stops) or at any commit on main ("All versions"), flipped or compared side by side (desktop or phone). `versions/blobs`, `tree`, `index.json` are **generated** by `python tools/versions.py` (rerun after pushes you want listed; add named checkpoints in its `CHECKPOINTS`). `versions/sw.js` serves old commits from them. Never edit generated files in `versions/`. |
 | `design-system.html` | The visual guide. Generated at load time from the files above; normally needs no edits. |
 | `brand/` | Logo, lockup, mark and favicon SVGs. Use as they are. |
-| `tools/design_system.py` | `build`, `check`, `new`, `stage`. Python 3 standard library only. |
+| `tools/design_system.py` | `build`, `check`, `new`, `stage`. Python 3 standard library only. `build` also stamps content hashes (`?v=…`) into `index.html` and `sw.js`: never edit those by hand. See README, "Page speed". |
 
 ## Common tasks
 

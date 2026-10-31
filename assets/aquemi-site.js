@@ -291,7 +291,7 @@ function wFoot(){var cols=[['Systems',['sys-pw','sys-storage','sys-pretreatment'
   +'</div><div class="aq-footer__legal"><span>© 2026 Aquemi <span class="aq-ph">[legal entity name]</span></span><span>'+legal.map(function(l){return wp(l[0])?wlink(l[0],l[1]):e(l[1])}).join(' · ')+'</span></div>'
   +'</div></footer>'}
 /* Hero */
-/* Pages with an equipment drawing in assets/illustrations/<page id>.png. Adding one is one line: 'page-id': 'what the drawing shows' (its aria-label).
+/* Pages with an equipment drawing in assets/illustrations/<page id>.png (the site loads the lossless .webp copy made by tools/images.py). Adding one is one line: 'page-id': 'what the drawing shows' (its aria-label).
    Used by the Hero figure and by WaterPath stops. */
 var ART={
  'sys-pretreatment':'Pretreatment skid: multimedia filter, softener and carbon vessels with feed pump',
@@ -312,7 +312,7 @@ var ART={
  'ind-meddevice':'Washer-disinfector with instrument racks and spray arms, fed by a purified water line',
  'ind-cdmo':'Two-room cleanroom suite with process vessels, a pass-through hatch and a shared water loop'
 };
-function artMask(id){var u='url(assets/illustrations/'+id+'.png)';return '-webkit-mask-image:'+u+';mask-image:'+u}
+function artMask(id){var u='url(assets/illustrations/'+id+'.webp)';return '-webkit-mask-image:'+u+';mask-image:'+u}
 /* Equipment figure (sys-, svc-, ind- pages with a drawing): the drawing large and dominant, up to four key facts as
    callouts round it, each joined to the drawing by a leader line ending in a dot. Callouts come in two lists: the top
    pair and the bottom pair, so phones can stack them above and below the drawing.

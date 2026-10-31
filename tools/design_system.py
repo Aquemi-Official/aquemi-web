@@ -24,6 +24,12 @@ Sources are split so several people or agents can work at once without touching 
   assets/src/core.js + parts/*.js + blocks/<type>.js + page.js      -> assets/aquemi-site.js
   assets/src/motion/core.js + components/<Name>/motion.js          -> assets/motion.js
   content/pages/NN-<id>.json                                        -> content/pages.json
+Site copies, made by build for index.html only (the guide and the Claude artifact keep the readable files):
+  components/bundle.css   -> components/bundle.min.css   (comments and spaces out, the Google Fonts @import dropped:
+                                                          the site self-hosts Geist in assets/fonts/)
+  content/pages.json      -> content/pages.min.json      (no indentation)
+  index.html and sw.js    get every asset's content hash (?v=…) and the service worker's cache name, so each deploy
+                          is fresh and every versioned file can be cached for good
 """
 import json, os, re, shutil, sys
 
@@ -99,7 +105,36 @@ def pages_json():
     return json.dumps({'pages': pages}, ensure_ascii=False, indent=1) + '\n'
 
 
-GENERATED = [('design-system/components/bundle.css', bundle_css), ('assets/aquemi-site.js', site_js), ('assets/motion.js', motion_js), ('content/pages.json', pages_json)]
+def minify_css(css):
+    """Small, safe CSS minifier: drops comments and the Google Fonts @import, collapses whitespace outside quoted
+    strings. It never removes a space before ':' (a descendant pseudo-class) or around + and - (calc), and leaves every
+    string as written, so it cannot change what a rule means."""
+    css = re.sub(r'/\*.*?\*/', '', css, flags=re.S)
+    css = re.sub(r'@import url\([^)]*fonts\.googleapis[^)]*\);', '', css)
+    keep = []
+
+    def hold(m):
+        keep.append(m.group(0))
+        return '\u0001%d\u0001' % (len(keep) - 1)
+    css = re.sub(r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'', hold, css)
+    css = re.sub(r'\s+', ' ', css)
+    css = re.sub(r'\s*([{};,>])\s*', r'\1', css)
+    css = re.sub(r':\s+', ':', css)
+    css = css.replace(';}', '}')
+    css = re.sub('\u0001(\\d+)\u0001', lambda m: keep[int(m.group(1))], css)
+    return css.strip() + '\n'
+
+
+def bundle_min_css():
+    return minify_css(bundle_css())
+
+
+def pages_min_json():
+    return json.dumps(json.loads(pages_json()), ensure_ascii=False, separators=(',', ':')) + '\n'
+
+
+GENERATED = [('design-system/components/bundle.css', bundle_css), ('assets/aquemi-site.js', site_js), ('assets/motion.js', motion_js), ('content/pages.json', pages_json),
+             ('design-system/components/bundle.min.css', bundle_min_css), ('content/pages.min.json', pages_min_json)]
 
 
 def build():
@@ -107,6 +142,7 @@ def build():
     for rel, fn in GENERATED:
         open(os.path.join(ROOT, rel), 'w', encoding='utf8', newline='\n').write(fn())
         print('wrote', rel)
+    stamp()
     art = json.load(open(os.path.join(DS, 'artifact.json'), encoding='utf8'))
     # Previews point at the artifact's uploads (/_blob/<id>); the guide swaps in the repo's brand/ copies
     assets = {}
@@ -120,6 +156,42 @@ def build():
     path = os.path.join(DS, 'components.json')
     open(path, 'w', encoding='utf8', newline='\n').write(json.dumps(manifest, ensure_ascii=False, indent=1) + '\n')
     print('wrote', os.path.relpath(path, ROOT), '(%d components)' % len(manifest['components']))
+
+
+# Files index.html loads with a ?v=<content hash> (and the service worker may keep for good, since a new version is a
+# new URL). Fonts and illustrations change name when they change, so they need no hash.
+VERSIONED = ['design-system/tokens.css', 'design-system/components/bundle.min.css', 'assets/site.css',
+             'assets/vendor/gsap-3.13.0.min.js', 'assets/aquemi-site.js', 'assets/motion.js', 'content/pages.min.json']
+
+
+def short_hash(rel):
+    import hashlib
+    return hashlib.sha1(open(os.path.join(ROOT, rel), 'rb').read()).hexdigest()[:10]
+
+
+def stamp():
+    """Write each versioned file's hash into index.html (every quoted "...?v=<hash>", the boot script's fetch included), the
+    list of pages with an illustration into the boot script, and the cache name into sw.js."""
+    hashes = {rel: short_hash(rel) for rel in VERSIONED}
+    ip = os.path.join(ROOT, 'index.html')
+    html = open(ip, encoding='utf8').read()
+    for rel, h in hashes.items():
+        html = re.sub(r'(["\'])' + re.escape(rel) + r'(\?v=[0-9a-f]*)?\1', lambda m: m.group(1) + rel + '?v=' + h + m.group(1), html)
+    art = sorted(f[:-5] for f in os.listdir(os.path.join(ROOT, 'assets', 'illustrations')) if f.endswith('.webp'))
+    html = re.sub(r"ART=\[[^\]]*\]", 'ART=' + json.dumps(art, separators=(',', ':')).replace('"', "'"), html)
+    open(ip, 'w', encoding='utf8', newline='\n').write(html)
+    sp = os.path.join(ROOT, 'sw.js')
+    if os.path.exists(sp):
+        import hashlib
+        # the cache name covers the versioned files and every file in the static folders the worker keeps
+        h = hashlib.sha1(''.join(sorted(hashes.values())).encode())
+        for d in ('assets/fonts', 'assets/icons', 'assets/illustrations', 'assets/vendor', 'brand'):
+            for f in sorted(os.listdir(os.path.join(ROOT, d))):
+                h.update(f.encode() + open(os.path.join(ROOT, d, f), 'rb').read())
+        cache = h.hexdigest()[:10]
+        sw = re.sub(r"CACHE = 'aquemi-[0-9a-f]*'", "CACHE = 'aquemi-" + cache + "'", open(sp, encoding='utf8').read())
+        open(sp, 'w', encoding='utf8', newline='\n').write(sw)
+    print('stamped index.html and sw.js (%d versioned files)' % len(hashes))
 
 
 def new(name, group):
