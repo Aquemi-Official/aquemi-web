@@ -18,7 +18,7 @@
    },
    "facts": [
     {
-     "v": "100 %",
+     "v": "[100 %]",
      "l": "Skids wet tested at FAT"
     },
     {
@@ -517,7 +517,7 @@
    ],
    "facts": [
     {
-     "v": "100 %",
+     "v": "[100 %]",
      "l": "Skids wet tested at FAT"
     },
     {
@@ -3098,7 +3098,7 @@
    "primary_cta_link": "cmp-documentation",
    "facts": [
     {
-     "v": "100 %",
+     "v": "[100 %]",
      "l": "Skids wet tested at FAT"
     },
     {
@@ -4382,7 +4382,7 @@
      "l": "Stricter value on each attribute"
     },
     {
-     "v": "[100 %: confirm it is policy]",
+     "v": "[100 %]",
      "l": "Skids wet tested at FAT"
     }
    ],
@@ -6899,7 +6899,7 @@
       },
       {
        "q": "Do you work outside pharmaceutical manufacturing?",
-       "a": "Our RO and EDI platforms also serve hospital reprocessing water (CSA Z314) and laboratory water (CLSI GP40, ASTM D1193). No residential or municipal products."
+       "a": "Hospital reprocessing water (CSA Z314) and laboratory water (CLSI GP40, ASTM D1193) use the same RO and EDI steps. Our scope there: [hospital, lab and industrial water scope]. No residential or municipal products."
       },
       {
        "q": "Do you service systems you did not build?",
@@ -7780,7 +7780,6 @@
          "required": true,
          "options": [
           "Pharmaceutical drug products",
-          "Biologics, vaccines, cell or gene therapy",
           "Medical devices",
           "CDMO or contract manufacturing",
           "Hospital reprocessing, laboratory or industrial process",
@@ -7932,21 +7931,7 @@
           "Active substance (API)",
           "Natural health products"
          ],
-         "help": "Sets the minimum grade under the EMA water quality guideline."
-        },
-        {
-         "label": "Modality",
-         "kind": "checkbox-group",
-         "required": false,
-         "when": "Biologics, vaccines, cell or gene therapy",
-         "options": [
-          "Antibodies or recombinant proteins",
-          "Vaccines",
-          "Cell therapy",
-          "Gene therapy or viral vectors",
-          "Plasmid DNA or mRNA",
-          "Other biologic"
-         ]
+         "help": "Sets the minimum grade under the EMA water quality guideline. We build Purified Water systems, not WFI."
         },
         {
          "label": "Highest device class",

@@ -124,7 +124,6 @@
        "required": true,
        "options": [
         "Pharmaceutical drug products",
-        "Biologics, vaccines, cell or gene therapy",
         "Medical devices",
         "CDMO or contract manufacturing",
         "Hospital reprocessing, laboratory or industrial process",
@@ -276,21 +275,7 @@
         "Active substance (API)",
         "Natural health products"
        ],
-       "help": "Sets the minimum grade under the EMA water quality guideline."
-      },
-      {
-       "label": "Modality",
-       "kind": "checkbox-group",
-       "required": false,
-       "when": "Biologics, vaccines, cell or gene therapy",
-       "options": [
-        "Antibodies or recombinant proteins",
-        "Vaccines",
-        "Cell therapy",
-        "Gene therapy or viral vectors",
-        "Plasmid DNA or mRNA",
-        "Other biologic"
-       ]
+       "help": "Sets the minimum grade under the EMA water quality guideline. We build Purified Water systems, not WFI."
       },
       {
        "label": "Highest device class",
