@@ -7,11 +7,24 @@ var D={web:{pages:[]}};
 function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked link asked the next page's form to tick (data-intent) */
 var NAVSECT=[['Systems','systems'],['Services','services'],['Industries','industries'],['Compliance','compliance'],['Projects','projects'],['Company','about']];
+/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008). Each value keeps the pages'
+   own placeholder name until Aquemi confirms it, and is filled in the same commit as the page files that repeat it. */
+var CONTACT={service:'[service phone number]',hours:'[service phone hours]',sales:'[sales phone number]',office:'[head office, city and province]'};
 function W(){return (D.web&&D.web.pages)||[]}
-function wp(id){return W().filter(function(p){return p.id===id})[0]}
+/* Page plus anchor: a link may be written "page#anchor" (cmp-quality#buying). wsplit gives [page, anchor]; wp resolves
+   the page, so every renderer that links a page id also links page#anchor; page.js opens the page at the anchor. */
+function wsplit(id){var s=String(id==null?'':id),k=s.indexOf('#');return k<0?[s,'']:[s.slice(0,k),s.slice(k+1)]}
+function wp(id){var k=wsplit(id)[0];return W().filter(function(p){return p.id===k})[0]}
+/* whas: the page exists and, for page#anchor, has a block with that anchor (or nav id), so a link never points at a missing block */
+function whas(id){var s=wsplit(id),p=wp(s[0]);return !!p&&(!s[1]||(p.blocks||[]).some(function(b,i){return (b.nav||b.anchor)&&jid(b,i)===s[1]}))}
+/* Phone number: once confirmed it renders as a tel: link (class cls, an optional lead label inside) and keeps its digit
+   groups on one line; a value still in [square brackets] stays the placeholder and is never a tel: link */
+function wtel(s,cls,lead){s=String(s||'');var n=s.replace(/[^\d+]/g,''),c=cls?' class="'+cls+'"':'',ok=s.indexOf('[')<0&&n.length>=7,t=(lead||'')+(ok?tx(s).replace(/ /g,'\u00a0'):tx(s));
+ return ok?'<a'+c+' href="tel:'+e(n)+'">'+t+'</a>':'<span'+c+'>'+t+'</span>'}
 /* Placeholder: [bracketed facts] in copy */
 /* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM) */
 function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
+/* wlink: a link to a page id or to page#anchor (label defaults to the page's nav label) */
 function wlink(id,label){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'">'+tx(label||(p&&p.nav_label)||id)+'</a>'}
 var ARC='<svg class="aq-arc" viewBox="0 0 420 300" aria-hidden="true"><path class="aq-arc__outer" d="M420 1.5 A 300 300 0 0 0 120 300"/><path class="aq-arc__inner" d="M420 120 A 180 180 0 0 0 240 300"/></svg>';
 function sec(inner,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-stack-l">'+inner+'</div></section>'}

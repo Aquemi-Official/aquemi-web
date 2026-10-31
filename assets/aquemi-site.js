@@ -7,11 +7,24 @@ var D={web:{pages:[]}};
 function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked link asked the next page's form to tick (data-intent) */
 var NAVSECT=[['Systems','systems'],['Services','services'],['Industries','industries'],['Compliance','compliance'],['Projects','projects'],['Company','about']];
+/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008). Each value keeps the pages'
+   own placeholder name until Aquemi confirms it, and is filled in the same commit as the page files that repeat it. */
+var CONTACT={service:'[service phone number]',hours:'[service phone hours]',sales:'[sales phone number]',office:'[head office, city and province]'};
 function W(){return (D.web&&D.web.pages)||[]}
-function wp(id){return W().filter(function(p){return p.id===id})[0]}
+/* Page plus anchor: a link may be written "page#anchor" (cmp-quality#buying). wsplit gives [page, anchor]; wp resolves
+   the page, so every renderer that links a page id also links page#anchor; page.js opens the page at the anchor. */
+function wsplit(id){var s=String(id==null?'':id),k=s.indexOf('#');return k<0?[s,'']:[s.slice(0,k),s.slice(k+1)]}
+function wp(id){var k=wsplit(id)[0];return W().filter(function(p){return p.id===k})[0]}
+/* whas: the page exists and, for page#anchor, has a block with that anchor (or nav id), so a link never points at a missing block */
+function whas(id){var s=wsplit(id),p=wp(s[0]);return !!p&&(!s[1]||(p.blocks||[]).some(function(b,i){return (b.nav||b.anchor)&&jid(b,i)===s[1]}))}
+/* Phone number: once confirmed it renders as a tel: link (class cls, an optional lead label inside) and keeps its digit
+   groups on one line; a value still in [square brackets] stays the placeholder and is never a tel: link */
+function wtel(s,cls,lead){s=String(s||'');var n=s.replace(/[^\d+]/g,''),c=cls?' class="'+cls+'"':'',ok=s.indexOf('[')<0&&n.length>=7,t=(lead||'')+(ok?tx(s).replace(/ /g,'\u00a0'):tx(s));
+ return ok?'<a'+c+' href="tel:'+e(n)+'">'+t+'</a>':'<span'+c+'>'+t+'</span>'}
 /* Placeholder: [bracketed facts] in copy */
 /* tx: escape, mark [placeholders], and keep µ lower-case under text-transform: uppercase (µS/cm, not MS/CM) */
 function tx(s){s=e(s);var o='',d=0,st=0;for(var i=0;i<s.length;i++){var c=s[i];if(c==='['){if(!d){o+=s.slice(st,i);st=i}d++}else if(c===']'&&d&&!--d){o+='<span class="aq-ph">'+s.slice(st,i+1)+'</span>';st=i+1}}return (o+s.slice(st)).replace(/µ/g,'<span class="aq-unit">µ</span>')}
+/* wlink: a link to a page id or to page#anchor (label defaults to the page's nav label) */
 function wlink(id,label){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'">'+tx(label||(p&&p.nav_label)||id)+'</a>'}
 var ARC='<svg class="aq-arc" viewBox="0 0 420 300" aria-hidden="true"><path class="aq-arc__outer" d="M420 1.5 A 300 300 0 0 0 120 300"/><path class="aq-arc__inner" d="M420 120 A 180 180 0 0 0 240 300"/></svg>';
 function sec(inner,cls){return '<section class="aq-section'+(cls?' '+cls:'')+'"><div class="aq-in aq-stack-l">'+inner+'</div></section>'}
@@ -186,13 +199,18 @@ document.addEventListener('click',function(ev){var g=ev.target.closest&&ev.targe
  if(wCheck(st).length){ev.preventDefault();ev.stopImmediatePropagation()}},true);
 document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classList||!fm.classList.contains('wform'))return;var bad=wCheck(fm);
  if(bad.length){ev.preventDefault();ev.stopImmediatePropagation();var msg=fm.querySelector('.wform-msg');if(msg)msg.textContent=bad.length===1?'One field needs attention.':bad.length+' fields need attention.'}},true);
-/* Footer: the brand footer on navy, as the site first drew it. The Limestone logo and one line of description, then four
-   sitemap columns in one row, then the legal line under a hairline. Phones show the columns two by two. */
-function wFoot(){var cols=[['Systems',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['ind-pharma','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','contact-proposal','contact-service','contact-locations']]];
+/* Footer: the brand footer on navy, as the site first drew it. The Limestone logo, one line of description and the contact
+   line (service and sales numbers and the head office, from CONTACT in core.js), then four sitemap columns in one row,
+   then the legal line under a hairline. Phones show the columns two by two.
+   A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so "Buying from
+   Aquemi" appears once cmp-quality has its "buying" block. Privacy, Terms and Accessibility link once their pages exist. */
+function wFoot(){var cols=[['Systems',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['ind-pharma','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','cmp-quality#buying','contact-proposal','contact-service','contact-locations']]],
+  label={'cmp-quality#buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
-  +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">Clean water systems for pharmaceutical manufacturing. Designed, fabricated and tested in <span class="aq-ph">[city], Ontario</span>.</p></div>'
-  +cols.map(function(c){return '<nav class="aq-footer__col" aria-label="'+e(c[0])+'"><h5 class="aq-footer__colhead">'+e(c[0])+'</h5>'+c[1].filter(wp).map(function(id){return wlink(id)}).join('')+'</nav>'}).join('')
-  +'</div><div class="aq-footer__legal"><span>© 2026 Aquemi <span class="aq-ph">[legal entity name]</span></span><span>Privacy · Terms · Accessibility</span></div>'
+  +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">Clean water systems for pharmaceutical manufacturing. Designed, fabricated and tested in <span class="aq-ph">[city], Ontario</span>.</p>'
+  +'<address class="aq-footer__contact">'+wtel(CONTACT.service,'','Service ')+wtel(CONTACT.sales,'','Sales ')+'<span>'+tx(CONTACT.office)+'</span></address></div>'
+  +cols.map(function(c){return '<nav class="aq-footer__col" aria-label="'+e(c[0])+'"><h5 class="aq-footer__colhead">'+e(c[0])+'</h5>'+c[1].filter(whas).map(function(id){return wlink(id,label[id])}).join('')+'</nav>'}).join('')
+  +'</div><div class="aq-footer__legal"><span>© 2026 Aquemi <span class="aq-ph">[legal entity name]</span></span><span>'+legal.map(function(l){return wp(l[0])?wlink(l[0],l[1]):e(l[1])}).join(' · ')+'</span></div>'
   +'</div></footer>'}
 /* Hero */
 /* Pages with an equipment drawing in assets/illustrations/<page id>.png. Adding one is one line: 'page-id': 'what the drawing shows' (its aria-label).
@@ -356,15 +374,19 @@ function wKeyFacts(facts){
   return '<div><dt>'+tx(name)+'</dt><dd class="aq-key-facts__value'+(kfLong(f.v)?' is-long':'')+'">'+kfValue(f.v)+'</dd>'+(src?'<dd class="aq-key-facts__src">'+tx(src)+'</dd>':'')+'</div>';
  }).join('')+'</dl>';
 }
-/* NavBar: section links in sentence case, the proposal button and, on phones, a menu with the sections and the page's section jump.
-   The menu's jump links come from navJumps() in SectionNav.js, for the page being shown (WP). */
+/* NavBar: section links in sentence case, the "Service request" utility link, the proposal button and, on narrow screens,
+   a menu: the urgent block (production stopped: the service number, then the service request row), the sections and the
+   page's section jump. The menu's jump links come from navJumps() in SectionNav.js, for the page being shown (WP).
+   The service number comes from CONTACT (core.js): a tel: link once confirmed, the placeholder until then. */
 function wHead(section){var cur=(NAVSECT.filter(function(n){return n[0]===section})[0]||[])[1],pg=wp(WP),jumps=navJumps(pg);
  var cta=function(extra){return '<span class="aq-nav__frame'+(extra||'')+'"><a class="aq-btn aq-btn--primary" href="#contact-proposal" data-wp="contact-proposal">Request a proposal</a></span>'};
+ var svc=function(cls){return '<a class="'+cls+'" href="#contact-service" data-wp="contact-service"'+(WP==='contact-service'?' aria-current="page"':'')+'>Service request</a>'};
  return '<nav class="aq-nav" aria-label="Main"><a class="aq-nav__home" href="#home" data-wp="home" aria-label="Aquemi home"><img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-light" src="brand/lockup-navy.svg" alt="aquemi"><img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-dark" src="brand/lockup-limestone.svg" alt="aquemi"></a>'+
   '<ul class="aq-nav__links">'+NAVSECT.map(function(n,i){return '<li><a href="#'+n[1]+'" data-wp="'+n[1]+'"'+(n[1]===cur?' aria-current="page"':'')+'>'+n[0]+'</a></li>'}).join('')+'</ul>'+
-  '<span class="aq-nav__spacer"></span>'+cta()+
+  '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+cta()+
   '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'>'+(WMENU?'Close':'Menu')+'</button></nav>'+
  (WMENU?'<div class="aq-menu" id="wmenu-panel">'+
+  '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+wtel(CONTACT.service,'aq-menu__call','<span class="aq-menu__k">Call</span> ')+svc('aq-menu__service')+'</div>'+
   '<nav aria-label="Sections"><ol class="aq-menu__list">'+NAVSECT.map(function(n,i){return '<li><a href="#'+n[1]+'" data-wp="'+n[1]+'"'+(n[1]===cur?' aria-current="page"':'')+'>'+n[0]+'</a></li>'}).join('')+'</ol></nav>'+
   (jumps.length?'<nav class="aq-menu__jump" aria-labelledby="wmenu-jump"><p class="aq-menu__label" id="wmenu-jump">Section jump</p><ol class="aq-menu__list aq-menu__list--jump">'+jumps.map(function(j,i){return '<li><a href="#'+e(pg.id)+'" data-jump="'+e(j.id)+'">'+e(j.label)+'</a></li>'}).join('')+'</ol></nav>':'')+
   cta(' aq-menu__cta')+'</div>':'')}
@@ -1256,17 +1278,30 @@ function wVsEnd(c,C){if(!c)return '';var one=typeof c==='string'||c.length<3;
   +(one?'<p class="aq-versus__end-v">'+tcell(typeof c==='string'?c:c[c.length-1])+'</p>':'<p class="aq-versus__end-v" data-k="'+e(C[1])+'">'+tcell(c[1])+'</p><p class="aq-versus__end-v" data-k="'+e(C[2])+'">'+tcell(c[2])+'</p>')+'</div>'}
 /* One content section per block type in pages.json */
 function wBlock(b){var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}
-/* Page: NavBar, Hero, SectionNav, sections on surface separated by hairlines, Closing, Footer, BackToTop */
+/* Page: NavBar, Hero, SectionNav, sections on surface separated by hairlines, Closing, Footer, BackToTop.
+   A block with a nav label or an anchor gets its section id (jid: the anchor, else s-N-label), so jumps and page#anchor links find it. */
 function wPage(p){var c=p.cta,out='';
- (p.blocks||[]).forEach(function(b,i){var h=wBlock(b);if(b.nav)h=h.replace('<section class=','<section id="'+jid(b,i)+'" class=');out+=h});
+ if(WAT&&WAT[0]===p.id){wgoat(WAT[1]);WAT=null}
+ (p.blocks||[]).forEach(function(b,i){var h=wBlock(b);if(b.nav||b.anchor)h=h.replace('<section class=','<section id="'+jid(b,i)+'" class=');out+=h});
  return wHead(p.section)+wHero(p)+wSectionNav(p)+out+wClosing(c,p)+wFoot()+wBackToTop()}
+/* Page plus anchor (DR-008 rule 6): a link written page#anchor, or an address index.html#page#anchor, opens the page at
+   the block whose anchor (or nav id) matches. WAT holds [page, anchor] until that page renders; wPage then asks for the
+   jump, which runs once the page is in the document (next frame). It is instant (a new page, not a scroll within one),
+   respects the SectionNav's scroll-margin, and moves focus to the block's heading so keyboard and screen reader users
+   land there too. If the webfonts were still loading it re-aligns once they settle, unless the reader has scrolled.
+   No matching block: the page opens at the top. */
+var WAT=null;
+function wgoat(id){if(typeof requestAnimationFrame==='undefined'||!id)return;requestAnimationFrame(function(){var s=document.getElementById(id);if(!s)return;
+ s.scrollIntoView({block:'start'});var y=window.scrollY,f=s.querySelector('h2')||s;if(!f.hasAttribute('tabindex'))f.setAttribute('tabindex','-1');f.focus({preventScroll:true});
+ if(document.fonts&&document.fonts.status!=='loaded')document.fonts.ready.then(function(){if(s.isConnected&&Math.abs(window.scrollY-y)<2)s.scrollIntoView({block:'start'})})})}
 document.addEventListener('click',function(ev){var g=ev.target.closest('[data-step-go]');if(g){var fm=g.closest('form'),to=+g.dataset.stepGo;fm.querySelectorAll('.aq-form__step').forEach(function(s){s.hidden=+s.dataset.step!==to});fm.querySelectorAll('.aq-form__progress li').forEach(function(l,i){if(i===to)l.setAttribute('aria-current','step');else l.removeAttribute('aria-current')});var lg=fm.querySelector('[data-step="'+to+'"] legend');if(lg){lg.tabIndex=-1;lg.focus()}fm.scrollIntoView({block:'start'});return}
  var j=ev.target.closest('[data-jump]');if(j){var s=document.getElementById(j.dataset.jump);if(s){ev.preventDefault();s.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}return}
- var t=ev.target.closest('[data-wp]');if(!t)return;ev.preventDefault();WP=t.dataset.wp;WMENU=false;WINTENT=t.dataset.intent||'';
- AQ.onNav(WP)});
+ var t=ev.target.closest('[data-wp]');if(!t)return;ev.preventDefault();var to=wsplit(t.dataset.wp);WP=to[0];WAT=to[1]?to:null;WMENU=false;WINTENT=t.dataset.intent||'';
+ AQ.onNav(t.dataset.wp)});
 var AQ=window.AQ={e:e,tx:tx,wp:wp,wPage:wPage,wBlock:wBlock,wHead:wHead,wHero:wHero,wFoot:wFoot,wBtn:wBtn,wDiagram:wDiagram,wPath:wPath,ARC:ARC,
  setPages:function(p){D.web={pages:p}},pages:W,
- get page(){return WP},set page(v){WP=v},
+ /* page: the page id being shown; set it to "page#anchor" and the page opens at that anchor when it renders */
+ get page(){return WP},set page(v){var s=wsplit(v);WP=s[0];if(s[1])WAT=s},
  get menuOpen(){return WMENU},set menuOpen(v){WMENU=v},
  get intent(){return WINTENT},set intent(v){WINTENT=v||''},
  onNav:function(id){location.href='index.html#'+id}};

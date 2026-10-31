@@ -36,8 +36,11 @@ The site has one job: help a pharmaceutical engineering or quality team decide t
 
 ## Navigation
 
-- Sticky top bar on `surface` with a `line` bottom rule: logo left; Systems, Services, Industries, Compliance, Projects, Company; "Request a proposal" button right.
-- On phones, collapse to the logo, the button and a menu toggle. The menu opens full-screen on `surface`.
+- Top bar on `surface` with a `line` bottom rule; it scrolls with the page (not sticky; the SectionNav is what sticks on long pages). Logo left; Systems, Services, Industries, Compliance, Projects, Company; then, right, a "Service request" text link to contact-service, styled as a section link (`aria-current="page"` on contact-service), and the "Request a proposal" button. Six sections stay: "Service request" is a utility link, not a seventh section (beside Services it would read as a duplicate).
+- On narrow screens (below about 1,020 px, phones included) the bar collapses to the logo and a menu toggle; the links, the service link and the button move into the menu, which opens under the bar on `surface`.
+- The menu opens with the urgent block, the urgent contact route, on `limestone`: "Production stopped?", the service number as a `tel:` link (placeholder text, never a link, until it is confirmed), then a "Service request" row. Then the sections, the page's section jump and the proposal button.
+- The service number in the menu and the contact line in the footer (service and sales numbers, head office) come from one source, `CONTACT` in `assets/src/core.js`, filled in the same commit as the page files that repeat them.
+- A link in a page file may name a block: `page#anchor` (`cmp-quality#buying`, `systems#budget`) opens that page at the block whose `anchor` (or nav id) matches; without a match the page opens at the top.
 - Mega-menus list system pages in plain text columns with no icons.
 
 ## What we learned from category leaders

@@ -1,7 +1,7 @@
 /* ---------- Footer: the site map on navy ---------- */
 /* The brand footer as the site first drew it, with its spacing: navy in both themes; the Limestone logo at 160 px with one line of
-   description, then four sitemap columns in one row, headed in the eyebrow style in Limestone; the legal line under
-   a faint Limestone hairline. Phones: the head and the columns two by two. */
+   description and the contact line, then four sitemap columns in one row, headed in the eyebrow style in Limestone; the legal
+   line under a faint Limestone hairline. Phones: the head and the columns two by two. */
 .aq-footer { background: var(--navy); color: var(--on-navy-muted); padding-block: var(--space-16) var(--space-8); }
 .aq-footer__cols { display: grid; grid-template-columns: minmax(0, 1.3fr) repeat(4, minmax(0, 1fr)); gap: var(--space-8); }
 .aq-footer__head { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
@@ -12,6 +12,12 @@
 .aq-footer a { display: block; color: var(--on-navy-muted); text-decoration: none; font: 400 14px/28px var(--font-sans); }
 .aq-footer a:hover { color: var(--on-navy); text-decoration: underline; text-underline-offset: 4px; }
 .aq-footer a:focus-visible { outline: 2px solid var(--limestone); outline-offset: 2px; }
+
+/* Contact line under the description: service number, sales number, head office, one per line in 14/22 on-navy-muted.
+   A confirmed number is a tel: link (hover and focus as the other links); a [placeholder] stays text. */
+.aq-footer__contact { display: flex; flex-direction: column; align-items: flex-start; margin: 0; font: 400 14px/22px var(--font-sans); font-style: normal; color: var(--on-navy-muted); }
+/* Links inside the contact and legal lines keep the line's own type */
+.aq-footer .aq-footer__contact a, .aq-footer .aq-footer__legal a { display: inline; font: inherit; }
 
 /* Legal line along the bottom, under a faint Limestone hairline */
 .aq-footer__legal {

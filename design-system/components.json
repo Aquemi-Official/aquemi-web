@@ -103,20 +103,20 @@
    "readme": "design-system/components/Footer/README.md",
    "preview": "design-system/components/Footer/preview.html",
    "group": "Navigation",
-   "height": "440",
+   "height": "520",
    "width": "1200",
-   "subtitle": "Site footer on navy: Limestone logo and description, four sitemap columns, legal line",
-   "summary": "Footer closes every page on navy: the Limestone logo with one line of description, four sitemap columns, and the legal line."
+   "subtitle": "Site footer on navy: Limestone logo, description and contact line, four sitemap columns, legal line",
+   "summary": "Footer closes every page on navy: the Limestone logo with one line of description and the contact line, four sitemap columns, and the legal line."
   },
   {
    "name": "NavBar",
    "readme": "design-system/components/NavBar/README.md",
    "preview": "design-system/components/NavBar/preview.html",
    "group": "Navigation",
-   "height": "760",
+   "height": "1080",
    "width": "1100",
-   "subtitle": "Desktop header and phone menu with section jump",
-   "summary": "The site header: logo, primary sections and one call to action."
+   "subtitle": "Desktop header with the service link; phone menu with the urgent block and section jump",
+   "summary": "The site header: logo, primary sections, a \"Service request\" link and one call to action."
   },
   {
    "name": "SectionNav",

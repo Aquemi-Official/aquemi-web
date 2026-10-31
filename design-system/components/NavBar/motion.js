@@ -1,5 +1,5 @@
-/* NavBar: the phone menu unrolls from the bar (clip-path) and its rows drop in one after another; Close rolls it back
-   up before the page re-renders without it. The section numbers on the wide bar decode once on a new page. */
+/* NavBar: the phone menu unrolls from the bar (clip-path) and its rows drop in one after another, the urgent block first;
+   Close rolls it back up before the page re-renders without it. The section numbers on the wide bar decode once on a new page. */
 (function () {
   var closing = false, lastPage = null;
   // Close: let the panel roll up first, then run the toggle's own handler (which re-renders), then restore focus
@@ -19,7 +19,7 @@
     var panel = root.querySelector('#wmenu-panel');
     if (panel) {
       m.claim(panel);
-      var rows = [].slice.call(panel.querySelectorAll('.aq-menu__list li, .aq-menu__label, .aq-menu__cta'));
+      var rows = [].slice.call(panel.querySelectorAll('.aq-menu__urgent, .aq-menu__list li, .aq-menu__label, .aq-menu__cta'));
       var tl = m.tw(gsap.timeline());
       tl.fromTo(panel, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.4, ease: 'power3.out', clearProps: 'clipPath' }, 0);
       if (rows.length) tl.from(rows, { y: -10, autoAlpha: 0, duration: 0.3, stagger: 0.035, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, 0.08);

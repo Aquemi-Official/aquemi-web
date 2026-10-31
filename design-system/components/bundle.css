@@ -251,8 +251,8 @@ a.aq-rows__row:hover .aq-icon { background-color: var(--flow); }
 
 /* ---------- Footer: the site map on navy ---------- */
 /* The brand footer as the site first drew it, with its spacing: navy in both themes; the Limestone logo at 160 px with one line of
-   description, then four sitemap columns in one row, headed in the eyebrow style in Limestone; the legal line under
-   a faint Limestone hairline. Phones: the head and the columns two by two. */
+   description and the contact line, then four sitemap columns in one row, headed in the eyebrow style in Limestone; the legal
+   line under a faint Limestone hairline. Phones: the head and the columns two by two. */
 .aq-footer { background: var(--navy); color: var(--on-navy-muted); padding-block: var(--space-16) var(--space-8); }
 .aq-footer__cols { display: grid; grid-template-columns: minmax(0, 1.3fr) repeat(4, minmax(0, 1fr)); gap: var(--space-8); }
 .aq-footer__head { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
@@ -263,6 +263,12 @@ a.aq-rows__row:hover .aq-icon { background-color: var(--flow); }
 .aq-footer a { display: block; color: var(--on-navy-muted); text-decoration: none; font: 400 14px/28px var(--font-sans); }
 .aq-footer a:hover { color: var(--on-navy); text-decoration: underline; text-underline-offset: 4px; }
 .aq-footer a:focus-visible { outline: 2px solid var(--limestone); outline-offset: 2px; }
+
+/* Contact line under the description: service number, sales number, head office, one per line in 14/22 on-navy-muted.
+   A confirmed number is a tel: link (hover and focus as the other links); a [placeholder] stays text. */
+.aq-footer__contact { display: flex; flex-direction: column; align-items: flex-start; margin: 0; font: 400 14px/22px var(--font-sans); font-style: normal; color: var(--on-navy-muted); }
+/* Links inside the contact and legal lines keep the line's own type */
+.aq-footer .aq-footer__contact a, .aq-footer .aq-footer__legal a { display: inline; font: inherit; }
 
 /* Legal line along the bottom, under a faint Limestone hairline */
 .aq-footer__legal {
@@ -277,7 +283,8 @@ a.aq-rows__row:hover .aq-icon { background-color: var(--flow); }
 }
 
 /* ---------- NavBar and phone menu ---------- */
-/* Quiet header on surface: logo left, six sections in sentence case, one primary button right, a line rule below. */
+/* Quiet header on surface: logo left, six sections in sentence case, the "Service request" link and one primary button
+   right, a line rule below. */
 .aq-nav {
   position: relative; display: flex; align-items: center; gap: var(--space-8);
   height: 72px; padding: 0 var(--space-8);
@@ -288,15 +295,18 @@ a.aq-rows__row:hover .aq-icon { background-color: var(--flow); }
 .aq-nav__logo--lockup { width: 152px; }
 
 .aq-nav__links { display: flex; gap: var(--space-6); margin: 0; padding: 0; list-style: none; flex: 1; min-width: 0; }
-.aq-nav__links a {
+/* Section links, and the service link (a utility link, not a section) styled as one */
+.aq-nav__links a, .aq-nav__service {
   color: var(--ink-muted); text-decoration: none; font: 500 14px/20px var(--font-sans); white-space: nowrap;
   transition: color 200ms cubic-bezier(0.2, 0, 0, 1);
 }
-.aq-nav__links a:hover, .aq-nav__links a[aria-current="page"] { color: var(--ink); }
+.aq-nav__links a:hover, .aq-nav__links a[aria-current="page"], .aq-nav__service:hover, .aq-nav__service[aria-current="page"] { color: var(--ink); }
+/* The links take the free width on wide screens; the spacer only works in the compact bar (here it would add a gap) */
+.aq-nav__spacer { display: none; }
 .aq-nav__frame { display: inline-flex; }
 .aq-nav__toggle { display: none; }
 
-/* Phone menu: the sections, the page's section jump, then the proposal button, on surface */
+/* Menu: the urgent block, the sections, the page's section jump, then the proposal button, on surface */
 .aq-menu { display: none; }
 .aq-menu__list { display: grid; margin: 0; padding: 0; list-style: none; }
 .aq-menu__list a {
@@ -315,38 +325,66 @@ a.aq-rows__row:hover .aq-icon { background-color: var(--flow); }
 .aq-menu__cta { display: flex; }
 .aq-menu__cta .aq-btn { flex: 1; justify-content: center; }
 
+/* Urgent block, first in the menu: "Production stopped?", the service number (a tel: link once confirmed, the
+   placeholder until then) under a "Call" eyebrow, then the service request row. On limestone with on-limestone text;
+   data-theme="light" on the block keeps its placeholder, hairline, arrow and focus ring on the light values, since
+   limestone stays light in both themes. Text, not a heading: the menu's outline does not change. */
+.aq-menu__urgent { display: grid; gap: var(--space-2); padding: var(--space-4); background: var(--limestone); color: var(--on-limestone); }
+.aq-menu__ask { margin: 0; font: 500 14px/20px var(--font-sans); color: var(--on-limestone); }
+.aq-menu__call {
+  display: block; min-height: 44px; padding-block: var(--space-2);
+  font: 400 20px/28px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--on-limestone); text-decoration: none; overflow-wrap: anywhere;
+}
+.aq-menu__k {
+  display: inline-block; margin-right: var(--space-3);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted);
+}
+a.aq-menu__call:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.aq-menu__service {
+  display: flex; align-items: baseline; gap: var(--space-3); min-height: 44px;
+  padding-top: var(--space-3); border-top: 1px solid var(--line-strong); color: var(--on-limestone); text-decoration: none;
+  font: 400 20px/28px var(--font-sans); letter-spacing: -0.005em;
+}
+.aq-menu__service[aria-current]::after { content: "→"; content: "→" / ""; margin-left: auto; color: var(--flow); }
+
 @media (prefers-reduced-motion: reduce) {
-  .aq-nav__links a { transition: none; }
+  .aq-nav__links a, .aq-nav__service { transition: none; }
 }
 
-/* Mid widths: tighten the gaps before the phone layout takes over */
-@container (max-width: 1080px) {
+/* Hover and focus: a flow rule draws under the label from its left end */
+.aq-nav__links a, .aq-nav__service { position: relative; }
+.aq-nav__links a::before, .aq-nav__service::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: calc(-1 * var(--space-1)); height: 1px; background: var(--flow);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 240ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-nav__links a:hover::before, .aq-nav__links a:focus-visible::before, .aq-nav__service:hover::before, .aq-nav__service:focus-visible::before { transform: scaleX(1); }
+.aq-nav__links a[aria-current="page"]::before, .aq-nav__service[aria-current="page"]::before { content: none; }
+.aq-menu__list a, .aq-menu__service { transition: color 160ms cubic-bezier(0.2, 0, 0, 1); }
+@media (prefers-reduced-motion: reduce) { .aq-nav__links a::before, .aq-nav__service::before, .aq-menu__list a, .aq-menu__service { transition: none; } }
+
+/* Mid widths: tighten the gaps (at the wide spacing the full bar needs about 1,085 px) */
+@container (max-width: 1120px) {
   .aq-nav { gap: var(--space-6); padding: 0 var(--space-6); }
   .aq-nav__links { gap: var(--space-4); }
   .aq-nav .aq-nav__logo--lockup { width: 140px; }
 }
 
-/* Hover and focus: a flow rule draws under the label from its left end */
-.aq-nav__links a { position: relative; }
-.aq-nav__links a::before {
-  content: ""; position: absolute; left: 0; right: 0; bottom: calc(-1 * var(--space-1)); height: 1px; background: var(--flow);
-  transform: scaleX(0); transform-origin: 0 50%; transition: transform 240ms cubic-bezier(0.2, 0, 0, 1);
+/* Compact bar: the logo, six sections, service link and button need about 990 px at the mid spacing, so up to 1,020 px
+   the links and the button hide and the toggle opens the menu, which carries all of them */
+@container (max-width: 1020px) {
+  .aq-nav__links, .aq-nav__service, .aq-nav > .aq-nav__frame { display: none; }
+  .aq-nav__spacer { display: block; flex: 1; }
+  .aq-nav__toggle { display: inline-flex; }
+  .aq-menu {
+    display: grid; gap: var(--space-6); padding: var(--space-2) var(--space-6) var(--space-8);
+    background: var(--surface); border-bottom: 1px solid var(--line);
+  }
 }
-.aq-nav__links a:hover::before, .aq-nav__links a:focus-visible::before { transform: scaleX(1); }
-.aq-nav__links a[aria-current="page"]::before { content: none; }
-.aq-menu__list a { transition: color 160ms cubic-bezier(0.2, 0, 0, 1); }
-@media (prefers-reduced-motion: reduce) { .aq-nav__links a::before, .aq-menu__list a { transition: none; } }
 
 @container (max-width: 860px) {
   .aq-nav { height: 64px; padding: 0 var(--space-4); gap: var(--space-4); }
-  .aq-nav__links, .aq-nav > .aq-nav__frame { display: none; }
-  .aq-nav__spacer { flex: 1; }
-  .aq-nav__toggle { display: inline-flex; }
   .aq-nav .aq-nav__logo--lockup { width: 112px; }
-  .aq-menu {
-    display: grid; gap: var(--space-6); padding: var(--space-2) var(--space-4) var(--space-8);
-    background: var(--surface); border-bottom: 1px solid var(--line);
-  }
+  .aq-menu { padding-inline: var(--space-4); }
 }
 
 /* ---------- SectionNav ---------- */
