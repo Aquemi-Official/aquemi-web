@@ -11,6 +11,7 @@ Use classes on a `<button>` or `<a>`; the consumer provides the label and, for l
 - Labels are sentence-case verbs, two to four words. Avoid "Click here", and avoid a bare "Submit" when a specific verb fits.
 - An arrow (`<span class="aq-btn__arrow">→</span>`) is allowed on primary and link buttons that navigate. It nudges 3 px on hover.
 - A button that routes to an enquiry form may carry `data-intent="<option label>"` to pre-select that request type on arrival (see EnquiryForm, "Pre-set from the linking page").
+- On the site, `wBtn` in `assets/src/parts/Button.js` builds every hero, closing and contact-route button, the hero's link button included. Its link is a page id, `page#anchor` (opens that page at the block with that `anchor`: `systems#budget`) or `#anchor` (scrolls to that block on the same page). An intent works only on a link to another page.
 - Disabled buttons use the `disabled` attribute; say why nearby.
 - Height is 44 px, which meets the touch-target size without extra padding.
 

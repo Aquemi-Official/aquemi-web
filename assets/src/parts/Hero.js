@@ -58,12 +58,12 @@ function wHeroIndex(x){var n=x.items.length;
   return '<li>'+(it.wp?'<a class="aq-hero__index-item" href="#'+e(it.wp)+'" data-wp="'+e(it.wp)+'">'+t+'</a>':it.jump?'<a class="aq-hero__index-item" href="#'+e(WP)+'" data-jump="'+e(it.jump)+'">'+t+'</a>':'<span class="aq-hero__index-item">'+t+'</span>')+
    (x.big&&i<n-1?'':'')+'</li>'}).join('')+'</ol></nav>'}
 /* Home: fine-line drawing of a figure-eight distribution loop (viewBox 440 x 520). Strokes are currentColor and tokens in style.css.
-   Annotations are the home page's own standards and its endotoxin fact; nothing else is claimed. */
-function wHomeLoop(p){
- var ef=(p.facts||[]).filter(function(f){return /EU\/mL/.test(f.v)})[0];
+   Annotations name the loop, its parts and the two USP test chapters at the sensors. No figure is drawn: hero facts are
+   Aquemi's own figures and sit in the KeyFacts strip, and a pharmacopoeia limit is never drawn as if it were ours (DR-010). */
+function wHomeLoop(){
  var arrow=function(x,y,r){return '<path class="aq-loop__arrow" d="M-5,-3.5 L4,0 L-5,3.5 Z" transform="translate('+x+' '+y+') rotate('+r+')"/>'};
  var label=function(x,y,s,a){return '<text x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>'};
- return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a filter and a heat exchanger on the loop, conductivity and TOC sensors on the return, and flow arrows'+(ef?', endotoxin '+e(ef.v)+' at the furthest point of use':'')+'.">'+
+ return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a filter and a heat exchanger on the loop, conductivity and TOC sensors on the return, a valve at the furthest point of use, and flow arrows.">'+
  '<svg viewBox="0 0 440 520" aria-hidden="true" focusable="false">'+
  '<path class="aq-loop__pipe" d="M140,390 A80,80 0 0 0 300,390 L300,340 C300,270 140,230 140,160 L140,110 A80,80 0 0 1 300,110 L300,160 C300,230 140,270 140,340 Z"/>'+
  arrow(220,30,0)+arrow(180,459.3,30)+arrow(275,292,224)+arrow(275,208,136)+
@@ -76,7 +76,7 @@ function wHomeLoop(p){
   '<text class="aq-loop__tag" x="336" y="121" text-anchor="middle">CE</text><text class="aq-loop__tag" x="336" y="155" text-anchor="middle">TOC</text>'+
   label(352,122,'USP <645>')+label(352,156,'USP <643>')+
   label(76,132,'Filter','end')+label(76,362,'Heat','end')+label(76,374,'exchanger','end')+
-  label(244,483,'Furthest point of use')+(ef?label(244,497,'Endotoxin '+ef.v):'')+
+  label(244,483,'Furthest point of use')+
  '</g></svg></figure>'}
 /* Drawn figure (opt-in hero field "figure", pages with no equipment drawing): a quiet line-art device in a 6:5 area
    on surface (no frame), always aria-hidden; the headline and lead carry the meaning.
@@ -90,7 +90,7 @@ function wHomeLoop(p){
    - {"plate": "route", "stops": ["Your request", "Engineer review", "Written reply"]}: one route from a start node
      through three numbered stops to an arrow.
    Geometry is in percent of the 6:5 frame; line work in an SVG viewBox 120 x 100 (non-scaling strokes). */
-var SPOT_NAME={'ro-skid':'RO skid','edi-stack':'EDI stack','pure-steam-generator':'Pure steam generator','storage-tank':'Storage tank','heat-exchanger':'Heat exchanger','uv-ozone':'UV and ozone',pid:'P&ID',edi:'EDI',toc:'TOC',uv:'UV','ro-membrane':'RO membrane','carbon-filter':'Carbon filter','pure-steam':'Pure steam'};
+var SPOT_NAME={'ro-skid':'RO skid','edi-stack':'EDI stack','pure-steam-generator':'Pure steam generator','storage-tank':'Storage tank','heat-exchanger':'Heat exchanger','uv-ozone':'UV',pid:'P&ID',edi:'EDI',toc:'TOC',uv:'UV','ro-membrane':'RO membrane','carbon-filter':'Carbon filter','pure-steam':'Pure steam'};
 var SPOT_AT={2:[[30,46,40],[72,58,40]],3:[[19,58,36],[50,38,36],[81,58,36]],4:[[16,42,27],[39,60,27],[62,42,27],[85,60,27]]};
 function spotName(n){return SPOT_NAME[n]||(n.charAt(0).toUpperCase()+n.slice(1).replace(/-/g,' '))}
 function heroFrame(kind,inner,label){return '<figure class="aq-hero__drawn aq-hero__drawn--'+kind+'" aria-hidden="true">'+(label?'<span class="aq-hero__drawn-label">'+tx(label)+'</span>':'')+inner+'</figure>'}
@@ -121,11 +121,12 @@ function wHeroRoute(f){var st=(f.stops||['Request','Review','Reply']).slice(0,3)
 function wHeroDrawn(f){if(!f||typeof f!=='object')return '';return f.spots?wHeroSpots(f):f.plate==='binder'?wHeroBinder(f):f.plate==='stamp'?wHeroStamp(f):f.plate==='route'?wHeroRoute(f):''}
 function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^svc-|^ind-/.test(p.id),drawn=home||art?'':wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
-  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
+  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?wBtn(p.secondary_cta.label,p.secondary_cta.link||'systems','link'):'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
- /* Callouts round the drawing only on sys-* pages, where the facts are measured values; service and industry pages
-    keep their facts (often counts) in the KeyFacts strip under the drawing. */
+ /* Callouts round the drawing only on sys-* pages, where each fact is a figure of the drawn module (a design value,
+    guarantee or capacity, "what, where · basis", DR-010); service and industry pages keep their facts in the KeyFacts
+    strip under the drawing. */
  var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
- var right=home?wHomeLoop(p):art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
+ var right=home?wHomeLoop():art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
  return '<section class="aq-hero'+(home?' aq-hero--home':'')+(co?' aq-hero--mist':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}

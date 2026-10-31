@@ -7,9 +7,11 @@ var D={web:{pages:[]}};
 function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked link asked the next page's form to tick (data-intent) */
 var NAVSECT=[['Systems','systems'],['Services','services'],['Industries','industries'],['Compliance','compliance'],['Projects','projects'],['Company','about']];
-/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008). Each value keeps the pages'
-   own placeholder name until Aquemi confirms it, and is filled in the same commit as the page files that repeat it. */
-var CONTACT={service:'[service phone number]',hours:'[service phone hours]',sales:'[sales phone number]',office:'[head office, city and province]'};
+/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the service number and its
+   hours, the sales number, the head office and the shop location (the footer's "designed, fabricated and tested in").
+   Each value keeps the pages' own placeholder name until Aquemi confirms it, and is filled in the same commit as the page
+   files that repeat it; tools/design_system.py check warns on a value no page file carries. */
+var CONTACT={service:'[service phone number]',hours:'[service phone hours]',sales:'[sales phone number]',office:'[head office, city and province]',shop:'[shop location, city and province]'};
 function W(){return (D.web&&D.web.pages)||[]}
 /* Page plus anchor: a link may be written "page#anchor" (cmp-quality#buying). wsplit gives [page, anchor]; wp resolves
    the page, so every renderer that links a page id also links page#anchor; page.js opens the page at the anchor. */
@@ -104,7 +106,10 @@ if(typeof document!=='undefined'){
   window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
   var home=document.querySelector('.aq-nav__home');if(home)home.focus({preventScroll:true});b.classList.remove('is-shown')});
 }
-/* Button. intent (optional): option labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent) */
+/* Button: the hero's primary and secondary links (kind "link"), the closing and the contact routes all use it.
+   link: a page id, "page#anchor" (opens that page at the block with that anchor; page.js) or "#anchor" (scrolls to that
+   block on this page). intent (optional): option labels, "|"-separated, that the linked page's EnquiryForm ticks on
+   arrival (data-intent); an in-page "#anchor" link carries none. */
 function wBtn(label,link,kind,intent){var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'"'+(intent&&!j?' data-intent="'+e(intent)+'"':'')+'>'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
 /* Closing: the call to action at the end of every page, on the navy band.
    c is the page's cta ({h, body, button, link, intent, include, include_label}); p is the page.
@@ -199,15 +204,16 @@ document.addEventListener('click',function(ev){var g=ev.target.closest&&ev.targe
  if(wCheck(st).length){ev.preventDefault();ev.stopImmediatePropagation()}},true);
 document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classList||!fm.classList.contains('wform'))return;var bad=wCheck(fm);
  if(bad.length){ev.preventDefault();ev.stopImmediatePropagation();var msg=fm.querySelector('.wform-msg');if(msg)msg.textContent=bad.length===1?'One field needs attention.':bad.length+' fields need attention.'}},true);
-/* Footer: the brand footer on navy, as the site first drew it. The Limestone logo, one line of description and the contact
-   line (service and sales numbers and the head office, from CONTACT in core.js), then four sitemap columns in one row,
-   then the legal line under a hairline. Phones show the columns two by two.
+/* Footer: the brand footer on navy, as the site first drew it. The Limestone logo, one line of description (where we
+   design, fabricate and test: the shop location) and the contact line (service and sales numbers and the head office);
+   both read CONTACT in core.js, under the pages' placeholder names. Then four sitemap columns in one row, then the legal
+   line under a hairline. Phones show the columns two by two.
    A column entry is a page id or page#anchor; it shows only when that page (and block) exists (whas), so "Buying from
    Aquemi" appears once cmp-quality has its "buying" block. Privacy, Terms and Accessibility link once their pages exist. */
 function wFoot(){var cols=[['Systems',['sys-pw','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['ind-pharma','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','cmp-quality#buying','contact-proposal','contact-service','contact-locations']]],
   label={'cmp-quality#buying':'Buying from Aquemi'},legal=[['privacy','Privacy'],['terms','Terms'],['accessibility','Accessibility']];
  return '<footer class="aq-footer"><div class="aq-in"><div class="aq-footer__cols">'
-  +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">Clean water systems for pharmaceutical manufacturing. Designed, fabricated and tested in <span class="aq-ph">[city], Ontario</span>.</p>'
+  +'<div class="aq-footer__head"><img class="aq-footer__logo" src="brand/logo-limestone.svg" alt="aquemi"><p class="aq-footer__desc">Clean water systems for pharmaceutical manufacturing. Designed, fabricated and tested in '+tx(CONTACT.shop)+'.</p>'
   +'<address class="aq-footer__contact">'+wtel(CONTACT.service,'','Service ')+wtel(CONTACT.sales,'','Sales ')+'<span>'+tx(CONTACT.office)+'</span></address></div>'
   +cols.map(function(c){return '<nav class="aq-footer__col" aria-label="'+e(c[0])+'"><h5 class="aq-footer__colhead">'+e(c[0])+'</h5>'+c[1].filter(whas).map(function(id){return wlink(id,label[id])}).join('')+'</nav>'}).join('')
   +'</div><div class="aq-footer__legal"><span>© 2026 Aquemi <span class="aq-ph">[legal entity name]</span></span><span>'+legal.map(function(l){return wp(l[0])?wlink(l[0],l[1]):e(l[1])}).join(' · ')+'</span></div>'
@@ -272,12 +278,12 @@ function wHeroIndex(x){var n=x.items.length;
   return '<li>'+(it.wp?'<a class="aq-hero__index-item" href="#'+e(it.wp)+'" data-wp="'+e(it.wp)+'">'+t+'</a>':it.jump?'<a class="aq-hero__index-item" href="#'+e(WP)+'" data-jump="'+e(it.jump)+'">'+t+'</a>':'<span class="aq-hero__index-item">'+t+'</span>')+
    (x.big&&i<n-1?'':'')+'</li>'}).join('')+'</ol></nav>'}
 /* Home: fine-line drawing of a figure-eight distribution loop (viewBox 440 x 520). Strokes are currentColor and tokens in style.css.
-   Annotations are the home page's own standards and its endotoxin fact; nothing else is claimed. */
-function wHomeLoop(p){
- var ef=(p.facts||[]).filter(function(f){return /EU\/mL/.test(f.v)})[0];
+   Annotations name the loop, its parts and the two USP test chapters at the sensors. No figure is drawn: hero facts are
+   Aquemi's own figures and sit in the KeyFacts strip, and a pharmacopoeia limit is never drawn as if it were ours (DR-010). */
+function wHomeLoop(){
  var arrow=function(x,y,r){return '<path class="aq-loop__arrow" d="M-5,-3.5 L4,0 L-5,3.5 Z" transform="translate('+x+' '+y+') rotate('+r+')"/>'};
  var label=function(x,y,s,a){return '<text x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>'};
- return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a filter and a heat exchanger on the loop, conductivity and TOC sensors on the return, and flow arrows'+(ef?', endotoxin '+e(ef.v)+' at the furthest point of use':'')+'.">'+
+ return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a filter and a heat exchanger on the loop, conductivity and TOC sensors on the return, a valve at the furthest point of use, and flow arrows.">'+
  '<svg viewBox="0 0 440 520" aria-hidden="true" focusable="false">'+
  '<path class="aq-loop__pipe" d="M140,390 A80,80 0 0 0 300,390 L300,340 C300,270 140,230 140,160 L140,110 A80,80 0 0 1 300,110 L300,160 C300,230 140,270 140,340 Z"/>'+
  arrow(220,30,0)+arrow(180,459.3,30)+arrow(275,292,224)+arrow(275,208,136)+
@@ -290,7 +296,7 @@ function wHomeLoop(p){
   '<text class="aq-loop__tag" x="336" y="121" text-anchor="middle">CE</text><text class="aq-loop__tag" x="336" y="155" text-anchor="middle">TOC</text>'+
   label(352,122,'USP <645>')+label(352,156,'USP <643>')+
   label(76,132,'Filter','end')+label(76,362,'Heat','end')+label(76,374,'exchanger','end')+
-  label(244,483,'Furthest point of use')+(ef?label(244,497,'Endotoxin '+ef.v):'')+
+  label(244,483,'Furthest point of use')+
  '</g></svg></figure>'}
 /* Drawn figure (opt-in hero field "figure", pages with no equipment drawing): a quiet line-art device in a 6:5 area
    on surface (no frame), always aria-hidden; the headline and lead carry the meaning.
@@ -304,7 +310,7 @@ function wHomeLoop(p){
    - {"plate": "route", "stops": ["Your request", "Engineer review", "Written reply"]}: one route from a start node
      through three numbered stops to an arrow.
    Geometry is in percent of the 6:5 frame; line work in an SVG viewBox 120 x 100 (non-scaling strokes). */
-var SPOT_NAME={'ro-skid':'RO skid','edi-stack':'EDI stack','pure-steam-generator':'Pure steam generator','storage-tank':'Storage tank','heat-exchanger':'Heat exchanger','uv-ozone':'UV and ozone',pid:'P&ID',edi:'EDI',toc:'TOC',uv:'UV','ro-membrane':'RO membrane','carbon-filter':'Carbon filter','pure-steam':'Pure steam'};
+var SPOT_NAME={'ro-skid':'RO skid','edi-stack':'EDI stack','pure-steam-generator':'Pure steam generator','storage-tank':'Storage tank','heat-exchanger':'Heat exchanger','uv-ozone':'UV',pid:'P&ID',edi:'EDI',toc:'TOC',uv:'UV','ro-membrane':'RO membrane','carbon-filter':'Carbon filter','pure-steam':'Pure steam'};
 var SPOT_AT={2:[[30,46,40],[72,58,40]],3:[[19,58,36],[50,38,36],[81,58,36]],4:[[16,42,27],[39,60,27],[62,42,27],[85,60,27]]};
 function spotName(n){return SPOT_NAME[n]||(n.charAt(0).toUpperCase()+n.slice(1).replace(/-/g,' '))}
 function heroFrame(kind,inner,label){return '<figure class="aq-hero__drawn aq-hero__drawn--'+kind+'" aria-hidden="true">'+(label?'<span class="aq-hero__drawn-label">'+tx(label)+'</span>':'')+inner+'</figure>'}
@@ -335,12 +341,13 @@ function wHeroRoute(f){var st=(f.stops||['Request','Review','Reply']).slice(0,3)
 function wHeroDrawn(f){if(!f||typeof f!=='object')return '';return f.spots?wHeroSpots(f):f.plate==='binder'?wHeroBinder(f):f.plate==='stamp'?wHeroStamp(f):f.plate==='route'?wHeroRoute(f):''}
 function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^svc-|^ind-/.test(p.id),drawn=home||art?'':wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
-  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
+  '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?wBtn(p.secondary_cta.label,p.secondary_cta.link||'systems','link'):'')+'</div>'+
   (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
- /* Callouts round the drawing only on sys-* pages, where the facts are measured values; service and industry pages
-    keep their facts (often counts) in the KeyFacts strip under the drawing. */
+ /* Callouts round the drawing only on sys-* pages, where each fact is a figure of the drawn module (a design value,
+    guarantee or capacity, "what, where · basis", DR-010); service and industry pages keep their facts in the KeyFacts
+    strip under the drawing. */
  var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
- var right=home?wHomeLoop(p):art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
+ var right=home?wHomeLoop():art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
  return '<section class="aq-hero'+(home?' aq-hero--home':'')+(co?' aq-hero--mist':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
 /* KeyFacts: the measurement strip under the Hero. facts = [{l, v}].
@@ -375,9 +382,12 @@ function wKeyFacts(facts){
  }).join('')+'</dl>';
 }
 /* NavBar: section links in sentence case, the "Service request" utility link, the proposal button and, on narrow screens,
-   a menu: the urgent block (production stopped: the service number, then the service request row), the sections and the
-   page's section jump. The menu's jump links come from navJumps() in SectionNav.js, for the page being shown (WP).
-   The service number comes from CONTACT (core.js): a tel: link once confirmed, the placeholder until then. */
+   a menu: the urgent block (production stopped: the service number and its hours, then the service request row), the
+   sections and the page's section jump. The menu's jump links come from navJumps() in SectionNav.js, for the page being
+   shown (WP). The service number and hours come from CONTACT (core.js): the number is a tel: link once confirmed and the
+   placeholder until then. The hours always travel with the number, so the block never implies round-the-clock help.
+   Launch rule (design-system/website.md, Navigation): while the number is unconfirmed the urgent block goes, the
+   "Service request" row stays. */
 function wHead(section){var cur=(NAVSECT.filter(function(n){return n[0]===section})[0]||[])[1],pg=wp(WP),jumps=navJumps(pg);
  var cta=function(extra){return '<span class="aq-nav__frame'+(extra||'')+'"><a class="aq-btn aq-btn--primary" href="#contact-proposal" data-wp="contact-proposal">Request a proposal</a></span>'};
  var svc=function(cls){return '<a class="'+cls+'" href="#contact-service" data-wp="contact-service"'+(WP==='contact-service'?' aria-current="page"':'')+'>Service request</a>'};
@@ -386,7 +396,7 @@ function wHead(section){var cur=(NAVSECT.filter(function(n){return n[0]===sectio
   '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+cta()+
   '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'>'+(WMENU?'Close':'Menu')+'</button></nav>'+
  (WMENU?'<div class="aq-menu" id="wmenu-panel">'+
-  '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+wtel(CONTACT.service,'aq-menu__call','<span class="aq-menu__k">Call</span> ')+svc('aq-menu__service')+'</div>'+
+  '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+wtel(CONTACT.service,'aq-menu__call','<span class="aq-menu__k">Call</span> ')+'<p class="aq-menu__hours">Answered '+tx(CONTACT.hours)+'</p>'+svc('aq-menu__service')+'</div>'+
   '<nav aria-label="Sections"><ol class="aq-menu__list">'+NAVSECT.map(function(n,i){return '<li><a href="#'+n[1]+'" data-wp="'+n[1]+'"'+(n[1]===cur?' aria-current="page"':'')+'>'+n[0]+'</a></li>'}).join('')+'</ol></nav>'+
   (jumps.length?'<nav class="aq-menu__jump" aria-labelledby="wmenu-jump"><p class="aq-menu__label" id="wmenu-jump">Section jump</p><ol class="aq-menu__list aq-menu__list--jump">'+jumps.map(function(j,i){return '<li><a href="#'+e(pg.id)+'" data-jump="'+e(j.id)+'">'+e(j.label)+'</a></li>'}).join('')+'</ol></nav>':'')+
   cta(' aq-menu__cta')+'</div>':'')}

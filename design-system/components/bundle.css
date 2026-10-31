@@ -326,9 +326,9 @@ a.aq-rows__row:hover .aq-icon { background-color: var(--flow); }
 .aq-menu__cta .aq-btn { flex: 1; justify-content: center; }
 
 /* Urgent block, first in the menu: "Production stopped?", the service number (a tel: link once confirmed, the
-   placeholder until then) under a "Call" eyebrow, then the service request row. On limestone with on-limestone text;
-   data-theme="light" on the block keeps its placeholder, hairline, arrow and focus ring on the light values, since
-   limestone stays light in both themes. Text, not a heading: the menu's outline does not change. */
+   placeholder until then) under a "Call" eyebrow, the hours it is answered, then the service request row. On limestone
+   with on-limestone text; data-theme="light" on the block keeps its placeholder, hairline, arrow and focus ring on the
+   light values, since limestone stays light in both themes. Text, not a heading: the menu's outline does not change. */
 .aq-menu__urgent { display: grid; gap: var(--space-2); padding: var(--space-4); background: var(--limestone); color: var(--on-limestone); }
 .aq-menu__ask { margin: 0; font: 500 14px/20px var(--font-sans); color: var(--on-limestone); }
 .aq-menu__call {
@@ -340,6 +340,8 @@ a.aq-rows__row:hover .aq-icon { background-color: var(--flow); }
   font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted);
 }
 a.aq-menu__call:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+/* The hours the number is answered, right under it: the number never shows without them */
+.aq-menu__hours { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--on-limestone-muted); }
 .aq-menu__service {
   display: flex; align-items: baseline; gap: var(--space-3); min-height: 44px;
   padding-top: var(--space-3); border-top: 1px solid var(--line-strong); color: var(--on-limestone); text-decoration: none;

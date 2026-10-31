@@ -7,9 +7,11 @@ var D={web:{pages:[]}};
 function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 var WP='home',WMENU=false,WINTENT='';/* WINTENT: option labels the last clicked link asked the next page's form to tick (data-intent) */
 var NAVSECT=[['Systems','systems'],['Services','services'],['Industries','industries'],['Compliance','compliance'],['Projects','projects'],['Company','about']];
-/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008). Each value keeps the pages'
-   own placeholder name until Aquemi confirms it, and is filled in the same commit as the page files that repeat it. */
-var CONTACT={service:'[service phone number]',hours:'[service phone hours]',sales:'[sales phone number]',office:'[head office, city and province]'};
+/* CONTACT: the one source for the contact facts the NavBar menu and the Footer show (DR-008): the service number and its
+   hours, the sales number, the head office and the shop location (the footer's "designed, fabricated and tested in").
+   Each value keeps the pages' own placeholder name until Aquemi confirms it, and is filled in the same commit as the page
+   files that repeat it; tools/design_system.py check warns on a value no page file carries. */
+var CONTACT={service:'[service phone number]',hours:'[service phone hours]',sales:'[sales phone number]',office:'[head office, city and province]',shop:'[shop location, city and province]'};
 function W(){return (D.web&&D.web.pages)||[]}
 /* Page plus anchor: a link may be written "page#anchor" (cmp-quality#buying). wsplit gives [page, anchor]; wp resolves
    the page, so every renderer that links a page id also links page#anchor; page.js opens the page at the anchor. */

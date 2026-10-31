@@ -4,8 +4,11 @@
                                                        design-system/tokens.css, components/bundle.css, components.json,
                                                        assets/aquemi-site.js and content/pages.json
   python tools/design_system.py check                  Check tokens and components for the rules agents must follow
-                                                       (content budget overruns are counted, never fail the check)
+                                                       (content budget overruns and content warnings are counted, never
+                                                       fail the check)
   python tools/design_system.py check --budgets [id]   Also list every content budget overrun (or one page's)
+  python tools/design_system.py check --warnings [id]  Also list every content warning (or one page's, or one type's:
+                                                       register, faq, fact, intent, contact, link)
   python tools/design_system.py new <Name> "<Group>"   Scaffold design-system/components/<Name>/ (README.md, preview.html, style.css)
   python tools/design_system.py stage <dir>            Copy the system into <dir>/project/ for publishing to the Claude artifact
 
@@ -285,7 +288,334 @@ def budgets(pages):
     return out
 
 
-def check(show_budgets=False, only=None):
+# Content warnings (design-system/website.md, "Content warnings"): the site-wide decision records' rules, checked on the
+# page files. Like the budgets they never fail the check: pages are rewritten to the records pass by pass, and CI runs
+# check on every push. Each warning is (type, sub-check, page ids, where, message).
+WARN_TYPES = [  # type, record, what the summary line counts, sub-checks with their summary words
+    ('register', 'DR-003', 'register warnings', [('lead', 'leads over 2 codes'), ('spell', 'codes never spelled out'),
+        ('twice', 'two-meaning codes'), ('sentence', 'sentences over 20 words'), ('button', 'buttons over 5 words')]),
+    ('faq', 'DR-009', 'FAQ questions asked on two or more pages', []),
+    ('fact', 'DR-010', 'hero fact warnings', [('limit', 'equal a public limit'), ('code', 'have a code as the value'),
+        ('basis', 'have no basis in the label')]),
+    ('intent', 'DR-014', 'intent labels that tick nothing on the linked form', []),
+    ('contact', 'DR-008', 'CONTACT values no page file carries', []),
+    ('link', 'DR-008', 'links to a missing page or anchor', []),
+]
+REGISTER = {'lead_codes': 2, 'sentence': 20, 'button': 5}  # DR-003 rule 3 (language/register-rules.md in the library)
+# Page fields a reader never sees as copy (beyond NOT_COPY). LABELS are seen, but as labels: a code there needs spelling
+# out in the page's reading text, and is never spelled out there.
+NOT_SHOWN = {'title', 'meta', 'nav_label', 'path', 'todo', 'intent', 'primary_cta_intent', 'primary_cta_link', 'index', 'hero_index', 'spot'}
+LABELS = {'eyebrow', 'caption'}
+# A code: two or more capitals, "&" allowed (PW, URS, P&ID); a plural s is dropped. Not glued to digits (SDR11, B51).
+CODE = re.compile(r'(?<![A-Za-z0-9_&])([A-Z][A-Z&]*[A-Z])s?(?![A-Za-z0-9_&])')
+ROMAN = {'II', 'III', 'IV', 'VI', 'VII', 'VIII', 'IX', 'XI', 'XII'}
+# Cited as they are, never spelled out: standards and their bodies, regulators and laws, places, currency, file types,
+# industrial protocols, and CO (CO₂). EU and CSA as names only; their second meanings are the two-meaning check.
+CODE_NAMES = set('USP NF ISO ASTM ASME BPE FDA ICH WHO TRS CSA EN IEC UL CLSI GAMP ISPE CFR PIC MDSAP QMSR MDR EMA EPA '
+                 'AAMI ANSI NSF JP GUI GHTF TSSA PEO RBQ OIQ EGBC ABSA APEGA CASL PIPEDA EU US USA UK BC CAD PDF CSV IT ID '
+                 'CV OPC UA TCP IP PROFINET SLC CO'.split())
+# Full forms that spell a code out anywhere on the page, besides "words (CODE)" and "CODE (words)"
+CODE_FULL = {
+    'FAT': r'factory acceptance test', 'SAT': r'site acceptance test', 'IQ': r'installation qualification',
+    'OQ': r'operational qualification', 'PQ': r'performance qualification', 'DQ': r'design qualification',
+    'URS': r'user requirements? specification', 'EDI': r'electro-?deioni[sz]ation', 'DI': r'(?<!electro)(?<!-)deioni[sz]ation',
+    'RO': r'reverse osmosis', 'TOC': r'total organic carbon', 'GMP': r'good manufacturing practice', 'PW': r'purified water',
+    'WFI': r'water for injection', 'PP': r'polypropylene', 'PVC': r'polyvinyl chloride', 'PVDF': r'polyvinylidene (?:di)?fluoride',
+    'CFU': r'colony[- ]forming unit', 'CRN': r'canadian registration number', 'P&ID': r'piping and instrumentation diagram',
+    'PLC': r'programmable logic controller', 'HMI': r'human[- ]machine interface', 'SCADA': r'supervisory control and data acquisition',
+    'UV': r'ultraviolet', 'C&Q': r'commissioning and qualification', 'CAPA': r'corrective and preventive action',
+    'QMS': r'quality management system', 'SDI': r'silt density index', 'ORP': r'oxidation[- ]reduction potential',
+    'DMZ': r'demilitari[sz]ed zone', 'FMEA': r'failure modes? and effects analysis', 'NHP': r'natural health product',
+    'CDMO': r'contract development and manufacturing', 'VMP': r'validation master plan', 'NCR': r'non-?conformance report',
+    'PPQ': r'process performance qualification', 'GA': r'general arrangement', 'PFD': r'process flow diagram',
+}
+# A public limit's source: a spec row or table cell citing a pharmacopoeia or regulator (DR-010)
+REGULATOR = re.compile(r'\bUSP\b|Ph\. ?Eur\b|\bJP\b|\bWHO\b|\bEU GMP\b|\bAnnex \d|\bEMA\b|\bFDA\b|\bCFR\b|Health Canada|\bICH\b')
+FIGURE = re.compile(r'(?<![\w.])(\d+(?:[.,]\d+)?)\s*(%|°C|[µm]S/cm|[mµn]g/L|ppb|ppm|CFU/\d* ?mL|EU/mL|EU|[µn]m|mm|m/s|m³/h|'
+                    r'L/h|L/min|bar|kPa|MPa|psi|L/D|working days|days?|weeks?|months?|hours?|minutes?|years?)(?![\w/])')
+# A hero fact whose value is a code, clause, standard or bare material (DR-010 rule 2), not a figure
+CODE_VALUE = re.compile(r'^\s*[<>≤≥]?\s*(?:[A-Z][A-Z&]*[A-Z](?![A-Za-z])|Part \d|Annex \d|Class [IVX]|Ph\. ?Eur)|<\d+>')
+
+
+def copy_items(x, path='', skip=NOT_SHOWN):
+    """(JSON path, string) for each string a reader sees: "blocks[2].items[0].d"."""
+    if isinstance(x, str):
+        yield path, x
+    elif isinstance(x, list):
+        for i, v in enumerate(x):
+            yield from copy_items(v, '%s[%d]' % (path, i), skip)
+    elif isinstance(x, dict):
+        for k, v in x.items():
+            if k not in NOT_COPY and k not in skip:
+                yield from copy_items(v, path + '.' + k if path else k, skip)
+
+
+def leaf(path):
+    return re.sub(r'\[\d+\]', '', path).split('.')[-1]
+
+
+def bare(s, by=' '):
+    """s with every [placeholder] replaced (they are filled before launch, so their words never count)."""
+    s, prev = str(s or ''), None
+    while s != prev:
+        prev, s = s, re.sub(r'\[[^\[\]]*\]', by, s)
+    return s
+
+
+def clip(s, n=70):
+    s = re.sub(r'\s+', ' ', str(s)).strip()
+    return s if len(s) <= n else s[:n].rstrip() + '...'
+
+
+def codes(s, known=None):
+    """The codes in s, in order. A string with no lower-case letter (an eyebrow, a caption) is all capitals, so there only
+    codes known from sentence-case copy count."""
+    s = bare(s)
+    out = [c for c in CODE.findall(s) if c not in ROMAN]
+    return [c for c in out if c in known] if known is not None and not re.search('[a-z]', s) else out
+
+
+def sentences(s):
+    """Sentences as the register counts them: split after . ; : ? ! before a capital, digit or [."""
+    return [x for x in re.split(r'(?<=[.;:?!])\s+(?=[A-Z0-9\[])', str(s or '').strip()) if words(x)]
+
+
+def swords(s):
+    """Words in a sentence or label, a [placeholder] counting as one (language/register-rules.md, rule 2)."""
+    return words(bare(s, 'X'))
+
+
+def spelled_out(text):
+    """Codes the text pairs with their words: "Purified Water (PW)", "(IQ, OQ and PQ)", "URS (user requirement
+    specification)", or a full form from CODE_FULL anywhere."""
+    out = set()
+    for m in re.finditer(r'\(([^()]*)\)', text):
+        parts = [p for p in re.split(r',\s*|\s+and\s+|\s+or\s+|/', m.group(1).strip()) if p]
+        if parts and all(re.fullmatch(r'[A-Z][A-Z&]*[A-Z]s?', p) for p in parts) and re.search('[a-z]', text[max(0, m.start() - 40):m.start()]):
+            out |= {p[:-1] if p.endswith('s') else p for p in parts}
+    out |= set(re.findall(r'(?<![A-Za-z0-9_&])([A-Z][A-Z&]*[A-Z])s?\s+\([^()]*[a-z][^()]*\)', text))
+    return out | {c for c, rx in CODE_FULL.items() if re.search(rx, text, re.I)}
+
+
+def two_meanings(s):
+    """EU, CSA and DI used in the meaning DR-003 rule 4 bans: EU after a figure (endotoxin units), a CSA that is not a CSA
+    Group standard (software assurance), DI in a sentence on data integrity."""
+    out = []
+    if re.search(r'(?:\d|\])\s*EU\b|\bEU\s*/\s*mL\b', s):
+        out.append('EU for endotoxin units')
+    if re.search(r'\bCSA\b(?!\s+(?:[A-Z]\d|Group\b))', s):
+        out.append('CSA for computer software assurance')
+    if any(re.search(r'\bDI\b', x) and re.search(r'integrity|ALCOA', x, re.I) for x in sentences(s)):
+        out.append('DI for data integrity')
+    return out
+
+
+def register_warnings(pages):
+    """DR-003: leads with more than 2 codes, codes never spelled out on a page, two-meaning codes, sentences over 20 words,
+    buttons over 5 words. Pattern-based, so it over-flags (P&ID, NTU); placeholders never count."""
+    out = []
+    known = {c for pg in pages.values() for path, s in copy_items(pg) if leaf(path) not in LABELS and re.search('[a-z]', bare(s)) for c in codes(s)}
+    for pid, pg in pages.items():
+        lead = list(dict.fromkeys(codes(pg.get('lead'))))
+        if len(lead) > REGISTER['lead_codes']:
+            out.append(('register', 'lead', (pid,), 'lead', '%d codes (%s), at most %d' % (len(lead), ', '.join(lead), REGISTER['lead_codes'])))
+        used, reading = [], []
+        for path, s in copy_items(pg):
+            used += codes(s, known)
+            if leaf(path) in LABELS or not re.search('[a-z]', bare(s)):
+                continue
+            reading.append(s)
+            for x in sentences(s):
+                if swords(x) > REGISTER['sentence']:
+                    out.append(('register', 'sentence', (pid,), path, '%d words, at most %d: "%s"' % (swords(x), REGISTER['sentence'], clip(x))))
+        full = spelled_out('\n'.join(reading))
+        for c in sorted(set(used) - full - CODE_NAMES, key=used.index):
+            out.append(('register', 'spell', (pid,), 'page', '%s never spelled out' % c))
+        for path, s in copy_items(pg, skip=NOT_SHOWN - {'title', 'meta'}):
+            for m in two_meanings(s):
+                out.append(('register', 'twice', (pid,), path, '%s: "%s"' % (m, clip(s))))
+        btn = [('primary_cta', pg.get('primary_cta')), ('secondary_cta.label', (pg.get('secondary_cta') or {}).get('label')), ('cta.button', (pg.get('cta') or {}).get('button'))]
+        for i, b in enumerate(pg.get('blocks', [])):
+            btn += [('blocks[%d].routes[%d].action' % (i, j), r.get('action')) for j, r in enumerate(b.get('routes') or []) if isinstance(r, dict)]
+            btn += [('blocks[%d].steps[%d].next' % (i, j), s.get('next')) for j, s in enumerate(b.get('steps') or []) if isinstance(s, dict)]
+            btn.append(('blocks[%d].submit' % i, b.get('submit')))
+        for where, s in btn:
+            if s and swords(s) > REGISTER['button']:
+                out.append(('register', 'button', (pid,), where, '%d words, at most %d: "%s"' % (swords(s), REGISTER['button'], s)))
+    return out
+
+
+def faq_warnings(pages):
+    """DR-009: one FAQ question on two or more pages (case and punctuation aside), unless every page gives it the same
+    one-line answer. Paraphrases are not caught."""
+    norm = lambda s: re.sub(r'\s+', ' ', re.sub(r'[^\w\s<>]', '', str(s or '').lower().replace('’', "'"))).strip()
+    asked = {}
+    for pid, pg in pages.items():
+        for b in pg.get('blocks', []):
+            if b.get('type') == 'faq':
+                for it in b.get('items', []):
+                    if isinstance(it, dict) and it.get('q'):
+                        asked.setdefault(norm(it['q']), []).append((pid, it['q'], it.get('a') or ''))
+    out = []
+    for hits in asked.values():
+        pids = tuple(dict.fromkeys(h[0] for h in hits))
+        one_line = len({norm(h[2]) for h in hits}) == 1 and len(re.split(r'(?<=[.?!])\s+(?=\S)', hits[0][2].strip())) == 1
+        if len(pids) > 1 and not one_line:
+            out.append(('faq', '', pids, '', '"%s"' % hits[0][1]))
+    return out
+
+
+def figures(s):
+    """(number, unit) for each figure with a unit in s; [placeholders] and "@ 25 °C" conditions left out."""
+    s = re.sub(r'@\s*\d+(?:[.,]\d+)?\s*°C', ' ', bare(s))
+    return [(float(n.replace(',', '')), u.lower()) for n, u in FIGURE.findall(s)]
+
+
+def fact_warnings(pages):
+    """DR-010: a hero fact equal to a public limit (a figure the site states with a pharmacopoeia or regulator), a code as
+    the value, or a label without its " · " basis."""
+    limits = {}
+    for pid, pg in pages.items():
+        for b in pg.get('blocks', []):
+            for r in b.get('rows', []) if b.get('type') == 'spec' else []:
+                if isinstance(r, dict) and REGULATOR.search('%s %s' % (r.get('p') or '', r.get('m') or '')):
+                    for f in figures(r.get('v')):
+                        limits.setdefault(f, '%s, %s on %s' % (clip(r.get('v'), 40), r.get('m'), pid))
+            for row in b.get('rows', []) if b.get('type') == 'table' else []:
+                for c in row if isinstance(row, list) else []:
+                    t = c.get('t') if isinstance(c, dict) else c
+                    if isinstance(t, str) and REGULATOR.search(t):
+                        for f in figures(t):
+                            limits.setdefault(f, '"%s" on %s' % (clip(t, 50), pid))
+    out = []
+    for pid, pg in pages.items():
+        for i, f in enumerate(pg.get('facts') or []):
+            if not isinstance(f, dict):
+                continue
+            v, l, w = str(f.get('v') or ''), str(f.get('l') or ''), 'facts[%d]' % i
+            hit = next((limits[x] for x in figures(v) if x in limits), None)
+            if hit:
+                out.append(('fact', 'limit', (pid,), w, '"%s" equals a public limit (%s)' % (v, hit)))
+            if CODE_VALUE.search(bare(v, '0')):
+                out.append(('fact', 'code', (pid,), w, '"%s" is a code, clause or material, not our figure' % v))
+            if ' · ' not in l:
+                out.append(('fact', 'basis', (pid,), w, 'label "%s" has no " · " basis' % l))
+    return out
+
+
+def form_fields(pg):
+    return [x for b in pg.get('blocks', []) if b.get('type') == 'form' for x in b.get('fields', []) + [y for s in b.get('steps', []) for y in s.get('fields', [])]]
+
+
+def preset(fields, labels):
+    """The options a form ticks for an intent, as wPreset in assets/src/parts/EnquiryForm.js: in shown radio and checkbox
+    groups (one option per radio), a field with "when" shown once an option it names is ticked (three passes)."""
+    shown = [not f.get('when') for f in fields]
+    def ticks(i):
+        f = fields[i]
+        if not shown[i] or f.get('kind') not in ('radio', 'checkbox-group'):
+            return []
+        t = [o for o in f.get('options', []) if o in labels]
+        return t[:1] if f.get('kind') == 'radio' else t
+    for _ in range(3):
+        on = {o for i in range(len(fields)) for o in ticks(i)}
+        shown = [not f.get('when') or any(v in on for v in f['when'].split('|')) for f in fields]
+    return {o for i in range(len(fields)) for o in ticks(i)}
+
+
+def intent_warnings(pages):
+    """DR-014: intent labels (hero, closing, contact routes) that tick nothing on the linked page's form: no such option,
+    or an option the intent never opens ("situation|follow-up" names the situation first)."""
+    out = []
+    for pid, pg in pages.items():
+        pc, c = pg.get('primary_cta') or '', pg.get('cta') or {}
+        links = [('primary_cta_intent', pg.get('primary_cta_intent'), pg.get('primary_cta_link') or ('contact-service' if re.search('service', pc, re.I) else 'contact-proposal')),
+                 ('cta.intent', c.get('intent'), c.get('link') or 'contact-proposal')]
+        for i, b in enumerate(pg.get('blocks', [])):
+            links += [('blocks[%d].routes[%d].intent' % (i, j), r.get('intent'), r.get('link') or '') for j, r in enumerate(b.get('routes') or [])
+                      if isinstance(r, dict) and r.get('link') and not r.get('current') and r.get('link') != pid]
+        for where, intent, link in links:
+            if not intent:
+                continue
+            if link.startswith('#'):
+                out.append(('intent', '', (pid,), where, 'on an in-page link (%s), which ticks nothing' % link))
+                continue
+            target = link.split('#')[0]
+            fields = form_fields(pages.get(target, {}))
+            options = {o for f in fields if f.get('kind') in ('radio', 'checkbox-group') for o in f.get('options', [])}
+            on = preset(fields, intent.split('|'))
+            for label in intent.split('|'):
+                if label not in on:
+                    out.append(('intent', '', (pid,), where, '"%s" %s on %s' % (label, 'is an option the intent never opens' if label in options else 'is not a form option', target)))
+    return out
+
+
+def contact_warnings(pages):
+    """DR-008: a CONTACT value (assets/src/core.js) that no page file carries, so the nav and footer copy has drifted."""
+    m = re.search(r'var CONTACT=\{(.*?)\};', open(os.path.join(ROOT, 'assets', 'src', 'core.js'), encoding='utf8').read(), re.S)
+    text = [s for pg in pages.values() for _, s in copy_items(pg, skip={'todo'})]
+    return [('contact', '', (), 'CONTACT.' + k, '"%s" is on no page file' % v) for k, v in re.findall(r"(\w+):'((?:[^'\\]|\\.)*)'", m.group(1) if m else '')
+            if not any(v in s for s in text)]
+
+
+def link_warnings(pages):
+    """DR-008 rule 6: a link field (link, primary_cta_link, related items) naming a page that does not exist, a
+    page#anchor or #anchor whose page has no block with that anchor (jid in assets/src/parts/SectionNav.js), or an
+    in-page #anchor outside the hero and closing buttons (wBtn), which are the only links that jump within a page."""
+    def ids(pg):
+        return {b.get('anchor') or 's-%d-%s' % (i, re.sub(r'[^a-z0-9]+', '-', str(b.get('nav')).lower())) for i, b in enumerate(pg.get('blocks', [])) if b.get('nav') or b.get('anchor')}
+    def walk(x, path=''):
+        if isinstance(x, dict):
+            for k, v in x.items():
+                p = path + '.' + k if path else k
+                if k in ('link', 'primary_cta_link') and isinstance(v, str):
+                    yield p, v
+                elif k == 'items' and x.get('type') == 'related' and isinstance(v, list):
+                    yield from (('%s[%d]' % (p, i), s) for i, s in enumerate(v) if isinstance(s, str))
+                else:
+                    yield from walk(v, p)
+        elif isinstance(x, list):
+            for i, v in enumerate(x):
+                yield from walk(v, '%s[%d]' % (path, i))
+    out = []
+    for pid, pg in pages.items():
+        for where, link in walk(pg):
+            if re.match(r'[a-z][a-z0-9+.-]*:|/', link):
+                continue  # an address outside the site
+            page, _, anchor = link.partition('#')
+            if not page and where not in ('primary_cta_link', 'secondary_cta.link', 'cta.link'):
+                out.append(('link', '', (pid,), where, '"%s": an in-page link works only in the hero and closing buttons; write %s%s' % (link, pid, link)))
+                continue
+            page = page or pid
+            if page not in pages:
+                out.append(('link', '', (pid,), where, '"%s": no page %s' % (link, page)))
+            elif anchor and anchor not in ids(pages[page]):
+                out.append(('link', '', (pid,), where, '"%s": %s has no block with anchor "%s"' % (link, page, anchor)))
+    return out
+
+
+def content_warnings(pages):
+    return register_warnings(pages) + faq_warnings(pages) + fact_warnings(pages) + intent_warnings(pages) + contact_warnings(pages) + link_warnings(pages)
+
+
+def report_warnings(ws, show=False, only=None):
+    """With show, one WARN line per warning (only: a page id or a warning type); then one summary line per type."""
+    if only:
+        ws = [w for w in ws if w[0] == only or only in w[2]]
+    if show:
+        for kind, sub, pids, where, msg in ws:
+            print('WARN %s %s: %s' % (kind, ' '.join(x for x in (', '.join(pids), where) if x), msg))
+    for kind, record, label, subs in WARN_TYPES:
+        mine = [w for w in ws if w[0] == kind]
+        parts = ', '.join('%d %s' % (sum(1 for w in mine if w[1] == s), t) for s, t in subs)
+        print('%d %s (%s)%s' % (len(mine), label, record, ': ' + parts if parts else ''))
+    if not show:
+        print('content warnings never fail the check; run check --warnings [page or type] for detail')
+
+
+def check(show_budgets=False, only=None, show_warnings=False):
+    if hasattr(sys.stdout, 'reconfigure'):
+        sys.stdout.reconfigure(errors='backslashreplace')  # warnings quote page copy (≤, µ); never crash on a narrow console
     t = load_tokens()
     names = set()
     problems = []
@@ -347,32 +677,16 @@ def check(show_budgets=False, only=None):
     used = {c for c in re.findall(r'\baq-[a-z0-9_-]+', js) if not c.endswith('--')}
     for cls in sorted(used - defined - {'aq-ah'}):
         problems.append('assets/src uses a class no component style.css defines: ' + cls)
-    # Intent pre-sets (primary_cta_intent, cta.intent) must name options of a radio or checkbox group on the linked page's form
+    # Page files. Intents that tick no option on the linked form are a content warning (DR-014, intent_warnings), not a
+    # problem: the proposal form and the intents that link to it are rewritten page by page.
     pdir = os.path.join(ROOT, 'content', 'pages')
     pages = {}
     for f in sorted(os.listdir(pdir)):
         if f.endswith('.json'):
             pg = json.load(open(os.path.join(pdir, f), encoding='utf8'))
             pages[pg['id']] = pg
-    def form_options(pg):
-        opts = set()
-        for b in pg.get('blocks', []):
-            if b.get('type') == 'form':
-                for fd in b.get('fields', []) + [x for s in b.get('steps', []) for x in s.get('fields', [])]:
-                    if fd.get('kind') in ('radio', 'checkbox-group'):
-                        opts |= set(fd.get('options', []))
-        return opts
     for pid, pg in pages.items():
-        pc = pg.get('primary_cta') or ''
-        hero = pg.get('primary_cta_link') or ('contact-service' if re.search('service', pc, re.I) else 'contact-proposal')
         c = pg.get('cta') or {}
-        for where, intent, target in (('primary_cta_intent', pg.get('primary_cta_intent'), hero), ('cta.intent', c.get('intent'), c.get('link') or 'contact-proposal')):
-            if not intent:
-                continue
-            opts = form_options(pages.get(target, {}))
-            for label in intent.split('|'):
-                if label not in opts:
-                    problems.append('%s %s: "%s" is not a form option on %s' % (pid, where, label, target))
         # Closing proof: explicit {v, l}, a confirmed figure (no [placeholder]); nothing is taken from the hero facts
         pr = c.get('proof')
         if pr is not None and (not isinstance(pr, dict) or not pr.get('v') or '[' in str(pr.get('v'))):
@@ -389,6 +703,9 @@ def check(show_budgets=False, only=None):
         print('%d budget overrun(s)%s' % (len(shown), ' on ' + only if only else ''))
     else:
         print('%d budget overruns (run check --budgets for detail)' % len(over))
+    if show_warnings and only and only not in pages and only not in [w[0] for w in WARN_TYPES]:
+        print('no page or warning type named ' + only)
+    report_warnings(content_warnings(pages), show_warnings, only if show_warnings else None)
     # The site script must parse; node is optional (skipped where it isn't installed, e.g. some CI images).
     node = shutil.which('node')
     if node:
@@ -428,9 +745,9 @@ if __name__ == '__main__':
     elif cmd == 'new' and len(sys.argv) > 3:
         new(sys.argv[2], sys.argv[3])
     elif cmd == 'check':
-        b = '--budgets' in sys.argv
-        rest = [a for a in sys.argv[2:] if a != '--budgets']
-        sys.exit(0 if check(b, rest[0] if b and rest else None) else 1)
+        b, w = '--budgets' in sys.argv, '--warnings' in sys.argv
+        rest = [a for a in sys.argv[2:] if a not in ('--budgets', '--warnings')]
+        sys.exit(0 if check(b, rest[0] if (b or w) and rest else None, w) else 1)
     elif cmd == 'stage' and len(sys.argv) > 2:
         stage(sys.argv[2])
     else:

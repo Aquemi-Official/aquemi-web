@@ -1,22 +1,22 @@
 # Website
 
-The site has one job: help a pharmaceutical engineering or quality team decide that Aquemi can deliver a compliant water system, then start a conversation. Every page should answer three questions quickly: what it is, which standard it meets, and how to talk to us.
+The site has one job: let everyone who must agree to the purchase (who specifies, qualifies, approves and pays) decide without contacting us whether Aquemi fits, then start the conversation where their project stands. Every page should answer three questions quickly: what it is, which standard it meets, and how to talk to us. Approvers add a fourth: cost, time, and who carries the risk. Each of their questions has one home (below), not a page of its own.
 
 ## Sitemap
 
 | Section | Pages | Purpose |
 | --- | --- | --- |
-| Systems | Purified Water (PW) generation · Storage and distribution loops · Pretreatment · Monitoring and controls | One page per module of the PP package: what it does, key specifications, configuration options, documentation delivered. WFI, pure steam and stainless steel systems are not offered; their pages are archived in `content/retired/`. |
-| Services | Process design and engineering · Fabrication · FAT and SAT · Commissioning and qualification (IQ/OQ/PQ) · Service and spare parts · Upgrades and retrofits | How a project runs from user requirement specification to handover and beyond. |
-| Industries | Pharmaceutical · Medical devices · Contract manufacturing (CDMO) | Each industry page links to the systems it uses most. |
-| Compliance | Standards we design to · Documentation package · Quality management | The page validation and QA teams will look for first. Only list certifications Aquemi actually holds. |
-| Projects | Case studies | Problem, system delivered, measured outcome. Use real figures or don't publish. |
-| Company | About · Careers · News | |
-| Contact | Request a proposal · Service request · Locations | Forms ask for project stage, system type and required capacity in L/h. |
+| Systems | Purified Water (PW) generation · Storage and distribution loops · Pretreatment · Monitoring and controls | One page per module of the PP package: what it does, key specifications, configuration options, documentation delivered. Written first for the process engineer (QA, QC microbiology or maintenance by module); finance, contractors and EHS read second. The hub holds the budget range and the site requirements. WFI, pure steam and stainless steel systems are not offered; their pages are archived in `content/retired/`. |
+| Services | Process design and engineering · Fabrication · FAT and SAT · Commissioning and qualification (IQ/OQ/PQ) · Service and spare parts · Upgrades and retrofits | How a project runs from user requirement specification to handover and beyond, written first for validation leads and project managers (maintenance leads once the system runs); procurement reads second. The hub holds the durations; Service and spare parts holds the running cost. |
+| Industries | Pharmaceutical · Medical devices · Contract manufacturing (CDMO) | Each industry page links to the systems it uses most, written first for process engineers and QA heads; site heads and founders read second. The hub holds the plain path to a first PW system. |
+| Compliance | Standards we design to · Documentation package · Quality management | The pages validation and QA teams will look for first. Quality management is also procurement's page and holds the terms: how buying from us works. Only list certifications Aquemi actually holds. |
+| Projects | Projects | Has it been done, and how can we check? For site heads, procurement and QA heads. Until the first delivered project is accepted and its client approves the text in writing: where Aquemi stands, in true facts only (a new Ontario company, no case study yet), and the checks a buyer can run now, each linking to its own form. No template record, reference call or form of its own. After it: problem, system delivered, measured outcome. Use real figures or don't publish. |
+| Company | About · Careers · News | About holds the company facts an approver checks, for site heads, procurement and QA heads; finance and founders read second. Careers is for applicants, News for engineers before a project starts. |
+| Contact | Request a proposal · Service request · Locations | For whoever is ready to ask. The proposal form starts from the buyer's situation (a URS or a draft, a product, water data, a running system, or not sure yet) and asks only what the reply uses: sizing fields, with flow in L/h, only for a new system. |
 
 ## Home page
 
-1. **Hero.** `eyebrow`, one `display-xl` line, one `body-lg` sentence, one primary button ("Request a proposal") and one secondary link ("Explore systems"). A wide photograph of a finished skid or an installed loop on `navy` or `surface`. No carousel.
+1. **Hero.** `eyebrow`, one `display-xl` line, one `body-lg` sentence, one primary button ("Talk to an engineer") and one secondary link ("Explore systems"). A wide photograph of a finished skid or an installed loop on `navy` or `surface`. No carousel.
 2. **Systems index.** The system families in a 3-column grid on desktop, 1 column on phones. Each item: `h3` name, one line of description, the governing standard as a tag. Hairlines between items, not cards.
 3. **Proof in numbers.** One `readout`: a single large measurement with its method on the limit tag and a one-sentence caption below. Only real, sourced figures.
 4. **How we work.** The project sequence (Design → Fabricate → Test → Qualify → Support) as a horizontal sequence. This is a genuine order, so numbering is appropriate here.
@@ -38,9 +38,10 @@ The site has one job: help a pharmaceutical engineering or quality team decide t
 
 - Top bar on `surface` with a `line` bottom rule; it scrolls with the page (not sticky; the SectionNav is what sticks on long pages). Logo left; Systems, Services, Industries, Compliance, Projects, Company; then, right, a "Service request" text link to contact-service, styled as a section link (`aria-current="page"` on contact-service), and the "Request a proposal" button. Six sections stay: "Service request" is a utility link, not a seventh section (beside Services it would read as a duplicate).
 - On narrow screens (below about 1,020 px, phones included) the bar collapses to the logo and a menu toggle; the links, the service link and the button move into the menu, which opens under the bar on `surface`.
-- The menu opens with the urgent block, the urgent contact route, on `limestone`: "Production stopped?", the service number as a `tel:` link (placeholder text, never a link, until it is confirmed), then a "Service request" row. Then the sections, the page's section jump and the proposal button.
-- The service number in the menu and the contact line in the footer (service and sales numbers, head office) come from one source, `CONTACT` in `assets/src/core.js`, filled in the same commit as the page files that repeat them.
-- A link in a page file may name a block: `page#anchor` (`cmp-quality#buying`, `systems#budget`) opens that page at the block whose `anchor` (or nav id) matches; without a match the page opens at the top.
+- The menu opens with the urgent block, the urgent contact route, on `limestone`: "Production stopped?", the service number as a `tel:` link (placeholder text, never a link, until it is confirmed) with the hours it is answered, then a "Service request" row. The number never shows without its hours, so the block never promises round-the-clock help. Then the sections, the page's section jump and the proposal button.
+- **Launch rule for the urgent block.** The code has no draft or launch switch, so this is a release step: while the service number is unconfirmed, take the urgent block out of the menu (`aq-menu__urgent` in `assets/src/parts/NavBar.js`) and keep its "Service request" row, first in the menu. The block comes back when the number and its hours are filled together.
+- The service number and hours in the menu, and in the footer the description's shop location and the contact line (service and sales numbers, head office), come from one source, `CONTACT` in `assets/src/core.js`, under the pages' placeholder names, filled in the same commit as the page files that repeat them. `check` warns on a `CONTACT` value no page file carries.
+- A link in a page file may name a block: `page#anchor` (`cmp-quality#buying`, `systems#budget`) opens that page at the block whose `anchor` (or nav id) matches; without a match the page opens at the top. It works in every link field: the hero's button and secondary link, the closing button, contact routes, table cells, rows, related links and the footer. `#anchor` scrolls to a block on the same page, in the hero's button and secondary link and the closing button (`primary_cta_link`, `secondary_cta.link`, `cta.link`); elsewhere write `page#anchor`. `check` warns on a link whose page or anchor does not exist.
 - Mega-menus list system pages in plain text columns with no icons.
 
 ## What we learned from category leaders
@@ -93,7 +94,7 @@ The page is `surface`, in light or dark theme as the brand book sets it. Section
 
 ## Closing checklist
 
-The closing call to action can carry the page's "what to send us" list as `cta.include` (three to seven strings, 8 words or fewer each; `cta.include_label` overrides the label). Add `cta.returns` (two to four strings: what comes back, named as documents, only what the page already promises) and `cta.turnaround` (a placeholder until confirmed) and the closing shows the exchange: what you send → turnaround → what comes back. Use it instead of a separate `docs` block for the same list: one ask, in one place. The proof box under it shows only an explicit `cta.proof` (`{"v", "l"}`): one confirmed figure that evidences the ask, such as an Aquemi commitment or a test we run, never a pharmacopoeia limit on its own. Leave it out otherwise; the closing does not borrow hero facts.
+The closing call to action can carry the page's "what to send us" list as `cta.include` (three to seven strings, 8 words or fewer each; `cta.include_label` overrides the label). Add `cta.returns` (two to four strings: what comes back, named as documents, only what the page already promises) and `cta.turnaround` (a placeholder until confirmed) and the closing shows the exchange: what you send → turnaround → what comes back. Use it instead of a separate `docs` block for the same list: one ask, in one place. The proof box under it shows only an explicit `cta.proof` (`{"v", "l"}`): one confirmed figure that evidences the ask, such as an Aquemi commitment or a test we run, never a public limit (a pharmacopoeia or regulatory limit, labelled or not). Leave it out otherwise; the closing does not borrow hero facts.
 
 ## Content budgets
 
@@ -114,6 +115,19 @@ The closing call to action can carry the page's "what to send us" list as `cta.i
 | Tinted bands per page | ≤ 1 | band and tags blocks |
 | Visible words per page | ≤ 1,300 (FAQ answers, folded rows and conditional form fields excluded) | hero, facts, every block string, `cta` |
 | Placeholder text | ≤ 8 words | every `[...]`; the question goes in `todo` |
+
+## Content warnings
+
+`check` also prints one line per kind of content warning, the site-wide decision records' rules read off the page files. Like the budgets they never fail the check. `check --warnings` lists them all, `check --warnings <pageId>` one page's and `check --warnings <type>` one kind, as `WARN <type> <page> <where>: <message>`. Words inside `[placeholders]` never count (they are filled before launch); a placeholder counts as one word.
+
+| Type | Warns on | Record |
+| --- | --- | --- |
+| `register` | A hero lead with more than 2 codes. A code a page uses (eyebrows included) that its reading text never spells out as "words (CODE)", "CODE (words)" or the full form. EU, CSA or DI in their second meaning (endotoxin units, software assurance, data integrity). A sentence over 20 words. A button or secondary link over 5 words. Codes are runs of two or more capitals, so the count over-flags; standards, their bodies, places and currency are cited as they are. | DR-003 |
+| `faq` | One FAQ question on two or more pages, unless every page gives it the same one-line answer. Paraphrases are not caught. | DR-009 |
+| `fact` | A hero fact equal to a public limit (a figure the site states with a pharmacopoeia or regulator), a code, clause or material as the value, or a label without its " · " basis. | DR-010 |
+| `intent` | An intent label that ticks nothing on the linked page's form: no such option, or an option the intent never opens (name the situation first: `situation\|follow-up`). | DR-014 |
+| `contact` | A `CONTACT` value that no page file carries. | DR-008 |
+| `link` | A link to a page that does not exist, a `page#anchor` or `#anchor` whose page has no block with that anchor, or an in-page `#anchor` where only `page#anchor` works. | DR-008 |
 
 ## Canonical page skeletons
 
