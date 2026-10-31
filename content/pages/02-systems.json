@@ -22,7 +22,7 @@
    "stages": [
     {
      "t": "Municipal feed",
-     "icon": "valve",
+     "icon": "droplet",
      "d": "Chlorinated city or well water that changes with the season."
     },
     {
@@ -47,12 +47,12 @@
     },
     {
      "t": "Distribution loop",
-     "spot": "pump",
+     "spot": "loop",
      "d": "Keeps water moving and sanitized between the tank and every outlet."
     },
     {
      "t": "Points of use",
-     "icon": "loop",
+     "icon": "valve",
      "d": "Where production draws water from the loop."
     }
    ],

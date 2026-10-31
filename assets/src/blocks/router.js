@@ -1,15 +1,15 @@
 /* Table as "router" -> Router: the buyer picks the situation they are in and sees one route through the columns that
    follow (the water they need, the system, where to start). Fields as a table: cols (first is the situation column,
    the rest name the stations), rows (first cell the situation, each other cell a string or {t, link}).
-   One situation is open at a time, the first by default. The whole router sits on a drawing plate. Desktop: situations
-   on the left, the open route on the right as framed stations joined by flow pipes with arrowheads, a pipe from the
+   One situation is open at a time, the first by default. The whole router sits on a plate. Desktop: situations
+   on the left, the open route on the right as stations joined by flow lines with arrowheads, a flow line from the
    chosen situation into it. Phones: each route opens under its situation, its stations down a riser.
    A route whose cells link somewhere (the last link wins, usually "Start with") is clickable as a whole: the frame
    carries a pointer-only overlay to that page; the real link inside stays the keyboard and screen reader target, and
-   that station is drawn as the filled end station.
+   that station is drawn as the tinted end station.
    Every route is in the markup (hidden when closed), so nothing is lost to search or screen readers.
    Pending station: a value that opens with a [placeholder] ("[days]; DI runs until release") is a fact still to come,
-   drawn in a dashed frame with a small "To confirm" caption, so it reads as a value on order, not an empty box. */
+   drawn with a dashed hairline and a small "To confirm" eyebrow, so it reads as a value on order, not a gap. */
 var routerN=0;
 TABLE_AS.router=function(b,H){var C=b.cols||[],R=b.rows||[],k=++routerN;
  function lnk(c){return c&&typeof c==='object'&&c.link&&wp(c.link)?c.link:''}

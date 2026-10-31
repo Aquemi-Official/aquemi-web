@@ -1,8 +1,8 @@
-/* Table as "plans" -> PlanTiers: service plans compared in one table on a cream drawing plate, one action per plan.
+/* Table as "plans" -> PlanTiers: service plans compared in one table on a plate, one action per plan.
    Fields as a table: cols [row label, plan A, plan B, …], rows [feature, value per plan]. A row whose label starts
    "Suits" becomes the "Fits when" row under the table; every other row is a numbered feature row (01, 02 …). A column
    named "No plan…" is the baseline: quieter, last, no button. b.recommend (column index or plan name) frames that
-   plan in a thick flow outline with a "Recommended" tab and a flow-tint fill; only when the page says so. Each plan
+   plan as the one flow-tint column with "Recommended" above its name; only when the page says so. Each plan
    ends with the page's own CTA (primary_cta, its link and intent; else cta.button), so no new intents.
    Desktop: a real table, label column then one column per plan. Phones: a tier switcher (buttons with aria-pressed)
    shows one plan's column at a time; every tier stays in the DOM and the renderer only sets data-show, so with no
@@ -30,7 +30,7 @@ TABLE_AS.plans=function(b,H){var C=b.cols||[],R=b.rows||[],lab=function(r){retur
   +(t.rec?'<span class="aq-plan-tiers__tabmark">Recommended</span>':'')+'<span>'+tx(t.n)+'</span></button>'}).join('')+'</div>';
  var table='<div class="aq-plan-tiers'+(rec>0?' has-rec':'')+'" data-show="'+show+'" style="--tiers:'+T.length+'">'+sw
   +'<table class="aq-plan-tiers__table">'+head+body+foot+'</table></div>';
- return sec(H+wPlate(wFold(b,rows.length,table,b.fold_noun||'features'),{light:true,cls:'aq-plan-tiers__plate',block:['Aquemi',b.nav||'Plans',T.length+' plans']}));};
+ return sec(H+wPlate(wFold(b,rows.length,table,b.fold_noun||'features'),{cls:'aq-plan-tiers__plate',block:['Aquemi',b.nav||'Plans',T.length+' plans']}));};
 /* Tier switcher (phones): show the pressed plan's column; arrow keys move between the buttons */
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-plan-tiers__tab');if(!t)return;var w=t.closest('.aq-plan-tiers');
  w.setAttribute('data-show',t.getAttribute('data-tier'));w.querySelectorAll('.aq-plan-tiers__tab').forEach(function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});

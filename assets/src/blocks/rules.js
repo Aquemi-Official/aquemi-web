@@ -1,5 +1,5 @@
 /* ---------- spec "as": "rules" -> LimitGauges, rule variant ----------
-   Design rules that are not release limits (L/D ≤ 2, return velocity ≥ x, sanitization ≥ 65 °C), on the gauges' cream
+   Design rules that are not release limits (L/D ≤ 2, return velocity ≥ x, sanitization ≥ 65 °C), on the gauges'
    plate: one ruled row per rule, its big mono number, the rule name, then a compact horizontal threshold bar (the scale
    with ticks, the threshold mark with its chip, the passing side shaded flow) with the rule as written under it, and the
    basis with standard names as tags. A rule without a threshold (a part, a method) keeps the row with its value between
@@ -30,4 +30,4 @@ function wRules(b,rows){
      +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'
      +'<div class="aq-limit-gauges__rv">'+(g?wRuleBar(g):'')+'<p class="aq-limit-gauges__rt">'+tx(r.v)+'</p></div>'
      +(r.m?'<p class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</p>':'')+'</li>'}).join('');
-  return wPlate(wFold(b,rows.length,'<ol class="aq-limit-gauges aq-limit-gauges--rules" role="list">'+list+'</ol>',b.fold_noun||'rules'),{light:true,block:['Aquemi',b.caption||'Design rules']})}
+  return wPlate(wFold(b,rows.length,'<ol class="aq-limit-gauges aq-limit-gauges--rules" role="list">'+list+'</ol>',b.fold_noun||'rules'),{block:['Aquemi',b.caption||'Design rules']})}

@@ -49,7 +49,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [Standards we design to](https://aquemi-official.github.io/aquemi-web/#compliance) | Every standard we cite, the number it sets and the document that proves it | standards-map (Map), spec (Limits), table as evidence (Pharmacopoeia), table as evidence (GMP, navy), table as evidence (Engineering), grid (Certificates), faq (FAQ), related (Where the proof lives), closing (checklist, returns) |
+| [Standards we design to](https://aquemi-official.github.io/aquemi-web/#compliance) | Every standard we cite, the number it sets and the document that proves it | standards-map (Map), spec (Limits), table as evidence (Pharmacopoeia), table as evidence (GMP), table as evidence (Engineering), grid (Certificates), faq (FAQ), related (Where the proof lives), closing (checklist, returns) |
 | [Documentation package](https://aquemi-official.github.io/aquemi-web/#cmp-documentation) | Every document your auditor will ask for, indexed to your requirements | table (Master index), docs (Package), steps (Review cycle), spec (Delivery), form (Request a sample), faq (FAQ), related (Related pages), closing (checklist, proof) |
 | [Quality management](https://aquemi-official.github.io/aquemi-web/#cmp-quality) | Audit our quality system before you award the contract | table (Processes), steps (NCR and CAPA), table (Suppliers), spec (Calibration), grid (Certificates), table (Audit us), form (Request), faq (FAQ), related (Related pages), closing (checklist) |
 
@@ -63,7 +63,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [About](https://aquemi-official.github.io/aquemi-web/#about) | A Canadian specialist in pharmaceutical water | prose (Why a specialist, why Canadian, why one team), steps (One team), grid (Why Canadian), grid (Team), spec (Company), grid (Verify), faq (FAQ), related (Related pages), closing (proof) |
+| [About](https://aquemi-official.github.io/aquemi-web/#about) | A Canadian specialist in pharmaceutical water | steps as row (How we work), prose (Why a specialist, why Canadian, why one team), steps (One team), grid (Why Canadian), grid (Team), spec (Company), grid (Verify), faq (FAQ), related (Related pages), closing (proof) |
 | [Careers](https://aquemi-official.github.io/aquemi-web/#careers) | Build systems that pass inspection | prose (The work), table (Roles), spec (Pay & terms), steps (Hiring), form (Apply), faq (FAQ), related (Read about the work first), closing (checklist) |
 | [News](https://aquemi-official.github.io/aquemi-web/#news) | Water system questions, answered in the first three sentences | register (Notes), form (Subscribe), faq (FAQ), closing (checklist, returns) |
 
@@ -83,7 +83,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | hero | Hero: the page's Illustration with callouts to its `facts` when it has a drawing, otherwise KeyFacts; hub and company pages show a section index unless the page sets `hero_index: false` |
 | prose | Prose inside SplitSection |
 | grid | LinkGrid (rows; item `icon` → Icon in the index column, replacing the end drawing) |
-| grid `as: "route"` | VisitRoute (navy: numbered stops on one dashed route, rows that snake on desktop, vertical on phones; last item `end: true` is the sign-off) |
+| grid `as: "route"` | VisitRoute (numbered stops on one route, rows that snake on desktop, vertical on phones; last item `end: true` is the sign-off) |
 | related | RelatedLinks |
 | path | WaterPath |
 | options | OptionList (rows; item `icon` → Icon) |
@@ -102,11 +102,12 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | options `as: "decisions"` | OptionList decisions (framed rows, ? tag, fork mark on two-way decisions, optional `by`; ind-biotech) |
 | spec as callouts | ParameterCallouts (rows with `at` on the page's drawing, the rest as SpecTable; sys-pw, sys-wfi-membrane, sys-pure-steam, sys-storage, sys-monitoring) |
 | table | CompareTable (phones: records up to three value columns, tabs from four; link columns end each row) |
-| table `as: "plans"` | PlanTiers (navy: plans side by side, phones stacked; "Suits" and "Price" rows head each plan; optional `recommend`; one page-CTA button per plan) |
-| contact-routes | ContactRoutes (navy: the ways in as cards, each with three next steps and a response clock; `current` route marked "This page" and jumps to the form; `urgent` route on limestone with the phone set large, first on phones; in use on contact-proposal, contact-service, contact-locations) |
-| register | NotesRegister (navy: topic filter chips, featured note panel, register table date · no. · topic · title · standard; undated items show "Planned"; phones two-line rows, chips scroll; in use on news) |
-| standards-map | StandardsMap (navy: zones of the water system on one pipe, each labelled with its standards; code chips scroll to the row that proves them; phones stacked rows with chips) |
-| prose `as: "explainer"` | Explainer (navy: one idea as a figure plus 3-4 numbered callouts; `figure` kind `levels` (bars against a dashed limit) or `art` (the page's drawing with numbered pins)) |
+| table `as: "plans"` | PlanTiers (plans side by side, phones stacked; "Suits" and "Price" rows head each plan; optional `recommend`; one page-CTA button per plan) |
+| steps `as: "row"` | ProcessSteps row (a short sequence read across: rule on top, flow number, name, one sentence; in use on about) |
+| contact-routes | ContactRoutes (the ways in as cards, each with three next steps and a response clock; `current` route marked "This page" and jumps to the form; `urgent` route on limestone with the phone set large, first on phones; in use on contact-proposal, contact-service, contact-locations) |
+| register | NotesRegister (topic filter chips, featured note panel, register table date · no. · topic · title · standard; undated items show "Planned"; phones two-line rows, chips scroll; in use on news) |
+| standards-map | StandardsMap (zones of the water system on one pipe, each labelled with its standards; code chips scroll to the row that proves them; phones stacked rows with chips) |
+| prose `as: "explainer"` | Explainer (one idea as a figure plus 3-4 numbered callouts; `figure` kind `levels` (bars against a dashed limit) or `art` (the page's drawing with numbered pins)) |
 | form | EnquiryForm (with TextField and Button) inside SplitSection; with `steps` it renders the stepped variant |
 | block `nav` label | SectionNav (rendered by the page, not a block) |
 | `[bracketed facts]` in any copy | Placeholder |

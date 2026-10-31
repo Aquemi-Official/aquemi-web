@@ -3,12 +3,12 @@
    [factor, A, B]. A row whose factor starts "Fits when" (or "Choose") becomes the verdict: two closing lines,
    "Choose <A> when …" and "Choose <B> when …", under the rows. Desktop: A right-aligned against the spine, the factor
    on the spine, B left-aligned. Phones: each factor with A and B under it, each line tagged with its route.
-   Drawn on a plate (wPlate): the two route names face each other across an "or" node, each factor is a numbered node on
-   the spine with leader lines out to both answers.
+   Drawn on a plate (wPlate): the two route names face each other across an "or", each factor sits on the spine with
+   hairline leaders out to both answers.
    fold: N shows the first N factors (the verdict always shows); put the deciding factors first.
    conclusion: [label, A, B] (or a string): a closing line that is not a choice (what carries into IQ/OQ), drawn as a
-   footer band across the plate under the factors, the label on the spine. ground: "light" sets it on the cream sheet
-   (the plate goes sunken so it still reads as a drawing on the sheet). */
+   footer band across the plate under the factors, the label on the spine. ground: "light" is still accepted (it adds
+   .aq-versus-plate--light) but changes nothing: the plate is a light surface in the light theme already. */
 TABLE_AS.versus=function(b,H){var C=b.cols||[],R=b.rows||[],A=tcell(C[1]),B=tcell(C[2]);
  var fit=R.filter(function(r){return /^(fits when|choose)/i.test(String(r[0]&&r[0].t||r[0]))})[0],rows=R.filter(function(r){return r!==fit});
  return sec(H+wPlate('<div class="aq-versus"><div class="aq-versus__head" aria-hidden="true"><p class="aq-versus__name">'+A+'</p><span class="aq-versus__vs">or</span><p class="aq-versus__name">'+B+'</p></div>'

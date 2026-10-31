@@ -79,7 +79,7 @@
      "d": "Online TOC and conductivity on the raw reading, audit trails to 21 CFR Part 11.",
      "tag": "21 CFR Part 11",
      "link": "sys-monitoring",
-     "icon": "toc"
+     "icon": "conductivity"
     }
    ]
   },
@@ -118,32 +118,26 @@
   {
    "type": "steps",
    "h": "How a project runs",
-   "as": "stages",
    "items": [
     {
      "t": "Design",
-     "d": "Your URS becomes a functional specification, P&IDs and a risk assessment, verified at DQ.",
-     "icon": "pid"
+     "d": "Your URS becomes a functional specification, P&IDs and a risk assessment, verified at DQ."
     },
     {
      "t": "Fabricate",
-     "d": "316L to ASME BPE, orbital welds, each product-contact weld logged with its heat number.",
-     "icon": "weld"
+     "d": "316L to ASME BPE, orbital welds, each product-contact weld logged with its heat number."
     },
     {
      "t": "FAT",
-     "d": "A wet FAT to a protocol your quality unit approves, witnessed in person or remotely.",
-     "icon": "pump"
+     "d": "A wet FAT to a protocol your quality unit approves, witnessed in person or remotely."
     },
     {
      "t": "SAT and IQ/OQ",
-     "d": "SAT on your feed water and utilities, then IQ/OQ to protocols your quality unit approved.",
-     "icon": "binder"
+     "d": "SAT on your feed water and utilities, then IQ/OQ to protocols your quality unit approved."
     },
     {
      "t": "PQ and service",
-     "d": "PQ support through 12 months of data, then service that keeps it qualified.",
-     "icon": "calendar"
+     "d": "PQ support through 12 months of data, then service that keeps it qualified."
     }
    ]
   },

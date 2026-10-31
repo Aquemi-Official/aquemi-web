@@ -21,41 +21,34 @@
  "blocks": [
   {
    "type": "steps",
-   "as": "stages",
    "nav": "Stages",
    "h": "What each stage proves",
    "intro": "One C&Q plan, approved by your quality unit, covers every stage.",
    "items": [
     {
      "t": "Commissioning",
-     "d": "Flush, pressure test, passivation, start-up, punch list.",
-     "icon": "wrench"
+     "d": "Flush, pressure test, passivation, start-up, punch list."
     },
     {
      "t": "FAT and SAT",
      "d": "Wet test at our shop, repeated on your utilities.",
-     "icon": "gauge",
      "link": "svc-fat-sat"
     },
     {
      "t": "IQ",
-     "d": "Installed as designed: drawings, materials, welds, slopes, instruments.",
-     "icon": "pid"
+     "d": "Installed as designed: drawings, materials, welds, slopes, instruments."
     },
     {
      "t": "OQ",
-     "d": "Performs across its operating ranges, worst case included.",
-     "icon": "conductivity"
+     "d": "Performs across its operating ranges, worst case included."
     },
     {
      "t": "PQ",
-     "d": "Required quality, reproducibly, across the seasons.",
-     "icon": "calendar"
+     "d": "Required quality, reproducibly, across the seasons."
     },
     {
      "t": "Periodic review",
-     "d": "Data and changes reviewed yearly; requalify only what they point to.",
-     "icon": "magnifier"
+     "d": "Data and changes reviewed yearly; requalify only what they point to."
     }
    ]
   },

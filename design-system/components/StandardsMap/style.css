@@ -1,89 +1,73 @@
 /* ---------- StandardsMap: a plant map of the water system, each zone labelled with the standards that govern it ----------
-   Desktop: zones as dashed framed areas in two rows, a flow-coloured pipe header between them, a branch from each zone to
-   the pipe. Phones: zones stacked as compact rows on a vertical pipe at the left, codes as chips. Navy ground. */
+   Desktop: zones as hairline-framed areas in two rows, a 1 px flow line (the water main) between them, a flow branch
+   from each zone to it. Phones: zones stacked as compact rows on a vertical flow line at the left, codes as pill tags. */
 .aq-standards-map { min-width: 0; }
 .aq-standards-map__zones {
   position: relative; list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); grid-template-rows: auto var(--space-16) auto;
   column-gap: var(--space-8);
 }
-/* the pipe header: one flow line across the middle row, an arrow at its end */
+/* the main: one flow line across the middle row, an arrow at its end */
 .aq-standards-map__zones::before {
   content: ""; grid-row: 2; grid-column: 1 / -1; align-self: center; height: 0;
-  border-top: 2px solid var(--flow);
+  border-top: 1px solid var(--flow);
 }
 .aq-standards-map__zones::after {
-  content: ""; grid-row: 2; grid-column: -2 / -1; justify-self: end; align-self: center; margin-right: -2px;
-  width: 0; height: 0; border-left: var(--space-2) solid var(--flow); border-block: 5px solid transparent;
+  content: ""; grid-row: 2; grid-column: -2 / -1; justify-self: end; align-self: center; margin-right: -1px;
+  width: 0; height: 0; border-left: var(--space-2) solid var(--flow); border-block: 4px solid transparent;
 }
 .aq-standards-map__zone {
   position: relative; display: flex; flex-direction: column; gap: var(--space-4); min-width: 0;
-  padding: var(--space-6); border: 1px dashed var(--line-strong);
+  padding: var(--space-6); border: 1px solid var(--line);
 }
-/* branch from each zone to the pipe, with a node where it joins */
+/* branch from each zone to the main, with a small node where it joins */
 .aq-standards-map__zone::after {
-  content: ""; position: absolute; left: var(--space-12); height: calc(var(--space-8) - 1px); border-left: 2px solid var(--flow);
+  content: ""; position: absolute; left: var(--space-12); height: calc(var(--space-8) - 1px); border-left: 1px solid var(--flow);
 }
 .aq-standards-map__zone.is-up::after { top: 100%; }
 .aq-standards-map__zone.is-down::after { bottom: 100%; }
 .aq-standards-map__zone::before {
-  content: ""; position: absolute; left: calc(var(--space-12) - 3px); width: var(--space-2); height: var(--space-2);
+  content: ""; position: absolute; left: calc(var(--space-12) - 2px); width: 5px; height: 5px;
   border-radius: var(--radius-pill); background: var(--flow);
 }
-.aq-standards-map__zone.is-up::before { top: calc(100% + var(--space-8) - 4px); }
-.aq-standards-map__zone.is-down::before { bottom: calc(100% + var(--space-8) - 4px); }
+.aq-standards-map__zone.is-up::before { top: calc(100% + var(--space-8) - 3px); }
+.aq-standards-map__zone.is-down::before { bottom: calc(100% + var(--space-8) - 3px); }
 .aq-standards-map__label { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
 .aq-standards-map__head { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
 .aq-standards-map__head .aq-index { flex: none; }
-.aq-standards-map__icon { flex: none; background-color: var(--flow); }
+.aq-standards-map__icon { flex: none; background-color: var(--ink-muted); }
 .aq-standards-map__t { margin: 0; font: 500 18px/26px var(--font-sans); color: var(--ink); text-wrap: balance; }
 .aq-standards-map__t a { color: inherit; text-decoration: none; }
 .aq-standards-map__t a:hover { color: var(--flow); text-decoration: underline; }
 .aq-standards-map__codes { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+/* Codes are standard tags: pills in a line frame, mono */
 .aq-standards-map__code {
-  display: inline-block; padding: 1px var(--space-2); border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  display: inline-block; padding: 1px var(--space-3); border: 1px solid var(--line-strong); border-radius: var(--radius-pill);
   font: 400 13px/22px var(--font-mono); color: var(--ink); text-decoration: none; white-space: nowrap;
 }
 .aq-standards-map__code::after { content: "\a0\2193"; color: var(--ink-subtle); }
 .aq-standards-map__code:hover { border-color: var(--flow); color: var(--flow); }
 .aq-standards-map__code:hover::after { color: var(--flow); }
 .aq-standards-map__code:focus-visible, .aq-standards-map__t a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-/* the row a code jumped to flashes once (it may sit on a light sheet) */
+/* the row a code jumped to flashes once */
 .aq-standards-map-hit { outline: 2px solid var(--flow); outline-offset: var(--space-1); animation: aq-standards-map-hit 2.4s ease-out forwards; }
 .aq-standards-map-hit:focus { outline: 2px solid var(--flow); }
 @keyframes aq-standards-map-hit { 0%, 60% { outline-color: var(--flow); } 100% { outline-color: transparent; } }
 @media (prefers-reduced-motion: reduce) { .aq-standards-map-hit { animation: none; } }
 
-/* ---------- With spots (every zone has a Spot): a plant drawing on a plate. Each zone is a framed plant area with its
-   equipment vignette, the uppercase mono name and the codes beside it on a dashed leader; the zones hang off a dashed
-   flow main, on a faint drawing grid. ---------- */
-.aq-standards-map__plate { padding-top: var(--space-8); }
-.aq-standards-map--spots .aq-standards-map__zones {
-  background-image: repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px var(--space-8)), repeating-linear-gradient(180deg, var(--line) 0 1px, transparent 1px var(--space-8));
-}
-.aq-standards-map--spots .aq-standards-map__zones::before { border-top: 1px dashed var(--flow); }
+/* ---------- With spots (every zone has a Spot): the same map on a plate. Each zone shows its equipment vignette
+   beside the name and codes; no grid, corner marks or dashed leaders. ---------- */
+.aq-standards-map__plate { min-width: 0; }
 .aq-standards-map--spots .aq-standards-map__zone {
   display: grid; grid-template-columns: var(--space-32) minmax(0, 1fr); column-gap: var(--space-6); align-items: start;
-  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-4); background: var(--surface);
+  padding: var(--space-6) var(--space-6) var(--space-6) var(--space-4); background: var(--surface-raised);
 }
-.aq-standards-map--spots .aq-standards-map__zone::after { border-left: 1px dashed var(--flow); left: calc(var(--space-4) + var(--space-16)); }
-.aq-standards-map--spots .aq-standards-map__zone::before { left: calc(var(--space-4) + var(--space-16) - 4px); }
+.aq-standards-map--spots .aq-standards-map__zone::after { left: calc(var(--space-4) + var(--space-16)); }
+.aq-standards-map--spots .aq-standards-map__zone::before { left: calc(var(--space-4) + var(--space-16) - 2px); }
 .aq-standards-map__fig { position: relative; display: grid; place-items: center; width: var(--space-32); height: var(--space-32); }
-.aq-standards-map__fig::before, .aq-standards-map__fig::after { content: ""; position: absolute; width: var(--space-3); height: var(--space-3); border: 0 solid var(--line-strong); pointer-events: none; }
-.aq-standards-map__fig::before { top: 0; right: 0; border-width: 1px 1px 0 0; }
-.aq-standards-map__fig::after { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
-.aq-standards-map__spot { background-color: var(--on-navy-muted); }
+.aq-standards-map__spot { background-color: var(--ink-muted); }
 .aq-standards-map--spots .aq-standards-map__zone:hover .aq-standards-map__spot { background-color: var(--flow); }
-.aq-standards-map--spots .aq-standards-map__label { position: relative; gap: var(--space-3); padding: var(--space-1) 0 0 var(--space-4); border-left: 1px dashed var(--line-strong); min-height: 100%; }
-/* the leader: from the vignette to the name */
-.aq-standards-map--spots .aq-standards-map__head { position: relative; }
-.aq-standards-map--spots .aq-standards-map__head::before {
-  content: ""; position: absolute; top: 50%; right: 100%; width: calc(var(--space-6) + var(--space-4) + var(--space-2)); border-top: 1px dashed var(--flow); pointer-events: none;
-}
-.aq-standards-map--spots .aq-standards-map__head::after {
-  content: ""; position: absolute; top: calc(50% - 2px); left: calc(-1 * var(--space-4) - 3px); width: 5px; height: 5px; border-radius: var(--radius-pill); background: var(--flow);
-}
-.aq-standards-map--spots .aq-standards-map__t { font: 500 14px/20px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.aq-standards-map--spots .aq-standards-map__label { gap: var(--space-3); padding-top: var(--space-1); }
 @media (prefers-reduced-motion: no-preference) { .aq-standards-map__spot { transition: background-color 120ms; } }
 
 /* Motion hooks: the pipe, branches, nodes and leaders are pseudo-elements, so motion.js draws them through custom
@@ -104,32 +88,27 @@
 
 @container (max-width: 860px) {
   .aq-standards-map__zones { display: flex; flex-direction: column; gap: var(--space-3); padding-left: var(--space-6); }
-  .aq-standards-map__zones::before { position: absolute; align-self: auto; left: var(--space-1); top: var(--space-4); bottom: var(--space-4); height: auto; border-top: 0; border-left: 2px solid var(--flow); }
+  .aq-standards-map__zones::before { position: absolute; align-self: auto; left: var(--space-1); top: var(--space-4); bottom: var(--space-4); height: auto; border-top: 0; border-left: 1px solid var(--flow); }
   .aq-standards-map__zones::after { display: none; }
   .aq-standards-map__zone { gap: var(--space-2); padding: var(--space-3) var(--space-4); }
   .aq-standards-map__zone.is-up::after, .aq-standards-map__zone.is-down::after {
     top: calc(var(--space-6) - 1px); bottom: auto; left: calc(-1 * var(--space-6) + var(--space-1)); width: calc(var(--space-6) - var(--space-1)); height: 0;
-    border-left: 0; border-top: 2px solid var(--flow);
+    border-left: 0; border-top: 1px solid var(--flow);
   }
-  .aq-standards-map__zone.is-up::before, .aq-standards-map__zone.is-down::before { top: calc(var(--space-6) - 4px); bottom: auto; left: calc(-1 * var(--space-6) + 1px); }
+  .aq-standards-map__zone.is-up::before, .aq-standards-map__zone.is-down::before { top: calc(var(--space-6) - 3px); bottom: auto; left: calc(-1 * var(--space-6) + 2px); }
   .aq-standards-map__t { font-size: 16px; line-height: 24px; }
   .aq-standards-map__code { position: relative; padding-block: var(--space-1); font-size: 12px; line-height: 20px; }
-  /* 44 px hit area on each chip and zone link */
+  /* 44 px hit area on each tag and zone link */
   .aq-standards-map__code::before { content: ""; position: absolute; inset: calc(-1 * var(--space-2)) 0; }
   .aq-standards-map__t a { padding-block: calc(var(--space-3) + var(--space-1) / 2); }
   .aq-standards-map__codes { row-gap: var(--space-3); }
   /* with spots: the vignette floats at the zone's right, the name and codes run beside and under it */
-  .aq-standards-map__plate { padding-top: var(--space-4); }
-  .aq-standards-map--spots .aq-standards-map__zones { background-image: none; }
-  .aq-standards-map--spots .aq-standards-map__zones::before { border-top: 0; border-left: 1px dashed var(--flow); }
   .aq-standards-map--spots .aq-standards-map__zone { display: block; padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4); }
-  .aq-standards-map--spots .aq-standards-map__zone::after { left: calc(-1 * var(--space-6) + var(--space-1)); border-left: 0; border-top: 1px dashed var(--flow); }
-  .aq-standards-map--spots .aq-standards-map__zone::before { left: calc(-1 * var(--space-6) + 1px); }
+  .aq-standards-map--spots .aq-standards-map__zone::after { left: calc(-1 * var(--space-6) + var(--space-1)); }
+  .aq-standards-map--spots .aq-standards-map__zone::before { left: calc(-1 * var(--space-6) + 2px); }
   .aq-standards-map__fig { float: right; width: var(--space-24); height: var(--space-24); margin: 0 0 var(--space-1) var(--space-2); }
-  .aq-standards-map--spots .aq-standards-map__label { display: block; padding: 0; border-left: 0; min-height: 0; }
+  .aq-standards-map--spots .aq-standards-map__label { display: block; padding: 0; }
   .aq-standards-map--spots .aq-standards-map__head { margin-bottom: var(--space-2); }
-  .aq-standards-map--spots .aq-standards-map__head::before, .aq-standards-map--spots .aq-standards-map__head::after { display: none; }
-  .aq-standards-map--spots .aq-standards-map__t { font-size: 13px; line-height: 20px; }
   .aq-standards-map--spots .aq-standards-map__codes { display: block; }
   .aq-standards-map--spots .aq-standards-map__codes li { display: inline-block; margin: 0 var(--space-1) var(--space-3) 0; }
   /* motion hooks on phones: the main runs top to bottom, branches reach right to each zone */

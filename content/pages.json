@@ -81,7 +81,7 @@
        "d": "Online TOC and conductivity on the raw reading, audit trails to 21 CFR Part 11.",
        "tag": "21 CFR Part 11",
        "link": "sys-monitoring",
-       "icon": "toc"
+       "icon": "conductivity"
       }
      ]
     },
@@ -120,32 +120,26 @@
     {
      "type": "steps",
      "h": "How a project runs",
-     "as": "stages",
      "items": [
       {
        "t": "Design",
-       "d": "Your URS becomes a functional specification, P&IDs and a risk assessment, verified at DQ.",
-       "icon": "pid"
+       "d": "Your URS becomes a functional specification, P&IDs and a risk assessment, verified at DQ."
       },
       {
        "t": "Fabricate",
-       "d": "316L to ASME BPE, orbital welds, each product-contact weld logged with its heat number.",
-       "icon": "weld"
+       "d": "316L to ASME BPE, orbital welds, each product-contact weld logged with its heat number."
       },
       {
        "t": "FAT",
-       "d": "A wet FAT to a protocol your quality unit approves, witnessed in person or remotely.",
-       "icon": "pump"
+       "d": "A wet FAT to a protocol your quality unit approves, witnessed in person or remotely."
       },
       {
        "t": "SAT and IQ/OQ",
-       "d": "SAT on your feed water and utilities, then IQ/OQ to protocols your quality unit approved.",
-       "icon": "binder"
+       "d": "SAT on your feed water and utilities, then IQ/OQ to protocols your quality unit approved."
       },
       {
        "t": "PQ and service",
-       "d": "PQ support through 12 months of data, then service that keeps it qualified.",
-       "icon": "calendar"
+       "d": "PQ support through 12 months of data, then service that keeps it qualified."
       }
      ]
     },
@@ -323,7 +317,7 @@
      "stages": [
       {
        "t": "Municipal feed",
-       "icon": "valve",
+       "icon": "droplet",
        "d": "Chlorinated city or well water that changes with the season."
       },
       {
@@ -348,12 +342,12 @@
       },
       {
        "t": "Distribution loop",
-       "spot": "pump",
+       "spot": "loop",
        "d": "Keeps water moving and sanitized between the tank and every outlet."
       },
       {
        "t": "Points of use",
-       "icon": "loop",
+       "icon": "valve",
        "d": "Where production draws water from the loop."
       }
      ],
@@ -2242,7 +2236,7 @@
      "stages": [
       {
        "t": "From generation",
-       "icon": "valve",
+       "icon": "droplet",
        "d": "Enters the tank under a heated vent filter."
       },
       {
@@ -2455,12 +2449,12 @@
       {
        "t": "Point-of-use coolers",
        "d": "Single-user coolers that flush to drain until temperature and time are met.",
-       "spot": "valve"
+       "spot": "heat-exchanger"
       },
       {
        "t": "Ozone package for PW",
        "d": "Ozone generator, 254 nm UV destruct, three ozone sensors, vent destructor.",
-       "spot": "uv-ozone"
+       "spot": "ozone"
       },
       {
        "t": "Prefabricated loop modules",
@@ -2626,7 +2620,7 @@
      "stages": [
       {
        "t": "Municipal or well water",
-       "icon": "valve",
+       "icon": "droplet",
        "d": "City water or well water, changing with the season."
       },
       {
@@ -2636,7 +2630,7 @@
       },
       {
        "t": "Media filter",
-       "spot": "pretreatment",
+       "spot": "carbon-filter",
        "d": "Removes turbidity and particles that raise SDI."
       },
       {
@@ -2959,7 +2953,7 @@
       {
        "t": "Instruments",
        "d": "Measure TOC, conductivity and temperature online.",
-       "icon": "toc"
+       "icon": "conductivity"
       },
       {
        "t": "PLC",
@@ -2968,12 +2962,12 @@
       {
        "t": "Operator panel (HMI)",
        "d": "Where operators see alarms, trends and sanitization status.",
-       "icon": "gauge"
+       "icon": "monitor"
       },
       {
        "t": "Supervisory control (SCADA) historian",
        "d": "Keeps audit-trailed records to 21 CFR Part 11.",
-       "icon": "binder"
+       "icon": "database"
       },
       {
        "t": "Plant network",
@@ -3166,17 +3160,17 @@
       {
        "t": "PLC and SCADA platform",
        "d": "[PLC and SCADA platforms supported], matched to your site standard.",
-       "spot": "gauge"
+       "spot": "cpu"
       },
       {
        "t": "Historian and Part 11 boundary",
        "d": "Our historian, or your validated plant historian with ours as a buffer.",
-       "spot": "binder"
+       "spot": "database"
       },
       {
        "t": "Remote access",
        "d": "None, one-way telemetry through your DMZ, or supervised sessions you open.",
-       "spot": "magnifier"
+       "spot": "network"
       },
       {
        "t": "Integration",
@@ -3186,7 +3180,7 @@
       {
        "t": "Control panels",
        "d": "UL 508A or CSA C22.2 No. 286 [panel certification held and where panels are built].",
-       "spot": "stamp"
+       "spot": "monitor"
       }
      ],
      "nav": "Options",
@@ -3360,52 +3354,43 @@
     {
      "type": "steps",
      "h": "What leaves each stage",
-     "as": "stages",
      "intro": "Your URS is the reference throughout (Annex 15, 3.2); every requirement keeps its ID.",
      "items": [
       {
        "t": "URS review and design",
        "d": "Compliance matrix, basis of design, P&IDs, functional specification, DQ.",
-       "icon": "pid",
        "hold": "Your quality unit"
       },
       {
        "t": "Fabrication",
-       "d": "Material log with 3.1 certificates, weld maps, borescope, finish and pressure test records.",
-       "icon": "weld"
+       "d": "Material log with 3.1 certificates, weld maps, borescope, finish and pressure test records."
       },
       {
        "t": "FAT",
        "d": "Approved protocol, raw data, deviation log, report. Release to ship.",
-       "icon": "pump",
        "hold": "Both parties"
       },
       {
        "t": "Installation and SAT",
        "d": "Installation records, SAT on your utilities, leveraged tests flagged, SAT report.",
-       "icon": "wrench",
        "hold": "You"
       },
       {
        "t": "IQ and OQ",
        "d": "IQ and OQ protocols and reports, draft procedures, training records.",
-       "icon": "binder",
        "hold": "Your quality unit"
       },
       {
        "t": "PQ, at least 12 months",
-       "d": "Protocol, sampling plan, phase reports, alert and action levels. Water released by phase.",
-       "icon": "calendar"
+       "d": "Protocol, sampling plan, phase reports, alert and action levels. Water released by phase."
       },
       {
        "t": "Service",
-       "d": "Signed visit reports, calibration certificates as found and as left, annual system review.",
-       "icon": "gauge"
+       "d": "Signed visit reports, calibration certificates as found and as left, annual system review."
       },
       {
        "t": "Upgrade or retrofit",
-       "d": "Gap list and options, each with downtime and requalification scope.",
-       "icon": "magnifier"
+       "d": "Gap list and options, each with downtime and requalification scope."
       }
      ],
      "nav": "Documents",
@@ -4360,41 +4345,34 @@
    "blocks": [
     {
      "type": "steps",
-     "as": "stages",
      "nav": "Stages",
      "h": "What each stage proves",
      "intro": "One C&Q plan, approved by your quality unit, covers every stage.",
      "items": [
       {
        "t": "Commissioning",
-       "d": "Flush, pressure test, passivation, start-up, punch list.",
-       "icon": "wrench"
+       "d": "Flush, pressure test, passivation, start-up, punch list."
       },
       {
        "t": "FAT and SAT",
        "d": "Wet test at our shop, repeated on your utilities.",
-       "icon": "gauge",
        "link": "svc-fat-sat"
       },
       {
        "t": "IQ",
-       "d": "Installed as designed: drawings, materials, welds, slopes, instruments.",
-       "icon": "pid"
+       "d": "Installed as designed: drawings, materials, welds, slopes, instruments."
       },
       {
        "t": "OQ",
-       "d": "Performs across its operating ranges, worst case included.",
-       "icon": "conductivity"
+       "d": "Performs across its operating ranges, worst case included."
       },
       {
        "t": "PQ",
-       "d": "Required quality, reproducibly, across the seasons.",
-       "icon": "calendar"
+       "d": "Required quality, reproducibly, across the seasons."
       },
       {
        "t": "Periodic review",
-       "d": "Data and changes reviewed yearly; requalify only what they point to.",
-       "icon": "magnifier"
+       "d": "Data and changes reviewed yearly; requalify only what they point to."
       }
      ]
     },
@@ -5231,7 +5209,7 @@
       {
        "t": "Controls",
        "d": "Versions, support status, audit trail and backups against Part 11.",
-       "spot": "pid"
+       "spot": "cpu"
       }
      ]
     },
@@ -6199,28 +6177,23 @@
     },
     {
      "type": "steps",
-     "as": "stages",
      "nav": "Scale-up",
      "h": "From clinical batch to licensed plant",
      "items": [
       {
        "t": "Clinical suite",
-       "icon": "ro-membrane",
        "d": "A membrane WFI skid, a compact still or bought WFI; PW and pure steam on site."
       },
       {
        "t": "Design for commercial",
-       "icon": "pid",
        "d": "Tank, loop and pump sized for the commercial schedule; valved tie-ins for a second train."
       },
       {
        "t": "Add generation",
-       "icon": "still",
        "d": "A second train, factory tested, tied in at a planned shutdown under change control."
       },
       {
        "t": "Licensed production",
-       "icon": "stamp",
        "d": "PQ data and a year of trends, ready for Health Canada, FDA and EU review."
       }
      ]
@@ -6419,14 +6392,14 @@
      "items": [
       {
        "t": "PW generation",
-       "icon": "edi",
+       "icon": "ro-membrane",
        "d": "Final rinse for implants and passivation lines, with a written endotoxin limit.",
        "tag": "USP <645>",
        "link": "sys-pw"
       },
       {
        "t": "WFI by membrane",
-       "icon": "ro-membrane",
+       "icon": "edi",
        "d": "Low-endotoxin rinse for blood and CSF contact, held to a limit from yours.",
        "tag": "USP <161>",
        "link": "sys-wfi-membrane"
@@ -6440,7 +6413,7 @@
       },
       {
        "t": "Upgrades and retrofits",
-       "icon": "magnifier",
+       "icon": "valve",
        "d": "Endotoxin drifting on devices: we find whether water, washer or handling is the source.",
        "tag": "Change control",
        "link": "svc-upgrades"
@@ -6785,28 +6758,23 @@
     },
     {
      "type": "steps",
-     "as": "stages",
      "nav": "Tech transfer",
      "h": "From signed programme to released water",
      "items": [
       {
        "t": "Intake and gap check",
-       "icon": "magnifier",
        "d": "Grade, markets, peak draw and PPQ dates; within [gap check turnaround, working days], what the programme needs."
       },
       {
        "t": "Change control",
-       "icon": "stamp",
        "d": "Risk assessment and requalification scope stated before design, for you and your client."
       },
       {
        "t": "Build and tie in",
-       "icon": "weld",
        "d": "Drops, tie-ins or a skid built in our shop, installed in your planned shutdown."
       },
       {
        "t": "Release",
-       "icon": "binder",
        "d": "IQ and OQ of the new section, increased sampling, then release: [new point of use, order to release, weeks]."
       }
      ]
@@ -7872,7 +7840,7 @@
        "t": "Control panels",
        "d": "[panel shop and certification mark held]",
        "tag": "CSA C22.2 No. 286",
-       "icon": "gauge"
+       "icon": "monitor"
       }
      ]
     },
@@ -8378,6 +8346,34 @@
    "primary_cta_link": "contact-proposal",
    "blocks": [
     {
+     "type": "steps",
+     "as": "row",
+     "nav": "How we work",
+     "h": "How we work",
+     "items": [
+      {
+       "t": "Design",
+       "d": "We start from your user requirement specification and a feed water analysis, and size the system for your measured demand."
+      },
+      {
+       "t": "Fabricate",
+       "d": "Skids are built in our shop in [city], with orbital welding, traceable materials and a weld log for every product-contact joint."
+      },
+      {
+       "t": "Test",
+       "d": "Every system is factory acceptance tested with water before it ships, to a protocol you approved."
+      },
+      {
+       "t": "Qualify",
+       "d": "We execute SAT and IQ/OQ on site, and support your PQ."
+      },
+      {
+       "t": "Support",
+       "d": "Service, spare parts, calibration and requalification support for the life of the system."
+      }
+     ]
+    },
+    {
      "type": "grid",
      "as": "route",
      "nav": "One team",
@@ -8781,26 +8777,21 @@
      "items": [
       {
        "t": "Apply",
-       "d": "The form below; the hiring manager replies yes or no.",
-       "icon": "binder"
+       "d": "The form below; the hiring manager replies yes or no."
       },
       {
        "t": "Conversation",
-       "d": "A [first call length, minutes]-minute call: role, pay, travel, your questions.",
-       "icon": "calendar"
+       "d": "A [first call length, minutes]-minute call: role, pay, travel, your questions."
       },
       {
        "t": "Practical interview",
-       "d": "A P&ID review, test weld, protocol walk-through or fault-finding exercise.",
-       "icon": "weld"
+       "d": "A P&ID review, test weld, protocol walk-through or fault-finding exercise."
       },
       {
        "t": "Shop visit and decision",
-       "d": "Meet the team. Written decision within [offer time, working days], at most 45 days.",
-       "icon": "stamp"
+       "d": "Meet the team. Written decision within [offer time, working days], at most 45 days."
       }
-     ],
-     "as": "stages"
+     ]
     },
     {
      "type": "form",

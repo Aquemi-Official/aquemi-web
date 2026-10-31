@@ -1,4 +1,4 @@
-ProcessDiagram draws a treatment train as an interactive piping flow on a drawing plate: each stage is a station with its equipment vignette, joined by one thick double-wall Flow pipe with arrows, and choosing a station fills its pipe run and opens that stage's detail.
+ProcessDiagram draws a treatment train as an interactive piping flow in single-weight line art: each stage is a station with its equipment vignette, joined by one double-hairline `flow` pipe with arrows, and choosing a station tints the pipe up to it and opens that stage's detail.
 
 ## Markup
 
@@ -10,7 +10,7 @@ The website builds it from a `diagram` block (`AQ.wDiagram`, which calls `wFlow`
     <div class="aq-diagram__line" role="group" aria-label="7 stages in flow order; choose one to see its detail">
       <button type="button" class="aq-diagram__st" id="…-s0" aria-pressed="true" aria-controls="…-d0" style="--i:0">
         <span class="aq-diagram__run" aria-hidden="true"><span class="aq-diagram__fill"></span></span>
-        <span class="aq-diagram__fig" aria-hidden="true"><span class="aq-spot aq-spot--s aq-diagram__spot" style="mask-image:url(assets/spots/pretreatment.png)"></span></span>
+        <span class="aq-diagram__fig" aria-hidden="true"><span class="aq-spot aq-spot--s aq-diagram__spot" style="mask-image:url(assets/icons/softener.svg)"></span></span>
         <span class="aq-diagram__n">01</span><span class="aq-diagram__t">Softened, dechlorinated feed</span>
       </button>
       <div class="aq-diagram__d" id="…-d0" role="region" aria-labelledby="…-s0" style="--i:0">
@@ -38,19 +38,21 @@ The website builds it from a `diagram` block (`AQ.wDiagram`, which calls `wFlow`
 ## Behaviour
 
 - **Stations are toggle buttons** (`aria-pressed`, `aria-controls` the detail). Exactly one is pressed; the first by default. Click, or Arrow keys / Home / End within the row, selects and moves focus.
-- **Selected:** its incoming pipe run fills with Flow, the runs upstream tint (`flow-tint`, water has passed), the box, tag and vignette take Flow, and its detail shows; the others carry `hidden`.
-- **Motion:** with GSAP loaded the run fills in 0.55 s and the panel rises in 0.35 s, once per selection; nothing loops. Skipped under `prefers-reduced-motion`. `assets/motion.js` reveals the plate and wipes the vignettes in on scroll.
+- **Selected:** its incoming pipe run and every run upstream tint `flow-tint` (water has reached here); its box edge, index and name take `flow`; its detail shows, the others carry `hidden`.
+- **Motion:** none beyond colour changes (200 ms). The renderer still calls GSAP when a page loads it, to fill the run in 0.55 s and raise the panel in 0.35 s once per selection; the site no longer loads GSAP, so the change is immediate. Nothing loops.
 - **Without script:** the page script adds `is-live` to `.aq-diagram` (a MutationObserver after each render). Without it every detail stays visible: its line under its own column on desktop, inline under each station on phones.
 
 ## Layout
 
-- **Desktop:** one row of `--n` equal columns on the plate. Box 120 px high, up to 128 px wide, `line-strong` hairline on `surface`, Spot `s` (96 px) in `ink-muted`; number tag in its top-left corner (mono 12 px, `flow` border); name under it in mono 13 px, as written (no uppercase: it would turn "5 µm" into "5 µM"). The pipe is `space-4` high with 3 px `flow` walls (a double-wall line), entering from the plate edge and leaving it with an arrowhead; a small arrow sits mid-run. The detail panel spans the row under it, with a dashed `flow` leader up to the selected column: big mono number, title, line, tag and link, and In/Out labels at the right.
-- **Phone** (`@container (max-width: 860px)`): one vertical pipe (12 px, 2 px walls) through compact 56 px boxes (Spot drawn at 48 px, Icon at 36 px), number tag in the box corner, name beside it; 4 px between stations. The selected detail tucks in under its name, beside the box, so a seven-stage train is about 450 px. In/Out labels show only for stages without a `d`; the plate title block is hidden. No horizontal scroll.
+- **Desktop:** one row of `--n` equal columns in the Plate (a `line` frame on `surface-raised`). Box 120 px high, up to 128 px wide, 1 px `line` frame on `surface`, Spot `s` (96 px) in `ink-muted`; the index (Geist Mono 12/16 `ink-subtle`) in its top-left corner; the name under it in Geist 500 14/20, sentence case as written. The pipe is `space-3` high with 1.5 px `flow` walls (two hairlines), entering from the plate edge and leaving it with an arrowhead; a small arrow sits mid-run. The detail spans the row under it below a 1 px `line` hairline, with a 1 px `flow` leader up to the selected column: index in Geist Mono 300 32/36 `ink`, title, line, tag and link, and In/Out (eyebrow labels) at the right.
+- **Phone** (`@container (max-width: 860px)`): one vertical pipe (12 px, 1.5 px walls) through compact 56 px boxes (Spot drawn at 48 px, Icon at 36 px), index in the box corner, name beside it (14/20); 4 px between stations. The selected detail tucks in under its name, beside the box (13/20), so a seven-stage train is about 450 px. In/Out labels show only for stages without a `d`; the plate caption is hidden. No horizontal scroll; every label 12 px or more.
 
 ## Token rules
 
-- Pipe and arrows `flow`; fill `flow`, upstream tint `flow-tint`; `flow` stays a line or a fill inside the pipe, never a panel ground.
-- Boxes and panel: 1 px `line-strong`, `radius-sm`, `surface` ground; the panel's top edge 2 px `flow`. Text `ink`, detail line `ink-muted`.
+- Pipe walls and arrows `flow` (the water path); tint inside the pipe `flow-tint`, never a solid `flow` bar or panel.
+- Boxes 1 px `line` on `surface`, square corners; the detail is separated by a `line` hairline, not boxed. Glyphs and vignettes `ink-muted` (single weight, 1.5 px strokes). Text `ink`, detail line `ink-muted`.
+- Labels in uppercase (pipe ends, In/Out, the control boundary caption) use the eyebrow style: Geist Mono 500 12/16, 0.08em, `ink-muted`. Everything else sentence case.
+- The control boundary (`aq-diagram--base`) is a 1 px dashed `line-strong` rule, square corners.
 - Focus: 2 px `focus` outline round the station.
 - Spacing from `--space-*`; local geometry variables (`--fh`, `--fw`, `--g`, `--pw`, `--n`, `--i`) always with token fallbacks.
 

@@ -1,5 +1,5 @@
-/* Block "readout" -> Readout: one figure on an instrument face, unit set vertically beside it, the method in a boxed
-   tag on the reference line, the body as caption, and a decorative tick scale. The value string is only split, never
+/* Block "readout" -> Readout: one large figure in Geist Mono with its unit, the method on a limit tag, the body as
+   caption. The value string is only split, never
    changed: "< 0.25 EU/mL" -> comparator "<", figure "0.25", unit "EU/mL"; "≤ 1.3 µS/cm @ 25 °C" adds condition
    "@ 25 °C". A value that doesn't start with a number (a [placeholder]) is shown whole as the figure.
    The unit and condition start with a no-break space so figure, unit and condition read as one phrase. */
@@ -16,5 +16,5 @@ BLOCKS['readout']=function(b,H){
     +(cond?'<span class="aq-readout__cond">&nbsp;'+tx(cond)+'</span>':'')+'</p>'
     +(b.method?'<div class="aq-readout__ref"><span class="aq-readout__tag">'+tx(b.method)+'</span></div>':'')+'</div>'
     +(b.body?'<p class="aq-lead aq-readout__caption">'+tx(b.body)+'</p>':'')
-    +'<div class="aq-readout__scale" aria-hidden="true"></div></div></div></section>';
+    +'</div></div></section>';
 };

@@ -1,8 +1,8 @@
-/* Block "case" -> CaseStudy: fact boxes beside one large measured-outcome figure.
+/* Block "case" -> CaseStudy: hairline fact rows beside one large measured-outcome figure.
    Item fields: t, client, problem, system, outcome, and optional figure + unit (the headline number, supplied by Aquemi).
    With no figure the slot shows a [bracketed] placeholder; a number is never derived or invented here.
    Optional per item: status (label above the title, e.g. a template awaiting a real project), profile [{v,l}] (a KeyFacts strip of
-   headline KPIs under the title), standard (a "Standard met" fact box) and method ("How it was measured", full width under the boxes).
+   headline KPIs under the title), standard (a "Standard met" fact row) and method ("How it was measured", full width under the facts).
    Optional on the block: intro (in the standard section head).
    Project record (opt-in per item): an item with art, outcomes or timeline renders as an engineering record instead:
    art "<page id>" (the equipment drawing from ART in parts/Hero.js) with changed [{t, at:[x%,y%]}] marked on it,

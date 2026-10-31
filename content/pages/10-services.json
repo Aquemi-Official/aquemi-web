@@ -101,52 +101,43 @@
   {
    "type": "steps",
    "h": "What leaves each stage",
-   "as": "stages",
    "intro": "Your URS is the reference throughout (Annex 15, 3.2); every requirement keeps its ID.",
    "items": [
     {
      "t": "URS review and design",
      "d": "Compliance matrix, basis of design, P&IDs, functional specification, DQ.",
-     "icon": "pid",
      "hold": "Your quality unit"
     },
     {
      "t": "Fabrication",
-     "d": "Material log with 3.1 certificates, weld maps, borescope, finish and pressure test records.",
-     "icon": "weld"
+     "d": "Material log with 3.1 certificates, weld maps, borescope, finish and pressure test records."
     },
     {
      "t": "FAT",
      "d": "Approved protocol, raw data, deviation log, report. Release to ship.",
-     "icon": "pump",
      "hold": "Both parties"
     },
     {
      "t": "Installation and SAT",
      "d": "Installation records, SAT on your utilities, leveraged tests flagged, SAT report.",
-     "icon": "wrench",
      "hold": "You"
     },
     {
      "t": "IQ and OQ",
      "d": "IQ and OQ protocols and reports, draft procedures, training records.",
-     "icon": "binder",
      "hold": "Your quality unit"
     },
     {
      "t": "PQ, at least 12 months",
-     "d": "Protocol, sampling plan, phase reports, alert and action levels. Water released by phase.",
-     "icon": "calendar"
+     "d": "Protocol, sampling plan, phase reports, alert and action levels. Water released by phase."
     },
     {
      "t": "Service",
-     "d": "Signed visit reports, calibration certificates as found and as left, annual system review.",
-     "icon": "gauge"
+     "d": "Signed visit reports, calibration certificates as found and as left, annual system review."
     },
     {
      "t": "Upgrade or retrofit",
-     "d": "Gap list and options, each with downtime and requalification scope.",
-     "icon": "magnifier"
+     "d": "Gap list and options, each with downtime and requalification scope."
     }
    ],
    "nav": "Documents",

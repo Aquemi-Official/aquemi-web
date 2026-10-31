@@ -85,7 +85,7 @@
    "stages": [
     {
      "t": "Municipal or well water",
-     "icon": "valve",
+     "icon": "droplet",
      "d": "City water or well water, changing with the season."
     },
     {
@@ -95,7 +95,7 @@
     },
     {
      "t": "Media filter",
-     "spot": "pretreatment",
+     "spot": "carbon-filter",
      "d": "Removes turbidity and particles that raise SDI."
     },
     {

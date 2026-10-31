@@ -1,14 +1,13 @@
-/* Block "contact-routes" -> ContactRoutes: the ways into Aquemi as labelled route sheets on a drawing plate, joined by a
-   dashed route line, each with a numbered 1 → 2 → 3 strip and its response clock. Fields: routes [{t, d, steps:
-   [3 strings], clock, link: "<page id>", phone?, urgent?, current?, action?, intent?}]. Each sheet carries a folder
-   tab "Route N" (data order). The route for the page being read (current: true, or link = this page) is marked
-   "This page" and its action scrolls to this page's form; the others link to their pages (action label defaults to
-   that page's nav label; intent ticks options on its form). Ordinary routes are cream sheets (data-theme="light");
-   the urgent route is a navy panel (data-theme="dark") with a full-width call bar (a tel: link once the number is
-   real) and comes first in the markup, so phones show it first; desktop keeps the data order. Every clock stays the
-   page's own placeholder until confirmed. */
-var CR_CLOCK='<svg class="aq-contact-routes__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8L10.5 9.5"/></svg>';
-var CR_PHONE='<svg class="aq-contact-routes__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5.5 1.5H3.5A1.5 1.5 0 0 0 2 3C2 9 7 14 13 14A1.5 1.5 0 0 0 14.5 12.5V10.5L11.5 9.5L10 11C8 10 6 8 5 6L6.5 4.5Z"/></svg>';
+/* Block "contact-routes" -> ContactRoutes: the ways into Aquemi as rows on hairlines, each with a numbered 1 → 2 → 3
+   strip and its response clock. Fields: routes [{t, d, steps: [3 strings], clock, link: "<page id>", phone?, urgent?,
+   current?, action?, intent?}]. Each route carries an eyebrow "Route N" (data order). The route for the page being
+   read (current: true, or link = this page) is marked "This page" and its action scrolls to this page's form; the
+   others link to their pages (action label defaults to that page's nav label; intent ticks options on its form).
+   The urgent route sits on a limestone panel with a call line (a tel: link once the number is real) and comes first
+   in the markup, so phones show it first; desktop keeps the data order. Every clock stays the page's own placeholder
+   until confirmed. */
+var CR_CLOCK=wIcon('clock','aq-contact-routes__icon');
+var CR_PHONE=wIcon('phone','aq-contact-routes__icon');
 function crPhone(s){s=String(s||'');var n=s.replace(/[^\d+]/g,'');
  return s.indexOf('[')<0&&n.length>=7?'<a class="aq-contact-routes__num" href="tel:'+e(n)+'">'+tx(s)+'</a>':'<span class="aq-contact-routes__num">'+tx(s)+'</span>'}
 BLOCKS['contact-routes']=function(b,H){var R=b.routes||[];
@@ -19,9 +18,9 @@ BLOCKS['contact-routes']=function(b,H){var R=b.routes||[];
  var cards=order.map(function(i){var r=R[i],cur=!!(r.current||(r.link&&r.link===p.id)),urg=!!r.urgent,S=r.steps||[];
   var go=cur?'<a class="aq-btn aq-btn--primary" href="#'+e(p.id||WP)+'" '+(fid?'data-jump="'+e(fid)+'"':'data-routes-form=""')+'>'+tx(r.action||'Use the form below')+' <span class="aq-btn__arrow" aria-hidden="true">↓</span></a>'
    :r.link&&wp(r.link)?wBtn(r.action||wp(r.link).nav_label||r.link,r.link,'secondary',r.intent):'';
-  return '<li class="aq-contact-routes__route'+(urg?' is-urgent':'')+(cur?' is-current':'')+'" style="--o:'+i+'" data-theme="'+(urg?'dark':'light')+'"'+(cur?' aria-current="page"':'')+'>'
+  return '<li class="aq-contact-routes__route'+(urg?' is-urgent':'')+(cur?' is-current':'')+'" style="--o:'+i+'"'+(urg?' data-theme="light"':'')+(cur?' aria-current="page"':'')+'>'
    +'<p class="aq-contact-routes__tab"><span class="aq-contact-routes__rn">Route '+(i+1)+'</span>'
-    +(urg?'<span class="aq-contact-routes__mark"><span class="aq-contact-routes__dot" aria-hidden="true"></span>Urgent</span>':'')
+    +(urg?'<span class="aq-contact-routes__mark">Urgent</span>':'')
     +(cur?'<span class="aq-contact-routes__mark">This page</span>':'')+'</p>'
    +'<div class="aq-contact-routes__head"><div class="aq-contact-routes__main">'
     +'<h3 class="aq-contact-routes__t">'+tx(r.t)+'</h3>'
@@ -30,9 +29,9 @@ BLOCKS['contact-routes']=function(b,H){var R=b.routes||[];
     +(r.clock?'<p class="aq-contact-routes__clock">'+CR_CLOCK+'<span class="aq-contact-routes__k">Response</span><span class="aq-contact-routes__v">'+tx(r.clock)+'</span></p>':'')
     +(go?'<div class="aq-contact-routes__action">'+go+'</div>':'')+'</div></div>'
    +(r.phone?'<p class="aq-contact-routes__call">'+CR_PHONE+'<span class="aq-contact-routes__k">Call</span>'+crPhone(r.phone)+'</p>':'')
-   +(S.length?'<ol class="aq-contact-routes__steps">'+S.map(function(s,k){return '<li><span class="aq-contact-routes__n" aria-hidden="true">'+(k+1)+'</span><span class="aq-contact-routes__s">'+tx(s)+'</span>'+(k<S.length-1?'<span class="aq-contact-routes__arrow" aria-hidden="true"></span>':'')+'</li>'}).join('')+'</ol>':'')
+   +(S.length?'<ol class="aq-contact-routes__steps">'+S.map(function(s,k){return '<li><span class="aq-contact-routes__n" aria-hidden="true">'+(k+1)+'</span><span class="aq-contact-routes__s">'+tx(s)+'</span>'+(k<S.length-1?'<span class="aq-contact-routes__arrow" aria-hidden="true">→</span>':'')+'</li>'}).join('')+'</ol>':'')
    +'</li>'}).join('');
- return sec(H+wPlate('<ul class="aq-contact-routes" style="--routes:'+R.length+'">'+cards+'</ul>',{cls:'aq-contact-routes__plate'}));};
+ return sec(H+'<ul class="aq-contact-routes" style="--routes:'+R.length+'">'+cards+'</ul>');};
 /* Fallback for a page whose form has no nav id: scroll to the first form after the routes */
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('[data-routes-form]');if(!a)return;var f=document.querySelector('.wform');if(!f)return;ev.preventDefault();
  (f.closest('section')||f).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})});

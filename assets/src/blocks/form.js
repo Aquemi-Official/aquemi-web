@@ -17,5 +17,4 @@ BLOCKS['form']=function(b,H){
   +'<p class="aq-form__title"><span>Data sheet</span><span>'+G.length+' section'+(G.length>1?'s':'')+' · '+req+' required</span></p>'
   +body
   +'<div class="aq-form__actions"><button class="aq-btn aq-btn--primary aq-form__submit" type="submit">'+tx(b.submit||'Send')+'</button><span class="aq-small wform-msg" role="status"></span></div>'
-  +'<div class="aq-form__strip" aria-hidden="true"><span>Rev. draft</span><span>'+F.length+' fields</span><span>Sheet 1 of 1</span></div>'
   +'</form>');};

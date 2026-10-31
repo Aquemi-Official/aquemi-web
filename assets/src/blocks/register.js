@@ -9,8 +9,7 @@
      the first topic, labelled "Latest" when it has a date, "Next planned" when not. Shows its number, title, d (one
      line), standard and the page it links to; an equipment Spot vignette (item.spot, else REG_SPOT by its link page),
      aria-hidden.
-   - Drawn on a cream plate (wPlate light, title block "Aquemi | Notes register"), chips as [bracketed] mono tags in a
-     framed filter bar, the register a fully ruled table.
+   - On the page ground, no plate: topic chips as quiet controls in a row, the register a table on line hairlines.
    - fold: N shows the first N rows under "All"; fold_noun names them ("Show all 24 notes"). */
 var REG_SPOT={'sys-monitoring':'toc','sys-pw':'ro-skid','sys-wfi-membrane':'ro-skid','sys-wfi-distillation':'still','sys-pure-steam':'pure-steam-generator',
  'sys-storage':'storage-tank','sys-pretreatment':'pretreatment','svc-service':'filter-service','svc-fabrication':'orbital-welder','svc-fat-sat':'test-bay','svc-design':'design-desk','svc-cq':'signed-report','cmp-documentation':'binder-docs'};
@@ -32,8 +31,8 @@ BLOCKS['register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)r
    +'<td class="aq-notes-register__topic">'+tx(it.topic||'')+'</td><th scope="row" class="aq-notes-register__t">'+tt+'</th>'
    +'<td class="aq-notes-register__std">'+tx(it.std||'')+'</td></tr>'}).join('');
  var table='<table class="aq-notes-register__table"><thead><tr><th scope="col">Date</th><th scope="col">No.</th><th scope="col">Topic</th><th scope="col">Title</th><th scope="col">Standard</th></tr></thead><tbody>'+rows+'</tbody></table>';
- return sec(H+wPlate('<div class="aq-notes-register">'+chips+'<p class="aq-notes-register__count" aria-live="polite">'+I.length+' notes</p>'+panel
-  +'<div class="aq-notes-register__reg">'+wFold(b,I.length,table,b.fold_noun||'notes')+'</div></div>',{light:true,cls:'aq-notes-register__plate',block:['Aquemi','Notes register']}));};
+ return sec(H+'<div class="aq-notes-register__plate"><div class="aq-notes-register">'+chips+'<p class="aq-notes-register__count" aria-live="polite">'+I.length+' notes</p>'+panel
+  +'<div class="aq-notes-register__reg">'+wFold(b,I.length,table,b.fold_noun||'notes')+'</div></div></div>');};
 document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.target.closest('.aq-notes-register__chip');if(!c)return;
  var r=c.closest('.aq-notes-register'),t=c.getAttribute('data-topic'),n=0,fd=r.querySelector('.aq-fold');
  /* With GSAP Flip (and motion allowed) the rows that stay glide to their new places and the ones that join fade in */

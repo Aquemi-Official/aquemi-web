@@ -1,31 +1,33 @@
-Closing is the call to action at the end of every page: a very large headline in condensed capitals in a framed panel on the navy band, one lead sentence, an optional checklist or send-and-return exchange, an optional proof readout with one confirmed figure, and the primary button.
+Closing is the call to action at the end of every page: one centred headline in the `h1` style on the navy band, one lead sentence and the primary button, with the brand's arc motif cut at the top-left edge. An optional checklist, send-and-return exchange or proof figure sits below the button.
 
 ## Markup
 
 ```html
-<section class="aq-section aq-band--navy aq-closing"><div class="aq-in"><div class="aq-closing__frame">
-  <h2 class="aq-closing__h">Send your fabrication spec. We mark it against ASME BPE.</h2>
-  <div class="aq-closing__body">
-    <p class="aq-lead">An engineer replies with the clauses we meet, the ones we would change and a draft inspection plan.</p>
-    <div class="aq-closing__proof">
-      <span class="aq-closing__tag">Proof</span>
-      <span class="aq-closing__value">100 %</span>
-      <span class="aq-closing__label">Welds visually examined · ASME BPE</span>
-    </div>
-  </div>
-  <div class="aq-closing__action"><a class="aq-btn aq-btn--primary" href="#contact-proposal">Request a fabrication spec review <span class="aq-btn__arrow">→</span></a></div>
-</div></div></section>
+<section class="aq-section aq-band--navy aq-closing">
+  <svg class="aq-closing__arc" viewBox="0 0 300 220" aria-hidden="true"><path d="M0 218.5 A 218 218 0 0 1 218 0.5"/></svg>
+  <div class="aq-in"><div class="aq-closing__frame">
+    <h2 class="aq-closing__h">Tell us the water grade and the flow. We'll do the rest.</h2>
+    <p class="aq-lead aq-closing__lead">Send your URS or a short brief and an engineer will reply with questions, not a sales script.</p>
+    <div class="aq-closing__action"><a class="aq-btn aq-btn--primary" href="#contact-proposal">Request a proposal <span class="aq-btn__arrow">→</span></a></div>
+    <div class="aq-closing__more">…checklist or exchange, then proof…</div>
+  </div></div>
+</section>
 ```
 
 - Always on `aq-band--navy` (see Band): it sets the navy ground, `on-navy` text and turns the primary button Limestone.
-- `aq-closing__body` holds an optional `aq-lead` and an optional `aq-closing__proof`. `aq-closing__action` holds exactly one primary button.
-- On the site, `wClosing(c, p)` in `assets/src/parts/Closing.js` renders it from the page's `cta` (`h`, `body`, `button`, `link`, `intent`, `include`, `proof`). The proof box shows `cta.proof` (`{"v": "100 %", "l": "Welds visually examined · ASME BPE"}`) and nothing else; without `cta.proof` there is no proof box. It never falls back to the hero facts.
+- On the site, `wClosing(c, p)` in `assets/src/parts/Closing.js` renders it from the page's `cta` (`h`, `body`, `button`, `link`, `intent`, `include`, `returns`, `turnaround`, `proof`). `aq-closing__more` appears only when the page has a checklist, an exchange or `cta.proof`. The proof shows `cta.proof` and nothing else; it never falls back to the hero facts.
 
-## Layout (concepts 18 and 49)
+## Layout
 
-- Markup order inside `aq-closing__frame`: `aq-closing__strip` (three ruled mono cells, `aria-hidden`: "Aquemi", "Next step · page", the step), `h2.aq-closing__h`, `aq-closing__body` (only when there is a body or a list: the `aq-lead`, then the checklist or the exchange plate), then `aq-closing__foot` (proof, then `aq-closing__action`).
-- **Desktop:** headline in `font-display` 600 caps, 60 to 96 px, at most 16 characters per line; the lead in a ruled box. With a checklist or an exchange the headline runs the full width (balance-wrapped, 52 to 80 px) and the rest becomes two columns (4 : 8); without a lead the action sits right under the headline: headline, lead, proof and button on the left, the list (or the plate) on the right, so the band stays under about 650 px. The exchange sits on a cream Plate (`wPlate(…, {light: true, cls: "aq-closing__plate", block: ["Aquemi", "Send", "Return"]})`): two ruled tables with a header cell, numbered send rows, return rows each with a small document drawing (`aq-closing__doc is-1` to `is-4`: chart, flow, table, list), and between them the turnaround in a heavy ruled box with an arrowhead. The button is the Limestone primary at closing scale (`font-display` caps 24 to 26 px, 64 px tall).
-- **Phone** (`@container (max-width: 860px)`): compact and plain, about 500 px. No strip, frame boxes, plate, returns or proof: the headline (44 px caps), the lead, at most four send rows on hairlines, the turnaround line and a full-width button.
+- **Desktop:** everything centred, the one place on the site where text is centred: headline (Geist 400, 40/46 px, -0.02em, sentence case) in `on-navy`, the lead (`body-lg`, at most 52 characters per line) in `on-navy-muted` `space-6` below, then the button. The arc is a single quarter-circle, 1.5 px `limestone` at 55 %, `min(30%, 300px)` wide, cut at the band's top-left corner. Below the button, under a faint hairline, a centred column (880 px max) holds the checklist or exchange and the proof, left-aligned.
+- **Phone** (`@container (max-width: 860px)`): headline 30/36 px, the lead, a full-width button, then at most four send rows and the turnaround line. No returns list and no proof. The arc shrinks to 45 % of the width.
+- No frame, title strip, registration marks, ruled boxes or plate: the navy ground, the one arc and hairlines do the work. The arc never animates.
+
+## Token rules
+
+- Ground `navy` (from `aq-band--navy`); text `on-navy`, secondary text `on-navy-muted`. These stay light on navy in both themes (`ink-inverse` would turn dark in the dark theme).
+- Hairlines: 1 px `on-navy-muted` at 30 % strength. Labels ("What to send us", "Proof") in the `eyebrow` style in `on-navy-muted`.
+- Proof value in `font-mono` 300, 40/44 px, tabular figures, `on-navy`; its label 14/22 `on-navy-muted`.
 
 ## Writing
 
@@ -38,11 +40,11 @@ Closing is the call to action at the end of every page: a very large headline in
 - Only once per page, last before the footer. Never next to another navy band.
 - Not for mid-page prompts; use a Button in the section instead.
 
-Origin: concepts 18 (closing) and 49 (send and return) in `design-system/inspiration/gemini/`, rebuilt with Aquemi tokens.
+Origin: concepts 18 (closing) and 49 (send and return) in `design-system/inspiration/gemini/`, now set in the brand's plain closing band (no drawing frame or plate).
 
 ## Checklist (`cta.include`)
 
-An optional list of short strings on the page's `cta`, rendered under the body as a compact numbered checklist (two columns on desktop, one on phones), headed "What to send us" (override with `cta.include_label`).
+An optional list of short strings on the page's `cta`, rendered as a compact numbered checklist (below the button), headed "What to send us" (override with `cta.include_label`).
 
 ```json
 "cta": {"h": "Send your feed water analysis.", "body": "…", "button": "Request a sizing proposal", "link": "contact-proposal",
@@ -55,11 +57,11 @@ An optional list of short strings on the page's `cta`, rendered under the body a
 ```
 
 - Use it to fold a page's "what to send us" docs block into the closing: one ask, in one place. Three to seven items, each 8 words or fewer.
-- Rows on `on-navy-muted` hairlines at 30 % strength; text 15/22 `on-navy` (14/20 on phones); index in `on-navy-muted`.
+- Rows on `on-navy-muted` hairlines at 30 % strength; text 16/24 `on-navy` (14/22 on phones); index in `on-navy-muted`.
 
 ## Exchange (`cta.returns`, `cta.turnaround`)
 
-With `cta.returns` (two to four strings, each a document or answer the page already promises: "Skid sizing for your coldest feed", "Budget range, CAD") the checklist becomes an exchange across the full width of the frame: what you send, an arrow labelled with `cta.turnaround` (a placeholder until confirmed, `[proposal response time, working days]`), and what comes back, each return with a small document mark (`.aq-closing__doc`). `cta.returns_label` overrides "What comes back". Markup: `.aq-closing__swap` > `.aq-closing__include`, `p.aq-closing__turn`, `.aq-closing__include.aq-closing__returns`. Phones: stacked, the arrow pointing down. Never list a return the page doesn't already promise.
+With `cta.returns` (two to four strings, each a document or answer the page already promises: "Skid sizing for your coldest feed", "Budget range, CAD") the checklist becomes an exchange below the button: what you send, an arrow with `cta.turnaround` (a placeholder until confirmed, `[proposal response time, working days]`), and what comes back, numbered like the send rows. `cta.returns_label` overrides "What comes back". Markup: `.aq-closing__swap` > `.aq-closing__include`, `p.aq-closing__turn`, `.aq-closing__include.aq-closing__returns`. Phones: the send rows and the turnaround line only. Never list a return the page doesn't already promise.
 
 ## Motion
 

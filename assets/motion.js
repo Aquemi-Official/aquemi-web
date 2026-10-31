@@ -86,7 +86,7 @@
   var M = { on: on, tw: tw, claim: claim, free: free, split: split, lines: lines, draw: draw, drawSvg: drawSvg, count: count, scramble: scramble, narrow: narrow };
 
   var gen = 0, lastPage = null, CHROME = ['NavBar', 'Hero', 'KeyFacts', 'SectionNav'];
-  // Wait for the webfonts so SplitText measures the real lines (Barlow Condensed wraps very differently from the fallback)
+  // Wait for the webfonts so SplitText measures the real lines (Geist Light wraps differently from the fallback)
   function run(root) {
     kill();
     if (reduce || !window.gsap || !window.ScrollTrigger || !root) return;
@@ -94,9 +94,9 @@
     // fonts.status can read 'loaded' before a face has been requested, so also ask for the display face by name;
     // then wait until no face is still loading (SplitText measures lines), never longer than 2 s
     var F = document.fonts, t0 = Date.now(), h = root.querySelector('.aq-hero h1');
-    function settled() { return !F || (F.status === 'loaded' && (!F.check || F.check('600 40px "Barlow Condensed"'))) }
+    function settled() { return !F || (F.status === 'loaded' && (!F.check || F.check('300 40px "Geist"'))) }
     function go() { if (g !== gen) return; g = -1; if (h) gsap.set(h, { autoAlpha: 1 }); start(root) }
-    function wait() { if (g !== gen) return; if (settled() || Date.now() - t0 > 2000) return go(); F.load('600 40px "Barlow Condensed"').then(function () { return F.ready }).then(function () { requestAnimationFrame(wait) }, go) }
+    function wait() { if (g !== gen) return; if (settled() || Date.now() - t0 > 2000) return go(); F.load('300 40px "Geist"').then(function () { return F.ready }).then(function () { requestAnimationFrame(wait) }, go) }
     if (!settled()) { if (h) gsap.set(h, { autoAlpha: 0 }); setTimeout(go, 2000); requestAnimationFrame(wait); return }
     start(root);
   }

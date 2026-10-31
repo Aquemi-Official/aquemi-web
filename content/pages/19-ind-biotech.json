@@ -197,28 +197,23 @@
   },
   {
    "type": "steps",
-   "as": "stages",
    "nav": "Scale-up",
    "h": "From clinical batch to licensed plant",
    "items": [
     {
      "t": "Clinical suite",
-     "icon": "ro-membrane",
      "d": "A membrane WFI skid, a compact still or bought WFI; PW and pure steam on site."
     },
     {
      "t": "Design for commercial",
-     "icon": "pid",
      "d": "Tank, loop and pump sized for the commercial schedule; valved tie-ins for a second train."
     },
     {
      "t": "Add generation",
-     "icon": "still",
      "d": "A second train, factory tested, tied in at a planned shutdown under change control."
     },
     {
      "t": "Licensed production",
-     "icon": "stamp",
      "d": "PQ data and a year of trends, ready for Health Canada, FDA and EU review."
     }
    ]

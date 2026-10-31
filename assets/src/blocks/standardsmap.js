@@ -1,12 +1,12 @@
 /* Block "standards-map" -> StandardsMap: a plant map of the water system, each zone (generation, storage and distribution,
-   pure steam, controls and data, fabrication, qualification) a dashed framed area hanging off one pipe header, labelled with
+   pure steam, controls and data, fabrication, qualification) a hairline-framed area hanging off one flow main, labelled with
    the standards that govern it. Fields: zones [{t, codes: ["USP <645>", ...], to, spot, icon}]. to: the id of the section that
    holds the proof (a block's anchor, or its nav id s-N-label); the zone title jumps there. Each code is a chip that scrolls
    to the row naming it: first inside the zone's section, then anywhere on the page; a folded row is unfolded first and
-   flashes once. A code may be {t, to} to send that one code to another section. spot: a Spot name (assets/spots) or an Icon name, the zone's equipment vignette, all or none; with
-   spots the map sits on a drawing plate. icon: an Icon name, used only without spots (all or none).
+   flashes once. A code may be {t, to} to send that one code to another section. spot: a Spot name (drawn as its icon) or an Icon name, the zone's equipment vignette, all or none; with
+   spots the map sits on a plate. icon: an Icon name, used only without spots (all or none).
    Desktop: the first half of the zones above the pipe, the rest below, a branch from each to the pipe. Phones: zones stacked
-   as compact rows on a vertical pipe, codes as chips. Navy ground. Only standards the page already lists. */
+   as compact rows on a vertical flow line, codes as tags. Only standards the page already lists. */
 BLOCKS['standards-map']=function(b,H){var Z=b.zones||[],top=Math.ceil(Z.length/2),sp=Z.length&&Z.every(function(z){return isVig(z.spot)}),ic=!sp&&Z.length&&Z.every(function(z){return isIcon(z.icon)});
  var map='<div class="aq-standards-map'+(sp?' aq-standards-map--spots':'')+'"><ol class="aq-standards-map__zones" style="--cols:'+Math.max(top,1)+'">'+Z.map(function(z,i){var up=i<top,
    to=z.to||'',t=to?'<a href="#'+e(WP)+'" data-jump="'+e(to)+'">'+tx(z.t)+'</a>':tx(z.t);

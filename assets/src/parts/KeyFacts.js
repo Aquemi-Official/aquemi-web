@@ -2,8 +2,7 @@
    Label "Conductivity at 25 °C · USP <645>" -> dt name + a second dd for the source (after the last " · ").
    Value "≤ 1.3 µS/cm" -> comparator, figure, unit; the unit is split off only when the tail after the last space
    (outside [placeholders]) has no digits and follows a figure, so "Part 11", "GAMP 5" and "[Ra, µm]" stay whole.
-   The "01 /" index and the dial are aria-hidden spans; the ruler, frame and fixings are CSS only. The strip is a cream
-   data plate (data-theme="light") on the navy hero. */
+   A quiet strip between line hairlines on the section's own ground; no index, frame or decoration. */
 function kfParts(v){
  v=String(v==null?'':v);
  var cmp='',m=/^([<>≤≥])\s+/.exec(v);
@@ -25,8 +24,8 @@ function kfValue(v){var p=kfParts(v);
 function kfLong(v){var f=kfParts(v).fig;return f.length>7||/^\[/.test(f)}
 function wKeyFacts(facts){
  if(!facts||!facts.length)return '';
- return '<dl class="aq-key-facts" data-theme="light">'+facts.map(function(f,i){
+ return '<dl class="aq-key-facts">'+facts.map(function(f){
   var l=String(f.l==null?'':f.l),k=l.lastIndexOf(' · '),name=k>0?l.slice(0,k):l,src=k>0?l.slice(k+3):'';
-  return '<div><dt><span class="aq-key-facts__i" aria-hidden="true">'+(i<9?'0':'')+(i+1)+' / </span>'+tx(name)+'</dt><dd class="aq-key-facts__value'+(kfLong(f.v)?' is-long':'')+'">'+kfValue(f.v)+'</dd>'+(src?'<dd class="aq-key-facts__src">'+tx(src)+'</dd>':'')+'<span class="aq-key-facts__dial" aria-hidden="true"></span></div>';
+  return '<div><dt>'+tx(name)+'</dt><dd class="aq-key-facts__value'+(kfLong(f.v)?' is-long':'')+'">'+kfValue(f.v)+'</dd>'+(src?'<dd class="aq-key-facts__src">'+tx(src)+'</dd>':'')+'</div>';
  }).join('')+'</dl>';
 }

@@ -1,4 +1,4 @@
-StandardsGrid lists the standards Aquemi designs to as numbered cards joined by thin connector lines, as a section of its own under a large headline.
+StandardsGrid lists the standards Aquemi designs to as a numbered three-column grid on `line` hairlines, as a section of its own under a large headline.
 
 ## Markup
 
@@ -18,7 +18,7 @@ StandardsGrid lists the standards Aquemi designs to as numbered cards joined by 
 ```
 
 - A semantic ordered list. CSS writes the number (`01`, the shared index style) before the code; screen readers skip it where the browser supports alt text on `content`.
-- `aq-standards-grid__card` is an `<a>` to the Compliance page when that page exists, otherwise a `<div>`. The whole card is the hit area.
+- `aq-standards-grid__card` is an `<a>` to the Compliance page when that page exists, otherwise a `<div>`. The whole item is the hit area (at least 44 px tall on phones). Despite the class name it is not drawn as a card.
 - With a name: the code is the small mono line beside the number and the name is the large line below. Without one: add `aq-standards-grid__item--code` and the code itself takes the large line.
 - Put it in a full-width section under the standard section head (the site uses `aq-band--sunken`; it counts as the page's one tinted band).
 
@@ -28,14 +28,14 @@ Block type `tags` (`assets/src/blocks/tags.js`). `items` is a list of strings (t
 
 ## Layout
 
-- **Desktop:** three cards to a row on a `line` dot grid. A horizontal connector joins each card to the next in its row at number height; a vertical connector drops from each card into the one below.
-- **Phone** (`@container (max-width: 860px)`): compact hairline rows, index then code, two to a row when items are codes only and one to a row when they carry a plain-language name. No frame, cards, ruler or connectors.
+- **Desktop:** three items to a row, each opening on a `line` hairline: index and code on the first line, the name below. No frames, cards or connector lines.
+- **Phone** (`@container (max-width: 860px)`): compact hairline rows, index then code, two to a row when items are codes only and one to a row when they carry a plain-language name. Nothing else.
 
 ## Token rules
 
-- Cards: `surface-raised` on `surface`, 1 px `line-strong` border, `radius-0`. Connectors, ruler and ticks in `line-strong`; dot grid and frame in `line`.
-- Number in `font-mono` 12 px `ink-subtle`; code line in `font-mono` 12 px `ink`; name (or code-only code) in `font-sans` 400 at 22 px (20 px on phones).
-- Hover: `flow` border and a 2 px `flow` top edge, number turns `flow`. Focus: 2 px `focus` ring with 2 px offset.
+- No surfaces of its own: items sit on the band's ground, separated by a 1 px `line` hairline above each.
+- Number in the shared index style (Geist Mono 13 px `ink-subtle`); code line in Geist Mono 13 px `ink`; name (or code-only code) in Geist 400 22/28 (16/22 on phones). Nothing is uppercase.
+- Hover: the hairline and the number turn `flow` and the name underlines. Focus: 2 px `focus` ring with 2 px offset.
 
 ## Writing
 

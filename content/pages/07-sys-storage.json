@@ -90,7 +90,7 @@
    "stages": [
     {
      "t": "From generation",
-     "icon": "valve",
+     "icon": "droplet",
      "d": "Enters the tank under a heated vent filter."
     },
     {
@@ -303,12 +303,12 @@
     {
      "t": "Point-of-use coolers",
      "d": "Single-user coolers that flush to drain until temperature and time are met.",
-     "spot": "valve"
+     "spot": "heat-exchanger"
     },
     {
      "t": "Ozone package for PW",
      "d": "Ozone generator, 254 nm UV destruct, three ozone sensors, vent destructor.",
-     "spot": "uv-ozone"
+     "spot": "ozone"
     },
     {
      "t": "Prefabricated loop modules",

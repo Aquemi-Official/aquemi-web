@@ -1,4 +1,4 @@
-Prose is running text in a SplitSection: the heading on the left, the first sentence as a large lead, then paragraphs tagged [01], [02] in the margin on a faint drawing grid.
+Prose is running text in a SplitSection: the heading on the left, the first sentence as a large light lead, then the paragraphs in body size, with white space and nothing else around them.
 
 ## Markup
 
@@ -14,8 +14,8 @@ Prose is running text in a SplitSection: the heading on the left, the first sent
 
 ## Token rules
 
-- Concept 27: the sheet has a `line-strong` rule on its left and a faint `line` grid at `space-8` pitch (60 % strength; none on phones). Lead: `font-sans` 400 at 28/36 (22/30 on phones) in `ink`. Paragraphs: 17/28 (16/26) in `ink-muted`, `space-6` apart.
-- Every paragraph after the lead carries a reference tag, `[01]`, in 12 px mono `flow` in the margin, joined to the text by a dashed `flow` leader ending in a node (CSS counter, silent to screen readers). Phones: the tag sits at the right end of a `flow` rule above its paragraph.
+- Lead: Geist 300 at 28/36 (22/30 on phones) in `ink`, tracked -0.01em, `space-2` extra space under it. Paragraphs: `body` 16/26 in `ink-muted`, `space-4` apart, within `text-max`.
+- No grid, frame, rule, reference tags or leaders: white space separates the lead from the body.
 - Standards and figures stay inline in the sentence.
 
 ## Writing

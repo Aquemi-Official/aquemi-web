@@ -108,14 +108,14 @@
    "items": [
     {
      "t": "PW generation",
-     "icon": "edi",
+     "icon": "ro-membrane",
      "d": "Final rinse for implants and passivation lines, with a written endotoxin limit.",
      "tag": "USP <645>",
      "link": "sys-pw"
     },
     {
      "t": "WFI by membrane",
-     "icon": "ro-membrane",
+     "icon": "edi",
      "d": "Low-endotoxin rinse for blood and CSF contact, held to a limit from yours.",
      "tag": "USP <161>",
      "link": "sys-wfi-membrane"
@@ -129,7 +129,7 @@
     },
     {
      "t": "Upgrades and retrofits",
-     "icon": "magnifier",
+     "icon": "valve",
      "d": "Endotoxin drifting on devices: we find whether water, washer or handling is the source.",
      "tag": "Change control",
      "link": "svc-upgrades"

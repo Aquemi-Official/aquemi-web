@@ -28,17 +28,25 @@ function wPlate(inner,o){o=o||{};var bl=o.block&&o.block.length?'<div class="aq-
  return '<div class="aq-plate'+(bl?' aq-plate--block':'')+(o.cls?' '+o.cls:'')+'"'+(o.light?' data-theme="light"':'')+'>'+inner+bl+'</div>'}
 /* Index: the one numbering style, "01" (aria-hidden: the list already announces position) */
 function idx(i){return '<span class="aq-index" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}
-/* Icon: a line-art spot from assets/icons/<name>.png, painted with a token through a mask (design-system/components/Icon). */
-var ICONS=' softener carbon-filter ro-membrane edi still pure-steam tank loop valve heat-exchanger uv ozone conductivity toc pump weld borescope gauge pid binder stamp calendar wrench magnifier ';
+/* Icon: a Lucide-style line icon from assets/icons/<name>.svg, painted with a token through a mask (design-system/components/Icon). */
+var ICONS=' softener carbon-filter ro-membrane edi still pure-steam tank loop valve heat-exchanger uv ozone conductivity toc pump weld borescope gauge pid binder stamp calendar wrench magnifier'
+ +' pill dna syringe factory building clipboard shield checklist people briefcase newspaper document lifebuoy pin clock phone cpu monitor database network droplet ';
 function isIcon(n){return typeof n==='string'&&/^[a-z-]+$/.test(n)&&ICONS.indexOf(' '+n+' ')>=0}
-function wIcon(n,cls){var u='url(assets/icons/'+n+'.png)';return '<span class="aq-icon'+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
-/* Spot: a larger equipment vignette from assets/spots/<name>.png (design-system/components/Spot), 96/128/160 px by size s|m|l.
-   A name from the Icon set instead draws that icon at 64 px in the same place (aq-spot--icon), for stops with no spot yet. */
-var SPOTS=' pretreatment ro-skid edi-stack still pure-steam-generator storage-tank pump heat-exchanger uv-ozone ';
-function isSpot(n){return typeof n==='string'&&/^[a-z-]+$/.test(n)&&SPOTS.indexOf(' '+n+' ')>=0}
+function wIcon(n,cls){var u='url(assets/icons/'+n+'.svg)';return '<span class="aq-icon'+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
+/* Page icon: the one icon that stands for a page wherever the page is shown small (related links, linked row ends). */
+var PAGE_ICON={systems:'loop','sys-pw':'ro-membrane','sys-wfi-distillation':'still','sys-wfi-membrane':'edi','sys-pure-steam':'pure-steam','sys-storage':'tank',
+ 'sys-pretreatment':'softener','sys-monitoring':'conductivity',services:'clipboard','svc-design':'pid','svc-fabrication':'weld','svc-fat-sat':'gauge','svc-cq':'stamp',
+ 'svc-service':'wrench','svc-upgrades':'valve',industries:'building','ind-pharma':'pill','ind-biotech':'dna','ind-meddevice':'syringe','ind-cdmo':'factory',
+ compliance:'shield','cmp-documentation':'binder','cmp-quality':'magnifier',projects:'checklist',about:'people',careers:'briefcase',news:'newspaper',
+ 'contact-proposal':'document','contact-service':'lifebuoy','contact-locations':'pin'};
+/* Spot: an icon drawn larger in a figure (a diagram stop, an option module, a route stop), design-system/components/Spot.
+   Older equipment spot names map to their icon, so every figure uses the one line set. */
+var SPOT_ICON={pretreatment:'softener','ro-skid':'ro-membrane','edi-stack':'edi',still:'still','pure-steam-generator':'pure-steam','storage-tank':'tank',
+ pump:'pump','heat-exchanger':'heat-exchanger','uv-ozone':'uv'};
+function isSpot(n){return typeof n==='string'&&SPOT_ICON.hasOwnProperty(n)}
 function isVig(n){return isSpot(n)||isIcon(n)}
-function wSpot(n,size,cls){var sp=isSpot(n);if(!sp&&!isIcon(n))return '';var u='url(assets/'+(sp?'spots':'icons')+'/'+n+'.png)';
- return '<span class="aq-spot'+(!sp?' aq-spot--icon':size==='s'?' aq-spot--s':size==='l'?' aq-spot--l':'')+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
+function wSpot(n,size,cls){n=isSpot(n)?SPOT_ICON[n]:n;if(!isIcon(n))return '';var u='url(assets/icons/'+n+'.svg)';
+ return '<span class="aq-spot aq-spot--icon'+(cls?' '+cls:'')+'" aria-hidden="true" style="-webkit-mask-image:'+u+';mask-image:'+u+'"></span>'}
 /* Row icons for a block: item.icon wins; with block "icons": "auto" a title naming one piece of equipment picks it, but only
    when every row gets one (a half-iconed list reads as broken). First match wins: pure steam before still. */
 var ICON_AUTO=[[/softener/i,'softener'],[/carbon filter|activated carbon/i,'carbon-filter'],[/reverse osmosis|\bRO\b/,'ro-membrane'],[/\bEDI\b|electrodeioni/i,'edi'],
@@ -50,10 +58,10 @@ function wIcons(b){var I=b.items||[],r=I.map(function(it){return it&&isIcon(it.i
 /* Rows: one list row of the shared list grammar (.aq-rows). link: a page id; the whole row becomes the link. art: drawing page id.
    ic: icon name (wIcons) shown in the index column instead of the number; num: keep the number beside it (ordered steps).
    An icon replaces the row-end drawing (art): at 48 px a drawing reads as texture, the icon reads as the thing. */
-function wRow(i,t,d,link,art,tag,ic,num){ic=isIcon(ic)?ic:'';var hasArt=!ic&&art&&ART[art];
+function wRow(i,t,d,link,art,tag,ic,num){ic=isIcon(ic)?ic:'';var endIc=!ic&&art&&PAGE_ICON[art];
  var lead=ic?'<span class="aq-rows__lead'+(num?' aq-rows__lead--n':'')+'" aria-hidden="true">'+(num?idx(i):'')+wIcon(ic)+'</span>':idx(i);
  var inner=lead+'<h3 class="aq-rows__t">'+tx(t)+'</h3>'+(d||tag?'<p class="aq-rows__d">'+(d?tx(d):'')+(tag?'<span class="aq-tags"><span class="aq-tag">'+e(tag)+'</span></span>':'')+'</p>':'')
-  +(hasArt?'<span class="aq-illustration aq-rows__art" aria-hidden="true" style="'+artMask(art)+'"></span>':'');
+  +(endIc?wIcon(endIc,'aq-rows__art'):'');
  return '<li>'+(link&&wp(link)?'<a class="aq-rows__row" href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div class="aq-rows__row">'+inner+'</div>')+'</li>'}
 /* Fold (block field fold: N): the first N items show, the rest carry aq-fold-x and stay hidden until the button under
    the list is pressed ("Show all 10 parameters" / "Show fewer"). Put the items that decide the choice first; fold only

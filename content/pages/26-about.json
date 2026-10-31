@@ -31,6 +31,34 @@
  "primary_cta_link": "contact-proposal",
  "blocks": [
   {
+   "type": "steps",
+   "as": "row",
+   "nav": "How we work",
+   "h": "How we work",
+   "items": [
+    {
+     "t": "Design",
+     "d": "We start from your user requirement specification and a feed water analysis, and size the system for your measured demand."
+    },
+    {
+     "t": "Fabricate",
+     "d": "Skids are built in our shop in [city], with orbital welding, traceable materials and a weld log for every product-contact joint."
+    },
+    {
+     "t": "Test",
+     "d": "Every system is factory acceptance tested with water before it ships, to a protocol you approved."
+    },
+    {
+     "t": "Qualify",
+     "d": "We execute SAT and IQ/OQ on site, and support your PQ."
+    },
+    {
+     "t": "Support",
+     "d": "Service, spare parts, calibration and requalification support for the life of the system."
+    }
+   ]
+  },
+  {
    "type": "grid",
    "as": "route",
    "nav": "One team",

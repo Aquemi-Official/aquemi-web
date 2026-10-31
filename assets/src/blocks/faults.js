@@ -1,7 +1,7 @@
 /* Table as "failures" -> FaultList: where things fail and what we design against. Fields as a table: cols [the failure
    column, then the columns revealed when a row opens, usually "Usual cause" and "What we design in"], rows. Each row is
    a native <details>: index, the failure, a +/− sign; open, the other columns sit side by side, each under its column
-   name. The first row starts open; a shared name keeps one open at a time. Laid on a light sheet.
+   name. The first row starts open; a shared name keeps one open at a time. A list on hairlines.
    fold: N shows the first N failures; the rest sit behind "Show all N risks". */
 var faultN=0;
 TABLE_AS.failures=function(b,H){var C=b.cols||[],R=b.rows||[];faultN++;

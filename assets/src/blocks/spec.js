@@ -4,16 +4,16 @@
    link: a page id, shown as a quiet "Page name →" link after the basis. The caption is the section's eyebrow (above h)
    and the table's visually hidden <caption>; it is never printed a second time above the table.
    CSS changes the table's display, so explicit ARIA table roles keep its semantics in every browser.
-   A lead hl row whose value holds a number is a readout: its limit set huge on a navy panel (aria-hidden; the value
-   cell still carries the full text).
+   A lead hl row whose value holds a number is a readout: its limit set as the section's readout figure in the band
+   (aria-hidden; the value cell still carries the full text).
    Shapes (field as): "gauges" -> LimitGauges, "rules" -> LimitGauges rule bars (rules.js), "callouts" -> ParameterCallouts (below). */
 function wSpecTable(b,rows,foldAt,noun){var cols=b.cols||['Parameter','Specification','Method or reference'],lead=true;
   var body=rows.map(function(r,i){
     var hl=!!r.hl,cls=hl?(lead?'is-highlight is-lead':'is-highlight'):'';if(!hl)lead=false;
     var lp=r.link&&wp(r.link),lk=lp?'<a class="aq-spec__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(lp.nav_label||r.link)+'</a>':'';
-    /* Lead rows with a number become a readout (concept 26): the limit huge in condensed figures on a navy panel */
+    /* Lead rows with a number become a readout: the limit as a Geist Mono readout figure in the flow-tint band */
     var g=hl&&lead?gaugeParse(r.v):null,rd=g?'<td class="aq-spec__read" aria-hidden="true"><span class="aq-spec__read-n">'+e((g.c?g.c+' ':'')+g.t)+'</span>'+(g.u?'<span class="aq-spec__read-u">'+tx(g.u)+'</span>':'')+'</td>':'';
-    return fli('<tr role="row"'+(cls?' class="'+cls+(rd?' is-readout" data-theme="dark"':'"'):''),{fold:foldAt===0?-1:foldAt},i)+'>'+rd+'<th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
+    return fli('<tr role="row"'+(cls?' class="'+cls+(rd?' is-readout"':'"'):''),{fold:foldAt===0?-1:foldAt},i)+'>'+rd+'<th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
   }).join('');
   var t='<table class="aq-spec'+(foldAt===0?' aq-fold-x':'')+'" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'+cols.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'+body+'</tbody></table>';
   if(!(foldAt>=0)||rows.length<=foldAt)return t;
@@ -29,7 +29,7 @@ BLOCKS['spec']=function(b,H){
 };
 
 /* ---------- "as": "gauges" -> LimitGauges ----------
-   Each row becomes an instrument face on a cream drawing plate: a heavy scale arc with major and minor ticks and scale
+   Each row becomes an instrument face on a plate: a hairline scale arc with major and minor ticks and scale
    numbers, the limit as an ink pointer with a "LIMIT ≤ 1.3" tag, a needle from the pivot resting on the limit (there is
    no measured value, so the needle never shows a reading), the side that passes as a flow band (below the limit for ≤
    and <, above it for ≥ and >), the limit as a large mono readout bottom right and the full value and basis as a small
@@ -103,7 +103,7 @@ function wGauges(b,rows){
     return fli('<li class="aq-limit-gauges__item'+(g?'':' is-readout')+(open?' is-open':'')+(r.hl?' is-key':'')+'">',b,i)
      +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read):open?wDialOpen():'')
      +'<div class="aq-limit-gauges__foot">'+spec+'</div></li>'}).join('');
-  return wPlate(wFold(b,rows.length,'<ul class="aq-limit-gauges" role="list">'+list+'</ul>',b.fold_noun||'limits'),{light:true,block:['Aquemi',b.caption||'Limits']})}
+  return wPlate(wFold(b,rows.length,'<ul class="aq-limit-gauges" role="list">'+list+'</ul>',b.fold_noun||'limits'),{block:['Aquemi',b.caption||'Limits']})}
 
 /* ---------- "as": "callouts" -> ParameterCallouts ----------
    The page's own equipment drawing (ART[page id], the Illustration mask the hero uses) with leader lines to numbered

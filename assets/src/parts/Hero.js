@@ -48,8 +48,7 @@ function heroIndex(p){var sib=W().filter(function(q){return q.section===p.sectio
   items:sib.map(function(q){return {t:q.nav_label||q.headline,wp:q.id}})};
  var bs=(p.blocks||[]),items=[];bs.forEach(function(b,i){if(b.h&&b.type!=='related'&&items.length<7)items.push({t:b.h,jump:b.nav?jid(b,i):''})});
  return items.length>1?{label:'On this page',aria:'On this page',items:items}:null}
-/* System index (opt-in hero field "index", concept 35): the hub's child pages as a large numbered index on a framed area
-   with corner crosses. index: true takes the other pages of this page's section (as heroIndex); index: ["sys-pw", …]
+/* System index (opt-in hero field "index"): the hub's child pages as numbered rows at a larger title size. index: true takes the other pages of this page's section (as heroIndex); index: ["sys-pw", …]
    lists those page ids in that order. Overrides hero_index. Returns heroIndex-shaped data with big: true, or null. */
 function heroBigIndex(p){var v=p.index,pages=Array.isArray(v)?v.map(wp).filter(Boolean):v===true?W().filter(function(q){return q.section===p.section&&q.id!==p.id}):[];
  return pages.length?{big:true,label:p.section+' index · '+pages.length+' pages',aria:'Pages in '+p.section,items:pages.map(function(q){return {t:q.nav_label||q.headline,wp:q.id}})}:null}
@@ -57,19 +56,15 @@ function wHeroIndex(x){var n=x.items.length;
  return '<nav class="aq-hero__index'+(x.big?' aq-hero__index--big':'')+'" aria-label="'+e(x.aria)+'"><p class="aq-hero__index-label">'+e(x.label)+'</p><ol>'+x.items.map(function(it,i){
   var t='<span class="aq-hero__index-t">'+tx(it.t)+'</span>';
   return '<li>'+(it.wp?'<a class="aq-hero__index-item" href="#'+e(it.wp)+'" data-wp="'+e(it.wp)+'">'+t+'</a>':it.jump?'<a class="aq-hero__index-item" href="#'+e(WP)+'" data-jump="'+e(it.jump)+'">'+t+'</a>':'<span class="aq-hero__index-item">'+t+'</span>')+
-   (x.big&&i<n-1?'<span class="aq-hero__index-down" aria-hidden="true"></span>':'')+'</li>'}).join('')+'</ol></nav>'}
+   (x.big&&i<n-1?'':'')+'</li>'}).join('')+'</ol></nav>'}
 /* Home: fine-line drawing of a figure-eight distribution loop (viewBox 440 x 520). Strokes are currentColor and tokens in style.css.
    Annotations are the home page's own standards and its endotoxin fact; nothing else is claimed. */
 function wHomeLoop(p){
- var ef=(p.facts||[]).filter(function(f){return /EU\/mL/.test(f.v)})[0],tick='',i;
- for(i=0;i<=44;i++){var y=30+i*10,m=i%5===0;tick+='<line x1="'+(m?422:427)+'" y1="'+y+'" x2="434" y2="'+y+'"/>'}
- for(i=0;i<=16;i++){var x=140+i*10,mm=i%4===0;tick+='<line x1="'+x+'" y1="514" x2="'+x+'" y2="'+(mm?506:510)+'"/>'}
+ var ef=(p.facts||[]).filter(function(f){return /EU\/mL/.test(f.v)})[0];
  var arrow=function(x,y,r){return '<path class="aq-loop__arrow" d="M-5,-3.5 L4,0 L-5,3.5 Z" transform="translate('+x+' '+y+') rotate('+r+')"/>'};
  var label=function(x,y,s,a){return '<text x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>'};
- return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a filter and a heat exchanger on the loop, conductivity and TOC sensors on the return, flow arrows and a scale rule'+(ef?', endotoxin '+e(ef.v)+' at the furthest point of use':'')+'.">'+
+ return '<figure class="aq-hero__loop" role="img" aria-label="Line drawing of a figure-eight distribution loop: a filter and a heat exchanger on the loop, conductivity and TOC sensors on the return, and flow arrows'+(ef?', endotoxin '+e(ef.v)+' at the furthest point of use':'')+'.">'+
  '<svg viewBox="0 0 440 520" aria-hidden="true" focusable="false">'+
- '<g class="aq-loop__guide"><line x1="220" y1="8" x2="220" y2="492"/><line x1="120" y1="110" x2="320" y2="110"/><line x1="120" y1="390" x2="320" y2="390"/><circle cx="220" cy="110" r="30"/><circle cx="220" cy="110" r="52"/><circle cx="220" cy="390" r="30"/><circle cx="220" cy="390" r="52"/></g>'+
- '<g class="aq-loop__rule">'+tick+'<line x1="434" y1="30" x2="434" y2="470"/><line x1="140" y1="514" x2="300" y2="514"/></g>'+
  '<path class="aq-loop__pipe" d="M140,390 A80,80 0 0 0 300,390 L300,340 C300,270 140,230 140,160 L140,110 A80,80 0 0 1 300,110 L300,160 C300,230 140,270 140,340 Z"/>'+
  arrow(220,30,0)+arrow(180,459.3,30)+arrow(275,292,224)+arrow(275,208,136)+
  '<g class="aq-loop__part"><rect x="133" y="113" width="14" height="44" rx="7"/><line x1="136" y1="125" x2="144" y2="125"/><line x1="136" y1="135" x2="144" y2="135"/><line x1="136" y1="145" x2="144" y2="145"/>'+
@@ -83,15 +78,15 @@ function wHomeLoop(p){
   label(76,132,'Filter','end')+label(76,362,'Heat','end')+label(76,374,'exchanger','end')+
   label(244,483,'Furthest point of use')+(ef?label(244,497,'Endotoxin '+ef.v):'')+
  '</g></svg></figure>'}
-/* Drawn figure (opt-in hero field "figure", pages with no equipment drawing): a bold decorative device on a blueprint
-   frame (dashed frame, registration crosses, fading grid), always aria-hidden; the headline and lead carry the meaning.
+/* Drawn figure (opt-in hero field "figure", pages with no equipment drawing): a quiet line-art device in a 6:5 area
+   on surface (no frame), always aria-hidden; the headline and lead carry the meaning.
    - {"spots": ["ro-skid", "storage-tank", "pure-steam-generator"], "label": "…"}: 2-4 Spot vignettes (an Icon name
      falls back to the icon) set out in a zig-zag and joined along their bases by one drawn flow pipe ending in an arrow,
      each tagged 01, 02 … with its name. An entry may be {"spot": "pid", "t": "Design"} to name it.
    - {"plate": "binder", "label": "Turnover package", "items": [...], "foot": "…"}: a stack of folders, divider tabs
      numbered, the front folder holding the index (items, at most 6).
-   - {"plate": "stamp", "label": "Released", "ring": "…", "ring2": "…", "items": [...]}: a release record (items = its checked rows)
-     with a large rubber-stamp seal across it.
+   - {"plate": "stamp", "label": "Released", "title": "…", "sub": "QA", "items": [...]}: a release record (items = its
+     checked rows) closed by a status line: a flow tick and the label, "Signed · <sub>" beside it.
    - {"plate": "route", "stops": ["Your request", "Engineer review", "Written reply"]}: one route from a start node
      through three numbered stops to an arrow.
    Geometry is in percent of the 6:5 frame; line work in an SVG viewBox 120 x 100 (non-scaling strokes). */
@@ -110,18 +105,14 @@ function wHeroSpots(f){var sp=(f.spots||[]).map(function(s){return typeof s==='s
 function wHeroBinder(f){var it=(f.items||[]).slice(0,6),k=Math.max(3,Math.min(4,it.length||3)),back='';
  for(var i=k-1;i>0;i--)back+='<span class="aq-hero__folder" style="--k:'+i+'"><span class="aq-hero__folder-tab">'+(i<9?'0':'')+(i+1)+'</span></span>';
  var list=it.map(function(t,i){return '<li><b>'+(i<9?'0':'')+(i+1)+'</b><span>'+tx(t)+'</span></li>'}).join('');
- return heroFrame('binder','<div class="aq-hero__binder" data-theme="light">'+back+'<div class="aq-hero__folder is-front" style="--k:0"><span class="aq-hero__folder-tab">01</span><div class="aq-hero__folder-body">'
+ return heroFrame('binder','<div class="aq-hero__binder">'+back+'<div class="aq-hero__folder is-front" style="--k:0"><span class="aq-hero__folder-tab">01</span><div class="aq-hero__folder-body">'
   +'<div class="aq-hero__folder-head"><span class="aq-hero__folder-n">'+tx(f.label||'Turnover package')+'</span>'+(isIcon('binder')?wIcon('binder'):'')+'</div>'
   +(list?'<ol class="aq-hero__folder-list">'+list+'</ol>':'')+(f.foot?'<span class="aq-hero__folder-foot">'+tx(f.foot)+'</span>':'')+'</div></div></div>')}
 function wHeroStamp(f){var it=(f.items||['Inspection','Test','Documents']).slice(0,4);
- var rec='<div class="aq-hero__record" data-theme="light"><span class="aq-hero__record-h">'+tx(f.title||'Release record')+'</span><ul>'+it.map(function(t){return '<li><span>'+tx(t)+'</span><i></i></li>'}).join('')+'</ul><span class="aq-hero__record-sign">Signed · QA</span></div>';
- var svg='<svg class="aq-hero__stamp" viewBox="0 0 240 240" focusable="false"><defs><path id="hero-stamp-top" d="M36,120 A84,84 0 0,1 204,120"/><path id="hero-stamp-bot" d="M26,120 A94,94 0 0,0 214,120"/></defs>'
-  +'<circle class="aq-hero__stamp-o" cx="120" cy="120" r="112"/><circle cx="120" cy="120" r="104"/><circle cx="120" cy="120" r="66"/>'
-  +'<text class="aq-hero__stamp-ring"><textPath href="#hero-stamp-top" startOffset="50%" text-anchor="middle">'+e(f.ring||'Quality unit · Inspected')+'</textPath></text>'
-  +'<text class="aq-hero__stamp-ring"><textPath href="#hero-stamp-bot" startOffset="50%" text-anchor="middle">'+e(f.ring2||'Tested · Reviewed')+'</textPath></text>'
-  +'<rect class="aq-hero__stamp-band" x="10" y="96" width="220" height="48"/><text class="aq-hero__stamp-word" x="120" y="133" text-anchor="middle" textLength="190" lengthAdjust="spacingAndGlyphs">'+e(f.label||'Released')+'</text>'
-  +'<path class="aq-hero__stamp-tick" d="M104,76 l10,10 l22,-22"/><text class="aq-hero__stamp-sub" x="120" y="170" text-anchor="middle">'+e(f.sub||'QA')+'</text></svg>';
- return heroFrame('stamp',rec+svg,f.caption)}
+ var tick='<svg viewBox="0 0 16 16" focusable="false"><path d="M3,8.5 L6.5,12 L13,4.5"/></svg>';
+ var rec='<div class="aq-hero__record"><span class="aq-hero__record-h">'+tx(f.title||'Release record')+'</span><ul>'+it.map(function(t){return '<li><span>'+tx(t)+'</span><i></i></li>'}).join('')+'</ul>'
+  +'<div class="aq-hero__record-foot"><span class="aq-hero__record-status">'+tick+tx(f.label||'Released')+'</span><span class="aq-hero__record-sign">Signed · '+tx(f.sub||'QA')+'</span></div></div>';
+ return heroFrame('stamp',rec,f.caption)}
 function wHeroRoute(f){var st=(f.stops||['Request','Review','Reply']).slice(0,3),P=[[22,30],[52,58],[84,32]];
  var d='M3,12 H'+(P[0][0]*1.2).toFixed(1)+' V'+P[0][1]+' V'+P[1][1]+' H'+(P[1][0]*1.2).toFixed(1)+' H'+(P[2][0]*1.2-14).toFixed(1)+' V'+P[2][1]+' H'+(P[2][0]*1.2).toFixed(1)+' V84 H115';
  var svg='<svg class="aq-hero__route" viewBox="0 0 120 100" preserveAspectRatio="none" focusable="false"><path class="aq-hero__route-guide" d="M3,92 H117"/><path class="aq-hero__route-run" d="'+d+'"/><circle class="aq-hero__route-start" cx="3" cy="12" r="1.6"/><path class="aq-hero__route-arrow" d="M113,81.6 L118,84 L113,86.4 Z"/></svg>';

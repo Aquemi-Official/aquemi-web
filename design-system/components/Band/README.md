@@ -1,4 +1,4 @@
-Band sets one short statement very large in a framed panel on a limestone or sunken ground, with a supporting line and a faint pipework drawing at the right; its ground modifiers (`aq-band--limestone`, `aq-band--sunken`, `aq-band--navy`) also change the ground for other sections.
+Band sets one short statement large on a quiet limestone or sunken ground, with a supporting line and a faint pipework line drawing at the right; its ground modifiers (`aq-band--limestone`, `aq-band--sunken`, `aq-band--navy`) also change the ground for other sections.
 
 ## Markup
 
@@ -13,26 +13,25 @@ Band sets one short statement very large in a framed panel on a limestone or sun
 ```
 
 - `aq-band` plus one ground modifier on `<section class="aq-section">`. The statement band uses `aq-band--limestone` (default) or `aq-band--sunken`.
-- `aq-band__frame` draws the panel. Its top and bottom strips (a hairline and a short run of ruler ticks) are CSS only and carry no text: no section numbers, no "previous / next" labels.
-- `aq-band__mark` is optional and frames one word or phrase with corner brackets. Use it only when the content names that word.
-- `aq-band__motif` is decoration: `aria-hidden`, a schematic of pipes, a valve and two blank instrument boxes, with no tags, values or labels. Never put readings, numbers or text in it. Copy the SVG from `assets/src/blocks/band.js` (`BAND_MOTIF`).
-- On the site: block type `band` with `h`, `body`, `tone` (`limestone` or `sunken`) and an optional `mark` naming the word or phrase in `h` to frame (`"mark": "auditors"`). The renderer wraps the first whole-word match; if `mark` isn't found in `h`, nothing is framed. No page sets `mark` yet.
+- `aq-band__frame` only positions the text and the drawing. It draws no box: the change of ground is the separation.
+- `aq-band__mark` is optional and underlines one word or phrase with a 1 px `flow` hairline. Use it only when the content names that word.
+- `aq-band__motif` is decoration: `aria-hidden`, a schematic of pipes, a valve and two blank instrument boxes, with no tags, values, ticks or labels. Never put readings, numbers or text in it. Copy the SVG from `assets/src/blocks/band.js` (`BAND_MOTIF`).
+- On the site: block type `band` with `h`, `body`, `tone` (`limestone` or `sunken`) and an optional `mark` naming the word or phrase in `h` to underline (`"mark": "auditors"`). The renderer wraps the first whole-word match; if `mark` isn't found in `h`, nothing is marked. No page sets `mark` yet.
 
 ### Ground modifiers on their own
 
-- `aq-band--sunken` for standard tags and the documentation list (StandardsGrid, DocList). `aq-band--limestone` for the statement band. `aq-band--navy` for the dark ground; Closing uses it.
+- `aq-band--sunken` for standard tags and the documentation list (StandardsGrid, DocList). `aq-band--limestone` for the statement band. `aq-band--navy` for the brand band; only Closing (and the Footer's own navy) use it.
 - Text on navy uses `on-navy` and `on-navy-muted`. A primary button inside a navy band turns Limestone with navy text automatically.
 
 ## Layout
 
-- **Desktop:** frame with `space-12` side padding and `space-8` strips top and bottom. Statement up to 20 characters per line within 75 % of the frame, lead below it. The drawing fills the right 34 % of the frame height and fades to nothing towards the text.
-- **Phone** (`@container (max-width: 860px)`): `space-4` side padding, `space-6` strips, statement full width, lead 16/24 px. The drawing drops to the lower right corner at lower strength. Nothing overflows at 375 px.
+- **Desktop:** statement in the left 64 % of the content width, up to 20 characters per line, lead below it. The drawing fills the right 28 % of the band at 30 % strength.
+- **Phone** (`@container (max-width: 860px)`): statement full width at 38/44 px, lead 16/24 px, no drawing. Nothing overflows at 375 px.
 
 ## Token rules
 
-- Statement: `font-sans` 300, `clamp(44px, 6.4cqi, 80px)` on desktop and `clamp(30px, 9.5cqi, 44px)` on phones, line-height 1.08, sentence case. Lead is `aq-lead` and takes the ground's muted colour (`on-limestone-muted` on limestone, `ink-muted` on sunken).
-- Frame, strips, ticks, brackets and drawing are all drawn in `currentColor` (frame and strips at 35 %, ticks at 45 %, drawing at 40 %), so they follow `on-limestone` on limestone and `ink` on sunken in both themes. Square corners (`radius-0`).
-- Mark brackets: 2 px, 0.22 em long, at the four corners of the word.
+- Statement: the `display` style, `font-sans` 300, 56/60 px, -0.025em, sentence case (38/44 px on phones). Lead is `aq-lead` and takes the ground's muted colour (`on-limestone-muted` on limestone, `ink-muted` on sunken).
+- The drawing is 1 px lines in `currentColor`, so it follows `on-limestone` on limestone and `ink` on sunken in both themes. No frame, no ruler ticks, no corner brackets, no gradients.
 
 ## Writing
 
@@ -46,7 +45,7 @@ Band sets one short statement very large in a framed panel on a limestone or sun
 - Not for a call to action at the end of the page: that is Closing.
 - Not for long text, lists or tags; use a normal section.
 
-Origin: concept P in `design-system/inspiration/`, generated in Gemini and rebuilt with Aquemi tokens (Geist Light in sentence case in place of the concept's condensed capitals; the concept's section numbers, "SYS_REF" tags and percentage values dropped as invented data).
+Origin: concept P in `design-system/inspiration/`, generated in Gemini and rebuilt with Aquemi tokens (Geist Light in sentence case; the concept's frame, section numbers and invented values dropped).
 
 ## Motion
 

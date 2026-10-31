@@ -73,7 +73,7 @@
     {
      "t": "Instruments",
      "d": "Measure TOC, conductivity and temperature online.",
-     "icon": "toc"
+     "icon": "conductivity"
     },
     {
      "t": "PLC",
@@ -82,12 +82,12 @@
     {
      "t": "Operator panel (HMI)",
      "d": "Where operators see alarms, trends and sanitization status.",
-     "icon": "gauge"
+     "icon": "monitor"
     },
     {
      "t": "Supervisory control (SCADA) historian",
      "d": "Keeps audit-trailed records to 21 CFR Part 11.",
-     "icon": "binder"
+     "icon": "database"
     },
     {
      "t": "Plant network",
@@ -280,17 +280,17 @@
     {
      "t": "PLC and SCADA platform",
      "d": "[PLC and SCADA platforms supported], matched to your site standard.",
-     "spot": "gauge"
+     "spot": "cpu"
     },
     {
      "t": "Historian and Part 11 boundary",
      "d": "Our historian, or your validated plant historian with ours as a buffer.",
-     "spot": "binder"
+     "spot": "database"
     },
     {
      "t": "Remote access",
      "d": "None, one-way telemetry through your DMZ, or supervised sessions you open.",
-     "spot": "magnifier"
+     "spot": "network"
     },
     {
      "t": "Integration",
@@ -300,7 +300,7 @@
     {
      "t": "Control panels",
      "d": "UL 508A or CSA C22.2 No. 286 [panel certification held and where panels are built].",
-     "spot": "stamp"
+     "spot": "monitor"
     }
    ],
    "nav": "Options",

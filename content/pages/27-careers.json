@@ -131,26 +131,21 @@
    "items": [
     {
      "t": "Apply",
-     "d": "The form below; the hiring manager replies yes or no.",
-     "icon": "binder"
+     "d": "The form below; the hiring manager replies yes or no."
     },
     {
      "t": "Conversation",
-     "d": "A [first call length, minutes]-minute call: role, pay, travel, your questions.",
-     "icon": "calendar"
+     "d": "A [first call length, minutes]-minute call: role, pay, travel, your questions."
     },
     {
      "t": "Practical interview",
-     "d": "A P&ID review, test weld, protocol walk-through or fault-finding exercise.",
-     "icon": "weld"
+     "d": "A P&ID review, test weld, protocol walk-through or fault-finding exercise."
     },
     {
      "t": "Shop visit and decision",
-     "d": "Meet the team. Written decision within [offer time, working days], at most 45 days.",
-     "icon": "stamp"
+     "d": "Meet the team. Written decision within [offer time, working days], at most 45 days."
     }
-   ],
-   "as": "stages"
+   ]
   },
   {
    "type": "form",

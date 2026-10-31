@@ -1,17 +1,12 @@
-Footer closes every page on navy as an engineering drawing sheet: zone frame, logo and description, four numbered sitemap columns, a title block and the contact and legal line.
+Footer closes every page on navy: the Limestone logo with one line of description, four sitemap columns, and the legal line.
 
-- Markup: `<footer class="aq-footer">` with `aq-in`, then `aq-footer__sheet` holding, in order: `aq-footer__zones--top` and `--left`, `aq-footer__body`, `aq-footer__zones--right` and `--bottom`.
-- Zones: the frame gutters carry 1 2 3 4 across the top and bottom and A B C D down both sides, as in EnquiryForm's ruler. They are decoration: every `aq-footer__zones` is `aria-hidden="true"`.
-- Body: `aq-footer__head` (logo `<img class="aq-footer__logo">`, 160 px wide, Limestone, then `aq-footer__desc`, one line), `<nav class="aq-footer__cols">`, `aq-footer__block`, `aq-footer__legal`.
-- Columns: four `<details class="aq-footer__col" open>`, each with `<summary class="aq-footer__colhead"><span class="aq-footer__num">01</span> Systems</summary>` and the links in `aq-footer__links`. Systems, Services, Industries and compliance, Company; page names from the page inventory. On wide screens every column is open and the summary reads as a heading (default cursor, no sign, out of the tab order); at 860 px and below they become numbered collapsible rows with a + / − sign, 44 px tall. The site renderer (`Footer.js`) does this with a `matchMedia('(max-width: 860px)')` listener that removes `open` on phones and restores it on wider screens, on render and on change.
-- Title block: bottom right, five `aq-footer__cell`s, each a mono `aq-footer__label` and an `aq-footer__value`: Copyright (`--wide`), Rev., Legal entity, Made in, Sheet (the current page). Facts only Aquemi can supply stay as `aq-ph` placeholders.
-- Contact and legal line: `aq-footer__legal`, mono, along the bottom edge. Contact details stay `[email address]` and `[phone number]` until Aquemi supplies them.
-- Lines are `on-navy-muted` mixed toward transparent (35% hairlines, 60% frame). Links use `on-navy-muted` and turn `on-navy` on hover; focus is a 2 px Limestone ring, since `focus` is too dark on navy. The footer is navy in both themes.
-- Don't add columns beyond four or put marketing copy in the title block; it holds facts.
-
-## Concept 36
-
-- Logo 220 px (180 px on phones), description 22/30. Column heads in 16/20 mono caps `on-navy` over a `flow` rule, their numbers in `flow`; links in 14/20 Geist Mono `on-navy`. Open arrowheads mark the middle of the sheet's left and right edges (centring marks, CSS only). On phones the column numbers are `flow` chips.
+- Markup: `<footer class="aq-footer">` with `aq-in`, then `aq-footer__cols` holding `aq-footer__head` and four `<nav class="aq-footer__col">`, then `aq-footer__legal`.
+- Head: logo `<img class="aq-footer__logo">` (`brand/logo-limestone.svg`, 160 px wide, as the brand book places it) and `aq-footer__desc` (one sentence, 14/22 `on-navy-muted`). Facts only Aquemi can supply stay as `aq-ph` placeholders (`[city], Ontario`).
+- Columns: Systems, Services, Industries and compliance, Company; page names from the page inventory. Each opens with `<h5 class="aq-footer__colhead">` in the `eyebrow` style (mono 12/16, 500, 0.08em, uppercase) in `limestone`; `space-3` below it the links in Geist 14/28 `on-navy-muted`, turning `on-navy` and underlined on hover.
+- Layout: one row on desktop, the head a little wider than the columns (1.3 : 1 : 1 : 1 : 1). Padding `space-16` above and `space-8` below at every width. Phones: the head and the four columns two by two, the same 14/28 links.
+- Legal line: `aq-footer__legal`, `space-12` below the columns under a Limestone hairline at 25 % strength: copyright with the legal entity on the left, Privacy · Terms · Accessibility on the right; 13/20 `on-navy-muted`, wrapping on phones.
+- Ground `navy` in both themes. Focus is a 2 px Limestone ring, since `focus` is too dark on navy. No frames, numbers, flow rules or title block.
+- Don't add columns beyond four or put marketing copy in the footer; it holds the map and the legal line.
 
 ## Motion
 

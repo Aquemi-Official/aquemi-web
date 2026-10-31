@@ -1,4 +1,4 @@
-CompareTable sets three or more options against criteria as a hairline matrix, with eyebrow column heads, numbered row labels in a narrow left column and, on phones, one record per row (or column tabs for wide tables) instead of a sideways scroll.
+CompareTable sets three or more options against criteria as a hairline matrix, with sentence-case column heads on `surface-sunken`, numbered row labels in a narrow left column and, on phones, one record per row (or column tabs for wide tables) instead of a sideways scroll.
 
 ## Markup
 
@@ -22,14 +22,14 @@ CompareTable sets three or more options against criteria as a hairline matrix, w
 ```
 
 - It stays a real `<table>`: `<th scope="col">` heads, and the first cell of each row is `<th scope="row">`. The phone layout changes the table's `display`, so always add the ARIA roles shown; they keep row and column semantics for screen readers.
-- CSS numbers the rows `01`, `02` … in the shared index style (mono 13 px, `ink-subtle`): above each row label on desktop, in the left index column on phones. Columns are not numbered.
+- CSS numbers the rows `01`, `02` … in the shared index style (mono 13 px, `ink-subtle`): above each row label at every width. Columns are not numbered.
 - Each value cell starts with `aq-compare-table__k`, its column label, hidden on desktop and `aria-hidden` (the head already names the column for screen readers).
-- **Link column** (`aq-compare-table__go`): a column whose every cell is one page link ("Where we show it", "Page"). On desktop it is an ordinary column; on phones its link ends the row's record (wherever the column sits) without a label, and it never gets a tab. Links are set in mono caps in `flow` with a trailing arrow on desktop, and as a quieter Geist 500 14/22 `flow` link on phones, the arrow joined to the last word so it never wraps alone.
+- **Link column** (`aq-compare-table__go`): a column whose every cell is one page link ("Where we show it", "Page"). On desktop it is an ordinary column; on phones its link ends the row's record (wherever the column sits) without a label, and it never gets a tab. Links are Geist 500 14/22 in `flow` with a trailing arrow joined to the last word, so it never wraps alone.
 - **Tabs** (`aq-compare-table--tabs`, four or more value columns): add `data-col` on the wrapper (the column index shown, counting the row-label column as 0) and one `aq-compare-table__tab` button per value column before the table. The site's delegated click listener in `assets/src/blocks/table.js` updates `data-col` and `aria-pressed`. Hidden on desktop.
 
 ## Layouts
 
-- **Matrix (three to six columns).** Fixed layout; the row-label column takes 22 % and the option columns share the rest equally so no option looks favoured. Cells are separated by `line` hairlines.
+- **Matrix (three to six columns).** Fixed layout; the row-label column takes 22 % and the option columns share the rest equally so no option looks favoured. Rows are separated by `line` hairlines; there are no vertical rules.
 - **List (`aq-compare-table--list`, two columns).** A label and one value is a list, not a matrix: no tabs, each row is a numbered label beside its value (1 : 2), and the column heads are a label strip. On phones the label sits above the value.
 - **Long prose.** Tables of three or more columns stay a matrix on desktop even when cells run to several sentences. Beyond five options with long prose, split the content into sections instead.
 - **Phones, up to three value columns** (`@container (max-width: 860px)`): no frame and no tabs. Every row becomes a record on a hairline: the index, then the row label as its title (Geist 500 16/24), then one line per other column, "Label: value" (label Geist 500 13 `ink-muted`, value 14/22 `ink`), and the link column last. The reader sees every cell without a tap.
@@ -42,10 +42,10 @@ Block type `table` (`assets/src/blocks/table.js`): `{ "h": "…", "cols": ["…"
 
 ## Token rules
 
-- Frame: 1 px `line-strong` border with a `space-2` margin (`space-1` on phones) of `surface`, then the table in `surface-raised` with a `line` border. Head row `surface-sunken` with a `line-strong` rule beneath.
-- Type: column heads in the eyebrow style (Geist Mono 12/16, uppercase, `ink-muted`); row numbers in `ink-subtle`. Row labels Geist 500 14/22 (phone records 16/24 `ink`; phone tabs 13/20 `ink-muted`); cells Geist 14/22.
-- Tabs: `surface-sunken` with a `line` border, Geist 500 13/18; pressed tab `surface-raised`, `line-strong` border and a 2 px `flow` top edge. Focus: 2 px `focus` ring with 2 px offset.
-- Spacing only from `--space-*`: cells `space-4`; phone records `space-3` apart, index column `space-8`; tab padding `space-2` `space-3`, tab gaps `space-1`.
+- No frame and no shadow: the table sits on `surface-raised`, its head row on `surface-sunken`, every row closed by a `line` hairline (the brand SpecTable).
+- Type: column heads Geist 500 14/20 `ink-muted`, sentence case; row numbers in the shared index style (Geist Mono 13/24 `ink-subtle`). Row labels Geist 500 16/24 `ink` (phone tabs 13/20 `ink-muted`); cells Geist 14/22. Nothing is uppercase.
+- Tabs: `surface-sunken` with a `line` border and `radius-sm`, Geist 500 13/18; pressed tab `surface-raised`, `line-strong` border and a 2 px `flow` top edge. Focus: 2 px `focus` ring with 2 px offset.
+- Spacing only from `--space-*`: cells `space-3` by `space-4`; phone records `space-4` padding on hairlines; tab padding `space-2` `space-3`, tab gaps `space-1`.
 
 ## Writing
 
@@ -70,11 +70,6 @@ The site has over a hundred tables; most are lists in disguise. Use CompareTable
 - A label with one line of text: OptionList or LinkGrid rows.
 
 Eight rows or fewer per table, 25 words or fewer per cell (content budgets).
-
-## Concept 34 (ruled matrix)
-
-- Desktop: the table is drawn in ink: a 1 px `ink` frame with a second `line-strong` frame `space-1` outside it, `line-strong` cell rules, column heads in 13/18 mono caps `ink` over an `ink` rule, row labels in `font-display` 600 22/24 caps with a bracketed `[01]` index in `flow` above.
-- Phones: each record is a ruled card (`line-strong`, `surface`) whose title bar (`surface-sunken`) carries the row label in condensed caps and the `[01]` tag at the right; the "Label: value" lines follow. List and tabs variants keep a plain label line inside the card.
 
 ## Motion
 

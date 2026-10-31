@@ -1,5 +1,5 @@
-/* ---------- Spot: a larger equipment vignette (assets/spots/<name>.png) painted with a colour token through a mask ----------
-   Same technique as Icon, drawn to hold detail at 96 to 160 px: a stop on a route, a zone of a plant map. The file comes in
+/* ---------- Spot: an Icon drawn larger as a figure (assets/icons/<name>.svg), painted with a colour token through a mask ----------
+   Sized by the component that holds it, kept icon-sized (36 to 96 px): a diagram stage, a route stop, a plant-map zone. The file comes in
    through an inline mask-image (core.js wSpot) so its URL resolves against the page, not this stylesheet. */
 .aq-spot {
   display: inline-block; flex: none; width: var(--space-32); height: var(--space-32);

@@ -1,5 +1,5 @@
 /* Block "prose" -> Prose in SplitSection: heading left, text right. Fields: h, body (paragraphs); "as": "explainer" (below).
-   The first sentence of body[0] is set as the lead; the rest follow as plain paragraphs. No grid, frame or margin notes
+   The first sentence of body[0] is set as the lead; the rest follow as plain paragraphs. No grid, frame, tags or margin notes
    (an old "notes" field is ignored). Standards and figures stay inline in the text. */
 (function(){
 var ABBR=/(?:^|[\s(])(?:Ph|Eur|e\.g|i\.e|No|St|Dr|vs|etc|approx|Fig|Inc|Ltd|Co)$/;
@@ -18,12 +18,12 @@ BLOCKS['prose']=function(b,H){
 /* "as": "explainer" -> Explainer: one idea as a figure plus 3-4 numbered callouts instead of paragraphs (heading above,
    full width). Fields: h, points [{t, d, at}] (d <= 25 words; at: [x%, y%] puts the point's number on an art figure),
    figure (optional): {kind: "levels", limit: {v, unit, label}, bars: [{label, v, level, note, n}]} draws bars against a
-   dashed limit (v in the limit's unit sets the height and is printed on the plot, which is
+   dashed limit drawn in line-strong (v in the limit's unit sets the height and is printed on the plot, which is
    aria-hidden, so say the value in the note too; without v, level "below" | "at" | "above" draws
    it unnumbered; n puts a point's number on the bar), or {kind: "art", art: "<page id>"} shows that page's equipment
-   drawing (ART in parts/Hero.js) with the points' numbers on it. No figure: the callouts alone, two columns. */
+   drawing (ART in parts/Hero.js) with the points' numbers on it. No figure: the callouts alone, in one row. */
 function exNum(n){return '<span class="aq-explainer__mark" aria-hidden="true">'+n+'</span>'}
-/* Point heads are set in uppercase mono; units keep their case ("EU/mL", not "EU/ML"). */
+/* Units in point heads and bar labels are wrapped (.aq-explainer__unit) so their case is never changed ("EU/mL"). */
 var EX_UNIT=/(EU\/mL|µS\/cm|mg\/L|ng\/L|cfu\/\d+\s?mL|mL|ppb|ppm|pH|°C|m³\/h|L\/h|kg|nm)/;
 function exHead(t){return String(t||'').split(EX_UNIT).map(function(x,i){return i%2?'<span class="aq-explainer__unit">'+tx(x)+'</span>':tx(x)}).join('')}
 /* Levels: test-tube columns with a scale, filled to a value; the limit a dashed fail rule labelled in fail. Each bar is
@@ -44,9 +44,9 @@ function exLevels(f){var L=f.limit||{},u=L.unit?' '+L.unit:'',AT=70;
 function exArt(f,P){var id=f.art;if(!id||!ART[id])return '';
  return '<figure class="aq-explainer__fig aq-explainer__fig--art"><span class="aq-illustration" role="img" aria-label="'+e(ART[id])+'" style="'+artMask(id)+'"></span>'
   +P.map(function(p,i){var a=p.at;return a&&a.length===2?'<span class="aq-explainer__pin" style="left:'+(+a[0])+'%;top:'+(+a[1])+'%">'+exNum(i+1)+'</span>':''}).join('')+'</figure>'}
-/* The figure sits on a cream drawing Plate (wPlate light) with the section's nav name in its title block. */
+/* The figure sits in a Plate (wPlate: a line frame on surface-raised) with the section's nav name as its caption. */
 function explainer(b,H){var P=b.points.slice(0,4),f=b.figure||{},fig=f.kind==='levels'?exLevels(f):f.kind==='art'?exArt(f,P):'';
- if(fig)fig=wPlate(fig,{light:true,cls:'aq-explainer__plate',block:['Aquemi',b.nav||'Figure']});
+ if(fig)fig=wPlate(fig,{cls:'aq-explainer__plate',block:['Aquemi',b.nav||'Figure']});
  return sec(H+'<div class="aq-explainer'+(fig?'':' aq-explainer--bare')+'">'+fig+'<ol class="aq-explainer__points">'+P.map(function(p,i){
   return '<li>'+idx(i).replace('aq-index','aq-index aq-explainer__n')+'<h3 class="aq-explainer__t">'+exHead(p.t)+'</h3>'+(p.d?'<p class="aq-explainer__d">'+tx(p.d)+'</p>':'')+'</li>'}).join('')+'</ol></div>')}
 })();
