@@ -64,10 +64,19 @@ Each asked for one section "with very little text" and left the layout to the mo
 ## Keep every image
 
 Every image generated for the site is kept, used or not: the people reviewing the design want to look them all over.
+The media gallery (`inspiration.html`) shows all of them with a status tag (live on the site, became a component,
+source of a site drawing, reference only, superseded, build record). It reads `gallery.json`, which
+`python tools/gallery.py` writes (needs Pillow): it scans the folders below and the site's assets, works out each
+status from the tables in this README and from what the pages use, and makes the thumbnails in `thumbs/`.
+`python tools/gallery.py --import ../research` also copies build records (page snapshots per pass, concept beside
+build) into `record/`. Rerun it after adding any image.
 
-- `gemini/NN-<kind>-<subject>.png`: the full-resolution original of every Gemini output, numbered oldest first. Add each new one here and to the `ORIGINALS` list in `inspiration.html`.
-- `concept-<letter>-<section>.png`: the capture a component was rebuilt from (table above, and `CONCEPTS` in `inspiration.html`).
-- `art/<page-id>.png`: the black-on-white source of each equipment drawing (and `ART` in `inspiration.html`).
+- `archive/`: superseded versions, recovered from git history when a file was replaced.
+- `record/<pass>/<page>-<width>.jpg`, `record/fidelity/`: what the site looked like at each pass.
+
+- `gemini/NN-<kind>-<subject>.png`: the full-resolution original of every Gemini output, numbered oldest first. Add each new one here, then run `python tools/gallery.py`.
+- `concept-<letter>-<section>.png`: the capture a component was rebuilt from (table above).
+- `art/<page-id>.png`: the black-on-white source of each equipment drawing .
 
 To get originals at full size with Claude in Chrome: open the image's `=s1600` URL from the Gemini Library, place it at the top-left of the page, and save a `zoom` capture of exactly its area at scale 1.
 

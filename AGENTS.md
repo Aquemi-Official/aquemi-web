@@ -38,7 +38,7 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 | `design-system/components/<Name>/motion.js`, `assets/src/motion/core.js` | Motion (GSAP 3.13): the core animates every section the same way; a component's `motion.js` adds its own choreography with `AQmotion.fx('<Name>', fn)`. Plays once, under 5 s, nothing under reduced motion. |
 | `assets/motion.js` | **Generated** from the motion sources above. The site loads it. |
 | `assets/site.css` | Draft-bar chrome only. No brand styles here. |
-| `inspiration.html` | Gallery of every generated image: Gemini originals, section concepts, equipment drawings. Add new images to its lists. |
+| `inspiration.html` | Media gallery of every image made or considered, used or not, tagged by what became of it. Reads `design-system/inspiration/gallery.json`; after adding an image run `python tools/gallery.py`. |
 | `design-system.html` | The visual guide. Generated at load time from the files above; normally needs no edits. |
 | `brand/` | Logo, lockup, mark and favicon SVGs. Use as they are. |
 | `tools/design_system.py` | `build`, `check`, `new`, `stage`. Python 3 standard library only. |
