@@ -1,0 +1,86 @@
+/* ---------- Versus: two routes facing each other across a spine of factors (table block as "versus") ----------
+   On a plate (surface-raised). Desktop: the two route names at h2 in sentence case, joined by a hairline to an "or"
+   on the spine; each factor sits on the spine (mono index, Geist 500 label) with hairline leaders out to route A
+   (right-aligned) and route B (left-aligned, flow leader); the verdict closes it as two columns under hairlines.
+   Phones: the names on top, the verdict next, then the spine runs down the left edge with each factor's index on it
+   and A and B under the factor, each tagged with its route. */
+.aq-versus { display: flex; flex-direction: column; }
+.aq-versus__head, .aq-versus__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 200px) minmax(0, 1fr); column-gap: var(--space-8); }
+.aq-versus__head { position: relative; align-items: center; padding-bottom: var(--space-6); }
+.aq-versus__name { margin: 0; font: 400 28px/34px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-versus__head .aq-versus__name:first-child { text-align: right; }
+.aq-versus__head .aq-versus__name:last-child { color: var(--flow); }
+.aq-versus__head::before { content: ""; position: absolute; top: 50%; left: calc(50% - 100px - var(--space-6)); right: calc(50% - 100px - var(--space-6)); border-top: 1px solid var(--line); }
+.aq-versus__head::after { content: ""; position: absolute; left: 50%; top: calc(50% + var(--space-4)); bottom: 0; border-left: 1px solid var(--line); }
+.aq-versus__vs {
+  position: relative; justify-self: center; padding: 0 var(--space-3); background: var(--surface-raised);
+  font: 400 16px/24px var(--font-sans); color: var(--ink-muted);
+}
+.aq-versus__rows { margin: 0; }
+.aq-versus__row { position: relative; padding-block: var(--space-6); }
+.aq-versus__row::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; border-left: 1px solid var(--line); }
+.aq-versus__row dt {
+  grid-column: 2; grid-row: 1; position: relative; justify-self: center; align-self: start; display: flex; flex-direction: column; align-items: center; gap: var(--space-1);
+  max-width: 100%; padding: var(--space-1) var(--space-2); background: var(--surface-raised); text-align: center;
+  font: 500 16px/24px var(--font-sans); color: var(--ink);
+}
+.aq-versus__n { font: 400 13px/24px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+.aq-versus__row dd { position: relative; grid-row: 1; margin: 0; padding-top: var(--space-6); font: 400 16px/26px var(--font-sans); color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
+/* leader lines from each answer to the spine, drawn inside the answer's own box: a space-6 padding on its spine side,
+   taken back out of the column gap by an equal negative margin, so the text keeps its column and the box measures
+   what it draws (a leader hung outside the box made each A answer 24 px wider than its box to an overflow check) */
+.aq-versus__row dd::after { content: ""; position: absolute; top: calc(var(--space-6) + 13px); width: var(--space-6); border-top: 1px solid var(--line); }
+.aq-versus__row dd:nth-of-type(1) { grid-column: 1; text-align: right; margin-right: calc(-1 * var(--space-6)); padding-right: var(--space-6); }
+.aq-versus__row dd:nth-of-type(1)::after { right: 0; }
+.aq-versus__row dd:nth-of-type(2) { grid-column: 3; margin-left: calc(-1 * var(--space-6)); padding-left: var(--space-6); }
+.aq-versus__row dd:nth-of-type(2)::after { left: 0; border-top-color: var(--flow); }
+/* Verdict: two columns, each opening on a hairline (B's in flow) */
+.aq-versus__verdict { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); margin-top: var(--space-6); }
+.aq-versus__verdict > div { display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-4); border-top: 1px solid var(--line-strong); }
+.aq-versus__verdict > div:last-child { border-top-color: var(--flow); }
+.aq-versus__verdict p:not(.aq-eyebrow) { margin: 0; font: 400 18px/28px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+
+/* Conclusion: a footer band across the plate, the closing line that is not a choice (what carries into IQ/OQ). The same
+   three columns as the factors, on a surface-sunken band under a hairline, the label as an eyebrow on the spine. */
+.aq-versus__end {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 200px) minmax(0, 1fr); column-gap: var(--space-8); align-items: center;
+  margin: var(--space-8) calc(-1 * var(--space-8)) 0; padding: var(--space-6) var(--space-8);
+  background: var(--surface-sunken); border-top: 1px solid var(--line);
+}
+.aq-versus__end-k { grid-column: 2; grid-row: 1; margin: 0; text-align: center; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-versus__end-v { grid-row: 1; margin: 0; font: 400 16px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-versus__end-v:nth-of-type(2) { grid-column: 1; text-align: right; }
+.aq-versus__end-v:nth-of-type(3) { grid-column: 3; }
+.aq-versus__end.is-one .aq-versus__end-v { grid-column: 1 / -1; grid-row: 2; margin-top: var(--space-3); text-align: center; }
+/* ground: "light" (kept for old content): the plate is already a light surface, so nothing changes */
+.aq-versus-plate--light { min-width: 0; }
+
+/* Folded factors: the fold button's rule already closes the rows, so the verdict drops its own */
+.aq-fold:has(> .aq-versus__rows) + .aq-versus__verdict { padding-top: 0; border-top: 0; }
+
+@container (max-width: 860px) {
+  .aq-versus__head { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); column-gap: var(--space-3); padding-bottom: var(--space-4); }
+  .aq-versus__head::before { left: 0; right: 0; top: 50%; }
+  .aq-versus__head::after { display: none; }
+  .aq-versus__name { position: relative; font-size: 20px; line-height: 26px; background: var(--surface-raised); }
+  .aq-versus__vs { padding: 0 var(--space-2); font-size: 14px; line-height: 20px; }
+  .aq-versus__row { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); padding: var(--space-4) 0 var(--space-4) var(--space-8); }
+  .aq-versus__row::before { left: var(--space-3); }
+  .aq-versus__row dt { grid-column: 1; justify-self: start; flex-direction: row; align-items: baseline; gap: var(--space-2); padding: 0; background: none; text-align: left; font-size: 16px; line-height: 24px; }
+  .aq-versus__n { position: absolute; left: calc(-1 * var(--space-8)); top: 0; width: var(--space-6); background: var(--surface-raised); text-align: center; font-size: 12px; }
+  .aq-versus__row dd, .aq-versus__row dd:nth-of-type(1), .aq-versus__row dd:nth-of-type(2) { grid-column: 1; grid-row: auto; margin: 0; padding: 0 0 0 var(--space-3); text-align: left; font-size: 15px; line-height: 23px; border-left: 1px solid var(--line-strong); }
+  .aq-versus__row dd:nth-of-type(2) { border-left-color: var(--flow); }
+  .aq-versus__row dd::after, .aq-versus__row dd:nth-of-type(1)::after, .aq-versus__row dd:nth-of-type(2)::after { display: none; }
+  .aq-versus__row dd::before { content: attr(data-k); display: block; font: 500 12px/18px var(--font-sans); color: var(--ink-muted); }
+  .aq-versus__row dd:nth-of-type(2)::before { color: var(--flow); }
+  .aq-versus__head { order: -2; }
+  .aq-versus__verdict { order: -1; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); margin: 0 0 var(--space-4); }
+  .aq-versus__verdict > div { padding-top: var(--space-3); }
+  .aq-versus__verdict p:not(.aq-eyebrow) { font-size: 16px; line-height: 24px; }
+  .aq-versus__end { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); margin: var(--space-6) calc(-1 * var(--space-4)) 0; padding: var(--space-4); }
+  .aq-versus__end-k, .aq-versus__end-v, .aq-versus__end-v:nth-of-type(2), .aq-versus__end-v:nth-of-type(3), .aq-versus__end.is-one .aq-versus__end-v { grid-column: 1; grid-row: auto; margin: 0; text-align: left; }
+  .aq-versus__end-v { padding-left: var(--space-3); border-left: 1px solid var(--line-strong); font-size: 15px; line-height: 23px; }
+  .aq-versus__end-v:nth-of-type(3) { border-left-color: var(--flow); }
+  .aq-versus__end-v[data-k]::before { content: attr(data-k); display: block; font: 500 12px/18px var(--font-sans); color: var(--ink-muted); }
+  .aq-versus__end-v:nth-of-type(3)::before { color: var(--flow); }
+}

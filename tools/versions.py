@@ -43,6 +43,9 @@ CHECKPOINTS = [
     ('7027d23', 'Pass 8: passes A and B',
      'Two precision passes on every page against 16 site decisions: each page for its readers at their buying stage, '
      'fewer words, one name per open fact, no unconfirmed fact stated.'),
+    ('44f3015', 'Pass 8: pass C',
+     'Section by section across all 27 pages: heroes, closings, FAQs, technical claims, forms, links and open facts, '
+     'from seven section reviews, notebook cross-checks, buyer panels and four citation checks; form and link fixes.'),
 ]
 
 # Not part of the site a visitor loads.
