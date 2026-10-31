@@ -361,6 +361,7 @@
       }
      ],
      "note": "Moves the price: capacity, EDI or exchange DI, loop length, sanitization and documentation. Not included: installation, tie-ins, utilities, lab testing during qualification and temporary water.",
+     "note_link": "svc-service#running-cost",
      "nav": "Budget",
      "anchor": "budget"
     },
@@ -3151,6 +3152,7 @@
       {
        "p": "Microbial action level",
        "v": "100 CFU/mL",
+       "level": "action",
        "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
        "hl": true,
        "link": "compliance#limits"
@@ -3696,7 +3698,8 @@
        "Your consultant",
        "You"
       ]
-     ]
+     ],
+     "caption_noun": "requests"
     },
     {
      "type": "table",
