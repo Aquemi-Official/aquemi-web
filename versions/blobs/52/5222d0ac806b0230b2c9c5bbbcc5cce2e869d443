@@ -1,0 +1,282 @@
+{
+ "id": "svc-fat-sat",
+ "section": "Services",
+ "nav_label": "FAT and SAT",
+ "title": "Water system FAT and SAT to EU GMP Annex 15 | Aquemi",
+ "meta": "Wet FAT on every skid to a protocol you approve, then SAT on your feed water. Written to EU GMP Annex 15, 3.6 so IQ and OQ can leverage results.",
+ "path": "/services/fat-sat/",
+ "eyebrow": "FAT · SAT · EU GMP ANNEX 15",
+ "headline": "See it run wet before it ships",
+ "lead": "Every skid runs a wet FAT to a protocol your quality unit approves; SAT proves the rest on your site.",
+ "tags": [
+  "EU GMP Annex 15"
+ ],
+ "primary_cta": "Request a sample FAT protocol",
+ "secondary_cta": {
+  "label": "Arrange a test bay visit",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "as": "explainer",
+   "ground": "light",
+   "nav": "Why wet",
+   "h": "A fault found at FAT costs a day",
+   "points": [
+    {
+     "t": "Faults show only when wet",
+     "d": "A valve in the wrong step, a divert that never fires. Here: an afternoon. On site: a permit and a production gap.",
+     "at": [
+      44,
+      40
+     ]
+    },
+    {
+     "t": "Run it, read at the outlet",
+     "d": "Pumps against real pressure, a full [PP loop sanitization method] cycle, conductivity and TOC measured at the outlet.",
+     "at": [
+      75,
+      58
+     ]
+    },
+    {
+     "t": "Evidence you can leverage",
+     "d": "Approved protocol, calibrated instruments and raw data make supplier evidence (GAMP 5). A checklist gets repeated.",
+     "at": [
+      86,
+      40
+     ]
+    }
+   ],
+   "figure": {
+    "kind": "art",
+    "art": "svc-fat-sat"
+   }
+  },
+  {
+   "type": "table",
+   "as": "versus",
+   "nav": "FAT and SAT",
+   "h": "What FAT proves, what SAT proves",
+   "cols": [
+    "Test",
+    "FAT, our test bay",
+    "SAT, your site"
+   ],
+   "rows": [
+    [
+     "Sequences and interlocks",
+     "Every sequence, alarm, interlock and divert, restart after power loss included",
+     "Critical alarms, interlocks and divert on your utilities and water"
+    ],
+    [
+     "Utilities and loop",
+     "Not possible: the modules run on our power and water",
+     "Power, drains, air, any heating or cooling; loop hydraulics at peak draw"
+    ],
+    [
+     "Sanitization",
+     "Full [PP loop sanitization method] cycle: every probe at setpoint for the hold time",
+     "Full cycle on the installed loop, coldest point of use included"
+    ],
+    [
+     "RO and DI/EDI performance",
+     "Flow, recovery and outlet quality on our feed water",
+     "The same on your feed water, in the season you are in"
+    ],
+    [
+     "Instruments and I/O",
+     "Every I/O point; critical instruments against a calibrated reference",
+     "Points to your SCADA or BMS; critical instruments re-checked"
+    ],
+    [
+     "Data integrity",
+     "Roles, audit trail, time sync, backup and restore",
+     "The same on the network, with your accounts and time server"
+    ],
+    [
+     "P&ID walkdown",
+     "Every line, valve and tag; skid slopes and dead legs",
+     "Field piping, loop slopes, low points, branch lengths"
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "tests",
+   "conclusion": [
+    "Leverage into IQ/OQ",
+    "Candidate where transport and installation cannot change the result (Annex 15, 3.6)",
+    "Feed water, utilities and field piping: proven on site only"
+   ]
+  },
+  {
+   "type": "steps",
+   "ground": "light",
+   "nav": "Process",
+   "h": "From protocol to release, then SAT",
+   "items": [
+    {
+     "t": "Draft protocol",
+     "d": "From the functional specification, sent [protocol issue before FAT, weeks] ahead; each test traces to the URS."
+    },
+    {
+     "t": "Your approval",
+     "d": "Your team may add test cases. Nothing runs before your quality unit signs.",
+     "hold": "Your quality unit"
+    },
+    {
+     "t": "Internal dry run",
+     "d": "We run the full protocol first, so the witnessed FAT confirms rather than debugs."
+    },
+    {
+     "t": "Witnessed run",
+     "d": "Results recorded as found. A failed criterion is fixed and retested; minor defects go on the punch list."
+    },
+    {
+     "t": "Report and release",
+     "d": "Signed by both parties. Skid drained, then [post-FAT drying and sealing method].",
+     "hold": "Both parties"
+    },
+    {
+     "t": "SAT on your site",
+     "d": "Critical tests re-run on your feed water, utilities and loop, then handed to IQ/OQ."
+    }
+   ]
+  },
+  {
+   "type": "options",
+   "nav": "Witnessing",
+   "h": "How you witness",
+   "items": [
+    {
+     "t": "In person",
+     "d": "On our floor, hands on, inside the panels."
+    },
+    {
+     "t": "Remote",
+     "d": "Cameras and live protocol; raw data the same day."
+    },
+    {
+     "t": "Hybrid",
+     "d": "One person on site for physical checks, the rest remote."
+    },
+    {
+     "t": "Your delegate",
+     "d": "A consultant you name witnesses and signs."
+    },
+    {
+     "t": "Review only",
+     "d": "Unwitnessed; we send raw data and video."
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "nav": "What you receive",
+   "h": "What you receive",
+   "items": [
+    {
+     "t": "FAT protocol",
+     "d": "Approved before execution"
+    },
+    {
+     "t": "Executed FAT protocol and report",
+     "d": "Results as found, raw data, signatures, deviation log, release decision"
+    },
+    {
+     "t": "SAT protocol and report",
+     "d": "On your feed water and utilities"
+    },
+    {
+     "t": "Traceability matrix",
+     "d": "URS to test case, leveraged tests flagged"
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Common questions",
+   "items": [
+    {
+     "q": "Will our quality unit accept FAT results in place of IQ/OQ tests?",
+     "a": "That is its decision. We mark candidate tests in the C&Q plan, and your quality unit approves the protocol before execution."
+    },
+    {
+     "q": "What if a test fails while you are watching?",
+     "a": "It is recorded as found, as a deviation. We investigate, fix and retest that case and any case the fix could affect, with you witnessing."
+    },
+    {
+     "q": "Is the software we see at FAT the software that ships?",
+     "a": "Yes. Version and checksum are recorded at FAT. Any later change goes through change control and is shown again at SAT."
+    },
+    {
+     "q": "How long does a FAT take?",
+     "a": "A single PW module takes [typical FAT duration, single module, days]; the full package, pretreatment to distribution, [typical FAT duration, full PW package, days]. Packages over [largest skid size, m] are tested module by module."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Before and after FAT",
+   "items": [
+    "svc-fabrication",
+    "svc-cq",
+    "cmp-documentation"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Check our criteria against your URS",
+  "button": "Request a sample FAT protocol",
+  "link": "cmp-documentation",
+  "proof": {
+   "v": "0, 50, 100 %",
+   "l": "Every analog loop checked at FAT"
+  },
+  "include": [
+   "Approved URS and functional specification",
+   "Your protocol template",
+   "Reviewers, witnesses and signatory",
+   "FAT tests your IQ/OQ will reference"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Protocol table of contents",
+   "Redacted sample test cases",
+   "Draft FAT test list"
+  ]
+ },
+ "todo": [
+  "Confirm a redacted FAT protocol (table of contents and sample test cases) can be shared, openly or under NDA; this is the page's primary CTA",
+  "Protocol issue before FAT (weeks)",
+  "Typical FAT duration (days) for a single PW module and for the full modular package, pretreatment to distribution",
+  "PP loop sanitization method run at FAT ([PP loop sanitization method]; same placeholder as home and projects), with its temperature or chemical and hold time",
+  "FAT date confirmation lead (weeks) after dry run",
+  "Test bay location (city, province)",
+  "Test bay feed water source, treatment and typical conductivity (µS/cm) ([feed water source and conductivity, µS/cm])",
+  "Test bay power: voltage, phases, frequency, kW ([voltage, phases, frequency, kW]); how skids for another voltage are tested ([transformer or site test])",
+  "Test bay heating, if the PP sanitization cycle needs any: medium and capacity (kW)",
+  "Largest skid footprint and height (m) and crane capacity (t) ([largest skid size, m; crane, t]); drain capacity (L/min)",
+  "Remote witness platform and connection; electronic signature method (and whether 21 CFR Part 11 compliant)",
+  "Whether FAT witness time, travel and remote witness are included in price or quoted separately",
+  "Confirm Aquemi runs an internal dry run before every witnessed FAT (page says so)",
+  "Confirm every skid gets a wet FAT including the distribution pump module (same wording on systems and the home hero fact \"100 %\"); field-built loop piping is proven at SAT/IQ",
+  "Confirm software checksum recorded at FAT (page says version and checksum)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "FAT first-pass rate or a real FAT (deviations found, closure time) before adding a case study block",
+  "Test instrument calibration interval and traceability",
+  "Post-FAT drying, capping and any gas blanket used for shipment ([post-FAT drying and sealing method])"
+ ],
+ "primary_cta_link": "cmp-documentation",
+ "facts": [
+  {
+   "v": "[100 %]",
+   "l": "Skids wet tested at FAT"
+  },
+  {
+   "v": "Annex 15, 3.6",
+   "l": "Basis for leveraging FAT"
+  }
+ ]
+}

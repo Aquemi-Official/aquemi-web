@@ -1,0 +1,401 @@
+{
+ "id": "sys-storage",
+ "section": "Systems",
+ "nav_label": "Storage and distribution loops",
+ "title": "PW storage and distribution loops in polypropylene | Aquemi",
+ "meta": "Polypropylene PW tanks and loops with turbulent flow (WHO TRS 1033), short dead legs, full drainage and sanitization matched to the PP rating.",
+ "path": "/systems/storage-and-distribution/",
+ "eyebrow": "SYSTEMS · STORAGE AND DISTRIBUTION",
+ "headline": "Loops that hold quality to every outlet",
+ "lead": "Polypropylene (PP) tanks and loops for Purified Water (PW) that stay turbulent at peak draw, drain fully and keep every branch short.",
+ "primary_cta": "Send your points-of-use list for a loop review",
+ "primary_cta_intent": "Review of a document you have|Points-of-use list or loop design",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "facts": [
+  {
+   "v": "PP",
+   "l": "Tank and loop pipework"
+  },
+  {
+   "v": "USP <645>",
+   "l": "Conductivity on the return"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "spec",
+   "h": "Loop design rules",
+   "caption": "PW LOOP · WHO TRS 1033",
+   "cols": [
+    "Rule",
+    "Design value",
+    "Basis"
+   ],
+   "nav": "Design rules",
+   "rows": [
+    {
+     "p": "Flow regime",
+     "v": "Turbulent in every section at peak draw",
+     "m": "Annex 1, 6.9; return flow alarmed",
+     "hl": true,
+     "rule": "≥ [design minimum return velocity, m/s]"
+    },
+    {
+     "p": "Slope and drainage",
+     "v": "Continuous fall to low-point drains",
+     "m": "Measured fall on each run",
+     "rule": "≥ [design minimum slope, in/ft or %]"
+    },
+    {
+     "p": "Dead legs",
+     "v": "Every branch, instrument tee and sample valve kept short",
+     "m": "Measured and listed in the dead leg register",
+     "rule": "≤ [dead leg limit for the PP loop, L/D]"
+    },
+    {
+     "p": "Loop sanitization",
+     "v": "[loop sanitization methods offered for PP: chemical, hot water or ozone]",
+     "m": "Hot water held [hold time, minutes] at the coldest probe",
+     "rule": "≤ [maximum loop sanitization temperature for PP, °C]"
+    },
+    {
+     "p": "Ozone, if chosen",
+     "v": "[ozone set point in tank, ppb] in the tank, destroyed by 254 nm UV before supply",
+     "m": "[ozone range, ppb, and its source]"
+    },
+    {
+     "p": "Point-of-use valves",
+     "v": "[PP point-of-use valve type, for example zero-static diaphragm] joined into the loop",
+     "m": "[PP joining method for valves]"
+    },
+    {
+     "p": "Tank vent",
+     "v": "Hydrophobic 0.2 µm filter",
+     "m": "USP <1231>"
+    },
+    {
+     "p": "Online monitoring",
+     "v": "Conductivity, temperature and flow on the return; TOC [TOC on the return, standard or option]",
+     "m": "USP <645>; USP <643>"
+    }
+   ],
+   "fold": 4,
+   "fold_noun": "rules",
+   "as": "rules"
+  },
+  {
+   "type": "diagram",
+   "h": "How a loop works",
+   "stages": [
+    {
+     "t": "From generation",
+     "icon": "droplet",
+     "d": "PW enters the tank under a vent filter."
+    },
+    {
+     "t": "Storage tank",
+     "spot": "storage-tank",
+     "d": "Buffers generation against peak draw and drains fully."
+    },
+    {
+     "t": "Loop pump",
+     "spot": "pump",
+     "d": "Keeps every section turbulent at peak draw."
+    },
+    {
+     "t": "Heat exchanger",
+     "spot": "heat-exchanger",
+     "d": "Holds loop temperature; heats for hot water sanitization within the PP limit. [heat exchanger, standard or option]"
+    },
+    {
+     "t": "Points of use",
+     "icon": "loop",
+     "d": "Every outlet sits on a short branch, so no water stands."
+    },
+    {
+     "t": "Return sensors",
+     "icon": "conductivity",
+     "d": "Measure the water after the last outlet, before it returns."
+    },
+    {
+     "t": "Spray ball",
+     "icon": "tank",
+     "d": "Wets the whole tank head so no surface stays dry."
+    }
+   ],
+   "nav": "How it works"
+  },
+  {
+   "type": "table",
+   "h": "Ozone, UV, chemical or hot water",
+   "nav": "Microbial control",
+   "cols": [
+    "Loop",
+    "How it controls microbes",
+    "Suits",
+    "Trade-off"
+   ],
+   "rows": [
+    [
+     "Ambient, ozonated",
+     "Ozone in the tank, destroyed by UV before use",
+     "PW, if the PP grade is rated for ozone [confirm]",
+     "No heat cycles; needs ozone sensors and safe venting"
+    ],
+    [
+     "Ambient, UV",
+     "254 nm UV on the supply reduces viable count; it does not sanitize the loop alone",
+     "PW, alongside a periodic method",
+     "No chemicals in the water; lamps need replacing"
+    ],
+    [
+     "Chemical",
+     "[chemical sanitant compatible with PP] on a schedule; residual tested",
+     "PW",
+     "Loop out of use each cycle; rinse must be proven"
+    ],
+    [
+     "Ambient, hot water",
+     "Hot water on a schedule up to [maximum loop sanitization temperature for PP, °C], proven at the coldest probe",
+     "PW",
+     "Limited by the PP temperature rating; loop out of use each cycle"
+    ]
+   ]
+  },
+  {
+   "type": "spec",
+   "h": "Tank, pipework and controls",
+   "caption": "FABRICATION · POLYPROPYLENE",
+   "cols": [
+    "Parameter",
+    "Design value",
+    "Basis"
+   ],
+   "rows": [
+    {
+     "p": "Tank volume",
+     "v": "[tank volume range, L]",
+     "m": "Sized from your demand profile",
+     "at": [
+      28.5,
+      48.6
+     ]
+    },
+    {
+     "p": "Product contact",
+     "v": "Unpigmented PP, [grade, for example PP-R]",
+     "m": "[certificate type for PP resin and pipe]",
+     "at": [
+      86.7,
+      71.4
+     ]
+    },
+    {
+     "p": "Internal surface",
+     "v": "[PP internal surface specification, Ra µm]",
+     "m": "[basis for the PP surface specification]",
+     "at": [
+      43.3,
+      20.1
+     ]
+    },
+    {
+     "p": "Joints",
+     "v": "[PP joining method, for example butt fusion or IR welding]; each joint numbered on the isometric",
+     "m": "[welder qualification standard for thermoplastics, for example DVS 2212]",
+     "at": [
+      78.7,
+      56.0
+     ]
+    },
+    {
+     "p": "Tank design",
+     "v": "[PP tank design: atmospheric or pressure-rated]",
+     "m": "[PP tank design standard, for example DVS 2205]",
+     "at": [
+      50.7,
+      29.2
+     ]
+    },
+    {
+     "p": "Cleaning before first use",
+     "v": "[pre-commissioning flush and cleaning procedure for PP]",
+     "m": "PW rinse to conductivity and TOC limits"
+    },
+    {
+     "p": "Heat exchangers",
+     "v": "Double tube sheet [heat exchanger, standard or option]",
+     "m": "FDA high purity water guide"
+    },
+    {
+     "p": "Pumps",
+     "v": "Sanitary centrifugal, variable speed; [duty and standby pumps, standard or option]",
+     "m": "Sized for the worst-case outlet combination"
+    },
+    {
+     "p": "Spray ball",
+     "v": "Wets head space and walls continuously",
+     "m": "Riboflavin coverage test"
+    },
+    {
+     "p": "Controls",
+     "v": "PLC and HMI with audit trail",
+     "m": "GAMP 5; 21 CFR Part 11"
+    }
+   ],
+   "nav": "Fabrication",
+   "fold": 4,
+   "fold_noun": "parameters",
+   "as": "callouts"
+  },
+  {
+   "type": "docs",
+   "h": "Documents with the loop",
+   "nav": "Documents",
+   "fold": 4,
+   "fold_noun": "documents",
+   "items": [
+    {
+     "t": "Hydraulic calculation",
+     "d": "Velocity and Reynolds number in every section, each operating case"
+    },
+    {
+     "t": "Dead leg register",
+     "d": "L/D for every branch, instrument tee and sample valve"
+    },
+    {
+     "t": "P&IDs and as-built isometrics",
+     "d": "Flow direction, slopes, diameters and lengths"
+    },
+    {
+     "t": "Material certificates and joint log",
+     "d": "[certificate type for PP resin and pipe]; joint map and joint records"
+    },
+    {
+     "t": "FAT, SAT, IQ and OQ protocols",
+     "d": "With traceability matrix"
+    },
+    {
+     "t": "Functional specification",
+     "d": "Operating and sanitization sequences, alarms, setpoints, interlocks"
+    },
+    {
+     "t": "Slope verification and spray coverage",
+     "d": "Measured fall on each run; riboflavin test on each tank"
+    },
+    {
+     "t": "Pressure test and cleaning reports",
+     "d": "[PP pressure test standard and method]"
+    }
+   ]
+  },
+  {
+   "type": "options",
+   "as": "modules",
+   "h": "Options",
+   "items": [
+    {
+     "t": "UV on the supply",
+     "d": "254 nm UV after the tank, before the first outlet. [UV, standard or option]",
+     "spot": "uv-ozone"
+    },
+    {
+     "t": "Point-of-use coolers",
+     "d": "Single-user coolers that flush to drain until temperature and time are met.",
+     "spot": "heat-exchanger"
+    },
+    {
+     "t": "Ozone package for PW",
+     "d": "Generator, UV destruct, three sensors, vent destructor. [PP ozone rating]",
+     "spot": "ozone"
+    },
+    {
+     "t": "Prefabricated loop modules",
+     "d": "Pump, exchanger, UV and instruments on one skid, wet tested at FAT.",
+     "spot": "pump"
+    }
+   ],
+   "nav": "Options",
+   "spot": "storage-tank"
+  },
+  {
+   "type": "faq",
+   "h": "Questions engineers ask",
+   "nav": "FAQ",
+   "items": [
+    {
+     "q": "How hot can a PP loop be sanitized?",
+     "a": "Hot water runs no higher than [maximum loop sanitization temperature for PP, °C]; natural PP is rated to 80 °C. Above that, sanitize chemically, or the loop needs PVDF [whether we quote PVDF]."
+    },
+    {
+     "q": "How do you measure L/D?",
+     "a": "L from the main pipe inside wall to the valve seal point, D the branch inside diameter, at every tee and sample valve. Every branch is in the dead leg register."
+    },
+    {
+     "q": "How do you keep flow turbulent when several outlets open?",
+     "a": "We size pipe and pump for the worst-case outlet combination, not the average. At SAT we open those outlets together and record return flow."
+    },
+    {
+     "q": "How do you prove there is no ozone at the point of use?",
+     "a": "An ozone sensor after the UV destruct unit stops supply on breakthrough. Water is tested for residual ozone after each sanitization. The interlock is tested at FAT and OQ."
+    },
+    {
+     "q": "Can you add points of use to an existing loop?",
+     "a": "Yes, after a hydraulic check at the new peak draw. Each branch is cut in with [PP point-of-use valve type] under your change control. Shutdown: [typical shutdown for a point-of-use addition, days]."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your points of use",
+  "body": "An engineer replies with questions or a loop concept sized to your peak draw.",
+  "button": "Send your points-of-use list for a loop review",
+  "link": "contact-proposal",
+  "intent": "Review of a document you have|Points-of-use list or loop design",
+  "include": [
+   "Points of use: location, L/h, temperature",
+   "Outlets open together, peak L/h",
+   "PW specification and current generation, if any",
+   "Layout drawings with outlet locations"
+  ],
+  "returns": [
+   "Loop concept for your peak draw",
+   "Tank size and loop velocities",
+   "Sanitization method",
+   "Questions on gaps in your data"
+  ],
+  "turnaround": "[proposal response time, working days]"
+ },
+ "todo": [
+  "Design minimum return velocity at peak draw (m/s)",
+  "Standard minimum slope specified (in/ft or %)",
+  "Dead leg limit (L/D) used for PP loops",
+  "Loop sanitization methods offered for PP loops (ozone, chemical, hot water) and which is standard",
+  "Maximum loop sanitization temperature for the PP system (°C) and hold time (minutes)",
+  "Whether the PP grade used is rated for ozone, and the ozone set point in the tank (ppb)",
+  "Chemical sanitant compatible with the PP system, if chemical sanitization is offered",
+  "PP grade for tank and loop (for example PP-R) and certificate type for resin and pipe",
+  "PP internal surface specification (Ra) and its basis",
+  "PP joining method and welder qualification standard (for example DVS 2212)",
+  "PP point-of-use valve type and how it is joined into the loop",
+  "Whether PP tanks are atmospheric or pressure-rated, and the tank design standard (for example DVS 2205)",
+  "Pre-commissioning flush and cleaning procedure for PP",
+  "PP pressure test standard and method",
+  "Whether a heat exchanger and UV on the supply are standard or an option",
+  "Tank volume range (L)",
+  "Whether duty and standby loop pumps are standard or an option",
+  "Confirm TOC on the loop return is standard or an option",
+  "Whether riboflavin spray coverage testing is performed in-house",
+  "Hero drawing shows a stainless tank; replace it with a PP tank and loop drawing, keeping callout positions",
+  "Typical shutdown for adding a point of use to an existing loop (days)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Datasheet PDF; add a download link only once it exists",
+  "A real loop project with measured return velocity, PQ results and number of points of use before adding a case study block",
+  "PP ozone rating for dissolved and headspace ozone (ppm), from the PP maker's rating",
+  "Ozone range in the tank (ppb) and its published source",
+  "Whether Aquemi quotes PVDF loops for hot-water sanitization above the PP rating (the current offer is the PP package only)"
+ ]
+}
