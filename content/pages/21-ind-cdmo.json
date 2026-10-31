@@ -87,7 +87,7 @@
      "Potable at minimum; PW where your specification calls for it",
      "PW generation, if needed",
      {
-      "t": "Natural health products section",
+      "t": "Pharmaceutical: natural health products",
       "link": "ind-pharma#nhp"
      }
     ]
@@ -112,7 +112,7 @@
     },
     {
      "t": "Qualification summary",
-     "d": "Factory acceptance test (FAT) to performance qualification (PQ), with deviations and approvals"
+     "d": "Factory acceptance test to performance qualification, with deviations and approvals"
     },
     {
      "t": "Trend reports",
@@ -140,7 +140,7 @@
     {
      "t": "Duplex generation",
      "spot": "ro-skid",
-     "d": "Two trains at 50 or 100 % each: one runs while the other is sanitized."
+     "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized."
     },
     {
      "t": "N+1 pumps",
@@ -150,7 +150,7 @@
     {
      "t": "Storage autonomy",
      "spot": "storage-tank",
-     "d": "Tank sized from peak demand and your longest credible repair, stated in hours of supply."
+     "d": "Tank sized from peak demand and your longest credible repair, in hours of supply."
     },
     {
      "t": "Sanitize between campaigns",
@@ -160,7 +160,7 @@
     {
      "t": "Spares on your site",
      "spot": "wrench",
-     "d": "A critical spares kit on your site, with the service plan that includes it."
+     "d": "Critical spares on a service plan: [kit on site, replenished after use]."
     },
     {
      "t": "Room for new programs",
@@ -260,14 +260,14 @@
   "Water scope review turnaround and cost ([scope review turnaround, working days], tech transfer step 1 and closing; [scope review cost or free], closing): defined in contact-proposal's requests table, same names as industries and home (FD-01, FD-02)",
   "Severity 1 on-site response time, hours, on a service plan, inside the service coverage area ([severity 1 on-site response time, hours], [service coverage area]; hero fact in svc-service's words, per plan on svc-service; FD-27, FD-28). At launch an unset hero fact goes (DR-010 rule 5)",
   "Stricter-of design basis (lead, router row 2) and client limits in the compliance matrix: confirm as Aquemi practice, with compliance's limits intro; one wording on home, industries and compliance (DR-011)",
-  "Duplex trains at 50 or 100 % each, as sys-pw states them: confirm both shares are offered (FD-20, FD-21); one wording on both pages (DR-011)",
+  "Duplex train shares ([duplex train shares offered], redundancy option 1; sys-pw's duplex option carries the same name in the same sentence; FD-20, FD-21): the share of peak demand each train covers, for example 50 % or 100 %, and whether both are offered. One wording on both pages (DR-011)",
   "Duty and standby pumps, standard or option ([duty and standby pumps, standard or option]; same name as sys-storage; FD-21)",
   "Loop sanitization method used in campaign gaps ([PP loop sanitization method]; same name as home, systems and sys-storage; FD-14). Any temperature wording follows DR-013",
-  "Critical spares kit on site: which service plan includes it, and its terms (svc-service's [kit on site, replenished after use]; FD-11, FD-29)",
+  "Critical spares kit on site ([kit on site, replenished after use], redundancy option 5): svc-service's name, its plans table's tier 3 term (tier 2: [kit held at Aquemi or on site]). Which plans include an on-site kit and on what terms, one wording with svc-service (FD-11, FD-29; DR-011). At launch an unset kit drops the option (DR-004 class 2)",
   "Typical span from order to release for a new point of use on a qualified loop, weeks ([new point of use, order to release, weeks]; tech transfer step 4; FD-08). Only a figure Aquemi commits to (DR-005 rule 5)",
   "Reporting by suite, outlet and date, and how one client's data is kept from another's ([reporting by suite, outlet and date]; audit pack intro, FAQ 2; FD-23). Align with sys-monitoring",
-  "Client audit pack: part of the handover scope or an option, and whether service plans refresh its trend reports (FD-47). A sample pack, once written, becomes the hero secondary's target (DR-006); until then the secondary jumps to the block",
-  "Change package (tech transfer step 2): which documents Aquemi drafts for the change control and for each affected client (FD-46); a sample change package once written (FD-47)",
+  "Client audit pack: part of the handover scope or an option, and whether service plans refresh its trend reports (FD-47). A specimen pack (Aquemi-written, so named until a delivered system exists), once written, becomes the hero secondary's target (DR-006 rule 6); until then the secondary jumps to the block",
+  "Change package (tech transfer step 2): which documents Aquemi drafts for the change control and for each affected client (FD-46); a specimen change package once written (FD-47)",
   "Client audit attendance: whether Aquemi attends clients' audits and inspections as the supplier, in person or by video, and on what terms: in a service plan or per day ([client audit attendance and terms]; FAQ 3; FD-48). At launch the question goes if unset (DR-004 class 2, DR-006 rule 6)",
   "Capability sheet and questionnaire support for CDMO business development, and whether service plans include it (FD-48). Not offered on the page until it exists",
   "References at contract manufacturers: 'none yet' until a client agrees in writing (FD-41). No reference call or case block on this page until then (DR-004, DR-016)",

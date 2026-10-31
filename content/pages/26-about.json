@@ -56,18 +56,18 @@
     {
      "p": "People",
      "v": "[headcount] in total · [headcount by discipline]",
-     "m": "Organization chart in the quality questionnaire pack",
+     "m": "Organization chart, from [quality system ready for audit, date]",
      "link": "cmp-quality#audit"
     },
     {
-     "p": "Head office and engineering",
+     "p": "Head office",
      "v": "[head office, city and province]",
      "m": "",
      "link": "contact-locations#locations"
     },
     {
      "p": "Shop and test bay",
-     "v": "[shop location, city and province] · [floor area, m²] · [largest skid, m; test water, L/h]",
+     "v": "[shop location, city and province] · [floor area, m²] · [largest skid size, m]",
      "m": "Visit once [shop and test bay ready for visits]",
      "link": "contact-locations#visit"
     },
@@ -80,12 +80,12 @@
      "p": "Quality system",
      "v": "[ISO 9001 status, registrar and expiry]",
      "m": "",
-     "link": "cmp-quality"
+     "link": "cmp-quality#certification"
     },
     {
      "p": "Insurance",
      "v": "[general and professional liability limits, CAD]",
-     "m": "Certificates in the quality questionnaire pack",
+     "m": "Certificates, from [quality system ready for audit, date]",
      "link": "cmp-quality#audit"
     },
     {
@@ -100,7 +100,7 @@
      "link": "projects"
     }
    ],
-   "note": "A bracketed figure is not yet published; we state it once verified.",
+   "note": "A bracketed fact is not yet confirmed.",
    "fold": 5,
    "fold_noun": "facts"
   },
@@ -131,7 +131,6 @@
    "type": "grid",
    "nav": "Canada",
    "h": "What changes for a Canadian site",
-   "intro": "Not a quality claim: travel, registration, feed water design and service response change.",
    "items": [
     {
      "t": "Witness your factory acceptance test (FAT)",
@@ -142,7 +141,7 @@
     {
      "t": "Registration in your province",
      "d": "A Canadian registration number (CRN) under CSA B51, from the province of installation, for [pressure-rated items in the PW package].",
-     "link": "compliance",
+     "link": "compliance#engineering",
      "icon": "stamp"
     },
     {
@@ -166,21 +165,21 @@
    "items": [
     {
      "q": "What happens to our system if a key person leaves?",
-     "a": "The knowledge is in the records: specification, as-built drawings, joint log, software backup, factory acceptance test (FAT) and qualification reports. You receive them at handover, so whoever takes over works from them.",
-     "link": "cmp-documentation",
+     "a": "The knowledge is in the records: specification, as-built drawings, [PP joint records kept], software backup, factory acceptance test (FAT) and qualification reports. You receive them at handover, so whoever takes over works from them.",
+     "link": "cmp-documentation#index",
      "link_label": "See the documentation package"
     },
     {
      "q": "Do you work outside drug and device manufacturing?",
      "a": "Our scope: [hospital water scope]; [lab water scope]; [industrial water scope]. Hospital reprocessing water follows CSA Z314:23 and ANSI/AAMI ST108:2023. Critical water under ST108 is looser on ions than Purified Water, tighter on microbes, and has an endotoxin limit.",
-     "link": "industries",
-     "link_label": "See industries we serve"
+     "link": "industries#adjacent",
+     "link_label": "See adjacent uses"
     },
     {
-     "q": "Do you work on other suppliers' systems?",
+     "q": "Do you work on other makers' systems?",
      "a": "For [makes and equipment types serviced]: service and upgrades, starting with a condition survey or an assessment.",
      "link": "svc-service",
-     "link_label": "See service and spare parts"
+     "link_label": "See service for other makes"
     }
    ]
   },
@@ -219,18 +218,20 @@
   "Licensed engineers: number, provinces of licence, engineering firm permit or certificate of authorization where required, and the licensing bodies' public registers ([number of licensed engineers], [provinces of licence], [engineering firm permit, by province], [licensing body registers]; FD-24, FD-34)",
   "Team rows: [Full name] and [licence or qualification] for the commercial lead, the industrial automation engineer and the modular manufacturing and design specialist, each named with consent; titles once set; years in regulated water if wanted (FD-34). Add a row only for a real person (DR-004 rule 4). The automation engineer's former employer stays unnamed until FD-35 (DR-004 class 1)",
   "Who backs up whom, and whether one engineer leads each project from proposal to handover (FD-34): if confirmed, the people intro may say it; the closing heading already names the engineer who would lead the project (DR-004 rule 1)",
-  "Head office and engineering office, city and province ([head office, city and province]; contact-locations holds the address; FD-33)",
-  "Shop and test bay: location, floor area, test bay limits ([shop location, city and province], [floor area, m²], [largest skid, m; test water, L/h]; FD-33, FD-44). Visits and FAT witness wait on [shop and test bay ready for visits] (FD-44, DR-004 class 2); at launch the two offers go if it has no date",
+  "Head office, city and province ([head office, city and province]; contact-locations holds the address; FD-33). The row says \"Head office\", as contact-locations does; if engineering works from another place, FD-33 names it and the row adds it (DR-011 rule 1)",
+  "Shop and test bay: location, floor area and largest skid ([shop location, city and province], [floor area, m²], [largest skid size, m], svc-fat-sat's name; FD-33, FD-44). Test bay water flow ([test bay water, L/h]) and the other test bay limits are FAT capacity: they belong on svc-fat-sat, not here. Visits (shop row) and FAT witness (Canada block) keep [shop and test bay ready for visits] in the draft; at launch each shows only if it is filled with a date that has passed, otherwise it is removed (FD-44, DR-004 class 2, DR-006 rule 6)",
   "Hero fact \"0 · Border crossings, shop to a Canadian site\" returns, with a basis, only once FD-33 places the shop in Canada; it holds for Canadian sites only (DR-010, FD-37). \"Built in Canada\" waits on the same decision (eyebrow, title and the Canada block heading were reworded)",
-  "Quality system status line, same wording as cmp-quality ([ISO 9001 status, registrar and expiry]; FD-48, DR-004 rule 3)",
+  "Quality system status line, same wording as cmp-quality ([ISO 9001 status, registrar and expiry]; FD-48, DR-004 rule 3); the row links cmp-quality#certification, the status line's home",
   "Insurance limits ([general and professional liability limits, CAD]; FD-12). This row is the home of the limits; cmp-quality's onboarding row points here (DR-011 rule 3)",
   "Financial standing evidence offered to procurement, for example a bank reference or bonding capacity ([financial standing evidence for procurement]; FD-12). \"On request\" stays only once the evidence exists (DR-004 class 2)",
-  "Organization chart and certificates in the quality questionnaire pack: the pack is requested on cmp-quality#audit; both evidence lines stay only once the pack exists (FD-48, FD-12)",
+  "Organization chart (People row) and insurance certificates (Insurance row) come in the quality questionnaire pack, requested on cmp-quality#audit and ready from [quality system ready for audit, date], cmp-quality's name (FD-48, FD-12). At launch each line shows only if that date is filled and has passed; otherwise the line and its link are removed (DR-004 class 2, DR-006 rule 6). The hero fact's basis, \"organization chart\", holds from the same date",
   "Systems delivered, by type and province, or \"none yet\" ([systems delivered, by type and province]; FD-41, DR-016)",
-  "CRN: which items in the package are pressure-rated and need a CRN, for example RO membrane housings ([pressure-rated items in the PW package], the canonical name; FD-24). Who prepares and submits, and the provinces covered, stay on compliance ([Aquemi CRN process and provinces covered])",
+  "CRN: which items in the package are pressure-rated and need a CRN, for example RO membrane housings ([pressure-rated items in the PW package], the canonical name; FD-24). Who prepares and submits, and the provinces covered, stay on compliance ([Aquemi CRN process and provinces covered]); the item links compliance#engineering, the CSA B51 row's block",
   "Service bases and spares stock locations ([service bases, cities], [stock location or locations]; contact-locations uses the same names; FD-11, FD-28)",
-  "Adjacent uses: [hospital water scope], [lab water scope], [industrial water scope], the same words as industries and ind-meddevice (FD-25, DR-002 rules 4 to 6). The hospital sentences match DR-002 rule 4's row line; ind-meddevice's hospital FAQ should use the same words",
-  "Other makers' systems ([makes and equipment types serviced]; FD-30, DR-011): the FAQ is services' one-line answer, word for word; it gets its yes or no once FD-30 is answered",
+  "Adjacent uses: [hospital water scope], [lab water scope], [industrial water scope], the same words as industries and ind-meddevice (FD-25, DR-002 rules 4 to 6). The answer is word for word ind-meddevice's hospital FAQ (DR-002 rule 4): change both together. The link lands on industries#adjacent, the rows' home (DR-009 rule 1)",
+  "Other makers' systems ([makes and equipment types serviced]; FD-30, DR-011): question and answer are services' one-line FAQ, word for word (\"Do you work on other makers' systems?\"); it gets its yes or no once FD-30 is answered",
+  "Joint records in the key-person FAQ ([PP joint records kept], the name sys-pw, svc-cq and compliance use; FD-18): the FAQ names the joint map and log only once FD-18 is signed off",
+  "Company facts note (\"A bracketed fact is not yet confirmed.\"): draft only; it goes at launch, when no bracket is left",
   "Work outside Canada: whether US projects are offered and how FAT, registration and service are handled (FD-37). Until then \"What changes for a Canadian site\" speaks to Canadian sites only",
   "French-language capability: which roles work in French, which documents are offered in French, translation review ([French roles and documents]; FD-36, DR-012)",
   "Project-facts sheet: link it from this page once it exists, with no brackets (DR-001 rule 5; FD-03, FD-05 to FD-08)",

@@ -40,7 +40,7 @@
      "20.0 endotoxin units per device (USP <161>); tested to USP <85>"
     ],
     [
-     "Final rinse, cerebrospinal fluid (CSF) contact",
+     "Final rinse, cerebrospinal fluid contact",
      "WFI, or water held to its endotoxin limit",
      "2.15 endotoxin units per device (USP <161>)"
     ]
@@ -80,14 +80,6 @@
       70
      ],
      "d": "Warm water standing between batches grows biofilm; validate a drain-and-refill rule."
-    },
-    {
-     "t": "Rinse endpoint",
-     "at": [
-      72,
-      88
-     ],
-     "d": "A conductivity endpoint at the drain checks every cycle, not only validation."
     }
    ]
   },
@@ -147,7 +139,7 @@
     ],
     [
      "FDA",
-     "QMSR (21 CFR 820) since 2 February 2026, built on ISO 13485; Part 11",
+     "QMSR (21 CFR 820) since 2026, built on ISO 13485; Part 11",
      {
       "t": "Monitoring and controls",
       "link": "sys-monitoring"
@@ -171,7 +163,7 @@
     ],
     [
      "Drug inspector, combination products",
-     "GUI-0001, or 21 CFR Part 4 with Part 211, for the drug part",
+     "Drug part: GUI-0001, or 21 CFR Part 4 with Part 211",
      {
       "t": "Pharmaceutical",
       "link": "ind-pharma"
@@ -192,7 +184,7 @@
     },
     {
      "q": "Do we need WFI for our final rinse?",
-     "a": "Only if your risk assessment says so, as is common for cerebrospinal fluid (CSF) contact. For blood or lymph contact, Purified Water (PW) with a written endotoxin limit is usual. We supply a polypropylene PW package with polyvinyl chloride (PVC) pretreatment, not Water for Injection (WFI)."
+     "a": "Only if your risk assessment says so, as is common for cerebrospinal fluid contact. For blood or lymph contact, Purified Water (PW) with a written endotoxin limit is usual. We supply a polypropylene PW package with polyvinyl chloride (PVC) pretreatment, not Water for Injection (WFI)."
     },
     {
      "q": "How does rinse water affect our radiation dose?",
@@ -200,25 +192,27 @@
     },
     {
      "q": "Is the water system validated or qualified?",
-     "a": "Qualified. You validate the cleaning process (ISO 13485:2016, 7.5.6), for example to ASTM F3127. The water system is qualified by installation and operational qualification (IQ, OQ), then performance qualification (PQ) from routine sampling."
+     "a": "Qualified. You validate the cleaning process (ISO 13485:2016, 7.5.6), for example to ASTM F3127. The water system is qualified by installation and operational qualification (IQ, OQ), then performance qualification (PQ) from routine sampling.",
+     "link": "svc-cq#roles",
+     "link_label": "See who writes, who reviews"
     },
     {
      "q": "Are you ISO 13485 or ISO 9001 certified?",
      "a": "[ISO 9001 status, registrar and expiry].",
-     "link": "cmp-quality",
-     "link_label": "See our quality system"
+     "link": "cmp-quality#certification",
+     "link_label": "See certification status"
     },
     {
      "q": "Do you supply water for hospital reprocessing?",
      "a": "Our scope: [hospital water scope]; [lab water scope]; [industrial water scope]. Hospital reprocessing water follows CSA Z314:23 and ANSI/AAMI ST108:2023. Critical water under ST108 is looser on ions than Purified Water, tighter on microbes, and has an endotoxin limit.",
-     "link": "industries",
-     "link_label": "See industries we serve"
+     "link": "industries#adjacent",
+     "link_label": "See adjacent uses"
     }
    ]
   },
   {
    "type": "related",
-   "h": "Where device buyers go next",
+   "h": "Where to go next",
    "items": [
     "compliance",
     "cmp-quality",
@@ -249,11 +243,11 @@
  "todo": [
   "Target segments at launch (FD-38): medical device makers are tier A3, after pharmaceutical and CDMO (DR-002); confirm",
   "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]; FD-01) is defined in contact-proposal's requests table and shown here as the figure only, as on industries",
-  "Quality system status line (FAQ; FD-48): [ISO 9001 status, registrar and expiry], the name cmp-quality and about use. Device makers also ask about ISO 13485, so the filled line answers both: certified (registrar, number, scope, expiry) or the status FD-48 chooses. No ISO label in an eyebrow, heading or meta until certified (DR-004 rule 3)",
+  "Quality system status line (FAQ; FD-48): [ISO 9001 status, registrar and expiry], the name cmp-quality and about use, linked to its home, cmp-quality#certification (DR-009). Device makers also ask about ISO 13485, so the filled line answers both: certified (registrar, number, scope, expiry) or the status FD-48 chooses. No ISO label in an eyebrow, heading or meta until certified (DR-004 rule 3)",
   "References (FD-41) and a device case study with a measured outcome (FD-42): no reference offer or case block until a client agrees in writing (DR-004, DR-016)",
-  "Adjacent-use scope (hospital FAQ; FD-25, DR-002 rules 4 and 6): [hospital water scope], [lab water scope], [industrial water scope], the names on industries and about (ops/placeholder-names.md in the library), for example 'not offered today', or replacements and upgrades in Ontario and Quebec through your consultant or mechanical contractor. The answer is word for word about's adjacent-use answer; change both together",
+  "Adjacent-use scope (hospital FAQ; FD-25, DR-002 rules 4 and 6): [hospital water scope], [lab water scope], [industrial water scope], the names on industries and about (ops/placeholder-names.md in the library), for example 'not offered today', or replacements and upgrades in Ontario and Quebec through your consultant or mechanical contractor. The answer, its link (industries#adjacent, the rows' home) and its label are word for word about's adjacent-use FAQ (DR-002 rule 4): change both together",
   "PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead, answer or closing item offers it",
   "Point-of-use filters or ultrafiltration at the washer inlet (explainer; FD-21, 'point-of-use UF for device rinse'): whether the package supplies them; sys-pw lists ultrafiltration after deionization as an option",
-  "Auditor table (DR-007 rule 3): the ISO 13485:2016 clauses, the MDSAP requirement for Class II to IV licences and EU MDR Annex I 10.2 and 11 were checked at their sources on 2026-10-31 (library site/ind-meddevice.md); re-check at each new edition"
+  "Auditor table (DR-007 rule 3): the ISO 13485:2016 clauses, the MDSAP requirement for Class II to IV licences and EU MDR Annex I 10.2 and 11 were checked at their sources on 2026-10-31 (IMD-71, IMD-70, IMD-72 in the library's sources/IMD.json); the QMSR took effect on 2 February 2026 (IMD-17); re-check at each new edition"
  ]
 }

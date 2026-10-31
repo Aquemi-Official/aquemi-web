@@ -104,14 +104,14 @@
      "Potable to WFI, by end use"
     ],
     [
-     "Parenterals, biologics and vaccines",
+     "Parenterals: injections and infusions",
      "WFI",
      "Also dialysis and irrigation solutions; we do not supply WFI"
     ],
     [
      "Sterile eye, nose, ear and skin preparations",
      "PW",
-     "Higher if your risk assessment calls for it"
+     "WFI for intra-ocular products (GUI-0001)"
     ],
     [
      "Formulation before sterile lyophilization",
@@ -135,7 +135,7 @@
    "rows": [
     [
      "Health Canada, all drug sites",
-     "GUI-0001 C.02.009: PW total count ≤ 100 colony-forming units (CFU)/mL; objectionable organisms by route",
+     "GUI-0001 C.02.009: PW ≤ 100 colony-forming units (CFU)/mL; objectionable organisms by route",
      {
       "t": "Commissioning and qualification",
       "link": "svc-cq"
@@ -143,7 +143,7 @@
     ],
     [
      "FDA",
-     "21 CFR 211.65 (non-reactive surfaces) and its water guide: dead legs, a year of data",
+     "21 CFR 211.65 (non-reactive surfaces); water guide: dead legs, a year's data",
      {
       "t": "Monitoring and controls",
       "link": "sys-monitoring"
@@ -192,11 +192,13 @@
     },
     {
      "t": "Loop sanitization route",
-     "d": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats."
+     "d": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
+     "link": "sys-storage#sanitization"
     },
     {
      "t": "Canadian feed water",
-     "d": "Near freezing in winter, over 20 °C in summer; membranes sized for the coldest month."
+     "d": "Near freezing in winter, over 20 °C in summer; membranes sized for the coldest month.",
+     "link": "sys-pretreatment"
     },
     {
      "t": "Shutdown windows",
@@ -304,8 +306,9 @@
   "PW as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead, answer or closing item offers it until the owner confirms; the grade table says only that WFI is not supplied",
   "Natural health products: confirm the segment at launch (FD-38) and whether a scope without a loop is offered for dry-dose lines (FD-20); the section stays a section, not a page (DR-002)",
   "References per segment, or \"none yet\" (FD-41); a pharmaceutical or natural health product case study with a measured outcome only once a client approves it in writing (FD-42, DR-016). No reference offer or case block here before",
-  "Sanitization: this page states only the PP rating (DR-013 rule 1); the method and the maximum temperature ([maximum loop sanitization temperature for PP, °C]) live on sys-storage#sanitization (FD-14)",
+  "Sanitization: this page states only the PP rating (DR-013 rule 1), and its decision row links sys-storage#sanitization, where the method and the maximum temperature ([maximum loop sanitization temperature for PP, °C]) live (FD-14)",
+  "Shutdown windows (decisions, folded): duplex trains are named as a choice for the URS, with no train shares; if the owner drops duplex trains as a configuration (FD-20, FD-21), the line keeps isolable sections only. Shares stay on sys-pw and ind-cdmo under one placeholder name (DR-011)",
   "FAT practice (FAQ \"Can one system supply…\"): confirm which USP and Ph. Eur. attributes the factory acceptance test checks, and how (FD-45). The share of skids tested with water is svc-fat-sat's figure, not this page's (DR-010)",
-  "Anchors: \"nhp\" (industries links ind-pharma#nhp from its router and grade table) and \"grades\" (the dosage-form table, for industries' first-system item). This page links svc-upgrades#observation, compliance#limits and industries#first-system"
+  "Anchors: \"nhp\" (industries' router and grade table and ind-cdmo's router link ind-pharma#nhp) and \"grades\" (industries' first-system item \"Your product's grade\" links ind-pharma#grades). This page links svc-upgrades#observation, compliance#limits, industries#first-system and sys-storage#sanitization"
  ]
 }
