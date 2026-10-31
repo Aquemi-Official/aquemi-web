@@ -28,6 +28,13 @@
   font: 500 16px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink);
 }
 .aq-option-modules__plus { flex: none; font: 400 16px/24px var(--font-mono); color: var(--flow); }
+/* Linked module (item link): the box is the link, as a row of the shared grammar is: the title ends in a flow arrow and
+   turns flow on hover with the vignette, a focus ring round the frame. The frame and the + stay as they are. */
+a.aq-option-modules__box { color: var(--ink); text-decoration: none; }
+a.aq-option-modules__box .aq-option-modules__t > span:first-child::after { content: "\a0\2192"; content: "\a0\2192" / ""; color: var(--flow); }
+a.aq-option-modules__box:hover .aq-option-modules__t { color: var(--flow); }
+a.aq-option-modules__box:hover .aq-option-modules__vig { background-color: var(--flow); }
+a.aq-option-modules__box:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .aq-option-modules__vig { margin: var(--space-3) 0 var(--space-3) var(--space-3); }
 .aq-option-modules__d { justify-self: stretch; margin: 0; padding: var(--space-3) var(--space-4); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
 

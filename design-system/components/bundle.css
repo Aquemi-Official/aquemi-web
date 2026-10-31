@@ -1356,7 +1356,11 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 /* Home: fine-line drawing of a figure-eight distribution loop. Pipe in `flow` (the water path), parts and leaders in
    line-strong / ink-muted, part fills `surface` so the pipe breaks behind them, annotations in small Geist. */
 .aq-hero__grid--loop { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; }
-.aq-hero__loop { position: relative; z-index: 1; margin: 0; color: var(--ink-muted); }
+/* Never drawn larger than its viewBox (440 x 520): at most 440 px wide, set to the column's end. Scaled up (480 px in
+   the 1,280 px grid) its 11 px labels painted 12 px and ran past their own SVG box (the label's user-space extent),
+   which the rendered QA reads as text wider than its box ("Distribution loop · PP", 114 > 104 px). At 1:1 or smaller
+   every label fits its box and keeps its CSS size. */
+.aq-hero__loop { position: relative; z-index: 1; width: 100%; max-width: calc(var(--space-32) * 3 + var(--space-12) + var(--space-2)); justify-self: end; margin: 0; color: var(--ink-muted); }
 .aq-hero__loop svg { display: block; width: 100%; height: auto; overflow: visible; }
 .aq-loop__pipe { fill: none; stroke: var(--flow); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .aq-loop__lead line { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
@@ -1673,6 +1677,13 @@ ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row > .aq-index, ol.aq
   font: 500 16px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink);
 }
 .aq-option-modules__plus { flex: none; font: 400 16px/24px var(--font-mono); color: var(--flow); }
+/* Linked module (item link): the box is the link, as a row of the shared grammar is: the title ends in a flow arrow and
+   turns flow on hover with the vignette, a focus ring round the frame. The frame and the + stay as they are. */
+a.aq-option-modules__box { color: var(--ink); text-decoration: none; }
+a.aq-option-modules__box .aq-option-modules__t > span:first-child::after { content: "\a0\2192"; content: "\a0\2192" / ""; color: var(--flow); }
+a.aq-option-modules__box:hover .aq-option-modules__t { color: var(--flow); }
+a.aq-option-modules__box:hover .aq-option-modules__vig { background-color: var(--flow); }
+a.aq-option-modules__box:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .aq-option-modules__vig { margin: var(--space-3) 0 var(--space-3) var(--space-3); }
 .aq-option-modules__d { justify-self: stretch; margin: 0; padding: var(--space-3) var(--space-4); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
 
@@ -1936,6 +1947,11 @@ ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row > .aq-index, ol.aq
 .aq-steps__n::after { content: ""; width: 1px; height: var(--space-6); background: var(--line); }
 .aq-steps__body { display: flex; flex-direction: column; gap: var(--space-2); padding-left: var(--space-3); border-left: 1px solid var(--line); }
 .aq-steps__t { margin: 0; font: 500 16px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); text-wrap: balance; }
+/* Station link (item link): the title is the link, as a row's: ink, ending in a flow arrow, flow on hover */
+.aq-steps__go { color: inherit; text-decoration: none; }
+.aq-steps__go::after { content: "\a0\2192"; content: "\a0\2192" / ""; color: var(--flow); }
+.aq-steps__go:hover { color: var(--flow); }
+.aq-steps__go:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .aq-steps__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
 
 /* Hold station: a `line` frame on surface (a change of surface on the plate), the hold line and the signature line */
@@ -1994,6 +2010,7 @@ ol.aq-rows.aq-options:not(:has(.aq-rows__lead)) .aq-rows__row > .aq-index, ol.aq
   .aq-plate .aq-steps__n { background: var(--surface-raised); }
   .aq-steps__n::after { display: none; }
   .aq-steps__body { padding-left: 0; border-left: 0; padding-top: var(--space-2); }
+  .aq-steps__go { padding-block: calc(var(--space-2) + var(--space-1) / 2); }
   .aq-steps__st.is-hold { outline: 0; background: none; }
   .aq-steps__st.is-hold .aq-steps__body { padding: var(--space-4); outline: 1px solid var(--line); background: var(--surface); }
   .aq-steps__run, .aq-steps__st.is-eol > .aq-steps__run, .aq-steps__st:not(.is-hold) > .aq-steps__run { display: block; left: calc(var(--space-12) / 2 - 6px / 2); top: var(--space-8); bottom: 0; width: 6px; height: auto; border-block: 0; border-inline: 2px solid var(--line-strong); }
@@ -3138,6 +3155,12 @@ a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-
 .aq-spec__link::after { content: "\a0\2192"; content: "\a0\2192" / ""; }
 .aq-spec__link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .aq-spec__link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* Note link (block fields note_link, note_link_label): the note's last words, a text link in the same grammar inline
+   in the small line, "… water. What it costs to run →" */
+.aq-spec__note-link { font-weight: 500; color: var(--flow); text-decoration: none; }
+.aq-spec__note-link::after { content: "\a0\2192"; content: "\a0\2192" / ""; }
+.aq-spec__note-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.aq-spec__note-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
 /* Status words for results */
 .aq-status { display: inline-flex; align-items: center; gap: var(--space-1); font: 500 14px/24px var(--font-sans); }
@@ -3162,6 +3185,7 @@ a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-
   .aq-spec:not(.aq-spec--compare) .aq-spec__method,
   .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { display: block; margin-top: var(--space-1); font-size: 13px; line-height: 20px; }
   .aq-spec__link { display: inline; margin: 0; padding-block: calc(var(--space-3) + var(--space-1) / 2); font-size: 13px; line-height: 20px; }
+  .aq-spec__note-link { padding-block: calc(var(--space-3) + var(--space-1) / 2); }
   .aq-spec:not(.aq-spec--compare) tbody tr.is-lead.is-readout { display: block; padding: var(--space-4) var(--space-3); }
   .aq-spec:not(.aq-spec--compare) tbody tr.is-readout > .aq-spec__read { display: flex; margin-bottom: var(--space-2); }
   .aq-spec__read-n { font-size: 32px; line-height: 36px; }

@@ -29,7 +29,7 @@ DR-009's "one line and a link": an answer whose full version lives on another pa
 
 - `link`: a page id or `page#anchor` (opens that page at the block with that `anchor`). A link to a page that does not exist renders nothing, and `check` warns on it and on a missing anchor.
 - `link_label` (optional): the link's words, five or fewer (`check` counts them with the buttons). Without it a `page#anchor` link reads the target block's heading ("Purified Water limits") and a page link the page's name.
-- `intent` (optional): option labels the linked page's form ticks on arrival, as on a button (`check` warns on labels that tick nothing).
+- `intent` (optional): option labels the linked page's form ticks on arrival, as on a button (`check` fails on labels that tick nothing, DR-014).
 - Markup: after the answer's paragraph, `<p class="aq-faq__more">` holding the Button link variant (`aq-btn aq-btn--link`, `flow`, with its arrow), `space-3` under the answer. One link per item; the link sits inside the answer, so it counts with the answer (not in the page's visible words).
 
 ## Layout

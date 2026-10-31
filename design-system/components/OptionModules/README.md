@@ -30,7 +30,8 @@ On the site, `assets/src/blocks/options.js` writes it for an options block with 
 ## Data (page JSON, options block)
 
 - Block: `as: "modules"`; `art` (page id of the drawing, default the current page; with no drawing in `ART` the plate is left out and the modules sit in two columns); `base` (caption, default "Base skid"); `fold`, `fold_noun` as for OptionList.
-- Item: `t` (name), `d` (one sentence), `spot` (a Spot name, or an Icon name as the fallback; `icon` is read too), `tag` (optional category label above the box; leave it out rather than invent one).
+- Item: `t` (name), `d` (one sentence), `spot` (a Spot name, or an Icon name as the fallback; `icon` is read too), `tag` (optional category label above the box; leave it out rather than invent one), `link` (optional, below).
+- Link: an item's `link` (a page id or `page#anchor`) works as it does on a plain row of the shared row grammar (`wRow`): the box is the link (`<a class="aq-option-modules__box" href="#svc-service" data-wp="svc-service">` in place of the `div`), the title's words end in a `flow` arrow, and on hover the title and the vignette turn `flow`; a `focus` ring round the frame. The frame, the `+` and the wire stay as they are. `{"t": "Spares on your site", "d": "…", "spot": "wrench", "link": "svc-service"}`. Link a module only where another page holds that option in full; a link to a missing page leaves the module plain, and `check` warns on it.
 
 ## When not to use it
 

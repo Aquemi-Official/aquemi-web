@@ -1,12 +1,14 @@
 /* Block "options" -> OptionList: configuration options as rows of the shared list grammar: index, title, one line.
    as: "modules" -> OptionModules: the options drawn as modules around the page's own equipment drawing (the base
    skid), joined to it by dashed connectors. Item fields: t, d, spot (Spot or Icon name, wSpot), tag (category label above
-   the box, optional). Block fields: art (page id whose icon, PAGE_ICON, is drawn as the base; default the current page), spot (an Icon or Spot name drawn as the base instead), base (label, default "Base skid"). */
-function wOptModule(it,i,b,side){var v=wSpot(it.spot||it.icon,'s','aq-spot--muted aq-option-modules__vig');
+   the box, optional), link (a page id or page#anchor, as a plain row's: the box becomes the link, its title ending in a
+   flow arrow; a missing page leaves it plain). Block fields: art (page id whose icon, PAGE_ICON, is drawn as the base; default the current page), spot (an Icon or Spot name drawn as the base instead), base (label, default "Base skid"). */
+function wOptModule(it,i,b,side){var v=wSpot(it.spot||it.icon,'s','aq-spot--muted aq-option-modules__vig'),lk=it.link&&wp(it.link);
+ var cls='aq-option-modules__box'+(v?'':' aq-option-modules__box--bare');
  return fli('<li class="aq-option-modules__m aq-option-modules__m--'+side+'">'+(it.tag?'<p class="aq-option-modules__cat">'+tx(it.tag)+'</p>':'')
-  +'<div class="aq-option-modules__box'+(v?'':' aq-option-modules__box--bare')+'"><h3 class="aq-option-modules__t"><span>'+tx(it.t)+'</span><span class="aq-option-modules__plus" aria-hidden="true">+</span></h3>'
+  +(lk?'<a class="'+cls+'" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">':'<div class="'+cls+'">')+'<h3 class="aq-option-modules__t"><span>'+tx(it.t)+'</span><span class="aq-option-modules__plus" aria-hidden="true">+</span></h3>'
   +v+(it.d?'<p class="aq-option-modules__d">'+tx(it.d)+'</p>':'')
-  +'<svg class="aq-option-modules__wire" aria-hidden="true"><line x1="0" y1="50%" x2="100%" y2="50%"/><circle cx="'+(side==='l'?'100%':'0')+'" cy="50%" r="2.5"/></svg></div></li>',b,i)}
+  +'<svg class="aq-option-modules__wire" aria-hidden="true"><line x1="0" y1="50%" x2="100%" y2="50%"/><circle cx="'+(side==='l'?'100%':'0')+'" cy="50%" r="2.5"/></svg>'+(lk?'</a>':'</div>')+'</li>',b,i)}
 function wOptModules(b,H){var I=b.items||[],art=b.art||WP,pg=wp(art),half=Math.ceil(I.length/2);
  var L=I.slice(0,half),R=I.slice(half);
  var bn=isVig(b.spot)?b.spot:PAGE_ICON[art],hasArt=!!bn;

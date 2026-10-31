@@ -75,6 +75,12 @@
 .aq-spec__link::after { content: "\a0\2192"; content: "\a0\2192" / ""; }
 .aq-spec__link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .aq-spec__link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* Note link (block fields note_link, note_link_label): the note's last words, a text link in the same grammar inline
+   in the small line, "… water. What it costs to run →" */
+.aq-spec__note-link { font-weight: 500; color: var(--flow); text-decoration: none; }
+.aq-spec__note-link::after { content: "\a0\2192"; content: "\a0\2192" / ""; }
+.aq-spec__note-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.aq-spec__note-link:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
 /* Status words for results */
 .aq-status { display: inline-flex; align-items: center; gap: var(--space-1); font: 500 14px/24px var(--font-sans); }
@@ -99,6 +105,7 @@
   .aq-spec:not(.aq-spec--compare) .aq-spec__method,
   .aq-spec:not(.aq-spec--compare) tbody tr.is-highlight .aq-spec__method { display: block; margin-top: var(--space-1); font-size: 13px; line-height: 20px; }
   .aq-spec__link { display: inline; margin: 0; padding-block: calc(var(--space-3) + var(--space-1) / 2); font-size: 13px; line-height: 20px; }
+  .aq-spec__note-link { padding-block: calc(var(--space-3) + var(--space-1) / 2); }
   .aq-spec:not(.aq-spec--compare) tbody tr.is-lead.is-readout { display: block; padding: var(--space-4) var(--space-3); }
   .aq-spec:not(.aq-spec--compare) tbody tr.is-readout > .aq-spec__read { display: flex; margin-bottom: var(--space-2); }
   .aq-spec__read-n { font-size: 32px; line-height: 36px; }

@@ -68,7 +68,11 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 /* Home: fine-line drawing of a figure-eight distribution loop. Pipe in `flow` (the water path), parts and leaders in
    line-strong / ink-muted, part fills `surface` so the pipe breaks behind them, annotations in small Geist. */
 .aq-hero__grid--loop { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; }
-.aq-hero__loop { position: relative; z-index: 1; margin: 0; color: var(--ink-muted); }
+/* Never drawn larger than its viewBox (440 x 520): at most 440 px wide, set to the column's end. Scaled up (480 px in
+   the 1,280 px grid) its 11 px labels painted 12 px and ran past their own SVG box (the label's user-space extent),
+   which the rendered QA reads as text wider than its box ("Distribution loop · PP", 114 > 104 px). At 1:1 or smaller
+   every label fits its box and keeps its CSS size. */
+.aq-hero__loop { position: relative; z-index: 1; width: 100%; max-width: calc(var(--space-32) * 3 + var(--space-12) + var(--space-2)); justify-self: end; margin: 0; color: var(--ink-muted); }
 .aq-hero__loop svg { display: block; width: 100%; height: auto; overflow: visible; }
 .aq-loop__pipe { fill: none; stroke: var(--flow); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .aq-loop__lead line { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }

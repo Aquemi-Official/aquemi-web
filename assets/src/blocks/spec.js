@@ -1,5 +1,6 @@
 /* Block "spec" -> SpecTable (spec sheet: two-column matrix).
-   Fields: h, caption, cols, rows [{p, v, m, hl, link, link_label}], note. Rows keep their order. hl rows at the top of
+   Fields: h, caption, cols, rows [{p, v, m, hl, link, link_label}], note, note_link, note_link_label (wSpecNote).
+   Rows keep their order. hl rows at the top of
    the list are full-width bands (is-highlight is-lead); an hl row further down is tinted in place, so sequences are never
    broken. link: a page id or page#anchor, shown as a quiet "Budget ranges →" link after the basis; its words are the
    row's link_label, else the linked block's heading, else the page's name (wlabel). The caption is the section's eyebrow (above h)
@@ -21,8 +22,14 @@ function wSpecTable(b,rows,foldAt,noun){var cols=b.cols||['Parameter','Specifica
   /* foldAt 0 (every remaining row folded, the callouts above already show the first ones): "Show 5 more parameters" */
   var id='fold-'+(++foldN),all=(foldAt?'Show all ':'Show ')+rows.length+(foldAt?' ':' more ')+(noun||'parameters');
   return '<div class="aq-fold" id="'+id+'">'+t+'<button type="button" class="aq-fold__btn" aria-expanded="false" aria-controls="'+id+'" data-more="'+e(all)+'">'+e(all)+'</button></div>'}
+/* Note (every shape): one small line under the sheet, dials, rule bars or callouts. note_link (a page id or
+   page#anchor) ends it in a text link of the shared link grammar: its words in flow with an arrow, note_link_label,
+   else the linked block's heading, else the page's name (wlabel), as a row link ("What it costs to run →" to
+   svc-service#running-cost). A link to a missing page prints the note alone; a link with no note prints alone. */
+function wSpecNote(b){var lk=b.note_link&&wp(b.note_link)?'<a class="aq-spec__note-link" href="#'+e(b.note_link)+'" data-wp="'+e(b.note_link)+'">'+tx(b.note_link_label||wlabel(b.note_link))+'</a>':'';
+  return b.note||lk?'<p class="aq-small">'+(b.note?tx(b.note)+(lk?' ':''):'')+lk+'</p>':''}
 BLOCKS['spec']=function(b,H){
-  var rows=b.rows||[],head=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro}),note=b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'';
+  var rows=b.rows||[],head=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro}),note=wSpecNote(b);
   if(b.as==='gauges')return sec(head+'<div class="aq-stack">'+wGauges(b,rows)+note+'</div>');
   if(b.as==='rules')return sec(head+'<div class="aq-stack">'+wRules(b,rows)+note+'</div>');/* blocks/rules.js */
   if(b.as==='callouts'&&ART[WP]){var c=wCallouts(b,rows);if(c)return sec(head+c+note)}
@@ -43,7 +50,11 @@ BLOCKS['spec']=function(b,H){
    The basis (m) prints with standard names (USP <645>, Ph. Eur. 0008, EN 285 …) as tags.
    Row link (gauges and rules alike, wGaugeGo): link (a page id or page#anchor), link_label (default the linked block's
    heading, else the page's name, wlabel) and intent (options the linked form ticks on arrival), drawn as the Button link
-   variant at the foot of the cell, so DR-009's one link can sit with the row it explains. A missing page prints nothing. */
+   variant at the foot of the cell, so DR-009's one link can sit with the row it explains. A missing page prints nothing.
+   Row kind (level): a dial row is a limit unless it names its kind. "level": "action" reads "Action level" ("alert":
+   "Alert level") where a limit reads "Limit" (the chip on the scale and the screen-reader line) and in place of the
+   readout caption "Upper limit" / "Lower limit"; a qualifier caption ("@ 25 °C") still wins over the caption. */
+function gaugeLevel(r){var k=String(r&&r.level||'').trim().replace(/\s+level$/i,'');return k&&!/^limit$/i.test(k)?k.charAt(0).toUpperCase()+k.slice(1).toLowerCase()+' level':''}
 function wGaugeGo(r){return r&&r.link&&wp(r.link)?'<p class="aq-limit-gauges__go">'+wBtn(r.link_label||wlabel(r.link),r.link,'link',r.intent)+'</p>':''}
 var GAUGE_STD=/(USP <\d+>|Ph\. Eur\. \d[\d.]*|EN \d+|ASTM [A-Z]\d+|Annex 1(?:, \d+\.\d+)?|ISO \d+|ASME BPE|GAMP 5|21 CFR Part 11)/;
 /* q: the rest of the value around "≤ 1.3 µS/cm" (qualifiers such as "@ 25 °C (stage 1)"); a unit too long for the
@@ -64,7 +75,7 @@ function gaugeNum(v){return String(parseFloat(v.toFixed(6)))}
 function gaugePt(f,r){var a=(160-140*f)*Math.PI/180;return [120+r*Math.cos(a),128-r*Math.sin(a)]}
 function gaugeArc(f0,f1,r){var p=gaugePt(f0,r),q=gaugePt(f1,r);return 'M'+p[0].toFixed(1)+' '+p[1].toFixed(1)+' A'+r+' '+r+' 0 0 1 '+q[0].toFixed(1)+' '+q[1].toFixed(1)}
 function gaugeLn(f,r0,r1,cls){var p=gaugePt(f,r0),q=gaugePt(f,r1);return '<line'+(cls?' class="'+cls+'"':'')+' x1="'+p[0].toFixed(1)+'" y1="'+p[1].toFixed(1)+'" x2="'+q[0].toFixed(1)+'" y2="'+q[1].toFixed(1)+'"/>'}
-function wDial(g,second,read){var up=g.c==='≥'||g.c==='>',S=gaugeScale(g.n,up),max=S[0],div=S[1],L=Math.min(g.n/max,1),i,ticks='',nums='';
+function wDial(g,second,read,term){var up=g.c==='≥'||g.c==='>',S=gaugeScale(g.n,up),max=S[0],div=S[1],L=Math.min(g.n/max,1),i,ticks='',nums='';
   for(i=0;i<=div*5;i++){var f=i/(div*5),maj=i%5===0;ticks+=gaugeLn(f,96,maj?85:90,maj?'is-major':'');
     if(maj&&Math.abs(f-L)>0.09){var p=gaugePt(f,107);nums+='<text'+(i===0||i===div*5?' class="is-end"':'')+' x="'+p[0].toFixed(1)+'" y="'+(p[1]+3).toFixed(1)+'">'+gaugeNum(max*i/(div*5))+'</text>'}}
   var a=(160-140*L)*Math.PI/180,tip=gaugePt(L,97),w1=gaugePt(L,104),ca=Math.cos(a),sa=Math.sin(a),
@@ -81,7 +92,7 @@ function wDial(g,second,read){var up=g.c==='≥'||g.c==='>',S=gaugeScale(g.n,up)
    +'<g class="aq-limit-gauges__cross"><line x1="106" y1="128" x2="134" y2="128"/><line x1="120" y1="104" x2="120" y2="154"/><line x1="120" y1="146" x2="240" y2="146"/></g>'
    +gaugeLn(L,0,92,'aq-limit-gauges__needle')+'<circle class="aq-limit-gauges__pivot" cx="120" cy="128" r="3"/>'
    +gaugeLn(L,96,82,'aq-limit-gauges__limit')+'<path class="aq-limit-gauges__ptr" d="'+ptr+'"/></svg>'
-   +'<span class="aq-limit-gauges__mark'+(right?' is-right':'')+'" style="'+pos+'"><span class="aq-limit-gauges__mark-k">Limit </span>'+e((g.c?g.c+' ':'')+g.t)+'</span>'
+   +'<span class="aq-limit-gauges__mark'+(right?' is-right':'')+'" style="'+pos+'"><span class="aq-limit-gauges__mark-k">'+e(term||'Limit')+' </span>'+e((g.c?g.c+' ':'')+g.t)+'</span>'
    +(second?'<span class="aq-limit-gauges__mark aq-limit-gauges__mark--second" style="left:'+(p2[0]/2.4).toFixed(1)+'%;top:'+((p2[1]-10)/144*100).toFixed(1)+'%">'+e(second.t)+'</span>':'')+(read||'')+'</div>'}
 /* Open dial: a value still to come ("[outlet conductivity guarantee, µS/cm @ 25 °C]", nothing but placeholders) gets
    the bare instrument (arc, ticks, inner arc, crosshairs, the needle at rest on zero) and no scale numbers, pointer,
@@ -97,16 +108,16 @@ function wGauges(b,rows){
   var P=rows.map(function(r){return gaugeParse(r.v)}),outlet=/outlet|guarantee/i,sec2={};
   rows.forEach(function(r,i){var o=P[i];if(!o||!outlet.test(r.p))return;
     P.forEach(function(g,j){if(sec2[j]||j===i||!g||outlet.test(rows[j].p)||g.u!==o.u||g.c==='≥'||g.c==='>'||!(o.n<g.n))return;sec2[j]={f:o.n/gaugeScale(g.n,false)[0],t:o.t}});P[i]=null});
-  var list=rows.map(function(r,i){var g=P[i],up=g&&(g.c==='≥'||g.c==='>');
+  var list=rows.map(function(r,i){var g=P[i],up=g&&(g.c==='≥'||g.c==='>'),lv=gaugeLevel(r);
     /* Readout: the limit with a short unit; a long one ("mL per 100 mL") stays in the spec list only */
     var read=g?'<span class="aq-limit-gauges__read"><span class="aq-limit-gauges__line"><span class="aq-limit-gauges__num">'+e((g.c?g.c+' ':'')+g.t)+'</span>'+(g.u&&g.u.length<=8?' <span class="aq-limit-gauges__unit">'+tx(g.u)+'</span>':'')
-      +'</span><span class="aq-limit-gauges__cap'+(g.q?' is-q">'+tx(g.q):'">'+(up?'Lower limit':'Upper limit'))+'</span></span>':'';
+      +'</span><span class="aq-limit-gauges__cap'+(g.q?' is-q">'+tx(g.q):'">'+e(lv||(up?'Lower limit':'Upper limit')))+'</span></span>':'';
     /* With a dial the chip and readout show the limit, so the full value is kept for screen readers only */
-    var spec='<dl class="aq-limit-gauges__spec"><div'+(g?' class="aq-limit-gauges__sr"':'')+'><dt>'+(g?'Limit':'Value')+'</dt><dd class="aq-limit-gauges__v">'+tx(r.v)+'</dd></div>'
+    var spec='<dl class="aq-limit-gauges__spec"><div'+(g?' class="aq-limit-gauges__sr"':'')+'><dt>'+(g?e(lv||'Limit'):'Value')+'</dt><dd class="aq-limit-gauges__v">'+tx(r.v)+'</dd></div>'
       +(r.m?'<div><dt>Basis</dt><dd class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</dd></div>':'')+'</dl>';
     var open=!g&&gaugeOpen(r.v);
     return fli('<li class="aq-limit-gauges__item'+(g?'':' is-readout')+(open?' is-open':'')+(r.hl?' is-key':'')+'">',b,i)
-     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read):open?wDialOpen():'')
+     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read,lv):open?wDialOpen():'')
      +'<div class="aq-limit-gauges__foot">'+spec+wGaugeGo(r)+'</div></li>'}).join('');
   return wPlate(wFold(b,rows.length,'<ul class="aq-limit-gauges" role="list">'+list+'</ul>',b.fold_noun||'limits'),{block:['Aquemi',b.caption||'Limits']})}
 

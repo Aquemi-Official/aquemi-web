@@ -49,9 +49,10 @@ function wSecHead(b){b=b||{};if(!b.h&&!b.eyebrow&&!b.intro)return '';
    cells, e.g. ["Aquemi","Limits","PW"] (decorative); an empty cell is left out. */
 function wPlate(inner,o){o=o||{};var B=(o.block||[]).filter(function(c){return c!==''&&c!=null}),bl=B.length?'<div class="aq-plate__block" aria-hidden="true">'+B.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'</div>':'';
  return '<div class="aq-plate'+(bl?' aq-plate--block':'')+(o.cls?' '+o.cls:'')+'"'+(o.light?' data-theme="light"':'')+'>'+inner+bl+'</div>'}
-/* Plate count (the router's and the grade lanes' title block): n and the noun the block names its rows by, caption_noun,
-   else fold_noun ("6 roles", "8 steps"); with neither, no count, so a caption never counts its rows under a wrong noun. */
-function wCount(b,n){var w=b&&(b.caption_noun||b.fold_noun);return w?n+' '+w:''}
+/* Plate count (the router's, the grade lanes' and the role matrix's title block): n and the noun the block names its rows
+   by, caption_noun, else fold_noun, else the shape's own noun dflt (the role matrix's "documents"): "6 roles", "8 steps".
+   caption_noun: "" drops the count. With no noun at all, no count, so a caption never counts its rows under a wrong noun. */
+function wCount(b,n,dflt){b=b||{};var w=typeof b.caption_noun==='string'?b.caption_noun:b.fold_noun||dflt;return w?n+' '+w:''}
 /* Index: the one numbering style, "01" (aria-hidden: the list already announces position) */
 function idx(i){return '<span class="aq-index" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}
 /* Icon: a Lucide-style line icon from assets/icons/<name>.svg, painted with a token through a mask (design-system/components/Icon). */

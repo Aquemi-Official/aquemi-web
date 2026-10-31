@@ -49,9 +49,10 @@ function wSecHead(b){b=b||{};if(!b.h&&!b.eyebrow&&!b.intro)return '';
    cells, e.g. ["Aquemi","Limits","PW"] (decorative); an empty cell is left out. */
 function wPlate(inner,o){o=o||{};var B=(o.block||[]).filter(function(c){return c!==''&&c!=null}),bl=B.length?'<div class="aq-plate__block" aria-hidden="true">'+B.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'</div>':'';
  return '<div class="aq-plate'+(bl?' aq-plate--block':'')+(o.cls?' '+o.cls:'')+'"'+(o.light?' data-theme="light"':'')+'>'+inner+bl+'</div>'}
-/* Plate count (the router's and the grade lanes' title block): n and the noun the block names its rows by, caption_noun,
-   else fold_noun ("6 roles", "8 steps"); with neither, no count, so a caption never counts its rows under a wrong noun. */
-function wCount(b,n){var w=b&&(b.caption_noun||b.fold_noun);return w?n+' '+w:''}
+/* Plate count (the router's, the grade lanes' and the role matrix's title block): n and the noun the block names its rows
+   by, caption_noun, else fold_noun, else the shape's own noun dflt (the role matrix's "documents"): "6 roles", "8 steps".
+   caption_noun: "" drops the count. With no noun at all, no count, so a caption never counts its rows under a wrong noun. */
+function wCount(b,n,dflt){b=b||{};var w=typeof b.caption_noun==='string'?b.caption_noun:b.fold_noun||dflt;return w?n+' '+w:''}
 /* Index: the one numbering style, "01" (aria-hidden: the list already announces position) */
 function idx(i){return '<span class="aq-index" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}
 /* Icon: a Lucide-style line icon from assets/icons/<name>.svg, painted with a token through a mask (design-system/components/Icon). */
@@ -865,12 +866,14 @@ BLOCKS['grid'].route=function(b,H){var I=b.items||[],n=I.length,C=n<=4?n:(n%4===
 /* Block "options" -> OptionList: configuration options as rows of the shared list grammar: index, title, one line.
    as: "modules" -> OptionModules: the options drawn as modules around the page's own equipment drawing (the base
    skid), joined to it by dashed connectors. Item fields: t, d, spot (Spot or Icon name, wSpot), tag (category label above
-   the box, optional). Block fields: art (page id whose icon, PAGE_ICON, is drawn as the base; default the current page), spot (an Icon or Spot name drawn as the base instead), base (label, default "Base skid"). */
-function wOptModule(it,i,b,side){var v=wSpot(it.spot||it.icon,'s','aq-spot--muted aq-option-modules__vig');
+   the box, optional), link (a page id or page#anchor, as a plain row's: the box becomes the link, its title ending in a
+   flow arrow; a missing page leaves it plain). Block fields: art (page id whose icon, PAGE_ICON, is drawn as the base; default the current page), spot (an Icon or Spot name drawn as the base instead), base (label, default "Base skid"). */
+function wOptModule(it,i,b,side){var v=wSpot(it.spot||it.icon,'s','aq-spot--muted aq-option-modules__vig'),lk=it.link&&wp(it.link);
+ var cls='aq-option-modules__box'+(v?'':' aq-option-modules__box--bare');
  return fli('<li class="aq-option-modules__m aq-option-modules__m--'+side+'">'+(it.tag?'<p class="aq-option-modules__cat">'+tx(it.tag)+'</p>':'')
-  +'<div class="aq-option-modules__box'+(v?'':' aq-option-modules__box--bare')+'"><h3 class="aq-option-modules__t"><span>'+tx(it.t)+'</span><span class="aq-option-modules__plus" aria-hidden="true">+</span></h3>'
+  +(lk?'<a class="'+cls+'" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">':'<div class="'+cls+'">')+'<h3 class="aq-option-modules__t"><span>'+tx(it.t)+'</span><span class="aq-option-modules__plus" aria-hidden="true">+</span></h3>'
   +v+(it.d?'<p class="aq-option-modules__d">'+tx(it.d)+'</p>':'')
-  +'<svg class="aq-option-modules__wire" aria-hidden="true"><line x1="0" y1="50%" x2="100%" y2="50%"/><circle cx="'+(side==='l'?'100%':'0')+'" cy="50%" r="2.5"/></svg></div></li>',b,i)}
+  +'<svg class="aq-option-modules__wire" aria-hidden="true"><line x1="0" y1="50%" x2="100%" y2="50%"/><circle cx="'+(side==='l'?'100%':'0')+'" cy="50%" r="2.5"/></svg>'+(lk?'</a>':'</div>')+'</li>',b,i)}
 function wOptModules(b,H){var I=b.items||[],art=b.art||WP,pg=wp(art),half=Math.ceil(I.length/2);
  var L=I.slice(0,half),R=I.slice(half);
  var bn=isVig(b.spot)?b.spot:PAGE_ICON[art],hasArt=!!bn;
@@ -1066,12 +1069,15 @@ BLOCKS['related']=function(b,H){var I=(b.items||[]).filter(wp);
    with its column name; a cell that starts with "Aquemi" is ours (tinted flow), one that starts with "You" or "Your" is
    yours (outlined), anything else is shared (dashed). On a drawing plate, under a key strip. Each document is a framed
    signature block: desktop, index and document in the first cell, then one ruled cell per role (label above stamp);
-   phones, the document as the block's header bar and the role cells side by side under it. */
+   phones, the document as the block's header bar and the role cells side by side under it.
+   Plate caption: "Aquemi · <nav> · N documents" by default; caption_noun names the rows when they are not all documents
+   ("6 requests": a row may be a consultant), "caption_noun": "" drops the count (the router's rule, wCount in core.js).
+   The fold button names them the same way: fold_noun, else caption_noun, else "documents". */
 function roleParty(c){var s=String(c&&c.t||c||'');return /^aquemi/i.test(s)?'ours':/^(you|your)\b/i.test(s)?'yours':'shared'}
 TABLE_AS.roles=function(b,H){var C=b.cols||[],R=b.rows||[];
  return sec(H+wPlate('<div class="aq-roles"><p class="aq-roles__key" aria-hidden="true"><span class="aq-roles__keyk">Key</span><span class="aq-roles__stamp is-ours">Aquemi</span><span class="aq-roles__stamp is-yours">Your team</span><span class="aq-roles__stamp is-shared">Shared</span></p>'
   +wFold(b,R.length,'<ol class="aq-roles__rows">'+R.map(function(r,i){return fli('<li class="aq-roles__row">',b,i)+idx(i)+'<h3 class="aq-roles__t">'+tcell(r[0])+'</h3><div class="aq-roles__stamps">'
-   +r.slice(1).map(function(c,j){return '<div class="aq-roles__cell"><p class="aq-roles__k">'+tx(C[j+1]||'')+'</p><p class="aq-roles__stamp is-'+roleParty(c)+'">'+tcell(c)+'</p></div>'}).join('')+'</div></li>'}).join('')+'</ol>',b.fold_noun||'documents')+'</div>',{block:['Aquemi',b.nav||'Roles',R.length+' documents']}));};
+   +r.slice(1).map(function(c,j){return '<div class="aq-roles__cell"><p class="aq-roles__k">'+tx(C[j+1]||'')+'</p><p class="aq-roles__stamp is-'+roleParty(c)+'">'+tcell(c)+'</p></div>'}).join('')+'</div></li>'}).join('')+'</ol>',b.fold_noun||b.caption_noun||'documents')+'</div>',{block:['Aquemi',b.nav||'Roles',wCount(b,R.length,'documents')]}));};
 /* Table as "router" -> Router: the buyer picks the situation they are in and sees one route through the columns that
    follow (the water they need, the system, where to start). Fields as a table: cols (first is the situation column,
    the rest name the stations), rows (first cell the situation, each other cell a string or {t, link}).
@@ -1139,7 +1145,8 @@ function wRules(b,rows){
      +(r.m?'<p class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</p>':'')+'</li>'}).join('');
   return wPlate(wFold(b,rows.length,'<ol class="aq-limit-gauges aq-limit-gauges--rules" role="list">'+list+'</ol>',b.fold_noun||'rules'),{block:['Aquemi',b.caption||'Design rules']})}
 /* Block "spec" -> SpecTable (spec sheet: two-column matrix).
-   Fields: h, caption, cols, rows [{p, v, m, hl, link, link_label}], note. Rows keep their order. hl rows at the top of
+   Fields: h, caption, cols, rows [{p, v, m, hl, link, link_label}], note, note_link, note_link_label (wSpecNote).
+   Rows keep their order. hl rows at the top of
    the list are full-width bands (is-highlight is-lead); an hl row further down is tinted in place, so sequences are never
    broken. link: a page id or page#anchor, shown as a quiet "Budget ranges →" link after the basis; its words are the
    row's link_label, else the linked block's heading, else the page's name (wlabel). The caption is the section's eyebrow (above h)
@@ -1161,8 +1168,14 @@ function wSpecTable(b,rows,foldAt,noun){var cols=b.cols||['Parameter','Specifica
   /* foldAt 0 (every remaining row folded, the callouts above already show the first ones): "Show 5 more parameters" */
   var id='fold-'+(++foldN),all=(foldAt?'Show all ':'Show ')+rows.length+(foldAt?' ':' more ')+(noun||'parameters');
   return '<div class="aq-fold" id="'+id+'">'+t+'<button type="button" class="aq-fold__btn" aria-expanded="false" aria-controls="'+id+'" data-more="'+e(all)+'">'+e(all)+'</button></div>'}
+/* Note (every shape): one small line under the sheet, dials, rule bars or callouts. note_link (a page id or
+   page#anchor) ends it in a text link of the shared link grammar: its words in flow with an arrow, note_link_label,
+   else the linked block's heading, else the page's name (wlabel), as a row link ("What it costs to run →" to
+   svc-service#running-cost). A link to a missing page prints the note alone; a link with no note prints alone. */
+function wSpecNote(b){var lk=b.note_link&&wp(b.note_link)?'<a class="aq-spec__note-link" href="#'+e(b.note_link)+'" data-wp="'+e(b.note_link)+'">'+tx(b.note_link_label||wlabel(b.note_link))+'</a>':'';
+  return b.note||lk?'<p class="aq-small">'+(b.note?tx(b.note)+(lk?' ':''):'')+lk+'</p>':''}
 BLOCKS['spec']=function(b,H){
-  var rows=b.rows||[],head=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro}),note=b.note?'<p class="aq-small">'+tx(b.note)+'</p>':'';
+  var rows=b.rows||[],head=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro}),note=wSpecNote(b);
   if(b.as==='gauges')return sec(head+'<div class="aq-stack">'+wGauges(b,rows)+note+'</div>');
   if(b.as==='rules')return sec(head+'<div class="aq-stack">'+wRules(b,rows)+note+'</div>');/* blocks/rules.js */
   if(b.as==='callouts'&&ART[WP]){var c=wCallouts(b,rows);if(c)return sec(head+c+note)}
@@ -1183,7 +1196,11 @@ BLOCKS['spec']=function(b,H){
    The basis (m) prints with standard names (USP <645>, Ph. Eur. 0008, EN 285 …) as tags.
    Row link (gauges and rules alike, wGaugeGo): link (a page id or page#anchor), link_label (default the linked block's
    heading, else the page's name, wlabel) and intent (options the linked form ticks on arrival), drawn as the Button link
-   variant at the foot of the cell, so DR-009's one link can sit with the row it explains. A missing page prints nothing. */
+   variant at the foot of the cell, so DR-009's one link can sit with the row it explains. A missing page prints nothing.
+   Row kind (level): a dial row is a limit unless it names its kind. "level": "action" reads "Action level" ("alert":
+   "Alert level") where a limit reads "Limit" (the chip on the scale and the screen-reader line) and in place of the
+   readout caption "Upper limit" / "Lower limit"; a qualifier caption ("@ 25 °C") still wins over the caption. */
+function gaugeLevel(r){var k=String(r&&r.level||'').trim().replace(/\s+level$/i,'');return k&&!/^limit$/i.test(k)?k.charAt(0).toUpperCase()+k.slice(1).toLowerCase()+' level':''}
 function wGaugeGo(r){return r&&r.link&&wp(r.link)?'<p class="aq-limit-gauges__go">'+wBtn(r.link_label||wlabel(r.link),r.link,'link',r.intent)+'</p>':''}
 var GAUGE_STD=/(USP <\d+>|Ph\. Eur\. \d[\d.]*|EN \d+|ASTM [A-Z]\d+|Annex 1(?:, \d+\.\d+)?|ISO \d+|ASME BPE|GAMP 5|21 CFR Part 11)/;
 /* q: the rest of the value around "≤ 1.3 µS/cm" (qualifiers such as "@ 25 °C (stage 1)"); a unit too long for the
@@ -1204,7 +1221,7 @@ function gaugeNum(v){return String(parseFloat(v.toFixed(6)))}
 function gaugePt(f,r){var a=(160-140*f)*Math.PI/180;return [120+r*Math.cos(a),128-r*Math.sin(a)]}
 function gaugeArc(f0,f1,r){var p=gaugePt(f0,r),q=gaugePt(f1,r);return 'M'+p[0].toFixed(1)+' '+p[1].toFixed(1)+' A'+r+' '+r+' 0 0 1 '+q[0].toFixed(1)+' '+q[1].toFixed(1)}
 function gaugeLn(f,r0,r1,cls){var p=gaugePt(f,r0),q=gaugePt(f,r1);return '<line'+(cls?' class="'+cls+'"':'')+' x1="'+p[0].toFixed(1)+'" y1="'+p[1].toFixed(1)+'" x2="'+q[0].toFixed(1)+'" y2="'+q[1].toFixed(1)+'"/>'}
-function wDial(g,second,read){var up=g.c==='≥'||g.c==='>',S=gaugeScale(g.n,up),max=S[0],div=S[1],L=Math.min(g.n/max,1),i,ticks='',nums='';
+function wDial(g,second,read,term){var up=g.c==='≥'||g.c==='>',S=gaugeScale(g.n,up),max=S[0],div=S[1],L=Math.min(g.n/max,1),i,ticks='',nums='';
   for(i=0;i<=div*5;i++){var f=i/(div*5),maj=i%5===0;ticks+=gaugeLn(f,96,maj?85:90,maj?'is-major':'');
     if(maj&&Math.abs(f-L)>0.09){var p=gaugePt(f,107);nums+='<text'+(i===0||i===div*5?' class="is-end"':'')+' x="'+p[0].toFixed(1)+'" y="'+(p[1]+3).toFixed(1)+'">'+gaugeNum(max*i/(div*5))+'</text>'}}
   var a=(160-140*L)*Math.PI/180,tip=gaugePt(L,97),w1=gaugePt(L,104),ca=Math.cos(a),sa=Math.sin(a),
@@ -1221,7 +1238,7 @@ function wDial(g,second,read){var up=g.c==='≥'||g.c==='>',S=gaugeScale(g.n,up)
    +'<g class="aq-limit-gauges__cross"><line x1="106" y1="128" x2="134" y2="128"/><line x1="120" y1="104" x2="120" y2="154"/><line x1="120" y1="146" x2="240" y2="146"/></g>'
    +gaugeLn(L,0,92,'aq-limit-gauges__needle')+'<circle class="aq-limit-gauges__pivot" cx="120" cy="128" r="3"/>'
    +gaugeLn(L,96,82,'aq-limit-gauges__limit')+'<path class="aq-limit-gauges__ptr" d="'+ptr+'"/></svg>'
-   +'<span class="aq-limit-gauges__mark'+(right?' is-right':'')+'" style="'+pos+'"><span class="aq-limit-gauges__mark-k">Limit </span>'+e((g.c?g.c+' ':'')+g.t)+'</span>'
+   +'<span class="aq-limit-gauges__mark'+(right?' is-right':'')+'" style="'+pos+'"><span class="aq-limit-gauges__mark-k">'+e(term||'Limit')+' </span>'+e((g.c?g.c+' ':'')+g.t)+'</span>'
    +(second?'<span class="aq-limit-gauges__mark aq-limit-gauges__mark--second" style="left:'+(p2[0]/2.4).toFixed(1)+'%;top:'+((p2[1]-10)/144*100).toFixed(1)+'%">'+e(second.t)+'</span>':'')+(read||'')+'</div>'}
 /* Open dial: a value still to come ("[outlet conductivity guarantee, µS/cm @ 25 °C]", nothing but placeholders) gets
    the bare instrument (arc, ticks, inner arc, crosshairs, the needle at rest on zero) and no scale numbers, pointer,
@@ -1237,16 +1254,16 @@ function wGauges(b,rows){
   var P=rows.map(function(r){return gaugeParse(r.v)}),outlet=/outlet|guarantee/i,sec2={};
   rows.forEach(function(r,i){var o=P[i];if(!o||!outlet.test(r.p))return;
     P.forEach(function(g,j){if(sec2[j]||j===i||!g||outlet.test(rows[j].p)||g.u!==o.u||g.c==='≥'||g.c==='>'||!(o.n<g.n))return;sec2[j]={f:o.n/gaugeScale(g.n,false)[0],t:o.t}});P[i]=null});
-  var list=rows.map(function(r,i){var g=P[i],up=g&&(g.c==='≥'||g.c==='>');
+  var list=rows.map(function(r,i){var g=P[i],up=g&&(g.c==='≥'||g.c==='>'),lv=gaugeLevel(r);
     /* Readout: the limit with a short unit; a long one ("mL per 100 mL") stays in the spec list only */
     var read=g?'<span class="aq-limit-gauges__read"><span class="aq-limit-gauges__line"><span class="aq-limit-gauges__num">'+e((g.c?g.c+' ':'')+g.t)+'</span>'+(g.u&&g.u.length<=8?' <span class="aq-limit-gauges__unit">'+tx(g.u)+'</span>':'')
-      +'</span><span class="aq-limit-gauges__cap'+(g.q?' is-q">'+tx(g.q):'">'+(up?'Lower limit':'Upper limit'))+'</span></span>':'';
+      +'</span><span class="aq-limit-gauges__cap'+(g.q?' is-q">'+tx(g.q):'">'+e(lv||(up?'Lower limit':'Upper limit')))+'</span></span>':'';
     /* With a dial the chip and readout show the limit, so the full value is kept for screen readers only */
-    var spec='<dl class="aq-limit-gauges__spec"><div'+(g?' class="aq-limit-gauges__sr"':'')+'><dt>'+(g?'Limit':'Value')+'</dt><dd class="aq-limit-gauges__v">'+tx(r.v)+'</dd></div>'
+    var spec='<dl class="aq-limit-gauges__spec"><div'+(g?' class="aq-limit-gauges__sr"':'')+'><dt>'+(g?e(lv||'Limit'):'Value')+'</dt><dd class="aq-limit-gauges__v">'+tx(r.v)+'</dd></div>'
       +(r.m?'<div><dt>Basis</dt><dd class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</dd></div>':'')+'</dl>';
     var open=!g&&gaugeOpen(r.v);
     return fli('<li class="aq-limit-gauges__item'+(g?'':' is-readout')+(open?' is-open':'')+(r.hl?' is-key':'')+'">',b,i)
-     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read):open?wDialOpen():'')
+     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read,lv):open?wDialOpen():'')
      +'<div class="aq-limit-gauges__foot">'+spec+wGaugeGo(r)+'</div></li>'}).join('');
   return wPlate(wFold(b,rows.length,'<ul class="aq-limit-gauges" role="list">'+list+'</ul>',b.fold_noun||'limits'),{block:['Aquemi',b.caption||'Limits']})}
 
@@ -1319,7 +1336,12 @@ document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.targe
    Plate: numbered stations joined by pipe runs, left to right in rows that return under each other, a closed valve on
    the run into every hold station, and hold stations on surface in a hairline frame with a "Hold" line naming who
    signs and a signature line. Phones: one vertical pipe with the stations along it. Every step's name and text stay real text.
-   No icons: the number is the information in a sequence. */
+   No icons: the number is the information in a sequence.
+   Station link: an item's link (a page id or page#anchor) makes its station's title the link, in the shared link grammar
+   (the title ending in a flow arrow, flow on hover): "Factory and site acceptance tests (FAT and SAT) →" to svc-fat-sat.
+   Hold stations and plain stations alike; the station frame, hold line and pipes stay drawing. A missing page leaves
+   the title plain. */
+function stepTitle(it){var t=tx(it.t);return it.link&&wp(it.link)?'<a class="aq-steps__go" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+t+'</a>':t}
 function stepWho(who){who=String(who);return tx(/^[A-Z][a-z]/.test(who)?who.charAt(0).toLowerCase()+who.slice(1):who)}
 var STEP_VALVE='<svg class="aq-steps__valve" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6 L21 18 L21 6 L3 18 Z"/><path d="M12 12 V3 M7 3 H17"/></svg>';
 /* Stations per row: up to 4 in one row; longer flows split into two even rows (6 -> 3+3, 7 -> 4+3, 8 -> 4+4). */
@@ -1327,7 +1349,7 @@ function stepFlow(b,H){var I=b.items||[],n=I.length,cols=n<=4?n:Math.ceil(n/2),o
  I.forEach(function(it,i){var c=i%cols,last=i===n-1,eol=!last&&c===cols-1,bol=i>0&&c===0,next=I[i+1];
   o+='<li class="aq-steps__st'+(it.hold?' is-hold':'')+(eol?' is-eol':'')+(bol?' is-bol':'')+'">'
    +'<span class="aq-steps__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-   +'<div class="aq-steps__body"><h3 class="aq-steps__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-steps__d">'+tx(it.d)+'</p>':'')
+   +'<div class="aq-steps__body"><h3 class="aq-steps__t">'+stepTitle(it)+'</h3>'+(it.d?'<p class="aq-steps__d">'+tx(it.d)+'</p>':'')
    +(it.hold?'<p class="aq-steps__hold"><span class="aq-steps__stamp"><span class="aq-steps__stamp-k">Hold</span> <span class="aq-steps__who">Signed by '+stepWho(it.hold)+'</span></span>'
      +'<span class="aq-steps__sign" aria-hidden="true">Sign:</span></p>':'')+'</div>'
    +(last?'':'<span class="aq-steps__run'+(next&&next.hold?' is-valve':'')+'" aria-hidden="true">'+(next&&next.hold?STEP_VALVE:'')+'</span>')
@@ -1341,7 +1363,8 @@ function stepRow(b,H){var I=b.items||[];
   +'<h3 class="aq-steps-row__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-steps-row__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('')+'</ol>')}
 /* Plain rows: an item's link (a page id or page#anchor) makes its row a link, the shared row grammar's (wRow): the
    whole row is the link, its title ends in a flow arrow, hover turns it flow ("Factory and site acceptance tests (FAT
-   and SAT) →" to svc-fat-sat). The hold flow and the row shape draw no link: an item's link is ignored there. */
+   and SAT) →" to svc-fat-sat). In the hold flow the station's title carries it (stepTitle); the row shape draws no link,
+   an item's link is ignored there. */
 BLOCKS['steps']=function(b,H){var I=b.items||[];
   if(b.as==='row')return stepRow(b,H);
   if(I.some(function(it){return it.hold}))return stepFlow(b,H);

@@ -5,12 +5,14 @@
                                                        assets/aquemi-site.js and content/pages.json
   python tools/design_system.py check                  Check tokens and components for the rules agents must follow
                                                        (content budget overruns and content warnings are counted, never
-                                                       fail the check)
+                                                       fail the check; an intent label that ticks no option on the
+                                                       linked form is a problem and fails it, DR-014)
   python tools/design_system.py check --budgets [id]   Also list every content budget overrun (or one page's, then that
-                                                       page's visible-word count, overrun or not)
+                                                       page's visible-word count, overrun or not, and that page's
+                                                       warning summary)
   python tools/design_system.py check --warnings [id]  Also list every content warning (or one page's, or one type's:
-                                                       register, faq, fact, intent, contact, link); with a page id the
-                                                       budget line counts that page's overruns only
+                                                       register, faq, fact, contact, link); with a page id the budget
+                                                       line and the summary count that page's only
   python tools/design_system.py new <Name> "<Group>"   Scaffold design-system/components/<Name>/ (README.md, preview.html, style.css)
   python tools/design_system.py stage <dir>            Copy the system into <dir>/project/ for publishing to the Claude artifact
 
@@ -188,9 +190,9 @@ BUDGET = {
 }
 WORD = re.compile(r'\S*[A-Za-z0-9µ°]\S*')
 # Keys that are not visible copy: settings, link targets, and names the renderer turns into a drawing or an attribute
-# (spot and icon vignettes, intents on links, a file field's accept list)
+# (spot and icon vignettes, intents on links, a file field's accept list, a gauge row's level, which the renderer words)
 NOT_COPY = {'type', 'nav', 'anchor', 'link', 'kind', 'tone', 'id', 'hl', 'required', 'unit', 'name', 'section', 'show_if', 'when', 'mark', 'as', 'ground', 'fold', 'fold_noun', 'lean', 'to', 'at', 'icon', 'icons', 'end', 'art', 'key',
-            'spot', 'intent', 'accept', 'caption_noun'}
+            'spot', 'intent', 'accept', 'caption_noun', 'level', 'note_link'}
 
 
 def words(s):
@@ -253,19 +255,62 @@ def first_at(rows, rx):
     return None
 
 
-def drawn(b):
+_ART = None
+
+
+def art_pages():
+    """Page ids with an equipment drawing (ART in assets/src/parts/Hero.js), the pages where a callouts spec draws its
+    callouts (blocks/spec.js); on any other page it renders as the plain sheet."""
+    global _ART
+    if _ART is None:
+        m = re.search(r'var ART=\{(.*?)\};', open(os.path.join(ROOT, 'assets', 'src', 'parts', 'Hero.js'), encoding='utf8').read(), re.S)
+        _ART = set(re.findall(r"'([a-z0-9-]+)'\s*:", m.group(1))) if m else set()
+    return _ART
+
+
+def callouts(rows, n):
+    """(callout rows, [(index, row)] for the sheet under them) as wCallouts in assets/src/blocks/spec.js picks them: a row
+    with at: [x, y] inside the fold (the first n rows; every row without fold) becomes a callout, at most three a side
+    (x under 50 is the left), every other row lists in the sheet."""
+    lim = n if isinstance(n, int) and n > 0 else len(rows)
+    side, pick, rest = {'l': 0, 'r': 0}, [], []
+    for i, r in enumerate(rows):
+        at = r.get('at') if isinstance(r, dict) else None
+        s = ('l' if at[0] < 50 else 'r') if isinstance(at, list) and at and isinstance(at[0], (int, float)) else None
+        if s and i < lim and side[s] < 3:
+            side[s] += 1
+            pick.append(r)
+        else:
+            rest.append((i, r))
+    return pick, rest
+
+
+def drawn(b, page=None):
     """A block as its renderer draws it, for the visible-word count: the rows and items behind "Show all" left out where
     the shape folds (folds; a versus verdict and a plans "Suits" row always show), and strings the renderer never prints:
     related-page ids (each card shows its page's own name), the column heads a shape leaves out (the router's,
     failures', roles', versus' and plans' first column; grades' all but the step column; an evidence table's link
-    column; dials' and rule bars' heads) and register lines outside the featured panel. Spot, icon and intent names and a
-    file field's accept list are never copy (NOT_COPY); FAQ answers and conditional form fields are left to the caller."""
+    column; dials' and rule bars' heads; a callouts spec's heads while its sheet holds no row in the default view, every
+    row not drawn as a callout sitting behind "Show N more") and register lines outside the featured panel. A callout
+    prints its parameter, value and basis only. Spot, icon and intent names and a file field's accept list are never copy
+    (NOT_COPY); FAQ answers and conditional form fields are left to the caller. page: the page id, which decides whether
+    a callouts spec draws its callouts (a page with an equipment drawing, art_pages) or the plain sheet."""
     t, a, n, fold = b.get('type'), b.get('as'), b.get('fold'), folds(b)
     b = dict(b)
     items, rows, cols = list(b.get('items') or []), list(b.get('rows') or []), list(b.get('cols') or [])
     if t == 'related':
         b['items'] = []
         return b
+    if t == 'spec' and a == 'callouts' and page in art_pages():
+        pick, rest = callouts(rows, n)
+        if pick:
+            # the sheet under the callouts shows the rest rows inside the fold (all of them without fold); with none,
+            # the whole sheet, its column heads with it, sits behind "Show N more" (aq-fold-x, wSpecTable foldAt 0)
+            shown = [r for i, r in rest if not fold or i < n]
+            b['rows'] = [{k: r.get(k) for k in ('p', 'v', 'm')} for r in pick] + shown
+            if not shown:
+                b['cols'] = []
+            return b
     if t == 'register' and items:
         topics = b.get('topics') or []
         fi = next((i for i, it in enumerate(items) if isinstance(it, dict) and it.get('featured')), None)
@@ -309,7 +354,7 @@ def visible_words(pg):
     index of other pages' names are left out. Every block as drawn (drawn), FAQ answers (and their link) and
     conditional form fields left out; the closing."""
     hero = [pg.get(k) for k in ('eyebrow', 'headline', 'lead', 'primary_cta')] + [(pg.get('secondary_cta') or {}).get('label')] + list(pg.get('tags') or []) + list(strings(pg.get('facts', [])))
-    body = [s for b in pg.get('blocks', []) for s in strings(drawn(b), ('a', 'link_label') if b.get('type') == 'faq' else (), shown=True)]
+    body = [s for b in pg.get('blocks', []) for s in strings(drawn(b, pg.get('id')), ('a', 'link_label') if b.get('type') == 'faq' else (), shown=True)]
     cta = list(strings(pg.get('cta') or {}))
     src = (hero, body, cta)
     return tuple(sum(words(x) for x in s) for s in src), src
@@ -378,7 +423,7 @@ WARN_TYPES = [  # type, record, what the summary line counts, sub-checks with th
     ('faq', 'DR-009', 'FAQ questions asked on two or more pages', []),
     ('fact', 'DR-010', 'hero fact warnings', [('limit', 'equal a public limit'), ('code', 'have a code as the value'),
         ('basis', 'have no basis in the label')]),
-    ('intent', 'DR-014', 'intent labels that tick nothing on the linked form', []),
+    # DR-014 intents are not here: an intent label that ticks nothing fails the check (intent_problems)
     ('contact', 'DR-008', 'CONTACT values no page file carries', []),
     ('link', 'DR-008', 'links to a missing page or anchor', []),
 ]
@@ -528,13 +573,14 @@ def register_warnings(pages):
             btn += [('blocks[%d].steps[%d].next' % (i, j), s.get('next')) for j, s in enumerate(b.get('steps') or []) if isinstance(s, dict)]
             btn.append(('blocks[%d].submit' % i, b.get('submit')))
             # links drawn as the Button link variant or a row link: an FAQ answer's link, a form note's action, a docs
-            # block's link and a spec row's link (SpecTable, gauges and rules)
+            # block's link, a spec row's link (SpecTable, gauges and rules) and a spec note's link
             btn += [('blocks[%d].items[%d].link_label' % (i, j), it.get('link_label')) for j, it in enumerate(b.get('items') or []) if b.get('type') == 'faq' and isinstance(it, dict)]
             btn += [(p + '.action', f.get('action')) for p, f in (form_notes(b, 'blocks[%d]' % i) if b.get('type') == 'form' else [])]
             if b.get('type') == 'docs':
                 btn.append(('blocks[%d].link_label' % i, b.get('link_label')))
             if b.get('type') == 'spec':
                 btn += [('blocks[%d].rows[%d].link_label' % (i, j), r.get('link_label')) for j, r in enumerate(b.get('rows') or []) if isinstance(r, dict)]
+                btn.append(('blocks[%d].note_link_label' % i, b.get('note_link_label')))
             # an FAQ question is the asker's words, 12 or fewer (the register card)
             for j, it in enumerate(b.get('items') or [] if b.get('type') == 'faq' else []):
                 q = it.get('q') if isinstance(it, dict) else None
@@ -631,12 +677,13 @@ def form_notes(b, w):
     return [(p, f) for p, f in fs if isinstance(f, dict) and f.get('kind') == 'note']
 
 
-def intent_warnings(pages):
+def intent_problems(pages):
     """DR-014: intent labels that tick nothing on the linked page's form: no such option, or an option the intent never
     opens ("situation|follow-up" names the situation first). Read from the hero button and secondary link, the closing,
     contact routes, table and router cells ({t, link, intent}), plan columns ({t, intent}, on the page's own CTA link),
     FAQ links, form notes, a docs block's link and gauge and rule rows. An intent on an in-page or phone (tel:) link,
-    or with no link, ticks nothing."""
+    or with no link, ticks nothing. Each one is a problem that fails check (it was a content warning while the page
+    passes rewrote the forms and the intents that link to them; pass B left none, aquemi-web 7027d23)."""
     out = []
     for pid, pg in pages.items():
         pc, c, sc = pg.get('primary_cta') or '', pg.get('cta') or {}, pg.get('secondary_cta') or {}
@@ -687,16 +734,16 @@ def contact_warnings(pages):
 
 
 def link_warnings(pages):
-    """DR-008 rule 6: a link field (link, primary_cta_link, related items) naming a page that does not exist, a
-    page#anchor or #anchor whose page has no block with that anchor (jid in assets/src/parts/SectionNav.js), or an
-    in-page #anchor outside the hero and closing buttons (wBtn), which are the only links that jump within a page."""
+    """DR-008 rule 6: a link field (link, primary_cta_link, a spec's note_link, related items) naming a page that does
+    not exist, a page#anchor or #anchor whose page has no block with that anchor (jid in assets/src/parts/SectionNav.js),
+    or an in-page #anchor outside the hero and closing buttons (wBtn), which are the only links that jump within a page."""
     def ids(pg):
         return {b.get('anchor') or 's-%d-%s' % (i, re.sub(r'[^a-z0-9]+', '-', str(b.get('nav')).lower())) for i, b in enumerate(pg.get('blocks', [])) if b.get('nav') or b.get('anchor')}
     def walk(x, path=''):
         if isinstance(x, dict):
             for k, v in x.items():
                 p = path + '.' + k if path else k
-                if k in ('link', 'primary_cta_link') and isinstance(v, str):
+                if k in ('link', 'primary_cta_link', 'note_link') and isinstance(v, str):
                     yield p, v
                 elif k == 'items' and x.get('type') == 'related' and isinstance(v, list):
                     yield from (('%s[%d]' % (p, i), s) for i, s in enumerate(v) if isinstance(s, str))
@@ -723,22 +770,25 @@ def link_warnings(pages):
 
 
 def content_warnings(pages):
-    return register_warnings(pages) + faq_warnings(pages) + fact_warnings(pages) + intent_warnings(pages) + contact_warnings(pages) + link_warnings(pages)
+    return register_warnings(pages) + faq_warnings(pages) + fact_warnings(pages) + contact_warnings(pages) + link_warnings(pages)
 
 
-def report_warnings(ws, show=False, only=None):
-    """With show, one WARN line per warning (only: a page id or a warning type); then one summary line per type."""
+def report_warnings(ws, show=False, only=None, page=False):
+    """With show, one WARN line per warning; only (a page id or a warning type) keeps that page's or that type's
+    warnings. Then one summary line per type. page: only is a page id, so every summary line is marked "(DR-003,
+    <page> only)" and counts that page's warnings alone (a page's editor never reads another page's warning as theirs)."""
     if only:
         ws = [w for w in ws if w[0] == only or only in w[2]]
     if show:
         for kind, sub, pids, where, msg in ws:
             print('WARN %s %s: %s' % (kind, ' '.join(x for x in (', '.join(pids), where) if x), msg))
+    on = ', %s only' % only if page else ''
     for kind, record, label, subs in WARN_TYPES:
         mine = [w for w in ws if w[0] == kind]
         parts = ', '.join('%d %s' % (sum(1 for w in mine if w[1] == s), t) for s, t in subs)
-        print('%d %s (%s)%s' % (len(mine), label, record, ': ' + parts if parts else ''))
+        print('%d %s (%s%s)%s' % (len(mine), label, record, on, ': ' + parts if parts else ''))
     if not show:
-        print('content warnings never fail the check; run check --warnings [page or type] for detail')
+        print('content warnings never fail the check; run check --warnings %s for detail' % (only if page else '[page or type]'))
 
 
 def check(show_budgets=False, only=None, show_warnings=False):
@@ -805,8 +855,8 @@ def check(show_budgets=False, only=None, show_warnings=False):
     used = {c for c in re.findall(r'\baq-[a-z0-9_-]+', js) if not c.endswith('--')}
     for cls in sorted(used - defined - {'aq-ah'}):
         problems.append('assets/src uses a class no component style.css defines: ' + cls)
-    # Page files. Intents that tick no option on the linked form are a content warning (DR-014, intent_warnings), not a
-    # problem: the proposal form and the intents that link to it are rewritten page by page.
+    # Page files. An intent that ticks no option on the linked form is a problem (DR-014, intent_problems): it was a
+    # content warning while the page passes rewrote the forms and their intents, and is one again now none is left.
     pdir = os.path.join(ROOT, 'content', 'pages')
     pages = {}
     for f in sorted(os.listdir(pdir)):
@@ -819,6 +869,8 @@ def check(show_budgets=False, only=None, show_warnings=False):
         pr = c.get('proof')
         if pr is not None and (not isinstance(pr, dict) or not pr.get('v') or '[' in str(pr.get('v'))):
             problems.append('%s cta.proof: needs {"v", "l"} with a confirmed value, no [placeholder]' % pid)
+    for _, _, pids, where, msg in intent_problems(pages):
+        problems.append('%s %s: %s (DR-014: an intent label must tick an option on the linked form)' % (', '.join(pids), where, msg))
     for p in problems:
         print('PROBLEM', p)
     over = budgets(pages)
@@ -838,9 +890,14 @@ def check(show_budgets=False, only=None, show_warnings=False):
         print('%d budget overrun(s) on %s (run check --budgets %s for detail)' % (sum(1 for o in over if o[0] == only), only, only))
     else:
         print('%d budget overruns (run check --budgets for detail)' % len(over))
-    if show_warnings and only and only not in pages and only not in [w[0] for w in WARN_TYPES]:
+    if show_warnings and only == 'intent':
+        print('intent labels that tick nothing are problems, not warnings: see the PROBLEM lines above (DR-014)')
+    elif show_warnings and only and only not in pages and only not in [w[0] for w in WARN_TYPES]:
         print('no page or warning type named ' + only)
-    report_warnings(content_warnings(pages), show_warnings, only if show_warnings else None)
+    # With a page id (check --budgets <page> or check --warnings <page>) the warning summary is that page's alone; check
+    # and check --budgets without a page sum the site's
+    scope = only if show_warnings or only in pages else None
+    report_warnings(content_warnings(pages), show_warnings, scope, scope in pages)
     # The site script must parse; node is optional (skipped where it isn't installed, e.g. some CI images).
     node = shutil.which('node')
     if node:

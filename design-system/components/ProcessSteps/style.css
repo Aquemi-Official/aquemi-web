@@ -19,6 +19,11 @@
 .aq-steps__n::after { content: ""; width: 1px; height: var(--space-6); background: var(--line); }
 .aq-steps__body { display: flex; flex-direction: column; gap: var(--space-2); padding-left: var(--space-3); border-left: 1px solid var(--line); }
 .aq-steps__t { margin: 0; font: 500 16px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); text-wrap: balance; }
+/* Station link (item link): the title is the link, as a row's: ink, ending in a flow arrow, flow on hover */
+.aq-steps__go { color: inherit; text-decoration: none; }
+.aq-steps__go::after { content: "\a0\2192"; content: "\a0\2192" / ""; color: var(--flow); }
+.aq-steps__go:hover { color: var(--flow); }
+.aq-steps__go:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .aq-steps__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
 
 /* Hold station: a `line` frame on surface (a change of surface on the plate), the hold line and the signature line */
@@ -77,6 +82,7 @@
   .aq-plate .aq-steps__n { background: var(--surface-raised); }
   .aq-steps__n::after { display: none; }
   .aq-steps__body { padding-left: 0; border-left: 0; padding-top: var(--space-2); }
+  .aq-steps__go { padding-block: calc(var(--space-2) + var(--space-1) / 2); }
   .aq-steps__st.is-hold { outline: 0; background: none; }
   .aq-steps__st.is-hold .aq-steps__body { padding: var(--space-4); outline: 1px solid var(--line); background: var(--surface); }
   .aq-steps__run, .aq-steps__st.is-eol > .aq-steps__run, .aq-steps__st:not(.is-hold) > .aq-steps__run { display: block; left: calc(var(--space-12) / 2 - 6px / 2); top: var(--space-8); bottom: 0; width: 6px; height: auto; border-block: 0; border-inline: 2px solid var(--line-strong); }

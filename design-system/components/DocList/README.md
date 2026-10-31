@@ -32,7 +32,7 @@ One link under the list, so a module page keeps its three or four deciding docum
 
 - `link`: a page id or `page#anchor` (opens that page at the block with that `anchor`). A link to a page that does not exist prints nothing; `check` warns on a missing page or anchor.
 - `link_label` (optional): its words, five or fewer (`check` counts them with the buttons). Without it a `page#anchor` link reads the target block's heading and a page link the page's name.
-- `intent` (optional): options the linked page's form ticks on arrival, as on a button (`check` warns on labels that tick nothing).
+- `intent` (optional): options the linked page's form ticks on arrival, as on a button (`check` fails on labels that tick nothing, DR-014).
 - Markup: `<p class="aq-docs__more">` holding the Button link variant (`aq-btn aq-btn--link`, `flow`, with its arrow), `space-4` under the list's last hairline (the list and the link share an `aq-stack`). It shows at every width, under the "Show all" button on phones.
 
 ## Key documents
