@@ -1,7 +1,7 @@
 /* ProcessSteps: water fills the pipe stage by stage. Hold flow and stage strip: every station starts unlit (number
    dim, text down); a drop of water (one flow dot, made here and removed when it is done) runs each pipe as the pipe
    is laid behind it (clip-path), the station it reaches lights (number up, frame and icon wipe in, text rises), a
-   valve on the run into a hold station snaps shut and the HOLD stamp strikes, then the SIGN line rules in. Row
+   valve on the run into a hold station closes; the hold line comes in with the station's text, with no stamp or shake. Row
    returns elbow in before the next row. One timeline per flow on desktop (under 4 s); phones run the same beat per
    station as each one scrolls in, the pipe filling downwards. Plain rows: rows rise in order, each index decodes. */
 AQmotion.fx('ProcessSteps', function (root, m) {
@@ -16,27 +16,20 @@ AQmotion.fx('ProcessSteps', function (root, m) {
   // A station lights as the water reaches it; returns the time its text has settled
   function light(tl, st, at) {
     var n = st.querySelector('.aq-steps__n'), fr = st.querySelector('.aq-steps__frame'), ic = fr && fr.querySelector('.aq-icon'),
-      body = st.querySelector('.aq-steps__body'), stamp = st.querySelector('.aq-steps__stamp'), sign = st.querySelector('.aq-steps__sign');
+      body = st.querySelector('.aq-steps__body');
     if (fr) tl.fromTo(fr, { scale: 0.86, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: 'back.out(2)', clearProps: CLEAR }, at);
     if (ic) tl.fromTo(ic, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 0.45, ease: 'power2.out', clearProps: 'clipPath' }, at + 0.1);
     if (n) tl.fromTo(n, { autoAlpha: 0.18, scale: 0.92, transformOrigin: '0% 50%' }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'power2.out', clearProps: CLEAR }, at);
     if (body) tl.fromTo(body, { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: 'power3.out', clearProps: CLEAR }, at + 0.08);
     var end = at + 0.45;
-    if (stamp) {
-      tl.fromTo(stamp, { scale: 1.7, rotation: -9, autoAlpha: 0 }, { scale: 1, rotation: -3, autoAlpha: 1, duration: 0.28, ease: 'power4.in', clearProps: 'opacity,visibility' }, at + 0.35);
-      tl.fromTo(st, { x: 0 }, { keyframes: { x: [0, -2, 2, -1, 0] }, duration: 0.18, ease: 'none', clearProps: 'transform' }, at + 0.63);
-      end = at + 0.75;
-    }
-    if (sign) { tl.fromTo(sign, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.35, ease: 'power2.out', clearProps: 'clipPath' }, end - 0.05); end += 0.2 }
     return end;
   }
   // Hide what will light (only inside fx, so reduced motion and no-JS keep the finished drawing)
   function prime(st) {
-    var n = st.querySelector('.aq-steps__n'), fr = st.querySelector('.aq-steps__frame'), body = st.querySelector('.aq-steps__body'), stamp = st.querySelector('.aq-steps__stamp');
+    var n = st.querySelector('.aq-steps__n'), fr = st.querySelector('.aq-steps__frame'), body = st.querySelector('.aq-steps__body');
     if (n) gsap.set(n, { autoAlpha: 0.18 });
     if (fr) gsap.set(fr, { autoAlpha: 0 });
     if (body) gsap.set(body, { autoAlpha: 0 });
-    if (stamp) gsap.set(stamp, { autoAlpha: 0 });
     st.querySelectorAll(':scope > .aq-steps__run, :scope > .aq-steps__turn').forEach(function (p) { if (shown(p)) gsap.set(p, { clipPath: vertical(p) ? 'inset(0 0 100% 0)' : 'inset(0 100% 0 0)' }) });
     st.querySelectorAll('.aq-steps__valve').forEach(function (v) { gsap.set(v, { autoAlpha: 0 }) });
   }

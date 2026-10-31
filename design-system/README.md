@@ -138,6 +138,7 @@ Two families from one design: **Geist** for everything you read and **Geist Mono
 - Section padding: `space-24` on desktop, `space-12` on phones (pages are long; denser rhythm keeps them scannable). Leave the space empty; resist filling it.
 - Headlines align left. Centred text is reserved for a single short line in a closing call-to-action band.
 - Separate with `line` hairlines and changes of surface, not boxes and shadows. `shadow-overlay` is for floating menus and dialogs only.
+- Sections alternate grounds: between the hero and the closing band, every second section sits on `surface-sunken`, the rest on `surface`, with the `line` hairline still between them. A Limestone, sunken or navy band keeps its own ground and restarts the alternation.
 - Corners are square (`radius-0`) by default. Controls take `radius-sm`; only standard tags are pills (`radius-pill`).
 
 ### The arc motif

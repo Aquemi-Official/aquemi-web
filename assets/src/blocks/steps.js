@@ -1,8 +1,7 @@
 /* Block "steps" -> ProcessSteps: a real sequence as rows of the shared list grammar (index, step name, what happens).
    Hold points: an item may carry hold: "<who signs>" ("Your quality unit"). The block then draws as a process flow in a
-   Plate: numbered stations joined by pipe runs, left to right in rows that return under each other, a closed valve on
-   the run into every hold station, and hold stations on surface in a hairline frame with a "Hold" line naming who
-   signs and a signature line. Phones: one vertical pipe with the stations along it. Every step's name and text stay real text.
+   Plate: numbered stations joined by single-weight pipe runs, left to right in rows that return under each other, a
+   closed valve on the run into every hold station, and a "Hold" line naming who signs. No station grounds or frames. Phones: one vertical pipe with the stations along it. Every step's name and text stay real text.
    No icons: the number is the information in a sequence.
    Station link: an item's link (a page id or page#anchor) makes its station's title the link, in the shared link grammar
    (the title ending in a flow arrow, flow on hover): "Factory and site acceptance tests (FAT and SAT) →" to svc-fat-sat.
@@ -18,7 +17,7 @@ function stepFlow(b,H){var I=b.items||[],n=I.length,cols=n<=4?n:Math.ceil(n/2),o
    +'<span class="aq-steps__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
    +'<div class="aq-steps__body"><h3 class="aq-steps__t">'+stepTitle(it)+'</h3>'+(it.d?'<p class="aq-steps__d">'+tx(it.d)+'</p>':'')
    +(it.hold?'<p class="aq-steps__hold"><span class="aq-steps__stamp"><span class="aq-steps__stamp-k">Hold</span> <span class="aq-steps__who">Signed by '+stepWho(it.hold)+'</span></span>'
-     +'<span class="aq-steps__sign" aria-hidden="true">Sign:</span></p>':'')+'</div>'
+     +'</p>':'')+'</div>'
    +(last?'':'<span class="aq-steps__run'+(next&&next.hold?' is-valve':'')+'" aria-hidden="true">'+(next&&next.hold?STEP_VALVE:'')+'</span>')
    +(eol?'<span class="aq-steps__turn" aria-hidden="true"></span>':'')+(bol?'<span class="aq-steps__turn aq-steps__turn--in" aria-hidden="true"></span>':'')
    +'</li>'+(eol?'<li class="aq-steps__ret" aria-hidden="true"><span class="aq-steps__ret-arrow"></span>'+(next&&next.hold?STEP_VALVE:'')+'</li>':'')});

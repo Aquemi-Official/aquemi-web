@@ -29,6 +29,10 @@
 .aq-in { max-width: var(--content-max); margin: 0 auto; padding-inline: var(--space-8); }
 .aq-section { padding-block: var(--space-16); }
 .aq-section + .aq-section { border-top: 1px solid var(--line); }
+/* Alternating ground (page.js wPage): every second plain section on surface-sunken, as the brand book's "alternating
+   sections". Inside it, surface means this ground, so components that paint the page ground (line masks, node fills)
+   match it. Raised panels and tables stay surface-raised and so stand out more, not less. */
+.aq-section--alt { background: var(--surface-sunken); --surface: var(--surface-sunken); }
 /* ---------- Plate: the frame a figure sits in inside a section (core.js wPlate) ----------
    A `line` hairline round the drawing on `surface-raised`, generous padding, and an optional caption bottom right
    in `ink-subtle` mono. Nothing else: no ruler ticks, no registration marks. */

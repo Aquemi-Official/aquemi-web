@@ -44,7 +44,11 @@
 .aq-standards-map__code {
   display: inline-block; padding: 1px var(--space-3); border: 1px solid var(--line-strong); border-radius: var(--radius-pill);
   font: 400 13px/22px var(--font-mono); color: var(--ink); text-decoration: none; white-space: nowrap;
+  max-width: 100%; box-sizing: border-box;
 }
+/* A code longer than its zone (a [placeholder] standard) wraps inside the pill instead of running past the frame */
+.aq-standards-map__codes li { max-width: 100%; }
+@supports (overflow-wrap: anywhere) { .aq-standards-map__code { white-space: normal; overflow-wrap: anywhere; } }
 .aq-standards-map__code::after { content: "\a0\2193"; color: var(--ink-subtle); }
 .aq-standards-map__code:hover { border-color: var(--flow); color: var(--flow); }
 .aq-standards-map__code:hover::after { color: var(--flow); }
@@ -59,12 +63,13 @@
    beside the name and codes; no grid, corner marks or dashed leaders. ---------- */
 .aq-standards-map__plate { min-width: 0; }
 .aq-standards-map--spots .aq-standards-map__zone {
-  display: grid; grid-template-columns: var(--space-32) minmax(0, 1fr); column-gap: var(--space-6); align-items: start;
+  display: grid; grid-template-columns: var(--space-16) minmax(0, 1fr); column-gap: var(--space-6); align-items: start;
   padding: var(--space-6) var(--space-6) var(--space-6) var(--space-4); background: var(--surface-raised);
 }
-.aq-standards-map--spots .aq-standards-map__zone::after { left: calc(var(--space-4) + var(--space-16)); }
-.aq-standards-map--spots .aq-standards-map__zone::before { left: calc(var(--space-4) + var(--space-16) - 2px); }
-.aq-standards-map__fig { position: relative; display: grid; place-items: center; width: var(--space-32); height: var(--space-32); }
+.aq-standards-map--spots .aq-standards-map__zone::after { left: calc(var(--space-4) + var(--space-8)); }
+.aq-standards-map--spots .aq-standards-map__zone::before { left: calc(var(--space-4) + var(--space-8) - 2px); }
+/* The figure column fits the icon (56 px in a 64 px column), so the codes keep the rest of the zone */
+.aq-standards-map__fig { position: relative; display: grid; place-items: center; width: var(--space-16); height: var(--space-16); }
 .aq-standards-map__spot { background-color: var(--ink-muted); }
 .aq-standards-map--spots .aq-standards-map__zone:hover .aq-standards-map__spot { background-color: var(--flow); }
 .aq-standards-map--spots .aq-standards-map__label { gap: var(--space-3); padding-top: var(--space-1); }

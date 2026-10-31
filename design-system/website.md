@@ -94,6 +94,7 @@ Every page reads as one system, on a phone first.
 
 The page is `surface`, in light or dark theme as the brand book sets it. Sections follow each other on that ground, separated by a `line` hairline and changes of surface (`surface-raised`, `surface-sunken`), not boxes or shadows. Padding `space-16` on desktop, `space-12` on phones.
 
+- Alternating grounds: between the hero and the closing, every second plain section sits on `surface-sunken` (`aq-section--alt`, added by `wPage` in `assets/src/page.js`; no content field). A section with its own ground (Limestone, sunken or navy Band, the standards tags strip) keeps it and restarts the count. Inside an alternate section `surface` means the sunken ground, so components that paint the page ground match it; raised panels and tables stand out more.
 - Navy is for brand bands only: the closing Band and the Footer (about 20% of a page with the primary buttons).
 - Limestone is the quiet band: the statement Band (at most one per page) and the urgent contact route.
 - Figures (equipment drawings, diagrams, gauges) sit in a plain plate: a `line` frame on `surface-raised`, single-weight line art in `line-strong` with `flow` marking the water path. No ruler ticks, registration marks or title blocks.

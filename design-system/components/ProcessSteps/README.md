@@ -18,27 +18,27 @@ ProcessSteps shows a real sequence (a project, a qualification, a service visit)
 
 An item may carry `"hold": "<who signs>"` ("Your quality unit", "Both parties", "You"). A steps block with at least one hold no longer renders as rows: it draws as a process flow in line art inside a Plate (`wPlate`, a `line` frame on `surface-raised`, caption "Aquemi · <nav>").
 
-- Desktop: numbered stations in a grid, up to four per row (longer flows split into two even rows: 6 → 3 + 3, 7 → 4 + 3, 8 → 4 + 4). Each station: a Geist Mono 300 32 px number in `ink` with a short `line` tick, then the step name (Geist 500 16/24, sentence case) and its text, behind a `line` hairline. Stations are joined by pipe runs (two `line-strong` walls with an arrow into the next station); at the end of a row the pipe elbows into the right gutter, runs back under the row, elbows down the left gutter and into the next row. A closed `flow` valve sits on the run into every hold station.
-- Hold station: a 1 px `line` frame on `surface` (a change of surface on the plate), then the hold line: "Hold" in `flow` (Geist 500 14/20) and "Signed by your quality unit" in `ink-muted`, behind a 2 px `flow` rule; then a "Sign:" label (eyebrow style) with a `line` signature rule.
-- Phone: one vertical pipe down the number column with arrows and valves, stations along it; a hold station's text sits in its `line` frame on `surface`. No horizontal scroll.
-- Station link: an item's `link` (a page id or `page#anchor`) makes the station's title the link, hold station or not: `<h3 class="aq-steps__t"><a class="aq-steps__go" href="#svc-fat-sat" data-wp="svc-fat-sat">Factory and site acceptance tests (FAT and SAT)</a></h3>`. The shared link grammar: the title stays `ink` and ends in a `flow` arrow, turns `flow` on hover, a `focus` ring; on phones a 44 px hit area. Only the title links; the number, pipes, valve, hold line and signature line stay drawing. So svc-cq's stages keep their link to FAT and SAT when a hold point turns them into a flow. A link to a missing page leaves the title plain.
+- Desktop: numbered stations in a grid, up to four per row (longer flows split into two even rows: 6 → 3 + 3, 7 → 4 + 3, 8 → 4 + 4). Each station: a Geist Mono 300 32 px number in `ink`, then the step name (Geist 500 16/24, sentence case) and its text. No ground, frame, tick or side rule: the station sits on the section. Stations are joined by single 1.5 px `line-strong` pipes with a small arrowhead into the next station; at the end of a row the pipe elbows (rounded) into the right gutter, runs back under the row, elbows down the left gutter and into the next row. A closed `flow` valve sits on the run into every hold station.
+- Hold station: drawn like any other station, plus one line under its text: "Hold" in `flow` (Geist 500 14/20) and "Signed by your quality unit" in `ink-muted`. The valve on the pipe into it marks the hold; nothing else changes.
+- Phone: one vertical 1.5 px pipe down the number column with arrowheads and valves, stations along it, no frames. No horizontal scroll.
+- Station link: an item's `link` (a page id or `page#anchor`) makes the station's title the link, hold station or not: `<h3 class="aq-steps__t"><a class="aq-steps__go" href="#svc-fat-sat" data-wp="svc-fat-sat">Factory and site acceptance tests (FAT and SAT)</a></h3>`. The shared link grammar: the title stays `ink` and ends in a `flow` arrow, turns `flow` on hover, a `focus` ring; on phones a 44 px hit area. Only the title links; the number, pipes, valve and hold line stay drawing. So svc-cq's stages keep their link to FAT and SAT when a hold point turns them into a flow. A link to a missing page leaves the title plain.
 
 ```html
 <div class="aq-plate aq-plate--block"><ol class="aq-steps aq-steps--hold" style="--cols:4">
   <li class="aq-steps__st"><span class="aq-steps__n" aria-hidden="true">01</span>
     <div class="aq-steps__body"><h3 class="aq-steps__t">Draft protocol</h3><p class="aq-steps__d">…</p></div>
     <span class="aq-steps__run is-valve" aria-hidden="true"><svg class="aq-steps__valve">…</svg></span></li>
-  <li class="aq-steps__st is-hold">… <p class="aq-steps__hold"><span class="aq-steps__stamp"><span class="aq-steps__stamp-k">Hold</span> <span class="aq-steps__who">Signed by your quality unit</span></span><span class="aq-steps__sign" aria-hidden="true">Sign:</span></p> …</li>
+  <li class="aq-steps__st is-hold">… <p class="aq-steps__hold"><span class="aq-steps__stamp"><span class="aq-steps__stamp-k">Hold</span> <span class="aq-steps__who">Signed by your quality unit</span></span></p> …</li>
   <li class="aq-steps__st is-eol">… <span class="aq-steps__turn" aria-hidden="true"></span></li>
-  <li class="aq-steps__ret" aria-hidden="true"><span class="aq-steps__ret-arrow"></span></li>
+  <li class="aq-steps__ret" aria-hidden="true"></li>
   <li class="aq-steps__st is-bol">… <span class="aq-steps__turn aq-steps__turn--in" aria-hidden="true"></span></li>
 </ol>…</div>
 ```
 
 - Use a hold only where the step text already says the client (or both parties) approves or signs at that step. Never add a hold the page does not state; a witness point is not a hold.
-- `hold` names who signs, as the page names them; the renderer writes "Signed by …". Step names, text, "Hold" and the signer are real text; pipes, valves, arrows, the return row (`aq-steps__ret`, aria-hidden) and the signature line are decoration.
+- `hold` names who signs, as the page names them; the renderer writes "Signed by …". Step names, text, "Hold" and the signer are real text; pipes, valves, arrows and the return row (`aq-steps__ret`, aria-hidden) are decoration.
 - A flow keeps plain numbers (no row icons) and ignores `fold`: every station shows.
-- Tokens: pipes `line-strong` (single-weight line art), frames and ticks `line`, valves (P&ID closed-valve symbol, 1.5 px) and the hold rule and word `flow`, numbers `ink`, names Geist 500 16/24 `ink`, text 14/22 `ink-muted`. No stamps, rotation, double frames or flow fills. Steps without any hold render as plain rows, as before.
+- Tokens: pipes `line-strong` (single-weight line art, 1.5 px), valves (P&ID closed-valve symbol, 1.5 px) and the word "Hold" `flow`, numbers `ink`, names Geist 500 16/24 `ink`, text and signer 14/22 `ink-muted`. No station grounds or frames, stamps, rotation, signature lines, double walls or flow fills. Steps without any hold render as plain rows, as before.
 
 ## Row (`as: "row"`)
 
@@ -60,4 +60,4 @@ Steps carry no icons: in a sequence the number is the information. Items' `icon`
 
 ## Motion
 
-Motion (`motion.js`): water fills the pipe stage by stage. In the hold flow and the stage strip every station starts unlit; a drop of water (a `flow` dot made by the motion layer and removed after) runs each pipe while the pipe is laid behind it, the station it reaches lights (number up, icon frame and icon wipe in, text rises), the valve on a run into a hold station snaps shut and the HOLD stamp strikes, then the SIGN line rules in. Row returns elbow in before the next row. One timeline on desktop (at most 3.8 s); phones play each station as it scrolls in, queued behind the water. Plain rows rise in order with their index decoding. Under reduced motion or without JS the finished drawing shows.
+Motion (`motion.js`): water fills the pipe stage by stage. In the hold flow and the stage strip every station starts unlit; a drop of water (a `flow` dot made by the motion layer and removed after) runs each pipe while the pipe is laid behind it, the station it reaches lights (number up, icon frame and icon wipe in, text rises), the valve on a run into a hold station closes, and the hold line comes in with the station's text (no stamp, rotation or shake). Row returns elbow in before the next row. One timeline on desktop (at most 3.8 s); phones play each station as it scrolls in, queued behind the water. Plain rows rise in order with their index decoding. Under reduced motion or without JS the finished drawing shows.

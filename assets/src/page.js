@@ -1,10 +1,17 @@
 /* One content section per block type in pages.json */
 function wBlock(b){var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}
-/* Page: NavBar, Hero, SectionNav, sections on surface separated by hairlines, Closing, Footer, BackToTop.
+/* Page: NavBar, Hero, SectionNav, sections separated by hairlines on alternating surface and surface-sunken, Closing, Footer, BackToTop.
    A block with a nav label or an anchor gets its section id (jid: the anchor, else s-N-label), so jumps and page#anchor links find it. */
 function wPage(p){var c=p.cta,out='';
  if(WAT&&WAT[0]===p.id){wgoat(WAT[1]);WAT=null}
- (p.blocks||[]).forEach(function(b,i){var h=wBlock(b);if(b.nav||b.anchor)h=h.replace('<section class=','<section id="'+jid(b,i)+'" class=');out+=h});
+ /* Alternating grounds: between the hero and the closing, every second plain section sits on surface-sunken
+    (aq-section--alt), so sections read apart. A section with its own ground (a Limestone, sunken or navy band) keeps
+    it and restarts the count, so the section after it is on surface again. */
+ var alt=0;
+ (p.blocks||[]).forEach(function(b,i){var h=wBlock(b);if(b.nav||b.anchor)h=h.replace('<section class=','<section id="'+jid(b,i)+'" class=');
+  var open=(h.match(/^<section[^>]*>/)||[''])[0];
+  if(/aq-band--/.test(open))alt=0;else if(/class="aq-section/.test(open)){if(alt++%2)h=h.replace('class="aq-section','class="aq-section aq-section--alt')}
+  out+=h});
  return wHead(p.section)+wHero(p)+wSectionNav(p)+out+wClosing(c,p)+wFoot()+wBackToTop()}
 /* Page plus anchor (DR-008 rule 6): a link written page#anchor, or an address index.html#page#anchor, opens the page at
    the block whose anchor (or nav id) matches. WAT holds [page, anchor] until that page renders; wPage then asks for the
