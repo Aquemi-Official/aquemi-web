@@ -717,22 +717,22 @@ a.aq-menu__call:hover { text-decoration: underline; text-underline-offset: 4px; 
 
 /* ---------- Closing: the call to action at the end of every page, on the navy band ---------- */
 /* The brand's closing band, as the site first drew it: one centred line in the h1 style, a lead sentence and the
-   Limestone primary button, with the lockup faint (Limestone at 6 %) inset in the top-left corner,
+   Limestone primary button, with the brand mark large and faint (Limestone at 6 %), cut by the top-left corner,
    fading into the navy. The only centred text on the site. A checklist, exchange or proof, when the page has one, sits below the
    button under a faint hairline, its lists left-aligned. Hairlines on navy are on-navy-muted at 30 % strength. */
 .aq-closing { position: relative; overflow: hidden; text-align: center; }
-/* A little more room above the headline, so it starts below the lockup in the corner */
+/* A little more room above the headline, clear of the mark in the corner */
 .aq-closing.aq-section { padding-top: calc(var(--space-16) + var(--space-8)); }
 /* Navy depth (brand book, Gradient grounds): navy lifting slightly at the top left and deepening to the bottom right */
 .aq-closing.aq-band--navy { background: linear-gradient(160deg, color-mix(in srgb, var(--navy) 88%, var(--on-navy)) 0%, var(--navy) 45%, color-mix(in srgb, var(--navy) 70%, var(--on-limestone)) 100%); }
-/* The lockup: the supplied mark and wordmark with their fixed spacing, inset space-4 from the band's top-left corner,
-   26 % of the band wide (up to 380 px), in Limestone at 6 %. A left-to-right mask lets the end of the wordmark fade
-   into the navy, so it never competes with the headline. */
+/* The mark: the supplied brand mark at min(44%, 640px), its centre 15 % of its width inside the band's top-left
+   corner, so the corner cuts the three outer dots about in half and the wave and lower-right dot show whole. Limestone
+   at 6 %, with a radial mask that fades it away from the corner; it ends before the headline. */
 .aq-closing__mark {
-  position: absolute; left: var(--space-4); top: var(--space-4); width: min(26%, 380px); height: auto;
+  position: absolute; left: 0; top: 0; width: min(44%, 640px); height: auto; transform: translate(-35%, -35%);
   fill: var(--limestone); opacity: 0.06; pointer-events: none;
-  -webkit-mask-image: linear-gradient(90deg, var(--navy) 0%, var(--navy) 60%, transparent 100%);
-  mask-image: linear-gradient(90deg, var(--navy) 0%, var(--navy) 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at 35% 35%, var(--navy) 0%, var(--navy) 30%, transparent 75%);
+  mask-image: radial-gradient(circle at 35% 35%, var(--navy) 0%, var(--navy) 30%, transparent 75%);
 }
 .aq-closing__frame { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
 
@@ -792,7 +792,7 @@ a.aq-menu__call:hover { text-decoration: underline; text-underline-offset: 4px; 
   /* Phones: compact (it ends every page). Headline, lead, button, at most four send rows and the turnaround line.
      The returns list and the proof are left out. */
   .aq-closing.aq-section { padding-block: calc(var(--space-12) + var(--space-4)) var(--space-12); }
-  .aq-closing__mark { left: var(--space-2); top: var(--space-2); width: 72%; }
+  .aq-closing__mark { width: 90%; }
   .aq-closing__frame { gap: var(--space-4); }
   .aq-closing__h { font-size: 30px; line-height: 36px; }
   .aq-closing .aq-closing__lead { margin-top: var(--space-2); font-size: 16px; line-height: 24px; }

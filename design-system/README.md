@@ -4,7 +4,7 @@ Three principles guide every decision:
 
 1. **Precision over persuasion.** Show the number, the standard and the method. Let the specification make the case.
 2. **Space is a material.** Generous white space, few elements, square edges. A page should read like a clean room looks.
-3. **One flowing line.** The wordmark's swash from *e* into *m* is the brand's single expressive gesture. Use it sparingly, through the logo and the arc motif, and keep everything around it calm.
+3. **One flowing line.** The wordmark's swash from *e* into *m* is the brand's single expressive gesture. Use it sparingly, through the logo and the closing band's faint mark, and keep everything around it calm.
 
 ## Content fundamentals
 
@@ -55,6 +55,7 @@ Four dots on a 2 × 2 grid, two of them joined on the diagonal by a wave. It dis
 - **Clear space:** half the mark's width on every side.
 - **Minimum size:** 16 px on screen (favicon), 6 mm in print.
 - **Use it alone** where space is square or tiny: favicons, app icons, profile pictures, equipment badges, document footers, social avatars. Everywhere else, prefer the wordmark or the lockup.
+- **One large use on the site:** the closing band carries the mark large and faint (`aquemi-mark-limestone` geometry in `limestone` at 6 %, `min(44%, 640px)` wide), its centre 15 % of its width inside the band's top-left corner so the edges cut the outer dots, fading away from the corner and ending before the headline. Clear space and minimum size do not apply to this watermark; nothing else on the site shows the mark this way.
 
 ### The lockup
 
@@ -143,7 +144,7 @@ Two families from one design: **Geist** for everything you read and **Geist Mono
 
 ### The arc motif
 
-The swash in the wordmark is a quarter-arc rising into a straight stem. Use the same shape as the brand's one graphic device:
+The swash in the wordmark is a quarter-arc rising into a straight stem. The site no longer draws it as a separate graphic: the closing band's large faint mark took its place (see The mark). If an arc is used elsewhere (print, slides):
 
 - Quarter-circle arcs in a single 1.5 px stroke of `line-strong`, `flow`, or `limestone` on navy, cut at the edge of a band or image.
 - At most one arc composition per screen. Never animate it on a loop.
