@@ -7,16 +7,18 @@
      topic · standard · status.
    - Featured panel beside the register (above it on phones): the item with featured: true, else the first item of
      the first topic, labelled "Latest" when it has a date, "Next planned" when not. Shows its number, title, d (one
-     line), standard and the page it links to; an equipment Spot vignette (item.spot, else REG_SPOT by its link page),
-     aria-hidden.
+     line), standard and the page it links to; a Spot vignette, aria-hidden: item.spot, else REG_SPOT for its link's
+     page (the page part, so svc-upgrades#observation counts as svc-upgrades), else that page's own icon (PAGE_ICON).
    - On the page ground, no plate: topic chips as quiet controls in a row, the register a table on line hairlines.
    - fold: N shows the first N rows under "All"; fold_noun names them ("Show all 24 notes"). */
+/* REG_SPOT: the equipment a note's page is drawn with where it differs from the page's icon (sys-monitoring: the TOC
+   analyzer, not the conductivity cell). Every other page falls back to PAGE_ICON (core.js), the one line set. */
 var REG_SPOT={'sys-monitoring':'toc','sys-pw':'ro-skid','sys-wfi-membrane':'ro-skid','sys-wfi-distillation':'still','sys-pure-steam':'pure-steam-generator',
- 'sys-storage':'storage-tank','sys-pretreatment':'pretreatment','svc-service':'filter-service','svc-fabrication':'orbital-welder','svc-fat-sat':'test-bay','svc-design':'design-desk','svc-cq':'signed-report','cmp-documentation':'binder-docs'};
+ 'sys-storage':'storage-tank','sys-pretreatment':'pretreatment'};
 BLOCKS['register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)return sec(H);
  var no=function(i){return (i<9?'0':'')+(i+1)},st=function(it){return it.date?tx(it.date):'<span class="aq-notes-register__planned">Planned</span>'};
  var fi=-1;I.forEach(function(it,i){if(fi<0&&it.featured)fi=i});if(fi<0)I.forEach(function(it,i){if(fi<0&&it.topic===T[0])fi=i});if(fi<0)fi=0;
- var f=I[fi],fl=f.link&&wp(f.link),sp=f.spot||REG_SPOT[f.link]||'';sp=isVig(sp)?sp:'';
+ var f=I[fi],fl=f.link&&wp(f.link),pg=wsplit(f.link)[0],sp=f.spot||REG_SPOT[pg]||pageIcon(pg)||'';sp=isVig(sp)?sp:'';
  var chips='<div class="aq-notes-register__filter" role="group" aria-label="Filter notes by topic"><span class="aq-notes-register__fk" aria-hidden="true">Filter</span><button type="button" class="aq-notes-register__chip" aria-pressed="true" data-topic="">All <span aria-hidden="true">'+I.length+'</span></button>'
   +T.map(function(t){var n=I.filter(function(it){return it.topic===t}).length;return '<button type="button" class="aq-notes-register__chip" aria-pressed="false" data-topic="'+e(t)+'">'+tx(t)+' <span aria-hidden="true">'+n+'</span></button>'}).join('')+'</div>';
  var panel='<aside class="aq-notes-register__feature" aria-label="'+(f.date?'Latest note':'Next planned note')+'">'

@@ -173,9 +173,9 @@
    "readme": "design-system/components/DocList/README.md",
    "preview": "design-system/components/DocList/preview.html",
    "group": "Page sections",
-   "height": "760",
+   "height": "1040",
    "width": "1100",
-   "subtitle": "Documents as a hairline list: code in mono, name, detail; key documents first, code in flow",
+   "subtitle": "Documents as a hairline list: code in mono, name, detail; key documents first, code in flow; one link to the full index",
    "summary": "DocList shows the documents delivered with a system as a quiet hairline list: each row gives the short code a validation team files the document under, its name and one line of detail, with the deciding documents first and their code in `flow`."
   },
   {
@@ -263,9 +263,9 @@
    "readme": "design-system/components/OptionList/README.md",
    "preview": "design-system/components/OptionList/preview.html",
    "group": "Page sections",
-   "height": "1120",
+   "height": "1480",
    "width": "1200",
-   "subtitle": "Options as hairline rows; decisions with a ? and a fork mark",
+   "subtitle": "Options as hairline rows; decisions with a ? and a fork mark, one linked to the page that holds it",
    "summary": "OptionList shows the configuration choices for a system as rows of the shared list grammar: index, option name and one line on what it does."
   },
   {
@@ -303,9 +303,9 @@
    "readme": "design-system/components/ProcessSteps/README.md",
    "preview": "design-system/components/ProcessSteps/preview.html",
    "group": "Page sections",
-   "height": "1650",
+   "height": "1980",
    "width": "1100",
-   "subtitle": "Steps as numbered rows, or a line-art hold flow",
+   "subtitle": "Steps as numbered rows (a row may link to the page that holds that step), or a line-art hold flow",
    "summary": "ProcessSteps shows a real sequence (a project, a qualification, a service visit) as rows of the shared list grammar: index, step name and what happens."
   },
   {
@@ -423,9 +423,9 @@
    "readme": "design-system/components/KeyFacts/README.md",
    "preview": "design-system/components/KeyFacts/preview.html",
    "group": "Data",
-   "height": "420",
+   "height": "660",
    "width": "1200",
-   "subtitle": "Aquemi's own figures, each with its unit and basis, as a quiet strip between hairlines (home and sys-storage, placeholders until confirmed)",
+   "subtitle": "Aquemi's own figures, each with its unit and basis, as a quiet strip between hairlines (home, sys-storage and contact-service, placeholders until confirmed)",
    "summary": "KeyFacts is a strip of up to four of Aquemi's own figures, each with its unit and the basis a reader can hold us to, that tells an engineer what a page stands on before they read a word of copy."
   },
   {
@@ -433,9 +433,9 @@
    "readme": "design-system/components/LimitGauges/README.md",
    "preview": "design-system/components/LimitGauges/preview.html",
    "group": "Data",
-   "height": "2250",
+   "height": "1640",
    "width": "1100",
-   "subtitle": "Release limits as dials; design rules as threshold bars",
+   "subtitle": "Release limits as dials; design rules as threshold bars, a row linking where it is set; two limits two across",
    "summary": "LimitGauges shows a block of water or steam quality limits as quiet instrument faces on a plate, one dial per limit, so a reader sees at a glance where each limit sits and which side of it passes."
   },
   {

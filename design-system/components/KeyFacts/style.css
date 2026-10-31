@@ -46,17 +46,21 @@
 
 @container (max-width: 860px) {
   /* Phones: one fact per row between `line` hairlines; the name on top, then the figure left and the source right.
-     Every label 12 px or more. */
+     The figure's column is as wide as the figure, the source takes the rest and wraps in it, so a long source never
+     squeezes a short figure. A long value (is-long: words or a placeholder) takes the row and its source sits under
+     it, left-aligned. Every label 12 px or more. */
   .aq-key-facts { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: minmax(0, 1fr); border-top: 0; }
   .aq-key-facts > div, .aq-key-facts > div + div {
-    display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "dt dt" "v src";
+    display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "dt dt" "v src";
     align-items: baseline; column-gap: var(--space-3); row-gap: var(--space-1);
     padding: var(--space-4) 0; border-left: 0; border-top: 1px solid var(--line);
   }
+  .aq-key-facts > div:has(> .is-long) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "dt" "v" "src"; }
   .aq-key-facts dt { grid-area: dt; font-size: 13px; line-height: 18px; }
   .aq-key-facts__value, .aq-key-facts dd:first-of-type, .aq-key-facts:has(> :nth-child(5)) dd:first-of-type { grid-area: v; font-size: 26px; line-height: 1.15; }
   .aq-key-facts dd.is-long { font-size: 17px; line-height: 1.3; }
   .aq-key-facts dd.aq-key-facts__src { grid-area: src; margin-top: 0; text-align: right; }
+  .aq-key-facts > div:has(> .is-long) dd.aq-key-facts__src { text-align: left; }
   .aq-key-facts__unit { font-size: 13px; }
   .aq-hero .aq-key-facts { margin-top: var(--space-8); }
 }

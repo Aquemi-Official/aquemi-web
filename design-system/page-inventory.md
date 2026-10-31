@@ -59,7 +59,7 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 
 | Page | Headline | Sections |
 | --- | --- | --- |
-| [About](https://aquemi-official.github.io/aquemi-web/#about) | Pharmaceutical water, one Canadian team | steps as row (How we work), grid as route (One team), spec (Company, fold 5), grid (Why Canadian), grid (Team, fold 4), faq (FAQ), related (Check what we say here), closing (checklist, returns) |
+| [About](https://aquemi-official.github.io/aquemi-web/#about) | A new Ontario company, one Purified Water package in polypropylene | spec (Company, fold 5), grid (Team), grid (Canada), faq (FAQ), related (Check what we say here), closing (checklist, returns) |
 | [Careers](https://aquemi-official.github.io/aquemi-web/#careers) | Build systems that pass inspection | table as router (Roles), spec (Pay & terms, fold 3), steps (Hiring), form (Apply), faq (FAQ), related (Read about the work), closing (checklist, returns) |
 | [News](https://aquemi-official.github.io/aquemi-web/#news) | Water questions, answered in three sentences | register (Notes, fold 6), form (Subscribe), faq (FAQ), closing (checklist, returns) |
 
@@ -83,23 +83,23 @@ Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a 
 | related | RelatedLinks |
 | path | WaterPath |
 | options | OptionList (rows; item `icon` → Icon) |
-| steps | ProcessSteps (rows; item `icon` → Icon beside the number, not with hold points; item `hold` → stamped hold point with signature line, list drawn as a routed line with valves) |
+| steps | ProcessSteps (rows; item `icon` → Icon beside the number, not with hold points; item `link` → the row links to that page, plain rows only; item `hold` → stamped hold point with signature line, list drawn as a routed line with valves) |
 | diagram | ProcessDiagram |
 | readout | Readout |
 | band | Band |
 | tags | StandardsGrid (sunken band) |
 | closing call to action | Closing (navy band), optional `include` checklist, optional `proof` box (explicit `cta.proof` only) |
 | faq | FAQ inside SplitSection (an item may add `link`, a page id or `page#anchor`, with optional `link_label` and `intent`: one link after the answer, DR-009) |
-| docs | DocList as a turnover binder (folder cards, tab = index and code from `DOC_CODES` or an item's explicit `code`; item `key` or block `key: N` emphasizes the deciding documents; rows on phones) |
+| docs | DocList (hairline rows: index, code from `DOC_CODES` or an item's explicit `code`, name, detail; item `key` or block `key: N` emphasizes the deciding documents; block `link`, `link_label`, `intent` → one "Full index →" link under the list) |
 | case | CaseStudy (an item with `art`, `outcomes` or `timeline` renders as the project record: drawing with what changed, outcome figures, order-to-release timeline). No page uses it today: the record returns on projects after the first delivered project, with its client's written approval (DR-016 rule 8); the template taken off the page is in git at dbee6fc |
-| spec | SpecTable (`caption` shown as the section eyebrow; rows keep their order, `hl` rows tinted, optional row `link`) |
-| spec as gauges | LimitGauges (limits as dials; sys-pw, sys-pretreatment, sys-monitoring, svc-cq, ind-pharma, compliance) |
-| spec as rules | LimitGauges rule variant (design rules as horizontal threshold bars; row `rule` sets the threshold; sys-storage) |
-| options `as: "decisions"` | OptionList decisions (framed rows, ? tag, fork mark on two-way decisions, optional `by`; ind-pharma) |
+| spec | SpecTable (`caption` shown as the section eyebrow; rows keep their order, `hl` rows tinted, optional row `link` with `link_label`; default words the linked block's heading, else the page's name) |
+| spec as gauges | LimitGauges (limits as dials, two across when there are two; row `link`, `link_label`, `intent` → one link at the cell's foot; sys-pw, sys-pretreatment, sys-monitoring, svc-cq, ind-pharma, compliance) |
+| spec as rules | LimitGauges rule variant (design rules as horizontal threshold bars; row `rule` sets the threshold; row `link`, `link_label`, `intent` → one link under the rule; sys-storage) |
+| options `as: "decisions"` | OptionList decisions (framed rows, ? tag, fork mark on two-way decisions, optional `by`; item `link` → the row links to that page; ind-pharma) |
 | spec as callouts | ParameterCallouts (rows with `at` on the page's drawing, the rest as SpecTable; sys-pw, sys-storage, sys-monitoring, svc-fabrication) |
 | table | CompareTable (phones: records up to three value columns, tabs from four; link columns end each row; a cell is a string or `{t, link, intent}` in every table shape) |
-| table `as: "plans"` | PlanTiers (plans side by side, phones stacked; "Suits" and "Price" rows head each plan; optional `recommend`; one page-CTA button per plan) |
-| steps `as: "row"` | ProcessSteps row (a short sequence read across: rule on top, flow number, name, one sentence; in use on about) |
+| table `as: "plans"` | PlanTiers (plans side by side, phones stacked; "Suits" and "Price" rows head each plan; optional `recommend`; one page-CTA button per plan; a plan column `{t, intent}` gives that plan's button its own intent) |
+| steps `as: "row"` | ProcessSteps row (a short sequence read across: rule on top, flow number, name, one sentence). No page uses it today: about cut its "How we work" row |
 | contact-routes | ContactRoutes (the ways in as cards, each with three next steps and a response clock; `current` route marked "This page" and jumps to the form; `urgent` route on limestone with the phone set large, first on phones; in use on contact-proposal, contact-service, contact-locations) |
 | register | NotesRegister (topic filter chips, featured note panel, register table date · no. · topic · title · standard; undated items show "Planned"; phones two-line rows, chips scroll; in use on news) |
 | standards-map | StandardsMap (zones of the water system on one pipe, each labelled with its standards; code chips scroll to the row that proves them; phones stacked rows with chips) |

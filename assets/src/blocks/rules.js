@@ -8,7 +8,11 @@
    sign, or "at least / minimum / no less than" (≥) or "at most / maximum / no more than / up to" (≤), followed by a
    number with its unit or a [placeholder]. A number sets the scale (0 to the next round number above it, gaugeScale:
    a ruler, not data). A placeholder draws the same bar unnumbered with the mark at mid-scale and the placeholder as the
-   chip: the shape of the rule, its value still to come. */
+   chip: the shape of the rule, its value still to come.
+   Row link: a row may carry link (a page id or page#anchor), link_label (its words; default the linked block's heading,
+   else the page's name, wlabel) and intent (options the linked form ticks on arrival). It prints under the rule as
+   written, as the Button link variant (wGaugeGo in spec.js, the gauges' row link), so DR-005's one budget line can sit
+   with the rules. A link to a missing page prints nothing. */
 var RULE_UP=/\b(at least|minimum|min\.|no less than|not less than)/i,RULE_DN=/\b(at most|maximum|max\.|no more than|not more than|up to)/i;
 function ruleParse(r){var v=String(r.rule||r.v||''),m=v.match(/([≤<≥>])\s*/),c='',k;
   if(m){c=m[1]==='<'?'≤':m[1]==='>'?'≥':m[1];k=m.index+m[0].length}
@@ -28,6 +32,6 @@ function wRules(b,rows){
     return fli('<li class="aq-limit-gauges__rule'+(g?'':' is-text')+(r.hl?' is-key':'')+'">',b,i)
      +'<span class="aq-limit-gauges__rn" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
      +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'
-     +'<div class="aq-limit-gauges__rv">'+(g?wRuleBar(g):'')+'<p class="aq-limit-gauges__rt">'+tx(r.v)+'</p></div>'
+     +'<div class="aq-limit-gauges__rv">'+(g?wRuleBar(g):'')+'<p class="aq-limit-gauges__rt">'+tx(r.v)+'</p>'+wGaugeGo(r)+'</div>'
      +(r.m?'<p class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</p>':'')+'</li>'}).join('');
   return wPlate(wFold(b,rows.length,'<ol class="aq-limit-gauges aq-limit-gauges--rules" role="list">'+list+'</ol>',b.fold_noun||'rules'),{block:['Aquemi',b.caption||'Design rules']})}

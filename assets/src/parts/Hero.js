@@ -8,7 +8,7 @@ var ART={
  'sys-wfi-membrane':'WFI membrane skid: double-pass RO, EDI, heat exchangers and ultrafilter',
  'sys-pure-steam':'Pure steam generator: evaporator column, separator, preheater and control panel',
  'sys-storage':'Polypropylene storage tank with vent filter, distribution pump, heat exchanger, UV and loop with point-of-use valves',
- 'sys-monitoring':'Wall-mounted analyser panel: TOC and conductivity transmitters, controller and sample line',
+ 'sys-monitoring':'Wall-mounted analyzer panel: TOC and conductivity transmitters, controller and sample line',
  'svc-design':'Skid design: a 3D frame model standing on its P&ID sheet, with scale rule and pencil',
  'svc-fabrication':'Butt-fusion machine joining two polypropylene pipes, with heater plate, facing tool and a finished spool',
  'svc-fat-sat':'Water treatment skid hosed to a wheeled test cart with gauges, flow meter and laptop',
@@ -134,7 +134,7 @@ function wHeroDrawn(f){if(!f||typeof f!=='object')return '';return f.spots?wHero
 function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^svc-|^ind-/.test(p.id),drawn=home||art?'':wHeroDrawn(p.figure),idx=home||detail||drawn?null:p.index?heroBigIndex(p):p.hero_index!==false?heroIndex(p):null;
  var left='<div class="aq-stack">'+(p.eyebrow?'<span class="aq-eyebrow">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'aq-display-xl':'aq-display')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="aq-lead">'+tx(p.lead)+'</p>':'')+
   '<div class="aq-hero__actions">'+(p.primary_cta?wBtn(p.primary_cta,ctaLink(p),null,p.primary_cta_intent):'')+(p.secondary_cta&&p.secondary_cta.label?wBtn(p.secondary_cta.label,p.secondary_cta.link||'systems','link',p.secondary_cta.intent):'')+'</div>'+
-  (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
+  (p.tags&&p.tags.length?'<div class="aq-tags">'+p.tags.map(function(t){return '<span class="aq-tag">'+tx(t)+'</span>'}).join('')+'</div>':'')+'</div>';
  /* Callouts round the drawing only on sys-* pages, where each fact is a figure of the drawn module (a design value,
     guarantee or capacity, "what, where · basis", DR-010); service and industry pages keep their facts in the KeyFacts
     strip under the drawing. */

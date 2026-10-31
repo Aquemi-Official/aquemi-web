@@ -6,8 +6,10 @@
    screen readers (the label and readout show it). A row without a number is a readout cell: the same cell without the
    dial, the value shown. */
 .aq-limit-gauges { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-8) var(--space-6); }
-/* Exactly four (or one more than a full row, seven): four across, so no row is left with empty cells */
-.aq-limit-gauges:has(> li:nth-child(4):last-child), .aq-limit-gauges:has(> li:nth-child(7):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+/* Exactly four, seven or eight: four across; exactly two: two across. So no row is left with empty cells (a two-limit
+   panel, svc-cq, fills the plate instead of leaving a third slot empty) */
+.aq-limit-gauges:has(> li:nth-child(4):last-child), .aq-limit-gauges:has(> li:nth-child(7):last-child), .aq-limit-gauges:has(> li:nth-child(8):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.aq-limit-gauges:has(> li:nth-child(2):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .aq-limit-gauges__item { position: relative; display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; padding-top: var(--space-4); border-top: 1px solid var(--line); }
 .aq-limit-gauges__item.is-key { border-top-color: var(--flow); }
 .aq-limit-gauges__p { margin: 0; font: 500 16px/24px var(--font-sans); color: var(--ink); text-wrap: balance; }
@@ -66,6 +68,9 @@
 .aq-limit-gauges__dial--open .aq-limit-gauges__ticks line, .aq-limit-gauges__dial--open .aq-limit-gauges__ticks line.is-major { stroke: var(--ink-subtle); }
 .aq-limit-gauges__item.is-open .aq-limit-gauges__foot { margin-block: var(--space-2) 0; }
 .aq-limit-gauges__item.is-open .aq-limit-gauges__spec { height: 100%; align-content: space-between; }
+/* Row link (gauges and rules, wGaugeGo): the Button link variant at the foot of a cell, or under a rule as written */
+.aq-limit-gauges__go { margin: 0; }
+.aq-limit-gauges__foot .aq-limit-gauges__go { margin-top: var(--space-2); }
 
 /* ---------- Rule variant (spec as: "rules", blocks/rules.js) ----------
    Design rules on the same plate: one row per rule between line hairlines: mono index | rule name | the threshold bar
@@ -106,7 +111,7 @@
   /* Phone: two compact instruments per row (dial about 135-150 px). No scale numbers (at a legible 12 px they collide
      with the arc; the label and readout carry the value); every label at 12 px minimum; the label drops its "Limit"
      word; the readout moves under the dial; the basis keeps only its standard tags (the wording between them is hidden). */
-  .aq-limit-gauges, .aq-limit-gauges:has(> li:nth-child(4):last-child), .aq-limit-gauges:has(> li:nth-child(7):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6) var(--space-4); }
+  .aq-limit-gauges, .aq-limit-gauges:has(> li:nth-child(2):last-child), .aq-limit-gauges:has(> li:nth-child(4):last-child), .aq-limit-gauges:has(> li:nth-child(7):last-child), .aq-limit-gauges:has(> li:nth-child(8):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6) var(--space-4); }
   .aq-limit-gauges__item { padding-top: var(--space-3); gap: var(--space-2); }
   .aq-limit-gauges__p { font-size: 14px; line-height: 20px; }
   .aq-limit-gauges__dial { margin: var(--space-6) 0 0; }
@@ -127,6 +132,9 @@
   .aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child { padding: var(--space-2) 0; }
   .aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child dt { display: block; }
   .aq-limit-gauges__item.is-readout .aq-limit-gauges__v { font-size: 14px; line-height: 20px; }
+  /* Row link in a narrow cell: the label wraps, balanced, with its arrow after the last word, never alone on a line;
+     still 44 px tall at one line */
+  .aq-limit-gauges__go .aq-btn--link { display: inline-block; min-height: 0; padding-block: var(--space-3); text-wrap: balance; }
   /* Rules on phones: index and name on one line, then the bar full width, the rule as written, the basis tags */
   .aq-limit-gauges__rule { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-2); row-gap: var(--space-3); padding: var(--space-4) 0; }
   .aq-limit-gauges__rule .aq-limit-gauges__p { font-size: 16px; line-height: 24px; }

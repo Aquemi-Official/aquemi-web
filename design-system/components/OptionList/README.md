@@ -19,7 +19,9 @@ A list without icons (OptionList, and plain ProcessSteps rows) has a fixed 280 p
 
 ## Variant: decisions
 
-With `"as": "decisions"` the items are choices the buyer settles (ind-biotech "Decide these before the URS"). Each row: the index with a "?" beside it in Geist Mono `flow` (`.aq-options__q`, `.aq-options__qt`: a word, no frame), the decision, its line. A decision named as two options ("Hot loop or ambient", "Make media and buffers, or buy") gets a small `flow` fork mark in 1.5 px line art before its name (`svg.aq-options__fork`, `aria-hidden`). Item `by: "<stage>"` adds a "Decide by: <stage>" caption under the line (`.aq-options__by`, the eyebrow style: Geist Mono 500 12/16, 0.08em, uppercase, `ink-muted`); leave it out when the page does not say. Fold noun default "decisions".
+With `"as": "decisions"` the items are choices the buyer settles (ind-pharma "Decide before your requirements (URS) are approved"). Each row: the index with a "?" beside it in Geist Mono `flow` (`.aq-options__q`, `.aq-options__qt`: a word, no frame), the decision, its line. A decision named as two options ("Hot loop or ambient", "Make media and buffers, or buy") gets a small `flow` fork mark in 1.5 px line art before its name (`svg.aq-options__fork`, `aria-hidden`). Item `by: "<stage>"` adds a "Decide by: <stage>" caption under the line (`.aq-options__by`, the eyebrow style: Geist Mono 500 12/16, 0.08em, uppercase, `ink-muted`); leave it out when the page does not say. Fold noun default "decisions".
+
+- Link: an item may carry `link` (a page id or `page#anchor`) when another page holds the decision in full: `{"t": "Hot loop or ambient", "d": "…", "link": "sys-storage#sanitization"}`. The whole row becomes the link, as in every list of the shared row grammar (`<a class="aq-rows__row" href="#sys-storage#sanitization" data-wp="sys-storage#sanitization">`): the decision ends in a `flow` arrow and turns `flow` on hover, with a `focus` ring on focus. A link to a missing page leaves the row plain. Link a decision only where its line points to that page's rule (DR-013's rating sentence to sys-storage#sanitization); no intent.
 
 ## Variant: modules
 

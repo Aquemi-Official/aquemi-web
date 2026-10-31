@@ -9,7 +9,8 @@
   python tools/design_system.py check --budgets [id]   Also list every content budget overrun (or one page's, then that
                                                        page's visible-word count, overrun or not)
   python tools/design_system.py check --warnings [id]  Also list every content warning (or one page's, or one type's:
-                                                       register, faq, fact, intent, contact, link)
+                                                       register, faq, fact, intent, contact, link); with a page id the
+                                                       budget line counts that page's overruns only
   python tools/design_system.py new <Name> "<Group>"   Scaffold design-system/components/<Name>/ (README.md, preview.html, style.css)
   python tools/design_system.py stage <dir>            Copy the system into <dir>/project/ for publishing to the Claude artifact
 
@@ -189,7 +190,7 @@ WORD = re.compile(r'\S*[A-Za-z0-9µ°]\S*')
 # Keys that are not visible copy: settings, link targets, and names the renderer turns into a drawing or an attribute
 # (spot and icon vignettes, intents on links, a file field's accept list)
 NOT_COPY = {'type', 'nav', 'anchor', 'link', 'kind', 'tone', 'id', 'hl', 'required', 'unit', 'name', 'section', 'show_if', 'when', 'mark', 'as', 'ground', 'fold', 'fold_noun', 'lean', 'to', 'at', 'icon', 'icons', 'end', 'art', 'key',
-            'spot', 'intent', 'accept'}
+            'spot', 'intent', 'accept', 'caption_noun'}
 
 
 def words(s):
@@ -303,9 +304,11 @@ def drawn(b):
 
 def visible_words(pg):
     """((hero, blocks, closing) word counts, (hero, blocks, closing) strings): what a reader sees on the page. The hero's
-    eyebrow, headline, lead, button and facts; every block as drawn (drawn), FAQ answers (and their link) and conditional
-    form fields left out; the closing."""
-    hero = [pg.get(k) for k in ('eyebrow', 'headline', 'lead', 'primary_cta')] + list(strings(pg.get('facts', [])))
+    text stack as Hero.js draws it (eyebrow, headline, lead, button, secondary link, tags) and its facts (the KeyFacts
+    strip or the drawing's callouts); the drawn figure (aria-hidden line art and its labels, like spot names) and a hub's
+    index of other pages' names are left out. Every block as drawn (drawn), FAQ answers (and their link) and
+    conditional form fields left out; the closing."""
+    hero = [pg.get(k) for k in ('eyebrow', 'headline', 'lead', 'primary_cta')] + [(pg.get('secondary_cta') or {}).get('label')] + list(pg.get('tags') or []) + list(strings(pg.get('facts', [])))
     body = [s for b in pg.get('blocks', []) for s in strings(drawn(b), ('a', 'link_label') if b.get('type') == 'faq' else (), shown=True)]
     cta = list(strings(pg.get('cta') or {}))
     src = (hero, body, cta)
@@ -370,7 +373,8 @@ def budgets(pages):
 # check on every push. Each warning is (type, sub-check, page ids, where, message).
 WARN_TYPES = [  # type, record, what the summary line counts, sub-checks with their summary words
     ('register', 'DR-003', 'register warnings', [('lead', 'leads over 2 codes'), ('spell', 'codes never spelled out'),
-        ('twice', 'two-meaning codes'), ('sentence', 'sentences over 20 words'), ('button', 'buttons over 5 words')]),
+        ('twice', 'two-meaning codes'), ('sentence', 'sentences over 20 words'), ('button', 'buttons over 5 words'),
+        ('question', 'FAQ questions over 12 words')]),
     ('faq', 'DR-009', 'FAQ questions asked on two or more pages', []),
     ('fact', 'DR-010', 'hero fact warnings', [('limit', 'equal a public limit'), ('code', 'have a code as the value'),
         ('basis', 'have no basis in the label')]),
@@ -378,7 +382,7 @@ WARN_TYPES = [  # type, record, what the summary line counts, sub-checks with th
     ('contact', 'DR-008', 'CONTACT values no page file carries', []),
     ('link', 'DR-008', 'links to a missing page or anchor', []),
 ]
-REGISTER = {'lead_codes': 2, 'sentence': 20, 'button': 5}  # DR-003 rule 3 (language/register-rules.md in the library)
+REGISTER = {'lead_codes': 2, 'sentence': 20, 'button': 5, 'question': 12}  # DR-003 rule 3 (language/register-rules.md in the library; an FAQ question is 12 words or fewer on its register card)
 # Page fields a reader never sees as copy (beyond NOT_COPY). LABELS are seen, but as labels: a code there needs spelling
 # out in the page's reading text, and is never spelled out there.
 NOT_SHOWN = {'title', 'meta', 'nav_label', 'path', 'todo', 'intent', 'primary_cta_intent', 'primary_cta_link', 'index', 'hero_index', 'spot'}
@@ -444,10 +448,16 @@ def clip(s, n=70):
     return s if len(s) <= n else s[:n].rstrip() + '...'
 
 
+# A standard's name that holds codes: "EU GMP Annex 15", "EU GMP Annex 1", "EU GMP Chapter 3" or "EU GMP ANNEX 15" in an
+# eyebrow cite the EU GMP Guide by its name, so their EU and GMP are a name, never a code to spell out (a bare "GMP"
+# elsewhere still counts)
+STD_NAME = re.compile(r'\bEU GMP(?=\s+(?:Annex|Chapter|Part)\b)', re.I)
+
+
 def codes(s, known=None):
-    """The codes in s, in order. A string with no lower-case letter (an eyebrow, a caption) is all capitals, so there only
-    codes known from sentence-case copy count."""
-    s = bare(s)
+    """The codes in s, in order, standards' names (STD_NAME) left out. A string with no lower-case letter (an eyebrow, a
+    caption) is all capitals, so there only codes known from sentence-case copy count."""
+    s = STD_NAME.sub(' ', bare(s))
     out = [c for c in CODE.findall(s) if c not in ROMAN]
     return [c for c in out if c in known] if known is not None and not re.search('[a-z]', s) else out
 
@@ -488,8 +498,9 @@ def two_meanings(s):
 
 
 def register_warnings(pages):
-    """DR-003: leads with more than 2 codes, codes never spelled out on a page, two-meaning codes, sentences over 20 words,
-    buttons over 5 words. Pattern-based, so it over-flags (P&ID, NTU); placeholders never count."""
+    """DR-003: leads with more than 2 codes, codes never spelled out on a page (a standard's name such as "EU GMP Annex
+    15" is not one), two-meaning codes, sentences over 20 words, buttons and link labels over 5 words, FAQ questions over
+    12 words. Pattern-based, so it over-flags (P&ID, NTU); placeholders never count, and count as one word."""
     out = []
     known = {c for pg in pages.values() for path, s in copy_items(pg) if leaf(path) not in LABELS and re.search('[a-z]', bare(s)) for c in codes(s)}
     for pid, pg in pages.items():
@@ -516,9 +527,19 @@ def register_warnings(pages):
             btn += [('blocks[%d].routes[%d].action' % (i, j), r.get('action')) for j, r in enumerate(b.get('routes') or []) if isinstance(r, dict)]
             btn += [('blocks[%d].steps[%d].next' % (i, j), s.get('next')) for j, s in enumerate(b.get('steps') or []) if isinstance(s, dict)]
             btn.append(('blocks[%d].submit' % i, b.get('submit')))
-            # links drawn as the Button link variant: an FAQ answer's link and a form note's action
+            # links drawn as the Button link variant or a row link: an FAQ answer's link, a form note's action, a docs
+            # block's link and a spec row's link (SpecTable, gauges and rules)
             btn += [('blocks[%d].items[%d].link_label' % (i, j), it.get('link_label')) for j, it in enumerate(b.get('items') or []) if b.get('type') == 'faq' and isinstance(it, dict)]
             btn += [(p + '.action', f.get('action')) for p, f in (form_notes(b, 'blocks[%d]' % i) if b.get('type') == 'form' else [])]
+            if b.get('type') == 'docs':
+                btn.append(('blocks[%d].link_label' % i, b.get('link_label')))
+            if b.get('type') == 'spec':
+                btn += [('blocks[%d].rows[%d].link_label' % (i, j), r.get('link_label')) for j, r in enumerate(b.get('rows') or []) if isinstance(r, dict)]
+            # an FAQ question is the asker's words, 12 or fewer (the register card)
+            for j, it in enumerate(b.get('items') or [] if b.get('type') == 'faq' else []):
+                q = it.get('q') if isinstance(it, dict) else None
+                if q and swords(q) > REGISTER['question']:
+                    out.append(('register', 'question', (pid,), 'blocks[%d].items[%d].q' % (i, j), '%d words, at most %d: "%s"' % (swords(q), REGISTER['question'], clip(q))))
         for where, s in btn:
             if s and swords(s) > REGISTER['button']:
                 out.append(('register', 'button', (pid,), where, '%d words, at most %d: "%s"' % (swords(s), REGISTER['button'], s)))
@@ -613,8 +634,9 @@ def form_notes(b, w):
 def intent_warnings(pages):
     """DR-014: intent labels that tick nothing on the linked page's form: no such option, or an option the intent never
     opens ("situation|follow-up" names the situation first). Read from the hero button and secondary link, the closing,
-    contact routes, table and router cells ({t, link, intent}), FAQ links and form notes. An intent on an in-page or
-    phone (tel:) link, or with no link, ticks nothing."""
+    contact routes, table and router cells ({t, link, intent}), plan columns ({t, intent}, on the page's own CTA link),
+    FAQ links, form notes, a docs block's link and gauge and rule rows. An intent on an in-page or phone (tel:) link,
+    or with no link, ticks nothing."""
     out = []
     for pid, pg in pages.items():
         pc, c, sc = pg.get('primary_cta') or '', pg.get('cta') or {}, pg.get('secondary_cta') or {}
@@ -632,6 +654,14 @@ def intent_warnings(pages):
                 links += [('%s.items[%d].intent' % (w, j), it.get('intent'), it.get('link') or '') for j, it in enumerate(b.get('items') or []) if isinstance(it, dict)]
             if b.get('type') == 'form':
                 links += [(p + '.intent', f.get('intent'), f.get('link') or '') for p, f in form_notes(b, w)]
+            if b.get('type') == 'docs':
+                links.append(('%s.intent' % w, b.get('intent'), b.get('link') or ''))
+            if b.get('type') == 'spec' and b.get('as') in ('gauges', 'rules'):
+                links += [('%s.rows[%d].intent' % (w, j), r.get('intent'), r.get('link') or '') for j, r in enumerate(b.get('rows') or []) if isinstance(r, dict)]
+            if b.get('type') == 'table' and b.get('as') == 'plans':
+                # each plan's button follows the page's own CTA (blocks/plans.js): primary_cta and its link, else cta.link
+                to = (pg.get('primary_cta_link') or ('contact-service' if re.search('service', pc, re.I) else 'contact-proposal')) if pc else (c.get('link') or 'contact-proposal')
+                links += [('%s.cols[%d].intent' % (w, k), x.get('intent'), to) for k, x in enumerate(b.get('cols') or []) if k and isinstance(x, dict)]
         for where, intent, link in links:
             if not intent:
                 continue
@@ -803,6 +833,9 @@ def check(show_budgets=False, only=None, show_warnings=False):
             (h, bl, c), _ = visible_words(pages[only])
             print('%s: %d visible words of %d (hero %d, blocks %d, closing %d; FAQ answers, folded rows, conditional form '
                   'fields and strings the renderer never prints left out)' % (only, h + bl + c, BUDGET['page_words'], h, bl, c))
+    elif only in pages:
+        # check --warnings <page>: that page's own overrun count, not the site's
+        print('%d budget overrun(s) on %s (run check --budgets %s for detail)' % (sum(1 for o in over if o[0] == only), only, only))
     else:
         print('%d budget overruns (run check --budgets for detail)' % len(over))
     if show_warnings and only and only not in pages and only not in [w[0] for w in WARN_TYPES]:

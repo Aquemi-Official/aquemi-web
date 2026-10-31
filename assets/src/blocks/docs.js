@@ -1,9 +1,14 @@
 /* Block "docs" -> DocList: the documents delivered with a system as a hairline list. Each row: the index, the short
    document code a validation team files it under (mono, derived from its name), the name, its detail and an optional line
-   icon. The deciding documents lead, their code in flow. Phones: index and code over the name, detail under it. */
-/* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT). */
+   icon. The deciding documents lead, their code in flow. Phones: index and code over the name, detail under it.
+   Block link (optional): link (a page id or page#anchor), link_label (its words; default the linked block's heading,
+   else the page's name, wlabel) and intent (options the linked form ticks on arrival) print one Button link under the
+   list ("Full index →"), so a module page keeps its deciding documents and points to the full package without another
+   row. A link to a missing page prints nothing. */
+/* First match wins, so specific names come before general ones (WPS before weld log, O&M before media, EN 285 before FAT,
+   a URS compliance matrix before the URS itself). */
 var DOC_CODES=[
-  [/^urs\b.*traceability/i,'URS & TM'],[/traceability matrix/i,'TM'],[/user requirement|\burs\b/i,'URS'],
+  [/^urs\b.*traceability/i,'URS & TM'],[/traceability matrix/i,'TM'],[/compliance matrix/i,'CM'],[/user requirement|\burs\b/i,'URS'],
   [/functional and design spec/i,'FDS'],[/functional (design )?spec/i,'FS'],[/hardware and software design/i,'HDS & SDS'],[/basis of design/i,'BOD'],[/mass balance/i,'HMB'],[/steam balance/i,'SB'],[/membrane projection/i,'PRJ'],
   [/design review|\bdq\b/i,'DQ'],[/risk assessment/i,'RA'],[/contamination control/i,'CCS'],
   [/feed ?water (analysis|review)/i,'FWA'],[/demand profile|sizing calc/i,'SIZ'],[/heat balance/i,'HB'],[/hydraulic calc/i,'HYD'],
@@ -13,13 +18,13 @@ var DOC_CODES=[
   [/operation and maintenance/i,'O&M'],[/standard operating procedure|\bsops?\b/i,'SOP'],
   [/fabrication and inspection plan/i,'FIP'],[/fabrication record/i,'FAB'],[/material (cert|log)/i,'MAT'],[/media and resin/i,'MED'],
   [/welding procedure|\bwps\b/i,'WPS & PQR'],[/welder and procedure/i,'WQR & PQR'],[/welder qualif/i,'WQR'],
-  [/weld (log|map)/i,'WLD'],[/borescope/i,'BOR'],[/pressure test/i,'PT'],
+  [/weld (log|map)/i,'WLD'],[/joint (map|log)|joining log/i,'JNT'],[/borescope/i,'BOR'],[/pressure test/i,'PT'],
   [/slope (verif|survey).*dead leg/i,'SLP & DLR'],[/dead leg/i,'DLR'],[/surface finish/i,'SRF'],[/passivation/i,'PAS'],[/slope (verif|survey|check)/i,'SLP'],[/riboflavin|spray ball/i,'RIB'],
   [/integrity test/i,'INT'],[/calibration/i,'CAL'],[/en 285/i,'EN 285'],
   [/executed fat/i,'FAT RPT'],[/\bfat\b.*\bsat\b/i,'FAT & SAT'],[/\bfat\b/i,'FAT'],[/\bsat\b/i,'SAT'],
   [/\biq\b.*\boq\b/i,'IQ & OQ'],[/\biq\b/i,'IQ'],[/\boq\b/i,'OQ'],[/\bpq\b/i,'PQ'],
   [/commissioning/i,'CX'],[/sampling plan/i,'SMP'],[/software version/i,'SVR'],[/computeri[sz]ed system validation/i,'CSV'],[/data integrity/i,'DI'],[/qualification summary/i,'QSR'],[/training/i,'TRN'],
-  [/nonconformance/i,'DEV & NCR'],[/deviation/i,'DEV'],[/change control/i,'CC'],[/change impact/i,'CIA'],[/change log/i,'CL'],[/as-built/i,'ASB'],[/like-for-like|like for like/i,'LFL'],[/observation/i,'OBS'],[/annual system review/i,'ASR'],[/trend report/i,'TRD'],[/excursion/i,'EXC'],[/system description/i,'SD'],[/compliance matrix/i,'CM'],[/punch list/i,'PL'],
+  [/nonconformance/i,'DEV & NCR'],[/deviation/i,'DEV'],[/change control/i,'CC'],[/change impact/i,'CIA'],[/change log/i,'CL'],[/as-built/i,'ASB'],[/like-for-like|like for like/i,'LFL'],[/observation/i,'OBS'],[/annual system review/i,'ASR'],[/trend report/i,'TRD'],[/excursion/i,'EXC'],[/system description/i,'SD'],[/punch list/i,'PL'],
   [/spare/i,'SPR'],[/parts (replaced|record)/i,'PRT'],[/service report/i,'SVC'],[/health report/i,'AHR'],[/turnover package/i,'TOP']
 ];
 var DOC_STOP=/^(and|or|of|the|for|with|to|in|on|a|an|your|by|from)$/i;
@@ -58,5 +63,6 @@ BLOCKS['docs']=function(b,H){
       +(x.d?'<span class="aq-docs__d">'+tx(x.d)+'</span>':'')
       +(ic?wIcon(ic,'aq-docs__icon'):'')+'</li>';
   }).join('')+'</ol>';
-  return sec(H+wFold(b,n,ol,noun));
+  var more=b.link&&wp(b.link)?'<p class="aq-docs__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
+  return sec(H+(more?'<div class="aq-stack">'+wFold(b,n,ol,noun)+more+'</div>':wFold(b,n,ol,noun)));
 };

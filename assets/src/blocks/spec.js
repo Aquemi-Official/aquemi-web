@@ -1,7 +1,8 @@
 /* Block "spec" -> SpecTable (spec sheet: two-column matrix).
-   Fields: h, caption, cols, rows [{p, v, m, hl, link}], note. Rows keep their order. hl rows at the top of the list are
-   full-width bands (is-highlight is-lead); an hl row further down is tinted in place, so sequences are never broken.
-   link: a page id, shown as a quiet "Page name →" link after the basis. The caption is the section's eyebrow (above h)
+   Fields: h, caption, cols, rows [{p, v, m, hl, link, link_label}], note. Rows keep their order. hl rows at the top of
+   the list are full-width bands (is-highlight is-lead); an hl row further down is tinted in place, so sequences are never
+   broken. link: a page id or page#anchor, shown as a quiet "Budget ranges →" link after the basis; its words are the
+   row's link_label, else the linked block's heading, else the page's name (wlabel). The caption is the section's eyebrow (above h)
    and the table's visually hidden <caption>; it is never printed a second time above the table.
    CSS changes the table's display, so explicit ARIA table roles keep its semantics in every browser.
    A lead hl row whose value holds a number is a readout: its limit set as the section's readout figure in the band
@@ -10,7 +11,7 @@
 function wSpecTable(b,rows,foldAt,noun){var cols=b.cols||['Parameter','Specification','Method or reference'],lead=true;
   var body=rows.map(function(r,i){
     var hl=!!r.hl,cls=hl?(lead?'is-highlight is-lead':'is-highlight'):'';if(!hl)lead=false;
-    var lp=r.link&&wp(r.link),lk=lp?'<a class="aq-spec__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(lp.nav_label||r.link)+'</a>':'';
+    var lk=r.link&&wp(r.link)?'<a class="aq-spec__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':'';
     /* Lead rows with a number become a readout: the limit as a Geist Mono readout figure in the flow-tint band */
     var g=hl&&lead?gaugeParse(r.v):null,rd=g?'<td class="aq-spec__read" aria-hidden="true"><span class="aq-spec__read-n">'+e((g.c?g.c+' ':'')+g.t)+'</span>'+(g.u?'<span class="aq-spec__read-u">'+tx(g.u)+'</span>':'')+'</td>':'';
     return fli('<tr role="row"'+(cls?' class="'+cls+(rd?' is-readout"':'"'):''),{fold:foldAt===0?-1:foldAt},i)+'>'+rd+'<th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-spec__value">'+tx(r.v)+'</td><td role="cell" class="aq-spec__method">'+tx(r.m||'')+(r.m&&lk?' ':'')+lk+'</td></tr>';
@@ -39,7 +40,11 @@ BLOCKS['spec']=function(b,H){
    A row with no number (placeholder, "Not required") is a readout cell: the same cell, the value as the readout, no dial.
    A row named "outlet" or "guaranteed" whose v has a number in the same unit as a limit adds a dashed second marker on
    that dial, at its place on the scale; a placeholder adds nothing.
-   The basis (m) prints with standard names (USP <645>, Ph. Eur. 0008, EN 285 …) as tags. */
+   The basis (m) prints with standard names (USP <645>, Ph. Eur. 0008, EN 285 …) as tags.
+   Row link (gauges and rules alike, wGaugeGo): link (a page id or page#anchor), link_label (default the linked block's
+   heading, else the page's name, wlabel) and intent (options the linked form ticks on arrival), drawn as the Button link
+   variant at the foot of the cell, so DR-009's one link can sit with the row it explains. A missing page prints nothing. */
+function wGaugeGo(r){return r&&r.link&&wp(r.link)?'<p class="aq-limit-gauges__go">'+wBtn(r.link_label||wlabel(r.link),r.link,'link',r.intent)+'</p>':''}
 var GAUGE_STD=/(USP <\d+>|Ph\. Eur\. \d[\d.]*|EN \d+|ASTM [A-Z]\d+|Annex 1(?:, \d+\.\d+)?|ISO \d+|ASME BPE|GAMP 5|21 CFR Part 11)/;
 /* q: the rest of the value around "≤ 1.3 µS/cm" (qualifiers such as "@ 25 °C (stage 1)"); a unit too long for the
    readout (over 8 characters) stays in q. Placeholders are blanked at their own length so indexes match v. */
@@ -102,7 +107,7 @@ function wGauges(b,rows){
     var open=!g&&gaugeOpen(r.v);
     return fli('<li class="aq-limit-gauges__item'+(g?'':' is-readout')+(open?' is-open':'')+(r.hl?' is-key':'')+'">',b,i)
      +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read):open?wDialOpen():'')
-     +'<div class="aq-limit-gauges__foot">'+spec+'</div></li>'}).join('');
+     +'<div class="aq-limit-gauges__foot">'+spec+wGaugeGo(r)+'</div></li>'}).join('');
   return wPlate(wFold(b,rows.length,'<ul class="aq-limit-gauges" role="list">'+list+'</ul>',b.fold_noun||'limits'),{block:['Aquemi',b.caption||'Limits']})}
 
 /* ---------- "as": "callouts" -> ParameterCallouts ----------

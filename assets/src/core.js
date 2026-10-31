@@ -46,9 +46,12 @@ function h1(s){return s?'<h2 class="aq-h1">'+tx(s)+'</h2>':''}
 function wSecHead(b){b=b||{};if(!b.h&&!b.eyebrow&&!b.intro)return '';
  return '<header class="aq-sec-head">'+(b.eyebrow?'<p class="aq-eyebrow">'+tx(b.eyebrow)+'</p>':'')+h1(b.h)+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':'')+'</header>'}
 /* Plate: frame a figure as a drawing plate (base.css .aq-plate). o.light: cream plate on the navy; o.block: title-block
-   cells, e.g. ["Aquemi","Limits","PW"] (decorative). */
-function wPlate(inner,o){o=o||{};var bl=o.block&&o.block.length?'<div class="aq-plate__block" aria-hidden="true">'+o.block.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'</div>':'';
+   cells, e.g. ["Aquemi","Limits","PW"] (decorative); an empty cell is left out. */
+function wPlate(inner,o){o=o||{};var B=(o.block||[]).filter(function(c){return c!==''&&c!=null}),bl=B.length?'<div class="aq-plate__block" aria-hidden="true">'+B.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'</div>':'';
  return '<div class="aq-plate'+(bl?' aq-plate--block':'')+(o.cls?' '+o.cls:'')+'"'+(o.light?' data-theme="light"':'')+'>'+inner+bl+'</div>'}
+/* Plate count (the router's and the grade lanes' title block): n and the noun the block names its rows by, caption_noun,
+   else fold_noun ("6 roles", "8 steps"); with neither, no count, so a caption never counts its rows under a wrong noun. */
+function wCount(b,n){var w=b&&(b.caption_noun||b.fold_noun);return w?n+' '+w:''}
 /* Index: the one numbering style, "01" (aria-hidden: the list already announces position) */
 function idx(i){return '<span class="aq-index" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}
 /* Icon: a Lucide-style line icon from assets/icons/<name>.svg, painted with a token through a mask (design-system/components/Icon). */
@@ -82,11 +85,12 @@ function wIcons(b){var I=b.items||[],r=I.map(function(it){return it&&isIcon(it.i
  return r}
 /* Rows: one list row of the shared list grammar (.aq-rows). link: a page id or page#anchor; the whole row becomes the
    link. art: the page whose icon ends the row (a link's page part counts, so systems#budget shows the systems icon).
+   tag: a short label under the line (a standard), through tx like the rest, so a [placeholder] tag shows as one.
    ic: icon name (wIcons) shown in the index column instead of the number; num: keep the number beside it (ordered steps).
    An icon replaces the row-end drawing (art): at 48 px a drawing reads as texture, the icon reads as the thing. */
 function wRow(i,t,d,link,art,tag,ic,num){ic=isIcon(ic)?ic:'';var endIc=!ic&&art&&pageIcon(art);
  var lead=ic?'<span class="aq-rows__lead'+(num?' aq-rows__lead--n':'')+'" aria-hidden="true">'+(num?idx(i):'')+wIcon(ic)+'</span>':idx(i);
- var inner=lead+'<h3 class="aq-rows__t">'+tx(t)+'</h3>'+(d||tag?'<p class="aq-rows__d">'+(d?tx(d):'')+(tag?'<span class="aq-tags"><span class="aq-tag">'+e(tag)+'</span></span>':'')+'</p>':'')
+ var inner=lead+'<h3 class="aq-rows__t">'+tx(t)+'</h3>'+(d||tag?'<p class="aq-rows__d">'+(d?tx(d):'')+(tag?'<span class="aq-tags"><span class="aq-tag">'+tx(tag)+'</span></span>':'')+'</p>':'')
   +(endIc?wIcon(endIc,'aq-rows__art'):'');
  return '<li>'+(link&&wp(link)?'<a class="aq-rows__row" href="#'+e(link)+'" data-wp="'+e(link)+'">'+inner+'</a>':'<div class="aq-rows__row">'+inner+'</div>')+'</li>'}
 /* Fold (block field fold: N): the first N items show, the rest carry aq-fold-x and stay hidden until the button under

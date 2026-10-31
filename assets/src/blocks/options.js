@@ -17,11 +17,13 @@ function wOptModules(b,H){var I=b.items||[],art=b.art||WP,pg=wp(art),half=Math.c
  return sec(H+wFold(b,I.length,inner,b.fold_noun||'options'))}
 /* as: "decisions" -> OptionList decisions: choices the buyer settles (before the URS, before design). Each row: the index
    with a "?" in flow, the decision, its line. A decision named as two options ("Hot loop or ambient",
-   "Make media and buffers, or buy") gets a small fork mark; item by: "<stage>" adds a "Decide by: <stage>" caption. */
+   "Make media and buffers, or buy") gets a small fork mark; item by: "<stage>" adds a "Decide by: <stage>" caption.
+   Item link (a page id or page#anchor, as wRow): the whole row links to the page that holds the decision in full, its
+   title ending in a flow arrow ("Hot loop or ambient →" to sys-storage#sanitization). A missing page leaves it plain. */
 var OPT_FORK='<svg class="aq-options__fork" viewBox="0 0 32 20" aria-hidden="true" focusable="false"><path d="M1 10 H12 C18 10 18 3 24 3 H31 M12 10 C18 10 18 17 24 17 H31"/><circle cx="12" cy="10" r="2"/></svg>';
 function wOptDecide(b,H){var I=b.items||[];
- return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options aq-options--decide">'+I.map(function(it,i){var fork=/\bor\b/i.test(String(it.t||''));
-  return fli('<li><div class="aq-rows__row"><span class="aq-options__q" aria-hidden="true">'+idx(i)+'<span class="aq-options__qt">?</span></span>'
+ return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options aq-options--decide">'+I.map(function(it,i){var fork=/\bor\b/i.test(String(it.t||'')),lk=it.link&&wp(it.link);
+  return fli('<li>'+(lk?'<a class="aq-rows__row" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">':'<div class="aq-rows__row">')+'<span class="aq-options__q" aria-hidden="true">'+idx(i)+'<span class="aq-options__qt">?</span></span>'
    +'<h3 class="aq-rows__t">'+(fork?OPT_FORK:'')+tx(it.t)+'</h3>'
-   +'<p class="aq-rows__d">'+(it.d?tx(it.d):'')+(it.by?'<span class="aq-options__by">Decide by: '+tx(it.by)+'</span>':'')+'</p></div></li>',b,i)}).join('')+'</ol>',b.fold_noun||'decisions'))}
+   +'<p class="aq-rows__d">'+(it.d?tx(it.d):'')+(it.by?'<span class="aq-options__by">Decide by: '+tx(it.by)+'</span>':'')+'</p>'+(lk?'</a>':'</div>')+'</li>',b,i)}).join('')+'</ol>',b.fold_noun||'decisions'))}
 BLOCKS['options']=function(b,H){if(b.as==='modules')return wOptModules(b,H);if(b.as==='decisions')return wOptDecide(b,H);var I=b.items||[],IC=wIcons(b);return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-options">'+I.map(function(it,i){return fli(wRow(i,it.t,it.d,0,0,0,IC[i]),b,i)}).join('')+'</ol>',b.fold_noun||'options'));};

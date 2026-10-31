@@ -9,7 +9,8 @@ ProcessSteps shows a real sequence (a project, a qualification, a service visit)
 </ol>
 ```
 
-- Block `steps` (`assets/src/blocks/steps.js`), items `{t, d, hold}`, in a full-width section with the standard section head.
+- Block `steps` (`assets/src/blocks/steps.js`), items `{t, d, hold, link}`, in a full-width section with the standard section head.
+- Link (plain rows only): an item's `link` (a page id or `page#anchor`) makes its row a link, as in every list of the shared row grammar (`wRow`): `<a class="aq-rows__row" href="#svc-fat-sat" data-wp="svc-fat-sat">`, the step name ending in a `flow` arrow, the name `flow` on hover, a `focus` ring on focus. `{"t": "Factory and site acceptance tests (FAT and SAT)", "d": "Tested with water before shipping, then on your utilities.", "link": "svc-fat-sat"}`. Link a step only where another page holds that step in full; one or two per list. A link to a missing page renders the row plain. The hold flow and the row shape draw no links: an item's `link` is ignored there (and carries no `intent`).
 - Plain rows take the same fixed title column as plain OptionList rows (styled in `OptionList/style.css`): open list, no frame.
 - The index carries the order. No pipe, spine, stair or large numerals; `line` hairlines between steps are the only structure. For a drawn flow of equipment use ProcessDiagram. The one exception is a sequence with hold points, below.
 

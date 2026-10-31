@@ -69,7 +69,7 @@
    ],
    "nav": "Joint log",
    "as": "evidence",
-   "fold": 3,
+   "fold": 4,
    "fold_noun": "fields"
   },
   {
@@ -84,7 +84,7 @@
    "rows": [
     {
      "p": "Material",
-     "v": "Unpigmented PP, [grade, for example PP-R]",
+     "v": "Unpigmented PP, [PP grade]",
      "m": "[how PP parts are marked for traceability]",
      "at": [
       19,
@@ -94,7 +94,7 @@
     {
      "p": "Joining",
      "v": "[PP joining method]",
-     "m": "[PP joining standard]; parameters recorded per joint",
+     "m": "[PP joining standard]",
      "at": [
       47,
       25
@@ -164,7 +164,7 @@
    "items": [
     {
      "t": "Joint maps and joint log",
-     "d": "As-built isometrics, one line per joint, repairs included",
+     "d": "As-built isometrics, repairs included",
      "key": true,
      "link": "cmp-documentation#samples"
     },
@@ -174,8 +174,7 @@
      "key": true
     },
     {
-     "t": "Joining procedure and welder qualifications",
-     "d": "[welder qualification standard for thermoplastics]"
+     "t": "Joining procedure and welder qualifications"
     },
     {
      "t": "Pressure test and cleaning certificates",
@@ -207,7 +206,7 @@
     },
     {
      "t": "Test and survey",
-     "d": "Pressure test, slope survey and dead leg check on every run. Witness point."
+     "d": "Pressure test, slope survey and dead leg check. Witness point."
     },
     {
      "t": "Clean and turn over",
@@ -215,7 +214,7 @@
     }
    ],
    "nav": "Hold points",
-   "intro": "A joint inside a finished skid is hard to re-inspect: evidence is made at the bench."
+   "intro": "A joint inside a finished skid is hard to re-inspect."
   },
   {
    "type": "faq",
@@ -224,7 +223,7 @@
    "items": [
     {
      "q": "Can we audit the shop and see a real joint log?",
-     "a": "Visits start once [shop and test bay ready for visits], in [shop location, city and province]. Audit our quality system from [quality system ready for audit, date]. As a new company, we show a specimen joint log.",
+     "a": "Visits start once [shop and test bay ready for visits], in [shop location, city and province]. Audit our quality system from [quality system ready for audit, date]. As a new company, we show a [specimen joint log].",
      "link": "cmp-quality#audit",
      "link_label": "Request a supplier audit",
      "intent": "On-site supplier audit"
@@ -273,17 +272,17 @@
   "What each joint record holds, for example temperature, pressure, heating and cooling times, machine ID ([what each joint record holds]; FD-18)",
   "Joint acceptance criteria, for example DVS 2202-1, and the share of product-contact joints visually examined ([joint acceptance criteria], [share of product-contact joints visually examined, %]; FD-18)",
   "When test joints are made (shift start, change of welder, machine or pipe lot) and how they are examined, for example a bend or tensile test ([when test joints are made], [test joint examination method]; FD-18)",
-  "PP material: unpigmented resin grade, for example PP-R; how parts are marked for lot traceability; the certificates received per lot: EN 10204 type, 21 CFR 177.1520 conformity, the dated USP <88> Class VI report ([grade, for example PP-R], [how PP parts are marked for traceability], [PP material certificates], [PP material standard]; FD-17; the certificate name used most, as on compliance, cmp-quality, sys-pw and svc-cq)",
+  "PP material: unpigmented resin grade, for example PP-R; how parts are marked for lot traceability; the certificates received per lot: EN 10204 type, 21 CFR 177.1520 conformity, the dated USP <88> Class VI report ([PP grade], [how PP parts are marked for traceability], [PP material certificates], [PP material standard]; FD-17; the names in ops/placeholder-names.md, as on compliance, cmp-quality, sys-pw and svc-cq)",
   "Joining machines: calibration interval, and whether they log parameters automatically ([joining machine calibration and data logging], [machine calibration interval]; FD-18)",
   "PP internal surface specification (Ra) and its basis ([PP internal surface specification, Ra µm], [basis for the PP surface specification]; as on sys-storage; FD-19)",
   "PP pressure test method (medium, pressure or test factor, hold time) and the standard it follows ([PP pressure test method], as on compliance and cmp-documentation; [PP pressure test standard]; FD-19 recommends hydrostatic only, never air or gas)",
   "Pre-commissioning flush and cleaning procedure for PP ([pre-commissioning flush and cleaning procedure for PP]; as on sys-storage; FD-19)",
   "Whether the joint rejection rate is reported in the dossier ([joint rejection rate reported, yes or no]; FD-18)",
-  "Shop location, and the date the shop and test bay are ready for visits ([shop location, city and province], FD-33; [shop and test bay ready for visits], FD-44). Until then the hero's \"Book a shop visit\" and the FAQ's visit line are draft only; at launch they go if the shop is not ready, and the secondary becomes the next check that exists (specimen package, FD-47), else \"Talk to an engineer\" with the intent \"Not sure yet: talk to an engineer\" (DR-004 class 2, DR-006 rule 6)",
-  "Date the quality system is ready for a supplier audit ([quality system ready for audit, date]; FD-48). At launch the FAQ drops the audit line and its link if the date is unset",
-  "Aquemi-written specimen joint map and log extract, open or under NDA (FD-47). A redacted project log only after a delivered project, with the client's written consent (DR-004 class 3). The FAQ's specimen line and the dossier's link to cmp-documentation#samples stay only once the specimen exists",
+  "Shop location ([shop location, city and province], FD-33) and the date the shop and test bay are ready for visits ([shop and test bay ready for visits], FD-44). Launch rule (DR-004 class 2, DR-006 rule 6): the hero's \"Book a shop visit\" and the FAQ's visit sentence show only if that date is filled and has passed, and the sentence then drops its \"once\" clause; otherwise both are removed, and the secondary becomes the next check that exists: \"Request a specimen package\" (cmp-documentation#samples, intent \"Joint map and joint log extract\"), else \"Talk to an engineer\" (contact-proposal, intent \"Not sure yet: talk to an engineer\")",
+  "Date the quality system is ready for a supplier audit ([quality system ready for audit, date]; FD-48). Launch rule (DR-004 class 2, DR-006 rule 6): the FAQ's audit sentence and its \"Request a supplier audit\" link show only if that date is filled and has passed, and the sentence then drops its \"from\" clause; otherwise both are removed. If the visit, audit and specimen sentences all go, the answer says \"a new company\" and names the checks that exist (DR-004 rule 1), with the link \"Talk to an engineer\" (contact-proposal, intent \"Not sure yet: talk to an engineer\")",
+  "Aquemi-written specimen joint map and joint log extract ([specimen joint log]; FD-47; the option \"Joint map and joint log extract\" on cmp-documentation's specimen form), shared [openly or under NDA] as cmp-documentation says. Launch rule (DR-004 class 2, DR-006 rule 6, cmp-documentation's own): the FAQ's specimen sentence and the dossier's link to cmp-documentation#samples show only if the specimen exists, the brackets then removed; otherwise both are removed. A redacted project log only after a delivered project, with the client's written consent (DR-004 class 3)",
   "Document review cost and turnaround ([document review cost], [document review turnaround, working days]; FD-01, FD-02; defined in contact-proposal's requests table). At launch an unset turnaround reads \"An engineer replies in writing\" (DR-006 rule 7)",
-  "Confirm the practice the page states (FD-18): every product-contact joint numbered and logged; each lot's marking checked against its certificate on receipt; test joints before production joints; rejects cut out and remade under a new number; the fabrication and inspection plan agreed before material is ordered, with its hold and witness points; field joints added to the dossier",
+  "Before launch, confirm the practice the page states (FD-18, FD-19): every product-contact joint numbered and logged with its welder, settings and material (the headline and lead promise it); each lot's marking checked against its certificate on receipt; test joints before production joints; rejects cut out and remade under a new number; the fabrication and inspection plan agreed before material is ordered, with its hold and witness points; a pressure test, slope survey and dead leg check before cleaning, their extent set in the plan; the final rinse with Purified Water to conductivity and TOC limits, recorded; field joints added to the dossier. A practice not confirmed is bracketed or cut, the headline and lead first (DR-011 rule 1)",
   "Who makes field joints on site ([installation scope], FD-26; the full answer lives on systems#site), and whether they follow the same procedure and log (step 6 says the dossier includes them)",
   "A real fabrication project (joint count, rejection rate) before adding a case study block (DR-016)"
  ]

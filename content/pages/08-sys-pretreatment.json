@@ -117,7 +117,6 @@
     {
      "t": "To RO",
      "spot": "ro-skid",
-     "d": "Held within the RO inlet targets, all year.",
      "link": "sys-pw"
     }
    ],
@@ -151,7 +150,7 @@
     [
      "Hardness and alkalinity, highest in groundwater",
      "Carbonate scales the last elements; CO₂ loads the EDI",
-     "Duplex softeners sized on measured hardness; CO₂ handled on the Purified Water skid"
+     "Softeners sized on measured hardness; CO₂ handled on the Purified Water skid"
     ],
     [
      "Silica",
@@ -227,7 +226,7 @@
     },
     {
      "t": "Functional specification",
-     "d": "Regeneration, backwash, sanitization, alarms and interlocks"
+     "d": "Regeneration, backwash, alarms and interlocks"
     },
     {
      "t": "Media, resin and material certificates",
@@ -235,7 +234,9 @@
     }
    ],
    "nav": "Documents",
-   "fold_noun": "documents"
+   "fold_noun": "documents",
+   "link": "cmp-documentation#index",
+   "link_label": "Full index"
   },
   {
    "type": "options",
@@ -291,7 +292,7 @@
     },
     {
      "q": "Is pretreatment part of the validated system?",
-     "a": "Your risk assessment sets the boundary. WHO TRS 1033 allows construction to drinking-water standards up to the reverse osmosis stage. Either way, the turnover package covers pretreatment, with installation and operational qualification where in scope."
+     "a": "Your risk assessment sets the boundary. WHO TRS 1033 allows construction to drinking water standards up to the reverse osmosis stage. Either way, the turnover package covers pretreatment, with installation and operational qualification where in scope."
     },
     {
      "q": "How do you keep carbon beds clean?",
@@ -316,7 +317,7 @@
  ],
  "cta": {
   "h": "Send your seasonal water data",
-  "body": "An engineer replies in writing. Cost: [cost of the feedwater review].",
+  "body": "An engineer replies in writing. Cost: [cost of the feed water review].",
   "button": "Request a feed water review",
   "link": "contact-proposal",
   "intent": "I have water data, no system yet|Feed water review",
@@ -337,7 +338,7 @@
   "Iron and manganese design limit at the RO inlet, mg/L each ([design limit, mg/L each]; FD-21)",
   "Pretreatment capacity range per train, L/h of RO feed at the coldest feed ([pretreatment capacity range, L/h], hero fact; FD-20). Unfilled at launch, the fact goes (DR-010 rule 5)",
   "Budget band for the pretreatment train: [budget range, CAD] at [reference capacity, L/h], as of [month year], the systems budget row word for word (FAQ, linked to systems#budget; DR-005 rules 1 and 3; FD-03). Unfilled at launch, the cost question goes (DR-005 rule 8)",
-  "Which makes and equipment types Aquemi replaces pretreatment on ([makes and equipment types serviced], FAQ; FD-30). The full answer lives on svc-upgrades",
+  "Which makes and equipment types Aquemi replaces pretreatment on ([makes and equipment types serviced], FAQ; FD-30). The full answer lives on svc-upgrades. Unfilled at launch, the question goes (DR-011 rule 1)",
   "Whether bisulfite dosing is offered instead of carbon: the diagram, the feed water table and the removal-step router all show it (FD-21)",
   "Softener on demand is an option, not the standard scope (moved here from sys-pw). Confirm whether the online hardness analyzer at the softener outlet is standard, as the hero fact, the inlet table and the diagram's monitoring line say, or comes only with that option (FD-21)",
   "Whether Aquemi tests SDI on site during the feed water review, and with what kit (\"on-site SDI test [confirm]\", feed water table; FD-21)",
@@ -348,9 +349,9 @@
   "PVC joining method for the pretreatment pipework, upstream of the RO ([PVC joining method]; FD-18)",
   "Material certificates supplied for PVC parts ([certificates supplied for PVC parts]), and which media, resin and PVC parts carry NSF/ANSI 61. Name the standard only once Aquemi's parts hold it (DR-007 rule 4; FD-17)",
   "Feed heat exchanger design temperature ([feed heat exchanger design temperature, °C]; keep the same figure as sys-pw; FD-21)",
-  "Whether the feed water review is free or charged, CAD ([cost of the feedwater review], closing; FD-02). contact-proposal's requests table uses the same name",
+  "Whether the feed water review is free or charged, CAD ([cost of the feed water review], closing; FD-02): the canonical name, as in contact-proposal's requests table",
   "Feed water review turnaround, working days ([feed water review turnaround, working days], closing; FD-01). contact-proposal's requests table defines it",
-  "Source for the FAQ figure \"polyamide reverse osmosis membranes typically tolerate < 0.1 mg/L of free chlorine\": a membrane maker's datasheet (no library source yet)",
+  "Source for the FAQ figure \"polyamide reverse osmosis membranes typically tolerate < 0.1 mg/L of free chlorine\": DuPont's FilmTec BW30HR-440 product data sheet (Form 45-D04847-en, Rev. 0, November 2024) gives \"Free Chlorine Tolerance < 0.1 ppm\" for a polyamide thin-film element; one maker, so \"typically\" stays. Not yet in the library's bibliography",
   "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block (DR-016)"
  ]
 }

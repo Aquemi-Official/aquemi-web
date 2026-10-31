@@ -28,7 +28,7 @@
     },
     {
      "t": "Factory and site acceptance tests (FAT and SAT)",
-     "d": "Tested with water before shipping, then on your utilities.",
+     "d": "Tested before shipping, then on your utilities.",
      "link": "svc-fat-sat"
     },
     {
@@ -53,6 +53,7 @@
    "type": "table",
    "as": "roles",
    "nav": "Who signs",
+   "anchor": "roles",
    "h": "Who writes, who reviews",
    "intro": "The validation master plan stays yours.",
    "cols": [
@@ -68,7 +69,7 @@
     ],
     [
      "FAT, SAT, IQ and OQ protocols",
-     "Aquemi, in your template",
+     "Aquemi",
      "Your validation team"
     ],
     [
@@ -185,7 +186,6 @@
    "as": "gauges",
    "nav": "Alert levels",
    "h": "Alert levels come from your data",
-   "intro": "Limits are the specification; alert levels warn earlier.",
    "cols": [
     "Level",
     "Set at",
@@ -196,7 +196,8 @@
      "p": "Microbial action level",
      "v": "100 CFU/mL",
      "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
-     "hl": true
+     "hl": true,
+     "link": "compliance#limits"
     },
     {
      "p": "Alert level",
@@ -217,16 +218,15 @@
     },
     {
      "q": "Can IQ and OQ be combined into one protocol?",
-     "a": "Yes, depending on complexity (EU GMP Annex 15, 2.5 and 3.10). On a single module it saves a review cycle; on the full package we keep them apart."
+     "a": "Yes, depending on complexity, under EU good manufacturing practice (GMP) Annex 15, 2.5 and 3.10. On a single module it saves a review cycle; on the full package we keep them apart."
     },
     {
      "q": "We work to ASTM E2500, not IQ/OQ/PQ. Can you?",
-     "a": "Yes. Under ASTM E2500 the tests are much the same, focused on the critical aspects your risk assessment names. We write the commissioning and qualification (C&Q) plan in your model."
+     "a": "Yes. Under ASTM E2500 the tests are much the same, focused on the critical aspects your risk assessment names."
     },
     {
      "q": "What if an action level is exceeded during PQ?",
-     "a": "It is a deviation under your procedure. We help find the root cause (WHO TRS 1033, 12.9) and verify the fix by resampling. The phase may be extended.",
-     "link": "compliance#limits"
+     "a": "It is a deviation under your procedure. We help find the root cause (WHO TRS 1033, 12.9); resampling verifies the fix. The phase may be extended."
     },
     {
      "q": "Can you qualify a system you did not build?",
@@ -269,7 +269,8 @@
   "Who executes IQ and OQ: Aquemi's own engineers or a named partner ([executing staff: own engineers or named partner]; FD-46, FD-34; services uses the same name)",
   "IQ/OQ days on site for the full package, pretreatment to distribution ([IQ/OQ on site, days]; hero fact, DR-010; FD-08; services uses the same name); add a single-module figure only if it differs",
   "PQ support scope: whether Aquemi staff take samples on site in phases 1 and 2 ([on-site PQ sampling by Aquemi, yes or no]) and through which laboratory ([contract laboratory, if Aquemi arranges one]) (FD-46). Until then the roles table says your operators and laboratory sample and test",
-  "Which C&Q documents Aquemi drafts (risk assessment, C&Q plan, protocols, PQ protocol, reports, alert level recommendation) and whether it writes them in client templates (roles table and FAQ; FD-46; svc-design open point too)",
+  "Which C&Q documents Aquemi drafts (risk assessment, C&Q plan, protocols, PQ protocol, reports, alert level recommendation; roles table and FAQ; FD-46) and whether it writes them in client templates. \"In your template\" (roles table) and \"in your model\" (ASTM E2500 answer) were cut until confirmed, as on svc-design",
+  "FAT practice (FD-45): the FAT and SAT stage says \"Tested before shipping\"; add \"with water\" only once a wet FAT of every skid is policy (svc-fat-sat's [100 %] fact)",
   "C&Q plan review: cost and turnaround ([document review cost], [document review turnaround, working days]; the names in contact-proposal's requests table; FD-01, FD-02)",
   "Calibration provider and its accreditation, for example ISO/IEC 17025 ([calibration provider and accreditation held]; svc-service's name; FD-32)",
   "Qualification and requalification of systems Aquemi did not build, and of which makes ([makes and equipment types serviced]; FD-30; the full answer lives on svc-service and svc-upgrades)",

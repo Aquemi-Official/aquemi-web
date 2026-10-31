@@ -23,8 +23,11 @@ function stepFlow(b,H){var I=b.items||[],n=I.length,cols=n<=4?n:Math.ceil(n/2),o
 function stepRow(b,H){var I=b.items||[];
  return sec(H+'<ol class="aq-steps-row">'+I.map(function(it,i){return '<li><span class="aq-steps-row__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
   +'<h3 class="aq-steps-row__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-steps-row__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('')+'</ol>')}
+/* Plain rows: an item's link (a page id or page#anchor) makes its row a link, the shared row grammar's (wRow): the
+   whole row is the link, its title ends in a flow arrow, hover turns it flow ("Factory and site acceptance tests (FAT
+   and SAT) →" to svc-fat-sat). The hold flow and the row shape draw no link: an item's link is ignored there. */
 BLOCKS['steps']=function(b,H){var I=b.items||[];
   if(b.as==='row')return stepRow(b,H);
   if(I.some(function(it){return it.hold}))return stepFlow(b,H);
   return sec(H+wFold(b,I.length,'<ol class="aq-rows aq-steps">'+I.map(function(it,i){
-    return fli(wRow(i,it.t,it.d),b,i)}).join('')+'</ol>',b.fold_noun||'steps'));};
+    return fli(wRow(i,it.t,it.d,it.link),b,i)}).join('')+'</ol>',b.fold_noun||'steps'));};

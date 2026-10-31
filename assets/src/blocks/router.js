@@ -10,7 +10,9 @@
    ticks on arrival) rides on both, so a click anywhere on the route lands with the same options ticked.
    Every route is in the markup (hidden when closed), so nothing is lost to search or screen readers.
    Pending station: a value that opens with a [placeholder] ("[days]; DI runs until release") is a fact still to come,
-   drawn with a dashed hairline and a small "To confirm" eyebrow, so it reads as a value on order, not a gap. */
+   drawn with a dashed hairline and a small "To confirm" eyebrow, so it reads as a value on order, not a gap.
+   Plate caption: "Aquemi · <nav>", then a count only when the block names its rows (caption_noun, else fold_noun:
+   "6 roles", wCount in core.js); a router is not always a set of routes, and its caption never counts under a wrong noun. */
 var routerN=0;
 TABLE_AS.router=function(b,H){var C=b.cols||[],R=b.rows||[],k=++routerN;
  function lnk(c){return c&&typeof c==='object'&&c.link&&wp(c.link)?c.link:''}
@@ -22,6 +24,6 @@ TABLE_AS.router=function(b,H){var C=b.cols||[],R=b.rows||[],k=++routerN;
    +'<ol class="aq-router__stations">'+st.map(function(c,j){
     var pend=j!==go&&/^\s*\[/.test(c&&typeof c==='object'?c.t:c),cl=(j===go?' is-go':'')+(pend?' is-pending':'');
     return '<li'+(cl?' class="'+cl.slice(1)+'"':'')+'><p class="aq-router__k">'+tx(C[j+1]||'')+'</p><p class="aq-router__v">'+tcell(c)+(pend?'<span class="aq-router__tbc">To confirm</span>':'')+'</p></li>'}).join('')+'</ol></div>'}).join('')+'</div>';
- return sec(H+wPlate(inner,{block:['Aquemi',b.nav||'Router',R.length+' routes']}));};
+ return sec(H+wPlate(inner,{block:['Aquemi',b.nav||'Router',wCount(b,R.length)]}));};
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-router__opt');if(!t)return;var w=t.closest('.aq-router');
  [].forEach.call(w.querySelectorAll('.aq-router__opt'),function(o){var on=o===t;o.setAttribute('aria-expanded',on?'true':'false');document.getElementById(o.getAttribute('aria-controls')).hidden=!on})});

@@ -31,6 +31,9 @@
 .aq-fold:not(.is-open) .aq-docs > li.aq-fold-x { display: grid; }
 .aq-fold:has(> .aq-docs) > .aq-fold__btn { display: none; }
 
+/* Block link: one Button link (the link variant) under the list, "Full index →", space-4 below its last hairline */
+.aq-docs__more { margin: 0; }
+
 /* Phone: index and code on one line, the name under the code, the detail under the name; no icon. */
 /* A document whose name links to a page lifts a little on hover */
 .aq-docs > li:has(.aq-docs__name a) { transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }

@@ -14,7 +14,8 @@
  "primary_cta_intent": "I have a system already",
  "secondary_cta": {
   "label": "System down now? Request service",
-  "link": "contact-service"
+  "link": "contact-service",
+  "intent": "Fault now|Severity 1: production stopped or water out of specification"
  },
  "blocks": [
   {
@@ -46,7 +47,7 @@
      "You"
     ],
     [
-     "Monitoring with alert and action limits",
+     "Monitoring with alert and action levels",
      "Aquemi: levels from your data",
      "You"
     ],
@@ -211,7 +212,7 @@
     },
     {
      "t": "Controls",
-     "d": "Support status, audit trail and backups against Part 11.",
+     "d": "Support status, audit trail and backups.",
      "spot": "cpu"
     }
    ]
@@ -228,7 +229,7 @@
     },
     {
      "t": "Change control",
-     "d": "We draft the change request’s technical content; your quality unit approves it.",
+     "d": "We draft the change request’s technical content.",
      "hold": "Your quality unit"
     },
     {
@@ -260,7 +261,7 @@
     },
     {
      "q": "Can we keep producing water during the upgrade?",
-     "a": "Yes, for generation, pretreatment and capacity upgrades. Each new module goes in beside the old one and is tied in during a short shutdown. A loop replacement needs a planned shutdown. If your tank cannot cover it, plan temporary water: [temporary RO or EDI units, flow L/h]."
+     "a": "Yes, for generation, pretreatment and capacity upgrades. Each new module goes in beside the old one and is tied in during a short shutdown. If your tank cannot cover it, plan temporary water: [temporary RO or EDI units, flow L/h]. A loop replacement needs a planned shutdown."
     }
    ]
   },
@@ -285,19 +286,19 @@
    "Make, model, year; your observation or goal",
    "Drawings and qualification summary",
    "A year of water data",
-   "PLC and HMI models, program held"
+   "PLC and HMI models, program backup"
   ],
   "turnaround": "[assessment response time, working days]",
   "returns": [
    "Assessment scope, days on site, price",
-   "Options with downtime and requalification"
+   "Then options with downtime and requalification"
   ]
  },
  "todo": [
   "[makes and equipment types serviced] (lead, FAQ 1): the makes and equipment types Aquemi assesses and upgrades on systems it did not build, and any exclusions (WFI stills, pure steam generators, stainless loops); same name on home, services, svc-service, svc-cq, about, contact-service and contact-proposal (FD-30, DR-011). FAQ 1 gets its yes or no once FD-30 is answered",
   "[assessment duration, days] (hero fact, steps): days on site for one system assessment; not yet an FD row (FD-02 holds the assessment's price)",
-  "[report turnaround, working days] (steps): working days from the site visit to the costed options report (FD-01)",
-  "[assessment response time, working days] (closing): first reply to an assessment request; same name as contact-proposal's requests table (FD-01)",
+  "[report turnaround, working days] (steps): working days from the site visit to the costed options report (FD-01). A different fact from [assessment response time, working days], which ends before the visit; a QA head with 15 working days to answer FDA needs both",
+  "[assessment response time, working days] (closing arrow): first reply to an assessment request, with its scope, days on site and price; the options follow the visit. Same name as services' router row 6 ('Scope and price within…') and contact-proposal's requests table (FD-01)",
   "[assessment price, CAD, credit against upgrade] (closing body): price in CAD before tax, or free, and whether it is credited against the upgrade; same name as contact-proposal's requests table (FD-02, DR-005 rule 4)",
   "[days] in the router's Site downtime station (six rows): typical site downtime per upgrade type, from Aquemi's own plans, never a borrowed figure (FD-08; OQ-31)",
   "[PP loop sanitization method] (router, loop row): same name as home, systems, svc-cq and svc-fat-sat (FD-14, DR-013 rule 3)",

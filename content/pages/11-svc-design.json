@@ -80,7 +80,7 @@
     },
     {
      "t": "Into fabrication",
-     "d": "The approved design goes to fabrication; the factory and site acceptance tests (FAT, SAT) follow the same specification."
+     "d": "The factory and site acceptance tests (FAT, SAT) follow the approved specification."
     }
    ],
    "nav": "Stages"
@@ -159,7 +159,7 @@
     },
     {
      "q": "Which risk assessment method do you use?",
-     "a": "[risk assessment method], run with your quality and engineering leads under ICH Q9(R1), the quality risk management guideline."
+     "a": "[risk assessment method], under ICH Q9(R1), the quality risk management guideline."
     },
     {
      "q": "Can you work with our engineering firm's design?",
@@ -168,11 +168,14 @@
     {
      "q": "Is design charged separately from the equipment?",
      "a": "User requirement specification (URS) gap review: [URS review cost]. Design fees credited against an equipment order: [design fees credited, yes or no]. Design-only work: [design-only engagements offered, and pricing].",
-     "link": "contact-proposal#requests"
+     "link": "contact-proposal#requests",
+     "link_label": "See what each request costs"
     },
     {
      "q": "Who seals drawings, and do we get native CAD files?",
-     "a": "[P.Eng. seal and provinces covered]. Drawings come as [drawing formats delivered, PDF and native CAD], under [drawing ownership or licence terms]."
+     "a": "[P.Eng. seal and provinces covered]. Drawings come as [drawing formats delivered], under [drawing ownership or licence terms].",
+     "link": "cmp-quality#buying",
+     "link_label": "How buying from us works"
     }
    ]
   },
@@ -189,7 +192,7 @@
  ],
  "cta": {
   "h": "Send your URS, draft or final",
-  "body": "An engineer replies within [proposal response time, working days]. Review cost: [URS review cost].",
+  "body": "An engineer replies. Cost: [URS review cost].",
   "button": "Request a URS gap review",
   "link": "contact-proposal",
   "intent": "I have a URS or a draft|URS gap review",
@@ -200,23 +203,21 @@
   ],
   "turnaround": "[URS review turnaround, working days]",
   "returns": [
-   "URS compliance matrix, every gap marked",
-   "Proposed wording for each gap",
+   "URS compliance matrix: each gap with proposed wording",
    "Missing feed water data"
   ]
  },
  "todo": [
   "[URS review turnaround, working days] (hero fact, closing): working days from complete inputs to the written gap list; same name as contact-proposal's requests table and services (FD-01)",
   "[design to DQ, weeks] (hero fact): from the URS to an approved design, for one package; same name as services (FD-08). Say whether it includes the client's review time at each hold. Only a figure Aquemi commits to (DR-005 rule 5); at launch an unset fact goes (DR-010 rule 5)",
-  "[proposal response time, working days] (closing): the one first-reply figure on every page (FD-01). At launch, unset, the closing body reads \"An engineer replies in writing.\" (DR-006 rule 7)",
   "[URS review cost] (closing, FAQ): free or charged, in CAD (FD-02); defined in contact-proposal's requests table (DR-005 rule 4, DR-014 rule 3)",
   "[concept estimate class and accuracy] (stages, Concept and route): the AACE 18R-97 class (5 or 4) and the accuracy the concept estimate supports (FD-03; DR-005 rule 1 and its svc-design consequence). Not the same fact as systems' [estimate class and accuracy] for the published bands",
   "[design fees credited, yes or no] (FAQ): whether concept or design fees are credited against an equipment order (FD-02)",
   "[design-only engagements offered, and pricing] (FAQ, two answers): whether design without the equipment, or a review of another firm's design, is sold, and its price (FD-02, FD-25). Designing the PW package inside an engineering firm's project, as its supplier, stays a plain yes (MISSION: process design is a service)",
-  "[P.Eng. seal and provinces covered] (FAQ): who seals drawings and any calculations (P.Eng. or ing.), and in which provinces (FD-24, FD-34). Align with about's [provinces of licence] when answered (DR-011 rule 2)",
-  "[drawing formats delivered, PDF and native CAD] (FAQ): the formats delivered and the design software used (FD-10, FD-47); cmp-documentation's to-do points to this answer",
-  "[drawing ownership or licence terms] (FAQ): drawing and native-file ownership or licence (FD-10). The full term belongs in cmp-quality's \"How buying from us works\" (DR-005 rule 7); that row should carry the same name",
-  "[risk assessment method] (FAQ): the method Aquemi uses for the system risk assessment, and whether it is run with the client's quality and engineering leads (FD-46; same name as compliance). Never fill it with FMEA because a notebook suggested it (DR-011)",
+  "[P.Eng. seal and provinces covered] (FAQ): who seals drawings and any calculations (P.Eng. or ing.), and in which provinces (FD-24, FD-34). Align with about's [provinces of licence] when answered (DR-011 rule 2). The answer opens with it: unset at launch, the question goes (DR-005 rule 8)",
+  "[drawing formats delivered] (FAQ): which formats come with the drawings, for example PDF and native CAD files, and the design software used (FD-10, FD-47); cmp-documentation's to-do points to this answer",
+  "[drawing ownership or licence terms] (FAQ): drawing and native-file ownership or licence (FD-10). The full term lives in cmp-quality's \"How buying from us works\" (DR-005 rule 7) under the same name; the answer links there (cmp-quality#buying)",
+  "[risk assessment method] (FAQ): the method Aquemi uses for the system risk assessment, and whether it is run with the client's quality and engineering leads (FD-46; same name as compliance). \"Run with your quality and engineering leads\" was cut from the answer until confirmed. Never fill it with FMEA because a notebook suggested it (DR-011). The answer opens with it: unset at launch, the question goes (DR-005 rule 8)",
   "[outlet conductivity guarantee, µS/cm @ 25 °C] (traceability example): same placeholder as home and sys-pw (FD-21)",
   "[PP point-of-use valve type] (traceability example): the valve that holds URS-027's L/D ≤ 2; same name as sys-storage (FD-19). The example's \"Met\" assumes the PP loop can hold L/D ≤ 2: check it against [dead leg design limit, L/D] on sys-pw",
   "Confirm that Aquemi writes the commissioning and qualification plan at detailed design (stages) (FD-46)",

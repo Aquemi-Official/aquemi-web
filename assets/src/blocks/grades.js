@@ -4,7 +4,8 @@
    height of the list like pipes. The first grade named in the cell gets a filled tap, any alternative an open one;
    a branch pipe runs from the step to that tap. A cell that names none but says "same" ("same grade as the product") gets
    an open dashed tap on every lane under a "= product" mark; any other cell leaves the lanes empty. On a plate; phones
-   keep the lanes. */
+   keep the lanes. Plate caption: "Aquemi · <nav>", then "N <noun>" only when the block names its rows (caption_noun,
+   else fold_noun; wCount in core.js), so a table of products never reads "4 steps". */
 var LANES=[['Potable',/potable|softened|drinking/i],['PW',/\bPW\b|purified/i],['WFI',/\bWFI\b|for injection/i]];
 TABLE_AS.grades=function(b,H){var C=b.cols||[],R=b.rows||[];
  var g=b.grade!=null?b.grade:C.map(function(c,i){return /grade|water/i.test(c)?i:-1}).filter(function(i){return i>=0})[0];if(g==null)g=C.length-1;
@@ -18,4 +19,4 @@ TABLE_AS.grades=function(b,H){var C=b.cols||[],R=b.rows||[];
    return fli('<li class="aq-grades__row">',b,i)+idx(i)+'<div class="aq-grades__step"><h3 class="aq-grades__t">'+tcell(r[other[0]])+'</h3>'
     +other.slice(1).map(function(k){return r[k]?'<p class="aq-grades__d">'+tcell(r[k])+'</p>':''}).join('')
     +'<p class="aq-grades__g">'+tcell(r[g])+'</p></div>'
-    +lanes(r[g])+'</li>'}).join('')+'</ol>',b.fold_noun||'steps')+'</div>',{block:['Aquemi',b.nav||'Water grades',R.length+' steps']}));};
+    +lanes(r[g])+'</li>'}).join('')+'</ol>',b.fold_noun||'steps')+'</div>',{block:['Aquemi',b.nav||'Water grades',wCount(b,R.length)]}));};

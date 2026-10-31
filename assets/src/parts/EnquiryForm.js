@@ -11,8 +11,12 @@ function wSlug(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').
    "I am qualifying suppliers" -> cmp-quality#audit). {kind: "note", when, label, link, action, intent}: label is the
    line, link a page id or page#anchor, action the link's words (default the linked block's heading, else the page's
    name), intent the options that form ticks on arrival. With when it shows only while that option is ticked, like any
-   conditional field. Not a field: no number, never required, nothing sent, never validated. */
-function wFormNote(f){var lk=f.link&&wp(f.link)?wBtn(f.action||wlabel(f.link),f.link,'link',f.intent):'';
+   conditional field. Not a field: no number, never required, nothing sent, never validated.
+   Call: link "tel:[service phone number]" draws as every call link does (Button's call, wCall, on the phone rule wnum
+   that wtel uses for the NavBar and Footer numbers): it dials once the number is confirmed, digit groups on one line,
+   and until then shows "Call [service phone number]" as plain text, never a link. action is its lead word (default
+   "Call"); the number is added when the action leaves it out. A call carries no intent. */
+function wFormNote(f){var tel=/^tel:/i.test(f.link||''),lk=tel?wBtn(f.action||'Call',f.link,'link'):f.link&&wp(f.link)?wBtn(f.action||wlabel(f.link),f.link,'link',f.intent):'';
  return '<div class="aq-form__elsewhere aq-form__full"'+(f.when?' data-when="'+e(f.when)+'"'+(f._show?'':' hidden'):'')+'>'+(f.label?'<p class="aq-form__elsewhere-t">'+tx(f.label)+'</p>':'')+lk+'</div>'}
 /* Required count for the title row: the required fields showing when the form opens (conditional ones only once their
    trigger is ticked, by the visitor or the linking page's intent; f._show from wPreset). The change handler below keeps

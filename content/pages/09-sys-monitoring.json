@@ -49,7 +49,7 @@
   {
    "type": "table",
    "h": "Alert, action and trend",
-   "intro": "You set the levels with our input, from qualification data.",
+   "intro": "You set the levels with our input.",
    "cols": [
     "Line",
     "How it is set",
@@ -129,7 +129,7 @@
     },
     {
      "p": "Flow and pressure",
-     "v": "Return flow alarmed below [qualified minimum return flow, L/min]",
+     "v": "Return flow ≥ [qualified minimum return flow, L/h], alarmed",
      "m": "WHO TRS 1033, 8.6 and 12.3",
      "at": [
       57.4,
@@ -155,7 +155,7 @@
   {
    "type": "table",
    "h": "Data integrity, clause by clause",
-   "intro": "Mapped to 21 CFR Part 11 and EU good manufacturing practice (GMP) Annex 11, which Health Canada applies through GUI-0050.",
+   "intro": "Health Canada applies EU good manufacturing practice (GMP) Annex 11 through GUI-0050.",
    "cols": [
     "Requirement",
     "How the controls meet it",
@@ -176,16 +176,16 @@
      "12"
     ],
     [
-     "Electronic signatures",
-     "If used: signer, time and meaning, linked to the record",
-     "11.50, 11.70, 11.100–11.300",
-     "14"
-    ],
-    [
      "Record protection",
      "No edit or delete; backups every [backup interval], kept [data retention, years]",
      "11.10(c)",
      "7; 17"
+    ],
+    [
+     "Electronic signatures",
+     "If used: signer, time and meaning, linked to the record",
+     "11.50, 11.70, 11.100–11.300",
+     "14"
     ],
     [
      "Validation",
@@ -223,7 +223,7 @@
    "items": [
     {
      "t": "PLC and SCADA platform",
-     "d": "[PLC and SCADA platforms supported], matched to your site standard.",
+     "d": "[PLC and SCADA platforms supported].",
      "spot": "cpu"
     },
     {
@@ -271,7 +271,7 @@
     },
     {
      "q": "Do we get full access to the PLC and HMI code?",
-     "a": "[code delivered unlocked, and who owns it]. We record the code's version and checksum at the factory acceptance test (FAT). You can then show the running code is the tested code."
+     "a": "[code delivered unlocked, and who owns it]. The code's version and checksum are recorded at the factory acceptance test (FAT) [confirm]. You can then show the running code is the tested code."
     },
     {
      "q": "Our IT team allows no remote access to GMP equipment.",
@@ -300,13 +300,13 @@
   ]
  },
  "todo": [
-  "PLC and SCADA platforms supported, and whether buyers may choose their site standard (FD-23): [PLC and SCADA platforms supported]",
+  "PLC and SCADA platforms supported, and whether buyers may choose their site standard (FD-23): [PLC and SCADA platforms supported]. If buyers may choose, the options line adds 'or your site standard'. The integration protocols listed follow the platforms: confirm the list once they are set",
   "Who writes and tests the PLC and HMI code: Aquemi's own engineers or a named partner (FD-23). The validation and documents rows imply in-house",
-  "Whether PLC and HMI application code is delivered unlocked, under which licence or ownership, and escrow for anything delivered locked (FD-10): [code delivered unlocked, and who owns it]",
-  "Whether the code version and checksum are recorded at FAT and SAT, and each access role tested at FAT, as standard practice (FD-10, FD-45); the FAQ answer and the access row state it for FAT",
+  "Whether PLC and HMI application code is delivered unlocked, under which licence or ownership, and escrow for anything delivered locked (FD-10): [code delivered unlocked, and who owns it]. Fill it as the answer's opening yes or no (DR-003 rule 3); unfilled at launch, the question goes",
+  "Code version and checksum recorded at FAT as standard practice (FD-45; at SAT too, FD-10's recommendation): the FAQ answer marks it [confirm], as svc-fat-sat's FAQ does; drop the marker, or the sentence, once FD-45 is answered. Each access role tested at FAT: the access row, as svc-fat-sat's FAT column states it ('Roles, audit trail, time sync, backup and restore'); confirmed with that column's protocol scope",
   "Historian recording interval for quality values, seconds (FD-23): [recording interval, seconds]",
   "Backup interval and default data retention, years (FD-23): [backup interval], [data retention, years]",
-  "Qualified minimum return flow default, L/min, or a note that it is set per loop at qualification (FD-19): [qualified minimum return flow, L/min]",
+  "Qualified minimum return flow default, L/h (the site's flow unit, DR-003 rule 5), or a note that it is set per loop at qualification (FD-19): [qualified minimum return flow, L/h]",
   "Panel standard and approval route, in compliance's names (FD-24, OQ-78): [panel standard], [panel certification mark held, or field evaluation used]; whether panels are built in-house (FD-23)",
   "Whether electronic signatures are offered, and the method (FD-23; cmp-documentation's [electronic signature method]); the row reads 'If used' until then",
   "Whether read-only telemetry, remote alarm review and supervised remote sessions are offered as a service, and their scope (FD-23; svc-service shows remote diagnosis with the same status)",
