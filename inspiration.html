@@ -35,6 +35,7 @@ body { background: var(--surface); }
 .mg-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
 .mg-tools { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
 .mg-search { flex: 1 1 220px; min-height: 36px; padding: 0 var(--space-3); border: 1px solid var(--line-strong); background: var(--surface-raised); color: var(--ink); font: 400 14px/20px var(--font-mono); }
+.mg-src { flex: 0 1 320px; font-size: 13px; }
 .mg-size { display: inline-flex; align-items: center; gap: var(--space-2); font: 400 12px/16px var(--font-mono); color: var(--ink-muted); }
 .mg-count { font: 400 13px/18px var(--font-mono); color: var(--ink-muted); }
 
@@ -106,6 +107,7 @@ body { background: var(--surface); }
   <div class="mg-row mg-row--scroll" id="stats-f" role="group" aria-label="What became of it"><span class="mg-lab">Status</span></div>
   <div class="mg-tools">
     <input class="mg-search" id="q" type="search" placeholder="Search names, components, notes" aria-label="Search the gallery">
+    <select class="mg-search mg-src" id="src" aria-label="Source chat or pass"><option value="">All sources</option></select>
     <label class="mg-size">Tile size <input type="range" id="size" min="150" max="420" step="10" value="240"></label>
     <span class="mg-count" id="count" aria-live="polite"></span>
   </div>
@@ -134,6 +136,7 @@ body { background: var(--surface); }
     ['source', 'Drawing sources', 'Black-on-white sources the equipment masks were cleaned from (design-system/inspiration/art/).'],
     ['snapshot', 'Page snapshots', 'What every page looked like at each design pass, desktop and phone.'],
     ['fidelity', 'Concept beside build', 'Concept, desktop build and phone build side by side, from the fidelity pass.'],
+    ['chats', 'From other chats and agents', 'Screens and images from other Claude chats, agent scratchpads and earlier passes, oldest source first: the site as each pass saw it, Gemini and notebook sessions, review screenshots. Grouped by the chat or pass they came from; pick one under Source.'],
     ['archive', 'Archive', 'Superseded and retired files, kept for the record: replaced concepts, and the raster icons and spot drawings the site used before the Lucide-style SVG set.']
   ];
   var STATUS = [
@@ -143,30 +146,37 @@ body { background: var(--surface); }
   var CONTAIN = { drawing: 1, spot: 1, icon: 1, brand: 1 };
   var catName = {}, statName = {}; CATS.forEach(function (c) { catName[c[0]] = c[1] }); STATUS.forEach(function (s) { statName[s[0]] = s[1] });
   var $ = function (id) { return document.getElementById(id) };
-  var all = [], shown = [], state = { cat: '', status: '', q: '' };
+  var all = [], shown = [], state = { cat: '', status: '', q: '', src: '' };
   function el(t, c, txt) { var n = document.createElement(t); if (c) n.className = c; if (txt != null) n.textContent = txt; return n }
 
   // Filters live in the URL hash so a view can be shared: #cat=gemini&status=built&q=gauge
-  function readHash() { var h = new URLSearchParams(location.hash.slice(1)); state.cat = h.get('cat') || ''; state.status = h.get('status') || ''; state.q = h.get('q') || ''; $('q').value = state.q }
-  function writeHash() { var h = new URLSearchParams(); if (state.cat) h.set('cat', state.cat); if (state.status) h.set('status', state.status); if (state.q) h.set('q', state.q); history.replaceState(null, '', h.toString() ? '#' + h : location.pathname) }
+  function readHash() { var h = new URLSearchParams(location.hash.slice(1)); state.cat = h.get('cat') || ''; state.status = h.get('status') || ''; state.q = h.get('q') || ''; state.src = h.get('src') || ''; $('q').value = state.q }
+  function writeHash() { var h = new URLSearchParams(); if (state.cat) h.set('cat', state.cat); if (state.status) h.set('status', state.status); if (state.q) h.set('q', state.q); if (state.src) h.set('src', state.src); history.replaceState(null, '', h.toString() ? '#' + h : location.pathname) }
 
   function chips() {
     var cc = $('cats'), sc = $('stats-f');
     [['', 'All']].concat(CATS).forEach(function (c) { var n = all.filter(function (i) { return !c[0] || i.cat === c[0] }).length; if (!n) return;
-      var b = el('button', 'mg-chip'); b.type = 'button'; b.dataset.cat = c[0]; b.append(c[1] + ' '); b.appendChild(el('i', '', n)); b.onclick = function () { state.cat = c[0]; update() }; cc.appendChild(b) });
+      var b = el('button', 'mg-chip'); b.type = 'button'; b.dataset.cat = c[0]; b.append(c[1] + ' '); b.appendChild(el('i', '', n)); b.onclick = function () { state.cat = c[0]; if (c[0] !== 'chats') state.src = ''; update() }; cc.appendChild(b) });
     [['', 'Any']].concat(STATUS).forEach(function (s) { var n = all.filter(function (i) { return !s[0] || i.status === s[0] }).length; if (!n) return;
       var b = el('button', 'mg-chip'); b.type = 'button'; b.dataset.status = s[0]; if (s[0]) b.appendChild(el('span', 'mg-dot s-' + s[0])); b.append(s[1] + ' '); b.appendChild(el('i', '', n)); b.onclick = function () { state.status = s[0]; update() }; sc.appendChild(b) });
   }
+  function sources() {
+    var n = {}; all.forEach(function (i) { if (i.source) n[i.source] = (n[i.source] || 0) + 1 });
+    var sel = $('src'); if (!Object.keys(n).length) { sel.hidden = true; return }
+    Object.keys(n).forEach(function (k) { var o = el('option', '', k + ' · ' + n[k]); o.value = k; sel.appendChild(o) });
+    sel.onchange = function () { state.src = sel.value; if (state.src) state.cat = 'chats'; update() };
+  }
   function stats() {
     var gen = all.filter(function (i) { return i.cat === 'gemini' }).length, live = all.filter(function (i) { return i.status === 'live' }).length,
-      built = all.filter(function (i) { return i.status === 'built' }).length, snaps = all.filter(function (i) { return i.cat === 'snapshot' || i.cat === 'fidelity' }).length;
-    [[all.length, 'images'], [gen, 'Gemini originals'], [built, 'became components'], [live, 'live on the site'], [snaps, 'build records']].forEach(function (s) {
+      built = all.filter(function (i) { return i.status === 'built' }).length, snaps = all.filter(function (i) { return i.cat === 'snapshot' || i.cat === 'fidelity' }).length, chat = all.filter(function (i) { return i.cat === 'chats' }).length;
+    [[all.length, 'images'], [gen, 'Gemini originals'], [built, 'became components'], [live, 'live on the site'], [snaps, 'build records'], [chat, 'from other chats']].forEach(function (s) {
       var d = el('div'); d.appendChild(el('b', '', s[0])); d.append(s[1]); $('stats').appendChild(d) });
   }
   function match(i) {
     if (state.cat && i.cat !== state.cat) return false;
     if (state.status && i.status !== state.status) return false;
-    if (state.q) { var t = (i.title + ' ' + i.note + ' ' + (i.component || '') + ' ' + i.src + ' ' + catName[i.cat] + ' ' + statName[i.status]).toLowerCase(); if (state.q.toLowerCase().split(/\s+/).some(function (w) { return t.indexOf(w) < 0 })) return false }
+    if (state.src && i.source !== state.src) return false;
+    if (state.q) { var t = (i.title + ' ' + i.note + ' ' + (i.component || '') + ' ' + i.src + ' ' + catName[i.cat] + ' ' + statName[i.status] + ' ' + (i.source || '') + ' ' + (i.url || '') + ' ' + (i.date || '')).toLowerCase(); if (state.q.toLowerCase().split(/\s+/).some(function (w) { return t.indexOf(w) < 0 })) return false }
     return true;
   }
   function card(i, k) {
@@ -179,7 +189,7 @@ body { background: var(--surface); }
     c.appendChild(el('span', '', i.component ? '→ ' + i.component : (i.group || catName[i.cat]))); a.appendChild(c); li.appendChild(a); return li;
   }
   function update() {
-    writeHash();
+    writeHash(); $('src').value = state.src;
     document.querySelectorAll('[data-cat]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.cat === state.cat)) });
     document.querySelectorAll('[data-status]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.status === state.status)) });
     var board = $('board'); board.textContent = ''; shown = [];
@@ -209,6 +219,7 @@ body { background: var(--surface); }
     function row(k, v, href) { if (!v) return; dl.appendChild(el('dt', '', k)); var d = el('dd'); if (href) { var a = el('a', '', v); a.href = href; a.target = '_blank'; a.rel = 'noopener'; d.appendChild(a) } else d.textContent = v; dl.appendChild(d) }
     row('Status', statName[i.status]); row('Kind', catName[i.cat] + (i.group ? ' · ' + i.group : ''));
     if (i.component) row('Component', i.component + ' in the guide', 'design-system.html#c-' + i.component);
+    row('Source', i.source); row('Taken', i.date); row('Page', i.url, /^https?:\/\/(localhost|127\.)/.test(i.url || '') ? null : i.url); row('Folder', i.where);
     row('About', i.note); row('Size', i.size ? i.size[0] + ' × ' + i.size[1] + ' px · ' + i.kb + ' KB' : i.kb + ' KB'); row('File', i.src, i.src);
     $('lb').hidden = false; $('lb').classList.add('is-open'); document.body.style.overflow = 'hidden'; $('lb-x').focus();
   }
@@ -223,7 +234,7 @@ body { background: var(--surface); }
   var t; $('q').oninput = function () { clearTimeout(t); t = setTimeout(function () { state.q = $('q').value.trim(); update() }, 150) };
   $('size').oninput = function () { document.querySelectorAll('.mg-grid').forEach(function (g) { g.style.setProperty('--mg-col', $('size').value + 'px') }) };
   fetch('design-system/inspiration/gallery.json', { cache: 'no-cache' }).then(function (r) { return r.json() }).then(function (d) {
-    all = d.items; readHash(); chips(); stats(); update();
+    all = d.items; readHash(); chips(); sources(); stats(); update();
   });
 })();
 </script>

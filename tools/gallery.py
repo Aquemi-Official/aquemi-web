@@ -10,10 +10,12 @@ Needs Pillow (thumbnails). Sources it scans:
   design-system/inspiration/art/*.png           black-on-white sources of the equipment drawings
   design-system/inspiration/archive/*           superseded versions (kept, never shown on the site)
   design-system/inspiration/record/<set>/*.jpg  build records: what the site looked like at each pass
+  design-system/inspiration/chats/<source>/*.jpg images from other Claude chats, agents' scratchpads and earlier passes;
+                                              chats/index.json gives each one's source chat, time taken and page URL
   assets/illustrations, assets/icons (SVG), brand/   what the site uses
 Status of each item is worked out from the inspiration README tables and from whether the live pages use it.
 """
-import glob, json, os, re, shutil, sys
+import glob, json, os, re, shutil, sys, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INS = os.path.join(ROOT, 'design-system', 'inspiration')
@@ -61,8 +63,9 @@ def readme_rows():
     return rows
 
 
-def thumb(src, mask=False):
-    """JPEG thumbnail; masks (transparent line art) are painted navy on limestone so they read."""
+def thumb(src, mask=False, ratio=3):
+    """JPEG thumbnail; masks (transparent line art) are painted navy on limestone so they read.
+    Taller images keep only their top, at most `ratio` times as high as wide."""
     from PIL import Image
     os.makedirs(THUMBS, exist_ok=True)
     out = os.path.join(THUMBS, rel(src).replace('/', '__').rsplit('.', 1)[0] + '.jpg')
@@ -82,9 +85,9 @@ def thumb(src, mask=False):
     im = im.convert('RGB')
     w = min(TW, im.width)
     h = max(1, round(im.height * w / im.width))
-    if h > w * 3:  # very tall page shots: keep the top
-        im = im.crop((0, 0, im.width, im.width * 3))
-        h = w * 3
+    if h > w * ratio:  # very tall page shots: keep the top
+        im = im.crop((0, 0, im.width, round(im.width * ratio)))
+        h = round(w * ratio)
     im.resize((w, h), Image.LANCZOS).save(out, 'JPEG', quality=78, optimize=True, progressive=True)
     return rel(out), size
 
@@ -136,6 +139,61 @@ def import_records(research):
             put(f, os.path.join(rec, 'fidelity', os.path.basename(f)[:-4] + '.jpg'), maxw=1800)
 
 
+PAGE_NAMES = {'index.html': 'site', '': 'site', 'design-system.html': 'design system guide', 'inspiration.html': 'media gallery',
+              'versions.html': 'page history', 'versions': 'page history'}
+TOOL_HOSTS = {'gemini.google.com': 'Gemini', 'notebook.google.com': 'Notebook', 'claude.ai': 'Claude artifact'}
+
+
+def chat_title(url, when):
+    """Short name for a chat screenshot from the page it shows: 'sys-pw', 'design system guide', 'Gemini'."""
+    if not url:
+        return 'Screenshot · ' + when
+    m = re.match(r'https?://([^/:]+)(?::\d+)?/?([^?#]*)[^#]*#?(.*)$', url)
+    host, path, frag = m.groups() if m else ('', '', '')
+    if host in TOOL_HOSTS:
+        name = TOOL_HOSTS[host] + (' library' if path.startswith('library') else '')
+    else:
+        name = PAGE_NAMES.get(path.rsplit('/', 1)[-1], path.rsplit('/', 1)[-1] or 'site')
+        page = re.sub(r'^page=', '', frag.split('&')[0]) if frag else ''
+        if page and not page.startswith(('v=', 'cat=')):
+            name = page if name == 'site' else name + ' · ' + page
+    return name + ' · ' + when
+
+
+def chats(add):
+    """Images from other Claude chats, agents' scratchpads and earlier passes, one group per source
+    (design-system/inspiration/chats/<source>/; chats/index.json says where each came from)."""
+    base = os.path.join(INS, 'chats')
+    meta = {}
+    if os.path.exists(os.path.join(base, 'index.json')):
+        meta = {i['file']: i for i in json.load(open(os.path.join(base, 'index.json'), encoding='utf8'))['items']}
+    found = []
+    for f in glob.glob(os.path.join(base, '*', '*.*')):
+        if not f.lower().endswith(('.jpg', '.jpeg', '.png', '.webp')):
+            continue
+        key = rel(f).split('/chats/', 1)[1]
+        m = meta.get(key) or {'slug': key.split('/')[0], 'label': key.split('/')[0].replace('-', ' ').capitalize(),
+                              'mtime': os.path.getmtime(f), 'from': '', 'url': None, 'sheet': False, 'kind': 'chat'}
+        found.append((m['mtime'], f, m))
+    first = {}
+    for mt, f, m in sorted(found, key=lambda x: x[0]):
+        first.setdefault(m['label'], mt)
+    for mt, f, m in sorted(found, key=lambda x: (first[x[2]['label']], x[0])):
+        when = time.strftime('%d %b %H:%M', time.localtime(mt)).lstrip('0')
+        url = m.get('url') or ''
+        host = re.sub(r'^https?://([^/:]+).*', r'\1', url) if url else ''
+        third_party = bool(host) and host not in TOOL_HOSTS and not re.match(r'(localhost|127\.0\.0\.1|.*\.github\.io)$', host)
+        if m.get('kind') == 'chat':
+            title = chat_title(url, when)
+        else:
+            n = os.path.basename(f).rsplit('.', 1)[0].split('--')[-1]
+            s = re.match(r'(.+)-(1280|375)(-sheet)?$', n)
+            title = ('%s · %s' % (s.group(1), 'desktop' if s.group(2) == '1280' else 'phone')) if s else n.replace('-', ' ')
+        note = ('Whole page, sections stacked. ' if m.get('sheet') else '') + 'From ' + (m.get('from') or 'another chat')
+        add(f, 'chats', 'reference' if third_party else 'record', title, note, group=m['label'], order=first[m['label']], ratio=1,
+            source=m['label'], date=time.strftime('%Y-%m-%d %H:%M', time.localtime(mt)), url=url or None, where=m.get('sub') or None)
+
+
 def build():
     rows = readme_rows()
     pages = json.load(open(os.path.join(ROOT, 'content', 'pages.json'), encoding='utf8'))['pages']
@@ -144,11 +202,11 @@ def build():
         open(os.path.join(ROOT, 'assets', 'aquemi-site.js'), encoding='utf8').read()
     items = []
 
-    def add(src, cat, status, title, note='', comp=None, mask=False, group=None, order=0):
-        t, size = thumb(src, mask) if not src.endswith('.svg') else (rel(src), None)
-        items.append({'src': rel(src), 'thumb': t, 'cat': cat, 'status': status, 'title': title, 'note': note,
-                      'component': comp, 'group': group, 'order': order, 'size': size or (None if src.endswith('.svg') else dims(src)),
-                      'kb': round(os.path.getsize(src) / 1024)})
+    def add(src, cat, status, title, note='', comp=None, mask=False, group=None, order=0, ratio=3, **extra):
+        t, size = thumb(src, mask, ratio) if not src.endswith('.svg') else (rel(src), None)
+        items.append(dict({'src': rel(src), 'thumb': t, 'cat': cat, 'status': status, 'title': title, 'note': note,
+                           'component': comp, 'group': group, 'order': order, 'size': size or (None if src.endswith('.svg') else dims(src)),
+                           'kb': round(os.path.getsize(src) / 1024)}, **extra))
 
     for f in sorted(glob.glob(os.path.join(INS, 'gemini', '*.png'))):
         name = os.path.basename(f)[:-4]
@@ -201,6 +259,8 @@ def build():
             m = re.match(r'(.+)-(1280|375)$', n)
             t = ('%s · %s' % (m.group(1), 'desktop' if m.group(2) == '1280' else 'phone')) if m else n.replace('-', ' ')
             add(f, 'fidelity' if setname == 'fidelity' else 'snapshot', 'record', t, label, group=label, order=i)
+
+    chats(add)
 
     out = os.path.join(INS, 'gallery.json')
     json.dump({'generated_by': 'tools/gallery.py', 'items': items}, open(out, 'w', encoding='utf8', newline='\n'), ensure_ascii=False, indent=0)

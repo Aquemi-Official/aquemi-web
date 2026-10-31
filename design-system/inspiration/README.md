@@ -73,6 +73,7 @@ build) into `record/`. Rerun it after adding any image.
 
 - `archive/`: superseded versions, recovered from git history when a file was replaced.
 - `record/<pass>/<page>-<width>.jpg`, `record/fidelity/`: what the site looked like at each pass.
+- `chats/<source>/*.jpg`: images from other Claude chats, agent scratchpads and earlier passes (browser screenshots, Gemini and notebook sessions, section shots stacked into whole-page sheets), one folder per chat or pass. `chats/index.json` records where each came from, when it was taken and the page it shows; the gallery shows them under "From other chats and agents" with a Source filter. Copied as JPEG (quality 72, at most 1440 px wide; stacked sheets 720 px desktop, 320 px phone), exact and same-picture duplicates dropped, along with anything not about Aquemi.
 
 - `gemini/NN-<kind>-<subject>.png`: the full-resolution original of every Gemini output, numbered oldest first. Add each new one here, then run `python tools/gallery.py`.
 - `concept-<letter>-<section>.png`: the capture a component was rebuilt from (table above).
