@@ -25,6 +25,7 @@ Closing is the call to action at the end of every page: one centred headline in 
 
 ## Token rules
 
+- Ground: Navy depth, the brand book's gradient ground for the closing band (`linear-gradient(160deg, navy + 12 % on-navy, navy 45 %, navy + 30 % on-limestone)`), set on `.aq-closing.aq-band--navy`. Body text keeps 5.7:1 or better at every stop in both themes.
 - Ground `navy` (from `aq-band--navy`); text `on-navy`, secondary text `on-navy-muted`. These stay light on navy in both themes (`ink-inverse` would turn dark in the dark theme).
 - Hairlines: 1 px `on-navy-muted` at 30 % strength. Labels ("What to send us", "Proof") in the `eyebrow` style in `on-navy-muted`.
 - Proof value in `font-mono` 300, 40/44 px, tabular figures, `on-navy`; its label 14/22 `on-navy-muted`.

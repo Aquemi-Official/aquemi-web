@@ -222,6 +222,33 @@ a.aq-rows__row:hover .aq-icon { background-color: var(--flow); }
   .aq-btn--link { min-height: 44px; padding: 0; justify-content: flex-start; }
 }
 
+/* ---------- BackToTop: a quiet floating button that returns to the top of a long page ---------- */
+/* Fixed bottom right. Hidden (and out of the tab order) until the reader is well down the page, then it fades in.
+   A control, so radius-sm and a line-strong rule; it floats, so it takes shadow-overlay (the brand book's one shadow). */
+.aq-back-to-top {
+  position: fixed; right: var(--space-8); bottom: var(--space-8); z-index: 30;
+  display: inline-flex; align-items: center; gap: var(--space-2); height: 44px; padding: 0 var(--space-4);
+  background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-overlay); font: 500 14px/20px var(--font-sans); cursor: pointer;
+  opacity: 0; visibility: hidden; transform: translateY(var(--space-2));
+  transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1), transform 200ms cubic-bezier(0.2, 0, 0, 1), visibility 0s linear 200ms, border-color 200ms, color 200ms;
+}
+.aq-back-to-top.is-shown { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.aq-back-to-top:hover { border-color: var(--ink); }
+.aq-back-to-top:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-back-to-top__arrow { color: var(--flow); font-family: var(--font-mono); transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-back-to-top:hover .aq-back-to-top__arrow { transform: translateY(calc(-1 * var(--space-1))); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-back-to-top, .aq-back-to-top__arrow { transition: none; transform: none; }
+}
+
+/* Phones: the arrow alone in a 44 px square, inside the 16 px gutter; the label stays for screen readers */
+@container (max-width: 860px) {
+  .aq-back-to-top { right: var(--space-4); bottom: var(--space-4); width: 44px; padding: 0; justify-content: center; }
+  .aq-back-to-top__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+
 /* ---------- Footer: the site map on navy ---------- */
 /* The brand footer as the site first drew it, with its spacing: navy in both themes; the Limestone logo at 160 px with one line of
    description, then four sitemap columns in one row, headed in the eyebrow style in Limestone; the legal line under
@@ -646,6 +673,8 @@ a.aq-rows__row:hover .aq-icon { background-color: var(--flow); }
    edge. The only centred text on the site. A checklist, exchange or proof, when the page has one, sits below the
    button under a faint hairline, its lists left-aligned. Hairlines on navy are on-navy-muted at 30 % strength. */
 .aq-closing { position: relative; overflow: hidden; text-align: center; }
+/* Navy depth (brand book, Gradient grounds): navy lifting slightly at the top left and deepening to the bottom right */
+.aq-closing.aq-band--navy { background: linear-gradient(160deg, color-mix(in srgb, var(--navy) 88%, var(--on-navy)) 0%, var(--navy) 45%, color-mix(in srgb, var(--navy) 70%, var(--on-limestone)) 100%); }
 .aq-closing__arc { position: absolute; left: -1px; top: -1px; width: min(30%, 300px); height: auto; pointer-events: none; }
 .aq-closing__arc path { fill: none; stroke: var(--limestone); stroke-opacity: 0.55; stroke-width: 1.5; }
 .aq-closing__frame { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
@@ -1213,6 +1242,9 @@ a.aq-contact-routes__num:hover { text-decoration: underline; text-underline-offs
    strokes, `flow` only where it marks the water path or a leader. No frames, grids, crosses or stamps. */
 .aq-hero { position: relative; overflow: hidden; padding-block: var(--space-24) var(--space-16); background: var(--surface); }
 .aq-hero--home { padding-block: var(--space-32) var(--space-24); }
+/* Flow mist (brand book, Gradient grounds): one faint flow-tint bloom in the top-right corner, where a system page's
+   equipment drawing sits; the headline stays on plain surface */
+.aq-hero--mist { background: radial-gradient(ellipse 60% 70% at 100% 0%, color-mix(in srgb, var(--flow-tint) 90%, transparent) 0%, transparent 70%), var(--surface); }
 .aq-hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: stretch; }
 .aq-hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; margin-top: var(--space-2); }
 .aq-hero .aq-tags { margin-top: var(--space-2); }

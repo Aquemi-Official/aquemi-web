@@ -79,6 +79,18 @@ function gridItem(inner,link){return link&&wp(link)?'<a href="#'+e(link)+'" data
 var TABLE_AS={};
 /* Block renderers register here: BLOCKS[type] = function(block, heading) -> section HTML. See assets/src/blocks/. */
 var BLOCKS={};
+/* BackToTop: a floating button that appears once the reader is a screen and a half down the page and returns them to
+   the top. It moves focus to the logo link, so keyboard and screen-reader users land at the start of the page too.
+   Smooth scroll unless reduced motion is set. One scroll listener for the whole site; each render writes a fresh button. */
+function wBackToTop(){return '<button class="aq-back-to-top" type="button" id="wtop"><span class="aq-back-to-top__arrow" aria-hidden="true">↑</span><span class="aq-back-to-top__label">Back to top</span></button>'}
+if(typeof document!=='undefined'){
+ var topSync=function(){var b=document.getElementById('wtop');if(b)b.classList.toggle('is-shown',window.scrollY>window.innerHeight*1.5)};
+ window.addEventListener('scroll',topSync,{passive:true});window.addEventListener('resize',topSync);
+ document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('#wtop');if(!b)return;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+  var home=document.querySelector('.aq-nav__home');if(home)home.focus({preventScroll:true});b.classList.remove('is-shown')});
+}
 /* Button. intent (optional): option labels, "|"-separated, that the linked page's EnquiryForm ticks on arrival (data-intent) */
 function wBtn(label,link,kind,intent){var j=link&&link.charAt(0)==='#';return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(j?WP:(link||'contact-proposal'))+'" '+(j?'data-jump="'+e(link.slice(1)):'data-wp="'+e(link||'contact-proposal'))+'"'+(intent&&!j?' data-intent="'+e(intent)+'"':'')+'>'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
 /* Closing: the call to action at the end of every page, on the navy band.
@@ -312,7 +324,7 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
  var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
  var right=home?wHomeLoop(p):art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · 316L, cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
- return '<section class="aq-hero'+(home?' aq-hero--home':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
+ return '<section class="aq-hero'+(home?' aq-hero--home':'')+(co?' aq-hero--mist':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
 /* KeyFacts: the measurement strip under the Hero. facts = [{l, v}].
    Label "Conductivity at 25 °C · USP <645>" -> dt name + a second dd for the source (after the last " · ").
    Value "≤ 1.3 µS/cm" -> comparator, figure, unit; the unit is split off only when the tail after the last space
@@ -1244,10 +1256,10 @@ function wVsEnd(c,C){if(!c)return '';var one=typeof c==='string'||c.length<3;
   +(one?'<p class="aq-versus__end-v">'+tcell(typeof c==='string'?c:c[c.length-1])+'</p>':'<p class="aq-versus__end-v" data-k="'+e(C[1])+'">'+tcell(c[1])+'</p><p class="aq-versus__end-v" data-k="'+e(C[2])+'">'+tcell(c[2])+'</p>')+'</div>'}
 /* One content section per block type in pages.json */
 function wBlock(b){var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}
-/* Page: NavBar, Hero, SectionNav, sections on surface separated by hairlines, Closing, Footer */
+/* Page: NavBar, Hero, SectionNav, sections on surface separated by hairlines, Closing, Footer, BackToTop */
 function wPage(p){var c=p.cta,out='';
  (p.blocks||[]).forEach(function(b,i){var h=wBlock(b);if(b.nav)h=h.replace('<section class=','<section id="'+jid(b,i)+'" class=');out+=h});
- return wHead(p.section)+wHero(p)+wSectionNav(p)+out+wClosing(c,p)+wFoot()}
+ return wHead(p.section)+wHero(p)+wSectionNav(p)+out+wClosing(c,p)+wFoot()+wBackToTop()}
 document.addEventListener('click',function(ev){var g=ev.target.closest('[data-step-go]');if(g){var fm=g.closest('form'),to=+g.dataset.stepGo;fm.querySelectorAll('.aq-form__step').forEach(function(s){s.hidden=+s.dataset.step!==to});fm.querySelectorAll('.aq-form__progress li').forEach(function(l,i){if(i===to)l.setAttribute('aria-current','step');else l.removeAttribute('aria-current')});var lg=fm.querySelector('[data-step="'+to+'"] legend');if(lg){lg.tabIndex=-1;lg.focus()}fm.scrollIntoView({block:'start'});return}
  var j=ev.target.closest('[data-jump]');if(j){var s=document.getElementById(j.dataset.jump);if(s){ev.preventDefault();s.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}return}
  var t=ev.target.closest('[data-wp]');if(!t)return;ev.preventDefault();WP=t.dataset.wp;WMENU=false;WINTENT=t.dataset.intent||'';

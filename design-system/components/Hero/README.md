@@ -86,3 +86,7 @@ The hero must fit about 1.5 phone screens including its facts, and the primary b
 
 - Padding `space-12` top and bottom. Headline: `display` 34/38, `display-xl` 40/44; lead 17/26.
 - Order: eyebrow, headline, lead, actions, then the figure. The equipment figure is full width with its callouts above and below the drawing (see above); the KeyFacts strip lists one fact per row. The photograph placeholder is 2:1.
+
+## Flow mist ground
+
+System pages with an equipment drawing (`sys-*`) carry `aq-hero--mist`: one faint `flow-tint` bloom in the top-right corner behind the drawing, over `surface` (the brand book's Gradient grounds). The headline and lead stay on plain ground; text keeps 6.8:1 or better in both themes. No other hero takes a gradient.

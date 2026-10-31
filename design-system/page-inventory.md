@@ -2,7 +2,7 @@
 
 The draft website at https://aquemi-official.github.io/aquemi-web/ has 31 pages built from this system. The repository is `Aquemi-Official/aquemi-web`; page copy lives in `content/pages.json`. Use this list when you design or write any page, deck or document so page names and structure match the site.
 
-Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a short `nav` label, four or more), content sections, a closing navy Band, Footer. The sections each page uses are listed below in order, each as `type (nav label, or heading when it has none)`; `closing` notes a `cta.include` checklist and an explicit `cta.proof`.
+Every page is: NavBar, Hero, an optional SectionNav (pages whose blocks carry a short `nav` label, four or more), content sections, a closing navy Band, Footer, and the BackToTop button (shown once the reader is well down the page). The sections each page uses are listed below in order, each as `type (nav label, or heading when it has none)`; `closing` notes a `cta.include` checklist and an explicit `cta.proof`.
 
 ## Home
 

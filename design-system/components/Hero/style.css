@@ -3,6 +3,9 @@
    strokes, `flow` only where it marks the water path or a leader. No frames, grids, crosses or stamps. */
 .aq-hero { position: relative; overflow: hidden; padding-block: var(--space-24) var(--space-16); background: var(--surface); }
 .aq-hero--home { padding-block: var(--space-32) var(--space-24); }
+/* Flow mist (brand book, Gradient grounds): one faint flow-tint bloom in the top-right corner, where a system page's
+   equipment drawing sits; the headline stays on plain surface */
+.aq-hero--mist { background: radial-gradient(ellipse 60% 70% at 100% 0%, color-mix(in srgb, var(--flow-tint) 90%, transparent) 0%, transparent 70%), var(--surface); }
 .aq-hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: stretch; }
 .aq-hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; margin-top: var(--space-2); }
 .aq-hero .aq-tags { margin-top: var(--space-2); }

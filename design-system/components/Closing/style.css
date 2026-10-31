@@ -4,6 +4,8 @@
    edge. The only centred text on the site. A checklist, exchange or proof, when the page has one, sits below the
    button under a faint hairline, its lists left-aligned. Hairlines on navy are on-navy-muted at 30 % strength. */
 .aq-closing { position: relative; overflow: hidden; text-align: center; }
+/* Navy depth (brand book, Gradient grounds): navy lifting slightly at the top left and deepening to the bottom right */
+.aq-closing.aq-band--navy { background: linear-gradient(160deg, color-mix(in srgb, var(--navy) 88%, var(--on-navy)) 0%, var(--navy) 45%, color-mix(in srgb, var(--navy) 70%, var(--on-limestone)) 100%); }
 .aq-closing__arc { position: absolute; left: -1px; top: -1px; width: min(30%, 300px); height: auto; pointer-events: none; }
 .aq-closing__arc path { fill: none; stroke: var(--limestone); stroke-opacity: 0.55; stroke-width: 1.5; }
 .aq-closing__frame { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }

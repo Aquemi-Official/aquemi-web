@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gradient backdrops</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components/bundle.css">
+<style>
+/* Exploration only: gradient backdrops for site sections, built from tokens. Not part of the design system.
+   The brand book says "No gradients"; adopting any of these means amending that rule first. */
+body { margin: 0; background: var(--surface); }
+.gx-bar { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between;
+  padding: var(--space-3) var(--space-8); background: var(--surface); border-bottom: 1px solid var(--line); font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+.gx-bar b { font-weight: 500; color: var(--ink); }
+.gx-intro { padding-block: var(--space-16) var(--space-8); }
+.gx-intro .aq-lead { margin-top: var(--space-4); }
+.gx-note { margin-top: var(--space-6); padding: var(--space-4); border-left: 2px solid var(--caution); background: var(--caution-tint); color: var(--ink); max-width: var(--text-max); font: 400 14px/22px var(--font-sans); }
+.gx-group { padding-top: var(--space-12); }
+.gx-group > .aq-eyebrow { display: block; margin-bottom: var(--space-4); }
+
+/* One option: the sample section on its backdrop, then its notes */
+.gx-opt { margin-bottom: var(--space-16); }
+.gx-sample { position: relative; overflow: hidden; padding: var(--space-24) var(--space-12); border: 1px solid var(--line); }
+.gx-sample .aq-stack { max-width: 640px; position: relative; }
+.gx-sample .aq-btn { align-self: flex-start; }
+.gx-meta { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); padding-top: var(--space-4); border-top: 0; }
+.gx-meta h3 { margin: 0 0 var(--space-2); font: 500 20px/28px var(--font-sans); color: var(--ink); }
+.gx-meta p { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+.gx-meta code { display: block; white-space: pre-wrap; font: 400 12px/18px var(--font-mono); color: var(--ink-muted); background: var(--surface-sunken); padding: var(--space-3); }
+.gx-on-navy { color: var(--on-navy); }
+.gx-on-navy .aq-lead { color: var(--on-navy-muted); }
+.gx-on-navy .aq-eyebrow { color: var(--on-navy-muted); }
+.gx-on-navy .aq-btn--primary { background: var(--limestone); color: var(--navy); }
+
+/* ---------- Light grounds ---------- */
+/* A. Limestone dawn: the page warms toward Limestone at the bottom of a quiet band */
+.gx-a { background: linear-gradient(180deg, var(--surface) 0%, color-mix(in srgb, var(--limestone) var(--gx-warm, 55%), var(--surface)) 100%); }
+/* Limestone stays light in the dark theme, so the dark ground only takes a trace of it (text keeps 4.5:1) */
+[data-theme="dark"] .gx-a { --gx-warm: 10%; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .gx-a { --gx-warm: 10%; } }
+/* B. Flow mist: one faint flow-tint bloom in the top-right corner, where a hero drawing sits */
+.gx-b { background:
+  radial-gradient(ellipse 60% 70% at 100% 0%, color-mix(in srgb, var(--flow-tint) 90%, transparent) 0%, transparent 70%),
+  var(--surface); }
+/* C. Steel sheen: raised white to sunken, like electropolished 316L, for spec and data sections */
+.gx-c { background: linear-gradient(180deg, var(--surface-raised) 0%, var(--surface) 55%, var(--surface-sunken) 100%); }
+/* D. Water line: plain surface that clears into flow-tint at the bottom edge, with a flow hairline as the waterline */
+.gx-d { background: linear-gradient(180deg, var(--surface) 0%, var(--surface) 55%, var(--flow-tint) 100%); box-shadow: inset 0 -1px 0 var(--flow); }
+
+/* ---------- Navy grounds ---------- */
+/* E. Navy depth: navy deepening toward the bottom right, for the closing band */
+.gx-e { background: linear-gradient(160deg, color-mix(in srgb, var(--navy) 88%, var(--on-navy)) 0%, var(--navy) 45%, color-mix(in srgb, var(--navy) 70%, #000) 100%); }
+/* F. Arc glow: a quiet Limestone glow centred on the arc motif's corner, the arc on top */
+.gx-f { background:
+  radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--limestone) 16%, transparent) 0%, transparent 42%),
+  var(--navy); }
+.gx-f .gx-arc { position: absolute; left: -1px; top: -1px; width: min(30%, 300px); height: auto; }
+.gx-f .gx-arc path { fill: none; stroke: var(--limestone); stroke-opacity: 0.55; stroke-width: 1.5; }
+/* G. Deep water: navy that turns toward Flow Blue at the bottom, light coming up through water */
+.gx-g { background: linear-gradient(180deg, var(--navy) 0%, var(--navy) 40%, color-mix(in srgb, var(--navy) 72%, var(--flow)) 100%); }
+/* H. Clean room: a broad, centred light falloff behind an equipment drawing on navy */
+.gx-h { background:
+  radial-gradient(ellipse 55% 65% at 70% 45%, color-mix(in srgb, var(--navy) 80%, var(--on-navy-muted)) 0%, transparent 70%),
+  var(--navy); }
+.gx-h .gx-fig, .gx-b .gx-fig { position: absolute; right: var(--space-12); top: 50%; transform: translateY(-50%); width: 280px; height: 280px;
+  -webkit-mask: url(../../assets/illustrations/sys-pw.png) center / contain no-repeat; mask: url(../../assets/illustrations/sys-pw.png) center / contain no-repeat; }
+.gx-h .gx-fig { background: var(--on-navy-muted); }
+.gx-b .gx-fig { background: var(--ink-muted); }
+
+@container (max-width: 860px) {
+  .gx-bar { padding: var(--space-3) var(--space-4); }
+  .gx-sample { padding: var(--space-12) var(--space-4); }
+  .gx-h .gx-fig, .gx-b .gx-fig { display: none; }
+  .gx-meta { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+}
+</style>
+</head>
+<body>
+<div class="aq-page">
+<div class="gx-bar"><span><b>Gradient backdrops</b> · exploration, not in the design system</span>
+ <span><label><input type="checkbox" id="gx-dark"> Dark theme</label></span></div>
+
+<div class="aq-in">
+ <header class="gx-intro">
+  <p class="aq-eyebrow">Section grounds · exploration</p>
+  <h1 class="aq-display">Gradient backdrops</h1>
+  <p class="aq-lead">Eight ways to give a section depth without adding objects. Each is built only from the colour tokens, so it follows light and dark themes, and each keeps body text on a solid enough ground to hold 4.5:1.</p>
+  <p class="gx-note">The brand book currently says "No gradients." Adopting one of these means amending that rule, ideally to a narrow allowance: one gradient ground per page, on a band or hero, never behind tables or long text.</p>
+ </header>
+
+ <section class="gx-group">
+  <span class="aq-eyebrow">On the page ground</span>
+
+  <div class="gx-opt">
+   <div class="gx-sample gx-a"><div class="aq-stack">
+    <p class="aq-eyebrow">Built in Canada</p>
+    <h2 class="aq-h1">One team from URS to requalification</h2>
+    <p class="aq-lead">Process engineers, welders, test technicians and validation staff in one shop, so the system you qualify is the system we built.</p>
+    <a class="aq-btn aq-btn--secondary" href="#">Meet the team</a></div></div>
+   <div class="gx-meta"><div><h3>A · Limestone dawn</h3><p>The page warms toward Limestone at the bottom. Reads as the quiet Limestone band, softened. For statement bands and About sections.</p></div>
+    <code>linear-gradient(180deg, surface, limestone 55 % into surface)</code></div>
+  </div>
+
+  <div class="gx-opt">
+   <div class="gx-sample gx-b"><span class="gx-fig" aria-hidden="true"></span><div class="aq-stack">
+    <p class="aq-eyebrow">PW · USP &lt;645&gt; · Ph. Eur. 0008</p>
+    <h2 class="aq-display">Purified Water, sized for your coldest day</h2>
+    <p class="aq-lead">RO and EDI skids that make PW below the USP &lt;645&gt; and &lt;643&gt; limits, without regeneration chemicals.</p>
+    <a class="aq-btn aq-btn--primary" href="#">Request a sizing proposal <span class="aq-btn__arrow">→</span></a></div></div>
+   <div class="gx-meta"><div><h3>B · Flow mist</h3><p>One faint Flow Blue bloom in the corner where the equipment drawing sits. Draws the eye to the figure, leaves the headline on plain ground. For system heroes.</p></div>
+    <code>radial-gradient(ellipse 60% 70% at 100% 0%, flow-tint, transparent 70%), surface</code></div>
+  </div>
+
+  <div class="gx-opt">
+   <div class="gx-sample gx-c"><div class="aq-stack">
+    <p class="aq-eyebrow">Limits</p>
+    <h2 class="aq-h1">Conductivity holds below 1.1 µS/cm at 25 °C</h2>
+    <p class="aq-lead">Every limit as the pharmacopoeia states it, measured at the furthest point of use.</p>
+    <a class="aq-btn aq-btn--link" href="#">See all limits <span class="aq-btn__arrow">→</span></a></div></div>
+   <div class="gx-meta"><div><h3>C · Steel sheen</h3><p>White at the top falling to the sunken grey, like electropolished 316L under even light. Neutral enough to sit behind a spec section.</p></div>
+    <code>linear-gradient(180deg, surface-raised, surface 55 %, surface-sunken)</code></div>
+  </div>
+
+  <div class="gx-opt">
+   <div class="gx-sample gx-d"><div class="aq-stack">
+    <p class="aq-eyebrow">Water path</p>
+    <h2 class="aq-h1">Seven systems, one water path</h2>
+    <p class="aq-lead">One system or the whole path. We state where our scope ends.</p>
+    <a class="aq-btn aq-btn--link" href="#">Explore systems <span class="aq-btn__arrow">→</span></a></div></div>
+   <div class="gx-meta"><div><h3>D · Water line</h3><p>Plain ground that clears into Flow tint toward the bottom, closed by a 1 px Flow hairline like a waterline. For the water path and process sections.</p></div>
+    <code>linear-gradient(180deg, surface 55 %, flow-tint) + 1 px flow line at the bottom</code></div>
+  </div>
+ </section>
+
+ <section class="gx-group">
+  <span class="aq-eyebrow">On navy</span>
+
+  <div class="gx-opt">
+   <div class="gx-sample gx-e gx-on-navy"><div class="aq-stack">
+    <h2 class="aq-h1">Send your URS. An engineer replies.</h2>
+    <p class="aq-lead">An engineer replies with questions, not a sales script.</p>
+    <a class="aq-btn aq-btn--primary" href="#">Request a proposal <span class="aq-btn__arrow">→</span></a></div></div>
+   <div class="gx-meta"><div><h3>E · Navy depth</h3><p>Navy lifting slightly at the top left and deepening to the bottom right. Gives the closing band weight without changing its colour. For the closing band.</p></div>
+    <code>linear-gradient(160deg, navy + 12 % on-navy, navy 45 %, navy + 30 % black)</code></div>
+  </div>
+
+  <div class="gx-opt">
+   <div class="gx-sample gx-f gx-on-navy"><svg class="gx-arc" viewBox="0 0 300 220" aria-hidden="true"><path d="M0 218.5 A 218 218 0 0 1 218 0.5"/></svg><div class="aq-stack">
+    <h2 class="aq-h1">Tell us the water grade and the flow. We'll do the rest.</h2>
+    <p class="aq-lead">Send your URS or a short brief and an engineer will reply with questions.</p>
+    <a class="aq-btn aq-btn--primary" href="#">Request a proposal <span class="aq-btn__arrow">→</span></a></div></div>
+   <div class="gx-meta"><div><h3>F · Arc glow</h3><p>A quiet Limestone glow centred on the corner the arc motif comes from, so the brand's one expressive line gets a source. Pairs with today's closing band.</p></div>
+    <code>radial-gradient(circle at 0 0, limestone 16 %, transparent 42 %), navy</code></div>
+  </div>
+
+  <div class="gx-opt">
+   <div class="gx-sample gx-g gx-on-navy"><div class="aq-stack">
+    <p class="aq-eyebrow">WFI · USP &lt;1231&gt;</p>
+    <h2 class="aq-h1">Water for Injection below 0.25 EU/mL</h2>
+    <p class="aq-lead">Multi-effect and vapour compression stills, sized on your utility costs.</p>
+    <a class="aq-btn aq-btn--primary" href="#">Request a still sizing proposal <span class="aq-btn__arrow">→</span></a></div></div>
+   <div class="gx-meta"><div><h3>G · Deep water</h3><p>Navy that turns toward Flow Blue at the bottom, like light coming up through water. The most expressive option; one per site at most, for a campaign or home band.</p></div>
+    <code>linear-gradient(180deg, navy 40 %, navy + 28 % flow)</code></div>
+  </div>
+
+  <div class="gx-opt">
+   <div class="gx-sample gx-h gx-on-navy"><span class="gx-fig" aria-hidden="true"></span><div class="aq-stack">
+    <p class="aq-eyebrow">Factory acceptance test</p>
+    <h2 class="aq-h1">Every skid is tested with water before it ships</h2>
+    <p class="aq-lead">A wet FAT to a protocol your quality unit approves, witnessed in person or remotely.</p>
+    <a class="aq-btn aq-btn--primary" href="#">Book a FAT visit <span class="aq-btn__arrow">→</span></a></div></div>
+   <div class="gx-meta"><div><h3>H · Clean room</h3><p>A broad, soft light falloff behind the equipment drawing, as if lit on the test bay. Puts the work at the centre, text on the darker edge.</p></div>
+    <code>radial-gradient(ellipse 55% 65% at 70% 45%, navy + 20 % on-navy-muted, transparent 70%), navy</code></div>
+  </div>
+ </section>
+</div>
+</div>
+<script>
+document.getElementById('gx-dark').addEventListener('change', function () {
+  if (this.checked) document.documentElement.setAttribute('data-theme', 'dark'); else document.documentElement.removeAttribute('data-theme');
+});
+</script>
+</body>
+</html>

@@ -89,6 +89,16 @@
    "summary": "Buttons start an action or move someone to the next step of an enquiry."
   },
   {
+   "name": "BackToTop",
+   "readme": "design-system/components/BackToTop/README.md",
+   "preview": "design-system/components/BackToTop/preview.html",
+   "group": "Navigation",
+   "height": "200",
+   "width": "900",
+   "subtitle": "Floating button, shown once the reader is well down a page; arrow only on phones",
+   "summary": "BackToTop is a quiet floating button that returns the reader to the top of a long page once they are well down it."
+  },
+  {
    "name": "Footer",
    "readme": "design-system/components/Footer/README.md",
    "preview": "design-system/components/Footer/preview.html",

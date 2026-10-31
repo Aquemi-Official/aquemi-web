@@ -104,8 +104,23 @@ The palette is mostly neutral. Navy carries the brand, Limestone softens it, and
 - Set text in `ink`. Use `ink-muted` for secondary copy and `ink-subtle` for metadata on `surface` and `surface-raised` only.
 - Use `flow` as a line or a word, never as a large fill and never as a button.
 - Status colours (`pass`, `caution`, `fail`) appear only in data: test results, qualification status, monitoring. Each one always comes with a word or icon.
-- No gradients. No tinted shadows. No colour outside these tokens.
+- Gradients only as the two grounds below, never anywhere else. No tinted shadows. No colour outside these tokens.
 - Dark mode swaps the ground to `surface` dark (a deep navy). Primary buttons turn Limestone (`action`) with navy labels (`on-action`).
+
+### Gradient grounds
+
+A section ground may carry a gradient only where it adds depth without adding an object. The rules:
+
+- **Only these two grounds, each at most once per page.** Navy depth on the closing band; Flow mist on system-page heroes (pages with an equipment drawing). Nothing else takes a gradient: not cards, buttons, tables, text, icons, arcs or lines.
+- **Never behind tables or long text.** A gradient sits under a headline, one lead sentence and a button, or beside a drawing.
+- **Built from tokens only**, mixed in `srgb` with `color-mix()`, so every gradient follows light and dark themes.
+- **Text keeps its contrast at every stop:** 4.5:1 for body text, checked against the stop where it is weakest, in both themes.
+- **Quiet:** the change across a gradient should be felt rather than seen. No multi-colour blends, no blue-to-purple, no glow behind text.
+
+| Ground | Where | Recipe |
+| --- | --- | --- |
+| Navy depth | Closing band | `linear-gradient(160deg, navy + 12 % on-navy, navy 45 %, navy + 30 % on-limestone)` |
+| Flow mist | System-page hero, behind the equipment drawing | `radial-gradient(ellipse 60% 70% at 100% 0%, flow-tint 90 %, transparent 70 %)` over `surface` |
 
 ### Typography
 
