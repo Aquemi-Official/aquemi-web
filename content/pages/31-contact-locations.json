@@ -69,7 +69,7 @@
    "rows": [
     [
      "Head office, [head office, city and province]",
-     "Process design, proposals, validation documents",
+     "",
      "[Street address], [postal code]",
      "[sales phone number] · [sales email] · [office hours, time zone]"
     ],
@@ -153,7 +153,7 @@
    "h": "Book a shop or test bay visit",
    "intro": "Visits start once [shop and test bay ready for visits].",
    "submit": "Request a visit",
-   "note": "Visitors sign [visitor confidentiality and safety terms]. [Privacy notice link]",
+   "note": "Visitors sign [visitor confidentiality and safety terms]. [privacy notice link]",
    "steps": [
     {
      "title": "Your visit",
@@ -257,7 +257,7 @@
   "intent": "Not sure yet: talk to an engineer"
  },
  "todo": [
-  "Head office: street address, sales phone and email, office hours with time zone (same placeholders as about and contact-proposal)",
+  "Head office: street address, sales phone and email, office hours with time zone (same placeholders as about and contact-proposal). Its \"What happens here\" cell stays empty, as about's row says just \"Head office\", until FD-33 says where engineering works",
   "Shop and test bay: street address, phone, hours, map link (shop location same as about)",
   "Shop and test bay ready for visits and witnessed FAT, and from which date ([shop and test bay ready for visits], same name as home, sys-pw, svc-fabrication, svc-fat-sat and projects; FD-44). Route 3 and the form intro both show it. Until then route 3 and the visit form are draft only; at launch they go if not ready, and the next existing check replaces them (DR-004, DR-006 rule 6)",
   "Service bases: cities and addresses, or confirm technicians work from home bases; service email; service phone and hours (same as contact-service)",
@@ -274,7 +274,7 @@
   "Language for the day (visit form): keep only once a named French-speaking engineer can host on the same terms; otherwise remove the field at launch (FD-36, DR-012 rule 2)",
   "Other provinces and territories, remote sites: whether served, travel response or visits only, site spares kit for remote sites",
   "United States: row removed until FD-37 decides whether Aquemi delivers there. If it does, add a row: states and system types; US service base and parts route; ASME certificate or vessel partner and National Board registration; panel mark for US; Incoterms rule and transit time; who travels for installation, SAT and IQ/OQ and entry route; US response; state licence route",
-  "Visit booking reply time (working days); visitor confidentiality and safety terms, and when visitors sign them (sent with the agenda, or on arrival); privacy notice ([Privacy notice link], contact-proposal's and contact-service's name; PIPEDA, Quebec Law 25; FD-39)",
+  "Visit booking reply time (working days); visitor confidentiality and safety terms, and when visitors sign them (sent with the agenda, or on arrival); privacy notice ([privacy notice link], contact-proposal's and contact-service's name; PIPEDA, Quebec Law 25; FD-39)",
   "Visit practicalities: photo ID, nearest airport and drive time, drive time from Toronto and Montreal, reception hours, PPE visitors bring and what is provided, photography rules (FD-44)",
   "Remote witness platform (same as svc-fat-sat)",
   "Shipping: drain and drying method after the FAT, crating standard and shock or tilt indicators, transit time to main centres (days)",

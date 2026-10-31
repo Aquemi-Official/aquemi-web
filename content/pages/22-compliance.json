@@ -321,7 +321,7 @@
     ],
     [
      "[PP material standard]",
-     "Product-contact PP, [grade, for example PP-R]; polyvinyl chloride (PVC) in pretreatment only",
+     "Product-contact PP, [PP grade]; polyvinyl chloride (PVC) in pretreatment only",
      "[PP material certificates] traced by lot",
      {
       "t": "Fabrication",
@@ -330,7 +330,7 @@
     ],
     [
      "[PP joining standard]",
-     "Joints by [PP joining method], to [PP joint procedure and operator qualification]",
+     "Joints by [PP joining method], to [welder qualification standard for thermoplastics]",
      "[PP joint records kept]",
      {
       "t": "Fabrication",
@@ -403,8 +403,8 @@
   "CRN: provinces where Aquemi has registered designs; who prepares and submits the CRN application and at which design stage ([Aquemi CRN process and provinces covered], FAQ; FD-24)",
   "Panel approval route ([panel standard]; [panel certification mark held, or field evaluation used]): the CSA standard the certification body applies (C22.2 No. 14 or No. 286), whether UL 508A applies for US sites, the label's scope (panel only, or the whole skid as assembled) and file number. Get it in writing from the certification body before the page names a standard; then name the label and report in the engineering table's proof cell (DR-007 rule 4, FD-24)",
   "PP piping standard Aquemi designs and buys to ([PP piping standard]; map, engineering table); PP pressure test method and test factor ([PP pressure test method]; FD-17, FD-19)",
-  "PP material standard, grade and certificates for product-contact parts ([PP material standard], [grade, for example PP-R], [PP material certificates]; names shared with sys-storage, svc-fabrication, cmp-quality and cmp-documentation; FD-17)",
-  "PP joining: method (FD-18 recommends IR or BCF fusion for product-contact PP, no socket fusion), the standard followed, procedure and operator qualification, and the joint records delivered ([PP joining standard], [PP joining method], [PP joint procedure and operator qualification], [PP joint records kept]; the joining method keeps one name site-wide; FD-18)",
+  "PP material standard, grade (for example PP-R) and certificates for product-contact parts ([PP material standard], [PP grade], [PP material certificates]; names shared with sys-storage, svc-fabrication, cmp-quality and cmp-documentation; FD-17)",
+  "PP joining: method (FD-18 recommends IR or BCF fusion for product-contact PP, no socket fusion), the standard followed, procedure and operator qualification, and the joint records delivered ([PP joining standard], [PP joining method], [welder qualification standard for thermoplastics], svc-fabrication's name, [PP joint records kept]; the joining method keeps one name site-wide; FD-18)",
   "Dead leg design limit, L/D, for PP piping on the skid and the loop ([dead leg design limit, L/D]; engineering table; the name sys-pw and svc-design use; FD-19)",
   "Maximum loop sanitization temperature for PP, °C ([maximum loop sanitization temperature for PP, °C]; USP <1231> row); same placeholder as ind-pharma and sys-storage; any temperature wording follows DR-013 (FD-14)",
   "WHO TRS 1033, 7.2.1 justification for PP, point by point, written before launch: the FAQ 'Our auditor expects stainless' offers it (FD-49 proof backlog)",

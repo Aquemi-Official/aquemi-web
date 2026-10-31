@@ -53,7 +53,7 @@
       "intent": "Turnover package index"
      },
      "That a project's records are complete",
-     "[sample package response time, working days]"
+     "[specimen package response time, working days]"
     ],
     [
      "That our quality system works",
@@ -161,7 +161,7 @@
   "Launch (DR-004 class 2; DR-006 rule 6): keep each check row only once it exists, else drop it: shop visit and FAT witness ([shop and test bay ready for visits], FD-44), specimen package (FD-47), supplier audit ([quality system ready for audit, date], FD-48). A kept row loses its \"once\" or \"from\" clause. The hero and closing button becomes the first check that exists, shop visit first; until one exists, \"Talk to an engineer\" (DR-016 rule 5)",
   "References (FD-41): [reference clients available, number], per segment, for the FAQ answer; once answered, the number by segment or \"Not yet.\"; never \"we can offer\" (DR-016 rule 7)",
   "Confirm as Aquemi practice: second engineer checks each published figure ([confirm] in \"The approval\"); the client may withdraw approval; deviations stated in each case; case updated at each milestone; a redacted FAT protocol and report can be shown",
-  "Times in working days, one name each: [shop visit notice], [FAT witness notice] (FD-44), [sample package response time] (cmp-documentation), [on-site audit notice] (cmp-quality), [compliance matrix response time] (compliance), first reply [proposal response time] (every page). At launch an unset time is cut (DR-006 rule 7)",
+  "Times in working days, one name each: [shop visit notice, working days], [FAT witness notice, working days] (FD-44), [specimen package response time, working days] (cmp-documentation), [on-site audit notice, working days] (cmp-quality), [compliance matrix response time, working days] (compliance), first reply [proposal response time, working days] (every page). At launch an unset time is cut (DR-006 rule 7)",
   "Fit check cost ([fit check cost or free], FD-02; contact-proposal's requests table): \"Free\" or the figure in CAD beside the closing button (DR-005 rule 4); unset at launch, the cost line goes (DR-005 rule 8)",
   "Shop location ([shop location, city and province], FD-33), the same name as about, careers and cmp-quality",
   "Whether a prospect may witness another client's FAT before award, and on what terms (NDA, that client's written permission) (FD-44)",

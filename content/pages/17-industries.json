@@ -122,7 +122,7 @@
      },
      "PW final rinse, with an endotoxin limit where needed",
      "USP <161> per device; ISO 11737-1 bioburden",
-     "Health Canada (ISO 13485); FDA 21 CFR 820"
+     "Health Canada, through MDSAP (Class II to IV); FDA 21 CFR 820"
     ],
     [
      {
@@ -162,7 +162,7 @@
     {
      "t": "Your product’s grade",
      "d": "Non-sterile drugs need PW (Health Canada GUI-0001); natural health products, potable water at minimum (GUI-0158).",
-     "link": "ind-pharma"
+     "link": "ind-pharma#grades"
     },
     {
      "t": "What it covers and costs",
@@ -181,8 +181,8 @@
     },
     {
      "t": "Who you work with",
-     "d": "A new Ontario company: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing specialist.",
-     "link": "about"
+     "d": "New Ontario company: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing and design specialist.",
+     "link": "about#people"
     }
    ]
   },
@@ -259,7 +259,7 @@
   "WFI wording (FAQ, sterile row): Aquemi supplies PW only (MISSION). PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it until the owner confirms",
   "References per segment, or 'none yet' (FD-41): no reference call or case block here until a client agrees in writing (DR-004, DR-016); link projects per industry once a case study exists (FD-42)",
   "Anchors this page links to: ind-pharma#nhp (the natural health products section, DR-002; router and grade table), svc-upgrades#observation (the water observation block, DR-015), systems#budget (DR-005 rule 1), svc-service#running-cost (DR-005 rule 6; the path's running-cost row). Until a block carries its anchor, the link opens that page at the top",
-  "Device inspector cell: Health Canada requires an ISO 13485 certificate for Class II to IV licences; whether it must come from an MDSAP audit is unverified in the library (IMD-22, IMD-28). Keep the cell in line with ind-meddevice's auditor table",
+  "Device inspector cell: Health Canada requires an ISO 13485 certificate from an MDSAP audit for Class II to IV licences (IMD-70; IMD-22, IMD-28). Keep the cell word for word with ind-meddevice's auditor table",
   "Whether a scope without a loop is offered for dry-dose natural health product lines (FD-20); until then the router's natural health products row reads 'PW generation, if needed'"
  ]
 }

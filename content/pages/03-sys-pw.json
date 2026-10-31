@@ -230,7 +230,7 @@
      "key": true
     },
     {
-     "t": "Joint map and joining log",
+     "t": "Joint records",
      "d": "[PP joining method]; [PP joint records kept]",
      "key": true
     },
@@ -256,7 +256,7 @@
     },
     {
      "t": "Duplex trains",
-     "d": "Two trains at 50 or 100 % each: one runs while the other is sanitized.",
+     "d": "Two trains at [duplex train shares offered] each: one runs while the other is sanitized.",
      "spot": "ro-skid"
     },
     {
@@ -340,12 +340,13 @@
  },
  "todo": [
   "Capacity range per skid, L/h ([minimum–maximum capacity, L/h], hero and design table; one range on every page and in proposals; FD-20). Unfilled at launch, the capacity fact goes (DR-010 rule 5)",
+  "[duplex train shares offered]: FD-20/FD-21, for example 50 % or 100 % each; the example stays out of the brackets.",
   "Guaranteed conductivity at the skid outlet, µS/cm at 25 °C, and how FAT and SAT measure it ([outlet conductivity guarantee, µS/cm @ 25 °C], hero and limits table; same name on home and svc-design; FD-21)",
   "Membrane design temperature held by the feed heat exchanger, °C ([feed heat exchanger design temperature, °C], same name as sys-pretreatment), and whether that heat exchanger is standard on the skid, an option, or part of pretreatment (sys-pretreatment lists it as an option; the diagram says \"Where fitted\") (FD-21)",
   "Design system recovery, % ([design recovery, %]; same name as svc-service's running-cost table, which the recovery row links; FD-21)",
   "Sanitization method for the PP skid ([sanitization method for the PP skid]) and whether the RO elements and EDI modules are rated for hot water ([heat-sanitizable RO and EDI, yes or no]). No temperature through RO and EDI on any page until then (FD-14, DR-013 rule 5)",
   "Unpigmented PP grade, for example PP-R ([PP grade], the canonical name in ops/placeholder-names.md), PP piping standard ([PP piping standard]) and dead leg design limit, L/D ([dead leg design limit, L/D], same as compliance, cmp-documentation and news) (FD-17, FD-19)",
-  "PP joining method ([PP joining method]; IR or bead-and-crevice-free fusion with no socket fusion is the library's recommendation, not a decision), joint inspection method and extent ([joint inspection method and extent]) and the joint records kept ([PP joint records kept], same as about, svc-cq and compliance) (FD-18)",
+  "PP joining method ([PP joining method]; IR or bead-and-crevice-free fusion with no socket fusion is the library's recommendation, not a decision), joint inspection method and extent ([joint inspection method and extent]) and the joint records kept, for example the joint map and joining log ([PP joint records kept], same as about, svc-cq and compliance) (FD-18)",
   "Certificates supplied with the skid's PP product-contact parts ([PP material certificates], same name as compliance and cmp-quality; FD-17)",
   "Whether both DI and EDI are offered, and for DI whether resin is service exchange or regenerated on site ([DI resin: service exchange or on-site regeneration]; FD-21)",
   "Online TOC at the skid outlet: standard or option ([online TOC at the outlet, standard or option]; FD-21)",

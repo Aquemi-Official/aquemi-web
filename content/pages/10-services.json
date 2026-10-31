@@ -52,7 +52,7 @@
       "link": "svc-fat-sat"
      },
      "Your work email",
-     "Test cases with acceptance criteria, within [sample package response time, working days]"
+     "Test cases with acceptance criteria, within [specimen package response time, working days]"
     ],
     [
      "Installed or arriving, qualification ahead",
@@ -140,7 +140,7 @@
     {
      "q": "Can the builder also qualify the system?",
      "a": "Yes, under your control. We draft the protocols and reports; [executing staff: own engineers or named partner] execute them. Your quality unit approves each protocol before it runs and each report after. EU good manufacturing practice (GMP) Annex 15, 2.6, asks your site to confirm a supplier's protocols before approval.",
-     "link": "svc-cq",
+     "link": "svc-cq#roles",
      "link_label": "See who writes, who reviews"
     },
     {
@@ -191,7 +191,7 @@
  },
  "todo": [
   "Proposal response time ([proposal response time, working days]; one figure on every page; FD-01). Until it is set, launch copy reads \"An engineer replies in writing\" (DR-006 rule 7)",
-  "Turnarounds in the router, one per row, same placeholders as each row's page and contact-proposal's requests table: [URS review turnaround, working days] (svc-design), [document review turnaround, working days] (svc-fabrication, svc-cq), [sample package response time, working days] (svc-fat-sat, cmp-documentation), [quote response time, working days] (svc-service), [assessment response time, working days] (svc-upgrades), [audit request response time, working days] (cmp-quality) (FD-01). At launch an unset time leaves its row (DR-006 rule 7)",
+  "Turnarounds in the router, one per row, same placeholders as each row's page and contact-proposal's requests table: [URS review turnaround, working days] (svc-design), [document review turnaround, working days] (svc-fabrication, svc-cq), [specimen package response time, working days] (svc-fat-sat, cmp-documentation), [quote response time, working days] (svc-service), [assessment response time, working days] (svc-upgrades), [audit request response time, working days] (cmp-quality) (FD-01). At launch an unset time leaves its row (DR-006 rule 7)",
   "Cost of talking to an engineer ([fit check cost or free]; contact-proposal's requests table names it; FD-02), shown in the closing beside its button (DR-005 rule 4, DR-006 rule 5)",
   "Router row 3 shows svc-fat-sat's draft offer, a specimen FAT protocol (FD-47). At launch, if no specimen exists, the row takes svc-fat-sat's fallback: \"FAT and SAT: request a FAT test list\", send \"URS or functional specification\", back \"A draft FAT test list, reusable tests marked, within [document review turnaround, working days]\" (DR-006 rule 6)",
   "Service phone number and hours ([service phone number], [service phone hours]; same names as the nav, svc-service and contact-service; FD-27). The closing's line keeps the urgent-route wording \"Production stopped or water out of specification\" (contact-service, contact-locations)",

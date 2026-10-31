@@ -163,8 +163,8 @@
    "h": "The fabrication dossier",
    "items": [
     {
-     "t": "Joint maps and joint log",
-     "d": "As-built isometrics, repairs included",
+     "t": "Joint records",
+     "d": "[PP joint records kept]",
      "key": true,
      "link": "cmp-documentation#samples"
     },
@@ -270,6 +270,7 @@
   "PP joining method for product-contact joints ([PP joining method], one name on every page; FD-18 recommends infrared (IR) or bead-and-crevice-free (BCF) fusion, no socket fusion, no solvent cement after the RO) and the joining standard and written procedure ([PP joining standard], as on compliance and cmp-quality). Once decided, name the method in the lead and the standard in the eyebrow (DR-010 rule 2, DR-001 rule 3)",
   "Welder qualification standard for thermoplastics, for example DVS 2212, and the number of qualified welders ([welder qualification standard for thermoplastics], [number of qualified thermoplastic welders]; FD-18, FD-34; same welder name as sys-storage)",
   "What each joint record holds, for example temperature, pressure, heating and cooling times, machine ID ([what each joint record holds]; FD-18)",
+  "[PP joint records kept] (dossier): FD-18, for example the joint maps on the as-built isometrics, repairs included, and the per-joint log; the example stays out of the brackets. The launch gate below still covers the practice the lead and steps state.",
   "Joint acceptance criteria, for example DVS 2202-1, and the share of product-contact joints visually examined ([joint acceptance criteria], [share of product-contact joints visually examined, %]; FD-18)",
   "When test joints are made (shift start, change of welder, machine or pipe lot) and how they are examined, for example a bend or tensile test ([when test joints are made], [test joint examination method]; FD-18)",
   "PP material: unpigmented resin grade, for example PP-R; how parts are marked for lot traceability; the certificates received per lot: EN 10204 type, 21 CFR 177.1520 conformity, the dated USP <88> Class VI report ([PP grade], [how PP parts are marked for traceability], [PP material certificates], [PP material standard]; FD-17; the names in ops/placeholder-names.md, as on compliance, cmp-quality, sys-pw and svc-cq)",

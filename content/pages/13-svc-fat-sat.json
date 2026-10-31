@@ -217,7 +217,7 @@
    "Which specimens you want",
    "Your work email"
   ],
-  "turnaround": "[sample package response time, working days]",
+  "turnaround": "[specimen package response time, working days]",
   "returns": [
    "Protocol table of contents",
    "Aquemi-written test cases with acceptance criteria"
@@ -238,9 +238,9 @@
   "Test bay feed water source, treatment and typical conductivity (µS/cm) ([feed water source and conductivity, µS/cm])",
   "Test bay power: voltage, phases, frequency, kW ([voltage, phases, frequency, kW]); how skids for another voltage are tested ([transformer or site test])",
   "Test bay heating, only if a hot sanitization cycle is offered: medium and capacity (kW), inside the PP maker's pressure-temperature curve (DR-013)",
-  "Largest skid footprint and height ([largest skid size, m], FAQ 4), crane capacity (t) and drain capacity (L/min) (FD-44). about writes [largest skid, m; test water, L/h]: the fact inventory should pick one name (DR-011 rule 2)",
+  "Largest skid footprint and height ([largest skid size, m], FAQ 4), crane capacity (t) and drain capacity (L/min) (FD-44); same name as about (DR-011 rule 2). If the test bay's water flow is shown, it is [test bay water, L/h], with these test bay limits (FD-44)",
   "Remote witness platform and connection, and when raw data reach a remote witness (\"raw data the same day\" left the Remote option until FD-44 sets it); electronic signature method ([electronic signature method], as cmp-documentation) and whether it meets 21 CFR Part 11 (FD-23)",
-  "Specimen reply time ([sample package response time, working days]: the closing turnaround; same name as cmp-documentation and projects; FD-47). At launch an unset time is cut (DR-006 rule 7)",
+  "Specimen reply time ([specimen package response time, working days]: the closing turnaround; same name as cmp-documentation and projects; FD-47). At launch an unset time is cut (DR-006 rule 7)",
   "Specimen cost ([specimen cost or free]: the closing body; FD-02, FD-47; DR-006 rule 5, DR-005 rule 4). A new name: cmp-documentation's specimen form, the offer's home (DR-014 rule 12), should use it if it shows a cost. At launch an unset cost is cut (DR-005 rule 8)",
   "FAT first-pass rate or a real FAT (deviations found, closure time) before adding a case study block. A closing proof box only with a confirmed figure (website.md closing rule; DR-011): \"0, 50, 100 % · Every analog loop checked at FAT\" went until FD-45",
   "Test instrument calibration interval and traceability (FD-32)",

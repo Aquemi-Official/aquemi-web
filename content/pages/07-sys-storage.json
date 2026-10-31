@@ -200,7 +200,7 @@
     },
     {
      "p": "Joints",
-     "v": "[PP joining method]; each joint numbered on the isometric",
+     "v": "[PP joining method]; [PP joint records kept]",
      "m": "[welder qualification standard for thermoplastics]",
      "at": [
       78.7,
@@ -252,8 +252,8 @@
    "type": "docs",
    "h": "Documents with the loop",
    "nav": "Documents",
-   "link": "cmp-documentation",
-   "link_label": "See the documentation package",
+   "link": "cmp-documentation#index",
+   "link_label": "Full index",
    "items": [
     {
      "t": "Hydraulic calculation",
@@ -271,8 +271,8 @@
      "key": true
     },
     {
-     "t": "Material certificates and joint log",
-     "d": "[PP material certificates]; joint map and records",
+     "t": "Material certificates and joint records",
+     "d": "[PP material certificates]; [PP joint records kept]",
      "key": true
     }
    ]
@@ -357,6 +357,7 @@
   "PP grade for tank and loop, for example PP-R, and the material certificates for resin and pipe, with their type ([PP grade], [PP material certificates]; one name on every page, ops/placeholder-names.md; FD-17)",
   "PP internal surface specification, Ra µm, and its basis ([PP internal surface specification, Ra µm], [basis for the PP surface specification]; FD-19)",
   "PP joining method and the thermoplastic welder qualification standard, for example DVS 2212 ([PP joining method], one name on every page; [welder qualification standard for thermoplastics], svc-fabrication's name; FD-18)",
+  "[PP joint records kept]: FD-18, for example the joint map with each joint numbered on the isometric and the per-joint log; the example stays out of the brackets.",
   "PP point-of-use valve type, for example a zero-static diaphragm valve, and how it is joined into the loop ([PP point-of-use valve type], same as svc-design; FD-19)",
   "Whether PP tanks are atmospheric or pressure-rated, and the tank design standard, for example DVS 2205 ([PP tank design: atmospheric or pressure-rated], [PP tank design standard]; FD-19)",
   "Pre-commissioning flush and cleaning procedure for PP, with its conductivity and TOC endpoint ([pre-commissioning flush and cleaning procedure for PP]; same as svc-fabrication; FD-19)",

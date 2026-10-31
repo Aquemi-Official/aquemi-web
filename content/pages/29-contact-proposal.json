@@ -36,7 +36,7 @@
       "Triage confirms severity",
       "Remote diagnosis, then on site"
      ],
-     "clock": "On site in [severity 1 on-site response time, hours], inside [service coverage area]",
+     "clock": "On site in [severity 1 on-site response time, hours], on a plan, inside [service coverage area]",
      "link": "contact-service",
      "urgent": true,
      "action": "Log a service request"
@@ -447,7 +447,7 @@
     ],
     [
      "I have a system already",
-     "Assessment for [makes and equipment types serviced]: options, downtime, requalification",
+     "Scope and price, then options with downtime and requalification",
      "[assessment response time, working days]",
      "[assessment price, CAD, credit against upgrade]"
     ],
