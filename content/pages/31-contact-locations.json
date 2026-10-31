@@ -2,12 +2,12 @@
  "id": "contact-locations",
  "section": "Contact",
  "nav_label": "Locations",
- "title": "Locations and service coverage across Canada | Aquemi",
- "meta": "Can we support your site? On-site response time, parts stock, CSA B51 registration, engineering licence and language, region by region. Book a shop visit.",
+ "title": "Locations and service coverage | Aquemi",
+ "meta": "Aquemi is based in Ontario. By province: severity 1 on-site time, where technicians and parts come from, CSA B51 design registration (CRN) and engineering seal.",
  "path": "/contact/locations/",
  "eyebrow": "LOCATIONS · SERVICE COVERAGE",
  "headline": "Where we are, how fast we reach you",
- "lead": "Find your region: severity 1 on-site time, where technician and parts come from, who registers and seals the design.",
+ "lead": "Based in Ontario. For your province: severity 1 on-site time, where technicians and parts come from, who registers and seals the design.",
  "primary_cta": "Check coverage for your site",
  "blocks": [
   {
@@ -27,7 +27,7 @@
      "action": "Choose your request"
     },
     {
-     "t": "Production down or water off spec",
+     "t": "Production stopped or water out of specification",
      "d": "Severity 1. Answered [service phone hours]. Do not wait for a form.",
      "phone": "[service phone number]",
      "steps": [
@@ -35,18 +35,18 @@
       "Triage confirms severity",
       "Remote diagnosis, then on site"
      ],
-     "clock": "Technician on site within [severity 1 on-site response time, hours]",
+     "clock": "On site in [severity 1 on-site response time, hours], inside [service coverage area]",
      "link": "contact-service",
      "urgent": true,
      "action": "Log a service request"
     },
     {
-     "t": "Visit or audit the shop",
-     "d": "Tour, supplier audit or FAT witness at [shop location, city and province].",
+     "t": "Visit the shop and test bay",
+     "d": "Tour or factory acceptance test (FAT) witness at [shop location, city and province].",
      "steps": [
       "Purpose, dates, group",
       "Date and agenda back",
-      "Records and test bay ready"
+      "Protocol and test bay ready"
      ],
      "clock": "Date and agenda within [visit booking reply time, working days]",
      "link": "contact-locations",
@@ -69,8 +69,8 @@
    "rows": [
     [
      "Head office and engineering, [head office, city and province]",
-     "Process design, projects, validation documents, proposals",
-     "[Street address], [city], [province] [postal code]",
+     "Process design, proposals, validation documents",
+     "[Street address], [postal code]",
      "[sales phone number] · [sales email] · [office hours, time zone]"
     ],
     [
@@ -78,16 +78,16 @@
       "t": "Shop and test bay, [shop location, city and province]",
       "link": "svc-fabrication"
      },
-     "PP skid and piping fabrication, panels, wet FAT, witness visits",
-     "[Street address], [city], [province] [postal code] · [map link]",
+     "Skid and piping fabrication, FAT",
+     "[Street address], [postal code] · [map link]",
      "[shop phone number] · [shop hours, time zone]"
     ],
     [
      {
-      "t": "Service base, [service base, city and province]",
+      "t": "Service bases, [service bases, cities]",
       "link": "svc-service"
      },
-     "Field technicians, calibration standards, [critical spares stock]",
+     "Field technicians, [critical spares stock]",
      "[street address, or home-based technicians]",
      "[service phone number], [service phone hours] · [service email]"
     ],
@@ -106,61 +106,42 @@
    "anchor": "coverage",
    "nav": "Coverage",
    "h": "Can you support my site?",
-   "intro": "Outside [service coverage area], we write a travel response into the plan.",
    "cols": [
     "Your region",
     "Severity 1: technician on site",
     "Technician and parts from",
-    "CRN and engineering seal"
+    "Design registration (CRN), where required, and seal"
    ],
    "rows": [
     [
      "Ontario",
      "[severity 1 on-site response time in Ontario, hours]",
-     "[service base, city] · [stocking point for Ontario, city]. Greater Toronto Area; [other Ontario centres served]",
-     "CRN: TSSA. Seal: PEO · [certificate of authorization: yes or no]"
+     "[service base, city] · [stocking point for Ontario, city]. [Ontario centres served]",
+     "CRN: Technical Standards and Safety Authority (TSSA). Seal: Professional Engineers Ontario (PEO) · [certificate of authorization: yes or no]"
     ],
     [
      "Quebec",
-     "[severity 1 on-site response time in Quebec, hours]",
-     "[service base, city] · [stocking point for Quebec, city]. Greater Montreal; [other Quebec centres served]",
-     "CRN: RBQ. Seal: OIQ"
+     "[Quebec severity 1 on-site hours, or visits only]",
+     "[service base, city] · [stocking point for Quebec, city]. [Quebec centres served]. [language of service in Quebec]",
+     "CRN: Régie du bâtiment du Québec (RBQ). Seal: Ordre des ingénieurs du Québec (OIQ) · [OIQ member on staff: yes or no]"
     ],
     [
      "British Columbia",
-     "[severity 1 on-site response time in BC, hours]",
-     "[service base or partner, city] · [BC stocking point, city]. Metro Vancouver; [other BC centres served]",
-     "CRN: Technical Safety BC. Seal: EGBC · [firm permit to practice: yes or no]"
+     "[BC severity 1 on-site hours, or visits only]",
+     "[service base or partner, city] · [BC stocking point, city]. [BC centres served]",
+     "CRN: Technical Safety BC. Seal: Engineers and Geoscientists BC (EGBC) · [firm permit to practice: yes or no]"
     ],
     [
      "Alberta",
-     "[severity 1 on-site response time in Alberta, hours]",
+     "[Alberta severity 1 on-site hours, or visits only]",
      "[service base or partner, city] · [Alberta stocking point, city]. [Alberta centres served]",
-     "CRN: ABSA. Seal: APEGA · [permit to practice: yes or no]"
+     "CRN: Alberta Boilers Safety Association (ABSA). Seal: Association of Professional Engineers and Geoscientists of Alberta (APEGA) · [permit to practice: yes or no]"
     ],
     [
-     "Saskatchewan and Manitoba",
+     "Other provinces and territories",
      "[severity 1 response, hours, or visits only]",
-     "[service base or partner, city] · [stocking point, city]. [centres served]",
-     "CRN and seal: authorities in the province of installation"
-    ],
-    [
-     "Atlantic Canada",
-     "[severity 1 response, hours, or visits only]",
-     "[service base or partner, city] · [stocking point, city]. [centres served]",
-     "CRN and seal: authorities in the province of installation"
-    ],
-    [
-     "Territories and remote sites",
-     "[Travel response agreed in the plan]",
-     "[Site spares kit recommended: confirm]. [By arrangement: confirm]",
-     "CRN and seal: territorial authorities"
-    ],
-    [
-     "United States",
-     "[US on-site response, hours, or visits only]",
-     "[US service base and parts route]",
-     "No CRN; state rules apply. Seal: [US state licence route, if any]"
+     "[service base or partner, city] · [stocking point, city]",
+     "CRN and seal: authorities where the system is installed"
     ]
    ],
    "as": "router"
@@ -170,7 +151,7 @@
    "anchor": "visit",
    "nav": "Visit",
    "h": "Book a shop or test bay visit",
-   "intro": "Audits get the quality records ready; FAT witnesses get the protocol and test bay.",
+   "intro": "Visits start once [shop and test bay ready for visits].",
    "submit": "Request a visit",
    "note": "Bring photo ID. Visitors sign [visitor confidentiality and safety terms] on arrival. [privacy notice link, PIPEDA and Law 25]",
    "steps": [
@@ -184,12 +165,11 @@
        "required": true,
        "options": [
         "Shop tour before shortlisting",
-        "Supplier or quality audit",
         "Witness the FAT on our project",
         "Pre-FAT walk-down or protocol review",
         "Training at the test bay before handover"
        ],
-       "help": "An audit can also run remotely or by questionnaire; see the quality management page."
+       "help": "Quality audits, on site or remote, are booked on the quality management page."
       },
       {
        "label": "Project or purchase order number",
@@ -201,7 +181,7 @@
        "label": "Preferred dates",
        "kind": "text",
        "required": true,
-       "help": "Two or three dates, or a week. A FAT date is set in the project schedule; this books your travel around it."
+       "help": "Two or three dates, or a week. A FAT date follows the project schedule."
       },
       {
        "label": "Number of visitors",
@@ -256,49 +236,55 @@
  ],
  "cta": {
   "h": "Get the coverage for your site in writing",
-  "body": "On-site response time, base and stocking point, CRN route and licensed engineer for your province.",
   "include": [
-   "Site address and province",
-   "New system, or service plan for existing equipment",
-   "Equipment make and model, if installed",
+   "Site city and province",
+   "On-site response time you need",
    "Language for service and documents"
   ],
-  "button": "Request a proposal",
-  "link": "contact-proposal"
+  "returns": [
+   "An engineer's written answer",
+   "On-site time, base and parts stock",
+   "CRN route and engineering seal"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "button": "Get your coverage in writing",
+  "link": "contact-proposal",
+  "intent": "Not sure yet: talk to an engineer"
  },
  "todo": [
   "Head office and engineering: street address, sales phone and email, office hours with time zone (same placeholders as about and contact-proposal)",
   "Shop and test bay: street address, phone, hours, map link (shop location same as about)",
+  "Shop and test bay ready for visits and witnessed FAT, and from which date ([shop and test bay ready for visits], same name as contact-service; FD-44). Until then route 3 and the visit form are draft only; at launch they go if not ready, and the next existing check replaces them (DR-004, DR-006 rule 6)",
   "Service bases: cities and addresses, or confirm technicians work from home bases; service email; service phone and hours (same as contact-service)",
   "Parts stock locations, parts email, parts desk hours, order cut-off and delivery commitment (same as svc-service)",
-  "Service coverage area (same as svc-service and contact-service)",
-  "Per region: main centres actually served, service base or partner, severity 1 on-site response (hours), stocking point; which regions are scheduled visits only",
+  "Service coverage area (same as home, svc-service and contact-service); it travels with every severity 1 time (DR-011 rule 4)",
+  "Per region (Ontario, Quebec, British Columbia, Alberta, other provinces and territories): centres served, service base or partner, stocking point, severity 1 on-site response in hours or \"visits only\" (FD-27, FD-28)",
   "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service)",
-  "Number of service technicians and number of stocking points (same headcount as about)",
-  "Whether technicians are all Aquemi employees; if partners are used: regions, under whose procedures, who signs the service report, partners for remote regions; remove partner row if none",
+  "Number of service technicians (same headcount as about)",
+  "Whether technicians are all Aquemi employees; if partners are used: regions, under whose procedures, who signs the service report, partners for remote regions; remove \"or partner\" from the cells if none",
   "CSA B51: Aquemi's CRN route (ASME certificate or vessel fabricator) and provinces where designs are registered (same as compliance)",
-  "Which components of the PP PW package need a CRN, if any (the coverage table states a CRN route per region)",
-  "Engineering licences: licensed engineers per province (P.Eng. or ing.), firm permits or certificates of authorization (Ontario, BC, Alberta), engineer of record route where not licensed (same as about)",
-  "French: technicians, service reports and documents in French; Quebec and New Brunswick",
-  "Territories and remote sites: whether served, travel response, site spares kit recommendation",
-  "United States: whether Aquemi delivers, which states and system types; US service base and parts route; ASME certificate or vessel partner and National Board registration; panel mark for US; Incoterms rule offered and transit time; who travels for installation, SAT and IQ/OQ and entry route; US service coverage and response; state licence route",
+  "Which components of the PP PW package need a CRN, if any (the coverage table names each province's authority \"where required\"; FD-24, OQ-79)",
+  "Engineering licences: licensed engineers per province (P.Eng. or ing.), PEO certificate of authorization, EGBC and APEGA permits to practice, an OIQ member on staff for Quebec, engineer of record route where not licensed (same as about; FD-24, FD-34)",
+  "French: [language of service in Quebec] (technicians, service reports, documents); New Brunswick (FD-36, DR-012)",
+  "Language for the day (visit form): keep only once a named French-speaking engineer can host on the same terms; otherwise remove the field at launch (FD-36, DR-012 rule 2)",
+  "Other provinces and territories, remote sites: whether served, travel response or visits only, site spares kit for remote sites",
+  "United States: row removed until FD-37 decides whether Aquemi delivers there. If it does, add a row: states and system types; US service base and parts route; ASME certificate or vessel partner and National Board registration; panel mark for US; Incoterms rule and transit time; who travels for installation, SAT and IQ/OQ and entry route; US response; state licence route",
   "Visit booking reply time (working days), visitor confidentiality and safety terms, privacy notice link (PIPEDA, Quebec Law 25)",
   "Visit practicalities: nearest airport and drive time, drive time from Toronto and Montreal, reception hours, PPE visitors bring and what is provided, photography rules",
   "Remote witness platform (same as svc-fat-sat)",
-  "Shipping: drain and drying method after wet FAT, crating standard and shock or tilt indicators, transit time to main centres (days)",
+  "Shipping: drain and drying method after the FAT, crating standard and shock or tilt indicators, transit time to main centres (days)",
   "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-  "Any-builder service: makes and equipment types serviced (same as contact-service)",
   "LocalBusiness schema per real location only, once addresses are confirmed"
  ],
  "primary_cta_link": "#coverage",
  "facts": [
   {
-   "v": "[number of service technicians]",
-   "l": "Technicians, based in [service bases, cities]"
+   "v": "[severity 1 on-site response time, hours]",
+   "l": "Technician on site, severity 1 · inside [service coverage area]"
   },
   {
-   "v": "[number of stocking points]",
-   "l": "Parts stocked in [stock location or locations]"
+   "v": "[number of service technicians]",
+   "l": "Technicians · based in [service bases, cities]"
   }
  ],
  "hero_index": false,

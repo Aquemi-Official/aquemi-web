@@ -2,20 +2,17 @@
  "id": "services",
  "section": "Services",
  "nav_label": "Services",
- "title": "Pharma water system services, URS to service | Aquemi",
- "meta": "Design, fabrication, FAT/SAT, IQ/OQ/PQ, service and upgrades for modular PW systems, pretreatment to distribution, on one traceability record per EU GMP Annex 15.",
+ "title": "Purified Water services, from design to upgrades | Aquemi",
+ "meta": "Design, fabrication, FAT and SAT, IQ/OQ/PQ, service and upgrades for a modular Purified Water package in polypropylene with PVC pretreatment.",
  "path": "/services/",
- "eyebrow": "SERVICES · EU GMP ANNEX 15 · GAMP 5",
- "headline": "One team from URS to service",
- "lead": "We carry your modular Purified Water (PW) system, pretreatment, RO, DI/EDI and distribution, from URS to service on one traceability matrix.",
- "tags": [
-  "EU GMP Annex 15",
-  "ASTM E2500",
-  "GAMP 5"
- ],
- "primary_cta": "Request a proposal",
+ "eyebrow": "SERVICES · EU GMP ANNEX 15 · GUI-0029",
+ "headline": "Purified Water services, from design to upgrades",
+ "lead": "We design, build, test and qualify your Purified Water package in polypropylene, then service it. We trace each requirement to its test.",
+ "primary_cta": "Talk to an engineer",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "Not sure yet: talk to an engineer",
  "secondary_cta": {
-  "label": "System already running? See service plans",
+  "label": "System running? See service plans",
   "link": "svc-service"
  },
  "index": true,
@@ -31,40 +28,40 @@
    ],
    "rows": [
     [
-     "New system: an idea or a draft URS",
+     "New system, user requirement specification (URS) approved or in draft",
      {
-      "t": "Process design: request a URS review",
+      "t": "Process design: request a URS gap review",
       "link": "svc-design"
      },
-     "URS or a short description, PW limits, feed water, peak L/h",
+     "Your URS, feed water analysis, peak demand in L/h",
      "A compliance matrix marking every gap, within [URS review turnaround, working days]"
     ],
     [
-     "Design approved, by us or another firm",
+     "Design approved",
      {
       "t": "Fabrication: request a spec review",
       "link": "svc-fabrication"
      },
-     "Approved P&IDs, piping and material specification, province",
-     "The clauses of your specification we meet or would change; a draft inspection plan"
+     "Approved drawings, piping and material specification, province",
+     "Clauses we meet or would change; a draft inspection plan"
     ],
     [
-     "Skid in build, FAT and SAT ahead",
+     "Skid in build, factory and site acceptance tests (FAT, SAT) ahead",
      {
-      "t": "FAT and SAT: request a sample FAT protocol",
+      "t": "FAT and SAT: request a FAT test list",
       "link": "svc-fat-sat"
      },
-     "URS or functional specification, witness constraints",
-     "A draft FAT test list with leverage marked, and witness dates"
+     "URS or functional specification",
+     "A draft FAT test list, reusable tests marked"
     ],
     [
      "Installed or arriving: qualification to plan",
      {
-      "t": "C&Q: request a plan review",
+      "t": "Commissioning and qualification (C&Q): request a plan review",
       "link": "svc-cq"
      },
-     "URS, utilities section of your VMP, points-of-use list",
-     "A draft C&Q plan with PQ sampling and water release dates"
+     "URS, validation master plan, points-of-use list",
+     "A draft C&Q plan and a sampling plan"
     ],
     [
      "In service and qualified",
@@ -76,22 +73,22 @@
      "A plan, its annual price and first-visit tasks, within [quote response time, working days]"
     ],
     [
-     "Ageing, out of support, or about to change",
+     "Aging, out of support, or about to change",
      {
-      "t": "Upgrades: request an assessment",
+      "t": "Upgrades: request a system assessment",
       "link": "svc-upgrades"
      },
-     "Age, drawings, a year of water data, the problem",
+     "Drawings, a year of water data, the problem",
      "Assessment scope and price, then options with downtime and requalification"
     ],
     [
-     "Production stopped now",
+     "Comparing suppliers",
      {
-      "t": "Request urgent service",
-      "link": "contact-service"
+      "t": "Quality: request a supplier audit",
+      "link": "cmp-quality"
      },
-     "Call [service phone number]. Do not wait for a form.",
-     "An engineer on the phone, then a technician on site"
+     "Your supplier questionnaire",
+     "Your questionnaire completed, within [audit request response time, working days]"
     ]
    ],
    "as": "router",
@@ -99,48 +96,48 @@
   },
   {
    "type": "steps",
-   "h": "What leaves each stage",
-   "intro": "Your URS is the reference throughout (Annex 15, 3.2); every requirement keeps its ID.",
+   "h": "How long each stage takes, and what it leaves",
+   "intro": "Plan your review time at each hold point.",
    "items": [
     {
-     "t": "URS review and design",
-     "d": "Compliance matrix, basis of design, P&IDs, functional specification, DQ.",
+     "t": "Design, [design to DQ, weeks]",
+     "d": "Compliance matrix, basis of design, piping and instrumentation diagrams, functional specification, design qualification.",
      "hold": "Your quality unit"
     },
     {
-     "t": "Fabrication",
-     "d": "Material log with certificates, joint records for [PP joining method, for example butt fusion or IR welding], pressure test records."
+     "t": "Fabrication, [approved design to FAT, weeks]",
+     "d": "Material certificates, joint records, pressure test records."
     },
     {
-     "t": "FAT",
+     "t": "FAT, [FAT duration, days]",
      "d": "Approved protocol, raw data, deviation log, report. Release to ship.",
      "hold": "Both parties"
     },
     {
-     "t": "Installation and SAT",
-     "d": "Installation records, SAT on your utilities, leveraged tests flagged, SAT report.",
+     "t": "Installation and SAT, [installation and SAT, days]",
+     "d": "Installation: [installation scope]. SAT on your utilities, reused tests flagged, SAT report.",
      "hold": "You"
     },
     {
-     "t": "IQ and OQ",
-     "d": "IQ and OQ protocols and reports, draft procedures, training records.",
+     "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+     "d": "Protocols, reports, draft procedures.",
      "hold": "Your quality unit"
     },
     {
-     "t": "PQ, at least 12 months",
-     "d": "Protocol, sampling plan, phase reports, alert and action levels. Water released by phase."
+     "t": "Performance qualification (PQ), at least 12 months",
+     "d": "Protocol, sampling plan, phase reports, alert and action levels. First use in phase 2, after at least two weeks (WHO TRS 1033).",
+     "hold": "Your quality unit"
     },
     {
      "t": "Service",
-     "d": "Signed visit reports, calibration certificates as found and as left, annual system review."
+     "d": "Signed visit reports, calibration certificates, annual system review."
     },
     {
      "t": "Upgrade or retrofit",
-     "d": "Gap list and options, each with downtime and requalification scope."
+     "d": "Gap list; options with downtime and requalification scope."
     }
    ],
-   "nav": "Documents",
-   "fold": 4,
+   "nav": "Stages",
    "ground": "light"
   },
   {
@@ -149,24 +146,20 @@
    "nav": "FAQ",
    "items": [
     {
-     "q": "Can the company that builds the system also qualify it?",
-     "a": "Yes, under your control. Your quality unit approves every protocol before execution and every report after; we write and execute (Annex 15, 2.6)."
+     "q": "Can the builder also qualify the system?",
+     "a": "Yes, under your control. We draft the protocols and reports; [executing staff: own engineers or named partner] execute them. Your quality unit approves each protocol before it runs and each report after (EU GMP Annex 15, 2.6)."
     },
     {
      "q": "Can we buy one stage only?",
-     "a": "Yes. Each service has its own first step and its own documents."
+     "a": "[services sold separately, yes or no]. Each service has its own first step and its own documents."
     },
     {
-     "q": "Do you work on systems built by other suppliers?",
-     "a": "Yes, for [makes and equipment types serviced]. We start with an assessment or condition survey, so the quote carries no hidden contingency. Upgrades we deliver are PVC pretreatment, RO, DI/EDI and distribution modules."
+     "q": "Do you work on other suppliers' systems?",
+     "a": "For [makes and equipment types serviced]: service and upgrades, starting with a condition survey or an assessment."
     },
     {
      "q": "How long from URS to water released?",
-     "a": "For a modular PW package: [design to DQ, weeks] to DQ, [approved design to FAT, weeks] to FAT, [IQ/OQ on site, days] for IQ and OQ. Then PQ."
-    },
-    {
-     "q": "What does one traceability matrix look like?",
-     "a": "URS-012, PW conductivity ≤ 1.3 µS/cm, becomes a divert clause, numbered sensor tees on joint maps, a FAT divert test flagged for OQ, and PQ data."
+     "a": "About [design to DQ, weeks] to an approved design, then [approved design to FAT, weeks] to the factory acceptance test and [IQ/OQ on site, days] of testing on site. Under WHO TRS 1033, water can be used after at least two weeks of sampling, with your quality unit's approval. Sampling continues for a year."
     }
    ]
   },
@@ -183,36 +176,33 @@
  ],
  "cta": {
   "h": "Tell us where your project stands",
-  "body": "For a system down now, call [service phone number].",
-  "button": "Request a proposal",
+  "body": "System down now? Call [service phone number], [service phone hours].",
+  "button": "Talk to an engineer",
   "link": "contact-proposal",
+  "intent": "Not sure yet: talk to an engineer",
   "include": [
-   "Your URS, in any state",
-   "PW limits and peak demand, L/h",
+   "Your URS, if you have one",
+   "Peak demand in L/h",
    "Feed water analysis, ideally 12 months",
    "Existing system: builder, age, drawings"
   ],
   "turnaround": "[proposal response time, working days]",
   "returns": [
-   "The stage we would start at",
-   "The documents it leaves in your file",
-   "Questions on gaps in your data"
+   "The stage to start at",
+   "Its documents and duration",
+   "Questions on missing data"
   ]
  },
  "todo": [
-  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-  "URS review turnaround ([URS review turnaround, working days]), same placeholder as svc-design",
-  "Quote response time for a service plan ([quote response time, working days]), same placeholder as svc-service",
-  "Service phone number (router table and closing CTA), same placeholder as svc-service and contact-service",
-  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service)",
-  "Typical durations for a modular PW package: design to DQ (weeks), approved design to FAT (weeks), IQ/OQ on site (days)",
-  "PP joining method for the fabrication record ([PP joining method, for example butt fusion or IR welding]; same placeholder as home and about), and the material certificate type issued for PP and PVC components",
-  "[project contact from URS review to handover]: confirm one named project engineer or team carries a project from URS review to handover, and how handover to service works (FAQ)",
-  "[qualifying other builders' systems, yes or no]: confirm Aquemi qualifies and upgrades systems built by other suppliers (joining table); makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
-  "[project regions served] and [service bases, cities]: provinces and regions served for projects; service bases and coverage area (FAQ)",
-  "Confirm Aquemi delivers each of the six services in-house or names partners (IQ/OQ execution, calibration and pressure vessel calculations are open on svc-cq, svc-service, svc-design)",
-  "Confirm every service is sold separately as well as end to end (FAQ)",
-  "Confirm Aquemi writes IQ/OQ/PQ documents in client templates (FAQ)",
-  "Service program brand name, if one is adopted, for the service band (open on svc-service)"
+  "Proposal response time ([proposal response time, working days]; one figure on every page; FD-01). Until it is set, launch copy reads \"An engineer replies in writing\" (DR-006 rule 7)",
+  "Turnarounds in the router, same placeholders as their home pages: [URS review turnaround, working days] (svc-design), [quote response time, working days] (svc-service), [audit request response time, working days] (cmp-quality) (FD-01)",
+  "Service phone number and hours ([service phone number], [service phone hours]; same names as the nav, svc-service and contact-service; FD-27)",
+  "Stage durations for a modular PW package, as figures Aquemi commits to (FD-08, DR-005 rule 5): [design to DQ, weeks], [approved design to FAT, weeks], [FAT duration, days] (same name as svc-fat-sat, DR-010), [installation and SAT, days] (new: not yet an FD-08 item), [IQ/OQ on site, days] (same as svc-cq). Say for each whether it includes the client's review time at the hold point. The FAQ total keeps E11's words; it does not yet add FAT, installation and SAT time",
+  "[installation scope]: who installs and makes field joints (Aquemi, the client's contractor or a partner); same name as systems' site requirements (FD-26; issue #2 §4)",
+  "[executing staff: own engineers or named partner]: who executes IQ/OQ; same name as svc-cq (FD-46, DR-004 rule 4)",
+  "[services sold separately, yes or no]: whether each service is sold on its own as well as end to end (FD-25). If yes, the router's \"Design approved\" row may say again \"by us or another firm\"",
+  "[makes and equipment types serviced]: same name on home, svc-service, svc-upgrades, about, contact-service and contact-proposal; the full answers live on svc-service and svc-upgrades (FD-30, DR-009, DR-011). Qualification of systems Aquemi did not build stays off this page until FD-30 answers it",
+  "If Aquemi confirms one named project engineer from URS review to handover (FD-34) and which of the six services are in-house or partnered (FD-25), the headline may state it; \"One team\" was cut because neither is confirmed (DR-004 rule 5)",
+  "Supplier audit offer in the router waits on cmp-quality's audit readiness (FD-48, DR-006 rule 6); at launch, if no audit can be hosted, the row's next rung is \"Talk to an engineer\""
  ]
 }

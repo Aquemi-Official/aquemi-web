@@ -3,21 +3,17 @@
  "section": "Contact",
  "nav_label": "Service request",
  "title": "Service request: faults, calibration and parts | Aquemi",
- "meta": "Severity 1 fault? Call [service phone number]. Log a fault, maintenance, USP <645> calibration, parts or requalification request, any builder's system.",
+ "meta": "Production stopped? Call [service phone number], [service phone hours]. Or log a fault, maintenance, USP <645> calibration, parts or requalification request.",
  "path": "/contact/service/",
- "eyebrow": "SERVICE REQUEST · ANY BUILDER",
- "headline": "Service for your system, any builder",
- "lead": "Production stopped? Call [service phone number] now. For anything else, the form asks only what your request needs.",
+ "eyebrow": "SERVICE REQUEST · PURIFIED WATER",
+ "headline": "Service for Aquemi systems and [makes and equipment types serviced]",
+ "lead": "Production stopped? Call [service phone number], [service phone hours]. For anything else, the form asks only what your request needs.",
  "primary_cta": "Log a service request",
  "primary_cta_link": "#request",
  "facts": [
   {
-   "v": "4 levels",
-   "l": "Severities, as in every service plan"
-  },
-  {
-   "v": "No serial needed",
-   "l": "Other builders: give make and model"
+   "v": "[severity 1 on-site response time, hours]",
+   "l": "Severity 1: technician on site · on a plan, inside [service coverage area]"
   }
  ],
  "blocks": [
@@ -38,31 +34,31 @@
      "action": "Choose your request"
     },
     {
-     "t": "Production down or water off spec",
-     "d": "Severity 1. Answered [service phone hours]. Sales calls go to [sales phone number].",
+     "t": "Production stopped or water out of specification",
+     "d": "Severity 1. Answered [service phone hours].",
      "phone": "[service phone number]",
      "steps": [
       "Call the service line",
       "Triage confirms severity",
       "Remote diagnosis, then on site"
      ],
-     "clock": "Technician on site within [severity 1 on-site response time, hours]",
+     "clock": "Answered within [severity 1 phone answer time, minutes]",
      "link": "contact-service",
      "urgent": true,
-     "action": "Log it in the form below too",
+     "action": "Log a service request",
      "current": true
     },
     {
-     "t": "Visit or audit the shop",
-     "d": "Tour, supplier audit or FAT witness at [shop location, city and province].",
+     "t": "Can you support my site?",
+     "d": "On-site time, service base and parts stock by region.",
      "steps": [
-      "Purpose, dates, group",
-      "Date and agenda back",
-      "Records and test bay ready"
+      "Find your region",
+      "On-site time, base, parts",
+      "Ask for it in writing"
      ],
-     "clock": "Date and agenda within [visit booking reply time, working days]",
-     "link": "contact-locations",
-     "action": "Book a visit"
+     "clock": "Written answer within [proposal response time, working days]",
+     "link": "contact-locations#coverage",
+     "action": "Check coverage for your site"
     }
    ]
   },
@@ -71,9 +67,9 @@
    "anchor": "request",
    "nav": "Request",
    "h": "Log a service request",
-   "intro": "Only your request’s fields show. Parts orders also by email: [parts email address].",
+   "intro": "Parts orders also by email: [parts email address].",
    "submit": "Send service request",
-   "note": "Ticket number by email within [ticket acknowledgment time, minutes]; the clock starts then or at your call. Out of hours, forms read within [out-of-hours form review time, hours]. [Privacy notice link; PIPEDA, Quebec Law 25]",
+   "note": "Ticket number by email within [ticket acknowledgment time, minutes]. Out of hours, forms read within [out-of-hours form review time, hours]. [Privacy notice link]",
    "steps": [
     {
      "title": "Your request",
@@ -128,6 +124,7 @@
        "label": "Which systems?",
        "kind": "checkbox-group",
        "required": false,
+       "when": "Fault now|Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change|First service, other make",
        "options": [
         "Purified Water (PW) generation",
         "Storage and distribution loop",
@@ -148,7 +145,7 @@
        "kind": "text",
        "required": false,
        "when": "Aquemi",
-       "help": "On the nameplate and the HMI \"About\" screen, format [serial number format]. Blank is fine."
+       "help": "On the nameplate, format [serial number format]. Blank is fine."
       },
       {
        "label": "Make, model and year installed",
@@ -204,7 +201,7 @@
        "required": false,
        "unit": "µS/cm",
        "when": "Fault now",
-       "help": "Uncompensated reading with temperature, for USP <645> stage 1."
+       "help": "The value not adjusted to 25 °C, for USP <645> stage 1."
       },
       {
        "label": "Temperature at the conductivity sensor",
@@ -269,14 +266,14 @@
         "Supervised session your staff open",
         "Ask our IT first"
        ],
-       "help": "On-site response times are the same in every mode."
+       "help": "No connection? We diagnose from your readings and a call; on-site times do not change."
       },
       {
        "label": "Alarm log and trend data",
        "kind": "file",
        "required": false,
        "when": "Fault now",
-       "help": "From [trend window, hours] before the first alarm; CSV, Excel or PDF, up to [maximum upload size, MB]. A copy: the original stays on site."
+       "help": "A copy from [trend window, hours] before the first alarm; CSV, Excel or PDF, up to [maximum upload size, MB]."
       },
       {
        "label": "Preferred window",
@@ -302,7 +299,7 @@
         "Online TOC (USP <643>)",
         "Temperature",
         "Pressure, flow and level",
-        "Ozone or ultraviolet (UV) intensity"
+        "Ultraviolet (UV) intensity"
        ]
       },
       {
@@ -347,7 +344,7 @@
        "required": false,
        "when": "Parts and consumables",
        "options": [
-        "Material certificates for wetted parts, [standard for PP and PVC certificates]",
+        "Material certificates for wetted PP and PVC parts",
         "USP <88> Class VI and FDA 21 CFR 177.2600 for elastomers",
         "Certificate of conformance",
         "Calibration certificate"
@@ -478,7 +475,7 @@
        "label": "Site access requirements",
        "kind": "text",
        "required": false,
-       "help": "Induction, GMP training, gowning, permits."
+       "help": "Induction, good manufacturing practice (GMP) training, gowning, permits."
       },
       {
        "label": "Language for the reply",
@@ -497,37 +494,37 @@
    "type": "table",
    "nav": "Response times",
    "h": "Response times by request",
-   "intro": "Same severities as every plan. No plan: a call-out with the next technician.",
+   "intro": "Times apply on a service plan; without one, a call-out with the next available technician.",
    "cols": [
     "Your request",
-    "First response, on a plan",
+    "First response",
     "What follows"
    ],
    "rows": [
     [
-     "Severity 1: production stopped or water out of spec",
-     "Answered in [severity 1 phone answer time, minutes]; on site [severity 1 on-site response time, hours]",
-     "Remote diagnosis within [remote response time, hours], if your remote mode allows"
+     "Severity 1: production stopped or water out of specification",
+     "Answered within [severity 1 phone answer time, minutes]; remote diagnosis within [remote response time, hours]",
+     "On site within [severity 1 on-site response time, hours], inside [service coverage area]"
     ],
     [
-     "Severity 2: alarm, lower capacity or adverse trend",
-     "Reply in [severity 2 reply time, hours]",
-     "Visit within [severity 2 visit time, hours or working days]"
+     "Severity 2: alarm, reduced capacity or adverse trend",
+     "Reply within [severity 2 reply time, hours]",
+     "Visit within [severity 2 visit time]"
     ],
     [
      "Severity 3: no effect on water quality or supply",
-     "Reply in [severity 3 reply time, working days]",
+     "Reply within [severity 3 reply time, working days]",
      "Fixed at the next or a booked visit"
     ],
     [
      "Maintenance or calibration (severity 4)",
-     "Date within [maintenance booking reply time, working days]; calibration [calibration booking reply time, working days]",
-     "Certificates to USP <645> (cell constant ± 2 %) and USP <643> (85–115 %)"
+     "Date within [maintenance booking reply time, working days]",
+     "Signed report; calibration certificates to USP <645> and <643>"
     ],
     [
      "Requalification after a change",
      "Reply within [requalification support reply time, working days]",
-     "Input for your change request and the tests we propose (EU GMP Annex 15, section 11)"
+     "Input for your change request and the tests we propose (EU GMP Annex 15, 11; GUI-0029, 7)"
     ],
     [
      "Parts and consumables",
@@ -537,7 +534,7 @@
     [
      "Another builder's system",
      "Reply within [other-builder request reply time, working days]",
-     "A condition survey quote: time on site, records needed, spares list"
+     "For [makes and equipment types serviced]: a condition survey quote"
     ]
    ],
    "as": "router"
@@ -549,26 +546,18 @@
    "items": [
     {
      "q": "Who decides whether water already used is affected?",
-     "a": "Your quality unit. Our signed service report gives it the facts: when readings left specification, what was affected, what we found and did. We do not release water."
+     "a": "Your quality unit. Our signed service report gives it the facts: when readings left specification, where, what we found and what we did. We do not release water."
     },
     {
      "q": "We have no service plan. Will you come?",
-     "a": "Yes, as a call-out with the next available technician, at [call-out rate and hourly rate, CAD]."
-    },
-    {
-     "q": "Our IT allows no remote access to GMP equipment.",
-     "a": "Choose \"No remote connection\". We diagnose from your readings, files and a call with your operators. On-site response times do not change."
-    },
-    {
-     "q": "Can you work to our SOPs, forms and induction?",
-     "a": "Yes. Name them in \"Site access requirements\". We send training records with the visit plan and fill in your forms as well as, or instead of, ours."
+     "a": "Yes, inside [service coverage area], as a call-out with the next available technician, at [call-out and hourly rates, CAD]."
     }
    ]
   }
  ],
  "cta": {
-  "h": "Planning ahead, not fixing a fault?",
-  "body": "A service plan fixes response times, visits, calibrations and spares in writing, at a fixed annual price.",
+  "h": "No service plan yet?",
+  "body": "A plan sets response times, visits, calibrations and spares in writing.",
   "button": "Compare service plans",
   "link": "svc-service",
   "include_label": "Have ready when you call",
@@ -580,28 +569,19 @@
   ]
  },
  "todo": [
-  "Service phone number and hours, and whether 24/7 calls are answered by a service engineer or a dispatcher (same placeholder as svc-service)",
-  "Sales phone number (same as contact-proposal), shown as separate from the service line",
-  "Severity 1 phone answer time (minutes), remote response time (hours) and on-site response time (hours) per plan; fastest on-site time for the hero fact",
-  "Severity 2 reply time (hours) and visit time (hours or working days); severity 3 reply time (working days)",
-  "Call-out rate and hourly rate without a plan (CAD)",
-  "Planning lead time for severity 4 requests (weeks) and visit scope lead time (working days, same as svc-service)",
-  "Ticket acknowledgment time (minutes); whether forms are monitored out of hours and the out-of-hours form review time (hours)",
-  "Who makes the triage call: service engineer or dispatcher",
-  "Serial number format and confirmation it appears on the nameplate and the HMI About screen",
-  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal); whether parts are supplied for other makes",
-  "Trend window to export before the first alarm (hours) and maximum upload size (MB)",
-  "Reply times (working days) for maintenance booking, calibration booking, requalification support and other-builder requests; parts quote turnaround (working hours); quote response time (working days, same as svc-service)",
-  "Parts email address and who receives parts orders (parts desk or stores team)",
-  "Spares stock location and order cut-off and delivery commitment (same as svc-service)",
-  "Service report turnaround (working days, same as svc-service)",
-  "Service coverage area (same as svc-service and contact-locations)",
-  "Privacy notice link (PIPEDA, Quebec Law 25)",
-  "Material certificate shipped with wetted PP and PVC parts ([standard for PP and PVC certificates]); replaces EN 10204 3.1 for wetted metal",
-  "Whether any-builder service still covers WFI stills, pure steam generators or stainless loops installed by others; the form now lists PW systems only",
-  "Confirm French-language service replies are available",
-  "Contact routes: proposal response time (same as contact-proposal); shop location and visit booking reply time (same as contact-locations)",
-  "PP ozone rating for dissolved and headspace ozone (ppm), from the PP maker's rating"
+  "Service phone (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use. Who answers out of hours and makes the triage call: service engineer or dispatcher.",
+  "Severity 1 clocks (FD-27, FD-28): [severity 1 phone answer time, minutes], [remote response time, hours] and [severity 1 on-site response time, hours] per plan, inside [service coverage area] (the name on home and contact-locations). Confirm the phone answer time applies to every caller: the urgent route shows it without a plan condition.",
+  "Severity 2 and 3 clocks (FD-27): [severity 2 reply time, hours], [severity 2 visit time] (svc-service's name), [severity 3 reply time, working days].",
+  "Severity definitions (FD-27): one wording here (form options and table rows, word for word) and on svc-service, their home (DR-009, DR-011). svc-service's FAQ words severities 2 and 3 differently today.",
+  "Call-out and hourly rates without a plan (FD-29): [call-out and hourly rates, CAD], svc-service's name.",
+  "Service desk (FD-31): [ticket acknowledgment time, minutes]; whether forms are read out of hours, and [out-of-hours form review time, hours]; [serial number format], and that it is on the nameplate; [trend window, hours]; [parts email address] and who receives parts orders (contact-locations writes [parts email]: one name for both).",
+  "Reply times (FD-31): [maintenance booking reply time, working days], one time for maintenance and calibration unless you set two; [requalification support reply time, working days]; [other-builder request reply time, working days]; [parts quote turnaround, working hours].",
+  "Other builders' systems (FD-30): [makes and equipment types serviced], one name on every page that offers it (DR-011); whether parts are supplied for other makes; whether WFI stills, pure steam generators or stainless loops by others are excluded (the form lists PW systems only). If none are served, the headline becomes \"Service for Aquemi systems\" and the other-builder option, branch, row and help lines go.",
+  "Ozone (FD-16, FD-30): the calibration list offers UV only. Ozone sensor calibration returns only if FD-30 covers other makers' ozone systems (DR-013).",
+  "Certificates shipped with wetted PP and PVC spare parts (FD-17); sys-pw names them [certificates supplied for PP and PVC product-contact parts].",
+  "Uploads and privacy (FD-39): [maximum upload size, MB], as on contact-proposal; [Privacy notice link], contact-proposal's name, covering PIPEDA and Quebec Law 25 after counsel's check (OQ-81).",
+  "Language for the reply (FD-36, DR-012): keep French only if a French-speaking technician or engineer replies within the same times; otherwise the field leaves the form at launch.",
+  "Contact routes: [proposal response time, working days] (FD-01), as on contact-proposal; the coverage route's written answer is contact-locations' closing, which uses the same time. Shop visits stay on contact-locations, offered once the shop and test bay are ready (FD-44, DR-004)."
  ],
  "hero_index": false,
  "figure": {
@@ -611,8 +591,8 @@
     "t": "Loop pumps"
    },
    {
-    "spot": "uv-ozone",
-    "t": "UV and ozone [PP ozone rating]"
+    "spot": "uv",
+    "t": "UV"
    },
    {
     "spot": "wrench",

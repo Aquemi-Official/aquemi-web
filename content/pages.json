@@ -5,59 +5,59 @@
    "section": "Home",
    "nav_label": "Home",
    "title": "Purified Water systems: pretreatment, RO, DI/EDI | Aquemi",
-   "meta": "One modular Purified Water package: PVC pretreatment, polypropylene RO, DI or EDI and distribution, built to USP <645> and <643>, wet FAT tested, qualified and serviced in Canada.",
+   "meta": "A modular Purified Water package in polypropylene with PVC pretreatment, RO, DI or EDI and distribution, designed in Ontario to meet USP <645> and <643>. No WFI or pure steam.",
    "path": "/",
-   "eyebrow": "PW · RO · DI/EDI · USP <645>, <643> · PH. EUR. 0008",
-   "headline": "Modular Purified Water systems, from pretreatment to the point of use",
-   "lead": "One modular package makes Purified Water (PW): PVC pretreatment, polypropylene (PP) RO and DI or EDI, and distribution. Designed, built and serviced in Canada.",
-   "primary_cta": "Request a proposal",
-   "primary_cta_intent": "Sizing and budget proposal for a new system",
+   "eyebrow": "PURIFIED WATER · USP <645>, <643> · PH. EUR. 0008",
+   "headline": "Modular Purified Water systems, from pretreatment to point of use",
+   "lead": "One modular polypropylene (PP) package turns drinking water into Purified Water (PW) for your points of use. Designed in Ontario. No Water for Injection, pure steam or stainless steel systems.",
+   "primary_cta": "Talk to an engineer",
+   "primary_cta_link": "contact-proposal",
+   "primary_cta_intent": "Not sure yet: talk to an engineer",
    "secondary_cta": {
     "label": "See the systems",
     "link": "systems"
    },
    "facts": [
     {
-     "v": "[100 %]",
-     "l": "Skids wet tested at FAT"
+     "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]",
+     "l": "Skid outlet · measured at FAT"
     },
     {
-     "v": "≤ 1.3 µS/cm",
-     "l": "PW conductivity at 25 °C · USP <645>"
+     "v": "[100 %]",
+     "l": "Skids tested with water · at FAT"
     }
    ],
    "blocks": [
     {
      "type": "path",
      "h": "One package, one water path",
-     "intro": "Pretreatment to point of use in one modular package. We state where our scope ends.",
-     "from": "City feed",
+     "from": "Drinking water",
      "to": "Point of use",
      "items": [
       {
        "t": "Pretreatment",
-       "d": "A PVC train: no detectable chlorine or chloramine at the RO inlet, SDI ≤ 3, every season.",
+       "d": "Polyvinyl chloride (PVC) pretreatment protects the reverse osmosis (RO) membranes from chlorine, chloramine and particles.",
        "tag": "USP <1231>",
        "link": "sys-pretreatment",
        "spot": "pretreatment"
       },
       {
        "t": "PW generation",
-       "d": "A PP skid with RO and DI or EDI, below 1.3 µS/cm at 25 °C and 500 ppb TOC.",
+       "d": "RO and deionization on a PP skid, designed to meet the USP conductivity and organic carbon limits.",
        "tag": "USP <645>",
        "link": "sys-pw",
        "spot": "ro-skid"
       },
       {
        "t": "Storage and distribution",
-       "d": "PP tank and loop: turbulent flow at peak draw, sanitized by [PP loop sanitization method].",
+       "d": "PP tank and loop: turbulent flow at peak demand, sanitized by [PP loop sanitization method].",
        "tag": "WHO TRS 1033",
        "link": "sys-storage",
        "spot": "storage-tank"
       },
       {
        "t": "Monitoring and controls",
-       "d": "Online TOC and conductivity on the uncompensated reading, audit trails to 21 CFR Part 11.",
+       "d": "Online total organic carbon (TOC) and conductivity, with audit trails mapped to 21 CFR Part 11.",
        "tag": "21 CFR Part 11",
        "link": "sys-monitoring",
        "icon": "conductivity"
@@ -67,11 +67,10 @@
     {
      "type": "grid",
      "h": "Same limits, different evidence by industry",
-     "intro": "Your products set the grade; your regulator sets the evidence.",
      "items": [
       {
        "t": "Pharmaceutical",
-       "d": "PW for oral and topical products, and as feed to the WFI still you run. Inspected under GUI-0001.",
+       "d": "PW for oral and topical drugs, at sites inspected under Health Canada's GUI-0001 or FDA's 21 CFR 211.",
        "tag": "GUI-0001",
        "link": "ind-pharma"
       },
@@ -96,38 +95,31 @@
      "items": [
       {
        "t": "Design",
-       "d": "Your URS becomes a functional specification, P&IDs and a risk assessment, verified at DQ."
+       "d": "We turn your user requirement specification (URS) into a design you approve before anything is built."
       },
       {
        "t": "Fabricate",
-       "d": "PP skids to [PP piping standard], joined by [PP joining method, for example butt fusion or IR welding], each joint logged."
+       "d": "We build the PP skids and record each joint."
       },
       {
-       "t": "FAT",
-       "d": "A wet FAT to a protocol your quality unit approves, witnessed in person or remotely."
+       "t": "Test",
+       "d": "A factory acceptance test (FAT) with water, to a protocol your quality unit approves."
       },
       {
-       "t": "SAT and IQ/OQ",
-       "d": "SAT on your feed water and utilities, then IQ/OQ to protocols your quality unit approved."
+       "t": "Qualify",
+       "d": "Site acceptance tests on your utilities, then installation and operational qualification (IQ/OQ) to protocols your quality unit approves."
       },
       {
-       "t": "PQ and service",
-       "d": "PQ support through 12 months of data, then service that keeps it qualified."
+       "t": "Support",
+       "d": "Performance qualification (PQ) support through 12 months of data, then service and spare parts."
       }
      ]
     },
     {
      "type": "grid",
-     "h": "Service is half the system",
-     "intro": "Every service plan fixes these terms before you sign.",
+     "h": "Service after handover",
      "ground": "light",
      "items": [
-      {
-       "t": "Response time",
-       "d": "Stated for four severities; severity 1 inside [service coverage area].",
-       "icon": "calendar",
-       "link": "svc-service"
-      },
       {
        "t": "Your change control",
        "d": "Like-for-like parts, or the change goes through your change control first.",
@@ -135,14 +127,14 @@
        "link": "svc-service"
       },
       {
-       "t": "Fixed annual price",
-       "d": "Visits, calibrations and spares listed per plan.",
+       "t": "Annual price",
+       "d": "From [lowest plan price, CAD per year]; visits, calibrations and spares listed per plan.",
        "icon": "wrench",
        "link": "svc-service"
       },
       {
        "t": "Signed record",
-       "d": "A signed service report after every visit, for your GMP file.",
+       "d": "A signed report after each visit, for your quality records.",
        "icon": "binder",
        "link": "svc-service"
       }
@@ -152,7 +144,6 @@
      "type": "table",
      "as": "router",
      "h": "Start from where your project is",
-     "intro": "Each route reaches an engineer, not a sales queue.",
      "cols": [
       "Your situation",
       "Send us",
@@ -161,45 +152,63 @@
      ],
      "rows": [
       [
-       "A new system, URS approved",
-       "Your URS, feed water analysis and peak demand in L/h",
-       "A process engineer's reply within [proposal response time, working days]",
+       "No URS yet, or a first PW system",
+       "What you make",
+       "The grade each step needs and the package",
        {
-        "t": "Request a proposal",
+        "t": "Plan your first PW system",
+        "link": "industries#first-system"
+       }
+      ],
+      [
+       "A budget before a URS",
+       "Peak demand in L/h and feed water source",
+       "The modules and a budget range, with its estimate class",
+       {
+        "t": "Get a budget range",
+        "link": "systems#budget"
+       }
+      ],
+      [
+       "A URS, approved or in draft",
+       "Your URS and feed water analysis",
+       "A proposal, or a gap review of a draft",
+       {
+        "t": "Send your URS",
         "link": "contact-proposal"
        }
       ],
       [
-       "A new system, URS in draft",
-       "A request for a URS gap review",
-       "The grades, systems and qualification scope your URS should state",
+       "Comparing or qualifying suppliers",
+       "Your questionnaire, if you use one",
+       "The record each process leaves, and how to audit it",
        {
-        "t": "Request a URS review",
-        "link": "contact-proposal"
+        "t": "Quality management",
+        "link": "cmp-quality"
        }
       ],
       [
        "A project in qualification",
        "Your commissioning and qualification plan",
-       "The IQ and OQ test list, FAT tests to leverage and a PQ sampling plan",
+       "IQ and OQ test list, FAT tests to reuse, PQ sampling plan",
        {
         "t": "Commissioning and qualification",
         "link": "svc-cq"
        }
       ],
       [
-       "A system to upgrade, any builder",
-       "What to change: controls, capacity, sanitization or a branch",
-       "Each option with its downtime and the requalification it triggers",
+       "A system to upgrade, or a water observation",
+       "What to change, or the observation",
+       "Options with their downtime and the requalification each triggers",
        {
-        "t": "Upgrades",
+        "t": "Request a system assessment",
         "link": "svc-upgrades"
        }
       ],
       [
        "Production stopped",
        "A call to [service phone number], [service phone hours]",
-       "On site in [severity 1 on-site response time, hours] on a service plan",
+       "On site in [severity 1 on-site response time, hours] inside [service coverage area], on a service plan",
        {
         "t": "Service request",
         "link": "contact-service"
@@ -213,61 +222,49 @@
      "items": [
       {
        "q": "You are smaller than the global manufacturers. Why take the risk?",
-       "a": "Judge us on evidence, not size: audit our quality system, witness a FAT, read a sample turnover package, call a reference. Your system’s designer answers your auditor."
+       "a": "We are a new company, so judge us on checks, not size. Today, talk to the engineer who would lead your project. Audit our quality system from [quality system ready for audit, date]. Witness your factory acceptance test (FAT) once [shop and test bay ready for visits]."
       },
       {
-       "q": "Is your system USP certified?",
-       "a": "No water system is. USP and Ph. Eur. set limits for water, not approvals for equipment. Compliance is water meeting the monograph at your points of use, with records."
-      },
-      {
-       "q": "What does being Canadian change?",
-       "a": "Travel, registration and response. Your team drives to the FAT in [test bay location, city and province]; [parts that carry a CRN under CSA B51, if any]."
+       "q": "Do you supply WFI or pure steam?",
+       "a": "No: we supply a Purified Water (PW) package in polypropylene, not Water for Injection (WFI), pure steam or stainless steel."
       },
       {
        "q": "We do not have a URS yet. Is it too early to ask?",
-       "a": "No. Ask for a URS gap review: we return the grades, systems and qualification scope your URS should state. [Confirm: no obligation, usable in your tender]"
-      },
-      {
-       "q": "Can our teams witness the FAT?",
-       "a": "Yes, in person in [test bay location, city and province] or remotely; the protocol says which checks need a person on site."
+       "a": "No. Ask for a water scope review and tell us what you make. In [scope review turnaround, working days] we return the grade each step needs, the package and its qualification scope. Cost: [scope review cost or free]. [Confirm: no obligation, usable in your tender]"
       }
      ]
     }
    ],
    "cta": {
-    "h": "Send your URS. An engineer replies.",
-    "button": "Request a proposal",
+    "h": "Send what you have. An engineer replies.",
+    "button": "Talk to an engineer",
     "link": "contact-proposal",
-    "intent": "Sizing and budget proposal for a new system",
+    "intent": "Not sure yet: talk to an engineer",
     "include": [
-     "Your URS, approved or in draft",
-     "Water grade and pharmacopoeia",
-     "Peak demand in L/h",
-     "Feed water analysis"
+     "Your URS, or your product and flow",
+     "Feed water analysis, if you have one",
+     "Where your site is"
     ],
     "returns": [
-     "A proposal from a process engineer",
-     "A URS gap review or route assessment"
+     "A written answer from an engineer",
+     "A scope review, budget range or proposal"
     ],
     "turnaround": "[proposal response time, working days]"
    },
    "todo": [
     "Hero photograph of a finished Aquemi skid or installed loop",
-    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-    "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service); service coverage area",
-    "Service phone number and service phone hours",
-    "Test bay location, city and province",
-    "Service bases, cities",
-    "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
-    "FAT witness costs: whether FAT witness time, travel and remote witness are included in the equipment price or quoted separately",
-    "Confirm reviews carry no obligation and may be used in the client's own tender",
-    "Confirm every skid in the PW package is wet tested at FAT (hero fact 100 %); loops fabricated on site are tested at SAT",
-    "Confirm the standards strip against the standards Aquemi designs to routinely",
-    "Standard the PP skid and loop piping is designed to ([PP piping standard])",
-    "PP joining method ([PP joining method, for example butt fusion or IR welding])",
-    "Sanitization method for the PP tank and loop, and its maximum temperature ([PP loop sanitization method])",
-    "Which package parts, if any, carry a CRN under CSA B51 ([parts that carry a CRN under CSA B51, if any])",
-    "One real case study with client permission (home shows proof routes until it exists)"
+    "Outlet conductivity guarantee at the skid outlet, measured at FAT ([outlet conductivity guarantee, µS/cm @ 25 °C]; same placeholder as sys-pw and svc-design; FD-21). At launch an unset hero fact goes (DR-010)",
+    "Confirm every skid in the PW package is tested with water at FAT (hero fact [100 %]; FD-45); loops fabricated on site are tested at SAT",
+    "Proposal response time, working days ([proposal response time, working days]; one figure on every page; FD-01)",
+    "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service) and service coverage area ([service coverage area]; FD-27, FD-28)",
+    "Service phone number and service phone hours ([service phone number], [service phone hours]; FD-27)",
+    "Lowest service plan price, CAD per year ([lowest plan price, CAD per year]; same placeholder as svc-service; FD-29). Write 'fixed annual price' only if FD-29 makes plans fixed-price (DR-005)",
+    "Water scope review turnaround and cost ([scope review turnaround, working days], [scope review cost or free]; same placeholders as industries; FD-01, FD-02)",
+    "Confirm reviews carry no obligation and may be used in the client's own tender ([Confirm: no obligation, usable in your tender]; FD-02)",
+    "Date the quality system is ready for a supplier audit ([quality system ready for audit, date]; FD-48) and date the shop and test bay are ready for visits and witnessed FAT ([shop and test bay ready for visits]; FD-44). At launch the risk FAQ drops each check whose date is unset (DR-004, DR-006 rule 6)",
+    "Sanitization method for the PP tank and loop ([PP loop sanitization method]; FD-14); any temperature wording follows DR-013",
+    "Confirm the standards in the eyebrow against the standards Aquemi designs to routinely",
+    "One real case study with client permission; no case-study section on home until project 1 (DR-016; FD-42)"
    ]
   },
   {
@@ -275,17 +272,14 @@
    "section": "Systems",
    "nav_label": "All systems",
    "title": "Purified Water systems: pretreatment, RO, DI/EDI, distribution | Aquemi",
-   "meta": "One modular Purified Water package: PVC pretreatment, polypropylene RO, DI or EDI and distribution, to USP <645> 1.3 µS/cm and USP <643> 500 ppb TOC. Every skid wet tested at FAT.",
+   "meta": "One modular Purified Water package in polypropylene with PVC pretreatment, designed to meet USP <645> and <643>: modules, budget ranges and site requirements.",
    "path": "/systems/",
    "eyebrow": "SYSTEMS · PW · RO · DI/EDI",
-   "headline": "Built to the limit your auditor cites",
-   "lead": "One modular package makes Purified Water (PW): pretreatment, RO, DI or EDI, distribution and controls. Start from your standard or your water grade.",
-   "primary_cta": "Request a route assessment",
-   "primary_cta_intent": "Route assessment: which modules your water needs",
-   "secondary_cta": {
-    "label": "Get a sample turnover package",
-    "link": "cmp-documentation"
-   },
+   "headline": "Purified Water systems, designed to meet USP limits",
+   "lead": "One modular polypropylene package, with PVC pretreatment, makes Purified Water (PW) and delivers it to every point of use. Not Water for Injection, pure steam or stainless steel.",
+   "primary_cta": "Get a budget range",
+   "primary_cta_link": "contact-proposal",
+   "primary_cta_intent": "I have water data, no system yet|Modules and a budget range",
    "index": true,
    "blocks": [
     {
@@ -293,37 +287,125 @@
      "h": "How the systems fit together",
      "stages": [
       {
-       "t": "Municipal feed",
+       "t": "Feed water",
        "icon": "droplet",
-       "d": "Chlorinated city or well water that changes with the season."
+       "d": "City or well drinking water that changes with the season."
       },
       {
        "t": "Pretreatment",
        "spot": "pretreatment",
-       "d": "A PVC train that removes chlorine, hardness and particles that damage RO membranes."
+       "d": "A PVC train that removes chlorine, hardness and particles that damage reverse osmosis (RO) membranes."
       },
       {
        "t": "PW generation",
        "spot": "ro-skid",
-       "d": "A PP skid where RO and DI or EDI remove ions, organics and bacteria to make PW."
+       "d": "RO, then deionization (DI) or electrodeionization (EDI), remove ions, organics and bacteria."
       },
       {
        "t": "Storage",
        "spot": "storage-tank",
-       "d": "Buffers generation against peak draw."
+       "d": "Buffers generation against peak demand."
       },
       {
        "t": "Distribution loop",
        "spot": "loop",
-       "d": "Keeps water moving and sanitized between the tank and every outlet."
+       "d": "Keeps water moving from the tank to every outlet and back."
       },
       {
        "t": "Points of use",
        "icon": "valve",
-       "d": "Where production draws water from the loop."
+       "d": "Where production takes water from the loop."
       }
      ],
-     "base": "Monitoring and controls · TOC, conductivity, ozone [PP ozone rating]"
+     "base": "Monitoring and controls · conductivity and TOC"
+    },
+    {
+     "type": "spec",
+     "h": "Budget ranges before a quote",
+     "caption": "CAD, before tax, as of [month year] · [estimate class and accuracy]",
+     "cols": [
+      "Scope",
+      "Budget range",
+      "Basis"
+     ],
+     "rows": [
+      {
+       "p": "Whole package, [reference capacity, L/h]",
+       "v": "[budget range, CAD]",
+       "m": "Supply, factory acceptance test (FAT), installation and operational qualification (IQ/OQ) protocols, turnover package",
+       "hl": true
+      },
+      {
+       "p": "PW generation, [reference capacity, L/h]",
+       "v": "[budget range, CAD]",
+       "m": "Single-pass RO and EDI, city feed"
+      },
+      {
+       "p": "Storage tank and loop, [reference tank volume L, points of use]",
+       "v": "[budget range, CAD]",
+       "m": "[PP loop sanitization method]; field piping excluded"
+      },
+      {
+       "p": "Pretreatment train, [reference capacity, L/h]",
+       "v": "[budget range, CAD]",
+       "m": "PVC train: multimedia, softener and carbon or bisulfite"
+      }
+     ],
+     "note": "Moves the price: capacity, EDI or exchange DI, loop length, sanitization and documentation. Not included: installation, tie-ins, utilities, lab testing during qualification and temporary water.",
+     "nav": "Budget",
+     "anchor": "budget"
+    },
+    {
+     "type": "spec",
+     "h": "What changes on your site",
+     "cols": [
+      "Item",
+      "Typical",
+      "Note"
+     ],
+     "rows": [
+      {
+       "p": "Connection points (battery limits)",
+       "v": "[standard battery limits, typical scope]",
+       "m": "Listed in the proposal, with who supplies each"
+      },
+      {
+       "p": "Footprint and weight",
+       "v": "[typical footprint and weight, by capacity]"
+      },
+      {
+       "p": "Power, feed water and drain",
+       "v": "[supply voltage options]; [feed and drain flows, L/h]",
+       "m": "RO reject and rinse water to drain"
+      },
+      {
+       "p": "Installation and field joints",
+       "v": "[installation scope]"
+      },
+      {
+       "p": "Electrical and pressure approvals",
+       "v": "Electrical: [panel certification held]",
+       "m": "Pressure: a Canadian registration number (CRN) for [pressure-rated items in the PW package]",
+       "link": "compliance"
+      },
+      {
+       "p": "Tie-in and shutdown",
+       "v": "[typical shutdown for tie-in, days]",
+       "m": "Plan temporary water if production cannot stop"
+      },
+      {
+       "p": "Sanitizing chemicals",
+       "v": "[PP loop sanitization method]; residual tested before use"
+      },
+      {
+       "p": "Isolation and lockout",
+       "v": "[lockable isolation points and lockout diagram]"
+      }
+     ],
+     "nav": "Site",
+     "anchor": "site",
+     "fold": 4,
+     "fold_noun": "requirements"
     },
     {
      "type": "table",
@@ -331,13 +413,13 @@
      "nav": "By standard",
      "cols": [
       "Standard",
-      "What it asks of the system",
+      "What it asks",
       "Where we answer it"
      ],
      "rows": [
       [
        "USP <645>, <643>; Ph. Eur. 0008",
-       "Conductivity on the uncompensated reading; TOC ≤ 0.50 mg/L on a suitable analyzer",
+       "Uncompensated conductivity; total organic carbon (TOC) ≤ 0.50 mg/L (500 ppb)",
        {
         "t": "Monitoring and controls",
         "link": "sys-monitoring"
@@ -345,7 +427,7 @@
       ],
       [
        "WHO TRS 1033",
-       "Turbulent flow, water stored to limit microbial growth, continuous TOC and conductivity",
+       "Turbulent flow; storage that limits microbial growth; online conductivity and TOC",
        {
         "t": "Storage and distribution loops",
         "link": "sys-storage"
@@ -360,16 +442,8 @@
        }
       ],
       [
-       "CSA B51",
-       "A CRN in your province for [package parts that need a CRN, for example tanks or filter vessels]",
-       {
-        "t": "Standards we design to",
-        "link": "compliance"
-       }
-      ],
-      [
        "USP <1231>",
-       "Drinking water feed; pretreatment that protects the RO without adding bioburden",
+       "Guidance: drinking water feed; pretreatment that protects the RO without adding bioburden",
        {
         "t": "Pretreatment",
         "link": "sys-pretreatment"
@@ -380,95 +454,29 @@
      "fold": 3
     },
     {
-     "type": "table",
-     "h": "Or start from your water grade",
-     "nav": "By water grade",
-     "cols": [
-      "Your water and its use",
-      "Released against",
-      "Limits that decide it",
-      "Systems on the path",
-      "Start with"
-     ],
-     "rows": [
-      [
-       "PW: oral and topical products",
-       "USP Purified Water; Ph. Eur. 0008",
-       "≤ 1.3 µS/cm at 25 °C; TOC ≤ 0.50 mg/L",
-       "Pretreatment, RO and DI or EDI, distribution",
-       {
-        "t": "PW generation",
-        "link": "sys-pw"
-       }
-      ],
-      [
-       "PW feeding a WFI still you run",
-       "USP Purified Water; Ph. Eur. 0008",
-       "As PW, plus the feed limits your still maker sets",
-       "Pretreatment, double-pass RO and DI or EDI, distribution",
-       {
-        "t": "PW generation",
-        "link": "sys-pw"
-       }
-      ]
-     ],
-     "as": "router"
-    },
-    {
-     "type": "spec",
-     "h": "Budget ranges before a quote",
-     "caption": "Typical budget ranges · CAD, before tax",
-     "cols": [
-      "System",
-      "Typical budget",
-      "What the range assumes"
-     ],
-     "note": "Planning ranges, including FAT, IQ/OQ protocols and the turnover package. Installation and utilities are quoted separately.",
-     "rows": [
-      {
-       "p": "PW generation, RO + EDI, [reference capacity, L/h]",
-       "v": "[budget range, CAD]",
-       "m": "PP skid, single-pass RO with DI or EDI, municipal feed"
-      },
-      {
-       "p": "Storage tank and loop, [reference tank volume L, points of use]",
-       "v": "[budget range, CAD]",
-       "m": "PP tank and loop, [PP loop sanitization method], field piping excluded"
-      },
-      {
-       "p": "Pretreatment train, [reference capacity, L/h]",
-       "v": "[budget range, CAD]",
-       "m": "PVC train: multimedia, softener and carbon or bisulfite"
-      }
-     ],
-     "nav": "Budget",
-     "fold": 3,
-     "fold_noun": "ranges"
-    },
-    {
      "type": "faq",
      "h": "Questions teams ask first",
      "nav": "FAQ",
      "items": [
       {
-       "q": "Can you supply one part, or should one supplier design it all?",
-       "a": "We supply one modular package, designed together: pretreatment, RO, DI or EDI and distribution. [Whether single modules are supplied alone]. Interface limits go in the functional specification; we test our side at FAT."
+       "q": "We pay for exchange DI. When does a package make sense?",
+       "a": "When your daily use exceeds [exchange DI breakeven, L/day]. Below that, exchange deionization (DI) can cost less. USP <1231> warns that exchange canisters can contaminate the water. Send your daily use and exchange cost with your budget request."
       },
       {
-       "q": "Where does your scope end and our plant begin?",
-       "a": "At battery limits stated connection by connection in the proposal: [standard battery limits, typical scope]. Anything outside is listed with who supplies it."
+       "q": "When is polypropylene the wrong choice?",
+       "a": "When the loop must run hot. Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats. Routine 80 °C at loop pressure, a hot-held loop or steam needs a polyvinylidene fluoride (PVDF) or stainless loop [whether we quote PVDF]."
+      },
+      {
+       "q": "Can you supply one part, or should one supplier design it all?",
+       "a": "[Whether single modules are supplied alone]. We design pretreatment, generation and distribution as one package. Interface limits go in the functional specification; we test our scope at the factory acceptance test (FAT)."
       },
       {
        "q": "How do we size generation against storage?",
-       "a": "From your point-of-use demand over a full production day. Generation covers average draw plus sanitization and recovery; the tank covers the peaks. We share the calculation."
+       "a": "From your point-of-use demand over a full production day. Generation covers average demand plus sanitization and tank refill; the tank covers the peaks. We share the calculation."
       },
       {
        "q": "Do you build to standard platforms or to order?",
-       "a": "[standard platforms, capacity ranges, lead time in weeks]. Either way, materials, instruments and controls are adapted to your URS."
-      },
-      {
-       "q": "Can your PW feed the WFI still we run?",
-       "a": "Yes. PW is the usual feed to a WFI still. You run the still; we size PW to its feed limits and peak draw and state the interface in the functional specification."
+       "a": "[standard platforms, capacity ranges, lead time in weeks]. Either way, we adapt materials, instruments and controls to your user requirement specification (URS)."
       }
      ]
     },
@@ -476,6 +484,7 @@
      "type": "related",
      "h": "Where to go next",
      "items": [
+      "services",
       "svc-design",
       "cmp-documentation",
       "svc-upgrades"
@@ -483,47 +492,40 @@
     }
    ],
    "cta": {
-    "h": "Send your grade and flow. We route it.",
-    "button": "Request a route assessment",
+    "h": "Send your flow; get modules and a budget range.",
+    "body": "Rough numbers are fine. An engineer replies in writing. Cost: [budget range cost or free].",
+    "button": "Get a budget range",
     "link": "contact-proposal",
-    "intent": "Route assessment: which modules your water needs",
-    "include_label": "What to send for a route assessment",
+    "intent": "I have water data, no system yet|Modules and a budget range",
     "include": [
-     "Feed water analysis, summer and winter",
-     "Water grade and pharmacopoeia per use",
      "Peak and average demand, L/h",
-     "Your URS, a draft is enough"
+     "Number of points of use",
+     "What you make, and where you sell it",
+     "Feed source, and any water analysis"
     ],
-    "turnaround": "[proposal response time, working days]",
+    "turnaround": "[budget proposal turnaround, working days]",
     "returns": [
-     "Written route assessment",
-     "The modules your water needs",
-     "Sizing basis, with the reasoning"
+     "Modules your water needs",
+     "Budget range and its class",
+     "Sizing basis"
     ]
    },
    "todo": [
-    "Whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks ([standard platforms, capacity ranges, lead time in weeks], FAQ)",
-    "Whether single modules (pretreatment, RO and DI/EDI skid, distribution) are supplied alone or only as the full package ([Whether single modules are supplied alone], FAQ)",
-    "Sanitization method and maximum temperature for the PP tank and loop ([PP loop sanitization method], budget table)",
-    "Which package parts need a CRN under CSA B51 ([package parts that need a CRN, for example tanks or filter vessels], standards table)",
+    "Budget bands (FD-03, DR-005): a whole-package row, then three module rows, each a CAD range costed from Aquemi's own configuration at its reference size ([budget range, CAD], [reference capacity, L/h], [reference tank volume L, points of use]); the table's estimate class and accuracy ([estimate class and accuracy]) and price date ([month year]); never MISSION's internal band. Unfilled at launch: the table goes, the two note lines and \"Get a budget range\" stay (DR-005 rule 8)",
+    "Confirm the band boundary in the whole-package row (supply, FAT, IQ/OQ protocols, turnover package) and the exclusions in the note (installation, tie-ins, utilities, PQ lab testing, temporary water) (FD-03)",
+    "Smallest project quoted, if the owner publishes one: one plain line under the budget table (FD-04, DR-005 rule 2)",
+    "Whether the budget range is free or charged ([budget range cost or free], closing; FD-02)",
+    "Budget proposal turnaround, working days ([budget proposal turnaround, working days], closing; the figure contact-proposal's requests table defines; FD-01)",
+    "Intent \"I have water data, no system yet|Modules and a budget range\" (hero and closing) must match contact-proposal's situation and follow-up labels (DR-014 rules 2 and 11)",
+    "Site requirements (FD-20, FD-21, FD-24, FD-26): [standard battery limits, typical scope]; [typical footprint and weight, by capacity]; [supply voltage options]; [feed and drain flows, L/h]; [installation scope] (who installs and makes field joints); [panel certification held] (same as sys-pw); [pressure-rated items in the PW package] (same as compliance and cmp-quality); [typical shutdown for tie-in, days]; [lockable isolation points and lockout diagram]",
+    "Sanitization method for the PP tank and loop ([PP loop sanitization method], budget and site tables; FD-14, DR-013)",
+    "Whether Aquemi quotes PVDF for hot loops ([whether we quote PVDF], FAQ; FD-15)",
+    "Exchange DI breakeven, L/day, from the ten-year cost sheet ([exchange DI breakeven, L/day], FAQ; FD-49, DR-015)",
+    "Check the current USP <1231> text still says exchange canisters can contaminate the water (FAQ); the library read only the 2006 text (H2O-01)",
+    "Whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks ([standard platforms, capacity ranges, lead time in weeks], FAQ; FD-20, FD-08)",
+    "Whether single modules (pretreatment, RO and DI/EDI skid, distribution) are supplied alone or only as the full package ([Whether single modules are supplied alone], FAQ; FD-20)",
     "Standard the PP piping and loop are designed to (dead legs, drainability); the ASME BPE row was removed",
-    "Whether the route assessment is free or charged",
-    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-    "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope: new systems, upgrades, service only or not offered ([hospital, lab and industrial water scope], FAQ; same wording as sys-pw)",
-    "Confirm every skid in the PW package (including the loop pump skid, tanks and control panels) gets a wet FAT before shipping; field-built loop piping is proven at SAT/IQ (hero fact, FAQ; same as svc-fat-sat and home)",
-    "Budget ranges (CAD) for each module at a stated reference capacity or tank size, including FAT, IQ/OQ protocols and turnover package ([budget range, CAD], [reference capacity, L/h], [reference tank volume L, points of use])",
-    "Standard battery limits for a typical scope ([standard battery limits, typical scope])",
-    "PP ozone rating for dissolved and headspace ozone (ppm), from the PP maker's rating"
-   ],
-   "facts": [
-    {
-     "v": "[100 %]",
-     "l": "Skids wet tested at FAT"
-    },
-    {
-     "v": "≤ 1.3 µS/cm",
-     "l": "PW conductivity at 25 °C · USP <645>"
-    }
+    "Once the project-facts sheet exists (DR-001 rule 5), it becomes the hero's secondary link (DR-006)"
    ]
   },
   {
@@ -2045,20 +2047,17 @@
    "id": "services",
    "section": "Services",
    "nav_label": "Services",
-   "title": "Pharma water system services, URS to service | Aquemi",
-   "meta": "Design, fabrication, FAT/SAT, IQ/OQ/PQ, service and upgrades for modular PW systems, pretreatment to distribution, on one traceability record per EU GMP Annex 15.",
+   "title": "Purified Water services, from design to upgrades | Aquemi",
+   "meta": "Design, fabrication, FAT and SAT, IQ/OQ/PQ, service and upgrades for a modular Purified Water package in polypropylene with PVC pretreatment.",
    "path": "/services/",
-   "eyebrow": "SERVICES · EU GMP ANNEX 15 · GAMP 5",
-   "headline": "One team from URS to service",
-   "lead": "We carry your modular Purified Water (PW) system, pretreatment, RO, DI/EDI and distribution, from URS to service on one traceability matrix.",
-   "tags": [
-    "EU GMP Annex 15",
-    "ASTM E2500",
-    "GAMP 5"
-   ],
-   "primary_cta": "Request a proposal",
+   "eyebrow": "SERVICES · EU GMP ANNEX 15 · GUI-0029",
+   "headline": "Purified Water services, from design to upgrades",
+   "lead": "We design, build, test and qualify your Purified Water package in polypropylene, then service it. We trace each requirement to its test.",
+   "primary_cta": "Talk to an engineer",
+   "primary_cta_link": "contact-proposal",
+   "primary_cta_intent": "Not sure yet: talk to an engineer",
    "secondary_cta": {
-    "label": "System already running? See service plans",
+    "label": "System running? See service plans",
     "link": "svc-service"
    },
    "index": true,
@@ -2074,40 +2073,40 @@
      ],
      "rows": [
       [
-       "New system: an idea or a draft URS",
+       "New system, user requirement specification (URS) approved or in draft",
        {
-        "t": "Process design: request a URS review",
+        "t": "Process design: request a URS gap review",
         "link": "svc-design"
        },
-       "URS or a short description, PW limits, feed water, peak L/h",
+       "Your URS, feed water analysis, peak demand in L/h",
        "A compliance matrix marking every gap, within [URS review turnaround, working days]"
       ],
       [
-       "Design approved, by us or another firm",
+       "Design approved",
        {
         "t": "Fabrication: request a spec review",
         "link": "svc-fabrication"
        },
-       "Approved P&IDs, piping and material specification, province",
-       "The clauses of your specification we meet or would change; a draft inspection plan"
+       "Approved drawings, piping and material specification, province",
+       "Clauses we meet or would change; a draft inspection plan"
       ],
       [
-       "Skid in build, FAT and SAT ahead",
+       "Skid in build, factory and site acceptance tests (FAT, SAT) ahead",
        {
-        "t": "FAT and SAT: request a sample FAT protocol",
+        "t": "FAT and SAT: request a FAT test list",
         "link": "svc-fat-sat"
        },
-       "URS or functional specification, witness constraints",
-       "A draft FAT test list with leverage marked, and witness dates"
+       "URS or functional specification",
+       "A draft FAT test list, reusable tests marked"
       ],
       [
        "Installed or arriving: qualification to plan",
        {
-        "t": "C&Q: request a plan review",
+        "t": "Commissioning and qualification (C&Q): request a plan review",
         "link": "svc-cq"
        },
-       "URS, utilities section of your VMP, points-of-use list",
-       "A draft C&Q plan with PQ sampling and water release dates"
+       "URS, validation master plan, points-of-use list",
+       "A draft C&Q plan and a sampling plan"
       ],
       [
        "In service and qualified",
@@ -2119,22 +2118,22 @@
        "A plan, its annual price and first-visit tasks, within [quote response time, working days]"
       ],
       [
-       "Ageing, out of support, or about to change",
+       "Aging, out of support, or about to change",
        {
-        "t": "Upgrades: request an assessment",
+        "t": "Upgrades: request a system assessment",
         "link": "svc-upgrades"
        },
-       "Age, drawings, a year of water data, the problem",
+       "Drawings, a year of water data, the problem",
        "Assessment scope and price, then options with downtime and requalification"
       ],
       [
-       "Production stopped now",
+       "Comparing suppliers",
        {
-        "t": "Request urgent service",
-        "link": "contact-service"
+        "t": "Quality: request a supplier audit",
+        "link": "cmp-quality"
        },
-       "Call [service phone number]. Do not wait for a form.",
-       "An engineer on the phone, then a technician on site"
+       "Your supplier questionnaire",
+       "Your questionnaire completed, within [audit request response time, working days]"
       ]
      ],
      "as": "router",
@@ -2142,48 +2141,48 @@
     },
     {
      "type": "steps",
-     "h": "What leaves each stage",
-     "intro": "Your URS is the reference throughout (Annex 15, 3.2); every requirement keeps its ID.",
+     "h": "How long each stage takes, and what it leaves",
+     "intro": "Plan your review time at each hold point.",
      "items": [
       {
-       "t": "URS review and design",
-       "d": "Compliance matrix, basis of design, P&IDs, functional specification, DQ.",
+       "t": "Design, [design to DQ, weeks]",
+       "d": "Compliance matrix, basis of design, piping and instrumentation diagrams, functional specification, design qualification.",
        "hold": "Your quality unit"
       },
       {
-       "t": "Fabrication",
-       "d": "Material log with certificates, joint records for [PP joining method, for example butt fusion or IR welding], pressure test records."
+       "t": "Fabrication, [approved design to FAT, weeks]",
+       "d": "Material certificates, joint records, pressure test records."
       },
       {
-       "t": "FAT",
+       "t": "FAT, [FAT duration, days]",
        "d": "Approved protocol, raw data, deviation log, report. Release to ship.",
        "hold": "Both parties"
       },
       {
-       "t": "Installation and SAT",
-       "d": "Installation records, SAT on your utilities, leveraged tests flagged, SAT report.",
+       "t": "Installation and SAT, [installation and SAT, days]",
+       "d": "Installation: [installation scope]. SAT on your utilities, reused tests flagged, SAT report.",
        "hold": "You"
       },
       {
-       "t": "IQ and OQ",
-       "d": "IQ and OQ protocols and reports, draft procedures, training records.",
+       "t": "Installation and operational qualification (IQ, OQ), [IQ/OQ on site, days]",
+       "d": "Protocols, reports, draft procedures.",
        "hold": "Your quality unit"
       },
       {
-       "t": "PQ, at least 12 months",
-       "d": "Protocol, sampling plan, phase reports, alert and action levels. Water released by phase."
+       "t": "Performance qualification (PQ), at least 12 months",
+       "d": "Protocol, sampling plan, phase reports, alert and action levels. First use in phase 2, after at least two weeks (WHO TRS 1033).",
+       "hold": "Your quality unit"
       },
       {
        "t": "Service",
-       "d": "Signed visit reports, calibration certificates as found and as left, annual system review."
+       "d": "Signed visit reports, calibration certificates, annual system review."
       },
       {
        "t": "Upgrade or retrofit",
-       "d": "Gap list and options, each with downtime and requalification scope."
+       "d": "Gap list; options with downtime and requalification scope."
       }
      ],
-     "nav": "Documents",
-     "fold": 4,
+     "nav": "Stages",
      "ground": "light"
     },
     {
@@ -2192,24 +2191,20 @@
      "nav": "FAQ",
      "items": [
       {
-       "q": "Can the company that builds the system also qualify it?",
-       "a": "Yes, under your control. Your quality unit approves every protocol before execution and every report after; we write and execute (Annex 15, 2.6)."
+       "q": "Can the builder also qualify the system?",
+       "a": "Yes, under your control. We draft the protocols and reports; [executing staff: own engineers or named partner] execute them. Your quality unit approves each protocol before it runs and each report after (EU GMP Annex 15, 2.6)."
       },
       {
        "q": "Can we buy one stage only?",
-       "a": "Yes. Each service has its own first step and its own documents."
+       "a": "[services sold separately, yes or no]. Each service has its own first step and its own documents."
       },
       {
-       "q": "Do you work on systems built by other suppliers?",
-       "a": "Yes, for [makes and equipment types serviced]. We start with an assessment or condition survey, so the quote carries no hidden contingency. Upgrades we deliver are PVC pretreatment, RO, DI/EDI and distribution modules."
+       "q": "Do you work on other suppliers' systems?",
+       "a": "For [makes and equipment types serviced]: service and upgrades, starting with a condition survey or an assessment."
       },
       {
        "q": "How long from URS to water released?",
-       "a": "For a modular PW package: [design to DQ, weeks] to DQ, [approved design to FAT, weeks] to FAT, [IQ/OQ on site, days] for IQ and OQ. Then PQ."
-      },
-      {
-       "q": "What does one traceability matrix look like?",
-       "a": "URS-012, PW conductivity ≤ 1.3 µS/cm, becomes a divert clause, numbered sensor tees on joint maps, a FAT divert test flagged for OQ, and PQ data."
+       "a": "About [design to DQ, weeks] to an approved design, then [approved design to FAT, weeks] to the factory acceptance test and [IQ/OQ on site, days] of testing on site. Under WHO TRS 1033, water can be used after at least two weeks of sampling, with your quality unit's approval. Sampling continues for a year."
       }
      ]
     },
@@ -2226,37 +2221,34 @@
    ],
    "cta": {
     "h": "Tell us where your project stands",
-    "body": "For a system down now, call [service phone number].",
-    "button": "Request a proposal",
+    "body": "System down now? Call [service phone number], [service phone hours].",
+    "button": "Talk to an engineer",
     "link": "contact-proposal",
+    "intent": "Not sure yet: talk to an engineer",
     "include": [
-     "Your URS, in any state",
-     "PW limits and peak demand, L/h",
+     "Your URS, if you have one",
+     "Peak demand in L/h",
      "Feed water analysis, ideally 12 months",
      "Existing system: builder, age, drawings"
     ],
     "turnaround": "[proposal response time, working days]",
     "returns": [
-     "The stage we would start at",
-     "The documents it leaves in your file",
-     "Questions on gaps in your data"
+     "The stage to start at",
+     "Its documents and duration",
+     "Questions on missing data"
     ]
    },
    "todo": [
-    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-    "URS review turnaround ([URS review turnaround, working days]), same placeholder as svc-design",
-    "Quote response time for a service plan ([quote response time, working days]), same placeholder as svc-service",
-    "Service phone number (router table and closing CTA), same placeholder as svc-service and contact-service",
-    "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service)",
-    "Typical durations for a modular PW package: design to DQ (weeks), approved design to FAT (weeks), IQ/OQ on site (days)",
-    "PP joining method for the fabrication record ([PP joining method, for example butt fusion or IR welding]; same placeholder as home and about), and the material certificate type issued for PP and PVC components",
-    "[project contact from URS review to handover]: confirm one named project engineer or team carries a project from URS review to handover, and how handover to service works (FAQ)",
-    "[qualifying other builders' systems, yes or no]: confirm Aquemi qualifies and upgrades systems built by other suppliers (joining table); makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
-    "[project regions served] and [service bases, cities]: provinces and regions served for projects; service bases and coverage area (FAQ)",
-    "Confirm Aquemi delivers each of the six services in-house or names partners (IQ/OQ execution, calibration and pressure vessel calculations are open on svc-cq, svc-service, svc-design)",
-    "Confirm every service is sold separately as well as end to end (FAQ)",
-    "Confirm Aquemi writes IQ/OQ/PQ documents in client templates (FAQ)",
-    "Service program brand name, if one is adopted, for the service band (open on svc-service)"
+    "Proposal response time ([proposal response time, working days]; one figure on every page; FD-01). Until it is set, launch copy reads \"An engineer replies in writing\" (DR-006 rule 7)",
+    "Turnarounds in the router, same placeholders as their home pages: [URS review turnaround, working days] (svc-design), [quote response time, working days] (svc-service), [audit request response time, working days] (cmp-quality) (FD-01)",
+    "Service phone number and hours ([service phone number], [service phone hours]; same names as the nav, svc-service and contact-service; FD-27)",
+    "Stage durations for a modular PW package, as figures Aquemi commits to (FD-08, DR-005 rule 5): [design to DQ, weeks], [approved design to FAT, weeks], [FAT duration, days] (same name as svc-fat-sat, DR-010), [installation and SAT, days] (new: not yet an FD-08 item), [IQ/OQ on site, days] (same as svc-cq). Say for each whether it includes the client's review time at the hold point. The FAQ total keeps E11's words; it does not yet add FAT, installation and SAT time",
+    "[installation scope]: who installs and makes field joints (Aquemi, the client's contractor or a partner); same name as systems' site requirements (FD-26; issue #2 §4)",
+    "[executing staff: own engineers or named partner]: who executes IQ/OQ; same name as svc-cq (FD-46, DR-004 rule 4)",
+    "[services sold separately, yes or no]: whether each service is sold on its own as well as end to end (FD-25). If yes, the router's \"Design approved\" row may say again \"by us or another firm\"",
+    "[makes and equipment types serviced]: same name on home, svc-service, svc-upgrades, about, contact-service and contact-proposal; the full answers live on svc-service and svc-upgrades (FD-30, DR-009, DR-011). Qualification of systems Aquemi did not build stays off this page until FD-30 answers it",
+    "If Aquemi confirms one named project engineer from URS review to handover (FD-34) and which of the six services are in-house or partnered (FD-25), the headline may state it; \"One team\" was cut because neither is confirmed (DR-004 rule 5)",
+    "Supplier audit offer in the router waits on cmp-quality's audit readiness (FD-48, DR-006 rule 6); at launch, if no audit can be hosted, the row's next rung is \"Talk to an engineer\""
    ]
   },
   {
@@ -4091,34 +4083,17 @@
    "section": "Industries",
    "nav_label": "Industries",
    "title": "Purified Water systems by industry: pharma, devices, CDMO | Aquemi",
-   "meta": "Purified Water (PW) by industry: USP <645> and <643> limits, the regulator who inspects each, and where pharma, device and CDMO buyers start.",
+   "meta": "Purified Water (PW) by industry: grade, limit and inspector for pharma, CDMO, device and natural health product makers. One polypropylene PW package; no WFI.",
    "path": "/industries/",
-   "eyebrow": "INDUSTRIES · PHARMA · DEVICES · CDMO",
+   "eyebrow": "INDUSTRIES · USP · PH. EUR.",
    "headline": "Your product sets the grade",
-   "lead": "We supply Purified Water (PW) systems. PW limits are the same in every industry; what changes is where water touches product and who reads the record.",
-   "facts": [
-    {
-     "v": "≤ 1.3 µS/cm",
-     "l": "Conductivity at 25 °C · USP <645>"
-    },
-    {
-     "v": "≤ 500 ppb",
-     "l": "TOC · USP <643>"
-    },
-    {
-     "v": "100 CFU/mL",
-     "l": "PW action level · USP <1231>"
-    },
-    {
-     "v": "20.0 EU",
-     "l": "Per device · USP <161>"
-    }
-   ],
+   "lead": "One Purified Water (PW) package in polypropylene, not Water for Injection. Limits are the same in every industry; what changes is where water touches product and who reads the record.",
    "primary_cta": "Request a water scope review",
-   "primary_cta_intent": "Water scope review for your products",
+   "primary_cta_link": "contact-proposal",
+   "primary_cta_intent": "I know my product, not my water spec",
    "secondary_cta": {
-    "label": "Get a sample turnover package",
-    "link": "cmp-documentation"
+    "label": "Plan your first PW system",
+    "link": "industries#first-system"
    },
    "index": true,
    "blocks": [
@@ -4130,12 +4105,12 @@
      "cols": [
       "Your situation",
       "Industry page",
-      "Start with the system",
-      "Or the service"
+      "System",
+      "Start with"
      ],
      "rows": [
       [
-       "A new oral solid or liquids line, or NHPs moving to PW",
+       "A new oral or topical drug line",
        {
         "t": "Pharmaceutical",
         "link": "ind-pharma"
@@ -4145,23 +4120,8 @@
         "link": "sys-pw"
        },
        {
-        "t": "Process design: URS review",
+        "t": "Process design",
         "link": "svc-design"
-       }
-      ],
-      [
-       "Endotoxin or bioburden drifting on finished devices",
-       {
-        "t": "Medical devices",
-        "link": "ind-meddevice"
-       },
-       {
-        "t": "Storage and distribution loops",
-        "link": "sys-storage"
-       },
-       {
-        "t": "Upgrades: system assessment",
-        "link": "svc-upgrades"
        }
       ],
       [
@@ -4180,18 +4140,42 @@
        }
       ],
       [
-       "A water observation from an inspector or client",
+       "Endotoxin or bioburden drifting on finished devices",
        {
-        "t": "Standards we design to",
-        "link": "compliance"
+        "t": "Medical devices",
+        "link": "ind-meddevice"
        },
+       {
+        "t": "Storage and distribution loops",
+        "link": "sys-storage"
+       },
+       {
+        "t": "Upgrades: system assessment",
+        "link": "svc-upgrades"
+       }
+      ],
+      [
+       "Natural health products: does this line need PW?",
+       {
+        "t": "Pharmaceutical",
+        "link": "ind-pharma"
+       },
+       "PW generation, if needed",
+       {
+        "t": "Natural health products section",
+        "link": "ind-pharma#nhp"
+       }
+      ],
+      [
+       "A water observation, or out-of-trend results",
+       "Any industry",
        {
         "t": "Monitoring and controls",
         "link": "sys-monitoring"
        },
        {
-        "t": "Upgrades: system assessment",
-        "link": "svc-upgrades"
+        "t": "Upgrades: after an observation",
+        "link": "svc-upgrades#observation"
        }
       ]
      ]
@@ -4203,8 +4187,8 @@
      "cols": [
       "Industry",
       "Grades and uses",
-      "Limit that decides the design",
-      "Who inspects"
+      "Limit that applies",
+      "Inspector"
      ],
      "rows": [
       [
@@ -4213,109 +4197,117 @@
         "link": "ind-pharma"
        },
        "PW for granulation, coating and rinse",
-       "USP <645> and <643>; nitrates (waived at WFI conductivity, Ph. Eur. 11.4)",
+       "USP <645> and <643>",
        "Health Canada GUI-0001; FDA 21 CFR 211"
-      ],
-      [
-       {
-        "t": "Pharma, sterile",
-        "link": "ind-pharma"
-       },
-       "PW for early rinses and as feed to your WFI still; you generate the WFI",
-       "USP <645> and <643>; your still maker's feed specification",
-       "Health Canada GUI-0119; FDA; EU authorities"
-      ],
-      [
-       {
-        "t": "Medical devices",
-        "link": "ind-meddevice"
-       },
-       "PW final rinse, with an endotoxin limit where devices need one",
-       "USP <161> per device; ISO 11737-1 bioburden",
-       "MDSAP to ISO 13485; FDA 21 CFR 820"
       ],
       [
        {
         "t": "Contract manufacturing",
         "link": "ind-cdmo"
        },
-       "PW per client program, and PW feed to any WFI still on site",
-       "The stricter of USP and Ph. Eur. on each attribute",
+       "PW per client program",
+       "Stricter of USP and Ph. Eur., per attribute",
        "Regulators and each client’s quality unit"
+      ],
+      [
+       {
+        "t": "Medical devices",
+        "link": "ind-meddevice"
+       },
+       "PW final rinse, with an endotoxin limit where needed",
+       "USP <161> per device; ISO 11737-1 bioburden",
+       "Health Canada (ISO 13485); FDA 21 CFR 820"
+      ],
+      [
+       {
+        "t": "Natural health products",
+        "link": "ind-pharma#nhp"
+       },
+       "Potable at minimum; PW where your specification calls for it",
+       "Your specification (GUI-0158 s. 45)",
+       "Health Canada GUI-0158"
+      ],
+      [
+       {
+        "t": "Cosmetics and personal care",
+        "link": "ind-pharma"
+       },
+       "Your written specification; PW for any drug line",
+       "Each product’s legal class, by market",
+       "Health Canada; FDA for over-the-counter drugs"
+      ],
+      [
+       {
+        "t": "Pharma, sterile",
+        "link": "industries#faq"
+       },
+       "PW for non-sterile steps; we do not supply Water for Injection",
+       "USP <645> and <643>",
+       "Health Canada GUI-0119; FDA; EU authorities"
       ]
+     ]
+    },
+    {
+     "type": "grid",
+     "nav": "First system",
+     "anchor": "first-system",
+     "h": "Your first Purified Water system",
+     "items": [
+      {
+       "t": "Your product’s grade",
+       "d": "Non-sterile drugs need PW (Health Canada GUI-0001); natural health products, potable water at minimum (GUI-0158).",
+       "link": "ind-pharma"
+      },
+      {
+       "t": "What it covers and costs",
+       "d": "Incoming water to every outlet, design to qualification; budget ranges by configuration.",
+       "link": "systems#budget"
+      },
+      {
+       "t": "Your team’s first year",
+       "d": "First use after at least 2 weeks of daily sampling, if your quality unit approves. [staff hours in year one: sampling, logs, sanitization].",
+       "link": "svc-cq"
+      },
+      {
+       "t": "Who you work with",
+       "d": "A new Ontario company: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing specialist.",
+       "link": "about"
+      }
      ]
     },
     {
      "type": "options",
      "nav": "Adjacent uses",
      "h": "Outside drug and device manufacturing",
-     "intro": "The same RO and EDI platform. Our scope: [hospital, lab and industrial water scope].",
+     "intro": "Our scope: [hospital water scope]; [lab water scope]; [industrial water scope].",
      "items": [
       {
        "t": "Hospital reprocessing (MDRD)",
-       "d": "CSA Z314; ANSI/AAMI ST108 in the US. Critical water, usually duplex or N+1."
+       "d": "CSA Z314:23; ANSI/AAMI ST108:2023. Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit."
       },
       {
        "t": "Research laboratories",
-       "d": "ASTM D1193 Types I to IV: a central RO and EDI loop, polished at the bench."
+       "d": "ASTM D1193: a central reverse osmosis (RO) and electrodeionization (EDI) loop; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers]."
       },
       {
        "t": "Industrial demineralized water",
-       "d": "Limits from your process or boiler maker; RO and EDI replace regenerated ion exchange."
-      }
-     ]
-    },
-    {
-     "type": "docs",
-     "nav": "Documents",
-     "h": "Documents every industry gets",
-     "items": [
-      {
-       "t": "Functional specification",
-       "d": "Limits and pharmacopoeias for each point of use"
-      },
-      {
-       "t": "P&IDs and general arrangement drawings"
-      },
-      {
-       "t": "Material certificates",
-       "d": "For every product-contact part"
-      },
-      {
-       "t": "FAT, SAT, IQ and OQ protocols",
-       "d": "With executed FAT and SAT reports"
-      },
-      {
-       "t": "Added by industry",
-       "code": "+",
-       "d": "Contamination control inputs for sterile drugs, rinse water specification for devices, client audit pack for CDMOs"
+       "d": "Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange."
       }
      ]
     },
     {
      "type": "faq",
      "nav": "FAQ",
+     "anchor": "faq",
      "h": "Common questions",
      "items": [
       {
-       "q": "We make more than one kind of product. Which page do we read?",
-       "a": "The one for your strictest product. A combination product also reads the pharmaceutical page; a contract manufacturer reads the CDMO page."
-      },
-      {
-       "q": "Do the limits change with the industry?",
-       "a": "No. The pharmacopoeias set the same PW limits for everyone. The grade per step, device limits and the audit change."
-      },
-      {
        "q": "Do you supply Water for Injection (WFI)?",
-       "a": "No. We supply PW systems: pretreatment, RO, EDI and distribution. Where your product needs WFI, you generate it on site; PW is the usual feed to a WFI still."
+       "a": "No. We build one Purified Water (PW) package: pretreatment, reverse osmosis, deionization or electrodeionization, and distribution. We do not supply Water for Injection (WFI), pure steam, stills or stainless steel piped systems. Where your product needs WFI, you generate it on site; PW is the usual feed to a WFI still."
       },
       {
-       "q": "Our product is not in these three industries. Can you help?",
-       "a": "A drug, including a natural health product, reads the pharmaceutical page. Otherwise send the standard you work to; we answer plainly."
-      },
-      {
-       "q": "What does a scope review cost, and what comes back?",
-       "a": "[scope review cost or free], in [scope review turnaround, working days]: the grade each step needs, the PW system and the qualification scope."
+       "q": "Do natural health products or cosmetics need PW?",
+       "a": "Not always. Under GUI-0158, natural health products need potable water at minimum. Purified Water (PW) is needed where the specification or a monograph calls for it. For cosmetics, the product’s legal class sets the grade: cosmetic-only lines follow your written specification; any drug line needs PW. For another product, send the standard you work to."
       }
      ]
     },
@@ -4323,39 +4315,41 @@
      "type": "related",
      "h": "Where to go next",
      "items": [
-      "systems",
       "services",
-      "compliance"
+      "compliance",
+      "cmp-quality"
      ]
     }
    ],
    "cta": {
     "h": "Tell us what you make",
+    "body": "An engineer replies. Cost: [scope review cost or free].",
     "button": "Request a water scope review",
     "link": "contact-proposal",
-    "intent": "Water scope review for your products",
+    "intent": "I know my product, not my water spec",
     "include": [
      "What you make, and how it is sterilized",
      "Markets and pharmacopoeias",
-     "Peak PW draw, L/h and m³/day",
-     "Feed water analysis, summer and winter"
+     "Where your site is"
     ],
-    "turnaround": "[proposal response time, working days]",
+    "turnaround": "[scope review turnaround, working days]",
     "returns": [
-     "The grade each process step needs",
-     "The PW system to make and distribute it",
+     "Grade per process step",
+     "The PW package you need",
      "Your qualification scope"
     ]
    },
    "todo": [
-    "Confirm the three industries (pharmaceutical, medical devices, CDMO) are the target segments at launch",
-    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-    "Is the scope review free ([scope review cost or free]) and its turnaround ([scope review turnaround, working days]) (FAQ)",
-    "Industries where Aquemi has references available for a call, or 'none yet' per industry ([industries with references available for a call], FAQ)",
-    "Projects per industry to link once case studies exist",
-    "[hospital, lab and industrial water scope] (adjacent uses intro), per use. Hospital MDRD / sterile processing: new systems, upgrades, service only or not offered (keep in line with ind-meddevice, sys-pw, systems). Laboratory water (ASTM D1193): central systems and loops, point-of-use polishers, service only or not offered. Industrial demineralized water: new systems, ion exchange retrofits, service only or not offered",
-    "Confirm the WFI wording (FAQ, by-industry table): Aquemi supplies PW only; customers generate WFI on site, with Aquemi PW as the usual still feed",
-    "Contact-proposal page: a general 'water scope review' intent with an industry selector routing to the three industry-specific intents"
+    "Target segments at launch (FD-38): pharmaceutical with natural health products, CDMO and medical devices, in that order (DR-002); confirm cosmetics and personal care makers with drug or natural health product lines stay a named row",
+    "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]) is defined in contact-proposal's requests table (DR-014) and shown here as the figure only",
+    "One scope sentence per adjacent use (FD-25, DR-002 rule 6), the same words on ind-meddevice and about: [hospital water scope] (for example 'not offered today', or replacements and upgrades in Ontario and Quebec through your consultant or mechanical contractor), [lab water scope], [industrial water scope]",
+    "Laboratory Type I water: [whether Aquemi integrates third-party polishers] (DR-002 rule 5)",
+    "Staff time in year one for sampling, logs and sanitization ([staff hours in year one: sampling, logs, sanitization], first-system path); not yet an FD row (DR-015)",
+    "WFI wording (FAQ, sterile row): Aquemi supplies PW only (MISSION). PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it until the owner confirms",
+    "References per segment, or 'none yet' (FD-41): no reference call or case block here until a client agrees in writing (DR-004, DR-016); link projects per industry once a case study exists (FD-42)",
+    "Anchors this page links to: ind-pharma#nhp (the natural health products section, DR-002), svc-upgrades#observation (the water observation block, DR-015), systems#budget (DR-005). Until a block carries its anchor, the link opens that page at the top",
+    "Device inspector cell: Health Canada requires an ISO 13485 certificate for Class II to IV licences; whether it must come from an MDSAP audit is unverified in the library (IMD-22, IMD-28). Keep the cell in line with ind-meddevice's auditor table",
+    "Whether a scope without a loop is offered for dry-dose natural health product lines (FD-20); until then the router's natural health products row reads 'PW generation, if needed'"
    ]
   },
   {
@@ -5255,13 +5249,13 @@
    "section": "Compliance",
    "nav_label": "Standards we design to",
    "title": "Purified Water system standards: USP, Ph. Eur., GMP | Aquemi",
-   "meta": "Every standard behind our Purified Water (PW) systems: USP <645> 1.3 µS/cm, USP <643>, Ph. Eur. 0008, GAMP 5, Part 11, CSA B51 CRN, and the document that proves each.",
+   "meta": "Standards behind our polypropylene Purified Water package: USP <645>, <643>, Ph. Eur. 0008, GUI-0001, 21 CFR 211, WHO TRS 1033, and the proof for each.",
    "path": "/compliance/",
-   "eyebrow": "COMPLIANCE · USP · PH. EUR. · GMP · CSA B51",
+   "eyebrow": "COMPLIANCE · USP · PH. EUR. · GMP",
    "headline": "Every standard, its number, its proof",
-   "lead": "Each standard behind our Purified Water (PW) systems, with its limit and the document that proves it.",
+   "lead": "Each standard behind our polypropylene (PP) Purified Water (PW) package, with its limit and the document that proves it. No Water for Injection, pure steam or stainless steel systems.",
    "primary_cta": "Request a compliance matrix",
-   "primary_cta_intent": "Compliance matrix for your URS",
+   "primary_cta_intent": "I have a URS or a draft|Compliance matrix",
    "primary_cta_link": "contact-proposal",
    "secondary_cta": {
     "label": "See the documentation package",
@@ -5274,9 +5268,9 @@
      "as": "gauges",
      "nav": "Limits",
      "anchor": "limits",
-     "h": "Release limits at the point of use",
+     "h": "Purified Water limits",
      "intro": "Where USP and Ph. Eur. differ, we design to the stricter value.",
-     "caption": "PW · USP AND PH. EUR.",
+     "caption": "USP · PH. EUR.",
      "cols": [
       "Parameter",
       "Limit",
@@ -5284,30 +5278,29 @@
      ],
      "rows": [
       {
-       "p": "Conductivity, PW",
+       "p": "Conductivity",
        "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
        "m": "USP <645>",
        "hl": true
       },
       {
-       "p": "TOC, PW",
+       "p": "Total organic carbon",
        "v": "≤ 0.50 mg/L (500 ppb)",
        "m": "USP <643>; Ph. Eur. 2.2.44"
       },
       {
-       "p": "Action level, PW",
+       "p": "Microbial action level",
        "v": "100 CFU/mL",
-       "m": "USP <1231>; Ph. Eur. 0008"
+       "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009"
       }
      ],
-     "note": "Ph. Eur. PW: ≤ 5.1 µS/cm @ 25 °C. Nitrates ≤ 0.2 ppm, a test waived when the water meets Water for Injection (WFI) conductivity (Ph. Eur. 11.4)."
+     "note": "Ph. Eur. conductivity: ≤ 5.1 µS/cm at 25 °C. Nitrates: ≤ 0.2 ppm, test waived at Water for Injection (WFI) conductivity (Ph. Eur. 11.4). CFU: colony-forming units."
     },
     {
      "type": "standards-map",
      "nav": "Map",
      "anchor": "map",
      "h": "Which standard governs each part",
-     "intro": "Each code links to the row that proves it.",
      "zones": [
       {
        "t": "Generation",
@@ -5344,9 +5337,10 @@
        "codes": [
         "21 CFR Part 11",
         "EU GMP Annex 11",
+        "GUI-0050",
         "GAMP 5",
         {
-         "t": "CSA C22.2 No. 286",
+         "t": "[panel standard]",
          "to": "engineering"
         }
        ],
@@ -5357,6 +5351,14 @@
        "icon": "weld",
        "to": "engineering",
        "codes": [
+        {
+         "t": "GUI-0001",
+         "to": "gmp"
+        },
+        {
+         "t": "21 CFR 211",
+         "to": "gmp"
+        },
         "[PP material standard]",
         "[PP joining standard]",
         "CSA B51"
@@ -5369,6 +5371,7 @@
        "to": "gmp",
        "codes": [
         "EU GMP Annex 15",
+        "GUI-0029",
         "WHO TRS 1033",
         "ASTM E2500",
         "ICH Q9(R1)"
@@ -5383,7 +5386,7 @@
      "nav": "Pharmacopoeia",
      "anchor": "pharmacopoeia",
      "ground": "light",
-     "h": "Pharmacopoeias, and where the proof sits",
+     "h": "Pharmacopoeias and their proof",
      "cols": [
       "Standard",
       "What we design to",
@@ -5402,7 +5405,7 @@
       ],
       [
        "USP <643> Total organic carbon",
-       "≤ 0.50 mg/L; system suitability at 85–115 % response efficiency",
+       "≤ 0.50 mg/L; system suitability at 85 % to 115 % response efficiency",
        "Suitability records; analyzer calibration; OQ report",
        {
         "t": "Monitoring and controls",
@@ -5411,16 +5414,16 @@
       ],
       [
        "Ph. Eur. 0008 Purified water",
-       "Revised in Ph. Eur. 12.3, in force 1 July 2026; stricter of USP",
-       "Functional specification; nitrates (waived at WFI conductivity, Ph. Eur. 11.4)",
+       "Revised in Ph. Eur. 12.3, in force 1 July 2026",
+       "Functional specification",
        {
         "t": "PW generation",
         "link": "sys-pw"
        }
       ],
       [
-       "USP <1231> Water for pharmaceutical purposes",
-       "Informational; sanitization within [maximum loop sanitization temperature for PP, °C]; alert and action levels",
+       "USP <1231> Water for pharmaceutical purposes (informational)",
+       "Natural PP is rated 0 to 80 °C, and its pressure rating falls as it heats. Hot water: [maximum loop sanitization temperature for PP, °C]",
        "Sampling plan; alert and action level rationale",
        {
         "t": "Storage and distribution loops",
@@ -5429,7 +5432,7 @@
       ],
       [
        "EMA guideline on water for pharmaceutical use",
-       "PW minimum for most non-sterile forms; WFI, which you generate, for parenterals",
+       "PW minimum for most non-sterile dosage forms; WFI, which we do not supply, for parenterals",
        "Water grade per point of use in the basis of design",
        {
         "t": "Pharmaceutical",
@@ -5445,7 +5448,7 @@
      "as": "evidence",
      "nav": "GMP",
      "anchor": "gmp",
-     "h": "GMP rules and qualification guidance",
+     "h": "Good manufacturing practice (GMP) and qualification",
      "cols": [
       "Standard",
       "What we design to",
@@ -5454,17 +5457,26 @@
      ],
      "rows": [
       [
-       "EU GMP Annex 1 (2022); Health Canada GUI-0119",
-       "6.5 records; 6.7 dead legs; 6.9 flow; 6.12 sanitization; 6.13 alert levels",
-       "Dead leg register; hydraulics; sanitization OQ",
+       "Health Canada GUI-0001; 21 CFR 211 (drug GMP) · C.02.004, C.02.005, C.02.009; 211.63, 211.65",
+       "Qualified as a utility; non-reactive, non-additive, non-absorptive surfaces that withstand sanitizing",
+       "[PP material certificates] traced by lot",
        {
-        "t": "Storage and distribution loops",
-        "link": "sys-storage"
+        "t": "Fabrication",
+        "link": "svc-fabrication"
        }
       ],
       [
-       "EU GMP Annex 15 (2015)",
-       "3.2 URS; 3.3 design qualification; 3.6 FAT not repeated where transport cannot affect it",
+       "WHO TRS 1033, Annex 3 (2021); FDA high-purity water guide (1993)",
+       "7.2.1 materials; 8.4 sanitization; 8.6 flow, dead legs; 11.3 three-phase qualification, 12 months",
+       "Material and joint records; sampling plan; phase reports",
+       {
+        "t": "Commissioning and qualification",
+        "link": "svc-cq"
+       }
+      ],
+      [
+       "EU GMP Annex 15 (2015); GUI-0029",
+       "3.2 URS; 3.3 design qualification (DQ); 3.6 FAT not repeated where transport cannot affect it",
        "Traceability matrix; DQ report; executed FAT to OQ",
        {
         "t": "FAT and SAT",
@@ -5472,30 +5484,12 @@
        }
       ],
       [
-       "EU GMP Annex 11 (2011); 21 CFR Part 11",
+       "EU GMP Annex 11 (2011); 21 CFR Part 11; GUI-0050",
        "Audit trail, access, e-signatures, record protection; your procedures complete them",
        "Part 11 and Annex 11 assessment; audit trail tests",
        {
         "t": "Monitoring and controls",
         "link": "sys-monitoring"
-       }
-      ],
-      [
-       "WHO TRS 1033, Annex 3 (2021)",
-       "PQ in three phases over at least 12 months; annual review",
-       "PQ protocol; phase reports; annual review",
-       {
-        "t": "Commissioning and qualification",
-        "link": "svc-cq"
-       }
-      ],
-      [
-       "FDA Guide to Inspections of High Purity Water Systems (1993)",
-       "A full year of data; dead legs and sanitization reviewed",
-       "Sampling plan; dead leg register",
-       {
-        "t": "Commissioning and qualification",
-        "link": "svc-cq"
        }
       ],
       [
@@ -5509,11 +5503,20 @@
       ],
       [
        "ASTM E2500; ICH Q9(R1)",
-       "Verification focused on critical aspects from a risk assessment, usually an FMEA",
+       "Verification focused on critical aspects, found by [risk assessment method]",
        "Risk assessment; critical aspects list; design review",
        {
         "t": "Process design",
         "link": "svc-design"
+       }
+      ],
+      [
+       "EU GMP Annex 1 (2022); Health Canada GUI-0119",
+       "For sterile sites, or non-sterile sites that adopt it in writing: 6.5 records; 6.7 dead legs; 6.9 flow; 6.12 sanitization; 6.13 alert levels",
+       "Dead leg register; hydraulics; sanitization OQ",
+       {
+        "t": "Storage and distribution loops",
+        "link": "sys-storage"
        }
       ]
      ],
@@ -5535,33 +5538,6 @@
      ],
      "rows": [
       [
-       "[PP piping standard]",
-       "Polypropylene (PP) pipe, fittings and valves; dead legs to [dead leg rule for the PP loop]",
-       "Dead leg register; pressure test to [PP pressure test method], witnessed",
-       {
-        "t": "Storage and distribution loops",
-        "link": "sys-storage"
-       }
-      ],
-      [
-       "[PP material standard]",
-       "Product-contact PP from [PP resin grade]; PVC in pretreatment only",
-       "[PP material certificates] traced by lot",
-       {
-        "t": "Fabrication",
-        "link": "svc-fabrication"
-       }
-      ],
-      [
-       "[PP joining standard]",
-       "Joints by [PP joining method, for example butt fusion or IR welding], to [PP joint procedure and operator qualification]",
-       "[PP joint records, for example joint map and log]",
-       {
-        "t": "Fabrication",
-        "link": "svc-fabrication"
-       }
-      ],
-      [
        "CSA B51",
        "A Canadian registration number (CRN) from the province of installation for [pressure-rated items in the PW package]",
        "CRN registration; vessel data reports",
@@ -5571,12 +5547,39 @@
        }
       ],
       [
-       "CSA C22.2 No. 286; UL 508A",
+       "[panel standard]",
        "Panels built and marked to [panel certification mark held, or field evaluation used]",
        "Panel certification label and report",
        {
         "t": "Monitoring and controls",
         "link": "sys-monitoring"
+       }
+      ],
+      [
+       "[PP piping standard]",
+       "PP pipe, fittings and valves; dead legs to [dead leg rule for the PP loop]",
+       "Dead leg register; pressure test to [PP pressure test method]",
+       {
+        "t": "Storage and distribution loops",
+        "link": "sys-storage"
+       }
+      ],
+      [
+       "[PP material standard]",
+       "Product-contact PP, [grade, for example PP-R]; polyvinyl chloride (PVC) in pretreatment only",
+       "[PP material certificates] traced by lot",
+       {
+        "t": "Fabrication",
+        "link": "svc-fabrication"
+       }
+      ],
+      [
+       "[PP joining standard]",
+       "Joints by [PP joining method, for example butt fusion or IR welding], to [PP joint procedure and operator qualification]",
+       "[PP joint records kept]",
+       {
+        "t": "Fabrication",
+        "link": "svc-fabrication"
        }
       ]
      ],
@@ -5586,33 +5589,33 @@
     {
      "type": "faq",
      "nav": "FAQ",
-     "h": "Questions validation teams ask",
+     "h": "Questions quality teams ask",
      "items": [
       {
        "q": "Is your system USP certified?",
-       "a": "No water system is. USP and Ph. Eur. set limits for water, not approvals for equipment. We prove function at FAT and performance on your feed water at SAT and OQ."
+       "a": "No water system is. USP and Ph. Eur. set limits for water, not approvals for equipment. The factory acceptance test (FAT) proves function before shipping. The site acceptance test (SAT) and operational qualification (OQ) prove it on your feed water."
+      },
+      {
+       "q": "Our auditor expects stainless. Will PP pass?",
+       "a": "It can: no rule requires stainless. 21 CFR 211.65 and GUI-0001 C.02.005 ask for surfaces that do not react, add or absorb, and survive sanitizing. WHO TRS 1033, 7.2.1, generally recommends 316L or polyvinylidene chloride (PVDC) and does not name polypropylene (PP). We answer its list point by point."
       },
       {
        "q": "Which edition of each standard do you design to?",
        "a": "The edition in force when you approve the functional specification. If a text changes mid-project, as Ph. Eur. 0008 did, we assess it under change control."
       },
       {
-       "q": "Is your control system 21 CFR Part 11 compliant?",
-       "a": "No system is on its own. We supply the technical controls and a Part 11 and Annex 11 assessment; your procedures complete them."
+       "q": "Does our corporate engineering standard replace yours?",
+       "a": "No, it adds to this list. We write it into the functional specification and flag any conflicting clause before detailed design, not at installation qualification (IQ). A standard that requires stainless rules out polypropylene, unless it allows exceptions."
       },
       {
        "q": "Who registers our pressure equipment, and when?",
-       "a": "Pressure-rated items installed in Canada need a CRN under CSA B51 from the province of installation, scheduled from the start. [Aquemi CRN process and provinces covered]"
-      },
-      {
-       "q": "Does our corporate engineering standard replace yours?",
-       "a": "It adds to this list. We put it in the functional specification and flag any conflicting clause before detailed design, not at IQ."
+       "a": "The safety authority of each province where the item is used, before it is built. Each pressure-rated item needs a Canadian registration number (CRN) under CSA B51, unless exempt. [Aquemi CRN process and provinces covered]"
       }
      ]
     },
     {
      "type": "related",
-     "h": "Where the proof lives",
+     "h": "Where to go next",
      "items": [
       "cmp-documentation",
       "cmp-quality",
@@ -5622,38 +5625,41 @@
     }
    ],
    "cta": {
-    "h": "Send your URS. We return a compliance matrix.",
-    "body": "A process engineer maps each requirement to a standard, design feature and test.",
+    "h": "Send your requirements (URS). We return a compliance matrix.",
+    "body": "An engineer maps each requirement to a standard, design feature and test. Cost: [compliance matrix cost or free].",
     "button": "Request a compliance matrix",
     "link": "contact-proposal",
-    "intent": "Compliance matrix for your URS",
+    "intent": "I have a URS or a draft|Compliance matrix",
     "include": [
-     "Your URS, even a draft",
-     "Markets and pharmacopoeias you release against",
+     "Your URS, a draft or your product list",
+     "Pharmacopoeias that apply",
      "Corporate or site engineering standards",
      "Province of installation"
     ],
     "returns": [
-     "Compliance matrix for your URS",
-     "Standard, design feature and test per requirement"
+     "Compliance matrix",
+     "List of exceptions, if any"
     ],
     "turnaround": "[compliance matrix response time, working days]"
    },
    "todo": [
-    "Certifications actually held: ISO 9001 status, certificate number, scope, registrar and expiry (or target date); downloadable copies",
-    "Pressure equipment: which items in the PW package are pressure-rated and need a CRN (for example RO membrane housings), the vessel code they are built to, and the certificate holder or certified vessel fabricator used ([pressure-rated items in the PW package])",
-    "CRN: provinces where Aquemi has registered designs; who prepares and submits the CRN application and at which design stage (FAQ)",
-    "Control panel certification mark held (CSA C22.2 No. 286 / UL 508A) and file number, or whether field evaluation is used",
-    "PP piping standard Aquemi designs and buys to ([PP piping standard]; map, engineering table); PP pressure test method and test factor ([PP pressure test method])",
-    "PP material standard and resin grade for product-contact parts, and the certificate type supplied ([PP material standard], [PP resin grade], [PP material certificates])",
-    "PP joining: method (for example butt fusion or IR welding), the standard followed, procedure and operator qualification, and the joint records delivered ([PP joining standard], [PP joining method, for example butt fusion or IR welding], [PP joint procedure and operator qualification], [PP joint records, for example joint map and log])",
-    "Dead leg rule applied to the PP loop ([dead leg rule for the PP loop])",
-    "Maximum loop sanitization temperature for PP, °C ([maximum loop sanitization temperature for PP, °C]; USP <1231> row); same placeholder as ind-pharma",
-    "Scope for hospital MDRD water (CSA Z314 / ANSI/AAMI ST108) and laboratory water (ASTM D1193): new systems, upgrades, service only or not offered",
-    "Supplier questionnaire and quality agreement: confirm returned with the quote (yes or no), and questionnaire turnaround in working days",
-    "Compliance matrix response time (working days) for the closing CTA",
-    "Confirm Aquemi practice stated on other pages and repeated here: FMEA as usual ICH Q9(R1) method; stricter-of basis; corporate standard conflicts flagged in the functional specification",
-    "Quality review of each standard row (edition, clause numbers, limits) before publication"
+    "Certifications actually held: ISO 9001 status, certificate number, scope, registrar and expiry (or target date); downloadable copies. The status line lives on cmp-quality, a related link here; never list a certificate here that is not held (DR-004 rule 3, FD-48)",
+    "Pressure equipment: which items in the PW package are pressure-rated and need a CRN (for example RO membrane housings), which are exempt by written determination, the vessel code they are built to, and the certificate holder or certified vessel fabricator used ([pressure-rated items in the PW package]; FD-24)",
+    "CRN: provinces where Aquemi has registered designs; who prepares and submits the CRN application and at which design stage ([Aquemi CRN process and provinces covered], FAQ; FD-24)",
+    "Panel approval route ([panel standard]; [panel certification mark held, or field evaluation used]): the CSA standard the certification body applies (C22.2 No. 14 or No. 286), whether UL 508A applies for US sites, the label's scope (panel only, or the whole skid as assembled) and file number. Get it in writing from the certification body before the page names a standard (DR-007 rule 4, FD-24)",
+    "PP piping standard Aquemi designs and buys to ([PP piping standard]; map, engineering table); PP pressure test method and test factor ([PP pressure test method]; FD-17, FD-19)",
+    "PP material standard, grade and certificates for product-contact parts ([PP material standard], [grade, for example PP-R], [PP material certificates]; names shared with sys-storage, svc-fabrication, cmp-quality and cmp-documentation; FD-17)",
+    "PP joining: method (for example butt fusion or IR welding), the standard followed, procedure and operator qualification, and the joint records delivered ([PP joining standard], [PP joining method, for example butt fusion or IR welding], [PP joint procedure and operator qualification], [PP joint records kept]; FD-18)",
+    "Dead leg rule applied to the PP loop ([dead leg rule for the PP loop]; FD-19)",
+    "Maximum loop sanitization temperature for PP, °C ([maximum loop sanitization temperature for PP, °C]; USP <1231> row); same placeholder as ind-pharma and sys-storage; any temperature wording follows DR-013 (FD-14)",
+    "WHO TRS 1033, 7.2.1 justification for PP, point by point, written before launch: the FAQ 'Our auditor expects stainless' offers it (FD-49 proof backlog)",
+    "Risk assessment method Aquemi uses for ASTM E2500 and ICH Q9(R1) critical aspects ([risk assessment method], GMP table; the same placeholder as svc-design; FD-46). Never fill it with FMEA because a notebook suggested it",
+    "Compliance matrix cost, free or CAD, beside the button ([compliance matrix cost or free]; the same placeholder as contact-proposal's requests table; FD-02)",
+    "Compliance matrix response time, working days ([compliance matrix response time, working days]; closing; FD-01)",
+    "Scope for hospital MDRD water (CSA Z314 / ANSI/AAMI ST108) and laboratory water (ASTM D1193): new systems, upgrades, service only or not offered (FD-25)",
+    "Supplier questionnaire and quality agreement: confirm returned with the quote (yes or no), and questionnaire turnaround in working days (FD-48)",
+    "Confirm Aquemi practice stated here: the stricter-of basis (limits intro); the edition in force at functional specification approval, changes under change control; corporate standard conflicts flagged in the functional specification (FAQ)",
+    "Quality review of each standard row (edition, clause numbers, limits) before publication, GUI-0001's current version included (the clause references were read in the 2018 edition, version 3 of 2020)"
    ],
    "figure": {
     "spots": [
@@ -5661,7 +5667,7 @@
      "ro-skid",
      "storage-tank"
     ],
-    "label": "Pretreatment · RO and EDI · storage"
+    "label": "Pretreatment · generation · storage"
    }
   },
   {
@@ -6309,142 +6315,24 @@
   {
    "id": "projects",
    "section": "Projects",
-   "nav_label": "Case studies",
-   "title": "Water system case studies and references | Aquemi",
-   "meta": "Purified Water case studies that state flow in L/h, USP <645> conductivity and USP <643> TOC with the method and report. Ask for a reference call or FAT witness.",
+   "nav_label": "Projects",
+   "title": "Projects: check us before our first case study | Aquemi",
+   "meta": "A new Ontario company building a Purified Water package in polypropylene. No case study is published yet: the checks your team can run, and what each proves.",
    "path": "/projects/",
-   "eyebrow": "PROJECTS · CASE STUDIES",
-   "headline": "Projects you can audit: figure, method, report",
-   "lead": "Every case-study figure carries its unit, method and executed report. Until one covers your segment, check at the source.",
-   "facts": [
-    {
-     "v": "1 report per figure",
-     "l": "Executed report"
-    },
-    {
-     "v": "[reference clients available, number]",
-     "l": "Clients who take reference calls"
-    }
-   ],
-   "primary_cta": "Request a reference call",
-   "primary_cta_link": "#verify",
+   "eyebrow": "PROJECTS",
+   "headline": "Check us at the source before our first case study",
+   "lead": "We are a new Ontario company designing and building a Purified Water package in polypropylene (PP). Each check below says what it proves, what it does not, and how soon.",
+   "primary_cta": "Talk to an engineer",
+   "primary_cta_intent": "Not sure yet: talk to an engineer",
+   "primary_cta_link": "contact-proposal",
    "blocks": [
     {
-     "type": "prose",
-     "as": "explainer",
-     "h": "What a case study proves",
-     "intro": "Every figure carries four things your engineers can check.",
-     "points": [
-      {
-       "t": "The figure",
-       "d": "Measured value, unit and reference temperature, against the limit."
-      },
-      {
-       "t": "The method",
-       "d": "Sampling point, number of samples and period."
-      },
-      {
-       "t": "The report",
-       "d": "The executed FAT, SAT or IQ/OQ/PQ report."
-      },
-      {
-       "t": "The approval",
-       "d": "A second engineer checks it; the client's quality unit approves the text, deviations included."
-      }
-     ],
-     "nav": "Proof",
-     "ground": "light"
-    },
-    {
-     "type": "case",
-     "nav": "Record",
-     "h": "The record each case study fills",
-     "intro": "Published only with the client’s approval. [Replace with a delivered project]",
-     "items": [
-      {
-       "status": "Template · awaiting a real project",
-       "t": "Modular PW package and PP loop, [segment, province]",
-       "client": "[segment and dosage form, province]",
-       "problem": "[limit, capacity or deadline that started it]",
-       "system": "[PVC pretreatment, RO, EDI, PP storage and loop, sanitization method, points of use]",
-       "standard": "USP PW monograph; Ph. Eur. 0008; EU GMP Annex 15; [PP piping standard and dead-leg rule]",
-       "art": "sys-pw",
-       "changed": [
-        {
-         "t": "Reverse osmosis (RO) vessels: [new or replaced]",
-         "at": [
-          14,
-          45
-         ]
-        },
-        {
-         "t": "Electrodeionization (EDI) stack: [new or replaced]",
-         "at": [
-          78,
-          30
-         ]
-        }
-       ],
-       "outcomes": [
-        {
-         "v": "[value]",
-         "unit": "µS/cm @ 25 °C",
-         "l": "Conductivity, loop return",
-         "method": "Online sensor; [OQ or PQ report number]"
-        },
-        {
-         "v": "[value]",
-         "unit": "ppb",
-         "l": "TOC, loop return",
-         "method": "Online analyzer; [OQ or PQ report number]"
-        },
-        {
-         "v": "[value]",
-         "unit": "CFU/mL",
-         "l": "Microbial, worst point of use",
-         "method": "Client PQ data; [samples and PQ weeks]"
-        },
-        {
-         "v": "[value]",
-         "unit": "L/h",
-         "l": "PW generation rate",
-         "method": "Measured at [FAT or SAT]; [report number]"
-        }
-       ],
-       "timeline": [
-        {
-         "t": "Order",
-         "when": "[week 0]"
-        },
-        {
-         "t": "Design approved",
-         "when": "[week]"
-        },
-        {
-         "t": "FAT",
-         "when": "[week]"
-        },
-        {
-         "t": "SAT",
-         "when": "[week]"
-        },
-        {
-         "t": "OQ",
-         "when": "[week]"
-        },
-        {
-         "t": "PQ complete",
-         "when": "[week]"
-        }
-       ]
-      }
-     ]
-    },
-    {
      "type": "table",
-     "nav": "Verify today",
+     "as": "router",
+     "nav": "Checks",
+     "anchor": "verify",
      "h": "Verify before a case study exists",
-     "intro": "Each route checks at the source. Pick what your team needs to see.",
+     "intro": "Pick what your team needs to see.",
      "cols": [
       "What you check",
       "Route",
@@ -6453,182 +6341,140 @@
      ],
      "rows": [
       [
-       "Schedule, deviations and service, from a client",
-       "Reference call",
-       "Performance on your feed water",
-       "[reference call lead time, working days]"
-      ],
-      [
-       "Alarms, interlocks and controls before shipment",
+       "The engineer who would lead your project",
        {
-        "t": "FAT witness",
-        "link": "svc-fat-sat"
+        "t": "Talk to an engineer",
+        "link": "contact-proposal"
        },
-       "Performance on your feed water",
-       "[FAT witness notice, working days]"
+       "Delivery on schedule and budget",
+       "[proposal response time, working days]"
       ],
       [
-       "[PP joining records] and material traceability at [shop location, city and province]",
+       "How we join and trace PP parts, in [shop location, city and province]",
        {
         "t": "Shop visit",
-        "link": "svc-fabrication"
+        "link": "contact-locations#visit"
        },
-       "System performance; that is the FAT",
+       "How your system will perform",
        "[shop visit notice, working days]"
       ],
       [
        "What your validation file will contain",
        {
-        "t": "Sample turnover package",
-        "link": "cmp-documentation"
+        "t": "Specimen package",
+        "link": "cmp-documentation#samples"
        },
        "That a project's records are complete",
        "[sample package response time, working days]"
       ],
       [
-       "That we read your URS line by line",
+       "That our quality system works",
+       {
+        "t": "Supplier audit",
+        "link": "cmp-quality#audit"
+       },
+       "A specific system's performance",
+       "[on-site audit notice, working days]"
+      ],
+      [
+       "That we read your user requirement specification (URS) line by line",
        {
         "t": "Compliance matrix",
         "link": "compliance"
        },
-       "Delivered performance",
+       "How the installed system performs",
        "[compliance matrix response time, working days]"
       ],
       [
-       "That our quality system works",
+       "Your system's alarms, interlocks and controls, before it ships",
        {
-        "t": "Supplier audit",
-        "link": "cmp-quality"
+        "t": "Factory acceptance test (FAT) witness",
+        "link": "contact-locations#visit"
        },
-       "A specific system's performance",
-       "[on-site audit notice, working days]"
+       "Performance on your feed water",
+       "[FAT witness notice, working days]"
       ]
-     ],
-     "as": "router"
+     ]
     },
     {
-     "type": "form",
-     "nav": "Request",
-     "anchor": "verify",
-     "h": "Request a reference call or FAT witness",
-     "intro": "References and FAT witnessing depend on our clients’ permission.",
-     "submit": "Send my request",
-     "steps": [
+     "type": "prose",
+     "as": "explainer",
+     "h": "What a case study proves",
+     "intro": "Each figure in a published case study will carry four things your team can check.",
+     "points": [
       {
-       "title": "What to verify",
-       "next": "Continue to contact",
-       "fields": [
-        {
-         "kind": "checkbox-group",
-         "label": "What you want to verify",
-         "required": true,
-         "options": [
-          "Reference call",
-          "Shop visit or FAT witness",
-          "Sample turnover package, FAT protocol or compliance matrix",
-          "Supplier audit or quality questionnaire"
-         ]
-        },
-        {
-         "kind": "select",
-         "label": "What you are buying",
-         "required": false,
-         "options": [
-          "Purified Water (PW) generation",
-          "Storage and distribution loop",
-          "Pretreatment",
-          "Monitoring and controls",
-          "Service, calibration or upgrade",
-          "Not decided yet"
-         ]
-        },
-        {
-         "kind": "file",
-         "label": "Your URS or questions, a draft is enough",
-         "required": false
-        }
-       ]
+       "t": "The figure",
+       "d": "Measured value, unit and reference temperature, against the pharmacopoeia limit."
       },
       {
-       "title": "Contact",
-       "fields": [
-        {
-         "kind": "text",
-         "label": "Full name",
-         "required": true
-        },
-        {
-         "kind": "email",
-         "label": "Work email",
-         "required": true
-        },
-        {
-         "kind": "text",
-         "label": "Company",
-         "required": true
-        }
-       ]
+       "t": "The method",
+       "d": "Sampling point, number of samples and period."
+      },
+      {
+       "t": "The report",
+       "d": "The executed acceptance test or qualification report, with its number."
+      },
+      {
+       "t": "The approval",
+       "d": "A second engineer checks it [confirm]; the client's quality unit approves the text in writing, deviations included."
       }
-     ]
+     ],
+     "nav": "Standard",
+     "ground": "light"
     },
     {
      "type": "faq",
      "nav": "FAQ",
-     "h": "Questions engineering and QA teams ask",
+     "h": "Questions buyers ask",
      "items": [
       {
        "q": "Why are there no named clients on this page?",
-       "a": "Many pharmaceutical clients do not allow suppliers to name them. Unnamed, a case is described by segment and province; a reference call can go further."
+       "a": "We are a new Ontario company, and no case study is published yet. We publish one only with the client's written approval of its text and figures. A client may stay unnamed; the case then names only its segment and province."
       },
       {
        "q": "Can we speak to a client in our segment?",
-       "a": "Say which system and grade you are buying. We can offer [reference segments and systems, and how many]. If none matches, we offer the closest system."
+       "a": "[reference clients available, number]. Speaking to a client needs one in your segment who agrees in writing. Until then, run the checks above or talk to the engineer who would lead your project."
       },
       {
        "q": "Are the figures from your tests or from the client?",
-       "a": "FAT figures are ours, on our feed water. SAT and OQ figures are on yours. PQ data is the client's, published with its approval and labelled."
+       "a": "Factory acceptance test (FAT) figures are ours, measured on our feed water. Site acceptance test (SAT) and operational qualification (OQ) figures are measured on the client's site. Performance qualification (PQ) data is the client's, published only with its approval and labelled."
       },
       {
        "q": "Does a passed FAT mean the system meets USP?",
-       "a": "No. A FAT proves function before shipment. Water quality at your points of use is proven on your feed water at SAT, OQ and PQ."
+       "a": "No. A factory acceptance test (FAT) proves function before shipment, on our feed water. United States Pharmacopeia (USP) quality at your points of use is proven on your feed water. The proof comes at site acceptance testing (SAT), then operational and performance qualification (OQ, PQ)."
       }
      ]
     }
    ],
    "cta": {
-    "h": "Ask for the evidence, not the brochure",
-    "body": "Tell us the system, the grade and the province. We arrange what our clients agree to.",
-    "button": "Request a reference call",
+    "h": "Ask the engineer who would lead your project",
+    "body": "Tell us what your supplier approval asks for. We show what exists today and when the rest will be ready.",
+    "button": "Talk to an engineer",
     "link": "contact-proposal",
-    "intent": "Supplier qualification: audit, references, shop visit|Reference call",
+    "intent": "Not sure yet: talk to an engineer",
     "include": [
-     "System and grade you are buying",
+     "What you make and the system you need",
      "Province of installation",
-     "Your URS, a draft is enough",
-     "What your team needs to see"
+     "Your URS, if you have one"
     ],
     "include_label": "What to tell us",
     "returns": [
-     "A reference call with a client",
-     "A shop visit or FAT witness",
-     "Sample turnover documents"
+     "A written answer from an engineer",
+     "Dates for the checks you choose"
     ],
-    "turnaround": "[reference request response time, working days]"
+    "turnaround": "[proposal response time, working days]"
    },
    "todo": [
-    "KEY: real delivered projects for the case study record (PW) with executed report numbers, or remove the block before launch; the page must not launch with only a placeholder record",
-    "Written client approval for each case study and each named reference; client quality unit sign-off on text and figures",
-    "Measured figures for each case: capacity (L/h), conductivity (µS/cm @ 25 °C), TOC (ppb), microbial (CFU/mL), nitrates (ppm), timeline milestones (weeks), equipment new or replaced, deviations raised and closed",
-    "PP joining records shown on a shop visit (what replaces a weld log for PP: [PP joining method, for example butt fusion or IR welding]) and the PP piping standard and dead-leg rule cited in the case study record",
-    "Sanitization method stated for the PP loop in the case study record ([PP loop sanitization method])",
-    "Hero fact and FAQ: number of clients available for a reference call, and the segments and systems they cover",
-    "Shop location (city and province) for shop visits (same as cmp-quality)",
-    "Lead times: reference call (working days), shop visit notice, FAT witness notice, sample package response, compliance matrix response, on-site audit notice (align with cmp-documentation, compliance, cmp-quality)",
-    "Reference request response time (working days) for the form intro and closing CTA",
-    "Whether witnessing other clients' FATs is offered, and on what terms (NDA, client permission)",
-    "Confirm Aquemi practice stated on this page: second-engineer check of each figure; client may withdraw approval; deviations stated in each case; case updated at each milestone; redacted FAT protocol and report can be shown",
-    "Project photographs for each published case (with client permission)",
-    "Industry and system filter, once there are enough published case studies (removed in this pass)"
+    "KEY (DR-016 rule 8; FD-42): after the first delivered project is accepted and its client approves text and figures in writing, add one case record in language/register.md E13's pattern: \"[client segment, province]: [problem in plain words], [measured outcome with unit] in [weeks]\", then capacity (L/h), conductivity (µS/cm @ 25 °C), TOC (ppb), microbial (CFU/mL), each with method and report number; system as supplied, including [PP loop sanitization method]; timeline from order to PQ; equipment new or replaced; deviations raised and closed. The template record taken off the page in pass A is in git at aquemi-web dbee6fc (block \"The record each case study fills\"); the CaseStudy component renders it",
+    "After project 1 (DR-016 rule 8): nav_label may revert; one measured hero figure may return (DR-010); a reference-call row and button only once [reference clients available, number] is 1 or more (FD-41), with [reference call lead time, working days]",
+    "Launch (DR-004 class 2; DR-006 rule 6): keep each check row only once it exists, else drop it: shop visit and FAT witness ([shop and test bay ready for visits], FD-44), specimen package (FD-47), supplier audit (FD-48). The hero and closing button becomes the first check that exists, shop visit first; until one exists, \"Talk to an engineer\" (DR-016 rule 5)",
+    "References (FD-41): [reference clients available, number], per segment, for the FAQ answer; once answered, the number by segment or \"Not yet.\"; never \"we can offer\" (DR-016 rule 7)",
+    "Confirm as Aquemi practice: second engineer checks each published figure ([confirm] in \"The approval\"); the client may withdraw approval; deviations stated in each case; case updated at each milestone; a redacted FAT protocol and report can be shown",
+    "Times in working days, one name each: [shop visit notice], [FAT witness notice] (with svc-fat-sat and contact-locations), [sample package response time] (cmp-documentation), [on-site audit notice] (cmp-quality), [compliance matrix response time] (compliance), first reply [proposal response time] (every page). At launch an unset time is cut (DR-006 rule 7)",
+    "Shop location ([shop location, city and province], FD-33), the same name as about, careers and cmp-quality",
+    "Whether a prospect may witness another client's FAT before award, and on what terms (NDA, that client's written permission) (FD-44)",
+    "Project photographs for each published case (with the client's permission)",
+    "Industry and system filter, once there are enough published case studies"
    ],
    "hero_index": false,
    "figure": {
@@ -7657,11 +7503,11 @@
    "section": "Contact",
    "nav_label": "Request a proposal",
    "title": "Request a proposal, review or assessment | Aquemi",
-   "meta": "Sizing proposal, route assessment, URS, feedwater or C&Q review, or system assessment. An engineer replies in [proposal response time, working days].",
+   "meta": "Start with a URS, your product, water data or a running system. An engineer replies in writing within [proposal response time, working days].",
    "path": "/contact/proposal/",
    "eyebrow": "REQUEST A PROPOSAL OR REVIEW",
    "headline": "Tell us what you need. An engineer replies.",
-   "lead": "Pick a review, an assessment or a sizing proposal; the form asks only what it needs. Nothing commits you to buy.",
+   "lead": "Start with what you have: a user requirement specification (URS), your product, water data or a running system. Nothing commits you to buy.",
    "primary_cta": "Choose your request",
    "blocks": [
     {
@@ -7682,7 +7528,7 @@
        "current": true
       },
       {
-       "t": "Production down or water off spec",
+       "t": "Production stopped or water out of specification",
        "d": "Severity 1. Answered [service phone hours]. Do not wait for a form.",
        "phone": "[service phone number]",
        "steps": [
@@ -7690,22 +7536,22 @@
         "Triage confirms severity",
         "Remote diagnosis, then on site"
        ],
-       "clock": "Technician on site within [severity 1 on-site response time, hours]",
+       "clock": "On site in [severity 1 on-site response time, hours], inside [service coverage area]",
        "link": "contact-service",
        "urgent": true,
        "action": "Log a service request"
       },
       {
-       "t": "Visit or audit the shop",
-       "d": "Tour, supplier audit or FAT witness at [shop location, city and province].",
+       "t": "Qualify us as a supplier",
+       "d": "For quality and procurement, before award.",
        "steps": [
-        "Purpose, dates, group",
-        "Date and agenda back",
-        "Records and test bay ready"
+        "Your questionnaire or scope",
+        "Pack, or audit dates and agenda",
+        "Questionnaire answered or audit held"
        ],
-       "clock": "Date and agenda within [visit booking reply time, working days]",
-       "link": "contact-locations",
-       "action": "Book a visit"
+       "clock": "Reply within [audit request response time, working days]",
+       "link": "cmp-quality#audit",
+       "action": "Request a supplier audit"
       }
      ]
     },
@@ -7713,58 +7559,66 @@
      "type": "form",
      "anchor": "intake",
      "nav": "Send",
-     "h": "Choose your request, send what you have",
-     "intro": "Rough numbers are fine. Files can follow by email.",
-     "submit": "Send my request to an engineer",
-     "note": "Specifications stay confidential; NDA on request. Files kept [file storage location and retention, months]. [Privacy notice link]",
+     "h": "Send what you have",
+     "intro": "Rough numbers are fine; leave unknowns blank.",
+     "submit": "Send to an engineer",
+     "note": "Specifications stay confidential. Files kept [file storage location and retention, months]. [Privacy notice link]",
      "steps": [
       {
        "title": "Your request",
        "next": "Continue to the details",
        "fields": [
         {
-         "label": "What do you need?",
+         "label": "Where are you starting from?",
          "kind": "radio",
          "required": true,
          "options": [
-          "Feedwater review",
-          "Review of a document you have",
-          "Water scope review for your products",
-          "Route assessment: which modules your water needs",
-          "Compliance matrix for your URS",
-          "Sizing and budget proposal for a new system",
-          "Assessment of an existing system, any make",
-          "Supplier qualification: audit, references, shop visit",
+          "I have a URS or a draft",
+          "I know my product, not my water spec",
+          "I have water data, no system yet",
+          "I have a system already",
           "Not sure yet: talk to an engineer"
          ],
-         "help": "No URS yet? Pick a water scope review. One request per form."
+         "help": "Qualifying suppliers? Use the audit request on Quality management."
+        },
+        {
+         "label": "What do you need?",
+         "kind": "radio",
+         "required": true,
+         "when": "I have a URS or a draft",
+         "options": [
+          "URS gap review",
+          "Compliance matrix",
+          "Proposal against your URS",
+          "Review of another document"
+         ],
+         "help": "A gap review marks each gap; a compliance matrix shows how each line is met."
         },
         {
          "label": "Which document?",
          "kind": "radio",
          "required": true,
-         "when": "Review of a document you have",
+         "when": "Review of another document",
          "options": [
-          "URS (gap review)",
           "Points-of-use list or loop design",
           "Controls URS or functional specification",
           "Fabrication or piping specification",
-          "C&Q plan or validation master plan (VMP)",
-          "URS or functional specification for a FAT test list"
+          "Commissioning and qualification (C&Q) plan or validation master plan (VMP)",
+          "URS or functional specification, to draft a factory acceptance test (FAT) list"
          ],
          "help": "Draft or approved. We mark up each gap against its standard."
         },
         {
-         "label": "What do you need from us?",
-         "kind": "checkbox-group",
+         "label": "What do you need first?",
+         "kind": "radio",
          "required": true,
-         "when": "Supplier qualification: audit, references, shop visit",
+         "when": "I have water data, no system yet",
          "options": [
-          "Supplier questionnaire or audit pack",
-          "On-site supplier audit",
-          "Reference call",
-          "Shop visit or factory acceptance test (FAT) witness"
-         ]
+          "Feed water review",
+          "Modules and a budget range",
+          "Sizing proposal"
+         ],
+         "help": "A feed water review names the pretreatment your water needs."
         }
        ]
       },
@@ -7778,141 +7632,13 @@
          "required": true,
          "options": [
           "Pharmaceutical drug products",
-          "Medical devices",
           "CDMO or contract manufacturing",
-          "Hospital reprocessing, laboratory or industrial process",
+          "Medical devices",
+          "Natural health products",
+          "Cosmetics or personal care",
+          "Hospital reprocessing, laboratory or industrial water",
           "Another industry"
          ]
-        },
-        {
-         "label": "Project stage",
-         "kind": "radio",
-         "required": false,
-         "options": [
-          "Feasibility or budget estimate",
-          "URS in preparation",
-          "URS approved, requesting proposals",
-          "Design or fabrication under way",
-          "Running system: upgrade, expansion or replacement"
-         ]
-        },
-        {
-         "label": "Target date for water on site",
-         "kind": "select",
-         "required": false,
-         "options": [
-          "Under 3 months",
-          "3 to 6 months",
-          "6 to 12 months",
-          "More than 12 months",
-          "No date yet"
-         ]
-        },
-        {
-         "label": "Water grades needed",
-         "kind": "checkbox-group",
-         "required": false,
-         "options": [
-          "Purified Water (PW)",
-          "Laboratory, hospital or process water"
-         ]
-        },
-        {
-         "label": "Pharmacopoeias you release against",
-         "kind": "checkbox-group",
-         "required": false,
-         "options": [
-          "USP",
-          "Ph. Eur.",
-          "JP",
-          "None: no pharmacopoeial grade",
-          "Not sure yet"
-         ]
-        },
-        {
-         "label": "Systems in scope",
-         "kind": "checkbox-group",
-         "required": false,
-         "when": "Sizing and budget proposal for a new system|Assessment of an existing system, any make",
-         "options": [
-          "Purified Water (PW) generation",
-          "Storage and distribution loop",
-          "Pretreatment",
-          "Monitoring and controls",
-          "Not sure yet"
-         ]
-        },
-        {
-         "label": "Peak demand",
-         "kind": "number",
-         "unit": "L/h",
-         "required": false,
-         "help": "Highest hourly draw at the points of use."
-        },
-        {
-         "label": "Number of points of use",
-         "kind": "number",
-         "required": false
-        },
-        {
-         "label": "Feed water source",
-         "kind": "radio",
-         "required": false,
-         "options": [
-          "Municipal, chlorinated",
-          "Municipal, chloraminated",
-          "Changes between chlorine and chloramine",
-          "Well water",
-          "Already pretreated supply",
-          "Not sure yet"
-         ],
-         "help": "Disinfectant, hardness and silica set the pretreatment. Attach utility reports if you have them."
-        },
-        {
-         "label": "PLC and SCADA standard",
-         "kind": "text",
-         "required": false,
-         "when": "Controls URS or functional specification"
-        },
-        {
-         "label": "Material, joining and inspection you specify",
-         "kind": "text",
-         "required": false,
-         "when": "Fabrication or piping specification",
-         "help": "For example piping material and standard, joining method or joint inspection."
-        },
-        {
-         "label": "Make, model and year installed",
-         "kind": "text",
-         "required": true,
-         "when": "Assessment of an existing system, any make",
-         "help": "Any make. Faults and maintenance go to the service request page."
-        },
-        {
-         "label": "What should the assessment solve?",
-         "kind": "checkbox-group",
-         "required": false,
-         "when": "Assessment of an existing system, any make",
-         "options": [
-          "More capacity or points of use",
-          "Out-of-specification water or alarms",
-          "Obsolete PLC or HMI",
-          "Dead legs or sanitization",
-          "Energy, water or chemical use",
-          "Replace or relocate"
-         ]
-        },
-        {
-         "label": "Preferred dates",
-         "kind": "text",
-         "required": false,
-         "when": "On-site supplier audit|Shop visit or factory acceptance test (FAT) witness"
-        },
-        {
-         "label": "System, grade and province the reference should match",
-         "kind": "text",
-         "required": false,
-         "when": "Reference call"
         },
         {
          "label": "Dosage forms",
@@ -7926,10 +7652,16 @@
           "Oral liquid",
           "Oral solid",
           "Topical",
-          "Active substance (API)",
-          "Natural health products"
+          "Active substance (API)"
          ],
-         "help": "Sets the minimum grade under the EMA water quality guideline. We build Purified Water systems, not WFI."
+         "help": "Sets the minimum grade (European Medicines Agency). We supply Purified Water, not Water for Injection."
+        },
+        {
+         "label": "Client and market mix",
+         "kind": "textarea",
+         "required": false,
+         "when": "CDMO or contract manufacturing",
+         "help": "As a contract development and manufacturing organization: markets, regulators, stricter client limits; no client names."
         },
         {
          "label": "Highest device class",
@@ -7965,24 +7697,134 @@
          "help": "For example endotoxin per device (USP <161>) or bioburden (ISO 11737-1)."
         },
         {
-         "label": "Client and market mix",
-         "kind": "textarea",
+         "label": "Do any lines make drugs or natural health products?",
+         "kind": "radio",
          "required": false,
-         "when": "CDMO or contract manufacturing",
-         "help": "Programs, regulators and client limits stricter than the pharmacopoeia."
+         "when": "Cosmetics or personal care",
+         "options": [
+          "Yes, drugs",
+          "Yes, natural health products",
+          "Yes, both",
+          "No, cosmetics only",
+          "Not sure yet"
+         ],
+         "help": "Over-the-counter drugs count. Drug lines need Purified Water; cosmetic-only lines follow your specification."
         },
         {
-         "label": "Standard or use",
+         "label": "Standard, edition and grade, or the maker's specification",
          "kind": "text",
          "required": false,
-         "when": "Hospital reprocessing, laboratory or industrial process",
-         "help": "For example CSA Z314 reprocessing or an ASTM D1193 type."
+         "when": "Hospital reprocessing, laboratory or industrial water",
+         "help": "For example CSA Z314:23 or an ASTM D1193 type, and how many taps."
+        },
+        {
+         "label": "Which pharmacopoeias apply?",
+         "kind": "checkbox-group",
+         "required": false,
+         "when": "Pharmaceutical drug products|CDMO or contract manufacturing|Medical devices|Natural health products|Yes, drugs|Yes, natural health products|Yes, both",
+         "options": [
+          "United States Pharmacopeia (USP)",
+          "European Pharmacopoeia (Ph. Eur.)",
+          "Japanese Pharmacopoeia (JP)",
+          "None",
+          "Not sure yet"
+         ]
+        },
+        {
+         "label": "Target date for water on site",
+         "kind": "select",
+         "required": false,
+         "when": "I have a URS or a draft|I know my product, not my water spec|I have water data, no system yet",
+         "options": [
+          "Under 3 months",
+          "3 to 6 months",
+          "6 to 12 months",
+          "More than 12 months",
+          "No date yet"
+         ]
+        },
+        {
+         "label": "Systems in scope",
+         "kind": "checkbox-group",
+         "required": false,
+         "when": "Proposal against your URS|Modules and a budget range|Sizing proposal|I have a system already",
+         "options": [
+          "Purified Water (PW) generation",
+          "Storage and distribution loop",
+          "Pretreatment",
+          "Monitoring and controls",
+          "Not sure yet"
+         ]
+        },
+        {
+         "label": "Peak demand",
+         "kind": "number",
+         "unit": "L/h",
+         "required": false,
+         "when": "Feed water review|Modules and a budget range|Sizing proposal",
+         "help": "Flow with the most outlets open at once, in L/h."
+        },
+        {
+         "label": "Number of points of use",
+         "kind": "number",
+         "required": false,
+         "when": "Modules and a budget range|Sizing proposal"
+        },
+        {
+         "label": "Feed water source",
+         "kind": "radio",
+         "required": false,
+         "when": "Feed water review|Modules and a budget range|Sizing proposal",
+         "options": [
+          "Municipal, chlorinated",
+          "Municipal, chloraminated",
+          "Changes between chlorine and chloramine",
+          "Well water",
+          "Already pretreated supply",
+          "Not sure yet"
+         ],
+         "help": "Disinfectant, hardness and silica set the pretreatment. Attach utility reports if you have them."
+        },
+        {
+         "label": "Control system standard",
+         "kind": "text",
+         "required": false,
+         "when": "Controls URS or functional specification",
+         "help": "Programmable logic controller (PLC) and supervisory control (SCADA) makes and versions your site standardizes on."
+        },
+        {
+         "label": "Material, joining and inspection you specify",
+         "kind": "text",
+         "required": false,
+         "when": "Fabrication or piping specification",
+         "help": "For example piping material and standard, joining method or joint inspection."
+        },
+        {
+         "label": "Make, model and year installed",
+         "kind": "text",
+         "required": true,
+         "when": "I have a system already",
+         "help": "Assessments cover [makes and equipment types serviced]. Faults go to the service request page."
+        },
+        {
+         "label": "What should the assessment solve?",
+         "kind": "checkbox-group",
+         "required": false,
+         "when": "I have a system already",
+         "options": [
+          "More capacity or points of use",
+          "Out-of-specification water or alarms",
+          "Obsolete controller (PLC) or operator panel (HMI)",
+          "Dead legs or sanitization",
+          "Energy, water or chemical use",
+          "Replace or relocate"
+         ]
         },
         {
          "label": "Documents",
          "kind": "file",
          "required": false,
-         "help": "URS, water analysis, drawings or data, up to [maximum upload size, MB]. Or send them by reply email."
+         "help": "URS, water analysis or drawings, up to [maximum upload size, MB]. Or email them later."
         },
         {
          "label": "Notes or questions",
@@ -8014,12 +7856,15 @@
          "kind": "select",
          "required": true,
          "options": [
+          "Owner or general management",
           "Process or project engineering",
-          "Validation",
+          "Production or operations",
           "Quality",
+          "Validation",
           "Facilities or maintenance",
           "Procurement",
-          "Consulting or EPCM engineer for a client",
+          "Finance",
+          "Consultant acting for a client",
           "Other"
          ]
         },
@@ -8027,7 +7872,7 @@
          "label": "Site province, state or country",
          "kind": "text",
          "required": true,
-         "help": "Sets pressure equipment registration (CRN under CSA B51)."
+         "help": "Sets pressure-equipment registration and service coverage."
         },
         {
          "label": "Phone",
@@ -8035,84 +7880,112 @@
          "required": false
         },
         {
-         "label": "How should we follow up?",
+         "label": "How should we reply?",
          "kind": "radio",
          "required": false,
          "options": [
-          "Email technical questions first",
-          "Book a call with an engineer",
-          "Send our NDA first, then talk"
+          "By email",
+          "By phone",
+          "After you sign our non-disclosure agreement (NDA)"
          ]
         },
         {
-         "label": "Language for the reply",
-         "kind": "radio",
-         "required": false,
-         "options": [
-          "English",
-          "French"
-         ]
+         "label": "How did you hear about us?",
+         "kind": "text",
+         "required": false
         }
        ]
       }
+     ]
+    },
+    {
+     "type": "table",
+     "anchor": "requests",
+     "nav": "Requests",
+     "h": "What each request returns",
+     "fold": 4,
+     "fold_noun": "requests",
+     "cols": [
+      "Situation",
+      "What comes back",
+      "When",
+      "Cost"
+     ],
+     "rows": [
+      [
+       "I have a URS or a draft",
+       "Gap review · compliance matrix · proposal · other document review",
+       "[URS review turnaround, working days] · [compliance matrix response time, working days] · [proposal response time, working days] · [document review turnaround, working days]",
+       "[URS review cost] · [compliance matrix cost or free] · [proposal cost or free] · [document review cost]"
+      ],
+      [
+       "I know my product, not my water spec",
+       "Water scope review: grade per step, package, qualification scope",
+       "[scope review turnaround, working days]",
+       "[scope review cost or free]"
+      ],
+      [
+       "I have water data, no system yet",
+       "Feed water review · modules, budget range and its class · sizing proposal",
+       "[feed water review turnaround, working days] · [budget proposal turnaround, working days] · [proposal response time, working days]",
+       "[cost of the feedwater review] · [budget range cost or free] · [proposal cost or free]"
+      ],
+      [
+       "I have a system already",
+       "Assessment for [makes and equipment types serviced]: options, downtime, requalification",
+       "[assessment response time, working days]",
+       "[assessment price, CAD, credit against upgrade]"
+      ],
+      [
+       "I am qualifying suppliers",
+       {
+        "t": "Audit or questionnaire pack, on Quality management",
+        "link": "cmp-quality#audit"
+       },
+       "[audit request response time, working days]",
+       "[supplier audit before order, free or charged]"
+      ],
+      [
+       "Not sure yet: talk to an engineer",
+       "A written answer from an engineer",
+       "[proposal response time, working days]",
+       "[fit check cost or free]"
+      ]
      ]
     }
    ],
    "cta": {
     "h": "Prefer to talk first",
-    "body": "Call [sales phone number], [hours and time zone], and ask for a process engineer.",
-    "button": "Choose your request",
-    "link": "#intake",
-    "include": [
-     "Peak demand, L/h",
-     "Water grades and pharmacopoeias",
-     "Feed water analysis, 12 months",
-     "Your URS, draft or approved"
-    ],
-    "returns": [
-     "A written answer, signed by its engineer",
-     "Marked-up URS or compliance matrix",
-     "Process flow diagram and budget price"
-    ],
-    "turnaround": "[proposal response time, working days]"
+    "body": "Ask for an engineer, [office hours, time zone].",
+    "button": "Call [sales phone number]",
+    "link": "contact-locations#locations"
    },
    "todo": [
-    "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-    "Budget proposal turnaround, working days",
-    "Turnaround per request: feedwater review, URS review, document review (loop, controls, fabrication, C&Q plan, FAT test list; one figure on this page), scope review, route assessment, compliance matrix, existing system assessment, audit request, reference request",
-    "Which reviews are free and which are charged: cost of the feedwater review, URS review cost, scope review cost, assessment price",
-    "Confirm reviews carry no obligation (and whether they may be used in the client's own tender)",
-    "Whether budget ranges are given in the first reply",
-    "Scoping call length, minutes",
-    "NDA turnaround, working days; confidentiality terms for submitted specifications",
-    "Proposal validity, days",
-    "Name and role of the engineer who answers requests; time zone and holiday cover (no longer on the page)",
-    "Sales phone number, hours and time zone",
-    "Service response time by severity (align contact-service and svc-service)",
-    "Privacy notice link and wording (PIPEDA, Quebec Law 25, CASL); file storage location and retention, months",
-    "Maximum upload size, MB; file upload support in the form tool or a secure upload link",
-    "French-speaking engineers available for replies",
-    "Regions served outside Canada",
-    "What the reply says when a request needs WFI or pure steam: Aquemi supplies the PW package only (PW can feed the client's own WFI still); whether Aquemi refers that scope elsewhere",
-    "Route assessment scope now that it covers PW modules only (pretreatment, RO, DI or EDI, distribution): what the written answer contains",
-    "Fabrication or piping specification review: which PP and PVC piping standards and joining methods Aquemi reviews against ([PP piping standard], [PP joining method])",
-    "CRM routing for each of the 9 requests (intent value in the submission) and source-page tracking",
-    "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
-    "Contact routes: service phone number and hours and severity 1 on-site response time (same as contact-service); shop location and visit booking reply time (same as contact-locations)"
+    "Proposal response time, working days: the first written reply from an engineer ([proposal response time, working days]; one figure on every page; FD-01)",
+    "Turnaround per request, for the requests table: URS review, compliance matrix, document review (one figure for loop, controls, fabrication, C&Q plan and FAT list reviews), scope review, feed water review, budget proposal, assessment, audit request (FD-01). Once filled, name each figure in its cell (gap review, matrix, proposal, document review), since the placeholder names then disappear",
+    "Cost per request, free or CAD, and whether a fee is credited against an order: URS review, compliance matrix, proposals, document review, scope review, feed water review ([cost of the feedwater review], sys-pretreatment's name), budget range, assessment, supplier audit, fit check (FD-02)",
+    "Confirm reviews carry no obligation, and whether they may be used in the client's own tender (FD-02)",
+    "Whether a budget range comes in the first reply, and what the modules-and-budget answer contains for the PW package (pretreatment, RO, DI or EDI, distribution) (FD-02, FD-03)",
+    "Sales phone number and office hours with time zone (same names as contact-locations; FD-33). The closing button links to contact-locations#locations until the button can dial a confirmed number (shared code)",
+    "Who reads and answers requests and sales calls; time zone and holiday cover (FD-34)",
+    "NDA turnaround, working days; confidentiality terms for submitted specifications (FD-01, FD-47)",
+    "Privacy notice (PIPEDA, Quebec Law 25, CASL): what is collected, who receives it, why, how long; file storage location and retention, months; maximum upload size, MB, or a secure upload link; counsel's check before launch (FD-39, OQ-81)",
+    "Form back end before launch: submission; on-screen and email acknowledgement naming the next step, who replies and by when; file storage; routing by intent (situation|follow-up) and source page (DR-014 rules 10 and 11; orchestrator)",
+    "Language for the reply (English, French) returns to step 3 only once a named French-speaking engineer replies within the same time (FD-36, DR-012 rule 2)",
+    "\"I am qualifying suppliers\" joins step 1 once the form can send an option to cmp-quality's form (renderer); until then route 3, the help line and the requests table carry it (DR-014 rule 2)",
+    "Visit route (shop tour, test bay, FAT witness on contact-locations) returns to the routes once the shop and test bay are ready for visits (FD-44); reference calls only once [reference clients available, number] is 1 or more (FD-41)",
+    "Makes and equipment types assessed on systems from other builders ([makes and equipment types serviced]; same name on home, services, svc-service, svc-upgrades, about, contact-service; FD-30)",
+    "Contact routes: service phone number and hours, severity 1 on-site response time and service coverage area (same as contact-service and home; FD-27, FD-28); audit request response time (same as cmp-quality; FD-48)",
+    "What the reply says when a request needs WFI or pure steam: Aquemi supplies the PW package only; PW as feed to the client's still stays [confirm] (FD-25, DR-002 rule 7); whether Aquemi refers that scope elsewhere",
+    "Fabrication or piping specification review: which PP and PVC piping standards and joining methods Aquemi reviews against ([PP piping standard], [PP joining method]; FD-17, FD-18)",
+    "Regions served outside Canada (FD-28, FD-37)",
+    "Log the answers to \"How did you hear about us?\" with the request and review them monthly (market/how-buyers-find-suppliers.md)"
    ],
    "primary_cta_link": "#intake",
    "facts": [
     {
      "v": "[proposal response time, working days]",
-     "l": "To an engineer's written reply"
-    },
-    {
-     "v": "9 requests, 1 form",
-     "l": "Only the fields yours needs"
-    },
-    {
-     "v": "[budget proposal turnaround, working days]",
-     "l": "To a budget proposal"
+     "l": "Written reply from an engineer · from receipt"
     }
    ],
    "hero_index": false,
@@ -8129,21 +8002,17 @@
    "section": "Contact",
    "nav_label": "Service request",
    "title": "Service request: faults, calibration and parts | Aquemi",
-   "meta": "Severity 1 fault? Call [service phone number]. Log a fault, maintenance, USP <645> calibration, parts or requalification request, any builder's system.",
+   "meta": "Production stopped? Call [service phone number], [service phone hours]. Or log a fault, maintenance, USP <645> calibration, parts or requalification request.",
    "path": "/contact/service/",
-   "eyebrow": "SERVICE REQUEST · ANY BUILDER",
-   "headline": "Service for your system, any builder",
-   "lead": "Production stopped? Call [service phone number] now. For anything else, the form asks only what your request needs.",
+   "eyebrow": "SERVICE REQUEST · PURIFIED WATER",
+   "headline": "Service for Aquemi systems and [makes and equipment types serviced]",
+   "lead": "Production stopped? Call [service phone number], [service phone hours]. For anything else, the form asks only what your request needs.",
    "primary_cta": "Log a service request",
    "primary_cta_link": "#request",
    "facts": [
     {
-     "v": "4 levels",
-     "l": "Severities, as in every service plan"
-    },
-    {
-     "v": "No serial needed",
-     "l": "Other builders: give make and model"
+     "v": "[severity 1 on-site response time, hours]",
+     "l": "Severity 1: technician on site · on a plan, inside [service coverage area]"
     }
    ],
    "blocks": [
@@ -8164,31 +8033,31 @@
        "action": "Choose your request"
       },
       {
-       "t": "Production down or water off spec",
-       "d": "Severity 1. Answered [service phone hours]. Sales calls go to [sales phone number].",
+       "t": "Production stopped or water out of specification",
+       "d": "Severity 1. Answered [service phone hours].",
        "phone": "[service phone number]",
        "steps": [
         "Call the service line",
         "Triage confirms severity",
         "Remote diagnosis, then on site"
        ],
-       "clock": "Technician on site within [severity 1 on-site response time, hours]",
+       "clock": "Answered within [severity 1 phone answer time, minutes]",
        "link": "contact-service",
        "urgent": true,
-       "action": "Log it in the form below too",
+       "action": "Log a service request",
        "current": true
       },
       {
-       "t": "Visit or audit the shop",
-       "d": "Tour, supplier audit or FAT witness at [shop location, city and province].",
+       "t": "Can you support my site?",
+       "d": "On-site time, service base and parts stock by region.",
        "steps": [
-        "Purpose, dates, group",
-        "Date and agenda back",
-        "Records and test bay ready"
+        "Find your region",
+        "On-site time, base, parts",
+        "Ask for it in writing"
        ],
-       "clock": "Date and agenda within [visit booking reply time, working days]",
-       "link": "contact-locations",
-       "action": "Book a visit"
+       "clock": "Written answer within [proposal response time, working days]",
+       "link": "contact-locations#coverage",
+       "action": "Check coverage for your site"
       }
      ]
     },
@@ -8197,9 +8066,9 @@
      "anchor": "request",
      "nav": "Request",
      "h": "Log a service request",
-     "intro": "Only your request’s fields show. Parts orders also by email: [parts email address].",
+     "intro": "Parts orders also by email: [parts email address].",
      "submit": "Send service request",
-     "note": "Ticket number by email within [ticket acknowledgment time, minutes]; the clock starts then or at your call. Out of hours, forms read within [out-of-hours form review time, hours]. [Privacy notice link; PIPEDA, Quebec Law 25]",
+     "note": "Ticket number by email within [ticket acknowledgment time, minutes]. Out of hours, forms read within [out-of-hours form review time, hours]. [Privacy notice link]",
      "steps": [
       {
        "title": "Your request",
@@ -8254,6 +8123,7 @@
          "label": "Which systems?",
          "kind": "checkbox-group",
          "required": false,
+         "when": "Fault now|Preventive maintenance|Calibration|Parts and consumables|Service plan quote|Requalification after a change|First service, other make",
          "options": [
           "Purified Water (PW) generation",
           "Storage and distribution loop",
@@ -8274,7 +8144,7 @@
          "kind": "text",
          "required": false,
          "when": "Aquemi",
-         "help": "On the nameplate and the HMI \"About\" screen, format [serial number format]. Blank is fine."
+         "help": "On the nameplate, format [serial number format]. Blank is fine."
         },
         {
          "label": "Make, model and year installed",
@@ -8330,7 +8200,7 @@
          "required": false,
          "unit": "µS/cm",
          "when": "Fault now",
-         "help": "Uncompensated reading with temperature, for USP <645> stage 1."
+         "help": "The value not adjusted to 25 °C, for USP <645> stage 1."
         },
         {
          "label": "Temperature at the conductivity sensor",
@@ -8395,14 +8265,14 @@
           "Supervised session your staff open",
           "Ask our IT first"
          ],
-         "help": "On-site response times are the same in every mode."
+         "help": "No connection? We diagnose from your readings and a call; on-site times do not change."
         },
         {
          "label": "Alarm log and trend data",
          "kind": "file",
          "required": false,
          "when": "Fault now",
-         "help": "From [trend window, hours] before the first alarm; CSV, Excel or PDF, up to [maximum upload size, MB]. A copy: the original stays on site."
+         "help": "A copy from [trend window, hours] before the first alarm; CSV, Excel or PDF, up to [maximum upload size, MB]."
         },
         {
          "label": "Preferred window",
@@ -8428,7 +8298,7 @@
           "Online TOC (USP <643>)",
           "Temperature",
           "Pressure, flow and level",
-          "Ozone or ultraviolet (UV) intensity"
+          "Ultraviolet (UV) intensity"
          ]
         },
         {
@@ -8473,7 +8343,7 @@
          "required": false,
          "when": "Parts and consumables",
          "options": [
-          "Material certificates for wetted parts, [standard for PP and PVC certificates]",
+          "Material certificates for wetted PP and PVC parts",
           "USP <88> Class VI and FDA 21 CFR 177.2600 for elastomers",
           "Certificate of conformance",
           "Calibration certificate"
@@ -8604,7 +8474,7 @@
          "label": "Site access requirements",
          "kind": "text",
          "required": false,
-         "help": "Induction, GMP training, gowning, permits."
+         "help": "Induction, good manufacturing practice (GMP) training, gowning, permits."
         },
         {
          "label": "Language for the reply",
@@ -8623,37 +8493,37 @@
      "type": "table",
      "nav": "Response times",
      "h": "Response times by request",
-     "intro": "Same severities as every plan. No plan: a call-out with the next technician.",
+     "intro": "Times apply on a service plan; without one, a call-out with the next available technician.",
      "cols": [
       "Your request",
-      "First response, on a plan",
+      "First response",
       "What follows"
      ],
      "rows": [
       [
-       "Severity 1: production stopped or water out of spec",
-       "Answered in [severity 1 phone answer time, minutes]; on site [severity 1 on-site response time, hours]",
-       "Remote diagnosis within [remote response time, hours], if your remote mode allows"
+       "Severity 1: production stopped or water out of specification",
+       "Answered within [severity 1 phone answer time, minutes]; remote diagnosis within [remote response time, hours]",
+       "On site within [severity 1 on-site response time, hours], inside [service coverage area]"
       ],
       [
-       "Severity 2: alarm, lower capacity or adverse trend",
-       "Reply in [severity 2 reply time, hours]",
-       "Visit within [severity 2 visit time, hours or working days]"
+       "Severity 2: alarm, reduced capacity or adverse trend",
+       "Reply within [severity 2 reply time, hours]",
+       "Visit within [severity 2 visit time]"
       ],
       [
        "Severity 3: no effect on water quality or supply",
-       "Reply in [severity 3 reply time, working days]",
+       "Reply within [severity 3 reply time, working days]",
        "Fixed at the next or a booked visit"
       ],
       [
        "Maintenance or calibration (severity 4)",
-       "Date within [maintenance booking reply time, working days]; calibration [calibration booking reply time, working days]",
-       "Certificates to USP <645> (cell constant ± 2 %) and USP <643> (85–115 %)"
+       "Date within [maintenance booking reply time, working days]",
+       "Signed report; calibration certificates to USP <645> and <643>"
       ],
       [
        "Requalification after a change",
        "Reply within [requalification support reply time, working days]",
-       "Input for your change request and the tests we propose (EU GMP Annex 15, section 11)"
+       "Input for your change request and the tests we propose (EU GMP Annex 15, 11; GUI-0029, 7)"
       ],
       [
        "Parts and consumables",
@@ -8663,7 +8533,7 @@
       [
        "Another builder's system",
        "Reply within [other-builder request reply time, working days]",
-       "A condition survey quote: time on site, records needed, spares list"
+       "For [makes and equipment types serviced]: a condition survey quote"
       ]
      ],
      "as": "router"
@@ -8675,26 +8545,18 @@
      "items": [
       {
        "q": "Who decides whether water already used is affected?",
-       "a": "Your quality unit. Our signed service report gives it the facts: when readings left specification, what was affected, what we found and did. We do not release water."
+       "a": "Your quality unit. Our signed service report gives it the facts: when readings left specification, where, what we found and what we did. We do not release water."
       },
       {
        "q": "We have no service plan. Will you come?",
-       "a": "Yes, as a call-out with the next available technician, at [call-out rate and hourly rate, CAD]."
-      },
-      {
-       "q": "Our IT allows no remote access to GMP equipment.",
-       "a": "Choose \"No remote connection\". We diagnose from your readings, files and a call with your operators. On-site response times do not change."
-      },
-      {
-       "q": "Can you work to our SOPs, forms and induction?",
-       "a": "Yes. Name them in \"Site access requirements\". We send training records with the visit plan and fill in your forms as well as, or instead of, ours."
+       "a": "Yes, inside [service coverage area], as a call-out with the next available technician, at [call-out and hourly rates, CAD]."
       }
      ]
     }
    ],
    "cta": {
-    "h": "Planning ahead, not fixing a fault?",
-    "body": "A service plan fixes response times, visits, calibrations and spares in writing, at a fixed annual price.",
+    "h": "No service plan yet?",
+    "body": "A plan sets response times, visits, calibrations and spares in writing.",
     "button": "Compare service plans",
     "link": "svc-service",
     "include_label": "Have ready when you call",
@@ -8706,28 +8568,19 @@
     ]
    },
    "todo": [
-    "Service phone number and hours, and whether 24/7 calls are answered by a service engineer or a dispatcher (same placeholder as svc-service)",
-    "Sales phone number (same as contact-proposal), shown as separate from the service line",
-    "Severity 1 phone answer time (minutes), remote response time (hours) and on-site response time (hours) per plan; fastest on-site time for the hero fact",
-    "Severity 2 reply time (hours) and visit time (hours or working days); severity 3 reply time (working days)",
-    "Call-out rate and hourly rate without a plan (CAD)",
-    "Planning lead time for severity 4 requests (weeks) and visit scope lead time (working days, same as svc-service)",
-    "Ticket acknowledgment time (minutes); whether forms are monitored out of hours and the out-of-hours form review time (hours)",
-    "Who makes the triage call: service engineer or dispatcher",
-    "Serial number format and confirmation it appears on the nameplate and the HMI About screen",
-    "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal); whether parts are supplied for other makes",
-    "Trend window to export before the first alarm (hours) and maximum upload size (MB)",
-    "Reply times (working days) for maintenance booking, calibration booking, requalification support and other-builder requests; parts quote turnaround (working hours); quote response time (working days, same as svc-service)",
-    "Parts email address and who receives parts orders (parts desk or stores team)",
-    "Spares stock location and order cut-off and delivery commitment (same as svc-service)",
-    "Service report turnaround (working days, same as svc-service)",
-    "Service coverage area (same as svc-service and contact-locations)",
-    "Privacy notice link (PIPEDA, Quebec Law 25)",
-    "Material certificate shipped with wetted PP and PVC parts ([standard for PP and PVC certificates]); replaces EN 10204 3.1 for wetted metal",
-    "Whether any-builder service still covers WFI stills, pure steam generators or stainless loops installed by others; the form now lists PW systems only",
-    "Confirm French-language service replies are available",
-    "Contact routes: proposal response time (same as contact-proposal); shop location and visit booking reply time (same as contact-locations)",
-    "PP ozone rating for dissolved and headspace ozone (ppm), from the PP maker's rating"
+    "Service phone (FD-27): [service phone number] and [service phone hours], the names the nav and footer (CONTACT in core.js) and every other page use. Who answers out of hours and makes the triage call: service engineer or dispatcher.",
+    "Severity 1 clocks (FD-27, FD-28): [severity 1 phone answer time, minutes], [remote response time, hours] and [severity 1 on-site response time, hours] per plan, inside [service coverage area] (the name on home and contact-locations). Confirm the phone answer time applies to every caller: the urgent route shows it without a plan condition.",
+    "Severity 2 and 3 clocks (FD-27): [severity 2 reply time, hours], [severity 2 visit time] (svc-service's name), [severity 3 reply time, working days].",
+    "Severity definitions (FD-27): one wording here (form options and table rows, word for word) and on svc-service, their home (DR-009, DR-011). svc-service's FAQ words severities 2 and 3 differently today.",
+    "Call-out and hourly rates without a plan (FD-29): [call-out and hourly rates, CAD], svc-service's name.",
+    "Service desk (FD-31): [ticket acknowledgment time, minutes]; whether forms are read out of hours, and [out-of-hours form review time, hours]; [serial number format], and that it is on the nameplate; [trend window, hours]; [parts email address] and who receives parts orders (contact-locations writes [parts email]: one name for both).",
+    "Reply times (FD-31): [maintenance booking reply time, working days], one time for maintenance and calibration unless you set two; [requalification support reply time, working days]; [other-builder request reply time, working days]; [parts quote turnaround, working hours].",
+    "Other builders' systems (FD-30): [makes and equipment types serviced], one name on every page that offers it (DR-011); whether parts are supplied for other makes; whether WFI stills, pure steam generators or stainless loops by others are excluded (the form lists PW systems only). If none are served, the headline becomes \"Service for Aquemi systems\" and the other-builder option, branch, row and help lines go.",
+    "Ozone (FD-16, FD-30): the calibration list offers UV only. Ozone sensor calibration returns only if FD-30 covers other makers' ozone systems (DR-013).",
+    "Certificates shipped with wetted PP and PVC spare parts (FD-17); sys-pw names them [certificates supplied for PP and PVC product-contact parts].",
+    "Uploads and privacy (FD-39): [maximum upload size, MB], as on contact-proposal; [Privacy notice link], contact-proposal's name, covering PIPEDA and Quebec Law 25 after counsel's check (OQ-81).",
+    "Language for the reply (FD-36, DR-012): keep French only if a French-speaking technician or engineer replies within the same times; otherwise the field leaves the form at launch.",
+    "Contact routes: [proposal response time, working days] (FD-01), as on contact-proposal; the coverage route's written answer is contact-locations' closing, which uses the same time. Shop visits stay on contact-locations, offered once the shop and test bay are ready (FD-44, DR-004)."
    ],
    "hero_index": false,
    "figure": {
@@ -8737,8 +8590,8 @@
       "t": "Loop pumps"
      },
      {
-      "spot": "uv-ozone",
-      "t": "UV and ozone [PP ozone rating]"
+      "spot": "uv",
+      "t": "UV"
      },
      {
       "spot": "wrench",
@@ -8751,12 +8604,12 @@
    "id": "contact-locations",
    "section": "Contact",
    "nav_label": "Locations",
-   "title": "Locations and service coverage across Canada | Aquemi",
-   "meta": "Can we support your site? On-site response time, parts stock, CSA B51 registration, engineering licence and language, region by region. Book a shop visit.",
+   "title": "Locations and service coverage | Aquemi",
+   "meta": "Aquemi is based in Ontario. By province: severity 1 on-site time, where technicians and parts come from, CSA B51 design registration (CRN) and engineering seal.",
    "path": "/contact/locations/",
    "eyebrow": "LOCATIONS · SERVICE COVERAGE",
    "headline": "Where we are, how fast we reach you",
-   "lead": "Find your region: severity 1 on-site time, where technician and parts come from, who registers and seals the design.",
+   "lead": "Based in Ontario. For your province: severity 1 on-site time, where technicians and parts come from, who registers and seals the design.",
    "primary_cta": "Check coverage for your site",
    "blocks": [
     {
@@ -8776,7 +8629,7 @@
        "action": "Choose your request"
       },
       {
-       "t": "Production down or water off spec",
+       "t": "Production stopped or water out of specification",
        "d": "Severity 1. Answered [service phone hours]. Do not wait for a form.",
        "phone": "[service phone number]",
        "steps": [
@@ -8784,18 +8637,18 @@
         "Triage confirms severity",
         "Remote diagnosis, then on site"
        ],
-       "clock": "Technician on site within [severity 1 on-site response time, hours]",
+       "clock": "On site in [severity 1 on-site response time, hours], inside [service coverage area]",
        "link": "contact-service",
        "urgent": true,
        "action": "Log a service request"
       },
       {
-       "t": "Visit or audit the shop",
-       "d": "Tour, supplier audit or FAT witness at [shop location, city and province].",
+       "t": "Visit the shop and test bay",
+       "d": "Tour or factory acceptance test (FAT) witness at [shop location, city and province].",
        "steps": [
         "Purpose, dates, group",
         "Date and agenda back",
-        "Records and test bay ready"
+        "Protocol and test bay ready"
        ],
        "clock": "Date and agenda within [visit booking reply time, working days]",
        "link": "contact-locations",
@@ -8818,8 +8671,8 @@
      "rows": [
       [
        "Head office and engineering, [head office, city and province]",
-       "Process design, projects, validation documents, proposals",
-       "[Street address], [city], [province] [postal code]",
+       "Process design, proposals, validation documents",
+       "[Street address], [postal code]",
        "[sales phone number] · [sales email] · [office hours, time zone]"
       ],
       [
@@ -8827,16 +8680,16 @@
         "t": "Shop and test bay, [shop location, city and province]",
         "link": "svc-fabrication"
        },
-       "PP skid and piping fabrication, panels, wet FAT, witness visits",
-       "[Street address], [city], [province] [postal code] · [map link]",
+       "Skid and piping fabrication, FAT",
+       "[Street address], [postal code] · [map link]",
        "[shop phone number] · [shop hours, time zone]"
       ],
       [
        {
-        "t": "Service base, [service base, city and province]",
+        "t": "Service bases, [service bases, cities]",
         "link": "svc-service"
        },
-       "Field technicians, calibration standards, [critical spares stock]",
+       "Field technicians, [critical spares stock]",
        "[street address, or home-based technicians]",
        "[service phone number], [service phone hours] · [service email]"
       ],
@@ -8855,61 +8708,42 @@
      "anchor": "coverage",
      "nav": "Coverage",
      "h": "Can you support my site?",
-     "intro": "Outside [service coverage area], we write a travel response into the plan.",
      "cols": [
       "Your region",
       "Severity 1: technician on site",
       "Technician and parts from",
-      "CRN and engineering seal"
+      "Design registration (CRN), where required, and seal"
      ],
      "rows": [
       [
        "Ontario",
        "[severity 1 on-site response time in Ontario, hours]",
-       "[service base, city] · [stocking point for Ontario, city]. Greater Toronto Area; [other Ontario centres served]",
-       "CRN: TSSA. Seal: PEO · [certificate of authorization: yes or no]"
+       "[service base, city] · [stocking point for Ontario, city]. [Ontario centres served]",
+       "CRN: Technical Standards and Safety Authority (TSSA). Seal: Professional Engineers Ontario (PEO) · [certificate of authorization: yes or no]"
       ],
       [
        "Quebec",
-       "[severity 1 on-site response time in Quebec, hours]",
-       "[service base, city] · [stocking point for Quebec, city]. Greater Montreal; [other Quebec centres served]",
-       "CRN: RBQ. Seal: OIQ"
+       "[Quebec severity 1 on-site hours, or visits only]",
+       "[service base, city] · [stocking point for Quebec, city]. [Quebec centres served]. [language of service in Quebec]",
+       "CRN: Régie du bâtiment du Québec (RBQ). Seal: Ordre des ingénieurs du Québec (OIQ) · [OIQ member on staff: yes or no]"
       ],
       [
        "British Columbia",
-       "[severity 1 on-site response time in BC, hours]",
-       "[service base or partner, city] · [BC stocking point, city]. Metro Vancouver; [other BC centres served]",
-       "CRN: Technical Safety BC. Seal: EGBC · [firm permit to practice: yes or no]"
+       "[BC severity 1 on-site hours, or visits only]",
+       "[service base or partner, city] · [BC stocking point, city]. [BC centres served]",
+       "CRN: Technical Safety BC. Seal: Engineers and Geoscientists BC (EGBC) · [firm permit to practice: yes or no]"
       ],
       [
        "Alberta",
-       "[severity 1 on-site response time in Alberta, hours]",
+       "[Alberta severity 1 on-site hours, or visits only]",
        "[service base or partner, city] · [Alberta stocking point, city]. [Alberta centres served]",
-       "CRN: ABSA. Seal: APEGA · [permit to practice: yes or no]"
+       "CRN: Alberta Boilers Safety Association (ABSA). Seal: Association of Professional Engineers and Geoscientists of Alberta (APEGA) · [permit to practice: yes or no]"
       ],
       [
-       "Saskatchewan and Manitoba",
+       "Other provinces and territories",
        "[severity 1 response, hours, or visits only]",
-       "[service base or partner, city] · [stocking point, city]. [centres served]",
-       "CRN and seal: authorities in the province of installation"
-      ],
-      [
-       "Atlantic Canada",
-       "[severity 1 response, hours, or visits only]",
-       "[service base or partner, city] · [stocking point, city]. [centres served]",
-       "CRN and seal: authorities in the province of installation"
-      ],
-      [
-       "Territories and remote sites",
-       "[Travel response agreed in the plan]",
-       "[Site spares kit recommended: confirm]. [By arrangement: confirm]",
-       "CRN and seal: territorial authorities"
-      ],
-      [
-       "United States",
-       "[US on-site response, hours, or visits only]",
-       "[US service base and parts route]",
-       "No CRN; state rules apply. Seal: [US state licence route, if any]"
+       "[service base or partner, city] · [stocking point, city]",
+       "CRN and seal: authorities where the system is installed"
       ]
      ],
      "as": "router"
@@ -8919,7 +8753,7 @@
      "anchor": "visit",
      "nav": "Visit",
      "h": "Book a shop or test bay visit",
-     "intro": "Audits get the quality records ready; FAT witnesses get the protocol and test bay.",
+     "intro": "Visits start once [shop and test bay ready for visits].",
      "submit": "Request a visit",
      "note": "Bring photo ID. Visitors sign [visitor confidentiality and safety terms] on arrival. [privacy notice link, PIPEDA and Law 25]",
      "steps": [
@@ -8933,12 +8767,11 @@
          "required": true,
          "options": [
           "Shop tour before shortlisting",
-          "Supplier or quality audit",
           "Witness the FAT on our project",
           "Pre-FAT walk-down or protocol review",
           "Training at the test bay before handover"
          ],
-         "help": "An audit can also run remotely or by questionnaire; see the quality management page."
+         "help": "Quality audits, on site or remote, are booked on the quality management page."
         },
         {
          "label": "Project or purchase order number",
@@ -8950,7 +8783,7 @@
          "label": "Preferred dates",
          "kind": "text",
          "required": true,
-         "help": "Two or three dates, or a week. A FAT date is set in the project schedule; this books your travel around it."
+         "help": "Two or three dates, or a week. A FAT date follows the project schedule."
         },
         {
          "label": "Number of visitors",
@@ -9005,49 +8838,55 @@
    ],
    "cta": {
     "h": "Get the coverage for your site in writing",
-    "body": "On-site response time, base and stocking point, CRN route and licensed engineer for your province.",
     "include": [
-     "Site address and province",
-     "New system, or service plan for existing equipment",
-     "Equipment make and model, if installed",
+     "Site city and province",
+     "On-site response time you need",
      "Language for service and documents"
     ],
-    "button": "Request a proposal",
-    "link": "contact-proposal"
+    "returns": [
+     "An engineer's written answer",
+     "On-site time, base and parts stock",
+     "CRN route and engineering seal"
+    ],
+    "turnaround": "[proposal response time, working days]",
+    "button": "Get your coverage in writing",
+    "link": "contact-proposal",
+    "intent": "Not sure yet: talk to an engineer"
    },
    "todo": [
     "Head office and engineering: street address, sales phone and email, office hours with time zone (same placeholders as about and contact-proposal)",
     "Shop and test bay: street address, phone, hours, map link (shop location same as about)",
+    "Shop and test bay ready for visits and witnessed FAT, and from which date ([shop and test bay ready for visits], same name as contact-service; FD-44). Until then route 3 and the visit form are draft only; at launch they go if not ready, and the next existing check replaces them (DR-004, DR-006 rule 6)",
     "Service bases: cities and addresses, or confirm technicians work from home bases; service email; service phone and hours (same as contact-service)",
     "Parts stock locations, parts email, parts desk hours, order cut-off and delivery commitment (same as svc-service)",
-    "Service coverage area (same as svc-service and contact-service)",
-    "Per region: main centres actually served, service base or partner, severity 1 on-site response (hours), stocking point; which regions are scheduled visits only",
+    "Service coverage area (same as home, svc-service and contact-service); it travels with every severity 1 time (DR-011 rule 4)",
+    "Per region (Ontario, Quebec, British Columbia, Alberta, other provinces and territories): centres served, service base or partner, stocking point, severity 1 on-site response in hours or \"visits only\" (FD-27, FD-28)",
     "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service)",
-    "Number of service technicians and number of stocking points (same headcount as about)",
-    "Whether technicians are all Aquemi employees; if partners are used: regions, under whose procedures, who signs the service report, partners for remote regions; remove partner row if none",
+    "Number of service technicians (same headcount as about)",
+    "Whether technicians are all Aquemi employees; if partners are used: regions, under whose procedures, who signs the service report, partners for remote regions; remove \"or partner\" from the cells if none",
     "CSA B51: Aquemi's CRN route (ASME certificate or vessel fabricator) and provinces where designs are registered (same as compliance)",
-    "Which components of the PP PW package need a CRN, if any (the coverage table states a CRN route per region)",
-    "Engineering licences: licensed engineers per province (P.Eng. or ing.), firm permits or certificates of authorization (Ontario, BC, Alberta), engineer of record route where not licensed (same as about)",
-    "French: technicians, service reports and documents in French; Quebec and New Brunswick",
-    "Territories and remote sites: whether served, travel response, site spares kit recommendation",
-    "United States: whether Aquemi delivers, which states and system types; US service base and parts route; ASME certificate or vessel partner and National Board registration; panel mark for US; Incoterms rule offered and transit time; who travels for installation, SAT and IQ/OQ and entry route; US service coverage and response; state licence route",
+    "Which components of the PP PW package need a CRN, if any (the coverage table names each province's authority \"where required\"; FD-24, OQ-79)",
+    "Engineering licences: licensed engineers per province (P.Eng. or ing.), PEO certificate of authorization, EGBC and APEGA permits to practice, an OIQ member on staff for Quebec, engineer of record route where not licensed (same as about; FD-24, FD-34)",
+    "French: [language of service in Quebec] (technicians, service reports, documents); New Brunswick (FD-36, DR-012)",
+    "Language for the day (visit form): keep only once a named French-speaking engineer can host on the same terms; otherwise remove the field at launch (FD-36, DR-012 rule 2)",
+    "Other provinces and territories, remote sites: whether served, travel response or visits only, site spares kit for remote sites",
+    "United States: row removed until FD-37 decides whether Aquemi delivers there. If it does, add a row: states and system types; US service base and parts route; ASME certificate or vessel partner and National Board registration; panel mark for US; Incoterms rule and transit time; who travels for installation, SAT and IQ/OQ and entry route; US response; state licence route",
     "Visit booking reply time (working days), visitor confidentiality and safety terms, privacy notice link (PIPEDA, Quebec Law 25)",
     "Visit practicalities: nearest airport and drive time, drive time from Toronto and Montreal, reception hours, PPE visitors bring and what is provided, photography rules",
     "Remote witness platform (same as svc-fat-sat)",
-    "Shipping: drain and drying method after wet FAT, crating standard and shock or tilt indicators, transit time to main centres (days)",
+    "Shipping: drain and drying method after the FAT, crating standard and shock or tilt indicators, transit time to main centres (days)",
     "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-    "Any-builder service: makes and equipment types serviced (same as contact-service)",
     "LocalBusiness schema per real location only, once addresses are confirmed"
    ],
    "primary_cta_link": "#coverage",
    "facts": [
     {
-     "v": "[number of service technicians]",
-     "l": "Technicians, based in [service bases, cities]"
+     "v": "[severity 1 on-site response time, hours]",
+     "l": "Technician on site, severity 1 · inside [service coverage area]"
     },
     {
-     "v": "[number of stocking points]",
-     "l": "Parts stocked in [stock location or locations]"
+     "v": "[number of service technicians]",
+     "l": "Technicians · based in [service bases, cities]"
     }
    ],
    "hero_index": false,

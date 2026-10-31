@@ -1,142 +1,24 @@
 {
  "id": "projects",
  "section": "Projects",
- "nav_label": "Case studies",
- "title": "Water system case studies and references | Aquemi",
- "meta": "Purified Water case studies that state flow in L/h, USP <645> conductivity and USP <643> TOC with the method and report. Ask for a reference call or FAT witness.",
+ "nav_label": "Projects",
+ "title": "Projects: check us before our first case study | Aquemi",
+ "meta": "A new Ontario company building a Purified Water package in polypropylene. No case study is published yet: the checks your team can run, and what each proves.",
  "path": "/projects/",
- "eyebrow": "PROJECTS · CASE STUDIES",
- "headline": "Projects you can audit: figure, method, report",
- "lead": "Every case-study figure carries its unit, method and executed report. Until one covers your segment, check at the source.",
- "facts": [
-  {
-   "v": "1 report per figure",
-   "l": "Executed report"
-  },
-  {
-   "v": "[reference clients available, number]",
-   "l": "Clients who take reference calls"
-  }
- ],
- "primary_cta": "Request a reference call",
- "primary_cta_link": "#verify",
+ "eyebrow": "PROJECTS",
+ "headline": "Check us at the source before our first case study",
+ "lead": "We are a new Ontario company designing and building a Purified Water package in polypropylene (PP). Each check below says what it proves, what it does not, and how soon.",
+ "primary_cta": "Talk to an engineer",
+ "primary_cta_intent": "Not sure yet: talk to an engineer",
+ "primary_cta_link": "contact-proposal",
  "blocks": [
   {
-   "type": "prose",
-   "as": "explainer",
-   "h": "What a case study proves",
-   "intro": "Every figure carries four things your engineers can check.",
-   "points": [
-    {
-     "t": "The figure",
-     "d": "Measured value, unit and reference temperature, against the limit."
-    },
-    {
-     "t": "The method",
-     "d": "Sampling point, number of samples and period."
-    },
-    {
-     "t": "The report",
-     "d": "The executed FAT, SAT or IQ/OQ/PQ report."
-    },
-    {
-     "t": "The approval",
-     "d": "A second engineer checks it; the client's quality unit approves the text, deviations included."
-    }
-   ],
-   "nav": "Proof",
-   "ground": "light"
-  },
-  {
-   "type": "case",
-   "nav": "Record",
-   "h": "The record each case study fills",
-   "intro": "Published only with the client’s approval. [Replace with a delivered project]",
-   "items": [
-    {
-     "status": "Template · awaiting a real project",
-     "t": "Modular PW package and PP loop, [segment, province]",
-     "client": "[segment and dosage form, province]",
-     "problem": "[limit, capacity or deadline that started it]",
-     "system": "[PVC pretreatment, RO, EDI, PP storage and loop, sanitization method, points of use]",
-     "standard": "USP PW monograph; Ph. Eur. 0008; EU GMP Annex 15; [PP piping standard and dead-leg rule]",
-     "art": "sys-pw",
-     "changed": [
-      {
-       "t": "Reverse osmosis (RO) vessels: [new or replaced]",
-       "at": [
-        14,
-        45
-       ]
-      },
-      {
-       "t": "Electrodeionization (EDI) stack: [new or replaced]",
-       "at": [
-        78,
-        30
-       ]
-      }
-     ],
-     "outcomes": [
-      {
-       "v": "[value]",
-       "unit": "µS/cm @ 25 °C",
-       "l": "Conductivity, loop return",
-       "method": "Online sensor; [OQ or PQ report number]"
-      },
-      {
-       "v": "[value]",
-       "unit": "ppb",
-       "l": "TOC, loop return",
-       "method": "Online analyzer; [OQ or PQ report number]"
-      },
-      {
-       "v": "[value]",
-       "unit": "CFU/mL",
-       "l": "Microbial, worst point of use",
-       "method": "Client PQ data; [samples and PQ weeks]"
-      },
-      {
-       "v": "[value]",
-       "unit": "L/h",
-       "l": "PW generation rate",
-       "method": "Measured at [FAT or SAT]; [report number]"
-      }
-     ],
-     "timeline": [
-      {
-       "t": "Order",
-       "when": "[week 0]"
-      },
-      {
-       "t": "Design approved",
-       "when": "[week]"
-      },
-      {
-       "t": "FAT",
-       "when": "[week]"
-      },
-      {
-       "t": "SAT",
-       "when": "[week]"
-      },
-      {
-       "t": "OQ",
-       "when": "[week]"
-      },
-      {
-       "t": "PQ complete",
-       "when": "[week]"
-      }
-     ]
-    }
-   ]
-  },
-  {
    "type": "table",
-   "nav": "Verify today",
+   "as": "router",
+   "nav": "Checks",
+   "anchor": "verify",
    "h": "Verify before a case study exists",
-   "intro": "Each route checks at the source. Pick what your team needs to see.",
+   "intro": "Pick what your team needs to see.",
    "cols": [
     "What you check",
     "Route",
@@ -145,182 +27,140 @@
    ],
    "rows": [
     [
-     "Schedule, deviations and service, from a client",
-     "Reference call",
-     "Performance on your feed water",
-     "[reference call lead time, working days]"
-    ],
-    [
-     "Alarms, interlocks and controls before shipment",
+     "The engineer who would lead your project",
      {
-      "t": "FAT witness",
-      "link": "svc-fat-sat"
+      "t": "Talk to an engineer",
+      "link": "contact-proposal"
      },
-     "Performance on your feed water",
-     "[FAT witness notice, working days]"
+     "Delivery on schedule and budget",
+     "[proposal response time, working days]"
     ],
     [
-     "[PP joining records] and material traceability at [shop location, city and province]",
+     "How we join and trace PP parts, in [shop location, city and province]",
      {
       "t": "Shop visit",
-      "link": "svc-fabrication"
+      "link": "contact-locations#visit"
      },
-     "System performance; that is the FAT",
+     "How your system will perform",
      "[shop visit notice, working days]"
     ],
     [
      "What your validation file will contain",
      {
-      "t": "Sample turnover package",
-      "link": "cmp-documentation"
+      "t": "Specimen package",
+      "link": "cmp-documentation#samples"
      },
      "That a project's records are complete",
      "[sample package response time, working days]"
     ],
     [
-     "That we read your URS line by line",
+     "That our quality system works",
+     {
+      "t": "Supplier audit",
+      "link": "cmp-quality#audit"
+     },
+     "A specific system's performance",
+     "[on-site audit notice, working days]"
+    ],
+    [
+     "That we read your user requirement specification (URS) line by line",
      {
       "t": "Compliance matrix",
       "link": "compliance"
      },
-     "Delivered performance",
+     "How the installed system performs",
      "[compliance matrix response time, working days]"
     ],
     [
-     "That our quality system works",
+     "Your system's alarms, interlocks and controls, before it ships",
      {
-      "t": "Supplier audit",
-      "link": "cmp-quality"
+      "t": "Factory acceptance test (FAT) witness",
+      "link": "contact-locations#visit"
      },
-     "A specific system's performance",
-     "[on-site audit notice, working days]"
+     "Performance on your feed water",
+     "[FAT witness notice, working days]"
     ]
-   ],
-   "as": "router"
+   ]
   },
   {
-   "type": "form",
-   "nav": "Request",
-   "anchor": "verify",
-   "h": "Request a reference call or FAT witness",
-   "intro": "References and FAT witnessing depend on our clients’ permission.",
-   "submit": "Send my request",
-   "steps": [
+   "type": "prose",
+   "as": "explainer",
+   "h": "What a case study proves",
+   "intro": "Each figure in a published case study will carry four things your team can check.",
+   "points": [
     {
-     "title": "What to verify",
-     "next": "Continue to contact",
-     "fields": [
-      {
-       "kind": "checkbox-group",
-       "label": "What you want to verify",
-       "required": true,
-       "options": [
-        "Reference call",
-        "Shop visit or FAT witness",
-        "Sample turnover package, FAT protocol or compliance matrix",
-        "Supplier audit or quality questionnaire"
-       ]
-      },
-      {
-       "kind": "select",
-       "label": "What you are buying",
-       "required": false,
-       "options": [
-        "Purified Water (PW) generation",
-        "Storage and distribution loop",
-        "Pretreatment",
-        "Monitoring and controls",
-        "Service, calibration or upgrade",
-        "Not decided yet"
-       ]
-      },
-      {
-       "kind": "file",
-       "label": "Your URS or questions, a draft is enough",
-       "required": false
-      }
-     ]
+     "t": "The figure",
+     "d": "Measured value, unit and reference temperature, against the pharmacopoeia limit."
     },
     {
-     "title": "Contact",
-     "fields": [
-      {
-       "kind": "text",
-       "label": "Full name",
-       "required": true
-      },
-      {
-       "kind": "email",
-       "label": "Work email",
-       "required": true
-      },
-      {
-       "kind": "text",
-       "label": "Company",
-       "required": true
-      }
-     ]
+     "t": "The method",
+     "d": "Sampling point, number of samples and period."
+    },
+    {
+     "t": "The report",
+     "d": "The executed acceptance test or qualification report, with its number."
+    },
+    {
+     "t": "The approval",
+     "d": "A second engineer checks it [confirm]; the client's quality unit approves the text in writing, deviations included."
     }
-   ]
+   ],
+   "nav": "Standard",
+   "ground": "light"
   },
   {
    "type": "faq",
    "nav": "FAQ",
-   "h": "Questions engineering and QA teams ask",
+   "h": "Questions buyers ask",
    "items": [
     {
      "q": "Why are there no named clients on this page?",
-     "a": "Many pharmaceutical clients do not allow suppliers to name them. Unnamed, a case is described by segment and province; a reference call can go further."
+     "a": "We are a new Ontario company, and no case study is published yet. We publish one only with the client's written approval of its text and figures. A client may stay unnamed; the case then names only its segment and province."
     },
     {
      "q": "Can we speak to a client in our segment?",
-     "a": "Say which system and grade you are buying. We can offer [reference segments and systems, and how many]. If none matches, we offer the closest system."
+     "a": "[reference clients available, number]. Speaking to a client needs one in your segment who agrees in writing. Until then, run the checks above or talk to the engineer who would lead your project."
     },
     {
      "q": "Are the figures from your tests or from the client?",
-     "a": "FAT figures are ours, on our feed water. SAT and OQ figures are on yours. PQ data is the client's, published with its approval and labelled."
+     "a": "Factory acceptance test (FAT) figures are ours, measured on our feed water. Site acceptance test (SAT) and operational qualification (OQ) figures are measured on the client's site. Performance qualification (PQ) data is the client's, published only with its approval and labelled."
     },
     {
      "q": "Does a passed FAT mean the system meets USP?",
-     "a": "No. A FAT proves function before shipment. Water quality at your points of use is proven on your feed water at SAT, OQ and PQ."
+     "a": "No. A factory acceptance test (FAT) proves function before shipment, on our feed water. United States Pharmacopeia (USP) quality at your points of use is proven on your feed water. The proof comes at site acceptance testing (SAT), then operational and performance qualification (OQ, PQ)."
     }
    ]
   }
  ],
  "cta": {
-  "h": "Ask for the evidence, not the brochure",
-  "body": "Tell us the system, the grade and the province. We arrange what our clients agree to.",
-  "button": "Request a reference call",
+  "h": "Ask the engineer who would lead your project",
+  "body": "Tell us what your supplier approval asks for. We show what exists today and when the rest will be ready.",
+  "button": "Talk to an engineer",
   "link": "contact-proposal",
-  "intent": "Supplier qualification: audit, references, shop visit|Reference call",
+  "intent": "Not sure yet: talk to an engineer",
   "include": [
-   "System and grade you are buying",
+   "What you make and the system you need",
    "Province of installation",
-   "Your URS, a draft is enough",
-   "What your team needs to see"
+   "Your URS, if you have one"
   ],
   "include_label": "What to tell us",
   "returns": [
-   "A reference call with a client",
-   "A shop visit or FAT witness",
-   "Sample turnover documents"
+   "A written answer from an engineer",
+   "Dates for the checks you choose"
   ],
-  "turnaround": "[reference request response time, working days]"
+  "turnaround": "[proposal response time, working days]"
  },
  "todo": [
-  "KEY: real delivered projects for the case study record (PW) with executed report numbers, or remove the block before launch; the page must not launch with only a placeholder record",
-  "Written client approval for each case study and each named reference; client quality unit sign-off on text and figures",
-  "Measured figures for each case: capacity (L/h), conductivity (µS/cm @ 25 °C), TOC (ppb), microbial (CFU/mL), nitrates (ppm), timeline milestones (weeks), equipment new or replaced, deviations raised and closed",
-  "PP joining records shown on a shop visit (what replaces a weld log for PP: [PP joining method, for example butt fusion or IR welding]) and the PP piping standard and dead-leg rule cited in the case study record",
-  "Sanitization method stated for the PP loop in the case study record ([PP loop sanitization method])",
-  "Hero fact and FAQ: number of clients available for a reference call, and the segments and systems they cover",
-  "Shop location (city and province) for shop visits (same as cmp-quality)",
-  "Lead times: reference call (working days), shop visit notice, FAT witness notice, sample package response, compliance matrix response, on-site audit notice (align with cmp-documentation, compliance, cmp-quality)",
-  "Reference request response time (working days) for the form intro and closing CTA",
-  "Whether witnessing other clients' FATs is offered, and on what terms (NDA, client permission)",
-  "Confirm Aquemi practice stated on this page: second-engineer check of each figure; client may withdraw approval; deviations stated in each case; case updated at each milestone; redacted FAT protocol and report can be shown",
-  "Project photographs for each published case (with client permission)",
-  "Industry and system filter, once there are enough published case studies (removed in this pass)"
+  "KEY (DR-016 rule 8; FD-42): after the first delivered project is accepted and its client approves text and figures in writing, add one case record in language/register.md E13's pattern: \"[client segment, province]: [problem in plain words], [measured outcome with unit] in [weeks]\", then capacity (L/h), conductivity (µS/cm @ 25 °C), TOC (ppb), microbial (CFU/mL), each with method and report number; system as supplied, including [PP loop sanitization method]; timeline from order to PQ; equipment new or replaced; deviations raised and closed. The template record taken off the page in pass A is in git at aquemi-web dbee6fc (block \"The record each case study fills\"); the CaseStudy component renders it",
+  "After project 1 (DR-016 rule 8): nav_label may revert; one measured hero figure may return (DR-010); a reference-call row and button only once [reference clients available, number] is 1 or more (FD-41), with [reference call lead time, working days]",
+  "Launch (DR-004 class 2; DR-006 rule 6): keep each check row only once it exists, else drop it: shop visit and FAT witness ([shop and test bay ready for visits], FD-44), specimen package (FD-47), supplier audit (FD-48). The hero and closing button becomes the first check that exists, shop visit first; until one exists, \"Talk to an engineer\" (DR-016 rule 5)",
+  "References (FD-41): [reference clients available, number], per segment, for the FAQ answer; once answered, the number by segment or \"Not yet.\"; never \"we can offer\" (DR-016 rule 7)",
+  "Confirm as Aquemi practice: second engineer checks each published figure ([confirm] in \"The approval\"); the client may withdraw approval; deviations stated in each case; case updated at each milestone; a redacted FAT protocol and report can be shown",
+  "Times in working days, one name each: [shop visit notice], [FAT witness notice] (with svc-fat-sat and contact-locations), [sample package response time] (cmp-documentation), [on-site audit notice] (cmp-quality), [compliance matrix response time] (compliance), first reply [proposal response time] (every page). At launch an unset time is cut (DR-006 rule 7)",
+  "Shop location ([shop location, city and province], FD-33), the same name as about, careers and cmp-quality",
+  "Whether a prospect may witness another client's FAT before award, and on what terms (NDA, that client's written permission) (FD-44)",
+  "Project photographs for each published case (with the client's permission)",
+  "Industry and system filter, once there are enough published case studies"
  ],
  "hero_index": false,
  "figure": {
