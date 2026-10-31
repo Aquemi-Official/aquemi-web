@@ -3,24 +3,21 @@
  "section": "Industries",
  "nav_label": "Medical devices",
  "title": "Medical device water: Purified Water for final rinse | Aquemi",
- "meta": "Purified Water (PW) for device final rinse, with limits set from USP <161> endotoxin and ISO 11737 bioburden, documented for ISO 13485, MDSAP and FDA QMSR.",
+ "meta": "Polypropylene Purified Water (PW) package for medical device final rinse, built to your endotoxin (USP <161>) and bioburden limits at the washer inlet. No WFI.",
  "path": "/industries/medical-devices/",
- "eyebrow": "DEVICES · ISO 13485 · MDSAP · FDA QMSR",
+ "eyebrow": "MEDICAL DEVICES · USP <161>",
  "headline": "Final rinse water you can defend at audit",
- "lead": "We supply Purified Water (PW) systems, built to the endotoxin and bioburden limits you set at the washer inlet.",
- "primary_cta": "Request a device water scope review",
- "primary_cta_intent": "Water scope review for your products|Medical devices",
- "secondary_cta": {
-  "label": "Get a sample turnover package",
-  "link": "cmp-documentation"
- },
+ "lead": "A polypropylene Purified Water (PW) package with PVC pretreatment, built to your endotoxin and bioburden limits at the washer inlet. No Water for Injection, pure steam or stainless steel systems.",
+ "primary_cta": "Request a water scope review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I know my product, not my water spec|Medical devices",
  "blocks": [
   {
    "type": "table",
    "as": "grades",
    "nav": "Grade by step",
    "h": "Water grade by process step",
-   "intro": "No device standard sets a grade per step; this is common practice. We supply PW; where a step needs WFI, you generate it, usually from PW feed.",
+   "intro": "Common practice, not a rule: your risk assessment sets the grade per step.",
    "cols": [
     "Process step",
     "Typical water",
@@ -30,26 +27,24 @@
     [
      "Intermediate rinses; final rinse, intact-skin devices",
      "PW",
-     "ISO 13485 7.5.2 and your cleaning validation"
+     "Your cleaning validation; ISO 13485 7.5.2"
     ],
     [
-     "Final rinse, radiation or EO sterilized",
-     "PW with a microbial action level, often 0.2 µm filtered at the outlet",
+     "Final rinse, radiation or ethylene oxide sterilized",
+     "PW with a microbial action level",
      "ISO 11737-1 bioburden; ISO 11137-2 dose audits; ISO 11135"
     ],
     [
-     "Final rinse, implants and blood contact",
-     "PW with a written endotoxin limit, or WFI",
-     "USP <161> 20.0 EU per device; tested to USP <85>"
+     "Final rinse, blood or lymph contact",
+     "PW with a written endotoxin limit, or Water for Injection (WFI)",
+     "20.0 endotoxin units per device (USP <161>); tested to USP <85>"
     ],
     [
      "Final rinse, cerebrospinal fluid (CSF) contact",
-     "WFI, or water held to the WFI endotoxin limit",
-     "USP <161> 2.15 EU per device"
+     "WFI, or water held to its endotoxin limit",
+     "2.15 endotoxin units per device (USP <161>)"
     ]
-   ],
-   "fold": 3,
-   "fold_noun": "steps"
+   ]
   },
   {
    "type": "prose",
@@ -68,7 +63,7 @@
       86,
       30
      ],
-     "d": "Washers filling at once drop loop pressure. Storage and pumps sized to your fill profile."
+     "d": "Washers filling at once drop loop pressure. We size storage and pumps to your fill profile."
     },
     {
      "t": "Washer inlet",
@@ -84,7 +79,7 @@
       52,
       70
      ],
-     "d": "Warm water standing between batches grows biofilm. We validate a drain-and-refill rule."
+     "d": "Warm water standing between batches grows biofilm; validate a drain-and-refill rule."
     },
     {
      "t": "Rinse endpoint",
@@ -92,7 +87,7 @@
       72,
       88
      ],
-     "d": "A conductivity or TOC endpoint at the drain checks every cycle, not only validation."
+     "d": "A conductivity endpoint at the drain checks every cycle, not only validation."
     }
    ]
   },
@@ -104,30 +99,30 @@
     {
      "t": "PW generation",
      "icon": "ro-membrane",
-     "d": "Final rinse for implants and sterile devices, with a written endotoxin limit.",
+     "d": "Final rinse water to your written endotoxin limit.",
      "tag": "USP <645>",
      "link": "sys-pw"
     },
     {
      "t": "Storage and distribution loops",
      "icon": "loop",
-     "d": "Tank and pumps sized to your washer fill profile, sampled at each washer inlet.",
+     "d": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
      "tag": "USP <1231>",
-     "link": "sys-storage"
+     "link": "sys-storage#sanitization"
     },
     {
      "t": "Monitoring and controls",
      "icon": "conductivity",
-     "d": "Conductivity and TOC trended against your alert and action levels, with an audit trail.",
+     "d": "Conductivity and total organic carbon trended against your alert and action levels.",
      "tag": "21 CFR Part 11",
      "link": "sys-monitoring"
     },
     {
      "t": "Upgrades and retrofits",
      "icon": "valve",
-     "d": "Endotoxin drifting on devices: we find whether water, washer or handling is the source.",
+     "d": "Endotoxin or bioburden drifting on devices: start with a system assessment.",
      "tag": "Change control",
-     "link": "svc-upgrades"
+     "link": "svc-upgrades#observation"
     }
    ]
   },
@@ -143,7 +138,7 @@
    ],
    "rows": [
     [
-     "Health Canada, through MDSAP",
+     "Health Canada, through MDSAP (Class II to IV)",
      "ISO 13485:2016: 6.3, 6.4.2, 7.5.2, 7.5.6, 7.5.7 and 7.6 calibration",
      {
       "t": "Commissioning and qualification",
@@ -193,11 +188,11 @@
    "items": [
     {
      "q": "Our rinse water meets USP PW. Is that enough for implants?",
-     "a": "Not on its own. The PW monograph sets no endotoxin limit, and its microbial level is only guidance. Write both into the water specification and sample at the washer inlet."
+     "a": "Not on its own. The Purified Water (PW) monograph sets no endotoxin limit, and its microbial action level (USP <1231>) is guidance only. Write both into your water specification and sample at the washer inlet."
     },
     {
      "q": "Do we need WFI for our final rinse?",
-     "a": "Only if your risk assessment says so, as is common for CSF contact. We supply PW; WFI is generated on your site, usually from PW feed. For most implants, PW with an endotoxin limit and point-of-use ultrafiltration costs less."
+     "a": "Only if your risk assessment says so, as is common for cerebrospinal fluid (CSF) contact. For blood or lymph contact, Purified Water (PW) with a written endotoxin limit is usual. We supply a polypropylene PW package with polyvinyl chloride (PVC) pretreatment, not Water for Injection (WFI)."
     },
     {
      "q": "How does rinse water affect our radiation dose?",
@@ -205,11 +200,19 @@
     },
     {
      "q": "Is the water system validated or qualified?",
-     "a": "The cleaning process is validated (ISO 13485 7.5.6, usually to ASTM F3127). The water system is qualified by IQ and OQ, with PQ from routine sampling, per GHTF SG3/N99-10."
+     "a": "Qualified. You validate the cleaning process (ISO 13485:2016, 7.5.6), for example to ASTM F3127. The water system is qualified by installation and operational qualification (IQ, OQ), then performance qualification (PQ) from routine sampling."
+    },
+    {
+     "q": "Are you ISO 13485 or ISO 9001 certified?",
+     "a": "[ISO 9001 status, registrar and expiry].",
+     "link": "cmp-quality",
+     "link_label": "See our quality system"
     },
     {
      "q": "Do you supply water for hospital reprocessing?",
-     "a": "Reprocessing works to CSA Z314 or ANSI/AAMI ST108:2023, and the same RO and EDI platform can serve it. Our scope: [hospital, lab and industrial water scope]."
+     "a": "Our scope: [hospital water scope]; [lab water scope]; [industrial water scope]. Hospital reprocessing water follows CSA Z314:23 and ANSI/AAMI ST108:2023. Critical water under ST108 is looser on ions than Purified Water, tighter on microbes, and has an endotoxin limit.",
+     "link": "industries",
+     "link_label": "See industries we serve"
     }
    ]
   },
@@ -219,55 +222,38 @@
    "items": [
     "compliance",
     "cmp-quality",
-    "svc-cq",
-    "sys-storage"
+    "cmp-documentation",
+    "svc-cq"
    ]
   }
  ],
  "cta": {
   "h": "Send your devices and release limits",
-  "body": "A process engineer replies, with the scope or our questions.",
-  "button": "Request a device water scope review",
+  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "button": "Request a water scope review",
   "link": "contact-proposal",
-  "intent": "Water scope review for your products|Medical devices",
+  "intent": "I know my product, not my water spec|Medical devices",
   "include": [
    "Device types, class and patient contact",
    "Sterilization method and its validation standard",
    "Release limits and extraction volume, mL",
-   "Washer fills per hour and L per fill"
+   "Washer fills per hour, L per fill"
   ],
-  "turnaround": "[proposal response time, working days]",
+  "turnaround": "[scope review turnaround, working days]",
   "returns": [
    "Rinse water limits from your device limits",
-   "The system scope to hold them",
+   "The PW package to hold them",
    "The qualification scope"
   ]
  },
  "todo": [
-  "Confirm medical device manufacturing is a target segment",
-  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-  "Quality certifications Aquemi holds (ISO 9001 / ISO 13485), scope and registrar (FAQ)",
-  "Device maker references available for a call, or a plain 'none yet' (FAQ)",
-  "A device-manufacturing case study with measured outcome; add a case block when one exists",
-  "Hospital, lab and industrial water scope (FAQ): for hospital MDRD say new systems, upgrades, service only or not offered, and whether Aquemi bids hospital and health authority tenders. Keep wording in line with sys-pw and systems FAQ",
-  "Confirm Aquemi supplies point-of-use ultrafiltration as part of the PW package (FAQ)",
-  "Confirm the WFI wording (grade table intro, FAQ): Aquemi supplies PW only; device makers who need WFI generate it on site",
-  "Confirm the grid's storage and monitoring descriptions match sys-storage and sys-monitoring (washer fill sizing, sampling at washer inlet, Part 11 audit trail)",
-  "Is the scope review free, and its turnaround",
-  "Contact-proposal page: add a 'device water scope review' intent with device class, sterilization method and release limit fields"
- ],
- "facts": [
-  {
-   "v": "20.0 EU",
-   "l": "Per device, general · USP <161>"
-  },
-  {
-   "v": "2.15 EU",
-   "l": "Per device, CSF contact · USP <161>"
-  },
-  {
-   "v": "100 CFU/mL",
-   "l": "PW action level · USP <1231>"
-  }
+  "Target segments at launch (FD-38): medical device makers are tier A3, after pharmaceutical and CDMO (DR-002); confirm",
+  "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]; FD-01) is defined in contact-proposal's requests table and shown here as the figure only, as on industries",
+  "Quality system status line (FAQ; FD-48): [ISO 9001 status, registrar and expiry], the name cmp-quality and about use. Device makers also ask about ISO 13485, so the filled line answers both: certified (registrar, number, scope, expiry) or the status FD-48 chooses. No ISO label in an eyebrow, heading or meta until certified (DR-004 rule 3)",
+  "References (FD-41) and a device case study with a measured outcome (FD-42): no reference offer or case block until a client agrees in writing (DR-004, DR-016)",
+  "Adjacent-use scope (hospital FAQ; FD-25, DR-002 rules 4 and 6): [hospital water scope], [lab water scope], [industrial water scope], the names on industries and about (ops/placeholder-names.md in the library), for example 'not offered today', or replacements and upgrades in Ontario and Quebec through your consultant or mechanical contractor. The answer is word for word about's adjacent-use answer; change both together",
+  "PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead, answer or closing item offers it",
+  "Point-of-use filters or ultrafiltration at the washer inlet (explainer; FD-21, 'point-of-use UF for device rinse'): whether the package supplies them; sys-pw lists ultrafiltration after deionization as an option",
+  "Auditor table (DR-007 rule 3): the ISO 13485:2016 clauses, the MDSAP requirement for Class II to IV licences and EU MDR Annex I 10.2 and 11 were checked at their sources on 2026-10-31 (library site/ind-meddevice.md); re-check at each new edition"
  ]
 }
