@@ -169,7 +169,10 @@ function start(){
  }).catch(function(err){$('vmeta').textContent='The history could not load: '+err.message});
 }
 // Old versions are served by a service worker; it must be active before the first frame loads.
-if('serviceWorker' in navigator){navigator.serviceWorker.register('versions/sw.js').then(function(){return navigator.serviceWorker.ready}).then(start,function(){NOSW=true;start()})}
+// (serviceWorker.ready never settles here: this page is outside the worker's scope, so wait on the worker itself.)
+function active(reg){return new Promise(function(ok,no){var w=reg.active||reg.waiting||reg.installing;if(!w)return no(new Error('no worker'));if(w.state==='activated')return ok();
+ w.addEventListener('statechange',function(){if(w.state==='activated')ok();else if(w.state==='redundant')no(new Error('redundant'))});setTimeout(function(){no(new Error('timeout'))},8000)})}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('versions/sw.js').then(active).then(start,function(){NOSW=true;start()})}
 else{NOSW=true;start()}
 })();
 </script>
