@@ -9,7 +9,8 @@ Writes, from git:
                                    (did this page's copy change?) and a design hash (did the look change?),
                                    plus the named checkpoints below
 versions/sw.js (a service worker, hand-written) serves versions/at/<commit>/<path> from those files, so each
-old index.html runs unchanged. versions.html is the viewer. Rerun after every push you want in the history
+old index.html runs unchanged. versions.html is the viewer: it steps through the named checkpoints by default
+(keep them to about ten), and "All versions" steps through every commit. Rerun after every push you want in the history
 (the newest commit is always also reachable as the live site). Python 3 standard library only; needs git.
 """
 import hashlib
@@ -45,7 +46,7 @@ CHECKPOINTS = [
 ]
 
 # Not part of the site a visitor loads.
-SKIP = ('design-system/inspiration/', '.github/', 'tools/', '.claude/', 'versions/', 'board/', 'research/')
+SKIP = ('design-system/inspiration/', '.github/', 'tools/', '.claude/', 'versions/', 'versions.html', 'board/', 'research/')
 # Count as copy, not design, when deciding what changed.
 COPY = ('content/',)
 

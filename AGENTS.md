@@ -39,7 +39,7 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 | `assets/motion.js` | **Generated** from the motion sources above. The site loads it. |
 | `assets/site.css` | Draft-bar chrome only. No brand styles here. |
 | `inspiration.html` | Media gallery of every image made or considered, used or not, tagged by what became of it. Reads `design-system/inspiration/gallery.json`; after adding an image run `python tools/gallery.py`. |
-| `versions.html`, `versions/` | Page history: every commit on main, any page, flipped or compared side by side (desktop or phone); big checkpoints are named. `versions/blobs`, `tree`, `index.json` are **generated** by `python tools/versions.py` (rerun after pushes you want listed; add named checkpoints in its `CHECKPOINTS`). `versions/sw.js` serves old commits from them. Never edit generated files in `versions/`. |
+| `versions.html`, `versions/` | Page history: any page as it was at each big checkpoint (the default stops) or at any commit on main ("All versions"), flipped or compared side by side (desktop or phone). `versions/blobs`, `tree`, `index.json` are **generated** by `python tools/versions.py` (rerun after pushes you want listed; add named checkpoints in its `CHECKPOINTS`). `versions/sw.js` serves old commits from them. Never edit generated files in `versions/`. |
 | `design-system.html` | The visual guide. Generated at load time from the files above; normally needs no edits. |
 | `brand/` | Logo, lockup, mark and favicon SVGs. Use as they are. |
 | `tools/design_system.py` | `build`, `check`, `new`, `stage`. Python 3 standard library only. |
