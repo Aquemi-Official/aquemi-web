@@ -1,0 +1,7 @@
+<!-- @dsCard group="Navigation" height=200 width=900 subtitle="Floating button, shown once the reader is well down a page; arrow only on phones" -->
+<div class="aq-page" style="position:relative;min-height:160px">
+<section class="aq-section"><div class="aq-in aq-stack">
+  <p class="aq-small">Scrolled one and a half screens down a system page, the button sits at the bottom right:</p>
+  <button class="aq-back-to-top is-shown" type="button" style="position:absolute"><span class="aq-back-to-top__arrow" aria-hidden="true">↑</span><span class="aq-back-to-top__label">Back to top</span></button>
+</div></section>
+</div>

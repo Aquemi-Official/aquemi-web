@@ -1,0 +1,7 @@
+BackToTop is a quiet floating button that returns the reader to the top of a long page once they are well down it.
+
+- Markup: `<button class="aq-back-to-top" type="button"><span class="aq-back-to-top__arrow" aria-hidden="true">↑</span><span class="aq-back-to-top__label">Back to top</span></button>`, placed once per page after the footer. On the site, `wBackToTop()` in `assets/src/parts/BackToTop.js` writes it and `wPage` adds it to every page.
+- Behaviour: hidden and out of the tab order until the reader has scrolled one and a half screens; then it fades in (200 ms, `cubic-bezier(0.2, 0, 0, 1)`), and `is-shown` is set. Pressing it scrolls to the top (smoothly, or instantly under reduced motion) and moves focus to the logo link, so keyboard and screen-reader users start from the top as well.
+- Look: a control, so `surface-raised`, a 1 px `line-strong` rule turning `ink` on hover, `radius-sm`, 44 px tall, the `label` type (Geist 14/20, 500) in sentence case, the arrow in `flow`. It floats over content, so it takes `shadow-overlay`, the brand book's one shadow. Focus is the standard 2 px `focus` ring.
+- Position: fixed `space-8` from the bottom right on desktop. Phones: the arrow alone in a 44 × 44 px square, `space-4` from the edges; the label stays for screen readers.
+- One per page. Don't add other floating controls beside it, and don't use it on short pages where the top is a scroll away; the threshold already keeps it hidden there.

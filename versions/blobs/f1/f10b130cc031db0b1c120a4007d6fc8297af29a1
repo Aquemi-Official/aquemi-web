@@ -1,0 +1,420 @@
+{
+ "id": "compliance",
+ "section": "Compliance",
+ "nav_label": "Standards we design to",
+ "title": "Purified Water system standards: USP, Ph. Eur., GMP | Aquemi",
+ "meta": "Every standard behind our Purified Water (PW) systems: USP <645> 1.3 µS/cm, USP <643>, Ph. Eur. 0008, GAMP 5, Part 11, CSA B51 CRN, and the document that proves each.",
+ "path": "/compliance/",
+ "eyebrow": "COMPLIANCE · USP · PH. EUR. · GMP · CSA B51",
+ "headline": "Every standard, its number, its proof",
+ "lead": "Each standard behind our Purified Water (PW) systems, with its limit and the document that proves it.",
+ "primary_cta": "Request a compliance matrix",
+ "primary_cta_intent": "Compliance matrix for your URS",
+ "primary_cta_link": "contact-proposal",
+ "secondary_cta": {
+  "label": "See the documentation package",
+  "link": "cmp-documentation"
+ },
+ "index": true,
+ "blocks": [
+  {
+   "type": "spec",
+   "as": "gauges",
+   "nav": "Limits",
+   "anchor": "limits",
+   "h": "Release limits at the point of use",
+   "intro": "Where USP and Ph. Eur. differ, we design to the stricter value.",
+   "caption": "PW · USP AND PH. EUR.",
+   "cols": [
+    "Parameter",
+    "Limit",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity, PW",
+     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+     "m": "USP <645>",
+     "hl": true
+    },
+    {
+     "p": "TOC, PW",
+     "v": "≤ 0.50 mg/L (500 ppb)",
+     "m": "USP <643>; Ph. Eur. 2.2.44"
+    },
+    {
+     "p": "Nitrates, PW",
+     "v": "≤ 0.2 ppm",
+     "m": "Ph. Eur. 0008; no USP test"
+    },
+    {
+     "p": "Action level, PW",
+     "v": "100 CFU/mL",
+     "m": "USP <1231>; Ph. Eur. 0008"
+    }
+   ],
+   "note": "Ph. Eur. conductivity for PW: ≤ 5.1 µS/cm @ 25 °C. Where you generate Water for Injection (WFI) from our PW, the WFI limits apply at the outlet of your still, not to our system."
+  },
+  {
+   "type": "standards-map",
+   "nav": "Map",
+   "anchor": "map",
+   "h": "Which standard governs each part",
+   "intro": "Each code links to the row that proves it.",
+   "zones": [
+    {
+     "t": "Generation",
+     "icon": "ro-membrane",
+     "to": "pharmacopoeia",
+     "codes": [
+      "USP <645>",
+      "USP <643>",
+      "Ph. Eur. 0008"
+     ],
+     "spot": "ro-skid"
+    },
+    {
+     "t": "Storage and distribution",
+     "icon": "loop",
+     "to": "gmp",
+     "codes": [
+      "EU GMP Annex 1",
+      {
+       "t": "USP <1231>",
+       "to": "pharmacopoeia"
+      },
+      {
+       "t": "[PP piping standard]",
+       "to": "engineering"
+      }
+     ],
+     "spot": "storage-tank"
+    },
+    {
+     "t": "Controls and data",
+     "icon": "gauge",
+     "to": "gmp",
+     "codes": [
+      "21 CFR Part 11",
+      "EU GMP Annex 11",
+      "GAMP 5",
+      {
+       "t": "CSA C22.2 No. 286",
+       "to": "engineering"
+      }
+     ],
+     "spot": "gauge"
+    },
+    {
+     "t": "Materials and fabrication",
+     "icon": "weld",
+     "to": "engineering",
+     "codes": [
+      "[PP material standard]",
+      "[PP joining standard]",
+      "CSA B51"
+     ],
+     "spot": "weld"
+    },
+    {
+     "t": "Qualification",
+     "icon": "binder",
+     "to": "gmp",
+     "codes": [
+      "EU GMP Annex 15",
+      "WHO TRS 1033",
+      "ASTM E2500",
+      "ICH Q9(R1)"
+     ],
+     "spot": "binder"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Pharmacopoeia",
+   "anchor": "pharmacopoeia",
+   "ground": "light",
+   "h": "Pharmacopoeias, and where the proof sits",
+   "cols": [
+    "Standard",
+    "What we design to",
+    "Document that proves it",
+    "Where we show it"
+   ],
+   "rows": [
+    [
+     "USP <645> Water conductivity",
+     "Stage 1, uncompensated; cell constant ± 2 %, instrument ± 0.1 µS/cm",
+     "Calibration certificates; FAT, SAT and OQ raw readings",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "USP <643> Total organic carbon",
+     "≤ 0.50 mg/L; system suitability at 85–115 % response efficiency",
+     "Suitability records; analyzer calibration; OQ report",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "Ph. Eur. 0008 Purified water",
+     "Revised in Ph. Eur. 12.3, in force 1 July 2026; stricter of USP",
+     "Functional specification; nitrates tested at FAT",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     }
+    ],
+    [
+     "USP <1231> Water for pharmaceutical purposes",
+     "Informational; sanitization within [maximum loop sanitization temperature for PP, °C]; alert and action levels",
+     "Sampling plan; alert and action level rationale",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "EMA guideline on water for pharmaceutical use",
+     "PW minimum for most non-sterile forms; WFI, which you generate, for parenterals",
+     "Water grade per point of use in the basis of design",
+     {
+      "t": "Pharmaceutical",
+      "link": "ind-pharma"
+     }
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "standards"
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "GMP",
+   "anchor": "gmp",
+   "h": "GMP rules and qualification guidance",
+   "cols": [
+    "Standard",
+    "What we design to",
+    "Document that proves it",
+    "Where we show it"
+   ],
+   "rows": [
+    [
+     "EU GMP Annex 1 (2022); Health Canada GUI-0119",
+     "6.7 no dead legs; 6.12 sanitization; [other Annex 1 clauses that apply to PW]",
+     "Dead leg register; hydraulics; sanitization OQ",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "EU GMP Annex 15 (2015)",
+     "3.2 URS; 3.3 design qualification; 3.6 FAT not repeated where transport cannot affect it",
+     "Traceability matrix; DQ report; executed FAT to OQ",
+     {
+      "t": "FAT and SAT",
+      "link": "svc-fat-sat"
+     }
+    ],
+    [
+     "EU GMP Annex 11 (2011); 21 CFR Part 11",
+     "Audit trail, access, e-signatures, record protection; your procedures complete them",
+     "Part 11 and Annex 11 assessment; audit trail tests",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "WHO TRS 1033, Annex 3 (2021)",
+     "PQ in three phases over at least 12 months; annual review",
+     "PQ protocol; phase reports; annual review",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "FDA Guide to Inspections of High Purity Water Systems (1993)",
+     "A full year of data; dead legs and sanitization reviewed",
+     "Sampling plan; dead leg register",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "GAMP 5 (2022); FDA computer software assurance",
+     "Tests scaled to risk; scripted for divert, quality alarms, sanitization and audit trail",
+     "Software and configuration specifications; controls OQ",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "ASTM E2500; ICH Q9(R1)",
+     "Verification focused on critical aspects from a risk assessment, usually an FMEA",
+     "Risk assessment; critical aspects list; design review",
+     {
+      "t": "Process design",
+      "link": "svc-design"
+     }
+    ]
+   ],
+   "fold": 2,
+   "fold_noun": "standards",
+   "ground": "dark"
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Engineering",
+   "anchor": "engineering",
+   "h": "Engineering, materials and pressure equipment",
+   "cols": [
+    "Standard",
+    "What we design to",
+    "Document that proves it",
+    "Where we show it"
+   ],
+   "rows": [
+    [
+     "[PP piping standard]",
+     "Polypropylene (PP) pipe, fittings and valves; dead legs to [dead leg rule for the PP loop]",
+     "Dead leg register; pressure test to [PP pressure test method], witnessed",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "[PP material standard]",
+     "Product-contact PP from [PP resin grade]; PVC in pretreatment only",
+     "[PP material certificates] traced by lot",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
+    ],
+    [
+     "[PP joining standard]",
+     "Joints by [PP joining method, for example butt fusion or IR welding], to [PP joint procedure and operator qualification]",
+     "[PP joint records, for example joint map and log]",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
+    ],
+    [
+     "CSA B51",
+     "A Canadian registration number (CRN) from the province of installation for [pressure-rated items in the PW package]",
+     "CRN registration; vessel data reports",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
+    ],
+    [
+     "CSA C22.2 No. 286; UL 508A",
+     "Panels built and marked to [panel certification mark held, or field evaluation used]",
+     "Panel certification label and report",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ]
+   ],
+   "fold": 2,
+   "fold_noun": "standards"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions validation teams ask",
+   "items": [
+    {
+     "q": "Is your system USP certified?",
+     "a": "No water system is. USP and Ph. Eur. set limits for water, not approvals for equipment. We prove function at FAT and performance on your feed water at SAT and OQ."
+    },
+    {
+     "q": "Which edition of each standard do you design to?",
+     "a": "The edition in force when you approve the functional specification. If a text changes mid-project, as Ph. Eur. 0008 did, we assess it under change control."
+    },
+    {
+     "q": "Is your control system 21 CFR Part 11 compliant?",
+     "a": "No system is on its own. We supply the technical controls and a Part 11 and Annex 11 assessment; your procedures complete them."
+    },
+    {
+     "q": "Who registers our pressure equipment, and when?",
+     "a": "Pressure-rated items installed in Canada need a CRN under CSA B51 from the province of installation, scheduled from the start. [Aquemi CRN process and provinces covered]"
+    },
+    {
+     "q": "Does our corporate engineering standard replace yours?",
+     "a": "It adds to this list. We put it in the functional specification and flag any conflicting clause before detailed design, not at IQ."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where the proof lives",
+   "items": [
+    "cmp-documentation",
+    "cmp-quality",
+    "svc-cq",
+    "ind-cdmo"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your URS. We return a compliance matrix.",
+  "body": "A process engineer maps each requirement to a standard, design feature and test.",
+  "button": "Request a compliance matrix",
+  "link": "contact-proposal",
+  "intent": "Compliance matrix for your URS",
+  "include": [
+   "Your URS, even a draft",
+   "Markets and pharmacopoeias you release against",
+   "Corporate or site engineering standards",
+   "Province of installation"
+  ],
+  "returns": [
+   "Compliance matrix for your URS",
+   "Standard, design feature and test per requirement"
+  ],
+  "turnaround": "[compliance matrix response time, working days]"
+ },
+ "todo": [
+  "Certifications actually held: ISO 9001 status, certificate number, scope, registrar and expiry (or target date); downloadable copies",
+  "Pressure equipment: which items in the PW package are pressure-rated and need a CRN (for example RO membrane housings), the vessel code they are built to, and the certificate holder or certified vessel fabricator used ([pressure-rated items in the PW package])",
+  "CRN: provinces where Aquemi has registered designs; who prepares and submits the CRN application and at which design stage (FAQ)",
+  "Control panel certification mark held (CSA C22.2 No. 286 / UL 508A) and file number, or whether field evaluation is used",
+  "PP piping standard Aquemi designs and buys to ([PP piping standard]; map, engineering table); PP pressure test method and test factor ([PP pressure test method])",
+  "PP material standard and resin grade for product-contact parts, and the certificate type supplied ([PP material standard], [PP resin grade], [PP material certificates])",
+  "PP joining: method (for example butt fusion or IR welding), the standard followed, procedure and operator qualification, and the joint records delivered ([PP joining standard], [PP joining method, for example butt fusion or IR welding], [PP joint procedure and operator qualification], [PP joint records, for example joint map and log])",
+  "Dead leg rule applied to the PP loop ([dead leg rule for the PP loop])",
+  "Maximum loop sanitization temperature for PP, °C ([maximum loop sanitization temperature for PP, °C]; USP <1231> row); same placeholder as ind-pharma",
+  "Quality review: which EU GMP Annex 1 clauses apply to a PW system and should be cited ([other Annex 1 clauses that apply to PW])",
+  "Scope for hospital MDRD water (CSA Z314 / ANSI/AAMI ST108) and laboratory water (ASTM D1193): new systems, upgrades, service only or not offered",
+  "Supplier questionnaire and quality agreement: confirm returned with the quote (yes or no), and questionnaire turnaround in working days",
+  "Compliance matrix response time (working days) for the closing CTA",
+  "Confirm Aquemi practice stated on other pages and repeated here: FMEA as usual ICH Q9(R1) method; stricter-of basis; nitrates tested at FAT for Ph. Eur. releases; corporate standard conflicts flagged in the functional specification",
+  "Quality review of each standard row (edition, clause numbers, limits) before publication"
+ ],
+ "figure": {
+  "spots": [
+   "pretreatment",
+   "ro-skid",
+   "storage-tank"
+  ],
+  "label": "Pretreatment · RO and EDI · storage"
+ }
+}
