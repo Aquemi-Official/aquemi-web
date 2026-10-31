@@ -148,10 +148,15 @@ function start(){
  Promise.all([fetch('versions/index.json').then(function(r){return r.json()}),fetch('content/pages.json').then(function(r){return r.json()})]).then(function(d){
   C=d[0].commits;var last=C[C.length-1];
   C.push({c:'now',date:new Date().toISOString(),author:'',subject:'The site as it is now',title:null,design:last.design,pages:last.pages});
-  var pages=d[1].pages||d[1];PAGES=pages.map(function(p){return p.id});
+  var pages=d[1].pages||d[1],L=d[0].labels||{},live={};
+  pages.forEach(function(p){live[p.id]=1;L[p.id]=p.section+' · '+p.nav_label});
   // the live site may be ahead of the last stored commit
   C[C.length-1].pages={};pages.forEach(function(p){C[C.length-1].pages[p.id]=(last.pages||{})[p.id]});
-  $('vpage').innerHTML=pages.map(function(p){return '<option value="'+esc(p.id)+'">'+esc(p.section+' · '+p.nav_label)+'</option>'}).join('');
+  // every page that ever existed: live ones first, then retired ones (they open in the versions that had them)
+  PAGES=pages.map(function(p){return p.id});var gone=Object.keys(L).filter(function(id){return !live[id]});
+  $('vpage').innerHTML=PAGES.map(function(id){return '<option value="'+esc(id)+'">'+esc(L[id])+'</option>'}).join('')+
+   (gone.length?'<optgroup label="Retired pages">'+gone.map(function(id){return '<option value="'+esc(id)+'">'+esc(L[id])+'</option>'}).join('')+'</optgroup>':'');
+  PAGES=PAGES.concat(gone);
   $('vtl').innerHTML=C.map(function(c,i){return c.title?'<button class="vh-v" data-i="'+i+'" title="'+esc(c.note)+'"><small>'+esc(when(c.date))+' · '+esc(c.c)+'</small><b>'+esc(c.title)+'</b></button>':''}).join('')+
    '<button class="vh-v" data-i="'+(C.length-1)+'" title="The site as it is now"><small>live</small><b>Now</b></button>';
   $('vrange').max=C.length-1;

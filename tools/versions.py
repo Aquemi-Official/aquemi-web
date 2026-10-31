@@ -52,12 +52,18 @@ def git(*args, text=True):
     return out.decode('utf-8') if text else out
 
 
+LABELS = {}  # page id -> 'Section · Nav label', newest wins, so retired pages keep a name
+
+
 def page_hashes(commit):
     try:
         d = json.loads(git('show', commit + ':content/pages.json'))
     except (subprocess.CalledProcessError, ValueError):
         return {}
     pages = d.get('pages', d) if isinstance(d, dict) else d
+    for p in pages:
+        if isinstance(p, dict) and 'id' in p:
+            LABELS[p['id']] = '%s · %s' % (p.get('section', ''), p.get('nav_label') or p.get('title') or p['id'])
     return {p['id']: hashlib.sha1(json.dumps(p, sort_keys=True).encode()).hexdigest()[:8]
             for p in pages if isinstance(p, dict) and 'id' in p}
 
@@ -99,7 +105,7 @@ def main():
             item['title'], item['note'] = named[full]
         commits.append(item)
     with open(os.path.join(OUT, 'index.json'), 'w', encoding='utf-8') as f:
-        json.dump({'commits': commits}, f, separators=(',', ':'))
+        json.dump({'commits': commits, 'labels': LABELS}, f, separators=(',', ':'))
     old = os.path.join(OUT, 'versions.json')
     if os.path.exists(old):
         os.remove(old)
