@@ -17,3 +17,7 @@ The site header: logo, six numbered section tabs and one framed call to action, 
 
 - Desktop: 80 px bar with a `line-strong` bottom rule; section tabs in Geist Mono 14/18 caps in `ink`, the index above in 11 px mono, cells ruled with `line-strong` (a closing rule after the last). The framed action reads in 13 px mono caps between brackets, `[ Request a proposal ]` (brackets from CSS with empty alt text; no arrow).
 - Phones: 64 px bar; the open menu is a ruled panel (`line-strong` frame) inset `space-4`, sections in 20/28 mono caps with their numbers in `ink-subtle`, the section jump in 15/24 mono caps, the proposal button in mono caps.
+
+## Motion
+
+Motion: on hover and keyboard focus a 1 px `flow` rule draws under the section label from its left end and the index number lights (CSS, dropped under reduced motion). `NavBar/motion.js`: the phone menu unrolls from the bar and its rows drop in one after another; Close rolls it up before the page re-renders, and focus returns to the toggle. The section numbers decode once on a new page (wide screens). The bar is not sticky, so it never hides on scroll.

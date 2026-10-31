@@ -104,6 +104,10 @@ Origin: `inspiration/gemini/60-concept-project-record.png`. The same case told a
 - Desktop: facts (5 parts) beside the drawing (7 parts); outcomes two per row on a hairline, numbers 48-68 px; timeline horizontal. Phones: drawing plate first, then the facts, outcomes one per row at 40-52 px, then a vertical timeline (stops on a rule at the left, date on the right).
 - Never invent a figure, week or change: until a project is delivered, `v`, `when` and the change status stay `[placeholders]`. Mark only equipment the drawing really shows.
 
+## Motion
+
+`motion.js`, cause before effect. Fact-box case: facts drop in, the outcome box is cut in, the figure counts up and the result sentence lands last. Project record: facts rows enter; after the drawing prints, the change pins pop on one by one, each with its line under "What changed"; measured outcomes rise in turn, each figure counting up (a `[value]` placeholder is written in left to right) and the result sentence lands after them; the order-to-release line runs stop by stop (`--aq-run` on each `li::before`), each stop rings as the line reaches it and the release stop strikes last like a stamp. Phones: the same, the outcomes one by one as they scroll in and the timeline vertical.
+
 ## When not to use it
 
 - Not for testimonials or quotes, and not for projects without a measured result.

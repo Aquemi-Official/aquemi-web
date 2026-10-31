@@ -60,6 +60,14 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
   font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em;
 }
 
+/* Motion hooks: connectors draw through custom properties (motion.js); unset they are 1, fully drawn */
+.aq-standards-grid__item::after { transform: scaleX(var(--aq-cn, 1)); transform-origin: left center; }
+.aq-standards-grid__item::before { transform: scaleY(var(--aq-cn, 1)); transform-origin: center top; }
+@media (prefers-reduced-motion: no-preference) {
+  a.aq-standards-grid__card { transition: border-color 120ms, box-shadow 120ms, transform 120ms; }
+  a.aq-standards-grid__card:active { transform: translateY(1px); }
+}
+
 @container (max-width: 860px) {
   /* Phones: compact hairline rows, two to a row for code-only standards (one when a plain-language name is given);
      no frame, cards, ruler or connectors */

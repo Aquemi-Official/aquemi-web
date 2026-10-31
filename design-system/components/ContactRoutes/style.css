@@ -103,6 +103,19 @@ a.aq-contact-routes__num:hover { text-decoration: underline; }
   border-top: 1px solid var(--ink); border-right: 1px solid var(--ink); transform: rotate(45deg);
 }
 
+/* Motion hooks (motion.js): --aq-riser grows the route line down, --aq-stub runs each sheet's stub in and lands its
+   arrowhead, --aq-line runs the step strip's dashed line. All default to 1: the drawing is complete without motion. */
+.aq-contact-routes::before { transform: scaleY(var(--aq-riser, 1)); transform-origin: center top; }
+.aq-contact-routes__route::before { transform: scaleX(var(--aq-stub, 1)); transform-origin: left center; }
+.aq-contact-routes__route::after { opacity: var(--aq-stub, 1); }
+.aq-contact-routes__steps::before { transform: scaleX(var(--aq-line, 1)); transform-origin: left center; }
+@media (prefers-reduced-motion: no-preference) {
+  .aq-contact-routes__route { transition: border-color 160ms; }
+  .aq-contact-routes__route:not(.is-current):not(.is-urgent):hover { border-color: var(--ink-muted); }
+  .aq-contact-routes__action .aq-btn__arrow { display: inline-block; transition: transform 160ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-contact-routes__action .aq-btn:hover .aq-btn__arrow { transform: translateY(2px); }
+}
+
 @container (max-width: 860px) {
   .aq-contact-routes__plate.aq-plate { padding-inline: var(--space-3); }
   .aq-contact-routes { padding: var(--space-6) 0 0 var(--space-4); gap: var(--space-12); }

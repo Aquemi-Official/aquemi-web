@@ -6,3 +6,7 @@ ParameterCallouts lays a system's design parameters on its own equipment drawing
 - Ground: the navy page (the block is not in `LIGHT`), like the hero drawing. Works on a light sheet too with `ground: "light"`.
 - Phones: the drawing runs full width into the section gutters as a square (about 375 px), with pins at 13 px mono in a 32 px chip; the numbered list below as SpecTable phone rows (parameter, then value · basis), each row led by the same `flow`-outlined chip as its pin so the two visibly connect.
 - Choose points on the part the row is about (vessels for capacity, the EDI stack for sanitization through EDI, the pump for product-contact finish). If a row names nothing you can point at, leave it without `at`: it lists below. Never add a callout for a part the drawing does not show.
+
+## Motion
+
+Motion (`motion.js`): the drawing prints in bottom to top, the numbered pins strike onto it in order, then each leader draws from its pin out to its callout, the callout's rule runs on, the parameter name follows and the value lands last (wiped left to right). About 3.5 s, once. The phone has no leaders: the pins strike, then the numbered list follows, each value fading in after its name. The spec rows under the figure keep the generic row stagger.

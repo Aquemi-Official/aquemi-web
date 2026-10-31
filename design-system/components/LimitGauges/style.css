@@ -67,6 +67,12 @@
 .aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child::before { display: none; }
 .aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child dt { display: block; }
 .aq-limit-gauges__item.is-readout .aq-limit-gauges__v { font-size: 16px; line-height: 24px; }
+/* Open dial (a value still to come): the bare instrument in quieter ink, needle at rest on zero, no numbers or chip */
+.aq-limit-gauges__dial--open { max-width: 220px; margin-bottom: var(--space-1); }
+.aq-limit-gauges__dial--open .aq-limit-gauges__track { stroke: var(--ink-muted); stroke-dasharray: 4 3; }
+.aq-limit-gauges__dial--open .aq-limit-gauges__ticks line, .aq-limit-gauges__dial--open .aq-limit-gauges__ticks line.is-major { stroke: var(--ink-subtle); }
+.aq-limit-gauges__item.is-open .aq-limit-gauges__foot { margin-block: var(--space-2) 0; }
+.aq-limit-gauges__item.is-open .aq-limit-gauges__spec { height: 100%; align-content: space-between; }
 
 /* ---------- Rule variant (spec as: "rules", blocks/rules.js) ----------
    Design rules on the same cream plate: one row per rule between line-strong rules: big mono number | rule name (mono
@@ -121,6 +127,8 @@
   .aq-limit-gauges__p { padding-right: var(--space-3); font-size: 12px; line-height: 16px; letter-spacing: 0.02em; }
   .aq-limit-gauges__p::after { width: var(--space-4); height: 2px; margin-top: var(--space-1); }
   .aq-limit-gauges__dial { margin: var(--space-6) 0 0; }
+  /* the open dial stays on desktop only: on a phone the cell already holds the value as a long placeholder */
+  .aq-limit-gauges__dial--open { display: none; }
   .aq-limit-gauges__nums text { display: none; }
   .aq-limit-gauges__mark { font-size: 12px; line-height: 18px; padding: 0 var(--space-1); }
   .aq-limit-gauges__mark.is-right { transform: translateY(calc(-1 * var(--space-4))); }

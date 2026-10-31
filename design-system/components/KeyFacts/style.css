@@ -22,7 +22,7 @@
 
 .aq-key-facts > div {
   position: relative; min-width: 0;
-  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "dt dt" "v dial" "src src";
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "dt dt" "v dial" "src src"; grid-template-rows: auto 1fr auto;
   align-items: center; column-gap: var(--space-2); row-gap: var(--space-3);
   padding: var(--space-4);
   border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong);
@@ -88,7 +88,7 @@
   /* Phones: one cell per row; the name full width on top, then the figure on the left, the source and dial on the
      right; no fixings. Every label 12 px. */
   .aq-key-facts { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: minmax(0, 1fr); padding: var(--space-3) var(--space-1); }
-  .aq-key-facts > div { grid-template-columns: minmax(0, 1fr) auto auto; grid-template-areas: "dt dt dt" "v src dial"; row-gap: var(--space-2); padding: var(--space-3); border-bottom: 0; }
+  .aq-key-facts > div { grid-template-columns: minmax(0, 1fr) auto auto; grid-template-areas: "dt dt dt" "v src dial"; grid-template-rows: auto auto; row-gap: var(--space-2); padding: var(--space-3); border-bottom: 0; }
   .aq-key-facts > div + div { border-left: 0; }
   .aq-key-facts > div:last-child { border-bottom: 1px solid var(--line-strong); }
   .aq-key-facts > div::before, .aq-key-facts > div::after, .aq-key-facts::before, .aq-key-facts::after { content: none; }

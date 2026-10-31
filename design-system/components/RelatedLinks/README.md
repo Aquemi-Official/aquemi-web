@@ -8,19 +8,23 @@ RelatedLinks closes a page with the pages to read next as cards hung from a draw
     <span class="aq-related-links__n" aria-hidden="true">01</span>
     <span class="aq-spot aq-related-links__thumb" aria-hidden="true" style="mask-image:url(assets/spots/storage-tank.png)"></span>
     <span class="aq-related-links__group"><span aria-hidden="true">01 / </span>Systems</span>
-    <span class="aq-related-links__title">Storage and distribution loops</span>
+    <span class="aq-related-links__title">Storage and distribution loops<span class="aq-related-links__arrow" aria-hidden="true">→</span></span>
   </a></li>
 </ol>
 ```
 
 - Block `related` (`assets/src/blocks/related.js`): `items` are page ids. Title: the page's `nav_label`; label: its `section`.
 - Thumbnail: the target page's Spot (`REL_SPOT`, system pages), else its equipment drawing (`ART`, class `aq-related-links__art`), else a fitting Icon (`REL_ICON`, class `aq-related-links__icon`), else none. All `aria-hidden`, `ink-muted`, `flow` on hover.
-- **Desktop (concept 17):** four to a row (three for three, five or six pages; two for two). A double `line-strong` hairline (the pipe) runs along the top of each row; every card hangs from it by a drop line ending in a `flow` node, every second card lower, so the row reads as a route. Card: number in Geist Mono 300 44 px `flow`, thumbnail top right (`space-24`; icons `space-16`), the section in 12 px mono caps, the title in `font-display` 600 36/34 caps with a `flow` arrow. The `01 /` prefix on the label shows on phones only.
+- **Desktop (concept 17):** four to a row (three for three, five or six pages; two for two). A double `line-strong` hairline (the pipe) runs along the top of each row; every card hangs from it by a drop line ending in a `flow` node, every second card lower, so the row reads as a route. Card: number in Geist Mono 300 44 px `flow`, thumbnail top right (`space-24`; icons `space-16`), the section in 12 px mono caps, the title in `font-display` 600 36/34 caps with a `flow` arrow (a real `aria-hidden` span, so it can move). The `01 /` prefix on the label shows on phones only.
 - **Phones:** one 2 px `line-strong` spine down the left with a `flow` node and a short connector per card; label, title (26/26) and the thumbnail (`space-12`) at the right.
 
 ## Writing
 
 - Two to four links, in the order a reader would most likely go next. No descriptions: the title and section say enough.
+
+## Motion
+
+`motion.js`: the route is laid, then each stop opens. Desktop: the pipe runs out card by card (`--aq-pipe` on each `li::before`); at each card the drop line falls (`--aq-drop`), the node pops (`--aq-node`) and the number, thumbnail, label and title rise off it. Phones: the spine draws down (`--aq-spine`) and each connector, node and card follow. All variables default to 1, so the page is complete without JS. Hover and focus (CSS): the arrow (`aq-related-links__arrow`, a real span) nudges one step along, the thumbnail lifts and turns flow, the node rings; a press sets the title down 1 px.
 
 ## When not to use it
 

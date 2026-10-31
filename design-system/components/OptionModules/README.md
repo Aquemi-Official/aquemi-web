@@ -39,3 +39,7 @@ On the site, `assets/src/blocks/options.js` writes it for an options block with 
 - More than eight: the columns grow taller than the drawing; use OptionList.
 
 - Block field `spot`: draw a Spot vignette as the base instead of the page drawing. Use it when the hero and ParameterCallouts already show the page drawing, so the same drawing does not appear three times.
+
+## Motion
+
+Motion (`motion.js`): the base skid comes first (its plate unrolls, the drawing prints in, the label follows); then every wire runs out from the skid: the node lights on the plate edge, the dashed line extends, and the module it reaches opens away from the skid, its drawing and line following. Left and right columns alternate down the drawing. On the phone the same runs down the spine. About 3 s, once.

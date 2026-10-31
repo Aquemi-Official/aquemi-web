@@ -7,3 +7,7 @@ StandardsMap is a plant map of the water system: each zone (generation, storage 
 - Without spots, desktop: the first half of the zones above a `flow` pipe header (2 px, arrow at the end), the rest below, each zone a 1 px dashed `line-strong` frame with a `flow` branch and node to the pipe. Codes are mono chips in a 1 px `line-strong` frame with a quiet ↓, `flow` on hover. Phones: zones stacked as compact rows on a vertical pipe at the left, codes wrap as chips.
 - Ground: the navy page (a visual anchor ahead of the evidence sheets it indexes). Use only standards the page already lists, each pointing at a row that exists; three to six zones.
 - When not to use it: a page citing fewer than about eight standards (a StandardsGrid or the rows themselves say it), or standards with no rows to prove them on the same page.
+
+## Motion
+
+`motion.js`: the plant is piped up in flow order. The main header draws left to right (top to bottom on phones); as it passes each zone a node seats, the branch grows out, the zone's dashed area opens from the pipe side, its vignette prints in, the leader runs to the name, the name lands and the code chips follow; the arrow lights last (about 3 s). Pipe, branches, nodes and leaders are pseudo-elements drawn through `--aq-pipe`, `--aq-arrow`, `--aq-branch`, `--aq-node`, `--aq-lead` (scale and opacity only; unset they are 1, so the map is whole without JS). Chips give a 1 px press.

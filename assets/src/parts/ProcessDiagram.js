@@ -56,16 +56,32 @@ function wDiagram(b){var I=(b.stages||[]).map(function(s){return typeof s==='str
 function flSel(w,b,anim){[].forEach.call(w.querySelectorAll('.aq-diagram__st'),function(x){var on=x===b,d=document.getElementById(x.getAttribute('aria-controls'));
   x.setAttribute('aria-pressed',on?'true':'false');if(d)d.hidden=!on});
  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
- if(!anim||reduce||!window.gsap)return;var f=b.querySelector('.aq-diagram__fill'),d=document.getElementById(b.getAttribute('aria-controls')),v=f&&f.offsetHeight>f.offsetWidth;
- if(f)gsap.fromTo(f,v?{scaleY:0}:{scaleX:0},{scaleX:1,scaleY:1,duration:0.55,ease:'power2.out',clearProps:'transform'});
- if(d)gsap.fromTo(d,{autoAlpha:0,y:8},{autoAlpha:1,y:0,duration:0.35,delay:0.15,ease:'power2.out',clearProps:'opacity,visibility,transform'})}
+ if(!anim||reduce||!window.gsap)return;
+ /* One short timeline (< 1 s): the water runs on from the station that was selected to the new one (each run between
+    fills in turn; going back upstream only the new run fills), the new station settles, then its detail rises. */
+ var L=[].slice.call(w.querySelectorAll('.aq-diagram__st')),j=L.indexOf(b),i0=anim.from==null?j:anim.from,a=i0<j?i0+1:j,d=document.getElementById(b.getAttribute('aria-controls')),
+  F=L.slice(a,j+1).map(function(x){return x.querySelector('.aq-diagram__fill')}).filter(Boolean),v=F[0]&&F[0].offsetHeight>F[0].offsetWidth,each=Math.min(0.3,0.6/F.length);
+ var tl=gsap.timeline({defaults:{ease:'none'}});
+ if(w._aqTl)w._aqTl.progress(1);w._aqTl=tl;[].forEach.call(w.querySelectorAll('.is-flowing'),function(x){x.classList.remove('is-flowing')});
+ /* runs the water passes through show it in full Flow (is-flowing) and drain behind it; the new station's run stays */
+ F.forEach(function(f,k){var last=k===F.length-1,st=f.closest('.aq-diagram__st');
+  if(!last)st.classList.add('is-flowing');
+  tl.fromTo(f,v?{scaleY:0,transformOrigin:'center top'}:{scaleX:0,transformOrigin:'left center'},{scaleX:1,scaleY:1,duration:each,clearProps:last?'transform,transformOrigin':''},k*each);
+  if(!last)tl.to(f,v?{scaleY:0,transformOrigin:'center bottom',duration:each*1.5,ease:'power1.in'}:{scaleX:0,transformOrigin:'right center',duration:each*1.5,ease:'power1.in'},(k+1)*each)
+   .add(function(){st.classList.remove('is-flowing');gsap.set(f,{clearProps:'transform,transformOrigin'})})});
+
+ var t=F.length*each,fig=b.querySelector('.aq-diagram__fig'),td=Math.min(Math.max(0,t-0.15),0.3);
+ if(fig)tl.fromTo(fig,{scale:0.94},{scale:1,duration:0.45,ease:'back.out(2)',clearProps:'transform'},Math.max(0,t-0.1));
+ if(d){tl.fromTo(d,{autoAlpha:0,y:10},{autoAlpha:1,y:0,duration:0.35,ease:'power2.out',clearProps:'opacity,visibility,transform'},td);
+  var dn=d.querySelector('.aq-diagram__dn');if(dn)tl.fromTo(dn,{yPercent:35,autoAlpha:0},{yPercent:0,autoAlpha:1,duration:0.4,ease:'power3.out',clearProps:'opacity,visibility,transform'},td+0.1)}}
+function flAt(w){var L=[].slice.call(w.querySelectorAll('.aq-diagram__st'));for(var i=0;i<L.length;i++)if(L[i].getAttribute('aria-pressed')==='true')return i;return null}
 function flInit(){[].forEach.call(document.querySelectorAll('.aq-diagram:not(.is-live)'),function(w){w.classList.add('is-live');
  var b=w.querySelector('.aq-diagram__st[aria-pressed="true"]')||w.querySelector('.aq-diagram__st');if(b)flSel(w,b,false)})}
 if(typeof document!=='undefined'&&document.addEventListener){
  document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-diagram__st');if(!b)return;var w=b.closest('.aq-diagram');
-  if(b.getAttribute('aria-pressed')!=='true')flSel(w,b,true)});
+  if(b.getAttribute('aria-pressed')!=='true')flSel(w,b,{from:flAt(w)})});
  document.addEventListener('keydown',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-diagram__st');if(!b)return;
   var L=[].slice.call(b.closest('.aq-diagram').querySelectorAll('.aq-diagram__st')),i=L.indexOf(b),j={ArrowRight:i+1,ArrowDown:i+1,ArrowLeft:i-1,ArrowUp:i-1,Home:0,End:L.length-1}[ev.key];
-  if(j==null)return;ev.preventDefault();j=Math.max(0,Math.min(L.length-1,j));if(j!==i){L[j].focus();flSel(b.closest('.aq-diagram'),L[j],true)}});
+  if(j==null)return;ev.preventDefault();j=Math.max(0,Math.min(L.length-1,j));if(j!==i){L[j].focus();flSel(b.closest('.aq-diagram'),L[j],{from:flAt(b.closest('.aq-diagram'))})}});
  if(typeof MutationObserver!=='undefined'){var flQ=0;new MutationObserver(function(){if(flQ)return;flQ=1;setTimeout(function(){flQ=0;flInit()},0)}).observe(document.documentElement,{childList:true,subtree:true})}
  if(document.readyState!=='loading')setTimeout(flInit,0);else document.addEventListener('DOMContentLoaded',flInit)}

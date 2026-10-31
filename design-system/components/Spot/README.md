@@ -14,3 +14,7 @@ Spot is a larger line drawing of one piece of water-system equipment or one stag
 - Not in list rows or at 32 px: use Icon.
 - Not as a picture of a whole system or page: use Illustration (the large isometric drawings in `assets/illustrations/`).
 - Not decoration for its own sake: one Spot per stop or zone, and every stop or zone of a set gets one or none.
+
+## Motion
+
+Motion: a standalone Spot wipes in bottom to top like a print (the motion core, `assets/src/motion/core.js`). Inside a ProcessDiagram station, an OptionModules box or the base skid, the owning component times that wipe itself (a station's vignette prints as the water reaches it).

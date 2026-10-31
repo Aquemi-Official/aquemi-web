@@ -47,3 +47,7 @@ Band sets one short statement very large in a framed panel on a limestone or sun
 - Not for long text, lists or tags; use a normal section.
 
 Origin: concept P in `design-system/inspiration/`, generated in Gemini and rebuilt with Aquemi tokens (Geist Light in sentence case in place of the concept's condensed capitals; the concept's section numbers, "SYS_REF" tags and percentage values dropped as invented data).
+
+## Motion
+
+Motion: no own choreography. The navy, sunken and limestone grounds are static; the statement band's pipework motif draws on through the generic motion layer, and the Closing on the navy band has its own (`Closing/motion.js`).

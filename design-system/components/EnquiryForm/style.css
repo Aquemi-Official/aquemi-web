@@ -92,6 +92,12 @@
 .aq-form__progress li { counter-increment: aq-form-step; font: 500 14px/20px var(--font-sans); color: var(--ink-subtle); }
 .aq-form__progress li::before { content: counter(aq-form-step) ".0 "; font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle); }
 .aq-form__progress li[aria-current="step"], .aq-form__progress li[aria-current="step"]::before { color: var(--flow); }
+/* The current step is underlined in flow; steps already passed read in ink. With motion the underline is one marker
+   (aq-form__mark, made by motion.js) that slides to the new step with Flip. */
+.aq-form__progress li { position: relative; padding-bottom: var(--space-2); }
+.aq-form__progress li[aria-current="step"]::after, .aq-form__mark { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--flow); pointer-events: none; }
+.aq-form__progress.has-mark li::after { display: none; }
+.aq-form__progress li:has(~ li[aria-current="step"]), .aq-form__progress li:has(~ li[aria-current="step"])::before { color: var(--ink-muted); }
 .aq-form__step[hidden] { display: none; }
 .aq-form__step > .aq-form__actions { margin-top: var(--space-8); }
 .aq-form__note { margin: var(--space-4) 0 0; }

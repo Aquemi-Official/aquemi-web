@@ -5,6 +5,8 @@
    aria-hidden; the text says it all. */
 .aq-explainer { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; }
 .aq-explainer__plate { min-width: 0; }
+/* Desktop: the figure stays in view (below the sticky section nav) while the reader works down the points */
+.aq-explainer > .aq-explainer__plate { position: sticky; top: calc(var(--space-16) + var(--space-4)); }
 .aq-explainer__fig { position: relative; margin: 0; }
 .aq-explainer__points { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
 .aq-explainer__points > li { display: flex; flex-direction: column; gap: var(--space-2); padding-block: var(--space-6); border-top: 1px solid var(--line); }
@@ -64,6 +66,7 @@
 .aq-levels__note { font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
 
 @container (max-width: 860px) {
+  .aq-explainer > .aq-explainer__plate { position: relative; top: auto; }
   .aq-explainer, .aq-explainer:has(.aq-explainer__fig--art), .aq-explainer--bare .aq-explainer__points { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .aq-explainer__points > li { padding-block: var(--space-4); }
   .aq-explainer__points > li:first-child { padding-top: var(--space-4); border-top: 1px solid var(--line); }

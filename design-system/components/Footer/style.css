@@ -56,7 +56,7 @@
 .aq-footer__col + .aq-footer__col { border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
 .aq-footer__colhead {
   display: flex; gap: var(--space-2); align-items: flex-start; list-style: none; pointer-events: none; cursor: default;
-  min-height: var(--space-12); box-sizing: border-box;
+  min-height: calc(var(--space-12) + var(--space-1)); box-sizing: border-box;
   margin: 0 0 var(--space-3); padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--flow);
   font: 500 16px/20px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--on-navy);

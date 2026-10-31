@@ -161,7 +161,7 @@
 .aq-case__timeline { display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-6); border-top: 1px solid var(--line-strong); }
 .aq-case__timeline ol { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); }
 .aq-case__timeline li { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-1); padding-top: calc(var(--space-8) + var(--space-2)); text-align: center; min-width: 0; }
-.aq-case__timeline li::before { content: ""; position: absolute; top: calc(var(--space-4) - 1px); left: 0; right: 0; border-top: 2px solid var(--ink); }
+.aq-case__timeline li::before { content: ""; position: absolute; top: calc(var(--space-4) - 1px); left: 0; right: 0; border-top: 2px solid var(--ink); transform: scaleX(var(--aq-run, 1)); transform-origin: left; }
 .aq-case__timeline li:first-child::before { left: 50%; }
 .aq-case__timeline li:last-child::before { right: 50%; }
 .aq-case__stop { position: absolute; top: 0; left: 50%; transform: translateX(-50%); box-sizing: border-box; width: var(--space-8); height: var(--space-8); border-radius: var(--radius-pill); background: var(--surface); border: 2px solid var(--flow); box-shadow: inset 0 0 0 var(--space-2) var(--surface), inset 0 0 0 var(--space-4) var(--flow); }
@@ -186,7 +186,7 @@
   .aq-case__how { font-size: 13px; line-height: 20px; }
   .aq-case__timeline ol { grid-template-columns: minmax(0, 1fr); }
   .aq-case__timeline li { flex-direction: row; flex-wrap: wrap; align-items: baseline; justify-content: space-between; column-gap: var(--space-3); min-height: var(--space-8); padding: var(--space-2) 0 var(--space-4) var(--space-12); text-align: left; }
-  .aq-case__timeline li::before { top: var(--space-4); bottom: 0; left: calc(var(--space-4) - 1px); right: auto; border-top: 0; border-left: 2px solid var(--ink); }
+  .aq-case__timeline li::before { top: var(--space-4); bottom: 0; left: calc(var(--space-4) - 1px); right: auto; border-top: 0; border-left: 2px solid var(--ink); transform: scaleY(var(--aq-run, 1)); transform-origin: top; }
   .aq-case__timeline li:first-child::before { left: calc(var(--space-4) - 1px); }
   .aq-case__timeline li:last-child::before { display: none; }
   .aq-case__timeline li:last-child { padding-bottom: 0; }

@@ -13,6 +13,11 @@
   overflow-x: auto; scrollbar-width: none; white-space: nowrap;
 }
 .aq-section-nav__links::-webkit-scrollbar { display: none; }
+/* Motion marker (added by SectionNav/motion.js, has-mark on the nav): a flow bar along the bar's bottom edge that
+   slides to the link being read. It is 100 px wide and scaled to the link's width, so it moves on transforms only. */
+.aq-section-nav__links { position: relative; }
+.aq-section-nav__links > .aq-section-nav__mark { position: absolute; left: 0; bottom: 0; width: 100px; height: 2px; background: var(--flow); pointer-events: none; }
+.aq-section-nav.has-mark .aq-section-nav__links a[aria-current="true"] { border-color: var(--line); }
 .aq-section-nav__links li { flex: none; }
 .aq-section-nav__links a {
   display: inline-flex; align-items: baseline; gap: var(--space-2);
@@ -55,6 +60,8 @@
   .aq-section-nav__links { padding: 0 var(--space-2); gap: 0; }
   .aq-section-nav__links a { align-items: center; min-height: 44px; padding: 0 var(--space-3); border: 0; font-size: 12px; line-height: 16px; }
   .aq-section-nav__links a[aria-current="true"] { background: none; box-shadow: inset 0 -2px 0 var(--ink); }
+  .aq-section-nav.has-mark .aq-section-nav__links a[aria-current="true"] { box-shadow: none; }
+  .aq-section-nav__links > .aq-section-nav__mark { bottom: 1px; }
   .aq-section-nav__progress { position: absolute; left: 0; right: 0; bottom: -1px; padding: 0; border: 0; pointer-events: none; }
   .aq-section-nav__readout { width: 100%; }
   .aq-section-nav__meter { display: flex; flex: 1; gap: 0; padding: 0; border: 0; }

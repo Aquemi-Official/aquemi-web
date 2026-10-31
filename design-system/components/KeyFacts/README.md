@@ -8,3 +8,7 @@ KeyFacts is a measurement strip of three to six figures, each with its unit and 
 - Index, dial, rulers and fixings plot nothing.
 - On the site it sits at the bottom of the Hero (`facts` in `content/pages/`). Take every figure from the page's own spec table or copy; unconfirmed figures stay in `[square brackets]`. Write values exactly as the standard does, with the comparison sign.
 - Not for one figure with an explanation: use Readout. Not for full specifications: use SpecTable.
+
+## Motion
+
+Motion (`KeyFacts/motion.js`): the plate unrolls left to right, then cell by cell the name settles, a plain figure ("100", "0.25") counts up while the dial's needle sweeps to its reading, the unit and the source standard follow. Standard numbers ("EN 10204 3.1", "Annex 15") and placeholders never count; they fade in. In the hero it waits about 1 s for the headline. Skipped under reduced motion.

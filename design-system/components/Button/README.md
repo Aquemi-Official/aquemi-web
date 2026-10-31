@@ -13,3 +13,7 @@ Use classes on a `<button>` or `<a>`; the consumer provides the label and, for l
 - A button that routes to an enquiry form may carry `data-intent="<option label>"` to pre-select that request type on arrival (see EnquiryForm, "Pre-set from the linking page").
 - Disabled buttons use the `disabled` attribute; say why nearby.
 - Height is 44 px, which meets the touch-target size without extra padding.
+
+## Motion
+
+Motion: the arrow slides 4 px on hover and keyboard focus; on press the button sinks 1 px (`translateY(1px) scale(0.985)`) and the arrow pulls back, like a key going down. CSS transitions only, all dropped under reduced motion.

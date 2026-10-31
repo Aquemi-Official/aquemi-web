@@ -150,8 +150,10 @@
   .aq-closing__include li { padding-block: var(--space-1); font-size: 14px; line-height: 20px; }
   .aq-closing__include .aq-index { line-height: 20px; }
   .aq-closing__foot { gap: var(--space-3); }
-  .aq-closing__action { margin-left: 0; width: 100%; }
-  .aq-closing__action .aq-btn { width: 100%; justify-content: space-between; white-space: normal; min-height: var(--space-12); padding: var(--space-2) var(--space-4); font-size: 20px; line-height: 24px; }
+  .aq-closing__action, .aq-closing__frame:has(.aq-closing__include) .aq-closing__action { margin-left: 0; width: 100%; }
+  .aq-closing__foot, .aq-closing__frame:has(.aq-closing__include) .aq-closing__foot, .aq-closing__frame:has(.aq-closing__include):not(:has(.aq-closing__body > .aq-lead)) .aq-closing__foot { align-self: stretch; align-items: stretch; }
+  .aq-closing__body > .aq-closing__include li { padding-block: var(--space-1); font-size: 14px; line-height: 20px; }
+  .aq-closing__action .aq-btn, .aq-closing__frame:has(.aq-closing__include) .aq-closing__action .aq-btn { width: 100%; justify-content: space-between; white-space: normal; min-height: var(--space-12); padding: var(--space-2) var(--space-4); font-size: 20px; line-height: 24px; }
   /* The exchange plate dissolves into the navy: the send list and the turnaround line, in on-navy colours */
   .aq-closing__frame:has(.aq-closing__include) .aq-closing__plate { margin-top: 0; }
   .aq-closing__plate.aq-plate { padding: 0; border: 0; background: none; }

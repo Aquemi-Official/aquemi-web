@@ -49,3 +49,7 @@ Block type `tags` (`assets/src/blocks/tags.js`). `items` is a list of strings (t
 - Not for clauses or test limits; use SpecTable.
 
 Origin: concept M in `design-system/inspiration/`, generated in Gemini and rebuilt with Aquemi tokens.
+
+## Motion
+
+`motion.js`: cards land in reading order and the connector into each (across the row, or down from the row above) draws as it lands (`--aq-cn`, scale only), the code decoding once. Cards that link give a 1 px press.

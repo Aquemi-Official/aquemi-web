@@ -59,3 +59,7 @@ The website builds it from a `diagram` block (`AQ.wDiagram`, which calls `wFlow`
 - One linear treatment train of four to seven stages on a system page. More than seven: split the train and link the pages.
 - Not for branched flows, recirculation drawings or real P&IDs; the pipe runs one way. Not for project timelines or service steps (ProcessSteps).
 - The system families from feed to point of use use the same drawing through WaterPath.
+
+## Motion
+
+Motion (`motion.js`, GSAP): water travels the pipe once on scroll-in. Each run fills as the water reaches it and drains behind it (only the pressed station's run stays full); each station lights as the water arrives (its vignette prints in bottom to top, the box settles, number and name come up from dim); then the selected stage's detail panel rises with its big number. One timeline, about 4 s on seven stations; the phone runs the same down the vertical pipe. Choosing a station (`flSel` in `parts/ProcessDiagram.js`) plays a short timeline (< 1 s): the water runs on from the previous station through each run in between (shown in full Flow by `is-flowing`, then draining), the new station settles and its detail rises. Hover lifts a station's box a hair, press sets it down. Nothing runs under reduced motion; without script every detail shows.

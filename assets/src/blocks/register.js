@@ -36,7 +36,10 @@ BLOCKS['register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)r
   +'<div class="aq-notes-register__reg">'+wFold(b,I.length,table,b.fold_noun||'notes')+'</div></div>',{light:true,cls:'aq-notes-register__plate',block:['Aquemi','Notes register']}));};
 document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.target.closest('.aq-notes-register__chip');if(!c)return;
  var r=c.closest('.aq-notes-register'),t=c.getAttribute('data-topic'),n=0,fd=r.querySelector('.aq-fold');
+ /* With GSAP Flip (and motion allowed) the rows that stay glide to their new places and the ones that join fade in */
+ var R=r.querySelectorAll('tbody tr'),fl=window.Flip&&window.gsap&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches),S=fl&&Flip.getState(R);
  r.querySelectorAll('.aq-notes-register__chip').forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
  r.querySelectorAll('tbody tr').forEach(function(tr){var on=!t||tr.getAttribute('data-topic')===t;tr.hidden=!on;if(on)n++});
  if(fd)fd.classList.toggle('is-filtered',!!t);
- r.querySelector('.aq-notes-register__count').textContent=n+(n===1?' note':' notes')+(t?' in '+t:'')});
+ r.querySelector('.aq-notes-register__count').textContent=n+(n===1?' note':' notes')+(t?' in '+t:'');
+ if(S)Flip.from(S,{targets:R,duration:0.45,ease:'power2.inOut',onEnter:function(x){return gsap.fromTo(x,{autoAlpha:0,x:-12},{autoAlpha:1,x:0,duration:0.4,stagger:0.03,clearProps:'transform,opacity,visibility'})}})});

@@ -78,6 +78,16 @@ function wDial(g,second,read){var up=g.c==='≥'||g.c==='>',S=gaugeScale(g.n,up)
    +gaugeLn(L,96,82,'aq-limit-gauges__limit')+'<path class="aq-limit-gauges__ptr" d="'+ptr+'"/></svg>'
    +'<span class="aq-limit-gauges__mark'+(right?' is-right':'')+'" style="'+pos+'"><span class="aq-limit-gauges__mark-k">Limit </span>'+e((g.c?g.c+' ':'')+g.t)+'</span>'
    +(second?'<span class="aq-limit-gauges__mark aq-limit-gauges__mark--second" style="left:'+(p2[0]/2.4).toFixed(1)+'%;top:'+((p2[1]-10)/144*100).toFixed(1)+'%">'+e(second.t)+'</span>':'')+(read||'')+'</div>'}
+/* Open dial: a value still to come ("[outlet conductivity guarantee, µS/cm @ 25 °C]", nothing but placeholders) gets
+   the bare instrument (arc, ticks, inner arc, crosshairs, the needle at rest on zero) and no scale numbers, pointer,
+   pass band or chip: the instrument is fitted, its value is not yet set. Any other row without a number ("Not
+   detectable", "Below saturation") stays a plain readout cell, since a dial would suggest a scale it does not have. */
+function gaugeOpen(v){var s=String(v||'');return /^\s*\[/.test(s)&&!/\d/.test(s.replace(/\[[^\]]*\]/g,''))}
+function wDialOpen(){var i,ticks='';for(i=0;i<=20;i++)ticks+=gaugeLn(i/20,96,i%5===0?85:90,i%5===0?'is-major':'');
+  return '<div class="aq-limit-gauges__dial aq-limit-gauges__dial--open" aria-hidden="true"><svg viewBox="0 10 240 144" focusable="false">'
+   +'<path class="aq-limit-gauges__inner" d="'+gaugeArc(0,1,68)+'"/><path class="aq-limit-gauges__track" d="'+gaugeArc(0,1,96)+'"/><g class="aq-limit-gauges__ticks">'+ticks+'</g>'
+   +'<g class="aq-limit-gauges__cross"><line x1="106" y1="128" x2="134" y2="128"/><line x1="120" y1="104" x2="120" y2="154"/></g>'
+   +gaugeLn(0,0,92,'aq-limit-gauges__needle')+'<circle class="aq-limit-gauges__pivot" cx="120" cy="128" r="3"/></svg></div>'}
 function wGauges(b,rows){
   var P=rows.map(function(r){return gaugeParse(r.v)}),outlet=/outlet|guarantee/i,sec2={};
   rows.forEach(function(r,i){var o=P[i];if(!o||!outlet.test(r.p))return;
@@ -89,8 +99,9 @@ function wGauges(b,rows){
     /* With a dial the chip and readout show the limit, so the full value is kept for screen readers only */
     var spec='<dl class="aq-limit-gauges__spec"><div'+(g?' class="aq-limit-gauges__sr"':'')+'><dt>'+(g?'Limit':'Value')+'</dt><dd class="aq-limit-gauges__v">'+tx(r.v)+'</dd></div>'
       +(r.m?'<div><dt>Basis</dt><dd class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</dd></div>':'')+'</dl>';
-    return fli('<li class="aq-limit-gauges__item'+(g?'':' is-readout')+(r.hl?' is-key':'')+'">',b,i)
-     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read):'')
+    var open=!g&&gaugeOpen(r.v);
+    return fli('<li class="aq-limit-gauges__item'+(g?'':' is-readout')+(open?' is-open':'')+(r.hl?' is-key':'')+'">',b,i)
+     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read):open?wDialOpen():'')
      +'<div class="aq-limit-gauges__foot">'+spec+'</div></li>'}).join('');
   return wPlate(wFold(b,rows.length,'<ul class="aq-limit-gauges" role="list">'+list+'</ul>',b.fold_noun||'limits'),{light:true,block:['Aquemi',b.caption||'Limits']})}
 

@@ -12,3 +12,7 @@ Footer closes every page on navy as an engineering drawing sheet: zone frame, lo
 ## Concept 36
 
 - Logo 220 px (180 px on phones), description 22/30. Column heads in 16/20 mono caps `on-navy` over a `flow` rule, their numbers in `flow`; links in 14/20 Geist Mono `on-navy`. Open arrowheads mark the middle of the sheet's left and right edges (centring marks, CSS only). On phones the column numbers are `flow` chips.
+
+## Motion
+
+Motion (`Footer/motion.js`, once on scroll-in): the drawing sheet unrolls, the zone references appear round the edge, each column heading draws its rule left to right and its links follow, then the title block fills cell by cell. Skipped under reduced motion.

@@ -7,3 +7,7 @@ FaultList lists where things fail and what we design against; each failure opens
 - Ground: a light sheet (reading). Name failures as the test that fails or the symptom ("Dryness value below 0.95"), never as a sentence.
 - Not for questions (FAQ) or for options to choose (OptionList).
 - Supports `fold: N` (first N failures show, the rest behind "Show all N risks").
+
+## Motion
+
+`motion.js`: the failures rise in order, then the open one unfolds, its cause column first and the design answer after it. Opening another failure unfolds it the same way (visitor-driven, so it may repeat). Nothing under reduced motion.

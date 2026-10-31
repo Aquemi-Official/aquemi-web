@@ -86,6 +86,22 @@
 .aq-standards-map--spots .aq-standards-map__t { font: 500 14px/20px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
 @media (prefers-reduced-motion: no-preference) { .aq-standards-map__spot { transition: background-color 120ms; } }
 
+/* Motion hooks: the pipe, branches, nodes and leaders are pseudo-elements, so motion.js draws them through custom
+   properties on their element (transform and opacity only). Unset (no JS, reduced motion) they are 1: fully drawn. */
+.aq-standards-map__zones::before { transform: scaleX(var(--aq-pipe, 1)); transform-origin: left center; }
+.aq-standards-map__zones::after { opacity: var(--aq-arrow, 1); }
+.aq-standards-map__zone::after { transform: scaleY(var(--aq-branch, 1)); }
+.aq-standards-map__zone.is-up::after { transform-origin: center bottom; }
+.aq-standards-map__zone.is-down::after { transform-origin: center top; }
+.aq-standards-map__zone::before { transform: scale(var(--aq-node, 1)); }
+.aq-standards-map--spots .aq-standards-map__head::before { transform: scaleX(var(--aq-lead, 1)); transform-origin: left center; }
+.aq-standards-map--spots .aq-standards-map__head::after { transform: scale(var(--aq-lead, 1)); }
+/* Press feedback on the chips the visitor drives */
+@media (prefers-reduced-motion: no-preference) {
+  .aq-standards-map__code { transition: border-color 120ms, color 120ms, transform 120ms; }
+  .aq-standards-map__code:active { transform: translateY(1px); }
+}
+
 @container (max-width: 860px) {
   .aq-standards-map__zones { display: flex; flex-direction: column; gap: var(--space-3); padding-left: var(--space-6); }
   .aq-standards-map__zones::before { position: absolute; align-self: auto; left: var(--space-1); top: var(--space-4); bottom: var(--space-4); height: auto; border-top: 0; border-left: 2px solid var(--flow); }
@@ -116,4 +132,7 @@
   .aq-standards-map--spots .aq-standards-map__t { font-size: 13px; line-height: 20px; }
   .aq-standards-map--spots .aq-standards-map__codes { display: block; }
   .aq-standards-map--spots .aq-standards-map__codes li { display: inline-block; margin: 0 var(--space-1) var(--space-3) 0; }
+  /* motion hooks on phones: the main runs top to bottom, branches reach right to each zone */
+  .aq-standards-map__zones::before { transform: scaleY(var(--aq-pipe, 1)); transform-origin: center top; }
+  .aq-standards-map__zone.is-up::after, .aq-standards-map__zone.is-down::after { transform: scaleX(var(--aq-branch, 1)); transform-origin: left center; }
 }

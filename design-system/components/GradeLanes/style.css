@@ -46,11 +46,17 @@
   background: var(--surface); white-space: nowrap; font: 500 11px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--flow);
 }
 
+/* Motion hooks (motion.js): the pipe fills down each row (--aq-fill) and the branch fills across to its tap
+   (--aq-branch). Both default to 1, so the drawing is complete with no script and under reduced motion. */
+.aq-grades__lane::before { transform: scaleY(var(--aq-fill, 1)); transform-origin: top; }
+.aq-grades__lanes[class*="is-hit-"]::before, .aq-grades__lanes.is-same::before { transform: scaleX(var(--aq-branch, 1)); transform-origin: left; }
+.aq-grades__lanes[class*="is-hit-"]::after { transform: scale(var(--aq-branch, 1)); }
+
 @container (max-width: 860px) {
   .aq-grades__lanes { grid-template-columns: repeat(3, var(--space-8)); justify-content: start; }
   .aq-grades__head, .aq-grades__row { grid-template-columns: var(--space-6) minmax(0, 1fr) calc(var(--space-8) * 3); column-gap: var(--space-3); }
   .aq-grades__head .aq-grades__lanes > span { min-width: 0; padding: var(--space-1) 0; writing-mode: vertical-rl; transform: rotate(180deg); font-size: 12px; line-height: 16px; letter-spacing: 0.04em; }
-  .aq-grades__head > span:first-child { visibility: hidden; }
+  .aq-grades__head > span:first-child { font-size: 12px; line-height: 16px; letter-spacing: 0.04em; }
   .aq-grades__row > .aq-index { font-size: 13px; }
   .aq-grades__t { font-size: 15px; line-height: 21px; }
   .aq-grades__d { font-size: 13px; line-height: 19px; }

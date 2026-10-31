@@ -31,7 +31,7 @@
   font: 600 12px/16px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--flow);
 }
 .aq-steps__stamp-k { flex: none; padding: 0 var(--space-1); background: var(--flow); color: var(--surface); font-size: 14px; line-height: 20px; }
-.aq-steps__who { min-width: 0; }
+.aq-steps__who { min-width: 0; text-wrap: balance; }
 .aq-steps__sign { align-self: stretch; display: flex; align-items: baseline; gap: var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
 .aq-steps__sign::after { content: ""; flex: 1; border-bottom: 1px solid var(--line-strong); }
 
@@ -79,6 +79,10 @@
 .aq-steps--stages .aq-steps__st.is-hold .aq-steps__frame { border: 2px solid var(--flow); }
 .aq-steps--stages .aq-steps__st.is-hold .aq-steps__frame::before { border-color: var(--flow); }
 .aq-steps--stages .aq-steps__hold { margin-top: var(--space-4); }
+
+/* Motion (motion.js): the drop of water that runs each pipe as it is laid; made and removed by the motion layer */
+.aq-steps--hold, .aq-steps--stages { position: relative; }
+.aq-steps__drop { position: absolute; left: 0; top: 0; z-index: 2; width: var(--space-2); height: var(--space-2); margin: calc(var(--space-2) / -2) 0 0 calc(var(--space-2) / -2); border-radius: var(--radius-pill); background: var(--flow); box-shadow: 0 0 0 3px var(--flow-tint); pointer-events: none; }
 
 @container (max-width: 860px) {
   /* Phone: one vertical pipe down the number column, stations along it; hold stations framed and stamped */

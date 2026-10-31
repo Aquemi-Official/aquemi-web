@@ -9,3 +9,7 @@ PlanTiers compares service plans in one table on a cream drawing plate: numbered
 - Phones (`@container (max-width: 860px)`): no four stacked tiers. A segmented switcher of real buttons (`aria-pressed`, arrow keys move between them) sets `data-show`; each row shows its numbered label beside the chosen plan's value at a readable size, then "Fits when" and that plan's button. Every plan stays in the DOM: CSS only hides the other columns. Without `data-show` (no script) the switcher hides and every value shows under its row, captioned with its plan.
 - Supports `fold: N` and `fold_noun` (first N term rows; "Show all 7 terms"). Put response times and scope first.
 - Ground: the navy page, with the table on a cream plate. Keep plans to 2–4 (switcher styles cover up to 6) and cells to one fact. Two routes rather than tiers: Versus. A comparison of things that are not plans you buy: CompareTable.
+
+## Motion
+
+`motion.js`: the plan names drop onto their rule one tier after another, each feature row fills across the tiers (label first, plan by plan), the "Fits when" row follows, then the actions rise and the recommended plan's tab strikes last. Phones: the tier switcher, then the shown plan's rows; pressing a tier slides its values in. Nothing under reduced motion.

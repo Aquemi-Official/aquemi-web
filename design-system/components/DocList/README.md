@@ -50,6 +50,10 @@ The renderer derives each code from the document name with a lookup of common va
 - Folder: `surface-raised`, 1 px `line-strong`, `radius-sm`, two offset sheets. Tab: `radius-md` top corners, code in Mono 500 12/16 uppercase `ink`. Footer: 1 px `line` rule, Mono 500 11/16 uppercase `ink-subtle`. Icon `ink-muted` (`flow` on key folders). Spacing `space-*` only.
 - Key: tab filled `flow` with `surface` text, folder on `flow-tint` with a `flow` edge, number in `flow`, footer rule in `flow`. `flow` is the section's only colour.
 
+## Motion
+
+`motion.js`: the binder is filled. The plate unrolls, the folders slide down into it one by one in index order (a slight tilt that settles, ease `aq-settle`), each tab rises out of its folder's top edge just after it lands, and the title block is stamped last. One timeline on desktop (about 1.8 s for 12 folders); on phones the folders in view land first and the rest as they scroll in, and the folders "Show all" reveals slide in the same way. A folder whose name is a link lifts one step on hover. Nothing runs under reduced motion.
+
 ## When not to use it
 
 - Not for test results or specifications with values: use SpecTable.

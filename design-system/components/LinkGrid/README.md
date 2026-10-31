@@ -22,3 +22,7 @@ LinkGrid sets out a list of choices (services, industries, systems, upgrade type
 
 - One sentence per item, 25 words or fewer, with a number or a standard where possible. Titles in sentence case.
 - For a genuine sequence use ProcessSteps; for the physical path of water use WaterPath; for "where next" at the end of a page use RelatedLinks.
+
+## Motion
+
+Motion (`motion.js`): the route is walked. The spine draws down (`--aq-spine`); as it reaches each row the row's node snaps on (`--aq-node`), the number decodes, the icon frame or drawing wipes in and the title and line rise; the arrowhead lands as the spine ends (`--aq-head`). Under 3 s. Hover swells the node and steps the arrow forward. Icon rows on desktop frame the icon in a 48 px square (the stage strip's frame), ink, with `space-6` row padding.

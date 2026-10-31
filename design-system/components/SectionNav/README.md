@@ -13,3 +13,7 @@ SectionNav is a sticky bar of numbered jump links to the sections of a long tech
 
 - Links are 13/20 Geist Mono caps; the bar has a `line-strong` bottom rule on desktop.
 - Phones: a slim 44 px strip (every link a 44 px touch target). No label or percentage; the progress segments become a 2 px `flow` line along the bar's bottom edge, the current link gets a 2 px `ink` underline. While the reader scrolls down, the stuck bar tucks up out of view (`is-tucked`, a `transform` set by the scroll listener in `SectionNav.js`; no transition under reduced motion) and it returns on any scroll up, so it never sits on content. Jump targets get `scroll-margin-top: var(--space-12)`. The strip scrolls sideways inside itself and never widens the page.
+
+## Motion
+
+Motion (`SectionNav/motion.js`): a 2 px `flow` marker along the bar's bottom edge slides to the link being read (it follows the `aria-current` the scroll-spy sets, through a MutationObserver; transforms only, eased with `aq-settle`), and the links settle in once. With the marker on (`has-mark`), the current link keeps its sunken box with a `line` border instead of the `flow` one. Without JS or under reduced motion the static boxed link remains.

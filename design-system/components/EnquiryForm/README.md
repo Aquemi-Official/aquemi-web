@@ -64,3 +64,7 @@ Origin: concept L in design-system/inspiration/ (`concept-l-form.png`), rebuilt 
 ## When not to use
 
 Not for a one-field signup in a footer or a search box; those don't need a data sheet frame.
+
+## Motion
+
+Motion (`motion.js`): the sheet is drawn up on scroll-in (title rule rules across, progress steps and legends wipe in with numbers decoding, fields rise in reading order, revision strip last). In the stepped form the current step is underlined in `flow` (passed steps read in ink); with motion the underline is one marker that slides to the new step with Flip, and the new step slides in from the side it was asked for. Validation (`parts/EnquiryForm.js`, works without motion): a field is checked when the visitor leaves it after typing and live while it shows an error; Continue and Send check every visible field, do not advance, move focus to the first problem and show an `aq-field__error` line under each (joined by `aria-describedby`, inputs `aria-invalid`); Send also says how many need attention. A blocked Continue or Send fires `aq:invalid` and the motion layer gives those fields one short shake.

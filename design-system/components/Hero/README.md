@@ -42,7 +42,7 @@ For pages with no equipment drawing, a bold decorative figure in place of the in
 - Markup: `<figure class="aq-hero__drawn aq-hero__drawn--spots|binder|stamp|route" aria-hidden="true">` (decorative: the headline and lead carry the meaning). Line work is an SVG with viewBox 120 x 100 over the 6:5 frame (non-scaling strokes); stops, vignettes and folders are positioned in percent. `figure` wins over `index` and `hero_index`; ignored on `home` and on pages with a drawing in `ART`. Built by `wHeroDrawn(p.figure)` in `Hero.js`.
 - Desktop: text and figure 6 parts each, headline 72/70 with its scale rule (as the equipment figure). The frame is the equipment figure's: fading `line` grid, dashed `line-strong` border, `ink-subtle` registration crosses in all four corners. Sizes inside scale with the frame (container units).
 - Phone: under the actions, `min(100%, 312px)` wide at 6:5, so at most 260 px tall; smaller tabs and captions, the binder shows four rows and no icon.
-- Motion (`assets/motion.js`): the pipe and route draw on, spots wipe in, folders, the record and the stops rise in, the stamp strikes once. All of it is skipped under reduced motion.
+- Motion: see the Motion section below.
 
 ## Photograph (detail pages without a drawing)
 
@@ -85,3 +85,7 @@ The hero must fit about 1.5 phone screens including its facts, and the primary b
 
 - Padding `space-12` top and bottom. Headline: `display` 34/38, `display-xl` 40/44; lead 17/26.
 - Order: eyebrow, headline, lead, actions, then the figure. The equipment figure is full width with its callouts above and below the drawing (see above); the KeyFacts strip lists one fact per row. The photograph placeholder is 2:1.
+
+## Motion
+
+Motion (`Hero/motion.js`, one timeline; skipped under reduced motion and without JS). The headline lines rise out of a mask while the eyebrow decodes, then the lead and actions. The drawing then builds itself: the equipment drawing wipes up like a print and each leader grows out of its anchor on the drawing to its callout, whose reading appears as the line arrives; the home loop's guides fade in, the pipe draws round the figure of eight, parts and labels land, and four flow dots travel the loop once and fade (done in under 5 s); an index's spine runs down and its entries slide on; spots wipe in as the pipe reaches them; folders slide into the binder back to front; the record's boxes tick and the stamp strikes with a small jolt. On phones the drawing plays when it scrolls in. A re-render that only opens or closes the phone menu keeps the hero still.

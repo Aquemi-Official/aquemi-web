@@ -8,3 +8,7 @@ Router lets a buyer pick the situation they are in and see one route through wha
 - Pending station: a value that opens with a `[placeholder]` ("[days]; DI runs until release") is a fact still to confirm. Its station (`li.is-pending`) is drawn in a dashed `line-strong` frame with a small "To confirm" caption (`.aq-router__tbc`, mono caps 10 px `ink-muted`, a dashed dot), so it reads as a value on order rather than an empty box. The end station never goes pending.
 - Ground: the navy page (a visual anchor), never a light sheet.
 - Use it when the first column of a table is "your situation" and the rest is what to do about it. For a comparison of two routes use Versus; for a plain lookup with no "where to start", CompareTable.
+
+## Motion
+
+Motion (`motion.js`): situations slide in down the list; the chosen one's node pops (`--aq-node`) and its pipe runs into the route (`--aq-pipe`), the route frame opens from the pipe side, then the stations come on in order, each pipe growing to the next before it lands; the filled end station settles last. Picking another situation replays the chain for its route, quicker (about 1 s). Pipe and node variables default to 1 in the CSS, so the drawing is complete without motion. Hover nudges an option's index.

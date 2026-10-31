@@ -44,6 +44,8 @@
 .aq-diagram__st[aria-pressed="true"] .aq-diagram__fill { transform: none; }
 .aq-diagram__st[aria-pressed="true"] .aq-diagram__run::after { border-left-color: var(--surface); }
 .aq-diagram__st:has(~ .aq-diagram__st[aria-pressed="true"]) .aq-diagram__fill { transform: none; background: var(--flow-tint); }
+/* Selecting a station further down: the water shows in full Flow in the runs it passes through (script, < 1 s) */
+.aq-diagram__st.is-flowing .aq-diagram__fill { background: var(--flow); }
 .aq-diagram__st[aria-pressed="true"] .aq-diagram__fig { border-color: var(--flow); outline: 1px solid var(--flow); outline-offset: 2px; }
 .aq-diagram__st[aria-pressed="true"] .aq-diagram__fig .aq-diagram__spot { background-color: var(--flow); }
 .aq-diagram__st[aria-pressed="true"] .aq-diagram__glyph { stroke: var(--flow); }
@@ -51,7 +53,12 @@
 .aq-diagram__st[aria-pressed="true"] .aq-diagram__t { color: var(--flow); }
 .aq-diagram__st:not([aria-pressed="true"]):hover .aq-diagram__t { color: var(--flow); }
 .aq-diagram__st:not([aria-pressed="true"]):hover .aq-diagram__fig .aq-diagram__spot { background-color: var(--ink); }
-@media (prefers-reduced-motion: no-preference) { .aq-diagram__fig, .aq-diagram__t, .aq-diagram__spot { transition: color 120ms, background-color 120ms, border-color 120ms; } }
+@media (prefers-reduced-motion: no-preference) {
+  .aq-diagram__fig, .aq-diagram__t, .aq-diagram__spot { transition: color 120ms, background-color 120ms, border-color 120ms, transform 200ms; }
+  /* hover lifts the box a hair; press sets it down (the visitor drives it, so it may repeat) */
+  .aq-diagram__st:not([aria-pressed="true"]):hover .aq-diagram__fig { transform: translateY(calc(-1 * var(--space-1))); }
+  .aq-diagram__st:active .aq-diagram__fig { transform: scale(0.97); transition-duration: 80ms; }
+}
 
 /* Detail: with the script, one panel under the row (the pressed station's), a leader up to its column */
 .aq-diagram__d[hidden] { display: none; }

@@ -16,8 +16,20 @@ textarea.aq-field__input { height: auto; min-height: 120px; padding: var(--space
 .aq-field__suffix .aq-field__input { padding-right: 64px; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 .aq-field__unit { position: absolute; right: var(--space-4); top: 50%; transform: translateY(-50%); font: 400 14px/20px var(--font-mono); color: var(--ink-muted); }
 .aq-field__help { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
-.aq-field.is-error .aq-field__input { border-color: var(--fail); }
-.aq-field.is-error .aq-field__help { color: var(--fail); }
+/* Focus: the field's border and label take flow while the keyboard ring sits outside it */
+.aq-field__input:focus { border-color: var(--flow); }
+.aq-field:focus-within > .aq-field__label, .aq-fieldset:focus-within > .aq-field__label { color: var(--flow); }
+.aq-field:focus-within .aq-form__ref { color: var(--flow); }
+/* Error: fail border with a fail edge on the left, and one line under the field saying what to fix */
+.aq-field.is-error .aq-field__input { border-color: var(--fail); box-shadow: inset 3px 0 0 var(--fail); }
+.aq-field.is-error .aq-field__help { color: var(--ink-muted); }
+.aq-field__error { display: flex; align-items: baseline; gap: var(--space-2); margin: 0; font: 500 14px/20px var(--font-sans); color: var(--fail); }
+.aq-field__error::before { content: "!"; content: "!" / ""; flex: none; display: inline-grid; place-items: center; width: var(--space-4); height: var(--space-4); border-radius: var(--radius-pill); background: var(--fail); color: var(--surface); font: 600 11px/1 var(--font-mono); transform: translateY(2px); }
+.aq-fieldset.is-error .aq-checks label { border-color: var(--fail); }
+.aq-fieldset.is-error > .aq-field__error { margin-top: var(--space-2); }
+@media (prefers-reduced-motion: no-preference) {
+  .aq-field__input, .aq-field__label { transition: border-color 120ms, box-shadow 120ms, color 120ms; }
+}
 .aq-fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .aq-checks { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); }
 .aq-checks label { display: inline-flex; gap: var(--space-2); align-items: center; font: 400 15px/24px var(--font-sans); color: var(--ink); }

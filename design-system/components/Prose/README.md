@@ -27,3 +27,7 @@ Prose is running text in a SplitSection: the heading on the left, the first sent
 
 - Not for a list of titled items: use LinkGrid or OptionList. Not for an ordered sequence: use ProcessSteps.
 - Don't put two Prose sections next to each other; merge them or alternate with a full-width section.
+
+## Motion
+
+`motion.js` (plain sheet only): the lead sentence rises line by line out of a mask (SplitText, accessible text kept), then each annotated paragraph follows in reading order. The explainer path has its own motion (Explainer).

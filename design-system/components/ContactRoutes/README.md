@@ -11,3 +11,7 @@ Origin: `inspiration/gemini/62-concept-contact-routes.png` (stacked route sheets
 - Phones (`@container (max-width: 860px)`): a tighter plate and route line; sheets stack urgent first, keep their tabs and the horizontal 1 → 2 → 3 strip (steps 13 px sans); the head opens up so the call bar sits right under the urgent title, above the clock and the action.
 - Ground: the navy page (a decision anchor), right after the hero on contact pages. Keep it to three routes and three short steps each.
 - Not for a list of related pages (RelatedLinks) or for choosing a technical route by situation (Router).
+
+## Motion
+
+Motion (`motion.js`): the dashed route line grows down the left (`--aq-riser`); each sheet slides in, its stub runs out from the line and the arrowhead lands (`--aq-stub`), the folder tab rises, the head and call bar settle, then the 1 > 2 > 3 strip runs: the dashed line draws (`--aq-line`) and each ring pops as it arrives. The urgent dot pulses twice (1.2 s) and stops. Desktop: one timeline in data order (under 4.4 s); phones: each sheet as it scrolls in, urgent first. Variables default to 1 in the CSS.

@@ -11,3 +11,7 @@ Explainer sets out one idea as a figure plus three or four short numbered callou
 - Tokens: plate cream (`surface` under light tokens) with ruler ticks; tubes and scale `line-strong`; fill `flow` at 45 % (70 % once it reaches the limit) with a `flow` top rule, `fail` at or above the limit; markers `flow` discs with `surface` digits. Desktop: plate left, callouts right; phones: plate first.
 - Ground: the navy page (the shape is not in the light-sheet list); it also reads on a light sheet with `ground: "light"`.
 - Numbers only from the page. Never invent a value to give a bar a height: use `level`. Not for a list of choices (LinkGrid) or a sequence (ProcessSteps).
+
+## Motion
+
+Motion (`motion.js`): the figure makes the argument before the text. Levels: the dashed limit rule runs across, each tube fills to its value in turn (one at or over the limit overshoots a hair and settles), its number pin strikes and its value prints, then the margin dimension or "No margin" appears; the captions follow. Art: the drawing prints in and the pins strike in order. The numbered points rise one after another, in step with the figure. Without a figure the points simply rise in order. Under 4 s, once.

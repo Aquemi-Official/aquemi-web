@@ -71,6 +71,17 @@
 }
 .aq-router__tbc::before { content: ""; flex: none; width: var(--space-2); height: var(--space-2); border: 1px dashed var(--ink-muted); border-radius: var(--radius-pill); }
 
+/* Motion hooks (motion.js): --aq-pipe grows the pipes in the flow direction, --aq-node pops the node on the chosen tab.
+   Both default to 1, so the drawing is complete without motion. */
+.aq-router__opt[aria-expanded="true"]::after, .aq-router__stations > li:not(:last-child)::after { transform: scaleX(var(--aq-pipe, 1)); transform-origin: left center; }
+.aq-router__opt[aria-expanded="true"]::before { transform: scale(var(--aq-node, 1)); }
+@media (prefers-reduced-motion: no-preference) {
+  .aq-router__opt { transition: color 120ms, background-color 160ms, border-color 160ms; }
+  .aq-router__opt .aq-index { transition: color 120ms, transform 160ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-router__opt:not([aria-expanded="true"]):hover .aq-index { transform: translateX(var(--space-1)); }
+  .aq-router__route { transition: border-color 160ms; }
+}
+
 @container (max-width: 860px) {
   .aq-router { grid-template-columns: minmax(0, 1fr); }
   .aq-router__opt { grid-template-columns: var(--space-12) minmax(0, 1fr); min-height: 56px; padding: var(--space-2) var(--space-3) var(--space-2) var(--space-2); font-size: 15px; line-height: 21px; }
@@ -85,6 +96,7 @@
   .aq-router__k { padding: var(--space-1) var(--space-3); font-size: 12px; }
   .aq-router__tbc { font-size: 12px; }
   .aq-router__k::before { content: "0" counter(aq-station) "  "; white-space: pre; color: inherit; }
+  .aq-router__opt[aria-expanded="true"]::after, .aq-router__stations > li:not(:last-child)::after { transform: scaleY(var(--aq-pipe, 1)); transform-origin: center top; }
   .aq-router__stations > li:not(:last-child)::after {
     top: auto; bottom: calc(-1 * var(--space-3)); right: auto; left: calc(var(--space-6) - 4px); width: 9px; height: var(--space-3);
     clip-path: polygon(4px 0, 5px 0, 5px calc(100% - 7px), 100% calc(100% - 7px), 50% 100%, 0 calc(100% - 7px), 4px calc(100% - 7px));

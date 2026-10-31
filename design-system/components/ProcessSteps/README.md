@@ -66,3 +66,7 @@ A steps block whose items all carry an `icon` (Icon names, or `icons: "auto"` re
 
 - Not for unordered features or options: use OptionList or LinkGrid.
 - Not for the water treatment chain itself: use WaterPath or ProcessDiagram.
+
+## Motion
+
+Motion (`motion.js`): water fills the pipe stage by stage. In the hold flow and the stage strip every station starts unlit; a drop of water (a `flow` dot made by the motion layer and removed after) runs each pipe while the pipe is laid behind it, the station it reaches lights (number up, icon frame and icon wipe in, text rises), the valve on a run into a hold station snaps shut and the HOLD stamp strikes, then the SIGN line rules in. Row returns elbow in before the next row. One timeline on desktop (at most 3.8 s); phones play each station as it scrolls in, queued behind the water. Plain rows rise in order with their index decoding. Under reduced motion or without JS the finished drawing shows.

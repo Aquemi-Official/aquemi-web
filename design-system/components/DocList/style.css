@@ -60,6 +60,11 @@
   display: flex; justify-content: space-between; gap: var(--space-3); margin-top: auto; padding-top: var(--space-2); border-top: 1px solid var(--line);
   font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle);
 }
+/* A folder whose name links to a page lifts a little on hover, like a folder pulled from the binder */
+.aq-docs > li:has(.aq-docs__name a) { transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-docs > li:has(.aq-docs__name a):hover { transform: translateY(calc(-1 * var(--space-1))); }
+.aq-docs > li:has(.aq-docs__name a):hover .aq-docs__name a { color: var(--flow); }
+@media (prefers-reduced-motion: reduce) { .aq-docs > li:has(.aq-docs__name a) { transition: none; } }
 /* Key documents: the ones that decide the review */
 .aq-docs > li.is-key .aq-docs__tab { background: var(--flow); border-color: var(--flow); }
 .aq-docs > li.is-key .aq-docs__code { color: var(--surface); }

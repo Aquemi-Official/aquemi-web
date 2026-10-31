@@ -53,7 +53,18 @@ a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-
 .aq-visit-route__stop.is-rtl.is-turn::before { right: 100%; border-left-width: 1px; border-radius: var(--radius-pill) 0 0 var(--radius-pill); }
 .aq-visit-route__stop.is-rtl.is-in::before { left: calc(var(--m, var(--space-8)) / 2); right: 0; border-top-width: 1px; }
 
-@media (prefers-reduced-motion: no-preference) { .aq-visit-route__t, .aq-visit-route__spot { transition: color 120ms, background-color 120ms; } }
+/* Motion hooks (motion.js lays the route stop by stop): --aq-run scales the run to the next stop, --aq-turn clips the
+   U-turn open from the top and the lead-in from the right. Both default to 1, so the drawing is complete without them. */
+.aq-visit-route__stop.is-ltr::after { transform: scaleX(var(--aq-run, 1)); transform-origin: left center; }
+.aq-visit-route__stop.is-rtl::after { transform: scaleX(var(--aq-run, 1)); transform-origin: right center; }
+.aq-visit-route__stop.is-turn::before { clip-path: inset(0 0 calc((1 - var(--aq-turn, 1)) * 100%) 0); }
+.aq-visit-route__stop.is-rtl.is-in::before { clip-path: inset(0 0 0 calc((1 - var(--aq-turn, 1)) * 100%)); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .aq-visit-route__t, .aq-visit-route__spot { transition: color 120ms, background-color 120ms; }
+  .aq-visit-route__n { transition: transform 160ms cubic-bezier(0.2, 0, 0, 1); }
+  a.aq-visit-route__body:hover .aq-visit-route__n { transform: translateY(calc(var(--space-1) * -1)); }
+}
 
 /* Phones: still on the plate; one vertical route through the figures at the left, the name and line beside each. */
 @container (max-width: 860px) {
@@ -73,6 +84,7 @@ a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-
   .aq-visit-route__stop::before, .aq-visit-route__stop.is-rtl.is-in::before { display: none; }
   .aq-visit-route__stop::after, .aq-visit-route__stop.is-ltr::after, .aq-visit-route__stop.is-rtl::after, .aq-visit-route__stop.is-ltr.is-turn::after, .aq-visit-route__stop.is-rtl.is-turn::after {
     display: block; left: calc(var(--m, var(--space-8)) / 2); right: auto; width: 0; height: 100%; border-width: 0 0 0 1px;
+    transform: scaleY(var(--aq-run, 1)); transform-origin: center top;
   }
   .aq-visit-route__stop.is-last::after { display: none; }
 }

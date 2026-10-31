@@ -111,7 +111,7 @@ function wField(f,i,ref){var id='wf'+(f._n==null?i:f._n),nm=wSlug(f.label),req=f
  help=f.help?'<p class="aq-field__help" id="'+hid+'">'+tx(f.help)+'</p>':'',desc=f.help?' aria-describedby="'+hid+'"':'',inp;
  if(f.kind==='select')inp='<select class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'>'+'<option value="">Choose…</option>'+(f.options||[]).map(function(o){return '<option>'+e(o)+'</option>'}).join('')+'</select>';
  else if(f.kind==='textarea')inp='<textarea class="aq-field__input" id="'+id+'" name="'+nm+'"'+req+desc+'></textarea>';
- else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+desc+'><legend class="aq-field__label">'+num+tx(f.label)+opt+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio':'checkbox')+'" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+e(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
+ else if(f.kind==='checkbox-group'||f.kind==='radio')return '<fieldset class="aq-fieldset aq-field aq-form__full"'+when+desc+(f.required?' data-required=""':'')+'><legend class="aq-field__label">'+num+tx(f.label)+opt+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="'+(f.kind==='radio'?'radio':'checkbox')+'" id="'+id+'_'+j+'" name="'+nm+'" value="'+e(o)+'"'+(f._on&&f._on.indexOf(o)>=0?' checked':'')+'> '+e(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
  else if(f.kind==='file')inp='<input class="aq-field__file" id="'+id+'" name="'+nm+'" type="file" multiple accept="'+e(f.accept||'.pdf,.docx,.xlsx,.csv,.png,.jpg')+'"'+desc+'>';
  else inp=f.unit?'<div class="aq-field__suffix"><input class="aq-field__input" id="'+id+'" name="'+nm+'" inputmode="numeric"'+req+desc+'><span class="aq-field__unit">'+e(f.unit)+'</span></div>':'<input class="aq-field__input" id="'+id+'" name="'+nm+'" type="'+(f.kind==='email'?'email':f.kind==='tel'?'tel':'text')+'"'+(f.kind==='email'?' autocomplete="email"':f.kind==='tel'?' autocomplete="tel"':'')+req+desc+'>';
  return '<div class="aq-field'+(f.kind==='textarea'||f.kind==='file'?' aq-form__full':'')+'"'+when+'>'+lab+inp+help+'</div>'}
@@ -130,6 +130,39 @@ function wFormSteps(b){var n=0,req=0,S=b.steps,k=S.length;S.forEach(function(s){
 document.addEventListener('change',function(ev){var fm=ev.target.closest('form');if(!fm)return;var ws=fm.querySelectorAll('[data-when]');
  for(var k=0;k<3;k++){var on=[].filter.call(fm.querySelectorAll('input:checked'),function(x){var w=x.closest('[data-when]');return !w||!w.hidden}).map(function(x){return x.value});
   ws.forEach(function(w){w.hidden=!w.dataset.when.split('|').some(function(v){return on.indexOf(v)>=0})})}});
+/* Validation feedback (the form is novalidate, so the messages are ours and read the same everywhere). A field is checked
+   when the visitor leaves it after typing, re-checked live while it shows an error, and every visible field of the step
+   is checked on Continue and on Send: the first problem takes focus and the step does not advance. Each error is a
+   line under the field (aq-field__error, joined to the input with aria-describedby), the field takes is-error and its
+   inputs aria-invalid. The form fires "aq:invalid" with the bad fields so the motion layer can nudge them. */
+function wFieldErr(fd){var ins=[].slice.call(fd.querySelectorAll('input,select,textarea')),grp=fd.tagName==='FIELDSET';
+ if(grp)return fd.hasAttribute('data-required')&&!ins.some(function(x){return x.checked})?(ins[0]&&ins[0].type==='radio'?'Choose one.':'Choose at least one.'):'';
+ var x=ins[0];if(!x||x.type==='file')return '';var v=String(x.value||'').trim();
+ if(x.required&&!v)return x.tagName==='SELECT'?'Choose one.':'Required.';
+ if(v&&x.type==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))return 'Enter an email address, like name@company.com.';
+ if(v&&x.type==='tel'&&(v.replace(/\D/g,'').length<7))return 'Enter a phone number with its area code.';
+ return ''}
+function wMark(fd){var msg=wFieldErr(fd),ins=[].slice.call(fd.querySelectorAll('input,select,textarea')),id=(ins[0]&&ins[0].id.replace(/_\d+$/,'')||'wf')+'_err',el=document.getElementById(id);
+ fd.classList.toggle('is-error',!!msg);
+ ins.forEach(function(x){if(msg)x.setAttribute('aria-invalid','true');else x.removeAttribute('aria-invalid')});
+ var host=fd.tagName==='FIELDSET'?fd:ins[0],db=(host.getAttribute('aria-describedby')||'').split(' ').filter(function(t){return t&&t!==id});
+ if(msg){if(!el){el=document.createElement('p');el.className='aq-field__error';el.id=id;fd.appendChild(el)}el.textContent=msg;db.push(id)}
+ else if(el)el.remove();
+ if(db.length)host.setAttribute('aria-describedby',db.join(' '));else host.removeAttribute('aria-describedby');
+ return !msg}
+function wCheck(scope){var bad=[].filter.call(scope.querySelectorAll('.aq-field'),function(fd){return !fd.closest('[hidden]')&&!wMark(fd)});
+ if(bad.length){var fm=scope.closest('form')||scope,f=bad[0].querySelector('input,select,textarea');if(f)f.focus();
+  fm.dispatchEvent(new CustomEvent('aq:invalid',{detail:bad}))}
+ return bad}
+document.addEventListener('input',function(ev){var t=ev.target,fd=t.closest&&t.closest('.wform .aq-field');if(!fd)return;fd.dataset.touched='1';if(fd.classList.contains('is-error'))wMark(fd)});
+document.addEventListener('change',function(ev){var fd=ev.target.closest&&ev.target.closest('.wform .aq-field');if(fd&&(fd.classList.contains('is-error')||fd.tagName==='FIELDSET'&&fd.dataset.touched))wMark(fd)});
+document.addEventListener('focusout',function(ev){var fd=ev.target.closest&&ev.target.closest('.wform .aq-field');if(!fd||!fd.dataset.touched||fd.contains(ev.relatedTarget))return;wMark(fd)});
+/* Capture phase: runs before page.js moves the step and before the page's submit handler */
+document.addEventListener('click',function(ev){var g=ev.target.closest&&ev.target.closest('.wform [data-step-go]');if(!g)return;var st=g.closest('.aq-form__step');
+ if(!st||+g.dataset.stepGo<+st.dataset.step)return;
+ if(wCheck(st).length){ev.preventDefault();ev.stopImmediatePropagation()}},true);
+document.addEventListener('submit',function(ev){var fm=ev.target;if(!fm.classList||!fm.classList.contains('wform'))return;var bad=wCheck(fm);
+ if(bad.length){ev.preventDefault();ev.stopImmediatePropagation();var msg=fm.querySelector('.wform-msg');if(msg)msg.textContent=bad.length===1?'One field needs attention.':bad.length+' fields need attention.'}},true);
 /* Footer: an engineering drawing sheet. Zone frame (aria-hidden), head, four numbered link columns
    (<details open>; footMQ closes them on phones only), a title block and the contact and legal line. */
 /* Phones (860 px and below) get collapsed rows; wider screens keep every column open and the summary out of the tab order. */
@@ -400,17 +433,33 @@ function wDiagram(b){var I=(b.stages||[]).map(function(s){return typeof s==='str
 function flSel(w,b,anim){[].forEach.call(w.querySelectorAll('.aq-diagram__st'),function(x){var on=x===b,d=document.getElementById(x.getAttribute('aria-controls'));
   x.setAttribute('aria-pressed',on?'true':'false');if(d)d.hidden=!on});
  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
- if(!anim||reduce||!window.gsap)return;var f=b.querySelector('.aq-diagram__fill'),d=document.getElementById(b.getAttribute('aria-controls')),v=f&&f.offsetHeight>f.offsetWidth;
- if(f)gsap.fromTo(f,v?{scaleY:0}:{scaleX:0},{scaleX:1,scaleY:1,duration:0.55,ease:'power2.out',clearProps:'transform'});
- if(d)gsap.fromTo(d,{autoAlpha:0,y:8},{autoAlpha:1,y:0,duration:0.35,delay:0.15,ease:'power2.out',clearProps:'opacity,visibility,transform'})}
+ if(!anim||reduce||!window.gsap)return;
+ /* One short timeline (< 1 s): the water runs on from the station that was selected to the new one (each run between
+    fills in turn; going back upstream only the new run fills), the new station settles, then its detail rises. */
+ var L=[].slice.call(w.querySelectorAll('.aq-diagram__st')),j=L.indexOf(b),i0=anim.from==null?j:anim.from,a=i0<j?i0+1:j,d=document.getElementById(b.getAttribute('aria-controls')),
+  F=L.slice(a,j+1).map(function(x){return x.querySelector('.aq-diagram__fill')}).filter(Boolean),v=F[0]&&F[0].offsetHeight>F[0].offsetWidth,each=Math.min(0.3,0.6/F.length);
+ var tl=gsap.timeline({defaults:{ease:'none'}});
+ if(w._aqTl)w._aqTl.progress(1);w._aqTl=tl;[].forEach.call(w.querySelectorAll('.is-flowing'),function(x){x.classList.remove('is-flowing')});
+ /* runs the water passes through show it in full Flow (is-flowing) and drain behind it; the new station's run stays */
+ F.forEach(function(f,k){var last=k===F.length-1,st=f.closest('.aq-diagram__st');
+  if(!last)st.classList.add('is-flowing');
+  tl.fromTo(f,v?{scaleY:0,transformOrigin:'center top'}:{scaleX:0,transformOrigin:'left center'},{scaleX:1,scaleY:1,duration:each,clearProps:last?'transform,transformOrigin':''},k*each);
+  if(!last)tl.to(f,v?{scaleY:0,transformOrigin:'center bottom',duration:each*1.5,ease:'power1.in'}:{scaleX:0,transformOrigin:'right center',duration:each*1.5,ease:'power1.in'},(k+1)*each)
+   .add(function(){st.classList.remove('is-flowing');gsap.set(f,{clearProps:'transform,transformOrigin'})})});
+
+ var t=F.length*each,fig=b.querySelector('.aq-diagram__fig'),td=Math.min(Math.max(0,t-0.15),0.3);
+ if(fig)tl.fromTo(fig,{scale:0.94},{scale:1,duration:0.45,ease:'back.out(2)',clearProps:'transform'},Math.max(0,t-0.1));
+ if(d){tl.fromTo(d,{autoAlpha:0,y:10},{autoAlpha:1,y:0,duration:0.35,ease:'power2.out',clearProps:'opacity,visibility,transform'},td);
+  var dn=d.querySelector('.aq-diagram__dn');if(dn)tl.fromTo(dn,{yPercent:35,autoAlpha:0},{yPercent:0,autoAlpha:1,duration:0.4,ease:'power3.out',clearProps:'opacity,visibility,transform'},td+0.1)}}
+function flAt(w){var L=[].slice.call(w.querySelectorAll('.aq-diagram__st'));for(var i=0;i<L.length;i++)if(L[i].getAttribute('aria-pressed')==='true')return i;return null}
 function flInit(){[].forEach.call(document.querySelectorAll('.aq-diagram:not(.is-live)'),function(w){w.classList.add('is-live');
  var b=w.querySelector('.aq-diagram__st[aria-pressed="true"]')||w.querySelector('.aq-diagram__st');if(b)flSel(w,b,false)})}
 if(typeof document!=='undefined'&&document.addEventListener){
  document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-diagram__st');if(!b)return;var w=b.closest('.aq-diagram');
-  if(b.getAttribute('aria-pressed')!=='true')flSel(w,b,true)});
+  if(b.getAttribute('aria-pressed')!=='true')flSel(w,b,{from:flAt(w)})});
  document.addEventListener('keydown',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-diagram__st');if(!b)return;
   var L=[].slice.call(b.closest('.aq-diagram').querySelectorAll('.aq-diagram__st')),i=L.indexOf(b),j={ArrowRight:i+1,ArrowDown:i+1,ArrowLeft:i-1,ArrowUp:i-1,Home:0,End:L.length-1}[ev.key];
-  if(j==null)return;ev.preventDefault();j=Math.max(0,Math.min(L.length-1,j));if(j!==i){L[j].focus();flSel(b.closest('.aq-diagram'),L[j],true)}});
+  if(j==null)return;ev.preventDefault();j=Math.max(0,Math.min(L.length-1,j));if(j!==i){L[j].focus();flSel(b.closest('.aq-diagram'),L[j],{from:flAt(b.closest('.aq-diagram'))})}});
  if(typeof MutationObserver!=='undefined'){var flQ=0;new MutationObserver(function(){if(flQ)return;flQ=1;setTimeout(function(){flQ=0;flInit()},0)}).observe(document.documentElement,{childList:true,subtree:true})}
  if(document.readyState!=='loading')setTimeout(flInit,0);else document.addEventListener('DOMContentLoaded',flInit)}
 /* SectionNav: sticky numbered jump links to blocks that carry a short nav label (four or more), with a page progress readout.
@@ -662,9 +711,10 @@ TABLE_AS.evidence=function(b,H){var C=b.cols||[],R=b.rows||[],RF=[].concat(b.ref
     +'<td class="aq-evidence__how">'+evHow(r[1])+'</td>'
     +'<td class="aq-evidence__proof">'+files+(links?'<p class="aq-evidence__go">'+links+'</p>':'')+'</td></tr>'}).join('')+'</tbody></table>',b.fold_noun||'requirements')+'</div>');};
 /* Block "faq" -> FAQ: hairline accordion rows (index, question, +/−), all closed; a shared name keeps one answer open.
+   The sign is [ glyph ]: a drawn plus whose upright turns flat (minus) when open. FAQ/motion.js eases the height on open/close.
    Desktop: heading left, questions right (SplitSection). */
 var faqN=0;
-BLOCKS['faq']=function(b,H){faqN++;return split(H,'<div class="aq-faq">'+(b.items||[]).map(function(it,i){return '<details name="faq-'+faqN+'"><summary>'+idx(i)+'<span class="aq-faq__q">'+tx(it.q)+'</span><span class="aq-faq__sign" aria-hidden="true"></span></summary><div class="aq-faq__a"><p>'+tx(it.a)+'</p></div></details>'}).join('')+'</div>');};
+BLOCKS['faq']=function(b,H){faqN++;return split(H,'<div class="aq-faq">'+(b.items||[]).map(function(it,i){return '<details name="faq-'+faqN+'"><summary>'+idx(i)+'<span class="aq-faq__q">'+tx(it.q)+'</span><span class="aq-faq__sign" aria-hidden="true"><span class="aq-faq__glyph"></span></span></summary><div class="aq-faq__a"><p>'+tx(it.a)+'</p></div></details>'}).join('')+'</div>');};
 /* Table as "failures" -> FaultList: where things fail and what we design against. Fields as a table: cols [the failure
    column, then the columns revealed when a row opens, usually "Usual cause" and "What we design in"], rows. Each row is
    a native <details>: index, the failure, a +/− sign; open, the other columns sit side by side, each under its column
@@ -912,10 +962,13 @@ BLOCKS['register']=function(b,H){var I=b.items||[],T=b.topics||[];if(!I.length)r
   +'<div class="aq-notes-register__reg">'+wFold(b,I.length,table,b.fold_noun||'notes')+'</div></div>',{light:true,cls:'aq-notes-register__plate',block:['Aquemi','Notes register']}));};
 document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.target.closest('.aq-notes-register__chip');if(!c)return;
  var r=c.closest('.aq-notes-register'),t=c.getAttribute('data-topic'),n=0,fd=r.querySelector('.aq-fold');
+ /* With GSAP Flip (and motion allowed) the rows that stay glide to their new places and the ones that join fade in */
+ var R=r.querySelectorAll('tbody tr'),fl=window.Flip&&window.gsap&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches),S=fl&&Flip.getState(R);
  r.querySelectorAll('.aq-notes-register__chip').forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
  r.querySelectorAll('tbody tr').forEach(function(tr){var on=!t||tr.getAttribute('data-topic')===t;tr.hidden=!on;if(on)n++});
  if(fd)fd.classList.toggle('is-filtered',!!t);
- r.querySelector('.aq-notes-register__count').textContent=n+(n===1?' note':' notes')+(t?' in '+t:'')});
+ r.querySelector('.aq-notes-register__count').textContent=n+(n===1?' note':' notes')+(t?' in '+t:'');
+ if(S)Flip.from(S,{targets:R,duration:0.45,ease:'power2.inOut',onEnter:function(x){return gsap.fromTo(x,{autoAlpha:0,x:-12},{autoAlpha:1,x:0,duration:0.4,stagger:0.03,clearProps:'transform,opacity,visibility'})}})});
 /* Block "related" -> RelatedLinks: the pages to read next (concept 17). items: page ids. Each is one linked card hung
    from a drawn pipe: a junction node, a large flow number, a thumbnail of the target page, "01 / Systems" as a mono
    label and the page's title in condensed capitals with an arrow. Thumbnail: the target page's Spot (REL_SPOT), else its
@@ -930,7 +983,7 @@ BLOCKS['related']=function(b,H){var I=(b.items||[]).filter(wp);
  return sec(H+'<ol class="aq-related-links" style="--n:'+I.length+'">'+I.map(function(id,i){var p=wp(id),n=(i<9?'0':'')+(i+1);
  return '<li><a class="aq-related-links__card" href="#'+e(id)+'" data-wp="'+e(id)+'"><span class="aq-related-links__n" aria-hidden="true">'+n+'</span>'+relThumb(id)
   +'<span class="aq-related-links__group"><span aria-hidden="true">'+n+' / </span>'+e(p.section)+'</span>'
-  +'<span class="aq-related-links__title">'+tx(p.nav_label)+'</span></a></li>'}).join('')+'</ol>');};
+  +'<span class="aq-related-links__title">'+tx(p.nav_label)+'<span class="aq-related-links__arrow" aria-hidden="true">→</span></span></a></li>'}).join('')+'</ol>');};
 /* Table as "roles" -> RoleMatrix: who writes, does or approves each document, like the signature blocks on a controlled
    document. Fields as a table: cols [document, then one column per role], rows. Each role cell is a stamp labelled
    with its column name; a cell that starts with "Aquemi" is ours (tinted flow), one that starts with "You" or "Your" is
@@ -1081,6 +1134,16 @@ function wDial(g,second,read){var up=g.c==='≥'||g.c==='>',S=gaugeScale(g.n,up)
    +gaugeLn(L,96,82,'aq-limit-gauges__limit')+'<path class="aq-limit-gauges__ptr" d="'+ptr+'"/></svg>'
    +'<span class="aq-limit-gauges__mark'+(right?' is-right':'')+'" style="'+pos+'"><span class="aq-limit-gauges__mark-k">Limit </span>'+e((g.c?g.c+' ':'')+g.t)+'</span>'
    +(second?'<span class="aq-limit-gauges__mark aq-limit-gauges__mark--second" style="left:'+(p2[0]/2.4).toFixed(1)+'%;top:'+((p2[1]-10)/144*100).toFixed(1)+'%">'+e(second.t)+'</span>':'')+(read||'')+'</div>'}
+/* Open dial: a value still to come ("[outlet conductivity guarantee, µS/cm @ 25 °C]", nothing but placeholders) gets
+   the bare instrument (arc, ticks, inner arc, crosshairs, the needle at rest on zero) and no scale numbers, pointer,
+   pass band or chip: the instrument is fitted, its value is not yet set. Any other row without a number ("Not
+   detectable", "Below saturation") stays a plain readout cell, since a dial would suggest a scale it does not have. */
+function gaugeOpen(v){var s=String(v||'');return /^\s*\[/.test(s)&&!/\d/.test(s.replace(/\[[^\]]*\]/g,''))}
+function wDialOpen(){var i,ticks='';for(i=0;i<=20;i++)ticks+=gaugeLn(i/20,96,i%5===0?85:90,i%5===0?'is-major':'');
+  return '<div class="aq-limit-gauges__dial aq-limit-gauges__dial--open" aria-hidden="true"><svg viewBox="0 10 240 144" focusable="false">'
+   +'<path class="aq-limit-gauges__inner" d="'+gaugeArc(0,1,68)+'"/><path class="aq-limit-gauges__track" d="'+gaugeArc(0,1,96)+'"/><g class="aq-limit-gauges__ticks">'+ticks+'</g>'
+   +'<g class="aq-limit-gauges__cross"><line x1="106" y1="128" x2="134" y2="128"/><line x1="120" y1="104" x2="120" y2="154"/></g>'
+   +gaugeLn(0,0,92,'aq-limit-gauges__needle')+'<circle class="aq-limit-gauges__pivot" cx="120" cy="128" r="3"/></svg></div>'}
 function wGauges(b,rows){
   var P=rows.map(function(r){return gaugeParse(r.v)}),outlet=/outlet|guarantee/i,sec2={};
   rows.forEach(function(r,i){var o=P[i];if(!o||!outlet.test(r.p))return;
@@ -1092,8 +1155,9 @@ function wGauges(b,rows){
     /* With a dial the chip and readout show the limit, so the full value is kept for screen readers only */
     var spec='<dl class="aq-limit-gauges__spec"><div'+(g?' class="aq-limit-gauges__sr"':'')+'><dt>'+(g?'Limit':'Value')+'</dt><dd class="aq-limit-gauges__v">'+tx(r.v)+'</dd></div>'
       +(r.m?'<div><dt>Basis</dt><dd class="aq-limit-gauges__m">'+gaugeBasis(r.m)+'</dd></div>':'')+'</dl>';
-    return fli('<li class="aq-limit-gauges__item'+(g?'':' is-readout')+(r.hl?' is-key':'')+'">',b,i)
-     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read):'')
+    var open=!g&&gaugeOpen(r.v);
+    return fli('<li class="aq-limit-gauges__item'+(g?'':' is-readout')+(open?' is-open':'')+(r.hl?' is-key':'')+'">',b,i)
+     +'<h3 class="aq-limit-gauges__p">'+tx(r.p)+'</h3>'+(g?wDial(g,sec2[i],read):open?wDialOpen():'')
      +'<div class="aq-limit-gauges__foot">'+spec+'</div></li>'}).join('');
   return wPlate(wFold(b,rows.length,'<ul class="aq-limit-gauges" role="list">'+list+'</ul>',b.fold_noun||'limits'),{light:true,block:['Aquemi',b.caption||'Limits']})}
 

@@ -9,3 +9,7 @@ NotesRegister lists technical notes as an engineering drawing register (a revisi
 - Ground: the navy, with the register on a cream plate (`light`). Tokens only.
 - Supports `fold: N` (first N rows under "All") and `fold_noun` ("Show all 24 notes"). Order items so the first topic leads.
 - Not for documents a buyer receives (DocList) or for comparisons (CompareTable). In use on news.
+
+## Motion
+
+`motion.js`: the cream plate unrolls, the [chips] click in left to right, the featured panel is cut in from the top with its Spot printing in after, then the ruled rows are entered one by one (each wipes left to right inside the already-ruled table) and the featured row's flow number settles last. On phones the rows play when the table itself scrolls in. Filtering (`register.js`) uses GSAP Flip: rows that stay glide to their new places, rows that join fade in; without GSAP or under reduced motion they switch instantly.

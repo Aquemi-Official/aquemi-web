@@ -60,3 +60,7 @@ An optional list of short strings on the page's `cta`, rendered under the body a
 ## Exchange (`cta.returns`, `cta.turnaround`)
 
 With `cta.returns` (two to four strings, each a document or answer the page already promises: "Skid sizing for your coldest feed", "Budget range, CAD") the checklist becomes an exchange across the full width of the frame: what you send, an arrow labelled with `cta.turnaround` (a placeholder until confirmed, `[proposal response time, working days]`), and what comes back, each return with a small document mark (`.aq-closing__doc`). `cta.returns_label` overrides "What comes back". Markup: `.aq-closing__swap` > `.aq-closing__include`, `p.aq-closing__turn`, `.aq-closing__include.aq-closing__returns`. Phones: stacked, the arrow pointing down. Never list a return the page doesn't already promise.
+
+## Motion
+
+Motion (`Closing/motion.js`, plays once when the band scrolls in): the frame unrolls, the title strip decodes, the headline lines rise out of a mask, the lead follows; then the exchange runs in order: the send rows list themselves, the turnaround arrow shoots across, the returns land document by document, and the button arrives last with one nudge of its arrow. A proof figure counts up only when it is a plain number. Skipped under reduced motion.

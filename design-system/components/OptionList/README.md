@@ -32,3 +32,7 @@ With `"as": "modules"` on the options block the same items render as OptionModul
 ## When not to use it
 
 - Page links: use LinkGrid. A genuine order: use ProcessSteps (the numbers here are labels, not an order). Values compared across systems: use SpecTable or CompareTable.
+
+## Motion
+
+`motion.js` (plain and decisions; modules is OptionModules'): rows fill in reading order, each hairline ruling across, the big index decoding digit by digit, the option then its line. Decisions: the fork mark draws from its stem out to both branches and the framed "?" strikes last like a stamp; "Decide by" fades in. Folded rows are left alone.

@@ -43,3 +43,7 @@ Readout sets one figure on a precision instrument face: the number very large, i
 - Not for several values: use SpecTable. Not for a measured trend: there is no chart component for that yet, and the scale here must stay a schematic.
 
 Origin: concept N in `design-system/inspiration/`, generated in Gemini and rebuilt with Aquemi tokens (Geist Mono Light in place of the concept's condensed figures; the concept's trend trace, timestamps and "SYS_OUT" labels dropped as invented data).
+
+## Motion
+
+Motion (`motion.js`): the instrument powers up once on scroll-in: the tick scale runs out along the bottom, the figure counts up to its value (a placeholder is left alone), the unit and condition drop in, and the method tag strikes onto the reference line last. Under 3 s.

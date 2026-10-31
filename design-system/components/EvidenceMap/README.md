@@ -7,3 +7,7 @@ EvidenceMap maps each requirement or standard to how we meet it and the document
 - Phones (`@container (max-width: 860px)`): rows stack (number and requirement at 21 px, how, files). A left connector runs down from the number past "how" into the same fan of file chips.
 - Ground: a light sheet by default; tokens only, so it also reads on the navy (`ground: "dark"`). Supports `fold`.
 - For a list of documents without requirements use DocList; for standards alone, StandardsGrid.
+
+## Motion
+
+`motion.js`: each requirement reads in, then the link draws from claim to proof: the leader and "how we meet it" wipe in left to right from the requirement's rule, the fan wipes on into the proof column and the file chips (or clause references) slide onto their ticks one by one. Phones: the same order down the left connector. Rows play in reading order as they scroll in; nothing under reduced motion.

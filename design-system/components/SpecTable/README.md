@@ -47,3 +47,7 @@ On desktop the rows flow into two columns. Each cell stacks the parameter, the l
 
 A lead row (`is-highlight is-lead`, the first `hl` rows) whose value holds a number becomes a readout: the renderer adds `is-readout` and `data-theme="dark"` to the row and a first cell `<td class="aq-spec__read" aria-hidden="true"><span class="aq-spec__read-n">< 0.25</span><span class="aq-spec__read-u">EU/mL</span></td>` (the limit parsed as LimitGauges does: the first comparator and number, or a leading number). The row is a navy panel inside the sheet: the limit in `font-display` 600 at 132 px (88 px on phones), the unit set vertically beside it, a scale rule along the foot, and to the right the parameter in condensed caps, the full value in a `flow` ruled chip and the basis. The big figure is decoration; the value cell keeps the exact text. Lead rows without a number stay a `flow-tint` band with the parameter in condensed caps.
 - Parameters in the other rows are 13/20 Geist Mono caps.
+
+## Motion
+
+`motion.js` (spec sheets only; `aq-spec--compare` is CompareTable's): the column-label strip rules across, then rows are ruled in reading order (each wipes left to right), the parameter lands first, its value fills in after it, the basis last. A readout lead row unrolls its navy panel top down while the big limit counts up and the unit rises. Folded rows are left alone.

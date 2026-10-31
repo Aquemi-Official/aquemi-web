@@ -35,6 +35,8 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 | `assets/src/blocks/<type>.js` | Renderer for one block type: `BLOCKS['<type>']=function(b,H){...}` returns that section's `aq-*` markup. |
 | `assets/src/parts/<Name>.js`, `core.js`, `page.js` | Shared helpers (`sec`, `split`, `tx`, `e`, `wp`), NavBar, Footer, Hero, Button and other pieces, and page assembly. |
 | `assets/aquemi-site.js` | **Generated** from `assets/src/`. The site and the guide load it. |
+| `design-system/components/<Name>/motion.js`, `assets/src/motion/core.js` | Motion (GSAP 3.13): the core animates every section the same way; a component's `motion.js` adds its own choreography with `AQmotion.fx('<Name>', fn)`. Plays once, under 5 s, nothing under reduced motion. |
+| `assets/motion.js` | **Generated** from the motion sources above. The site loads it. |
 | `assets/site.css` | Draft-bar chrome only. No brand styles here. |
 | `inspiration.html` | Gallery of every generated image: Gemini originals, section concepts, equipment drawings. Add new images to its lists. |
 | `design-system.html` | The visual guide. Generated at load time from the files above; normally needs no edits. |
@@ -64,7 +66,7 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 
 ## Working in parallel
 
-The sources are split so several people or agents can work at the same time without editing the same file: one component's `style.css`, `README.md` and `preview.html`; one block renderer; one page file. Give each agent its own files. Generated files (`bundle.css`, `aquemi-site.js`, `pages.json`, `tokens.css`, `components.json`) are rebuilt from the sources, so concurrent `build` runs are safe; whoever commits runs `build` and `check` last.
+The sources are split so several people or agents can work at the same time without editing the same file: one component's `style.css`, `README.md` and `preview.html`; one block renderer; one page file. Give each agent its own files. Generated files (`bundle.css`, `aquemi-site.js`, `motion.js`, `pages.json`, `tokens.css`, `components.json`) are rebuilt from the sources, so concurrent `build` runs are safe; whoever commits runs `build` and `check` last.
 
 ## Before you push
 
