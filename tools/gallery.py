@@ -10,7 +10,7 @@ Needs Pillow (thumbnails). Sources it scans:
   design-system/inspiration/art/*.png           black-on-white sources of the equipment drawings
   design-system/inspiration/archive/*           superseded versions (kept, never shown on the site)
   design-system/inspiration/record/<set>/*.jpg  build records: what the site looked like at each pass
-  assets/illustrations, assets/spots, assets/icons, brand/   what the site uses
+  assets/illustrations, assets/icons (SVG), brand/   what the site uses
 Status of each item is worked out from the inspiration README tables and from whether the live pages use it.
 """
 import glob, json, os, re, shutil, sys
@@ -31,7 +31,8 @@ GEMINI_USE = {
     '53': 'ProcessSteps', '54': 'Explainer', '55': 'ParameterCallouts', '56': 'VisitRoute', '57': 'Icon',
     '59': 'StandardsMap', '60': 'CaseStudy', '61': 'VisitRoute', '62': 'ContactRoutes', '63': 'NotesRegister',
     '64': 'Spot'}
-GEMINI_REFERENCE = {'58'}  # looked at as a target, not rebuilt as one thing
+GEMINI_REFERENCE = {'58'}
+RETIRED = {'57': 'the cut icons were later replaced by the Lucide-style SVG set; see Archive', '64': 'the cut spots were retired when the site returned to the brand book; see Archive'}  # looked at as a target, not rebuilt as one thing
 
 RECORD_SETS = [  # (folder in record/, label, order)
     ('pass7', 'Pass 7: the site today'),
@@ -160,7 +161,10 @@ def build():
             add(f, 'gemini', 'reference', title_of(name), prompt or 'Looked at as a target for the page rhythm', order=int(num))
         else:
             comp = GEMINI_USE.get(num)
-            add(f, 'gemini', 'built', title_of(name), (prompt + (' → ' + became if became else '')).strip(' →'), comp, order=int(num))
+            note = (prompt + (' → ' + became if became else '')).strip(' →')
+            if num in RETIRED:
+                note += ' (' + RETIRED[num] + ')'
+            add(f, 'gemini', 'built', title_of(name), note, comp, order=int(num))
 
     for f in sorted(glob.glob(os.path.join(INS, 'concept-*.*'))):
         b = os.path.basename(f)
@@ -172,14 +176,20 @@ def build():
         pid = os.path.basename(f)[:-4]
         add(f, 'source', 'source', pid, 'Source drawing for assets/illustrations/%s.png' % pid, 'Illustration')
 
-    for f in sorted(glob.glob(os.path.join(INS, 'archive', '*.*'))):
-        add(f, 'archive', 'superseded', title_of(os.path.basename(f).rsplit('.', 1)[0]), 'Replaced by a later version; kept for the record')
+    ARCHIVE = {'': ('Replaced concepts', 'Replaced by a later version; kept for the record', False),
+               'retired-icons': ('Raster icons (retired)', 'Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set', True),
+               'retired-spots': ('Spot drawings (retired)', 'Equipment vignette cut from the Gemini spots sheet; retired when the site returned to the brand book', True)}
+    for i, (sub, (label, note, mask)) in enumerate(ARCHIVE.items()):
+        for f in sorted(glob.glob(os.path.join(INS, 'archive', sub, '*.*'))):
+            if os.path.isdir(f):
+                continue
+            add(f, 'archive', 'superseded', title_of(os.path.basename(f).rsplit('.', 1)[0]), note, mask=mask, group=label, order=i)
 
     for kind, folder, comp in (('drawing', 'illustrations', 'Illustration'), ('spot', 'spots', 'Spot'), ('icon', 'icons', 'Icon')):
-        for f in sorted(glob.glob(os.path.join(ROOT, 'assets', folder, '*.png'))):
-            n = os.path.basename(f)[:-4]
+        for f in sorted(glob.glob(os.path.join(ROOT, 'assets', folder, '*.png')) + glob.glob(os.path.join(ROOT, 'assets', folder, '*.svg'))):
+            n, ext = os.path.basename(f).rsplit('.', 1)
             live = (n in page_ids and 'illustrations/' in used_text) if kind == 'drawing' else (('"%s"' % n) in used_text or ("'%s'" % n) in used_text)
-            add(f, kind, 'live' if live else 'kit', n.replace('-', ' '), 'assets/%s/%s.png' % (folder, n), comp, mask=True)
+            add(f, kind, 'live' if live else 'kit', n.replace('-', ' '), 'assets/%s/%s.%s' % (folder, n, ext), comp, mask=True)
 
     for f in sorted(glob.glob(os.path.join(ROOT, 'brand', '*.svg'))):
         n = os.path.basename(f)[:-4]

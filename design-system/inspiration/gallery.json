@@ -903,7 +903,7 @@
 "cat": "gemini",
 "status": "built",
 "title": "Icons row spots",
-"note": "24 spot drawings for list rows → Row icon set",
+"note": "24 spot drawings for list rows → Row icon set (the cut icons were later replaced by the Lucide-style SVG set; see Archive)",
 "component": "Icon",
 "group": null,
 "order": 57,
@@ -1015,7 +1015,7 @@
 "cat": "gemini",
 "status": "built",
 "title": "Spots generation",
-"note": "Specimen sheet of 9 equipment vignettes (pretreatment, RO skid, EDI, still, pure steam generator, tank, pump, heat exchanger, UV and ozone) → Cut into Spot masks in assets/spots/ with tools/icon_sheet.py --max 256 --bold 0; used on routes, the standards map and option modules",
+"note": "Specimen sheet of 9 equipment vignettes (pretreatment, RO skid, EDI, still, pure steam generator, tank, pump, heat exchanger, UV and ozone) → Cut into Spot masks in assets/spots/ with tools/icon_sheet.py --max 256 --bold 0; used on routes, the standards map and option modules (the cut spots were retired when the site returned to the brand book; see Archive)",
 "component": "Spot",
 "group": null,
 "order": 64,
@@ -1801,13 +1801,541 @@
 "title": "B first home hero",
 "note": "Replaced by a later version; kept for the record",
 "component": null,
-"group": null,
+"group": "Replaced concepts",
 "order": 0,
 "size": [
 709,
 395
 ],
 "kb": 410
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/binder.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__binder.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Binder",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 3
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/borescope.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__borescope.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Borescope",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 4
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/calendar.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__calendar.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Calendar",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 5
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/carbon-filter.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__carbon-filter.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Carbon filter",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 3
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/conductivity.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__conductivity.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Conductivity",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 3
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/edi.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__edi.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Edi",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 5
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/gauge.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__gauge.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Gauge",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 5
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/heat-exchanger.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__heat-exchanger.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Heat exchanger",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 2
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/loop.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__loop.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Loop",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 3
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/magnifier.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__magnifier.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Magnifier",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 4
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/ozone.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__ozone.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Ozone",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 4
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/pid.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__pid.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Pid",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 4
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/pump.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__pump.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Pump",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 6
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/pure-steam.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__pure-steam.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Pure steam",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 3
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/ro-membrane.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__ro-membrane.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Ro membrane",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 2
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/softener.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__softener.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Softener",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 3
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/stamp.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__stamp.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Stamp",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 3
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/still.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__still.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Still",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 3
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/tank.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__tank.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Tank",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 3
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/toc.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__toc.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Toc",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 4
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/uv.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__uv.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Uv",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 2
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/valve.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__valve.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Valve",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 4
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/weld.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__weld.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Weld",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 2
+},
+{
+"src": "design-system/inspiration/archive/retired-icons/wrench.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-icons__wrench.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Wrench",
+"note": "Row icon cut from the Gemini icon sheet; replaced by the Lucide-style SVG set",
+"component": null,
+"group": "Raster icons (retired)",
+"order": 1,
+"size": [
+96,
+96
+],
+"kb": 4
+},
+{
+"src": "design-system/inspiration/archive/retired-spots/edi-stack.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-spots__edi-stack.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Edi stack",
+"note": "Equipment vignette cut from the Gemini spots sheet; retired when the site returned to the brand book",
+"component": null,
+"group": "Spot drawings (retired)",
+"order": 2,
+"size": [
+256,
+256
+],
+"kb": 28
+},
+{
+"src": "design-system/inspiration/archive/retired-spots/heat-exchanger.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-spots__heat-exchanger.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Heat exchanger",
+"note": "Equipment vignette cut from the Gemini spots sheet; retired when the site returned to the brand book",
+"component": null,
+"group": "Spot drawings (retired)",
+"order": 2,
+"size": [
+256,
+256
+],
+"kb": 13
+},
+{
+"src": "design-system/inspiration/archive/retired-spots/pretreatment.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-spots__pretreatment.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Pretreatment",
+"note": "Equipment vignette cut from the Gemini spots sheet; retired when the site returned to the brand book",
+"component": null,
+"group": "Spot drawings (retired)",
+"order": 2,
+"size": [
+256,
+256
+],
+"kb": 18
+},
+{
+"src": "design-system/inspiration/archive/retired-spots/pump.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-spots__pump.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Pump",
+"note": "Equipment vignette cut from the Gemini spots sheet; retired when the site returned to the brand book",
+"component": null,
+"group": "Spot drawings (retired)",
+"order": 2,
+"size": [
+256,
+256
+],
+"kb": 31
+},
+{
+"src": "design-system/inspiration/archive/retired-spots/pure-steam-generator.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-spots__pure-steam-generator.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Pure steam generator",
+"note": "Equipment vignette cut from the Gemini spots sheet; retired when the site returned to the brand book",
+"component": null,
+"group": "Spot drawings (retired)",
+"order": 2,
+"size": [
+256,
+256
+],
+"kb": 16
+},
+{
+"src": "design-system/inspiration/archive/retired-spots/ro-skid.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-spots__ro-skid.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Ro skid",
+"note": "Equipment vignette cut from the Gemini spots sheet; retired when the site returned to the brand book",
+"component": null,
+"group": "Spot drawings (retired)",
+"order": 2,
+"size": [
+256,
+256
+],
+"kb": 31
+},
+{
+"src": "design-system/inspiration/archive/retired-spots/still.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-spots__still.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Still",
+"note": "Equipment vignette cut from the Gemini spots sheet; retired when the site returned to the brand book",
+"component": null,
+"group": "Spot drawings (retired)",
+"order": 2,
+"size": [
+256,
+256
+],
+"kb": 27
+},
+{
+"src": "design-system/inspiration/archive/retired-spots/storage-tank.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-spots__storage-tank.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Storage tank",
+"note": "Equipment vignette cut from the Gemini spots sheet; retired when the site returned to the brand book",
+"component": null,
+"group": "Spot drawings (retired)",
+"order": 2,
+"size": [
+256,
+256
+],
+"kb": 11
+},
+{
+"src": "design-system/inspiration/archive/retired-spots/uv-ozone.png",
+"thumb": "design-system/inspiration/thumbs/design-system__inspiration__archive__retired-spots__uv-ozone.jpg",
+"cat": "archive",
+"status": "superseded",
+"title": "Uv ozone",
+"note": "Equipment vignette cut from the Gemini spots sheet; retired when the site returned to the brand book",
+"component": null,
+"group": "Spot drawings (retired)",
+"order": 2,
+"size": [
+256,
+256
+],
+"kb": 13
 },
 {
 "src": "assets/illustrations/ind-biotech.png",
@@ -2082,532 +2610,589 @@
 "kb": 209
 },
 {
-"src": "assets/spots/edi-stack.png",
-"thumb": "design-system/inspiration/thumbs/assets__spots__edi-stack.jpg",
-"cat": "spot",
-"status": "live",
-"title": "edi stack",
-"note": "assets/spots/edi-stack.png",
-"component": "Spot",
-"group": null,
-"order": 0,
-"size": [
-256,
-256
-],
-"kb": 28
-},
-{
-"src": "assets/spots/heat-exchanger.png",
-"thumb": "design-system/inspiration/thumbs/assets__spots__heat-exchanger.jpg",
-"cat": "spot",
-"status": "live",
-"title": "heat exchanger",
-"note": "assets/spots/heat-exchanger.png",
-"component": "Spot",
-"group": null,
-"order": 0,
-"size": [
-256,
-256
-],
-"kb": 13
-},
-{
-"src": "assets/spots/pretreatment.png",
-"thumb": "design-system/inspiration/thumbs/assets__spots__pretreatment.jpg",
-"cat": "spot",
-"status": "live",
-"title": "pretreatment",
-"note": "assets/spots/pretreatment.png",
-"component": "Spot",
-"group": null,
-"order": 0,
-"size": [
-256,
-256
-],
-"kb": 18
-},
-{
-"src": "assets/spots/pump.png",
-"thumb": "design-system/inspiration/thumbs/assets__spots__pump.jpg",
-"cat": "spot",
-"status": "live",
-"title": "pump",
-"note": "assets/spots/pump.png",
-"component": "Spot",
-"group": null,
-"order": 0,
-"size": [
-256,
-256
-],
-"kb": 31
-},
-{
-"src": "assets/spots/pure-steam-generator.png",
-"thumb": "design-system/inspiration/thumbs/assets__spots__pure-steam-generator.jpg",
-"cat": "spot",
-"status": "live",
-"title": "pure steam generator",
-"note": "assets/spots/pure-steam-generator.png",
-"component": "Spot",
-"group": null,
-"order": 0,
-"size": [
-256,
-256
-],
-"kb": 16
-},
-{
-"src": "assets/spots/ro-skid.png",
-"thumb": "design-system/inspiration/thumbs/assets__spots__ro-skid.jpg",
-"cat": "spot",
-"status": "live",
-"title": "ro skid",
-"note": "assets/spots/ro-skid.png",
-"component": "Spot",
-"group": null,
-"order": 0,
-"size": [
-256,
-256
-],
-"kb": 31
-},
-{
-"src": "assets/spots/still.png",
-"thumb": "design-system/inspiration/thumbs/assets__spots__still.jpg",
-"cat": "spot",
-"status": "live",
-"title": "still",
-"note": "assets/spots/still.png",
-"component": "Spot",
-"group": null,
-"order": 0,
-"size": [
-256,
-256
-],
-"kb": 27
-},
-{
-"src": "assets/spots/storage-tank.png",
-"thumb": "design-system/inspiration/thumbs/assets__spots__storage-tank.jpg",
-"cat": "spot",
-"status": "live",
-"title": "storage tank",
-"note": "assets/spots/storage-tank.png",
-"component": "Spot",
-"group": null,
-"order": 0,
-"size": [
-256,
-256
-],
-"kb": 11
-},
-{
-"src": "assets/spots/uv-ozone.png",
-"thumb": "design-system/inspiration/thumbs/assets__spots__uv-ozone.jpg",
-"cat": "spot",
-"status": "live",
-"title": "uv ozone",
-"note": "assets/spots/uv-ozone.png",
-"component": "Spot",
-"group": null,
-"order": 0,
-"size": [
-256,
-256
-],
-"kb": 13
-},
-{
-"src": "assets/icons/binder.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__binder.jpg",
+"src": "assets/icons/binder.svg",
+"thumb": "assets/icons/binder.svg",
 "cat": "icon",
 "status": "live",
 "title": "binder",
-"note": "assets/icons/binder.png",
+"note": "assets/icons/binder.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 3
+"size": null,
+"kb": 1
 },
 {
-"src": "assets/icons/borescope.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__borescope.jpg",
+"src": "assets/icons/borescope.svg",
+"thumb": "assets/icons/borescope.svg",
 "cat": "icon",
 "status": "live",
 "title": "borescope",
-"note": "assets/icons/borescope.png",
+"note": "assets/icons/borescope.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 4
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/calendar.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__calendar.jpg",
+"src": "assets/icons/briefcase.svg",
+"thumb": "assets/icons/briefcase.svg",
+"cat": "icon",
+"status": "live",
+"title": "briefcase",
+"note": "assets/icons/briefcase.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 0
+},
+{
+"src": "assets/icons/building.svg",
+"thumb": "assets/icons/building.svg",
+"cat": "icon",
+"status": "live",
+"title": "building",
+"note": "assets/icons/building.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/calendar.svg",
+"thumb": "assets/icons/calendar.svg",
 "cat": "icon",
 "status": "live",
 "title": "calendar",
-"note": "assets/icons/calendar.png",
+"note": "assets/icons/calendar.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 5
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/carbon-filter.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__carbon-filter.jpg",
+"src": "assets/icons/carbon-filter.svg",
+"thumb": "assets/icons/carbon-filter.svg",
 "cat": "icon",
 "status": "live",
 "title": "carbon filter",
-"note": "assets/icons/carbon-filter.png",
+"note": "assets/icons/carbon-filter.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 3
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/conductivity.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__conductivity.jpg",
+"src": "assets/icons/checklist.svg",
+"thumb": "assets/icons/checklist.svg",
+"cat": "icon",
+"status": "live",
+"title": "checklist",
+"note": "assets/icons/checklist.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/clipboard.svg",
+"thumb": "assets/icons/clipboard.svg",
+"cat": "icon",
+"status": "live",
+"title": "clipboard",
+"note": "assets/icons/clipboard.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/clock.svg",
+"thumb": "assets/icons/clock.svg",
+"cat": "icon",
+"status": "live",
+"title": "clock",
+"note": "assets/icons/clock.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 0
+},
+{
+"src": "assets/icons/conductivity.svg",
+"thumb": "assets/icons/conductivity.svg",
 "cat": "icon",
 "status": "live",
 "title": "conductivity",
-"note": "assets/icons/conductivity.png",
+"note": "assets/icons/conductivity.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 3
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/edi.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__edi.jpg",
+"src": "assets/icons/cpu.svg",
+"thumb": "assets/icons/cpu.svg",
+"cat": "icon",
+"status": "live",
+"title": "cpu",
+"note": "assets/icons/cpu.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/database.svg",
+"thumb": "assets/icons/database.svg",
+"cat": "icon",
+"status": "live",
+"title": "database",
+"note": "assets/icons/database.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 0
+},
+{
+"src": "assets/icons/dna.svg",
+"thumb": "assets/icons/dna.svg",
+"cat": "icon",
+"status": "live",
+"title": "dna",
+"note": "assets/icons/dna.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/document.svg",
+"thumb": "assets/icons/document.svg",
+"cat": "icon",
+"status": "live",
+"title": "document",
+"note": "assets/icons/document.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/droplet.svg",
+"thumb": "assets/icons/droplet.svg",
+"cat": "icon",
+"status": "live",
+"title": "droplet",
+"note": "assets/icons/droplet.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 0
+},
+{
+"src": "assets/icons/edi.svg",
+"thumb": "assets/icons/edi.svg",
 "cat": "icon",
 "status": "live",
 "title": "edi",
-"note": "assets/icons/edi.png",
+"note": "assets/icons/edi.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 5
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/gauge.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__gauge.jpg",
+"src": "assets/icons/factory.svg",
+"thumb": "assets/icons/factory.svg",
+"cat": "icon",
+"status": "live",
+"title": "factory",
+"note": "assets/icons/factory.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/gauge.svg",
+"thumb": "assets/icons/gauge.svg",
 "cat": "icon",
 "status": "live",
 "title": "gauge",
-"note": "assets/icons/gauge.png",
+"note": "assets/icons/gauge.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 5
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/heat-exchanger.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__heat-exchanger.jpg",
+"src": "assets/icons/heat-exchanger.svg",
+"thumb": "assets/icons/heat-exchanger.svg",
 "cat": "icon",
 "status": "live",
 "title": "heat exchanger",
-"note": "assets/icons/heat-exchanger.png",
+"note": "assets/icons/heat-exchanger.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 2
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/loop.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__loop.jpg",
+"src": "assets/icons/lifebuoy.svg",
+"thumb": "assets/icons/lifebuoy.svg",
+"cat": "icon",
+"status": "live",
+"title": "lifebuoy",
+"note": "assets/icons/lifebuoy.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/loop.svg",
+"thumb": "assets/icons/loop.svg",
 "cat": "icon",
 "status": "live",
 "title": "loop",
-"note": "assets/icons/loop.png",
+"note": "assets/icons/loop.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 3
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/magnifier.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__magnifier.jpg",
+"src": "assets/icons/magnifier.svg",
+"thumb": "assets/icons/magnifier.svg",
 "cat": "icon",
 "status": "live",
 "title": "magnifier",
-"note": "assets/icons/magnifier.png",
+"note": "assets/icons/magnifier.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 4
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/ozone.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__ozone.jpg",
+"src": "assets/icons/monitor.svg",
+"thumb": "assets/icons/monitor.svg",
+"cat": "icon",
+"status": "live",
+"title": "monitor",
+"note": "assets/icons/monitor.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 0
+},
+{
+"src": "assets/icons/network.svg",
+"thumb": "assets/icons/network.svg",
+"cat": "icon",
+"status": "live",
+"title": "network",
+"note": "assets/icons/network.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/newspaper.svg",
+"thumb": "assets/icons/newspaper.svg",
+"cat": "icon",
+"status": "live",
+"title": "newspaper",
+"note": "assets/icons/newspaper.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/ozone.svg",
+"thumb": "assets/icons/ozone.svg",
 "cat": "icon",
 "status": "live",
 "title": "ozone",
-"note": "assets/icons/ozone.png",
+"note": "assets/icons/ozone.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 4
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/pid.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__pid.jpg",
+"src": "assets/icons/people.svg",
+"thumb": "assets/icons/people.svg",
+"cat": "icon",
+"status": "live",
+"title": "people",
+"note": "assets/icons/people.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/phone.svg",
+"thumb": "assets/icons/phone.svg",
+"cat": "icon",
+"status": "live",
+"title": "phone",
+"note": "assets/icons/phone.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/pid.svg",
+"thumb": "assets/icons/pid.svg",
 "cat": "icon",
 "status": "live",
 "title": "pid",
-"note": "assets/icons/pid.png",
+"note": "assets/icons/pid.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 4
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/pump.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__pump.jpg",
+"src": "assets/icons/pill.svg",
+"thumb": "assets/icons/pill.svg",
+"cat": "icon",
+"status": "live",
+"title": "pill",
+"note": "assets/icons/pill.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 0
+},
+{
+"src": "assets/icons/pin.svg",
+"thumb": "assets/icons/pin.svg",
+"cat": "icon",
+"status": "live",
+"title": "pin",
+"note": "assets/icons/pin.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 0
+},
+{
+"src": "assets/icons/pump.svg",
+"thumb": "assets/icons/pump.svg",
 "cat": "icon",
 "status": "live",
 "title": "pump",
-"note": "assets/icons/pump.png",
+"note": "assets/icons/pump.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 6
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/pure-steam.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__pure-steam.jpg",
+"src": "assets/icons/pure-steam.svg",
+"thumb": "assets/icons/pure-steam.svg",
 "cat": "icon",
 "status": "live",
 "title": "pure steam",
-"note": "assets/icons/pure-steam.png",
+"note": "assets/icons/pure-steam.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 3
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/ro-membrane.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__ro-membrane.jpg",
+"src": "assets/icons/ro-membrane.svg",
+"thumb": "assets/icons/ro-membrane.svg",
 "cat": "icon",
 "status": "live",
 "title": "ro membrane",
-"note": "assets/icons/ro-membrane.png",
+"note": "assets/icons/ro-membrane.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 2
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/softener.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__softener.jpg",
+"src": "assets/icons/shield.svg",
+"thumb": "assets/icons/shield.svg",
+"cat": "icon",
+"status": "live",
+"title": "shield",
+"note": "assets/icons/shield.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/softener.svg",
+"thumb": "assets/icons/softener.svg",
 "cat": "icon",
 "status": "live",
 "title": "softener",
-"note": "assets/icons/softener.png",
+"note": "assets/icons/softener.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 3
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/stamp.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__stamp.jpg",
+"src": "assets/icons/stamp.svg",
+"thumb": "assets/icons/stamp.svg",
 "cat": "icon",
 "status": "live",
 "title": "stamp",
-"note": "assets/icons/stamp.png",
+"note": "assets/icons/stamp.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 3
+"size": null,
+"kb": 1
 },
 {
-"src": "assets/icons/still.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__still.jpg",
+"src": "assets/icons/still.svg",
+"thumb": "assets/icons/still.svg",
 "cat": "icon",
 "status": "live",
 "title": "still",
-"note": "assets/icons/still.png",
+"note": "assets/icons/still.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 3
+"size": null,
+"kb": 1
 },
 {
-"src": "assets/icons/tank.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__tank.jpg",
+"src": "assets/icons/syringe.svg",
+"thumb": "assets/icons/syringe.svg",
+"cat": "icon",
+"status": "live",
+"title": "syringe",
+"note": "assets/icons/syringe.svg",
+"component": "Icon",
+"group": null,
+"order": 0,
+"size": null,
+"kb": 1
+},
+{
+"src": "assets/icons/tank.svg",
+"thumb": "assets/icons/tank.svg",
 "cat": "icon",
 "status": "live",
 "title": "tank",
-"note": "assets/icons/tank.png",
+"note": "assets/icons/tank.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 3
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/toc.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__toc.jpg",
+"src": "assets/icons/toc.svg",
+"thumb": "assets/icons/toc.svg",
 "cat": "icon",
 "status": "live",
 "title": "toc",
-"note": "assets/icons/toc.png",
+"note": "assets/icons/toc.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 4
+"size": null,
+"kb": 1
 },
 {
-"src": "assets/icons/uv.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__uv.jpg",
+"src": "assets/icons/uv.svg",
+"thumb": "assets/icons/uv.svg",
 "cat": "icon",
 "status": "live",
 "title": "uv",
-"note": "assets/icons/uv.png",
+"note": "assets/icons/uv.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 2
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/valve.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__valve.jpg",
+"src": "assets/icons/valve.svg",
+"thumb": "assets/icons/valve.svg",
 "cat": "icon",
 "status": "live",
 "title": "valve",
-"note": "assets/icons/valve.png",
+"note": "assets/icons/valve.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 4
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/weld.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__weld.jpg",
+"src": "assets/icons/weld.svg",
+"thumb": "assets/icons/weld.svg",
 "cat": "icon",
 "status": "live",
 "title": "weld",
-"note": "assets/icons/weld.png",
+"note": "assets/icons/weld.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 2
+"size": null,
+"kb": 0
 },
 {
-"src": "assets/icons/wrench.png",
-"thumb": "design-system/inspiration/thumbs/assets__icons__wrench.jpg",
+"src": "assets/icons/wrench.svg",
+"thumb": "assets/icons/wrench.svg",
 "cat": "icon",
 "status": "live",
 "title": "wrench",
-"note": "assets/icons/wrench.png",
+"note": "assets/icons/wrench.svg",
 "component": "Icon",
 "group": null,
 "order": 0,
-"size": [
-96,
-96
-],
-"kb": 4
+"size": null,
+"kb": 1
 },
 {
 "src": "brand/favicon.svg",

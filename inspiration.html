@@ -19,7 +19,7 @@ body { background: var(--surface); }
 .mg-head h1 { margin: 0; }
 .mg-head .aq-lead { max-width: 62ch; }
 .mg-stats { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-8); margin-top: var(--space-6); font: 400 13px/18px var(--font-mono); color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.mg-stats b { display: block; font: 600 40px/40px var(--font-display); color: var(--ink); letter-spacing: 0; }
+.mg-stats b { display: block; font: 300 40px/44px var(--font-sans); color: var(--ink); letter-spacing: -0.02em; }
 .mg-links { margin-top: var(--space-4); font: 400 13px/18px var(--font-mono); }
 .mg-links a { color: var(--action); }
 
@@ -39,8 +39,8 @@ body { background: var(--surface); }
 .mg-count { font: 400 13px/18px var(--font-mono); color: var(--ink-muted); }
 
 .mg-group { padding-block: var(--space-10) var(--space-4); }
-.mg-group__hd { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4); margin-bottom: var(--space-5); padding-top: var(--space-3); border-top: 2px solid var(--ink); }
-.mg-group__hd h2 { margin: 0; font: 600 32px/34px var(--font-display); text-transform: uppercase; color: var(--ink); }
+.mg-group__hd { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4); margin-bottom: var(--space-5); padding-top: var(--space-4); border-top: 1px solid var(--line-strong); }
+.mg-group__hd h2 { margin: 0; font: 300 32px/38px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
 .mg-group__hd span { font: 400 13px/18px var(--font-mono); color: var(--ink-muted); }
 .mg-group__hd p { flex-basis: 100%; margin: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); max-width: 80ch; }
 .mg-sub { margin: var(--space-6) 0 var(--space-3); font: 500 13px/18px var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); }
@@ -69,7 +69,7 @@ body { background: var(--surface); }
 .mg-lb__stage img { max-width: 100%; height: auto; display: block; border: 1px solid var(--line); background: var(--surface-raised); }
 .mg-lb__stage .mg-mask { width: min(100%, 720px); aspect-ratio: 1; background: var(--ink); -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
 .mg-lb__side { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); border-left: 1px solid var(--line); overflow: auto; }
-.mg-lb__side h3 { margin: 0; font: 600 34px/36px var(--font-display); text-transform: uppercase; color: var(--ink); overflow-wrap: anywhere; }
+.mg-lb__side h3 { margin: 0; font: 300 28px/34px var(--font-sans); color: var(--ink); overflow-wrap: anywhere; }
 .mg-lb__side dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: var(--space-2) var(--space-4); font: 400 13px/18px var(--font-mono); }
 .mg-lb__side dt { color: var(--ink-subtle); text-transform: uppercase; letter-spacing: 0.06em; font-size: 12px; }
 .mg-lb__side dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
@@ -88,7 +88,7 @@ body { background: var(--surface); }
   .mg-lb { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; }
   .mg-lb__stage { padding: var(--space-3); }
   .mg-lb__side { border-left: 0; border-top: 1px solid var(--line); max-height: 45vh; padding: var(--space-4); }
-  .mg-lb__side h3 { font-size: 26px; line-height: 28px; }
+  .mg-lb__side h3 { font-size: 24px; line-height: 30px; }
 }
 </style>
 </head>
@@ -129,13 +129,12 @@ body { background: var(--surface); }
     ['gemini', 'Gemini originals', 'Full-resolution outputs from Gemini, oldest first. Section concepts, equipment art, icon and spot sheets.'],
     ['capture', 'Concept captures', 'The crops each component was rebuilt from. Mapping in design-system/inspiration/README.md.'],
     ['drawing', 'Equipment drawings', 'The page drawings as the site paints them: transparent masks in assets/illustrations/.'],
-    ['spot', 'Spot drawings', 'Equipment vignettes cut from the spots sheet (assets/spots/).'],
-    ['icon', 'Icons', 'Row icons cut from the icon sheet (assets/icons/).'],
+    ['icon', 'Icons', 'The site icon set: Lucide-style SVGs at 1.5 px, Lucide plus equipment icons drawn on its grid (assets/icons/).'],
     ['brand', 'Brand', 'Logo, lockup, mark and favicon (brand/).'],
     ['source', 'Drawing sources', 'Black-on-white sources the equipment masks were cleaned from (design-system/inspiration/art/).'],
     ['snapshot', 'Page snapshots', 'What every page looked like at each design pass, desktop and phone.'],
     ['fidelity', 'Concept beside build', 'Concept, desktop build and phone build side by side, from the fidelity pass.'],
-    ['archive', 'Archive', 'Superseded versions, kept for the record.']
+    ['archive', 'Archive', 'Superseded and retired files, kept for the record: replaced concepts, and the raster icons and spot drawings the site used before the Lucide-style SVG set.']
   ];
   var STATUS = [
     ['live', 'Live on the site'], ['built', 'Became a component'], ['source', 'Source of a site drawing'],
