@@ -465,6 +465,7 @@
      "type": "faq",
      "h": "Questions teams ask first",
      "nav": "FAQ",
+     "anchor": "faq",
      "items": [
       {
        "q": "We pay for exchange DI. When does a package make sense?",
@@ -4139,6 +4140,7 @@
     {
      "type": "options",
      "nav": "Adjacent uses",
+     "anchor": "adjacent",
      "h": "Outside drug and device manufacturing",
      "items": [
       {
@@ -5947,6 +5949,7 @@
     {
      "type": "grid",
      "nav": "Certification",
+     "anchor": "certification",
      "h": "Certification status",
      "items": [
       {
