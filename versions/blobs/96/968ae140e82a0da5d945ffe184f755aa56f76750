@@ -1,0 +1,280 @@
+{
+ "id": "ind-cdmo",
+ "section": "Industries",
+ "nav_label": "Contract manufacturing (CDMO)",
+ "title": "CDMO water systems: client-auditable Purified Water | Aquemi",
+ "meta": "Purified Water (PW) for CDMOs, built to the stricter of USP and Ph. Eur. on each attribute, with Part 11 trend data and an audit pack every client can follow.",
+ "path": "/industries/cdmo/",
+ "eyebrow": "CONTRACT MANUFACTURING · USP AND PH. EUR.",
+ "headline": "One water system, every client's auditor",
+ "lead": "PW systems built to the stricter of USP and Ph. Eur., with records each client can audit. Where a program needs WFI, you generate it from our PW.",
+ "primary_cta": "Request a CDMO water scope review",
+ "primary_cta_intent": "Water scope review for your products|CDMO or contract manufacturing",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "facts": [
+  {
+   "v": "USP + Ph. Eur.",
+   "l": "Stricter value on each attribute"
+  },
+  {
+   "v": "[hours]",
+   "l": "On-site response, severity 1"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "table",
+   "as": "router",
+   "nav": "Where to start",
+   "h": "Start from your situation",
+   "cols": [
+    "Your situation",
+    "Water you need",
+    "Systems",
+    "Start with"
+   ],
+   "rows": [
+    [
+     "A new client program with a tech transfer date",
+     "Spare peak capacity and a new outlet, qualified before PPQ batches",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Process design",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "Clients filing in Canada, the US and Europe",
+     "USP and Ph. Eur. on every attribute, tested at FAT",
+     {
+      "t": "Standards we design to",
+      "link": "compliance"
+     },
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "A client audit or supplier questionnaire",
+     "An audit pack for the period, without other clients' data",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Documentation package",
+      "link": "cmp-documentation"
+     }
+    ],
+    [
+     "One generation train: an outage stops several clients",
+     "Duplex or N+1 generation and pumps; storage sized to your longest repair",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Service and spare parts",
+      "link": "svc-service"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Strictest of",
+   "h": "Where USP and Ph. Eur. differ",
+   "intro": "Each program's markets go into the compliance matrix before design.",
+   "cols": [
+    "Attribute",
+    "USP",
+    "Ph. Eur.",
+    "We design to"
+   ],
+   "rows": [
+    [
+     "Conductivity, PW",
+     "≤ 1.3 µS/cm @ 25 °C, stage 1",
+     "≤ 5.1 µS/cm @ 25 °C",
+     "USP <645>, the stricter"
+    ]
+   ]
+  },
+  {
+   "type": "options",
+   "as": "modules",
+   "nav": "Uptime",
+   "h": "Uptime is revenue: redundancy, priced",
+   "base": "Shared site loop",
+   "items": [
+    {
+     "t": "Duplex generation",
+     "spot": "ro-skid",
+     "d": "Two RO and EDI trains, each [design share of peak demand per train, %]; one runs during service."
+    },
+    {
+     "t": "N+1 pumps",
+     "spot": "pump",
+     "d": "A standby pump on each loop with automatic changeover; a seal failure never stops circulation."
+    },
+    {
+     "t": "Storage autonomy",
+     "spot": "storage-tank",
+     "d": "Tank sized from peak draw and your longest credible repair, stated in hours of supply."
+    },
+    {
+     "t": "Sanitize between campaigns",
+     "spot": "heat-exchanger",
+     "d": "Loops sanitized between client campaigns; duplex trains one at a time, without a shutdown."
+    },
+    {
+     "t": "Spares on your site",
+     "spot": "wrench",
+     "d": "Critical spares held on site, with a stated severity 1 on-site response."
+    },
+    {
+     "t": "Sized for the pipeline",
+     "spot": "pid",
+     "d": "Spare skid space and valved tie-ins for expected programs, qualified with the original system."
+    }
+   ],
+   "fold": 3,
+   "fold_noun": "options"
+  },
+  {
+   "type": "docs",
+   "nav": "Audit pack",
+   "h": "The client audit pack",
+   "intro": "Exports by date, outlet and suite, with no other client's data.",
+   "items": [
+    {
+     "t": "System description",
+     "key": true,
+     "d": "PW generation, loops, outlets by suite, sanitization"
+    },
+    {
+     "t": "Compliance matrix",
+     "key": true,
+     "d": "Every USP and Ph. Eur. attribute, its design value and where it is tested"
+    },
+    {
+     "t": "Qualification summary",
+     "d": "FAT, SAT, IQ, OQ and PQ, deviations and approvals"
+    },
+    {
+     "t": "Trend reports",
+     "d": "Conductivity, TOC, microbial and endotoxin against alert and action levels"
+    },
+    {
+     "t": "Excursion summary",
+     "d": "Root cause, corrective action, product impact, batches that drew water"
+    },
+    {
+     "t": "Change log",
+     "d": "Changes since qualification, with risk assessment and requalification scope"
+    }
+   ],
+   "fold": 4,
+   "fold_noun": "documents"
+  },
+  {
+   "type": "steps",
+   "nav": "Tech transfer",
+   "h": "From signed program to released water",
+   "items": [
+    {
+     "t": "Intake and gap check",
+     "d": "Grade, markets, peak draw and PPQ dates; within [gap check turnaround, working days], what the program needs."
+    },
+    {
+     "t": "Change control",
+     "d": "Risk assessment and requalification scope stated before design, for you and your client."
+    },
+    {
+     "t": "Build and tie in",
+     "d": "Drops, tie-ins or a skid built in our shop, installed in your planned shutdown."
+    },
+    {
+     "t": "Release",
+     "d": "IQ and OQ of the new section, increased sampling, then release: [new point of use, order to release, weeks]."
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions CDMO teams ask",
+   "items": [
+    {
+     "q": "Who will audit the water system?",
+     "a": "Health Canada under your establishment licence (GUI-0001), the FDA when a client files in the US, EU Qualified Persons, other PIC/S authorities, and each client's quality unit."
+    },
+    {
+     "q": "Who owns the water system data, us or our clients?",
+     "a": "You do: it is a site utility. Your quality agreements (ICH Q10, 2.7) set what each client receives. We build reporting so no client sees another's data."
+    },
+    {
+     "q": "Can you attend our clients' audits?",
+     "a": "[client audit attendance and terms]"
+    },
+    {
+     "q": "Our system is another builder's, with paper records. Where do we start?",
+     "a": "With a system assessment: drawings, qualification file, trends and data integrity checked against your clients' markets. You get a gap list ranked by audit risk."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where CDMO buyers go next",
+   "items": [
+    "compliance",
+    "sys-pw",
+    "sys-monitoring",
+    "svc-service"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your programs and uptime target",
+  "body": "A process engineer replies, with the scope or our questions.",
+  "button": "Request a CDMO water scope review",
+  "link": "contact-proposal",
+  "intent": "Water scope review for your products|CDMO or contract manufacturing",
+  "include": [
+   "Client programs and the grade each needs",
+   "Markets each client files in",
+   "Peak draw by suite, L/h",
+   "Longest acceptable outage, hours, and its cost"
+  ],
+  "returns": [
+   "The specification",
+   "The redundancy to hold it",
+   "The qualification scope"
+  ],
+  "turnaround": "[proposal response time, working days]"
+ },
+ "todo": [
+  "Confirm CDMOs and contract manufacturers are a target segment",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Design share of peak demand per duplex train, % (uptime options)",
+  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service); service coverage area (hero fact, uptime options)",
+  "Gap check turnaround for a new client program, working days (tech transfer steps)",
+  "Typical span from order to release for a new point of use on a qualified loop, weeks ([new point of use, order to release, weeks]; tech transfer steps)",
+  "Confirm Aquemi attends client audits and inspections as supplier, in person or by video, and on what terms: in a service plan or per day ([client audit attendance and terms]; FAQ)",
+  "Confirm whether Aquemi provides a water system capability sheet and questionnaire support for CDMO business development, and whether service plans include it ([capability sheet and questionnaire support]; FAQ)",
+  "Confirm the client audit pack is part of the handover scope or an option, and whether service plans refresh its trend reports (audit pack)",
+  "Confirm the monitoring system can report by suite, point of use and date range (audit pack intro); align with sys-monitoring",
+  "CDMO references available for a call, number and type, or a plain 'none yet' ([CDMO references available for a call]; FAQ)",
+  "A CDMO case study with measured outcome; add a case block when one exists",
+  "Is the scope review free, and its turnaround",
+  "Confirm the WFI wording (lead): Aquemi supplies PW only; a CDMO that needs WFI generates it on site from Aquemi PW",
+  "Contact-proposal page: add a 'CDMO water scope review' intent with client program, market and uptime fields"
+ ]
+}

@@ -1,0 +1,270 @@
+{
+ "id": "home",
+ "section": "Home",
+ "nav_label": "Home",
+ "title": "Purified Water systems: pretreatment, RO, DI/EDI | Aquemi",
+ "meta": "One modular Purified Water package: PVC pretreatment, polypropylene RO, DI or EDI and distribution, built to USP <645> and <643>, wet FAT tested, qualified and serviced in Canada.",
+ "path": "/",
+ "eyebrow": "PW · RO · DI/EDI · USP <645>, <643> · PH. EUR. 0008",
+ "headline": "Modular Purified Water systems, from pretreatment to the point of use",
+ "lead": "One modular package makes Purified Water (PW): PVC pretreatment, polypropylene (PP) RO and DI or EDI, and distribution. Designed, built and serviced in Canada.",
+ "primary_cta": "Request a proposal",
+ "primary_cta_intent": "Sizing and budget proposal for a new system",
+ "secondary_cta": {
+  "label": "See the systems",
+  "link": "systems"
+ },
+ "facts": [
+  {
+   "v": "100 %",
+   "l": "Skids wet tested at FAT"
+  },
+  {
+   "v": "≤ 1.3 µS/cm",
+   "l": "PW conductivity at 25 °C · USP <645>"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "path",
+   "h": "One package, one water path",
+   "intro": "Pretreatment to point of use in one modular package. We state where our scope ends.",
+   "from": "City feed",
+   "to": "Point of use",
+   "items": [
+    {
+     "t": "Pretreatment",
+     "d": "A PVC train: no detectable chlorine or chloramine at the RO inlet, SDI ≤ 3, every season.",
+     "tag": "USP <1231>",
+     "link": "sys-pretreatment",
+     "spot": "pretreatment"
+    },
+    {
+     "t": "PW generation",
+     "d": "A PP skid with RO and DI or EDI, below 1.3 µS/cm at 25 °C and 500 ppb TOC.",
+     "tag": "USP <645>",
+     "link": "sys-pw",
+     "spot": "ro-skid"
+    },
+    {
+     "t": "Storage and distribution",
+     "d": "PP tank and loop: turbulent flow at peak draw, sanitized by [PP loop sanitization method].",
+     "tag": "WHO TRS 1033",
+     "link": "sys-storage",
+     "spot": "storage-tank"
+    },
+    {
+     "t": "Monitoring and controls",
+     "d": "Online TOC and conductivity on the uncompensated reading, audit trails to 21 CFR Part 11.",
+     "tag": "21 CFR Part 11",
+     "link": "sys-monitoring",
+     "icon": "conductivity"
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Same limits, different evidence by industry",
+   "intro": "Your products set the grade; your regulator sets the evidence.",
+   "items": [
+    {
+     "t": "Pharmaceutical",
+     "d": "PW for oral and topical products, and as feed to the WFI still you run. Inspected under GUI-0001.",
+     "tag": "GUI-0001",
+     "link": "ind-pharma"
+    },
+    {
+     "t": "Medical devices",
+     "d": "PW for rinse and process steps, with the grade worked back from your device limits.",
+     "tag": "USP <1231>",
+     "link": "ind-meddevice"
+    },
+    {
+     "t": "Contract manufacturing",
+     "d": "The stricter of USP and Ph. Eur. on each attribute; records any client auditor follows.",
+     "tag": "USP · Ph. Eur.",
+     "link": "ind-cdmo"
+    }
+   ],
+   "ground": "light"
+  },
+  {
+   "type": "steps",
+   "h": "How a project runs",
+   "items": [
+    {
+     "t": "Design",
+     "d": "Your URS becomes a functional specification, P&IDs and a risk assessment, verified at DQ."
+    },
+    {
+     "t": "Fabricate",
+     "d": "PP skids to [PP piping standard], joined by [PP joining method, for example butt fusion or IR welding], each joint logged."
+    },
+    {
+     "t": "FAT",
+     "d": "A wet FAT to a protocol your quality unit approves, witnessed in person or remotely."
+    },
+    {
+     "t": "SAT and IQ/OQ",
+     "d": "SAT on your feed water and utilities, then IQ/OQ to protocols your quality unit approved."
+    },
+    {
+     "t": "PQ and service",
+     "d": "PQ support through 12 months of data, then service that keeps it qualified."
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Service is half the system",
+   "intro": "Every service plan fixes these terms before you sign.",
+   "ground": "light",
+   "items": [
+    {
+     "t": "Response time",
+     "d": "Stated for four severities; severity 1 inside [service coverage area].",
+     "icon": "calendar",
+     "link": "svc-service"
+    },
+    {
+     "t": "Your change control",
+     "d": "Like-for-like parts, or the change goes through your change control first.",
+     "icon": "stamp",
+     "link": "svc-service"
+    },
+    {
+     "t": "Fixed annual price",
+     "d": "Visits, calibrations and spares listed per plan.",
+     "icon": "wrench",
+     "link": "svc-service"
+    },
+    {
+     "t": "Signed record",
+     "d": "A signed service report after every visit, for your GMP file.",
+     "icon": "binder",
+     "link": "svc-service"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "as": "router",
+   "h": "Start from where your project is",
+   "intro": "Each route reaches an engineer, not a sales queue.",
+   "cols": [
+    "Your situation",
+    "Send us",
+    "What comes back",
+    "Where to start"
+   ],
+   "rows": [
+    [
+     "A new system, URS approved",
+     "Your URS, feed water analysis and peak demand in L/h",
+     "A process engineer's reply within [proposal response time, working days]",
+     {
+      "t": "Request a proposal",
+      "link": "contact-proposal"
+     }
+    ],
+    [
+     "A new system, URS in draft",
+     "A request for a URS gap review",
+     "The grades, systems and qualification scope your URS should state",
+     {
+      "t": "Request a URS review",
+      "link": "contact-proposal"
+     }
+    ],
+    [
+     "A project in qualification",
+     "Your commissioning and qualification plan",
+     "The IQ and OQ test list, FAT tests to leverage and a PQ sampling plan",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "A system to upgrade, any builder",
+     "What to change: controls, capacity, sanitization or a branch",
+     "Each option with its downtime and the requalification it triggers",
+     {
+      "t": "Upgrades",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "Production stopped",
+     "A call to [service phone number], [service phone hours]",
+     "On site in [severity 1 on-site response time, hours] on a service plan",
+     {
+      "t": "Service request",
+      "link": "contact-service"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions before the first call",
+   "items": [
+    {
+     "q": "You are smaller than the global manufacturers. Why take the risk?",
+     "a": "Judge us on evidence, not size: audit our quality system, witness a FAT, read a sample turnover package, call a reference. Your system’s designer answers your auditor."
+    },
+    {
+     "q": "Is your system USP certified?",
+     "a": "No water system is. USP and Ph. Eur. set limits for water, not approvals for equipment. Compliance is water meeting the monograph at your points of use, with records."
+    },
+    {
+     "q": "What does being Canadian change?",
+     "a": "Travel, registration and response. Your team drives to the FAT in [test bay location, city and province]; [parts that carry a CRN under CSA B51, if any]."
+    },
+    {
+     "q": "We do not have a URS yet. Is it too early to ask?",
+     "a": "No. Ask for a URS gap review: we return the grades, systems and qualification scope your URS should state. [Confirm: no obligation, usable in your tender]"
+    },
+    {
+     "q": "Can our teams witness the FAT?",
+     "a": "Yes, in person in [test bay location, city and province] or remotely; the protocol says which checks need a person on site."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your URS. An engineer replies.",
+  "button": "Request a proposal",
+  "link": "contact-proposal",
+  "intent": "Sizing and budget proposal for a new system",
+  "include": [
+   "Your URS, approved or in draft",
+   "Water grade and pharmacopoeia",
+   "Peak demand in L/h",
+   "Feed water analysis"
+  ],
+  "returns": [
+   "A proposal from a process engineer",
+   "A URS gap review or route assessment"
+  ],
+  "turnaround": "[proposal response time, working days]"
+ },
+ "todo": [
+  "Hero photograph of a finished Aquemi skid or installed loop",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service); service coverage area",
+  "Service phone number and service phone hours",
+  "Test bay location, city and province",
+  "Service bases, cities",
+  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
+  "FAT witness costs: whether FAT witness time, travel and remote witness are included in the equipment price or quoted separately",
+  "Confirm reviews carry no obligation and may be used in the client's own tender",
+  "Confirm every skid in the PW package is wet tested at FAT (hero fact 100 %); loops fabricated on site are tested at SAT",
+  "Confirm the standards strip against the standards Aquemi designs to routinely",
+  "Standard the PP skid and loop piping is designed to ([PP piping standard])",
+  "PP joining method ([PP joining method, for example butt fusion or IR welding])",
+  "Sanitization method for the PP tank and loop, and its maximum temperature ([PP loop sanitization method])",
+  "Which package parts, if any, carry a CRN under CSA B51 ([parts that carry a CRN under CSA B51, if any])",
+  "One real case study with client permission (home shows proof routes until it exists)"
+ ]
+}

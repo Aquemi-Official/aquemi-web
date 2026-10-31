@@ -1,0 +1,272 @@
+{
+ "id": "industries",
+ "section": "Industries",
+ "nav_label": "Industries",
+ "title": "Purified Water systems by industry: pharma, devices, CDMO | Aquemi",
+ "meta": "Purified Water (PW) by industry: USP <645> and <643> limits, the regulator who inspects each, and where pharma, device and CDMO buyers start.",
+ "path": "/industries/",
+ "eyebrow": "INDUSTRIES · PHARMA · DEVICES · CDMO",
+ "headline": "Your product sets the grade",
+ "lead": "We supply Purified Water (PW) systems. PW limits are the same in every industry; what changes is where water touches product and who reads the record.",
+ "facts": [
+  {
+   "v": "≤ 1.3 µS/cm",
+   "l": "Conductivity at 25 °C · USP <645>"
+  },
+  {
+   "v": "≤ 500 ppb",
+   "l": "TOC · USP <643>"
+  },
+  {
+   "v": "100 CFU/mL",
+   "l": "PW action level · USP <1231>"
+  },
+  {
+   "v": "20.0 EU",
+   "l": "Per device · USP <161>"
+  }
+ ],
+ "primary_cta": "Request a water scope review",
+ "primary_cta_intent": "Water scope review for your products",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "index": true,
+ "blocks": [
+  {
+   "type": "table",
+   "as": "router",
+   "nav": "Where to start",
+   "h": "Your situation and where to start",
+   "cols": [
+    "Your situation",
+    "Industry page",
+    "Start with the system",
+    "Or the service"
+   ],
+   "rows": [
+    [
+     "A new oral solid or liquids line, or NHPs moving to PW",
+     {
+      "t": "Pharmaceutical",
+      "link": "ind-pharma"
+     },
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Process design: URS review",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "Endotoxin or bioburden drifting on finished devices",
+     {
+      "t": "Medical devices",
+      "link": "ind-meddevice"
+     },
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Upgrades: system assessment",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "A new client program with a tech transfer date",
+     {
+      "t": "Contract manufacturing",
+      "link": "ind-cdmo"
+     },
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "A water observation from an inspector or client",
+     {
+      "t": "Standards we design to",
+      "link": "compliance"
+     },
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Upgrades: system assessment",
+      "link": "svc-upgrades"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "By industry",
+   "h": "Grade, limit and inspector by industry",
+   "cols": [
+    "Industry",
+    "Grades and uses",
+    "Limit that decides the design",
+    "Who inspects"
+   ],
+   "rows": [
+    [
+     {
+      "t": "Pharma, non-sterile",
+      "link": "ind-pharma"
+     },
+     "PW for granulation, coating and rinse",
+     "USP <645> and <643>; nitrates (waived at WFI conductivity, Ph. Eur. 11.4)",
+     "Health Canada GUI-0001; FDA 21 CFR 211"
+    ],
+    [
+     {
+      "t": "Pharma, sterile",
+      "link": "ind-pharma"
+     },
+     "PW for early rinses and as feed to your WFI still; you generate the WFI",
+     "USP <645> and <643>; your still maker's feed specification",
+     "Health Canada GUI-0119; FDA; EU authorities"
+    ],
+    [
+     {
+      "t": "Medical devices",
+      "link": "ind-meddevice"
+     },
+     "PW final rinse, with an endotoxin limit where devices need one",
+     "USP <161> per device; ISO 11737-1 bioburden",
+     "MDSAP to ISO 13485; FDA 21 CFR 820"
+    ],
+    [
+     {
+      "t": "Contract manufacturing",
+      "link": "ind-cdmo"
+     },
+     "PW per client program, and PW feed to any WFI still on site",
+     "The stricter of USP and Ph. Eur. on each attribute",
+     "Regulators and each client’s quality unit"
+    ]
+   ]
+  },
+  {
+   "type": "options",
+   "nav": "Adjacent uses",
+   "h": "Outside drug and device manufacturing",
+   "intro": "The same RO and EDI platform. Our scope: [hospital, lab and industrial water scope].",
+   "items": [
+    {
+     "t": "Hospital reprocessing (MDRD)",
+     "d": "CSA Z314; ANSI/AAMI ST108 in the US. Critical water, usually duplex or N+1."
+    },
+    {
+     "t": "Research laboratories",
+     "d": "ASTM D1193 Types I to IV: a central RO and EDI loop, polished at the bench."
+    },
+    {
+     "t": "Industrial demineralized water",
+     "d": "Limits from your process or boiler maker; RO and EDI replace regenerated ion exchange."
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "nav": "Documents",
+   "h": "Documents every industry gets",
+   "items": [
+    {
+     "t": "Functional specification",
+     "d": "Limits and pharmacopoeias for each point of use"
+    },
+    {
+     "t": "P&IDs and general arrangement drawings"
+    },
+    {
+     "t": "Material certificates",
+     "d": "For every product-contact part"
+    },
+    {
+     "t": "FAT, SAT, IQ and OQ protocols",
+     "d": "With executed FAT and SAT reports"
+    },
+    {
+     "t": "Added by industry",
+     "code": "+",
+     "d": "Contamination control inputs for sterile drugs, rinse water specification for devices, client audit pack for CDMOs"
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Common questions",
+   "items": [
+    {
+     "q": "We make more than one kind of product. Which page do we read?",
+     "a": "The one for your strictest product. A combination product also reads the pharmaceutical page; a contract manufacturer reads the CDMO page."
+    },
+    {
+     "q": "Do the limits change with the industry?",
+     "a": "No. The pharmacopoeias set the same PW limits for everyone. The grade per step, device limits and the audit change."
+    },
+    {
+     "q": "Do you supply Water for Injection (WFI)?",
+     "a": "No. We supply PW systems: pretreatment, RO, EDI and distribution. Where your product needs WFI, you generate it on site; PW is the usual feed to a WFI still."
+    },
+    {
+     "q": "Our product is not in these three industries. Can you help?",
+     "a": "A drug, including a natural health product, reads the pharmaceutical page. Otherwise send the standard you work to; we answer plainly."
+    },
+    {
+     "q": "What does a scope review cost, and what comes back?",
+     "a": "[scope review cost or free], in [scope review turnaround, working days]: the grade each step needs, the PW system and the qualification scope."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "systems",
+    "services",
+    "compliance"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Tell us what you make",
+  "button": "Request a water scope review",
+  "link": "contact-proposal",
+  "intent": "Water scope review for your products",
+  "include": [
+   "What you make, and how it is sterilized",
+   "Markets and pharmacopoeias",
+   "Peak PW draw, L/h and m³/day",
+   "Feed water analysis, summer and winter"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "The grade each process step needs",
+   "The PW system to make and distribute it",
+   "Your qualification scope"
+  ]
+ },
+ "todo": [
+  "Confirm the three industries (pharmaceutical, medical devices, CDMO) are the target segments at launch",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Is the scope review free ([scope review cost or free]) and its turnaround ([scope review turnaround, working days]) (FAQ)",
+  "Industries where Aquemi has references available for a call, or 'none yet' per industry ([industries with references available for a call], FAQ)",
+  "Projects per industry to link once case studies exist",
+  "[hospital, lab and industrial water scope] (adjacent uses intro), per use. Hospital MDRD / sterile processing: new systems, upgrades, service only or not offered (keep in line with ind-meddevice, sys-pw, systems). Laboratory water (ASTM D1193): central systems and loops, point-of-use polishers, service only or not offered. Industrial demineralized water: new systems, ion exchange retrofits, service only or not offered",
+  "Confirm the WFI wording (FAQ, by-industry table): Aquemi supplies PW only; customers generate WFI on site, with Aquemi PW as the usual still feed",
+  "Contact-proposal page: a general 'water scope review' intent with an industry selector routing to the three industry-specific intents"
+ ]
+}

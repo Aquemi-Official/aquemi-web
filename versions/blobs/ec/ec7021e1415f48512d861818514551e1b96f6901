@@ -1,0 +1,487 @@
+{
+ "id": "contact-proposal",
+ "section": "Contact",
+ "nav_label": "Request a proposal",
+ "title": "Request a proposal, review or assessment | Aquemi",
+ "meta": "Sizing proposal, route assessment, URS, feedwater or C&Q review, or system assessment. An engineer replies in [proposal response time, working days].",
+ "path": "/contact/proposal/",
+ "eyebrow": "REQUEST A PROPOSAL OR REVIEW",
+ "headline": "Tell us what you need. An engineer replies.",
+ "lead": "Pick a review, an assessment or a sizing proposal; the form asks only what it needs. Nothing commits you to buy.",
+ "primary_cta": "Choose your request",
+ "blocks": [
+  {
+   "type": "contact-routes",
+   "h": "Three ways in",
+   "routes": [
+    {
+     "t": "Request a proposal or review",
+     "d": "New system, upgrade or document review.",
+     "steps": [
+      "Send what you have",
+      "An engineer reads it",
+      "Written answer, then a proposal"
+     ],
+     "clock": "Written reply within [proposal response time, working days]",
+     "link": "contact-proposal",
+     "action": "Choose your request",
+     "current": true
+    },
+    {
+     "t": "Production down or water off spec",
+     "d": "Severity 1. Answered [service phone hours]. Do not wait for a form.",
+     "phone": "[service phone number]",
+     "steps": [
+      "Call the service line",
+      "Triage confirms severity",
+      "Remote diagnosis, then on site"
+     ],
+     "clock": "Technician on site within [severity 1 on-site response time, hours]",
+     "link": "contact-service",
+     "urgent": true,
+     "action": "Log a service request"
+    },
+    {
+     "t": "Visit or audit the shop",
+     "d": "Tour, supplier audit or FAT witness at [shop location, city and province].",
+     "steps": [
+      "Purpose, dates, group",
+      "Date and agenda back",
+      "Records and test bay ready"
+     ],
+     "clock": "Date and agenda within [visit booking reply time, working days]",
+     "link": "contact-locations",
+     "action": "Book a visit"
+    }
+   ]
+  },
+  {
+   "type": "form",
+   "anchor": "intake",
+   "nav": "Send",
+   "h": "Choose your request, send what you have",
+   "intro": "Rough numbers are fine. Files can follow by email.",
+   "submit": "Send my request to an engineer",
+   "note": "Specifications stay confidential; NDA on request. Files kept [file storage location and retention, months]. [Privacy notice link]",
+   "steps": [
+    {
+     "title": "Your request",
+     "next": "Continue to the details",
+     "fields": [
+      {
+       "label": "What do you need?",
+       "kind": "radio",
+       "required": true,
+       "options": [
+        "Feedwater review",
+        "Review of a document you have",
+        "Water scope review for your products",
+        "Route assessment: which modules your water needs",
+        "Compliance matrix for your URS",
+        "Sizing and budget proposal for a new system",
+        "Assessment of an existing system, any make",
+        "Supplier qualification: audit, references, shop visit",
+        "Not sure yet: talk to an engineer"
+       ],
+       "help": "No URS yet? Pick a water scope review. One request per form."
+      },
+      {
+       "label": "Which document?",
+       "kind": "radio",
+       "required": true,
+       "when": "Review of a document you have",
+       "options": [
+        "URS (gap review)",
+        "Points-of-use list or loop design",
+        "Controls URS or functional specification",
+        "Fabrication or piping specification",
+        "C&Q plan or validation master plan (VMP)",
+        "URS or functional specification for a FAT test list"
+       ],
+       "help": "Draft or approved. We mark up each gap against its standard."
+      },
+      {
+       "label": "What do you need from us?",
+       "kind": "checkbox-group",
+       "required": true,
+       "when": "Supplier qualification: audit, references, shop visit",
+       "options": [
+        "Supplier questionnaire or audit pack",
+        "On-site supplier audit",
+        "Reference call",
+        "Shop visit or factory acceptance test (FAT) witness"
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Details",
+     "next": "Continue to contact details",
+     "fields": [
+      {
+       "label": "What do you make?",
+       "kind": "radio",
+       "required": true,
+       "options": [
+        "Pharmaceutical drug products",
+        "Biologics, vaccines, cell or gene therapy",
+        "Medical devices",
+        "CDMO or contract manufacturing",
+        "Hospital reprocessing, laboratory or industrial process",
+        "Another industry"
+       ]
+      },
+      {
+       "label": "Project stage",
+       "kind": "radio",
+       "required": false,
+       "options": [
+        "Feasibility or budget estimate",
+        "URS in preparation",
+        "URS approved, requesting proposals",
+        "Design or fabrication under way",
+        "Running system: upgrade, expansion or replacement"
+       ]
+      },
+      {
+       "label": "Target date for water on site",
+       "kind": "select",
+       "required": false,
+       "options": [
+        "Under 3 months",
+        "3 to 6 months",
+        "6 to 12 months",
+        "More than 12 months",
+        "No date yet"
+       ]
+      },
+      {
+       "label": "Water grades needed",
+       "kind": "checkbox-group",
+       "required": false,
+       "options": [
+        "Purified Water (PW)",
+        "Laboratory, hospital or process water"
+       ]
+      },
+      {
+       "label": "Pharmacopoeias you release against",
+       "kind": "checkbox-group",
+       "required": false,
+       "options": [
+        "USP",
+        "Ph. Eur.",
+        "JP",
+        "None: no pharmacopoeial grade",
+        "Not sure yet"
+       ]
+      },
+      {
+       "label": "Systems in scope",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Sizing and budget proposal for a new system|Assessment of an existing system, any make",
+       "options": [
+        "Purified Water (PW) generation",
+        "Storage and distribution loop",
+        "Pretreatment",
+        "Monitoring and controls",
+        "Not sure yet"
+       ]
+      },
+      {
+       "label": "Peak demand",
+       "kind": "number",
+       "unit": "L/h",
+       "required": false,
+       "help": "Highest hourly draw at the points of use."
+      },
+      {
+       "label": "Number of points of use",
+       "kind": "number",
+       "required": false
+      },
+      {
+       "label": "Feed water source",
+       "kind": "radio",
+       "required": false,
+       "options": [
+        "Municipal, chlorinated",
+        "Municipal, chloraminated",
+        "Changes between chlorine and chloramine",
+        "Well water",
+        "Already pretreated supply",
+        "Not sure yet"
+       ],
+       "help": "Disinfectant, hardness and silica set the pretreatment. Attach utility reports if you have them."
+      },
+      {
+       "label": "PLC and SCADA standard",
+       "kind": "text",
+       "required": false,
+       "when": "Controls URS or functional specification"
+      },
+      {
+       "label": "Material, joining and inspection you specify",
+       "kind": "text",
+       "required": false,
+       "when": "Fabrication or piping specification",
+       "help": "For example piping material and standard, joining method or joint inspection."
+      },
+      {
+       "label": "Make, model and year installed",
+       "kind": "text",
+       "required": true,
+       "when": "Assessment of an existing system, any make",
+       "help": "Any make. Faults and maintenance go to the service request page."
+      },
+      {
+       "label": "What should the assessment solve?",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Assessment of an existing system, any make",
+       "options": [
+        "More capacity or points of use",
+        "Out-of-specification water or alarms",
+        "Obsolete PLC or HMI",
+        "Dead legs or sanitization",
+        "Energy, water or chemical use",
+        "Replace or relocate"
+       ]
+      },
+      {
+       "label": "Preferred dates",
+       "kind": "text",
+       "required": false,
+       "when": "On-site supplier audit|Shop visit or factory acceptance test (FAT) witness"
+      },
+      {
+       "label": "System, grade and province the reference should match",
+       "kind": "text",
+       "required": false,
+       "when": "Reference call"
+      },
+      {
+       "label": "Dosage forms",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Pharmaceutical drug products",
+       "options": [
+        "Parenteral (injectable)",
+        "Sterile ophthalmic or nasal",
+        "Inhalation",
+        "Oral liquid",
+        "Oral solid",
+        "Topical",
+        "Active substance (API)",
+        "Natural health products"
+       ],
+       "help": "Sets the minimum grade under the EMA water quality guideline."
+      },
+      {
+       "label": "Modality",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Biologics, vaccines, cell or gene therapy",
+       "options": [
+        "Antibodies or recombinant proteins",
+        "Vaccines",
+        "Cell therapy",
+        "Gene therapy or viral vectors",
+        "Plasmid DNA or mRNA",
+        "Other biologic"
+       ]
+      },
+      {
+       "label": "Highest device class",
+       "kind": "radio",
+       "required": false,
+       "when": "Medical devices",
+       "options": [
+        "Class I",
+        "Class II",
+        "Class III",
+        "Class IV (Health Canada)",
+        "Not sure of the class"
+       ]
+      },
+      {
+       "label": "Sterilization method",
+       "kind": "checkbox-group",
+       "required": false,
+       "when": "Medical devices",
+       "options": [
+        "Ethylene oxide (ISO 11135)",
+        "Radiation (ISO 11137)",
+        "Moist heat (ISO 17665)",
+        "Supplied non-sterile",
+        "Other method"
+       ]
+      },
+      {
+       "label": "Release limits on the device",
+       "kind": "text",
+       "required": false,
+       "when": "Medical devices",
+       "help": "For example endotoxin per device (USP <161>) or bioburden (ISO 11737-1)."
+      },
+      {
+       "label": "Client and market mix",
+       "kind": "textarea",
+       "required": false,
+       "when": "CDMO or contract manufacturing",
+       "help": "Programs, regulators and client limits stricter than the pharmacopoeia."
+      },
+      {
+       "label": "Standard or use",
+       "kind": "text",
+       "required": false,
+       "when": "Hospital reprocessing, laboratory or industrial process",
+       "help": "For example CSA Z314 reprocessing or an ASTM D1193 type."
+      },
+      {
+       "label": "Documents",
+       "kind": "file",
+       "required": false,
+       "help": "URS, water analysis, drawings or data, up to [maximum upload size, MB]. Or send them by reply email."
+      },
+      {
+       "label": "Notes or questions",
+       "kind": "textarea",
+       "required": false
+      }
+     ]
+    },
+    {
+     "title": "Contact",
+     "fields": [
+      {
+       "label": "Full name",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Work email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Company",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Role",
+       "kind": "select",
+       "required": true,
+       "options": [
+        "Process or project engineering",
+        "Validation",
+        "Quality",
+        "Facilities or maintenance",
+        "Procurement",
+        "Consulting or EPCM engineer for a client",
+        "Other"
+       ]
+      },
+      {
+       "label": "Site province, state or country",
+       "kind": "text",
+       "required": true,
+       "help": "Sets pressure equipment registration (CRN under CSA B51)."
+      },
+      {
+       "label": "Phone",
+       "kind": "tel",
+       "required": false
+      },
+      {
+       "label": "How should we follow up?",
+       "kind": "radio",
+       "required": false,
+       "options": [
+        "Email technical questions first",
+        "Book a call with an engineer",
+        "Send our NDA first, then talk"
+       ]
+      },
+      {
+       "label": "Language for the reply",
+       "kind": "radio",
+       "required": false,
+       "options": [
+        "English",
+        "French"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Prefer to talk first",
+  "body": "Call [sales phone number], [hours and time zone], and ask for a process engineer.",
+  "button": "Choose your request",
+  "link": "#intake",
+  "include": [
+   "Peak demand, L/h",
+   "Water grades and pharmacopoeias",
+   "Feed water analysis, 12 months",
+   "Your URS, draft or approved"
+  ],
+  "returns": [
+   "A written answer, signed by its engineer",
+   "Marked-up URS or compliance matrix",
+   "Process flow diagram and budget price"
+  ],
+  "turnaround": "[proposal response time, working days]"
+ },
+ "todo": [
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Budget proposal turnaround, working days",
+  "Turnaround per request: feedwater review, URS review, document review (loop, controls, fabrication, C&Q plan, FAT test list; one figure on this page), scope review, route assessment, compliance matrix, existing system assessment, audit request, reference request",
+  "Which reviews are free and which are charged: cost of the feedwater review, URS review cost, scope review cost, assessment price",
+  "Confirm reviews carry no obligation (and whether they may be used in the client's own tender)",
+  "Whether budget ranges are given in the first reply",
+  "Scoping call length, minutes",
+  "NDA turnaround, working days; confidentiality terms for submitted specifications",
+  "Proposal validity, days",
+  "Name and role of the engineer who answers requests; time zone and holiday cover (no longer on the page)",
+  "Sales phone number, hours and time zone",
+  "Service response time by severity (align contact-service and svc-service)",
+  "Privacy notice link and wording (PIPEDA, Quebec Law 25, CASL); file storage location and retention, months",
+  "Maximum upload size, MB; file upload support in the form tool or a secure upload link",
+  "French-speaking engineers available for replies",
+  "Regions served outside Canada",
+  "What the reply says when a request needs WFI or pure steam: Aquemi supplies the PW package only (PW can feed the client's own WFI still); whether Aquemi refers that scope elsewhere",
+  "Route assessment scope now that it covers PW modules only (pretreatment, RO, DI or EDI, distribution): what the written answer contains",
+  "Fabrication or piping specification review: which PP and PVC piping standards and joining methods Aquemi reviews against ([PP piping standard], [PP joining method])",
+  "CRM routing for each of the 9 requests (intent value in the submission) and source-page tracking",
+  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
+  "Contact routes: service phone number and hours and severity 1 on-site response time (same as contact-service); shop location and visit booking reply time (same as contact-locations)"
+ ],
+ "primary_cta_link": "#intake",
+ "facts": [
+  {
+   "v": "[proposal response time, working days]",
+   "l": "To an engineer's written reply"
+  },
+  {
+   "v": "9 requests, 1 form",
+   "l": "Only the fields yours needs"
+  },
+  {
+   "v": "[budget proposal turnaround, working days]",
+   "l": "To a budget proposal"
+  }
+ ],
+ "hero_index": false,
+ "figure": {
+  "spots": [
+   "ro-skid",
+   "edi-stack",
+   "storage-tank"
+  ]
+ }
+}
