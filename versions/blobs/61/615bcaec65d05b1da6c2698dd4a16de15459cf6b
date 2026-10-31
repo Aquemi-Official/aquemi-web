@@ -1,0 +1,267 @@
+{
+ "id": "home",
+ "section": "Home",
+ "nav_label": "Home",
+ "title": "Purified Water systems: pretreatment, RO, DI/EDI | Aquemi",
+ "meta": "A modular Purified Water package in polypropylene with PVC pretreatment, RO, DI or EDI and distribution, designed in Ontario to meet USP <645> and <643>. No WFI or pure steam.",
+ "path": "/",
+ "eyebrow": "PURIFIED WATER · USP <645>, <643> · PH. EUR. 0008",
+ "headline": "Modular Purified Water systems, from pretreatment to point of use",
+ "lead": "One modular polypropylene (PP) package turns drinking water into Purified Water (PW) for your points of use. Designed in Ontario. No Water for Injection, pure steam or stainless steel systems.",
+ "primary_cta": "Talk to an engineer",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "Not sure yet: talk to an engineer",
+ "secondary_cta": {
+  "label": "See the systems",
+  "link": "systems"
+ },
+ "facts": [
+  {
+   "v": "[outlet conductivity guarantee, µS/cm @ 25 °C]",
+   "l": "Skid outlet · measured at FAT"
+  },
+  {
+   "v": "[100 %]",
+   "l": "Skids tested with water · at FAT"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "path",
+   "h": "One package, one water path",
+   "from": "Drinking water",
+   "to": "Point of use",
+   "items": [
+    {
+     "t": "Pretreatment",
+     "d": "Polyvinyl chloride (PVC) pretreatment protects the reverse osmosis (RO) membranes from chlorine, chloramine and particles.",
+     "tag": "USP <1231>",
+     "link": "sys-pretreatment",
+     "spot": "pretreatment"
+    },
+    {
+     "t": "PW generation",
+     "d": "RO and deionization on a PP skid, designed to meet the USP conductivity and organic carbon limits.",
+     "tag": "USP <645>",
+     "link": "sys-pw",
+     "spot": "ro-skid"
+    },
+    {
+     "t": "Storage and distribution",
+     "d": "PP tank and loop: turbulent flow at peak demand, sanitized by [PP loop sanitization method].",
+     "tag": "WHO TRS 1033",
+     "link": "sys-storage",
+     "spot": "storage-tank"
+    },
+    {
+     "t": "Monitoring and controls",
+     "d": "Online total organic carbon (TOC) and conductivity, with audit trails mapped to 21 CFR Part 11.",
+     "tag": "21 CFR Part 11",
+     "link": "sys-monitoring",
+     "icon": "conductivity"
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Same limits, different evidence by industry",
+   "items": [
+    {
+     "t": "Pharmaceutical",
+     "d": "PW for oral and topical drugs, at sites inspected under Health Canada's GUI-0001 or FDA's 21 CFR 211.",
+     "tag": "GUI-0001",
+     "link": "ind-pharma"
+    },
+    {
+     "t": "Medical devices",
+     "d": "PW for rinse and process steps, with the grade worked back from your device limits.",
+     "tag": "USP <1231>",
+     "link": "ind-meddevice"
+    },
+    {
+     "t": "Contract manufacturing",
+     "d": "The stricter of USP and Ph. Eur. on each attribute; records any client auditor follows.",
+     "tag": "USP · Ph. Eur.",
+     "link": "ind-cdmo"
+    }
+   ],
+   "ground": "light"
+  },
+  {
+   "type": "steps",
+   "h": "How a project runs",
+   "items": [
+    {
+     "t": "Design",
+     "d": "We turn your user requirement specification (URS) into a design you approve before anything is built."
+    },
+    {
+     "t": "Fabricate",
+     "d": "We build the PP skids and record each joint."
+    },
+    {
+     "t": "Test",
+     "d": "A factory acceptance test (FAT) with water, to a protocol your quality unit approves."
+    },
+    {
+     "t": "Qualify",
+     "d": "Site acceptance tests on your utilities, then installation and operational qualification (IQ/OQ) to protocols your quality unit approves."
+    },
+    {
+     "t": "Support",
+     "d": "Performance qualification (PQ) support through 12 months of data, then service and spare parts."
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Service after handover",
+   "ground": "light",
+   "items": [
+    {
+     "t": "Your change control",
+     "d": "Like-for-like parts, or the change goes through your change control first.",
+     "icon": "stamp",
+     "link": "svc-service"
+    },
+    {
+     "t": "Annual price",
+     "d": "From [lowest plan price, CAD per year]; visits, calibrations and spares listed per plan.",
+     "icon": "wrench",
+     "link": "svc-service"
+    },
+    {
+     "t": "Signed record",
+     "d": "A signed report after each visit, for your quality records.",
+     "icon": "binder",
+     "link": "svc-service"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "as": "router",
+   "h": "Start from where your project is",
+   "cols": [
+    "Your situation",
+    "Send us",
+    "What comes back",
+    "Where to start"
+   ],
+   "rows": [
+    [
+     "No URS yet, or a first PW system",
+     "What you make",
+     "The grade each step needs and the package",
+     {
+      "t": "Plan your first PW system",
+      "link": "industries#first-system"
+     }
+    ],
+    [
+     "A budget before a URS",
+     "Peak demand in L/h and feed water source",
+     "The modules and a budget range, with its estimate class",
+     {
+      "t": "Get a budget range",
+      "link": "systems#budget"
+     }
+    ],
+    [
+     "A URS, approved or in draft",
+     "Your URS and feed water analysis",
+     "A proposal, or a gap review of a draft",
+     {
+      "t": "Send your URS",
+      "link": "contact-proposal"
+     }
+    ],
+    [
+     "Comparing or qualifying suppliers",
+     "Your questionnaire, if you use one",
+     "The record each process leaves, and how to audit it",
+     {
+      "t": "Quality management",
+      "link": "cmp-quality"
+     }
+    ],
+    [
+     "A project in qualification",
+     "Your commissioning and qualification plan",
+     "IQ and OQ test list, FAT tests to reuse, PQ sampling plan",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "A system to upgrade, or a water observation",
+     "What to change, or the observation",
+     "Options with their downtime and the requalification each triggers",
+     {
+      "t": "Request a system assessment",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "Production stopped",
+     "A call to [service phone number], [service phone hours]",
+     "On site in [severity 1 on-site response time, hours] inside [service coverage area], on a service plan",
+     {
+      "t": "Service request",
+      "link": "contact-service"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions before the first call",
+   "items": [
+    {
+     "q": "You are smaller than the global manufacturers. Why take the risk?",
+     "a": "We are a new company, so judge us on checks, not size. Today, talk to the engineer who would lead your project. Audit our quality system from [quality system ready for audit, date]. Witness your factory acceptance test (FAT) once [shop and test bay ready for visits]."
+    },
+    {
+     "q": "Do you supply WFI or pure steam?",
+     "a": "No: we supply a Purified Water (PW) package in polypropylene, not Water for Injection (WFI), pure steam or stainless steel."
+    },
+    {
+     "q": "We do not have a URS yet. Is it too early to ask?",
+     "a": "No. Ask for a water scope review and tell us what you make. In [scope review turnaround, working days] we return the grade each step needs, the package and its qualification scope. Cost: [scope review cost or free]. [Confirm: no obligation, usable in your tender]"
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send what you have. An engineer replies.",
+  "button": "Talk to an engineer",
+  "link": "contact-proposal",
+  "intent": "Not sure yet: talk to an engineer",
+  "include": [
+   "Your URS, or your product and flow",
+   "Feed water analysis, if you have one",
+   "Where your site is"
+  ],
+  "returns": [
+   "A written answer from an engineer",
+   "A scope review, budget range or proposal"
+  ],
+  "turnaround": "[proposal response time, working days]"
+ },
+ "todo": [
+  "Hero photograph of a finished Aquemi skid or installed loop",
+  "Outlet conductivity guarantee at the skid outlet, measured at FAT ([outlet conductivity guarantee, µS/cm @ 25 °C]; same placeholder as sys-pw and svc-design; FD-21). At launch an unset hero fact goes (DR-010)",
+  "Confirm every skid in the PW package is tested with water at FAT (hero fact [100 %]; FD-45); loops fabricated on site are tested at SAT",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page; FD-01)",
+  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service) and service coverage area ([service coverage area]; FD-27, FD-28)",
+  "Service phone number and service phone hours ([service phone number], [service phone hours]; FD-27)",
+  "Lowest service plan price, CAD per year ([lowest plan price, CAD per year]; same placeholder as svc-service; FD-29). Write 'fixed annual price' only if FD-29 makes plans fixed-price (DR-005)",
+  "Water scope review turnaround and cost ([scope review turnaround, working days], [scope review cost or free]; same placeholders as industries; FD-01, FD-02)",
+  "Confirm reviews carry no obligation and may be used in the client's own tender ([Confirm: no obligation, usable in your tender]; FD-02)",
+  "Date the quality system is ready for a supplier audit ([quality system ready for audit, date]; FD-48) and date the shop and test bay are ready for visits and witnessed FAT ([shop and test bay ready for visits]; FD-44). At launch the risk FAQ drops each check whose date is unset (DR-004, DR-006 rule 6)",
+  "Sanitization method for the PP tank and loop ([PP loop sanitization method]; FD-14); any temperature wording follows DR-013",
+  "Confirm the standards in the eyebrow against the standards Aquemi designs to routinely",
+  "One real case study with client permission; no case-study section on home until project 1 (DR-016; FD-42)"
+ ]
+}

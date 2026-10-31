@@ -39,6 +39,9 @@ CHECKPOINTS = [
      'Section-by-section refinement and per-component GSAP choreography.'),
     ('2d50dbf', 'Brand book',
      'Back on the brand book: Geist Light sentence case, light surface, Lucide-style icons, How we work. Pass 7 motion kept.'),
+    ('7027d23', 'Pass 8: passes A and B',
+     'Two precision passes on every page against 16 site decisions: each page for its readers at their buying stage, '
+     'fewer words, one name per open fact, no unconfirmed fact stated.'),
 ]
 
 # Not part of the site a visitor loads.

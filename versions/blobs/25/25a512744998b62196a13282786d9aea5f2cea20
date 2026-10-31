@@ -1,0 +1,8 @@
+<!-- @dsCard group="Actions" height=150 subtitle="Primary, secondary, link and disabled; a call whose number is still a placeholder" -->
+<div class="aq-root" style="padding:24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+  <a class="aq-btn aq-btn--primary" href="#">Request a proposal <span class="aq-btn__arrow">→</span></a>
+  <button class="aq-btn aq-btn--secondary" type="button">Download datasheet</button>
+  <a class="aq-btn aq-btn--link" href="#">Explore systems <span class="aq-btn__arrow">→</span></a>
+  <button class="aq-btn aq-btn--primary" type="button" disabled>Submit request</button>
+  <span class="aq-btn aq-btn--pending">Call <span class="aq-ph">[sales phone number]</span></span>
+</div>

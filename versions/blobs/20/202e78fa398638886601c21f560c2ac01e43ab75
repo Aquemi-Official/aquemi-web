@@ -1,0 +1,53 @@
+<!-- @dsCard group="Navigation" height=1080 width=1100 subtitle="Desktop header with the service link; phone menu with the urgent block and section jump" -->
+<div class="aq-page" style="padding:24px 0;min-width:1040px">
+  <nav class="aq-nav" aria-label="Main">
+    <a class="aq-nav__home" href="#" aria-label="Aquemi home">
+      <img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-light" src="/_blob/fb683090783d92d27a15de72c481e9b3" alt="aquemi">
+      <img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-dark" src="/_blob/db46389f79ee8231228b037304a6d37b" alt="aquemi">
+    </a>
+    <ul class="aq-nav__links">
+      <li><a href="#" aria-current="page">Systems</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Industries</a></li>
+      <li><a href="#">Compliance</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Company</a></li>
+    </ul>
+    <span class="aq-nav__spacer"></span>
+    <a class="aq-nav__service" href="#">Service request</a>
+    <span class="aq-nav__frame"><a class="aq-btn aq-btn--primary" href="#">Request a proposal</a></span>
+    <button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" aria-expanded="false">Menu</button>
+  </nav>
+</div>
+<div class="aq-page" style="max-width:375px;margin:24px 0;border:1px solid var(--line)">
+  <nav class="aq-nav" aria-label="Main (phone)">
+    <a class="aq-nav__home" href="#" aria-label="Aquemi home">
+      <img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-light" src="/_blob/fb683090783d92d27a15de72c481e9b3" alt="aquemi">
+      <img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-dark" src="/_blob/db46389f79ee8231228b037304a6d37b" alt="aquemi">
+    </a>
+    <span class="aq-nav__spacer"></span>
+    <button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" aria-expanded="true" aria-controls="preview-menu">Close</button>
+  </nav>
+  <div class="aq-menu" id="preview-menu">
+    <div class="aq-menu__urgent" data-theme="light">
+      <p class="aq-menu__ask">Production stopped?</p>
+      <span class="aq-menu__call"><span class="aq-menu__k">Call</span> <span class="aq-ph">[service phone number]</span></span>
+      <a class="aq-menu__service" href="#">Service request</a>
+    </div>
+    <nav aria-label="Sections"><ol class="aq-menu__list">
+      <li><a href="#" aria-current="page">Systems</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Industries</a></li>
+      <li><a href="#">Compliance</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Company</a></li>
+    </ol></nav>
+    <nav class="aq-menu__jump" aria-labelledby="preview-jump"><p class="aq-menu__label" id="preview-jump">Section jump</p><ol class="aq-menu__list aq-menu__list--jump">
+      <li><a href="#">Limits</a></li>
+      <li><a href="#">Choosing a train</a></li>
+      <li><a href="#" aria-current="true">Skid design</a></li>
+      <li><a href="#">Documents</a></li>
+    </ol></nav>
+    <span class="aq-nav__frame aq-menu__cta"><a class="aq-btn aq-btn--primary" href="#">Request a proposal</a></span>
+  </div>
+</div>

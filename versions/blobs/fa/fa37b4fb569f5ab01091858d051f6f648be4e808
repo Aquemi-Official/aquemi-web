@@ -1,0 +1,265 @@
+{
+ "id": "industries",
+ "section": "Industries",
+ "nav_label": "Industries",
+ "title": "Purified Water systems by industry: pharma, devices, CDMO | Aquemi",
+ "meta": "Purified Water (PW) by industry: grade, limit and inspector for pharma, CDMO, device and natural health product makers. One polypropylene PW package; no WFI.",
+ "path": "/industries/",
+ "eyebrow": "INDUSTRIES · USP · PH. EUR.",
+ "headline": "Your product sets the grade",
+ "lead": "One Purified Water (PW) package in polypropylene. No Water for Injection, pure steam or stainless steel systems. PW limits are the same in every industry.",
+ "primary_cta": "Request a water scope review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I know my product, not my water spec",
+ "secondary_cta": {
+  "label": "Plan your first PW system",
+  "link": "industries#first-system"
+ },
+ "index": [
+  "ind-pharma",
+  "ind-cdmo",
+  "ind-meddevice"
+ ],
+ "blocks": [
+  {
+   "type": "table",
+   "as": "router",
+   "nav": "Where to start",
+   "h": "Your situation and where to start",
+   "cols": [
+    "Your situation",
+    "System",
+    "Start with"
+   ],
+   "rows": [
+    [
+     "A new oral or topical drug line",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Process design",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "A new client program with a tech transfer date",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "Endotoxin or bioburden drifting on finished devices",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Upgrades: system assessment",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "Natural health products: does this line need PW?",
+     "PW generation, if needed",
+     {
+      "t": "Pharmaceutical: natural health products",
+      "link": "ind-pharma#nhp"
+     }
+    ],
+    [
+     "A water observation, or out-of-trend results",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Upgrades: after an observation",
+      "link": "svc-upgrades#observation"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "By industry",
+   "h": "Grade, limit and inspector by industry",
+   "cols": [
+    "Industry",
+    "Grades and uses",
+    "Limit that applies",
+    "Inspector"
+   ],
+   "rows": [
+    [
+     {
+      "t": "Pharma, non-sterile",
+      "link": "ind-pharma"
+     },
+     "PW for granulation, coating and rinse",
+     "USP <645> and <643>",
+     "Health Canada GUI-0001; FDA 21 CFR 211"
+    ],
+    [
+     {
+      "t": "Contract manufacturing",
+      "link": "ind-cdmo"
+     },
+     "PW per client program",
+     "Stricter of USP and Ph. Eur., per attribute",
+     "Regulators and each client’s quality unit"
+    ],
+    [
+     {
+      "t": "Medical devices",
+      "link": "ind-meddevice"
+     },
+     "PW final rinse, with an endotoxin limit where needed",
+     "USP <161> per device; ISO 11737-1 bioburden",
+     "Health Canada (ISO 13485); FDA 21 CFR 820"
+    ],
+    [
+     {
+      "t": "Natural health products",
+      "link": "ind-pharma#nhp"
+     },
+     "Potable at minimum; PW where your specification calls for it",
+     "Your specification (GUI-0158 s. 45)",
+     "Health Canada GUI-0158"
+    ],
+    [
+     {
+      "t": "Cosmetics and personal care",
+      "link": "ind-pharma"
+     },
+     "Your written specification; PW for any drug line",
+     "Each product’s legal class, by market",
+     "Health Canada; FDA for over-the-counter drugs"
+    ],
+    [
+     {
+      "t": "Pharma, sterile",
+      "link": "industries#faq"
+     },
+     "PW for non-sterile steps; we do not supply Water for Injection",
+     "USP <645> and <643>",
+     "Health Canada GUI-0119; FDA; EU authorities"
+    ]
+   ]
+  },
+  {
+   "type": "grid",
+   "nav": "First system",
+   "anchor": "first-system",
+   "h": "Your first Purified Water system",
+   "items": [
+    {
+     "t": "Your product’s grade",
+     "d": "Non-sterile drugs need PW (Health Canada GUI-0001); natural health products, potable water at minimum (GUI-0158).",
+     "link": "ind-pharma"
+    },
+    {
+     "t": "What it covers and costs",
+     "d": "Incoming water to every outlet, design to qualification; budget ranges by configuration.",
+     "link": "systems#budget"
+    },
+    {
+     "t": "Running cost",
+     "d": "Service plan, consumables, energy and water to drain.",
+     "link": "svc-service#running-cost"
+    },
+    {
+     "t": "Your team’s first year",
+     "d": "First use after at least 2 weeks of daily sampling, if your quality unit approves. [staff hours in year one: sampling, logs, sanitization].",
+     "link": "svc-cq"
+    },
+    {
+     "t": "Who you work with",
+     "d": "A new Ontario company: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing specialist.",
+     "link": "about"
+    }
+   ]
+  },
+  {
+   "type": "options",
+   "nav": "Adjacent uses",
+   "anchor": "adjacent",
+   "h": "Outside drug and device manufacturing",
+   "items": [
+    {
+     "t": "Hospital reprocessing (MDRD)",
+     "d": "[hospital water scope]. CSA Z314:23; ANSI/AAMI ST108:2023. Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit."
+    },
+    {
+     "t": "Research laboratories",
+     "d": "[lab water scope]. ASTM D1193-24: central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers]."
+    },
+    {
+     "t": "Industrial demineralized water",
+     "d": "[industrial water scope]. Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange."
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "anchor": "faq",
+   "h": "Common questions",
+   "items": [
+    {
+     "q": "Do you supply Water for Injection (WFI)?",
+     "a": "No: we supply a Purified Water (PW) package in polypropylene, not Water for Injection (WFI), pure steam or stainless steel. It covers pretreatment, reverse osmosis, deionization or electrodeionization, and distribution; no stills. Where your product needs WFI, you generate it; PW is the usual feed to a WFI still."
+    },
+    {
+     "q": "Do natural health products or cosmetics need PW?",
+     "a": "Not always. Under Health Canada’s GUI-0158, natural health products need potable water at minimum. Purified Water (PW) is needed where the specification or a monograph calls for it. For cosmetics, the product’s legal class sets the grade: cosmetic-only lines follow your written specification; any drug line needs PW."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "services",
+    "compliance",
+    "cmp-quality"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Tell us what you make",
+  "body": "An engineer replies. Cost: [scope review cost or free].",
+  "button": "Request a water scope review",
+  "link": "contact-proposal",
+  "intent": "I know my product, not my water spec",
+  "include": [
+   "What you make, and how it is sterilized",
+   "Markets and pharmacopoeias",
+   "Where your site is"
+  ],
+  "turnaround": "[scope review turnaround, working days]",
+  "returns": [
+   "Grade per process step",
+   "The PW package you need",
+   "Your qualification scope"
+  ]
+ },
+ "todo": [
+  "Target segments at launch (FD-38): pharmaceutical with natural health products, CDMO and medical devices, in that order (DR-002); confirm cosmetics and personal care makers with drug or natural health product lines stay a named row",
+  "Scope review cost, or free ([scope review cost or free], closing; FD-02). Its turnaround ([scope review turnaround, working days]) is defined in contact-proposal's requests table (DR-014) and shown here as the figure only",
+  "One scope sentence per adjacent use (FD-25, DR-002 rule 6), opening that use's row and in the same words on ind-meddevice and about: [hospital water scope] (for example 'not offered today', or replacements and upgrades in Ontario and Quebec through your consultant or mechanical contractor), [lab water scope], [industrial water scope]",
+  "Laboratory Type I water: [whether Aquemi integrates third-party polishers] (DR-002 rule 5)",
+  "Staff time in year one for sampling, logs and sanitization ([staff hours in year one: sampling, logs, sanitization], first-system path); not yet an FD row (DR-015)",
+  "WFI wording (FAQ, sterile row): Aquemi supplies PW only (MISSION). PW sized as feed to a customer's WFI still stays [confirm] (FD-25, DR-002 rule 7): no row, lead or closing item offers it until the owner confirms",
+  "References per segment, or 'none yet' (FD-41): no reference call or case block here until a client agrees in writing (DR-004, DR-016); link projects per industry once a case study exists (FD-42)",
+  "Anchors this page links to: ind-pharma#nhp (the natural health products section, DR-002; router and grade table), svc-upgrades#observation (the water observation block, DR-015), systems#budget (DR-005 rule 1), svc-service#running-cost (DR-005 rule 6; the path's running-cost row). Until a block carries its anchor, the link opens that page at the top",
+  "Device inspector cell: Health Canada requires an ISO 13485 certificate for Class II to IV licences; whether it must come from an MDSAP audit is unverified in the library (IMD-22, IMD-28). Keep the cell in line with ind-meddevice's auditor table",
+  "Whether a scope without a loop is offered for dry-dose natural health product lines (FD-20); until then the router's natural health products row reads 'PW generation, if needed'"
+ ]
+}
