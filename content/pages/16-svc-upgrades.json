@@ -2,56 +2,65 @@
  "id": "svc-upgrades",
  "section": "Services",
  "nav_label": "Upgrades and retrofits",
- "title": "Water system upgrades and retrofits, any builder | Aquemi",
- "meta": "Assess a water system from any builder, then upgrade it with PVC pretreatment, RO, DI/EDI or distribution modules, with the EU GMP Annex 15 requalification scope.",
+ "title": "Purified Water system upgrades and retrofits | Aquemi",
+ "meta": "Upgrade a Purified Water system after a water observation, or for capacity or new controls: an on-site assessment, then modules from our polypropylene package, each with its downtime and requalification.",
  "path": "/services/upgrades-retrofits/",
- "eyebrow": "UPGRADES · RETROFITS · EU GMP ANNEX 15",
+ "eyebrow": "UPGRADES · EU GMP ANNEX 15 · GUI-0029",
  "headline": "Upgrade the system you have",
- "lead": "We assess any builder’s system and upgrade it with PVC pretreatment, RO, DI/EDI or distribution modules, each with its downtime and requalification.",
+ "lead": "We assess and upgrade Purified Water (PW) systems with modules from our polypropylene (PP) package, for [makes and equipment types serviced]. Each upgrade option states its downtime and requalification.",
  "tags": [],
  "primary_cta": "Request a system assessment",
- "primary_cta_intent": "Assessment of an existing system, any make",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I have a system already",
  "secondary_cta": {
   "label": "System down now? Request service",
   "link": "contact-service"
  },
  "blocks": [
   {
-   "type": "prose",
-   "as": "explainer",
-   "ground": "light",
-   "nav": "Why upgrade",
-   "h": "Newer rules, older controls",
-   "points": [
-    {
-     "t": "Every upgrade has two costs",
-     "d": "The work itself, and the IQ, OQ and PQ that follow it.",
-     "at": [
-      55,
-      34
-     ]
-    },
-    {
-     "t": "Controls age out",
-     "d": "Discontinued PLCs mean scarce spares and gaps in the audit trail.",
-     "at": [
-      66,
-      53
-     ]
-    },
-    {
-     "t": "Requalify what the change reaches",
-     "d": "A risk assessment sets the PQ, so requalification fits the change.",
-     "at": [
-      45,
-      62
-     ]
-    }
+   "type": "table",
+   "as": "roles",
+   "anchor": "observation",
+   "nav": "Observation",
+   "h": "After a water observation or out-of-trend results",
+   "intro": "Five FDA warning letters (2024 to 2026) asked for these between them, with 15 working days to reply.",
+   "cols": [
+    "Asked for",
+    "Prepared by",
+    "Approved by"
    ],
-   "figure": {
-    "kind": "art",
-    "art": "svc-upgrades"
-   }
+   "rows": [
+    [
+     "Design assessment of the system",
+     "Aquemi: system assessment",
+     "You"
+    ],
+    [
+     "Remediation plan with dates",
+     "Aquemi: options, including other suppliers'",
+     "You"
+    ],
+    [
+     "Validation after repair, new systems included",
+     "Aquemi: installation and operational qualification (IQ, OQ)",
+     "You"
+    ],
+    [
+     "Monitoring with alert and action limits",
+     "Aquemi: levels from your data",
+     "You"
+    ],
+    [
+     "Lot risk assessment and the written reply",
+     "You",
+     "You"
+    ],
+    [
+     "A qualified consultant, where asked",
+     "Your consultant",
+     "You"
+    ]
+   ]
   },
   {
    "type": "table",
@@ -59,17 +68,17 @@
    "nav": "Upgrades",
    "h": "Common upgrades and their requalification",
    "cols": [
-    "Your upgrade",
+    "Upgrade",
     "What changes",
-    "Requalification to plan",
+    "Requalification",
     "Site downtime",
     "Start with"
    ],
    "rows": [
     [
-     "DI to RO and EDI",
-     "New generation skid; the loop usually stays",
-     "IQ/OQ leveraging FAT, intensive sampling, then a reduced plan",
+     "Deionization (DI) to reverse osmosis (RO) and electrodeionization (EDI)",
+     "New skid; the loop usually stays",
+     "IQ/OQ reusing factory test results; intensive, then reduced sampling",
      "[days]; DI runs until release",
      {
       "t": "PW generation",
@@ -78,8 +87,8 @@
     ],
     [
      "New pretreatment",
-     "PVC pretreatment module ahead of the RO",
-     "IQ/OQ of the module; chlorine and hardness at the RO inlet; downstream sampling",
+     "Polyvinyl chloride (PVC) module before the RO",
+     "IQ/OQ; RO inlet chlorine and hardness; downstream sampling",
      "[days]; existing pretreatment runs until cutover",
      {
       "t": "Pretreatment",
@@ -88,8 +97,8 @@
     ],
     [
      "Distribution loop replacement",
-     "PP loop and pump module, points of use re-tied",
-     "IQ of the loop and dead leg register; OQ of hydraulics and [PP loop sanitization method]; sampling at every point of use",
+     "PP loop and pump module; points of use reconnected",
+     "IQ with dead leg register; OQ of flow and [PP loop sanitization method]; every outlet sampled",
      "[days], planned shutdown",
      {
       "t": "Storage and distribution loops",
@@ -97,9 +106,9 @@
      }
     ],
     [
-     "Online TOC and conductivity",
-     "Analyzer, sample line, data path to the historian",
-     "OQ with USP <643> suitability; lab results in parallel before online release",
+     "Online total organic carbon (TOC) and conductivity",
+     "Analyzer, sample line, historian link",
+     "OQ with USP <643> suitability; lab results in parallel until release",
      "[days]",
      {
       "t": "Monitoring and controls",
@@ -107,9 +116,9 @@
      }
     ],
     [
-     "PLC, HMI and SCADA replacement",
-     "New controller, panel, logic and electronic records",
-     "GAMP 5 validation, software FAT on a simulator; short sampling",
+     "Controls replacement",
+     "New controller (PLC), operator panel (HMI), supervisory control (SCADA), electronic records",
+     "GAMP 5 validation; factory software test; short sampling",
      "[days], tank full",
      {
       "t": "Monitoring and controls",
@@ -118,9 +127,9 @@
     ],
     [
      "Capacity increase",
-     "Second RO train, DI/EDI module, pump or PP sub-loop",
-     "IQ/OQ of new equipment; loop hydraulics at the new peak",
-     "[days]; tied in while running",
+     "Second RO train, DI/EDI module or pump; PP sub-loops only off ambient, chemically sanitized loops",
+     "IQ/OQ of new equipment; loop flow at the new peak",
+     "[days]; built while running",
      {
       "t": "PW generation",
       "link": "sys-pw"
@@ -132,10 +141,10 @@
    "type": "table",
    "as": "failures",
    "nav": "Controls",
-   "h": "Controls: the data integrity gaps we find",
-   "intro": "PLC-5, SLC 500, S5 and S7-300 are discontinued or in phase-out.",
+   "h": "Data integrity gaps in older controls",
+   "intro": "PLC-5, SLC 500, S5 and S7-300 are discontinued or in phase-out: spares are limited.",
    "cols": [
-    "What we find",
+    "Gap",
     "Requirement it misses",
     "What the upgrade does"
    ],
@@ -174,16 +183,15 @@
    "as": "route",
    "nav": "Assessment",
    "h": "What the assessment reviews",
-   "intro": "Each option comes back with scope, [budget range, CAD], downtime and requalification.",
    "items": [
     {
      "t": "Records",
-     "d": "Qualification file, changes, drawings, dead leg register: what is missing.",
+     "d": "Qualification file, changes, drawings, dead leg register.",
      "spot": "binder"
     },
     {
      "t": "Water quality data",
-     "d": "Twelve months of conductivity, TOC and microbial results.",
+     "d": "A year of conductivity, TOC and microbial results.",
      "spot": "toc"
     },
     {
@@ -193,17 +201,17 @@
     },
     {
      "t": "Storage and distribution",
-     "d": "Dead legs, drainability, biofilm and contamination routes.",
+     "d": "Materials, dead legs, slope, flow and fittings.",
      "spot": "storage-tank"
     },
     {
      "t": "Sanitization",
-     "d": "Whether your results support the schedule (Annex 1, 6.12).",
+     "d": "Whether your results support the schedule (WHO TRS 1033, 8.4).",
      "spot": "heat-exchanger"
     },
     {
      "t": "Controls",
-     "d": "Versions, support status, audit trail and backups against Part 11.",
+     "d": "Support status, audit trail and backups against Part 11.",
      "spot": "cpu"
     }
    ]
@@ -216,24 +224,24 @@
    "items": [
     {
      "t": "System assessment",
-     "d": "On site for [assessment duration, days]; each option costed, with downtime and requalification, in [report turnaround, working days]."
+     "d": "On site, then a costed options report in [report turnaround, working days]."
     },
     {
      "t": "Change control",
-     "d": "We write the technical content of your change request; your quality unit approves it.",
+     "d": "We draft the change request’s technical content; your quality unit approves it.",
      "hold": "Your quality unit"
     },
     {
-     "t": "Design, build, FAT",
-     "d": "Modules and software tested at our shop, so the site window stays short."
+     "t": "Design, build, test",
+     "d": "A factory acceptance test (FAT) of modules and software keeps site work short."
     },
     {
      "t": "Cutover",
-     "d": "In a planned window under your permits, flushed and sanitized."
+     "d": "By [installation scope] in a planned shutdown; flushed, sanitized and residual tested."
     },
     {
      "t": "Requalification",
-     "d": "IQ/OQ of what changed, agreed sampling, updated drawings and SOPs."
+     "d": "IQ/OQ of what changed, agreed sampling, updated drawings and procedures."
     }
    ]
   },
@@ -243,20 +251,16 @@
    "h": "Common questions",
    "items": [
     {
-     "q": "Our system was built by another supplier. Will you work on it?",
-     "a": "Yes, for [makes and equipment types serviced]. Where records are missing, we walk down the drawings, measure dead legs and recover the PLC program."
+     "q": "Will you upgrade another supplier’s system?",
+     "a": "For [makes and equipment types serviced]: we assess it, then add or replace modules from our package. Without drawings, we walk the system down and measure dead legs. Polypropylene (PP) joins other piping by [tie-in method to existing piping]. A hot-held loop, or routine 80 °C sanitization at loop pressure, needs polyvinylidene fluoride (PVDF) or stainless [whether we quote PVDF]."
     },
     {
-     "q": "Will an upgrade restart our PQ from zero?",
-     "a": "Not usually. A risk assessment sets the PQ phases after a change; your quality unit decides and we write the rationale."
+     "q": "Will an upgrade restart our performance qualification (PQ)?",
+     "a": "Not necessarily. After a change, WHO TRS 1033 (11.3) sizes performance qualification (PQ) by documented risk assessment: phases, length and sampling. EU good manufacturing practice (GMP) Annex 15 puts the change through change control. Health Canada’s GUI-0029 adds that several minor changes can make a major one. Your quality unit decides; we draft the rationale."
     },
     {
      "q": "Can we keep producing water during the upgrade?",
-     "a": "Usually. Generation is built alongside and tied in during a short shutdown. If storage cannot ride through: [temporary RO or EDI units, flow m³/h]."
-    },
-    {
-     "q": "What does an assessment cost?",
-     "a": "[assessment price, CAD, credit against upgrade]. Without the as-built state and data, a quote carries contingency or leaves validation to be discovered."
+     "a": "Yes, for generation, pretreatment and capacity upgrades. Each new module goes in beside the old one and is tied in during a short shutdown. A loop replacement needs a planned shutdown. If your tank cannot cover it, plan temporary water: [temporary RO or EDI units, flow L/h]."
     }
    ]
   },
@@ -273,47 +277,43 @@
  ],
  "cta": {
   "h": "Send the system you have",
+  "body": "An engineer replies. Cost: [assessment price, CAD, credit against upgrade].",
   "button": "Request a system assessment",
   "link": "contact-proposal",
-  "intent": "Assessment of an existing system, any make",
-  "include_label": "What to send for a system assessment",
+  "intent": "I have a system already",
   "include": [
-   "System type, builder, year, your goal",
-   "P&IDs and dead leg register",
-   "IQ/OQ/PQ summary and a year of data",
+   "Make, model, year; your observation or goal",
+   "Drawings and qualification summary",
+   "A year of water data",
    "PLC and HMI models, program held"
   ],
   "turnaround": "[assessment response time, working days]",
   "returns": [
-   "Scope, time on site and price",
-   "What to change, option by option",
-   "How to requalify each option"
+   "Assessment scope, days on site, price",
+   "Options with downtime and requalification"
   ]
  },
  "todo": [
-  "Makes and equipment types Aquemi assesses and upgrades on other builders' systems ([makes and equipment types serviced], same wording as svc-service; FAQ)",
-  "Assessment price (CAD) and whether it is credited against the upgrade ([assessment price, CAD, credit against upgrade], FAQ)",
-  "Assessment duration on site ([assessment duration, days]) and report turnaround ([report turnaround, working days]) (steps)",
-  "Budget range per option as shown in assessment reports ([budget range, CAD], assessment intro), or remove it",
-  "Typical site downtime per upgrade type ([days], [weeks]) in the downtime table, and [controls swap window, days] in the controls intro",
-  "Whether temporary or rental RO/EDI units are offered, flow range and lead time ([temporary RO or EDI units, flow m³/h]); remove the downtime row if not",
-  "Confirm Aquemi replaces pretreatment and distribution loops on other builders' systems with its PVC and PP modules, and how PP ties in to existing piping of another material ([tie-in method to existing piping])",
-  "Confirm Aquemi delivers online TOC/conductivity and PLC/HMI/SCADA upgrades on existing systems, or only as part of its PP modules; remove those router rows if not",
-  "PP loop sanitization method proven after a loop replacement ([PP loop sanitization method]; same placeholder as home and projects)",
-  "Confirm Aquemi builds panels and tests PLC programs against a simulator before site work (upgrades table, steps)",
-  "Payback figures from a delivered chemical DI to RO/EDI conversion, with client permission ([payback figures from a delivered conversion], FAQ)",
-  "Delivered upgrade and retrofit references ([delivered upgrades, what changed, requalification time], FAQ) for a future case block",
-  "Assessment response time, working days ([assessment response time, working days], same as the contact-proposal lookup table)",
-  "Site downtime (days) for an online TOC/conductivity retrofit, a pretreatment replacement and a loop replacement (router \"Site downtime\" station)"
+  "[makes and equipment types serviced] (lead, FAQ 1): the makes and equipment types Aquemi assesses and upgrades on systems it did not build, and any exclusions (WFI stills, pure steam generators, stainless loops); same name on home, services, svc-service, svc-cq, about, contact-service and contact-proposal (FD-30, DR-011). FAQ 1 gets its yes or no once FD-30 is answered",
+  "[assessment duration, days] (hero fact, steps): days on site for one system assessment; not yet an FD row (FD-02 holds the assessment's price)",
+  "[report turnaround, working days] (steps): working days from the site visit to the costed options report (FD-01)",
+  "[assessment response time, working days] (closing): first reply to an assessment request; same name as contact-proposal's requests table (FD-01)",
+  "[assessment price, CAD, credit against upgrade] (closing body): price in CAD before tax, or free, and whether it is credited against the upgrade; same name as contact-proposal's requests table (FD-02, DR-005 rule 4)",
+  "[days] in the router's Site downtime station (six rows): typical site downtime per upgrade type, from Aquemi's own plans, never a borrowed figure (FD-08; OQ-31)",
+  "[PP loop sanitization method] (router, loop row): same name as home, systems, svc-cq and svc-fat-sat (FD-14, DR-013 rule 3)",
+  "[installation scope] (steps, cutover): who makes the tie-in and field joints (Aquemi, your contractor or a partner); same name as services and systems (FD-26)",
+  "[tie-in method to existing piping] (FAQ 1): how a PP module joins existing stainless, PVDF or PVC piping, and who records the joint (FD-25)",
+  "[whether we quote PVDF] (FAQ 1): same name as sys-storage (FD-15, DR-013 rule 2)",
+  "[temporary RO or EDI units, flow L/h] (FAQ 3): whether temporary units are offered, flow range in L/h and lead time; if none is held, the answer keeps only 'plan temporary water' (FD-25). Flow in L/h per DR-003 rule 5, replacing the m³/h name",
+  "Confirm the upgrade types on other builders' systems: PVC pretreatment, PP loops, online TOC and conductivity, controller (PLC, HMI, SCADA) replacement; remove a router row Aquemi will not deliver (FD-23, FD-30)",
+  "Confirm software is tested before site work, and whether against a simulator ('on a simulator' was cut until FD-23 says so)",
+  "Budget range per option in the assessment report (FD-03): the page says 'costed options' without a figure until Aquemi's costed configurations exist (DR-005 rule 2)",
+  "Future case block: a delivered upgrade with what changed, downtime, requalification time and, for a DI to RO and EDI conversion, payback; only with the client's written approval (FD-42; DR-004 class 3; DR-016 rule 8). The ten-year cost sheet is FD-49"
  ],
  "facts": [
   {
-   "v": "6",
-   "l": "Common upgrades, each with its requalification"
-  },
-  {
-   "v": "Annex 15, 11",
-   "l": "Basis for the requalification scope"
+   "v": "[assessment duration, days]",
+   "l": "Assessment on your site · per system"
   }
  ]
 }

@@ -3,22 +3,18 @@
  "section": "Services",
  "nav_label": "Fabrication",
  "title": "Polypropylene skid and loop fabrication | Aquemi",
- "meta": "PP skids and loops built in our shop: qualified thermoplastic welders, a numbered joint log, material certificates for PP resin and pipe, pressure-tested before FAT.",
+ "meta": "Polypropylene skids and loops for a Purified Water package: each product-contact joint numbered and logged with its welder, settings and material lot.",
  "path": "/services/fabrication/",
  "eyebrow": "SERVICES · FABRICATION · POLYPROPYLENE",
  "headline": "Trace any joint back to its welder and material",
- "lead": "We build polypropylene (PP) skids and loops in our shop, every product-contact joint numbered and logged with its welder, settings and material.",
- "tags": [
-  "Polypropylene",
-  "[PP joining method]",
-  "[thermoplastic welder qualification standard]",
-  "[PP material certificate type]"
- ],
+ "lead": "We build the polypropylene (PP) skids and loops of our Purified Water (PW) package. Each product-contact joint is numbered and logged with its welder, settings and material.",
  "primary_cta": "Request a fabrication spec review",
- "primary_cta_intent": "Review of a document you have|Fabrication or piping specification",
+ "primary_cta_intent": "I have a URS or a draft|Review of another document|Fabrication or piping specification",
+ "primary_cta_link": "contact-proposal",
  "secondary_cta": {
-  "label": "Get a sample fabrication dossier",
-  "link": "cmp-documentation"
+  "label": "Book a shop visit",
+  "link": "contact-locations#visit",
+  "intent": "Shop tour before shortlisting"
  },
  "blocks": [
   {
@@ -37,28 +33,28 @@
     ],
     [
      "Material lot of both parts",
-     "That the PP is the PP certified",
-     "Material log; [PP resin and pipe certificate type]"
+     "That both parts match their material certificates",
+     "Material log; [PP material certificates]"
     ],
     [
      "Welder and qualification",
      "That the welder was qualified on the day",
-     "[welder qualification standard for thermoplastics, for example DVS 2212] certificate"
+     "[welder qualification standard for thermoplastics] certificate"
     ],
     [
      "Joining parameters",
      "That the qualified procedure ran with recorded settings",
-     "[what each joint record holds, for example temperature, pressure, heating and cooling times]"
+     "[what each joint record holds]"
     ],
     [
      "Visual result",
-     "That the bead and alignment meet the acceptance criteria",
-     "[joint acceptance criteria, for example DVS 2202-1]; inspector sign-off"
+     "That the joint meets the acceptance criteria",
+     "[joint acceptance criteria]; inspector sign-off"
     ],
     [
      "Test joint reference",
      "That the set-up was proven before production joints",
-     "[test joint practice: made per shift, machine or welder change]"
+     "Test joint record; [test joint examination method]"
     ],
     [
      "Date and inspector",
@@ -97,8 +93,8 @@
     },
     {
      "p": "Joining",
-     "v": "[IR or bead-and-crevice-free fusion; no socket fusion]",
-     "m": "Parameters recorded per joint",
+     "v": "[PP joining method]",
+     "m": "[PP joining standard]; parameters recorded per joint",
      "at": [
       47,
       25
@@ -106,8 +102,8 @@
     },
     {
      "p": "Test joints",
-     "v": "[when test joints are made: shift start, change of welder, machine or pipe lot]",
-     "m": "[test joint examination, for example bend or tensile test]",
+     "v": "[when test joints are made]",
+     "m": "[test joint examination method]",
      "at": [
       13,
       46
@@ -116,7 +112,7 @@
     {
      "p": "Joint examination",
      "v": "Visual on [share of product-contact joints visually examined, %]",
-     "m": "[joint acceptance criteria, for example DVS 2202-1]",
+     "m": "[joint acceptance criteria]",
      "at": [
       57,
       48
@@ -125,7 +121,7 @@
     {
      "p": "Internal surface",
      "v": "[PP internal surface specification, Ra µm]",
-     "m": "[record for the PP surface specification]",
+     "m": "[basis for the PP surface specification]",
      "at": [
       93,
       65
@@ -133,13 +129,13 @@
     },
     {
      "p": "Material certificates",
-     "v": "Every product-contact lot checked against its marking on receipt",
-     "m": "[certificate type for PP resin and pipe, for example EN 10204 3.1]; material log"
+     "v": "Each product-contact lot's marking checked against its certificate on receipt",
+     "m": "[PP material certificates]; material log"
     },
     {
      "p": "Procedures and welders",
      "v": "Written joining procedure; [number of qualified thermoplastic welders] welders",
-     "m": "[welder qualification standard for thermoplastics, for example DVS 2212]"
+     "m": "[welder qualification standard for thermoplastics]"
     },
     {
      "p": "Machines",
@@ -148,12 +144,12 @@
     },
     {
      "p": "Cleaning before first use",
-     "v": "[pre-commissioning flush and cleaning procedure for PP], PW rinse to conductivity and TOC limits",
+     "v": "[pre-commissioning flush and cleaning procedure for PP], PW rinse to conductivity and total organic carbon (TOC) limits",
      "m": "Cleaning certificate"
     },
     {
      "p": "Pressure test",
-     "v": "[PP pressure test: medium, pressure and hold time]",
+     "v": "[PP pressure test method]",
      "m": "[PP pressure test standard]; witnessed"
     }
    ],
@@ -167,41 +163,26 @@
    "h": "The fabrication dossier",
    "items": [
     {
-     "t": "Fabrication and inspection plan",
-     "d": "Standards, inspection extent, hold and witness points, signed off"
+     "t": "Joint maps and joint log",
+     "d": "As-built isometrics, one line per joint, repairs included",
+     "key": true,
+     "link": "cmp-documentation#samples"
     },
     {
      "t": "Material log and PP certificates",
-     "d": "[certificate type for PP resin and pipe], indexed by lot"
+     "d": "[PP material certificates], indexed by lot",
+     "key": true
     },
     {
      "t": "Joining procedure and welder qualifications",
-     "d": "[welder qualification standard for thermoplastics, for example DVS 2212]"
+     "d": "[welder qualification standard for thermoplastics]"
     },
     {
-     "t": "Joint maps and joint log",
-     "d": "As-built isometrics, one line per joint, repairs included"
-    },
-    {
-     "t": "Test joint records and machine logs",
-     "d": "[what each joint record holds]"
-    },
-    {
-     "t": "Pressure test certificates",
-     "d": "[PP pressure test standard]"
-    },
-    {
-     "t": "Slope survey and dead leg check",
-     "d": "Measured fall on each run; L/D at every branch"
-    },
-    {
-     "t": "Cleaning certificate",
-     "d": "Flush record with final rinse conductivity"
+     "t": "Pressure test and cleaning certificates",
+     "d": "[PP pressure test standard]; final rinse conductivity and TOC"
     }
    ],
-   "nav": "Dossier",
-   "fold": 4,
-   "fold_noun": "documents"
+   "nav": "Dossier"
   },
   {
    "type": "steps",
@@ -209,12 +190,12 @@
    "items": [
     {
      "t": "Fabrication and inspection plan",
-     "d": "Agreed before material is ordered: standards, inspection extent, records, hold and witness points."
+     "d": "Agreed before material is ordered: standards, inspection extent, records, hold and witness points.",
+     "hold": "Both parties"
     },
     {
      "t": "Receive and verify material",
-     "d": "Each PP lot checked against its certificate and logged.",
-     "hold": "You"
+     "d": "Each PP lot checked against its certificate and logged."
     },
     {
      "t": "Qualify the set-up",
@@ -226,12 +207,11 @@
     },
     {
      "t": "Test and survey",
-     "d": "Pressure test, slope survey and dead leg check on every run.",
-     "hold": "You"
+     "d": "Pressure test, slope survey and dead leg check on every run. Witness point."
     },
     {
      "t": "Clean and turn over",
-     "d": "Flushed and rinsed with PW, then FAT. Dossier indexed by joint number, updated with field joints."
+     "d": "Flushed and rinsed with PW before factory acceptance testing. Dossier indexed by joint number, updated with field joints."
     }
    ],
    "nav": "Hold points",
@@ -243,36 +223,39 @@
    "nav": "FAQ",
    "items": [
     {
+     "q": "Can we audit the shop and see a real joint log?",
+     "a": "Visits start once [shop and test bay ready for visits], in [shop location, city and province]. Audit our quality system from [quality system ready for audit, date]. As a new company, we show a specimen joint log.",
+     "link": "cmp-quality#audit",
+     "link_label": "Request a supplier audit",
+     "intent": "On-site supplier audit"
+    },
+    {
      "q": "What certificates come with the PP resin and pipe?",
-     "a": "[certificate type for PP resin and pipe, and what it states: resin grade, lot, compliance]. Each lot is logged against its marking on receipt."
+     "a": "[PP material certificates] for each lot, with conformity to [PP material standard]. We check each polypropylene (PP) lot's marking against its certificate on receipt."
     },
     {
      "q": "Who is qualified to make a joint?",
-     "a": "Only welders qualified to [welder qualification standard for thermoplastics, for example DVS 2212], on the method they use. Qualifications are in the dossier."
+     "a": "Only welders qualified to [welder qualification standard for thermoplastics], on the joining method they use. Their qualifications are in the dossier."
     },
     {
      "q": "What happens to a rejected joint?",
      "a": "It is cut out and remade. The replacement gets a new number and its own inspection, linked to the rejected joint. Rejection rate reported: [joint rejection rate reported, yes or no]."
     },
     {
-     "q": "Can we audit the shop and see a real joint log?",
-     "a": "Yes. Shop: [shop location, city and province]. Sample log: [redacted joint log shareable under NDA, yes or no]."
-    },
-    {
      "q": "How is a PP loop cleaned before first use?",
-     "a": "[pre-commissioning flush and cleaning procedure for PP]. The final rinse is PW, run to conductivity and TOC limits and recorded."
+     "a": "[pre-commissioning flush and cleaning procedure for PP]. The final rinse is Purified Water (PW), run to conductivity and total organic carbon (TOC) limits and recorded."
     }
    ]
   }
  ],
  "cta": {
   "h": "Send your spec",
-  "body": "We mark it clause by clause against how we build PP skids and draft your hold and witness points.",
+  "body": "An engineer marks it clause by clause. Cost: [document review cost].",
   "button": "Request a fabrication spec review",
   "link": "contact-proposal",
-  "intent": "Review of a document you have|Fabrication or piping specification",
+  "intent": "I have a URS or a draft|Review of another document|Fabrication or piping specification",
   "include": [
-   "URS or piping standard",
+   "Your fabrication or piping specification",
    "Inspection extent and witness points",
    "Material and certificate requirements",
    "Province, design pressure and temperature"
@@ -282,38 +265,26 @@
    "The clauses we would change",
    "A draft fabrication and inspection plan"
   ],
-  "turnaround": "[proposal response time, working days]"
+  "turnaround": "[document review turnaround, working days]"
  },
  "todo": [
-  "PP joining method used in the shop (IR or bead-and-crevice-free fusion, no socket fusion)",
-  "Welder qualification standard for thermoplastics (for example DVS 2212) and number of qualified welders",
-  "What each joint record holds (for example temperature, pressure, heating and cooling times, machine ID)",
-  "Joint acceptance criteria used (for example DVS 2202-1) and share of product-contact joints visually examined (%)",
-  "When test joints are made and how they are examined (bend or tensile test)",
-  "PP resin grade (unpigmented PP, for example PP-R) and certificate type for resin and pipe",
-  "How PP parts are marked or tagged for lot traceability",
-  "Joining machine calibration interval and whether machines log parameters automatically",
-  "PP internal surface specification (Ra) and how it is recorded, if specified",
-  "PP pressure test standard, medium, pressure and hold time",
-  "Pre-commissioning flush and cleaning procedure for PP",
-  "Design minimum slope specified (in/ft or %), same placeholder as sys-storage",
-  "Panel shop and certification mark held (CSA C22.2 No. 286 / UL 508A, c-UL-us or CSA), or whether field evaluation is used",
-  "Whether riboflavin spray coverage testing is in-house or subcontracted",
-  "Whether the joint rejection rate is reported in the dossier",
-  "Shop location (city, province)",
-  "Confirm a redacted joint log and dossier index can be shared under NDA",
-  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-  "Confirm the fabrication and inspection plan with hold and witness points is how Aquemi works (page says so)",
-  "A real fabrication project (joint count, rejection rate) before adding a case study block"
- ],
- "facts": [
-  {
-   "v": "PP",
-   "l": "Skids and loops"
-  },
-  {
-   "v": "PVC",
-   "l": "Pretreatment pipework"
-  }
+  "PP joining method for product-contact joints ([PP joining method], one name on every page; FD-18 recommends infrared (IR) or bead-and-crevice-free (BCF) fusion, no socket fusion, no solvent cement after the RO) and the joining standard and written procedure ([PP joining standard], as on compliance and cmp-quality). Once decided, name the method in the lead and the standard in the eyebrow (DR-010 rule 2, DR-001 rule 3)",
+  "Welder qualification standard for thermoplastics, for example DVS 2212, and the number of qualified welders ([welder qualification standard for thermoplastics], [number of qualified thermoplastic welders]; FD-18, FD-34; same welder name as sys-storage)",
+  "What each joint record holds, for example temperature, pressure, heating and cooling times, machine ID ([what each joint record holds]; FD-18)",
+  "Joint acceptance criteria, for example DVS 2202-1, and the share of product-contact joints visually examined ([joint acceptance criteria], [share of product-contact joints visually examined, %]; FD-18)",
+  "When test joints are made (shift start, change of welder, machine or pipe lot) and how they are examined, for example a bend or tensile test ([when test joints are made], [test joint examination method]; FD-18)",
+  "PP material: unpigmented resin grade, for example PP-R; how parts are marked for lot traceability; the certificates received per lot: EN 10204 type, 21 CFR 177.1520 conformity, the dated USP <88> Class VI report ([grade, for example PP-R], [how PP parts are marked for traceability], [PP material certificates], [PP material standard]; FD-17; the certificate name used most, as on compliance, cmp-quality, sys-pw and svc-cq)",
+  "Joining machines: calibration interval, and whether they log parameters automatically ([joining machine calibration and data logging], [machine calibration interval]; FD-18)",
+  "PP internal surface specification (Ra) and its basis ([PP internal surface specification, Ra µm], [basis for the PP surface specification]; as on sys-storage; FD-19)",
+  "PP pressure test method (medium, pressure or test factor, hold time) and the standard it follows ([PP pressure test method], as on compliance and cmp-documentation; [PP pressure test standard]; FD-19 recommends hydrostatic only, never air or gas)",
+  "Pre-commissioning flush and cleaning procedure for PP ([pre-commissioning flush and cleaning procedure for PP]; as on sys-storage; FD-19)",
+  "Whether the joint rejection rate is reported in the dossier ([joint rejection rate reported, yes or no]; FD-18)",
+  "Shop location, and the date the shop and test bay are ready for visits ([shop location, city and province], FD-33; [shop and test bay ready for visits], FD-44). Until then the hero's \"Book a shop visit\" and the FAQ's visit line are draft only; at launch they go if the shop is not ready, and the secondary becomes the next check that exists (specimen package, FD-47), else \"Talk to an engineer\" with the intent \"Not sure yet: talk to an engineer\" (DR-004 class 2, DR-006 rule 6)",
+  "Date the quality system is ready for a supplier audit ([quality system ready for audit, date]; FD-48). At launch the FAQ drops the audit line and its link if the date is unset",
+  "Aquemi-written specimen joint map and log extract, open or under NDA (FD-47). A redacted project log only after a delivered project, with the client's written consent (DR-004 class 3). The FAQ's specimen line and the dossier's link to cmp-documentation#samples stay only once the specimen exists",
+  "Document review cost and turnaround ([document review cost], [document review turnaround, working days]; FD-01, FD-02; defined in contact-proposal's requests table). At launch an unset turnaround reads \"An engineer replies in writing\" (DR-006 rule 7)",
+  "Confirm the practice the page states (FD-18): every product-contact joint numbered and logged; each lot's marking checked against its certificate on receipt; test joints before production joints; rejects cut out and remade under a new number; the fabrication and inspection plan agreed before material is ordered, with its hold and witness points; field joints added to the dossier",
+  "Who makes field joints on site ([installation scope], FD-26; the full answer lives on systems#site), and whether they follow the same procedure and log (step 6 says the dossier includes them)",
+  "A real fabrication project (joint count, rejection rate) before adding a case study block (DR-016)"
  ]
 }

@@ -3,33 +3,34 @@
  "section": "Systems",
  "nav_label": "Pretreatment",
  "title": "RO pretreatment for pharmaceutical water systems | Aquemi",
- "meta": "PVC pretreatment that takes drinking water (EPA, EU, Japan or WHO limits) and holds RO feed at no detectable chlorine or chloramine and SDI ≤ 3, all year.",
+ "meta": "PVC pretreatment for our polypropylene Purified Water package. It takes drinking water (EPA, EU, Japan or WHO limits) and holds RO feed to chlorine, hardness and SDI targets all year.",
  "path": "/systems/pretreatment/",
  "eyebrow": "SYSTEMS · PVC PRETREATMENT · USP <1231>",
  "headline": "Keep chlorine and scale off your membranes",
- "lead": "We design the PVC pretreatment train from your seasonal water data, so the RO inlet sees no detectable chlorine or chloramine all year.",
- "primary_cta": "Request a feedwater review",
- "primary_cta_intent": "Feedwater review",
+ "lead": "We design the polyvinyl chloride (PVC) pretreatment of our polypropylene Purified Water package from your seasonal data. It protects the reverse osmosis (RO) membranes all year.",
+ "primary_cta": "Request a feed water review",
+ "primary_cta_link": "contact-proposal",
+ "primary_cta_intent": "I have water data, no system yet|Feed water review",
  "secondary_cta": {
-  "label": "Get a sample turnover package",
+  "label": "See the documentation package",
   "link": "cmp-documentation"
  },
  "facts": [
   {
-   "v": "< 0.05 mg/L",
-   "l": "Chlorine and chloramine"
+   "v": "< 0.05 mg/L [confirm]",
+   "l": "Total chlorine, RO inlet · online analyzer"
   },
   {
-   "v": "< 1 mg/L",
-   "l": "Hardness as CaCO₃"
+   "v": "< 1 mg/L as CaCO₃",
+   "l": "Hardness, softener outlet · online analyzer"
   },
   {
    "v": "≤ 3",
-   "l": "SDI · ASTM D4189"
+   "l": "Silt density index, RO inlet · ASTM D4189"
   },
   {
-   "v": "[range] m³/h",
-   "l": "Capacity"
+   "v": "[pretreatment capacity range, L/h]",
+   "l": "Per train · at your coldest feed"
   }
  ],
  "blocks": [
@@ -37,7 +38,7 @@
    "type": "spec",
    "h": "Water at the RO inlet",
    "caption": "RO FEED · DESIGN TARGETS",
-   "note": "The membrane data sheet takes precedence.",
+   "note": "The membrane datasheet takes precedence.",
    "cols": [
     "Parameter",
     "Design target",
@@ -47,7 +48,7 @@
     {
      "p": "Free and total chlorine",
      "v": "< 0.05 mg/L as Cl₂ [confirm]",
-     "m": "Online total chlorine analyzer; ORP where bisulfite is dosed",
+     "m": "Online total chlorine analyzer; oxidation-reduction potential (ORP) where bisulfite is dosed",
      "hl": true
     },
     {
@@ -63,7 +64,7 @@
     {
      "p": "Hardness",
      "v": "< 1 mg/L as CaCO₃",
-     "m": "Softener outlet"
+     "m": "Online analyzer, softener outlet"
     },
     {
      "p": "Iron and manganese",
@@ -76,7 +77,7 @@
      "m": "Membrane projection at coldest and warmest feed"
     }
    ],
-   "nav": "RO inlet limits",
+   "nav": "RO inlet targets",
    "as": "gauges"
   },
   {
@@ -86,12 +87,12 @@
     {
      "t": "Municipal or well water",
      "icon": "droplet",
-     "d": "City water or well water, changing with the season."
+     "d": "City or well drinking water that changes with the season."
     },
     {
      "t": "Backflow preventer and break tank",
      "spot": "storage-tank",
-     "d": "Protects the public supply and buffers flow to the train."
+     "d": "Protects the public supply and buffers flow."
     },
     {
      "t": "Media filter",
@@ -116,7 +117,8 @@
     {
      "t": "To RO",
      "spot": "ro-skid",
-     "d": "No detectable chlorine, SDI₁₅ ≤ 3, hardness below 1 mg/L as CaCO₃."
+     "d": "Held within the RO inlet targets, all year.",
+     "link": "sys-pw"
     }
    ],
    "base": "Online monitoring · total chlorine, ORP, hardness, pressure drop",
@@ -133,23 +135,23 @@
    "rows": [
     [
      "Chloramine, used by many large utilities",
-     "Oxidizes membranes; releases ammonia that reaches the EDI",
+     "Oxidizes membranes; its ammonia loads the electrodeionization (EDI) stage",
      "Catalytic carbon, two beds or bisulfite; total chlorine alarm"
     ],
     [
      "Winter near 2 °C, summer over 20 °C",
      "Cold cuts RO output and silica solubility; warmth speeds growth",
-     "Membranes sized at your coldest month; sanitization set for summer"
+     "Membranes sized at your coldest month; RO sanitization set for summer"
     ],
     [
      "Spring runoff and fall turnover",
      "Turbidity and organics raise SDI and foul membranes",
-     "Media filter sized for the worst month; SDI tested on site"
+     "Media filter sized for the worst month; on-site SDI test [confirm]"
     ],
     [
      "Hardness and alkalinity, highest in groundwater",
      "Carbonate scales the last elements; CO₂ loads the EDI",
-     "Duplex softeners on measured hardness; CO₂ handled on the PW skid"
+     "Duplex softeners sized on measured hardness; CO₂ handled on the Purified Water skid"
     ],
     [
      "Silica",
@@ -164,12 +166,12 @@
     [
      "No disinfectant after carbon",
      "Biofilm in carbon and softeners sheds into the RO",
-     "Carbon replaced every [months] or bisulfite instead; samples around each bed"
+     "Carbon replaced every [carbon replacement interval, months] or bisulfite instead; samples around each bed"
     ]
    ],
    "nav": "Feed water",
    "as": "failures",
-   "fold": 4,
+   "fold": 3,
    "fold_noun": "feed conditions"
   },
   {
@@ -186,31 +188,25 @@
      "Your utility chloraminates",
      "Catalytic carbon",
      "Chlorine and chloramine, with less contact time",
-     "Bed sized at peak flow and winter temperature"
+     "Sized at peak flow and winter temperature"
     ],
     [
      "Chloramine, with a breakthrough check",
      "Two carbon beds in series",
-     "Both; a sample point between beds catches breakthrough",
-     "Two vessels to sanitize"
+     "Both; a sample point between beds",
+     "Two beds to backwash and replace"
     ],
     [
      "Free chlorine only, no dosed chemicals",
      "Granular activated carbon",
      "Free chlorine and some organics; chloramine only slowly",
-     "Biofilm; needs regular sanitization and backwash"
+     "Biofilm; needs regular backwash and replacement"
     ],
     [
      "Little floor space, or no carbon bed",
      "Sodium bisulfite dosing",
      "Both, by chemical reduction, fast",
      "Overdose feeds bacteria; verify on ORP"
-    ],
-    [
-     "No chemicals and no carbon, low turbidity",
-     "UV dechlorination",
-     "Both, by photolysis; also reduces bacteria",
-     "High lamp power; chlorine analyzer downstream"
     ]
    ],
    "nav": "Chlorine or chloramine",
@@ -219,34 +215,26 @@
   {
    "type": "docs",
    "h": "Documents delivered",
+   "key": 2,
    "items": [
     {
-     "t": "Feedwater review and design basis",
+     "t": "Feed water review and design basis",
      "d": "Data used, design months and RO inlet targets"
     },
     {
      "t": "Membrane projections",
-     "d": "At minimum and maximum feed temperature"
+     "d": "At coldest and warmest feed"
     },
     {
      "t": "Functional specification",
      "d": "Regeneration, backwash, sanitization, alarms and interlocks"
     },
     {
-     "t": "P&IDs and general arrangement drawings",
-     "d": "As built"
-    },
-    {
-     "t": "FAT and SAT protocols and reports",
-     "d": "Deviations listed and closed"
-    },
-    {
      "t": "Media, resin and material certificates",
-     "d": "Lot numbers; NSF/ANSI 61 where held; [certificates supplied for PVC parts]"
+     "d": "Lot numbers; [certificates supplied for PVC parts]"
     }
    ],
    "nav": "Documents",
-   "fold": 4,
    "fold_noun": "documents"
   },
   {
@@ -256,7 +244,7 @@
    "items": [
     {
      "t": "Iron and manganese removal",
-     "d": "Oxidation and catalytic media for well water, ahead of the softener.",
+     "d": "For well water, ahead of the softener.",
      "spot": "carbon-filter"
     },
     {
@@ -265,13 +253,18 @@
      "spot": "ro-membrane"
     },
     {
+     "t": "Softener on demand",
+     "d": "Regenerates on measured hardness breakthrough, not a fixed volume.",
+     "spot": "pretreatment"
+    },
+    {
      "t": "Antiscalant dosing",
-     "d": "Where softening alone does not control silica at your recovery.",
+     "d": "Where silica limits recovery at your coldest feed.",
      "spot": "pump"
     },
     {
      "t": "Feed heat exchanger",
-     "d": "Holds RO feed at [feed heat exchanger design temperature, °C] through winter.",
+     "d": "Holds RO feed at [feed heat exchanger design temperature, °C] in winter.",
      "spot": "heat-exchanger"
     }
    ],
@@ -285,68 +278,79 @@
    "items": [
     {
      "q": "Our water meets drinking water standards. Why is that not enough?",
-     "a": "Those standards protect people, not membranes. The US EPA allows chloramine up to 4 mg/L; polyamide membranes are typically rated below 0.1 mg/L free chlorine."
+     "a": "Those standards protect people, not membranes. Health Canada sets no guideline value for chloramine; the US EPA allows up to 4 mg/L. Polyamide reverse osmosis membranes typically tolerate < 0.1 mg/L of free chlorine."
     },
     {
-     "q": "How do you show the design covers seasonal swings?",
-     "a": "We take [months of history] of utility and site data, find the worst month for each parameter and size every bed against it, before you order."
+     "q": "What does the pretreatment cost?",
+     "a": "[budget range, CAD] for a [reference capacity, L/h] train, before tax, as of [month year].",
+     "link": "systems#budget"
+    },
+    {
+     "q": "How do you show the design covers seasonal changes?",
+     "a": "In the design basis, month by month. We take [months of history] of utility and site data and size every bed for each parameter's worst month, before you order."
     },
     {
      "q": "Is pretreatment part of the validated system?",
-     "a": "Your risk assessment draws the boundary; WHO accepts potable build up to the RO. Either way it is in the turnover package, IQ/OQ where in scope."
+     "a": "Your risk assessment sets the boundary. WHO TRS 1033 allows construction to drinking-water standards up to the reverse osmosis stage. Either way, the turnover package covers pretreatment, with installation and operational qualification where in scope."
     },
     {
      "q": "How do you keep carbon beds clean?",
-     "a": "PVC is rated to 60 °C, too low for hot water. We backwash and replace carbon every [months], an interval reset from counts during qualification."
+     "a": "By backwash and replacement, not hot water. Polyvinyl chloride (PVC) is rated to 60 °C, where it keeps 22 % of its pressure rating. We replace carbon every [carbon replacement interval, months], reset from counts at the sample points around each bed during qualification.",
+     "link": "svc-service#running-cost"
     },
     {
      "q": "What is the pretreatment built from?",
-     "a": "PVC ([PVC joining method]), upstream of the RO only. [PVC pipe standard and schedule]; [vessel material for media, softener and carbon beds]."
+     "a": "Polyvinyl chloride (PVC) pipe to [PVC pipe standard and schedule], joined by [PVC joining method]. It stays upstream of the reverse osmosis stage, so it never touches Purified Water. Vessels: [vessel material for media, softener and carbon beds]."
     },
     {
      "q": "What happens to the ammonia from chloramine?",
-     "a": "At the pH used to control CO₂, some passes the RO as ammonia gas and loads the EDI. So we design chloramine removal and the PW skid together."
+     "a": "Some passes the reverse osmosis membranes as ammonia gas, at the pH used to control CO₂. It then loads the electrodeionization stage, so we design chloramine removal and the Purified Water skid together."
+    },
+    {
+     "q": "Can you replace our existing pretreatment?",
+     "a": "For [makes and equipment types serviced]: we assess the system, then replace the train; the existing pretreatment runs until cutover.",
+     "link": "svc-upgrades"
     }
    ]
   }
  ],
  "cta": {
-  "h": "Send a year of water data",
-  "body": "A process engineer replies. Review cost: [cost of the feedwater review].",
-  "button": "Request a feedwater review",
+  "h": "Send your seasonal water data",
+  "body": "An engineer replies in writing. Cost: [cost of the feedwater review].",
+  "button": "Request a feed water review",
   "link": "contact-proposal",
-  "intent": "Feedwater review",
-  "include_label": "What to send for a feedwater review",
+  "intent": "I have water data, no system yet|Feed water review",
   "include": [
    "Utility or well, and disinfectant",
    "Water analyses from several seasons",
-   "Lowest and highest feed temperature, °C",
-   "RO or PW skid flow, m³/h"
+   "Coldest and warmest feed, °C",
+   "Peak demand, L/h"
   ],
-  "turnaround": "[proposal response time, working days]",
+  "turnaround": "[feed water review turnaround, working days]",
   "returns": [
    "Seasonal design basis, month by month",
-   "The margin it leaves your RO",
-   "Which months set your design"
+   "The pretreatment steps your water needs"
   ]
  },
  "todo": [
-  "RO inlet total chlorine design limit (mg/L as Cl₂)",
-  "Iron and manganese design limit at the RO inlet (mg/L each)",
-  "Feed heat exchanger design temperature (°C) ([feed heat exchanger design temperature, °C]; keep consistent with sys-pw)",
-  "Pretreatment capacity range, m³/h (hero fact shows [range] m³/h)",
-  "Whether bisulfite dosing is offered instead of carbon (feed water table)",
-  "PVC pipe standard and schedule, and vessel material for media, softener and carbon beds (FAQ)",
-  "Material certificates supplied for PVC parts ([certificates supplied for PVC parts], documents)",
-  "Default media replacement interval (months)",
-  "Whether UV dechlorination is offered (remove the router row if not)",
-  "Whether Aquemi measures SDI on site during the feedwater review (kit held)",
-  "Whether the feedwater review is free or charged; fill the CTA placeholder",
-  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
-  "Service locations, media and resin stocking location and severity 1 on-site response time (hours, [severity 1 on-site response time, hours])",
-  "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block",
-  "Months of water history requested for a feedwater review",
-  "Carbon replacement interval (months), reset from counts during qualification",
-  "PVC joining method for the pretreatment pipework, upstream of the RO"
+  "RO inlet total chlorine design target, mg/L as Cl₂: the draft \"< 0.05 mg/L\" shows \"[confirm]\" in the hero fact and the inlet table until engineering confirms it (FD-21; DR-010)",
+  "Iron and manganese design limit at the RO inlet, mg/L each ([design limit, mg/L each]; FD-21)",
+  "Pretreatment capacity range per train, L/h of RO feed at the coldest feed ([pretreatment capacity range, L/h], hero fact; FD-20). Unfilled at launch, the fact goes (DR-010 rule 5)",
+  "Budget band for the pretreatment train: [budget range, CAD] at [reference capacity, L/h], as of [month year], the systems budget row word for word (FAQ, linked to systems#budget; DR-005 rules 1 and 3; FD-03). Unfilled at launch, the cost question goes (DR-005 rule 8)",
+  "Which makes and equipment types Aquemi replaces pretreatment on ([makes and equipment types serviced], FAQ; FD-30). The full answer lives on svc-upgrades",
+  "Whether bisulfite dosing is offered instead of carbon: the diagram, the feed water table and the removal-step router all show it (FD-21)",
+  "Softener on demand is an option, not the standard scope (moved here from sys-pw). Confirm whether the online hardness analyzer at the softener outlet is standard, as the hero fact, the inlet table and the diagram's monitoring line say, or comes only with that option (FD-21)",
+  "Whether Aquemi tests SDI on site during the feed water review, and with what kit (\"on-site SDI test [confirm]\", feed water table; FD-21)",
+  "UV dechlorination: the removal-step row is cut until it is offered (FD-21). If restored: the PVC needs a light-tight transition piece at the UV unit (IPEX), and the chlorine analyzer stays downstream",
+  "Carbon replacement interval ([carbon replacement interval, months], feed water table and FAQ), reset from counts during qualification. svc-service's running-cost row holds it inside [filter, media and lamp intervals, months]: one figure in both (FD-21; DR-005 rule 6; DR-011)",
+  "Months of water history the feed water review asks for ([months of history], FAQ). The closing asks for seasonal data until this is set (DR-011 rule 1)",
+  "PVC pipe standard and schedule ([PVC pipe standard and schedule]), and vessel material for media, softener and carbon beds, FRP or stainless ([vessel material for media, softener and carbon beds]) (FD-17)",
+  "PVC joining method for the pretreatment pipework, upstream of the RO ([PVC joining method]; FD-18)",
+  "Material certificates supplied for PVC parts ([certificates supplied for PVC parts]), and which media, resin and PVC parts carry NSF/ANSI 61. Name the standard only once Aquemi's parts hold it (DR-007 rule 4; FD-17)",
+  "Feed heat exchanger design temperature ([feed heat exchanger design temperature, °C]; keep the same figure as sys-pw; FD-21)",
+  "Whether the feed water review is free or charged, CAD ([cost of the feedwater review], closing; FD-02). contact-proposal's requests table uses the same name",
+  "Feed water review turnaround, working days ([feed water review turnaround, working days], closing; FD-01). contact-proposal's requests table defines it",
+  "Source for the FAQ figure \"polyamide reverse osmosis membranes typically tolerate < 0.1 mg/L of free chlorine\": a membrane maker's datasheet (no library source yet)",
+  "A real pretreatment or retrofit project with measured RO inlet data before adding a case study block (DR-016)"
  ]
 }
