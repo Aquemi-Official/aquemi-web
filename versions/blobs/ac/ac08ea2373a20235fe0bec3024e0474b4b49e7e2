@@ -1,0 +1,75 @@
+/* ---------- Explainer: one idea as a figure plus 3-4 numbered callouts (prose block as "explainer") ----------
+   Desktop: the figure in a Plate (a `line` frame on surface-raised) on the left, the numbered callouts on the right,
+   separated by `line` hairlines. Phones: plate first, callouts under it. Figures: "levels" (test-tube columns drawn in
+   line-strong against a dashed limit) or "art" (the page's equipment drawing with the callouts' numbers pinned on it).
+   Numbers on a figure are aria-hidden; the text says it all. */
+.aq-explainer { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; }
+.aq-explainer__plate { min-width: 0; }
+/* Desktop: the figure stays in view (below the sticky section nav) while the reader works down the points */
+.aq-explainer > .aq-explainer__plate { position: sticky; top: calc(var(--space-16) + var(--space-4)); }
+.aq-explainer__fig { position: relative; margin: 0; }
+.aq-explainer__points { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+.aq-explainer__points > li { display: flex; flex-direction: column; gap: var(--space-2); padding-block: var(--space-6); border-top: 1px solid var(--line); }
+.aq-explainer__points > li:first-child { padding-top: 0; border-top: 0; }
+.aq-explainer__n { color: var(--ink-subtle); }
+.aq-explainer__t { margin: 0; font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; color: var(--ink); text-wrap: balance; }
+.aq-explainer__unit { text-transform: none; }
+.aq-explainer__d { margin: 0; max-width: var(--text-max); font: 400 16px/26px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-explainer:has(.aq-explainer__fig--art) { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+.aq-explainer--bare { grid-template-columns: minmax(0, 1fr); }
+/* Bare (no figure): the points side by side in one row (up to four; five or more wrap three to a row), each under a
+   `line` hairline, so the row reads as one quiet strip rather than a half-empty 2 x 2 */
+.aq-explainer--bare .aq-explainer__points { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); column-gap: var(--space-8); border-bottom: 0; }
+.aq-explainer--bare .aq-explainer__points:has(> li:nth-child(5)) { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.aq-explainer--bare .aq-explainer__points > li, .aq-explainer--bare .aq-explainer__points > li:first-child { padding-top: var(--space-4); border-top: 1px solid var(--line); }
+
+/* Number marker, on a tube or pinned on a drawing: a flow ring with flow digits (a line, not a fill) */
+.aq-explainer__mark { display: inline-grid; place-items: center; width: var(--space-6); height: var(--space-6); box-sizing: border-box; border: 1px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface); color: var(--flow); font: 500 12px/1 var(--font-mono); }
+.aq-explainer__pin { position: absolute; transform: translate(-50%, -50%); display: flex; }
+
+/* Levels: test-tube columns drawn in line-strong, filled to a value; the limit a dashed fail rule across them */
+.aq-levels { display: flex; flex-direction: column; gap: var(--space-6); }
+.aq-levels__plot { position: relative; display: grid; grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); column-gap: var(--space-6); height: calc(var(--space-32) * 2); padding: var(--space-6) 0 0 var(--space-32); border-bottom: 1px solid var(--line-strong); }
+.aq-levels__col { display: flex; justify-content: center; height: 100%; }
+.aq-levels__tube { position: relative; width: var(--space-16); height: 100%; }
+/* A lip across the tube's open top */
+.aq-levels__tube::after { content: ""; position: absolute; top: 0; left: calc(-1 * var(--space-2)); right: calc(-1 * var(--space-2)); border-top: 1.5px solid var(--line-strong); }
+.aq-levels__glass { position: absolute; inset: 0; overflow: hidden; border: 1.5px solid var(--line-strong); border-top: 0; border-radius: 0 0 var(--radius-pill) var(--radius-pill); }
+.aq-levels__fill { position: absolute; left: 0; right: 0; bottom: 0; height: var(--h, 0%); background: var(--flow-tint); border-top: 1.5px solid var(--flow); }
+.aq-levels__fill.is-at, .aq-levels__fill.is-above { border-top-color: var(--fail); }
+.aq-levels__top { position: absolute; left: 0; right: 0; bottom: var(--h, 0%); height: 0; }
+.aq-levels__top > .aq-explainer__mark { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); }
+.aq-levels__v { position: absolute; left: calc(100% + var(--space-3)); top: var(--space-1); white-space: nowrap; font: 500 12px/16px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+/* Margin: a dimension line from the fill up to the limit; at or above the limit, "No margin" in fail */
+.aq-levels__gap { position: absolute; left: calc(100% + var(--space-3)); font: 500 12px/16px var(--font-mono); white-space: nowrap; }
+.aq-levels__gap.is-margin { bottom: var(--h, 0%); height: calc(100% * var(--at, 0.7) - var(--h, 0%)); display: flex; align-items: center; padding-left: var(--space-2); border-left: 1px solid var(--flow); color: var(--flow); }
+.aq-levels__gap.is-margin::before, .aq-levels__gap.is-margin::after { content: ""; position: absolute; left: calc(-1 * var(--space-1) - 1px); width: var(--space-2); border-top: 1px solid var(--flow); }
+.aq-levels__gap.is-margin::before { top: 0; }
+.aq-levels__gap.is-margin::after { bottom: 0; }
+.aq-levels__gap.is-none { bottom: calc(var(--h, 0%) - var(--space-12)); color: var(--fail); }
+.aq-levels__limit { position: absolute; left: calc(-1 * var(--space-4)); right: 0; bottom: calc((100% - var(--space-6)) * var(--at, 0.7)); border-top: 1.5px dashed var(--fail); }
+.aq-levels__limit > span { position: absolute; left: var(--space-4); bottom: var(--space-1); width: calc(var(--space-32) - var(--space-8)); font: 500 12px/16px var(--font-mono); color: var(--fail); }
+.aq-levels__keys { padding-left: var(--space-32); display: grid; grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)); column-gap: var(--space-6); }
+.aq-levels__key { display: flex; flex-direction: column; gap: var(--space-1); margin: 0; text-align: center; }
+.aq-levels__label { font: 500 14px/20px var(--font-sans); color: var(--ink); }
+.aq-levels__note { font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+
+@container (max-width: 860px) {
+  .aq-explainer > .aq-explainer__plate { position: relative; top: auto; }
+  .aq-explainer, .aq-explainer:has(.aq-explainer__fig--art), .aq-explainer--bare .aq-explainer__points { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-explainer__points > li { padding-block: var(--space-4); }
+  .aq-explainer__points > li:first-child { padding-top: var(--space-4); border-top: 1px solid var(--line); }
+  .aq-explainer--bare .aq-explainer__points { grid-auto-flow: row; row-gap: 0; }
+  .aq-explainer__t { font-size: 18px; line-height: 26px; }
+  .aq-explainer__d { font-size: 15px; line-height: 24px; }
+  .aq-levels { gap: var(--space-4); }
+  .aq-levels__plot { height: calc(var(--space-32) * 1.75); column-gap: var(--space-4); padding-left: var(--space-16); }
+  .aq-levels__col { justify-content: flex-start; padding-left: var(--space-4); }
+  .aq-levels__tube { width: var(--space-8); }
+  .aq-levels__v, .aq-levels__gap { left: calc(100% + var(--space-2)); }
+  .aq-levels__limit > span { width: calc(var(--space-16) - var(--space-2)); }
+  .aq-levels__keys { padding-left: 0; column-gap: var(--space-4); }
+  .aq-levels__key { text-align: left; }
+  .aq-levels__label { font-size: 13px; line-height: 20px; }
+  .aq-levels__note { font-size: 13px; line-height: 20px; }
+}

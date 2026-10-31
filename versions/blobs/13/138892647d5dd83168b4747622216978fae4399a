@@ -1,0 +1,20 @@
+<!-- @dsCard group="Page sections" height=280 width=1000 subtitle="Purified Water treatment train" -->
+<div class="aq-page"><section class="aq-section"><div class="aq-in aq-stack-l">
+  <h2 class="aq-h1">How it works</h2>
+  <div class="aq-diagram">
+    <svg viewBox="0 0 850 110" role="img" aria-label="Multimedia filter to Softener to Reverse osmosis to EDI to Storage and loop">
+      <defs><marker id="aq-ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path class="aq-diagram__arrow" d="M0 0L8 4L0 8"/></marker></defs>
+      <text class="aq-diagram__num" x="10" y="18">01</text><rect class="aq-diagram__box" x="10" y="28" width="136" height="52"/><text class="aq-diagram__label" x="78" y="58" text-anchor="middle">Multimedia filter</text>
+      <line class="aq-diagram__arrow" x1="146" y1="54" x2="178" y2="54" marker-end="url(#aq-ah)"/>
+      <text class="aq-diagram__num" x="180" y="18">02</text><rect class="aq-diagram__box" x="180" y="28" width="136" height="52"/><text class="aq-diagram__label" x="248" y="58" text-anchor="middle">Softener</text>
+      <line class="aq-diagram__arrow" x1="316" y1="54" x2="348" y2="54" marker-end="url(#aq-ah)"/>
+      <text class="aq-diagram__num" x="350" y="18">03</text><rect class="aq-diagram__box" x="350" y="28" width="136" height="52"/><text class="aq-diagram__label" x="418" y="58" text-anchor="middle">Reverse osmosis</text>
+      <line class="aq-diagram__arrow" x1="486" y1="54" x2="518" y2="54" marker-end="url(#aq-ah)"/>
+      <text class="aq-diagram__num" x="520" y="18">04</text><rect class="aq-diagram__box" x="520" y="28" width="136" height="52"/><text class="aq-diagram__label" x="588" y="58" text-anchor="middle">EDI</text>
+      <line class="aq-diagram__arrow" x1="656" y1="54" x2="688" y2="54" marker-end="url(#aq-ah)"/>
+      <text class="aq-diagram__num" x="690" y="18">05</text><rect class="aq-diagram__box" x="690" y="28" width="136" height="52"/><text class="aq-diagram__label" x="758" y="50" text-anchor="middle">Storage</text><text class="aq-diagram__label" x="758" y="67" text-anchor="middle">and loop</text>
+      <line class="aq-diagram__base" x1="10" y1="100" x2="826" y2="100"/>
+    </svg>
+  </div>
+  <p class="aq-small">Example train for a Purified Water system to USP &lt;1231&gt;.</p>
+</div></section></div>

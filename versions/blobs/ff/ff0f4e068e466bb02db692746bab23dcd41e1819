@@ -1,0 +1,51 @@
+/* ---------- DocList: the turnover binder ---------- */
+/* Desktop: a binder frame (surface-sunken, line-strong edge, a second sheet drawn offset behind it) holding folder cards
+   on a 6-column grid, three to a row. Each card is a folder: a tab on its top edge (index and document code) and the
+   name below. Key documents (.is-key) fill their tab with flow on a flow-tint card. Wide cards (span 3) are chosen by
+   the renderer: .aq-docs__w when the list is open, .aq-docs__wf while it is folded, so no row ends short. */
+.aq-docs {
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: var(--space-4); row-gap: var(--space-6);
+  margin: 0 var(--space-2) 0 0; padding: var(--space-8) var(--space-6) var(--space-6); list-style: none;
+  background: var(--surface-sunken); border: 1px solid var(--line-strong);
+  box-shadow: var(--space-2) calc(-1 * var(--space-2)) 0 -1px var(--surface), var(--space-2) calc(-1 * var(--space-2)) 0 0 var(--line-strong);
+}
+.aq-docs > li { grid-column: span 2; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
+.aq-docs > li.aq-docs__w { grid-column: span 3; }
+.aq-fold:not(.is-open) .aq-docs > li { grid-column: span 2; }
+.aq-fold:not(.is-open) .aq-docs > li.aq-docs__wf { grid-column: span 3; }
+
+/* Folder tab: index and code, sitting on the card's top edge (overlaps its border by 1px) */
+.aq-docs__tab {
+  position: relative; z-index: 1; display: inline-flex; align-items: baseline; gap: var(--space-3); margin-bottom: -1px; max-width: 100%;
+  padding: var(--space-1) var(--space-4) var(--space-1) var(--space-3);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+.aq-docs__tab .aq-index { line-height: 20px; }
+.aq-docs__code { font: 500 14px/20px var(--font-mono); letter-spacing: 0.02em; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Card: the folder body, with one sheet showing behind it */
+.aq-docs__card {
+  flex: 1; align-self: stretch; display: block; min-width: 0; padding: var(--space-4) var(--space-4) var(--space-6);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm);
+  box-shadow: var(--space-1) var(--space-1) 0 -1px var(--surface-sunken), var(--space-1) var(--space-1) 0 0 var(--line);
+}
+.aq-docs__name { display: block; min-width: 0; font: 400 15px/22px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-docs__d { display: block; margin-top: var(--space-1); font-size: 14px; color: var(--ink-muted); }
+/* Key documents: the ones that decide the review */
+.aq-docs > li.is-key .aq-docs__tab { background: var(--flow); border-color: var(--flow); }
+.aq-docs > li.is-key .aq-docs__tab .aq-index, .aq-docs > li.is-key .aq-docs__code { color: var(--surface); }
+.aq-docs > li.is-key .aq-docs__card { background: var(--flow-tint); border-color: var(--flow); }
+.aq-docs > li.is-key .aq-docs__name { font-weight: 500; }
+
+/* Phone: no frame, a compact numbered list, "01  FS  Functional specification", index and codes in aligned columns.
+   Key documents keep their code in flow and the name in medium weight. */
+@container (max-width: 860px) {
+  .aq-docs { grid-template-columns: var(--space-8) auto minmax(0, 1fr); gap: 0; margin: 0; padding: 0; background: none; border: 0; border-bottom: 1px solid var(--line); box-shadow: none; }
+  .aq-docs > li, .aq-docs > li.aq-docs__w, .aq-fold:not(.is-open) .aq-docs > li, .aq-fold:not(.is-open) .aq-docs > li.aq-docs__wf { grid-column: 1 / -1; }
+  .aq-docs > li { display: grid; grid-template-columns: subgrid; column-gap: var(--space-3); align-items: baseline; padding: var(--space-3) 0; border-top: 1px solid var(--line); }
+  .aq-docs__tab, .aq-docs__card { display: contents; }
+  .aq-docs__tab .aq-index { line-height: 24px; }
+  .aq-docs__code { font: 400 14px/22px var(--font-mono); letter-spacing: 0; }
+  .aq-docs--plain .aq-docs__name { grid-column: 2 / -1; }
+  .aq-docs > li.is-key .aq-docs__tab .aq-index { color: var(--ink-subtle); }
+  .aq-docs > li.is-key .aq-docs__code { color: var(--flow); }
+}

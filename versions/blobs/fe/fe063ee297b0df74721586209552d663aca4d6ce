@@ -1,0 +1,86 @@
+/* ---------- PlanTiers: service plans compared in one table on a plate (table block as "plans") ----------
+   Desktop: a real table. Numbered row labels on the left (mono index, sans label), one column per plan with its name on
+   top, values large and centred, a "Fits when" row and one action per plan underneath. Placeholders sit in a compact
+   mono style so the grid still reads as a grid. A recommended plan (is-rec) is the table's one highlight: a flow-tint
+   column with a 2 px flow line over its name and "Recommended" as a flow word above it. The baseline ("No plan",
+   is-base) is quieter.
+   Phones: a segmented tier switcher (buttons, aria-pressed) shows one plan's column beside the row labels; with no
+   data-show (no script) every plan shows, each value captioned with its plan name. */
+.aq-plan-tiers { min-width: 0; }
+.aq-plan-tiers__switch { display: none; }
+.aq-plan-tiers__table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
+.aq-plan-tiers__plate { min-width: 0; }
+.aq-plan-tiers__row:hover td:not(.is-rec), .aq-plan-tiers__row:hover th { background: var(--surface-sunken); }
+.aq-plan-tiers__foot tr:first-child > * { border-top: 0; }
+.aq-plan-tiers__table td, .aq-plan-tiers__table th { padding: var(--space-4) var(--space-3); text-align: center; vertical-align: middle; border-bottom: 1px solid var(--line); min-width: 0; overflow-wrap: break-word; }
+.aq-plan-tiers__corner { width: 26%; border-bottom-color: transparent !important; }
+
+/* Head: plan names, the bottom rule is the table's top line */
+.aq-plan-tiers__name { position: relative; padding-top: var(--space-8) !important; vertical-align: bottom !important; border-bottom: 1px solid var(--line-strong) !important; font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.aq-plan-tiers__name .aq-ph { font-size: 15px; line-height: 22px; }
+.aq-plan-tiers__mark {
+  position: absolute; left: 50%; top: var(--space-2); transform: translateX(-50%);
+  font: 500 14px/20px var(--font-sans); color: var(--flow); white-space: nowrap;
+}
+
+/* Row labels: mono index, sans label */
+.aq-plan-tiers__table th.aq-plan-tiers__label { position: relative; padding-left: var(--space-8); text-align: left; font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-plan-tiers__label .aq-index { display: inline-block; width: var(--space-8); margin-left: calc(-1 * var(--space-8)); line-height: 22px; }
+
+/* Values: large and centred; a cell holding placeholders drops to compact mono */
+.aq-plan-tiers__cap { display: none; }
+.aq-plan-tiers__v { display: block; font: 300 20px/28px var(--font-sans); color: var(--ink); text-wrap: balance; }
+.aq-plan-tiers__v:has(.aq-ph) { font: 400 12px/20px var(--font-mono); color: var(--ink-subtle); }
+.aq-plan-tiers__v .aq-ph { font-size: inherit; }
+.aq-plan-tiers__table td.is-base, .aq-plan-tiers__name.is-base { color: var(--ink-muted); }
+.aq-plan-tiers td.is-base .aq-plan-tiers__v { color: var(--ink-muted); }
+
+/* Fits when, then one action per plan */
+.aq-plan-tiers__fits td, .aq-plan-tiers__fits th { padding-top: var(--space-6) !important; vertical-align: top !important; border-bottom: 0 !important; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); text-wrap: balance; }
+.aq-plan-tiers__fits th.aq-plan-tiers__label { font: 500 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-plan-tiers__actions td { border-bottom: 0; vertical-align: top; padding-top: var(--space-2); padding-bottom: var(--space-4); }
+.aq-plan-tiers__actions .aq-btn { width: 100%; height: auto; min-height: 44px; padding: var(--space-2) var(--space-3); justify-content: center; text-align: center; white-space: normal; }
+
+/* Recommended: the one flow-tint column, a 2 px flow line over its name */
+.aq-plan-tiers__table .is-rec { background: var(--flow-tint); }
+.aq-plan-tiers__name.is-rec { border-top: 2px solid var(--flow); }
+
+@container (max-width: 860px) {
+  /* Switcher: one segmented bar of plan buttons */
+  .aq-plan-tiers[data-show] .aq-plan-tiers__switch { display: flex; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); overflow: hidden; }
+  .aq-plan-tiers__tab {
+    flex: 1 1 0; min-width: 0; min-height: 44px; margin: 0; padding: var(--space-2) var(--space-1); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+    background: transparent; border: 0; border-bottom: 2px solid transparent; cursor: pointer; color: var(--ink-muted);
+    font: 500 12px/16px var(--font-sans); text-align: center; overflow-wrap: anywhere;
+  }
+  .aq-plan-tiers__tab + .aq-plan-tiers__tab { border-left: 1px solid var(--line); }
+  .aq-plan-tiers__tab .aq-ph { font-size: 12px; }
+  .aq-plan-tiers__tab[aria-pressed="true"] { background: var(--flow-tint); color: var(--ink); border-bottom-color: var(--flow); }
+  .aq-plan-tiers__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+  .aq-plan-tiers__tabmark { font: 500 12px/16px var(--font-sans); overflow-wrap: normal; color: var(--flow); }
+
+  .aq-plan-tiers__table, .aq-plan-tiers__table tbody, .aq-plan-tiers__table tr { display: block; margin-top: 0; }
+  .aq-plan-tiers__table thead { display: none; }
+  .aq-plan-tiers__table { margin-top: var(--space-4); border-top: 1px solid var(--line-strong); }
+  .aq-plan-tiers__table tr { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: var(--space-4); padding-block: var(--space-3); border-bottom: 1px solid var(--line); }
+  .aq-plan-tiers__table td, .aq-plan-tiers__table th { display: block; padding: 0 !important; border: 0 !important; text-align: left; background: none !important; }
+  .aq-plan-tiers__table th.aq-plan-tiers__label { padding-left: var(--space-8) !important; font-size: 14px; line-height: 20px; }
+  .aq-plan-tiers__label .aq-index { line-height: 20px; font-size: 12px; }
+  .aq-plan-tiers__v { font-size: 17px; line-height: 24px; font-weight: 400; text-wrap: pretty; }
+  .aq-plan-tiers__v:has(.aq-ph) { font-size: 12px; line-height: 20px; }
+  .aq-plan-tiers__fits { padding-top: var(--space-4) !important; }
+  .aq-plan-tiers__fits td { font-size: 14px; line-height: 20px; }
+  .aq-plan-tiers__actions { grid-template-columns: minmax(0, 1fr) !important; border-bottom: 0 !important; padding-top: var(--space-4) !important; }
+  .aq-plan-tiers__actions .aq-plan-tiers__corner, .aq-plan-tiers__actions td:empty { display: none !important; }
+  .aq-plan-tiers__actions td + td { margin-top: var(--space-2); }
+
+  /* One plan at a time: the renderer sets data-show; buttons change it */
+  .aq-plan-tiers[data-show="1"] .aq-plan-tiers__c:not(.t1), .aq-plan-tiers[data-show="2"] .aq-plan-tiers__c:not(.t2),
+  .aq-plan-tiers[data-show="3"] .aq-plan-tiers__c:not(.t3), .aq-plan-tiers[data-show="4"] .aq-plan-tiers__c:not(.t4),
+  .aq-plan-tiers[data-show="5"] .aq-plan-tiers__c:not(.t5), .aq-plan-tiers[data-show="6"] .aq-plan-tiers__c:not(.t6) { display: none !important; }
+
+  /* No switcher (no script): every plan shows under the label, each value captioned with its plan */
+  .aq-plan-tiers:not([data-show]) .aq-plan-tiers__table tr { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); }
+  .aq-plan-tiers:not([data-show]) .aq-plan-tiers__c { display: grid !important; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: var(--space-4); padding-left: var(--space-8) !important; }
+  .aq-plan-tiers:not([data-show]) .aq-plan-tiers__cap { display: block; font: 500 12px/20px var(--font-sans); color: var(--ink-muted); }
+}

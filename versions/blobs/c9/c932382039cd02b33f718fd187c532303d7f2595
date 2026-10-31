@@ -1,0 +1,197 @@
+{
+ "id": "services",
+ "section": "Services",
+ "nav_label": "Services",
+ "title": "Pharmaceutical water system services | Aquemi",
+ "meta": "From user requirement specification to IQ/OQ, handover and service: one Aquemi team designs, builds, tests, qualifies and maintains your water system.",
+ "path": "/services/",
+ "eyebrow": "SERVICES · URS TO HANDOVER",
+ "headline": "One team from the first requirement to the last service visit",
+ "lead": "We take your water system from user requirement specification to qualified handover, then keep it in its qualified state. The same engineers carry the project through every phase, so nothing is lost between design, the shop floor and your site.",
+ "tags": [
+  "GAMP 5",
+  "ASME BPE",
+  "ISPE Baseline Guide Vol. 4",
+  "USP <1231>",
+  "21 CFR Part 11"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Request service on an existing system",
+  "link": "contact-service"
+ },
+ "blocks": [
+  {
+   "type": "steps",
+   "h": "How a project runs",
+   "items": [
+    {
+     "t": "Requirements",
+     "d": "We review your user requirement specification (URS), or help you write one, and confirm water grades, demand profile and feedwater analysis."
+    },
+    {
+     "t": "Design",
+     "d": "Basis of design, process and instrumentation diagrams (P&IDs), functional specification and a design review against your URS."
+    },
+    {
+     "t": "Fabrication",
+     "d": "316L stainless steel skids built in our shop with orbital welds, weld logs and full material traceability."
+    },
+    {
+     "t": "Factory acceptance test",
+     "d": "The skid runs in our test bay against an approved protocol before it ships. You or your delegate witness it."
+    },
+    {
+     "t": "Installation and site acceptance",
+     "d": "We install, connect and repeat the tests that matter after transport and tie-in."
+    },
+    {
+     "t": "Commissioning and qualification",
+     "d": "Installation qualification (IQ) and operational qualification (OQ) executed to approved protocols, then support through performance qualification (PQ)."
+    },
+    {
+     "t": "Service",
+     "d": "Preventive maintenance, calibration and spare parts that keep the system in its validated state."
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "What we do at each stage",
+   "intro": "Each service can be bought alone. Most clients buy the full sequence so one team stays accountable for the result.",
+   "items": [
+    {
+     "t": "Process design and engineering",
+     "d": "URS review, sizing from your demand profile, P&IDs and functional specification.",
+     "tag": "ISPE Vol. 4",
+     "link": "svc-design"
+    },
+    {
+     "t": "Fabrication",
+     "d": "316L, orbital welding, borescope inspection, passivation and electropolish.",
+     "tag": "ASME BPE",
+     "link": "svc-fabrication"
+    },
+    {
+     "t": "FAT and SAT",
+     "d": "Wet factory acceptance testing and site acceptance testing to written protocols.",
+     "tag": "GAMP 5",
+     "link": "svc-fat-sat"
+    },
+    {
+     "t": "Commissioning and qualification",
+     "d": "IQ/OQ execution and the three-phase PQ approach for water systems.",
+     "tag": "USP <1231>",
+     "link": "svc-cq"
+    },
+    {
+     "t": "Service and spare parts",
+     "d": "Named service plans, calibration, critical spares and emergency response.",
+     "tag": "USP <645>",
+     "link": "svc-service"
+    },
+    {
+     "t": "Upgrades and retrofits",
+     "d": "Controls upgrades, capacity increases and the move to membrane Water for Injection (WFI).",
+     "tag": "Ph. Eur.",
+     "link": "svc-upgrades"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "h": "What you receive at each phase",
+   "cols": [
+    "Phase",
+    "Main deliverables",
+    "Your approval point"
+   ],
+   "rows": [
+    [
+     "Requirements",
+     "URS review comments, feedwater analysis, demand profile",
+     "URS sign-off"
+    ],
+    [
+     "Design",
+     "Basis of design, P&IDs, functional specification, design review report",
+     "Design qualification (DQ)"
+    ],
+    [
+     "Fabrication",
+     "Material certificates (EN 10204 3.1), weld logs, weld maps, borescope records, passivation certificate",
+     "Release to FAT"
+    ],
+    [
+     "FAT",
+     "Approved FAT protocol, executed results, deviation log, punch list",
+     "FAT report sign-off"
+    ],
+    [
+     "Installation and SAT",
+     "Installation records, SAT protocol and results",
+     "SAT report sign-off"
+    ],
+    [
+     "Qualification",
+     "IQ and OQ protocols and reports, PQ sampling plan support",
+     "Release to PQ"
+    ],
+    [
+     "Handover",
+     "Turnover package, operating and maintenance manuals, training records",
+     "Handover certificate"
+    ]
+   ]
+  },
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "The documents arrive with the equipment",
+   "body": "Validation documents follow GAMP 5 and are written as the system is built, not reconstructed afterwards. Your validation team reviews drafts at each phase, so the final package holds no surprises."
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Can we buy only part of the sequence?",
+     "a": "Yes. We can fabricate to another engineer's design, or qualify a system someone else built. We tell you at the start what we need from other parties for the documents to hold together."
+    },
+    {
+     "q": "Who writes the URS?",
+     "a": "You own it. We can draft it with you from your process needs and the applicable pharmacopoeia, then review it against what the design must prove."
+    },
+    {
+     "q": "Do you service systems you did not build?",
+     "a": "Yes. We start with a condition survey and a document review, then propose a service plan for that system."
+    },
+    {
+     "q": "How long does a typical project take?",
+     "a": "It depends on scope and on your approval cycles. A packaged Purified Water skid typically takes [weeks] from approved design to FAT. We give you a dated schedule with the proposal."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related pages",
+   "items": [
+    "compliance",
+    "cmp-documentation",
+    "systems",
+    "projects"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Start with your requirements",
+  "body": "Send us your URS or a short description of the water you need, and an engineer will reply with questions and a scope.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Typical duration from approved design to FAT for a packaged PW skid [weeks]",
+  "Confirm Aquemi offers each of the six services in-house or names partners",
+  "Confirm services are sold separately as well as end to end"
+ ]
+}

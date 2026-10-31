@@ -1,0 +1,195 @@
+{
+ "id": "home",
+ "section": "Home",
+ "nav_label": "Home",
+ "title": "Pharmaceutical water systems: PW, WFI, pure steam | Aquemi",
+ "meta": "We design, fabricate and qualify Purified Water, WFI and pure steam systems for pharmaceutical plants in Canada, built to USP and ASME BPE.",
+ "path": "/",
+ "eyebrow": "PHARMACEUTICAL WATER SYSTEMS · USP · PH. EUR. · ASME BPE",
+ "headline": "Validation-ready Purified Water, WFI and pure steam systems for pharmaceutical plants",
+ "lead": "Built to USP <645> and <643>, Ph. Eur. and ASME BPE. Every system runs a wet factory acceptance test (FAT) before it ships, and arrives with its installation and operational qualification (IQ/OQ) protocols and a complete turnover package.",
+ "primary_cta": "Submit your URS for a proposal",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "facts": [
+  {
+   "v": "7",
+   "l": "System families, feed water to point of use"
+  },
+  {
+   "v": "100 %",
+   "l": "Skids factory acceptance tested before shipping"
+  },
+  {
+   "v": "< 0.25 EU/mL",
+   "l": "WFI endotoxins at the furthest point of use"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "tags",
+   "h": "Standards we design and document to",
+   "items": [
+    "USP <645>",
+    "USP <643>",
+    "USP <85>",
+    "USP <1231>",
+    "Ph. Eur.",
+    "EN 285",
+    "ASME BPE",
+    "GAMP 5",
+    "21 CFR Part 11",
+    "EU GMP Annex 1",
+    "Health Canada GUI-0001",
+    "ISPE Baseline Guide Vol. 4"
+   ]
+  },
+  {
+   "type": "readout",
+   "value": "< 0.25 EU/mL",
+   "method": "Bacterial endotoxins · USP <85>",
+   "body": "This is the endotoxin limit for WFI. We design every WFI system and loop to meet it at the furthest point of use, not only at the still outlet, and we show you the factory acceptance test data before the skid leaves our shop."
+  },
+  {
+   "type": "path",
+   "h": "Seven system families, one water path",
+   "intro": "Choose one system, or let us take the whole path from feed water to point of use. Every limit is judged where the water is used, so we say where our scope ends and your plant ties in.",
+   "items": [
+    {
+     "t": "Pretreatment",
+     "d": "Multimedia, softening and carbon or bisulfite trains sized for your municipal water.",
+     "tag": "Health Canada · US EPA",
+     "link": "sys-pretreatment"
+    },
+    {
+     "t": "Purified Water (PW) generation",
+     "d": "Reverse osmosis (RO) and electrodeionization (EDI) skids that hold conductivity below USP <645> stage 1.",
+     "tag": "USP <645>",
+     "link": "sys-pw"
+    },
+    {
+     "t": "WFI by distillation",
+     "d": "Multi-effect and vapour compression stills for hot WFI that meets USP and Ph. Eur.",
+     "tag": "USP · Ph. Eur.",
+     "link": "sys-wfi-distillation"
+    },
+    {
+     "t": "WFI by membrane",
+     "d": "Double-pass RO, EDI and ultrafiltration, as Ph. Eur. has permitted since 2017.",
+     "tag": "Ph. Eur. 0169",
+     "link": "sys-wfi-membrane"
+    },
+    {
+     "t": "Pure steam generators",
+     "d": "Steam for sterilizers and steam-in-place, with condensate tested to EN 285.",
+     "tag": "EN 285",
+     "link": "sys-pure-steam"
+    },
+    {
+     "t": "Storage and distribution loops",
+     "d": "Tanks and hot, ambient or cold loops with no dead legs over 2 pipe diameters.",
+     "tag": "ASME BPE",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Monitoring and controls",
+     "d": "Online total organic carbon (TOC), conductivity and ozone, with audit-trailed data.",
+     "tag": "21 CFR Part 11",
+     "link": "sys-monitoring"
+    }
+   ],
+   "from": "City feed",
+   "to": "Point of use"
+  },
+  {
+   "type": "steps",
+   "h": "How a project runs, and what you can check at each step",
+   "items": [
+    {
+     "t": "Design",
+     "d": "We turn your user requirement specification (URS) into a functional specification, piping and instrumentation diagrams (P&IDs) and a risk assessment you review line by line."
+    },
+    {
+     "t": "Fabricate",
+     "d": "316L stainless steel, orbital welds with weld logs and borescope records, and surface finishes specified to ASME BPE."
+    },
+    {
+     "t": "FAT",
+     "d": "A wet factory acceptance test in our shop, to a protocol your quality unit approves, with your team present in person or remotely."
+    },
+    {
+     "t": "SAT and IQ/OQ",
+     "d": "A site acceptance test (SAT) on your feed water, then IQ/OQ protocols written to GAMP 5 and executed with your validation team."
+    },
+    {
+     "t": "Support",
+     "d": "Preventive maintenance, calibration and spare parts, documented so the system stays in its qualified state through performance qualification (PQ) and after."
+    }
+   ]
+  },
+  {
+   "type": "prose",
+   "h": "Designed, built and serviced in Canada",
+   "body": [
+    "We engineer and fabricate in [city], [province], and our service technicians are based in [service cities]. You deal with the people who drew the P&IDs, from first review to the tenth annual calibration.",
+    "Our documentation is written in English and French on request, and our designs account for Canadian municipal feed water, including chloramine disinfection and cold winter supply temperatures."
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Where are you in your project?",
+   "intro": "Pick the step that matches where you are. Each one goes to an engineer, not a sales queue.",
+   "items": [
+    {
+     "t": "URS ready, requesting proposals",
+     "d": "Send your URS and feed water analysis. We reply with questions or a scoped proposal within [proposal response time].",
+     "tag": "Proposal",
+     "link": "contact-proposal"
+    },
+    {
+     "t": "Writing or checking a URS",
+     "d": "We mark up your draft against USP, Ph. Eur., ASME BPE and EU GMP Annex 1 and return it with comments.",
+     "tag": "URS review",
+     "link": "svc-design"
+    },
+    {
+     "t": "Early research or budgeting",
+     "d": "Get a sample turnover package: the FAT protocol contents, IQ/OQ index and weld log format we hand over.",
+     "tag": "Sample documents",
+     "link": "cmp-documentation"
+    },
+    {
+     "t": "A system already in service",
+     "d": "Service, calibration or an out-of-specification result on any make of PW, WFI or pure steam equipment. Response within [service response time].",
+     "tag": "Service",
+     "link": "contact-service"
+    },
+    {
+     "t": "An upgrade or retrofit",
+     "d": "Controls, sanitization or capacity changes to a system already in qualified use.",
+     "tag": "Upgrade",
+     "link": "svc-upgrades"
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your water grade and flow, or your URS. An engineer replies.",
+  "body": "A process engineer, not a sales representative, reads it and replies within [proposal response time] with questions or a budget proposal.",
+  "button": "Submit your URS for a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Hero photograph of a finished Aquemi skid or installed loop",
+  "Fabrication shop city and province",
+  "Service cities",
+  "Whether French-language documentation is offered",
+  "Confirm which standards Aquemi designs to routinely before publishing the compliance strip",
+  "Proposal response time (business days) for the URS / proposal route",
+  "Service response time for existing systems",
+  "What the sample turnover package contains and whether it is shared openly or under NDA",
+  "One real case study with client permission (removed from home until it exists)"
+ ]
+}

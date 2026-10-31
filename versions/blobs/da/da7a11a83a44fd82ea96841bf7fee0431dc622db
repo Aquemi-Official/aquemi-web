@@ -1,0 +1,25 @@
+<!-- @dsCard group="Data" height=560 width=900 subtitle="WFI quality limits with example results, and a routing table with links" -->
+<div class="aq-root" style="padding:24px">
+  <div class="aq-scroll">
+    <table class="aq-spec">
+      <caption>Water for Injection · USP / Ph. Eur. · example data</caption>
+      <thead><tr><th>Parameter</th><th>Limit</th><th>Example result</th><th>Method</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Conductivity</th><td class="aq-spec__value">≤ 1.3 µS/cm @ 25 °C</td><td class="aq-spec__value">0.62 µS/cm</td><td class="aq-spec__method">USP &lt;645&gt; stage 1</td><td><span class="aq-status aq-status--pass">✓ Pass</span></td></tr>
+        <tr><th scope="row">Total organic carbon</th><td class="aq-spec__value">≤ 500 ppb</td><td class="aq-spec__value">48 ppb</td><td class="aq-spec__method">USP &lt;643&gt;</td><td><span class="aq-status aq-status--pass">✓ Pass</span></td></tr>
+        <tr class="is-highlight"><th scope="row">Bacterial endotoxins</th><td class="aq-spec__value">&lt; 0.25 EU/mL</td><td class="aq-spec__value">&lt; 0.05 EU/mL</td><td class="aq-spec__method">USP &lt;85&gt;</td><td><span class="aq-status aq-status--pass">✓ Pass</span></td></tr>
+        <tr><th scope="row">Microbial count</th><td class="aq-spec__value">≤ 10 CFU/100 mL</td><td class="aq-spec__value">6 CFU/100 mL</td><td class="aq-spec__method">USP &lt;1231&gt;</td><td><span class="aq-status aq-status--caution">! Alert</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="aq-scroll" style="margin-top:32px">
+    <table class="aq-spec">
+      <caption>Routing table · start from your water grade</caption>
+      <thead><tr><th>Water grade</th><th>The limits that decide it</th><th>Specifications</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Purified Water (PW)</th><td class="aq-spec__text">Conductivity ≤ 1.3 µS/cm @ 25 °C (USP &lt;645&gt;); TOC ≤ 0.50 mg/L (USP &lt;643&gt;)</td><td class="aq-spec__text"><a href="#sys-pw">PW generation</a></td></tr>
+        <tr><th scope="row">Water for Injection (WFI), hot</th><td class="aq-spec__text">Bacterial endotoxins &lt; 0.25 EU/mL (USP &lt;85&gt;)</td><td class="aq-spec__text"><a href="#sys-wfi-distillation">WFI by distillation</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+/* ---------- Spot: an Icon drawn larger as a figure (assets/icons/<name>.svg), painted with a colour token through a mask ----------
+   Sized by the component that holds it, kept icon-sized (36 to 96 px): a diagram stage, a route stop, a plant-map zone. The file comes in
+   through an inline mask-image (core.js wSpot) so its URL resolves against the page, not this stylesheet. */
+.aq-spot {
+  display: inline-block; flex: none; width: var(--space-32); height: var(--space-32);
+  background-color: var(--ink);
+  -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+}
+.aq-spot--s { width: var(--space-24); height: var(--space-24); }
+.aq-spot--l { width: calc(var(--space-32) + var(--space-8)); height: calc(var(--space-32) + var(--space-8)); }
+.aq-spot.aq-spot--icon { width: var(--space-16); height: var(--space-16); }
+.aq-spot--muted { background-color: var(--ink-muted); }
+.aq-spot--flow { background-color: var(--flow); }
+.aq-spot--on-navy { background-color: var(--on-navy-muted); }
+
+/* Phones: one step down (160 -> 128, 128 -> 96); 96 stays, smaller and the drawings close up. */
+@container (max-width: 860px) {
+  .aq-spot { width: var(--space-24); height: var(--space-24); }
+  .aq-spot--l { width: var(--space-32); height: var(--space-32); }
+  .aq-spot.aq-spot--icon { width: calc(var(--space-12) + var(--space-2)); height: calc(var(--space-12) + var(--space-2)); }
+}

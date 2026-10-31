@@ -1,0 +1,317 @@
+{
+ "id": "cmp-documentation",
+ "section": "Compliance",
+ "nav_label": "Documentation package",
+ "title": "Turnover package and validation documents | Aquemi",
+ "meta": "Every document we deliver, by stage: URS matrix, P&IDs, EN 10204 3.1 certificates, weld log, FAT and IQ/OQ. Request a redacted sample package.",
+ "path": "/compliance/documentation/",
+ "eyebrow": "DOCUMENTATION · EU GMP ANNEX 15 · GAMP 5 · ASME BPE",
+ "headline": "Every document your auditor asks for",
+ "lead": "We write each document as we design, build and test, and index the package to your URS.",
+ "primary_cta": "Request a sample turnover package",
+ "secondary_cta": {
+  "label": "See the standards each document proves",
+  "link": "compliance"
+ },
+ "blocks": [
+  {
+   "type": "docs",
+   "nav": "Package",
+   "h": "The turnover package, section by section",
+   "intro": "Searchable, bookmarked PDF; every section linked from the register.",
+   "items": [
+    {
+     "t": "Index and project summary",
+     "d": "Register with current revisions, scope, tag list, battery limits"
+    },
+    {
+     "t": "Requirements and design basis",
+     "key": true,
+     "d": "URS matrix, basis of design, risk assessment, C&Q plan, traceability matrix"
+    },
+    {
+     "t": "Specifications",
+     "d": "Functional and design specifications, alarm list, Part 11 and Annex 11 assessment"
+    },
+    {
+     "t": "Drawings and calculations",
+     "d": "As-built drawings, process balances, ASME VIII vessel calculations"
+    },
+    {
+     "t": "Materials",
+     "d": "Each product-contact part by heat number; elastomers to USP <88> Class VI"
+    },
+    {
+     "t": "Welding",
+     "d": "ASME IX procedures, operator qualifications, weld maps and log, borescope ([share of product-contact welds borescoped, %])"
+    },
+    {
+     "t": "Surface, cleaning and drainability",
+     "d": "ASME BPE SF1 or SF4 finish, passivation to ASTM A967 or A380, dead legs L/D ≤ 2"
+    },
+    {
+     "t": "Pressure equipment and panels",
+     "d": "Hydrostatic tests to ASME B31.3, CRN under CSA B51, panel certification"
+    },
+    {
+     "t": "Instruments and calibration",
+     "d": "Certificates traceable to national standards, TOC system suitability, vent filter integrity"
+    },
+    {
+     "t": "Software",
+     "d": "Version and checksum record, code review, backup and restore procedure"
+    },
+    {
+     "t": "Testing and qualification",
+     "d": "FAT, SAT, IQ, OQ and PQ protocols and reports, deviation logs, EN 285 report"
+    },
+    {
+     "t": "Operation, maintenance and training",
+     "d": "Manual, SOP drafts, spares for the first [months of operation], training records"
+    }
+   ],
+   "fold": 4,
+   "fold_noun": "sections"
+  },
+  {
+   "type": "spec",
+   "nav": "Delivery",
+   "h": "Delivery and signatures",
+   "caption": "TURNOVER PACKAGE FORMAT",
+   "cols": [
+    "Item",
+    "How we deliver it",
+    "Note"
+   ],
+   "rows": [
+    {
+     "p": "Documents we write",
+     "v": "Searchable PDF, bookmarked, number and revision on every page",
+     "m": "Never a scan of a printout",
+     "hl": true
+    },
+    {
+     "p": "Signatures",
+     "v": "[electronic signature method]; wet ink, scanned; or your validation system",
+     "m": "[meets 21 CFR Part 11 and Annex 11?]"
+    },
+    {
+     "p": "Retention",
+     "v": "Aquemi keeps a copy for [retention period, years]",
+     "m": "A lost document is reissued on request"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Master index",
+   "ground": "dark",
+   "h": "What each stage issues",
+   "intro": "Your proposal lists the subset for your system.",
+   "cols": [
+    "Stage",
+    "Your step, and who approves",
+    "Documents issued"
+   ],
+   "rows": [
+    [
+     "Specify and design",
+     "Design qualification (Annex 15, 3.3). Your quality unit approves DQ; your engineering lead, drawings.",
+     "URS compliance matrix; basis of design; risk assessment; P&IDs; functional specification; C&Q plan; traceability matrix"
+    ],
+    [
+     "Fabrication",
+     "IQ evidence (Annex 15, 3.9). Aquemi quality control approves; your team again at IQ.",
+     "Material log with 3.1 certificates; welding qualifications; weld map and log; borescope, finish and pressure test records"
+    ],
+    [
+     "FAT and SAT",
+     "Leveraged tests and OQ (Annex 15, 3.6). Your quality unit approves before execution.",
+     "Approved protocol; executed protocol with raw data; code review; software version record; deviation log; summary report"
+    ],
+    [
+     "Qualification",
+     "IQ, OQ and PQ (Annex 15, 3.9–3.11). Your quality unit approves before execution and at report.",
+     "IQ and OQ protocols and reports; sanitization temperature mapping; PQ protocol and sampling plan; alert and action levels"
+    ],
+    [
+     "Handover",
+     "Any record found in minutes at inspection. Your system owner approves.",
+     "Document register; as-built drawings; calibration certificates; software backup; O&M manual; SOP drafts; spare parts list"
+    ],
+    [
+     "Service and change",
+     "Periodic review and change control (Annex 15, 4.1 and 11), through your change control.",
+     "Signed service reports; calibration certificates; annual system review; updated as-builts; change-scoped test records"
+    ]
+   ],
+   "fold": 2,
+   "fold_noun": "stages"
+  },
+  {
+   "type": "steps",
+   "nav": "Review cycle",
+   "h": "How each document reaches your file",
+   "items": [
+    {
+     "t": "Draft and review",
+     "d": "Issued at its stage, numbered; your team comments within [standard review period, working days]."
+    },
+    {
+     "t": "Revision",
+     "d": "We answer each comment in a log that stays with the document, then reissue."
+    },
+    {
+     "t": "Approval",
+     "d": "Your quality unit approves protocols before execution, specifications at their design gate.",
+     "hold": "Your quality unit"
+    },
+    {
+     "t": "Execution or as built",
+     "d": "Executed records carry raw data and both parties' signatures; drawings reissued as built.",
+     "hold": "Both parties"
+    },
+    {
+     "t": "Turnover",
+     "d": "The register lists every current revision; anything open is a punch list item."
+    }
+   ]
+  },
+  {
+   "type": "form",
+   "h": "Request a sample package",
+   "nav": "Request a sample",
+   "anchor": "samples",
+   "intro": "Redacted extracts from a delivered system; reply within [sample package response time, working days].",
+   "submit": "Send me the sample",
+   "fields": [
+    {
+     "kind": "checkbox-group",
+     "label": "Documents you want",
+     "required": true,
+     "options": [
+      "Turnover package index",
+      "FAT protocol: contents and test cases",
+      "IQ and OQ protocol contents",
+      "Weld map and weld log extract"
+     ]
+    },
+    {
+     "kind": "select",
+     "label": "Where your project is",
+     "required": true,
+     "options": [
+      "Early research or budgeting",
+      "Writing the URS",
+      "URS ready, requesting proposals",
+      "Existing system: upgrade or requalification"
+     ]
+    },
+    {
+     "kind": "text",
+     "label": "Full name",
+     "required": true
+    },
+    {
+     "kind": "email",
+     "label": "Work email",
+     "required": true,
+     "help": "We send the sample here."
+    },
+    {
+     "kind": "text",
+     "label": "Company",
+     "required": true
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions validation teams ask",
+   "items": [
+    {
+     "q": "Can we see real documents before we order?",
+     "a": "Yes, redacted: index, protocol contents and record formats from a delivered system, shared [openly or under NDA]. Your QA team can also audit how records are produced."
+    },
+    {
+     "q": "When do we see the protocols?",
+     "a": "The FAT protocol reaches your quality unit [protocol issue before FAT, weeks] before testing, for approval. IQ and OQ protocols follow, referencing FAT results rather than repeating them."
+    },
+    {
+     "q": "Can FAT results count towards qualification?",
+     "a": "Where your quality unit agrees, yes (Annex 15, 3.6). We mark candidate test cases in the C&Q plan at detailed design. Water quality on your feed is never leveraged."
+    },
+    {
+     "q": "Do you check third-party certificates, or just forward them?",
+     "a": "We check them: markings against the certificate at receipt, [PMI, standard or option]. Certificates reach you as the issuer sent them, never retyped."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where each document comes from",
+   "items": [
+    "compliance",
+    "svc-fat-sat",
+    "svc-cq",
+    "cmp-quality"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your URS for your document list",
+  "body": "A process engineer replies with a scoped proposal for your system.",
+  "button": "Submit your URS for a proposal",
+  "link": "contact-proposal",
+  "include": [
+   "Your URS, current revision",
+   "Your protocol templates, if any",
+   "Your numbering and good documentation practice rules",
+   "Your electronic validation system, if used"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Every document your system ships with",
+   "The stage that issues each one",
+   "Who approves each document"
+  ]
+ },
+ "todo": [
+  "KEY: which samples are shared openly and which under NDA ([openly or under NDA]: form intro, FAQ); whether Aquemi uses its own mutual NDA",
+  "Prepare the redacted sample package from a delivered system: turnover index, FAT protocol TOC and sample test cases, IQ/OQ TOC and check sheets, weld map and weld log extract, material log extract, RTM extract, signed service report",
+  "Sample package response time (working days) and form back-end (where submissions go)",
+  "Protocol issue before FAT (weeks); same placeholder as svc-fat-sat",
+  "Standard document review period (working days) in the review cycle",
+  "[native formats delivered]: CAD drawing format (e.g. DWG), spreadsheet format for lists, matrices and calculations, word processing format for SOP drafts and protocol source files; [ownership or licence terms] and design software used (same as svc-design FAQ)",
+  "Raw data export format for trends, alarm and event logs (e.g. CSV)",
+  "[electronic signature method] on protocols and reports, and [meets 21 CFR Part 11 and Annex 11?] (EU GMP Annex 11, 14) (same as svc-fat-sat)",
+  "[French documents offered]: which documents are offered in French and how translations are controlled (same open question as home page)",
+  "[secure transfer method or portal]; [paper sets offered]: number of paper sets, if any",
+  "Retention period (years) for Aquemi's copy of the turnover package, and reissue on request",
+  "Borescope share of product-contact welds (%) (same placeholder as svc-fabrication, compliance)",
+  "PMI at receipt: standard or option (same as svc-fabrication)",
+  "[what a QA audit covers]: e.g. the fabrication shop and document control",
+  "Recommended spare parts coverage (months of operation) (same as system pages)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Confirm Aquemi internal sign-off roles for fabrication records (written as 'Aquemi quality control')",
+  "Confirm practice stated here: comment log kept with each document; open documents at handover tracked as punch list items; Aquemi drafts SOPs and PQ protocol on request (same as svc-cq)",
+  "Confirm the 12-section turnover index structure matches what Aquemi actually delivers"
+ ],
+ "primary_cta_link": "#samples",
+ "facts": [
+  {
+   "v": "EN 10204 3.1",
+   "l": "Per product-contact part"
+  },
+  {
+   "v": "1 line per weld",
+   "l": "Weld log · ASME BPE"
+  },
+  {
+   "v": "Annex 15, 3.6",
+   "l": "FAT reused in qualification"
+  }
+ ]
+}

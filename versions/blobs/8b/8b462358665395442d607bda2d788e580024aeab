@@ -1,0 +1,200 @@
+{
+ "id": "ind-pharma",
+ "section": "Industries",
+ "nav_label": "Pharmaceutical",
+ "title": "Water systems for pharmaceutical manufacturing | Aquemi",
+ "meta": "Purified Water, WFI and Pure Steam systems for oral and sterile drug manufacturing, designed to USP, Ph. Eur., Health Canada GMP and EU GMP Annex 1.",
+ "path": "/industries/pharmaceutical/",
+ "eyebrow": "PHARMACEUTICAL · USP · PH. EUR.",
+ "headline": "Water that passes release testing, and the audit after it",
+ "lead": "Water is the most used ingredient in most pharmaceutical plants and the first utility an inspector walks. We design Purified Water, Water for Injection and Pure Steam systems that meet the pharmacopoeia and come with the records to prove it.",
+ "tags": [
+  "USP <1231>",
+  "USP <645>",
+  "USP <643>",
+  "Ph. Eur.",
+  "EU GMP Annex 1",
+  "Health Canada GUI-0001",
+  "FDA 21 CFR Part 211"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Read our compliance page",
+  "link": "compliance"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "What we hear from pharmaceutical plants",
+   "body": [
+    "Conductivity drifts in summer. Total organic carbon (TOC) excursions show up at one point of use and nowhere else. A loop built twenty years ago has dead legs nobody can find on the drawings. The qualification file is missing weld records.",
+    "Each of these is a design or documentation problem before it is a water problem. We solve them at that level."
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Systems pharmaceutical plants use most",
+   "items": [
+    {
+     "t": "Purified Water (PW) generation",
+     "d": "Double-pass reverse osmosis (RO) with electrodeionization (EDI) for oral solid and liquid dosage, and cleaning.",
+     "tag": "USP <645>",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Water for Injection (WFI) by distillation",
+     "d": "Multi-effect or vapour compression stills for parenteral products.",
+     "tag": "USP <85>",
+     "link": "sys-wfi-distillation"
+    },
+    {
+     "t": "WFI by membrane",
+     "d": "A lower-energy route now accepted by Ph. Eur. as well as USP.",
+     "tag": "Ph. Eur.",
+     "link": "sys-wfi-membrane"
+    },
+    {
+     "t": "Pure Steam (PS) generators",
+     "d": "For autoclaves and sterilize-in-place (SIP) of vessels and lines.",
+     "tag": "EN 285",
+     "link": "sys-pure-steam"
+    },
+    {
+     "t": "Storage and distribution loops",
+     "d": "Hot, ambient or ozonated loops with point-of-use cooling.",
+     "tag": "ASME BPE",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Monitoring and controls",
+     "d": "On-line conductivity and TOC with audit-trailed records.",
+     "tag": "21 CFR Part 11",
+     "link": "sys-monitoring"
+    }
+   ]
+  },
+  {
+   "type": "spec",
+   "caption": "Pharmacopoeia limits we design to · bulk water",
+   "cols": [
+    "Attribute",
+    "Limit",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity, PW and WFI",
+     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+     "m": "USP <645>",
+     "hl": false
+    },
+    {
+     "p": "Total organic carbon, PW and WFI",
+     "v": "≤ 500 ppb",
+     "m": "USP <643>",
+     "hl": false
+    },
+    {
+     "p": "Bacterial endotoxins, WFI",
+     "v": "< 0.25 EU/mL",
+     "m": "USP <85>",
+     "hl": true
+    },
+    {
+     "p": "Microbial action limit, PW",
+     "v": "100 CFU/mL",
+     "m": "USP <1231> guidance",
+     "hl": false
+    },
+    {
+     "p": "Microbial action limit, WFI",
+     "v": "10 CFU/100 mL",
+     "m": "USP <1231> guidance",
+     "hl": false
+    },
+    {
+     "p": "Pure Steam condensate",
+     "v": "Meets WFI attributes; steam quality tests",
+     "m": "EN 285",
+     "hl": false
+    }
+   ]
+  },
+  {
+   "type": "options",
+   "h": "Design considerations",
+   "items": [
+    {
+     "t": "Dosage form",
+     "d": "Non-sterile products usually need PW only. Sterile and parenteral products need WFI and Pure Steam."
+    },
+    {
+     "t": "EU GMP Annex 1",
+     "d": "The 2022 revision expects a contamination control strategy that covers water systems, including continuous TOC and conductivity monitoring for WFI."
+    },
+    {
+     "t": "Feedwater season",
+     "d": "Municipal supplies in Canada swing in temperature and organics across the year. Pretreatment is sized for the worst month."
+    },
+    {
+     "t": "Export markets",
+     "d": "Systems for products sold in Canada, the United States and Europe are designed to meet USP and Ph. Eur. together."
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "How we support you",
+   "items": [
+    {
+     "t": "Process design",
+     "d": "From user requirement specification to functional specification.",
+     "link": "svc-design"
+    },
+    {
+     "t": "Factory acceptance testing",
+     "d": "Wet testing before shipment.",
+     "link": "svc-fat-sat"
+    },
+    {
+     "t": "Qualification",
+     "d": "IQ/OQ execution and PQ support over three phases.",
+     "link": "svc-cq"
+    },
+    {
+     "t": "Service",
+     "d": "Plans that keep the system in its qualified state.",
+     "link": "svc-service"
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Do we need WFI for non-sterile products?",
+     "a": "Usually not. USP and Ph. Eur. allow Purified Water for most non-sterile products. Your product registration decides."
+    },
+    {
+     "q": "Can one system supply Canadian, US and European markets?",
+     "a": "Yes. We design to the stricter of USP and Ph. Eur. on each attribute and document both."
+    },
+    {
+     "q": "Is membrane WFI acceptable to Health Canada?",
+     "a": "Health Canada follows the pharmacopoeia referenced in your product file. Both USP and Ph. Eur. now allow non-distillation WFI. Confirm with your regulatory team for each product."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Talk to a process engineer",
+  "body": "Send us your dosage forms and daily water use, and we will propose a water system scope.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "A pharmaceutical case study with measured outcome",
+  "Confirm WFI by distillation scope (in-house or partner)"
+ ]
+}

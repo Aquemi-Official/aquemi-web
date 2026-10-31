@@ -1,0 +1,259 @@
+{
+ "id": "cmp-documentation",
+ "section": "Compliance",
+ "nav_label": "Documentation package",
+ "title": "Validation documentation package | Aquemi",
+ "meta": "Every document we deliver by phase: functional specification, P&IDs, material certificates, weld logs, FAT, SAT and IQ/OQ protocols, turnover package.",
+ "path": "/compliance/documentation/",
+ "eyebrow": "DOCUMENTATION · GAMP 5 · ASME BPE",
+ "headline": "The documents arrive with the equipment",
+ "lead": "We write the documentation package as we design and build, not after shipment. Your validation team receives drafts for review at each phase and a complete turnover package at handover.",
+ "tags": [
+  "GAMP 5",
+  "ASME BPE",
+  "ISPE",
+  "21 CFR Part 11",
+  "ASTM E2500"
+ ],
+ "primary_cta": "Request the sample turnover package",
+ "secondary_cta": {
+  "label": "Ready to buy? Submit your URS",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "docs",
+   "h": "Documents for review before order",
+   "items": [
+    "Sample turnover package index",
+    "Redacted FAT protocol",
+    "Redacted IQ/OQ protocol table of contents",
+    "Sample weld log and weld map",
+    "Sample requirements traceability matrix"
+   ],
+   "nav": "What you can see"
+  },
+  {
+   "type": "form",
+   "h": "Request the sample turnover package",
+   "nav": "Request samples",
+   "intro": "Check our documents before you shortlist us. Tell us which samples you want; we send [what is shared openly and what under NDA] within [sample package response time]. No sales call needed.",
+   "submit": "Send me the samples",
+   "fields": [
+    {
+     "kind": "checkbox-group",
+     "label": "Samples you want",
+     "required": true,
+     "options": [
+      "Turnover package index",
+      "FAT protocol: contents and sample test cases",
+      "IQ/OQ protocol table of contents",
+      "Weld log and weld map",
+      "Requirements traceability matrix"
+     ]
+    },
+    {
+     "kind": "select",
+     "label": "Where your project is",
+     "required": true,
+     "options": [
+      "Early research or budgeting",
+      "Writing the URS",
+      "URS ready, requesting proposals",
+      "Existing system: upgrade or requalification"
+     ]
+    },
+    {
+     "kind": "text",
+     "label": "Full name",
+     "required": true
+    },
+    {
+     "kind": "email",
+     "label": "Work email",
+     "required": true,
+     "help": "We send the samples here."
+    },
+    {
+     "kind": "text",
+     "label": "Company",
+     "required": true
+    },
+    {
+     "kind": "select",
+     "label": "Role",
+     "required": false,
+     "options": [
+      "Validation",
+      "Quality",
+      "Process or project engineering",
+      "Facilities or maintenance",
+      "Procurement",
+      "Consulting engineer",
+      "Other"
+     ]
+    }
+   ],
+   "anchor": "samples"
+  },
+  {
+   "type": "steps",
+   "h": "Documents by project phase",
+   "items": [
+    {
+     "t": "Specify",
+     "d": "URS review and response, compliance matrix, basis of design, functional specification (FS), initial risk assessment."
+    },
+    {
+     "t": "Design",
+     "d": "Piping and instrumentation diagrams (P&IDs), general arrangement drawings, isometric drawings, design specification, software and hardware design specifications, requirements traceability matrix."
+    },
+    {
+     "t": "Fabricate",
+     "d": "Material certificates, weld map and weld log, welder and procedure qualifications, borescope records, surface finish and passivation reports, pressure test records."
+    },
+    {
+     "t": "Test in the factory",
+     "d": "FAT protocol for your approval before testing, executed FAT report with deviations and their closure."
+    },
+    {
+     "t": "Install and commission",
+     "d": "SAT protocol and report, loop and instrument check sheets, punch list and close-out."
+    },
+    {
+     "t": "Qualify",
+     "d": "Installation qualification (IQ) and operational qualification (OQ) protocols, executed reports, support for your performance qualification (PQ)."
+    },
+    {
+     "t": "Hand over",
+     "d": "Turnover package, operation and maintenance manual, spare parts list, training records."
+    }
+   ],
+   "nav": "By phase"
+  },
+  {
+   "type": "table",
+   "h": "Turnover package contents",
+   "cols": [
+    "Section",
+    "Contents",
+    "Format"
+   ],
+   "rows": [
+    [
+     "1. Project summary",
+     "Scope, purchase order references, system tag list, approved document register",
+     "PDF"
+    ],
+    [
+     "2. Specifications",
+     "FS, design specification, software design specification, configuration specification",
+     "PDF, native on request"
+    ],
+    [
+     "3. Drawings",
+     "As-built P&IDs, general arrangement, isometrics with weld numbers, electrical schematics, panel layout",
+     "PDF and DWG"
+    ],
+    [
+     "4. Materials",
+     "Material certificates (EN 10204 type 3.1) for product-contact components, elastomer compliance statements (FDA 21 CFR 177, USP <88> Class VI)",
+     "PDF"
+    ],
+    [
+     "5. Welding",
+     "Weld map, weld log, welding procedure specifications (WPS), procedure qualification records (PQR), welder qualifications, borescope records",
+     "PDF"
+    ],
+    [
+     "6. Surface and cleaning",
+     "Surface finish reports, cleaning and passivation certificate, slope verification",
+     "PDF"
+    ],
+    [
+     "7. Pressure and code",
+     "Pressure test certificates, CRN registration, vessel data reports",
+     "PDF"
+    ],
+    [
+     "8. Instruments",
+     "Instrument list, datasheets, calibration certificates traceable to national standards",
+     "PDF"
+    ],
+    [
+     "9. Software",
+     "Software version record, alarm list, backup of the control program, Part 11 assessment",
+     "PDF and media"
+    ],
+    [
+     "10. Testing",
+     "Executed FAT and SAT, IQ/OQ protocols and reports, deviation log",
+     "PDF"
+    ],
+    [
+     "11. Operation",
+     "Operation and maintenance manual, recommended spare parts, preventive maintenance schedule",
+     "PDF"
+    ],
+    [
+     "12. Training",
+     "Training plan, attendance records, operator quick reference",
+     "PDF"
+    ]
+   ],
+   "nav": "Contents"
+  },
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "Your templates or ours",
+   "body": "If your site has validation templates, we write the FAT, SAT and IQ/OQ protocols in them. If not, we use ours, built on GAMP 5 and the ISPE commissioning and qualification guide."
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "When do we see the protocols?",
+     "a": "The FAT protocol goes to you for approval [number] weeks before testing. IQ/OQ protocols follow the FAT so that results can be referenced, not repeated."
+    },
+    {
+     "q": "Do you deliver documents electronically?",
+     "a": "Yes, as indexed and bookmarked PDF files, with native drawings on request. Paper copies are available if your site requires them."
+    },
+    {
+     "q": "Can FAT results count towards qualification?",
+     "a": "Where your quality unit agrees, yes. We follow the ASTM E2500 and ISPE approach: engineering tests carried out under good documentation practice can be leveraged in IQ/OQ."
+    }
+   ],
+   "nav": "FAQ"
+  },
+  {
+   "type": "related",
+   "h": "Related pages",
+   "items": [
+    "compliance",
+    "cmp-quality",
+    "svc-fat-sat",
+    "svc-cq"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Seen the samples? Send your URS for a proposal.",
+  "body": "A process engineer replies within [proposal response time] with questions or a scoped proposal that lists the documents you will receive.",
+  "button": "Submit your URS for a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Lead time for FAT protocol submission before testing ([number] weeks)",
+  "Confirm material certificate type delivered (EN 10204 3.1) for all product-contact parts",
+  "Confirm borescope inspection coverage offered as standard",
+  "Prepare redacted sample documents for download",
+  "Confirm whether native drawing formats (DWG, RVT) are offered",
+  "What sample documents are shared openly and what only under NDA",
+  "Response time for sample package requests",
+  "Back-end for the sample request form (where submissions go)"
+ ],
+ "primary_cta_link": "#samples"
+}

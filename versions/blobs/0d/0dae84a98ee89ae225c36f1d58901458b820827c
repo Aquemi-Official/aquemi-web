@@ -1,0 +1,13 @@
+KeyFacts is a measurement strip of three to six figures, each with its unit and the standard behind it, that tells an engineer what a page stands on before they read a word of copy.
+
+- Markup: `<dl class="aq-key-facts">` with one `<div>` per fact: `<dt>` (the parameter, "Conductivity at 25 °C"), then `<dd class="aq-key-facts__value">` (comparator `aq-key-facts__cmp`, figure `aq-key-facts__fig`, unit `aq-key-facts__unit`; `is-long` when the value is words or a placeholder), then an optional second `<dd class="aq-key-facts__src">` (the standard, "USP <645>"). Keep `dt` first so screen readers read the name, then the value, then the source.
+- On the site, `wKeyFacts(facts)` in `assets/src/parts/KeyFacts.js` builds it from page `facts` `{l, v}`: the label splits at the last " · " into name and source; the value splits off a leading comparator and a trailing unit (only when the tail after the last space has no digits and follows a figure, so "Part 11" and "[Ra, µm]" stay whole). Placeholders keep their `[brackets]`.
+- Look: a row of equal cells between two `line` hairlines, divided by `line` hairlines, on the section's own ground (no frame, plate, rulers, index numbers or dials). Each cell: the name in Geist 14/20 sentence case, `ink-muted`; the figure in Geist Mono 300 in `ink`, 28 to 40 px (24 to 32 px from five facts on; 20 to 24 px when `is-long`), wrapping only at spaces, with the comparator and the unit beside it in `ink-muted` mono; the source in 12 px mono `ink-muted` at the foot.
+- Phones: one fact per row between `line` hairlines, the name on top (13 px), then the figure left (26 px; 17 px when long) and the source right (12 px).
+- Value split: a leading number keeps a short unit tail whole ("10 CFU/100 mL" -> "10" + "CFU/100 mL"); "long" (smaller type) is judged on the figure alone, so a short number with a long unit stays large.
+- On the site it sits at the bottom of the Hero (`facts` in `content/pages/`). Take every figure from the page's own spec table or copy; unconfirmed figures stay in `[square brackets]`. Write values exactly as the standard does, with the comparison sign.
+- Not for one figure with an explanation: use Readout. Not for full specifications: use SpecTable.
+
+## Motion
+
+Motion (`KeyFacts/motion.js`): the plate unrolls left to right, then cell by cell the name settles, a plain figure ("100", "0.25") counts up while the dial's needle sweeps to its reading, the unit and the source standard follow. Standard numbers ("EN 10204 3.1", "Annex 15") and placeholders never count; they fade in. In the hero it waits about 1 s for the headline. Skipped under reduced motion.

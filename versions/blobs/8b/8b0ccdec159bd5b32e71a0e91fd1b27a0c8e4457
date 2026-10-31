@@ -1,0 +1,19 @@
+/* ---------- Prose ---------- */
+/* Plain: a few paragraphs within text-max (also used for captions). */
+.aq-prose { max-width: var(--text-max); }
+.aq-prose p + p { margin-top: var(--space-4); }
+
+/* Sheet (the site's prose block): the first sentence as a large light lead in ink, then the paragraphs in body size in
+   ink-muted. White space does the work: no grid, frame, rule, tags or leaders.
+   ".aq-prose.aq-prose--sheet" selectors match SplitSection's ".aq-split-section__body .aq-prose p:first-child"
+   specificity and win by coming later in bundle.css, so the lead and body keep their own type inside a split. */
+.aq-prose--sheet { display: flex; flex-direction: column; gap: var(--space-4); }
+.aq-prose.aq-prose--sheet > p { margin: 0; font: 400 16px/26px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; overflow-wrap: break-word; }
+.aq-prose.aq-prose--sheet > p.aq-prose__lead {
+  margin-bottom: var(--space-2); font: 300 28px/36px var(--font-sans); letter-spacing: -0.01em; color: var(--ink);
+  text-wrap: balance;
+}
+
+@container (max-width: 860px) {
+  .aq-prose.aq-prose--sheet > p.aq-prose__lead { font-size: 22px; line-height: 30px; }
+}

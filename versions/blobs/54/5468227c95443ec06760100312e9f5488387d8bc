@@ -1,0 +1,53 @@
+/* ---------- DocList: the documents delivered with a system, as a hairline list ---------- */
+/* One row per document between `line` hairlines: index | code (mono) | name | detail | optional line icon. The deciding
+   documents lead; their code turns flow (a word, not a fill). No frame, tabs or cards: the list grammar of .aq-rows.
+   Plain lists (no recognised codes) drop the code column. */
+.aq-docs {
+  margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--line);
+}
+.aq-docs > li {
+  display: grid; grid-template-columns: var(--space-12) var(--space-24) minmax(0, 4fr) minmax(0, 6fr) var(--space-8);
+  grid-template-areas: "i c t d ic"; column-gap: var(--space-6); align-items: baseline;
+  min-width: 0; padding-block: var(--space-4); border-top: 1px solid var(--line);
+}
+.aq-docs--plain > li { grid-template-columns: var(--space-12) minmax(0, 4fr) minmax(0, 6fr) var(--space-8); grid-template-areas: "i t d ic"; }
+.aq-docs > li > .aq-index { grid-area: i; }
+.aq-docs__code {
+  grid-area: c; min-width: 0; font: 500 13px/24px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.aq-docs__name {
+  grid-area: t; min-width: 0; font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink);
+  overflow-wrap: break-word; text-wrap: pretty;
+}
+.aq-docs__name a { color: inherit; }
+.aq-docs__name a:hover { color: var(--flow); }
+.aq-docs__d { grid-area: d; min-width: 0; max-width: var(--text-max); font: 400 15px/24px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-docs__icon { grid-area: ic; align-self: center; justify-self: end; width: var(--space-8); height: var(--space-8); }
+/* Key documents: the ones that decide the review. The code in flow is the only colour in the section. */
+.aq-docs > li.is-key .aq-docs__code { color: var(--flow); }
+
+/* Fold: on desktop every row shows (the "Show all" button hidden); the fold works on phones only. */
+.aq-fold:not(.is-open) .aq-docs > li.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-docs) > .aq-fold__btn { display: none; }
+
+/* Phone: index and code on one line, the name under the code, the detail under the name; no icon. */
+/* A document whose name links to a page lifts a little on hover */
+.aq-docs > li:has(.aq-docs__name a) { transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-docs > li:has(.aq-docs__name a):hover { transform: translateY(calc(-1 * var(--space-1))); }
+.aq-docs > li:has(.aq-docs__name a):hover .aq-docs__name a { color: var(--flow); }
+@media (prefers-reduced-motion: reduce) { .aq-docs > li:has(.aq-docs__name a) { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-docs > li, .aq-docs--plain > li {
+    grid-template-columns: var(--space-8) minmax(0, 1fr); grid-template-areas: "i c" ". t" ". d";
+    column-gap: var(--space-3); row-gap: var(--space-1); padding-block: var(--space-3);
+  }
+  .aq-docs--plain > li { grid-template-areas: "i t" ". d"; }
+  .aq-docs__code { font-size: 12px; line-height: 20px; }
+  .aq-docs__name { font-size: 16px; line-height: 24px; }
+  .aq-docs__d { font-size: 14px; line-height: 22px; }
+  .aq-docs__icon { display: none; }
+  .aq-fold:not(.is-open) .aq-docs > li.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-docs) > .aq-fold__btn { display: flex; }
+}

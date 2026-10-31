@@ -1,0 +1,150 @@
+/* ---------- Closing: the call to action at the end of every page, on the navy band ---------- */
+/* Concepts 18 and 49. A framed panel like a drawing's last sheet: a ruled title strip (decorative), a very large
+   headline in condensed capitals, the lead sentence in its own ruled box, then either a checklist or the exchange
+   (what you send | turnaround arrow | what comes back) laid on a cream drawing plate, and a foot with the one proof
+   readout on the left and a large primary button on the right. Sits on .aq-band--navy, which sets the ground, text
+   colours and the Limestone primary button. Frame lines are on-navy-muted at reduced strength. */
+.aq-closing { text-align: start; border-bottom: 1px solid var(--line-strong); }
+.aq-closing__frame {
+  position: relative; display: flex; flex-direction: column; gap: var(--space-8);
+  padding: 0 var(--space-12) var(--space-12);
+  border: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent);
+}
+/* Registration marks at the top-left and bottom-right corners */
+.aq-closing__frame::before, .aq-closing__frame::after {
+  content: ""; position: absolute; width: var(--space-4); height: var(--space-4); pointer-events: none;
+  border: 0 solid var(--on-navy-muted);
+}
+.aq-closing__frame::before { top: calc(-1 * var(--space-2)); left: calc(-1 * var(--space-2)); border-top-width: 1px; border-left-width: 1px; }
+.aq-closing__frame::after { bottom: calc(-1 * var(--space-2)); right: calc(-1 * var(--space-2)); border-bottom-width: 1px; border-right-width: 1px; }
+
+/* Title strip: three ruled cells across the top of the frame */
+.aq-closing__strip {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; margin-inline: calc(-1 * var(--space-12));
+  border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted);
+}
+.aq-closing__strip span { padding: var(--space-3) var(--space-6); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.aq-closing__strip span:first-child { color: var(--on-navy); letter-spacing: 0.16em; }
+.aq-closing__strip span + span { border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); }
+
+.aq-closing__h {
+  max-width: 16ch; margin-top: var(--space-4);
+  font: 600 clamp(64px, 8.6cqi, 116px)/0.92 var(--font-display); letter-spacing: -0.005em; text-transform: uppercase;
+  color: var(--on-navy); overflow-wrap: break-word;
+}
+.aq-closing__body { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-8); min-width: 0; }
+/* The lead in its own ruled box */
+.aq-closing .aq-closing__body > .aq-lead {
+  max-width: 44ch; padding: var(--space-3) var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent);
+  font-size: 20px; line-height: 30px; color: var(--on-navy);
+}
+.aq-closing__foot { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-8); flex-wrap: wrap; }
+.aq-closing__action { display: flex; margin-left: auto; min-width: 0; }
+/* The one button, at closing scale: condensed capitals */
+.aq-closing__action .aq-btn { height: auto; min-height: var(--space-16); padding: var(--space-3) var(--space-8); font: 600 28px/32px var(--font-display); letter-spacing: 0.01em; text-transform: uppercase; }
+
+/* Proof readout: one confirmed figure from the page, in mono */
+.aq-closing__proof {
+  display: flex; flex-direction: column; gap: var(--space-1);
+  min-width: 0; max-width: 100%;
+  padding: var(--space-3) var(--space-6) var(--space-4) var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--on-navy-muted) 60%, transparent);
+}
+.aq-closing__tag { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-closing__value {
+  font: 300 64px/68px var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+  color: var(--limestone); overflow-wrap: anywhere;
+}
+.aq-closing__label { font: 400 15px/22px var(--font-mono); color: var(--on-navy-muted); }
+
+/* Checklist (cta.include alone): what to send us, as compact numbered rows on faint hairlines */
+.aq-closing__include { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; max-width: var(--text-max); }
+.aq-closing__include ol { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: var(--space-8); }
+.aq-closing__include li {
+  break-inside: avoid; display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); align-items: baseline;
+  padding-block: var(--space-2); border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent);
+  font: 400 15px/22px var(--font-sans); color: var(--on-navy);
+}
+.aq-closing__include .aq-index { color: var(--on-navy-muted); line-height: 22px; }
+
+/* Exchange (cta.include + cta.returns) on a cream plate (data-theme="light", so the light tokens apply inside):
+   two ruled tables, a header cell over numbered rows (send) or rows with a document drawing (return), and a heavy
+   arrow between them carrying the turnaround. */
+.aq-closing__plate { width: 100%; }
+.aq-closing__swap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(var(--space-32), auto) minmax(0, 1fr); align-items: center; width: 100%; }
+.aq-closing__swap .aq-closing__include { align-self: stretch; max-width: none; gap: 0; border: 1px solid var(--line-strong); background: var(--surface); }
+.aq-closing__swap .aq-closing__tag { padding: var(--space-4); border-bottom: 1px solid var(--line-strong); font: 400 24px/30px var(--font-sans); letter-spacing: -0.01em; text-transform: none; color: var(--ink); }
+.aq-closing__swap .aq-closing__include ol { columns: 1; }
+.aq-closing__swap .aq-closing__include li {
+  grid-template-columns: var(--space-12) minmax(0, 1fr); align-items: start; column-gap: var(--space-3); min-height: var(--space-16);
+  margin-inline: var(--space-4); padding: var(--space-3) 0; border-top: 1px solid var(--line);
+  font: 400 17px/24px var(--font-sans); color: var(--ink);
+}
+.aq-closing__swap .aq-closing__include li:first-child { border-top: 0; }
+.aq-closing__swap .aq-index { align-self: stretch; font-size: 15px; line-height: 24px; color: var(--ink); border-right: 1px solid var(--line-strong); }
+.aq-closing__swap .aq-closing__returns li { grid-template-columns: minmax(0, 1fr) auto; }
+.aq-closing__returns li > span:last-child { grid-row: 1; grid-column: 1; }
+/* Turnaround: the label in a heavy ruled box (the arrow's shaft), an arrowhead beyond it */
+.aq-closing__turn { position: relative; display: flex; align-items: center; justify-content: center; margin: 0; padding-inline: var(--space-4); }
+.aq-closing__turn span {
+  position: relative; z-index: 1; padding: var(--space-2) var(--space-3); max-width: 180px; border: 2px solid var(--ink);
+  background: var(--flow-tint); color: var(--ink); font: 500 12px/16px var(--font-mono); text-align: center;
+}
+.aq-closing__turn::after {
+  content: ""; flex: none; width: var(--space-6); height: var(--space-12); margin-left: -1px; background: var(--ink);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+/* Document drawings: a page with a folded corner and four kinds of content (chart, flow, table, list) */
+.aq-closing__doc {
+  grid-column: 2; grid-row: 1; position: relative; width: var(--space-12); height: var(--space-16);
+  border: 1px solid var(--line-strong); background-color: var(--surface);
+  background-image:
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)), linear-gradient(var(--line-strong), var(--line-strong)),
+    linear-gradient(var(--line-strong), var(--line-strong)), linear-gradient(var(--line-strong), var(--line-strong));
+  background-repeat: no-repeat;
+  background-size: 50% 1px, 70% 1px, 70% 1px, 45% 1px;
+  background-position: 6px 7px, 6px calc(100% - 16px), 6px calc(100% - 11px), 6px calc(100% - 6px);
+}
+.aq-closing__doc::before { content: ""; position: absolute; top: -1px; right: -1px; width: 10px; height: 10px; border-left: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); background: linear-gradient(45deg, var(--surface-sunken) 50%, var(--surface) 50%); }
+.aq-closing__doc::after { content: ""; position: absolute; left: 6px; right: 6px; top: 13px; height: 22px; border: 1px solid var(--line-strong); }
+.aq-closing__doc.is-1::after { background: linear-gradient(160deg, transparent 45%, var(--flow) 45% calc(45% + 1px), transparent calc(45% + 1px)); }
+.aq-closing__doc.is-2::after { border: 0; background:
+  linear-gradient(var(--line-strong), var(--line-strong)) 0 0 / 10px 7px no-repeat, linear-gradient(var(--line-strong), var(--line-strong)) 100% 50% / 10px 7px no-repeat,
+  linear-gradient(var(--flow), var(--flow)) 10px 3px / calc(100% - 20px) 1px no-repeat, linear-gradient(var(--line-strong), var(--line-strong)) 0 100% / 10px 7px no-repeat; }
+.aq-closing__doc.is-3::after { background: repeating-linear-gradient(90deg, transparent 0 7px, var(--line-strong) 7px 8px), repeating-linear-gradient(180deg, transparent 0 6px, var(--line) 6px 7px); }
+.aq-closing__doc.is-4::after { border: 0; background: repeating-linear-gradient(180deg, var(--line-strong) 0 1px, transparent 1px 4px); }
+
+@container (max-width: 860px) {
+  /* Phones: compact, it ends every page. No title strip; the exchange plate tight, rows on hairlines. */
+  .aq-closing.aq-section { padding-block: var(--space-8); }
+  .aq-closing__frame { gap: var(--space-4); padding: var(--space-4); }
+  .aq-closing__frame::before { top: calc(-1 * var(--space-1)); left: calc(-1 * var(--space-1)); }
+  .aq-closing__frame::after { bottom: calc(-1 * var(--space-1)); right: calc(-1 * var(--space-1)); }
+  .aq-closing__strip { display: none; }
+  .aq-closing__h { margin-top: 0; font-size: 44px; line-height: 0.95; }
+  .aq-closing .aq-closing__body > .aq-lead { padding: var(--space-2) var(--space-3); font-size: 16px; line-height: 24px; }
+  .aq-closing__body { gap: var(--space-4); }
+  .aq-closing__proof { width: 100%; padding: var(--space-2) var(--space-3) var(--space-3); }
+  .aq-closing__value { font-size: 36px; line-height: 40px; }
+  .aq-closing__label { font-size: 13px; line-height: 18px; }
+  .aq-closing__include ol { columns: 1; }
+  .aq-closing__include li { font-size: 14px; line-height: 20px; }
+  .aq-closing__foot { gap: var(--space-3); }
+  .aq-closing__action { margin-left: 0; width: 100%; }
+  .aq-closing__action .aq-btn { width: 100%; justify-content: space-between; white-space: normal; min-height: var(--space-12); padding: var(--space-2) var(--space-4); font-size: 20px; line-height: 24px; }
+  /* Exchange: stacked tables, the arrow pointing down */
+  .aq-closing__plate.aq-plate { padding: var(--space-6) var(--space-3) calc(var(--space-6) + var(--space-3)); }
+  .aq-closing__swap { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+  .aq-closing__swap .aq-closing__tag { padding: var(--space-2) var(--space-3); font-size: 18px; line-height: 24px; }
+  .aq-closing__swap .aq-closing__include li { grid-template-columns: var(--space-8) minmax(0, 1fr); min-height: 0; margin-inline: var(--space-3); padding: var(--space-2) 0; font-size: 14px; line-height: 20px; }
+  .aq-closing__swap .aq-closing__include li .aq-index { font-size: 12px; line-height: 20px; }
+  .aq-closing__swap .aq-closing__returns li { grid-template-columns: minmax(0, 1fr) auto; align-items: center; padding-block: var(--space-1); }
+  .aq-closing__turn { flex-direction: row; justify-content: flex-start; padding: var(--space-2) 0; gap: var(--space-2); }
+  .aq-closing__turn span { max-width: none; padding: var(--space-1) var(--space-2); font-size: 11px; }
+  .aq-closing__turn::after { order: -1; width: var(--space-4); height: var(--space-3); margin: 0; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+  .aq-closing__doc { width: var(--space-6); height: var(--space-8); }
+  .aq-closing__doc::before { width: 7px; height: 7px; }
+  .aq-closing__doc::after { top: 9px; height: 10px; left: 3px; right: 3px; }
+}

@@ -1,0 +1,155 @@
+{
+ "id": "ind-cdmo",
+ "section": "Industries",
+ "nav_label": "Contract manufacturing (CDMO)",
+ "title": "Water systems for CDMOs and contract manufacturers | Aquemi",
+ "meta": "Water systems for contract development and manufacturing organizations that pass many clients' audits, track every change and expand with new programmes.",
+ "path": "/industries/cdmo/",
+ "eyebrow": "CONTRACT MANUFACTURING · CDMO",
+ "headline": "A water system that stands up to every client's audit",
+ "lead": "A contract development and manufacturing organization (CDMO) is audited by its clients as well as its regulators. We design and document water systems that answer the same questions the same way, every time, and grow when a new programme arrives.",
+ "tags": [
+  "USP <1231>",
+  "Ph. Eur.",
+  "Health Canada GUI-0001",
+  "FDA 21 CFR Part 211",
+  "EU GMP Annex 1",
+  "21 CFR Part 11"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "See our documentation package",
+  "link": "cmp-documentation"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "What CDMOs ask us for",
+   "body": [
+    "Documents a client auditor can follow without a guide. Trends that show control over years, not weeks. Capacity for the next client before the contract is signed.",
+    "Your clients sell into different markets, so one water system often has to satisfy USP, Ph. Eur. and the expectations of several quality units at once."
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Systems CDMOs use most",
+   "items": [
+    {
+     "t": "Purified Water (PW) generation",
+     "d": "Reverse osmosis (RO) and electrodeionization (EDI) with spare capacity for new programmes.",
+     "tag": "USP <645>",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Water for Injection (WFI) by distillation",
+     "d": "For sterile fill-finish and parenteral clients.",
+     "tag": "USP <85>",
+     "link": "sys-wfi-distillation"
+    },
+    {
+     "t": "WFI by membrane",
+     "d": "Lower operating cost where client products and markets allow it.",
+     "tag": "Ph. Eur.",
+     "link": "sys-wfi-membrane"
+    },
+    {
+     "t": "Storage and distribution loops",
+     "d": "Loops with capped tie-ins for future suites.",
+     "tag": "ASME BPE",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Pure Steam (PS) generators",
+     "d": "For autoclaves and sterilize-in-place between client campaigns.",
+     "tag": "EN 285",
+     "link": "sys-pure-steam"
+    },
+    {
+     "t": "Monitoring and controls",
+     "d": "Audit trails and long-term trend reports for client audits.",
+     "tag": "21 CFR Part 11",
+     "link": "sys-monitoring"
+    }
+   ]
+  },
+  {
+   "type": "options",
+   "h": "Design considerations",
+   "items": [
+    {
+     "t": "Dual-pharmacopoeia design",
+     "d": "Each attribute designed and documented to the stricter of USP and Ph. Eur."
+    },
+    {
+     "t": "Expansion built in",
+     "d": "Generation, storage and loop sized for the next phase, with tie-in points qualified once."
+    },
+    {
+     "t": "Audit-ready records",
+     "d": "Electronic records under 21 CFR Part 11, with trend reports you can hand to a client auditor."
+    },
+    {
+     "t": "Change control speed",
+     "d": "Pre-assessed modifications, so adding a point of use does not stall a client start."
+    }
+   ]
+  },
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "One file, many auditors",
+   "body": "We organize the turnover package by the questions auditors ask: what was built, how it was tested, how it is controlled, and what changed since. The same file answers every client."
+  },
+  {
+   "type": "grid",
+   "h": "How we support you",
+   "items": [
+    {
+     "t": "Process design",
+     "d": "Sizing for today's clients and tomorrow's.",
+     "link": "svc-design"
+    },
+    {
+     "t": "Commissioning and qualification",
+     "d": "IQ/OQ and three-phase PQ, documented for client review.",
+     "link": "svc-cq"
+    },
+    {
+     "t": "Service",
+     "d": "Plans with audit support and annual trend reports.",
+     "link": "svc-service"
+    },
+    {
+     "t": "Upgrades",
+     "d": "Capacity increases planned around your client schedule.",
+     "link": "svc-upgrades"
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Can you join a client audit?",
+     "a": "Yes, as a supplier. We can attend in person or by video to explain design and qualification records."
+    },
+    {
+     "q": "How do we add capacity without requalifying everything?",
+     "a": "By designing tie-ins and spare capacity at the start and qualifying them with the original system. Later additions then need only a targeted requalification."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Build for the next client now",
+  "body": "Tell us your current programmes and the ones you expect, and we will size the system for both.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "A CDMO case study with measured outcome",
+  "Confirm Aquemi attends client audits as supplier",
+  "Confirm audit-support inclusion in service plans"
+ ]
+}

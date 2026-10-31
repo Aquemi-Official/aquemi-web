@@ -1,0 +1,242 @@
+{
+ "id": "compliance",
+ "section": "Compliance",
+ "nav_label": "Standards we design to",
+ "title": "Pharmaceutical water standards we design to | Aquemi",
+ "meta": "USP, Ph. Eur., ASME BPE, GAMP 5, 21 CFR Part 11, EU GMP Annex 1: each standard we design to, what it governs and how we show it in your documents.",
+ "path": "/compliance/",
+ "eyebrow": "COMPLIANCE · USP · PH. EUR. · ASME BPE",
+ "headline": "Standards we design to, and where you will find the evidence",
+ "lead": "Every Aquemi system is designed to a stated set of pharmacopoeia, engineering and GMP standards. This page lists each one, what it governs and the document in your package that shows we met it.",
+ "tags": [
+  "USP",
+  "Ph. Eur.",
+  "ASME BPE",
+  "GAMP 5",
+  "21 CFR Part 11",
+  "EU GMP Annex 1",
+  "ISPE"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "See the documentation package",
+  "link": "cmp-documentation"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "How to read this page",
+   "body": [
+    "Your user requirement specification (URS) names the water grades and the regulations your site answers to. We design to those, and we trace each requirement to a test in the factory acceptance test (FAT), site acceptance test (SAT) or installation and operational qualification (IQ/OQ) protocols.",
+    "The table below is the list we start from. Your project may add site standards, a corporate engineering standard or a regional code. We record the final list in the functional specification so that your validation team and ours work from one reference."
+   ]
+  },
+  {
+   "type": "spec",
+   "caption": "Product water quality · pharmacopoeia limits",
+   "note": "Limits as stated by the pharmacopoeia. Microbial levels are guidance values from USP <1231>; your site sets its own alert and action levels.",
+   "cols": [
+    "Parameter",
+    "Limit",
+    "Method or reference"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity, Purified Water (PW) and Water for Injection (WFI)",
+     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+     "m": "USP <645>, Ph. Eur. 2.2.38",
+     "hl": true
+    },
+    {
+     "p": "Total organic carbon (TOC)",
+     "v": "≤ 500 ppb",
+     "m": "USP <643>, Ph. Eur. 2.2.44"
+    },
+    {
+     "p": "Bacterial endotoxins, WFI",
+     "v": "< 0.25 EU/mL",
+     "m": "USP <85>, Ph. Eur. 2.6.14"
+    },
+    {
+     "p": "Microbial action level, PW",
+     "v": "100 CFU/mL",
+     "m": "USP <1231> guidance"
+    },
+    {
+     "p": "Microbial action level, WFI",
+     "v": "10 CFU/100 mL",
+     "m": "USP <1231> guidance"
+    },
+    {
+     "p": "Pure Steam (PS) condensate",
+     "v": "Meets WFI monograph limits",
+     "m": "USP Pure Steam monograph, EN 285 steam quality tests"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "h": "The standards, what they govern and how we design to them",
+   "cols": [
+    "Standard",
+    "What it governs",
+    "How we design to it",
+    "Where the evidence sits"
+   ],
+   "rows": [
+    [
+     "USP <1231>, USP <645>, USP <643>, USP <85>",
+     "Water for pharmaceutical purposes: grades, quality attributes, test methods and system design guidance.",
+     "Size generation and storage for your peak demand, keep the loop turbulent and hot or sanitized, and place sample valves and online analysers where the quality attributes are measured.",
+     "Functional specification, P&IDs, FAT report, OQ protocol"
+    ],
+    [
+     "Ph. Eur. 0008 (Purified Water) and 0169 (Water for injections)",
+     "European monographs. Since 2017, 0169 accepts WFI by a purification process equivalent to distillation, such as reverse osmosis (RO) coupled with other techniques.",
+     "Treat USP and Ph. Eur. as one combined requirement when your product ships to both markets. For membrane WFI, we design to the 0169 wording and the EMA questions and answers on non-distillation WFI.",
+     "Design specification, risk assessment"
+    ],
+    [
+     "EU GMP Annex 1 (2022)",
+     "Sterile manufacturing, including water systems: WFI production, storage, distribution, monitoring and biofilm control.",
+     "Continuous TOC and conductivity monitoring on WFI, circulation that limits biofilm, drainable pipework and a sanitization method stated in the design.",
+     "Functional specification, monitoring and control specification"
+    ],
+    [
+     "ASME BPE",
+     "Bioprocessing equipment: materials, surface finish, welding, inspection, drainability and dead legs.",
+     "316L stainless steel product-contact surfaces, Ra ≤ 0.5 µm electropolished on request, orbital welds, sloped lines and short branches to the ASME BPE dead-leg guidance.",
+     "Material certificates, weld log, surface finish report, slope verification"
+    ],
+    [
+     "ISPE Baseline Guide Vol. 4: Water and Steam Systems",
+     "Industry practice for the design of PW, WFI and Pure Steam generation, storage and distribution.",
+     "Use the guide's decision logic for generation technology, storage volume, loop velocity and sanitization.",
+     "Basis of design"
+    ],
+    [
+     "ISPE Baseline Guide Vol. 5 and ASTM E2500",
+     "Commissioning and qualification: a science- and risk-based approach that uses engineering tests as qualification evidence.",
+     "Identify critical aspects early and write FAT and SAT so that results can be leveraged in IQ/OQ.",
+     "Requirements traceability matrix, FAT and SAT protocols"
+    ],
+    [
+     "GAMP 5",
+     "Risk-based approach to computerized systems in GMP environments.",
+     "Categorise software and configuration, then scale specification and testing to the risk.",
+     "Software design specification, configuration specification, OQ for controls"
+    ],
+    [
+     "21 CFR Part 11 and EU GMP Annex 11",
+     "Electronic records and electronic signatures.",
+     "Audit trail, user levels and secure data storage on the control system where your records are electronic.",
+     "Part 11 assessment, controls OQ"
+    ],
+    [
+     "21 CFR Part 211 and Health Canada GUI-0001",
+     "Good manufacturing practice for drug products in the United States and Canada.",
+     "Design for cleanability, documented change control and calibration, so that your site can operate the system under its GMP.",
+     "Turnover package, operation and maintenance manual"
+    ],
+    [
+     "EN 285",
+     "Steam sterilizers, including the pure steam quality tests: non-condensable gases, superheat and dryness.",
+     "Size and control the Pure Steam generator so the steam at the point of use can pass these tests.",
+     "Pure Steam test report"
+    ],
+    [
+     "ASME BPVC Section VIII and IX, CSA B51",
+     "Pressure vessel design, welder and procedure qualification, and Canadian registration of pressure equipment.",
+     "Design vessels and heat exchangers to code and register them for the destination province.",
+     "Canadian Registration Number (CRN), U-1A data report, WPS and PQR"
+    ],
+    [
+     "CSA C22.2 No. 286 and UL 508A",
+     "Industrial control panels for Canada and the United States.",
+     "Build or source control panels to the standard for the installation country.",
+     "Panel certification label and report"
+    ]
+   ]
+  },
+  {
+   "type": "readout",
+   "value": "≤ 1.3 µS/cm @ 25 °C",
+   "method": "USP <645> stage 1",
+   "body": "The conductivity limit for PW and WFI. We commission each system against it and record the result, with the instrument's calibration certificate, in the FAT or SAT report."
+  },
+  {
+   "type": "grid",
+   "h": "Certifications we hold",
+   "intro": "We list only certifications we hold today. Certificate numbers and scope are shown in full, and each links to a downloadable copy.",
+   "items": [
+    {
+     "t": "Quality management system",
+     "d": "[ISO 9001 certificate number, scope and registrar], or [QMS status and target certification date].",
+     "tag": "ISO 9001",
+     "link": "cmp-quality"
+    },
+    {
+     "t": "Pressure equipment",
+     "d": "[ASME U stamp or CSA B51 quality programme status and certificate number].",
+     "tag": "ASME"
+    },
+    {
+     "t": "Control panels",
+     "d": "[CSA or UL panel shop certification, file number].",
+     "tag": "CSA"
+    },
+    {
+     "t": "Welding",
+     "d": "[Welding certification, for example CWB CSA W47.1, and welder qualification records].",
+     "tag": "ASME IX"
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Do you design to USP or Ph. Eur.?",
+     "a": "Both, when your product ships to both markets. The limits for conductivity and TOC are aligned, and we state which monographs apply in the functional specification."
+    },
+    {
+     "q": "Can WFI be produced by membranes?",
+     "a": "Yes, under USP since long before 2017 and under Ph. Eur. 0169 since 2017. We describe the design approach on the WFI by membrane page and help you prepare the rationale your quality unit needs."
+    },
+    {
+     "q": "Is your control system 21 CFR Part 11 compliant?",
+     "a": "Part 11 applies to how your site uses records, not to a product alone. We supply a control system with the technical controls Part 11 requires and a written assessment that your quality unit can review."
+    },
+    {
+     "q": "Will you sign our quality agreement or supplier questionnaire?",
+     "a": "Yes. Send it with the request for proposal and we return it with the quote."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related pages",
+   "items": [
+    "cmp-documentation",
+    "cmp-quality",
+    "svc-cq",
+    "sys-wfi-membrane"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send us your URS",
+  "body": "We return a compliance matrix that maps each requirement to a design feature and a test.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Certifications actually held: ISO 9001 status, certificate number, scope, registrar and expiry",
+  "ASME or CSA B51 pressure equipment status; CRN process owner",
+  "Control panel certification (CSA C22.2 No. 286 or UL 508A) and file number",
+  "Welding certification (for example CWB) and welder qualification status",
+  "Confirm Pure Steam testing offered to EN 285 tests in-house or via a partner",
+  "Quality review of each standard row before publication"
+ ]
+}

@@ -1,0 +1,205 @@
+{
+ "id": "svc-fabrication",
+ "section": "Services",
+ "nav_label": "Fabrication",
+ "title": "316L skid fabrication and orbital welding | Aquemi",
+ "meta": "316L stainless steel skids with orbital welds, weld logs, borescope inspection, passivation and electropolish, built to ASME BPE with full traceability.",
+ "path": "/services/fabrication/",
+ "eyebrow": "FABRICATION · ASME BPE",
+ "headline": "Every weld logged, inspected and traceable to its heat",
+ "lead": "We build skids and distribution loops in 316L stainless steel with automatic orbital welding. Each weld is numbered on an isometric map, inspected, and recorded with the welder, procedure and material heat number.",
+ "tags": [
+  "ASME BPE",
+  "ASME Section IX",
+  "ASTM A967",
+  "ASTM A380",
+  "EN 10204 3.1"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "See a sample weld log",
+  "link": "cmp-documentation"
+ },
+ "blocks": [
+  {
+   "type": "spec",
+   "caption": "Fabrication standard · product-contact parts",
+   "cols": [
+    "Item",
+    "Specification",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Tubing and fittings",
+     "v": "316L, sulfur 0.005–0.017 %",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Material certificates",
+     "v": "Type 3.1 mill certificates for every heat",
+     "m": "EN 10204",
+     "hl": false
+    },
+    {
+     "p": "Welding process",
+     "v": "Autogenous orbital gas tungsten arc welding (GTAW) with inert purge",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Welder and procedure qualification",
+     "v": "Qualified welding procedure specification (WPS) and procedure qualification record (PQR)",
+     "m": "ASME Section IX",
+     "hl": false
+    },
+    {
+     "p": "Weld inspection",
+     "v": "Visual and borescope inspection, [100 %] of product-contact welds",
+     "m": "ASME BPE acceptance criteria",
+     "hl": true
+    },
+    {
+     "p": "Surface finish, mechanically polished",
+     "v": "Ra ≤ 0.51 µm (SF1)",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Surface finish, electropolished",
+     "v": "Ra ≤ 0.38 µm (SF4)",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Passivation",
+     "v": "Citric or nitric acid passivation, documented",
+     "m": "ASTM A967 / ASTM A380",
+     "hl": false
+    }
+   ]
+  },
+  {
+   "type": "steps",
+   "h": "From tube to tested skid",
+   "items": [
+    {
+     "t": "Receive and verify material",
+     "d": "Heat numbers checked against mill certificates, then recorded on the material log."
+    },
+    {
+     "t": "Cut, face and fit",
+     "d": "Square cuts and clean facing so the orbital weld fuses evenly."
+    },
+    {
+     "t": "Weld coupons",
+     "d": "A sample weld at the start of each shift and after any setting change, inspected before production welds begin."
+    },
+    {
+     "t": "Orbital welding",
+     "d": "Each production weld numbered on the isometric and recorded with welder, machine programme and heat numbers."
+    },
+    {
+     "t": "Inspect",
+     "d": "Visual inspection outside, borescope inside. Recordings kept with the weld log."
+    },
+    {
+     "t": "Pressure test",
+     "d": "Hydrostatic or pneumatic test to the design code, witnessed and recorded."
+    },
+    {
+     "t": "Clean and passivate",
+     "d": "Degrease, flush and passivate, with a certificate for each system."
+    }
+   ]
+  },
+  {
+   "type": "prose",
+   "h": "Why traceability matters to your auditor",
+   "body": [
+    "A weld you cannot trace is a weld you cannot defend. When an inspector asks how a loop was built, the answer should be a document, not a recollection.",
+    "Our weld log links every weld number to its welder, procedure, coupon, inspection result and the heat numbers of the two pieces it joins. The isometric drawing shows where that weld sits in your plant."
+   ]
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "Electropolished tubing and components",
+     "d": "Ra ≤ 0.38 µm (SF4) for WFI and hot loops where rouge and biofilm resistance matter."
+    },
+    {
+     "t": "Borescope video archive",
+     "d": "Recorded video of each inspected weld, delivered with the turnover package."
+    },
+    {
+     "t": "Pressure vessels",
+     "d": "Tanks designed and registered to ASME Section VIII and provincial requirements, with a Canadian Registration Number (CRN) where required."
+    },
+    {
+     "t": "Third-party weld inspection",
+     "d": "Your inspector or ours, witnessing coupons and production welds."
+    },
+    {
+     "t": "Field welding",
+     "d": "Orbital welding on your site for loop tie-ins, with the same records as the shop."
+    },
+    {
+     "t": "Riboflavin coverage test",
+     "d": "Spray-device coverage testing on tanks before shipment."
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "Material certificates (EN 10204 3.1) with heat-number log",
+    "Welding procedure specifications and procedure qualification records",
+    "Welder qualification records",
+    "Isometric drawings with weld numbers",
+    "Weld log and coupon records",
+    "Borescope inspection records",
+    "Pressure test certificates",
+    "Surface finish certificates",
+    "Passivation certificate",
+    "Slope verification records"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Do you inspect every weld with a borescope?",
+     "a": "Our standard is [100 %] of accessible product-contact welds. Where a weld cannot be reached, we inspect its coupon and record why."
+    },
+    {
+     "q": "Electropolish or mechanical polish?",
+     "a": "Mechanical polish to SF1 suits most Purified Water service. We recommend electropolish for WFI and pure steam, where higher temperatures make rouge more likely."
+    },
+    {
+     "q": "Can we visit the shop during fabrication?",
+     "a": "Yes. We welcome inspection visits before FAT. Tell us which hold points you want to witness."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "See how we build before we build for you",
+  "body": "Ask for a redacted weld log and turnover package from a recent project.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Borescope inspection coverage [100 %] confirmed",
+  "Shop location [city], [province] and test bay size",
+  "Welder qualification status and number of qualified welders",
+  "CRN registration capability and provinces",
+  "Confirm passivation and electropolish are in-house or subcontracted (name supplier)",
+  "Confirm riboflavin testing offered",
+  "Confirm a redacted weld log can be shared"
+ ]
+}

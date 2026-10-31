@@ -1,0 +1,196 @@
+{
+ "id": "svc-design",
+ "section": "Services",
+ "nav_label": "Process design and engineering",
+ "title": "Pharmaceutical water system design and engineering | Aquemi",
+ "meta": "Water system design from URS to P&IDs and functional specification, sized from your demand profile and designed to ASME BPE and ISPE Baseline Guide Vol. 4.",
+ "path": "/services/process-design/",
+ "eyebrow": "PROCESS DESIGN · ISPE BASELINE GUIDE VOL. 4",
+ "headline": "A design that can be built, tested and qualified",
+ "lead": "We size your water system from a measured demand profile and a feedwater analysis, then document every decision so your validation team can trace it back to the user requirement specification (URS).",
+ "tags": [
+  "ISPE Baseline Guide Vol. 4",
+  "ASME BPE",
+  "GAMP 5",
+  "ICH Q9",
+  "USP <1231>"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Ask for a design review",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "Start from what the water must do",
+   "body": [
+    "Most oversized systems start from a guessed peak. Most undersized ones start from an average. We build an hourly demand profile for each point of use, including simultaneous draws, sanitization windows and future expansion, and size generation and storage from that.",
+    "Feedwater sets the pretreatment. We ask for a recent analysis covering hardness, chlorine or chloramine, silica, total organic carbon (TOC), conductivity and microbial count, and we design for the worst season, not the best."
+   ]
+  },
+  {
+   "type": "steps",
+   "h": "Design stages",
+   "items": [
+    {
+     "t": "Feasibility",
+     "d": "Water grades, demand profile, technology options and a budget range. Typical accuracy [±30 %]."
+    },
+    {
+     "t": "Basic design",
+     "d": "Basis of design, block flow, preliminary P&IDs, layout and utility list. Risk assessment to ICH Q9."
+    },
+    {
+     "t": "Detailed design",
+     "d": "Final P&IDs, isometrics, instrument list, functional specification and software design to GAMP 5."
+    },
+    {
+     "t": "Design review",
+     "d": "A documented review of the design against your URS. It feeds your design qualification (DQ)."
+    }
+   ]
+  },
+  {
+   "type": "spec",
+   "caption": "Typical design basis · storage and distribution",
+   "note": "Design targets we start from. Each is confirmed against your URS and documented in the basis of design.",
+   "cols": [
+    "Parameter",
+    "Typical design target",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Product-contact material",
+     "v": "316L stainless steel",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Product-contact surface finish",
+     "v": "Ra ≤ 0.5 µm, electropolished option",
+     "m": "ASME BPE surface finish designations",
+     "hl": false
+    },
+    {
+     "p": "Dead legs",
+     "v": "L/D ≤ 2",
+     "m": "ASME BPE",
+     "hl": true
+    },
+    {
+     "p": "Loop velocity at furthest return",
+     "v": "≥ 1 m/s at peak draw",
+     "m": "ISPE Baseline Guide Vol. 4 (design practice)",
+     "hl": false
+    },
+    {
+     "p": "Drainability",
+     "v": "Continuous slope to low-point drains",
+     "m": "ASME BPE",
+     "hl": false
+    },
+    {
+     "p": "Hot sanitization",
+     "v": "≥ 80 °C at all points of the loop",
+     "m": "Design practice",
+     "hl": false
+    },
+    {
+     "p": "Control system",
+     "v": "Audit trail, electronic records and signatures",
+     "m": "21 CFR Part 11, GAMP 5",
+     "hl": false
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "What we design",
+   "items": [
+    {
+     "t": "Pretreatment",
+     "d": "Multimedia, softening, carbon or bisulfite dechlorination, matched to your feedwater.",
+     "link": "sys-pretreatment"
+    },
+    {
+     "t": "Purified Water (PW) generation",
+     "d": "Double-pass reverse osmosis (RO) and electrodeionization (EDI).",
+     "tag": "USP <645>",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Water for Injection (WFI)",
+     "d": "Multi-effect distillation, vapour compression, or membrane routes.",
+     "tag": "USP <85>",
+     "link": "sys-wfi-distillation"
+    },
+    {
+     "t": "Pure Steam (PS)",
+     "d": "Generators sized for autoclaves and sterilize-in-place (SIP) loads.",
+     "tag": "EN 285",
+     "link": "sys-pure-steam"
+    },
+    {
+     "t": "Storage and distribution",
+     "d": "Hot, ambient or ozonated loops with sub-loops and point-of-use coolers.",
+     "tag": "ASME BPE",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Monitoring and controls",
+     "d": "Programmable logic controller (PLC) and supervisory system with on-line conductivity and TOC.",
+     "tag": "21 CFR Part 11",
+     "link": "sys-monitoring"
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "URS review and traceability matrix",
+    "Basis of design",
+    "Demand profile and sizing calculations",
+    "Process and instrumentation diagrams (P&IDs)",
+    "General arrangement and isometric drawings",
+    "Instrument and valve lists",
+    "Functional specification",
+    "Hardware and software design specifications",
+    "Risk assessment (ICH Q9)",
+    "Design review report for your DQ"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Hot, ambient or ozonated storage?",
+     "a": "It depends on how many points of use need cool water, your energy cost and how often you can sanitize. We compare the options on microbial control, energy and qualification effort in the basis of design."
+    },
+    {
+     "q": "Can you work inside our engineering firm's design?",
+     "a": "Yes. We can take a package from your architect-engineer, or provide the water system design for their drawings."
+    },
+    {
+     "q": "Do you design for future capacity?",
+     "a": "We size the loop and add capped tie-in points for the expansion you name, so a later phase does not mean a new loop."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send us your URS",
+  "body": "We return written comments and a proposed basis of design within [business days].",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Feasibility estimate accuracy [±30 %]",
+  "Turnaround for URS review [business days]",
+  "Confirm in-house design team credentials (P.Eng.) and design tools",
+  "Confirm Aquemi designs WFI by distillation in-house or with a partner"
+ ]
+}

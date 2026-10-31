@@ -1,0 +1,36 @@
+/* ---------- LimitGauges ---------- */
+/* Limits as a panel of small instruments: one cell per limit, hairline grid on the sheet, three across.
+   Cell: parameter, arc dial (scale line-strong, the side that passes in flow, the limit as an ink needle-mark with its
+   number on an ink chip), the full value in mono, the basis in small muted type with standards as tags.
+   A row without a number is a readout cell: the same cell without the dial. */
+.aq-limit-gauges { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--surface-raised); border: 1px solid var(--line); }
+.aq-limit-gauges__item { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; padding: var(--space-4) var(--space-6) var(--space-6); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 -1px -1px 0; }
+.aq-limit-gauges__item.is-key { box-shadow: inset 0 2px 0 var(--flow); }
+.aq-limit-gauges__p { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+.aq-limit-gauges__dial { position: relative; width: 80%; margin: var(--space-4) auto var(--space-1); }
+.aq-limit-gauges__dial svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-limit-gauges__track { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__ticks line { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__ticks line.is-major { stroke: var(--ink-muted); }
+.aq-limit-gauges__pass { fill: none; stroke: var(--flow); stroke-width: 4; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__limit { stroke: var(--ink); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__second { stroke: var(--flow); stroke-width: 2; stroke-dasharray: 3 2; vector-effect: non-scaling-stroke; }
+/* Limit chip: sits just above the mark, never past the dial's right edge */
+.aq-limit-gauges__mark { position: absolute; transform: translate(-50%, calc(-100% - var(--space-1))); padding: 0 var(--space-1); border-radius: var(--radius-sm); background: var(--ink); color: var(--surface); font: 500 11px/18px var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.aq-limit-gauges__mark--second { background: var(--surface-raised); color: var(--flow); border: 1px solid var(--flow); transform: translate(-50%, var(--space-1)); }
+.aq-limit-gauges__v { margin: 0; font: 400 16px/22px var(--font-mono); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: break-word; }
+.aq-limit-gauges__v .aq-ph { font-size: inherit; }
+.aq-limit-gauges__m { margin: 0; font: 400 13px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-limit-gauges__m .aq-tag { height: auto; padding: 0 var(--space-2); font-size: 11px; line-height: 18px; color: var(--ink); vertical-align: baseline; }
+
+@container (max-width: 860px) {
+  /* Phone: two instruments per row, compact */
+  .aq-limit-gauges { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-limit-gauges__item { gap: var(--space-1); padding: var(--space-3); }
+  .aq-limit-gauges__p { font-size: 11px; line-height: 15px; letter-spacing: 0.04em; }
+  .aq-limit-gauges__dial { width: 84%; margin: var(--space-4) 0 0; }
+  .aq-limit-gauges__mark { font-size: 10px; line-height: 16px; }
+  .aq-limit-gauges__v { font-size: 13px; line-height: 18px; letter-spacing: 0; }
+  .aq-limit-gauges__m { font-size: 11px; line-height: 18px; }
+  .aq-limit-gauges__m .aq-tag { font-size: 10px; line-height: 16px; padding: 0 var(--space-1); white-space: nowrap; }
+}

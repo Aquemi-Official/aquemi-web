@@ -1,0 +1,2 @@
+/* Block "form" -> EnquiryForm in SplitSection */
+BLOCKS['form']=function(b,H){return split(H+(b.intro?'<p class="aq-lead">'+tx(b.intro)+'</p>':''),'<form class="aq-form wform" novalidate>'+(b.fields||[]).map(wField).join('')+'<div class="aq-form__actions"><button class="aq-btn aq-btn--primary" type="submit">'+tx(b.submit||'Send')+'</button><span class="aq-small wform-msg" role="status"></span></div></form>');};

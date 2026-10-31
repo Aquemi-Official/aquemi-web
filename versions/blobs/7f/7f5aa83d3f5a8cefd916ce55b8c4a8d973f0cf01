@@ -1,0 +1,27 @@
+/* ---------- LinkGrid: choices (usually pages) as stations on one route (concept 33) ---------- */
+/* Built on .aq-rows (base.css): index | title (-> when it links) | one line and an optional tag, with the linked page's
+   drawing or the row's icon at the row end on desktop. LinkGrid draws the rows as stations on a route: no hairlines,
+   a 2 px ink spine between the index column and the titles ending in an arrowhead, a flow node on the spine at each
+   title, large light flow numbers and titles in condensed capitals. Phones: the same spine, compact. Decoration only. */
+.aq-linkgrid { position: relative; border-bottom: 0; padding-bottom: var(--space-6); }
+.aq-linkgrid::before { content: ""; position: absolute; top: var(--space-4); bottom: var(--space-2); left: calc(var(--space-12) + var(--space-3) - 1px); border-left: 2px solid var(--ink); pointer-events: none; }
+.aq-linkgrid::after { content: ""; position: absolute; bottom: 0; left: calc(var(--space-12) + var(--space-3) - 5px); border-top: 8px solid var(--ink); border-inline: 5px solid transparent; pointer-events: none; }
+.aq-linkgrid > li { position: relative; border-top: 0; }
+.aq-linkgrid > li::before { content: ""; position: absolute; top: calc(var(--space-4) + 11px); left: calc(var(--space-12) + var(--space-3) - 5px); width: 10px; height: 10px; border-radius: var(--radius-pill); background: var(--flow); box-shadow: 0 0 0 3px var(--surface); pointer-events: none; }
+.aq-linkgrid .aq-rows__row { align-items: start; }
+.aq-linkgrid .aq-rows__row > .aq-index { font: 300 28px/32px var(--font-mono); letter-spacing: -0.02em; color: var(--flow); }
+.aq-linkgrid .aq-rows__t { font: 600 26px/32px var(--font-display); letter-spacing: 0.005em; text-transform: uppercase; }
+.aq-linkgrid .aq-rows__d { padding-top: var(--space-1); }
+.aq-linkgrid .aq-rows__lead .aq-index { font-size: 13px; }
+.aq-linkgrid .aq-rows__art { transition: background-color 120ms; }
+.aq-linkgrid .aq-rows__t { transition: color 120ms; }
+@media (prefers-reduced-motion: reduce) { .aq-linkgrid .aq-rows__art, .aq-linkgrid .aq-rows__t { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-linkgrid::before { left: calc(var(--space-8) + var(--space-1)); top: var(--space-3); }
+  .aq-linkgrid::after { left: calc(var(--space-8) + var(--space-1) - 4px); }
+  .aq-linkgrid > li::before { top: calc(var(--space-3) + 9px); left: calc(var(--space-8) + var(--space-1) - 4px); }
+  .aq-linkgrid .aq-rows__row { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-6); }
+  .aq-linkgrid .aq-rows__row > .aq-index { font-size: 20px; line-height: 28px; }
+  .aq-linkgrid .aq-rows__t { font-size: 22px; line-height: 28px; }
+}

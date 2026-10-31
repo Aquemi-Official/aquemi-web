@@ -1,0 +1,87 @@
+/* ---------- Versus: two routes facing each other across a spine of factors (table block as "versus") ----------
+   On a drawing plate. Desktop: the two route names large and uppercase, joined by rules to an "or" node on the spine;
+   each factor a numbered node on the spine (mono number, uppercase label) with leader lines out to route A
+   (right-aligned) and route B (left-aligned); the verdict closes it as two framed lines. Phones: the names and node on
+   top, the verdict next, then the spine runs down the left edge with each factor's node on it and A and B under the
+   factor, each tagged with its route. */
+.aq-versus { display: flex; flex-direction: column; }
+.aq-versus__head, .aq-versus__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 200px) minmax(0, 1fr); column-gap: var(--space-8); }
+.aq-versus__head { position: relative; align-items: center; padding-bottom: var(--space-6); }
+.aq-versus__name { margin: 0; font: 500 30px/36px var(--font-sans); letter-spacing: 0.01em; text-transform: uppercase; color: var(--ink); text-wrap: balance; }
+.aq-versus__head .aq-versus__name:first-child { text-align: right; }
+.aq-versus__head .aq-versus__name:last-child { color: var(--flow); }
+.aq-versus__head::before { content: ""; position: absolute; top: calc(50% - var(--space-3)); left: calc(50% - 100px - var(--space-6)); right: calc(50% - 100px - var(--space-6)); border-top: 1px solid var(--line-strong); }
+.aq-versus__head::after { content: ""; position: absolute; left: 50%; top: calc(50% + var(--space-6) - var(--space-3)); bottom: 0; border-left: 1px solid var(--line-strong); }
+.aq-versus__vs {
+  position: relative; justify-self: center; display: grid; place-items: center; width: var(--space-12); height: var(--space-12);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface);
+  font: 500 13px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink);
+}
+.aq-versus__rows { margin: 0; }
+.aq-versus__row { position: relative; padding-block: var(--space-6); }
+.aq-versus__row::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; border-left: 1px solid var(--line-strong); }
+.aq-versus__row dt {
+  grid-column: 2; grid-row: 1; position: relative; justify-self: center; align-self: start; display: flex; flex-direction: column; align-items: center; gap: var(--space-1);
+  max-width: 100%; padding: var(--space-1) var(--space-2); background: var(--surface); text-align: center;
+  font: 500 14px/18px var(--font-sans); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink);
+}
+.aq-versus__n { font: 300 26px/30px var(--font-mono); letter-spacing: -0.02em; color: var(--flow); }
+.aq-versus__row dd { position: relative; grid-row: 1; margin: 0; padding-top: var(--space-6); font: 400 15px/24px var(--font-sans); color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
+/* leader lines from each answer to the spine node */
+.aq-versus__row dd::after { content: ""; position: absolute; top: var(--space-6); width: var(--space-6); border-top: 1px solid var(--line-strong); }
+.aq-versus__row dd:nth-of-type(1) { grid-column: 1; text-align: right; }
+.aq-versus__row dd:nth-of-type(1)::after { right: calc(-1 * var(--space-6)); }
+.aq-versus__row dd:nth-of-type(2) { grid-column: 3; }
+.aq-versus__row dd:nth-of-type(2)::after { left: calc(-1 * var(--space-6)); border-top-color: var(--flow); }
+.aq-versus__verdict { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); margin-top: var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--line-strong); }
+.aq-versus__verdict > div { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); border: 1px solid var(--line-strong); }
+.aq-versus__verdict > div:last-child { border-color: var(--flow); }
+.aq-versus__verdict > div:last-child .aq-eyebrow { color: var(--flow); }
+.aq-versus__verdict p:not(.aq-eyebrow) { margin: 0; font: 400 17px/26px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+
+/* Conclusion: a footer band across the plate, the closing line that is not a choice (what carries into IQ/OQ). The same
+   three columns as the factors, on a sunken band between line-strong rules, the label in mono caps on the spine. */
+.aq-versus__end {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 200px) minmax(0, 1fr); column-gap: var(--space-8); align-items: center;
+  margin: var(--space-6) calc(-1 * var(--space-8)) calc(-1 * var(--space-6)); padding: var(--space-6) var(--space-8);
+  background: var(--surface-sunken); border-block: 1px solid var(--line-strong);
+}
+.aq-versus__end-k { grid-column: 2; grid-row: 1; margin: 0; padding: var(--space-2) var(--space-3); border: 1px solid var(--line-strong); background: var(--surface); text-align: center; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
+.aq-versus__end-v { grid-row: 1; margin: 0; font: 500 16px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-versus__end-v:nth-of-type(2) { grid-column: 1; text-align: right; }
+.aq-versus__end-v:nth-of-type(3) { grid-column: 3; }
+.aq-versus__end.is-one .aq-versus__end-v { grid-column: 1 / -1; grid-row: 2; margin-top: var(--space-3); text-align: center; }
+/* Light ground (ground: "light"): on the cream sheet the plate goes sunken so the drawing still reads as a plate; the
+   spine nodes and the "or" pill take the plate's ground so the spine still breaks around them. */
+.aq-versus-plate--light { background-color: var(--surface-sunken); }
+.aq-versus-plate--light .aq-versus__name, .aq-versus-plate--light .aq-versus__vs, .aq-versus-plate--light .aq-versus__row dt, .aq-versus-plate--light .aq-versus__n { background: var(--surface-sunken); }
+.aq-versus-plate--light .aq-versus__verdict > div { background: var(--surface); }
+.aq-versus-plate--light .aq-versus__end { background: var(--surface); }
+
+@container (max-width: 860px) {
+  .aq-versus__head { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); column-gap: var(--space-3); padding-bottom: var(--space-4); }
+  .aq-versus__head::before { left: 0; right: 0; top: 50%; }
+  .aq-versus__head::after { display: none; }
+  .aq-versus__name { font-size: 17px; line-height: 22px; letter-spacing: 0.02em; position: relative; background: var(--surface); }
+  .aq-versus__vs { width: var(--space-8); height: var(--space-8); font-size: 11px; }
+  .aq-versus__row { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); padding: var(--space-4) 0 var(--space-4) var(--space-8); }
+  .aq-versus__row::before { left: var(--space-3); }
+  .aq-versus__row dt { grid-column: 1; justify-self: start; flex-direction: row; align-items: baseline; gap: var(--space-2); padding: 0; background: none; text-align: left; font-size: 13px; }
+  .aq-versus__n { position: absolute; left: calc(-1 * var(--space-8)); top: -2px; width: var(--space-6); background: var(--surface); text-align: center; font-size: 15px; line-height: 22px; font-weight: 500; }
+  .aq-versus__row dd, .aq-versus__row dd:nth-of-type(1), .aq-versus__row dd:nth-of-type(2) { grid-column: 1; grid-row: auto; padding: 0 0 0 var(--space-3); text-align: left; font-size: 14px; line-height: 21px; border-left: 1px solid var(--line-strong); }
+  .aq-versus__row dd:nth-of-type(2) { border-left-color: var(--flow); }
+  .aq-versus__row dd::after, .aq-versus__row dd:nth-of-type(1)::after, .aq-versus__row dd:nth-of-type(2)::after { display: none; }
+  .aq-versus__row dd::before { content: attr(data-k); display: block; font: 500 10px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+  .aq-versus__row dd:nth-of-type(2)::before { color: var(--flow); }
+  .aq-versus__head { order: -2; }
+  .aq-versus__verdict { order: -1; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); margin: 0 0 var(--space-4); padding-top: 0; border-top: 0; }
+  .aq-versus__verdict > div { padding: var(--space-3) var(--space-4); }
+  .aq-versus__verdict p:not(.aq-eyebrow) { font-size: 15px; line-height: 23px; }
+  .aq-versus__end { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); margin: var(--space-4) calc(-1 * var(--space-4)) calc(-1 * var(--space-2)); padding: var(--space-4); }
+  .aq-versus__end-k, .aq-versus__end-v, .aq-versus__end-v:nth-of-type(2), .aq-versus__end-v:nth-of-type(3), .aq-versus__end.is-one .aq-versus__end-v { grid-column: 1; grid-row: auto; margin: 0; text-align: left; }
+  .aq-versus__end-k { justify-self: start; padding: var(--space-1) var(--space-2); font-size: 11px; }
+  .aq-versus__end-v { padding-left: var(--space-3); border-left: 1px solid var(--line-strong); font-size: 14px; line-height: 21px; }
+  .aq-versus__end-v:nth-of-type(3) { border-left-color: var(--flow); }
+  .aq-versus__end-v[data-k]::before { content: attr(data-k); display: block; font: 500 10px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+  .aq-versus__end-v:nth-of-type(3)::before { color: var(--flow); }
+}

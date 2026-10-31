@@ -1,83 +1,110 @@
-"""Page history: freeze the site as it looked at each big checkpoint.
+"""Page history: every commit on main, viewable as the site looked then.
 
-    python tools/versions.py          # (re)write versions/<id>/ and versions/versions.json
+    python tools/versions.py
 
-Each checkpoint is a commit; its whole runnable site (index.html, assets, content, design system) is
-extracted from git into versions/<id>/ so it loads exactly as it did then. versions.html flips any page
-between them. To add a checkpoint, add a row to CHECKPOINTS (oldest first) and run this again.
-Python 3 standard library only; needs git.
+Writes, from git:
+  versions/blobs/<ab>/<blob-sha>   each file that ever shipped, stored once (content-addressed)
+  versions/tree/<commit>.json      one commit's files: {path: blob-sha}
+  versions/index.json              every commit (oldest first) with date, author, subject, a hash per page
+                                   (did this page's copy change?) and a design hash (did the look change?),
+                                   plus the named checkpoints below
+versions/sw.js (a service worker, hand-written) serves versions/at/<commit>/<path> from those files, so each
+old index.html runs unchanged. versions.html is the viewer. Rerun after every push you want in the history
+(the newest commit is always also reachable as the live site). Python 3 standard library only; needs git.
 """
-import io
+import hashlib
 import json
 import os
 import shutil
 import subprocess
-import tarfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'versions')
 
-# id, commit, title, what changed. The live site is appended last as 'now'.
+# The big checkpoints, oldest first: commit, title, what changed.
 CHECKPOINTS = [
-    ('v1-first-draft', 'e26059f', 'First draft',
+    ('e26059f', 'First draft',
      'The first site: 31 pages in the first Aquemi design system, one stylesheet and one renderer.'),
-    ('v2-gemini', 'e299ecf', 'Second pass and Gemini rebuild',
+    ('e299ecf', 'Second pass and Gemini rebuild',
      'Second-pass copy on every page; sections, table, heroes and footer rebuilt from Gemini concepts; equipment drawings.'),
-    ('v3-skeleton', '05157a0', 'Third pass: system skeleton',
+    ('05157a0', 'Third pass: system skeleton',
      'Every page compressed to the shared page skeleton, content budgets, site-wide phone pass.'),
-    ('v4-navy', 'ea55d15', 'Fourth pass: navy ground',
+    ('ea55d15', 'Fourth pass: navy ground',
      'Navy ground with light sheets, the fold, six table shapes, closing exchange, PlanTiers.'),
-    ('v5-fidelity', '871f1e0', 'Visual and fidelity passes',
+    ('871f1e0', 'Visual and fidelity passes',
      'Concepts 50 to 63 as components (limit gauges, callouts, binder, hold points), each matched to its concept. Tag pre-pass6.'),
-    ('v6-pass6', '55bd940', 'Pass 6: bold display, design first',
+    ('55bd940', 'Pass 6: bold display, design first',
      'Barlow Condensed capitals, first GSAP motion, about half the words, drawn hero figures and spot drawings. Tag pre-pass7.'),
-    ('v7-pass7', 'cd1bbf4', 'Pass 7: section refinement and motion',
+    ('cd1bbf4', 'Pass 7: section refinement and motion',
      'Section-by-section refinement and per-component GSAP choreography.'),
+    ('2d50dbf', 'Brand book',
+     'Back on the brand book: Geist Light sentence case, light surface, Lucide-style icons, How we work. Pass 7 motion kept.'),
 ]
-NOW = ('now', 'Brand book (live)',
-       'Back on the brand book: Geist Light sentence case, light surface, Lucide-style icons, How we work. Pass 7 motion kept.')
 
-# Not needed to view a page, and large.
-SKIP = ('design-system/inspiration/', '.github/', 'tools/', '.claude/')
-
-
-def git(*args):
-    return subprocess.run(['git', '-C', ROOT, *args], check=True, capture_output=True).stdout
+# Not part of the site a visitor loads.
+SKIP = ('design-system/inspiration/', '.github/', 'tools/', '.claude/', 'versions/', 'board/', 'research/')
+# Count as copy, not design, when deciding what changed.
+COPY = ('content/',)
 
 
-def extract(commit, dest):
-    tar = tarfile.open(fileobj=io.BytesIO(git('archive', '--format=tar', commit)))
-    for m in tar.getmembers():
-        if not m.isfile() or m.name.startswith(SKIP):
-            continue
-        path = os.path.join(dest, *m.name.split('/'))
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, 'wb') as f:
-            f.write(tar.extractfile(m).read())
+def git(*args, text=True):
+    out = subprocess.run(['git', '-C', ROOT, *args], check=True, capture_output=True).stdout
+    return out.decode('utf-8') if text else out
+
+
+def page_hashes(commit):
+    try:
+        d = json.loads(git('show', commit + ':content/pages.json'))
+    except (subprocess.CalledProcessError, ValueError):
+        return {}
+    pages = d.get('pages', d) if isinstance(d, dict) else d
+    return {p['id']: hashlib.sha1(json.dumps(p, sort_keys=True).encode()).hexdigest()[:8]
+            for p in pages if isinstance(p, dict) and 'id' in p}
 
 
 def main():
-    if os.path.isdir(OUT):
-        for name in os.listdir(OUT):
-            p = os.path.join(OUT, name)
-            if os.path.isdir(p):
-                shutil.rmtree(p)
-    os.makedirs(OUT, exist_ok=True)
-    items = []
-    for vid, commit, title, note in CHECKPOINTS:
-        full = git('rev-parse', commit).decode().strip()
-        date = git('show', '-s', '--format=%cI', full).decode().strip()
-        subject = git('show', '-s', '--format=%s', full).decode().strip()
-        extract(full, os.path.join(OUT, vid))
-        items.append({'id': vid, 'title': title, 'note': note, 'commit': full[:7], 'date': date,
-                      'subject': subject, 'path': 'versions/' + vid + '/index.html'})
-        print('  ' + vid + '  ' + full[:7] + '  ' + date[:16])
-    date = git('show', '-s', '--format=%cI', 'HEAD').decode().strip()
-    items.append({'id': NOW[0], 'title': NOW[1], 'note': NOW[2], 'commit': 'live', 'date': date,
-                  'subject': 'The site as it is now', 'path': 'index.html'})
-    with open(os.path.join(OUT, 'versions.json'), 'w', encoding='utf-8') as f:
-        json.dump({'versions': items}, f, indent=1)
-    print('wrote versions/versions.json (' + str(len(items)) + ' checkpoints)')
+    for sub in ('blobs', 'tree'):
+        shutil.rmtree(os.path.join(OUT, sub), ignore_errors=True)
+        os.makedirs(os.path.join(OUT, sub))
+    for name in os.listdir(OUT):  # snapshot folders from the first version of this tool
+        if name.startswith('v') and os.path.isdir(os.path.join(OUT, name)):
+            shutil.rmtree(os.path.join(OUT, name))
+    log = git('log', 'main', '--reverse', '--date-order', '--format=%H%x1f%cI%x1f%an%x1f%s%x1f%P').splitlines()
+    named = {git('rev-parse', c).strip(): (t, n) for c, t, n in CHECKPOINTS}
+    have, commits, size = set(), [], 0
+    for line in log:
+        full, date, author, subject, parents = line.split('\x1f')
+        tree, design = {}, hashlib.sha1()
+        for row in git('ls-tree', '-r', full).splitlines():
+            meta, path = row.split('\t', 1)
+            kind, blob = meta.split()[1:3]
+            if kind != 'blob' or path.startswith(SKIP):
+                continue
+            tree[path] = blob
+            if not path.startswith(COPY):
+                design.update((path + blob).encode())
+            if blob not in have:
+                have.add(blob)
+                dest = os.path.join(OUT, 'blobs', blob[:2], blob)
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
+                data = git('cat-file', 'blob', blob, text=False)
+                size += len(data)
+                with open(dest, 'wb') as f:
+                    f.write(data)
+        with open(os.path.join(OUT, 'tree', full[:7] + '.json'), 'w', encoding='utf-8') as f:
+            json.dump(tree, f, separators=(',', ':'))
+        item = {'c': full[:7], 'h': full, 'date': date, 'author': author, 'subject': subject,
+                'merge': len(parents.split()) > 1, 'design': design.hexdigest()[:8], 'pages': page_hashes(full)}
+        if full in named:
+            item['title'], item['note'] = named[full]
+        commits.append(item)
+    with open(os.path.join(OUT, 'index.json'), 'w', encoding='utf-8') as f:
+        json.dump({'commits': commits}, f, separators=(',', ':'))
+    old = os.path.join(OUT, 'versions.json')
+    if os.path.exists(old):
+        os.remove(old)
+    print('%d commits, %d files stored once (%.1f MB), %d checkpoints'
+          % (len(commits), len(have), size / 1e6, sum(1 for c in commits if 'title' in c)))
 
 
 if __name__ == '__main__':

@@ -1,0 +1,27 @@
+/* ---------- Icon: a Lucide-style line icon (assets/icons/<name>.svg) painted with a colour token through a mask ---------- */
+/* 24 px, 1.5 px stroke at every size (the files keep a non-scaling stroke), coloured ink-muted by default. */
+/* The file comes in through an inline mask-image so its URL resolves against the page, not this stylesheet. */
+.aq-icon {
+  display: inline-block; flex: none; width: var(--space-6); height: var(--space-6);
+  background-color: var(--ink-muted);
+  -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+}
+.aq-icon--ink { background-color: var(--ink); }
+.aq-icon--flow { background-color: var(--flow); }
+.aq-icon--on-navy { background-color: var(--on-navy-muted); }
+
+/* In a row (core.js wRow, item field icon): the icon takes the index column, as tall as the title's 24 px line. */
+.aq-rows__lead { display: flex; align-items: center; gap: var(--space-2); align-self: start; }
+.aq-rows__lead .aq-index { line-height: var(--space-6); }
+/* Ordered steps keep their number beside the icon, so the index column widens. */
+.aq-rows:has(.aq-rows__lead--n) .aq-rows__row { grid-template-columns: var(--space-16) minmax(0, 4fr) minmax(0, 7fr); }
+a.aq-rows__row .aq-icon { transition: background-color 120ms; }
+a.aq-rows__row:hover .aq-icon { background-color: var(--flow); }
+@media (prefers-reduced-motion: reduce) { a.aq-rows__row .aq-icon { transition: none; } }
+
+/* Phones: the same 24 px icon; the index column narrows. */
+@container (max-width: 860px) {
+  .aq-rows__lead { gap: var(--space-1); }
+  .aq-rows:has(.aq-rows__lead--n) .aq-rows__row { grid-template-columns: var(--space-12) minmax(0, 1fr); }
+}

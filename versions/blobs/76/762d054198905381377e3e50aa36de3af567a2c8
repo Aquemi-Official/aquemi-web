@@ -1,0 +1,7 @@
+/* ---------- OptionList: configuration choices, two columns ---------- */
+.aq-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--space-12); }
+.aq-options > div { padding-block: var(--space-4); border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: var(--space-1); }
+
+@container (max-width: 860px) {
+  .aq-options { grid-template-columns: minmax(0, 1fr); }
+}

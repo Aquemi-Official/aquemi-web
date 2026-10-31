@@ -1,0 +1,126 @@
+{
+ "id": "about",
+ "section": "Company",
+ "nav_label": "About",
+ "title": "About Aquemi: Canadian pharmaceutical water engineers",
+ "meta": "We design, fabricate and qualify Purified Water, WFI and Pure Steam systems in Canada, for teams who answer to auditors. Who we are and how we work.",
+ "path": "/company/about/",
+ "eyebrow": "ABOUT AQUEMI",
+ "headline": "A Canadian specialist in pharmaceutical water",
+ "lead": "We design, fabricate and qualify Purified Water, Water for Injection and Pure Steam systems, and we stay with them after handover. We do one thing, for clients who answer to auditors.",
+ "tags": [
+  "USP",
+  "Ph. Eur.",
+  "ASME BPE",
+  "GAMP 5"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "See how a project runs",
+  "link": "services"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "Who we are",
+   "body": [
+    "Aquemi is a team of process engineers, automation engineers, welders, validation specialists and service technicians based in [city], [province]. We have been building water systems for regulated manufacturing since [year].",
+    "Our clients are pharmaceutical, biotechnology, medical device and contract manufacturers. Most of them have a validation team, a quality unit and a regulator who will read the records. We build for those readers."
+   ]
+  },
+  {
+   "type": "steps",
+   "h": "How we work",
+   "items": [
+    {
+     "t": "Design",
+     "d": "We start from your user requirement specification and a feed water analysis, and size the system for your measured demand."
+    },
+    {
+     "t": "Fabricate",
+     "d": "Skids are built in our shop in [city], with orbital welding, traceable materials and a weld log for every product-contact joint."
+    },
+    {
+     "t": "Test",
+     "d": "Every system is factory acceptance tested with water before it ships, to a protocol you approved."
+    },
+    {
+     "t": "Qualify",
+     "d": "We execute SAT and IQ/OQ on site, and support your PQ."
+    },
+    {
+     "t": "Support",
+     "d": "Service, spare parts, calibration and requalification support for the life of the system."
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "Why a Canadian specialist",
+   "items": [
+    {
+     "t": "Built and tested in Canada",
+     "d": "Design, fabrication and FAT in [city]; your team can attend the FAT without crossing a border."
+    },
+    {
+     "t": "Priced in Canadian dollars",
+     "d": "Quotes in CAD with no cross-border freight or tariff exposure on the skid."
+    },
+    {
+     "t": "Registered for Canadian codes",
+     "d": "Pressure equipment registered with a CRN for your province; panels certified for Canadian installation."
+    },
+    {
+     "t": "Service close to your site",
+     "d": "Technicians based in [service locations] and spare parts stocked in [location].",
+     "link": "contact-locations"
+    },
+    {
+     "t": "English and French",
+     "d": "[Engineering, documentation and support in English and French.]"
+    },
+    {
+     "t": "Pharmaceutical water only",
+     "d": "We do not sell residential or municipal products. Our engineering time goes to regulated water systems."
+    }
+   ]
+  },
+  {
+   "type": "readout",
+   "value": "[number]",
+   "method": "Systems delivered since [year]",
+   "body": "[A short, sourced statement of installed base, by system type and province. Publish only when the figure is verified.]"
+  },
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "Our commitments",
+   "body": "We publish our specifications on the page, we name the standard behind every claim, and we deliver the documents with the equipment."
+  },
+  {
+   "type": "related",
+   "h": "Related pages",
+   "items": [
+    "compliance",
+    "cmp-quality",
+    "careers",
+    "contact-locations"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Talk to an engineer",
+  "body": "Send your URS or your questions and an engineer replies within [response time].",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Head office and shop city and province",
+  "Founding year",
+  "Installed base figure by system type and province (verified)",
+  "Team size and disciplines; professional designations (P.Eng., CET)",
+  "Service locations and spare parts stock location",
+  "Confirm French-language capability before publishing the bilingual claim",
+  "Engineer response time for enquiries"
+ ]
+}

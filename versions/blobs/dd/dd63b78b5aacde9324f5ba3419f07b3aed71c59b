@@ -1,0 +1,350 @@
+{
+ "id": "ind-pharma",
+ "section": "Industries",
+ "nav_label": "Pharmaceutical",
+ "title": "Pharmaceutical water systems: PW, WFI, pure steam | Aquemi",
+ "meta": "PW, WFI and pure steam for oral, liquid and sterile drugs to USP <645>, Ph. Eur., Health Canada GUI-0001 and GUI-0119, with FAT and IQ/OQ records.",
+ "path": "/industries/pharmaceutical/",
+ "eyebrow": "PHARMACEUTICAL · HEALTH CANADA · FDA · EU GMP",
+ "headline": "Water matched to your dosage forms",
+ "lead": "Dosage forms set the grade: PW, or WFI and pure steam. We design, build and wet test them in Canada.",
+ "primary_cta": "Request a water scope review",
+ "primary_cta_intent": "Water scope review for your products|Pharmaceutical drug products",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "facts": [
+  {
+   "v": "USP + Ph. Eur.",
+   "l": "Stricter value on each attribute"
+  },
+  {
+   "v": "100 %",
+   "l": "Skids wet tested at FAT"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "table",
+   "as": "router",
+   "nav": "Where to start",
+   "h": "Your situation, the water, the system",
+   "cols": [
+    "Your situation",
+    "Water you need",
+    "System"
+   ],
+   "rows": [
+    [
+     "Oral solid dose",
+     "PW for granulation, coating and final rinse",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     }
+    ],
+    [
+     "Oral liquids, creams and ointments",
+     "PW as an excipient, at a microbial level your product tolerates",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "Sterile and parenteral products",
+     "WFI as excipient and rinse; pure steam for SIP",
+     {
+      "t": "WFI by distillation or membrane",
+      "link": "sys-wfi-distillation"
+     }
+    ],
+    [
+     "Inspection due, or a water observation open",
+     "Drawings that match the plant, a full qualification file",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "First export to the US or EU",
+     "USP and Ph. Eur. on every attribute, both on file",
+     {
+      "t": "Standards we design to",
+      "link": "compliance"
+     }
+    ],
+    [
+     "Natural health products moving to PW",
+     "PW for liquids, or where your specification calls for it",
+     {
+      "t": "Pretreatment",
+      "link": "sys-pretreatment"
+     }
+    ],
+    [
+     "A new line or first sterile suite",
+     "More PW, or WFI and pure steam tied into a qualified plant",
+     {
+      "t": "Upgrades and retrofits",
+      "link": "svc-upgrades"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "spec",
+   "as": "gauges",
+   "nav": "Limits",
+   "caption": "PW and WFI · USP and Ph. Eur.",
+   "h": "Limits you release against",
+   "cols": [
+    "Attribute",
+    "Limit",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity, USP",
+     "v": "≤ 1.3 µS/cm @ 25 °C",
+     "m": "USP <645> stage 1",
+     "hl": true
+    },
+    {
+     "p": "Conductivity, WFI, Ph. Eur.",
+     "v": "≤ 1.1 µS/cm @ 20 °C",
+     "m": "Ph. Eur. 0169"
+    },
+    {
+     "p": "TOC",
+     "v": "≤ 0.50 mg/L",
+     "m": "USP <643>; Ph. Eur. 2.2.44"
+    },
+    {
+     "p": "Endotoxin, WFI",
+     "v": "< 0.25 EU/mL",
+     "m": "USP <85>; Ph. Eur. 2.6.14"
+    },
+    {
+     "p": "Microbial action level, PW",
+     "v": "100 CFU/mL",
+     "m": "USP <1231>; Ph. Eur. 0008"
+    },
+    {
+     "p": "Microbial action level, WFI",
+     "v": "10 CFU/100 mL",
+     "m": "USP <1231>; Ph. Eur. 0169"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "as": "grades",
+   "nav": "Grade by dosage form",
+   "h": "Minimum water grade by dosage form",
+   "intro": "EMA water guideline minimums. Your product file can go higher, never lower.",
+   "cols": [
+    "Product or process step",
+    "Minimum grade",
+    "Note"
+   ],
+   "rows": [
+    [
+     "Parenterals, biologics and vaccines",
+     "WFI",
+     "Also dialysis and irrigation solutions"
+    ],
+    [
+     "Sterile eye, nose, ear and skin preparations",
+     "PW",
+     "Higher if your risk assessment calls for it"
+    ],
+    [
+     "Oral preparations and nebulisers",
+     "PW",
+     "WFI for sterile, non-pyrogenic nebulisers"
+    ],
+    [
+     "Granulation and tablet coating",
+     "PW",
+     "Even water that leaves during drying"
+    ],
+    [
+     "Formulation before sterile lyophilization",
+     "WFI",
+     "PW before non-sterile lyophilization"
+    ],
+    [
+     "Non-sterile skin, nasal, ear, rectal and vaginal",
+     "PW",
+     "Potable only where justified, some veterinary products"
+    ],
+    [
+     "Final rinse of equipment and containers",
+     "Same grade as the product",
+     "PW for non-parenterals; WFI for sterile parenterals"
+    ],
+    [
+     "API synthesis before final isolation",
+     "Potable water",
+     "PW or WFI for final isolation"
+    ]
+   ],
+   "fold": 4,
+   "fold_noun": "steps"
+  },
+  {
+   "type": "table",
+   "as": "evidence",
+   "nav": "Inspectors",
+   "h": "What each inspector reads",
+   "cols": [
+    "Who inspects",
+    "What they read",
+    "Where we answer it"
+   ],
+   "rows": [
+    [
+     "Health Canada, all drug sites",
+     "GUI-0001: design, qualification, maintenance, calibration, trend review",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "Health Canada, sterile products",
+     "GUI-0119 (Annex 1): WFI route, dead legs, sanitization, continuous TOC",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "FDA",
+     "21 CFR 211.63 to 211.68 and its water guide: dead legs, sanitization, a year of data",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "EU authorities and importers",
+     "Ph. Eur., the EMA guideline, Annex 15; notice before membrane WFI",
+     {
+      "t": "WFI by membrane",
+      "link": "sys-wfi-membrane"
+     }
+    ],
+    [
+     "Health Canada, natural health products",
+     "GUI-0158: potable minimum, appropriate purity, test records",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     }
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "inspectors"
+  },
+  {
+   "type": "options",
+   "nav": "Decisions",
+   "h": "Decide before the URS is approved",
+   "items": [
+    {
+     "t": "Product mix in five years",
+     "d": "Generation and headers sized for planned lines, expansion written into the URS."
+    },
+    {
+     "t": "USP, Ph. Eur. or both",
+     "d": "Both is cheap at design and costly later."
+    },
+    {
+     "t": "Distillation or membrane WFI",
+     "d": "Distillation: hot loop, longer inspection record. Membrane: less energy, stronger control strategy."
+    },
+    {
+     "t": "Hot, ambient or ozonated loops",
+     "d": "Annex 1 cites hot circulation above 70 °C for WFI; PW often runs ambient."
+    },
+    {
+     "t": "Canadian feed water",
+     "d": "Near freezing in winter, over 20 °C in summer; membranes sized for the coldest month."
+    },
+    {
+     "t": "Shutdown windows",
+     "d": "Duplex trains and isolable sections let you service without stopping every line."
+    }
+   ],
+   "fold": 3,
+   "fold_noun": "decisions"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Common questions",
+   "items": [
+    {
+     "q": "Can one system supply Canada, the United States and Europe?",
+     "a": "Yes. We test both pharmacopoeias at FAT where methods allow and write both into the functional specification, so one record answers every inspector."
+    },
+    {
+     "q": "Is membrane WFI acceptable to Health Canada and the FDA?",
+     "a": "USP allows a process equivalent to distillation; Ph. Eur. 0169 allows membranes since April 2017. Confirm the route product by product with your regulatory team."
+    },
+    {
+     "q": "Do natural health products need USP Purified Water?",
+     "a": "GUI-0158 sets potable water as the minimum. Many makers move to PW for liquids or when shelf-life results call for it."
+    },
+    {
+     "q": "Does a new production line mean full requalification?",
+     "a": "Not normally. A risk assessment sets the scope: usually IQ/OQ of the new section and more sampling at its points of use."
+    },
+    {
+     "q": "Who builds your WFI stills and pure steam generators?",
+     "a": "[stills and generators: in-house or named maker]."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "sys-pw",
+    "sys-wfi-distillation",
+    "sys-pure-steam"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your dosage forms",
+  "button": "Request a water scope review",
+  "link": "contact-proposal",
+  "intent": "Water scope review for your products|Pharmaceutical drug products",
+  "include": [
+   "Dosage forms, now and in five years",
+   "Markets and the pharmacopoeia in each file",
+   "Water draw by grade, L/h; steam, kg/h",
+   "Feed water analyses and temperature range"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "The grade each product needs",
+   "The systems to supply them",
+   "The qualification scope"
+  ]
+ },
+ "todo": [
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Stills and generators: in-house or named maker ([stills and generators: in-house or named maker]; FAQ; same wording as systems)",
+  "Pharmaceutical references available for a call, or a plain 'none yet' ([pharmaceutical references available for a call]; FAQ)",
+  "A pharmaceutical case study with measured outcome; add a case block when one exists",
+  "Confirm Aquemi serves NHP manufacturers and will qualify PW skids to their needs",
+  "Is the scope review free, and its turnaround",
+  "Contact-proposal page: add a 'pharmaceutical scope review' intent or dosage-form and market fields so the CTA lands on a matching form"
+ ]
+}

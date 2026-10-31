@@ -1,6 +1,0 @@
-/* ---------- WaterPath: the system families on one pipe, feed to point of use ----------
-   Drawn by the ProcessDiagram flow (aq-diagram markup; parts/ProcessDiagram.js wFlow) with this modifier: pipe-end
-   labels above the row, and a detail panel that carries the family's line, governing standard and page link. */
-.aq-water-path .aq-diagram__t { font-size: 13px; }
-.aq-water-path.is-live .aq-diagram__d { grid-template-columns: auto minmax(0, 1fr); }
-.aq-water-path .aq-diagram__io { display: none; }

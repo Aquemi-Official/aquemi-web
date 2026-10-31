@@ -1,0 +1,15 @@
+<!-- @dsCard group="Forms" height=560 width=1000 subtitle="Request a proposal" -->
+<div class="aq-page"><section class="aq-section"><div class="aq-in aq-stack-l">
+  <h2 class="aq-h1">Request a proposal</h2>
+  <form class="aq-form" novalidate onsubmit="event.preventDefault()">
+    <div class="aq-field"><label class="aq-field__label" for="ef-name">Name</label><input class="aq-field__input" id="ef-name"></div>
+    <div class="aq-field"><label class="aq-field__label" for="ef-company">Company</label><input class="aq-field__input" id="ef-company" placeholder="e.g. Northfield Biologics"></div>
+    <div class="aq-field"><label class="aq-field__label" for="ef-stage">Project stage</label><select class="aq-field__input" id="ef-stage"><option>Choose…</option><option>Concept or budget</option><option>URS written</option><option>Ready to tender</option></select></div>
+    <div class="aq-field"><label class="aq-field__label" for="ef-cap">Required capacity <span class="aq-field__optional">(optional)</span></label><div class="aq-field__suffix"><input class="aq-field__input" id="ef-cap" inputmode="numeric" value="2,500"><span class="aq-field__unit">L/h</span></div></div>
+    <fieldset class="aq-fieldset aq-field aq-form__full"><legend class="aq-field__label">System type</legend>
+      <div class="aq-checks"><label><input type="checkbox" id="ef-pw" checked> Purified Water</label><label><input type="checkbox" id="ef-wfi"> Water for Injection</label><label><input type="checkbox" id="ef-ps"> Pure Steam</label><label><input type="checkbox" id="ef-loop"> Storage and loop</label></div>
+    </fieldset>
+    <div class="aq-field aq-form__full"><label class="aq-field__label" for="ef-msg">Project details <span class="aq-field__optional">(optional)</span></label><textarea class="aq-field__input" id="ef-msg"></textarea></div>
+    <div class="aq-form__actions"><button class="aq-btn aq-btn--primary" type="submit">Request a proposal</button><span class="aq-small" role="status">We reply within <span class="aq-ph">[N]</span> working days.</span></div>
+  </form>
+</div></section></div>

@@ -1,0 +1,349 @@
+{
+ "id": "industries",
+ "section": "Industries",
+ "nav_label": "Industries",
+ "title": "Water systems by industry: pharma, biotech, devices | Aquemi",
+ "meta": "PW, WFI and pure steam by industry: USP <645> and <85> limits, the regulator who inspects each, and where pharma, biotech, device and CDMO buyers start.",
+ "path": "/industries/",
+ "eyebrow": "INDUSTRIES · PHARMA · BIOTECH · DEVICES · CDMO",
+ "headline": "Your products set the water grade. Your regulator sets the evidence.",
+ "lead": "Purified Water (PW) and Water for Injection (WFI) limits are the same in every industry. What changes is where the water touches your product and who reads the record. Choose your industry.",
+ "facts": [
+  {
+   "v": "≤ 1.3 µS/cm",
+   "l": "PW and WFI conductivity at 25 °C · USP <645>"
+  },
+  {
+   "v": "≤ 500 ppb",
+   "l": "Total organic carbon · USP <643>"
+  },
+  {
+   "v": "< 0.25 EU/mL",
+   "l": "WFI endotoxin · USP <85>"
+  },
+  {
+   "v": "20.0 EU",
+   "l": "Endotoxin per device, general limit · USP <161>"
+  }
+ ],
+ "primary_cta": "Request a water scope review",
+ "primary_cta_intent": "Water scope review for your products",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "blocks": [
+  {
+   "type": "grid",
+   "nav": "Industries",
+   "h": "Choose your industry",
+   "intro": "Each page gives the grades per process step, the limits you release against, what each inspector reads and the documents we hand over.",
+   "items": [
+    {
+     "t": "Pharmaceutical",
+     "d": "PW for oral solids, liquids and creams; WFI and pure steam for parenterals. Written to Health Canada GUI-0001 and GUI-0119, and 21 CFR Part 211.",
+     "tag": "Health Canada GUI-0001",
+     "link": "ind-pharma"
+    },
+    {
+     "t": "Biotechnology",
+     "d": "WFI in volume for media, buffers and clean-in-place (CIP) rinse, held to < 0.25 EU/mL at the furthest outlet at peak draw.",
+     "tag": "USP <85>",
+     "link": "ind-biotech"
+    },
+    {
+     "t": "Medical devices",
+     "d": "Final rinse water worked back from your device: USP <161> 20.0 EU per device, 2.15 EU for cerebrospinal fluid contact. ISO 13485 and MDSAP.",
+     "tag": "ISO 13485",
+     "link": "ind-meddevice"
+    },
+    {
+     "t": "Contract manufacturing (CDMO)",
+     "d": "One system every client audits: the stricter of USP and Ph. Eur. on each attribute, with a client audit pack under 21 CFR Part 11.",
+     "tag": "USP and Ph. Eur.",
+     "link": "ind-cdmo"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "By industry",
+   "h": "Grade, limit and inspector by industry",
+   "cols": [
+    "Industry",
+    "Main water grades and where they are used",
+    "Limit that decides the design",
+    "Who inspects or audits the water system"
+   ],
+   "rows": [
+    [
+     "Pharmaceutical, non-sterile: oral solids, liquids, creams, natural health products",
+     "PW for granulation, coating, excipient use and final rinse",
+     "USP <645> 1.3 µS/cm at 25 °C and 500 ppb total organic carbon (TOC); Ph. Eur. 0008 nitrates",
+     "Health Canada under GUI-0001 (GUI-0158 for natural health products); FDA under 21 CFR Part 211"
+    ],
+    [
+     "Pharmaceutical, sterile: injectables, irrigation, lyophilized products",
+     "WFI as excipient and final rinse; pure steam for autoclaves and sterilize-in-place (SIP)",
+     "USP <85> < 0.25 EU/mL at point of use; EU GMP Annex 1 (2022) 6.10 and 6.15",
+     "Health Canada under GUI-0119 (its adoption of Annex 1); FDA and EU authorities for export"
+    ],
+    [
+     "Biotechnology: biologics, vaccines, cell and gene therapy",
+     "WFI for media, buffers and CIP final rinse; pure steam for SIP",
+     "USP <85> < 0.25 EU/mL at the furthest outlet at peak draw",
+     "Health Canada under GUI-0001 and GUI-0027, BRDD on submissions; FDA CBER or CDER"
+    ],
+    [
+     "Medical devices: implants, sterile and combination devices",
+     "PW final rinse with a written endotoxin limit, or WFI; pure steam for sterilizers",
+     "USP <161> 20.0 EU per device; ISO 11737-1 bioburden; EN 285 steam quality",
+     "An MDSAP auditor against ISO 13485:2016; FDA under 21 CFR 820 QMSR; EU notified bodies"
+    ],
+    [
+     "Contract manufacturing (CDMO)",
+     "PW, WFI and pure steam, as your client portfolio needs them",
+     "The stricter of USP and Ph. Eur. on each attribute, for example Ph. Eur. nitrates 0.2 ppm",
+     "Health Canada, FDA pre-approval inspections, PIC/S authorities and each client's quality unit"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Where to start",
+   "h": "Your situation and where to start",
+   "cols": [
+    "Your situation",
+    "Industry page",
+    "Start with the system",
+    "Or the service"
+   ],
+   "rows": [
+    [
+     "A new oral solid dose or liquids line, or natural health products moving to PW",
+     {
+      "t": "Pharmaceutical",
+      "link": "ind-pharma"
+     },
+     {
+      "t": "Purified Water (PW) generation",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Process design: request a URS review",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "A first sterile suite, or WFI and pure steam added to a qualified plant",
+     {
+      "t": "Pharmaceutical",
+      "link": "ind-pharma"
+     },
+     {
+      "t": "WFI by distillation",
+      "link": "sys-wfi-distillation"
+     },
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "A biologics plant scaling from clinical supply to licensed production",
+     {
+      "t": "Biotechnology",
+      "link": "ind-biotech"
+     },
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Process design: request a URS review",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "Endotoxin or bioburden results drifting on finished devices",
+     {
+      "t": "Medical devices",
+      "link": "ind-meddevice"
+     },
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Upgrades: request a system assessment",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "A new client programme with a tech transfer date already in the contract",
+     {
+      "t": "Contract manufacturing",
+      "link": "ind-cdmo"
+     },
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "A water system observation from Health Canada, the FDA, a Medical Device Single Audit Program (MDSAP) auditor or a client",
+     {
+      "t": "Standards we design to",
+      "link": "compliance"
+     },
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Upgrades: request a system assessment",
+      "link": "svc-upgrades"
+     }
+    ]
+   ],
+   "as": "router"
+  },
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "Same limits, applied where water touches product",
+   "body": "A tablet maker, a biologics plant and an implant maker all release against USP <645> and <643>. They differ in which step uses which grade, peak draw and which record the auditor opens first."
+  },
+  {
+   "type": "docs",
+   "nav": "Documents",
+   "h": "Documents every industry gets",
+   "items": [
+    {
+     "t": "Functional specification",
+     "d": "grade, limits and pharmacopoeias written in for each point of use"
+    },
+    {
+     "t": "Piping and instrumentation diagrams (P&IDs) and general arrangement drawings"
+    },
+    {
+     "t": "Material certificates",
+     "d": "for every product-contact part"
+    },
+    {
+     "t": "Factory and site acceptance test (FAT and SAT) protocols and reports"
+    },
+    {
+     "t": "Installation and operational qualification (IQ and OQ) protocols"
+    },
+    {
+     "t": "Instrument calibration certificates"
+    },
+    {
+     "t": "Added by industry",
+     "code": "+",
+     "d": "contamination control strategy inputs for sterile drugs, a rinse water specification for devices, a client audit pack for CDMOs"
+    }
+   ],
+   "intro": "We factory acceptance test each system before it ships and hand these over with it."
+  },
+  {
+   "type": "table",
+   "nav": "Adjacent uses",
+   "h": "Adjacent uses outside drug and device manufacturing",
+   "cols": [
+    "Use",
+    "Standard it works to",
+    "What it changes in the system"
+   ],
+   "rows": [
+    [
+     "Hospital medical device reprocessing (MDRD) or sterile processing",
+     "CSA Z314; in the United States, ANSI/AAMI ST108:2023",
+     "Critical water for final rinse and steam, usually duplex or N+1 because an MDRD cannot stop"
+    ],
+    [
+     "Research and university laboratories, central lab water loops",
+     "ASTM D1193, reagent water Types I to IV",
+     "Type I above 18 MΩ·cm at 25 °C; a central RO and EDI loop, Type I polished at the bench"
+    ],
+    [
+     "Industrial demineralized water: boiler feed, process rinse",
+     "No pharmacopoeial standard: limits come from your process or the boiler maker",
+     "RO and EDI in place of regenerated ion exchange: no acid or caustic regenerations"
+    ]
+   ],
+   "intro": "The same reverse osmosis (RO) and electrodeionization (EDI) platform. Our scope: [hospital, lab and industrial water scope]. Send the standard you work to and we answer plainly."
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions before choosing a page",
+   "items": [
+    {
+     "q": "We make more than one kind of product. Which page do we read?",
+     "a": "The one for your strictest product. A plant with oral solids and one sterile line reads the sterile rows of the pharmaceutical page. A combination product also reads the pharmaceutical page for the drug part. A contract manufacturer reads the CDMO page."
+    },
+    {
+     "q": "Do the limits change with the industry?",
+     "a": "No. USP <645>, <643> and <85>, and the Ph. Eur. monographs, set the same PW and WFI limits whoever uses them. What changes is the grade per step, device limits and how the record is audited. Alert and action levels are yours; USP <1231> guides 100 CFU/mL for PW and 10 CFU/100 mL for WFI."
+    },
+    {
+     "q": "Our product is not in these four industries. Can you still help?",
+     "a": "If it is a drug, including a natural health product, read the pharmaceutical page. For hospital reprocessing, laboratory or industrial water, see adjacent uses above and send the standard you work to. We will tell you plainly whether it is in our scope."
+    },
+    {
+     "q": "Do you have references in our industry?",
+     "a": "[industries with references available for a call]. Case studies go on the projects page as they are published."
+    },
+    {
+     "q": "What does a scope review cost, and what comes back?",
+     "a": "[scope review cost or free]; turnaround [scope review turnaround, working days]. A process engineer replies within [proposal response time, working days] with the grade each step needs, the systems to make and distribute it and the qualification scope, or our questions first."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "systems",
+    "sys-pw",
+    "sys-wfi-distillation",
+    "sys-wfi-membrane",
+    "sys-pure-steam",
+    "sys-storage",
+    "services",
+    "compliance"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Tell us what you make and where you ship it.",
+  "body": "A process engineer replies within [proposal response time, working days] with the grade each step needs, the systems to make and distribute it and the qualification scope.",
+  "button": "Request a water scope review",
+  "link": "contact-proposal",
+  "intent": "Water scope review for your products",
+  "include": [
+   "What you make, and how it is sterilized",
+   "Markets and pharmacopoeias you release against",
+   "Peak L/h and daily m³/day per grade",
+   "Release limits you already hold",
+   "Feed water analysis, summer and winter",
+   "Equipment you want to keep",
+   "Your user requirement specification (URS), even a draft"
+  ]
+ },
+ "todo": [
+  "Confirm the four industries are the target segments at launch",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Is the scope review free ([scope review cost or free]) and its turnaround ([scope review turnaround, working days]) (FAQ)",
+  "Industries where Aquemi has references available for a call, or 'none yet' per industry ([industries with references available for a call], FAQ)",
+  "Projects per industry to link once case studies exist",
+  "[hospital, lab and industrial water scope] (adjacent uses intro), per use. Hospital MDRD / sterile processing: new systems, upgrades, service only or not offered (keep in line with ind-meddevice, sys-pw, systems). Laboratory water (ASTM D1193): central systems and loops, point-of-use polishers, service only or not offered. Industrial demineralized water: new systems, ion exchange retrofits, service only or not offered",
+  "Contact-proposal page: a general 'water scope review' intent with an industry selector routing to the four industry-specific intents"
+ ]
+}

@@ -1,0 +1,5771 @@
+{
+ "pages": [
+  {
+   "id": "home",
+   "section": "Home",
+   "nav_label": "Home",
+   "title": "Pharmaceutical water systems: PW, WFI, pure steam | Aquemi",
+   "meta": "We design, fabricate and qualify Purified Water, WFI and pure steam systems for pharmaceutical plants in Canada, built to USP and ASME BPE.",
+   "path": "/",
+   "eyebrow": "PHARMACEUTICAL WATER SYSTEMS · USP · PH. EUR. · ASME BPE",
+   "headline": "Compendial water that passes on the first audit.",
+   "lead": "We design, fabricate and qualify Purified Water (PW), Water for Injection (WFI) and pure steam systems for pharmaceutical plants, and every one is factory acceptance tested before it ships to you.",
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Explore systems",
+    "link": "systems"
+   },
+   "blocks": [
+    {
+     "type": "grid",
+     "h": "Seven system families, one water path",
+     "intro": "Each system is specified against the standard your user requirement specification names. Choose one, or let us take the whole path from feed water to point of use.",
+     "items": [
+      {
+       "t": "Purified Water (PW) generation",
+       "d": "Reverse osmosis (RO) and electrodeionization (EDI) skids that hold conductivity below USP <645> stage 1.",
+       "tag": "USP <645>",
+       "link": "sys-pw"
+      },
+      {
+       "t": "WFI by distillation",
+       "d": "Multi-effect and vapour compression stills for hot WFI that meets USP and Ph. Eur.",
+       "tag": "USP · Ph. Eur.",
+       "link": "sys-wfi-distillation"
+      },
+      {
+       "t": "WFI by membrane",
+       "d": "Double-pass RO, EDI and ultrafiltration, as Ph. Eur. has permitted since 2017.",
+       "tag": "Ph. Eur. 0169",
+       "link": "sys-wfi-membrane"
+      },
+      {
+       "t": "Pure steam generators",
+       "d": "Steam for sterilizers and steam-in-place, with condensate tested to EN 285.",
+       "tag": "EN 285",
+       "link": "sys-pure-steam"
+      },
+      {
+       "t": "Storage and distribution loops",
+       "d": "Tanks and hot, ambient or cold loops with no dead legs over 2 pipe diameters.",
+       "tag": "ASME BPE",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Pretreatment",
+       "d": "Multimedia, softening and carbon or bisulfite trains sized for your municipal water.",
+       "tag": "Health Canada · US EPA",
+       "link": "sys-pretreatment"
+      },
+      {
+       "t": "Monitoring and controls",
+       "d": "Online total organic carbon (TOC), conductivity and ozone, with audit-trailed data.",
+       "tag": "21 CFR Part 11",
+       "link": "sys-monitoring"
+      }
+     ]
+    },
+    {
+     "type": "readout",
+     "value": "< 0.25 EU/mL",
+     "method": "Bacterial endotoxins · USP <85>",
+     "body": "This is the endotoxin limit for WFI. We design every WFI system and loop to meet it at the furthest point of use, not only at the still outlet, and we show you the factory acceptance test data before the skid leaves our shop."
+    },
+    {
+     "type": "steps",
+     "h": "How a project runs",
+     "items": [
+      {
+       "t": "Design",
+       "d": "We turn your user requirement specification (URS) into a functional specification, piping and instrumentation diagrams (P&IDs) and a risk assessment you can review line by line."
+      },
+      {
+       "t": "Fabricate",
+       "d": "316L stainless steel, orbital welds with weld logs and borescope records, and surface finishes specified to ASME BPE."
+      },
+      {
+       "t": "Test",
+       "d": "A wet factory acceptance test (FAT) in our shop with your team present, then a site acceptance test (SAT) after installation."
+      },
+      {
+       "t": "Qualify",
+       "d": "Installation and operational qualification (IQ/OQ) protocols written to GAMP 5, executed with your validation team, and support through performance qualification (PQ)."
+      },
+      {
+       "t": "Support",
+       "d": "Preventive maintenance, calibration and spare parts, documented so the system stays in its qualified state."
+      }
+     ]
+    },
+    {
+     "type": "tags",
+     "h": "Standards we design to",
+     "items": [
+      "USP <645>",
+      "USP <643>",
+      "USP <85>",
+      "USP <1231>",
+      "Ph. Eur.",
+      "EN 285",
+      "ASME BPE",
+      "GAMP 5",
+      "21 CFR Part 11",
+      "EU GMP Annex 1",
+      "Health Canada GUI-0001",
+      "ISPE Baseline Guide Vol. 4"
+     ]
+    },
+    {
+     "type": "case",
+     "h": "Recent project",
+     "items": [
+      {
+       "t": "[Project title]",
+       "client": "[Client type, e.g. sterile injectables manufacturer], [city], [province]",
+       "problem": "[The constraint the client faced, e.g. a new fill line needing WFI within a fixed shutdown window]",
+       "system": "[System delivered, e.g. membrane WFI at [x] L/h with a hot sanitized ambient loop of [n] points of use]",
+       "outcome": "[Measured outcome in one sentence, e.g. IQ/OQ completed in [n] weeks with no open deviations]"
+      }
+     ]
+    },
+    {
+     "type": "prose",
+     "h": "Designed, built and serviced in Canada",
+     "body": [
+      "We engineer and fabricate in [city], [province], and our service technicians are based in [service cities]. You deal with the people who drew the P&IDs, from first review to the tenth annual calibration.",
+      "Our documentation is written in English and French on request, and our designs account for Canadian municipal feed water, including chloramine disinfection and cold winter supply temperatures."
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "Where would you like to start?",
+     "items": [
+      {
+       "t": "A new system",
+       "d": "Send us your URS or a one-page brief and we reply with a scoped proposal.",
+       "link": "contact-proposal"
+      },
+      {
+       "t": "Service on an existing system",
+       "d": "Any make of PW, WFI or pure steam equipment. Response within [response time].",
+       "link": "contact-service"
+      },
+      {
+       "t": "An upgrade or retrofit",
+       "d": "Controls, sanitization or capacity changes to a system already in qualified use.",
+       "link": "svc-upgrades"
+      }
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Tell us the water grade and the flow. We'll do the rest.",
+    "body": "Send your URS or a short brief and an engineer will reply with questions, not a sales script.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Hero photograph of a finished Aquemi skid or installed loop",
+    "Fabrication shop city and province",
+    "Service cities",
+    "Service response time commitment",
+    "Whether French-language documentation is offered",
+    "One real case study with client permission, system details and a measured outcome",
+    "Confirm which standards Aquemi designs to routinely before publishing the compliance strip"
+   ],
+   "facts": [
+    {
+     "v": "7",
+     "l": "System families, feed water to point of use"
+    },
+    {
+     "v": "100 %",
+     "l": "Skids factory acceptance tested before shipping"
+    },
+    {
+     "v": "< 0.25 EU/mL",
+     "l": "WFI endotoxins at the furthest point of use"
+    }
+   ]
+  },
+  {
+   "id": "systems",
+   "section": "Systems",
+   "nav_label": "All systems",
+   "title": "Systems: PW, WFI, pure steam and loops | Aquemi",
+   "meta": "Seven system families from pretreatment to point of use. How to choose PW, WFI by distillation or by membrane, pure steam and the loop that carries them.",
+   "path": "/systems/",
+   "eyebrow": "SYSTEMS · PW · WFI · PURE STEAM",
+   "headline": "Every system on the water path, from feed water to point of use.",
+   "lead": "Start from the water grade your process needs and the standard your auditors will check. We size each system to your peak demand and connect them into one validated whole.",
+   "tags": [
+    "USP",
+    "Ph. Eur.",
+    "EN 285",
+    "ASME BPE",
+    "ISPE Baseline Guide Vol. 4"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "See standards we design to",
+    "link": "compliance"
+   },
+   "blocks": [
+    {
+     "type": "diagram",
+     "h": "How the systems fit together",
+     "stages": [
+      "Municipal feed",
+      "Pretreatment",
+      "PW generation",
+      "WFI or pure steam",
+      "Storage",
+      "Distribution loop",
+      "Points of use"
+     ],
+     "caption": "Each stage can be supplied alone or as part of a complete system.",
+     "base": "Monitoring and controls · TOC, conductivity, ozone"
+    },
+    {
+     "type": "grid",
+     "h": "System families",
+     "intro": "Seven families, each with its own specifications page.",
+     "items": [
+      {
+       "t": "Purified Water (PW) generation",
+       "d": "Reverse osmosis (RO) with electrodeionization (EDI), hot water sanitizable, [500–20,000] L/h.",
+       "tag": "USP <645>",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Water for Injection (WFI) by distillation",
+       "d": "Multi-effect and vapour compression stills producing hot WFI.",
+       "tag": "USP · Ph. Eur.",
+       "link": "sys-wfi-distillation"
+      },
+      {
+       "t": "WFI by membrane",
+       "d": "Ambient WFI from double-pass RO, EDI and ultrafiltration.",
+       "tag": "Ph. Eur. 0169",
+       "link": "sys-wfi-membrane"
+      },
+      {
+       "t": "Pure steam generators",
+       "d": "Falling film or thermosyphon generators for sterilizers and steam-in-place.",
+       "tag": "EN 285",
+       "link": "sys-pure-steam"
+      },
+      {
+       "t": "Storage and distribution loops",
+       "d": "Tanks, pumps, heat exchangers and loops, sanitized by heat or ozone.",
+       "tag": "ASME BPE",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Pretreatment",
+       "d": "Multimedia, softening, carbon or bisulfite, sized to your water analysis.",
+       "tag": "Health Canada",
+       "link": "sys-pretreatment"
+      },
+      {
+       "t": "Monitoring and controls",
+       "d": "PLC and SCADA with online TOC, conductivity and ozone, and audit trails.",
+       "tag": "21 CFR Part 11",
+       "link": "sys-monitoring"
+      }
+     ]
+    },
+    {
+     "type": "table",
+     "h": "Choose by water grade",
+     "cols": [
+      "Water grade",
+      "Typical uses",
+      "Systems involved",
+      "Governing standard"
+     ],
+     "rows": [
+      [
+       "Purified Water",
+       "Oral and topical products, equipment rinsing, feed to WFI and pure steam",
+       "Pretreatment, PW generation, ambient or hot loop",
+       "USP Purified Water, Ph. Eur. 0008"
+      ],
+      [
+       "Water for Injection",
+       "Parenteral products, final rinse of product-contact equipment",
+       "Pretreatment, PW generation, WFI by distillation or membrane, hot or ambient loop",
+       "USP Water for Injection, Ph. Eur. 0169"
+      ],
+      [
+       "Pure steam",
+       "Autoclaves, steam-in-place of vessels and lines, humidification of clean areas",
+       "Pretreatment, PW generation, pure steam generator, clean steam header",
+       "EN 285, USP Pure Steam"
+      ],
+      [
+       "Highly purified or lab-grade water",
+       "Quality control laboratories, analytical methods",
+       "PW generation with polishing, small loop",
+       "USP, ASTM D1193"
+      ]
+     ]
+    },
+    {
+     "type": "table",
+     "h": "WFI by distillation or by membrane",
+     "cols": [
+      "Consideration",
+      "Distillation",
+      "Membrane"
+     ],
+     "rows": [
+      [
+       "Pharmacopoeia",
+       "Accepted by USP, Ph. Eur. and JP",
+       "Accepted by USP; by Ph. Eur. since April 2017 when RO is coupled with other techniques"
+      ],
+      [
+       "Output temperature",
+       "Hot, typically above 80 °C",
+       "Ambient, typically 15–25 °C"
+      ],
+      [
+       "Main energy input",
+       "Plant steam (multi-effect) or electricity (vapour compression)",
+       "Electricity for pumps and EDI"
+      ],
+      [
+       "Cooling water",
+       "Needed for multi-effect; little for vapour compression",
+       "Not needed for generation"
+      ],
+      [
+       "Microbial control",
+       "Inherent in the hot process and hot storage",
+       "Relies on sanitization by heat or ozone and on continuous monitoring"
+      ],
+      [
+       "Regulatory familiarity",
+       "Decades of inspection history in North America and Europe",
+       "Growing; EU GMP Annex 1 expects the contamination control strategy to justify it"
+      ],
+      [
+       "Best fit",
+       "Hot loops, high-volume parenteral plants, sites with spare plant steam",
+       "Sites cutting steam and carbon use, ambient processes, new greenfield plants"
+      ]
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Can you supply only one part of the system?",
+       "a": "Yes. We supply each family on its own and design the interfaces, such as feed water quality to a still or return temperature to a tank, so it integrates with equipment already on your site."
+      },
+      {
+       "q": "How do we size generation against storage?",
+       "a": "We start from your point-of-use demand profile over a full production day. Generation covers the average draw plus sanitization and recovery time, and the tank covers the peaks. We share the calculation with you."
+      },
+      {
+       "q": "Do you build to a standard platform or custom?",
+       "a": "Both. Standard configurations shorten lead time and are prequalified at FAT. We then adapt materials, instrumentation and controls to your URS. [Confirm platform names and lead times]."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Where to go next",
+     "items": [
+      "svc-design",
+      "compliance",
+      "cmp-documentation",
+      "contact-proposal"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Not sure which system you need?",
+    "body": "Send us your water analysis and peak demand and we'll recommend a configuration with the reasoning behind it.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "PW generation capacity range",
+    "Names of any standard platforms and their lead times",
+    "Confirm Aquemi supplies lab-grade polishing systems before listing the fourth grade"
+   ]
+  },
+  {
+   "id": "sys-pw",
+   "section": "Systems",
+   "nav_label": "Purified Water (PW) generation",
+   "title": "Purified Water generation systems | Aquemi",
+   "meta": "RO and EDI Purified Water systems built to USP <645> and <643>, hot water sanitizable at 80 °C, factory acceptance tested before shipping.",
+   "path": "/systems/purified-water/",
+   "eyebrow": "PURIFIED WATER · USP <645> · USP <643>",
+   "headline": "Purified Water generation",
+   "lead": "Our Purified Water (PW) systems combine reverse osmosis (RO) and electrodeionization (EDI) to hold conductivity below 1.3 µS/cm at 25 °C and total organic carbon (TOC) below 500 ppb, without regeneration chemicals.",
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Download datasheet",
+    "link": "contact-proposal"
+   },
+   "blocks": [
+    {
+     "type": "spec",
+     "caption": "Purified Water generation · USP and Ph. Eur.",
+     "note": "Microbial values are action levels from USP <1231> guidance; your site alert and action levels are set during qualification.",
+     "cols": [
+      "Parameter",
+      "Specification",
+      "Method or reference"
+     ],
+     "rows": [
+      {
+       "p": "Capacity",
+       "v": "[500–20,000] L/h per skid",
+       "m": "At 15 °C feed, design recovery [x] %",
+       "hl": false
+      },
+      {
+       "p": "Conductivity",
+       "v": "≤ 1.3 µS/cm @ 25 °C",
+       "m": "USP <645> stage 1",
+       "hl": true
+      },
+      {
+       "p": "Conductivity (Ph. Eur.)",
+       "v": "≤ 5.1 µS/cm @ 25 °C",
+       "m": "Ph. Eur. 0008, bulk Purified Water",
+       "hl": false
+      },
+      {
+       "p": "Total organic carbon",
+       "v": "≤ 500 ppb",
+       "m": "USP <643>",
+       "hl": false
+      },
+      {
+       "p": "Microbial action level",
+       "v": "100 CFU/mL",
+       "m": "USP <1231> guidance",
+       "hl": false
+      },
+      {
+       "p": "Nitrates",
+       "v": "≤ 0.2 ppm",
+       "m": "Ph. Eur. 0008",
+       "hl": false
+      },
+      {
+       "p": "Sanitization",
+       "v": "Hot water at 80 °C, RO and EDI",
+       "m": "Membranes rated for hot water",
+       "hl": false
+      },
+      {
+       "p": "Materials, product contact",
+       "v": "316L stainless steel",
+       "m": "ASME BPE, material certificates 3.1",
+       "hl": false
+      },
+      {
+       "p": "Surface finish",
+       "v": "Ra ≤ 0.8 µm; Ra ≤ 0.5 µm electropolished option",
+       "m": "ASME BPE",
+       "hl": false
+      }
+     ],
+     "h": "Specifications"
+    },
+    {
+     "type": "diagram",
+     "h": "How it works",
+     "stages": [
+      "Pretreated feed",
+      "Heat exchanger",
+      "RO pass 1",
+      "RO pass 2",
+      "EDI",
+      "To storage"
+     ],
+     "caption": "A heat exchanger brings cold winter feed up to membrane design temperature. RO removes most dissolved ions, organics, particles and bacteria. EDI polishes the permeate with an electric field, so no acid or caustic regeneration is needed. Off-spec water diverts to drain until conductivity recovers."
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Single or double pass RO",
+       "d": "Double pass where feed is high in dissolved solids or where the same skid feeds a still."
+      },
+      {
+       "t": "Hot water sanitizable",
+       "d": "Heat-tolerant membranes and a sanitization heat exchanger for 80 °C cycles."
+      },
+      {
+       "t": "Integrated pretreatment",
+       "d": "Softener, carbon or bisulfite dosing mounted on the same skid where space is short."
+      },
+      {
+       "t": "Variable speed pumps",
+       "d": "Constant permeate flow as feed temperature and membrane fouling change."
+      },
+      {
+       "t": "Duplex trains",
+       "d": "Two trains at 50 or 100 % each, so one runs while the other is serviced."
+      },
+      {
+       "t": "Ultrafiltration or UV",
+       "d": "Downstream ultrafiltration or 254 nm UV where your microbial target needs more margin."
+      },
+      {
+       "t": "Recovery enhancement",
+       "d": "Concentrate recycle or a reject RO to reduce water sent to drain."
+      },
+      {
+       "t": "Instrumentation",
+       "d": "Online conductivity at each stage, optional online TOC at the skid outlet."
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "Functional specification",
+      "Piping and instrumentation diagrams (P&IDs)",
+      "Material certificates (EN 10204 3.1)",
+      "Weld logs and borescope records",
+      "Surface finish and passivation reports",
+      "Instrument calibration certificates",
+      "FAT and SAT protocols and reports",
+      "IQ and OQ protocols",
+      "Operation and maintenance manual",
+      "Recommended spare parts list"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Why EDI instead of mixed-bed ion exchange?",
+       "a": "EDI regenerates continuously with an electric field, so there are no acid or caustic deliveries, no regeneration downtime and no resin exhaustion events to investigate."
+      },
+      {
+       "q": "Can the same skid feed a WFI still?",
+       "a": "Yes. We size the skid for your PW draw plus the still's feed demand and meet the still maker's feed limits, typically on conductivity, silica and chlorine."
+      },
+      {
+       "q": "How do you handle cold feed water in winter?",
+       "a": "Canadian municipal water can fall to 2–5 °C in winter, which reduces RO output. We size membranes at your lowest feed temperature or add a heat exchanger to hold a design temperature."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related systems",
+     "items": [
+      "sys-pretreatment",
+      "sys-storage",
+      "sys-wfi-membrane",
+      "sys-monitoring"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Size a Purified Water system for your site.",
+    "body": "Send your feed water analysis and peak demand in L/h and we'll propose a configuration.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Capacity range per skid",
+    "Design recovery percentage",
+    "Standard surface finish offered",
+    "Datasheet PDF",
+    "Confirm hot water sanitizable membranes are standard or an option"
+   ],
+   "facts": [
+    {
+     "v": "[500–20,000] L/h",
+     "l": "Capacity per skid"
+    },
+    {
+     "v": "≤ 1.3 µS/cm",
+     "l": "Conductivity at 25 °C · USP <645>"
+    },
+    {
+     "v": "≤ 500 ppb",
+     "l": "Total organic carbon · USP <643>"
+    },
+    {
+     "v": "80 °C",
+     "l": "Hot water sanitization, RO and EDI"
+    }
+   ]
+  },
+  {
+   "id": "sys-wfi-distillation",
+   "section": "Systems",
+   "nav_label": "WFI by distillation",
+   "title": "WFI by distillation: multi-effect and VC stills | Aquemi",
+   "meta": "Multi-effect and vapour compression stills producing Water for Injection to USP and Ph. Eur., endotoxin < 0.25 EU/mL, FAT tested before shipping.",
+   "path": "/systems/wfi-distillation/",
+   "eyebrow": "WATER FOR INJECTION · DISTILLATION · USP · PH. EUR.",
+   "headline": "Water for Injection by distillation",
+   "lead": "Our multi-effect and vapour compression stills turn Purified Water into hot Water for Injection (WFI) with endotoxins below 0.25 EU/mL, the method with the longest inspection history in North America and Europe.",
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Download datasheet",
+    "link": "contact-proposal"
+   },
+   "blocks": [
+    {
+     "type": "spec",
+     "caption": "WFI by distillation · USP and Ph. Eur.",
+     "cols": [
+      "Parameter",
+      "Specification",
+      "Method or reference"
+     ],
+     "rows": [
+      {
+       "p": "Capacity, multi-effect",
+       "v": "[300–15,000] L/h",
+       "m": "[3–8] effects",
+       "hl": false
+      },
+      {
+       "p": "Capacity, vapour compression",
+       "v": "[200–10,000] L/h",
+       "m": "Electric drive",
+       "hl": false
+      },
+      {
+       "p": "Bacterial endotoxins",
+       "v": "< 0.25 EU/mL",
+       "m": "USP <85>",
+       "hl": true
+      },
+      {
+       "p": "Conductivity",
+       "v": "≤ 1.3 µS/cm @ 25 °C",
+       "m": "USP <645> stage 1",
+       "hl": false
+      },
+      {
+       "p": "Conductivity (Ph. Eur.)",
+       "v": "≤ 1.1 µS/cm @ 20 °C",
+       "m": "Ph. Eur. 0169",
+       "hl": false
+      },
+      {
+       "p": "Total organic carbon",
+       "v": "≤ 500 ppb",
+       "m": "USP <643>",
+       "hl": false
+      },
+      {
+       "p": "Microbial action level",
+       "v": "10 CFU/100 mL",
+       "m": "USP <1231> guidance",
+       "hl": false
+      },
+      {
+       "p": "Distillate temperature",
+       "v": "[85–95] °C, or cooled to order",
+       "m": "Design value",
+       "hl": false
+      },
+      {
+       "p": "Materials, product contact",
+       "v": "316L stainless steel",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Surface finish",
+       "v": "Ra ≤ 0.5 µm electropolished",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Heat exchangers",
+       "v": "Double tube sheet",
+       "m": "Prevents cross-contamination from utility side",
+       "hl": false
+      }
+     ],
+     "h": "Specifications"
+    },
+    {
+     "type": "diagram",
+     "h": "How multi-effect distillation works",
+     "stages": [
+      "PW feed",
+      "Preheaters",
+      "Column 1",
+      "Columns 2 to n",
+      "Condenser",
+      "Hot WFI"
+     ],
+     "caption": "Plant steam boils feed water in the first column. The pure vapour from each column heats the next one, so one kilogram of plant steam produces several kilograms of WFI. Droplets and endotoxins are separated before the vapour condenses. Concentrate leaves to drain from the last column."
+    },
+    {
+     "type": "prose",
+     "h": "Multi-effect or vapour compression",
+     "body": [
+      "A multi-effect still uses plant steam and reuses its energy across several columns. More effects mean less steam per litre but a higher purchase cost. It needs cooling water at the final condenser and suits sites with spare plant steam.",
+      "A vapour compression still uses an electric compressor to raise the pressure of its own vapour, then condenses it to heat incoming feed. It needs little or no cooling water and plant steam only for start-up, and it can accept softened, dechlorinated feed in many designs. It suits sites where steam is expensive or capacity is limited.",
+      "We size both against your daily demand profile and your utility costs, and show you the steam, power and cooling water figures side by side."
+     ]
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Number of effects",
+       "d": "From [3] to [8], chosen against steam cost and capital budget."
+      },
+      {
+       "t": "Heating source",
+       "d": "Plant steam, electric, or a combination for sites with limited boiler capacity."
+      },
+      {
+       "t": "Combined WFI and pure steam",
+       "d": "The first column delivers pure steam while the still produces WFI."
+      },
+      {
+       "t": "Cooled distillate",
+       "d": "An outlet cooler for ambient storage where your loop runs below 80 °C."
+      },
+      {
+       "t": "Turndown",
+       "d": "Variable production to match demand instead of start-stop cycling."
+      },
+      {
+       "t": "Online instruments",
+       "d": "Conductivity and temperature on the distillate, optional online TOC and endotoxin sampling valve."
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "Functional specification",
+      "Piping and instrumentation diagrams (P&IDs)",
+      "Material certificates (EN 10204 3.1)",
+      "Weld logs and borescope records",
+      "Pressure vessel registration documents (CSA B51, CRN)",
+      "Heat balance and utility consumption data",
+      "FAT and SAT protocols and reports",
+      "IQ and OQ protocols",
+      "Operation and maintenance manual"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "What feed water does a still need?",
+       "a": "Usually Purified Water or RO permeate free of chlorine, with low silica and hardness to limit scaling. We state the exact feed limits in the functional specification and size the Purified Water skid to match."
+      },
+      {
+       "q": "Do your pressure vessels carry a Canadian registration number?",
+       "a": "Pressure parts are designed for registration under CSA B51 in the province of installation. [Confirm Aquemi's CRN process and provinces]."
+      },
+      {
+       "q": "Why choose distillation if membrane WFI is allowed?",
+       "a": "Distillation removes endotoxins by phase change and delivers hot WFI that suits hot storage. It has the longest inspection record. Membrane WFI saves steam. We help you choose on your site data."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related systems",
+     "items": [
+      "sys-wfi-membrane",
+      "sys-pure-steam",
+      "sys-storage",
+      "sys-pw"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Compare a still against your utility costs.",
+    "body": "Send your WFI demand and steam, power and cooling water costs and we'll model both still types.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Capacity ranges for multi-effect and vapour compression stills",
+    "Number of effects offered",
+    "Distillate temperature range",
+    "Whether Aquemi builds stills in-house or partners with a still manufacturer",
+    "CRN registration process and provinces covered",
+    "Datasheet PDF"
+   ],
+   "facts": [
+    {
+     "v": "[300–15,000] L/h",
+     "l": "Capacity, multi-effect"
+    },
+    {
+     "v": "< 0.25 EU/mL",
+     "l": "Bacterial endotoxins · USP <85>"
+    },
+    {
+     "v": "≤ 1.3 µS/cm",
+     "l": "Conductivity at 25 °C · USP <645>"
+    },
+    {
+     "v": "Ra ≤ 0.5 µm",
+     "l": "Electropolished contact surfaces · ASME BPE"
+    }
+   ]
+  },
+  {
+   "id": "sys-wfi-membrane",
+   "section": "Systems",
+   "nav_label": "WFI by membrane",
+   "title": "Membrane WFI systems: RO, EDI, ultrafiltration | Aquemi",
+   "meta": "Ambient Water for Injection by double-pass RO, EDI and ultrafiltration, compliant with Ph. Eur. 0169 since 2017 and USP. Less steam, lower energy.",
+   "path": "/systems/wfi-membrane/",
+   "eyebrow": "WATER FOR INJECTION · MEMBRANE · PH. EUR. 0169 · USP",
+   "headline": "Water for Injection by membrane",
+   "lead": "Our membrane systems produce Water for Injection (WFI) at ambient temperature from double-pass reverse osmosis (RO), electrodeionization (EDI) and ultrafiltration (UF), with no plant steam for generation.",
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Download datasheet",
+    "link": "contact-proposal"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "What changed in 2017",
+     "body": [
+      "USP has long allowed WFI from any process equivalent or superior to distillation. The European Pharmacopoeia did not. In April 2017 the revised Ph. Eur. monograph 0169 began to allow WFI by reverse osmosis, single or double pass, coupled with other suitable techniques such as EDI, ultrafiltration or nanofiltration.",
+      "The quality limits did not change. Membrane WFI must meet the same conductivity, TOC and endotoxin limits as distilled WFI. What changed is the evidence inspectors expect: a contamination control strategy, as EU GMP Annex 1 describes, that shows how the system controls microbes and endotoxins without the heat of distillation."
+     ]
+    },
+    {
+     "type": "spec",
+     "caption": "WFI by membrane · Ph. Eur. 0169 and USP",
+     "cols": [
+      "Parameter",
+      "Specification",
+      "Method or reference"
+     ],
+     "rows": [
+      {
+       "p": "Capacity",
+       "v": "[500–15,000] L/h per skid",
+       "m": "At 15 °C feed",
+       "hl": false
+      },
+      {
+       "p": "Bacterial endotoxins",
+       "v": "< 0.25 EU/mL",
+       "m": "USP <85>, Ph. Eur. 2.6.14",
+       "hl": true
+      },
+      {
+       "p": "Conductivity",
+       "v": "≤ 1.3 µS/cm @ 25 °C",
+       "m": "USP <645> stage 1",
+       "hl": false
+      },
+      {
+       "p": "Conductivity (Ph. Eur.)",
+       "v": "≤ 1.1 µS/cm @ 20 °C",
+       "m": "Ph. Eur. 0169",
+       "hl": false
+      },
+      {
+       "p": "Total organic carbon",
+       "v": "≤ 500 ppb",
+       "m": "USP <643>, Ph. Eur. 2.2.44",
+       "hl": false
+      },
+      {
+       "p": "Microbial action level",
+       "v": "10 CFU/100 mL",
+       "m": "USP <1231> guidance",
+       "hl": false
+      },
+      {
+       "p": "Sanitization",
+       "v": "Hot water at 80 °C, full skid",
+       "m": "Daily or weekly, set by your risk assessment",
+       "hl": false
+      },
+      {
+       "p": "Materials, product contact",
+       "v": "316L stainless steel",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Surface finish",
+       "v": "Ra ≤ 0.5 µm electropolished",
+       "m": "ASME BPE",
+       "hl": false
+      }
+     ],
+     "h": "Specifications"
+    },
+    {
+     "type": "diagram",
+     "h": "How it works",
+     "stages": [
+      "Pretreated feed",
+      "RO pass 1",
+      "RO pass 2",
+      "EDI",
+      "Ultrafiltration",
+      "Ambient WFI"
+     ],
+     "caption": "Two RO passes remove dissolved solids, organics and most microbes. EDI polishes conductivity. The final ultrafiltration membrane retains endotoxins and bacteria. The skid is hot water sanitized on a fixed cycle, and online TOC and conductivity confirm quality before water reaches storage."
+    },
+    {
+     "type": "table",
+     "h": "Membrane or distillation: the figures to compare",
+     "cols": [
+      "Factor",
+      "Membrane",
+      "Distillation"
+     ],
+     "rows": [
+      [
+       "Plant steam for generation",
+       "None",
+       "Multi-effect: yes; vapour compression: start-up only"
+      ],
+      [
+       "Cooling water",
+       "None for generation",
+       "Needed for multi-effect"
+      ],
+      [
+       "Output temperature",
+       "Ambient",
+       "Hot"
+      ],
+      [
+       "Microbial control",
+       "Sanitization, UF barrier, continuous monitoring",
+       "Inherent in the process"
+      ],
+      [
+       "Energy per m³",
+       "[x] kWh, Aquemi design data",
+       "[x] kWh equivalent, Aquemi design data"
+      ]
+     ]
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Ultrafiltration as final barrier",
+       "d": "Hot water sanitizable UF modules with integrity testing."
+      },
+      {
+       "t": "Shared PW and WFI platform",
+       "d": "One skid produces PW, with a WFI branch through the final barrier."
+      },
+      {
+       "t": "Online microbial monitoring",
+       "d": "Rapid bioburden instruments alongside grab sampling, where your strategy needs it."
+      },
+      {
+       "t": "Ozone or hot storage",
+       "d": "Connect to an ozonated ambient loop or a hot loop, depending on your process."
+      },
+      {
+       "t": "Duplex final barrier",
+       "d": "Two UF trains so one can be tested or replaced without interrupting supply."
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "Functional specification",
+      "Contamination control strategy inputs for the water system",
+      "Piping and instrumentation diagrams (P&IDs)",
+      "Material certificates (EN 10204 3.1)",
+      "Weld logs and borescope records",
+      "Membrane and UF integrity test records",
+      "FAT and SAT protocols and reports",
+      "IQ and OQ protocols",
+      "Operation and maintenance manual"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Will Health Canada and the FDA accept membrane WFI?",
+       "a": "USP has allowed it for decades and both agencies inspect against it. The burden is on your data: a sound design, a documented contamination control strategy and a performance qualification that covers seasonal feed water changes."
+      },
+      {
+       "q": "How long should performance qualification run?",
+       "a": "Common practice is a three-phase PQ over about a year, so seasonal variation in feed water is captured. We write the sampling plan with your validation team."
+      },
+      {
+       "q": "Can we convert an existing PW system to membrane WFI?",
+       "a": "Often, if the existing RO and EDI are in good condition. We assess it and add a final barrier, sanitization and instrumentation as needed."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related systems",
+     "items": [
+      "sys-wfi-distillation",
+      "sys-pw",
+      "sys-storage",
+      "sys-monitoring"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "See whether membrane WFI suits your plant.",
+    "body": "Send your demand, feed analysis and current steam costs and we'll compare both routes with your figures.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Capacity range per skid",
+    "Energy per m³ figures for membrane and distillation from Aquemi design data",
+    "Whether online microbial monitoring is offered and which instrument",
+    "Datasheet PDF"
+   ],
+   "facts": [
+    {
+     "v": "[500–15,000] L/h",
+     "l": "Capacity per skid"
+    },
+    {
+     "v": "< 0.25 EU/mL",
+     "l": "Bacterial endotoxins · USP <85>"
+    },
+    {
+     "v": "≤ 1.1 µS/cm",
+     "l": "Conductivity at 20 °C · Ph. Eur. 0169"
+    },
+    {
+     "v": "80 °C",
+     "l": "Hot water sanitization, full skid"
+    }
+   ]
+  },
+  {
+   "id": "sys-pure-steam",
+   "section": "Systems",
+   "nav_label": "Pure steam generators",
+   "title": "Pure steam generators to EN 285 | Aquemi",
+   "meta": "Pure steam generators for autoclaves and steam-in-place. Condensate meets WFI limits; non-condensable gases, dryness and superheat tested to EN 285.",
+   "path": "/systems/pure-steam/",
+   "eyebrow": "PURE STEAM · EN 285 · USP",
+   "headline": "Pure steam generators",
+   "lead": "Our pure steam generators supply sterilizers and steam-in-place with steam whose condensate meets Water for Injection (WFI) limits, and whose gas content, dryness and superheat are tested to EN 285.",
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Download datasheet",
+    "link": "contact-proposal"
+   },
+   "blocks": [
+    {
+     "type": "spec",
+     "caption": "Pure steam · EN 285 and USP Pure Steam",
+     "note": "EN 285 physical tests are made at the point of use, so header design matters as much as the generator. We test at the generator outlet at FAT and at the sterilizer at SAT.",
+     "cols": [
+      "Parameter",
+      "Specification",
+      "Method or reference"
+     ],
+     "rows": [
+      {
+       "p": "Capacity",
+       "v": "[100–3,000] kg/h",
+       "m": "At [3] bar(g)",
+       "hl": false
+      },
+      {
+       "p": "Operating pressure",
+       "v": "[2–6] bar(g)",
+       "m": "Design value",
+       "hl": false
+      },
+      {
+       "p": "Non-condensable gases",
+       "v": "≤ 3.5 mL per 100 mL condensate",
+       "m": "EN 285",
+       "hl": true
+      },
+      {
+       "p": "Dryness value",
+       "v": "≥ 0.95 (≥ 0.90 for metal loads)",
+       "m": "EN 285",
+       "hl": false
+      },
+      {
+       "p": "Superheat",
+       "v": "≤ 25 K above boiling point",
+       "m": "EN 285",
+       "hl": false
+      },
+      {
+       "p": "Condensate conductivity",
+       "v": "≤ 1.3 µS/cm @ 25 °C",
+       "m": "USP <645>, USP Pure Steam",
+       "hl": false
+      },
+      {
+       "p": "Condensate endotoxins",
+       "v": "< 0.25 EU/mL",
+       "m": "USP <85>",
+       "hl": false
+      },
+      {
+       "p": "Materials, product contact",
+       "v": "316L stainless steel",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Heating",
+       "v": "Plant steam or electric",
+       "m": "Double tube sheet exchanger on steam-heated units",
+       "hl": false
+      }
+     ],
+     "h": "Specifications"
+    },
+    {
+     "type": "diagram",
+     "h": "How it works",
+     "stages": [
+      "PW feed",
+      "Degassing",
+      "Evaporator",
+      "Separator",
+      "Pure steam header",
+      "Sterilizer or SIP"
+     ],
+     "caption": "Feed water is preheated and degassed to remove non-condensable gases. Plant steam or electric heaters boil it in the evaporator. A separator removes droplets that carry endotoxins and solids. Pure steam leaves at a controlled pressure, and blowdown removes concentrated impurities."
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Steam or electric heating",
+       "d": "Electric units for sites without plant steam or for small sterilizers."
+      },
+      {
+       "t": "Feed degassing",
+       "d": "Thermal degassing of feed to keep non-condensable gases within EN 285."
+      },
+      {
+       "t": "Sampling cooler and panel",
+       "d": "Condensate sample point with cooler for conductivity, TOC and endotoxin testing."
+      },
+      {
+       "t": "Online condensate conductivity",
+       "d": "Continuous monitoring with alarm and divert."
+      },
+      {
+       "t": "Load-following control",
+       "d": "Pressure-controlled output from [0–100] % to follow sterilizer demand."
+      },
+      {
+       "t": "Combined with a multi-effect still",
+       "d": "Pure steam from the first column of a WFI still."
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "Functional specification",
+      "Piping and instrumentation diagrams (P&IDs)",
+      "Pressure vessel registration documents (CSA B51, CRN)",
+      "Material certificates (EN 10204 3.1)",
+      "Weld logs and borescope records",
+      "EN 285 steam quality test protocol and FAT results",
+      "FAT and SAT protocols and reports",
+      "IQ and OQ protocols",
+      "Operation and maintenance manual"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Our sterilizer fails dryness tests. Is it the generator?",
+       "a": "Often it is the header: long runs, missing traps or poor insulation produce wet steam at the point of use. We survey the distribution and the generator together."
+      },
+      {
+       "q": "What feed water does a pure steam generator need?",
+       "a": "Purified Water or RO permeate, free of chlorine and low in silica. Feed quality determines blowdown rate and the cleaning interval."
+      },
+      {
+       "q": "Do you test to EN 285 at FAT?",
+       "a": "Yes. We run the non-condensable gas, dryness and superheat tests on the generator outlet during FAT, then repeat them at the point of use during SAT."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related systems",
+     "items": [
+      "sys-wfi-distillation",
+      "sys-pw",
+      "sys-monitoring",
+      "sys-storage"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Specify pure steam for your sterilizers.",
+    "body": "Send your sterilizer and steam-in-place demand in kg/h and the pressure at the point of use.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Capacity range in kg/h",
+    "Operating pressure range",
+    "Turndown range",
+    "Whether electric units are offered",
+    "CRN registration process",
+    "Datasheet PDF"
+   ],
+   "facts": [
+    {
+     "v": "[100–3,000] kg/h",
+     "l": "Capacity"
+    },
+    {
+     "v": "≤ 3.5 mL",
+     "l": "Non-condensable gases per 100 mL · EN 285"
+    },
+    {
+     "v": "≥ 0.95",
+     "l": "Dryness value · EN 285"
+    },
+    {
+     "v": "≤ 25 K",
+     "l": "Superheat above boiling point · EN 285"
+    }
+   ]
+  },
+  {
+   "id": "sys-storage",
+   "section": "Systems",
+   "nav_label": "Storage and distribution loops",
+   "title": "Pharmaceutical water storage and distribution loops | Aquemi",
+   "meta": "Tanks and hot, ambient or cold loops for PW and WFI. Turbulent flow, dead legs within ASME BPE limits, sanitized by heat at 80 °C or by ozone.",
+   "path": "/systems/storage-and-distribution/",
+   "eyebrow": "STORAGE AND DISTRIBUTION · ASME BPE · ISPE",
+   "headline": "Storage and distribution loops",
+   "lead": "Our tanks and loops keep Purified Water (PW) and Water for Injection (WFI) at the quality it left generation, out to the furthest point of use, with turbulent flow and no stagnant branches.",
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Download datasheet",
+    "link": "contact-proposal"
+   },
+   "blocks": [
+    {
+     "type": "spec",
+     "caption": "Storage and distribution · ASME BPE",
+     "note": "Velocity and return values are common design practice consistent with ISPE guidance; we confirm them for your loop with a hydraulic calculation.",
+     "cols": [
+      "Parameter",
+      "Specification",
+      "Method or reference"
+     ],
+     "rows": [
+      {
+       "p": "Tank volume",
+       "v": "[1,000–50,000] L",
+       "m": "Sized to demand profile",
+       "hl": false
+      },
+      {
+       "p": "Loop return velocity",
+       "v": "≥ 1 m/s at peak draw",
+       "m": "Design practice, turbulent flow",
+       "hl": false
+      },
+      {
+       "p": "Dead legs",
+       "v": "L/D ≤ 2",
+       "m": "ASME BPE",
+       "hl": true
+      },
+      {
+       "p": "Hot loop temperature",
+       "v": "≥ 65 °C, typically 70–85 °C",
+       "m": "Design practice",
+       "hl": false
+      },
+      {
+       "p": "Hot water sanitization",
+       "v": "80 °C at loop return",
+       "m": "Hold time per your risk assessment",
+       "hl": false
+      },
+      {
+       "p": "Ozone in tank, ambient loop",
+       "v": "[0.02–0.2] mg/L dissolved",
+       "m": "Removed by 254 nm UV before points of use",
+       "hl": false
+      },
+      {
+       "p": "Materials, product contact",
+       "v": "316L stainless steel",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Surface finish",
+       "v": "Ra ≤ 0.5 µm electropolished, Ra ≤ 0.8 µm mechanical",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Slope",
+       "v": "Fully drainable, [1:100] minimum",
+       "m": "ASME BPE",
+       "hl": false
+      }
+     ],
+     "h": "Specifications"
+    },
+    {
+     "type": "diagram",
+     "h": "How it works",
+     "stages": [
+      "From generation",
+      "Storage tank",
+      "Pump",
+      "Heat exchanger",
+      "Points of use",
+      "Loop return"
+     ],
+     "caption": "Water enters a tank fitted with a spray ball and a hydrophobic vent filter. A variable speed pump drives it through a heat exchanger and out to the points of use. Water not drawn returns through a spray ball, so the tank head space stays wet and the flow never stops."
+    },
+    {
+     "type": "table",
+     "h": "Hot, ambient or cold loops",
+     "cols": [
+      "Loop type",
+      "Microbial control",
+      "Typical use",
+      "Trade-offs"
+     ],
+     "rows": [
+      [
+       "Hot (65–85 °C)",
+       "Continuous temperature",
+       "Hot WFI from a still",
+       "Lowest microbial risk; insulated piping, cooling at points of use needing ambient water"
+      ],
+      [
+       "Ambient with periodic heat",
+       "Hot water sanitization at 80 °C on a schedule",
+       "PW and membrane WFI",
+       "Lower energy; downtime during sanitization cycles"
+      ],
+      [
+       "Ambient with ozone",
+       "Ozone in the tank, UV destruct before points of use, periodic ozonation of the loop",
+       "PW and membrane WFI",
+       "No heat cycles; ozone and UV monitoring required"
+      ],
+      [
+       "Cold (4–10 °C)",
+       "Low temperature plus periodic heat sanitization",
+       "Biotech processes that need cold water",
+       "Chiller load; slower microbial growth but no kill"
+      ]
+     ]
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Sub-loops",
+       "d": "Cooled or heated sub-loops from a main loop, each with its own return."
+      },
+      {
+       "t": "Point-of-use coolers",
+       "d": "Heat exchangers that deliver ambient water from a hot loop, with automatic flushing."
+      },
+      {
+       "t": "Zero-static valves",
+       "d": "Diaphragm valves welded into the loop so branches meet ASME BPE dead leg limits."
+      },
+      {
+       "t": "Jacketed tanks",
+       "d": "Tank jackets for temperature holding or rapid heating during sanitization."
+      },
+      {
+       "t": "Rupture disc and vent filter heating",
+       "d": "Heated hydrophobic vent filters to prevent condensate blockage."
+      },
+      {
+       "t": "Loop modules",
+       "d": "Prefabricated pump, exchanger and instrument modules, tested at FAT."
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "Functional specification",
+      "Piping and instrumentation diagrams (P&IDs)",
+      "Isometric drawings with slope verification",
+      "Hydraulic calculation for loop velocity",
+      "Material certificates (EN 10204 3.1)",
+      "Weld logs, weld maps and borescope records",
+      "Passivation and surface finish reports",
+      "Riboflavin spray ball coverage test report",
+      "FAT and SAT protocols and reports",
+      "IQ and OQ protocols"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "How do you keep flow turbulent when every point of use is open?",
+       "a": "We size the pump and pipe for peak draw with the minimum return velocity still met, and use variable speed pumps that hold return flow or pressure as demand changes."
+      },
+      {
+       "q": "What about rouge?",
+       "a": "Rouge forms in hot WFI and pure steam systems over time. We specify finishes and passivation that slow it and include inspection points so you can trend it and plan derouging."
+      },
+      {
+       "q": "Can you add points of use to an existing loop?",
+       "a": "Yes, with a hydraulic check of the whole loop first. Each new branch is welded in with a zero-static valve and requalified."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related systems",
+     "items": [
+      "sys-pw",
+      "sys-wfi-distillation",
+      "sys-wfi-membrane",
+      "sys-monitoring"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Send us your points of use and draw rates.",
+    "body": "We'll return a loop concept with velocities, tank size and sanitization method.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Tank volume range",
+    "Standard minimum slope specified",
+    "Ozone concentration set points used in Aquemi designs",
+    "Whether riboflavin coverage testing is performed in-house",
+    "Datasheet PDF"
+   ],
+   "facts": [
+    {
+     "v": "[1,000–50,000] L",
+     "l": "Tank volume"
+    },
+    {
+     "v": "L/D ≤ 2",
+     "l": "Dead legs · ASME BPE"
+    },
+    {
+     "v": "≥ 1 m/s",
+     "l": "Loop return velocity at peak draw"
+    },
+    {
+     "v": "≥ 65 °C",
+     "l": "Hot loop temperature"
+    }
+   ]
+  },
+  {
+   "id": "sys-pretreatment",
+   "section": "Systems",
+   "nav_label": "Pretreatment",
+   "title": "Pretreatment for pharmaceutical water systems | Aquemi",
+   "meta": "Multimedia, softening, carbon and bisulfite pretreatment sized to Canadian municipal water, including chloramine removal and cold winter feed.",
+   "path": "/systems/pretreatment/",
+   "eyebrow": "PRETREATMENT · HEALTH CANADA · US EPA",
+   "headline": "Pretreatment",
+   "lead": "Pretreatment protects your reverse osmosis (RO) membranes and stills from chlorine, chloramine, hardness and particles, so the purification stage downstream runs to its design life.",
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Send a water analysis",
+    "link": "contact-proposal"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "Start from the water you have",
+     "body": [
+      "USP requires feed water for pharmaceutical water to meet drinking water standards such as those of the US EPA, and in Canada most sites draw municipal water that meets the Guidelines for Canadian Drinking Water Quality. Drinking water standards protect people, not membranes.",
+      "Many Canadian municipal supplies use chloramine as a secondary disinfectant, and it passes through softeners and attacks polyamide RO membranes. Spring runoff raises turbidity and organic load, and winter supply can fall to 2–5 °C. We design pretreatment from a year of your water data, not one sample."
+     ]
+    },
+    {
+     "type": "spec",
+     "caption": "Pretreatment outlet · typical RO feed targets",
+     "note": "Targets are typical membrane maker limits; final values follow the membrane and still selected.",
+     "cols": [
+      "Parameter",
+      "Target at RO feed",
+      "Method or reference"
+     ],
+     "rows": [
+      {
+       "p": "Free chlorine and chloramine",
+       "v": "< 0.05 mg/L as Cl₂",
+       "m": "Online ORP or total chlorine analyser",
+       "hl": true
+      },
+      {
+       "p": "Hardness",
+       "v": "< 1 mg/L as CaCO₃",
+       "m": "Softener outlet, hardness test",
+       "hl": false
+      },
+      {
+       "p": "Silt density index",
+       "v": "≤ 3",
+       "m": "ASTM D4189",
+       "hl": false
+      },
+      {
+       "p": "Turbidity",
+       "v": "< 1 NTU",
+       "m": "Multimedia filter outlet",
+       "hl": false
+      },
+      {
+       "p": "Temperature",
+       "v": "[15] °C design, controlled by heat exchanger",
+       "m": "Design value",
+       "hl": false
+      },
+      {
+       "p": "Capacity",
+       "v": "[1–30] m³/h",
+       "m": "Sized to generation demand",
+       "hl": false
+      }
+     ],
+     "h": "Specifications"
+    },
+    {
+     "type": "diagram",
+     "h": "How it works",
+     "stages": [
+      "Municipal water",
+      "Break tank",
+      "Multimedia filter",
+      "Softener",
+      "Carbon or bisulfite",
+      "Cartridge filter",
+      "To RO"
+     ],
+     "caption": "A break tank isolates the plant from the municipal supply. Multimedia filtration removes particles. Duplex softeners exchange calcium and magnesium for sodium. Activated carbon or sodium bisulfite dosing removes chlorine and chloramine. A 5 µm cartridge filter protects the RO pumps."
+    },
+    {
+     "type": "table",
+     "h": "Chlorine or chloramine: which removal method",
+     "cols": [
+      "Method",
+      "Removes",
+      "Strengths",
+      "Watch for"
+     ],
+     "rows": [
+      [
+       "Granular activated carbon",
+       "Free chlorine; chloramine with catalytic carbon and longer contact",
+       "No chemicals; also removes organics",
+       "Bacterial growth in the bed; needs hot water or steam sanitization"
+      ],
+      [
+       "Sodium bisulfite dosing",
+       "Free chlorine and chloramine",
+       "Small footprint; fast response",
+       "Dosing control and online verification; ammonia from chloramine passes to RO"
+      ],
+      [
+       "UV dechlorination (high intensity)",
+       "Free chlorine and chloramine",
+       "No chemicals, no carbon bed",
+       "Higher power use; needs low turbidity feed"
+      ]
+     ]
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Duplex softeners",
+       "d": "Alternating vessels so regeneration never interrupts supply."
+      },
+      {
+       "t": "Hot water sanitizable carbon",
+       "d": "Stainless steel carbon vessels sanitized with hot water or steam."
+      },
+      {
+       "t": "Antiscalant dosing",
+       "d": "Where softening alone does not control silica or other scaling ions."
+      },
+      {
+       "t": "Feed heat exchanger",
+       "d": "Holds RO feed at design temperature through Canadian winters."
+      },
+      {
+       "t": "Ammonia management",
+       "d": "Where chloramine is removed, design for the ammonia that remains."
+      },
+      {
+       "t": "Online monitoring",
+       "d": "Total chlorine or ORP, hardness and silt density index at the RO inlet."
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "Feed water analysis review and design basis",
+      "Functional specification",
+      "Piping and instrumentation diagrams (P&IDs)",
+      "Media and resin certificates",
+      "FAT and SAT protocols and reports",
+      "IQ and OQ protocols",
+      "Operation and maintenance manual with regeneration and media change schedule"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "What water analysis do you need?",
+       "a": "At minimum: hardness, alkalinity, total dissolved solids, silica, iron, manganese, total and free chlorine, TOC, turbidity and temperature. Seasonal data is better than one sample."
+      },
+      {
+       "q": "Our municipality switched to chloramine. What changes?",
+       "a": "Standard carbon beds remove chloramine slowly. We check contact time, consider catalytic carbon or bisulfite, and verify at the RO inlet with an online analyser."
+      },
+      {
+       "q": "Is pretreatment part of the validated system?",
+       "a": "Usually pretreatment is outside the GMP boundary but its performance affects the validated system. We document it and monitor its outlet to support your risk assessment."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related systems",
+     "items": [
+      "sys-pw",
+      "sys-wfi-distillation",
+      "sys-monitoring",
+      "sys-pure-steam"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Send us your water analysis.",
+    "body": "We'll review it and recommend a pretreatment train for your feed, with the reasoning.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Pretreatment capacity range",
+    "Design feed temperature",
+    "Whether UV dechlorination is offered",
+    "Whether Aquemi offers a water analysis service"
+   ],
+   "facts": [
+    {
+     "v": "< 0.05 mg/L",
+     "l": "Free chlorine and chloramine as Cl₂"
+    },
+    {
+     "v": "< 1 mg/L",
+     "l": "Hardness as CaCO₃"
+    },
+    {
+     "v": "≤ 3",
+     "l": "Silt density index · ASTM D4189"
+    },
+    {
+     "v": "[1–30] m³/h",
+     "l": "Capacity"
+    }
+   ]
+  },
+  {
+   "id": "sys-monitoring",
+   "section": "Systems",
+   "nav_label": "Monitoring and controls",
+   "title": "Water system monitoring and controls, Part 11 | Aquemi",
+   "meta": "PLC and SCADA controls with online TOC, conductivity and ozone. Audit trails and electronic records to 21 CFR Part 11, software validated per GAMP 5.",
+   "path": "/systems/monitoring-and-controls/",
+   "eyebrow": "MONITORING AND CONTROLS · 21 CFR PART 11 · GAMP 5",
+   "headline": "Monitoring and controls",
+   "lead": "Our controls run your water system and record its quality continuously, with audit trails and electronic records that meet 21 CFR Part 11 and software validated to GAMP 5.",
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Download datasheet",
+    "link": "contact-proposal"
+   },
+   "blocks": [
+    {
+     "type": "spec",
+     "caption": "Online monitoring · USP and 21 CFR Part 11",
+     "cols": [
+      "Measurement",
+      "Range and limit",
+      "Method or reference"
+     ],
+     "rows": [
+      {
+       "p": "Conductivity",
+       "v": "Temperature-compensated and non-compensated; limit ≤ 1.3 µS/cm @ 25 °C",
+       "m": "USP <645> stage 1",
+       "hl": false
+      },
+      {
+       "p": "Total organic carbon",
+       "v": "Online, limit ≤ 500 ppb",
+       "m": "USP <643>, system suitability",
+       "hl": true
+      },
+      {
+       "p": "Dissolved ozone",
+       "v": "0–[0.5] mg/L; zero confirmed after UV",
+       "m": "Amperometric sensor",
+       "hl": false
+      },
+      {
+       "p": "Temperature, flow, pressure",
+       "v": "Loop return and each generation stage",
+       "m": "Calibrated, traceable to national standards",
+       "hl": false
+      },
+      {
+       "p": "Data integrity",
+       "v": "Audit trail, electronic signatures, user roles",
+       "m": "21 CFR Part 11, EU GMP Annex 11",
+       "hl": false
+      },
+      {
+       "p": "Software lifecycle",
+       "v": "Category per GAMP 5, risk-based testing",
+       "m": "GAMP 5 (2nd edition)",
+       "hl": false
+      },
+      {
+       "p": "Data retention",
+       "v": "[x] years, secure backup",
+       "m": "Your record retention policy",
+       "hl": false
+      }
+     ],
+     "h": "Specifications"
+    },
+    {
+     "type": "diagram",
+     "h": "How it works",
+     "stages": [
+      "Instruments",
+      "PLC",
+      "HMI",
+      "SCADA historian",
+      "Your network"
+     ],
+     "caption": "Instruments report to a programmable logic controller (PLC) that runs sequences, interlocks and sanitization. Operators work at a local human-machine interface (HMI). A supervisory control and data acquisition (SCADA) historian stores quality data with an audit trail and sends alarms to your building or plant systems."
+    },
+    {
+     "type": "prose",
+     "h": "Data you can defend in an inspection",
+     "body": [
+      "Every quality value carries a time stamp, an instrument identity and a calibration status. Changes to set points, recipes and alarm limits are recorded with the user, the time and the reason. Records cannot be deleted or overwritten.",
+      "Alarms are classed by consequence. Quality alarms, such as conductivity above limit, divert water and need an acknowledged reason. Equipment alarms go to maintenance. We write the alarm philosophy with you and test every alarm at FAT."
+     ]
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "PLC platform",
+       "d": "[Rockwell Allen-Bradley or Siemens], to match your site standard."
+      },
+      {
+       "t": "Integration",
+       "d": "OPC UA, Modbus TCP or EtherNet/IP to your building management or plant SCADA."
+      },
+      {
+       "t": "Alert and action levels",
+       "d": "Separate levels per sampling point, with trending to catch drift before an excursion."
+      },
+      {
+       "t": "Remote access",
+       "d": "Secure, client-controlled remote support for diagnostics. [Confirm offering]"
+      },
+      {
+       "t": "Batch reports",
+       "d": "Sanitization and daily quality reports, electronically signed."
+      },
+      {
+       "t": "Controls upgrades",
+       "d": "Replace obsolete PLCs or paper recorders on existing systems while keeping the process unchanged."
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "User requirement specification support",
+      "Functional specification",
+      "Hardware and software design specifications",
+      "Alarm and interlock list",
+      "Part 11 and Annex 11 compliance assessment",
+      "Software source code and configuration backup",
+      "Electrical drawings and panel layouts (CSA, UL 508A)",
+      "Instrument calibration certificates",
+      "FAT and SAT protocols and reports",
+      "IQ and OQ protocols, including computer system validation"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Does online TOC replace laboratory testing?",
+       "a": "USP allows online TOC and conductivity for release when the instruments are qualified and the sample point represents the water used. Your microbial and endotoxin testing stays in the laboratory."
+      },
+      {
+       "q": "Can you connect to our existing historian?",
+       "a": "Yes, through standard protocols. We agree data ownership and where the Part 11 boundary sits during design."
+      },
+      {
+       "q": "Who validates the software?",
+       "a": "We supply the specifications, test protocols and executed FAT records. Your validation team approves and owns the final computer system validation."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related systems",
+     "items": [
+      "sys-storage",
+      "sys-pw",
+      "sys-wfi-membrane",
+      "cmp-documentation"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Bring your water data under control.",
+    "body": "Tell us your instruments, PLC standard and data integrity requirements and we'll scope the controls.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "PLC platforms supported",
+    "Data retention default",
+    "Whether secure remote access is offered",
+    "Whether panels are built to UL 508A or CSA in-house",
+    "Datasheet PDF"
+   ],
+   "facts": [
+    {
+     "v": "≤ 500 ppb",
+     "l": "Online TOC limit · USP <643>"
+    },
+    {
+     "v": "≤ 1.3 µS/cm",
+     "l": "Conductivity limit at 25 °C · USP <645>"
+    },
+    {
+     "v": "Part 11",
+     "l": "Audit trail and e-signatures · 21 CFR"
+    },
+    {
+     "v": "GAMP 5",
+     "l": "Risk-based software lifecycle"
+    }
+   ]
+  },
+  {
+   "id": "services",
+   "section": "Services",
+   "nav_label": "Services",
+   "title": "Pharmaceutical water system services | Aquemi",
+   "meta": "From user requirement specification to IQ/OQ, handover and service: one Aquemi team designs, builds, tests, qualifies and maintains your water system.",
+   "path": "/services/",
+   "eyebrow": "SERVICES · URS TO HANDOVER",
+   "headline": "One team from the first requirement to the last service visit",
+   "lead": "We take your water system from user requirement specification to qualified handover, then keep it in its qualified state. The same engineers carry the project through every phase, so nothing is lost between design, the shop floor and your site.",
+   "tags": [
+    "GAMP 5",
+    "ASME BPE",
+    "ISPE Baseline Guide Vol. 4",
+    "USP <1231>",
+    "21 CFR Part 11"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Request service on an existing system",
+    "link": "contact-service"
+   },
+   "blocks": [
+    {
+     "type": "steps",
+     "h": "How a project runs",
+     "items": [
+      {
+       "t": "Requirements",
+       "d": "We review your user requirement specification (URS), or help you write one, and confirm water grades, demand profile and feedwater analysis."
+      },
+      {
+       "t": "Design",
+       "d": "Basis of design, process and instrumentation diagrams (P&IDs), functional specification and a design review against your URS."
+      },
+      {
+       "t": "Fabrication",
+       "d": "316L stainless steel skids built in our shop with orbital welds, weld logs and full material traceability."
+      },
+      {
+       "t": "Factory acceptance test",
+       "d": "The skid runs in our test bay against an approved protocol before it ships. You or your delegate witness it."
+      },
+      {
+       "t": "Installation and site acceptance",
+       "d": "We install, connect and repeat the tests that matter after transport and tie-in."
+      },
+      {
+       "t": "Commissioning and qualification",
+       "d": "Installation qualification (IQ) and operational qualification (OQ) executed to approved protocols, then support through performance qualification (PQ)."
+      },
+      {
+       "t": "Service",
+       "d": "Preventive maintenance, calibration and spare parts that keep the system in its validated state."
+      }
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "What we do at each stage",
+     "intro": "Each service can be bought alone. Most clients buy the full sequence so one team stays accountable for the result.",
+     "items": [
+      {
+       "t": "Process design and engineering",
+       "d": "URS review, sizing from your demand profile, P&IDs and functional specification.",
+       "tag": "ISPE Vol. 4",
+       "link": "svc-design"
+      },
+      {
+       "t": "Fabrication",
+       "d": "316L, orbital welding, borescope inspection, passivation and electropolish.",
+       "tag": "ASME BPE",
+       "link": "svc-fabrication"
+      },
+      {
+       "t": "FAT and SAT",
+       "d": "Wet factory acceptance testing and site acceptance testing to written protocols.",
+       "tag": "GAMP 5",
+       "link": "svc-fat-sat"
+      },
+      {
+       "t": "Commissioning and qualification",
+       "d": "IQ/OQ execution and the three-phase PQ approach for water systems.",
+       "tag": "USP <1231>",
+       "link": "svc-cq"
+      },
+      {
+       "t": "Service and spare parts",
+       "d": "Named service plans, calibration, critical spares and emergency response.",
+       "tag": "USP <645>",
+       "link": "svc-service"
+      },
+      {
+       "t": "Upgrades and retrofits",
+       "d": "Controls upgrades, capacity increases and the move to membrane Water for Injection (WFI).",
+       "tag": "Ph. Eur.",
+       "link": "svc-upgrades"
+      }
+     ]
+    },
+    {
+     "type": "table",
+     "h": "What you receive at each phase",
+     "cols": [
+      "Phase",
+      "Main deliverables",
+      "Your approval point"
+     ],
+     "rows": [
+      [
+       "Requirements",
+       "URS review comments, feedwater analysis, demand profile",
+       "URS sign-off"
+      ],
+      [
+       "Design",
+       "Basis of design, P&IDs, functional specification, design review report",
+       "Design qualification (DQ)"
+      ],
+      [
+       "Fabrication",
+       "Material certificates (EN 10204 3.1), weld logs, weld maps, borescope records, passivation certificate",
+       "Release to FAT"
+      ],
+      [
+       "FAT",
+       "Approved FAT protocol, executed results, deviation log, punch list",
+       "FAT report sign-off"
+      ],
+      [
+       "Installation and SAT",
+       "Installation records, SAT protocol and results",
+       "SAT report sign-off"
+      ],
+      [
+       "Qualification",
+       "IQ and OQ protocols and reports, PQ sampling plan support",
+       "Release to PQ"
+      ],
+      [
+       "Handover",
+       "Turnover package, operating and maintenance manuals, training records",
+       "Handover certificate"
+      ]
+     ]
+    },
+    {
+     "type": "band",
+     "tone": "limestone",
+     "h": "The documents arrive with the equipment",
+     "body": "Validation documents follow GAMP 5 and are written as the system is built, not reconstructed afterwards. Your validation team reviews drafts at each phase, so the final package holds no surprises."
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Can we buy only part of the sequence?",
+       "a": "Yes. We can fabricate to another engineer's design, or qualify a system someone else built. We tell you at the start what we need from other parties for the documents to hold together."
+      },
+      {
+       "q": "Who writes the URS?",
+       "a": "You own it. We can draft it with you from your process needs and the applicable pharmacopoeia, then review it against what the design must prove."
+      },
+      {
+       "q": "Do you service systems you did not build?",
+       "a": "Yes. We start with a condition survey and a document review, then propose a service plan for that system."
+      },
+      {
+       "q": "How long does a typical project take?",
+       "a": "It depends on scope and on your approval cycles. A packaged Purified Water skid typically takes [weeks] from approved design to FAT. We give you a dated schedule with the proposal."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related pages",
+     "items": [
+      "compliance",
+      "cmp-documentation",
+      "systems",
+      "projects"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Start with your requirements",
+    "body": "Send us your URS or a short description of the water you need, and an engineer will reply with questions and a scope.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Typical duration from approved design to FAT for a packaged PW skid [weeks]",
+    "Confirm Aquemi offers each of the six services in-house or names partners",
+    "Confirm services are sold separately as well as end to end"
+   ]
+  },
+  {
+   "id": "svc-design",
+   "section": "Services",
+   "nav_label": "Process design and engineering",
+   "title": "Pharmaceutical water system design and engineering | Aquemi",
+   "meta": "Water system design from URS to P&IDs and functional specification, sized from your demand profile and designed to ASME BPE and ISPE Baseline Guide Vol. 4.",
+   "path": "/services/process-design/",
+   "eyebrow": "PROCESS DESIGN · ISPE BASELINE GUIDE VOL. 4",
+   "headline": "A design that can be built, tested and qualified",
+   "lead": "We size your water system from a measured demand profile and a feedwater analysis, then document every decision so your validation team can trace it back to the user requirement specification (URS).",
+   "tags": [
+    "ISPE Baseline Guide Vol. 4",
+    "ASME BPE",
+    "GAMP 5",
+    "ICH Q9",
+    "USP <1231>"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Ask for a design review",
+    "link": "contact-proposal"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "Start from what the water must do",
+     "body": [
+      "Most oversized systems start from a guessed peak. Most undersized ones start from an average. We build an hourly demand profile for each point of use, including simultaneous draws, sanitization windows and future expansion, and size generation and storage from that.",
+      "Feedwater sets the pretreatment. We ask for a recent analysis covering hardness, chlorine or chloramine, silica, total organic carbon (TOC), conductivity and microbial count, and we design for the worst season, not the best."
+     ]
+    },
+    {
+     "type": "steps",
+     "h": "Design stages",
+     "items": [
+      {
+       "t": "Feasibility",
+       "d": "Water grades, demand profile, technology options and a budget range. Typical accuracy [±30 %]."
+      },
+      {
+       "t": "Basic design",
+       "d": "Basis of design, block flow, preliminary P&IDs, layout and utility list. Risk assessment to ICH Q9."
+      },
+      {
+       "t": "Detailed design",
+       "d": "Final P&IDs, isometrics, instrument list, functional specification and software design to GAMP 5."
+      },
+      {
+       "t": "Design review",
+       "d": "A documented review of the design against your URS. It feeds your design qualification (DQ)."
+      }
+     ]
+    },
+    {
+     "type": "spec",
+     "caption": "Typical design basis · storage and distribution",
+     "note": "Design targets we start from. Each is confirmed against your URS and documented in the basis of design.",
+     "cols": [
+      "Parameter",
+      "Typical design target",
+      "Reference"
+     ],
+     "rows": [
+      {
+       "p": "Product-contact material",
+       "v": "316L stainless steel",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Product-contact surface finish",
+       "v": "Ra ≤ 0.5 µm, electropolished option",
+       "m": "ASME BPE surface finish designations",
+       "hl": false
+      },
+      {
+       "p": "Dead legs",
+       "v": "L/D ≤ 2",
+       "m": "ASME BPE",
+       "hl": true
+      },
+      {
+       "p": "Loop velocity at furthest return",
+       "v": "≥ 1 m/s at peak draw",
+       "m": "ISPE Baseline Guide Vol. 4 (design practice)",
+       "hl": false
+      },
+      {
+       "p": "Drainability",
+       "v": "Continuous slope to low-point drains",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Hot sanitization",
+       "v": "≥ 80 °C at all points of the loop",
+       "m": "Design practice",
+       "hl": false
+      },
+      {
+       "p": "Control system",
+       "v": "Audit trail, electronic records and signatures",
+       "m": "21 CFR Part 11, GAMP 5",
+       "hl": false
+      }
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "What we design",
+     "items": [
+      {
+       "t": "Pretreatment",
+       "d": "Multimedia, softening, carbon or bisulfite dechlorination, matched to your feedwater.",
+       "link": "sys-pretreatment"
+      },
+      {
+       "t": "Purified Water (PW) generation",
+       "d": "Double-pass reverse osmosis (RO) and electrodeionization (EDI).",
+       "tag": "USP <645>",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Water for Injection (WFI)",
+       "d": "Multi-effect distillation, vapour compression, or membrane routes.",
+       "tag": "USP <85>",
+       "link": "sys-wfi-distillation"
+      },
+      {
+       "t": "Pure Steam (PS)",
+       "d": "Generators sized for autoclaves and sterilize-in-place (SIP) loads.",
+       "tag": "EN 285",
+       "link": "sys-pure-steam"
+      },
+      {
+       "t": "Storage and distribution",
+       "d": "Hot, ambient or ozonated loops with sub-loops and point-of-use coolers.",
+       "tag": "ASME BPE",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Monitoring and controls",
+       "d": "Programmable logic controller (PLC) and supervisory system with on-line conductivity and TOC.",
+       "tag": "21 CFR Part 11",
+       "link": "sys-monitoring"
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "URS review and traceability matrix",
+      "Basis of design",
+      "Demand profile and sizing calculations",
+      "Process and instrumentation diagrams (P&IDs)",
+      "General arrangement and isometric drawings",
+      "Instrument and valve lists",
+      "Functional specification",
+      "Hardware and software design specifications",
+      "Risk assessment (ICH Q9)",
+      "Design review report for your DQ"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Hot, ambient or ozonated storage?",
+       "a": "It depends on how many points of use need cool water, your energy cost and how often you can sanitize. We compare the options on microbial control, energy and qualification effort in the basis of design."
+      },
+      {
+       "q": "Can you work inside our engineering firm's design?",
+       "a": "Yes. We can take a package from your architect-engineer, or provide the water system design for their drawings."
+      },
+      {
+       "q": "Do you design for future capacity?",
+       "a": "We size the loop and add capped tie-in points for the expansion you name, so a later phase does not mean a new loop."
+      }
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Send us your URS",
+    "body": "We return written comments and a proposed basis of design within [business days].",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Feasibility estimate accuracy [±30 %]",
+    "Turnaround for URS review [business days]",
+    "Confirm in-house design team credentials (P.Eng.) and design tools",
+    "Confirm Aquemi designs WFI by distillation in-house or with a partner"
+   ]
+  },
+  {
+   "id": "svc-fabrication",
+   "section": "Services",
+   "nav_label": "Fabrication",
+   "title": "316L skid fabrication and orbital welding | Aquemi",
+   "meta": "316L stainless steel skids with orbital welds, weld logs, borescope inspection, passivation and electropolish, built to ASME BPE with full traceability.",
+   "path": "/services/fabrication/",
+   "eyebrow": "FABRICATION · ASME BPE",
+   "headline": "Every weld logged, inspected and traceable to its heat",
+   "lead": "We build skids and distribution loops in 316L stainless steel with automatic orbital welding. Each weld is numbered on an isometric map, inspected, and recorded with the welder, procedure and material heat number.",
+   "tags": [
+    "ASME BPE",
+    "ASME Section IX",
+    "ASTM A967",
+    "ASTM A380",
+    "EN 10204 3.1"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "See a sample weld log",
+    "link": "cmp-documentation"
+   },
+   "blocks": [
+    {
+     "type": "spec",
+     "caption": "Fabrication standard · product-contact parts",
+     "cols": [
+      "Item",
+      "Specification",
+      "Reference"
+     ],
+     "rows": [
+      {
+       "p": "Tubing and fittings",
+       "v": "316L, sulfur 0.005–0.017 %",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Material certificates",
+       "v": "Type 3.1 mill certificates for every heat",
+       "m": "EN 10204",
+       "hl": false
+      },
+      {
+       "p": "Welding process",
+       "v": "Autogenous orbital gas tungsten arc welding (GTAW) with inert purge",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Welder and procedure qualification",
+       "v": "Qualified welding procedure specification (WPS) and procedure qualification record (PQR)",
+       "m": "ASME Section IX",
+       "hl": false
+      },
+      {
+       "p": "Weld inspection",
+       "v": "Visual and borescope inspection, [100 %] of product-contact welds",
+       "m": "ASME BPE acceptance criteria",
+       "hl": true
+      },
+      {
+       "p": "Surface finish, mechanically polished",
+       "v": "Ra ≤ 0.51 µm (SF1)",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Surface finish, electropolished",
+       "v": "Ra ≤ 0.38 µm (SF4)",
+       "m": "ASME BPE",
+       "hl": false
+      },
+      {
+       "p": "Passivation",
+       "v": "Citric or nitric acid passivation, documented",
+       "m": "ASTM A967 / ASTM A380",
+       "hl": false
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "h": "From tube to tested skid",
+     "items": [
+      {
+       "t": "Receive and verify material",
+       "d": "Heat numbers checked against mill certificates, then recorded on the material log."
+      },
+      {
+       "t": "Cut, face and fit",
+       "d": "Square cuts and clean facing so the orbital weld fuses evenly."
+      },
+      {
+       "t": "Weld coupons",
+       "d": "A sample weld at the start of each shift and after any setting change, inspected before production welds begin."
+      },
+      {
+       "t": "Orbital welding",
+       "d": "Each production weld numbered on the isometric and recorded with welder, machine programme and heat numbers."
+      },
+      {
+       "t": "Inspect",
+       "d": "Visual inspection outside, borescope inside. Recordings kept with the weld log."
+      },
+      {
+       "t": "Pressure test",
+       "d": "Hydrostatic or pneumatic test to the design code, witnessed and recorded."
+      },
+      {
+       "t": "Clean and passivate",
+       "d": "Degrease, flush and passivate, with a certificate for each system."
+      }
+     ]
+    },
+    {
+     "type": "prose",
+     "h": "Why traceability matters to your auditor",
+     "body": [
+      "A weld you cannot trace is a weld you cannot defend. When an inspector asks how a loop was built, the answer should be a document, not a recollection.",
+      "Our weld log links every weld number to its welder, procedure, coupon, inspection result and the heat numbers of the two pieces it joins. The isometric drawing shows where that weld sits in your plant."
+     ]
+    },
+    {
+     "type": "options",
+     "h": "Configurations and options",
+     "items": [
+      {
+       "t": "Electropolished tubing and components",
+       "d": "Ra ≤ 0.38 µm (SF4) for WFI and hot loops where rouge and biofilm resistance matter."
+      },
+      {
+       "t": "Borescope video archive",
+       "d": "Recorded video of each inspected weld, delivered with the turnover package."
+      },
+      {
+       "t": "Pressure vessels",
+       "d": "Tanks designed and registered to ASME Section VIII and provincial requirements, with a Canadian Registration Number (CRN) where required."
+      },
+      {
+       "t": "Third-party weld inspection",
+       "d": "Your inspector or ours, witnessing coupons and production welds."
+      },
+      {
+       "t": "Field welding",
+       "d": "Orbital welding on your site for loop tie-ins, with the same records as the shop."
+      },
+      {
+       "t": "Riboflavin coverage test",
+       "d": "Spray-device coverage testing on tanks before shipment."
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "Material certificates (EN 10204 3.1) with heat-number log",
+      "Welding procedure specifications and procedure qualification records",
+      "Welder qualification records",
+      "Isometric drawings with weld numbers",
+      "Weld log and coupon records",
+      "Borescope inspection records",
+      "Pressure test certificates",
+      "Surface finish certificates",
+      "Passivation certificate",
+      "Slope verification records"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Do you inspect every weld with a borescope?",
+       "a": "Our standard is [100 %] of accessible product-contact welds. Where a weld cannot be reached, we inspect its coupon and record why."
+      },
+      {
+       "q": "Electropolish or mechanical polish?",
+       "a": "Mechanical polish to SF1 suits most Purified Water service. We recommend electropolish for WFI and pure steam, where higher temperatures make rouge more likely."
+      },
+      {
+       "q": "Can we visit the shop during fabrication?",
+       "a": "Yes. We welcome inspection visits before FAT. Tell us which hold points you want to witness."
+      }
+     ]
+    }
+   ],
+   "cta": {
+    "h": "See how we build before we build for you",
+    "body": "Ask for a redacted weld log and turnover package from a recent project.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Borescope inspection coverage [100 %] confirmed",
+    "Shop location [city], [province] and test bay size",
+    "Welder qualification status and number of qualified welders",
+    "CRN registration capability and provinces",
+    "Confirm passivation and electropolish are in-house or subcontracted (name supplier)",
+    "Confirm riboflavin testing offered",
+    "Confirm a redacted weld log can be shared"
+   ]
+  },
+  {
+   "id": "svc-fat-sat",
+   "section": "Services",
+   "nav_label": "FAT and SAT",
+   "title": "Factory and site acceptance testing (FAT/SAT) | Aquemi",
+   "meta": "Wet factory acceptance testing in our test bay and site acceptance testing after installation, to written protocols you approve, following GAMP 5.",
+   "path": "/services/fat-sat/",
+   "eyebrow": "FAT · SAT · GAMP 5",
+   "headline": "Your system runs in our test bay before it ships",
+   "lead": "Every skid passes a wet factory acceptance test (FAT) against a protocol you approve. After installation, a site acceptance test (SAT) confirms nothing changed in transport or tie-in. Results are written so your qualification team can rely on them.",
+   "tags": [
+    "GAMP 5",
+    "ASTM E2500",
+    "ISPE Baseline Guide Vol. 4",
+    "21 CFR Part 11"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "See a sample FAT protocol",
+    "link": "cmp-documentation"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "Find problems where they are cheap to fix",
+     "body": [
+      "A fault found in our shop costs a day. The same fault found on your site can cost a shutdown window. We run the system wet, with water flowing through every line, so leaks, sequence errors and instrument faults show up before shipment.",
+      "GAMP 5 allows qualification to use well-documented supplier testing. We write the FAT so that your IQ and OQ can reference it rather than repeat it, when your quality unit agrees."
+     ]
+    },
+    {
+     "type": "table",
+     "h": "What we test, and where",
+     "cols": [
+      "Test",
+      "FAT",
+      "SAT"
+     ],
+     "rows": [
+      [
+       "Documentation and drawing review",
+       "Yes",
+       "Updates only"
+      ],
+      [
+       "P&ID walkdown and tag verification",
+       "Yes",
+       "Yes"
+      ],
+      [
+       "Material certificates and weld log review",
+       "Yes",
+       "Field welds"
+      ],
+      [
+       "Input and output (I/O) checks",
+       "Yes",
+       "Yes"
+      ],
+      [
+       "Alarms and interlocks",
+       "Yes",
+       "Critical alarms"
+      ],
+      [
+       "Operating sequences",
+       "Yes",
+       "Yes"
+      ],
+      [
+       "Sanitization cycle, temperature at every point",
+       "Yes",
+       "Yes"
+      ],
+      [
+       "Product water conductivity and TOC on-line",
+       "Yes, on test-bay feedwater",
+       "Yes, on site feedwater"
+      ],
+      [
+       "Audit trail and electronic records",
+       "Yes",
+       "Yes"
+      ],
+      [
+       "Utility connections and loop integration",
+       "No",
+       "Yes"
+      ]
+     ]
+    },
+    {
+     "type": "steps",
+     "h": "How a FAT runs",
+     "items": [
+      {
+       "t": "Draft protocol",
+       "d": "Sent [weeks] before the test, with acceptance criteria for each test."
+      },
+      {
+       "t": "Your approval",
+       "d": "Your quality unit approves the protocol before execution."
+      },
+      {
+       "t": "Execution",
+       "d": "You or your delegate witness on site or by video. Every result is recorded as found."
+      },
+      {
+       "t": "Deviations",
+       "d": "Each one logged, assessed and closed or carried to SAT with your agreement."
+      },
+      {
+       "t": "Report",
+       "d": "Executed protocol, deviation log and punch list, signed by both parties."
+      }
+     ]
+    },
+    {
+     "type": "band",
+     "tone": "limestone",
+     "h": "A note on water quality at FAT",
+     "body": "Our test bay runs on our own feedwater. Conductivity and total organic carbon (TOC) at FAT prove the system can perform. Compliance with USP <645> and USP <643> on your site is confirmed during SAT and qualification, on your feedwater."
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "FAT protocol with acceptance criteria",
+      "Executed FAT protocol with raw data",
+      "Calibration certificates for test instruments",
+      "Deviation log and closure records",
+      "Punch list",
+      "SAT protocol and executed SAT report",
+      "Traceability matrix from URS to test"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Can we witness the FAT remotely?",
+       "a": "Yes. We run a video link with a second camera on the HMI. Signatures can be collected electronically."
+      },
+      {
+       "q": "Do you test with our software version?",
+       "a": "Yes. The PLC and HMI software tested at FAT is the version that ships, under version control."
+      },
+      {
+       "q": "How long does a FAT take?",
+       "a": "Typically [days] for a packaged Purified Water skid, longer for a full generation and distribution system."
+      }
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Plan your FAT with us",
+    "body": "Ask for our standard FAT protocol structure and adapt it to your URS.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Protocol lead time before FAT [weeks]",
+    "Typical FAT duration [days]",
+    "Test bay capabilities: feedwater, power, max skid size",
+    "Confirm remote witness and electronic signature process",
+    "Confirm a redacted FAT protocol can be published"
+   ]
+  },
+  {
+   "id": "svc-cq",
+   "section": "Services",
+   "nav_label": "Commissioning and qualification",
+   "title": "Commissioning and qualification (IQ/OQ/PQ) | Aquemi",
+   "meta": "IQ and OQ executed to approved protocols, and support through the three-phase PQ approach for pharmaceutical water systems over a full year.",
+   "path": "/services/commissioning-qualification/",
+   "eyebrow": "IQ · OQ · PQ · USP <1231>",
+   "headline": "Qualified to protocol, with a year of data behind it",
+   "lead": "We commission your water system, execute installation qualification (IQ) and operational qualification (OQ) to protocols your quality unit approves, and support performance qualification (PQ) through the three phases a water system needs.",
+   "tags": [
+    "USP <1231>",
+    "GAMP 5",
+    "ASTM E2500",
+    "EU GMP Annex 15",
+    "Health Canada GUI-0001",
+    "FDA 21 CFR Part 211"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "See our documentation package",
+    "link": "cmp-documentation"
+   },
+   "blocks": [
+    {
+     "type": "grid",
+     "h": "What each stage proves",
+     "items": [
+      {
+       "t": "Commissioning",
+       "d": "The system is installed, connected and working as designed. Good engineering practice, documented."
+      },
+      {
+       "t": "Installation qualification (IQ)",
+       "d": "It is built as specified: materials, welds, slopes, instruments, calibration, drawings and software versions."
+      },
+      {
+       "t": "Operational qualification (OQ)",
+       "d": "It operates as specified across its range: sequences, alarms, interlocks, sanitization and flow at every point of use."
+      },
+      {
+       "t": "Performance qualification (PQ)",
+       "d": "It delivers water of the required quality, consistently, under routine operation and over time."
+      }
+     ]
+    },
+    {
+     "type": "spec",
+     "caption": "Three-phase PQ approach · water systems",
+     "note": "The phased approach follows FDA's guide to inspections of high purity water systems and USP <1231>. Durations and frequencies are set in your PQ protocol.",
+     "cols": [
+      "Phase",
+      "Typical duration",
+      "Sampling and purpose"
+     ],
+     "rows": [
+      {
+       "p": "Phase 1",
+       "v": "2–4 weeks",
+       "m": "Daily sampling at every point of use and key process points. Water is not used for production. Establishes operating ranges, cleaning and sanitization procedures.",
+       "hl": false
+      },
+      {
+       "p": "Phase 2",
+       "v": "2–4 weeks",
+       "m": "Same intensive sampling while operating to the finalized procedures. Shows consistent control. Water may be released for use at the end, with your quality unit's approval.",
+       "hl": false
+      },
+      {
+       "p": "Phase 3",
+       "v": "12 months",
+       "m": "Routine sampling frequency. Captures seasonal variation in feedwater and confirms long-term control.",
+       "hl": true
+      }
+     ]
+    },
+    {
+     "type": "spec",
+     "caption": "Typical acceptance criteria · tested during OQ and PQ",
+     "cols": [
+      "Attribute",
+      "Purified Water (PW)",
+      "Water for Injection (WFI)"
+     ],
+     "rows": [
+      {
+       "p": "Conductivity",
+       "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+       "m": "≤ 1.3 µS/cm @ 25 °C (stage 1), USP <645>",
+       "hl": false
+      },
+      {
+       "p": "Total organic carbon (TOC)",
+       "v": "≤ 500 ppb",
+       "m": "≤ 500 ppb, USP <643>",
+       "hl": false
+      },
+      {
+       "p": "Bacterial endotoxins",
+       "v": "Not specified",
+       "m": "< 0.25 EU/mL, USP <85>",
+       "hl": false
+      },
+      {
+       "p": "Microbial action limit",
+       "v": "100 CFU/mL",
+       "m": "10 CFU/100 mL, USP <1231> guidance",
+       "hl": false
+      }
+     ]
+    },
+    {
+     "type": "prose",
+     "h": "Who does what",
+     "body": [
+      "Your quality unit owns the validation master plan and approves every protocol and report. We write the IQ and OQ protocols, execute them with trained staff and calibrated instruments, and report deviations as found.",
+      "For PQ, sampling and laboratory testing are usually yours. We write or review the sampling plan, train your operators, and stay on call through Phases 1 and 2 to resolve excursions quickly."
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "Commissioning plan and records",
+      "IQ protocol and executed report",
+      "OQ protocol and executed report",
+      "PQ sampling plan, by phase, with point-of-use map",
+      "Calibration certificates, traceable to national standards",
+      "Deviation reports and change records",
+      "Standard operating procedure drafts for operation and sanitization",
+      "Training records",
+      "Final qualification summary report"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Can FAT results reduce our IQ and OQ effort?",
+       "a": "Yes, when your quality unit accepts supplier testing under a GAMP 5 or ASTM E2500 approach. We design the FAT to be referenced."
+      },
+      {
+       "q": "Why does PQ take a year?",
+       "a": "Feedwater changes with the seasons. Phase 3 shows the system stays in control through those changes. You can usually use the water from the end of Phase 2."
+      },
+      {
+       "q": "Do you requalify existing systems?",
+       "a": "Yes, after a change or on a periodic schedule. We assess the change and propose a requalification scope proportional to the risk."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related services",
+     "items": [
+      "svc-fat-sat",
+      "svc-service",
+      "sys-monitoring",
+      "cmp-documentation"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Plan qualification before you order",
+    "body": "The cheapest time to agree a qualification approach is before design starts.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Confirm Aquemi executes IQ/OQ with own staff",
+    "Confirm scope of PQ support offered (sampling plan, on-call, lab partner)",
+    "Name calibration laboratory or accreditation for traceability"
+   ]
+  },
+  {
+   "id": "svc-service",
+   "section": "Services",
+   "nav_label": "Service and spare parts",
+   "title": "Water system service plans and spare parts | Aquemi",
+   "meta": "Named service plans with stated response times, preventive maintenance, USP <645> and <643> instrument calibration, critical spares and emergency response.",
+   "path": "/services/service-spare-parts/",
+   "eyebrow": "SERVICE · CALIBRATION · SPARE PARTS",
+   "headline": "Keep the system in its qualified state, on a plan you can read",
+   "lead": "Choose a service plan with stated response times and a fixed scope. Every visit ends with a signed report your quality unit can file, and every calibration carries a certificate.",
+   "tags": [
+    "USP <645>",
+    "USP <643>",
+    "USP <1231>",
+    "ISPE Baseline Guide Vol. 4",
+    "GAMP 5"
+   ],
+   "primary_cta": "Get plan pricing",
+   "secondary_cta": {
+    "label": "Request service now",
+    "link": "contact-service"
+   },
+   "blocks": [
+    {
+     "type": "table",
+     "h": "Service plans",
+     "cols": [
+      "",
+      "[Care Essential]",
+      "[Care Plus]",
+      "[Care Critical]"
+     ],
+     "rows": [
+      [
+       "Preventive maintenance visits per year",
+       "[1]",
+       "[2]",
+       "[4]"
+      ],
+      [
+       "Instrument calibration (conductivity, TOC, temperature, pressure, flow)",
+       "Annual",
+       "Annual",
+       "Semi-annual"
+      ],
+      [
+       "Phone support from an engineer",
+       "Business hours",
+       "Business hours",
+       "24/7"
+      ],
+      [
+       "On-site response, critical fault",
+       "[response time]",
+       "[response time]",
+       "[response time]"
+      ],
+      [
+       "Critical spares kit held for you",
+       "No",
+       "Optional",
+       "Yes"
+      ],
+      [
+       "Annual system health report and trend review",
+       "No",
+       "Yes",
+       "Yes"
+      ],
+      [
+       "Remote monitoring review",
+       "No",
+       "Optional",
+       "Yes"
+      ],
+      [
+       "Labour discount on unplanned work",
+       "[%]",
+       "[%]",
+       "[%]"
+      ]
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "What a preventive maintenance visit covers",
+     "items": [
+      {
+       "t": "Process data review",
+       "d": "Conductivity, total organic carbon (TOC), pressures and temperatures since the last visit, before any work starts."
+      },
+      {
+       "t": "Membranes and modules",
+       "d": "Reverse osmosis (RO) normalized performance, cleaning when needed, electrodeionization (EDI) checks."
+      },
+      {
+       "t": "Seals, gaskets and diaphragms",
+       "d": "Replaced on a documented schedule, with lot numbers recorded."
+      },
+      {
+       "t": "Filters and vent filters",
+       "d": "Replacement and integrity testing of hydrophobic vent filters."
+      },
+      {
+       "t": "Ultraviolet (UV) and ozone",
+       "d": "Lamp hours, intensity, ozone generator output and destruct checks."
+      },
+      {
+       "t": "Sanitization verification",
+       "d": "Temperature or ozone concentration confirmed at the far end of the loop."
+      }
+     ]
+    },
+    {
+     "type": "spec",
+     "caption": "Calibration · critical instruments",
+     "cols": [
+      "Instrument",
+      "Check",
+      "Reference"
+     ],
+     "rows": [
+      {
+       "p": "Conductivity cell",
+       "v": "Cell constant verified with a traceable standard; temperature sensor checked",
+       "m": "USP <645>",
+       "hl": false
+      },
+      {
+       "p": "TOC analyzer",
+       "v": "System suitability, response efficiency 85–115 %",
+       "m": "USP <643>",
+       "hl": true
+      },
+      {
+       "p": "Temperature sensors",
+       "v": "Comparison against a calibrated reference at operating and sanitization temperature",
+       "m": "Calibration procedure",
+       "hl": false
+      },
+      {
+       "p": "Pressure and flow",
+       "v": "Comparison against calibrated references across range",
+       "m": "Calibration procedure",
+       "hl": false
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "h": "When something goes wrong",
+     "items": [
+      {
+       "t": "Call",
+       "d": "An engineer answers at [phone number], [hours]. You describe the symptom; we ask for the alarm history."
+      },
+      {
+       "t": "Remote diagnosis",
+       "d": "Where remote access is approved, we review trends with you within [time]."
+      },
+      {
+       "t": "Dispatch",
+       "d": "A technician with the likely parts is on site within your plan's response time."
+      },
+      {
+       "t": "Restore and report",
+       "d": "We restore operation, record what changed and give you the input your change control needs."
+      }
+     ]
+    },
+    {
+     "type": "prose",
+     "h": "Spare parts",
+     "body": [
+      "Each system ships with a recommended spares list ranked by criticality: parts whose failure stops production, parts with long lead times, and routine consumables.",
+      "We hold stock for Aquemi systems at [stocking location]. We use standard, non-proprietary membranes, EDI modules and instruments where possible, so you are not locked into a single source."
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Documentation delivered",
+     "items": [
+      "Signed service report for every visit",
+      "Calibration certificates, traceable to national standards",
+      "Parts replaced, with lot numbers",
+      "Deviation and change-control input",
+      "Annual system health report with trends",
+      "Recommended spares list"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Do you service other manufacturers' systems?",
+       "a": "Yes. We start with a condition survey and document review, then offer a plan for that system."
+      },
+      {
+       "q": "Will service work affect our qualified state?",
+       "a": "Like-for-like replacement under a documented procedure normally does not. Anything else goes through your change control, and we give you the information to assess it."
+      },
+      {
+       "q": "Where do you provide service?",
+       "a": "[Service regions]. Outside them we work through [partner network or travel terms]."
+      }
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Choose a plan",
+    "body": "Tell us your system and its age, and we return plan pricing and a first-visit scope.",
+    "button": "Get plan pricing",
+    "link": "contact-service"
+   },
+   "todo": [
+    "Service plan names and tier structure (placeholders [Care Essential], [Care Plus], [Care Critical])",
+    "Visits per year per tier",
+    "On-site response time per tier [response time]",
+    "Service phone number and hours",
+    "Remote diagnosis response time",
+    "Stocking location(s) for spares",
+    "Service regions and partner network",
+    "Labour discount per tier",
+    "Confirm any-brand service is offered"
+   ]
+  },
+  {
+   "id": "svc-upgrades",
+   "section": "Services",
+   "nav_label": "Upgrades and retrofits",
+   "title": "Water system upgrades and retrofits | Aquemi",
+   "meta": "Replace ageing water systems, upgrade controls for 21 CFR Part 11, add capacity or move to membrane WFI, with a requalification scope you can plan.",
+   "path": "/services/upgrades-retrofits/",
+   "eyebrow": "UPGRADES · RETROFITS · CHANGE CONTROL",
+   "headline": "Upgrade the system you have, with a requalification scope you can plan",
+   "lead": "Ageing controls, rising demand and new pharmacopoeia options all lead to the same question: what can we change, and how much do we have to requalify. We answer both before any work starts.",
+   "tags": [
+    "21 CFR Part 11",
+    "GAMP 5",
+    "Ph. Eur.",
+    "USP <1231>",
+    "ASME BPE"
+   ],
+   "primary_cta": "Request a system assessment",
+   "secondary_cta": {
+    "label": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "blocks": [
+    {
+     "type": "grid",
+     "h": "Common upgrades",
+     "items": [
+      {
+       "t": "Controls and data integrity",
+       "d": "Replace obsolete programmable logic controllers (PLCs) and human-machine interfaces (HMIs). Add audit trails and electronic records to 21 CFR Part 11.",
+       "tag": "21 CFR Part 11",
+       "link": "sys-monitoring"
+      },
+      {
+       "t": "Capacity increase",
+       "d": "Add a reverse osmosis (RO) train, larger storage or a new sub-loop, sized from your new demand profile.",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Membrane Water for Injection (WFI)",
+       "d": "Produce WFI without distillation, using RO with electrodeionization (EDI) and ultrafiltration.",
+       "tag": "Ph. Eur.",
+       "link": "sys-wfi-membrane"
+      },
+      {
+       "t": "Chemical deionization to EDI",
+       "d": "Remove regenerant chemicals and resin handling from Purified Water generation.",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Sanitization changes",
+       "d": "Add ozone, ultraviolet (UV) destruct or hot water sanitization at 80 °C to an existing loop.",
+       "link": "sys-storage"
+      },
+      {
+       "t": "On-line monitoring",
+       "d": "Add on-line total organic carbon (TOC) and conductivity to support real-time release.",
+       "tag": "USP <643>",
+       "link": "sys-monitoring"
+      },
+      {
+       "t": "Loop modifications",
+       "d": "Extensions, new points of use, dead-leg removal and automated point-of-use valves, orbitally welded.",
+       "tag": "ASME BPE",
+       "link": "svc-fabrication"
+      },
+      {
+       "t": "Rouge remediation",
+       "d": "Derouging and repassivation of stainless steel surfaces, with before and after records."
+      },
+      {
+       "t": "Full replacement",
+       "d": "A new system built alongside the old, with a planned cutover window."
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "h": "How an upgrade runs",
+     "items": [
+      {
+       "t": "Assessment",
+       "d": "Condition survey, document review and trend analysis of the existing system."
+      },
+      {
+       "t": "Options and impact",
+       "d": "Each option with cost, downtime and the requalification it triggers."
+      },
+      {
+       "t": "Change control",
+       "d": "We prepare the technical input for your change control and impact assessment."
+      },
+      {
+       "t": "Pre-build and test",
+       "d": "New skids and panels built and tested in our shop, so site work is short."
+      },
+      {
+       "t": "Cutover",
+       "d": "Executed in a planned window, with temporary water supply arranged if needed."
+      },
+      {
+       "t": "Requalification",
+       "d": "IQ and OQ for what changed, plus a PQ scope proportional to the risk."
+      }
+     ]
+    },
+    {
+     "type": "prose",
+     "h": "Moving to membrane WFI",
+     "body": [
+      "Since 2017 the European Pharmacopoeia allows Water for Injection to be produced by a purification process equivalent to distillation, such as reverse osmosis coupled with other suitable techniques. USP has long allowed a process equivalent or superior to distillation.",
+      "A membrane route uses far less energy and cooling water than distillation. It also needs closer microbial control, because there is no phase change. We assess your feedwater, your existing storage and your regulators before we recommend it."
+     ]
+    },
+    {
+     "type": "table",
+     "h": "Downtime we plan for",
+     "cols": [
+      "Upgrade",
+      "Typical site downtime",
+      "Typical requalification"
+     ],
+     "rows": [
+      [
+       "PLC and HMI replacement",
+       "[days]",
+       "IQ/OQ of control system, software validation"
+      ],
+      [
+       "Add RO train or EDI",
+       "[days]",
+       "IQ/OQ of new equipment, short PQ"
+      ],
+      [
+       "New sub-loop or points of use",
+       "[days]",
+       "IQ/OQ of new section, PQ at new points"
+      ],
+      [
+       "Membrane WFI generation",
+       "[weeks]",
+       "Full IQ/OQ and three-phase PQ"
+      ]
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Our system was built by another supplier. Can you upgrade it?",
+       "a": "Yes. We need the drawings and qualification records you have. Where they are missing, we survey and redraw before we design."
+      },
+      {
+       "q": "Can we keep producing water during the upgrade?",
+       "a": "Often yes, with temporary generation or by building the new system alongside the old. We plan this in the options stage."
+      },
+      {
+       "q": "Is our control system data integrity good enough?",
+       "a": "We assess it against 21 CFR Part 11 and GAMP 5 and give you a written gap list."
+      }
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Start with an assessment",
+    "body": "Send us your system's age, drawings and the problem you want to solve.",
+    "button": "Request a system assessment",
+    "link": "contact-service"
+   },
+   "todo": [
+    "Typical downtime per upgrade type [days]/[weeks]",
+    "Confirm temporary or rental water supply capability",
+    "Confirm derouging and repassivation offered in-house or by partner",
+    "Confirm Aquemi offers membrane WFI in-house or with a partner",
+    "A retrofit reference project with measured outcome"
+   ]
+  },
+  {
+   "id": "industries",
+   "section": "Industries",
+   "nav_label": "Industries",
+   "title": "Industries we serve | Aquemi",
+   "meta": "Water systems for pharmaceutical, biotechnology, medical device and contract manufacturers, designed to USP, Ph. Eur. and the GMP rules they work under.",
+   "path": "/industries/",
+   "eyebrow": "INDUSTRIES · USP · PH. EUR. · GMP",
+   "headline": "Water systems for regulated manufacturing",
+   "lead": "Each industry draws on the same water grades but uses them differently. We start from your process, your products and the regulator you answer to.",
+   "tags": [
+    "USP",
+    "Ph. Eur.",
+    "Health Canada GMP",
+    "FDA cGMP",
+    "EU GMP Annex 1"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Explore systems",
+    "link": "systems"
+   },
+   "blocks": [
+    {
+     "type": "grid",
+     "h": "Choose your industry",
+     "items": [
+      {
+       "t": "Pharmaceutical",
+       "d": "Purified Water for oral solid and liquid dosage, Water for Injection and Pure Steam for sterile products.",
+       "tag": "USP <1231>",
+       "link": "ind-pharma"
+      },
+      {
+       "t": "Biotechnology",
+       "d": "High WFI demand for media, buffers and cleaning, with tight endotoxin control.",
+       "tag": "USP <85>",
+       "link": "ind-biotech"
+      },
+      {
+       "t": "Medical devices",
+       "d": "Rinse and process water with limits set from your product's risk.",
+       "tag": "ISO 13485",
+       "link": "ind-meddevice"
+      },
+      {
+       "t": "Contract manufacturing (CDMO)",
+       "d": "Systems that pass many clients' audits and grow with new programmes.",
+       "tag": "Health Canada GMP",
+       "link": "ind-cdmo"
+      }
+     ]
+    },
+    {
+     "type": "table",
+     "h": "Which water each industry uses most",
+     "cols": [
+      "Industry",
+      "Purified Water (PW)",
+      "Water for Injection (WFI)",
+      "Pure Steam (PS)"
+     ],
+     "rows": [
+      [
+       "Pharmaceutical, non-sterile",
+       "Main grade",
+       "Rare",
+       "Equipment sterilization"
+      ],
+      [
+       "Pharmaceutical, sterile",
+       "Pretreatment and early washes",
+       "Main grade",
+       "Autoclaves, sterilize-in-place (SIP)"
+      ],
+      [
+       "Biotechnology",
+       "Cleaning, upstream support",
+       "Main grade",
+       "SIP, autoclaves"
+      ],
+      [
+       "Medical devices",
+       "Rinsing, cleaning",
+       "Final rinse for low-endotoxin products",
+       "Steam sterilization, where used"
+      ],
+      [
+       "Contract manufacturing",
+       "Depends on client portfolio",
+       "Depends on client portfolio",
+       "Depends on client portfolio"
+      ]
+     ]
+    },
+    {
+     "type": "band",
+     "tone": "limestone",
+     "h": "The same standards, applied to your process",
+     "body": "Pharmacopoeia limits do not change by industry. What changes is where the water touches your product, how much you use and when. That is what we design around."
+    },
+    {
+     "type": "related",
+     "h": "Systems",
+     "items": [
+      "sys-pw",
+      "sys-wfi-distillation",
+      "sys-wfi-membrane",
+      "sys-pure-steam",
+      "sys-storage"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Tell us what you make",
+    "body": "We will tell you which water grades your process needs and how we would supply them.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Confirm the four industries are the target segments at launch",
+    "Projects per industry to link once case studies exist"
+   ]
+  },
+  {
+   "id": "ind-pharma",
+   "section": "Industries",
+   "nav_label": "Pharmaceutical",
+   "title": "Water systems for pharmaceutical manufacturing | Aquemi",
+   "meta": "Purified Water, WFI and Pure Steam systems for oral and sterile drug manufacturing, designed to USP, Ph. Eur., Health Canada GMP and EU GMP Annex 1.",
+   "path": "/industries/pharmaceutical/",
+   "eyebrow": "PHARMACEUTICAL · USP · PH. EUR.",
+   "headline": "Water that passes release testing, and the audit after it",
+   "lead": "Water is the most used ingredient in most pharmaceutical plants and the first utility an inspector walks. We design Purified Water, Water for Injection and Pure Steam systems that meet the pharmacopoeia and come with the records to prove it.",
+   "tags": [
+    "USP <1231>",
+    "USP <645>",
+    "USP <643>",
+    "Ph. Eur.",
+    "EU GMP Annex 1",
+    "Health Canada GUI-0001",
+    "FDA 21 CFR Part 211"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Read our compliance page",
+    "link": "compliance"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "What we hear from pharmaceutical plants",
+     "body": [
+      "Conductivity drifts in summer. Total organic carbon (TOC) excursions show up at one point of use and nowhere else. A loop built twenty years ago has dead legs nobody can find on the drawings. The qualification file is missing weld records.",
+      "Each of these is a design or documentation problem before it is a water problem. We solve them at that level."
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "Systems pharmaceutical plants use most",
+     "items": [
+      {
+       "t": "Purified Water (PW) generation",
+       "d": "Double-pass reverse osmosis (RO) with electrodeionization (EDI) for oral solid and liquid dosage, and cleaning.",
+       "tag": "USP <645>",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Water for Injection (WFI) by distillation",
+       "d": "Multi-effect or vapour compression stills for parenteral products.",
+       "tag": "USP <85>",
+       "link": "sys-wfi-distillation"
+      },
+      {
+       "t": "WFI by membrane",
+       "d": "A lower-energy route now accepted by Ph. Eur. as well as USP.",
+       "tag": "Ph. Eur.",
+       "link": "sys-wfi-membrane"
+      },
+      {
+       "t": "Pure Steam (PS) generators",
+       "d": "For autoclaves and sterilize-in-place (SIP) of vessels and lines.",
+       "tag": "EN 285",
+       "link": "sys-pure-steam"
+      },
+      {
+       "t": "Storage and distribution loops",
+       "d": "Hot, ambient or ozonated loops with point-of-use cooling.",
+       "tag": "ASME BPE",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Monitoring and controls",
+       "d": "On-line conductivity and TOC with audit-trailed records.",
+       "tag": "21 CFR Part 11",
+       "link": "sys-monitoring"
+      }
+     ]
+    },
+    {
+     "type": "spec",
+     "caption": "Pharmacopoeia limits we design to · bulk water",
+     "cols": [
+      "Attribute",
+      "Limit",
+      "Reference"
+     ],
+     "rows": [
+      {
+       "p": "Conductivity, PW and WFI",
+       "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+       "m": "USP <645>",
+       "hl": false
+      },
+      {
+       "p": "Total organic carbon, PW and WFI",
+       "v": "≤ 500 ppb",
+       "m": "USP <643>",
+       "hl": false
+      },
+      {
+       "p": "Bacterial endotoxins, WFI",
+       "v": "< 0.25 EU/mL",
+       "m": "USP <85>",
+       "hl": true
+      },
+      {
+       "p": "Microbial action limit, PW",
+       "v": "100 CFU/mL",
+       "m": "USP <1231> guidance",
+       "hl": false
+      },
+      {
+       "p": "Microbial action limit, WFI",
+       "v": "10 CFU/100 mL",
+       "m": "USP <1231> guidance",
+       "hl": false
+      },
+      {
+       "p": "Pure Steam condensate",
+       "v": "Meets WFI attributes; steam quality tests",
+       "m": "EN 285",
+       "hl": false
+      }
+     ]
+    },
+    {
+     "type": "options",
+     "h": "Design considerations",
+     "items": [
+      {
+       "t": "Dosage form",
+       "d": "Non-sterile products usually need PW only. Sterile and parenteral products need WFI and Pure Steam."
+      },
+      {
+       "t": "EU GMP Annex 1",
+       "d": "The 2022 revision expects a contamination control strategy that covers water systems, including continuous TOC and conductivity monitoring for WFI."
+      },
+      {
+       "t": "Feedwater season",
+       "d": "Municipal supplies in Canada swing in temperature and organics across the year. Pretreatment is sized for the worst month."
+      },
+      {
+       "t": "Export markets",
+       "d": "Systems for products sold in Canada, the United States and Europe are designed to meet USP and Ph. Eur. together."
+      }
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "How we support you",
+     "items": [
+      {
+       "t": "Process design",
+       "d": "From user requirement specification to functional specification.",
+       "link": "svc-design"
+      },
+      {
+       "t": "Factory acceptance testing",
+       "d": "Wet testing before shipment.",
+       "link": "svc-fat-sat"
+      },
+      {
+       "t": "Qualification",
+       "d": "IQ/OQ execution and PQ support over three phases.",
+       "link": "svc-cq"
+      },
+      {
+       "t": "Service",
+       "d": "Plans that keep the system in its qualified state.",
+       "link": "svc-service"
+      }
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Do we need WFI for non-sterile products?",
+       "a": "Usually not. USP and Ph. Eur. allow Purified Water for most non-sterile products. Your product registration decides."
+      },
+      {
+       "q": "Can one system supply Canadian, US and European markets?",
+       "a": "Yes. We design to the stricter of USP and Ph. Eur. on each attribute and document both."
+      },
+      {
+       "q": "Is membrane WFI acceptable to Health Canada?",
+       "a": "Health Canada follows the pharmacopoeia referenced in your product file. Both USP and Ph. Eur. now allow non-distillation WFI. Confirm with your regulatory team for each product."
+      }
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Talk to a process engineer",
+    "body": "Send us your dosage forms and daily water use, and we will propose a water system scope.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "A pharmaceutical case study with measured outcome",
+    "Confirm WFI by distillation scope (in-house or partner)"
+   ]
+  },
+  {
+   "id": "ind-biotech",
+   "section": "Industries",
+   "nav_label": "Biotechnology",
+   "title": "Water systems for biotechnology and biologics | Aquemi",
+   "meta": "WFI, Purified Water and Pure Steam systems for cell culture, buffer preparation and cleaning, with endotoxin control to USP <85> and room to scale.",
+   "path": "/industries/biotechnology/",
+   "eyebrow": "BIOTECHNOLOGY · USP <85>",
+   "headline": "Water for biologics, from clinical supply to commercial scale",
+   "lead": "Biologics plants use Water for Injection (WFI) in volume: for media, buffers, cleaning and final rinses. We design systems that hold endotoxin and bioburden down at every point of use and grow when your programme does.",
+   "tags": [
+    "USP <85>",
+    "USP <1231>",
+    "Ph. Eur.",
+    "EU GMP Annex 1",
+    "ASME BPE",
+    "21 CFR Part 11"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Explore WFI systems",
+    "link": "sys-wfi-distillation"
+   },
+   "blocks": [
+    {
+     "type": "readout",
+     "value": "< 0.25 EU/mL",
+     "method": "Bacterial endotoxins, WFI · USP <85>",
+     "body": "The limit every WFI point of use must meet. In a biologics plant, an endotoxin excursion can put a batch of media or buffer at risk, so we design the loop around it."
+    },
+    {
+     "type": "prose",
+     "h": "What makes biotech water different",
+     "body": [
+      "Demand is uneven. Buffer and media preparation draw large volumes in short windows, then the loop sits idle. Storage, not generation, often sets the design.",
+      "Many points of use need cool water while the loop runs hot. Sub-loops and point-of-use heat exchangers must be sanitizable and drainable, or they become the weak spot.",
+      "Single-use equipment reduces cleaning water but not WFI for media and buffers. Plan the system for the process you will run, not the one in the brochure."
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "Systems biotechnology plants use most",
+     "items": [
+      {
+       "t": "WFI by distillation",
+       "d": "Multi-effect or vapour compression stills with hot storage.",
+       "tag": "USP <85>",
+       "link": "sys-wfi-distillation"
+      },
+      {
+       "t": "WFI by membrane",
+       "d": "Ambient generation with ozone-sanitized storage, lower energy use.",
+       "tag": "Ph. Eur.",
+       "link": "sys-wfi-membrane"
+      },
+      {
+       "t": "Storage and distribution loops",
+       "d": "Hot loops with cooled sub-loops and point-of-use coolers.",
+       "tag": "ASME BPE",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Pure Steam (PS) generators",
+       "d": "For sterilize-in-place (SIP) of bioreactors, vessels and transfer lines.",
+       "tag": "EN 285",
+       "link": "sys-pure-steam"
+      },
+      {
+       "t": "Purified Water (PW) generation",
+       "d": "Feed to the WFI still and water for cleaning-in-place (CIP).",
+       "tag": "USP <645>",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Monitoring and controls",
+       "d": "On-line total organic carbon (TOC) and conductivity, with trends your quality unit can review.",
+       "tag": "USP <643>",
+       "link": "sys-monitoring"
+      }
+     ]
+    },
+    {
+     "type": "options",
+     "h": "Design considerations",
+     "items": [
+      {
+       "t": "Peak draw versus average",
+       "d": "We size storage and loop velocity from your batch schedule, not from a daily total."
+      },
+      {
+       "t": "Cool points of use",
+       "d": "Sub-loops or point-of-use exchangers, each with a documented sanitization route."
+      },
+      {
+       "t": "Scale-up",
+       "d": "Capped tie-in points and spare generation capacity for the next suite."
+      },
+      {
+       "t": "Clinical to commercial",
+       "d": "Qualification approach that carries forward when the facility moves from clinical supply to licensed production."
+      }
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Hot or ambient WFI storage?",
+       "a": "Hot storage at 80 °C or above controls microbes continuously but costs energy for cooled points of use. Ambient storage with ozone uses less energy but needs a tested ozone removal step before use. We compare both on your demand profile."
+      },
+      {
+       "q": "We are a start-up with one clinical product. Is a full WFI system justified?",
+       "a": "Sometimes not. Purchased bulk WFI or a smaller membrane system can bridge to commercial scale. We will tell you which fits."
+      },
+      {
+       "q": "How do you control endotoxin?",
+       "a": "By keeping the loop turbulent, sanitized and free of dead legs, and by verifying at every point of use during qualification."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related services",
+     "items": [
+      "svc-design",
+      "svc-cq",
+      "svc-service"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Plan the water around your batch schedule",
+    "body": "Send us your process and expected batch schedule. We will size storage and generation from it.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "A biotechnology case study with measured outcome",
+    "Confirm whether Aquemi offers temporary or bulk WFI supply options"
+   ]
+  },
+  {
+   "id": "ind-meddevice",
+   "section": "Industries",
+   "nav_label": "Medical devices",
+   "title": "Water systems for medical device manufacturing | Aquemi",
+   "meta": "Rinse and process water systems for medical device makers, with endotoxin and bioburden limits set from product risk and documented for ISO 13485 audits.",
+   "path": "/industries/medical-devices/",
+   "eyebrow": "MEDICAL DEVICES · ISO 13485",
+   "headline": "Rinse water you can defend in your cleaning validation",
+   "lead": "For many devices, the last thing to touch the product before packaging is water. We design Purified Water and Water for Injection (WFI) systems whose quality matches your product's risk, with records that fit an ISO 13485 quality system.",
+   "tags": [
+    "ISO 13485",
+    "FDA 21 CFR Part 820",
+    "USP <161>",
+    "USP <85>",
+    "USP <1231>",
+    "Health Canada MDR"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Explore Purified Water systems",
+    "link": "sys-pw"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "Water grade follows product risk",
+     "body": [
+      "There is no single water standard for device manufacturing. You set the water quality from what the device contacts and how it is finished.",
+      "A non-sterile device for intact skin may need only Purified Water (PW). An implant or a device that contacts blood is often rinsed in low-endotoxin water, because residual endotoxin on the device counts against its release limit. We help you document that decision."
+     ]
+    },
+    {
+     "type": "spec",
+     "caption": "Reference limits · device and rinse water",
+     "note": "Device endotoxin limits apply to the finished device, not the water. They are listed because rinse water quality is chosen to protect them.",
+     "cols": [
+      "Attribute",
+      "Limit",
+      "Reference"
+     ],
+     "rows": [
+      {
+       "p": "Device endotoxin limit, general",
+       "v": "20.0 EU per device",
+       "m": "USP <161>",
+       "hl": false
+      },
+      {
+       "p": "Device endotoxin limit, cerebrospinal fluid contact",
+       "v": "2.15 EU per device",
+       "m": "USP <161>",
+       "hl": false
+      },
+      {
+       "p": "Bacterial endotoxins, WFI",
+       "v": "< 0.25 EU/mL",
+       "m": "USP <85>",
+       "hl": true
+      },
+      {
+       "p": "Conductivity, PW and WFI",
+       "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+       "m": "USP <645>",
+       "hl": false
+      },
+      {
+       "p": "Total organic carbon (TOC)",
+       "v": "≤ 500 ppb",
+       "m": "USP <643>",
+       "hl": false
+      }
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "Systems device makers use most",
+     "items": [
+      {
+       "t": "Purified Water (PW) generation",
+       "d": "Reverse osmosis (RO) with electrodeionization (EDI) for washing and rinsing.",
+       "tag": "USP <645>",
+       "link": "sys-pw"
+      },
+      {
+       "t": "WFI by membrane",
+       "d": "Low-endotoxin final rinse without the energy cost of distillation.",
+       "tag": "USP <85>",
+       "link": "sys-wfi-membrane"
+      },
+      {
+       "t": "Storage and distribution loops",
+       "d": "Loops to washers and cleanroom points of use.",
+       "tag": "ASME BPE",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Pretreatment",
+       "d": "Matched to your feedwater to protect the RO.",
+       "link": "sys-pretreatment"
+      },
+      {
+       "t": "Monitoring and controls",
+       "d": "Continuous conductivity and TOC with audit-trailed records.",
+       "tag": "21 CFR Part 11",
+       "link": "sys-monitoring"
+      }
+     ]
+    },
+    {
+     "type": "options",
+     "h": "Design considerations",
+     "items": [
+      {
+       "t": "Washers and ultrasonic baths",
+       "d": "Short, high-flow draws. We size storage and loop pressure for them."
+      },
+      {
+       "t": "Cleaning validation",
+       "d": "Water quality at the washer inlet is part of your validated process. We provide points to sample it."
+      },
+      {
+       "t": "Combination products",
+       "d": "Where a device contains a drug, pharmaceutical GMP expectations for water may also apply."
+      },
+      {
+       "t": "Quality system fit",
+       "d": "Our documents map to ISO 13485 records for equipment, calibration and change control."
+      }
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Do we need WFI?",
+       "a": "Only if your risk assessment says rinse water endotoxin must be controlled to that level. Many device makers use PW with an endotoxin specification instead."
+      },
+      {
+       "q": "Is this the same as water for reprocessing devices in hospitals?",
+       "a": "No. Hospital reprocessing follows AAMI ST108 and CSA Z314. This page covers water used to manufacture devices."
+      },
+      {
+       "q": "Will our auditor accept your qualification documents?",
+       "a": "They are written to GAMP 5 and fit an ISO 13485 system. Your quality unit approves them before execution."
+      }
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Match the water to the device",
+    "body": "Tell us what your devices contact and how they are cleaned, and we will propose a water grade and a system.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Confirm medical device manufacturing is a target segment",
+    "A device-manufacturing reference project",
+    "Confirm whether Aquemi also serves hospital MDRD water (separate page if so)"
+   ]
+  },
+  {
+   "id": "ind-cdmo",
+   "section": "Industries",
+   "nav_label": "Contract manufacturing (CDMO)",
+   "title": "Water systems for CDMOs and contract manufacturers | Aquemi",
+   "meta": "Water systems for contract development and manufacturing organizations that pass many clients' audits, track every change and expand with new programmes.",
+   "path": "/industries/cdmo/",
+   "eyebrow": "CONTRACT MANUFACTURING · CDMO",
+   "headline": "A water system that stands up to every client's audit",
+   "lead": "A contract development and manufacturing organization (CDMO) is audited by its clients as well as its regulators. We design and document water systems that answer the same questions the same way, every time, and grow when a new programme arrives.",
+   "tags": [
+    "USP <1231>",
+    "Ph. Eur.",
+    "Health Canada GUI-0001",
+    "FDA 21 CFR Part 211",
+    "EU GMP Annex 1",
+    "21 CFR Part 11"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "See our documentation package",
+    "link": "cmp-documentation"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "What CDMOs ask us for",
+     "body": [
+      "Documents a client auditor can follow without a guide. Trends that show control over years, not weeks. Capacity for the next client before the contract is signed.",
+      "Your clients sell into different markets, so one water system often has to satisfy USP, Ph. Eur. and the expectations of several quality units at once."
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "Systems CDMOs use most",
+     "items": [
+      {
+       "t": "Purified Water (PW) generation",
+       "d": "Reverse osmosis (RO) and electrodeionization (EDI) with spare capacity for new programmes.",
+       "tag": "USP <645>",
+       "link": "sys-pw"
+      },
+      {
+       "t": "Water for Injection (WFI) by distillation",
+       "d": "For sterile fill-finish and parenteral clients.",
+       "tag": "USP <85>",
+       "link": "sys-wfi-distillation"
+      },
+      {
+       "t": "WFI by membrane",
+       "d": "Lower operating cost where client products and markets allow it.",
+       "tag": "Ph. Eur.",
+       "link": "sys-wfi-membrane"
+      },
+      {
+       "t": "Storage and distribution loops",
+       "d": "Loops with capped tie-ins for future suites.",
+       "tag": "ASME BPE",
+       "link": "sys-storage"
+      },
+      {
+       "t": "Pure Steam (PS) generators",
+       "d": "For autoclaves and sterilize-in-place between client campaigns.",
+       "tag": "EN 285",
+       "link": "sys-pure-steam"
+      },
+      {
+       "t": "Monitoring and controls",
+       "d": "Audit trails and long-term trend reports for client audits.",
+       "tag": "21 CFR Part 11",
+       "link": "sys-monitoring"
+      }
+     ]
+    },
+    {
+     "type": "options",
+     "h": "Design considerations",
+     "items": [
+      {
+       "t": "Dual-pharmacopoeia design",
+       "d": "Each attribute designed and documented to the stricter of USP and Ph. Eur."
+      },
+      {
+       "t": "Expansion built in",
+       "d": "Generation, storage and loop sized for the next phase, with tie-in points qualified once."
+      },
+      {
+       "t": "Audit-ready records",
+       "d": "Electronic records under 21 CFR Part 11, with trend reports you can hand to a client auditor."
+      },
+      {
+       "t": "Change control speed",
+       "d": "Pre-assessed modifications, so adding a point of use does not stall a client start."
+      }
+     ]
+    },
+    {
+     "type": "band",
+     "tone": "limestone",
+     "h": "One file, many auditors",
+     "body": "We organize the turnover package by the questions auditors ask: what was built, how it was tested, how it is controlled, and what changed since. The same file answers every client."
+    },
+    {
+     "type": "grid",
+     "h": "How we support you",
+     "items": [
+      {
+       "t": "Process design",
+       "d": "Sizing for today's clients and tomorrow's.",
+       "link": "svc-design"
+      },
+      {
+       "t": "Commissioning and qualification",
+       "d": "IQ/OQ and three-phase PQ, documented for client review.",
+       "link": "svc-cq"
+      },
+      {
+       "t": "Service",
+       "d": "Plans with audit support and annual trend reports.",
+       "link": "svc-service"
+      },
+      {
+       "t": "Upgrades",
+       "d": "Capacity increases planned around your client schedule.",
+       "link": "svc-upgrades"
+      }
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Can you join a client audit?",
+       "a": "Yes, as a supplier. We can attend in person or by video to explain design and qualification records."
+      },
+      {
+       "q": "How do we add capacity without requalifying everything?",
+       "a": "By designing tie-ins and spare capacity at the start and qualifying them with the original system. Later additions then need only a targeted requalification."
+      }
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Build for the next client now",
+    "body": "Tell us your current programmes and the ones you expect, and we will size the system for both.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "A CDMO case study with measured outcome",
+    "Confirm Aquemi attends client audits as supplier",
+    "Confirm audit-support inclusion in service plans"
+   ]
+  },
+  {
+   "id": "compliance",
+   "section": "Compliance",
+   "nav_label": "Standards we design to",
+   "title": "Pharmaceutical water standards we design to | Aquemi",
+   "meta": "USP, Ph. Eur., ASME BPE, GAMP 5, 21 CFR Part 11, EU GMP Annex 1: each standard we design to, what it governs and how we show it in your documents.",
+   "path": "/compliance/",
+   "eyebrow": "COMPLIANCE · USP · PH. EUR. · ASME BPE",
+   "headline": "Standards we design to, and where you will find the evidence",
+   "lead": "Every Aquemi system is designed to a stated set of pharmacopoeia, engineering and GMP standards. This page lists each one, what it governs and the document in your package that shows we met it.",
+   "tags": [
+    "USP",
+    "Ph. Eur.",
+    "ASME BPE",
+    "GAMP 5",
+    "21 CFR Part 11",
+    "EU GMP Annex 1",
+    "ISPE"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "See the documentation package",
+    "link": "cmp-documentation"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "How to read this page",
+     "body": [
+      "Your user requirement specification (URS) names the water grades and the regulations your site answers to. We design to those, and we trace each requirement to a test in the factory acceptance test (FAT), site acceptance test (SAT) or installation and operational qualification (IQ/OQ) protocols.",
+      "The table below is the list we start from. Your project may add site standards, a corporate engineering standard or a regional code. We record the final list in the functional specification so that your validation team and ours work from one reference."
+     ]
+    },
+    {
+     "type": "spec",
+     "caption": "Product water quality · pharmacopoeia limits",
+     "note": "Limits as stated by the pharmacopoeia. Microbial levels are guidance values from USP <1231>; your site sets its own alert and action levels.",
+     "cols": [
+      "Parameter",
+      "Limit",
+      "Method or reference"
+     ],
+     "rows": [
+      {
+       "p": "Conductivity, Purified Water (PW) and Water for Injection (WFI)",
+       "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+       "m": "USP <645>, Ph. Eur. 2.2.38",
+       "hl": true
+      },
+      {
+       "p": "Total organic carbon (TOC)",
+       "v": "≤ 500 ppb",
+       "m": "USP <643>, Ph. Eur. 2.2.44"
+      },
+      {
+       "p": "Bacterial endotoxins, WFI",
+       "v": "< 0.25 EU/mL",
+       "m": "USP <85>, Ph. Eur. 2.6.14"
+      },
+      {
+       "p": "Microbial action level, PW",
+       "v": "100 CFU/mL",
+       "m": "USP <1231> guidance"
+      },
+      {
+       "p": "Microbial action level, WFI",
+       "v": "10 CFU/100 mL",
+       "m": "USP <1231> guidance"
+      },
+      {
+       "p": "Pure Steam (PS) condensate",
+       "v": "Meets WFI monograph limits",
+       "m": "USP Pure Steam monograph, EN 285 steam quality tests"
+      }
+     ]
+    },
+    {
+     "type": "table",
+     "h": "The standards, what they govern and how we design to them",
+     "cols": [
+      "Standard",
+      "What it governs",
+      "How we design to it",
+      "Where the evidence sits"
+     ],
+     "rows": [
+      [
+       "USP <1231>, USP <645>, USP <643>, USP <85>",
+       "Water for pharmaceutical purposes: grades, quality attributes, test methods and system design guidance.",
+       "Size generation and storage for your peak demand, keep the loop turbulent and hot or sanitized, and place sample valves and online analysers where the quality attributes are measured.",
+       "Functional specification, P&IDs, FAT report, OQ protocol"
+      ],
+      [
+       "Ph. Eur. 0008 (Purified Water) and 0169 (Water for injections)",
+       "European monographs. Since 2017, 0169 accepts WFI by a purification process equivalent to distillation, such as reverse osmosis (RO) coupled with other techniques.",
+       "Treat USP and Ph. Eur. as one combined requirement when your product ships to both markets. For membrane WFI, we design to the 0169 wording and the EMA questions and answers on non-distillation WFI.",
+       "Design specification, risk assessment"
+      ],
+      [
+       "EU GMP Annex 1 (2022)",
+       "Sterile manufacturing, including water systems: WFI production, storage, distribution, monitoring and biofilm control.",
+       "Continuous TOC and conductivity monitoring on WFI, circulation that limits biofilm, drainable pipework and a sanitization method stated in the design.",
+       "Functional specification, monitoring and control specification"
+      ],
+      [
+       "ASME BPE",
+       "Bioprocessing equipment: materials, surface finish, welding, inspection, drainability and dead legs.",
+       "316L stainless steel product-contact surfaces, Ra ≤ 0.5 µm electropolished on request, orbital welds, sloped lines and short branches to the ASME BPE dead-leg guidance.",
+       "Material certificates, weld log, surface finish report, slope verification"
+      ],
+      [
+       "ISPE Baseline Guide Vol. 4: Water and Steam Systems",
+       "Industry practice for the design of PW, WFI and Pure Steam generation, storage and distribution.",
+       "Use the guide's decision logic for generation technology, storage volume, loop velocity and sanitization.",
+       "Basis of design"
+      ],
+      [
+       "ISPE Baseline Guide Vol. 5 and ASTM E2500",
+       "Commissioning and qualification: a science- and risk-based approach that uses engineering tests as qualification evidence.",
+       "Identify critical aspects early and write FAT and SAT so that results can be leveraged in IQ/OQ.",
+       "Requirements traceability matrix, FAT and SAT protocols"
+      ],
+      [
+       "GAMP 5",
+       "Risk-based approach to computerized systems in GMP environments.",
+       "Categorise software and configuration, then scale specification and testing to the risk.",
+       "Software design specification, configuration specification, OQ for controls"
+      ],
+      [
+       "21 CFR Part 11 and EU GMP Annex 11",
+       "Electronic records and electronic signatures.",
+       "Audit trail, user levels and secure data storage on the control system where your records are electronic.",
+       "Part 11 assessment, controls OQ"
+      ],
+      [
+       "21 CFR Part 211 and Health Canada GUI-0001",
+       "Good manufacturing practice for drug products in the United States and Canada.",
+       "Design for cleanability, documented change control and calibration, so that your site can operate the system under its GMP.",
+       "Turnover package, operation and maintenance manual"
+      ],
+      [
+       "EN 285",
+       "Steam sterilizers, including the pure steam quality tests: non-condensable gases, superheat and dryness.",
+       "Size and control the Pure Steam generator so the steam at the point of use can pass these tests.",
+       "Pure Steam test report"
+      ],
+      [
+       "ASME BPVC Section VIII and IX, CSA B51",
+       "Pressure vessel design, welder and procedure qualification, and Canadian registration of pressure equipment.",
+       "Design vessels and heat exchangers to code and register them for the destination province.",
+       "Canadian Registration Number (CRN), U-1A data report, WPS and PQR"
+      ],
+      [
+       "CSA C22.2 No. 286 and UL 508A",
+       "Industrial control panels for Canada and the United States.",
+       "Build or source control panels to the standard for the installation country.",
+       "Panel certification label and report"
+      ]
+     ]
+    },
+    {
+     "type": "readout",
+     "value": "≤ 1.3 µS/cm @ 25 °C",
+     "method": "USP <645> stage 1",
+     "body": "The conductivity limit for PW and WFI. We commission each system against it and record the result, with the instrument's calibration certificate, in the FAT or SAT report."
+    },
+    {
+     "type": "grid",
+     "h": "Certifications we hold",
+     "intro": "We list only certifications we hold today. Certificate numbers and scope are shown in full, and each links to a downloadable copy.",
+     "items": [
+      {
+       "t": "Quality management system",
+       "d": "[ISO 9001 certificate number, scope and registrar], or [QMS status and target certification date].",
+       "tag": "ISO 9001",
+       "link": "cmp-quality"
+      },
+      {
+       "t": "Pressure equipment",
+       "d": "[ASME U stamp or CSA B51 quality programme status and certificate number].",
+       "tag": "ASME"
+      },
+      {
+       "t": "Control panels",
+       "d": "[CSA or UL panel shop certification, file number].",
+       "tag": "CSA"
+      },
+      {
+       "t": "Welding",
+       "d": "[Welding certification, for example CWB CSA W47.1, and welder qualification records].",
+       "tag": "ASME IX"
+      }
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "Do you design to USP or Ph. Eur.?",
+       "a": "Both, when your product ships to both markets. The limits for conductivity and TOC are aligned, and we state which monographs apply in the functional specification."
+      },
+      {
+       "q": "Can WFI be produced by membranes?",
+       "a": "Yes, under USP since long before 2017 and under Ph. Eur. 0169 since 2017. We describe the design approach on the WFI by membrane page and help you prepare the rationale your quality unit needs."
+      },
+      {
+       "q": "Is your control system 21 CFR Part 11 compliant?",
+       "a": "Part 11 applies to how your site uses records, not to a product alone. We supply a control system with the technical controls Part 11 requires and a written assessment that your quality unit can review."
+      },
+      {
+       "q": "Will you sign our quality agreement or supplier questionnaire?",
+       "a": "Yes. Send it with the request for proposal and we return it with the quote."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related pages",
+     "items": [
+      "cmp-documentation",
+      "cmp-quality",
+      "svc-cq",
+      "sys-wfi-membrane"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Send us your URS",
+    "body": "We return a compliance matrix that maps each requirement to a design feature and a test.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Certifications actually held: ISO 9001 status, certificate number, scope, registrar and expiry",
+    "ASME or CSA B51 pressure equipment status; CRN process owner",
+    "Control panel certification (CSA C22.2 No. 286 or UL 508A) and file number",
+    "Welding certification (for example CWB) and welder qualification status",
+    "Confirm Pure Steam testing offered to EN 285 tests in-house or via a partner",
+    "Quality review of each standard row before publication"
+   ]
+  },
+  {
+   "id": "cmp-documentation",
+   "section": "Compliance",
+   "nav_label": "Documentation package",
+   "title": "Validation documentation package | Aquemi",
+   "meta": "Every document we deliver by phase: functional specification, P&IDs, material certificates, weld logs, FAT, SAT and IQ/OQ protocols, turnover package.",
+   "path": "/compliance/documentation/",
+   "eyebrow": "DOCUMENTATION · GAMP 5 · ASME BPE",
+   "headline": "The documents arrive with the equipment",
+   "lead": "We write the documentation package as we design and build, not after shipment. Your validation team receives drafts for review at each phase and a complete turnover package at handover.",
+   "tags": [
+    "GAMP 5",
+    "ASME BPE",
+    "ISPE",
+    "21 CFR Part 11",
+    "ASTM E2500"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Request a sample turnover index",
+    "link": "contact-proposal"
+   },
+   "blocks": [
+    {
+     "type": "steps",
+     "h": "Documents by project phase",
+     "items": [
+      {
+       "t": "Specify",
+       "d": "URS review and response, compliance matrix, basis of design, functional specification (FS), initial risk assessment."
+      },
+      {
+       "t": "Design",
+       "d": "Piping and instrumentation diagrams (P&IDs), general arrangement drawings, isometric drawings, design specification, software and hardware design specifications, requirements traceability matrix."
+      },
+      {
+       "t": "Fabricate",
+       "d": "Material certificates, weld map and weld log, welder and procedure qualifications, borescope records, surface finish and passivation reports, pressure test records."
+      },
+      {
+       "t": "Test in the factory",
+       "d": "FAT protocol for your approval before testing, executed FAT report with deviations and their closure."
+      },
+      {
+       "t": "Install and commission",
+       "d": "SAT protocol and report, loop and instrument check sheets, punch list and close-out."
+      },
+      {
+       "t": "Qualify",
+       "d": "Installation qualification (IQ) and operational qualification (OQ) protocols, executed reports, support for your performance qualification (PQ)."
+      },
+      {
+       "t": "Hand over",
+       "d": "Turnover package, operation and maintenance manual, spare parts list, training records."
+      }
+     ]
+    },
+    {
+     "type": "table",
+     "h": "Turnover package contents",
+     "cols": [
+      "Section",
+      "Contents",
+      "Format"
+     ],
+     "rows": [
+      [
+       "1. Project summary",
+       "Scope, purchase order references, system tag list, approved document register",
+       "PDF"
+      ],
+      [
+       "2. Specifications",
+       "FS, design specification, software design specification, configuration specification",
+       "PDF, native on request"
+      ],
+      [
+       "3. Drawings",
+       "As-built P&IDs, general arrangement, isometrics with weld numbers, electrical schematics, panel layout",
+       "PDF and DWG"
+      ],
+      [
+       "4. Materials",
+       "Material certificates (EN 10204 type 3.1) for product-contact components, elastomer compliance statements (FDA 21 CFR 177, USP <88> Class VI)",
+       "PDF"
+      ],
+      [
+       "5. Welding",
+       "Weld map, weld log, welding procedure specifications (WPS), procedure qualification records (PQR), welder qualifications, borescope records",
+       "PDF"
+      ],
+      [
+       "6. Surface and cleaning",
+       "Surface finish reports, cleaning and passivation certificate, slope verification",
+       "PDF"
+      ],
+      [
+       "7. Pressure and code",
+       "Pressure test certificates, CRN registration, vessel data reports",
+       "PDF"
+      ],
+      [
+       "8. Instruments",
+       "Instrument list, datasheets, calibration certificates traceable to national standards",
+       "PDF"
+      ],
+      [
+       "9. Software",
+       "Software version record, alarm list, backup of the control program, Part 11 assessment",
+       "PDF and media"
+      ],
+      [
+       "10. Testing",
+       "Executed FAT and SAT, IQ/OQ protocols and reports, deviation log",
+       "PDF"
+      ],
+      [
+       "11. Operation",
+       "Operation and maintenance manual, recommended spare parts, preventive maintenance schedule",
+       "PDF"
+      ],
+      [
+       "12. Training",
+       "Training plan, attendance records, operator quick reference",
+       "PDF"
+      ]
+     ]
+    },
+    {
+     "type": "band",
+     "tone": "limestone",
+     "h": "Your templates or ours",
+     "body": "If your site has validation templates, we write the FAT, SAT and IQ/OQ protocols in them. If not, we use ours, built on GAMP 5 and the ISPE commissioning and qualification guide."
+    },
+    {
+     "type": "docs",
+     "h": "Documents for review before order",
+     "items": [
+      "Sample turnover package index",
+      "Redacted FAT protocol",
+      "Redacted IQ/OQ protocol table of contents",
+      "Sample weld log and weld map",
+      "Sample requirements traceability matrix"
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "When do we see the protocols?",
+       "a": "The FAT protocol goes to you for approval [number] weeks before testing. IQ/OQ protocols follow the FAT so that results can be referenced, not repeated."
+      },
+      {
+       "q": "Do you deliver documents electronically?",
+       "a": "Yes, as indexed and bookmarked PDF files, with native drawings on request. Paper copies are available if your site requires them."
+      },
+      {
+       "q": "Can FAT results count towards qualification?",
+       "a": "Where your quality unit agrees, yes. We follow the ASTM E2500 and ISPE approach: engineering tests carried out under good documentation practice can be leveraged in IQ/OQ."
+      }
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related pages",
+     "items": [
+      "compliance",
+      "cmp-quality",
+      "svc-fat-sat",
+      "svc-cq"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "See a sample before you commit",
+    "body": "We share a redacted turnover index and FAT protocol with your validation lead.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Lead time for FAT protocol submission before testing ([number] weeks)",
+    "Confirm material certificate type delivered (EN 10204 3.1) for all product-contact parts",
+    "Confirm borescope inspection coverage offered as standard",
+    "Prepare redacted sample documents for download",
+    "Confirm whether native drawing formats (DWG, RVT) are offered"
+   ]
+  },
+  {
+   "id": "cmp-quality",
+   "section": "Compliance",
+   "nav_label": "Quality management",
+   "title": "Quality management and traceability | Aquemi",
+   "meta": "How we control quality: QMS, material traceability to heat number, orbital weld inspection, calibrated instruments and documented change control.",
+   "path": "/compliance/quality/",
+   "eyebrow": "QUALITY · ISO 9001 · ASME BPE",
+   "headline": "Quality you can audit, from heat number to handover",
+   "lead": "Our quality management system controls design, purchasing, fabrication and testing. Your auditors can follow any product-contact component from the mill certificate to the weld log to the FAT report.",
+   "tags": [
+    "ISO 9001",
+    "ASME BPE",
+    "ASME IX",
+    "GAMP 5"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Book a supplier audit",
+    "link": "contact-proposal"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "Quality management system",
+     "body": [
+      "Our quality management system (QMS) is [certified to ISO 9001:2015 by [registrar], certificate [number]] [or: built to ISO 9001:2015, with certification planned for [date]]. It is described in a quality manual and controlled procedures for design review, purchasing, fabrication, inspection, testing, nonconformance and corrective action.",
+      "We welcome supplier audits. Your quality unit can review procedures, records and the shop floor on [number] working days' notice."
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "What we control",
+     "items": [
+      {
+       "t": "Material traceability",
+       "d": "Every product-contact component is received against an EN 10204 type 3.1 certificate and tracked by heat number to its weld and drawing.",
+       "tag": "EN 10204"
+      },
+      {
+       "t": "Orbital welding",
+       "d": "Welds are made to qualified procedures by qualified welders, logged by number and shown on the weld map.",
+       "tag": "ASME IX"
+      },
+      {
+       "t": "Weld inspection",
+       "d": "Visual and borescope inspection to ASME BPE acceptance criteria, with [percentage]% of product-contact welds borescoped and recorded.",
+       "tag": "ASME BPE"
+      },
+      {
+       "t": "Surface finish",
+       "d": "Ra measured and recorded on product-contact surfaces; electropolished to Ra ≤ 0.5 µm on request.",
+       "tag": "ASME BPE"
+      },
+      {
+       "t": "Calibration",
+       "d": "Test and measuring instruments are calibrated on schedule against references traceable to national standards, with certificates in the package.",
+       "tag": "ISO 9001"
+      },
+      {
+       "t": "Change control",
+       "d": "Once you approve a design document, every change is raised, assessed for impact, approved and recorded before work continues.",
+       "tag": "GAMP 5"
+      },
+      {
+       "t": "Nonconformance and CAPA",
+       "d": "Deviations found in fabrication or testing are recorded, dispositioned and closed with a corrective and preventive action (CAPA) where needed."
+      },
+      {
+       "t": "Supplier control",
+       "d": "Critical suppliers of tube, fittings, valves, membranes and instruments are approved and reviewed on a schedule."
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "h": "How a weld is controlled",
+     "items": [
+      {
+       "t": "Qualify",
+       "d": "Welding procedure specification and procedure qualification record approved; welder qualified to the procedure."
+      },
+      {
+       "t": "Prepare",
+       "d": "Tube and fitting heat numbers checked against certificates; coupons welded at the start of each shift or set-up."
+      },
+      {
+       "t": "Weld",
+       "d": "Orbital weld made and numbered; weld parameters recorded."
+      },
+      {
+       "t": "Inspect",
+       "d": "Visual and borescope inspection against ASME BPE criteria; result entered in the weld log."
+      },
+      {
+       "t": "Close",
+       "d": "Weld log reconciled with the isometric drawing and the weld map before pressure testing."
+      }
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "Certificates",
+     "intro": "Download links appear here only for certificates we hold.",
+     "items": [
+      {
+       "t": "[ISO 9001 certificate]",
+       "d": "[Registrar, scope, certificate number, expiry date]",
+       "tag": "ISO 9001"
+      },
+      {
+       "t": "[Pressure equipment programme]",
+       "d": "[CSA B51 or ASME certificate and number]",
+       "tag": "CSA B51"
+      },
+      {
+       "t": "[Welding certification]",
+       "d": "[For example CWB CSA W47.1 division and number]",
+       "tag": "CWB"
+      },
+      {
+       "t": "[Control panel certification]",
+       "d": "[CSA or UL file number]",
+       "tag": "CSA"
+      }
+     ]
+    },
+    {
+     "type": "docs",
+     "h": "Quality records in every turnover package",
+     "items": [
+      "Material certificates indexed by heat number",
+      "Weld map, weld log and borescope records",
+      "Welder and procedure qualifications",
+      "Surface finish and passivation reports",
+      "Pressure test certificates",
+      "Instrument calibration certificates",
+      "Deviation and nonconformance log with closure",
+      "Change control register"
+     ]
+    },
+    {
+     "type": "related",
+     "h": "Related pages",
+     "items": [
+      "compliance",
+      "cmp-documentation",
+      "svc-fabrication",
+      "svc-fat-sat"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Audit us before you order",
+    "body": "Tell us when your quality unit would like to visit the shop.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "ISO 9001 status: certified (registrar, number, expiry) or roadmap date",
+    "Borescope coverage percentage for product-contact welds",
+    "Supplier audit notice period ([number] working days)",
+    "Welding, pressure and panel certifications actually held",
+    "Calibration provider and accreditation (for example ISO/IEC 17025)"
+   ]
+  },
+  {
+   "id": "projects",
+   "section": "Projects",
+   "nav_label": "Case studies",
+   "title": "Pharmaceutical water system case studies | Aquemi",
+   "meta": "Projects told as problem, system delivered and measured outcome, with flow in L/h, conductivity, TOC and the standard met. Filter by system and industry.",
+   "path": "/projects/",
+   "eyebrow": "PROJECTS · CASE STUDIES",
+   "headline": "Problem, system delivered, measured outcome",
+   "lead": "Each case study states what the client needed, what we built and what was measured at handover. Figures come from executed FAT, SAT or qualification reports.",
+   "tags": [
+    "USP",
+    "Ph. Eur.",
+    "ASME BPE"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Explore systems",
+    "link": "systems"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "How we write case studies",
+     "body": [
+      "Every project page opens with a project profile: industry, location by province, system, capacity in L/h, water grade and the standard met. Then three short sections: the problem, the system we delivered and the measured outcome.",
+      "We publish client names only with written permission. Every figure is taken from a signed test report."
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "Filter projects",
+     "intro": "Projects can be filtered by system, industry and province.",
+     "items": [
+      {
+       "t": "By system",
+       "d": "PW generation, WFI by distillation, WFI by membrane, Pure Steam, storage and distribution, upgrades.",
+       "link": "systems"
+      },
+      {
+       "t": "By industry",
+       "d": "Pharmaceutical, biotechnology, medical devices, contract manufacturing.",
+       "link": "industries"
+      },
+      {
+       "t": "By province",
+       "d": "[Provinces with completed projects]"
+      }
+     ]
+    },
+    {
+     "type": "case",
+     "h": "Placeholder case studies (outlines only, not for publication until real figures are supplied)",
+     "items": [
+      {
+       "t": "[Placeholder] Purified Water generation and loop for an oral solid dose plant",
+       "client": "[Oral solid dose manufacturer], [city], [province]",
+       "problem": "An existing chemical deionization system produced PW with conductivity drift toward [value] µS/cm and needed resin regeneration every [number] days. A planned capacity increase raised peak demand to [value] L/h.",
+       "system": "Double-pass RO with electrodeionization (EDI), [volume] L 316L storage tank, ambient loop with ozone and UV ozone destruction, [number] points of use, factory acceptance tested before shipment.",
+       "outcome": "[Conductivity at return of loop, µS/cm @ 25 °C], [TOC, ppb], [microbial count, CFU/mL] over [number] weeks of PQ; chemical regeneration eliminated; [shutdown duration] days for tie-in."
+      },
+      {
+       "t": "[Placeholder] WFI by membrane for a biologics fill-finish expansion",
+       "client": "[Biotechnology company], [city], [province]",
+       "problem": "A new fill-finish line needed [value] L/h of WFI in a room too small for a multi-effect still, with a [energy or footprint target].",
+       "system": "Pretreatment, double-pass RO, EDI and ultrafiltration, hot WFI storage at [temperature] °C, hot loop, continuous TOC and conductivity monitoring, design rationale written to Ph. Eur. 0169.",
+       "outcome": "[Endotoxin result, EU/mL], [TOC, ppb], [conductivity, µS/cm @ 25 °C] at OQ; [energy use compared with distillation, kWh/m³]; FAT to SAT in [number] weeks."
+      },
+      {
+       "t": "[Placeholder] Pure Steam generator and loop replacement for a CDMO",
+       "client": "[Contract development and manufacturing organization], [city], [province]",
+       "problem": "An ageing Pure Steam generator failed EN 285 non-condensable gas tests and limited autoclave availability to [value]%.",
+       "system": "[Capacity] kg/h Pure Steam generator, condensate cooler and sample point, re-routed distribution header with trapped drop legs, replacement installed during a [number]-day shutdown.",
+       "outcome": "[Non-condensable gases, %], [superheat, K], [dryness value] at SAT; condensate met WFI conductivity and endotoxin limits; autoclave availability restored to [value]%."
+      }
+     ]
+    },
+    {
+     "type": "band",
+     "tone": "limestone",
+     "h": "Want to see a project in person",
+     "body": "Where clients agree, we arrange a reference call or a site visit with their engineering or quality lead."
+    },
+    {
+     "type": "related",
+     "h": "Related pages",
+     "items": [
+      "systems",
+      "svc-fat-sat",
+      "industries"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Have a project like these",
+    "body": "Tell us the grade, the capacity and the date you need water.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Replace all three placeholder outlines with real projects before launch, or do not publish the page",
+    "Written client permission for each named reference",
+    "Measured figures from executed FAT, SAT or qualification reports for each project",
+    "Project photographs",
+    "Provinces with completed projects for the filter"
+   ]
+  },
+  {
+   "id": "about",
+   "section": "Company",
+   "nav_label": "About",
+   "title": "About Aquemi: Canadian pharmaceutical water engineers",
+   "meta": "We design, fabricate and qualify Purified Water, WFI and Pure Steam systems in Canada, for teams who answer to auditors. Who we are and how we work.",
+   "path": "/company/about/",
+   "eyebrow": "ABOUT AQUEMI",
+   "headline": "A Canadian specialist in pharmaceutical water",
+   "lead": "We design, fabricate and qualify Purified Water, Water for Injection and Pure Steam systems, and we stay with them after handover. We do one thing, for clients who answer to auditors.",
+   "tags": [
+    "USP",
+    "Ph. Eur.",
+    "ASME BPE",
+    "GAMP 5"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "See how a project runs",
+    "link": "services"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "Who we are",
+     "body": [
+      "Aquemi is a team of process engineers, automation engineers, welders, validation specialists and service technicians based in [city], [province]. We have been building water systems for regulated manufacturing since [year].",
+      "Our clients are pharmaceutical, biotechnology, medical device and contract manufacturers. Most of them have a validation team, a quality unit and a regulator who will read the records. We build for those readers."
+     ]
+    },
+    {
+     "type": "steps",
+     "h": "How we work",
+     "items": [
+      {
+       "t": "Design",
+       "d": "We start from your user requirement specification and a feed water analysis, and size the system for your measured demand."
+      },
+      {
+       "t": "Fabricate",
+       "d": "Skids are built in our shop in [city], with orbital welding, traceable materials and a weld log for every product-contact joint."
+      },
+      {
+       "t": "Test",
+       "d": "Every system is factory acceptance tested with water before it ships, to a protocol you approved."
+      },
+      {
+       "t": "Qualify",
+       "d": "We execute SAT and IQ/OQ on site, and support your PQ."
+      },
+      {
+       "t": "Support",
+       "d": "Service, spare parts, calibration and requalification support for the life of the system."
+      }
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "Why a Canadian specialist",
+     "items": [
+      {
+       "t": "Built and tested in Canada",
+       "d": "Design, fabrication and FAT in [city]; your team can attend the FAT without crossing a border."
+      },
+      {
+       "t": "Priced in Canadian dollars",
+       "d": "Quotes in CAD with no cross-border freight or tariff exposure on the skid."
+      },
+      {
+       "t": "Registered for Canadian codes",
+       "d": "Pressure equipment registered with a CRN for your province; panels certified for Canadian installation."
+      },
+      {
+       "t": "Service close to your site",
+       "d": "Technicians based in [service locations] and spare parts stocked in [location].",
+       "link": "contact-locations"
+      },
+      {
+       "t": "English and French",
+       "d": "[Engineering, documentation and support in English and French.]"
+      },
+      {
+       "t": "Pharmaceutical water only",
+       "d": "We do not sell residential or municipal products. Our engineering time goes to regulated water systems."
+      }
+     ]
+    },
+    {
+     "type": "readout",
+     "value": "[number]",
+     "method": "Systems delivered since [year]",
+     "body": "[A short, sourced statement of installed base, by system type and province. Publish only when the figure is verified.]"
+    },
+    {
+     "type": "band",
+     "tone": "limestone",
+     "h": "Our commitments",
+     "body": "We publish our specifications on the page, we name the standard behind every claim, and we deliver the documents with the equipment."
+    },
+    {
+     "type": "related",
+     "h": "Related pages",
+     "items": [
+      "compliance",
+      "cmp-quality",
+      "careers",
+      "contact-locations"
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Talk to an engineer",
+    "body": "Send your URS or your questions and an engineer replies within [response time].",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Head office and shop city and province",
+    "Founding year",
+    "Installed base figure by system type and province (verified)",
+    "Team size and disciplines; professional designations (P.Eng., CET)",
+    "Service locations and spare parts stock location",
+    "Confirm French-language capability before publishing the bilingual claim",
+    "Engineer response time for enquiries"
+   ]
+  },
+  {
+   "id": "careers",
+   "section": "Company",
+   "nav_label": "Careers",
+   "title": "Careers in pharmaceutical water engineering | Aquemi",
+   "meta": "Join a Canadian team that designs, welds, tests and qualifies pharmaceutical water systems. Open roles in engineering, fabrication, validation and service.",
+   "path": "/company/careers/",
+   "eyebrow": "CAREERS",
+   "headline": "Build systems that pass inspection",
+   "lead": "We hire engineers, welders, technicians and validation specialists who like exact work. You see a system through from drawing to qualified handover.",
+   "tags": [
+    "ASME BPE",
+    "GAMP 5"
+   ],
+   "primary_cta": "See open roles",
+   "secondary_cta": {
+    "label": "About Aquemi",
+    "link": "about"
+   },
+   "blocks": [
+    {
+     "type": "prose",
+     "h": "What the work is like",
+     "body": [
+      "Our projects are small enough that one engineer can know the whole system and regulated enough that every detail is recorded. You will read a URS, draw a P&ID, watch your design get welded and tested, and see it pass FAT with the client in the room.",
+      "We train people in pharmaceutical water practice. Many of our team members came from [food, dairy, power or general process work] and learned GMP documentation here."
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "Roles we hire for",
+     "intro": "Current openings are listed below. If none fits, send a general application.",
+     "items": [
+      {
+       "t": "Process engineer",
+       "d": "Sizing and design of PW, WFI and Pure Steam systems; P&IDs and specifications.",
+       "tag": "[Open or closed]"
+      },
+      {
+       "t": "Automation engineer",
+       "d": "PLC and HMI programming, GAMP 5 software specifications, controls OQ.",
+       "tag": "[Open or closed]"
+      },
+      {
+       "t": "Orbital welder and pipefitter",
+       "d": "Sanitary 316L tube welding to ASME BPE, weld logs and borescope inspection.",
+       "tag": "[Open or closed]"
+      },
+      {
+       "t": "Validation specialist",
+       "d": "FAT, SAT and IQ/OQ protocol writing and execution.",
+       "tag": "[Open or closed]"
+      },
+      {
+       "t": "Field service technician",
+       "d": "Commissioning, preventive maintenance and calibration at client sites in [region].",
+       "tag": "[Open or closed]"
+      },
+      {
+       "t": "Project manager",
+       "d": "Schedule, cost and client communication from order to handover.",
+       "tag": "[Open or closed]"
+      }
+     ]
+    },
+    {
+     "type": "table",
+     "h": "What we offer",
+     "cols": [
+      "Area",
+      "Detail"
+     ],
+     "rows": [
+      [
+       "Location",
+       "[City], [province]; field roles travel within [region]"
+      ],
+      [
+       "Training",
+       "[Welding qualification, GMP training, professional development budget]"
+      ],
+      [
+       "Benefits",
+       "[Health and dental, retirement plan, vacation]"
+      ],
+      [
+       "Hours",
+       "[Standard hours and shift pattern; overtime policy for shutdowns]"
+      ],
+      [
+       "Professional status",
+       "[Support for P.Eng. or CET registration]"
+      ]
+     ]
+    },
+    {
+     "type": "steps",
+     "h": "How we hire",
+     "items": [
+      {
+       "t": "Apply",
+       "d": "Send a CV and a short note on the work you are proudest of."
+      },
+      {
+       "t": "Conversation",
+       "d": "A [30]-minute call with the hiring manager."
+      },
+      {
+       "t": "Technical interview",
+       "d": "A practical discussion: a P&ID, a weld sample or a protocol, depending on the role."
+      },
+      {
+       "t": "Shop visit",
+       "d": "Meet the team and see the work."
+      },
+      {
+       "t": "Offer",
+       "d": "Written offer within [number] working days of the final interview."
+      }
+     ]
+    },
+    {
+     "type": "form",
+     "h": "General application",
+     "intro": "We read every application and reply within [number] working days.",
+     "fields": [
+      {
+       "label": "Full name",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Phone",
+       "kind": "tel",
+       "required": false
+      },
+      {
+       "label": "Role of interest",
+       "kind": "select",
+       "options": [
+        "Process engineer",
+        "Automation engineer",
+        "Orbital welder and pipefitter",
+        "Validation specialist",
+        "Field service technician",
+        "Project manager",
+        "Other"
+       ],
+       "required": true
+      },
+      {
+       "label": "Link to CV or LinkedIn profile",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "The work you are proudest of",
+       "kind": "textarea",
+       "help": "Two or three sentences is enough.",
+       "required": false
+      }
+     ],
+     "submit": "Send application"
+    }
+   ],
+   "cta": {
+    "h": "Not hiring for your role today",
+    "body": "Send a general application and we will contact you when a role opens.",
+    "button": "Send application",
+    "link": "careers"
+   },
+   "todo": [
+    "List of open roles with status and location",
+    "Benefits, hours and training details",
+    "Hiring timeline commitments (reply time, offer time)",
+    "Background of current team members (to confirm the 'came from other industries' statement)",
+    "Applicant privacy notice (PIPEDA, Quebec Law 25) linked from the form",
+    "Careers inbox or applicant tracking system"
+   ]
+  },
+  {
+   "id": "news",
+   "section": "Company",
+   "nav_label": "News",
+   "title": "News and technical notes | Aquemi",
+   "meta": "Technical notes on pharmaceutical water: Ph. Eur. membrane WFI, EU GMP Annex 1 for water systems, sanitization choices. Plus Aquemi project news.",
+   "path": "/company/news/",
+   "eyebrow": "NEWS · TECHNICAL NOTES",
+   "headline": "Technical notes and company news",
+   "lead": "Short, answer-first notes on the standards and design choices behind pharmaceutical water systems, written by our engineers. Company news sits alongside.",
+   "tags": [
+    "Ph. Eur.",
+    "USP",
+    "EU GMP Annex 1"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Standards we design to",
+    "link": "compliance"
+   },
+   "blocks": [
+    {
+     "type": "grid",
+     "h": "Categories",
+     "items": [
+      {
+       "t": "Technical notes",
+       "d": "Standards, design decisions and operating questions, answered first and explained after."
+      },
+      {
+       "t": "Project news",
+       "d": "FAT and handover milestones, published with client permission.",
+       "link": "projects"
+      },
+      {
+       "t": "Company",
+       "d": "People, facilities and events."
+      }
+     ]
+    },
+    {
+     "type": "table",
+     "h": "Post format",
+     "cols": [
+      "Element",
+      "Rule"
+     ],
+     "rows": [
+      [
+       "Title",
+       "The question the reader typed, or the change in one line"
+      ],
+      [
+       "Summary",
+       "The answer in two or three sentences, before any background"
+      ],
+      [
+       "Byline",
+       "Engineer's name, role and date; date of last review for standards content"
+      ],
+      [
+       "Body",
+       "Short sections, each standard named and cited, numbers with units"
+      ],
+      [
+       "Close",
+       "What it means for your system, and a link to the relevant system page"
+      ]
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "Placeholder post outlines",
+     "intro": "Outlines for the first three technical notes. Each is drafted by an Aquemi engineer and reviewed before publication.",
+     "items": [
+      {
+       "t": "What changed when Ph. Eur. accepted membrane WFI",
+       "d": "Answer: since April 2017, Ph. Eur. 0169 allows WFI by a purification process equivalent to distillation, such as RO coupled with EDI or ultrafiltration. Sections: the old and new wording; the EMA questions and answers; what inspectors look for (sanitization, monitoring, biofilm control); when distillation is still the better choice; [Aquemi engineer] view.",
+       "tag": "Ph. Eur. 0169",
+       "link": "sys-wfi-membrane"
+      },
+      {
+       "t": "EU GMP Annex 1 (2022) and your water system",
+       "d": "Answer: Annex 1 sets explicit expectations for WFI generation, storage, distribution and continuous monitoring. Sections: the clauses on water and steam; continuous TOC and conductivity monitoring; biofilm and sanitization; Pure Steam quality; a checklist for an existing system; [date of review].",
+       "tag": "EU GMP Annex 1",
+       "link": "sys-monitoring"
+      },
+      {
+       "t": "Hot water or ozone: choosing a sanitization method for a PW loop",
+       "d": "Answer: hot water sanitization at 80 °C needs no chemicals but uses energy and needs rated components; ozone runs at ambient temperature and needs UV destruction before use. Sections: how each works; materials and temperature limits; energy and cycle time [figures]; validation of ozone removal; how to choose.",
+       "tag": "USP <1231>",
+       "link": "sys-storage"
+      }
+     ]
+    },
+    {
+     "type": "form",
+     "h": "Get new technical notes by email",
+     "intro": "One email when a note is published. No other mailings. Unsubscribe at any time.",
+     "fields": [
+      {
+       "label": "Email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Topics",
+       "kind": "checkbox-group",
+       "options": [
+        "Technical notes",
+        "Project news",
+        "Company news"
+       ],
+       "required": false
+      }
+     ],
+     "submit": "Subscribe"
+    }
+   ],
+   "cta": {
+    "h": "Have a question we should answer",
+    "body": "Send it to an engineer; if it is useful to others, it may become a note.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Named author engineer for each note",
+    "Technical review of each outline against the current text of Ph. Eur. 0169, the EMA Q&A and EU GMP Annex 1 before writing",
+    "Energy and cycle-time figures for the sanitization note",
+    "Newsletter platform and consent wording (CASL)",
+    "First company news items"
+   ]
+  },
+  {
+   "id": "contact-proposal",
+   "section": "Contact",
+   "nav_label": "Request a proposal",
+   "title": "Request a proposal for a water system | Aquemi",
+   "meta": "Tell us the project stage, system type and capacity in L/h. An engineer replies within [response time] with questions or a budget proposal.",
+   "path": "/contact/proposal/",
+   "eyebrow": "REQUEST A PROPOSAL",
+   "headline": "Request a proposal",
+   "lead": "Tell us what stage your project is at, which system you need and how much water, in L/h. An engineer reads every request and replies within [response time].",
+   "tags": [
+    "USP",
+    "Ph. Eur.",
+    "ASME BPE"
+   ],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Existing system? Request service",
+    "link": "contact-service"
+   },
+   "blocks": [
+    {
+     "type": "docs",
+     "h": "What to include",
+     "items": [
+      "Water grades and the pharmacopoeia you must meet (USP, Ph. Eur., or both)",
+      "Required capacity: peak and average demand in L/h, and daily volume",
+      "Number and location of points of use, with temperature at each",
+      "Feed water source and a recent analysis (conductivity, hardness, chlorine or chloramine, silica, TOC)",
+      "Your user requirement specification (URS), if you have one",
+      "Site constraints: room size, ceiling height, available power and steam",
+      "Target dates: order, FAT, water on site"
+     ]
+    },
+    {
+     "type": "form",
+     "h": "Project details",
+     "intro": "Fields marked required are the minimum we need to reply with useful questions. Attach documents by reply email after you submit.",
+     "fields": [
+      {
+       "label": "Project stage",
+       "kind": "select",
+       "options": [
+        "Feasibility or budget estimate",
+        "Basic design or URS in preparation",
+        "URS ready, requesting proposals",
+        "Replacing or expanding an existing system"
+       ],
+       "required": true
+      },
+      {
+       "label": "System type",
+       "kind": "checkbox-group",
+       "options": [
+        "Purified Water (PW) generation",
+        "Water for Injection (WFI) by distillation",
+        "WFI by membrane",
+        "Pure Steam generator",
+        "Storage and distribution loop",
+        "Pretreatment",
+        "Monitoring and controls",
+        "Upgrade or retrofit",
+        "Not sure yet"
+       ],
+       "required": true
+      },
+      {
+       "label": "Required capacity",
+       "kind": "number",
+       "unit": "L/h",
+       "help": "Peak demand at points of use. If you know only daily volume, enter it below.",
+       "required": true
+      },
+      {
+       "label": "Daily volume",
+       "kind": "number",
+       "unit": "L/day",
+       "required": false
+      },
+      {
+       "label": "Pure Steam capacity",
+       "kind": "number",
+       "unit": "kg/h",
+       "help": "Only if you need a Pure Steam generator.",
+       "required": false
+      },
+      {
+       "label": "Pharmacopoeia",
+       "kind": "checkbox-group",
+       "options": [
+        "USP",
+        "Ph. Eur.",
+        "JP",
+        "Not sure"
+       ],
+       "required": false
+      },
+      {
+       "label": "Number of points of use",
+       "kind": "number",
+       "required": false
+      },
+      {
+       "label": "Feed water source",
+       "kind": "select",
+       "options": [
+        "Municipal, chlorinated",
+        "Municipal, chloraminated",
+        "Well water",
+        "Not sure"
+       ],
+       "required": false
+      },
+      {
+       "label": "Target date for water on site",
+       "kind": "text",
+       "help": "Month and year.",
+       "required": false
+      },
+      {
+       "label": "Anything else we should know",
+       "kind": "textarea",
+       "required": false
+      },
+      {
+       "label": "Full name",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Company",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Role",
+       "kind": "select",
+       "options": [
+        "Process or project engineering",
+        "Validation",
+        "Quality",
+        "Facilities or maintenance",
+        "Procurement",
+        "Consulting engineer",
+        "Other"
+       ],
+       "required": false
+      },
+      {
+       "label": "Email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Phone",
+       "kind": "tel",
+       "required": false
+      },
+      {
+       "label": "Site province or state",
+       "kind": "text",
+       "required": true
+      }
+     ],
+     "submit": "Request a proposal"
+    },
+    {
+     "type": "steps",
+     "h": "What happens next",
+     "items": [
+      {
+       "t": "We reply",
+       "d": "An engineer replies within [response time] to confirm scope and ask for missing data."
+      },
+      {
+       "t": "We talk",
+       "d": "A call of about [45] minutes with your engineering and validation leads to review demand, feed water and site."
+      },
+      {
+       "t": "We propose",
+       "d": "A budget or firm proposal within [number] working days, with a process flow diagram, key specifications, documentation list and schedule."
+      }
+     ]
+    },
+    {
+     "type": "faq",
+     "h": "Questions we hear",
+     "items": [
+      {
+       "q": "We do not have a URS yet. Should we still ask?",
+       "a": "Yes. Many projects start with a budget estimate. We can help you write the requirements once the demand and feed water are known."
+      },
+      {
+       "q": "Will you sign an NDA first?",
+       "a": "Yes. Send your non-disclosure agreement and we return it signed before you share drawings."
+      },
+      {
+       "q": "Who will see my details?",
+       "a": "Only Aquemi engineering and sales staff. We do not share or sell your data. See our privacy notice."
+      }
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Prefer to talk first",
+    "body": "Call [phone number], [hours], and ask for an application engineer.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Response time commitment for enquiries",
+    "Proposal turnaround in working days",
+    "Sales phone number and hours",
+    "File upload support in the form tool (URS, water analysis) or a secure upload link",
+    "Privacy notice and consent wording (PIPEDA, CASL, Quebec Law 25)",
+    "CRM routing for form submissions"
+   ]
+  },
+  {
+   "id": "contact-service",
+   "section": "Contact",
+   "nav_label": "Service request",
+   "title": "Service request for an installed system | Aquemi",
+   "meta": "Request service for an Aquemi system: give the serial number, issue severity and current readings. Urgent? Call [service phone], [hours].",
+   "path": "/contact/service/",
+   "eyebrow": "SERVICE REQUEST",
+   "headline": "Service for your installed system",
+   "lead": "Give us the serial number, how severe the issue is and the current readings. A service technician replies within [response time] for urgent requests.",
+   "tags": [
+    "USP",
+    "GAMP 5"
+   ],
+   "primary_cta": "Submit service request",
+   "secondary_cta": {
+    "label": "Order spare parts",
+    "link": "svc-service"
+   },
+   "blocks": [
+    {
+     "type": "band",
+     "tone": "limestone",
+     "h": "Water out of specification or production stopped",
+     "body": "Call [service phone number], available [hours]. Do not wait for a reply to this form."
+    },
+    {
+     "type": "table",
+     "h": "Issue severity",
+     "cols": [
+      "Severity",
+      "Meaning",
+      "Our response"
+     ],
+     "rows": [
+      [
+       "1. Critical",
+       "Production stopped or water out of specification at points of use",
+       "Phone response within [time]; technician on site within [time] in [coverage area]"
+      ],
+      [
+       "2. Major",
+       "System running with an alarm, reduced capacity or a trend toward an alert level",
+       "Response within [time]; visit scheduled within [time]"
+      ],
+      [
+       "3. Minor",
+       "Fault with no effect on water quality or supply",
+       "Response within [time]"
+      ],
+      [
+       "4. Planned",
+       "Preventive maintenance, calibration, requalification support, training",
+       "Scheduled at a date agreed with you"
+      ]
+     ]
+    },
+    {
+     "type": "form",
+     "h": "Service request",
+     "intro": "The serial number is on the nameplate on the skid frame and on the HMI 'About' screen.",
+     "fields": [
+      {
+       "label": "System serial number",
+       "kind": "text",
+       "help": "Format [AQ-YYYY-NNN].",
+       "required": true
+      },
+      {
+       "label": "System type",
+       "kind": "select",
+       "options": [
+        "PW generation",
+        "WFI by distillation",
+        "WFI by membrane",
+        "Pure Steam generator",
+        "Storage and distribution loop",
+        "Pretreatment",
+        "Monitoring and controls",
+        "Not an Aquemi system"
+       ],
+       "required": true
+      },
+      {
+       "label": "Issue severity",
+       "kind": "select",
+       "options": [
+        "1. Critical",
+        "2. Major",
+        "3. Minor",
+        "4. Planned"
+       ],
+       "required": true
+      },
+      {
+       "label": "What is happening",
+       "kind": "textarea",
+       "help": "Alarms shown, when it started, what has changed.",
+       "required": true
+      },
+      {
+       "label": "Current conductivity",
+       "kind": "number",
+       "unit": "µS/cm @ 25 °C",
+       "required": false
+      },
+      {
+       "label": "Current TOC",
+       "kind": "number",
+       "unit": "ppb",
+       "required": false
+      },
+      {
+       "label": "Current flow",
+       "kind": "number",
+       "unit": "L/h",
+       "required": false
+      },
+      {
+       "label": "Site name and address",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Contact name",
+       "kind": "text",
+       "required": true
+      },
+      {
+       "label": "Email",
+       "kind": "email",
+       "required": true
+      },
+      {
+       "label": "Phone",
+       "kind": "tel",
+       "help": "A number we can reach you on today.",
+       "required": true
+      },
+      {
+       "label": "Service contract number",
+       "kind": "text",
+       "help": "If you have one.",
+       "required": false
+      }
+     ],
+     "submit": "Submit service request"
+    },
+    {
+     "type": "grid",
+     "h": "Spare parts",
+     "intro": "For parts, use the parts path so your request goes straight to the stores team.",
+     "items": [
+      {
+       "t": "Recommended spares list",
+       "d": "Your turnover package lists recommended spares by tag number. Quote the tag and serial number.",
+       "link": "cmp-documentation"
+      },
+      {
+       "t": "Consumables",
+       "d": "RO membranes, cartridge filters, UV lamps, vent filters, gaskets and diaphragms.",
+       "link": "svc-service"
+      },
+      {
+       "t": "Parts quote",
+       "d": "Email [parts email] with serial number, tag and quantity. Quote within [time]."
+      },
+      {
+       "t": "Stock held",
+       "d": "[Parts stocked in [location] for systems under service contract.]"
+      }
+     ]
+    },
+    {
+     "type": "steps",
+     "h": "What happens next",
+     "items": [
+      {
+       "t": "Logged",
+       "d": "Your request receives a ticket number by email."
+      },
+      {
+       "t": "Triaged",
+       "d": "A technician reviews the readings and calls you within the response time for the severity."
+      },
+      {
+       "t": "Resolved",
+       "d": "Remote guidance or a site visit, followed by a signed service report for your GMP records."
+      }
+     ]
+    }
+   ],
+   "cta": {
+    "h": "Planning preventive maintenance",
+    "body": "Ask about a service agreement with scheduled visits and calibration.",
+    "button": "See service plans",
+    "link": "svc-service"
+   },
+   "todo": [
+    "Service phone number and hours (confirm whether 24/7)",
+    "Response and on-site times per severity level",
+    "Serial number format",
+    "Parts email and quote turnaround",
+    "Spare parts stock location and policy",
+    "Decide whether non-Aquemi systems are serviced; adjust the system type field"
+   ]
+  },
+  {
+   "id": "contact-locations",
+   "section": "Contact",
+   "nav_label": "Locations",
+   "title": "Aquemi locations and service coverage",
+   "meta": "Our office, fabrication shop and service coverage across Canada. Addresses, phone numbers and how far our technicians travel.",
+   "path": "/contact/locations/",
+   "eyebrow": "LOCATIONS · SERVICE COVERAGE",
+   "headline": "Where we are and where we serve",
+   "lead": "Design, fabrication and factory testing happen in [city], [province]. Service technicians cover [coverage area].",
+   "tags": [],
+   "primary_cta": "Request a proposal",
+   "secondary_cta": {
+    "label": "Request service",
+    "link": "contact-service"
+   },
+   "blocks": [
+    {
+     "type": "table",
+     "h": "Offices and shop",
+     "cols": [
+      "Location",
+      "What happens here",
+      "Address",
+      "Phone"
+     ],
+     "rows": [
+      [
+       "Head office, [city]",
+       "Engineering, project management, validation",
+       "[Street address], [city], [province] [postal code]",
+       "[Phone number]"
+      ],
+      [
+       "Fabrication shop, [city]",
+       "Skid fabrication, orbital welding, factory acceptance testing",
+       "[Street address], [city], [province] [postal code]",
+       "[Phone number]"
+      ],
+      [
+       "Service base, [city]",
+       "Field service, spare parts stock",
+       "[Street address], [city], [province] [postal code]",
+       "[Phone number]"
+      ]
+     ]
+    },
+    {
+     "type": "prose",
+     "h": "Visiting the shop",
+     "body": [
+      "Clients attend FAT at our shop in [city]. The test bay has [utilities available: feed water, power, steam] so the system runs with water before it ships.",
+      "Visits are by appointment. Wear safety footwear; we provide glasses and hearing protection. [Parking and access details.]"
+     ]
+    },
+    {
+     "type": "table",
+     "h": "Service coverage",
+     "cols": [
+      "Region",
+      "Coverage",
+      "Typical on-site response"
+     ],
+     "rows": [
+      [
+       "[Province or region]",
+       "[Full coverage from [city]]",
+       "[Time]"
+      ],
+      [
+       "[Province or region]",
+       "[Full coverage from [city]]",
+       "[Time]"
+      ],
+      [
+       "[Province or region]",
+       "[Scheduled visits; emergency by arrangement]",
+       "[Time]"
+      ],
+      [
+       "United States",
+       "[Coverage, if any]",
+       "[Time]"
+      ]
+     ]
+    },
+    {
+     "type": "grid",
+     "h": "Contact by purpose",
+     "items": [
+      {
+       "t": "New system",
+       "d": "Request a proposal and an engineer replies within [response time].",
+       "link": "contact-proposal"
+      },
+      {
+       "t": "Service",
+       "d": "Service request form, or call [service phone] for critical issues.",
+       "link": "contact-service"
+      },
+      {
+       "t": "Parts",
+       "d": "[Parts email]"
+      },
+      {
+       "t": "Careers",
+       "d": "Open roles and general applications.",
+       "link": "careers"
+      }
+     ]
+    },
+    {
+     "type": "band",
+     "tone": "limestone",
+     "h": "Hours",
+     "body": "Office: [days and hours, time zone]. Service line: [hours]."
+    }
+   ],
+   "cta": {
+    "h": "Attend a FAT at our shop",
+    "body": "Ask for a shop visit when you request a proposal.",
+    "button": "Request a proposal",
+    "link": "contact-proposal"
+   },
+   "todo": [
+    "Office, shop and service base addresses and phone numbers",
+    "Coverage regions and typical response times",
+    "Whether US clients are served, and how",
+    "Test bay utilities available for FAT",
+    "Office and service hours with time zone",
+    "Parts email address",
+    "LocalBusiness schema per real location only"
+   ]
+  }
+ ]
+}

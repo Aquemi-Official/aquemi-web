@@ -1,0 +1,178 @@
+{
+ "id": "svc-upgrades",
+ "section": "Services",
+ "nav_label": "Upgrades and retrofits",
+ "title": "Water system upgrades and retrofits | Aquemi",
+ "meta": "Replace ageing water systems, upgrade controls for 21 CFR Part 11, add capacity or move to membrane WFI, with a requalification scope you can plan.",
+ "path": "/services/upgrades-retrofits/",
+ "eyebrow": "UPGRADES · RETROFITS · CHANGE CONTROL",
+ "headline": "Upgrade the system you have, with a requalification scope you can plan",
+ "lead": "Ageing controls, rising demand and new pharmacopoeia options all lead to the same question: what can we change, and how much do we have to requalify. We answer both before any work starts.",
+ "tags": [
+  "21 CFR Part 11",
+  "GAMP 5",
+  "Ph. Eur.",
+  "USP <1231>",
+  "ASME BPE"
+ ],
+ "primary_cta": "Request a system assessment",
+ "secondary_cta": {
+  "label": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "grid",
+   "h": "Common upgrades",
+   "items": [
+    {
+     "t": "Controls and data integrity",
+     "d": "Replace obsolete programmable logic controllers (PLCs) and human-machine interfaces (HMIs). Add audit trails and electronic records to 21 CFR Part 11.",
+     "tag": "21 CFR Part 11",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "Capacity increase",
+     "d": "Add a reverse osmosis (RO) train, larger storage or a new sub-loop, sized from your new demand profile.",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Membrane Water for Injection (WFI)",
+     "d": "Produce WFI without distillation, using RO with electrodeionization (EDI) and ultrafiltration.",
+     "tag": "Ph. Eur.",
+     "link": "sys-wfi-membrane"
+    },
+    {
+     "t": "Chemical deionization to EDI",
+     "d": "Remove regenerant chemicals and resin handling from Purified Water generation.",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Sanitization changes",
+     "d": "Add ozone, ultraviolet (UV) destruct or hot water sanitization at 80 °C to an existing loop.",
+     "link": "sys-storage"
+    },
+    {
+     "t": "On-line monitoring",
+     "d": "Add on-line total organic carbon (TOC) and conductivity to support real-time release.",
+     "tag": "USP <643>",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "Loop modifications",
+     "d": "Extensions, new points of use, dead-leg removal and automated point-of-use valves, orbitally welded.",
+     "tag": "ASME BPE",
+     "link": "svc-fabrication"
+    },
+    {
+     "t": "Rouge remediation",
+     "d": "Derouging and repassivation of stainless steel surfaces, with before and after records."
+    },
+    {
+     "t": "Full replacement",
+     "d": "A new system built alongside the old, with a planned cutover window."
+    }
+   ]
+  },
+  {
+   "type": "steps",
+   "h": "How an upgrade runs",
+   "items": [
+    {
+     "t": "Assessment",
+     "d": "Condition survey, document review and trend analysis of the existing system."
+    },
+    {
+     "t": "Options and impact",
+     "d": "Each option with cost, downtime and the requalification it triggers."
+    },
+    {
+     "t": "Change control",
+     "d": "We prepare the technical input for your change control and impact assessment."
+    },
+    {
+     "t": "Pre-build and test",
+     "d": "New skids and panels built and tested in our shop, so site work is short."
+    },
+    {
+     "t": "Cutover",
+     "d": "Executed in a planned window, with temporary water supply arranged if needed."
+    },
+    {
+     "t": "Requalification",
+     "d": "IQ and OQ for what changed, plus a PQ scope proportional to the risk."
+    }
+   ]
+  },
+  {
+   "type": "prose",
+   "h": "Moving to membrane WFI",
+   "body": [
+    "Since 2017 the European Pharmacopoeia allows Water for Injection to be produced by a purification process equivalent to distillation, such as reverse osmosis coupled with other suitable techniques. USP has long allowed a process equivalent or superior to distillation.",
+    "A membrane route uses far less energy and cooling water than distillation. It also needs closer microbial control, because there is no phase change. We assess your feedwater, your existing storage and your regulators before we recommend it."
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Downtime we plan for",
+   "cols": [
+    "Upgrade",
+    "Typical site downtime",
+    "Typical requalification"
+   ],
+   "rows": [
+    [
+     "PLC and HMI replacement",
+     "[days]",
+     "IQ/OQ of control system, software validation"
+    ],
+    [
+     "Add RO train or EDI",
+     "[days]",
+     "IQ/OQ of new equipment, short PQ"
+    ],
+    [
+     "New sub-loop or points of use",
+     "[days]",
+     "IQ/OQ of new section, PQ at new points"
+    ],
+    [
+     "Membrane WFI generation",
+     "[weeks]",
+     "Full IQ/OQ and three-phase PQ"
+    ]
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Our system was built by another supplier. Can you upgrade it?",
+     "a": "Yes. We need the drawings and qualification records you have. Where they are missing, we survey and redraw before we design."
+    },
+    {
+     "q": "Can we keep producing water during the upgrade?",
+     "a": "Often yes, with temporary generation or by building the new system alongside the old. We plan this in the options stage."
+    },
+    {
+     "q": "Is our control system data integrity good enough?",
+     "a": "We assess it against 21 CFR Part 11 and GAMP 5 and give you a written gap list."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Start with an assessment",
+  "body": "Send us your system's age, drawings and the problem you want to solve.",
+  "button": "Request a system assessment",
+  "link": "contact-service"
+ },
+ "todo": [
+  "Typical downtime per upgrade type [days]/[weeks]",
+  "Confirm temporary or rental water supply capability",
+  "Confirm derouging and repassivation offered in-house or by partner",
+  "Confirm Aquemi offers membrane WFI in-house or with a partner",
+  "A retrofit reference project with measured outcome"
+ ]
+}

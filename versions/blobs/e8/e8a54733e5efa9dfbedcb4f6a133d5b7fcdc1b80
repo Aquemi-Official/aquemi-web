@@ -1,0 +1,18 @@
+/* ---------- LinkGrid: choices (usually pages) as rows of the shared list grammar ---------- */
+/* Built on .aq-rows (base.css): index | title (-> when it links) | one line and an optional tag, with the linked page's
+   drawing or the row's icon at the row end on desktop. `line` hairlines between rows are the only structure. LinkGrid
+   sets the titles at h3 size and gives the row-end drawing room to read. */
+.aq-linkgrid .aq-rows__row { align-items: start; padding-block: var(--space-6); }
+.aq-linkgrid .aq-rows__row > .aq-index { line-height: 28px; }
+.aq-linkgrid .aq-rows__t { font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; transition: color 200ms; }
+.aq-linkgrid .aq-rows__d { padding-top: var(--space-1); }
+/* Row-end drawing: 96 px in ink-muted, flow on hover (base.css) */
+.aq-linkgrid:has(.aq-rows__art) .aq-rows__row { grid-template-columns: var(--space-12) minmax(0, 4fr) minmax(0, 7fr) var(--space-12); }
+.aq-linkgrid .aq-rows__art { transition: background-color 200ms; }
+@media (prefers-reduced-motion: reduce) { .aq-linkgrid .aq-rows__art, .aq-linkgrid .aq-rows__t { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-linkgrid .aq-rows__row, .aq-linkgrid:has(.aq-rows__art) .aq-rows__row { grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); padding-block: var(--space-4); }
+  .aq-linkgrid .aq-rows__row > .aq-index { line-height: 26px; }
+  .aq-linkgrid .aq-rows__t { font-size: 18px; line-height: 26px; }
+}

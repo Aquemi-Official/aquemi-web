@@ -1,0 +1,211 @@
+{
+ "id": "sys-pw",
+ "section": "Systems",
+ "nav_label": "Purified Water (PW) generation",
+ "title": "Purified Water generation systems | Aquemi",
+ "meta": "RO and EDI Purified Water systems built to USP <645> and <643>, hot water sanitizable at 80 °C, factory acceptance tested before shipping.",
+ "path": "/systems/purified-water/",
+ "eyebrow": "PURIFIED WATER · USP <645> · USP <643>",
+ "headline": "Purified Water generation",
+ "lead": "Our Purified Water (PW) systems combine reverse osmosis (RO) and electrodeionization (EDI) to hold conductivity below 1.3 µS/cm at 25 °C and total organic carbon (TOC) below 500 ppb, without regeneration chemicals.",
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Download datasheet",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "spec",
+   "caption": "Purified Water generation · USP and Ph. Eur.",
+   "note": "Microbial values are action levels from USP <1231> guidance; your site alert and action levels are set during qualification.",
+   "cols": [
+    "Parameter",
+    "Specification",
+    "Method or reference"
+   ],
+   "rows": [
+    {
+     "p": "Capacity",
+     "v": "[500–20,000] L/h per skid",
+     "m": "At 15 °C feed, design recovery [x] %",
+     "hl": false
+    },
+    {
+     "p": "Conductivity",
+     "v": "≤ 1.3 µS/cm @ 25 °C",
+     "m": "USP <645> stage 1",
+     "hl": true
+    },
+    {
+     "p": "Conductivity (Ph. Eur.)",
+     "v": "≤ 5.1 µS/cm @ 25 °C",
+     "m": "Ph. Eur. 0008, bulk Purified Water",
+     "hl": false
+    },
+    {
+     "p": "Total organic carbon",
+     "v": "≤ 500 ppb",
+     "m": "USP <643>",
+     "hl": false
+    },
+    {
+     "p": "Microbial action level",
+     "v": "100 CFU/mL",
+     "m": "USP <1231> guidance",
+     "hl": false
+    },
+    {
+     "p": "Nitrates",
+     "v": "≤ 0.2 ppm",
+     "m": "Ph. Eur. 0008",
+     "hl": false
+    },
+    {
+     "p": "Sanitization",
+     "v": "Hot water at 80 °C, RO and EDI",
+     "m": "Membranes rated for hot water",
+     "hl": false
+    },
+    {
+     "p": "Materials, product contact",
+     "v": "316L stainless steel",
+     "m": "ASME BPE, material certificates 3.1",
+     "hl": false
+    },
+    {
+     "p": "Surface finish",
+     "v": "Ra ≤ 0.8 µm; Ra ≤ 0.5 µm electropolished option",
+     "m": "ASME BPE",
+     "hl": false
+    }
+   ],
+   "h": "Specifications"
+  },
+  {
+   "type": "diagram",
+   "h": "How it works",
+   "stages": [
+    "Pretreated feed",
+    "Heat exchanger",
+    "RO pass 1",
+    "RO pass 2",
+    "EDI",
+    "To storage"
+   ],
+   "caption": "A heat exchanger brings cold winter feed up to membrane design temperature. RO removes most dissolved ions, organics, particles and bacteria. EDI polishes the permeate with an electric field, so no acid or caustic regeneration is needed. Off-spec water diverts to drain until conductivity recovers."
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "Single or double pass RO",
+     "d": "Double pass where feed is high in dissolved solids or where the same skid feeds a still."
+    },
+    {
+     "t": "Hot water sanitizable",
+     "d": "Heat-tolerant membranes and a sanitization heat exchanger for 80 °C cycles."
+    },
+    {
+     "t": "Integrated pretreatment",
+     "d": "Softener, carbon or bisulfite dosing mounted on the same skid where space is short."
+    },
+    {
+     "t": "Variable speed pumps",
+     "d": "Constant permeate flow as feed temperature and membrane fouling change."
+    },
+    {
+     "t": "Duplex trains",
+     "d": "Two trains at 50 or 100 % each, so one runs while the other is serviced."
+    },
+    {
+     "t": "Ultrafiltration or UV",
+     "d": "Downstream ultrafiltration or 254 nm UV where your microbial target needs more margin."
+    },
+    {
+     "t": "Recovery enhancement",
+     "d": "Concentrate recycle or a reject RO to reduce water sent to drain."
+    },
+    {
+     "t": "Instrumentation",
+     "d": "Online conductivity at each stage, optional online TOC at the skid outlet."
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "Functional specification",
+    "Piping and instrumentation diagrams (P&IDs)",
+    "Material certificates (EN 10204 3.1)",
+    "Weld logs and borescope records",
+    "Surface finish and passivation reports",
+    "Instrument calibration certificates",
+    "FAT and SAT protocols and reports",
+    "IQ and OQ protocols",
+    "Operation and maintenance manual",
+    "Recommended spare parts list"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Why EDI instead of mixed-bed ion exchange?",
+     "a": "EDI regenerates continuously with an electric field, so there are no acid or caustic deliveries, no regeneration downtime and no resin exhaustion events to investigate."
+    },
+    {
+     "q": "Can the same skid feed a WFI still?",
+     "a": "Yes. We size the skid for your PW draw plus the still's feed demand and meet the still maker's feed limits, typically on conductivity, silica and chlorine."
+    },
+    {
+     "q": "How do you handle cold feed water in winter?",
+     "a": "Canadian municipal water can fall to 2–5 °C in winter, which reduces RO output. We size membranes at your lowest feed temperature or add a heat exchanger to hold a design temperature."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related systems",
+   "items": [
+    "sys-pretreatment",
+    "sys-storage",
+    "sys-wfi-membrane",
+    "sys-monitoring"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Size a Purified Water system for your site.",
+  "body": "Send your feed water analysis and peak demand in L/h and we'll propose a configuration.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Capacity range per skid",
+  "Design recovery percentage",
+  "Standard surface finish offered",
+  "Datasheet PDF",
+  "Confirm hot water sanitizable membranes are standard or an option"
+ ],
+ "facts": [
+  {
+   "v": "[500–20,000] L/h",
+   "l": "Capacity per skid"
+  },
+  {
+   "v": "≤ 1.3 µS/cm",
+   "l": "Conductivity at 25 °C · USP <645>"
+  },
+  {
+   "v": "≤ 500 ppb",
+   "l": "Total organic carbon · USP <643>"
+  },
+  {
+   "v": "80 °C",
+   "l": "Hot water sanitization, RO and EDI"
+  }
+ ]
+}

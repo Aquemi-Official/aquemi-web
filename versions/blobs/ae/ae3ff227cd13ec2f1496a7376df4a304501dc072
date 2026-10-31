@@ -1,0 +1,91 @@
+/* ---------- DocList: the turnover binder ---------- */
+/* A drawing plate (base.css .aq-plate, title block bottom right) with two loose sheets stacked behind its top-right
+   corner, holding folder cards on a 6-column grid, three to a row. Each folder: a tab on its top edge (the document
+   code), a big mono number with a line icon top right, the name in uppercase mono with its detail under it in sans,
+   and a footer rule with a mono caption. Two sheets show behind each folder. Key documents (.is-key) fill their tab
+   with flow on a flow-tint folder. Wide cards (span 3) are chosen by the renderer
+   (.aq-docs__w) so no row ends short. */
+.aq-docs-binder {
+  position: relative; margin: var(--space-4) var(--space-4) 0 0;
+  /* stacked sheets: hard-edged boxes, drawn paper, not elevation */
+  box-shadow:
+    var(--space-2) calc(-1 * var(--space-2)) 0 -1px var(--surface-raised), var(--space-2) calc(-1 * var(--space-2)) 0 0 var(--line-strong),
+    var(--space-4) calc(-1 * var(--space-4)) 0 -1px var(--surface-raised), var(--space-4) calc(-1 * var(--space-4)) 0 0 var(--line);
+}
+.aq-docs-plate { background-color: var(--surface-sunken); }
+.aq-docs {
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: var(--space-8); row-gap: var(--space-8);
+  margin: 0; padding: 0 var(--space-2) 0 0; list-style: none;
+}
+.aq-docs > li { grid-column: span 2; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; }
+.aq-docs > li.aq-docs__w { grid-column: span 3; }
+/* Fold: on desktop the whole binder shows (every folder in its place, the "Show all" button hidden); the fold works on
+   phones only, where the folders stack one to a row. */
+.aq-fold:not(.is-open) .aq-docs > li.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-docs-binder) > .aq-fold__btn { display: none; }
+
+/* Folder tab: the document code, sitting on the card's top edge (overlaps its border by 1px). Empty in plain lists. */
+.aq-docs__tab {
+  position: relative; z-index: 1; display: inline-flex; align-items: center; margin-bottom: -1px; max-width: 80%;
+  min-width: var(--space-24); height: var(--space-6); padding: 0 var(--space-6) 0 var(--space-3);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.aq-docs__code { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Plain lists (no codes): a short empty tab, the folder shape alone */
+.aq-docs--plain .aq-docs__tab { min-width: var(--space-16); }
+/* Card: the folder body, with two sheets showing behind it */
+.aq-docs__card {
+  position: relative; flex: 1; align-self: stretch; display: flex; flex-direction: column; min-width: 0;
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm);
+  box-shadow:
+    var(--space-1) var(--space-1) 0 -1px var(--surface-raised), var(--space-1) var(--space-1) 0 0 var(--line-strong),
+    var(--space-2) var(--space-2) 0 -1px var(--surface-raised), var(--space-2) var(--space-2) 0 0 var(--line);
+}
+.aq-docs__top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-3); }
+.aq-docs__n { font: 500 32px/36px var(--font-mono); letter-spacing: -0.01em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.aq-docs__top .aq-icon { width: var(--space-8); height: var(--space-8); }
+.aq-docs__name {
+  display: block; min-width: 0; margin-bottom: var(--space-4);
+  font: 500 16px/22px var(--font-mono); letter-spacing: 0; text-transform: uppercase; color: var(--ink); text-wrap: pretty; overflow-wrap: anywhere;
+}
+.aq-docs__name a { color: inherit; }
+.aq-docs__d {
+  display: block; margin-top: var(--space-2);
+  font: 400 14px/20px var(--font-sans); letter-spacing: 0; text-transform: none; color: var(--ink-muted); overflow-wrap: normal;
+}
+.aq-docs__foot {
+  display: flex; justify-content: space-between; gap: var(--space-3); margin-top: auto; padding-top: var(--space-2); border-top: 1px solid var(--line);
+  font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle);
+}
+/* Key documents: the ones that decide the review */
+.aq-docs > li.is-key .aq-docs__tab { background: var(--flow); border-color: var(--flow); }
+.aq-docs > li.is-key .aq-docs__code { color: var(--surface); }
+.aq-docs > li.is-key .aq-docs__card { background: var(--flow-tint); border-color: var(--flow); }
+.aq-docs > li.is-key .aq-docs__n { color: var(--flow); }
+.aq-docs > li.is-key .aq-docs__foot { border-top-color: var(--flow); }
+
+/* Phone: the binder stays a binder. A smaller plate, folders one to a row, compact: tab, number beside the name, detail
+   under it. The footer caption and the icon drop; the sheets behind the plate and each folder get tighter. */
+@container (max-width: 860px) {
+  .aq-docs-binder {
+    margin: var(--space-2) var(--space-2) 0 0;
+    box-shadow:
+      var(--space-1) calc(-1 * var(--space-1)) 0 -1px var(--surface-raised), var(--space-1) calc(-1 * var(--space-1)) 0 0 var(--line-strong),
+      var(--space-2) calc(-1 * var(--space-2)) 0 -1px var(--surface-raised), var(--space-2) calc(-1 * var(--space-2)) 0 0 var(--line);
+  }
+  .aq-docs { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); padding-right: var(--space-1); }
+  .aq-docs > li, .aq-docs > li.aq-docs__w { grid-column: 1 / -1; }
+  .aq-fold:not(.is-open) .aq-docs > li.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-docs-binder) > .aq-fold__btn { display: flex; }
+  .aq-docs__tab { min-width: var(--space-16); height: var(--space-6); padding-right: var(--space-4); }
+  .aq-docs__card {
+    display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); align-items: baseline; padding: var(--space-3) var(--space-3) var(--space-4);
+    box-shadow: var(--space-1) var(--space-1) 0 -1px var(--surface-raised), var(--space-1) var(--space-1) 0 0 var(--line-strong);
+  }
+  .aq-docs__top { display: block; margin: 0; }
+  .aq-docs__top .aq-icon, .aq-docs__foot { display: none; }
+  .aq-docs__n { font-size: 24px; line-height: 28px; }
+  .aq-docs__name { margin: 0; font-size: 14px; line-height: 20px; }
+  .aq-docs__d { margin-top: var(--space-1); }
+}

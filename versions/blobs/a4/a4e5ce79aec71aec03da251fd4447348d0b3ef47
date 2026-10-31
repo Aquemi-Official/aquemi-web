@@ -1,0 +1,175 @@
+{
+ "id": "svc-cq",
+ "section": "Services",
+ "nav_label": "Commissioning and qualification",
+ "title": "Commissioning and qualification (IQ/OQ/PQ) | Aquemi",
+ "meta": "IQ and OQ executed to approved protocols, and support through the three-phase PQ approach for pharmaceutical water systems over a full year.",
+ "path": "/services/commissioning-qualification/",
+ "eyebrow": "IQ · OQ · PQ · USP <1231>",
+ "headline": "Qualified to protocol, with a year of data behind it",
+ "lead": "We commission your water system, execute installation qualification (IQ) and operational qualification (OQ) to protocols your quality unit approves, and support performance qualification (PQ) through the three phases a water system needs.",
+ "tags": [
+  "USP <1231>",
+  "GAMP 5",
+  "ASTM E2500",
+  "EU GMP Annex 15",
+  "Health Canada GUI-0001",
+  "FDA 21 CFR Part 211"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "See our documentation package",
+  "link": "cmp-documentation"
+ },
+ "blocks": [
+  {
+   "type": "grid",
+   "h": "What each stage proves",
+   "items": [
+    {
+     "t": "Commissioning",
+     "d": "The system is installed, connected and working as designed. Good engineering practice, documented."
+    },
+    {
+     "t": "Installation qualification (IQ)",
+     "d": "It is built as specified: materials, welds, slopes, instruments, calibration, drawings and software versions."
+    },
+    {
+     "t": "Operational qualification (OQ)",
+     "d": "It operates as specified across its range: sequences, alarms, interlocks, sanitization and flow at every point of use."
+    },
+    {
+     "t": "Performance qualification (PQ)",
+     "d": "It delivers water of the required quality, consistently, under routine operation and over time."
+    }
+   ]
+  },
+  {
+   "type": "spec",
+   "caption": "Three-phase PQ approach · water systems",
+   "note": "The phased approach follows FDA's guide to inspections of high purity water systems and USP <1231>. Durations and frequencies are set in your PQ protocol.",
+   "cols": [
+    "Phase",
+    "Typical duration",
+    "Sampling and purpose"
+   ],
+   "rows": [
+    {
+     "p": "Phase 1",
+     "v": "2–4 weeks",
+     "m": "Daily sampling at every point of use and key process points. Water is not used for production. Establishes operating ranges, cleaning and sanitization procedures.",
+     "hl": false
+    },
+    {
+     "p": "Phase 2",
+     "v": "2–4 weeks",
+     "m": "Same intensive sampling while operating to the finalized procedures. Shows consistent control. Water may be released for use at the end, with your quality unit's approval.",
+     "hl": false
+    },
+    {
+     "p": "Phase 3",
+     "v": "12 months",
+     "m": "Routine sampling frequency. Captures seasonal variation in feedwater and confirms long-term control.",
+     "hl": true
+    }
+   ]
+  },
+  {
+   "type": "spec",
+   "caption": "Typical acceptance criteria · tested during OQ and PQ",
+   "cols": [
+    "Attribute",
+    "Purified Water (PW)",
+    "Water for Injection (WFI)"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity",
+     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+     "m": "≤ 1.3 µS/cm @ 25 °C (stage 1), USP <645>",
+     "hl": false
+    },
+    {
+     "p": "Total organic carbon (TOC)",
+     "v": "≤ 500 ppb",
+     "m": "≤ 500 ppb, USP <643>",
+     "hl": false
+    },
+    {
+     "p": "Bacterial endotoxins",
+     "v": "Not specified",
+     "m": "< 0.25 EU/mL, USP <85>",
+     "hl": false
+    },
+    {
+     "p": "Microbial action limit",
+     "v": "100 CFU/mL",
+     "m": "10 CFU/100 mL, USP <1231> guidance",
+     "hl": false
+    }
+   ]
+  },
+  {
+   "type": "prose",
+   "h": "Who does what",
+   "body": [
+    "Your quality unit owns the validation master plan and approves every protocol and report. We write the IQ and OQ protocols, execute them with trained staff and calibrated instruments, and report deviations as found.",
+    "For PQ, sampling and laboratory testing are usually yours. We write or review the sampling plan, train your operators, and stay on call through Phases 1 and 2 to resolve excursions quickly."
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "Commissioning plan and records",
+    "IQ protocol and executed report",
+    "OQ protocol and executed report",
+    "PQ sampling plan, by phase, with point-of-use map",
+    "Calibration certificates, traceable to national standards",
+    "Deviation reports and change records",
+    "Standard operating procedure drafts for operation and sanitization",
+    "Training records",
+    "Final qualification summary report"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Can FAT results reduce our IQ and OQ effort?",
+     "a": "Yes, when your quality unit accepts supplier testing under a GAMP 5 or ASTM E2500 approach. We design the FAT to be referenced."
+    },
+    {
+     "q": "Why does PQ take a year?",
+     "a": "Feedwater changes with the seasons. Phase 3 shows the system stays in control through those changes. You can usually use the water from the end of Phase 2."
+    },
+    {
+     "q": "Do you requalify existing systems?",
+     "a": "Yes, after a change or on a periodic schedule. We assess the change and propose a requalification scope proportional to the risk."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related services",
+   "items": [
+    "svc-fat-sat",
+    "svc-service",
+    "sys-monitoring",
+    "cmp-documentation"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Plan qualification before you order",
+  "body": "The cheapest time to agree a qualification approach is before design starts.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "Confirm Aquemi executes IQ/OQ with own staff",
+  "Confirm scope of PQ support offered (sampling plan, on-call, lab partner)",
+  "Name calibration laboratory or accreditation for traceability"
+ ]
+}

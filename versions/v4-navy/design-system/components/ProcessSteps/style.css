@@ -1,4 +1,0 @@
-/* ---------- ProcessSteps: a real sequence as rows of the shared list grammar ---------- */
-/* Layout from .aq-rows (base.css): index | step name | what happens. The index already carries the order, so there is
-   no pipe, spine or stair: hairlines between steps are the only structure. */
-.aq-steps { min-width: 0; }

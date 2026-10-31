@@ -1,0 +1,68 @@
+/* ---------- GradeLanes: minimum water grade by process step (table block as "grades") ----------
+   On a plate. Rows of the shared list grammar (index | step) with three lanes at the right, Potable, PW and WFI,
+   drawn as single line-strong hairlines the full height of the list under plain lane labels. A flow line (the water
+   path) runs from the step to its tap: a filled flow tap marks the minimum grade, an open tap an alternative. A step
+   whose grade is "same as the product" gets a dashed open tap on every lane under a "= product" mark.
+   Desktop: the step text is capped at 35rem and the lanes sit at the far right; the branch runs from the end of the
+   text column across to its tap. */
+.aq-grades { min-width: 0; }
+.aq-grades__head, .aq-grades__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 35rem) minmax(calc(var(--space-16) * 3), 1fr); column-gap: var(--space-6); }
+.aq-grades__head { align-items: end; padding-bottom: var(--space-3); border-bottom: 1px solid var(--line); font: 500 14px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-grades__head > span:first-child { grid-column: 2; }
+.aq-grades__lanes { grid-column: 3; position: relative; display: grid; grid-template-columns: repeat(3, var(--space-16)); justify-content: end; }
+.aq-grades__head .aq-grades__lanes { column-gap: 0; }
+.aq-grades__head .aq-grades__lanes > span {
+  justify-self: center; min-width: calc(var(--space-16) - var(--space-2)); text-align: center;
+  font: 500 14px/20px var(--font-sans); color: var(--ink-muted);
+}
+.aq-grades__rows { list-style: none; margin: 0; padding: 0; }
+.aq-grades__row { align-items: stretch; border-bottom: 1px solid var(--line); }
+.aq-grades__row > .aq-index { padding-block: var(--space-4); }
+.aq-grades__step { min-width: 0; padding-block: var(--space-4); display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-grades__t { margin: 0; font: 500 16px/24px var(--font-sans); color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-grades__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+.aq-grades__g { margin: 0; font: 400 14px/20px var(--font-mono); color: var(--flow); }
+.aq-grades__lane { position: relative; display: grid; place-items: center; }
+/* the lane: one line-strong hairline */
+.aq-grades__lane::before { content: ""; position: absolute; top: -1px; bottom: -1px; left: 50%; border-left: 1px solid var(--line-strong); }
+/* the branch from the step across to the tap (is-hit-N: the lane it reaches) */
+.aq-grades__lanes.is-hit-0::before { width: calc(100% + var(--space-6) - var(--space-16) * 3 + var(--space-16) / 2); }
+.aq-grades__lanes.is-hit-1::before { width: calc(100% + var(--space-6) - var(--space-16) * 2 + var(--space-16) / 2); }
+.aq-grades__lanes.is-hit-2::before { width: calc(100% + var(--space-6) - var(--space-16) * 1 + var(--space-16) / 2); }
+.aq-grades__lanes[class*="is-hit-"]::before {
+  content: ""; position: absolute; z-index: 1; top: calc(50% - 1px); left: calc(-1 * var(--space-6));
+  border-top: 1px solid var(--flow);
+}
+.aq-grades__lanes[class*="is-hit-"]::after { content: ""; position: absolute; z-index: 1; top: calc(50% - 3px); left: calc(-1 * var(--space-6) - 3px); width: 5px; height: 5px; border-radius: var(--radius-pill); background: var(--flow); }
+.aq-grades__tap { position: relative; z-index: 2; width: 13px; height: 13px; border-radius: var(--radius-pill); }
+.aq-grades__tap.is-min { background: var(--flow); }
+.aq-grades__tap.is-alt { background: var(--surface-raised); border: 1px solid var(--flow); }
+.aq-grades__tap.is-same { background: var(--surface-raised); border: 1px dashed var(--flow); }
+/* same grade as the product: a dashed header across every lane, open taps */
+.aq-grades__lanes.is-same::before { content: ""; position: absolute; top: 50%; left: calc(100% - var(--space-16) * 3 + var(--space-16) / 2); right: calc(var(--space-16) / 2); border-top: 1px dashed var(--flow); }
+.aq-grades__same {
+  position: absolute; z-index: 2; left: calc(100% - var(--space-16) * 3 / 2); top: calc(50% - var(--space-6)); transform: translateX(-50%); padding: 0 var(--space-1);
+  background: var(--surface-raised); white-space: nowrap; font: 400 12px/16px var(--font-mono); color: var(--flow);
+}
+
+/* Motion hooks (GradeLanes/motion.js): the lane fills down each row (--aq-fill) and the branch runs across to its tap
+   (--aq-branch). Both default to 1, so the drawing is complete with no script and under reduced motion. */
+.aq-grades__lane::before { transform: scaleY(var(--aq-fill, 1)); transform-origin: top; }
+.aq-grades__lanes[class*="is-hit-"]::before, .aq-grades__lanes.is-same::before { transform: scaleX(var(--aq-branch, 1)); transform-origin: left; }
+
+@container (max-width: 860px) {
+  .aq-grades__lanes { grid-template-columns: repeat(3, var(--space-8)); justify-content: start; }
+  .aq-grades__head, .aq-grades__row { grid-template-columns: var(--space-6) minmax(0, 1fr) calc(var(--space-8) * 3); column-gap: var(--space-3); }
+  .aq-grades__head .aq-grades__lanes > span { min-width: 0; padding: var(--space-1) 0; writing-mode: vertical-rl; transform: rotate(180deg); font-size: 12px; line-height: 16px; }
+  .aq-grades__head > span:first-child { visibility: hidden; }
+  .aq-grades__t { font-size: 15px; line-height: 21px; }
+  .aq-grades__d { font-size: 13px; line-height: 19px; }
+  .aq-grades__lanes[class*="is-hit-"]::before { top: 50%; left: calc(-1 * var(--space-2)); border-top: 1px solid var(--flow); }
+  .aq-grades__lanes.is-same::before { left: calc(var(--space-8) / 2); right: calc(var(--space-8) / 2); }
+  .aq-grades__same { left: 50%; }
+  .aq-grades__lanes.is-hit-0::before { width: calc(var(--space-2) + var(--space-8) * 0 + var(--space-8) / 2); }
+  .aq-grades__lanes.is-hit-1::before { width: calc(var(--space-2) + var(--space-8) * 1 + var(--space-8) / 2); }
+  .aq-grades__lanes.is-hit-2::before { width: calc(var(--space-2) + var(--space-8) * 2 + var(--space-8) / 2); }
+  .aq-grades__lanes[class*="is-hit-"]::after { left: calc(-1 * var(--space-2) - 3px); }
+  .aq-grades__tap { width: 11px; height: 11px; }
+}

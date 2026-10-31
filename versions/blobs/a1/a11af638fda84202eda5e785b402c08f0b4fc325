@@ -1,0 +1,210 @@
+{
+ "id": "systems",
+ "section": "Systems",
+ "nav_label": "All systems",
+ "title": "Systems: PW, WFI, pure steam and loops | Aquemi",
+ "meta": "Seven system families from pretreatment to point of use. How to choose PW, WFI by distillation or by membrane, pure steam and the loop that carries them.",
+ "path": "/systems/",
+ "eyebrow": "SYSTEMS · PW · WFI · PURE STEAM",
+ "headline": "Every system on the water path, from feed water to point of use.",
+ "lead": "Start from the water grade your process needs and the standard your auditors will check. We size each system to your peak demand and connect them into one validated whole.",
+ "tags": [
+  "USP",
+  "Ph. Eur.",
+  "EN 285",
+  "ASME BPE",
+  "ISPE Baseline Guide Vol. 4"
+ ],
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "See standards we design to",
+  "link": "compliance"
+ },
+ "blocks": [
+  {
+   "type": "diagram",
+   "h": "How the systems fit together",
+   "stages": [
+    "Municipal feed",
+    "Pretreatment",
+    "PW generation",
+    "WFI or pure steam",
+    "Storage",
+    "Distribution loop",
+    "Points of use"
+   ],
+   "caption": "Each stage can be supplied alone or as part of a complete system.",
+   "base": "Monitoring and controls · TOC, conductivity, ozone"
+  },
+  {
+   "type": "grid",
+   "h": "System families",
+   "intro": "Seven families, each with its own specifications page.",
+   "items": [
+    {
+     "t": "Purified Water (PW) generation",
+     "d": "Reverse osmosis (RO) with electrodeionization (EDI), hot water sanitizable, [500–20,000] L/h.",
+     "tag": "USP <645>",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Water for Injection (WFI) by distillation",
+     "d": "Multi-effect and vapour compression stills producing hot WFI.",
+     "tag": "USP · Ph. Eur.",
+     "link": "sys-wfi-distillation"
+    },
+    {
+     "t": "WFI by membrane",
+     "d": "Ambient WFI from double-pass RO, EDI and ultrafiltration.",
+     "tag": "Ph. Eur. 0169",
+     "link": "sys-wfi-membrane"
+    },
+    {
+     "t": "Pure steam generators",
+     "d": "Falling film or thermosyphon generators for sterilizers and steam-in-place.",
+     "tag": "EN 285",
+     "link": "sys-pure-steam"
+    },
+    {
+     "t": "Storage and distribution loops",
+     "d": "Tanks, pumps, heat exchangers and loops, sanitized by heat or ozone.",
+     "tag": "ASME BPE",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Pretreatment",
+     "d": "Multimedia, softening, carbon or bisulfite, sized to your water analysis.",
+     "tag": "Health Canada",
+     "link": "sys-pretreatment"
+    },
+    {
+     "t": "Monitoring and controls",
+     "d": "PLC and SCADA with online TOC, conductivity and ozone, and audit trails.",
+     "tag": "21 CFR Part 11",
+     "link": "sys-monitoring"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Choose by water grade",
+   "cols": [
+    "Water grade",
+    "Typical uses",
+    "Systems involved",
+    "Governing standard"
+   ],
+   "rows": [
+    [
+     "Purified Water",
+     "Oral and topical products, equipment rinsing, feed to WFI and pure steam",
+     "Pretreatment, PW generation, ambient or hot loop",
+     "USP Purified Water, Ph. Eur. 0008"
+    ],
+    [
+     "Water for Injection",
+     "Parenteral products, final rinse of product-contact equipment",
+     "Pretreatment, PW generation, WFI by distillation or membrane, hot or ambient loop",
+     "USP Water for Injection, Ph. Eur. 0169"
+    ],
+    [
+     "Pure steam",
+     "Autoclaves, steam-in-place of vessels and lines, humidification of clean areas",
+     "Pretreatment, PW generation, pure steam generator, clean steam header",
+     "EN 285, USP Pure Steam"
+    ],
+    [
+     "Highly purified or lab-grade water",
+     "Quality control laboratories, analytical methods",
+     "PW generation with polishing, small loop",
+     "USP, ASTM D1193"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "h": "WFI by distillation or by membrane",
+   "cols": [
+    "Consideration",
+    "Distillation",
+    "Membrane"
+   ],
+   "rows": [
+    [
+     "Pharmacopoeia",
+     "Accepted by USP, Ph. Eur. and JP",
+     "Accepted by USP; by Ph. Eur. since April 2017 when RO is coupled with other techniques"
+    ],
+    [
+     "Output temperature",
+     "Hot, typically above 80 °C",
+     "Ambient, typically 15–25 °C"
+    ],
+    [
+     "Main energy input",
+     "Plant steam (multi-effect) or electricity (vapour compression)",
+     "Electricity for pumps and EDI"
+    ],
+    [
+     "Cooling water",
+     "Needed for multi-effect; little for vapour compression",
+     "Not needed for generation"
+    ],
+    [
+     "Microbial control",
+     "Inherent in the hot process and hot storage",
+     "Relies on sanitization by heat or ozone and on continuous monitoring"
+    ],
+    [
+     "Regulatory familiarity",
+     "Decades of inspection history in North America and Europe",
+     "Growing; EU GMP Annex 1 expects the contamination control strategy to justify it"
+    ],
+    [
+     "Best fit",
+     "Hot loops, high-volume parenteral plants, sites with spare plant steam",
+     "Sites cutting steam and carbon use, ambient processes, new greenfield plants"
+    ]
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Can you supply only one part of the system?",
+     "a": "Yes. We supply each family on its own and design the interfaces, such as feed water quality to a still or return temperature to a tank, so it integrates with equipment already on your site."
+    },
+    {
+     "q": "How do we size generation against storage?",
+     "a": "We start from your point-of-use demand profile over a full production day. Generation covers the average draw plus sanitization and recovery time, and the tank covers the peaks. We share the calculation with you."
+    },
+    {
+     "q": "Do you build to a standard platform or custom?",
+     "a": "Both. Standard configurations shorten lead time and are prequalified at FAT. We then adapt materials, instrumentation and controls to your URS. [Confirm platform names and lead times]."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "svc-design",
+    "compliance",
+    "cmp-documentation",
+    "contact-proposal"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Not sure which system you need?",
+  "body": "Send us your water analysis and peak demand and we'll recommend a configuration with the reasoning behind it.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "PW generation capacity range",
+  "Names of any standard platforms and their lead times",
+  "Confirm Aquemi supplies lab-grade polishing systems before listing the fourth grade"
+ ]
+}

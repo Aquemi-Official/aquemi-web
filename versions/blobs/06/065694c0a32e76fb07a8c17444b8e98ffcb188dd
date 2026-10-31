@@ -1,0 +1,197 @@
+{
+ "id": "sys-monitoring",
+ "section": "Systems",
+ "nav_label": "Monitoring and controls",
+ "title": "Water system monitoring and controls, Part 11 | Aquemi",
+ "meta": "PLC and SCADA controls with online TOC, conductivity and ozone. Audit trails and electronic records to 21 CFR Part 11, software validated per GAMP 5.",
+ "path": "/systems/monitoring-and-controls/",
+ "eyebrow": "MONITORING AND CONTROLS · 21 CFR PART 11 · GAMP 5",
+ "headline": "Monitoring and controls",
+ "lead": "Our controls run your water system and record its quality continuously, with audit trails and electronic records that meet 21 CFR Part 11 and software validated to GAMP 5.",
+ "primary_cta": "Request a proposal",
+ "secondary_cta": {
+  "label": "Download datasheet",
+  "link": "contact-proposal"
+ },
+ "blocks": [
+  {
+   "type": "spec",
+   "caption": "Online monitoring · USP and 21 CFR Part 11",
+   "cols": [
+    "Measurement",
+    "Range and limit",
+    "Method or reference"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity",
+     "v": "Temperature-compensated and non-compensated; limit ≤ 1.3 µS/cm @ 25 °C",
+     "m": "USP <645> stage 1",
+     "hl": false
+    },
+    {
+     "p": "Total organic carbon",
+     "v": "Online, limit ≤ 500 ppb",
+     "m": "USP <643>, system suitability",
+     "hl": true
+    },
+    {
+     "p": "Dissolved ozone",
+     "v": "0–[0.5] mg/L; zero confirmed after UV",
+     "m": "Amperometric sensor",
+     "hl": false
+    },
+    {
+     "p": "Temperature, flow, pressure",
+     "v": "Loop return and each generation stage",
+     "m": "Calibrated, traceable to national standards",
+     "hl": false
+    },
+    {
+     "p": "Data integrity",
+     "v": "Audit trail, electronic signatures, user roles",
+     "m": "21 CFR Part 11, EU GMP Annex 11",
+     "hl": false
+    },
+    {
+     "p": "Software lifecycle",
+     "v": "Category per GAMP 5, risk-based testing",
+     "m": "GAMP 5 (2nd edition)",
+     "hl": false
+    },
+    {
+     "p": "Data retention",
+     "v": "[x] years, secure backup",
+     "m": "Your record retention policy",
+     "hl": false
+    }
+   ],
+   "h": "Specifications"
+  },
+  {
+   "type": "diagram",
+   "h": "How it works",
+   "stages": [
+    "Instruments",
+    "PLC",
+    "HMI",
+    "SCADA historian",
+    "Your network"
+   ],
+   "caption": "Instruments report to a programmable logic controller (PLC) that runs sequences, interlocks and sanitization. Operators work at a local human-machine interface (HMI). A supervisory control and data acquisition (SCADA) historian stores quality data with an audit trail and sends alarms to your building or plant systems."
+  },
+  {
+   "type": "prose",
+   "h": "Data you can defend in an inspection",
+   "body": [
+    "Every quality value carries a time stamp, an instrument identity and a calibration status. Changes to set points, recipes and alarm limits are recorded with the user, the time and the reason. Records cannot be deleted or overwritten.",
+    "Alarms are classed by consequence. Quality alarms, such as conductivity above limit, divert water and need an acknowledged reason. Equipment alarms go to maintenance. We write the alarm philosophy with you and test every alarm at FAT."
+   ]
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "PLC platform",
+     "d": "[Rockwell Allen-Bradley or Siemens], to match your site standard."
+    },
+    {
+     "t": "Integration",
+     "d": "OPC UA, Modbus TCP or EtherNet/IP to your building management or plant SCADA."
+    },
+    {
+     "t": "Alert and action levels",
+     "d": "Separate levels per sampling point, with trending to catch drift before an excursion."
+    },
+    {
+     "t": "Remote access",
+     "d": "Secure, client-controlled remote support for diagnostics. [Confirm offering]"
+    },
+    {
+     "t": "Batch reports",
+     "d": "Sanitization and daily quality reports, electronically signed."
+    },
+    {
+     "t": "Controls upgrades",
+     "d": "Replace obsolete PLCs or paper recorders on existing systems while keeping the process unchanged."
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered",
+   "items": [
+    "User requirement specification support",
+    "Functional specification",
+    "Hardware and software design specifications",
+    "Alarm and interlock list",
+    "Part 11 and Annex 11 compliance assessment",
+    "Software source code and configuration backup",
+    "Electrical drawings and panel layouts (CSA, UL 508A)",
+    "Instrument calibration certificates",
+    "FAT and SAT protocols and reports",
+    "IQ and OQ protocols, including computer system validation"
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions we hear",
+   "items": [
+    {
+     "q": "Does online TOC replace laboratory testing?",
+     "a": "USP allows online TOC and conductivity for release when the instruments are qualified and the sample point represents the water used. Your microbial and endotoxin testing stays in the laboratory."
+    },
+    {
+     "q": "Can you connect to our existing historian?",
+     "a": "Yes, through standard protocols. We agree data ownership and where the Part 11 boundary sits during design."
+    },
+    {
+     "q": "Who validates the software?",
+     "a": "We supply the specifications, test protocols and executed FAT records. Your validation team approves and owns the final computer system validation."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related systems",
+   "items": [
+    "sys-storage",
+    "sys-pw",
+    "sys-wfi-membrane",
+    "cmp-documentation"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Bring your water data under control.",
+  "body": "Tell us your instruments, PLC standard and data integrity requirements and we'll scope the controls.",
+  "button": "Request a proposal",
+  "link": "contact-proposal"
+ },
+ "todo": [
+  "PLC platforms supported",
+  "Data retention default",
+  "Whether secure remote access is offered",
+  "Whether panels are built to UL 508A or CSA in-house",
+  "Datasheet PDF"
+ ],
+ "facts": [
+  {
+   "v": "≤ 500 ppb",
+   "l": "Online TOC limit · USP <643>"
+  },
+  {
+   "v": "≤ 1.3 µS/cm",
+   "l": "Conductivity limit at 25 °C · USP <645>"
+  },
+  {
+   "v": "Part 11",
+   "l": "Audit trail and e-signatures · 21 CFR"
+  },
+  {
+   "v": "GAMP 5",
+   "l": "Risk-based software lifecycle"
+  }
+ ]
+}
