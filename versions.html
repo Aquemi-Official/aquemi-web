@@ -145,7 +145,7 @@ function step(d){var j=next(d);if(j!==idx(S.v)){S.v=C[j].c;show(true)}}
 function keys(ev){var t=ev.target.tagName;if(t==='SELECT'||t==='INPUT'||t==='TEXTAREA'||ev.altKey||ev.ctrlKey||ev.metaKey)return;if(ev.key==='ArrowLeft'){step(-1);ev.preventDefault()}else if(ev.key==='ArrowRight'){step(1);ev.preventDefault()}}
 
 function start(){
- Promise.all([fetch('versions/index.json').then(function(r){return r.json()}),fetch('content/pages.json').then(function(r){return r.json()})]).then(function(d){
+ Promise.all([fetch('versions/index.json',{cache:'no-cache'}).then(function(r){return r.json()}),fetch('content/pages.json',{cache:'no-cache'}).then(function(r){return r.json()})]).then(function(d){
   C=d[0].commits;var last=C[C.length-1];
   C.push({c:'now',date:new Date().toISOString(),author:'',subject:'The site as it is now',title:null,design:last.design,pages:last.pages});
   var pages=d[1].pages||d[1],L=d[0].labels||{},live={};
