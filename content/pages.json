@@ -917,7 +917,7 @@
     "Test bay location and remote witness platform (same as svc-fat-sat)",
     "Who registers pressure parts (CRN) and for which provinces; panel standard and certification mark held",
     "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope ([hospital, lab and industrial water scope]): new systems, upgrades, service only or not offered (same wording as industries, ind-meddevice and systems FAQ)",
-    "RO high-pressure section material and pressure class (PN), from the PP maker's rating"
+    "RO high-pressure section material and pressure class (PN), from its maker's rating (the high-pressure section may not be PP)"
    ]
   },
   {
@@ -1311,7 +1311,6 @@
     "Whether duty and standby loop pumps are standard or an option",
     "Confirm TOC on the loop return is standard or an option",
     "Whether riboflavin spray coverage testing is performed in-house",
-    "Hero drawing shows a stainless tank; replace it with a PP tank and loop drawing, keeping callout positions",
     "Typical shutdown for adding a point of use to an existing loop (days)",
     "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Datasheet PDF; add a download link only once it exists",
@@ -2811,7 +2810,6 @@
     "Confirm a redacted joint log and dossier index can be shared under NDA",
     "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
     "Confirm the fabrication and inspection plan with hold and witness points is how Aquemi works (page says so)",
-    "Hero drawing and callout positions were made for a stainless skid; replace with a PP skid drawing",
     "A real fabrication project (joint count, rejection rate) before adding a case study block"
    ],
    "facts": [
