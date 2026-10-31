@@ -203,7 +203,7 @@ var ART={
  'sys-wfi-distillation':'Multi-effect WFI still: five columns, condenser and feed pump on one skid',
  'sys-wfi-membrane':'WFI membrane skid: double-pass RO, EDI, heat exchangers and ultrafilter',
  'sys-pure-steam':'Pure steam generator: evaporator column, separator, preheater and control panel',
- 'sys-storage':'WFI storage tank with distribution pump, heat exchanger and loop with point-of-use valves',
+ 'sys-storage':'Storage tank with distribution pump, heat exchanger and loop with point-of-use valves',
  'sys-monitoring':'Wall-mounted analyser panel: TOC and conductivity transmitters, controller and sample line',
  'svc-design':'Skid design: a 3D frame model standing on its P&ID sheet, with scale rule and pencil',
  'svc-fabrication':'Orbital weld head clamped on a sanitary tube, with tri-clamp fittings, gaskets and an elbow',
@@ -322,7 +322,7 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
  /* Callouts round the drawing only on sys-* pages, where the facts are measured values; service and industry pages
     keep their facts (often counts) in the KeyFacts strip under the drawing. */
  var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
- var right=home?wHomeLoop(p):art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · 316L, cool even light]</div>':idx?wHeroIndex(idx):'';
+ var right=home?wHomeLoop(p):art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
  return '<section class="aq-hero'+(home?' aq-hero--home':'')+(co?' aq-hero--mist':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
 /* KeyFacts: the measurement strip under the Hero. facts = [{l, v}].

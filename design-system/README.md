@@ -128,7 +128,7 @@ Two families from one design: **Geist** for everything you read and **Geist Mono
 
 - Headlines (`display-xl`, `display`, `h1`, `h2`) run light (300–400) and tightly tracked. Size and space create the hierarchy, not bold.
 - Body copy is `body` (16/26) with lines kept under `text-max` (680 px). Leads use `body-lg`.
-- `eyebrow` (mono, uppercase, 0.08em tracking) sits above a headline to name the system or standard: `PURE STEAM · EN 285`.
+- `eyebrow` (mono, uppercase, 0.08em tracking) sits above a headline to name the system or standard: `PURIFIED WATER · USP <645>`.
 - Set every measurement in `data` or `readout` with tabular figures, so columns of values line up.
 - Weight 500 is the heaviest weight in the system. Use it for `h3` and `label` only.
 
@@ -179,7 +179,7 @@ This section covers interface icons, not the brand mark. No interface icon set h
 Specifications are the brand's strongest content. Present them as clean tables (see SpecTable):
 
 - Parameter in the first column, value in `data` with its unit, then the test method or pharmacopoeia reference.
-- Give limits as the standard states them: `≤ 1.3 µS/cm @ 25 °C (stage 1)`, `≤ 500 ppb TOC`, `< 0.25 EU/mL`, `≤ 10 CFU/100 mL`.
+- Give limits as the standard states them: `≤ 1.3 µS/cm @ 25 °C (stage 1)`, `≤ 500 ppb TOC`, `100 CFU/mL action level`.
 - Highlight at most one row with `flow-tint`.
 - When showing results, add a status word (Pass, Alert, Action) in the matching status colour.
 
