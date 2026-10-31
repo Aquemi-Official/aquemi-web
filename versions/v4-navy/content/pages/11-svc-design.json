@@ -1,0 +1,342 @@
+{
+ "id": "svc-design",
+ "section": "Services",
+ "nav_label": "Process design and engineering",
+ "title": "Pharmaceutical water system design, URS to DQ | Aquemi",
+ "meta": "Water system design your quality unit can qualify: URS review, basis of design, P&IDs, functional specification and ICH Q9 risk assessment, ready for DQ.",
+ "path": "/services/process-design/",
+ "eyebrow": "PROCESS DESIGN · URS TO DQ · EU GMP ANNEX 15",
+ "headline": "Water system design traced to your URS, approved at DQ and built to qualify",
+ "lead": "We turn your user requirement specification (URS) into a basis of design, piping and instrumentation diagrams (P&IDs) and a functional specification, each requirement traced to the test that proves it at design qualification (DQ).",
+ "tags": [
+  "EU GMP Annex 15",
+  "ASTM E2500",
+  "ISPE Baseline Guide Vol. 5",
+  "ICH Q9(R1)",
+  "GAMP 5"
+ ],
+ "primary_cta": "Submit your URS for a gap review",
+ "primary_cta_intent": "Review of a document you have|URS (gap review)",
+ "secondary_cta": {
+  "label": "Get a sample design package",
+  "link": "cmp-documentation"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "as": "failures",
+   "h": "Most qualification problems are designed in",
+   "intro": "Each is cheap to fix on paper and expensive in a qualified room. So every URS line gets an ID and an answer: met, met with a condition, or not met and why.",
+   "cols": [
+    "Fails at qualification",
+    "Design mistake",
+    "What we design in"
+   ],
+   "rows": [
+    [
+     "Turbulent flow at peak draw",
+     "Loop sized on average draw",
+     "Loop hydraulics checked at peak simultaneous draw, in every operating case"
+    ],
+    [
+     "Dead leg check at installation qualification (IQ)",
+     "Branch drawn without its length",
+     "Branch length and diameter dimensioned at every outlet, listed in a dead leg register"
+    ],
+    [
+     "Operational qualification (OQ) deviation on divert",
+     "Divert setpoint lives only in the programmer's head",
+     "Every setpoint, alarm and interlock written as a testable sentence in the functional specification"
+    ]
+   ],
+   "nav": "Why design"
+  },
+  {
+   "type": "docs",
+   "h": "What you receive, and what each settles",
+   "items": [
+    {
+     "t": "URS review and URS compliance matrix",
+     "d": "How the design meets each requirement and where it is verified. Gaps come back with a proposed wording."
+    },
+    {
+     "t": "Basis of design, process flow diagram (PFD) and mass balance",
+     "d": "Feed water design months, demand profile, route, capacity and margins, each reasoned; flows and quality at minimum and maximum feed temperature."
+    },
+    {
+     "t": "Piping and instrumentation diagrams (P&IDs)",
+     "d": "Every line, valve and tag, with slopes, drains, sample points and dead leg dimensions. IQ verifies against them."
+    },
+    {
+     "t": "Functional specification, hardware and software design specifications",
+     "d": "Setpoints, alarms, interlocks and divert logic, each testable at OQ and our factory acceptance test (FAT); programmable logic controller (PLC) code to GAMP 5."
+    },
+    {
+     "t": "System risk assessment",
+     "d": "Critical aspects, critical design elements and the verification each needs. Your quality unit approves it."
+    },
+    {
+     "t": "Design review report and requirements traceability matrix",
+     "d": "Evidence the design meets every URS line and critical design element. Your quality unit approves DQ on it."
+    },
+    {
+     "t": "Commissioning and qualification plan",
+     "d": "Which test happens at FAT, site acceptance test (SAT), IQ or OQ, and which results your quality unit can leverage."
+    },
+    {
+     "t": "General arrangement (GA) drawings, isometrics and instrument lists",
+     "d": "Footprint, routing and slopes; range, calibration need and alarm setpoint for every instrument."
+    },
+    {
+     "t": "Pressure vessel calculations",
+     "d": "Stills, generators and tanks, for registration under CSA B51 with a Canadian registration number (CRN)."
+    }
+   ],
+   "nav": "What you receive",
+   "fold": 6,
+   "fold_noun": "documents"
+  },
+  {
+   "type": "steps",
+   "h": "Design stages, and what you approve at each",
+   "items": [
+    {
+     "t": "URS and feed water review",
+     "d": "We return the compliance matrix with gaps and proposed wording, and list missing feed water data. No URS yet: we help you write one."
+    },
+    {
+     "t": "Concept and route assessment",
+     "d": "Demand profile, route options, PFD, mass balance and a budget at [concept estimate accuracy, ± %]. You approve the basis of design."
+    },
+    {
+     "t": "Basic design",
+     "d": "P&IDs, GA drawings, draft functional specification and risk assessment, reviewed with your leads. Every comment is answered in writing."
+    },
+    {
+     "t": "Detailed design",
+     "d": "Approved P&IDs, isometrics, lists, hardware and software specifications, pressure vessel calculations and the commissioning and qualification plan."
+    },
+    {
+     "t": "Design review and design freeze",
+     "d": "Review against the URS and every critical design element. Your quality unit approves DQ; later changes go through change control."
+    },
+    {
+     "t": "Into fabrication",
+     "d": "The approved design goes to our shop, and the FAT protocol is written from the same functional specification."
+    }
+   ],
+   "nav": "Stages"
+  },
+  {
+   "type": "spec",
+   "caption": "BASIS OF DESIGN",
+   "h": "What decides each design choice",
+   "cols": [
+    "Decision",
+    "What decides it",
+    "Standard or reference"
+   ],
+   "rows": [
+    {
+     "p": "Generation capacity and margin",
+     "v": "Average draw plus sanitization and recovery time, at your coldest feed",
+     "m": "USP <645>, <643> at point of use"
+    },
+    {
+     "p": "Tank volume and loop hydraulics",
+     "v": "Peak simultaneous draw, turbulent flow in every operating case, return flow alarmed",
+     "m": "Annex 1, 6.9; hydraulic calculation"
+    },
+    {
+     "p": "Pretreatment train",
+     "v": "Worst-season feed chemistry, chlorine or chloramine, silt density index (SDI)",
+     "m": "USP <1231>, drinking water source"
+    },
+    {
+     "p": "Water for Injection (WFI) route",
+     "v": "Hot or ambient use, plant steam and cooling water cost, markets, corporate standard",
+     "m": "USP <85>; Ph. Eur. 0169"
+    },
+    {
+     "p": "Hygienic design",
+     "v": "Dead legs at L/D ≤ 2, full drainability, 316L product contact with a stated finish",
+     "m": "ASME BPE; Annex 1, 6.5 and 6.7"
+    },
+    {
+     "p": "Microbial control",
+     "v": "Number of cooled points of use, energy cost, how often you can sanitize",
+     "m": "Annex 1, 6.10 and 6.12; USP <1231>"
+    },
+    {
+     "p": "Pure steam capacity and header",
+     "v": "Each sterilizer and steam-in-place (SIP) user, its inlet pressure, which cycles run together",
+     "m": "EU GMP Annex 1, 6.17; EN 285"
+    },
+    {
+     "p": "Online monitoring and records",
+     "v": "Where total organic carbon (TOC) and conductivity are measured, how release data is kept",
+     "m": "Annex 1, 6.15; 21 CFR Part 11; Annex 11"
+    },
+    {
+     "p": "Pressure equipment",
+     "v": "Design pressure and temperature of stills, generators and tanks",
+     "m": "ASME VIII, Div. 1; CSA B51"
+    }
+   ],
+   "nav": "Basis of design",
+   "fold": 5,
+   "ground": "dark"
+  },
+  {
+   "type": "table",
+   "h": "One requirement, traced through every document",
+   "intro": "URS-012: Purified Water (PW) ≤ 1.3 µS/cm at 25 °C at every point of use (USP <645> stage 1). URS-027: no dead leg over L/D 2 (ASME BPE). Each ID reaches its test.",
+   "cols": [
+    "Document",
+    "URS-012: conductivity",
+    "URS-027: dead legs"
+   ],
+   "rows": [
+    [
+     "URS compliance matrix",
+     "Met. Generator outlet designed to [outlet conductivity guarantee, µS/cm @ 25 °C]; loop return monitored.",
+     "Met. Every branch, instrument tee and sample valve in the dead leg register."
+    ],
+    [
+     "Basis of design",
+     "Double-pass reverse osmosis (RO) and electrodeionization (EDI), chosen from your feed water analysis",
+     "Zero-static point-of-use valves; instrument tees sized to hold L/D ≤ 2"
+    ],
+    [
+     "Functional specification",
+     "Water above the divert setpoint, set below your alert level, goes to drain until conductivity recovers",
+     "Not applicable"
+    ],
+    [
+     "P&IDs and isometrics",
+     "Tagged conductivity elements at generator outlet and loop return",
+     "Branch length and diameter dimensioned at every outlet"
+    ],
+    [
+     "Risk assessment",
+     "Critical aspect: conductivity. Critical design elements: sensors, divert valve and its logic.",
+     "Critical design element: branch geometry"
+    ],
+    [
+     "Verification",
+     "FAT: divert at setpoint, simulated signal. SAT and OQ: your feed water, raw non-temperature-compensated reading.",
+     "IQ: as-built L/D measured against the register (Annex 15, 3.9 i)"
+    ]
+   ],
+   "nav": "Traceability"
+  },
+  {
+   "type": "faq",
+   "h": "Questions engineering, validation and quality teams ask",
+   "items": [
+    {
+     "q": "Our URS is a draft. Is it too early to send it?",
+     "a": "No. A draft is the best time. Annex 15, 3.2 says the essential elements of quality should be built in at the URS stage, and the cheapest change is a sentence. We return the compliance matrix with gaps, conflicts and untestable requirements, each with a proposed wording. The URS stays yours to approve."
+    },
+    {
+     "q": "Who owns DQ: you or us?",
+     "a": "You do. Annex 15, 3.3 describes DQ as the documented verification that the design meets GMP and the URS, and the 2025 revision of ASTM E2500 calls for quality unit approval of it. We supply the design review report, traceability matrix and risk assessment as evidence, in your template if you have one."
+    },
+    {
+     "q": "Our site does not use ASTM E2500. Does that change your design?",
+     "a": "Not the documents; only how much is verified and repeated. Either way, Annex 15, 3.6 allows some FAT tests without repeating them at IQ/OQ, where you can show transport and installation do not affect them. The commissioning and qualification plan names those tests, and your quality unit approves the FAT protocol before execution."
+    },
+    {
+     "q": "Which risk assessment method do you use?",
+     "a": "ICH Q9(R1) does not prescribe one. For water systems we usually run a failure mode and effects analysis (FMEA) at component and function level, with your quality and engineering leads in the room. We use your template and scoring if your procedures set one. The output: critical aspects, critical design elements and the verification each needs."
+    },
+    {
+     "q": "Can you work with our engineering firm's design?",
+     "a": "Yes. We can design the water system inside a package your architect-engineer leads, issuing our P&IDs, GA drawings and utility list for their drawings. Or we review a water system design they have produced against your URS and the standards above."
+    },
+    {
+     "q": "Is design charged separately from the equipment?",
+     "a": "URS review: [URS review cost]. Concept and design fees credited against an equipment order: [design fees credited, yes or no]. Design-only and design review engagements: [design-only engagements offered, and pricing]."
+    },
+    {
+     "q": "What drawings do we receive, and are they sealed?",
+     "a": "Formats: [drawing formats delivered, PDF and native CAD]. Ownership: [drawing ownership or licence terms]. Seal by a licensed professional engineer (P.Eng.) on drawings and pressure vessel calculations: [P.Eng. seal and provinces covered]."
+    },
+    {
+     "q": "What if requirements change, or a gap shows up at DQ or IQ/OQ?",
+     "a": "A gap that traces to a requirement we accepted in the basis of design is ours: we correct the design, drawings and affected qualification documents under [design gap warranty terms]. A new requirement goes through change control: we state which documents and critical design elements it touches, and its cost and schedule effect, before work starts."
+    }
+   ],
+   "nav": "FAQ"
+  },
+  {
+   "type": "related",
+   "h": "Where the design goes next",
+   "items": [
+    "svc-fabrication",
+    "svc-fat-sat",
+    "svc-cq",
+    "cmp-documentation",
+    "systems",
+    "svc-upgrades"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your URS, draft or final. We return it with every gap marked.",
+  "body": "An engineer replies within [proposal response time, working days] with questions on your inputs.",
+  "button": "Submit your URS for a gap review",
+  "link": "contact-proposal",
+  "intent": "Review of a document you have|URS (gap review)",
+  "include_label": "What to send for a URS review",
+  "include": [
+   "Your URS, draft or final",
+   "Water grades and pharmacopoeias, internal limits",
+   "Feed water analysis, summer and winter",
+   "Each point of use: flow, temperature",
+   "Peak L/h and daily m³ per grade",
+   "Room layout or architect-engineer drawings",
+   "Your qualification approach and templates"
+  ],
+  "turnaround": "[URS review turnaround, working days]",
+  "returns": [
+   "URS compliance matrix, every gap marked",
+   "Proposed wording for each gap",
+   "List of missing feed water data"
+  ]
+ },
+ "todo": [
+  "Concept estimate accuracy (± %) for the route assessment budget",
+  "URS review turnaround (working days) after complete inputs",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "URS review cost: free or charged ([URS review cost], FAQ)",
+  "Whether concept or design fees are credited against an equipment order ([design fees credited, yes or no], FAQ)",
+  "Whether design-only or third-party design review engagements are sold separately from equipment, and how they are priced ([design-only engagements offered, and pricing], FAQ; first pass already claimed design inside an architect-engineer's package)",
+  "Whether drawings and pressure vessel calculations are sealed by a licensed P.Eng., and in which provinces ([P.Eng. seal and provinces covered], FAQ)",
+  "Drawing deliverables: formats ([drawing formats delivered, PDF and native CAD]), ownership or licence terms ([drawing ownership or licence terms]), design software used (FAQ)",
+  "Outlet conductivity guarantee (µS/cm @ 25 °C) used in the traceability example (same placeholder as sys-pw)",
+  "Confirm Aquemi runs FMEA-style system risk assessments with the customer, and writes the commissioning and qualification plan (page says so)",
+  "Confirm Aquemi designs WFI by distillation and pure steam in-house or with a partner (same open fact as sys-wfi-distillation and sys-pure-steam)",
+  "Confirm Aquemi does pressure vessel calculations in-house or through a partner, and the provinces where it registers CRNs",
+  "A real design project (scope, URS lines, design-to-DQ duration) before adding a case study block",
+  "Who pays for design gaps found at DQ or IQ/OQ ([design gap warranty terms], FAQ)"
+ ],
+ "facts": [
+  {
+   "v": "9",
+   "l": "Design documents, URS matrix to DQ report"
+  },
+  {
+   "v": "6",
+   "l": "Design stages, URS review to fabrication"
+  },
+  {
+   "v": "L/D ≤ 2",
+   "l": "Dead legs · ASME BPE"
+  },
+  {
+   "v": "3",
+   "l": "Answers per URS line: met, conditional, not met"
+  }
+ ]
+}

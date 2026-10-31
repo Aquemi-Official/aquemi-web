@@ -1,0 +1,303 @@
+/* ---------- Hero ---------- */
+.aq-hero { position: relative; overflow: hidden; padding-block: var(--space-24) var(--space-16); }
+.aq-hero--home { padding-block: var(--space-32) var(--space-24); }
+.aq-hero__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: stretch; }
+.aq-hero__grid--figure { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; }
+.aq-hero__actions { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; margin-top: var(--space-2); }
+.aq-hero .aq-tags { margin-top: var(--space-2); }
+.aq-photo { position: relative; z-index: 1; aspect-ratio: 4 / 3; min-height: 100%; max-width: 100%; background-color: var(--surface-sunken); background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--space-8) var(--space-8); background-position: -1px -1px; border: 1px solid var(--line); display: flex; align-items: flex-end; padding: var(--space-4); font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+.aq-arc { position: absolute; right: -1px; bottom: -1px; width: min(38%, 420px); height: auto; pointer-events: none; }
+.aq-arc__outer { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-arc__inner { fill: none; stroke: var(--flow); stroke-width: 1.5; }
+
+/* Figure: the equipment drawing large and dominant on a fading blueprint grid inside a dashed drawing frame, with the
+   page's key facts as callouts in the four corners joined to the drawing by leader lines (concept 02).
+   The box is 6:5 (viewBox 120 x 100 for the leaders); the drawing is a centred square 96 % of its height. */
+.aq-hero__grid--figure { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); align-items: center; column-gap: var(--space-8); }
+/* Headline at 72/70 so eight words sit in two or three lines beside the drawing */
+.aq-hero__grid--figure .aq-display { font-size: 72px; line-height: 70px; }
+/* A scale rule under the headline, like the dimension line under a drawing title */
+.aq-hero__grid--figure h1::after {
+  content: ""; display: block; height: var(--space-2); margin-top: var(--space-4); max-width: 100%;
+  background:
+    repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px var(--space-2)) left bottom / 100% 5px no-repeat,
+    repeating-linear-gradient(90deg, var(--ink-subtle) 0 1px, transparent 1px calc(var(--space-2) * 5)) left bottom / 100% 100% no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left bottom / 100% 1px no-repeat;
+}
+.aq-hero__figure { position: relative; z-index: 1; margin: 0; aspect-ratio: 6 / 5; }
+.aq-hero__figure::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--space-8) var(--space-8); background-position: center; -webkit-mask: radial-gradient(closest-side, var(--ink) 60%, transparent); mask: radial-gradient(closest-side, var(--ink) 60%, transparent); pointer-events: none; }
+/* Dashed drawing frame between the callout rows, with registration crosses at its corners */
+.aq-hero__figure::after {
+  content: ""; position: absolute; inset: 13% 0; pointer-events: none; border: 1px dashed var(--line-strong);
+  background:
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) left var(--space-2) top var(--space-1) / 1px var(--space-3) no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) left var(--space-1) top var(--space-2) / var(--space-3) 1px no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) right var(--space-2) bottom var(--space-1) / 1px var(--space-3) no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) right var(--space-1) bottom var(--space-2) / var(--space-3) 1px no-repeat;
+}
+.aq-hero__art { position: absolute; inset: 0; }
+.aq-hero__art .aq-illustration { position: absolute; inset: 2% 10%; width: auto; max-width: none; aspect-ratio: auto; margin: 0; }
+.aq-hero__leaders { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.aq-hero__leaders line { stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-hero__leaders circle { fill: var(--flow); }
+.aq-hero__leaders circle.is-start { fill: var(--surface); stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-hero__leaders--narrow { display: none; }
+.aq-hero__callouts { position: absolute; inset: 0; z-index: 2; margin: 0; pointer-events: none; }
+.aq-hero__callout {
+  position: absolute; width: 27%; height: 13%; display: flex; flex-direction: column; justify-content: flex-end; gap: var(--space-1);
+  padding-block: var(--space-2); border-bottom: 1px solid var(--flow); pointer-events: auto;
+}
+.aq-hero__callouts--top .aq-hero__callout:nth-child(1) { top: 0; left: 0; }
+.aq-hero__callouts--top .aq-hero__callout:nth-child(2) { top: 0; right: 0; text-align: right; }
+.aq-hero__callouts--bottom .aq-hero__callout { bottom: 0; justify-content: flex-start; border-bottom: 0; border-top: 1px solid var(--flow); }
+.aq-hero__callouts--bottom .aq-hero__callout:nth-child(1) { left: 0; }
+.aq-hero__callouts--bottom .aq-hero__callout:nth-child(2) { right: 0; text-align: right; }
+.aq-hero__callout dt { font: 500 11px/15px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-hero__callout dd { margin: 0; font: 300 clamp(16px, 1.7cqi, 22px)/1.2 var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: break-word; }
+
+/* Index (hub and company pages): the other pages of this section, numbered, joined by one routed line.
+   A 1 px line-strong rule runs down the left from a node to an arrowhead; each item has a dot on the rule and a
+   short leader ending in an arrowhead at its number. Number row centre: space-3 padding + 24 px (half of 48 px). */
+.aq-hero__grid--index { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; }
+.aq-hero__index { position: relative; z-index: 1; min-width: 0; }
+.aq-hero__index-label { margin: 0 0 var(--space-2) var(--space-8); font: 500 11px/15px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-hero__index ol { counter-reset: aq-hero-index; position: relative; margin: 0; padding: 0 0 var(--space-6) var(--space-8); list-style: none; }
+.aq-hero__index ol::before { content: ""; position: absolute; top: 0; bottom: 6px; left: 0; border-left: 1px solid var(--line-strong); }
+.aq-hero__index ol::after { content: ""; position: absolute; bottom: 0; left: -4px; width: 0; height: 0; border-top: 6px solid var(--line-strong); border-inline: 4.5px solid transparent; }
+.aq-hero__index li { counter-increment: aq-hero-index; position: relative; }
+.aq-hero__index li::before { content: ""; position: absolute; top: calc(var(--space-3) + 24px - 3px); left: calc(-1 * var(--space-8) - 3px); width: 7px; height: 7px; border-radius: var(--radius-pill); background: var(--line-strong); transition: background-color 120ms; }
+.aq-hero__index li::after { content: ""; position: absolute; top: calc(var(--space-3) + 24px); left: calc(-1 * var(--space-8)); width: calc(var(--space-6) - 6px); border-top: 1px solid var(--line-strong); }
+.aq-hero__index-item { position: relative; display: flex; align-items: center; gap: var(--space-4); padding-block: var(--space-3); color: var(--ink); text-decoration: none; }
+:where(.aq-page) a.aq-hero__index-item { color: var(--ink); }
+.aq-hero__index-item::before {
+  content: counter(aq-hero-index, decimal-leading-zero);
+  content: counter(aq-hero-index, decimal-leading-zero) / "";
+  flex: none; min-width: 2ch; font: 400 13px/48px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-subtle);
+}
+/* Arrowhead at the end of the leader, pointing at the number */
+.aq-hero__index-item::after { content: ""; position: absolute; top: calc(var(--space-3) + 24px - 4px); left: calc(-1 * var(--space-2) - 6px); width: 0; height: 0; border-left: 6px solid var(--line-strong); border-block: 4px solid transparent; transition: border-left-color 120ms; }
+.aq-hero__index-t { min-width: 0; font: 500 13px/18px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; overflow-wrap: break-word; transition: color 120ms; }
+a.aq-hero__index-item .aq-hero__index-t::after { content: "\a0\2192"; color: var(--flow); }
+a.aq-hero__index-item:hover .aq-hero__index-t { color: var(--flow); }
+a.aq-hero__index-item:hover::after, a.aq-hero__index-item:focus-visible::after { border-left-color: var(--flow); }
+.aq-hero__index li:has(> a:hover, > a:focus-visible)::before { background: var(--flow); }
+a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
+
+/* System index (hero field "index", concept 35): the same index at display scale on a framed area with corner crosses.
+   Numbers Geist Mono 300 44/56 in ink, titles 16/22 mono caps, dashed leaders, flow dots on the spine, a small down
+   arrow between entries and the label set vertically beside the spine. Row centre: space-1 padding + 28px (half of 56). */
+.aq-hero__grid--big-index { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); }
+.aq-hero__index--big { align-self: center; padding: var(--space-8) var(--space-8) var(--space-6) var(--space-16); }
+.aq-hero__index--big::before { content: ""; position: absolute; inset: var(--space-3); border: 1px solid var(--line); pointer-events: none; }
+.aq-hero__index--big::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(var(--line-strong), var(--line-strong)) left 0 top var(--space-3) / calc(var(--space-6) + 1px) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left var(--space-3) top 0 / 1px calc(var(--space-6) + 1px) no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right 0 top var(--space-3) / calc(var(--space-6) + 1px) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right var(--space-3) top 0 / 1px calc(var(--space-6) + 1px) no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left 0 bottom var(--space-3) / calc(var(--space-6) + 1px) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left var(--space-3) bottom 0 / 1px calc(var(--space-6) + 1px) no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right 0 bottom var(--space-3) / calc(var(--space-6) + 1px) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right var(--space-3) bottom 0 / 1px calc(var(--space-6) + 1px) no-repeat;
+}
+.aq-hero__index--big .aq-hero__index-label { position: absolute; top: 50%; left: var(--space-6); margin: 0; writing-mode: vertical-rl; transform: translateY(-50%) rotate(180deg); white-space: nowrap; }
+.aq-hero__index--big ol { padding-bottom: var(--space-6); }
+.aq-hero__index--big ol::before { top: calc(var(--space-1) + 28px); }
+.aq-hero__index--big li + li { margin-top: var(--space-3); }
+.aq-hero__index--big li::before { top: calc(var(--space-1) + 28px - 3px); background: var(--flow); }
+.aq-hero__index--big li::after { top: calc(var(--space-1) + 28px); border-top-style: dashed; }
+.aq-hero__index--big .aq-hero__index-item { gap: var(--space-4); padding-block: var(--space-1); }
+.aq-hero__index--big .aq-hero__index-item::before { font: 300 44px/56px var(--font-mono); letter-spacing: -0.02em; color: var(--ink); transition: color 120ms; }
+.aq-hero__index--big .aq-hero__index-item::after { top: calc(var(--space-1) + 28px - 4px); }
+.aq-hero__index--big .aq-hero__index-t { font-size: 16px; line-height: 22px; }
+.aq-hero__index--big a.aq-hero__index-item:hover::before, .aq-hero__index--big a.aq-hero__index-item:focus-visible::before { color: var(--flow); }
+/* Down arrow between two entries, centred under the number column (2ch of the 44 px figures) */
+.aq-hero__index-down { position: absolute; top: 100%; left: 0; width: 2ch; height: var(--space-3); font: 300 44px/1 var(--font-mono); text-align: center; color: var(--ink-subtle); }
+.aq-hero__index-down::before { content: "\2193"; content: "\2193" / ""; display: block; font: 400 13px/12px var(--font-mono); }
+
+/* Home: fine-line drawing of a figure-eight distribution loop. Pipe in ink-muted (currentColor), guides in line,
+   scale rule and leaders in line-strong, flow arrows in flow, annotations in Geist Mono caps. */
+.aq-hero__grid--loop { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; }
+.aq-hero__loop { position: relative; z-index: 1; margin: 0; color: var(--ink-muted); }
+.aq-hero__loop svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-loop__pipe { fill: none; stroke: currentColor; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-loop__guide { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+.aq-loop__rule line, .aq-loop__lead line { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-loop__part { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-loop__part rect, .aq-loop__part circle { fill: var(--surface); }
+.aq-loop__arrow { fill: var(--flow); }
+.aq-loop__text text { fill: var(--ink-muted); font: 500 10px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.aq-loop__text .aq-loop__tag { fill: var(--ink); font-size: 8px; letter-spacing: 0.02em; }
+
+/* Drawn figure (hero field "figure", pages with no equipment drawing): a bold device on the same blueprint frame as the
+   equipment figure (6:5, fading line grid, dashed line-strong frame, registration crosses). Decorative: aria-hidden. */
+.aq-hero__drawn { position: relative; z-index: 1; margin: 0; aspect-ratio: 6 / 5; container-type: inline-size; }
+.aq-hero__drawn::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: var(--space-8) var(--space-8); background-position: center; -webkit-mask: radial-gradient(closest-side, var(--ink) 55%, transparent); mask: radial-gradient(closest-side, var(--ink) 55%, transparent); pointer-events: none; }
+.aq-hero__drawn::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; border: 1px dashed var(--line-strong);
+  background:
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) left var(--space-3) top var(--space-1) / 1px var(--space-4) no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) left var(--space-1) top var(--space-3) / var(--space-4) 1px no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) right var(--space-3) top var(--space-1) / 1px var(--space-4) no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) right var(--space-1) top var(--space-3) / var(--space-4) 1px no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) left var(--space-3) bottom var(--space-1) / 1px var(--space-4) no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) left var(--space-1) bottom var(--space-3) / var(--space-4) 1px no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) right var(--space-3) bottom var(--space-1) / 1px var(--space-4) no-repeat,
+    linear-gradient(var(--ink-subtle), var(--ink-subtle)) right var(--space-1) bottom var(--space-3) / var(--space-4) 1px no-repeat;
+}
+.aq-hero__drawn-label { position: absolute; z-index: 2; top: var(--space-3); left: var(--space-8); font: 500 11px/15px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+/* the text column keeps the figure grid's 72/70 headline and scale rule */
+.aq-hero__grid--drawn { align-items: center; }
+.aq-hero__drawn svg.aq-hero__route, .aq-hero__drawn svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.aq-hero__drawn svg :is(path, line, circle, rect) { vector-effect: non-scaling-stroke; }
+
+/* Spots: vignettes in a zig-zag, joined along their bases by one flow pipe ending in an arrow */
+.aq-hero__pipe-run { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-hero__pipe-arrow, .aq-hero__pipe circle { fill: var(--flow); }
+.aq-hero__vig { position: absolute; z-index: 1; width: var(--w, 33%); transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; }
+.aq-hero__vig .aq-spot, .aq-hero__vig .aq-spot--l { width: 100%; height: auto; aspect-ratio: 1; }
+.aq-hero__vig .aq-spot.aq-spot--icon { width: 56%; height: auto; margin-block: 22%; }
+.aq-hero__vig-t { position: absolute; top: calc(100% + var(--space-2)); left: 50%; transform: translateX(-50%); width: max-content; max-width: 130%; padding: 0 var(--space-1); background: var(--surface); text-align: center; font: 500 11px/15px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); text-wrap: balance; }
+.aq-hero__vig-t b { font-weight: 500; color: var(--flow); }
+
+/* Binder: a stack of cream folders (data-theme="light"), divider tabs staggered up and right, the front folder holding
+   the index. --k: 0 for the front folder, 1.. behind it. */
+.aq-hero__binder { position: absolute; inset: 9% 7% 7% 5%; background: none; }
+.aq-hero__folder {
+  position: absolute; left: calc(var(--k, 0) * 7%); bottom: calc(var(--k, 0) * 8%); width: 76%; height: 74%;
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: 0 var(--radius-sm) var(--radius-sm) var(--radius-sm);
+}
+.aq-hero__folder-tab {
+  position: absolute; bottom: 100%; left: calc(var(--space-4) + var(--k, 0) * 18%); margin-bottom: -1px; height: var(--space-6); padding: 0 var(--space-6) 0 var(--space-3); display: flex; align-items: center;
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-bottom: 0; border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--ink);
+}
+.aq-hero__folder:not(.is-front) { background: var(--surface-sunken); }
+.aq-hero__folder.is-front { z-index: 1; display: flex; }
+.aq-hero__folder.is-front > .aq-hero__folder-tab { background: var(--flow); border-color: var(--flow); color: var(--surface); }
+.aq-hero__folder-body { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: var(--space-6); color: var(--ink); }
+.aq-hero__folder-head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-4); padding-bottom: var(--space-3); border-bottom: 2px solid var(--ink); }
+.aq-hero__folder-n { font: 600 clamp(22px, 6.4cqi, 40px)/1 var(--font-display); text-transform: uppercase; letter-spacing: 0; }
+.aq-hero__folder-head .aq-icon { flex: none; width: var(--space-8); height: var(--space-8); background-color: var(--ink); }
+.aq-hero__folder-list { margin: 0; padding: 0; list-style: none; }
+.aq-hero__folder-list li { display: flex; gap: var(--space-3); align-items: baseline; padding-block: clamp(2px, 1cqi, var(--space-2)); border-bottom: 1px dashed var(--line-strong); font: 500 clamp(10px, 2.1cqi, 13px)/1.3 var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; }
+.aq-hero__folder-list b { font-weight: 400; color: var(--flow); }
+.aq-hero__folder-list span { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.aq-hero__folder-foot { margin-top: auto; padding-top: var(--space-2); font: 500 11px/15px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+
+/* Stamp: a cream release record with a large flow rubber stamp struck across it at an angle */
+.aq-hero__record {
+  position: absolute; top: 9%; left: 6%; width: 58%; height: 82%; display: flex; flex-direction: column; padding: var(--space-6);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); color: var(--ink);
+  box-shadow: var(--space-2) var(--space-2) 0 -1px var(--surface-sunken), var(--space-2) var(--space-2) 0 0 var(--line-strong);
+}
+.aq-hero__record-h { padding-bottom: var(--space-3); border-bottom: 2px solid var(--ink); font: 600 clamp(20px, 5cqi, 32px)/1 var(--font-display); text-transform: uppercase; }
+.aq-hero__record ul { margin: 0; padding: 0; list-style: none; }
+.aq-hero__record li { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); padding-block: clamp(4px, 1.6cqi, var(--space-3)); border-bottom: 1px dashed var(--line-strong); font: 500 clamp(10px, 2.1cqi, 13px)/1.3 var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; }
+/* a ticked box at the end of each row */
+.aq-hero__record li i { position: relative; flex: none; width: var(--space-4); height: var(--space-4); border: 1px solid var(--ink); }
+.aq-hero__record li i::after { content: ""; position: absolute; left: 30%; top: 0; width: 35%; height: 70%; border: solid var(--flow); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.aq-hero__record-sign { margin-top: auto; padding-top: var(--space-2); border-top: 1px solid var(--ink); width: 60%; font: 500 11px/15px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-hero__drawn--stamp svg.aq-hero__stamp { inset: auto 2% 4% auto; width: 58%; height: auto; aspect-ratio: 1; transform: rotate(-14deg); z-index: 2; color: var(--flow); }
+.aq-hero__stamp circle { fill: none; stroke: currentColor; stroke-width: 1.5; }
+.aq-hero__stamp .aq-hero__stamp-o { stroke-width: 4; }
+.aq-hero__stamp-band { fill: var(--surface); stroke: currentColor; stroke-width: 3; }
+.aq-hero__stamp-tick { fill: none; stroke: currentColor; stroke-width: 5; stroke-linecap: square; }
+.aq-hero__stamp text { fill: currentColor; text-transform: uppercase; }
+.aq-hero__stamp-ring { font: 500 13px var(--font-mono); letter-spacing: 0.12em; }
+.aq-hero__stamp-word { font: 600 42px var(--font-display); letter-spacing: 0.04em; }
+.aq-hero__stamp-sub { font: 500 13px var(--font-mono); letter-spacing: 0.2em; }
+
+/* Route: one line from a start node through three numbered stops to an arrow, over a dashed ground line */
+.aq-hero__route-run { fill: none; stroke: var(--flow); stroke-width: 2; stroke-linejoin: round; }
+.aq-hero__route-guide { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 4 4; }
+.aq-hero__route-start { fill: var(--surface); stroke: var(--flow); stroke-width: 1.5; }
+.aq-hero__route-arrow { fill: var(--flow); }
+.aq-hero__stop { position: absolute; z-index: 1; width: 0; height: 0; }
+.aq-hero__stop b {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); display: grid; place-items: center;
+  width: clamp(48px, 15cqi, 88px); aspect-ratio: 1; border-radius: var(--radius-pill); border: 2px solid var(--flow); background: var(--surface);
+  font: 300 clamp(24px, 7cqi, 44px)/1 var(--font-mono); color: var(--ink); box-shadow: 0 0 0 var(--space-2) var(--surface), 0 0 0 calc(var(--space-2) + 1px) var(--line-strong);
+}
+.aq-hero__stop > span { position: absolute; width: max-content; max-width: 32cqi; font: 500 clamp(11px, 2.5cqi, 15px)/1.3 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); text-wrap: balance; }
+.aq-hero__stop--r > span { left: clamp(36px, 10.5cqi, 60px); top: 0; transform: translateY(-50%); }
+.aq-hero__stop--b > span { top: clamp(36px, 10.5cqi, 60px); left: 0; transform: translateX(-50%); text-align: center; }
+.aq-hero__stop--t > span { bottom: clamp(36px, 10.5cqi, 60px); right: 0; text-align: right; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-hero__index li::before, .aq-hero__index-item::before, .aq-hero__index-item::after, .aq-hero__index-t { transition: none; }
+}
+
+@container (max-width: 860px) {
+  /* Phones: the hero fits about 1.5 screens with its facts. Headline sized for 375 px, the drawing small and after the
+     actions, callouts and KeyFacts as compact 2 x 2 grids. */
+  .aq-hero, .aq-hero--home { padding-block: var(--space-12); }
+  .aq-hero .aq-display { font-size: 34px; line-height: 38px; letter-spacing: -0.02em; }
+  .aq-hero .aq-display-xl { font-size: 40px; line-height: 44px; }
+  .aq-hero .aq-lead { font-size: 17px; line-height: 26px; }
+  .aq-hero__grid { row-gap: var(--space-8); }
+  .aq-hero__grid, .aq-hero__grid--figure, .aq-hero__grid--index, .aq-hero__grid--loop { grid-template-columns: minmax(0, 1fr); }
+  .aq-photo { min-height: 0; aspect-ratio: 2 / 1; }
+  /* Figure on phones: full width and bold. The top pair of callouts, the drawing row (5:4) with its own leaders,
+     then the bottom pair; each callout's rule faces the drawing and starts its leader. */
+  .aq-hero__grid--figure .aq-display { font-size: 44px; line-height: 42px; letter-spacing: 0; }
+  .aq-hero__grid--figure h1::after { margin-top: var(--space-3); }
+  .aq-hero__figure { aspect-ratio: auto; margin: 0; display: flex; flex-direction: column; }
+  /* no corner crosses on phones: the callout rows sit in those corners */
+  .aq-hero__figure::after { inset: auto 0; top: 0; bottom: 0; border: 0; border-block: 1px dashed var(--line); background: none; }
+  .aq-hero__art { position: relative; inset: auto; aspect-ratio: 5 / 4; }
+  .aq-hero__art .aq-illustration { inset: 0 10%; }
+  .aq-hero__leaders--wide { display: none; }
+  .aq-hero__leaders--narrow { display: block; }
+  .aq-hero__callouts { position: relative; inset: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 6%; }
+  .aq-hero__callout, .aq-hero__callouts--top .aq-hero__callout:nth-child(n), .aq-hero__callouts--bottom .aq-hero__callout:nth-child(n) { position: static; width: auto; height: auto; }
+  .aq-hero__callout dt { font-size: 12px; line-height: 16px; letter-spacing: 0.02em; text-wrap: balance; }
+  .aq-hero__callout dd { font-size: 20px; line-height: 24px; }
+  /* Index: under the actions, smaller figures */
+  .aq-hero__grid--index { row-gap: var(--space-8); }
+  .aq-hero__index-label { margin-left: var(--space-6); font-size: 12px; line-height: 16px; }
+  .aq-hero__index ol { padding-left: var(--space-6); }
+  .aq-hero__index li::before { top: calc(var(--space-2) + 18px - 3px); left: calc(-1 * var(--space-6) - 3px); }
+  .aq-hero__index li::after { top: calc(var(--space-2) + 18px); left: calc(-1 * var(--space-6)); width: calc(var(--space-4) - 6px); }
+  .aq-hero__index-item { gap: var(--space-3); padding-block: var(--space-2); }
+  .aq-hero__index-item::before { line-height: 36px; }
+  .aq-hero__index-item::after { top: calc(var(--space-2) + 18px - 4px); }
+  /* System index: under the actions as a compact numbered list on a heavier flow spine; label on top, no down arrows */
+  .aq-hero__grid--big-index { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
+  .aq-hero__index--big { padding: var(--space-6) var(--space-4) var(--space-6) var(--space-6); }
+  .aq-hero__index--big .aq-hero__index-label { position: static; margin: 0 0 var(--space-1); writing-mode: horizontal-tb; transform: none; white-space: normal; }
+  .aq-hero__index--big ol { padding-left: var(--space-6); padding-bottom: var(--space-2); }
+  .aq-hero__index--big ol::before { top: 22px; border-left: 2px solid var(--flow); left: -0.5px; }
+  .aq-hero__index--big ol::after { border-top-color: var(--flow); }
+  .aq-hero__index--big li + li { margin-top: 0; }
+  .aq-hero__index--big li::before { top: calc(22px - 3px); left: calc(-1 * var(--space-6) - 3px); }
+  .aq-hero__index--big li::after { top: 22px; left: calc(-1 * var(--space-6)); width: calc(var(--space-4) - 6px); }
+  .aq-hero__index--big .aq-hero__index-item { gap: var(--space-3); min-height: 44px; padding-block: calc(var(--space-3) / 2); }
+  .aq-hero__index--big .aq-hero__index-item::before { font-size: 24px; line-height: 32px; }
+  .aq-hero__index--big .aq-hero__index-item::after { top: calc(22px - 4px); }
+  .aq-hero__index--big .aq-hero__index-t { font-size: 13px; line-height: 16px; }
+  .aq-hero__index-down { display: none; }
+  /* Loop drawing: below the actions, capped so annotations stay legible */
+  .aq-hero__grid--loop { row-gap: var(--space-8); }
+  .aq-hero__loop { width: min(100%, calc(var(--space-32) + var(--space-24))); margin-inline: auto; }
+  /* Drawn figure: under the actions, compact (312 x 260 at most) */
+  .aq-hero__drawn { width: min(100%, calc(var(--space-32) * 2 + var(--space-12) + var(--space-2))); }
+  .aq-hero__drawn-label { left: var(--space-6); font-size: 10px; }
+  .aq-hero__vig-t { font-size: 10px; line-height: 13px; letter-spacing: 0.02em; top: calc(100% + var(--space-1)); max-width: 104%; }
+  /* binder: the first four index rows, title on one line, no icon */
+  .aq-hero__folder-list li:nth-child(n+5) { display: none; }
+  .aq-hero__folder-n { font-size: 20px; }
+  .aq-hero__folder-head .aq-icon { display: none; }
+  .aq-hero__drawn--stamp svg.aq-hero__stamp { width: 52%; inset: auto 1% 3% auto; }
+  .aq-hero__record { width: 62%; }
+  .aq-hero__folder-body, .aq-hero__record { padding: var(--space-3); }
+  .aq-hero__folder-tab { height: var(--space-4); padding: 0 var(--space-3) 0 var(--space-2); font-size: 10px; left: calc(var(--space-2) + var(--k, 0) * 18%); }
+  .aq-hero__folder-head { padding-bottom: var(--space-2); }
+  .aq-hero__folder-foot, .aq-hero__record-sign { font-size: 10px; }
+  .aq-hero__record li i { width: var(--space-3); height: var(--space-3); }
+  .aq-hero__stop b { box-shadow: 0 0 0 var(--space-1) var(--surface), 0 0 0 calc(var(--space-1) + 1px) var(--line-strong); }
+}
+
+/* Flow dots added by assets/motion.js on the home loop (decoration) */
+.aq-loop__dot { fill: var(--flow); }

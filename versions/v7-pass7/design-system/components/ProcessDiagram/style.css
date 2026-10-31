@@ -1,0 +1,147 @@
+/* ---------- ProcessDiagram: a treatment train as an interactive piping flow on a drawing plate ----------
+   Desktop: one row of stations (framed Spot vignette, number tag, mono name) on a thick double-wall Flow pipe with
+   arrows; each station is a toggle button. The pressed station fills its incoming pipe run, the runs before it tint
+   (water has passed), and its detail opens in the panel under the row with a leader up to the station.
+   Phone: one vertical pipe through the vignettes; the pressed station's detail opens inline under it, beside the pipe.
+   Without the page script (no is-live) every detail shows: under its column on desktop, inline on phones.
+   Geometry: --fh vignette box height, --fw its width (phone), --g column gap; the pipe is --space-4 high, 3 px walls. */
+.aq-diagram__plate { padding-top: var(--space-8); }
+.aq-diagram { --fh: calc(var(--space-24) + var(--space-6)); --g: var(--space-6); --pw: var(--space-4); min-width: 0; }
+.aq-diagram--base { border: 1px dashed var(--line-strong); border-radius: var(--radius-md); padding: var(--space-6) var(--space-6) var(--space-4); }
+.aq-diagram__line { display: grid; grid-template-columns: repeat(var(--n, 6), minmax(0, 1fr)); column-gap: var(--g, var(--space-6)); }
+
+/* Pipe-end labels (WaterPath "City feed" / "Point of use") */
+.aq-diagram__ends { display: flex; justify-content: space-between; margin: 0 0 var(--space-3); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--flow); }
+.aq-diagram__ends span:first-child::after { content: "\a0\2192"; }
+.aq-diagram__ends span:last-child::after { content: "\a0\2192"; }
+
+/* Station: a reset button holding the run, the vignette box, the number tag and the name */
+.aq-diagram__st {
+  grid-row: 1; position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-3); min-width: 0;
+  margin: 0; padding: 0 0 var(--space-2); border: 0; background: none; color: var(--ink); font: inherit; text-align: center; cursor: pointer;
+}
+.aq-diagram__st:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); border-radius: var(--radius-sm); }
+.aq-diagram__fig { position: relative; z-index: 1; display: grid; place-items: center; width: min(100%, var(--space-32)); height: var(--fh, var(--space-32)); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); }
+.aq-diagram__fig .aq-diagram__spot { background-color: var(--ink-muted); }
+.aq-diagram__glyph { width: 72px; height: 56px; fill: none; stroke: var(--ink-muted); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.aq-diagram__n {
+  position: absolute; z-index: 2; top: 0; left: calc(50% - min(50%, var(--space-16))); min-width: var(--space-8); padding: var(--space-1) var(--space-1);
+  border: 1px solid var(--flow); border-radius: var(--radius-sm) 0 var(--radius-sm) 0; background: var(--surface);
+  font: 500 12px/16px var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; color: var(--flow);
+}
+.aq-diagram__t { padding: 0 var(--space-1); font: 500 13px/18px var(--font-mono); letter-spacing: 0.01em; color: var(--ink); overflow-wrap: anywhere; text-wrap: balance; }
+
+/* The pipe run into each station: from the previous station's centre (first: from the edge), double wall, arrow mid-run */
+.aq-diagram__run { position: absolute; z-index: 0; top: calc(var(--fh, var(--space-32)) / 2 - var(--pw, var(--space-4)) / 2); right: 50%; width: calc(100% + var(--g, var(--space-6))); height: var(--pw, var(--space-4)); border-block: 3px solid var(--flow); overflow: hidden; }
+.aq-diagram__st:first-child .aq-diagram__run { width: calc(50% + var(--space-8)); }
+.aq-diagram__fill { position: absolute; inset: 0; background: var(--flow); transform: scaleX(0); transform-origin: left center; }
+.aq-diagram__run::after, .aq-diagram__st.is-last::after { content: ""; position: absolute; z-index: 1; top: 50%; left: 50%; transform: translate(-50%, -50%); border-block: 4px solid transparent; border-left: 7px solid var(--flow); }
+/* The outlet after the last station, with its arrow */
+.aq-diagram__st.is-last::before { content: ""; position: absolute; z-index: 0; top: calc(var(--fh, var(--space-32)) / 2 - var(--pw, var(--space-4)) / 2); left: 50%; width: calc(50% + var(--space-6)); height: var(--pw, var(--space-4)); border-block: 3px solid var(--flow); }
+.aq-diagram__st.is-last::after { top: calc(var(--fh, var(--space-32)) / 2); left: auto; right: calc(-1 * var(--space-6)); transform: translateY(-50%); border-left-width: 9px; border-block-width: 6px; }
+
+/* Pressed: the run fills, the box and tag take the Flow colour; runs upstream of it tint */
+.aq-diagram__st[aria-pressed="true"] .aq-diagram__fill { transform: none; }
+.aq-diagram__st[aria-pressed="true"] .aq-diagram__run::after { border-left-color: var(--surface); }
+.aq-diagram__st:has(~ .aq-diagram__st[aria-pressed="true"]) .aq-diagram__fill { transform: none; background: var(--flow-tint); }
+/* Selecting a station further down: the water shows in full Flow in the runs it passes through (script, < 1 s) */
+.aq-diagram__st.is-flowing .aq-diagram__fill { background: var(--flow); }
+.aq-diagram__st[aria-pressed="true"] .aq-diagram__fig { border-color: var(--flow); outline: 1px solid var(--flow); outline-offset: 2px; }
+.aq-diagram__st[aria-pressed="true"] .aq-diagram__fig .aq-diagram__spot { background-color: var(--flow); }
+.aq-diagram__st[aria-pressed="true"] .aq-diagram__glyph { stroke: var(--flow); }
+.aq-diagram__st[aria-pressed="true"] .aq-diagram__n { background: var(--flow); color: var(--surface); }
+.aq-diagram__st[aria-pressed="true"] .aq-diagram__t { color: var(--flow); }
+.aq-diagram__st:not([aria-pressed="true"]):hover .aq-diagram__t { color: var(--flow); }
+.aq-diagram__st:not([aria-pressed="true"]):hover .aq-diagram__fig .aq-diagram__spot { background-color: var(--ink); }
+@media (prefers-reduced-motion: no-preference) {
+  .aq-diagram__fig, .aq-diagram__t, .aq-diagram__spot { transition: color 120ms, background-color 120ms, border-color 120ms, transform 200ms; }
+  /* hover lifts the box a hair; press sets it down (the visitor drives it, so it may repeat) */
+  .aq-diagram__st:not([aria-pressed="true"]):hover .aq-diagram__fig { transform: translateY(calc(-1 * var(--space-1))); }
+  .aq-diagram__st:active .aq-diagram__fig { transform: scale(0.97); transition-duration: 80ms; }
+}
+
+/* Detail: with the script, one panel under the row (the pressed station's), a leader up to its column */
+.aq-diagram__d[hidden] { display: none; }
+.aq-diagram__d { grid-row: 2; min-width: 0; }
+.aq-diagram.is-live .aq-diagram__d {
+  grid-column: 1 / -1; position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: var(--space-8); align-items: start;
+  margin-top: var(--space-8); padding: var(--space-6) var(--space-8); border: 1px solid var(--line-strong); border-top: 2px solid var(--flow); border-radius: var(--radius-sm); background: var(--surface);
+}
+.aq-diagram.is-live .aq-diagram__d::before {
+  content: ""; position: absolute; bottom: 100%; height: calc(var(--space-8) - var(--space-1)); width: 0; border-left: 2px dashed var(--flow);
+  left: calc((100% - (var(--n, 6) - 1) * var(--g, var(--space-6))) / var(--n, 6) * (var(--i, 0) + 0.5) + var(--i, 0) * var(--g, var(--space-6)) - 1px);
+}
+.aq-diagram__dn { font: 300 48px/1 var(--font-mono); letter-spacing: -0.02em; color: var(--flow); font-variant-numeric: tabular-nums; }
+.aq-diagram__dn small { font-size: 16px; color: var(--ink-subtle); letter-spacing: 0; }
+.aq-diagram__db { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.aq-diagram__dt { margin: 0; font: 500 20px/28px var(--font-sans); color: var(--ink); }
+.aq-diagram__dd { margin: 0; max-width: var(--text-max); font: 400 16px/24px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
+.aq-diagram__dx { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); margin: var(--space-1) 0 0; }
+.aq-diagram__dx a { color: var(--ink); font: 500 15px/24px var(--font-sans); text-decoration: none; }
+.aq-diagram__dx a::after { content: "\a0\2192"; color: var(--flow); }
+.aq-diagram__dx a:hover { color: var(--flow); }
+.aq-diagram__io { display: flex; flex-direction: column; gap: var(--space-2); margin: 0; font: 500 12px/18px var(--font-mono); color: var(--ink-muted); }
+.aq-diagram__io b { display: inline-block; min-width: var(--space-8); margin-right: var(--space-2); padding: 0 var(--space-1); border: 1px solid var(--line-strong); font-weight: 500; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--flow); text-align: center; }
+/* Without the script: each column's line under its station, small; number, title and in/out left to the stations */
+.aq-diagram:not(.is-live) .aq-diagram__d { padding: var(--space-2) var(--space-1) 0; text-align: center; }
+.aq-diagram:not(.is-live) .aq-diagram__dn, .aq-diagram:not(.is-live) .aq-diagram__dt, .aq-diagram:not(.is-live) .aq-diagram__io { display: none; }
+.aq-diagram:not(.is-live) .aq-diagram__dd { font-size: 14px; line-height: 20px; }
+.aq-diagram:not(.is-live) .aq-diagram__dx { justify-content: center; }
+
+/* What spans every stage: the dashed control boundary round the train, labelled at its foot */
+.aq-diagram__base { display: flex; align-items: center; gap: var(--space-3); margin: var(--space-6) 0 0; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-diagram__base svg { flex: none; width: var(--space-6); height: var(--space-6); fill: none; stroke: var(--ink-muted); stroke-width: 1.5; }
+
+/* Phone: one vertical pipe down through the vignettes; name beside each; the detail opens inline under its station */
+@container (max-width: 860px) {
+  .aq-diagram__plate { padding: var(--space-3); }
+  .aq-diagram__plate .aq-plate__block { display: none; }
+  .aq-diagram { --fh: calc(var(--space-12) + var(--space-2)); --fw: calc(var(--space-12) + var(--space-2)); --g: var(--space-1); --pw: var(--space-3); }
+  /* compact vignettes: 56 px boxes, the drawing at 48 px (icons 36 px), glyph scaled to fit */
+  .aq-diagram__fig .aq-spot, .aq-diagram__fig .aq-spot--s { width: var(--space-12); height: var(--space-12); }
+  .aq-diagram__fig .aq-spot.aq-spot--icon { width: calc(var(--space-8) + var(--space-1)); height: calc(var(--space-8) + var(--space-1)); }
+  .aq-diagram__glyph { width: var(--space-12); height: calc(var(--space-8) + var(--space-1)); }
+  .aq-diagram--base { padding: var(--space-4) var(--space-3) var(--space-3); }
+  .aq-diagram__ends { display: none; }
+  .aq-diagram__line { grid-template-columns: minmax(0, 1fr); row-gap: var(--g, var(--space-6)); padding-top: var(--space-3); }
+  .aq-diagram__st { grid-row: auto; display: grid; grid-template-columns: var(--fw, var(--space-24)) minmax(0, 1fr); column-gap: var(--space-3); align-items: center; padding: 0; text-align: left; }
+  .aq-diagram__fig { width: var(--fw, var(--space-24)); }
+  .aq-diagram__n { left: 0; min-width: 0; padding: 0 var(--space-1); font-size: 10px; line-height: 14px; }
+  .aq-diagram__t { padding: 0; font-size: 13px; line-height: 18px; text-wrap: pretty; }
+  /* runs are vertical: the incoming half from above, the outgoing half below the box */
+  .aq-diagram__run { top: calc(-1 * var(--g, var(--space-6))); bottom: 50%; right: auto; left: calc(var(--fw, var(--space-24)) / 2 - var(--pw, var(--space-4)) / 2); width: var(--pw, var(--space-4)); height: auto; border: 0; border-inline: 3px solid var(--flow); }
+  .aq-diagram__st:first-child .aq-diagram__run { top: calc(-1 * var(--space-3)); width: var(--pw, var(--space-4)); }
+  .aq-diagram__fill { transform: scaleY(0); transform-origin: center top; }
+  .aq-diagram__run { border-inline-width: 2px; }
+  .aq-diagram__run::after { display: none; }
+  .aq-diagram__st[aria-pressed="true"] .aq-diagram__run::after { border-left-color: transparent; border-top-color: var(--surface); }
+  .aq-diagram__st::before, .aq-diagram__st.is-last::before { content: ""; position: absolute; z-index: 0; top: 50%; bottom: 0; left: calc(var(--fw, var(--space-24)) / 2 - var(--pw, var(--space-4)) / 2); width: var(--pw, var(--space-4)); height: auto; border: 0; border-inline: 2px solid var(--flow); }
+  .aq-diagram__st.is-last::before { bottom: calc(-1 * var(--space-4)); }
+  .aq-diagram__st.is-last::after { top: auto; bottom: calc(-1 * var(--space-4)); right: auto; left: calc(var(--fw, var(--space-24)) / 2); transform: translate(-50%, 100%); border: 0; border-inline: 6px solid transparent; border-top: 9px solid var(--flow); }
+  .aq-diagram__line { padding-bottom: var(--space-6); }
+  .aq-diagram__line > .aq-diagram__d:last-child::after { display: none; }
+  /* the detail: tucked under the station's name, beside the box (it rises into the row by --fh less one name line);
+     the pipe continues down past whatever runs below the box */
+  .aq-diagram__st { align-items: start; }
+  .aq-diagram__st .aq-diagram__t { padding-top: var(--space-1); }
+  .aq-diagram__d, .aq-diagram.is-live .aq-diagram__d {
+    grid-row: auto; grid-column: 1; position: relative; display: block; margin: calc(var(--space-6) + var(--space-1) - var(--fh, var(--space-24))) 0 0 calc(var(--fw, var(--space-24)) + var(--space-3)); padding: 0;
+    border: 0; border-radius: 0; background: none; text-align: left;
+  }
+  .aq-diagram__d::after { content: ""; position: absolute; top: calc(var(--fh, var(--space-24)) - var(--space-6) - var(--space-1)); bottom: calc(-1 * var(--space-1)); left: calc(-1 * var(--space-3) - var(--fw, var(--space-24)) / 2 - var(--pw, var(--space-4)) / 2); width: var(--pw, var(--space-4)); border-inline: 2px solid var(--flow); }
+  .aq-diagram.is-live .aq-diagram__d::before { display: none; }
+  .aq-diagram__dn, .aq-diagram__dt { display: none; }
+  .aq-diagram__db { gap: var(--space-1); }
+  .aq-diagram__dd, .aq-diagram:not(.is-live) .aq-diagram__dd { font-size: 13px; line-height: 18px; }
+  /* on the phone the neighbours sit right above and below: In/Out only where there is no line to show */
+  .aq-diagram .aq-diagram__db:has(.aq-diagram__dd) + .aq-diagram__io { display: none; }
+  .aq-diagram__dx { gap: var(--space-3); }
+  .aq-diagram__io, .aq-diagram:not(.is-live) .aq-diagram__io { display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin-top: var(--space-2); }
+  .aq-diagram__io:first-child { margin-top: 0; }
+  .aq-diagram__base { margin-top: var(--space-4); }
+}
+
+/* Phones: every label people read is 12 px or more */
+@container (max-width: 860px) {
+  .aq-diagram__n, .aq-diagram__base { font-size: 12px; }
+}

@@ -1,0 +1,585 @@
+{
+ "id": "ind-biotech",
+ "section": "Industries",
+ "nav_label": "Biotechnology",
+ "title": "Biologics water systems: WFI, pure steam, PW | Aquemi",
+ "meta": "WFI and pure steam for media, buffers, CIP and SIP in biologics and cell therapy plants, held to USP <85> < 0.25 EU/mL endotoxin and sized to scale.",
+ "path": "/industries/biotechnology/",
+ "eyebrow": "BIOTECHNOLOGY · BIOLOGICS, VACCINES AND CELL AND GENE THERAPY · HEALTH CANADA · FDA · EMA",
+ "headline": "WFI for biologics that holds endotoxin at every point of use, from the clinical suite to the commercial plant",
+ "lead": "A biologics plant draws Water for Injection (WFI) in volume for media, buffers and the final rinse of every clean-in-place (CIP) cycle, and pure steam for sterilize-in-place (SIP) and autoclaves. Endotoxin in that water ends up in your process, so we design the loop to hold the USP <85> limit of < 0.25 EU/mL, USP <645> 1.3 µS/cm at 25 °C and 500 ppb total organic carbon (TOC) at the furthest outlet, at peak draw. We size it for your batch schedule, leave room for the next suite, and hand over the factory acceptance test (FAT) report and installation and operational qualification (IQ/OQ) protocols that Health Canada, the FDA and EU inspectors read.",
+ "tags": [
+  "USP <85>",
+  "USP <645>",
+  "USP <643>",
+  "Ph. Eur. 0169",
+  "Health Canada GUI-0027",
+  "Health Canada GUI-0119",
+  "EMA water guideline",
+  "EU GMP Part IV (ATMP)"
+ ],
+ "primary_cta": "Request a biologics water scope review",
+ "primary_cta_intent": "Water scope review for your products|Biologics, vaccines, cell or gene therapy",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "nav": "Overview",
+   "h": "In a biologics plant, water is a process input, not a utility in the background",
+   "body": [
+    "Cell culture media, chromatography and filtration buffers, CIP rinses and the feed to every pure steam generator all start as WFI or Purified Water (PW). Buffer and media preparation draw large volumes in short windows and then stop, so peak draw, not daily total, sets the storage tank, the pump and the loop.",
+    "Endotoxin is a critical quality attribute in almost every biologic drug substance and drug product specification. It is heat stable: sanitization kills the bacteria that shed it, but does not destroy what they have already released. A biofilm in a cooled sub-loop or a point-of-use exchanger can put endotoxin into a full media batch long before a monthly sample shows it. We design those weak spots out and show the evidence at qualification.",
+    "We work for biologics developers and contract manufacturers, vaccine makers, and cell and gene therapy facilities in Canada, including university and hospital buildings that make advanced therapy medicinal products (ATMPs) for clinical trials."
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Where to start",
+   "h": "Your situation, the water you need and where to start",
+   "cols": [
+    "Your situation",
+    "Water you need",
+    "Systems",
+    "Start with"
+   ],
+   "rows": [
+    [
+     "Monoclonal antibodies and therapeutic proteins in stainless steel or hybrid trains",
+     "WFI for media, buffers and CIP final rinse; pure steam for SIP of bioreactors, tanks and transfer lines",
+     {
+      "t": "WFI by distillation",
+      "link": "sys-wfi-distillation"
+     },
+     {
+      "t": "Pure steam generators",
+      "link": "sys-pure-steam"
+     }
+    ],
+    [
+     "Single-use facility: bags, single-use bioreactors and mixers",
+     "Still WFI for media and buffer make-up and pure steam for autoclaves and any stainless vessels; less CIP water",
+     {
+      "t": "WFI by membrane",
+      "link": "sys-wfi-membrane"
+     },
+     {
+      "t": "Process design: request a URS review",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "Clinical supply moving to commercial scale",
+     "The same grades at several times the volume, with a qualification record that carries forward",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "Cell and gene therapy, or a university or hospital ATMP facility",
+     "WFI where cell-based products are made with water and not sterilized after; PW for washers, autoclave feed and lab support; pure steam for autoclaves",
+     {
+      "t": "Purified Water (PW) generation",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Process design: request a URS review",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "Vaccines and viral vectors",
+     "PW at minimum for media where the active substance is later sterilized; WFI for final purification, formulation and parenteral final rinse",
+     {
+      "t": "WFI by distillation or by membrane",
+      "link": "sys-wfi-distillation"
+     },
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "Endotoxin or bioburden excursions at a point of use",
+     "Evidence: where it starts, a corrective action that holds, and trend data that shows it",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Upgrades: request a system assessment",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "A new suite or a second production train in a qualified plant",
+     "More WFI from the same generation, or a second generator tied in under change control",
+     {
+      "t": "Upgrades and retrofits",
+      "link": "svc-upgrades"
+     },
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Grade by step",
+   "h": "Minimum water grade by biologic product and process step",
+   "cols": [
+    "Product type",
+    "Process step",
+    "Minimum water grade"
+   ],
+   "rows": [
+    [
+     "Biologics, including vaccines and ATMPs, finished product",
+     "Excipient in the final formulation",
+     "WFI"
+    ],
+    [
+     "Biologic or fermentation product, not a vaccine or ATMP",
+     "Fermentation media and cell culture media",
+     "Potable water; PW where the process needs greater chemical purity"
+    ],
+    [
+     "Vaccines, and ATMP starting materials sterilized later in the process, such as viral vectors",
+     "Fermentation media and cell culture media",
+     "PW"
+    ],
+    [
+     "ATMPs not sterilized later in the process, such as cell-based products",
+     "All steps: media, initial purification, final isolation and purification",
+     "WFI"
+    ],
+    [
+     "Active substance in solution, not sterile, for parenteral use",
+     "Steps before final isolation and purification",
+     "PW"
+    ],
+    [
+     "Active substance in solution, not sterile, for parenteral use",
+     "Final isolation and purification",
+     "WFI"
+    ],
+    [
+     "Sterile parenteral products",
+     "Final rinse of equipment, containers and closures, including CIP",
+     "WFI"
+    ],
+    [
+     "Sterile products",
+     "Initial rinse, including CIP",
+     "PW"
+    ],
+    [
+     "Any product, sterile lyophilized",
+     "Formulation before sterile lyophilization",
+     "WFI"
+    ]
+   ]
+  },
+  {
+   "type": "prose",
+   "body": [
+    "Source: EMA Guideline on the quality of water for pharmaceutical use (EMA/CHMP/CVMP/QWP/496873/2018), Tables 1, 3, 4 and 5, in effect since 1 February 2021. It replaced the earlier CPMP position statement on water for parenteral vaccines. These are minimums. Most biologics plants use WFI for media and buffers even where the table allows PW, because the endotoxin and bioburden limits on the drug substance leave little margin. Your product file and risk assessment set the grade."
+   ]
+  },
+  {
+   "type": "spec",
+   "nav": "Limits",
+   "h": "Limits you release against",
+   "caption": "WFI, PW and pure steam · USP and Ph. Eur. · applied at the point of use",
+   "note": "Limits as the pharmacopoeias state them. A plant supplying Canada, the United States and Europe meets the stricter value on each attribute. Alert and action levels for your site are set from qualification data and sit well inside these limits. Each system page carries the full design basis.",
+   "cols": [
+    "Attribute",
+    "Limit",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Bacterial endotoxins, WFI",
+     "v": "< 0.25 EU/mL (USP); < 0.25 IU/mL (Ph. Eur.)",
+     "m": "USP <85>; Ph. Eur. 2.6.14",
+     "hl": true
+    },
+    {
+     "p": "Microbial action level, WFI",
+     "v": "10 CFU/100 mL",
+     "m": "USP <1231> guidance; Ph. Eur. 0169",
+     "hl": true
+    },
+    {
+     "p": "Conductivity, WFI and PW, USP",
+     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+     "m": "USP <645>, non-temperature-compensated reading",
+     "hl": false
+    },
+    {
+     "p": "Conductivity, WFI, Ph. Eur.",
+     "v": "≤ 1.1 µS/cm @ 20 °C (stage 1)",
+     "m": "Ph. Eur. 0169, same three-stage method as USP <645>",
+     "hl": false
+    },
+    {
+     "p": "Total organic carbon, WFI and PW",
+     "v": "≤ 0.50 mg/L (500 ppb)",
+     "m": "USP <643>; Ph. Eur. 2.2.44",
+     "hl": false
+    },
+    {
+     "p": "Microbial action level, PW",
+     "v": "100 CFU/mL",
+     "m": "USP <1231> guidance; Ph. Eur. 0008",
+     "hl": false
+    },
+    {
+     "p": "Pure steam condensate",
+     "v": "Meets the WFI monograph; non-condensable gases, dryness and superheat tested",
+     "m": "EU GMP Annex 1 (2022), 6.17; EN 285 test methods",
+     "hl": false
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Endotoxin",
+   "h": "Where endotoxin gets into biologics water, and what we design against",
+   "cols": [
+    "Where it starts",
+    "Why it happens",
+    "What we design and test"
+   ],
+   "rows": [
+    [
+     "Cooled sub-loops and point-of-use heat exchangers",
+     "A hot loop feeds cool outlets for media and buffer prep; water that sits warm in an exchanger grows biofilm",
+     "Double tubesheet exchangers, drainable layout, a hot sanitization step after each use or on a fixed schedule, and a sample point downstream of each cooler"
+    ],
+    [
+     "Low flow at peak draw",
+     "Several large buffer draws at once drop return velocity and starve the far end of the loop",
+     "Loop and pump sized to the batch schedule, return flow monitored and alarmed, turbulent flow kept as EU GMP Annex 1 paragraph 6.9 requires"
+    ],
+    [
+     "Dead legs and capped tie-ins left for expansion",
+     "Stagnant branches hold water at temperatures bacteria tolerate",
+     "Every branch to an L/D of 2 or less to ASME BPE, future tie-ins as valved points at the loop, not capped stubs"
+    ],
+    [
+     "Ambient PW sections ahead of the generator",
+     "Reverse osmosis (RO) and storage at ambient temperature are where most biofilm lives",
+     "Hot water or ozone sanitization on a stated schedule, and generator feed limits written into the PW design"
+    ],
+    [
+     "Membrane WFI and ultrafiltration",
+     "Membranes reduce endotoxin but can be breached by integrity failures or biofilm on the permeate side",
+     "Integrity testing, continuous TOC and conductivity, and the control strategy the EMA expects from a non-distillation route"
+    ],
+    [
+     "Hoses, transfer panels and sampling",
+     "Water picks up endotoxin after the outlet valve, then the sample reads as a loop failure",
+     "Sampling procedures that match how production draws water, and investigation records that separate the two"
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "h": "Who reads your water system, and where we answer it",
+   "cols": [
+    "Who inspects or reviews",
+    "What they read on the water system",
+    "Where we answer it"
+   ],
+   "rows": [
+    [
+     "Health Canada, GMP inspection of biologic drug establishments",
+     "GUI-0001 for all drugs, with Annex 2, GUI-0027 (Manufacture of biologics, current edition 4 July 2024) on top: design, qualification, sanitization, monitoring and trend review of the water and steam that touch the process",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "Health Canada, Biologic and Radiopharmaceutical Drugs Directorate (BRDD)",
+     "BRDD reviews biologic clinical trial and new drug submissions and runs the lot release programme. The facility and utilities description in your submission, water included, has to match what the inspector finds",
+     {
+      "t": "Process design",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "Health Canada, sterile biologics",
+     "GUI-0119, Health Canada's adoption of EU GMP Annex 1 (2022): WFI route (6.10), no dead legs and drainable slopes (6.7), turbulent flow (6.9), vent filters (6.11), sanitization (6.12), continuous TOC and conductivity on WFI (6.15) and pure steam (6.17)",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "Health Canada, cell, tissue and gene therapies",
+     "GUI-0027 leaves ATMPs to a separate guide. Until it is issued, Health Canada points manufacturers to PIC/S GMP Annex 2A. Your regulatory team confirms which applies to your product",
+     {
+      "t": "Standards we design to",
+      "link": "compliance"
+     }
+    ],
+    [
+     "FDA, sites shipping biologics to the United States",
+     "CBER for vaccines and cell and gene therapies, CDER for most therapeutic proteins and antibodies. 21 CFR Parts 600 to 680 with Part 211, read at the pre-license inspection against the FDA Guide to Inspections of High Purity Water Systems",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "EU authorities and importers",
+     "EU GMP Annex 2 for biologics, Annex 1 for sterile products, Part IV for ATMPs, the EMA water guideline and Annex 15 qualification. Membrane WFI needs notice to the GMP supervisory authority before use",
+     {
+      "t": "WFI by membrane",
+      "link": "sys-wfi-membrane"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "diagram",
+   "h": "How the systems connect in a biologics plant",
+   "stages": [
+    "Municipal feed",
+    "Pretreatment",
+    "PW generation",
+    "WFI generation",
+    "Hot WFI storage and loop",
+    "Cooled outlets and pure steam"
+   ],
+   "caption": "PW feeds the WFI still or membrane WFI skid and the pure steam generator, and in many plants also supplies the initial CIP rinse. Hot WFI circulates above 70 °C (EU GMP Annex 1, 6.10) and serves the CIP final rinse hot. Media and buffer preparation take WFI through cooled sub-loops or point-of-use coolers, each with its own sanitization step. Pure steam goes to autoclaves and to SIP of bioreactors, tanks and transfer lines. Monitoring and controls run across all of it, with audit-trailed records under 21 CFR Part 11 and EU GMP Annex 11."
+  },
+  {
+   "type": "steps",
+   "nav": "Clinical to commercial",
+   "h": "Phased capacity, from the first clinical batch to licensed production",
+   "items": [
+    {
+     "t": "Phase 1: clinical suite",
+     "d": "Small WFI demand, often met with a membrane WFI skid or a compact still, or with purchased bulk WFI for media while PW and pure steam run on site. We write the expansion into the user requirement specification (URS) now."
+    },
+    {
+     "t": "Phase 2: design for the commercial plan",
+     "d": "Tank, loop diameter and pump sized for the commercial batch schedule; space, power and valved tie-in points for a second generation train; headers sized for the next suite."
+    },
+    {
+     "t": "Phase 3: add generation",
+     "d": "A second train added beside the first, factory tested, tied in during a planned shutdown under change control. The qualification scope is stated before the first cut."
+    },
+    {
+     "t": "Phase 4: licensed production",
+     "d": "Performance qualification (PQ) data, a year of trends and an alert and action level history that your BRDD submission, FDA pre-license inspection and EU importer can all read."
+    }
+   ]
+  },
+  {
+   "type": "options",
+   "h": "Decisions to settle before the URS is approved",
+   "items": [
+    {
+     "t": "Peak draw, not daily total",
+     "d": "We size storage and loop flow from your batch schedule: how many buffer and media preparations overlap, how much they draw and how fast. A tank that runs low during a buffer campaign is a deviation, not an inconvenience."
+    },
+    {
+     "t": "Hot loop with cool outlets, or an ambient loop",
+     "d": "Hot WFI suits CIP and holds microbes down continuously, but every cool outlet needs a cooler and a sanitization route. An ozonated ambient loop uses less energy and needs proven ozone removal before each use. We compare both on your demand profile."
+    },
+    {
+     "t": "Distillation or membrane WFI",
+     "d": "Both are pharmacopoeial in USP and Ph. Eur. Distillation has the longer record with inspectors and feeds a hot loop directly. Membrane WFI uses no plant steam for generation and needs a stronger control strategy and, for EU markets, a notice to the supervisory authority."
+    },
+    {
+     "t": "How single-use your process really is",
+     "d": "Single-use bioreactors and bags cut CIP and SIP water, but media and buffer make-up, autoclaves and any stainless vessel still need WFI and pure steam. We size from the process you will run."
+    },
+    {
+     "t": "Make media and buffers, or buy them",
+     "d": "Purchased liquid media and buffer concentrates move WFI demand off site. Hydrated in-house from powder, the same process puts that demand on your WFI peak. Settle it before generation is sized."
+    },
+    {
+     "t": "Canadian feed water",
+     "d": "Feed temperature can swing from near freezing in winter to over 20 °C in summer, and some municipal supplies use chloramine. We size membranes at your coldest month and design chloramine removal ahead of the RO."
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "h": "What we do, from URS to the last service visit",
+   "intro": "One traceable record runs through every stage, so your quality unit can follow a requirement from the URS to the test that proved it.",
+   "items": [
+    {
+     "t": "Process design",
+     "d": "URS review, demand profile from your batch schedule, mass balance at your coldest and warmest feed, functional specification and design qualification (DQ) support.",
+     "tag": "EU GMP Annex 15",
+     "link": "svc-design"
+    },
+    {
+     "t": "Fabrication",
+     "d": "316L product-contact piping with weld logs, borescope records and material certificates traceable to the mill heat.",
+     "tag": "ASME BPE",
+     "link": "svc-fabrication"
+    },
+    {
+     "t": "FAT and SAT",
+     "d": "Wet FAT in our test bay to a protocol you approve, then site acceptance testing (SAT) on your feed water.",
+     "tag": "Annex 15, 3.4–3.7",
+     "link": "svc-fat-sat"
+    },
+    {
+     "t": "Commissioning and qualification",
+     "d": "IQ and OQ to protocols your quality unit approves, endotoxin and microbial sampling at every point of use, then support through PQ.",
+     "tag": "WHO TRS 1033",
+     "link": "svc-cq"
+    },
+    {
+     "t": "Service",
+     "d": "Plans with stated response times, sanitization support, calibration to the USP <645> and <643> instrument requirements and reports written for your GMP records.",
+     "tag": "21 CFR 211.67",
+     "link": "svc-service"
+    },
+    {
+     "t": "Upgrades and retrofits",
+     "d": "Added generation, new suites, point-of-use coolers and excursion fixes on systems from any builder, with the requalification scope stated first.",
+     "tag": "Change control",
+     "link": "svc-upgrades"
+    }
+   ]
+  },
+  {
+   "type": "band",
+   "tone": "limestone",
+   "h": "Built, wet tested and serviced in Canada",
+   "body": "Your engineers witness FAT in [test bay location, city and province], not overseas. Spares are stocked in [stock locations], service engineers are based in [service bases], and proposals are quoted in [quotation currency] with a standard lead time of [standard lead time for a membrane WFI skid, weeks]."
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions process, validation and QA leads in biologics ask",
+   "items": [
+    {
+     "q": "We are a start-up with one clinical product. Is a full WFI system justified?",
+     "a": "Not always. Purchased bulk WFI or a compact membrane WFI skid can carry a clinical programme, with PW and pure steam on site. What matters is that the tank, loop and space you build now can take the commercial train later. We set out both routes with their costs and qualification scope."
+    },
+    {
+     "q": "Our facility is single-use. Do we still need WFI and pure steam?",
+     "a": "Usually yes. Media and buffers made in-house need WFI, autoclaves need pure steam, and most single-use plants keep some stainless tanks for buffer preparation that need CIP and SIP. Demand is lower and peakier than in a stainless plant, which often favours smaller generation and more storage."
+    },
+    {
+     "q": "How do you control endotoxin at cooled points of use?",
+     "a": "With sanitizable double tubesheet coolers, drainable layout, a hot sanitization step on a schedule we justify from qualification data, and a sample point after each cooler. Endotoxin and microbial samples are taken at every outlet during qualification, in the way production draws water."
+    },
+    {
+     "q": "Can a cell therapy or university ATMP facility run on PW or DI water?",
+     "a": "For lab support, glassware washers and autoclave feed, often yes. The EMA guideline sets WFI as the minimum for every step of a cell-based ATMP that is not sterilized afterwards, so water that touches those products is WFI, made on site or bought in. We size each grade to what it supplies."
+    },
+    {
+     "q": "Will the qualification we do for clinical supply carry into commercial production?",
+     "a": "Most of it, if the design allowed for growth. Added generation and new points of use go through change control, with a risk assessment that sets the scope: usually IQ and OQ for the new section and a period of increased sampling. We state that scope before the work starts."
+    },
+    {
+     "q": "Is membrane WFI acceptable for biologics?",
+     "a": "USP allows WFI by distillation or a purification process shown to be equivalent or superior to it, and Ph. Eur. 0169 has allowed reverse osmosis with other techniques since April 2017. For EU markets, notice goes to the GMP supervisory authority before use, and some corporate standards still require distillation. Confirm with your regulatory team product by product; the WFI by membrane page sets out the control strategy."
+    },
+    {
+     "q": "Who builds the WFI stills and pure steam generators you supply?",
+     "a": "[State whether Aquemi builds stills and pure steam generators in-house or supplies them from a named manufacturer, and what Aquemi engineers, tests and documents in either case.]"
+    },
+    {
+     "q": "Can we talk to a biotech client you have delivered to?",
+     "a": "[Number and type of biotech, vaccine or cell therapy references Aquemi can offer for a call; or a plain statement if none can be named yet.]"
+    }
+   ]
+  },
+  {
+   "type": "docs",
+   "nav": "What to send",
+   "h": "What to send for a biologics water scope review",
+   "items": [
+    {
+     "t": "Products and stage",
+     "d": "Each product, its modality (protein, vaccine, viral vector, cell therapy) and clinical phase or commercial status"
+    },
+    {
+     "t": "Process format",
+     "d": "Stainless, single-use or hybrid, and whether media and buffers are made in-house or bought"
+    },
+    {
+     "t": "Batch schedule",
+     "d": "Batches per week, buffer and media volumes per batch in L, and which preparations overlap"
+    },
+    {
+     "t": "Points of use",
+     "d": "Number, location and temperature at each, including CIP stations, coolers and pure steam users in kg/h"
+    },
+    {
+     "t": "Markets",
+     "d": "Canada, United States, EU or others, and the pharmacopoeia named in each submission"
+    },
+    {
+     "t": "Feed water",
+     "d": "Recent analyses and the feed temperature range through the year, in °C"
+    },
+    {
+     "t": "Growth plan",
+     "d": "Next suite or commercial scale-up, with dates if known"
+    },
+    {
+     "t": "Target dates",
+     "d": "Order, FAT, water on site, first clinical or commercial batch"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where biologics buyers go next",
+   "items": [
+    "sys-wfi-distillation",
+    "sys-wfi-membrane",
+    "sys-pure-steam",
+    "sys-storage",
+    "sys-monitoring",
+    "svc-cq",
+    "ind-cdmo",
+    "ind-pharma"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your products, process format and batch schedule. We return the water grades, the peak demand and the system scope.",
+  "body": "A process engineer reads your process and growth plan and replies within [proposal response time, working days] with the grade each step needs, the generation, storage and pure steam to supply it, the phase plan to commercial scale and the qualification scope, or the questions we need answered first.",
+  "button": "Request a biologics water scope review",
+  "link": "contact-proposal",
+  "intent": "Water scope review for your products|Biologics, vaccines, cell or gene therapy"
+ },
+ "todo": [
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Test bay location, city and province (band; same as home, about)",
+  "Spares stock locations (band)",
+  "Service bases (band)",
+  "Quotation currency (band)",
+  "Standard lead time for a membrane WFI skid, weeks (band); confirm Aquemi builds membrane WFI skids at clinical scale",
+  "Who builds WFI stills and pure steam generators: in-house or named partner (FAQ)",
+  "Biotech, vaccine or cell therapy references available for a call, or a plain 'none yet' (FAQ)",
+  "A biotechnology case study with measured outcome; add a case block when one exists",
+  "Confirm whether Aquemi offers temporary or bulk WFI supply, or only advises on purchased WFI (FAQ, phase 1 step)",
+  "Confirm Aquemi targets university and hospital ATMP facilities and bids public tenders for them",
+  "Is the scope review free, and its turnaround",
+  "Contact-proposal page: add a 'biologics water scope review' intent or modality, process format and batch schedule fields so the CTA lands on a matching form"
+ ]
+}

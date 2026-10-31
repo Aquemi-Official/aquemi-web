@@ -1,0 +1,4 @@
+/* ---------- OptionList: configuration options as rows of the shared list grammar ---------- */
+/* Layout comes from .aq-rows in base.css (index | option | one line on desktop; index | option, line below on phones).
+   This file only adds the hook; options never get a box, a grid ground or a decorative glyph. */
+.aq-options { min-width: 0; }

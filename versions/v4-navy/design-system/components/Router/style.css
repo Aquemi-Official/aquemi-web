@@ -1,0 +1,49 @@
+/* ---------- Router: pick your situation, see one route (table block with as: "router", blocks/router.js) ----------
+   Desktop: situations as hairline rows on the left; the open route in a drawing frame on the right spanning every row,
+   its stations on one line joined by a flow-coloured pipe, and a pipe from the chosen situation into the frame.
+   Phones: one column; the open route sits under its situation and its stations run down a riser. */
+.aq-router { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--space-12); align-items: start; border-top: 1px solid var(--line); }
+.aq-router__opt {
+  grid-column: 1; position: relative; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); align-items: baseline;
+  width: 100%; min-height: 56px; margin: 0; padding: var(--space-4) var(--space-4) var(--space-4) 0;
+  background: none; border: 0; border-bottom: 1px solid var(--line); cursor: pointer; text-align: left;
+  font: 500 17px/24px var(--font-sans); letter-spacing: -0.005em; color: var(--ink-muted);
+}
+.aq-router__t { min-width: 0; text-wrap: pretty; overflow-wrap: break-word; }
+.aq-router__opt:hover { color: var(--ink); }
+.aq-router__opt[aria-expanded="true"] { color: var(--ink); box-shadow: inset 2px 0 0 var(--flow); padding-left: var(--space-3); grid-template-columns: calc(var(--space-12) - var(--space-3)) minmax(0, 1fr); }
+.aq-router__opt[aria-expanded="true"] .aq-index { color: var(--flow); }
+.aq-router__opt[aria-expanded="true"]::after {
+  content: ""; position: absolute; top: 50%; right: calc(-1 * var(--space-12)); width: calc(var(--space-12) + var(--space-4));
+  border-top: 1px solid var(--flow);
+}
+.aq-router__opt[aria-expanded="true"]::before {
+  content: ""; position: absolute; top: calc(50% - 4px); right: calc(-1 * var(--space-4) - 4px); width: 9px; height: 9px;
+  border: 1px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface);
+}
+.aq-router__route { grid-column: 2; position: relative; padding: var(--space-8); border: 1px solid var(--line-strong); }
+.aq-router__route[hidden] { display: none; }
+.aq-router__stations { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); column-gap: var(--space-6); counter-reset: aq-station; }
+.aq-router__stations > li { position: relative; min-width: 0; padding-top: var(--space-8); counter-increment: aq-station; }
+.aq-router__stations > li::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 11px; height: 11px;
+  border: 1px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface);
+}
+.aq-router__stations > li:first-child::before { background: var(--flow); }
+.aq-router__stations > li:not(:last-child)::after { content: ""; position: absolute; top: 5px; left: 11px; right: calc(-1 * var(--space-6)); border-top: 1px solid var(--flow); }
+.aq-router__k { margin: 0 0 var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-router__k::before { content: "0" counter(aq-station) "  "; white-space: pre; color: var(--flow); }
+.aq-router__v { margin: 0; font: 400 16px/24px var(--font-sans); color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-router__v a { font-weight: 500; text-decoration: none; }
+.aq-router__v a::after { content: "\a0\2192"; }
+.aq-router__v a:hover { text-decoration: underline; }
+
+@container (max-width: 860px) {
+  .aq-router { grid-template-columns: minmax(0, 1fr); }
+  .aq-router__opt[aria-expanded="true"]::after, .aq-router__opt[aria-expanded="true"]::before { display: none; }
+  .aq-router__route { grid-column: 1; grid-row: auto !important; padding: var(--space-4) 0 var(--space-4) var(--space-3); border: 0; border-bottom: 1px solid var(--line); box-shadow: inset 2px 0 0 var(--flow); }
+  .aq-router__stations { grid-auto-flow: row; row-gap: var(--space-4); padding-left: calc(var(--space-12) - var(--space-3)); }
+  .aq-router__stations > li { padding-top: 0; padding-left: var(--space-6); }
+  .aq-router__stations > li::before { top: 4px; }
+  .aq-router__stations > li:not(:last-child)::after { top: 15px; left: 5px; right: auto; bottom: calc(-1 * var(--space-4) - 4px); border-top: 0; border-left: 1px solid var(--flow); }
+}

@@ -1,0 +1,436 @@
+{
+ "id": "svc-cq",
+ "section": "Services",
+ "nav_label": "Commissioning and qualification",
+ "title": "Water system IQ, OQ and PQ to EU GMP Annex 15 | Aquemi",
+ "meta": "IQ and OQ to protocols your QA approves, then PQ in three phases over 12 months (WHO TRS 1033, FDA guide), with alert levels set from your own data.",
+ "path": "/services/commissioning-qualification/",
+ "eyebrow": "IQ · OQ · PQ · EU GMP ANNEX 15 · WHO TRS 1033",
+ "headline": "IQ, OQ and a year of PQ your inspector can follow",
+ "lead": "We commission your water or pure steam system, execute installation and operational qualification (IQ/OQ) to protocols your quality unit approves, and run performance qualification (PQ) with you until you hold 12 months of data.",
+ "tags": [
+  "EU GMP Annex 15",
+  "USP <1231>",
+  "WHO TRS 1033 Annex 3",
+  "Health Canada GUI-0001"
+ ],
+ "primary_cta": "Request a C&Q plan review",
+ "primary_cta_intent": "Review of a document you have|C&Q plan or validation master plan (VMP)",
+ "secondary_cta": {
+  "label": "How FAT feeds IQ and OQ",
+  "link": "svc-fat-sat"
+ },
+ "blocks": [
+  {
+   "type": "steps",
+   "nav": "Stages",
+   "h": "What each stage proves",
+   "intro": "Inspectors fault the evidence, not the water. Commissioning does not replace qualification (WHO TRS 1033, 11.2), so one commissioning and qualification (C&Q) plan, approved by your quality unit, covers every stage.",
+   "items": [
+    {
+     "t": "Commissioning",
+     "d": "Flushing, pressure test, passivation, loop checks, start-up, punch list. Leverageable if documented to good documentation practice."
+    },
+    {
+     "t": "Factory and site acceptance tests (FAT/SAT)",
+     "d": "Wet test at our shop, repeated on your utilities; protocols approved before execution (Annex 15, 2.6)."
+    },
+    {
+     "t": "Installation qualification (IQ)",
+     "d": "The installed system matches the approved design: drawings, materials, welds, finish, slopes, dead legs, instruments (Annex 15, 3.9)."
+    },
+    {
+     "t": "Operational qualification (OQ)",
+     "d": "Performs across its operating ranges, worst case included (Annex 15, 3.11). After OQ you finalize procedures and training."
+    },
+    {
+     "t": "Performance qualification (PQ)",
+     "d": "Required quality, reproducibly, across the seasons: three phases, at least 12 months."
+    },
+    {
+     "t": "Periodic review",
+     "d": "Data and changes reviewed, for example annually (WHO TRS 1033, 14.1). Requalify only what they point to."
+    }
+   ]
+  },
+  {
+   "type": "spec",
+   "nav": "IQ and OQ",
+   "caption": "IQ · OQ · EU GMP ANNEX 15",
+   "h": "IQ and OQ: what we check on site",
+   "cols": [
+    "Check",
+    "What we verify",
+    "Basis or record"
+   ],
+   "rows": [
+    {
+     "p": "IQ · Drawings, slope, dead legs",
+     "v": "Walkdown of piping and instrumentation diagrams (P&IDs) and isometrics, field piping included",
+     "m": "As-built issue; dead leg register, length-to-diameter (L/D) per branch"
+    },
+    {
+     "p": "IQ · Welds and finish",
+     "v": "Weld map, log, borescope; SF1 (Ra ≤ 0.51 µm) or SF4 (Ra ≤ 0.38 µm)",
+     "m": "ASME BPE and your specification"
+    },
+    {
+     "p": "OQ · Sequences, alarms, interlocks",
+     "v": "Forced by real condition where safe, else simulated",
+     "m": "FAT results leveraged where accepted · Annex 15, 3.6"
+    },
+    {
+     "p": "OQ · Conductivity divert",
+     "v": "Divert on a real conductivity rise, then return",
+     "m": "Non-compensated reading · USP <645> stage 1"
+    },
+    {
+     "p": "OQ · Sanitization",
+     "v": "Full hot water or ozone cycle at the coldest point",
+     "m": "Every probe at setpoint for the hold time"
+    },
+    {
+     "p": "OQ · Hydraulics",
+     "v": "Every point of use open at design peak, then minimum",
+     "m": "Positive return pressure, design minimum velocity · Annex 1, 6.11"
+    },
+    {
+     "p": "IQ · Materials",
+     "v": "316L or specified alloy; elastomers to specification",
+     "m": "EN 10204 type 3.1 certificates · Annex 15, 3.9 v"
+    },
+    {
+     "p": "IQ · Instruments",
+     "v": "Installed, ranged, calibrated; critical ones identified",
+     "m": "Traceable via [calibration laboratory and accreditation]"
+    },
+    {
+     "p": "OQ · Data integrity",
+     "v": "Roles, audit trail, time sync, backup, restore",
+     "m": "21 CFR Part 11; EU GMP Annex 11"
+    },
+    {
+     "p": "OQ · Pure steam",
+     "v": "Non-condensable gases, dryness, superheat at each use point",
+     "m": "EN 285; condensate to the Water for Injection (WFI) monograph · Annex 1, 6.17"
+    }
+   ],
+   "fold": 6,
+   "fold_noun": "checks"
+  },
+  {
+   "type": "table",
+   "nav": "Who signs",
+   "h": "Who writes and reviews each document",
+   "intro": "The validation master plan (VMP) stays yours. Your quality unit approves every protocol before execution and every phase release (Annex 15, 2.6 and 2.10).",
+   "cols": [
+    "Document or activity",
+    "Written or done by",
+    "Reviewed by"
+   ],
+   "rows": [
+    [
+     "Risk assessment and C&Q plan",
+     "Aquemi drafts, from the user requirement specification (URS)",
+     "Your validation team, with ours"
+    ],
+    [
+     "FAT, SAT, IQ and OQ protocols",
+     "Aquemi, in your template",
+     "Your validation team"
+    ],
+    [
+     "IQ and OQ execution",
+     "Aquemi [executing staff: own engineers or named partner], with your witness",
+     "Your validation team"
+    ],
+    [
+     "PQ sampling and testing",
+     "Your operators and laboratory, or [contract laboratory, if Aquemi arranges one]",
+     "Your quality control"
+    ],
+    [
+     "Alert and action levels",
+     "Aquemi recommends from the data",
+     "Your quality control"
+    ],
+    [
+     "PQ protocol and sampling plan",
+     "You, or Aquemi drafts for you",
+     "Both teams and your laboratory"
+    ],
+    [
+     "Phase reports and final summary",
+     "Aquemi drafts from executed records",
+     "Your validation team"
+    ]
+   ],
+   "as": "roles",
+   "fold": 5,
+   "fold_noun": "documents"
+  },
+  {
+   "type": "spec",
+   "nav": "PQ",
+   "caption": "PQ · WHO TRS 1033 ANNEX 3 · FDA GUIDE",
+   "h": "PQ in three phases",
+   "intro": "Sample volume, valve, flush, method and incubation are fixed before phase 1, so results compare across the year.",
+   "cols": [
+    "Phase or item",
+    "Requirement",
+    "Sampling and use"
+   ],
+   "rows": [
+    {
+     "p": "Phase 1",
+     "v": "≥ 2 weeks (FDA guide: 2 to 4)",
+     "m": "Daily at every step and point of use. No manufacturing use"
+    },
+    {
+     "p": "Phase 2",
+     "v": "≥ 2 further weeks",
+     "m": "Same sampling, standard operating procedures (SOPs) in use. Water usable if data show quality and your quality unit approves (WHO TRS 1033, 11.3)"
+    },
+    {
+     "p": "Phase 3",
+     "v": "Until phases 1 to 3 cover ≥ 12 months",
+     "m": "Reduced routine plan, trended"
+    },
+    {
+     "p": "Sample points",
+     "v": "Feed, after each step, tank, loop return, every point of use",
+     "m": "Drawn as production draws water"
+    },
+    {
+     "p": "Tests",
+     "v": "Conductivity, total organic carbon (TOC), microbial count",
+     "m": "Plus endotoxin on WFI"
+    },
+    {
+     "p": "WFI",
+     "v": "Phase 3: daily from ≥ 1 point of use, every point weekly",
+     "m": "100–300 mL microbial sample; < 100 mL unacceptable · FDA guide"
+    },
+    {
+     "p": "Pure steam",
+     "v": "Condensate conductivity, TOC, endotoxin at each use point",
+     "m": "Physical tests repeated periodically · Annex 1, 6.17"
+    }
+   ],
+   "note": "For a change to an existing system, WHO allows the phases to be set by risk assessment.",
+   "fold": 3,
+   "fold_noun": "rows"
+  },
+  {
+   "type": "spec",
+   "nav": "Alert levels",
+   "caption": "ALERT AND ACTION LEVELS",
+   "h": "Alert levels come from your data",
+   "intro": "Pharmacopoeial limits are the specification, not an early warning. Annex 1, 6.13 expects alert levels based on qualification data.",
+   "cols": [
+    "Level",
+    "Set at",
+    "When exceeded · basis"
+   ],
+   "rows": [
+    {
+     "p": "Specification",
+     "v": "≤ 1.3 µS/cm @ 25 °C (USP <645> stage 1); TOC ≤ 0.50 mg/L (USP <643>); < 0.25 EU/mL for WFI (USP <85>)",
+     "m": "Water fails; batch impact assessed"
+    },
+    {
+     "p": "Action level",
+     "v": "≤ 100 colony-forming units (CFU)/mL for Purified Water (PW), ≤ 10 CFU/100 mL for WFI, lower where justified",
+     "m": "Root-cause investigation; WFI organisms identified · USP <1231>; WHO TRS 1033, 12.9"
+    },
+    {
+     "p": "Alert level",
+     "v": "Provisional from phases 1 and 2, confirmed on the full year",
+     "m": "Trended as early warning · Annex 1, 6.13; WHO TRS 1033, 12.7"
+    },
+    {
+     "p": "Adverse trend",
+     "v": "A rule your quality unit agrees, such as a run of rising results",
+     "m": "Sanitization or maintenance adjusted under change control"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Requalification",
+   "h": "What triggers requalification, and its scope",
+   "intro": "Scope is set by risk assessment under change control (Annex 15, 11.4).",
+   "cols": [
+    "Trigger",
+    "Typical scope",
+    "Basis"
+   ],
+   "rows": [
+    [
+     "Periodic review",
+     "Review of the year's data and changes; test only where needed",
+     "Annex 15, 4.1 and 4.2; WHO TRS 1033, 14.1"
+    ],
+    [
+     "New point of use or loop change",
+     "IQ of the new branch, OQ of hydraulics and sanitization, intensive sampling",
+     "Annex 15, 11.4; WHO TRS 1033, 11.3"
+    ],
+    [
+     "Sanitization method or frequency",
+     "OQ of the new cycle, then sampling at the new frequency",
+     "Annex 1, 6.12"
+    ],
+    [
+     "Feed water change",
+     "Pretreatment review, OQ of affected steps, intensive sampling",
+     "USP <1231>; WHO TRS 1033, 4.2.17"
+    ]
+   ],
+   "as": "router"
+  },
+  {
+   "type": "docs",
+   "nav": "Documents",
+   "h": "Documents delivered",
+   "items": [
+    {
+     "t": "Commissioning plan and records",
+     "d": "Written to good documentation practice, so leverageable"
+    },
+    {
+     "t": "C&Q plan and risk assessment",
+     "d": "Critical aspects and test strategy"
+    },
+    {
+     "t": "IQ protocol and executed report",
+     "d": "As-builts, materials, welds, calibration certificates"
+    },
+    {
+     "t": "OQ protocol and executed report",
+     "d": "Raw data, alarm logs, deviation log"
+    },
+    {
+     "t": "Traceability matrix",
+     "d": "Every URS requirement to the test that proves it"
+    },
+    {
+     "t": "PQ protocol and sampling plan, by phase",
+     "d": "Points, volumes, methods, frequencies"
+    },
+    {
+     "t": "SOP drafts and training records",
+     "d": "Finalized after OQ"
+    },
+    {
+     "t": "Phase reports and final qualification summary",
+     "d": "With the alert and action level recommendation"
+    }
+   ],
+   "fold": 6,
+   "fold_noun": "documents"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions validation and quality teams ask",
+   "items": [
+    {
+     "q": "Do we really have to wait a year before using the water?",
+     "a": "No. WHO TRS 1033 allows use during phase 2 when phase 1 and ongoing phase 2 data show the required quality and your QA approves it, and water is in use throughout phase 3. The year completes validation across the seasonal changes in your feed water. Plan first batches against the end of phase 2."
+    },
+    {
+     "q": "Can IQ and OQ be combined into one protocol?",
+     "a": "Yes. Annex 15, 2.5 and 3.10 allow a combined installation and operational qualification (IOQ) where complexity allows. On a packaged PW skid it often saves a review cycle; on a full generation, storage and pure steam system we keep them apart so IQ deviations do not hold up OQ."
+    },
+    {
+     "q": "How much of IQ and OQ can FAT replace?",
+     "a": "Documentation review and tests whose result transport and installation cannot change, where your quality unit accepts it (Annex 15, 3.6). We mark candidate tests in the C&Q plan and write the FAT protocol for your approval before execution. Water quality on your feed, site utilities and field-built piping are always proven on site. See FAT and SAT."
+    },
+    {
+     "q": "We work to ASTM E2500 verification, not IQ/OQ/PQ. Can you work that way?",
+     "a": "Yes. The tests are much the same; the structure changes. Under ASTM E2500 and the ISPE Baseline Guide Vol. 5, verification focuses on critical aspects found by risk assessment, subject matter experts carry more of the review, and your quality unit approves acceptance and release. We write the C&Q plan in your model."
+    },
+    {
+     "q": "Who takes the PQ samples and who tests them?",
+     "a": "Usually your operators and laboratory, because the routine monitoring that follows is theirs, and the method must stay the same from phase 1 onward. We write or review the sampling plan and train your samplers. Sampling by our staff in phases 1 and 2: [on-site PQ sampling by Aquemi, yes or no]."
+    },
+    {
+     "q": "What happens if an action level is exceeded during PQ?",
+     "a": "It is a deviation under your procedure. We investigate with you: sampling technique, sample valve, flush and use pattern, sanitization records, neighbouring points. The fix is verified by resampling; if it changes a procedure or setpoint, the phase may be extended. An excursion found, explained and corrected is stronger evidence than none."
+    },
+    {
+     "q": "How often should we requalify?",
+     "a": "Annex 15, 4.1 and 4.2 ask for evaluation at a justified frequency, not a full repeat. Most sites review annually, as WHO TRS 1033, 14.1 suggests, and requalify only what a change, a trend or the review points to."
+    },
+    {
+     "q": "Can you qualify or requalify a system you did not build?",
+     "a": "Yes. We start with a gap assessment of the existing qualification file and the installed system against Annex 15, Annex 1 and your current requirements, then propose a scope your quality unit can approve. Missing as-built drawings, a dead leg register or calibration history are the usual gaps. See upgrades and requalification."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Before and after qualification",
+   "items": [
+    "svc-design",
+    "svc-fat-sat",
+    "sys-storage",
+    "sys-monitoring",
+    "svc-upgrades",
+    "cmp-documentation"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your URS or VMP. Get a draft C&Q plan back.",
+  "body": "An engineer reads your URS or VMP and drafts the C&Q plan in your templates.",
+  "button": "Request a C&Q plan review",
+  "link": "contact-proposal",
+  "intent": "Review of a document you have|C&Q plan or validation master plan (VMP)",
+  "include": [
+   "Approved URS and VMP utilities section",
+   "Protocol templates and documentation rules",
+   "Named reviewers and approvers",
+   "Points of use and draw pattern",
+   "Laboratory methods and sample turnaround",
+   "Existing system: qualification file and trends"
+  ],
+  "returns": [
+   "A draft C&Q plan",
+   "IQ and OQ tests, FAT tests to leverage",
+   "A PQ sampling plan",
+   "Water release dates"
+  ],
+  "turnaround": "[proposal response time, working days]"
+ },
+ "todo": [
+  "Confirm Aquemi executes IQ/OQ with its own engineers or a named partner (who-signs table placeholder)",
+  "Confirm PQ support scope: whether Aquemi staff take samples on site in phases 1 and 2 ([on-site PQ sampling by Aquemi, yes or no]), and through which laboratory ([contract laboratory, if Aquemi arranges one])",
+  "Name the calibration laboratory and its accreditation (e.g. ISO/IEC 17025) for traceability",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Confirm Aquemi drafts the C&Q plan, risk assessment, PQ protocol, SOP drafts and alert level recommendation (page says so; svc-design open point too)",
+  "Confirm whether the C&Q plan review offered in the CTA is free or charged, and its turnaround",
+  "Confirm Aquemi offers gap assessments and requalification of systems it did not build",
+  "Typical IQ/OQ durations on site (days) for a PW skid and for a generation, storage and pure steam system, before adding them to the page",
+  "A real qualification project (phase dates, deviations, water release date) before adding a case study block"
+ ],
+ "facts": [
+  {
+   "v": "Phase 2",
+   "l": "Earliest production use · WHO TRS 1033"
+  },
+  {
+   "v": "≥ 2 weeks",
+   "l": "Each intensive PQ phase · WHO TRS 1033"
+  },
+  {
+   "v": "≥ 12 months",
+   "l": "PQ data across the seasons"
+  },
+  {
+   "v": "100–300 mL",
+   "l": "Microbial sample volume · FDA guide"
+  }
+ ]
+}

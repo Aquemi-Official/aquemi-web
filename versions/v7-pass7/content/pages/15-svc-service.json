@@ -1,0 +1,357 @@
+{
+ "id": "svc-service",
+ "section": "Services",
+ "nav_label": "Service and spare parts",
+ "title": "GMP water system service plans and spare parts | Aquemi",
+ "meta": "Service plans with stated response times, calibration to USP <645> and <643>, like-for-like spares and service reports fit for your GMP records.",
+ "path": "/services/service-spare-parts/",
+ "eyebrow": "SERVICE AND SPARE PARTS · USP <645>",
+ "headline": "Service that keeps it qualified",
+ "lead": "Response times fixed by severity, like-for-like parts, USP calibrations and signed reports for your GMP records.",
+ "tags": [
+  "USP <645>",
+  "EU GMP Annex 15"
+ ],
+ "facts": [
+  {
+   "v": "[hours]",
+   "l": "Severity 1: technician on site"
+  },
+  {
+   "v": "[working days]",
+   "l": "Signed service report"
+  }
+ ],
+ "primary_cta": "Request a service plan quote",
+ "secondary_cta": {
+  "label": "Production stopped? Request urgent service",
+  "link": "contact-service"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "as": "plans",
+   "nav": "Plans",
+   "h": "Service plans: response, scope, price",
+   "intro": "Response, visits, calibration and reports fixed before you sign.",
+   "cols": [
+    "",
+    "[tier 1 plan name]",
+    "[tier 2 plan name]",
+    "[tier 3 plan name]",
+    "No plan (call-out)"
+   ],
+   "rows": [
+    [
+     "Suits",
+     "PW with in-house maintenance and spare capacity",
+     "A PW or WFI system production depends on",
+     "WFI, pure steam or no standby",
+     "Sites with their own team and spares"
+    ],
+    [
+     "Price · minimum term",
+     "[annual price, CAD] · [minimum term, months]",
+     "[annual price, CAD] · [minimum term, months]",
+     "[annual price, CAD] · [minimum term, months]",
+     "[call-out and hourly rates, CAD] · none"
+    ],
+    [
+     "On site, severity 1 · 2",
+     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+     "[severity 1 on-site response time, hours] · [severity 2 visit time]",
+     "Next available technician"
+    ],
+    [
+     "Visits a year · calibration",
+     "[visits per year] · [calibration interval, months]",
+     "[visits per year] · [calibration interval, months]",
+     "[visits per year] · [calibration interval, months]",
+     "On request"
+    ],
+    [
+     "Phone · remote diagnosis",
+     "[service phone hours] · [remote response time, hours]",
+     "[service phone hours] · [remote response time, hours]",
+     "[service phone hours] · [remote response time, hours]",
+     "[service phone hours] · best effort"
+    ],
+    [
+     "Critical spares",
+     "Recommended list only",
+     "[kit held at Aquemi or on site]",
+     "[kit on site, replenished after use]",
+     "From stock when available"
+    ],
+    [
+     "Unplanned repairs",
+     "[labour discount, %]",
+     "[labour discount, %]",
+     "[repair parts and labour terms]",
+     "Charged in full"
+    ],
+    [
+     "Annual system review",
+     "No",
+     "Yes",
+     "Yes, with a trend review meeting",
+     "No"
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "terms"
+  },
+  {
+   "type": "spec",
+   "nav": "Calibration",
+   "h": "Calibration you release water on",
+   "cols": [
+    "Instrument",
+    "Check and acceptance",
+    "Basis"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity cell and transmitter",
+     "v": "Cell constant ± 2 %; transmitter ± 0.1 µS/cm; temperature ± 2 °C",
+     "m": "USP <645>",
+     "hl": true
+    },
+    {
+     "p": "Online TOC analyzer",
+     "v": "System suitability: response efficiency 85–115 %",
+     "m": "USP <643>; Ph. Eur. 2.2.44"
+    },
+    {
+     "p": "Temperature sensors",
+     "v": "At operating and sanitization temperature",
+     "m": "EU GMP Chapter 3"
+    },
+    {
+     "p": "Pressure, flow and level",
+     "v": "Across the working range",
+     "m": "21 CFR 211.68"
+    },
+    {
+     "p": "Ozone and UV intensity",
+     "v": "Against a reference sensor or the maker’s method",
+     "m": "Maker’s procedure"
+    }
+   ],
+   "note": "Certificates show as-found and as-left values. Calibrated by [calibration provider and accreditation held]."
+  },
+  {
+   "type": "grid",
+   "as": "route",
+   "nav": "Visits",
+   "h": "What a maintenance visit covers",
+   "items": [
+    {
+     "t": "Data review first",
+     "d": "Conductivity, TOC, temperature and alarms since the last visit.",
+     "spot": "toc"
+    },
+    {
+     "t": "Pretreatment",
+     "d": "Softener leakage, carbon or bisulfite, chlorine at the RO inlet.",
+     "link": "sys-pretreatment",
+     "spot": "pretreatment"
+    },
+    {
+     "t": "RO and EDI",
+     "d": "Normalized flow, salt passage and pressure drop against the baseline.",
+     "link": "sys-pw",
+     "spot": "ro-skid"
+    },
+    {
+     "t": "UV, ozone, sanitization",
+     "d": "Lamp intensity, ozone below its limit, sanitization at the coldest point.",
+     "link": "sys-monitoring",
+     "spot": "uv-ozone"
+    },
+    {
+     "t": "Loop hydraulics",
+     "d": "Return flow against the qualified minimum, pump and valves.",
+     "link": "sys-storage",
+     "spot": "pump"
+    },
+    {
+     "t": "Wearing parts",
+     "d": "Seals and diaphragms like for like, lots recorded; vent filters tested.",
+     "spot": "wrench"
+    },
+    {
+     "t": "Signed service report",
+     "d": "As-found, as-left and return-to-service results, signed before we leave.",
+     "end": true,
+     "spot": "stamp"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Like for like",
+   "h": "Like for like, or a change?",
+   "intro": "Anything else goes through your change control first.",
+   "cols": [
+    "Part",
+    "Like for like when",
+    "A change when",
+    "What follows a change"
+   ],
+   "rows": [
+    [
+     "RO membranes",
+     "Same maker, model and count",
+     "Different model, chemistry or array",
+     "OQ at design recovery, closer sampling"
+    ],
+    [
+     "Instruments",
+     "Same model, range and configuration",
+     "Different model, range or data path",
+     "IQ, loop check, audit trail check"
+    ],
+    [
+     "Control software",
+     "Never",
+     "Any version, logic or configuration change",
+     "Regression tests; version and checksum recorded"
+    ],
+    [
+     "Gaskets, diaphragms, seals",
+     "Same compound and certificates (USP <88> Class VI)",
+     "A different elastomer or PTFE grade",
+     "Material and extractables review"
+    ],
+    [
+     "EDI modules",
+     "Same model, at qualified current and flow",
+     "Different model or operating window",
+     "OQ of the EDI step"
+    ],
+    [
+     "UV lamps",
+     "Same lamp and ballast, within rated life",
+     "Different lamp, ballast or dose",
+     "Intensity check, OQ of the UV alarm"
+    ],
+    [
+     "Vent filters",
+     "Same maker, membrane and rating",
+     "Different membrane, rating or housing",
+     "Integrity test, sanitization review"
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "parts"
+  },
+  {
+   "type": "steps",
+   "nav": "Faults",
+   "h": "When something goes wrong",
+   "items": [
+    {
+     "t": "Call",
+     "d": "[service phone number], [service phone hours]. For severity 1, always call."
+    },
+    {
+     "t": "Triage",
+     "d": "We confirm severity, open a ticket and start your plan’s response clock."
+    },
+    {
+     "t": "Remote diagnosis",
+     "d": "Trends and alarms reviewed within [remote response time, hours]; operators guided to a safe state.",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "On site, restored",
+     "d": "A technician with the likely parts; water back within limits before release."
+    },
+    {
+     "t": "Report",
+     "d": "Root cause, parts and lot numbers, for your deviation."
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Common questions",
+   "items": [
+    {
+     "q": "Will service work affect our qualified state?",
+     "a": "Not when it is like for like under your procedure. Anything else stops, and we give you the input for your change request."
+    },
+    {
+     "q": "How do severities and the response clock work?",
+     "a": "Severity 1: production stopped or water out of specification. 2: running with an alarm or adverse trend. 3: no quality effect. 4: planned. Missed time: [missed response remedy]."
+    },
+    {
+     "q": "Do you service systems built by another manufacturer?",
+     "a": "Yes, for [makes and equipment types serviced]. We start with a condition survey and a review of drawings, records and spares."
+    },
+    {
+     "q": "Can your technicians work to our SOPs and forms?",
+     "a": "Yes. We complete your work orders and logbooks, follow your procedures and take your site induction."
+    },
+    {
+     "q": "What does a service plan cost?",
+     "a": "Plans start at [lowest plan price, CAD per year], depending on the system, its instruments and your distance from [nearest service base]."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where service connects",
+   "items": [
+    "contact-service",
+    "svc-cq",
+    "svc-upgrades",
+    "sys-monitoring"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send system details, get a fixed price",
+  "body": "For a fault now, call [service phone number].",
+  "button": "Request a service plan quote",
+  "link": "contact-service",
+  "include_label": "What to send for a plan quote",
+  "include": [
+   "System type, builder, year and serial",
+   "Instrument list, makes and models",
+   "Standby capacity and ride-through time",
+   "Site address and access rules"
+  ],
+  "turnaround": "[quote response time, working days]",
+  "returns": [
+   "Recommended plan for your system",
+   "Fixed annual price, CAD",
+   "First-visit tasks"
+  ]
+ },
+ "todo": [
+  "Service programme brand and plan names for the three tiers ([tier 1/2/3 plan name])",
+  "Annual price per tier (CAD), minimum term per tier (months), and call-out and hourly rates without a plan",
+  "Lowest plan price (CAD per year) for the pricing FAQ",
+  "Preventive maintenance visits per year and calibration interval per tier (months); state separately for quality-critical and process instruments if they differ",
+  "Service phone hours per tier ([service phone hours]), and whether 24/7 calls are answered by a service engineer or a dispatcher ([engineer or dispatcher])",
+  "Remote diagnosis response time per tier ([remote response time, hours])",
+  "Severity 1 on-site response time per tier, hours ([severity 1 on-site response time, hours], same figure as home, services, about, contact-service) and severity 2 visit time per tier ([severity 2 visit time], hours or working days)",
+  "Where the response clock stops ([response clock stop event]: technician on site or another defined event)",
+  "Remedy when a response time is missed ([missed response remedy]: service credit or other)",
+  "Service coverage area and nearest service base(s); travel terms outside the area",
+  "Critical spares kit terms per tier (held at Aquemi or on site, replenishment)",
+  "Unplanned repair terms per tier: labour discount (%), and parts and labour terms on tier 3",
+  "Visit scope lead time (working days) and service report turnaround (working days)",
+  "Whether a second Aquemi reviewer signs service reports ([second Aquemi reviewer, yes or no])",
+  "Who performs calibrations (Aquemi or named partner) and laboratory accreditation held, e.g. ISO/IEC 17025 ([calibration provider and accreditation held])",
+  "Spares stock location(s) and order cut-off and delivery commitment",
+  "Service phone number",
+  "Quote response time (working days)",
+  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
+  "A real service record (response times achieved, uptime) with client permission before adding proof or a case block"
+ ]
+}

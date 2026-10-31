@@ -1,0 +1,45 @@
+/* ---------- WaterPath: system families as stops on one serpentine pipe ---------- */
+.aq-water-path { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--space-8); padding-right: var(--space-12); }
+.aq-water-path__pipe { grid-column: 1 / -1; grid-row: 1; height: 0; margin-top: var(--space-6); border-top: 5px double var(--flow); }
+.aq-water-path__pipe--return { grid-row: 3; margin-top: 0; }
+.aq-water-path__bend { grid-column: 4; grid-row: 1 / 4; justify-self: end; width: var(--space-12); margin: var(--space-6) calc(-1 * var(--space-12)) 0 0; border: 5px double var(--flow); border-left: 0; border-radius: 0 var(--space-12) var(--space-12) 0; }
+.aq-water-path__feed, .aq-water-path__outlet { grid-column: 1; justify-self: start; z-index: 1; display: inline-flex; align-items: center; height: 24px; padding: 0 var(--space-2); background: var(--flow); color: var(--surface); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; border-radius: var(--radius-sm); }
+.aq-water-path__feed { grid-row: 1; margin-top: calc(-1 * var(--space-2)); }
+.aq-water-path__outlet { grid-row: 3; margin-top: calc(-1 * var(--space-8)); }
+.aq-water-path__stop { position: relative; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-8) 0 var(--space-12); min-width: 0; }
+.aq-water-path__stop:nth-of-type(-n+4) { grid-row: 2; }
+.aq-water-path__stop:nth-of-type(1) { grid-column: 1; }
+.aq-water-path__stop:nth-of-type(2) { grid-column: 2; }
+.aq-water-path__stop:nth-of-type(3) { grid-column: 3; }
+.aq-water-path__stop:nth-of-type(4) { grid-column: 4; }
+.aq-water-path__stop:nth-of-type(5) { grid-row: 4; grid-column: 4; }
+.aq-water-path__stop:nth-of-type(6) { grid-row: 4; grid-column: 3; }
+.aq-water-path__stop:nth-of-type(7) { grid-row: 4; grid-column: 2; }
+.aq-water-path__stop::before { content: ""; position: absolute; top: -10px; left: var(--space-4); width: 15px; height: 15px; border: 1.5px solid var(--flow); border-radius: var(--radius-pill); background: var(--surface); }
+.aq-water-path__stop > * { position: relative; z-index: 1; }
+.aq-water-path__glyph { width: 72px; height: 56px; fill: none; stroke: var(--ink-muted); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; margin-bottom: var(--space-2); }
+.aq-water-path .aq-water-path__art { width: min(100%, 200px); margin: 0 0 var(--space-2); transition: background-color 120ms; }
+/* Stop number: the shared index style (see .aq-index in base.css) */
+.aq-water-path__num { font: 400 13px/24px var(--font-mono); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+.aq-water-path__stop a { color: var(--ink); text-decoration: none; }
+.aq-water-path__stop a::after { content: "\a0\2192"; color: var(--flow); }
+.aq-water-path__stop:hover a { color: var(--flow); }
+.aq-water-path__stop:hover .aq-water-path__glyph { stroke: var(--flow); }
+.aq-water-path__stop:hover .aq-water-path__art { background-color: var(--flow); }
+.aq-water-path__stop .aq-tags { margin-top: var(--space-1); }
+
+@container (max-width: 860px) {
+  .aq-water-path { grid-template-columns: minmax(0, 1fr); padding-right: 0; }
+  .aq-water-path__pipe, .aq-water-path__bend { display: none; }
+  .aq-water-path__feed, .aq-water-path__outlet, .aq-water-path__stop:nth-of-type(n) { grid-row: auto; grid-column: 1; margin: 0; }
+  /* Phones: compact stops on the riser; the drawing small at the right of the number and name */
+  .aq-water-path__stop {
+    display: grid; grid-template-columns: minmax(0, 1fr) var(--space-16); column-gap: var(--space-3); row-gap: var(--space-1);
+    border-left: 5px double var(--flow); padding: var(--space-4) 0 var(--space-6) var(--space-6);
+  }
+  .aq-water-path__stop > * { grid-column: 1 / -1; }
+  .aq-water-path__stop > .aq-water-path__num, .aq-water-path__stop > .aq-h3 { grid-column: 1; }
+  .aq-water-path .aq-water-path__art, .aq-water-path__glyph { grid-column: 2; grid-row: 1 / 3; width: var(--space-16); height: auto; margin: 0; }
+  .aq-water-path__stop .aq-h3 { font-size: 17px; line-height: 24px; }
+  .aq-water-path__stop::before { top: var(--space-4); left: -10px; }
+}

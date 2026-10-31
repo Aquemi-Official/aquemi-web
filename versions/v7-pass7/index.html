@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aquemi</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0F2A47">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
+<!-- The Aquemi design system: tokens, then components. Site chrome last. -->
+<link rel="stylesheet" href="design-system/tokens.css">
+<link rel="stylesheet" href="design-system/components/bundle.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="draftbar" role="region" aria-label="Draft tools">
+ <span>Draft site · not for release · <a href="design-system.html">Design system</a></span>
+ <span class="draftbar__tools">
+  <label><input type="checkbox" id="wph" checked> Highlight placeholders</label>
+  <label><input type="checkbox" id="wtodo"> Show open facts</label>
+  <select id="wjump" aria-label="Jump to page"></select>
+ </span>
+</div>
+<div class="aq-page" id="wsite"><p style="padding:64px 32px;font-family:var(--font-mono);color:var(--ink-muted)">Loading…</p></div>
+<div class="todo" id="wtodolist" hidden></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/MotionPathPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/DrawSVGPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrambleTextPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/CustomEase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/Flip.min.js"></script>
+<script src="assets/aquemi-site.js"></script>
+<script src="assets/motion.js"></script>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)},e=AQ.e;
+function render(){var p=AQ.wp(AQ.page)||AQ.pages()[0];if(!p)return;AQ.page=p.id;
+ $('wsite').innerHTML=AQ.wPage(p);$('wsite').classList.toggle('is-clean',!$('wph').checked);
+ document.title=p.title||'Aquemi';
+ $('wjump').value=p.id;
+ var t=p.todo||[];$('wtodolist').innerHTML='<h2>Open facts on this page ('+t.length+')</h2>'+(t.length?'<ul>'+t.map(function(x){return '<li>'+e(x)+'</li>'}).join('')+'</ul>':'<p>None.</p>');
+ $('wtodolist').hidden=!$('wtodo').checked;
+ var m=$('wmenu');if(m)m.onclick=function(){AQ.menuOpen=!AQ.menuOpen;render()};
+ if(window.AQmotion)requestAnimationFrame(function(){AQmotion.run($('wsite'))});
+ document.querySelectorAll('.wform').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();f.querySelector('.wform-msg').textContent='Draft site: this form does not send anything yet.'})})}
+function go(id){AQ.page=id;AQ.menuOpen=false;try{history.replaceState(null,'','#'+id)}catch(x){}render();window.scrollTo(0,0)}
+AQ.onNav=go;
+$('wph').onchange=function(){$('wsite').classList.toggle('is-clean',!this.checked)};
+$('wtodo').onchange=function(){$('wtodolist').hidden=!this.checked};
+$('wjump').onchange=function(){go(this.value)};
+window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h&&h!==AQ.page&&AQ.wp(h))go(h)});
+fetch('content/pages.json').then(function(r){return r.json()}).then(function(d){AQ.setPages(d.pages);
+ $('wjump').innerHTML=AQ.pages().map(function(p){return '<option value="'+e(p.id)+'">'+e(p.section+' · '+p.nav_label)+'</option>'}).join('');
+ var h=location.hash.slice(1);if(AQ.wp(h))AQ.page=h;render()}).catch(function(err){$('wsite').innerHTML='<p style="padding:64px 32px">The page content could not load: '+e(err.message)+'</p>'});
+})();
+</script>
+</body>
+</html>

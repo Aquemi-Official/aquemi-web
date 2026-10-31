@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="draftbar" role="region" aria-label="Draft tools">
- <span>Draft site · not for release · <a href="design-system.html">Design system</a></span>
+ <span>Draft site · not for release · <a href="design-system.html">Design system</a> · <a id="wver" href="versions.html">Page history</a></span>
  <span class="draftbar__tools">
   <label><input type="checkbox" id="wph" checked> Highlight placeholders</label>
   <label><input type="checkbox" id="wtodo"> Show open facts</label>
@@ -40,7 +40,7 @@ var $=function(id){return document.getElementById(id)},e=AQ.e;
 function render(){var p=AQ.wp(AQ.page)||AQ.pages()[0];if(!p)return;AQ.page=p.id;
  $('wsite').innerHTML=AQ.wPage(p);$('wsite').classList.toggle('is-clean',!$('wph').checked);
  document.title=p.title||'Aquemi';
- $('wjump').value=p.id;
+ $('wjump').value=p.id;$('wver').href='versions.html#page='+p.id;
  var t=p.todo||[];$('wtodolist').innerHTML='<h2>Open facts on this page ('+t.length+')</h2>'+(t.length?'<ul>'+t.map(function(x){return '<li>'+e(x)+'</li>'}).join('')+'</ul>':'<p>None.</p>');
  $('wtodolist').hidden=!$('wtodo').checked;
  var m=$('wmenu');if(m)m.onclick=function(){AQ.menuOpen=!AQ.menuOpen;render()};

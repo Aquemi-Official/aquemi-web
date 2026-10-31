@@ -39,6 +39,7 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 | `assets/motion.js` | **Generated** from the motion sources above. The site loads it. |
 | `assets/site.css` | Draft-bar chrome only. No brand styles here. |
 | `inspiration.html` | Media gallery of every image made or considered, used or not, tagged by what became of it. Reads `design-system/inspiration/gallery.json`; after adding an image run `python tools/gallery.py`. |
+| `versions.html`, `versions/<id>/` | Page history: flip any page between the big checkpoints (and compare two side by side, desktop or phone). Each `versions/<id>/` is a frozen copy of the site at one commit. **Generated** by `python tools/versions.py`; to add a checkpoint, add a row to its `CHECKPOINTS` and run it. Never edit inside `versions/`. |
 | `design-system.html` | The visual guide. Generated at load time from the files above; normally needs no edits. |
 | `brand/` | Logo, lockup, mark and favicon SVGs. Use as they are. |
 | `tools/design_system.py` | `build`, `check`, `new`, `stage`. Python 3 standard library only. |

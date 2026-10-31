@@ -1,0 +1,104 @@
+/* ---------- ProcessSteps: a real sequence as rows of the shared list grammar ---------- */
+/* Layout from .aq-rows (base.css): index | step name | what happens. The index already carries the order, so a plain
+   list has no pipe, spine or stair: hairlines between steps are the only structure. */
+.aq-steps { min-width: 0; }
+
+/* ---------- Hold-point flow (.aq-steps--hold, inside a light Plate) ----------
+   Steps with at least one hold draw as a process flow: numbered stations in a grid (--cols per row, set by steps.js),
+   joined by pipe runs (two line-strong walls), rows returning under each other through elbowed pipe, a closed flow valve
+   on the run into every hold station, and hold stations double-framed with a tilted HOLD stamp and a SIGN line.
+   Geometry: space-8 gutter beside the grid (the return pipe runs in it), space-12 gap between stations (the runs), 6px pipe
+   width, pipe centre line at space-3 + 24px (the middle of the station number). Pipes, valves and arrows are aria-hidden. */
+.aq-steps--hold {
+  display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); column-gap: var(--space-12); row-gap: 0;
+  list-style: none; margin: 0; padding: 0 var(--space-8);
+}
+.aq-steps__st { position: relative; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3); min-width: 0; }
+.aq-steps__n { display: flex; align-items: center; gap: var(--space-2); font: 300 40px/48px var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--flow); }
+.aq-steps__n::after { content: ""; width: 1px; height: var(--space-8); background: var(--line-strong); }
+.aq-steps__body { display: flex; flex-direction: column; gap: var(--space-2); padding-left: var(--space-3); border-left: 1px solid var(--line-strong); }
+.aq-steps__t { margin: 0; font: 600 13px/20px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); text-wrap: balance; }
+.aq-steps__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
+
+/* Hold station: double frame (outline plus an inner rule), the stamp and the signature line */
+.aq-steps__st.is-hold { outline: 1px solid var(--line-strong); }
+.aq-steps__st.is-hold::before { content: ""; position: absolute; inset: var(--space-1); border: 1px solid var(--line-strong); pointer-events: none; }
+.aq-steps__hold { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); margin: var(--space-2) 0 0; }
+.aq-steps__stamp {
+  display: inline-flex; align-items: center; gap: var(--space-2); max-width: 100%; padding: var(--space-1) var(--space-2);
+  border: 3px double var(--flow); border-radius: var(--radius-sm); transform: rotate(-3deg); transform-origin: left center;
+  font: 600 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--flow);
+}
+.aq-steps__stamp-k { flex: none; padding: 0 var(--space-1); background: var(--flow); color: var(--surface); font-size: 14px; line-height: 20px; }
+.aq-steps__who { min-width: 0; }
+.aq-steps__sign { align-self: stretch; display: flex; align-items: baseline; gap: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-steps__sign::after { content: ""; flex: 1; border-bottom: 1px solid var(--line-strong); }
+
+/* Run: the pipe from a station to the next, in the gap between them, with an arrow into the next station */
+.aq-steps__run { position: absolute; left: 100%; top: calc((var(--space-3) + 24px) - 6px / 2); width: var(--space-12); height: 6px; box-sizing: border-box; border-block: 2px solid var(--line-strong); }
+.aq-steps__run::after { content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%); border-left: var(--space-2) solid var(--line-strong); border-block: 5px solid transparent; }
+.aq-steps__valve { position: absolute; left: 50%; top: 50%; width: var(--space-6); height: var(--space-6); transform: translate(-60%, -50%); overflow: visible; }
+.aq-steps__valve path:first-child { fill: var(--flow); stroke: var(--flow); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-steps__valve path + path { fill: none; stroke: var(--flow); stroke-width: 2; }
+.aq-steps__st.is-eol > .aq-steps__run { display: none; }
+/* From a plain station the pipe leaves just after the number, so it reads as one run between stations; from a framed
+   hold station it leaves through the frame. */
+.aq-steps__st:not(.is-hold) > .aq-steps__run { left: var(--space-24); width: calc(100% - var(--space-24) + var(--space-12)); }
+.aq-steps__st.is-eol:not(.is-hold) > .aq-steps__turn:not(.aq-steps__turn--in) { left: var(--space-24); width: calc(100% - var(--space-24) + var(--space-8) / 2 + 6px / 2); }
+/* Return: out of the row's last station into the right gutter, down, back along under the row, down the left gutter
+   and into the next row's first station. Elbows are rounded double rules the width of the pipe. */
+.aq-steps__turn { position: absolute; left: 100%; top: calc((var(--space-3) + 24px) - 6px / 2); bottom: 0; width: calc(var(--space-8) / 2 + 6px / 2); box-sizing: border-box; border-top: 6px double var(--line-strong); border-right: 6px double var(--line-strong); border-top-right-radius: var(--space-4); }
+.aq-steps__turn--in { left: auto; right: 100%; top: 0; bottom: auto; height: calc((var(--space-3) + 24px) + 6px / 2); border: 0; border-left: 6px double var(--line-strong); border-bottom: 6px double var(--line-strong); border-radius: 0 0 0 var(--space-4); }
+.aq-steps__turn--in::after { content: ""; position: absolute; right: calc(-1 * var(--space-1)); bottom: calc(-1 * 6px / 2 - 5px); border-left: var(--space-2) solid var(--line-strong); border-block: 5px solid transparent; }
+.aq-steps__ret { position: relative; grid-column: 1 / -1; height: var(--space-12); }
+.aq-steps__ret::before { content: ""; position: absolute; top: 0; height: calc(50% + 6px / 2); left: calc(var(--space-4) - var(--space-8) / 2); right: calc(var(--space-8) / -2 - 6px / 2); box-sizing: border-box; border-right: 6px double var(--line-strong); border-bottom: 6px double var(--line-strong); border-bottom-right-radius: var(--space-4); }
+.aq-steps__ret::after { content: ""; position: absolute; top: calc(50% - 6px / 2); bottom: 0; left: calc(var(--space-8) / -2 - 6px / 2); width: var(--space-6); box-sizing: border-box; border-left: 6px double var(--line-strong); border-top: 6px double var(--line-strong); border-top-left-radius: var(--space-4); }
+.aq-steps__ret-arrow { position: absolute; left: 50%; top: calc(50% - var(--space-4)); width: var(--space-8); height: 1px; background: var(--ink-subtle); }
+.aq-steps__ret-arrow::before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%); border-right: var(--space-2) solid var(--ink-subtle); border-block: 4px solid transparent; }
+.aq-steps__ret > .aq-steps__valve { left: 25%; }
+
+/* ---------- Stage strip (.aq-steps--stages, steps without holds, as: "stages") ----------
+   The hold flow's stations, numbers and pipe runs, on the section ground: each station opens with its icon (Icon mask,
+   56 px, ink) in a framed square (80 px: icon + space-3 each side, line-strong rule with a line inner rule), then the big
+   flow number with its tick, then name and text behind the hairline. Runs leave the frame's right side at its centre and
+   end in an arrow at the next frame. Up to six per row; longer lists wrap in rows of four, each row its own run. */
+.aq-steps--stages {
+  display: grid; grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr)); column-gap: var(--space-8); row-gap: var(--space-8);
+  list-style: none; margin: 0; padding: 0;
+}
+.aq-steps--stages .aq-steps__st { padding: 0; gap: var(--space-3); }
+.aq-steps__frame { position: relative; display: grid; place-items: center; flex: none; width: calc(var(--space-16) + var(--space-4)); height: calc(var(--space-16) + var(--space-4)); box-sizing: border-box; border: 1px solid var(--line-strong); }
+.aq-steps__frame::before { content: ""; position: absolute; inset: var(--space-1); border: 1px solid var(--line); pointer-events: none; }
+.aq-steps__frame .aq-icon { width: calc(var(--space-12) + var(--space-2)); height: calc(var(--space-12) + var(--space-2)); }
+.aq-steps--stages .aq-steps__st > .aq-steps__run { left: calc(var(--space-16) + var(--space-4)); top: calc((var(--space-16) + var(--space-4)) / 2 - 6px / 2); width: calc(100% - (var(--space-16) + var(--space-4)) + var(--space-8)); }
+
+@container (max-width: 860px) {
+  /* Phone: one vertical pipe down the number column, stations along it; hold stations framed and stamped */
+  .aq-steps--hold { grid-template-columns: minmax(0, 1fr); padding: 0; }
+  .aq-steps__st { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); align-items: start; column-gap: var(--space-3); padding: 0 0 var(--space-6); }
+  .aq-steps__n { justify-self: center; position: relative; z-index: 1; padding-block: var(--space-1); background: var(--surface); font-size: 26px; line-height: 32px; }
+  .aq-steps__n::after { display: none; }
+  .aq-steps__body { padding-left: 0; border-left: 0; padding-top: var(--space-2); }
+  .aq-steps__st.is-hold { outline: 0; }
+  .aq-steps__st.is-hold::before { display: none; }
+  .aq-steps__st.is-hold .aq-steps__body { position: relative; padding: var(--space-4); outline: 1px solid var(--line-strong); }
+  .aq-steps__st.is-hold .aq-steps__body::before { content: ""; position: absolute; inset: var(--space-1); border: 1px solid var(--line-strong); pointer-events: none; }
+  .aq-steps__run, .aq-steps__st.is-eol > .aq-steps__run, .aq-steps__st:not(.is-hold) > .aq-steps__run { display: block; left: calc(var(--space-12) / 2 - 6px / 2); top: var(--space-8); bottom: 0; width: 6px; height: auto; border-block: 0; border-inline: 2px solid var(--line-strong); }
+  .aq-steps__run::after { top: auto; right: auto; bottom: 0; left: 50%; transform: translateX(-50%); border-top: var(--space-2) solid var(--line-strong); border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 0; }
+  .aq-steps__valve { transform: translate(-50%, -50%) rotate(90deg); }
+  .aq-steps__turn, .aq-steps__ret { display: none; }
+}
+
+@container (max-width: 860px) {
+  /* Stage strip on phones: the hold flow's vertical pipe down the number column; the framed icon (48 px, icon 36 px)
+     sits beside the number with the step name, the text runs under both. */
+  .aq-steps--stages { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
+  .aq-steps--stages .aq-steps__st { grid-template-columns: var(--space-12) var(--space-12) minmax(0, 1fr); grid-template-areas: "n f t" "n d d"; column-gap: var(--space-3); row-gap: var(--space-2); align-items: center; padding: 0 0 var(--space-6); }
+  .aq-steps--stages .aq-steps__n { grid-area: n; align-self: start; }
+  .aq-steps__frame { grid-area: f; width: var(--space-12); height: var(--space-12); }
+  .aq-steps__frame::before { inset: 3px; }
+  .aq-steps__frame .aq-icon { width: calc(var(--space-8) + var(--space-1)); height: calc(var(--space-8) + var(--space-1)); }
+  .aq-steps--stages .aq-steps__body { display: contents; }
+  .aq-steps--stages .aq-steps__t { grid-area: t; }
+  .aq-steps--stages .aq-steps__d { grid-area: d; }
+}

@@ -1,0 +1,112 @@
+/* ---------- Readout: one figure on a precision instrument face ---------- */
+/* A drawing frame with four corner marks. The figure is huge Geist Mono in flow, its unit set vertically beside it;
+   a dashed reference line crosses the frame at the figure's mid-height and carries the method in a boxed tag. The body
+   is the caption. Along the bottom, a decorative tick scale (aria-hidden, CSS only); the --limit modifier adds a flat
+   flow-tint reference band ending at a limit marker. The scale is a schematic: it plots nothing. */
+.aq-readout {
+  position: relative;
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  column-gap: var(--space-12); row-gap: var(--space-8);
+  padding: var(--space-12);
+  border: 1px solid var(--line);
+  background-color: var(--surface);
+  /* Corner marks: two short line-strong bars at each corner, drawn over the frame line */
+  background-image:
+    linear-gradient(var(--line-strong), var(--line-strong)), linear-gradient(var(--line-strong), var(--line-strong)),
+    linear-gradient(var(--line-strong), var(--line-strong)), linear-gradient(var(--line-strong), var(--line-strong)),
+    linear-gradient(var(--line-strong), var(--line-strong)), linear-gradient(var(--line-strong), var(--line-strong)),
+    linear-gradient(var(--line-strong), var(--line-strong)), linear-gradient(var(--line-strong), var(--line-strong));
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-size: var(--space-6) 2px, 2px var(--space-6), var(--space-6) 2px, 2px var(--space-6),
+    var(--space-6) 2px, 2px var(--space-6), var(--space-6) 2px, 2px var(--space-6);
+  background-position: left top, left top, right top, right top, left bottom, left bottom, right bottom, right bottom;
+}
+
+/* Head: reading on the left, the method tag on the right; font-size here sets the figure, and 1em = its height */
+.aq-readout__head {
+  grid-column: 1 / -1; position: relative;
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--space-12); align-items: start;
+  font-size: clamp(64px, 12cqi, 160px); line-height: 1;
+}
+/* Reference line through the figure's mid-height, edge to edge of the frame */
+.aq-readout__head::before {
+  content: ""; position: absolute; top: 0.5em;
+  left: calc(-1 * var(--space-12)); right: calc(-1 * var(--space-12));
+  border-top: 1px dashed var(--line-strong); pointer-events: none;
+}
+
+.aq-readout__reading {
+  position: relative; margin: 0; min-width: 0;
+  display: flex; flex-wrap: wrap; align-items: flex-start;
+  font: 300 1em/1 var(--font-mono); letter-spacing: -0.04em; font-variant-numeric: tabular-nums;
+  color: var(--flow);
+}
+.aq-readout__figure { min-width: 0; overflow-wrap: anywhere; }
+.aq-readout__figure .aq-ph { letter-spacing: -0.02em; }
+/* Comparator (<, ≤): smaller, centred on the digits */
+.aq-readout__cmp { font-size: 0.4em; vertical-align: 0.6em; letter-spacing: 0; color: var(--ink-muted); }
+/* Unit: vertical, reading bottom to top, top-aligned with the figure */
+.aq-readout__unit {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  margin-left: var(--space-2);
+  font: 400 max(16px, 0.16em)/1 var(--font-mono); letter-spacing: 0.02em; color: var(--ink);
+}
+/* Condition ("@ 25 °C"): small, on its own line under the figure; -1ch cancels the leading no-break space */
+.aq-readout__cond {
+  flex-basis: 100%; margin: var(--space-3) 0 0 -1ch;
+  font: 400 14px/22px var(--font-mono); letter-spacing: 0; color: var(--ink-muted);
+}
+
+/* Method tag, centred on the reference line */
+.aq-readout__ref { position: relative; display: flex; align-items: center; height: 1em; min-width: 0; }
+.aq-readout__tag {
+  max-width: 100%; padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--flow); border-radius: var(--radius-0); background: var(--surface);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+.aq-readout__caption { grid-column: 2; margin: 0; min-width: 0; }
+
+/* Tick scale: minor ticks every space-2, major ticks every space-16, over a hairline. Decorative only. */
+.aq-readout__scale {
+  grid-column: 1 / -1; position: relative; height: var(--space-12);
+  border-top: 1px solid var(--line);
+  background-image:
+    repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px var(--space-16)),
+    repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px var(--space-2));
+  background-repeat: no-repeat;
+  background-size: 100% var(--space-6), 100% var(--space-2);
+  background-position: left bottom, left bottom;
+}
+/* Limit readouts: a flat reference band up to a marker. A fixed schematic position, not a measurement. */
+.aq-readout--limit .aq-readout__scale::before {
+  content: ""; position: absolute; left: 0; width: 75%; top: var(--space-3); height: var(--space-3);
+  background: var(--flow-tint);
+}
+.aq-readout--limit .aq-readout__scale::after {
+  content: ""; position: absolute; left: 75%; top: var(--space-2); bottom: 0;
+  border-left: 2px solid var(--flow);
+}
+
+@container (max-width: 860px) {
+  .aq-readout {
+    grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6);
+    padding: var(--space-6) var(--space-4);
+    background-size: var(--space-4) 2px, 2px var(--space-4), var(--space-4) 2px, 2px var(--space-4),
+      var(--space-4) 2px, 2px var(--space-4), var(--space-4) 2px, 2px var(--space-4);
+  }
+  .aq-readout__head { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); font-size: clamp(48px, 18cqi, 112px); }
+  .aq-readout__head::before { display: none; }
+  /* Unit turns horizontal and drops under the figure */
+  .aq-readout__unit {
+    writing-mode: horizontal-tb; transform: none; flex-basis: 100%;
+    margin: var(--space-2) 0 0 -1ch; font-size: 28px; line-height: 34px; letter-spacing: 0;
+  }
+  .aq-readout__ref { height: auto; }
+  .aq-readout__caption { grid-column: 1; }
+  .aq-readout__scale { height: var(--space-8); background-size: 100% var(--space-4), 100% var(--space-2); }
+  .aq-readout--limit .aq-readout__scale::before { top: var(--space-2); height: var(--space-2); }
+  .aq-readout--limit .aq-readout__scale::after { top: var(--space-1); }
+}

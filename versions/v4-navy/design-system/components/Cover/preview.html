@@ -1,0 +1,49 @@
+<!-- @dsCard height=300 -->
+<div class="cv">
+  <style>
+    .cv { position: relative; width: 960px; height: 300px; overflow: hidden; background: var(--surface); font-family: var(--font-sans); }
+    .cv svg { position: absolute; inset: 0; }
+    .cv .navy { fill: var(--navy); }
+    .cv .limestone { fill: var(--limestone); }
+    .cv .flow { fill: var(--flow); }
+    .cv .sunken { fill: var(--surface-sunken); }
+    .cv .tile { rx: var(--radius-0); }
+    .cv .arc-on-navy { fill: none; stroke: var(--limestone); stroke-width: 1.5; }
+    .cv .arc-on-limestone { fill: none; stroke: var(--navy); stroke-width: 1.5; }
+    .cv .text { position: absolute; left: 48px; bottom: 40px; max-width: 420px; }
+    .cv .name { margin: 0; line-height: 0; }
+    .cv .logo { width: 420px; height: auto; }
+    .cv .tagline { margin: 16px 0 0; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+  </style>
+  <svg viewBox="0 0 960 300" width="960" height="300" aria-hidden="true">
+    <!--
+      blocks: navy 256x240 (space-32 x2, by space-24 x2.5) · limestone 128x300 (space-32) · flow 128x60 · surface-sunken 96x96 (space-24); all radius-0
+      arrangement: one tall navy slab bleeding off the top with a limestone column bleeding off the right edge, flow and sunken as satellites below and left
+      pattern: literal motif row — the wordmark's e-to-m swash is the brand's one expressive gesture, so quarter-circle arcs rise from the slab's corner
+      steps and radii: arcs at radius space-24 (96), space-32 (128) + space-8 (160), space-32 x1.75 (224); strokes 1.5px like the README's arc motif; radius-0 corners
+    -->
+    <defs>
+      <clipPath id="cv-navy"><rect x="576" y="0" width="256" height="240"/></clipPath>
+      <clipPath id="cv-lime"><rect x="832" y="0" width="128" height="300"/></clipPath>
+    </defs>
+    <rect class="sunken tile" x="480" y="144" width="96" height="96"/>
+    <rect class="navy tile" x="576" y="0" width="256" height="240"/>
+    <rect class="limestone tile" x="832" y="0" width="128" height="300"/>
+    <rect class="flow tile" x="704" y="240" width="128" height="60"/>
+    <g clip-path="url(#cv-navy)">
+      <path class="arc-on-navy" d="M576 144 A96 96 0 0 1 672 240"/>
+      <path class="arc-on-navy" d="M576 80 A160 160 0 0 1 736 240"/>
+      <path class="arc-on-navy" d="M576 16 A224 224 0 0 1 800 240"/>
+    </g>
+    <g clip-path="url(#cv-lime)">
+      <path class="arc-on-limestone" d="M832 172 A128 128 0 0 1 960 300"/>
+    </g>
+  </svg>
+  <div class="text">
+    <h1 class="name">
+      <img class="logo aq-logo--on-light" src="/_blob/fb683090783d92d27a15de72c481e9b3" alt="Aquemi">
+      <img class="logo aq-logo--on-dark" src="/_blob/db46389f79ee8231228b037304a6d37b" alt="Aquemi">
+    </h1>
+    <p class="tagline">Clean water systems for pharmaceutical manufacturing.</p>
+  </div>
+</div>

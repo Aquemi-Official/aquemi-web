@@ -1,0 +1,99 @@
+/* ---------- EvidenceMap: requirement -> how we meet it -> the documents that prove it (table block as "evidence") ----------
+   A real table drawn as a mapping. Desktop: the requirement column is display-sized with a mono number and a rule on
+   its right edge; a leader line runs from that rule to "how", and from "how" into a spine that fans out to each
+   document chip. Chips are small file shapes (folded top-right corner, CSS only) in mono. A quiet page link follows.
+   Phones: rows stack (number and requirement, how, then files); the fan stays on the left of the files. */
+.aq-evidence { min-width: 0; }
+.aq-evidence__table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.aq-evidence__table thead th {
+  padding: 0 0 var(--space-2); border-bottom: 1px solid var(--line-strong); text-align: left; vertical-align: bottom;
+  font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle);
+}
+.aq-evidence__table thead th:first-child { width: 36%; }
+.aq-evidence__table thead th:nth-child(2) { width: 31%; padding-left: var(--space-12); }
+.aq-evidence__table thead th:nth-child(3) { padding-left: var(--space-12); }
+.aq-evidence__row > * { position: relative; padding: var(--space-6) 0; vertical-align: top; text-align: left; border-bottom: 1px solid var(--line); }
+
+/* Requirement: display-sized, mono number hanging to the left, a rule on the right edge */
+.aq-evidence__t { padding-right: var(--space-6) !important; padding-left: var(--space-12) !important; border-right: 1px solid var(--line-strong); font: 300 26px/32px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-evidence__n { position: absolute; left: 0; top: var(--space-6); font: 400 18px/32px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+.aq-evidence__name { display: block; }
+.aq-evidence__name a { color: inherit; }
+
+/* How: a leader from the requirement's rule, ending in a dot */
+.aq-evidence__how { padding-left: var(--space-12) !important; padding-right: var(--space-4) !important; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-evidence__how::before { content: ""; position: absolute; left: 0; top: calc(var(--space-6) + 12px); width: var(--space-8); border-top: 1px solid var(--line-strong); }
+.aq-evidence__how::after { content: ""; position: absolute; left: calc(var(--space-8) - 2px); top: calc(var(--space-6) + 10px); width: 5px; height: 5px; border-radius: var(--radius-pill); background: var(--flow); }
+
+/* Proof: a leader into a spine that fans out to each file */
+.aq-evidence__proof { padding-left: var(--space-12) !important; }
+.aq-evidence__proof::before { content: ""; position: absolute; left: 0; top: calc(var(--space-6) + 13px); width: var(--space-4); border-top: 1px solid var(--line-strong); }
+.aq-evidence__docs { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); list-style: none; margin: 0; padding: 0; }
+.aq-evidence__docs::before { content: ""; position: absolute; left: calc(-1 * var(--space-8)); top: 13px; bottom: 13px; border-left: 1px solid var(--line-strong); }
+.aq-evidence__doc { position: relative; max-width: 100%; }
+.aq-evidence__doc::before { content: ""; position: absolute; right: 100%; top: 13px; width: var(--space-8); border-top: 1px solid var(--line-strong); }
+.aq-evidence__doc::after { content: ""; position: absolute; left: -4px; top: 11px; border: 3px solid transparent; border-left: 4px solid var(--flow); }
+
+/* File chip: a sheet with its top-right corner folded */
+.aq-evidence__file {
+  position: relative; display: block; padding: 2px var(--space-4) 2px var(--space-2);
+  background: var(--surface-raised); border: 1px solid var(--line-strong); border-radius: var(--radius-sm) 0 var(--radius-sm) var(--radius-sm);
+  clip-path: polygon(0 0, calc(100% - var(--space-3)) 0, 100% var(--space-3), 100% 100%, 0 100%);
+  font: 400 12px/20px var(--font-mono); color: var(--ink); overflow-wrap: anywhere;
+}
+.aq-evidence__file::after {
+  content: ""; position: absolute; top: -1px; right: -1px; width: var(--space-3); height: var(--space-3); box-sizing: border-box;
+  border-left: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong);
+  background: linear-gradient(to bottom left, transparent calc(50% - 1px), var(--line-strong) calc(50% - 1px) calc(50% + 0.5px), var(--line) calc(50% + 0.5px));
+}
+.aq-evidence__k { margin: 0 0 var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-evidence__docs + .aq-evidence__k { margin-top: var(--space-4); }
+/* Grouped files (several evidence columns): the leader enters below the first caption; later spines join the first */
+.aq-evidence__proof:has(> .aq-evidence__k:first-child)::before { top: calc(var(--space-6) + var(--space-2) + 29px); }
+.aq-evidence__k ~ .aq-evidence__k + .aq-evidence__docs::before { top: calc(-1 * (var(--space-2) + var(--space-4) + 29px)); }
+.aq-evidence__go { margin: var(--space-3) 0 0; font: 500 14px/22px var(--font-sans); }
+.aq-evidence__proof > .aq-evidence__go:first-child { margin-top: 0; }
+.aq-evidence__go a { text-decoration: none; }
+.aq-evidence__go a::after { content: "\a0\2192"; }
+.aq-evidence__go a:hover { text-decoration: underline; }
+@container (max-width: 860px) { .aq-evidence__go a { padding-block: calc(var(--space-3) + var(--space-1) / 2); } }
+
+/* References: clause numbers are not files. On the fan they print as mono text (the standard's name as a small caps
+   caption when there are several columns), with the same tick and arrow but no sheet. */
+.aq-evidence__doc.is-ref { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); }
+.aq-evidence__rk { font: 500 11px/20px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-evidence__clause { font: 500 15px/26px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: anywhere; }
+.aq-evidence__refs + .aq-evidence__k, .aq-evidence__refs + .aq-evidence__docs { margin-top: var(--space-4); }
+/* A clause written into the requirement ("· ISO 9001 6.3, 8.5.6"): a mono reference line under the name */
+.aq-evidence__ref { display: block; margin-top: var(--space-2); font: 400 13px/20px var(--font-mono); letter-spacing: 0; font-variant-numeric: tabular-nums; color: var(--ink-muted); }
+/* "How" as a clause list: the clause numbers in a mono column */
+.aq-evidence__clauses { display: grid; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
+.aq-evidence__clauses li { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); }
+.aq-evidence__cl { font: 500 13px/24px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+
+@container (max-width: 860px) {
+  .aq-evidence__table, .aq-evidence__table tbody, .aq-evidence__row, .aq-evidence__row > * { display: block; }
+  .aq-evidence__table thead { display: none; }
+  .aq-evidence__table tbody { border-top: 1px solid var(--line-strong); }
+  .aq-evidence__row { padding-block: var(--space-6); border-bottom: 1px solid var(--line); }
+  .aq-evidence__row > * { padding: 0 !important; border: 0 !important; }
+  .aq-evidence__t { padding-left: var(--space-8) !important; font-size: 21px; line-height: 28px; }
+  .aq-evidence__n { top: 0; font-size: 13px; line-height: 28px; }
+  .aq-evidence__how { margin-top: var(--space-2); padding-left: var(--space-8) !important; font-size: 15px; }
+  .aq-evidence__how::after { display: none; }
+  .aq-evidence__how::before { left: var(--space-2); top: calc(-1 * var(--space-2)); bottom: 0; width: 0; border-top: 0; border-left: 1px solid var(--line-strong); }
+  .aq-evidence__t { padding-bottom: var(--space-1) !important; }
+  /* The left connector: a rule down from the number into the fan of files */
+  .aq-evidence__proof { margin-top: var(--space-4); padding-left: var(--space-8) !important; }
+  .aq-evidence__proof::before { left: var(--space-2); top: calc(-1 * var(--space-4)); width: 0; height: calc(var(--space-4) + 13px); border-top: 0; border-left: 1px solid var(--line-strong); }
+  .aq-evidence__proof:has(> .aq-evidence__k:first-child)::before { top: calc(-1 * var(--space-4)); height: calc(var(--space-4) + var(--space-2) + 29px); }
+  .aq-evidence__docs::before { left: calc(-1 * var(--space-6)); top: 0; }
+  .aq-evidence__doc::before { width: var(--space-6); }
+  .aq-evidence__ref { font-size: 12px; line-height: 18px; margin-top: var(--space-1); }
+  .aq-evidence__clause { font-size: 14px; line-height: 24px; }
+}
+
+/* Phones: every label people read is 12 px or more */
+@container (max-width: 860px) {
+  .aq-evidence__rk { font-size: 12px; }
+}

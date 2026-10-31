@@ -1,0 +1,89 @@
+/* ---------- StandardsGrid: numbered standard cards in a plain frame, joined by thin connector lines ---------- */
+/* Desktop: three cards to a row; a horizontal connector runs from each card to the next in its row at number height,
+   and a vertical connector drops from every card into the one below. Phones: one column beside a measuring ruler. */
+.aq-standards-grid {
+  counter-reset: aq-standards;
+  list-style: none; margin: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6);
+  padding: var(--space-6);
+  border: 1px solid var(--line);
+  background-color: var(--surface);
+}
+.aq-standards-grid__item { counter-increment: aq-standards; position: relative; min-width: 0; display: flex; }
+
+/* Connectors live on the item so the card keeps its own pseudo-elements; :where keeps the phone rules able to override */
+.aq-standards-grid__item::before,
+.aq-standards-grid__item::after { content: ""; position: absolute; pointer-events: none; }
+/* Horizontal: to the next card in the same row */
+.aq-standards-grid__item:where(:not(:nth-child(3n)):not(:last-child))::after {
+  top: calc(var(--space-4) + var(--space-2) - 1px); left: calc(100% + 1px);
+  width: calc(var(--space-6) - 2px); border-top: 1px solid var(--line-strong);
+}
+/* Vertical: up into the card above (rows two onwards) */
+.aq-standards-grid__item:where(:nth-child(n+4))::before {
+  left: var(--space-8); top: calc(-1 * var(--space-6));
+  height: var(--space-6); border-left: 1px solid var(--line-strong);
+}
+
+/* Card: a link to Compliance when that page exists, otherwise a plain block */
+.aq-standards-grid__card {
+  flex: 1; display: flex; flex-wrap: wrap; align-items: baseline; align-content: flex-start;
+  column-gap: var(--space-2); row-gap: var(--space-2);
+  padding: var(--space-4) var(--space-4) var(--space-6);
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong); border-radius: var(--radius-0);
+  color: var(--ink); text-decoration: none;
+}
+.aq-standards-grid__card::before {
+  content: counter(aq-standards, decimal-leading-zero);
+  content: counter(aq-standards, decimal-leading-zero) / "";
+  font: 400 13px/16px var(--font-mono); letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums; color: var(--ink-subtle);
+}
+a.aq-standards-grid__card:hover { border-color: var(--flow); box-shadow: inset 0 2px 0 var(--flow); }
+a.aq-standards-grid__card:hover::before { color: var(--flow); }
+a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* Code line: the standard's published short name, in mono beside the number */
+.aq-standards-grid__code {
+  min-width: 0; overflow-wrap: anywhere;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink);
+}
+/* Plain-language name, below the code line */
+.aq-standards-grid__name {
+  flex-basis: 100%; min-width: 0; overflow-wrap: break-word; text-wrap: balance;
+  font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink);
+}
+/* Code only (no name supplied): the code itself takes the large line */
+.aq-standards-grid__item--code .aq-standards-grid__code {
+  flex-basis: 100%; overflow-wrap: break-word; text-wrap: balance;
+  font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em;
+}
+
+/* Motion hooks: connectors draw through custom properties (motion.js); unset they are 1, fully drawn */
+.aq-standards-grid__item::after { transform: scaleX(var(--aq-cn, 1)); transform-origin: left center; }
+.aq-standards-grid__item::before { transform: scaleY(var(--aq-cn, 1)); transform-origin: center top; }
+@media (prefers-reduced-motion: no-preference) {
+  a.aq-standards-grid__card { transition: border-color 120ms, box-shadow 120ms, transform 120ms; }
+  a.aq-standards-grid__card:active { transform: translateY(1px); }
+}
+
+@container (max-width: 860px) {
+  /* Phones: compact hairline rows, two to a row for code-only standards (one when a plain-language name is given);
+     no frame, cards, ruler or connectors */
+  .aq-standards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-4); row-gap: 0;
+    padding: 0; border: 0; background: none;
+  }
+  .aq-standards-grid:has(.aq-standards-grid__name) { grid-template-columns: minmax(0, 1fr); }
+  .aq-standards-grid__item::before, .aq-standards-grid__item::after { content: none; }
+  .aq-standards-grid__card {
+    flex-wrap: nowrap; column-gap: var(--space-3);
+    padding: var(--space-3) 0; background: none; border: 0; border-top: 1px solid var(--line);
+  }
+  .aq-standards-grid:has(.aq-standards-grid__name) .aq-standards-grid__card { flex-wrap: wrap; }
+  a.aq-standards-grid__card:hover { box-shadow: none; }
+  .aq-standards-grid__name,
+  .aq-standards-grid__item--code .aq-standards-grid__code { font-size: 16px; line-height: 22px; }
+  .aq-standards-grid__name { padding-left: calc(2ch + var(--space-3)); }
+}

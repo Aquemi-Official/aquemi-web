@@ -1,0 +1,328 @@
+{
+ "id": "svc-upgrades",
+ "section": "Services",
+ "nav_label": "Upgrades and retrofits",
+ "title": "Water system upgrades and retrofits, any builder | Aquemi",
+ "meta": "Upgrade a PW or WFI system from any builder: RO/EDI, sanitization, online TOC, Part 11 controls, dead legs, with the EU GMP Annex 15 requalification scope.",
+ "path": "/services/upgrades-retrofits/",
+ "eyebrow": "UPGRADES · RETROFITS · EU GMP ANNEX 15",
+ "headline": "Upgrade the system you have",
+ "lead": "Any builder’s PW, WFI or pure steam system: each option with its downtime and the requalification it triggers.",
+ "tags": [],
+ "primary_cta": "Request a system assessment",
+ "primary_cta_intent": "Assessment of an existing system, any make",
+ "secondary_cta": {
+  "label": "System down now? Request service",
+  "link": "contact-service"
+ },
+ "blocks": [
+  {
+   "type": "prose",
+   "as": "explainer",
+   "ground": "light",
+   "nav": "Why upgrade",
+   "h": "Newer rules, older controls",
+   "points": [
+    {
+     "t": "Every upgrade has two costs",
+     "d": "The work itself, and the IQ, OQ and PQ that follow it.",
+     "at": [
+      55,
+      34
+     ]
+    },
+    {
+     "t": "Annex 1 expects WFI monitoring",
+     "d": "Continuous TOC and conductivity on WFI since August 2023.",
+     "at": [
+      66,
+      53
+     ]
+    },
+    {
+     "t": "Requalify what the change reaches",
+     "d": "A risk assessment sets the PQ, so requalification fits the change.",
+     "at": [
+      45,
+      62
+     ]
+    }
+   ],
+   "figure": {
+    "kind": "art",
+    "art": "svc-upgrades"
+   }
+  },
+  {
+   "type": "table",
+   "as": "router",
+   "nav": "Upgrades",
+   "h": "Common upgrades and their requalification",
+   "cols": [
+    "Your upgrade",
+    "What changes",
+    "Requalification to plan",
+    "Site downtime",
+    "Start with"
+   ],
+   "rows": [
+    [
+     "DI to RO and EDI",
+     "New generation skid; the loop usually stays",
+     "IQ/OQ leveraging FAT, intensive sampling, then a reduced plan",
+     "[days]; DI runs until release",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     }
+    ],
+    [
+     "Hot water or ozone sanitization",
+     "Heat exchanger and probes, or ozone with UV destruct",
+     "OQ of the cycle at the coldest point; ozone absent after the UV",
+     "[days], planned shutdown",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "Online TOC and conductivity",
+     "Analyzer, sample line, data path to the historian",
+     "OQ with USP <643> suitability; lab results in parallel before online release",
+     "[days]",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "PLC, HMI and SCADA replacement",
+     "New controller, panel, logic and electronic records",
+     "GAMP 5 validation, software FAT on a simulator; short sampling",
+     "[days], tank full",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "Dead legs and loop changes",
+     "Branches cut to L/D ≤ 2 (ASME BPE), slope corrected, passivated",
+     "IQ of the section, updated register; sampling at nearby points",
+     "[days], planned shutdown",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
+    ],
+    [
+     "Capacity increase",
+     "Second RO train, larger tank, pump or sub-loop",
+     "IQ/OQ of new equipment; loop hydraulics at the new peak",
+     "[days]; tied in while running",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     }
+    ],
+    [
+     "WFI route change",
+     "New generator built alongside the existing one",
+     "Full IQ, OQ and three-phase PQ; EU membrane WFI needs notice first",
+     "[weeks] at final cutover",
+     {
+      "t": "WFI by membrane",
+      "link": "sys-wfi-membrane"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "table",
+   "as": "failures",
+   "nav": "Controls",
+   "h": "Controls: the data integrity gaps we find",
+   "intro": "PLC-5, SLC 500, S5 and S7-300 are discontinued or in phase-out.",
+   "cols": [
+    "What we find",
+    "Requirement it misses",
+    "What the upgrade does"
+   ],
+   "rows": [
+    [
+     "Shared operator login, or none",
+     "21 CFR 11.10(d); Annex 11, 12",
+     "Individual accounts, roles, automatic logoff"
+    ],
+    [
+     "No audit trail on set points or alarms",
+     "21 CFR 11.10(e); Annex 11, 9",
+     "Audit trail of who, what, when and why"
+    ],
+    [
+     "A chart recorder as the release record",
+     "21 CFR 211.68; Annex 11, 4",
+     "Validated historian, or a defined paper record"
+    ],
+    [
+     "Backups never restored",
+     "Annex 11, 7.2",
+     "Restore test at OQ, repeated on a schedule"
+    ],
+    [
+     "Records only in the old system",
+     "21 CFR 211.180; Annex 11, 17",
+     "Verified migration, or old records kept readable"
+    ]
+   ],
+   "fold": 3,
+   "fold_noun": "gaps"
+  },
+  {
+   "type": "grid",
+   "as": "route",
+   "nav": "Assessment",
+   "h": "What the assessment reviews",
+   "intro": "Each option comes back with scope, [budget range, CAD], downtime and requalification.",
+   "items": [
+    {
+     "t": "Records",
+     "d": "Qualification file, changes, drawings, dead leg register: what is missing.",
+     "spot": "binder"
+    },
+    {
+     "t": "Water quality data",
+     "d": "Twelve months of conductivity, TOC, microbial and endotoxin results.",
+     "spot": "toc"
+    },
+    {
+     "t": "Generation",
+     "d": "Performance on today’s feed, capacity at your coldest feed.",
+     "spot": "ro-skid"
+    },
+    {
+     "t": "Storage and distribution",
+     "d": "Dead legs, drainability, rouge and contamination routes.",
+     "spot": "storage-tank"
+    },
+    {
+     "t": "Sanitization",
+     "d": "Whether your results support the schedule (Annex 1, 6.12).",
+     "spot": "heat-exchanger"
+    },
+    {
+     "t": "Controls",
+     "d": "Versions, support status, audit trail and backups against Part 11.",
+     "spot": "pid"
+    }
+   ]
+  },
+  {
+   "type": "steps",
+   "ground": "light",
+   "nav": "How it runs",
+   "h": "How an upgrade runs",
+   "items": [
+    {
+     "t": "System assessment",
+     "d": "On site for [assessment duration, days]; each option costed, with downtime and requalification, in [report turnaround, working days]."
+    },
+    {
+     "t": "Change control",
+     "d": "We write the technical content of your change request; your quality unit approves it.",
+     "hold": "Your quality unit"
+    },
+    {
+     "t": "Design, build, FAT",
+     "d": "Skids and software tested at our shop, so the site window stays short."
+    },
+    {
+     "t": "Cutover",
+     "d": "In a planned window under your permits, flushed and sanitized."
+    },
+    {
+     "t": "Requalification",
+     "d": "IQ/OQ of what changed, agreed sampling, updated drawings and SOPs."
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Common questions",
+   "items": [
+    {
+     "q": "Our system was built by another supplier. Will you work on it?",
+     "a": "Yes, for [makes and equipment types serviced]. Where records are missing, we walk down the drawings, measure dead legs and recover the PLC program."
+    },
+    {
+     "q": "Will an upgrade restart our PQ from zero?",
+     "a": "Not usually. A risk assessment sets the PQ phases after a change; your quality unit decides and we write the rationale."
+    },
+    {
+     "q": "Can we keep producing water during the upgrade?",
+     "a": "Usually. Generation is built alongside and tied in during a short shutdown. If storage cannot ride through: [temporary RO or EDI units, flow m³/h]."
+    },
+    {
+     "q": "What does an assessment cost?",
+     "a": "[assessment price, CAD, credit against upgrade]. Without the as-built state and data, a quote carries contingency or leaves validation to be discovered."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Before and after the upgrade",
+   "items": [
+    "svc-cq",
+    "svc-service",
+    "sys-monitoring",
+    "sys-storage"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send the system you have",
+  "button": "Request a system assessment",
+  "link": "contact-proposal",
+  "intent": "Assessment of an existing system, any make",
+  "include_label": "What to send for a system assessment",
+  "include": [
+   "System type, builder, year, your goal",
+   "P&IDs and dead leg register",
+   "IQ/OQ/PQ summary and a year of data",
+   "PLC and HMI models, program held"
+  ],
+  "turnaround": "[assessment response time, working days]",
+  "returns": [
+   "Scope, time on site and price",
+   "What to change, option by option",
+   "How to requalify each option"
+  ]
+ },
+ "todo": [
+  "Makes and equipment types Aquemi assesses and upgrades on other builders' systems ([makes and equipment types serviced], same wording as svc-service; FAQ)",
+  "Assessment price (CAD) and whether it is credited against the upgrade ([assessment price, CAD, credit against upgrade], FAQ)",
+  "Assessment duration on site ([assessment duration, days]) and report turnaround ([report turnaround, working days]) (steps)",
+  "Budget range per option as shown in assessment reports ([budget range, CAD], assessment intro), or remove it",
+  "Typical site downtime per upgrade type ([days], [weeks]) in the downtime table, and [controls swap window, days] in the controls intro",
+  "Whether temporary or rental RO/EDI units are offered, flow range and lead time ([temporary RO or EDI units, flow m³/h]); remove the downtime row if not",
+  "Passivation standard and method for rouge remediation and new piping ([passivation standard, ASTM A967 or A380]), and whether derouging is in-house or by a partner",
+  "Confirm WFI route changes (membrane and distillation) are offered in-house or with a partner (same open point as sys-wfi-membrane)",
+  "Confirm Aquemi builds panels and tests PLC programs against a simulator before site work (upgrades table, steps)",
+  "Payback figures from a delivered chemical DI to RO/EDI conversion, with client permission ([payback figures from a delivered conversion], FAQ)",
+  "Delivered upgrade and retrofit references ([delivered upgrades, what changed, requalification time], FAQ) for a future case block",
+  "Assessment response time, working days ([assessment response time, working days], same as the contact-proposal lookup table)",
+  "Site downtime (days) for an online TOC/conductivity retrofit and for rouge remediation (router \"Site downtime\" station)"
+ ],
+ "facts": [
+  {
+   "v": "7",
+   "l": "Common upgrades, each with its requalification"
+  },
+  {
+   "v": "Annex 15, 11",
+   "l": "Basis for the requalification scope"
+  }
+ ]
+}

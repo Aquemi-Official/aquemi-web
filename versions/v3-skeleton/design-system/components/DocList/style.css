@@ -1,0 +1,20 @@
+/* ---------- DocList ---------- */
+/* Desktop: tiles on a 6-column grid, three to a row; hairlines are the 1px grid gap showing the list's line background.
+   Each tile: the shared index (.aq-index) and the document code on one line, the name below. */
+.aq-docs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--line); border: 1px solid var(--line); }
+.aq-docs > li { grid-column: span 2; position: relative; min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-3); row-gap: var(--space-3); padding: var(--space-6); background: var(--surface); }
+/* Last rows widen to two tiles so no row is left short: 3n+2 items end with one row of two, 3n+1 items with two rows of two. */
+.aq-docs > li:where(:nth-child(3n+1):nth-last-child(2), :nth-child(3n+1):nth-last-child(2) ~ li,
+  :nth-child(3n+1):nth-last-child(4), :nth-child(3n+1):nth-last-child(4) ~ li) { grid-column: span 3; }
+.aq-docs__code { font: 400 20px/24px var(--font-mono); letter-spacing: -0.01em; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.aq-docs__name { flex-basis: 100%; min-width: 0; font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-docs__d { display: block; margin-top: var(--space-1); font-size: 14px; color: var(--ink-muted); }
+
+/* Phone: a compact numbered list, "01  FS  Functional specification", index and codes in aligned columns. */
+@container (max-width: 860px) {
+  .aq-docs { grid-template-columns: var(--space-8) auto minmax(0, 1fr); gap: 0; background: none; border: 0; border-bottom: 1px solid var(--line); }
+  .aq-docs > li { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; column-gap: var(--space-3); align-items: baseline; padding: var(--space-3) 0; background: none; border-top: 1px solid var(--line); }
+  .aq-docs__code { font: 400 14px/22px var(--font-mono); letter-spacing: 0; }
+  .aq-docs--plain .aq-docs__name { grid-column: 2 / -1; }
+  .aq-docs__name { font-size: 15px; }
+}

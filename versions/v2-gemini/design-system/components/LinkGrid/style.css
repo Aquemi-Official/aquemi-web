@@ -1,0 +1,151 @@
+/* ---------- LinkGrid: numbered choices in two staggered columns, joined by one routed line ---------- */
+/* Desktop: odd items sit in the left column, even items in the right, one item per row, so each row steps across.
+   One 1 px line-strong route runs through every title row: a leader from the title to the item's edge, then
+   left -> right: a Z through the gutter into the next item's port (arrowhead);
+   right -> left: out to the right lane, back across the row gap, down the left lane and into the next port.
+   Geometry: item padding-top space-6, number line 32 px, so the title row's centre is space-6 + space-4 below the
+   item's top. Gutter space-16, side lanes space-6 inside the frame's space-8 padding. Numbers come from a CSS counter. */
+.aq-linkgrid {
+  counter-reset: aq-linkgrid;
+  position: relative;
+  display: flex; flex-direction: column;
+  margin: 0; padding: var(--space-6) var(--space-8);
+  list-style: none;
+}
+/* Drawing-frame crosshairs at the four corners */
+.aq-linkgrid::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(var(--line-strong), var(--line-strong)) left 0 top var(--space-2) / var(--space-4) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left var(--space-2) top 0 / 1px var(--space-4) no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right 0 top var(--space-2) / var(--space-4) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right var(--space-2) top 0 / 1px var(--space-4) no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left 0 bottom var(--space-2) / var(--space-4) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left var(--space-2) bottom 0 / 1px var(--space-4) no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right 0 bottom var(--space-2) / var(--space-4) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right var(--space-2) bottom 0 / 1px var(--space-4) no-repeat;
+}
+
+.aq-linkgrid > li {
+  counter-increment: aq-linkgrid;
+  position: relative; min-width: 0;
+  width: calc((100% - var(--space-16)) / 2);
+  padding: var(--space-6) 0;
+}
+.aq-linkgrid > li:nth-child(even) { align-self: flex-end; }
+
+/* Port: an arrowhead pointing at the number; the first item starts from a node */
+.aq-linkgrid > li::before {
+  content: ""; position: absolute; pointer-events: none;
+  top: calc(var(--space-6) + var(--space-4) - 4px); left: calc(-1 * var(--space-1) - 6px);
+  width: 0; height: 0;
+  border-left: 6px solid var(--line-strong); border-block: 4px solid transparent;
+  transition: border-left-color 120ms;
+}
+.aq-linkgrid > li:first-child::before {
+  top: calc(var(--space-6) + var(--space-4) - 3px); left: calc(-1 * var(--space-2) - 3px);
+  width: 7px; height: 7px; border: 0; border-radius: var(--radius-pill);
+  background: var(--line-strong);
+}
+
+/* Route, left item -> right item: out of the leader, down the middle of the gutter, into the next port */
+.aq-linkgrid > li:nth-child(odd):not(:last-child)::after {
+  content: ""; position: absolute; pointer-events: none;
+  top: calc(var(--space-6) + var(--space-4)); bottom: calc(-1 * (var(--space-6) + var(--space-4)));
+  left: 100%; width: calc(var(--space-16) - var(--space-2));
+  background:
+    linear-gradient(var(--line-strong), var(--line-strong)) left top / var(--space-8) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left var(--space-8) top 0 / 1px 100% no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right bottom / calc(var(--space-8) - var(--space-2)) 1px no-repeat;
+}
+/* Route, right item -> left item: out to the right lane, back across the row gap, down the left lane, into the port */
+.aq-linkgrid > li:nth-child(even):not(:last-child)::after {
+  content: ""; position: absolute; pointer-events: none;
+  top: calc(var(--space-6) + var(--space-4)); bottom: calc(-1 * (var(--space-6) + var(--space-4)));
+  right: calc(-1 * var(--space-6)); left: calc(-100% - var(--space-16) - var(--space-6));
+  background:
+    linear-gradient(var(--line-strong), var(--line-strong)) right top / var(--space-6) 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) right top / 1px calc(100% - var(--space-6) - var(--space-4)) no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left 0 bottom calc(var(--space-6) + var(--space-4)) / 100% 1px no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left bottom / 1px calc(var(--space-6) + var(--space-4)) no-repeat,
+    linear-gradient(var(--line-strong), var(--line-strong)) left bottom / calc(var(--space-6) - var(--space-2)) 1px no-repeat;
+}
+/* End of the run: a short stop bar where the last leader meets the item's edge */
+.aq-linkgrid > li:last-child::after {
+  content: ""; position: absolute; pointer-events: none;
+  top: calc(var(--space-6) + var(--space-4) - var(--space-2)); left: 100%;
+  width: 1px; height: var(--space-4); background: var(--line-strong);
+}
+
+/* Item: the whole item is the link when it has one */
+.aq-linkgrid__item {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  color: var(--ink); text-decoration: none;
+}
+:where(.aq-page) a.aq-linkgrid__item { color: var(--ink); }
+.aq-linkgrid__head { display: flex; align-items: flex-start; column-gap: var(--space-3); min-width: 0; }
+/* Number "01 /" (empty alt text: the list already announces position) */
+.aq-linkgrid__head::before {
+  content: counter(aq-linkgrid, decimal-leading-zero) " /";
+  content: counter(aq-linkgrid, decimal-leading-zero) " /" / "";
+  flex: none;
+  font: 300 24px/32px var(--font-mono); letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums; color: var(--flow); white-space: nowrap;
+}
+/* Leader: the route runs along the title row to the item's edge */
+.aq-linkgrid__head::after {
+  content: ""; order: 2; flex: 1 0 var(--space-6);
+  margin-top: var(--space-4); border-top: 1px solid var(--line-strong);
+  transition: border-top-color 120ms;
+}
+.aq-linkgrid__t { flex: 0 1 auto; min-width: 0; margin-top: 2px; overflow-wrap: break-word; transition: color 120ms; }
+a.aq-linkgrid__item .aq-linkgrid__t::after { content: "\a0\2192"; color: var(--flow); }
+/* Drawing of the linked page, sitting on the route like an instrument on a pipe */
+.aq-linkgrid .aq-linkgrid__art {
+  order: 3; flex: none; width: var(--space-12); margin: calc(-1 * var(--space-2)) 0 0;
+  transition: background-color 120ms;
+}
+.aq-linkgrid__d { margin: 0; max-width: var(--text-max); text-wrap: pretty; overflow-wrap: break-word; }
+.aq-linkgrid__item .aq-tags { margin-top: var(--space-1); }
+
+a.aq-linkgrid__item:hover .aq-linkgrid__t { color: var(--flow); }
+a.aq-linkgrid__item:hover .aq-linkgrid__head::after,
+a.aq-linkgrid__item:focus-visible .aq-linkgrid__head::after { border-top-color: var(--flow); }
+a.aq-linkgrid__item:hover .aq-linkgrid__art { background-color: var(--flow); }
+.aq-linkgrid > li:has(> a:hover, > a:focus-visible)::before { border-left-color: var(--flow); }
+a.aq-linkgrid__item:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-linkgrid > li::before, .aq-linkgrid__head::after, .aq-linkgrid__t, .aq-linkgrid .aq-linkgrid__art { transition: none; }
+}
+
+@container (max-width: 860px) {
+  /* Phones: one column; a vertical rule on the left carries the route, numbers sit left of it, an arrow ends it */
+  .aq-linkgrid { padding: 0 0 var(--space-2) calc(var(--space-12) + var(--space-4)); }
+  .aq-linkgrid::before {
+    inset: auto auto 0 calc(var(--space-12) - 4px);
+    width: 0; height: 0; background: none;
+    border-top: 6px solid var(--line-strong); border-inline: 4.5px solid transparent;
+  }
+  .aq-linkgrid::after {
+    content: ""; position: absolute; pointer-events: none;
+    top: 0; bottom: var(--space-1); left: var(--space-12);
+    border-left: 1px solid var(--line-strong);
+  }
+  .aq-linkgrid > li { width: auto; padding: var(--space-4) 0 var(--space-6); }
+  .aq-linkgrid > li:nth-child(even) { align-self: stretch; }
+  .aq-linkgrid > li::before,
+  .aq-linkgrid > li:first-child::before,
+  .aq-linkgrid > li:nth-child(n):nth-child(n)::after { content: none; }
+  .aq-linkgrid__head::before {
+    content: counter(aq-linkgrid, decimal-leading-zero);
+    content: counter(aq-linkgrid, decimal-leading-zero) / "";
+    position: absolute; left: calc(-1 * (var(--space-12) + var(--space-4))); top: var(--space-4);
+    width: calc(var(--space-12) - var(--space-3)); text-align: right;
+    font-size: 18px; line-height: 30px;
+  }
+  .aq-linkgrid__head::after { content: none; }
+  .aq-linkgrid__head { justify-content: space-between; }
+  .aq-linkgrid__t { flex: 1 1 auto; }
+  .aq-linkgrid .aq-linkgrid__art { width: var(--space-8); max-width: none; margin: 0; }
+}

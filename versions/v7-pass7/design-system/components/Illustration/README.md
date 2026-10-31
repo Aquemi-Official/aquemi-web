@@ -1,0 +1,11 @@
+Illustration shows an isometric line drawing of Aquemi equipment, painted with a colour token so the same file works in light and dark themes.
+
+- Markup: `<span class="aq-illustration" role="img" aria-label="Purified Water skid: RO pressure vessels and EDI stack" style="-webkit-mask-image:url(assets/illustrations/sys-pw.png);mask-image:url(assets/illustrations/sys-pw.png)"></span>`. The drawing goes in as an inline `mask-image` so its path resolves against the page; a `url()` inside a custom property would resolve against `bundle.css` and miss. Optional `--ratio` sets width / height (default 1).
+- The file is a transparent PNG mask (lines as alpha, no colour) made with `python tools/line_art.py <drawing> assets/illustrations/<name>.png` from a black-on-white drawing. CSS paints it with `ink-muted` by default; add `aq-illustration--ink`, `--flow` or `--on-navy` for other grounds. Never ship a coloured or background-filled raster.
+- Drawings come from Gemini with one fixed brief so they match: "Single standalone illustration, square 1:1. Isometric technical line drawing of <equipment>. Pure black lines on a pure white background, uniform thin line weight, no fill, no shading, no gradients, no text, no labels, no floor or background elements, object centered with generous white margin." Keep the source in `design-system/inspiration/` and the mask in `assets/illustrations/`.
+- Use it where a section needs a picture of real equipment: the system hero until a photograph exists, WaterPath stops, service and industry cards. On the site, which pages have a drawing is the `ART` list in `assets/src/parts/Hero.js` (one line per page id; `artMask(id)` writes the inline style). Hero and WaterPath both read it. It is not an icon set: below about 64 px use a single-path SVG glyph instead.
+- Every illustration needs an `aria-label` that says what equipment it shows, or `aria-hidden="true"` when the text next to it already names it.
+
+## Motion
+
+Motion: an Illustration wipes in bottom to top like a print (the motion core). Where it carries pins or leaders (ParameterCallouts, Explainer art figure, OptionModules base skid) the owning component times the wipe so the drawing arrives first and the pins and leaders follow.

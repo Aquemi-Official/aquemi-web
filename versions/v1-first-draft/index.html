@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aquemi</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0F2A47">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400;500&display=swap">
+<style>
+/* Aquemi design system tokens (tokens.json v1) */
+:root{
+ --navy:#0F2A47;--limestone:#EBDFD6;--surface:#FAF8F6;--surface-raised:#FFFFFF;--surface-sunken:#F1EBE5;
+ --ink:#0B1B2D;--ink-muted:#46535F;--ink-subtle:#5F6B77;--ink-inverse:#FAF8F6;--line:#E1D9D1;--line-strong:#8F857C;
+ --action:#0F2A47;--action-hover:#1C3D63;--on-action:#FAF8F6;--flow:#24679A;--flow-tint:#E3EEF6;--focus:#24679A;
+ --pass:#1D6B45;--caution:#8A5A00;--fail:#A52A21;--caution-tint:#F6ECD9;
+ --shadow-overlay:0 12px 32px rgba(11,27,45,.12);
+ --radius-sm:2px;--radius-md:4px;--radius-pill:999px;
+ --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--space-8:32px;--space-12:48px;--space-16:64px;--space-24:96px;--space-32:128px;
+ --content-max:1280px;--text-max:680px;
+ --font-sans:"Geist","Helvetica Neue",Arial,system-ui,sans-serif;--font-mono:"Geist Mono","SFMono-Regular",Menlo,Consolas,monospace;
+ /* aliases used by the research views */
+ --bg:var(--surface);--panel:var(--surface-raised);--sunk:var(--surface-sunken);--muted:var(--ink-muted);
+ --accent:var(--flow);--accent-ink:var(--on-action);--accent-soft:var(--flow-tint);--amber:var(--caution);--amber-soft:var(--caution-tint);
+ --good:var(--pass);--bad:var(--fail);
+ --display:var(--font-sans);--sans:var(--font-sans);--mono:var(--font-mono);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --navy:#163659;--surface:#0A1626;--surface-raised:#10223A;--surface-sunken:#07111E;--ink:#EEE8E2;--ink-muted:#B4BDC7;--ink-subtle:#95A1AD;
+ --ink-inverse:#0B1B2D;--line:#1E3350;--line-strong:#637589;--action:#EBDFD6;--action-hover:#F6EEE8;--on-action:#0F2A47;
+ --flow:#84B9DE;--flow-tint:#12304A;--focus:#84B9DE;--pass:#6CC79A;--caution:#E3B45C;--fail:#F08A80;--caution-tint:#33280F;
+ --shadow-overlay:0 12px 32px rgba(0,0,0,.45);color-scheme:dark}}
+:root[data-theme="dark"]{
+ --navy:#163659;--surface:#0A1626;--surface-raised:#10223A;--surface-sunken:#07111E;--ink:#EEE8E2;--ink-muted:#B4BDC7;--ink-subtle:#95A1AD;
+ --ink-inverse:#0B1B2D;--line:#1E3350;--line-strong:#637589;--action:#EBDFD6;--action-hover:#F6EEE8;--on-action:#0F2A47;
+ --flow:#84B9DE;--flow-tint:#12304A;--focus:#84B9DE;--pass:#6CC79A;--caution:#E3B45C;--fail:#F08A80;--caution-tint:#33280F;
+ --shadow-overlay:0 12px 32px rgba(0,0,0,.45);color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--surface);color:var(--ink)}
+img{max-width:100%}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.on-dark{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .on-light{display:none}:root:not([data-theme="light"]) .on-dark{display:block}}
+:root[data-theme="dark"] .on-light{display:none}:root[data-theme="dark"] .on-dark{display:block}
+.draftbar{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:6px 16px;background:var(--surface-sunken);border-bottom:1px solid var(--line);font:400 12px/18px var(--font-mono);color:var(--ink-muted)}
+.draftbar label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+.draftbar select{font:inherit;color:var(--ink);background:var(--surface-raised);border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:2px 6px;max-width:260px}
+.todo{max-width:var(--content-max);margin:0 auto;padding:24px 32px 48px;font:400 14px/22px var(--font-sans);color:var(--ink-muted)}
+.todo h2{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;margin:0 0 8px}
+.todo ul{margin:0;padding-left:18px}
+/* Website styles */
+/* ---------- Website view: page index + the draft Aquemi site in a browser frame ---------- */
+.wv{display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:24px;align-items:start}
+.wv-idx{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);max-height:calc(100vh - 100px);overflow:auto;display:flex;flex-direction:column;gap:16px;padding-right:4px}
+.wv-idx h4{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:4px}
+.wv-idx a{display:block;text-decoration:none;color:var(--ink);font-size:14px;line-height:20px;padding:5px 8px;border-radius:var(--radius-sm)}
+.wv-idx a:hover{background:var(--surface-sunken)}
+.wv-idx a.on{background:var(--action);color:var(--on-action)}
+.wv-ctl{display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--ink-muted)}
+.wv-ctl label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+.frame{scroll-margin-top:90px;border:1px solid var(--line-strong);background:var(--surface);min-width:0}
+.frame-bar{display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--surface-sunken);font:400 12px/16px var(--font-mono);color:var(--ink-muted)}
+.frame-bar .dots{display:flex;gap:5px}.frame-bar .dots i{width:9px;height:9px;border-radius:50%;border:1px solid var(--line-strong)}
+.frame-bar .url{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--surface-raised);border:1px solid var(--line);padding:3px 10px}
+.ws{background:var(--surface);color:var(--ink);font:400 16px/26px var(--font-sans);container-type:inline-size}
+.ws a{color:var(--flow)}
+.ws .in{max-width:var(--content-max);margin:0 auto;padding-inline:var(--space-8)}
+.ws section{padding-block:var(--space-16)}
+.ws section+section{border-top:1px solid var(--line)}
+.ws .eb{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+.ws .d-xl{font:300 72px/76px var(--font-sans);letter-spacing:-.03em}
+.ws .d{font:300 56px/60px var(--font-sans);letter-spacing:-.025em}
+.ws .h1{font:400 40px/46px var(--font-sans);letter-spacing:-.02em}
+.ws .h2{font:400 28px/34px var(--font-sans);letter-spacing:-.01em}
+.ws .h3{font:500 20px/28px var(--font-sans);letter-spacing:-.005em}
+.ws .lg{font:400 18px/28px var(--font-sans);color:var(--ink-muted);max-width:var(--text-max)}
+.ws .tx{max-width:var(--text-max)}
+.ws .tx p+p{margin-top:var(--space-4)}
+.ws .sm{font:400 14px/22px var(--font-sans);color:var(--ink-muted)}
+.ws .stack{display:flex;flex-direction:column;gap:var(--space-4)}
+.ws .stack-l{display:flex;flex-direction:column;gap:var(--space-8)}
+/* aq components (bundle.css) */
+.aq-btn{display:inline-flex;align-items:center;gap:var(--space-2);height:44px;padding:0 var(--space-6);border:1px solid transparent;border-radius:var(--radius-sm);font:500 14px/20px var(--font-sans);text-decoration:none;cursor:pointer;transition:background-color 200ms cubic-bezier(.2,0,0,1),border-color 200ms cubic-bezier(.2,0,0,1);white-space:nowrap}
+.aq-btn--primary{background:var(--action);color:var(--on-action)!important}.aq-btn--primary:hover{background:var(--action-hover)}
+.aq-btn--secondary{background:transparent;color:var(--ink)!important;border-color:var(--line-strong)}.aq-btn--secondary:hover{border-color:var(--ink)}
+.aq-btn--link{height:auto;padding:0;color:var(--flow);background:none}.aq-btn--link:hover{text-decoration:underline;text-underline-offset:4px}
+.aq-btn__arrow{transition:transform 200ms cubic-bezier(.2,0,0,1)}.aq-btn:hover .aq-btn__arrow{transform:translateX(3px)}
+.aq-nav{position:relative;display:flex;align-items:center;gap:var(--space-8);height:72px;padding:0 var(--space-8);background:var(--surface);border-bottom:1px solid var(--line)}
+.aq-nav__logo{display:block;width:112px;height:auto}.aq-nav__logo--lockup{width:152px}
+.aq-nav__links{display:flex;gap:var(--space-6);margin:0;padding:0;list-style:none;flex:1}
+.aq-nav__links a{color:var(--ink-muted);text-decoration:none;font:500 14px/20px var(--font-sans)}
+.aq-nav__links a:hover,.aq-nav__links a[aria-current="page"]{color:var(--ink)}
+.aq-nav__toggle{display:none}
+.aq-nav .on-dark{display:none}
+.aq-menu{border-bottom:1px solid var(--line);background:var(--surface);padding:var(--space-6) var(--space-4);display:grid;gap:var(--space-2)}
+.aq-menu a{color:var(--ink);text-decoration:none;font:400 20px/28px var(--font-sans);padding:var(--space-2) 0;border-bottom:1px solid var(--line)}
+.aq-spec{width:100%;border-collapse:collapse;background:var(--surface-raised);font-family:var(--font-sans)}
+.aq-spec caption{text-align:left;padding-bottom:var(--space-3);font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+.aq-spec th,.aq-spec td{text-align:left;padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--line);vertical-align:top;position:static;text-transform:none;letter-spacing:0;white-space:normal}
+.aq-spec thead th{background:var(--surface-sunken);font:500 14px/20px var(--font-sans);color:var(--ink-muted)}
+.aq-spec tbody th{font:400 16px/24px var(--font-sans);color:var(--ink);background:none}
+.aq-spec__value{font:400 14px/24px var(--font-mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.aq-spec__method{font:400 14px/24px var(--font-sans);color:var(--ink-muted)}
+.aq-spec tr.is-highlight>*{background:var(--flow-tint)}
+.aq-scroll{overflow-x:auto}
+.aq-tag{display:inline-flex;align-items:center;height:28px;padding:0 var(--space-3);border:1px solid var(--line-strong);border-radius:var(--radius-pill);font:500 12px/16px var(--font-mono);letter-spacing:.04em;color:var(--ink);background:transparent;white-space:nowrap;text-decoration:none}
+.aq-tags{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.aq-field{display:grid;gap:var(--space-2);min-width:0}
+.aq-field__label{font:500 14px/20px var(--font-sans);color:var(--ink)}
+.aq-field__input{height:44px;padding:0 var(--space-4);background:var(--surface-raised);color:var(--ink);border:1px solid var(--line-strong);border-radius:var(--radius-sm);font:400 16px/24px var(--font-sans);width:100%}
+textarea.aq-field__input{height:auto;min-height:120px;padding:var(--space-3) var(--space-4)}
+.aq-field__input::placeholder{color:var(--ink-subtle)}
+.aq-field__input:hover{border-color:var(--ink-muted)}
+.aq-field__suffix{position:relative}.aq-field__suffix .aq-field__input{padding-right:64px;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.aq-field__unit{position:absolute;right:var(--space-4);top:50%;transform:translateY(-50%);font:400 14px/20px var(--font-mono);color:var(--ink-muted)}
+.aq-field__help{font:400 14px/22px var(--font-sans);color:var(--ink-muted)}
+.aq-checks{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-6)}
+.aq-checks label{display:inline-flex;gap:var(--space-2);align-items:center;font-size:15px}
+/* site blocks */
+.ws .hero{padding-block:var(--space-24) var(--space-16);position:relative;overflow:hidden}
+.ws .hero.home{padding-block:var(--space-32) var(--space-24)}
+.ws .hero .arc{position:absolute;right:-1px;bottom:-1px;width:min(38%,420px);height:auto;pointer-events:none}
+.ws .hero-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:var(--space-12);align-items:end}
+.ws .photo{aspect-ratio:4/3;max-width:100%;background:var(--surface-sunken);border:1px solid var(--line);display:flex;align-items:flex-end;padding:var(--space-4);font:400 12px/18px var(--font-mono);color:var(--ink-muted)}
+.ws .hl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.ws .hl>*{padding:var(--space-6) var(--space-6) var(--space-6) 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:var(--space-2);text-decoration:none;color:var(--ink);min-width:0}
+.ws .hl>*:not(:nth-child(3n+1)){padding-left:var(--space-6);border-left:1px solid var(--line)}
+.ws a.hli:hover .h3{color:var(--flow)}
+.ws .opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 var(--space-12)}
+.ws .opts>div{padding-block:var(--space-4);border-top:1px solid var(--line)}
+.ws .seq{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));counter-reset:q;border-top:1px solid var(--line-strong)}
+.ws .seq>div{padding:var(--space-6) var(--space-6) 0 0;display:flex;flex-direction:column;gap:var(--space-2)}
+.ws .seq>div::before{counter-increment:q;content:counter(q,decimal-leading-zero);font:500 12px/16px var(--font-mono);letter-spacing:.08em;color:var(--flow)}
+.ws .ro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-12);align-items:start}
+.ws .ro .v{font:300 40px/44px var(--font-mono);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.ws .band-limestone{background:var(--limestone);color:#0B1B2D}
+.ws .band-limestone .sm,.ws .band-limestone .lg{color:#46535F}
+.ws .band-sunken{background:var(--surface-sunken)}
+.ws .band-navy{background:var(--navy);color:#FAF8F6}
+.ws .band-navy .lg,.ws .band-navy .sm{color:#C9D2DC}
+.ws .band-navy .aq-btn--primary{background:#EBDFD6;color:#0F2A47!important}.ws .band-navy .aq-btn--primary:hover{background:#F6EEE8}
+.ws .closing{text-align:center;position:relative;overflow:hidden}
+.ws .closing .stack{align-items:center}
+.ws .closing .arc{position:absolute;left:-1px;top:-1px;width:min(30%,300px);height:auto}
+.ws .faq details{border-top:1px solid var(--line);padding-block:var(--space-4)}
+.ws .faq summary{cursor:pointer;font:500 17px/26px var(--font-sans);list-style:none;display:flex;justify-content:space-between;gap:var(--space-4)}
+.ws .faq summary::after{content:"+";font-family:var(--font-mono);color:var(--ink-muted)}
+.ws .faq details[open] summary::after{content:"\2212"}
+.ws .faq summary::-webkit-details-marker{display:none}
+.ws .faq p{margin-top:var(--space-2);color:var(--ink-muted);max-width:var(--text-max)}
+.ws .docs{columns:2 280px;column-gap:var(--space-12);margin:0;padding:0;list-style:none}
+.ws .docs li{break-inside:avoid;padding:var(--space-3) 0;border-top:1px solid var(--line);display:flex;gap:var(--space-3)}
+.ws .docs li::before{content:"";flex:0 0 10px;height:12px;margin-top:6px;border:1px solid var(--line-strong);border-top-right-radius:3px}
+.ws .form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6);max-width:880px}
+.ws .form .full{grid-column:1/-1}
+.ws .case{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-6)}
+.ws .case>div{border-top:1px solid var(--line-strong);padding-top:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)}
+.ws .case dl{margin:0;display:grid;gap:var(--space-2)}
+.ws .case dt{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+.ws .case dd{margin:0 0 var(--space-2)}
+.ws .diag{overflow-x:auto}
+.ws .diag svg{display:block;min-width:560px;width:100%;height:auto}
+.ws .ph{background:var(--caution-tint);color:var(--ink);font-family:var(--font-mono);font-size:.86em;padding:0 3px;border-radius:var(--radius-sm);white-space:normal}
+.ws.clean .ph{background:none;font-family:inherit;font-size:inherit;padding:0}
+.ws footer{background:var(--navy);color:#C9D2DC;padding-block:var(--space-16) var(--space-8)}
+.ws footer .cols{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(4,minmax(0,1fr));gap:var(--space-8)}
+.ws footer h5{font:500 12px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:#EBDFD6;margin:0 0 var(--space-3)}
+.ws footer a{display:block;color:#C9D2DC;text-decoration:none;font-size:14px;line-height:28px}
+.ws footer a:hover{color:#FAF8F6;text-decoration:underline}
+.ws footer .legal{margin-top:var(--space-12);padding-top:var(--space-6);border-top:1px solid rgba(235,223,214,.25);font:400 13px/20px var(--font-sans);display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap}
+.notes{border:1px dashed var(--line-strong);background:var(--surface-raised);padding:var(--space-6);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:var(--space-6)}
+.notes ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+@container (max-width:860px){
+ .ws .in{padding-inline:var(--space-4)}
+ .ws section{padding-block:var(--space-12)}
+ .ws .hero,.ws .hero.home{padding-block:var(--space-16) var(--space-12)}
+ .ws .d-xl{font-size:44px;line-height:48px}.ws .d{font-size:38px;line-height:42px}.ws .h1{font-size:30px;line-height:36px}
+ .ws .hero-grid,.ws .ro{grid-template-columns:minmax(0,1fr)}
+ .ws .hl{grid-template-columns:minmax(0,1fr)}.ws .hl>*{padding-left:0!important;border-left:0!important}
+ .ws .opts,.ws .form{grid-template-columns:minmax(0,1fr)}
+ .ws footer .cols{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .aq-nav{padding:0 var(--space-4);gap:var(--space-4)}.aq-nav__links{display:none}.aq-nav__toggle{display:inline-flex}
+ .aq-nav .aq-nav__logo--lockup{width:112px}
+ .aq-nav .aq-btn--primary{padding:0 var(--space-4)}
+}
+@media (max-width:900px){.wv{grid-template-columns:minmax(0,1fr)}.wv-idx{position:static;max-height:none;flex-direction:row;overflow-x:auto;gap:12px}.wv-idx>div{flex:0 0 auto}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="draftbar" role="region" aria-label="Draft tools"><span>Draft site · not for release</span><span style="display:flex;gap:16px;flex-wrap:wrap;align-items:center"><label><input type="checkbox" id="wph" checked> Highlight placeholders</label><label><input type="checkbox" id="wtodo"> Show open facts</label><select id="wjump" aria-label="Jump to page"></select></span></div>
+<div class="ws" id="wsite"><p style="padding:64px 32px;font-family:var(--font-mono);color:var(--ink-muted)">Loading…</p></div>
+<div class="todo" id="wtodolist" hidden></div>
+<script>
+(function(){
+var D={web:{pages:[]}},VIEW='site',SITES={};
+var $=function(id){return document.getElementById(id)};
+function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function tabs(){}
+/* ---------- Website (draft Aquemi site in the design system) ---------- */
+var WP='home',WNOTES=true,WPH=true,WMENU=false;
+var SECTIONS=['Home','Systems','Services','Industries','Compliance','Projects','Company','Contact'];
+var NAVSECT=[['Systems','systems'],['Services','services'],['Industries','industries'],['Compliance','compliance'],['Projects','projects'],['Company','about']];
+function W(){return (D.web&&D.web.pages)||[]}
+function wp(id){return W().filter(function(p){return p.id===id})[0]}
+function tx(s){return e(s).replace(/\[([^\]]{1,140})\]/g,'<span class="ph">[$1]</span>')}
+function wlink(id,label,cls){var p=wp(id);return '<a href="#'+e(id)+'" data-wp="'+e(id)+'"'+(cls?' class="'+cls+'"':'')+'>'+tx(label||(p&&p.nav_label)||id)+'</a>'}
+var ARC='<svg class="arc" viewBox="0 0 420 300" aria-hidden="true"><path d="M420 1.5 A 300 300 0 0 0 120 300" fill="none" style="stroke:var(--line-strong)" stroke-width="1.5"/><path d="M420 120 A 180 180 0 0 0 240 300" fill="none" style="stroke:var(--flow)" stroke-width="1.5"/></svg>';
+var ARC_NAVY='<svg class="arc" viewBox="0 0 300 220" aria-hidden="true"><path d="M0 218.5 A 218 218 0 0 1 218 0.5" fill="none" stroke="#EBDFD6" stroke-opacity=".55" stroke-width="1.5"/></svg>';
+function wHead(sec){var cur=(NAVSECT.filter(function(n){return n[0]===sec||(sec==='Company'&&n[1]==='about')})[0]||[])[1];
+ return '<nav class="aq-nav" aria-label="Main"><a href="#home" data-wp="home" aria-label="Aquemi home"><img class="aq-nav__logo aq-nav__logo--lockup on-light" src="brand/lockup-navy.svg" alt="aquemi"><img class="aq-nav__logo aq-nav__logo--lockup on-dark" src="brand/lockup-limestone.svg" alt="aquemi"></a><ul class="aq-nav__links">'+NAVSECT.map(function(n){return '<li><a href="#'+n[1]+'" data-wp="'+n[1]+'"'+(n[1]===cur?' aria-current="page"':'')+'>'+n[0]+'</a></li>'}).join('')+'</ul><span style="flex:1" class="aq-nav__spacer"></span><a class="aq-btn aq-btn--primary" href="#contact-proposal" data-wp="contact-proposal">Request a proposal</a><button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'">Menu</button></nav>'+
+ (WMENU?'<div class="aq-menu">'+NAVSECT.concat([['Contact','contact-proposal']]).map(function(n){return '<a href="#'+n[1]+'" data-wp="'+n[1]+'">'+n[0]+'</a>'}).join('')+'</div>':'')}
+function wFoot(){var cols=[['Systems',['sys-pw','sys-wfi-distillation','sys-wfi-membrane','sys-pure-steam','sys-storage','sys-pretreatment','sys-monitoring']],['Services',['svc-design','svc-fabrication','svc-fat-sat','svc-cq','svc-service','svc-upgrades']],['Industries & compliance',['ind-pharma','ind-biotech','ind-meddevice','ind-cdmo','compliance','cmp-documentation','cmp-quality']],['Company',['about','projects','careers','news','contact-proposal','contact-service','contact-locations']]];
+ return '<footer><div class="in"><div class="cols"><div class="stack"><img src="brand/logo-limestone.svg" alt="aquemi" style="width:160px;height:auto"><p class="sm" style="color:#C9D2DC">Clean water systems for pharmaceutical manufacturing. Designed, fabricated and tested in <span class="ph">[city], Ontario</span>.</p></div>'+cols.map(function(c){return '<div><h5>'+c[0]+'</h5>'+c[1].filter(wp).map(function(id){return wlink(id)}).join('')+'</div>'}).join('')+'</div><div class="legal"><span>© 2026 Aquemi <span class="ph">[legal entity name]</span></span><span>Privacy · Terms · Accessibility</span></div></div></footer>'}
+function wBtn(label,link,kind){return '<a class="aq-btn aq-btn--'+(kind||'primary')+'" href="#'+e(link||'contact-proposal')+'" data-wp="'+e(link||'contact-proposal')+'">'+tx(label)+(kind==='secondary'?'':' <span class="aq-btn__arrow">→</span>')+'</a>'}
+function wHero(p){var home=p.id==='home',sys=/^sys-|^svc-|^ind-/.test(p.id)||home;
+ var left='<div class="stack">'+(p.eyebrow?'<span class="eb">'+tx(p.eyebrow)+'</span>':'')+'<h1 class="'+(home?'d-xl':'d')+'">'+tx(p.headline)+'</h1>'+(p.lead?'<p class="lg">'+tx(p.lead)+'</p>':'')+
+  '<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:8px">'+(p.primary_cta?wBtn(p.primary_cta,/service/i.test(p.primary_cta)?'contact-service':'contact-proposal'):'')+(p.secondary_cta&&p.secondary_cta.label?'<a class="aq-btn aq-btn--link" href="#'+e(p.secondary_cta.link||'systems')+'" data-wp="'+e(p.secondary_cta.link||'systems')+'">'+tx(p.secondary_cta.label)+' <span class="aq-btn__arrow">→</span></a>':'')+'</div>'+
+  (p.tags&&p.tags.length?'<div class="aq-tags" style="margin-top:8px">'+p.tags.map(function(t){return '<span class="aq-tag">'+e(t)+'</span>'}).join('')+'</div>':'')+'</div>';
+ return '<section class="hero'+(home?' home':'')+'"><div class="in">'+(sys?'<div class="hero-grid">'+left+'<div class="photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(home?'finished skid or installed loop, wide orderly view':(p.nav_label||p.headline))+' · 316L, cool even light]</div></div>':left)+'</div>'+(home?ARC:'')+'</section>'}
+function wDiagram(b){var st=b.stages||[],n=st.length,w=170,W=n*w,bh=52;
+ var s='<svg viewBox="0 0 '+W+' 110" role="img" aria-label="'+e(st.join(' to '))+'"><defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L8 4L0 8" fill="none" style="stroke:var(--flow)" stroke-width="1.5"/></marker></defs>';
+ st.forEach(function(t,i){var x=i*w+10,bw=w-34;s+='<rect x="'+x+'" y="28" width="'+bw+'" height="'+bh+'" fill="none" style="stroke:var(--line-strong)" stroke-width="1.5"/>';
+  var words=String(t).split(' '),l1='',l2='';words.forEach(function(wd){if((l1+' '+wd).trim().length<=15&&!l2)l1=(l1+' '+wd).trim();else l2=(l2+' '+wd).trim()});
+  s+='<text x="'+(x+bw/2)+'" y="'+(l2?50:58)+'" text-anchor="middle" style="fill:var(--ink);font:400 13px var(--font-sans)">'+e(l1)+'</text>'+(l2?'<text x="'+(x+bw/2)+'" y="67" text-anchor="middle" style="fill:var(--ink);font:400 13px var(--font-sans)">'+e(l2.slice(0,18))+'</text>':'');
+  s+='<text x="'+(x)+'" y="18" style="fill:var(--ink-muted);font:500 10px var(--font-mono);letter-spacing:.08em">'+String(i+1).padStart(2,'0')+'</text>';
+  if(i<n-1)s+='<line x1="'+(x+bw)+'" y1="'+(28+bh/2)+'" x2="'+((i+1)*w+8)+'" y2="'+(28+bh/2)+'" style="stroke:var(--flow)" stroke-width="1.5" marker-end="url(#ah)"/>'});
+ return s+'<line x1="10" y1="100" x2="'+(W-24)+'" y2="100" style="stroke:var(--line)" stroke-width="1"/></svg>'}
+function wField(f,i){var id='wf'+i,lab='<label class="aq-field__label" for="'+id+'">'+tx(f.label)+(f.required?'':' <span class="sm">(optional)</span>')+'</label>',help=f.help?'<p class="aq-field__help">'+tx(f.help)+'</p>':'',inp;
+ if(f.kind==='select')inp='<select class="aq-field__input" id="'+id+'">'+['Choose…'].concat(f.options||[]).map(function(o){return '<option>'+e(o)+'</option>'}).join('')+'</select>';
+ else if(f.kind==='textarea')inp='<textarea class="aq-field__input" id="'+id+'"></textarea>';
+ else if(f.kind==='checkbox-group')return '<fieldset class="aq-field full" style="border:0;padding:0;margin:0"><legend class="aq-field__label" style="margin-bottom:8px">'+tx(f.label)+'</legend><div class="aq-checks">'+(f.options||[]).map(function(o,j){return '<label><input type="checkbox" id="'+id+'_'+j+'"> '+e(o)+'</label>'}).join('')+'</div>'+help+'</fieldset>';
+ else inp=f.unit?'<div class="aq-field__suffix"><input class="aq-field__input" id="'+id+'" inputmode="numeric"><span class="aq-field__unit">'+e(f.unit)+'</span></div>':'<input class="aq-field__input" id="'+id+'" type="'+(f.kind==='email'?'email':f.kind==='tel'?'tel':'text')+'">';
+ return '<div class="aq-field'+(f.kind==='textarea'?' full':'')+'">'+lab+inp+help+'</div>'}
+function wBlock(b){var h=b.h?'<h2 class="h1">'+tx(b.h)+'</h2>':'',t=b.type;
+ if(t==='prose')return '<section><div class="in stack-l">'+h+'<div class="tx">'+(b.body||[]).map(function(x){return '<p>'+tx(x)+'</p>'}).join('')+'</div></div></section>';
+ if(t==='grid')return '<section><div class="in stack-l"><div class="stack">'+h+(b.intro?'<p class="lg">'+tx(b.intro)+'</p>':'')+'</div><div class="hl">'+(b.items||[]).map(function(it){var inner='<span class="h3">'+tx(it.t)+'</span><span class="sm">'+tx(it.d)+'</span>'+(it.tag?'<span class="aq-tags" style="margin-top:4px"><span class="aq-tag">'+e(it.tag)+'</span></span>':'');return it.link&&wp(it.link)?'<a class="hli" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div>'+inner+'</div>'}).join('')+'</div></div></section>';
+ if(t==='spec'){var cols=b.cols||['Parameter','Specification','Method or reference'];return '<section><div class="in stack">'+(b.h?'<h2 class="h1">'+tx(b.h)+'</h2>':'')+'<div class="aq-scroll"><table class="aq-spec"><caption>'+tx(b.caption||'')+'</caption><thead><tr>'+cols.map(function(c){return '<th>'+e(c)+'</th>'}).join('')+'</tr></thead><tbody>'+(b.rows||[]).map(function(r){return '<tr'+(r.hl?' class="is-highlight"':'')+'><th scope="row">'+tx(r.p)+'</th><td class="aq-spec__value">'+tx(r.v)+'</td><td class="aq-spec__method">'+tx(r.m||'')+'</td></tr>'}).join('')+'</tbody></table></div>'+(b.note?'<p class="sm">'+tx(b.note)+'</p>':'')+'</div></section>'}
+ if(t==='steps')return '<section><div class="in stack-l">'+h+'<div class="seq">'+(b.items||[]).map(function(it){return '<div><span class="h3">'+tx(it.t)+'</span><span class="sm">'+tx(it.d)+'</span></div>'}).join('')+'</div></div></section>';
+ if(t==='diagram')return '<section><div class="in stack-l">'+h+'<div class="diag">'+wDiagram(b)+'</div>'+(b.caption?'<p class="sm tx">'+tx(b.caption)+'</p>':'')+'</div></section>';
+ if(t==='options')return '<section><div class="in stack-l">'+h+'<div class="opts">'+(b.items||[]).map(function(it){return '<div><span class="h3" style="display:block">'+tx(it.t)+'</span><span class="sm">'+tx(it.d)+'</span></div>'}).join('')+'</div></div></section>';
+ if(t==='docs')return '<section class="band-sunken"><div class="in stack-l">'+h+'<ul class="docs">'+(b.items||[]).map(function(x){return '<li>'+tx(typeof x==='string'?x:(x.t||'')+(x.d?' · '+x.d:''))+'</li>'}).join('')+'</ul></div></section>';
+ if(t==='readout')return '<section><div class="in ro"><div class="stack"><span class="v">'+tx(b.value)+'</span><span class="eb">'+tx(b.method||'')+'</span></div><p class="lg">'+tx(b.body||'')+'</p></div></section>';
+ if(t==='tags')return '<section class="band-sunken"><div class="in stack">'+(b.h?'<h2 class="h2">'+tx(b.h)+'</h2>':'')+'<div class="aq-tags">'+(b.items||[]).map(function(x){return '<a class="aq-tag" href="#compliance" data-wp="compliance">'+e(x)+'</a>'}).join('')+'</div>'+(b.body?'<p class="sm">'+tx(b.body)+'</p>':'')+'</div></section>';
+ if(t==='faq')return '<section><div class="in stack-l">'+h+'<div class="faq">'+(b.items||[]).map(function(it){return '<details><summary>'+tx(it.q)+'</summary><p>'+tx(it.a)+'</p></details>'}).join('')+'</div></div></section>';
+ if(t==='table')return '<section><div class="in stack-l">'+h+'<div class="aq-scroll"><table class="aq-spec"><thead><tr>'+(b.cols||[]).map(function(c){return '<th>'+e(c)+'</th>'}).join('')+'</tr></thead><tbody>'+(b.rows||[]).map(function(r){return '<tr>'+r.map(function(c,i){return i?'<td class="aq-spec__method" style="color:var(--ink)">'+tx(c)+'</td>':'<th scope="row">'+tx(c)+'</th>'}).join('')+'</tr>'}).join('')+'</tbody></table></div></div></section>';
+ if(t==='band')return '<section class="band-'+(b.tone==='sunken'?'sunken':'limestone')+'"><div class="in stack"><h2 class="h2">'+tx(b.h)+'</h2>'+(b.body?'<p class="lg">'+tx(b.body)+'</p>':'')+'</div></section>';
+ if(t==='form')return '<section><div class="in stack-l"><div class="stack">'+h+(b.intro?'<p class="lg">'+tx(b.intro)+'</p>':'')+'</div><form class="form wform" novalidate>'+(b.fields||[]).map(wField).join('')+'<div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="aq-btn aq-btn--primary" type="submit">'+tx(b.submit||'Send')+'</button><span class="sm wform-msg" role="status"></span></div></form></div></section>';
+ if(t==='case')return '<section><div class="in stack-l">'+h+'<div class="case">'+(b.items||[]).map(function(it){return '<div><span class="h3">'+tx(it.t)+'</span><dl>'+[['Client',it.client],['Problem',it.problem],['System delivered',it.system],['Measured outcome',it.outcome]].filter(function(x){return x[1]}).map(function(x){return '<dt>'+x[0]+'</dt><dd>'+tx(x[1])+'</dd>'}).join('')+'</dl></div>'}).join('')+'</div></div></section>';
+ if(t==='related')return '<section><div class="in stack-l">'+(b.h?'<h2 class="h2">'+tx(b.h)+'</h2>':'')+'<div class="hl">'+(b.items||[]).filter(wp).map(function(id){var p=wp(id);return '<a class="hli" href="#'+e(id)+'" data-wp="'+e(id)+'"><span class="eb">'+e(p.section)+'</span><span class="h3">'+tx(p.nav_label)+'</span><span class="sm">'+tx(p.lead||'').slice(0,400)+'</span></a>'}).join('')+'</div></div></section>';
+ return ''}
+function wPage(p){var c=p.cta;
+ return wHead(p.section)+wHero(p)+(p.blocks||[]).map(wBlock).join('')+
+  (c&&c.h?'<section class="band-navy closing"><div class="in stack"><h2 class="h1">'+tx(c.h)+'</h2>'+(c.body?'<p class="lg">'+tx(c.body)+'</p>':'')+wBtn(c.button||'Request a proposal',c.link||'contact-proposal')+'</div>'+ARC_NAVY+'</section>':'')+wFoot()}
+document.addEventListener('click',function(ev){var t=ev.target.closest('[data-wp]');if(!t)return;ev.preventDefault();WP=t.dataset.wp;WMENU=false;try{history.replaceState(null,'','#'+WP)}catch(x){}
+ if(VIEW!=='site'){VIEW='site';tabs()}render();window.scrollTo(0,0)});
+function render(){var p=wp(WP)||W()[0];if(!p)return;WP=p.id;
+ $('wsite').innerHTML=wPage(p);$('wsite').classList.toggle('clean',!$('wph').checked);
+ document.title=p.title||'Aquemi';
+ $('wjump').value=WP;
+ var t=p.todo||[];$('wtodolist').innerHTML='<h2>Open facts on this page ('+t.length+')</h2>'+(t.length?'<ul>'+t.map(function(x){return '<li>'+e(x)+'</li>'}).join('')+'</ul>':'<p>None.</p>');
+ $('wtodolist').hidden=!$('wtodo').checked;
+ var m=$('wmenu');if(m)m.onclick=function(){WMENU=!WMENU;render()};
+ document.querySelectorAll('.wform').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();f.querySelector('.wform-msg').textContent='Draft site: this form does not send anything yet.'})})}
+$('wph').onchange=function(){$('wsite').classList.toggle('clean',!this.checked)};
+$('wtodo').onchange=function(){$('wtodolist').hidden=!this.checked};
+$('wjump').onchange=function(){WP=this.value;try{history.replaceState(null,'','#'+WP)}catch(x){}render();window.scrollTo(0,0)};
+window.addEventListener('hashchange',function(){var h=location.hash.slice(1);if(h&&h!==WP&&wp(h)){WP=h;render();window.scrollTo(0,0)}});
+fetch('content/pages.json').then(function(r){return r.json()}).then(function(d){D.web=d;
+ $('wjump').innerHTML=W().map(function(p){return '<option value="'+e(p.id)+'">'+e(p.section+' · '+p.nav_label)+'</option>'}).join('');
+ var h=location.hash.slice(1);if(wp(h))WP=h;render()}).catch(function(err){$('wsite').innerHTML='<p style="padding:64px 32px">The page content could not load: '+e(err.message)+'</p>'});
+})();
+</script>
+</body>
+</html>

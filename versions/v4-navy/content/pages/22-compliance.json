@@ -1,0 +1,463 @@
+{
+ "id": "compliance",
+ "section": "Compliance",
+ "nav_label": "Standards we design to",
+ "title": "Water system standards: USP, Ph. Eur., ASME BPE | Aquemi",
+ "meta": "Every standard behind our PW, WFI and pure steam systems: USP <645> 1.3 µS/cm, EN 285, ASME BPE, CSA B51 CRN, and the document that proves each.",
+ "path": "/compliance/",
+ "eyebrow": "COMPLIANCE · USP · PH. EUR. · ASME BPE · CSA B51",
+ "headline": "Every standard we cite, the number it sets and the document that proves it",
+ "lead": "Your auditor will ask which standard each design decision answers to, and where the record is. Below: each one for Purified Water (PW), Water for Injection (WFI) and pure steam, with its limit and proof.",
+ "facts": [
+  {
+   "v": "≤ 1.3 µS/cm",
+   "l": "PW and WFI conductivity at 25 °C · USP <645>"
+  },
+  {
+   "v": "< 0.25 EU/mL",
+   "l": "WFI endotoxin · USP <85>"
+  },
+  {
+   "v": "L/D ≤ 2",
+   "l": "Dead legs at every branch · ASME BPE"
+  },
+  {
+   "v": "≤ 3.5 mL",
+   "l": "Non-condensable gases per 100 mL condensate · EN 285"
+  }
+ ],
+ "primary_cta": "Request a compliance matrix",
+ "primary_cta_intent": "Compliance matrix for your URS",
+ "primary_cta_link": "contact-proposal",
+ "secondary_cta": {
+  "label": "See the documentation package",
+  "link": "cmp-documentation"
+ },
+ "blocks": [
+  {
+   "type": "spec",
+   "nav": "Limits",
+   "caption": "PW · WFI · PURE STEAM",
+   "h": "Release limits, as the pharmacopoeias state them",
+   "intro": "Standards limit water; they do not approve equipment. Where USP and Ph. Eur. differ, we design to the stricter value.",
+   "cols": [
+    "Parameter",
+    "Limit",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Conductivity, PW and WFI, USP",
+     "v": "≤ 1.3 µS/cm @ 25 °C (stage 1)",
+     "m": "USP <645>, non-temperature-compensated",
+     "hl": true
+    },
+    {
+     "p": "Conductivity, PW, Ph. Eur.",
+     "v": "≤ 5.1 µS/cm @ 25 °C (≤ 4.3 µS/cm @ 20 °C)",
+     "m": "Ph. Eur. 0008"
+    },
+    {
+     "p": "Conductivity, WFI, Ph. Eur.",
+     "v": "≤ 1.1 µS/cm @ 20 °C (stage 1)",
+     "m": "Ph. Eur. 0169"
+    },
+    {
+     "p": "Total organic carbon (TOC), PW and WFI",
+     "v": "≤ 0.50 mg/L (500 ppb)",
+     "m": "USP <643>; Ph. Eur. 2.2.44"
+    },
+    {
+     "p": "Nitrates, PW",
+     "v": "≤ 0.2 ppm",
+     "m": "Ph. Eur. 0008; no USP test"
+    },
+    {
+     "p": "Bacterial endotoxins, WFI",
+     "v": "< 0.25 EU/mL (USP); < 0.25 IU/mL (Ph. Eur.)",
+     "m": "USP <85>; Ph. Eur. 2.6.14; equivalent units"
+    },
+    {
+     "p": "Microbial action level, PW",
+     "v": "100 colony-forming units (CFU)/mL",
+     "m": "USP <1231> guidance; Ph. Eur. 0008"
+    },
+    {
+     "p": "Microbial action level, WFI",
+     "v": "10 CFU/100 mL",
+     "m": "USP <1231> guidance; Ph. Eur. 0169"
+    },
+    {
+     "p": "Pure steam condensate",
+     "v": "Meets the WFI monograph; microbial testing not required",
+     "m": "USP Pure Steam; Annex 1, 6.17"
+    },
+    {
+     "p": "Steam quality for sterilizers",
+     "v": "Non-condensable gases ≤ 3.5 mL per 100 mL of condensate; dryness ≥ 0.95 metal loads, ≥ 0.90 other loads; superheat ≤ 25 K",
+     "m": "EN 285, clause 21"
+    }
+   ],
+   "note": "Limits apply at the point of use. Microbial action levels are guidance: your site sets its own from qualification data."
+  },
+  {
+   "type": "table",
+   "nav": "Pharmacopoeia",
+   "h": "Water quality standards and where the proof sits",
+   "intro": "Proof sits in your turnover package: factory and site acceptance tests (FAT, SAT) and installation, operational and performance qualification (IQ, OQ, PQ).",
+   "cols": [
+    "Standard",
+    "What we design to",
+    "Document that proves it",
+    "Where we show it"
+   ],
+   "rows": [
+    [
+     "USP <645> Water conductivity",
+     "Stage 1 on the non-temperature-compensated reading; cell constant ± 2 %, instrument ± 0.1 µS/cm, temperature ± 2 °C",
+     "Calibration certificates; FAT, SAT and OQ raw readings",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "USP <643> Total organic carbon",
+     "≤ 0.50 mg/L; system suitability against sucrose and 1,4-benzoquinone, 85–115 % response efficiency",
+     "Suitability records; analyzer calibration; OQ report",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "USP <85> Bacterial endotoxins",
+     "< 0.25 EU/mL at the point of use, WFI and pure steam condensate for parenterals",
+     "Endotoxin reduction in the functional specification; PQ sampling plan",
+     {
+      "t": "WFI by distillation",
+      "link": "sys-wfi-distillation"
+     }
+    ],
+    [
+     "USP monographs: PW, WFI, Pure Steam",
+     "Made from drinking water; WFI by distillation or an equivalent or superior process",
+     "Basis of design: grade and route per point of use",
+     {
+      "t": "WFI by membrane",
+      "link": "sys-wfi-membrane"
+     }
+    ],
+    [
+     "USP <1231> Water for pharmaceutical purposes",
+     "Informational; 65–80 °C most commonly used for thermal sanitization",
+     "Sampling plan; alert and action level rationale",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "Ph. Eur. 0008 Purified water",
+     "Revised in Ph. Eur. 12.3, in force 1 July 2026; stricter-of basis with USP",
+     "Functional specification; nitrates tested at FAT for European release",
+     {
+      "t": "Purified Water (PW) generation",
+      "link": "sys-pw"
+     }
+    ],
+    [
+     "Ph. Eur. 0169 Water for injections",
+     "Since 1 April 2017, reverse osmosis (RO) with other suitable techniques, after notice to the GMP authority",
+     "Membrane WFI control strategy; functional specification",
+     {
+      "t": "WFI by membrane",
+      "link": "sys-wfi-membrane"
+     }
+    ],
+    [
+     "EMA guideline on water for pharmaceutical use",
+     "WFI for parenterals and biologics; PW minimum for most non-sterile forms; final rinse at product grade",
+     "Water grade for each point of use in the basis of design",
+     {
+      "t": "Pharmaceutical",
+      "link": "ind-pharma"
+     }
+    ]
+   ],
+   "as": "evidence"
+  },
+  {
+   "type": "table",
+   "nav": "GMP",
+   "h": "GMP regulations and qualification guidance",
+   "cols": [
+    "Standard",
+    "What we design to",
+    "Document that proves it",
+    "Where we show it"
+   ],
+   "rows": [
+    [
+     "EU GMP Annex 1 (2022); Health Canada GUI-0119",
+     "6.7 no dead legs, drainable; 6.10 WFI held to limit growth, e.g. > 70 °C; 6.12 sanitization; 6.15 continuous TOC and conductivity",
+     "Dead leg register; hydraulics; sanitization OQ",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "EU GMP Annex 15 (2015)",
+     "3.2 user requirement specification (URS) as reference; 3.3 design qualification (DQ); 3.6 FAT not repeated where transport does not affect function",
+     "Traceability matrix; DQ report; executed FAT to OQ",
+     {
+      "t": "FAT and SAT",
+      "link": "svc-fat-sat"
+     }
+    ],
+    [
+     "EU GMP Annex 11 (2011); 21 CFR Part 11",
+     "Audit trail, access control, e-signatures, record protection; we supply the technical controls, your procedures complete them",
+     "Part 11 and Annex 11 assessment; audit trail tests",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "WHO TRS 1033, Annex 3 (2021)",
+     "11.3 PQ in three phases over at least 12 months; phases 1 and 2 at least 2 weeks each; 14.1 annual review",
+     "PQ protocol; phase reports; annual review",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "FDA Guide to Inspections of High Purity Water Systems (1993)",
+     "A full year of data; WFI samples 100–300 mL; we design to ASME BPE L/D ≤ 2, not its six-diameter rule",
+     "Sampling plan; dead leg register",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "GAMP 5 (2022); FDA computer software assurance",
+     "Testing scaled to risk; scripted tests for divert, quality alarms, sanitization temperature and the audit trail",
+     "Software and configuration specifications; controls OQ",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "ASTM E2500; ICH Q9(R1)",
+     "Verification focused on critical aspects found by risk assessment, usually a failure mode and effects analysis (FMEA)",
+     "Risk assessment; critical aspects list; design review",
+     {
+      "t": "Process design and engineering",
+      "link": "svc-design"
+     }
+    ]
+   ],
+   "as": "evidence"
+  },
+  {
+   "type": "table",
+   "nav": "Engineering",
+   "h": "Engineering, materials and pressure equipment",
+   "cols": [
+    "Standard",
+    "What we design to",
+    "Document that proves it",
+    "Where we show it"
+   ],
+   "rows": [
+    [
+     "ASME BPE",
+     "Dead legs L/D ≤ 2, measured from the main pipe's inside wall to the valve seal; SF4 Ra ≤ 0.38 µm (15 µin) electropolished",
+     "Dead leg register; finish report; weld log and borescope records ([share of product-contact welds borescoped, %])",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
+    ],
+    [
+     "ASME Section IX",
+     "Qualified procedure and operator for every orbital weld; continuity log",
+     "Procedure and operator qualification records",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
+    ],
+    [
+     "ASME Section VIII, Division 1",
+     "Tanks, stills and pure steam generators; rupture disc or relief device on pressure-rated tanks",
+     "Pressure vessel design calculations; manufacturer's data report",
+     {
+      "t": "Process design and engineering",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "ASME B31.3",
+     "Hydrostatic test at no less than 1.5 times design pressure; pneumatic at 1.1 times",
+     "Pressure test certificate, witnessed",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
+    ],
+    [
+     "EN 10204 3.1",
+     "A 3.1 certificate for every product-contact component, validated independently of manufacturing",
+     "Material log traced by heat number",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
+    ],
+    [
+     "ASTM A967; ASTM A380",
+     "Citric or nitric passivation; verified by water immersion or high humidity, with no rust or staining",
+     "Passivation certificate per system",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
+    ],
+    [
+     "CSA B51",
+     "A Canadian registration number (CRN) from the province of installation for pressure-retaining stills, generators, tanks and fittings",
+     "CRN registration; vessel data reports",
+     {
+      "t": "Fabrication",
+      "link": "svc-fabrication"
+     }
+    ],
+    [
+     "CSA C22.2 No. 286; UL 508A",
+     "Panels built and marked to [panel certification mark held, or field evaluation used]",
+     "Panel certification label and report",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ]
+   ],
+   "as": "evidence"
+  },
+  {
+   "type": "grid",
+   "nav": "Certificates",
+   "h": "Certifications we hold",
+   "intro": "Listed only once held, with number, scope, expiry and a copy. The standards above are design inputs, not certifications.",
+   "items": [
+    {
+     "t": "Quality management",
+     "d": "[ISO 9001 status, certificate number and expiry]",
+     "tag": "ISO 9001",
+     "link": "cmp-quality"
+    },
+    {
+     "t": "Pressure equipment",
+     "d": "[ASME or CSA B51 certificate, or vessel fabricator]",
+     "tag": "CSA B51"
+    },
+    {
+     "t": "Control panels",
+     "d": "[panel shop certification and file number]",
+     "tag": "CSA C22.2 No. 286"
+    },
+    {
+     "t": "Welding",
+     "d": "[welding certification held, division and number]",
+     "tag": "ASME IX"
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions validation and quality teams ask",
+   "items": [
+    {
+     "q": "Is your system USP certified?",
+     "a": "No water system is. USP and Ph. Eur. set limits for water, not approvals for equipment. Compliance is water at your points of use that meets the monograph, measured on qualified instruments, with the records behind it. We prove function at FAT and performance on your feed water at SAT and OQ, and support your PQ."
+    },
+    {
+     "q": "Do you design to USP or Ph. Eur.?",
+     "a": "To the stricter value on each attribute when your products ship to both: USP <645> stage 1 for PW conductivity, Ph. Eur. 0008 for nitrates, 0.50 mg/L TOC validated for both. The functional specification names the monographs and editions that apply. The contract manufacturing page sets out each attribute side by side."
+    },
+    {
+     "q": "Which edition of each standard do you design to?",
+     "a": "The edition in force when you approve the functional specification, named there with your markets, corporate standard and province. When a text changes during a project, as Ph. Eur. 0008 did in Ph. Eur. 12.3 from 1 July 2026, we assess it under change control and tell you whether it touches the design, the tests or neither."
+    },
+    {
+     "q": "Is your control system 21 CFR Part 11 compliant?",
+     "a": "No system is compliant on its own; your site is, by technical controls in the system plus procedures. We supply the technical controls (audit trail, access control, electronic signatures, record protection and backups) and a written Part 11 and Annex 11 assessment your quality unit can review."
+    },
+    {
+     "q": "Who registers our pressure equipment, and when?",
+     "a": "Pressure vessels and fittings installed in Canada need a CRN under CSA B51 from the province of installation; in some provinces piping systems do too. Registration sits in the schedule from the start, because a design built for another market may need changes first. [Aquemi CRN process and provinces covered]"
+    },
+    {
+     "q": "Does our corporate engineering standard replace yours?",
+     "a": "It adds to this list. Send it with the URS: we add it to the standards list in the functional specification and flag any clause that conflicts with a standard here, so your team decides before detailed design, not at IQ."
+    },
+    {
+     "q": "Do you build device and laboratory water systems?",
+     "a": "Device rinse water is traced to the USP <161> endotoxin limit: 20.0 EU per device, 2.15 EU for cerebrospinal fluid contact. Steam for ISO 17665 sterilization is tested to EN 285. Hospital reprocessing water (CSA Z314, ANSI/AAMI ST108:2023): [scope for hospital MDRD water]. Laboratory water (ASTM D1193): [scope for laboratory water]."
+    },
+    {
+     "q": "Will you complete our supplier questionnaire?",
+     "a": "Send it with the request for proposal. [returned with the quote, yes or no]; turnaround [questionnaire turnaround, working days]. The quality management page shows how we control materials, welding, calibration and change."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related pages",
+   "items": [
+    "cmp-documentation",
+    "cmp-quality",
+    "svc-design",
+    "svc-cq",
+    "svc-fabrication",
+    "sys-monitoring"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your URS. We return a compliance matrix.",
+  "body": "A process engineer maps each requirement to a standard, design feature and test, and replies within [compliance matrix response time, working days].",
+  "button": "Request a compliance matrix",
+  "link": "contact-proposal",
+  "intent": "Compliance matrix for your URS",
+  "include": [
+   "Your URS, even a draft",
+   "Markets and pharmacopoeias you release against",
+   "Water grade and peak draw per point of use",
+   "Corporate or site engineering standards",
+   "Province of installation",
+   "Validation approach and protocol templates",
+   "Supplier questionnaire or quality agreement"
+  ]
+ },
+ "todo": [
+  "Certifications actually held: ISO 9001 status, certificate number, scope, registrar and expiry (or target date); downloadable copies",
+  "Pressure equipment: ASME certificate of authorization, CSA B51 quality programme or certified vessel fabricator used; certificate number",
+  "CRN: provinces where Aquemi has registered designs; who prepares and submits the CRN application and at which design stage (FAQ)",
+  "Control panel certification mark held (CSA C22.2 No. 286 / UL 508A) and file number, or whether field evaluation is used",
+  "Welding certification held (for example CWB CSA W47.1) and division/number",
+  "Share of product-contact welds borescoped, % (ASME BPE row; same placeholder as sys-pw and svc-fabrication)",
+  "Scope for hospital MDRD water (CSA Z314 / ANSI/AAMI ST108) and laboratory water (ASTM D1193): new systems, upgrades, service only or not offered",
+  "Supplier questionnaire and quality agreement: confirm returned with the quote (yes or no), and questionnaire turnaround in working days",
+  "Compliance matrix response time (working days) for the closing CTA",
+  "Confirm Aquemi practice stated on other pages and repeated here: FMEA as usual ICH Q9(R1) method; stricter-of basis; nitrates tested at FAT for Ph. Eur. releases; corporate standard conflicts flagged in the functional specification",
+  "Quality review of each standard row (edition, clause numbers, limits) before publication"
+ ]
+}

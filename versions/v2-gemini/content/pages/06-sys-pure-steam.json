@@ -1,0 +1,541 @@
+{
+ "id": "sys-pure-steam",
+ "section": "Systems",
+ "nav_label": "Pure steam generators",
+ "title": "Pure steam generators tested to EN 285 | Aquemi",
+ "meta": "Pure steam whose condensate meets WFI limits (EU GMP Annex 1, 6.17) and passes EN 285 gas, dryness and superheat tests at your sterilizers.",
+ "path": "/systems/pure-steam/",
+ "eyebrow": "PURE STEAM · EU GMP ANNEX 1 · EN 285 · USP",
+ "headline": "Pure steam that passes EN 285 dryness, superheat and non-condensable gas tests at the sterilizer",
+ "lead": "Our pure steam generators supply autoclaves and steam-in-place (SIP) with steam whose condensate meets Water for Injection (WFI) limits, as EU GMP Annex 1 paragraph 6.17 requires, and whose non-condensable gases (no more than 3.5 mL per 100 mL of condensate), dryness and superheat meet EN 285 where the steam is used. We size the generator and the distribution header as one system, because most steam quality failures start in the pipework, and we hand over the test records your validation team needs.",
+ "primary_cta": "Submit your steam demand for a sizing proposal",
+ "primary_cta_intent": "Sizing and budget proposal for a new system|Pure steam generator",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "facts": [
+  {
+   "v": "[100–3,000] kg/h",
+   "l": "Capacity"
+  },
+  {
+   "v": "≤ 3.5 mL",
+   "l": "Non-condensable gases per 100 mL · EN 285"
+  },
+  {
+   "v": "≥ 0.95",
+   "l": "Dryness value · EN 285"
+  },
+  {
+   "v": "≤ 25 K",
+   "l": "Superheat above boiling point · EN 285"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "prose",
+   "h": "Pure steam is qualified on two sets of tests, and only one is about the generator",
+   "body": [
+    "Pure steam sterilizes product-contact surfaces directly: porous and hard-goods loads in autoclaves, vessels and transfer lines by SIP, and stoppers in processors. EU GMP Annex 1 (2022), adopted by Health Canada as GUI-0119 and in force since 1 April 2024, sets two requirements for it in paragraph 6.17. The condensate must meet the current WFI monograph of the relevant pharmacopoeia, with microbial testing not mandatory. And the steam must be assessed periodically for non-condensable gases, dryness value and superheat against validated parameters.",
+    "The first set is chemistry. USP Pure Steam tests the condensate for total organic carbon (TOC), conductivity and, where the steam is used to make parenterals, bacterial endotoxin (< 0.25 EU/mL). The generator controls these: droplet separation keeps feed water and its endotoxin out of the steam, and feed degassing keeps dissolved carbon dioxide (CO₂) from raising conductivity.",
+    "The second set is physics, and EN 285 gives the acceptance criteria most sterilizer manufacturers and inspectors use. These tests are made at the sterilizer. A generator that delivers dry, gas-free steam at its outlet can still fail them at the point of use if the header collects condensate, leaks air in during shutdown, or reduces pressure in one large step. So we design, test and document the generator and its distribution together."
+   ]
+  },
+  {
+   "type": "spec",
+   "h": "Steam quality you qualify against",
+   "caption": "Pure steam · EU GMP Annex 1, USP Pure Steam and EN 285",
+   "note": "Condensate limits apply to steam used for direct sterilization of materials or product-contact surfaces (Annex 1, 6.17). Ph. Eur. has no separate pure steam monograph, so Annex 1 points to WFI (0169). Physical tests are made at the steam supply to each sterilizer, worst case first. Your acceptance criteria and test frequency are set in your validation plan.",
+   "cols": [
+    "Parameter",
+    "Limit",
+    "Reference"
+   ],
+   "rows": [
+    {
+     "p": "Condensate, bacterial endotoxins",
+     "v": "< 0.25 EU/mL (USP); < 0.25 IU/mL (Ph. Eur.)",
+     "m": "USP Pure Steam, when used to make parenterals; USP <85>. Ph. Eur. 0169 via Annex 1, 6.17",
+     "hl": true
+    },
+    {
+     "p": "Condensate, conductivity",
+     "v": "≤ 1.3 µS/cm @ 25 °C (USP stage 1); ≤ 1.1 µS/cm @ 20 °C (Ph. Eur. stage 1)",
+     "m": "USP <645>; Ph. Eur. 0169. Measured on condensate cooled at the sample point",
+     "hl": false
+    },
+    {
+     "p": "Condensate, total organic carbon",
+     "v": "≤ 0.50 mg/L (500 ppb)",
+     "m": "USP <643>; Ph. Eur. 2.2.44",
+     "hl": false
+    },
+    {
+     "p": "Condensate, microbial count",
+     "v": "Not required",
+     "m": "Annex 1, 6.17: microbial testing is not mandatory for steam condensate",
+     "hl": false
+    },
+    {
+     "p": "Non-condensable gases",
+     "v": "≤ 3.5 mL of gas per 100 mL of condensate",
+     "m": "EN 285 steam quality test (clause 21)",
+     "hl": true
+    },
+    {
+     "p": "Dryness value",
+     "v": "≥ 0.95 for metal loads; ≥ 0.90 for other loads",
+     "m": "EN 285 and UK Health Technical Memorandum (HTM) guidance. Sample taken from the centre of the supply pipe",
+     "hl": false
+    },
+    {
+     "p": "Superheat",
+     "v": "≤ 25 K when the steam is expanded to atmospheric pressure",
+     "m": "EN 285",
+     "hl": false
+    },
+    {
+     "p": "Generator outlet, guaranteed",
+     "v": "[outlet condensate conductivity guarantee, µS/cm @ 25 °C] and [endotoxin reduction guaranteed, log]",
+     "m": "Measured at the generator sample cooler at factory acceptance testing (FAT) and at site acceptance testing (SAT); endotoxin reduction as [stated by the generator manufacturer and shown by challenge test data, if held]",
+     "hl": false
+    }
+   ],
+   "nav": "Steam quality"
+  },
+  {
+   "type": "table",
+   "h": "Where steam quality fails, and what we design against",
+   "cols": [
+    "Test failed",
+    "Usual cause",
+    "What we design in"
+   ],
+   "rows": [
+    [
+     "Non-condensable gases above 3.5 mL per 100 mL",
+     "Feed not degassed; air drawn into the header as it cools overnight; no vents at high points and branch ends",
+     "Feed degassing at the generator; air vents at high points and branch ends; a header that stays under pressure or is purged before the first cycle"
+    ],
+    [
+     "Dryness value below 0.95 (or 0.90)",
+     "Condensate collecting in the header: missing traps, flat or sagging runs, damaged insulation, dead legs, steam velocity too high",
+     "Header sloped in the direction of flow, with drain traps at low points and along long runs, a separator at each sterilizer connection, and line sizes checked against peak flow"
+    ],
+    [
+     "Superheat above 25 K",
+     "Dry steam reduced in pressure in one large step, or through an undersized valve or orifice close to the sterilizer",
+     "Staged pressure reduction where needed, placed far enough upstream for the steam to return to saturation"
+    ],
+    [
+     "Condensate conductivity above limit",
+     "CO₂ or ammonia from the feed carried into the steam; droplet carryover",
+     "Feed degassing, feed limits on conductivity, separator sized for peak output"
+    ],
+    [
+     "Condensate endotoxin above limit",
+     "Droplet carryover at peak output or low pressure; poor feed quality",
+     "Separation sized at the highest steam velocity in the design, feed endotoxin target set from the guaranteed reduction"
+    ],
+    [
+     "Pressure dips during cycles",
+     "Generator undersized for simultaneous demand; slow control response",
+     "Capacity sized on the simultaneous peak; pressure control tuned and shown at FAT"
+    ]
+   ],
+   "nav": "Where it fails"
+  },
+  {
+   "type": "spec",
+   "h": "Generator design parameters",
+   "caption": "Pure steam generator · design basis",
+   "note": "Values in brackets depend on your sterilizer and SIP demand profile and on your utilities. We confirm each one in the steam balance and functional specification before detailed design.",
+   "cols": [
+    "Parameter",
+    "Design value",
+    "Basis"
+   ],
+   "rows": [
+    {
+     "p": "Capacity",
+     "v": "[minimum–maximum capacity, kg/h]",
+     "m": "Sized on the simultaneous peak of your sterilizer and SIP cycles, not their average",
+     "hl": true
+    },
+    {
+     "p": "Outlet pressure",
+     "v": "[operating pressure range, bar(g)]",
+     "m": "Set from the highest pressure any user needs at its inlet, plus header losses",
+     "hl": false
+    },
+    {
+     "p": "Turndown",
+     "v": "[turndown range, % of rated output]",
+     "m": "Pressure-controlled output that follows demand without start-stop cycling",
+     "hl": false
+    },
+    {
+     "p": "Feed water",
+     "v": "PW, or reverse osmosis (RO) permeate, free of chlorine, within feed limits on conductivity, silica, chloride and hardness",
+     "m": "Annex 1, 6.16: feed appropriately purified. Feed limits written into the functional specification",
+     "hl": false
+    },
+    {
+     "p": "Heating",
+     "v": "Plant steam at [minimum heating steam pressure, bar(g)], or electric [confirm electric units are offered, kW range]",
+     "m": "Plant steam pressure must exceed pure steam pressure by enough to drive the evaporator; checked in the steam balance",
+     "hl": false
+    },
+    {
+     "p": "Droplet separation",
+     "v": "Separation stage between the evaporator and the pure steam outlet",
+     "m": "USP Pure Steam: vaporized in a manner that prevents source water entrainment",
+     "hl": false
+    },
+    {
+     "p": "Feed degassing",
+     "v": "Feed preheated and vented before the evaporator",
+     "m": "Removes dissolved air and CO₂ that would fail the non-condensable gas test and raise condensate conductivity",
+     "hl": false
+    },
+    {
+     "p": "Blowdown",
+     "v": "Continuous or timed blowdown from the evaporator, rate set from feed quality",
+     "m": "Keeps concentrated solids and rejected endotoxin out of the steam and off the heat transfer surface",
+     "hl": false
+    },
+    {
+     "p": "Heat exchangers",
+     "v": "Double tube sheet on the heating section and feed preheater",
+     "m": "Prevents plant steam or feed leaking into the pure steam side",
+     "hl": false
+    },
+    {
+     "p": "Materials, product contact",
+     "v": "316L stainless steel",
+     "m": "ASME BPE; EN 10204 3.1 material certificates",
+     "hl": false
+    },
+    {
+     "p": "Surface finish, product contact",
+     "v": "[standard finish, ASME BPE designation]",
+     "m": "ASME BPE SF1: Ra ≤ 0.51 µm mechanically polished. SF4: Ra ≤ 0.38 µm electropolished.",
+     "hl": false
+    },
+    {
+     "p": "Pressure parts",
+     "v": "Designed to ASME Section VIII, Division 1",
+     "m": "Canadian registration number (CRN) under CSA B51 in the province of installation [provinces where Aquemi registers]",
+     "hl": false
+    },
+    {
+     "p": "Sampling",
+     "v": "Sanitary sample point with condenser-cooler at the generator outlet; portable test points at each sterilizer",
+     "m": "USP Pure Steam: the condensate collection must not affect the quality attributes tested",
+     "hl": false
+    },
+    {
+     "p": "Instrumentation",
+     "v": "Pure steam pressure and temperature; feed and condensate conductivity; evaporator level; online TOC [standard or option]",
+     "m": "Pressure and temperature trended together so superheat shows up between EN 285 tests",
+     "hl": false
+    },
+    {
+     "p": "Controls",
+     "v": "Programmable logic controller (PLC) and operator panel (HMI) with audit trail and electronic records",
+     "m": "GAMP 5 lifecycle; 21 CFR Part 11",
+     "hl": false
+    }
+   ],
+   "nav": "Generator design"
+  },
+  {
+   "type": "diagram",
+   "h": "How a pure steam generator works",
+   "stages": [
+    "PW feed",
+    "Preheat and degassing",
+    "Evaporator",
+    "Droplet separator",
+    "Pure steam header",
+    "Autoclaves and SIP"
+   ],
+   "caption": "PW is preheated and vented, so dissolved air and CO₂ leave before evaporation. Plant steam or electric heaters boil it in the evaporator, on the far side of a double tube sheet. The vapour rises through a separation stage that returns droplets, and the endotoxin and solids they carry, to the evaporator. Pure steam leaves at a controlled pressure, through a sample cooler, to a drained and insulated header. Blowdown removes the concentrated feed."
+  },
+  {
+   "type": "docs",
+   "h": "Documentation delivered with the generator",
+   "items": [
+    {
+     "t": "URS compliance matrix",
+     "d": "Each requirement of your user requirement specification (URS), how we meet it and where it is verified"
+    },
+    {
+     "t": "Steam balance",
+     "d": "Pure steam demand by user, heating steam or power, feed and blowdown at design and turndown"
+    },
+    {
+     "t": "Functional specification",
+     "d": "Feed limits, setpoints, blowdown, alarms and interlocks"
+    },
+    {
+     "t": "Hardware and software design specifications",
+     "d": "GAMP 5"
+    },
+    {
+     "t": "Piping and instrumentation diagrams (P&IDs) and header isometrics",
+     "d": "As built, with slopes, traps, vents and test points marked"
+    },
+    {
+     "t": "Pressure vessel design calculations and CRN documents",
+     "d": "ASME Section VIII, CSA B51"
+    },
+    {
+     "t": "Hydrostatic test certificates",
+     "d": "Including both tube sheets of each double tube sheet exchanger"
+    },
+    {
+     "t": "Material certificates",
+     "d": "EN 10204 3.1, every product-contact component"
+    },
+    {
+     "t": "Weld map, weld log and borescope records",
+     "d": "Welder and procedure qualifications to ASME Section IX"
+    },
+    {
+     "t": "Surface finish and passivation reports",
+     "d": "ASME BPE"
+    },
+    {
+     "t": "Instrument calibration certificates",
+     "d": "Traceable to national standards"
+    },
+    {
+     "t": "FAT protocol and executed report",
+     "d": "Deviations listed and closed"
+    },
+    {
+     "t": "EN 285 steam quality test report",
+     "d": "Non-condensable gases, dryness value and superheat at each sterilizer, with test equipment calibration records"
+    },
+    {
+     "t": "Condensate test results",
+     "d": "Conductivity, TOC and endotoxin at the generator outlet and at users, with the laboratory named"
+    },
+    {
+     "t": "SAT protocol and report",
+     "d": "On your PW and utilities"
+    },
+    {
+     "t": "IQ and OQ protocols",
+     "d": "With a requirements traceability matrix"
+    },
+    {
+     "t": "Operation and maintenance manual",
+     "d": "Including start-up, shutdown, blowdown, descaling and inspection procedures"
+    },
+    {
+     "t": "Recommended spare parts list",
+     "d": "Covering the first [months of operation]"
+    }
+   ],
+   "nav": "Documents"
+  },
+  {
+   "type": "options",
+   "h": "Configurations and options",
+   "items": [
+    {
+     "t": "Steam or electric heating",
+     "d": "Electric heating for sites without plant steam, or for a single sterilizer or SIP user. [Confirm electric units are offered and their range.]"
+    },
+    {
+     "t": "Combined with a WFI still",
+     "d": "The first column of a multi-effect still can deliver pure steam, with WFI output reduced while it does. It saves a separate generator where demand is small and intermittent. See WFI by distillation."
+    },
+    {
+     "t": "Distribution header design",
+     "d": "Line sizing, slope, traps, separators, vents and pressure reduction for every user, drawn on your isometrics and verified with the EN 285 tests at SAT."
+    },
+    {
+     "t": "Online condensate monitoring",
+     "d": "Conductivity and TOC on cooled condensate at the generator outlet, trended on the operator panel with alarm limits."
+    },
+    {
+     "t": "Redundant generation",
+     "d": "Two generators sized so either one covers critical demand, for sites where a generator outage stops sterile production."
+    },
+    {
+     "t": "Clean steam for humidification",
+     "d": "The same generator can supply cleanroom humidification, where your contamination control strategy calls for steam without boiler additives."
+    }
+   ],
+   "nav": "Options"
+  },
+  {
+   "type": "steps",
+   "h": "From your steam demand to qualified pure steam",
+   "items": [
+    {
+     "t": "Demand and header review",
+     "d": "We read the steam demand of each sterilizer and SIP circuit, the cycle schedule, your PW quality, plant steam pressure and the existing or planned header layout."
+    },
+    {
+     "t": "Steam balance and functional specification",
+     "d": "Capacity on the simultaneous peak, outlet pressure, feed limits, blowdown, alarms and divert logic in a functional specification you approve. Pressure parts submitted for CRN registration in your province."
+    },
+    {
+     "t": "FAT",
+     "d": "The generator is tested against a protocol you approve: sequences, alarms, interlocks, pressure control and instrument loops, with [scope of steam generation and condensate testing at FAT, depending on test bay heating supply]."
+    },
+    {
+     "t": "SAT and EN 285 tests at each user",
+     "d": "After tie-in we run the generator on your PW and utilities, sample condensate for conductivity, TOC and endotoxin, and run the non-condensable gas, dryness and superheat tests at each sterilizer, worst case first."
+    },
+    {
+     "t": "IQ and OQ",
+     "d": "We execute installation and operational qualification (IQ/OQ) and support the performance qualification (PQ) sampling and the routine test schedule that follows."
+    }
+   ],
+   "nav": "Process"
+  },
+  {
+   "type": "faq",
+   "h": "Questions validation and engineering teams ask",
+   "items": [
+    {
+     "q": "You are a new firm. How do you back your FAT and SAT results without an installed base?",
+     "a": "With evidence you can check rather than references: a FAT protocol your quality unit approves, a witnessed test on steam, test instruments with calibration certificates in the report and the raw readings in the executed protocol. At SAT we test steam quality at the sterilizer, where EN 285 is judged, not only at the generator."
+    },
+    {
+     "q": "What happens if our steam fails EN 285 at the sterilizer during commissioning?",
+     "a": "We size the generator and the header together, so a header problem is ours to find. We check traps, separators, slope, insulation and pressure reduction, correct them and test again. [Confirm commissioning scope: header correction and retest included or quoted separately.]"
+    },
+    {
+     "q": "Our sterilizer fails the dryness test. Is it the generator?",
+     "a": "Usually it is the header. Condensate that collects in flat or sagging runs, missing or failed traps, damaged insulation and dead legs all produce wet steam at the sterilizer from a generator that tests dry at its outlet. We survey the header and the generator together, test at the generator and at the sterilizer, and the difference tells you where the water comes from."
+    },
+    {
+     "q": "Does the condensate really have to meet WFI?",
+     "a": "For steam that sterilizes materials or product-contact surfaces directly, yes: Annex 1 paragraph 6.17 asks for condensate that meets the current WFI monograph, without microbial testing. USP Pure Steam applies its < 0.25 EU/mL endotoxin limit when the steam is used to make parenterals. Steam that only heats jackets or coils, without product contact, can be plant steam; your contamination control strategy should say which users are which."
+    },
+    {
+     "q": "EN 285 is a European sterilizer standard. Does it apply to us?",
+     "a": "EN 285 is written for large steam sterilizers, and its steam quality clause gives the acceptance criteria for gases, dryness and superheat. Annex 1, which Health Canada applies as GUI-0119, names the same three parameters but sets no numbers, so most sites and sterilizer manufacturers use the EN 285 values. If your sterilizer manufacturer specifies different limits, we design to the stricter of the two."
+    },
+    {
+     "q": "How often do we have to test?",
+     "a": "Annex 1 asks for a sampling schedule that obtains representative steam regularly and for periodic assessment of the physical parameters. It sets no interval. A common approach is condensate chemistry and endotoxin quarterly, non-condensable gases quarterly until the data support a longer interval, dryness annually, and superheat watched continuously from pressure and temperature. Your validation plan sets the actual frequency."
+    },
+    {
+     "q": "What feed water does the generator need?",
+     "a": "USP allows pure steam to be made from drinking water, but feed impurities concentrate in the evaporator. Silica and hardness scale the heat transfer surface, chloride attacks stainless steel at these temperatures, and CO₂ and ammonia raise condensate conductivity. We feed from PW or RO permeate and write the feed limits into the functional specification, so blowdown and cleaning intervals are predictable."
+    },
+    {
+     "q": "Where does superheat come from?",
+     "a": "Mostly from reducing the pressure of dry saturated steam in one large step, or through a small orifice close to the sterilizer. Superheated steam behaves like hot air until it cools to saturation, so sterilization is less effective. We stage pressure reduction and place it far enough upstream for the steam to return to saturation before the sterilizer."
+    },
+    {
+     "q": "Can we use our WFI still instead of a separate generator?",
+     "a": "Often, yes. The first column of a multi-effect still can deliver pure steam, with WFI output reduced while it does. It suits small or intermittent steam demand. A separate generator is the better choice when sterilizers and SIP run while WFI demand is high, or when you want to maintain one without stopping the other."
+    },
+    {
+     "q": "Can you test the pure steam we already have?",
+     "a": "[Confirm whether Aquemi offers EN 285 steam quality testing on existing systems, with its own calibrated test equipment, and the lead time for a test visit.]"
+    },
+    {
+     "q": "Who builds the generator?",
+     "a": "[State whether Aquemi builds pure steam generators in-house or supplies them from a named manufacturer, and what Aquemi engineers, tests and documents in either case.]"
+    },
+    {
+     "q": "Does an imported generator need a Canadian registration number?",
+     "a": "Yes. Pressure vessels and fittings installed in Canada need a CRN under CSA B51 from the province of installation, and a generator designed for another market may need design changes before it is accepted. We include registration in the project schedule from the start. [Confirm Aquemi's CRN process and the provinces covered.]"
+    }
+   ],
+   "nav": "FAQ"
+  },
+  {
+   "type": "docs",
+   "h": "What to send for a pure steam sizing proposal",
+   "items": [
+    {
+     "t": "Users and demand",
+     "d": "Each sterilizer, SIP circuit and other user, its steam demand in kg/h, required inlet pressure in bar(g), and which run at the same time"
+    },
+    {
+     "t": "Load types",
+     "d": "Porous, metal, liquid or SIP, so we know which dryness criterion applies"
+    },
+    {
+     "t": "Plant steam or power",
+     "d": "Plant steam pressure at the generator in bar(g) and spare capacity in kg/h, or available electrical supply"
+    },
+    {
+     "t": "Feed water",
+     "d": "PW conductivity, TOC, silica, chloride and endotoxin trends, or your PW system's design basis"
+    },
+    {
+     "t": "Header layout",
+     "d": "Existing isometrics or a plant layout with the distance from generator to each user"
+    },
+    {
+     "t": "Current test results",
+     "d": "Any EN 285 or condensate test results that failed or were marginal, if this replaces or extends a system"
+    },
+    {
+     "t": "Pharmacopoeia",
+     "d": "USP, Ph. Eur. or both, and any internal limits tighter than the monograph"
+    },
+    {
+     "t": "Your URS",
+     "d": "If you have one; we can help write it if not"
+    },
+    {
+     "t": "Site and dates",
+     "d": "Ceiling height, drain capacity, province of installation, and target dates for order, FAT and steam on site"
+    }
+   ],
+   "nav": "What to send"
+  },
+  {
+   "type": "related",
+   "h": "Where pure steam connects",
+   "items": [
+    "sys-wfi-distillation",
+    "sys-pw",
+    "sys-storage",
+    "sys-monitoring",
+    "svc-fat-sat",
+    "svc-service"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Sized for your peak SIP demand and your header, not only the generator outlet. Send your steam load.",
+  "body": "Include steam demand per user in kg/h, the pressure each needs at its inlet and which cycles run at the same time. An engineer replies within [proposal response time, working days] with questions or a budget proposal.",
+  "button": "Submit your steam demand for a sizing proposal",
+  "link": "contact-proposal",
+  "intent": "Sizing and budget proposal for a new system|Pure steam generator"
+ },
+ "todo": [
+  "Whether Aquemi builds pure steam generators in-house or supplies them from a named manufacturer (answers the 'Who builds the generator?' FAQ)",
+  "Capacity range (minimum–maximum, kg/h)",
+  "Operating pressure range (bar(g))",
+  "Turndown range (% of rated output)",
+  "Minimum heating steam pressure (bar(g))",
+  "Whether electric units are offered, and their range (kW or kg/h)",
+  "Guaranteed condensate conductivity at the generator outlet (µS/cm at 25 °C)",
+  "Guaranteed endotoxin reduction (log), and whether challenge test data is held",
+  "Standard product-contact surface finish (ASME BPE designation) and whether SF4 electropolish is offered",
+  "CRN registration process and provinces where Aquemi registers pressure parts",
+  "Confirm online TOC on condensate is standard or an option",
+  "Scope of steam generation and condensate testing at FAT, depending on test bay heating supply",
+  "Whether Aquemi offers EN 285 steam quality testing on existing systems, owns calibrated test equipment, and the visit lead time",
+  "Spare parts list coverage period (months of operation)",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Datasheet PDF; add a download link only once it exists",
+  "A real pure steam project with measured steam quality results before adding a case study block",
+  "Commissioning scope for header correction and EN 285 retest"
+ ]
+}

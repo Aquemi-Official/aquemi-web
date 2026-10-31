@@ -1,0 +1,35 @@
+/* ---------- FaultList: failure modes that open to cause and design control (table block as "failures") ----------
+   Hairline accordion rows like FAQ: index | failure | +/−. Open, the remaining columns sit side by side under the
+   failure column, each with its column name as a mono label; the last column (what we design in) carries a flow rule.
+   A small fail-coloured tick marks each failure index. Phones: the open columns stack. */
+.aq-faults { border-bottom: 1px solid var(--line); }
+.aq-faults > details { border-top: 1px solid var(--line); }
+.aq-faults summary {
+  display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr) var(--space-6); column-gap: var(--space-4); align-items: baseline;
+  padding-block: var(--space-4); cursor: pointer; list-style: none;
+  font: 500 17px/24px var(--font-sans); color: var(--ink);
+}
+.aq-faults summary::-webkit-details-marker { display: none; }
+.aq-faults summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-faults summary .aq-index { position: relative; padding-left: var(--space-3); }
+.aq-faults summary .aq-index::before { content: ""; position: absolute; left: 0; top: 50%; width: 5px; height: 5px; margin-top: -3px; background: var(--fail); border-radius: var(--radius-pill); }
+.aq-faults__t { min-width: 0; text-wrap: pretty; overflow-wrap: break-word; }
+.aq-faults summary:hover .aq-faults__t { color: var(--flow); }
+.aq-faults__sign { justify-self: end; font: 400 18px/24px var(--font-mono); color: var(--ink-subtle); }
+.aq-faults__sign::before { content: "+"; }
+.aq-faults details[open] .aq-faults__sign::before { content: "\2212"; }
+.aq-faults details[open] .aq-faults__sign { color: var(--flow); }
+.aq-faults__body {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); column-gap: var(--space-8);
+  padding: 0 calc(var(--space-6) + var(--space-4)) var(--space-6) calc(var(--space-12) + var(--space-4));
+}
+.aq-faults__body > div { min-width: 0; padding-top: var(--space-3); border-top: 1px solid var(--line); }
+.aq-faults__body > div:last-child { border-top-color: var(--flow); }
+.aq-faults__k { margin: 0 0 var(--space-1); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-faults__body > div:last-child .aq-faults__k { color: var(--flow); }
+.aq-faults__v { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; overflow-wrap: break-word; }
+
+@container (max-width: 860px) {
+  .aq-faults summary { grid-template-columns: var(--space-8) minmax(0, 1fr) var(--space-6); column-gap: var(--space-3); }
+  .aq-faults__body { grid-auto-flow: row; row-gap: var(--space-4); padding: 0 0 var(--space-6) calc(var(--space-8) + var(--space-3)); }
+}

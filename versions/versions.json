@@ -1,0 +1,76 @@
+{
+ "versions": [
+  {
+   "id": "v1-first-draft",
+   "title": "First draft",
+   "note": "The first site: 31 pages in the first Aquemi design system, one stylesheet and one renderer.",
+   "commit": "e26059f",
+   "date": "2026-10-29T22:55:03-04:00",
+   "subject": "Aquemi website draft: 31 pages in the Aquemi design system",
+   "path": "versions/v1-first-draft/index.html"
+  },
+  {
+   "id": "v2-gemini",
+   "title": "Second pass and Gemini rebuild",
+   "note": "Second-pass copy on every page; sections, table, heroes and footer rebuilt from Gemini concepts; equipment drawings.",
+   "commit": "e299ecf",
+   "date": "2026-10-30T04:13:09-04:00",
+   "subject": "Merge origin/main: Gemini visual rebuild with second-pass content and features",
+   "path": "versions/v2-gemini/index.html"
+  },
+  {
+   "id": "v3-skeleton",
+   "title": "Third pass: system skeleton",
+   "note": "Every page compressed to the shared page skeleton, content budgets, site-wide phone pass.",
+   "commit": "05157a0",
+   "date": "2026-10-30T05:32:34-04:00",
+   "subject": "Design system: site-wide phone pass; page inventory matches every page",
+   "path": "versions/v3-skeleton/index.html"
+  },
+  {
+   "id": "v4-navy",
+   "title": "Fourth pass: navy ground",
+   "note": "Navy ground with light sheets, the fold, six table shapes, closing exchange, PlanTiers.",
+   "commit": "ea55d15",
+   "date": "2026-10-30T15:20:54-04:00",
+   "subject": "Fourth pass: FAT/SAT, C&Q, service (new PlanTiers component), upgrades, industries, pharmaceutical and biotechnology pages; fold on roles and grade lanes",
+   "path": "versions/v4-navy/index.html"
+  },
+  {
+   "id": "v5-fidelity",
+   "title": "Visual and fidelity passes",
+   "note": "Concepts 50 to 63 as components (limit gauges, callouts, binder, hold points), each matched to its concept. Tag pre-pass6.",
+   "commit": "871f1e0",
+   "date": "2026-10-30T16:43:36-04:00",
+   "subject": "Fidelity pass: rebuild components to match their Gemini concepts on desktop and phone",
+   "path": "versions/v5-fidelity/index.html"
+  },
+  {
+   "id": "v6-pass6",
+   "title": "Pass 6: bold display, design first",
+   "note": "Barlow Condensed capitals, first GSAP motion, about half the words, drawn hero figures and spot drawings. Tag pre-pass7.",
+   "commit": "55bd940",
+   "date": "2026-10-30T19:04:42-04:00",
+   "subject": "Pass 6: drawn hero figures for pages without an equipment drawing (spot clusters on a pipe, document binder, release stamp); contact heroes use equipment clusters so the routes are not repeated",
+   "path": "versions/v6-pass6/index.html"
+  },
+  {
+   "id": "v7-pass7",
+   "title": "Pass 7: section refinement and motion",
+   "note": "Section-by-section refinement and per-component GSAP choreography.",
+   "commit": "cd1bbf4",
+   "date": "2026-10-30T20:31:33-04:00",
+   "subject": "Pass 7: section-by-section refinement and per-component GSAP choreography",
+   "path": "versions/v7-pass7/index.html"
+  },
+  {
+   "id": "now",
+   "title": "Brand book (live)",
+   "note": "Back on the brand book: Geist Light sentence case, light surface, Lucide-style icons, How we work. Pass 7 motion kept.",
+   "commit": "live",
+   "date": "2026-10-30T22:21:47-04:00",
+   "subject": "The site as it is now",
+   "path": "index.html"
+  }
+ ]
+}

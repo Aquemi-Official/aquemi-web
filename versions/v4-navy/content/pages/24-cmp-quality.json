@@ -1,0 +1,456 @@
+{
+ "id": "cmp-quality",
+ "section": "Compliance",
+ "nav_label": "Quality management",
+ "title": "Quality management, supplier audits and CAPA | Aquemi",
+ "meta": "How our QMS controls documents, changes, NCRs, suppliers and calibration, mapped to ISO 9001:2015. Request a supplier audit or questionnaire pack.",
+ "path": "/compliance/quality/",
+ "eyebrow": "QUALITY · SUPPLIER AUDIT · ISO 9001:2015",
+ "headline": "Audit our quality system before you award the contract",
+ "lead": "Your quality unit has to qualify us as a supplier. Here is how our quality management system (QMS) works, the record each process leaves, and how to audit it. [ISO 9001 status, registrar and expiry]",
+ "facts": [
+  {
+   "v": "EN 10204 3.1",
+   "l": "Material checked against its certificate by heat number"
+  },
+  {
+   "v": "Ra ≤ 0.38 µm",
+   "l": "SF4 electropolish, certificate per component · ASME BPE"
+  },
+  {
+   "v": "ISO 9001 7.1.5",
+   "l": "Out-of-tolerance calibration reopens every reading since the last"
+  },
+  {
+   "v": "Annex 15, 11",
+   "l": "A change to a document you approved waits for your approval"
+  }
+ ],
+ "tags": [
+  "ISO 9001:2015",
+  "EU GMP Annex 15",
+  "ISO 13485 7.4",
+  "ASME BPE"
+ ],
+ "primary_cta": "Request a supplier audit or questionnaire pack",
+ "primary_cta_link": "#audit",
+ "secondary_cta": {
+  "label": "See the documentation package",
+  "link": "cmp-documentation"
+ },
+ "blocks": [
+  {
+   "type": "table",
+   "nav": "Processes",
+   "h": "Our quality processes and the record each leaves",
+   "intro": "An auditor picks a weld, a certificate or a change and asks how it was controlled. Each process leaves a record; where your quality agreement asks more, it governs.",
+   "cols": [
+    "Process",
+    "What it controls",
+    "Record you can inspect",
+    "ISO 9001:2015"
+   ],
+   "rows": [
+    [
+     "Document control",
+     "Numbered, approved documents; only the current revision is issued, superseded ones withdrawn and kept",
+     "Document register; client comment logs",
+     "7.5"
+    ],
+    [
+     "Change control",
+     "Changes after approval assessed for impact and approved before work continues; changes to documents you approved need your approval",
+     "Change request with impact assessment; change control register",
+     "6.3; 8.5.6"
+    ],
+    [
+     "Nonconformance, CAPA and complaints",
+     "Nonconforming items held and dispositioned; repeat, systemic and client-reported causes get a corrective and preventive action (CAPA)",
+     "Nonconformance report (NCR); CAPA with effectiveness check; complaint log",
+     "8.7; 9.1.2; 10.2"
+    ],
+    [
+     "Supplier control",
+     "Product-contact and special-process suppliers approved before use and reviewed on a schedule",
+     "Approved supplier list; incoming inspection records",
+     "8.4"
+    ],
+    [
+     "Identification and traceability",
+     "Every product-contact component traced by heat, lot or serial number to its weld and drawing",
+     "Material log against EN 10204 3.1 certificates; weld log and maps",
+     "8.5.2"
+    ],
+    [
+     "Calibration",
+     "Instruments traceable to national standards; out-of-tolerance results reviewed for impact",
+     "Calibration register; as-found and as-left certificates",
+     "7.1.5"
+    ],
+    [
+     "Internal audit and management review",
+     "Each process audited by someone independent of it; results and CAPA status reviewed by management",
+     "Audit reports; management review minutes",
+     "9.2; 9.3"
+    ]
+   ],
+   "as": "evidence"
+  },
+  {
+   "type": "steps",
+   "nav": "NCR and CAPA",
+   "eyebrow": "NONCONFORMANCE AND CAPA",
+   "h": "How a defect is found, held and closed",
+   "items": [
+    {
+     "t": "Identify and hold",
+     "d": "Whoever finds it tags and segregates the item or stops the work, and raises an NCR."
+    },
+    {
+     "t": "Disposition",
+     "d": "Aquemi quality decides: reject, rework or accept as is. Accept as is, or a repair outside an approved document, needs your approval."
+    },
+    {
+     "t": "Repair",
+     "d": "A rejected product-contact weld is cut out, not ground or re-fused; its replacement gets a new weld number."
+    },
+    {
+     "t": "Root cause and CAPA",
+     "d": "For repeat, systemic or client-reported nonconformances we find the cause, change the procedure, training, supplier or equipment, and check other work at risk."
+    },
+    {
+     "t": "Effectiveness check",
+     "d": "Evidence after an agreed period that the action worked, signed before the CAPA closes."
+    },
+    {
+     "t": "Reported to you",
+     "d": "Your turnover package logs every NCR. One found after shipment that could affect your system reaches you within [NCR notice after shipment, working days]."
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Suppliers",
+   "h": "What we require from our suppliers",
+   "intro": "Each approved supplier is reviewed every [supplier review interval, months]. A supplier with an open CAPA is not used for your order until it closes.",
+   "cols": [
+    "Supply",
+    "What we require",
+    "How we verify it"
+   ],
+   "rows": [
+    [
+     "Product-contact tubing and fittings",
+     "316L to ASME BPE with an EN 10204 3.1 certificate per heat; a type 2.2 report is not accepted",
+     "Heat marking checked against the certificate; [PMI by X-ray fluorescence, standard or option]"
+    ],
+    [
+     "Elastomers and gaskets",
+     "USP <88> Class VI and FDA 21 CFR 177.2600, certificate per compound and grade",
+     "Compound and grade checked; like-for-like replacement only"
+    ],
+    [
+     "Membranes, electrodeionization (EDI) and resin",
+     "Manufacturer's certificates with serial or lot numbers",
+     "Serial and lot numbers recorded at receipt and installation"
+    ],
+    [
+     "Electropolishing",
+     "SF4: Ra ≤ 0.38 µm (15 µin) to ASME BPE; [in-house or named subcontractor]",
+     "Profilometer Ra readings at receipt; certificate per component"
+    ],
+    [
+     "Passivation",
+     "ASTM A967, or ASTM A380 for assembled systems; [in-house or named subcontractor]",
+     "Certificate checked for chemistry, temperature, contact time and verification test"
+    ],
+    [
+     "Pressure vessels and control panels",
+     "ASME VIII Div. 1 vessels with a Canadian registration number (CRN) under CSA B51; CSA C22.2 No. 286 or UL 508A panels",
+     "Data reports reviewed; panel label checked"
+    ]
+   ]
+  },
+  {
+   "type": "spec",
+   "nav": "Calibration",
+   "caption": "ISO 9001:2015 7.1.5 · 7.2",
+   "h": "Calibration and training: what auditors sample",
+   "cols": [
+    "Item",
+    "How we control it",
+    "Record"
+   ],
+   "rows": [
+    {
+     "p": "Out-of-tolerance calibration",
+     "v": "Every reading since the last good calibration reviewed; affected results re-tested or notified to you",
+     "m": "Impact assessment; NCR where needed · 7.1.5.2",
+     "hl": true
+    },
+    {
+     "p": "Instruments covered",
+     "v": "Every instrument used for an acceptance reading, including the EN 285 steam test kit",
+     "m": "Instrument number on every record it produced"
+    },
+    {
+     "p": "Interval and reference",
+     "v": "[calibration interval by instrument type, months]",
+     "m": "[calibration provider and accreditation held]"
+    },
+    {
+     "p": "Your installed instruments",
+     "v": "Calibrated before handover; one as-found and as-left certificate each",
+     "m": "Turnover package"
+    },
+    {
+     "p": "Welders and inspectors",
+     "v": "Orbital welders qualified to ASME Section IX, with a continuity log; borescope inspectors trained to ASME BPE criteria",
+     "m": "[weld inspector qualification, e.g. CWB or AWS]"
+    },
+    {
+     "p": "Good documentation practice",
+     "v": "Trained before signing any test record: contemporaneous entries, corrections struck through and initialled, no blank fields",
+     "m": "Training matrix by role"
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "nav": "Certificates",
+   "h": "Certifications we hold",
+   "intro": "A certificate appears here only once we hold it, with its number, scope, expiry and a copy. The standards on this page are what we work to.",
+   "items": [
+    {
+     "t": "Quality management system",
+     "d": "[ISO 9001 status, registrar and expiry]",
+     "tag": "ISO 9001"
+    },
+    {
+     "t": "Pressure equipment",
+     "d": "[ASME certificate holder or certified vessel partner]",
+     "tag": "CSA B51",
+     "link": "compliance"
+    },
+    {
+     "t": "Control panels",
+     "d": "[panel shop and certification mark held]",
+     "tag": "CSA C22.2 No. 286"
+    },
+    {
+     "t": "Welding",
+     "d": "[welding certification held, e.g. CWB CSA W47.1]",
+     "tag": "ASME IX",
+     "link": "svc-fabrication"
+    },
+    {
+     "t": "Health and safety",
+     "d": "[safety certification held, e.g. provincial COR]",
+     "tag": "COR"
+    },
+    {
+     "t": "Contractor prequalification",
+     "d": "[contractor platforms registered on, or none]",
+     "tag": "Prequalification"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Audit us",
+   "h": "Four ways to qualify us as a supplier",
+   "cols": [
+    "Route",
+    "What you get",
+    "When it fits"
+   ],
+   "rows": [
+    [
+     "Quality questionnaire pack",
+     "Our questionnaire, certificates, procedure list and redacted sample records; yours completed within [questionnaire turnaround, working days]",
+     "Onboarding, a request for proposal, or prequalification"
+    ],
+    [
+     "Remote audit",
+     "A video walkthrough with our quality lead, records traced end to end; [live shop view offered, yes or no]",
+     "Desk audits, or before a visit. Notice: [remote audit notice, working days]"
+    ],
+    [
+     "On-site supplier audit",
+     "Your auditors at [shop location, city and province]: NCR, CAPA, change and calibration files, training records, shop floor",
+     "Before award, or periodic requalification. Notice: [on-site audit notice, working days]"
+    ],
+    [
+     "Witness and hold points",
+     "Your inspector at agreed points: material review, coupons, borescope review, pressure test, passivation and factory acceptance test (FAT)",
+     "After you order, agreed before fabrication"
+    ]
+   ]
+  },
+  {
+   "type": "form",
+   "nav": "Request",
+   "anchor": "audit",
+   "h": "Request an audit or questionnaire pack",
+   "intro": "Our quality lead replies within [audit request response time, working days] with the pack or proposed audit dates and an agenda. No sales call needed.",
+   "submit": "Send my request",
+   "fields": [
+    {
+     "kind": "checkbox-group",
+     "label": "What you need",
+     "required": true,
+     "options": [
+      "Quality questionnaire pack",
+      "Complete our own supplier questionnaire",
+      "Remote audit",
+      "On-site supplier audit",
+      "Review of our quality agreement"
+     ]
+    },
+    {
+     "kind": "select",
+     "label": "What you are buying",
+     "required": false,
+     "options": [
+      "Purified Water (PW) generation",
+      "WFI by distillation",
+      "WFI by membrane",
+      "Pure steam generator",
+      "Storage and distribution loop",
+      "Pretreatment",
+      "Monitoring and controls",
+      "Service, calibration or upgrade",
+      "Industrial or process demineralized water",
+      "Not decided yet"
+     ]
+    },
+    {
+     "kind": "text",
+     "label": "Preferred audit dates",
+     "required": false,
+     "help": "For a remote or on-site audit."
+    },
+    {
+     "kind": "file",
+     "label": "Your questionnaire, audit checklist or quality agreement",
+     "required": false,
+     "help": "PDF, Word or Excel."
+    },
+    {
+     "kind": "radio",
+     "label": "Non-disclosure agreement",
+     "required": false,
+     "options": [
+      "Send us yours",
+      "We need our company's NDA signed",
+      "Not sure yet"
+     ]
+    },
+    {
+     "kind": "text",
+     "label": "Full name",
+     "required": true
+    },
+    {
+     "kind": "email",
+     "label": "Work email",
+     "required": true
+    },
+    {
+     "kind": "text",
+     "label": "Company",
+     "required": true
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions quality and procurement teams ask",
+   "items": [
+    {
+     "q": "Are you ISO 9001 certified?",
+     "a": "[ISO 9001 status, registrar and expiry]. Either way, your supplier qualification can test the system itself: the processes on this page, the records they leave and a sample traced end to end at an audit."
+    },
+    {
+     "q": "Can we audit you before we order?",
+     "a": "Yes, and we prefer it: an audit before award settles questions that would otherwise reach your installation qualification (IQ). Remote, or on site at [shop location, city and province] with [on-site audit notice, working days] notice. Cost before order: [supplier audit before order, free or charged]."
+    },
+    {
+     "q": "What is in the questionnaire pack?",
+     "a": "Our supplier questionnaire (or yours), procedure list, certificates we hold, quality organization chart, redacted sample records (an NCR with its CAPA, a change request, a calibration certificate), critical supply categories, insurance certificates with [liability limits, general and professional], safety programme and workers' compensation clearance. Quality manual and supplier names: [shared openly or under NDA]."
+    },
+    {
+     "q": "Will you sign our quality agreement?",
+     "a": "Send it with the request for proposal and we mark it up with the quote. We look first at change notification, audit rights, subcontracting, record retention and how fast we tell you about a nonconformance. Mark-up returned within [quality agreement mark-up turnaround, working days]."
+    },
+    {
+     "q": "Will you tell us before changing a material or design?",
+     "a": "Before order, a change to a document you approved goes to you for approval before it is made. After handover, a change to your system runs through your change control, with our impact assessment (EU GMP Annex 15, section 11). Spare parts are like for like; anything else is notified before supply."
+    },
+    {
+     "q": "Do you audit your own subcontractors?",
+     "a": "Every supplier of product-contact material and special processes, such as electropolishing and passivation, is approved before use and reviewed every [supplier review interval, months]. On-site subcontractor audits: [on-site subcontractor audits, how often]. Their certificates reach you as the issuer sent them, never retyped."
+    },
+    {
+     "q": "Who can stop a shipment?",
+     "a": "[role that releases to ship, and its independence]. A system does not leave the shop with an open NCR on a product-contact item unless you have approved the disposition. Open items go on the FAT punch list with an owner and a date."
+    },
+    {
+     "q": "How long do you keep quality records?",
+     "a": "Project quality records, including NCRs, change requests and calibration certificates, for [quality record retention, years], and a copy of each turnover package for the period stated on the documentation page. Your site's own retention rules apply to your master copy."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Related pages",
+   "items": [
+    "cmp-documentation",
+    "compliance",
+    "svc-fabrication",
+    "svc-fat-sat",
+    "svc-cq",
+    "ind-cdmo"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Qualify us before you shortlist us",
+  "body": "Send your questionnaire, audit checklist or quality agreement. Our quality lead replies within [audit request response time, working days].",
+  "button": "Request a supplier audit",
+  "link": "contact-proposal",
+  "intent": "Supplier qualification: audit, references, shop visit|On-site supplier audit",
+  "include": [
+   "Your questionnaire or supplier portal link",
+   "The scope you are buying",
+   "Audit agenda and records to sample",
+   "Hold and witness points, once ordered",
+   "Your NDA, if your procedures need one"
+  ]
+ },
+ "todo": [
+  "KEY: ISO 9001 status (hero lead, certificates grid, FAQ): certified (registrar, certificate number, scope, expiry, downloadable copy) or QMS built to ISO 9001:2015 with target certification date. Never claim certification until held",
+  "Confirm the QMS processes listed exist as written procedures: document control, change control, NCR and CAPA with effectiveness check, supplier approval and review, identification and traceability, calibration with out-of-tolerance impact review, training matrix, internal audit, management review, complaint handling; procedure list for the questionnaire pack",
+  "Confirm change control practice: client approval before changing a client-approved document; internal changes approved by Aquemi quality; change control register in the turnover package",
+  "Confirm NCR practice: accept-as-is and repairs departing from approved documents need client approval; no shipment with an open product-contact NCR without client-approved disposition",
+  "Notification time for nonconformances found after shipment (working days)",
+  "Supplier review interval (months); whether Aquemi audits critical subcontractors on site and how often; supplier audit practice",
+  "Whether electropolishing and shop passivation are in-house or by a named subcontractor (same as svc-fabrication); whether site passivation is done by Aquemi staff (no longer asked on this page)",
+  "PMI by X-ray fluorescence at receipt: standard or option (same as svc-fabrication, cmp-documentation)",
+  "Calibration provider and accreditation (for example ISO/IEC 17025); calibration intervals by instrument type (months)",
+  "Weld inspector qualification (for example CWB or AWS certified welding inspector)",
+  "Pressure vessel route (certified vessel fabricator or ASME certificate of authorization) and panel shop and mark (same as compliance)",
+  "Welding certification held (for example CWB CSA W47.1) (same as compliance)",
+  "Safety programme certification (for example provincial COR), workers' compensation clearance, contractor platforms registered on (Avetta, ISNetworld, ComplyWorks) or none",
+  "Certificates of insurance: general and professional liability limits for the questionnaire pack",
+  "Quality manual and critical supplier names shared openly or under NDA (same as svc-design: openly or under NDA)",
+  "Questionnaire turnaround (working days); whether quality agreements are returned with the quote and the mark-up turnaround (working days) (same as compliance FAQ)",
+  "Remote audit: offered, notice (working days), whether a live shop view is possible",
+  "On-site audit notice (working days); shop and office location (city, province) (same as svc-fabrication, svc-design); whether supplier audits before order are free of charge",
+  "Audit request response time (working days) for the form and closing CTA; form back-end (where submissions go)",
+  "Role that releases a system to ship and its independence from production; quality organization chart",
+  "Quality record retention (years); turnover package copy retention is on cmp-documentation",
+  "Prepare the questionnaire pack: standard supplier questionnaire, procedure list, redacted NCR/CAPA, change request, calibration certificate and training matrix extract"
+ ]
+}

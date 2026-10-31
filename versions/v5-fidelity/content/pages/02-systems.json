@@ -1,0 +1,431 @@
+{
+ "id": "systems",
+ "section": "Systems",
+ "nav_label": "All systems",
+ "title": "Pharmaceutical water systems: PW, WFI, pure steam | Aquemi",
+ "meta": "Choose PW, WFI or pure steam systems by water grade and standard: USP <645> 1.3 µS/cm, USP <85> < 0.25 EU/mL, EN 285. Every skid wet tested at FAT.",
+ "path": "/systems/",
+ "eyebrow": "SYSTEMS · PW · WFI · PURE STEAM",
+ "headline": "PW, WFI and pure steam systems, built to the limit your auditor cites",
+ "lead": "Seven system families for Purified Water (PW), Water for Injection (WFI) and pure steam. Start from your water grade, your standard or the WFI route. Every skid is wet tested at factory acceptance test (FAT).",
+ "primary_cta": "Submit your URS for a route assessment",
+ "primary_cta_intent": "Route assessment: which systems, which WFI route",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "index": true,
+ "blocks": [
+  {
+   "type": "grid",
+   "h": "Seven system families",
+   "nav": "Systems",
+   "intro": "Each page gives limits, design parameters, options and documents. Or send your user requirement specification (URS) and we map the whole path.",
+   "items": [
+    {
+     "t": "Purified Water (PW) generation",
+     "d": "Reverse osmosis (RO) and electrodeionization (EDI) skids: PW below 1.3 µS/cm at 25 °C and 500 ppb total organic carbon (TOC), hot water sanitizable.",
+     "tag": "USP <645>",
+     "link": "sys-pw",
+     "icon": "ro-membrane"
+    },
+    {
+     "t": "WFI by distillation",
+     "d": "Multi-effect and vapour compression stills making hot WFI at < 0.25 EU/mL endotoxin.",
+     "tag": "USP <85>",
+     "link": "sys-wfi-distillation",
+     "icon": "still"
+    },
+    {
+     "t": "WFI by membrane",
+     "d": "Double-pass RO, EDI and ultrafiltration (UF): ambient WFI without plant steam for generation.",
+     "tag": "Ph. Eur. 0169",
+     "link": "sys-wfi-membrane",
+     "icon": "edi"
+    },
+    {
+     "t": "Pure steam generators",
+     "d": "Condensate that meets WFI limits; steam that passes EN 285 at the sterilizer.",
+     "tag": "EN 285",
+     "link": "sys-pure-steam",
+     "icon": "pure-steam"
+    },
+    {
+     "t": "Storage and distribution loops",
+     "d": "Turbulent flow at peak draw, branches at L/D ≤ 2, hot WFI loops above 70 °C, ambient loops sanitized by heat or ozone.",
+     "tag": "ASME BPE",
+     "link": "sys-storage",
+     "icon": "loop"
+    },
+    {
+     "t": "Pretreatment",
+     "d": "Media, softening and carbon or bisulfite: no detectable chlorine or chloramine at the RO inlet, silt density index (SDI) ≤ 3.",
+     "tag": "USP <1231>",
+     "link": "sys-pretreatment",
+     "icon": "softener"
+    },
+    {
+     "t": "Monitoring and controls",
+     "d": "Online TOC and conductivity on the raw reading; audit trails that meet 21 CFR Part 11 and EU GMP Annex 11.",
+     "tag": "21 CFR Part 11",
+     "link": "sys-monitoring",
+     "icon": "toc"
+    }
+   ]
+  },
+  {
+   "type": "diagram",
+   "h": "How the systems fit together",
+   "stages": [
+    "Municipal feed",
+    "Pretreatment",
+    "PW generation",
+    "WFI or pure steam",
+    "Storage",
+    "Distribution loop",
+    "Points of use"
+   ],
+   "caption": "Each arrow is an interface in the functional specification: what the next stage needs, what the stage before delivers. Monitoring and controls span the path.",
+   "base": "Monitoring and controls · TOC, conductivity, ozone"
+  },
+  {
+   "type": "table",
+   "h": "Start from your water grade",
+   "nav": "By water grade",
+   "cols": [
+    "Your water and its use",
+    "Released against",
+    "Limits that decide it",
+    "Systems on the path",
+    "Start with"
+   ],
+   "rows": [
+    [
+     "Purified Water (PW): oral and topical products, rinsing, feed to WFI and pure steam",
+     "USP Purified Water; Ph. Eur. 0008 (≤ 5.1 µS/cm @ 25 °C)",
+     "≤ 1.3 µS/cm @ 25 °C (USP <645> stage 1); TOC ≤ 0.50 mg/L (USP <643>); action level 100 colony-forming units (CFU)/mL (USP <1231> guidance)",
+     "Pretreatment, RO and EDI, ambient or hot loop",
+     {
+      "t": "PW generation",
+      "link": "sys-pw"
+     }
+    ],
+    [
+     "WFI, hot: parenterals, final rinse, hot loops",
+     "USP Water for Injection; Ph. Eur. 0169",
+     "Endotoxins < 0.25 EU/mL (USP <85>); conductivity and TOC as PW; action level 10 CFU/100 mL (USP <1231> guidance)",
+     "Pretreatment, PW, still, loop above 70 °C (EU GMP Annex 1, 6.10)",
+     {
+      "t": "WFI by distillation",
+      "link": "sys-wfi-distillation"
+     }
+    ],
+    [
+     "WFI, ambient: the same uses, where plant steam is costly or absent",
+     "USP Water for Injection; Ph. Eur. 0169 (RO with other techniques since April 2017)",
+     "Limits as distilled WFI, plus the biofilm and endotoxin control strategy your inspector will ask to see",
+     "Pretreatment, double-pass RO, EDI and UF, ambient loop",
+     {
+      "t": "WFI by membrane",
+      "link": "sys-wfi-membrane"
+     }
+    ],
+    [
+     "Pure steam: sterilizers and steam-in-place (SIP)",
+     "EU GMP Annex 1, 6.17; USP Pure Steam; EN 285",
+     "Condensate meets WFI limits; non-condensable gases ≤ 3.5 mL/100 mL condensate, dryness ≥ 0.95 metal loads, superheat ≤ 25 K (EN 285)",
+     "Pretreatment, PW or RO permeate feed, generator, clean steam header",
+     {
+      "t": "Pure steam generators",
+      "link": "sys-pure-steam"
+     }
+    ]
+   ],
+   "as": "router"
+  },
+  {
+   "type": "table",
+   "h": "Or start from the standard your auditor cites",
+   "nav": "By standard",
+   "cols": [
+    "Standard",
+    "What it asks of the system",
+    "Where we answer it"
+   ],
+   "rows": [
+    [
+     "USP <645>, <643>; Ph. Eur. 0008, 0169, 2.2.44",
+     "Stage 1 conductivity on the raw, uncompensated reading; TOC ≤ 0.50 mg/L on an analyzer with documented system suitability",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "EU GMP Annex 1 (2022), 6.9, 6.10, 6.15",
+     "Turbulent flow established and monitored; WFI stored to minimize microbial growth, for example above 70 °C; continuous TOC and conductivity",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "ASME BPE",
+     "Dead legs at length-to-diameter ratio (L/D) ≤ 2, full drainability, 316L product contact, SF1 Ra ≤ 0.51 µm or SF4 Ra ≤ 0.38 µm electropolished",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     }
+    ],
+    [
+     "21 CFR Part 11; EU GMP Annex 11; GAMP 5",
+     "Audit trails, secure electronic records and signatures, control software validated in proportion to risk",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     }
+    ],
+    [
+     "CSA B51",
+     "Pressure-retaining stills, pure steam generators and tanks need a Canadian Registration Number (CRN) in the province of installation",
+     {
+      "t": "Standards we design to",
+      "link": "compliance"
+     }
+    ],
+    [
+     "USP <1231>; Guidelines for Canadian Drinking Water Quality",
+     "Drinking water source; pretreatment that protects the RO without adding bioburden",
+     {
+      "t": "Pretreatment",
+      "link": "sys-pretreatment"
+     }
+    ]
+   ],
+   "as": "evidence",
+   "fold": 5
+  },
+  {
+   "type": "docs",
+   "h": "Documents every system ships with",
+   "nav": "Documents",
+   "items": [
+    {
+     "t": "Functional specification",
+     "d": "with the interface limits to the systems before and after"
+    },
+    {
+     "t": "Piping and instrumentation diagrams (P&IDs) and general arrangement drawings"
+    },
+    {
+     "t": "Material certificates",
+     "d": "for every product-contact part"
+    },
+    {
+     "t": "Instrument calibration certificates"
+    },
+    {
+     "t": "FAT and site acceptance test (SAT) protocols and reports",
+     "d": "every skid wet tested at FAT; loop piping built on site proven at SAT and IQ"
+    },
+    {
+     "t": "IQ and OQ protocols"
+    },
+    {
+     "t": "Operation and maintenance manual"
+    },
+    {
+     "t": "Added by system",
+     "code": "+",
+     "d": "still heat and mass balance, EN 285 test report, loop hydraulics and dead leg register, membrane projections, Part 11 and Annex 11 assessment"
+    }
+   ],
+   "fold": 6
+  },
+  {
+   "type": "table",
+   "h": "Hot or ambient WFI",
+   "nav": "Hot or ambient WFI",
+   "cols": [
+    "Factor",
+    "Distillation",
+    "Membrane (RO, EDI, UF)"
+   ],
+   "rows": [
+    [
+     "Energy for generation",
+     "Plant steam (multi-effect) or an electric compressor (vapour compression)",
+     "Electricity for pumps and EDI; heat only for periodic hot water sanitization"
+    ],
+    [
+     "Outlet temperature",
+     "Hot: fills a loop above 70 °C without reheating",
+     "Ambient; heating it for a hot loop gives back much of the saving"
+    ],
+    [
+     "Endotoxin control",
+     "Phase change, with the still's guaranteed reduction",
+     "Two RO passes and a final UF in series, scheduled sanitization, online monitoring, membrane replacement limits"
+    ],
+    [
+     "Regulatory steps",
+     "None beyond normal qualification",
+     "Ph. Eur.: notice to your GMP supervisory authority first (EMA/INS/GMP/443117/2017). USP: normal qualification."
+    ],
+    [
+     "Fits when",
+     "You want a hot loop, a market or corporate standard calls for distillation, or plant steam is on hand",
+     "Your process uses ambient WFI, steam is costly or absent, and your quality unit will run a membrane control strategy"
+    ]
+   ],
+   "as": "versus",
+   "intro": "The limits are the same. Use, utilities and your quality unit decide the route."
+  },
+  {
+   "type": "spec",
+   "h": "Budget ranges before you ask for a quote",
+   "caption": "Typical budget ranges · CAD, before tax",
+   "cols": [
+    "System",
+    "Typical budget",
+    "What the range assumes"
+   ],
+   "note": "Planning ranges; your proposal is priced on your URS, feed water and site. Each includes FAT, installation and operational qualification (IQ/OQ) protocols and the turnover package. Installation, field piping and utilities are quoted separately.",
+   "rows": [
+    {
+     "p": "PW generation, RO + EDI, [reference capacity, L/h]",
+     "v": "[budget range, CAD]",
+     "m": "Single-pass RO with EDI, hot water sanitizable, municipal feed"
+    },
+    {
+     "p": "WFI by distillation, [reference capacity, L/h]",
+     "v": "[budget range, CAD]",
+     "m": "Multi-effect still on plant steam"
+    },
+    {
+     "p": "WFI by membrane, [reference capacity, L/h]",
+     "v": "[budget range, CAD]",
+     "m": "Double-pass RO, EDI and ultrafiltration"
+    },
+    {
+     "p": "Pure steam generator, [reference capacity, kg/h]",
+     "v": "[budget range, CAD]",
+     "m": "Generator on plant steam"
+    },
+    {
+     "p": "Storage tank and loop, [reference tank volume L, points of use]",
+     "v": "[budget range, CAD]",
+     "m": "Hot or ozonated loop, field piping excluded"
+    },
+    {
+     "p": "Pretreatment train, [reference capacity, L/h]",
+     "v": "[budget range, CAD]",
+     "m": "Multimedia, softener and carbon or bisulfite"
+    }
+   ],
+   "nav": "Budget",
+   "fold": 3,
+   "fold_noun": "ranges"
+  },
+  {
+   "type": "faq",
+   "h": "Questions engineering and quality teams ask first",
+   "nav": "FAQ",
+   "items": [
+    {
+     "q": "Distilled or membrane WFI: where do we start?",
+     "a": "With a route assessment. The limits are the same either way. What decides it: hot or ambient use, what plant steam and cooling water cost you, whether a market or corporate standard calls for distillation, and whether your quality unit will run a membrane control strategy. We write the reasoning down and say plainly when distillation is the better route."
+    },
+    {
+     "q": "Can you supply one part, or should one supplier design it all?",
+     "a": "Each family is supplied on its own and designed to work with equipment already on site, including another supplier's. The water is released at the point of use, so the margin between generation and loop must be someone's job: we write the interface limits into our functional specification and test our side against them at FAT and SAT."
+    },
+    {
+     "q": "Where does your scope end and our plant begin?",
+     "a": "At battery limits we state connection by connection in the proposal and functional specification: feed water inlet, drains, utilities, network and point-of-use valves. A typical scope: [standard battery limits, typical scope]. Anything outside that line is listed with who supplies it, so nothing is left between two contracts."
+    },
+    {
+     "q": "How do we size generation against storage?",
+     "a": "From your point-of-use demand profile over a full production day. Generation covers the average draw plus sanitization and recovery time, and the tank covers the peaks. We share the calculation with you."
+    },
+    {
+     "q": "Do you build to standard platforms or to order?",
+     "a": "[standard platforms, capacity ranges, lead time in weeks]. Either way, materials, instrumentation and controls are adapted to your URS. Every skid is wet tested at FAT before it ships; loop piping built on your site is proven at SAT and IQ."
+    },
+    {
+     "q": "Who builds the stills and pure steam generators?",
+     "a": "[stills and generators: in-house or named maker]. The distillation and pure steam pages list the tests and documents each one ships with."
+    },
+    {
+     "q": "Do you supply lab, hospital or industrial water systems?",
+     "a": "As adjacent uses, the same RO and EDI platform is used for hospital reprocessing water (CSA Z314), laboratory reagent water (ASTM D1193) and industrial demineralized water. Our scope: [hospital, lab and industrial water scope]. These pages describe the pharmaceutical build; send the standard you work to and we will say plainly whether it is in scope."
+    },
+    {
+     "q": "Our running system is out of specification. Who do we contact?",
+     "a": "Use the service request page with your current readings. For planned changes such as more capacity, new points of use or new controls, see upgrades and retrofits."
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where to go next",
+   "items": [
+    "svc-design",
+    "cmp-documentation",
+    "svc-upgrades"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your water grade, your standard and your flow. We map the route.",
+  "body": "A process engineer reads what you send and replies with questions or the written assessment.",
+  "button": "Submit your URS for a route assessment",
+  "link": "contact-proposal",
+  "intent": "Route assessment: which systems, which WFI route",
+  "include_label": "What to send for a route assessment",
+  "include": [
+   "Feed water analysis, summer and winter, with disinfectant",
+   "Water grade and pharmacopoeia for each step",
+   "Points of use: flow, temperature, simultaneous use",
+   "Peak L/h and daily m³/day per grade",
+   "Pure steam users: kg/h and inlet pressure",
+   "Utilities and equipment you want to keep",
+   "Your URS, a draft is enough"
+  ],
+  "turnaround": "[proposal response time, working days]",
+  "returns": [
+   "Written route assessment",
+   "The systems on your path",
+   "The WFI route, if you need one",
+   "The reasoning, written down"
+  ]
+ },
+ "todo": [
+  "Whether Aquemi offers named standard platforms, their capacity ranges and standard lead time in weeks ([standard platforms, capacity ranges, lead time in weeks], FAQ)",
+  "Whether Aquemi builds stills and pure steam generators in-house or buys them from a named manufacturer ([stills and generators: in-house or named maker], FAQ; same open fact as sys-wfi-distillation and sys-pure-steam)",
+  "Whether the route assessment is free or charged",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Hospital (CSA Z314), laboratory (ASTM D1193) and industrial demin water scope: new systems, upgrades, service only or not offered ([hospital, lab and industrial water scope], FAQ; same wording as sys-pw)",
+  "Confirm every skid in every family (including the loop pump and heat exchanger skid, tanks and control panels) gets a wet FAT before shipping; field-built loop piping is proven at SAT/IQ (hero lead, docs, FAQ; same as svc-fat-sat and home)",
+  "Budget ranges (CAD) for each system family at a stated reference capacity or tank size, including FAT, IQ/OQ protocols and turnover package ([budget range, CAD], [reference capacity, L/h], [reference tank volume L, points of use])",
+  "Standard battery limits for a typical scope ([standard battery limits, typical scope])"
+ ],
+ "facts": [
+  {
+   "v": "7",
+   "l": "System families, feed water to point of use"
+  },
+  {
+   "v": "100 %",
+   "l": "Skids wet tested at FAT before shipping"
+  },
+  {
+   "v": "≤ 1.3 µS/cm",
+   "l": "PW conductivity at 25 °C · USP <645>"
+  },
+  {
+   "v": "< 0.25 EU/mL",
+   "l": "WFI endotoxin · USP <85>"
+  }
+ ]
+}

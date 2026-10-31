@@ -1,0 +1,59 @@
+/* ---------- FAQ: framed question cards on one junction spine (concept 15) ---------- */
+/* Each question is a ruled card hung from a vertical spine by a short connector with a junction node: the index as
+   "01 /", the question in condensed capitals and a bracketed [+] / [−] sign. The open card turns flow (frame, connector,
+   node) and shows its answer under a dashed rule. Native <details>, so it works without JavaScript; a shared name keeps
+   one answer open. Spine, connectors and nodes are CSS only. */
+.aq-faq { position: relative; display: flex; flex-direction: column; gap: var(--space-3); padding-left: var(--space-8); }
+.aq-faq::before { content: ""; position: absolute; top: var(--space-6); bottom: var(--space-6); left: var(--space-2); border-left: 1px solid var(--line-strong); }
+.aq-faq > details { position: relative; border: 1px solid var(--line-strong); background: var(--surface); transition: border-color 160ms; }
+/* Connector from the spine to the card, and its junction node on the spine */
+.aq-faq > details::before { content: ""; position: absolute; top: calc(var(--space-6) + 1px); left: calc(-1 * var(--space-6) - 1px); width: var(--space-6); border-top: 1px solid var(--line-strong); }
+.aq-faq > details::after {
+  content: ""; position: absolute; top: calc(var(--space-6) - 3px); left: calc(-1 * var(--space-6) - 4px);
+  width: 9px; height: 9px; box-sizing: border-box; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); background: var(--surface);
+}
+.aq-faq summary {
+  display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr) auto;
+  column-gap: var(--space-3); align-items: baseline;
+  padding: var(--space-4) var(--space-4) var(--space-4) var(--space-4);
+  cursor: pointer; list-style: none;
+  font: 600 22px/24px var(--font-display); letter-spacing: 0.005em; text-transform: uppercase; color: var(--ink);
+}
+.aq-faq summary::-webkit-details-marker { display: none; }
+.aq-faq summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-faq summary .aq-index { line-height: 24px; }
+.aq-faq summary .aq-index::after { content: " /"; }
+.aq-faq__q { min-width: 0; text-wrap: pretty; overflow-wrap: break-word; }
+.aq-faq summary:hover .aq-faq__q { color: var(--flow); }
+.aq-faq__sign { justify-self: end; font: 500 13px/24px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle); white-space: nowrap; }
+.aq-faq__sign::before { content: "[ + ]"; }
+.aq-faq details[open] .aq-faq__sign::before { content: "[ \2212 ]"; }
+.aq-faq details[open] .aq-faq__sign, .aq-faq details[open] summary .aq-index { color: var(--flow); }
+.aq-faq > details[open] { border-color: var(--flow); box-shadow: inset 3px 0 0 var(--flow); }
+.aq-faq > details[open]::before { border-top-color: var(--flow); }
+.aq-faq > details[open]::after { border-color: var(--flow); background: var(--flow); }
+
+/* Answer: under the question column, below a dashed rule */
+.aq-faq__a {
+  margin: 0 var(--space-4) 0 calc(var(--space-12) + var(--space-3) + var(--space-4)); padding: var(--space-3) 0 var(--space-6);
+  border-top: 1px dashed var(--line-strong);
+  animation: aq-faq-in 400ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-faq__a p { margin: 0; max-width: var(--text-max); font: 400 16px/26px var(--font-sans); color: var(--ink-muted); }
+.aq-faq__a p + p { margin-top: var(--space-2); }
+@keyframes aq-faq-in { from { opacity: 0; transform: translateY(var(--space-2)); } to { opacity: 1; transform: none; } }
+@keyframes aq-faq-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .aq-faq__a { animation-name: aq-faq-fade; } .aq-faq > details { transition: none; } }
+
+@container (max-width: 860px) {
+  .aq-faq { gap: var(--space-2); padding-left: var(--space-6); }
+  .aq-faq::before { left: var(--space-1); top: var(--space-6); }
+  .aq-faq > details::before { left: calc(-1 * var(--space-4) - 5px); width: calc(var(--space-4) + 4px); top: calc(var(--space-6) - 3px); }
+  .aq-faq > details::after { left: calc(-1 * var(--space-4) - 8px); top: calc(var(--space-6) - 7px); }
+  .aq-faq summary { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "i s" "q q"; row-gap: var(--space-1); padding: var(--space-3); font-size: 20px; line-height: 22px; }
+  .aq-faq summary .aq-index { grid-area: i; line-height: 18px; }
+  .aq-faq__q { grid-area: q; }
+  .aq-faq__sign { grid-area: s; line-height: 18px; font-size: 12px; }
+  .aq-faq__a { margin: 0 var(--space-3); padding: var(--space-3) 0 var(--space-4); }
+  .aq-faq__a p { font-size: 15px; line-height: 24px; }
+}

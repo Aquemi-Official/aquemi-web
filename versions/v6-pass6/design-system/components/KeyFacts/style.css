@@ -1,0 +1,103 @@
+/* ---------- KeyFacts: the numbers a page stands on, as a measurement strip (concept 39) ---------- */
+/* A cream data plate (data-theme="light" on the dl) between two rulers: tick bands inside the top and bottom of the
+   frame, round fixings where the cell dividers meet them and a dimension line above the plate. Each fact is a cell:
+   "01 / NAME" in mono caps, a large centred mono figure with its unit set under it in flow capitals, a small dial,
+   and the source standard over a dashed hairline at the foot. Rulers, fixings, index and dial are decoration. */
+.aq-key-facts {
+  position: relative; margin: 0;
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr);
+  padding: var(--space-3) var(--space-2);
+  border: 1px solid var(--line-strong); outline: 1px solid var(--line-strong); outline-offset: var(--space-1);
+  background-color: var(--surface); color: var(--ink);
+  /* Rulers: major ticks every space-16, minor every space-2, top edge and bottom edge */
+  background-image:
+    repeating-linear-gradient(90deg, var(--ink-subtle) 0 1px, transparent 1px var(--space-16)),
+    repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px var(--space-2)),
+    repeating-linear-gradient(90deg, var(--ink-subtle) 0 1px, transparent 1px var(--space-16)),
+    repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px var(--space-2));
+  background-repeat: no-repeat;
+  background-size: 100% var(--space-3), 100% var(--space-2), 100% var(--space-3), 100% var(--space-2);
+  background-position: var(--space-4) top, var(--space-4) top, var(--space-4) bottom, var(--space-4) bottom;
+}
+
+.aq-key-facts > div {
+  position: relative; min-width: 0;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "dt dt" "v dial" "src src";
+  align-items: center; column-gap: var(--space-2); row-gap: var(--space-3);
+  padding: var(--space-4);
+  border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong);
+}
+.aq-key-facts > div + div { border-left: 1px solid var(--line-strong); }
+
+/* Fixings: a small ring on each divider where it meets the top and bottom ruler; the strip's right end gets the dl's own */
+.aq-key-facts > div::before, .aq-key-facts > div::after,
+.aq-key-facts::before, .aq-key-facts::after {
+  content: ""; position: absolute; z-index: 1;
+  width: 10px; height: 10px; box-sizing: border-box;
+  border: 1px solid var(--ink-subtle); border-radius: var(--radius-pill); background: var(--surface);
+  pointer-events: none;
+}
+.aq-key-facts > div::before { top: 0; left: 0; transform: translate(-50%, -50%); }
+.aq-key-facts > div::after { bottom: 0; left: 0; transform: translate(-50%, 50%); }
+.aq-key-facts > div:first-child::before, .aq-key-facts > div:first-child::after { left: 0; }
+.aq-key-facts::before { top: var(--space-3); right: var(--space-2); transform: translate(50%, -50%); }
+.aq-key-facts::after { bottom: var(--space-3); right: var(--space-2); transform: translate(50%, 50%); }
+
+/* Index and name */
+.aq-key-facts dt {
+  grid-area: dt; padding-bottom: var(--space-2); border-bottom: 1px solid var(--line);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink);
+}
+.aq-key-facts__i { color: var(--ink-subtle); }
+
+/* Figure with its comparator, unit under it */
+.aq-key-facts dd { margin: 0; }
+.aq-key-facts__value, .aq-key-facts dd:first-of-type {
+  grid-area: v; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; column-gap: 0.12em; text-align: center;
+  font: 400 clamp(34px, 3.8cqi, 52px)/1.05 var(--font-mono); letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums; color: var(--ink);
+}
+.aq-key-facts:has(> :nth-child(5)) dd:first-of-type { font-size: clamp(26px, 2.6cqi, 38px); }
+.aq-key-facts dd.is-long { font-size: clamp(20px, 2cqi, 26px); line-height: 1.2; letter-spacing: -0.01em; }
+.aq-key-facts dd.is-long .aq-ph { font-size: 0.8em; }
+.aq-key-facts__fig { overflow-wrap: normal; word-break: normal; hyphens: none; }
+/* Unconfirmed ranges ("[500–20,000]") are long: set them smaller so they stay on one line in a narrow cell */
+.aq-key-facts__fig .aq-ph { font-size: 0.55em; letter-spacing: 0; vertical-align: 0.2em; }
+.aq-key-facts__cmp { font-size: 0.8em; letter-spacing: 0; }
+.aq-key-facts__unit { flex-basis: 100%; font: 500 max(14px, 0.36em)/1.3 var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--flow); }
+
+/* Dial: a small instrument face (decoration) */
+.aq-key-facts__dial {
+  grid-area: dial; position: relative; width: var(--space-8); height: var(--space-8); border: 1px solid var(--ink-muted); border-radius: var(--radius-pill);
+  background: radial-gradient(circle, var(--ink) 0 2px, transparent 2.5px);
+}
+.aq-key-facts__dial::before { content: ""; position: absolute; inset: 3px; border-radius: var(--radius-pill); border: 2px dotted var(--line-strong); border-bottom-color: transparent; }
+.aq-key-facts__dial::after { content: ""; position: absolute; left: 50%; top: 50%; width: 40%; height: 1px; background: var(--ink); transform-origin: 0 50%; transform: rotate(-40deg); }
+
+/* Source standard, on the cell's last line */
+.aq-key-facts dd.aq-key-facts__src {
+  grid-area: src; align-self: end; padding-top: var(--space-2);
+  border-top: 1px dashed var(--line-strong);
+  font: 400 12px/16px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted);
+  overflow-wrap: break-word;
+}
+
+.aq-hero .aq-key-facts { margin-top: var(--space-16); }
+
+@container (max-width: 860px) {
+  /* Phones: one cell per row; the name full width on top, then the figure on the left, the source and dial on the
+     right; no fixings. Every label 12 px. */
+  .aq-key-facts { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: minmax(0, 1fr); padding: var(--space-3) var(--space-1); }
+  .aq-key-facts > div { grid-template-columns: minmax(0, 1fr) auto auto; grid-template-areas: "dt dt dt" "v src dial"; row-gap: var(--space-2); padding: var(--space-3); border-bottom: 0; }
+  .aq-key-facts > div + div { border-left: 0; }
+  .aq-key-facts > div:last-child { border-bottom: 1px solid var(--line-strong); }
+  .aq-key-facts > div::before, .aq-key-facts > div::after, .aq-key-facts::before, .aq-key-facts::after { content: none; }
+  .aq-key-facts dt { padding-bottom: var(--space-1); font-size: 12px; line-height: 16px; letter-spacing: 0.06em; }
+  .aq-key-facts dd.aq-key-facts__src { align-self: center; padding-top: 0; border-top: 0; font-size: 12px; line-height: 16px; text-align: right; }
+  .aq-key-facts dd:first-of-type, .aq-key-facts:has(> :nth-child(5)) dd:first-of-type { justify-content: flex-start; text-align: left; font-size: 28px; line-height: 1.1; }
+  .aq-key-facts__unit { flex-basis: auto; margin-left: var(--space-1); }
+  .aq-key-facts dd.is-long { font-size: 17px; line-height: 1.25; }
+  .aq-key-facts__unit { font-size: 12px; }
+  .aq-key-facts__dial { width: var(--space-6); height: var(--space-6); }
+  .aq-hero .aq-key-facts { margin-top: var(--space-8); }
+}

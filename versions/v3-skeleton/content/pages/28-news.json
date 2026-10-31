@@ -1,0 +1,337 @@
+{
+ "id": "news",
+ "section": "Company",
+ "nav_label": "News",
+ "title": "Pharmaceutical water technical notes | Aquemi",
+ "meta": "Answer-first notes on USP <645>, <1231>, Ph. Eur. 12.3, EU GMP Annex 1, ASME BPE and CSA B51 for PW, WFI and pure steam. Get each one by email.",
+ "path": "/company/news/",
+ "eyebrow": "TECHNICAL NOTES · PW · WFI · PURE STEAM",
+ "headline": "Water system questions, answered in the first three sentences",
+ "lead": "Notes for engineering, validation and quality teams running Purified Water (PW), Water for Injection (WFI) and pure steam systems. Each answers one question first and names its clause. None is published yet.",
+ "tags": [
+  "USP <645>",
+  "USP <1231>",
+  "Ph. Eur. 12.3",
+  "EU GMP Annex 1",
+  "ASME BPE",
+  "CSA B51"
+ ],
+ "primary_cta": "Subscribe to technical notes",
+ "secondary_cta": {
+  "label": "Standards we design to",
+  "link": "compliance"
+ },
+ "blocks": [
+  {
+   "type": "grid",
+   "nav": "Standards",
+   "anchor": "standards",
+   "h": "Standards and regulatory updates",
+   "intro": "What a clause asks, and what a new edition changes. Each row links to the page where we apply the answer.",
+   "items": [
+    {
+     "t": "USP <645> stage 1: why the reading must be non-compensated",
+     "d": "Our transmitters show temperature-compensated conductivity. Can we release water on that reading?",
+     "tag": "USP <645>",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "USP <1231> is informational. What does it actually ask of you?",
+     "d": "Is USP <1231> binding, and where do the 100 CFU/mL and 10 CFU/100 mL action levels come from?",
+     "tag": "USP <1231>",
+     "link": "compliance"
+    },
+    {
+     "t": "Membrane WFI under Ph. Eur. 0169",
+     "d": "Can WFI be made without distillation for Europe, and who must be told before you start?",
+     "tag": "Ph. Eur. 0169; EMA Q&A (2017)",
+     "link": "sys-wfi-membrane"
+    },
+    {
+     "t": "Dead legs: how ASME BPE measures L/D",
+     "d": "Which L/D should a loop be designed to, and where is L measured from?",
+     "tag": "ASME BPE; EU GMP Annex 1 6.7",
+     "link": "sys-storage"
+    },
+    {
+     "t": "CSA B51 and the CRN for imported equipment",
+     "d": "Does an imported still or pure steam generator need a Canadian registration number (CRN), and who applies?",
+     "tag": "CSA B51",
+     "link": "compliance"
+    },
+    {
+     "t": "Ph. Eur. 12.3: what changed for water",
+     "d": "What did 12.3 change in Purified Water (0008), WFI (0169) and total organic carbon (TOC, 2.2.44), in force 1 July 2026, for an existing system?",
+     "tag": "Ph. Eur. 0008, 0169, 2.2.44",
+     "link": "sys-pw"
+    },
+    {
+     "t": "EU GMP Annex 1 (2022) for water and steam",
+     "d": "Which Annex 1 clauses apply to WFI, pure steam and distribution, and how does Health Canada's GUI-0119 apply them?",
+     "tag": "EU GMP Annex 1; GUI-0119",
+     "link": "compliance"
+    },
+    {
+     "t": "FDA computer software assurance (CSA) and water system controls",
+     "d": "The CSA guidance was finalized in 2025 and revised in 2026. What does it change in how we test the controls?",
+     "tag": "FDA CSA guidance; GAMP 5 (2022)",
+     "link": "sys-monitoring"
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "nav": "Design",
+   "anchor": "design",
+   "h": "Design decisions behind a system",
+   "items": [
+    {
+     "t": "Distillation or membrane WFI",
+     "d": "We do not yet know whether we need a still or a membrane system. What decides it?",
+     "tag": "Ph. Eur. 0169; USP WFI monograph",
+     "link": "systems"
+    },
+    {
+     "t": "Hot or ambient WFI storage",
+     "d": "Does a WFI loop have to be hot, and what does an ambient loop need instead?",
+     "tag": "EU GMP Annex 1 6.10; USP <1231>",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Ozone or hot water sanitization for a PW loop",
+     "d": "Which sanitization method suits an ambient PW loop, and how do you prove no ozone reaches the point of use?",
+     "tag": "USP <1231>; ISPE Baseline Guide Vol. 4",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Chloramine in municipal feed water",
+     "d": "Our supply is chloraminated. Is standard carbon enough, and where does the ammonia go?",
+     "tag": "USP <1231>; Guidelines for Canadian Drinking Water Quality",
+     "link": "sys-pretreatment"
+    },
+    {
+     "t": "Cold feed water and reverse osmosis (RO) output in a Canadian winter",
+     "d": "How much RO output do we lose at winter feed temperatures, and how is a system sized for it?",
+     "tag": "Design practice (no limit set by a standard)",
+     "link": "sys-pw"
+    },
+    {
+     "t": "Questions to ask when comparing water system proposals",
+     "d": "Two proposals look alike on price. Which scope, document and test differences matter?",
+     "tag": "EU GMP Annex 15 3.2; ASME BPE",
+     "link": "contact-proposal"
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "nav": "Qualification",
+   "anchor": "qualification",
+   "h": "Qualification notes",
+   "items": [
+    {
+     "t": "What factory acceptance test (FAT) results can replace in IQ and OQ",
+     "d": "Will our quality unit accept FAT results in place of installation and operational qualification (IQ and OQ) tests?",
+     "tag": "EU GMP Annex 15 3.6; ASTM E2500",
+     "link": "svc-fat-sat"
+    },
+    {
+     "t": "Who owns design qualification (DQ)",
+     "d": "Is DQ the supplier's job or ours, and what does the quality unit approve?",
+     "tag": "EU GMP Annex 15 3.3; ASTM E2500",
+     "link": "svc-design"
+    },
+    {
+     "t": "The three-phase performance qualification (PQ)",
+     "d": "Do we really have to wait a year before using the water?",
+     "tag": "USP <1231>; ISPE Baseline Guide Vol. 4",
+     "link": "svc-cq"
+    },
+    {
+     "t": "Alert and action levels from qualification data",
+     "d": "Why not use the pharmacopoeia limits as alert levels, and how are they set?",
+     "tag": "EU GMP Annex 1 6.13, 6.14; USP <1231>",
+     "link": "svc-cq"
+    },
+    {
+     "t": "Does an upgrade restart PQ?",
+     "d": "We are adding points of use or replacing a PLC. Must the whole system be requalified?",
+     "tag": "EU GMP Annex 15 section 11",
+     "link": "svc-upgrades"
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "nav": "Troubleshooting",
+   "anchor": "troubleshooting",
+   "h": "Troubleshooting notes for operators",
+   "items": [
+    {
+     "t": "Why is my RO producing less water?",
+     "d": "Permeate flow has dropped. Is it temperature, fouling or scaling, and what do we check first?",
+     "tag": "Membrane manufacturer data; USP <1231>",
+     "link": "svc-service"
+    },
+    {
+     "t": "Conductivity rising in the loop",
+     "d": "Loop conductivity is trending up but still in limits. Where does it come from, and when do we act?",
+     "tag": "USP <645>; EU GMP Annex 1 6.14",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "A TOC excursion on an online analyzer",
+     "d": "TOC spiked on one reading. Is it the water, the analyzer or the sample line?",
+     "tag": "USP <643>",
+     "link": "sys-monitoring"
+    },
+    {
+     "t": "Microbial counts at one point of use only",
+     "d": "One outlet fails and the rest pass. Is it the loop, the valve, the hose or the sampling?",
+     "tag": "EU GMP Annex 1 6.13; FDA Guide to Inspections of High Purity Water Systems",
+     "link": "sys-storage"
+    },
+    {
+     "t": "The sterilizer fails the dryness test",
+     "d": "Our autoclave fails the EN 285 dryness test. Is it the generator, the header or the test?",
+     "tag": "EN 285",
+     "link": "sys-pure-steam"
+    }
+   ]
+  },
+  {
+   "type": "form",
+   "nav": "Subscribe",
+   "anchor": "subscribe",
+   "h": "Get each technical note by email",
+   "intro": "One email per published note, at most [send frequency, emails per month at most]. Pick your topics. We confirm by email first, send no sales mailings and never share your address.",
+   "submit": "Subscribe",
+   "fields": [
+    {
+     "label": "Email",
+     "kind": "email",
+     "required": true
+    },
+    {
+     "label": "First name",
+     "kind": "text",
+     "required": false
+    },
+    {
+     "label": "Your role",
+     "kind": "select",
+     "required": false,
+     "options": [
+      "Process or project engineering",
+      "Validation",
+      "Quality assurance",
+      "Operations or maintenance",
+      "Laboratory",
+      "Other"
+     ]
+    },
+    {
+     "label": "Topics",
+     "kind": "checkbox-group",
+     "required": false,
+     "options": [
+      "Standards and regulatory updates",
+      "Design",
+      "Qualification",
+      "Troubleshooting",
+      "Company news"
+     ],
+     "help": "Leave all unticked to receive every technical note."
+    },
+    {
+     "label": "A question you would like answered",
+     "kind": "textarea",
+     "required": false,
+     "help": "If the answer is useful to others, it may become a note, without your name or company."
+    },
+    {
+     "label": "Consent",
+     "kind": "checkbox-group",
+     "required": true,
+     "options": [
+      "Yes, [Aquemi legal entity name] may email me technical notes and, if ticked above, company news. I can withdraw consent at any time."
+     ],
+     "help": "Sent by [Aquemi legal entity name], [mailing address], [contact email]. Every email has an unsubscribe link; we act on it within 10 business days, as Canada's anti-spam legislation (CASL) requires. Privacy: [privacy notice, link; PIPEDA and Quebec Law 25]."
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions subscribers ask",
+   "items": [
+    {
+     "q": "How often will you email?",
+     "a": "Once per published note, at most [send frequency, emails per month at most]. If you tick topics, you receive only those. Company news goes only to people who tick it. We never use the list for sales: a proposal request goes through the proposal form."
+    },
+    {
+     "q": "How is each note written and reviewed?",
+     "a": "A named Aquemi engineer writes it from a question we are asked on projects, and a second engineer checks it before publication. Each claim names the standard, clause and edition; numbers carry their units. The note shows its publication date and date of last review. [Named author for each topic group]"
+    },
+    {
+     "q": "Can we cite a note in our validation documents?",
+     "a": "Cite the standard, not the note. A note is our reading of the clause, with the clause number so you can check it. Your quality unit decides how the standard applies to your site."
+    },
+    {
+     "q": "What happens when a standard changes after a note is published?",
+     "a": "We review the note against the new text, update it and change its date of last review. If the answer changes, the note says what changed and when, and subscribers to that topic get the update. Errors are fixed in place with a dated correction line, never silently."
+    },
+    {
+     "q": "Do you publish company news?",
+     "a": "Not yet. We will post FAT and handover milestones only with the client's written permission, and changes to our facilities, people and certifications that affect your projects. Each item carries its date; project news links to its case study."
+    },
+    {
+     "q": "How do I unsubscribe?",
+     "a": "Use the link at the foot of any email. It takes one click, and we act on it within 10 business days, as CASL requires; in practice [unsubscribe processing time]."
+    },
+    {
+     "q": "Our question is about our own system, not a general one.",
+     "a": "Send it through the proposal or service request form, so an engineer can answer it against your documents. We only turn questions into notes when the answer holds for most systems."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "A question you want answered now",
+  "body": "Send it to an engineer with your user requirement specification (URS) or system details. We reply within [proposal response time, working days]. If the answer helps others, it may become a note, without your name.",
+  "button": "Ask an engineer",
+  "link": "contact-proposal",
+  "intent": "Not sure yet: talk to an engineer"
+ },
+ "todo": [
+  "Target publication month for each of the 24 planned notes (add a status line per row once set); publish only notes that have passed review",
+  "Named author engineer (and role) for each note and each topic group; named second-engineer reviewer",
+  "Technical review of each note against the current text of its standard before writing: USP <645>, <643>, <1231>; Ph. Eur. 0008, 0169, 2.2.44 (12.3); EMA Q&A on membrane WFI; EN 285; ASME BPE (current edition); CSA B51; EU GMP Annex 1, 15; GUI-0119; FDA CSA guidance (2025, revised 2026)",
+  "Send frequency (emails per month at most)",
+  "Newsletter platform with confirmation email (double opt-in), consent record (date, time, form wording) and one-click unsubscribe",
+  "CASL sender identification: Aquemi legal entity name, mailing address, contact email; unsubscribe processing time (10 business days at most)",
+  "Privacy notice link (PIPEDA, Quebec Law 25) covering subscriber data",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "First company news items, each with client written permission where a project is named",
+  "Schema: Article markup on each published note; FAQPage on this page"
+ ],
+ "primary_cta_link": "#subscribe",
+ "facts": [
+  {
+   "v": "24 notes planned",
+   "l": "Standards, design, qualification and troubleshooting"
+  },
+  {
+   "v": "Answer first",
+   "l": "The answer in three sentences, then the clause and edition"
+  },
+  {
+   "v": "Reviewed and dated",
+   "l": "Checked by a second engineer; dated last review"
+  },
+  {
+   "v": "[send frequency, emails per month at most]",
+   "l": "One email per published note. Unsubscribe in one click"
+  }
+ ]
+}

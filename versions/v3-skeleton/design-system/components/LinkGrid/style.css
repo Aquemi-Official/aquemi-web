@@ -1,0 +1,6 @@
+/* ---------- LinkGrid: choices (usually pages) as rows of the shared list grammar ---------- */
+/* Layout from .aq-rows (base.css): index | title (→ when it links) | one line and an optional standard tag, with the
+   linked page's drawing small at the row end on desktop. Phones: compact rows, no drawings. */
+.aq-linkgrid .aq-rows__art { transition: background-color 120ms; }
+.aq-linkgrid .aq-rows__t { transition: color 120ms; }
+@media (prefers-reduced-motion: reduce) { .aq-linkgrid .aq-rows__art, .aq-linkgrid .aq-rows__t { transition: none; } }

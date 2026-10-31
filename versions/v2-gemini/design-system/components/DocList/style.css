@@ -1,0 +1,24 @@
+/* ---------- DocList ---------- */
+/* Desktop: tiles on a 6-column grid, three to a row; hairlines are the 1px grid gap showing the list's line background. */
+.aq-docs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--line); border: 1px solid var(--line); }
+.aq-docs > li { grid-column: span 2; position: relative; min-width: 0; display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-8) var(--space-6) var(--space-6); background: var(--surface-raised); }
+/* Last rows widen to two tiles so no row is left short: 3n+2 items end with one row of two, 3n+1 items with two rows of two. */
+.aq-docs > li:where(:nth-child(3n+1):nth-last-child(2), :nth-child(3n+1):nth-last-child(2) ~ li,
+  :nth-child(3n+1):nth-last-child(4), :nth-child(3n+1):nth-last-child(4) ~ li) { grid-column: span 3; }
+.aq-docs > li::before { content: ""; position: absolute; top: 0; left: var(--space-6); width: var(--space-12); height: 2px; background: var(--flow); }
+.aq-docs__code { font: 300 28px/34px var(--font-mono); letter-spacing: -0.01em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.aq-docs__n, .aq-docs__sep { color: var(--ink-subtle); }
+.aq-docs__sep { white-space: pre; }
+.aq-docs--plain .aq-docs__n { color: var(--ink-muted); }
+.aq-docs__name { font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-docs__d { display: block; margin-top: var(--space-1); font-size: 14px; color: var(--ink-muted); }
+
+/* Phone: a compact numbered list, "01 FS  Functional specification", codes in one aligned column. */
+@container (max-width: 860px) {
+  .aq-docs { grid-template-columns: auto minmax(0, 1fr); gap: 0; background: none; border: 0; border-bottom: 1px solid var(--line); }
+  .aq-docs > li { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; column-gap: var(--space-4); align-items: baseline; padding: var(--space-3) 0; background: none; border-top: 1px solid var(--line); }
+  .aq-docs > li::before { display: none; }
+  .aq-docs__code { font: 400 15px/22px var(--font-mono); letter-spacing: 0; white-space: nowrap; }
+  .aq-docs__n { margin-right: var(--space-2); }
+  .aq-docs__sep { display: none; }
+}

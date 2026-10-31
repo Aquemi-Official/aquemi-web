@@ -1,0 +1,48 @@
+/* ---------- RelatedLinks: the pages to read next ---------- */
+/* Desktop: three to a row (four for 4, 7 or 8 pages), each a hairline-topped column: the shared index, the page's drawing (when it has one),
+   its section as a mono label and its title with an arrow. Phones: compact rows of the shared list grammar,
+   index | title, section label below, arrow at the right; no drawings. The whole item is the link. */
+.aq-related-links {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--space-6);
+  margin: 0; padding: 0; list-style: none;
+}
+/* Four, seven or eight pages: four to a row */
+.aq-related-links:has(> :nth-child(4)):not(:has(> :nth-child(5))),
+.aq-related-links:has(> :nth-child(7)) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.aq-related-links > li { min-width: 0; display: flex; border-top: 1px solid var(--line-strong); }
+.aq-related-links__card {
+  flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "i art" "g g" "t t";
+  align-items: start; align-content: start; row-gap: var(--space-2);
+  padding: var(--space-3) 0 var(--space-6);
+  color: var(--ink); text-decoration: none;
+}
+:where(.aq-page) a.aq-related-links__card { color: var(--ink); }
+.aq-related-links__card .aq-index { grid-area: i; }
+.aq-related-links__art { grid-area: art; width: var(--space-16); margin-bottom: var(--space-2); transition: background-color 120ms; }
+.aq-related-links__group { grid-area: g; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-related-links__title { grid-area: t; font: 500 17px/24px var(--font-sans); overflow-wrap: break-word; text-wrap: pretty; transition: color 120ms; }
+.aq-related-links__title::after { content: "\a0\2192"; color: var(--flow); }
+.aq-related-links__card:hover .aq-related-links__title { color: var(--flow); }
+.aq-related-links__card:hover .aq-related-links__art { background-color: var(--flow); }
+.aq-related-links > li:has(> a:hover) { border-top-color: var(--flow); }
+.aq-related-links__card:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-related-links__card, .aq-related-links__art, .aq-related-links__title { transition: none; }
+}
+
+@container (max-width: 860px) {
+  .aq-related-links, .aq-related-links:has(> :nth-child(4)):not(:has(> :nth-child(5))),
+  .aq-related-links:has(> :nth-child(7)) { grid-template-columns: minmax(0, 1fr); border-bottom: 1px solid var(--line); }
+  .aq-related-links > li { border-top-color: var(--line); }
+  .aq-related-links__card {
+    grid-template-columns: var(--space-8) minmax(0, 1fr);
+    grid-template-areas: "i t" ". g";
+    column-gap: var(--space-3); row-gap: 0; align-items: baseline;
+    padding: var(--space-3) 0;
+  }
+  .aq-related-links__art { display: none; }
+  .aq-related-links__title { font-size: 16px; }
+}

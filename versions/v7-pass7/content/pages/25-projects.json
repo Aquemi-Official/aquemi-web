@@ -1,0 +1,335 @@
+{
+ "id": "projects",
+ "section": "Projects",
+ "nav_label": "Case studies",
+ "title": "Water system case studies and references | Aquemi",
+ "meta": "Case studies that state flow in L/h, USP <645> conductivity, TOC and EN 285 results with the method and report. Ask for a reference call or FAT witness.",
+ "path": "/projects/",
+ "eyebrow": "PROJECTS · CASE STUDIES",
+ "headline": "Projects you can audit: figure, method, report",
+ "lead": "Every case-study figure carries its unit, method and executed report. Until one covers your segment, check at the source.",
+ "facts": [
+  {
+   "v": "1 report per figure",
+   "l": "Executed report"
+  },
+  {
+   "v": "[reference clients available, number]",
+   "l": "Clients who take reference calls"
+  }
+ ],
+ "primary_cta": "Request a reference call",
+ "primary_cta_link": "#verify",
+ "blocks": [
+  {
+   "type": "prose",
+   "as": "explainer",
+   "h": "What a case study proves",
+   "intro": "Every figure carries four things your engineers can check.",
+   "points": [
+    {
+     "t": "The figure",
+     "d": "Measured value, unit and reference temperature, against the limit."
+    },
+    {
+     "t": "The method",
+     "d": "Sampling point, number of samples and period."
+    },
+    {
+     "t": "The report",
+     "d": "The executed FAT, SAT or IQ/OQ/PQ report."
+    },
+    {
+     "t": "The approval",
+     "d": "A second engineer checks it; the client's quality unit approves the text, deviations included."
+    }
+   ],
+   "nav": "Proof",
+   "ground": "light"
+  },
+  {
+   "type": "case",
+   "nav": "Record",
+   "h": "The record each case study fills",
+   "intro": "Published only with the client’s approval. [Replace with a delivered project]",
+   "items": [
+    {
+     "status": "Template · awaiting a real project",
+     "t": "PW and ozonated loop, [segment, province]",
+     "client": "[segment and dosage form, province]",
+     "problem": "[limit, capacity or deadline that started it]",
+     "system": "[pretreatment, membranes, storage, ozone, points of use]",
+     "standard": "USP PW monograph; Ph. Eur. 0008; ASME BPE dead legs L/D ≤ 2; EU GMP Annex 15",
+     "art": "sys-pw",
+     "changed": [
+      {
+       "t": "Reverse osmosis (RO) vessels: [new or replaced]",
+       "at": [
+        14,
+        45
+       ]
+      },
+      {
+       "t": "Electrodeionization (EDI) stack: [new or replaced]",
+       "at": [
+        78,
+        30
+       ]
+      }
+     ],
+     "outcomes": [
+      {
+       "v": "[value]",
+       "unit": "µS/cm @ 25 °C",
+       "l": "Conductivity, loop return",
+       "method": "Online sensor; [OQ or PQ report number]"
+      },
+      {
+       "v": "[value]",
+       "unit": "ppb",
+       "l": "TOC, loop return",
+       "method": "Online analyzer; [OQ or PQ report number]"
+      },
+      {
+       "v": "[value]",
+       "unit": "CFU/mL",
+       "l": "Microbial, worst point of use",
+       "method": "Client PQ data; [samples and PQ weeks]"
+      },
+      {
+       "v": "[value]",
+       "unit": "L/h",
+       "l": "PW generation rate",
+       "method": "Measured at [FAT or SAT]; [report number]"
+      }
+     ],
+     "timeline": [
+      {
+       "t": "Order",
+       "when": "[week 0]"
+      },
+      {
+       "t": "Design approved",
+       "when": "[week]"
+      },
+      {
+       "t": "FAT",
+       "when": "[week]"
+      },
+      {
+       "t": "SAT",
+       "when": "[week]"
+      },
+      {
+       "t": "OQ",
+       "when": "[week]"
+      },
+      {
+       "t": "PQ complete",
+       "when": "[week]"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "nav": "Verify today",
+   "h": "Verify before a case study exists",
+   "intro": "Each route checks at the source. Pick what your team needs to see.",
+   "cols": [
+    "What you check",
+    "Route",
+    "What it does not prove",
+    "Time to arrange"
+   ],
+   "rows": [
+    [
+     "Schedule, deviations and service, from a client",
+     "Reference call",
+     "Performance on your feed water",
+     "[reference call lead time, working days]"
+    ],
+    [
+     "Alarms, interlocks and controls before shipment",
+     {
+      "t": "FAT witness",
+      "link": "svc-fat-sat"
+     },
+     "Performance on your feed water",
+     "[FAT witness notice, working days]"
+    ],
+    [
+     "Weld logs and traceability at [shop location, city and province]",
+     {
+      "t": "Shop visit",
+      "link": "svc-fabrication"
+     },
+     "System performance; that is the FAT",
+     "[shop visit notice, working days]"
+    ],
+    [
+     "What your validation file will contain",
+     {
+      "t": "Sample turnover package",
+      "link": "cmp-documentation"
+     },
+     "That a project's records are complete",
+     "[sample package response time, working days]"
+    ],
+    [
+     "That we read your URS line by line",
+     {
+      "t": "Compliance matrix",
+      "link": "compliance"
+     },
+     "Delivered performance",
+     "[compliance matrix response time, working days]"
+    ],
+    [
+     "That our quality system works",
+     {
+      "t": "Supplier audit",
+      "link": "cmp-quality"
+     },
+     "A specific system's performance",
+     "[on-site audit notice, working days]"
+    ]
+   ],
+   "as": "router"
+  },
+  {
+   "type": "form",
+   "nav": "Request",
+   "anchor": "verify",
+   "h": "Request a reference call or FAT witness",
+   "intro": "References and FAT witnessing depend on our clients’ permission.",
+   "submit": "Send my request",
+   "steps": [
+    {
+     "title": "What to verify",
+     "next": "Continue to contact",
+     "fields": [
+      {
+       "kind": "checkbox-group",
+       "label": "What you want to verify",
+       "required": true,
+       "options": [
+        "Reference call",
+        "Shop visit or FAT witness",
+        "Sample turnover package, FAT protocol or compliance matrix",
+        "Supplier audit or quality questionnaire"
+       ]
+      },
+      {
+       "kind": "select",
+       "label": "What you are buying",
+       "required": false,
+       "options": [
+        "Purified Water (PW) generation",
+        "WFI by distillation",
+        "WFI by membrane",
+        "Pure steam generator",
+        "Storage and distribution loop",
+        "Pretreatment",
+        "Monitoring and controls",
+        "Service, calibration or upgrade",
+        "Not decided yet"
+       ]
+      },
+      {
+       "kind": "file",
+       "label": "Your URS or questions, a draft is enough",
+       "required": false
+      }
+     ]
+    },
+    {
+     "title": "Contact",
+     "fields": [
+      {
+       "kind": "text",
+       "label": "Full name",
+       "required": true
+      },
+      {
+       "kind": "email",
+       "label": "Work email",
+       "required": true
+      },
+      {
+       "kind": "text",
+       "label": "Company",
+       "required": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions engineering and QA teams ask",
+   "items": [
+    {
+     "q": "Why are there no named clients on this page?",
+     "a": "Many pharmaceutical clients do not allow suppliers to name them. Unnamed, a case is described by segment and province; a reference call can go further."
+    },
+    {
+     "q": "Can we speak to a client in our segment?",
+     "a": "Say which system and grade you are buying. We can offer [reference segments and systems, and how many]. If none matches, we offer the closest system."
+    },
+    {
+     "q": "Are the figures from your tests or from the client?",
+     "a": "FAT figures are ours, on our feed water. SAT and OQ figures are on yours. PQ data is the client's, published with its approval and labelled."
+    },
+    {
+     "q": "Does a passed FAT mean the system meets USP?",
+     "a": "No. A FAT proves function before shipment. Water quality at your points of use is proven on your feed water at SAT, OQ and PQ."
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Ask for the evidence, not the brochure",
+  "body": "Tell us the system, the grade and the province. We arrange what our clients agree to.",
+  "button": "Request a reference call",
+  "link": "contact-proposal",
+  "intent": "Supplier qualification: audit, references, shop visit|Reference call",
+  "include": [
+   "System and grade you are buying",
+   "Province of installation",
+   "Your URS, a draft is enough",
+   "What your team needs to see"
+  ],
+  "include_label": "What to tell us",
+  "returns": [
+   "A reference call with a client",
+   "A shop visit or FAT witness",
+   "Sample turnover documents"
+  ],
+  "turnaround": "[reference request response time, working days]"
+ },
+ "todo": [
+  "KEY: real delivered projects for the case study record (PW) with executed report numbers, or remove the block before launch; the page must not launch with only a placeholder record",
+  "Written client approval for each case study and each named reference; client quality unit sign-off on text and figures",
+  "Measured figures for each case: capacity (L/h or kg/h), conductivity (µS/cm @ 25 °C), TOC (ppb), microbial (CFU/mL), nitrates (ppm), EN 285 timeline milestones (weeks), equipment new or replaced, deviations raised and closed",
+  "Hero fact and FAQ: number of clients available for a reference call, and the segments and systems they cover",
+  "Shop location (city and province) for shop visits (same as cmp-quality)",
+  "Lead times: reference call (working days), shop visit notice, FAT witness notice, sample package response, compliance matrix response, on-site audit notice (align with cmp-documentation, compliance, cmp-quality)",
+  "Reference request response time (working days) for the form intro and closing CTA",
+  "Whether witnessing other clients' FATs is offered, and on what terms (NDA, client permission)",
+  "Confirm Aquemi practice stated on this page: second-engineer check of each figure; client may withdraw approval; deviations stated in each case; case updated at each milestone; redacted FAT protocol and report can be shown",
+  "Project photographs for each published case (with client permission)",
+  "Industry and system filter, once there are enough published case studies (removed in this pass)"
+ ],
+ "hero_index": false,
+ "figure": {
+  "spots": [
+   "ro-skid",
+   "still",
+   "storage-tank"
+  ],
+  "label": "Figure · method · report"
+ }
+}

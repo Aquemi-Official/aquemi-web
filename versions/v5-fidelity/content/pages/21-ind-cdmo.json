@@ -1,0 +1,416 @@
+{
+ "id": "ind-cdmo",
+ "section": "Industries",
+ "nav_label": "Contract manufacturing (CDMO)",
+ "title": "CDMO water systems: client-auditable PW and WFI | Aquemi",
+ "meta": "PW and WFI for CDMOs, built to the stricter of USP and Ph. Eur. on each attribute, with Part 11 trend data and an audit pack every client can follow.",
+ "path": "/industries/cdmo/",
+ "eyebrow": "CONTRACT MANUFACTURING · USP AND PH. EUR.",
+ "headline": "Water built to the stricter of USP and Ph. Eur., for every client's auditor",
+ "lead": "A contract development and manufacturing organization (CDMO) runs one water system for every client. We design, build and wet test its Purified Water (PW) and Water for Injection (WFI) in Canada.",
+ "primary_cta": "Request a CDMO water scope review",
+ "primary_cta_intent": "Water scope review for your products|CDMO or contract manufacturing",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "facts": [
+  {
+   "v": "≤ 1.3 µS/cm",
+   "l": "PW conductivity at 25 °C · USP <645>"
+  },
+  {
+   "v": "≤ 0.2 ppm",
+   "l": "PW nitrates · Ph. Eur. 0008"
+  },
+  {
+   "v": "< 0.25 EU/mL",
+   "l": "WFI endotoxin · USP <85>"
+  },
+  {
+   "v": "[severity 1 on-site response time, hours]",
+   "l": "On-site response, production stopped"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "table",
+   "nav": "Where to start",
+   "h": "Your situation, the water you need, where to start",
+   "intro": "Every product on your site is made with the same water, so every client and every regulator reads the same records.",
+   "cols": [
+    "Your situation",
+    "Water you need",
+    "Systems",
+    "Start with"
+   ],
+   "rows": [
+    [
+     "A new client programme with a tech transfer date",
+     "Spare peak capacity and a new point of use, qualified before process performance qualification (PPQ) batches",
+     {
+      "t": "Storage and distribution loops",
+      "link": "sys-storage"
+     },
+     {
+      "t": "Process design: user requirement specification (URS) review",
+      "link": "svc-design"
+     }
+    ],
+    [
+     "Clients shipping to Canada, the United States and Europe",
+     "USP and Ph. Eur. on every attribute, specified and tested at the factory acceptance test (FAT)",
+     {
+      "t": "Standards we design to",
+      "link": "compliance"
+     },
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "A client audit or supplier questionnaire",
+     "An audit pack for the period, without other clients' data",
+     {
+      "t": "Monitoring and controls",
+      "link": "sys-monitoring"
+     },
+     {
+      "t": "Documentation package",
+      "link": "cmp-documentation"
+     }
+    ],
+    [
+     "One generation train, so every outage stops several clients",
+     "Duplex or N+1 generation and pumps, storage sized to your longest repair",
+     {
+      "t": "Purified Water (PW) generation",
+      "link": "sys-pw"
+     },
+     {
+      "t": "Service and spare parts",
+      "link": "svc-service"
+     }
+    ],
+    [
+     "Adding sterile fill-finish or parenteral work",
+     "WFI and pure steam under GUI-0119 and EU GMP Annex 1 (2022)",
+     {
+      "t": "WFI by distillation",
+      "link": "sys-wfi-distillation"
+     },
+     {
+      "t": "Pure steam generators",
+      "link": "sys-pure-steam"
+     }
+    ]
+   ],
+   "as": "router"
+  },
+  {
+   "type": "table",
+   "nav": "Strictest of",
+   "h": "Where USP and Ph. Eur. differ, and our value",
+   "intro": "Send each programme's markets; every attribute goes into the compliance matrix before design. Ph. Eur. 0008 as revised in Ph. Eur. 12.3, in force 1 July 2026.",
+   "cols": [
+    "Attribute",
+    "USP",
+    "Ph. Eur.",
+    "We design and test to"
+   ],
+   "rows": [
+    [
+     "Conductivity, PW",
+     "≤ 1.3 µS/cm @ 25 °C, stage 1, non-temperature-compensated (USP <645>)",
+     "≤ 5.1 µS/cm @ 25 °C (Ph. Eur. 0008)",
+     "USP <645>, the stricter value"
+    ],
+    [
+     "Nitrates, PW",
+     "No test",
+     "≤ 0.2 ppm (Ph. Eur. 0008)",
+     "Tested at FAT and release where clients file in Europe"
+    ],
+    [
+     "Conductivity, WFI",
+     "≤ 1.3 µS/cm @ 25 °C, stage 1 (USP <645>)",
+     "≤ 1.1 µS/cm @ 20 °C, stage 1, same three-stage method (Ph. Eur. 0169)",
+     "Both, from the same stage 1 table"
+    ],
+    [
+     "WFI production route",
+     "Distillation, or a process shown equivalent or superior",
+     "Distillation, or reverse osmosis (RO) with other techniques since April 2017, after notice to the GMP supervisory authority",
+     "Distillation where a filing or market calls for it, otherwise membrane"
+    ],
+    [
+     "Pure steam",
+     "Monograph: condensate meets WFI attributes",
+     "No monograph; EU GMP Annex 1 (2022) 6.17, EN 285 test methods",
+     "WFI monograph, plus non-condensable gases, dryness and superheat"
+    ],
+    [
+     "Total organic carbon (TOC)",
+     "≤ 0.50 mg/L (USP <643>)",
+     "≤ 0.50 mg/L (Ph. Eur. 2.2.44)",
+     "0.50 mg/L, one validated method"
+    ],
+    [
+     "Bacterial endotoxins, WFI",
+     "< 0.25 EU/mL (USP <85>)",
+     "< 0.25 IU/mL (Ph. Eur. 2.6.14)",
+     "< 0.25 EU/mL; the units are equivalent"
+    ],
+    [
+     "Microbial action level",
+     "PW 100 CFU/mL, WFI 10 CFU/100 mL, as guidance (USP <1231>)",
+     "Same values (Ph. Eur. 0008, 0169), test method in the monograph",
+     "One agreed method; site alert and action levels from qualification data"
+    ]
+   ],
+   "fold": 5,
+   "fold_noun": "attributes"
+  },
+  {
+   "type": "docs",
+   "nav": "Audit pack",
+   "h": "The client audit pack we set up at handover",
+   "intro": "Your quality agreements decide what each client sees. Each answer is an export by date range, point of use and suite, with no other client's data.",
+   "items": [
+    {
+     "t": "System description",
+     "d": "Grades, generation route, storage, loops, points of use by suite, sanitization"
+    },
+    {
+     "t": "Compliance matrix",
+     "d": "Every USP and Ph. Eur. attribute, the design value and where it is tested"
+    },
+    {
+     "t": "Simplified P&ID",
+     "d": "Piping and instrumentation diagram with sample points by tag number, without other clients' room names"
+    },
+    {
+     "t": "Qualification summary",
+     "d": "FAT, site acceptance test (SAT), installation, operational and performance qualification (IQ, OQ, PQ), deviations, approvals"
+    },
+    {
+     "t": "Trend reports",
+     "d": "Conductivity, TOC, microbial and endotoxin against alert and action levels, from audit-trailed data"
+    },
+    {
+     "t": "Excursion summary",
+     "d": "Root cause, corrective action, effect on product, and which batches drew water"
+    },
+    {
+     "t": "Change log",
+     "d": "Changes since qualification, with risk assessment and requalification scope"
+    },
+    {
+     "t": "Data integrity statement",
+     "d": "Access, audit trails and review frequency to 21 CFR Part 11, EU GMP Annex 11, PIC/S PI 041-1"
+    }
+   ],
+   "fold": 6,
+   "fold_noun": "documents"
+  },
+  {
+   "type": "options",
+   "nav": "Uptime",
+   "h": "Uptime is revenue: redundancy priced against your downtime",
+   "items": [
+    {
+     "t": "Duplex generation",
+     "d": "Two RO and electrodeionization (EDI) trains, each sized for [design share of peak demand per train, %]. One makes water while the other is serviced."
+    },
+    {
+     "t": "N+1 pumps",
+     "d": "A standby pump on each loop with automatic changeover, so a seal failure does not stop circulation or a hot loop's sanitized state."
+    },
+    {
+     "t": "Storage autonomy",
+     "d": "Tank volume sized from peak draw and your longest credible repair, stated in hours of supply."
+    },
+    {
+     "t": "Sanitization without a shutdown",
+     "d": "Loops sanitized between client campaigns; duplex trains one at a time."
+    },
+    {
+     "t": "Spares and response",
+     "d": "Critical spares on your site, and severity 1 on-site response of [severity 1 on-site response time, hours] within [service coverage area]."
+    },
+    {
+     "t": "Sized for the pipeline",
+     "d": "Sized for signed and expected programmes, with spare skid space and valved tie-ins qualified with the original system."
+    }
+   ],
+   "fold": 3,
+   "fold_noun": "options"
+  },
+  {
+   "type": "steps",
+   "nav": "Tech transfer",
+   "h": "From a signed client programme to released water",
+   "items": [
+    {
+     "t": "Programme intake",
+     "d": "The client's water grade, markets, peak draw by step and target dates for engineering and PPQ batches."
+    },
+    {
+     "t": "Gap check",
+     "d": "Within [gap check turnaround, working days] we say if the programme fits as is, needs a tie-in or needs new generation."
+    },
+    {
+     "t": "Change control",
+     "d": "Risk assessment and requalification scope stated before design, for your change control and your client's review."
+    },
+    {
+     "t": "Design and fabrication",
+     "d": "Drops, tie-ins or a new skid, built and tested in our shop while your suite is built."
+    },
+    {
+     "t": "Tie-in in your shutdown",
+     "d": "Installed in a planned window, usually with IQ and OQ of the new section only, not the whole system."
+    },
+    {
+     "t": "Increased sampling, then release",
+     "d": "Increased sampling at the new points, then release for client batches. Typical span from order: [new point of use, order to release, weeks]."
+    }
+   ]
+  },
+  {
+   "type": "grid",
+   "nav": "Our support",
+   "h": "What we do, from URS to the next audit",
+   "items": [
+    {
+     "t": "Process design",
+     "d": "URS review, strictest-of compliance matrix, mass balance at coldest and warmest feed, design qualification (DQ) support.",
+     "tag": "USP and Ph. Eur.",
+     "link": "svc-design"
+    },
+    {
+     "t": "FAT and SAT",
+     "d": "Wet FAT your clients' engineers can witness, then SAT on your feed water.",
+     "tag": "Witnessed FAT",
+     "link": "svc-fat-sat"
+    },
+    {
+     "t": "Upgrades and retrofits",
+     "d": "Capacity, duplex trains, new loops and Part 11 controls on any builder's system.",
+     "tag": "Change control",
+     "link": "svc-upgrades"
+    },
+    {
+     "t": "Commissioning and qualification",
+     "d": "IQ and OQ to your protocols, PQ support and a qualification summary you can share.",
+     "tag": "EU GMP Annex 15",
+     "link": "svc-cq"
+    },
+    {
+     "t": "Fabrication",
+     "d": "316L piping with weld logs, borescope records and mill-heat material certificates.",
+     "tag": "ASME BPE",
+     "link": "svc-fabrication"
+    },
+    {
+     "t": "Service",
+     "d": "Stated response times, calibration by tag number and reports filed for client audits.",
+     "tag": "21 CFR 211.67",
+     "link": "svc-service"
+    }
+   ],
+   "fold": 3,
+   "fold_noun": "services"
+  },
+  {
+   "type": "faq",
+   "nav": "FAQ",
+   "h": "Questions CDMO engineering, validation and QA leads ask",
+   "items": [
+    {
+     "q": "Can one system serve Canadian, US and EU filings?",
+     "a": "Yes. We design each attribute to the stricter of USP and Ph. Eur., test both at FAT where methods allow and write the basis into the functional specification. A client filing in Japan may name a further pharmacopoeia; we add it. Ph. Eur. adds aluminium ≤ 10 ppb and an endotoxin limit only for PW used to make dialysis solutions."
+    },
+    {
+     "q": "Who will audit the water system?",
+     "a": "Health Canada under your drug establishment licence (GUI-0001; GUI-0119 for sterile work). The FDA when a client files in the US: a pre-approval inspection reads a full year of water data. EU authorities and Qualified Persons, against Ph. Eur., Annex 15 and EU GMP Chapter 7. Other PIC/S authorities such as the MHRA, TGA or Swissmedic. Each client's quality unit."
+    },
+    {
+     "q": "Who owns the water system data, us or our clients?",
+     "a": "You do. The water system is a site utility. Your quality agreements, framed by ICH Q10 section 2.7 and the FDA guidance on quality agreements (2016), set what each client receives and how fast. We build the reporting so each client gets the data for its campaign and points of use without seeing anyone else's."
+    },
+    {
+     "q": "Is duplex generation worth the cost?",
+     "a": "It depends on what a day without water costs you in missed batches across your contracts, and on how long your storage lasts with generation stopped. We put the capital cost of duplex or N+1 next to that figure in the proposal, so the decision is yours and on paper."
+    },
+    {
+     "q": "Can you attend our clients' audits?",
+     "a": "[client audit attendance and terms]"
+    },
+    {
+     "q": "Can you help with a prospective client's questionnaire?",
+     "a": "[capability sheet and questionnaire support]"
+    },
+    {
+     "q": "Our system is another builder's, with paper records. Where do we start?",
+     "a": "With a system assessment: drawings against the plant, the qualification file, trend data and data integrity controls, checked against what your current clients and markets expect. You get a gap list ranked by audit risk, and the requalification scope for each fix."
+    },
+    {
+     "q": "Can we talk to a CDMO you have delivered to?",
+     "a": "[CDMO references available for a call]"
+    }
+   ]
+  },
+  {
+   "type": "related",
+   "h": "Where CDMO buyers go next",
+   "items": [
+    "sys-pw",
+    "sys-storage",
+    "sys-monitoring",
+    "svc-upgrades",
+    "cmp-documentation",
+    "ind-pharma"
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your client programmes, markets and uptime target. We return the scope.",
+  "body": "A process engineer replies, with the scope or our questions.",
+  "button": "Request a CDMO water scope review",
+  "link": "contact-proposal",
+  "intent": "Water scope review for your products|CDMO or contract manufacturing",
+  "include": [
+   "Client programmes and the grade each needs",
+   "Markets each client files in",
+   "Peak draw by suite, L/h; daily use, m³",
+   "Longest acceptable outage, hours, and its cost",
+   "Existing system and how records are kept",
+   "Recent findings that touch water",
+   "Contract, tech transfer and PPQ dates"
+  ],
+  "returns": [
+   "The specification",
+   "The redundancy to hold it",
+   "The qualification scope"
+  ],
+  "turnaround": "[proposal response time, working days]"
+ },
+ "todo": [
+  "Confirm CDMOs and contract manufacturers are a target segment",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Design share of peak demand per duplex train, % (uptime options)",
+  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service); service coverage area (hero fact, uptime options)",
+  "Gap check turnaround for a new client programme, working days (tech transfer steps)",
+  "Typical span from order to release for a new point of use on a qualified loop, weeks ([new point of use, order to release, weeks]; tech transfer steps)",
+  "Confirm Aquemi attends client audits and inspections as supplier, in person or by video, and on what terms: in a service plan or per day ([client audit attendance and terms]; FAQ)",
+  "Confirm whether Aquemi provides a water system capability sheet and questionnaire support for CDMO business development, and whether service plans include it ([capability sheet and questionnaire support]; FAQ)",
+  "Confirm the client audit pack is part of the handover scope or an option, and whether service plans refresh its trend reports (audit pack)",
+  "Confirm the monitoring system can report by suite, point of use and date range (audit pack intro); align with sys-monitoring",
+  "CDMO references available for a call, number and type, or a plain 'none yet' ([CDMO references available for a call]; FAQ)",
+  "A CDMO case study with measured outcome; add a case block when one exists",
+  "Is the scope review free, and its turnaround",
+  "Contact-proposal page: add a 'CDMO water scope review' intent with client programme, market and uptime fields"
+ ]
+}

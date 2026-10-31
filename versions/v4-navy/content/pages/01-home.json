@@ -1,0 +1,374 @@
+{
+ "id": "home",
+ "section": "Home",
+ "nav_label": "Home",
+ "title": "Pharmaceutical water systems: PW, WFI, pure steam | Aquemi",
+ "meta": "Purified Water, WFI and pure steam systems built to USP <645>, <643>, <85> and ASME BPE, wet FAT tested, qualified and serviced in Canada.",
+ "path": "/",
+ "eyebrow": "PHARMACEUTICAL WATER SYSTEMS · USP · PH. EUR. · ASME BPE",
+ "headline": "Purified Water, WFI and pure steam systems, designed, built and serviced in Canada",
+ "lead": "For engineering and quality teams: Purified Water (PW) and Water for Injection (WFI) systems holding USP <645>, <643> and <85> at the furthest point of use; every skid wet tested at factory acceptance test (FAT).",
+ "primary_cta": "Submit your URS for a proposal",
+ "primary_cta_intent": "Sizing and budget proposal for a new system",
+ "secondary_cta": {
+  "label": "Get a sample turnover package",
+  "link": "cmp-documentation"
+ },
+ "facts": [
+  {
+   "v": "7",
+   "l": "System families, feed water to point of use"
+  },
+  {
+   "v": "100 %",
+   "l": "Skids wet tested at FAT before shipping"
+  },
+  {
+   "v": "< 0.25 EU/mL",
+   "l": "WFI endotoxin at the furthest point of use · USP <85>"
+  },
+  {
+   "v": "[severity 1 on-site response time, hours]",
+   "l": "Severity 1 on-site response on a service plan, inside [service coverage area]"
+  }
+ ],
+ "blocks": [
+  {
+   "type": "path",
+   "h": "Seven system families, feed water to point of use",
+   "intro": "Choose one system or the whole path. We design it as one path and state where our scope ends.",
+   "from": "City feed",
+   "to": "Point of use",
+   "items": [
+    {
+     "t": "Pretreatment",
+     "d": "Holds the reverse osmosis (RO) inlet at no detectable chlorine or chloramine and a silt density index (SDI) of 3 or less, every season.",
+     "tag": "USP <1231>",
+     "link": "sys-pretreatment"
+    },
+    {
+     "t": "Purified Water (PW) generation",
+     "d": "RO and electrodeionization (EDI) skids below 1.3 µS/cm at 25 °C and 500 ppb total organic carbon (TOC), sized at your coldest feed temperature.",
+     "tag": "USP <645>",
+     "link": "sys-pw"
+    },
+    {
+     "t": "WFI by distillation",
+     "d": "Multi-effect and vapour compression stills making hot WFI at < 0.25 EU/mL endotoxin, chosen on your steam, power and cooling water costs.",
+     "tag": "USP <85>",
+     "link": "sys-wfi-distillation"
+    },
+    {
+     "t": "WFI by membrane",
+     "d": "Double-pass RO, EDI and ultrafiltration making ambient WFI without plant steam, a route Ph. Eur. 0169 has accepted since 1 April 2017.",
+     "tag": "Ph. Eur. 0169",
+     "link": "sys-wfi-membrane"
+    },
+    {
+     "t": "Pure steam generators",
+     "d": "Condensate that meets WFI limits and steam that passes EN 285 at the sterilizer, with generator and header sized as one system.",
+     "tag": "EN 285",
+     "link": "sys-pure-steam"
+    },
+    {
+     "t": "Storage and distribution loops",
+     "d": "Turbulent flow at peak draw, every branch at a length-to-diameter ratio (L/D) of 2 or less, sanitized by heat or ozone.",
+     "tag": "ASME BPE",
+     "link": "sys-storage"
+    },
+    {
+     "t": "Monitoring and controls",
+     "d": "Online TOC and conductivity on the raw, non-temperature-compensated reading, with audit trails to 21 CFR Part 11 and EU GMP Annex 11.",
+     "tag": "21 CFR Part 11",
+     "link": "sys-monitoring"
+    }
+   ]
+  },
+  {
+   "type": "table",
+   "as": "router",
+   "h": "Start from where your project is",
+   "intro": "Each route reaches an engineer, not a sales queue, and asks only what that request needs.",
+   "cols": [
+    "Your situation",
+    "Send us",
+    "What comes back",
+    "Where to start"
+   ],
+   "rows": [
+    [
+     "A new system, URS approved",
+     "Your URS, feed water analysis and peak demand in L/h",
+     "A process engineer's reply within [proposal response time, working days]",
+     {
+      "t": "Request a proposal",
+      "link": "contact-proposal"
+     }
+    ],
+    [
+     "A new system, URS in draft or not started",
+     "A request for a URS gap review or route assessment",
+     "The grades, systems and qualification scope your URS should state. [No obligation to buy: confirm]",
+     {
+      "t": "Request a URS review",
+      "link": "contact-proposal"
+     }
+    ],
+    [
+     "A project in testing or qualification",
+     "Your commissioning and qualification (C&Q) plan",
+     "The IQ and OQ test list, the FAT tests to leverage and a PQ sampling plan",
+     {
+      "t": "Commissioning and qualification",
+      "link": "svc-cq"
+     }
+    ],
+    [
+     "A system to upgrade, any builder",
+     "What to change: controls, capacity, sanitization or a new branch",
+     "Each option with its downtime and the requalification it triggers (EU GMP Annex 15, 11), before your change request",
+     {
+      "t": "Upgrades",
+      "link": "svc-upgrades"
+     }
+    ],
+    [
+     "Production stopped or water out of specification",
+     "A call to [service phone number], [service phone hours]. Do not wait for a form; no Aquemi serial number needed",
+     "Severity 1 response: on site in [severity 1 on-site response time, hours] on a service plan",
+     {
+      "t": "Service request",
+      "link": "contact-service"
+     }
+    ]
+   ]
+  },
+  {
+   "type": "steps",
+   "h": "How a project runs",
+   "items": [
+    {
+     "t": "Design",
+     "d": "Your user requirement specification (URS) becomes a functional specification, piping and instrumentation diagrams and an ICH Q9(R1) risk assessment, verified at design qualification (DQ)."
+    },
+    {
+     "t": "Fabricate",
+     "d": "316L stainless steel to ASME BPE, orbital welds by ASME Section IX qualified operators, each product-contact weld logged with EN 10204 3.1 heat numbers."
+    },
+    {
+     "t": "FAT",
+     "d": "A wet FAT to a protocol your quality unit approves, witnessed in person or remotely, that qualification can reference (EU GMP Annex 15, 3.6)."
+    },
+    {
+     "t": "SAT and IQ/OQ",
+     "d": "A site acceptance test (SAT) on your feed water and utilities, then installation and operational qualification (IQ/OQ) to protocols your quality unit approved."
+    },
+    {
+     "t": "PQ and service",
+     "d": "Performance qualification (PQ) support through three phases and at least 12 months of data (WHO TRS 1033, Annex 3), then service that keeps it qualified."
+    }
+   ]
+  },
+  {
+   "type": "spec",
+   "h": "Service is half the system",
+   "intro": "Systems fall out of their qualified state on a maintenance day, not on a drawing. Every service plan fixes these terms in writing.",
+   "cols": [
+    "Commitment",
+    "What it means",
+    "Basis"
+   ],
+   "rows": [
+    {
+     "p": "Response time",
+     "v": "Stated for each of 4 severities; severity 1 on site in [severity 1 on-site response time, hours], inside [service coverage area]",
+     "m": "Service plans and request form",
+     "hl": true
+    },
+    {
+     "p": "Your change control",
+     "v": "Parts replaced like for like, or the change goes through your change control first",
+     "m": "EU GMP Annex 15, section 11"
+    },
+    {
+     "p": "Price",
+     "v": "A fixed annual price per plan, with visits, calibrations and spares listed",
+     "m": "Service and spare parts page"
+    },
+    {
+     "p": "Calibration",
+     "v": "Conductivity cell constant known to ± 2 %; TOC system suitability 85–115 %",
+     "m": "USP <645>; USP <643>"
+    },
+    {
+     "p": "Record",
+     "v": "A signed service report after every visit, for your good manufacturing practice (GMP) records",
+     "m": "21 CFR 211.67, 211.68; GUI-0001"
+    },
+    {
+     "p": "Other builders' systems",
+     "v": "[makes and equipment types serviced]. No Aquemi serial number needed",
+     "m": "Service request page"
+    }
+   ],
+   "fold": 3
+  },
+  {
+   "type": "grid",
+   "h": "Same water limits, different evidence by industry",
+   "intro": "Your products set the grade. Your regulator sets the evidence: where the water touches your product, and who reads the record.",
+   "items": [
+    {
+     "t": "Pharmaceutical",
+     "d": "PW for tablets, liquids and creams; WFI and pure steam for parenterals. Inspected under Health Canada GUI-0001 and, for sterile products, GUI-0119.",
+     "tag": "GUI-0001",
+     "link": "ind-pharma"
+    },
+    {
+     "t": "Biotechnology",
+     "d": "WFI in volume for media, buffers and every clean-in-place (CIP) final rinse, with endotoxin held at the furthest outlet at peak draw.",
+     "tag": "USP <85>",
+     "link": "ind-biotech"
+    },
+    {
+     "t": "Medical devices",
+     "d": "Final rinse water worked back from the device limit of 20.0 EU per device, with records that fit an ISO 13485 quality system.",
+     "tag": "USP <161>",
+     "link": "ind-meddevice"
+    },
+    {
+     "t": "Contract manufacturing (CDMO)",
+     "d": "The stricter of USP and Ph. Eur. on each attribute, redundancy for your client commitments, and records any client auditor can follow.",
+     "tag": "USP · Ph. Eur.",
+     "link": "ind-cdmo"
+    }
+   ]
+  },
+  {
+   "type": "tags",
+   "h": "Standards we design and document to",
+   "items": [
+    "USP <645>",
+    "USP <643>",
+    "USP <85>",
+    "USP <1231>",
+    "Ph. Eur. 0008",
+    "Ph. Eur. 0169",
+    "EU GMP Annex 1",
+    "EU GMP Annex 15",
+    "Health Canada GUI-0001",
+    "ASME BPE",
+    "EN 285",
+    "21 CFR Part 11",
+    "GAMP 5",
+    "CSA B51",
+    "ISPE Baseline Guide Vol. 4"
+   ],
+   "body": "Each opens the compliance page: the number we design to and the document that proves it. Standards we design to, not certifications.",
+   "fold": 6
+  },
+  {
+   "type": "grid",
+   "h": "Check us before you shortlist us",
+   "intro": "We publish a case study only when every figure traces to an executed report and the client approves it. Until then, check the evidence at source.",
+   "items": [
+    {
+     "t": "Ask for a reference call or FAT witness",
+     "d": "A call with a client's engineering or quality lead where the client agrees, a shop visit, or a seat at a FAT.",
+     "tag": "References",
+     "link": "projects"
+    },
+    {
+     "t": "Get a sample turnover package",
+     "d": "The document index and redacted sample protocols and records, so you judge the record before you buy it.",
+     "tag": "EN 10204 3.1",
+     "link": "cmp-documentation"
+    },
+    {
+     "t": "Request a compliance matrix",
+     "d": "Send your URS. We map each requirement to the standard, the design feature and the test that proves it.",
+     "tag": "USP · Ph. Eur.",
+     "link": "compliance"
+    },
+    {
+     "t": "Audit our quality system",
+     "d": "Document, change and supplier control, nonconformance, corrective and preventive action and calibration. Remote, on site or by questionnaire.",
+     "tag": "Supplier audit",
+     "link": "cmp-quality"
+    },
+    {
+     "t": "Check coverage for your site",
+     "d": "Severity 1 response time, technician base, stocking point, CRN route and engineering licence, region by region.",
+     "tag": "CSA B51",
+     "link": "contact-locations"
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "h": "Questions buyers ask before the first call",
+   "items": [
+    {
+     "q": "You are smaller than the global manufacturers. Why take the risk?",
+     "a": "Judge the risk on evidence, not size. Audit our quality system, witness a FAT, read a sample turnover package and speak to a reference. A large supplier's size does not shorten your FAT travel, your service response or your CRN review. Ours lets the engineer who designed your system answer your auditor directly."
+    },
+    {
+     "q": "Is your system USP certified?",
+     "a": "No water system is. USP and Ph. Eur. set limits for water, not approvals for equipment. Compliance is shown by water at your points of use that meets the monograph, measured on qualified instruments, and by the records behind it. The compliance page lists every standard we design to and the document that proves it."
+    },
+    {
+     "q": "What does being Canadian change?",
+     "a": "Not quality; travel, registration and response. Your team drives to the wet FAT in [test bay location, city and province]. Stills, pure steam generators and pressure-rated tanks are designed for a Canadian registration number (CRN) under CSA B51 from the first drawing. Technicians based in [service bases, cities] reach your plant by road."
+    },
+    {
+     "q": "We do not have a URS yet. Is it too early to ask?",
+     "a": "No. Ask for a water scope review or a route assessment. We return the grades, systems and qualification scope your URS should state, and you write it on that basis."
+    },
+    {
+     "q": "Can our engineering and quality teams witness the FAT?",
+     "a": "Yes, in person in [test bay location, city and province] or remotely. For a remote FAT we agree in the protocol which checks need a person on site. [FAT witness costs: included or quoted separately]"
+    },
+    {
+     "q": "Does a review commit us to buying from you?",
+     "a": "No. A review or assessment is a written answer you keep. [Confirm: no obligation, usable in your tender]"
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "h": "Send your water grade and flow, or your URS. An engineer replies.",
+  "body": "A process engineer, not a sales desk, replies. For a system down now, call [service phone number].",
+  "button": "Submit your URS for a proposal",
+  "link": "contact-proposal",
+  "proof": {
+   "v": "100 %",
+   "l": "Skids wet tested at FAT before shipping"
+  },
+  "intent": "Sizing and budget proposal for a new system",
+  "include": [
+   "Your URS, approved or in draft",
+   "Water grade and pharmacopoeia (USP, Ph. Eur.)",
+   "Peak demand in L/h",
+   "Feed water analysis"
+  ],
+  "returns": [
+   "A proposal from a process engineer",
+   "A URS gap review or route assessment"
+  ],
+  "turnaround": "[proposal response time, working days]"
+ },
+ "todo": [
+  "Hero photograph of a finished Aquemi skid or installed loop",
+  "Proposal response time, working days ([proposal response time, working days]; one figure on every page)",
+  "Severity 1 on-site response time, hours ([severity 1 on-site response time, hours]; one figure on every page, per plan on svc-service); service coverage area",
+  "Service phone number and service phone hours",
+  "Test bay location, city and province",
+  "Service bases, cities",
+  "Makes and equipment types serviced on systems from other builders ([makes and equipment types serviced]; same placeholder on home, services, svc-service, about, contact-service, contact-proposal)",
+  "FAT witness costs: whether FAT witness time, travel and remote witness are included in the equipment price or quoted separately",
+  "Confirm reviews carry no obligation and may be used in the client's own tender",
+  "Confirm every skid is wet tested at FAT for every system family (hero fact 100 %); loops fabricated on site are tested at SAT",
+  "Confirm the standards strip against the standards Aquemi designs to routinely",
+  "One real case study with client permission (home shows proof routes until it exists)"
+ ]
+}

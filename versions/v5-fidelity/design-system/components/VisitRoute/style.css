@@ -1,0 +1,74 @@
+/* ---------- VisitRoute: a visit's stops on one dashed route, drawn on a cream plate (grid block as "route") ----------
+   Desktop: rows of 3 or 4 stops; odd rows run left to right, even rows right to left, joined by U-turns at the ends
+   (placement from --c / --r set by the renderer; DOM order is the route order). Each stop: its figure on the route (a Spot
+   vignette with a square numbered tag in its corner, or the tag alone), an uppercase mono name and one line under it.
+   The route runs through the middle of the figures (--m figure width, --mh its height). Phones: one vertical route down
+   the left, figure | text. */
+.aq-visit-route__plate { padding-top: var(--space-8); }
+.aq-visit-route {
+  --m: var(--space-8); --mh: var(--space-8);
+  list-style: none; margin: 0; padding: 0 var(--space-8); display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); column-gap: var(--space-8);
+}
+.aq-visit-route--spots { --m: calc(var(--space-32) + var(--space-12)); --mh: calc(var(--space-32) + var(--space-8)); }
+.aq-visit-route__stop { position: relative; grid-column: var(--c, auto); grid-row: var(--r, auto); min-width: 0; padding-bottom: var(--space-12); }
+.aq-visit-route__stop.is-last { padding-bottom: 0; }
+.aq-visit-route__body { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+:where(.aq-page) a.aq-visit-route__body { color: var(--ink); text-decoration: none; }
+/* the figure: plate-coloured so the route stops at its edge, the vignette centred, the tag in its top-left corner */
+.aq-visit-route__fig { position: relative; display: grid; place-items: center; width: var(--m, var(--space-8)); height: var(--mh, var(--space-8)); margin-bottom: var(--space-2); background: var(--surface); }
+.aq-visit-route__spot { background-color: var(--ink); }
+.aq-visit-route__spot.aq-spot--icon { background-color: var(--ink-muted); }
+/* corner brackets frame every vignette (spot or icon) the same way */
+.aq-visit-route--spots .aq-visit-route__fig::before, .aq-visit-route--spots .aq-visit-route__fig::after { content: ""; position: absolute; width: var(--space-3); height: var(--space-3); border: 0 solid var(--line-strong); pointer-events: none; }
+.aq-visit-route--spots .aq-visit-route__fig::before { top: 0; right: 0; border-width: 1px 1px 0 0; }
+.aq-visit-route--spots .aq-visit-route__fig::after { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+.aq-visit-route__n {
+  display: inline-grid; place-items: center; min-width: var(--space-8); height: var(--space-6); padding: 0 var(--space-1);
+  border: 1px solid var(--flow); border-radius: var(--radius-sm); background: var(--surface);
+  font: 500 12px/1 var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; color: var(--flow);
+}
+.aq-visit-route--spots .aq-visit-route__n { position: absolute; top: 0; left: 0; }
+.aq-visit-route__n svg { width: var(--space-4); height: var(--space-4); fill: none; stroke: currentColor; stroke-width: 2; }
+.aq-visit-route__stop.is-end .aq-visit-route__n { background: var(--flow); color: var(--surface); }
+.aq-visit-route--spots .is-end .aq-visit-route__fig { outline: 1px solid var(--flow); outline-offset: calc(var(--space-1) * -1); }
+.aq-visit-route__cap { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--flow); }
+.aq-visit-route__t { margin: 0; font: 500 14px/20px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); text-wrap: balance; }
+.aq-visit-route__d { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
+a.aq-visit-route__body .aq-visit-route__t::after { content: "\a0\2192"; color: var(--flow); }
+a.aq-visit-route__body:hover .aq-visit-route__t { color: var(--flow); }
+a.aq-visit-route__body:hover .aq-visit-route__spot { background-color: var(--flow); }
+a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-offset: var(--space-1); }
+
+/* The route: ::after runs to the next stop in the row (or to the column edge before a U-turn); ::before is the U-turn
+   at the row end, or the lead-in from the column edge on a right-to-left row. */
+.aq-visit-route__stop::before, .aq-visit-route__stop::after { content: ""; position: absolute; top: calc(var(--mh, var(--space-8)) / 2); border: 0 dashed var(--flow); pointer-events: none; }
+.aq-visit-route__stop.is-ltr::after { left: calc(var(--m, var(--space-8)) / 2); width: calc(100% + var(--space-8)); border-top-width: 1px; }
+.aq-visit-route__stop.is-rtl::after { right: calc(100% - var(--m, var(--space-8)) / 2); width: calc(100% + var(--space-8)); border-top-width: 1px; }
+.aq-visit-route__stop.is-ltr.is-turn::after { width: calc(100% - var(--m, var(--space-8)) / 2); }
+.aq-visit-route__stop.is-rtl.is-turn::after, .aq-visit-route__stop.is-last::after { display: none; }
+.aq-visit-route__stop.is-turn::before { height: 100%; width: var(--space-8); border-width: 1px 0; }
+.aq-visit-route__stop.is-ltr.is-turn::before { left: 100%; border-right-width: 1px; border-radius: 0 var(--radius-pill) var(--radius-pill) 0; }
+.aq-visit-route__stop.is-rtl.is-turn::before { right: 100%; border-left-width: 1px; border-radius: var(--radius-pill) 0 0 var(--radius-pill); }
+.aq-visit-route__stop.is-rtl.is-in::before { left: calc(var(--m, var(--space-8)) / 2); right: 0; border-top-width: 1px; }
+
+@media (prefers-reduced-motion: no-preference) { .aq-visit-route__t, .aq-visit-route__spot { transition: color 120ms, background-color 120ms; } }
+
+/* Phones: still on the plate; one vertical route through the figures at the left, the name and line beside each. */
+@container (max-width: 860px) {
+  .aq-visit-route__plate { padding-top: var(--space-6); }
+  .aq-visit-route { --m: var(--space-8); --mh: var(--space-6); padding: 0; grid-template-columns: minmax(0, 1fr); }
+  .aq-visit-route--spots { --m: var(--space-24); --mh: var(--space-24); }
+  .aq-visit-route__stop { grid-column: 1; grid-row: auto; padding-bottom: var(--space-6); }
+  .aq-visit-route__body { display: grid; grid-template-columns: var(--m, var(--space-8)) minmax(0, 1fr); align-content: start; column-gap: var(--space-3); row-gap: var(--space-1); }
+  .aq-visit-route__fig { grid-row: 1 / span 3; margin: 0; }
+  .aq-visit-route .aq-visit-route__spot:not(.aq-spot--icon) { width: var(--space-24); height: var(--space-24); }
+  .aq-visit-route__n { min-width: var(--space-6); height: var(--space-6); font-size: 11px; }
+  .aq-visit-route__cap, .aq-visit-route__t, .aq-visit-route__d { grid-column: 2; }
+  .aq-visit-route__t { font-size: 13px; line-height: 20px; }
+  .aq-visit-route__d { font-size: 14px; line-height: 22px; }
+  .aq-visit-route__stop::before, .aq-visit-route__stop.is-rtl.is-in::before { display: none; }
+  .aq-visit-route__stop::after, .aq-visit-route__stop.is-ltr::after, .aq-visit-route__stop.is-rtl::after, .aq-visit-route__stop.is-ltr.is-turn::after, .aq-visit-route__stop.is-rtl.is-turn::after {
+    display: block; left: calc(var(--m, var(--space-8)) / 2); right: auto; width: 0; height: 100%; border-width: 0 0 0 1px;
+  }
+  .aq-visit-route__stop.is-last::after { display: none; }
+}

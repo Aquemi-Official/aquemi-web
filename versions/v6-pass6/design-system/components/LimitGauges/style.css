@@ -1,0 +1,152 @@
+/* ---------- LimitGauges ---------- */
+/* Limits as a panel of instrument faces on a cream drawing plate (wPlate light). Each cell: hairline frame with a
+   registration cross, mono caps title with a short flow underline, a dial straight under it (heavy ink scale arc, major
+   and minor ticks, scale numbers, inner hairline arc, the passing side as a flow band, a needle resting on the limit
+   from a pivot with crosshairs, an ink pointer and "LIMIT" chip, the limit as a large mono readout bottom right), then
+   the basis under a hairline. The full value is in the DOM for screen readers (the chip and readout show it). A row
+   without a number is a readout cell: the same cell without the dial, the value shown. */
+.aq-limit-gauges { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+/* Exactly four (or one more than a full row, seven): four across, so no row is left with empty cells */
+.aq-limit-gauges:has(> li:nth-child(4):last-child), .aq-limit-gauges:has(> li:nth-child(7):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.aq-limit-gauges__item { position: relative; display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; padding: var(--space-4) var(--space-4) var(--space-4); border: 1px solid var(--line-strong); }
+/* Registration cross, top right of every cell */
+.aq-limit-gauges__item::after {
+  content: ""; position: absolute; top: var(--space-3); right: var(--space-3); width: 15px; height: 15px; pointer-events: none;
+  background: linear-gradient(var(--ink-subtle), var(--ink-subtle)) center / 1px 100% no-repeat,
+              linear-gradient(var(--ink-subtle), var(--ink-subtle)) center / 100% 1px no-repeat;
+}
+.aq-limit-gauges__item.is-key { box-shadow: inset 0 2px 0 var(--flow); }
+.aq-limit-gauges__p { margin: 0; padding-right: var(--space-6); font: 500 14px/20px var(--font-mono); letter-spacing: 0.02em; text-transform: uppercase; color: var(--ink); text-wrap: balance; }
+.aq-limit-gauges__p::after { content: ""; display: block; width: var(--space-6); height: 3px; margin-top: var(--space-2); background: var(--flow); }
+
+/* Dial: starts right under the title; the bottom margin holds the readout caption under its hairline */
+.aq-limit-gauges__dial { position: relative; width: 100%; max-width: 280px; margin: 0 auto; }
+.aq-limit-gauges__dial svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-limit-gauges__track { fill: none; stroke: var(--ink); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__inner { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__ticks line { stroke: var(--ink-muted); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__ticks line.is-major { stroke: var(--ink); stroke-width: 1.5; }
+.aq-limit-gauges__nums text { fill: var(--ink-muted); font-family: var(--font-mono); font-size: 10px; text-anchor: middle; font-variant-numeric: tabular-nums; }
+.aq-limit-gauges__pass { fill: none; stroke: var(--flow); stroke-width: 8; }
+.aq-limit-gauges__cross line { stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__needle { stroke: var(--ink-muted); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__pivot { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__limit { stroke: var(--ink); stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+.aq-limit-gauges__ptr { fill: var(--ink); }
+.aq-limit-gauges__second { stroke: var(--flow); stroke-width: 2; stroke-dasharray: 3 2; vector-effect: non-scaling-stroke; }
+/* Limit chip: beside the pointer on the left half of the arc; on the right half (is-right) in the dial's top right corner */
+.aq-limit-gauges__mark { position: absolute; transform: translate(var(--space-2), -100%); padding: 0 var(--space-2); border-radius: var(--radius-sm); background: var(--ink); color: var(--surface); font: 500 11px/18px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.aq-limit-gauges__mark.is-right { transform: none; }
+.aq-limit-gauges__mark--second { background: var(--surface); color: var(--flow); border: 1px solid var(--flow); transform: translate(-50%, -50%); text-transform: none; }
+/* Readout: bottom right of the dial on its hairline (y 146 in the viewBox, a space-2 above the drawing's foot): the
+   number above it, the caption below it. The caption is the value's qualifiers (is-q, may wrap) or Upper/Lower limit. */
+.aq-limit-gauges__read { position: relative; display: block; margin-top: calc(-1 * var(--space-2)); text-align: right; color: var(--ink); }
+.aq-limit-gauges__line { position: absolute; right: 0; bottom: 100%; padding-bottom: var(--space-1); white-space: nowrap; }
+.aq-limit-gauges__num { font: 400 24px/28px var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.aq-limit-gauges__unit { font: 400 12px/16px var(--font-mono); }
+.aq-limit-gauges__cap { display: block; padding-top: var(--space-1); white-space: nowrap; font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-limit-gauges__cap.is-q { white-space: normal; font: 400 12px/16px var(--font-mono); letter-spacing: 0; text-transform: none; overflow-wrap: break-word; }
+
+/* Foot: the basis under a hairline */
+.aq-limit-gauges__foot { margin-top: auto; padding-top: var(--space-2); border-top: 1px solid var(--line); }
+.aq-limit-gauges__spec { margin: 0; display: grid; gap: var(--space-1); }
+.aq-limit-gauges__spec > div { position: relative; padding-left: var(--space-3); }
+.aq-limit-gauges__spec > div::before { content: ""; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; background: var(--ink-muted); }
+.aq-limit-gauges__spec dt { display: inline; margin-right: var(--space-1); font: 500 11px/18px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-limit-gauges__spec dt::after { content: ":"; }
+.aq-limit-gauges__spec dd { display: inline; margin: 0; }
+/* Full value of a dial cell: read by screen readers, not shown (the chip and readout carry it) */
+.aq-limit-gauges__spec > .aq-limit-gauges__sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); }
+.aq-limit-gauges__v { font: 400 12px/18px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); overflow-wrap: break-word; }
+.aq-limit-gauges__v .aq-ph { font-size: inherit; }
+.aq-limit-gauges__m { font: 400 12px/18px var(--font-sans); color: var(--ink-muted); }
+.aq-limit-gauges__m .aq-tag { height: auto; padding: 0 var(--space-2); font-size: 11px; line-height: 16px; color: var(--ink); vertical-align: baseline; }
+/* Readout cell: no dial, the value is the readout */
+.aq-limit-gauges__item.is-readout .aq-limit-gauges__foot { margin-block: auto; border-top: 0; }
+.aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child { padding: var(--space-3) 0; border-block: 1px dashed var(--line-strong); }
+.aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child::before { display: none; }
+.aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child dt { display: block; }
+.aq-limit-gauges__item.is-readout .aq-limit-gauges__v { font-size: 16px; line-height: 24px; }
+
+/* ---------- Rule variant (spec as: "rules", blocks/rules.js) ----------
+   Design rules on the same cream plate: one row per rule between line-strong rules: big mono number | rule name (mono
+   caps, flow underline) | the threshold bar with the rule as written under it | basis. The bar: an ink track with minor
+   and major ticks, the passing side as a flow band (right of the mark for ≥, left for ≤), an ink mark with its chip
+   above it (kept inside the bar: left --f, shifted back by --f of its own width), scale ends in mono when the threshold
+   is a number. An open bar (placeholder threshold) has no scale numbers. A rule without a threshold shows its value
+   between dashed rules in the same column. */
+.aq-limit-gauges--rules { display: block; border-bottom: 1px solid var(--line-strong); }
+.aq-limit-gauges__rule {
+  position: relative; display: grid; grid-template-columns: var(--space-16) minmax(0, 4fr) minmax(0, 6fr) minmax(0, 3fr);
+  column-gap: var(--space-6); align-items: start; padding: var(--space-6) var(--space-2); border-top: 1px solid var(--line-strong);
+}
+.aq-limit-gauges__rule.is-key { box-shadow: inset 0 2px 0 var(--flow); }
+.aq-limit-gauges__rn { font: 300 32px/36px var(--font-mono); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--flow); }
+.aq-limit-gauges__rule .aq-limit-gauges__p { padding: var(--space-2) 0 0; }
+.aq-limit-gauges__rv { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; padding-top: var(--space-2); }
+.aq-limit-gauges__rt { margin: 0; font: 400 12px/18px var(--font-mono); color: var(--ink-muted); overflow-wrap: break-word; text-wrap: pretty; }
+.aq-limit-gauges__rule.is-text .aq-limit-gauges__rt { padding: var(--space-3) 0; border-block: 1px dashed var(--line-strong); font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-limit-gauges__rule > .aq-limit-gauges__m { margin: 0; padding-top: var(--space-2); }
+
+.aq-limit-gauges__bar { position: relative; display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-limit-gauges__chip {
+  align-self: flex-start; position: relative; left: calc(var(--f, 0.5) * 100%); transform: translateX(calc(var(--f, 0.5) * -100%)); max-width: 100%;
+  padding: 0 var(--space-2); border-radius: var(--radius-sm); background: var(--ink); color: var(--surface);
+  font: 500 11px/18px var(--font-mono); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere;
+}
+.aq-limit-gauges__chip .aq-ph { font-size: inherit; }
+.aq-limit-gauges__scale {
+  position: relative; display: block; height: var(--space-4); border-bottom: 2px solid var(--ink);
+  background:
+    repeating-linear-gradient(90deg, var(--ink) 0 1.5px, transparent 1.5px 25%) left bottom / calc(100% + 1.5px) var(--space-3) no-repeat,
+    repeating-linear-gradient(90deg, var(--ink-muted) 0 1px, transparent 1px 5%) left bottom / calc(100% + 1px) var(--space-2) no-repeat;
+}
+/* the passing side: a flow band under the track */
+.aq-limit-gauges__band { position: absolute; bottom: calc(-1 * var(--space-2) - 2px); height: var(--space-2); left: 0; width: calc(var(--f, 0.5) * 100%); background: var(--flow); }
+.aq-limit-gauges__bar.is-up .aq-limit-gauges__band { left: calc(var(--f, 0.5) * 100%); width: auto; right: 0; }
+/* the threshold mark: an ink rule through the scale, meeting the chip */
+.aq-limit-gauges__tick { position: absolute; left: calc(var(--f, 0.5) * 100% - 1.5px); top: calc(-1 * var(--space-2)); bottom: calc(-1 * var(--space-2) - 2px); width: 3px; background: var(--ink); }
+.aq-limit-gauges__ends { display: flex; justify-content: space-between; margin-top: var(--space-2); font: 400 11px/14px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-muted); }
+.aq-limit-gauges__bar.is-open .aq-limit-gauges__scale { border-bottom-style: solid; }
+.aq-limit-gauges__bar:not(:has(.aq-limit-gauges__ends)) .aq-limit-gauges__scale { margin-bottom: var(--space-2); }
+
+@container (max-width: 860px) {
+  /* Phone: two compact instruments per row (dial about 135-150 px), widened a little into the plate's side padding.
+     No scale numbers (at a legible 12 px they collide with the arc; the chip and readout carry the
+     value); every label at 12 px minimum; the chip drops its "LIMIT" word; the
+     readout moves under the dial; the basis keeps only its standard tags (the wording between them is hidden). */
+  .aq-limit-gauges, .aq-limit-gauges:has(> li:nth-child(4):last-child), .aq-limit-gauges:has(> li:nth-child(7):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); margin-inline: calc(-1 * var(--space-2)); }
+  .aq-limit-gauges__item { padding: var(--space-2) var(--space-2) var(--space-3); gap: var(--space-1); }
+  .aq-limit-gauges__item::after { top: var(--space-1); right: var(--space-1); width: 9px; height: 9px; }
+  .aq-limit-gauges__p { padding-right: var(--space-3); font-size: 12px; line-height: 16px; letter-spacing: 0.02em; }
+  .aq-limit-gauges__p::after { width: var(--space-4); height: 2px; margin-top: var(--space-1); }
+  .aq-limit-gauges__dial { margin: var(--space-6) 0 0; }
+  .aq-limit-gauges__nums text { display: none; }
+  .aq-limit-gauges__mark { font-size: 12px; line-height: 18px; padding: 0 var(--space-1); }
+  .aq-limit-gauges__mark.is-right { transform: translateY(calc(-1 * var(--space-4))); }
+  .aq-limit-gauges__mark-k { display: none; }
+  .aq-limit-gauges__read { margin-top: calc(-1 * var(--space-1)); }
+  .aq-limit-gauges__line { position: static; display: block; padding: 0; }
+  .aq-limit-gauges__num { font-size: 18px; line-height: 22px; letter-spacing: -0.03em; }
+  .aq-limit-gauges__unit { font-size: 12px; line-height: 16px; }
+  .aq-limit-gauges__cap { padding-top: 0; font-size: 12px; line-height: 16px; letter-spacing: 0.02em; white-space: normal; }
+  .aq-limit-gauges__cap.is-q { font-size: 12px; line-height: 16px; letter-spacing: 0; }
+  .aq-limit-gauges__foot { padding-top: var(--space-1); }
+  .aq-limit-gauges__spec > div { padding-left: 0; }
+  .aq-limit-gauges__spec > div::before, .aq-limit-gauges__spec dt { display: none; }
+  .aq-limit-gauges__m { font-size: 12px; line-height: 18px; }
+  .aq-limit-gauges__item:not(.is-readout) .aq-limit-gauges__mt { display: none; }
+  .aq-limit-gauges__m .aq-tag { font-size: 12px; line-height: 18px; padding: 0 var(--space-1); white-space: nowrap; }
+  .aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child { padding: var(--space-2) 0; }
+  .aq-limit-gauges__item.is-readout .aq-limit-gauges__spec > div:first-child dt { display: block; font-size: 12px; }
+  .aq-limit-gauges__chip, .aq-limit-gauges__ends, .aq-limit-gauges__spec dt { font-size: 12px; }
+  .aq-limit-gauges__item.is-readout .aq-limit-gauges__v { font-size: 13px; line-height: 18px; }
+  /* Rules on phones: number and name on one line, then the bar full width, the rule as written, the basis tags */
+  .aq-limit-gauges--rules { margin-inline: 0; }
+  .aq-limit-gauges__rule { grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); row-gap: var(--space-2); padding: var(--space-4) 0; }
+  .aq-limit-gauges__rn { font-size: 24px; line-height: 28px; }
+  .aq-limit-gauges__rule .aq-limit-gauges__p { padding-top: var(--space-1); font-size: 12px; line-height: 18px; padding-right: 0; }
+  .aq-limit-gauges__rv, .aq-limit-gauges__rule > .aq-limit-gauges__m { grid-column: 1 / -1; padding-top: 0; }
+  .aq-limit-gauges__rule.is-text .aq-limit-gauges__rt { padding: var(--space-2) 0; font-size: 14px; line-height: 21px; }
+  .aq-limit-gauges__rule .aq-limit-gauges__mt { display: inline; }
+}

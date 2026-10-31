@@ -1,0 +1,10 @@
+SectionNav is a sticky bar of numbered jump links to the sections of a long technical page, with a page progress readout, like the revision bar of a drawing set.
+
+- Markup: `<nav class="aq-section-nav" aria-label="On this page"><div class="aq-in">`, then `<span class="aq-section-nav__label" aria-hidden="true">On this page <span>↓</span></span>`, then `<ol class="aq-section-nav__links">` with one `<li><a href="#…" data-jump="s-…"><span class="aq-section-nav__num" aria-hidden="true">01</span>Limits</a></li>` per section, then the progress cell (see the preview): `aq-section-nav__progress` holding a label, an `aq-section-nav__meter` (`role="progressbar"`, ten `aq-section-nav__seg`, lit ones `is-on`) and `aq-section-nav__pct`.
+- Each link's `data-jump` is the `id` of a `<section>` on the page; the site renderer adds those ids from the block nav labels and scrolls on click (page ids own the URL hash, so links do not change it). Those sections get `scroll-margin-top` so the bar never covers their heading.
+- The section being read is boxed: `aria-current="true"`, `surface-sunken` with a `flow` border and index number. The site's scroll-spy (one passive scroll listener, one update per frame) sets it here and in the phone menu's section jump, scrolls the active link into view inside the bar, and updates the progress segments and percentage.
+- Sticks to the top of the viewport (`position: sticky`, `top: 0`) on `surface` with a `line` bottom border; label and progress cells are ruled off with `line`. Transitions are dropped under `prefers-reduced-motion`.
+- The links scroll sideways rather than wrapping, so the bar is always one row. On phones the label and segments hide and only the percentage stays; each link is at least 44 px tall.
+- Every jump target (`section[id]`) gets `scroll-margin-top: var(--space-16)`, so the sticky bar never covers the heading after a jump.
+- Use short labels (one to three words: "Limits", "Design", "Documents", "FAQ"). Eight links at most.
+- Only on pages with four or more labelled sections. Short pages and the home page do without it; the NavBar is the site-level navigation and carries the proposal button.
