@@ -342,6 +342,38 @@ AQmotion.fx('CaseStudy', function (root, m) {
     }
   });
 });
+/* ClauseCrosswalk: the two regulations set in first (their names slide along the edge, their clause chips tick in
+   down each spine), then the requirements arrive one at a time and each one's wires run out from it to every clause
+   it cites, both sides at once, so the mapping is drawn row by row. One timeline, once, < 5 s. Phones: rows rise. */
+AQmotion.fx('ClauseCrosswalk', function (root, m) {
+  root.querySelectorAll('.aq-clause-crosswalk').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var rows = qa('.aq-clause-crosswalk__row').filter(function (r) { return !m.narrow() || !r.classList.contains('aq-fold-x') });
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    if (!m.narrow()) {
+      var regs = qa('.aq-clause-crosswalk__reg');
+      tl.from(regs, { yPercent: function (i) { return i ? -12 : 12 }, autoAlpha: 0, duration: 0.8, clearProps: 'transform,opacity,visibility' }, 0);
+      tl.from(qa('.aq-clause-crosswalk__node'), { x: function (i, n) { return n.closest('.aq-clause-crosswalk__spine--a') ? -8 : 8 }, autoAlpha: 0, duration: 0.3, stagger: 0.03, clearProps: 'transform,opacity,visibility' }, 0.2);
+      tl.from(qa('.aq-clause-crosswalk__heads'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0.3);
+      var wires = qa('.aq-clause-crosswalk__wire');
+      wires.forEach(function (w) { w.setAttribute('vector-effect', 'non-scaling-stroke') });
+      if (window.DrawSVGPlugin) gsap.set(wires, { drawSVG: '0%' });
+      rows.forEach(function (r, i) {
+        var t = 0.6 + i * 0.28, id = r.getAttribute('data-cw');
+        tl.from(r, { y: 14, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, t);
+        var a = wires.filter(function (w) { return w.getAttribute('data-cw') === id && w.closest('.aq-clause-crosswalk__wires--a') });
+        var b = wires.filter(function (w) { return w.getAttribute('data-cw') === id && w.closest('.aq-clause-crosswalk__wires--b') });
+        if (window.DrawSVGPlugin) {
+          if (a.length) tl.fromTo(a, { drawSVG: '100% 100%' }, { drawSVG: '0% 100%', duration: 0.6, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, t + 0.2);
+          if (b.length) tl.fromTo(b, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.6, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, t + 0.2);
+        }
+      });
+      tl.call(function () { wires.forEach(function (w) { w.style.removeProperty('stroke-dasharray'); w.style.removeProperty('stroke-dashoffset') }) });
+    } else tl.from(rows, { y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.1, clearProps: 'transform,opacity,visibility' }, 0);
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
 /* Closing: the last screen of every page, played once as the band scrolls in.
    The water line runs along the band's top edge, the headline lines rise out of their mask, the lead and the button
    follow (one nudge of its arrow). Then the exchange runs as a process, in the order the water would: the send rows
@@ -1199,6 +1231,41 @@ AQmotion.fx('GradeLanes', function (root, m) {
     figure(q('.aq-photo'), function () { var ph = q('.aq-photo'); gsap.set(ph, { clipPath: 'inset(100% 0 0 0)' }); return m.tw(gsap.timeline().to(ph, { clipPath: 'inset(0% 0 0 0)', duration: 1.2, ease: 'power3.inOut', clearProps: 'clipPath' })) });
   });
 })();
+/* HmiTrend: the panel powers on. The screen opens from a bright centre line, the tabs decode and the lamps test in
+   turn; the grid and the limit lines run out from the time axis, each label arriving with its line; then the reading
+   is written left to right like a live pen. As the pen passes the trend window it shades, at the rule's mark the flag
+   strikes, the banner flashes twice and the trend row in the alarm summary lights (it stays flagged: a state, not
+   decoration); the live dot lands at the pen and pulses twice. Table rows follow. One timeline, once, < 5 s. */
+AQmotion.fx('HmiTrend', function (root, m) {
+  root.querySelectorAll('.aq-hmi-trend').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var q = function (s) { return el.querySelector(s) }, qa = function (s) { return [].slice.call(el.querySelectorAll(s)) };
+    var flagAt = parseFloat(el.getAttribute('data-flag')) || 0.84, PEN = 1.9, T = 1.25;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    tl.fromTo(q('.aq-hmi-trend__screen'), { clipPath: 'inset(49.5% 0 49.5% 0)' }, { clipPath: 'inset(0% 0 0% 0)', duration: 0.6, ease: 'power4.inOut', clearProps: 'clipPath' }, 0);
+    if (window.ScrambleTextPlugin) qa('.aq-hmi-trend__tab').forEach(function (t, i) { var s = t.textContent; tl.to(t, { duration: 0.5, scrambleText: { text: s, chars: 'upperCase', speed: 0.6 }, ease: 'none' }, 0.45 + i * 0.08) });
+    tl.from(qa('.aq-hmi-trend__lamps .aq-hmi-trend__pri'), { autoAlpha: 0.15, duration: 0.15, stagger: 0.1, ease: 'none', clearProps: 'opacity,visibility' }, 0.5);
+    tl.from(q('.aq-hmi-trend__grid'), { autoAlpha: 0, duration: 0.5, clearProps: 'opacity,visibility' }, 0.55);
+    tl.from(qa('.aq-hmi-trend__lim'), { scaleX: 0, transformOrigin: '0% 50%', duration: 0.7, stagger: 0.12, ease: 'power2.out', clearProps: 'transform' }, 0.7);
+    tl.from(qa('.aq-hmi-trend__ll'), { x: -10, autoAlpha: 0, duration: 0.4, stagger: 0.12, clearProps: 'transform,opacity,visibility' }, 1.0);
+    tl.from(qa('.aq-hmi-trend__zone, .aq-hmi-trend__ax'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0.9);
+    var run = q('.aq-hmi-trend__run');
+    if (run) tl.fromTo(run, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: PEN, ease: 'none', clearProps: 'clipPath' }, T);
+    var win = q('.aq-hmi-trend__win'), fit = q('.aq-hmi-trend__fit'), mark = q('.aq-hmi-trend__mark'), flag = q('.aq-hmi-trend__flag'), bn = q('.aq-hmi-trend__banner'), row = q('.aq-hmi-trend__row--trend');
+    var tw = T + PEN * 0.69, tf = T + PEN * flagAt;
+    if (win) tl.from(win, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, tw);
+    if (fit) tl.from(fit, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, tw + 0.2);
+    if (mark) tl.from(mark, { autoAlpha: 0, duration: 0.15, clearProps: 'opacity,visibility' }, tf);
+    if (flag) tl.from(flag, { scale: 1.3, autoAlpha: 0, duration: 0.35, ease: 'back.out(2)', clearProps: 'transform,opacity,visibility' }, tf);
+    if (bn) tl.fromTo(bn, { autoAlpha: 1 }, { autoAlpha: 0.25, duration: 0.18, repeat: 3, yoyo: true, ease: 'none', clearProps: 'opacity,visibility' }, tf);
+    if (row) tl.call(function () { row.classList.add('is-flag') }, null, tf + 0.1);
+    var dot = q('.aq-hmi-trend__dot');
+    if (dot) { tl.from(dot, { autoAlpha: 0, duration: 0.2, clearProps: 'opacity,visibility' }, T + PEN);
+      tl.to(dot, { scale: 1.6, duration: 0.25, repeat: 3, yoyo: true, ease: 'sine.inOut', clearProps: 'transform' }, T + PEN + 0.3) }
+    tl.from(qa('.aq-hmi-trend__table thead, .aq-hmi-trend__row'), { y: 10, autoAlpha: 0, duration: 0.45, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 1.2);
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
 /* HoldTimeline: the macro comes into focus, then the water climbs the line. The pipe close-up settles in (scale and
    fade), its engraving lines draw from the seam outwards, the weld bead rings on and the water creeps once along the
    centre. Then one flow drop runs the rising line from the left edge, laying it behind it (clip), stage by stage:
@@ -1484,6 +1551,46 @@ AQmotion.fx('KeyFacts', function (root, m) {
         if (src) tl.to(src, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, at + 0.7);
       });
     }, inHero ? 'top 95%' : 'top 88%');
+  });
+});
+/* LayerStack: the stack explodes. The plates arrive pressed together at the bottom and lift apart to their places,
+   lowest first; each plate's equipment settles onto it; the risers and the axis appear; water runs the instrument
+   pipe; then one packet rides the data route from the instruments to the plant network and each plate's leader and
+   label light as it passes (they settle again after). Labels slide in from their side. One timeline, once, < 5 s. */
+AQmotion.fx('LayerStack', function (root, m) {
+  root.querySelectorAll('.aq-layer-stack').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s) { return [].slice.call(el.querySelectorAll(s)) };
+    var layers = qa('.aq-layer-stack__layer'), gaps = qa('.aq-layer-stack__gap'), eq = qa('.aq-layer-stack__eqp'), items = qa('.aq-layer-stack__item'),
+      leads = qa('.aq-layer-stack__lead'), axis = el.querySelector('.aq-layer-stack__axis'), water = qa('.aq-layer-stack__water .aq-iso__flow'),
+      packet = el.querySelector('.aq-layer-stack__packet'), route = el.querySelector('.aq-layer-stack__route');
+    var at = (el.getAttribute('data-at') || '').split(' ').map(parseFloat);
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    layers.forEach(function (g, i) {
+      tl.fromTo(g, { x: +g.getAttribute('data-dx') || 0, y: +g.getAttribute('data-dy') || 0, autoAlpha: i ? 0 : 1 },
+        { x: 0, y: 0, autoAlpha: 1, duration: 1.1, ease: 'power3.inOut', clearProps: 'transform,opacity,visibility' }, 0.1 + i * 0.07);
+    });
+    tl.from(eq, { y: -14, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 1.0);
+    tl.from(gaps, { autoAlpha: 0, duration: 0.4, stagger: 0.06, clearProps: 'opacity,visibility' }, 1.2);
+    if (axis) tl.from(axis, { autoAlpha: 0, duration: 0.6, clearProps: 'opacity,visibility' }, 1.2);
+    if (!m.narrow()) {
+      tl.from(qa('.aq-layer-stack__lead circle'), { autoAlpha: 0, duration: 0.3, stagger: 0.08, clearProps: 'opacity,visibility' }, 1.2);
+      if (window.DrawSVGPlugin) tl.fromTo(qa('.aq-layer-stack__lead path'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.5, stagger: 0.08, clearProps: 'strokeDasharray,strokeDashoffset' }, 1.25);
+      items.forEach(function (it, i) { tl.from(it, { x: it.classList.contains('aq-layer-stack__item--l') ? -16 : 16, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, 1.4 + i * 0.08) });
+    } else tl.from(items, { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 1.3);
+    if (water.length && window.DrawSVGPlugin) tl.fromTo(water, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.8, ease: 'none', clearProps: 'strokeDasharray,strokeDashoffset' }, 1.4);
+    if (packet && route && window.MotionPathPlugin) {
+      var T0 = 2.1, DUR = 2.2;
+      tl.set(packet, { opacity: 1, attr: { cx: 0, cy: 0 } }, T0);
+      tl.to(packet, { duration: DUR, ease: 'none', motionPath: { path: route, align: route, alignOrigin: [0.5, 0.5] } }, T0);
+      tl.to(packet, { opacity: 0, duration: 0.3 }, T0 + DUR);
+      at.forEach(function (f, i) {
+        var hit = qa('[data-ls="' + i + '"].aq-layer-stack__lead, [data-ls="' + i + '"].aq-layer-stack__item');
+        tl.call(function () { hit.forEach(function (x) { x.classList.add('is-on') }) }, null, T0 + f * DUR);
+        tl.call(function () { hit.forEach(function (x) { x.classList.remove('is-on') }) }, null, T0 + f * DUR + 0.9);
+      });
+    }
+    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
 /* LimitBento: the bento assembles, then the water proves the stricter value. Tiles slide in from the side they sit on
@@ -2560,6 +2667,35 @@ AQmotion.fx('Prose', function (root, m) {
     }, 'top 85%');
   });
 });
+/* RailModules: the panel is fitted. The rail slides along the plate, the nameplate decodes, then the modules drop
+   onto the rail one after another and seat with a small settle; their terminal screws turn home, each lamp tests
+   (lights, then goes back to its rest state), and each module's leader runs down to its callout, which prints.
+   Hover lifts a module off the rail and lights its lamp. One timeline, once, < 5 s. Phones: the vertical rail grows
+   down and the modules slide onto it from the right. */
+AQmotion.fx('RailModules', function (root, m) {
+  root.querySelectorAll('.aq-rail-modules').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) }, nar = m.narrow();
+    var mods = qa('.aq-rail-modules__m').filter(function (x) { return !nar || !x.classList.contains('aq-fold-x') });
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var rail = el.querySelector('.aq-rail-modules__rail'), base = el.querySelector('.aq-rail-modules__base span');
+    if (rail) tl.from(rail, nar ? { scaleY: 0, transformOrigin: '50% 0%', duration: 0.8, clearProps: 'transform' } : { xPercent: -100, duration: 0.9, ease: 'power3.inOut', clearProps: 'transform' }, 0);
+    if (base) { tl.from(base, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, 0.3); if (window.ScrambleTextPlugin) { var s = base.textContent; base.setAttribute('aria-label', s); tl.to(base, { duration: 0.6, scrambleText: { text: s, chars: 'upperCase', speed: 0.6 }, ease: 'none' }, 0.3) } }
+    mods.forEach(function (mo, i) {
+      var t = 0.5 + i * 0.22, body = mo.querySelector('.aq-rail-modules__body'), d = mo.querySelector('.aq-rail-modules__d');
+      tl.from(body, nar ? { x: 40, autoAlpha: 0, duration: 0.55, clearProps: 'transform,opacity,visibility' } : { y: -40, autoAlpha: 0, duration: 0.6, ease: window.CustomEase && CustomEase.get('aq-settle') ? 'aq-settle' : 'power3.out', clearProps: 'transform,opacity,visibility' }, t);
+      tl.from(qa('.aq-rail-modules__term i', mo), { rotation: '-=90', duration: 0.5, stagger: 0.02, ease: 'power2.out', clearProps: 'transform' }, t + 0.35);
+      tl.call(function () { mo.classList.add('is-on') }, null, t + 0.55);
+      tl.call(function () { mo.classList.remove('is-on') }, null, t + 1.25);
+      if (d) {
+        if (!nar) tl.fromTo(d, { '--rm-lead': 0 }, { '--rm-lead': 1, duration: 0.4, ease: 'power2.out', clearProps: '--rm-lead' }, t + 0.5);
+        tl.from(d, { y: 8, autoAlpha: 0, duration: 0.45, clearProps: 'transform,opacity,visibility' }, t + 0.6);
+      }
+      if (nar) gsap.set(mo, { autoAlpha: 1 });
+    });
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
 /* Readout: the instrument powers up. The tick scale runs out along the bottom, the figure counts up to its value
    (integers and one-decimal values; a placeholder is left alone), the unit and condition drop in beside it, and the
    method tag lands on the reference line last. Under 3 s, once. */
@@ -2776,6 +2912,33 @@ AQmotion.fx('SectionTrain', function (root, m) {
       if (li.getAttribute('data-cut') === 'out' && lenses[1]) tl.from(lenses[1], { scale: 0.6, autoAlpha: 0, transformOrigin: '50% 40%', duration: 0.6, clearProps: 'transform,opacity,visibility' }, at - 0.3);
     });
     if (swarm) tl.set(swarm.querySelectorAll('[data-g]'), { clearProps: 'opacity,visibility' }, T0 + D + 0.05);
+    m.on(el, function () { tl.play() }, 'top 70%');
+  });
+});
+/* SensorLoop: the loop is drawn and commissioned. The equipment draws back to front and the water runs the loop
+   once (IsoKit's choreography, AQiso.timeline), each stage lighting as the water reaches it; as the water passes a
+   measuring point its balloon strikes on, then every leader runs from its schedule card down (or up) to the balloon
+   and the card prints. Last the bus: the taps drop into it and the data recording balloon lands at its end. Hover a
+   card to light its leader, balloons and tap. One timeline, once, < 5 s. Phones: the cards rise in order. */
+AQmotion.fx('SensorLoop', function (root, m) {
+  root.querySelectorAll('.aq-sensor-loop').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s) { return [].slice.call(el.querySelectorAll(s)) }, svg = el.querySelector('svg.aq-iso');
+    var cards = qa('.aq-sensor-loop__card').filter(function (c) { return !c.classList.contains('aq-fold-x') || !m.narrow() });
+    var balls = qa('.aq-sensor-loop__ball'), leads = qa('.aq-sensor-loop__lead'), bus = qa('.aq-sensor-loop__bus, .aq-sensor-loop__tap, .aq-sensor-loop__node');
+    var tl = svg && window.AQiso ? AQiso.timeline(svg, m, { draw: 1.3, pipe: 0.6, flow: 1.4, stagger: 0.04 }) : null;
+    if (!tl) { tl = m.tw(gsap.timeline({ paused: true })) }
+    var t0 = tl.duration() ? Math.max(1.3, tl.duration() - 1.2) : 0.3;
+    gsap.set(balls, { autoAlpha: 0 }); gsap.set(bus, { autoAlpha: 0 });
+    var flowAt = tl.labels && tl.labels.flow != null ? tl.labels.flow : t0;
+    tl.to(balls, { autoAlpha: 1, duration: 0.25, stagger: 0.09, clearProps: 'opacity,visibility' }, flowAt + 0.2);
+    tl.from(balls, { scale: 1.6, transformOrigin: '50% 50%', duration: 0.35, stagger: 0.09, ease: 'back.out(2)', clearProps: 'transform' }, flowAt + 0.2);
+    if (!m.narrow()) {
+      if (window.DrawSVGPlugin) { leads.forEach(function (l) { l.setAttribute('vector-effect', 'non-scaling-stroke') });
+        tl.fromTo(leads, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.5, stagger: 0.07, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, flowAt + 0.5) }
+      tl.from(cards, { y: function (i, c) { return c.classList.contains('aq-sensor-loop__card--b') ? 12 : -12 }, autoAlpha: 0, duration: 0.45, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, flowAt + 0.6);
+    } else tl.from(cards, { y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 0.2);
+    tl.to(bus, { autoAlpha: 1, duration: 0.4, stagger: 0.03, clearProps: 'opacity,visibility' }, flowAt + 1.1);
     m.on(el, function () { tl.play() }, 'top 70%');
   });
 });

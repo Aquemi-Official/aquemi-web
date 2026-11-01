@@ -1820,28 +1820,35 @@
       {
        "t": "Instruments",
        "d": "Measure total organic carbon (TOC), conductivity and temperature online.",
-       "icon": "conductivity"
+       "icon": "conductivity",
+       "art": "instruments"
       },
       {
        "t": "Controller (PLC)",
-       "d": "Runs sequences, interlocks and divert, even if every layer above fails."
+       "d": "Runs sequences, interlocks and divert, even if every layer above fails.",
+       "art": "plc",
+       "key": true
       },
       {
        "t": "Operator panel (HMI)",
        "d": "Where operators see alarms, trends and sanitization status.",
-       "icon": "monitor"
+       "icon": "monitor",
+       "art": "hmi"
       },
       {
        "t": "Supervisory control (SCADA) historian",
        "d": "Keeps time-stamped records with an audit trail.",
-       "icon": "database"
+       "icon": "database",
+       "art": "historian"
       },
       {
        "t": "Plant network",
-       "d": "Reaches your network through a demilitarized zone (DMZ)."
+       "d": "Reaches your network through a demilitarized zone (DMZ).",
+       "art": "network"
       }
      ],
-     "nav": "Architecture"
+     "nav": "Architecture",
+     "look": "layer-stack"
     },
     {
      "type": "table",
@@ -1877,7 +1884,13 @@
        "Flags drift before any limit"
       ]
      ],
-     "nav": "Alarms"
+     "nav": "Alarms",
+     "look": "hmi-trend",
+     "tabs": [
+      "Trends",
+      "Alarms",
+      "Sanitization"
+     ]
     },
     {
      "type": "spec",
@@ -1896,7 +1909,8 @@
        "at": [
         37.4,
         46.9
-       ]
+       ],
+       "site": "toc"
       },
       {
        "p": "Conductivity cell",
@@ -1905,7 +1919,8 @@
        "at": [
         49.4,
         57.7
-       ]
+       ],
+       "site": "cond"
       },
       {
        "p": "Temperature",
@@ -1913,7 +1928,8 @@
        "at": [
         48.9,
         41.1
-       ]
+       ],
+       "site": "temp"
       },
       {
        "p": "Divert",
@@ -1922,7 +1938,8 @@
        "at": [
         72.9,
         37.7
-       ]
+       ],
+       "site": "divert"
       },
       {
        "p": "Flow and pressure",
@@ -1931,23 +1948,27 @@
        "at": [
         57.4,
         69.7
-       ]
+       ],
+       "site": "flow"
       },
       {
        "p": "Ultraviolet (UV) units, where fitted",
-       "v": "Intensity at 254 nm, lamp hours, lamp failure"
+       "v": "Intensity at 254 nm, lamp hours, lamp failure",
+       "site": "uv"
       },
       {
        "p": "Data recording",
        "v": "Every quality value at [recording interval, seconds], time-stamped",
-       "m": "One site time source"
+       "m": "One site time source",
+       "site": "data"
       }
      ],
      "note": "Uncompensated conductivity is the record; the 25 °C compensated value is for trending only.",
      "nav": "Measurements",
      "fold": 5,
      "fold_noun": "signals",
-     "as": "callouts"
+     "as": "callouts",
+     "look": "sensor-loop"
     },
     {
      "type": "table",
@@ -2012,7 +2033,8 @@
      "nav": "Data integrity",
      "as": "evidence",
      "fold": 3,
-     "fold_noun": "requirements"
+     "fold_noun": "requirements",
+     "look": "clause-crosswalk"
     },
     {
      "type": "options",
@@ -2048,7 +2070,8 @@
      "nav": "Options",
      "fold_noun": "options",
      "as": "modules",
-     "base": "Controls"
+     "base": "Controls",
+     "look": "rail-modules"
     },
     {
      "type": "faq",

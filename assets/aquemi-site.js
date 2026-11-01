@@ -1420,6 +1420,47 @@ LOOKS['budget-bento']=function(b,H){
    +'<div class="aq-budget-bento__val"><p class="aq-budget-bento__k">'+tx(C[1]||'')+'</p><p class="aq-budget-bento__v">'+tx(r.v)+'</p>'+bbRange(L)+'</div>'
    +(r.m?'<div class="aq-budget-bento__basis"><p class="aq-budget-bento__k">'+tx(C[2]||'')+'</p>'+basis+'</div>':'')+link(r)+'</div></li>'}).join('');
  return sec(wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro})+'<div class="aq-budget-bento"><ol class="aq-budget-bento__grid" role="list">'+tiles+'</ol>'+bbNote(b)+'</div>','aq-budget-bento-sec')};
+/* Look "clause-crosswalk" -> ClauseCrosswalk (design-system/components/ClauseCrosswalk): a table of requirements met
+   against two regulations' clauses (requirement, how we meet it, clause column A, clause column B), set as an
+   editorial crosswalk. The requirements run down the middle, large, with how we meet them beside; each regulation is a
+   spine on its side, its name set big and vertical along the outer edge and every clause it cites as a mono chip in
+   clause order; a wire runs from each requirement to each of its clauses on both sides, so a clause cited twice draws
+   two wires and the shape of the mapping reads at a glance. Hover a requirement to light its wires and clauses, or a
+   clause to light every requirement that cites it. Each row also carries its clause references as text (visually
+   hidden on desktop, shown on phones), so nothing depends on the wires.
+   Fields: h, intro, cols [requirement, how, regulation A, regulation B], rows [[t, how, clausesA, clausesB]] (clauses
+   split on "," and ";", a "(g)" after "11.10(d)" reads 11.10(g)), fold (phones only), fold_noun. */
+function cwTok(c){var out=[],base='';String(c&&typeof c==='object'?c.t:c||'').split(/\s*[,;]\s*/).forEach(function(t){t=t.trim();if(!t)return;
+  if(t.charAt(0)==='('&&base)t=base+t;else base=t.replace(/\(.*$/,'');out.push(t)});return out}
+function cwKey(t){return (String(t).match(/\d+|[a-z]/gi)||[]).map(function(x){return /\d/.test(x)?('0000'+x).slice(-5):x})}
+function cwCmp(a,b){var A=cwKey(a),B=cwKey(b);for(var i=0;i<Math.max(A.length,B.length);i++){if(A[i]===B[i])continue;if(A[i]==null)return -1;if(B[i]==null)return 1;return A[i]<B[i]?-1:1}return 0}
+LOOKS['clause-crosswalk']=function(b,H){
+ var C=b.cols||[],R=b.rows||[],N=R.length;if(N<1||C.length<4)return BLOCKS.table(b,H);
+ var sides=[2,3].map(function(ci){var all={};R.forEach(function(r,i){cwTok(r[ci]).forEach(function(t){(all[t]=all[t]||[]).push(i)})});
+  var ks=Object.keys(all).sort(cwCmp);return {ci:ci,keys:ks,rows:all}});
+ var Y=1000,ry=function(i){return ((i+0.5)/N*Y).toFixed(1)};
+ function spine(s,k){var M=s.keys.length;
+  var chips=s.keys.map(function(t,j){return '<li class="aq-clause-crosswalk__node" data-cwn="'+k+j+'" data-rows="'+s.rows[t].join(' ')+'">'+tx(t)+'</li>'}).join('');
+  return '<div class="aq-clause-crosswalk__spine aq-clause-crosswalk__spine--'+k+'" aria-hidden="true"><p class="aq-clause-crosswalk__reg">'+tx(C[s.ci])+'</p><ol class="aq-clause-crosswalk__nodes">'+chips+'</ol></div>'}
+ function wires(s,k){var M=s.keys.length,d='';
+  s.keys.forEach(function(t,j){var ny=((j+0.5)/M*Y).toFixed(1);s.rows[t].forEach(function(i){var a=k==='a'?'M0 '+ny+'C55 '+ny+' 45 '+ry(i)+' 100 '+ry(i):'M0 '+ry(i)+'C55 '+ry(i)+' 45 '+ny+' 100 '+ny;
+   d+='<path class="aq-clause-crosswalk__wire" data-cw="'+i+'" data-cwn="'+k+j+'" d="'+a+'"/>'})});
+  return '<svg class="aq-clause-crosswalk__wires aq-clause-crosswalk__wires--'+k+'" viewBox="0 0 100 '+Y+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+d+'</svg>'}
+ var rows=R.map(function(r,i){var refs=sides.map(function(s){var t=cwTok(r[s.ci]);return t.length?'<span class="aq-clause-crosswalk__ref"><span class="aq-clause-crosswalk__rk">'+tx(C[s.ci])+'</span> '+t.map(function(x){return '<span class="aq-clause-crosswalk__chip">'+tx(x)+'</span>'}).join(' ')+'</span>':''}).join('');
+  return fli('<li class="aq-clause-crosswalk__row" data-cw="'+i+'">'+idx(i)+'<h3 class="aq-clause-crosswalk__t">'+tcell(r[0])+'</h3><p class="aq-clause-crosswalk__how">'+tcell(r[1])+'</p><p class="aq-clause-crosswalk__refs">'+refs+'</p></li>',b,i)}).join('');
+ var head='<div class="aq-clause-crosswalk__heads" aria-hidden="true"><span>'+tx(C[0])+'</span><span>'+tx(C[1])+'</span></div>';
+ var inner='<div class="aq-clause-crosswalk" style="--cw-n:'+N+'">'+spine(sides[0],'a')+wires(sides[0],'a')
+  +head+'<div class="aq-clause-crosswalk__mid"><ol class="aq-clause-crosswalk__rows" role="list">'+rows+'</ol></div>'+wires(sides[1],'b')+spine(sides[1],'b')+'</div>';
+ return sec(H+wFold(b,N,inner,b.fold_noun||'requirements'),'aq-clause-crosswalk-sec')};
+(function(){
+ function set(root,rows,nodes){var on=rows||nodes;root.classList.toggle('has-hot',!!on);
+  [].forEach.call(root.querySelectorAll('[data-cw],[data-cwn]'),function(el){var r=el.getAttribute('data-cw'),n=el.getAttribute('data-cwn'),rs=el.getAttribute('data-rows');
+   var hot=!!on&&((rows&&r!=null&&rows.indexOf(r)>=0)||(nodes&&n!=null&&nodes.indexOf(n)>=0)||(rows&&rs&&rs.split(' ').some(function(x){return rows.indexOf(x)>=0})));el.classList.toggle('is-hot',hot)})}
+ document.addEventListener('mouseover',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-clause-crosswalk');if(!root)return;
+  var row=ev.target.closest('.aq-clause-crosswalk__row'),node=ev.target.closest('.aq-clause-crosswalk__node');
+  if(row)set(root,[row.getAttribute('data-cw')],null);else if(node)set(root,node.getAttribute('data-rows').split(' '),[node.getAttribute('data-cwn')]);else set(root,null,null)});
+ document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-clause-crosswalk');if(root&&!root.contains(ev.relatedTarget))set(root,null,null)});
+})();
 /* Look "cutaway-rail" -> CutawayRail (design-system/components/CutawayRail): an evidence table read beside one sticky
    drawing. Left, a close cutaway of the plant (IsoKit on navy: a section of product-contact pipe cut open, the loop with
    a point-of-use branch and its valve, an analyser on the line, the control panel, the qualification binders) stays in
@@ -1690,6 +1731,53 @@ LOOKS['grade-editorial']=(function(){
   return sec('<div class="aq-grade-editorial__mast">'+H+'</div><div class="aq-grade-editorial" data-n="'+I.length+'"><figure class="aq-grade-editorial__art" aria-hidden="true">'+collage()+'</figure>'
    +'<div class="aq-grade-editorial__grid">'+I.map(item).join('')+'</div></div>','aq-band--limestone aq-grade-editorial-band')}
 })();
+/* Look "hmi-trend" -> HmiTrend (design-system/components/HmiTrend): a table of alarm lines (line, how it is set, what
+   the system does) as the operator panel's own screen: a dark instrument panel (data-theme dark in both page themes)
+   with a tab bar and an alarm banner, a trend plot where one reading runs under the limit lines and drifts up near the
+   end, flagged by the trend rule before it reaches any line, and the alarm summary under it as the real table. Each
+   line keeps one status colour, one shape and its name everywhere (plot label, banner, table).
+   Fields: h, intro, cols (three labels), rows [[line, how, what]] (a cell may be {t, link}), lines (the role of each
+   row in order: limit | action | alert | trend; default that order), tabs (screen tab names, the first one shown;
+   decoration, aria-hidden). Phones: tabs collapse to the shown one, the plot shortens, the table rows stack. */
+var HMI_Y={limit:52,action:112,alert:172};
+function hmiTrace(){var d='',x,y,pts=[];
+ for(x=0;x<=930;x+=10){var n=Math.sin(x*0.071)*7+Math.sin(x*0.23+1.3)*4+Math.sin(x*0.013+0.4)*5,dr=x>600?Math.pow((x-600)/330,1.6)*58:0;y=262+n-dr;pts.push([x,y])}
+ pts.forEach(function(p,i){d+=(i?'L':'M')+p[0]+' '+p[1].toFixed(1)});return {d:d,end:pts[pts.length-1]}}
+LOOKS['hmi-trend']=function(b,H){
+ var C=b.cols||[],R=b.rows||[],L=b.lines||['limit','action','alert','trend'],T=b.tabs||[];
+ var name=function(r){var c=r&&r[0];return c&&typeof c==='object'?c.t:c};
+ var kind=function(i){return L[i]||'alert'},trendI=L.indexOf('trend');
+ /* the plot: grid, limit lines, the reading, the trend rule's fit line and flag */
+ var W=1000,Hh=320,grid='';for(var gx=50;gx<W;gx+=50)grid+='M'+gx+' 0V'+Hh;for(var gy=40;gy<Hh;gy+=40)grid+='M0 '+gy+'H'+W;
+ var tr=hmiTrace(),lines='',labels='';
+ R.forEach(function(r,i){var k=kind(i);if(!HMI_Y[k])return;var y=HMI_Y[k];
+  lines+='<path class="aq-hmi-trend__lim aq-hmi-trend__lim--'+k+'" data-hmi="'+i+'" d="M0 '+y+'H'+W+'"/>';
+  labels+='<span class="aq-hmi-trend__ll aq-hmi-trend__ll--'+k+'" data-hmi="'+i+'" style="top:'+(100*y/Hh).toFixed(2)+'%"><i class="aq-hmi-trend__pri aq-hmi-trend__pri--'+k+'"></i>'+tx(name(r))+'</span>'});
+ var flagX=780,fit='M640 '+(262).toFixed(0)+'L930 '+(tr.end[1]-4).toFixed(1);
+ var plot='<svg class="aq-hmi-trend__svg" viewBox="0 0 '+W+' '+Hh+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'
+  +'<path class="aq-hmi-trend__grid" d="'+grid+'"/><rect class="aq-hmi-trend__zone" x="0" y="0" width="'+W+'" height="'+HMI_Y.limit+'"/>'+lines
+  +(trendI>=0?'<g class="aq-hmi-trend__rule" data-hmi="'+trendI+'"><rect class="aq-hmi-trend__win" x="640" y="0" width="290" height="'+Hh+'"/><path class="aq-hmi-trend__fit" d="'+fit+'"/><path class="aq-hmi-trend__mark" d="M'+flagX+' 0V'+Hh+'"/></g>':'')
+  +'</svg><svg class="aq-hmi-trend__svg aq-hmi-trend__run" viewBox="0 0 '+W+' '+Hh+'" preserveAspectRatio="none" aria-hidden="true" focusable="false">'
+  +'<path class="aq-hmi-trend__trace" d="'+tr.d+'"/><path class="aq-hmi-trend__now" d="M'+tr.end[0]+' 0V'+Hh+'"/></svg>';
+ var pct=function(x,y){return 'left:'+(100*x/W).toFixed(2)+'%;top:'+(100*y/Hh).toFixed(2)+'%'};
+ var flag=trendI>=0?'<span class="aq-hmi-trend__flag" data-hmi="'+trendI+'" style="left:'+(100*flagX/W).toFixed(2)+'%"><i class="aq-hmi-trend__pri aq-hmi-trend__pri--trend"></i>'+tx(name(R[trendI]))+'</span>':'';
+ var fig='<div class="aq-hmi-trend__plot" aria-hidden="true">'+plot+labels+flag+'<span class="aq-hmi-trend__dot" style="'+pct(tr.end[0],tr.end[1])+'"></span>'
+  +'<span class="aq-hmi-trend__ax"><span></span><span></span><span></span><span></span><span></span></span></div>';
+ /* the screen's chrome: tabs and the alarm banner (the trend rule's line, as a panel shows its newest alarm) */
+ var tabs=T.length?'<span class="aq-hmi-trend__tabs">'+T.map(function(t,i){return '<span class="aq-hmi-trend__tab'+(i?'':' is-on')+'">'+tx(t)+'</span>'}).join('')+'</span>':'';
+ var bn=trendI>=0?'<span class="aq-hmi-trend__banner" data-hmi="'+trendI+'"><i class="aq-hmi-trend__pri aq-hmi-trend__pri--trend"></i><span>'+tx(name(R[trendI]))+'</span><span class="aq-hmi-trend__bt">'+tcell(R[trendI][2])+'</span></span>':'';
+ var bar='<div class="aq-hmi-trend__bar" aria-hidden="true">'+tabs+bn+'<span class="aq-hmi-trend__lamps">'+R.map(function(r,i){return '<i class="aq-hmi-trend__pri aq-hmi-trend__pri--'+kind(i)+'"></i>'}).join('')+'</span></div>';
+ var table='<table class="aq-hmi-trend__table"><thead><tr>'+C.map(function(c){return '<th scope="col">'+tx(c)+'</th>'}).join('')+'</tr></thead><tbody>'
+  +R.map(function(r,i){var k=kind(i);return '<tr class="aq-hmi-trend__row aq-hmi-trend__row--'+k+'" data-hmi="'+i+'"><th scope="row"><i class="aq-hmi-trend__pri aq-hmi-trend__pri--'+k+'" aria-hidden="true"></i><span>'+tcell(r[0])+'</span></th>'
+   +r.slice(1).map(function(c,j){return '<td><span class="aq-hmi-trend__k" aria-hidden="true">'+tx(C[j+1]||'')+'</span>'+tcell(c)+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table>';
+ return sec(H+'<div class="aq-hmi-trend" data-theme="dark" data-flag="'+(flagX/930).toFixed(3)+'"><div class="aq-hmi-trend__screen">'+bar+fig+table+'</div></div>','aq-hmi-trend-sec')};
+/* Hover or focus on an alarm row lights its line on the plot */
+(function(){
+ function set(root,i){[].forEach.call(root.querySelectorAll('[data-hmi]'),function(el){el.classList.toggle('is-hot',i!=null&&el.getAttribute('data-hmi')===i)});root.classList.toggle('has-hot',i!=null)}
+ function over(ev){var t=ev.target.closest&&ev.target.closest('.aq-hmi-trend__row'),root=ev.target.closest&&ev.target.closest('.aq-hmi-trend');if(root)set(root,t?t.getAttribute('data-hmi'):null)}
+ document.addEventListener('mouseover',over);document.addEventListener('focusin',over);
+ ['mouseout','focusout'].forEach(function(k){document.addEventListener(k,function(ev){var root=ev.target.closest&&ev.target.closest('.aq-hmi-trend');if(root&&!root.contains(ev.relatedTarget))set(root,null)})});
+})();
 /* Look "hold-timeline" -> HoldTimeline (pass 9): a steps block drawn as one rising line of stage nodes across a dark
    macro close-up of a fused pipe joint. Stages climb left to right; each stage's callout hangs off its node like a
    flag on a pole, alternately below-right and above-left, so the line never crosses text. A stage with hold
@@ -1758,6 +1846,83 @@ LOOKS['industry-feed']=function(b,H){var I=b.items||[],n=I.length,len=Math.max.a
   return '<li class="aq-industry-feed__item" style="--i:'+i+'">'+(go?'<a class="aq-industry-feed__card" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-industry-feed__card">'+inner+'</div>')+'</li>'}).join('');
  return sec(H+'<div class="aq-industry-feed" style="--n:'+n+';--len:'+len+'"><span class="aq-industry-feed__trunk" aria-hidden="true"><span class="aq-industry-feed__water"></span></span>'
   +'<span class="aq-industry-feed__drip" aria-hidden="true"></span><ol class="aq-industry-feed__list">'+li+'</ol></div>','aq-industry-feed-sec')};
+/* Look "layer-stack" -> LayerStack (design-system/components/LayerStack): a diagram block whose stages are layers of
+   one system (field instruments up to the plant network), drawn as an exploded isometric stack of machined plates,
+   the first stage at the bottom, each next one a step higher and further back. Each plate carries its equipment in
+   IsoKit line art (analysers on a process pipe, a PLC rack, an operator panel, a historian rack and drums, a network
+   switch with a dashed DMZ boundary and firewall). A data riser climbs from plate to plate and a trace crosses each
+   plate top; one packet rides it from the instruments to the plant network. Labels alternate right and left of the
+   stack, each on a leader from its plate's corner. A stage marked key (the controller that runs on its own) is the
+   navy plate. Phones: the stack fills the width (cropped from the same drawing), the labels list under it.
+   Fields: stages [{t, d, icon, art, key}], caption. art: instruments | plc | hmi | historian | network (default by
+   position). key: true draws that plate navy. */
+var LS_ART=['instruments','plc','hmi','historian','network'],LS_W=170,LS_D=80,LS_T=8,LS_SY=44,LS_SZ=70;
+function lsPath(d,cls){return '<path class="'+cls+'" d="'+d+'"/>'}
+/* one layer: o maps plate-local [x, y, z] (top face at z 0) to world */
+function lsLayer(k,o,key){var W=LS_W,D=LS_D,T=LS_T,P=function(x,y,z){return o([x,y,z])},Q=function(a){return a.map(function(p){return o(p)})};
+ var s=lsPath(isoPoly(Q([[0,D,-T],[W,D,-T],[W,D,0],[0,D,0]]),1),'aq-layer-stack__front')+lsPath(isoPoly(Q([[W,0,-T],[W,D,-T],[W,D,0],[W,0,0]]),1),'aq-layer-stack__side')
+  +lsPath(isoPoly(Q([[0,0,0],[W,0,0],[W,D,0],[0,D,0]]),1),'aq-layer-stack__top')+lsPath(isoPoly(Q([[7,7,0],[W-7,7,0],[W-7,D-7,0],[7,D-7,0]]),1),'aq-layer-stack__inset')
+  +[[12,12],[W-12,12],[W-12,D-12]].map(function(q){return lsPath(isoRingD(P(q[0],q[1],0),'z',2.2),'aq-layer-stack__hole')}).join('');
+ var g='',B=function(x,y,z,w,d,h,c){return lsPath(isoBoxD(P(x,y,z),w,d,h),c||'aq-iso__eq')},L=function(pts,c){return lsPath(isoPoly(Q(pts)),c||'aq-iso__thin')};
+ if(k==='instruments'){
+  [58,98,138].forEach(function(x){var a=isoPart('analyzer',P(x,30,0)[0],P(x,30,0)[1],P(x,30,0)[2],0.8);g+=a;
+   var sp=a.ports.sample;g+=isoPipe([sp,[sp[0]+3,sp[1],sp[2]],[sp[0]+3,sp[1],P(0,0,10)[2]],[sp[0]+3,P(0,59,0)[1],P(0,0,10)[2]]],{r:1,wall:false,flow:false})});
+  g+=isoPipe([P(4,62,10),P(166,62,10)],{r:3,flanges:'ends',cls:'aq-layer-stack__water'})}
+ else if(k==='plc'){g+=B(28,28,0,124,4,48)+B(28,32,0,124,12,6,'aq-iso__eq aq-iso__eq--alt')+B(30,32,23,120,4,4);
+  var x=34;[24,15,15,15,15,15,15].forEach(function(w,j){g+=B(x,32,8,w,22,34);
+   g+=lsPath(isoRingD(P(x+4,54,36),'y',1.4),j===0?'aq-iso__acc':'aq-iso__thin')+L([[x+3,54,14],[x+w-3,54,14]]);
+   if(j===0)g+=lsPath(isoPoly(Q([[x+3,54,20],[x+w-3,54,20],[x+w-3,54,30],[x+3,54,30]]),1),'aq-iso__eq aq-iso__eq--glass');x+=w+1.5})}
+ else if(k==='hmi'){g+=B(68,40,0,34,24,2)+B(82,49,2,6,6,24);
+  g+=B(44,46,24,82,6,46)+lsPath(isoPoly(Q([[49,52,29],[121,52,29],[121,52,65],[49,52,65]]),1),'aq-iso__eq aq-iso__eq--glass')
+   +L([[52,52,58],[118,52,58]],'aq-iso__hid')+L([[52,52,40],[60,52,42],[68,52,38],[76,52,41],[84,52,39],[92,52,43],[100,52,46],[108,52,48],[116,52,52]],'aq-iso__trace')}
+ else if(k==='historian'){g+=B(30,28,0,46,40,56);
+  for(var z=8;z<54;z+=8)g+=L([[33,68,z],[73,68,z]])+lsPath(isoRingD(P(68,68,z+4),'y',1),'aq-iso__acc');
+  [0,15,30].forEach(function(z){var c=isoCylD(P(122,46,z),'z',13,17);g+=lsPath(c[0]+c[1],'aq-iso__eq')})}
+ else if(k==='network'){g+=lsPath(isoPoly(Q([[110,8,0],[163,8,0],[163,72,0],[110,72,0]]),1),'aq-iso__hid aq-layer-stack__dmz');
+  g+=B(28,44,0,66,20,12);for(var u=34;u<90;u+=9)g+=lsPath(isoPoly(Q([[u,64,4],[u+6,64,4],[u+6,64,8],[u,64,8]]),1),'aq-iso__thin');
+  g+=B(122,28,0,30,26,28);[9,18].forEach(function(z){g+=L([[122,54,z],[152,54,z]])});[[129,0,9],[144,0,9],[136,9,18],[129,18,28],[144,18,28]].forEach(function(q){g+=L([[q[0],54,q[1]],[q[0],54,q[2]]])});
+  g+=isoPipe([P(94,54,6),P(108,54,6),P(108,41,6),P(122,41,6)],{r:1,wall:false,cls:'aq-layer-stack__wire'})+isoPipe([P(152,41,6),P(186,41,6)],{r:1,wall:false,cls:'aq-layer-stack__wire'})
+   +isoArrow(P(186,41,6),'x',{size:4});
+  var dz=isoP(P(116,72,0));g+='<text class="aq-iso__label aq-layer-stack__dmz-t" x="'+isoF(dz[0])+'" y="'+isoF(dz[1]+12)+'" transform="rotate(30 '+isoF(dz[0])+' '+isoF(dz[1]+12)+')">DMZ</text>'}
+ return '<g class="aq-layer-stack__plate'+(key?' is-key':'')+'">'+s+'</g><g class="aq-layer-stack__eqp">'+g+'</g>'}
+LOOKS['layer-stack']=function(b,H){
+ var S=(b.stages||[]).slice(0,6),n=S.length;if(!n)return BLOCKS.diagram(b,H);
+ var off=function(i){return function(p){return [p[0],p[1]-LS_SY*i,p[2]+LS_SZ*i]}},pts=[];
+ S.forEach(function(s,i){var o=off(i);pts.push(o([0,0,-LS_T]),o([LS_W,0,-LS_T]),o([LS_W,LS_D,-LS_T]),o([0,LS_D,-LS_T]),o([0,0,74]),o([LS_W+20,LS_D,0]))});
+ var bx=isoBounds(pts,10),side=280,VX0=bx.x-side,VW=bx.w+2*side,VY0=bx.y-6,VH=bx.h+12,org=[-VX0,-VY0];
+ var pc=function(v,a0,aw){return (100*(v-a0)/aw).toFixed(2)+'%'};
+ /* the explode axis: a centre line through every plate */
+ var c0=isoP(off(0)([LS_W/2,LS_D/2,-LS_T-30])),c1=isoP(off(n-1)([LS_W/2,LS_D/2,90]));
+ var body='<path class="aq-layer-stack__axis" d="M'+isoT(c0)+'L'+isoT(c1)+'"/>',route=[],lead='',items='',at=[];
+ S.forEach(function(s,i){var o=off(i),k=LS_ART.indexOf(s.art)>=0?s.art:LS_ART[Math.min(i,4)],ri=i%2===0;
+  var Pp=function(x,y,z){return isoP(o([x,y,z]))};
+  /* the trace across this plate: in where the riser below arrives, out where the next riser leaves */
+  var tr=i===0?[[58,40,0],[58,24,0],[12,24,0]]:i===n-1?[[12,24+LS_SY,0],[12,54,0],[26,54,0]]:[[12,24+LS_SY,0],[12,24,0]];
+  var trd=tr.map(function(q,j){return (j?'L':'M')+isoT(Pp(q[0],q[1],q[2]))}).join('');
+  at.push(route.length);tr.forEach(function(q){route.push(Pp(q[0],q[1],q[2]))});
+  var riser='';if(i<n-1){var a=Pp(12,24,0),r2=isoP(off(i)([12,24,LS_SZ-LS_T]));riser='<path class="aq-layer-stack__riser" d="M'+isoT(a)+'L'+isoT(r2)+'"/>'}
+  body+='<g class="aq-layer-stack__layer" data-ls="'+i+'" data-dx="'+isoF(-(isoP(0,-LS_SY*i,0)[0]))+'" data-dy="'+isoF(LS_SZ*i-(LS_T+2)*i+LS_SY*i*0.5)+'">'
+   +lsLayer(k,o,s.key)+'<path class="aq-layer-stack__trace" d="'+trd+'"/></g>'+(riser?'<g class="aq-layer-stack__gap" data-ls="'+i+'">'+riser+'</g>':'');
+  /* leader from the plate corner out to its label, right for the even layers, left for the odd */
+  var cn=ri?Pp(LS_W,0,0):Pp(0,LS_D,0),ex=ri?bx.x+bx.w+30:bx.x-30;
+  lead+='<g class="aq-layer-stack__lead" data-ls="'+i+'"><path d="M'+isoT(cn)+'H'+isoF(ex)+'"/><circle cx="'+isoF(cn[0])+'" cy="'+isoF(cn[1])+'" r="2.4"/></g>';
+  var pos=(ri?'left:'+pc(ex,VX0,VW):'right:'+pc(VX0+VW-ex,0,VW))+';--ls-w:'+pc(side-40,0,VW);
+  items+='<li class="aq-layer-stack__item aq-layer-stack__item--'+(ri?'r':'l')+(s.key?' is-key':'')+'" data-ls="'+i+'" data-art="'+k+'" style="'+pos+';top:'+pc(cn[1],VY0,VH)+'">'
+   +idx(i)+'<h3 class="aq-layer-stack__t">'+tx(s.t)+'</h3>'+(s.d?'<p class="aq-layer-stack__d">'+tx(s.d)+'</p>':'')+'</li>'});
+ /* the packet's route: plate traces joined by the risers (every point already in final position) */
+ var rd=route.map(function(p,j){return (j?'L':'M')+isoT(p)}).join(''),len=[0];for(var j=1;j<route.length;j++)len.push(len[j-1]+Math.hypot(route[j][0]-route[j-1][0],route[j][1]-route[j-1][1]));
+ var tot=len[len.length-1]||1,fr=at.map(function(a){return (len[a]/tot).toFixed(3)}).join(' ');
+ body+='<path class="aq-layer-stack__route" d="'+rd+'"/>'+lead+'<circle class="aq-layer-stack__packet" r="3" cx="'+isoF(route[0][0])+'" cy="'+isoF(route[0][1])+'"/>';
+ var svg=isoSvg(Math.round(VW),Math.round(VH),body,'aq-layer-stack__svg',{origin:org});
+ var crop='--ls-zoom:'+(VW/(bx.w)).toFixed(3)+';--ls-shift:'+(-(side-0)/bx.w*100).toFixed(2)+'%';
+ return sec(H+'<div class="aq-layer-stack" data-at="'+fr+'" style="'+crop+'"><div class="aq-layer-stack__fig">'+svg+'</div>'
+  +'<ol class="aq-layer-stack__list" role="list">'+items+'</ol></div>'+(b.caption?'<p class="aq-small aq-prose">'+tx(b.caption)+'</p>':''),'aq-layer-stack-sec')};
+/* Hover or focus on a label lights its plate and leader */
+(function(){
+ function set(root,i){root.classList.toggle('has-hot',i!=null);[].forEach.call(root.querySelectorAll('[data-ls]'),function(el){el.classList.toggle('is-hot',i!=null&&el.getAttribute('data-ls')===i)})}
+ document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-layer-stack__item'),root=ev.target.closest&&ev.target.closest('.aq-layer-stack');if(root)set(root,t?t.getAttribute('data-ls'):null)});
+ document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-layer-stack');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
+})();
 /* Look "limit-bento" -> LimitBento (design-system/components/LimitBento): a spec block's limits as a bento of tiles, one
    limit per tile with the value set as an oversized Geist Mono numeral, and one tall navy tile in the middle: a water
    column drawn to the scale of the highlighted limit, filled to that limit (the value we design to) with the other
@@ -2305,6 +2470,26 @@ LOOKS['proof-folders']=function(b,H){var C=b.cols||[],R=b.rows||[];
     +(go?'<div class="aq-proof-folders__go">'+k(3)+'<p class="aq-proof-folders__label">'+go+'</p></div>':'')
    +'</div></li>'}).join('')+'</ol>';
  return sec(H+'<div class="aq-proof-folders">'+heads+wFold(b,R.length,list,b.fold_noun||'standards')+'</div>','aq-proof-folders-sec')};
+/* Look "rail-modules" -> RailModules (design-system/components/RailModules): an options block (as modules) seen as a
+   macro close-up of the control panel's backplate: one DIN rail runs across the plate and off both edges, and every
+   option is a module clipped onto it, drawn front-on and large: terminal rows with screws top and bottom, a status
+   lamp, a mono number, the option engraved as a line icon and its name on the front label. Each module's line drops
+   on a leader to a callout under the plate. The block's base names the plate (a nameplate at the rail's end). A
+   module with a link is the link (its name ends in an arrow). Phones: the rail stands vertical at the left and the
+   modules stack along it as wide cards, the callout inside each.
+   Fields: items [{t, d, spot|icon, link}], base, fold (phones only), fold_noun. */
+LOOKS['rail-modules']=function(b,H){
+ var I=b.items||[],n=I.length;if(!n)return BLOCKS.options(b,H);
+ var screws=function(k){var s='';for(var j=0;j<k;j++)s+='<i></i>';return '<span class="aq-rail-modules__term" aria-hidden="true">'+s+'</span>'};
+ var mods=I.map(function(it,i){var lk=it.link&&wp(it.link),num=(i<9?'0':'')+(i+1),v=wSpot(it.spot||it.icon,'l','aq-rail-modules__ic');
+  var face=screws(4)+'<span class="aq-rail-modules__face"><span class="aq-rail-modules__top" aria-hidden="true"><span class="aq-rail-modules__led"></span><span class="aq-rail-modules__n">'+num+'</span></span>'
+   +v+'<h3 class="aq-rail-modules__t">'+tx(it.t)+(lk?'<span class="aq-rail-modules__go" aria-hidden="true">→</span>':'')+'</h3></span>'+screws(4);
+  var body=lk?'<a class="aq-rail-modules__body" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+face+'</a>':'<div class="aq-rail-modules__body">'+face+'</div>';
+  return fli('<li class="aq-rail-modules__m" data-rm="'+i+'">'+body+(it.d?'<p class="aq-rail-modules__d">'+tx(it.d)+'</p>':'')+'</li>',b,i)}).join('');
+ var plate='<div class="aq-rail-modules__plate"><span class="aq-rail-modules__rail" aria-hidden="true"></span>'
+  +(b.base?'<p class="aq-rail-modules__base"><span>'+tx(b.base)+'</span></p>':'')
+  +'<ol class="aq-rail-modules__list" role="list" style="--rm-n:'+n+'">'+mods+'</ol></div>';
+ return sec(H+wFold(b,n,'<div class="aq-rail-modules">'+plate+'</div>',b.fold_noun||'options'),'aq-rail-modules-sec')};
 /* Look "section-train" -> SectionTrain (design-system/components/SectionTrain): a pretreatment train as one sectional
    elevation on a limestone sheet. Every vessel is cut in half (hatched walls) so its bed shows: graded media, resin
    beads, carbon granules, a pleated cartridge. A lens at the feed shows what the water carries (particles, hardness,
@@ -2422,6 +2607,99 @@ LOOKS['section-train']=function(b,H){
    +(c&&c.t?'<p class="'+K+'__catch">'+chipGlyph(c.g)+'<span>'+tx(c.t)+'</span></p>':'')+'</div></li>'}).join('');
  var base=b.base?'<p class="'+K+'__base"><span class="'+K+'__base-mark" aria-hidden="true"></span>'+tx(b.base)+'</p>':'';
  return sec(H+'<div class="'+K+'" data-theme="light" style="--n:'+n+'">'+svg+'<ol class="'+K+'__stages">'+li+'</ol>'+base+'</div>','aq-band--limestone '+K+'-sec')};
+})();
+/* Look "sensor-loop" -> SensorLoop (design-system/components/SensorLoop): a spec block of signals (signal, design
+   value, basis) drawn where each one is measured: one storage and distribution loop in IsoKit line art (tank, pump,
+   UV unit, TOC and conductivity analysers on the supply, divert valve with its drain, two points of use, the return
+   overhead to the tank) with an instrument balloon (ISA style, the row's number) on every measuring point, and a
+   dashed signal bus along the foot that every instrument drops into (data recording). The rows are instrument
+   schedule cards in a row above and a row below the drawing, each on a leader to its balloon; a signal measured at
+   several points (temperature) shows its number on each. The caption is the section's eyebrow, as on a plain spec.
+   Fields: h, caption, cols, rows [{p, v, m, site}], note, fold, fold_noun. site: toc | cond | temp | divert | flow |
+   uv | data (where the balloon sits; a row without one is a card only). Desktop shows every row; the fold applies on
+   phones, where the cards stack under the drawing beside a vertical signal rail. */
+function slScene(){var A=58,B=58,st=function(i,dz){return [A*i,-B*i,dz||0]},o={},p=[],b='',bus=[],B0=[];
+ var tk=isoPart('tank',0,0,0,1.05,{id:'tank'}),pu=isoPart('pump',st(1)[0]+6,st(1)[1]+18,0,0.85,{id:'pump'}),uv=isoPart('uv',st(2)[0]-10,st(2)[1]+6,0,0.8,{id:'uv'});
+ var zs=44,zh=112,an1=isoPart('analyzer',st(3)[0]+6,st(3)[1]-16,0,0.9,{id:'toc'}),an2=isoPart('analyzer',st(3)[0]+40,st(3)[1]-16,0,0.9,{id:'cond'});
+ var dv=[st(4)[0]+20,st(4)[1]+8,zs],o1=isoPart('outlet',st(5)[0]+14,st(5)[1]+14,0,0.85,{id:'pou'}),o2=isoPart('outlet',st(6)[0]+14,st(6)[1]+14,0,0.85,{id:'pou'});
+ /* supply: tank -> pump -> UV -> analyser tee -> divert -> header over the outlets */
+ var s1=isoPipe(isoRoute(tk.ports.out,pu.ports.in,'xyz',{via:[[tk.ports.out[0]+10,tk.ports.out[1],tk.ports.out[2]]]}),{r:2.2,to:'pump',caps:false});
+ var s2=isoPipe(isoRoute(pu.ports.out,uv.ports.in,'zxy',{via:[[pu.ports.out[0],pu.ports.out[1],zs]]}).concat([]),{r:2.2,to:'uv',caps:false});
+ var uo=uv.ports.out,sA=[uo[0],uo[1],zs],sB=[dv[0]-9,dv[1],zs];
+ var s3=isoPipe([uo,sA,[sA[0]+14,sA[1],zs],[sA[0]+14,sB[1],zs],sB],{r:2.2,to:'toc',caps:false});
+ var va=isoPart('valve',dv[0],dv[1],dv[2],1.2,{id:'divert'});
+ var hd1=[dv[0]+9,dv[1],zs],hx=o2.ports.in[0]+30;
+ var s4=isoPipe([hd1,[hd1[0]+10,hd1[1],zs],[hd1[0]+10,hd1[1],zh-30],[hd1[0]+10,o1.ports.in[1],zh-30],[o1.ports.in[0]-30,o1.ports.in[1],zh-30]].concat([]),{r:2.2,to:'pou',caps:false});
+ var hy=o1.ports.in[1],hz=zh-30;
+ var hdr=isoPipe([[o1.ports.in[0]-30,hy,hz],[hx,hy,hz]],{r:2.2,to:'pou',caps:false});
+ var drops=[o1,o2].map(function(oo){var q=oo.ports.in;return isoPipe([[q[0],hy,hz],[q[0],q[1],hz],q],{r:1.6,to:'pou',caps:false})}).join('');
+ /* return: from the header end up and back overhead to the tank's return nozzle */
+ var tr=tk.ports.ret,rp=[[hx,hy,hz],[hx,hy,zh]],q=[hx,hy,zh];
+ while(q[0]-A>tr[0]+20){q=[q[0]-A,q[1],zh];rp.push(q);q=[q[0],q[1]+B,zh];rp.push(q)}
+ rp.push([tr[0],q[1],zh]);if(Math.abs(q[1]-tr[1])>1)rp.push([tr[0],tr[1],zh]);rp.push(tr);
+ var ret=isoPipe(rp,{r:2.2,to:'tank',caps:false,cls:'aq-sensor-loop__ret'});
+ /* drain off the divert: a drop to the floor with an arrow */
+ var dr=isoPipe([[dv[0]+5,dv[1],zs],[dv[0]+5,dv[1]+18,zs],[dv[0]+5,dv[1]+18,6]],{r:1.6,caps:'end',cls:'aq-sensor-loop__drain'});
+ /* return instruments on the last overhead legs before the tank: flow meter, pressure gauge, temperature well */
+ var L1=rp[rp.length-4],L2=rp[rp.length-3],mid=function(a,c,f){return [a[0]+(c[0]-a[0])*f,a[1]+(c[1]-a[1])*f,a[2]+(c[2]-a[2])*f]};
+ var fm=mid(rp[3],rp[4],0.5),gp=mid(rp[5],rp[6],0.5),t3=mid(rp[rp.length-7],rp[rp.length-6],0.5);t3=[t3[0],t3[1],zh+2.2];
+ var ga=isoPart('gauge',gp[0],gp[1],zh+2.4,1,{id:'flow',value:0.5});
+ var fx=Math.abs(rp[4][0]-rp[3][0])>1?'x':'y',fmD=isoCylD(fx==='x'?[fm[0]-7,fm[1],fm[2]]:[fm[0],fm[1]-7,fm[2]],fx,14,4.4);
+ /* order: back to front and in water order */
+ b+=tk+s1+pu+s2+uv+an1+an2;
+ b+=s3+dr+va+s4+hdr+o1+o2+drops+ret+ga+'<path class="aq-iso__eq" d="'+fmD[0]+fmD[1]+'"/>';
+ /* temperature wells: small stems on the supply after the pump, on the tank and on the return */
+ var tw=function(q){return '<path class="aq-iso__ln" d="'+isoPoly([q,[q[0],q[1],q[2]+7]])+'"/><path class="aq-iso__eq" d="'+isoRingD([q[0],q[1],q[2]+7],'z',1.6)+'"/>'};
+ var t1=[pu.ports.out[0],pu.ports.out[1],zs+2.2],t2=[tk.ports.top[0]+10,tk.ports.top[1]+10,tk.ports.top[2]-14];
+ b+=tw(t1)+tw(t3);
+ /* measuring points (balloon anchors, 3D) */
+ o.toc=[an1.ports.top];o.cond=[an2.ports.top];o.uv=[uv.ports.top];o.divert=[va.ports.top];
+ o.flow=[[fm[0],fm[1],fm[2]+6],ga.ports.top];o.temp=[[t3[0],t3[1],t3[2]+9],[t1[0],t1[1],t1[2]+9],t2];
+ /* the bus: under the floor line, a dashed riser from every instrument */
+ var fl=function(q){return [q[0],q[1],0]};
+ return {svg:b,pts:o,parts:[tk,pu,uv,an1,an2,o1,o2],ext:[[hx+30,hy,0],[hx,hy,zh+20],[-30,30,0],[tr[0],tr[1],zh+20]]}}
+LOOKS['sensor-loop']=function(b,H){H=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro});
+ var R=b.rows||[],sc=slScene(),W=1000;
+ /* view box: the scene's bounds, padded for balloons and the bus */
+ var all=[];Object.keys(sc.pts).forEach(function(k){sc.pts[k].forEach(function(q){all.push(q)})});all=all.concat(sc.ext);
+ var bx=isoBounds(all,30),sx=W/bx.w,VH=Math.round(bx.h*sx+40),org=[-bx.x,-bx.y+50/sx];
+ var scale=sx;
+ /* balloons: rows with a site, in screen space of the scaled drawing */
+ var S=function(q){var p=isoP(q);return [(p[0]+org[0])*scale,(p[1]+org[1])*scale]};
+ var used=[],top=[],bot=[];
+ R.forEach(function(r,i){var k=r&&r.site,ps=k==='data'?null:(k&&sc.pts[k]);
+  if(k==='data'){used.push({i:i,p:[W*0.86,VH-30],more:[]});return}
+  if(!ps||!ps.length)return;var a=S(ps[0]);a[1]-=26;used.push({i:i,p:a,more:ps.slice(1).map(function(q){var c=S(q);c[1]-=22;return c})})});
+ /* rows of cards: the higher balloons to the top row, the lower to the bottom; each row sorted left to right */
+ var srt=used.slice().sort(function(a,c){return a.p[1]-c.p[1]}),nt=Math.ceil(used.length/2);
+ srt.forEach(function(u,j){(j<nt?top:bot).push(u)});
+ [top,bot].forEach(function(L){L.sort(function(a,c){return a.p[0]-c.p[0]})});
+ var col={};var lead='',ball='';
+ [[top,'t'],[bot,'b']].forEach(function(z){var L=z[0],n=Math.max(L.length,1);L.forEach(function(u,j){var cx=W*(j+0.5)/n,p=u.p,y0=z[1]==='t'?0:VH,kn=z[1]==='t'?p[1]-30-j*6:p[1]+30+j*6;
+   if(z[1]==='b')kn=Math.max(kn,p[1]+30);
+   col[u.i]={row:z[1],c:j+1,n:n};
+   lead+='<path class="aq-sensor-loop__lead" data-sl="'+u.i+'" d="M'+cx.toFixed(1)+' '+y0+'V'+kn.toFixed(1)+'H'+p[0].toFixed(1)+'V'+(p[1]+(z[1]==='t'?-12:12)).toFixed(1)+'"/>'})});
+ used.forEach(function(u){var num=(u.i<9?'0':'')+(u.i+1);[u.p].concat(u.more).forEach(function(p,k){
+  ball+='<g class="aq-sensor-loop__ball'+(k?' is-more':'')+'" data-sl="'+u.i+'"><path class="aq-sensor-loop__stem" d="M'+p[0].toFixed(1)+' '+(p[1]+12).toFixed(1)+'v'+(k?14:18)+'"/><circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="12"/><path class="aq-sensor-loop__bar" d="M'+(p[0]-12).toFixed(1)+' '+p[1].toFixed(1)+'h24"/><text x="'+p[0].toFixed(1)+'" y="'+(p[1]-2.5).toFixed(1)+'">'+num+'</text></g>'})});
+ /* the bus: along the foot, a dashed drop from each balloon's measuring point */
+ var by=VH-30,bus='<path class="aq-sensor-loop__bus" d="M'+(W*0.04).toFixed(1)+' '+by+'H'+(W*0.86-12).toFixed(1)+'"/>';
+ used.forEach(function(u){if(R[u.i].site==='data')return;var x=u.p[0];bus+='<path class="aq-sensor-loop__tap" data-sl="'+u.i+'" d="M'+x.toFixed(1)+' '+(u.p[1]+30).toFixed(1)+'V'+by+'"/><circle class="aq-sensor-loop__node" cx="'+x.toFixed(1)+'" cy="'+by+'" r="2.5"/>'});
+ var drawing='<g transform="scale('+scale.toFixed(4)+') translate('+org[0].toFixed(1)+' '+org[1].toFixed(1)+')">'+sc.svg+'</g>';
+ var svg='<svg class="aq-iso aq-sensor-loop__svg" viewBox="0 0 '+W+' '+VH+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'
+  +'<g class="aq-sensor-loop__busg">'+bus+'</g>'+drawing+lead+ball+'</svg>';
+ /* cards: data order in the DOM; placed in the top or bottom row column by column */
+ var cards=R.map(function(r,i){var c=col[i],num=(i<9?'0':'')+(i+1),sp=c?Math.round(12/c.n):0,st=c?' style="grid-row:'+(c.row==='t'?1:3)+';grid-column:'+((c.c-1)*sp+1)+' / span '+sp+'"':'';
+  return fli('<li class="aq-sensor-loop__card'+(c?' aq-sensor-loop__card--'+c.row:' aq-sensor-loop__card--free')+'" data-sl="'+i+'"'+st+'><span class="aq-sensor-loop__n" aria-hidden="true">'+num+'</span>'
+   +'<h3 class="aq-sensor-loop__p">'+tx(r.p)+'</h3><p class="aq-sensor-loop__v">'+tx(r.v)+'</p>'+(r.m?'<p class="aq-sensor-loop__m">'+tx(r.m)+'</p>':'')+'</li>',b,i)}).join('');
+ var nt2=top.length||1,nb=bot.length||1;
+ var inner='<div class="aq-sensor-loop" style="--sl-top:'+nt2+';--sl-bot:'+nb+'"><ol class="aq-sensor-loop__cards" role="list">'+cards+'</ol>'
+  +'<div class="aq-sensor-loop__fig">'+svg+'</div></div>';
+ var note=b.note?'<p class="aq-sensor-loop__note">'+tx(b.note)+'</p>':'';
+ return sec(H+wFold(b,R.length,inner,b.fold_noun||'signals')+note,'aq-sensor-loop-sec')};
+(function(){
+ function set(root,i){[].forEach.call(root.querySelectorAll('[data-sl]'),function(el){el.classList.toggle('is-hot',i!=null&&el.getAttribute('data-sl')===i)});root.classList.toggle('has-hot',i!=null)}
+ document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-sensor-loop__card'),root=ev.target.closest&&ev.target.closest('.aq-sensor-loop');if(root)set(root,t?t.getAttribute('data-sl'):null)});
+ document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-sensor-loop');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
 })();
 /* Look "sheet-previews" -> SheetPreviews (design-system/components/SheetPreviews): a short document list set as a Swiss
    row of sheets. Each document gets a column: a huge light index numeral, a paper sheet whose thumbnail shows the kind

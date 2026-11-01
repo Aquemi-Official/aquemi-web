@@ -179,6 +179,16 @@
    "summary": "CaseStudy summarizes a delivered project as hairline fact rows (client, problem, system delivered) beside one large measured-outcome figure on a quiet panel."
   },
   {
+   "name": "ClauseCrosswalk",
+   "readme": "design-system/components/ClauseCrosswalk/README.md",
+   "preview": "design-system/components/ClauseCrosswalk/preview.html",
+   "group": "Page sections",
+   "height": "1400",
+   "width": "1280",
+   "subtitle": "Requirements wired to two regulations' clauses: editorial crosswalk with vertical spines",
+   "summary": "ClauseCrosswalk sets a table of requirements against two regulations' clauses as an editorial crosswalk: the requirements large down the middle, each regulation a spine at the outer edge with its name set big and vertical and its clauses as chips, and a wire from every requirement to every clause it cites."
+  },
+  {
    "name": "Closing",
    "readme": "design-system/components/Closing/README.md",
    "preview": "design-system/components/Closing/preview.html",
@@ -319,6 +329,16 @@
    "summary": "Hero opens every page: eyebrow, one display headline, one lead sentence, one primary button and one link."
   },
   {
+   "name": "HmiTrend",
+   "readme": "design-system/components/HmiTrend/README.md",
+   "preview": "design-system/components/HmiTrend/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1280",
+   "subtitle": "Alarm lines as the operator panel's own dark screen: a trend against the limits, the drift flagged, the alarm summary",
+   "summary": "HmiTrend sets a table of alarm lines (line, how it is set, what the system does) as the operator panel's own screen: a dark instrument panel with a trend plot of one reading under the limit lines, flagged by the trend rule before it reaches any of them, and the alarm summary as the real table."
+  },
+  {
    "name": "HoldTimeline",
    "readme": "design-system/components/HoldTimeline/README.md",
    "preview": "design-system/components/HoldTimeline/preview.html",
@@ -337,6 +357,16 @@
    "width": "1280",
    "subtitle": "Home: one water line teeing into three industries, each standard set large as the evidence",
    "summary": "IndustryFeed sets a few destinations of the same water as editorial type: one twin-wall pipe enters from the page edge and tees down into each column, where the destination's evidence (its standard) is the hero type."
+  },
+  {
+   "name": "LayerStack",
+   "readme": "design-system/components/LayerStack/README.md",
+   "preview": "design-system/components/LayerStack/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1280",
+   "subtitle": "A system's layers as an exploded isometric stack of plates, labels on leaders, one packet riding the data route",
+   "summary": "LayerStack shows the layers of one system (field instruments up to the plant network) as an exploded isometric stack of machined plates, each carrying its equipment, with the labels on leaders from the plate corners."
   },
   {
    "name": "LimitBento",
@@ -559,6 +589,16 @@
    "summary": "Prose is running text in a SplitSection: the heading on the left, the first sentence as a large light lead, then the paragraphs in body size, with white space and nothing else around them."
   },
   {
+   "name": "RailModules",
+   "readme": "design-system/components/RailModules/README.md",
+   "preview": "design-system/components/RailModules/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1280",
+   "subtitle": "Options as modules clipped on a DIN rail, in macro close-up, each line on a leader under the plate",
+   "summary": "RailModules shows an options block as a macro close-up of a control panel backplate: one DIN rail across the plate and off both page edges, every option a module clipped onto it (terminal screws, status lamp, number, engraved icon, name), its line hanging on a leader under the plate."
+  },
+  {
    "name": "Readout",
    "readme": "design-system/components/Readout/README.md",
    "preview": "design-system/components/Readout/preview.html",
@@ -607,6 +647,16 @@
    "width": "1280",
    "subtitle": "The pretreatment train as one sectional elevation, each bed holding what it caught",
    "summary": "SectionTrain draws a pretreatment train as one sectional elevation on a limestone sheet, every vessel cut open so its bed shows and each bed holding what it caught, so the reader sees the water lose its particles, hardness, chlorine and fines stage by stage."
+  },
+  {
+   "name": "SensorLoop",
+   "readme": "design-system/components/SensorLoop/README.md",
+   "preview": "design-system/components/SensorLoop/preview.html",
+   "group": "Page sections",
+   "height": "1120",
+   "width": "1280",
+   "subtitle": "Signals drawn where they are measured: an instrumented loop with ISA balloons, schedule cards on leaders, the signal bus",
+   "summary": "SensorLoop draws a spec block of signals where each one is measured: one instrumented storage and distribution loop in IsoKit line art with an ISA instrument balloon on every measuring point, instrument schedule cards above and below on leaders, and a dashed signal bus every instrument drops into."
   },
   {
    "name": "SheetPreviews",
