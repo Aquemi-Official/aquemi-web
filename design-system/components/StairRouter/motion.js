@@ -67,7 +67,22 @@ AQmotion.fx('StairRouter', function (root, m) {
           tl.set(drop, { clearProps: 'transform' }, dt + 0.05);
         }
         goAt = Date.now() + (t + 0.05) * 1000;
+        tl.call(function () { relief = true }, null, t + 0.1);
       }, 'top 75%');
+
+      // Ported from Subframe Motion "Relief board" (relief-board), MIT, (c) 2026 Subframe
+      // The flight answers the pointer like the library's elevation field: the card the visitor points at (or focuses)
+      // lifts furthest off its tread and its neighbours lift less with distance (height = lift x exp(-d^2 / 4.4), the
+      // library's falloff; 300 ms, cubic-bezier(.22,1,.36,1)), so the stair reads as one route the reader is on.
+      var relief = false, lift = parseFloat(getComputedStyle(fig).getPropertyValue('--space-3')) || 12;
+      var rEase = window.CustomEase ? (CustomEase.get('aq-relief') || CustomEase.create('aq-relief', 'M0,0 C0.22,1 0.36,1 1,1')) : 'power3.out';
+      function rise(k) {
+        if (!relief) return;
+        P.forEach(function (p, i) { var d = i - k; m.tw(gsap.to(p.card, { y: k < 0 ? 0 : -lift * Math.exp(-d * d / 4.4), duration: k < 0 ? 0.2 : 0.3, ease: rEase, overwrite: 'auto' })) });
+      }
+      steps.forEach(function (s, i) { s.addEventListener('pointerenter', function () { rise(i) }); s.addEventListener('focusin', function () { rise(i) }) });
+      flight.addEventListener('pointerleave', function () { rise(-1) });
+      flight.addEventListener('focusout', function (ev) { if (!flight.contains(ev.relatedTarget)) rise(-1) });
       // the end word strikes once the stair is up and the word is on screen, whichever comes later
       var goAt = 0;
       if (go) m.on(go, function () { var w = Math.max(0, (goAt - Date.now()) / 1000); strikeGo(m.tw(gsap.timeline({ delay: goAt ? w : 0.2 })), 0) }, 'top 92%');

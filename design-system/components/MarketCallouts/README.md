@@ -9,3 +9,5 @@ MarketCallouts shows several markets served by one machine: a single PW package 
 - Not for more than four callouts, or for options that do not share the machine.
 
 Motion (`motion.js`): the machine builds back to front and settles solid, the water drops down the riser and runs the route lighting each stage (IsoKit timeline); then per callout the marker pops on its part (the part lights), the leader draws out to the callout and its lines follow in; parts settle back (about 4 s). Nothing under reduced motion.
+
+Ported (pass 9b): Subframe Motion "Guided inspection" (guided-inspection): reading a callout (pointer or focus) dims the drawing round the part it is about; the lit window glides between parts (550 ms, cubic-bezier(.22,.75,.22,1)); no zoom, so leaders stay on their parts. Wide screens.

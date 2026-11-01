@@ -10,3 +10,5 @@ BatteryLimit lays site requirements on a navy and limestone split whose divide i
 ## Motion
 
 Motion: the battery limit line draws top to bottom and its name decodes; the navy half opens out from the seam; the limit card stamps down on the line; the side labels decode; the cards come in from their own side in list order and each one's leader runs to the seam, its node seating there. Under 5 s; nothing under reduced motion.
+
+Ported (pass 9b): Subframe Motion "Border beam" (border-beam): pointing at or focusing a card sends a small light round its edge (offset-path rect() under a border-ring mask), starting where its leader leaves, while its leader and tie-in node light.

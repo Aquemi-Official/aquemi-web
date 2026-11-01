@@ -9,3 +9,5 @@ MacroLeaders sets a comparison table beside a macro drawing (RO membrane leaves 
 - Not for tables of more than about eight rows (the arc crowds), or without a first column that names the rows.
 
 Motion (`motion.js`): the leaves start pressed together and fan apart back to front, the pipe slides in along its axis and the weld bead swells, water runs once along each leaf; then row by row the marker pops onto its arc, the leader shoots to the row and the cells arrive as it lands (about 3.4 s). Nothing under reduced motion.
+
+Ported (pass 9b): Subframe Motion "Chart crosshair" (chart-crosshair): a row rule and a column rule snap to the cell under the pointer (200 ms), the column head turns `flow` and the cell takes the flow tint; keyboard focus on a row link snaps the row rule. Wide screens; rules out of the page at rest.

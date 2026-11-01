@@ -44,5 +44,30 @@ AQmotion.fx('PidRoutes', function (root, m) {
     if (cap) tl.from(cap, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, end - 0.4);
     tl.call(function () { lit.forEach(function (n) { n.classList.remove('is-lit') }) }, null, end + 0.3);
     m.on(el, function () { tl.play(); heads.forEach(function (h, i) { var s = h.querySelector('span'); if (s) m.scramble(s, 0.1 * i) }) }, 'top 80%');
+
+    // Animated beam (ported from Subframe Motion "Animated beam", the travelling gradient head with its fading tail, see
+    // SystemRun's AQbeam): while the visitor points at or focuses a route, the water keeps running it, situation to
+    // system to where to start, through both valves (each run 0.9 s, the library's 0.16 1 0.3 1 ease, the second run
+    // following the first as the library staggers its paths). Wide screens; phones keep the lit route.
+    if (m.narrow()) return;
+    var bEase = window.CustomEase ? (CustomEase.get('aq-beam') || CustomEase.create('aq-beam', 'M0,0 C0.16,1 0.3,1 1,1')) : 'expo.out', loop = null, cur = null;
+    function beams(i) {
+      return qa('.aq-pid-routes__run[data-r="' + i + '"]').map(function (r) {
+        var b = r.querySelector('.aq-pid-routes__beam');
+        if (!b) { b = document.createElement('span'); b.className = 'aq-pid-routes__beam'; b.innerHTML = '<i></i>'; r.appendChild(b) }
+        return b.firstChild;
+      });
+    }
+    function run(i) {
+      if (i === cur) return; cur = i;
+      if (loop) { loop.kill(); loop = null } var old = qa('.aq-pid-routes__beam i'); if (old.length) gsap.set(old, { xPercent: -100 });
+      if (i == null || tl.isActive()) return;
+      var bs = beams(i); loop = m.tw(gsap.timeline({ repeat: -1, repeatDelay: 0.25 }));
+      bs.forEach(function (b, k) { loop.fromTo(b, { xPercent: -100 }, { xPercent: 250, duration: 0.9, ease: bEase }, k * 0.45) });
+    }
+    el.addEventListener('pointerover', function (ev) { var t = ev.target.closest && ev.target.closest('[data-r]'); run(t ? t.getAttribute('data-r') : null) });
+    el.addEventListener('pointerleave', function () { run(null) });
+    el.addEventListener('focusin', function (ev) { var t = ev.target.closest && ev.target.closest('[data-r]'); if (t) run(t.getAttribute('data-r')) });
+    el.addEventListener('focusout', function (ev) { if (!el.contains(ev.relatedTarget)) run(null) });
   });
 });

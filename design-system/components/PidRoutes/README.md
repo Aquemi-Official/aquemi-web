@@ -10,3 +10,5 @@ PidRoutes draws a router table (situation, system, start with) as a P&ID on a na
 - Not for tables of values (use CompareTable or MacroLeaders). The drawing is a reading aid; every word is in the boxes.
 
 Motion (`motion.js`): column heads decode and rulers run out; situation boxes print in from the left; route by route the first run draws from the port, the valve swings into line, a droplet rides the run and the system box lights, then the second run, valve and start box; shared ties draw last and the lights settle (about 3.6 s). Phones draw the runs downwards. Nothing under reduced motion.
+
+Ported (pass 9b): Subframe Motion "Animated beam" (animated-beam): while a route is pointed at or focused, a bright head with a fading tail keeps running it, situation to system to start, through both valves (0.9 s per run, 0.16 1 0.3 1). Wide screens.

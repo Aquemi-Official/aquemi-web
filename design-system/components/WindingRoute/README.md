@@ -13,3 +13,5 @@ WindingRoute draws a treatment train as one winding pipe across a navy band, eac
 Motion: the feed fan appears, then the route is wiped on left to right while a droplet rides the head of the water (its height read from the wave); each stop lights as the water reaches it (the node seats with a flow ring, the glyph prints in, the column rises and its code decodes); over a gas stop the bubbles rise; the outlet fan opens last. Phones: each stop's bend draws in turn and lights its stop. Under 5 s; nothing under reduced motion.
 
 Pass 9 polish (phones): each stop has a fixed-height bend whose peak sits level with the stage name (`--wr-y`) and a straight `__tail` carrying the pipe down the rest of the stop; motion draws the bend, then the tail.
+
+Ported (pass 9b): Subframe Motion "Race replay" (race-replay). After the run, one value binds the water's reach, the droplet's place on the wave and the stage reached: pointing along the band scrubs it, and a range input ("Follow the water", arrow keys, Home, End, aria-valuetext names the stage) does the same from the keyboard; stages not yet reached step back. Leaving lets the water run on to the outlet. Wide screens only.

@@ -24,5 +24,25 @@ AQmotion.fx('BatteryLimit', function (root, m) {
       tl.from(li.querySelector('.aq-battery-limit__node'), { scale: 0, rotation: 0, duration: 0.35, ease: 'back.out(3)', clearProps: 'transform' }, at + 0.7);
     });
     m.on(sec, function () { tl.play() }, 'top 70%');
+
+    // Ported from Subframe Motion "Border beam" (border-beam), MIT, (c) 2026 Subframe
+    // Pointing at or focusing a connection point sends a small light round its card's edge (offset-path rect() along a
+    // border mask, the library's mechanism) while its leader and tie-in node light: the visitor sees which side of the
+    // battery limit the item sits on and where it ties in. Runs only while the visitor stays (visitor-driven).
+    qa('.aq-battery-limit__item, .aq-battery-limit__limit', el).forEach(function (li) {
+      var card = li.querySelector('.aq-battery-limit__card'); if (!card) return;
+      var beam = document.createElement('span'); beam.className = 'aq-battery-limit__beam'; beam.setAttribute('aria-hidden', 'true');
+      beam.innerHTML = '<span class="aq-battery-limit__light"></span>'; card.appendChild(beam);
+      var light = beam.firstChild, loop = null, site = !!li.closest('.is-site');
+      function on() {
+        if (loop) return;
+        gsap.set(beam, { display: 'block' }); m.tw(gsap.to(beam, { autoAlpha: 1, duration: 0.2, overwrite: true }));
+        // start where the leader leaves the card (right edge for the package, left for the site) and run clockwise
+        loop = m.tw(gsap.fromTo(light, { offsetDistance: site ? '75%' : '25%' }, { offsetDistance: site ? '175%' : '125%', duration: 2.6, ease: 'none', repeat: -1 }));
+      }
+      function off() { if (loop) { loop.kill(); loop = null } m.tw(gsap.to(beam, { autoAlpha: 0, duration: 0.13, overwrite: true, onComplete: function () { if (!loop) gsap.set(beam, { display: 'none' }) } })) }
+      li.addEventListener('pointerenter', on); li.addEventListener('pointerleave', off);
+      li.addEventListener('focusin', on); li.addEventListener('focusout', function (ev) { if (!li.contains(ev.relatedTarget)) off() });
+    });
   });
 });

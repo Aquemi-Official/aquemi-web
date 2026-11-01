@@ -58,5 +58,41 @@ AQmotion.fx('WindingRoute', function (root, m) {
         .set(drop, { display: 'none', clearProps: 'transform,opacity,visibility' }, t0 + run + 0.4);
     }
     m.on(el, function () { tl.play() }, 'top 75%');
+
+    // Ported from Subframe Motion "Race replay" (race-replay), MIT, (c) 2026 Subframe
+    // Once the water has run, the route becomes a replay the visitor drives: one value (0 to 1) binds the water's
+    // reach, the droplet's place on the wave and the stage it has reached, as the library binds line, marker and time.
+    // Pointing along the band scrubs it; a range input below does the same from the keyboard (arrow keys, Home, End).
+    // Leaving the band lets the water run on to the outlet and rest full again.
+    if (!drop || !flow) return;
+    var Wv = 100 * n, f = { v: 1 }, x0 = 24 / Wv, x1 = 1 - x0, scrub = false;
+    var lab = document.createElement('label'); lab.className = 'aq-winding-route__scrub';
+    lab.innerHTML = '<span class="aq-winding-route__scrub-t">Follow the water</span><input type="range" min="0" max="100" step="1" value="100" aria-valuetext="">';
+    el.appendChild(lab); var input = lab.querySelector('input');
+    gsap.set(lab, { autoAlpha: 0 }); tl.to(lab, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, '-=0.3');
+    function paint() {
+      var v = Math.max(0, Math.min(1, f.v)), x = x0 + v * (x1 - x0), w = svg.clientWidth, h = svg.clientHeight, d = drop.offsetWidth / 2;
+      var tab = paint.tab || (paint.tab = (function () { var t = []; try { var L = flow.getTotalLength(); for (var k = 0; k <= 400; k++) { var p = flow.getPointAtLength(L * k / 400); t.push([p.x, p.y]) } } catch (e) {} return t })());
+      var X = x * Wv, y = 50; for (var k = 1; k < tab.length; k++) if (tab[k][0] >= X) { var a = tab[k - 1], b = tab[k], q = (X - a[0]) / ((b[0] - a[0]) || 1); y = a[1] + (b[1] - a[1]) * q; break }
+      gsap.set(flow, { clipPath: 'inset(-50% ' + ((1 - x) * 100).toFixed(2) + '% -50% 0)' });
+      gsap.set(drop, { display: v < 1 ? 'block' : 'none', autoAlpha: 1, scale: 1, x: x * w - d, y: y / 100 * h - d });
+      var cur = -1; stops.forEach(function (s, i) { var sx = (100 * i + 50) / Wv, wet = x >= sx - 0.002; s.classList.toggle('is-dry', !wet); if (wet) cur = i });
+      stops.forEach(function (s, i) { s.classList.toggle('is-cur', v < 1 && i === cur) });
+      input.value = Math.round(v * 100);
+      var t = cur >= 0 ? stops[cur].querySelector('.aq-winding-route__t') : null;
+      input.setAttribute('aria-valuetext', (t ? t.textContent : 'Feed') + ', ' + Math.round(v * 100) + ' %');
+    }
+    var qv = gsap.quickTo(f, 'v', { duration: 0.35, ease: 'power3.out', onUpdate: paint });
+    function to(v) { if (tl.isActive()) return; scrub = true; qv(v) }
+    function rest() { if (!scrub) return; scrub = false; m.tw(gsap.to(f, { v: 1, duration: 0.9 * (1 - f.v) + 0.2, ease: 'power1.inOut', onUpdate: paint, overwrite: true })) }
+    var band = el.querySelector('.aq-winding-route__stops');
+    el.addEventListener('pointermove', function (ev) {
+      if (ev.pointerType !== 'mouse' || lab.contains(ev.target)) return;
+      var r = svg.getBoundingClientRect(); if (ev.clientY > r.bottom + 8) return;
+      to(((ev.clientX - r.left) / r.width - x0) / (x1 - x0));
+    });
+    el.addEventListener('pointerleave', rest);
+    input.addEventListener('input', function () { if (tl.isActive()) tl.progress(1); scrub = true; gsap.killTweensOf(f); f.v = input.value / 100; paint() });
+    input.addEventListener('blur', rest);
   });
 });

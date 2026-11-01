@@ -75,3 +75,6 @@
   .aq-standards-orbit__zone, .aq-standards-orbit__zone.is-l, .aq-standards-orbit__zone.is-r, .aq-standards-orbit__zone.is-b { padding-top: 0; border-top: 0; }
   .aq-standards-orbit__zone::before { content: ""; position: absolute; left: calc(-1 * var(--space-8) + var(--space-1)); top: var(--space-2); width: var(--space-2); height: var(--space-2); border-radius: var(--radius-pill); background: var(--on-navy); box-shadow: 0 0 0 4px var(--navy), 0 0 0 5px color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
 }
+
+/* the signal (AQbeam) that runs a zone's arc while the visitor points at the zone: on navy, the water's lightened flow */
+.aq-standards-orbit { --beam: var(--on-navy); --beam-tail: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); --beam-w: 3; }

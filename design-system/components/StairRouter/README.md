@@ -51,3 +51,5 @@ Pass 9 look `stair-router` (`assets/src/blocks/look-stair-router.js`), set with 
 ## Motion
 
 Motion: the outline words slide in from opposite sides while their letters rise; then the stair is climbed, riser up and tread across, each card landing on its tread as it is laid with its number decoding, and one limestone drop climbing with the line to rest at the top step; last, the end word strikes in on the wedge (under 4 s, once). Stacked layouts run each step as it scrolls in. Nothing under reduced motion.
+
+Ported (pass 9b): Subframe Motion "Relief board" (relief-board): once the stair is up, the card the visitor points at or focuses lifts furthest off its tread and its neighbours lift less with distance (12 px x exp(-d^2/4.4), 300 ms, cubic-bezier(.22,1,.36,1)).

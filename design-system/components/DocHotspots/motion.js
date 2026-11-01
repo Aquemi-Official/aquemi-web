@@ -30,5 +30,29 @@ AQmotion.fx('DocHotspots', function (root, m) {
     });
     if (more) { m.claim(more); tl.from(more, { autoAlpha: 0, y: 10, duration: 0.5, clearProps: 'transform,opacity,visibility' }, '-=0.3') }
     m.on(el, function () { tl.play() }, 'top 70%');
+
+    // Ported from Subframe Motion "Atlas hotspots" (atlas-hotspots), MIT, (c) 2026 Subframe
+    // The drawing's markers and the document cards share one selection: pointing at (or focusing into) a card, or
+    // pointing at a marker on the skid, glides a crosshair ring to that part (250 ms, cubic-bezier(.2,.8,.2,1), the
+    // library's values), lifts that marker and lights its card and leader; the other documents step back so the eye
+    // stays on the one being read. Leaving the drawing and the cards clears the selection.
+    var fig = el.querySelector('.aq-doc-hotspots__fig'), hots = qa('.aq-doc-hotspots__hot'); if (!fig || !hots.length) return;
+    var cross = document.createElement('span'); cross.className = 'aq-doc-hotspots__cross'; cross.setAttribute('aria-hidden', 'true'); fig.appendChild(cross);
+    var ease = window.CustomEase ? (CustomEase.get('aq-ledger') || CustomEase.create('aq-ledger', 'M0,0 C0.2,0.8 0.2,1 1,1')) : 'power2.out', cur = null, shown = false;
+    function pick(k) {
+      if (k === cur || tl.isActive()) return; cur = k;
+      el.classList.toggle('has-pick', k != null);
+      qa('[data-k]').forEach(function (x) { x.classList.toggle('is-pick', x.getAttribute('data-k') === k) });
+      var h = k != null && el.querySelector('.aq-doc-hotspots__hot[data-k="' + k + '"]');
+      if (!h) { shown = false; m.tw(gsap.to(cross, { autoAlpha: 0, scale: 0.6, duration: 0.17, onComplete: function () { if (!shown) gsap.set(cross, { display: 'none' }) } })); return }
+      var x = h.offsetLeft, y = h.offsetTop;
+      if (!shown) { gsap.set(cross, { left: x, top: y, display: 'block' }); m.tw(gsap.to(cross, { autoAlpha: 1, scale: 1, duration: 0.25, ease: ease })) }
+      else m.tw(gsap.to(cross, { left: x, top: y, duration: 0.25, ease: ease, overwrite: 'auto' }));
+      shown = true;
+    }
+    cards.forEach(function (c) { var k = c.getAttribute('data-k'); c.addEventListener('pointerenter', function () { pick(k) }); c.addEventListener('focusin', function () { pick(k) }) });
+    hots.forEach(function (h) { var k = h.getAttribute('data-k'); h.addEventListener('pointerenter', function () { pick(k) }) });
+    el.addEventListener('pointerleave', function () { pick(null) });
+    el.addEventListener('focusout', function (ev) { if (!el.contains(ev.relatedTarget)) pick(null) });
   });
 });

@@ -11,3 +11,5 @@ StrataRun draws a process diagram as one water run stepping down a terrace of st
 ## Motion
 
 Motion: the terrace is laid, then the water runs down it. The labels rise in a row and their leaders draw down to the slabs; the stream wipes in from the left; each slab's sheets fall in and settle (`aq-settle`), top stage first; then `AQiso.timeline` draws the equipment, the pipes and the water from the feed down the terrace and round the loop, each label's hairline turning `flow` as the water reaches its stage; the signal bus fades in. Phones: each stage rises as it scrolls in and its own slab drawing builds. Under 5 s; nothing under reduced motion; complete without script.
+
+Ported (pass 9b): Subframe Motion "Animated beam" via `AQbeam` (SystemRun): pointing at or focusing a stage label runs the water (a moving `flow` slug filling the pipe bore) down that stage's pipes while the visitor stays.

@@ -116,3 +116,13 @@
 
 /* Marks the section as a band of its own ground, so page.js restarts the surface alternation after it. */
 .aq-band--split { position: relative; }
+
+/* Border beam (motion only, ported from Subframe Motion "Border beam"): a small light runs round the edge of the card
+   the visitor points at. A border-wide ring masks a square of light that travels the card's outline (offset-path). */
+.aq-battery-limit__card { position: relative; }
+.aq-battery-limit__beam { position: absolute; inset: -1.5px; padding: 2px; pointer-events: none; display: none; visibility: hidden; opacity: 0; overflow: hidden;
+  -webkit-mask: linear-gradient(var(--ink) 0 0) content-box, linear-gradient(var(--ink) 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(var(--ink) 0 0) content-box exclude, linear-gradient(var(--ink) 0 0); }
+.aq-battery-limit__light { position: absolute; width: var(--space-24, 6rem); height: var(--space-24, 6rem); offset-path: rect(0 auto auto 0); offset-distance: 0%;
+  background: linear-gradient(to left, var(--bl-beam, var(--flow)), var(--flow), transparent); }
+.is-pkg .aq-battery-limit__light { --bl-beam: var(--on-navy); }

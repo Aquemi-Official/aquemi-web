@@ -58,3 +58,6 @@
   .aq-exploded-service__fig { width: min(100%, 40rem); margin-inline: auto; border: 1px solid var(--line); }
   .aq-exploded-service__calls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-8); margin-top: var(--space-8); }
 }
+
+/* Assemble / take apart (motion only, ported from Subframe Motion "Exploded camera"): a press under the drawing */
+.aq-exploded-service__toggle { margin-top: var(--space-4); }

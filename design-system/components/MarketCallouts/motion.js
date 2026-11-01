@@ -26,6 +26,35 @@ AQmotion.fx('MarketCallouts', function (root, m) {
       if (part && A) tl.call(function () { A.light(svg, part, false) }, null, at + 1.1);
     });
     m.on(el, function () { tl.play() }, 'top 75%');
+
+    // Ported from Subframe Motion "Guided inspection" (guided-inspection), MIT, (c) 2026 Subframe
+    // Reading a market's callout puts the machine under an inspection spotlight: the drawing dims round the part that
+    // callout is about and the lit window glides from part to part as the reader moves between callouts (550 ms,
+    // cubic-bezier(.22,.75,.22,1), the library's camera values; no zoom, so the leaders stay on their parts).
+    // Pointer or keyboard focus; leaving the callouts lifts the spotlight. Wide screens only.
+    var plane = q('.aq-market-callouts__plane'); if (!plane || narrow || !svg || !A) return;
+    var dim = document.createElement('span'); dim.className = 'aq-market-callouts__dim'; dim.setAttribute('aria-hidden', 'true');
+    dim.innerHTML = '<span class="aq-market-callouts__spot"></span>'; plane.appendChild(dim);
+    var spot = dim.firstChild, gEase = window.CustomEase ? (CustomEase.get('aq-inspect') || CustomEase.create('aq-inspect', 'M0,0 C0.22,0.75 0.22,1 1,1')) : 'power3.out', on = false, cur = null;
+    function look(id) {
+      if (id === cur) return; cur = id;
+      var mk = id != null && q('.aq-market-callouts__mk[data-c="' + id + '"]'), part = mk && mk.getAttribute('data-part');
+      var els = part ? qa('[data-iso-id="' + part + '"]', svg) : [];
+      if (!els.length || tl.isActive()) { on = false; m.tw(gsap.to(dim, { autoAlpha: 0, duration: 0.2, overwrite: 'auto', onComplete: function () { if (!on) gsap.set(dim, { display: 'none' }) } })); return }
+      var pr = plane.getBoundingClientRect(), r = null;
+      els.concat(mk ? [mk] : []).forEach(function (e) { var b = e.getBoundingClientRect(); if (!b.width && !b.height) return; r = r ? { l: Math.min(r.l, b.left), t: Math.min(r.t, b.top), r: Math.max(r.r, b.right), b: Math.max(r.b, b.bottom) } : { l: b.left, t: b.top, r: b.right, b: b.bottom } });
+      if (!r) return;
+      var pad = 14, box = { left: r.l - pr.left - pad, top: r.t - pr.top - pad, width: r.r - r.l + 2 * pad, height: r.b - r.t + 2 * pad };
+      if (!on) { gsap.set(spot, box); gsap.set(dim, { display: 'block' }); m.tw(gsap.to(dim, { autoAlpha: 1, duration: 0.3, overwrite: 'auto' })); on = true }
+      else m.tw(gsap.to(spot, Object.assign({ duration: 0.55, ease: gEase, overwrite: 'auto' }, box)));
+    }
+    qa('.aq-market-callouts__c').forEach(function (c) {
+      var id = c.getAttribute('data-c');
+      c.addEventListener('pointerenter', function () { look(id) }); c.addEventListener('focusin', function () { look(id) });
+    });
+    var list = q('.aq-market-callouts__list') || el;
+    qa('.aq-market-callouts__c').forEach(function (c) { c.addEventListener('pointerleave', function (ev) { if (!(ev.relatedTarget && ev.relatedTarget.closest && ev.relatedTarget.closest('.aq-market-callouts__c'))) look(null) }) });
+    el.addEventListener('focusout', function (ev) { if (!el.contains(ev.relatedTarget)) look(null) });
   });
 });
 /* Hover or focus within a callout: light its part, marker and leader */

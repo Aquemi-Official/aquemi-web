@@ -5,3 +5,5 @@ IndustryFeed sets a few destinations of the same water as editorial type: one tw
 - Tokens: pipe walls `line-strong` over the section ground, water `flow`, evidence in Geist Mono Light in `ink`, names Geist 26/32, lines `ink-muted`. Square tees, no curves. Hovering a card steps the others back and lights its node.
 - Phone: the pipe runs down the left edge and each item tees off it.
 - Motion: the water runs the trunk from the page edge with a droplet at its head; as it passes each column the drop fills, the node seats with a ring, the evidence decodes like a readout and the name and line rise. Phones: the items light one after another. Once, under 3 s.
+
+Ported (pass 9b): Subframe Motion "Departure board" (departure-board). The evidence arrives as a split-flap board (each character a cell whose leaf turns over its centre line, 440 ms, 45 ms apart); pointing at or focusing a destination turns it over again, faster. The real text stays readable (visually hidden copy while turning, plain text at rest); placeholders never flip.

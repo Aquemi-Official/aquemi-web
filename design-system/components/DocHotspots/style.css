@@ -63,3 +63,17 @@
   .aq-doc-hotspots__card { padding: var(--space-4) var(--space-4) var(--space-6); }
   .aq-doc-hotspots__t { font-size: 19px; line-height: 26px; }
 }
+
+/* Shared selection (motion only, ported from Subframe Motion "Atlas hotspots"): a crosshair ring glides to the marker
+   of the document being read; that marker lifts, its card and leader light, the other documents step back. */
+.aq-doc-hotspots__hot { pointer-events: auto; }
+.aq-doc-hotspots__cross { position: absolute; left: 0; top: 0; z-index: 2; width: var(--space-12); height: var(--space-12); margin: calc(-1 * var(--space-6)) 0 0 calc(-1 * var(--space-6));
+  border: 1px solid var(--on-navy); border-radius: var(--radius-pill); pointer-events: none; display: none; opacity: 0; visibility: hidden; }
+.aq-doc-hotspots__cross::before, .aq-doc-hotspots__cross::after { content: ""; position: absolute; background: var(--on-navy); }
+.aq-doc-hotspots__cross::before { left: 50%; top: calc(-1 * var(--space-2)); bottom: calc(-1 * var(--space-2)); width: 1px; -webkit-mask: linear-gradient(var(--ink) 0 0) top / 1px var(--space-3) no-repeat, linear-gradient(var(--ink) 0 0) bottom / 1px var(--space-3) no-repeat; mask: linear-gradient(var(--ink) 0 0) top / 1px var(--space-3) no-repeat, linear-gradient(var(--ink) 0 0) bottom / 1px var(--space-3) no-repeat; }
+.aq-doc-hotspots__cross::after { top: 50%; left: calc(-1 * var(--space-2)); right: calc(-1 * var(--space-2)); height: 1px; -webkit-mask: linear-gradient(var(--ink) 0 0) left / var(--space-3) 1px no-repeat, linear-gradient(var(--ink) 0 0) right / var(--space-3) 1px no-repeat; mask: linear-gradient(var(--ink) 0 0) left / var(--space-3) 1px no-repeat, linear-gradient(var(--ink) 0 0) right / var(--space-3) 1px no-repeat; }
+.aq-doc-hotspots__hot.is-pick > span { transform: scale(1.5); }
+.aq-doc-hotspots__card { transition: border-color 250ms, transform 250ms cubic-bezier(0.2, 0, 0, 1), opacity 200ms; }
+.aq-doc-hotspots.has-pick .aq-doc-hotspots__card:not(.is-pick) { opacity: 0.6; }
+.aq-doc-hotspots__card.is-pick { border-top-color: var(--flow); transform: translateY(calc(-1 * var(--space-1))); }
+.aq-doc-hotspots__leads path.is-pick { stroke: var(--on-navy); }

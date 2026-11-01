@@ -99,3 +99,9 @@
   .aq-hold-timeline__t { font-size: 20px; }
   .aq-hold-timeline__num { font-size: 56px; line-height: 56px; }
 }
+
+/* Seek (motion only, ported from Subframe Motion "Cue scrubber"): stages still ahead of the one the visitor points
+   at step back while the water waits at its node */
+.aq-hold-timeline__st { transition: opacity 200ms; }
+.aq-hold-timeline__st.is-ahead { opacity: 0.4; }
+.aq-hold-timeline__st.is-cue .aq-hold-timeline__node { transform: scale(1.3); }

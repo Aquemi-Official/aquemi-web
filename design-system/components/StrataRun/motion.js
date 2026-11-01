@@ -42,5 +42,22 @@ AQmotion.fx('StrataRun', function (root, m) {
       onStage: function (els, id) { on(id, true); gsap.delayedCall(0.7, function () { on(id, false) }) } });
     if (iso) { iso.paused(false); tl.add(iso, 0.75) }
     m.on(el, function () { tl.play() }, 'top 75%');
+
+    // Animated beam (AQbeam, ported from Subframe Motion "Animated beam", see SystemRun): pointing at or focusing a
+    // stage's label, or its slab in the drawing, runs the water down that stage's pipes for as long as the visitor stays
+    var flows = qa('.aq-iso__flow', svg).filter(function (f) { return !f.classList.contains('aq-iso__flow--drop') }), beams = {}, hot = null;
+    function to(f) { var h = f.closest('[data-iso-to]'), p = f.closest('.aq-iso__part[data-iso-id]'); return f.getAttribute('data-iso-to') || (h && h.getAttribute('data-iso-to')) || (p && p.getAttribute('data-iso-id')) }
+    function heat(id) {
+      if (id === hot) return;
+      if (hot && beams[hot]) beams[hot].off();
+      hot = id; if (!id || tl.isActive()) return;
+      if (!(id in beams)) beams[id] = window.AQbeam ? AQbeam(svg, flows.filter(function (f) { return to(f) === id }), { dur: 2, len: 0.6, stagger: 0.15 }) : null;
+      if (beams[id]) beams[id].on();
+    }
+    stages.forEach(function (s) {
+      var id = s.getAttribute('data-stage');
+      s.addEventListener('pointerenter', function () { heat(id) }); s.addEventListener('pointerleave', function () { heat(null) });
+      s.addEventListener('focusin', function () { heat(id) }); s.addEventListener('focusout', function () { heat(null) });
+    });
   });
 });

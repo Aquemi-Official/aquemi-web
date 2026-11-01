@@ -25,6 +25,23 @@ AQmotion.fx('ProofFolders', function (root, m) {
       }
       if (label) tl.from(label, { clipPath: 'inset(0 0 0 100%)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, 1.1);
       m.on(row, function () { tl.play() }, 'top 88%');
+
+      // Ported from Subframe Motion "Archive folder" (archive-folder), MIT, (c) 2026 Subframe
+      // Pointing at (or focusing into) a file opens it for reading: the proof sheets come out of their skewed stack,
+      // straighten and spread a step apart, the front ones furthest (480 ms, cubic-bezier(.22,1,.36,1), the library's
+      // document values), and the typed slip lifts off the folder; leaving lets them settle back a third faster.
+      var sh = [].slice.call(row.querySelectorAll('.aq-proof-folders__sheet')), slip = row.querySelector('.aq-proof-folders__slip');
+      var aEase = window.CustomEase ? (CustomEase.get('aq-relief') || CustomEase.create('aq-relief', 'M0,0 C0.22,1 0.36,1 1,1')) : 'power3.out', open = false;
+      function file(on) {
+        if (on === open || (on && tl.isActive())) return; open = on;
+        if (!file.o) file.o = sh.map(function (x) { return { r: gsap.getProperty(x, 'rotation'), x: gsap.getProperty(x, 'x') } });
+        var o = file.o, mid = (sh.length - 1) / 2, d = on ? 0.48 : 0.32, clr = on ? '' : 'transform';
+        sh.forEach(function (x, j) { m.tw(gsap.to(x, { rotation: on ? (j - mid) * 0.6 : o[j].r, x: on ? o[j].x * 0.4 : o[j].x, y: on ? j * 6 : 0, duration: d, ease: aEase, delay: on ? j * 0.04 : 0, overwrite: 'auto', clearProps: clr })) });
+        if (slip) m.tw(gsap.to(slip, { y: on ? -6 : 0, duration: d, ease: aEase, overwrite: 'auto', clearProps: clr }));
+        row.classList.toggle('is-open', on);
+      }
+      row.addEventListener('pointerenter', function () { file(true) }); row.addEventListener('pointerleave', function () { file(false) });
+      row.addEventListener('focusin', function () { file(true) }); row.addEventListener('focusout', function (ev) { if (!row.contains(ev.relatedTarget)) file(false) });
     });
   });
 });

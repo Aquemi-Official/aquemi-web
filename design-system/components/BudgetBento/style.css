@@ -96,3 +96,11 @@
   .aq-budget-bento__notes { grid-template-columns: minmax(0, 1fr); }
   .aq-budget-bento__more { grid-column: 1; }
 }
+
+/* Spotlight (motion only, ported from Subframe Motion "Spotlight card"): a soft flow light under the pointer, behind the
+   tile's type; on the navy lead tile it is the water's lightened flow */
+.aq-budget-bento__tile { position: relative; overflow: hidden; isolation: isolate; }
+.aq-budget-bento__spot-light { position: absolute; left: calc(-1 * var(--space-32, 8rem)); top: calc(-1 * var(--space-32, 8rem)); width: calc(2 * var(--space-32, 8rem)); height: calc(2 * var(--space-32, 8rem));
+  border-radius: var(--radius-pill); pointer-events: none; display: none; opacity: 0; z-index: -1;
+  background: radial-gradient(circle, color-mix(in srgb, var(--flow) 22%, transparent) 0%, color-mix(in srgb, var(--flow) 9%, transparent) 35%, transparent 70%); }
+.aq-budget-bento__tile.is-lead .aq-budget-bento__spot-light { background: radial-gradient(circle, color-mix(in srgb, var(--flow) 40%, transparent) 0%, color-mix(in srgb, var(--flow) 16%, transparent) 35%, transparent 70%); }

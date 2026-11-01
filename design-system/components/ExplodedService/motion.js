@@ -46,5 +46,34 @@ AQmotion.fx('ExplodedService', function (root, m) {
       if (n) tl.call(function () { m.scramble(n, 0) }, null, at);
     });
     m.on(el, function () { tl.play() }, narrow ? 'top 80%' : 'top 65%');
+
+    // Ported from Subframe Motion "Exploded camera" (exploded-camera), MIT, (c) 2026 Subframe
+    // A press assembles the pump and takes it apart again (every part slides along the shaft line, 600 ms,
+    // cubic-bezier(.22,1,.36,1), the library's values; a keyboard press with no pointer moves it instantly, like the
+    // example's detail === 0 branch). Pointing at a promise brings its part forward: the other parts step back.
+    var wrap = el.querySelector('.aq-exploded-service__fig');
+    var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'aq-btn aq-btn--secondary aq-exploded-service__toggle';
+    btn.setAttribute('aria-pressed', 'false'); btn.innerHTML = '<span class="aq-exploded-service__tl">Assemble the pump</span>';
+    el.insertBefore(btn, wrap.nextSibling);
+    gsap.set(btn, { autoAlpha: 0 }); tl.to(btn, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, te + 1.2);
+    var whole = false, ease = window.CustomEase ? (CustomEase.get('aq-explode') || CustomEase.create('aq-explode', 'M0,0 C0.22,1 0.36,1 1,1')) : 'power3.out';
+    var notes = qa('[data-lead]', svg).concat(pins, axis ? [axis] : []);
+    btn.addEventListener('click', function (ev) {
+      if (tl.isActive()) tl.progress(1);
+      whole = !whole; btn.setAttribute('aria-pressed', String(whole));
+      btn.firstChild.textContent = whole ? 'Take the pump apart' : 'Assemble the pump';
+      el.classList.toggle('is-whole', whole);
+      var d = ev.detail === 0 ? 0 : 0.6;
+      pieces.forEach(function (p, i) { m.tw(gsap.to(p, { x: whole ? off[i].x : 0, y: whole ? off[i].y : 0, duration: d, ease: ease, delay: whole ? 0 : i * 0.03, overwrite: true })) });
+      m.tw(gsap.to(notes, { autoAlpha: whole ? 0 : 1, duration: d * (whole ? 0.5 : 1), delay: whole ? 0 : d * 0.6, overwrite: true }));
+    });
+    calls.forEach(function (c) {
+      var part = svg.querySelector('[data-iso-id="' + c.getAttribute('data-part') + '"]'), piece = part && part.closest('.aq-exploded-service__piece');
+      if (!piece) return;
+      function on() { if (whole || tl.isActive()) return; m.tw(gsap.to(pieces.filter(function (p) { return p !== piece }), { opacity: 0.35, duration: 0.2, overwrite: 'auto' })) }
+      function off() { m.tw(gsap.to(pieces, { opacity: 1, duration: 0.13, overwrite: 'auto' })) }
+      c.addEventListener('pointerenter', on); c.addEventListener('pointerleave', off);
+      c.addEventListener('focusin', on); c.addEventListener('focusout', off);
+    });
   });
 });

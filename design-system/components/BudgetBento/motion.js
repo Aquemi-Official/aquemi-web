@@ -35,5 +35,17 @@ AQmotion.fx('BudgetBento', function (root, m) {
     });
     tl.from(qa('.aq-budget-bento__more, .aq-budget-bento > .aq-small'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 2.1);
     m.on(el, function () { tl.play() }, 'top 80%');
+
+    // Ported from Subframe Motion "Spotlight card" (spotlight-card), MIT, (c) 2026 Subframe
+    // A soft light follows the pointer inside the tile being read (a spring, stiffness 160 / damping 26 in the library,
+    // here gsap.quickTo at 0.45 s power3), so the eye keeps its place on a dense price sheet; it fades in over 200 ms
+    // and out a third faster. Mouse only (touch has no pointer to follow); nothing under reduced motion.
+    qa('.aq-budget-bento__tile').forEach(function (t) {
+      var sp = document.createElement('span'); sp.className = 'aq-budget-bento__spot-light'; sp.setAttribute('aria-hidden', 'true'); t.insertBefore(sp, t.firstChild);
+      var qx = gsap.quickTo(sp, 'x', { duration: 0.45, ease: 'power3.out' }), qy = gsap.quickTo(sp, 'y', { duration: 0.45, ease: 'power3.out' });
+      t.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'mouse') return; var r = t.getBoundingClientRect(); gsap.set(sp, { x: e.clientX - r.left, y: e.clientY - r.top, display: 'block' }); m.tw(gsap.to(sp, { opacity: 1, duration: 0.2, overwrite: 'auto' })) });
+      t.addEventListener('pointermove', function (e) { if (e.pointerType !== 'mouse') return; var r = t.getBoundingClientRect(); qx(e.clientX - r.left); qy(e.clientY - r.top) });
+      t.addEventListener('pointerleave', function () { m.tw(gsap.to(sp, { opacity: 0, duration: 0.13, overwrite: 'auto', onComplete: function () { gsap.set(sp, { display: 'none' }) } })) });
+    });
   });
 });

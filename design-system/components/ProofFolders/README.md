@@ -11,3 +11,5 @@ ProofFolders shows an evidence table as a drawer of manila folders, one per stan
 ## Motion
 
 Motion: one timeline per folder as it reaches the viewport. The folder rises into place, the standard slides in beside it, the slip drops and turns to its angle, the sheets fan out from under the clip, the stamp strikes (large and light, down hard, a small jolt through the folder) and the index label wipes in from the edge. Under 2.5 s each; nothing under reduced motion.
+
+Ported (pass 9b): Subframe Motion "Archive folder" (archive-folder): pointing at or focusing into a file opens it for reading: the proof sheets straighten and spread a step apart (480 ms, cubic-bezier(.22,1,.36,1)) and the slip lifts; they settle back a third faster.

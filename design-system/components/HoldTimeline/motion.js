@@ -78,7 +78,38 @@ AQmotion.fx('HoldTimeline', function (root, m) {
         if (svg) tl.set(svg, { clearProps: 'clipPath' }, t + 0.01);
         if (drop) tl.set(drop, { clearProps: 'transform,opacity,visibility' }, t + 0.01);
         if (rail) tl.fromTo(rail, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, clearProps: 'opacity,visibility' }, 0);
+        tl.call(function () { ready = true }, null, t + 0.05);
       }, 'top 72%');
+
+      // Ported from Subframe Motion "Cue scrubber" (cue-scrubber), MIT, (c) 2026 Subframe
+      // The stages are chapters the visitor can seek: pointing at (or focusing into) a stage sends the water back down
+      // or up the line, node by node, to that stage (each leg 120 ms, cubic-bezier(.2,.8,.2,1)); the water line beyond it
+      // empties and the stages still to come step back, so the reader sees how much of the project lies ahead of that
+      // hold point. Leaving the timeline lets the water run on to the top again.
+      var ready = false, at = P.length + 1, legs = null, cueEase = window.CustomEase ? (CustomEase.get('aq-ledger') || CustomEase.create('aq-ledger', 'M0,0 C0.2,0.8 0.2,1 1,1')) : 'power2.out';
+      function seek(k) {   // k: waypoint index, 1..n the stages, n+1 the rest at the top right
+        if (!ready || !drop || !run) return;
+        var br = band.getBoundingClientRect(), W = br.width, Hh = br.height;
+        var pts = [[0, Hh]].concat(P.map(function (p) { var r = p.node.getBoundingClientRect(); return [r.left + r.width / 2 - br.left, r.top + r.height / 2 - br.top] })).concat([[W, 0]]);
+        if (legs) legs.kill();
+        legs = m.tw(gsap.timeline());
+        var step = k > at ? 1 : -1, t = 0;
+        for (var j = at + step; step > 0 ? j <= k : j >= k; j += step) {
+          var b = pts[j];
+          legs.to(drop, { x: b[0] - W, y: b[1], duration: 0.12, ease: j === k ? cueEase : 'none' }, t);
+          legs.to(run, { clipPath: 'inset(-5% ' + Math.max(0, 100 - b[0] / W * 100).toFixed(2) + '% -5% 0%)', duration: 0.12, ease: 'none' }, t);
+          t += 0.12;
+        }
+        if (k === P.length + 1) legs.set(run, { clearProps: 'clipPath' });
+        at = k;
+        sts.forEach(function (s, i) { s.classList.toggle('is-ahead', k <= P.length && i + 1 > k); s.classList.toggle('is-cue', i + 1 === k) });
+      }
+      sts.forEach(function (s, i) {
+        s.addEventListener('pointerenter', function () { seek(i + 1) });
+        s.addEventListener('focusin', function () { seek(i + 1) });
+      });
+      fig.addEventListener('pointerleave', function () { seek(P.length + 1) });
+      fig.addEventListener('focusout', function (ev) { if (!fig.contains(ev.relatedTarget)) seek(P.length + 1) });
       return;
     }
     P.forEach(function (p, i) {

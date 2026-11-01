@@ -63,6 +63,15 @@ ellipse.aq-macro-leaders__pp.aq-macro-leaders__ol { fill: var(--surface-sunken);
   .aq-macro-leaders__table tbody tr:hover .aq-macro-leaders__mk { transform: scale(1.12); }
 }
 
+/* Crosshair (motion only, ported from Subframe Motion "Chart crosshair"): a row rule and a column rule snap to the cell
+   under the pointer; the column head lights and the cell takes the flow tint */
+.aq-macro-leaders__xh, .aq-macro-leaders__xv { position: absolute; left: 0; top: 0; z-index: 2; pointer-events: none; display: none; opacity: 0; visibility: hidden; background: var(--flow); }
+.aq-macro-leaders__xh { height: 1px; }
+.aq-macro-leaders__xv { width: 1px; }
+.aq-macro-leaders__table thead th { transition: color 150ms; }
+.aq-macro-leaders__table thead th.is-col { color: var(--flow); }
+.aq-macro-leaders__table .is-cell { background: color-mix(in srgb, var(--flow-tint) 60%, transparent); }
+
 @container (max-width: 1180px) {
   .aq-macro-leaders { grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); column-gap: var(--space-6); }
   .aq-macro-leaders__svg { width: calc(50vw - 50% + (100% - var(--space-6)) / 4); }

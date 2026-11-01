@@ -9,3 +9,5 @@ StandardWires sets a table of standards on a navy blueprint and wires each answe
 ## Motion
 
 Motion: each row is wired up as it scrolls in: the index pops, the standard decodes, the asks fade up, the chip strikes on; `AQiso.timeline` draws the part and runs its water while the wire runs from the chip across to the plate and steps to the part; the part lights as the wire lands, then settles. Folded rows appear whole when opened. Under 5 s; nothing under reduced motion.
+
+Ported (pass 9b): Subframe Motion "Expandable ledger" (expandable-ledger): opening the fold expands each new row from nothing (210 ms, cubic-bezier(.2,.8,.2,1)) and then wires it up like the rows above.

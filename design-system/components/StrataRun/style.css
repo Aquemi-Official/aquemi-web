@@ -79,3 +79,6 @@
   .aq-strata-run__d { max-width: none; }
   .aq-strata-run__base { padding-left: var(--space-8); }
 }
+
+/* the moving water (AQbeam) while the visitor points at a stage: flow on the light sheet */
+.aq-strata-run { --beam: var(--flow); --beam-tail: var(--flow); --beam-w: 4.5; }

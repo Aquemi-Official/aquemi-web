@@ -17,6 +17,13 @@ AQmotion.fx('LimitStack', function (root, m) {
         .from(r.querySelector('.aq-limit-stack__p'), { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, t);
       var ix = r.querySelector('.aq-index'); if (ix) tl.call(function () { m.scramble(ix, 0) }, null, t);
       if (v.length) tl.from(v, { yPercent: 70, autoAlpha: 0, duration: 0.6, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, t + 0.08);
+      var num = r.querySelector('.aq-limit-stack__n');
+      if (num && !num.querySelector('.aq-ph')) {
+        // the limit rolls up on the core's odometer (m.count, ported from Subframe Motion "Sliding number"); pointing at
+        // a row rolls its limit once more (visitor-driven)
+        tl.call(function (num) { m.count(num, { now: true, duration: 1.3 }) }, [num], t + 0.08);
+        r.addEventListener('pointerenter', function () { if (!tl.isActive() && !num.querySelector('[aria-hidden]')) m.count(num, { now: true, duration: 0.8 }) });
+      }
       if (rule) tl.from(rule, { scaleX: 0, duration: 0.7, ease: 'power2.inOut', clearProps: 'transform' }, t + 0.2);
       tl.from(qa('.aq-limit-stack__mt, .aq-limit-stack__lvl', r), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, t + 0.5);
     });

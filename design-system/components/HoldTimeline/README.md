@@ -49,3 +49,5 @@ Pass 9 look `hold-timeline` (`assets/src/blocks/look-hold-timeline.js`), set wit
 ## Motion
 
 Motion: the macro comes into focus (scale and fade), its engraving lines draw from the weld seam outwards, the bead rings on and the water creeps once; then a flow drop runs the rising line from the left edge, laying it behind it, and each node lands as the drop arrives, its pole growing and the callout unrolling from the node. At a hold point the drop waits a beat, the ring opens and the stamp strikes; the boxed figure counts up; the drop leaves at the top right and rests there (under 5 s, once). Phones land each stage as it scrolls in. Nothing under reduced motion.
+
+Ported (pass 9b): Subframe Motion "Cue scrubber" (cue-scrubber): the stages are seekable chapters. Pointing at or focusing into a stage sends the water node by node to it (120 ms legs), empties the line beyond and steps the stages still ahead back; leaving lets it run on to the top. Wide screens.

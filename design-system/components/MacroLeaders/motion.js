@@ -37,5 +37,33 @@ AQmotion.fx('MacroLeaders', function (root, m) {
       if (mk) tl.call(function () { m.scramble(mk, 0) }, null, at + 0.1);
     });
     m.on(el, function () { tl.play() }, 'top 78%');
-  });
+  
+    // Ported from Subframe Motion "Chart crosshair" (chart-crosshair), MIT, (c) 2026 Subframe
+    // Reading a dense grid: a crosshair snaps to the cell under the pointer (a row rule along that industry and a
+    // column rule down that attribute, 200 ms power3 like the library's snap), the column's head lights and the cell is
+    // marked, so "medical devices x inspector" reads at a glance while the whole table stays in view. Keyboard focus on
+    // a row's link snaps the row rule. Mouse and focus only; nothing under reduced motion.
+    var table = el.querySelector('.aq-macro-leaders__table');
+    if (table && !m.narrow()) {
+      var hx = document.createElement('span'), vx = document.createElement('span');
+      hx.className = 'aq-macro-leaders__xh'; vx.className = 'aq-macro-leaders__xv'; hx.setAttribute('aria-hidden', 'true'); vx.setAttribute('aria-hidden', 'true');
+      el.appendChild(hx); el.appendChild(vx);
+      var heads = [].slice.call(table.querySelectorAll('thead th')), qy = gsap.quickTo(hx, 'y', { duration: 0.2, ease: 'power3.out' }), qx = gsap.quickTo(vx, 'x', { duration: 0.2, ease: 'power3.out' }), live = false, cell = null;
+      function snap(c, col) {
+        var row = c.closest('tr'), er = el.getBoundingClientRect(), tr = table.getBoundingClientRect(), rr = row.getBoundingClientRect(), cr = c.getBoundingClientRect();
+        gsap.set(hx, { left: tr.left - er.left, width: tr.width }); gsap.set(vx, { top: tr.top - er.top, height: tr.height });
+        var y = rr.bottom - er.top - 1, x = cr.left - er.left;
+        if (!live) { gsap.set(hx, { y: y, display: 'block' }); gsap.set(vx, { x: x, display: 'block' }); m.tw(gsap.to([hx].concat(col ? [vx] : []), { autoAlpha: 1, duration: 0.15, overwrite: 'auto' })); live = true } else { qy(y); qx(x) }
+        if (!col) m.tw(gsap.to(vx, { autoAlpha: 0, duration: 0.1, overwrite: 'auto' })); else if (gsap.getProperty(vx, 'opacity') < 1) m.tw(gsap.to(vx, { autoAlpha: 1, duration: 0.15, overwrite: 'auto' }));
+        var ci = [].indexOf.call(row.children, c);
+        heads.forEach(function (h, j) { h.classList.toggle('is-col', col && j === ci) });
+        if (cell) cell.classList.remove('is-cell'); cell = col ? c : null; if (cell) cell.classList.add('is-cell');
+      }
+      function clear() { live = false; m.tw(gsap.to([hx, vx], { autoAlpha: 0, duration: 0.13, overwrite: 'auto', onComplete: function () { if (!live) gsap.set([hx, vx], { display: 'none' }) } })); heads.forEach(function (h) { h.classList.remove('is-col') }); if (cell) cell.classList.remove('is-cell'); cell = null }
+      table.addEventListener('pointerover', function (ev) { var c = ev.target.closest && ev.target.closest('tbody th, tbody td'); if (c && ev.pointerType === 'mouse') snap(c, true) });
+      table.addEventListener('pointerleave', clear);
+      table.addEventListener('focusin', function (ev) { var c = ev.target.closest && ev.target.closest('tbody th, tbody td'); if (c) snap(c, false) });
+      table.addEventListener('focusout', function (ev) { if (!table.contains(ev.relatedTarget)) clear() });
+    }
+});
 });

@@ -66,3 +66,15 @@
 
 /* the drawing may run a step past the content width: the band clips it */
 .aq-system-run-sec { overflow-x: clip; }
+
+/* Animated beam (AQbeam, ported from Subframe Motion "Animated beam"; shared by SystemRun, BatteryLimit, PidRoutes):
+   the moving highlight that traces a water line while the visitor points at it. A hard bright head, a fading tail. */
+.aq-beam, .aq-iso .aq-beam { stroke-width: var(--beam-w, 4); stroke-linecap: round; fill: none; pointer-events: none; vector-effect: none; }
+.aq-beam__stop { stop-color: var(--beam, var(--flow)); }
+.aq-beam__stop--0, .aq-beam__stop--3 { stop-opacity: 0; }
+.aq-beam__stop--2, .aq-beam__stop--3 { stop-color: var(--beam-tail, var(--beam, var(--flow))); }
+.aq-system-run { --beam: var(--on-navy); --beam-tail: var(--sr-flow, var(--flow)); }
+/* the column of the system the visitor is pointing at in the drawing */
+.aq-system-run__stage.is-hot .aq-system-run__mark { transform: scaleX(1); }
+.aq-system-run__stage.is-hot .aq-system-run__t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--sr-flow, var(--flow)); }
+.aq-system-run__fig { cursor: crosshair; }

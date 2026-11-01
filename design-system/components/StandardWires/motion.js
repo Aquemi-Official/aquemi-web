@@ -36,5 +36,21 @@ AQmotion.fx('StandardWires', function (root, m) {
     }
     rows.forEach(function (r) { gsap.set(r, { autoAlpha: 0 }) });
     ScrollTrigger.batch(rows, { start: 'top 85%', once: true, onEnter: function (b) { b.forEach(function (r, j) { play(r, j * 0.25) }) } }).forEach(m.tw);
+
+    // Ported from Subframe Motion "Expandable ledger" (expandable-ledger), MIT, (c) 2026 Subframe
+    // Opening the fold expands the ledger in place: each new row opens from nothing (210 ms, cubic-bezier(.2,.8,.2,1),
+    // the library's values) and is then wired up like the rows above it, so the reader sees where the list grew.
+    var fb = el.querySelector('.aq-fold__btn');
+    if (fb) fb.addEventListener('click', function () {
+      setTimeout(function () {
+        var w = fb.closest('.aq-fold'); if (!w || !w.classList.contains('is-open')) return;
+        var ease = window.CustomEase ? (CustomEase.get('aq-ledger') || CustomEase.create('aq-ledger', 'M0,0 C0.2,0.8 0.2,1 1,1')) : 'power2.out';
+        qa('.aq-standard-wires__row.aq-fold-x').forEach(function (r, j) {
+          if (r._aqOpen) return; r._aqOpen = 1;
+          m.tw(gsap.from(r, { height: 0, paddingTop: 0, paddingBottom: 0, overflow: 'hidden', duration: 0.21, ease: ease, delay: j * 0.07, clearProps: 'height,paddingTop,paddingBottom,overflow' }));
+          play(r, 0.12 + j * 0.07);
+        });
+      }, 0);
+    });
   });
 });

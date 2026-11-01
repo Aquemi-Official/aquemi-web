@@ -59,3 +59,13 @@
 
 /* the trunk bleeds to the page edge: clip it there, never a horizontal scroll */
 .aq-industry-feed-sec { overflow-x: clip; }
+
+/* Split-flap board (motion only, ported from Subframe Motion "Departure board"): while the evidence turns over, each
+   character is a cell; a leaf turns over the cell's centre line. At rest the evidence is plain text again. */
+.aq-industry-feed__sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.aq-flap { position: relative; display: inline-block; perspective: 500px; }
+.aq-flap__s { display: inline-block; }
+.aq-flap__leaf { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 50% 50%; }
+.aq-flap__f, .aq-flap__b { position: absolute; inset: 0; backface-visibility: hidden; background: var(--surface); color: var(--ink-muted); }
+.aq-flap__b { transform: rotateX(180deg); color: var(--ink); }
+.aq-flap__seam { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line); pointer-events: none; }

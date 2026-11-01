@@ -471,6 +471,26 @@ AQmotion.fx('BatteryLimit', function (root, m) {
       tl.from(li.querySelector('.aq-battery-limit__node'), { scale: 0, rotation: 0, duration: 0.35, ease: 'back.out(3)', clearProps: 'transform' }, at + 0.7);
     });
     m.on(sec, function () { tl.play() }, 'top 70%');
+
+    // Ported from Subframe Motion "Border beam" (border-beam), MIT, (c) 2026 Subframe
+    // Pointing at or focusing a connection point sends a small light round its card's edge (offset-path rect() along a
+    // border mask, the library's mechanism) while its leader and tie-in node light: the visitor sees which side of the
+    // battery limit the item sits on and where it ties in. Runs only while the visitor stays (visitor-driven).
+    qa('.aq-battery-limit__item, .aq-battery-limit__limit', el).forEach(function (li) {
+      var card = li.querySelector('.aq-battery-limit__card'); if (!card) return;
+      var beam = document.createElement('span'); beam.className = 'aq-battery-limit__beam'; beam.setAttribute('aria-hidden', 'true');
+      beam.innerHTML = '<span class="aq-battery-limit__light"></span>'; card.appendChild(beam);
+      var light = beam.firstChild, loop = null, site = !!li.closest('.is-site');
+      function on() {
+        if (loop) return;
+        gsap.set(beam, { display: 'block' }); m.tw(gsap.to(beam, { autoAlpha: 1, duration: 0.2, overwrite: true }));
+        // start where the leader leaves the card (right edge for the package, left for the site) and run clockwise
+        loop = m.tw(gsap.fromTo(light, { offsetDistance: site ? '75%' : '25%' }, { offsetDistance: site ? '175%' : '125%', duration: 2.6, ease: 'none', repeat: -1 }));
+      }
+      function off() { if (loop) { loop.kill(); loop = null } m.tw(gsap.to(beam, { autoAlpha: 0, duration: 0.13, overwrite: true, onComplete: function () { if (!loop) gsap.set(beam, { display: 'none' }) } })) }
+      li.addEventListener('pointerenter', on); li.addEventListener('pointerleave', off);
+      li.addEventListener('focusin', on); li.addEventListener('focusout', function (ev) { if (!li.contains(ev.relatedTarget)) off() });
+    });
   });
 });
 /* BinderSpines: the shelf is fixed first (it runs out from the left), then the binders are filed onto it one by one,
@@ -557,6 +577,18 @@ AQmotion.fx('BudgetBento', function (root, m) {
     });
     tl.from(qa('.aq-budget-bento__more, .aq-budget-bento > .aq-small'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 2.1);
     m.on(el, function () { tl.play() }, 'top 80%');
+
+    // Ported from Subframe Motion "Spotlight card" (spotlight-card), MIT, (c) 2026 Subframe
+    // A soft light follows the pointer inside the tile being read (a spring, stiffness 160 / damping 26 in the library,
+    // here gsap.quickTo at 0.45 s power3), so the eye keeps its place on a dense price sheet; it fades in over 200 ms
+    // and out a third faster. Mouse only (touch has no pointer to follow); nothing under reduced motion.
+    qa('.aq-budget-bento__tile').forEach(function (t) {
+      var sp = document.createElement('span'); sp.className = 'aq-budget-bento__spot-light'; sp.setAttribute('aria-hidden', 'true'); t.insertBefore(sp, t.firstChild);
+      var qx = gsap.quickTo(sp, 'x', { duration: 0.45, ease: 'power3.out' }), qy = gsap.quickTo(sp, 'y', { duration: 0.45, ease: 'power3.out' });
+      t.addEventListener('pointerenter', function (e) { if (e.pointerType !== 'mouse') return; var r = t.getBoundingClientRect(); gsap.set(sp, { x: e.clientX - r.left, y: e.clientY - r.top, display: 'block' }); m.tw(gsap.to(sp, { opacity: 1, duration: 0.2, overwrite: 'auto' })) });
+      t.addEventListener('pointermove', function (e) { if (e.pointerType !== 'mouse') return; var r = t.getBoundingClientRect(); qx(e.clientX - r.left); qy(e.clientY - r.top) });
+      t.addEventListener('pointerleave', function () { m.tw(gsap.to(sp, { opacity: 0, duration: 0.13, overwrite: 'auto', onComplete: function () { gsap.set(sp, { display: 'none' }) } })) });
+    });
   });
 });
 /* Button: visitor-driven feedback on every aq-btn the site draws (hero, closing, contact routes, forms, nav). Document-level
@@ -1303,6 +1335,30 @@ AQmotion.fx('DocHotspots', function (root, m) {
     });
     if (more) { m.claim(more); tl.from(more, { autoAlpha: 0, y: 10, duration: 0.5, clearProps: 'transform,opacity,visibility' }, '-=0.3') }
     m.on(el, function () { tl.play() }, 'top 70%');
+
+    // Ported from Subframe Motion "Atlas hotspots" (atlas-hotspots), MIT, (c) 2026 Subframe
+    // The drawing's markers and the document cards share one selection: pointing at (or focusing into) a card, or
+    // pointing at a marker on the skid, glides a crosshair ring to that part (250 ms, cubic-bezier(.2,.8,.2,1), the
+    // library's values), lifts that marker and lights its card and leader; the other documents step back so the eye
+    // stays on the one being read. Leaving the drawing and the cards clears the selection.
+    var fig = el.querySelector('.aq-doc-hotspots__fig'), hots = qa('.aq-doc-hotspots__hot'); if (!fig || !hots.length) return;
+    var cross = document.createElement('span'); cross.className = 'aq-doc-hotspots__cross'; cross.setAttribute('aria-hidden', 'true'); fig.appendChild(cross);
+    var ease = window.CustomEase ? (CustomEase.get('aq-ledger') || CustomEase.create('aq-ledger', 'M0,0 C0.2,0.8 0.2,1 1,1')) : 'power2.out', cur = null, shown = false;
+    function pick(k) {
+      if (k === cur || tl.isActive()) return; cur = k;
+      el.classList.toggle('has-pick', k != null);
+      qa('[data-k]').forEach(function (x) { x.classList.toggle('is-pick', x.getAttribute('data-k') === k) });
+      var h = k != null && el.querySelector('.aq-doc-hotspots__hot[data-k="' + k + '"]');
+      if (!h) { shown = false; m.tw(gsap.to(cross, { autoAlpha: 0, scale: 0.6, duration: 0.17, onComplete: function () { if (!shown) gsap.set(cross, { display: 'none' }) } })); return }
+      var x = h.offsetLeft, y = h.offsetTop;
+      if (!shown) { gsap.set(cross, { left: x, top: y, display: 'block' }); m.tw(gsap.to(cross, { autoAlpha: 1, scale: 1, duration: 0.25, ease: ease })) }
+      else m.tw(gsap.to(cross, { left: x, top: y, duration: 0.25, ease: ease, overwrite: 'auto' }));
+      shown = true;
+    }
+    cards.forEach(function (c) { var k = c.getAttribute('data-k'); c.addEventListener('pointerenter', function () { pick(k) }); c.addEventListener('focusin', function () { pick(k) }) });
+    hots.forEach(function (h) { var k = h.getAttribute('data-k'); h.addEventListener('pointerenter', function () { pick(k) }) });
+    el.addEventListener('pointerleave', function () { pick(null) });
+    el.addEventListener('focusout', function (ev) { if (!el.contains(ev.relatedTarget)) pick(null) });
   });
 });
 /* DocList: the binder is filled. The plate unrolls, then the folders slide down into it one by one in index order,
@@ -1633,6 +1689,35 @@ AQmotion.fx('ExplodedService', function (root, m) {
       if (n) tl.call(function () { m.scramble(n, 0) }, null, at);
     });
     m.on(el, function () { tl.play() }, narrow ? 'top 80%' : 'top 65%');
+
+    // Ported from Subframe Motion "Exploded camera" (exploded-camera), MIT, (c) 2026 Subframe
+    // A press assembles the pump and takes it apart again (every part slides along the shaft line, 600 ms,
+    // cubic-bezier(.22,1,.36,1), the library's values; a keyboard press with no pointer moves it instantly, like the
+    // example's detail === 0 branch). Pointing at a promise brings its part forward: the other parts step back.
+    var wrap = el.querySelector('.aq-exploded-service__fig');
+    var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'aq-btn aq-btn--secondary aq-exploded-service__toggle';
+    btn.setAttribute('aria-pressed', 'false'); btn.innerHTML = '<span class="aq-exploded-service__tl">Assemble the pump</span>';
+    el.insertBefore(btn, wrap.nextSibling);
+    gsap.set(btn, { autoAlpha: 0 }); tl.to(btn, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, te + 1.2);
+    var whole = false, ease = window.CustomEase ? (CustomEase.get('aq-explode') || CustomEase.create('aq-explode', 'M0,0 C0.22,1 0.36,1 1,1')) : 'power3.out';
+    var notes = qa('[data-lead]', svg).concat(pins, axis ? [axis] : []);
+    btn.addEventListener('click', function (ev) {
+      if (tl.isActive()) tl.progress(1);
+      whole = !whole; btn.setAttribute('aria-pressed', String(whole));
+      btn.firstChild.textContent = whole ? 'Take the pump apart' : 'Assemble the pump';
+      el.classList.toggle('is-whole', whole);
+      var d = ev.detail === 0 ? 0 : 0.6;
+      pieces.forEach(function (p, i) { m.tw(gsap.to(p, { x: whole ? off[i].x : 0, y: whole ? off[i].y : 0, duration: d, ease: ease, delay: whole ? 0 : i * 0.03, overwrite: true })) });
+      m.tw(gsap.to(notes, { autoAlpha: whole ? 0 : 1, duration: d * (whole ? 0.5 : 1), delay: whole ? 0 : d * 0.6, overwrite: true }));
+    });
+    calls.forEach(function (c) {
+      var part = svg.querySelector('[data-iso-id="' + c.getAttribute('data-part') + '"]'), piece = part && part.closest('.aq-exploded-service__piece');
+      if (!piece) return;
+      function on() { if (whole || tl.isActive()) return; m.tw(gsap.to(pieces.filter(function (p) { return p !== piece }), { opacity: 0.35, duration: 0.2, overwrite: 'auto' })) }
+      function off() { m.tw(gsap.to(pieces, { opacity: 1, duration: 0.13, overwrite: 'auto' })) }
+      c.addEventListener('pointerenter', on); c.addEventListener('pointerleave', off);
+      c.addEventListener('focusin', on); c.addEventListener('focusout', off);
+    });
   });
 });
 /* FAQ: on scroll-in the dial's outline numerals roll up to the number of questions while the rows wipe in from the
@@ -2570,7 +2655,38 @@ AQmotion.fx('HoldTimeline', function (root, m) {
         if (svg) tl.set(svg, { clearProps: 'clipPath' }, t + 0.01);
         if (drop) tl.set(drop, { clearProps: 'transform,opacity,visibility' }, t + 0.01);
         if (rail) tl.fromTo(rail, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, clearProps: 'opacity,visibility' }, 0);
+        tl.call(function () { ready = true }, null, t + 0.05);
       }, 'top 72%');
+
+      // Ported from Subframe Motion "Cue scrubber" (cue-scrubber), MIT, (c) 2026 Subframe
+      // The stages are chapters the visitor can seek: pointing at (or focusing into) a stage sends the water back down
+      // or up the line, node by node, to that stage (each leg 120 ms, cubic-bezier(.2,.8,.2,1)); the water line beyond it
+      // empties and the stages still to come step back, so the reader sees how much of the project lies ahead of that
+      // hold point. Leaving the timeline lets the water run on to the top again.
+      var ready = false, at = P.length + 1, legs = null, cueEase = window.CustomEase ? (CustomEase.get('aq-ledger') || CustomEase.create('aq-ledger', 'M0,0 C0.2,0.8 0.2,1 1,1')) : 'power2.out';
+      function seek(k) {   // k: waypoint index, 1..n the stages, n+1 the rest at the top right
+        if (!ready || !drop || !run) return;
+        var br = band.getBoundingClientRect(), W = br.width, Hh = br.height;
+        var pts = [[0, Hh]].concat(P.map(function (p) { var r = p.node.getBoundingClientRect(); return [r.left + r.width / 2 - br.left, r.top + r.height / 2 - br.top] })).concat([[W, 0]]);
+        if (legs) legs.kill();
+        legs = m.tw(gsap.timeline());
+        var step = k > at ? 1 : -1, t = 0;
+        for (var j = at + step; step > 0 ? j <= k : j >= k; j += step) {
+          var b = pts[j];
+          legs.to(drop, { x: b[0] - W, y: b[1], duration: 0.12, ease: j === k ? cueEase : 'none' }, t);
+          legs.to(run, { clipPath: 'inset(-5% ' + Math.max(0, 100 - b[0] / W * 100).toFixed(2) + '% -5% 0%)', duration: 0.12, ease: 'none' }, t);
+          t += 0.12;
+        }
+        if (k === P.length + 1) legs.set(run, { clearProps: 'clipPath' });
+        at = k;
+        sts.forEach(function (s, i) { s.classList.toggle('is-ahead', k <= P.length && i + 1 > k); s.classList.toggle('is-cue', i + 1 === k) });
+      }
+      sts.forEach(function (s, i) {
+        s.addEventListener('pointerenter', function () { seek(i + 1) });
+        s.addEventListener('focusin', function () { seek(i + 1) });
+      });
+      fig.addEventListener('pointerleave', function () { seek(P.length + 1) });
+      fig.addEventListener('focusout', function (ev) { if (!fig.contains(ev.relatedTarget)) seek(P.length + 1) });
       return;
     }
     P.forEach(function (p, i) {
@@ -2579,6 +2695,28 @@ AQmotion.fx('HoldTimeline', function (root, m) {
     });
   });
 });
+/* Ported from Subframe Motion "Departure board" (departure-board), MIT, (c) 2026 Subframe
+   The evidence (a standard code) arrives like a split-flap board: each character is a cell whose leaf, showing a
+   blank glyph on its front and the real character on its back, turns over the cell's centre line (rotateX 0 to
+   -180 deg, 440 ms, cubic-bezier(.4,0,.2,1), 45 ms between cells, the library's values). Pointing at or focusing a
+   destination turns its board over once more, faster (visitor-driven). The real text stays in the DOM for readers
+   (a visually hidden copy while the cells turn, plain text again when they rest); placeholders never flip. */
+function aqFlapEase() { if (window.CustomEase && !CustomEase.get('aq-flap')) CustomEase.create('aq-flap', 'M0,0 C0.4,0 0.2,1 1,1'); return window.CustomEase ? 'aq-flap' : 'power2.inOut' }
+function flap(ev, dur, step) {
+  if (!ev || ev.children.length && !ev.querySelector('.aq-flap')) return;
+  if (ev._flap) { ev._flap.progress(1) }
+  var txt = ev.getAttribute('data-flap') || ev.textContent; ev.setAttribute('data-flap', txt);
+  var G = '0123456789<>-·', h = '<span class="aq-industry-feed__sr">' + txt.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span>';
+  [].forEach.call(txt, function (c) {
+    var ch = c === ' ' ? ' ' : c.replace(/&/g, '&amp;').replace(/</g, '&lt;'), g = c === ' ' ? ' ' : G[(Math.random() * G.length) | 0].replace(/</g, '&lt;');
+    h += '<span class="aq-flap" aria-hidden="true"><span class="aq-flap__s">' + ch + '</span><span class="aq-flap__leaf"><span class="aq-flap__f">' + g + '</span><span class="aq-flap__b">' + ch + '</span></span><span class="aq-flap__seam"></span></span>';
+  });
+  ev.innerHTML = h;
+  var leaves = [].slice.call(ev.querySelectorAll('.aq-flap__leaf'));
+  ev._flap = gsap.timeline({ onComplete: function () { ev.textContent = txt; ev._flap = null } })
+    .fromTo(leaves, { rotationX: 0 }, { rotationX: -180, duration: dur, ease: aqFlapEase(), stagger: step });
+  return ev._flap;
+}
 /* IndustryFeed: the water arrives from the page edge, runs the trunk with a droplet at its head, and tees down into
    each destination in turn as it passes: the drop fills, the node seats with a ring, the evidence decodes like a
    readout and the name and line rise under it. Phones: the line fills down the left edge, each branch lighting its
@@ -2597,12 +2735,17 @@ AQmotion.fx('IndustryFeed', function (root, m) {
         .fromTo(node, { scale: 0 }, { scale: 1, duration: 0.5, ease: 'back.out(2.4)', clearProps: 'transform' }, at + 0.4)
         .fromTo(node, { boxShadow: '0 0 0 14px ' + FLOW }, { boxShadow: '0 0 0 0px rgba(0,0,0,0)', duration: 0.6, ease: 'power2.out', clearProps: 'boxShadow' }, at + 0.45)
         .from(rest, { y: 18, autoAlpha: 0, duration: 0.6, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, at + 0.3);
-      if (ev && window.ScrambleTextPlugin && !ev.children.length) {
-        var txt = ev.textContent; if (!ev.getAttribute('aria-label')) ev.setAttribute('aria-label', txt);
-        tl.set(ev, { autoAlpha: 1 }, at + 0.4).to(ev, { duration: 0.8, scrambleText: { text: txt, chars: '0123456789<>-·', speed: 0.8, revealDelay: 0.15 }, ease: 'none' }, at + 0.4);
+      if (ev && !ev.children.length) {
         gsap.set(ev, { autoAlpha: 0 });
+        tl.set(ev, { autoAlpha: 1 }, at + 0.4).add(function () { flap(ev, 0.44, 0.045) }, at + 0.4);
       } else if (ev) tl.from(ev, { autoAlpha: 0, y: 12, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at + 0.4);
     }
+    // Pointing at or focusing a destination turns its board over again (after the entrance has finished)
+    items.forEach(function (it) {
+      var card = it.querySelector('.aq-industry-feed__card'), ev = it.querySelector('.aq-industry-feed__ev');
+      function go() { if (!tl.isActive() && tl.progress() === 1) flap(ev, 0.3, 0.03) }
+      if (card && ev) { card.addEventListener('pointerenter', go); card.addEventListener('focus', go) }
+    });
     if (m.narrow() || !trunk) {
       items.forEach(function (it, i) { arrive(it, 0.1 + i * 0.5) });
       m.on(el, function () { tl.play() }, 'top 75%');
@@ -3066,6 +3209,13 @@ AQmotion.fx('LimitStack', function (root, m) {
         .from(r.querySelector('.aq-limit-stack__p'), { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, t);
       var ix = r.querySelector('.aq-index'); if (ix) tl.call(function () { m.scramble(ix, 0) }, null, t);
       if (v.length) tl.from(v, { yPercent: 70, autoAlpha: 0, duration: 0.6, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, t + 0.08);
+      var num = r.querySelector('.aq-limit-stack__n');
+      if (num && !num.querySelector('.aq-ph')) {
+        // the limit rolls up on the core's odometer (m.count, ported from Subframe Motion "Sliding number"); pointing at
+        // a row rolls its limit once more (visitor-driven)
+        tl.call(function (num) { m.count(num, { now: true, duration: 1.3 }) }, [num], t + 0.08);
+        r.addEventListener('pointerenter', function () { if (!tl.isActive() && !num.querySelector('[aria-hidden]')) m.count(num, { now: true, duration: 0.8 }) });
+      }
       if (rule) tl.from(rule, { scaleX: 0, duration: 0.7, ease: 'power2.inOut', clearProps: 'transform' }, t + 0.2);
       tl.from(qa('.aq-limit-stack__mt, .aq-limit-stack__lvl', r), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, t + 0.5);
     });
@@ -3229,7 +3379,35 @@ AQmotion.fx('MacroLeaders', function (root, m) {
       if (mk) tl.call(function () { m.scramble(mk, 0) }, null, at + 0.1);
     });
     m.on(el, function () { tl.play() }, 'top 78%');
-  });
+  
+    // Ported from Subframe Motion "Chart crosshair" (chart-crosshair), MIT, (c) 2026 Subframe
+    // Reading a dense grid: a crosshair snaps to the cell under the pointer (a row rule along that industry and a
+    // column rule down that attribute, 200 ms power3 like the library's snap), the column's head lights and the cell is
+    // marked, so "medical devices x inspector" reads at a glance while the whole table stays in view. Keyboard focus on
+    // a row's link snaps the row rule. Mouse and focus only; nothing under reduced motion.
+    var table = el.querySelector('.aq-macro-leaders__table');
+    if (table && !m.narrow()) {
+      var hx = document.createElement('span'), vx = document.createElement('span');
+      hx.className = 'aq-macro-leaders__xh'; vx.className = 'aq-macro-leaders__xv'; hx.setAttribute('aria-hidden', 'true'); vx.setAttribute('aria-hidden', 'true');
+      el.appendChild(hx); el.appendChild(vx);
+      var heads = [].slice.call(table.querySelectorAll('thead th')), qy = gsap.quickTo(hx, 'y', { duration: 0.2, ease: 'power3.out' }), qx = gsap.quickTo(vx, 'x', { duration: 0.2, ease: 'power3.out' }), live = false, cell = null;
+      function snap(c, col) {
+        var row = c.closest('tr'), er = el.getBoundingClientRect(), tr = table.getBoundingClientRect(), rr = row.getBoundingClientRect(), cr = c.getBoundingClientRect();
+        gsap.set(hx, { left: tr.left - er.left, width: tr.width }); gsap.set(vx, { top: tr.top - er.top, height: tr.height });
+        var y = rr.bottom - er.top - 1, x = cr.left - er.left;
+        if (!live) { gsap.set(hx, { y: y, display: 'block' }); gsap.set(vx, { x: x, display: 'block' }); m.tw(gsap.to([hx].concat(col ? [vx] : []), { autoAlpha: 1, duration: 0.15, overwrite: 'auto' })); live = true } else { qy(y); qx(x) }
+        if (!col) m.tw(gsap.to(vx, { autoAlpha: 0, duration: 0.1, overwrite: 'auto' })); else if (gsap.getProperty(vx, 'opacity') < 1) m.tw(gsap.to(vx, { autoAlpha: 1, duration: 0.15, overwrite: 'auto' }));
+        var ci = [].indexOf.call(row.children, c);
+        heads.forEach(function (h, j) { h.classList.toggle('is-col', col && j === ci) });
+        if (cell) cell.classList.remove('is-cell'); cell = col ? c : null; if (cell) cell.classList.add('is-cell');
+      }
+      function clear() { live = false; m.tw(gsap.to([hx, vx], { autoAlpha: 0, duration: 0.13, overwrite: 'auto', onComplete: function () { if (!live) gsap.set([hx, vx], { display: 'none' }) } })); heads.forEach(function (h) { h.classList.remove('is-col') }); if (cell) cell.classList.remove('is-cell'); cell = null }
+      table.addEventListener('pointerover', function (ev) { var c = ev.target.closest && ev.target.closest('tbody th, tbody td'); if (c && ev.pointerType === 'mouse') snap(c, true) });
+      table.addEventListener('pointerleave', clear);
+      table.addEventListener('focusin', function (ev) { var c = ev.target.closest && ev.target.closest('tbody th, tbody td'); if (c) snap(c, false) });
+      table.addEventListener('focusout', function (ev) { if (!table.contains(ev.relatedTarget)) clear() });
+    }
+});
 });
 /* ManifoldRouter: the manifold is laid down the left, each branch teeing off as its situation rises beside it; then
    the water enters at the top, runs down to the open situation and along its branch, and the route sheet unrolls from
@@ -3302,6 +3480,35 @@ AQmotion.fx('MarketCallouts', function (root, m) {
       if (part && A) tl.call(function () { A.light(svg, part, false) }, null, at + 1.1);
     });
     m.on(el, function () { tl.play() }, 'top 75%');
+
+    // Ported from Subframe Motion "Guided inspection" (guided-inspection), MIT, (c) 2026 Subframe
+    // Reading a market's callout puts the machine under an inspection spotlight: the drawing dims round the part that
+    // callout is about and the lit window glides from part to part as the reader moves between callouts (550 ms,
+    // cubic-bezier(.22,.75,.22,1), the library's camera values; no zoom, so the leaders stay on their parts).
+    // Pointer or keyboard focus; leaving the callouts lifts the spotlight. Wide screens only.
+    var plane = q('.aq-market-callouts__plane'); if (!plane || narrow || !svg || !A) return;
+    var dim = document.createElement('span'); dim.className = 'aq-market-callouts__dim'; dim.setAttribute('aria-hidden', 'true');
+    dim.innerHTML = '<span class="aq-market-callouts__spot"></span>'; plane.appendChild(dim);
+    var spot = dim.firstChild, gEase = window.CustomEase ? (CustomEase.get('aq-inspect') || CustomEase.create('aq-inspect', 'M0,0 C0.22,0.75 0.22,1 1,1')) : 'power3.out', on = false, cur = null;
+    function look(id) {
+      if (id === cur) return; cur = id;
+      var mk = id != null && q('.aq-market-callouts__mk[data-c="' + id + '"]'), part = mk && mk.getAttribute('data-part');
+      var els = part ? qa('[data-iso-id="' + part + '"]', svg) : [];
+      if (!els.length || tl.isActive()) { on = false; m.tw(gsap.to(dim, { autoAlpha: 0, duration: 0.2, overwrite: 'auto', onComplete: function () { if (!on) gsap.set(dim, { display: 'none' }) } })); return }
+      var pr = plane.getBoundingClientRect(), r = null;
+      els.concat(mk ? [mk] : []).forEach(function (e) { var b = e.getBoundingClientRect(); if (!b.width && !b.height) return; r = r ? { l: Math.min(r.l, b.left), t: Math.min(r.t, b.top), r: Math.max(r.r, b.right), b: Math.max(r.b, b.bottom) } : { l: b.left, t: b.top, r: b.right, b: b.bottom } });
+      if (!r) return;
+      var pad = 14, box = { left: r.l - pr.left - pad, top: r.t - pr.top - pad, width: r.r - r.l + 2 * pad, height: r.b - r.t + 2 * pad };
+      if (!on) { gsap.set(spot, box); gsap.set(dim, { display: 'block' }); m.tw(gsap.to(dim, { autoAlpha: 1, duration: 0.3, overwrite: 'auto' })); on = true }
+      else m.tw(gsap.to(spot, Object.assign({ duration: 0.55, ease: gEase, overwrite: 'auto' }, box)));
+    }
+    qa('.aq-market-callouts__c').forEach(function (c) {
+      var id = c.getAttribute('data-c');
+      c.addEventListener('pointerenter', function () { look(id) }); c.addEventListener('focusin', function () { look(id) });
+    });
+    var list = q('.aq-market-callouts__list') || el;
+    qa('.aq-market-callouts__c').forEach(function (c) { c.addEventListener('pointerleave', function (ev) { if (!(ev.relatedTarget && ev.relatedTarget.closest && ev.relatedTarget.closest('.aq-market-callouts__c'))) look(null) }) });
+    el.addEventListener('focusout', function (ev) { if (!el.contains(ev.relatedTarget)) look(null) });
   });
 });
 /* Hover or focus within a callout: light its part, marker and leader */
@@ -3902,6 +4109,31 @@ AQmotion.fx('PidRoutes', function (root, m) {
     if (cap) tl.from(cap, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, end - 0.4);
     tl.call(function () { lit.forEach(function (n) { n.classList.remove('is-lit') }) }, null, end + 0.3);
     m.on(el, function () { tl.play(); heads.forEach(function (h, i) { var s = h.querySelector('span'); if (s) m.scramble(s, 0.1 * i) }) }, 'top 80%');
+
+    // Animated beam (ported from Subframe Motion "Animated beam", the travelling gradient head with its fading tail, see
+    // SystemRun's AQbeam): while the visitor points at or focuses a route, the water keeps running it, situation to
+    // system to where to start, through both valves (each run 0.9 s, the library's 0.16 1 0.3 1 ease, the second run
+    // following the first as the library staggers its paths). Wide screens; phones keep the lit route.
+    if (m.narrow()) return;
+    var bEase = window.CustomEase ? (CustomEase.get('aq-beam') || CustomEase.create('aq-beam', 'M0,0 C0.16,1 0.3,1 1,1')) : 'expo.out', loop = null, cur = null;
+    function beams(i) {
+      return qa('.aq-pid-routes__run[data-r="' + i + '"]').map(function (r) {
+        var b = r.querySelector('.aq-pid-routes__beam');
+        if (!b) { b = document.createElement('span'); b.className = 'aq-pid-routes__beam'; b.innerHTML = '<i></i>'; r.appendChild(b) }
+        return b.firstChild;
+      });
+    }
+    function run(i) {
+      if (i === cur) return; cur = i;
+      if (loop) { loop.kill(); loop = null } var old = qa('.aq-pid-routes__beam i'); if (old.length) gsap.set(old, { xPercent: -100 });
+      if (i == null || tl.isActive()) return;
+      var bs = beams(i); loop = m.tw(gsap.timeline({ repeat: -1, repeatDelay: 0.25 }));
+      bs.forEach(function (b, k) { loop.fromTo(b, { xPercent: -100 }, { xPercent: 250, duration: 0.9, ease: bEase }, k * 0.45) });
+    }
+    el.addEventListener('pointerover', function (ev) { var t = ev.target.closest && ev.target.closest('[data-r]'); run(t ? t.getAttribute('data-r') : null) });
+    el.addEventListener('pointerleave', function () { run(null) });
+    el.addEventListener('focusin', function (ev) { var t = ev.target.closest && ev.target.closest('[data-r]'); if (t) run(t.getAttribute('data-r')) });
+    el.addEventListener('focusout', function (ev) { if (!el.contains(ev.relatedTarget)) run(null) });
   });
 });
 /* PipeCollage: the poster is pasted up, then the text is hung on it. Each tile of the board slides in from the edge
@@ -4272,6 +4504,23 @@ AQmotion.fx('ProofFolders', function (root, m) {
       }
       if (label) tl.from(label, { clipPath: 'inset(0 0 0 100%)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, 1.1);
       m.on(row, function () { tl.play() }, 'top 88%');
+
+      // Ported from Subframe Motion "Archive folder" (archive-folder), MIT, (c) 2026 Subframe
+      // Pointing at (or focusing into) a file opens it for reading: the proof sheets come out of their skewed stack,
+      // straighten and spread a step apart, the front ones furthest (480 ms, cubic-bezier(.22,1,.36,1), the library's
+      // document values), and the typed slip lifts off the folder; leaving lets them settle back a third faster.
+      var sh = [].slice.call(row.querySelectorAll('.aq-proof-folders__sheet')), slip = row.querySelector('.aq-proof-folders__slip');
+      var aEase = window.CustomEase ? (CustomEase.get('aq-relief') || CustomEase.create('aq-relief', 'M0,0 C0.22,1 0.36,1 1,1')) : 'power3.out', open = false;
+      function file(on) {
+        if (on === open || (on && tl.isActive())) return; open = on;
+        if (!file.o) file.o = sh.map(function (x) { return { r: gsap.getProperty(x, 'rotation'), x: gsap.getProperty(x, 'x') } });
+        var o = file.o, mid = (sh.length - 1) / 2, d = on ? 0.48 : 0.32, clr = on ? '' : 'transform';
+        sh.forEach(function (x, j) { m.tw(gsap.to(x, { rotation: on ? (j - mid) * 0.6 : o[j].r, x: on ? o[j].x * 0.4 : o[j].x, y: on ? j * 6 : 0, duration: d, ease: aEase, delay: on ? j * 0.04 : 0, overwrite: 'auto', clearProps: clr })) });
+        if (slip) m.tw(gsap.to(slip, { y: on ? -6 : 0, duration: d, ease: aEase, overwrite: 'auto', clearProps: clr }));
+        row.classList.toggle('is-open', on);
+      }
+      row.addEventListener('pointerenter', function () { file(true) }); row.addEventListener('pointerleave', function () { file(false) });
+      row.addEventListener('focusin', function () { file(true) }); row.addEventListener('focusout', function (ev) { if (!row.contains(ev.relatedTarget)) file(false) });
     });
   });
 });
@@ -5377,7 +5626,22 @@ AQmotion.fx('StairRouter', function (root, m) {
           tl.set(drop, { clearProps: 'transform' }, dt + 0.05);
         }
         goAt = Date.now() + (t + 0.05) * 1000;
+        tl.call(function () { relief = true }, null, t + 0.1);
       }, 'top 75%');
+
+      // Ported from Subframe Motion "Relief board" (relief-board), MIT, (c) 2026 Subframe
+      // The flight answers the pointer like the library's elevation field: the card the visitor points at (or focuses)
+      // lifts furthest off its tread and its neighbours lift less with distance (height = lift x exp(-d^2 / 4.4), the
+      // library's falloff; 300 ms, cubic-bezier(.22,1,.36,1)), so the stair reads as one route the reader is on.
+      var relief = false, lift = parseFloat(getComputedStyle(fig).getPropertyValue('--space-3')) || 12;
+      var rEase = window.CustomEase ? (CustomEase.get('aq-relief') || CustomEase.create('aq-relief', 'M0,0 C0.22,1 0.36,1 1,1')) : 'power3.out';
+      function rise(k) {
+        if (!relief) return;
+        P.forEach(function (p, i) { var d = i - k; m.tw(gsap.to(p.card, { y: k < 0 ? 0 : -lift * Math.exp(-d * d / 4.4), duration: k < 0 ? 0.2 : 0.3, ease: rEase, overwrite: 'auto' })) });
+      }
+      steps.forEach(function (s, i) { s.addEventListener('pointerenter', function () { rise(i) }); s.addEventListener('focusin', function () { rise(i) }) });
+      flight.addEventListener('pointerleave', function () { rise(-1) });
+      flight.addEventListener('focusout', function (ev) { if (!flight.contains(ev.relatedTarget)) rise(-1) });
       // the end word strikes once the stair is up and the word is on screen, whichever comes later
       var goAt = 0;
       if (go) m.on(go, function () { var w = Math.max(0, (goAt - Date.now()) / 1000); strikeGo(m.tw(gsap.timeline({ delay: goAt ? w : 0.2 })), 0) }, 'top 92%');
@@ -5448,6 +5712,22 @@ AQmotion.fx('StandardWires', function (root, m) {
     }
     rows.forEach(function (r) { gsap.set(r, { autoAlpha: 0 }) });
     ScrollTrigger.batch(rows, { start: 'top 85%', once: true, onEnter: function (b) { b.forEach(function (r, j) { play(r, j * 0.25) }) } }).forEach(m.tw);
+
+    // Ported from Subframe Motion "Expandable ledger" (expandable-ledger), MIT, (c) 2026 Subframe
+    // Opening the fold expands the ledger in place: each new row opens from nothing (210 ms, cubic-bezier(.2,.8,.2,1),
+    // the library's values) and is then wired up like the rows above it, so the reader sees where the list grew.
+    var fb = el.querySelector('.aq-fold__btn');
+    if (fb) fb.addEventListener('click', function () {
+      setTimeout(function () {
+        var w = fb.closest('.aq-fold'); if (!w || !w.classList.contains('is-open')) return;
+        var ease = window.CustomEase ? (CustomEase.get('aq-ledger') || CustomEase.create('aq-ledger', 'M0,0 C0.2,0.8 0.2,1 1,1')) : 'power2.out';
+        qa('.aq-standard-wires__row.aq-fold-x').forEach(function (r, j) {
+          if (r._aqOpen) return; r._aqOpen = 1;
+          m.tw(gsap.from(r, { height: 0, paddingTop: 0, paddingBottom: 0, overflow: 'hidden', duration: 0.21, ease: ease, delay: j * 0.07, clearProps: 'height,paddingTop,paddingBottom,overflow' }));
+          play(r, 0.12 + j * 0.07);
+        });
+      }, 0);
+    });
   });
 });
 /* StandardsGrid: cards land in reading order; as each lands, the connector from the card before it (across the row)
@@ -5538,11 +5818,24 @@ AQmotion.fx('StandardsOrbit', function (root, m) {
     var it = svg && window.AQiso && AQiso.timeline(svg, m, { draw: 0.9, pipe: 0.6, flow: 1, keep: false });
     if (it) { it.paused(false); tl.add(it, 0.3) }
     var zones = qa('.aq-standards-orbit__zone'), t0 = narrow ? 0.4 : 1.5;
+    var ring = orb && orb.querySelector('.aq-standards-orbit__ring:not(.aq-standards-orbit__ring--in):not(.aq-standards-orbit__ring--far)'),
+      E = ring && { cx: +ring.getAttribute('cx'), cy: +ring.getAttribute('cy'), rx: +ring.getAttribute('rx'), ry: +ring.getAttribute('ry') };
     zones.forEach(function (z, i) {
       var k = z.getAttribute('data-so'), at = t0 + i * (narrow ? 0.12 : 0.42), side = z.classList.contains('is-l') ? 1 : -1,
         node = el.querySelector('.aq-standards-orbit__node[data-so="' + k + '"]'), arc = el.querySelector('.aq-standards-orbit__arc[data-so="' + k + '"]'),
         end = el.querySelector('.aq-standards-orbit__end[data-so="' + k + '"]'), part = z.getAttribute('data-part');
-      if (node && !narrow) tl.from(node, { scale: 0, transformOrigin: '50% 50%', duration: 0.45, ease: 'back.out(2.5)', clearProps: 'transform' }, at);
+      if (node && !narrow && ring) {
+        // Ported from Subframe Motion "Orbiting circles" (orbiting-circles), MIT, (c) 2026 Subframe: each zone's node
+        // arrives by riding the outer orbit a quarter turn into its slot (the library's circular path, kept upright,
+        // here once and settling instead of looping), so the standards visibly circle the one plant they govern
+        var dot = node.querySelector('.aq-standards-orbit__dot'), nx = +dot.getAttribute('cx'), ny = +dot.getAttribute('cy');
+        var a1 = Math.atan2((ny - E.cy) / E.ry, (nx - E.cx) / E.rx), o = { a: a1 - Math.PI / 2 };
+        var put = function (node, o, nx, ny) { gsap.set(node, { x: E.cx + E.rx * Math.cos(o.a) - nx, y: E.cy + E.ry * Math.sin(o.a) - ny }) };
+        put(node, o, nx, ny); gsap.set(node, { autoAlpha: 0 });
+        tl.to(node, { autoAlpha: 1, duration: 0.2 }, at - 0.9)
+          .to(o, { a: a1, duration: 1.1, ease: 'power2.out', onUpdate: put, onUpdateParams: [node, o, nx, ny] }, at - 0.9)
+          .set(node, { clearProps: 'transform,opacity,visibility' }, at + 0.2);
+      } else if (node && !narrow) tl.from(node, { scale: 0, transformOrigin: '50% 50%', duration: 0.45, ease: 'back.out(2.5)', clearProps: 'transform' }, at);
       if (arc && !narrow) {
         if (D) tl.fromTo(arc, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.7, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.1);
         else tl.from(arc, { autoAlpha: 0, duration: 0.5, clearProps: 'opacity,visibility' }, at + 0.1);
@@ -5554,6 +5847,26 @@ AQmotion.fx('StandardsOrbit', function (root, m) {
         .from(qa('.aq-standards-orbit__codes li', z), { x: narrow ? -10 : 14 * side, autoAlpha: 0, duration: 0.4, stagger: 0.05, clearProps: 'transform,opacity,visibility' }, at + 0.35);
     });
     m.on(el, function () { tl.play() }, narrow ? 'top 85%' : 'top 70%');
+
+    // Animated beam (AQbeam, see SystemRun): pointing at or focusing a zone sends a signal down its arc from the node
+    // on the orbit into the part that zone governs, for as long as the visitor stays
+    if (narrow || !orb || !window.AQbeam) return;
+    var bm = {};
+    zones.forEach(function (z) {
+      var k = z.getAttribute('data-so'), arc = orb.querySelector('.aq-standards-orbit__arc[data-so="' + k + '"]'); if (!arc) return;
+      function on() {
+        if (tl.isActive()) return;
+        if (!(k in bm)) {   // the beam runs from the node to the part: along whichever axis the arc covers most, in that direction
+          var nd = orb.querySelector('.aq-standards-orbit__node[data-so="' + k + '"] .aq-standards-orbit__dot'), e2 = orb.querySelector('.aq-standards-orbit__end[data-so="' + k + '"]');
+          var dx = e2 ? +e2.getAttribute('cx') - +nd.getAttribute('cx') : 1, dy = e2 ? +e2.getAttribute('cy') - +nd.getAttribute('cy') : 0, ax = Math.abs(dy) > Math.abs(dx) ? 'y' : 'x';
+          bm[k] = AQbeam(orb, [arc], { dur: 1.4, len: 0.5, dir: ax, rev: (ax === 'y' ? dy : dx) < 0 });
+        }
+        if (bm[k]) bm[k].on();
+      }
+      function off() { if (bm[k]) bm[k].off() }
+      z.addEventListener('pointerenter', on); z.addEventListener('pointerleave', off);
+      z.addEventListener('focusin', on); z.addEventListener('focusout', function (ev) { if (!z.contains(ev.relatedTarget)) off() });
+    });
   });
 });
 /* StrataRun: the terrace is laid, then the water runs down it. The labels rise in a row and their leaders drop to the
@@ -5600,6 +5913,23 @@ AQmotion.fx('StrataRun', function (root, m) {
       onStage: function (els, id) { on(id, true); gsap.delayedCall(0.7, function () { on(id, false) }) } });
     if (iso) { iso.paused(false); tl.add(iso, 0.75) }
     m.on(el, function () { tl.play() }, 'top 75%');
+
+    // Animated beam (AQbeam, ported from Subframe Motion "Animated beam", see SystemRun): pointing at or focusing a
+    // stage's label, or its slab in the drawing, runs the water down that stage's pipes for as long as the visitor stays
+    var flows = qa('.aq-iso__flow', svg).filter(function (f) { return !f.classList.contains('aq-iso__flow--drop') }), beams = {}, hot = null;
+    function to(f) { var h = f.closest('[data-iso-to]'), p = f.closest('.aq-iso__part[data-iso-id]'); return f.getAttribute('data-iso-to') || (h && h.getAttribute('data-iso-to')) || (p && p.getAttribute('data-iso-id')) }
+    function heat(id) {
+      if (id === hot) return;
+      if (hot && beams[hot]) beams[hot].off();
+      hot = id; if (!id || tl.isActive()) return;
+      if (!(id in beams)) beams[id] = window.AQbeam ? AQbeam(svg, flows.filter(function (f) { return to(f) === id }), { dur: 2, len: 0.6, stagger: 0.15 }) : null;
+      if (beams[id]) beams[id].on();
+    }
+    stages.forEach(function (s) {
+      var id = s.getAttribute('data-stage');
+      s.addEventListener('pointerenter', function () { heat(id) }); s.addEventListener('pointerleave', function () { heat(null) });
+      s.addEventListener('focusin', function () { heat(id) }); s.addEventListener('focusout', function () { heat(null) });
+    });
   });
 });
 /* StrikeGaps: row by row as they scroll in, the gap is set, then struck (the rule darkens through it),
@@ -5643,6 +5973,67 @@ AQmotion.fx('SuiteLoop', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
+/* Ported from Subframe Motion "Animated beam" (animated-beam), MIT, (c) 2026 Subframe
+   AQbeam(svg, paths, opts): a moving highlight traces the given SVG paths (the water lines): the library's travelling
+   four-stop gradient (userSpaceOnUse, a hard bright head, a tail fading out) over a copy of each path. Kept from the
+   example: the gradient geometry, its 0.16 1 0.3 1 ease, the stagger between paths, no beam under reduced motion (the
+   drawing is complete without it). Ours: GSAP drives the gradient (not SMIL), tokens colour it (--beam, --beam-tail,
+   else --flow), and it runs only while the visitor points at or focuses what it explains (visitor-driven feedback).
+   Shared by SystemRun, BatteryLimit and PidRoutes. opts: dur (s per pass, 1.6), len (head-to-tail share of the span,
+   0.3), stagger (s between paths, 0), gap (s rest between passes, 0.2), dir ('x' | 'y': the axis the water travels),
+   rev (true: it travels towards the lower coordinate),
+   cls (extra class on the copies). Returns { on(), off(), once() -> timeline, copies } or null. */
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches, uid = 0, NS = 'http://www.w3.org/2000/svg';
+  function ease() { if (window.CustomEase && !CustomEase.get('aq-beam')) CustomEase.create('aq-beam', 'M0,0 C0.16,1 0.3,1 1,1'); return window.CustomEase ? 'aq-beam' : 'expo.out' }
+  window.AQbeam = function (svg, paths, o) {
+    o = o || {}; paths = (paths || []).filter(function (p) { try { return p.getTotalLength() > 4 } catch (x) { return false } });
+    if (reduce || !window.gsap || !svg || !paths.length) return null;
+    var defs = svg.querySelector('defs') || svg.insertBefore(document.createElementNS(NS, 'defs'), svg.firstChild);
+    var y = o.dir === 'y', box = null;
+    paths.forEach(function (p) { var b = p.getBBox(); box = box ? { x0: Math.min(box.x0, b.x), y0: Math.min(box.y0, b.y), x1: Math.max(box.x1, b.x + b.width), y1: Math.max(box.y1, b.y + b.height) } : { x0: b.x, y0: b.y, x1: b.x + b.width, y1: b.y + b.height } });
+    var a = y ? box.y0 : box.x0, span = Math.max(1, y ? box.y1 - box.y0 : box.x1 - box.x0), len = (o.len || 0.3) * span;
+    var copies = paths.map(function (p, i) {
+      var id = 'aq-beam-' + (++uid), g = document.createElementNS(NS, 'linearGradient');
+      g.setAttribute('id', id); g.setAttribute('gradientUnits', 'userSpaceOnUse');
+      [[0, 0], [0, 1], [0.325, 1], [1, 0]].forEach(function (s, k) { var st = document.createElementNS(NS, 'stop'); st.setAttribute('offset', s[0]); st.setAttribute('class', 'aq-beam__stop aq-beam__stop--' + k); g.appendChild(st) });
+      defs.appendChild(g);
+      var c = p.cloneNode(false); c.removeAttribute('style'); c.removeAttribute('data-iso-to'); c.removeAttribute('id'); c.removeAttribute('vector-effect');   // a non-scaling stroke would map the gradient in screen space
+      c.setAttribute('class', 'aq-beam' + (o.cls ? ' ' + o.cls : '')); c.setAttribute('aria-hidden', 'true');
+      c.setAttribute('stroke', 'url(#' + id + ')'); c.setAttribute('fill', 'none'); c.style.opacity = 0; c.style.display = 'none';   // out of the page until used
+      p.parentNode.insertBefore(c, p.nextSibling);
+      return { c: c, g: g, k: { p: 0 }, i: i };
+    });
+    // the head (offset 0) leads at h, the tail fades out behind it at t; outside them the pad stops are transparent
+    function place(b) {
+      var t = o.rev ? a + span + len - b.k.p * (span + len) : a - len + b.k.p * (span + len), h = o.rev ? t - len : t + len;
+      if (y) { b.g.setAttribute('x1', 0); b.g.setAttribute('x2', 0); b.g.setAttribute('y1', h); b.g.setAttribute('y2', t) }
+      else { b.g.setAttribute('y1', 0); b.g.setAttribute('y2', 0); b.g.setAttribute('x1', h); b.g.setAttribute('x2', t) }
+    }
+    copies.forEach(place);
+    var loops = [], els = copies.map(function (b) { return b.c });
+    return {
+      on: function () {
+        if (loops.length) return;
+        gsap.set(els, { display: 'inline' }); gsap.to(els, { opacity: 1, duration: 0.15, overwrite: true });
+        loops = copies.map(function (b) {
+          b.k.p = 0; place(b);
+          return gsap.to(b.k, { p: 1, duration: o.dur || 1.6, ease: ease(), delay: b.i * (o.stagger || 0), repeat: -1, repeatDelay: o.gap == null ? 0.2 : o.gap, onUpdate: function () { place(b) } });
+        });
+      },
+      off: function () {
+        loops.forEach(function (t) { t.kill() }); loops = [];
+        gsap.to(els, { opacity: 0, duration: 0.1, overwrite: true, onComplete: function () { gsap.set(els, { display: 'none' }) } });
+      },
+      once: function (d) {
+        var tl = gsap.timeline();
+        copies.forEach(function (b) { var at = b.i * (o.stagger || 0); b.k.p = 0; place(b); tl.set(b.c, { opacity: 1, display: 'inline' }, at).to(b.k, { p: 1, duration: d || o.dur || 1.6, ease: ease(), onUpdate: function () { place(b) } }, at).set(b.c, { opacity: 0, display: 'none' }) });
+        return tl;
+      },
+      copies: els
+    };
+  };
+})();
 /* SystemRun: the package builds as a drawing, then the water runs the line once.
    Desktop: the sheet fades up, the brackets drop in over each system, the equipment draws back to front and the pipes
    follow (IsoKit choreography); then the water enters at "Drinking water", a droplet riding its head, and each system
@@ -5684,6 +6075,42 @@ AQmotion.fx('SystemRun', function (root, m) {
     if (endIn) tl.from(endIn, { autoAlpha: 0, x: -12, duration: 0.4, clearProps: 'transform,opacity,visibility' }, 'flow-=0.3');
     if (endOut) tl.from(endOut, { autoAlpha: 0, x: -12, duration: 0.4, clearProps: 'transform,opacity,visibility' }, 'end-=0.2');
     m.on(el, function () { tl.play() }, 'top 70%');
+
+    // Pointing at a system (its column, or its equipment in the drawing) sends the water through it: an animated beam
+    // runs that system's lines for as long as the visitor stays. Moving across the drawing hands the beam from system
+    // to system, so the reader can follow the package left to right; the column under it lights too.
+    var fig = el.querySelector('.aq-system-run__fig'), beams = {}, hot = null;
+    var flows = qa('.aq-iso__flow', svg).filter(function (f) { return !f.classList.contains('aq-iso__flow--drop') });
+    function to(f) { var h = f.closest('[data-iso-to]'); return f.getAttribute('data-iso-to') || (h && h.getAttribute('data-iso-to')) }
+    function beam(id) {
+      if (!(id in beams)) beams[id] = window.AQbeam ? AQbeam(svg, flows.filter(function (f) { return to(f) === id }), { dur: 2.2, len: 0.5, stagger: 0.2 }) : null;
+      return beams[id];
+    }
+    var pending;
+    tl.eventCallback('onComplete', function () { if (pending !== undefined) heat(pending) });
+    function heat(id) {
+      if (tl.isActive() || !tl.progress()) { pending = id; if (tl.isActive()) return }
+      if (id === hot) return;
+      if (hot) {
+        var b0 = beam(hot), o0 = el.querySelector('.aq-system-run__bracket[data-stage="' + hot + '"]'), c0 = stageOf(hot);
+        if (b0) b0.off(); AQiso.light(svg, hot, false); if (o0) o0.classList.remove('is-on'); if (c0) c0.classList.remove('is-hot');
+      }
+      hot = id; if (!id) return;
+      var b = beam(id), br = el.querySelector('.aq-system-run__bracket[data-stage="' + id + '"]'), c = stageOf(id);
+      if (b) b.on(); AQiso.light(svg, id, true); if (br) br.classList.add('is-on'); if (c) c.classList.add('is-hot');
+    }
+    stages.forEach(function (s) {
+      var id = s.getAttribute('data-stage');
+      s.addEventListener('pointerenter', function () { heat(id) }); s.addEventListener('pointerleave', function () { heat(null) });
+      s.addEventListener('focus', function () { heat(id) }); s.addEventListener('blur', function () { heat(null) });
+    });
+    if (fig) {
+      fig.addEventListener('pointermove', function (ev) {
+        var id = null; brackets.forEach(function (b) { var r = b.getBoundingClientRect(); if (ev.clientX >= r.left && ev.clientX <= r.right) id = b.getAttribute('data-stage') });
+        heat(id);
+      });
+      fig.addEventListener('pointerleave', function () { heat(null) });
+    }
   });
 });
 /* TankSection: the blueprint is drawn as a draughtsman would: floor and legs, then the shell's outline, the cut
@@ -6196,6 +6623,42 @@ AQmotion.fx('WindingRoute', function (root, m) {
         .set(drop, { display: 'none', clearProps: 'transform,opacity,visibility' }, t0 + run + 0.4);
     }
     m.on(el, function () { tl.play() }, 'top 75%');
+
+    // Ported from Subframe Motion "Race replay" (race-replay), MIT, (c) 2026 Subframe
+    // Once the water has run, the route becomes a replay the visitor drives: one value (0 to 1) binds the water's
+    // reach, the droplet's place on the wave and the stage it has reached, as the library binds line, marker and time.
+    // Pointing along the band scrubs it; a range input below does the same from the keyboard (arrow keys, Home, End).
+    // Leaving the band lets the water run on to the outlet and rest full again.
+    if (!drop || !flow) return;
+    var Wv = 100 * n, f = { v: 1 }, x0 = 24 / Wv, x1 = 1 - x0, scrub = false;
+    var lab = document.createElement('label'); lab.className = 'aq-winding-route__scrub';
+    lab.innerHTML = '<span class="aq-winding-route__scrub-t">Follow the water</span><input type="range" min="0" max="100" step="1" value="100" aria-valuetext="">';
+    el.appendChild(lab); var input = lab.querySelector('input');
+    gsap.set(lab, { autoAlpha: 0 }); tl.to(lab, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, '-=0.3');
+    function paint() {
+      var v = Math.max(0, Math.min(1, f.v)), x = x0 + v * (x1 - x0), w = svg.clientWidth, h = svg.clientHeight, d = drop.offsetWidth / 2;
+      var tab = paint.tab || (paint.tab = (function () { var t = []; try { var L = flow.getTotalLength(); for (var k = 0; k <= 400; k++) { var p = flow.getPointAtLength(L * k / 400); t.push([p.x, p.y]) } } catch (e) {} return t })());
+      var X = x * Wv, y = 50; for (var k = 1; k < tab.length; k++) if (tab[k][0] >= X) { var a = tab[k - 1], b = tab[k], q = (X - a[0]) / ((b[0] - a[0]) || 1); y = a[1] + (b[1] - a[1]) * q; break }
+      gsap.set(flow, { clipPath: 'inset(-50% ' + ((1 - x) * 100).toFixed(2) + '% -50% 0)' });
+      gsap.set(drop, { display: v < 1 ? 'block' : 'none', autoAlpha: 1, scale: 1, x: x * w - d, y: y / 100 * h - d });
+      var cur = -1; stops.forEach(function (s, i) { var sx = (100 * i + 50) / Wv, wet = x >= sx - 0.002; s.classList.toggle('is-dry', !wet); if (wet) cur = i });
+      stops.forEach(function (s, i) { s.classList.toggle('is-cur', v < 1 && i === cur) });
+      input.value = Math.round(v * 100);
+      var t = cur >= 0 ? stops[cur].querySelector('.aq-winding-route__t') : null;
+      input.setAttribute('aria-valuetext', (t ? t.textContent : 'Feed') + ', ' + Math.round(v * 100) + ' %');
+    }
+    var qv = gsap.quickTo(f, 'v', { duration: 0.35, ease: 'power3.out', onUpdate: paint });
+    function to(v) { if (tl.isActive()) return; scrub = true; qv(v) }
+    function rest() { if (!scrub) return; scrub = false; m.tw(gsap.to(f, { v: 1, duration: 0.9 * (1 - f.v) + 0.2, ease: 'power1.inOut', onUpdate: paint, overwrite: true })) }
+    var band = el.querySelector('.aq-winding-route__stops');
+    el.addEventListener('pointermove', function (ev) {
+      if (ev.pointerType !== 'mouse' || lab.contains(ev.target)) return;
+      var r = svg.getBoundingClientRect(); if (ev.clientY > r.bottom + 8) return;
+      to(((ev.clientX - r.left) / r.width - x0) / (x1 - x0));
+    });
+    el.addEventListener('pointerleave', rest);
+    input.addEventListener('input', function () { if (tl.isActive()) tl.progress(1); scrub = true; gsap.killTweensOf(f); f.v = input.value / 100; paint() });
+    input.addEventListener('blur', rest);
   });
 });
 /* WitnessPlan: the bay is drawn, then each way of witnessing is shown in turn. The walls draw on from the door, the

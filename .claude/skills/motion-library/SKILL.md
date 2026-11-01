@@ -88,3 +88,17 @@ their motion mechanism and values, rewrite the shell.
 | fluid-tab-rail | SectionNav/motion.js: flow-tint plate glides under the hovered link (65 ms smoothing) | SectionNav |
 | curtain-index | NavBar/motion.js: phone menu height-push curtain (0.38 s, .76/0/.24/1), entries 35 ms apart | phone menu |
 | animated-beam | ContactRoutes/motion.js `AQrouteBeam`: a glint runs the step rail to the clock, nodes pop as it passes | ContactRoutes (entrance close + hover/focus) |
+| animated-beam | SystemRun/motion.js `AQbeam(svg, paths, {dur,len,stagger,dir,rev})`: travelling 4-stop userSpaceOnUse gradient on path copies (no non-scaling stroke), hover/focus loops | SystemRun (home), StrataRun (systems), StandardsOrbit arcs (compliance); DOM variant in PidRoutes (industries) |
+| departure-board | IndustryFeed/motion.js `flap()`: split-flap cells, leaf rotateX 0→-180, 440 ms, 45 ms apart; hover re-flips | IndustryFeed (home) |
+| exploded-camera | ExplodedService/motion.js: assemble/take-apart button (600 ms .22/1/.36/1), hover brings a part forward | ExplodedService (home) |
+| spotlight-card | BudgetBento/motion.js: flow light under the mouse per tile | BudgetBento (systems) |
+| border-beam | BatteryLimit/motion.js: offset-path rect() light round the card edge while hovered/focused | BatteryLimit (systems) |
+| expandable-ledger | StandardWires/motion.js: fold opens rows from 0 height (210 ms .2/.8/.2/1), then wires them | StandardWires (systems) |
+| race-replay | WindingRoute/motion.js: pointer/range-input scrub binds water reach, droplet and stage | WindingRoute (sys-pw) |
+| atlas-hotspots | DocHotspots/motion.js: shared card/marker selection, crosshair ring glides (250 ms) | DocHotspots (sys-pw) |
+| relief-board | StairRouter/motion.js: cards lift by exp(-d²/4.4) falloff round the hovered step | StairRouter (services) |
+| cue-scrubber | HoldTimeline/motion.js: hover/focus seeks the water node by node to a stage, stages ahead dim | HoldTimeline (services) |
+| chart-crosshair | MacroLeaders/motion.js: row + column rules snap to the cell, column head lights | MacroLeaders (industries) |
+| guided-inspection | MarketCallouts/motion.js: dimmed drawing with a lit window gliding to the callout's part (550 ms) | MarketCallouts (industries) |
+| orbiting-circles | StandardsOrbit/motion.js: nodes ride the outer orbit a quarter turn into their slots | StandardsOrbit (compliance) |
+| archive-folder | ProofFolders/motion.js: sheets straighten and spread, slip lifts, on hover/focus | ProofFolders (compliance) |

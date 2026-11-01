@@ -9,3 +9,5 @@ DocHotspots pins the documents delivered with a system to the parts of the skid 
 ## Motion
 
 Motion: the skid develops like a print (wipe up from the base); then each document is pinned in turn: its hotspot drops on with one ripple, the leader draws out to the stage edge, and the card slides out from behind the drawing along it while its code decodes; the index link follows. Narrow: hotspots pop and cards rise in a stagger. Under 5 s; nothing under reduced motion.
+
+Ported (pass 9b): Subframe Motion "Atlas hotspots" (atlas-hotspots): markers and cards share one selection. Pointing at or focusing a card, or pointing at a marker, glides a crosshair ring to that part (250 ms, cubic-bezier(.2,.8,.2,1)), lifts its marker, lights its card and leader and steps the other documents back. The ring is out of the page (display none) when nothing is selected.

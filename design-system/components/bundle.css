@@ -902,6 +902,16 @@ a.aq-menu__call:hover { text-decoration: underline; text-underline-offset: 4px; 
 /* Marks the section as a band of its own ground, so page.js restarts the surface alternation after it. */
 .aq-band--split { position: relative; }
 
+/* Border beam (motion only, ported from Subframe Motion "Border beam"): a small light runs round the edge of the card
+   the visitor points at. A border-wide ring masks a square of light that travels the card's outline (offset-path). */
+.aq-battery-limit__card { position: relative; }
+.aq-battery-limit__beam { position: absolute; inset: -1.5px; padding: 2px; pointer-events: none; display: none; visibility: hidden; opacity: 0; overflow: hidden;
+  -webkit-mask: linear-gradient(var(--ink) 0 0) content-box, linear-gradient(var(--ink) 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(var(--ink) 0 0) content-box exclude, linear-gradient(var(--ink) 0 0); }
+.aq-battery-limit__light { position: absolute; width: var(--space-24, 6rem); height: var(--space-24, 6rem); offset-path: rect(0 auto auto 0); offset-distance: 0%;
+  background: linear-gradient(to left, var(--bl-beam, var(--flow)), var(--flow), transparent); }
+.is-pkg .aq-battery-limit__light { --bl-beam: var(--on-navy); }
+
 /* ---------- BinderSpines: an evidence table as ring binders standing on the QA shelf, one per inspector ---------- */
 .aq-binder-spines-sec { position: relative; }
 .aq-binder-spines { position: relative; margin-top: var(--space-8); }
@@ -1124,6 +1134,14 @@ a.aq-binder-spines__go:focus-visible { outline: 2px solid var(--focus); outline-
   .aq-budget-bento__notes { grid-template-columns: minmax(0, 1fr); }
   .aq-budget-bento__more { grid-column: 1; }
 }
+
+/* Spotlight (motion only, ported from Subframe Motion "Spotlight card"): a soft flow light under the pointer, behind the
+   tile's type; on the navy lead tile it is the water's lightened flow */
+.aq-budget-bento__tile { position: relative; overflow: hidden; isolation: isolate; }
+.aq-budget-bento__spot-light { position: absolute; left: calc(-1 * var(--space-32, 8rem)); top: calc(-1 * var(--space-32, 8rem)); width: calc(2 * var(--space-32, 8rem)); height: calc(2 * var(--space-32, 8rem));
+  border-radius: var(--radius-pill); pointer-events: none; display: none; opacity: 0; z-index: -1;
+  background: radial-gradient(circle, color-mix(in srgb, var(--flow) 22%, transparent) 0%, color-mix(in srgb, var(--flow) 9%, transparent) 35%, transparent 70%); }
+.aq-budget-bento__tile.is-lead .aq-budget-bento__spot-light { background: radial-gradient(circle, color-mix(in srgb, var(--flow) 40%, transparent) 0%, color-mix(in srgb, var(--flow) 16%, transparent) 35%, transparent 70%); }
 
 /* ---------- CapaRing: a defect's way from hold to close as one ring that closes (look "capa-ring"), on a navy ground
    (aq-band--navy). The steps sit in three rows a side of the ring; each row lines up with its node, joined by a
@@ -2518,6 +2536,20 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
   .aq-doc-hotspots__t { font-size: 19px; line-height: 26px; }
 }
 
+/* Shared selection (motion only, ported from Subframe Motion "Atlas hotspots"): a crosshair ring glides to the marker
+   of the document being read; that marker lifts, its card and leader light, the other documents step back. */
+.aq-doc-hotspots__hot { pointer-events: auto; }
+.aq-doc-hotspots__cross { position: absolute; left: 0; top: 0; z-index: 2; width: var(--space-12); height: var(--space-12); margin: calc(-1 * var(--space-6)) 0 0 calc(-1 * var(--space-6));
+  border: 1px solid var(--on-navy); border-radius: var(--radius-pill); pointer-events: none; display: none; opacity: 0; visibility: hidden; }
+.aq-doc-hotspots__cross::before, .aq-doc-hotspots__cross::after { content: ""; position: absolute; background: var(--on-navy); }
+.aq-doc-hotspots__cross::before { left: 50%; top: calc(-1 * var(--space-2)); bottom: calc(-1 * var(--space-2)); width: 1px; -webkit-mask: linear-gradient(var(--ink) 0 0) top / 1px var(--space-3) no-repeat, linear-gradient(var(--ink) 0 0) bottom / 1px var(--space-3) no-repeat; mask: linear-gradient(var(--ink) 0 0) top / 1px var(--space-3) no-repeat, linear-gradient(var(--ink) 0 0) bottom / 1px var(--space-3) no-repeat; }
+.aq-doc-hotspots__cross::after { top: 50%; left: calc(-1 * var(--space-2)); right: calc(-1 * var(--space-2)); height: 1px; -webkit-mask: linear-gradient(var(--ink) 0 0) left / var(--space-3) 1px no-repeat, linear-gradient(var(--ink) 0 0) right / var(--space-3) 1px no-repeat; mask: linear-gradient(var(--ink) 0 0) left / var(--space-3) 1px no-repeat, linear-gradient(var(--ink) 0 0) right / var(--space-3) 1px no-repeat; }
+.aq-doc-hotspots__hot.is-pick > span { transform: scale(1.5); }
+.aq-doc-hotspots__card { transition: border-color 250ms, transform 250ms cubic-bezier(0.2, 0, 0, 1), opacity 200ms; }
+.aq-doc-hotspots.has-pick .aq-doc-hotspots__card:not(.is-pick) { opacity: 0.6; }
+.aq-doc-hotspots__card.is-pick { border-top-color: var(--flow); transform: translateY(calc(-1 * var(--space-1))); }
+.aq-doc-hotspots__leads path.is-pick { stroke: var(--on-navy); }
+
 /* ---------- DocList: the documents delivered with a system, as a hairline list ---------- */
 /* One row per document between `line` hairlines: index | code (mono) | name | detail | optional line icon. The deciding
    documents lead; their code turns flow (a word, not a fill). No frame, tabs or cards: the list grammar of .aq-rows.
@@ -2806,6 +2838,9 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
   .aq-exploded-service__fig { width: min(100%, 40rem); margin-inline: auto; border: 1px solid var(--line); }
   .aq-exploded-service__calls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-8); margin-top: var(--space-8); }
 }
+
+/* Assemble / take apart (motion only, ported from Subframe Motion "Exploded camera"): a press under the drawing */
+.aq-exploded-service__toggle { margin-top: var(--space-4); }
 
 /* ---------- FAQ: question rows under a large outline counter ---------- */
 /* Pass 9. The heading column carries the dial: the number of questions in very large outline numerals (line-strong
@@ -3880,6 +3915,12 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-hold-timeline__num { font-size: 56px; line-height: 56px; }
 }
 
+/* Seek (motion only, ported from Subframe Motion "Cue scrubber"): stages still ahead of the one the visitor points
+   at step back while the water waits at its node */
+.aq-hold-timeline__st { transition: opacity 200ms; }
+.aq-hold-timeline__st.is-ahead { opacity: 0.4; }
+.aq-hold-timeline__st.is-cue .aq-hold-timeline__node { transform: scale(1.3); }
+
 /* ---------- IndustryFeed: one water line feeding a few destinations, set as editorial type ---------- */
 /* A twin-wall pipe (two line-strong hairlines over the ground, water in flow down its middle) enters from the page
    edge and runs across under the heading; at each column it tees down into that column. The evidence (a standard
@@ -3941,6 +3982,16 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 
 /* the trunk bleeds to the page edge: clip it there, never a horizontal scroll */
 .aq-industry-feed-sec { overflow-x: clip; }
+
+/* Split-flap board (motion only, ported from Subframe Motion "Departure board"): while the evidence turns over, each
+   character is a cell; a leaf turns over the cell's centre line. At rest the evidence is plain text again. */
+.aq-industry-feed__sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.aq-flap { position: relative; display: inline-block; perspective: 500px; }
+.aq-flap__s { display: inline-block; }
+.aq-flap__leaf { position: absolute; inset: 0; transform-style: preserve-3d; transform-origin: 50% 50%; }
+.aq-flap__f, .aq-flap__b { position: absolute; inset: 0; backface-visibility: hidden; background: var(--surface); color: var(--ink-muted); }
+.aq-flap__b { transform: rotateX(180deg); color: var(--ink); }
+.aq-flap__seam { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line); pointer-events: none; }
 
 /* ---------- InstrumentLimits: levels read off two instruments (look "instrument-limits") ----------
    A dark section (data-theme="dark" on the section). Desktop: the faceplates side by side, the dial 5 of 12 and the
@@ -4616,6 +4667,15 @@ ellipse.aq-macro-leaders__pp.aq-macro-leaders__ol { fill: var(--surface-sunken);
   .aq-macro-leaders__table tbody tr:hover .aq-macro-leaders__mk { transform: scale(1.12); }
 }
 
+/* Crosshair (motion only, ported from Subframe Motion "Chart crosshair"): a row rule and a column rule snap to the cell
+   under the pointer; the column head lights and the cell takes the flow tint */
+.aq-macro-leaders__xh, .aq-macro-leaders__xv { position: absolute; left: 0; top: 0; z-index: 2; pointer-events: none; display: none; opacity: 0; visibility: hidden; background: var(--flow); }
+.aq-macro-leaders__xh { height: 1px; }
+.aq-macro-leaders__xv { width: 1px; }
+.aq-macro-leaders__table thead th { transition: color 150ms; }
+.aq-macro-leaders__table thead th.is-col { color: var(--flow); }
+.aq-macro-leaders__table .is-cell { background: color-mix(in srgb, var(--flow-tint) 60%, transparent); }
+
 @container (max-width: 1180px) {
   .aq-macro-leaders { grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); column-gap: var(--space-6); }
   .aq-macro-leaders__svg { width: calc(50vw - 50% + (100% - var(--space-6)) / 4); }
@@ -4775,6 +4835,12 @@ ellipse.aq-macro-leaders__pp.aq-macro-leaders__ol { fill: var(--surface-sunken);
 .aq-market-callouts__c, .aq-market-callouts__mk { transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1); }
 
 /* Mid widths: the machine full width, the callouts in a row under it (leaders off, numbered markers keep the pairing) */
+/* Inspection spotlight (motion only, ported from Subframe Motion "Guided inspection"): the drawing dims round the part
+   the callout being read is about; the window glides between parts */
+.aq-market-callouts__dim { position: absolute; inset: 0; overflow: hidden; pointer-events: none; display: none; opacity: 0; visibility: hidden; }
+.aq-market-callouts__spot { position: absolute; left: 0; top: 0; width: 0; height: 0; border: 1px solid color-mix(in srgb, var(--flow) 45%, var(--on-navy));
+  box-shadow: 0 0 0 200vmax color-mix(in srgb, var(--navy) 80%, transparent); }
+
 @container (max-width: 1180px) {
   .aq-market-callouts__leads { display: none; }
   .aq-market-callouts__list { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); column-gap: var(--space-8); margin-top: var(--space-6); }
@@ -5936,6 +6002,12 @@ a.aq-option-modules__box:focus-visible { outline: 2px solid var(--focus); outlin
 .aq-pid-routes__node .aq-pid-routes__box { transition: border-color 300ms cubic-bezier(0.2, 0, 0, 1); }
 /* motion: the droplet that rides a run (created and removed by motion.js) */
 .aq-pid-routes__drop { position: absolute; left: 0; top: 50%; width: var(--space-2); height: var(--space-2); margin: calc(-1 * var(--space-1)) 0 0 calc(-1 * var(--space-1)); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); pointer-events: none; }
+
+/* Beam (motion only, ported from Subframe Motion "Animated beam"): the water running a pointed-at route; a bright head
+   with a fading tail slides along the run's line, clipped to the run */
+.aq-pid-routes__beam { position: absolute; left: 0; right: 0; top: 50%; height: 3px; margin-top: -1.5px; overflow: hidden; pointer-events: none; }
+.aq-pid-routes__beam i { position: absolute; left: 0; top: 0; bottom: 0; width: 40%; transform: translateX(-100%);
+  background: linear-gradient(to right, transparent, color-mix(in srgb, var(--flow) 60%, var(--on-navy)) 67.5%, var(--on-navy) 99%, transparent); }
 
 @container (max-width: 860px) {
   .aq-pid-routes { padding: var(--space-4) var(--space-3) var(--space-3); }
@@ -9163,6 +9235,9 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
   .aq-standards-orbit__zone::before { content: ""; position: absolute; left: calc(-1 * var(--space-8) + var(--space-1)); top: var(--space-2); width: var(--space-2); height: var(--space-2); border-radius: var(--radius-pill); background: var(--on-navy); box-shadow: 0 0 0 4px var(--navy), 0 0 0 5px color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
 }
 
+/* the signal (AQbeam) that runs a zone's arc while the visitor points at the zone: on navy, the water's lightened flow */
+.aq-standards-orbit { --beam: var(--on-navy); --beam-tail: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); --beam-w: 3; }
+
 /* ---------- StrataRun: one water run stepping down a terrace of paper slabs (look "strata-run") ----------
    Desktop: the stage labels in a row of equal columns over the drawing; each label's left hairline is the top of its
    leader, which the svg carries on down to the part (the svg is as wide as the row, one column per stage). Slabs are
@@ -9244,6 +9319,9 @@ a.aq-standards-grid__card:focus-visible { outline: 2px solid var(--focus); outli
   .aq-strata-run__d { max-width: none; }
   .aq-strata-run__base { padding-left: var(--space-8); }
 }
+
+/* the moving water (AQbeam) while the visitor points at a stage: flow on the light sheet */
+.aq-strata-run { --beam: var(--flow); --beam-tail: var(--flow); --beam-w: 4.5; }
 
 /* ---------- StrikeGaps: before struck, after set (look "strike-gaps") ----------
    Rows on hairlines in a 12-column split: index, the gap (5 columns, light 26 px in ink-muted, struck through with
@@ -9436,6 +9514,18 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
 
 /* the drawing may run a step past the content width: the band clips it */
 .aq-system-run-sec { overflow-x: clip; }
+
+/* Animated beam (AQbeam, ported from Subframe Motion "Animated beam"; shared by SystemRun, BatteryLimit, PidRoutes):
+   the moving highlight that traces a water line while the visitor points at it. A hard bright head, a fading tail. */
+.aq-beam, .aq-iso .aq-beam { stroke-width: var(--beam-w, 4); stroke-linecap: round; fill: none; pointer-events: none; vector-effect: none; }
+.aq-beam__stop { stop-color: var(--beam, var(--flow)); }
+.aq-beam__stop--0, .aq-beam__stop--3 { stop-opacity: 0; }
+.aq-beam__stop--2, .aq-beam__stop--3 { stop-color: var(--beam-tail, var(--beam, var(--flow))); }
+.aq-system-run { --beam: var(--on-navy); --beam-tail: var(--sr-flow, var(--flow)); }
+/* the column of the system the visitor is pointing at in the drawing */
+.aq-system-run__stage.is-hot .aq-system-run__mark { transform: scaleX(1); }
+.aq-system-run__stage.is-hot .aq-system-run__t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--sr-flow, var(--flow)); }
+.aq-system-run__fig { cursor: crosshair; }
 
 /* ---------- TankSection: the storage tank cut in half as a navy blueprint, parameters as callouts ---------- */
 .aq-tank-section-sec { --ts-ln: var(--on-navy-muted); --ts-fl: color-mix(in srgb, var(--flow) 40%, var(--on-navy)); --ts-hair: color-mix(in srgb, var(--on-navy) 22%, transparent); }
@@ -10448,6 +10538,17 @@ a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-
 .aq-winding-route__stop:hover .aq-winding-route__glyph { background-color: var(--on-navy); }
 .aq-winding-route__stop:hover .aq-winding-route__text { border-top-color: var(--on-navy); }
 
+/* Replay (motion only, ported from Subframe Motion "Race replay"): the visitor scrubs the water along the route. Stages
+   the water has not reached yet step back; the one it has just reached is marked. */
+.aq-winding-route__stop { transition: opacity 200ms; }
+.aq-winding-route__stop.is-dry { opacity: 0.45; }
+.aq-winding-route__stop.is-cur .aq-winding-route__text { border-top-color: var(--on-navy); }
+.aq-winding-route__stop.is-cur .aq-winding-route__node { border-color: var(--on-navy); }
+.aq-winding-route__scrub { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-8); max-width: 32rem;
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-winding-route__scrub input { flex: 1; min-width: 0; min-height: 44px; margin: 0; accent-color: var(--flow); cursor: pointer; background: transparent; }
+.aq-winding-route__scrub input:focus-visible { outline: 2px solid var(--on-navy); outline-offset: 2px; }
+
 @container (max-width: 1100px) {
   .aq-winding-route__stops { column-gap: var(--space-3); }
   .aq-winding-route__t { font-size: 17px; line-height: 24px; }
@@ -10479,6 +10580,9 @@ a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-
 @container (max-width: 860px) { .aq-winding-route__gas { transform: scale(0.45); } }
 .aq-winding-route-sec { isolation: isolate; }
 .aq-winding-route__fan--out { opacity: 0.9; }
+
+/* phones: the route is vertical and has no droplet; no replay */
+@container (max-width: 860px) { .aq-winding-route__scrub { display: none; } }
 
 /* ---------- WitnessPlan: ways to witness a FAT read off a plan of the test bay (look "witness-plan") ----------
    Desktop: the heading and the cards on the left (5 of 12), the navy board on the right (7 of 12). The board is a flat
