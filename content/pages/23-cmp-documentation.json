@@ -72,7 +72,8 @@
     }
    ],
    "fold": 4,
-   "fold_noun": "sections"
+   "fold_noun": "sections",
+   "look": "spine-shelf"
   },
   {
    "type": "table",
@@ -119,7 +120,8 @@
     ]
    ],
    "fold": 2,
-   "fold_noun": "stages"
+   "fold_noun": "stages",
+   "look": "stage-stacks"
   },
   {
    "type": "steps",
@@ -148,7 +150,8 @@
      "t": "Turnover",
      "d": "The register lists every current revision; anything open is a punch list item."
     }
-   ]
+   ],
+   "look": "revision-sheet"
   },
   {
    "type": "spec",
@@ -175,7 +178,8 @@
      "v": "Aquemi keeps a copy for [retention period, years]",
      "m": "Lost documents reissued on request"
     }
-   ]
+   ],
+   "look": "pdf-anatomy"
   },
   {
    "type": "form",

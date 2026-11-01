@@ -63,7 +63,8 @@
     ]
    ],
    "fold": 3,
-   "fold_noun": "processes"
+   "fold_noun": "processes",
+   "look": "record-slips"
   },
   {
    "type": "steps",
@@ -95,7 +96,8 @@
      "t": "Reported to you",
      "d": "Every NCR logged in your turnover package; one after shipment reaches you within [NCR notice after shipment, working days]."
     }
-   ]
+   ],
+   "look": "capa-ring"
   },
   {
    "type": "table",
@@ -135,7 +137,8 @@
     ]
    ],
    "fold": 2,
-   "fold_noun": "supply categories"
+   "fold_noun": "supply categories",
+   "look": "marking-match"
   },
   {
    "type": "grid",
@@ -170,7 +173,8 @@
      "link": "compliance#engineering",
      "icon": "monitor"
     }
-   ]
+   ],
+   "look": "cert-seals"
   },
   {
    "type": "spec",
@@ -218,7 +222,8 @@
     }
    ],
    "fold": 4,
-   "fold_noun": "terms"
+   "fold_noun": "terms",
+   "look": "terms-sheet"
   },
   {
    "type": "form",

@@ -1,0 +1,77 @@
+/* ---------- MarkingMatch: supplier control as the receiving check (look "marking-match"). Part drawn in flat line art
+   (line-strong, the marking ringed in flow), the requirement on a certificate paper (surface-raised, data-theme
+   "light"), a double-ended check line between them. Rows on line hairlines; the column names head the list once. ---------- */
+.aq-marking-match-sec { position: relative; }
+.aq-marking-match { --cols: minmax(0, 4fr) minmax(0, 3fr) minmax(0, 4fr); }
+.aq-marking-match__cols { display: grid; grid-template-columns: var(--cols, 1fr); column-gap: var(--space-8); padding-bottom: var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-marking-match__cols span:nth-child(2) { text-align: center; }
+.aq-marking-match__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.aq-marking-match__row {
+  display: grid; grid-template-columns: var(--cols, 1fr); grid-template-areas: "sup ver req"; column-gap: var(--space-8); align-items: center;
+  padding: var(--space-6) 0; border-bottom: 1px solid var(--line);
+}
+.aq-marking-match__k { display: none; margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+
+/* the part */
+.aq-marking-match__sup { grid-area: sup; display: grid; grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); }
+.aq-marking-match__fig { display: block; width: 100%; max-width: calc(var(--space-32) * 1.75); height: auto; }
+.aq-marking-match__ln { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-marking-match__eq { fill: var(--surface-sunken); stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-marking-match__thin { fill: none; stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-marking-match__print { fill: none; stroke: var(--ink-subtle); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.aq-marking-match__mark { fill: var(--flow-tint); stroke: var(--flow); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-marking-match__name { margin: 0; display: flex; gap: var(--space-3); align-items: baseline; font: 300 22px/28px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
+.aq-marking-match__name a { color: inherit; }
+
+/* the check line between part and paper */
+.aq-marking-match__ver { grid-area: ver; display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--space-3); }
+.aq-marking-match__line { position: relative; display: block; width: 100%; height: var(--space-8); }
+.aq-marking-match__line::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1.5px solid var(--flow); }
+.aq-marking-match__line::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 50%; height: var(--space-2); transform: translateY(-50%);
+  border-left: 1.5px solid var(--flow); border-right: 1.5px solid var(--flow);
+}
+.aq-marking-match__ok {
+  position: absolute; z-index: 1; left: 50%; top: 50%; width: var(--space-8); height: var(--space-8); transform: translate(-50%, -50%);
+  background: var(--surface); border: 1.5px solid var(--flow); border-radius: var(--radius-pill);
+}
+.aq-section--alt .aq-marking-match__ok { background: var(--surface-sunken); }
+.aq-marking-match__ok::after {
+  content: ""; position: absolute; left: 50%; top: 45%; width: var(--space-3); height: calc(var(--space-2) - 1px);
+  border-left: 2px solid var(--flow); border-bottom: 2px solid var(--flow); transform: translate(-50%, -50%) rotate(-45deg);
+}
+.aq-marking-match__how { margin: 0; max-width: 30ch; font: 400 15px/22px var(--font-sans); color: var(--ink-muted); text-wrap: balance; }
+
+/* the paper */
+.aq-marking-match__req { grid-area: req; }
+.aq-marking-match__paper {
+  position: relative; padding: var(--space-8) var(--space-6) var(--space-6); background: var(--surface-raised); color: var(--ink);
+  border: 1px solid var(--line); box-shadow: var(--space-1) var(--space-1) 0 color-mix(in srgb, var(--limestone) 80%, transparent);
+}
+.aq-marking-match__head { position: absolute; left: var(--space-6); top: var(--space-3); width: 40%; height: var(--space-2); border-top: 3px solid var(--line); border-bottom: 3px solid var(--line); }
+.aq-marking-match__seal { position: absolute; right: var(--space-4); top: var(--space-3); width: var(--space-6); height: var(--space-6); border: 1.5px solid var(--flow); border-radius: var(--radius-pill); }
+.aq-marking-match__seal::after { content: ""; position: absolute; inset: calc(var(--space-1) - 1px); border: 1px dashed var(--flow); border-radius: var(--radius-pill); }
+.aq-marking-match__rq { margin: 0; font: 400 16px/24px var(--font-sans); text-wrap: pretty; }
+.aq-marking-match__row:hover .aq-marking-match__mark { fill: var(--flow); }
+.aq-marking-match__row:hover .aq-marking-match__paper { border-color: var(--flow); }
+
+/* Fold: desktop shows every supply; the fold works on phones only */
+.aq-fold:not(.is-open) .aq-marking-match__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-marking-match__list) > .aq-fold__btn { display: none; }
+
+@container (max-width: 860px) {
+  .aq-marking-match__cols { display: none; }
+  .aq-marking-match__k { display: block; }
+  .aq-marking-match__row { grid-template-columns: minmax(0, 1fr); grid-template-areas: "sup" "ver" "req"; row-gap: var(--space-4); padding: var(--space-6) 0 var(--space-8); }
+  .aq-marking-match__fig { max-width: calc(var(--space-32) * 1.5); }
+  .aq-marking-match__name { font-size: 20px; line-height: 26px; }
+  .aq-marking-match__ver { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-4); align-items: center; text-align: left; }
+  .aq-marking-match__ver .aq-marking-match__k { grid-column: 1 / -1; margin: 0; }
+  .aq-marking-match__line { width: var(--space-8); height: var(--space-16); }
+  .aq-marking-match__line::before { left: 50%; right: auto; top: 0; bottom: 0; border-top: 0; border-left: 1.5px solid var(--flow); }
+  .aq-marking-match__line::after { left: 50%; right: auto; top: 0; bottom: 0; height: auto; width: var(--space-2); transform: translateX(-50%); border: 0; border-top: 1.5px solid var(--flow); border-bottom: 1.5px solid var(--flow); }
+  .aq-marking-match__how { max-width: none; text-wrap: pretty; }
+  .aq-marking-match__paper { padding: var(--space-8) var(--space-4) var(--space-4); }
+  .aq-fold:not(.is-open) .aq-marking-match__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-marking-match__list) > .aq-fold__btn { display: flex; }
+}

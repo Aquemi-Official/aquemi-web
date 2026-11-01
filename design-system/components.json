@@ -179,6 +179,16 @@
    "summary": "BudgetBento sets budget ranges as a Swiss bento of numbered tiles, the whole package as a tall navy lead tile and each module beside it, so a range reads as a price sheet with its scope and basis rather than as a table row."
   },
   {
+   "name": "CapaRing",
+   "readme": "design-system/components/CapaRing/README.md",
+   "preview": "design-system/components/CapaRing/preview.html",
+   "group": "Page sections",
+   "height": "660",
+   "width": "1100",
+   "subtitle": "NCR to CAPA close as one ring that closes, navy ground",
+   "summary": "CapaRing shows a closed-loop procedure (a defect held, decided, repaired, corrected, checked and reported) as steps around one ring that the water runs once and closes, the hold step drawn as a closed valve."
+  },
+  {
    "name": "CaseStudy",
    "readme": "design-system/components/CaseStudy/README.md",
    "preview": "design-system/components/CaseStudy/preview.html",
@@ -187,6 +197,16 @@
    "width": "1100",
    "subtitle": "Fact rows and outcome figure; second awaits its figure; third is a template with status, profile and method; fourth is a project record (drawing, outcomes, timeline)",
    "summary": "CaseStudy summarizes a delivered project as hairline fact rows (client, problem, system delivered) beside one large measured-outcome figure on a quiet panel."
+  },
+  {
+   "name": "CertSeals",
+   "readme": "design-system/components/CertSeals/README.md",
+   "preview": "design-system/components/CertSeals/preview.html",
+   "group": "Page sections",
+   "height": "620",
+   "width": "1100",
+   "subtitle": "Certification status as sealed certificate tiles",
+   "summary": "CertSeals sets certification status as a Swiss row of certificate tiles: a seal (ring of ticks round the item's line icon), the standard or mark it is held to set large and light, what it covers and its status."
   },
   {
    "name": "ClauseCrosswalk",
@@ -529,6 +549,16 @@
    "summary": "MarketCallouts shows several markets served by one machine: a single PW package drawn with IsoKit stands centred on a navy ground as a solid limestone object, and each option is a callout around it with a leader to the part its note is about."
   },
   {
+   "name": "MarkingMatch",
+   "readme": "design-system/components/MarkingMatch/README.md",
+   "preview": "design-system/components/MarkingMatch/preview.html",
+   "group": "Page sections",
+   "height": "1340",
+   "width": "1100",
+   "subtitle": "Supplier control as the receiving check: part marking, check line, certificate",
+   "summary": "MarkingMatch shows supplier control as the receiving check an auditor would watch: each supply drawn as the part that arrives with its marking ringed in flow, the requirement on a certificate paper, and between them a double-ended check line carrying how we verify it."
+  },
+  {
    "name": "MembraneAtlas",
    "readme": "design-system/components/MembraneAtlas/README.md",
    "preview": "design-system/components/MembraneAtlas/preview.html",
@@ -627,6 +657,16 @@
    "width": "1100",
    "subtitle": "Skid design parameters called out on the equipment drawing, the rest folded below",
    "summary": "ParameterCallouts lays a system's design parameters on its own equipment drawing, with leader lines from numbered labels to the part each one is about."
+  },
+  {
+   "name": "PdfAnatomy",
+   "readme": "design-system/components/PdfAnatomy/README.md",
+   "preview": "design-system/components/PdfAnatomy/preview.html",
+   "group": "Page sections",
+   "height": "930",
+   "width": "1100",
+   "subtitle": "Delivery terms as a figure plate of the delivered PDF, callouts on leaders",
+   "summary": "PdfAnatomy sets delivery terms as a figure plate of the delivered document: a PDF open in a viewer (bookmark pane, a search hit, the number and revision box in the footer of every page of the stack) with each part of the highlighted row's value as a callout on a leader, and the other rows beside it as signature lines or a large statement."
   },
   {
    "name": "PidRoutes",
@@ -729,6 +769,16 @@
    "summary": "Readout sets the page's one highlighted figure: the number large in Geist Mono Light in `flow` with its unit, the method on a limit tag, and a short caption."
   },
   {
+   "name": "RecordSlips",
+   "readme": "design-system/components/RecordSlips/README.md",
+   "preview": "design-system/components/RecordSlips/preview.html",
+   "group": "Page sections",
+   "height": "1420",
+   "width": "1100",
+   "subtitle": "Each process and the record slip it feeds out of its slot",
+   "summary": "RecordSlips shows each process of a quality system with the record it leaves: the process set large and light, what it controls under it, and at its right edge a slot from which a paper slip feeds out listing the records you can inspect, each with an empty tick box."
+  },
+  {
    "name": "RedlineSheet",
    "readme": "design-system/components/RedlineSheet/README.md",
    "preview": "design-system/components/RedlineSheet/preview.html",
@@ -767,6 +817,16 @@
    "width": "1100",
    "subtitle": "What each request returns: each situation set large, a pipe across, and the returned items dealt out as paper slips with When and Cost",
    "summary": "ReturnSlips sets a table of what each request returns as an exchange on a limestone band: each situation large on the left, a pipe across, and what comes back dealt out as paper slips with their \"When\" and \"Cost\" fields."
+  },
+  {
+   "name": "RevisionSheet",
+   "readme": "design-system/components/RevisionSheet/README.md",
+   "preview": "design-system/components/RevisionSheet/preview.html",
+   "group": "Page sections",
+   "height": "1320",
+   "width": "1100",
+   "subtitle": "One document taking each review step's marks, pinned beside the steps",
+   "summary": "RevisionSheet tells a document review cycle on one document: a paper sheet stays pinned beside the steps and takes each step's marks as the step reaches the middle of the screen (comments, answered comments and a struck draft tag, signatures, recorded data, the current revision), its revision block filling one row per step."
   },
   {
    "name": "RoleMatrix",
@@ -869,6 +929,26 @@
    "summary": "SitePlates sets a table of sites (site, what happens here, address, contact and hours) as figure plates, two to a row, each with an isometric drawing of what stands there, the kind of site set large and light, and its address and contact lines."
   },
   {
+   "name": "SpineShelf",
+   "readme": "design-system/components/SpineShelf/README.md",
+   "preview": "design-system/components/SpineShelf/preview.html",
+   "group": "Page sections",
+   "height": "1180",
+   "width": "1100",
+   "subtitle": "Turnover package as binder spines on a shelf beside its index that opens",
+   "summary": "SpineShelf shows a document package as the object itself: a row of binder spines standing on one shelf (one per section, each as thick as the section holds documents, the key section navy) beside the package index, whose sections open to list their documents."
+  },
+  {
+   "name": "StageStacks",
+   "readme": "design-system/components/StageStacks/README.md",
+   "preview": "design-system/components/StageStacks/preview.html",
+   "group": "Page sections",
+   "height": "940",
+   "width": "1100",
+   "subtitle": "What each stage issues: sheets stacked on the project axis, navy ground",
+   "summary": "StageStacks draws what each project stage issues as the document file building up: the stages stand on one project axis, each stage's documents stacked above it as sheets of paper, its name, clause and who approves under the axis."
+  },
+  {
    "name": "StairRouter",
    "readme": "design-system/components/StairRouter/README.md",
    "preview": "design-system/components/StairRouter/preview.html",
@@ -947,6 +1027,16 @@
    "width": "1100",
    "subtitle": "PP storage tank in section with six callouts and a parts schedule",
    "summary": "TankSection reads fabrication parameters off a blueprint of the storage tank cut in half on a navy band, each parameter a numbered callout on the part it governs and the rest in a parts schedule."
+  },
+  {
+   "name": "TermsSheet",
+   "readme": "design-system/components/TermsSheet/README.md",
+   "preview": "design-system/components/TermsSheet/preview.html",
+   "group": "Page sections",
+   "height": "830",
+   "width": "1100",
+   "subtitle": "Commercial terms as a contract's terms sheet",
+   "summary": "TermsSheet sets commercial terms as a contract's terms sheet: one paper sheet with a ruled head, the terms as numbered clauses in two columns, each with its number large and light, the term, our side of it one value per line, and its note."
   },
   {
    "name": "TestSheet",
