@@ -1945,71 +1945,58 @@ a.aq-contact-routes__num:hover { text-decoration: underline; text-underline-offs
   a.aq-contact-routes__num:active { transform: translateY(1px) scale(0.98); transition-duration: 60ms; }
 }
 
-/* ---------- CostBalance: running costs as streams across a system boundary (look "cost-balance") ----------
-   Desktop: three columns. Left, the streams in: number, item, value (mono), what sets it; a ruled wire runs from the
-   text to the boundary and ends in an arrowhead on it. Middle, the boundary: a dashed rectangle the full height of
-   the streams, the train inside as line glyphs on one vertical water line. Right, the streams out, wired from the
-   boundary in flow (water leaving). Phones: top to bottom on one rail: streams in, the boundary with the train
-   across it, streams out. */
-.aq-cost-balance { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 2fr) minmax(0, 4fr); align-items: stretch; }
-.aq-fold:not(.is-open) .aq-cost-balance .aq-fold-x { display: grid; }
-.aq-fold:has(> .aq-cost-balance) > .aq-fold__btn { display: none; }
-.aq-cost-balance__in, .aq-cost-balance__out { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.aq-cost-balance__in { gap: 0; justify-content: space-between; }
-.aq-cost-balance__out { justify-content: center; }
-.aq-cost-balance__s { display: grid; grid-template-columns: var(--space-8) minmax(0, 22rem) minmax(var(--space-12), 1fr); align-items: center; padding-block: var(--space-4); border-top: 1px solid var(--line); }
-.aq-cost-balance__s:last-child { border-bottom: 1px solid var(--line); }
-.aq-cost-balance__s--out { grid-template-columns: minmax(var(--space-12), 1fr) var(--space-8) minmax(0, 16rem); border: 0; }
-.aq-cost-balance__s--out:last-child { border: 0; }
-.aq-cost-balance__s--out .aq-cost-balance__wire { order: -2; }
-.aq-cost-balance__s--out .aq-cost-balance__n { order: -1; justify-self: center; }
-.aq-cost-balance__n { align-self: start; font: 500 12px/24px var(--font-mono); color: var(--ink-subtle); }
-.aq-cost-balance__p { margin: 0; font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
-.aq-cost-balance__p a { color: inherit; text-decoration: none; }
-.aq-cost-balance__p a::after { content: " →"; color: var(--flow); }
-.aq-cost-balance__p a:hover { color: var(--flow); }
-.aq-cost-balance .aq-cost-balance__v { margin: var(--space-1) 0 0; font: 400 14px/20px var(--font-mono); color: var(--ink); }
-.aq-cost-balance .aq-cost-balance__m { margin: var(--space-1) 0 0; font: 400 13px/18px var(--font-sans); color: var(--ink-muted); }
-.aq-cost-balance__mk { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); margin-right: var(--space-1); }
-/* the wire: a hairline to the boundary, arrowhead on it */
-.aq-cost-balance__wire { position: relative; height: var(--space-4); margin-left: var(--space-4); }
-.aq-cost-balance__line { position: absolute; left: 0; right: 0; top: 50%; border-top: 1.5px solid var(--line-strong); transform-origin: 0 50%; }
-.aq-cost-balance__head { position: absolute; right: 0; top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid var(--line-strong); border-right: 1.5px solid var(--line-strong); transform: translate(-1px, -50%) rotate(45deg); }
-.aq-cost-balance__s--out .aq-cost-balance__wire { margin: 0; }
-.aq-cost-balance__s--out .aq-cost-balance__line, .aq-cost-balance__s--out .aq-cost-balance__head { border-color: var(--flow); }
-.aq-cost-balance__s--out .aq-cost-balance__line { border-top-width: 2px; border-top-style: dashed; }
-.aq-cost-balance__s:hover .aq-cost-balance__line, .aq-cost-balance__s:hover .aq-cost-balance__head { border-color: var(--ink); }
-.aq-cost-balance__s--out:hover .aq-cost-balance__line, .aq-cost-balance__s--out:hover .aq-cost-balance__head { border-color: var(--flow); }
-/* the boundary and the train */
-.aq-cost-balance__sys { position: relative; display: flex; justify-content: center; padding: var(--space-6) 0; }
-.aq-cost-balance__edge { position: absolute; inset: 0; border: 1.5px dashed var(--ink-muted); }
-.aq-cost-balance__train { position: relative; display: flex; flex-direction: column; justify-content: space-around; align-items: center; gap: var(--space-3); }
-.aq-cost-balance__water { position: absolute; left: 50%; top: 0; bottom: 0; border-left: 2px solid var(--flow); transform-origin: 50% 0; }
-.aq-cost-balance__g { position: relative; display: grid; place-items: center; width: var(--space-12); height: var(--space-12); background: var(--surface); border: 1px solid var(--line-strong); }
-.aq-section--alt .aq-cost-balance__g { background: var(--surface-sunken); }
-.aq-cost-balance__ic { width: var(--space-8); height: var(--space-8); background: var(--ink); }
-.aq-cost-balance-sec .aq-cost-balance__note { margin-top: var(--space-4); max-width: var(--text-max); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+/* ---------- CostSkid: running costs wired to the parts of one skid (look "cost-skid") ----------
+   Title left, the IsoKit skid right (limestone-ink line art on the section ground, no sheet), numbered leaders to a
+   number column at its right; the running-cost table under it on hairlines: mono number, item, value, set by. A
+   pointed row turns its parts, leader and number flow and takes a flow-tint ground. */
+.aq-cost-skid__top { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--space-8); align-items: center; }
+.aq-cost-skid .aq-sec-head .aq-h1 { font-weight: 300; font-size: 64px; line-height: 68px; letter-spacing: -0.035em; }
+.aq-cost-skid__fig { margin: 0; }
+.aq-cost-skid__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-cost-skid__svg .aq-iso__leader-line { stroke: var(--ink-muted); }
+.aq-cost-skid__svg .is-on .aq-iso__leader-line { stroke: var(--flow); stroke-width: 1.5; }
+.aq-cost-skid__svg .is-on .aq-iso__leader-dot { fill: var(--flow); }
+.aq-cost-skid__pin {
+  display: grid; place-items: center; width: var(--space-8); height: var(--space-8); margin-left: var(--space-1);
+  border: 1px solid var(--line-strong); background: var(--surface); font: 400 12px/1 var(--font-mono); color: var(--ink);
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.aq-cost-skid__pin.is-on { background: var(--flow); border-color: var(--flow); color: var(--on-action); }
+.aq-cost-skid__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.aq-cost-skid .aq-fold { margin-top: var(--space-8); }
+.aq-cost-skid__table { width: 100%; border-collapse: collapse; }
+.aq-cost-skid__table thead th {
+  padding: 0 var(--space-4) var(--space-3) 0; text-align: left; font: 400 12px/17px var(--font-mono); color: var(--ink-muted);
+  border-bottom: 1px solid var(--line-strong);
+}
+.aq-cost-skid__table thead th:first-child { width: var(--space-12); }
+.aq-cost-skid__row > * { padding: var(--space-4) var(--space-4) var(--space-4) 0; vertical-align: top; text-align: left; border-bottom: 1px solid var(--line); transition: background-color 160ms ease; }
+.aq-cost-skid__row { outline: none; }
+.aq-cost-skid__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-cost-skid__row > .aq-cost-skid__n { padding-left: var(--space-3); font: 400 12px/24px var(--font-mono); color: var(--ink-muted); }
+.aq-cost-skid__p { width: 34%; font: 400 17px/24px var(--font-sans); }
+.aq-cost-skid__v { width: 30%; font: 400 14px/22px var(--font-mono); }
+.aq-cost-skid__m { font-size: 15px; line-height: 22px; color: var(--ink-muted); }
+.aq-cost-skid__k { display: none; }
+.aq-cost-skid__row.is-on > * { background: var(--flow-tint); }
+.aq-cost-skid__row.is-on .aq-cost-skid__n { color: var(--flow); }
+.aq-fold:not(.is-open) .aq-cost-skid__row.aq-fold-x { display: table-row; }
+.aq-fold:has(> .aq-cost-skid__table) > .aq-fold__btn { display: none; }
 
 @container (max-width: 860px) {
-  .aq-cost-balance { grid-template-columns: minmax(0, 1fr); }
-  .aq-fold:not(.is-open) .aq-cost-balance .aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-cost-balance) > .aq-fold__btn { display: flex; }
-  .aq-cost-balance__s, .aq-cost-balance__s--out { grid-template-columns: var(--space-8) minmax(0, 1fr); border: 0; padding: 0 0 var(--space-4); position: relative; }
-  .aq-cost-balance__s:last-child { border: 0; }
-  .aq-cost-balance__s--out .aq-cost-balance__n { order: 0; justify-self: start; }
-  .aq-cost-balance__in, .aq-cost-balance__out { position: relative; padding-left: 0; }
-  .aq-cost-balance__in::before, .aq-cost-balance__out::before { content: ""; position: absolute; left: calc(var(--space-8) - var(--space-3)); top: var(--space-2); bottom: 0; border-left: 1.5px solid var(--line-strong); }
-  .aq-cost-balance__out::before { border-left: 2px dashed var(--flow); top: 0; }
-  .aq-cost-balance__wire { display: none; }
-  .aq-cost-balance__sys { margin: 0 0 var(--space-4); padding: var(--space-4); }
-  .aq-cost-balance__train { flex-direction: row; justify-content: space-between; width: 100%; gap: var(--space-1); }
-  .aq-cost-balance__water { left: 0; right: 0; top: 50%; bottom: auto; border-left: 0; border-top: 2px solid var(--flow); transform-origin: 0 50%; }
-  .aq-cost-balance__g { width: var(--space-8); height: var(--space-8); }
-  .aq-cost-balance__ic { width: var(--space-6); height: var(--space-6); }
-  .aq-cost-balance__p { font-size: 17px; line-height: 23px; }
+  .aq-cost-skid__top { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .aq-cost-skid .aq-sec-head .aq-h1 { font-size: 36px; line-height: 42px; }
+  .aq-cost-skid__pin { width: var(--space-6); height: var(--space-6); font-size: 11px; }
+  .aq-cost-skid__table, .aq-cost-skid__table tbody { display: block; }
+  .aq-cost-skid__table thead { display: none; }
+  .aq-cost-skid__row { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); padding-block: var(--space-3); border-bottom: 1px solid var(--line); }
+  .aq-fold:not(.is-open) .aq-cost-skid__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-cost-skid__table) > .aq-fold__btn { display: flex; }
+  .aq-cost-skid__row > * { display: block; width: auto; padding: 0 0 var(--space-1); border: 0; }
+  .aq-cost-skid__row > .aq-cost-skid__n { grid-row: span 3; padding-left: 0; }
+  .aq-cost-skid__k { display: block; font: 400 12px/17px var(--font-mono); color: var(--ink-muted); }
 }
-.aq-cost-balance-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 20ch; }
-@container (max-width: 860px) { .aq-cost-balance-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); } }
 
 /* ---------- CoverageMap: coverage by region read off a tile map (look coverage-map) ----------
    Desktop: the map sheet (limestone, data-theme light) is held in view on the left while the region rows run on the
@@ -2901,6 +2888,93 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
   .aq-faq__sign { margin-block: calc((26px - 44px) / 2); }
   .aq-faq__a { margin: 0 0 0 calc(var(--space-6) + var(--space-3) + var(--space-3)); padding-bottom: var(--space-6); }
   .aq-faq__a p { font-size: 15px; line-height: 24px; }
+}
+
+/* ---------- FaultKnot: fault steps under a title that crosses a navy / limestone split (look "fault-knot") ----------
+   Limestone section (data-theme light), a navy field from the left edge to 30 % of the content width. The title is set
+   huge and light in navy; its aria-hidden twin, in on-navy, lies exactly over it and is clipped to the navy field, so
+   the title changes colour where it crosses the split. The knot drawing sits right of the title in a framed grid;
+   the steps read across the foot, the first on the navy. Phones: the field runs behind the title's first lines. */
+.aq-fault-knot-sec { position: relative; overflow: clip; }
+.aq-fault-knot { position: relative; --fk-split: 30%; }
+.aq-fault-knot__ground {
+  position: absolute; z-index: 0; top: calc(-1 * var(--space-16)); bottom: calc(-1 * var(--space-16));
+  left: -100vw; width: calc(100vw + var(--fk-split, 30%)); background: var(--navy);
+}
+.aq-fault-knot__ground2 { display: none; }
+.aq-fault-knot__top { position: relative; z-index: 1; display: flex; align-items: center; min-height: 26rem; }
+.aq-fault-knot__head { position: relative; flex: 1 1 auto; min-width: 0; }
+.aq-fault-knot__head .aq-sec-head { margin: 0; }
+.aq-fault-knot__head .aq-h1 {
+  margin: 0; max-width: 5.4em; font: 300 clamp(76px, 10.4vw, 136px)/0.94 var(--font-sans); letter-spacing: -0.045em;
+  color: var(--navy); text-wrap: initial;
+}
+.aq-fault-knot__head .aq-lead { max-width: 34ch; margin-left: calc(var(--fk-split, 30%) + var(--space-8)); }
+.aq-fault-knot__twin {
+  position: absolute; inset: 0; pointer-events: none; user-select: none;
+  clip-path: inset(-20% calc(100% - var(--fk-split, 30%)) -20% -20%);
+}
+.aq-fault-knot__twin .aq-h1 { color: var(--on-navy); }
+.aq-fault-knot__twin .aq-lead { color: var(--on-navy-muted); }
+
+/* the knot: framed grid, twin-wall pipe (wall stroke, bore in the ground colour), the water as a dashed flow line */
+.aq-fault-knot__fig { position: absolute; right: 0; top: 50%; width: 40%; margin: 0; transform: translateY(-50%); }
+.aq-fault-knot__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-fault-knot__frame { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+.aq-fault-knot__grid { fill: none; stroke: var(--line); stroke-width: 1; }
+.aq-fault-knot__p { fill: none; stroke-linecap: butt; stroke-linejoin: round; transition: d 700ms cubic-bezier(0.4, 0, 0.2, 1); }
+.aq-fault-knot__wall { stroke: var(--navy); stroke-width: 15; }
+.aq-fault-knot__bore { stroke: var(--limestone); stroke-width: 11.5; }
+.aq-fault-knot__flow { stroke: var(--flow); stroke-width: 3; stroke-dasharray: 10 14; }
+.aq-fault-knot__flange { fill: none; stroke: var(--navy); stroke-width: 2.5; }
+.aq-fault-knot.is-scrub .aq-fault-knot__p, .aq-fault-knot.is-key .aq-fault-knot__p { transition: none; }
+.aq-fault-knot.is-clear .aq-fault-knot__flow { stroke-dasharray: 40 10; animation: aq-fk-run 2.4s cubic-bezier(0.4, 0, 0.2, 1) 1; }
+@keyframes aq-fk-run { from { stroke-dashoffset: 300; } to { stroke-dashoffset: 0; } }
+
+/* the steps across the foot: 30 % for the call on the navy, four on the limestone between hairlines */
+.aq-fault-knot__steps {
+  position: relative; z-index: 1; list-style: none; margin: var(--space-16) 0 0; padding: 0;
+  display: grid; grid-template-columns: var(--fk-split, 30%); grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column;
+}
+.aq-fault-knot__step { padding: var(--space-2) var(--space-6) var(--space-2); border-left: 1px solid var(--line-strong); outline: none; }
+.aq-fault-knot__step.is-call { padding-left: 0; padding-right: var(--space-8); border-left: 0; color: var(--on-navy); }
+.aq-fault-knot__step:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-fault-knot__t { margin: 0 0 var(--space-3); font: 400 15px/22px var(--font-mono); letter-spacing: 0; color: var(--navy); }
+.aq-fault-knot__n { color: var(--on-limestone-muted); transition: color 160ms ease; }
+.aq-fault-knot__d { margin: 0; font-size: 15px; line-height: 22px; color: var(--on-limestone-muted); }
+.aq-fault-knot__step.is-call .aq-fault-knot__t { color: var(--on-navy); }
+.aq-fault-knot__step.is-call .aq-fault-knot__n { color: var(--on-navy-muted); }
+.aq-fault-knot__step.is-call .aq-fault-knot__d { font: 300 20px/28px var(--font-sans); color: var(--on-navy); }
+.aq-fault-knot__step.is-call .aq-ph { background: transparent; color: var(--on-navy); outline: 1px dashed var(--on-navy-muted); outline-offset: -1px; }
+.aq-fault-knot__step.is-on .aq-fault-knot__n { color: var(--flow); }
+.aq-fault-knot__step.is-call.is-on .aq-fault-knot__n { color: var(--on-navy); }
+.aq-fault-knot__go { color: inherit; text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 0.2em; }
+.aq-fault-knot__go::after { content: "\a0\2192"; color: var(--flow); }
+.aq-fault-knot__go:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aq-fault-knot__p, .aq-fault-knot__n { transition: none; }
+  .aq-fault-knot.is-clear .aq-fault-knot__flow { animation: none; }
+}
+
+@container (max-width: 860px) {
+  .aq-fault-knot__ground { display: none; }
+  .aq-fault-knot__top { display: block; min-height: 0; }
+  .aq-fault-knot__ground2 {
+    display: block; position: absolute; z-index: -1; left: -100vw; right: -100vw;
+    top: calc(-1 * var(--space-12)); height: calc(var(--space-12) + 81px); background: var(--navy);
+  }
+  .aq-fault-knot__head { isolation: isolate; }
+  .aq-fault-knot__head .aq-h1 { font-size: 52px; line-height: 54px; letter-spacing: -0.04em; }
+  .aq-fault-knot__head .aq-lead { margin-left: 0; }
+  .aq-fault-knot__twin { clip-path: inset(-20% -20% calc(100% - 81px) -20%); }
+  .aq-fault-knot__fig { position: static; width: 100%; margin-top: var(--space-8); transform: none; }
+  .aq-fault-knot__steps { display: block; margin-top: var(--space-8); }
+  .aq-fault-knot__step { padding: var(--space-4) 0; border-left: 0; border-top: 1px solid var(--line-strong); }
+  .aq-fault-knot__step.is-call {
+    margin-inline: calc(-1 * var(--space-4)); padding: var(--space-6) var(--space-4); border-top: 0; background: var(--navy);
+  }
+  .aq-fault-knot__step.is-call .aq-fault-knot__d { font-size: 18px; line-height: 26px; }
 }
 
 /* ---------- FaultList: failure modes that open to cause and design control (table block as "failures") ----------
@@ -6381,80 +6455,75 @@ a.aq-option-modules__box:focus-visible { outline: 2px solid var(--focus); outlin
   .aq-pipe-collage .aq-fold__btn { display: flex; margin-top: var(--space-6); }
 }
 
-/* ---------- PlanSheets: service plans as calibration sheets side by side on navy (look "plan-sheets") ----------
-   The section is a navy band; inside it the ink tokens take their on-navy values, so the heading, the row labels and
-   the fold button read on navy. Each plan column is a limestone sheet (data-theme="light" on its cells, so it stays
-   paper in both themes): cells of one column join into one sheet, the table's border-spacing leaves navy gaps between
-   sheets. The baseline column ("No plan") is a blank dashed sheet on the navy. */
-.aq-plan-sheets-sec {
-  --ink: var(--on-navy); --ink-muted: var(--on-navy-muted); --ink-subtle: var(--on-navy-muted);
-  --line: color-mix(in srgb, var(--on-navy) 20%, transparent); --line-strong: color-mix(in srgb, var(--on-navy) 45%, transparent);
-  --ps-flow: color-mix(in srgb, var(--flow) 45%, var(--on-navy));
+/* ---------- PlanChecker: service plans as a checker of navy and limestone tiles (look "plan-checker") ----------
+   Limestone band (data-theme light). One column per plan, columns alternate navy and a lighter limestone tile with a
+   hairline edge; each column is a head tile (slash numeral 300 at up to 112 px, name, who it suits) and a terms tile
+   whose rows line up across columns through subgrid. No table rules: tiles and gaps separate. Navy tiles remap the ink
+   tokens to their on-navy values. Phones: numeral tabs pick one plan. */
+.aq-plan-checker-sec .aq-sec-head .aq-h1 { font-weight: 300; letter-spacing: -0.03em; }
+.aq-plan-checker__tabs { display: none; }
+.aq-plan-checker__plans {
+  list-style: none; margin: 0; padding: 0; display: grid; column-gap: var(--space-1);
+  grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
+  grid-template-rows: auto repeat(var(--rows, 3), auto) auto;
 }
-.aq-plan-sheets-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy); max-width: 18ch; }
-.aq-plan-sheets-sec .aq-sec-head .aq-lead { color: var(--on-navy-muted); }
-.aq-plan-sheets { position: relative; }
-.aq-plan-sheets__switch { display: none; }
-.aq-plan-sheets__table { width: 100%; border-collapse: separate; border-spacing: var(--space-4) 0; margin-inline: calc(-1 * var(--space-4)); width: calc(100% + 2 * var(--space-4)); table-layout: fixed; }
-.aq-plan-sheets__table th, .aq-plan-sheets__table td { text-align: left; vertical-align: top; font-weight: 400; }
-.aq-plan-sheets__corner { width: 18%; }
-.aq-plan-sheets__label { padding: var(--space-4) var(--space-2) var(--space-4) 0; border-bottom: 1px solid var(--line); color: var(--on-navy-muted); font: 400 14px/20px var(--font-sans); transition: color 200ms ease; }
-.aq-plan-sheets__label .aq-index { display: block; margin-bottom: var(--space-1); color: var(--on-navy-muted); }
-.aq-plan-sheets__c { background: var(--limestone); color: var(--on-limestone); padding: var(--space-4) var(--space-6); border-bottom: 1px solid color-mix(in srgb, var(--navy) 14%, transparent); transition: background-color 200ms ease; }
-.aq-plan-sheets__c.is-base { background: transparent; color: var(--on-navy); border-inline: 1px dashed var(--line-strong); border-bottom-color: var(--line); }
-.aq-plan-sheets__k { display: none; }
-.aq-plan-sheets__v { display: block; font: 400 15px/22px var(--font-sans); text-wrap: pretty; }
-/* the sheet head: ruled scale along the top edge, the sheet number huge and light, the plan name */
-.aq-plan-sheets__head { position: relative; padding-top: var(--space-6); border-bottom: 0; }
-.aq-plan-sheets__head.is-base { border-top: 1px dashed var(--line-strong); vertical-align: bottom; }
-.aq-plan-sheets__scale { position: absolute; left: 0; top: 0; width: 100%; height: 12px; display: block; }
-.aq-plan-sheets__scale path { stroke: var(--navy); stroke-width: 1; fill: none; opacity: 0.55; }
-.aq-plan-sheets__no { display: block; font: 300 72px/72px var(--font-sans); letter-spacing: -0.04em; color: var(--navy); margin-top: var(--space-2); }
-.aq-plan-sheets__of { position: absolute; right: var(--space-4); top: var(--space-6); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
-.aq-plan-sheets__name { display: block; margin-top: var(--space-3); font: 500 16px/22px var(--font-sans); }
-.aq-plan-sheets__mark { display: inline-block; margin-bottom: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--flow); }
-/* the headline row: who the plan suits, set large */
-.aq-plan-sheets__suits .aq-plan-sheets__c { padding-bottom: var(--space-6); border-bottom: 1px solid var(--navy); }
-.aq-plan-sheets__suits .aq-plan-sheets__c.is-base { border-bottom: 1px solid var(--line-strong); }
-.aq-plan-sheets__fit { display: block; font: 300 24px/30px var(--font-sans); letter-spacing: -0.015em; text-wrap: balance; }
-.aq-plan-sheets__suits .aq-plan-sheets__label { vertical-align: bottom; padding-bottom: var(--space-6); border-bottom-color: var(--line-strong); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
-/* foot: the plan's own button, the sheet's bottom edge */
-.aq-plan-sheets__acts .aq-plan-sheets__c { padding-block: var(--space-6); border-bottom: 0; }
-.aq-plan-sheets__acts .aq-plan-sheets__c.is-base { border-bottom: 1px dashed var(--line-strong); }
-.aq-plan-sheets__acts .aq-btn { width: 100%; justify-content: center; }
-.aq-plan-sheets__c.is-rec { outline: 2px solid var(--flow); outline-offset: -2px; }
-/* a row lit across every sheet */
-.aq-plan-sheets__row:hover .aq-plan-sheets__label, .aq-plan-sheets__suits:hover .aq-plan-sheets__label { color: var(--on-navy); }
-.aq-plan-sheets__row:hover .aq-plan-sheets__c:not(.is-base) { background: color-mix(in srgb, var(--limestone) 88%, var(--navy)); }
-.aq-plan-sheets__row:hover .aq-plan-sheets__c.is-base { background: color-mix(in srgb, var(--on-navy) 6%, transparent); }
-.aq-plan-sheets-sec .aq-fold__btn { color: var(--on-navy); border-bottom-color: var(--line); margin-top: var(--space-2); }
+.aq-plan-checker__plan { grid-row: 1 / -1; display: grid; grid-template-rows: subgrid; min-width: 0; }
+.aq-plan-checker .is-navy {
+  background: var(--navy); color: var(--on-navy);
+  --ink: var(--on-navy); --ink-muted: var(--on-navy-muted); --line-strong: color-mix(in srgb, var(--on-navy) 45%, transparent);
+}
+.aq-plan-checker .is-lime {
+  background: color-mix(in srgb, var(--surface) 55%, var(--limestone)); color: var(--on-limestone);
+  box-shadow: inset 1px 0 var(--line-strong), inset -1px 0 var(--line-strong);
+}
+.aq-plan-checker .is-navy .aq-ph { background: transparent; color: var(--on-navy); outline: 1px dashed var(--on-navy-muted); outline-offset: -1px; }
 
-/* placeholders on the navy read as dashed chips; on the sheets they keep the caution tint */
-.aq-plan-sheets-sec .aq-ph { background: transparent; color: var(--on-navy); outline: 1px dashed var(--on-navy-muted); outline-offset: -1px; }
-.aq-plan-sheets-sec [data-theme="light"] .aq-ph { background: var(--caution-tint); color: var(--ink); outline: 0; }
-.aq-plan-sheets__acts .aq-btn { height: auto; min-height: 44px; white-space: normal; text-align: center; padding-block: var(--space-2); line-height: 20px; }
+.aq-plan-checker__head { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); margin-bottom: var(--space-1); min-height: 19rem; }
+.aq-plan-checker__head.is-lime { box-shadow: inset 0 0 0 1px var(--line-strong); }
+.aq-plan-checker__no { margin: 0 0 auto; font: 300 clamp(72px, 8.4vw, 112px)/0.9 var(--font-sans); letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+.aq-plan-checker__sl { opacity: 0.55; margin-left: 0.04em; }
+.aq-plan-checker__mark { margin: 0; font: 500 12px/16px var(--font-mono); color: var(--flow); }
+.aq-plan-checker__name { margin: var(--space-4) 0 0; font: 400 13px/20px var(--font-mono); }
+.aq-plan-checker__suits { margin: 0; font: 300 20px/26px var(--font-sans); letter-spacing: -0.01em; }
+.aq-plan-checker__sk { display: block; font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
+.is-navy .aq-plan-checker__sk { color: var(--on-navy-muted); }
+
+.aq-plan-checker__term { padding: var(--space-3) var(--space-6); transition: background-color 160ms ease; }
+.aq-plan-checker__term.is-first { padding-top: var(--space-6); }
+.aq-plan-checker__term.is-first.is-lime { box-shadow: inset 1px 0 var(--line-strong), inset -1px 0 var(--line-strong), inset 0 1px var(--line-strong); }
+.aq-plan-checker__v { margin: 0; font-size: 16px; line-height: 23px; overflow-wrap: anywhere; }
+.aq-plan-checker__term.is-first .aq-plan-checker__v { font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; }
+.aq-plan-checker__k { margin: var(--space-1) 0 0; font: 400 12px/17px var(--font-mono); color: var(--on-limestone-muted); }
+.is-navy .aq-plan-checker__k { color: var(--on-navy-muted); }
+.aq-plan-checker__term.is-lit.is-lime { background: var(--flow-tint); }
+.aq-plan-checker__term.is-lit.is-navy { background: color-mix(in srgb, var(--on-navy) 12%, var(--navy)); }
+.aq-plan-checker__act { padding: var(--space-4) var(--space-6) var(--space-6); }
+.aq-plan-checker__act.is-lime { box-shadow: inset 1px 0 var(--line-strong), inset -1px 0 var(--line-strong), inset 0 -1px var(--line-strong); }
+.aq-plan-checker__act .aq-btn { width: 100%; justify-content: center; text-align: center; }
+.aq-plan-checker-sec .aq-fold__btn { margin-top: var(--space-6); }
+.aq-fold:not(.is-open) .aq-plan-checker__term.aq-fold-x { display: none; }
 
 @container (max-width: 860px) {
-  .aq-plan-sheets-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
-  .aq-plan-sheets__switch { display: flex; gap: var(--space-1); margin-bottom: 0; overflow: hidden; }
-  .aq-plan-sheets__tab { flex: 1 1 0; min-width: 0; min-height: 44px; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); padding: var(--space-2) var(--space-2) var(--space-3);
-    background: color-mix(in srgb, var(--on-navy) 10%, transparent); color: var(--on-navy-muted); border: 0; border-top: 2px solid transparent; cursor: pointer; text-align: left; font: 400 12px/16px var(--font-sans); }
-  .aq-plan-sheets__tab > span:last-child { overflow-wrap: anywhere; }
-  .aq-plan-sheets__tabno { font: 300 24px/24px var(--font-sans); }
-  .aq-plan-sheets__tab[aria-pressed="true"] { background: var(--limestone); color: var(--on-limestone); border-top-color: var(--navy); }
-  .aq-plan-sheets__tab[aria-pressed="true"] .aq-ph { background: var(--caution-tint); color: var(--on-limestone); outline: 0; }
-  .aq-plan-sheets__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-  .aq-plan-sheets__table, .aq-plan-sheets__table thead, .aq-plan-sheets__table tbody, .aq-plan-sheets__table tr { display: block; width: 100%; margin: 0; }
-  .aq-plan-sheets__corner, .aq-plan-sheets__label { display: none; }
-  .aq-plan-sheets__c { display: block; padding: var(--space-3) var(--space-4); }
-  .aq-plan-sheets[data-show="1"] .aq-plan-sheets__c:not(.t1), .aq-plan-sheets[data-show="2"] .aq-plan-sheets__c:not(.t2),
-  .aq-plan-sheets[data-show="3"] .aq-plan-sheets__c:not(.t3), .aq-plan-sheets[data-show="4"] .aq-plan-sheets__c:not(.t4),
-  .aq-plan-sheets[data-show="5"] .aq-plan-sheets__c:not(.t5), .aq-plan-sheets[data-show="6"] .aq-plan-sheets__c:not(.t6) { display: none; }
-  .aq-plan-sheets__k { display: block; margin-bottom: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone-muted); }
-  .aq-plan-sheets__c.is-base .aq-plan-sheets__k { color: var(--on-navy-muted); }
-  .aq-plan-sheets__no { font-size: 56px; line-height: 56px; }
-  .aq-plan-sheets__fit { font-size: 20px; line-height: 26px; }
-  .aq-plan-sheets__head.is-base { padding-top: var(--space-4); }
+  .aq-plan-checker__tabs { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: var(--space-1); margin-bottom: var(--space-1); }
+  .aq-plan-checker__tab {
+    display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); min-height: 72px; min-width: 0;
+    padding: var(--space-2); border: 0; border-radius: 0; font: inherit; text-align: left; cursor: pointer;
+  }
+  .aq-plan-checker__tabno { font: 300 28px/1 var(--font-sans); letter-spacing: -0.04em; }
+  .aq-plan-checker__tabn { font: 400 11px/14px var(--font-mono); overflow-wrap: anywhere; }
+  .aq-plan-checker__tab .aq-ph { font-size: 11px; }
+  .aq-plan-checker__tab[aria-pressed="true"] { outline: 2px solid var(--flow); outline-offset: -2px; }
+  .aq-plan-checker__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .aq-plan-checker__plans { grid-template-columns: minmax(0, 1fr); }
+  .aq-plan-checker[data-show="1"] .aq-plan-checker__plan:not(.t1),
+  .aq-plan-checker[data-show="2"] .aq-plan-checker__plan:not(.t2),
+  .aq-plan-checker[data-show="3"] .aq-plan-checker__plan:not(.t3),
+  .aq-plan-checker[data-show="4"] .aq-plan-checker__plan:not(.t4),
+  .aq-plan-checker[data-show="5"] .aq-plan-checker__plan:not(.t5) { display: none; }
+  .aq-plan-checker__head { min-height: 0; padding: var(--space-4); }
+  .aq-plan-checker__no { font-size: 64px; margin-bottom: var(--space-4); }
+  .aq-plan-checker__term { padding-inline: var(--space-4); }
+  .aq-plan-checker__act { padding-inline: var(--space-4); }
 }
 
 /* ---------- PqCalendar: PQ phases beside one instrument readout (look "pq-calendar") ----------
@@ -7447,55 +7516,6 @@ a.aq-reader-split__go:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-release-run__node, .aq-release-run__col:first-child .aq-release-run__node { left: calc(var(--space-6) * -1 + var(--space-1) - var(--space-3) * 0.5); top: var(--space-8); }
   .aq-release-run__n { font-size: 88px; }
   .aq-release-run__t { margin-top: var(--space-2); font-size: 21px; line-height: 27px; }
-}
-
-/* ---------- ResponseClock: fault steps read off a stopwatch dial (look "response-clock") ----------
-   A navy band; inside it the ink tokens take their on-navy values. Grid 5/7: the dial (SVG, on-navy hairlines, the
-   face a shade lighter than the band, stations as rings with mono numbers, the running arc dashed in a lightened
-   flow, one hand turned by --a), then the steps as rows on hairlines with a huge light number. The start station
-   (the step that starts the clock) and a pointed step fill. Phones: dial above the list at 70 % width. */
-.aq-response-clock-sec {
-  --ink: var(--on-navy); --ink-muted: var(--on-navy-muted); --ink-subtle: var(--on-navy-muted);
-  --line: color-mix(in srgb, var(--on-navy) 18%, transparent); --line-strong: color-mix(in srgb, var(--on-navy) 45%, transparent);
-  --rc-flow: color-mix(in srgb, var(--flow) 40%, var(--on-navy));
-}
-.aq-response-clock-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy); }
-.aq-response-clock-sec .aq-ph { background: transparent; color: var(--on-navy); outline: 1px dashed var(--on-navy-muted); outline-offset: -1px; }
-.aq-response-clock { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-16); align-items: start; }
-.aq-response-clock__fig { position: sticky; top: var(--space-24); }
-.aq-response-clock__dial { display: block; width: 100%; height: auto; overflow: visible; }
-.aq-response-clock__case { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
-.aq-response-clock__face { fill: color-mix(in srgb, var(--on-navy) 5%, transparent); stroke: var(--line); stroke-width: 1; }
-.aq-response-clock__crown, .aq-response-clock__btn { fill: var(--navy); stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; }
-.aq-response-clock__ticks { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; opacity: 0.7; }
-.aq-response-clock__track { fill: none; stroke: var(--line); stroke-width: 1; }
-.aq-response-clock__run { fill: none; stroke: var(--rc-flow, var(--flow)); stroke-width: 3; stroke-dasharray: 2 7; stroke-linecap: round; }
-.aq-response-clock__st circle { fill: var(--navy); stroke: var(--on-navy-muted); stroke-width: 1.5; transition: fill 200ms ease, stroke 200ms ease; }
-.aq-response-clock__st text { font: 500 11px/1 var(--font-mono); fill: var(--on-navy); text-anchor: middle; }
-.aq-response-clock__st.is-start circle { stroke: var(--rc-flow, var(--flow)); stroke-width: 2.5; }
-.aq-response-clock__st.is-on circle { fill: var(--limestone); stroke: var(--limestone); }
-.aq-response-clock__st.is-on text { fill: var(--navy); }
-.aq-response-clock__hand { transform-box: view-box; transform-origin: 200px 210px; transform: rotate(var(--a, 0deg)); transition: transform 500ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-response-clock__hand path { fill: none; stroke: var(--limestone); stroke-width: 2.5; stroke-linecap: round; }
-.aq-response-clock__hand circle { fill: var(--limestone); }
-.aq-response-clock__steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
-.aq-response-clock__step { display: grid; grid-template-columns: calc(var(--space-16) + var(--space-8)) minmax(0, 1fr); gap: var(--space-4); padding: var(--space-6) 0; border-bottom: 1px solid var(--line); outline-offset: 4px; transition: background-color 200ms ease; }
-.aq-response-clock__step:focus-visible { outline: 2px solid var(--focus); }
-.aq-response-clock__n { font: 300 56px/56px var(--font-sans); letter-spacing: -0.04em; color: var(--on-navy-muted); transition: color 200ms ease; }
-.aq-response-clock__step.is-start .aq-response-clock__n, .aq-response-clock__step.is-on .aq-response-clock__n { color: var(--on-navy); }
-.aq-response-clock__t { margin: 0; font: 400 24px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
-.aq-response-clock__go { color: inherit; text-decoration: none; }
-.aq-response-clock__go::after { content: " →"; color: var(--rc-flow, var(--flow)); }
-.aq-response-clock__go:hover { color: var(--rc-flow, var(--flow)); }
-.aq-response-clock__d { margin: var(--space-2) 0 0; max-width: 48ch; font: 400 16px/24px var(--font-sans); color: var(--on-navy-muted); text-wrap: pretty; }
-
-@container (max-width: 860px) {
-  .aq-response-clock-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
-  .aq-response-clock { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
-  .aq-response-clock__fig { position: static; width: 72%; margin-inline: auto; }
-  .aq-response-clock__step { grid-template-columns: var(--space-12) minmax(0, 1fr); gap: var(--space-3); padding: var(--space-4) 0; }
-  .aq-response-clock__n { font-size: 36px; line-height: 40px; }
-  .aq-response-clock__t { font-size: 20px; line-height: 26px; }
 }
 
 /* ---------- ResponseLanes: response times as lanes on one clock (look response-lanes) ----------
@@ -8652,58 +8672,88 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
   .aq-site-tiles__n, .aq-site-tiles__t, .aq-site-tiles__d, .aq-site-tiles__go { padding-inline: var(--space-4); }
 }
 
-/* ---------- SparesKit: like-for-like rules on a spares tray (look "spares-kit") ----------
-   The tray is one panel on surface-sunken with a line-strong frame; pockets are cells on a 4-column grid divided by
-   hairlines. Each pocket's cut-out is the part's own outline drawn thick in a deeper sunken tone (a shadow-board
-   silhouette); the part sits in it in 1.5 px ink line art on a raised fill, flow only for a lamp's arc, a card's chip
-   or an LED. Under it the part name and the rules as a definition list: "=" like for like, "≠" a change, "→" what
-   follows, each symbol in a mono square. The last cell is the key. Hover lifts the part out of its pocket. */
-.aq-spares-kit { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--surface-sunken); border: 1px solid var(--line-strong); }
-.aq-fold:not(.is-open) .aq-spares-kit .aq-fold-x { display: flex; }
-.aq-fold:has(> .aq-spares-kit) > .aq-fold__btn { display: none; }
-.aq-spares-kit__slot, .aq-spares-kit__key { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; padding: var(--space-6); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.aq-spares-kit__slot:nth-child(4n), .aq-spares-kit__key:nth-child(4n) { border-right: 0; }
-.aq-spares-kit__well { position: relative; margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) var(--space-2); padding: var(--space-4) var(--space-2); background: color-mix(in srgb, var(--surface-sunken) 70%, var(--line)); }
-.aq-spares-kit__art { display: block; width: 100%; height: auto; overflow: visible; }
-.aq-spares-kit__pocket * { fill: color-mix(in srgb, var(--surface-sunken) 30%, var(--line-strong)); stroke: color-mix(in srgb, var(--surface-sunken) 30%, var(--line-strong)); stroke-width: 12; stroke-linejoin: round; stroke-linecap: round; opacity: 0.32; }
-.aq-spares-kit__part { transition: transform 300ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-spares-kit__part * { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-.aq-spares-kit__part rect, .aq-spares-kit__part circle, .aq-spares-kit__part path:first-child { fill: var(--surface-raised); }
-.aq-spares-kit__part .k-t { stroke-width: 1; stroke: var(--ink-muted); fill: none; }
-.aq-spares-kit__part .k-a { stroke: var(--flow); fill: none; }
-.aq-spares-kit__part rect.k-a { fill: var(--flow-tint); }
-.aq-spares-kit__slot:hover .aq-spares-kit__part { transform: translate(-3px, -6px); }
-.aq-spares-kit__n { position: absolute; left: var(--space-2); top: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle); }
-.aq-spares-kit__t { margin: 0; font: 300 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
-.aq-spares-kit__rules { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
-.aq-spares-kit__rule dt { display: flex; align-items: center; gap: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
-.aq-spares-kit__rule dd { margin: var(--space-1) 0 0 calc(var(--space-6) + var(--space-2)); font: 400 14px/20px var(--font-sans); color: var(--ink); text-wrap: pretty; }
-.aq-spares-kit__sym { flex: none; display: inline-grid; place-items: center; width: var(--space-6); height: var(--space-6); border: 1px solid var(--line-strong); font: 500 14px/1 var(--font-mono); color: var(--ink); text-transform: none; }
-.aq-spares-kit__rule--change .aq-spares-kit__sym { border-color: var(--ink); background: var(--surface-raised); }
-.aq-spares-kit__rule--then .aq-spares-kit__sym { border-color: var(--flow); color: var(--flow); }
-.aq-spares-kit__rule--then dd { color: var(--ink-muted); }
-.aq-spares-kit__key { justify-content: flex-end; background: transparent; }
-.aq-spares-kit__keyh { margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
-.aq-spares-kit__keyr { display: flex; align-items: center; gap: var(--space-2); margin: 0; font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
-.aq-spares-kit__keyr:nth-of-type(3) .aq-spares-kit__sym { border-color: var(--ink); background: var(--surface-raised); }
-.aq-spares-kit__keyr:nth-of-type(4) .aq-spares-kit__sym { border-color: var(--flow); color: var(--flow); }
+/* ---------- SpareSheet: like-for-like rules on a limestone drawing sheet (look "spare-sheet") ----------
+   A limestone sheet (data-theme light) on the section ground: double border (outer line-strong, inner hairline), the
+   title and intro top left, the dimensioned part drawing top right (equipment 1.5 px line-strong, centre line
+   dash-dot, dimensions and balloon in hairline ink-muted, drawing letters mono), the four-column table under them on
+   hairlines with numbered column notes, a title block bottom right. The chosen row carries a flow rule at its left. */
+.aq-spare-sheet {
+  position: relative; background: var(--limestone); color: var(--on-limestone);
+  border: 1px solid var(--line-strong); outline: 1px solid var(--line); outline-offset: calc(-1 * var(--space-2));
+  padding: var(--space-12) var(--space-12) var(--space-24);
+}
+.aq-spare-sheet__top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); align-items: center; }
+.aq-spare-sheet .aq-sec-head .aq-h1 { font-weight: 300; font-size: 56px; line-height: 60px; letter-spacing: -0.03em; }
+.aq-spare-sheet .aq-sec-head .aq-lead { color: var(--on-limestone-muted); }
+.aq-spare-sheet__fig { margin: 0; }
+.aq-spare-sheet__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.aq-spare-sheet__cross { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+.aq-spare-sheet__part { display: none; }
+.aq-spare-sheet__part.is-on { display: inline; }
+.aq-spare-sheet__art * { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-spare-sheet__art .k-t { stroke: var(--ink-muted); stroke-width: 1; }
+.aq-spare-sheet__art .k-a { stroke: var(--flow); }
+.aq-spare-sheet__cl { fill: none; stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 14 3 2 3; }
+.aq-spare-sheet__dim { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+.aq-spare-sheet__dot { fill: var(--ink-muted); }
+.aq-spare-sheet__ball { fill: var(--limestone); stroke: var(--line-strong); stroke-width: 1; }
+.aq-spare-sheet__dt, .aq-spare-sheet__bt { font: 400 12px/1 var(--font-mono); fill: var(--ink-muted); text-anchor: middle; }
+.aq-spare-sheet__bt { fill: var(--on-limestone); }
 
-@container (max-width: 1080px) {
-  .aq-spares-kit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .aq-spares-kit__slot:nth-child(4n), .aq-spares-kit__key:nth-child(4n) { border-right: 1px solid var(--line); }
-  .aq-spares-kit__slot:nth-child(2n), .aq-spares-kit__key:nth-child(2n) { border-right: 0; }
+.aq-spare-sheet .aq-fold { margin-top: var(--space-8); }
+.aq-spare-sheet__table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.aq-spare-sheet__table thead th {
+  padding: 0 var(--space-4) var(--space-3) 0; text-align: left; vertical-align: bottom;
+  font: 400 12px/17px var(--font-mono); color: var(--on-limestone-muted); border-bottom: 1px solid var(--line-strong);
 }
+.aq-spare-sheet__table thead th:first-child { width: 26%; }
+.aq-spare-sheet__hn {
+  display: inline-grid; place-items: center; width: var(--space-6); height: var(--space-6); margin-right: var(--space-2);
+  border: 1px solid var(--line-strong); color: var(--on-limestone);
+}
+.aq-spare-sheet__row th, .aq-spare-sheet__row td {
+  padding: var(--space-3) var(--space-4) var(--space-3) 0; vertical-align: top; text-align: left;
+  border-bottom: 1px solid var(--line); font-size: 15px; line-height: 22px;
+}
+.aq-spare-sheet__row th { font-weight: 400; padding: 0; }
+.aq-spare-sheet__k { display: none; }
+.aq-spare-sheet__pick {
+  display: flex; gap: var(--space-3); align-items: baseline; width: 100%; min-height: 44px; margin: 0;
+  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-3); border: 0; border-left: 2px solid transparent;
+  background: transparent; color: var(--on-limestone); font: 400 16px/22px var(--font-sans); text-align: left; cursor: pointer;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+.aq-spare-sheet__pick:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-spare-sheet__n { font: 400 12px/22px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-spare-sheet__row.is-on .aq-spare-sheet__pick { border-left-color: var(--flow); background: var(--flow-tint); }
+.aq-spare-sheet__row.is-on .aq-spare-sheet__n { color: var(--flow); }
+.aq-fold:not(.is-open) .aq-spare-sheet__row.aq-fold-x { display: table-row; }
+.aq-fold:has(> .aq-spare-sheet__table) > .aq-fold__btn { display: none; }
+
+.aq-spare-sheet__tb {
+  position: absolute; right: var(--space-2); bottom: var(--space-2); display: grid; grid-template-columns: auto auto;
+  border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong);
+}
+.aq-spare-sheet__tb > span { padding: var(--space-2) var(--space-4); font: 400 12px/17px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-spare-sheet__tbn { border-right: 1px solid var(--line-strong); color: var(--on-limestone); min-width: 14rem; }
+.aq-spare-sheet__tbi { font-variant-numeric: tabular-nums; }
+.aq-spare-sheet__tbp { display: none; }
+.aq-spare-sheet__tbp.is-on { display: inline; }
+
 @container (max-width: 860px) {
-  .aq-spares-kit { grid-template-columns: minmax(0, 1fr); }
-  .aq-fold:not(.is-open) .aq-spares-kit .aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-spares-kit) > .aq-fold__btn { display: flex; }
-  .aq-spares-kit__slot { padding: var(--space-4); border-right: 0; }
-  .aq-spares-kit__well { margin: 0 0 var(--space-1); padding: var(--space-2) var(--space-8); }
-  .aq-spares-kit__t { font-size: 22px; line-height: 28px; }
-  .aq-spares-kit__key { display: none; }
+  .aq-spare-sheet { padding: var(--space-8) var(--space-4) var(--space-16); }
+  .aq-spare-sheet__top { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+  .aq-spare-sheet .aq-sec-head .aq-h1 { font-size: 34px; line-height: 40px; }
+  .aq-spare-sheet__table, .aq-spare-sheet__table tbody { display: block; }
+  .aq-spare-sheet__table thead { display: none; }
+  .aq-spare-sheet__row, .aq-fold:not(.is-open) .aq-spare-sheet__row.aq-fold-x { display: block; padding-bottom: var(--space-3); border-bottom: 1px solid var(--line-strong); }
+  .aq-fold:not(.is-open) .aq-spare-sheet__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-spare-sheet__table) > .aq-fold__btn { display: flex; }
+  .aq-spare-sheet__row th, .aq-spare-sheet__row td { display: block; border: 0; padding: var(--space-1) 0 var(--space-1) var(--space-3); }
+  .aq-spare-sheet__row th { padding: 0; }
+  .aq-spare-sheet__k { display: block; font: 400 12px/17px var(--font-mono); color: var(--on-limestone-muted); }
+  .aq-spare-sheet__tbn { min-width: 0; }
 }
-.aq-spares-kit-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 20ch; }
-@container (max-width: 860px) { .aq-spares-kit-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); } }
 
 /* ---------- SpineShelf: the turnover package as binder spines on one shelf beside its index that opens (look
    "spine-shelf"). Spines are limestone (every third a shade apart), the key section navy; a spine's width follows how
@@ -10104,52 +10154,6 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
   .aq-time-card__stamp { font-size: 11px; }
 }
 
-/* ---------- ToleranceScales: calibration acceptance as bands on rulers (look "tolerance-scales") ----------
-   Rows on hairlines, 12-column split: the instrument (number, name, basis) in 4 columns, its readouts in 8, one per
-   check, side by side. A readout: check name in mono, acceptance in light display figures, the ruler under it
-   (ticks, nominal line, the band between the limits in flow-tint with flow limit lines). The hl row sits on a raised
-   panel with a flow top rule and larger figures. The value's full text stays in the DOM for screen readers (__v,
-   visually hidden); the readouts repeat it for the eye (aria-hidden). */
-.aq-tolerance-scales { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
-.aq-tolerance-scales__row { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--space-8); padding: var(--space-8) 0; border-bottom: 1px solid var(--line); }
-.aq-tolerance-scales__row.is-hl { background: var(--surface-raised); border-top: 2px solid var(--flow); padding: var(--space-8) var(--space-6); margin-top: var(--space-4); }
-.aq-tolerance-scales__n { display: block; font: 500 12px/16px var(--font-mono); color: var(--ink-subtle); margin-bottom: var(--space-2); }
-.aq-tolerance-scales__p { margin: 0; font: 300 26px/32px var(--font-sans); letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
-.aq-tolerance-scales .aq-tolerance-scales__m { margin: var(--space-3) 0 0; font: 400 13px/20px var(--font-mono); color: var(--ink-muted); }
-.aq-tolerance-scales__mk { display: block; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
-.aq-tolerance-scales .aq-tolerance-scales__v { position: absolute; width: 1px; height: 1px; margin: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.aq-tolerance-scales__reads { position: relative; }
-.aq-tolerance-scales__grid { display: grid; grid-template-columns: repeat(var(--checks, 1), minmax(0, 1fr)); gap: var(--space-6); align-items: end; }
-.aq-tolerance-scales__read { display: flex; flex-direction: column; min-width: 0; }
-.aq-tolerance-scales .aq-tolerance-scales__k { margin: 0 0 var(--space-1); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
-.aq-tolerance-scales .aq-tolerance-scales__f { margin: 0; font: 300 44px/50px var(--font-sans); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
-.aq-tolerance-scales__row.is-hl .aq-tolerance-scales__f { font-size: 52px; line-height: 58px; }
-.aq-tolerance-scales .aq-tolerance-scales__t { margin: 0; font: 300 24px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; max-width: 26ch; }
-.aq-tolerance-scales__ruler { display: block; width: 100%; height: var(--space-12); margin-top: var(--space-3); overflow: visible; }
-.aq-tolerance-scales__ruler * { vector-effect: non-scaling-stroke; }
-.aq-tolerance-scales__ticks { fill: none; stroke: var(--ink-subtle); stroke-width: 1; }
-.aq-tolerance-scales__band { fill: color-mix(in srgb, var(--flow) 22%, transparent); }
-.aq-tolerance-scales__lim { fill: none; stroke: var(--flow); stroke-width: 2; }
-.aq-tolerance-scales__nom { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 2; }
-.aq-tolerance-scales__ref { fill: none; stroke: var(--flow); stroke-width: 1.5; }
-.aq-tolerance-scales__read--span .aq-tolerance-scales__lim, .aq-tolerance-scales__read--ref .aq-tolerance-scales__lim { stroke: var(--ink-muted); }
-.aq-tolerance-scales__row:hover .aq-tolerance-scales__band { fill: color-mix(in srgb, var(--flow) 34%, transparent); }
-.aq-tolerance-scales-sec .aq-tolerance-scales__note { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-6); max-width: var(--text-max); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
-.aq-tolerance-scales__seal { flex: none; width: var(--space-12); height: var(--space-12); border: 1.5px solid var(--flow); border-radius: 50%; outline: 1px solid var(--flow); outline-offset: -6px; }
-
-@container (max-width: 860px) {
-  .aq-tolerance-scales__row { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); padding: var(--space-6) 0; }
-  .aq-tolerance-scales__row.is-hl { padding: var(--space-6) var(--space-4); }
-  .aq-tolerance-scales__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
-  .aq-tolerance-scales__p { font-size: 22px; line-height: 28px; }
-  .aq-tolerance-scales .aq-tolerance-scales__f, .aq-tolerance-scales__row.is-hl .aq-tolerance-scales__f { font-size: 36px; line-height: 42px; }
-  .aq-tolerance-scales .aq-tolerance-scales__t { font-size: 20px; line-height: 26px; }
-}
-.aq-tolerance-scales__row.is-many .aq-tolerance-scales__f, .aq-tolerance-scales__row.is-hl.is-many .aq-tolerance-scales__f { font-size: 36px; line-height: 44px; }
-@container (max-width: 860px) { .aq-tolerance-scales__row.is-many .aq-tolerance-scales__f, .aq-tolerance-scales__row.is-hl.is-many .aq-tolerance-scales__f { font-size: 32px; line-height: 38px; } }
-.aq-tolerance-scales-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 20ch; }
-@container (max-width: 860px) { .aq-tolerance-scales-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); } }
-
 /* ---------- TraceLines: a traceability table as transit lines (look "trace-lines"). One grid: the documents down the
    first column (station names, drawn), then one column per requirement line (--col). The wrappers are display:
    contents so every head and stop sits on the shared rows, each row a hairline across like an interchange. Each line
@@ -10528,56 +10532,83 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
 }
 
 /* ---------- VisitPlan: a service visit walked around the plant (look "visit-plan") ----------
-   A limestone band (data-theme="light" on the section, so the sheet stays paper in both themes). The drawing sheet
-   (IsoKit on limestone) carries the plant, the dashed walk on the floor and the numbered stops (pin, ring, number in
-   mono; the sign-off stop a tick). Under the sheet, the cards: one column per stop on hairlines, numbered like the
-   stops. A lit card (hover or focus) turns its stop and its parts flow. Phones: no big sheet; the walk runs down the
-   left, each card a row with its stage drawn small. */
-.aq-visit-plan-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 18ch; }
-.aq-visit-plan { --vp-ink: var(--on-limestone); }
-.aq-visit-plan__sheet { border: 1px solid color-mix(in srgb, var(--on-limestone-muted) 40%, transparent); }
+   One navy band (the ink tokens take their on-navy values inside). The drawing (IsoKit, aq-iso--navy) carries the
+   plant, the dashed walk on the floor and the numbered stops (pin, ring, number in mono; the sign-off stop a tick).
+   Along the base of the band the captions: one column per stop on on-navy hairlines, numbered like the stops. The
+   sign-off item closes the band as one limestone line across the full width. A lit caption (hover or focus) turns its
+   stop and its parts flow. Phones: no big drawing; the walk runs down the left, each caption a row with its stage
+   drawn small, the closing line last. */
+.aq-visit-plan-sec {
+  --ink: var(--on-navy); --ink-muted: var(--on-navy-muted);
+  --vp-line: color-mix(in srgb, var(--on-navy) 22%, transparent); --vp-flow: color-mix(in srgb, var(--flow) 45%, var(--on-navy));
+}
+.aq-visit-plan-sec .aq-sec-head .aq-h1 { font: 300 64px/68px var(--font-sans); letter-spacing: -0.035em; max-width: 18ch; color: var(--on-navy); }
+.aq-visit-plan-sec .aq-ph { background: transparent; color: var(--on-navy); outline: 1px dashed var(--on-navy-muted); outline-offset: -1px; }
+.aq-visit-plan { position: relative; }
+.aq-visit-plan__sheet { margin-inline: calc(-1 * var(--space-4)); }
 .aq-visit-plan__svg { display: block; width: 100%; height: auto; }
-.aq-visit-plan__walk { fill: none; stroke: var(--navy); stroke-width: 1.5; stroke-dasharray: 5 5; stroke-linecap: round; }
-.aq-visit-plan__pin { fill: none; stroke: var(--navy); stroke-width: 1; }
-.aq-visit-plan__mark circle { fill: var(--limestone); stroke: var(--navy); stroke-width: 1.5; transition: fill 200ms ease, stroke 200ms ease; }
-.aq-visit-plan__mark text { font: 500 11px/1 var(--font-mono); fill: var(--navy); text-anchor: middle; }
-.aq-visit-plan__mark.is-end circle { fill: var(--navy); }
-.aq-visit-plan__tick { fill: none; stroke: var(--limestone); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.aq-visit-plan__mark.is-on circle { fill: var(--flow); stroke: var(--flow); }
-.aq-visit-plan__mark.is-on text { fill: var(--surface); }
-.aq-visit-plan__mark.is-on .aq-visit-plan__pin { stroke: var(--flow); }
-/* cards */
-.aq-visit-plan__stops { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 7), minmax(0, 1fr)); border-bottom: 1px solid color-mix(in srgb, var(--on-limestone-muted) 40%, transparent); }
-.aq-visit-plan__stop { min-width: 0; border-left: 1px solid color-mix(in srgb, var(--on-limestone-muted) 30%, transparent); }
+.aq-visit-plan__walk { fill: none; stroke: var(--on-navy-muted); stroke-width: 1.5; stroke-dasharray: 5 5; stroke-linecap: round; }
+.aq-visit-plan__pin { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; }
+.aq-visit-plan__mark circle { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5; transition: fill 200ms ease, stroke 200ms ease; }
+.aq-visit-plan__mark text { font: 500 11px/1 var(--font-mono); fill: var(--on-navy); text-anchor: middle; }
+.aq-visit-plan__mark.is-end circle { fill: var(--limestone); stroke: var(--limestone); }
+.aq-visit-plan__tick { fill: none; stroke: var(--navy); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.aq-visit-plan__mark.is-on circle { fill: var(--vp-flow, var(--flow)); stroke: var(--vp-flow, var(--flow)); }
+.aq-visit-plan__mark.is-on text { fill: var(--navy); }
+.aq-visit-plan__mark.is-on .aq-visit-plan__pin { stroke: var(--vp-flow, var(--flow)); }
+.aq-visit-plan__walker { fill: var(--vp-flow, var(--flow)); stroke: var(--navy); stroke-width: 2; }
+
+/* captions along the base */
+.aq-visit-plan__stops {
+  list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--cols, 7), minmax(0, 1fr));
+  border-top: 1px solid var(--vp-line, var(--line));
+}
+.aq-visit-plan__stop { min-width: 0; border-left: 1px solid var(--vp-line, var(--line)); }
 .aq-visit-plan__stop:first-child { border-left: 0; }
-.aq-visit-plan__body { display: flex; flex-direction: column; gap: var(--space-2); height: 100%; padding: var(--space-4) var(--space-3) var(--space-6); color: var(--on-limestone); text-decoration: none; outline-offset: -2px; transition: background-color 200ms ease; }
-.aq-visit-plan__body:focus-visible { outline: 2px solid var(--focus); }
-.aq-visit-plan__stop.is-on .aq-visit-plan__body, .aq-visit-plan__body:hover { background: color-mix(in srgb, var(--limestone) 80%, var(--surface-raised)); }
+.aq-visit-plan__body { display: flex; flex-direction: column; gap: var(--space-2); height: 100%; padding: var(--space-4) var(--space-3) var(--space-6); color: var(--on-navy); text-decoration: none; outline-offset: -2px; transition: background-color 200ms ease; }
+.aq-visit-plan__body:focus-visible { outline: 2px solid var(--on-navy); }
+.aq-visit-plan__stop.is-on .aq-visit-plan__body, .aq-visit-plan__body:hover { background: color-mix(in srgb, var(--on-navy) 8%, var(--navy)); }
 .aq-visit-plan__fig { display: flex; align-items: center; gap: var(--space-2); }
 .aq-visit-plan__mini { display: none; }
-.aq-visit-plan__n { display: inline-grid; place-items: center; width: var(--space-8); height: var(--space-8); border: 1.5px solid var(--navy); border-radius: 50%; font: 500 12px/1 var(--font-mono); color: var(--navy); transition: background-color 200ms ease, color 200ms ease; }
+.aq-visit-plan__n { display: inline-grid; place-items: center; width: var(--space-8); height: var(--space-8); border: 1.5px solid var(--on-navy); border-radius: 50%; font: 500 12px/1 var(--font-mono); color: var(--on-navy); transition: background-color 200ms ease, color 200ms ease; }
 .aq-visit-plan__n svg { width: var(--space-4); height: var(--space-4); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.aq-visit-plan__stop.is-end .aq-visit-plan__n { background: var(--navy); color: var(--limestone); }
-.aq-visit-plan__stop.is-on .aq-visit-plan__n { background: var(--flow); border-color: var(--flow); color: var(--surface); }
-.aq-visit-plan__cap { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
-.aq-visit-plan__t { margin: 0; font: 500 16px/22px var(--font-sans); color: var(--on-limestone); text-wrap: balance; }
-a.aq-visit-plan__body .aq-visit-plan__t::after { content: " →"; color: var(--flow); }
-a.aq-visit-plan__body:hover .aq-visit-plan__t { color: var(--flow); }
-.aq-visit-plan__d { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--on-limestone-muted); text-wrap: pretty; }
+.aq-visit-plan__stop.is-on .aq-visit-plan__n { background: var(--vp-flow, var(--flow)); border-color: var(--vp-flow, var(--flow)); color: var(--navy); }
+.aq-visit-plan__cap { font: 400 12px/16px var(--font-mono); color: var(--on-navy-muted); }
+.aq-visit-plan__t { margin: 0; font: 500 16px/22px var(--font-sans); color: var(--on-navy); text-wrap: balance; }
+a.aq-visit-plan__body .aq-visit-plan__t::after { content: " →"; color: var(--vp-flow, var(--flow)); }
+a.aq-visit-plan__body:hover .aq-visit-plan__t { color: var(--vp-flow, var(--flow)); }
+.aq-visit-plan__d { margin: 0; font: 400 14px/20px var(--font-sans); color: var(--on-navy-muted); text-wrap: pretty; }
+
+/* the sign-off item closes the band as one limestone line */
+.aq-visit-plan__stop.is-end { grid-column: 1 / -1; border-left: 0; margin-inline: calc(-1 * var(--space-8)); margin-bottom: calc(-1 * var(--space-16)); }
+.aq-visit-plan__stop.is-end .aq-visit-plan__body {
+  flex-direction: row; align-items: baseline; flex-wrap: wrap; column-gap: var(--space-4); row-gap: var(--space-1);
+  padding: var(--space-6) var(--space-8); background: var(--limestone); color: var(--on-limestone);
+}
+.aq-visit-plan__stop.is-end .aq-visit-plan__fig { align-self: center; }
+.aq-visit-plan__stop.is-end .aq-visit-plan__n { background: var(--navy); border-color: var(--navy); color: var(--limestone); }
+.aq-visit-plan__stop.is-end .aq-visit-plan__cap { color: var(--on-limestone-muted); }
+.aq-visit-plan__stop.is-end .aq-visit-plan__t { font: 300 28px/34px var(--font-sans); letter-spacing: -0.01em; color: var(--navy); }
+.aq-visit-plan__stop.is-end .aq-visit-plan__t::after { content: ":"; }
+.aq-visit-plan__stop.is-end .aq-visit-plan__d { flex: 1 1 24rem; font: 300 28px/34px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
+.aq-visit-plan__stop.is-end.is-on .aq-visit-plan__body, .aq-visit-plan__stop.is-end .aq-visit-plan__body:hover { background: color-mix(in srgb, var(--limestone) 85%, var(--surface)); }
+.aq-visit-plan__stop.is-end .aq-visit-plan__body:focus-visible { outline-color: var(--focus); }
 
 @container (max-width: 860px) {
   .aq-visit-plan-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
   .aq-visit-plan__sheet { display: none; }
   .aq-visit-plan__stops { display: block; position: relative; border: 0; }
-  .aq-visit-plan__stops::before { content: ""; position: absolute; left: calc(var(--space-4) - 1px); top: var(--space-6); bottom: var(--space-6); border-left: 1.5px dashed var(--navy); }
-  .aq-visit-plan__stop { border: 0; border-top: 1px solid color-mix(in srgb, var(--on-limestone-muted) 30%, transparent); }
+  .aq-visit-plan__stops::before { content: ""; position: absolute; left: calc(var(--space-4) - 1px); top: var(--space-6); bottom: var(--space-24); border-left: 1.5px dashed var(--on-navy-muted); }
+  .aq-visit-plan__stop { border: 0; border-top: 1px solid var(--vp-line, var(--line)); }
   .aq-visit-plan__body { display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr) auto; column-gap: var(--space-3); row-gap: var(--space-1); padding: var(--space-4) 0; }
   .aq-visit-plan__fig { display: contents; }
-  .aq-visit-plan__n { grid-column: 1; grid-row: 1 / span 3; align-self: start; position: relative; background: var(--limestone); }
+  .aq-visit-plan__n { grid-column: 1; grid-row: 1 / span 3; align-self: start; position: relative; background: var(--navy); }
   .aq-visit-plan__mini { display: block; grid-column: 3; grid-row: 1 / span 3; width: calc(var(--space-16) + var(--space-8)); height: auto; align-self: start; }
   .aq-visit-plan__cap, .aq-visit-plan__t, .aq-visit-plan__d { grid-column: 2; }
+  .aq-visit-plan__stop.is-end { margin-inline: calc(-1 * var(--space-4)); margin-bottom: calc(-1 * var(--space-12)); margin-top: var(--space-6); border: 0; }
+  .aq-visit-plan__stop.is-end .aq-visit-plan__body { display: grid; padding: var(--space-6) var(--space-4); }
+  .aq-visit-plan__stop.is-end .aq-visit-plan__t, .aq-visit-plan__stop.is-end .aq-visit-plan__d { font-size: 20px; line-height: 26px; }
 }
-.aq-visit-plan__walker { fill: var(--flow); stroke: var(--limestone); stroke-width: 2; }
 
 /* ---------- VisitRoute: a visit's stops on one route line, drawn on a Plate (grid block as "route") ----------
    Desktop: rows of 3 or 4 stops; odd rows run left to right, even rows right to left, joined by U-turns at the ends

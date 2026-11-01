@@ -131,3 +131,5 @@ their motion mechanism and values, rewrite the shell.
 | sentence-diff-motion | StrikeGaps/motion.js: the fix inserted word by word after the strike (rise 12 px, 260 ms, 60 ms lead, cubic-bezier(.22,.72,.15,1)) | StrikeGaps (svc-upgrades) |
 | project-index | ReviewReticles renderer + style.css: register rows (mouse, focus, click) slide the viewfinder's reel of drawings (240 ms .2/.85/.25/1, instant for keyboard) | ReviewReticles (svc-upgrades) |
 | cue-scrubber | GateLine/motion.js: hover seeks the water to a step, runs ahead drain and gates shut nearest first; entrance opens each gate as the water reaches it | GateLine (svc-upgrades) |
+| shape-morph | FaultKnot look file + style.css: one 220-point pipe path keeps its command structure, CSS `d` transition 0.7 s cubic-bezier(.4,0,.2,1) to the pointed step's knot tension (keyboard instant); FaultKnot/motion.js drives the same path from scroll progress (the page's one scroll-linked story) | FaultKnot (svc-service) |
+| camera-wheel (reused) | SignalDial look reused as is for the calibration table (rows turn the bezel, dial is a slider) | SignalDial (svc-service) |

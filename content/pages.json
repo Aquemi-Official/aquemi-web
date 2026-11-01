@@ -3578,7 +3578,7 @@
    "blocks": [
     {
      "type": "table",
-     "look": "plan-sheets",
+     "look": "plan-checker",
      "as": "plans",
      "nav": "Plans",
      "h": "Service plans: response, scope, price",
@@ -3653,7 +3653,7 @@
     },
     {
      "type": "spec",
-     "look": "cost-balance",
+     "look": "cost-skid",
      "nav": "Running cost",
      "anchor": "running-cost",
      "h": "What it costs to run",
@@ -3666,34 +3666,40 @@
       {
        "p": "Service plan, with calibration",
        "v": "From [lowest plan price, CAD per year]",
-       "m": "System, instruments and distance"
+       "m": "System, instruments and distance",
+       "part": "panel"
       },
       {
        "p": "Reverse osmosis (RO) membranes; electrodeionization (EDI) module or deionization (DI) resin",
        "v": "[membrane and resin replacement intervals]",
-       "m": "Feed water and flow"
+       "m": "Feed water and flow",
+       "part": "gen"
       },
       {
        "p": "Filters, carbon, softener resin, ultraviolet (UV) lamp",
        "v": "[filter, media and lamp intervals, months]",
-       "m": "Feed water and run hours"
+       "m": "Feed water and run hours",
+       "part": "pre uv"
       },
       {
        "p": "Water to drain",
        "v": "RO reject at [design recovery, %] recovery",
        "m": "Feed water chemistry",
+       "part": "drain",
        "link": "sys-pw",
        "side": "out"
       },
       {
        "p": "Energy",
        "v": "[energy use, kWh per m³]",
-       "m": "Flow and feed temperature"
+       "m": "Flow and feed temperature",
+       "part": "pump"
       },
       {
        "p": "Sanitant and softener salt",
        "v": "[PP loop sanitization method], [sanitization frequency]",
-       "m": "Your microbial trends; feed hardness"
+       "m": "Your microbial trends; feed hardness",
+       "part": "soft"
       }
      ],
      "fold": 2,
@@ -3701,7 +3707,7 @@
     },
     {
      "type": "spec",
-     "look": "tolerance-scales",
+     "look": "signal-dial",
      "nav": "Calibration",
      "h": "Instrument calibration",
      "cols": [
@@ -3795,7 +3801,7 @@
     },
     {
      "type": "table",
-     "look": "spares-kit",
+     "look": "spare-sheet",
      "nav": "Like for like",
      "h": "Like for like, or a change?",
      "intro": "Changes wait for your change control.",
@@ -3854,7 +3860,7 @@
     },
     {
      "type": "steps",
-     "look": "response-clock",
+     "look": "fault-knot",
      "nav": "Faults",
      "h": "When something goes wrong",
      "items": [

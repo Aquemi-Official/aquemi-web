@@ -1,14 +1,18 @@
-/* Look "visit-plan" -> VisitPlan (design-system/components/VisitPlan): a service visit as a route around the system.
-   On a limestone drawing sheet the whole plant stands in IsoKit line art, left to right along one water line: control
-   panel, pretreatment (media filter, carbon, softener), RO rack and EDI stack, storage tank, loop pump, UV unit, the
-   loop supply with its diaphragm valve and TOC analyser out to a point of use, the return overhead to the tank, and
-   the report binders and stamp at the end. The technician's walk is a dashed route on the floor in front of the plant,
-   with a numbered stop in front of each part the visit checks. Under the sheet, one card per stop (number, name,
-   what is checked, its link); pointing at a card lights its parts and its stop.
+/* Look "visit-plan" -> VisitPlan (design-system/components/VisitPlan): a service visit as a route around the system,
+   on one navy drawing band. The whole plant stands in IsoKit line art (on-navy lines), left to right along one water
+   line: control panel, pretreatment (media filter, carbon, softener), RO rack and EDI stack, storage tank, loop pump,
+   UV unit, the loop supply with its diaphragm valve and TOC analyser out to a point of use, the return overhead to the
+   tank, and the report binders and stamp at the end. The technician's walk is a dashed route on the floor in front of
+   the plant, with a numbered stop in front of each part the visit checks. The checks are captions along the base of
+   the band, one column per stop on hairlines (number, name, what is checked, its link); pointing at one lights its
+   parts and its stop. The last item, the signed report, ends the band as one limestone line.
+   Concept: research/pass9b/concepts/svc-service.3.png (navy band, line-drawn system, visit checks along its base, the
+   signed report as a closing limestone line).
    Fields (a grid block, as: "route"): h, items [{t, d, link, spot, end, part}]. part: the plant stage(s) the stop
-   checks, space-separated: panel, toc, pre, gen, tank, loop, uv, wear, report (no part: a card without a stop).
-   "end": true on the last item draws its stop as the sign-off tick. The drawing is fixed (one PW package); the stops
-   and cards come from the items. Phones: the walk runs down the page, one stop per row with its stage drawn small.
+   checks, space-separated: panel, toc, pre, gen, tank, loop, uv, wear, report (no part: a caption without a stop).
+   "end": true on the last item draws its stop as the sign-off tick and sets it as the closing line. The drawing is
+   fixed (one PW package); the stops and captions come from the items. Phones: the walk runs down the band, one stop
+   per row with its stage drawn small; the closing line stays last.
    The plant scene (vpPlant) is shared with look "retrofit-plant". */
 function vpDedupe(p){var o=[];p.forEach(function(q){var l=o[o.length-1];if(l&&Math.abs(l[0]-q[0])+Math.abs(l[1]-q[1])+Math.abs(l[2]-q[2])<1e-6)return;o.push(q)});
  for(var i=o.length-2;i>0;i--){var a=isoV.nrm(isoV.sub(o[i],o[i-1])),c=isoV.nrm(isoV.sub(o[i+1],o[i]));if(isoV.dot(a,c)>0.9999)o.splice(i,1)}return o}
@@ -71,15 +75,15 @@ LOOKS['visit-plan']=function(b,H){var I=b.items||[],K='aq-visit-plan',pl=vpPlant
   return '<g class="'+K+'__mark'+(end?' is-end':'')+'" data-stop="'+s.i+'" data-f="'+(acc[k]/tot).toFixed(3)+'"><path class="'+K+'__pin" d="M'+t[0].toFixed(1)+' '+t[1].toFixed(1)+'v-18"/><circle cx="'+t[0].toFixed(1)+'" cy="'+(t[1]-30).toFixed(1)+'" r="13"/>'
    +(end?'<path class="'+K+'__tick" d="M'+(t[0]-5.5).toFixed(1)+' '+(t[1]-30).toFixed(1)+'l4 4 7.5-8.5"/>':'<text x="'+t[0].toFixed(1)+'" y="'+(t[1]-26).toFixed(1)+'">'+n+'</text>')+'</g>'}).join('');
  var drawing='<g transform="scale('+sc.toFixed(4)+') translate('+org[0].toFixed(1)+' '+org[1].toFixed(1)+')">'+pl.order.join('')+'</g>';
- var sheet=isoSheet(VW,VH,{grid:'iso',gridStep:22,title:false,m:0,band:8,cols:9,rows:3});
- var svg='<svg class="aq-iso aq-iso--limestone '+K+'__svg" viewBox="0 0 '+VW+' '+VH+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'
-  +sheet+drawing+'<path class="'+K+'__walk" d="'+wd+'"/>'+marks+'</svg>';
+  var svg='<svg class="aq-iso aq-iso--navy '+K+'__svg" viewBox="0 0 '+VW+' '+VH+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'
+  +drawing+'<path class="'+K+'__walk" d="'+wd+'"/>'+marks+'</svg>';
  var cards=I.map(function(it,i){var ps=parts(it),end=it.end&&i===I.length-1,n=(i<9?'0':'')+(i+1);
-  var mini=ps.length?vpMini(S[ps[0]],'aq-iso--limestone '+K+'__mini'):'';
+  var mini=ps.length?vpMini(S[ps[0]],'aq-iso--navy '+K+'__mini'):'';
   var inner='<span class="'+K+'__fig" aria-hidden="true">'+mini+'<span class="'+K+'__n">'+(end?'<svg viewBox="0 0 16 16" focusable="false"><path d="M3 8.5 6.5 12 13 4.5"/></svg>':n)+'</span></span>'
    +(end?'<span class="'+K+'__cap">Sign-off</span>':'')+'<h3 class="'+K+'__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'');
   return '<li class="'+K+'__stop'+(end?' is-end':'')+'" data-stop="'+i+'" data-parts="'+ps.join(' ')+'">'+(it.link&&wp(it.link)?'<a class="'+K+'__body" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="'+K+'__body" tabindex="0">'+inner+'</div>')+'</li>'}).join('');
- return sec(H+'<div class="'+K+'" style="--n:'+I.length+'"><div class="'+K+'__sheet">'+svg+'</div><ol class="'+K+'__stops" role="list">'+cards+'</ol></div>','aq-band--limestone '+K+'-sec" data-theme="light')};
+ var ends=I.length&&I[I.length-1].end?1:0;
+ return sec(H+'<div class="'+K+'" style="--n:'+I.length+';--cols:'+(I.length-ends)+'"><div class="'+K+'__sheet">'+svg+'</div><ol class="'+K+'__stops" role="list">'+cards+'</ol></div>','aq-band--navy '+K+'-sec')};
 /* Pointing at (or focusing) a stop's card lights its parts and its stop on the drawing */
 (function(){function hl(ev,on){var s=ev.target.closest&&ev.target.closest('.aq-visit-plan__stop');if(!s||s.contains(ev.relatedTarget))return;var r=s.closest('.aq-visit-plan'),svg=r.querySelector('.aq-visit-plan__svg');
  String(s.getAttribute('data-parts')||'').split(' ').forEach(function(id){if(id)[].forEach.call(svg.querySelectorAll('[data-iso-id="'+id+'"]'),function(el){el.classList.toggle('is-lit',on)})});

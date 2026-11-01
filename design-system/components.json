@@ -349,14 +349,14 @@
    "summary": "ContactRoutes deals the ways into Aquemi onto a navy band as route sheets, each showing what happens after you act as a numbered sequence on a water rail that ends at its response clock, so a buyer on a contact page sees which route fits and what follows before the form."
   },
   {
-   "name": "CostBalance",
-   "readme": "design-system/components/CostBalance/README.md",
-   "preview": "design-system/components/CostBalance/preview.html",
+   "name": "CostSkid",
+   "readme": "design-system/components/CostSkid/README.md",
+   "preview": "design-system/components/CostSkid/preview.html",
    "group": "Page sections",
-   "height": "860",
+   "height": "1120",
    "width": "1100",
-   "subtitle": "Running costs as streams across a system boundary",
-   "summary": "CostBalance draws what it costs to run a system as a balance around it: a dashed system boundary with the treatment train inside, every running cost a stream wired in from the left, the water that leaves (to drain) wired out to the right."
+   "subtitle": "Running costs wired by number to the parts of one PW skid",
+   "summary": "CostSkid reads running costs off the system itself: one Purified Water skid in IsoKit line art beside the title, a numbered leader from each part a cost row belongs to, and the running-cost table under it led by the same numbers."
   },
   {
    "name": "CoverageMap",
@@ -477,6 +477,16 @@
    "width": "1100",
    "subtitle": "Question rows under the outline counter, five questions all closed",
    "summary": "FAQ answers the questions engineers and QA ask before they call, as question rows under a large outline counter: index, question and a square +/− key, with the answer opening under the question."
+  },
+  {
+   "name": "FaultKnot",
+   "readme": "design-system/components/FaultKnot/README.md",
+   "preview": "design-system/components/FaultKnot/preview.html",
+   "group": "Page sections",
+   "height": "820",
+   "width": "1100",
+   "subtitle": "Fault steps under a title crossing a navy and limestone split, a knotted pipe",
+   "summary": "FaultKnot sets \"when something goes wrong\" as an editorial split: a huge light title running across a navy and limestone ground, a knotted twin-wall pipe that loosens step by step, and the fault steps read across the foot with the call step on the navy."
   },
   {
    "name": "FaultList",
@@ -909,14 +919,14 @@
    "summary": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a pressure vessel, a control panel, a flanged elbow, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets."
   },
   {
-   "name": "PlanSheets",
-   "readme": "design-system/components/PlanSheets/README.md",
-   "preview": "design-system/components/PlanSheets/preview.html",
+   "name": "PlanChecker",
+   "readme": "design-system/components/PlanChecker/README.md",
+   "preview": "design-system/components/PlanChecker/preview.html",
    "group": "Page sections",
-   "height": "1100",
+   "height": "1150",
    "width": "1100",
-   "subtitle": "Service plans as calibration sheets side by side on navy, terms read across",
-   "summary": "PlanSheets compares service plans like calibration sheets laid side by side on a navy band: each plan a limestone sheet with a ruled scale strip, a huge light sheet number, the plan name, who it suits set large, its terms as ruled fields and its own button."
+   "subtitle": "Service plans as a checker of navy and limestone tiles, terms aligned across plans",
+   "summary": "PlanChecker compares service plans as a checker of square tiles on limestone: one column per plan alternating navy and limestone, a head tile with a huge light slash numeral, the plan name and who it suits, a terms tile whose rows line up across the plans, and each plan's own button."
   },
   {
    "name": "PqCalendar",
@@ -1047,16 +1057,6 @@
    "width": "1100",
    "subtitle": "Four tech-transfer steps as Swiss columns under one water line, the release column navy",
    "summary": "ReleaseRun sets ordered steps as Swiss columns under one water line: a huge light numeral per step, a node where each step starts, and the last step as the navy column where the water is released."
-  },
-  {
-   "name": "ResponseClock",
-   "readme": "design-system/components/ResponseClock/README.md",
-   "preview": "design-system/components/ResponseClock/preview.html",
-   "group": "Page sections",
-   "height": "860",
-   "width": "1100",
-   "subtitle": "Fault steps read off a stopwatch dial",
-   "summary": "ResponseClock tells what happens when something goes wrong as a response clock: a large stopwatch dial with one numbered station per step around its rim, a running arc from the step that starts the clock, and the steps listed beside it with huge light numbers."
   },
   {
    "name": "ResponseLanes",
@@ -1219,14 +1219,14 @@
    "summary": "SiteTiles sets a short grid of what changes for a site as a Swiss row of tiles, each opened by a small flat figure plate that draws the change instead of naming it, then the number large and light, the title, the line and its link."
   },
   {
-   "name": "SparesKit",
-   "readme": "design-system/components/SparesKit/README.md",
-   "preview": "design-system/components/SparesKit/preview.html",
+   "name": "SpareSheet",
+   "readme": "design-system/components/SpareSheet/README.md",
+   "preview": "design-system/components/SpareSheet/preview.html",
    "group": "Page sections",
-   "height": "1200",
+   "height": "1150",
    "width": "1100",
-   "subtitle": "Like-for-like rules on a spares tray, one pocket per part",
-   "summary": "SparesKit reads like-for-like rules off the spares kit: a tray (a shadow board seen from above) with one pocket per part, each part drawn flat in line art in its cut-out, and under it the answers: \"=\" like for like when, \"≠\" a change when, \"→\" what follows a change."
+   "subtitle": "Like for like or a change, on a drawing sheet with one dimensioned spare",
+   "summary": "SpareSheet sets like-for-like rules on a limestone drawing sheet: the title, one spare drawn large as a dimensioned part drawing, and the four-column table under them, where choosing a row draws its part."
   },
   {
    "name": "SpineShelf",
@@ -1409,16 +1409,6 @@
    "summary": "TimeCard sets a spec block of working terms as the shop's time card: a limestone card with its hang hole, a column header, one ruled line per term with a punch slot and number, and the block's note stamped at its foot, so pay and terms read as the paper a person on the floor handles each week."
   },
   {
-   "name": "ToleranceScales",
-   "readme": "design-system/components/ToleranceScales/README.md",
-   "preview": "design-system/components/ToleranceScales/preview.html",
-   "group": "Page sections",
-   "height": "800",
-   "width": "1100",
-   "subtitle": "Calibration acceptance as bands on rulers, figures large",
-   "summary": "ToleranceScales reads instrument calibration as acceptance bands: each instrument a row with its name and basis, and one readout per check with the acceptance set large and a ruler showing the nominal line and the band between the limits."
-  },
-  {
    "name": "TraceLines",
    "readme": "design-system/components/TraceLines/README.md",
    "preview": "design-system/components/TraceLines/preview.html",
@@ -1463,10 +1453,10 @@
    "readme": "design-system/components/VisitPlan/README.md",
    "preview": "design-system/components/VisitPlan/preview.html",
    "group": "Page sections",
-   "height": "820",
+   "height": "780",
    "width": "1100",
-   "subtitle": "A service visit walked around the plant: numbered stops on a dashed route",
-   "summary": "VisitPlan shows a service visit as a route around the system: the whole PW plant in IsoKit line art on a limestone drawing sheet, the technician's walk as a dashed route on the floor in front of it with a numbered stop at each part the visit checks, and one card per stop under the sheet."
+   "subtitle": "A maintenance visit walked around the plant on a navy band, the signed report as the closing line",
+   "summary": "VisitPlan shows a service visit as a route around the system on one navy drawing band: the whole PW plant in IsoKit line art, the technician's walk as a dashed route on the floor in front of it with a numbered stop at each part the visit checks, the checks as captions along the base of the band, and the signed report as one limestone line that closes it."
   },
   {
    "name": "VisitRoute",

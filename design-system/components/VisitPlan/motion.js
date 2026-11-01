@@ -29,7 +29,7 @@ AQmotion.fx('VisitPlan', function (root, m) {
     marks.forEach(function (mk, k) {
       var at = t0 + dur * (+mk.getAttribute('data-f') || 0);
       tl.to(mk, { autoAlpha: 1, duration: 0.2, clearProps: 'opacity,visibility' }, at - 0.05);
-      tl.from(mk.querySelector('circle'), { scale: 1.8, transformOrigin: '50% 50%', duration: 0.35, ease: 'back.out(2)', clearProps: 'transform' }, at - 0.05);
+      tl.from(mk.querySelector('circle'), { scale: 1.8, transformOrigin: '50% 50%', duration: 0.35, ease: 'power3.out', clearProps: 'transform' }, at - 0.05);
       var card = el.querySelector('.aq-visit-plan__stop[data-stop="' + mk.getAttribute('data-stop') + '"]'), ids = card ? String(card.getAttribute('data-parts') || '').split(' ') : [];
       tl.call(function (on, ids, mk) { if (prev) prev(); ids.forEach(function (id) { if (id) AQiso.light(svg, id, true) }); mk.classList.add('is-on');
         prev = function () { ids.forEach(function (id) { if (id) AQiso.light(svg, id, false) }); mk.classList.remove('is-on') } }, [true, ids, mk], at);

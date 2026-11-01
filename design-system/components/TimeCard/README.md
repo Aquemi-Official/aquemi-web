@@ -5,7 +5,7 @@ TimeCard sets a spec block of working terms as the shop's time card: a limestone
 - Fields: `h`, `caption`, `intro`, `cols` [item, term, note], `rows [{p, v, m}]`, `note`, `fold`, `fold_noun`.
 - Tokens: `limestone` card with `on-limestone` text, `navy` rules and stamp, Geist Light 20 terms, Geist Mono for the header, numbers and stamp only; `line-strong` outline for the card beneath. No shadows. At rest every slot is punched (filled navy); hover turns the line's slot flow.
 - Phones: the card fills the width, header hidden, each line stacks item, term and note beside its number.
-- Not for comparing terms across options (CompareTable, PlanSheets) or for company facts (Colophon).
+- Not for comparing terms across options (CompareTable, PlanChecker) or for company facts (Colophon).
 
 ## Motion
 

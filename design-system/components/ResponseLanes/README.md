@@ -6,7 +6,7 @@ Look `response-lanes` (`assets/src/blocks/look-response-lanes.js`), pass 9; adap
 - Request (`__req`): a request written "Severity N: …" shows N as a Geist 300 numeral at 88/72 in a `line-strong` outline (severity 1 filled `flow`), a "Severity N" mono eyebrow and the rest in Geist 300 at 22/28 (first letter capitalised). The first request without a severity opens under a `line-strong` rule (`is-break`), its words aligned with the titles above.
 - Lane (`__lane`): a start mark (square, `ink`), one line (`line-strong`; severity 1 in `flow`) through two zones (first response, what follows, split at a tick); each stop is a node (a 13 px ring in `flow`) with its clause beneath in 15/22. Stops are evenly spaced: the lane shows order, never a time scale.
 - Phones: the request on top, the lane down the left with the zone labels (`__zk`, visually hidden on desktop) as eyebrows.
-- Not for service plan comparisons (PlanSheets) or for timelines with real durations.
+- Not for service plan comparisons (PlanChecker) or for timelines with real durations.
 
 ## Motion
 
