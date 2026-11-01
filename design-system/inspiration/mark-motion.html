@@ -73,15 +73,7 @@ body { margin: 0; background: var(--surface); overflow-x: hidden; }
 .mk--d .ring-br { transform-origin: 352.34px 352.34px; animation-delay: 1.2s; }
 @keyframes d-ring { 0% { transform: scale(1); opacity: 0.6; } 70%, 100% { transform: scale(1.6); opacity: 0; } }
 
-/* E · Spread: the four drops start as one at the centre, spread out to their grid in 0.45 s, then the wave joins two of them;
-   they gather back to the centre to begin again. Each drop's offset to the centre is set on it (--dx, --dy). */
-.mk--e .drop { animation: e-spread 3.2s infinite both; }
-.mk--e .p-bridge { animation: e-join 3.2s var(--mk-ease) infinite both; }
-@keyframes e-spread {
-  0%, 6%  { transform: translate(var(--dx), var(--dy)); animation-timing-function: var(--mk-ease); }
-  20%, 84% { transform: translate(0, 0); animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
-  100%    { transform: translate(var(--dx), var(--dy)); } }
-@keyframes e-join { 0%, 20% { opacity: 0; } 30%, 74% { opacity: 1; } 84%, 100% { opacity: 0; } }
+/* E · Spread is drawn by the script at the end of the page (the wave is recomputed every frame), not by keyframes */
 
 /* Reduced motion (the system setting, or the bar's preview): no movement, the whole mark breathes in opacity only */
 @media (prefers-reduced-motion: reduce) { .mk *, .mk { animation: none !important; } .mk .sw { transform: translateX(760px); } .mk--c .p-bridge { opacity: 1; } .mk--d .ring { opacity: 0; } .mk { animation: rm 2.4s ease-in-out infinite !important; } }
@@ -122,9 +114,10 @@ body { margin: 0; background: var(--surface); overflow-x: hidden; }
         '<mask id="m' + id + '" maskUnits="userSpaceOnUse" x="-200" y="-200" width="912" height="912"><g transform="rotate(-45 256 256)"><rect class="sw" x="-754" y="-200" width="800" height="912" fill="url(#g' + id + ')"/></g></mask></defs>' +
         '<g class="all">' + dot(TL, 'p-tl') + '<path d="' + WAVE + '" mask="url(#m' + id + ')"/>' + dot(BR, 'p-br') + '</g>' },
     c: function () { return '<g class="dots">' + dot(TL, '') + dot(TR, '') + dot(BR, '') + dot(BL, '') + '</g><path class="p-bridge" d="' + WAVE + '"/>' },
-    e: function () {
-      return [TL, TR, BR, BL].map(function (c) { return '<circle class="drop" cx="' + c[0] + '" cy="' + c[1] + '" r="' + R + '" style="--dx:' + (256 - c[0]).toFixed(2) + 'px;--dy:' + (256 - c[1]).toFixed(2) + 'px"/>' }).join('') +
-        '<path class="p-bridge" d="' + WAVE + '"/>' },
+    e: function (id) {
+      return '<defs><filter id="f' + id + '" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">' +
+        '<feGaussianBlur stdDeviation="0"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"/></filter></defs>' +
+        '<g class="e-g" data-f="f' + id + '"><path class="e-wave" d="' + WAVE + '"/>' + dot(TL, 'e-tl') + dot(BR, 'e-br') + '</g>' },
     d: function () { return dot(TL, 'ring ring-tl') + dot(BR, 'ring ring-br') + '<path d="M233.32 159.66A73.66 73.66 0 1 1 86.00 159.66A73.66 73.66 0 1 1 233.32 159.66Z"/><path d="' + WAVE + '"/><path d="M426.00 352.34A73.66 73.66 0 1 1 278.68 352.34A73.66 73.66 0 1 1 426.00 352.34Z"/>' }
   };
   function lockup(k, height) { var id = 'k' + (++n); return '<svg class="mk-lockup" viewBox="0 0 2064.7 351" height="' + height + '" width="' + Math.round(height * 2064.7 / 351) + '" fill="currentColor" aria-hidden="true" focusable="false">' +
@@ -139,8 +132,8 @@ body { margin: 0; background: var(--surface); overflow-x: hidden; }
       ['The most “loader-like”, and the most movement. While it turns the mark is incomplete, never rotated: it rests only on the true mark.', 'Needs care against the rule “never rotate”: the dots move, the mark does not.', 'Best for: long waits (file uploads, report generation).']],
     ['d', 'D · Ripple', 'The mark holds still; a ring spreads from each free drop in turn, like a sonar or pulse loader. 2.4 s a cycle.',
       ['The mark itself never changes, so it is the safest against the brand rules.', 'The rings read as “listening” more than “loading”.', 'Best for: live data (monitoring dashboards, connecting to a sensor).']],
-    ['e', 'E · Spread', 'The four drops start as one at the centre and spread quickly out to their grid (0.45 s), then the wave joins two of them; they gather back to the centre to begin again. 3.2 s a cycle.',
-      ['Reads as one drop dividing into the system: a single source becoming a distribution.', 'Each drop travels about a quarter of the mark’s width (about 23 px at 120 px), more than the 16 px the motion rules allow for page content; fine for a mark, worth agreeing.', 'Played once (about 1 s, ending on the full mark) it is a strong alternative intro to B.']]
+    ['e', 'E · Spread', 'One drop at the centre divides like water: the two drops the wave joins stay connected by a neck that pinches steadily to the mark’s waist, while the free drops pull away (0.45 s). They gather back the same way. 3.2 s a cycle.',
+      ['Reads as one drop dividing into the system: a single source becoming a distribution. The neck follows the mark’s own geometry at every frame, so it lands on the exact wave with no swap.', 'Each drop travels about a quarter of the mark’s width (about 23 px at 120 px), more than the 16 px the motion rules allow for page content; fine for a mark, worth agreeing.', 'Played once (about 1 s, ending on the full mark) it is a strong alternative intro to B.']]
   ];
   document.getElementById('cx-opts').innerHTML = OPTS.map(function (o) {
     return '<section class="cx-opt"><div class="cx-head"><h2>' + o[1] + '</h2><p>' + o[2] + '</p></div><div class="cx-row">' +
@@ -159,6 +152,47 @@ body { margin: 0; background: var(--surface); overflow-x: hidden; }
   /* #t=<ms> freezes every animation at that moment (for stills and review) */
   var t = /t=(\d+)/.exec(location.hash);
   if (t) document.getAnimations().forEach(function (a) { a.pause(); a.currentTime = +t[1] });
+
+  /* E · Spread. The wave keeps the mark's own rule at every moment: its concave sides are arcs centred on the two free
+     drops, meeting the joined drops tangentially. With the drops a distance a from the centre, that arc's radius is
+     a·√2 − r, so the neck starts as wide as a drop and pinches steadily to the mark's waist; at a = 136.25 it is exactly the
+     supplied wave (radius 119.03). While the four drops still overlap, a light liquid blur (fading to none) softens the joins. */
+  var C = 256, S2 = Math.SQRT1_2, A = 136.25;
+  function bez(x1, y1, x2, y2) {
+    function f(t, p1, p2) { return 3 * (1 - t) * (1 - t) * t * p1 + 3 * (1 - t) * t * t * p2 + t * t * t }
+    return function (x) { var lo = 0, hi = 1, m; for (var i = 0; i < 24; i++) { m = (lo + hi) / 2; if (f(m, x1, x2) < x) lo = m; else hi = m } return f(m, y1, y2) };
+  }
+  var easeOut = bez(0.2, 0, 0, 1), easeInOut = bez(0.4, 0, 0.2, 1);
+  function progress(ms) {
+    var c = (ms % 3200) / 3200;
+    if (c < 0.06) return 0;
+    if (c < 0.20) return easeOut((c - 0.06) / 0.14);
+    if (c < 0.84) return 1;
+    return 1 - easeInOut((c - 0.84) / 0.16);
+  }
+  function pt(x, y) { return x.toFixed(2) + ' ' + y.toFixed(2) }
+  function draw(p) {
+    var a = A * p, bl = [C - a * S2, C + a * S2], tr = [C + a * S2, C - a * S2], tl = [C - a * S2, C - a * S2], br = [C + a * S2, C + a * S2];
+    /* Each joined drop meets the neck at fixed points on its own edge (toward the two free drops); the concave sides are
+       arcs of radius a·√2 − r about the free drops, and straight joins while that radius is still too small to exist */
+    var rho = a * Math.SQRT2 - R, t1 = [bl[0] + R, bl[1]], t2 = [bl[0], bl[1] - R], t3 = [tr[0] - R, tr[1]], t4 = [tr[0], tr[1] + R];
+    function side(to) { return rho > 2 ? 'A' + rho.toFixed(2) + ' ' + rho.toFixed(2) + ' 0 0 0 ' + pt(to[0], to[1]) : 'L' + pt(to[0], to[1]) }
+    var d = 'M' + pt(t1[0], t1[1]) + 'A' + R + ' ' + R + ' 0 1 1 ' + pt(t2[0], t2[1]) + side(t3) + 'A' + R + ' ' + R + ' 0 1 1 ' + pt(t4[0], t4[1]) + side(t1) + 'Z';
+    var blur = p < 0.8 ? 10 * (1 - p / 0.8) : 0;
+    document.querySelectorAll('.mk--e .e-g').forEach(function (g) {
+      g.querySelector('.e-wave').setAttribute('d', p >= 1 ? WAVE : d);
+      g.querySelector('.e-tl').setAttribute('cx', tl[0].toFixed(2)); g.querySelector('.e-tl').setAttribute('cy', tl[1].toFixed(2));
+      g.querySelector('.e-br').setAttribute('cx', br[0].toFixed(2)); g.querySelector('.e-br').setAttribute('cy', br[1].toFixed(2));
+      var f = document.getElementById(g.getAttribute('data-f'));
+      if (blur > 0.05) { f.firstChild.setAttribute('stdDeviation', blur.toFixed(2)); g.setAttribute('filter', 'url(#' + f.id + ')') } else g.removeAttribute('filter');
+    });
+  }
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)'), t0 = performance.now();
+  function frame(now) {
+    draw(still.matches || document.documentElement.classList.contains('cx-rm') ? 1 : progress(t ? +t[1] : now - t0));
+    if (!t) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
 })();
 </script>
 </body>
