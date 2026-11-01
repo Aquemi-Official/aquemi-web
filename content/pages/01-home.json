@@ -60,7 +60,8 @@
      "link": "sys-monitoring",
      "icon": "conductivity"
     }
-   ]
+   ],
+   "look": "system-run"
   },
   {
    "type": "grid",
@@ -85,7 +86,8 @@
      "link": "ind-cdmo"
     }
    ],
-   "ground": "light"
+   "ground": "light",
+   "look": "industry-feed"
   },
   {
    "type": "steps",
@@ -116,7 +118,8 @@
      "d": "Performance qualification (PQ) support through 12 months of data, then service and spare parts.",
      "link": "svc-service"
     }
-   ]
+   ],
+   "look": "project-run"
   },
   {
    "type": "grid",
@@ -141,7 +144,8 @@
      "icon": "binder",
      "link": "svc-service"
     }
-   ]
+   ],
+   "look": "exploded-service"
   },
   {
    "type": "table",
@@ -219,7 +223,8 @@
       "intent": "Fault now|Severity 1: production stopped or water out of specification"
      }
     ]
-   ]
+   ],
+   "look": "manifold-router"
   },
   {
    "type": "faq",

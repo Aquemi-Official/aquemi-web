@@ -22,7 +22,7 @@ BLOCKS['standards-map']=function(b,H){var Z=b.zones||[],top=Math.ceil(Z.length/2
    "01" runs into a code that opens the name ("01USP <645>"). Then spec and table rows cell by cell, and list rows;
    the cells and file chips inside an evidence row never answer for it. */
 function smapRow(scope,code){if(!scope)return null;var re=new RegExp('(^|[^A-Za-z0-9])'+code.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?![A-Za-z0-9])'),
-  out=function(r){return r.closest('.aq-standards-map,.aq-section-nav,.aq-menu,.aq-hero,.aq-closing,nav,footer')},
+  out=function(r){return r.closest('.aq-standards-map,.aq-standards-orbit,.aq-section-nav,.aq-menu,.aq-hero,.aq-closing,nav,footer')},
   hit=function(P){return [].some.call(P,function(x){return re.test(x.textContent)})},E=scope.querySelectorAll('.aq-evidence__row'),R=scope.querySelectorAll('tr, li');
  for(var i=0;i<E.length;i++){var nm=E[i].querySelector('.aq-evidence__name');if(nm&&!out(E[i])&&hit(nm.childNodes))return E[i]}
  for(var j=0;j<R.length;j++){var r=R[j];if(out(r)||r.closest('.aq-evidence__row'))continue;/* cell by cell: textContent runs cells together */

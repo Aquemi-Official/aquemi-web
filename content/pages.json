@@ -62,7 +62,8 @@
        "link": "sys-monitoring",
        "icon": "conductivity"
       }
-     ]
+     ],
+     "look": "system-run"
     },
     {
      "type": "grid",
@@ -87,7 +88,8 @@
        "link": "ind-cdmo"
       }
      ],
-     "ground": "light"
+     "ground": "light",
+     "look": "industry-feed"
     },
     {
      "type": "steps",
@@ -118,7 +120,8 @@
        "d": "Performance qualification (PQ) support through 12 months of data, then service and spare parts.",
        "link": "svc-service"
       }
-     ]
+     ],
+     "look": "project-run"
     },
     {
      "type": "grid",
@@ -143,7 +146,8 @@
        "icon": "binder",
        "link": "svc-service"
       }
-     ]
+     ],
+     "look": "exploded-service"
     },
     {
      "type": "table",
@@ -221,7 +225,8 @@
         "intent": "Fault now|Severity 1: production stopped or water out of specification"
        }
       ]
-     ]
+     ],
+     "look": "manifold-router"
     },
     {
      "type": "faq",
@@ -310,29 +315,35 @@
       {
        "t": "Pretreatment",
        "spot": "pretreatment",
-       "d": "A PVC train that removes chlorine, hardness and particles that damage reverse osmosis (RO) membranes."
+       "d": "A PVC train that removes chlorine, hardness and particles that damage reverse osmosis (RO) membranes.",
+       "link": "sys-pretreatment"
       },
       {
        "t": "PW generation",
        "spot": "ro-skid",
-       "d": "RO, then deionization (DI) or electrodeionization (EDI), remove ions, organics and bacteria."
+       "d": "RO, then deionization (DI) or electrodeionization (EDI), remove ions, organics and bacteria.",
+       "link": "sys-pw"
       },
       {
        "t": "Storage",
        "spot": "storage-tank",
-       "d": "Buffers generation against peak demand."
+       "d": "Buffers generation against peak demand.",
+       "link": "sys-storage"
       },
       {
        "t": "Distribution loop",
        "spot": "loop",
-       "d": "Keeps water moving from the tank to every outlet and back."
+       "d": "Keeps water moving from the tank to every outlet and back.",
+       "link": "sys-storage"
       },
       {
        "t": "Points of use",
        "icon": "valve"
       }
      ],
-     "base": "Monitoring and controls · conductivity and TOC"
+     "base": "Monitoring and controls · conductivity and TOC",
+     "look": "strata-run",
+     "base_link": "sys-monitoring"
     },
     {
      "type": "spec",
@@ -353,23 +364,27 @@
       {
        "p": "PW generation, [reference capacity, L/h]",
        "v": "[budget range, CAD]",
-       "m": "Single-pass RO and EDI, city feed"
+       "m": "Single-pass RO and EDI, city feed",
+       "spot": "ro-skid"
       },
       {
        "p": "Storage tank and loop, [reference tank volume L, points of use]",
        "v": "[budget range, CAD]",
-       "m": "[PP loop sanitization method]; field piping excluded"
+       "m": "[PP loop sanitization method]; field piping excluded",
+       "spot": "storage-tank"
       },
       {
        "p": "Pretreatment train, [reference capacity, L/h]",
        "v": "[budget range, CAD]",
-       "m": "PVC train: multimedia, softener and carbon or bisulfite"
+       "m": "PVC train: multimedia, softener and carbon or bisulfite",
+       "spot": "pretreatment"
       }
      ],
      "note": "Moves the price: capacity, EDI or exchange DI, loop length, sanitization and documentation. Not included: installation, tie-ins, utilities, lab testing during qualification and temporary water.",
      "note_link": "svc-service#running-cost",
      "nav": "Budget",
-     "anchor": "budget"
+     "anchor": "budget",
+     "look": "budget-bento"
     },
     {
      "type": "spec",
@@ -383,45 +398,59 @@
       {
        "p": "Connection points (battery limits)",
        "v": "[standard battery limits, typical scope]",
-       "m": "Listed in the proposal, with who supplies each"
+       "m": "Listed in the proposal, with who supplies each",
+       "side": "limit"
       },
       {
        "p": "Footprint and weight",
-       "v": "[typical footprint and weight, by capacity]"
+       "v": "[typical footprint and weight, by capacity]",
+       "side": "package"
       },
       {
        "p": "Power, feed water and drain",
        "v": "[supply voltage options]; [feed and drain flows, L/h]",
-       "m": "RO reject and rinse water to drain"
+       "m": "RO reject and rinse water to drain",
+       "side": "site"
       },
       {
        "p": "Installation and field joints",
-       "v": "[installation scope]"
+       "v": "[installation scope]",
+       "side": "site"
       },
       {
        "p": "Electrical and pressure approvals",
        "v": "Electrical: [panel certification mark held, or field evaluation used]",
        "m": "Pressure: a Canadian registration number (CRN) for [pressure-rated items in the PW package]",
-       "link": "compliance#engineering"
+       "link": "compliance#engineering",
+       "side": "package"
       },
       {
        "p": "Tie-in and shutdown",
        "v": "[typical shutdown for tie-in, days]",
-       "m": "Plan temporary water if production cannot stop"
+       "m": "Plan temporary water if production cannot stop",
+       "side": "site"
       },
       {
        "p": "Sanitizing chemicals",
-       "v": "[PP loop sanitization method]; residual tested before use"
+       "v": "[PP loop sanitization method]; residual tested before use",
+       "side": "site"
       },
       {
        "p": "Isolation and lockout",
-       "v": "[lockable isolation points and lockout diagram]"
+       "v": "[lockable isolation points and lockout diagram]",
+       "side": "package"
       }
      ],
      "nav": "Site",
      "anchor": "site",
      "fold": 4,
-     "fold_noun": "requirements"
+     "fold_noun": "requirements",
+     "look": "battery-limit",
+     "sides": [
+      "The PW package",
+      "Your site"
+     ],
+     "seam": "Battery limit"
     },
     {
      "type": "table",
@@ -438,7 +467,8 @@
        "Uncompensated conductivity; total organic carbon (TOC) ≤ 0.50 mg/L (500 ppb)",
        {
         "t": "Monitoring and controls",
-        "link": "sys-monitoring"
+        "link": "sys-monitoring",
+        "art": "analyzer"
        }
       ],
       [
@@ -446,7 +476,8 @@
        "Turbulent flow; storage that limits microbial growth; online conductivity and TOC",
        {
         "t": "Storage and distribution loops",
-        "link": "sys-storage"
+        "link": "sys-storage",
+        "art": "storage"
        }
       ],
       [
@@ -454,7 +485,8 @@
        "Audit trails, secure electronic records and signatures, validated control software",
        {
         "t": "Monitoring and controls",
-        "link": "sys-monitoring"
+        "link": "sys-monitoring",
+        "art": "panel"
        }
       ],
       [
@@ -462,12 +494,14 @@
        "Guidance: drinking water feed; pretreatment that protects the RO without adding bioburden",
        {
         "t": "Pretreatment",
-        "link": "sys-pretreatment"
+        "link": "sys-pretreatment",
+        "art": "pretreatment"
        }
       ]
      ],
      "as": "evidence",
-     "fold": 3
+     "fold": 3,
+     "look": "standard-wires"
     },
     {
      "type": "faq",
@@ -620,7 +654,8 @@
      ],
      "nav": "Limits",
      "intro": "Limits apply at the point of use; we hold margin on your worst feed.",
-     "as": "gauges"
+     "as": "gauges",
+     "look": "limit-stack"
     },
     {
      "type": "diagram",
@@ -629,40 +664,49 @@
       {
        "t": "Softened, dechlorinated feed",
        "spot": "pretreatment",
-       "d": "Arrives from pretreatment free of chlorine and hardness, so the membranes last."
+       "d": "Arrives from pretreatment free of chlorine and hardness, so the membranes last.",
+       "label": "Feed"
       },
       {
        "t": "Heat exchanger",
        "spot": "heat-exchanger",
-       "d": "Where fitted, warms winter feed to the membrane design temperature."
+       "d": "Where fitted, warms winter feed to the membrane design temperature.",
+       "label": "Heat"
       },
       {
        "t": "RO pass 1",
        "spot": "ro-skid",
-       "d": "Reverse osmosis (RO) removes most dissolved ions, organics and bacteria."
+       "d": "Reverse osmosis (RO) removes most dissolved ions, organics and bacteria.",
+       "label": "RO 1"
       },
       {
        "t": "CO₂ removal",
        "icon": "valve",
-       "d": "Strips or converts carbon dioxide, which passes RO as a gas."
+       "d": "Strips or converts carbon dioxide, which passes RO as a gas.",
+       "label": "CO₂",
+       "fx": "gas"
       },
       {
        "t": "RO pass 2",
        "spot": "ro-skid",
-       "d": "Where needed, adds margin on conductivity, TOC and silica."
+       "d": "Where needed, adds margin on conductivity, TOC and silica.",
+       "label": "RO 2"
       },
       {
        "t": "DI or EDI",
        "spot": "edi-stack",
-       "d": "Removes the remaining ions: electrodeionization (EDI) without regeneration chemicals, deionization (DI) by [DI resin: service exchange or on-site regeneration]."
+       "d": "Removes the remaining ions: electrodeionization (EDI) without regeneration chemicals, deionization (DI) by [DI resin: service exchange or on-site regeneration].",
+       "label": "DI or EDI"
       },
       {
        "t": "To PW storage",
        "spot": "storage-tank",
-       "d": "Off-spec water diverts until it recovers."
+       "d": "Off-spec water diverts until it recovers.",
+       "label": "Out"
       }
      ],
-     "nav": "How it works"
+     "nav": "How it works",
+     "look": "winding-route"
     },
     {
      "type": "spec",
@@ -763,7 +807,8 @@
      "fold": 6,
      "as": "callouts",
      "ground": "light",
-     "fold_noun": "parameters"
+     "fold_noun": "parameters",
+     "look": "param-tiles"
     },
     {
      "type": "docs",
@@ -772,27 +817,44 @@
       {
        "t": "FAT and SAT protocols and reports",
        "d": "Deviations closed; SAT run on your feed water",
-       "key": true
+       "key": true,
+       "at": [
+        0.12,
+        0.45
+       ]
       },
       {
        "t": "Material certificates",
        "d": "[PP material certificates]",
-       "key": true
+       "key": true,
+       "at": [
+        0.66,
+        0.14
+       ]
       },
       {
        "t": "Joint records",
        "d": "[PP joining method]; [PP joint records kept]",
-       "key": true
+       "key": true,
+       "at": [
+        0.4,
+        0.84
+       ]
       },
       {
        "t": "P&IDs and general arrangement",
        "d": "Piping and instrumentation diagrams, as built",
-       "key": true
+       "key": true,
+       "at": [
+        0.78,
+        0.47
+       ]
       }
      ],
      "link": "cmp-documentation#index",
      "link_label": "Full index",
-     "nav": "Documents"
+     "nav": "Documents",
+     "look": "doc-hotspots"
     },
     {
      "type": "options",
@@ -812,22 +874,26 @@
       {
        "t": "Recirculation at no demand",
        "d": "Circulates when storage is full, so water never stands in the membranes.",
-       "spot": "loop"
+       "spot": "loop",
+       "shape": "round"
       },
       {
        "t": "Ultrafiltration or 254 nm UV",
        "d": "After DI or EDI, where your microbial target needs more margin. Ultraviolet (UV) lowers the viable count; it does not sanitize.",
-       "spot": "uv-ozone"
+       "spot": "uv-ozone",
+       "shape": "folder"
       },
       {
        "t": "Recovery enhancement",
        "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter.",
-       "spot": "pump"
+       "spot": "pump",
+       "shape": "folder"
       }
      ],
      "nav": "Options",
      "fold": 3,
-     "spot": "ro-skid"
+     "spot": "ro-skid",
+     "look": "option-tags"
     },
     {
      "type": "faq",
@@ -2066,7 +2132,21 @@
       ]
      ],
      "as": "router",
-     "nav": "Where to start"
+     "nav": "Where to start",
+     "look": "stair-router",
+     "labels": [
+      "New system",
+      "Design approved",
+      "Skid in build",
+      "Installed",
+      "In service",
+      "Aging",
+      "Comparing suppliers"
+     ],
+     "kinetic": [
+      "Start",
+      "Go"
+     ]
     },
     {
      "type": "steps",
@@ -2104,7 +2184,8 @@
       }
      ],
      "nav": "Stages",
-     "ground": "light"
+     "ground": "light",
+     "look": "hold-timeline"
     },
     {
      "type": "faq",
@@ -3998,6 +4079,7 @@
     {
      "type": "table",
      "as": "router",
+     "look": "pid-routes",
      "nav": "Where to start",
      "h": "Your situation and where to start",
      "cols": [
@@ -4062,6 +4144,7 @@
     },
     {
      "type": "table",
+     "look": "macro-leaders",
      "nav": "By industry",
      "h": "Grade, limit and inspector by industry",
      "cols": [
@@ -4129,6 +4212,7 @@
     },
     {
      "type": "grid",
+     "look": "grade-editorial",
      "nav": "First system",
      "anchor": "first-system",
      "h": "Your first Purified Water system",
@@ -4136,47 +4220,108 @@
       {
        "t": "Your product’s grade",
        "d": "Non-sterile drugs need PW (Health Canada GUI-0001); natural health products, potable water at minimum (GUI-0158).",
-       "link": "ind-pharma#grades"
+       "link": "ind-pharma#grades",
+       "big": [
+        {
+         "v": "PW",
+         "l": "Non-sterile drugs · Health Canada GUI-0001"
+        },
+        {
+         "v": "Potable",
+         "l": "Natural health products, at minimum · GUI-0158"
+        }
+       ]
       },
       {
        "t": "What it covers and costs",
        "d": "Incoming water to every outlet, design to qualification; budget ranges by configuration.",
-       "link": "systems#budget"
+       "link": "systems#budget",
+       "span": [
+        "Incoming water",
+        "Every outlet"
+       ],
+       "list": [
+        "Design to qualification",
+        "Budget ranges by configuration"
+       ]
       },
       {
        "t": "Running cost",
        "d": "Service plan, consumables, energy and water to drain.",
-       "link": "svc-service#running-cost"
+       "link": "svc-service#running-cost",
+       "list": [
+        "Service plan",
+        "Consumables",
+        "Energy",
+        "Water to drain"
+       ]
       },
       {
        "t": "Your team’s first year",
        "d": "First use after at least 2 weeks of daily sampling, if your quality unit approves. [staff hours in year one: sampling, logs, sanitization].",
-       "link": "svc-cq"
+       "link": "svc-cq",
+       "big": [
+        {
+         "v": "2 weeks",
+         "pre": "At least",
+         "l": "Of daily sampling before first use, if your quality unit approves"
+        }
+       ],
+       "bars": [
+        "Sampling",
+        "Logs",
+        "Sanitization"
+       ],
+       "bars_note": "[staff hours in year one: sampling, logs, sanitization]"
       },
       {
        "t": "Who you work with",
        "d": "New Ontario company: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing and design specialist.",
-       "link": "about#people"
+       "link": "about#people",
+       "kicker": "New Ontario company",
+       "list": [
+        "Commercial lead",
+        "Automation engineer with pharmaceutical water experience",
+        "Modular manufacturing and design specialist"
+       ],
+       "panel": true
       }
      ]
     },
     {
      "type": "options",
+     "look": "market-callouts",
      "nav": "Adjacent uses",
      "anchor": "adjacent",
      "h": "Outside drug and device manufacturing",
      "items": [
       {
        "t": "Hospital reprocessing (MDRD)",
-       "d": "[hospital water scope]. CSA Z314:23; ANSI/AAMI ST108:2023. Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit."
+       "d": "[hospital water scope]. CSA Z314:23; ANSI/AAMI ST108:2023. Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit.",
+       "part": "outlet",
+       "scope": "[hospital water scope]",
+       "tags": [
+        "CSA Z314:23",
+        "ANSI/AAMI ST108:2023"
+       ],
+       "note": "Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit."
       },
       {
        "t": "Research laboratories",
-       "d": "[lab water scope]. ASTM D1193-24: central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers]."
+       "d": "[lab water scope]. ASTM D1193-24: central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers].",
+       "part": "ro",
+       "scope": "[lab water scope]",
+       "tags": [
+        "ASTM D1193-24"
+       ],
+       "note": "Central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers]."
       },
       {
        "t": "Industrial demineralized water",
-       "d": "[industrial water scope]. Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange."
+       "d": "[industrial water scope]. Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange.",
+       "part": "edi",
+       "scope": "[industrial water scope]",
+       "note": "Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange."
       }
      ]
     },
@@ -5125,24 +5270,33 @@
        "p": "Conductivity",
        "v": "≤ 1.3 µS/cm @ 25 °C (stage 1, uncompensated)",
        "m": "USP <645>",
-       "hl": true
+       "hl": true,
+       "icon": "conductivity",
+       "alt": {
+        "v": "≤ 5.1 µS/cm at 25 °C",
+        "m": "Ph. Eur."
+       }
       },
       {
        "p": "Total organic carbon",
        "v": "≤ 0.50 mg/L (500 ppb)",
-       "m": "USP <643>; Ph. Eur. 2.2.44"
+       "m": "USP <643>; Ph. Eur. 2.2.44",
+       "icon": "toc"
       },
       {
        "p": "Microbial action level",
        "v": "≤ 100 CFU/mL",
        "level": "action",
-       "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009"
+       "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
+       "icon": "droplet"
       }
      ],
-     "note": "Ph. Eur. conductivity: ≤ 5.1 µS/cm at 25 °C. Nitrates: ≤ 0.2 ppm, test waived at Water for Injection (WFI) conductivity (Ph. Eur. 11.4). CFU: colony-forming units."
+     "note": "Nitrates: ≤ 0.2 ppm, test waived at Water for Injection (WFI) conductivity (Ph. Eur. 11.4). CFU: colony-forming units.",
+     "look": "limit-bento"
     },
     {
      "type": "standards-map",
+     "look": "standards-orbit",
      "nav": "Map",
      "anchor": "map",
      "h": "Which standard governs each part",
@@ -5231,6 +5385,7 @@
      "as": "evidence",
      "nav": "Pharmacopoeia",
      "anchor": "pharmacopoeia",
+     "look": "proof-folders",
      "ground": "light",
      "h": "Pharmacopoeias and their proof",
      "cols": [
@@ -5294,6 +5449,17 @@
      "as": "evidence",
      "nav": "GMP",
      "anchor": "gmp",
+     "look": "cutaway-rail",
+     "tag": "Active",
+     "parts": [
+      "mat",
+      "mat loop pov docs",
+      "docs",
+      "ctl",
+      "ctl ana",
+      "ana pov",
+      "pov loop"
+     ],
      "h": "Good manufacturing practice (GMP) and qualification",
      "cols": [
       "Standard",
@@ -5375,6 +5541,14 @@
      "as": "evidence",
      "nav": "Engineering",
      "anchor": "engineering",
+     "look": "pipe-collage",
+     "pieces": [
+      "vessel",
+      "panel",
+      "pipe",
+      "pellets",
+      "weld"
+     ],
      "h": "Engineering, materials and pressure equipment",
      "cols": [
       "Standard",

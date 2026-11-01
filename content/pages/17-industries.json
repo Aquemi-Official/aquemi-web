@@ -24,6 +24,7 @@
   {
    "type": "table",
    "as": "router",
+   "look": "pid-routes",
    "nav": "Where to start",
    "h": "Your situation and where to start",
    "cols": [
@@ -88,6 +89,7 @@
   },
   {
    "type": "table",
+   "look": "macro-leaders",
    "nav": "By industry",
    "h": "Grade, limit and inspector by industry",
    "cols": [
@@ -155,6 +157,7 @@
   },
   {
    "type": "grid",
+   "look": "grade-editorial",
    "nav": "First system",
    "anchor": "first-system",
    "h": "Your first Purified Water system",
@@ -162,47 +165,108 @@
     {
      "t": "Your product’s grade",
      "d": "Non-sterile drugs need PW (Health Canada GUI-0001); natural health products, potable water at minimum (GUI-0158).",
-     "link": "ind-pharma#grades"
+     "link": "ind-pharma#grades",
+     "big": [
+      {
+       "v": "PW",
+       "l": "Non-sterile drugs · Health Canada GUI-0001"
+      },
+      {
+       "v": "Potable",
+       "l": "Natural health products, at minimum · GUI-0158"
+      }
+     ]
     },
     {
      "t": "What it covers and costs",
      "d": "Incoming water to every outlet, design to qualification; budget ranges by configuration.",
-     "link": "systems#budget"
+     "link": "systems#budget",
+     "span": [
+      "Incoming water",
+      "Every outlet"
+     ],
+     "list": [
+      "Design to qualification",
+      "Budget ranges by configuration"
+     ]
     },
     {
      "t": "Running cost",
      "d": "Service plan, consumables, energy and water to drain.",
-     "link": "svc-service#running-cost"
+     "link": "svc-service#running-cost",
+     "list": [
+      "Service plan",
+      "Consumables",
+      "Energy",
+      "Water to drain"
+     ]
     },
     {
      "t": "Your team’s first year",
      "d": "First use after at least 2 weeks of daily sampling, if your quality unit approves. [staff hours in year one: sampling, logs, sanitization].",
-     "link": "svc-cq"
+     "link": "svc-cq",
+     "big": [
+      {
+       "v": "2 weeks",
+       "pre": "At least",
+       "l": "Of daily sampling before first use, if your quality unit approves"
+      }
+     ],
+     "bars": [
+      "Sampling",
+      "Logs",
+      "Sanitization"
+     ],
+     "bars_note": "[staff hours in year one: sampling, logs, sanitization]"
     },
     {
      "t": "Who you work with",
      "d": "New Ontario company: a commercial lead, an automation engineer with pharmaceutical water experience and a modular manufacturing and design specialist.",
-     "link": "about#people"
+     "link": "about#people",
+     "kicker": "New Ontario company",
+     "list": [
+      "Commercial lead",
+      "Automation engineer with pharmaceutical water experience",
+      "Modular manufacturing and design specialist"
+     ],
+     "panel": true
     }
    ]
   },
   {
    "type": "options",
+   "look": "market-callouts",
    "nav": "Adjacent uses",
    "anchor": "adjacent",
    "h": "Outside drug and device manufacturing",
    "items": [
     {
      "t": "Hospital reprocessing (MDRD)",
-     "d": "[hospital water scope]. CSA Z314:23; ANSI/AAMI ST108:2023. Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit."
+     "d": "[hospital water scope]. CSA Z314:23; ANSI/AAMI ST108:2023. Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit.",
+     "part": "outlet",
+     "scope": "[hospital water scope]",
+     "tags": [
+      "CSA Z314:23",
+      "ANSI/AAMI ST108:2023"
+     ],
+     "note": "Critical water (ST108): looser on ions than PW, tighter on microbes, with an endotoxin limit."
     },
     {
      "t": "Research laboratories",
-     "d": "[lab water scope]. ASTM D1193-24: central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers]."
+     "d": "[lab water scope]. ASTM D1193-24: central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers].",
+     "part": "ro",
+     "scope": "[lab water scope]",
+     "tags": [
+      "ASTM D1193-24"
+     ],
+     "note": "Central reverse osmosis (RO), with electrodeionization (EDI) where needed; Type I from point-of-use polishers [whether Aquemi integrates third-party polishers]."
     },
     {
      "t": "Industrial demineralized water",
-     "d": "[industrial water scope]. Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange."
+     "d": "[industrial water scope]. Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange.",
+     "part": "edi",
+     "scope": "[industrial water scope]",
+     "note": "Limits from your process or equipment maker; RO and EDI replace regenerated ion exchange."
     }
    ]
   },

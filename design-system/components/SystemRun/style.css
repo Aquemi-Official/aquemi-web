@@ -1,0 +1,68 @@
+/* ---------- SystemRun: the package as one continuous water line, a navy blueprint of the four systems ---------- */
+/* The drawing spans the content width (IsoKit, aq-iso--navy) with a bracket over each system; one column per system
+   under it. Water on navy is flow lightened towards on-navy (the IsoKit navy rule), kept in --sr-flow. */
+.aq-system-run { --sr-flow: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); --sr-rule: color-mix(in srgb, var(--on-navy-muted) 35%, transparent);
+  position: relative; display: flex; flex-direction: column; gap: var(--space-8); }
+.aq-system-run__fig { position: relative; margin-inline: calc(-1 * var(--space-4)); }
+.aq-system-run__svg { width: 100%; }
+
+/* Brackets over each system: index and name on a hairline with end ticks */
+.aq-system-run__brackets { position: absolute; inset: 0; pointer-events: none; }
+.aq-system-run__bracket { position: absolute; top: 7%; display: flex; gap: var(--space-2); align-items: baseline; justify-content: center;
+  padding-top: var(--space-3); border-top: 1px solid var(--sr-rule, var(--line));
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); white-space: nowrap;
+  transition: color 300ms, border-color 300ms; }
+.aq-system-run__bracket::before, .aq-system-run__bracket::after { content: ""; position: absolute; top: calc(-1 * var(--space-2)); width: 1px; height: var(--space-4); background: var(--sr-rule, var(--line)); }
+.aq-system-run__bracket::before { left: 0; }
+.aq-system-run__bracket::after { right: 0; }
+.aq-system-run__bn { color: var(--on-navy); }
+.aq-system-run__bracket.is-on { color: var(--on-navy); border-top-color: var(--sr-flow, var(--flow)); }
+.aq-system-run__bracket.is-on .aq-system-run__bn { color: var(--sr-flow, var(--flow)); }
+
+/* Ends of the run: where drinking water enters, where Purified Water leaves */
+.aq-system-run__end { position: absolute; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); white-space: nowrap; }
+.aq-system-run__end--in { transform: translate(0, calc(-100% - var(--space-3))); }
+.aq-system-run__end--out { right: var(--space-4); bottom: 8%; color: var(--sr-flow, var(--flow)); }
+.aq-system-run__end--in::after, .aq-system-run__end--out::after { content: "\00a0\2192"; }
+
+/* Columns: one per system, a hairline on top that fills with water when the system lights */
+.aq-system-run__stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--space-6); }
+.aq-system-run__item { min-width: 0; display: flex; }
+.aq-system-run__stage { position: relative; display: flex; flex-direction: column; gap: var(--space-3); width: 100%; min-height: 44px;
+  padding-top: var(--space-6); border-top: 1px solid var(--sr-rule, var(--line)); color: var(--on-navy); text-decoration: none; }
+.aq-system-run__mark { position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--sr-flow, var(--flow)); transform: scaleX(0); transform-origin: 0 50%; transition: transform 500ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-system-run__stage.is-on .aq-system-run__mark, .aq-system-run__stage:hover .aq-system-run__mark, .aq-system-run__stage:focus-visible .aq-system-run__mark { transform: scaleX(1); }
+.aq-system-run__stage:focus-visible { outline: 2px solid var(--on-navy); outline-offset: var(--space-2); }
+.aq-system-run__mini-wrap { display: none; }
+.aq-system-run__code { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--on-navy-muted); }
+.aq-system-run__t { margin: 0; font: 400 24px/30px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); }
+.aq-system-run__d { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--on-navy-muted); }
+.aq-system-run__foot { margin: auto 0 0; padding-top: var(--space-2); display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+.aq-system-run .aq-tag { color: var(--on-navy); border-color: var(--on-navy-muted); }
+.aq-system-run__go { font: 500 14px/20px var(--font-sans); color: var(--sr-flow, var(--flow)); }
+.aq-system-run__go::after { content: "\00a0\2192"; display: inline-block; transition: transform 200ms; }
+.aq-system-run__stage:hover .aq-system-run__go::after { transform: translateX(var(--space-1)); }
+.aq-system-run__stage:hover .aq-system-run__t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--sr-flow, var(--flow)); }
+
+@container (max-width: 1100px) {
+  .aq-system-run__bracket { font-size: 11px; letter-spacing: 0.04em; }
+  .aq-system-run__t { font-size: 20px; line-height: 26px; }
+  .aq-system-run__d { font-size: 14px; line-height: 22px; }
+}
+
+/* Phones: one drawing per system, stacked down a vertical water line at the left */
+@container (max-width: 860px) {
+  .aq-system-run { gap: 0; }
+  .aq-system-run__fig { display: none; }
+  .aq-system-run__stages { grid-template-columns: minmax(0, 1fr); row-gap: 0; border-left: 2px solid var(--sr-rule, var(--line)); margin-left: var(--space-2); }
+  .aq-system-run__stage { border-top: 0; padding: var(--space-6) 0 var(--space-8) var(--space-6); }
+  .aq-system-run__mark { left: -2px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; transform: scaleY(0); transform-origin: 50% 0; }
+  .aq-system-run__stage.is-on .aq-system-run__mark, .aq-system-run__stage:hover .aq-system-run__mark { transform: scaleY(1); }
+  .aq-system-run__stage::before { content: ""; position: absolute; left: calc(-1 * var(--space-2) - 1px); top: var(--space-8); width: var(--space-3); height: var(--space-3); border-radius: var(--radius-pill); background: var(--navy); border: 2px solid var(--sr-flow, var(--flow)); }
+  .aq-system-run__mini-wrap { display: block; margin-bottom: var(--space-2); }
+  .aq-system-run__mini { width: 100%; max-height: 180px; }
+  .aq-system-run__t { font-size: 22px; line-height: 28px; }
+}
+
+/* the drawing may run a step past the content width: the band clips it */
+.aq-system-run-sec { overflow-x: clip; }

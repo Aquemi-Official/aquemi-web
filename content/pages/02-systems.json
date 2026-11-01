@@ -25,29 +25,35 @@
     {
      "t": "Pretreatment",
      "spot": "pretreatment",
-     "d": "A PVC train that removes chlorine, hardness and particles that damage reverse osmosis (RO) membranes."
+     "d": "A PVC train that removes chlorine, hardness and particles that damage reverse osmosis (RO) membranes.",
+     "link": "sys-pretreatment"
     },
     {
      "t": "PW generation",
      "spot": "ro-skid",
-     "d": "RO, then deionization (DI) or electrodeionization (EDI), remove ions, organics and bacteria."
+     "d": "RO, then deionization (DI) or electrodeionization (EDI), remove ions, organics and bacteria.",
+     "link": "sys-pw"
     },
     {
      "t": "Storage",
      "spot": "storage-tank",
-     "d": "Buffers generation against peak demand."
+     "d": "Buffers generation against peak demand.",
+     "link": "sys-storage"
     },
     {
      "t": "Distribution loop",
      "spot": "loop",
-     "d": "Keeps water moving from the tank to every outlet and back."
+     "d": "Keeps water moving from the tank to every outlet and back.",
+     "link": "sys-storage"
     },
     {
      "t": "Points of use",
      "icon": "valve"
     }
    ],
-   "base": "Monitoring and controls · conductivity and TOC"
+   "base": "Monitoring and controls · conductivity and TOC",
+   "look": "strata-run",
+   "base_link": "sys-monitoring"
   },
   {
    "type": "spec",
@@ -68,23 +74,27 @@
     {
      "p": "PW generation, [reference capacity, L/h]",
      "v": "[budget range, CAD]",
-     "m": "Single-pass RO and EDI, city feed"
+     "m": "Single-pass RO and EDI, city feed",
+     "spot": "ro-skid"
     },
     {
      "p": "Storage tank and loop, [reference tank volume L, points of use]",
      "v": "[budget range, CAD]",
-     "m": "[PP loop sanitization method]; field piping excluded"
+     "m": "[PP loop sanitization method]; field piping excluded",
+     "spot": "storage-tank"
     },
     {
      "p": "Pretreatment train, [reference capacity, L/h]",
      "v": "[budget range, CAD]",
-     "m": "PVC train: multimedia, softener and carbon or bisulfite"
+     "m": "PVC train: multimedia, softener and carbon or bisulfite",
+     "spot": "pretreatment"
     }
    ],
    "note": "Moves the price: capacity, EDI or exchange DI, loop length, sanitization and documentation. Not included: installation, tie-ins, utilities, lab testing during qualification and temporary water.",
    "note_link": "svc-service#running-cost",
    "nav": "Budget",
-   "anchor": "budget"
+   "anchor": "budget",
+   "look": "budget-bento"
   },
   {
    "type": "spec",
@@ -98,45 +108,59 @@
     {
      "p": "Connection points (battery limits)",
      "v": "[standard battery limits, typical scope]",
-     "m": "Listed in the proposal, with who supplies each"
+     "m": "Listed in the proposal, with who supplies each",
+     "side": "limit"
     },
     {
      "p": "Footprint and weight",
-     "v": "[typical footprint and weight, by capacity]"
+     "v": "[typical footprint and weight, by capacity]",
+     "side": "package"
     },
     {
      "p": "Power, feed water and drain",
      "v": "[supply voltage options]; [feed and drain flows, L/h]",
-     "m": "RO reject and rinse water to drain"
+     "m": "RO reject and rinse water to drain",
+     "side": "site"
     },
     {
      "p": "Installation and field joints",
-     "v": "[installation scope]"
+     "v": "[installation scope]",
+     "side": "site"
     },
     {
      "p": "Electrical and pressure approvals",
      "v": "Electrical: [panel certification mark held, or field evaluation used]",
      "m": "Pressure: a Canadian registration number (CRN) for [pressure-rated items in the PW package]",
-     "link": "compliance#engineering"
+     "link": "compliance#engineering",
+     "side": "package"
     },
     {
      "p": "Tie-in and shutdown",
      "v": "[typical shutdown for tie-in, days]",
-     "m": "Plan temporary water if production cannot stop"
+     "m": "Plan temporary water if production cannot stop",
+     "side": "site"
     },
     {
      "p": "Sanitizing chemicals",
-     "v": "[PP loop sanitization method]; residual tested before use"
+     "v": "[PP loop sanitization method]; residual tested before use",
+     "side": "site"
     },
     {
      "p": "Isolation and lockout",
-     "v": "[lockable isolation points and lockout diagram]"
+     "v": "[lockable isolation points and lockout diagram]",
+     "side": "package"
     }
    ],
    "nav": "Site",
    "anchor": "site",
    "fold": 4,
-   "fold_noun": "requirements"
+   "fold_noun": "requirements",
+   "look": "battery-limit",
+   "sides": [
+    "The PW package",
+    "Your site"
+   ],
+   "seam": "Battery limit"
   },
   {
    "type": "table",
@@ -153,7 +177,8 @@
      "Uncompensated conductivity; total organic carbon (TOC) ≤ 0.50 mg/L (500 ppb)",
      {
       "t": "Monitoring and controls",
-      "link": "sys-monitoring"
+      "link": "sys-monitoring",
+      "art": "analyzer"
      }
     ],
     [
@@ -161,7 +186,8 @@
      "Turbulent flow; storage that limits microbial growth; online conductivity and TOC",
      {
       "t": "Storage and distribution loops",
-      "link": "sys-storage"
+      "link": "sys-storage",
+      "art": "storage"
      }
     ],
     [
@@ -169,7 +195,8 @@
      "Audit trails, secure electronic records and signatures, validated control software",
      {
       "t": "Monitoring and controls",
-      "link": "sys-monitoring"
+      "link": "sys-monitoring",
+      "art": "panel"
      }
     ],
     [
@@ -177,12 +204,14 @@
      "Guidance: drinking water feed; pretreatment that protects the RO without adding bioburden",
      {
       "t": "Pretreatment",
-      "link": "sys-pretreatment"
+      "link": "sys-pretreatment",
+      "art": "pretreatment"
      }
     ]
    ],
    "as": "evidence",
-   "fold": 3
+   "fold": 3,
+   "look": "standard-wires"
   },
   {
    "type": "faq",

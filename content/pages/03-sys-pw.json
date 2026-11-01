@@ -71,7 +71,8 @@
    ],
    "nav": "Limits",
    "intro": "Limits apply at the point of use; we hold margin on your worst feed.",
-   "as": "gauges"
+   "as": "gauges",
+   "look": "limit-stack"
   },
   {
    "type": "diagram",
@@ -80,40 +81,49 @@
     {
      "t": "Softened, dechlorinated feed",
      "spot": "pretreatment",
-     "d": "Arrives from pretreatment free of chlorine and hardness, so the membranes last."
+     "d": "Arrives from pretreatment free of chlorine and hardness, so the membranes last.",
+     "label": "Feed"
     },
     {
      "t": "Heat exchanger",
      "spot": "heat-exchanger",
-     "d": "Where fitted, warms winter feed to the membrane design temperature."
+     "d": "Where fitted, warms winter feed to the membrane design temperature.",
+     "label": "Heat"
     },
     {
      "t": "RO pass 1",
      "spot": "ro-skid",
-     "d": "Reverse osmosis (RO) removes most dissolved ions, organics and bacteria."
+     "d": "Reverse osmosis (RO) removes most dissolved ions, organics and bacteria.",
+     "label": "RO 1"
     },
     {
      "t": "CO₂ removal",
      "icon": "valve",
-     "d": "Strips or converts carbon dioxide, which passes RO as a gas."
+     "d": "Strips or converts carbon dioxide, which passes RO as a gas.",
+     "label": "CO₂",
+     "fx": "gas"
     },
     {
      "t": "RO pass 2",
      "spot": "ro-skid",
-     "d": "Where needed, adds margin on conductivity, TOC and silica."
+     "d": "Where needed, adds margin on conductivity, TOC and silica.",
+     "label": "RO 2"
     },
     {
      "t": "DI or EDI",
      "spot": "edi-stack",
-     "d": "Removes the remaining ions: electrodeionization (EDI) without regeneration chemicals, deionization (DI) by [DI resin: service exchange or on-site regeneration]."
+     "d": "Removes the remaining ions: electrodeionization (EDI) without regeneration chemicals, deionization (DI) by [DI resin: service exchange or on-site regeneration].",
+     "label": "DI or EDI"
     },
     {
      "t": "To PW storage",
      "spot": "storage-tank",
-     "d": "Off-spec water diverts until it recovers."
+     "d": "Off-spec water diverts until it recovers.",
+     "label": "Out"
     }
    ],
-   "nav": "How it works"
+   "nav": "How it works",
+   "look": "winding-route"
   },
   {
    "type": "spec",
@@ -214,7 +224,8 @@
    "fold": 6,
    "as": "callouts",
    "ground": "light",
-   "fold_noun": "parameters"
+   "fold_noun": "parameters",
+   "look": "param-tiles"
   },
   {
    "type": "docs",
@@ -223,27 +234,44 @@
     {
      "t": "FAT and SAT protocols and reports",
      "d": "Deviations closed; SAT run on your feed water",
-     "key": true
+     "key": true,
+     "at": [
+      0.12,
+      0.45
+     ]
     },
     {
      "t": "Material certificates",
      "d": "[PP material certificates]",
-     "key": true
+     "key": true,
+     "at": [
+      0.66,
+      0.14
+     ]
     },
     {
      "t": "Joint records",
      "d": "[PP joining method]; [PP joint records kept]",
-     "key": true
+     "key": true,
+     "at": [
+      0.4,
+      0.84
+     ]
     },
     {
      "t": "P&IDs and general arrangement",
      "d": "Piping and instrumentation diagrams, as built",
-     "key": true
+     "key": true,
+     "at": [
+      0.78,
+      0.47
+     ]
     }
    ],
    "link": "cmp-documentation#index",
    "link_label": "Full index",
-   "nav": "Documents"
+   "nav": "Documents",
+   "look": "doc-hotspots"
   },
   {
    "type": "options",
@@ -263,22 +291,26 @@
     {
      "t": "Recirculation at no demand",
      "d": "Circulates when storage is full, so water never stands in the membranes.",
-     "spot": "loop"
+     "spot": "loop",
+     "shape": "round"
     },
     {
      "t": "Ultrafiltration or 254 nm UV",
      "d": "After DI or EDI, where your microbial target needs more margin. Ultraviolet (UV) lowers the viable count; it does not sanitize.",
-     "spot": "uv-ozone"
+     "spot": "uv-ozone",
+     "shape": "folder"
     },
     {
      "t": "Recovery enhancement",
      "d": "A concentrate recovery RO stage cuts water to drain where sewer charges or supply limits matter.",
-     "spot": "pump"
+     "spot": "pump",
+     "shape": "folder"
     }
    ],
    "nav": "Options",
    "fold": 3,
-   "spot": "ro-skid"
+   "spot": "ro-skid",
+   "look": "option-tags"
   },
   {
    "type": "faq",

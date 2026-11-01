@@ -92,7 +92,21 @@
     ]
    ],
    "as": "router",
-   "nav": "Where to start"
+   "nav": "Where to start",
+   "look": "stair-router",
+   "labels": [
+    "New system",
+    "Design approved",
+    "Skid in build",
+    "Installed",
+    "In service",
+    "Aging",
+    "Comparing suppliers"
+   ],
+   "kinetic": [
+    "Start",
+    "Go"
+   ]
   },
   {
    "type": "steps",
@@ -130,7 +144,8 @@
     }
    ],
    "nav": "Stages",
-   "ground": "light"
+   "ground": "light",
+   "look": "hold-timeline"
   },
   {
    "type": "faq",

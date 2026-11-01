@@ -178,6 +178,73 @@
   }
   window.AQmotion = { run: run, kill: kill, fx: function (name, fn) { fx.push({ name: name, fn: fn }) } };
 })();
+/* BatteryLimit: the limit is drawn, then each side fills up to it. The battery limit line draws top to bottom and its
+   name decodes; the navy half opens out from the seam to the left; the battery-limit card stamps down on the line;
+   the side labels decode; then the cards come in from their own side in list order, alternating, and each one's leader
+   runs to the seam and its tie-in node seats there. The heading stays with the core. One timeline, once, under 5 s. */
+AQmotion.fx('BatteryLimit', function (root, m) {
+  root.querySelectorAll('.aq-battery-limit-sec').forEach(function (sec) {
+    var el = sec.querySelector('.aq-battery-limit'); if (!el || !m.free(el)) return;
+    var qa = function (s, r) { return [].slice.call((r || sec).querySelectorAll(s)) };
+    var navy = sec.querySelector('.aq-battery-limit__navy'), line = sec.querySelector('.aq-battery-limit__line'), name = sec.querySelector('.aq-battery-limit__seam-t');
+    var limit = el.querySelector('.aq-battery-limit__limit'), sides = qa('.aq-battery-limit__side', el), lists = qa('.aq-battery-limit__list', el);
+    [navy, line, name, limit].concat(sides, lists).forEach(function (x) { if (x) m.claim(x) });
+    var items = qa('.aq-battery-limit__item', el).filter(function (li) { return !li.classList.contains('aq-fold-x') || !m.narrow() });
+    items.sort(function (a, b) { return +a.getAttribute('data-r') - +b.getAttribute('data-r') });
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    if (line && !m.narrow()) tl.fromTo(line, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.4, ease: 'power2.inOut', clearProps: 'clipPath' }, 0);
+    if (name && !m.narrow()) tl.call(function () { m.scramble(name, 0) }, null, 0.2);
+    if (navy && !m.narrow()) tl.from(navy, { scaleX: 0.04, transformOrigin: '100% 50%', duration: 1.1, ease: 'power3.inOut', clearProps: 'transform' }, 0.05);
+    if (limit) tl.from(limit, { y: -18, scale: 1.04, autoAlpha: 0, duration: 0.55, ease: 'back.out(1.8)', clearProps: 'transform,opacity,visibility' }, 0.55);
+    sides.forEach(function (s, i) { tl.from(s, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, 0.8 + i * 0.1); tl.call(function () { m.scramble(s, 0) }, null, 0.8 + i * 0.1) });
+    items.forEach(function (li, i) {
+      var site = !!li.closest('.is-site'), at = 0.95 + i * 0.16, card = li.querySelector('.aq-battery-limit__card');
+      tl.from(card, { x: site ? 36 : -36, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, at);
+      tl.from(li.querySelector('.aq-battery-limit__lead'), { scaleX: 0, duration: 0.45, ease: 'power2.inOut', clearProps: 'transform' }, at + 0.35);
+      tl.from(li.querySelector('.aq-battery-limit__node'), { scale: 0, rotation: 0, duration: 0.35, ease: 'back.out(3)', clearProps: 'transform' }, at + 0.7);
+    });
+    m.on(sec, function () { tl.play() }, 'top 70%');
+  });
+});
+/* BudgetBento: the sheet is set like type. The lead tile prints up from its foot and its huge numeral slides into its
+   crop; the module tiles slide in beside it one by one, numerals first; on every tile the ruler ticks rise and the
+   range band opens out from its centre between its brackets; the lead's included items tick in; then the two chip rows
+   follow (drivers, then exclusions) and the link. One timeline, once, under 5 s. */
+AQmotion.fx('BudgetBento', function (root, m) {
+  root.querySelectorAll('.aq-budget-bento').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var lead = el.querySelector('.aq-budget-bento__tile.is-lead'), mods = qa('.aq-budget-bento__tile:not(.is-lead)');
+    if (lead) {
+      tl.fromTo(lead, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 0.9, ease: 'power3.inOut', clearProps: 'clipPath' }, 0);
+      tl.from(lead.querySelector('.aq-budget-bento__n'), { yPercent: 40, autoAlpha: 0, duration: 1.1, clearProps: 'transform,opacity,visibility' }, 0.35);
+      tl.from(qa('.aq-budget-bento__p, .aq-budget-bento__val, .aq-budget-bento__basis > .aq-budget-bento__k', lead), { y: 14, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 0.5);
+      tl.from(qa('.aq-budget-bento__incl li', lead), { x: -10, autoAlpha: 0, duration: 0.4, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 0.9);
+    }
+    mods.forEach(function (t, i) {
+      var at = 0.3 + i * 0.16;
+      tl.from(t, { x: 28, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, at);
+      tl.from(t.querySelector('.aq-budget-bento__n'), { yPercent: 60, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, at + 0.1);
+      var sp = t.querySelector('.aq-budget-bento__spot'); if (sp) tl.fromTo(sp, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 0.7, ease: 'power2.inOut', clearProps: 'clipPath' }, at + 0.2);
+    });
+    // ranges: ticks rise, the band opens from its centre, the brackets drop on its ends
+    qa('.aq-budget-bento__range').forEach(function (r, i) {
+      var at = 0.75 + i * 0.14;
+      tl.from(qa('line', r), { scaleY: 0, transformOrigin: '50% 100%', duration: 0.3, stagger: { amount: 0.3 }, clearProps: 'transform' }, at);
+      tl.from(r.querySelector('.aq-budget-bento__band'), { scaleX: 0, transformOrigin: '50% 50%', duration: 0.7, ease: 'power2.out', clearProps: 'transform' }, at + 0.15);
+      tl.from(qa('.aq-budget-bento__bk', r), { y: -8, autoAlpha: 0, duration: 0.35, ease: 'back.out(2.5)', clearProps: 'transform,opacity,visibility' }, at + 0.55);
+    });
+    var notes = qa('.aq-budget-bento__note');
+    notes.forEach(function (n, i) {
+      var at = 1.4 + i * 0.3;
+      tl.from(qa('.aq-budget-bento__nk', n), { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, at);
+      tl.from(qa('.aq-budget-bento__chip', n), { y: 8, scale: 0.94, autoAlpha: 0, duration: 0.35, ease: 'back.out(2)', stagger: 0.05, clearProps: 'transform,opacity,visibility' }, at + 0.05);
+    });
+    tl.from(qa('.aq-budget-bento__more, .aq-budget-bento > .aq-small'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 2.1);
+    m.on(el, function () { tl.play() }, 'top 80%');
+  });
+});
 /* CaseStudy: the record is filled in, cause before effect.
    Fact-box case: the facts drop in, the outcome box is cut in, its figure counts up, and the result sentence lands last.
    Project record: facts rows enter; once the drawing has printed (core wipes the illustration) the change pins pop
@@ -406,6 +473,66 @@ AQmotion.fx('ContactRoutes', function (root, m) {
     }, 'top 80%');
   });
 });
+/* CutawayRail: the cutaway is drawn, then the rail takes over. On scroll-in the sheet and parts draw on back to front
+   and the water runs the loop and the cut pipe once (IsoKit choreography), the "active" tag wipes in; then the active
+   card's parts light and stay with the reader (renderer: the card crossing the middle of the viewport, or under the
+   pointer or focus). The rail line grows down from the top as its section enters; each card slides in from the right
+   as it reaches the viewport, its node filling first. Drawing under 4 s; each card under 1 s. */
+AQmotion.fx('CutawayRail', function (root, m) {
+  root.querySelectorAll('.aq-cutaway-rail').forEach(function (el) {
+    var fig = el.querySelector('.aq-cutaway-rail__fig'), rail = el.querySelector('.aq-cutaway-rail__rail');
+    if (!fig || !m.free(fig)) return;
+    m.claim(fig); if (rail) m.claim(rail);
+    var svg = fig.querySelector('svg.aq-iso'), tag = fig.querySelector('.aq-cutaway-rail__tag'), call = fig.querySelector('.aq-cutaway-rail__call');
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' }, onComplete: function () { if (window.AQcutaway) AQcutaway.scan() } }));
+    var it = svg && window.AQiso && AQiso.timeline(svg, m, { draw: 1.3, pipe: 0.7, flow: 1.3, keep: false });
+    if (it) { it.paused(false); tl.add(it, 0) }
+    if (tag) tl.from(tag, { clipPath: 'inset(0 100% 0 0)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.3);
+    if (call) tl.from(call, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, it ? it.duration() : 1);
+    m.on(fig, function () { tl.play() }, 'top 75%');
+    [].forEach.call(el.querySelectorAll('.aq-cutaway-rail__card'), function (c) {
+      var node = c.querySelector('.aq-cutaway-rail__node'), ct = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+      if (node) ct.from(node, { scale: 0, duration: 0.35, ease: 'back.out(2.5)', clearProps: 'transform' }, 0);
+      ct.from(c, { x: 48, autoAlpha: 0, duration: 0.7, clearProps: 'opacity,visibility,x' }, 0.05)
+        .from(c.querySelectorAll('.aq-cutaway-rail__f'), { y: 10, autoAlpha: 0, duration: 0.45, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, 0.3);
+      m.on(c, function () { ct.play() }, 'top 90%');
+    });
+  });
+});
+/* DocHotspots: the skid develops like a print (wipe up from the base), then each document is pinned in turn: its
+   hotspot drops onto the part and sends out one ripple, the leader draws out from the hotspot to the edge of the
+   stage, and the card slides out from behind the drawing along it, its code decoding; the index link follows last.
+   Narrow screens (no leaders): hotspots pop in order and the cards rise in a short stagger.
+   One timeline, once, under 5 s. */
+AQmotion.fx('DocHotspots', function (root, m) {
+  root.querySelectorAll('.aq-doc-hotspots').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) }, D = window.DrawSVGPlugin;
+    var art = el.querySelector('.aq-doc-hotspots__art'), cards = qa('.aq-doc-hotspots__card'), wide = getComputedStyle(el.querySelector('.aq-doc-hotspots__leads') || el).display !== 'none' && !!el.querySelector('.aq-doc-hotspots__leads');
+    var sec = el.closest('.aq-section'), more = sec && sec.querySelector('.aq-doc-hotspots__more');
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    if (art) tl.fromTo(art, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.2, ease: 'power3.inOut', clearProps: 'clipPath' }, 0);
+    cards.forEach(function (c, i) {
+      var k = c.getAttribute('data-k'), hot = el.querySelector('.aq-doc-hotspots__hot[data-k="' + k + '"]'), at = 0.9 + i * 0.42;
+      var path = el.querySelector('path[data-k="' + k + '"]'), dot = el.querySelector('circle[data-k="' + k + '"]'), code = c.querySelector('.aq-doc-hotspots__code span:last-child');
+      var left = c.classList.contains('aq-doc-hotspots__card--l');
+      if (hot) {
+        tl.from(hot, { scale: 0, autoAlpha: 0, duration: 0.45, ease: 'back.out(3)', clearProps: 'transform,opacity,visibility' }, at)
+          .fromTo(hot, { boxShadow: '0 0 0 0 rgba(255,255,255,0.55)' }, { boxShadow: '0 0 0 22px rgba(255,255,255,0)', duration: 0.8, ease: 'power2.out', clearProps: 'boxShadow' }, at + 0.15);
+      }
+      if (wide && path) {
+        if (D) tl.fromTo(path, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.5, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.2);
+        else tl.from(path, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, at + 0.2);
+        if (dot) tl.from(dot, { autoAlpha: 0, duration: 0.15, clearProps: 'opacity,visibility' }, at + 0.65);
+        tl.fromTo(c, { x: left ? 60 : -60, autoAlpha: 0, clipPath: left ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)' },
+          { x: 0, autoAlpha: 1, clipPath: 'inset(0 0% 0 0%)', duration: 0.7, ease: 'power3.out', clearProps: 'transform,opacity,visibility,clipPath' }, at + 0.6);
+      } else tl.from(c, { y: 24, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, 0.9 + i * 0.12);
+      if (code) tl.call(function () { m.scramble(code, 0) }, null, wide ? at + 0.65 : 0.9 + i * 0.12);
+    });
+    if (more) { m.claim(more); tl.from(more, { autoAlpha: 0, y: 10, duration: 0.5, clearProps: 'transform,opacity,visibility' }, '-=0.3') }
+    m.on(el, function () { tl.play() }, 'top 70%');
+  });
+});
 /* DocList: the binder is filled. The plate unrolls, then the folders slide down into it one by one in index order,
    each landing with a slight settle; its tab rises out of the folder's top edge just after it lands; the title block
    is stamped last. Phones: folders land as they scroll in, and the folders a "Show all" reveals slide in the same way. */
@@ -582,6 +709,56 @@ AQmotion.fx('Explainer', function (root, m) {
     m.tw(tl);
   });
 });
+/* ExplodedService: the pump comes apart for service. The sheet fades up; the pump draws itself assembled (lines on,
+   then the solids fill); then the parts slide apart along the shaft line, the casing first and furthest, each settling
+   in its exploded place while the centre line draws through them; then the leaders run out from the three parts to
+   their shelves and the promises stand up on them, number and icon first. One timeline, once, about 3.5 s. */
+AQmotion.fx('ExplodedService', function (root, m) {
+  root.querySelectorAll('.aq-exploded-service').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var svg = el.querySelector('.aq-exploded-service__svg'); if (!svg) return;
+    var narrow = m.narrow(), D = window.DrawSVGPlugin;
+    var pieces = qa('.aq-exploded-service__piece', svg), sheet = qa('.aq-iso__sheet', svg), axis = svg.querySelector('.aq-exploded-service__axis');
+    var leads = qa('[data-lead]', svg), calls = qa('.aq-exploded-service__call'), pins = qa('.aq-exploded-service__pin');
+    var lines = [], fills = [];
+    pieces.forEach(function (p) {
+      qa('path,circle', p).forEach(function (s) {
+        var cs = getComputedStyle(s);
+        if (s.classList.contains('aq-iso__eq')) fills.push(s);
+        if (cs.stroke && cs.stroke !== 'none' && parseFloat(cs.strokeWidth) > 0) { s.setAttribute('vector-effect', 'non-scaling-stroke'); lines.push(s) }
+      });
+    });
+    var leadLines = qa('.aq-iso__leader-line', svg), dots = qa('.aq-iso__leader-dot', svg);
+    leadLines.forEach(function (s) { s.setAttribute('vector-effect', 'non-scaling-stroke') });
+    function clean(els) { els.forEach(function (s) { s.style.removeProperty('stroke-dasharray'); s.style.removeProperty('stroke-dashoffset') }) }
+    var off = pieces.map(function (p) { var v = (p.getAttribute('data-du') || '0,0').split(',').map(Number); return { x: v[0], y: v[1] } });
+    var tl = m.tw(gsap.timeline({ paused: true }));
+    if (sheet.length) tl.from(sheet, { autoAlpha: 0, duration: 0.5, ease: 'power1.out', clearProps: 'opacity,visibility' }, 0);
+    // 1. assembled: every part starts at its place on the shaft
+    pieces.forEach(function (p, i) { gsap.set(p, { x: off[i].x, y: off[i].y }) });
+    if (D) tl.fromTo(lines, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.9, ease: 'power2.inOut', stagger: { amount: 0.4 }, onComplete: function () { clean(lines) } }, 0.15);
+    else tl.from(lines, { autoAlpha: 0, duration: 0.6, clearProps: 'opacity,visibility' }, 0.15);
+    tl.fromTo(fills, { fillOpacity: 0 }, { fillOpacity: 1, duration: 0.5, ease: 'power1.out', clearProps: 'fillOpacity' }, 0.75);
+    // 2. explode: furthest part first, each settles in place
+    var te = 1.35;
+    pieces.forEach(function (p, i) { if (off[i].x || off[i].y) tl.to(p, { x: 0, y: 0, duration: 1.1, ease: 'aq-settle', clearProps: 'transform' }, te + i * 0.07) });
+    if (axis) { if (D) tl.fromTo(axis, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.1, ease: 'power2.out', onComplete: function () { clean([axis]) } }, te + 0.1); else tl.from(axis, { autoAlpha: 0, duration: 0.6, clearProps: 'opacity,visibility' }, te + 0.1) }
+    // 3. leaders run out, promises stand up on their shelves
+    var tc = te + 1.1;
+    if (!narrow && D && leadLines.length) tl.fromTo(leadLines, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.6, ease: 'power2.inOut', stagger: 0.12, onComplete: function () { clean(leadLines) } }, tc);
+    if (dots.length) tl.from(dots, { scale: 0, transformOrigin: '50% 50%', duration: 0.4, ease: 'back.out(3)', stagger: 0.12, clearProps: 'transform' }, tc);
+    if (pins.length) tl.from(pins, { scale: 0, duration: 0.4, ease: 'back.out(3)', stagger: 0.12, clearProps: 'transform' }, tc);
+    calls.forEach(function (c, i) {
+      var code = c.querySelector('.aq-exploded-service__code'), rest = qa('.aq-exploded-service__t, .aq-exploded-service__d', c), n = c.querySelector('.aq-exploded-service__n');
+      var at = narrow ? tc + i * 0.12 : tc + 0.45 + i * 0.12;
+      tl.from(code, { autoAlpha: 0, x: -8, duration: 0.4, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at)
+        .from(rest, { y: 14, autoAlpha: 0, duration: 0.55, stagger: 0.07, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.08);
+      if (n) tl.call(function () { m.scramble(n, 0) }, null, at);
+    });
+    m.on(el, function () { tl.play() }, narrow ? 'top 80%' : 'top 65%');
+  });
+});
 /* FAQ: on scroll-in the spine draws down and each question card is hung from it in turn (node pops, connector runs out,
    card slides off the spine). Open and close ease the answer's height with GSAP; the [ + ] glyph turns in CSS.
    Native <details> stays the source of truth: without JS or under reduced motion it opens and closes instantly, and
@@ -686,6 +863,56 @@ AQmotion.fx('Footer', function (root, m) {
     if (cells.length) tl.to(cells, { autoAlpha: 1, duration: 0.35, stagger: 0.07, clearProps: 'opacity,visibility' }, 1);
     if (legal) tl.to(legal, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, 1.3);
   }, 'top 90%');
+});
+/* GradeEditorial: a poster that assembles itself, then a page that sets itself.
+   The mast heading rises out of its mask (the core section head). The collage tiles drop into the grid from quarter
+   turns in a scattered order, the pipe walls draw along their run, the tank and pump seat over them, the water
+   runs the whole route once and the drop falls from the outlet. Beside it the grade words rise letter by letter out
+   of a mask (titles decode); the scope run draws across; the running-cost lines slide out from the spine; "2 weeks"
+   rises the same way; the empty bar tracks draw on, dashed, and the placeholder lands under them; the
+   navy panel wipes up and its three people follow. About 3.8 s. */
+AQmotion.fx('GradeEditorial', function (root, m) {
+  root.querySelectorAll('.aq-grade-editorial-band').forEach(function (band) {
+    var el = band.querySelector('.aq-grade-editorial'); if (!el || !m.free(el)) return; m.claim(el);
+    var q = function (s, c) { return (c || el).querySelector(s) }, qa = function (s, c) { return [].slice.call((c || el).querySelectorAll(s)) };
+    var D = window.DrawSVGPlugin, narrow = m.narrow();
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    /* collage */
+    var tiles = qa('.aq-grade-editorial__tile > g');
+    tiles.forEach(function (g, i) {
+      var r = [90, -90, 180, 0][i % 4], d = (i * 37) % 11 / 11;
+      tl.from(g, { rotation: r, scale: 0.4, autoAlpha: 0, transformOrigin: '50% 50%', duration: 0.7, ease: 'back.out(1.4)', clearProps: 'transform,opacity,visibility' }, 0.05 + d * 0.6);
+    });
+    var po = q('.aq-grade-editorial__po'), pi = q('.aq-grade-editorial__pi'), water = q('.aq-grade-editorial__water'), eq = qa('.aq-grade-editorial__eq'), drop = q('.aq-grade-editorial__drop');
+    if (D && po) tl.fromTo([po, pi], { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.1, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.7);
+    else if (po) tl.from([po, pi], { autoAlpha: 0, duration: 0.5 }, 0.7);
+    if (eq.length) tl.from(eq, { y: -16, autoAlpha: 0, duration: 0.5, stagger: 0.12, ease: 'back.out(1.8)', clearProps: 'transform,opacity,visibility' }, 1.2);
+    if (water) { if (D) tl.fromTo(water, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.4, ease: 'power1.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 1.5); else tl.from(water, { autoAlpha: 0 }, 1.5) }
+    if (drop) tl.from(drop, { y: -14, scale: 0, transformOrigin: '50% 50%', autoAlpha: 0, duration: 0.5, ease: 'bounce.out', clearProps: 'transform,opacity,visibility' }, 2.85);
+
+    /* blocks */
+    var items = qa('.aq-grade-editorial__item'), t0 = narrow ? 0.2 : 0.45;
+    items.forEach(function (it, i) {
+      var at = t0 + i * 0.28, x = function (s) { return qa(s, it) };
+      if (it.classList.contains('aq-grade-editorial__item--panel')) tl.from(it, { clipPath: 'inset(100% 0 0 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, at);
+      else tl.from(it, { clipPath: 'inset(0 0 100% 0)', duration: 0.8, ease: 'power2.inOut', clearProps: 'clipPath' }, at);
+      var t = q('.aq-grade-editorial__t', it); if (t) { tl.from(t, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, at); tl.call(function () { var a = t.querySelector('a') || t; if (!a.children.length) m.scramble(a, 0) }, null, at) }
+      x('.aq-grade-editorial__v').forEach(function (v, k) {
+        var s = m.split(v, { type: 'chars', mask: 'chars' });
+        if (s) tl.from(s.chars, { yPercent: 110, duration: 0.8, stagger: 0.05, ease: 'power4.out' }, at + 0.15 + k * 0.3);
+        else tl.from(v, { y: 20, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, at + 0.15 + k * 0.3);
+      });
+      var rest = x('.aq-grade-editorial__pre, .aq-grade-editorial__l, .aq-grade-editorial__kicker, .aq-grade-editorial__end, .aq-grade-editorial__d');
+      if (rest.length) tl.from(rest, { y: 8, autoAlpha: 0, duration: 0.45, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, at + 0.35);
+      var run = q('.aq-grade-editorial__run', it); if (run) tl.from(run, { clipPath: 'inset(-50% 100% -50% 0)', duration: 0.7, ease: 'power2.inOut', clearProps: 'clipPath' }, at + 0.4);
+      var li = x('.aq-grade-editorial__list li');
+      if (li.length) tl.from(li, { x: -12, autoAlpha: 0, duration: 0.4, stagger: 0.1, clearProps: 'transform,opacity,visibility' }, at + 0.45);
+      var tr = x('.aq-grade-editorial__track');
+      if (tr.length) tl.from(tr, { scaleX: 0, duration: 0.6, stagger: 0.12, ease: 'power2.inOut', clearProps: 'transform' }, at + 0.6)
+        .from(x('.aq-grade-editorial__bl, .aq-grade-editorial__note'), { autoAlpha: 0, duration: 0.35, stagger: 0.08, clearProps: 'opacity,visibility' }, at + 0.6);
+    });
+    m.on(el, function () { tl.play() }, 'top 78%');
+  });
 });
 /* GradeLanes: the lane caps drop onto the header rule, then water runs down the three lane pipes row by row; as it
    passes each step the step reads in, its branch fills from the step across to its grade, and the tap there pops
@@ -873,6 +1100,258 @@ AQmotion.fx('GradeLanes', function (root, m) {
     figure(q('.aq-photo'), function () { var ph = q('.aq-photo'); gsap.set(ph, { clipPath: 'inset(100% 0 0 0)' }); return m.tw(gsap.timeline().to(ph, { clipPath: 'inset(0% 0 0 0)', duration: 1.2, ease: 'power3.inOut', clearProps: 'clipPath' })) });
   });
 })();
+/* HoldTimeline: the macro comes into focus, then the water climbs the line. The pipe close-up settles in (scale and
+   fade), its engraving lines draw from the seam outwards, the weld bead rings on and the water creeps once along the
+   centre. Then one flow drop runs the rising line from the left edge, laying it behind it (clip), stage by stage:
+   each node lands as the drop arrives, its pole grows out of the node and the callout unrolls from the pole. At a
+   hold point the drop waits a beat, the ring opens round the node and the "Hold point" stamp strikes. The boxed
+   figure counts up when the drop reaches it; the drop leaves the frame at the top right and rests there. Under 5 s.
+   Phones: the macro settles in; each stage's node lands and its text rises as it scrolls in. Hover swells a node and
+   lights its pole (CSS). */
+AQmotion.fx('HoldTimeline', function (root, m) {
+  var CLEAR = 'transform,opacity,visibility,clipPath', D = window.DrawSVGPlugin;
+  [].forEach.call(root.querySelectorAll('.aq-hold-timeline-sec'), function (sec) {
+    var fig = sec.querySelector('.aq-hold-timeline'); if (!fig) return;
+    var q = function (s, el) { return (el || sec).querySelector(s) }, qa = function (s, el) { return [].slice.call((el || sec).querySelectorAll(s)) };
+    var macro = q('.aq-hold-timeline__macro'), band = q('.aq-hold-timeline__band'), sts = qa('.aq-hold-timeline__st');
+    m.claim(fig); if (macro) m.claim(macro);
+
+    // Macro: focus pull, engraving from the seam outwards, bead, water
+    function macroIn(tl, at) {
+      if (!macro) return;
+      var ct = qa('.aq-hold-timeline__ct, .aq-hold-timeline__edge', macro), bead = qa('.aq-hold-timeline__bead, .aq-hold-timeline__seam', macro), water = q('.aq-hold-timeline__water', macro);
+      tl.fromTo(macro, { autoAlpha: 0, scale: 1.08 }, { autoAlpha: op, scale: 1, duration: 2, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, at);
+      if (D && ct.length) {
+        var mid = (ct.length - 1) / 2;
+        tl.fromTo(ct, { drawSVG: '30% 30%' }, { drawSVG: '0% 100%', duration: 1.5, ease: 'power2.inOut', stagger: function (i) { return Math.abs(i - mid) * 0.05 }, clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.1);
+      }
+      if (bead.length) tl.fromTo(bead, { autoAlpha: 0, scale: 0.94, transformOrigin: '50% 50%' }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: 'power3.out', stagger: 0.12, clearProps: 'transform,opacity,visibility' }, at + 0.9);
+      if (water) tl.fromTo(water, { strokeDashoffset: 0 }, { strokeDashoffset: -36 * 8, duration: 3, ease: 'power1.out' }, at + 0.6);
+    }
+    function parts(st) {
+      return { node: q('.aq-hold-timeline__node', st), halo: q('.aq-hold-timeline__halo', st), pole: q('.aq-hold-timeline__pole', st), c: q('.aq-hold-timeline__c', st),
+        hk: q('.aq-hold-timeline__hk', st), fig: q('.aq-hold-timeline__fig', st), up: st.classList.contains('is-up'), hold: st.classList.contains('is-hold') };
+    }
+    var P = sts.map(parts);
+    function land(tl, p, at, wide) {
+      tl.fromTo(p.node, { scale: 0 }, { scale: 1, duration: 0.3, ease: 'power3.out', clearProps: 'transform' }, at);
+      if (p.hold && p.halo) tl.fromTo(p.halo, { scale: 0.3, autoAlpha: 0 }, { scale: 1, autoAlpha: 0.45, duration: 0.55, ease: 'power2.out', clearProps: 'transform' }, at + 0.05);
+      if (wide && p.pole) tl.fromTo(p.pole, { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: 'power2.out', clearProps: 'transform' }, at + 0.05);
+      if (wide) tl.fromTo(p.c, { clipPath: p.up ? 'inset(100% 0% 0% 0%)' : 'inset(0% 0% 100% 0%)', autoAlpha: 1 }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.6, ease: 'power3.out', clearProps: CLEAR }, at + 0.2);
+      else tl.fromTo(p.c, { x: -14, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.55, ease: 'power3.out', clearProps: CLEAR }, at + 0.1);
+      if (p.hk) tl.fromTo(p.hk, { scale: 1.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.28, ease: 'power4.in', clearProps: CLEAR }, at + (wide ? 0.55 : 0.4));
+      if (p.fig) {
+        tl.fromTo(p.fig, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.5, ease: 'power3.inOut', clearProps: 'clipPath' }, at + 0.35);
+        tl.call(function () { m.count(p.fig, { now: true, duration: 1.1 }) }, null, at + 0.4);
+      }
+    }
+    function hide(p, wide) {
+      gsap.set(p.node, { scale: 0 });
+      if (p.hold && p.halo) gsap.set(p.halo, { autoAlpha: 0 });
+      if (wide && p.pole) gsap.set(p.pole, { scaleY: 0 });
+      gsap.set(p.c, wide ? { clipPath: p.up ? 'inset(100% 0% 0% 0%)' : 'inset(0% 0% 100% 0%)' } : { autoAlpha: 0 });
+      if (p.hk) gsap.set(p.hk, { autoAlpha: 0 });
+    }
+
+    var wide = band && getComputedStyle(band).display !== 'none';
+    var op = macro ? +getComputedStyle(macro).opacity || 1 : 1;
+    if (macro) { gsap.set(macro, { autoAlpha: 0 }); m.on(sec, function () { macroIn(m.tw(gsap.timeline()), 0) }, 'top 80%') }
+
+    if (wide) {
+      var svg = q('svg', band), run = q('.aq-hold-timeline__run', band), rail = q('.aq-hold-timeline__rail', band), drop = q('.aq-hold-timeline__drop', band);
+      P.forEach(function (p) { hide(p, true) });
+      if (svg) gsap.set(svg, { clipPath: 'inset(0% 100% 0% 0%)' });
+      if (drop) gsap.set(drop, { autoAlpha: 0 });
+      m.on(fig, function () {
+        var tl = m.tw(gsap.timeline({ delay: 0.3 })), br = band.getBoundingClientRect(), W = br.width, Hh = br.height;
+        // waypoints in band px; the drop rests at the band's top right (0, 0 offset there)
+        var pts = [[0, Hh]].concat(P.map(function (p) { var r = p.node.getBoundingClientRect(); return [r.left + r.width / 2 - br.left, r.top + r.height / 2 - br.top] })).concat([[W, 0]]);
+        if (drop) tl.set(drop, { x: -W, y: Hh, autoAlpha: 1 }, 0);
+        if (svg) tl.set(svg, { clipPath: 'inset(0% 100% 0% 0%)' }, 0);
+        var t = 0;
+        for (var k = 1; k < pts.length; k++) {
+          var a = pts[k - 1], b = pts[k], d = Math.min(0.5, Math.max(0.18, Math.hypot(b[0] - a[0], b[1] - a[1]) / 650));
+          if (drop) tl.to(drop, { x: b[0] - W, y: b[1], duration: d, ease: 'none' }, t);
+          if (svg) tl.to(svg, { clipPath: 'inset(0% ' + Math.max(0, 100 - b[0] / W * 100).toFixed(2) + '% 0% 0%)', duration: d, ease: 'none' }, t);
+          t += d;
+          var p = P[k - 1];
+          if (p) { land(tl, p, t, true); t += p.hold ? 0.22 : 0.06 }
+        }
+        if (svg) tl.set(svg, { clearProps: 'clipPath' }, t + 0.01);
+        if (drop) tl.set(drop, { clearProps: 'transform,opacity,visibility' }, t + 0.01);
+        if (rail) tl.fromTo(rail, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, clearProps: 'opacity,visibility' }, 0);
+      }, 'top 72%');
+      return;
+    }
+    P.forEach(function (p, i) {
+      hide(p, false);
+      m.on(sts[i], function () { land(m.tw(gsap.timeline()), p, 0, false) }, 'top 86%');
+    });
+  });
+});
+/* IndustryFeed: the water arrives from the page edge, runs the trunk with a droplet at its head, and tees down into
+   each destination in turn as it passes: the drop fills, the node seats with a ring, the evidence decodes like a
+   readout and the name and line rise under it. Phones: the line fills down the left edge, each branch lighting its
+   item. One timeline, once, under 3 s. */
+AQmotion.fx('IndustryFeed', function (root, m) {
+  root.querySelectorAll('.aq-industry-feed').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var items = qa('.aq-industry-feed__item'), trunk = el.querySelector('.aq-industry-feed__trunk .aq-industry-feed__water'), drip = el.querySelector('.aq-industry-feed__drip');
+    var FLOW = getComputedStyle(document.documentElement).getPropertyValue('--flow').trim();
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    function arrive(it, at) {
+      var w = it.querySelector('.aq-industry-feed__drop .aq-industry-feed__water'), node = it.querySelector('.aq-industry-feed__node'), ev = it.querySelector('.aq-industry-feed__ev');
+      var rest = qa('.aq-industry-feed__code, .aq-industry-feed__t, .aq-industry-feed__d', it);
+      tl.fromTo(w, { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: 'power1.in', clearProps: 'transform' }, at)
+        .fromTo(node, { scale: 0 }, { scale: 1, duration: 0.5, ease: 'back.out(2.4)', clearProps: 'transform' }, at + 0.4)
+        .fromTo(node, { boxShadow: '0 0 0 14px ' + FLOW }, { boxShadow: '0 0 0 0px rgba(0,0,0,0)', duration: 0.6, ease: 'power2.out', clearProps: 'boxShadow' }, at + 0.45)
+        .from(rest, { y: 18, autoAlpha: 0, duration: 0.6, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, at + 0.3);
+      if (ev && window.ScrambleTextPlugin && !ev.children.length) {
+        var txt = ev.textContent; if (!ev.getAttribute('aria-label')) ev.setAttribute('aria-label', txt);
+        tl.set(ev, { autoAlpha: 1 }, at + 0.4).to(ev, { duration: 0.8, scrambleText: { text: txt, chars: '0123456789<>-·', speed: 0.8, revealDelay: 0.15 }, ease: 'none' }, at + 0.4);
+        gsap.set(ev, { autoAlpha: 0 });
+      } else if (ev) tl.from(ev, { autoAlpha: 0, y: 12, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at + 0.4);
+    }
+    if (m.narrow() || !trunk) {
+      items.forEach(function (it, i) { arrive(it, 0.1 + i * 0.5) });
+      m.on(el, function () { tl.play() }, 'top 75%');
+      return;
+    }
+    // the water's speed along the trunk is constant; each drop opens when the head passes its x
+    var run = 1.5, t0 = 0.1, tb = trunk.parentNode.getBoundingClientRect(), W = tb.width || 1;
+    tl.fromTo(trunk, { scaleX: 0 }, { scaleX: 1, duration: run, ease: 'none', clearProps: 'transform' }, t0);
+    items.forEach(function (it) {
+      var d = it.querySelector('.aq-industry-feed__drop'), x = d ? d.getBoundingClientRect().left + d.offsetWidth / 2 - tb.left : 0;
+      arrive(it, t0 + run * Math.min(1, Math.max(0, x / W)) - 0.05);
+    });
+    if (drip) {
+      var px = { x: 0 }, lastX = function () { return trunk.parentNode.offsetWidth - drip.offsetWidth / 2 };
+      tl.set(drip, { autoAlpha: 1 }, t0)
+        .to(px, { x: 1, duration: run, ease: 'none', onUpdate: function () { gsap.set(drip, { x: (trunk.parentNode.offsetLeft) + px.x * lastX() }) } }, t0)
+        .to(drip, { autoAlpha: 0, scale: 2, duration: 0.35 }, t0 + run).set(drip, { display: 'none' });
+    }
+    m.on(el, function () { tl.play() }, 'top 70%');
+  });
+});
+/* IsoKit: an isometric drawing builds the way it would be drawn, then the water runs through it once.
+   1. the sheet furniture fades up; 2. each part's lines draw on, back to front, and its ground fill settles in behind
+   them (so hidden lines disappear as the part becomes solid); 3. the pipe walls draw along the route, dimensions and
+   leaders follow; 4. the water (.aq-iso__flow) runs the route in DOM order, a droplet riding its head, and each stage
+   lights (is-lit) as the water reaches it (a pipe's data-iso-to names the part's data-iso-id), then settles back.
+   Everything ends static within 5 s; nothing runs under reduced motion (the drawing is complete without script).
+   Looks reuse the same choreography through window.AQiso.timeline(svg, m, opts) on their own trigger and timing.
+   This component takes every svg.aq-iso that no other component claimed, including ones claimed after it runs. */
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function qa(s, el) { return [].slice.call(el.querySelectorAll(s)) }
+  function len(el) { try { return el.getTotalLength() } catch (x) { return 0 } }
+  function stroked(el) { var c = getComputedStyle(el); return c.stroke && c.stroke !== 'none' && parseFloat(c.strokeWidth) > 0 }
+  function dashed(el) { var d = getComputedStyle(el).strokeDasharray; return d && d !== 'none' && d !== '0' && d !== '0px' }
+  // DrawSVG reads the vector-effect attribute (not CSS) to size its dashes on non-scaling strokes
+  function nss(els) { els.forEach(function (el) { el.setAttribute('vector-effect', 'non-scaling-stroke') }); return els }
+  var SHAPES = 'path,circle,ellipse,line,polyline,polygon,rect';
+  // clearProps leaves DrawSVG's dashes behind here; with non-scaling strokes a stale dash would cut lines on resize
+  function clean(els) { els.forEach(function (el) { el.style.removeProperty('stroke-dasharray'); el.style.removeProperty('stroke-dashoffset') }) }
+  function done() { clean(this.targets()) }
+
+  /* light / unlight a stage by id (parts and pipes carrying data-iso-id) */
+  function light(svg, id, on) {
+    var els = qa('[data-iso-id="' + id + '"]', svg);
+    els.forEach(function (el) { el.classList.toggle('is-lit', on !== false) });
+    return els;
+  }
+
+  /* timeline(svg, m, opts) -> a paused GSAP timeline (null under reduced motion or without GSAP).
+     opts: draw (equipment seconds, 1.6), pipe (0.9), flow (1.6, the whole route), at (start offset), stagger (between
+     parts, auto), drop (droplet on the water head, true), keep (stages stay lit, false), play (start now, false),
+     onStage(els, id, index) when the water reaches a stage, onDone(). Labels on the timeline: 'parts', 'pipes', 'flow',
+     'end', and tl.data.arrive[id] = time the water reaches each stage, so a look can add its own tweens in step. */
+  function timeline(svg, m, o) {
+    o = o || {};
+    if (reduce || !window.gsap || !svg) return null;
+    var D = window.DrawSVGPlugin, MP = window.MotionPathPlugin;
+    var tl = gsap.timeline({ paused: !o.play }); if (m && m.tw) m.tw(tl);
+    tl.data = { arrive: {} };
+    var at = o.at || 0, tDraw = o.draw == null ? 1.6 : o.draw, tPipe = o.pipe == null ? 0.9 : o.pipe, tFlow = o.flow == null ? 1.6 : o.flow;
+    var sheet = qa('.aq-iso__sheet', svg), parts = qa('.aq-iso__part', svg), pipes = qa('.aq-iso__pipe', svg).filter(function (p) { return !p.closest('.aq-iso__part') });
+    var flows = qa('.aq-iso__flow', svg), notes = qa('.aq-iso__dim, .aq-iso__leader', svg), arrows = qa('.aq-iso__arrow', svg);
+    function split(el, skip) {
+      var solid = [], dash = [], fill = [];
+      qa(SHAPES, el).forEach(function (s) {
+        if (s.closest('clipPath') || (skip && s.matches(skip))) return;
+        if (s.classList.contains('aq-iso__eq') || s.classList.contains('aq-iso__pipe-body')) fill.push(s);
+        if (!stroked(s)) return;
+        if (dashed(s) || len(s) < 3) dash.push(s); else solid.push(s);
+      });
+      return { solid: nss(solid), dash: dash, fill: fill };
+    }
+    function build(set, t, dur) {
+      if (D && set.solid.length) tl.fromTo(set.solid, { drawSVG: '0%' }, { drawSVG: '100%', duration: dur, ease: 'power2.inOut', stagger: { amount: dur * 0.35 }, onComplete: done }, t);
+      else if (set.solid.length) tl.from(set.solid, { autoAlpha: 0, duration: dur * 0.6, clearProps: 'opacity,visibility' }, t);
+      if (set.fill.length) tl.fromTo(set.fill, { fillOpacity: 0 }, { fillOpacity: 1, duration: dur * 0.7, ease: 'power1.out', clearProps: 'fillOpacity' }, t + dur * 0.55);
+      if (set.dash.length) tl.from(set.dash, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, t + dur * 0.8);
+    }
+
+    // 1. sheet
+    if (sheet.length) tl.from(sheet, { autoAlpha: 0, duration: 0.5, ease: 'power1.out', clearProps: 'opacity,visibility' }, at);
+    // 2. equipment, back to front (DOM order)
+    var t0 = at + 0.15, n = parts.length, dur = Math.min(0.9, tDraw * 0.6), stg = o.stagger != null ? o.stagger : (n > 1 ? (tDraw - dur) / (n - 1) : 0);
+    tl.addLabel('parts', t0);
+    parts.forEach(function (p, i) { build(split(p, '.aq-iso__flow'), t0 + i * stg, dur) });
+    // 3. pipes and annotation
+    var tp = t0 + Math.max(dur, tDraw * 0.7); tl.addLabel('pipes', tp);
+    if (pipes.length) {
+      var ps = tPipe / Math.max(1, pipes.length), pd = Math.min(tPipe, Math.max(0.35, ps * 2));
+      pipes.forEach(function (p, i) { build(split(p, '.aq-iso__flow'), tp + i * ps * 0.85, pd) });
+    }
+    notes.forEach(function (nn, i) { build(split(nn), tp + 0.2 + i * 0.08, 0.5); var tx = qa('text', nn); if (tx.length) tl.from(tx, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, tp + 0.6 + i * 0.08) });
+    // 4. water
+    var tf = tp + tPipe + 0.05; tl.addLabel('flow', tf);
+    var L = flows.map(function (f) { return Math.max(1, len(f)) }), tot = L.reduce(function (a, b) { return a + b }, 0) || 1, t = tf, seen = {}, k = 0;
+    var ctm = svg.getScreenCTM && svg.getScreenCTM(), sc = ctm && ctm.a ? ctm.a : 1;
+    flows.forEach(function (f, i) {
+      var d = Math.max(0.12, tFlow * L[i] / tot), drop = f.classList.contains('aq-iso__flow--drop') || dashed(f);
+      if (drop) tl.from(f, { autoAlpha: 0, duration: Math.min(0.3, d), clearProps: 'opacity,visibility' }, t);
+      else if (D) { nss([f]); tl.fromTo(f, { drawSVG: '0%' }, { drawSVG: '100%', duration: d, ease: 'none', onComplete: done }, t) }
+      else tl.from(f, { autoAlpha: 0, duration: d, clearProps: 'opacity,visibility' }, t);
+      if (MP && o.drop !== false && !drop && L[i] > 8) {
+        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('class', 'aq-iso__drop'); c.setAttribute('r', (2.6 / sc).toFixed(2)); c.setAttribute('aria-hidden', 'true');
+        f.parentNode.insertBefore(c, f.nextSibling); gsap.set(c, { autoAlpha: 0 });
+        tl.set(c, { autoAlpha: 1 }, t);
+        tl.to(c, { duration: d, ease: 'none', motionPath: { path: f, align: f, alignOrigin: [0.5, 0.5] } }, t);
+        tl.to(c, { autoAlpha: 0, duration: 0.15, onComplete: function () { var e = this.targets()[0]; if (e && e.parentNode) e.parentNode.removeChild(e) } }, t + d);
+      }
+      t += d;
+      var host = f.closest('[data-iso-to]'), part = f.closest('.aq-iso__part[data-iso-id]');
+      var id = f.getAttribute('data-iso-to') || (host && host.getAttribute('data-iso-to')) || (part && part.getAttribute('data-iso-id'));
+      if (id && !seen[id]) {
+        seen[id] = 1; tl.data.arrive[id] = t; var idx = k++;
+        tl.call(function (id, idx) { var els = light(svg, id, true); if (o.onStage) o.onStage(els, id, idx) }, [id, idx], t);
+      }
+    });
+    arrows.forEach(function (a, i) { tl.from(a, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, tf + tFlow * (i + 0.5) / arrows.length) });
+    var te = t + 0.1; tl.addLabel('end', te);
+    tl.call(function () { clean(qa(SHAPES, svg)) }, null, te);
+    if (!o.keep) tl.call(function () { Object.keys(seen).forEach(function (id) { light(svg, id, false) }) }, null, Math.min(te + 0.6, (o.at || 0) + 4.8));
+    if (o.onDone) tl.call(o.onDone, null, te);
+    return tl;
+  }
+  window.AQiso = { timeline: timeline, light: light };
+
+  AQmotion.fx('IsoKit', function (root, m) {
+    var svgs = qa('svg.aq-iso', root).filter(function (s) { return m.free(s) && s.getAttribute('data-iso-motion') !== 'off' });
+    // hold them now so the generic line draw leaves them alone; decide once every component has claimed its own
+    svgs.forEach(function (s) { m.claim(s) });
+    Promise.resolve().then(function () {
+      svgs.forEach(function (s) {
+        if (s.parentElement && s.parentElement.closest('[data-aqm]')) return;
+        var tl = timeline(s, m); if (tl) m.on(s, function () { tl.play() }, 'top 85%');
+      });
+    });
+  });
+})();
 /* KeyFacts: the data plate is laid down left to right (rulers and frame unroll), then cell by cell the name settles,
    the figure counts up, the dial's needle sweeps to its reading and the source standard appears under it.
    In the hero it waits for the headline (about 1 s); elsewhere it plays when it scrolls in. */
@@ -906,6 +1385,47 @@ AQmotion.fx('KeyFacts', function (root, m) {
         if (src) tl.to(src, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, at + 0.7);
       });
     }, inHero ? 'top 95%' : 'top 88%');
+  });
+});
+/* LimitBento: the bento assembles, then the water proves the stricter value. Tiles slide in from the side they sit on
+   (left column from the left, right column from the right) behind a wipe, and each limit counts up to its value; in the
+   middle the water column fills from the floor to the limit, its surface swells twice and settles, the scale ticks
+   light under it, the limit's mark rides up with the surface and the looser value's dashed mark drops in last, high
+   above. One timeline, once, under 4 s. The section heading is left to the core. */
+AQmotion.fx('LimitBento', function (root, m) {
+  root.querySelectorAll('.aq-limit-bento').forEach(function (el) {
+    var tiles = [].slice.call(el.querySelectorAll('.aq-limit-bento__tile')), col = el.querySelector('.aq-limit-bento__col'),
+      list = el.querySelector('.aq-limit-bento__tiles'), chip = el.querySelector('.aq-limit-bento__chip');
+    if (!list || !m.free(list)) return;
+    m.claim(list); if (col) m.claim(col); if (chip) m.claim(chip);
+    var narrow = m.narrow(), tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    if (chip) tl.from(chip, { clipPath: 'inset(0 100% 0 0)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.2);
+    if (col) {
+      var water = col.querySelector('.aq-limit-bento__water'), line = col.querySelector('.aq-limit-bento__wline'), body = col.querySelector('.aq-limit-bento__wbody'),
+        ticks = col.querySelectorAll('.aq-limit-bento__scale li'), lim = col.querySelector('.aq-limit-bento__mark--lim'), alt = col.querySelector('.aq-limit-bento__mark--alt'),
+        tank = col.querySelector('.aq-limit-bento__tank'), h = water ? water.getBoundingClientRect().height : 0;
+      tl.from(col, { clipPath: 'inset(100% 0 0 0)', duration: 0.8, ease: 'power3.inOut', clearProps: 'clipPath' }, 0)
+        .from(col.querySelector('.aq-limit-bento__cap'), { autoAlpha: 0, y: 10, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 0.5)
+        .from(ticks, { autoAlpha: 0, x: -6, duration: 0.3, stagger: { each: 0.03, from: 'end' }, clearProps: 'transform,opacity,visibility' }, 0.5);
+      if (water) tl.from(water, { yPercent: 100, duration: 1.5, ease: 'aq-settle', clearProps: 'transform' }, 0.8);
+      if (tank) tl.set(tank, { clipPath: 'inset(-50% -50% 0 -50%)' }, 0).set(tank, { clearProps: 'clipPath' }, 2.4);
+      if (lim) tl.from(lim, { y: h, autoAlpha: 0, duration: 1.5, ease: 'aq-settle', clearProps: 'transform,opacity,visibility' }, 0.8);
+      /* the surface swells twice and settles (two shapes of the same curve) */
+      [line, body].forEach(function (p) {
+        if (!p) return; var d0 = p.getAttribute('d'), d1 = d0.replace('C 50 2, 100 2, 150 12 S 250 22, 300 12 S 380 4, 400 10', 'C 50 18, 100 20, 150 10 S 250 2, 300 8 S 380 18, 400 12');
+        if (d1 !== d0) tl.to(p, { attr: { d: d1 }, duration: 0.55, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 1.0);
+      });
+      if (alt) tl.from(alt, { autoAlpha: 0, y: -16, duration: 0.6, clearProps: 'transform,opacity,visibility' }, 2.2);
+    }
+    tiles.forEach(function (t, i) {
+      var right = t.style.gridColumn === '3' || getComputedStyle(t).gridColumnStart === '3', at = 0.15 + i * 0.14;
+      tl.from(t, { x: narrow ? 0 : (right ? 40 : -40), y: narrow ? 24 : 0, autoAlpha: 0, duration: 0.8, clearProps: 'transform,opacity,visibility' }, at)
+        .from(t.querySelectorAll('.aq-limit-bento__m, .aq-limit-bento__q, .aq-limit-bento__ic, .aq-limit-bento__lvl'), { autoAlpha: 0, duration: 0.5, stagger: 0.05, clearProps: 'opacity,visibility' }, at + 0.5);
+      var n = t.querySelector('.aq-limit-bento__n.aq-num');
+      if (n) tl.call(function () { m.count(n, { now: true, duration: 1.3 }) }, null, at + 0.2);
+      var c = t.querySelector('.aq-limit-bento__c'); if (c) tl.from(c, { yPercent: 60, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at + 0.25);
+    });
+    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
 /* LimitGauges: each instrument powers up in order. The scale arc draws, the inner arc and crosshairs follow, the ticks
@@ -1014,6 +1534,49 @@ AQmotion.fx('LimitGauges', function (root, m) {
     batch(els, rules ? rule : dial);
   });
 });
+/* LimitStack: the type is set, then the water proves it. Each row steps in from the left a beat after the one above
+   (label decodes, the limit rises out of its line, the reference rule runs out to the drawing); meanwhile the outlet
+   pipe draws (IsoKit), the water runs in at the top, round the coil and down the outlet run; when it reaches the
+   collar the "Guaranteed" lettering wraps on, the guaranteed row's box flashes in flow and the note follows.
+   One timeline, once, under 5 s. The section heading is left to the core. */
+AQmotion.fx('LimitStack', function (root, m) {
+  root.querySelectorAll('.aq-limit-stack').forEach(function (el) {
+    var list = el.querySelector('.aq-limit-stack__list'), fig = el.querySelector('.aq-limit-stack__fig');
+    if (!list || !m.free(list)) return;
+    m.claim(list); if (fig) m.claim(fig);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var rows = qa('.aq-limit-stack__row'), short = m.narrow() ? 0.75 : 1;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    rows.forEach(function (r, i) {
+      var t = 0.1 + i * 0.16 * short, v = qa('.aq-limit-stack__v > span', r), rule = r.querySelector('.aq-limit-stack__rule');
+      tl.from(r, { x: -32, duration: 0.7, clearProps: 'transform' }, t)
+        .from(r.querySelector('.aq-limit-stack__p'), { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, t);
+      var ix = r.querySelector('.aq-index'); if (ix) tl.call(function () { m.scramble(ix, 0) }, null, t);
+      if (v.length) tl.from(v, { yPercent: 70, autoAlpha: 0, duration: 0.6, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, t + 0.08);
+      if (rule) tl.from(rule, { scaleX: 0, duration: 0.7, ease: 'power2.inOut', clearProps: 'transform' }, t + 0.2);
+      tl.from(qa('.aq-limit-stack__mt, .aq-limit-stack__lvl', r), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, t + 0.5);
+    });
+    var hero = el.querySelector('.aq-limit-stack__row.is-hero'), seal = el.querySelector('.aq-limit-stack__seal'),
+      out = el.querySelector('.aq-limit-stack__outlet'), note = el.querySelector('.aq-limit-stack__note');
+    function arrive(at) {
+      if (seal) tl.fromTo(seal, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.45, ease: 'power2.inOut', clearProps: 'clipPath' }, at);
+      if (hero) {
+        var bg = getComputedStyle(hero).backgroundColor, ft = getComputedStyle(document.documentElement).getPropertyValue('--flow-tint').trim();
+        tl.fromTo(hero, { backgroundColor: ft || bg }, { backgroundColor: bg, duration: 1, ease: 'power2.in', clearProps: 'backgroundColor' }, at + 0.1);
+      }
+      if (note) tl.from(note, { autoAlpha: 0, y: 8, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at + 0.2);
+    }
+    var svg = fig && fig.querySelector('svg.aq-iso'), it = svg && window.AQiso && AQiso.timeline(svg, m, { draw: 0.6 * short, pipe: 0.9 * short, flow: 1.6 * short, keep: true });
+    if (seal) gsap.set(seal, { clipPath: 'inset(0 100% 0 0)' });
+    if (it) {
+      it.paused(false); tl.add(it, 0.15);
+      var tArr = 0.15 + (it.data.arrive.out != null ? it.data.arrive.out : it.duration());
+      if (out) tl.from(out, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0.15 + it.labels.flow);
+      arrive(Math.min(tArr, 4.2));
+    } else arrive(0.8);
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
 /* LinkGrid: the route is walked. The spine draws down from the top (scaleY through --aq-spine); as it reaches each
    row the row's flow node snaps on (--aq-node), the number decodes, the icon frame or drawing wipes in and the title
    and line rise; the arrowhead lands when the spine ends. One timeline per list, about 0.35 s a row (under 3 s). */
@@ -1042,6 +1605,133 @@ AQmotion.fx('LinkGrid', function (root, m) {
     }, 'top 82%');
   });
 });
+/* MacroLeaders: the macro opens like a membrane element unrolling, then each industry is called out from it.
+   The leaves start pressed together and fan apart back to front; the PP pipe slides in along its own axis and the
+   weld bead swells into place; water runs once along every leaf. Then, row by row, the numbered marker pops onto its
+   arc, the leader shoots right from it to the row, and the row's cells arrive as the line lands. About 3.4 s.
+   Phones: the band fans the same way; markers drop onto the rail and their rows follow. */
+AQmotion.fx('MacroLeaders', function (root, m) {
+  root.querySelectorAll('.aq-macro-leaders').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var q = function (s, c) { return (c || el).querySelector(s) }, qa = function (s, c) { return [].slice.call((c || el).querySelectorAll(s)) };
+    var narrow = m.narrow(), D = window.DrawSVGPlugin;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var layers = qa('.aq-macro-leaders__layer');
+    // leaves: pressed onto the middle leaf, then fanned out, back to front
+    layers.forEach(function (g, i) {
+      var dy = (2 - i) * 70;
+      tl.from(g, { y: dy, rotation: (2 - i) * 2.2, svgOrigin: '560 380', autoAlpha: 0, duration: 1.1, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.05 + (4 - i) * 0.07);
+    });
+    var pipe = q('.aq-macro-leaders__pipe'), bead = qa('.aq-macro-leaders__bead ellipse');
+    if (pipe) tl.from(pipe, { x: -140, y: 44, autoAlpha: 0, duration: 1.1, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.2);
+    if (bead.length) tl.from(bead, { scale: 0.4, transformOrigin: '50% 50%', autoAlpha: 0, duration: 0.6, stagger: 0.08, ease: 'back.out(2)', clearProps: 'transform,opacity,visibility' }, 0.9);
+    var water = qa('.aq-macro-leaders__water');
+    if (water.length) {
+      if (D) tl.fromTo(water, { drawSVG: '0% 0%' }, { drawSVG: '0% 100%', duration: 1.4, ease: 'power1.inOut', stagger: 0.08, clearProps: 'strokeDasharray,strokeDashoffset' }, 0.8);
+      else tl.from(water, { autoAlpha: 0, duration: 0.6 }, 0.8);
+    }
+    tl.from(qa('.aq-macro-leaders__lbl'), { autoAlpha: 0, duration: 0.4, stagger: 0.2, clearProps: 'opacity,visibility' }, 1.2);
+    // header rule and labels
+    var head = qa('thead th');
+    tl.from(head, { autoAlpha: 0, y: 6, duration: 0.4, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.3);
+    // rows: marker, leader, cells
+    qa('tbody tr').forEach(function (tr, i) {
+      var at = 0.75 + i * 0.22, mk = q('.aq-macro-leaders__mk', tr), lead = q('.aq-macro-leaders__lead', tr);
+      var cells = [q('.aq-macro-leaders__name', tr)].concat(qa('td', tr)).filter(Boolean);
+      if (mk) tl.from(mk, { scale: 0, rotation: -120, duration: 0.45, ease: 'back.out(2.4)', clearProps: 'transform' }, at);
+      if (lead) tl.fromTo(lead, { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: 'power2.inOut', clearProps: 'transform' }, at + 0.2);
+      tl.from(cells, { x: narrow ? 0 : -14, y: narrow ? 10 : 0, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, at + 0.45);
+      if (mk) tl.call(function () { m.scramble(mk, 0) }, null, at + 0.1);
+    });
+    m.on(el, function () { tl.play() }, 'top 78%');
+  });
+});
+/* ManifoldRouter: the manifold is laid down the left, each branch teeing off as its situation rises beside it; then
+   the water enters at the top, runs down to the open situation and along its branch, and the route sheet unrolls from
+   the branch with its stations stepping in. Picking another situation replays the route's stations (the water's move
+   is a CSS transition, so it also follows without motion). Once on entry, under 3 s. */
+AQmotion.fx('ManifoldRouter', function (root, m) {
+  root.querySelectorAll('.aq-manifold-router').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var opts = qa('.aq-manifold-router__opt'), n = opts.length; if (!n) return;
+    var segs = qa('.aq-manifold-router__seg', el), branches = qa('.aq-manifold-router__branch', el);
+    var words = opts.map(function (o) { return qa('.aq-manifold-router__n, .aq-manifold-router__t', o) });
+    var open = function () { return el.querySelector('.aq-manifold-router__route:not([hidden])') };
+    var wet = qa('.aq-manifold-router__opt.is-wet .aq-manifold-router__seg .aq-manifold-router__water, .aq-manifold-router__opt[aria-expanded="true"] .aq-manifold-router__branch .aq-manifold-router__water');
+    function stations(r, tl, at) {
+      if (!r) return;
+      var st = qa('.aq-manifold-router__sit, .aq-manifold-router__st', r);
+      tl.from(st, { y: 14, autoAlpha: 0, duration: 0.5, stagger: 0.12, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at);
+    }
+    var tl = m.tw(gsap.timeline({ paused: true }));
+    gsap.set(wet, { transition: 'none' });
+    segs.forEach(function (s, i) {
+      var at = 0.05 + i * 0.09;
+      tl.fromTo(s, { scaleY: 0, transformOrigin: '50% 0' }, { scaleY: 1, duration: 0.3, ease: 'none', clearProps: 'transform' }, at)
+        .fromTo(branches[i], { scaleX: 0, transformOrigin: '0 50%' }, { scaleX: 1, duration: 0.35, ease: 'power2.out', clearProps: 'transform' }, at + 0.18)
+        .from(words[i], { x: -16, autoAlpha: 0, duration: 0.55, stagger: 0.05, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.2);
+    });
+    var tw = 0.25 + n * 0.09;
+    wet.forEach(function (w, i) {
+      var isBranch = !!w.closest('.aq-manifold-router__branch');
+      tl.fromTo(w, isBranch ? { scaleX: 0 } : { scaleY: 0 }, isBranch ? { scaleX: 1, duration: 0.35, ease: 'none' } : { scaleY: 1, duration: 0.18, ease: 'none' }, isBranch ? tw + 0.2 : tw + i * 0.18);
+    });
+    tl.call(function () { wet.forEach(function (w) { w.style.removeProperty('transform'); w.style.removeProperty('transition') }) }, null, tw + 0.2 + wet.length * 0.18 + 0.4);
+    var r0 = open(), te = tw + 0.4;
+    if (r0 && !m.narrow()) tl.fromTo(r0, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, te);
+    stations(r0, tl, te + 0.3);
+    m.on(el, function () { tl.play() }, 'top 70%');
+    // a new pick: its route's stations step in
+    el.addEventListener('click', function (ev) {
+      var o = ev.target.closest('.aq-manifold-router__opt'); if (!o || !tl.progress || tl.progress() < 1) return;
+      requestAnimationFrame(function () { var t2 = m.tw(gsap.timeline()); stations(open(), t2, 0) });
+    });
+  });
+});
+/* MarketCallouts: the machine is built, the water runs through it once, then each market is called off the part it
+   is about. The rails behind fall into place; the skid and equipment draw back to front and settle solid (IsoKit
+   timeline); the water drops down the feed riser and runs the route, lighting each stage as it arrives. Then, per
+   callout in turn, the marker pops on its part (the part lights), the leader draws from the part out to the callout
+   and the callout's lines follow the line in. The callouts start as the water reaches the RO; parts settle back at the end; about 4 s.
+   Hover or focus inside a callout lights its part, marker and leader (a reading aid; the numbers carry the same link). */
+AQmotion.fx('MarketCallouts', function (root, m) {
+  root.querySelectorAll('.aq-market-callouts').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var q = function (s, c) { return (c || el).querySelector(s) }, qa = function (s, c) { return [].slice.call((c || el).querySelectorAll(s)) };
+    var svg = q('svg.aq-iso'), D = window.DrawSVGPlugin, narrow = m.narrow(), A = window.AQiso;
+    var tl = A && svg ? A.timeline(svg, m, { draw: 1.1, pipe: 0.6, flow: 1.2, stagger: 0.06 }) : null;
+    if (!tl) { tl = m.tw(gsap.timeline({ paused: true })); if (svg) tl.from(svg, { autoAlpha: 0, duration: 0.6, clearProps: 'opacity,visibility' }, 0) }
+    var rails = qa('.aq-market-callouts__rail');
+    if (rails.length) tl.from(rails, { scaleY: 0, transformOrigin: '50% 0%', duration: 1.2, ease: 'power2.inOut', stagger: 0.15, clearProps: 'transform' }, 0);
+    var t0 = tl.labels && tl.labels.flow != null ? tl.labels.flow + 0.2 : 1.6;
+    qa('.aq-market-callouts__c').forEach(function (c, i) {
+      var id = c.getAttribute('data-c'), mk = q('.aq-market-callouts__mk[data-c="' + id + '"]'), ld = q('.aq-market-callouts__lead[data-c="' + id + '"]');
+      var part = mk && mk.getAttribute('data-part'), at = t0 + i * 0.4;
+      if (mk) tl.from(mk, { scale: 0, duration: 0.4, ease: 'back.out(2.6)', clearProps: 'transform' }, at);
+      if (part && A) tl.call(function () { A.light(svg, part, true) }, null, at);
+      var path = ld && [].slice.call(ld.querySelectorAll('path')), dot = ld && ld.querySelector('circle');
+      if (path && path.length && D && !narrow) tl.fromTo(path, { drawSVG: '100% 100%' }, { drawSVG: '0% 100%', duration: 0.55, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.1);
+      else if (path && path.length) tl.from(path, { autoAlpha: 0, duration: 0.3 }, at + 0.1);
+      if (dot) tl.from(dot, { scale: 0, transformOrigin: '50% 50%', duration: 0.3, clearProps: 'transform' }, at + 0.6);
+      var kids = [].slice.call(c.children);
+      tl.from(kids, { x: narrow ? 0 : (c.classList.contains('aq-market-callouts__c--l') ? -16 : 16), y: narrow ? 12 : 0, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, at + (narrow ? 0.1 : 0.55));
+      if (part && A) tl.call(function () { A.light(svg, part, false) }, null, at + 1.1);
+    });
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
+/* Hover or focus within a callout: light its part, marker and leader */
+(function () {
+  function set(el, id) {
+    [].forEach.call(el.querySelectorAll('[data-c]'), function (x) { x.classList.toggle('is-on', id != null && x.getAttribute('data-c') === id) });
+    var svg = el.querySelector('svg.aq-iso');
+    if (svg && window.AQiso) [].forEach.call(el.querySelectorAll('.aq-market-callouts__mk'), function (mk) { var p = mk.getAttribute('data-part'); if (p) window.AQiso.light(svg, p, id != null && mk.getAttribute('data-c') === id) });
+  }
+  function over(ev) { var el = ev.target.closest && ev.target.closest('.aq-market-callouts'); if (!el) return; var c = ev.target.closest('.aq-market-callouts__c'); set(el, c ? c.getAttribute('data-c') : null) }
+  document.addEventListener('mouseover', over);
+  document.addEventListener('mouseout', function (ev) { var el = ev.target.closest && ev.target.closest('.aq-market-callouts'); if (el && !el.contains(ev.relatedTarget)) set(el, null) });
+})();
 /* NavBar: the phone menu unrolls from the bar (clip-path) and its rows drop in one after another, the urgent block first;
    Close rolls it back up before the page re-renders without it. The section numbers on the wide bar decode once on a new page. */
 (function () {
@@ -1203,6 +1893,64 @@ AQmotion.fx('OptionModules', function (root, m) {
     }, 'top 75%');
   });
 });
+/* OptionTags: the options are laid on the table. The label card is set down first; then each tag drops onto its place
+   from above, turning as it falls and settling at its own tilt, its string pulling out from the eyelet; the round
+   stamp strikes a beat later; the folders slide in from the right onto the navy strip; the two vials roll in last.
+   Hover picks a tag up (CSS). One timeline, once, under 5 s. Folded tiles (phones) appear whole when opened. */
+AQmotion.fx('OptionTags', function (root, m) {
+  root.querySelectorAll('.aq-option-tags').forEach(function (el) {
+    if (!m.free(el)) return;
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var items = qa('.aq-option-tags__item').filter(function (t) { return t.offsetParent !== null }), label = el.querySelector('.aq-option-tags__label');
+    qa('.aq-option-tags__list, .aq-option-tags__vial').forEach(m.claim);
+    if (label) m.claim(label.querySelector('.aq-option-tags__base'));
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), short = m.narrow() ? 0.75 : 1;
+    if (label) tl.from(label.querySelector('.aq-option-tags__base'), { autoAlpha: 0, y: 8, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 0.4);
+    var k = 0;
+    items.forEach(function (it, i) {
+      var folder = it.classList.contains('aq-option-tags__item--folder'), r = parseFloat(it.style.getPropertyValue('--r')) || 0;
+      var at = 0.2 + i * 0.28 * short, str = it.querySelector('.aq-option-tags__string'), stamp = it.querySelector('.aq-option-tags__stamp');
+      if (folder) tl.from(it, { x: 160, rotation: r + 6, autoAlpha: 0, duration: 0.9, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at);
+      else tl.from(it, { y: -110, rotation: r + (k++ % 2 ? 14 : -12), autoAlpha: 0, duration: 0.85, ease: 'back.out(1.3)', clearProps: 'transform,opacity,visibility' }, at);
+      if (str) {
+        var round = it.classList.contains('aq-option-tags__item--round');
+        tl.fromTo(str, { clipPath: round ? 'inset(100% -50% 0 -50%)' : 'inset(-50% 0 -50% 100%)' }, { clipPath: round ? 'inset(0% -50% 0 -50%)' : 'inset(-50% 0 -50% 0%)', duration: 0.5, ease: 'power2.out', clearProps: 'clipPath' }, at + 0.45);
+      }
+      if (stamp) tl.from(stamp, { scale: 2.2, autoAlpha: 0, duration: 0.3, ease: 'power4.in', clearProps: 'transform,opacity,visibility' }, at + 0.6)
+        .fromTo(stamp, { scale: 1 }, { scale: 1.08, duration: 0.08, yoyo: true, repeat: 1, ease: 'power1.out', clearProps: 'transform' }, at + 0.9);
+    });
+    var vials = qa('.aq-option-tags__vial').filter(function (v) { return v.offsetParent !== null || getComputedStyle(v).display !== 'none' });
+    if (vials.length) tl.from(vials, { x: -60, autoAlpha: 0, duration: 0.9, stagger: 0.15, ease: 'power2.out', clearProps: 'opacity,visibility' }, 0.6 + items.length * 0.2);
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
+/* ParamTiles: the grid is assembled like a Swiss poster. The navy field is there first; tiles slide into their cells
+   in reading order, each wiping in from a different edge (left, top, right, bottom in turn), the big number rolls up
+   out of its cell like a counter, the slash cuts down, the value and basis follow. Meanwhile the blueprint cell draws
+   the skid (IsoKit: sheet, frame and equipment, then the water runs RO to EDI). One timeline, once, under 5 s.
+   Folded tiles (phones) are left alone: they appear whole when the reader opens the fold. */
+AQmotion.fx('ParamTiles', function (root, m) {
+  root.querySelectorAll('.aq-param-tiles').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var tiles = qa('.aq-param-tiles__tile').filter(function (t) { return t.offsetParent !== null });
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), short = m.narrow() ? 0.7 : 1;
+    var from = ['inset(0 100% 0 0)', 'inset(0 0 100% 0)', 'inset(0 0 0 100%)', 'inset(100% 0 0 0)'];
+    tiles.forEach(function (t, i) {
+      var at = 0.05 + i * 0.11 * short, n = t.querySelector('.aq-param-tiles__n > span'), sl = t.querySelector('.aq-param-tiles__slash');
+      tl.fromTo(t, { clipPath: from[i % 4] }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, at);
+      if (n) {
+        tl.from(n, { yPercent: 105, duration: 0.8, ease: 'power4.out', clearProps: 'transform' }, at + 0.25);
+        if (window.ScrambleTextPlugin) tl.to(n, { duration: 0.6, scrambleText: { text: n.textContent, chars: '0123456789', speed: 0.7 }, ease: 'none' }, at + 0.25);
+      }
+      if (sl) tl.from(sl, { scaleY: 0, transformOrigin: '50% 0%', duration: 0.45, ease: 'power2.inOut', clearProps: 'transform' }, at + 0.35);
+      tl.from(qa('.aq-param-tiles__p, .aq-param-tiles__v, .aq-param-tiles__m', t), { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, at + 0.4);
+    });
+    var svg = el.querySelector('.aq-param-tiles__fig svg.aq-iso'), it = svg && window.AQiso && AQiso.timeline(svg, m, { draw: 1.3 * short, pipe: 0.5, flow: 0.8, keep: true });
+    if (it) { it.paused(false); tl.add(it, 0.25) }
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
 /* ParameterCallouts: the drawing prints in, the numbered pins strike onto it, then each leader draws from its pin out
    to its callout and the callout's rule runs on; the parameter name follows and the value lands last. On the phone
    (no leaders) the pins strike and the numbered list follows in order, each value fading in after its name. One timeline, under 4 s. */
@@ -1239,6 +1987,85 @@ AQmotion.fx('ParameterCallouts', function (root, m) {
         if (leaders.length) gsap.set(leaders, { clearProps: 'strokeDasharray,strokeDashoffset,opacity,visibility' });
       });
     }, 'top 75%');
+  });
+});
+/* PidRoutes: the P&ID commissions itself, route by route. The column heads decode and the rulers run out; the situation
+   boxes print in from the left; then each route opens in turn: its first run draws from the situation's port, the
+   valve swings into the line, a droplet rides the run and the system box lights as it arrives; the second run and its
+   valve follow, the droplet carries on and the start box lights. Shared header lines draw once the routes they join
+   are open. Lights settle back when the last route is through (about 3.6 s). Phones: the runs draw downwards. */
+AQmotion.fx('PidRoutes', function (root, m) {
+  root.querySelectorAll('.aq-pid-routes').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var q = function (s, c) { return (c || el).querySelector(s) }, qa = function (s, c) { return [].slice.call((c || el).querySelectorAll(s)) };
+    var narrow = m.narrow(), short = narrow ? 0.8 : 1;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var heads = qa('.aq-pid-routes__head'), rulers = qa('.aq-pid-routes__ruler'), marks = qa('.aq-pid-routes__mark'), cap = q('.aq-pid-routes__cap');
+    if (heads.length) tl.from(heads, { autoAlpha: 0, duration: 0.3, stagger: 0.1, clearProps: 'opacity,visibility' }, 0);
+    if (rulers.length) tl.from(rulers, { scaleX: 0, transformOrigin: '0% 50%', duration: 0.9, ease: 'power2.inOut', clearProps: 'transform' }, 0.05);
+    if (marks.length) tl.from(marks, { scale: 0, rotation: 90, duration: 0.5, ease: 'back.out(2)', clearProps: 'transform' }, 0);
+    var sits = qa('.aq-pid-routes__sit');
+    tl.from(sits, { clipPath: 'inset(0 100% 0 0)', duration: 0.55 * short, ease: 'power2.inOut', stagger: 0.09, clearProps: 'clipPath' }, 0.25);
+    tl.from(qa('.aq-pid-routes__node'), { autoAlpha: 0, duration: 0.4, stagger: 0.04, clearProps: 'opacity,visibility' }, 0.35);
+    var routes = qa('.aq-pid-routes__route'), lit = [], t0 = 0.75, gap = 0.26 * short;
+    function ride(run, at, dur) {
+      var vert = run.offsetHeight > run.offsetWidth;
+      var svg = q('.aq-pid-routes__pipe', run), v = q('.aq-pid-routes__valve', run), extra = qa('.aq-pid-routes__inst, .aq-pid-routes__arrow, .aq-pid-routes__jn', run), port = q('.aq-pid-routes__port', run);
+      if (port) tl.from(port, { scale: 0, duration: 0.25, ease: 'back.out(3)', clearProps: 'transform' }, at - 0.1);
+      tl.fromTo(svg, { clipPath: vert ? 'inset(0 0 100% 0)' : 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0% 0)', duration: dur, ease: 'none', clearProps: 'clipPath' }, at);
+      if (v) tl.from(v, { scale: 0.2, autoAlpha: 0, rotation: vert ? 0 : -90, duration: 0.35, ease: 'back.out(2.2)', clearProps: 'transform,opacity,visibility' }, at + dur * 0.45);
+      if (extra.length) tl.from(extra, { autoAlpha: 0, duration: 0.25, clearProps: 'opacity,visibility' }, at + dur * 0.6);
+      var d = document.createElement('span'); d.className = 'aq-pid-routes__drop'; d.setAttribute('aria-hidden', 'true');
+      tl.call(function () { run.appendChild(d) }, null, at);
+      var len = function () { return vert ? run.offsetHeight : run.offsetWidth };
+      tl.fromTo(d, { x: 0, y: 0, autoAlpha: 1 }, { x: vert ? 0 : len, y: vert ? len : 0, duration: dur, ease: 'none', immediateRender: false }, at)
+        .to(d, { autoAlpha: 0, duration: 0.15, onComplete: function () { if (d.parentNode) d.parentNode.removeChild(d) } }, at + dur);
+    }
+    routes.forEach(function (r, i) {
+      var at = t0 + i * gap, a = q('.aq-pid-routes__run--a', r), b = q('.aq-pid-routes__run--b', r), sys = q('.aq-pid-routes__node--sys', r), go = q('.aq-pid-routes__node--go', r);
+      var d = 0.5 * short;
+      if (a) ride(a, at, d);
+      if (sys) { tl.call(function () { sys.classList.add('is-lit'); lit.push(sys) }, null, at + d); tl.from(q('.aq-pid-routes__v', sys), { x: narrow ? 0 : -8, autoAlpha: 0, duration: 0.35, clearProps: 'transform,opacity,visibility' }, at + d - 0.05) }
+      if (b) ride(b, at + d + 0.1, d * 0.8);
+      if (go) { tl.call(function () { go.classList.add('is-lit'); lit.push(go) }, null, at + d * 1.8 + 0.1); tl.from(q('.aq-pid-routes__v', go), { x: narrow ? 0 : -8, autoAlpha: 0, duration: 0.35, clearProps: 'transform,opacity,visibility' }, at + d * 1.8 + 0.05) }
+    });
+    var end = t0 + routes.length * gap + 1.0 * short;
+    var tie = qa('.aq-pid-routes__tie');
+    if (tie.length) tl.from(tie, { autoAlpha: 0, duration: 0.4, stagger: 0.03, clearProps: 'opacity,visibility' }, end - 0.6);
+    if (cap) tl.from(cap, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, end - 0.4);
+    tl.call(function () { lit.forEach(function (n) { n.classList.remove('is-lit') }) }, null, end + 0.3);
+    m.on(el, function () { tl.play(); heads.forEach(function (h, i) { var s = h.querySelector('span'); if (s) m.scramble(s, 0.1 * i) }) }, 'top 80%');
+  });
+});
+/* PipeCollage: the poster is pasted up, then the text is hung on it. Each tile of the board slides in from the edge
+   it faces behind its own mask (left column from the left, right from the right, middle from above), the elbow's
+   pipe and the flow lines draw along their run, the numbers drop onto the pieces; the editorial blocks follow down the
+   field, each bracket drawing down before its words rise. Board and blocks play once, under 3 s. Hovering or
+   focusing a block frames its piece (renderer). The section heading is left to the core. */
+AQmotion.fx('PipeCollage', function (root, m) {
+  root.querySelectorAll('.aq-pipe-collage').forEach(function (el) {
+    var board = el.querySelector('.aq-pipe-collage__board'), list = el.querySelector('.aq-pipe-collage__blocks');
+    if (!list || !m.free(list)) return;
+    m.claim(list); if (board) m.claim(board);
+    var D = window.DrawSVGPlugin;
+    if (board && board.offsetParent) {
+      var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+      [].forEach.call(board.querySelectorAll('.aq-pipe-collage__cell'), function (c, i) {
+        var ed = c.getAttribute('data-edge'), dx = ed === 'l' ? -60 : ed === 'r' ? 60 : 0, dy = dx ? 0 : -60;
+        tl.from(c, { x: dx, y: dy, autoAlpha: 0, duration: 0.7, ease: 'power4.out', clearProps: 'transform,opacity,visibility' }, 0.06 * i);
+      });
+      var lines = [].slice.call(board.querySelectorAll('[data-f="pipe"], [data-f="fl"], [data-f="flo"]'));
+      if (D && lines.length) tl.fromTo(lines, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.1, ease: 'power2.inOut', stagger: 0.08, clearProps: 'strokeDasharray,strokeDashoffset' }, 0.6);
+      tl.from(board.querySelectorAll('.aq-pipe-collage__n'), { y: -8, autoAlpha: 0, duration: 0.35, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 1.2);
+      /* cells sit inside a placing <g transform>; GSAP moves only the inner cell, so clearing it never loses the placement */
+      m.on(board, function () { tl.play() }, 'top 75%');
+    }
+    [].forEach.call(list.querySelectorAll('.aq-pipe-collage__block'), function (b, i) {
+      var bt = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+      bt.from(b, { clipPath: 'inset(0 0 100% 0)', duration: 0.6, ease: 'power2.inOut', clearProps: 'clipPath' }, 0)
+        .from(b.children, { y: 16, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.2);
+      m.on(b, function () { bt.delay(m.narrow() ? 0 : (i % 2) * 0.12).play() }, 'top 88%');
+    });
   });
 });
 /* PlanTiers: the plan names drop onto their rule one tier after another, each feature row then fills across the
@@ -1439,6 +2266,98 @@ AQmotion.fx('ProcessSteps', function (root, m) {
         if (ic) tl.fromTo(ic, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 0.5, ease: 'power2.out', clearProps: 'clipPath' }, i * 0.11 + 0.1);
       });
     }, 'top 85%');
+  });
+});
+/* ProjectRun: the steps advance with the reader's scroll.
+   Wide screens: the look switches to its live state (is-live): a sticky stage beside the steps. As the reader scrolls,
+   the water fills the run under the stage (smoothed, it follows the scroll and stops when the scroll stops), the stop
+   it reaches lights, the step at the centre of the view turns full strength, its drawing prints in from the bottom and
+   the big number decodes to it. On first entry the stage frame unrolls and the first stop seats.
+   Phones: the water fills down the vertical run with the scroll and each node lights as the water passes it; each step
+   rises in once. The reader drives every change; nothing plays on its own for more than a second. */
+AQmotion.fx('ProjectRun', function (root, m) {
+  root.querySelectorAll('.aq-project-run').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var steps = qa('.aq-project-run__step'), n = steps.length; if (!n) return;
+    if (m.narrow()) {
+      // the water fills down the run with the scroll: step i's segment fills as the run's progress passes it
+      var nodes = qa('.aq-project-run__node'), fill = function (p) {
+        steps.forEach(function (s, i) { var w = Math.max(0, Math.min(1, p * (n - 1) - i)); s.style.setProperty('--w', w.toFixed(3)); if (nodes[i]) nodes[i].classList.toggle('is-wet', p * (n - 1) >= i - 0.02) }) };
+      fill(0);
+      m.tw(ScrollTrigger.create({ trigger: el, start: 'top 65%', end: 'bottom 65%', onUpdate: function (st) { fill(st.progress) } }));
+      steps.forEach(function (s) {
+        var parts = qa('.aq-project-run__pic, .aq-project-run__text > *', s), nd = s.querySelector('.aq-project-run__node');
+        gsap.set(parts, { y: 18, autoAlpha: 0 });
+        m.on(s, function () {
+          m.tw(gsap.to(parts, { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.07, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }));
+          if (nd) m.tw(gsap.fromTo(nd, { scale: 0.4 }, { scale: 1, duration: 0.5, ease: 'back.out(2.4)', clearProps: 'transform' }));
+        }, 'top 80%');
+      });
+      return;
+    }
+    el.classList.add('is-live');
+    var stage = el.querySelector('.aq-project-run__stage'), run = el.querySelector('.aq-project-run__run'), cur = el.querySelector('.aq-project-run__cur');
+    var arts = qa('.aq-project-run__art'), stops = qa('.aq-project-run__stop'), list = el.querySelector('.aq-project-run__steps');
+    var k = -1, f = { v: 0 };
+    var setF = function () { run.style.setProperty('--f', f.v.toFixed(4)) }, toF = gsap.quickTo(f, 'v', { duration: 0.45, ease: 'power2.out', onUpdate: setF });
+    function go(i) {
+      if (i === k) return; var first = k < 0; k = i;
+      steps.forEach(function (s, j) { s.classList.toggle('is-on', j === i) });
+      arts.forEach(function (a, j) { a.classList.toggle('is-on', j === i) });
+      stops.forEach(function (s, j) { s.classList.toggle('is-on', j === i); s.classList.toggle('is-past', j < i) });
+      var t = (i < 9 ? '0' : '') + (i + 1);
+      if (cur && !first && window.ScrambleTextPlugin) m.tw(gsap.to(cur, { duration: 0.5, scrambleText: { text: t, chars: '0123456789', speed: 1 }, ease: 'none' }));
+      else if (cur) cur.textContent = t;
+      if (stops[i]) m.tw(gsap.fromTo(stops[i].querySelector('.aq-project-run__dot'), { boxShadow: '0 0 0 12px ' + getComputedStyle(document.documentElement).getPropertyValue('--flow-tint').trim() }, { boxShadow: '0 0 0 0px rgba(0,0,0,0)', duration: 0.6, ease: 'power2.out', clearProps: 'boxShadow' }));
+    }
+    // Progress through the list: when step i's centre crosses the view's centre, the water is at stop i
+    m.tw(ScrollTrigger.create({ trigger: list, start: 'top center', end: 'bottom center',
+      onUpdate: function (st) {
+        var v = Math.max(0, Math.min(1, (st.progress * n - 0.5) / Math.max(1, n - 1)));
+        toF(v);
+        go(Math.max(0, Math.min(n - 1, Math.round(v * (n - 1)))));
+      } }));
+    go(0); setF();
+    // First entry: the stage frame unrolls, the drawing prints, the first stop seats
+    gsap.set(stage, { clipPath: 'inset(0 0 100% 0)' });
+    m.on(el, function () {
+      var tl = m.tw(gsap.timeline());
+      tl.to(stage, { clipPath: 'inset(0 0 0% 0)', duration: 0.9, ease: 'power3.inOut', clearProps: 'clipPath' }, 0)
+        .from(cur, { yPercent: 40, autoAlpha: 0, duration: 0.7, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.4)
+        .from(qa('.aq-project-run__stop'), { y: 10, autoAlpha: 0, duration: 0.5, stagger: 0.07, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.5);
+    }, 'top 75%');
+    ScrollTrigger.refresh();
+  });
+});
+/* ProofFolders: the files are pulled from the drawer one by one. Each folder rises into place with its tab, the
+   standard's name slides in beside it, the typed slip drops onto the folder and turns to its angle, the proof sheets
+   fan out from under the clip, then the stamp strikes (in large and light, down hard, a small jolt through the folder)
+   and the index label slides in from the edge. Folders behind a fold play when opened (they have no trigger of their
+   own until shown). One timeline per folder, once, each under 2.5 s. The section heading is left to the core. */
+AQmotion.fx('ProofFolders', function (root, m) {
+  root.querySelectorAll('.aq-proof-folders').forEach(function (el) {
+    var list = el.querySelector('.aq-proof-folders__list'); if (!list || !m.free(list)) return;
+    m.claim(list); var cols = el.querySelector('.aq-proof-folders__cols'); if (cols) m.claim(cols);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    if (cols) { gsap.set(cols.children, { autoAlpha: 0, y: 8 }); m.on(cols, function () { m.tw(gsap.to(cols.children, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' })) }, 'top 90%') }
+    qa('.aq-proof-folders__row').forEach(function (row, i) {
+      var folder = row.querySelector('.aq-proof-folders__folder'), std = row.querySelector('.aq-proof-folders__std'), slip = row.querySelector('.aq-proof-folders__slip'),
+        sheets = qa('.aq-proof-folders__sheet', row), stamp = row.querySelector('.aq-proof-folders__stamp'), clip = row.querySelector('.aq-proof-folders__clip'),
+        label = row.querySelector('.aq-proof-folders__label');
+      var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+      tl.from(folder, { y: 70, autoAlpha: 0, duration: 0.8, ease: 'power4.out', clearProps: 'transform,opacity,visibility' }, 0)
+        .from(std, { x: -24, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, 0.15);
+      if (slip) tl.from(slip, { y: -28, rotation: -5, autoAlpha: 0, duration: 0.6, ease: 'back.out(1.6)', clearProps: 'transform,opacity,visibility' }, 0.35);
+      if (sheets.length) tl.from(sheets, { y: function (k) { return -k * 24 }, rotation: 0, x: 0, autoAlpha: 0, duration: 0.5, stagger: 0.09, clearProps: 'transform,opacity,visibility' }, 0.5);
+      if (clip) tl.from(clip, { y: -12, autoAlpha: 0, duration: 0.3, clearProps: 'transform,opacity,visibility' }, 0.75);
+      if (stamp) {
+        tl.fromTo(stamp, { scale: 2.4, autoAlpha: 0 }, { scale: 1, autoAlpha: 0.88, duration: 0.22, ease: 'power4.in', clearProps: 'transform,opacity,visibility' }, 1.0)
+          .to(folder, { y: 3, duration: 0.06, yoyo: true, repeat: 1, ease: 'power1.inOut', clearProps: 'transform' }, 1.22);
+      }
+      if (label) tl.from(label, { clipPath: 'inset(0 0 0 100%)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, 1.1);
+      m.on(row, function () { tl.play() }, 'top 88%');
+    });
   });
 });
 /* Prose (plain sheet): the lead sentence rises line by line out of a mask, then each annotated paragraph follows in
@@ -1652,6 +2571,131 @@ AQmotion.fx('SpecTable', function (root, m) {
     } }).forEach(m.tw);
   });
 });
+/* StairRouter: the type moves, then the stair is climbed. The outline words slide in from opposite sides while their
+   letters rise one by one (both inks in step, so the word changes colour cleanly at the diagonal). Then the stair is
+   built the way you would climb it: riser up, tread across, and the card lands on the tread as it is laid, its number
+   decoding; one limestone drop climbs with the line and comes to rest at the top step. Last, the end word strikes in
+   on the wedge, as soon as both the stair is up and the word is on screen. Under 4 s. Phones (the flight runs down the page): each step lays its tread and lands its card as it
+   scrolls in; the end word strikes when it is reached. Hover lifts a card off its tread (CSS). */
+AQmotion.fx('StairRouter', function (root, m) {
+  var CLEAR = 'transform,opacity,visibility,clipPath';
+  [].forEach.call(root.querySelectorAll('.aq-stair-router-sec'), function (sec) {
+    var fig = sec.querySelector('.aq-stair-router'), flight = fig && fig.querySelector('.aq-stair-router__flight');
+    if (!flight) return;
+    var q = function (s, el) { return (el || sec).querySelector(s) }, qa = function (s, el) { return [].slice.call((el || sec).querySelectorAll(s)) };
+    var steps = qa('.aq-stair-router__step', flight), go = q('.aq-stair-router__go'), drop = q('.aq-stair-router__drop'), type = q('.aq-stair-router__type');
+    [flight, go, drop, type].forEach(function (el) { if (el) m.claim(el) });
+    var stacked = getComputedStyle(flight).display === 'flex';
+
+    // Outline type
+    var rows = qa('.aq-stair-router__w'), chars = [];
+    rows.forEach(function (w) { var s = m.split(w, { type: 'chars' }); if (s) chars = chars.concat(s.chars) });
+    function playType(tl, at) {
+      if (!rows.length) return;
+      tl.fromTo(rows, { xPercent: function (i, el) { return el.classList.contains('aq-stair-router__w--a') ? 14 : -14 } }, { xPercent: 0, duration: 1.8, ease: 'expo.out', clearProps: 'transform' }, at);
+      if (chars.length) tl.fromTo(chars, { yPercent: 70, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1, duration: 1, ease: 'power3.out', stagger: { each: 0.05, from: 'start' }, clearProps: CLEAR }, at);
+    }
+    function strikeGo(tl, at) {
+      if (!go) return;
+      tl.fromTo(go, { clipPath: 'inset(0% 100% 0% 0%)', x: -60 }, { clipPath: 'inset(0% 0% 0% 0%)', x: 0, duration: 0.9, ease: 'power4.out', clearProps: CLEAR }, at);
+    }
+    function parts(st) {
+      return { n: q('.aq-stair-router__n', st), tread: q('.aq-stair-router__tread', st), riser: q('.aq-stair-router__riser', st), card: q('.aq-stair-router__card', st) };
+    }
+    function hide(p) {
+      if (p.tread) gsap.set(p.tread, { scaleX: 0 });
+      if (p.riser) gsap.set(p.riser, { scaleY: 0 });
+      if (p.n) gsap.set(p.n, { autoAlpha: 0 });
+      gsap.set(p.card, { autoAlpha: 0, y: 36, clipPath: 'inset(0% 0% 100% 0%)' });
+    }
+    function climb(tl, p, at, first) {
+      var t = at;
+      if (p.riser && !stacked) { tl.to(p.riser, { scaleY: 1, duration: 0.12, ease: 'none', clearProps: 'transform' }, t); t += 0.12 }
+      if (p.riser && stacked) tl.to(p.riser, { scaleY: 1, duration: 0.3, ease: 'power2.out', clearProps: 'transform' }, t);
+      if (p.tread) tl.to(p.tread, { scaleX: 1, duration: 0.22, ease: first ? 'power2.in' : 'none', clearProps: 'transform' }, t);
+      if (p.n) { tl.to(p.n, { autoAlpha: 1, duration: 0.2, clearProps: 'opacity,visibility' }, t); var num = q('.aq-stair-router__num', p.n); if (num) tl.call(function () { m.scramble(num, 0) }, null, t) }
+      tl.to(p.card, { autoAlpha: 1, y: 0, clipPath: 'inset(0% 0% 0% 0%)', duration: 0.65, ease: 'power3.out', clearProps: CLEAR }, t + 0.08);
+      return t + 0.22;
+    }
+    var P = steps.map(parts);
+
+    if (!stacked) {
+      P.forEach(hide); if (go) gsap.set(go, { clipPath: 'inset(0% 100% 0% 0%)' });
+      if (chars.length) gsap.set(chars, { autoAlpha: 0 });
+      m.on(fig, function () {
+        var tl = m.tw(gsap.timeline());
+        playType(tl, 0);
+        // the drop's waypoints, relative to where it rests (the right end of the top tread)
+        var dr = drop && drop.getBoundingClientRect(), cx = dr && dr.left + dr.width / 2, cy = dr && dr.top + dr.height / 2, way = [];
+        var t = 0.35;
+        P.forEach(function (p, i) {
+          var r = p.tread.getBoundingClientRect(), y = r.top + r.height / 2;
+          if (dr) { way.push([r.left - cx, y - cy, i ? 0.12 : 0]); way.push([r.right - cx, y - cy, 0.22]) }
+          t = climb(tl, p, t, !i) + 0.04;
+        });
+        if (drop && way.length) {
+          gsap.set(drop, { x: way[0][0], y: way[0][1] });
+          var dt = 0.35 + 0.04;
+          way.forEach(function (w, k) { if (!k) return; tl.to(drop, { x: w[0], y: w[1], duration: w[2], ease: 'none' }, dt); dt += w[2] + (k % 2 ? 0.04 : 0) });
+          tl.set(drop, { clearProps: 'transform' }, dt + 0.05);
+        }
+        goAt = Date.now() + (t + 0.05) * 1000;
+      }, 'top 75%');
+      // the end word strikes once the stair is up and the word is on screen, whichever comes later
+      var goAt = 0;
+      if (go) m.on(go, function () { var w = Math.max(0, (goAt - Date.now()) / 1000); strikeGo(m.tw(gsap.timeline({ delay: goAt ? w : 0.2 })), 0) }, 'top 92%');
+      return;
+    }
+
+    // Stacked (phones and narrow screens): step by step as each scrolls in
+    if (chars.length) { gsap.set(chars, { autoAlpha: 0 }); m.on(sec, function () { playType(m.tw(gsap.timeline()), 0) }) }
+    P.forEach(function (p, i) {
+      hide(p);
+      m.on(steps[i], function () { climb(m.tw(gsap.timeline()), p, 0, true) }, 'top 88%');
+    });
+    if (go) { gsap.set(go, { clipPath: 'inset(0% 100% 0% 0%)' }); m.on(go, function () { strikeGo(m.tw(gsap.timeline()), 0) }, 'top 95%') }
+  });
+});
+/* StandardWires: each row is wired up as it scrolls in. The index box pops, the standard decodes in mono, what it asks
+   fades up, the answer chip strikes on; then the wire runs from the chip across to the plate and steps to the part,
+   the part draws itself and the water runs through it, and the part lights as the wire lands, then settles. The plate's
+   header and title block fade in with the first row. Folded rows are left whole for when the fold opens.
+   One timeline per row, once, under 5 s. */
+AQmotion.fx('StandardWires', function (root, m) {
+  root.querySelectorAll('.aq-standard-wires').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var rows = qa('.aq-standard-wires__row').filter(function (r) { return !r.classList.contains('aq-fold-x') });
+    var chrome = qa('.aq-standard-wires__heads, .aq-standard-wires__foot');
+    if (chrome.length) { gsap.set(chrome, { autoAlpha: 0 }); m.on(el, function () { m.tw(gsap.to(chrome, { autoAlpha: 1, duration: 0.6, stagger: 0.2, clearProps: 'opacity,visibility' })) }, 'top 85%') }
+    function play(r, delay) {
+      var q = function (s) { return r.querySelector(s) }, tl = m.tw(gsap.timeline({ delay: delay, defaults: { ease: 'power3.out' } }));
+      gsap.set(r, { autoAlpha: 1 });
+      tl.from(q('.aq-standard-wires__n'), { scale: 0, duration: 0.35, ease: 'back.out(3)', clearProps: 'transform' }, 0);
+      var s = q('.aq-standard-wires__s');
+      tl.from(s, { autoAlpha: 0, duration: 0.2, clearProps: 'opacity,visibility' }, 0.05);
+      if (window.ScrambleTextPlugin && !m.narrow()) qa('.aq-standard-wires__s > span:not(.aq-standard-wires__semi)', r).forEach(function (sp, i) {
+        var t = sp.textContent; if (!sp.getAttribute('aria-label')) sp.setAttribute('aria-label', t);
+        tl.to(sp, { duration: Math.min(0.9, 0.25 + t.length * 0.03), scrambleText: { text: t, chars: '0123456789<>.', speed: 0.7 }, ease: 'none' }, 0.05 + i * 0.12);
+      });
+      tl.from(q('.aq-standard-wires__ask'), { y: 10, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 0.2);
+      tl.from(q('.aq-standard-wires__chip'), { scale: 1.12, autoAlpha: 0, duration: 0.4, ease: 'back.out(2)', clearProps: 'transform,opacity,visibility' }, 0.4);
+      var run = q('.aq-standard-wires__run'), wire = q('.aq-standard-wires__wire'), end = q('.aq-standard-wires__end'), svg = q('svg.aq-iso');
+      var iso = svg && window.AQiso && AQiso.timeline(svg, m, { draw: 0.8, pipe: 0.35, flow: 0.6, drop: true });
+      if (iso) { iso.paused(false); tl.add(iso, 0.45) }
+      if (run && !m.narrow()) tl.from(run, { scaleX: 0, duration: 0.4, ease: 'power2.in', clearProps: 'transform' }, 0.7);
+      if (wire && window.DrawSVGPlugin && !m.narrow()) { wire.setAttribute('vector-effect', 'non-scaling-stroke'); tl.fromTo(wire, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.6, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, 1.05) }
+      if (end) tl.from(end, { scale: 0, transformOrigin: '50% 50%', duration: 0.3, ease: 'back.out(3)', clearProps: 'transform' }, 1.55);
+      if (svg && window.AQiso) {
+        var id = r.getAttribute('data-sw');
+        tl.call(function () { AQiso.light(svg, id, true) }, null, 1.6);
+        tl.call(function () { if (!r.classList.contains('is-hot')) AQiso.light(svg, id, false) }, null, 2.5);
+      }
+    }
+    rows.forEach(function (r) { gsap.set(r, { autoAlpha: 0 }) });
+    ScrollTrigger.batch(rows, { start: 'top 85%', once: true, onEnter: function (b) { b.forEach(function (r, j) { play(r, j * 0.25) }) } }).forEach(m.tw);
+  });
+});
 /* StandardsGrid: cards land in reading order; as each lands, the connector from the card before it (across the row)
    or above it (down from the row above) draws in, so the frame reads as one chain. The connectors are pseudo-elements
    drawn through --aq-cn (scale only). Folded cards are left alone. */
@@ -1717,6 +2761,134 @@ AQmotion.fx('StandardsMap', function (root, m) {
       // custom properties back to their CSS default once drawn
       tl.call(function () { gsap.set(ol, { clearProps: '--aq-pipe,--aq-arrow' }); gsap.set(zones, { clearProps: '--aq-branch,--aq-node,--aq-lead' }) });
     }, 'top 80%');
+  });
+});
+/* StandardsOrbit: the orbits are drawn round the plant, then each standard reaches in. The rings draw on (outer, inner,
+   far) and their ticks fade up while the plant builds in the middle (IsoKit choreography: parts, pipes, water); each
+   node then lands on the ring, its arc draws in from the node to the part it governs, the part lights as the arc
+   touches it, and the zone's title and standards slide out from the node's side. Parts settle back at the end; hover
+   and focus light them again (renderer). One timeline, once, under 5 s. The section heading is left to the core. */
+AQmotion.fx('StandardsOrbit', function (root, m) {
+  root.querySelectorAll('.aq-standards-orbit').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) }, D = window.DrawSVGPlugin;
+    var orb = el.querySelector('.aq-standards-orbit__orbits'), svg = el.querySelector('svg.aq-iso'), narrow = innerWidth < 1180;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    if (orb && !narrow) {
+      var rings = qa('.aq-standards-orbit__ring:not(.aq-standards-orbit__ring--in)', orb);
+      tl.from(qa('.aq-standards-orbit__ring--in', orb), { autoAlpha: 0, duration: 1, clearProps: 'opacity,visibility' }, 0.6);
+      if (D) tl.fromTo(rings, { drawSVG: '50% 50%' }, { drawSVG: '0% 100%', duration: 1.4, ease: 'power2.inOut', stagger: 0.15, clearProps: 'strokeDasharray,strokeDashoffset' }, 0);
+      else tl.from(rings, { autoAlpha: 0, duration: 0.8, clearProps: 'opacity,visibility' }, 0);
+      tl.from(qa('.aq-standards-orbit__tick', orb), { autoAlpha: 0, duration: 0.3, stagger: { each: 0.015 }, clearProps: 'opacity,visibility' }, 0.4);
+    }
+    var it = svg && window.AQiso && AQiso.timeline(svg, m, { draw: 0.9, pipe: 0.6, flow: 1, keep: false });
+    if (it) { it.paused(false); tl.add(it, 0.3) }
+    var zones = qa('.aq-standards-orbit__zone'), t0 = narrow ? 0.4 : 1.5;
+    zones.forEach(function (z, i) {
+      var k = z.getAttribute('data-so'), at = t0 + i * (narrow ? 0.12 : 0.42), side = z.classList.contains('is-l') ? 1 : -1,
+        node = el.querySelector('.aq-standards-orbit__node[data-so="' + k + '"]'), arc = el.querySelector('.aq-standards-orbit__arc[data-so="' + k + '"]'),
+        end = el.querySelector('.aq-standards-orbit__end[data-so="' + k + '"]'), part = z.getAttribute('data-part');
+      if (node && !narrow) tl.from(node, { scale: 0, transformOrigin: '50% 50%', duration: 0.45, ease: 'back.out(2.5)', clearProps: 'transform' }, at);
+      if (arc && !narrow) {
+        if (D) tl.fromTo(arc, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.7, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.1);
+        else tl.from(arc, { autoAlpha: 0, duration: 0.5, clearProps: 'opacity,visibility' }, at + 0.1);
+        if (end) tl.from(end, { scale: 0, transformOrigin: '50% 50%', duration: 0.3, clearProps: 'transform' }, at + 0.75);
+        tl.call(function (on) { arc.classList.add('is-on'); if (end) end.classList.add('is-on'); if (part && svg && window.AQiso) AQiso.light(svg, part, true) }, null, at + 0.8)
+          .call(function () { arc.classList.remove('is-on'); if (end) end.classList.remove('is-on'); if (part && svg && window.AQiso) AQiso.light(svg, part, false) }, null, at + 1.6);
+      }
+      tl.from(z.querySelector('.aq-standards-orbit__head'), { x: narrow ? -16 : 24 * side, autoAlpha: 0, duration: 0.55, clearProps: 'transform,opacity,visibility' }, at + 0.2)
+        .from(qa('.aq-standards-orbit__codes li', z), { x: narrow ? -10 : 14 * side, autoAlpha: 0, duration: 0.4, stagger: 0.05, clearProps: 'transform,opacity,visibility' }, at + 0.35);
+    });
+    m.on(el, function () { tl.play() }, narrow ? 'top 85%' : 'top 70%');
+  });
+});
+/* StrataRun: the terrace is laid, then the water runs down it. The labels rise in a row and their leaders drop to the
+   slabs; the cut-paper stream wipes in behind; each slab's sheets fall into place and settle, top stage first; then the
+   equipment draws on stage by stage, the pipes follow, and the water runs from the feed down the terrace and round the
+   loop, each label's hairline turning flow as the water reaches its stage. The signal bus fades in last.
+   Phones: each stage rises as it scrolls in and its own slab drawing builds. One timeline, once, under 5 s. */
+AQmotion.fx('StrataRun', function (root, m) {
+  root.querySelectorAll('.aq-strata-run').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var stages = qa('.aq-strata-run__stage'), base = el.querySelector('.aq-strata-run__base');
+    if (m.narrow()) {
+      gsap.set(stages, { autoAlpha: 0 });
+      ScrollTrigger.batch(stages, { start: 'top 88%', once: true, onEnter: function (b) {
+        b.forEach(function (s, j) {
+          var tl = m.tw(gsap.timeline({ delay: j * 0.12 }));
+          tl.fromTo(s, { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, 0);
+          var mini = s.querySelector('svg.aq-iso'), it = mini && window.AQiso && AQiso.timeline(mini, m, { draw: 0.7, pipe: 0.3, flow: 0.5, drop: false });
+          if (it) { it.paused(false); tl.add(it, 0.15) }
+        });
+      } }).forEach(m.tw);
+      if (base) m.on(base, function () { m.tw(gsap.from(base, { autoAlpha: 0, y: 10, duration: 0.5, clearProps: 'transform,opacity,visibility' })) }, 'top 95%');
+      return;
+    }
+    var svg = el.querySelector('.aq-strata-run__svg'); if (!svg) return;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var stream = qa('.aq-strata-run__stream, .aq-strata-run__edge', svg), stacks = qa('.aq-strata-run__stack', svg);
+    var leads = qa('.aq-strata-run__lead', svg), dots = qa('.aq-strata-run__dot', svg), bus = qa('.aq-strata-run__bus-g', svg);
+    // 1. labels and leaders
+    tl.from(stages, { y: 16, autoAlpha: 0, duration: 0.5, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, 0);
+    if (window.DrawSVGPlugin) tl.fromTo(leads, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.7, ease: 'power2.inOut', stagger: 0.07, clearProps: 'strokeDasharray,strokeDashoffset' }, 0.2);
+    tl.from(dots, { scale: 0, transformOrigin: '50% 50%', duration: 0.3, ease: 'back.out(3)', stagger: 0.07, clearProps: 'transform' }, 0.75);
+    // 2. the stream behind, then the slabs: sheets fall in and settle, top stage first
+    tl.fromTo(stream, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.1);
+    stacks.forEach(function (st, i) {
+      var sheets = qa('.aq-strata-run__slab', st);
+      tl.from(sheets, { y: -26, autoAlpha: 0, duration: 0.55, ease: 'aq-settle', stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.2 + i * 0.1);
+    });
+    tl.from(bus, { autoAlpha: 0, duration: 0.5, clearProps: 'opacity,visibility' }, 0.9);
+    // 3. equipment, pipes and the water (IsoKit), each label lighting as its stage is reached
+    var on = function (id, v) { var s = el.querySelector('.aq-strata-run__stage[data-stage="' + id + '"]'); if (s) s.classList.toggle('is-hot', v) };
+    var iso = window.AQiso && AQiso.timeline(svg, m, { draw: 1.1, pipe: 0.6, flow: 1.4,
+      onStage: function (els, id) { on(id, true); gsap.delayedCall(0.7, function () { on(id, false) }) } });
+    if (iso) { iso.paused(false); tl.add(iso, 0.75) }
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
+/* SystemRun: the package builds as a drawing, then the water runs the line once.
+   Desktop: the sheet fades up, the brackets drop in over each system, the equipment draws back to front and the pipes
+   follow (IsoKit choreography); then the water enters at "Drinking water", a droplet riding its head, and each system
+   lights as the water reaches it: its bracket turns flow, its column's rule fills and its number decodes. The water
+   leaves at the point of use, whose label lights last. Phones: each system's own drawing builds as it scrolls in and
+   the vertical water line fills down its column. One timeline, once, under 5 s. */
+AQmotion.fx('SystemRun', function (root, m) {
+  root.querySelectorAll('.aq-system-run').forEach(function (el) {
+    if (!m.free(el) || !window.AQiso) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var stages = qa('.aq-system-run__stage');
+    function stageOf(id) { return el.querySelector('.aq-system-run__stage[data-stage="' + id + '"]') }
+    if (m.narrow()) {
+      stages.forEach(function (s) {
+        var svg = s.querySelector('.aq-system-run__mini'), mark = s.querySelector('.aq-system-run__mark'), text = qa('.aq-system-run__code, .aq-system-run__t, .aq-system-run__d, .aq-system-run__foot', s);
+        var tl = AQiso.timeline(svg, m, { draw: 0.9, pipe: 0.5, flow: 1, drop: true });
+        if (!tl) return;
+        tl.from(text, { y: 16, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.1)
+          .fromTo(mark, { scaleY: 0 }, { scaleY: 1, duration: 1.2, ease: 'power1.inOut', clearProps: 'transform' }, 'flow')
+          .call(function () { s.classList.add('is-on') }, null, 'end');
+        m.on(s, function () { tl.play() }, 'top 80%');
+      });
+      return;
+    }
+    var svg = el.querySelector('.aq-system-run__svg'); if (!svg) return;
+    var brackets = qa('.aq-system-run__bracket'), endIn = el.querySelector('.aq-system-run__end--in'), endOut = el.querySelector('.aq-system-run__end--out');
+    var cols = qa('.aq-system-run__item');
+    var tl = AQiso.timeline(svg, m, {
+      draw: 1.3, pipe: 0.7, flow: 2.4, keep: false,
+      onStage: function (els, id) {
+        var s = stageOf(id), b = el.querySelector('.aq-system-run__bracket[data-stage="' + id + '"]');
+        if (b) { b.classList.add('is-on'); m.scramble(b.querySelector('.aq-system-run__bn'), 0) }
+        if (s) { s.classList.add('is-on'); var c = s.querySelector('.aq-system-run__code'); if (c) m.scramble(c, 0) }
+      }
+    });
+    if (!tl) return;
+    tl.from(brackets, { y: -10, autoAlpha: 0, duration: 0.5, stagger: 0.12, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.1)
+      .from(cols, { y: 24, autoAlpha: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.5);
+    if (endIn) tl.from(endIn, { autoAlpha: 0, x: -12, duration: 0.4, clearProps: 'transform,opacity,visibility' }, 'flow-=0.3');
+    if (endOut) tl.from(endOut, { autoAlpha: 0, x: -12, duration: 0.4, clearProps: 'transform,opacity,visibility' }, 'end-=0.2');
+    m.on(el, function () { tl.play() }, 'top 70%');
   });
 });
 /* Versus: the "or" node pops on the spine and the two routes slide in from either side; the spine then draws down
@@ -1824,5 +2996,66 @@ AQmotion.fx('VisitRoute', function (root, m) {
       });
       var total = tl.duration(); if (total > 4.2) tl.timeScale(total / 4.2);
     }, 'top 78%');
+  });
+});
+/* WindingRoute: the water travels the route. The feed fan draws in, then the pipe and its flow line draw left to right
+   while a droplet rides the head of the water; each stop lights as the droplet reaches it (node seats with a flow ring,
+   glyph prints in, the column below rises and its code decodes); over a gas stop the bubbles rise out of the pipe;
+   the outlet fan draws last. Phones: each stop's own bend draws in turn and lights its stop.
+   One timeline, once, under 5 s. */
+AQmotion.fx('WindingRoute', function (root, m) {
+  root.querySelectorAll('.aq-winding-route').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var stops = qa('.aq-winding-route__stop'), narrow = m.narrow(), n = stops.length;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var FLOW = getComputedStyle(document.documentElement).getPropertyValue('--flow').trim();
+    stops.forEach(function (s) { gsap.set(qa('.aq-winding-route__node, .aq-winding-route__glyph, .aq-winding-route__text', s), { autoAlpha: 0 }) });
+    function light(s, at) {
+      var node = s.querySelector('.aq-winding-route__node'), g = s.querySelector('.aq-winding-route__glyph'), t = s.querySelector('.aq-winding-route__text'), code = s.querySelector('.aq-winding-route__code');
+      tl.set(node, { autoAlpha: 1 }, at)
+        .fromTo(node, { scale: 0.2, boxShadow: '0 0 0 14px ' + FLOW }, { scale: 1, boxShadow: '0 0 0 4px rgba(0,0,0,0)', duration: 0.6, ease: 'back.out(2.2)', clearProps: 'transform,boxShadow' }, at);
+      if (g) tl.set(g, { autoAlpha: 1 }, at).fromTo(g, { clipPath: s.classList.contains('is-high') ? 'inset(0 0 100% 0)' : 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0% 0)', duration: 0.6, ease: 'power2.inOut', clearProps: 'clipPath' }, at + 0.05);
+      tl.set(t, { autoAlpha: 1 }, at).from(t.children, { y: 16, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, at + 0.05);
+      if (code) tl.call(function () { m.scramble(code, 0) }, null, at);
+      var gas = qa('.aq-winding-route__gas i', s);
+      if (gas.length) tl.from(gas, { x: 0, y: 0, scale: 0, autoAlpha: 0, duration: 1.1, ease: 'power2.out', stagger: 0.07, clearProps: 'transform,opacity,visibility' }, at + 0.1);
+    }
+    if (narrow) {
+      stops.forEach(function (s, i) {
+        var seg = s.querySelector('.aq-winding-route__seg path'), at = 0.1 + i * 0.32;
+        if (seg) tl.fromTo(seg.parentNode, { clipPath: 'inset(0 -50% 100% -50%)' }, { clipPath: 'inset(0 -50% 0% -50%)', duration: 0.36, ease: 'none', clearProps: 'clipPath' }, at);
+        light(s, at + 0.15);
+      });
+      m.on(el, function () { tl.play() }, 'top 80%');
+      return;
+    }
+    var svg = el.querySelector('.aq-winding-route__line'), flow = svg.querySelector('.aq-winding-route__flow');
+    var drop = el.querySelector('.aq-winding-route__drop');
+    var run = 2.8, t0 = 0.45;
+    // The route only ever runs left to right, so a wipe draws it exactly (DrawSVG cannot measure a stretched non-scaling stroke)
+    var fw = 24 / (100 * n);
+    tl.fromTo(svg, { clipPath: 'inset(-20% 100% -20% 0)' }, { clipPath: 'inset(-20% ' + (100 - fw * 100).toFixed(2) + '% -20% 0)', duration: t0, ease: 'power2.in' }, 0)
+      .to(svg, { clipPath: 'inset(-20% ' + (fw * 100).toFixed(2) + '% -20% 0)', duration: run, ease: 'none' }, t0)
+      .to(svg, { clipPath: 'inset(-20% 0% -20% 0)', duration: 0.45, ease: 'power2.out', clearProps: 'clipPath' }, t0 + run);
+    // When the water reaches each stop: the length along the wave at the stop's x (x = 100 i + 50 in the viewBox)
+    var at = stops.map(function (s, i) { return t0 + run * (i + 0.5) / n });
+    at = stops.map(function (s, i) { return t0 + run * (100 * i + 50 - 24) / (100 * n - 48) });
+    stops.forEach(function (s, i) { light(s, at[i]) });
+    // The droplet rides the wipe's edge: x moves with it, y follows the wave at that x (sampled once from the path)
+    if (drop) {
+      var Wv = 100 * n, tab = [];
+      try { var L = flow.getTotalLength(); for (var k = 0; k <= 400; k++) { var p = flow.getPointAtLength(L * k / 400); tab.push([p.x, p.y]) } } catch (x) {}
+      var yAt = function (x) { for (var k = 1; k < tab.length; k++) if (tab[k][0] >= x) { var a = tab[k - 1], b = tab[k], f = (x - a[0]) / ((b[0] - a[0]) || 1); return a[1] + (b[1] - a[1]) * f } return 50 };
+      var pr = { x: 24 };
+      tl.set(drop, { display: 'block', autoAlpha: 1 }, t0)
+        .to(pr, { x: Wv - 24, duration: run, ease: 'none', onUpdate: function () {
+          var w = svg.clientWidth, h = svg.clientHeight, d = drop.offsetWidth / 2;
+          gsap.set(drop, { x: pr.x / Wv * w - d, y: yAt(pr.x) / 100 * h - d });
+        } }, t0)
+        .to(drop, { autoAlpha: 0, scale: 2.4, duration: 0.4 }, t0 + run)
+        .set(drop, { display: 'none', clearProps: 'transform,opacity,visibility' }, t0 + run + 0.4);
+    }
+    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });

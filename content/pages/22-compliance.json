@@ -35,24 +35,33 @@
      "p": "Conductivity",
      "v": "≤ 1.3 µS/cm @ 25 °C (stage 1, uncompensated)",
      "m": "USP <645>",
-     "hl": true
+     "hl": true,
+     "icon": "conductivity",
+     "alt": {
+      "v": "≤ 5.1 µS/cm at 25 °C",
+      "m": "Ph. Eur."
+     }
     },
     {
      "p": "Total organic carbon",
      "v": "≤ 0.50 mg/L (500 ppb)",
-     "m": "USP <643>; Ph. Eur. 2.2.44"
+     "m": "USP <643>; Ph. Eur. 2.2.44",
+     "icon": "toc"
     },
     {
      "p": "Microbial action level",
      "v": "≤ 100 CFU/mL",
      "level": "action",
-     "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009"
+     "m": "USP <1231>; Ph. Eur. 0008; GUI-0001 C.02.009",
+     "icon": "droplet"
     }
    ],
-   "note": "Ph. Eur. conductivity: ≤ 5.1 µS/cm at 25 °C. Nitrates: ≤ 0.2 ppm, test waived at Water for Injection (WFI) conductivity (Ph. Eur. 11.4). CFU: colony-forming units."
+   "note": "Nitrates: ≤ 0.2 ppm, test waived at Water for Injection (WFI) conductivity (Ph. Eur. 11.4). CFU: colony-forming units.",
+   "look": "limit-bento"
   },
   {
    "type": "standards-map",
+   "look": "standards-orbit",
    "nav": "Map",
    "anchor": "map",
    "h": "Which standard governs each part",
@@ -141,6 +150,7 @@
    "as": "evidence",
    "nav": "Pharmacopoeia",
    "anchor": "pharmacopoeia",
+   "look": "proof-folders",
    "ground": "light",
    "h": "Pharmacopoeias and their proof",
    "cols": [
@@ -204,6 +214,17 @@
    "as": "evidence",
    "nav": "GMP",
    "anchor": "gmp",
+   "look": "cutaway-rail",
+   "tag": "Active",
+   "parts": [
+    "mat",
+    "mat loop pov docs",
+    "docs",
+    "ctl",
+    "ctl ana",
+    "ana pov",
+    "pov loop"
+   ],
    "h": "Good manufacturing practice (GMP) and qualification",
    "cols": [
     "Standard",
@@ -285,6 +306,14 @@
    "as": "evidence",
    "nav": "Engineering",
    "anchor": "engineering",
+   "look": "pipe-collage",
+   "pieces": [
+    "vessel",
+    "panel",
+    "pipe",
+    "pellets",
+    "weld"
+   ],
    "h": "Engineering, materials and pressure equipment",
    "cols": [
     "Standard",
