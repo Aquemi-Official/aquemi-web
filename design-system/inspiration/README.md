@@ -61,6 +61,44 @@ Each asked for one section "with very little text" and left the layout to the mo
 | `gemini/63-concept-notes-register.png` | News and technical notes as a revision register | News: register table with a featured note |
 | `gemini/64-spots-generation.png` | Specimen sheet of 9 equipment vignettes (pretreatment, RO skid, EDI, still, pure steam generator, tank, pump, heat exchanger, UV and ozone) | Cut into Spot masks in `assets/spots/` with `tools/icon_sheet.py --max 256 --bold 0`; used on routes, the standards map and option modules |
 
+### Pass 9 (68–94): one concept per section, varied art directions
+Generated 2026-11-01 by editing the same first prompt in one Gemini chat (no earlier image steering the next). The first
+seven asked for blueprint line art; the owner asked for variety, so from `76` on each section got its own art direction
+(editorial, data-viz, Swiss type, scroll story, 3D render, tactile objects, HMI screen, split screen, minimal, kinetic
+type, bento, route map, explorer, blueprint now and then, macro close-up, paper-cut depth). The Pro image quota ran out at
+the compliance page; sections after it are built from these concepts. `-take2` = a second take of the same prompt (the
+one built). Prompts and log: `research/pass9/` (outside the repo).
+
+| File | Prompted for | The idea |
+| --- | --- | --- |
+| `gemini/68-p9-home-0.png` | 'One package, one water path' (home), first prompt (blueprint style) | one blueprint pipe run through the four systems' isometric equipment, labels above each |
+| `gemini/69-p9-home-1.png` | 'Same limits, different evidence by industry' (home), first prompt (blueprint style) | one isometric pipe line feeding three industries' equipment, each with its evidence text |
+| `gemini/70-p9-home-1-take2.png` | 'Same limits, different evidence by industry' (home), first prompt (blueprint style) | one isometric pipe line feeding three industries' equipment, each with its evidence text |
+| `gemini/71-p9-home-2.png` | 'How a project runs' (home), first prompt (blueprint style) | five steps along one continuous isometric pipe with equipment per step (desk, frame, tanks, panel) |
+| `gemini/72-p9-home-3.png` | 'Service after handover' (home), first prompt (blueprint style) | exploded view of a pump with leader-line callouts to the three service promises |
+| `gemini/73-p9-home-4.png` | 'Start from where your project is' (home), first prompt (blueprint style) | manifold hub: situations as pipes radiating from one junction to equipment destinations |
+| `gemini/74-p9-systems-0.png` | 'How the systems fit together' (systems), first prompt (blueprint style) | one continuous pipe run left to right through feed, pretreat, RO/EDI, tank, loop, outlets |
+| `gemini/75-p9-systems-1.png` | 'Budget ranges before a quote' (systems), first prompt (blueprint style) | budget table framed by a pipe route through tank, skid, filters (old prompt, weak: table) |
+| `gemini/76-p9-systems-2.png` | 'What changes on your site' (systems), art direction: split-screen contrast | navy/limestone split where the divide is the battery limit, tie-in points on the seam |
+| `gemini/77-p9-systems-3.png` | 'Start from the standard you cite' (systems), art direction: technical blueprint drawing, used deliberately | standards table whose answers run as leader lines into a line-art plant elevation |
+| `gemini/78-p9-sys-pw-0.png` | 'Purified Water limits' (sys-pw), art direction: editorial magazine spread | oversized editorial headline, limits as a stepped type stack, sculpted pipe loop with GUARANTEED band |
+| `gemini/79-p9-sys-pw-1.png` | 'How water moves through the skid' (sys-pw), art direction: map or route metaphor | wavy route across navy with seven numbered stops, a small glyph per treatment |
+| `gemini/80-p9-sys-pw-2.png` | 'Skid design parameters' (sys-pw), art direction: Swiss International Typographic Style | Swiss grid of navy/limestone tiles, huge 01-07 numerals, one isometric skid tile |
+| `gemini/81-p9-sys-pw-3.png` | 'Documents with the skid' (sys-pw), art direction: soft 3D product render | soft white PP skid render with hotspot dots leading to document cards |
+| `gemini/82-p9-sys-pw-4.png` | 'Configurations and options' (sys-pw), art direction: tactile physical metaphor | flat-lay of shipping tags, folders and sample vials, one tag per option |
+| `gemini/83-p9-services-0.png` | 'Where to start' (services), art direction: kinetic typography | huge cropped START/GO outline type behind a rising staircase of four situation cards |
+| `gemini/84-p9-services-1.png` | 'How long each stage takes, and what it leaves' (services), art direction: macro detail | macro weld/water close-up with a rising timeline of hold-point nodes and stage callouts |
+| `gemini/85-p9-industries-0.png` | 'Your situation and where to start' (industries), art direction: technical blueprint drawing, used deliberately | P&ID-style routing: each situation piped through valves to its system, then start point |
+| `gemini/86-p9-industries-1.png` | 'Grade, limit and inspector by industry' (industries), art direction: macro detail | macro membrane layers and weld, numbered leaders fanning into industry rows |
+| `gemini/87-p9-industries-1-take2.png` | 'Grade, limit and inspector by industry' (industries), art direction: macro detail | macro membrane layers and weld, numbered leaders fanning into industry rows |
+| `gemini/88-p9-industries-2.png` | 'Your first Purified Water system' (industries), art direction: editorial magazine spread | oversized headline over a geometric pipe-collage illustration, five facts as asymmetric editorial blocks |
+| `gemini/89-p9-industries-3.png` | 'Outside drug and device manufacturing' (industries), art direction: soft 3D product render | one white PP skid render centre, three markets as annotated callouts around it |
+| `gemini/90-p9-compliance-0.png` | 'Purified Water limits' (compliance), art direction: an asymmetric bento layout with mixed media | bento: tall visual tile of PP/water render, three limit tiles with big numerals |
+| `gemini/91-p9-compliance-1.png` | 'Which standard governs each part' (compliance), art direction: data visualization as the hero | standards as nodes on orbit rings around a central plant schematic, each with proof link |
+| `gemini/92-p9-compliance-2.png` | 'Pharmacopoeias and their proof' (compliance), art direction: tactile physical metaphor | each standard as a manila folder row, proof as clipped papers and stamps |
+| `gemini/93-p9-compliance-2-take2.png` | 'Pharmacopoeias and their proof' (compliance), art direction: tactile physical metaphor | each standard as a manila folder row, proof as clipped papers and stamps |
+| `gemini/94-p9-compliance-3.png` | 'Good manufacturing practice (GMP) and qualification' (compliance), art direction: scroll-driven storytelling | sticky cutaway of PP piping with 'active state' tag, standard cards scrolling on a rail beside it |
+
 ## Keep every image
 
 Every image generated for the site is kept, used or not: the people reviewing the design want to look them all over.
