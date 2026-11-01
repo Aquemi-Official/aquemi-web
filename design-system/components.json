@@ -209,6 +209,16 @@
    "summary": "CutawayRail reads an evidence table beside one sticky drawing: a close isometric cutaway of the plant stays in view while one card per standard runs down a rail, and the card being read lights the parts it governs, with an \"active\" tag and a callout naming it."
   },
   {
+   "name": "DecisionValve",
+   "readme": "design-system/components/DecisionValve/README.md",
+   "preview": "design-system/components/DecisionValve/preview.html",
+   "group": "Page sections",
+   "height": "980",
+   "width": "1280",
+   "subtitle": "Chlorine or chloramine: supplies routed through a multiport valve to the removal step",
+   "summary": "DecisionValve draws a router table as a multiport valve on a navy band: supplies on the left, the valve with one numbered position per route in the middle, the routes as cards on the right; choosing a supply turns the lever to that position and lights the line in and the line out, while every card stays readable."
+  },
+  {
    "name": "DocHotspots",
    "readme": "design-system/components/DocHotspots/README.md",
    "preview": "design-system/components/DocHotspots/preview.html",
@@ -389,6 +399,26 @@
    "summary": "MarketCallouts shows several markets served by one machine: a single PW package drawn with IsoKit stands centred on a navy ground as a solid limestone object, and each option is a callout around it with a leader to the part its note is about."
   },
   {
+   "name": "MembraneAtlas",
+   "readme": "design-system/components/MembraneAtlas/README.md",
+   "preview": "design-system/components/MembraneAtlas/preview.html",
+   "group": "Page sections",
+   "height": "1240",
+   "width": "1280",
+   "subtitle": "Feed water conditions as micrograph plates of what each does to the membrane",
+   "summary": "MembraneAtlas reads a feed-water table as an atlas of membrane failures: one plate per condition, a round micrograph of the membrane surface showing what that condition does to it, then the condition, its effect and what we design for."
+  },
+  {
+   "name": "MembraneFace",
+   "readme": "design-system/components/MembraneFace/README.md",
+   "preview": "design-system/components/MembraneFace/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1280",
+   "subtitle": "RO feed targets as a bento round the feed end of a spiral-wound RO element",
+   "summary": "MembraneFace sets a short list of feed-water targets as a bento round the thing they protect: the feed end of a spiral-wound reverse osmosis element, drawn large on navy, with one target per tile around it."
+  },
+  {
    "name": "NotesRegister",
    "readme": "design-system/components/NotesRegister/README.md",
    "preview": "design-system/components/NotesRegister/preview.html",
@@ -427,6 +457,16 @@
    "width": "1280",
    "subtitle": "Five PW skid options as shipping tags, a round tag and folders on a limestone table",
    "summary": "OptionTags lays a system's configuration options out as physical tags on a limestone table, so each option reads as a separate item the buyer can add to the base skid."
+  },
+  {
+   "name": "OptionTaps",
+   "readme": "design-system/components/OptionTaps/README.md",
+   "preview": "design-system/components/OptionTaps/preview.html",
+   "group": "Page sections",
+   "height": "940",
+   "width": "1280",
+   "subtitle": "Pretreatment options as dashed parts teed off the standard train",
+   "summary": "OptionTaps shows options where they would join the system: the standard train drawn solid in isometric line on a blueprint sheet, and each option as a dashed part (the drawing convention for \"optional\") on its own dashed tee off the main line, with numbered cards under the sheet."
   },
   {
    "name": "ParamTiles",
@@ -557,6 +597,26 @@
    "width": "1100",
    "subtitle": "Pick your situation, see one route; pending stations dashed",
    "summary": "Router lets a buyer pick the situation they are in and see one route through what follows: the water they need, the system, and where to start with us."
+  },
+  {
+   "name": "SectionTrain",
+   "readme": "design-system/components/SectionTrain/README.md",
+   "preview": "design-system/components/SectionTrain/preview.html",
+   "group": "Page sections",
+   "height": "880",
+   "width": "1280",
+   "subtitle": "The pretreatment train as one sectional elevation, each bed holding what it caught",
+   "summary": "SectionTrain draws a pretreatment train as one sectional elevation on a limestone sheet, every vessel cut open so its bed shows and each bed holding what it caught, so the reader sees the water lose its particles, hardness, chlorine and fines stage by stage."
+  },
+  {
+   "name": "SheetPreviews",
+   "readme": "design-system/components/SheetPreviews/README.md",
+   "preview": "design-system/components/SheetPreviews/preview.html",
+   "group": "Page sections",
+   "height": "840",
+   "width": "1280",
+   "subtitle": "Pretreatment documents as a Swiss row of sheets, each thumbnail showing its kind",
+   "summary": "SheetPreviews sets a short document list as a Swiss row of sheets: a huge index numeral, a paper sheet whose thumbnail shows what kind of document it is, then its code, name and line."
   },
   {
    "name": "StairRouter",
