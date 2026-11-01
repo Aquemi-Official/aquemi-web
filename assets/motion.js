@@ -421,7 +421,10 @@
 })();
 /* ApprovalMerge: the intro's figure counts up; the lanes run down the rows; each request rises with its node landing
    on its lane, and its wire runs right to the bus; the bus fills down and the one approval stamp strikes last. One
-   timeline, once, about 3 s. Phones: rows rise in order, the stamps strike. Hover lights a row's wire (CSS). */
+   timeline, once, about 3 s. Phones: rows rise in order, the stamps strike. Hover lights a row's wire (CSS) and, after
+   the entrance, traces its route to the approval: an ink beam runs the wire, then the bus to the stamp, which answers
+   with a small press; leaving fades the trace a third faster.
+   Trace ported from Subframe Motion "Animated beam connections" (animated-beam), MIT, (c) 2026 Subframe */
 AQmotion.fx('ApprovalMerge', function (root, m) {
   root.querySelectorAll('.aq-approval-merge').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
@@ -433,7 +436,7 @@ AQmotion.fx('ApprovalMerge', function (root, m) {
     rows.forEach(function (r, i) {
       var at = 0.2 + i * 0.2;
       tl.from(r.querySelectorAll('.aq-index, .aq-approval-merge__t'), { y: 14, autoAlpha: 0, duration: 0.45, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, at);
-      tl.from(r.querySelector('.aq-approval-merge__node'), { scale: 0, duration: 0.35, ease: 'back.out(2.2)', clearProps: 'transform' }, at + 0.15);
+      tl.from(r.querySelector('.aq-approval-merge__node'), { scale: 0, duration: 0.35, ease: 'power3.out', clearProps: 'transform' }, at + 0.15);
       tl.from(r.querySelectorAll('.aq-approval-merge__who, .aq-approval-merge__det'), { autoAlpha: 0, duration: 0.35, clearProps: 'opacity,visibility' }, at + 0.25);
       if (!nar) tl.from(r.querySelector('.aq-approval-merge__wire'), { scaleX: 0, duration: 0.5, ease: 'power2.inOut', clearProps: 'transform' }, at + 0.3);
       else tl.from(r.querySelector('.aq-approval-merge__stamp'), { scale: 1.3, autoAlpha: 0, duration: 0.3, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.3);
@@ -442,7 +445,26 @@ AQmotion.fx('ApprovalMerge', function (root, m) {
     var bl = el.querySelector('.aq-approval-merge__busline'), big = el.querySelector('.aq-approval-merge__big');
     if (bl && !nar) tl.from(bl, { scaleY: 0, duration: 0.6, ease: 'power2.inOut', clearProps: 'transform' }, tb - 0.6);
     if (big && !nar) tl.from(big, { autoAlpha: 0, scale: 1.25, rotation: -4, duration: 0.4, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, tb);
+    var done = nar; tl.eventCallback('onComplete', function () { done = true });
     m.on(el, function () { tl.play() }, 'top 75%');
+    var bus = el.querySelector('.aq-approval-merge__bus'), bl2 = el.querySelector('.aq-approval-merge__buslit');
+    if (nar || !bus || !bl2 || !big) return;
+    rows.forEach(function (r) {
+      var lit = r.querySelector('.aq-approval-merge__lit'), w = r.querySelector('.aq-approval-merge__wire');
+      r.addEventListener('pointerenter', function (ev) {
+        if (!done || ev.pointerType !== 'mouse' || !lit) return;
+        var B = bus.getBoundingClientRect(), y = w.getBoundingClientRect().top - B.top, G = big.getBoundingClientRect(), sy = G.top + G.height / 2 - B.top, up = sy < y;
+        gsap.set(bl2, { top: Math.min(y, sy), height: Math.abs(sy - y), transformOrigin: up ? '50% 100%' : '50% 0', opacity: 1, scaleY: 0 });
+        gsap.fromTo(lit, { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.2, ease: 'power2.in', overwrite: true });
+        gsap.to(bl2, { scaleY: 1, duration: 0.18, delay: 0.2, ease: 'power2.out', overwrite: true });
+        gsap.fromTo(big, { scale: 1 }, { scale: 0.97, duration: 0.09, delay: 0.38, yoyo: true, repeat: 1, ease: 'power2.out', overwrite: true, clearProps: 'transform' });
+      });
+      r.addEventListener('pointerleave', function () {
+        if (!done || !lit) return;
+        gsap.to(lit, { opacity: 0, duration: 0.13, overwrite: true, onComplete: function () { gsap.set(lit, { scaleX: 0, opacity: 1 }) } });
+        gsap.to(bl2, { opacity: 0, duration: 0.13, overwrite: true, onComplete: function () { gsap.set(bl2, { scaleY: 0, opacity: 1 }) } });
+      });
+    });
   });
 });
 /* BatteryLimit: the limit is drawn, then each side fills up to it. The battery limit line draws top to bottom and its
@@ -1208,32 +1230,6 @@ AQmotion.fx('CutawayRail', function (root, m) {
         .from(c.querySelectorAll('.aq-cutaway-rail__f'), { y: 10, autoAlpha: 0, duration: 0.45, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, 0.3);
       m.on(c, function () { ct.play() }, 'top 90%');
     });
-  });
-});
-/* CutoverSchedule: time runs left to right. The water line runs along the top until the shutdown, where it stops, the
-   dashed gap opens with its label, and the line runs on after it; in step with it each bar grows from its start as
-   the line passes, its row's text rising; the hold diamond strikes and the hold stamp lands. One timeline, once,
-   about 3.5 s. Phones: the same, rows rising as they come. Hover tints a bar (CSS). */
-AQmotion.fx('CutoverSchedule', function (root, m) {
-  root.querySelectorAll('.aq-cutover-schedule').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var q = function (s) { return [].slice.call(el.querySelectorAll(s)) }, tl = m.tw(gsap.timeline({ paused: true }));
-    var rows = q('.aq-cutover-schedule__row'), water = q('.aq-cutover-schedule__water'), gap = el.querySelector('.aq-cutover-schedule__gap');
-    var per = 0.55, t0 = 0.3, cut = rows.findIndex(function (r) { return r.classList.contains('is-cut') });
-    tl.from(q('.aq-cutover-schedule__lk, .aq-cutover-schedule__grid'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0);
-    if (water[0]) tl.from(water[0], { scaleX: 0, duration: cut < 0 ? per * rows.length : per * cut, ease: 'none', clearProps: 'transform' }, t0);
-    if (gap) { tl.from(gap, { autoAlpha: 0, scaleY: 0, transformOrigin: '50% 100%', duration: 0.35, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, t0 + per * cut);
-      if (water[1]) tl.from(water[1], { scaleX: 0, duration: per * (rows.length - cut - 1), ease: 'none', clearProps: 'transform' }, t0 + per * (cut + 1)) }
-    rows.forEach(function (r, i) {
-      var at = t0 + i * per, bar = r.querySelector('.aq-cutover-schedule__bar');
-      tl.from(r.querySelectorAll('.aq-cutover-schedule__n, .aq-cutover-schedule__t, .aq-cutover-schedule__d'), { y: 12, autoAlpha: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, at - 0.15);
-      tl.from(bar, { scaleX: 0, duration: per, ease: 'none', clearProps: 'transform' }, at);
-      var dm = r.querySelector('.aq-cutover-schedule__diamond'), hs = r.querySelector('.aq-cutover-schedule__hold');
-      if (dm) tl.from(dm, { scale: 0, duration: 0.3, ease: 'back.out(2.5)', clearProps: 'transform' }, at + per);
-      if (hs) tl.from(hs, { scale: 1.3, autoAlpha: 0, duration: 0.3, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + per + 0.05);
-    });
-    tl.from(el.querySelector('.aq-cutover-schedule__nts'), { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, t0 + rows.length * per);
-    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
 /* DecisionValve: the valve is set up, then turned. The supplies slide in from the left, their lines run in to the
@@ -2224,6 +2220,65 @@ AQgl.def('truchet', {
     ' float a=clamp(wall+bore,0.,1.)*u_amt;',
     ' gl_FragColor=vec4(u_ink*a,a);',
     '}'].join('\n')
+});
+/* GateLine: the water runs the pipe step by step. Every gate starts shut (filled bowtie); as the water reaches a joint
+   the gate opens (fill clears, the handwheel turns) and the next run fills. At the gate after a hold step the water
+   waits: that step's hold stamp strikes and the gate's "Hold" tag lands, then the gate opens. The shutdown step's run
+   stays dry: its dashed bore and label print while the water stands, and the water picks up again after it. Each
+   step's number, name and line rise as its run fills. One timeline, once, about 4 s. Phones: the same per step as
+   each scrolls in, the water running down.
+   Hover (mouse, after the entrance): a step seeks the water to it, the runs ahead drain and their gates shut, nearest
+   first; leaving the pipe refills it. */
+/* Seek ported from Subframe Motion "Chapter timeline scrubber" (cue-scrubber), MIT, (c) 2026 Subframe */
+AQmotion.fx('GateLine', function (root, m) {
+  root.querySelectorAll('.aq-gate-line').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var steps = [].slice.call(el.querySelectorAll('.aq-gate-line__step')), nar = m.narrow(), per = 0.45, done = false;
+    var G = function (s, sel) { return s.querySelector(sel) };
+    var sc = nar ? 'scaleY' : 'scaleX';
+    function gateOpen(tl, s, at) {
+      var g = G(s, '.aq-gate-line__gate'); if (!g) return;
+      tl.fromTo(G(g, '.aq-gate-line__vfill'), { fillOpacity: 1 }, { fillOpacity: 0, duration: 0.25, ease: 'power2.out', clearProps: 'fillOpacity' }, at);
+      tl.fromTo(G(g, '.aq-gate-line__vh'), { rotation: -90 }, { rotation: 0, duration: 0.3, ease: 'power2.inOut', clearProps: 'transform' }, at);
+    }
+    function stepIn(tl, s, i, at) {
+      var w = G(s, '.aq-gate-line__water'), dry = G(s, '.aq-gate-line__dry'), prev = steps[i - 1];
+      if (prev && prev.classList.contains('is-hold')) {
+        var hs = G(prev, '.aq-gate-line__hold'), gk = G(s, '.aq-gate-line__gk');
+        if (hs) tl.from(hs, { scale: 1.25, autoAlpha: 0, transformOrigin: '0 50%', duration: 0.3, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at);
+        if (gk) tl.from(gk, { y: -8, autoAlpha: 0, duration: 0.3, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.1);
+        at += 0.55;
+      }
+      gateOpen(tl, s, at); at += i ? 0.2 : 0;
+      tl.from(s.querySelectorAll('.aq-gate-line__n, .aq-gate-line__t, .aq-gate-line__d'), { y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.06, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, at);
+      if (w) { var o = {}; o[sc] = 0; o.duration = per; o.ease = 'none'; o.clearProps = 'transform'; tl.from(w, o, at) }
+      if (dry) tl.from(dry, { autoAlpha: 0, duration: per, ease: 'power1.inOut', clearProps: 'opacity,visibility' }, at);
+      var out = G(s, '.aq-gate-line__out'); if (out) tl.from(out, { autoAlpha: 0, duration: 0.2, clearProps: 'opacity,visibility' }, at + per);
+      return at + per;
+    }
+    if (nar) {
+      steps.forEach(function (s, i) { var tl = m.tw(gsap.timeline({ paused: true }));
+        tl.from(G(s, '.aq-gate-line__ic'), { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, 0);
+        stepIn(tl, s, i, 0.05); m.on(s, function () { tl.play() }, 'top 80%') });
+      return;
+    }
+    var tl = m.tw(gsap.timeline({ paused: true, onComplete: function () { done = true } }));
+    tl.from(el.querySelectorAll('.aq-gate-line__ic'), { y: 10, autoAlpha: 0, duration: 0.4, stagger: 0.08, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, 0);
+    var at = 0.2; steps.forEach(function (s, i) { at = stepIn(tl, s, i, at) });
+    m.on(el, function () { tl.play() }, 'top 70%');
+
+    // seek: the water to the hovered step (cue-scrubber's seek: stages ahead empty, nearest first)
+    var waters = steps.map(function (s) { return G(s, '.aq-gate-line__water') }), fills = steps.map(function (s) { var g = G(s, '.aq-gate-line__vfill'); return g });
+    function seek(k, fast) {
+      steps.forEach(function (s, j) {
+        var on = j <= k, d = fast ? 0.1 : 0.16, dl = fast ? 0 : Math.abs(j - k) * 0.05;
+        if (waters[j]) gsap.to(waters[j], { scaleX: on ? 1 : 0, transformOrigin: '0 50%', duration: d, delay: on ? dl : 0, ease: 'power2.out', overwrite: true });
+        if (fills[j]) gsap.to(fills[j], { fillOpacity: on ? 0 : 1, duration: d, delay: dl, overwrite: true });
+      });
+    }
+    steps.forEach(function (s, k) { s.addEventListener('pointerenter', function (ev) { if (done && ev.pointerType === 'mouse') seek(k) }) });
+    el.addEventListener('pointerleave', function (ev) { if (done && ev.pointerType === 'mouse') seek(steps.length, true) });
+  });
 });
 /* GradeEditorial: a poster that assembles itself, then a page that sets itself.
    The mast heading rises out of its mask (the core section head). The collage tiles drop into the grid from quarter
@@ -5069,23 +5124,46 @@ AQmotion.fx('ReturnSlips', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
-/* ReviewReticles: frame by frame as they scroll in (staggered across a row), the brackets close in from wide, the
-   drawing prints up, a scan line sweeps the frame top to bottom once and the name and line rise. About 1.5 s per row.
-   Hover tightens the brackets (CSS). The IsoKit drawings are claimed here, so they do not also run IsoKit's build. */
+/* ReviewReticles: the sheet is drawn up, then read. The frames and zone marks fade in, the register rows rise one by
+   one (number and code, then the name, then the line); on the viewer the brackets close in from wide, the first
+   drawing prints up, a scan line sweeps the window once and the title block lands. One timeline, once, about 2 s.
+   Phones: per row as it scrolls in, its small viewfinder's brackets close, its drawing prints, the text rises.
+   Visitor-driven (in the renderer, so it also works under reduced motion): pointing at, focusing or clicking a row
+   slides the viewfinder's reel to its drawing.
+   Reel ported from Subframe Motion "Hover image preview list" (project-index), MIT, (c) 2026 Subframe */
 AQmotion.fx('ReviewReticles', function (root, m) {
   root.querySelectorAll('.aq-review-reticles').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
-    [].forEach.call(el.querySelectorAll('.aq-review-reticles__item'), function (it, i) {
-      var g = function (s) { return it.querySelectorAll(s) }, tl = m.tw(gsap.timeline({ paused: true })), d = m.narrow() ? 0 : (i % 3) * 0.15;
+    var q = function (c, s) { return [].slice.call(c.querySelectorAll(s)) };
+    function frame(tl, vf, at, d) {
       [['--tl', -1, -1], ['--tr', 1, -1], ['--bl', -1, 1], ['--br', 1, 1]].forEach(function (b) {
-        tl.from(it.querySelector('.aq-review-reticles__br' + b[0]), { x: b[1] * 18, y: b[2] * 18, autoAlpha: 0, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, d) });
-      tl.from(g('.aq-review-reticles__pic'), { clipPath: 'inset(100% 0 0 0)', duration: 0.9, ease: 'power3.inOut', clearProps: 'clipPath' }, d + 0.2);
-      var sc = it.querySelector('.aq-review-reticles__scan');
-      tl.fromTo(sc, { top: '0%', opacity: 1 }, { top: '100%', duration: 0.9, ease: 'power1.inOut' }, d + 0.2);
-      tl.to(sc, { opacity: 0, duration: 0.2, clearProps: 'top,opacity' }, d + 1.1);
-      tl.from(g('.aq-review-reticles__no, .aq-review-reticles__t, .aq-review-reticles__d'), { y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.07, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, d + 0.5);
-      m.on(it, function () { tl.play() }, 'top 85%');
+        tl.from(vf.querySelector('.aq-review-reticles__br' + b[0]), { x: b[1] * d, y: b[2] * d, autoAlpha: 0, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at) });
+      var sc = vf.querySelector('.aq-review-reticles__scan');
+      tl.fromTo(sc, { top: '0%', opacity: 1 }, { top: '100%', duration: 0.9, ease: 'power1.inOut' }, at + 0.2);
+      tl.to(sc, { opacity: 0, duration: 0.2, clearProps: 'top,opacity' }, at + 1.1);
+    }
+    if (m.narrow()) {
+      q(el, '.aq-review-reticles__item').forEach(function (it) {
+        var tl = m.tw(gsap.timeline({ paused: true })), vf = it.querySelector('.aq-review-reticles__mini');
+        if (vf) { frame(tl, vf, 0, 10); tl.from(vf.querySelector('.aq-review-reticles__pic'), { clipPath: 'inset(100% 0 0 0)', duration: 0.8, ease: 'power3.inOut', clearProps: 'clipPath' }, 0.15) }
+        tl.from(q(it, '.aq-review-reticles__no2, .aq-review-reticles__code, .aq-review-reticles__t, .aq-review-reticles__d'), { y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.06, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, 0.3);
+        m.on(it, function () { tl.play() }, 'top 85%');
+      });
+      return;
+    }
+    var tl = m.tw(gsap.timeline({ paused: true })), rows = q(el, '.aq-review-reticles__item'), big = el.querySelector('.aq-review-reticles__big');
+    tl.from(q(el, '.aq-review-reticles__z'), { autoAlpha: 0, duration: 0.5, stagger: 0.05, clearProps: 'opacity,visibility' }, 0);
+    rows.forEach(function (r, i) {
+      var at = 0.15 + i * 0.12;
+      tl.from(q(r, '.aq-review-reticles__no2, .aq-review-reticles__code'), { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, at);
+      tl.from(q(r, '.aq-review-reticles__t, .aq-review-reticles__d'), { y: 14, autoAlpha: 0, duration: 0.45, stagger: 0.06, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, at + 0.05);
     });
+    if (big) {
+      frame(tl, big, 0.3, 24);
+      tl.from(big.querySelector('.aq-review-reticles__win'), { clipPath: 'inset(100% 0 0 0)', duration: 0.9, ease: 'power3.inOut', clearProps: 'clipPath' }, 0.5);
+      tl.from(q(el, '.aq-review-reticles__tb span, .aq-review-reticles__no'), { autoAlpha: 0, duration: 0.3, stagger: 0.06, clearProps: 'opacity,visibility' }, 1.2);
+    }
+    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
 /* RevisionRegister: the sheet is laid on the board, then the register is written up. The limestone sheet rises onto
@@ -6106,10 +6184,12 @@ AQmotion.fx('StrataRun', function (root, m) {
   });
 });
 /* StrikeGaps: row by row as they scroll in, the gap is set, then struck (the rule darkens through it),
-   the requirement's arrow runs out and the fix rises at the end of it. Once per row, about 1.3 s. */
+   the requirement's arrow runs out and the fix is inserted word by word at the end of it. Once per row, about 1.6 s.
+   Insertion ported from Subframe Motion "Animated sentence revision" (sentence-diff-motion), MIT, (c) 2026 Subframe */
 AQmotion.fx('StrikeGaps', function (root, m) {
   root.querySelectorAll('.aq-strike-gaps').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el); var nar = m.narrow();
+    var diff = window.CustomEase ? (CustomEase.get('aq-diff') || CustomEase.create('aq-diff', '.22,.72,.15,1')) : 'power3.out';
     [].forEach.call(el.querySelectorAll('.aq-strike-gaps__row'), function (r) {
       var tl = m.tw(gsap.timeline({ paused: true })), g = function (s) { return r.querySelector(s) };
       tl.from([g('.aq-index'), g('.aq-strike-gaps__was')], { y: 14, autoAlpha: 0, duration: 0.45, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, 0);
@@ -6117,7 +6197,11 @@ AQmotion.fx('StrikeGaps', function (root, m) {
       tl.from(g('.aq-strike-gaps__rt'), { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, 0.6);
       tl.from(g('.aq-strike-gaps__shaft'), nar ? { scaleY: 0, duration: 0.35, ease: 'power2.inOut', clearProps: 'transform' } : { scaleX: 0, duration: 0.45, ease: 'power2.inOut', clearProps: 'transform' }, 0.65);
       tl.from(g('.aq-strike-gaps__tip'), { autoAlpha: 0, duration: 0.15, clearProps: 'opacity,visibility' }, 1.0);
-      tl.from(g('.aq-strike-gaps__now'), { x: nar ? 0 : -16, y: nar ? 12 : 0, autoAlpha: 0, duration: 0.5, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.95);
+      // the fix is inserted the way sentence-diff inserts words: each rises 12 px into place, 260 ms, after a 60 ms lead
+      var now = g('.aq-strike-gaps__now'), st = now && m.split(now, { type: 'words' });
+      if (st && st.words.length) {
+        tl.from(st.words, { y: 12, autoAlpha: 0, duration: 0.26, stagger: 0.035, ease: diff, clearProps: 'transform,opacity,visibility', onComplete: function () { st.revert() } }, 1.01);
+      } else tl.from(now, { y: 12, autoAlpha: 0, duration: 0.4, ease: diff, clearProps: 'transform,opacity,visibility' }, 1.01);
       m.on(r, function () { tl.play() }, 'top 85%');
     });
   });

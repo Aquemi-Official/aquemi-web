@@ -4155,62 +4155,72 @@
       {
        "t": "Records",
        "d": "Qualification file, changes, drawings, dead leg register.",
-       "spot": "binder"
+       "spot": "binder",
+       "code": "REC"
       },
       {
        "t": "Water quality data",
        "d": "A year of conductivity, TOC and microbial results.",
-       "spot": "toc"
+       "spot": "toc",
+       "code": "WQD"
       },
       {
        "t": "Generation",
        "d": "Performance on today’s feed, capacity at your coldest feed.",
-       "spot": "ro-skid"
+       "spot": "ro-skid",
+       "code": "GEN"
       },
       {
        "t": "Storage and distribution",
        "d": "Materials, dead legs, slope, flow and fittings.",
-       "spot": "storage-tank"
+       "spot": "storage-tank",
+       "code": "S&D"
       },
       {
        "t": "Sanitization",
        "d": "Whether your results support the schedule (WHO TRS 1033, 8.4).",
-       "spot": "heat-exchanger"
+       "spot": "heat-exchanger",
+       "code": "SAN"
       },
       {
        "t": "Controls",
        "d": "Support status, audit trail and backups.",
-       "spot": "cpu"
+       "spot": "cpu",
+       "code": "CTL"
       }
      ]
     },
     {
      "type": "steps",
-     "look": "cutover-schedule",
-     "ground": "light",
+     "look": "gate-line",
      "nav": "How it runs",
      "h": "How an upgrade runs",
      "items": [
       {
        "t": "System assessment",
-       "d": "On site, then a costed options report in [report turnaround, working days]."
+       "d": "On site, then a costed options report in [report turnaround, working days].",
+       "icon": "magnifier"
       },
       {
        "t": "Change control",
        "d": "We draft the change request’s technical content.",
-       "hold": "Your quality unit"
+       "hold": "Your quality unit",
+       "icon": "binder"
       },
       {
        "t": "Design, build, test",
-       "d": "A factory acceptance test (FAT) of modules and software keeps site work short."
+       "d": "A factory acceptance test (FAT) of modules and software keeps site work short.",
+       "icon": "pid"
       },
       {
        "t": "Cutover",
-       "d": "By [installation scope] in a planned shutdown; flushed, sanitized and residual tested."
+       "d": "By [installation scope] in a planned shutdown; flushed, sanitized and residual tested.",
+       "icon": "wrench"
       },
       {
        "t": "Requalification",
-       "d": "IQ/OQ of what changed, agreed sampling, updated drawings and procedures."
+       "d": "IQ/OQ of what changed, agreed sampling, updated drawings and procedures.",
+       "icon": "gauge"
       }
      ],
      "lane": "Your system"

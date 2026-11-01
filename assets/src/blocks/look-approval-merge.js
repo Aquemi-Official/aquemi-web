@@ -8,6 +8,7 @@
    heading as an aria-hidden echo of the intro.
    Fields as a roles table: h, intro, cols [request, prepared by, approved by], rows, caption_noun, anchor. Parties are
    read as RoleMatrix reads them: a cell starting "Aquemi" is ours, "You"/"Your" yours, anything else shared.
+   Pointing at a request (mouse) traces its route in ink: its wire, then the bus down to the stamp (motion.js).
    Phones: the rows stack, the lane chip and the stamp under each request; one merged stamp closes the list. */
 LOOKS['approval-merge']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-approval-merge';
  var party=function(c){return roleParty(c)},cell=function(c){return String(c&&c.t||c||'')};
@@ -23,8 +24,8 @@ LOOKS['approval-merge']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-approv
   return fli('<li class="'+K+'__row" style="--lane:'+(li+1)+';--lanes:'+lanes.length+'">'+idx(i)+'<h3 class="'+K+'__t">'+tcell(r[0])+'</h3>'
    +'<div class="'+K+'__lanes" aria-hidden="true">'+lanes.map(function(q){return '<span class="'+K+'__track is-'+q+'"></span>'}).join('')+'</div>'
    +'<p class="'+K+'__prep is-'+p+'"><span class="'+K+'__k">'+tx(C[1]||'')+'</span><span class="'+K+'__node" aria-hidden="true"></span><span class="'+K+'__who">'+tx(who)+'</span>'+(det?'<span class="'+K+'__det">'+tx(det)+'</span>':'')+'</p>'
-   +'<span class="'+K+'__wire" aria-hidden="true"></span>'
+   +'<span class="'+K+'__wire" aria-hidden="true"><span class="'+K+'__lit"></span></span>'
    +'<p class="'+K+'__appr'+(one?' is-merged':'')+'"><span class="'+K+'__k">'+tx(C[2]||'')+'</span><span class="'+K+'__stamp">'+tcell(r[2])+'</span></p></li>',b,i)}).join('');
- var bus=one?'<div class="'+K+'__bus" aria-hidden="true"><span class="'+K+'__busline"></span><span class="'+K+'__big"><span class="'+K+'__bigk">'+tx(C[2]||'')+'</span><span class="'+K+'__bigv">'+tx(ap[0])+'</span></span></div>':'';
+ var bus=one?'<div class="'+K+'__bus" aria-hidden="true"><span class="'+K+'__busline"></span><span class="'+K+'__buslit"></span><span class="'+K+'__big"><span class="'+K+'__bigk">'+tx(C[2]||'')+'</span><span class="'+K+'__bigv">'+tx(ap[0])+'</span></span></div>':'';
  var inner='<div class="'+K+(one?' is-one':'')+'">'+lh+'<div class="'+K+'__body"><ol class="'+K+'__rows" role="list">'+rows+'</ol>'+bus+'</div></div>';
  return sec(head+wFold(b,R.length,inner,b.fold_noun||b.caption_noun||'requests'),K+'-sec')};

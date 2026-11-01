@@ -389,16 +389,6 @@
    "summary": "CutawayRail reads an evidence table beside one sticky drawing: a close isometric cutaway of the plant stays in view while one card per standard runs down a rail, and the card being read lights the parts it governs, with an \"active\" tag and a callout naming it."
   },
   {
-   "name": "CutoverSchedule",
-   "readme": "design-system/components/CutoverSchedule/README.md",
-   "preview": "design-system/components/CutoverSchedule/preview.html",
-   "group": "Page sections",
-   "height": "920",
-   "width": "1100",
-   "subtitle": "An upgrade as a schedule, the water line broken only at cutover",
-   "summary": "CutoverSchedule sets how an upgrade runs as a schedule: each step a row with its bar on one shared, not-to-scale timeline, a hold diamond where someone signs, and your system's water line above, broken only at the step that names a planned shutdown."
-  },
-  {
    "name": "DecisionValve",
    "readme": "design-system/components/DecisionValve/README.md",
    "preview": "design-system/components/DecisionValve/preview.html",
@@ -507,6 +497,16 @@
    "width": "1100",
    "subtitle": "Design stages as one drawing gaining detail, sheet by sheet, with hold-point stamps",
    "summary": "FidelityLadder shows design stages as one drawing gaining detail on a navy blueprint band: every stage is a sheet with the same water package drawn at that stage's level (matrix, block route, P&ID, dimensioned isometric, frozen isometric, spools with their joints), joined by a run with a node per stage and a closed valve and \"Hold point\" stamp where you sign."
+  },
+  {
+   "name": "GateLine",
+   "readme": "design-system/components/GateLine/README.md",
+   "preview": "design-system/components/GateLine/preview.html",
+   "group": "Page sections",
+   "height": "560",
+   "width": "1100",
+   "subtitle": "Upgrade steps on one pipe with gate valves",
+   "summary": "GateLine draws a short process as one double-line pipe on a navy band: each step owns a run of pipe with a line icon above and its number, name and line below, and a gate valve sits on every joint between steps."
   },
   {
    "name": "GradeEditorial",
@@ -1093,10 +1093,10 @@
    "readme": "design-system/components/ReviewReticles/README.md",
    "preview": "design-system/components/ReviewReticles/preview.html",
    "group": "Page sections",
-   "height": "520",
+   "height": "900",
    "width": "1100",
-   "subtitle": "Assessment areas framed in inspection viewfinders",
-   "summary": "ReviewReticles frames each area an assessment reviews in an inspection viewfinder: corner brackets, a crosshair and the index around an IsoKit drawing of the thing reviewed, the area's name set large under it."
+   "subtitle": "Assessment areas as a drawing register with one viewfinder",
+   "summary": "ReviewReticles sets what an assessment reviews as a drawing register on a limestone sheet, with one inspection viewfinder that shows the pointed area's thing in IsoKit line art."
   },
   {
    "name": "RevisionRegister",

@@ -7,4 +7,4 @@ Look `approval-merge` (`assets/src/blocks/look-approval-merge.js`) on a `table` 
 - Tokens: Aquemi nodes and lane `flow`, your side rings `ink`, shared dashed; requests Geist 300 24 px; the stamp 2 px `ink` on `surface-raised`.
 - Phones: rows stack (request, party chip, approver stamp); lanes, wires and bus are dropped.
 
-Motion: the intro figure counts up, lanes run down, each request rises with its node landing and its wire running to the bus; the bus fills and the one stamp strikes. Once, about 3 s.
+Motion: the intro figure counts up, lanes run down, each request rises with its node landing and its wire running to the bus; the bus fills and the one stamp strikes. Once, about 3 s. Hover (mouse, after the entrance) traces a request's route in ink: its wire (`__lit`), then the bus from that row to the stamp (`__buslit`), and the stamp presses 0.97; the trace fades a third faster on leave (port of Subframe Motion animated-beam).

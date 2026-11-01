@@ -1379,6 +1379,7 @@ BLOCKS['grid'].route=function(b,H){var I=b.items||[],n=I.length,C=n<=4?n:(n%4===
    heading as an aria-hidden echo of the intro.
    Fields as a roles table: h, intro, cols [request, prepared by, approved by], rows, caption_noun, anchor. Parties are
    read as RoleMatrix reads them: a cell starting "Aquemi" is ours, "You"/"Your" yours, anything else shared.
+   Pointing at a request (mouse) traces its route in ink: its wire, then the bus down to the stamp (motion.js).
    Phones: the rows stack, the lane chip and the stamp under each request; one merged stamp closes the list. */
 LOOKS['approval-merge']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-approval-merge';
  var party=function(c){return roleParty(c)},cell=function(c){return String(c&&c.t||c||'')};
@@ -1394,9 +1395,9 @@ LOOKS['approval-merge']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-approv
   return fli('<li class="'+K+'__row" style="--lane:'+(li+1)+';--lanes:'+lanes.length+'">'+idx(i)+'<h3 class="'+K+'__t">'+tcell(r[0])+'</h3>'
    +'<div class="'+K+'__lanes" aria-hidden="true">'+lanes.map(function(q){return '<span class="'+K+'__track is-'+q+'"></span>'}).join('')+'</div>'
    +'<p class="'+K+'__prep is-'+p+'"><span class="'+K+'__k">'+tx(C[1]||'')+'</span><span class="'+K+'__node" aria-hidden="true"></span><span class="'+K+'__who">'+tx(who)+'</span>'+(det?'<span class="'+K+'__det">'+tx(det)+'</span>':'')+'</p>'
-   +'<span class="'+K+'__wire" aria-hidden="true"></span>'
+   +'<span class="'+K+'__wire" aria-hidden="true"><span class="'+K+'__lit"></span></span>'
    +'<p class="'+K+'__appr'+(one?' is-merged':'')+'"><span class="'+K+'__k">'+tx(C[2]||'')+'</span><span class="'+K+'__stamp">'+tcell(r[2])+'</span></p></li>',b,i)}).join('');
- var bus=one?'<div class="'+K+'__bus" aria-hidden="true"><span class="'+K+'__busline"></span><span class="'+K+'__big"><span class="'+K+'__bigk">'+tx(C[2]||'')+'</span><span class="'+K+'__bigv">'+tx(ap[0])+'</span></span></div>':'';
+ var bus=one?'<div class="'+K+'__bus" aria-hidden="true"><span class="'+K+'__busline"></span><span class="'+K+'__buslit"></span><span class="'+K+'__big"><span class="'+K+'__bigk">'+tx(C[2]||'')+'</span><span class="'+K+'__bigv">'+tx(ap[0])+'</span></span></div>':'';
  var inner='<div class="'+K+(one?' is-one':'')+'">'+lh+'<div class="'+K+'__body"><ol class="'+K+'__rows" role="list">'+rows+'</ol>'+bus+'</div></div>';
  return sec(head+wFold(b,R.length,inner,b.fold_noun||b.caption_noun||'requests'),K+'-sec')};
 /* Look "battery-limit" -> BatteryLimit (design-system/components/BatteryLimit): a spec block of site requirements on a
@@ -1803,29 +1804,6 @@ if(typeof document!=='undefined'&&document.addEventListener){var crQ=0;
  if(typeof MutationObserver!=='undefined')new MutationObserver(crTick).observe(document.documentElement,{childList:true,subtree:true});
  window.AQcutaway={scan:function(){[].forEach.call(document.querySelectorAll('.aq-cutaway-rail'),function(w){w._crOn=null});crScan()}};
  if(document.readyState!=='loading')setTimeout(crScan,0);else document.addEventListener('DOMContentLoaded',crScan)}
-/* Look "cutover-schedule" -> CutoverSchedule (design-system/components/CutoverSchedule): how an upgrade runs, set as a
-   schedule. Each step is a row: its number, name and what happens on the left; on the right its bar on one shared
-   timeline, each bar starting where the last one ends (drawn not to scale: the page gives no durations, so every bar
-   is the same length and the sheet says so). A step with a hold ends in a hold diamond with who signs. Above the
-   rows runs your system's water line, unbroken through every step except the one whose text names a planned
-   shutdown, where the line breaks and the gap is labelled with those words; that step's bar is filled.
-   Fields (a steps block with holds): h, items [{t, d, hold, link}], ground, lane (optional: the water line's label,
-   a drawing label, aria-hidden). A link makes the step's name the link.
-   Phones: the same rows stacked, each bar on the shared timeline under its step. */
-LOOKS['cutover-schedule']=function(b,H){var I=b.items||[],n=I.length||1,K='aq-cutover-schedule',w=100/n;
- var cut=-1,lab='';I.forEach(function(it,i){var m=String(it.d||'').match(/planned shutdown|shutdown/i);if(cut<0&&m){cut=i;lab=m[0].charAt(0).toUpperCase()+m[0].slice(1)}});
- var seg=function(a,c){return '<span class="'+K+'__water" style="left:'+a.toFixed(3)+'%;width:'+(c-a).toFixed(3)+'%"></span>'};
- var lane='<div class="'+K+'__lane" aria-hidden="true"><span class="'+K+'__lk">'+tx(b.lane||'')+'</span><span class="'+K+'__ltrack">'
-  +(cut<0?seg(0,100):seg(0,cut*w)+'<span class="'+K+'__gap" style="left:'+(cut*w).toFixed(3)+'%;width:'+w.toFixed(3)+'%"><span class="'+K+'__gl">'+e(lab)+'</span></span>'+seg((cut+1)*w,100))
-  +'</span></div>';
- var grid='<span class="'+K+'__grid" aria-hidden="true">'+I.map(function(it,i){return '<span style="left:'+(i*w).toFixed(3)+'%"></span>'}).join('')+'</span>';
- var rows=I.map(function(it,i){var t=tx(it.t);if(it.link&&wp(it.link))t='<a class="'+K+'__go" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+t+'</a>';
-  return '<li class="'+K+'__row'+(i===cut?' is-cut':'')+(it.hold?' is-hold':'')+'"><span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-   +'<div class="'+K+'__txt"><h3 class="'+K+'__t">'+t+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')
-   +(it.hold?'<p class="'+K+'__hold"><span class="'+K+'__hk">Hold</span> <span>Signed by '+stepWho(it.hold)+'</span></p>':'')+'</div>'
-   +'<div class="'+K+'__track" aria-hidden="true">'+grid+'<span class="'+K+'__bar" style="left:'+(i*w).toFixed(3)+'%;width:'+w.toFixed(3)+'%">'+(it.hold?'<span class="'+K+'__diamond"></span>':'')+'</span></div></li>'}).join('');
- var foot='<p class="'+K+'__nts" aria-hidden="true">Not to scale</p>';
- return sec(H+'<div class="'+K+'" style="--n:'+n+'">'+lane+'<ol class="'+K+'__rows" role="list">'+rows+'</ol>'+foot+'</div>',K+'-sec')};
 /* Look "decision-valve" -> DecisionValve (design-system/components/DecisionValve): a router table drawn as a multiport
    valve, a navy object on the paper (pass 9b concept sys-pretreatment.3 is a light sheet). Each situation is a supply line on the left; the valve sits in the middle with one numbered
    position per route on its plate; each route leaves the valve on its own line to a card on the right (the step, then
@@ -2100,6 +2078,31 @@ LOOKS['fidelity-ladder']=(function(){
     +'</li>'}).join('');
   return sec(H+'<ol class="aq-fidelity-ladder" style="--cols:'+cols+'">'+li+'</ol>','aq-band--navy aq-fidelity-ladder-sec')}
 })();
+/* Look "gate-line" -> GateLine (design-system/components/GateLine): how an upgrade runs, drawn as one double-line pipe
+   on a navy band (pass 9b concept svc-upgrades.4). The pipe is the process axis: each step owns one run of it, a line
+   icon above its run and its number, name and line below; a gate valve sits on every joint between two steps, so a
+   step is a stage gate the water passes. Your system's water fills the pipe; a legend over the pipe names it with the
+   block's lane ("Your system"). A step with a hold puts a "Hold" tag on the gate after it (the water waits there for who
+   signs). The step whose line names a (planned) shutdown has a dry run: walls only, dashed, labelled with those words,
+   because the system is off while that step is done; the water runs on after it.
+   Each step carries its own run and gate, so the same markup reflows: a row of runs at desktop, a vertical pipe down
+   the left on phones.
+   Fields (a steps block): h, items [{t, d, hold, icon, link}], lane (optional, a drawing label, aria-hidden).
+   icon: a line icon name (wIcon); a link makes the step's name the link. */
+function glValve(){return '<svg class="aq-gate-line__vsvg" viewBox="-14 -24 28 38" aria-hidden="true" focusable="false"><path class="aq-gate-line__vb" d="M-11 -7V7L11 -7V7Z"/><path class="aq-gate-line__vfill" d="M-11 -7V7L11 -7V7Z"/><path class="aq-gate-line__vs" d="M0 0V-17"/><path class="aq-gate-line__vh" d="M-7 -17H7"/></svg>'}
+LOOKS['gate-line']=function(b,H){var I=b.items||[],n=I.length||1,K='aq-gate-line';
+ var cut=-1,lab='';I.forEach(function(it,i){var m=String(it.d||'').match(/planned shutdown|shutdown/i);if(cut<0&&m){cut=i;lab=m[0].charAt(0).toUpperCase()+m[0].slice(1)}});
+ var li=I.map(function(it,i){var t=tx(it.t);if(it.link&&wp(it.link))t='<a class="'+K+'__go" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+t+'</a>';
+  var held=i>0&&I[i-1].hold;
+  var run='<span class="'+K+'__run" aria-hidden="true"><span class="'+K+'__walls"></span>'+(i===cut?'<span class="'+K+'__dry"><span class="'+K+'__dl">'+e(lab)+'</span></span>':'<span class="'+K+'__water"></span>')
+   +(i>0?'<span class="'+K+'__gate'+(held?' is-hold':'')+'">'+glValve()+(held?'<span class="'+K+'__gk">Hold</span>':'')+'</span>':'')
+   +(i===n-1?'<span class="'+K+'__out"></span>':'')+'</span>';
+  return '<li class="'+K+'__step'+(i===cut?' is-cut':'')+(it.hold?' is-hold':'')+'" style="--i:'+i+'">'
+   +'<span class="'+K+'__ic" aria-hidden="true">'+(isIcon(it.icon)?wIcon(it.icon):'')+'</span>'+run
+   +'<div class="'+K+'__txt"><span class="'+K+'__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="'+K+'__t">'+t+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')
+   +(it.hold?'<p class="'+K+'__hold"><span class="'+K+'__hk">Hold</span> <span>Signed by '+stepWho(it.hold)+'</span></p>':'')+'</div></li>'}).join('');
+ var leg=b.lane?'<p class="'+K+'__legend" aria-hidden="true"><span class="'+K+'__sw"></span>'+tx(b.lane)+'</p>':'';
+ return sec(H+leg+'<ol class="'+K+'" role="list" style="--n:'+n+'">'+li+'</ol>','aq-band--navy '+K+'-sec" data-theme="dark')};
 /* Look "grade-editorial" -> GradeEditorial (design-system/components/GradeEditorial): a short path set as an editorial
    spread. The heading runs oversized on a navy mast; below, on limestone, a geometric pipe collage (Swiss poster
    tiles, a hollow pipe with the water running through a tank and a pump to an outlet) faces five asymmetric fact
@@ -4016,15 +4019,19 @@ LOOKS['return-slips']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var head='<p class="aq-return-slips__cols" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span></p>';
  return sec('<div class="aq-return-slips-wrap" data-theme="light">'+H+'<div class="aq-return-slips">'+head+wFold(b,R.length,'<ol class="aq-return-slips__rows">'+rows+'</ol>',b.fold_noun||'rows')+'</div></div>','aq-band--limestone aq-return-slips-sec')};
 })();
-/* Look "review-reticles" -> ReviewReticles (design-system/components/ReviewReticles): what an assessment reviews, each
-   area seen through an inspection viewfinder. On a limestone band, a Swiss grid of viewfinders (corner brackets, a
-   crosshair, the area's index "01 / 06" in mono), each framing the thing reviewed drawn in IsoKit line art (binders
-   for records, an analyser for water data, the RO rack, a storage tank, a heat exchanger, a control panel); under
-   each, the area's name set large and the one line of what is checked. On scroll-in a scan line sweeps each frame
-   and the brackets close on the drawing.
-   Fields (a grid block, as: "route"): h, items [{t, d, spot, part, link}]. part: an IsoKit part kind to draw; without
-   it the spot picks one (binder, toc -> analyzer, ro-skid -> ro, storage-tank -> tank, heat-exchanger -> hx,
-   cpu -> panel, pump, uv), else the spot's line icon. A link makes the card a link. Phones: two columns, then one. */
+/* Look "review-reticles" -> ReviewReticles (design-system/components/ReviewReticles): what an assessment reviews, set
+   as a drawing register on a limestone sheet (pass 9b concept svc-upgrades.3: numbered rows with mono area codes,
+   large light row labels, a zone border and a title block). The sheet carries zone marks on its edges. Left: the
+   register, one row per area (number, a short mono area code, the name set large, the one line of what is checked).
+   Right: one inspection viewfinder (corner brackets, crosshair, "01 / 06") framing the pointed area's thing drawn in
+   IsoKit line art, over a title block naming the sheet and the area. Pointing at a row (mouse), focusing it or
+   clicking it slides the viewfinder's reel to that area's drawing (project-index); the first area is shown as
+   rendered. Every row's text is always in the register; the viewfinder is a drawing (aria-hidden).
+   Fields (a grid block, as: "route"): h, nav, items [{t, d, spot, part, code, link}]. part: an IsoKit part kind to
+   draw; without it the spot picks one (binder, toc -> analyzer, ro-skid -> ro, storage-tank -> tank,
+   heat-exchanger -> hx, cpu -> panel, pump, uv), else the spot's line icon. code (optional): a short mono area code,
+   a drawing label (aria-hidden). A link makes the row's name a link (it still selects on focus).
+   Phones: the register alone, each row with its own small square viewfinder beside the name and line. */
 var RR_KIND={binder:'binder',toc:'analyzer','ro-skid':'ro','storage-tank':'tank','heat-exchanger':'hx',cpu:'panel',pump:'pump',uv:'uv',pretreatment:'softener','edi-stack':'edi'};
 /* the solid each part occupies (its ports alone undersize some parts) */
 var RR_BOX={binder:[[-32,-16,0],[24,26,36]],analyzer:[[-9,-6,0],[24,6,46]],ro:[[-4,-2,0],[116,30,68]],tank:[[-22,-22,0],[22,22,96]],hx:[[-6,-2,0],[56,26,50]],panel:[[-17,-8,0],[17,8,60]],pump:[[-18,-10,0],[40,10,36]],uv:[[0,-8,0],[60,8,36]],softener:[[-24,-14,0],[24,24,62]],edi:[[-6,-2,0],[46,24,44]]};
@@ -4032,12 +4039,38 @@ function rrDraw(it){var k=it.part||RR_KIND[it.spot];if(k&&ISO_PARTS[k]){var p=is
   var B=RR_BOX[k];if(B){for(var a=0;a<8;a++)P.push([B[a&1][0],B[(a>>1)&1][1],B[(a>>2)&1][2]])}
   var bx=isoBounds(P,10),s=Math.max(bx.w,bx.h);return isoSvg(s,s,String(p),'aq-iso--limestone aq-review-reticles__iso',{origin:[-bx.x+(s-bx.w)/2,-bx.y+(s-bx.h)/2]})}
  var n=isSpot(it.spot)?SPOT_ICON[it.spot]:it.spot;return isIcon(n)?wIcon(n,'aq-review-reticles__ic'):''}
-LOOKS['review-reticles']=function(b,H){var I=b.items||[],K='aq-review-reticles',N=(I.length<10?'0':'')+I.length;
- var cards=I.map(function(it,i){var inner='<span class="'+K+'__vf" aria-hidden="true"><span class="'+K+'__br '+K+'__br--tl"></span><span class="'+K+'__br '+K+'__br--tr"></span><span class="'+K+'__br '+K+'__br--bl"></span><span class="'+K+'__br '+K+'__br--br"></span>'
-   +'<span class="'+K+'__cross"></span><span class="'+K+'__no">'+(i<9?'0':'')+(i+1)+' / '+N+'</span><span class="'+K+'__pic">'+rrDraw(it)+'</span><span class="'+K+'__scan"></span></span>'
-   +'<h3 class="'+K+'__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'');
-  return '<li class="'+K+'__item">'+(it.link&&wp(it.link)?'<a class="'+K+'__body" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="'+K+'__body">'+inner+'</div>')+'</li>'}).join('');
- return sec(H+'<ol class="'+K+'" role="list" style="--n:'+I.length+'">'+cards+'</ol>','aq-band--limestone '+K+'-sec" data-theme="light')};
+function rrNo(i){return (i<9?'0':'')+(i+1)}
+/* a viewfinder: brackets, crosshair, index, and its content */
+function rrVf(inner,no,cls){var K='aq-review-reticles';return '<span class="'+K+'__vf'+(cls?' '+cls:'')+'" aria-hidden="true"><span class="'+K+'__br '+K+'__br--tl"></span><span class="'+K+'__br '+K+'__br--tr"></span><span class="'+K+'__br '+K+'__br--bl"></span><span class="'+K+'__br '+K+'__br--br"></span>'
+ +'<span class="'+K+'__cross"></span>'+(no?'<span class="'+K+'__no">'+no+'</span>':'')+inner+'<span class="'+K+'__scan"></span></span>'}
+LOOKS['review-reticles']=function(b,H){var I=b.items||[],K='aq-review-reticles',N=rrNo(I.length-1),n=I.length||1;
+ var pics=I.map(rrDraw);
+ var rows=I.map(function(it,i){var name=it.link&&wp(it.link)?'<a class="'+K+'__pick" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>'
+   :'<button type="button" class="'+K+'__pick" aria-pressed="'+(i?'false':'true')+'">'+tx(it.t)+'</button>';
+  return '<li class="'+K+'__item'+(i?'':' is-on')+'" data-i="'+i+'">'+rrVf('<span class="'+K+'__pic">'+pics[i]+'</span>','',K+'__mini')
+   +'<span class="'+K+'__no2" aria-hidden="true">'+rrNo(i)+'</span>'+(it.code?'<span class="'+K+'__code" aria-hidden="true">'+e(it.code)+'</span>':'')
+   +'<h3 class="'+K+'__t">'+name+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
+ var reel='<span class="'+K+'__win"><span class="'+K+'__reel" style="--n:'+n+';--sel:0">'+pics.map(function(p){return '<span class="'+K+'__still"><span class="'+K+'__pic">'+p+'</span></span>'}).join('')+'</span></span>';
+ var tb='<span class="'+K+'__tb" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span><span class="'+K+'__tbt">'+tx(I[0]?I[0].t:'')+'</span><span class="'+K+'__tbn">'+rrNo(0)+' / '+N+'</span></span>';
+ var view='<div class="'+K+'__view" aria-hidden="true">'+rrVf(reel,'<span class="'+K+'__sel">'+rrNo(0)+'</span> / '+N,K+'__big')+tb+'</div>';
+ var zone=function(c,k){var s='';for(var j=1;j<=c;j++)s+='<span>'+(k?String.fromCharCode(64+j):j)+'</span>';return s};
+ var zones='<span class="'+K+'__z '+K+'__z--t" aria-hidden="true">'+zone(6)+'</span><span class="'+K+'__z '+K+'__z--b" aria-hidden="true">'+zone(6)+'</span><span class="'+K+'__z '+K+'__z--l" aria-hidden="true">'+zone(3,1)+'</span><span class="'+K+'__z '+K+'__z--r" aria-hidden="true">'+zone(3,1)+'</span>';
+ var names=I.map(function(it){return String(it.t||'')});
+ return sec(H+'<div class="'+K+'" data-names="'+e(JSON.stringify(names))+'">'+zones+'<div class="'+K+'__sheet"><ol class="'+K+'__reg" role="list">'+rows+'</ol>'+view+'</div></div>','aq-band--limestone '+K+'-sec" data-theme="light')};
+/* selection (works without the motion layer and under reduced motion; keyboard moves are instant, as project-index) */
+(function(){var K='aq-review-reticles',kb=false;
+ document.addEventListener('keydown',function(){kb=true},true);document.addEventListener('pointerdown',function(){kb=false},true);
+ function sel(it,still){var r=it.closest('.'+K);if(!r)return;var i=+it.getAttribute('data-i'),reel=r.querySelector('.'+K+'__reel');
+  r.toggleAttribute('data-still',!!still);
+  [].forEach.call(r.querySelectorAll('.'+K+'__item'),function(x){var on=x===it;x.classList.toggle('is-on',on);var bt=x.querySelector('button.'+K+'__pick');if(bt)bt.setAttribute('aria-pressed',on?'true':'false')});
+  if(reel)reel.style.setProperty('--sel',i);
+  var nm=[];try{nm=JSON.parse(r.getAttribute('data-names')||'[]')}catch(x){}
+  var no=(i<9?'0':'')+(i+1),s=r.querySelector('.'+K+'__sel'),tn=r.querySelector('.'+K+'__tbn'),tt=r.querySelector('.'+K+'__tbt');
+  if(s)s.textContent=no;if(tn)tn.textContent=no+tn.textContent.slice(tn.textContent.indexOf(' /'));if(tt&&nm[i]!=null)tt.textContent=nm[i]}
+ function item(ev){return ev.target.closest&&ev.target.closest('.'+K+'__item')}
+ document.addEventListener('pointerover',function(ev){if(ev.pointerType!=='mouse')return;var it=item(ev);if(it&&!it.classList.contains('is-on'))sel(it)});
+ document.addEventListener('focusin',function(ev){var it=item(ev);if(it)sel(it,kb)});
+ document.addEventListener('click',function(ev){var it=item(ev);if(it)sel(it)})})();
 /* Look "revision-register" -> RevisionRegister (design-system/components/RevisionRegister): technical notes kept as a
    drawing office keeps its revision register. On a navy band lies one limestone register sheet: a title strip with
    the topic tabs (real filter buttons, with counts), then two fields. Left, the lead note set as an editorial page:
