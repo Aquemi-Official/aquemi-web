@@ -1,0 +1,122 @@
+{
+  "file": "73-p9-home-4.png",
+  "prompted_for": "Home section 'Start from where your project is': project situations (no URS, budget, draft URS, qualifying suppliers, qualification, upgrade, production stopped); first prompt (blueprint style): manifold hub with situations as pipes radiating from one junction to equipment destinations",
+  "section_kind": "router",
+  "style_family": "navy blueprint line art",
+  "art_direction": [
+    "engineering blueprint",
+    "radial manifold router",
+    "isometric piping network",
+    "labels along pipes",
+    "drawing-sheet frame"
+  ],
+  "composition": [
+    "wide panel on deep navy inside a sheet border with edge ticks",
+    "framed headline box top centre with a thin drop line to the hub",
+    "one isometric junction box at the centre",
+    "seven pipes radiate from the hub on isometric diagonals to equipment vignettes around the edges",
+    "situation labels set along each pipe, rotated to the pipe angle",
+    "title block bottom right"
+  ],
+  "layout_devices": [
+    "central manifold hub",
+    "radiating pipe routes as menu items",
+    "labels running along pipes at isometric angles",
+    "flow arrows on pipes",
+    "boxed headline with leader to hub",
+    "title block"
+  ],
+  "palette": [
+    "deep navy ground",
+    "pale blue-white line art and text",
+    "steel-blue flow arrows",
+    "slightly lighter navy grid ticks"
+  ],
+  "typography": [
+    "light-to-regular sans headline in an outlined box",
+    "regular sans labels rotated along pipe angles",
+    "no mono figures"
+  ],
+  "rendering": [
+    "isometric line drawing",
+    "flat, white strokes on navy",
+    "hairline 1 to 1.5 px strokes",
+    "double-line pipes"
+  ],
+  "line_and_texture": [
+    "uniform hairlines",
+    "double-line pipes with fittings and valves",
+    "border tick marks",
+    "no grain, no shading"
+  ],
+  "motifs": [
+    "manifold junction box",
+    "elevated water tank on a stand (feed)",
+    "gauge and bypass loop (budget)",
+    "tank farm (draft URS)",
+    "pump and motor skids (suppliers, upgrade)",
+    "storage vessels (qualification)",
+    "large handwheel valve (production stopped)",
+    "flow arrows",
+    "title block"
+  ],
+  "ui_patterns": [
+    "radial router / choose-your-path menu",
+    "hover-to-highlight route"
+  ],
+  "motion_implied": [
+    "selecting a situation lights its pipe from hub to destination",
+    "water flows out of the hub along the chosen branch",
+    "valve wheel turns on 'production stopped'"
+  ],
+  "mood": [
+    "technical",
+    "exploratory",
+    "orderly",
+    "dense",
+    "nocturnal"
+  ],
+  "t2i_keywords": [
+    "engineering blueprint style",
+    "deep navy background",
+    "isometric piping network",
+    "central manifold junction hub",
+    "pipes radiating outward on diagonals",
+    "labels set along pipes",
+    "rotated text following pipe angles",
+    "pale blue-white hairline line art",
+    "steel-blue flow arrows",
+    "equipment vignettes at pipe ends",
+    "pumps tanks and valves",
+    "boxed headline with leader line",
+    "drawing sheet border with tick marks",
+    "title block bottom right",
+    "flat no shading",
+    "double-line pipes with fittings",
+    "radial composition",
+    "technical P&ID feel",
+    "16:9 web section mockup",
+    "straight-on flat view",
+    "no people",
+    "no photographs",
+    "monochrome navy palette",
+    "router menu as a diagram",
+    "hub and spoke diagram"
+  ],
+  "t2i_prompt": "A wide web page section drawn as an engineering blueprint on a deep navy background with a thin sheet border, edge ticks and a title block bottom right. At the centre an isometric manifold junction box; several double-line pipes in pale blue-white hairlines radiate from it on isometric diagonals, each ending at a small isometric equipment vignette near the edges. Each pipe carries a short label set along its angle: <CONTENT>. Small steel-blue arrows show flow outward. A boxed light sans-serif headline sits top centre with a thin leader to the hub. Flat, no shading, no people.",
+  "signature_idea": "A situation router drawn as a manifold: every starting point is a pipe branching from one hub, so choosing your situation means choosing a route.",
+  "strengths": [
+    "original, memorable routing metaphor that matches a water company",
+    "maps cleanly to an interactive router (hover lights a branch)",
+    "keeps text short, visual first",
+    "consistent blueprint language with the other home sections"
+  ],
+  "weaknesses": [
+    "rotated labels along diagonals are hard to read and inaccessible as text",
+    "equipment at the pipe ends is arbitrary and does not explain the situation",
+    "crowded edges, little calm negative space",
+    "no limestone surface; heavy if repeated across a page"
+  ],
+  "brand_fit": 3,
+  "brand_fit_why": "Navy, hairlines and steel-blue arrows fit, but rotated labels, density and decorative equipment undercut 'precise, calm, space as a material'."
+}

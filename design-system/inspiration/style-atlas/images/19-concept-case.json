@@ -1,0 +1,114 @@
+{
+ "file": "19-concept-case.png",
+ "prompted_for": "Case study; became CaseStudy: fact boxes beside one large outcome figure",
+ "section_kind": "case study",
+ "style_family": "editorial oversized numerals",
+ "art_direction": [
+  "editorial oversized type",
+  "data poster",
+  "technical frame UI",
+  "desktop plus mobile mockup"
+ ],
+ "composition": [
+  "left column of three stacked fact boxes (client, problem, system)",
+  "right half one big box with a giant steel-blue '03' and 'WEEKS' rotated vertically beside it",
+  "outcome sentence under the numeral",
+  "header bar with wordmark, breadcrumb, pagination dots and live status",
+  "mobile column repeats the facts and a scaled numeral"
+ ],
+ "layout_devices": [
+  "oversized cropped numerals",
+  "rotated unit label",
+  "fact boxes in a 2-column frame",
+  "crosshair marks at box corners",
+  "tiny reference codes in box corners",
+  "status tag '[ STATUS: LIVE ]'",
+  "vertical 'VIEW // DESKTOP' side labels"
+ ],
+ "palette": [
+  "deep navy ground",
+  "limestone off-white headings",
+  "steel-blue giant numeral",
+  "grey-blue box outlines and codes",
+  "small green status text"
+ ],
+ "typography": [
+  "bold condensed sans all-caps fact text",
+  "giant steel-blue condensed numerals",
+  "vertical rotated condensed caps unit",
+  "small mono labels",
+  "light regular caps outcome second line"
+ ],
+ "rendering": [
+  "flat vector UI mockup"
+ ],
+ "line_and_texture": [
+  "hairline box outlines",
+  "crosshair plus marks",
+  "no texture, no shadows"
+ ],
+ "motifs": [
+  "one outcome figure",
+  "fact boxes",
+  "status indicator",
+  "reference codes"
+ ],
+ "ui_patterns": [
+  "case study card",
+  "stat highlight",
+  "pagination dots",
+  "responsive desktop/mobile pair"
+ ],
+ "motion_implied": [
+  "numeral counts up to 03",
+  "rotated unit slides in",
+  "fact boxes reveal top to bottom"
+ ],
+ "mood": [
+  "bold",
+  "factual",
+  "confident",
+  "dense"
+ ],
+ "t2i_keywords": [
+  "flat desktop UI mockup with mobile view beside it",
+  "deep navy background",
+  "giant steel-blue condensed numeral",
+  "rotated vertical unit label beside numeral",
+  "three stacked fact boxes in left column",
+  "bold condensed all-caps text",
+  "limestone off-white type",
+  "thin outline boxes",
+  "crosshair marks at corners",
+  "tiny monospace reference codes",
+  "header bar with breadcrumb and status tag",
+  "pagination dots",
+  "editorial data poster",
+  "one big outcome figure",
+  "square corners",
+  "no device frame",
+  "no people",
+  "two-column grid",
+  "minimal palette with one accent",
+  "client problem system outcome structure",
+  "two-line outcome sentence",
+  "giant numeral cropped by its frame",
+  "grey-blue reference codes",
+  "high-contrast type on dark ground",
+  "outlined panels with hairline borders"
+ ],
+ "t2i_prompt": "Flat desktop UI mockup with a mobile version beside it, no device frame, no people. Deep navy panel split into two columns inside thin outline frames with crosshair corners. Left: three stacked boxes, each a small monospace label above short bold condensed all-caps text in limestone off-white, describing <CONTENT>. Right: one large box dominated by a giant steel-blue condensed numeral with its unit rotated vertically beside it, and a two-line outcome sentence below. Header bar with wordmark, breadcrumb and status tag; square corners, one accent colour.",
+ "signature_idea": "A case study reduced to one huge outcome number, with the facts that earned it stacked beside it.",
+ "strengths": [
+  "outcome number is instantly scannable, good for owners and procurement",
+  "client/problem/system structure is honest and compact",
+  "steel-blue numeral is the only accent"
+ ],
+ "weaknesses": [
+  "all text is shouting bold condensed caps, not light Geist",
+  "green status colour adds an off-palette hue",
+  "'LIVE' status and codes are fake UI decoration"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Palette and big-figure idea fit; heavy condensed caps everywhere and the green accent break the type and one-accent rules."
+}

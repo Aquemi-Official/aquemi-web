@@ -1,0 +1,128 @@
+{
+ "file": "79-p9-sys-pw-1.png",
+ "prompted_for": "'How water moves through the skid' section on the Purified Water (PW) generation page; art direction: map or route metaphor, a journey drawn across the section with stops; seven stages: feed, heat exchanger, RO pass 1, CO2 removal, RO pass 2, DI or EDI, to PW storage",
+ "section_kind": "process diagram",
+ "style_family": "navy route-map infographic",
+ "art_direction": [
+  "route map metaphor",
+  "journey with stops",
+  "dark navy infographic",
+  "numbered stage columns",
+  "glyph per stage"
+ ],
+ "composition": [
+  "light headline top left on full navy ground",
+  "one thick wavy limestone band snakes left to right across the middle",
+  "seven circular stop nodes sit on the band at peaks and troughs",
+  "small line glyph near each stop (wave grid, membrane rings, particle spray, cartridges, +/- ion columns)",
+  "seven equal text columns along the bottom, each under its stop",
+  "band enters as a fan of streams at left and splits into three arrows at right"
+ ],
+ "layout_devices": [
+  "pipe route linking items as a continuous ribbon",
+  "numbered stops with chevron ring nodes",
+  "'HOVER FOR PROCESS DATA' hint labels with small mono readouts",
+  "slash-numbered labels 01 / FEED ... 07 / OUT",
+  "entry fan and exit triple-arrow split",
+  "particle burst rising for gas removal"
+ ],
+ "palette": [
+  "deep navy full-bleed ground",
+  "limestone off-white ribbon route",
+  "steel-blue glow rings on node centres",
+  "white headline and body text",
+  "pale grey-blue line glyphs"
+ ],
+ "typography": [
+  "large light-weight grotesk headline in sentence case (close to Geist light)",
+  "mono eyebrow caps and mono stage codes",
+  "medium caps stage labels with slash numbering",
+  "small sans body copy per column",
+  "tiny mono readouts (flow rate %, Temp °C)"
+ ],
+ "rendering": [
+  "flat vector with soft inner shadow on the ribbon",
+  "fine line icon glyphs",
+  "slight glow on nodes",
+  "stippled particle spray"
+ ],
+ "line_and_texture": [
+  "thick smooth ribbon with subtle edge shading",
+  "1px pale line glyphs",
+  "dot particles for gas",
+  "no grid, clean flat navy"
+ ],
+ "motifs": [
+  "water route",
+  "stop nodes",
+  "membrane rings",
+  "rising CO2 bubbles/particles",
+  "ion +/- columns",
+  "diverging outlet arrows",
+  "heat waves"
+ ],
+ "ui_patterns": [
+  "horizontal stepper / process rail",
+  "hover hotspots on nodes",
+  "seven-column caption row"
+ ],
+ "motion_implied": [
+  "water pulse travels along the ribbon stop to stop",
+  "nodes light up in sequence",
+  "CO2 particles drift upward at stop 04",
+  "heat waves shimmer at stop 02",
+  "outlet arrows split at the end"
+ ],
+ "mood": [
+  "calm",
+  "guided",
+  "technical",
+  "clear",
+  "flowing"
+ ],
+ "t2i_keywords": [
+  "dark navy infographic web section",
+  "route map metaphor",
+  "single thick wavy ribbon path across the section",
+  "limestone off-white ribbon on deep navy",
+  "seven circular stop nodes on the path",
+  "glowing steel-blue node rings",
+  "numbered stages with slash labels",
+  "evenly spaced caption columns below",
+  "fine line icon glyph per stop",
+  "particle spray rising",
+  "stream fan entering from left",
+  "path splitting into arrows at right",
+  "light-weight sans-serif headline",
+  "monospace eyebrow and data labels",
+  "hover hotspot hint labels",
+  "flat vector with soft shading",
+  "horizontal process timeline",
+  "clean negative space above the path",
+  "process flow diagram as journey",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "square corners",
+  "calm technical mood",
+  "minimal palette navy limestone steel blue",
+  "mono data readouts beside nodes",
+  "ribbon with subtle inner shadow",
+  "small line glyphs for each stage"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on a full deep navy background. Light-weight sans-serif headline top left with a small monospace eyebrow. A single thick limestone-coloured ribbon path snakes left to right across the middle like a route on a map, entering as a fan of streams and leaving as diverging arrows. Seven circular stop nodes with glowing steel-blue rings sit on its peaks and troughs, each with a small fine-line glyph nearby and tiny mono data readouts. Below, seven evenly spaced caption columns with slash-numbered labels for <CONTENT>. Calm, technical, generous space, square corners.",
+ "signature_idea": "The skid's treatment train is drawn as one continuous water route with seven stops, so the sequence reads like a journey map.",
+ "strengths": [
+  "sequence is instantly legible, one stop per stage with aligned captions",
+  "on-brand navy/limestone with a single accent, light headline",
+  "maps directly to an animated stepper with hotspots",
+  "glyphs give each stage identity without clutter"
+ ],
+ "weaknesses": [
+  "wavy ribbon is decorative; real skid is not a rollercoaster and wave heights mean nothing",
+  "glow rings and soft shading drift toward generic infographic",
+  "hover hints are not usable on phones",
+  "some glyphs are vague (heat exchanger as wave grid)"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy ground, limestone route, one steel-blue accent, light headline and mono labels fit the brand; the soft glows and wavy decorative route are slightly less precise than the line-art ideal."
+}

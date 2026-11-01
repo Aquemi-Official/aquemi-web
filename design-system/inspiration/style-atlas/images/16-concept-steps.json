@@ -1,0 +1,120 @@
+{
+ "file": "16-concept-steps.png",
+ "prompted_for": "How a project runs (process steps section); became ProcessSteps: stepped pipe run on a dot grid",
+ "section_kind": "steps/timeline",
+ "style_family": "navy blueprint pipe run",
+ "art_direction": [
+  "dark blueprint interface",
+  "pipe as timeline",
+  "staircase layout",
+  "engineering drawing UI",
+  "desktop plus mobile mockup"
+ ],
+ "composition": [
+  "desktop and phone mockups on a warm limestone outer ground",
+  "five steps descend left-to-right as a staircase",
+  "a steel-blue pipe zigzags down between steps, entering from the left edge and exiting at the bottom",
+  "each step framed by corner brackets",
+  "phone view turns the pipe into a straight vertical rail on the left"
+ ],
+ "layout_devices": [
+  "staircase step cards",
+  "pipe route linking items with elbow fittings",
+  "corner bracket frames instead of boxes",
+  "dot grid background",
+  "faint crosshair grid lines",
+  "small drawing reference tags (P.01 - DS6, SYS_02)",
+  "breadcrumb header 'SECTION 03 // ...'"
+ ],
+ "palette": [
+  "deep navy panel",
+  "warm limestone outer ground",
+  "steel-blue pipe and 'DELIVERABLE' labels",
+  "limestone off-white headings and text",
+  "dim grey dot grid"
+ ],
+ "typography": [
+  "large light condensed mono-ish step titles '01 / DESIGN'",
+  "sentence-case sans body line",
+  "steel-blue small caps label 'DELIVERABLE:'",
+  "tiny mono reference tags"
+ ],
+ "rendering": [
+  "flat vector UI mockup",
+  "pipe drawn as flat steel-blue tube with subtle elbow joints"
+ ],
+ "line_and_texture": [
+  "dot grid ground",
+  "hairline crosshair lines",
+  "corner bracket marks",
+  "solid flat pipe stroke ~8 px"
+ ],
+ "motifs": [
+  "pipe with elbows",
+  "staircase",
+  "dot grid",
+  "corner brackets",
+  "drawing reference tags"
+ ],
+ "ui_patterns": [
+  "numbered process steps",
+  "deliverable per step",
+  "responsive vertical rail on mobile",
+  "hamburger menu",
+  "breadcrumb section label"
+ ],
+ "motion_implied": [
+  "water fills the pipe step by step as you scroll",
+  "each step fades in as the pipe reaches it",
+  "corner brackets snap into place"
+ ],
+ "mood": [
+  "orderly",
+  "progressive",
+  "technical",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "flat desktop UI mockup with mobile view beside it",
+  "deep navy blueprint panel",
+  "steps descending as a staircase",
+  "steel-blue pipe zigzagging between steps",
+  "pipe elbows at each turn",
+  "pipe as timeline",
+  "corner bracket frames",
+  "dot grid background",
+  "faint crosshair grid lines",
+  "large light numbered step titles",
+  "01 / title format",
+  "steel-blue deliverable label",
+  "limestone off-white text",
+  "small drawing reference tags",
+  "warm limestone outer background",
+  "single accent colour",
+  "generous negative space",
+  "no device frame",
+  "no people",
+  "engineering drawing aesthetic",
+  "clean flat vector",
+  "vertical pipe rail on mobile",
+  "precise alignment",
+  "drawing sheet breadcrumb header",
+  "hamburger menu icon",
+  "sentence-case body under each title",
+  "pipe enters from left edge and exits bottom"
+ ],
+ "t2i_prompt": "Flat desktop UI mockup with a mobile version beside it on a warm limestone background, no device frame, no people. A deep navy blueprint panel shows <CONTENT> as numbered steps descending left to right like a staircase, joined by a single steel-blue pipe that zigzags down through elbow fittings from one step to the next. Each step is framed by corner brackets, with a large light title, one sentence and a steel-blue label line. Dot grid ground, faint crosshairs, tiny drawing reference tags, generous negative space; on mobile the pipe becomes a straight vertical rail.",
+ "signature_idea": "The project timeline is a pipe: water drops step by step down a staircase of stages.",
+ "strengths": [
+  "the pipe metaphor is native to a water systems maker and doubles as a scroll-progress device",
+  "very close to brand palette and calm spacing",
+  "clear mobile translation"
+ ],
+ "weaknesses": [
+  "pipe is decorative weight that may compete with text",
+  "staircase needs a wide viewport and wastes space bottom-left",
+  "fake reference tags add noise"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy panel, limestone, one steel-blue accent, light large titles, square corner brackets and space used as material: almost exactly the brand book."
+}

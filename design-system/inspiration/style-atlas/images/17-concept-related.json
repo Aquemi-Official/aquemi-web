@@ -1,0 +1,112 @@
+{
+ "file": "17-concept-related.png",
+ "prompted_for": "Links to related pages (where to go next); became RelatedLinks: cards hanging from one pipe, ghost numbers",
+ "section_kind": "router",
+ "style_family": "navy circuit-route editorial",
+ "art_direction": [
+  "dark blueprint interface",
+  "circuit-board routing",
+  "editorial condensed headlines",
+  "desktop plus mobile mockup"
+ ],
+ "composition": [
+  "four link blocks scattered across a navy panel at staggered heights",
+  "a thin double-line route with nodes threads between them like a PCB trace",
+  "large steel-blue ghost numerals 01-04 sit on the route where it meets each block",
+  "phone view: stacked list with a vertical line and dots on the left"
+ ],
+ "layout_devices": [
+  "pipe route linking items",
+  "staggered placement",
+  "oversized ghost numerals as waypoints",
+  "node dots at junctions",
+  "ruler tick edge on the frame",
+  "underline highlight on one link title"
+ ],
+ "palette": [
+  "deep navy panel",
+  "slate-navy outer ground",
+  "limestone off-white headlines",
+  "steel-blue numerals, nodes and underline",
+  "grey-blue thin route lines"
+ ],
+ "typography": [
+  "bold condensed sans all-caps headlines",
+  "small mono labels '01 / PROCESS DESIGN'",
+  "sentence-case regular sans descriptions",
+  "medium-size steel-blue mono numerals"
+ ],
+ "rendering": [
+  "flat vector UI mockup"
+ ],
+ "line_and_texture": [
+  "hairline double-stroke route lines",
+  "node dots",
+  "ruler ticks along frame edges",
+  "no texture"
+ ],
+ "motifs": [
+  "routed pipe / trace",
+  "junction nodes",
+  "ghost numbers",
+  "ruler scale"
+ ],
+ "ui_patterns": [
+  "related links",
+  "link cards without boxes",
+  "hover underline",
+  "mobile vertical list with progress line"
+ ],
+ "motion_implied": [
+  "a pulse travels the route from 01 to 04",
+  "nodes light up on hover",
+  "underline draws under the hovered title"
+ ],
+ "mood": [
+  "directional",
+  "editorial",
+  "technical",
+  "confident"
+ ],
+ "t2i_keywords": [
+  "flat desktop UI mockup with mobile view beside it",
+  "deep navy panel",
+  "staggered link blocks",
+  "thin routed line connecting items like a circuit trace",
+  "node dots at junctions",
+  "oversized steel-blue ghost numerals as waypoints",
+  "bold condensed all-caps headlines",
+  "small monospace eyebrow labels",
+  "limestone off-white text",
+  "single steel-blue accent",
+  "ruler tick marks on frame edge",
+  "underline highlight",
+  "orthogonal and 45-degree routing",
+  "hairline double lines",
+  "generous dark negative space",
+  "no cards, no boxes",
+  "editorial engineering layout",
+  "no device frame",
+  "no people",
+  "vertical line with dots on mobile",
+  "staggered heights",
+  "45-degree pipe bends",
+  "eyebrow label with number and slash",
+  "wide margins around each block",
+  "blueprint grid frame"
+ ],
+ "t2i_prompt": "Flat desktop UI mockup with a mobile version beside it, no device frame, no people. Deep navy panel with <CONTENT> as four unboxed text blocks placed at staggered heights, joined by one thin routed line that runs orthogonally and at 45 degrees like a circuit trace, with node dots at each junction. Large steel-blue numerals mark where the route meets each block. Bold condensed headlines in limestone off-white, small monospace eyebrow labels, ruler ticks along the frame edge, calm dark negative space.",
+ "signature_idea": "Next-step links hang off one routed line, like outlets on a distribution loop.",
+ "strengths": [
+  "one continuous route makes four links feel like a system, on-message for water distribution",
+  "unboxed blocks give room and air",
+  "colour discipline is close to brand"
+ ],
+ "weaknesses": [
+  "bold condensed caps headlines contradict the Geist light headline rule",
+  "route lines are tangled and do not lead clearly from one to the next",
+  "scattered layout makes scan order unclear"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Palette and routed-line idea fit; heavy condensed caps and tangled routing are off the calm, light-type brand."
+}

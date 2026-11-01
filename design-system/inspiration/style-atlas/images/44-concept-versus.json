@@ -1,0 +1,127 @@
+{
+ "file": "44-concept-versus.png",
+ "prompted_for": "Hot or ambient WFI, two routes compared (became Versus: two routes across a spine of factors, a verdict for each)",
+ "section_kind": "options",
+ "style_family": "navy mirrored bar comparison",
+ "art_direction": [
+  "head-to-head comparison",
+  "central spine diagram",
+  "instrument bar gauges",
+  "blueprint navy",
+  "data-ink minimal"
+ ],
+ "composition": [
+  "portrait section on deep navy inside a thin frame",
+  "centred caps question headline under a small wordmark",
+  "two option titles left and right meeting at a circled 'VS' node",
+  "vertical centre spine with numbered factors stacked down it (energy, footprint, sanitization, endotoxin, regulatory, capital cost)",
+  "each factor has a horizontal bar gauge on each side, mirrored about the spine",
+  "two verdict paragraphs side by side at the bottom: 'choose hot when' / 'choose ambient when'",
+  "A/B toggle top right for mobile view"
+ ],
+ "layout_devices": [
+  "central vertical spine with circled VS node",
+  "numbered factor labels on the spine",
+  "mirrored horizontal track gauges with off-white fill and steel-blue end caps",
+  "leader-line callouts with curved arrows pointing to bar ends",
+  "dashed bracket connecting related left-side factors",
+  "min/max values under bars in mono",
+  "verdict blocks with steel-blue lead-in words",
+  "A/B segmented toggle"
+ ],
+ "palette": [
+  "deep navy ground",
+  "off-white text and bar fills",
+  "steel-blue right-hand title, end caps, numerals and verdict lead",
+  "thin grey-blue track outlines"
+ ],
+ "typography": [
+  "light wide sans caps headline and option titles",
+  "steel-blue caps for the second option title",
+  "small mono annotations and values",
+  "light sans factor labels in caps",
+  "sans verdict paragraphs with caps lead-ins"
+ ],
+ "rendering": [
+  "flat vector",
+  "1 px line art",
+  "instrument-panel UI"
+ ],
+ "line_and_texture": [
+  "thin light strokes",
+  "rounded-end capsule bar tracks",
+  "curved leader arrows",
+  "dashed bracket",
+  "no shadows",
+  "flat dark ground"
+ ],
+ "motifs": [
+  "VS node",
+  "spine",
+  "bar gauge",
+  "leader callout",
+  "two routes"
+ ],
+ "ui_patterns": [
+  "comparison layout",
+  "bar meters",
+  "A/B toggle",
+  "verdict / recommendation blocks"
+ ],
+ "motion_implied": [
+  "bars fill outward from the spine factor by factor",
+  "spine draws down from the VS node",
+  "toggle switches between A and B on mobile",
+  "callout arrows sweep to bar ends"
+ ],
+ "mood": [
+  "balanced",
+  "analytical",
+  "clear",
+  "calm",
+  "decisive"
+ ],
+ "t2i_keywords": [
+  "flat UI mockup",
+  "no device frame",
+  "head-to-head comparison section",
+  "deep navy background",
+  "central vertical spine",
+  "circled VS node",
+  "numbered factor labels on spine",
+  "mirrored horizontal bar gauges",
+  "capsule track bars with off-white fill",
+  "steel-blue end caps",
+  "leader-line callouts with curved arrows",
+  "small mono annotations",
+  "light wide uppercase headline",
+  "two option titles, one in steel blue",
+  "verdict paragraphs at bottom",
+  "A/B segmented toggle",
+  "1 px line art",
+  "instrument panel aesthetic",
+  "data-ink minimal",
+  "generous spacing",
+  "flat vector",
+  "no shadows",
+  "symmetrical composition",
+  "off-white text",
+  "dashed bracket connector"
+ ],
+ "t2i_prompt": "Flat UI mockup, no device frame, of a comparison section for <CONTENT> on a deep navy ground inside a thin frame. A light wide uppercase question headline; two option titles left and right, the second in steel blue, meeting at a small circled VS node. A vertical centre spine runs down with numbered factor labels; at each factor, mirrored horizontal capsule bar gauges extend left and right with off-white fills and steel-blue end caps, small mono values and curved leader-line callouts. Two verdict paragraphs side by side at the bottom. 1 px off-white lines, symmetrical, no shadows, generous spacing.",
+ "signature_idea": "Two routes mirrored across a spine of factors, each factor read as a pair of gauges, ending in a plain 'choose this when' verdict for each.",
+ "strengths": [
+  "verdicts per route match how engineers actually choose",
+  "symmetry makes trade-offs readable at a glance",
+  "light headline and one steel-blue accent are on brand",
+  "no imagery needed, fully buildable"
+ ],
+ "weaknesses": [
+  "bars imply quantitative scores the copy may not support",
+  "annotations and callouts are cluttered and illegible",
+  "rounded capsule bars break the square-corner rule",
+  "left-side bars missing on some rows look broken"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy ground, light caps type, one steel-blue accent and mono values fit; rounded bars and annotation clutter work against square, calm precision."
+}

@@ -1,0 +1,126 @@
+{
+  "file": "75-p9-systems-1.png",
+  "prompted_for": "Systems page section 'Budget ranges before a quote': whole package, PW generation, storage tank and loop, pretreatment train with flow, price and basis; first prompt (blueprint style): budget table framed by a pipe route through tank, skid, filters (old prompt, weak: table)",
+  "section_kind": "spec/limits",
+  "style_family": "navy blueprint data table",
+  "art_direction": [
+    "engineering blueprint sheet",
+    "table framed by a pipe route",
+    "isometric equipment marginalia",
+    "documentation-grade figures",
+    "dark spec sheet"
+  ],
+  "composition": [
+    "wide panel on deep navy inside a sheet border with zone letters and a revision block top right",
+    "breadcrumb-like wordmark and page label top left",
+    "headline with a small qualifier line beneath (currency, date, estimate class)",
+    "four-row, four-column table occupying the left two-thirds: scope, capacity, price, basis",
+    "a thin pipe line starts at an 'Intake' chevron on the left edge, runs up and around the table clockwise, passing an isometric tank, RO skid, storage tank and twin filter vessels",
+    "title block bottom right"
+  ],
+  "layout_devices": [
+    "pipe route framing a table",
+    "intake chevron as entry marker",
+    "hairline table row rules",
+    "isometric equipment drawings in the margins",
+    "dimension lines on equipment",
+    "revision block and title block",
+    "dotted flow arrows"
+  ],
+  "palette": [
+    "deep navy ground",
+    "off-white text",
+    "pale blue-white line art",
+    "steel-blue pipe line and arrows",
+    "lighter navy sheet border"
+  ],
+  "typography": [
+    "light-to-regular sans headline",
+    "small sans qualifier line",
+    "regular sans table text; figures in the same sans, not mono",
+    "muted column headers",
+    "tiny sans in revision/title blocks"
+  ],
+  "rendering": [
+    "flat vector UI over isometric line drawings",
+    "hairline 1-1.5 px strokes",
+    "no shading"
+  ],
+  "line_and_texture": [
+    "single hairline rules between table rows",
+    "thin continuous pipe line with arrowheads",
+    "dotted flow arrows",
+    "dimension lines on equipment",
+    "border ticks",
+    "no grain"
+  ],
+  "motifs": [
+    "horizontal pressure tank",
+    "RO skid with membrane housings",
+    "storage tank with ladder and pump",
+    "twin pretreatment filter vessels",
+    "intake chevron",
+    "revision block",
+    "title block"
+  ],
+  "ui_patterns": [
+    "data table with four columns",
+    "breadcrumb header",
+    "caption qualifier under heading"
+  ],
+  "motion_implied": [
+    "water travels the framing pipe around the table",
+    "each row highlights as the flow passes its equipment",
+    "figures count up"
+  ],
+  "mood": [
+    "factual",
+    "transparent",
+    "technical",
+    "serious",
+    "orderly"
+  ],
+  "t2i_keywords": [
+    "deep navy background",
+    "engineering blueprint sheet",
+    "clean data table with hairline row rules",
+    "pipe line framing the table",
+    "thin steel-blue pipe route with arrowheads",
+    "isometric equipment drawings in the margins",
+    "pale blue-white hairline line art",
+    "dimension lines on equipment",
+    "intake chevron marker",
+    "revision block top right",
+    "title block bottom right",
+    "off-white sans-serif text",
+    "light headline with small qualifier line",
+    "muted column headers",
+    "flat vector",
+    "no shading",
+    "square corners",
+    "technical spec sheet mood",
+    "16:9 web section mockup",
+    "straight-on flat view",
+    "no people",
+    "no photographs",
+    "documentation aesthetic",
+    "right-aligned price column",
+    "data-first layout"
+  ],
+  "t2i_prompt": "A wide web page section on a deep navy background drawn as an engineering sheet with zone letters, a revision block top right and a title block bottom right. A light sans-serif headline with a small qualifier line sits top left. Below, a clean square-cornered table with hairline row rules and muted column headers holds <CONTENT>. A thin steel-blue pipe line enters from an intake chevron on the left edge and runs around the table, passing small isometric pale blue-white hairline equipment drawings placed in the margins, with dimension lines and dotted flow arrows. Flat, no shading, no people.",
+  "signature_idea": "A plain budget table turned into a drawing by wrapping it in the water path, with each piece of equipment parked beside the row it prices.",
+  "strengths": [
+    "very readable table; numbers are the hero, which suits procurement",
+    "qualifier line (currency, date, estimate class) is a credible spec-sheet habit",
+    "margin equipment adds context without crowding the data",
+    "simple to build from existing table component plus SVG frame"
+  ],
+  "weaknesses": [
+    "the pipe frame is decorative; it does not map clearly to rows",
+    "figures not in monospace, so columns do not align like a spec sheet",
+    "equipment placement does not consistently match row order",
+    "invented prices in the image are not real data"
+  ],
+  "brand_fit": 4,
+  "brand_fit_why": "Navy, hairlines, square table, one steel-blue line and calm data-first layout fit the brand; missing Geist Mono figures and limestone relief."
+}

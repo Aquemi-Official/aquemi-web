@@ -1,0 +1,133 @@
+{
+ "file": "02-concept-hero.png",
+ "prompted_for": "Home hero: pure water measured to the decimal, precision stainless (became the Hero with the page's equipment drawing and leader-line callouts to its KeyFacts)",
+ "section_kind": "hero",
+ "style_family": "navy blueprint callout hero",
+ "art_direction": [
+  "engineering blueprint hero",
+  "oversized condensed headline",
+  "isometric skid with measurement callouts",
+  "spec-sheet annotation",
+  "dark technical UI"
+ ],
+ "composition": [
+  "split hero: headline and copy left half, equipment drawing right half",
+  "top nav bar with logo, five links and outlined CTA",
+  "eyebrow label above a four-line headline",
+  "ruler tick strip under the headline",
+  "two buttons bottom-left: filled steel-blue and outlined",
+  "drawing framed by dimension lines and a dotted bounding box"
+ ],
+ "layout_devices": [
+  "leader-line callouts from equipment parts to label/value pairs",
+  "dimension lines and coordinate labels (X/Y) around the drawing",
+  "ruler/tick scale under headline",
+  "small waveform readout box bottom-left of drawing",
+  "stamp-like compliance badges",
+  "registration crosshair bottom-right"
+ ],
+ "palette": [
+  "deep navy ground",
+  "warm off-white/limestone headline and line work",
+  "steel-blue filled primary button",
+  "steel-blue outlined nav CTA",
+  "muted grey-blue dimension text"
+ ],
+ "typography": [
+  "bold condensed grotesk all-caps headline, very large",
+  "regular sans body copy in sentence case",
+  "caps nav links",
+  "label caps with value figures in callouts (units like µS/cm, ppb)",
+  "small spaced caps eyebrow"
+ ],
+ "rendering": [
+  "flat vector",
+  "isometric line art of an open-frame skid",
+  "hairline strokes",
+  "subtle glow on lines"
+ ],
+ "line_and_texture": [
+  "thin 1 px line work",
+  "dotted bounding frame",
+  "dimension lines with ticks",
+  "no grain, flat navy",
+  "tiny coordinate annotations"
+ ],
+ "motifs": [
+  "open-frame skid",
+  "filter housings",
+  "heat exchanger",
+  "control panel",
+  "measurement callouts",
+  "compliance stamp",
+  "waveform readout",
+  "ruler ticks"
+ ],
+ "ui_patterns": [
+  "top navigation bar",
+  "eyebrow + headline + lede hero",
+  "primary and secondary buttons",
+  "annotated product image",
+  "outlined CTA in nav"
+ ],
+ "motion_implied": [
+  "leader lines draw from parts to labels",
+  "figures count up to their values",
+  "waveform readout scrolls",
+  "ruler ticks sweep under headline",
+  "stamp lands on 'validation passed'"
+ ],
+ "mood": [
+  "assertive",
+  "technical",
+  "precise",
+  "confident",
+  "industrial"
+ ],
+ "t2i_keywords": [
+  "dark navy website hero",
+  "split layout headline left drawing right",
+  "oversized condensed sans-serif all-caps headline",
+  "isometric equipment line drawing",
+  "hairline off-white strokes",
+  "leader-line callouts with label and value",
+  "measurement units and figures",
+  "dimension lines and coordinate labels",
+  "dotted bounding box around drawing",
+  "ruler tick strip",
+  "steel-blue primary button",
+  "outlined secondary button",
+  "top navigation bar",
+  "engineering blueprint aesthetic",
+  "flat vector, no shading",
+  "small compliance stamp",
+  "tiny waveform readout panel",
+  "single cool accent color",
+  "high contrast cream type on navy",
+  "technical spec annotation",
+  "square corners",
+  "16:9 desktop web mockup",
+  "industrial B2B website",
+  "precise and calm",
+  "eyebrow label with small grid icon",
+  "soft line glow",
+  "spaced caps navigation links",
+  "label caps over value figures"
+ ],
+ "t2i_prompt": "Desktop website hero, 16:9, deep navy background. Left half: small spaced-caps eyebrow, a very large off-white condensed all-caps headline about <CONTENT>, a ruler tick strip beneath it, two lines of body copy and two square buttons, one filled steel blue and one outlined. Right half: an isometric hairline line drawing of the equipment inside a dotted bounding box with dimension lines and coordinate labels, and thin leader lines running to label-and-value callouts with units. Top nav bar with outlined call-to-action. Flat vector, one cool accent, precise engineering blueprint mood.",
+ "signature_idea": "The hero proves the headline by pinning measured figures straight onto the drawing of the machine.",
+ "strengths": [
+  "callouts turn specs into evidence at first glance",
+  "clear split hierarchy and obvious CTAs",
+  "blueprint drawing reads as engineered, not marketed",
+  "maps cleanly onto Hero + KeyFacts components"
+ ],
+ "weaknesses": [
+  "heavy condensed caps headline is shouty and off-brand",
+  "duplicated callouts and coordinate clutter",
+  "stainless/WFI framing contradicts the polypropylene PW offer",
+  "claims like 'guaranteed to pass' are hype"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy, limestone, one steel-blue accent, square corners and callout figures fit; the bold condensed headline replaces Geist light and the annotation clutter costs calm."
+}

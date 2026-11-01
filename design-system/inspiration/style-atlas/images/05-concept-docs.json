@@ -1,0 +1,122 @@
+{
+ "file": "05-concept-docs.png",
+ "prompted_for": "Documentation package (became DocList: document code tiles)",
+ "section_kind": "documents",
+ "style_family": "navy mono document index",
+ "art_direction": [
+  "document register as grid",
+  "large mono codes",
+  "drawing-sheet frame",
+  "minimal dark UI",
+  "desktop plus phone pair"
+ ],
+ "composition": [
+  "desktop artboard in a thin frame left, phone artboard right",
+  "brand and hamburger top, two-line caps headline",
+  "ten tiles: 3+3 row then 2+2 wide rows",
+  "phone: single-column ruled list",
+  "crop ticks at grid corners"
+ ],
+ "layout_devices": [
+  "number + slash + document code as tile heading ('01 / FS')",
+  "short steel-blue tab bar on each tile's top edge",
+  "revision code tag top-right of each tile",
+  "plus icon bottom-right for expand",
+  "ruled list rows on phone",
+  "registration ticks around the grid"
+ ],
+ "palette": [
+  "near-black navy ground",
+  "warm off-white mono type",
+  "steel-blue tab accents",
+  "thin grey-blue rules",
+  "muted grey revision tags"
+ ],
+ "typography": [
+  "large monospace numerals and codes",
+  "mono caps descriptions",
+  "mono caps headline",
+  "geometric sans wordmark",
+  "tiny mono revision codes"
+ ],
+ "rendering": [
+  "flat vector UI",
+  "outline grid",
+  "no illustration"
+ ],
+ "line_and_texture": [
+  "1 px rules and cell borders",
+  "corner registration ticks",
+  "flat navy, no grain"
+ ],
+ "motifs": [
+  "document codes",
+  "revision tags",
+  "folder-tab bar",
+  "plus expand marks",
+  "index numbers"
+ ],
+ "ui_patterns": [
+  "tile grid",
+  "expandable tiles",
+  "ruled list on mobile",
+  "hamburger nav",
+  "responsive desktop/phone pair"
+ ],
+ "motion_implied": [
+  "tiles reveal in index order",
+  "tab bars extend on hover",
+  "plus rotates to minus when a tile opens",
+  "count of documents ticks up"
+ ],
+ "mood": [
+  "orderly",
+  "auditable",
+  "sober",
+  "technical",
+  "confident"
+ ],
+ "t2i_keywords": [
+  "document index grid",
+  "near-black navy background",
+  "large monospace numerals",
+  "number slash code tile headings",
+  "monospace capital letters",
+  "thin outline grid cells",
+  "short steel-blue tab bar on each tile",
+  "small revision code tags",
+  "plus icons for expand",
+  "drawing sheet frame",
+  "corner registration ticks",
+  "single-column ruled list on mobile",
+  "desktop and mobile artboards",
+  "flat vector UI",
+  "square corners",
+  "one cool accent",
+  "off-white type on navy",
+  "technical register aesthetic",
+  "minimal no illustration",
+  "generous cell padding",
+  "number slash abbreviation pattern",
+  "two-line caps descriptions",
+  "3-up then 2-up tile rows",
+  "hamburger menu icon",
+  "sober audit register mood"
+ ],
+ "t2i_prompt": "Dark navy web section listing <CONTENT> as a document register: a grid of square outline tiles inside a thin drawing-sheet frame, each headed by a large monospace number, a slash and a short code, a two-line mono caps description, a small revision tag top-right, a plus icon bottom-right and a short steel-blue tab bar on its top edge. Corner registration ticks. Beside it, a phone artboard with the same items as a single-column ruled list. Flat vector, off-white type, one cool accent, square corners, sober and auditable.",
+ "signature_idea": "The deliverables read like a real document register with codes and revisions, so the package looks audit-ready.",
+ "strengths": [
+  "speaks directly to validation and QA readers",
+  "codes and revision tags signal document control",
+  "very clean, low-noise grid",
+  "phone list is simple and legible"
+ ],
+ "weaknesses": [
+  "all-mono caps is monotonous",
+  "some listed documents (weld logs, surface finish) fit stainless, not PP",
+  "no visual relief or illustration",
+  "plus icons imply drill-down content that may not exist"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy, square cells, one steel-blue tab accent and mono figures fit well; headlines should be Geist light, not mono caps."
+}

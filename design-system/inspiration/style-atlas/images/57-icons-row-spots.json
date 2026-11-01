@@ -1,0 +1,135 @@
+{
+ "file": "57-icons-row-spots.png",
+ "prompted_for": "24 spot drawings for list rows (Row icon set)",
+ "section_kind": "icon/spot sheet",
+ "style_family": "navy line-icon specimen sheet",
+ "art_direction": [
+  "specimen sheet",
+  "technical icon set",
+  "consistent line weight",
+  "catalogue grid",
+  "equipment pictograms"
+ ],
+ "composition": [
+  "portrait sheet with ruled border",
+  "title bar boxed across the top",
+  "strict 4 x 6 grid of equal cells",
+  "one centred icon per cell with uppercase caption below",
+  "even gutters, no cell borders"
+ ],
+ "layout_devices": [
+  "boxed title banner",
+  "uniform icon cells with caption",
+  "outer frame rule"
+ ],
+ "palette": [
+  "warm limestone/cream ground",
+  "navy ink outlines and captions",
+  "muted steel-blue fills on selected parts (dials, motor, valve body, binder spine)",
+  "white interior fills"
+ ],
+ "typography": [
+  "condensed sans uppercase captions",
+  "bold uppercase sans title",
+  "even letterspacing, no figures"
+ ],
+ "rendering": [
+  "flat vector line icons",
+  "slight three-quarter perspective on some objects",
+  "spot flat fills, no gradients"
+ ],
+ "line_and_texture": [
+  "uniform 2 px rounded navy strokes",
+  "no hatching",
+  "flat paper ground",
+  "small detail lines for flanges and bolts"
+ ],
+ "motifs": [
+  "softener vessel",
+  "carbon filter",
+  "RO membrane housing",
+  "EDI stack",
+  "multi-effect still",
+  "pure steam generator",
+  "storage tank",
+  "distribution loop",
+  "valve",
+  "heat exchanger",
+  "UV lamp",
+  "ozone generator",
+  "conductivity cell",
+  "TOC analyser",
+  "pump",
+  "orbital weld",
+  "borescope",
+  "pressure gauge",
+  "P&ID sheet",
+  "document binder",
+  "signature stamp",
+  "calendar",
+  "wrench",
+  "magnifier"
+ ],
+ "ui_patterns": [
+  "icon library",
+  "list-row leading icons",
+  "feature tiles"
+ ],
+ "motion_implied": [
+  "icon strokes draw on as rows enter",
+  "gauge needle sweeps",
+  "water arrows move through loop icon"
+ ],
+ "mood": [
+  "orderly",
+  "practical",
+  "friendly-technical",
+  "clear"
+ ],
+ "t2i_keywords": [
+  "icon specimen sheet",
+  "4 by 6 grid of line icons",
+  "industrial equipment pictograms",
+  "uniform 2 px navy outline strokes",
+  "rounded line caps",
+  "flat vector icons",
+  "spot steel-blue fills",
+  "warm cream background",
+  "uppercase condensed sans captions",
+  "consistent icon scale",
+  "slight three-quarter view",
+  "no gradients no shadows",
+  "boxed title banner",
+  "thin outer frame",
+  "even gutters",
+  "technical catalogue style",
+  "water treatment equipment",
+  "pumps valves tanks gauges",
+  "document and tool icons",
+  "clean minimal detail",
+  "two-colour navy and cream",
+  "centred icons with labels",
+  "orderly grid layout",
+  "pictogram set",
+  "muted navy ink",
+  "small flange and bolt details",
+  "simple object silhouettes",
+  "calm technical mood"
+ ],
+ "t2i_prompt": "Icon specimen sheet on warm cream paper: a strict 4 by 6 grid of equally sized line icons, each centred above a short uppercase condensed sans caption. Icons are flat vector pictograms drawn in uniform 2 px navy outline strokes with rounded caps, slight three-quarter view where helpful, and small flat steel-blue fills on one key part each. No gradients or shadows, consistent scale and detail level, even gutters, thin outer frame and a boxed uppercase title banner across the top. Subjects: <CONTENT>. Clean, orderly, technical catalogue look.",
+ "signature_idea": "A complete, consistent pictogram vocabulary for pharma-water equipment and quality paperwork on one specimen sheet.",
+ "strengths": [
+  "one consistent stroke weight across 24 subjects",
+  "covers both equipment and QA artefacts (stamp, binder, P&ID)",
+  "spot steel-blue fill gives a single accent",
+  "easily cut into row icons"
+ ],
+ "weaknesses": [
+  "rounded clip-art feel slightly generic",
+  "some subjects off-offer for a PP PW maker (orbital weld, still, pure steam)",
+  "mixed perspective between icons",
+  "condensed caps captions not Geist"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy on limestone with one steel-blue accent and calm grid matches; rounded clip-art strokes and off-offer stainless subjects are less precise than the brand."
+}

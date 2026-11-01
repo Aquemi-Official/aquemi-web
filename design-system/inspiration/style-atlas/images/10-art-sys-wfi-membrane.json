@@ -1,0 +1,114 @@
+{
+ "file": "10-art-sys-wfi-membrane.png",
+ "prompted_for": "Equipment drawing for the sys-wfi-membrane (WFI by membrane) page: black-on-white source drawing of a membrane WFI skid, turned into a transparent mask the Illustration component paints with a token",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric black ink line art",
+ "art_direction": [
+  "technical catalogue line art",
+  "isometric equipment",
+  "monochrome ink",
+  "no labels",
+  "mask-ready source"
+ ],
+ "composition": [
+  "tall open box frame filling the square",
+  "two banks of horizontal pressure vessels on the left, double-stacked",
+  "two plate heat exchangers in the centre",
+  "vertical UF/polishing housing on the right outside the frame",
+  "pump at front centre"
+ ],
+ "layout_devices": [
+  "single isolated object on white, ready to be masked and recoloured",
+  "base frame anchors the object to an implied floor plane",
+  "no callouts in source; leader-line callouts added later on the site"
+ ],
+ "palette": [
+  "pure white ground",
+  "black ink line work",
+  "no accent (recoloured to navy/limestone/steel-blue by token on site)"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "clean black outlines",
+  "flat, no tone",
+  "CAD-catalogue / technical illustration"
+ ],
+ "line_and_texture": [
+  "uniform ~2 px black strokes",
+  "slightly heavier outer contours",
+  "fine detail lines on fittings and fins",
+  "no hatching, no shading, no grain"
+ ],
+ "motifs": [
+  "horizontal membrane pressure vessels",
+  "plate heat exchangers",
+  "vertical filter housing",
+  "end-cap clamps",
+  "centrifugal pump",
+  "open steel frame"
+ ],
+ "ui_patterns": [
+  "hero illustration",
+  "callout target for KeyFacts",
+  "page header drawing"
+ ],
+ "motion_implied": [
+  "water passes through the membrane banks",
+  "heat exchanger plates pulse with hot sanitisation",
+  "draw-on reveal of the frame then the internals"
+ ],
+ "mood": [
+  "precise",
+  "engineered",
+  "calm",
+  "factual"
+ ],
+ "t2i_keywords": [
+  "black and white technical line drawing",
+  "isometric 3/4 view",
+  "clean uniform ink outlines",
+  "pure white background",
+  "no shading no color no hatching",
+  "industrial equipment illustration",
+  "double-stacked horizontal membrane pressure vessels",
+  "plate heat exchangers",
+  "tall open cage frame",
+  "skid-mounted on a steel base frame",
+  "detailed pipework with flanges and elbows",
+  "valves, gauges and fittings",
+  "centered single object",
+  "generous white margin",
+  "vector-like crisp strokes",
+  "engineering catalogue illustration",
+  "coloring-book line weight",
+  "no text no labels",
+  "base frame with levelling feet",
+  "orthographic-feeling isometric projection",
+  "high detail fittings",
+  "slightly heavier outer contour",
+  "clean line mask source",
+  "technical manual style",
+  "even lighting, no shadows",
+  "square 1:1 frame"
+ ],
+ "t2i_prompt": "Black and white technical line drawing of <CONTENT>, isometric three-quarter view, clean uniform black ink outlines on a pure white background, no shading, no colour, no hatching, no text or labels. Skid-mounted on a steel base frame with detailed pipework, flanges, elbows, valves and pressure gauges. Single object centred with generous white margin, crisp vector-like strokes in the style of an engineering equipment catalogue, suitable for converting into a transparent line mask.",
+ "signature_idea": "A tall dense membrane skid in an open cage that says 'serious process equipment'.",
+ "strengths": [
+  "reads as real equipment to engineers",
+  "monochrome source recolours cleanly to any token",
+  "consistent isometric angle across the set gives a family look",
+  "high detail rewards a close look without needing labels",
+  "very rich detail, impressive at large size"
+ ],
+ "weaknesses": [
+  "dense detail goes muddy when masked at small sizes",
+  "AI fittings are plausible but not engineering-accurate",
+  "most cluttered drawing of the set; muddy when masked",
+  "WFI by membrane is outside the PP PW offer"
+ ],
+ "brand_fit": 2,
+ "brand_fit_why": "Style fits, but density fights 'space as a material' and the WFI subject is off-offer."
+}

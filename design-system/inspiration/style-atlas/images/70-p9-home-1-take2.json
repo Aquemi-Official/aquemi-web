@@ -1,0 +1,124 @@
+{
+  "file": "70-p9-home-1-take2.png",
+  "prompted_for": "Home section 'Same limits, different evidence by industry': pharmaceutical, medical devices, contract manufacturing; first prompt (blueprint style), second take (the one built): one isometric pipe line feeding three industries' equipment, each with its evidence text",
+  "section_kind": "process diagram",
+  "style_family": "navy blueprint line art",
+  "art_direction": [
+    "engineering blueprint sheet",
+    "three-column text over a shared drawing",
+    "isometric piping run",
+    "leader-line annotation",
+    "spacious dark poster"
+  ],
+  "composition": [
+    "wide panel on deep navy inside a drawing-sheet border with zone letters and numbers",
+    "single-line light headline across the top",
+    "three text columns below the headline separated by thin vertical rules",
+    "one diagonal isometric pipe run crosses the lower half, linking three equipment clusters (twin tanks, tank pair, tank with pump skid)",
+    "each column's rule continues down as a leader line to its equipment",
+    "title block bottom right",
+    "one text block duplicated mid-bottom (generator error)"
+  ],
+  "layout_devices": [
+    "pipe route linking items",
+    "column rules that become leader lines into the drawing",
+    "numbered balloon callouts on equipment",
+    "dimension lines on the first cluster",
+    "zone letters and numbers on the border",
+    "title block"
+  ],
+  "palette": [
+    "deep navy ground",
+    "off-white text",
+    "pale blue-white line art",
+    "slightly brighter blue on pipe and leader lines",
+    "faint navy-blue border rules"
+  ],
+  "typography": [
+    "light-weight grotesque headline, large, one line",
+    "regular-weight sans body text in short paragraphs, off-white",
+    "tiny sans letters and numbers on the sheet border and title block",
+    "no mono figures"
+  ],
+  "rendering": [
+    "isometric line drawing",
+    "flat, no fills, no shadows",
+    "hairline 1 to 1.5 px strokes"
+  ],
+  "line_and_texture": [
+    "uniform hairlines for equipment and pipe",
+    "thin vertical column rules",
+    "dimension lines with arrows",
+    "small circle balloons with leaders",
+    "drawing-sheet border and zone ticks",
+    "no grain"
+  ],
+  "motifs": [
+    "isometric pressure vessels on legs",
+    "pipe with inline valves and handwheels",
+    "pump on a skid",
+    "balloon callouts",
+    "title block",
+    "zone letters"
+  ],
+  "ui_patterns": [
+    "three-column feature text",
+    "illustration band under columns"
+  ],
+  "motion_implied": [
+    "pipe draws on left to right, reaching each cluster in turn",
+    "column leader line extends down when its text appears",
+    "balloon callouts pop in"
+  ],
+  "mood": [
+    "clear",
+    "technical",
+    "calm",
+    "orderly",
+    "engineered"
+  ],
+  "t2i_keywords": [
+    "engineering blueprint style",
+    "deep navy background",
+    "drawing sheet border with zone letters and numbers",
+    "light thin sans-serif headline",
+    "three text columns with thin vertical rules",
+    "column rules continue as leader lines",
+    "isometric piping run diagonally across the lower half",
+    "pale blue-white hairline line art",
+    "isometric tanks on legs",
+    "inline valves and handwheels",
+    "numbered balloon callouts",
+    "dimension lines",
+    "title block bottom right",
+    "flat no shading",
+    "generous negative space",
+    "off-white text",
+    "technical illustration",
+    "square corners",
+    "16:9 web section mockup",
+    "straight-on flat view",
+    "no people",
+    "no photographs",
+    "monochrome navy palette",
+    "calm engineering mood",
+    "sparse technical annotation",
+    "editorial column layout"
+  ],
+  "t2i_prompt": "A wide web page section drawn as an engineering blueprint on a deep navy background, inside a thin drawing-sheet border with zone letters and numbers and a small title block bottom right. A single light thin sans-serif headline spans the top. Below it, three short text columns separated by thin vertical rules; each rule continues downward as a leader line to an equipment cluster. One isometric pipe in pale blue-white hairlines runs diagonally across the lower half linking the three clusters: <CONTENT>. Numbered balloon callouts and a few dimension lines. Flat, no shading, generous negative space, no people.",
+  "signature_idea": "Column dividers that keep going and become leader lines into one shared pipe drawing, so text and plant are physically connected.",
+  "strengths": [
+    "calmer and more spacious than take 1; easy hierarchy",
+    "column-rule-to-leader-line device is clever and buildable in CSS/SVG",
+    "one pipe linking three users tells the 'same limits' story",
+    "close to the brand's hairline navy language"
+  ],
+  "weaknesses": [
+    "duplicated medical-devices paragraph shows generator glitch",
+    "equipment clusters are generic and do not differ meaningfully by industry",
+    "body text is regular weight and fairly large, reads more like slide than web",
+    "no limestone surface or steel-blue highlight to focus the eye"
+  ],
+  "brand_fit": 4,
+  "brand_fit_why": "Navy ground, hairline isometric line art, light Geist-like headline, square corners and real negative space fit well; lacks mono figures and a single steel-blue highlight."
+}

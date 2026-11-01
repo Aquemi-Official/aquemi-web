@@ -1,0 +1,114 @@
+{
+ "file": "66-art-sys-storage.png",
+ "prompted_for": "Replacement storage drawing for the polypropylene PW package: PP tank and loop (art/sys-storage.png), replacing the stainless tank",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric technical line drawing",
+ "art_direction": [
+  "skid-mounted system drawing",
+  "isometric equipment illustration",
+  "black ink on white",
+  "manual-grade detail",
+  "packaged system portrait"
+ ],
+ "composition": [
+  "square white frame",
+  "large vertical banded tank dominates the upper right",
+  "flat steel base frame in isometric across the lower half",
+  "pump, plate heat exchanger and loop piping clustered at the tank foot",
+  "return loop pipe with valves sweeps out to the left and back",
+  "object centred with comfortable white margin"
+ ],
+ "layout_devices": [
+  "single isolated vignette",
+  "loop piping leading the eye around the tank",
+  "base skid as a grounding plane"
+ ],
+ "palette": [
+  "pure white ground",
+  "black ink line work",
+  "no fills or accent"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "technical illustration as in equipment manuals",
+  "outline with interior detail lines"
+ ],
+ "line_and_texture": [
+  "uniform 1.5-2 px black outlines",
+  "finer detail lines on flanges, motor fins and plate pack",
+  "no hatching or shading",
+  "clean white ground"
+ ],
+ "motifs": [
+  "vertical storage tank with banding",
+  "vent filter on top",
+  "manway",
+  "centrifugal pump with motor",
+  "plate heat exchanger",
+  "recirculation loop piping",
+  "ball and diaphragm valves",
+  "steel channel base skid",
+  "instrument on tank side"
+ ],
+ "ui_patterns": [
+  "system card illustration",
+  "hero spot art",
+  "hotspot base drawing"
+ ],
+ "motion_implied": [
+  "water circulates along the loop and back to the tank",
+  "pump impeller spins",
+  "tank level rises"
+ ],
+ "mood": [
+  "solid",
+  "orderly",
+  "credible",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "isometric technical line drawing",
+  "black ink on pure white",
+  "skid-mounted process system",
+  "large vertical storage tank",
+  "recirculation loop piping with valves",
+  "centrifugal pump and motor",
+  "plate heat exchanger",
+  "steel channel base frame",
+  "equipment manual illustration",
+  "uniform 1.5 px outlines",
+  "fine detail lines on flanges and fittings",
+  "no shading no colour no hatching",
+  "isolated on white",
+  "square format",
+  "pipe run leading the eye",
+  "consistent isometric angle",
+  "clean vector outline",
+  "precise engineering illustration",
+  "no labels",
+  "minimal monochrome",
+  "banded tank shell",
+  "vent filter on tank top",
+  "motor cooling fins",
+  "centred object with white margin",
+  "calm orderly mood"
+ ],
+ "t2i_prompt": "Isometric technical line drawing of a skid-mounted <CONTENT> on a pure white background, square format. A large vertical vessel stands at the upper right on a flat steel channel base frame; pump, heat exchanger and valves cluster at its foot, and a piping loop with valves sweeps out to the left and returns. Black ink only, uniform 1.5 px outlines with finer detail lines on flanges, motor fins and fittings, no shading, no hatching, no colour, no labels. Equipment-manual precision, centred with calm white margins.",
+ "signature_idea": "The PP storage tank and its recirculation loop drawn as one compact packaged skid, the loop pulling the eye around the system.",
+ "strengths": [
+  "shows tank plus loop as a packaged system, matching the offer",
+  "piping loop invites a water-travels animation",
+  "consistent with the isometric spot family",
+  "clear silhouette at card size"
+ ],
+ "weaknesses": [
+  "black on white needs recolouring to be on-brand",
+  "fittings look metallic and generic rather than clearly polypropylene",
+  "foot of the tank is crowded"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Precise square line art with a clear on-offer system fits; it needs navy/steel-blue masking and a more PP-specific read to be fully on-brand."
+}

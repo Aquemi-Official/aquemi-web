@@ -1,0 +1,135 @@
+{
+ "file": "01-concept-water-path.png",
+ "prompted_for": "Seven system families along the path water travels (home page 'Seven system families, one water path'; became the WaterPath component)",
+ "section_kind": "process diagram",
+ "style_family": "navy blueprint isometric journey",
+ "art_direction": [
+  "technical blueprint on navy",
+  "isometric equipment line art",
+  "serpentine pipe journey",
+  "numbered stations",
+  "instrument-tag annotations"
+ ],
+ "composition": [
+  "full-bleed 16:9 navy field",
+  "diagonal zigzag descent from top-left to bottom-right",
+  "seven equipment vignettes staggered along one continuous double-line pipe",
+  "each station paired with a large numeral and two-line caps title",
+  "section title anchored left-centre in a quiet zone",
+  "registration crop marks at the frame edges"
+ ],
+ "layout_devices": [
+  "one continuous pipe route linking all items",
+  "ghost oversized numerals behind solid numerals",
+  "small boxed instrument tags (COND., TOC, PSI, TEMP) beside each station",
+  "entry label tab ('city feed') where the pipe starts",
+  "exit arrow at the end of the route",
+  "tag legend row along the bottom edge",
+  "faint centre crosshair and edge tick marks"
+ ],
+ "palette": [
+  "deep navy ground",
+  "off-white/limestone line work and headings",
+  "muted steel-blue double-line pipe",
+  "low-contrast navy-grey ghost numerals",
+  "steel-blue filled label tab"
+ ],
+ "typography": [
+  "light-to-regular condensed grotesk caps for titles",
+  "large light numerals 01-07",
+  "oversized ghost numerals at ~15% opacity",
+  "small sentence-case captions",
+  "tiny mono caps inside tag boxes"
+ ],
+ "rendering": [
+  "flat vector",
+  "isometric 30-degree line drawing",
+  "hairline white strokes",
+  "no shading or fills except pipe"
+ ],
+ "line_and_texture": [
+  "1 px hairline equipment strokes",
+  "pipe drawn as parallel double line with soft glow",
+  "no grain",
+  "faint quadrant guide lines and crop ticks",
+  "flat untextured ground"
+ ],
+ "motifs": [
+  "pipe",
+  "filter columns",
+  "RO/EDI skid",
+  "distillation columns",
+  "steam generator box",
+  "storage tanks",
+  "loop pumps",
+  "point-of-use drop valves",
+  "water drops",
+  "instrument tags"
+ ],
+ "ui_patterns": [
+  "numbered step list",
+  "horizontal scroll/journey diagram",
+  "hotspot-ready stations",
+  "legend chips"
+ ],
+ "motion_implied": [
+  "water travels along the pipe from city feed to point of use",
+  "stations light up in sequence as the flow reaches them",
+  "ghost numerals fade in behind numerals",
+  "drops fall from POU valves",
+  "exit arrow pulses"
+ ],
+ "mood": [
+  "calm",
+  "systematic",
+  "technical",
+  "guided",
+  "confident"
+ ],
+ "t2i_keywords": [
+  "technical blueprint illustration",
+  "deep navy background",
+  "isometric line drawing",
+  "hairline white strokes",
+  "one continuous pipe route",
+  "serpentine zigzag path top-left to bottom-right",
+  "double-line pipe in muted steel blue",
+  "numbered stations 01 to 07",
+  "oversized faint ghost numerals",
+  "light condensed sans-serif capitals",
+  "small boxed instrument tags",
+  "leader-free label blocks beside equipment",
+  "industrial water treatment equipment vignettes",
+  "filter columns and tanks",
+  "point-of-use valves with water drops",
+  "crop marks and edge tick marks",
+  "flat vector, no shading",
+  "generous negative space",
+  "16:9 web section",
+  "off-white line work",
+  "single cool accent color",
+  "engineering schematic aesthetic",
+  "quiet grid guides",
+  "minimal UI annotation",
+  "monospace micro labels",
+  "exit arrow at path end",
+  "clean precise composition",
+  "calm dark UI"
+ ],
+ "t2i_prompt": "Wide 16:9 web section on a deep navy background, drawn as a technical blueprint: <CONTENT> shown as a sequence of small isometric equipment vignettes in hairline off-white line art, staggered diagonally from top-left to bottom-right and linked by one continuous double-line pipe in muted steel blue. Each station has a large light numeral, a faint oversized ghost numeral behind it, a short condensed sans-serif caps title and tiny boxed monospace instrument tags. Crop marks and edge ticks frame the field. Flat vector, no shading, one cool accent colour, generous negative space, calm and precise.",
+ "signature_idea": "The site's offer is drawn as one pipe that water actually travels, with each system family a station on it.",
+ "strengths": [
+  "explains the whole product line as one physical flow engineers recognise",
+  "single accent on the pipe gives a clear reading path",
+  "numbering and tags feel like real documentation",
+  "naturally animatable for scroll"
+ ],
+ "weaknesses": [
+  "seven vignettes plus tags is dense at phone width",
+  "ghost numerals and tags add noise",
+  "stations shown are stainless/WFI/steam, broader than the polypropylene PW offer",
+  "diagonal route is hard to reflow responsively"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy ground, limestone line work, single steel-blue pipe accent and square tags are on-brand; condensed caps differ from Geist light and the density undercuts 'space as a material'."
+}

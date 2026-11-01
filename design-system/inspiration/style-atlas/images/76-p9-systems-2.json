@@ -1,0 +1,125 @@
+{
+  "file": "76-p9-systems-2.png",
+  "prompted_for": "Systems page section 'What changes on your site' (battery limits, footprint, power/feed/drain, installation, approvals, tie-in, sanitizing chemicals, isolation); art direction: split-screen contrast, navy/limestone split where the divide is the battery limit, tie-in points on the seam",
+  "section_kind": "spec/limits",
+  "style_family": "navy-limestone split screen",
+  "art_direction": [
+    "hard vertical split",
+    "seam as the battery limit",
+    "bold condensed poster type",
+    "spec cards either side",
+    "schematic connectors crossing the divide"
+  ],
+  "composition": [
+    "canvas cut exactly in half: deep navy left, limestone right",
+    "small mono eyebrow '03 / ALL SYSTEMS' centred at top",
+    "huge heavy uppercase headline spanning both halves, white on navy turning navy on limestone",
+    "one-line subhead under the headline",
+    "second large heavy uppercase label crossing the seam mid-canvas",
+    "outlined spec cards: four on the left, four on the right, numbered 01-08, each with Item/Typical/Note rows",
+    "a vertical rail on the seam with labelled nodes ('Tie-in point', 'Utility intake'); connector lines run from cards to the nodes",
+    "small glowing dots on connector lines"
+  ],
+  "layout_devices": [
+    "split-screen with content crossing the divide",
+    "colour-inverting headline across the split",
+    "seam rail with tie-in nodes",
+    "elbowed connector lines from cards to seam",
+    "numbered outlined spec cards",
+    "eyebrow label with slash numbering"
+  ],
+  "palette": [
+    "deep navy left half",
+    "limestone right half",
+    "white type on navy, navy type on limestone",
+    "steel-blue connector lines and node glows",
+    "soft cyan glow dots"
+  ],
+  "typography": [
+    "heavy condensed uppercase display headline with full stop",
+    "mono eyebrow and node labels",
+    "uppercase card titles with slash numbering",
+    "small sans table text inside cards"
+  ],
+  "rendering": [
+    "flat UI mockup",
+    "thin schematic connector lines",
+    "subtle glow on nodes",
+    "no illustrations of equipment"
+  ],
+  "line_and_texture": [
+    "hairline card outlines",
+    "thin elbowed connector lines",
+    "small glowing dots",
+    "no grid, no grain"
+  ],
+  "motifs": [
+    "battery-limit seam",
+    "tie-in point node",
+    "utility intake node",
+    "valve symbol on seam",
+    "numbered spec cards",
+    "connector lines"
+  ],
+  "ui_patterns": [
+    "split-screen section",
+    "card grid with key/value rows",
+    "eyebrow with section number",
+    "connector diagram"
+  ],
+  "motion_implied": [
+    "split slides apart to reveal the seam",
+    "connector lines draw from each card to the seam",
+    "glow dots travel along connectors into the tie-in nodes"
+  ],
+  "mood": [
+    "bold",
+    "graphic",
+    "assertive",
+    "structured",
+    "loud"
+  ],
+  "t2i_keywords": [
+    "split screen layout",
+    "deep navy left half",
+    "limestone right half",
+    "hard vertical seam down the centre",
+    "content crossing the divide",
+    "colour-inverting headline across the split",
+    "heavy condensed uppercase display type",
+    "mono eyebrow label",
+    "numbered outlined spec cards",
+    "key value rows inside cards",
+    "thin elbowed connector lines to the seam",
+    "vertical rail with labelled nodes on the seam",
+    "small glowing nodes",
+    "steel-blue connector lines",
+    "flat UI mockup",
+    "square corners",
+    "hairline card borders",
+    "high contrast",
+    "symmetrical composition",
+    "16:9 web section mockup",
+    "straight-on flat view",
+    "no people",
+    "no photographs",
+    "poster-like graphic design",
+    "two-tone duotone page"
+  ],
+  "t2i_prompt": "A wide web page section split exactly in half: deep navy on the left, warm limestone on the right, the vertical seam representing a boundary. A small mono eyebrow label sits centred at the top above a large headline that crosses the seam and inverts colour, white on navy and navy on limestone. Square-cornered outlined cards with numbered titles and short key-value rows sit on both halves: <CONTENT>. Thin steel-blue elbowed connector lines run from each card to labelled nodes on a vertical rail along the seam. Flat UI mockup, hairline borders, no people.",
+  "signature_idea": "The page split itself is the battery limit: Aquemi's scope on one side, the site's on the other, with tie-in points sitting on the seam.",
+  "strengths": [
+    "the split-as-battery-limit metaphor is strong and directly relevant",
+    "uses both brand surfaces (navy and limestone) in one section",
+    "card key/value rows are easy to build and scan",
+    "connector lines into the seam make the integration idea tangible"
+  ],
+  "weaknesses": [
+    "heavy condensed uppercase type is far off the Geist light brand voice",
+    "duplicate '03' card, overlapping second headline crossing cards: cluttered and partly illegible",
+    "cards do not actually sit on the correct side of the limit (who supplies what is not encoded)",
+    "glow dots feel techy-gamer rather than calm"
+  ],
+  "brand_fit": 2,
+  "brand_fit_why": "Right colours and a great seam idea, but loud heavy uppercase display type, glows and cluttered overlapping text break the precise, calm, light-headline brand."
+}

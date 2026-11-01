@@ -1,0 +1,105 @@
+{
+ "file": "28-art-svc-service.png",
+ "prompted_for": "Black-on-white equipment drawing for the service and maintenance page (svc-service), source for art/svc-service.png and the Illustration component",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric technical line art",
+ "art_direction": [
+  "isometric still life",
+  "tools and spares layout",
+  "technical illustration",
+  "black on white",
+  "knolling-like arrangement"
+ ],
+ "composition": [
+  "open toolbox with cantilever tray dominant at back",
+  "three wrenches fanned in parallel at front left",
+  "cartridge filter, sanitary clamp and ferrule at front centre",
+  "centrifugal pump with motor at front right",
+  "objects spread on one isometric plane with white margins"
+ ],
+ "layout_devices": [
+  "parallel aligned tools (knolling)",
+  "objects arranged in a loose triangle around the toolbox"
+ ],
+ "palette": [
+  "black line",
+  "white ground"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "uniform outlines",
+  "no fill or shading"
+ ],
+ "line_and_texture": [
+  "2 px black strokes, slightly heavier than other art sheets",
+  "pleat lines on the filter cartridge",
+  "motor cooling fins as parallel lines",
+  "no hatching"
+ ],
+ "motifs": [
+  "toolbox",
+  "wrenches",
+  "pleated cartridge filter",
+  "tri-clamp and ferrule",
+  "end-suction centrifugal pump with motor and terminal box"
+ ],
+ "ui_patterns": [
+  "none; standalone illustration mask"
+ ],
+ "motion_implied": [
+  "toolbox lid opens",
+  "spare parts lift out one by one",
+  "pump impeller spins"
+ ],
+ "mood": [
+  "practical",
+  "ready",
+  "orderly",
+  "hands-on"
+ ],
+ "t2i_keywords": [
+  "isometric line drawing",
+  "black line art on white background",
+  "uniform stroke weight",
+  "no shading",
+  "no fill",
+  "no text",
+  "technical illustration",
+  "knolling arrangement",
+  "open metal toolbox with cantilever tray",
+  "set of wrenches laid parallel",
+  "pleated cartridge filter",
+  "sanitary clamp and ferrule",
+  "centrifugal pump with electric motor",
+  "spare parts still life",
+  "single isometric plane",
+  "generous white margin",
+  "clean vector-like outlines",
+  "precise mechanical detail",
+  "suitable for vector tracing",
+  "high contrast",
+  "plain background",
+  "industrial maintenance theme",
+  "motor cooling fins",
+  "flange bolt holes",
+  "maintenance kit",
+  "toolbox lid open"
+ ],
+ "t2i_prompt": "Clean isometric line drawing, black lines on a pure white background, uniform stroke weight, no shading, no fill, no text, no people. A tidy knolling-style still life on one isometric plane: an open container at the back as the anchor, hand tools laid parallel in the foreground, and the replaceable parts and one machine for <CONTENT> arranged around it. Precise mechanical detail (pleats, fins, flanges) kept to clean outlines, generous white margin on every side so the drawing traces into a single-colour mask.",
+ "signature_idea": "Service shown as a ready kit: the open toolbox, the wrenches and the spare filter, clamp and pump laid out ready for a visit.",
+ "strengths": [
+  "instantly says maintenance and spares",
+  "pump and cartridge filter are real water-system parts",
+  "clean lines trace well"
+ ],
+ "weaknesses": [
+  "toolbox and wrenches are a generic service cliché",
+  "pump and clamp read as stainless, not polypropylene",
+  "busier than the other art sheets, more objects competing"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Precise, recolourable line work fits, but the cluttered tool spread and generic toolbox feel less calm and less specific than the brand's equipment drawings."
+}

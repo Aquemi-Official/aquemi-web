@@ -1,0 +1,118 @@
+{
+ "file": "11-art-sys-pure-steam.png",
+ "prompted_for": "Equipment drawing for the sys-pure-steam (pure steam generation) page: black-on-white source drawing of a pure steam generator, turned into a transparent mask the Illustration component paints with a token",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric black ink line art",
+ "art_direction": [
+  "technical catalogue line art",
+  "isometric equipment",
+  "monochrome ink",
+  "no labels",
+  "mask-ready source"
+ ],
+ "composition": [
+  "tall portrait composition on a narrow skid",
+  "central vertical flanged column topped by a cyclone separator",
+  "side preheater column at left",
+  "control box on an A-frame stand at right",
+  "pump and motor at front-left",
+  "steam outlet pipe rising up and over with valve and gauge"
+ ],
+ "layout_devices": [
+  "single isolated object on white, ready to be masked and recoloured",
+  "base frame anchors the object to an implied floor plane",
+  "no callouts in source; leader-line callouts added later on the site"
+ ],
+ "palette": [
+  "pure white ground",
+  "black ink line work",
+  "no accent (recoloured to navy/limestone/steel-blue by token on site)"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "clean black outlines",
+  "flat, no tone",
+  "CAD-catalogue / technical illustration"
+ ],
+ "line_and_texture": [
+  "uniform ~2 px black strokes",
+  "slightly heavier outer contours",
+  "fine detail lines on fittings and fins",
+  "no hatching, no shading, no grain"
+ ],
+ "motifs": [
+  "flanged vertical column",
+  "cyclone separator",
+  "preheater",
+  "control box",
+  "pressure gauge",
+  "handwheel valve",
+  "pump and motor",
+  "channel base"
+ ],
+ "ui_patterns": [
+  "hero illustration",
+  "callout target for KeyFacts",
+  "page header drawing"
+ ],
+ "motion_implied": [
+  "steam rises up the column and out the top pipe",
+  "gauge needle climbs",
+  "control panel lamp blinks on"
+ ],
+ "mood": [
+  "precise",
+  "engineered",
+  "calm",
+  "factual"
+ ],
+ "t2i_keywords": [
+  "black and white technical line drawing",
+  "isometric 3/4 view",
+  "clean uniform ink outlines",
+  "pure white background",
+  "no shading no color no hatching",
+  "industrial equipment illustration",
+  "tall flanged column with cyclone separator",
+  "control box on A-frame stand",
+  "steam outlet pipe with gauge",
+  "skid-mounted on a steel base frame",
+  "detailed pipework with flanges and elbows",
+  "valves, gauges and fittings",
+  "centered single object",
+  "generous white margin",
+  "vector-like crisp strokes",
+  "engineering catalogue illustration",
+  "coloring-book line weight",
+  "no text no labels",
+  "base frame with levelling feet",
+  "orthographic-feeling isometric projection",
+  "high detail fittings",
+  "slightly heavier outer contour",
+  "clean line mask source",
+  "technical manual style",
+  "even lighting, no shadows",
+  "square 1:1 frame"
+ ],
+ "t2i_prompt": "Black and white technical line drawing of <CONTENT>, isometric three-quarter view, clean uniform black ink outlines on a pure white background, no shading, no colour, no hatching, no text or labels. Skid-mounted on a steel base frame with detailed pipework, flanges, elbows, valves and pressure gauges. Single object centred with generous white margin, crisp vector-like strokes in the style of an engineering equipment catalogue, suitable for converting into a transparent line mask.",
+ "signature_idea": "A single tall column with a cyclone cap that is legible as a steam generator from its silhouette.",
+ "strengths": [
+  "reads as real equipment to engineers",
+  "monochrome source recolours cleanly to any token",
+  "consistent isometric angle across the set gives a family look",
+  "high detail rewards a close look without needing labels",
+  "clear vertical silhouette, less clutter than the skids",
+  "control box adds a human-scale cue"
+ ],
+ "weaknesses": [
+  "dense detail goes muddy when masked at small sizes",
+  "AI fittings are plausible but not engineering-accurate",
+  "pure steam is outside the polypropylene PW offer",
+  "bolted flanges read heavy stainless"
+ ],
+ "brand_fit": 2,
+ "brand_fit_why": "Clean and calm drawing, but a pure steam generator is off-offer for the PP PW package."
+}

@@ -1,0 +1,131 @@
+{
+ "file": "41-concept-page-sheets.png",
+ "prompted_for": "One long system page with light drawing sheets laid on a navy blueprint ground (follow-up to 40-concept-page-rhythm; gave the sheet frame and title block for .aq-sheet)",
+ "section_kind": "whole page",
+ "style_family": "drawing sheets on navy ground",
+ "art_direction": [
+  "numbered drawing sheets",
+  "navy blueprint page",
+  "isometric line equipment",
+  "title-block framing",
+  "paper on dark ground"
+ ],
+ "composition": [
+  "left column of numbered sample sheets (01 white with isometric skid, 02 beige blank, then plain navy panels) as a legend of grounds",
+  "right column: one long page on deep navy with light sheets inset for reading sections",
+  "hero on navy: thin caps title, white isometric skid drawing, stacked mono figures and one button",
+  "process chain sits directly on the navy ground between sheets",
+  "final off-white sheet holds a parameter grid and an accordion, with a title block and sheet number '04' in the corner",
+  "whole image framed by a warm orange-brown vignette glow at the edges"
+ ],
+ "layout_devices": [
+  "light sheets with inner border line and bottom-right title block",
+  "sheet numbers 01-04 in top-right or title block corners",
+  "isometric line drawing of a skid with tanks, pipes and pumps",
+  "horizontal process chain of square glyph boxes with arrows",
+  "ruled parameter grid",
+  "accordion drawer with beige highlighted open row and plus/minus icons",
+  "hairline data table"
+ ],
+ "palette": [
+  "deep navy page ground",
+  "off-white / limestone sheet",
+  "warm beige / sand sheet and accordion highlight",
+  "white linework on navy",
+  "navy linework on sheets",
+  "steel-blue buttons",
+  "rust-orange vignette at the outer edge (artifact)"
+ ],
+ "typography": [
+  "light thin sans caps hero title",
+  "light sans sentence-case section headings",
+  "mono key figures with units",
+  "small mono sheet numbers",
+  "small sans table text"
+ ],
+ "rendering": [
+  "flat vector UI",
+  "isometric 1 px line drawing",
+  "paper sheets inset on dark ground"
+ ],
+ "line_and_texture": [
+  "thin 1 px strokes",
+  "double inner border on sheets",
+  "title-block hairline grid",
+  "flat fills",
+  "soft outer glow vignette"
+ ],
+ "motifs": [
+  "drawing sheet",
+  "title block",
+  "sheet number",
+  "isometric skid",
+  "process chain",
+  "distribution loop"
+ ],
+ "ui_patterns": [
+  "top nav with filled CTA",
+  "hero with key figures",
+  "data table",
+  "process diagram",
+  "parameter grid",
+  "accordion",
+  "section as card/sheet"
+ ],
+ "motion_implied": [
+  "sheets slide up onto the navy ground",
+  "isometric drawing strokes draw in",
+  "water flows along the process chain",
+  "accordion drawer opens"
+ ],
+ "mood": [
+  "engineered",
+  "calm",
+  "premium",
+  "serious",
+  "documentary"
+ ],
+ "t2i_keywords": [
+  "flat UI mockup",
+  "no device frame",
+  "long web page on deep navy ground",
+  "light paper drawing sheets inset on navy",
+  "sheet inner border",
+  "title block bottom right corner",
+  "sheet numbers 01 02 03",
+  "isometric white line drawing of equipment skid",
+  "thin light uppercase hero title",
+  "stacked mono key figures",
+  "horizontal process chain with glyph boxes and arrows",
+  "hairline data table",
+  "parameter grid",
+  "accordion with plus and minus icons",
+  "warm beige highlight row",
+  "off-white and sand paper tones",
+  "single steel-blue accent button",
+  "sentence-case light sans headings",
+  "1 px line art",
+  "blueprint aesthetic",
+  "square corners",
+  "no shadows",
+  "generous margins",
+  "engineering documentation feel",
+  "dark ground with paper contrast"
+ ],
+ "t2i_prompt": "Flat UI mockup, no device frame, of a long web page for <CONTENT> on a deep navy blueprint ground. Light off-white paper drawing sheets are inset for reading sections, each with a thin inner border, a title block and a sheet number in the bottom-right corner. Hero directly on navy: thin light uppercase title, white isometric line drawing of an industrial equipment skid, stacked mono figures and one steel-blue button. Between sheets, a horizontal process chain of square glyph boxes with arrows sits on the navy. Hairline tables, a parameter grid and an accordion with a sand-beige open row. 1 px lines, square corners, no shadows, generous margins.",
+ "signature_idea": "Reading sections are numbered drawing sheets with title blocks, laid onto a navy blueprint page.",
+ "strengths": [
+  "gives a clear, buildable rule: navy ground for drawings, framed light sheets for reading",
+  "sheet numbers and title blocks tie into footer and nav language",
+  "isometric skid drawing is a credible, ownable hero visual",
+  "light headlines and mono figures on brand"
+ ],
+ "weaknesses": [
+  "orange vignette glow at the edges is an off-brand rendering artifact",
+  "left legend column of blank panels is confusing",
+  "beige accordion highlight adds a second neutral",
+  "table and grid text is illegible gibberish at this scale"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy ground, limestone sheets, one steel-blue accent, light headlines, mono figures, square corners and calm space are exactly the brand book; only the orange vignette is off."
+}

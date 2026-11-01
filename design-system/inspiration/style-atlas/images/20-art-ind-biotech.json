@@ -1,0 +1,103 @@
+{
+ "file": "20-art-ind-biotech.png",
+ "prompted_for": "Equipment line drawing for the Biotech industry page (ind-biotech): black-on-white source for the Illustration component mask",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric technical line art",
+ "art_direction": [
+  "technical illustration",
+  "isometric equipment drawing",
+  "black-and-white line art",
+  "process vessel portrait"
+ ],
+ "composition": [
+  "one tall agitated vessel on three legs, centred, slightly from above",
+  "agitator motor and gearbox on top break the silhouette",
+  "pipes loop down both sides; junction box with gauges on the right flank",
+  "bottom outlet valves at lower left"
+ ],
+ "layout_devices": [
+  "single hero object",
+  "pipes framing the vessel left and right"
+ ],
+ "palette": [
+  "pure black line",
+  "pure white ground"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "flat vector-like ink lines",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "uniform thin strokes",
+  "ribbed motor fins and bolt circles as detail texture",
+  "no hatching, no shadows"
+ ],
+ "motifs": [
+  "jacketed bioreactor / mixing vessel",
+  "top-mounted agitator motor",
+  "manway and sight glass",
+  "sanitary pipe loops with valves",
+  "control box with gauges",
+  "tri-clamp connections"
+ ],
+ "ui_patterns": [
+  "hero or section illustration masked in a token colour",
+  "hotspot candidates on ports and valves"
+ ],
+ "motion_implied": [
+  "agitator spins",
+  "water enters through a top port",
+  "line draw-on from legs upward"
+ ],
+ "mood": [
+  "solid",
+  "clinical",
+  "precise",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "isometric technical line drawing",
+  "black ink on pure white",
+  "single process vessel on legs",
+  "top-mounted agitator motor and gearbox",
+  "manway and sight glass on dished head",
+  "bolt circles on flanges",
+  "sanitary pipe loops with valves",
+  "small control box with gauges",
+  "three-quarter view from above",
+  "uniform thin strokes",
+  "no shading",
+  "no hatching",
+  "no fill",
+  "no colour",
+  "no text",
+  "equipment catalogue illustration",
+  "clean vector line art",
+  "centred hero object",
+  "white margin",
+  "precise mechanical detail",
+  "biopharma process equipment",
+  "crisp closed contours",
+  "single-colour mask ready",
+  "tall vessel on three legs",
+  "flanged ports",
+  "bottom outlet valve"
+ ],
+ "t2i_prompt": "Isometric technical line drawing of <CONTENT>, black ink on pure white, a single centred piece of process equipment seen three-quarter from above. Uniform thin strokes, no shading, no hatching, no fill, no colour, no text. Precise mechanical detail: flanged ports with bolt circles, a top-mounted motor, sanitary pipe loops with small valves descending both sides, a small control box with gauges on one flank. Equipment catalogue illustration with a clean white margin and crisp closed contours for a single-colour mask.",
+ "signature_idea": "The customer's process vessel drawn in the same quiet ink as Aquemi's own skids, so the industry page shows where the water goes.",
+ "strengths": [
+  "very clean, legible silhouette that masks well",
+  "consistent with the equipment drawing set",
+  "recognisably biopharma"
+ ],
+ "weaknesses": [
+  "reads as stainless jacketed vessel, not Aquemi's PP equipment",
+  "generic; little that ties it to water quality"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Calm, precise single-weight line art in the house drawing style; subject is generic customer equipment."
+}

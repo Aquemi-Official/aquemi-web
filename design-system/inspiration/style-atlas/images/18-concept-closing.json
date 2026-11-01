@@ -1,0 +1,113 @@
+{
+ "file": "18-concept-closing.png",
+ "prompted_for": "Closing call to action; became Closing: framed headline, proof box from the page's facts",
+ "section_kind": "closing",
+ "style_family": "brutalist poster type on navy",
+ "art_direction": [
+  "editorial oversized type",
+  "brutalist poster",
+  "technical frame UI",
+  "desktop plus mobile mockup"
+ ],
+ "composition": [
+  "huge three-line all-caps headline filling the upper two-thirds of a framed panel",
+  "lower row: subtitle box, proof box with one big figure, empty placeholder frame, and solid steel-blue CTA button",
+  "header bar with wordmark, breadcrumb and step tag",
+  "mobile column stacks headline, subtitle, proof box and button",
+  "view labels above and below each mockup"
+ ],
+ "layout_devices": [
+  "framed headline in a drawing-sheet border",
+  "proof box with one oversized figure and unit",
+  "corner bracket frames",
+  "crosshair marks on the frame",
+  "'01 // INPUT 02 // PROCESS' step labels",
+  "arrow in button"
+ ],
+ "palette": [
+  "deep navy ground",
+  "limestone off-white headline and text",
+  "steel-blue solid CTA button with navy text",
+  "grey-blue thin frame lines"
+ ],
+ "typography": [
+  "massive bold condensed sans all-caps headline",
+  "mono figure '< 0.25' with unit in mono",
+  "regular sans subtitle",
+  "small mono breadcrumb labels"
+ ],
+ "rendering": [
+  "flat vector UI mockup"
+ ],
+ "line_and_texture": [
+  "hairline frame borders",
+  "crosshair plus marks",
+  "corner brackets",
+  "no texture"
+ ],
+ "motifs": [
+  "proof figure",
+  "drawing frame",
+  "step tags",
+  "arrow"
+ ],
+ "ui_patterns": [
+  "closing CTA band",
+  "single primary button",
+  "proof stat box",
+  "breadcrumb header",
+  "responsive desktop/mobile pair"
+ ],
+ "motion_implied": [
+  "headline lines slide up in sequence",
+  "proof figure counts to 0.25",
+  "button arrow nudges on hover"
+ ],
+ "mood": [
+  "direct",
+  "confident",
+  "loud",
+  "plainspoken"
+ ],
+ "t2i_keywords": [
+  "flat desktop UI mockup with mobile view beside it",
+  "deep navy background",
+  "massive bold condensed all-caps headline",
+  "headline fills two-thirds of the frame",
+  "limestone off-white type",
+  "proof box with one oversized monospace figure and unit",
+  "solid steel-blue call-to-action button",
+  "thin drawing-sheet frame",
+  "corner brackets and crosshair marks",
+  "small monospace breadcrumb labels",
+  "header bar with wordmark",
+  "brutalist poster typography",
+  "tight leading",
+  "one accent colour",
+  "square corners",
+  "no device frame",
+  "no people",
+  "editorial engineering layout",
+  "minimal content, maximum type",
+  "three-line stacked headline",
+  "rectangular button with diagonal arrow",
+  "subtitle in thin outline box",
+  "step labels 01 // 02 //",
+  "view labels around mockups",
+  "slate-navy outer frame lines"
+ ],
+ "t2i_prompt": "Flat desktop UI mockup with a mobile version beside it, no device frame, no people. Deep navy panel inside a thin drawing-sheet frame with crosshair marks and corner brackets. <CONTENT> set as a massive three-line all-caps condensed headline in limestone off-white, tight leading, filling most of the frame. Below it a row: a short subtitle in a thin box, a proof box with one oversized monospace figure and its unit, and a solid steel-blue rectangular button with an arrow. Small monospace breadcrumb labels, square corners.",
+ "signature_idea": "End the page with one shouted instruction and one measured number as proof.",
+ "strengths": [
+  "very clear single action",
+  "proof figure next to the CTA ties claims to evidence",
+  "mono figure treatment matches brand figures rule"
+ ],
+ "weaknesses": [
+  "shouting heavy condensed caps is the opposite of Geist light and 'calm'",
+  "empty placeholder frame in the middle row wastes space",
+  "feels like a generic dev-tool poster"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Palette, mono figures and square button fit; the bold condensed shouting headline breaks the light, calm type voice."
+}

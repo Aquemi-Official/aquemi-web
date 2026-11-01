@@ -1,0 +1,117 @@
+{
+ "file": "15-concept-faq.png",
+ "prompted_for": "Questions engineers ask (FAQ section); became FAQ: numbered question cards, the open one widens",
+ "section_kind": "FAQ",
+ "style_family": "navy blueprint HUD",
+ "art_direction": [
+  "dark blueprint interface",
+  "engineering HUD",
+  "monospace terminal UI",
+  "flowchart diagram",
+  "desktop plus mobile mockup"
+ ],
+ "composition": [
+  "desktop and phone mockups side by side on a slate-navy ground",
+  "four question cards placed as nodes of a flowchart",
+  "the active card is wider and holds the answer plus a small line chart",
+  "phone view stacks the cards in one column joined by a vertical connector"
+ ],
+ "layout_devices": [
+  "cards joined by orthogonal connector lines (junction tree)",
+  "the open item widens instead of pushing down",
+  "coordinate tags in card corners",
+  "crosshair registration marks",
+  "stacked hairlines beside the logo as a header rule",
+  "[CLOSED] / ACTIVE state labels"
+ ],
+ "palette": [
+  "deep navy panel",
+  "slate-navy outer ground",
+  "limestone off-white for text and card outlines",
+  "steel-blue outline and number on the active card",
+  "dim grey-blue for coordinate tags"
+ ],
+ "typography": [
+  "all-caps monospace throughout",
+  "numbered labels '01 /'",
+  "small mono metadata tags in brackets",
+  "bold geometric sans caps wordmark"
+ ],
+ "rendering": [
+  "flat vector UI mockup",
+  "thin outlined boxes, no fills"
+ ],
+ "line_and_texture": [
+  "1 px hairline card borders",
+  "thin connector lines",
+  "crosshair plus marks at grid corners",
+  "no texture, no shadows"
+ ],
+ "motifs": [
+  "numbered nodes",
+  "flowchart junctions",
+  "coordinate readouts",
+  "mini line chart",
+  "registration crosshairs"
+ ],
+ "ui_patterns": [
+  "accordion as widening card",
+  "open/closed state badges",
+  "pagination dots",
+  "responsive desktop/mobile pair"
+ ],
+ "motion_implied": [
+  "connector lines draw between cards",
+  "active card expands sideways and the chart draws on",
+  "state label flips CLOSED to ACTIVE"
+ ],
+ "mood": [
+  "technical",
+  "cool",
+  "systematic",
+  "dense"
+ ],
+ "t2i_keywords": [
+  "flat desktop UI mockup with mobile view beside it",
+  "deep navy blueprint interface",
+  "outlined cards as flowchart nodes",
+  "orthogonal connector lines between cards",
+  "active card widens to show answer",
+  "small line chart inside card",
+  "all-caps monospace typography",
+  "numbered labels with slash",
+  "coordinate tags in card corners",
+  "crosshair registration marks",
+  "limestone off-white text",
+  "single steel-blue accent outline",
+  "hairline 1 px borders",
+  "no fills, outline only",
+  "engineering HUD aesthetic",
+  "terminal-like data labels",
+  "status tags in brackets",
+  "generous dark negative space",
+  "slate navy outer background",
+  "no device frame",
+  "no people",
+  "precise grid alignment",
+  "cool calm palette",
+  "mini sparkline chart",
+  "bracketed state labels",
+  "stacked hairlines as header rule",
+  "vertical connector on mobile stack"
+ ],
+ "t2i_prompt": "Flat desktop UI mockup with a mobile version beside it, no device frame, no people. Deep navy blueprint interface showing <CONTENT> as outlined cards placed like nodes of a flowchart, joined by thin orthogonal connector lines. One card is active: it is wider, outlined in a single steel-blue accent, and holds the answer text with a small line chart. All-caps monospace type in limestone off-white, numbered labels like 01 /, tiny coordinate tags in card corners, crosshair registration marks, hairline 1 px borders, no fills, calm dark negative space.",
+ "signature_idea": "The FAQ as a flowchart of question nodes where the open one widens sideways instead of pushing the list down.",
+ "strengths": [
+  "navy, limestone and one steel-blue accent match the brand palette",
+  "numbered questions and widening card are a distinctive, buildable pattern",
+  "mobile version shows a sensible stacked fallback"
+ ],
+ "weaknesses": [
+  "all-caps mono for long questions is hard to read",
+  "fake coordinate tags are decorative noise",
+  "flowchart connections imply a logic between questions that doesn't exist"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Palette, square corners and mono labels fit; all-caps mono body text breaks the Geist light headline rule."
+}

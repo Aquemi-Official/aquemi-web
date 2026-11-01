@@ -1,0 +1,118 @@
+{
+ "file": "86-p9-industries-1.png",
+ "prompted_for": "'Grade, limit and inspector by industry' section on the Industries page; art direction: macro detail, an extreme close-up illustration (weld bead, water surface, membrane layers) with overlaid callouts; table: industry / grades and uses / limit that applies / inspector for six industries",
+ "section_kind": "spec/limits",
+ "style_family": "limestone editorial with macro water render",
+ "art_direction": [
+  "macro detail",
+  "layered translucent membrane and water render",
+  "light editorial layout",
+  "dimension-line annotations",
+  "indexed list beside image"
+ ],
+ "composition": [
+  "large light headline across the top on limestone, small mono key-value pair at top right",
+  "left two-thirds: a framed rectangular macro render of wavy translucent water and mesh membrane layers",
+  "right third: numbered industry list with hairline separators, stepping slightly right",
+  "thin left rail with menu and arrow icons, page margins marked",
+  "dimension lines and size labels along the image frame"
+ ],
+ "layout_devices": [
+  "dimension lines with arrows and rotated measurements along image edges",
+  "thin leader lines from points in the image to labels and the list",
+  "slash-numbered list entries 01 / Pharma, non-sterile ...",
+  "mono three-line entries (use, Limit:, Insp:)",
+  "hex colour and width labels under image like a spec sheet",
+  "side rail with nav arrows"
+ ],
+ "palette": [
+  "limestone ground",
+  "cool silver-blue and grey translucent render",
+  "deep navy text",
+  "mid grey hairlines and dimension marks"
+ ],
+ "typography": [
+  "large light grotesk headline sentence case (Geist-light-like)",
+  "light sans list titles with slash numbers",
+  "mono body lines for limits and inspectors",
+  "small mono key-value labels",
+  "small caps breadcrumb"
+ ],
+ "rendering": [
+  "photo-real 3D macro render of layered liquid and mesh",
+  "flat vector type and lines"
+ ],
+ "line_and_texture": [
+  "hairline rules between entries",
+  "fine dimension lines and ticks",
+  "glossy refractive liquid surfaces",
+  "woven mesh texture on membrane layers"
+ ],
+ "motifs": [
+  "membrane layers",
+  "water ripple surface",
+  "dimension lines",
+  "numbered index"
+ ],
+ "ui_patterns": [
+  "image plus indexed list",
+  "breadcrumb",
+  "side rail navigation",
+  "callout labels on image"
+ ],
+ "motion_implied": [
+  "membrane layers undulate slowly",
+  "list entries highlight with corresponding callout",
+  "dimension lines draw in"
+ ],
+ "mood": [
+  "calm",
+  "clinical",
+  "refined",
+  "airy",
+  "precise"
+ ],
+ "t2i_keywords": [
+  "macro 3D render of layered translucent membranes",
+  "rippling water surface sheets",
+  "woven mesh texture",
+  "cool silver-blue monochrome render",
+  "limestone off-white page background",
+  "framed rectangular image with dimension lines",
+  "rotated measurement labels on frame edges",
+  "thin leader-line callouts into image",
+  "light-weight sans-serif headline sentence case",
+  "numbered list with slash numbers",
+  "monospace detail lines",
+  "hairline separators",
+  "editorial two-column split image and list",
+  "deep navy text",
+  "spec-sheet margin annotations",
+  "soft diffuse studio light",
+  "generous negative space",
+  "square corners",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm clinical mood",
+  "figure plate beside legend layout",
+  "thin side rail with arrows",
+  "breadcrumb in small caps",
+  "hex and width spec labels under image"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on a limestone background. Large light-weight sans-serif headline in deep navy across the top with a small breadcrumb. Left two-thirds: a square-cornered framed macro 3D render of layered translucent membrane sheets and rippling water with woven mesh texture, cool silver-blue, soft diffuse light, with fine dimension lines and rotated measurements on its edges and thin leader-line callouts. Right third: a numbered list with slash numbers, monospace detail lines and hairline separators for <CONTENT>.",
+ "signature_idea": "A dimensioned macro of membrane layers sits beside a numbered compliance index, like a figure plate next to its legend.",
+ "strengths": [
+  "light headline, mono details, limestone ground and hairlines match the brand",
+  "list format is scannable for standards and inspectors",
+  "dimension lines bring a drawing-sheet precision to a photo"
+ ],
+ "weaknesses": [
+  "macro image is decorative and unrelated to the list; callouts point at nothing meaningful",
+  "table becomes a list, losing column comparison",
+  "large image takes two-thirds of the space from the actual data",
+  "stepping list indents look accidental",
+  "invented labels on image ('interactive callus')"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone, navy text, light headline, mono figures, hairlines and square corners fit; the photo-real liquid macro is softer than the line-art brand and adds little information."
+}

@@ -1,0 +1,122 @@
+{
+ "file": "85-p9-industries-0.png",
+ "prompted_for": "'Your situation and where to start' section on the Industries page; art direction: technical blueprint drawing used deliberately, fine line art on navy; router table: your situation / system / start with, five situations",
+ "section_kind": "router",
+ "style_family": "navy P&ID blueprint router",
+ "art_direction": [
+  "technical blueprint drawing",
+  "P&ID schematic routing",
+  "fine line art on navy",
+  "three-column pathfinder",
+  "drawing-sheet frame"
+ ],
+ "composition": [
+  "serif-style light headline top left on navy",
+  "three labelled columns: situation boxes left, system boxes centre, start-with boxes right",
+  "five rows of outlined boxes aligned on a strict grid",
+  "pipe lines route from each situation through valves, a tank and a cube equipment symbol into the system column",
+  "valve symbols on each line between system and start-with",
+  "drawing frame with ruler ticks, zone numbers and corner marks"
+ ],
+ "layout_devices": [
+  "pipe route linking items through P&ID valve symbols",
+  "column headers 'COLUMN 01: YOUR SITUATION' in mono",
+  "path labels PATH 1-5 with tag codes (A.10, TR.04)",
+  "connector dots on box edges",
+  "merging and crossing pipes with bridge hops",
+  "ruler/scale ticks along frame edges",
+  "inline equipment symbols (vessel, pump circle, filter cube)"
+ ],
+ "palette": [
+  "deep navy ground",
+  "pale blue-white fine lines",
+  "steel-blue bullet dots",
+  "white text",
+  "faint lighter navy box fills"
+ ],
+ "typography": [
+  "light transitional serif headline (not Geist) in sentence case",
+  "mono caps column headers and path codes",
+  "regular sans in boxes",
+  "tiny mono frame codes"
+ ],
+ "rendering": [
+  "flat vector blueprint line art",
+  "1-1.5px strokes",
+  "P&ID symbology"
+ ],
+ "line_and_texture": [
+  "hairline 1px pipe lines with right-angle routing",
+  "double-line box outlines",
+  "ruler ticks and grid marks on the frame",
+  "no grain, flat navy"
+ ],
+ "motifs": [
+  "P&ID valves",
+  "pressure vessel/tank",
+  "pump",
+  "pipe junctions",
+  "drawing frame with ticks",
+  "path codes"
+ ],
+ "ui_patterns": [
+  "router / decision table as three columns",
+  "linked boxes",
+  "row hover highlighting a path"
+ ],
+ "motion_implied": [
+  "water travels along each path through valves to the start box",
+  "valves open in sequence",
+  "hovering a situation lights its route"
+ ],
+ "mood": [
+  "precise",
+  "engineered",
+  "calm",
+  "systematic",
+  "credible"
+ ],
+ "t2i_keywords": [
+  "technical blueprint line art on deep navy",
+  "P&ID schematic style",
+  "fine 1.5 px pale blue lines",
+  "three-column router diagram",
+  "outlined rectangular boxes in rows",
+  "pipe routes linking boxes with right-angle bends",
+  "valve symbols on lines",
+  "inline equipment symbols vessel and pump",
+  "crossing pipes with bridge hops",
+  "connector dots on box edges",
+  "mono caps column headers",
+  "path codes and tag numbers",
+  "drawing frame with ruler ticks and zone numbers",
+  "light serif or light sans headline",
+  "steel-blue bullet dots",
+  "strict grid alignment",
+  "flat vector no shadows",
+  "square corners",
+  "engineering drawing sheet",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "calm precise mood",
+  "double-line outlined boxes",
+  "pathfinder diagram",
+  "right-angle pipe routing"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on deep navy, styled as a technical blueprint. Light headline top left. Three labelled columns with mono caps headers, each holding square-cornered outlined boxes in aligned rows for <CONTENT>. Fine 1.5 px pale blue pipe lines route from each left box with right-angle bends, through P&ID valve symbols, a small vessel and pump symbols, into the centre column and on to the right. Connector dots on box edges, small mono path codes, a drawing frame with ruler ticks and zone numbers. Flat, no shadows.",
+ "signature_idea": "The industry router is a P&ID: each reader's situation is literally piped through valves to the system and the place to start.",
+ "strengths": [
+  "routing metaphor matches the product (pipes, valves) and the decision logic",
+  "very legible table structure in boxes",
+  "fine line art on navy with drawing-sheet frame is core brand language",
+  "converts naturally to an interactive path-highlight component"
+ ],
+ "weaknesses": [
+  "serif headline is off the Geist type system",
+  "decorative P&ID equipment in the middle lines doesn't mean anything for the routing",
+  "crossing lines get busy around rows 1-2",
+  "start-with boxes duplicate across rows, could be merged"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy ground, fine steel/pale-blue line art, drawing-sheet details, mono labels and square corners match the brand book; only the serif headline deviates."
+}

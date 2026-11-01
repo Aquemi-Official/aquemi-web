@@ -1,0 +1,115 @@
+{
+ "file": "32-concept-band.png",
+ "prompted_for": "One statement between two sections (original of concept-p-band; became Band: one large sentence in a framed panel with a faint technical motif)",
+ "section_kind": "other",
+ "style_family": "editorial oversized type on limestone",
+ "art_direction": [
+  "editorial statement",
+  "oversized condensed type",
+  "light limestone sheet",
+  "faint technical drawing overlay",
+  "desktop and mobile pair"
+ ],
+ "composition": [
+  "framed panel with thin header and footer rules carrying previous/next section labels and centred logo",
+  "massive two-line navy headline across the left two-thirds",
+  "short two-line subline below the headline",
+  "fragment of a technical elevation drawing at right with data callout boxes",
+  "camera-style corner brackets framing the key word",
+  "mobile stacks headline in four lines over subline with drawing fragments behind"
+ ],
+ "layout_devices": [
+  "viewfinder corner brackets highlighting one word",
+  "outlined callout boxes with mono reference and deviation values",
+  "fragmentary pipe/elevation drawing at the edge",
+  "previous/next section labels in header and footer rules",
+  "section number top-right on mobile"
+ ],
+ "palette": [
+  "warm limestone off-white ground",
+  "deep navy headline and line work",
+  "steel-blue corner brackets as the single accent",
+  "grey-navy hairlines"
+ ],
+ "typography": [
+  "very heavy condensed sans all-caps headline, tight leading",
+  "regular sans subline in sentence case",
+  "monospace small caps labels and figures with '//' separators"
+ ],
+ "rendering": [
+  "flat vector UI mockup",
+  "hairline technical drawing fragment",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "1 px navy frame and rules with slightly rounded corners",
+  "hairline elevation lines, small hatch marks",
+  "crosshair registration mark",
+  "plain paper ground without grain"
+ ],
+ "motifs": [
+  "viewfinder brackets",
+  "technical elevation fragment",
+  "reference tag",
+  "deviation figures",
+  "section numbering"
+ ],
+ "ui_patterns": [
+  "statement band / interstitial",
+  "section pagination labels",
+  "responsive desktop and mobile layout"
+ ],
+ "motion_implied": [
+  "corner brackets snap in around the key word",
+  "drawing lines draw on behind the type",
+  "figures tick to their values"
+ ],
+ "mood": [
+  "bold",
+  "declarative",
+  "editorial",
+  "confident",
+  "clean"
+ ],
+ "t2i_keywords": [
+  "flat UI mockup",
+  "warm limestone off-white background",
+  "massive condensed all-caps headline",
+  "deep navy type",
+  "tight leading",
+  "short sentence-case subline",
+  "thin navy frame panel",
+  "header and footer hairline rules",
+  "previous and next section labels",
+  "viewfinder corner brackets around one word",
+  "steel-blue accent brackets",
+  "faint technical elevation drawing fragment",
+  "outlined callout boxes with monospace figures",
+  "crosshair registration mark",
+  "editorial statement band",
+  "generous left-aligned whitespace",
+  "desktop and mobile views side by side",
+  "no device frame",
+  "no people",
+  "two-colour palette",
+  "high contrast type",
+  "minimal decoration",
+  "single statement interstitial",
+  "monospace reference tag",
+  "plain paper ground"
+ ],
+ "t2i_prompt": "Flat desktop UI mockup with a narrow mobile view beside it, no device frame, no people. Warm limestone off-white background, a thin navy-framed panel with hairline header and footer rules carrying small monospace previous and next section labels. One massive condensed deep-navy statement of <CONTENT> across the left two-thirds, with steel-blue viewfinder corner brackets around its key word and a short sentence-case subline below. At the right edge, a faint fragment of a technical elevation drawing with small outlined callout boxes of monospace figures. Generous whitespace, two colours plus one accent.",
+ "signature_idea": "One huge statement set between sections, with viewfinder brackets locking onto the single word that matters.",
+ "strengths": [
+  "a single clear sentence gives the page rhythm and a pause",
+  "limestone with navy and one steel-blue accent is on palette",
+  "viewfinder brackets are a memorable, reusable emphasis device"
+ ],
+ "weaknesses": [
+  "very heavy condensed caps is the opposite of Geist light headlines",
+  "the drawing fragment and random deviation figures are decorative and meaningless",
+  "slogan-style copy risks hype"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Palette, single accent and space are on brand, but the black-weight condensed caps headline and invented figures clash with light Geist headlines and the no-hype voice."
+}

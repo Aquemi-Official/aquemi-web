@@ -1,0 +1,106 @@
+{
+ "file": "30-art-svc-upgrades.png",
+ "prompted_for": "Black-on-white equipment drawing for the upgrades and retrofit service page (svc-upgrades), source for art/svc-upgrades.png and the Illustration component",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric technical line art",
+ "art_direction": [
+  "isometric equipment drawing",
+  "installation in progress",
+  "technical illustration",
+  "black on white",
+  "exploded insertion moment"
+ ],
+ "composition": [
+  "tall storage tank on braced legs dominant at left",
+  "framed pump skid at lower right",
+  "new pipe spool hanging from a chain hoist at upper centre, about to drop into the gap",
+  "short pipe run with valve already joining tank to skid",
+  "dashed alignment line showing where the spool will seat"
+ ],
+ "layout_devices": [
+  "suspended spool on a lifting sling as the focal action",
+  "dashed drop line indicating fit-up position",
+  "flanged joints marking connection points"
+ ],
+ "palette": [
+  "black line",
+  "white ground"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "uniform outlines",
+  "no fill or shading"
+ ],
+ "line_and_texture": [
+  "1.5-2 px black strokes",
+  "bolt circles on every flange as small dots",
+  "chain links drawn individually",
+  "dashed guide line",
+  "no hatching"
+ ],
+ "motifs": [
+  "vertical storage tank with manways and nozzles",
+  "pipe spool with flanges",
+  "chain hoist and sling",
+  "handwheel valves",
+  "pump skid in open frame with motors and control box"
+ ],
+ "ui_patterns": [
+  "none; standalone illustration mask"
+ ],
+ "motion_implied": [
+  "spool lowers along the dashed line and bolts into place",
+  "water then flows from tank to skid"
+ ],
+ "mood": [
+  "active",
+  "engineered",
+  "purposeful",
+  "heavy-duty"
+ ],
+ "t2i_keywords": [
+  "isometric line drawing",
+  "black line art on white background",
+  "uniform stroke weight",
+  "no shading",
+  "no fill",
+  "no text",
+  "technical equipment illustration",
+  "tall vertical storage tank on braced legs",
+  "flanged nozzles with bolt circles",
+  "pipe spool suspended from chain hoist",
+  "lifting sling",
+  "dashed alignment line",
+  "pipe being fitted into a gap",
+  "pump skid in open steel frame",
+  "handwheel valves",
+  "flanged pipe elbows",
+  "installation in progress",
+  "retrofit moment",
+  "generous white margin",
+  "precise mechanical detail",
+  "suitable for vector tracing",
+  "high contrast",
+  "plain background",
+  "bolt circles on flanges",
+  "individual chain links",
+  "existing plant plus new part"
+ ],
+ "t2i_prompt": "Clean isometric line drawing, black lines on a pure white background, uniform stroke weight, no shading, no fill, no text, no people. An existing installation of <CONTENT>: a large vessel on one side and a framed machine skid on the other, joined by flanged pipework with valves, and one new flanged part suspended from a chain hoist on a sling, about to drop into a gap along a dashed alignment line. Precise bolt circles and fittings as clean outlines, generous white margin, suitable for tracing into a single-colour mask.",
+ "signature_idea": "An upgrade caught mid-install: a new pipe spool hanging on a hoist above the gap it will fill between the existing tank and skid.",
+ "strengths": [
+  "tells the retrofit story in one frame: existing plant plus a new part going in",
+  "dashed fit-up line is a clear, animatable device",
+  "real process equipment, credible to engineers"
+ ],
+ "weaknesses": [
+  "heavy flanged steel pipe and bolted tank read as stainless or carbon steel, not PP",
+  "many flanges and bolts make it busy",
+  "large flanged spool is closer to utilities plant than a PW skid"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Recolourable precise line art with a strong idea, but the heavy flanged metalwork contradicts the polypropylene offer and the detail density fights the calm brand."
+}

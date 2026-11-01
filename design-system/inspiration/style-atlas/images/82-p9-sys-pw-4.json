@@ -1,0 +1,128 @@
+{
+ "file": "82-p9-sys-pw-4.png",
+ "prompted_for": "'Configurations and options' section on the Purified Water (PW) generation page; art direction: tactile physical metaphor, real objects on a surface (folders, tags, stamps, labels, sample bottles) shot from above; options: membrane degasser, duplex trains, recirculation at no demand, ultrafiltration or 254 nm UV, recovery enhancement",
+ "section_kind": "options",
+ "style_family": "photo-real flat-lay stationery",
+ "art_direction": [
+  "tactile flat-lay",
+  "top-down object photography",
+  "shipping tags and folders",
+  "lab sample vials",
+  "two-tone split ground"
+ ],
+ "composition": [
+  "overhead flat-lay of paper objects scattered loosely across a limestone surface",
+  "right fifth of the frame is a deep navy panel holding two folder/tag objects",
+  "title card top left like a label sheet",
+  "five option objects: kraft tag, layered tags, round hang tag, manila folder with clip, kraft folder with tag",
+  "glass vials and ampoules placed as props between items",
+  "small 'Click to configure' toggle labels pinned to items"
+ ],
+ "layout_devices": [
+  "one physical object per option with big number 01-05",
+  "rubber stamp mark on a tag",
+  "paper clip and file tabs",
+  "toggle switches printed on tag labels",
+  "split background (limestone / navy) as zoning",
+  "50/50 stamp as a data figure"
+ ],
+ "palette": [
+  "limestone surface",
+  "deep navy right panel",
+  "kraft brown and manila paper",
+  "off-white card stock",
+  "steel-blue labels, toggle and vial cap accent",
+  "clear glass vials with pale liquid",
+  "black type"
+ ],
+ "typography": [
+  "bold condensed-ish caps titles printed on tags (heavy, typewriter-label feel)",
+  "mono typewriter body text on tags",
+  "mono numerals 01-05",
+  "light caps title on the header card",
+  "small sans UI labels"
+ ],
+ "rendering": [
+  "photo-real top-down still life",
+  "soft overhead lighting with gentle drop shadows",
+  "paper and glass materials"
+ ],
+ "line_and_texture": [
+  "paper fibres and kraft grain",
+  "realistic soft shadows under objects",
+  "string holes and grommets",
+  "stamp ink texture",
+  "glass reflections"
+ ],
+ "motifs": [
+  "shipping tags",
+  "manila and kraft folders",
+  "paper clips",
+  "sample vials and ampoules",
+  "rubber stamps",
+  "toggle switch labels"
+ ],
+ "ui_patterns": [
+  "option cards as objects",
+  "toggles to configure",
+  "numbered option set"
+ ],
+ "motion_implied": [
+  "tags slide or drop onto the surface",
+  "toggles flip on",
+  "folder opens on click",
+  "stamp thumps onto tag"
+ ],
+ "mood": [
+  "tactile",
+  "crafted",
+  "playful",
+  "warm",
+  "documentary"
+ ],
+ "t2i_keywords": [
+  "top-down flat-lay photograph",
+  "tactile physical objects on a surface",
+  "kraft paper shipping tags with grommets and string holes",
+  "manila file folders with tabs",
+  "metal paper clip",
+  "glass sample vials and ampoules",
+  "rubber stamp ink mark",
+  "limestone surface background",
+  "deep navy side panel split background",
+  "soft overhead lighting",
+  "gentle realistic drop shadows",
+  "paper grain texture",
+  "typewriter monospace labels printed on tags",
+  "bold caps titles on tags",
+  "large numbers 01 to 05 on objects",
+  "steel-blue label accents",
+  "toggle switch printed on label",
+  "loose scattered arrangement",
+  "photo-real still life",
+  "stationery and lab props",
+  "1440 px desktop section",
+  "straight-on overhead view",
+  "warm crafted mood",
+  "round hang tag with string hole",
+  "kraft and manila paper colours"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a top-down flat-lay photograph. A limestone surface with a deep navy panel along the right edge. Loosely arranged physical objects, one per item of <CONTENT>: kraft shipping tags with grommets, a round hang tag, manila and kraft folders with tabs and a metal paper clip, each printed with bold caps titles, typewriter monospace notes and large numbers. Small glass sample vials and ampoules as props, a rubber stamp mark, steel-blue label accents. Soft overhead lighting, gentle realistic shadows, visible paper grain.",
+ "signature_idea": "Each optional module is a physical shipping tag or folder on a desk, as if options were packed and labelled for the build.",
+ "strengths": [
+  "memorable and human, breaks the sequence of dark technical sections",
+  "tags and folders echo real paperwork and shipping of a skid",
+  "numbered items keep the option count clear",
+  "vials hint at water sampling"
+ ],
+ "weaknesses": [
+  "photo-real props and kraft paper are off-brand vs precise line art",
+  "heavy bold caps on tags fight Geist light",
+  "scattered layout hurts scanning and responsive translation",
+  "glass ampoules read as medicine vials, wrong product cue",
+  "fake UI toggles on paper confuse affordance",
+  "hard to reproduce as a token-only component"
+ ],
+ "brand_fit": 2,
+ "brand_fit_why": "Navy/limestone and mono labels nod to the brand, but photo-real kraft props, bold caps and loose scatter break the precise, calm, flat, square-cornered system."
+}

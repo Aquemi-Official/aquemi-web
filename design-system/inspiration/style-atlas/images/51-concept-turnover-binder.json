@@ -1,0 +1,119 @@
+{
+ "file": "51-concept-turnover-binder.png",
+ "prompted_for": "Documents delivered, as the package they audit (DocList as a turnover binder)",
+ "section_kind": "documents",
+ "style_family": "folder-tab turnover binder",
+ "art_direction": [
+  "file folder grid",
+  "paper sheet on navy",
+  "isometric-free flat illustration",
+  "archive metaphor",
+  "drafting sheet"
+ ],
+ "composition": [
+  "light sentence-case headline on navy at top",
+  "limestone sheet with stacked-page edges behind",
+  "2-3-3-3 grid of tabbed folder cards",
+  "one folder filled steel-blue",
+  "small label strip bottom-right"
+ ],
+ "layout_devices": [
+  "file folders with category tabs",
+  "stacked paper offsets behind each folder",
+  "big mono index numbers per folder",
+  "small line icon top-right of each folder",
+  "page-reference footer line on each card",
+  "ruler ticks along sheet edges"
+ ],
+ "palette": [
+  "deep navy page ground",
+  "limestone sheet and folders",
+  "steel-blue tab fills and one full folder",
+  "navy outlines and type"
+ ],
+ "typography": [
+  "light grotesk headline",
+  "uppercase mono document titles",
+  "large mono index numerals",
+  "tiny caps metadata"
+ ],
+ "rendering": [
+  "flat vector",
+  "outlined illustration",
+  "subtle drop offset"
+ ],
+ "line_and_texture": [
+  "1.5 px outlines",
+  "stacked-sheet offsets",
+  "ruler tick marks on sheet border",
+  "faint drop shadows under folders"
+ ],
+ "motifs": [
+  "file folder",
+  "binder",
+  "stacked paper",
+  "certificate seal icon",
+  "stamp icon",
+  "clipboard icon"
+ ],
+ "ui_patterns": [
+  "card grid",
+  "category tags",
+  "highlighted card",
+  "index list"
+ ],
+ "motion_implied": [
+  "folders drop into the binder one by one",
+  "highlighted folder opens to its pages",
+  "sheets fan on hover"
+ ],
+ "mood": [
+  "organised",
+  "thorough",
+  "tangible",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "grid of tabbed file folders",
+  "turnover document binder",
+  "limestone paper sheet on deep navy background",
+  "stacked paper offset behind folders",
+  "steel-blue folder tabs",
+  "one folder filled steel-blue",
+  "large monospace index numbers",
+  "uppercase monospace titles",
+  "small line icons on folders",
+  "page reference footer on cards",
+  "ruler tick marks on sheet border",
+  "flat vector outlines",
+  "1.5 px strokes",
+  "light grotesk headline",
+  "navy limestone steel-blue palette",
+  "archive aesthetic",
+  "subtle offset shadows",
+  "portrait layout",
+  "tidy grid",
+  "engineering documentation",
+  "calm organised mood",
+  "minimal detail",
+  "category tab labels",
+  "tiny caps metadata",
+  "clipboard and seal line icons",
+  "square sheet frame"
+ ],
+ "t2i_prompt": "Flat vector illustration of a documentation package: on a deep navy background, a large limestone sheet with ruler ticks on its edges and stacked page edges behind it. On the sheet, a neat grid of tabbed file folders drawn with 1.5 px navy outlines, each with offset sheets behind, a large mono index number, an uppercase mono title, a tiny line icon and a small footer line. Some tabs are steel-blue and one whole folder is filled steel-blue. Light grotesk headline above. <CONTENT>. Minimal shadow, calm archival feel.",
+ "signature_idea": "The validation package shown as the physical binder of folders the auditor will open.",
+ "strengths": [
+  "concrete, tactile metaphor for document turnover",
+  "index numbers support scanning",
+  "palette on brand"
+ ],
+ "weaknesses": [
+  "folder cards are literal and skeuomorphic",
+  "numbering errors and repeated items",
+  "rounded folder shapes break square corners",
+  "dense grid on phone"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Colours and mono type fit, but skeuomorphic rounded folders and shadows read less precise than square drawing-sheet language."
+}

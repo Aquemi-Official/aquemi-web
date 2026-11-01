@@ -1,0 +1,119 @@
+{
+ "file": "50-concept-limit-gauges.png",
+ "prompted_for": "Limits you release against, read like instruments (Spec as gauges / LimitGauges)",
+ "section_kind": "spec/limits",
+ "style_family": "instrument-dial blueprint sheet",
+ "art_direction": [
+  "analogue instrument panel",
+  "blueprint drafting board",
+  "paper sheet on navy grid",
+  "technical data viz",
+  "gauge cluster"
+ ],
+ "composition": [
+  "limestone sheet floating on a navy blueprint grid",
+  "monospace eyebrow and uppercase mono headline with short underline accent",
+  "2x3 grid of gauge panels",
+  "each panel: label, arc dial with limit marker, reading bottom-right, small legend bottom-left",
+  "crop corner marks between panels"
+ ],
+ "layout_devices": [
+  "semicircular arc gauges with tick scales",
+  "filled steel-blue arc showing current value",
+  "dark limit flag tag on the scale",
+  "registration crosshair marks at panel corners",
+  "needle lines to a crosshair origin",
+  "short accent underline under each label"
+ ],
+ "palette": [
+  "deep navy blueprint grid background",
+  "limestone paper sheet",
+  "navy dial lines and text",
+  "steel-blue value arcs",
+  "navy filled limit tags with white text"
+ ],
+ "typography": [
+  "uppercase monospace headline",
+  "uppercase mono panel labels",
+  "mono figures throughout",
+  "tiny mono legends"
+ ],
+ "rendering": [
+  "flat vector",
+  "fine technical line art",
+  "instrument dial drawing"
+ ],
+ "line_and_texture": [
+  "hairline tick marks",
+  "thicker 4 px steel-blue arcs",
+  "faint blueprint grid with scribbled annotations on the background",
+  "crosshair registration marks"
+ ],
+ "motifs": [
+  "gauge dial",
+  "limit flag",
+  "crosshair",
+  "blueprint grid",
+  "needle"
+ ],
+ "ui_patterns": [
+  "metric card grid",
+  "KPI gauges",
+  "limit vs reading comparison"
+ ],
+ "motion_implied": [
+  "needles sweep from zero to reading",
+  "value arc fills along the scale",
+  "limit flag drops onto the dial"
+ ],
+ "mood": [
+  "precise",
+  "instrumented",
+  "reassuring",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "analogue gauge dials",
+  "instrument panel layout",
+  "limestone paper sheet on navy blueprint grid",
+  "grid of six arc gauges",
+  "semicircular tick-mark scales",
+  "thick steel-blue value arc",
+  "small dark limit flag tag on scale",
+  "thin needle lines",
+  "crosshair registration marks",
+  "uppercase monospace headline",
+  "monospace figures",
+  "short accent underline",
+  "flat vector line art",
+  "hairline tick marks",
+  "faint blueprint grid background",
+  "drafting annotations in margins",
+  "deep navy and cream palette",
+  "engineering data visualisation",
+  "symmetric card grid",
+  "no shadows",
+  "portrait layout",
+  "technical drawing sheet",
+  "precise measurement aesthetic",
+  "clean legend text",
+  "2 by 3 panel grid",
+  "small legend text",
+  "quiet confident mood"
+ ],
+ "t2i_prompt": "Flat vector technical sheet: a limestone paper page laid on a deep navy blueprint grid with faint drafting annotations. Uppercase monospace headline with a short steel-blue underline. A grid of square panels separated by crosshair registration marks; each holds an analogue arc gauge with hairline tick scales, a thick steel-blue arc for the reading, a small navy flag marking the limit, a needle to a crosshair origin, and a large mono reading bottom-right. <CONTENT>. Navy, cream and steel-blue only, no shadows, precise instrument feel.",
+ "signature_idea": "Release limits read like instruments, each value sitting visibly inside its limit on a dial.",
+ "strengths": [
+  "makes margin-to-limit instantly visible",
+  "mono figures and instrument motif suit a QA reader",
+  "sheet on blueprint grid is a strong brand frame"
+ ],
+ "weaknesses": [
+  "dial scales are garbled and illegible at small size",
+  "six dials feel busy",
+  "monospace headline instead of Geist light",
+  "risk of fake-precision numbers"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy grid, limestone sheet, steel-blue accent and mono figures are on brand; dense scales and mono headline cost calm."
+}

@@ -1,0 +1,106 @@
+{
+ "file": "25-art-ind-meddevice.png",
+ "prompted_for": "Black-on-white equipment drawing for the medical device industry page (ind-meddevice), source for art/ind-meddevice.png and the Illustration component",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric technical line art",
+ "art_direction": [
+  "isometric equipment drawing",
+  "technical illustration",
+  "black on white",
+  "cutaway by open door",
+  "single machine portrait"
+ ],
+ "composition": [
+  "one tall cabinet machine centred, three-quarter isometric view",
+  "door swung open to the left revealing interior",
+  "control panel band across the top front",
+  "service piping with a valve wrapped around the right side",
+  "white margin around the object"
+ ],
+ "layout_devices": [
+  "open door as a reveal of the interior",
+  "external pipe run with valve tying the machine to a water supply",
+  "stacked wire racks giving rhythm"
+ ],
+ "palette": [
+  "black line",
+  "white ground"
+ ],
+ "typography": [
+  "none; only blank display rectangles on the control panel"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "vector-like uniform outlines",
+  "no fill or shading"
+ ],
+ "line_and_texture": [
+  "thin 1-1.5 px black strokes",
+  "dense wire-rack grid lines inside",
+  "dot rows on spray arms",
+  "no hatching or texture"
+ ],
+ "motifs": [
+  "washer-disinfector cabinet",
+  "wire instrument racks",
+  "rotating spray arms",
+  "control panel with keypad and displays",
+  "pipe with handwheel valve and elbows"
+ ],
+ "ui_patterns": [
+  "none; standalone illustration mask"
+ ],
+ "motion_implied": [
+  "water travels the external pipe into the cabinet",
+  "spray arms rotate",
+  "door swings shut"
+ ],
+ "mood": [
+  "clinical",
+  "precise",
+  "functional",
+  "clean"
+ ],
+ "t2i_keywords": [
+  "isometric line drawing",
+  "black line art on white background",
+  "uniform thin strokes",
+  "no shading",
+  "no fill",
+  "no text",
+  "technical equipment illustration",
+  "tall cabinet machine",
+  "door open revealing interior",
+  "stacked wire racks",
+  "rotating spray arms",
+  "control panel with keypad and blank displays",
+  "external pipework with handwheel valve",
+  "pipe elbows and fittings",
+  "three-quarter isometric view",
+  "centered single object",
+  "generous white margin",
+  "clean vector-like outlines",
+  "detailed but uncluttered",
+  "suitable for vector tracing",
+  "high contrast",
+  "plain background",
+  "industrial product drawing",
+  "washer-disinfector cabinet",
+  "perforated spray arms",
+  "medical device reprocessing equipment"
+ ],
+ "t2i_prompt": "Clean isometric line drawing of <CONTENT>, black lines on a pure white background, thin uniform strokes, no shading, no fill, no text, no people. One machine centred in a three-quarter isometric view with its front door swung open to reveal the interior detail; a control panel with a keypad and blank display rectangles across the top; a pipe run with elbows and a handwheel valve wrapped around one side feeding it water. Precise, vector-like outlines with enough interior detail to read the function, and generous white margin for tracing into a single-colour mask.",
+ "signature_idea": "The end user of the water, a washer-disinfector, opened up so its racks show, with the PW feed pipe and valve plumbed in on the side.",
+ "strengths": [
+  "shows where the water goes in the customer's process, which links the system to the industry",
+  "clean line weight recolours well",
+  "the side pipe and valve tie it to Aquemi's world"
+ ],
+ "weaknesses": [
+  "dense rack grid may fill in at small sizes",
+  "could read as a household dishwasher or lab oven",
+  "valve and pipe look stainless, not polypropylene"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Precise, calm line art that becomes a navy or steel-blue mask on limestone; interior density is slightly busier than the brand's spare drawings."
+}

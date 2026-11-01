@@ -1,0 +1,102 @@
+{
+ "file": "14-art-svc-fabrication.png",
+ "prompted_for": "Equipment line drawing for the Fabrication service page (svc-fabrication); came out as a stainless orbital weld head with tri-clamps, superseded by a PP butt-fusion machine (gemini/65)",
+ "section_kind": "equipment drawing",
+ "style_family": "exploded-parts line art",
+ "art_direction": [
+  "technical illustration",
+  "tool and parts flat-lay",
+  "black-and-white line art",
+  "workshop catalogue"
+ ],
+ "composition": [
+  "main tool clamped on a pipe running diagonally across the frame",
+  "loose parts (pipe spool, clamps, gasket, elbow, sensor cable) scattered in lower half",
+  "cable bundle trailing off upper right",
+  "no ground, no background"
+ ],
+ "layout_devices": [
+  "exploded / laid-out parts around a hero object",
+  "diagonal pipe axis as the composition spine"
+ ],
+ "palette": [
+  "pure black line",
+  "pure white ground"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric-ish line drawing",
+  "flat vector-like ink lines",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "uniform medium-thin strokes, slightly heavier than the panel drawings",
+  "gear teeth and cable sleeve ribs as the only texture",
+  "no grids, no shadows"
+ ],
+ "motifs": [
+  "orbital weld head",
+  "sanitary ferrule pipe ends",
+  "tri-clamps with wing nuts",
+  "gasket ring",
+  "elbow fitting",
+  "coiled sensor cable",
+  "cable bundle"
+ ],
+ "ui_patterns": [
+  "section illustration beside service copy"
+ ],
+ "motion_implied": [
+  "weld head rotates around the pipe",
+  "clamps snap together",
+  "cable draws in"
+ ],
+ "mood": [
+  "hands-on",
+  "mechanical",
+  "clean",
+  "workmanlike"
+ ],
+ "t2i_keywords": [
+  "technical line drawing",
+  "black ink on pure white",
+  "hero tool clamped on a pipe",
+  "loose parts laid out around it",
+  "exploded parts flat-lay",
+  "pipe spool with flanged ends",
+  "clamps with wing nuts",
+  "gasket ring",
+  "elbow fitting",
+  "coiled cable with connectors",
+  "diagonal pipe composition",
+  "uniform thin strokes",
+  "no shading",
+  "no fill",
+  "no colour",
+  "no text",
+  "workshop tool catalogue illustration",
+  "isometric three-quarter view",
+  "clean vector line art",
+  "precise mechanical detail",
+  "gear teeth detail",
+  "cable bundle trailing off frame",
+  "white margin",
+  "single-colour mask ready",
+  "crisp closed contours"
+ ],
+ "t2i_prompt": "Technical line drawing in black ink on pure white: <CONTENT> shown as a hero tool fitted on a pipe that crosses the frame diagonally, with its loose parts laid out neatly around it (fittings, clamps, a gasket ring, a coiled cable). Three-quarter isometric view, uniform thin strokes, no shading, no fill, no colour, no text. Workshop tool catalogue illustration with precise mechanical detail, clean white margin, crisp closed contours for a single-colour mask.",
+ "signature_idea": "The fabrication tool on the pipe with its kit of parts laid out around it, like a workshop catalogue page.",
+ "strengths": [
+  "clear hero object plus supporting parts reads as craft and capability",
+  "line weight and style match the rest of the drawing set"
+ ],
+ "weaknesses": [
+  "wrong process: stainless orbital welding and tri-clamps contradict the polypropylene offer (hence replaced)",
+  "scattered parts feel arbitrary",
+  "cable bundle looks unfinished"
+ ],
+ "brand_fit": 2,
+ "brand_fit_why": "Visually on-style line art, but the depicted stainless welding process is off-brand for a PP butt-fusion maker."
+}

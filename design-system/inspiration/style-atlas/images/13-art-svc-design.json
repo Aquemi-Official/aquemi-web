@@ -1,0 +1,110 @@
+{
+ "file": "13-art-svc-design.png",
+ "prompted_for": "Equipment line drawing for the Design and engineering service page (svc-design): black-on-white source for the Illustration component mask",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric drafting-table line art",
+ "art_direction": [
+  "technical illustration",
+  "isometric still life",
+  "design-to-build metaphor",
+  "black-and-white line art",
+  "engineering desk"
+ ],
+ "composition": [
+  "rolled-out drawing sheet as a diagonal isometric ground",
+  "transparent wireframe skid standing on the sheet, upper centre",
+  "scale ruler and mechanical pencil lying bottom right",
+  "P&ID schematic printed on the sheet beneath the skid",
+  "roll of paper curling at left edge"
+ ],
+ "layout_devices": [
+  "object rising out of its own drawing (2D plan to 3D skid)",
+  "sheet title block lines in the lower-right corner",
+  "diagonal paper plane leading the eye from roll to tools"
+ ],
+ "palette": [
+  "pure black line",
+  "pure white ground"
+ ],
+ "typography": [
+  "none (only illegible schematic symbols)"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "x-ray / transparent frame showing tanks inside",
+  "flat vector-like ink lines"
+ ],
+ "line_and_texture": [
+  "uniform thin strokes",
+  "finer lines for P&ID symbols on the sheet",
+  "no shading, no hatching",
+  "ruler tick marks as fine texture"
+ ],
+ "motifs": [
+  "skid frame",
+  "vertical vessels / filter housings",
+  "pump and motor",
+  "P&ID valve symbols",
+  "paper roll",
+  "triangular scale ruler",
+  "mechanical pencil",
+  "title block"
+ ],
+ "ui_patterns": [
+  "section illustration beside service copy",
+  "possible hotspots on schematic vs physical part"
+ ],
+ "motion_implied": [
+  "P&ID lines draw on, then the skid extrudes up out of the sheet",
+  "paper unrolls",
+  "pencil traces a line"
+ ],
+ "mood": [
+  "methodical",
+  "crafted",
+  "precise",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "isometric technical line drawing",
+  "black ink on pure white",
+  "3D wireframe equipment rising from its own 2D drawing",
+  "rolled-out blueprint sheet",
+  "P&ID schematic symbols on paper",
+  "transparent skid frame showing vessels inside",
+  "triangular scale ruler",
+  "mechanical drafting pencil",
+  "paper roll curling at edge",
+  "title block lines in sheet corner",
+  "uniform hairline strokes",
+  "no shading",
+  "no fill",
+  "no colour",
+  "no text",
+  "engineering desk still life",
+  "design to build metaphor",
+  "diagonal composition",
+  "clean vector line art",
+  "precise mechanical detail",
+  "pumps valves and filter housings",
+  "white margin around object",
+  "x-ray view",
+  "catalogue illustration style",
+  "crisp closed contours",
+  "single-colour mask ready"
+ ],
+ "t2i_prompt": "Isometric technical line drawing in black ink on pure white: <CONTENT> drawn as a transparent wireframe standing on the large drawing sheet it was designed on. The sheet is rolled out diagonally, its end curled into a roll, a P&ID schematic and a title block printed on it in finer lines. A triangular scale ruler and a mechanical pencil lie beside it. Uniform hairline strokes, no shading, no fill, no colour, no readable text, generous white margin, crisp contours for a single-colour mask.",
+ "signature_idea": "The equipment stands up out of its own drawing: the plan becomes the skid.",
+ "strengths": [
+  "tells the design service story in one image without words",
+  "links 2D documentation to the physical system, which matters to validation buyers",
+  "line-only, maskable, consistent with the drawing set"
+ ],
+ "weaknesses": [
+  "ruler and pencil are a familiar design cliché",
+  "transparent frame with inner tanks gets busy at small sizes",
+  "illegible schematic squiggles may look fake up close"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Precise and calm, ties straight into the drawing-sheet language, slightly clichéd props."
+}

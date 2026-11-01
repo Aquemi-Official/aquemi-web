@@ -1,0 +1,119 @@
+{
+ "file": "46-concept-grade-lanes.png",
+ "prompted_for": "Minimum water grade by process step (GradeLanes: taps into Potable, PW and WFI lanes)",
+ "section_kind": "process diagram",
+ "style_family": "navy blueprint pipe lanes",
+ "art_direction": [
+  "blueprint schematic",
+  "pipe-and-valve diagram",
+  "dark technical UI",
+  "horizontal lanes",
+  "process map"
+ ],
+ "composition": [
+  "landscape sheet with thin frame on deep navy",
+  "light condensed caps headline top-left with small eyebrow",
+  "three long horizontal pipe lanes stacked with labels at left",
+  "eight numbered step columns across the top",
+  "vertical drop lines from each step to its lane",
+  "title block bottom-right",
+  "image shows two near-identical variants stacked"
+ ],
+ "layout_devices": [
+  "parallel pipe lanes as rows",
+  "vertical tap lines with valve symbols",
+  "numbered step headers on short tick marks",
+  "lane labels with spec values underneath",
+  "sheet frame and title block"
+ ],
+ "palette": [
+  "deep navy ground",
+  "pale grey-white linework and text",
+  "steel-blue inner flow line inside pipes",
+  "muted blue-grey frame lines"
+ ],
+ "typography": [
+  "light condensed uppercase headline",
+  "small caps eyebrow",
+  "regular sans step labels",
+  "mono-style figures for spec limits"
+ ],
+ "rendering": [
+  "flat vector",
+  "fine line schematic",
+  "double-line pipes"
+ ],
+ "line_and_texture": [
+  "1-1.5 px hairlines",
+  "double-wall pipe outlines with thin blue core",
+  "small arrowheads showing flow",
+  "no grid, no texture"
+ ],
+ "motifs": [
+  "pipe",
+  "valve",
+  "tap/drop line",
+  "flow arrow",
+  "title block",
+  "numbered steps"
+ ],
+ "ui_patterns": [
+  "matrix as diagram",
+  "hover step to highlight its lane",
+  "numbered horizontal timeline"
+ ],
+ "motion_implied": [
+  "water flows along each lane left to right",
+  "valves open in step order",
+  "drop lines draw down to their lane"
+ ],
+ "mood": [
+  "precise",
+  "engineered",
+  "calm",
+  "nocturnal"
+ ],
+ "t2i_keywords": [
+  "blueprint process schematic",
+  "deep navy background",
+  "three horizontal pipe lanes",
+  "double-line pipe outlines",
+  "thin steel-blue flow line inside pipes",
+  "small valve symbols",
+  "vertical drop lines from labels to pipes",
+  "numbered step headers across top",
+  "light condensed uppercase headline",
+  "monospace spec figures",
+  "pale grey hairline linework",
+  "flat vector diagram",
+  "1.5 px strokes",
+  "thin sheet border frame",
+  "title block bottom right",
+  "landscape layout",
+  "engineering P&ID aesthetic",
+  "orthogonal routing",
+  "small arrowheads indicating flow",
+  "minimal two-tone palette",
+  "generous negative space",
+  "no gradients no shadows",
+  "clean technical UI mockup",
+  "row labels on the left",
+  "evenly spaced columns",
+  "quiet nocturnal mood"
+ ],
+ "t2i_prompt": "Flat vector blueprint diagram on a deep navy background inside a thin frame with a small title block at the bottom right. Light condensed uppercase headline top-left. Three long horizontal pipes drawn as double pale-grey outlines with a thin steel-blue flow line inside, each labelled at the left with a small monospace spec value. Across the top, numbered step labels drop thin vertical lines down to valve symbols on the pipe each step uses. <CONTENT>. Hairline 1.5 px strokes, orthogonal routing, no shadows, lots of dark empty space.",
+ "signature_idea": "Each process step taps the one water grade it needs, read like a piping drawing.",
+ "strengths": [
+  "turns a lookup table into a glanceable diagram",
+  "pipes and valves speak the buyer's language",
+  "palette almost exactly the brand navy plus steel-blue"
+ ],
+ "weaknesses": [
+  "labels crowd at the top when steps are many",
+  "hard to reflow to phone width",
+  "duplicated variant in the image adds noise",
+  "small spec text low contrast"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy ground, light caps headline, mono figures, one steel-blue accent and square precise linework match the brand book closely."
+}

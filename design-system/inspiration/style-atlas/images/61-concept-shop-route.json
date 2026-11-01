@@ -1,0 +1,121 @@
+{
+ "file": "61-concept-shop-route.png",
+ "prompted_for": "How a system moves through the shop (About: numbered route through the shop floor)",
+ "section_kind": "steps/timeline",
+ "style_family": "isometric blueprint floor plan",
+ "art_direction": [
+  "isometric cutaway building",
+  "dark blueprint",
+  "numbered wayfinding route",
+  "architectural axonometric",
+  "factory tour map"
+ ],
+ "composition": [
+  "portrait navy sheet with large left-aligned title block top-left",
+  "isometric shop floor broken into separate rooms stepping diagonally down the page",
+  "seven numbered zones with big uppercase labels placed beside rooms",
+  "a single dashed steel-blue route winds through all rooms in order",
+  "rooms drift apart like exploded axonometric blocks",
+  "subtle sheet border"
+ ],
+ "layout_devices": [
+  "exploded isometric room blocks",
+  "dashed route arrow connecting rooms",
+  "bracketed two-digit step numbers above labels",
+  "small area/headcount placeholder tags on floors",
+  "tiny italic-ish annotations on equipment (Tanks, Piping, Loading dock)"
+ ],
+ "palette": [
+  "deep navy ground",
+  "pale blue-white hairline line art",
+  "steel-blue route and secondary title line",
+  "pale grey annotations"
+ ],
+ "typography": [
+  "bold-ish uppercase sans title with steel-blue subtitle",
+  "large uppercase sans step labels",
+  "bracketed mono-style numerals [01]",
+  "small sans annotations"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "axonometric cutaway with walls removed",
+  "flat vector, white on dark blueprint"
+ ],
+ "line_and_texture": [
+  "hairline 1 px pale strokes",
+  "dashed 1.5 px route line with arrowheads",
+  "no hatching, flat navy ground",
+  "detailed furniture and equipment at small scale"
+ ],
+ "motifs": [
+  "office desks and monitors",
+  "gas cylinders",
+  "welding bay",
+  "tanks",
+  "test rig piping",
+  "crates and forklift",
+  "service vans",
+  "loading dock"
+ ],
+ "ui_patterns": [
+  "numbered route map",
+  "scroll-driven tour",
+  "zone hotspots"
+ ],
+ "motion_implied": [
+  "dashed route draws from office to service vans as you scroll",
+  "each room brightens as the route enters",
+  "vans drive out at the end"
+ ],
+ "mood": [
+  "capable",
+  "transparent",
+  "orderly",
+  "industrious",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "isometric cutaway floor plan",
+  "exploded axonometric rooms",
+  "dark navy blueprint background",
+  "pale hairline white line drawing",
+  "walls cut away to show interiors",
+  "dashed steel-blue route line with arrows",
+  "numbered stations with bracketed numerals",
+  "large uppercase sans labels",
+  "factory workshop interiors",
+  "small-scale detailed equipment and furniture",
+  "diagonal descending composition",
+  "rooms separated by navy space",
+  "flat vector line art",
+  "no shading",
+  "monochrome light on dark",
+  "left-aligned title block",
+  "architectural axonometric drawing",
+  "wayfinding map",
+  "industrial process tour",
+  "generous negative space",
+  "precise technical illustration",
+  "thin sheet border",
+  "small area annotation tags",
+  "forklift crates and delivery vans",
+  "pale annotation captions"
+ ],
+ "t2i_prompt": "Dark navy blueprint poster of an exploded isometric cutaway building: separate rooms with walls cut away, stepping diagonally down the page, each drawn in pale hairline white line art with small detailed equipment and furniture. A dashed steel-blue route with arrowheads winds through the rooms in order. Beside each room, a bracketed two-digit numeral and large uppercase sans label: <CONTENT>. Left-aligned title block top-left with a steel-blue subtitle line. Flat vector, no shading, generous navy space between rooms, precise architectural axonometric style.",
+ "signature_idea": "The company's shop floor drawn as an exploded isometric blueprint with one dashed route carrying a system from engineering to site service.",
+ "strengths": [
+  "makes the factory and capability tangible for audit-minded buyers",
+  "strong on-brand navy blueprint with a single steel-blue accent",
+  "route device scales to scroll animation",
+  "visually distinctive hero-level picture"
+ ],
+ "weaknesses": [
+  "stainless steps (orbital welding, passivation, PMI) contradict the PP offer",
+  "fine detail becomes illegible at web size",
+  "labels heavier than Geist light",
+  "route crosses itself and doubles back"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy blueprint, hairline precision and one steel-blue accent are on-brand; bold caps labels and off-offer stainless steps need correcting."
+}

@@ -1,0 +1,117 @@
+{
+ "file": "06-art-sys-pw.png",
+ "prompted_for": "Equipment drawing for the sys-pw (Purified Water generation) page: black-on-white source drawing of the PW generation skid, turned into a transparent mask the Illustration component paints with a token",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric black ink line art",
+ "art_direction": [
+  "technical catalogue line art",
+  "isometric equipment",
+  "monochrome ink",
+  "no labels",
+  "mask-ready source"
+ ],
+ "composition": [
+  "single isometric skid filling ~80% of a square frame",
+  "open rectangular frame with horizontal pressure vessels stacked left",
+  "electrodeionization stack and control box on the right",
+  "vertical multistage pump and cartridge filter in the foreground",
+  "base frame with levelling feet"
+ ],
+ "layout_devices": [
+  "single isolated object on white, ready to be masked and recoloured",
+  "base frame anchors the object to an implied floor plane",
+  "no callouts in source; leader-line callouts added later on the site"
+ ],
+ "palette": [
+  "pure white ground",
+  "black ink line work",
+  "no accent (recoloured to navy/limestone/steel-blue by token on site)"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "clean black outlines",
+  "flat, no tone",
+  "CAD-catalogue / technical illustration"
+ ],
+ "line_and_texture": [
+  "uniform ~2 px black strokes",
+  "slightly heavier outer contours",
+  "fine detail lines on fittings and fins",
+  "no hatching, no shading, no grain"
+ ],
+ "motifs": [
+  "horizontal RO pressure vessels",
+  "EDI plate stack",
+  "vertical multistage pump",
+  "cartridge filter housing",
+  "control panel",
+  "pressure gauges",
+  "flow meters",
+  "open steel frame"
+ ],
+ "ui_patterns": [
+  "hero illustration",
+  "callout target for KeyFacts",
+  "page header drawing"
+ ],
+ "motion_implied": [
+  "line work draws itself stroke by stroke",
+  "water travels through the vessels toward the pump",
+  "leader-line callouts extend to key figures",
+  "gauge needles sweep"
+ ],
+ "mood": [
+  "precise",
+  "engineered",
+  "calm",
+  "factual"
+ ],
+ "t2i_keywords": [
+  "black and white technical line drawing",
+  "isometric 3/4 view",
+  "clean uniform ink outlines",
+  "pure white background",
+  "no shading no color no hatching",
+  "industrial equipment illustration",
+  "horizontal RO pressure vessels in an open frame",
+  "electrodeionization plate stack",
+  "vertical multistage pump",
+  "skid-mounted on a steel base frame",
+  "detailed pipework with flanges and elbows",
+  "valves, gauges and fittings",
+  "centered single object",
+  "generous white margin",
+  "vector-like crisp strokes",
+  "engineering catalogue illustration",
+  "coloring-book line weight",
+  "no text no labels",
+  "base frame with levelling feet",
+  "orthographic-feeling isometric projection",
+  "high detail fittings",
+  "slightly heavier outer contour",
+  "clean line mask source",
+  "technical manual style",
+  "even lighting, no shadows",
+  "square 1:1 frame"
+ ],
+ "t2i_prompt": "Black and white technical line drawing of <CONTENT>, isometric three-quarter view, clean uniform black ink outlines on a pure white background, no shading, no colour, no hatching, no text or labels. Skid-mounted on a steel base frame with detailed pipework, flanges, elbows, valves and pressure gauges. Single object centred with generous white margin, crisp vector-like strokes in the style of an engineering equipment catalogue, suitable for converting into a transparent line mask.",
+ "signature_idea": "The PW skid as a crisp catalogue line drawing that the site recolours and annotates with real figures.",
+ "strengths": [
+  "reads as real equipment to engineers",
+  "monochrome source recolours cleanly to any token",
+  "consistent isometric angle across the set gives a family look",
+  "high detail rewards a close look without needing labels",
+  "shows RO + EDI, the actual PW train"
+ ],
+ "weaknesses": [
+  "dense detail goes muddy when masked at small sizes",
+  "AI fittings are plausible but not engineering-accurate",
+  "metal flanges and frame read stainless rather than polypropylene",
+  "busy pipe tangles at the right side"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Line-only art recoloured in limestone/steel-blue fits the precise, calm brand; the stainless look and density are the gaps."
+}

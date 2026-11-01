@@ -1,0 +1,131 @@
+{
+ "file": "87-p9-industries-1-take2.png",
+ "prompted_for": "'Grade, limit and inspector by industry' section on the Industries page (second take); art direction: macro detail, an extreme close-up illustration (weld bead, water surface, membrane layers) with overlaid callouts; table: industry / grades and uses / limit that applies / inspector for six industries",
+ "section_kind": "spec/limits",
+ "style_family": "exploded macro render with table",
+ "art_direction": [
+  "macro detail",
+  "exploded layers of membrane over welded pipe",
+  "dark navy table",
+  "numbered leader fan",
+  "HUD-style micro annotations"
+ ],
+ "composition": [
+  "left 45%: an exploded stack of translucent membrane sheets and a water sheet floating above a diagonal welded metal pipe, cropped off the left and bottom edges",
+  "a faint orbit circle around the render",
+  "six numbered circular badges arc along the render's right edge",
+  "leader lines fan from each badge to its table row on the right",
+  "right 55%: four-column table (industry, grades and uses, limit, inspector) with large caps industry names",
+  "two rows highlighted: one limestone gradient, one steel-blue gradient"
+ ],
+ "layout_devices": [
+  "numbered badge markers 01-06 on an arc",
+  "leader lines fanning from image into table rows",
+  "exploded-view layer stack",
+  "orbit ring behind the render",
+  "tiny mono coordinate and measurement labels scattered around the render",
+  "row highlight bands with gradient fade",
+  "hairline row rules and mono column headers",
+  "footer caption strings"
+ ],
+ "palette": [
+  "deep navy ground",
+  "frosted white-silver translucent membranes",
+  "brushed steel grey pipe and weld",
+  "pale cyan-blue water",
+  "steel-blue numbered badges and highlight band",
+  "limestone gradient highlight band",
+  "white table text",
+  "small red maple leaf near eyebrow (off-palette)"
+ ],
+ "typography": [
+  "large medium-weight condensed-ish caps industry names (heavier than Geist light)",
+  "regular sans table cells",
+  "mono column headers and eyebrow",
+  "tiny mono measurement labels",
+  "mono numerals in badges"
+ ],
+ "rendering": [
+  "photo-real 3D render with studio lighting",
+  "exploded technical view",
+  "flat vector table overlay"
+ ],
+ "line_and_texture": [
+  "thin leader lines and orbit hairline",
+  "brushed metal texture and weld ripple bead",
+  "fine woven mesh on membranes",
+  "water splash texture",
+  "gradient highlight bands"
+ ],
+ "motifs": [
+  "membrane layers",
+  "welded pipe",
+  "water sheet",
+  "numbered markers",
+  "orbit ring",
+  "measurement ticks"
+ ],
+ "ui_patterns": [
+  "comparison table with highlighted rows",
+  "numbered hotspots linked to rows",
+  "row hover state"
+ ],
+ "motion_implied": [
+  "membrane layers separate in an exploded animation",
+  "leader lines draw from badges to rows",
+  "row highlight follows the hovered badge",
+  "water ripples along pipe"
+ ],
+ "mood": [
+  "premium",
+  "technical",
+  "dramatic",
+  "high-tech",
+  "polished"
+ ],
+ "t2i_keywords": [
+  "exploded view of translucent membrane layers",
+  "macro 3D render",
+  "welded metal pipe with visible weld bead",
+  "water sheet flowing over pipe",
+  "frosted white and silver materials",
+  "studio lighting with specular highlights",
+  "deep navy background",
+  "subject cropped off the left edge",
+  "numbered circular badges along an arc",
+  "leader lines fanning into table rows",
+  "faint orbit ring behind subject",
+  "tiny monospace measurement annotations",
+  "four-column comparison table",
+  "large caps row labels",
+  "mono column headers",
+  "hairline row rules",
+  "highlighted row band with gradient",
+  "steel-blue accent badges",
+  "HUD technical overlay",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "premium high-tech mood",
+  "brushed metal texture",
+  "glossy refractive water",
+  "exploded layer stack floating"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on deep navy. Left half: a macro 3D studio render, cropped off the left edge, of an exploded stack of frosted translucent membrane layers and a water sheet floating over a diagonal welded pipe, with a faint orbit ring and tiny monospace measurement annotations. Numbered steel-blue circular badges arc along its edge, each with a leader line fanning to a row of a four-column table on the right holding <CONTENT>, mono column headers, hairline rules, one row highlighted with a steel-blue band.",
+ "signature_idea": "An exploded membrane-over-weld render fans six numbered leaders into a compliance table, one leader per industry row.",
+ "strengths": [
+  "keeps the real four-column table, so comparison works",
+  "numbered leaders physically connect image to data",
+  "navy, mono headers and steel-blue badges fit the palette",
+  "exploded view speaks to engineering audiences"
+ ],
+ "weaknesses": [
+  "photo-real metal pipe reads as stainless steel, not polypropylene, wrong material story",
+  "gradient highlight bands and glow feel glossy and off-system",
+  "heavy caps industry names off Geist light",
+  "scattered tiny fake measurements are noise",
+  "leader mapping is arbitrary (layers do not correspond to industries)",
+  "maple leaf is off-palette"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Navy, mono headers, hairlines and steel-blue accent fit, but the glossy steel render, gradient bands and heavy caps drift from the flat, light, line-art brand and misrepresent PP."
+}

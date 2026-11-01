@@ -1,0 +1,107 @@
+{
+ "file": "24-art-svc-cq.png",
+ "prompted_for": "Black-on-white equipment drawing for the commissioning and qualification (svc-cq) service page, source for art/svc-cq.png and the Illustration component",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric technical line art",
+ "art_direction": [
+  "isometric still life",
+  "technical illustration",
+  "black on white",
+  "object vignette",
+  "documentation and instruments"
+ ],
+ "composition": [
+  "three objects grouped on an isometric plane",
+  "large closed ring binder dominant at back centre",
+  "clipboard checklist to its right, slightly lower",
+  "handheld meter with coiled cable and probe in the foreground left",
+  "generous white margin all around"
+ ],
+ "layout_devices": [
+  "isometric object grouping",
+  "coiled cable leading the eye from meter to probe",
+  "hang tag on the cable as a label carrier"
+ ],
+ "palette": [
+  "pure black line",
+  "pure white ground"
+ ],
+ "typography": [
+  "none; no text in the drawing"
+ ],
+ "rendering": [
+  "clean isometric line drawing",
+  "uniform-weight vector-like strokes",
+  "no fill, no shading"
+ ],
+ "line_and_texture": [
+  "single-weight 2 px black outlines",
+  "parallel lines for binder pages and tab dividers",
+  "no hatching, no texture",
+  "rounded object corners drawn precisely"
+ ],
+ "motifs": [
+  "ring binder with tab dividers",
+  "clipboard checklist with tick boxes",
+  "handheld conductivity or temperature meter",
+  "probe with cable",
+  "blank hang tag"
+ ],
+ "ui_patterns": [
+  "none; standalone illustration mask"
+ ],
+ "motion_implied": [
+  "checklist boxes tick one by one",
+  "cable draws along its coil to the probe",
+  "binder tabs slide out"
+ ],
+ "mood": [
+  "orderly",
+  "procedural",
+  "calm",
+  "precise"
+ ],
+ "t2i_keywords": [
+  "isometric line drawing",
+  "black line art on white background",
+  "uniform stroke weight",
+  "no shading",
+  "no fill",
+  "no text",
+  "technical illustration",
+  "clean vector-like outlines",
+  "still life of objects",
+  "thick ring binder with tab dividers",
+  "clipboard with checklist",
+  "handheld digital meter",
+  "probe on coiled cable",
+  "blank hang tag",
+  "generous white margin",
+  "centered composition",
+  "single viewpoint 30 degree isometric",
+  "precise rounded corners",
+  "minimal detail",
+  "documentation theme",
+  "instrument calibration",
+  "suitable for vector tracing",
+  "high contrast",
+  "plain background",
+  "30 degree isometric projection",
+  "rounded device edges",
+  "documentation still life"
+ ],
+ "t2i_prompt": "Clean isometric line drawing, black lines on a pure white background, uniform stroke weight, no shading, no fill, no text, no people. A small still life of <CONTENT> arranged on one isometric plane: the largest object at the back, a flat document object to one side, and a handheld instrument with a coiled cable and probe in the foreground, a blank hang tag on the cable. Precise rounded corners, minimal interior detail, parallel lines for stacked pages, generous white margin on every side so the drawing can be traced into a single-colour mask.",
+ "signature_idea": "Qualification shown as its tools: the binder, the checklist and the calibrated probe, drawn as one tidy isometric still life.",
+ "strengths": [
+  "reads instantly as documentation plus measurement, the core of C&Q",
+  "single-weight clean lines trace well into a token-coloured mask",
+  "calm, uncluttered, plenty of white space"
+ ],
+ "weaknesses": [
+  "generic office objects; nothing says water or polypropylene",
+  "clipboard and binder are a stock C&Q cliché",
+  "meter and probe are slightly toy-like in proportion"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Precise single-weight line work that recolours to navy or steel-blue and leaves space around it fits the brand; the subject is generic rather than Aquemi-specific."
+}

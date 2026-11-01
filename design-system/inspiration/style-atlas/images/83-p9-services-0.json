@@ -1,0 +1,123 @@
+{
+ "file": "83-p9-services-0.png",
+ "prompted_for": "'Where to start' section on the Services page; art direction: kinetic typography, words as the visual, set huge, cropped, layered, with motion implied; router table: your situation / start with / what to send / what comes back for new system, design approved, skid in build, installed",
+ "section_kind": "router",
+ "style_family": "kinetic outline type staircase",
+ "art_direction": [
+  "kinetic typography",
+  "huge cropped outline words",
+  "rising staircase of cards",
+  "diagonal navy-to-limestone split",
+  "arrows implying motion"
+ ],
+ "composition": [
+  "bold headline and subhead top left on navy",
+  "giant outline word 'START' cropped off the top edge and repeated lower left in layered outlines",
+  "huge solid 'GO' cropped at bottom right",
+  "four cards rise left to right as a staircase toward the top right",
+  "background splits diagonally from navy (left) to limestone (right)",
+  "thin connector lines and arrows route between cards and numbers"
+ ],
+ "layout_devices": [
+  "staircase cards ascending with step number above each",
+  "oversized cropped outline words behind content",
+  "stacked repeated outline word as echo/motion trail",
+  "chevron arrows between steps",
+  "thin elbow lines linking steps down to 'GO'",
+  "repeated step numerals below cards as a second index"
+ ],
+ "palette": [
+  "deep navy left ground",
+  "limestone right ground split on a diagonal",
+  "white and limestone cards",
+  "navy cards in the middle",
+  "steel-blue accent on subhead phrase and card edge strokes",
+  "outline type in navy and white strokes"
+ ],
+ "typography": [
+  "heavy bold grotesk headline with full stop (off-brand weight)",
+  "giant outline/stroked italic-bold display words cropped by the frame",
+  "giant solid bold italic 'GO'",
+  "mono step numerals 01-04",
+  "bold caps card titles",
+  "small sans card body with bold field labels"
+ ],
+ "rendering": [
+  "flat vector typography",
+  "outline strokes",
+  "flat cards with subtle edge highlights"
+ ],
+ "line_and_texture": [
+  "thin outline strokes on display type",
+  "1px connector lines with arrowheads",
+  "diagonal colour split, no grain"
+ ],
+ "motifs": [
+  "start/go words",
+  "staircase",
+  "arrows",
+  "numbered steps"
+ ],
+ "ui_patterns": [
+  "router / situation chooser cards",
+  "stepper",
+  "card with labelled fields (situation, start with, send, back)"
+ ],
+ "motion_implied": [
+  "outline START slides horizontally like a ticker",
+  "cards step up in sequence",
+  "arrows push right",
+  "GO slams in at the end"
+ ],
+ "mood": [
+  "energetic",
+  "bold",
+  "directive",
+  "loud",
+  "dynamic"
+ ],
+ "t2i_keywords": [
+  "kinetic typography web section",
+  "huge cropped outline display words",
+  "layered repeated stroked type as motion echo",
+  "giant solid italic display word cropped at the edge",
+  "rising staircase of cards left to right",
+  "numbered steps 01-04 with arrows",
+  "diagonal split background deep navy and limestone",
+  "thin elbow connector lines with arrowheads",
+  "bold grotesk headline",
+  "steel-blue highlighted phrase",
+  "mono step numerals",
+  "cards with labelled fields",
+  "flat vector",
+  "square corners",
+  "high contrast",
+  "dynamic diagonal composition",
+  "words as the visual",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "implied motion",
+  "outline stroke text behind content",
+  "bold italic display type",
+  "cropped by frame edges",
+  "energetic directive mood",
+  "situation chooser cards",
+  "chevron arrows between steps"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup. Background split on a diagonal from deep navy on the left to limestone on the right. A giant outline display word is cropped off the top edge and repeated in layered outlines at lower left as a motion echo; a huge solid italic word is cropped at the bottom right. Headline top left with one phrase in steel blue. Four square-cornered cards rise left to right as a staircase, each with a mono step number and chevron arrow above and labelled fields for <CONTENT>. Thin elbow connector lines with arrowheads.",
+ "signature_idea": "Huge cropped START and GO words frame a staircase of situation cards, so the router literally reads as a start-to-go climb.",
+ "strengths": [
+  "the staircase makes the four entry points feel like progression",
+  "card fields (situation, send, back) are a clear router pattern",
+  "strong visual memory for a services page"
+ ],
+ "weaknesses": [
+  "bold heavy headline and italic display words are loud, off-brand vs calm Geist light",
+  "outline type behind cards hurts legibility",
+  "invented hype subhead ('We bridge the gap') breaks voice",
+  "overlapping cards and stray duplicate numbers create clutter",
+  "staircase implies a sequence where the situations are actually alternatives"
+ ],
+ "brand_fit": 2,
+ "brand_fit_why": "Uses navy/limestone and a steel-blue accent, but the heavy italic kinetic type and busy layering contradict the calm, precise, light-headline brand."
+}

@@ -1,0 +1,127 @@
+{
+ "file": "38-concept-nav.png",
+ "prompted_for": "Main navigation and the \"On this page\" bar (became NavBar and SectionNav: numbered tabs, the section you are reading marked, page progress)",
+ "section_kind": "nav",
+ "style_family": "limestone drawing-sheet navigation",
+ "art_direction": [
+  "engineering drawing sheet frame",
+  "numbered navigation",
+  "mono technical UI",
+  "page as a drawing",
+  "desktop plus mobile menu"
+ ],
+ "composition": [
+  "top nav bar and a second 'On this page' bar stacked inside a drawing-sheet frame",
+  "large empty page area below, leaving the nav as the only content",
+  "title block in the bottom right of the sheet",
+  "mobile menu panel on the right as its own sheet with the same zone border",
+  "zone numbers 1-3 on top and bottom, letters A-C down the sides"
+ ],
+ "layout_devices": [
+  "small superscript numerals 01-07 above each nav label",
+  "thin vertical dividers between nav items",
+  "CTA button wrapped in corner brackets and square brackets",
+  "active section tab outlined with a dot marker and steel-blue underline",
+  "segmented page-progress bar with percentage and revision letter",
+  "mobile section-jump list with arrow markers on the active row",
+  "title block cells (sheet, revision, number)",
+  "dashed vertical fold line between desktop and mobile"
+ ],
+ "palette": [
+  "warm off-white limestone ground",
+  "deep navy text, rules and frame",
+  "steel-blue filled CTA button and active tab tint",
+  "navy-filled progress segments"
+ ],
+ "typography": [
+  "mono caps for all nav and section labels",
+  "tiny superscript index numerals",
+  "geometric bold sans wordmark with tiny caps tagline",
+  "mono figures for progress and revision"
+ ],
+ "rendering": [
+  "flat vector",
+  "1 px line art",
+  "UI mockup with no device frame"
+ ],
+ "line_and_texture": [
+  "thin navy rules",
+  "drawing border with zone ticks",
+  "dashed divider",
+  "title block hairline grid",
+  "no shadows",
+  "flat paper"
+ ],
+ "motifs": [
+  "drawing sheet border",
+  "zone references",
+  "title block",
+  "revision letter",
+  "numbered index",
+  "faceted water-drop logo mark"
+ ],
+ "ui_patterns": [
+  "top navigation bar",
+  "secondary in-page section nav",
+  "active tab state",
+  "reading progress indicator",
+  "mobile full-screen menu",
+  "close icon",
+  "bracketed CTA button"
+ ],
+ "motion_implied": [
+  "progress bar segments fill as you scroll",
+  "active tab marker slides between sections",
+  "arrow markers nudge on the active row",
+  "corner brackets snap around the CTA on hover"
+ ],
+ "mood": [
+  "systematic",
+  "precise",
+  "orderly",
+  "calm",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "flat UI mockup",
+  "no device frame",
+  "website navigation bar",
+  "in-page section navigation bar",
+  "numbered menu items with superscript index",
+  "mono uppercase labels",
+  "warm off-white paper background",
+  "deep navy hairlines",
+  "single steel-blue accent",
+  "engineering drawing sheet border",
+  "zone numbers and letters along the edges",
+  "title block bottom right",
+  "segmented progress bar with percentage",
+  "active tab with dot marker",
+  "corner bracket button",
+  "thin vertical dividers",
+  "mobile menu panel beside desktop",
+  "arrow markers on active row",
+  "dashed fold line",
+  "flat vector",
+  "square corners",
+  "no shadows",
+  "large empty negative space",
+  "technical documentation aesthetic",
+  "crisp vector edges"
+ ],
+ "t2i_prompt": "Flat UI mockup, no device frame, of <CONTENT> navigation set inside an engineering drawing sheet. Warm off-white limestone background, deep navy 1 px rules, one steel-blue accent for the call-to-action button and the active state. A top bar with mono uppercase labels each carrying a small superscript index number, thin vertical dividers, a button framed by corner brackets; beneath it a secondary bar with numbered section tabs, the active one outlined with a dot, and a segmented progress bar. Sheet border with zone numbers and letters, title block bottom right, a mobile menu panel beside it. Square corners, no shadows, generous empty space.",
+ "signature_idea": "Navigation as the header of a drawing sheet: numbered tabs, a revision-and-progress readout, and the page itself framed by zone references.",
+ "strengths": [
+  "numbering creates a shared index system across nav, sections and footer",
+  "progress readout is a genuinely useful long-page aid",
+  "clear active state and mobile section jump",
+  "on palette with square corners"
+ ],
+ "weaknesses": [
+  "all-mono caps nav is dense and less legible than sentence-case sans",
+  "bracketed CTA and zone letters risk gimmick when repeated",
+  "full-sheet frame on every page could feel heavy"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy/limestone with one steel-blue accent, square corners and mono figures are on brand; uppercase mono everywhere is heavier than the Geist light voice."
+}

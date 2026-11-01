@@ -1,0 +1,118 @@
+{
+ "file": "53-concept-hold-points.png",
+ "prompted_for": "FAT steps with the client's hold points (Steps with hold stamps)",
+ "section_kind": "steps/timeline",
+ "style_family": "pipe-route step sheet",
+ "art_direction": [
+  "pipe route timeline",
+  "engineering drawing sheet",
+  "rubber stamp accents",
+  "serpentine flow",
+  "flat line art"
+ ],
+ "composition": [
+  "two variants: a landscape limestone sheet on navy, and a full-bleed limestone version",
+  "uppercase mono headline with side note top-left",
+  "seven numbered steps in a serpentine two-row path",
+  "two steps framed in large double-outline boxes with HOLD stamps and signature lines",
+  "title block top-right"
+ ],
+ "layout_devices": [
+  "pipe with elbows routing between steps",
+  "valves between steps as gates",
+  "framed hold-point cards with sign lines",
+  "tilted HOLD stamps",
+  "large mono step numbers with vertical rule",
+  "dot grid patch in corner"
+ ],
+ "palette": [
+  "limestone paper sheet",
+  "deep navy page ground",
+  "navy line and type",
+  "steel-blue numbers and stamp fills"
+ ],
+ "typography": [
+  "uppercase monospace headline",
+  "large steel-blue mono numerals",
+  "uppercase mono step titles",
+  "small mono descriptions"
+ ],
+ "rendering": [
+  "flat vector",
+  "double-line pipe drawing",
+  "stamp graphics"
+ ],
+ "line_and_texture": [
+  "1.5 px double-line pipes",
+  "double-frame boxes",
+  "dot grid patch",
+  "small flow arrows"
+ ],
+ "motifs": [
+  "pipe elbow",
+  "valve",
+  "stamp",
+  "signature line",
+  "title block",
+  "numbered step"
+ ],
+ "ui_patterns": [
+  "process timeline",
+  "milestone gates",
+  "stepper"
+ ],
+ "motion_implied": [
+  "water travels the pipe step to step",
+  "valves close at holds until stamp lands",
+  "stamp thumps onto card"
+ ],
+ "mood": [
+  "procedural",
+  "controlled",
+  "methodical",
+  "tangible"
+ ],
+ "t2i_keywords": [
+  "serpentine pipe route timeline",
+  "numbered process steps",
+  "double-line pipes with elbows",
+  "inline valve symbols",
+  "framed hold-point cards",
+  "tilted rubber stamp labels",
+  "signature line",
+  "limestone paper sheet on deep navy",
+  "large steel-blue monospace numerals",
+  "uppercase monospace headings",
+  "thin vertical rule beside numbers",
+  "flat vector line art",
+  "1.5 px strokes",
+  "small flow arrows",
+  "dot grid patch",
+  "title block corner",
+  "engineering drawing sheet",
+  "navy and cream palette",
+  "steel-blue accents",
+  "landscape layout",
+  "orderly left-to-right then return",
+  "no shadows",
+  "return path arrow",
+  "signature box",
+  "valve as gate between steps",
+  "generous margins"
+ ],
+ "t2i_prompt": "Flat vector engineering sheet on limestone paper, optionally set on deep navy. Uppercase monospace headline top-left and a small title block top-right. Numbered steps with large steel-blue mono numerals follow a serpentine double-line pipe with elbows and inline valve symbols, left to right then back. Selected steps sit inside heavier double-frame boxes with a tilted steel-blue stamp and a signature line beneath. Small arrows show flow; a dot grid patch fills a corner. <CONTENT>. Hairline navy strokes, no shadows.",
+ "signature_idea": "The test sequence is a pipe, and the client's hold points are closed valves that need a signature stamp.",
+ "strengths": [
+  "makes client control visible",
+  "pipe metaphor is ownable for a water company",
+  "steel-blue numerals give rhythm"
+ ],
+ "weaknesses": [
+  "stamp text garbled",
+  "serpentine path breaks on narrow screens",
+  "mono caps everywhere feel heavy",
+  "boxes vary in size awkwardly"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy, limestone, steel-blue and pipe route language are on brand; all-caps mono headline and stamp clutter cost calm."
+}

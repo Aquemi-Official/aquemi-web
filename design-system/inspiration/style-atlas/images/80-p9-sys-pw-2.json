@@ -1,0 +1,118 @@
+{
+ "file": "80-p9-sys-pw-2.png",
+ "prompted_for": "'Skid design parameters' section on the Purified Water (PW) generation page; art direction: Swiss International Typographic Style, huge numerals, strict grid, bold colour blocks of navy and limestone; parameters: capacity, membrane temperature, sanitization, materials and dead legs, joints, budget range, high-pressure RO section",
+ "section_kind": "spec/limits",
+ "style_family": "Swiss grid colour-block tiles",
+ "art_direction": [
+  "Swiss International Typographic Style",
+  "strict modular grid",
+  "bold navy and limestone colour blocks",
+  "huge numerals",
+  "one blueprint image tile"
+ ],
+ "composition": [
+  "light large headline top left on navy block",
+  "a 4-column by 3-row grid of tiles framed by a thin steel-blue outline",
+  "capacity tile spans two columns at top left as the lead figure",
+  "one tile filled with a steel-blue isometric blueprint of skids, bleeding across a 1x2 area",
+  "remaining tiles alternate navy and limestone, with some empty colour blocks as pure rhythm",
+  "nav bar sits in the top right navy block"
+ ],
+ "layout_devices": [
+  "huge slash numerals 01/ to 07/ anchoring each tile",
+  "checkerboard of navy and limestone blocks including empty filler blocks",
+  "hairline rule under the value separating the basis note",
+  "one image tile breaking the text grid",
+  "thin outline frame around the whole tile set"
+ ],
+ "palette": [
+  "deep navy blocks and headline ground",
+  "limestone and paper-white tiles",
+  "steel-blue blueprint tile with white line drawing",
+  "thin steel-blue frame line",
+  "small red maple-leaf accent in logo (off-palette)"
+ ],
+ "typography": [
+  "light grotesk headline in sentence case (Geist-light-like)",
+  "very large light numerals with slash",
+  "mono for parameter values (1,500 – 15,000 L/h, 316L SS / 16 BAR)",
+  "small caps tile labels",
+  "small sans basis notes"
+ ],
+ "rendering": [
+  "flat vector colour blocks",
+  "white isometric line drawing on steel-blue fill (blueprint)",
+  "no shadows"
+ ],
+ "line_and_texture": [
+  "thin 1px frame and hairline rules",
+  "fine isometric equipment lines in the blueprint tile",
+  "flat fills, no grain"
+ ],
+ "motifs": [
+  "isometric skids with frames, tanks and membrane housings",
+  "numbered tiles",
+  "spec values with units"
+ ],
+ "ui_patterns": [
+  "bento grid of stat tiles",
+  "key-figure tiles with label, value, basis",
+  "top navigation bar"
+ ],
+ "motion_implied": [
+  "tiles flip or fade in by number order",
+  "big numerals count up",
+  "blueprint lines draw in"
+ ],
+ "mood": [
+  "rigorous",
+  "ordered",
+  "confident",
+  "technical",
+  "modern"
+ ],
+ "t2i_keywords": [
+  "Swiss International Typographic Style web section",
+  "strict modular grid of tiles",
+  "bold colour blocks deep navy and limestone",
+  "checkerboard rhythm with empty colour blocks",
+  "huge light numerals with slash 01/",
+  "one wide lead stat tile",
+  "monospace parameter values with units",
+  "small caps tile labels",
+  "hairline rule under each value",
+  "one image tile with white isometric blueprint on steel blue",
+  "isometric equipment line drawing",
+  "thin outline frame around grid",
+  "light-weight sans-serif headline sentence case",
+  "flat vector, no shadows",
+  "square corners",
+  "bento grid data tiles",
+  "generous internal padding",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "precise engineering spec sheet",
+  "high contrast navy and off-white",
+  "minimal steel-blue accent",
+  "large lead tile spanning two columns",
+  "poster-like grid rhythm",
+  "short basis note under each value",
+  "rigorous ordered mood"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup in Swiss International Typographic Style. Light-weight sans-serif headline on a deep navy block at top left. Below, a strict modular grid of square-cornered tiles in a checkerboard of deep navy and limestone, a few left empty as colour rhythm. Each tile carries a huge light numeral with a slash, a small-caps label, a large monospace value with unit and a hairline rule above a short note for <CONTENT>. One tile is filled with a white isometric blueprint line drawing on steel blue. Thin steel-blue frame around the grid. Flat, no shadows.",
+ "signature_idea": "Design parameters set as a Swiss checkerboard of numbered tiles, with one blueprint tile breaking the grid like a photo in a poster.",
+ "strengths": [
+  "each parameter is a scannable tile: label, figure, basis",
+  "very close to the brand: navy/limestone, light headline, mono values, square corners",
+  "blueprint tile gives equipment context without clutter",
+  "maps cleanly to a token-only CSS grid component"
+ ],
+ "weaknesses": [
+  "empty filler blocks waste space and may read as missing content on smaller screens",
+  "checkerboard of contrasting tiles is busy for seven items",
+  "invented specific values (budget, 316L) would be mistaken for real figures",
+  "logo red maple leaf and nav are off-system"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy and limestone blocks, one steel-blue accent, light Geist-like headline, mono figures, square corners and blueprint isometric line art are the brand book almost verbatim."
+}

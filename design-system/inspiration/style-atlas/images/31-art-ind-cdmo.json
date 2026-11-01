@@ -1,0 +1,106 @@
+{
+ "file": "31-art-ind-cdmo.png",
+ "prompted_for": "Black-on-white equipment drawing for the CDMO industry page (ind-cdmo), source for art/ind-cdmo.png and the Illustration component",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric architectural line art",
+ "art_direction": [
+  "isometric cutaway room",
+  "architectural axonometric",
+  "black on white",
+  "roofless plan view",
+  "modular suites"
+ ],
+ "composition": [
+  "roofless rectangular building block seen from above at isometric angle",
+  "split into two suites by a central wall",
+  "one small process vessel per suite fed by an overhead pipe drop with valve",
+  "doors with windows on outer walls and between rooms, pass-through hatch on partition",
+  "object centred with white margin"
+ ],
+ "layout_devices": [
+  "roofless cutaway (dollhouse view)",
+  "repeated identical suites showing multi-client capacity",
+  "overhead pipe header running along each room to a drop"
+ ],
+ "palette": [
+  "black line",
+  "white ground"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric axonometric line drawing",
+  "uniform outlines",
+  "no fill or shading"
+ ],
+ "line_and_texture": [
+  "thin 1-1.5 px black strokes",
+  "double-line walls showing wall thickness",
+  "vertical panel seams on walls",
+  "no hatching, large empty floor areas"
+ ],
+ "motifs": [
+  "cleanroom suites",
+  "jacketed mixing vessel on legs",
+  "overhead PW header with point-of-use drop and valve",
+  "doors with vision panels",
+  "pass-through hatch"
+ ],
+ "ui_patterns": [
+  "none; standalone illustration mask"
+ ],
+ "motion_implied": [
+  "water travels along the overhead header into each suite in turn",
+  "valves open as the flow arrives"
+ ],
+ "mood": [
+  "orderly",
+  "spacious",
+  "modular",
+  "calm",
+  "architectural"
+ ],
+ "t2i_keywords": [
+  "isometric axonometric line drawing",
+  "roofless cutaway building",
+  "dollhouse view from above",
+  "black line art on white background",
+  "uniform thin strokes",
+  "no shading",
+  "no fill",
+  "no text",
+  "two identical cleanroom suites",
+  "double-line walls",
+  "modular wall panel seams",
+  "doors with vision panels",
+  "pass-through hatch",
+  "small process vessel on legs in each room",
+  "overhead pipe header with drop and valve",
+  "large empty floor area",
+  "architectural illustration",
+  "generous white margin",
+  "minimal detail",
+  "suitable for vector tracing",
+  "high contrast",
+  "plain background",
+  "overhead pipe drops",
+  "multiple identical rooms",
+  "high viewpoint isometric"
+ ],
+ "t2i_prompt": "Clean isometric axonometric line drawing, black lines on a pure white background, thin uniform strokes, no shading, no fill, no text, no people. A roofless building block seen from above like a dollhouse cutaway, divided into identical rooms for <CONTENT>, double-line walls with modular panel seams, doors with small vision panels and a pass-through hatch. In each room one small piece of equipment fed by an overhead pipe header that drops down to a valve. Plenty of empty floor, generous white margin, suitable for tracing into a single-colour mask.",
+ "signature_idea": "A CDMO as a roofless set of identical suites, each fed by the same overhead water header, showing one supply serving many clients.",
+ "strengths": [
+  "calm and spacious, with lots of empty area",
+  "repeated suites communicate multi-product, multi-client work",
+  "pipe header shows Aquemi's water reaching the process",
+  "simple enough to stay legible at small sizes"
+ ],
+ "weaknesses": [
+  "equipment is tiny, so the water system itself barely registers",
+  "could read as any office or lab floor plan",
+  "pipe drops are small and easy to miss"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Spare, precise axonometric lines and lots of space suit navy-on-limestone masks and the calm brand; the water story is understated."
+}

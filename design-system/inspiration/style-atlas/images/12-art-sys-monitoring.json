@@ -1,0 +1,110 @@
+{
+ "file": "12-art-sys-monitoring.png",
+ "prompted_for": "Equipment line drawing for the Monitoring and controls system page (sys-monitoring): black-on-white source for the Illustration component mask",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric technical line art",
+ "art_direction": [
+  "technical illustration",
+  "isometric equipment drawing",
+  "black-and-white line art",
+  "engineering catalogue",
+  "monochrome mask source"
+ ],
+ "composition": [
+  "single wall-mounted instrument panel shown in 3/4 isometric view",
+  "object fills the square frame with modest white margin",
+  "dense detail concentrated in upper right (controller cabinet) balanced by pipe run along the bottom",
+  "no ground plane, no background"
+ ],
+ "layout_devices": [
+  "cable tray running along the top edge as a framing element",
+  "sample tubing routes linking sensors to the main pipe",
+  "pipe header with valves forming a base line"
+ ],
+ "palette": [
+  "pure black line",
+  "pure white ground"
+ ],
+ "typography": [
+  "none (no text in image)"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "flat vector-like ink lines",
+  "no shading or hatching"
+ ],
+ "line_and_texture": [
+  "uniform thin strokes around 1.5-2 px",
+  "slightly heavier outer contours",
+  "no grids, no texture, no shadows",
+  "fine detail on clamps, bolts, hinges and flex conduit ribs"
+ ],
+ "motifs": [
+  "control cabinet with HMI screen",
+  "transmitter heads (conductivity / TOC sensors)",
+  "flow meter / rotameter",
+  "sample valves",
+  "sanitary tri-clamp pipe with diaphragm valves",
+  "wire cable tray",
+  "flexible conduit"
+ ],
+ "ui_patterns": [
+  "could sit as a hero or section illustration masked in a token colour",
+  "hotspot candidates on each sensor and screen"
+ ],
+ "motion_implied": [
+  "line draw-on of pipes then instruments",
+  "screen glow or reading ticking on the HMI",
+  "sample water travelling up tubing to sensors"
+ ],
+ "mood": [
+  "precise",
+  "orderly",
+  "technical",
+  "quiet"
+ ],
+ "t2i_keywords": [
+  "isometric technical line drawing",
+  "black ink on pure white",
+  "uniform hairline strokes",
+  "wall-mounted instrument panel",
+  "control cabinet with display screen",
+  "sensor transmitters on stems",
+  "sanitary pipe header with clamps and diaphragm valves",
+  "small sample tubing routed between devices",
+  "wire mesh cable tray along top",
+  "flexible ribbed conduit",
+  "industrial equipment catalogue illustration",
+  "3/4 isometric view from above",
+  "no shading",
+  "no hatching",
+  "no fill",
+  "no colour",
+  "no text or labels",
+  "clean vector line art",
+  "precise mechanical detail",
+  "bolts hinges and latches drawn",
+  "centred object with white margin",
+  "engineering illustration style",
+  "even line weight",
+  "transparent-ready mask artwork",
+  "pharmaceutical water instrumentation",
+  "orderly cable routing",
+  "single object, no background",
+  "crisp closed contours"
+ ],
+ "t2i_prompt": "Isometric technical line drawing of <CONTENT>, black ink on a pure white background, uniform hairline strokes with slightly heavier outer contours, no shading, no hatching, no fill, no colour and no text. Three-quarter isometric view from above, the object centred with a clean white margin. Precise mechanical detail: clamps, bolts, hinges, cable glands, flexible ribbed conduit, small tubing routed neatly between devices. Industrial equipment catalogue illustration, crisp closed contours suitable for converting into a single-colour mask.",
+ "signature_idea": "A monitoring skid drawn as one quiet ink isometric where every sensor sits on a tubing route back to the main pipe.",
+ "strengths": [
+  "clean single-weight line art converts cleanly to a token-coloured mask",
+  "credible pharma water instrumentation detail (sensors, sample valves, HMI)",
+  "isometric angle matches the rest of the drawing set"
+ ],
+ "weaknesses": [
+  "tri-clamp sanitary fittings read as stainless, not polypropylene",
+  "dense upper-right cabinet cluster can turn to noise at small sizes",
+  "cable tray is visually heavy for what it says"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Precise, calm, single-colour line art paints well in navy or steel-blue, though fittings suggest stainless rather than PP."
+}

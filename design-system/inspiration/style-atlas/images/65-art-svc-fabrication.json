@@ -1,0 +1,112 @@
+{
+ "file": "65-art-svc-fabrication.png",
+ "prompted_for": "Replacement fabrication drawing for the polypropylene PW package: butt-fusion machine (art/svc-fabrication.png), replacing the stainless orbital weld head",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric technical line drawing",
+ "art_direction": [
+  "single-object hero drawing",
+  "isometric equipment illustration",
+  "black ink on white",
+  "manual-grade detail",
+  "process tool close-up"
+ ],
+ "composition": [
+  "square white frame",
+  "butt-fusion machine on a base frame runs diagonally across the centre",
+  "large pipe ends exit both sides, cropped by the frame on the right",
+  "heater plate with handle and loose fitting placed lower right as satellites",
+  "hydraulic hoses curve to the heater unit",
+  "object fills most of the frame with modest white margin"
+ ],
+ "layout_devices": [
+  "single isolated vignette",
+  "satellite parts arranged around the main object",
+  "edge-cropped pipe for scale"
+ ],
+ "palette": [
+  "pure white ground",
+  "black ink line work",
+  "no fills or accent"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "technical illustration as in equipment manuals",
+  "outline with interior detail lines"
+ ],
+ "line_and_texture": [
+  "uniform 2 px black outlines",
+  "finer 1 px detail on bolts, rods and clamps",
+  "no hatching or shading",
+  "clean white ground"
+ ],
+ "motifs": [
+  "butt-fusion welding machine",
+  "clamp jaws",
+  "guide rods",
+  "plastic pipe",
+  "heater plate",
+  "pipe fitting",
+  "hydraulic hoses",
+  "base frame"
+ ],
+ "ui_patterns": [
+  "service/feature card illustration",
+  "spot art"
+ ],
+ "motion_implied": [
+  "clamps close on the pipe ends",
+  "heater plate slides in and out",
+  "pipe ends meet and fuse"
+ ],
+ "mood": [
+  "precise",
+  "craftsmanlike",
+  "credible",
+  "neutral"
+ ],
+ "t2i_keywords": [
+  "isometric technical line drawing",
+  "black ink on pure white",
+  "single industrial machine",
+  "equipment manual illustration",
+  "uniform 2 px outlines",
+  "fine 1 px detail lines on bolts and rods",
+  "no shading no colour no hatching",
+  "diagonal composition",
+  "large cylindrical pipes",
+  "clamp jaws on guide rods",
+  "loose satellite parts around main object",
+  "pipe cropped at frame edge",
+  "clean vector outline",
+  "high mechanical detail",
+  "consistent isometric angle",
+  "isolated on white",
+  "precise engineering illustration",
+  "square format",
+  "no labels",
+  "minimal monochrome",
+  "hydraulic hoses",
+  "heater plate with handle",
+  "modest white margin",
+  "mechanical close-up",
+  "credible craftsmanship mood"
+ ],
+ "t2i_prompt": "Isometric technical line drawing of <CONTENT> on a pure white background, square format. The main machine runs diagonally across the centre on a simple base frame, with large cylindrical parts exiting both sides and one end cropped by the frame edge; two or three loose related parts sit as satellites in the lower right. Black ink only, uniform 2 px outlines with finer 1 px detail lines on bolts, rods and fittings, no shading, no hatching, no colour, no labels. Equipment-manual precision, clean and calm.",
+ "signature_idea": "The polypropylene fabrication method itself, a butt-fusion machine joining pipe, drawn as a manual-grade isometric portrait.",
+ "strengths": [
+  "shows the real PP joining method, aligning image with the offer",
+  "believable mechanical detail engineers will recognise",
+  "consistent with the isometric spot family",
+  "masks cleanly to navy or steel-blue"
+ ],
+ "weaknesses": [
+  "black on white needs recolouring to be on-brand",
+  "dense detail may muddy at card size",
+  "pipe cropping slightly unbalances the frame"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Precise square line art and an on-offer subject fit; it reaches the navy/limestone/steel-blue palette only after masking."
+}

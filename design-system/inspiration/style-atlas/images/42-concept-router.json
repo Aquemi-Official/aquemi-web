@@ -1,0 +1,130 @@
+{
+ "file": "42-concept-router.png",
+ "prompted_for": "A situation router instead of a 4-column table (became Router: situations on the left, one route through water, system and first step)",
+ "section_kind": "router",
+ "style_family": "navy blueprint pipe route",
+ "art_direction": [
+  "interactive selector diagram",
+  "blueprint navy",
+  "pipe route linking stations",
+  "schematic equipment line art",
+  "dark UI"
+ ],
+ "composition": [
+  "two near-identical variants stacked vertically, each a full section on deep navy",
+  "small mono eyebrow '03 // SITUATION ROUTER' above a large bold sentence-case question",
+  "left column: five numbered situation rows, one selected and highlighted",
+  "right: three framed stations in a row (target water grade, recommended system, first step), numbered 1-3",
+  "a single thin pipe line leaves the selected row and routes through the stations to the action"
+ ],
+ "layout_devices": [
+  "numbered list rows with large faded numerals",
+  "selected row filled with steel-blue tint plus a 'SELECTED' pill and a node dot",
+  "pipe route line with valve symbols, a pump/flow symbol and arrowheads connecting stations",
+  "station frames with small mono 'STATION 01' labels",
+  "small schematic drawing of tanks and columns inside the system station",
+  "limit chips in light boxes (CFU, TOC)",
+  "filled steel-blue action box at the route end",
+  "tiny title-block style annotations at frame corners"
+ ],
+ "palette": [
+  "deep navy ground",
+  "slightly lighter navy panel fills",
+  "off-white headline and text",
+  "steel-blue selection fill, route line and action box",
+  "pale chip backgrounds with dark text",
+  "faded grey-blue numerals"
+ ],
+ "typography": [
+  "bold geometric sans sentence-case headline",
+  "mono caps eyebrow with double slash",
+  "caps sans row labels",
+  "large thin faded numerals",
+  "small mono station labels and annotations",
+  "bold sans grade name in station"
+ ],
+ "rendering": [
+  "flat vector UI",
+  "1 px schematic line art",
+  "P&ID-style symbols"
+ ],
+ "line_and_texture": [
+  "thin light-blue strokes",
+  "hairline row dividers",
+  "faint dot/annotation noise in corners",
+  "no shadows",
+  "flat dark ground"
+ ],
+ "motifs": [
+  "pipe route",
+  "valve",
+  "pump symbol",
+  "water drop / tank icon",
+  "distillation column and tank sketch",
+  "station frame"
+ ],
+ "ui_patterns": [
+  "selectable list / radio rows",
+  "selected pill badge",
+  "connected step diagram",
+  "result panel",
+  "CTA box",
+  "top nav with underline active state"
+ ],
+ "motion_implied": [
+  "water travels the pipe from the chosen row to the action",
+  "stations swap content when a new situation is selected",
+  "valve symbols open in turn",
+  "selected row highlight slides"
+ ],
+ "mood": [
+  "guided",
+  "technical",
+  "confident",
+  "focused",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "flat UI mockup",
+  "no device frame",
+  "dark navy interface",
+  "situation selector diagram",
+  "numbered list rows on the left",
+  "selected row with steel-blue highlight and pill badge",
+  "thin pipe route linking stations",
+  "P&ID valve and pump symbols",
+  "arrowheads on route",
+  "three framed stations in a row",
+  "small schematic line drawing of tanks and columns",
+  "limit value chips",
+  "filled steel-blue call-to-action box",
+  "large bold sentence-case headline",
+  "mono uppercase eyebrow label",
+  "faded large numerals",
+  "1 px light-blue line art",
+  "blueprint aesthetic",
+  "off-white text",
+  "square corners",
+  "flat vector",
+  "no shadows",
+  "generous spacing",
+  "engineering decision tool",
+  "selected node dot on route"
+ ],
+ "t2i_prompt": "Flat UI mockup, no device frame, of an interactive section for <CONTENT> on a deep navy ground. A mono uppercase eyebrow and a large bold sentence-case question. Left: numbered option rows with large faded numerals, one selected with a steel-blue tint, a small pill badge and a node dot. From it a single thin pipe route with valve and pump symbols and arrowheads runs through three framed stations labelled with small mono numbers: a result with limit chips, a small schematic line drawing of tanks and columns, and a filled steel-blue action box. 1 px light-blue lines, off-white text, square corners, no shadows.",
+ "signature_idea": "Pick your situation and one pipe carries you through the water grade, the system and the first step.",
+ "strengths": [
+  "turns a table into a guided decision, ideal for buyers who start from different places",
+  "pipe-route metaphor is native to Aquemi's product",
+  "clear selected state and single call to action",
+  "navy plus steel-blue accent on palette"
+ ],
+ "weaknesses": [
+  "bold geometric headline is heavier than Geist light",
+  "station frames carry illegible annotation noise",
+  "two near-duplicate variants make the image redundant",
+  "small schematic inside station is too tiny to read"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy ground, single steel-blue accent, square corners and mono labels fit; the bold headline and corner noise drift from calm, light Geist."
+}

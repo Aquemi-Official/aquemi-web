@@ -1,0 +1,124 @@
+{
+ "file": "59-concept-standards-map.png",
+ "prompted_for": "Which standard governs which part of the plant (compliance standards as a plant map)",
+ "section_kind": "standards",
+ "style_family": "navy blueprint plant map",
+ "art_direction": [
+  "dark blueprint",
+  "annotated plant schematic",
+  "zone labels with standard codes",
+  "dotted connector annotations",
+  "architectural plan feel"
+ ],
+ "composition": [
+  "portrait navy sheet with thin border and breadcrumb",
+  "centred light uppercase headline and subtitle",
+  "plant schematic fills the middle, split into zones (generation, storage, pure steam, controls, fabrication)",
+  "labels with standard codes placed in the margins beside each zone",
+  "faint dashed construction grid dividing the sheet",
+  "loose two-tier repetition of the plant"
+ ],
+ "layout_devices": [
+  "dotted leader lines from labels to zones",
+  "zone outlines as thin rectangles",
+  "dashed construction grid with crosshair markers",
+  "one steel-blue highlighted zone block",
+  "breadcrumb at top",
+  "document icons beside qualification labels"
+ ],
+ "palette": [
+  "deep navy ground",
+  "white/pale grey hairline line art",
+  "pale steel-blue highlight block and subtle accent label",
+  "light grey dashed grid"
+ ],
+ "typography": [
+  "light wide uppercase sans headline",
+  "uppercase sans zone labels",
+  "regular sans standard codes in small lists",
+  "tiny caps breadcrumb"
+ ],
+ "rendering": [
+  "flat vector line art",
+  "orthographic and semi-isometric equipment drawings",
+  "blueprint negative (light on dark)"
+ ],
+ "line_and_texture": [
+  "hairline 1 px white strokes",
+  "dotted and dashed connectors",
+  "faint dashed grid",
+  "crosshair registration marks",
+  "no texture, flat ground"
+ ],
+ "motifs": [
+  "RO and EDI train",
+  "storage tank with loop",
+  "pure steam generator",
+  "control panels and monitors",
+  "welding torches on pipe",
+  "clipboard checklist",
+  "magnifier on document"
+ ],
+ "ui_patterns": [
+  "interactive hotspot map",
+  "zone hover reveals standards",
+  "annotated diagram",
+  "breadcrumb"
+ ],
+ "motion_implied": [
+  "zones highlight steel-blue on hover",
+  "leader lines draw from zone to label",
+  "water circulates the storage loop"
+ ],
+ "mood": [
+  "authoritative",
+  "precise",
+  "calm",
+  "systematic"
+ ],
+ "t2i_keywords": [
+  "dark navy blueprint",
+  "white hairline line drawing",
+  "annotated plant schematic",
+  "zones outlined with thin rectangles",
+  "dotted leader lines to labels",
+  "labels in margins",
+  "faint dashed construction grid",
+  "crosshair markers",
+  "light wide uppercase headline",
+  "small uppercase sans labels",
+  "one pale steel-blue highlighted zone",
+  "flat vector technical illustration",
+  "semi-isometric equipment",
+  "process train of vessels and membranes",
+  "storage tank with recirculation loop",
+  "control panel cabinets",
+  "generous navy negative space",
+  "architectural plan aesthetic",
+  "monochrome light on dark",
+  "thin outer border",
+  "breadcrumb header",
+  "interactive map feel",
+  "precise engineering drawing",
+  "no shading",
+  "standard codes listed under labels",
+  "document checklist icons",
+  "dotted zone boundaries"
+ ],
+ "t2i_prompt": "Dark navy blueprint sheet with a thin border and a faint dashed construction grid with crosshair markers. A light wide uppercase headline centred at the top. Below, an annotated plant schematic in white hairline strokes, divided into outlined zones; each zone connects by a dotted leader line to a margin label in small uppercase sans with a short list beneath: <CONTENT>. One zone filled with a pale steel-blue block as the active highlight. Flat vector, semi-isometric equipment, no shading, generous navy negative space, precise architectural-plan feel.",
+ "signature_idea": "Standards stop being a list and become labels pinned onto the part of the plant they govern.",
+ "strengths": [
+  "answers a real QA question (which standard where) at a glance",
+  "on-brand navy with one steel-blue accent",
+  "maps naturally to an interactive hotspot component",
+  "light headline close to Geist light"
+ ],
+ "weaknesses": [
+  "plant drawn twice and qualification label duplicated",
+  "labels small and hard to read",
+  "includes stainless welding torches off-offer for PP systems",
+  "lower half becomes crowded"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy ground, hairline art, single steel-blue highlight and light caps headline are on-brand; duplication and crowding reduce precision."
+}

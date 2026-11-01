@@ -1,0 +1,119 @@
+{
+ "file": "52-concept-option-modules.png",
+ "prompted_for": "Options shown on the equipment they add to (Options with spot icons, later modules on the skid)",
+ "section_kind": "options",
+ "style_family": "navy blueprint skid isometric",
+ "art_direction": [
+  "blueprint schematic",
+  "isometric equipment drawing",
+  "modular option boxes",
+  "P&ID routing",
+  "drawing zone grid"
+ ],
+ "composition": [
+  "full navy blueprint sheet with zone references on the borders",
+  "centred uppercase mono headline and subline",
+  "isometric skid render top-centre",
+  "six option boxes around a central flow diagram",
+  "small skid repeated in several boxes",
+  "dashed and solid pipe routes linking boxes"
+ ],
+ "layout_devices": [
+  "option boxes with code brackets and [+] toggles",
+  "dotted leader routes from skid to modules",
+  "category eyebrows above boxes (pre-treatment, redundancy, polishing)",
+  "zone labels A1/B2 on sheet edges",
+  "central flow schematic of tanks and valves",
+  "OR choice between two components"
+ ],
+ "palette": [
+  "deep navy ground",
+  "pale grey-white line drawings",
+  "faint steel-blue route lines",
+  "light grey box frames"
+ ],
+ "typography": [
+  "uppercase monospace headline",
+  "uppercase mono box titles with codes",
+  "small mono labels"
+ ],
+ "rendering": [
+  "isometric line render",
+  "flat schematic symbols",
+  "white-line blueprint"
+ ],
+ "line_and_texture": [
+  "1 px hairlines",
+  "dashed and dotted routes",
+  "faint center crosshair lines",
+  "no texture"
+ ],
+ "motifs": [
+  "RO skid",
+  "pressure vessel",
+  "pump",
+  "valve",
+  "softener tanks",
+  "UV reactor",
+  "loop"
+ ],
+ "ui_patterns": [
+  "toggleable option cards",
+  "configurator",
+  "hotspot linking to equipment"
+ ],
+ "motion_implied": [
+  "routes draw from skid to each module",
+  "toggling an option adds it to the skid",
+  "flow traces through the schematic"
+ ],
+ "mood": [
+  "engineered",
+  "complex",
+  "capable",
+  "nocturnal"
+ ],
+ "t2i_keywords": [
+  "navy blueprint engineering sheet",
+  "isometric line drawing of process skid",
+  "white hairline linework on deep navy",
+  "modular option boxes around a central schematic",
+  "P&ID symbols pumps valves tanks",
+  "dashed and dotted pipe routes",
+  "zone reference letters on sheet border",
+  "uppercase monospace headline",
+  "bracketed codes and plus toggles",
+  "small category eyebrow labels",
+  "flat vector schematic",
+  "1 px strokes",
+  "faint steel-blue route lines",
+  "repeated mini equipment render",
+  "orthogonal pipe routing",
+  "technical configurator layout",
+  "dense engineering detail",
+  "no shading",
+  "portrait poster",
+  "drawing set aesthetic",
+  "monochrome blueprint palette",
+  "subtle crosshair centre lines",
+  "square-cornered option panels",
+  "centred title",
+  "valve and pump symbols",
+  "nocturnal technical mood"
+ ],
+ "t2i_prompt": "Flat white-line blueprint on deep navy with zone reference letters around a thin border. Centred uppercase monospace headline. At top-centre an isometric hairline drawing of <CONTENT> equipment. Around a central process schematic of tanks, pumps and valves, several square-cornered boxes with uppercase mono titles, bracketed codes and small plus toggles, each holding a simple symbol drawing. Dashed and solid orthogonal pipe routes, some faint steel-blue, link the boxes to the equipment. 1 px strokes, no shading, precise drawing-set look.",
+ "signature_idea": "Options appear as modules plugged into the actual skid drawing by pipe routes.",
+ "strengths": [
+  "ties each option to real hardware",
+  "blueprint isometric suits engineers",
+  "zone grid and codes feel authentic"
+ ],
+ "weaknesses": [
+  "very cluttered with crossing routes",
+  "too much text and repeated skid images",
+  "illegible small labels",
+  "hard to adapt for phone"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Navy blueprint and square boxes fit, but clutter and all-mono caps work against calm, space-as-material."
+}

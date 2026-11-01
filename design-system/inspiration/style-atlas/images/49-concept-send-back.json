@@ -1,0 +1,117 @@
+{
+ "file": "49-concept-send-back.png",
+ "prompted_for": "What you send, what comes back (Closing exchange: send, turnaround, documents back)",
+ "section_kind": "closing",
+ "style_family": "limestone exchange ledger",
+ "art_direction": [
+  "two-column exchange",
+  "document sheet",
+  "flat editorial",
+  "input-output diagram",
+  "low-ink"
+ ],
+ "composition": [
+  "portrait limestone sheet with thin frame",
+  "bold headline top-left",
+  "two tall bordered columns left and right with a large outlined arrow between",
+  "numbered rows on the left, document thumbnails on the right",
+  "single filled button centred below",
+  "title block bottom-right"
+ ],
+ "layout_devices": [
+  "big outline arrow carrying a bracketed turnaround tag",
+  "numbered inputs column with vertical gutter rule",
+  "outputs column with small document thumbnails",
+  "single centred CTA",
+  "sheet title block"
+ ],
+ "palette": [
+  "warm limestone paper ground",
+  "deep navy text and rules",
+  "steel-blue filled tag and button",
+  "light grey document thumbnail strokes"
+ ],
+ "typography": [
+  "bold grotesk headline",
+  "regular sans list text",
+  "mono numerals 01-04",
+  "mono bracketed placeholder in tag"
+ ],
+ "rendering": [
+  "flat vector",
+  "hairline line art",
+  "miniature document illustrations"
+ ],
+ "line_and_texture": [
+  "1 px rules",
+  "outline arrow 1.5 px",
+  "tiny line drawings of chart, flow diagram and table inside page icons",
+  "no texture"
+ ],
+ "motifs": [
+  "document page with folded corner",
+  "arrow",
+  "bracketed placeholder",
+  "title block",
+  "block flow diagram thumbnail"
+ ],
+ "ui_patterns": [
+  "input-output two-column list",
+  "primary CTA",
+  "placeholder tag"
+ ],
+ "motion_implied": [
+  "items slide from left column through the arrow",
+  "documents stack in on the right",
+  "arrow pulses once"
+ ],
+ "mood": [
+  "straightforward",
+  "honest",
+  "quiet",
+  "practical"
+ ],
+ "t2i_keywords": [
+  "two-column input output diagram",
+  "warm limestone paper background",
+  "deep navy linework and text",
+  "large outlined arrow between columns",
+  "small steel-blue tag on the arrow",
+  "numbered rows in left column",
+  "document page thumbnails with folded corners",
+  "miniature line drawings of charts and tables",
+  "single filled steel-blue button centred",
+  "bold grotesk headline",
+  "monospace numerals",
+  "thin sheet border",
+  "title block bottom right",
+  "flat vector",
+  "hairline 1 px strokes",
+  "no shadows",
+  "generous whitespace",
+  "portrait layout",
+  "engineering paperwork aesthetic",
+  "simple exchange metaphor",
+  "minimal palette",
+  "B2B closing section",
+  "vertical gutter rule beside numbers",
+  "bracketed placeholder tag",
+  "evenly spaced rows",
+  "matte flat colour"
+ ],
+ "t2i_prompt": "Flat vector closing section on warm limestone paper with a thin navy border and a small title block bottom-right. Bold navy headline top-left. Two tall bordered columns: the left lists numbered inputs with mono numerals and a vertical gutter rule; the right lists outputs, each with a small dog-eared document thumbnail holding a miniature chart, flow diagram or table. Between them a large outlined arrow carries a small steel-blue tag. One filled steel-blue button centred below. <CONTENT>. Hairline strokes, no shadows, lots of air.",
+ "signature_idea": "The enquiry as a fair trade: four inputs in, four engineering documents back, with the turnaround on the arrow.",
+ "strengths": [
+  "makes the ask concrete and low-risk",
+  "document thumbnails preview the deliverables",
+  "single CTA keeps focus"
+ ],
+ "weaknesses": [
+  "columns have large empty cells",
+  "arrow is clip-art heavy",
+  "bold headline off brand",
+  "very static"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone, navy, one steel-blue accent and square frames fit; heavy headline and clunky arrow lose some precision."
+}

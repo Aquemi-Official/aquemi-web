@@ -1,0 +1,128 @@
+{
+ "file": "62-concept-contact-routes.png",
+ "prompted_for": "Three ways in, what happens next, service map (Contact: situation routes with next steps)",
+ "section_kind": "router",
+ "style_family": "blueprint folder-tab cards",
+ "art_direction": [
+  "blueprint grid ground",
+  "file-folder tab cards",
+  "numbered next-step strips",
+  "service territory map",
+  "mono form UI"
+ ],
+ "composition": [
+  "portrait navy page with faint construction grid and double-rule title block at top",
+  "three stacked route cards: cream, navy-outlined, cream",
+  "middle urgent route inverted to navy with a large phone bar",
+  "bottom row splits into a booking card left and a hatched region map right",
+  "dotted connector line on the left margin links the three routes",
+  "each card ends in a 1-2-3 next-step strip with arrows"
+ ],
+ "layout_devices": [
+  "folder tabs labelled Route 1/2/3",
+  "circled step numbers on a hairline with arrows between bracketed steps",
+  "dashed drop-zone upload box",
+  "dotted left-margin connector linking cards",
+  "hatched service-region map with star pin",
+  "corner note 'How it works / response time'",
+  "title block with double rule"
+ ],
+ "palette": [
+  "deep navy ground with lighter navy grid lines",
+  "warm cream cards",
+  "steel-blue tab, button and urgent headline",
+  "navy text on cream, pale text on navy",
+  "slightly lighter navy panel for the phone bar"
+ ],
+ "typography": [
+  "monospaced throughout",
+  "large mono uppercase card titles",
+  "light sans wordmark in title block",
+  "bracketed mono step labels",
+  "mono form labels and placeholders"
+ ],
+ "rendering": [
+  "flat UI mockup",
+  "line map with diagonal hatching",
+  "no depth or shadows"
+ ],
+ "line_and_texture": [
+  "hairline grid lines across navy ground",
+  "dashed and dotted connectors",
+  "diagonal hatch fill on map regions",
+  "thin rules on cards, square-ish corners"
+ ],
+ "motifs": [
+  "folder tab",
+  "upload arrow",
+  "phone",
+  "map of Canada",
+  "star location pin",
+  "numbered step chain"
+ ],
+ "ui_patterns": [
+  "router cards",
+  "file upload drop zone",
+  "select dropdown",
+  "text area",
+  "primary button",
+  "process step indicator",
+  "location map",
+  "urgent call bar"
+ ],
+ "motion_implied": [
+  "dotted connector draws down linking routes",
+  "step dots fill 1-2-3 when a card is focused",
+  "service regions hatch in on the map"
+ ],
+ "mood": [
+  "organised",
+  "responsive",
+  "clear",
+  "dependable"
+ ],
+ "t2i_keywords": [
+  "deep navy blueprint grid background",
+  "stacked route cards with file-folder tabs",
+  "warm cream cards on navy",
+  "one inverted navy urgent card",
+  "monospaced UI typography",
+  "numbered step strip with circled numerals and arrows",
+  "dashed drop-zone upload box",
+  "dotted connector line in left margin",
+  "steel-blue accent tab and button",
+  "hatched region map with star pin",
+  "double-rule title block",
+  "faint construction grid lines",
+  "flat UI mockup",
+  "square card corners",
+  "thin hairline rules",
+  "bracketed placeholder text",
+  "form fields dropdown and text area",
+  "contact router layout",
+  "calm technical documentation look",
+  "two-column bottom row",
+  "inverted card for urgency",
+  "wide call-to-action bar",
+  "small corner notes on cards",
+  "diagonal hatch fill",
+  "dotted margin connector",
+  "bracketed step labels"
+ ],
+ "t2i_prompt": "Contact page mockup on a deep navy background with faint blueprint construction grid lines and a double-rule title block at the top. Three stacked route cards with file-folder tabs labelled Route 1, 2, 3: warm cream cards, the middle one inverted to navy with a steel-blue headline and a wide call bar. Each card holds a short form or action and ends with a 1-2-3 step strip of circled numerals and arrows: <CONTENT>. A dotted connector runs down the left margin linking the routes. Bottom right: hatched line map with a star pin. Monospaced type, flat, square corners.",
+ "signature_idea": "Contact as three filed routes by situation, each showing exactly what happens next in three numbered steps.",
+ "strengths": [
+  "routes by buyer situation, not by department",
+  "next-step strips set expectations and response times",
+  "urgent route clearly differentiated by inversion",
+  "folder tab metaphor fits engineering paperwork"
+ ],
+ "weaknesses": [
+  "all-mono typography heavy and off-brand",
+  "busy grid background competes with cards",
+  "map adds weight without much decision value",
+  "slightly rounded card corners and many borders"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy/limestone with a steel-blue accent and calm stepped structure fit; monospace everywhere instead of Geist light headlines and a busy grid ground reduce fit."
+}

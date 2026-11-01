@@ -1,0 +1,120 @@
+{
+ "file": "04-concept-options.png",
+ "prompted_for": "Configuration options (became OptionList: configurator tiles)",
+ "section_kind": "options",
+ "style_family": "navy P&ID configurator tiles",
+ "art_direction": [
+  "configurator UI on a piping schematic",
+  "mono technical type",
+  "toggle switches",
+  "serpentine pipe",
+  "desktop plus phone pair"
+ ],
+ "composition": [
+  "desktop artboard left, phone artboard right",
+  "title block with brand, large caps title and mono subline",
+  "eight option tiles in a 3/2/2-style serpentine grid",
+  "pipe threads tiles together including a long diagonal",
+  "phone: tiles staggered in a zigzag column on the pipe"
+ ],
+ "layout_devices": [
+  "toggle switch in each tile's top-right",
+  "'selectable' corner tags",
+  "pipe route linking tiles with arrow connectors",
+  "inline valve symbols",
+  "background grid with dot matrix",
+  "IN entry tab"
+ ],
+ "palette": [
+  "near-black navy ground",
+  "off-white mono text and outlines",
+  "steel-blue pipe and 'on' toggles",
+  "grey 'off' toggles",
+  "faint blue-grey grid"
+ ],
+ "typography": [
+  "monospace caps titles",
+  "large mono numerals",
+  "mono sentence-case descriptions",
+  "tiny mono caps corner tags"
+ ],
+ "rendering": [
+  "flat vector UI",
+  "orthographic schematic",
+  "thin outline cards"
+ ],
+ "line_and_texture": [
+  "1 px outlines",
+  "glowing double-line pipe",
+  "thin grid with dot fill",
+  "no grain"
+ ],
+ "motifs": [
+  "toggle switch",
+  "pipe",
+  "valve",
+  "corner tags",
+  "numbered tiles"
+ ],
+ "ui_patterns": [
+  "configurator tiles",
+  "toggle switches",
+  "selectable cards",
+  "responsive desktop/phone pair"
+ ],
+ "motion_implied": [
+  "toggles flip on and the pipe segment to that tile lights up",
+  "flow travels between selected options",
+  "tile tags change from selectable to selected"
+ ],
+ "mood": [
+  "interactive",
+  "technical",
+  "methodical",
+  "dense",
+  "cool"
+ ],
+ "t2i_keywords": [
+  "configurator web UI",
+  "near-black navy background",
+  "monospace capital letters",
+  "numbered option tiles 01 to 08",
+  "toggle switch on each tile",
+  "steel-blue active toggles",
+  "serpentine tile grid",
+  "double-line steel-blue pipe with glow",
+  "arrow connectors between tiles",
+  "valve symbols on pipe",
+  "small corner tags",
+  "engineering grid with dot matrix",
+  "thin outline rectangles",
+  "square corners",
+  "desktop and mobile artboards",
+  "zigzag mobile column",
+  "flat vector UI mockup",
+  "one cool accent color",
+  "technical product configurator",
+  "calm dark interface",
+  "one-line description per tile",
+  "grey inactive toggles",
+  "title block top-left",
+  "IN entry tab",
+  "selectable status tags"
+ ],
+ "t2i_prompt": "Dark navy web section presenting <CONTENT> as a configurator: numbered outline tiles in monospace caps, each with a one-line description and a small toggle switch (steel blue when on, grey when off) and tiny corner tags, arranged in a serpentine grid and threaded together by one glowing double-line steel-blue pipe with arrow connectors and valve symbols. Faint engineering grid with dot matrix. Title block top-left in mono caps. Phone artboard beside it with tiles staggered in a zigzag column. Flat vector UI, square corners, one cool accent.",
+ "signature_idea": "Options are switches on the actual water train, so choosing one visibly adds it to the pipe.",
+ "strengths": [
+  "makes options feel like engineered modules, not upsells",
+  "toggle state is instantly readable",
+  "reuses the diagram language so pages feel related",
+  "phone layout considered"
+ ],
+ "weaknesses": [
+  "toggles imply a live configurator that the site does not have",
+  "all-mono caps and garbled tags add noise",
+  "diagonal pipe crossing is arbitrary",
+  "dense for a 'calm' brand"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Palette, square tiles and single accent fit; toggles promise interaction the site cannot honour and mono-everything replaces Geist light headlines."
+}

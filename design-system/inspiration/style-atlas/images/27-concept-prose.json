@@ -1,0 +1,117 @@
+{
+ "file": "27-concept-prose.png",
+ "prompted_for": "Explanatory text without a wall of text (original of concept-o-prose; became Prose: pulled-out lead, narrow column, margin notes)",
+ "section_kind": "other",
+ "style_family": "navy blueprint editorial grid",
+ "art_direction": [
+  "blueprint graph paper",
+  "editorial text layout",
+  "annotated drawing",
+  "dimensioned layout",
+  "desktop and mobile pair"
+ ],
+ "composition": [
+  "large framed sheet divided by a coarse module grid over a fine graph-paper grid",
+  "logo and section label in the top row",
+  "small caps kicker above a big two-line headline crossing grid columns",
+  "two short text blocks offset into different columns and rows (staggered)",
+  "annotations along the right edge connected by leader lines",
+  "mobile column stacks kicker, headline, numbered dividers and paragraphs"
+ ],
+ "layout_devices": [
+  "leader lines with dot ends linking text blocks to bracketed numbered margin notes '[01]'",
+  "dimension lines over desktop and mobile frames with px widths",
+  "vertical dimension bar at the left edge",
+  "tiny row-height labels in grid cells",
+  "numbered horizontal rules on mobile separating paragraphs"
+ ],
+ "palette": [
+  "deep navy blueprint ground",
+  "faint lighter-navy graph-paper grid",
+  "steel-blue module lines and annotation text",
+  "warm limestone off-white headline and body text"
+ ],
+ "typography": [
+  "condensed bold caps headline, tall and tight",
+  "smaller condensed caps kicker",
+  "regular condensed sans body at large size",
+  "monospace bracketed annotation labels and section index"
+ ],
+ "rendering": [
+  "flat vector UI mockup",
+  "blueprint drafting",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "fine graph-paper grid at low contrast",
+  "1 px steel-blue module lines",
+  "hairline leader lines with small dot terminals and angled kinks",
+  "dimension lines with end ticks"
+ ],
+ "motifs": [
+  "blueprint graph paper",
+  "dimension lines",
+  "numbered annotation tags",
+  "drawing module grid"
+ ],
+ "ui_patterns": [
+  "eyebrow / kicker",
+  "pull-quote headline",
+  "margin notes",
+  "responsive desktop and mobile layout"
+ ],
+ "motion_implied": [
+  "leader lines draw from text to margin note",
+  "paragraphs fade in cell by cell",
+  "grid fades up before the type"
+ ],
+ "mood": [
+  "technical",
+  "confident",
+  "editorial",
+  "measured"
+ ],
+ "t2i_keywords": [
+  "flat UI mockup",
+  "deep navy blueprint background",
+  "fine graph paper grid",
+  "coarse module grid lines in steel blue",
+  "large condensed bold caps headline",
+  "warm off-white text",
+  "short paragraphs offset in staggered grid cells",
+  "leader lines with dot ends",
+  "bracketed numbered margin notes",
+  "monospace annotation labels",
+  "dimension lines with pixel widths",
+  "drafting annotations",
+  "technical editorial layout",
+  "asymmetric text placement",
+  "square corners",
+  "low contrast grid texture",
+  "steel-blue accent",
+  "desktop and mobile frames side by side",
+  "numbered dividers on mobile",
+  "no images",
+  "no device frame",
+  "no people",
+  "architectural drawing feel",
+  "type as the only content",
+  "section index label",
+  "row height annotations in grid cells"
+ ],
+ "t2i_prompt": "Flat desktop UI mockup with a narrow mobile view beside it, no device frame, no people. Deep navy blueprint background with a faint graph-paper grid and coarser steel-blue module lines, dimension lines above each frame. Small logo and monospace section index top-left. A small caps kicker over a large condensed off-white headline spanning several grid columns. Two short paragraphs of <CONTENT> sit in different staggered grid cells, each linked by a thin leader line with dot ends to a bracketed numbered note at the margin. Mobile stacks headline and paragraphs separated by numbered hairline rules.",
+ "signature_idea": "Body text laid out on a drafting grid like annotations on a drawing, each paragraph tied to a numbered margin note by a leader line.",
+ "strengths": [
+  "breaks prose into short staggered blocks, avoiding a wall of text",
+  "margin notes give a scan path for engineers",
+  "blueprint grid ties text sections to the drawing language of the site"
+ ],
+ "weaknesses": [
+  "graph-paper grid behind body text lowers legibility",
+  "heavy condensed caps headline and hype copy are off-voice",
+  "leader lines connect text to labels that repeat it, so decorative",
+  "blueprint cliché if used on every prose section"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Navy and steel-blue drafting grid, mono annotations and square corners fit, but busy grid texture, bold condensed caps and crowded type ignore the light headlines and calm space."
+}

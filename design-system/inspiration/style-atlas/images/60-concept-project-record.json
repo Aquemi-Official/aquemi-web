@@ -1,0 +1,123 @@
+{
+ "file": "60-concept-project-record.png",
+ "prompted_for": "A project told as an engineering record (case study: drawing, large outcomes, order-to-release timeline)",
+ "section_kind": "case study",
+ "style_family": "typewriter engineering record",
+ "art_direction": [
+  "document-as-page",
+  "oversized mono figures",
+  "engineering record sheet",
+  "placeholder brackets",
+  "small inset schematic"
+ ],
+ "composition": [
+  "cream document card centred on a deep navy page with rounded top bar",
+  "navy nav strip with breadcrumb on top",
+  "left-aligned header block with ID and problem/solution lines",
+  "small schematic inset top-right",
+  "four huge stacked outcome figures down the left with captions",
+  "horizontal milestone timeline across the bottom",
+  "double-rule inner frame"
+ ],
+ "layout_devices": [
+  "oversized bracketed outcome numbers",
+  "caption under each figure",
+  "inset diagram with cloud callouts ('what changed', 'new')",
+  "six-dot horizontal timeline with labels",
+  "double-line document frame",
+  "steel-blue rule under the nav"
+ ],
+ "palette": [
+  "deep navy page ground and nav bar",
+  "warm cream document sheet",
+  "black/near-navy mono text",
+  "steel-blue dots, rule and diagram fills"
+ ],
+ "typography": [
+  "monospaced throughout",
+  "very large mono figures with units",
+  "small mono caps captions",
+  "mono uppercase headings",
+  "square-bracket placeholders"
+ ],
+ "rendering": [
+  "flat UI mockup",
+  "small schematic line drawing with blue fills",
+  "document styling"
+ ],
+ "line_and_texture": [
+  "thin double rule frame",
+  "1 px schematic lines",
+  "flat paper, no grain",
+  "small dot markers on a hairline timeline"
+ ],
+ "motifs": [
+  "engineering record sheet",
+  "placeholder brackets",
+  "process schematic",
+  "milestone dots",
+  "units (µS/cm, L/h, days, weeks)"
+ ],
+ "ui_patterns": [
+  "breadcrumb",
+  "stat stack",
+  "milestone timeline",
+  "case study card",
+  "inset figure"
+ ],
+ "motion_implied": [
+  "figures count up",
+  "timeline dots fill left to right",
+  "changed areas in the schematic pulse in steel-blue"
+ ],
+ "mood": [
+  "factual",
+  "sober",
+  "documentary",
+  "confident"
+ ],
+ "t2i_keywords": [
+  "engineering record document page",
+  "cream sheet on deep navy background",
+  "oversized monospaced figures with units",
+  "stacked large numerals down the left",
+  "small mono uppercase captions",
+  "typewriter monospace typography",
+  "square bracket placeholders",
+  "small inset schematic diagram top-right",
+  "callout clouds on diagram",
+  "horizontal milestone timeline with dots",
+  "thin double-rule frame",
+  "steel-blue accent dots",
+  "navy nav bar with breadcrumb",
+  "flat UI mockup",
+  "left-aligned layout",
+  "generous whitespace",
+  "data-led case study",
+  "minimal colour",
+  "sober documentary style",
+  "clean document design",
+  "deep navy page surround",
+  "units beside figures",
+  "bracketed project ID header",
+  "inset process diagram with blue fills",
+  "steel-blue rule under header",
+  "double-rule document border"
+ ],
+ "t2i_prompt": "Case study page mockup as an engineering record: a warm cream document sheet with a thin double-rule frame, centred on a deep navy background under a navy nav bar with breadcrumb. Left-aligned monospaced header block, a small schematic line drawing with steel-blue fills inset top-right. Down the left, four oversized monospaced figures with units, each with a small uppercase mono caption: <CONTENT>. Across the bottom, a hairline horizontal milestone timeline with six steel-blue dots and short labels. Flat, sober, generous whitespace, data-led.",
+ "signature_idea": "A case study reads like a signed engineering record, with outcomes as huge measured numbers and a dot timeline from order to water release.",
+ "strengths": [
+  "oversized figures make outcomes unmissable",
+  "strong match to 'name the number with its unit' voice",
+  "timeline is simple and reusable",
+  "honest placeholder brackets fit the drafting stage"
+ ],
+ "weaknesses": [
+  "all-monospace text is heavy and typewriter-like",
+  "rounded card corners off-brand",
+  "inset diagram too small to read",
+  "large empty right column under the diagram"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy/limestone, steel-blue dots and big mono figures match Geist Mono figures; using mono for headlines and body instead of Geist light, plus rounded corners, misses."
+}

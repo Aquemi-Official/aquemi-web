@@ -1,0 +1,118 @@
+{
+ "file": "47-concept-plan-tiers.png",
+ "prompted_for": "Service plans: response, scope and price (PlanTiers: plans side by side on a label column, one action per plan)",
+ "section_kind": "options",
+ "style_family": "limestone calibration-sheet table",
+ "art_direction": [
+  "comparison table",
+  "calibration certificate",
+  "flat editorial",
+  "recommended column highlight",
+  "document sheet"
+ ],
+ "composition": [
+  "portrait sheet with thin outer frame",
+  "bold headline top-left",
+  "label column on left with numbered rows 01-08",
+  "four plan columns side by side",
+  "one column wrapped in rounded steel-blue outline with tinted fill and tag",
+  "fits-when row and action buttons along the bottom",
+  "title block bottom-right"
+ ],
+ "layout_devices": [
+  "recommended column outlined and raised with a tab label",
+  "numbered row labels with units in brackets",
+  "horizontal rules between rows",
+  "one button per column",
+  "sheet number title block"
+ ],
+ "palette": [
+  "warm limestone paper ground",
+  "deep navy text and rules",
+  "steel-blue outline and filled primary button",
+  "pale peach tint inside recommended column"
+ ],
+ "typography": [
+  "bold grotesk headline",
+  "regular sans for values",
+  "mono numerals for row numbers",
+  "small sans for row labels"
+ ],
+ "rendering": [
+  "flat vector UI mockup",
+  "hairline table rules"
+ ],
+ "line_and_texture": [
+  "thin 1 px row rules",
+  "heavier 3 px outline on recommended column",
+  "rounded corners on highlight",
+  "flat paper with no grain"
+ ],
+ "motifs": [
+  "title block",
+  "numbered rows",
+  "recommended tag",
+  "bracketed units"
+ ],
+ "ui_patterns": [
+  "pricing table",
+  "recommended plan highlight",
+  "per-column CTA buttons",
+  "fits-when summary row"
+ ],
+ "motion_implied": [
+  "recommended column lifts in after the table draws",
+  "rows reveal top to bottom"
+ ],
+ "mood": [
+  "orderly",
+  "transactional",
+  "plain",
+  "trustworthy"
+ ],
+ "t2i_keywords": [
+  "comparison table UI mockup",
+  "service plan pricing table",
+  "warm limestone paper background",
+  "deep navy text and rules",
+  "one column highlighted with steel-blue outline",
+  "pale tinted fill in recommended column",
+  "small recommended tab label",
+  "numbered row labels on the left",
+  "four columns side by side",
+  "thin horizontal row rules",
+  "outlined buttons under each column",
+  "one filled steel-blue primary button",
+  "bold grotesk headline",
+  "monospace row numbers",
+  "flat vector",
+  "no shadows",
+  "thin sheet border",
+  "title block bottom right",
+  "portrait layout",
+  "calibration certificate feel",
+  "generous whitespace",
+  "clean grid alignment",
+  "minimal palette",
+  "B2B website section",
+  "bracketed unit labels",
+  "matte flat colour",
+  "evenly spaced columns",
+  "high legibility"
+ ],
+ "t2i_prompt": "Flat vector website section styled as a calibration sheet on warm limestone paper with a thin navy border and a small title block at the bottom right. Bold navy headline top-left. A comparison table: a left label column with mono row numbers and bracketed units, then several plan columns separated by thin horizontal rules. One column is outlined in steel-blue with a faint warm tint and a small tab label on top. Under each column a short fits-when note and an outlined button, the highlighted one filled steel-blue. <CONTENT>. No shadows, crisp alignment, generous margins.",
+ "signature_idea": "A pricing table dressed as a calibration sheet, with one plan outlined like a marked reading.",
+ "strengths": [
+  "easy scan of response times and scope",
+  "single action per plan",
+  "sheet frame ties to the drawing-set idea"
+ ],
+ "weaknesses": [
+  "generic SaaS pricing-table pattern",
+  "rounded highlight and peach tint break square-corner and palette rules",
+  "bold headline off brand",
+  "invented upgrade-ladder values feel salesy"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Limestone and navy fit, but rounded corners, a warm tint and SaaS pricing tropes drift from precise and calm."
+}

@@ -1,0 +1,119 @@
+{
+ "file": "55-concept-parameter-callouts.png",
+ "prompted_for": "Design parameters on a general arrangement drawing (Spec as callouts on the page's equipment drawing)",
+ "section_kind": "equipment drawing",
+ "style_family": "navy blueprint GA callouts",
+ "art_direction": [
+  "general arrangement drawing",
+  "isometric line art",
+  "leader-line callouts",
+  "blueprint",
+  "spec sheet"
+ ],
+ "composition": [
+  "navy page with logo bar and breadcrumb",
+  "light condensed caps headline and subline top-left",
+  "large isometric skid drawing filling the centre",
+  "parameter labels around all edges",
+  "leader lines to exact components",
+  "detail magnifier box top-right"
+ ],
+ "layout_devices": [
+  "leader-line callouts with dot ends",
+  "detail inset box with zoom lines",
+  "dimension lines along base",
+  "breadcrumb top bar",
+  "label-value stacks in caps"
+ ],
+ "palette": [
+  "deep navy ground",
+  "pale grey-white linework",
+  "steel-blue highlighted capacity figure",
+  "white label text"
+ ],
+ "typography": [
+  "light uppercase condensed headline",
+  "uppercase sans labels",
+  "mono-like figures",
+  "small breadcrumb"
+ ],
+ "rendering": [
+  "isometric line render",
+  "detailed technical illustration",
+  "white-line on navy"
+ ],
+ "line_and_texture": [
+  "1-1.5 px lines",
+  "fine detail on pumps, membranes, heat exchanger",
+  "dimension arrows",
+  "no fill or shading"
+ ],
+ "motifs": [
+  "RO skid",
+  "membrane housings",
+  "pump",
+  "control cabinet",
+  "plate heat exchanger",
+  "magnified weld detail"
+ ],
+ "ui_patterns": [
+  "hotspots on equipment",
+  "spec callouts",
+  "breadcrumb",
+  "zoom inset"
+ ],
+ "motion_implied": [
+  "drawing traces in line by line",
+  "callouts extend and labels type in",
+  "detail inset zooms"
+ ],
+ "mood": [
+  "engineered",
+  "authoritative",
+  "detailed",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "general arrangement drawing",
+  "isometric line drawing of industrial process skid",
+  "white hairline linework on deep navy",
+  "leader-line callouts to components",
+  "spec labels around the edges",
+  "detail magnifier inset box",
+  "dimension lines at base",
+  "light uppercase condensed headline",
+  "uppercase sans labels",
+  "steel-blue highlighted figure",
+  "blueprint aesthetic",
+  "no shading line art",
+  "1 px strokes",
+  "pumps membranes control cabinet",
+  "breadcrumb top bar",
+  "technical spec sheet",
+  "portrait layout",
+  "generous dark space",
+  "precise engineering illustration",
+  "two-tone navy and white",
+  "flat vector",
+  "high detail",
+  "dot-ended leader lines",
+  "plate heat exchanger detail",
+  "label-value stacks",
+  "calm authoritative mood"
+ ],
+ "t2i_prompt": "Precise white hairline isometric drawing of <CONTENT> equipment centred on a deep navy page, no shading, 1 px strokes, with fine detail on pumps, housings, pipework and a control cabinet. Around the edges, uppercase parameter labels with values connect to exact components by thin leader lines with dot ends. A square detail inset at top-right magnifies one joint with zoom lines. Dimension lines along the base. Light uppercase condensed headline top-left with one figure in steel-blue. Calm blueprint spec-sheet look.",
+ "signature_idea": "Every design parameter is pinned by a leader line to the part of the skid it describes.",
+ "strengths": [
+  "strong credibility with engineers",
+  "ties numbers to physical hardware",
+  "palette and line weight close to brand"
+ ],
+ "weaknesses": [
+  "stainless pipework contradicts a polypropylene maker",
+  "dense labels compete with drawing",
+  "hard to read on phone",
+  "all-caps labels reduce calm"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy, white hairlines, a single steel-blue figure and light caps headline fit; label density and all-caps reduce calm."
+}

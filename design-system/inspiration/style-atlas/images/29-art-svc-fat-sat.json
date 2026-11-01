@@ -1,0 +1,106 @@
+{
+ "file": "29-art-svc-fat-sat.png",
+ "prompted_for": "Black-on-white equipment drawing for the FAT and SAT testing service page (svc-fat-sat), source for art/svc-fat-sat.png and the Illustration component",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric technical line art",
+ "art_direction": [
+  "isometric equipment drawing",
+  "test setup scene",
+  "technical illustration",
+  "black on white",
+  "machine plus instrument cart"
+ ],
+ "composition": [
+  "water treatment skid on a frame base at left, large and detailed",
+  "test cart with laptop, gauges and tools at right, smaller",
+  "two flexible hoses arc from the skid to the cart, linking them",
+  "wide white margin, horizontal emphasis"
+ ],
+ "layout_devices": [
+  "flexible hose loop connecting two objects as a visual link",
+  "skid vs test rig pairing"
+ ],
+ "palette": [
+  "black line",
+  "white ground"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "uniform outlines",
+  "no fill or shading"
+ ],
+ "line_and_texture": [
+  "1.5-2 px black strokes",
+  "dense pipe and valve detail on the skid",
+  "keyboard as small grid",
+  "no hatching"
+ ],
+ "motifs": [
+  "RO or filtration skid with pressure vessels",
+  "vertical multistage pump",
+  "control box",
+  "handwheel valves and flanges",
+  "flexible test hoses",
+  "trolley with pressure gauges, flowmeter and laptop",
+  "wrenches on the cart shelf"
+ ],
+ "ui_patterns": [
+  "none; standalone illustration mask"
+ ],
+ "motion_implied": [
+  "water flows along the hoses from skid to test cart",
+  "gauge needles rise",
+  "laptop screen shows a pass"
+ ],
+ "mood": [
+  "methodical",
+  "technical",
+  "busy",
+  "engineered"
+ ],
+ "t2i_keywords": [
+  "isometric line drawing",
+  "black line art on white background",
+  "uniform stroke weight",
+  "no shading",
+  "no fill",
+  "no text",
+  "technical equipment illustration",
+  "water treatment skid on steel frame",
+  "vertical pressure vessels",
+  "horizontal membrane housings",
+  "vertical multistage pump",
+  "control panel box",
+  "handwheel valves and flanges",
+  "flexible hoses arcing between objects",
+  "mobile test cart on casters",
+  "pressure gauges and flowmeter",
+  "open laptop on cart",
+  "two-object composition",
+  "generous white margin",
+  "detailed piping",
+  "suitable for vector tracing",
+  "high contrast",
+  "plain background",
+  "acceptance test rig",
+  "pipe elbows and tees",
+  "horizontal composition"
+ ],
+ "t2i_prompt": "Clean isometric line drawing, black lines on a pure white background, uniform stroke weight, no shading, no fill, no text, no people. On the left a detailed industrial skid on a frame base with vessels, pipes, valves and a pump; on the right a smaller mobile cart carrying test instruments for <CONTENT>. Two flexible hoses arc from the skid to the cart, linking them as one test setup. Precise vector-like outlines, wide white margins, horizontal composition suitable for tracing into a single-colour mask.",
+ "signature_idea": "The skid hooked up by two hoses to a test cart with gauges and a laptop: acceptance testing as one connected rig.",
+ "strengths": [
+  "clearly shows testing on real equipment, meaningful for FAT/SAT",
+  "the hose link is a simple, readable story",
+  "skid looks like a genuine water system"
+ ],
+ "weaknesses": [
+  "very dense piping on the skid gets noisy at small sizes",
+  "stainless-looking frame and fittings, not polypropylene",
+  "laptop is a cliché signifier"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Precise line art that recolours to navy on limestone and tells a real engineering story; density and stainless look pull it slightly off the calm PP brand."
+}

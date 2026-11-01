@@ -1,0 +1,118 @@
+{
+ "file": "45-concept-evidence.png",
+ "prompted_for": "\"Where is the proof?\" for a validation lead: standard, how we meet it, document tags (EvidenceMap)",
+ "section_kind": "standards",
+ "style_family": "limestone traceability wiring sheet",
+ "art_direction": [
+  "engineering drawing sheet",
+  "traceability diagram",
+  "flat editorial",
+  "quiet technical",
+  "one accent highlight"
+ ],
+ "composition": [
+  "tall portrait sheet with thin outer frame",
+  "large bold headline top-left",
+  "left column of 8 stacked numbered rows",
+  "middle column of short requirement labels",
+  "right column of small dog-eared document tags",
+  "title block bottom-right",
+  "wide empty margins"
+ ],
+ "layout_devices": [
+  "fan of hairline connector curves from one selected row to many targets",
+  "selected row filled solid steel-blue",
+  "numbered list rows 01-08 with rules between",
+  "dog-eared page-tag icons holding document codes",
+  "sheet number title block with logo"
+ ],
+ "palette": [
+  "warm limestone/cream paper ground",
+  "deep navy text and frame lines",
+  "single steel-blue fill on active row",
+  "grey-blue hairline connectors"
+ ],
+ "typography": [
+  "heavy grotesk sentence-case headline",
+  "regular grotesk list labels with numeric prefixes",
+  "small sans requirement labels",
+  "mono-ish document codes in tags"
+ ],
+ "rendering": [
+  "flat vector",
+  "hairline line art",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "1 px hairline curves",
+  "thin box rules",
+  "no grid",
+  "flat paper colour with no grain"
+ ],
+ "motifs": [
+  "document tag with folded corner",
+  "title block",
+  "numbered standards list",
+  "wiring/routing curves"
+ ],
+ "ui_patterns": [
+  "selectable list row driving a highlight",
+  "hover-to-trace connections",
+  "two-column mapping"
+ ],
+ "motion_implied": [
+  "curves draw from the active row to its documents",
+  "selecting another row re-routes the fan",
+  "tags light up as lines arrive"
+ ],
+ "mood": [
+  "methodical",
+  "auditable",
+  "calm",
+  "dense"
+ ],
+ "t2i_keywords": [
+  "technical traceability diagram",
+  "engineering drawing sheet layout",
+  "warm limestone paper background",
+  "deep navy linework and text",
+  "single steel-blue highlighted row",
+  "numbered list column on left",
+  "hairline connector curves fanning out",
+  "Bezier wiring lines between columns",
+  "small dog-eared document tag icons",
+  "three-column mapping layout",
+  "thin outer sheet border",
+  "title block in bottom-right corner",
+  "bold grotesk sentence-case headline",
+  "regular sans-serif labels",
+  "flat vector illustration",
+  "no shadows no gradients",
+  "1 px hairline strokes",
+  "generous negative space",
+  "portrait poster format",
+  "minimal colour palette",
+  "quiet Swiss-style information design",
+  "orthogonal box rules",
+  "clean UI mockup",
+  "high legibility",
+  "evenly spaced rows",
+  "documentation aesthetic",
+  "matte flat colour"
+ ],
+ "t2i_prompt": "Flat vector information-design sheet on warm limestone paper with a thin navy outer border and a small title block in the bottom-right corner. Bold dark navy grotesk headline top-left. Left column: a stack of numbered rows with thin rules, one row filled solid steel-blue. From the highlighted row, a fan of 1 px navy Bezier curves routes through a middle column of short labels to small dog-eared document tag icons on the right. <CONTENT>. No shadows, no gradients, generous margins, three colours only, calm traceability-diagram look.",
+ "signature_idea": "Pick a standard and watch hairline wires trace it to the exact documents that prove it.",
+ "strengths": [
+  "directly answers a validation lead's audit question",
+  "one accent colour does the selection job",
+  "sheet frame and title block fit the drawing-set brand idea"
+ ],
+ "weaknesses": [
+  "crossing curves become spaghetti when many links fan out",
+  "middle labels float without clear alignment",
+  "heavy bold headline breaks the light-headline rule",
+  "does not scale to phone width"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone, navy and a single steel-blue accent with square corners are on brand; bold headline and tangled curves undercut precise and calm."
+}

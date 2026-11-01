@@ -1,0 +1,113 @@
+{
+ "file": "64-spots-generation.png",
+ "prompted_for": "Specimen sheet of 9 equipment vignettes (pretreatment, RO skid, EDI, still, pure steam generator, tank, pump, heat exchanger, UV and ozone); cut into Spot masks in assets/spots/",
+ "section_kind": "icon/spot sheet",
+ "style_family": "isometric technical line drawing",
+ "art_direction": [
+  "isometric equipment vignettes",
+  "black ink technical illustration",
+  "catalogue specimen sheet",
+  "no colour",
+  "engineering manual style"
+ ],
+ "composition": [
+  "portrait white sheet",
+  "3 x 3 grid of isolated equipment drawings",
+  "each object floats with no ground or frame",
+  "consistent isometric angle and similar scale",
+  "wide white gutters, no labels"
+ ],
+ "layout_devices": [
+  "isolated vignette grid",
+  "no captions",
+  "cut-out ready objects on white"
+ ],
+ "palette": [
+  "pure white ground",
+  "black ink line work",
+  "no fills or accent"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "technical illustration as in equipment manuals",
+  "outline only with interior detail lines"
+ ],
+ "line_and_texture": [
+  "uniform 1.5-2 px black strokes",
+  "fine secondary detail lines on flanges, bolts and plate packs",
+  "no hatching, no shading",
+  "clean white ground"
+ ],
+ "motifs": [
+  "twin pretreatment vessels",
+  "RO pressure-vessel skid with pump",
+  "EDI/plate stack",
+  "multi-column still on frame",
+  "steam generator with plate exchanger",
+  "vertical storage tank on legs",
+  "end-suction centrifugal pump",
+  "shell-and-tube heat exchanger",
+  "UV reactor with control box"
+ ],
+ "ui_patterns": [
+  "spot illustrations",
+  "card art",
+  "option module icons"
+ ],
+ "motion_implied": [
+  "strokes draw on in sequence",
+  "spot fades and lifts in on scroll"
+ ],
+ "mood": [
+  "precise",
+  "neutral",
+  "credible",
+  "clean"
+ ],
+ "t2i_keywords": [
+  "isometric technical line drawing",
+  "black ink on white",
+  "industrial process equipment",
+  "equipment manual illustration",
+  "uniform 1.5 px strokes",
+  "fine detail lines on flanges and bolts",
+  "no shading no colour",
+  "isolated objects on white",
+  "3 by 3 specimen grid",
+  "consistent isometric angle",
+  "consistent scale",
+  "wide white gutters",
+  "pressure vessels and skids",
+  "pumps tanks heat exchangers",
+  "pipework with valves and fittings",
+  "clean vector outline",
+  "no labels",
+  "cut-out ready vignettes",
+  "precise engineering illustration",
+  "minimal monochrome",
+  "plate stack details",
+  "skid frames and legs",
+  "valve handles and gauges",
+  "three-quarter isometric view",
+  "calm technical mood"
+ ],
+ "t2i_prompt": "Specimen sheet of isolated isometric technical line drawings on a pure white background, arranged in a 3 by 3 grid with wide gutters and no labels. Each vignette shows one piece of industrial equipment: <CONTENT>. Black ink, uniform 1.5 px outline strokes with finer detail lines on flanges, bolts and fittings, no shading, no fills, no colour. Consistent isometric angle and scale across all objects, like illustrations in an equipment manual. Clean, precise, cut-out ready.",
+ "signature_idea": "A family of manual-grade isometric equipment drawings that can be masked into any colour as spot art.",
+ "strengths": [
+  "high fidelity, believable equipment",
+  "consistent angle and scale make a true family",
+  "monochrome line converts cleanly to masks in navy or steel-blue",
+  "no text to fight with the page"
+ ],
+ "weaknesses": [
+  "several subjects are stainless/off-offer for a PP PW maker (still, pure steam generator)",
+  "black on white is not the brand palette until recoloured",
+  "fine detail may break at small sizes",
+  "generic catalogue look without brand colour"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Precise, calm, square line art suits the brand once masked into navy/steel-blue; raw black-on-white and off-offer equipment keep it from a 5."
+}

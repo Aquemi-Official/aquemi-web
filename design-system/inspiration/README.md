@@ -99,6 +99,14 @@ one built). Prompts and log: `research/pass9/` (outside the repo).
 | `gemini/93-p9-compliance-2-take2.png` | 'Pharmacopoeias and their proof' (compliance), art direction: tactile physical metaphor | each standard as a manila folder row, proof as clipped papers and stamps |
 | `gemini/94-p9-compliance-3.png` | 'Good manufacturing practice (GMP) and qualification' (compliance), art direction: scroll-driven storytelling | sticky cutaway of PP piping with 'active state' tag, standard cards scrolling on a rail beside it |
 
+## Style atlas (image → text)
+
+Every Gemini original is described as text-to-image keywords and a reusable prompt in `style-atlas/images/*.json`;
+`style-atlas/aggregate.py` counts them into `keywords.json`, and `style-atlas/STYLE-ATLAS.md` names the brand core,
+ten style families, what combines well, what fails (with negative keywords), a prompt kit and three ways to unify
+the styles. The `image-prompt-loop` skill (`.claude/skills/image-prompt-loop/`) runs the loop: describe images,
+refresh the atlas, write section prompts from its kit, generate in Gemini, keep every image here.
+
 ## Keep every image
 
 Every image generated for the site is kept, used or not: the people reviewing the design want to look them all over.

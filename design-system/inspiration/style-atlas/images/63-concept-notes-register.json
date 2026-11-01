@@ -1,0 +1,121 @@
+{
+ "file": "63-concept-notes-register.png",
+ "prompted_for": "News and technical notes as a revision register (News: register table with a featured note)",
+ "section_kind": "documents",
+ "style_family": "mono revision register sheet",
+ "art_direction": [
+  "document control register",
+  "drawing-sheet frame",
+  "tabular index",
+  "featured note card",
+  "bracketed placeholders"
+ ],
+ "composition": [
+  "landscape cream sheet inset on navy with blueprint grid border and title block corner",
+  "header row with wordmark, vertical divider and register title",
+  "filter row of bracketed tags",
+  "narrow featured-note card on the left with small schematic",
+  "wide ruled table on the right with date, doc no., topic, subject, standard columns",
+  "same layout rendered twice as two variants stacked"
+ ],
+ "layout_devices": [
+  "revision register table with full cell rules",
+  "bracketed filter tags",
+  "featured card with inset P&ID sketch",
+  "document number codes (NTR-00xx)",
+  "drawing frame with zone ticks and title block",
+  "vertical pipe divider in header"
+ ],
+ "palette": [
+  "deep navy surround with lighter navy grid",
+  "warm cream sheet",
+  "navy/black mono text and rules",
+  "no accent colour beyond navy"
+ ],
+ "typography": [
+  "monospaced throughout",
+  "bold mono wordmark",
+  "uppercase mono headings",
+  "mono table cells",
+  "square-bracket placeholders"
+ ],
+ "rendering": [
+  "flat UI mockup",
+  "small P&ID line sketch",
+  "document/table styling"
+ ],
+ "line_and_texture": [
+  "thin 1 px table rules",
+  "blueprint grid on navy border",
+  "flat paper, no grain",
+  "hairline drawing frame with ticks"
+ ],
+ "motifs": [
+  "revision register",
+  "document numbers",
+  "standard codes",
+  "P&ID sketch with pump, RO, tank",
+  "title block"
+ ],
+ "ui_patterns": [
+  "filter chips",
+  "data table",
+  "featured article card",
+  "list/index page"
+ ],
+ "motion_implied": [
+  "table rows reveal one by one like entries logged",
+  "filter narrows rows",
+  "new revision row slides in at top"
+ ],
+ "mood": [
+  "controlled",
+  "archival",
+  "rigorous",
+  "dry"
+ ],
+ "t2i_keywords": [
+  "document control register page",
+  "cream sheet on deep navy blueprint grid",
+  "engineering drawing frame with title block",
+  "monospaced typography throughout",
+  "ruled data table with full cell borders",
+  "bracketed filter tags row",
+  "featured card with small P&ID sketch",
+  "document number codes",
+  "uppercase mono headings",
+  "thin 1 px rules",
+  "flat UI mockup",
+  "landscape layout",
+  "two-column card and table",
+  "technical archive aesthetic",
+  "minimal colour navy and cream",
+  "square corners",
+  "zone ticks on frame edge",
+  "dense tabular information",
+  "precise and dry",
+  "revision log",
+  "header with vertical divider",
+  "mono wordmark",
+  "standard code column",
+  "faint navy grid lines",
+  "dry documentary mood"
+ ],
+ "t2i_prompt": "Landscape web page mockup styled as an engineering revision register: a warm cream sheet inset in a deep navy surround with a faint blueprint grid and drawing-frame zone ticks, title block in a corner. Header with a mono wordmark, vertical divider and register title; a row of bracketed filter tags beneath. Left, a narrow featured card with a small P&ID line sketch; right, a wide ruled table with columns for date, document number, topic, subject and standard: <CONTENT>. Monospaced type throughout, thin 1 px rules, square corners, flat, navy and cream only.",
+ "signature_idea": "News is presented as a controlled document register with doc numbers and governing standards, the way QA logs revisions.",
+ "strengths": [
+  "speaks the QA/document-control language buyers trust",
+  "every note tied to a standard",
+  "simple, reusable table component",
+  "calm two-colour palette"
+ ],
+ "weaknesses": [
+  "very dense, all-mono and visually dry",
+  "featured note too small to draw a reader",
+  "no steel-blue accent to guide the eye",
+  "full cell borders feel heavy",
+  "image repeats the same layout twice"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Navy/limestone and square precise rules fit, but mono-only type, missing accent and crowded table lose the light headlines and space-as-material."
+}

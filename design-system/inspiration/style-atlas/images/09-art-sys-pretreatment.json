@@ -1,0 +1,116 @@
+{
+ "file": "09-art-sys-pretreatment.png",
+ "prompted_for": "Equipment drawing for the sys-pretreatment (pretreatment) page: black-on-white source drawing of a pretreatment skid, turned into a transparent mask the Illustration component paints with a token",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric black ink line art",
+ "art_direction": [
+  "technical catalogue line art",
+  "isometric equipment",
+  "monochrome ink",
+  "no labels",
+  "mask-ready source"
+ ],
+ "composition": [
+  "square isometric base frame filling the frame",
+  "large horizontal-domed tank at left",
+  "several vertical filter/softener vessels of varied heights",
+  "pipe header running across the middle",
+  "pump and motor at front-left"
+ ],
+ "layout_devices": [
+  "single isolated object on white, ready to be masked and recoloured",
+  "base frame anchors the object to an implied floor plane",
+  "no callouts in source; leader-line callouts added later on the site"
+ ],
+ "palette": [
+  "pure white ground",
+  "black ink line work",
+  "no accent (recoloured to navy/limestone/steel-blue by token on site)"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "clean black outlines",
+  "flat, no tone",
+  "CAD-catalogue / technical illustration"
+ ],
+ "line_and_texture": [
+  "uniform ~2 px black strokes",
+  "slightly heavier outer contours",
+  "fine detail lines on fittings and fins",
+  "no hatching, no shading, no grain"
+ ],
+ "motifs": [
+  "media filter vessels",
+  "softener vessels",
+  "brine tank",
+  "pipe header",
+  "centrifugal pump",
+  "valve handwheels",
+  "pressure gauges",
+  "channel-steel base"
+ ],
+ "ui_patterns": [
+  "hero illustration",
+  "callout target for KeyFacts",
+  "page header drawing"
+ ],
+ "motion_implied": [
+  "feed water enters and passes vessel to vessel",
+  "vessels highlight as each stage runs",
+  "backwash pulse through the filters"
+ ],
+ "mood": [
+  "precise",
+  "engineered",
+  "calm",
+  "factual"
+ ],
+ "t2i_keywords": [
+  "black and white technical line drawing",
+  "isometric 3/4 view",
+  "clean uniform ink outlines",
+  "pure white background",
+  "no shading no color no hatching",
+  "industrial equipment illustration",
+  "cluster of vertical filter and softener vessels",
+  "rounded domed tanks of varied heights",
+  "pipe header across the skid",
+  "skid-mounted on a steel base frame",
+  "detailed pipework with flanges and elbows",
+  "valves, gauges and fittings",
+  "centered single object",
+  "generous white margin",
+  "vector-like crisp strokes",
+  "engineering catalogue illustration",
+  "coloring-book line weight",
+  "no text no labels",
+  "base frame with levelling feet",
+  "orthographic-feeling isometric projection",
+  "high detail fittings",
+  "slightly heavier outer contour",
+  "clean line mask source",
+  "technical manual style",
+  "even lighting, no shadows",
+  "square 1:1 frame"
+ ],
+ "t2i_prompt": "Black and white technical line drawing of <CONTENT>, isometric three-quarter view, clean uniform black ink outlines on a pure white background, no shading, no colour, no hatching, no text or labels. Skid-mounted on a steel base frame with detailed pipework, flanges, elbows, valves and pressure gauges. Single object centred with generous white margin, crisp vector-like strokes in the style of an engineering equipment catalogue, suitable for converting into a transparent line mask.",
+ "signature_idea": "A cluster of rounded vessels of different heights that reads as filtration and softening at a glance.",
+ "strengths": [
+  "reads as real equipment to engineers",
+  "monochrome source recolours cleanly to any token",
+  "consistent isometric angle across the set gives a family look",
+  "high detail rewards a close look without needing labels",
+  "varied vessel heights give a pleasant skyline"
+ ],
+ "weaknesses": [
+  "dense detail goes muddy when masked at small sizes",
+  "AI fittings are plausible but not engineering-accurate",
+  "vessels' arrangement is ambiguous about flow order",
+  "some fittings look metallic rather than plastic"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Line art and calm cluster fit; pretreatment is in scope, only the metal fittings feel off for PP."
+}

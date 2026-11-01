@@ -1,0 +1,128 @@
+{
+ "file": "03-concept-diagram.png",
+ "prompted_for": "Treatment train for one system (became ProcessDiagram: serpentine boxes with glyphs)",
+ "section_kind": "process diagram",
+ "style_family": "navy P&ID box schematic",
+ "art_direction": [
+  "P&ID schematic as UI",
+  "boxed stages on a grid",
+  "mono technical type",
+  "serpentine pipe",
+  "desktop plus phone pair"
+ ],
+ "composition": [
+  "desktop artboard left, phone artboard right separated by a vertical rule",
+  "title block top-left: brand, large caps title, mono subline",
+  "six stage boxes in a 2-column serpentine (1-2, 4-3, 5-6)",
+  "pipe runs between boxes including a long diagonal",
+  "phone version staggers boxes in a zigzag column with the pipe weaving through"
+ ],
+ "layout_devices": [
+  "pipe route linking boxes with arrow-in-circle connectors",
+  "inline valve and gauge symbols on the pipe",
+  "P&ID glyph in each box",
+  "corner tags (IN/OUT, units) on box edges",
+  "IN entry tab on the left",
+  "background engineering grid with dot fill"
+ ],
+ "palette": [
+  "near-black navy ground",
+  "off-white mono type and box strokes",
+  "steel-blue double-line pipe with glow",
+  "grey tag fills",
+  "faint blue-grey grid lines"
+ ],
+ "typography": [
+  "monospace caps throughout",
+  "large mono numerals 01-06",
+  "mono caps stage names",
+  "tiny mono caps corner tags",
+  "spaced mono subline"
+ ],
+ "rendering": [
+  "flat vector",
+  "orthographic schematic",
+  "P&ID symbol glyphs",
+  "thin outline boxes"
+ ],
+ "line_and_texture": [
+  "1 px box outlines",
+  "double-line pipe with soft glow",
+  "background grid of thin lines plus dot matrix",
+  "no grain or shading"
+ ],
+ "motifs": [
+  "break tank",
+  "heat exchanger",
+  "RO membrane symbol",
+  "EDI stack",
+  "UV lamp",
+  "valves",
+  "pressure gauge",
+  "storage outlet",
+  "corner tags"
+ ],
+ "ui_patterns": [
+  "numbered step cards",
+  "responsive desktop/phone pair",
+  "connector arrows",
+  "card tags"
+ ],
+ "motion_implied": [
+  "water flows along the pipe through each box in order",
+  "arrow connectors pulse as flow passes",
+  "valve symbols turn open",
+  "boxes highlight sequentially"
+ ],
+ "mood": [
+  "methodical",
+  "technical",
+  "orderly",
+  "dense",
+  "cool"
+ ],
+ "t2i_keywords": [
+  "P&ID schematic web section",
+  "near-black navy background",
+  "monospace capital letters",
+  "numbered stage boxes 01 to 06",
+  "serpentine two-column layout",
+  "double-line steel-blue pipe with soft glow",
+  "arrow-in-circle connectors",
+  "valve and gauge symbols on pipe",
+  "thin outline rectangles",
+  "small corner tags on boxes",
+  "engineering grid with dot matrix",
+  "flat vector schematic",
+  "desktop and mobile artboards side by side",
+  "zigzag mobile column",
+  "process flow diagram",
+  "square corners",
+  "single cool accent",
+  "off-white line work",
+  "technical UI mockup",
+  "instrument tags",
+  "orthographic not isometric",
+  "calm dark interface",
+  "title block top-left",
+  "IN entry tab",
+  "inline P&ID glyph per box",
+  "vertical divider between artboards"
+ ],
+ "t2i_prompt": "Dark navy web section showing <CONTENT> as a process flow: numbered outline boxes in monospace caps arranged in a serpentine two-column grid, each with a small P&ID-style glyph and tiny corner tags, joined by one double-line steel-blue pipe with soft glow, arrow-in-circle connectors, and inline valve and gauge symbols. Faint engineering grid with dot matrix behind. Title block top-left in mono caps. Beside it, a phone artboard with the same boxes stacked in a zigzag column and the pipe weaving through. Flat vector, square corners, one cool accent.",
+ "signature_idea": "The treatment train is a real piping diagram whose boxes are the step cards.",
+ "strengths": [
+  "reads like a document engineers already trust",
+  "pipe gives an unambiguous order",
+  "has a worked phone layout",
+  "glyphs make each stage identifiable"
+ ],
+ "weaknesses": [
+  "all-mono caps is heavy and less readable",
+  "diagonal pipe crossing is confusing",
+  "grid plus dots plus tags is busy",
+  "stage list includes heat exchanger/UV beyond the PP PW scope"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Square boxes, navy, steel-blue pipe accent and mono figures fit; mono-only caps for everything replaces Geist light headlines and crowds the space."
+}

@@ -1,0 +1,118 @@
+{
+ "file": "21-concept-form.png",
+ "prompted_for": "Request a proposal form; became EnquiryForm: numbered data sheet in a drawing frame",
+ "section_kind": "form",
+ "style_family": "navy blueprint data sheet",
+ "art_direction": [
+  "engineering drawing sheet",
+  "dark blueprint interface",
+  "specification data sheet",
+  "monospace terminal UI",
+  "desktop plus mobile mockup"
+ ],
+ "composition": [
+  "form set inside a full drawing-sheet border with zone numbers along the edges and centring arrows",
+  "centred wordmark and tagline at top",
+  "form titled as a spec data sheet with ref tag",
+  "numbered sections 1.0 / 2.0 with checkbox+toggle rows left and input fields right",
+  "full-width file attach field with upload icon",
+  "centred submit button in corner brackets",
+  "title block row at the bottom with REV and REF cells"
+ ],
+ "layout_devices": [
+  "drawing sheet border with zone grid numbers",
+  "centring arrow marks on the sheet edges",
+  "title block with revision and reference",
+  "numbered section rows (1.0, 2.0)",
+  "corner brackets around submit",
+  "ref tag in bracket"
+ ],
+ "palette": [
+  "deep navy sheet",
+  "slate-navy outer ground",
+  "limestone off-white wordmark and labels",
+  "steel-blue input field outlines, toggles and button fill",
+  "grey-blue sheet border"
+ ],
+ "typography": [
+  "all-caps monospace labels and inputs",
+  "bold geometric sans wordmark",
+  "small mono tagline",
+  "units inside fields in mono (L/h)"
+ ],
+ "rendering": [
+  "flat vector UI mockup"
+ ],
+ "line_and_texture": [
+  "hairline sheet border double line",
+  "zone tick marks along edges",
+  "thin input outlines",
+  "no texture"
+ ],
+ "motifs": [
+  "drawing sheet frame",
+  "title block",
+  "revision code",
+  "spec sheet numbering",
+  "upload arrow"
+ ],
+ "ui_patterns": [
+  "form with checkboxes and toggles",
+  "text inputs with inline units",
+  "file upload",
+  "primary submit button",
+  "responsive desktop/mobile pair"
+ ],
+ "motion_implied": [
+  "sheet border draws on",
+  "fields fill like a data sheet being completed",
+  "revision tag increments on submit"
+ ],
+ "mood": [
+  "formal",
+  "technical",
+  "orderly",
+  "dense"
+ ],
+ "t2i_keywords": [
+  "flat desktop UI mockup with mobile view beside it",
+  "web form as engineering data sheet",
+  "deep navy drawing sheet",
+  "drawing border with zone numbers along edges",
+  "centring arrow marks",
+  "title block with revision and reference cells",
+  "numbered sections 1.0 2.0",
+  "all-caps monospace labels",
+  "checkbox rows with toggle switches",
+  "outlined input fields with inline units",
+  "file upload field with arrow icon",
+  "steel-blue submit button in corner brackets",
+  "limestone off-white text",
+  "steel-blue outlines",
+  "hairline double border",
+  "square corners",
+  "no device frame",
+  "no people",
+  "blueprint aesthetic",
+  "specification sheet layout",
+  "specification data sheet title with ref tag",
+  "bottom title block row",
+  "centred wordmark and tagline",
+  "two-column field layout",
+  "mono units inside fields"
+ ],
+ "t2i_prompt": "Flat desktop UI mockup with a mobile version beside it, no device frame, no people. <CONTENT> designed as an engineering specification data sheet on deep navy: a thin double drawing-sheet border with zone numbers and centring arrows on the edges, a title block with revision and reference cells at the bottom. Numbered sections 1.0 and 2.0 in all-caps monospace, checkbox rows with small toggles, steel-blue outlined input fields with inline units, a file upload field, and a steel-blue rectangular submit button inside corner brackets. Limestone off-white text, square corners.",
+ "signature_idea": "The enquiry form is the first page of the project's documentation: a numbered spec data sheet with a revision block.",
+ "strengths": [
+  "speaks the engineer's language (spec sheet, URS upload, revision)",
+  "palette and square fields on-brand",
+  "clean numbered structure"
+ ],
+ "weaknesses": [
+  "all-caps mono everywhere is tiring and less accessible",
+  "checkboxes plus toggles duplicate controls",
+  "busy border furniture around a simple form"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy sheet, steel-blue accent, square corners and mono figures fit; all-caps mono labels drift from Geist light headings."
+}

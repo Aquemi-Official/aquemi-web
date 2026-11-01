@@ -1,0 +1,124 @@
+{
+  "file": "74-p9-systems-0.png",
+  "prompted_for": "Systems page section 'How the systems fit together': feed, pretreatment, RO/EDI, tank, loop, outlets; first prompt (blueprint style): one continuous pipe run left to right through feed, pretreat, RO/EDI, tank, loop, outlets",
+  "section_kind": "process diagram",
+  "style_family": "limestone isometric line drawing",
+  "art_direction": [
+    "light drawing-sheet blueprint",
+    "rising isometric process train",
+    "one bold navy pipe",
+    "soft paper band behind the route",
+    "label-and-leader annotation"
+  ],
+  "composition": [
+    "wide panel on warm limestone inside a sheet border with zone letters A-E",
+    "large light headline top left",
+    "process rises diagonally from lower left (feed pump) to upper right (points of use)",
+    "a lighter paper-white band follows the route like a highlighted ribbon",
+    "one heavy navy pipe threads every stage; equipment in finer hairlines",
+    "stage labels above and below the train, each with a thin leader; several duplicated (generator error)",
+    "title block bottom right"
+  ],
+  "layout_devices": [
+    "pipe route linking items",
+    "ascending diagonal staircase of stages",
+    "highlight band behind the route",
+    "leader lines from labels to equipment",
+    "dimension lines above the loop",
+    "arrowheads at outlets",
+    "zone letters on border"
+  ],
+  "palette": [
+    "warm limestone ground",
+    "paper-white highlight band",
+    "deep navy heavy pipe line and text",
+    "steel-blue hairline equipment and arrows",
+    "faint grey construction lines"
+  ],
+  "typography": [
+    "light-weight grotesque headline",
+    "light sans stage labels",
+    "tiny sans in border zones and title block",
+    "no mono figures"
+  ],
+  "rendering": [
+    "isometric line drawing",
+    "flat with subtle white fills on vessels",
+    "two stroke weights: bold pipe, hairline equipment"
+  ],
+  "line_and_texture": [
+    "heavy 3-4 px navy pipe",
+    "1-1.5 px steel-blue equipment strokes",
+    "dimension and leader lines",
+    "soft-edged lighter band as a tonal shape",
+    "sheet border and title block"
+  ],
+  "motifs": [
+    "feed pump and motor",
+    "pretreatment filter vessels",
+    "RO skid with pumps and housings",
+    "storage tank on legs",
+    "distribution loop with valves",
+    "twin vessels",
+    "points-of-use branches with arrows",
+    "title block"
+  ],
+  "ui_patterns": [
+    "illustrated process train",
+    "labelled hotspots along a diagram"
+  ],
+  "motion_implied": [
+    "water travels the bold pipe from feed to outlets",
+    "highlight band sweeps along with the flow",
+    "each label fades in as its stage is reached"
+  ],
+  "mood": [
+    "clear",
+    "ascending",
+    "calm",
+    "technical",
+    "optimistic"
+  ],
+  "t2i_keywords": [
+    "warm limestone paper background",
+    "isometric technical line drawing",
+    "one bold deep navy pipe through every stage",
+    "fine steel-blue hairline equipment",
+    "two stroke weights",
+    "process train rising diagonally from lower left to upper right",
+    "soft paper-white highlight band behind the route",
+    "stage labels with thin leader lines",
+    "light thin sans-serif headline",
+    "drawing sheet border with zone letters",
+    "title block bottom right",
+    "dimension lines",
+    "flow arrows at outlets",
+    "pumps filters tanks and valves",
+    "flat no shadows",
+    "subtle white fills",
+    "generous negative space top right and bottom left",
+    "engineering drawing on paper",
+    "16:9 web section mockup",
+    "straight-on flat view",
+    "no people",
+    "no photographs",
+    "calm precise mood",
+    "ascending staircase composition",
+    "highlighted route ribbon"
+  ],
+  "t2i_prompt": "A wide web page section on warm limestone paper drawn as a light engineering sheet with zone letters on the border and a title block bottom right. A light thin sans-serif headline sits top left. An isometric process train rises diagonally from lower left to upper right: one bold deep navy pipe threads through each stage, while the equipment is drawn in fine steel-blue hairlines: <CONTENT>. A soft paper-white band follows the route behind it. Short light labels with thin leader lines sit above and below each stage; arrows mark the outlets. Flat, no shadows, generous space, no people.",
+  "signature_idea": "The bold navy pipe is the single strong line on the page, climbing through every system with finer equipment hung off it, like a highlighted route on a drawing.",
+  "strengths": [
+    "clear stroke hierarchy: the water path dominates, equipment recedes",
+    "navy, limestone, paper white and steel-blue all present in roughly the brand ratio",
+    "rising diagonal gives energy and a natural scroll path",
+    "lighter band is a nice way to use space as a material"
+  ],
+  "weaknesses": [
+    "several labels duplicated (Feed water, PW generation, Storage, Points of use)",
+    "equipment small relative to canvas; will not read on phone",
+    "headline and labels lack mono figures or any data"
+  ],
+  "brand_fit": 4,
+  "brand_fit_why": "Navy pipe on limestone with steel-blue hairlines, light headline and calm space is very close to the brand; duplicate labels and lack of mono detail are the gaps."
+}

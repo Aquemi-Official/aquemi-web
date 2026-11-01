@@ -1,0 +1,102 @@
+{
+ "file": "22-art-ind-pharma.png",
+ "prompted_for": "Equipment line drawing for the Pharmaceutical industry page (ind-pharma); came out as a sterile vial filling machine, superseded by a mixing vessel fed by a PW point-of-use valve (gemini/67)",
+ "section_kind": "equipment drawing",
+ "style_family": "isometric technical line art",
+ "art_direction": [
+  "technical illustration",
+  "isometric machine drawing",
+  "black-and-white line art",
+  "cutaway enclosure"
+ ],
+ "composition": [
+  "box-frame machine enclosure in isometric, doors swung open on both sides",
+  "two hood units on the roof",
+  "conveyor of vials crossing diagonally through the middle",
+  "filling needles, vibratory bowl feeder and stopper chute inside",
+  "inlet valve and pipe on the lower left"
+ ],
+ "layout_devices": [
+  "open doors revealing the interior (cutaway)",
+  "diagonal conveyor as composition spine"
+ ],
+ "palette": [
+  "pure black line",
+  "pure white ground"
+ ],
+ "typography": [
+  "none"
+ ],
+ "rendering": [
+  "isometric line drawing",
+  "flat vector-like ink lines",
+  "transparent panels shown as frames"
+ ],
+ "line_and_texture": [
+  "uniform thin strokes",
+  "repeated vials as rhythmic texture",
+  "no shading, no hatching"
+ ],
+ "motifs": [
+  "vials on conveyor",
+  "filling needles",
+  "bowl feeder",
+  "glass-door enclosure (RABS/isolator)",
+  "hand-wheel valve inlet",
+  "levelling feet"
+ ],
+ "ui_patterns": [
+  "section illustration masked in a token colour"
+ ],
+ "motion_implied": [
+  "vials move along the conveyor",
+  "needles dip and fill",
+  "doors close"
+ ],
+ "mood": [
+  "busy",
+  "precise",
+  "clinical",
+  "mechanical"
+ ],
+ "t2i_keywords": [
+  "isometric technical line drawing",
+  "black ink on pure white",
+  "machine enclosure with open glass doors",
+  "cutaway view of interior mechanism",
+  "rows of small repeated parts on a conveyor",
+  "diagonal conveyor composition",
+  "hood units on the roof",
+  "levelling feet",
+  "inlet pipe with hand-wheel valve",
+  "uniform thin strokes",
+  "no shading",
+  "no fill",
+  "no colour",
+  "no text",
+  "pharmaceutical production machine",
+  "equipment catalogue illustration",
+  "clean vector line art",
+  "precise mechanical detail",
+  "white margin",
+  "crisp closed contours",
+  "single-colour mask ready",
+  "vibratory bowl feeder",
+  "filling needle manifold",
+  "box-frame structure",
+  "rhythmic repeated vials"
+ ],
+ "t2i_prompt": "Isometric technical line drawing of <CONTENT>, black ink on pure white: a framed machine enclosure seen three-quarter from above with its glass doors swung open to reveal the mechanism inside, a row of small repeated parts travelling diagonally on a conveyor, roof units on top and an inlet pipe with a hand-wheel valve at the base. Uniform thin strokes, no shading, no fill, no colour, no text, clean white margin, crisp closed contours for a single-colour mask.",
+ "signature_idea": "The customer's production line opened up so you see where purified water finally ends up.",
+ "strengths": [
+  "unmistakably pharma at a glance",
+  "line style matches the drawing set and masks well"
+ ],
+ "weaknesses": [
+  "sterile vial filling implies WFI/sterile scope Aquemi does not sell (hence replaced)",
+  "very busy interior gets muddy when scaled down",
+  "the water connection is a tiny afterthought"
+ ],
+ "brand_fit": 2,
+ "brand_fit_why": "On-style line art, but the subject misrepresents the PW offer and the clutter fights the calm brand."
+}

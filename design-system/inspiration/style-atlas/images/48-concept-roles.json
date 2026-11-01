@@ -1,0 +1,118 @@
+{
+ "file": "48-concept-roles.png",
+ "prompted_for": "Who writes and reviews each C&Q document (RoleMatrix: signature-block stamps, ours tinted, yours outlined)",
+ "section_kind": "documents",
+ "style_family": "navy signature-block matrix",
+ "art_direction": [
+  "dark technical UI",
+  "document control",
+  "tabbed matrix",
+  "drawing revision strip",
+  "stamp boxes"
+ ],
+ "composition": [
+  "portrait navy sheet with thin frame",
+  "logo then light sentence-case headline and subline top-left",
+  "four-tab phase strip with the active tab filled pale blue",
+  "stack of four document cards each split into three columns",
+  "title block bottom-right"
+ ],
+ "layout_devices": [
+  "revision-strip tab bar",
+  "three-cell signature row per document: written, executed, approved",
+  "ours as tinted ghost boxes, yours as bright outlined stamps",
+  "connector line from active tab to cards",
+  "doc-number title block"
+ ],
+ "palette": [
+  "deep navy ground",
+  "pale ice-blue active tab fill",
+  "steel-blue mono text for our role",
+  "white double-outline stamps for client roles",
+  "grey-blue frame lines"
+ ],
+ "typography": [
+  "light grotesk sentence-case headline",
+  "regular sans card titles",
+  "uppercase mono inside bracketed stamps",
+  "mono numerals on tabs"
+ ],
+ "rendering": [
+  "flat vector UI mockup",
+  "hairline boxes"
+ ],
+ "line_and_texture": [
+  "1 px frames",
+  "double-line outlined stamp boxes",
+  "no grid",
+  "flat dark fill"
+ ],
+ "motifs": [
+  "signature block",
+  "stamp box",
+  "bracketed placeholder",
+  "revision strip",
+  "title block"
+ ],
+ "ui_patterns": [
+  "tabs by phase",
+  "card per document",
+  "three-column role grid",
+  "status distinction by outline vs tint"
+ ],
+ "motion_implied": [
+  "switching tab redraws the cards",
+  "stamps press in one by one",
+  "connector slides to active tab"
+ ],
+ "mood": [
+  "procedural",
+  "clear",
+  "serious",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "document control matrix UI",
+  "deep navy background",
+  "thin hairline frame",
+  "four tabs in a revision strip",
+  "active tab filled pale ice blue",
+  "stacked cards with three columns",
+  "signature block stamp boxes",
+  "double-outlined white stamp boxes",
+  "tinted ghost boxes with steel-blue mono text",
+  "uppercase monospace stamp text",
+  "bracketed labels",
+  "light grotesk sentence-case headline",
+  "title block bottom right",
+  "flat vector",
+  "1 px strokes",
+  "square corners",
+  "no shadows",
+  "dark mode web section",
+  "engineering document aesthetic",
+  "portrait layout",
+  "consistent vertical rhythm",
+  "two-tone navy and white",
+  "generous padding inside cards",
+  "quiet technical mood",
+  "connector line from active tab",
+  "grey-blue frame lines",
+  "high contrast white outlines"
+ ],
+ "t2i_prompt": "Flat vector dark-mode web section on deep navy inside a thin hairline frame with a small title block bottom-right. Light sentence-case headline top-left. Below, a row of numbered tabs styled as a drawing revision strip, the active tab filled pale ice blue. A vertical stack of square-cornered cards, each split into three labelled cells containing stamp boxes: some as faint tinted boxes with steel-blue monospace text, others as bright white double-outlined stamps with uppercase mono text. <CONTENT>. 1 px lines, no shadows, calm document-control look.",
+ "signature_idea": "Responsibility shown as stamps: ours are quiet tinted boxes, yours are bold outlined signatures.",
+ "strengths": [
+  "answers the C&Q ownership question at a glance",
+  "outline-vs-tint encoding is simple and colour-light",
+  "square corners and navy match the brand"
+ ],
+ "weaknesses": [
+  "repetitive card stack gets long",
+  "small grey labels low contrast",
+  "pale tab fill is a second accent",
+  "stamps read as buttons"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy, light headline, mono stamps and square corners are on brand; the extra pale-blue fill and long repetition weaken calm and spare."
+}

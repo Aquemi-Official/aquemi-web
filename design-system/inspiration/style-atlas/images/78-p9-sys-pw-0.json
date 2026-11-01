@@ -1,0 +1,124 @@
+{
+ "file": "78-p9-sys-pw-0.png",
+ "prompted_for": "'Purified Water limits' section on the Purified Water (PW) generation page; art direction: editorial magazine spread (oversized typography, dramatic asymmetric composition, one striking illustration); limits table: conductivity USP / Ph. Eur., TOC, microbial action level, guaranteed skid outlet",
+ "section_kind": "spec/limits",
+ "style_family": "editorial type with glass pipe sculpture",
+ "art_direction": [
+  "editorial magazine spread",
+  "oversized headline",
+  "asymmetric split",
+  "sculpted 3D object",
+  "spec sheet as type stack"
+ ],
+ "composition": [
+  "left half: huge stacked three-line headline over a numbered limits list",
+  "right half: large translucent pipe loop sculpture breaking toward the corner",
+  "diagonal navy band runs from centre to lower right",
+  "limits rows step slightly rightward like a staircase",
+  "last row (guaranteed outlet) pulled out larger and in accent blue as the payoff"
+ ],
+ "layout_devices": [
+  "stepped type stack of limits with hairline rules under each row",
+  "numbered rows 01-05 with small square bullets",
+  "leader lines linking each limit row to the pipe sculpture",
+  "angled ribbon labels 'GUARANTEED' and 'OUTLET SKID' laid in perspective on the pipe",
+  "small marginal annotation text near the illustration",
+  "references aligned in a mono right column with em-dash leaders"
+ ],
+ "palette": [
+  "warm limestone ground across the whole section",
+  "deep navy headline and ribbon band",
+  "steel-blue accent for the guaranteed value and ribbon label",
+  "frosted translucent white-grey glass for the pipe loop",
+  "mid grey hairlines and small text"
+ ],
+ "typography": [
+  "heavy-ish wide grotesk all-caps headline with full stop, much bolder than Geist light",
+  "monospace figures for limit values (≤ 1.3 µS/cm @ 25 °C)",
+  "small caps labels above each value",
+  "mono reference codes (USP <645>, Ph. Eur. 0008)",
+  "tiny eyebrow in caps at top left"
+ ],
+ "rendering": [
+  "soft 3D render of a frosted glass/plastic pipe knot",
+  "flat vector typography and rules",
+  "perspective ribbon bands"
+ ],
+ "line_and_texture": [
+  "hairline grey rules separating rows",
+  "thin leader lines with right-angle elbows",
+  "smooth glossy gradients and subtle reflections on the glass pipe",
+  "no grid or grain on the ground"
+ ],
+ "motifs": [
+  "looped pipe",
+  "flat strap/band labelled guaranteed",
+  "spec table",
+  "standard references"
+ ],
+ "ui_patterns": [
+  "spec table restyled as editorial rows",
+  "highlighted final row",
+  "annotation callouts"
+ ],
+ "motion_implied": [
+  "limit rows cascade in one by one down the staircase",
+  "water flows through the glass loop toward the outlet",
+  "guaranteed ribbon slides along its diagonal",
+  "leader lines draw from rows to the pipe"
+ ],
+ "mood": [
+  "confident",
+  "editorial",
+  "assertive",
+  "clean",
+  "premium"
+ ],
+ "t2i_keywords": [
+  "editorial magazine spread web section",
+  "oversized stacked all-caps headline",
+  "dramatic asymmetric split layout",
+  "warm limestone off-white background",
+  "deep navy typography",
+  "single steel-blue accent highlight",
+  "monospace numeric figures",
+  "stepped type stack of specification rows",
+  "hairline horizontal rules",
+  "numbered rows 01-05",
+  "translucent frosted glass pipe loop",
+  "soft 3D render sculpture",
+  "glossy refraction and soft reflections",
+  "diagonal navy ribbon band in perspective",
+  "angled label strip on the band",
+  "thin leader-line callouts with elbows",
+  "right-aligned mono reference column",
+  "highlighted payoff row larger and accent coloured",
+  "generous negative space",
+  "flat UI mockup straight-on",
+  "no device frame",
+  "square corners",
+  "small caps eyebrow label",
+  "clean studio lighting on object",
+  "premium technical editorial look",
+  "1440 px desktop section",
+  "value-first typographic hierarchy",
+  "assertive premium mood"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section, flat straight-on UI mockup, editorial magazine spread. Warm limestone background. Left half: an oversized stacked all-caps navy headline, below it <CONTENT> as numbered specification rows set in monospace figures with small-caps labels and hairline rules, stepping slightly right like a staircase, the last row larger in steel blue. Right half: one striking soft 3D render of a translucent frosted glass pipe looping into a knot, a deep navy ribbon band running diagonally out of it with an angled label. Thin leader lines connect rows to the sculpture. Generous negative space, square corners, no device frame.",
+ "signature_idea": "The limits table becomes an editorial staircase of numbers that descends into a glass pipe loop, ending on a highlighted guaranteed outlet value.",
+ "strengths": [
+  "numbers lead: limits in mono with units and references are exactly what QA readers scan for",
+  "guaranteed outlet row as highlighted payoff is a strong sales point",
+  "warm limestone plus navy reads calm and premium",
+  "leader lines tie data to equipment"
+ ],
+ "weaknesses": [
+  "headline is heavy bold caps, off-brand vs Geist light sentence case",
+  "glass knot sculpture is abstract and decorative, not a real PP loop",
+  "'GUARANTEED' ribbon feels like marketing hype for an engineering audience",
+  "staircase offset reduces table scanability",
+  "leader lines go to arbitrary points on the sculpture"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Palette, mono figures and square corners match, but the bold all-caps headline and glossy glass sculpture break the light, precise, calm line-art brand."
+}

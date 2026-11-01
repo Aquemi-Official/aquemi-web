@@ -1,0 +1,124 @@
+{
+ "file": "88-p9-industries-2.png",
+ "prompted_for": "'Your first Purified Water system' section on the Industries page; art direction: editorial magazine spread, oversized typography, dramatic asymmetric composition, one striking illustration; five facts: product grade, what it covers and costs, running cost, team's first year, who you work with",
+ "section_kind": "options",
+ "style_family": "geometric pipe collage editorial",
+ "art_direction": [
+  "editorial magazine spread",
+  "oversized caps headline band",
+  "geometric flat collage illustration",
+  "asymmetric fact blocks",
+  "mid-century poster feel"
+ ],
+ "composition": [
+  "full-width navy band at top with a huge light caps two-line headline",
+  "left 45%: a large geometric collage of pipes, tanks, arrows, spirals and a water drop built from flat navy, steel-blue and limestone shapes",
+  "right 55%: five fact blocks arranged in an irregular grid separated by thin vertical and horizontal rules with elbows",
+  "one navy block bottom right for the team",
+  "breadcrumb and small wordmark in the header band"
+ ],
+ "layout_devices": [
+  "asymmetric editorial grid of fact blocks with stepped rule lines",
+  "small caps block labels (THE GRADE, THE SCOPE, YEAR ONE...)",
+  "large figures as block heads (PW, POTABLE, 1YR 365d)",
+  "dotted leader rows for cost lines",
+  "mini bar meters for staff hours",
+  "stair-step elbow rules connecting blocks",
+  "headline band overlapping the collage top"
+ ],
+ "palette": [
+  "deep navy header band and team block",
+  "limestone ground",
+  "steel-blue collage shapes and large figures",
+  "white/limestone negative shapes inside collage",
+  "navy body text"
+ ],
+ "typography": [
+  "huge light-to-regular caps grotesk headline (wide, spaced)",
+  "mono figures for codes and prices (GUI-0001, $180k)",
+  "large steel-blue caps value words",
+  "small caps labels",
+  "small sans body"
+ ],
+ "rendering": [
+  "flat vector geometric collage",
+  "paper cut-out feel",
+  "flat UI rules and bars"
+ ],
+ "line_and_texture": [
+  "solid flat fills, no gradients",
+  "thin 1px rules with right-angle elbows",
+  "concentric arcs and spirals in collage",
+  "no grain"
+ ],
+ "motifs": [
+  "pipes and elbows",
+  "tanks",
+  "water drop",
+  "upward arrow",
+  "spirals/circulation",
+  "geometric blocks"
+ ],
+ "ui_patterns": [
+  "fact blocks / key facts grid",
+  "mini progress meters",
+  "dotted price list"
+ ],
+ "motion_implied": [
+  "collage pieces slide and assemble into the system",
+  "spiral rotates as circulation",
+  "meters fill",
+  "rules draw between blocks"
+ ],
+ "mood": [
+  "bold",
+  "graphic",
+  "confident",
+  "friendly",
+  "editorial"
+ ],
+ "t2i_keywords": [
+  "editorial magazine spread web section",
+  "geometric flat vector collage illustration",
+  "abstract pipes tanks spirals and arrows from flat shapes",
+  "paper cut-out poster style",
+  "mid-century modernist graphic",
+  "deep navy steel blue and limestone shapes",
+  "full-width navy headline band",
+  "oversized wide caps headline",
+  "asymmetric grid of fact blocks",
+  "thin rules with right-angle elbows",
+  "small caps block labels",
+  "large accent figures",
+  "monospace codes and prices",
+  "dotted leader lines",
+  "mini horizontal bar meters",
+  "flat fills no gradients",
+  "square corners",
+  "dramatic asymmetric composition",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "bold graphic mood",
+  "concentric spirals and arcs",
+  "water drop shape",
+  "upward arrow shape",
+  "modernist poster palette"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup, editorial magazine spread. A full-width deep navy band at the top holds an oversized wide caps headline. On a limestone ground below, the left half is one striking geometric collage illustration built from flat navy, steel-blue and limestone shapes: pipes, elbows, tanks, spirals, an arrow and a water drop, like a modernist paper cut-out poster. The right half is an asymmetric grid of fact blocks for <CONTENT>, small caps labels, large accent figures, monospace codes, dotted leader rows and mini bar meters, joined by thin elbowed rules.",
+ "signature_idea": "The water system becomes a modernist paper-cut collage of pipes and tanks, set beside an editorial fact sheet for first-time buyers.",
+ "strengths": [
+  "collage is distinctive and ownable while staying in the navy/steel-blue/limestone palette",
+  "flat vector shapes are cheap to build as SVG and animate",
+  "fact blocks with labels give first-time buyers a scannable overview",
+  "square, flat, no gradients"
+ ],
+ "weaknesses": [
+  "all-caps headline breaks sentence-case Geist light rule",
+  "irregular block grid and elbow rules feel crowded on the right",
+  "invented prices and staff-hour meters could mislead (should be placeholders)",
+  "collage abstraction loses the precise technical-drawing character",
+  "steel blue used as a fill, not only for lines and one highlight"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Palette, flat fills, square corners and mono figures fit, but all-caps headline, heavy use of steel-blue fill and poster-collage abstraction depart from the calm, precise line-art brand."
+}

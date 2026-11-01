@@ -1,0 +1,121 @@
+{
+ "file": "43-concept-failures.png",
+ "prompted_for": "Where steam quality fails, folded rows (became FaultList: failures that open to cause and design control)",
+ "section_kind": "FAQ",
+ "style_family": "limestone sheet folded rows",
+ "art_direction": [
+  "ruled list on a drawing sheet",
+  "accordion rows",
+  "minimal editorial",
+  "detail drawing inset",
+  "light paper"
+ ],
+ "composition": [
+  "single portrait sheet with thin border and a 'SHEET 01' title block bottom right",
+  "two-line sentence-case headline top left with generous margin",
+  "six stacked numbered rows, each a bordered box with number cell and statement",
+  "second row open: filled steel-blue bar on top, two-column panel below with beige header strip ('usual cause' / 'what we design in')",
+  "a small pipe-elbow detail drawing with dimension lines in the right column"
+ ],
+ "layout_devices": [
+  "numbered row boxes with a narrow number cell divided by a vertical rule",
+  "open row filled steel blue with white text and a small red status dot",
+  "two-column expansion panel with header labels",
+  "inset fine-line engineering detail of a pipe fitting with dimension callouts",
+  "title block with sheet number",
+  "spacing gaps between rows like index cards"
+ ],
+ "palette": [
+  "warm off-white limestone sheet",
+  "deep navy text and borders",
+  "steel-blue filled open row",
+  "sand beige expansion header strip",
+  "small coral-red indicator dot"
+ ],
+ "typography": [
+  "light-to-regular geometric sans headline in sentence case",
+  "mono numerals 01-06",
+  "regular sans row statements with numbers and units inline",
+  "lowercase sans column labels",
+  "small sans body text"
+ ],
+ "rendering": [
+  "flat vector UI",
+  "1 px line detail drawing"
+ ],
+ "line_and_texture": [
+  "thin navy box borders",
+  "hairline sheet border",
+  "fine dimension lines on detail",
+  "no shadows",
+  "flat paper"
+ ],
+ "motifs": [
+  "drawing sheet",
+  "title block",
+  "pipe elbow detail",
+  "numbered fault",
+  "dimension callout"
+ ],
+ "ui_patterns": [
+  "accordion",
+  "expanded row with two-column content",
+  "status indicator dot",
+  "numbered list"
+ ],
+ "motion_implied": [
+  "row unfolds to reveal cause and control",
+  "highlight bar slides to the open row",
+  "detail drawing draws in when opened"
+ ],
+ "mood": [
+  "sober",
+  "clear",
+  "honest",
+  "precise",
+  "calm"
+ ],
+ "t2i_keywords": [
+  "flat UI mockup",
+  "no device frame",
+  "portrait drawing sheet",
+  "warm off-white paper",
+  "thin sheet border",
+  "title block with sheet number bottom right",
+  "sentence-case light sans headline",
+  "stacked numbered row boxes",
+  "mono numerals in a narrow number cell",
+  "accordion with one expanded row",
+  "steel-blue filled active row with white text",
+  "two-column expansion panel",
+  "sand beige header strip",
+  "small fine-line pipe fitting detail drawing",
+  "dimension lines",
+  "deep navy hairline borders",
+  "small red status dot",
+  "generous margins",
+  "square corners",
+  "flat vector",
+  "no shadows",
+  "engineering documentation",
+  "minimal palette",
+  "index-card row spacing",
+  "calm sober tone"
+ ],
+ "t2i_prompt": "Flat UI mockup, no device frame, of a <CONTENT> section on a portrait off-white paper drawing sheet with a thin border and a small title block with sheet number in the bottom-right corner. A two-line sentence-case light sans headline with generous margin. Below, stacked numbered row boxes in deep navy hairlines, each with a mono numeral in a narrow cell and a one-line statement. One row is open: a steel-blue filled bar with white text, then a two-column panel with a sand-beige header strip and a small fine-line pipe-fitting detail drawing with dimension lines. Square corners, no shadows, calm spacing.",
+ "signature_idea": "Failure modes listed as numbered sheet rows that unfold into cause versus design control, with a detail drawing as proof.",
+ "strengths": [
+  "honest framing (where things fail) builds credibility with validation leads",
+  "very readable rows with numbers and units in the statement",
+  "one open row at a time keeps it calm",
+  "headline weight is close to Geist light"
+ ],
+ "weaknesses": [
+  "red status dot and beige strip introduce colours outside the palette",
+  "steel-blue filled bar is a heavy use of the single accent",
+  "expanded body text is placeholder gibberish",
+  "detail drawing small and generic"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Limestone sheet, navy lines, steel-blue accent, square corners and calm space fit; the red dot and beige strip stray outside the one-accent palette."
+}

@@ -1,0 +1,122 @@
+{
+ "file": "39-concept-keyfacts.png",
+ "prompted_for": "Key facts under a page header (became KeyFacts: numbered cells on a measurement strip, value with unit and its source)",
+ "section_kind": "spec/limits",
+ "style_family": "graph-paper measurement strip",
+ "art_direction": [
+  "instrument ruler strip",
+  "graph paper ground",
+  "big mono figures",
+  "spec readout",
+  "desktop plus mobile spread"
+ ],
+ "composition": [
+  "large caps section heading above a single horizontal strip of six cells",
+  "strip sits on a ruler with tick marks above and below and a dimension line across the top",
+  "big figure centred in each cell, unit beneath, source line at the bottom",
+  "lots of empty graph-paper space below the strip",
+  "mobile view stacks the cells vertically with a small dial in each"
+ ],
+ "layout_devices": [
+  "measurement ruler with dense tick marks framing the cells",
+  "numbered cell labels '01 / CONDUCTIVITY'",
+  "small circular dial / gauge icons beside figures",
+  "round bolt or pin markers at cell junctions",
+  "dimension arrow line spanning the strip",
+  "cell footers with source / method",
+  "dotted vertical divider between desktop and mobile"
+ ],
+ "palette": [
+  "warm off-white limestone ground",
+  "faint grey-blue graph-paper grid",
+  "deep navy figures, labels and rules",
+  "steel-blue units and secondary words"
+ ],
+ "typography": [
+  "large mono-style figures with comparison symbols (≤, <)",
+  "steel-blue units set smaller beside or beneath",
+  "condensed caps section heading",
+  "small mono caps cell labels",
+  "small mono source lines"
+ ],
+ "rendering": [
+  "flat vector",
+  "1 px line art",
+  "UI mockup with subtle drop shadow on the page panel"
+ ],
+ "line_and_texture": [
+  "fine millimetre graph-paper grid",
+  "dense ruler ticks",
+  "thin navy cell borders",
+  "soft drop shadow under the page panels"
+ ],
+ "motifs": [
+  "ruler",
+  "dial gauge",
+  "graph paper",
+  "measurement figure with unit",
+  "pins / rivets"
+ ],
+ "ui_patterns": [
+  "stat / KPI strip",
+  "stacked stat cards on mobile",
+  "top nav",
+  "hamburger menu"
+ ],
+ "motion_implied": [
+  "figures count up to value",
+  "dial needles sweep to position",
+  "ruler ticks draw across",
+  "cells reveal left to right"
+ ],
+ "mood": [
+  "exact",
+  "measured",
+  "trustworthy",
+  "calm",
+  "technical"
+ ],
+ "t2i_keywords": [
+  "flat UI mockup",
+  "no device frame",
+  "key facts stat strip",
+  "row of numbered cells on a measurement ruler",
+  "dense ruler tick marks",
+  "dimension line with arrows",
+  "large mono figures with units",
+  "comparison symbols in figures",
+  "steel-blue unit labels",
+  "small circular dial gauge icons",
+  "fine graph-paper grid background",
+  "warm off-white paper",
+  "deep navy linework",
+  "single steel-blue accent",
+  "mono uppercase labels",
+  "source line under each value",
+  "pin markers at cell joints",
+  "stacked mobile cards beside desktop",
+  "thin 1 px strokes",
+  "square corners",
+  "generous negative space",
+  "instrument readout aesthetic",
+  "flat vector",
+  "subtle panel shadow",
+  "calm measured layout"
+ ],
+ "t2i_prompt": "Flat UI mockup, no device frame, of a key-facts strip for <CONTENT>. Warm off-white page on a fine graph-paper grid, deep navy 1 px linework, steel-blue for units only. A single horizontal strip of numbered cells mounted on a measurement ruler with dense tick marks above and below and a dimension line across the top; each cell has a small mono uppercase label, a large mono figure with a comparison symbol, its unit beneath in steel blue, a small dial gauge icon and a one-line source at the bottom. Pins at the cell joints. A stacked phone version beside it. Square corners, generous empty space.",
+ "signature_idea": "Key facts set as readings on a measurement ruler: each value with its unit, a dial and the method that verified it.",
+ "strengths": [
+  "figures with units and sources are exactly the brand's 'give the number' voice",
+  "compact, scannable, buildable as a component",
+  "ruler frame adds character without imagery",
+  "mobile stacking is natural"
+ ],
+ "weaknesses": [
+  "dial icons all identical and decorative",
+  "graph-paper grid can read as busy behind small text",
+  "heading in heavy caps rather than light",
+  "pins and ruler on both edges add visual noise"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Mono figures, navy on limestone, steel-blue units and square corners fit tightly; caps heading and graph-paper busyness weaken the calm."
+}

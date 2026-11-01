@@ -1,0 +1,120 @@
+{
+ "file": "54-concept-explainer-drawing.png",
+ "prompted_for": "One idea explained by a drawing and callouts (Prose as explainer)",
+ "section_kind": "process diagram",
+ "style_family": "split sheet explainer",
+ "art_direction": [
+  "editorial explainer",
+  "drawing sheet bleeding off edge",
+  "navy page with paper insert",
+  "numbered notes column",
+  "measured diagram"
+ ],
+ "composition": [
+  "navy page with nav bar and large light headline",
+  "limestone drawing sheet bleeding off the left edge, two-thirds width",
+  "right column of three numbered notes divided by thin rules",
+  "block diagram and two test-tube level columns in the sheet",
+  "small outlined CTA centred below"
+ ],
+ "layout_devices": [
+  "block flow boxes with arrows",
+  "two vertical graduated columns comparing levels",
+  "dashed red limit line across columns",
+  "curved callout arrow with annotation",
+  "large outline mono numerals 01-03",
+  "label box in sheet corner"
+ ],
+ "palette": [
+  "deep navy page ground",
+  "limestone sheet",
+  "navy linework",
+  "steel-blue fills and annotations",
+  "a single red dashed limit line"
+ ],
+ "typography": [
+  "light grotesk sentence-case headline",
+  "large light mono numerals",
+  "uppercase mono note titles",
+  "regular sans body",
+  "mono figures on limit"
+ ],
+ "rendering": [
+  "flat vector",
+  "hairline diagram",
+  "graduated cylinder drawing"
+ ],
+ "line_and_texture": [
+  "1 px lines",
+  "faint construction grid lines on sheet",
+  "dashed limit line",
+  "no texture"
+ ],
+ "motifs": [
+  "block diagram",
+  "graduated column",
+  "limit line",
+  "callout arrow",
+  "numbered notes"
+ ],
+ "ui_patterns": [
+  "sticky visual with scrolling notes",
+  "split layout",
+  "hamburger nav",
+  "outlined CTA"
+ ],
+ "motion_implied": [
+  "columns fill to their levels",
+  "limit line draws across",
+  "notes highlight parts of drawing as you scroll"
+ ],
+ "mood": [
+  "explanatory",
+  "calm",
+  "confident",
+  "clear"
+ ],
+ "t2i_keywords": [
+  "split layout explainer section",
+  "limestone drawing sheet bleeding off the left edge",
+  "deep navy page background",
+  "large light grotesk headline",
+  "numbered notes column on the right",
+  "large light monospace numerals",
+  "thin dividing rules",
+  "simple block flow diagram with arrows",
+  "two graduated cylinder level indicators",
+  "dashed red limit line",
+  "steel-blue fill levels",
+  "curved callout arrow",
+  "hairline 1 px strokes",
+  "faint construction grid",
+  "flat vector",
+  "generous negative space",
+  "editorial technical diagram",
+  "outlined ghost button",
+  "portrait web mockup",
+  "calm explanatory mood",
+  "navy limestone steel-blue palette",
+  "square corners",
+  "sticky visual beside notes",
+  "uppercase monospace note titles",
+  "hamburger navigation bar",
+  "thin vertical column rules"
+ ],
+ "t2i_prompt": "Flat vector web section on a deep navy page. Large light grotesk sentence-case headline top-left. A limestone drawing sheet with faint construction grid lines bleeds off the left edge and holds a hairline navy diagram: simple boxes and arrows, plus two graduated vertical columns filled to different steel-blue levels, crossed by one dashed red limit line with a mono label and a curved callout arrow. On the right, a column of numbered notes with large light mono numerals and thin dividing rules. <CONTENT>. Generous space, no shadows.",
+ "signature_idea": "One technical claim proven by a single drawing, with three numbered notes beside it.",
+ "strengths": [
+  "clear sticky-visual-plus-notes pattern",
+  "light headline and mono numerals on brand",
+  "bleeding sheet adds depth and rhythm"
+ ],
+ "weaknesses": [
+  "red limit line adds an off-palette colour",
+  "diagram boxes look rough",
+  "body text in notes is long",
+  "sheet crop may confuse on phone"
+ ],
+ "brand_fit": 5,
+ "brand_fit_why": "Navy and limestone, Geist-like light headline, mono numerals, square frames and space used deliberately; only the red limit line strays."
+}

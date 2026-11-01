@@ -1,0 +1,125 @@
+{
+ "file": "84-p9-services-1.png",
+ "prompted_for": "'How long each stage takes, and what it leaves' section on the Services page; art direction: macro detail, an extreme close-up illustration (weld bead, water surface, membrane layers) with overlaid callouts; stages design, fabrication, FAT, installation and SAT, IQ/OQ, PQ with durations and deliverables",
+ "section_kind": "steps/timeline",
+ "style_family": "macro photo with dark annotations",
+ "art_direction": [
+  "macro detail",
+  "extreme close-up of a weld/pipe",
+  "dark moody navy",
+  "overlaid technical callouts",
+  "rising timeline"
+ ],
+ "composition": [
+  "light headline and intro top left on navy",
+  "a large blurred monochrome macro image of a curving glossy pipe or weld seam sweeps vertically through the centre-right",
+  "dotted timeline rises from left middle toward the upper right with hold-point nodes",
+  "stage labels and bullet notes float around the line, some overlapping the macro image",
+  "PQ duration set as the final boxed figure 'AT LEAST 12 MONTHS'",
+  "mono footer line bottom left, registration crosshair bottom right"
+ ],
+ "layout_devices": [
+  "dotted rising timeline with circular hold-point nodes",
+  "slash-numbered stage titles 01 / Design ...",
+  "mono quoted duration labels with bracketed unit placeholders",
+  "vertical tick lines dropping from labels to the axis",
+  "boxed key figure in corner brackets",
+  "crosshair registration mark",
+  "macro image as a full-height backdrop band"
+ ],
+ "palette": [
+  "deep navy ground",
+  "cold silver-blue monochrome macro photography",
+  "white and pale grey text",
+  "steel-blue dotted line and glowing nodes",
+  "muted blue-grey bracket units"
+ ],
+ "typography": [
+  "light sans headline sentence case (Geist-light-like)",
+  "regular sans stage titles with slash numbers",
+  "mono caps duration labels in quotes",
+  "small bullet body copy",
+  "large mono boxed figure",
+  "mono caps header/footer strings"
+ ],
+ "rendering": [
+  "photo-real macro with shallow depth of field and motion blur",
+  "flat vector overlay lines and text",
+  "soft glow on nodes"
+ ],
+ "line_and_texture": [
+  "dotted 1px timeline",
+  "hairline vertical ticks",
+  "glossy specular highlights on metal-like surface",
+  "mesh/weave texture at bottom of macro",
+  "corner brackets"
+ ],
+ "motifs": [
+  "weld bead / curving pipe",
+  "hold points",
+  "timeline",
+  "crosshair"
+ ],
+ "ui_patterns": [
+  "timeline / stepper with nodes",
+  "stat callout box",
+  "annotated hero image"
+ ],
+ "motion_implied": [
+  "dot travels up the timeline pausing at each hold point",
+  "macro image slowly pans or racks focus",
+  "stage labels fade in as the dot reaches them",
+  "12 months counter ticks"
+ ],
+ "mood": [
+  "moody",
+  "cinematic",
+  "serious",
+  "technical",
+  "dramatic"
+ ],
+ "t2i_keywords": [
+  "extreme macro close-up photograph",
+  "glossy curving pipe or weld seam",
+  "shallow depth of field",
+  "monochrome silver-blue tones",
+  "deep navy background",
+  "cinematic low-key lighting",
+  "dotted rising timeline overlay",
+  "circular hold-point nodes with soft glow",
+  "slash-numbered stage labels",
+  "monospace quoted duration labels",
+  "bracketed unit tags",
+  "hairline vertical tick lines",
+  "boxed key figure with corner brackets",
+  "registration crosshair mark",
+  "light-weight sans-serif headline",
+  "annotations overlaid on photo",
+  "dark technical HUD feel",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "generous negative space left",
+  "moody industrial",
+  "silver-blue specular highlights",
+  "motion blur on subject",
+  "final stat in large mono",
+  "mono caps footer caption"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on deep navy. Light-weight sans-serif headline top left. A large extreme macro close-up of a glossy curving pipe weld seam in cold silver-blue monochrome, shallow depth of field, sweeps vertically through the centre-right. Over it, a dotted steel-blue timeline rises from left to upper right with glowing circular nodes, each stage of <CONTENT> labelled with a slash number, a monospace quoted duration and short bullets. The final figure sits in a box with corner brackets. Registration crosshair, mono footer caption.",
+ "signature_idea": "A rising timeline of hold points is drawn over a macro weld, so schedule and craftsmanship read in one image.",
+ "strengths": [
+  "rising timeline with hold points is a clear model for stage durations",
+  "light headline, mono durations and navy palette are on-brand",
+  "boxed 12-month PQ figure gives a strong anchor",
+  "macro weld evokes fabrication quality"
+ ],
+ "weaknesses": [
+  "text overlaps the busy macro image and becomes hard to read",
+  "stages are duplicated and mislabelled (two FAT, two Fabrication), clutter",
+  "photo-real glossy macro looks like stainless or chrome, not polypropylene",
+  "cinematic blur is moodier than calm, precise brand",
+  "timeline order zigzags rather than reading left to right cleanly"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Navy, light headline, mono figures and hairline overlays fit, but the dark photo-real macro and overlapping labels lose the calm, legible, line-art precision."
+}

@@ -1,0 +1,124 @@
+{
+ "file": "33-concept-linkgrid.png",
+ "prompted_for": "A set of choices that is not a card grid (original of concept-q-grid; became LinkGrid: staggered numbered choices joined by one routed line)",
+ "section_kind": "router",
+ "style_family": "limestone pipe-route index",
+ "art_direction": [
+  "routed pipe diagram",
+  "numbered index",
+  "light limestone sheet",
+  "small line icons",
+  "desktop and mobile pair"
+ ],
+ "composition": [
+  "six numbered choices staggered in two alternating columns, zig-zag down the sheet",
+  "one double-line pipe route snakes between items, left to right and back",
+  "small line icon right of each title",
+  "header with logo, breadcrumb and arrow",
+  "registration crosses at sheet corners and midpoints",
+  "mobile: vertical navy rail with dots, numbers left, titles and icons right, arrow at bottom"
+ ],
+ "layout_devices": [
+  "double-line pipe route with arrowheads linking items in sequence (serpentine)",
+  "dot nodes where the route meets each item",
+  "staggered zig-zag placement",
+  "big steel-blue mono numerals with slash before title",
+  "vertical timeline rail on mobile",
+  "crosshair registration marks"
+ ],
+ "palette": [
+  "warm limestone off-white ground",
+  "slightly lighter limestone sheet",
+  "deep navy titles and mobile rail",
+  "steel-blue numerals, nodes and route lines",
+  "dark grey body text"
+ ],
+ "typography": [
+  "light-to-regular condensed sans caps titles",
+  "steel-blue monospace numerals, larger than titles",
+  "small regular sans descriptions in sentence case",
+  "monospace bracketed view labels and breadcrumb"
+ ],
+ "rendering": [
+  "flat vector UI mockup",
+  "line icons",
+  "no shading"
+ ],
+ "line_and_texture": [
+  "1-1.5 px double-line pipe route with rounded bends",
+  "thin single connector lines with dot ends",
+  "small plus-shaped registration marks",
+  "flat ground, soft panel shadow"
+ ],
+ "motifs": [
+  "pipe route",
+  "water drop",
+  "tank",
+  "pipe elbow",
+  "gauge",
+  "clipboard with shield",
+  "funnel / filter",
+  "numbered stops"
+ ],
+ "ui_patterns": [
+  "link list",
+  "router / choose an operation",
+  "vertical timeline on mobile",
+  "icon + title + description rows"
+ ],
+ "motion_implied": [
+  "water travels the pipe route from 01 to 06",
+  "each node lights as the flow passes",
+  "mobile rail fills as you scroll"
+ ],
+ "mood": [
+  "clear",
+  "guided",
+  "calm",
+  "systematic",
+  "light"
+ ],
+ "t2i_keywords": [
+  "flat UI mockup",
+  "warm limestone off-white background",
+  "staggered zig-zag list of numbered items",
+  "double-line pipe route snaking between items",
+  "rounded pipe bends",
+  "arrowheads along the route",
+  "dot nodes at each item",
+  "steel-blue monospace numerals",
+  "deep navy condensed caps titles",
+  "short sentence-case descriptions",
+  "small line icons beside titles",
+  "registration cross marks",
+  "engineering sheet aesthetic",
+  "generous whitespace",
+  "two-colour palette with steel-blue accent",
+  "vertical timeline rail on mobile",
+  "desktop and mobile views side by side",
+  "no device frame",
+  "no people",
+  "serpentine flow layout",
+  "thin precise lines",
+  "square-cornered sheet",
+  "slash separator before title",
+  "monospace bracketed labels",
+  "soft panel shadow"
+ ],
+ "t2i_prompt": "Flat desktop UI mockup with a narrow mobile view beside it, no device frame, no people. Warm limestone off-white sheet with small registration crosses at the corners and a header of logo, monospace breadcrumb and arrow. Six numbered items of <CONTENT> staggered in a zig-zag across two columns, each with a large steel-blue monospace numeral, a deep navy condensed caps title, a short sentence-case line and a small line icon. One thin double-line pipe route with rounded bends and arrowheads snakes from item to item, meeting each at a dot node. Mobile turns it into a vertical rail with dots.",
+ "signature_idea": "Choices threaded on one snaking pipe route, so picking a link feels like following the water from stop to stop.",
+ "strengths": [
+  "avoids a card grid while staying very scannable",
+  "the pipe route ties navigation to the water-path brand metaphor",
+  "light palette with one steel-blue accent is close to the brand",
+  "mobile rail translation is clean"
+ ],
+ "weaknesses": [
+  "route direction is arbitrary relative to the content order",
+  "generic icons (shield clipboard, funnel) feel stock",
+  "some lines crossing between items read as clutter",
+  "stainless and SCADA copy is off-offer (ignore)"
+ ],
+ "brand_fit": 4,
+ "brand_fit_why": "Navy on limestone with one steel-blue accent, mono numerals, thin precise lines and air fit well; condensed caps titles and stock icons are the only drift."
+}

@@ -1,0 +1,127 @@
+{
+ "file": "81-p9-sys-pw-3.png",
+ "prompted_for": "'Documents with the skid' section on the Purified Water (PW) generation page; art direction: soft 3D product render, white polypropylene equipment and translucent water, studio lighting, crisp UI annotations; documents: FAT and SAT protocols and reports, material certificates, joint records, P&IDs and general arrangement",
+ "section_kind": "documents",
+ "style_family": "soft 3D product render with cards",
+ "art_direction": [
+  "soft 3D product render",
+  "white polypropylene equipment",
+  "translucent water in housings",
+  "hotspot-annotated hero object",
+  "floating document cards"
+ ],
+ "composition": [
+  "breadcrumb and light headline top left with a short intro line",
+  "central render of a white PP skid with membrane housings on a white plinth, floating over navy",
+  "two cards flank the render at mid height, connected by thin leader lines to glowing hotspot dots",
+  "a row of four equal cards across the bottom",
+  "navy ground fades to a warm grey-gold glow at top right",
+  "upper cards duplicate two of the bottom cards"
+ ],
+ "layout_devices": [
+  "hotspot dots on the equipment linked by right-angle leader lines to cards",
+  "numbered card eyebrows in mono (01 / VALIDATION PACK)",
+  "plus and arrow icons in card corners",
+  "small pill badges and stamp-like outlined labels inside cards",
+  "faint dimension marks and coordinate numbers in the background",
+  "dot-matrix QR-like corner textures on cards",
+  "one card selected with a blue outline"
+ ],
+ "palette": [
+  "deep navy ground with a warm grey-gold light leak top right",
+  "limestone and paper-white cards",
+  "glossy white PP equipment with pale blue translucent water",
+  "steel-blue hotspot glows, selected outline and pill badges",
+  "navy body text on cards"
+ ],
+ "typography": [
+  "light grotesk headline in sentence case",
+  "mono eyebrows and breadcrumb in caps",
+  "medium sans card titles",
+  "small mono status line (100% weld parameters recorded)",
+  "pill badges in mono caps"
+ ],
+ "rendering": [
+  "soft 3D render with studio lighting and soft contact shadow",
+  "flat UI cards with subtle drop shadow",
+  "glow on hotspots"
+ ],
+ "line_and_texture": [
+  "thin leader lines",
+  "faint dimension ticks and coordinates in negative space",
+  "soft gradient background",
+  "dot-matrix patterns on card corners",
+  "subtle card shadows"
+ ],
+ "motifs": [
+  "white PP skid with cylindrical membrane housings",
+  "hotspots",
+  "document cards",
+  "certificate stamp label",
+  "badges"
+ ],
+ "ui_patterns": [
+  "hotspot callouts on a product",
+  "card grid with plus to expand",
+  "selected card state",
+  "breadcrumb",
+  "pill status badges"
+ ],
+ "motion_implied": [
+  "hotspots pulse",
+  "leader lines draw from hotspot to card",
+  "skid rotates slightly on hover",
+  "cards expand on plus"
+ ],
+ "mood": [
+  "polished",
+  "tangible",
+  "reassuring",
+  "modern",
+  "premium"
+ ],
+ "t2i_keywords": [
+  "soft 3D product render",
+  "white polypropylene equipment skid",
+  "translucent water inside cylindrical housings",
+  "soft studio lighting",
+  "soft contact shadow on white plinth",
+  "deep navy background with warm light leak",
+  "hotspot dots with steel-blue glow",
+  "thin right-angle leader lines to cards",
+  "floating document cards in limestone",
+  "mono numbered card eyebrows",
+  "light-weight sans-serif headline",
+  "pill status badges",
+  "outlined stamp label",
+  "faint dimension marks in background",
+  "dot-matrix corner texture",
+  "plus icon card corners",
+  "row of four equal cards",
+  "hero object centred",
+  "subtle card drop shadows",
+  "crisp UI annotations over render",
+  "1440 px desktop section",
+  "straight-on flat UI mockup",
+  "premium product page look",
+  "selected card with steel-blue outline",
+  "breadcrumb trail in mono caps"
+ ],
+ "t2i_prompt": "A 1440 px wide desktop web section as a flat straight-on UI mockup on a deep navy background with a soft warm light leak at the top right. Mono breadcrumb and light-weight sans-serif headline top left. Centre: a soft 3D studio render of white polypropylene equipment with translucent water in cylindrical housings on a white plinth, soft contact shadow. Glowing steel-blue hotspot dots on the equipment connect by thin right-angle leader lines to limestone cards with mono numbered eyebrows and plus icons. A row of four equal cards across the bottom for <CONTENT>. Faint dimension ticks in the negative space.",
+ "signature_idea": "The skid itself is the index: hotspots on a white PP render lead to the document each part generates.",
+ "strengths": [
+  "ties each document to physical equipment, good for validation readers",
+  "white PP render shows the material story directly",
+  "cards with mono eyebrows and plus icons translate to an accordion/card component",
+  "light headline and navy ground on-brand"
+ ],
+ "weaknesses": [
+  "duplicate cards (top and bottom repeat) cause confusion",
+  "glossy render with drop shadows and warm glow is softer and more consumer than the line-art brand",
+  "hype copy invented by the model ('Seamless validation', compliance badges) violates voice",
+  "rounded-looking soft shadows and pills drift from square, flat system",
+  "render is costly to produce for real"
+ ],
+ "brand_fit": 3,
+ "brand_fit_why": "Navy, limestone cards, light headline and mono labels fit, but the glossy 3D render, glows, shadows and pill badges are softer and more decorative than the precise, flat, square brand."
+}
