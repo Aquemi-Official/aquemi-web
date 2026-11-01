@@ -50,12 +50,34 @@ The identity has three parts: the **wordmark**, the **mark**, and the **lockup**
 
 Four dots on a 2 × 2 grid, two of them joined on the diagonal by a wave. It distils the wordmark's one flowing line: the dots are the drops, and the wave is the swash from *e* into *m*.
 
-- **Geometry is fixed.** The dots sit on an exact grid and the wave's concave edges are arcs centred on the two free dots, so the gap is even all round. Beside the wordmark, the mark is as tall as the *a*, and the wave's narrowest point sits between the wordmark's hairline and its *e*-to-*m* swash. Use the supplied files; never redraw, re-space or rotate it.
+- **Geometry is fixed.** The dots sit on an exact grid and the wave's concave edges are arcs centred on the two free dots, so the gap is even all round. Beside the wordmark, the mark is as tall as the *a*, and the wave's narrowest point sits between the wordmark's hairline and its *e*-to-*m* swash. Use the supplied files; never redraw, re-space or rotate it. The one exception is the mark's own animation (The mark in motion, below), which moves the dots and always comes to rest on the supplied geometry.
 - **Colours:** `aquemi-mark-navy.svg` on light grounds, `aquemi-mark-limestone.svg` on `navy`. One colour only; never fill the dots in different colours.
 - **Clear space:** half the mark's width on every side.
 - **Minimum size:** 16 px on screen (favicon), 6 mm in print.
 - **Use it alone** where space is square or tiny: favicons, app icons, profile pictures, equipment badges, document footers, social avatars. Everywhere else, prefer the wordmark or the lockup.
 - **One large use on the site:** the closing band carries the mark large and faint (`aquemi-mark-limestone` geometry in `limestone` at 6 %, `min(44%, 640px)` wide), its centre 15 % of its width inside the band's top-left corner so the edges cut the outer dots, fading away from the corner and ending before the headline. Clear space and minimum size do not apply to this watermark; nothing else on the site shows the mark this way.
+
+### The mark in motion
+
+The mark has one animation, **Spread**: a single drop at the centre divides like water into the mark. It is the only way the mark moves.
+
+- **The movement.** The four dots start stacked as one drop at the centre and travel out along the diagonals to the grid. The two dots the wave joins stay connected the whole way: the wave's concave edges keep the mark's own rule (arcs centred on the two free dots), so the neck starts as wide as a drop and narrows steadily to the wave's waist. The free dots pull away and separate. A light liquid softening shows only while all four dots still overlap, and is gone before they land. The animation ends on the supplied mark exactly, never on an approximation.
+- **Timing.** Hold the single drop for 0.2 s, then spread in 0.45 s on the brand ease `cubic-bezier(0.2, 0, 0, 1)`. Played once, the full mark is in place at about 0.65 s. As a loader it loops every 3.2 s: the mark holds for 2 s, then gathers back to the centre in 0.5 s on `cubic-bezier(0.4, 0, 0.2, 1)` and spreads again.
+- **Where to use it:**
+  - once, as an intro: the site's first load, splash screens and video idents;
+  - looping, as a loading indicator: waits of more than about half a second, at 16 px and up.
+  
+  Loop it only while something is actually loading, never as decoration.
+- **In the lockup** the mark animates in its fixed place and the wordmark stays still.
+- **One colour,** as for the still mark: navy on light grounds, limestone on `navy`.
+- **Reduced motion.** With `prefers-reduced-motion`, show the still mark. A loader may pulse its opacity slowly (2.4 s, between 100 % and 45 %).
+- **Distance.** Each dot travels a quarter of the mark's width, about 23 px when the mark is 120 px wide. This is the one exception to the 16 px limit in Motion.
+- **Don't:**
+  - spin, bounce, scale or recolour the mark;
+  - animate the wordmark;
+  - animate the closing band's faint mark;
+  - change the timing to make it feel livelier.
+- **Reference:** option E on the mark motion board, https://aquemi-official.github.io/aquemi-web/design-system/inspiration/mark-motion.html (in the repo, `design-system/inspiration/mark-motion.html`). It is drawn from the mark's geometry on every frame; the other options on that board were not chosen.
 
 ### The lockup
 
@@ -163,7 +185,7 @@ The swash in the wordmark is a quarter-arc rising into a straight stem. The site
 Motion should feel like steady flow: slow, smooth and purposeful.
 
 - Durations 200 ms for controls, 400–600 ms for section reveals. Ease `cubic-bezier(0.2, 0, 0, 1)`.
-- Fade and translate by at most 16 px. No bounce, no scale-pop, no parallax on text.
+- Fade and translate by at most 16 px. No bounce, no scale-pop, no parallax on text. The mark's own animation is the one exception (The mark in motion).
 - Respect `prefers-reduced-motion`: drop translation and keep only opacity.
 
 ### States
