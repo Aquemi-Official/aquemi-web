@@ -399,6 +399,26 @@
    "summary": "LinkGrid sets out a list of choices (services, industries, systems, upgrade types) as rows of the shared list grammar: index, title with an arrow when it links, one line, an optional standard tag, and the linked page's icon at the row end on desktop."
   },
   {
+   "name": "LoopCircuit",
+   "readme": "design-system/components/LoopCircuit/README.md",
+   "preview": "design-system/components/LoopCircuit/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1100",
+   "subtitle": "PW storage and distribution loop as an HMI mimic, seven stages tagged",
+   "summary": "LoopCircuit draws how a storage and distribution loop works as the loop's own control screen: an HMI mimic of the tank in section and the loop circuit, every stage tagged on the screen and listed under it."
+  },
+  {
+   "name": "LoopDock",
+   "readme": "design-system/components/LoopDock/README.md",
+   "preview": "design-system/components/LoopDock/preview.html",
+   "group": "Page sections",
+   "height": "800",
+   "width": "1100",
+   "subtitle": "Three loop options marked on one isometric loop",
+   "summary": "LoopDock shows a loop's options where they fit on the loop: one isometric storage and distribution loop on a limestone band, a numbered marker on the part each option adds, the options as cards beside it."
+  },
+  {
    "name": "MacroLeaders",
    "readme": "design-system/components/MacroLeaders/README.md",
    "preview": "design-system/components/MacroLeaders/preview.html",
@@ -447,6 +467,16 @@
    "width": "1280",
    "subtitle": "RO feed targets as a bento round the feed end of a spiral-wound RO element",
    "summary": "MembraneFace sets a short list of feed-water targets as a bento round the thing they protect: the feed end of a spiral-wound reverse osmosis element, drawn large on navy, with one target per tile around it."
+  },
+  {
+   "name": "MethodBento",
+   "readme": "design-system/components/MethodBento/README.md",
+   "preview": "design-system/components/MethodBento/preview.html",
+   "group": "Page sections",
+   "height": "1100",
+   "width": "1100",
+   "subtitle": "Chemical, hot water or UV as drawn tiles; ozone as the empty slot",
+   "summary": "MethodBento sets a short comparison of methods as a bento of drawn tiles, one per method, with the method that is not offered shown as an empty dashed tile."
   },
   {
    "name": "NotesRegister",
@@ -639,6 +669,16 @@
    "summary": "Router lets a buyer pick the situation they are in and see one route through what follows: the water they need, the system, and where to start with us."
   },
   {
+   "name": "RuleFigures",
+   "readme": "design-system/components/RuleFigures/README.md",
+   "preview": "design-system/components/RuleFigures/preview.html",
+   "group": "Page sections",
+   "height": "1500",
+   "width": "1100",
+   "subtitle": "Seven PW loop design rules, each with its engineering figure; turbulent flow as the lead",
+   "summary": "RuleFigures sets a spec block of design rules as a Swiss rule sheet in which every rule is explained by a small engineering figure, the lead rule as a full-width band beside a pipe cut open to show turbulent flow."
+  },
+  {
    "name": "SectionTrain",
    "readme": "design-system/components/SectionTrain/README.md",
    "preview": "design-system/components/SectionTrain/preview.html",
@@ -667,6 +707,16 @@
    "width": "1280",
    "subtitle": "Pretreatment documents as a Swiss row of sheets, each thumbnail showing its kind",
    "summary": "SheetPreviews sets a short document list as a Swiss row of sheets: a huge index numeral, a paper sheet whose thumbnail shows what kind of document it is, then its code, name and line."
+  },
+  {
+   "name": "SheetStack",
+   "readme": "design-system/components/SheetStack/README.md",
+   "preview": "design-system/components/SheetStack/preview.html",
+   "group": "Page sections",
+   "height": "980",
+   "width": "1100",
+   "subtitle": "Four loop documents as an exploded stack of drawing sheets",
+   "summary": "SheetStack shows the documents delivered with a system as an exploded stack of isometric drawing sheets, each sheet drawing in miniature what the document is, its row beside it."
   },
   {
    "name": "StairRouter",
@@ -737,6 +787,16 @@
    "width": "1280",
    "subtitle": "Home: the package as one water line through pretreatment, PW generation, storage and monitoring, a navy blueprint",
    "summary": "SystemRun shows a modular package as one continuous water line drawn as a navy blueprint: drinking water enters at the left, runs through each system's equipment in order and leaves at the point of use, with a column per system under the drawing."
+  },
+  {
+   "name": "TankSection",
+   "readme": "design-system/components/TankSection/README.md",
+   "preview": "design-system/components/TankSection/preview.html",
+   "group": "Page sections",
+   "height": "1150",
+   "width": "1100",
+   "subtitle": "PP storage tank in section with six callouts and a parts schedule",
+   "summary": "TankSection reads fabrication parameters off a blueprint of the storage tank cut in half on a navy band, each parameter a numbered callout on the part it governs and the rest in a parts schedule."
   },
   {
    "name": "Versus",

@@ -2000,6 +2000,124 @@ LOOKS['limit-stack']=function(b,H){
   +'<span class="aq-limit-stack__outlet" aria-hidden="true" style="'+pos(P.out)+'">Skid outlet</span>'
   +(b.intro?'<figcaption class="aq-limit-stack__note aq-limit-stack__note--'+P.side+'" style="'+pos(P.note)+'">'+tx(b.intro)+'</figcaption>':'')+'</figure>';
  return sec('<div class="aq-limit-stack">'+'<div class="aq-limit-stack__text">'+head+list+wSpecNote(b)+'</div>'+fig+'</div>','aq-band--limestone aq-limit-stack-sec')};
+/* Look "loop-circuit" -> LoopCircuit (design-system/components/LoopCircuit): how a storage and distribution loop works,
+   drawn as the loop's own control screen (an HMI mimic on a dark navy band). The tank is shown in section: vent filter
+   on the head, spray ball wetting the head space, the water level inside. Generation feeds it from the left; the loop
+   leaves at the bottom through the pump and heat exchanger, runs out and up, back along the top past the points of use
+   (zero-static valves, each with its drop) and the return sensors (instrument bubbles CE, TE, FE and a dashed AE for
+   TOC), and comes home through the spray ball. Each stage has a numbered tag on the screen; the stages are listed
+   under the screen in the same order, and pointing at one lights its tag and equipment.
+   Phones: the screen gives way to a vertical circuit: the stages down a flow rail with their line glyphs, a return
+   line running back up to the tank.
+   Fields (a diagram block): h, stages (or items) [{t, d, spot | icon, node}]. node: which part of the mimic the stage
+   is: gen, tank, pump, hx, pou, sensors, spray (default by position in that order). Optional block field screen:
+   the screen's title (default the page's nav label). */
+(function(){
+var NODE=['gen','tank','pump','hx','pou','sensors','spray'];
+/* tag centre, leader end (or none) and the point on the water path where the stage sits */
+var TAG={gen:{c:[64,30],at:[0,60]},tank:{c:[340,320],l:[284,320],at:[200,440]},pump:{c:[360,540],l:[360,510],at:[360,480]},
+ hx:{c:[540,540],l:[540,512],at:[540,480]},pou:{c:[820,206],l:[820,180],at:[820,110]},sensors:{c:[470,18],l:[470,30],at:[470,110]},
+ spray:{c:[64,194],l:[190,194],at:[200,194]}};
+var LOOP='M200 440V480H1100A40 40 0 0 0 1140 440V150A40 40 0 0 0 1100 110H240V178H200V186',FEED='M0 60H160V156';
+var K='aq-loop-circuit';function P(d,c,x){return '<path class="'+K+'__'+c+'"'+(x||'')+' d="'+d+'"/>'}
+function mimic(nodes,nums){
+ var g='';
+ /* pipes, then the water line over them; equipment is filled, so it sits over both */
+ g+=P(FEED,'pipe')+P('M200 440V480H1100A40 40 0 0 0 1140 440V150A40 40 0 0 0 1100 110H240V156','pipe');
+ g+=P(FEED,'flow aq-loop-circuit__flow--feed')+P(LOOP,'flow aq-loop-circuit__flow--loop');
+ [[700,480,'r'],[940,480,'r'],[1140,300,'u'],[1060,110,'l'],[600,110,'l'],[300,110,'l']].forEach(function(a){var x=a[0],y=a[1],d=a[2]==='r'?'M'+(x-5)+' '+(y-6)+'l8 6l-8 6':a[2]==='l'?'M'+(x+5)+' '+(y-6)+'l-8 6l8 6':'M'+(x-6)+' '+(y+5)+'l6 -8l6 8';g+=P(d,'chev')});
+ /* tank in section */
+ var tank='<g class="aq-loop-circuit__node" data-node="tank">'
+  +P('M120 200C120 162 160 150 200 150C240 150 280 162 280 200V400C280 430 240 440 200 440C160 440 120 430 120 400Z','eq')
+  +'<g class="aq-loop-circuit__water">'+P('M124 260H276','level');
+ for(var y=276;y<=420;y+=16)tank+=P('M'+(y>396?150:126)+' '+y+'H'+(y>396?250:274),'hatch');
+ tank+='</g>'+P('M160 156V140M152 140H168M240 156V140M232 140H248','ln')+'</g>';
+ var vent=P('M200 150V128','ln')+P('M186 84H214V128H186Z','eq')+P('M192 90V122M196 90V122M200 90V122M204 90V122M208 90V122','thin')+P('M200 80V64M195 69L200 64L205 69','thin');
+ var spray='<g class="aq-loop-circuit__node" data-node="spray">'+P('M240 156V178H200V186','hid')
+  +'<g class="aq-loop-circuit__spray">'+[[128,236],[136,262],[160,252],[200,246],[240,252],[264,262],[272,236],[150,206],[250,206]].map(function(q){return P('M200 194L'+q[0]+' '+q[1],'jet')}).join('')+'</g>'
+  +'<circle class="aq-loop-circuit__eq" cx="200" cy="194" r="8"/></g>';
+ var pump='<g class="aq-loop-circuit__node" data-node="pump"><circle class="aq-loop-circuit__eq" cx="360" cy="480" r="26"/>'+P('M360 454H386','ln')+P('M348 466L376 480L348 494Z','ln')+'</g>';
+ var hx='<g class="aq-loop-circuit__node" data-node="hx">'+P('M540 454V438M540 506V522','thin')+'<circle class="aq-loop-circuit__eq" cx="540" cy="480" r="26"/>'+P('M514 480L522 470L532 490L542 470L552 490L560 470L566 480','ln')+'</g>';
+ var pou='<g class="aq-loop-circuit__node" data-node="pou">'+P('M640 180H1000M640 174V186M1000 174V186','thin')+[1000,880,760,640].map(function(x){
+  return P('M'+(x-8)+' 118H'+(x+8)+'L'+(x-8)+' 136H'+(x+8)+'Z','eq')+P('M'+x+' 136V150','ln')+P('M'+x+' 158q-3 5 0 8q3-3 0-8','drop')}).join('')+'</g>';
+ var sens='<g class="aq-loop-circuit__node" data-node="sensors">'+P('M380 30H560M380 24V36M560 24V36','thin')+[['CE',560],['TE',500],['FE',440],['AE',380]].map(function(q,i){
+  return P('M'+q[1]+' 74V110','ln')+'<circle class="aq-loop-circuit__eq'+(i===3?' is-opt':'')+'" cx="'+q[1]+'" cy="58" r="16"/><text class="aq-loop-circuit__tx" x="'+q[1]+'" y="62">'+q[0]+'</text>'}).join('')+'</g>';
+ var gen='<g class="aq-loop-circuit__node" data-node="gen">'+P('M0 52V68','thin')+'</g>';
+ g+=gen+tank+vent+spray+pump+hx+pou+sens;
+ /* stage tags: numbered boxes with a short leader to the part */
+ g+=nodes.map(function(n,i){var T=TAG[n];if(!T)return '';var c=T.c;
+  return '<g class="aq-loop-circuit__tag" data-node="'+n+'" data-at="'+T.at.join(',')+'">'+(T.l?P('M'+(n==='tank'?c[0]-20:n==='spray'?c[0]+20:c[0])+' '+(n==='tank'||n==='spray'?c[1]:c[1]+(T.l[1]>c[1]?11:-11))+'L'+T.l[0]+' '+T.l[1],'lead'):'')
+   +'<rect x="'+(c[0]-20)+'" y="'+(c[1]-11)+'" width="40" height="22"/><text x="'+c[0]+'" y="'+(c[1]+5)+'">'+nums[i]+'</text></g>'}).join('');
+ return '<svg class="aq-loop-circuit__svg" viewBox="0 0 1200 560" aria-hidden="true" focusable="false">'+g+'</svg>'}
+LOOKS['loop-circuit']=function(b,H){
+ var I=b.stages||b.items||[],n=I.length,pg=wp(WP),nodes=I.map(function(it,i){return it.node||NODE[i]||''}),nums=I.map(function(it,i){return (i<9?'0':'')+(i+1)});
+ var head='<div class="aq-loop-circuit__bar" aria-hidden="true"><span class="aq-loop-circuit__lamp"></span><span>'+tx(b.screen||(pg&&pg.nav_label)||'')+'</span><span class="aq-loop-circuit__count">'+n+' '+e(b.fold_noun||'stages')+'</span></div>';
+ var screen='<div class="aq-loop-circuit__screen">'+head+'<div class="aq-loop-circuit__mimic">'+mimic(nodes,nums)+'</div></div>';
+ var list=I.map(function(it,i){var g=wSpot(it.spot||it.icon,'','aq-spot--on-navy aq-loop-circuit__glyph');
+  return '<li class="aq-loop-circuit__stage" data-node="'+e(nodes[i])+'"><span class="aq-loop-circuit__mark" aria-hidden="true">'+g+'</span>'
+   +'<p class="aq-loop-circuit__no" aria-hidden="true">'+nums[i]+'</p><h3 class="aq-loop-circuit__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-loop-circuit__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
+ var html=sec(H+'<div class="aq-loop-circuit" style="--n:'+n+'">'+screen+'<ol class="aq-loop-circuit__stages" role="list">'+list+'</ol></div>','aq-band--navy aq-loop-circuit-sec');
+ return html.replace(/^<section class="([^"]*)"/,'<section class="$1" data-theme="dark"')};
+/* Pointing at a stage lights its tag and equipment on the screen (colour only) */
+function hl(ev,on){var s=ev.target.closest&&ev.target.closest('.aq-loop-circuit__stage');if(!s||s.contains(ev.relatedTarget))return;var r=s.closest('.aq-loop-circuit'),id=s.getAttribute('data-node');
+ [].forEach.call(r.querySelectorAll('.aq-loop-circuit__svg [data-node="'+id+'"]'),function(el){el.classList.toggle('is-hot',on)});s.classList.toggle('is-hot',on)}
+document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEventListener('mouseout',function(ev){hl(ev,false)});
+})();
+/* Look "loop-dock" -> LoopDock (design-system/components/LoopDock): a loop's options shown where they fit on the loop.
+   One isometric loop runs across a limestone band (IsoKit): the storage tank (the base), a module skid with the loop
+   pump, heat exchanger and analyser, UV on the supply after it, the loop main out to two points of use, one with its
+   own cooler, and the return overhead back to the tank. Each option has a numbered marker on the part it adds; the
+   options are cards under the drawing, and pointing at a card lights its part. The base is named under the tank.
+   Phones: the same drawing, full width with its markers, the cards stacked.
+   Fields (an options block): h, intro, items [{t, d, spot | icon, part, link}], spot (base glyph), base (default
+   "Base skid"), fold, fold_noun. part: the drawing ids the option adds, an array of "uv", "cool", "mod" (default by
+   position: uv, cool, mod). The fold applies on phones only. */
+(function(){
+var VW=900,VH=640,DEF=[['uv'],['cool'],['mod','uv']];
+function scene(){
+ var ta=isoPart('tank',0,0,0,1,{id:'base'}),sk=isoPart('skid',44,-26,0,1,{w:200,d:52,id:'mod'}),dz=9,
+  pu=isoPart('pump',66,0,dz,1,{id:'mod'}),hx=isoPart('hx',104,-24,dz,1,{id:'mod'}),uv=isoPart('uv',168,0,dz,1,{id:'uv'}),
+  an=isoPart('analyzer',232,16,dz,1,{id:'mod'});
+ var o1=isoPart('outlet',300,10,0,1,{id:'pou'}),o2=isoPart('outlet',372,10,0,1,{id:'pou'}),co=isoPart('hx',336,-34,0,0.6,{id:'cool'});
+ var ZM=74,ZR=118,p=[];
+ p.push(isoPipe(isoRoute(ta.ports.out,pu.ports.in,'xyz'),{to:'mod',flanges:false}));
+ p.push(isoPipe(isoRoute(pu.ports.out,hx.ports.in,'zxy',{via:[[pu.ports.out[0],pu.ports.out[1],60]]}),{to:'mod',flanges:false}));
+ var h=hx.ports.out,u=uv.ports.in;
+ p.push(isoPipe([h,[h[0]+6,h[1],h[2]],[h[0]+6,h[1],u[2]+8],[u[0],h[1],u[2]+8],[u[0],u[1],u[2]+8],u],{to:'uv',flanges:false}));
+ var uo=uv.ports.out,i1=o1.ports.in,i2=o2.ports.in,c1=co.ports.in,c2=co.ports.out;
+ var main=[uo,[uo[0],uo[1],ZM],[i1[0],uo[1],ZM],[i2[0]+30,uo[1],ZM]];
+ p.push(isoPipe(main,{to:'pou',flanges:false}));
+ p.push(isoPipe([[i1[0],uo[1],ZM],[i1[0],i1[1],ZM],i1],{to:'pou',flanges:false,r:1.6}));
+ p.push(isoPipe([[c1[0],uo[1],ZM],[c1[0],c1[1],ZM],c1],{to:'cool',flanges:false,r:1.6}));
+ p.push(isoPipe([c2,[c2[0]+8,c2[1],c2[2]],[c2[0]+8,c2[1],i2[2]+6],[i2[0],c2[1],i2[2]+6],[i2[0],i2[1],i2[2]+6],i2],{to:'cool',flanges:false,r:1.6}));
+ var e0=[i2[0]+30,uo[1],ZM],rt=ta.ports.ret;
+ var ret=isoPipe([e0,[e0[0],-70,ZM],[e0[0],-70,ZR],[rt[0],-70,ZR],[rt[0],rt[1],ZR],rt],{to:'base',flanges:false,caps:false});
+ var inner=[ret,ta,sk,pu,hx,an,p[0],p[1],uv,p[2],co,p[3],p[4],p[5],o1,o2,p[6],
+  isoArrow([i1[0]-20,uo[1],ZM],'x',{size:5}),isoArrow([200,-70,ZR],'-x',{size:5})].join('');
+ var A={uv:uv.ports.top,cool:co.ports.top,mod:[150,26,dz],base:[-22,0,30],pou:o1.ports.top};
+ var bx=isoBounds([[0,0,ZR+20],[-20,20,0],[20,-20,0],[44,26,0],[400,40,0],[400,-80,ZR],[0,-80,ZR]],10),S=Math.min(VW/bx.w,VH/bx.h),
+  ox=-bx.x*S+(VW-bx.w*S)/2+70,oy=-bx.y*S+(VH-bx.h*S)/2;
+ function at(k){var q=isoP(A[k]);return [ox+q[0]*S,oy+q[1]*S]}
+ return {g:'<g transform="translate('+ox.toFixed(1)+' '+oy.toFixed(1)+') scale('+S.toFixed(3)+')">'+inner+'</g>',at:at}}
+LOOKS['loop-dock']=function(b,H){
+ var I=b.items||[],sc=scene(),pg=wp(WP),marks='';
+ var cards=I.map(function(it,i){var parts=it.part?[].concat(it.part):DEF[i%DEF.length],n=(i<9?'0':'')+(i+1),q=sc.at(parts[0]),g=wSpot(it.spot||it.icon,'','aq-loop-dock__glyph'),lk=it.link&&wp(it.link);
+  marks+='<span class="aq-loop-dock__mk" data-c="'+i+'" style="left:'+(100*q[0]/VW).toFixed(2)+'%;top:'+(100*q[1]/VH).toFixed(2)+'%">'+n+'</span>';
+  var body='<p class="aq-loop-dock__no" aria-hidden="true"><span>'+n+'</span>'+g+'</p><h3 class="aq-loop-dock__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-loop-dock__d">'+tx(it.d)+'</p>':'');
+  return fli('<li class="aq-loop-dock__card" data-c="'+i+'" data-parts="'+e(parts.join(' '))+'">',b,i)+(lk?'<a class="aq-loop-dock__body" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+body+'</a>':'<div class="aq-loop-dock__body">'+body+'</div>')+'</li>'}).join('');
+ var bq=sc.at('base'),base=isVig(b.spot)?wSpot(b.spot,'','aq-loop-dock__bic'):'';
+ var baseLab='<span class="aq-loop-dock__base" style="left:'+(100*bq[0]/VW).toFixed(2)+'%;top:'+(100*bq[1]/VH).toFixed(2)+'%">'+base+'<span>'+tx(b.base||'Base skid')+(pg&&pg.nav_label?' · '+tx(pg.nav_label):'')+'</span></span>';
+ var svg=isoSvg(VW,VH,sc.g,'aq-iso--limestone aq-loop-dock__svg',{});
+ var inner='<div class="aq-loop-dock"><div class="aq-loop-dock__stage"><div class="aq-loop-dock__plane" aria-hidden="true">'+svg+marks+'</div>'+baseLab+'</div>'
+  +'<ol class="aq-loop-dock__cards" role="list">'+cards+'</ol></div>';
+ return sec(H+wFold(b,I.length,inner,b.fold_noun||'options'),'aq-band--limestone aq-loop-dock-sec')};
+/* Pointing at an option lights the parts it adds (colour only) */
+function hl(ev,on){var c=ev.target.closest&&ev.target.closest('.aq-loop-dock__card');if(!c||c.contains(ev.relatedTarget))return;var r=c.closest('.aq-loop-dock'),svg=r.querySelector('svg.aq-iso');
+ (c.getAttribute('data-parts')||'').split(' ').forEach(function(id){[].forEach.call(svg.querySelectorAll('[data-iso-id="'+id+'"], [data-iso-to="'+id+'"]'),function(el){el.classList.toggle('is-lit',on)})});
+ [].forEach.call(r.querySelectorAll('.aq-loop-dock__mk[data-c="'+c.getAttribute('data-c')+'"]'),function(m){m.classList.toggle('is-on',on)});c.classList.toggle('is-on',on)}
+document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEventListener('mouseout',function(ev){hl(ev,false)});
+document.addEventListener('focusin',function(ev){hl(ev,true)});document.addEventListener('focusout',function(ev){hl(ev,false)});
+})();
 /* Look "macro-leaders" -> MacroLeaders (design-system/components/MacroLeaders): a comparison table read off a macro
    drawing. A close-up of what makes the water (RO membrane leaves fanned open over a PP pipe and its weld bead) fills
    the left, cropped by the page edge; numbered markers stand on an arc over it and a leader runs from each marker into
@@ -2213,6 +2331,47 @@ LOOKS['membrane-face']=function(b,H){
 if(typeof document!=='undefined')['mouseover','mouseout','focusin','focusout'].forEach(function(ev){document.addEventListener(ev,function(x){
  var t=x.target.closest&&x.target.closest('.'+K+'__tile');if(!t)return;var on=ev==='mouseover'||ev==='focusin',r=t.closest('.'+K),mk=r&&r.querySelector('.'+K+'__mark[data-i="'+t.getAttribute('data-i')+'"]');
  t.classList.toggle('is-pointed',on);if(mk)mk.classList.toggle('is-pointed',on)})});
+})();
+/* Look "method-bento" -> MethodBento (design-system/components/MethodBento): a short comparison table (one row per
+   method) set as a bento of method tiles, each explained by a drawing. The row whose figure is a temperature scale
+   is the wide navy tile (a thermometer rail with the zones the row names: solid up to the first mark, dashed between
+   marks, struck past the last); the others are paper tiles with a line drawing ("chemical": a dosing point on the pipe
+   with the sanitant dispersing and a test tube for the residual; "uv": a UV chamber with its lamp sleeve and rays).
+   The section intro becomes an empty, dashed tile for the method that is not offered (absent), so what is missing
+   reads as a gap in the set, not a footnote. Each tile: number, method name large, then the other columns as a
+   short list under their column names.
+   Fields (a table block): h, intro, cols, rows [[method, how, fit, trade-off]], anchor, figs [name per row: "chemical",
+   "hot", "uv"], scale {row, marks [{v, l}]} (the temperature figure: marks in °C along a 0–100 rail), absent (the
+   missing method's name, shown large in outline on the dashed tile with the intro). Without absent the intro stays in
+   the section head. */
+(function(){
+var K='aq-method-bento';function P(d,c){return '<path class="'+K+'__'+(c||'ln')+'" d="'+d+'"/>'}
+var FIG={
+ chemical:function(){var o=P('M10 70H230M10 92H230')+P('M10 81H230','fl')+P('M52 10H92V40H52Z','fill')+P('M72 40V70','ln')+P('M60 22H84','th')
+  +P('M72 50q-3 5 0 8q3-3 0-8','fl');var s=3;function r(){s=(s*9301+49297)%233280;return s/233280}
+  for(var i=0;i<26;i++){var x=82+i*5.4,sp=(x-82)/140*9;o+='<circle class="aq-method-bento__dot" cx="'+x.toFixed(1)+'" cy="'+(81+(r()-0.5)*2*sp).toFixed(1)+'" r="1.4"/>'}
+  return o+P('M204 14V54A6 6 0 0 0 216 54V14M200 14H220','ln')+P('M205 40H215','fl')},
+ uv:function(){var o=P('M30 40H210A20 20 0 0 1 210 80H30A20 20 0 0 1 30 40Z','fill')+P('M36 55H204V65H36Z','fl')+P('M210 60H232M226 54V66','ln')
+  +P('M60 80V96M180 80V96M52 96H68M172 96H188','ln');
+  for(var x=52;x<=188;x+=17)o+=P('M'+x+' 52q-3 -3 0 -6q3 -3 0 -6M'+x+' 68q-3 3 0 6q3 3 0 6','ray');return o}
+};
+function fig(n){return FIG[n]?'<svg class="aq-method-bento__fig" viewBox="0 0 240 110" aria-hidden="true" focusable="false">'+FIG[n]()+'</svg>':''}
+function scale(sc){var M=(sc&&sc.marks)||[],a=M.length?M[0].v:100,z=M.length?M[M.length-1].v:100,t='';
+ for(var v=0;v<=100;v+=5)t+=P('M'+(v*10)+' '+(v%10?44:40)+'V52','tick');
+ var svg='<span class="aq-method-bento__bulb" aria-hidden="true"></span><svg class="aq-method-bento__rail" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">'
+  +P('M0 20H'+(a*10),'hot')+P('M'+(a*10)+' 20H'+(z*10),'hot is-review')+P('M'+(z*10)+' 20H1000','hot is-out')
+  +P('M0 30H1000','base')+t+'</svg>';
+ var lab=M.map(function(k,i){return '<li class="aq-method-bento__mark'+(i===0&&M.length>1?' is-left':'')+'" style="--at:'+k.v+'%"><span class="aq-method-bento__mv">'+e(k.v)+' °C</span><span class="aq-method-bento__ml">'+tx(k.l)+'</span></li>'}).join('');
+ return '<div class="aq-method-bento__scale">'+svg+'<ul class="aq-method-bento__marks" role="list">'+lab+'</ul></div>'}
+LOOKS['method-bento']=function(b,H){
+ var R=b.rows||[],C=b.cols||[],F=b.figs||[],sc=b.scale||null,hasAbs=!!b.absent;
+ if(hasAbs)H=wSecHead({eyebrow:b.eyebrow,h:b.h});
+ var tiles=R.map(function(r,i){var hot=sc&&sc.row===i,f=F[i]||'',cls='aq-method-bento__tile'+(hot?' is-hot':'')+' is-'+(i===0?'a':i===1?'b':'c');
+  var dl='<dl class="aq-method-bento__dl">'+r.slice(1).map(function(c,j){return '<div><dt>'+e(C[j+1]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('')+'</dl>';
+  return '<li class="'+cls+'"><p class="aq-method-bento__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</p><h3 class="aq-method-bento__t">'+tcell(r[0])+'</h3>'
+   +(hot?scale(sc):fig(f))+dl+'</li>'}).join('');
+ var gap=hasAbs?'<li class="aq-method-bento__tile aq-method-bento__gap"><p class="aq-method-bento__ghost" aria-hidden="true">'+tx(b.absent)+'</p><p class="aq-method-bento__gapt">'+tx(b.intro||'')+'</p></li>':'';
+ return sec('<div class="aq-method-bento"><div class="aq-method-bento__head">'+H+'</div><ol class="aq-method-bento__tiles" role="list">'+tiles+gap+'</ol></div>','aq-method-bento-sec')};
 })();
 /* Look "option-tags" -> OptionTags (design-system/components/OptionTags): configuration options as physical tags laid
    out on a limestone table, the section heading on a paper label card. Each option is a shipping tag on a string
@@ -2490,6 +2649,74 @@ LOOKS['rail-modules']=function(b,H){
   +(b.base?'<p class="aq-rail-modules__base"><span>'+tx(b.base)+'</span></p>':'')
   +'<ol class="aq-rail-modules__list" role="list" style="--rm-n:'+n+'">'+mods+'</ol></div>';
  return sec(H+wFold(b,n,'<div class="aq-rail-modules">'+plate+'</div>',b.fold_noun||'options'),'aq-rail-modules-sec')};
+/* Look "rule-figures" -> RuleFigures (design-system/components/RuleFigures): a spec block of design rules set as a
+   Swiss rule sheet where each rule is explained by a small engineering figure rather than a table cell. The lead rule
+   (the first hl row) is a full-width band: its words set large beside a long pipe cut open lengthways, the water in it
+   drawn as turbulent streaks and eddies with the flat (1/7 power) velocity profile of turbulent flow at the outlet end.
+   The other rules sit in a three-column grid of figure cards: figure, number, rule name, the rule figure in mono,
+   the design value and basis under the column names. Figures are line art drawn here (fig field):
+   "turbulent" (lead), "slope" (a falling run to a low-point drain, slope triangle), "deadleg" (a branch off the main
+   with its L and D dimensions), "sanitize" (the loop with a thermometer at its coldest point), "valve" (a zero-static
+   point-of-use valve on the main), "vent" (tank head with its vent filter), "monitor" (instrument bubbles on the
+   return: CE, TE, FE and a dashed AE for TOC). A row without fig gets no figure.
+   Fields (a spec block): h, caption, cols, rows [{p, v, m, rule, hl, fig, link, link_label}], fold, fold_noun.
+   The fold applies on phones only (desktop shows every rule). */
+(function(){
+var VB='0 0 240 120';
+var K='aq-rule-figures';function p(d,c){return '<path class="'+K+'__'+(c||'ln')+'" d="'+d+'"/>'}
+function t(x,y,s,c){return '<text class="aq-rule-figures__tx'+(c?' '+c:'')+'" x="'+x+'" y="'+y+'">'+e(s)+'</text>'}
+var FIG={
+ slope:function(){return p('M16 27L196 57M16 41L184 69M196 57V92M184 69V88','ln')
+  +p('M180 88H200V108H180Z','fill')+p('M180 88L200 108M200 88L180 108','th')+p('M60 92H150V107M60 92L150 107','dim')
+  +p('M16 34L190 63V84','fl')+p('M190 112q-3 4 0 6q3-2 0-6','fl')},
+ deadleg:function(){return p('M10 80H110M126 80H230M10 96H230','ln')+p('M110 80V46M126 80V46','ln')+p('M100 30H136V46H100Z','fill')
+  +p('M118 30V14M106 14H130','ln')+p('M104 42Q118 34 132 42','th')
+  +p('M10 88H230','fl')+p('M118 86V50','fl fl-hid')
+  +p('M128 80H156M128 46H156M150 80V46M145 80H155M145 46H155','dim')+t(160,67,'L')
+  +p('M110 64H126M110 59V69M126 59V69','dim')+t(92,68,'D')},
+ sanitize:function(){return p('M54 24H186A30 30 0 0 1 186 96H54A30 30 0 0 1 54 24ZM58 34H182A20 20 0 0 1 182 86H58A20 20 0 0 1 58 34Z','ln')
+  +p('M56 29H184A25 25 0 0 1 184 91H56A25 25 0 0 1 56 29Z','fl')
+  +'<circle class="aq-rule-figures__ring" cx="198" cy="88" r="8"/>'+p('M206 88H218','dim')
+  +p('M222 34V96M232 34V96M222 34A5 5 0 0 1 232 34','ln')+'<circle class="aq-rule-figures__fill" cx="227" cy="104" r="9"/>'+p('M227 98V56','fl')},
+ valve:function(){return p('M10 30H230M10 46H104M136 46H230','ln')+p('M104 46H136V70H104Z','fill')+p('M108 60Q120 50 132 60','th')
+  +p('M136 58H160M160 46V70','ln')+p('M114 70V94M126 70V94M110 94H130','ln')+p('M10 38H230','fl')+p('M120 50V92','fl fl-hid')+p('M120 102q-3 4 0 6q3-2 0-6','fl')},
+ vent:function(){return p('M24 120V94C24 68 70 54 120 54C170 54 216 68 216 94V120','ln')+p('M112 54V40M128 54V40M104 40H136','ln')
+  +p('M106 10H134V40H106Z','fill')+p('M112 14V36M116 14V36M120 14V36M124 14V36M128 14V36','th')+p('M150 30V8M145 13L150 8L155 13','dim')
+  +p('M30 104H210','fl fl-hid')},
+ monitor:function(){var o=p('M10 70H230M10 86H230','ln')+p('M10 78H230','fl');
+  [['CE',44],['TE',96],['FE',148],['AE',200]].forEach(function(q,i){o+=p('M'+q[1]+' 50V70','ln')+'<circle class="'+K+'__'+(i===3?'bub is-opt':'bub')+'" cx="'+q[1]+'" cy="34" r="16"/>'+t(q[1],38,q[0],'is-mid')});return o}
+};
+/* Lead figure: a pipe cut lengthways, turbulent streaks (seeded, so every render matches), eddies, velocity profile */
+function lead(){var W=1200,o='',s=7;function r(){s=(s*9301+49297)%233280;return s/233280}
+ var walls=p('M0 28H1200M0 172H1200','wall')+p('M0 20H1200M0 180H1200','ln');
+ for(var k=0;k<9;k++){var y0=46+k*13.5,d='M0 '+y0.toFixed(1),py=y0;for(var x=40;x<=440;x+=40){var amp=6+12*Math.sin(Math.PI*(k+1)/10),ny=y0+(r()-0.5)*amp*2;
+   d+='S'+(x-14)+' '+ny.toFixed(1)+' '+x+' '+ny.toFixed(1);py=ny}o+='<path class="aq-rule-figures__streak" style="--k:'+k+'" d="'+d+'"/>'}
+ var ed='';for(var j=0;j<5;j++){var cx=50+j*80+r()*30,cy=60+r()*80,rr=6+r()*8,sw=j%2?1:0;
+  ed+='<path class="aq-rule-figures__eddy" d="M'+(cx-rr).toFixed(1)+' '+cy.toFixed(1)+'a'+rr.toFixed(1)+' '+rr.toFixed(1)+' 0 1 '+sw+' '+(rr*1.6).toFixed(1)+' '+(rr*0.4).toFixed(1)+'a'+(rr*0.6).toFixed(1)+' '+(rr*0.6).toFixed(1)+' 0 1 '+sw+' '+(-rr*0.9).toFixed(1)+' '+(-rr*0.5).toFixed(1)+'"/>'}
+ var X=480,prof='',env='M'+X+' 28';for(var i=0;i<=10;i++){var y=34+i*13.2,eta=Math.abs((y-100)/72),L=110*Math.pow(Math.max(1-eta,0),1/7);
+  prof+='<path class="aq-rule-figures__arrow" d="M'+X+' '+y.toFixed(1)+'H'+(X+L).toFixed(1)+'m-6 -4l6 4l-6 4"/>';env+='L'+(X+L).toFixed(1)+' '+y.toFixed(1)}
+ env+='L'+X+' 172';
+ return '<svg class="aq-rule-figures__pipe" viewBox="0 0 '+W+' 200" preserveAspectRatio="xMinYMid slice" aria-hidden="true" focusable="false">'
+  +walls+'<g class="aq-rule-figures__streaks">'+o+'</g><g class="aq-rule-figures__eddies">'+ed+'</g>'
+  +p('M'+X+' 28V172','dim')+'<g class="aq-rule-figures__prof">'+prof+'</g>'+p(env,'env')+'</svg>'}
+function fig(n){return FIG[n]?'<svg class="aq-rule-figures__fig" viewBox="'+VB+'" aria-hidden="true" focusable="false">'+FIG[n]()+'</svg>':''}
+function golink(r){return r.link&&wp(r.link)?' <a class="aq-rule-figures__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':''}
+LOOKS['rule-figures']=function(b,H){
+ var R=b.rows||[],C=b.cols||['Rule','Design value','Basis'],li=-1;R.forEach(function(r,i){if(li<0&&r.hl)li=i});if(li<0)li=0;
+ var L=R[li],num=function(i){return (i<9?'0':'')+(i+1)};
+ var dl=function(r){return '<dl class="aq-rule-figures__dl"><div><dt>'+e(C[1]||'Design value')+'</dt><dd class="aq-rule-figures__v">'+tx(r.v)+'</dd></div>'
+  +(r.m||r.link?'<div><dt>'+e(C[2]||'Basis')+'</dt><dd class="aq-rule-figures__m">'+tx(r.m||'')+golink(r)+'</dd></div>':'')+'</dl>'};
+ var band='<div class="aq-rule-figures__lead"><div class="aq-rule-figures__lead-text"><p class="aq-rule-figures__no" aria-hidden="true">'+num(li)+'</p>'
+  +'<h3 class="aq-rule-figures__lead-p">'+tx(L.p)+'</h3>'+(L.rule?'<p class="aq-rule-figures__rule aq-rule-figures__rule--lead">'+tx(L.rule)+'</p>':'')+dl(L)+'</div>'
+  +'<div class="aq-rule-figures__lead-art">'+lead()+'</div></div>';
+ var cards=R.map(function(r,i){if(i===li)return '';return fli('<li class="aq-rule-figures__card">',b,i)
+  +'<div class="aq-rule-figures__figbox">'+fig(r.fig)+'</div>'
+  +'<p class="aq-rule-figures__head"><span class="aq-rule-figures__n" aria-hidden="true">'+num(i)+'</span><span class="aq-rule-figures__p">'+tx(r.p)+'</span></p>'
+  +(r.rule?'<p class="aq-rule-figures__rule">'+tx(r.rule)+'</p>':'')+dl(r)+'</li>'}).join('');
+ var list='<ol class="aq-rule-figures__grid" role="list">'+cards+'</ol>';
+ var cap=b.caption?'<p class="aq-rule-figures__cap" aria-hidden="true">'+tx(b.caption)+' · '+R.length+' '+e(b.fold_noun||'rules')+'</p>':'';
+ return sec(H+'<div class="aq-rule-figures">'+cap+band+wFold(b,R.length,list,b.fold_noun||'rules')+'</div>','aq-rule-figures-sec')};
+})();
 /* Look "section-train" -> SectionTrain (design-system/components/SectionTrain): a pretreatment train as one sectional
    elevation on a limestone sheet. Every vessel is cut in half (hatched walls) so its bed shows: graded media, resin
    beads, carbon granules, a pleated cartridge. A lens at the feed shows what the water carries (particles, hardness,
@@ -2751,6 +2978,38 @@ LOOKS['sheet-previews']=function(b,H){
    +'<p class="'+K+'__code">'+e(tag)+'</p><h3 class="'+K+'__t">'+name+'</h3>'+(x.d?'<p class="'+K+'__d">'+tx(x.d)+'</p>':'')+'</li>'}).join('');
  var more=b.link&&wp(b.link)?'<p class="'+K+'__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
  return sec('<div class="'+K+'__top">'+H+more+'</div>'+wFold(b,n,'<ol class="'+K+'" role="list" style="--n:'+n+'">'+li+'</ol>',b.fold_noun||'documents'),K+'-sec')};
+})();
+/* Look "sheet-stack" -> SheetStack (design-system/components/SheetStack): the documents delivered with a system as an
+   exploded stack of drawing sheets. On the left the sheets lie flat in isometric, one above the other along a dashed
+   axis, each showing in miniature what it is (a calculation with a bar per section past a dashed limit line, a
+   register of tees, an isometric pipe run, a certificate with its seal) and its code in a title block; beside each
+   sheet, its row: index, code, name, what it holds. Key documents carry their code in flow. Pointing at a row lifts
+   its sheet. Phones: a smaller sheet beside each row.
+   Fields (a docs block): h, items [{t, d, key, code, sheet, link, intent}], link, link_label, intent, fold, fold_noun.
+   sheet: "calc", "register", "iso" or "cert" (default from the document code: HYD, DLR, P&ID or ISO, MAT). */
+(function(){
+var BY={HYD:'calc',DLR:'register','P&ID':'iso',ISO:'iso',MAT:'cert'};
+var K='aq-sheet-stack';function P(d,c){return '<path class="'+K+'__'+(c||'ln')+'" d="'+d+'"/>'}
+var ART={
+ calc:function(){var o=P('M16 20H180','ln')+P('M16 30H120','th'),L=[118,142,104,160,130,150];
+  L.forEach(function(l,i){var y=48+i*18;o+=P('M16 '+y+'H52','th')+P('M64 '+y+'H'+(64+l),'bar')});return o+P('M150 40V160','lim')},
+ register:function(){var o=P('M16 20H264M16 44H264M16 160H264M70 44V160M150 44V160M210 44V160','th');
+  for(var i=0;i<5;i++){var y=56+i*21;o+=P('M24 '+(y+10)+'H58M41 '+(y+10)+'V'+(y),'ln')+P('M84 '+(y+6)+'H136M164 '+(y+6)+'H198M222 '+(y+6)+'H250','th')}return o},
+ iso:function(){return P('M20 120H70M96 120H150M170 120H250M250 120V60H200M160 60H40V120','ln')+P('M70 112L96 128V112L70 128Z','ln')+P('M150 112L170 128V112L150 128Z','ln')
+  +'<circle class="aq-sheet-stack__seal" cx="180" cy="60" r="16"/>'+P('M180 76V120','th')+P('M20 120H70M96 120H150M170 120H250','flow')+P('M120 140l40 6M150 140l10 6l-10 4','th')},
+ cert:function(){var o=P('M60 24H220','ln')+P('M80 36H200','th');for(var y=56;y<=110;y+=12)o+=P('M28 '+y+'H'+(y%24?250:220),'th');
+  return o+'<circle class="aq-sheet-stack__seal" cx="60" cy="142" r="20"/><circle class="aq-sheet-stack__seal" cx="60" cy="142" r="13"/>'+P('M100 150c10 -16 18 8 28 -6s14 4 22 -4','ln')}
+};
+function sheet(kind,code){return '<span class="aq-sheet-stack__sheet" aria-hidden="true"><svg viewBox="0 0 280 198" focusable="false">'+(ART[kind]?ART[kind]():'')
+ +'<path class="aq-sheet-stack__frame" d="M8 8H272V190H8Z"/><path class="aq-sheet-stack__tb" d="M188 166H272V190H188Z"/><text x="230" y="183">'+e(code)+'</text></svg></span>'}
+LOOKS['sheet-stack']=function(b,H){
+ var I=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=I.length;
+ var rows=I.map(function(x,i){var code=x.code||docCode(x.t||'')[0],kind=x.sheet||BY[code]||'calc',name=x.link&&wp(x.link)?wlink(x.link,x.t,x.intent):tx(x.t);
+  return fli('<li class="aq-sheet-stack__row'+(x.key?' is-key':'')+'" style="--i:'+i+'">',b,i)+'<span class="aq-sheet-stack__slot">'+sheet(kind,code)+'</span>'
+   +'<div class="aq-sheet-stack__text"><p class="aq-sheet-stack__code" aria-hidden="true"><span class="aq-sheet-stack__i">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-sheet-stack__k">'+e(code)+'</span></p>'
+   +'<h3 class="aq-sheet-stack__t">'+name+'</h3>'+(x.d?'<p class="aq-sheet-stack__d">'+tx(x.d)+'</p>':'')+'</div></li>'}).join('');
+ var more=b.link&&wp(b.link)?'<p class="aq-sheet-stack__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
+ return sec(H+'<div class="aq-sheet-stack" style="--n:'+n+'"><span class="aq-sheet-stack__axis" aria-hidden="true"></span>'+wFold(b,n,'<ol class="aq-sheet-stack__rows" role="list">'+rows+'</ol>',b.fold_noun||'documents')+more+'</div>','aq-sheet-stack-sec')};
 })();
 /* Look "stair-router" -> StairRouter (pass 9): a router table (as: "router") drawn as a rising staircase of situation
    cards over huge cropped outline type. Every situation is a card on its own tread, the first lowest, the last highest;
@@ -3055,6 +3314,79 @@ LOOKS['system-run']=function(b,H){
  [].forEach.call(r.querySelectorAll('.aq-system-run__bracket[data-stage="'+id+'"]'),function(el){el.classList.toggle('is-on',on)})}
  document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEventListener('mouseout',function(ev){hl(ev,false)});
  document.addEventListener('focusin',function(ev){hl(ev,true)});document.addEventListener('focusout',function(ev){hl(ev,false)})})();
+/* Look "tank-section" -> TankSection (design-system/components/TankSection): fabrication parameters read off a
+   blueprint of the storage tank cut in half, on a navy band. The section shows the PP wall hatched as cut, the water
+   level, the spray ball wetting the head space, the vent filter and inlet on the head, legs and the outlet pipe with a
+   butt-fusion joint, the tank's height and inside diameter as dimensions, and two detail circles: A, the internal
+   surface (the wall cut, its roughness profile against the water) and B, the joint (two pipe walls fused, the double
+   bead). Rows with a part become callouts: a numbered balloon on the drawing, a leader to the side, the label on a
+   hairline (left: spray, design, volume, contact; right: surface, joint). Every other row is listed in a parts
+   schedule under the drawing (a real table with the block's column names).
+   Phones: drawing full width with its balloons, the callouts as a numbered list under it, then the schedule; the
+   fold applies on phones only.
+   Fields (a spec block): h, caption, cols, rows [{p, v, m, part, link, link_label}], fold, fold_noun.
+   part: "spray", "design", "volume", "contact", "surface" or "joint". */
+(function(){
+/* leader points (anchor first, label end last) and balloon point per part, in the 760 x 760 drawing */
+var PART={spray:{s:'l',pts:[[321,212],[150,30],[0,30]],b:[150,30]},design:{s:'l',pts:[[262,160],[190,230],[0,230]],b:[190,230]},
+ volume:{s:'l',pts:[[175,420],[0,420]],b:[100,420]},contact:{s:'l',pts:[[205,540],[130,610],[0,610]],b:[130,610]},
+ surface:{s:'r',pts:[[730,290],[760,290]],b:[730,290]},joint:{s:'r',pts:[[730,530],[760,530]],b:[730,530]}};
+var ORDER=['spray','design','volume','contact','surface','joint'];
+var K='aq-tank-section';function P(d,c,x){return '<path class="'+K+'__'+c+'"'+(x||'')+' d="'+d+'"/>'}
+var OUT='M200 230C200 170 260 150 330 150C400 150 460 170 460 230V560C460 600 400 620 330 620C260 620 200 600 200 560Z',
+ IN='M210 230C210 178 265 160 330 160C395 160 450 178 450 230V560C450 592 395 610 330 610C265 610 210 592 210 560Z';
+function drawing(balloons){
+ var defs='<defs><pattern id="tsHatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path class="aq-tank-section__hl" d="M0 0V8"/></pattern>'
+  +'<clipPath id="tsIn"><path d="'+IN+'"/></clipPath><clipPath id="tsA"><circle cx="650" cy="290" r="80"/></clipPath><clipPath id="tsB"><circle cx="650" cy="530" r="80"/></clipPath></defs>';
+ var g=defs+P('M80 700H680','floor')+P('M90 700l-12 12M130 700l-12 12M170 700l-12 12M210 700l-12 12M250 700l-12 12M290 700l-12 12M330 700l-12 12M370 700l-12 12M410 700l-12 12M450 700l-12 12M490 700l-12 12M530 700l-12 12M570 700l-12 12M610 700l-12 12M650 700l-12 12','thin');
+ /* legs, then the shell cut (hatched wall), water, spray */
+ g+='<g class="aq-tank-section__part">'+P('M226 598V700M238 604V700M216 700H248M422 604V700M434 598V700M412 700H444','ln')+'</g>';
+ g+='<g class="aq-tank-section__part">'+P(OUT+IN,'wall',' fill-rule="evenodd"')+P(OUT,'ln')+P(IN,'ln')+'</g>';
+ var w='';for(var y=348;y<=604;y+=18)w+=P('M210 '+y+'H450','water');
+ g+='<g class="aq-tank-section__water" clip-path="url(#tsIn)">'+P('M210 330H450','level')+w+'</g>';
+ g+='<g class="aq-tank-section__part">'+P('M324 100V203M336 100V203M316 100H344','ln')+'<circle class="aq-tank-section__eq" cx="330" cy="212" r="9"/>'
+  +'<g class="aq-tank-section__jets">'+[[216,250],[224,300],[268,318],[330,322],[392,318],[436,300],[444,250],[246,196],[414,196]].map(function(q){return P('M330 212L'+q[0]+' '+q[1],'jet')}).join('')+'</g></g>';
+ g+='<g class="aq-tank-section__part">'+P('M394 158V100M406 158V100','ln')+P('M384 56H416V100H384Z','eq')+P('M390 62V94M396 62V94M402 62V94M408 62V94','thin')+P('M400 52V36M395 41L400 36L405 41','thin')
+  +P('M254 160V110M266 160V110M246 110H274M246 104H274','ln')+'</g>';
+ /* outlet pipe with its butt-fusion joint */
+ g+='<g class="aq-tank-section__part">'+P('M322 612V666H600V650H338V612Z','eq')+P('M600 642V674M606 642V674','ln')+P('M330 612V658H600','flow')
+  +P('M512 650q4 -5 8 0q4 -5 8 0M512 666q4 5 8 0q4 5 8 0','bead')+'</g>';
+ /* dimensions: height beside the shell, inside diameter across the water */
+ g+='<g class="aq-tank-section__dims">'+P('M320 150H165M320 620H165M175 150V620M168 157L182 143M168 627L182 613','dim')
+  +P('M210 470H450M203 477L217 463M443 477L457 463','dim')+'<text class="aq-tank-section__tx" x="330" y="462">ID</text>'
+  +'<text class="aq-tank-section__tx" x="160" y="300" transform="rotate(-90 160 300)">H</text></g>';
+ /* detail marks and circles */
+ g+='<circle class="aq-tank-section__mark" cx="455" cy="380" r="16"/>'+P('M470 372L578 318','lead')+'<circle class="aq-tank-section__mark" cx="520" cy="658" r="16"/>'+P('M532 648L590 592','lead');
+ var A='<g clip-path="url(#tsA)">'+P('M560 200H636V380H560Z','wall')+P('M636 200l3 6l-4 6l5 6l-4 6l3 6l-5 6l4 6l-3 6l5 6l-4 6l3 6l-5 6l4 6l-3 6l5 6l-4 6l3 6l-5 6l4 6l-3 6l5 6l-4 6l3 6l-5 6l4 6l-3 6l5 6l-4 6l3 6','prof')
+  +P('M656 250H740M656 280H740M656 310H740M656 340H740','water')+'</g><circle class="aq-tank-section__det" cx="650" cy="290" r="80"/><text class="aq-tank-section__tx is-big" x="586" y="196">A</text>';
+ var B='<g clip-path="url(#tsB)">'+P('M560 486H740V508H560Z','wall')+P('M650 486V508','cut')+P('M636 508q7 10 14 0q7 10 14 0M636 486q7 -10 14 0q7 -10 14 0','bead')
+  +P('M560 528H740','water')+P('M560 548H740','water')+P('M560 568H740','water')+'</g><circle class="aq-tank-section__det" cx="650" cy="530" r="80"/><text class="aq-tank-section__tx is-big" x="586" y="618">B</text>';
+ g+='<g class="aq-tank-section__detail">'+A+'</g><g class="aq-tank-section__detail">'+B+'</g>';
+ g+=balloons;
+ return '<svg class="aq-tank-section__svg" viewBox="0 0 760 760" aria-hidden="true" focusable="false">'+g+'</svg>'}
+LOOKS['tank-section']=function(b,H){
+ H=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro});
+ var R=b.rows||[],C=b.cols||['Parameter','Design value','Basis'],calls=[],rest=[];
+ R.forEach(function(r,i){if(r.part&&PART[r.part])calls.push({r:r,i:i});else rest.push({r:r,i:i})});
+ calls.sort(function(a,c){var A=PART[a.r.part],B=PART[c.r.part];return (A.s===B.s?A.pts[A.pts.length-1][1]-B.pts[B.pts.length-1][1]:A.s==='l'?-1:1)});
+ var leaders='',balloons='';
+ var items=calls.map(function(c,j){var q=PART[c.r.part],n=(j<9?'0':'')+(j+1),end=q.pts[q.pts.length-1];
+  leaders+=P('M'+q.pts.map(function(p){return p.join(' ')}).join('L'),'leader');
+  balloons+='<g class="aq-tank-section__balloon"><circle cx="'+q.b[0]+'" cy="'+q.b[1]+'" r="13"/><text x="'+q.b[0]+'" y="'+(q.b[1]+4)+'">'+n+'</text></g>';
+  var lk=c.r.link&&wp(c.r.link)?' <a href="#'+e(c.r.link)+'" data-wp="'+e(c.r.link)+'">'+tx(c.r.link_label||wlabel(c.r.link))+'</a>':'';
+  return '<li class="aq-tank-section__call is-'+q.s+'" style="--y:'+(end[1]/7.6).toFixed(2)+'%">'+'<span class="aq-tank-section__n" aria-hidden="true">'+n+'</span>'
+   +'<h3 class="aq-tank-section__p">'+tx(c.r.p)+'</h3><p class="aq-tank-section__v">'+tx(c.r.v)+'</p>'+(c.r.m||lk?'<p class="aq-tank-section__m">'+tx(c.r.m||'')+lk+'</p>':'')+'</li>'}).join('');
+ var svg=drawing(leaders+balloons);
+ var sched=rest.length?'<table class="aq-tank-section__sched" role="table"><caption>'+tx(b.caption||b.h||'')+'</caption><thead role="rowgroup"><tr role="row">'
+  +C.map(function(c){return '<th scope="col" role="columnheader">'+e(c)+'</th>'}).join('')+'</tr></thead><tbody role="rowgroup">'
+  +rest.map(function(x){var r=x.r,lk=r.link&&wp(r.link)?' <a class="aq-tank-section__link" href="#'+e(r.link)+'" data-wp="'+e(r.link)+'">'+tx(r.link_label||wlabel(r.link))+'</a>':'';
+   return fli('<tr role="row">',b,x.i)+'<th scope="row" role="rowheader">'+tx(r.p)+'</th><td role="cell" class="aq-tank-section__sv">'+tx(r.v)+'</td><td role="cell" class="aq-tank-section__sm">'+tx(r.m||'')+lk+'</td></tr>'}).join('')
+  +'</tbody></table>':'';
+ var block='<div class="aq-tank-section__block" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.caption||'')+'</span><span>Section A–A</span></div>';
+ var inner='<div class="aq-tank-section"><div class="aq-tank-section__fig"><div class="aq-tank-section__draw">'+svg+'</div>'
+  +'<ol class="aq-tank-section__calls" role="list">'+items+'</ol></div>'+sched+block+'</div>';
+ return sec(H+wFold(b,R.length,inner,b.fold_noun||'parameters'),'aq-band--navy aq-tank-section-sec')};
+})();
 /* Look "winding-route" -> WindingRoute (design-system/components/WindingRoute): a treatment train as one winding pipe
    across a navy band. Each stage is a stop on the wave (high, low, high …) with its line glyph on the far side of the
    curve; under the band, a column per stage: "01 / label", the stage name and its line. Water enters on a fan of feed
