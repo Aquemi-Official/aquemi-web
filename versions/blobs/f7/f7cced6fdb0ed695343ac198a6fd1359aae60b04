@@ -1,0 +1,60 @@
+/* ---------- DocPipe: documents along one double-line pipe that snakes across a navy band ---------- */
+/* The section is dark-themed (data-theme="dark"): flow is the light water blue. Each column is 380 px tall; its pipe
+   piece is a 300 x 380 SVG stretched to the column (strokes do not scale), the run at 50 (high) or 330 (low). */
+.aq-doc-pipe-sec .aq-sec-head .aq-h1 { font: 300 72px/76px var(--font-sans); letter-spacing: -0.03em; max-width: none; color: var(--on-navy); }
+.aq-doc-pipe__top { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; }
+.aq-doc-pipe__more { margin: 0; }
+.aq-doc-pipe { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: 0; }
+.aq-doc-pipe { --dp-h: calc(var(--space-32) * 3 - var(--space-4)); }
+.aq-doc-pipe__item { position: relative; height: var(--dp-h, var(--space-32)); min-width: 0; }
+.aq-doc-pipe__pipe { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.aq-doc-pipe__pipe path { fill: none; stroke-linecap: butt; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-doc-pipe__wall { stroke: var(--on-navy-muted); stroke-width: 12; }
+.aq-doc-pipe__bore { stroke: var(--navy); stroke-width: 9; }
+.aq-doc-pipe__flow { stroke: var(--flow); stroke-width: 2; }
+.aq-doc-pipe__pipe .aq-doc-pipe__cap { stroke: var(--on-navy-muted); stroke-width: 2; }
+
+/* valves on each run, three quarters along; the stem points away from the document */
+.aq-doc-pipe__valve { position: absolute; left: 76%; top: calc(var(--dp-h, var(--space-32)) * 50 / 380); width: var(--space-6); height: var(--space-12); translate: -50% -50%; }
+.is-lo .aq-doc-pipe__valve { top: calc(var(--dp-h, var(--space-32)) * 330 / 380); }
+.aq-doc-pipe__vsvg { display: block; width: 100%; height: 100%; overflow: visible; }
+.aq-doc-pipe__vb { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-doc-pipe__vs { fill: none; stroke: var(--on-navy); stroke-width: 1.5; stroke-linecap: round; }
+.aq-doc-pipe__stem { transform-box: view-box; transform-origin: 0 0; }
+
+/* the document in its bend */
+.aq-doc-pipe__txt { position: absolute; left: var(--space-12); right: var(--space-4); top: calc(var(--space-24) + var(--space-4)); display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-doc-pipe__num { font: 400 32px/1 var(--font-mono); color: var(--on-navy); font-variant-numeric: tabular-nums; }
+.aq-doc-pipe__t { margin: var(--space-2) 0 0; font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
+.aq-doc-pipe__t a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.aq-doc-pipe__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-navy-muted); }
+.aq-doc-pipe__code { margin: var(--space-1) 0 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-doc-pipe__item.is-key .aq-doc-pipe__code { color: var(--flow); }
+.aq-doc-pipe__item:hover .aq-doc-pipe__wall { stroke: var(--on-navy); }
+
+/* Desktop shows every document; the fold is for phones */
+.aq-fold:not(.is-open) .aq-doc-pipe__item.aq-fold-x { display: block; }
+.aq-fold:has(> .aq-doc-pipe) > .aq-fold__btn { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-doc-pipe-sec .aq-sec-head .aq-h1 { font-size: 56px; line-height: 60px; }
+  .aq-doc-pipe__t { font-size: 19px; line-height: 25px; }
+}
+/* Phones: the pipe runs down the left, a valve per document, the documents stacked beside it */
+@container (max-width: 860px) {
+  .aq-doc-pipe-sec .aq-sec-head .aq-h1 { font-size: 44px; line-height: 50px; }
+  .aq-doc-pipe { grid-template-columns: minmax(0, 1fr); position: relative; }
+  .aq-doc-pipe::before { content: ""; position: absolute; left: var(--space-3); top: 0; bottom: var(--space-6); width: var(--space-3); box-sizing: border-box;
+    border: 1.5px solid var(--on-navy-muted); border-top: 0; }
+  .aq-doc-pipe::after { content: ""; position: absolute; left: calc(var(--space-4) + var(--space-1) - 1px); top: 0; bottom: var(--space-6); border-left: 2px solid var(--flow); }
+  .aq-doc-pipe__item { height: auto; padding: var(--space-6) 0 var(--space-6) var(--space-12); }
+  .aq-doc-pipe__pipe { display: none; }
+  .aq-doc-pipe__valve, .is-lo .aq-doc-pipe__valve { left: calc(var(--space-4) + var(--space-1) + 1px); top: var(--space-8); height: var(--space-8); width: var(--space-6); translate: -50% -50%; }
+  .aq-doc-pipe__vs { display: none; }
+  .aq-doc-pipe__txt { position: static; }
+  .aq-doc-pipe__num { font-size: 24px; }
+  .aq-fold:not(.is-open) .aq-doc-pipe__item.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-doc-pipe) > .aq-fold__btn { display: flex; }
+}
+/* the water line scales with its piece (the dash that fills it on scroll is measured in the piece's own units) */
+.aq-doc-pipe__pipe path.aq-doc-pipe__flow { vector-effect: none; }

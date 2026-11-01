@@ -1,0 +1,82 @@
+/* ---------- TankTiles: fabrication parameters on a navy and limestone checkerboard of square tiles ---------- */
+/* Four columns of square tiles, no gutters (the checkerboard is the grid). The head sits in the first navy tile, the
+   steel-blue blueprint of the tank in the third; each row is a tile led by a huge light slash numeral. */
+.aq-tank-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: auto; }
+.aq-tank-tiles__list { display: contents; list-style: none; margin: 0; padding: 0; }
+.aq-tank-tiles__head, .aq-tank-tiles__tile, .aq-tank-tiles__bp { aspect-ratio: 1 / 1; min-width: 0; box-sizing: border-box; padding: var(--space-6); }
+.aq-tank-tiles__head { grid-column: 1; grid-row: 1; background: var(--navy); display: flex; flex-direction: column; justify-content: flex-end; }
+.aq-tank-tiles__head .aq-sec-head { margin: 0; }
+.aq-tank-tiles__head .aq-eyebrow { color: var(--on-navy-muted); }
+.aq-tank-tiles__head .aq-h1 { font: 300 44px/48px var(--font-sans); letter-spacing: -0.025em; color: var(--on-navy); max-width: none; }
+.aq-tank-tiles__head .aq-lead, .aq-tank-tiles__head p { color: var(--on-navy-muted); }
+
+/* the blueprint tile: steel blue ground, limestone hairlines, a fine drafting grid */
+.aq-tank-tiles__bp { grid-column: 3; grid-row: 1; position: relative; padding: var(--space-4); overflow: hidden;
+  background-color: color-mix(in srgb, var(--flow) 60%, var(--navy));
+  background-image: linear-gradient(color-mix(in srgb, var(--limestone) 14%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--limestone) 14%, transparent) 1px, transparent 1px);
+  background-size: var(--space-6) var(--space-6); background-position: -1px -1px; }
+.aq-tank-tiles__svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.aq-tank-tiles__svg path, .aq-tank-tiles__svg circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.aq-tank-tiles__ln { stroke: var(--limestone); stroke-width: 1.5; }
+.aq-tank-tiles__thin, .aq-tank-tiles__dim { stroke: var(--limestone); stroke-width: 1; opacity: 0.75; }
+.aq-tank-tiles__hl { stroke: var(--limestone); stroke-width: 1; opacity: 0.6; }
+.aq-tank-tiles__svg .aq-tank-tiles__eq { fill: color-mix(in srgb, var(--flow) 60%, var(--navy)); stroke: var(--limestone); stroke-width: 1.5; }
+.aq-tank-tiles__level { stroke: var(--limestone); stroke-width: 1.5; }
+.aq-tank-tiles__water { stroke: var(--limestone); stroke-width: 1; opacity: 0.3; }
+.aq-tank-tiles__jet { stroke: var(--limestone); stroke-width: 1; stroke-dasharray: 2 4; }
+.aq-tank-tiles__tx { fill: var(--limestone); font: 400 11px/1 var(--font-mono); text-anchor: middle; }
+.aq-tank-tiles__bpt { position: absolute; left: var(--space-4); bottom: var(--space-3); font: 400 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--limestone); }
+
+/* row tiles */
+.aq-tank-tiles__tile { display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-tank-tiles__tile.is-navy { background: var(--navy); color: var(--on-navy); }
+.aq-tank-tiles__tile.is-stone { background: var(--limestone); color: var(--on-limestone); }
+.aq-tank-tiles__n { margin: 0 0 auto; font: 300 72px/1 var(--font-sans); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.aq-tank-tiles__sl { margin-left: 0.04em; }
+.is-navy .aq-tank-tiles__sl { color: var(--on-navy-muted); }
+.is-stone .aq-tank-tiles__sl { color: var(--on-limestone-muted); }
+.aq-tank-tiles__p { margin: var(--space-4) 0 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; }
+.aq-tank-tiles__v { margin: 0; font: 400 14px/22px var(--font-sans); }
+.aq-tank-tiles__m { margin: var(--space-1) 0 0; padding-top: var(--space-2); display: flex; flex-direction: column; gap: var(--space-1); font: 400 13px/20px var(--font-sans); }
+.is-navy .aq-tank-tiles__m { color: var(--on-navy-muted); border-top: 1px solid color-mix(in srgb, var(--on-navy) 25%, transparent); }
+.is-stone .aq-tank-tiles__m { color: var(--on-limestone-muted); border-top: 1px solid color-mix(in srgb, var(--on-limestone) 25%, transparent); }
+.aq-tank-tiles__link { color: inherit; text-decoration: underline; text-underline-offset: 3px; min-height: var(--space-6); display: inline-flex; align-items: center; }
+.is-navy .aq-tank-tiles__link { color: var(--on-navy); }
+.is-stone .aq-tank-tiles__link { color: var(--on-limestone); }
+.aq-tank-tiles__tile:hover .aq-tank-tiles__sl { color: var(--flow); }
+.is-navy:hover .aq-tank-tiles__sl { color: var(--limestone); }
+
+/* Desktop shows every tile; the fold is for phones */
+.aq-fold:not(.is-open) .aq-tank-tiles__tile.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-tank-tiles) > .aq-fold__btn { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-tank-tiles__head, .aq-tank-tiles__tile { padding: var(--space-4); }
+  .aq-tank-tiles__n { font-size: 56px; }
+  .aq-tank-tiles__head .aq-h1 { font-size: 36px; line-height: 42px; }
+  .aq-tank-tiles__p { font-size: 18px; line-height: 24px; }
+}
+/* Phones: one column; head, blueprint band, then the tiles alternating navy and limestone, the fold back on */
+@container (max-width: 860px) {
+  .aq-tank-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-tank-tiles__head { grid-column: 1 / -1; grid-row: auto; aspect-ratio: auto; padding: var(--space-6) var(--space-4); }
+  .aq-tank-tiles__bp { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 2 / 1; }
+  .aq-tank-tiles__tile { grid-column: 1 / -1; aspect-ratio: auto; padding: var(--space-6) var(--space-4); }
+  .aq-tank-tiles__tile:nth-child(odd) { background: var(--limestone); color: var(--on-limestone); }
+  .aq-tank-tiles__tile:nth-child(even) { background: var(--navy); color: var(--on-navy); }
+  .aq-tank-tiles__tile:nth-child(odd) .aq-tank-tiles__m { color: var(--on-limestone-muted); border-top-color: color-mix(in srgb, var(--on-limestone) 25%, transparent); }
+  .aq-tank-tiles__tile:nth-child(even) .aq-tank-tiles__m { color: var(--on-navy-muted); border-top-color: color-mix(in srgb, var(--on-navy) 25%, transparent); }
+  .aq-tank-tiles__tile:nth-child(odd) .aq-tank-tiles__sl { color: var(--on-limestone-muted); }
+  .aq-tank-tiles__tile:nth-child(even) .aq-tank-tiles__sl { color: var(--on-navy-muted); }
+  .aq-tank-tiles__tile:nth-child(odd) .aq-tank-tiles__link { color: var(--on-limestone); }
+  .aq-tank-tiles__tile:nth-child(even) .aq-tank-tiles__link { color: var(--on-navy); }
+  .aq-tank-tiles__n { font-size: 48px; }
+  .aq-tank-tiles__bpt { display: none; }
+  .aq-fold:not(.is-open) .aq-tank-tiles__tile.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-tank-tiles) > .aq-fold__btn { display: flex; }
+}
+/* Shutter slats (added by motion.js for the entrance, removed when it ends) */
+.aq-tank-tiles__head, .aq-tank-tiles__tile, .aq-tank-tiles__bp { position: relative; }
+.aq-tank-tiles__blinds { position: absolute; inset: 0; display: flex; pointer-events: none; z-index: 1; }
+.aq-tank-tiles__blinds span { flex: 1; background: var(--navy); }
+.aq-tank-tiles__blinds.is-on-navy span { background: var(--limestone); }

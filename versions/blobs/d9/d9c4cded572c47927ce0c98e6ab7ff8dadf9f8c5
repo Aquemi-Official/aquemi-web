@@ -1,0 +1,14 @@
+MembraneAtlas reads a feed-water table as a numbered sequence of membrane failures: each row headed by a navy tile with a huge light slash numeral over a micrograph of what that condition does to the membrane, then the condition, its effect and what we design for.
+
+- On the site: a `table` block with `"look": "membrane-atlas"` (renderer `assets/src/blocks/look-membrane-atlas.js`), on sys-pretreatment "Canadian feed water and what it does". Origin: pass 9b concept `research/pass9b/concepts/sys-pretreatment.2.png` (navy numeral tiles as row heads turn a three-column table into a readable sequence); the micrographs come from the pass 9 plate atlas.
+- Markup: `div.aq-membrane-atlas[role=table]` → `div.__thead` (column names over a heavy `navy` rule) and `div.__body` of `div.__tr.__plate[role=row]`: `div.__tile[role=cell]` (navy; `span.__n` numeral with `span.__sl` slash, aria-hidden, plus a visually hidden number; `div.__scope` > `svg.__svg`: field, clean polyamide texture `__tex`, damage `g.__dmg`, rim and reticle, aria-hidden), then three `div.__td` (`role=rowheader` for the condition, `role=cell` for effect and design; `span.__k` column name, shown on phones only).
+- Fields: `h`, `cols` (the three column names), `rows [[condition, effect, design]]` (cells may be `{t, link}`), `fold`, `fold_noun`. New optional field: `marks`, one micrograph per row in row order: `oxidize` (pits and cracks), `cold` (split field: sparse permeate on the cold side, bacteria on the warm), `foul` (particle cake), `scale` (carbonate crystals), `silica` (glassy plates), `coat` (iron coating), `biofilm` (colonies in slime); anything else draws the clean membrane.
+- Micrographs are seeded (same plate every render), drawn in navy-ground inks and held soft (blur, 55 %) behind the numeral; they are decoration: the condition and its effect are the text.
+- Fold: desktop shows every row; phones keep the block's `fold` and its button.
+- Tokens: `navy` tiles with `on-navy` numerals, the slash `on-navy-muted` (limestone on hover); cells on the section ground with `line` hairlines; the design-for cell in `ink`.
+- Phones: the tile becomes a band over its row (numeral left, micrograph right), the cells stack under their column names.
+- Use it for conditions or failure modes that do something visible to one surface. Not for compliance evidence (ProofFolders) or plain comparisons (CompareTable).
+
+## Motion
+
+Motion: each row arrives as it scrolls in: the tile wipes up, the numeral rolls up on the odometer, the damage spreads across the micrograph from the centre, the cells slide in a beat apart (under 2 s). Then a lens, ported from Subframe Motion "Cursor focus lens" (focus-lens): pointing at a row brings a sharp ring over its micrograph that follows the pointer with exponential smoothing (18 per second), the sharp copy masked by a radial gradient at the lens point; leaving the row closes the lens. Pointer devices only; nothing under reduced motion.
