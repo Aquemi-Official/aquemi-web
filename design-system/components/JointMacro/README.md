@@ -1,0 +1,12 @@
+JointMacro sets a standard beside a traced duotone macro close-up of the thing it governs: the end of a polypropylene pipe fills the left of a navy band, its contours traced in a hairline and numbered to the rows at the right.
+
+- On the site: a `spec` block with `"look": "joint-macro"` (renderer `assets/src/blocks/look-joint-macro.js`), svc-fabrication "Our fabrication standard". Concept: `research/pass9b/concepts/svc-fabrication.1.png` (full-bleed macro of a fusion bead, its contour traced and numbered to the table). The concept's bead is not drawn: the joining method is an open fact (`[PP joining method]`), so the macro shows a prepared pipe end (body with its lot marking, end face, bore and inner wall, wall dimension) and no joint profile.
+- Markup: `section.aq-band--navy.aq-joint-macro-sec` → `div.aq-joint-macro`: `__head` (`__cap` eyebrow from `caption`, the section head), `__stage` → `__fig` (aria-hidden: `__ctx` context copy, `__ap` aperture copy with `g.__lead` leaders and `span.__no` numbers, `span.__crop` four corner marks), `__body` (`p.__legend`, the fold wrapper with `ol.__rows` of `li.__row`: `__n`, `h3.__p`, `__vm` with `__v` and `__m`, each with a `__k` label).
+- Fields, as a spec block: `h`, `caption`, `cols`, `rows [{p, v, m, part}]`, `fold`, `fold_noun`. `part` (optional): `wall`, `face`, `exam`, `bore`, `mark`, or `none` (default from the item's words). A pinned row gets `tabindex="0"` and `data-crop`. The rows' old `at` callout positions are ignored.
+- Tokens: planes mixed from `navy` and `on-navy` (`--jm-*`), traces `limestone`, numbers `navy` chips that turn `limestone` when lit, rows in `on-navy` and `on-navy-muted`.
+- Pointing at or focusing a pinned row moves the crop frame (the aperture's `clip-path: inset()` and its corner marks) onto its part and fades the rest of the macro; a row without a part returns the frame to the whole drawing. Ported from Subframe Motion "Aspect ratio crop animation" (frame-crop): 620 ms on cubic-bezier(.22,.8,.18,1), instant under reduced motion.
+- Phones: the macro full width on top (not sticky), rows in one column with their labels; the fold applies.
+
+## Motion
+
+Motion: one timeline, once (about 2.8 s): the duotone planes settle from a 1.08 crop, the contours and the wall dimension trace on, the leaders run out and the numbers land, the corner marks appear and the rows rise in order. Nothing under reduced motion.

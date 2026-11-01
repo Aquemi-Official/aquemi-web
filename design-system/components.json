@@ -339,16 +339,6 @@
    "summary": "Closing is the call to action at the end of every page: one centred display headline on the navy band, one lead sentence and a large primary button, with the brand mark large and faint, cut by the top-left corner."
   },
   {
-   "name": "CodeIndex",
-   "readme": "design-system/components/CodeIndex/README.md",
-   "preview": "design-system/components/CodeIndex/preview.html",
-   "group": "Page sections",
-   "height": "1100",
-   "width": "1100",
-   "subtitle": "The fabrication dossier as an index in huge outline filing codes",
-   "summary": "CodeIndex shows a short document set as an index in huge type: each document's filing code (JNT, MAT, WQR, PT) runs as oversized outline mono across its row, cropped by the page edge on alternating sides, with the document's number, name and contents beside it; the deciding documents' codes are drawn in flow."
-  },
-  {
    "name": "Colophon",
    "readme": "design-system/components/Colophon/README.md",
    "preview": "design-system/components/Colophon/preview.html",
@@ -519,16 +509,6 @@
    "summary": "FidelityLadder shows design stages as one drawing gaining detail on a navy blueprint band: every stage is a sheet with the same water package drawn at that stage's level (matrix, block route, P&ID, dimensioned isometric, frozen isometric, spools with their joints), joined by a run with a node per stage and a closed valve and \"Hold point\" stamp where you sign."
   },
   {
-   "name": "FusionBench",
-   "readme": "design-system/components/FusionBench/README.md",
-   "preview": "design-system/components/FusionBench/preview.html",
-   "group": "Page sections",
-   "height": "1300",
-   "width": "1100",
-   "subtitle": "The fabrication standard as a shop drawing of the joining bench and its parts list",
-   "summary": "FusionBench shows a fabrication standard as a shop drawing and its parts list on a navy blueprint band: an isometric of the joining bench (pipe stock, clamps holding two lengths fused at a bead, heater plate, test coupon, procedure clipboard, data logger, test cap and gauge, open bore with the rinse water, certificate binders), a numbered balloon on the part each row is about, and the rows as the drawing's parts list."
-  },
-  {
    "name": "GradeEditorial",
    "readme": "design-system/components/GradeEditorial/README.md",
    "preview": "design-system/components/GradeEditorial/preview.html",
@@ -639,14 +619,34 @@
    "summary": "IssuedSet shows the documents you receive as the issued set itself, dealt onto a desk: each document a sheet of paper at a slight turn with its code large, a miniature of what it looks like, its name and text, and a round stamp of the qualification step that uses it."
   },
   {
-   "name": "JointTag",
-   "readme": "design-system/components/JointTag/README.md",
-   "preview": "design-system/components/JointTag/preview.html",
+   "name": "JointMacro",
+   "readme": "design-system/components/JointMacro/README.md",
+   "preview": "design-system/components/JointMacro/preview.html",
    "group": "Page sections",
-   "height": "1180",
-   "width": "1100",
-   "subtitle": "The joint log as a traceability tag hanging from the fused joint it records",
-   "summary": "JointTag shows a joint log as a traceability tag hanging from the joint it records: a polypropylene pipe in side view, fused at a double-rolled bead, runs off both page edges, and the tag on its wire carries one form box per log field, each field's number pinned on the part of the joint it describes."
+   "height": "1500",
+   "width": "1200",
+   "subtitle": "The fabrication standard beside a traced duotone macro of a pipe end; a row moves the crop frame to its part",
+   "summary": "JointMacro sets a standard beside a traced duotone macro close-up of the thing it governs: the end of a polypropylene pipe fills the left of a navy band, its contours traced in a hairline and numbered to the rows at the right."
+  },
+  {
+   "name": "JointSpine",
+   "readme": "design-system/components/JointSpine/README.md",
+   "preview": "design-system/components/JointSpine/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1200",
+   "subtitle": "The joint log as rows hanging off a pipe: each row level with its joint on the spine",
+   "summary": "JointSpine shows a log as rows hanging off a pipe: a twin-wall pipe drops in beside the title, bends and runs down the log as its spine, and each row sits level with a numbered joint on it."
+  },
+  {
+   "name": "JointSteps",
+   "readme": "design-system/components/JointSteps/README.md",
+   "preview": "design-system/components/JointSteps/preview.html",
+   "group": "Page sections",
+   "height": "1150",
+   "width": "1200",
+   "subtitle": "From pipe to turnover, told on one joint: navy title column, the joint sheet, the step rail with HP/WP codes",
+   "summary": "JointSteps tells a fabrication sequence on one joint: a navy title column, a drawing sheet with the joint drawn large in isometric, and the steps on a numbered rail with hold point (HP) and witness point (WP) codes; as the rail is read, the sheet shows what that step does to the joint."
   },
   {
    "name": "LayerStack",
@@ -1189,16 +1189,6 @@
    "summary": "ShopFloor places the company's people or roles where their work happens, as numbered stations on one isometric plan of the shop with a walking route through them, so a reader sees the shop and who works where before reading the cards."
   },
   {
-   "name": "ShopRoute",
-   "readme": "design-system/components/ShopRoute/README.md",
-   "preview": "design-system/components/ShopRoute/preview.html",
-   "group": "Page sections",
-   "height": "940",
-   "width": "1100",
-   "subtitle": "A spool's route through the shop drawn as a floor plan, with hold and witness points",
-   "summary": "ShopRoute shows a fabrication sequence as the route a spool takes through the shop, drawn as a floor plan on a limestone sheet: one bay per step (three across, the second row returning right to left as a U-shaped shop runs) with its plan furniture, one route line through every bay with a stop per step, a gate after a hold point, and a ringed stop and tag for each witness point."
-  },
-  {
    "name": "SignalDial",
    "readme": "design-system/components/SignalDial/README.md",
    "preview": "design-system/components/SignalDial/preview.html",
@@ -1257,6 +1247,16 @@
    "width": "1100",
    "subtitle": "Turnover package as binder spines on a shelf beside its index that opens",
    "summary": "SpineShelf shows a document package as the object itself: a row of binder spines standing on one shelf (one per section, each as thick as the section holds documents, the key section navy) beside the package index, whose sections open to list their documents."
+  },
+  {
+   "name": "SpoolDossier",
+   "readme": "design-system/components/SpoolDossier/README.md",
+   "preview": "design-system/components/SpoolDossier/preview.html",
+   "group": "Page sections",
+   "height": "820",
+   "width": "1200",
+   "subtitle": "The fabrication dossier beside the as-built isometric spool it indexes; a part shows its layer",
+   "summary": "SpoolDossier sets a document set beside the as-built isometric it indexes: the title huge and light at the top left, an isometric polypropylene spool at the right with numbered joints and lot-tagged lengths, and the documents in a hairline grid under them."
   },
   {
    "name": "StageStacks",

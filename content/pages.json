@@ -2651,7 +2651,7 @@
    "blocks": [
     {
      "type": "table",
-     "look": "joint-tag",
+     "look": "joint-spine",
      "h": "One joint, one log line",
      "cols": [
       "Field in the joint log",
@@ -2707,7 +2707,7 @@
     },
     {
      "type": "spec",
-     "look": "fusion-bench",
+     "look": "joint-macro",
      "h": "Our fabrication standard",
      "caption": "FABRICATION · POLYPROPYLENE",
      "cols": [
@@ -2794,7 +2794,7 @@
     },
     {
      "type": "docs",
-     "look": "code-index",
+     "look": "spool-dossier",
      "h": "The fabrication dossier",
      "items": [
       {
@@ -2821,7 +2821,8 @@
     },
     {
      "type": "steps",
-     "look": "shop-route",
+     "look": "joint-steps",
+     "method": "[PP joining method]",
      "h": "From pipe to turnover",
      "items": [
       {

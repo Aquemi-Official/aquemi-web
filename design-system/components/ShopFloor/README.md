@@ -7,7 +7,7 @@ ShopFloor places the company's people or roles where their work happens, as numb
 - Interaction: hovering or focusing a card lights its station and walking leg (`is-lit`, flow) and fills its pin; on wide screens with long lists, the card crossing 45 % of the view does the same as you scroll (the plan is sticky).
 - Tokens: `navy` band, `on-navy` / `on-navy-muted` text and lines, `limestone` lit pin, Geist Light titles and numbers, Geist Mono field labels and pins.
 - Phones: the plan is a band above the cards (not sticky), pins keep their numbers, fields stack.
-- Not for process trains or equipment explanations (use SystemRun, StrataRun); not for a sequence of steps (ShopRoute is the fabrication sequence as a floor plan).
+- Not for process trains or equipment explanations (use SystemRun, StrataRun); not for a sequence of steps (JointSteps is the fabrication sequence).
 
 ## Motion
 

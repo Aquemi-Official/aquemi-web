@@ -1621,22 +1621,6 @@ LOOKS['clause-crosswalk']=function(b,H){
   if(row)set(root,[row.getAttribute('data-cw')],null);else if(node)set(root,node.getAttribute('data-rows').split(' '),[node.getAttribute('data-cwn')]);else set(root,null,null)});
  document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-clause-crosswalk');if(root&&!root.contains(ev.relatedTarget))set(root,null,null)});
 })();
-/* Look "code-index" -> CodeIndex (design-system/components/CodeIndex): a short set of documents as an index set in
-   huge type. Each document's filing code (JNT, MAT …) runs as oversized outline mono across its row, cropped by the
-   page edge and alternating sides, with the document's number, name and what it holds set beside it; the deciding
-   documents' codes are drawn in flow.
-   Fields (a docs block): h, intro, items [{t, d, code, key, link, intent}], link, link_label, intent, fold, fold_noun.
-   Codes come from the DocList lookup (docCode) unless the item names its own. Phones: code over text, one column. */
-LOOKS['code-index']=function(b,H){
- var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=items.length;
- var li=items.map(function(x,i){var t=String(x.t||''),c=x.code||docCode(t)[0],num=(i<9?'0':'')+(i+1);
-  var name=x.link&&wp(x.link)?wlink(x.link,t,x.intent):tx(t);
-  return fli('<li class="aq-code-index__row'+(x.key?' is-key':'')+(i%2?' is-r':'')+'" style="--i:'+i+'">',b,i)
-   +'<span class="aq-code-index__code" aria-hidden="true">'+e(c)+'</span>'
-   +'<div class="aq-code-index__text"><span class="aq-code-index__n" aria-hidden="true">'+num+' / '+e(c)+'</span><h3 class="aq-code-index__t">'+name+'</h3>'+(x.d?'<p class="aq-code-index__d">'+tx(x.d)+'</p>':'')+'</div>'
-   +'</li>'}).join('');
- var more=b.link&&wp(b.link)?'<p class="aq-code-index__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
- return sec(H+'<div class="aq-code-index">'+wFold(b,n,'<ol class="aq-code-index__list" role="list">'+li+'</ol>',b.fold_noun||'documents')+more+'</div>','aq-code-index-sec')};
 /* Look "colophon" -> Colophon (design-system/components/Colophon): a spec block of company facts set as a measured
    editorial colophon. The first highlighted row is the statement: its value set at display size in light type, the
    sentence that says what we do not do set after it, smaller and quieter (split at its first full stop, words
@@ -2096,76 +2080,6 @@ LOOKS['fidelity-ladder']=(function(){
     +'</li>'}).join('');
   return sec(H+'<ol class="aq-fidelity-ladder" style="--cols:'+cols+'">'+li+'</ol>','aq-band--navy aq-fidelity-ladder-sec')}
 })();
-/* Look "fusion-bench" -> FusionBench (design-system/components/FusionBench): the fabrication standard as a shop drawing
-   with its parts list. On a navy blueprint ground, an isometric of the joining bench (IsoKit primitives; the kit has no
-   fusion machine, so it is drawn here): pipe stock on the rack behind, the bench frame, two pipe lengths held in the
-   machine's clamps and fused at a bead, a test coupon, the written procedure on a clipboard, the machine's data
-   logger, a test cap with its gauge on one pipe end, the open bore at the other with the rinse water running out, and
-   the certificate binders. A numbered balloon on a leader marks the part each row is about; under the drawing the
-   rows are the drawing's parts list, balloon number first. Pointing at (or focusing into) a row lights its part.
-   Fields, as a spec block: h, caption, cols [item, what we do, standard and record], rows [{p, v, m, part}], fold,
-   fold_noun. part (optional): stock, bead, coupon, exam, bore, binder, clipboard, logger, rinse, gauge (default from
-   the item's words). The fold applies on phones only. Phones: the drawing on top, the list in one column. */
-LOOKS['fusion-bench']=(function(){
- function scene(){var Z=9,Y=35,PZ=Z+30,o=[],A={};
-  /* pipe stock on the rack behind */
-  var st=isoB(0,0,0,1);[[-46,6],[-46,24],[-30,6],[-38,15]].forEach(function(q){st.cyl(-10,q[0],q[1],'x',190,7)});st.box(-14,-58,0,6,40,4);st.box(170,-58,0,6,40,4);
-  o.push(st.done('stock',{id:'stock'}));A.stock=[90,-38,22];
-  /* bench frame */
-  var sk=isoPart('skid',-10,0,0,1,{w:250,d:80,id:'bench'});o.push(sk);
-  /* the machine: bed, fixed and moving clamps round two pipe lengths fused at a bead */
-  var m=isoB(0,0,0,1);m.box(20,18,Z,170,34,7);m.box(26,52,Z,160,4,4,ISO_K.alt);
-  /* back halves of the clamps first, then the pipes, then the front jaws */
-  [44,70,118,144].forEach(function(x){m.box(x-6,20,Z+7,12,30,12)});
-  /* the heater plate, parked upright on its stand behind the pipe */
-  m.box(196,18,Z+7,10,8,26);m.cyl(198,22,Z+38,'x',4,17);m.ring(202,22,Z+38,'x',12,ISO_K.th);m.line([200,22,Z+55],[200,22,Z+64]);
-  m.cyl(-36,Y,PZ,'x',129,9);m.cyl(95,Y,PZ,'x',140,9);
-  o.push(m.done('machine',{id:'machine'}));
-  var bd=isoB(0,0,0,1);bd.cyl(91,Y,PZ,'x',6,11.5);bd.ring(94,Y,PZ,'x',9.5,ISO_K.th);
-  o.push(bd.done('bead',{id:'bead'}));A.bead=[94,Y,PZ+11];A.exam=[94,Y+9,PZ-6];
-  var jw=isoB(0,0,0,1);[44,70,118,144].forEach(function(x){jw.cyl(x-5,Y,PZ,'x',10,13);jw.line([x,Y,PZ+13],[x,Y,PZ+20])});
-  o.push(jw.done('clamps',{id:'clamps'}));
-  /* test cap and gauge on the left end; the open bore on the right end */
-  var cap=isoB(0,0,0,1);cap.cyl(-44,Y,PZ,'x',8,11);o.push(cap.done('cap',{id:'gauge'}));
-  o.push(isoPart('gauge',-40,Y,PZ+11,1.2,{value:0.62,id:'gauge'}));A.gauge=[-40,Y,PZ+22];
-  var bo=isoB(0,0,0,1);bo.ring(235,Y,PZ,'x',6.5,ISO_K.ln);bo.ring(235,Y,PZ,'x',4.5,ISO_K.hid);o.push(bo.done('bore',{id:'bore'}));A.bore=[235,Y-4,PZ+4];
-  /* the rinse water runs out of the bore to the drain */
-  var p1=isoP(235,Y+5,PZ-3),p2=isoP(246,Y+5,PZ-12),p3=isoP(250,Y+5,0);
-  o.push('<path class="aq-iso__flow aq-iso__flow--drop" d="M'+isoT(p1)+'Q'+isoT(p2)+' '+isoT(p3)+'"/>');
-  var dr=isoB(0,0,0,1);dr.ring(250,Y+5,0.5,'z',7,ISO_K.th);o.push(dr.done('drain',{id:'rinse'}));A.rinse=[248,Y+5,10];
-  /* on the bench front: clipboard, test coupon, data logger */
-  o.push(isoPart('clipboard',8,64,Z,0.9,{id:'clipboard'}));A.clipboard=[8,64,Z+2];
-  var cp=isoB(0,0,0,1);cp.box(80,62,Z,4,8,12);cp.box(100,62,Z,4,8,12);cp.box(80,62,Z+12,24,8,3);o.push(cp.done('coupon',{id:'coupon'}));A.coupon=[92,66,Z+15];
-  o.push(isoPart('analyzer',176,66,Z,1,{post:false,id:'logger'}));A.logger=[176,66,Z+20];
-  /* certificate binders on the floor in front */
-  o.push(isoPart('binder',272,44,0,0.9,{id:'binder'}));A.binder=[272,44,26];
-  return {svg:o.join(''),A:A}}
- /* where each balloon sits, offset from its anchor (screen units) */
- var OFF={stock:[-40,-46],bead:[0,-70],exam:[-30,62],gauge:[-36,-46],bore:[34,-50],rinse:[46,30],clipboard:[-56,40],coupon:[-10,70],logger:[54,-30],binder:[40,-40]};
- function pick(s){s=String(s||'');return /certificate/i.test(s)?'binder':/^material/i.test(s)?'stock':/test joint/i.test(s)?'coupon':/examin|visual/i.test(s)?'exam':/joining|joint/i.test(s)?'bead':/surface/i.test(s)?'bore':/procedure|welder/i.test(s)?'clipboard':/machine/i.test(s)?'logger':/clean|rinse|flush/i.test(s)?'rinse':/pressure/i.test(s)?'gauge':''}
- return function(b,H){var C=b.cols||[],R=b.rows||[],S=scene(),bx=isoBounds([[-52,-62,0],[292,-62,0],[-52,100,0],[292,100,0],[-52,-62,80],[292,100,70],[-52,100,70]],20),W=Math.round(bx.w),Hh=Math.round(bx.h),org=[-bx.x,-bx.y],leads='',balls='';
-  R.forEach(function(r,i){var pt=S.A[r.part]?r.part:pick(r.p);if(!pt)return;var o=OFF[pt]||[0,-50],L=isoLeader(S.A[pt],{dx:o[0],dy:o[1]},{shelf:0}),at=isoPct(L.end,W,Hh,org);
-   leads+='<g data-k="'+i+'" data-part="'+pt+'">'+L+'</g>';
-   balls+='<span class="aq-fusion-bench__ball" data-k="'+i+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'});
-  var svg=isoSvg(W,Hh,S.svg+leads,'aq-iso--navy',{origin:org,under:isoSheet(W,Hh,{grid:'iso',m:8,band:10})});
-  var fig='<div class="aq-fusion-bench__fig aq-iso-figure aq-iso-figure--navy">'+svg+balls+'</div>';
-  var k=function(i){return C[i]?'<span class="aq-fusion-bench__k">'+tx(C[i])+'</span>':''};
-  var head='<div class="aq-fusion-bench__cols" aria-hidden="true"><span>No.</span>'+[0,1,2].map(function(i){return '<span>'+tx(C[i]||'')+'</span>'}).join('')+'</div>';
-  var list='<ol class="aq-fusion-bench__list" role="list">'+R.map(function(r,i){
-   return fli('<li class="aq-fusion-bench__row" data-k="'+i+'">',b,i)+'<span class="aq-fusion-bench__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-    +'<h3 class="aq-fusion-bench__p">'+tx(r.p)+'</h3>'
-    +'<p class="aq-fusion-bench__v">'+k(1)+tx(r.v)+'</p>'
-    +'<p class="aq-fusion-bench__m">'+k(2)+tx(r.m)+'</p></li>'}).join('')+'</ol>';
-  var cap=b.caption?'<p class="aq-fusion-bench__cap" aria-hidden="true"><span>'+tx(b.caption)+'</span><span>'+R.length+' items</span></p>':'';
-  return sec(H+'<div class="aq-fusion-bench"><div class="aq-fusion-bench__stage">'+fig+'</div><div class="aq-fusion-bench__parts">'+cap+head+wFold(b,R.length,list,b.fold_noun||'rows')+'</div></div>','aq-band--navy aq-fusion-bench-sec')}
-})();
-/* FusionBench: pointing at (or focusing into) a parts-list row lights its balloon, leader and part */
-(function(){function hl(ev,on){var f=ev.target.closest&&ev.target.closest('.aq-fusion-bench__row');if(!f)return;var r=f.closest('.aq-fusion-bench'),k=f.getAttribute('data-k');
- f.classList.toggle('is-on',on);[].forEach.call(r.querySelectorAll('[data-k="'+k+'"]'),function(x){x.classList.toggle('is-on',on)});
- var g=r.querySelector('g[data-k="'+k+'"]'),svg=r.querySelector('svg.aq-iso');if(g&&svg&&window.AQiso)AQiso.light(svg,g.getAttribute('data-part'),on);
- else if(g&&svg)[].forEach.call(svg.querySelectorAll('[data-iso-id="'+g.getAttribute('data-part')+'"]'),function(p){p.classList.toggle('is-lit',on)})}
- document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEventListener('mouseout',function(ev){hl(ev,false)});
- document.addEventListener('focusin',function(ev){hl(ev,true)});document.addEventListener('focusout',function(ev){hl(ev,false)})})();
 /* Look "grade-editorial" -> GradeEditorial (design-system/components/GradeEditorial): a short path set as an editorial
    spread. The heading runs oversized on a navy mast; below, on limestone, a geometric pipe collage (Swiss poster
    tiles, a hollow pipe with the water running through a tank and a pump to an outlet) faces five asymmetric fact
@@ -2492,65 +2406,158 @@ LOOKS['issued-set']=(function(){
   var more=b.link&&wp(b.link)?'<p class="aq-issued-set__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
   return sec(H+'<div class="aq-issued-set">'+wFold(b,n,'<ol class="aq-issued-set__desk" style="--n:'+Math.min(n,4)+'">'+li+'</ol>',b.fold_noun||'documents')+more+'</div>','aq-issued-set-sec')}
 })();
-/* Look "joint-tag" -> JointTag (design-system/components/JointTag): one joint, one log line, shown on the joint itself.
-   A polypropylene pipe in side view runs across the section and off both edges, two lengths fused in the middle with
-   the double-rolled fusion bead; each length carries its printed lot marking, the joint number is stencilled beside
-   the bead, a fused test coupon lies on the bench under it and a dashed cut line marks where a rejected joint would be cut out. A
-   traceability tag hangs from the joint on its wire: the log line as a printed form, one box per field (number, field,
-   what it proves, the record). Each field's number is also pinned on the part of the joint it describes; pointing at a
-   field lights its pin.
-   Fields, as a table: cols [field, what it proves, record], rows, fold, fold_noun. Optional parts (one per row: num,
-   lot, welder, bead, visual, coupon, sign, cut; default from the field's words). The fold applies on phones only. */
-LOOKS['joint-tag']=(function(){
- var PIN={num:[810,76],lot:[560,118],welder:[770,262],bead:[640,36],visual:[640,262],coupon:[372,303],sign:[770,316],cut:[940,118]};
- function pick(s){s=String(s||'');return /joint number/i.test(s)?'num':/material|lot/i.test(s)?'lot':/welder/i.test(s)?'welder':/parameter|setting/i.test(s)?'bead':/visual|examin/i.test(s)?'visual':/test joint/i.test(s)?'coupon':/repair|cut/i.test(s)?'cut':'sign'}
- function str(c){return String(c&&typeof c==='object'?c.t:c==null?'':c)}
- function dots(x0,y,w){var o='';for(var x=x0;x<x0+w;x+=9)o+='<rect x="'+x+'" y="'+(y+((x/9)%3===0?3:0))+'" width="5" height="'+((x/9)%4===1?9:5)+'"/>';return '<g class="aq-joint-tag__print">'+o+'</g>'}
- function pipe(){var o='';
-  /* two lengths, flat tonal fills: body, the shaded underside, a highlight; the left runs off the page edge */
-  o+='<rect class="aq-joint-tag__body" x="-600" y="70" width="1288" height="160"/><rect class="aq-joint-tag__shade" x="-600" y="182" width="1288" height="48"/>'
-   +'<rect class="aq-joint-tag__body" x="712" y="70" width="1288" height="160"/><rect class="aq-joint-tag__shade" x="712" y="182" width="1288" height="48"/>'
-   +'<path class="aq-joint-tag__hi" d="M-600 92H684M736 92H2000"/>'
-   +'<path class="aq-joint-tag__edge" d="M-600 70H688M712 70H2000M-600 230H688M712 230H2000"/>';
-  /* the bead: two rolled lobes each side of the fusion line, above and below */
-  o+='<rect class="aq-joint-tag__fuse" x="676" y="70" width="48" height="160"/>'
-   +'<path class="aq-joint-tag__bead" d="M670 72C664 46 676 30 690 34C699 37 700 50 700 62C700 50 701 37 710 34C724 30 736 46 730 72Z"/>'
-   +'<path class="aq-joint-tag__bead" d="M670 228C664 254 676 270 690 266C699 263 700 250 700 238C700 250 701 263 710 266C724 270 736 254 730 228Z"/>'
-   +'<path class="aq-joint-tag__curl" d="M680 60C680 48 688 44 694 50M720 60C720 48 712 44 706 50M680 240C680 252 688 256 694 250M720 240C720 252 712 256 706 250"/>'
-   +'<path class="aq-joint-tag__seam" d="M700 62V238"/>';
-  /* lot markings, the stencilled joint number, the cut-out line */
-  o+=dots(300,140,320)+dots(860,140,200)
-   +'<g class="aq-joint-tag__sten"><rect x="772" y="104" width="76" height="30"/><text x="810" y="125" text-anchor="middle">J-01</text></g>'
-   +'<path class="aq-joint-tag__cut" d="M940 52V248"/><path class="aq-joint-tag__cutm" d="M930 44L950 60M950 44L930 60M930 240L950 256M950 240L930 256"/>';
-  /* the wire round the joint and down to the tag */
-  o+='<path class="aq-joint-tag__wire" d="M742 70C758 70 758 230 742 230M742 230C718 236 716 252 724 262C730 270 730 284 724 300V340"/>';
-  /* the test joint: a short fused coupon of the same pipe, bead in the middle, lying on the bench under the joint */
-  o+='<g class="aq-joint-tag__coupon"><path class="aq-joint-tag__bench" d="M384 324H572"/>'
-   +'<rect class="aq-joint-tag__cb" x="404" y="290" width="144" height="26"/><rect class="aq-joint-tag__cs" x="404" y="307" width="144" height="9"/>'
-   +'<path class="aq-joint-tag__ce" d="M404 290H548V316H404Z"/>'
-   +'<path class="aq-joint-tag__cbd" d="M468 291C465 282 470 278 476 280C482 278 487 282 484 291Z"/><path class="aq-joint-tag__cbd" d="M468 315C465 324 470 328 476 326C482 328 487 324 484 315Z"/>'
-   +'<path class="aq-joint-tag__seam" d="M476 291V315"/></g>';
-  return o}
- return function(b,H){var C=b.cols||[],R=b.rows||[],Pt=b.parts||[];
-  var parts=R.map(function(r,i){return PIN[Pt[i]]?Pt[i]:pick(str(r[0]))}),pins='',used={};
-  parts.forEach(function(p,i){var q=PIN[p].slice(),u=used[p]=(used[p]||0)+1;if(u>1)q=[q[0]+34*(u-1),q[1]];
-   pins+='<g class="aq-joint-tag__pin" data-k="'+i+'"><circle cx="'+q[0]+'" cy="'+q[1]+'" r="15"/><text x="'+q[0]+'" y="'+q[1]+'" text-anchor="middle" dominant-baseline="central">'+(i<9?'0':'')+(i+1)+'</text></g>'});
-  var svg='<div class="aq-joint-tag__pipe" aria-hidden="true"><svg viewBox="0 0 1200 340" focusable="false">'+pipe()+pins+'</svg></div>';
-  var k=function(i){return C[i]?'<p class="aq-joint-tag__k">'+tx(C[i])+'</p>':''};
-  var list='<ol class="aq-joint-tag__fields" role="list">'+R.map(function(r,i){
-   return fli('<li class="aq-joint-tag__field" data-k="'+i+'">',b,i)+idx(i)
-    +'<h3 class="aq-joint-tag__name">'+tcell(r[0])+'</h3>'
-    +(r[1]!=null?'<div class="aq-joint-tag__proves">'+k(1).replace('__k"','__k aq-joint-tag__k--sr"')+'<p>'+tcell(r[1])+'</p></div>':'')
-    +(r[2]!=null?'<div class="aq-joint-tag__rec">'+k(2)+'<p>'+tcell(r[2])+'</p></div>':'')+'</li>'}).join('')+'</ol>';
-  var tag='<div class="aq-joint-tag__tag" data-theme="light"><span class="aq-joint-tag__eye" aria-hidden="true"></span>'
-   +'<p class="aq-joint-tag__th" aria-hidden="true"><span>'+tx(C[0]||'')+'</span>'+(C[1]?'<span class="aq-joint-tag__lg">'+tx(C[1])+'</span>':'')+'<span>J-01</span></p>'+wFold(b,R.length,list,b.fold_noun||'fields')+'</div>';
-  return sec(H+'<div class="aq-joint-tag">'+svg+tag+'</div>','aq-joint-tag-sec')}
+/* Look "joint-macro" -> JointMacro (design-system/components/JointMacro): a standard as a macro close-up of the thing it
+   governs, its contours traced and numbered, with the standard's rows beside it. On the navy band, the end of a
+   polypropylene pipe fills the left of the section in flat duotone planes, cropped by the section edge: the body
+   running away up to the right with its printed lot marking, the end face (the surface every joint is made on) as a
+   ring, the bore with its inner wall. The face's contour is traced in a hairline; a dimension marks the wall. Each row
+   that is about a part of the pipe carries its number on a leader to that part. Pointing at (or focusing) a row moves
+   a crop frame onto its part and fades the rest of the macro.
+   The drawing shows a prepared pipe end only, no joint profile: the joining method is an open fact ([PP joining
+   method]) and the drawing must not assert one.
+   Fields, as a spec block: h, caption, cols [item, what we do, standard and record], rows [{p, v, m, part}], fold,
+   fold_noun. part (optional): wall, face, exam, bore, mark, or "none" (default from the item's words). The fold applies
+   on phones only. Phones: the macro on top, the rows in one column under it. */
+LOOKS['joint-macro']=(function(){
+ var W=720,Hh=640;
+ /* anchors on the part and where the number sits (viewBox units); a second row on the same part uses the second pair */
+ var A={wall:[[112,216,170,100],[98,244,56,384]],face:[[263,534,150,604]],exam:[[265,278,372,112]],bore:[[290,372,452,430],[262,412,452,504]],mark:[[566,288,652,392]]};
+ /* the crop frame for each part: x, y, w, h */
+ var CROP={wall:[8,80,250,280],face:[120,420,280,214],exam:[170,70,260,250],bore:[176,270,250,260],mark:[430,170,286,260]};
+ function pick(s){s=String(s||'');return /certificate/i.test(s)?'mark':/^material/i.test(s)?'wall':/examin|visual/i.test(s)?'exam':/^joining/i.test(s)?'face':/surface|clean|rinse|flush/i.test(s)?'bore':/pressure/i.test(s)?'wall':'none'}
+ function drawing(k,leads){
+  var rot=' transform="rotate(-36.87 250 400)"',ell=function(c,rx,ry,x,y,ex){return '<ellipse class="'+c+'" cx="'+(x||250)+'" cy="'+(y||400)+'" rx="'+rx+'" ry="'+ry+'" transform="rotate(-36.87 '+(x||250)+' '+(y||400)+')"'+(ex||'')+'/>'};
+  return '<svg viewBox="0 0 '+W+' '+Hh+'" preserveAspectRatio="xMidYMid slice" focusable="false">'
+   +'<defs><clipPath id="aqjm-bore'+k+'"><ellipse cx="250" cy="400" rx="70" ry="200"'+rot+'/></clipPath></defs>'
+   /* body: side, shaded underside, highlight, edges, the printed lot marking */
+   +'<path class="aq-joint-macro__side" d="M94 192L894 -408L1206 8L406 608Z"/>'
+   +'<path class="aq-joint-macro__shade" d="M370 560L1170 -40L1206 8L406 608Z"/>'
+   +'<path class="aq-joint-macro__hi" d="M196 228L996 -372"/>'
+   +'<path class="aq-joint-macro__edge" d="M94 192L894 -408M406 608L1206 8"/>'
+   +'<path class="aq-joint-macro__print" d="M470 360L760 142"/><path class="aq-joint-macro__print aq-joint-macro__print--b" d="M482 378L700 214"/>'
+   /* the end face: ring, bore with its inner wall, the far end seen through it */
+   +ell('aq-joint-macro__face',91,260)+ell('aq-joint-macro__wallin',70,200)
+   +'<g clip-path="url(#aqjm-bore'+k+')">'+ell('aq-joint-macro__deep',70,200,298,364)+'</g>'
+   +ell('aq-joint-macro__ln',91,260)+ell('aq-joint-macro__ln',70,200)+ell('aq-joint-macro__far',70,200,298,364,' clip-path="url(#aqjm-bore'+k+')"')
+   /* the traced contour of the face, and the wall dimension */
+   +ell('aq-joint-macro__trace',99,272)
+   +'<path class="aq-joint-macro__dim" d="M130 240L94 192M126 246L146 231M90 198L110 183"/>'
+   +leads+'</svg>'}
+ return function(b,H){var C=b.cols||[],R=b.rows||[],used={},leads='',nums='';
+  var parts=R.map(function(r){var p=r.part||pick(r.p);return A[p]?p:'none'});
+  parts.forEach(function(p,i){if(p==='none')return;var u=used[p]=(used[p]||0),q=A[p][Math.min(u,A[p].length-1)];used[p]++;var n=(i<9?'0':'')+(i+1);
+   leads+='<g class="aq-joint-macro__lead" data-k="'+i+'"><path d="M'+q[0]+' '+q[1]+'L'+q[2]+' '+q[3]+'"/><circle cx="'+q[0]+'" cy="'+q[1]+'" r="3.5"/></g>';
+   nums+='<span class="aq-joint-macro__no" data-k="'+i+'" style="left:'+(q[2]/W*100).toFixed(2)+'%;top:'+(q[3]/Hh*100).toFixed(2)+'%">'+n+'</span>'});
+  var corners='<span class="aq-joint-macro__crop"><i></i><i></i><i></i><i></i></span>';
+  var fig='<div class="aq-joint-macro__fig" aria-hidden="true"><div class="aq-joint-macro__ctx">'+drawing('a','')+'</div><div class="aq-joint-macro__ap">'+drawing('b',leads)+nums+'</div>'+corners+'</div>';
+  var k=function(i){return C[i]?'<span class="aq-joint-macro__k">'+tx(C[i])+'</span>':''};
+  var legend='<p class="aq-joint-macro__legend" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+(C[2]?' · '+tx(C[2]):'')+'</span></p>';
+  var list='<ol class="aq-joint-macro__rows" role="list">'+R.map(function(r,i){var p=parts[i],cr=CROP[p];
+   var at=cr?' data-crop="'+[cr[1]/Hh,1-(cr[0]+cr[2])/W,1-(cr[1]+cr[3])/Hh,cr[0]/W].map(function(v){return (Math.max(0,v)*100).toFixed(2)+'%'}).join(' ')+'" tabindex="0"':'';
+   return fli('<li class="aq-joint-macro__row'+(cr?' is-pinned':'')+'" data-k="'+i+'"'+at+'>',b,i)
+    +'<span class="aq-joint-macro__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+    +'<h3 class="aq-joint-macro__p">'+tx(r.p)+'</h3>'
+    +'<div class="aq-joint-macro__vm"><p class="aq-joint-macro__v">'+k(1)+tx(r.v)+'</p><p class="aq-joint-macro__m">'+k(2)+tx(r.m)+'</p></div></li>'}).join('')+'</ol>';
+  var cap=b.caption?'<p class="aq-eyebrow aq-joint-macro__cap">'+tx(b.caption)+'</p>':'';
+  return sec('<div class="aq-joint-macro"><div class="aq-joint-macro__head">'+cap+H+'</div>'
+   +'<div class="aq-joint-macro__stage">'+fig+'</div>'
+   +'<div class="aq-joint-macro__body">'+legend+wFold(b,R.length,list,b.fold_noun||'rows')+'</div></div>','aq-band--navy aq-joint-macro-sec')}
 })();
-/* JointTag: pointing at (or focusing into) a field lights its pin on the joint */
-(function(){function hl(ev,on){var f=ev.target.closest&&ev.target.closest('.aq-joint-tag__field');if(!f)return;var r=f.closest('.aq-joint-tag'),k=f.getAttribute('data-k');
- f.classList.toggle('is-on',on);[].forEach.call(r.querySelectorAll('.aq-joint-tag__pin[data-k="'+k+'"]'),function(p){p.classList.toggle('is-on',on)})}
- document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEventListener('mouseout',function(ev){hl(ev,false)});
- document.addEventListener('focusin',function(ev){hl(ev,true)});document.addEventListener('focusout',function(ev){hl(ev,false)})})();
+/* JointMacro: pointing at (or focusing) a pinned row moves the crop frame onto its part; leaving resets it */
+(function(){function set(row,on){var r=row.closest('.aq-joint-macro'),f=r&&r.querySelector('.aq-joint-macro__fig');if(!f)return;var k=row.getAttribute('data-k'),c=on&&row.getAttribute('data-crop');
+ [].forEach.call(r.querySelectorAll('.is-on'),function(x){x.classList.remove('is-on')});
+ if(c){var v=c.split(' ');['--t','--r','--b','--l'].forEach(function(n,i){f.style.setProperty(n,v[i])});f.classList.add('is-crop');
+  [].forEach.call(r.querySelectorAll('[data-k="'+k+'"]'),function(x){x.classList.add('is-on')})}
+ else{['--t','--r','--b','--l'].forEach(function(n){f.style.removeProperty(n)});f.classList.remove('is-crop')}}
+ function h(on){return function(ev){var row=ev.target.closest&&ev.target.closest('.aq-joint-macro__row');if(!row)return;
+  if(!on&&ev.relatedTarget&&row.contains(ev.relatedTarget))return;set(row,on&&row.hasAttribute('data-crop'))}}
+ document.addEventListener('mouseover',h(true));document.addEventListener('mouseout',h(false));
+ document.addEventListener('focusin',h(true));document.addEventListener('focusout',h(false))})();
+/* Look "joint-spine" -> JointSpine (design-system/components/JointSpine): a log whose rows hang off a pipe. A twin-wall
+   pipe drops in from the top of the section beside the title, bends and runs down the left of the log as its spine;
+   each row of the log sits level with a joint on the spine (the piping-isometric joint mark: a tick across the pipe
+   and a dot), and the row's number is written at the joint, alternating sides, as joint numbers are on a drawing.
+   The pipe runs on past the last row and out of the section. Pointing at a row lights its joint.
+   Fields, as a table: h, cols [field, what it proves, record], rows, fold, fold_noun. The column names show once as
+   the log's legend (in each row for screen readers; shown per row on phones). The fold applies on phones only.
+   Phones: no drop or bend; the spine runs down a narrow rail at the left, numbers beside it. */
+LOOKS['joint-spine']=function(b,H){var C=b.cols||[],R=b.rows||[];
+ var k=function(i){return C[i]?'<span class="aq-joint-spine__k">'+tx(C[i])+'</span>':''};
+ /* the bend from the drop into the spine: a 13-wide wall stroke with a 10-wide ground stroke over it leaves two 1.5
+    px walls; the water is the centre line. Impression (faint) under, ink over. */
+ var d='M14 0V14Q14 34 34 34H140Q160 34 160 54V72';
+ var bend='<svg class="aq-joint-spine__bend" viewBox="0 0 240 72" aria-hidden="true" focusable="false">'
+  +'<path class="aq-joint-spine__w aq-joint-spine__w--imp" d="'+d+'"/><path class="aq-joint-spine__g" d="'+d+'"/>'
+  +'<g class="aq-joint-spine__bink"><path class="aq-joint-spine__w" d="'+d+'"/><path class="aq-joint-spine__g" d="'+d+'"/><path class="aq-joint-spine__h2o" d="'+d+'"/></g></svg>';
+ var legend='<p class="aq-joint-spine__legend" aria-hidden="true">'+[0,1,2].map(function(i){return '<span>'+tx(C[i]||'')+'</span>'}).join('')+'</p>';
+ var pipe=function(cls,inner){return '<span class="aq-joint-spine__pipe'+(cls?' '+cls:'')+'" aria-hidden="true"><i class="aq-joint-spine__ink"></i>'+(inner||'')+'</span>'};
+ var rows=R.map(function(r,i){var n=(i<9?'0':'')+(i+1);
+  return fli('<li class="aq-joint-spine__row'+(i%2?' is-r':'')+'" data-k="'+i+'">',b,i)
+   +pipe('',('<span class="aq-joint-spine__joint"></span><span class="aq-joint-spine__no">'+n+'</span>'))
+   +'<h3 class="aq-joint-spine__f">'+tcell(r[0])+'</h3>'
+   +(r[1]!=null?'<p class="aq-joint-spine__p">'+k(1)+tcell(r[1])+'</p>':'')
+   +(r[2]!=null?'<p class="aq-joint-spine__r">'+k(2)+tcell(r[2])+'</p>':'')+'</li>'}).join('');
+ var log='<ol class="aq-joint-spine__log" role="list">'+rows+'</ol>';
+ return sec('<div class="aq-joint-spine">'
+  +'<div class="aq-joint-spine__lead">'+pipe('aq-joint-spine__drop')+H+bend+legend+'</div>'
+  +wFold(b,R.length,log,b.fold_noun||'fields')+pipe('aq-joint-spine__tail')
+  +'</div>','aq-joint-spine-sec')};
+/* Look "joint-steps" -> JointSteps (design-system/components/JointSteps): a fabrication sequence told on one joint. A
+   navy title column at the left (title and intro), a drawing sheet in the middle with one joint drawn large in
+   isometric (IsoKit: two pipe lengths meeting at joint J-01, the joint zone between dashed bounds, the lot marking
+   printed on each length, the test coupon beside it, the test cap and gauge on one end, dimension lines for the
+   outside diameter and the zone), and the steps on a numbered rail at the right, each with its hold point (HP) or
+   witness point (WP) code. As the rail is read, the sheet shows what that step does to the joint (the plan's
+   dimensions and tag, the lot markings, the coupon, the joint zone, the test cap, the water through the bore).
+   The joint zone carries the method as the block's `method` text (a placeholder while the method is open): the drawing
+   never draws a joint profile.
+   Fields (a steps block): h, intro, method, items [{t, d, hold, link, stage}]. stage (optional): plan, receive,
+   qualify, join, test, clean (default from the step's words). A step whose text names a witness point gets a
+   "Witness point" tag (the sentence moves out of the text, unchanged); a hold step gets the stamp "Hold point · Signed
+   by …". Phones: title block, sheet, then the rail. */
+LOOKS['joint-steps']=(function(){
+ var R=34;
+ function pick(t){t=String(t||'');return /plan/i.test(t)?'plan':/receive|material/i.test(t)?'receive':/qualif|test joint/i.test(t)?'qualify':/join|weld|record/i.test(t)?'join':/test|survey/i.test(t)?'test':/clean|turn|rinse/i.test(t)?'clean':'plan'}
+ var WIT=/\s*Witness point\.\s*/;
+ function g(st,inner){return '<g class="aq-joint-steps__st" data-st="'+st+'">'+inner+'</g>'}
+ function drawing(){var o=[];
+  /* the test coupon lying beside the joint (behind it in drawing order) */
+  o.push(g('qualify',isoPipe([[-150,-150,-R],[-150,-70,-R]],{r:11,caps:true,flow:false})
+   +isoPath(isoRingD([-150,-114,-R],'y',13),'aq-iso__hid')+isoPath(isoRingD([-150,-106,-R],'y',13),'aq-iso__hid')));
+  /* two lengths meeting at the joint, the water through them */
+  o.push(isoPipe([[0,230,0],[0,6,0]],{r:R,caps:true,id:'len'}),isoPipe([[0,-6,0],[0,-230,0]],{r:R,caps:'end',id:'len'}));
+  /* lot marking on each length */
+  var pr=function(a,b){return isoPath(isoPoly([[R*0.5,a,R*0.82],[R*0.5,b,R*0.82]]),'aq-joint-steps__print')};
+  o.push(g('receive',pr(200,70)+pr(-60,-190)));
+  /* the joint zone between dashed bounds */
+  o.push(g('join',isoPath(isoRingD([0,14,0],'y',R+5),'aq-joint-steps__zone')+isoPath(isoRingD([0,-14,0],'y',R+5),'aq-joint-steps__zone')
+   +isoPath(isoPoly([[0,14,R+5],[0,-14,R+5]])+isoPoly([[R+5,14,0],[R+5,-14,0]]),'aq-joint-steps__zone')));
+  /* test cap and gauge on the far end */
+  o.push(g('test',isoPipe([[0,-232,0],[0,-252,0]],{r:R+5,caps:true,flow:false})+isoPart('gauge',0,-244,R+5,1.6,{value:0.6})));
+  /* the plan: dimensions and the joint's tag */
+  o.push(g('plan',isoDim([0,160,-R],[0,160,R],{off:[60,0,0],text:'OD'})+isoDim([0,14,R],[0,-14,R],{off:[0,0,34]})));
+  return o.join('')}
+ return function(b,H){var I=b.items||[],n=I.length;
+  var pts=[[0,240,0],[0,-260,0],[0,240,-R],[0,-260,R+50],[-150,-160,-R-12],[R+70,160,0],[0,-20,R+70],[-150,-60,-R-12]],bx=isoBounds(pts,26),W=Math.round(bx.w),Hh=Math.round(bx.h),org=[-bx.x,-bx.y];
+  var tag=isoLeader([0,0,R],{dx:-50,dy:-70},{shelf:16}),at=isoPct(tag.end,W,Hh,org);
+  var svg=isoSvg(W,Hh,drawing()+g('join',tag),'aq-joint-steps__svg',{origin:org,under:isoSheet(W,Hh,{grid:'iso',title:true})});
+  var lab='<span class="aq-joint-steps__tag aq-joint-steps__tag--'+(tag.side||'left')+'" style="left:'+at.left+';top:'+at.top+'"><b aria-hidden="true">J-01</b>'+(b.method?' <span>'+tx(b.method)+'</span>':'')+'</span>';
+  var steps=I.map(function(it,i){var st=it.stage||pick(it.t),d=String(it.d||''),wit=WIT.test(d),num=(i<9?'0':'')+(i+1);if(wit)d=d.replace(WIT,' ').trim();
+   var code=it.hold?'HP':wit?'WP':'';
+   return '<li class="aq-joint-steps__step'+(i===0?' is-on':'')+'" data-st="'+st+'" data-i="'+i+'" tabindex="0">'
+    +'<span class="aq-joint-steps__n" aria-hidden="true">'+num+(code?'<small>'+code+'</small>':'')+'</span>'
+    +'<div class="aq-joint-steps__txt"><h3 class="aq-joint-steps__t">'+stepTitle(it)+'</h3>'+(d?'<p class="aq-joint-steps__d">'+tx(d)+'</p>':'')
+    +((wit||it.hold)?'<p class="aq-joint-steps__tags">'+(wit?'<span class="aq-joint-steps__wit">Witness point</span>':'')
+      +(it.hold?'<span class="aq-joint-steps__stamp"><span>Hold point</span> <span>Signed by '+stepWho(it.hold)+'</span></span>':'')+'</p>':'')
+    +'</div></li>'}).join('');
+  return sec('<div class="aq-joint-steps"><div class="aq-joint-steps__title">'+H+'</div>'
+   +'<div class="aq-joint-steps__sheet"><div class="aq-joint-steps__fig aq-iso-figure" data-st="'+(I[0]?(I[0].stage||pick(I[0].t)):'')+'">'+svg+lab+'</div></div>'
+   +'<ol class="aq-joint-steps__rail" role="list">'+steps+'</ol></div>','aq-joint-steps-sec')}
+})();
+/* JointSteps: pointing at (or focusing) a step shows its stage on the sheet (the scroll story in motion.js does the same as the rail is read) */
+(function(){function on(ev){var s=ev.target.closest&&ev.target.closest('.aq-joint-steps__step');if(!s)return;var r=s.closest('.aq-joint-steps');if(r&&r.AQset)r.AQset(+s.getAttribute('data-i'));else if(r){
+  [].forEach.call(r.querySelectorAll('.aq-joint-steps__step.is-on'),function(x){x.classList.remove('is-on')});s.classList.add('is-on');var f=r.querySelector('.aq-joint-steps__fig');if(f)f.setAttribute('data-st',s.getAttribute('data-st'))}}
+ document.addEventListener('mouseover',on);document.addEventListener('focusin',on)})();
 /* Look "layer-stack" -> LayerStack (design-system/components/LayerStack): a diagram block whose stages are layers of
    one system (field instruments up to the plant network), drawn as an exploded isometric stack of machined plates,
    the first stage at the bottom, each next one a step higher and further back. Each plate carries its equipment in
@@ -4456,49 +4463,6 @@ if(typeof document!=='undefined'&&document.addEventListener){var sfQ=0,sfTick=fu
  ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var c=ev.target.closest&&ev.target.closest('.aq-shop-floor__card');if(!c||(ev.relatedTarget&&c.contains(ev.relatedTarget)))return;var w=c.closest('.aq-shop-floor');w._sfHover=0;sfSet(w,null);sfTick()})});
  window.AQshopFloor={ready:function(w){w.classList.add('is-ready');sfTick()}}}
 })();
-/* Look "shop-route" -> ShopRoute (design-system/components/ShopRoute): a fabrication sequence as the route a spool
-   takes through the shop, drawn as a floor plan on a limestone sheet. Each step is a bay (three across, the second row
-   returning right to left, as a U-shaped shop runs) with its plan furniture drawn small in the corner (desk, pipe
-   rack, test bench, joining machine, test rig, rinse and dispatch door); one route line enters at the top left, runs
-   through every bay, down the right-hand aisle and back out at the bottom left. Each bay has its stop on the route;
-   a hold point is a gate on the route after its bay with a stamp naming who signs; a step whose text names a witness
-   point carries an eye marker on its stop and a "Witness point" tag (the words move out of the sentence, unchanged).
-   Fields (a steps block): h, intro, items [{t, d, hold, link, bay}]. bay (optional): plan, receive, qualify, join,
-   test, clean (default from the step's words). Phones: the bays stack, the route runs down the left edge. */
-LOOKS['shop-route']=(function(){
- function P(d,c){return '<path class="aq-shop-route'+'__'+(c||'ln')+'" d="'+d+'"/>'}
- function R(x,y,w,h,c){return '<rect class="aq-shop-route'+'__'+(c||'ln')+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"/>'}
- var FURN={
-  plan:function(){return R(10,20,70,40)+P('M18 30H60M18 38H52M18 46H64','thin')+'<circle class="aq-shop-route__ln" cx="45" cy="74" r="10"/>'+R(90,24,40,52,'sheet')+P('M98 34H122M98 42H116M98 50H124','thin')},
-  receive:function(){var o='';for(var i=0;i<6;i++)o+=R(6,14+i*11,124,6);return o+R(14,84,40,24,'thin')+P('M14 96H54M34 84V108','thin')+R(70,84,40,24,'thin')+P('M70 96H110M90 84V108','thin')},
-  qualify:function(){return R(8,20,120,46)+P('M30 36H52C60 36 62 50 70 50H96','fix')+P('M30 44H50C58 44 60 58 70 58H96','fix')+'<circle class="aq-shop-route__ln" cx="112" cy="88" r="12"/>'+P('M112 88L120 80','thin')},
-  join:function(){return R(4,34,128,30)+R(16,26,12,46,'sheet')+R(34,26,12,46,'sheet')+R(84,26,12,46,'sheet')+R(102,26,12,46,'sheet')+P('M0 49H62M70 49H136','fix')+P('M66 38V60','ln')+R(52,82,28,22)+P('M58 90H74M58 96H70','thin')},
-  test:function(){return P('M8 40H100V90H40','fix')+R(2,32,10,16)+R(34,84,10,16)+'<circle class="aq-shop-route__ln" cx="114" cy="40" r="14"/>'+P('M114 40L122 31M104 40H100','thin')+P('M60 100V114M52 114H68','thin')},
-  clean:function(){return '<circle class="aq-shop-route__ln" cx="34" cy="40" r="26"/>'+P('M60 40H96C110 40 110 70 96 76','fix')+P('M88 86L96 76L104 86','thin')+R(4,92,124,10,'door')}
- };
- function pick(t){t=String(t||'');return /plan/i.test(t)?'plan':/receive|material/i.test(t)?'receive':/qualif|test joint/i.test(t)?'qualify':/join|weld|record/i.test(t)?'join':/test|survey/i.test(t)?'test':/clean|turn|rinse/i.test(t)?'clean':'plan'}
- var WIT=/\s*Witness point\.\s*/;
- return function(b,H){var I=b.items||[],n=I.length,cols=Math.max(1,Math.ceil(n/2)),rows=n>cols?2:1;
-  var bays=I.map(function(it,i){var row=i<cols?1:2,col=row===1?i+1:cols-(i-cols),f=FURN[it.bay]?it.bay:pick(it.t),d=String(it.d||''),wit=WIT.test(d),num=(i<9?'0':'')+(i+1);
-   if(wit)d=d.replace(WIT,' ').trim();
-   return '<li class="aq-shop-route__bay'+(it.hold?' is-hold':'')+(wit?' is-wit':'')+(row===2?' is-back':'')+(col===cols?' is-rc':'')+'" style="grid-row:'+row+';grid-column:'+col+';--i:'+i+'">'
-    +'<svg class="aq-shop-route__furn" viewBox="0 0 136 116" aria-hidden="true" focusable="false">'+FURN[f]()+'</svg>'
-    +'<span class="aq-shop-route__n" aria-hidden="true">'+num+'</span>'
-    +'<h3 class="aq-shop-route__t">'+stepTitle(it)+'</h3>'+(d?'<p class="aq-shop-route__d">'+tx(d)+'</p>':'')
-    +'<p class="aq-shop-route__tags">'+(wit?'<span class="aq-shop-route__wit">Witness point</span>':'')
-     +(it.hold?'<span class="aq-shop-route__stamp"><span class="aq-shop-route__stamp-k">Hold point</span> <span>Signed by '+stepWho(it.hold)+'</span></span>':'')+'</p>'
-    +'<span class="aq-shop-route__stop" aria-hidden="true"></span>'
-    +'</li>'}).join('');
-  /* the route: a lane through each row, joined down the right-hand aisle; gates after hold bays */
-  var lanes=rows===2?'<span class="aq-shop-route__seg aq-shop-route__seg--a"></span><span class="aq-shop-route__seg aq-shop-route__seg--b"></span><span class="aq-shop-route__seg aq-shop-route__seg--c"></span>':'<span class="aq-shop-route__seg aq-shop-route__seg--a aq-shop-route__seg--solo"></span>';
-  var gates=I.map(function(it,i){if(!it.hold||i===n-1)return '';var row=i<cols?1:2,c=row===1?i+1:cols-(i-cols),x=row===1?c/cols*100:(c-1)/cols*100;if(row===1&&i===cols-1)return '';
-   return '<span class="aq-shop-route__gate'+(row===2?' is-back':'')+'" style="left:'+x.toFixed(3)+'%"></span>'}).join('');
-  return sec(H+'<div class="aq-shop-route" data-theme="light" style="--cols:'+cols+';--rows:'+rows+'">'
-   +'<div class="aq-shop-route__route" aria-hidden="true">'+lanes+gates+'<span class="aq-shop-route__spool"></span></div>'
-   +'<ol class="aq-shop-route__bays">'+bays+'</ol>'
-   +'<span class="aq-shop-route__door aq-shop-route__door--in" aria-hidden="true"></span>'+(rows===2?'<span class="aq-shop-route__door aq-shop-route__door--out" aria-hidden="true"></span>':'')
-   +'</div>','aq-shop-route-sec')}
-})();
 /* Look "signal-dial" -> SignalDial (design-system/components/SignalDial): a spec block of signals as the instrument
    schedule (the real table, left) beside one multi-channel transmitter dial (right). Every row is a channel: a stop
    on the dial's bezel numbered like the row. The bezel turns to bring the chosen channel under the fixed index and the
@@ -4738,6 +4702,63 @@ if(typeof document!=='undefined'&&document.addEventListener){
  document.addEventListener('click',function(ev){var s=ev.target.closest&&ev.target.closest('.aq-spine-shelf__spine');if(!s)return;var it=ssPair(s)[1];if(!it)return;
   var f=it.closest('.aq-fold');if(it.classList.contains('aq-fold-x')&&f&&!f.classList.contains('is-open')&&getComputedStyle(it).display==='none'){var bt=f.querySelector('.aq-fold__btn');if(bt)bt.click()}
   var d=it.querySelector('details');if(d){d.open=!d.open;if(d.open&&it.getBoundingClientRect().top>innerHeight*0.8)it.scrollIntoView({block:'center',behavior:'smooth'})}})}
+/* Look "spool-dossier" -> SpoolDossier (design-system/components/SpoolDossier): a dossier set beside the as-built
+   isometric it indexes. On a limestone sheet: the title huge and light at the top left, an isometric polypropylene
+   spool at the right (IsoKit pipes: a run with a tee and a branch, two bends, flanged ends, each joint dotted and
+   numbered J-01 …, each length tagged with its lot L1 …, dimension lines without figures), and the dossier's parts in
+   a hairline grid underneath. Pointing at (or focusing) a part shows what it records on the spool: joint records light
+   the joints and their numbers, the material log lights each length and its lot tag, the procedure and welder
+   qualifications ring every joint, the test and cleaning certificates run the water through the spool to the test cap.
+   Fields (a docs block): h, intro, items [{t, d, key, link, intent, layer}]. layer (optional): joints, lots, quals,
+   test (default from the part's words). Phones: title, spool, then the parts in one column. */
+LOOKS['spool-dossier']=(function(){
+ var R=7;
+ function pick(t){t=String(t||'');return /pressure|clean|rinse|test/i.test(t)?'test':/joint record|joint map/i.test(t)?'joints':/procedure|welder|qualif/i.test(t)?'quals':/material|lot|certif/i.test(t)?'lots':''}
+ function spool(){var o=[],J=[[0,0,40],[80,0,40],[120,0,40],[100,0,22],[200,-60,40],[200,-120,110],[100,60,-20]],JO=[[-14,-10,1],[-12,-16,1],[12,-18,0],[-16,10,1],[14,-14,0],[16,-4,0],[-14,16,1]];
+  /* lengths, back to front: the riser and the far run, the main run, the tee, the branch */
+  var L=[
+   {id:'L3',p:[[200,-60,40],[200,-120,40],[200,-120,110]],tag:[200,-120,66],o:[14,-4]},
+   {id:'L2',p:[[120,0,40],[200,0,40],[200,-60,40]],tag:[160,0,40]},
+   {id:'L1',p:[[0,0,40],[80,0,40]],tag:[40,0,40]},
+   {id:'L4',p:[[100,0,22],[100,0,-20],[100,60,-20]],tag:[100,34,-20],o:[12,16]}];
+  L.forEach(function(l,i){var f=i===0?'end':i===2?'start':i===3?'end':false;
+   o.push(isoPipe(l.p,{r:R,bend:R*3,flanges:f?'ends':false,caps:false,id:'spool',cls:'aq-spool-dossier__len'}).toString().replace('class="aq-iso__pipe aq-spool-dossier__len"','class="aq-iso__pipe aq-spool-dossier__len" data-lot="'+l.id+'"'));
+   if(i===1)o.push(isoPipe([[78,0,40],[122,0,40]],{r:R+2,caps:true,flow:false,cls:'aq-spool-dossier__fit'})+isoPipe([[100,0,40],[100,0,20]],{r:R+2,caps:'end',flow:false,cls:'aq-spool-dossier__fit'}))});
+  /* the test cap and its gauge on the riser's end */
+  o.push(isoPart('gauge',200,-120,124,1.3,{value:0.55,id:'cap'}));
+  /* dimensions, no figures */
+  o.push(isoDim([0,0,40],[80,0,40],{off:[0,34,0]}),isoDim([120,0,40],[200,0,40],{off:[0,34,0]}),isoDim([200,-60,40],[200,-120,40],{off:[34,0,0]}));
+  /* lot tags and joints */
+  var tags=L.map(function(l){var p=isoP(l.tag),o=l.o||[14,-12];return '<g class="aq-spool-dossier__lot" data-lot="'+l.id+'"><text x="'+(p[0]+o[0]).toFixed(1)+'" y="'+(p[1]+o[1]).toFixed(1)+'"'+(l.end?' text-anchor="end"':'')+'>'+l.id+'</text></g>'}).join('');
+  var js=J.map(function(q,i){var p=isoP(q),n='J-0'+(i+1),o=JO[i],lx=p[0]+o[0],ly=p[1]+o[1];
+   return '<g class="aq-spool-dossier__j"><circle class="aq-spool-dossier__ring" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="13"/><circle class="aq-spool-dossier__dot" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="4"/>'
+    +'<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'"'+(o[2]?' text-anchor="end"':'')+'>'+n+'</text></g>'}).join('');
+  return o.join('')+tags+js}
+ return function(b,H){var items=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=items.length;
+  var bx=isoBounds([[-10,0,40],[0,0,80],[200,-130,150],[210,-120,40],[100,70,-20],[100,0,-34],[0,40,40],[220,0,40]],30),W=Math.round(bx.w),Hh=Math.round(bx.h);
+  var svg=isoSvg(W,Hh,spool(),'aq-iso--limestone aq-spool-dossier__svg',{origin:[-bx.x,-bx.y]});
+  var li=items.map(function(x,i){var t=String(x.t||''),L=x.layer||pick(t),num=(i<9?'0':'')+(i+1);
+   var name=x.link&&wp(x.link)?wlink(x.link,t,x.intent):tx(t);
+   return fli('<li class="aq-spool-dossier__item'+(x.key?' is-key':'')+'"'+(L?' data-layer="'+L+'" tabindex="0"':'')+'>',b,i)
+    +'<span class="aq-spool-dossier__n" aria-hidden="true">'+num+'</span>'
+    +'<h3 class="aq-spool-dossier__t">'+name+'</h3>'+(x.d?'<p class="aq-spool-dossier__d">'+tx(x.d)+'</p>':'')+'</li>'}).join('');
+  var more=b.link&&wp(b.link)?'<p class="aq-spool-dossier__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
+  return sec('<div class="aq-spool-dossier" data-theme="light"><div class="aq-spool-dossier__head">'+H+'</div>'
+   +'<div class="aq-spool-dossier__fig">'+svg+'</div>'
+   +'<div class="aq-spool-dossier__parts">'+wFold(b,n,'<ol class="aq-spool-dossier__list" role="list" style="--n:'+n+'">'+li+'</ol>',b.fold_noun||'documents')+more+'</div>'
+   +'</div>','aq-band--limestone aq-spool-dossier-sec')}
+})();
+/* SpoolDossier: pointing at (or focusing) a part shows its layer on the spool; the last one stays shown.
+   Ported from Subframe Motion "Hover image preview list" (project-index), MIT, (c) 2026 Subframe
+   (kept: selection on pointer enter (mouse only) and on focus, the selection persisting after the pointer leaves, the
+   active entry marked and the preview changing in 240 ms on cubic-bezier(.2,.85,.25,1), instant under reduced
+   motion; replaced: the reel of stills with layers of the one drawing). */
+(function(){function sel(it){var r=it.closest('.aq-spool-dossier'),L=it.getAttribute('data-layer');if(!r||!L)return;
+ [].forEach.call(r.querySelectorAll('.aq-spool-dossier__item.is-on'),function(x){x.classList.remove('is-on')});it.classList.add('is-on');
+ var f=r.querySelector('.aq-spool-dossier__fig');if(f)f.setAttribute('data-layer',L)}
+ document.addEventListener('pointerover',function(ev){if(ev.pointerType!=='mouse')return;var it=ev.target.closest&&ev.target.closest('.aq-spool-dossier__item');if(it)sel(it)});
+ document.addEventListener('focusin',function(ev){var it=ev.target.closest&&ev.target.closest('.aq-spool-dossier__item');if(it)sel(it)});
+ document.addEventListener('click',function(ev){var it=ev.target.closest&&ev.target.closest('.aq-spool-dossier__item');if(it)sel(it)})})();
 /* Look "stage-stacks" -> StageStacks (design-system/components/StageStacks): what each project stage issues, drawn as the
    turnover package building up. On a navy ground the stages stand along one project axis, left to right; above each
    stage its documents are stacked as sheets of paper, one sheet per document, so each stack's height is what that stage
