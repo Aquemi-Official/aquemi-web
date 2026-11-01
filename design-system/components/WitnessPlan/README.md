@@ -1,21 +1,17 @@
-WitnessPlan reads the ways to witness a FAT off one plan of the test bay: choosing a way puts its people, cameras, screen or data package on the plan (look `witness-plan`, options block).
+WitnessPlan sets the ways to witness a FAT as ruled rows whose leader lines run into the package standing in the test bay; choosing a way lights its leader, marker and part (look `witness-plan`, options block).
 
-Concept: a flat top-down plan on navy built for this section, after the pool's sys-pw.4 idea of options as things you pick up: here each option is a set of positions on the bay floor.
+Concept: pass 9b svc-fat-sat.3 (five witness modes as ruled rows with mono numerals whose leaders run into one white PP skid in its frame).
 
 ## Markup
-`<section class="aq-section aq-witness-plan-sec">` > `.aq-witness-plan` > `__side` (section head, `ol.__list` > `li` > `button.__opt[data-scene][aria-pressed]` with `__n`, `__t`, `__d`) and `__board` > `svg.__svg` (aria-hidden; actors are `g.__actor[data-actor]`, `is-on` when shown).
+`<section class="aq-section aq-witness-plan-sec">` > `.aq-witness-plan` > `__side` (section head, `ol.__list` > `li.__ind` (aria-hidden indicator) and `li` > `button.__opt[data-i][data-part][aria-pressed]` with `__n`, `__t`, `__d`), `__fig` > `__sheet` (IsoKit svg `.__svg` with the bay frame `__bay`, HTML `span.__zone.is-bay|is-cam`, `span.__mk[data-i]` markers), and `svg.__leads` (aria-hidden; `path.__lead[data-i]` laid out by the look's script from the rendered rows; `window.AQwitness.lay/show`).
 
 ## Fields
-`h`, `intro`, `items` [{`t`, `d`, `scene`}], `zones` [bay label, remote label]. `scene`: any of "you", "delegate", "camera", "screen", "record" (space-separated or a list).
+`h`, `intro`, `items` [{`t`, `d`, `part`}], `zones` [bay label, remote label] (short drawing labels, aria-hidden). `part`: "panel", "camera", "gauge", "documents", "analyzer", "ro" or "tank" (default "ro").
 
 ## Rules
-- The board is `navy` with walls in `on-navy`, equipment outlined, the floor grid faint; actors in `limestone` (people as discs, fields of view as faint limestone wedges). Actors a way does not use fade to 12 %, so the whole bay always reads.
-- Cards are full-width buttons (44 px and more) with `aria-pressed`; the pressed card is ruled in `flow`. Pointing previews a way; leaving the list restores the pressed one. Default: the first way (complete without script).
-- Phone: the plan above the cards; drawing labels drop.
+- IsoKit light drawing (white PP package: skid, RO rack, tank, panel, analyser, gauge, binders; the camera drawn inline) inside the bay's open frame in `line-strong`.
+- Leaders are each row's underline carried into the drawing to the marker, 1 px `line-strong`; the chosen one 1.5 px `flow`, its marker filled `flow`, its part lit.
+- Arrow keys, Home and End move between the ways and choose. Under 1080 px the drawing sits between the heading and the rows, leaders off; numbers pair rows and parts.
 
 ## Motion
-The walls draw on from the door, the grid and remote edge fade up, the skid and panel draw, then the plan steps through the ways (about half a second each, each card's rule sliding in as its actors come up) and rests on the first. Once, under 5 s.
-
-Polish (pass 9): the board carries a caption naming the way on show (`__now`, aria-hidden: number and title), updated by the cards and by the opening tour.
-
-Pass 9b: arrow keys, Home and End move between the cards and choose. With script, one raised panel with the `flow` rule (`li.__ind`, aria-hidden, the list's first item) springs from card to card (ported from Subframe Motion `sliding-tabs`, MIT: 460 / 34 spring, jumps for keyboard input), and the caption slides in 18 px from the side the new way lies on, 0.24 s, cubic-bezier(.25,1,.5,1) (ported from `transition-panel`, MIT). Without script the pressed card keeps its own rule and raised ground.
+The IsoKit drawing plays, rows rise, leaders draw out of their rows and a light runs each one to its part as its marker strikes (animated-beam port); the first way stays chosen. Choosing a way sends one light down its leader; the raised indicator springs between rows (sliding-tabs port). Once, under 4.5 s; nothing under reduced motion.

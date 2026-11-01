@@ -27,7 +27,11 @@
 .is-us > .aq-signature-blocks__v { border: 1.5px solid var(--flow); color: var(--flow); }
 .is-you > .aq-signature-blocks__v { border: 3px double var(--limestone); }
 .is-both > .aq-signature-blocks__v { border: 1.5px dashed var(--ink-muted); }
-.aq-signature-blocks__line { position: relative; display: block; height: var(--space-4); border-bottom: 1px solid var(--ink-muted); transform-origin: 0 50%; }
+.aq-signature-blocks__line { position: relative; display: block; height: var(--space-8); border-bottom: 1px solid var(--ink-muted); transform-origin: 0 50%; }
+.aq-signature-blocks__sig { position: absolute; left: var(--space-6); bottom: var(--space-1); width: var(--space-24); height: var(--space-8); overflow: visible; }
+.aq-signature-blocks__sig path { fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-signature-blocks__imp { stroke: var(--ink-subtle); opacity: 0.35; transform: translate(1px, 1px); }
+.aq-signature-blocks__ink { stroke: var(--ink); }
 .aq-signature-blocks__line::before { content: "\00d7"; position: absolute; left: 0; bottom: 0; font: 400 16px/20px var(--font-mono); color: var(--ink-subtle); }
 .aq-signature-blocks__b:hover { border-color: var(--flow); }
 

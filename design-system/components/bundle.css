@@ -977,65 +977,6 @@ a.aq-binder-spines__go:focus-visible { outline: 2px solid var(--focus); outline-
   .aq-fold:has(> .aq-binder-spines) > .aq-fold__btn { display: flex; }
 }
 
-/* ---------- BinderTabs: stages filed as tab dividers in the open qualification binder (look "binder-tabs") ----------
-   Desktop: one open binder across the section. Left, the navy cover (4 of 12) with the heading in a ruled label holder
-   and the spine along its inner edge; right, the stack of dividers on surface-raised paper, three rings crossing from
-   the spine into the punched holes. Each divider steps a little further right than the one above it (a filed fan),
-   carries its index tab standing proud of the stack (limestone, mono label), and ends in a sign-off line with a flow
-   signature. Phones: the cover is a band over the stack; the tabs move inside the divider's right end. */
-.aq-binder-tabs { --bt-tab: var(--space-32); --bt-step: var(--space-1); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); align-items: stretch; padding-right: var(--bt-tab, var(--space-32)); }
-.aq-binder-tabs__cover { position: relative; background: var(--navy); color: var(--on-navy); padding: var(--space-12) var(--space-12) var(--space-12) var(--space-8); }
-.aq-binder-tabs__holder { border: 1px solid color-mix(in srgb, var(--on-navy-muted) 55%, transparent); outline: 1px solid color-mix(in srgb, var(--on-navy-muted) 25%, transparent); outline-offset: var(--space-2); padding: var(--space-6); }
-.aq-binder-tabs__holder .aq-h1 { color: var(--on-navy); }
-.aq-binder-tabs__holder .aq-lead { color: var(--on-navy-muted); }
-.aq-binder-tabs__spine { position: absolute; top: 0; bottom: 0; right: 0; width: var(--space-6); background: color-mix(in srgb, var(--navy) 80%, var(--ink)); border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent); }
-:root[data-theme="dark"] .aq-binder-tabs__spine { background: color-mix(in srgb, var(--navy) 70%, var(--surface)); }
-.aq-binder-tabs__stack { position: relative; background: var(--surface-sunken); padding: var(--space-6) 0 var(--space-8) var(--space-8); border: 1px solid var(--line); border-left: 0; }
-.aq-binder-tabs__rings { position: absolute; left: calc(-1 * var(--space-6)); top: 0; bottom: 0; width: var(--space-16); pointer-events: none; z-index: 2; }
-.aq-binder-tabs__rings i { position: absolute; left: 0; width: 100%; height: var(--space-8); margin-top: calc(-1 * var(--space-4)); border: 4px solid var(--line-strong); border-radius: var(--space-4); background: transparent; }
-.aq-binder-tabs__rings i:nth-child(1) { top: 16%; } .aq-binder-tabs__rings i:nth-child(2) { top: 50%; } .aq-binder-tabs__rings i:nth-child(3) { top: 84%; }
-.aq-binder-tabs__list { list-style: none; margin: 0; padding: 0; position: relative; }
-.aq-binder-tabs__div { position: relative; display: grid; grid-template-columns: var(--space-8) var(--space-12) minmax(0, 1fr) var(--space-24); align-items: center; column-gap: var(--space-4);
-  margin-left: calc(var(--i, 0) * var(--bt-step, var(--space-1))); margin-right: calc(var(--i, 0) * var(--bt-step, var(--space-1)) * -1); padding: var(--space-4) var(--space-6) var(--space-4) 0;
-  background: var(--surface-raised); border: 1px solid var(--line); margin-top: -1px; }
-.aq-binder-tabs__holes { justify-self: center; width: var(--space-3); height: var(--space-3); border-radius: 50%; background: var(--surface-sunken); border: 1px solid var(--line-strong); }
-.aq-binder-tabs__n { font: 300 28px/32px var(--font-mono); letter-spacing: -0.03em; color: var(--ink-subtle); }
-.aq-binder-tabs__t { margin: 0; font: 500 18px/26px var(--font-sans); color: var(--ink); }
-.aq-binder-tabs__d { margin: var(--space-1) 0 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); }
-.aq-binder-tabs__sign { align-self: end; border-bottom: 1px solid var(--ink-muted); padding-bottom: var(--space-1); }
-.aq-binder-tabs__sign svg { display: block; width: 100%; height: auto; overflow: visible; }
-.aq-binder-tabs__sign path { fill: none; stroke: var(--flow); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.aq-binder-tabs__tab { position: absolute; top: -1px; bottom: -1px; left: 100%; width: calc(var(--bt-tab, var(--space-32)) - var(--space-4)); display: flex; align-items: center; justify-content: center;
-  background: var(--limestone); color: var(--on-limestone); border: 1px solid color-mix(in srgb, var(--on-limestone) 30%, transparent); border-left: 0;
-  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase; text-align: center; padding: 0 var(--space-2);
-  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms; transform-origin: 0 50%; }
-.aq-binder-tabs__div:nth-child(even) .aq-binder-tabs__tab { background: color-mix(in srgb, var(--limestone) 70%, var(--surface-raised)); }
-.aq-binder-tabs__div:hover .aq-binder-tabs__tab, .aq-binder-tabs__div:focus-within .aq-binder-tabs__tab { transform: translateX(var(--space-2)); background: var(--navy); color: var(--on-navy); }
-.aq-binder-tabs__div:hover .aq-binder-tabs__n { color: var(--flow); }
-
-@container (max-width: 860px) {
-  .aq-binder-tabs { grid-template-columns: minmax(0, 1fr); padding-right: 0; }
-  .aq-binder-tabs__cover { padding: var(--space-6) var(--space-4) var(--space-12); }
-  .aq-binder-tabs__holder { padding: var(--space-4); }
-  .aq-binder-tabs__spine { top: auto; left: 0; width: auto; height: var(--space-4); }
-  .aq-binder-tabs__stack { padding: var(--space-8) var(--space-3) var(--space-4); border-left: 1px solid var(--line); border-top: 0; }
-  .aq-binder-tabs__rings { left: 0; right: 0; top: calc(-1 * var(--space-6)); bottom: auto; width: auto; height: var(--space-12); }
-  .aq-binder-tabs__rings i { width: var(--space-6); height: var(--space-12); margin: 0; top: 0 !important; border-radius: var(--space-3); }
-  .aq-binder-tabs__rings i:nth-child(1) { left: 16%; } .aq-binder-tabs__rings i:nth-child(2) { left: calc(50% - var(--space-3)); } .aq-binder-tabs__rings i:nth-child(3) { left: auto; right: 16%; }
-  .aq-binder-tabs__div { grid-template-columns: var(--space-8) minmax(0, 1fr); margin: -1px 0 0; padding: var(--space-4) var(--space-3) var(--space-4) var(--space-3); row-gap: var(--space-2); align-items: start; }
-  .aq-binder-tabs__holes { display: none; }
-  .aq-binder-tabs__n { font-size: 20px; line-height: 26px; }
-  .aq-binder-tabs__n { grid-row: 1 / span 2; }
-  .aq-binder-tabs__body { grid-column: 2; grid-row: 2; }
-  .aq-binder-tabs__t { font-size: 17px; line-height: 24px; }
-  .aq-binder-tabs__d { font-size: 14px; line-height: 22px; }
-  .aq-binder-tabs__sign { grid-column: 2; grid-row: 3; width: var(--space-16); }
-  .aq-binder-tabs__tab { position: static; grid-column: 2; grid-row: 1; justify-self: start; width: auto; padding: var(--space-1) var(--space-2); border-left: 1px solid color-mix(in srgb, var(--on-limestone) 30%, transparent); font-size: 12px; }
-}
-
-/* section hook (the look marks its section) */
-.aq-binder-tabs-sec { position: relative; }
-
 /* ---------- BudgetBento: budget ranges as a Swiss bento of numbered tiles (look "budget-bento") ----------
    Desktop: two columns; the lead tile (navy) fills the left column at full height, the module tiles stack on the right
    as wide rows (numeral and icon | scope and range | basis). Hairline grid, square corners, no shadows. Every tile keys
@@ -2153,6 +2094,75 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
    sit (the readout's flow index is only just AA on bare limestone). */
 .aq-coverage-map__sheet > .aq-fx-shader { --fx-amt: 0.12;
   -webkit-mask-image: linear-gradient(to top right, transparent 34%, var(--ink) 52%); mask-image: linear-gradient(to top right, transparent 34%, var(--ink) 52%); }
+
+/* ---------- CutBand: a short table of levels laid across the plant like a cutting plane (look "cut-band") ----------
+   Desktop: a 6/6 grid. The heading top left; the hairline elevation of the package in the right column, standing
+   from the heading's top to below the band; the navy band in between spans both columns and bleeds to the page
+   edges (a ::before reaching 100vw each way; the section clips it, so there is no sideways scroll). The band's
+   table: numbers and column names in mono, level names in light display, a figure in mono display, the basis as
+   mono lines. The occluder (motion only) is the cutting plane's stroke; it is hidden without motion. */
+.aq-cut-band-sec { overflow-x: clip; }
+.aq-cut-band { position: relative; display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); grid-template-rows: minmax(calc(var(--space-32) * 2.3), auto) auto minmax(var(--space-32), auto); column-gap: var(--space-12); }
+.aq-cut-band__head { grid-column: 1; grid-row: 1; padding-bottom: var(--space-16); }
+.aq-cut-band__head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 14ch; }
+.aq-cut-band__fig { grid-column: 2; grid-row: 1 / 4; position: relative; z-index: 0; display: flex; align-items: stretch; }
+.aq-cut-band__svg { display: block; width: 100%; height: 100%; }
+.aq-cut-band__frame { fill: none; stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-cut-band__eq { fill: var(--surface); stroke: var(--flow); stroke-width: 1.25; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-cut-band__ln { fill: none; stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-cut-band__hid { fill: none; stroke: var(--flow); stroke-width: 1; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
+.aq-cut-band__trace { fill: none; stroke: var(--flow); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-cut-band__pipe { fill: none; stroke: var(--line-strong); stroke-width: 5; stroke-linejoin: round; }
+.aq-cut-band__water { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-cut-band__smp { fill: none; stroke: var(--line-strong); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.aq-cut-band__pt { fill: var(--flow); }
+
+.aq-cut-band__band { grid-column: 1 / -1; grid-row: 2; position: relative; z-index: 1; padding: var(--space-8) 0 var(--space-6); color: var(--on-navy); }
+.aq-cut-band__band::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -100vw; right: -100vw; background: var(--navy); }
+.aq-cut-band__band.is-cut::before { opacity: 0; }
+.aq-cut-band__band.is-cut > :not(.aq-cut-band__occ) { visibility: hidden; }
+.aq-cut-band__occ { display: none; position: absolute; z-index: 2; top: 0; bottom: 0; left: 0; background: var(--navy); border-left: 2px solid var(--flow); border-right: 2px solid var(--flow); pointer-events: none; will-change: transform; }
+.aq-cut-band__occ i { position: absolute; top: 0; bottom: 0; width: 1px; background: color-mix(in srgb, var(--on-navy-muted) 22%, transparent); }
+.aq-cut-band__occ i:first-child { left: 33%; } .aq-cut-band__occ i:last-child { left: 66%; }
+
+.aq-cut-band__cols, .aq-cut-band__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 4fr) minmax(0, 4fr) minmax(0, 4fr); column-gap: var(--space-6); }
+.aq-cut-band__cols { padding-bottom: var(--space-3); border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); font: 400 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-navy-muted); }
+.aq-cut-band__rows { list-style: none; margin: 0; padding: 0; }
+.aq-cut-band__row { align-items: start; padding: var(--space-6) 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+.aq-cut-band__row:last-child { border-bottom: 0; }
+.aq-cut-band__n { font: 400 13px/36px var(--font-mono); color: var(--on-navy-muted); }
+.aq-cut-band__p { margin: 0; font: 300 30px/36px var(--font-sans); letter-spacing: -0.02em; color: var(--on-navy); max-width: 14ch; }
+.aq-cut-band__v { margin: 0; font: 300 24px/32px var(--font-sans); color: var(--on-navy); }
+.aq-cut-band__v.is-fig { font: 300 36px/36px var(--font-mono); letter-spacing: -0.02em; }
+.aq-cut-band__k { display: none; }
+.aq-cut-band__val { display: block; }
+.aq-cut-band__m { display: flex; flex-direction: column; gap: var(--space-1); padding-top: var(--space-2); }
+.aq-cut-band__ref { font: 400 14px/20px var(--font-mono); color: var(--on-navy); }
+.aq-cut-band__go { margin: var(--space-3) 0 0; }
+.aq-cut-band__go a { color: var(--on-navy); }
+.aq-cut-band__go a:focus-visible { outline: 2px solid var(--on-navy); outline-offset: 2px; }
+.aq-cut-band__note { grid-column: 1; grid-row: 3; margin: var(--space-6) 0 0; font: 400 13px/20px var(--font-sans); color: var(--ink-muted); align-self: start; }
+
+@container (max-width: 860px) {
+  .aq-cut-band { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .aq-cut-band__head, .aq-cut-band__fig, .aq-cut-band__band, .aq-cut-band__note { grid-column: 1; grid-row: auto; }
+  .aq-cut-band__head { padding-bottom: var(--space-6); }
+  .aq-cut-band__head .aq-h1 { font-size: 36px; line-height: 42px; }
+  .aq-cut-band__fig { height: calc(var(--space-32) * 3); }
+  .aq-cut-band__svg { min-height: 0; }
+  .aq-cut-band__band { margin-top: calc(-1 * var(--space-24)); padding: var(--space-6) 0 var(--space-4); }
+  .aq-cut-band__cols { display: none; }
+  .aq-cut-band__row { grid-template-columns: var(--space-8) minmax(0, 1fr); row-gap: var(--space-3); padding: var(--space-4) 0; }
+  .aq-cut-band__row > :not(.aq-cut-band__n) { grid-column: 2; }
+  .aq-cut-band__n { grid-row: 1; line-height: 28px; }
+  .aq-cut-band__p { font-size: 22px; line-height: 28px; max-width: none; }
+  .aq-cut-band__k { display: block; margin-bottom: var(--space-1); font: 400 12px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--on-navy-muted); }
+  .aq-cut-band__v { font-size: 19px; line-height: 26px; }
+  .aq-cut-band__v.is-fig { font-size: 30px; line-height: 34px; }
+  .aq-cut-band__m { padding-top: 0; }
+  .aq-cut-band__ref { font-size: 13px; }
+  .aq-cut-band__note { margin-top: var(--space-4); }
+}
 
 /* ---------- CutawayRail: a sticky cutaway drawing beside a rail of standard cards (look "cutaway-rail"). Navy band;
    the drawing stays in view while the cards pass; the active card lights its parts (is-lit), its pins and the callout.
@@ -3949,57 +3959,6 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
 .aq-flap__f, .aq-flap__b { position: absolute; inset: 0; backface-visibility: hidden; background: var(--surface); color: var(--ink-muted); }
 .aq-flap__b { transform: rotateX(180deg); color: var(--ink); }
 .aq-flap__seam { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line); pointer-events: none; }
-
-/* ---------- InstrumentLimits: levels read off two instruments (look "instrument-limits") ----------
-   A dark section (data-theme="dark" on the section). Desktop: the faceplates side by side, the dial 5 of 12 and the
-   recorder 7 of 12. A faceplate is a raised panel with a screw at each corner and an inner bezel; the name in label
-   type, the instrument, the readout (the limit in large mono, or the row's words in the recorder's place), the level
-   word in its status colour (status colours only here: they are data), the basis as mono tags, the row's link.
-   Dial: scale and ticks in line-strong, the red-line wedge in fail, the needle in ink resting on the limit.
-   Recorder: grid in line, the runs' sample points in ink-muted on a faint band, the action line in fail (dashed),
-   the alert line in caution. */
-.aq-instrument-limits-sec, .aq-section--alt.aq-instrument-limits-sec { background: var(--surface); color: var(--ink); }
-.aq-instrument-limits { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-6); }
-.aq-instrument-limits__plate { position: relative; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-8); background: var(--surface-raised); border: 1px solid var(--line-strong); }
-.aq-instrument-limits__plate::after { content: ""; position: absolute; inset: var(--space-3); border: 1px solid var(--line); pointer-events: none; }
-.aq-instrument-limits__screws i { position: absolute; width: var(--space-2); height: var(--space-2); border-radius: 50%; border: 1px solid var(--line-strong); }
-.aq-instrument-limits__screws i::after { content: ""; position: absolute; left: 1px; right: 1px; top: 50%; height: 1px; background: var(--line-strong); transform: rotate(35deg); }
-.aq-instrument-limits__screws i:nth-child(1) { left: var(--space-1); top: var(--space-1); } .aq-instrument-limits__screws i:nth-child(2) { right: var(--space-1); top: var(--space-1); }
-.aq-instrument-limits__screws i:nth-child(3) { left: var(--space-1); bottom: var(--space-1); } .aq-instrument-limits__screws i:nth-child(4) { right: var(--space-1); bottom: var(--space-1); }
-.aq-instrument-limits__p { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
-.aq-instrument-limits__face { position: relative; }
-.aq-instrument-limits__dial { display: block; width: 100%; max-width: 360px; margin: 0 auto; height: auto; overflow: visible; }
-.aq-instrument-limits__scale { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
-.aq-instrument-limits__tick { stroke: var(--line-strong); stroke-width: 1; }
-.aq-instrument-limits__tick.is-major { stroke: var(--ink-muted); stroke-width: 1.5; }
-.aq-instrument-limits__red { fill: none; stroke: var(--fail); stroke-width: 8; }
-.aq-instrument-limits__sl { font: 500 13px/1 var(--font-mono); fill: var(--ink-muted); }
-.aq-instrument-limits__sl.is-lim { fill: var(--fail); }
-.aq-instrument-limits__needle path { stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; }
-.aq-instrument-limits__hub { fill: var(--surface-raised); stroke: var(--ink); stroke-width: 2; }
-.aq-instrument-limits__rec { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
-.aq-instrument-limits__gl { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.aq-instrument-limits__band { fill: var(--flow-tint); opacity: 0.6; }
-.aq-instrument-limits__pt { fill: var(--ink-muted); }
-.aq-instrument-limits__act { stroke: var(--fail); stroke-width: 2; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke; }
-.aq-instrument-limits__alert { stroke: var(--caution); stroke-width: 2; vector-effect: non-scaling-stroke; }
-.aq-instrument-limits__rl { position: absolute; left: var(--space-2); top: var(--space-1); font: 500 12px/16px var(--font-mono); color: var(--fail); }
-.aq-instrument-limits__v { margin: var(--space-2) 0 0; font: 300 48px/52px var(--font-mono); letter-spacing: -0.04em; color: var(--ink); text-align: center; font-variant-numeric: tabular-nums; }
-.aq-instrument-limits__v.is-words { font: 300 28px/36px var(--font-sans); letter-spacing: -0.015em; text-align: left; }
-.is-dial .aq-instrument-limits__lv { text-align: center; }
-.aq-instrument-limits__lv { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; }
-.aq-instrument-limits__lv.is-action { color: var(--fail); }
-.aq-instrument-limits__lv.is-alert { color: var(--caution); }
-.aq-instrument-limits__basis { list-style: none; margin: auto 0 0; padding: var(--space-3) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-2); border-top: 1px solid var(--line); }
-.aq-instrument-limits__basis li { padding: 0 var(--space-2); border: 1px solid var(--line-strong); font: 400 12px/22px var(--font-mono); color: var(--ink-muted); }
-.aq-instrument-limits__plate .aq-limit-gauges__go { margin: 0; position: relative; z-index: 1; }
-
-@container (max-width: 860px) {
-  .aq-instrument-limits { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
-  .aq-instrument-limits__plate { padding: var(--space-6) var(--space-4); }
-  .aq-instrument-limits__v { font-size: 36px; line-height: 40px; }
-  .aq-instrument-limits__v.is-words { font-size: 22px; line-height: 28px; }
-}
 
 /* ---------- IssuedSet: the documents you receive as an issued set of sheets dealt onto a desk (look "issued-set").
    The desk is a surface-sunken panel; each sheet is light paper (data-theme="light") at a slight turn (--i picks it),
@@ -6480,68 +6439,69 @@ a.aq-option-modules__box:focus-visible { outline: 2px solid var(--focus); outlin
   .aq-plan-sheets__head.is-base { padding-top: var(--space-4); }
 }
 
-/* ---------- PqCalendar: PQ as a year's sampling calendar (look "pq-calendar") ----------
-   Section on the limestone band; the figure carries data-theme="light" so its navy and flow stay the light values on
-   limestone in both themes. The year strip is an svg of week bars stretched to the width (solid navy and flow for the
-   daily phases, a navy hatch for the routine plan), months numbered under it on a twelve-track grid. The zoom is a
-   flow-tint wedge from the first weeks down to the sampling grid (7 of 12 columns); the total sits beside it (5 of 12)
-   over the routine phase. Phase keys repeat the grid's fills. */
-.aq-pq-calendar { --pq-p1: var(--navy); --pq-p2: var(--flow); color: var(--on-limestone); }
-.aq-pq-calendar__strip { position: relative; }
-.aq-pq-calendar__year { display: block; width: 100%; height: var(--space-12); }
-.aq-pq-calendar__wk.is-p1 { fill: var(--pq-p1, var(--navy)); }
-.aq-pq-calendar__wk.is-p2 { fill: var(--pq-p2, var(--flow)); }
-.aq-pq-calendar__wk.is-rest { stroke: none; }
-.aq-pq-calendar__hatch { fill: var(--pq-p1, var(--navy)); opacity: 0.55; }
-.aq-pq-calendar__months { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); margin-top: var(--space-2); border-top: 1px solid color-mix(in srgb, var(--on-limestone) 40%, transparent); }
-.aq-pq-calendar__months span { padding: var(--space-1) 0 0 var(--space-1); border-left: 1px solid color-mix(in srgb, var(--on-limestone) 40%, transparent); font: 500 12px/16px var(--font-mono); color: var(--on-limestone-muted); }
-.aq-pq-calendar__ylab { position: absolute; right: 0; top: calc(100% + var(--space-1)); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); transform: translateY(100%); }
-.aq-pq-calendar__zoom { display: block; width: 100%; height: var(--space-16); margin-top: var(--space-2); }
-.aq-pq-calendar__zoom .is-wide { display: none; }
-.aq-pq-calendar__zw { fill: color-mix(in srgb, var(--surface-raised) 55%, transparent); stroke: none; }
-.aq-pq-calendar__zoom .aq-pq-calendar__zl { fill: none; stroke: var(--on-limestone); stroke-width: 1; vector-effect: non-scaling-stroke; stroke-dasharray: 3 4; }
-.aq-pq-calendar__body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); }
-.aq-pq-calendar__zoomed { background: color-mix(in srgb, var(--surface-raised) 55%, transparent); padding: var(--space-6); }
+/* ---------- PqCalendar: PQ phases beside one instrument readout (look "pq-calendar") ----------
+   Section on the limestone band; the figure carries data-theme="light" so navy and flow keep their light values on
+   limestone in both themes. Desktop: the phases as a ruled stack (5 of 12; mono "01 /" numerals, a key in the
+   phase's fill), the readout panel beside it (7 of 12) on a lighter sheet with a navy foot rule: the giant light
+   count, unit and sum, the sampling grid, then the year's tick scale (solid ticks for the daily phases, short ticks for
+   the routine plan) with month numbers and the year tag. The region marker (flow tint, flow edges with handles)
+   glides to the pointed phase's span: --g0/--g1 on the grid, --y0/--y1 on the scale. */
+.aq-pq-calendar { --pq-p1: var(--navy); --pq-p2: var(--flow); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); align-items: start; color: var(--on-limestone); }
+.aq-pq-calendar__phases { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--on-limestone); }
+.aq-pq-calendar__ph { display: grid; grid-template-columns: var(--space-24) minmax(0, 1fr); column-gap: var(--space-4); padding: var(--space-6) var(--space-2) var(--space-6) 0; border-bottom: 1px solid color-mix(in srgb, var(--on-limestone) 35%, transparent); outline: none; cursor: default; transition: background-color 180ms; }
+.aq-pq-calendar__ph:hover, .aq-pq-calendar__ph:focus-visible { background: color-mix(in srgb, var(--surface-raised) 45%, transparent); }
+.aq-pq-calendar__ph:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-pq-calendar__n { font: 300 34px/1 var(--font-mono); letter-spacing: -0.04em; color: var(--on-limestone); padding-left: var(--space-2); }
+.aq-pq-calendar__n i { font-style: normal; color: var(--on-limestone-muted); margin-left: 0.1em; }
+.aq-pq-calendar__t { margin: 0; display: flex; align-items: center; gap: var(--space-2); font: 400 20px/26px var(--font-sans); color: var(--on-limestone); }
+.aq-pq-calendar__key { width: var(--space-3); height: var(--space-3); flex: none; background: var(--pq-p1, var(--navy)); border-radius: 50%; }
+.is-p2 > .aq-pq-calendar__txt .aq-pq-calendar__key { background: var(--pq-p2, var(--flow)); }
+.is-rest > .aq-pq-calendar__txt .aq-pq-calendar__key { border-radius: 0; width: 2px; height: var(--space-4); background: var(--pq-p1, var(--navy)); }
+.aq-pq-calendar__d { margin: var(--space-2) 0 0; font: 400 15px/23px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-pq-calendar__hold { margin: var(--space-3) 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); font: 400 14px/20px var(--font-sans); color: var(--on-limestone); }
+.aq-pq-calendar__hold span { padding: 0 var(--space-2); border: 1px solid var(--on-limestone); font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
+
+.aq-pq-calendar__panel { display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-8) var(--space-8) var(--space-6); background: color-mix(in srgb, var(--surface-raised) 55%, transparent); border-bottom: 2px solid var(--navy); }
+.aq-pq-calendar__total { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-4); }
+.aq-pq-calendar__num { flex-basis: 100%; font: 300 168px/0.9 var(--font-sans); letter-spacing: -0.05em; color: var(--on-limestone); font-variant-numeric: tabular-nums; }
+.aq-pq-calendar__unit { font: 400 13px/18px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-limestone); }
+.aq-pq-calendar__eq { font: 400 13px/18px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone-muted); }
+.aq-pq-calendar__zoomed, .aq-pq-calendar__scale { position: relative; }
 .aq-pq-calendar__grid { display: block; width: 100%; height: auto; overflow: visible; }
 .aq-pq-calendar__dot.is-p1 { fill: var(--pq-p1, var(--navy)); }
 .aq-pq-calendar__dot.is-p2 { fill: var(--pq-p2, var(--flow)); }
 .aq-pq-calendar__hl { stroke: var(--on-limestone); stroke-width: 1.5; stroke-dasharray: 4 3; }
-.aq-pq-calendar__phases { list-style: none; margin: var(--space-6) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--days, 28), minmax(0, 1fr)); column-gap: var(--space-6); }
-.aq-pq-calendar__ph { grid-column: span var(--span, 1); min-width: 0; }
-.aq-pq-calendar__phases--rest { display: block; margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid color-mix(in srgb, var(--on-limestone) 40%, transparent); }
-.aq-pq-calendar__t { margin: 0; display: flex; align-items: center; gap: var(--space-2); font: 500 18px/26px var(--font-sans); color: var(--on-limestone); }
-.aq-pq-calendar__key { width: var(--space-4); height: var(--space-4); flex: none; background: var(--pq-p1, var(--navy)); border-radius: 50%; }
-.is-p2 > .aq-pq-calendar__t .aq-pq-calendar__key { background: var(--pq-p2, var(--flow)); }
-.is-rest > .aq-pq-calendar__t .aq-pq-calendar__key { border-radius: 0; width: var(--space-6); height: var(--space-3); background: color-mix(in srgb, var(--pq-p1, var(--navy)) 55%, transparent); }
-.aq-pq-calendar__d { margin: var(--space-1) 0 0; font: 400 15px/23px var(--font-sans); color: var(--on-limestone-muted); }
-.aq-pq-calendar__hold { margin: var(--space-3) 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); font: 400 14px/20px var(--font-sans); color: var(--on-limestone); }
-.aq-pq-calendar__hold span { padding: 0 var(--space-2); border: 1.5px solid var(--on-limestone); font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
-.aq-pq-calendar__total { margin: 0; display: flex; flex-direction: column; gap: var(--space-1); }
-.aq-pq-calendar__num { font: 300 120px/1 var(--font-mono); letter-spacing: -0.06em; color: var(--on-limestone); font-variant-numeric: tabular-nums; }
-.aq-pq-calendar__unit { font: 400 22px/28px var(--font-sans); color: var(--on-limestone); }
-.aq-pq-calendar__eq { font: 500 13px/18px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone-muted); }
+.aq-pq-calendar__year { display: block; width: 100%; height: var(--space-8); }
+.aq-pq-calendar__wk.is-p1 { fill: var(--pq-p1, var(--navy)); }
+.aq-pq-calendar__wk.is-p2 { fill: var(--pq-p2, var(--flow)); }
+.aq-pq-calendar__wk.is-rest { fill: var(--on-limestone-muted); }
+.aq-pq-calendar__strip { position: relative; margin-top: var(--space-4); }
+.aq-pq-calendar__months { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); margin-top: var(--space-1); border-top: 1px solid var(--on-limestone); }
+.aq-pq-calendar__months span { padding: var(--space-1) 0 0 var(--space-1); border-left: 1px solid color-mix(in srgb, var(--on-limestone) 35%, transparent); font: 400 12px/16px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-pq-calendar__ylab { position: absolute; right: 0; top: calc(-1 * var(--space-6)); padding: 0 var(--space-2); border: 1px solid var(--on-limestone); font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone); background: var(--limestone); }
+
+/* the region marker: not drawn until a phase is pointed at; then glides between spans */
+.aq-pq-calendar__reg { position: absolute; top: calc(-1 * var(--space-1)); bottom: calc(-1 * var(--space-1)); left: var(--g0, 0%); width: var(--g1, 0%); background: color-mix(in srgb, var(--flow) 14%, transparent); border-left: 1px solid var(--flow); border-right: 1px solid var(--flow); display: none; pointer-events: none;
+  transition: left 240ms cubic-bezier(0.2, 0, 0, 1), width 240ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-pq-calendar__reg i { position: absolute; top: 50%; width: var(--space-1); height: var(--space-4); margin-top: calc(-1 * var(--space-2)); background: var(--flow); }
+.aq-pq-calendar__reg i:first-child { left: calc(-1 * var(--space-1) / 2); } .aq-pq-calendar__reg i:last-child { right: calc(-1 * var(--space-1) / 2); }
+.aq-pq-calendar__scale .aq-pq-calendar__reg { left: var(--y0, 0%); width: var(--y1, 0%); }
+.aq-pq-calendar[data-on] .aq-pq-calendar__scale .aq-pq-calendar__reg, .aq-pq-calendar[data-on="grid"] .aq-pq-calendar__zoomed .aq-pq-calendar__reg { display: block; }
+@media (prefers-reduced-motion: reduce) { .aq-pq-calendar__reg { transition: none; } }
 
 @container (max-width: 860px) {
-  .aq-pq-calendar__year { height: var(--space-8); }
-  .aq-pq-calendar__months span { padding-left: var(--space-1); font-size: 12px; }
-  .aq-pq-calendar__months span:nth-child(even) { color: transparent; }
-  .aq-pq-calendar__ylab { position: static; display: block; transform: none; margin-top: var(--space-1); }
-  .aq-pq-calendar__zoom { height: var(--space-8); }
-  .aq-pq-calendar__zoom .is-wide { display: inline; }
-  .aq-pq-calendar__zoom path:not(.is-wide) { display: none; }
-  .aq-pq-calendar__body { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
-  .aq-pq-calendar__zoomed { padding: var(--space-3); }
-  .aq-pq-calendar__phases { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-4); }
-  .aq-pq-calendar__ph { grid-column: auto; }
-  .aq-pq-calendar__num { font-size: 72px; }
-  .aq-pq-calendar__t { font-size: 17px; line-height: 24px; }
+  .aq-pq-calendar { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  .aq-pq-calendar__ph { grid-template-columns: var(--space-16) minmax(0, 1fr); padding: var(--space-4) 0; }
+  .aq-pq-calendar__n { font-size: 26px; padding-left: 0; }
+  .aq-pq-calendar__t { font-size: 18px; line-height: 24px; }
   .aq-pq-calendar__d { font-size: 14px; line-height: 22px; }
-  .aq-pq-calendar__phases--rest { margin-top: var(--space-6); }
+  .aq-pq-calendar__panel { padding: var(--space-6) var(--space-4) var(--space-4); gap: var(--space-6); }
+  .aq-pq-calendar__num { font-size: 104px; }
+  .aq-pq-calendar__months span:nth-child(even) { color: transparent; }
 }
 
-/* section hook and the right-hand column */
+/* section hook */
 .aq-pq-calendar-sec { position: relative; }
-.aq-pq-calendar__aside { min-width: 0; }
 
 /* ---------- ProcessDiagram: a treatment train as an interactive piping flow in a Plate ----------
    Single-weight line art: one row of stations (Spot vignette in a `line` frame, index, name) on a double-hairline flow
@@ -8519,7 +8479,11 @@ a.aq-review-reticles__body:hover .aq-review-reticles__t { color: var(--flow); }
 .is-us > .aq-signature-blocks__v { border: 1.5px solid var(--flow); color: var(--flow); }
 .is-you > .aq-signature-blocks__v { border: 3px double var(--limestone); }
 .is-both > .aq-signature-blocks__v { border: 1.5px dashed var(--ink-muted); }
-.aq-signature-blocks__line { position: relative; display: block; height: var(--space-4); border-bottom: 1px solid var(--ink-muted); transform-origin: 0 50%; }
+.aq-signature-blocks__line { position: relative; display: block; height: var(--space-8); border-bottom: 1px solid var(--ink-muted); transform-origin: 0 50%; }
+.aq-signature-blocks__sig { position: absolute; left: var(--space-6); bottom: var(--space-1); width: var(--space-24); height: var(--space-8); overflow: visible; }
+.aq-signature-blocks__sig path { fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-signature-blocks__imp { stroke: var(--ink-subtle); opacity: 0.35; transform: translate(1px, 1px); }
+.aq-signature-blocks__ink { stroke: var(--ink); }
 .aq-signature-blocks__line::before { content: "\00d7"; position: absolute; left: 0; bottom: 0; font: 400 16px/20px var(--font-mono); color: var(--ink-subtle); }
 .aq-signature-blocks__b:hover { border-color: var(--flow); }
 
@@ -8936,6 +8900,89 @@ details[open] > .aq-spine-shelf__sum .aq-spine-shelf__t { font-weight: 400; }
   .aq-fold:not(.is-open) .aq-stage-stacks__stage.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-stage-stacks__list) > .aq-fold__btn { display: flex; color: var(--on-navy-muted); margin-top: var(--space-2); }
 }
+
+/* ---------- StageTiles: ordered stages as a Swiss row of navy and limestone tiles (look "stage-tiles") ----------
+   Desktop (six stages): a five-column grid. Row 1: the heading in a navy band across four columns, stage 05 at the
+   right. Row 2: stages 01 to 04, stage 06 under 05. The list is one subgrid over both rows, so tiles sit in the
+   wrapper's columns while the heading stays outside the list. Every tile leads with a huge light mono numeral and a
+   lighter slash; the words sit at the tile's foot. Tones run limestone, navy, navy, so no two limestone tiles meet.
+   The art tile (IQ) carries the pipe-run blueprint above a smaller numeral. */
+.aq-stage-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.aq-stage-tiles__head { grid-column: 1 / -1; background: var(--navy); color: var(--on-navy); padding: var(--space-12) var(--space-8); }
+.aq-stage-tiles__head .aq-sec-head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-4) var(--space-8); margin: 0; max-width: none; }
+.aq-stage-tiles__head .aq-h1 { margin: 0; color: var(--on-navy); font: 300 64px/68px var(--font-sans); letter-spacing: -0.03em; }
+.aq-stage-tiles__head .aq-lead { margin: 0 0 var(--space-2); max-width: 32ch; padding: var(--space-1) var(--space-2); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 55%, transparent); color: var(--on-navy-muted); font: 400 14px/20px var(--font-sans); }
+.aq-stage-tiles__list { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.aq-stage-tiles__tile { position: relative; display: flex; flex-direction: column; gap: var(--space-6); min-height: calc(var(--space-32) * 2.6); padding: var(--space-8) var(--space-6); }
+.aq-stage-tiles__tile::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--flow); transform: scaleX(0); transform-origin: 0 50%; transition: transform 180ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-stage-tiles__tile:hover::before, .aq-stage-tiles__tile:focus-within::before { transform: scaleX(1); }
+.aq-stage-tiles__tile.is-lime { background: var(--limestone); color: var(--on-limestone); }
+.aq-stage-tiles__tile.is-navy { background: var(--navy); color: var(--on-navy); }
+.aq-stage-tiles__tile.is-navy + .is-navy, .aq-stage-tiles__head + .aq-stage-tiles__list .is-navy { border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+
+.aq-stage-tiles__n { display: block; font: 300 96px/1 var(--font-mono); letter-spacing: -0.06em; white-space: nowrap; }
+.aq-stage-tiles__n i { font-style: normal; margin-left: 0.04em; }
+.is-lime .aq-stage-tiles__n i { color: var(--on-limestone-muted); }
+.is-navy .aq-stage-tiles__n i { color: var(--on-navy-muted); }
+.aq-stage-tiles__body { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-stage-tiles__lab { font: 300 22px/28px var(--font-sans); }
+.is-lime .aq-stage-tiles__lab { color: var(--on-limestone-muted); }
+.is-navy .aq-stage-tiles__lab { color: var(--on-navy-muted); }
+.aq-stage-tiles__t { margin: 0; font: 400 21px/27px var(--font-sans); letter-spacing: -0.01em; color: inherit; }
+.aq-stage-tiles__t a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+.is-navy .aq-stage-tiles__t a { text-decoration-color: var(--on-navy-muted); }
+.aq-stage-tiles__t a:hover { text-decoration-color: currentColor; }
+.aq-stage-tiles__t a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-stage-tiles__d { margin: 0; font: 400 14px/21px var(--font-sans); }
+.is-lime .aq-stage-tiles__d { color: var(--on-limestone-muted); }
+.is-navy .aq-stage-tiles__d { color: var(--on-navy-muted); }
+
+/* the art tile: the pipe-run blueprint in place of the big numeral */
+.aq-stage-tiles__tile.has-art { gap: var(--space-4); }
+.has-art .aq-stage-tiles__n { font-size: 40px; }
+.aq-stage-tiles__art { margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) 0; border: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
+.aq-stage-tiles__svg { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; }
+.aq-stage-tiles__grid { fill: none; stroke: color-mix(in srgb, var(--on-navy-muted) 14%, transparent); stroke-width: 1; }
+.aq-stage-tiles__pw { fill: none; stroke: var(--on-navy-muted); stroke-width: 9; stroke-linejoin: round; }
+.aq-stage-tiles__pi { fill: none; stroke: var(--navy); stroke-width: 6; stroke-linejoin: round; }
+.aq-stage-tiles__water { fill: none; stroke: color-mix(in srgb, var(--flow) 55%, var(--on-navy)); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.aq-stage-tiles__jt { fill: none; stroke: var(--on-navy); stroke-width: 2; }
+.aq-stage-tiles__ar { fill: none; stroke: color-mix(in srgb, var(--flow) 55%, var(--on-navy)); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.aq-stage-tiles__tb { fill: none; stroke: color-mix(in srgb, var(--on-navy-muted) 55%, transparent); stroke-width: 1; }
+
+/* roll faces (motion.js builds them; the numeral reads the same without them) */
+.aq-stage-tiles__ch { position: relative; display: inline-block; perspective: 10000px; transform-style: preserve-3d; }
+.aq-stage-tiles__ch > span { display: inline-block; backface-visibility: hidden; }
+.aq-stage-tiles__ch > span + span { position: absolute; left: 0; top: 0; }
+
+/* six stages, wide: the concept's composition */
+@container (min-width: 1081px) {
+  .aq-stage-tiles.is-six { grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: auto auto; }
+  .is-six .aq-stage-tiles__head { grid-column: 1 / 5; grid-row: 1; display: flex; align-items: flex-end; }
+  .is-six .aq-stage-tiles__list { grid-column: 1 / -1; grid-row: 1 / 3; grid-template-columns: subgrid; grid-template-rows: subgrid; pointer-events: none; }
+  .is-six .aq-stage-tiles__tile { pointer-events: auto; grid-row: 2; }
+  .is-six .aq-stage-tiles__tile:nth-child(5) { grid-column: 5; grid-row: 1; min-height: 0; border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+  .is-six .aq-stage-tiles__tile:nth-child(6) { grid-column: 5; grid-row: 2; border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+  .is-six .aq-stage-tiles__tile:nth-child(5) .aq-stage-tiles__n { font-size: 80px; }
+}
+
+@container (max-width: 860px) {
+  .aq-stage-tiles, .aq-stage-tiles__list { grid-template-columns: minmax(0, 1fr); }
+  .aq-stage-tiles__head { padding: var(--space-8) var(--space-4); }
+  .aq-stage-tiles__head .aq-h1 { font-size: 40px; line-height: 44px; }
+  .aq-stage-tiles__tile { display: grid; grid-template-columns: var(--space-24) minmax(0, 1fr); align-items: start; column-gap: var(--space-4); min-height: 0; padding: var(--space-6) var(--space-4); }
+  .aq-stage-tiles__tile.is-navy + .is-navy, .aq-stage-tiles__head + .aq-stage-tiles__list .is-navy { border-left: 0; border-top: 1px solid color-mix(in srgb, var(--on-navy-muted) 28%, transparent); }
+  .aq-stage-tiles__n { font-size: 48px; }
+  .aq-stage-tiles__body { margin-top: 0; }
+  .aq-stage-tiles__lab { font-size: 17px; line-height: 24px; }
+  .aq-stage-tiles__t { font-size: 18px; line-height: 24px; }
+  .aq-stage-tiles__art { grid-column: 1 / -1; margin: 0 0 var(--space-2); }
+  .has-art .aq-stage-tiles__n { font-size: 32px; }
+}
+
+/* section hook (the look marks its section) */
+.aq-stage-tiles-sec { position: relative; }
 
 /* ---------- StairRouter: situations as a rising staircase of cards over huge cropped outline type (look "stair-router") ----------
    Navy ground with a limestone wedge bottom right (a hard diagonal, no gradient). Behind everything, the block's
@@ -10545,45 +10592,57 @@ a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-
   .aq-visit-route__stop.is-last::after { display: none; }
 }
 
-/* ---------- WalkdownPins: IQ and OQ checks pinned to the installed system (look "walkdown-pins") ----------
-   Desktop: the drawing sheet (IsoKit, light sheet with its iso grid) on the left, 7 of 12, held in view while the
-   checks scroll beside it (5 of 12). Pins are HTML over the sheet, placed in % of the drawing: a navy disc with the
-   check's number; two pins on one part step apart (--k). Rows: the pin number in a ruled disc, the IQ or OQ tag
-   (IQ ruled in ink, OQ filled flow: installed versus running), the check, what we verify, the basis in mono. A row
-   pointed at or focused lights its part (aq-iso__part is-lit) and swells its pin. */
-.aq-walkdown-pins { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; }
+/* ---------- WalkdownPins: IQ and OQ checks as a table beside the system they inspect (look "walkdown-pins") ----------
+   Desktop: the checks as a hairline table on the left (6 of 12: number, check with its IQ or OQ tag, what we verify,
+   basis in mono, under a mono column head); the drawing sheet (IsoKit light sheet, iso grid) on the right, held in
+   view while the table scrolls. Each check's number marks its part (a small ruled square; two on one part step
+   apart, --k); a few parts carry a leader callout with their name over the shelf. IQ tags ruled in ink, OQ filled
+   flow (installed versus running). A row pointed at or focused lights its part (aq-iso__part is-lit), its marker
+   and its callout. */
+.aq-walkdown-pins { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: var(--space-12); align-items: start; }
 .aq-walkdown-pins__fig { position: sticky; top: var(--space-24); }
 .aq-walkdown-pins__sheet { position: relative; background: var(--surface-raised); border: 1px solid var(--line); }
 .aq-walkdown-pins__svg { display: block; width: 100%; height: auto; }
-.aq-walkdown-pins__pin { position: absolute; transform: translate(calc(-50% + var(--k, 0) * var(--space-8)), calc(-100% - var(--space-2))); display: inline-flex; align-items: center; justify-content: center;
-  width: var(--space-8); height: var(--space-8); border-radius: 50% 50% 50% 0; background: var(--navy); color: var(--on-navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em;
-  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms; z-index: 1; }
-.aq-walkdown-pins__pin.is-on { background: var(--flow); color: var(--surface); transform: translate(calc(-50% + var(--k, 0) * var(--space-8)), calc(-100% - var(--space-2))) scale(1.25); z-index: 2; }
-.aq-walkdown-pins__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-.aq-walkdown-pins__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-3); padding: var(--space-4) var(--space-2) var(--space-4) 0; border-bottom: 1px solid var(--line); outline: none; transition: background-color 200ms; }
+.aq-walkdown-pins__pin { position: absolute; transform: translate(calc(-50% + var(--k, 0) * var(--space-6)), -50%); display: inline-flex; align-items: center; justify-content: center;
+  min-width: var(--space-6); height: var(--space-6); padding: 0 var(--space-1); background: var(--surface); border: 1px solid var(--navy); color: var(--ink); font: 500 12px/1 var(--font-mono);
+  transition: background-color 180ms, color 180ms, border-color 180ms; z-index: 1; }
+.aq-walkdown-pins__pin.is-on { background: var(--flow); border-color: var(--flow); color: var(--surface); z-index: 2; }
+.aq-walkdown-pins__lead .aq-iso__leader-line { stroke: var(--ink-subtle); }
+.aq-walkdown-pins__lab { position: absolute; transform: translate(0, calc(-100% - var(--space-1))); white-space: nowrap; font: 400 12px/16px var(--font-mono); letter-spacing: 0.02em; color: var(--ink-muted); transition: color 180ms; }
+.aq-walkdown-pins__lab--r { transform: translate(-100%, calc(-100% - var(--space-1))); }
+.aq-walkdown-pins__lab.is-on { color: var(--flow); }
+
+.aq-walkdown-pins__cols, .aq-walkdown-pins__row { display: grid; grid-template-columns: var(--space-8) minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr); column-gap: var(--space-4); }
+.aq-walkdown-pins__cols { padding-bottom: var(--space-2); border-bottom: 1px solid var(--line-strong); font: 400 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle); }
+.aq-walkdown-pins__tab { min-width: 0; }
+.aq-walkdown-pins__list { list-style: none; margin: 0; padding: 0; }
+.aq-walkdown-pins__row { align-items: start; padding: var(--space-4) 0; border-bottom: 1px solid var(--line); outline: none; transition: background-color 180ms; }
 .aq-walkdown-pins__row:hover, .aq-walkdown-pins__row:focus-visible { background: var(--surface-raised); }
 .aq-walkdown-pins__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
-.aq-walkdown-pins__n { grid-row: 1 / span 3; justify-self: center; display: inline-flex; align-items: center; justify-content: center; width: var(--space-8); height: var(--space-8);
-  border-radius: 50% 50% 50% 0; border: 1.5px solid var(--navy); color: var(--ink); font: 500 12px/1 var(--font-mono); }
-.aq-walkdown-pins__row:hover .aq-walkdown-pins__n, .aq-walkdown-pins__row:focus-visible .aq-walkdown-pins__n { background: var(--flow); border-color: var(--flow); color: var(--surface); }
-.aq-walkdown-pins__t { margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-2); font: 500 17px/24px var(--font-sans); color: var(--ink); }
-.aq-walkdown-pins__tag { padding: 0 var(--space-2); font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; border: 1.5px solid var(--ink); color: var(--ink); }
+.aq-walkdown-pins__n { font: 400 13px/22px var(--font-mono); color: var(--flow); padding-left: var(--space-1); }
+.aq-walkdown-pins__t { margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-1) var(--space-2); font: 500 15px/22px var(--font-sans); color: var(--ink); }
+.aq-walkdown-pins__tag { padding: 0 var(--space-1); font: 500 12px/18px var(--font-mono); letter-spacing: 0.08em; border: 1px solid var(--ink); color: var(--ink); }
 .aq-walkdown-pins__tag--oq { background: var(--flow); border-color: var(--flow); color: var(--surface); }
-.aq-walkdown-pins__v { margin: var(--space-1) 0 0; grid-column: 2; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
-.aq-walkdown-pins__m { margin: var(--space-2) 0 0; grid-column: 2; font: 400 13px/20px var(--font-mono); color: var(--ink-subtle); }
+.aq-walkdown-pins__v { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-walkdown-pins__m { margin: 0; font: 400 13px/20px var(--font-mono); color: var(--ink-subtle); }
 
-/* the fold is for phones only: desktop shows every check beside the sheet */
+/* the fold is for phones only: desktop shows every check */
 .aq-fold:not(.is-open) .aq-walkdown-pins__row.aq-fold-x { display: grid; }
 .aq-fold:has(> .aq-walkdown-pins__list) > .aq-fold__btn { display: none; }
 
+@container (max-width: 1080px) {
+  .aq-walkdown-pins { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  .aq-walkdown-pins__fig { position: static; order: -1; }
+}
 @container (max-width: 860px) {
-  .aq-walkdown-pins { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
-  .aq-walkdown-pins__fig { position: static; }
-  .aq-walkdown-pins__pin { width: var(--space-6); height: var(--space-6); font-size: 12px; transform: translate(calc(-50% + var(--k, 0) * var(--space-6)), calc(-100% - var(--space-1))); }
-  .aq-walkdown-pins__row { grid-template-columns: var(--space-8) minmax(0, 1fr); }
-  .aq-walkdown-pins__n { width: var(--space-6); height: var(--space-6); }
-  .aq-walkdown-pins__t { font-size: 16px; line-height: 22px; }
-  .aq-walkdown-pins__v { font-size: 14px; line-height: 22px; }
+  .aq-walkdown-pins { gap: var(--space-6); }
+  .aq-walkdown-pins__cols { display: none; }
+  .aq-walkdown-pins__row { grid-template-columns: var(--space-8) minmax(0, 1fr); row-gap: var(--space-1); }
+  .aq-walkdown-pins__row > :not(.aq-walkdown-pins__n) { grid-column: 2; }
+  .aq-walkdown-pins__n { grid-row: 1; }
+  .aq-walkdown-pins__pin { min-width: var(--space-4); height: var(--space-4); padding: 0; font-size: 12px; transform: translate(calc(-50% + var(--k, 0) * var(--space-4)), -50%); }
+  .aq-walkdown-pins__lab, .aq-walkdown-pins__lead { display: none; }
+  .aq-walkdown-pins__v { font-size: 14px; }
   .aq-walkdown-pins__m { font-size: 12px; line-height: 18px; }
   .aq-fold:not(.is-open) .aq-walkdown-pins__row.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-walkdown-pins__list) > .aq-fold__btn { display: flex; }
@@ -10828,74 +10887,65 @@ a.aq-visit-route__body:focus-visible { outline: 2px solid var(--focus); outline-
 /* phones: the route is vertical and has no droplet; no replay */
 @container (max-width: 860px) { .aq-winding-route__scrub { display: none; } }
 
-/* ---------- WitnessPlan: ways to witness a FAT read off a plan of the test bay (look "witness-plan") ----------
-   Desktop: the heading and the cards on the left (5 of 12), the navy board on the right (7 of 12). The board is a flat
-   plan: walls and door in on-navy, a faint floor grid, equipment as outlines filled navy, a dashed edge to the remote
-   strip. Actors (people, cameras, screen, the record package) are drawn in flow and limestone; the ones the chosen
-   way does not use fade to a trace (opacity), so the plan always shows the whole bay. Cards are full buttons (44 px
-   and more), the pressed one ruled in flow. */
-.aq-witness-plan { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); align-items: start; }
-.aq-witness-plan__side { display: flex; flex-direction: column; gap: var(--space-8); }
-.aq-witness-plan__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-.aq-witness-plan__list { position: relative; isolation: isolate; }
-.aq-witness-plan__list li { border-bottom: 1px solid var(--line); }
-/* the sliding indicator (script): one raised panel with the flow rule that springs to the chosen card */
-.aq-witness-plan__list > .aq-witness-plan__ind { display: none; position: absolute; z-index: -1; left: 0; right: 0; top: 0; height: 0; border: 0; border-left: 3px solid var(--flow); background: var(--surface-raised); pointer-events: none; }
-.aq-witness-plan__list.has-ind > .aq-witness-plan__ind { display: block; }
-.aq-witness-plan__list.has-ind .aq-witness-plan__opt[aria-pressed="true"] { background: transparent; }
-.aq-witness-plan__list.has-ind .aq-witness-plan__opt::before { display: none; }
-.aq-witness-plan__opt { position: relative; display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); width: 100%; min-height: 44px;
-  padding: var(--space-4) var(--space-4) var(--space-4) var(--space-3); border: 0; background: transparent; color: var(--ink); text-align: left; cursor: pointer; font: inherit;
-  transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-witness-plan__opt::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--flow); transform: scaleY(0); transform-origin: 50% 0; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1); }
+/* ---------- WitnessPlan: ways to witness as ruled rows whose leaders run into the package (look "witness-plan") ----------
+   Desktop: rows on the left (5 of 12) under the heading, the IsoKit light drawing of the package in the test bay's
+   open frame on the right (7 of 12). The leaders svg covers the whole look (aria-hidden, no pointer events): each
+   leader is its row's underline carried on into the drawing and up to the part's marker; the chosen way's leader,
+   marker and part turn flow. The sliding indicator (a flow edge on a raised ground) springs between rows.
+   Container under 1080 px: the drawing above the rows, leaders off, rows ruled; numbered markers pair them. */
+.aq-witness-plan { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); align-items: center; }
+.aq-witness-plan__side { position: relative; z-index: 1; min-width: 0; }
+.aq-witness-plan__side .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; }
+.aq-witness-plan__list { position: relative; list-style: none; margin: var(--space-8) 0 0; padding: 0; }
+.aq-witness-plan__opt { position: relative; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-2); width: 100%; min-height: var(--space-12); padding: var(--space-4) var(--space-3) var(--space-4) var(--space-2);
+  border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); text-align: left; font: inherit; cursor: pointer; transition: background-color 160ms; }
+.aq-witness-plan__opt::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--flow); transform: scaleY(0); transition: transform 160ms; }
+.aq-witness-plan__opt[aria-pressed="true"] { background: var(--surface-raised); }
 .aq-witness-plan__opt[aria-pressed="true"]::before { transform: scaleY(1); }
-.aq-witness-plan__opt[aria-pressed="true"], .aq-witness-plan__opt:hover { background: var(--surface-raised); }
+.aq-witness-plan__opt:hover { background: var(--surface-raised); }
 .aq-witness-plan__opt:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
-.aq-witness-plan__n { grid-row: 1 / span 2; font: 400 12px/24px var(--font-mono); letter-spacing: 0.08em; color: var(--ink-subtle); }
+.aq-witness-plan__n { grid-row: 1 / span 2; font: 400 14px/24px var(--font-mono); color: var(--ink-subtle); }
 .aq-witness-plan__opt[aria-pressed="true"] .aq-witness-plan__n { color: var(--flow); }
-.aq-witness-plan__t { font: 400 22px/28px var(--font-sans); letter-spacing: -0.01em; }
-.aq-witness-plan__d { font: 400 15px/23px var(--font-sans); color: var(--ink-muted); margin-top: var(--space-1); }
+.aq-witness-plan__t { font: 400 19px/24px var(--font-sans); letter-spacing: -0.01em; }
+.aq-witness-plan__d { margin-top: var(--space-1); font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+.aq-witness-plan__list > .aq-witness-plan__ind { display: none; position: absolute; z-index: -1; left: 0; right: 0; top: 0; height: 0; border-left: 3px solid var(--flow); background: var(--surface-raised); pointer-events: none; }
+.aq-witness-plan__list.has-ind > .aq-witness-plan__ind { display: block; }
+.aq-witness-plan__list.has-ind .aq-witness-plan__opt[aria-pressed="true"], .aq-witness-plan__list.has-ind .aq-witness-plan__opt:hover { background: transparent; }
+.aq-witness-plan__list.has-ind .aq-witness-plan__opt::before { display: none; }
 
-/* the board */
-.aq-witness-plan__board { background: var(--navy); color: var(--on-navy); padding: var(--space-6); position: sticky; top: var(--space-24); }
-.aq-witness-plan__svg { display: block; width: 100%; height: auto; overflow: visible; }
-.aq-witness-plan__grid { fill: none; stroke: var(--on-navy-muted); stroke-width: 0.6; opacity: 0.3; }
-.aq-witness-plan__wall { fill: none; stroke: var(--on-navy); stroke-width: 6; stroke-linejoin: miter; }
-.aq-witness-plan__door { fill: none; stroke: var(--on-navy-muted); stroke-width: 1.2; stroke-dasharray: 3 4; }
-.aq-witness-plan__edge { fill: none; stroke: var(--on-navy-muted); stroke-width: 1.5; stroke-dasharray: 8 6; }
-.aq-witness-plan__zone { font: 500 13px/1 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; fill: var(--on-navy-muted); }
-.aq-witness-plan__eq { fill: var(--navy); stroke: var(--on-navy); stroke-width: 2; }
-.aq-witness-plan__thin { fill: none; stroke: var(--on-navy); stroke-width: 1.4; stroke-linecap: round; opacity: 0.75; }
-.aq-witness-plan__hid { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; stroke-dasharray: 2 3; }
-.aq-witness-plan__actor { opacity: 0.18; transition: opacity 400ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-witness-plan__actor.is-on { opacity: 1; }
-.aq-witness-plan__cone { fill: color-mix(in srgb, var(--limestone) 14%, transparent); stroke: var(--limestone); stroke-width: 1; stroke-dasharray: 2 4; }
-.aq-witness-plan__man { fill: var(--limestone); stroke: none; }
-.aq-witness-plan__head { fill: var(--limestone); stroke: var(--navy); stroke-width: 2; }
-.aq-witness-plan__badge { fill: var(--navy); stroke: var(--limestone); stroke-width: 1.5; }
-.aq-witness-plan__fov { fill: color-mix(in srgb, var(--limestone) 12%, transparent); stroke: var(--limestone); stroke-width: 1; }
-.aq-witness-plan__cam { fill: var(--navy); stroke: var(--limestone); stroke-width: 1.8; stroke-linejoin: round; }
-.aq-witness-plan__sig { fill: none; stroke: var(--limestone); stroke-width: 1.5; stroke-dasharray: 5 6; }
-.aq-witness-plan__trace { fill: none; stroke: var(--limestone); stroke-width: 1.5; stroke-linejoin: round; }
-/* the board's caption: the way on show */
-.aq-witness-plan__now { display: flex; align-items: baseline; gap: var(--space-3); margin: var(--space-4) 0 0; padding-top: var(--space-4); border-top: 1px solid color-mix(in srgb, var(--on-navy) 24%, transparent);
-  font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
-.aq-witness-plan__now-n { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--on-navy-muted); }
-.aq-witness-plan__now-t { min-width: 0; }
+.aq-witness-plan__fig { position: relative; z-index: 0; min-width: 0; }
+.aq-witness-plan__sheet { position: relative; }
+.aq-witness-plan__svg { display: block; width: 100%; height: auto; }
+.aq-witness-plan__svg .aq-witness-plan__bay { stroke: var(--line-strong); }
+.aq-witness-plan__mk { position: absolute; z-index: 2; transform: translate(calc(-50% + var(--k, 0) * var(--space-6)), -50%); display: inline-flex; align-items: center; justify-content: center; min-width: var(--space-6); height: var(--space-6); padding: 0 var(--space-1);
+  background: var(--surface); border: 1px solid var(--line-strong); color: var(--ink-muted); font: 500 12px/1 var(--font-mono); transition: background-color 160ms, color 160ms, border-color 160ms; }
+.aq-witness-plan__mk.is-on { background: var(--flow); border-color: var(--flow); color: var(--surface); }
+.aq-witness-plan__zone { position: absolute; transform: translate(0, calc(-100% - var(--space-2))); white-space: nowrap; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-witness-plan__zone.is-cam { transform: translate(var(--space-2), calc(-100% - var(--space-2))); }
 
-@container (max-width: 860px) {
+.aq-witness-plan__leads { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.aq-witness-plan__lead { fill: none; stroke: var(--line-strong); stroke-width: 1; transition: stroke 160ms; }
+.aq-witness-plan__lead.is-on { stroke: var(--flow); stroke-width: 1.5; }
+.aq-witness-plan__beam { fill: none; stroke: var(--flow); stroke-width: 3; stroke-linecap: round; }
+@container (min-width: 1081px) { .aq-witness-plan__opt { border-bottom-color: transparent; } }
+
+@container (max-width: 1080px) {
   .aq-witness-plan { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
   .aq-witness-plan__side { display: contents; }
   .aq-witness-plan__side > .aq-sec-head { order: 0; }
-  .aq-witness-plan__board { order: 1; position: static; padding: var(--space-3); }
-  .aq-witness-plan__list { order: 2; }
-  .aq-witness-plan__zone { display: none; }
-  .aq-witness-plan__now { font-size: 18px; line-height: 24px; margin-top: var(--space-3); padding-top: var(--space-3); }
-  .aq-witness-plan__t { font-size: 18px; line-height: 24px; }
-  .aq-witness-plan__d { font-size: 14px; line-height: 22px; }
+  .aq-witness-plan__fig { order: 1; }
+  .aq-witness-plan__list { order: 2; margin-top: 0; }
+  .aq-witness-plan__leads { display: none; }
+}
+@container (max-width: 860px) {
+  .aq-witness-plan__side .aq-sec-head .aq-h1 { font-size: 36px; line-height: 42px; }
+  .aq-witness-plan__list { margin-top: var(--space-6); }
+  .aq-witness-plan__opt { grid-template-columns: var(--space-8) minmax(0, 1fr); }
+  .aq-witness-plan__t { font-size: 17px; }
+  .aq-witness-plan__mk { min-width: var(--space-4); height: var(--space-4); padding: 0; font-size: 12px; }
 }
 
-/* section hook (the look marks its section) */
+/* section hook */
 .aq-witness-plan-sec { position: relative; }
 
 /* ---------- CompareTable ---------- */

@@ -1457,29 +1457,6 @@ LOOKS['binder-spines']=function(b,H){var C=b.cols||[],R=b.rows||[],S=b.spines||[
  var shelf='<div class="aq-binder-spines"><ol class="aq-binder-spines__row" style="--n:'+n+'">'+books+'</ol><span class="aq-binder-spines__shelf" aria-hidden="true"></span></div>';
  return sec(H+wFold(b,n,shelf,b.fold_noun),'aq-binder-spines-sec')};
 })();
-/* Look "binder-tabs" -> BinderTabs (design-system/components/BinderTabs): ordered stages filed as the qualification
-   binder. The binder lies open: its navy cover on the left carries the section heading in a label holder; on the
-   right, one tab divider per stage is filed on the rings, each with its tab standing proud of the stack (the stage's
-   short label, stepping down the edge like real index tabs), the stage name and what it proves, and a sign-off line
-   at its foot. The stages read as a sequence of signatures: each divider is signed before the next is opened.
-   Fields (a steps block): h, intro, items [{t, d, link, label}]. label: the tab's short text ("IQ", "FAT · SAT");
-   without one the tab shows the stage number.
-   Phones: the cover becomes a band over the stack; tabs sit at the right end of each divider. */
-var BT_SIG=['M2 14C8 4 12 4 11 11S16 18 21 9 28 3 31 11 36 16 42 8 48 6 54 12',
- 'M2 12C6 5 11 3 12 10S18 17 24 8 31 4 35 12 42 15 50 7',
- 'M2 13C9 3 14 6 13 12S20 16 26 9 30 5 36 11 44 14 52 9'];
-LOOKS['binder-tabs']=function(b,H){var I=b.items||[],n=I.length;
- var tabs=I.map(function(it,i){var nm=it.link&&wp(it.link)?'<a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t);
-  return '<li class="aq-binder-tabs__div" style="--i:'+i+'">'
-   +'<span class="aq-binder-tabs__holes" aria-hidden="true"></span>'
-   +'<span class="aq-binder-tabs__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-   +'<div class="aq-binder-tabs__body"><h3 class="aq-binder-tabs__t">'+nm+'</h3>'+(it.d?'<p class="aq-binder-tabs__d">'+tx(it.d)+'</p>':'')+'</div>'
-   +'<span class="aq-binder-tabs__sign" aria-hidden="true"><svg viewBox="0 0 56 20" focusable="false"><path d="'+BT_SIG[i%BT_SIG.length]+'"/></svg></span>'
-   +'<span class="aq-binder-tabs__tab" aria-hidden="true"><span>'+(it.label?tx(it.label):(i<9?'0':'')+(i+1))+'</span></span></li>'}).join('');
- return sec('<div class="aq-binder-tabs" style="--n:'+n+'">'
-  +'<div class="aq-binder-tabs__cover"><div class="aq-binder-tabs__holder">'+H+'</div><span class="aq-binder-tabs__spine" aria-hidden="true"></span></div>'
-  +'<div class="aq-binder-tabs__stack"><span class="aq-binder-tabs__rings" aria-hidden="true"><i></i><i></i><i></i></span>'
-  +'<ol class="aq-binder-tabs__list">'+tabs+'</ol></div></div>','aq-binder-tabs-sec')};
 /* Look "budget-bento" -> BudgetBento (design-system/components/BudgetBento): a spec block of budget ranges as a Swiss
    bento of numbered tiles, set like a price sheet rather than a table. The first highlighted row (the whole package) is
    the tall navy lead tile: a huge cropped numeral, the scope, the range set large in mono over a range bracket (a
@@ -1715,6 +1692,49 @@ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.targe
  var w=t.closest('.aq-coverage-map');if(w)lit(w,row.getAttribute('data-r'));
  row.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'})});
 })();
+/* Look "cut-band" -> CutBand (design-system/components/CutBand): a short table of levels laid across the plant like a
+   cutting plane. On a light ground the heading sits top left and a hairline elevation of the package stands at the
+   right (control panel, RO rack with its housings and pump, the storage tank, the header between them, the loop
+   below the skid with its points of use and their sample valves, where the data come from). A navy band runs the
+   full width of the page through the middle of the drawing and carries the table: column names in mono, then each
+   level numbered, its name in light display type, what it is set at (a figure in mono display), its basis as mono
+   lines (split at ";") and the row's link.
+   Fields, as a spec block: h, intro, cols [level, set at, basis], rows [{p, v, m, level, hl, link, link_label}], note.
+   Phones: the drawing stands under the heading and the band rises over its foot; rows stack inside the band. */
+function cbPlant(){var P='aq-cut-band'+'__',L=function(c,d){return '<path class="'+P+c+'" d="'+d+'"/>'};
+ var s=L('frame','M8 8H472V592H8Z');
+ /* skid base and feet */
+ s+=L('eq','M40 470H440V486H40Z')+L('ln','M56 486V496M424 486V496M240 486V496');
+ /* control panel: cabinet, door split, HMI, pilot lights */
+ s+=L('eq','M50 150H122V470H50Z')+L('ln','M86 150V470M60 168H112V198H60ZM64 220H70M76 220H82M64 232H70')+L('trace','M64 190L74 180L84 186L94 174L106 180');
+ /* RO rack: frame, four housings, pump */
+ s+=L('eq','M140 196H292V470H140Z')+L('ln','M140 214H292M140 452H292');
+ [228,256,284,312].forEach(function(y){s+=L('eq','M150 '+y+'H282V'+(y+18)+'H150Z')+L('ln','M162 '+y+'V'+(y+18)+'M270 '+y+'V'+(y+18))});
+ s+=L('eq','M196 408H236V452H196Z')+L('ln','M204 396H228V408H204Z');
+ /* storage tank: domed shell, legs, manway */
+ s+=L('eq','M322 470V160Q322 116 366 116Q410 116 410 160V448H322')+L('ln','M322 448H410M330 448V470M402 448V470M352 300H380V328H352Z');
+ /* header from the rack to the tank, signal line from the panel */
+ s+=L('pipe','M282 237H306V92H366V116')+L('hid','M122 172H140');
+ /* the loop: out of the tank, under the skid, two points of use, back */
+ s+=L('pipe','M404 448V430H428V528H72V500')+L('pipe','M156 528V552M264 528V552');
+ s+=L('eq','M146 552H166V572H146ZM254 552H274V572H254Z');
+ /* sample valves at the points of use: where the data come from */
+ s+=L('smp','M166 562H178M274 562H286')+'<circle class="'+P+'pt" cx="182" cy="562" r="4"/><circle class="'+P+'pt" cx="290" cy="562" r="4"/>';
+ /* the water in the header and loop */
+ s+=L('water','M282 237H306V92H366V116')+L('water','M404 448V430H428V528H72V500');
+ return '<svg class="'+P+'svg" viewBox="0 0 480 600" preserveAspectRatio="xMidYMin meet" aria-hidden="true" focusable="false">'+s+'</svg>'}
+LOOKS['cut-band']=function(b,H){var C=b.cols||[],R=b.rows||[];
+ var head='<div class="aq-cut-band__cols" aria-hidden="true"><span></span>'+C.slice(0,3).map(function(c){return '<span>'+tx(c)+'</span>'}).join('')+'</div>';
+ var rows=R.map(function(r,i){var fig=/\d/.test(String(r.v||''))&&String(r.v).length<24,basis=String(r.m||'').split(/;\s*/).filter(Boolean);
+  var go=r.link&&wp(r.link)?'<p class="aq-cut-band__go">'+wBtn(r.link_label||wlabel(r.link),r.link,'link',r.intent)+'</p>':'';
+  return '<li class="aq-cut-band__row'+(r.level?' is-'+e(r.level):'')+'">'
+   +'<span class="aq-cut-band__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   +'<h3 class="aq-cut-band__p">'+tx(r.p)+'</h3>'
+   +'<p class="aq-cut-band__v'+(fig?' is-fig':'')+'">'+(C[1]?'<span class="aq-cut-band__k">'+tx(C[1])+'</span>':'')+'<span class="aq-cut-band__val">'+tx(r.v)+'</span></p>'
+   +'<div class="aq-cut-band__m">'+(C[2]?'<span class="aq-cut-band__k">'+tx(C[2])+'</span>':'')+basis.map(function(x){return '<span class="aq-cut-band__ref">'+tx(x)+'</span>'}).join('')+go+'</div></li>'}).join('');
+ return sec('<div class="aq-cut-band"><div class="aq-cut-band__head">'+H+'</div><div class="aq-cut-band__fig">'+cbPlant()+'</div>'
+  +'<div class="aq-cut-band__band"><span class="aq-cut-band__occ" aria-hidden="true"><i></i><i></i></span>'+head+'<ol class="aq-cut-band__rows">'+rows+'</ol></div>'
+  +(b.note?'<p class="aq-cut-band__note">'+tx(b.note)+'</p>':'')+'</div>','aq-cut-band-sec')};
 /* Look "cutaway-rail" -> CutawayRail (design-system/components/CutawayRail): an evidence table read beside one sticky
    drawing. Left, a close cutaway of the plant (IsoKit on navy: a section of product-contact pipe cut open, the loop with
    a point-of-use branch and its valve, an analyser on the line, the control panel, the qualification binders) stays in
@@ -2322,49 +2342,6 @@ LOOKS['industry-feed']=function(b,H){var I=b.items||[],n=I.length,len=Math.max.a
   return '<li class="aq-industry-feed__item" style="--i:'+i+'">'+(go?'<a class="aq-industry-feed__card" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-industry-feed__card">'+inner+'</div>')+'</li>'}).join('');
  return sec(H+'<div class="aq-industry-feed" style="--n:'+n+';--len:'+len+'"><span class="aq-industry-feed__trunk" aria-hidden="true"><span class="aq-industry-feed__water"></span></span>'
   +'<span class="aq-industry-feed__drip" aria-hidden="true"></span><ol class="aq-industry-feed__list">'+li+'</ol></div>','aq-industry-feed-sec')};
-/* Look "instrument-limits" -> InstrumentLimits (design-system/components/InstrumentLimits): a spec block of levels
-   (as "gauges") read off two instruments on a dark panel. The first row with a figure (the action level) is an analog
-   dial: a 240° scale with its limit as the red-line wedge, the limit's figure as the readout under it, the level word
-   in its status colour. A row without a figure (the alert level, set from data) is a chart recorder: sample traces in
-   two runs, the dial's limit as the action line along the top, and the alert line drawn in after the runs, from the
-   data, then carried on across the rest of the chart; its value is the words of the row. Each faceplate names the
-   level, gives the basis as tags (split at ";") and keeps the row's link.
-   Fields, as a spec block (as "gauges"): h, intro, rows [{p, v, m, level, hl, link, link_label}], note. level:
-   "action" (or "alert") names the status word and colour. Decoration only: the dial scale and the recorder traces
-   carry no figures beyond the row's own limit.
-   Phones: the faceplates stack, each instrument above its words. */
-function ilNum(v){var m=String(v||'').match(/^\s*[≤≥<>=]?\s*(\d+(?:[.,]\d+)?)/);return m?parseFloat(m[1].replace(',','.')):NaN}
-function ilDial(lim){var cx=150,cy=150,r=112,a0=150,a1=390,max=lim*1.5,P=function(a,rr){var t=a*Math.PI/180;return [(cx+rr*Math.cos(t)).toFixed(1),(cy+rr*Math.sin(t)).toFixed(1)]};
- function arc(f,t,rr){var p=P(f,rr),q=P(t,rr);return 'M'+p[0]+' '+p[1]+'A'+rr+' '+rr+' 0 '+(t-f>180?1:0)+' 1 '+q[0]+' '+q[1]}
- var s='<path class="aq-instrument-limits__scale" d="'+arc(a0,a1,r)+'"/>',al=a0+(a1-a0)*(lim/max);
- for(var i=0;i<=30;i++){var a=a0+(a1-a0)*i/30,p=P(a,r),q=P(a,r-(i%5?8:16));s+='<path class="aq-instrument-limits__tick'+(i%5?'':' is-major')+'" d="M'+p[0]+' '+p[1]+'L'+q[0]+' '+q[1]+'"/>'}
- s+='<path class="aq-instrument-limits__red" d="'+arc(al,a1,r-4)+'"/>';
- var z=P(a0,r-30),l=P(al,r+20);
- s+='<text class="aq-instrument-limits__sl" x="'+z[0]+'" y="'+z[1]+'" text-anchor="middle">0</text><text class="aq-instrument-limits__sl is-lim" x="'+l[0]+'" y="'+l[1]+'" text-anchor="middle">'+lim+'</text>';
- var n=P(al,r-6);s+='<g class="aq-instrument-limits__needle" style="transform-origin:'+cx+'px '+cy+'px"><path d="M'+cx+' '+cy+'L'+n[0]+' '+n[1]+'"/></g><circle class="aq-instrument-limits__hub" cx="'+cx+'" cy="'+cy+'" r="7"/>';
- return '<svg class="aq-instrument-limits__dial" viewBox="0 0 300 236" aria-hidden="true" focusable="false" data-a0="'+a0+'" data-al="'+al.toFixed(1)+'">'+s+'</svg>'}
-function ilRecorder(lim){var W=520,Hh=240,top=28,s='',x;
- for(x=0;x<=W;x+=40)s+='<path class="aq-instrument-limits__gl" d="M'+x+' 0V'+Hh+'"/>';for(var y=0;y<=Hh;y+=40)s+='<path class="aq-instrument-limits__gl" d="M0 '+y+'H'+W+'"/>';
- s+='<path class="aq-instrument-limits__act" d="M0 '+top+'H'+W+'"/>';
- /* two runs of samples (decorative), then the alert line set from them */
- var seed=7,rnd=function(){seed=(seed*9301+49297)%233280;return seed/233280},pts=[];
- [[12,100],[118,206]].forEach(function(run){for(var k=run[0];k<=run[1];k+=7){pts.push([k,176+rnd()*40-(rnd()>0.85?30:0)])}});
- s+='<path class="aq-instrument-limits__band" d="M0 0H212V'+Hh+'H0Z"/>';
- s+=pts.map(function(p){return '<circle class="aq-instrument-limits__pt" cx="'+p[0]+'" cy="'+p[1].toFixed(1)+'" r="3"/>'}).join('');
- s+='<path class="aq-instrument-limits__alert" d="M0 128H'+W+'"/>';
- return '<svg class="aq-instrument-limits__rec" viewBox="0 0 '+W+' '+Hh+'" aria-hidden="true" focusable="false">'+s+'</svg>'}
-LOOKS['instrument-limits']=function(b,H){var R=b.rows||[],lim=NaN;R.some(function(r){var n=ilNum(r.v);if(!isNaN(n)){lim=n;return true}});
- function tags(m){return m?'<ul class="aq-instrument-limits__basis">'+String(m).split(/;\s*/).map(function(t){return '<li>'+tx(t)+'</li>'}).join('')+'</ul>':''}
- var plates=R.map(function(r,i){var n=ilNum(r.v),dial=!isNaN(n),lv=r.level||(dial?'action':'alert');
-  return '<li class="aq-instrument-limits__plate '+(dial?'is-dial':'is-rec')+'">'
-   +'<span class="aq-instrument-limits__screws" aria-hidden="true"><i></i><i></i><i></i><i></i></span>'
-   +'<h3 class="aq-instrument-limits__p">'+tx(r.p)+'</h3>'
-   +'<div class="aq-instrument-limits__face">'+(dial?ilDial(n):ilRecorder(lim)+(isNaN(lim)?'':'<span class="aq-instrument-limits__rl" aria-hidden="true">'+lim+'</span>'))+'</div>'
-   +'<p class="aq-instrument-limits__v'+(dial?'':' is-words')+'">'+tx(r.v)+'</p>'
-   +'<p class="aq-instrument-limits__lv is-'+e(lv)+'">'+e(lv.charAt(0).toUpperCase()+lv.slice(1))+'</p>'
-   +tags(r.m)+wGaugeGo(r)+'</li>'}).join('');
- return '<section class="aq-section aq-instrument-limits-sec" data-theme="dark"><div class="aq-in aq-stack-l">'+H
-  +'<ol class="aq-instrument-limits">'+plates+'</ol>'+wSpecNote(b)+'</div></section>'};
 /* Look "issued-set" -> IssuedSet (design-system/components/IssuedSet): the documents you receive as the issued set
    itself, dealt onto a desk. Each document is a sheet of paper (light in both themes) set at a slight angle: its
    document code large in the header with its sheet number, a miniature of what the document looks like (a compliance
@@ -3604,46 +3581,59 @@ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.targe
  w.setAttribute('data-show',t.getAttribute('data-tier'));w.querySelectorAll('.aq-plan-sheets__tab').forEach(function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});
 document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-plan-sheets__tab');if(!t||(ev.key!=='ArrowRight'&&ev.key!=='ArrowLeft'))return;
  var a=[].slice.call(t.parentNode.querySelectorAll('.aq-plan-sheets__tab')),n=a[(a.indexOf(t)+(ev.key==='ArrowRight'?1:a.length-1))%a.length];ev.preventDefault();n.focus();n.click()});
-/* Look "pq-calendar" -> PqCalendar (design-system/components/PqCalendar): PQ phases read as a year's sampling calendar,
-   set as Swiss data graphics on the limestone band. Across the top runs the year, one bar per week, months numbered
-   under it: the first phases' weeks are solid (daily sampling), the rest of the year hatched (the reduced routine
-   plan) up to the end of the year. A zoom opens from the first weeks down to the sampling grid itself: one dot per
-   sample, a row per sample point, a column per day, the phases split by the hold point where your quality unit signs
-   for production use. The grid's total (points x days) is set large beside it. The phases' words sit under the parts
-   of the calendar they describe.
+/* Look "pq-calendar" -> PqCalendar (design-system/components/PqCalendar): PQ phases beside one instrument readout
+   (pass 9b concept svc-cq.3), Swiss data graphics on the limestone band. Left, the phases as a short numbered stack
+   ("01 /" in mono), each with what it samples and, where it has one, the hold point. Right, a readout panel: the
+   sample count set as the one giant light numeral (points x days), its unit and sum under it, the sampling grid that
+   makes it (one dot per sample, a row per sample point, a column per day, the phases split by the dashed hold line),
+   and a tick scale of the year (one tick per week: the daily phases solid, the routine plan as short ticks to the
+   year's end, its label as the tag at the end). Pointing at or focusing a phase moves a region marker (edge handles)
+   over its days on the grid and its weeks on the scale; arrow keys, Home and End step between the phases.
    Fields (a steps block): h, intro, items [{t, d, hold, days}] (days: the phase's span in days for the grid; a phase
    without days is the routine plan that runs on to the end of the year), grid {points, days, rows, cols, unit}
-   (the grid's size and its axis words; points x days is the total shown), year {weeks, months, label} (52, 12).
-   Phones: the year strip and the zoom keep the full width; the grid follows, then the total and the phases stacked. */
+   (the grid's size and axis words; points x days is the total shown), year {weeks, months, label} (52, 12).
+   Phones: the phases stack over the panel; the scale keeps the full width with odd months numbered. */
 LOOKS['pq-calendar']=function(b,H){var I=b.items||[],G=b.grid||{},Y=b.year||{},NP=+G.points||12,ND=+G.days||28,NW=+Y.weeks||52,NM=+Y.months||12;
- var grid=I.filter(function(it){return +it.days>0}),rest=I.filter(function(it){return !(+it.days>0)}),acc=0,ends=grid.map(function(it){acc+=+it.days;return acc});
- var wk=Math.ceil(acc/7),uid='pqc'+(Math.random()*1e6|0).toString(36);
+ var acc=0,spans=I.map(function(it){var d=+it.days>0?+it.days:0,s=acc;acc+=d;return d?[s,acc]:null}),ends=spans.filter(Boolean).map(function(s){return s[1]});
+ var wk=acc/7;
  function who(s){s=String(s);return tx(/^[A-Z][a-z]/.test(s)?s.charAt(0).toLowerCase()+s.slice(1):s)}
- /* the year: one bar per week */
- var bars='';for(var w=0;w<NW;w++){var day=w*7,ph=0;while(ph<ends.length&&day>=ends[ph])ph++;
-  bars+='<rect class="aq-pq-calendar__wk '+(ph<grid.length?'is-p'+(ph+1):'is-rest')+'" x="'+(w*10)+'" y="'+(ph<grid.length?0:8)+'" width="8" height="'+(ph<grid.length?40:32)+'"'+(ph<grid.length?'':' fill="url(#'+uid+')"')+'/>'}
- var year='<svg class="aq-pq-calendar__year" viewBox="0 0 '+(NW*10-2)+' 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><defs><pattern id="'+uid+'" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="aq-pq-calendar__hatch" width="1.4" height="4"/></pattern></defs>'+bars+'</svg>';
+ function f(x){return (x*100).toFixed(2)+'%'}
+ /* the year as a tick scale: one tick per week */
+ var ticks='';for(var w=0;w<NW;w++){var day=w*7,ph=0;while(ph<ends.length&&day>=ends[ph])ph++;var on=ph<ends.length;
+  ticks+='<rect class="aq-pq-calendar__wk '+(on?'is-p'+(ph+1):'is-rest')+'" x="'+(w*10+3)+'" y="'+(on?0:14)+'" width="'+(on?4:1.5)+'" height="'+(on?32:18)+'"/>'}
+ var year='<svg class="aq-pq-calendar__year" viewBox="0 0 '+(NW*10)+' 32" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+ticks+'</svg>';
  var months='';for(var k=1;k<=NM;k++)months+='<span>'+k+'</span>';
- var zoom='<svg class="aq-pq-calendar__zoom" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+[58.3,100].map(function(x){var t=(wk/NW*100).toFixed(2),c=x<100?'':' is-wide';return '<path class="aq-pq-calendar__zw'+c+'" d="M0 0L0 10L'+x+' 10L'+t+' 0Z"/><path class="aq-pq-calendar__zl'+c+'" d="M'+t+' 0L'+x+' 10"/>'}).join('')+'</svg>';
  /* the sampling grid: one dot per sample */
  var dots='',R=5,S=16;for(var d=0;d<ND;d++){var ph=0;while(ph<ends.length-1&&d>=ends[ph])ph++;for(var p=0;p<NP;p++)dots+='<circle class="aq-pq-calendar__dot is-p'+(ph+1)+'" data-d="'+d+'" cx="'+(d*S+S/2)+'" cy="'+(p*S+S/2)+'" r="'+R+'"/>'}
- var holdAt=-1;grid.forEach(function(it,i){if(it.hold&&i>0)holdAt=ends[i-1]});
- var hl=holdAt>0?'<line class="aq-pq-calendar__hl" x1="'+(holdAt*S)+'" y1="-10" x2="'+(holdAt*S)+'" y2="'+(NP*S+10)+'"/>':'';
- var mat='<svg class="aq-pq-calendar__grid" viewBox="0 -10 '+(ND*S)+' '+(NP*S+20)+'" aria-hidden="true" focusable="false">'+dots+hl+'</svg>';
+ var holdAt=-1;I.forEach(function(it,i){if(it.hold&&spans[i]&&spans[i][0]>0)holdAt=spans[i][0]});
+ var hl=holdAt>0?'<line class="aq-pq-calendar__hl" x1="'+(holdAt*S)+'" y1="-8" x2="'+(holdAt*S)+'" y2="'+(NP*S+8)+'"/>':'';
+ var mat='<svg class="aq-pq-calendar__grid" viewBox="0 -8 '+(ND*S)+' '+(NP*S+16)+'" aria-hidden="true" focusable="false">'+dots+hl+'</svg>';
+ var reg='<span class="aq-pq-calendar__reg" aria-hidden="true"><i></i><i></i></span>';
  var total=NP*ND;
- var fig='<p class="aq-pq-calendar__total"><span class="aq-pq-calendar__num">'+total+'</span><span class="aq-pq-calendar__unit">'+tx(G.unit||'')+'</span>'
-  +'<span class="aq-pq-calendar__eq">'+NP+' '+tx(G.rows||'')+' &times; '+ND+' '+tx(G.cols||'')+'</span></p>';
- function phase(it,i,cls,span){return '<li class="aq-pq-calendar__ph '+cls+'"'+(span?' style="--span:'+span+'"':'')+'>'
-  +'<h3 class="aq-pq-calendar__t"><span class="aq-pq-calendar__key" aria-hidden="true"></span>'+tx(it.t)+'</h3>'
+ var phases=I.map(function(it,i){var sp=spans[i],g=sp?[sp[0]/ND,sp[1]/ND]:null,y=sp?[sp[0]/7/NW,sp[1]/7/NW]:[wk/NW,1];
+  return '<li class="aq-pq-calendar__ph '+(sp?'is-p'+(i+1):'is-rest')+'" tabindex="0" style="--g0:'+(g?f(g[0]):'0%')+';--g1:'+(g?f(g[1]-g[0]):'0%')+';--y0:'+f(y[0])+';--y1:'+f(y[1]-y[0])+'">'
+  +'<span class="aq-pq-calendar__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'<i>/</i></span>'
+  +'<div class="aq-pq-calendar__txt"><h3 class="aq-pq-calendar__t"><span class="aq-pq-calendar__key" aria-hidden="true"></span>'+tx(it.t)+'</h3>'
   +(it.d?'<p class="aq-pq-calendar__d">'+tx(it.d)+'</p>':'')
-  +(it.hold?'<p class="aq-pq-calendar__hold"><span>Hold point</span> Signed by '+who(it.hold)+'</p>':'')+'</li>'}
- var gp=grid.map(function(it,i){return phase(it,i,'is-p'+(i+1),+it.days)}).join(''),rp=rest.map(function(it,i){return phase(it,i,'is-rest')}).join('');
- return sec(H+'<div class="aq-pq-calendar" data-theme="light" style="--wk:'+wk+';--nw:'+NW+'">'
-  +'<div class="aq-pq-calendar__strip">'+year+'<div class="aq-pq-calendar__months" aria-hidden="true">'+months+'</div>'
+  +(it.hold?'<p class="aq-pq-calendar__hold"><span>Hold point</span> Signed by '+who(it.hold)+'</p>':'')+'</div></li>'}).join('');
+ return sec(H+'<div class="aq-pq-calendar" data-theme="light">'
+  +'<ol class="aq-pq-calendar__phases">'+phases+'</ol>'
+  +'<div class="aq-pq-calendar__panel">'
+  +'<p class="aq-pq-calendar__total"><span class="aq-pq-calendar__num">'+total+'</span><span class="aq-pq-calendar__unit">'+tx(G.unit||'')+'</span>'
+  +'<span class="aq-pq-calendar__eq">'+NP+' '+tx(G.rows||'')+' &times; '+ND+' '+tx(G.cols||'')+'</span></p>'
+  +'<div class="aq-pq-calendar__zoomed">'+mat+reg+'</div>'
+  +'<div class="aq-pq-calendar__strip"><div class="aq-pq-calendar__scale">'+year+reg+'</div><div class="aq-pq-calendar__months" aria-hidden="true">'+months+'</div>'
   +(Y.label?'<span class="aq-pq-calendar__ylab" aria-hidden="true">'+tx(Y.label)+'</span>':'')+'</div>'
-  +zoom
-  +'<div class="aq-pq-calendar__body"><div class="aq-pq-calendar__zoomed">'+mat+'<ol class="aq-pq-calendar__phases" style="--days:'+acc+'">'+gp+'</ol></div>'
-  +'<div class="aq-pq-calendar__aside">'+fig+(rp?'<ol class="aq-pq-calendar__phases aq-pq-calendar__phases--rest" start="'+(grid.length+1)+'">'+rp+'</ol>':'')+'</div></div></div>','aq-band--limestone aq-pq-calendar-sec')};
+  +'</div></div>','aq-band--limestone aq-pq-calendar-sec')};
+/* pointing at or focusing a phase moves the region markers to its days and weeks; arrows, Home, End step the phases */
+(function(){function pick(li,on){var w=li.closest('.aq-pq-calendar');if(!w)return;
+  if(on){['--g0','--g1','--y0','--y1'].forEach(function(k){w.style.setProperty(k,li.style.getPropertyValue(k))});w.setAttribute('data-on',li.classList.contains('is-rest')?'rest':'grid')}
+  else w.removeAttribute('data-on')}
+ ['pointerover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var l=ev.target.closest&&ev.target.closest('.aq-pq-calendar__ph');if(l&&!(t==='pointerover'&&ev.pointerType==='touch'))pick(l,true)})});
+ ['pointerout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var l=ev.target.closest&&ev.target.closest('.aq-pq-calendar__ph');if(l&&!(ev.relatedTarget&&ev.relatedTarget.closest&&ev.relatedTarget.closest('.aq-pq-calendar__ph')))pick(l,false)})});
+ document.addEventListener('keydown',function(ev){var l=ev.target.closest&&ev.target.closest('.aq-pq-calendar__ph');if(!l)return;
+  var o=[].slice.call(l.parentNode.children),i=o.indexOf(l),n=o.length,k=ev.key,j=k==='ArrowDown'||k==='ArrowRight'?Math.min(n-1,i+1):k==='ArrowUp'||k==='ArrowLeft'?Math.max(0,i-1):k==='Home'?0:k==='End'?n-1:-1;
+  if(j<0)return;ev.preventDefault();o[j].focus()})})();
 /* Look "project-run" -> ProjectRun (design-system/components/ProjectRun): ordered steps told as one run you scroll
    along. Desktop with motion: the steps scroll past on the left, large, while a sticky stage on the right holds the
    current step's drawing (the linked page's equipment illustration), its number set huge, and the run itself: a pipe
@@ -4556,14 +4546,17 @@ LOOKS['signal-dial']=function(b,H){
    the three. Blocks run in a two-column grid; the fold (fold, fold_noun) applies on phones only.
    Fields, as the roles table: cols [document, written, reviewed], rows [[document, written, reviewed]] (strings or
    {t, link}), fold, fold_noun, key (optional [Aquemi, your side, both] labels; default "Aquemi", "Your team", "Shared").
+   The reviewer's signature line carries a signature (aria-hidden): who signs it off.
    Party: a cell starting "Aquemi" is ours; "You"/"Your" is yours; "Both" or "You, or Aquemi" is shared. */
+var SB_SIG=['M2 14C8 4 12 4 11 11S16 18 21 9 28 3 31 11 36 16 42 8 48 6 54 12','M2 12C6 5 11 3 12 10S18 17 24 8 31 4 35 12 42 15 50 7','M2 13C9 3 14 6 13 12S20 16 26 9 30 5 36 11 44 14 52 9'];
 function sbParty(c){var t=String(c&&typeof c==='object'?c.t:c||'');return /^(both|you, or aquemi)/i.test(t)?'both':/^aquemi/i.test(t)?'us':/^you/i.test(t)?'you':'both'}
 LOOKS['signature-blocks']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.key||['Aquemi','Your team','Shared'];
- function field(lab,c){var p=sbParty(c);return '<div class="aq-signature-blocks__f is-'+p+'"><span class="aq-signature-blocks__lab">'+tx(lab||'')+'</span>'
-  +'<span class="aq-signature-blocks__v">'+tcell(c)+'</span><span class="aq-signature-blocks__line" aria-hidden="true"></span></div>'}
+ function field(lab,c,i){var p=sbParty(c),sg=i>=0?SB_SIG[i%SB_SIG.length]:'';return '<div class="aq-signature-blocks__f is-'+p+'"><span class="aq-signature-blocks__lab">'+tx(lab||'')+'</span>'
+  +'<span class="aq-signature-blocks__v">'+tcell(c)+'</span><span class="aq-signature-blocks__line" aria-hidden="true">'
+  +(sg?'<svg class="aq-signature-blocks__sig" viewBox="0 0 56 20" focusable="false"><path class="aq-signature-blocks__imp" d="'+sg+'"/><path class="aq-signature-blocks__ink" d="'+sg+'"/></svg>':'')+'</span></div>'}
  var blocks=R.map(function(r,i){return fli('<li class="aq-signature-blocks__b">'
   +'<div class="aq-signature-blocks__head"><span class="aq-signature-blocks__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-signature-blocks__t">'+tcell(r[0])+'</h3></div>'
-  +'<div class="aq-signature-blocks__fields">'+field(C[1],r[1])+field(C[2],r[2])+'</div></li>',b,i)}).join('');
+  +'<div class="aq-signature-blocks__fields">'+field(C[1],r[1],-1)+field(C[2],r[2],i)+'</div></li>',b,i)}).join('');
  var key='<p class="aq-signature-blocks__key"><span class="is-us">'+tx(K[0])+'</span><span class="is-you">'+tx(K[1])+'</span><span class="is-both">'+tx(K[2])+'</span></p>';
  return sec(H+'<div class="aq-signature-blocks">'+key+wFold(b,R.length,'<ol class="aq-signature-blocks__list">'+blocks+'</ol>',b.fold_noun||'documents')+'</div>','aq-signature-blocks-sec')
   .replace(/^<section class="([^"]*)"/,'<section class="$1" data-theme="dark"')};
@@ -4780,6 +4773,34 @@ LOOKS['stage-stacks']=function(b,H){var C=b.cols||[],R=b.rows||[];
    +'<span class="aq-stage-stacks__axis" aria-hidden="true"><span class="aq-stage-stacks__run"></span><span class="aq-stage-stacks__node"></span></span>'
    +'<div class="aq-stage-stacks__who">'+k(1,'is-ph')+'<p class="aq-stage-stacks__step">'+tcell(r[1])+'</p></div></li>'}).join('');
  return sec(H+'<div class="aq-stage-stacks" style="--n:'+R.length+'">'+wFold(b,R.length,'<ol class="aq-stage-stacks__list" role="list">'+list+'</ol>',b.fold_noun||'stages')+'</div>','aq-band--navy aq-stage-stacks-sec')};
+/* Look "stage-tiles" -> StageTiles (design-system/components/StageTiles): ordered stages as a Swiss row of tiles on
+   navy and limestone, each led by a huge light slash numeral ("01/"). The heading sits in a navy band over the first
+   tiles; with six stages the last two stack in a column at the right (05 beside the heading, 06 under it), so the
+   stages read left to right and then down. A stage with art "piping" carries a small blueprint of a pipe run (twin
+   walls, fusion joints at the bends, flow arrows) in place of its numeral: the stage that checks the drawing (IQ).
+   Fields (a steps block): h, intro, items [{t, d, link, label, art}]. label: a short line over the stage name (shown
+   only when the name does not already contain it); art: "piping" for the drawing tile.
+   Container under 1080 px: the heading over a three-column grid; phones: one column, numeral beside the words. */
+function stPiping(){var P='aq-stage-tiles'+'__',run='M-6 34H58Q72 34 72 48V98Q72 112 86 112H148Q162 112 162 98V48Q162 34 176 34H246',br='M118 112V166';
+ var g='';for(var x=20;x<240;x+=20)g+='M'+x+' 0V160';for(var y=20;y<160;y+=20)g+='M0 '+y+'H240';
+ function jt(x,y,v){return '<path class="'+P+'jt" d="'+(v?'M'+(x-6)+' '+y+'H'+(x+6):'M'+x+' '+(y-6)+'V'+(y+6))+'"/>'}
+ function ar(x,y,r){return '<path class="'+P+'ar" d="M-4 -4L2 0L-4 4" transform="translate('+x+' '+y+') rotate('+r+')"/>'}
+ return '<svg class="'+P+'svg" viewBox="0 0 240 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">'
+  +'<path class="'+P+'grid" d="'+g+'"/>'
+  +'<path class="'+P+'pw" d="'+run+'"/><path class="'+P+'pw" d="'+br+'"/><path class="'+P+'pi" d="'+run+'"/><path class="'+P+'pi" d="'+br+'"/>'
+  +'<path class="'+P+'water" d="'+run+'"/><path class="'+P+'water" d="'+br+'"/>'
+  +jt(58,34,0)+jt(72,48,1)+jt(72,98,1)+jt(86,112,0)+jt(148,112,0)+jt(162,98,1)+jt(162,48,1)+jt(176,34,0)+jt(118,124,1)
+  +ar(32,34,0)+ar(72,74,90)+ar(140,112,0)+ar(162,72,-90)+ar(208,34,0)+ar(118,146,90)
+  +'<path class="'+P+'tb" d="M168 128H236V156H168ZM168 140H236M200 140V156"/></svg>'}
+LOOKS['stage-tiles']=function(b,H){var I=b.items||[],n=I.length;
+ var tiles=I.map(function(it,i){var nm=it.link&&wp(it.link)?'<a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t),art=it.art==='piping';
+  var lab=it.label&&String(it.t).toLowerCase().indexOf(String(it.label).toLowerCase())<0?'<span class="aq-stage-tiles__lab">'+tx(it.label)+'</span>':'';
+  return '<li class="aq-stage-tiles__tile '+(i%3?'is-navy':'is-lime')+(art?' has-art':'')+'" style="--i:'+i+'">'
+   +(art?'<div class="aq-stage-tiles__art">'+stPiping()+'</div>':'')
+   +'<span class="aq-stage-tiles__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'<i>/</i></span>'
+   +'<div class="aq-stage-tiles__body">'+lab+'<h3 class="aq-stage-tiles__t">'+nm+'</h3>'+(it.d?'<p class="aq-stage-tiles__d">'+tx(it.d)+'</p>':'')+'</div></li>'}).join('');
+ return sec('<div class="aq-stage-tiles'+(n===6?' is-six':'')+'" style="--n:'+n+'"><div class="aq-stage-tiles__head">'+H+'</div>'
+  +'<ol class="aq-stage-tiles__list">'+tiles+'</ol></div>','aq-stage-tiles-sec')};
 /* Look "stair-router" -> StairRouter (pass 9): a router table (as: "router") drawn as a rising staircase of situation
    cards over huge cropped outline type. Every situation is a card on its own tread, the first lowest, the last highest;
    the stair line (treads and risers) joins them, a limestone wedge cuts the navy ground bottom right and the end word
@@ -5517,16 +5538,18 @@ LOOKS['visit-plan']=function(b,H){var I=b.items||[],K='aq-visit-plan',pl=vpPlant
  [].forEach.call(r.querySelectorAll('[data-stop="'+s.getAttribute('data-stop')+'"]'),function(el){el.classList.toggle('is-on',on)})}
  document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEventListener('mouseout',function(ev){hl(ev,false)});
  document.addEventListener('focusin',function(ev){hl(ev,true)});document.addEventListener('focusout',function(ev){hl(ev,false)})})();
-/* Look "walkdown-pins" -> WalkdownPins (design-system/components/WalkdownPins): IQ and OQ checks pinned to the installed
-   system, as a walkdown mark-up. A light drawing sheet (IsoKit) shows the package as it stands on site: the skid with
-   its RO rack in front of the clean-room wall, the storage tank and loop pump, the loop running out to two points of
-   use and back past the analyser, a gauge on the supply, the control panel. Each check is a numbered pin on the part
-   it verifies; the checks run down beside the sheet as a punch-list of pins, each with an IQ or OQ tag (the row's
-   "IQ · " prefix), what we verify and the basis or record in mono. Pointing at a check lights its part and pin.
-   Fields, as a spec block: h, cols, rows [{p, v, m, part}], fold, fold_noun (phones only). part: the drawing anchor,
-   one of "branch" (a point-of-use branch), "joint" (a loop joint), "analyzer", "coldest" (the far point of use),
-   "outlets" (both points of use), "panel", "skid", "gauge"; a row without one has a pin on the skid.
-   Phones: the sheet over the list, pins kept; the list folds. */
+/* Look "walkdown-pins" -> WalkdownPins (design-system/components/WalkdownPins): IQ and OQ checks read as a table
+   beside the installed system they inspect (pass 9b concept svc-cq.2: table left, isometric skid right, labelled at
+   the spots the checks look at). The checks run as a hairline table (number, check with its IQ or OQ tag, what we
+   verify, basis or record in mono); a light drawing sheet (IsoKit) shows the package as it stands on site: the skid
+   with its RO rack in front of the clean-room wall, the storage tank and loop pump, the loop out to two points of use
+   and back past the analyser, a gauge on the supply, the control panel. Each check's number marks its part; a few
+   parts carry a leader callout with their name. Pointing at or focusing a row lights its part, marker and callout.
+   Fields, as a spec block: h, cols, rows [{p, v, m, part}], labels {part: name} (the leader callouts, short drawing
+   names, aria-hidden), fold, fold_noun (phones only). part: the drawing anchor, one of "branch" (a point-of-use
+   branch), "joint" (a loop joint), "analyzer", "coldest" (the far point of use), "outlets" (both points of use),
+   "panel", "skid", "gauge"; a row without one marks the skid.
+   Phones: the sheet over the list; rows stack; the list folds. */
 var WDP_PART={branch:'pou-a',joint:'loop',analyzer:'an',coldest:'pou-b',outlets:'pou-a pou-b',panel:'pn',skid:'ro',gauge:'gauge'};
 function wdpScene(){
  var wl=isoPart('wall',-40,-46,0,1,{w:340,h:74}),pn=isoPart('panel',-30,34,0,1,{id:'pn'}),sk=isoPart('skid',0,0,0,1,{w:150,d:62,id:'ro'}),ro=isoPart('ro',8,8,9,1,{id:'ro'}),
@@ -5544,21 +5567,28 @@ function wdpScene(){
  var bx=isoBounds([[-40,-46,0],[300,-46,0],[-40,-46,80],[300,-46,80],[-50,60,0],[-50,60,60],[110,230,0],[220,230,0],[300,200,0],[300,60,90]],22);
  var A={branch:[oa.ports.in[0],Y,Z+3],joint:[pu.ports.out[0],150,Z+2],analyzer:an.ports.top,coldest:ob.ports.top,outlets:[148,Y,Z+3],panel:pn.ports.top,skid:ro.ports.top,gauge:[pu.ports.out[0],120,Z+12]};
  return {inner:inner,bx:bx,A:A}}
-LOOKS['walkdown-pins']=function(b,H){var R=b.rows||[],S=wdpScene(),W=Math.round(S.bx.w),Hh=Math.round(S.bx.h),org=[-S.bx.x,-S.bx.y],seen={};
- var svg=isoSvg(W,Hh,S.inner,'aq-walkdown-pins__svg',{origin:org,under:isoSheet(W,Hh,{grid:'iso',m:8,band:0,gridStep:22})});
+LOOKS['walkdown-pins']=function(b,H){var R=b.rows||[],C=b.cols||[],LB=b.labels||{},S=wdpScene(),bx={x:S.bx.x-60,y:S.bx.y-14,w:S.bx.w+120,h:S.bx.h+20},W=Math.round(bx.w),Hh=Math.round(bx.h),org=[-bx.x,-bx.y],seen={};
  function key(r){return WDP_PART[r.part]?r.part:'skid'}
+ /* leader callouts: one per labelled part, out to the nearer side of the sheet, the name over the shelf */
+ var cx=bx.x+bx.w/2,leads=[],labs=[],side={l:[],r:[]};Object.keys(LB).forEach(function(k){if(!S.A[k]||!LB[k])return;var s=isoP(S.A[k]);side[s[0]<cx?'l':'r'].push({k:k,s:s})});
+ ['l','r'].forEach(function(sd){var prev=-1e9;side[sd].sort(function(a,c){return a.s[1]-c.s[1]}).forEach(function(o){var left=sd==='l',x=left?bx.x+12:bx.x+bx.w-12,y=Math.max(o.s[1]-16,prev+30);prev=y;
+  var ld=isoLeader(S.A[o.k],[left?x+92:x-92,y],{shelf:92,cls:'aq-walkdown-pins__lead'});leads.push(String(ld));
+  var at=isoPct([x,y],W,Hh,org);labs.push('<span class="aq-walkdown-pins__lab aq-walkdown-pins__lab--'+sd+'" data-part="'+e(o.k)+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+tx(LB[o.k])+'</span>')})});
+ var svg=isoSvg(W,Hh,S.inner+leads.join(''),'aq-walkdown-pins__svg',{origin:org,under:isoSheet(W,Hh,{grid:'iso',m:8,band:0,gridStep:22})});
  var pins=R.map(function(r,i){var k=key(r),n=seen[k]=(seen[k]||0)+1,p=isoP(S.A[k]),at=isoPct(p,W,Hh,org);
   return '<span class="aq-walkdown-pins__pin" data-row="'+i+'" style="left:'+at.left+';top:'+at.top+';--k:'+(n-1)+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
+ var thead=C.length?'<div class="aq-walkdown-pins__cols" aria-hidden="true"><span></span>'+C.slice(0,3).map(function(c){return '<span>'+tx(c)+'</span>'}).join('')+'</div>':'';
  var rows=R.map(function(r,i){var m=String(r.p||'').match(/^(IQ|OQ|PQ)\s*·\s*(.*)$/),tag=m?m[1]:'',name=m?m[2]:r.p;
-  return fli('<li class="aq-walkdown-pins__row" data-row="'+i+'" data-lit="'+e(WDP_PART[key(r)])+'" tabindex="0">'
+  return fli('<li class="aq-walkdown-pins__row" data-row="'+i+'" data-lit="'+e(WDP_PART[key(r)])+'" data-part="'+e(key(r))+'" tabindex="0">'
    +'<span class="aq-walkdown-pins__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-   +'<h3 class="aq-walkdown-pins__t">'+(tag?'<span class="aq-walkdown-pins__tag aq-walkdown-pins__tag--'+tag.toLowerCase()+'">'+tag+'</span>':'')+tx(name)+'</h3>'
+   +'<h3 class="aq-walkdown-pins__t">'+(tag?'<span class="aq-walkdown-pins__tag aq-walkdown-pins__tag--'+tag.toLowerCase()+'">'+tag+'</span>':'')+'<span>'+tx(name)+'</span></h3>'
    +(r.v?'<p class="aq-walkdown-pins__v">'+tx(r.v)+'</p>':'')+(r.m?'<p class="aq-walkdown-pins__m">'+tx(r.m)+'</p>':'')+'</li>',b,i)}).join('');
- return sec(H+'<div class="aq-walkdown-pins"><div class="aq-walkdown-pins__fig"><div class="aq-walkdown-pins__sheet">'+svg+pins+'</div></div>'
-  +wFold(b,R.length,'<ol class="aq-walkdown-pins__list">'+rows+'</ol>',b.fold_noun||'checks')+'</div>','aq-walkdown-pins-sec')};
+ return sec(H+'<div class="aq-walkdown-pins"><div class="aq-walkdown-pins__tab">'+thead+wFold(b,R.length,'<ol class="aq-walkdown-pins__list">'+rows+'</ol>',b.fold_noun||'checks')+'</div>'
+  +'<div class="aq-walkdown-pins__fig"><div class="aq-walkdown-pins__sheet">'+svg+labs.join('')+pins+'</div></div></div>','aq-walkdown-pins-sec')};
 /* pointing at a check lights its part on the sheet and its pin */
 (function(){function lit(row,on){var w=row.closest('.aq-walkdown-pins');if(!w)return;var ids=(row.getAttribute('data-lit')||'').split(' ');
   ids.forEach(function(id){if(id)[].forEach.call(w.querySelectorAll('[data-iso-id="'+id+'"]'),function(el){el.classList.toggle('is-lit',on)})});
+  [].forEach.call(w.querySelectorAll('.aq-walkdown-pins__lab[data-part="'+row.getAttribute('data-part')+'"]'),function(l){l.classList.toggle('is-on',on)});
   var p=w.querySelector('.aq-walkdown-pins__pin[data-row="'+row.getAttribute('data-row')+'"]');if(p)p.classList.toggle('is-on',on)}
  ['pointerover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-walkdown-pins__row');if(r)lit(r,true)})});
  ['pointerout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-walkdown-pins__row');if(r&&!(ev.relatedTarget&&r.contains(ev.relatedTarget)))lit(r,false)})})})();
@@ -5674,60 +5704,73 @@ LOOKS['winding-route']=function(b,H){
    +'<div class="aq-winding-route__text"><p class="aq-winding-route__code"><span>'+(i<9?'0':'')+(i+1)+'</span> / '+tx(lab)+'</p>'
    +'<h3 class="aq-winding-route__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-winding-route__d">'+tx(it.d)+'</p>':'')+'</div></li>'}).join('');
  return sec(H+'<div class="aq-winding-route" style="--n:'+n+'">'+line+'<span class="aq-winding-route__drop" aria-hidden="true"></span><ol class="aq-winding-route__stops">'+stops+'</ol></div>','aq-band--navy aq-winding-route-sec')};
-/* Look "witness-plan" -> WitnessPlan (design-system/components/WitnessPlan): the ways to witness a FAT read off one
-   plan of the test bay. A navy board shows the bay from above (walls, door, the skid with its membrane housings, the
-   control panel with its door open) and a remote strip outside the wall. Each way of witnessing is a card in the list
-   beside it; choosing one (press, or point at it) puts its people and equipment on the plan: you at the panel, your
-   delegate at the skid, cameras with their fields of view, the remote screen, the package of raw data and video
-   leaving by the door. One way is shown at a time, the first by default (complete without script).
-   Fields (an options block): h, intro, items [{t, d, scene}], zones [bay label, remote label] (short drawing labels,
-   aria-hidden). scene: the actors the way puts on the plan, any of "you", "delegate", "camera", "screen", "record"
-   (space-separated or a list); an item without one shows the bay alone.
-   Arrow keys, Home and End move between the cards and choose. The list's first item is the sliding indicator (an empty,
-   aria-hidden li that motion.js springs to the chosen card).
-   Phones: the plan on top, the cards under it as a list of full-width buttons. */
-function wpScene(s){return (Array.isArray(s)?s:String(s||'').split(/[\s,]+/)).filter(function(a){return /^(you|delegate|camera|screen|record)$/.test(a)})}
-function wpPlan(z,on){var P='aq-witness-plan'+'__';
- function A(k,inner){return '<g class="'+P+'actor'+(on.indexOf(k)>-1?' is-on':'')+'" data-actor="'+k+'">'+inner+'</g>'}
- function T(x,y,s,a){return s?'<text class="'+P+'zone" x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+e(s)+'</text>':''}
- var s='';
- /* floor grid */
- var g='';for(var x=60;x<440;x+=30)g+='M'+x+' 30V410';for(var y=60;y<410;y+=30)g+='M30 '+y+'H440';s+='<path class="'+P+'grid" d="'+g+'"/>';
- /* walls with the door gap, the remote strip */
- s+='<path class="'+P+'wall" d="M300 410H30V30H440V410H360"/>'+'<path class="'+P+'door" d="M360 410A60 60 0 0 0 300 350"/>';
- s+='<path class="'+P+'edge" d="M480 20V420"/>'+T(44,22,z[0])+T(590,22,z[1],'end');
- /* the skid: frame, four membrane housings, pump */
- s+='<rect class="'+P+'eq" x="110" y="160" width="210" height="110"/><rect class="'+P+'thin" x="118" y="168" width="194" height="94"/>';
- [180,198,216,234].forEach(function(y){s+='<rect class="'+P+'thin" x="132" y="'+y+'" width="140" height="12" rx="6"/>'});
- s+='<circle class="'+P+'thin" cx="294" cy="246" r="12"/>';
- /* the control panel, its door open */
- s+='<rect class="'+P+'eq" x="350" y="170" width="34" height="90"/><path class="'+P+'thin" d="M384 170L410 186"/><path class="'+P+'hid" d="M384 170A30 30 0 0 1 410 186"/>';
- /* actors */
- s+=A('you','<circle class="'+P+'cone" cx="420" cy="230" r="34"/><ellipse class="'+P+'man" cx="420" cy="230" rx="8" ry="15"/><circle class="'+P+'head" cx="420" cy="230" r="6.5"/>');
- s+=A('delegate','<circle class="'+P+'cone" cx="215" cy="318" r="34"/><ellipse class="'+P+'man" cx="215" cy="318" rx="15" ry="8"/><circle class="'+P+'head" cx="215" cy="318" r="6.5"/><rect class="'+P+'badge" x="208" y="330" width="14" height="9"/>');
- s+=A('camera','<path class="'+P+'fov" d="M52 52L200 150L150 200Z"/><path class="'+P+'fov" d="M418 392L330 270L270 330Z"/>'
-  +'<rect class="'+P+'cam" x="40" y="40" width="20" height="14" transform="rotate(45 50 47)"/><rect class="'+P+'cam" x="410" y="386" width="20" height="14" transform="rotate(45 420 393)"/>');
- s+=A('screen','<path class="'+P+'sig" d="M60 40C200 -10 470 40 520 120"/><rect class="'+P+'cam" x="506" y="120" width="68" height="44"/><path class="'+P+'thin" d="M540 164V176M524 178H556"/><path class="'+P+'trace" d="M514 150L528 138L540 146L552 132L566 140"/>');
- s+=A('record','<path class="'+P+'sig" d="M330 400C330 440 450 430 506 330"/><path class="'+P+'cam" d="M506 300H548L556 308H574V352H506Z"/><path class="'+P+'thin" d="M516 318H562M516 328H556M516 338H560"/>');
- return '<svg class="'+P+'svg" viewBox="0 0 600 440" aria-hidden="true" focusable="false">'+s+'</svg>'}
-LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],sc=I.map(function(it){return wpScene(it.scene)});
- var list=I.map(function(it,i){return '<li><button type="button" class="aq-witness-plan__opt" data-scene="'+e(sc[i].join(' '))+'" aria-pressed="'+(i?'false':'true')+'">'
-  +'<span class="aq-witness-plan__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+/* Look "witness-plan" -> WitnessPlan (design-system/components/WitnessPlan): the ways to witness a FAT read as ruled
+   rows whose leader lines run into the package standing in our test bay (pass 9b concept svc-fat-sat.3). Left, the
+   heading and one row per way (mono number, the way, a dash, what it means). Right, an IsoKit light drawing of the
+   white PP package inside the test bay's open frame: the skid with its RO rack, the storage tank, the control panel,
+   the outlet analyser, a gauge on the feed, the protocol binders on the bench and a camera on the frame. Each way's
+   leader runs from its row to the part that way looks at (its "part"), ending at a numbered marker; choosing a way
+   (press, or point at it) lights its leader, marker and part. One way is chosen at a time, the first by default.
+   Fields (an options block): h, intro, items [{t, d, part}], zones [bay label, remote label] (short drawing labels,
+   aria-hidden: the frame and the camera). part: "panel", "camera", "gauge", "documents", "analyzer", "ro" or "tank".
+   Leaders are laid out from the rendered rows (ResizeObserver), so they follow wrapping; without them the numbers
+   still pair rows and parts. Arrow keys, Home and End move between the ways and choose. The list's first item is the
+   sliding indicator (an empty, aria-hidden li that motion.js springs to the chosen row).
+   Container under 1080 px: the drawing above the rows, no leaders (the numbered markers pair them). */
+var WP_PARTS=['panel','camera','gauge','documents','analyzer','ro','tank'];
+function wpScene(){var P='aq-witness-plan'+'__',B=[-62,-26,0],X=300,Yd=172,Z=104,F=function(a,b){return 'M'+isoT(isoP(a))+'L'+isoT(isoP(b))};
+ var x0=B[0],y0=B[1],x1=x0+X,y1=y0+Yd;
+ /* the test bay frame: back posts and back top edges first, so equipment paints over them */
+ var back=F([x0,y0,0],[x0,y0,Z])+F([x1,y0,0],[x1,y0,Z])+F([x0,y1,0],[x0,y1,Z])+F([x0,y0,Z],[x1,y0,Z])+F([x0,y0,Z],[x0,y1,Z])+F([x0,y0,0],[x1,y0,0])+F([x0,y0,0],[x0,y1,0]);
+ var front=F([x1,y1,0],[x1,y1,Z])+F([x1,y0,Z],[x1,y1,Z])+F([x0,y1,Z],[x1,y1,Z]);
+ var pn=isoPart('panel',-36,40,0,1,{id:'panel'}),sk=isoPart('skid',0,0,0,1,{w:150,d:62,id:'ro'}),ro=isoPart('ro',8,8,9,1,{id:'ro'}),
+  tk=isoPart('tank',196,6,0,1,{id:'tank'}),an=isoPart('analyzer',150,104,0,0.9,{id:'analyzer'}),dc=isoPart('binder',40,118,0,0.8,{id:'documents'});
+ var feed=isoPipe(isoRoute(ro.ports.out,tk.ports.in,'xzy'),{r:1.8,to:'tank',caps:false});
+ var ga=isoPart('gauge',(ro.ports.out[0]+tk.ports.in[0])/2+6,ro.ports.out[1],tk.ports.in[2]+4,1.1,{id:'gauge',value:0.55,face:'y'});
+ var smp=isoPipe(isoRoute(tk.ports.out,[an.ports.sample[0],tk.ports.out[1],tk.ports.out[2]],'x').concat([[an.ports.sample[0],an.ports.sample[1],tk.ports.out[2]],an.ports.sample]),{r:1.2,to:'analyzer',caps:false});
+ /* the camera on the frame's back-left top corner, looking in (drawn here: IsoKit has no camera) */
+ var cb=[x0+6,y0+6,Z-14],cam='<g class="aq-iso__part" data-iso="camera" data-iso-id="camera"><path class="aq-iso__ln" d="'+F([x0,y0,Z-2],[cb[0],cb[1],cb[2]+8])+'"/>'
+  +'<path class="aq-iso__eq" d="'+isoBoxD(cb,16,9,8)+'"/><path class="aq-iso__eq" d="'+isoBoxD([cb[0]+16,cb[1]+2,cb[2]+2],4,5,4)+'"/></g>';
+ var inner='<path class="aq-iso__ln '+P+'bay" d="'+back+'"/>'+cam+[pn,sk,ro,feed,tk,ga,smp,an,dc].join('')+'<path class="aq-iso__ln '+P+'bay" d="'+front+'"/>';
+ var A={panel:pn.ports.top,camera:[cb[0]+8,cb[1]+4,cb[2]+8],gauge:[ga.ports.top[0],ga.ports.top[1],ga.ports.top[2]+2],documents:dc.ports.top,analyzer:an.ports.top,ro:ro.ports.top,tank:tk.ports.top};
+ var bx=isoBounds([[x0,y0,0],[x1,y0,0],[x0,y1,0],[x1,y1,0],[x0,y0,Z],[x1,y0,Z],[x0,y1,Z],[x1,y1,Z]],16);
+ return {inner:inner,bx:bx,A:A,zone:[x0,y1,Z],camAt:[x0,y0,Z]}}
+LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],S=wpScene(),W=Math.round(S.bx.w),Hh=Math.round(S.bx.h),org=[-S.bx.x,-S.bx.y],seen={};
+ function part(it){return WP_PARTS.indexOf(it.part)>-1?it.part:'ro'}
+ var svg=isoSvg(W,Hh,S.inner,'aq-witness-plan__svg',{origin:org});
+ var mk=I.map(function(it,i){var k=part(it),n=seen[k]=(seen[k]||0)+1,at=isoPct(isoP(S.A[k]),W,Hh,org);
+  return '<span class="aq-witness-plan__mk'+(i?'':' is-on')+'" data-i="'+i+'" style="left:'+at.left+';top:'+at.top+';--k:'+(n-1)+'" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
+ var zl=function(s,p,c){var at=isoPct(isoP(p),W,Hh,org);return s?'<span class="aq-witness-plan__zone '+c+'" style="left:'+at.left+';top:'+at.top+'" aria-hidden="true">'+tx(s)+'</span>':''};
+ var list=I.map(function(it,i){return '<li><button type="button" class="aq-witness-plan__opt" data-i="'+i+'" data-part="'+e(part(it))+'" aria-pressed="'+(i?'false':'true')+'">'
+  +'<span class="aq-witness-plan__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'.</span>'
   +'<span class="aq-witness-plan__t">'+tx(it.t)+'</span>'+(it.d?'<span class="aq-witness-plan__d">'+tx(it.d)+'</span>':'')+'</button></li>'}).join('');
  return sec('<div class="aq-witness-plan">'+'<div class="aq-witness-plan__side">'+H+'<ol class="aq-witness-plan__list"><li class="aq-witness-plan__ind" aria-hidden="true"></li>'+list+'</ol></div>'
-  +'<div class="aq-witness-plan__board">'+wpPlan(Z,sc[0]||[])
-  +(I[0]?'<p class="aq-witness-plan__now" aria-hidden="true"><span class="aq-witness-plan__now-n">01</span><span class="aq-witness-plan__now-t">'+tx(I[0].t)+'</span></p>':'')+'</div></div>','aq-witness-plan-sec')};
-/* choose a way: put its actors on the plan (press pins it; pointing previews it, leaving restores the pinned one) */
-(function(){function show(w,sc,o){[].forEach.call(w.querySelectorAll('[data-actor]'),function(a){a.classList.toggle('is-on',(' '+sc+' ').indexOf(' '+a.getAttribute('data-actor')+' ')>-1)});
-  /* the board's caption names the way on show */
-  var c=w.querySelector('.aq-witness-plan__now'),n=o&&o.querySelector('.aq-witness-plan__n'),t=o&&o.querySelector('.aq-witness-plan__t');
-  if(c&&n&&t){c.querySelector('.aq-witness-plan__now-n').textContent=n.textContent;c.querySelector('.aq-witness-plan__now-t').innerHTML=t.innerHTML}}
+  +'<div class="aq-witness-plan__fig"><div class="aq-witness-plan__sheet">'+svg+zl(Z[0],S.zone,'is-bay')+zl(Z[1],S.camAt,'is-cam')+mk+'</div></div>'
+  +'<svg class="aq-witness-plan__leads" aria-hidden="true" focusable="false"></svg></div>','aq-witness-plan-sec')};
+(function(){var NS='http://www.w3.org/2000/svg';
+ /* lay the leaders out from the rendered rows: row end, along the row, then into the part's marker */
+ function lay(w){var svg=w.querySelector('.aq-witness-plan__leads');if(!svg)return;
+  var wr=w.getBoundingClientRect();svg.setAttribute('viewBox','0 0 '+Math.round(wr.width)+' '+Math.round(wr.height));
+  while(svg.firstChild)svg.removeChild(svg.firstChild);if(getComputedStyle(svg).display==='none')return;
+  [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){var i=o.getAttribute('data-i'),k=w.querySelector('.aq-witness-plan__mk[data-i="'+i+'"]');if(!k)return;
+   var r=o.getBoundingClientRect(),m=k.getBoundingClientRect(),y=r.bottom-wr.top,x0=r.left-wr.left,x1=r.right-wr.left,tx=m.left-wr.left,ty=m.top+m.height/2-wr.top,kx=Math.max(x1+12,tx-Math.abs(ty-y)*0.6);
+   var d='M'+x0.toFixed(1)+' '+y.toFixed(1)+'H'+kx.toFixed(1)+'L'+tx.toFixed(1)+' '+ty.toFixed(1),p=document.createElementNS(NS,'path');
+   p.setAttribute('d',d);p.setAttribute('class','aq-witness-plan__lead'+(o.getAttribute('aria-pressed')==='true'?' is-on':''));p.setAttribute('data-i',i);svg.appendChild(p)})}
+ function show(w,o){var i=o?o.getAttribute('data-i'):'-1',pt=o?o.getAttribute('data-part'):'';
+  [].forEach.call(w.querySelectorAll('.aq-witness-plan__mk, .aq-witness-plan__lead'),function(x){x.classList.toggle('is-on',x.getAttribute('data-i')===i)});
+  [].forEach.call(w.querySelectorAll('.aq-witness-plan__svg [data-iso-id]'),function(x){x.classList.toggle('is-lit',x.getAttribute('data-iso-id')===pt)})}
+ window.AQwitness={lay:lay,show:show};
+ if(window.ResizeObserver&&window.MutationObserver){var ro=new ResizeObserver(function(es){es.forEach(function(en){lay(en.target)})});
+  var scan=function(n){if(n.nodeType!==1)return;var L=n.matches('.aq-witness-plan')?[n]:[].slice.call(n.querySelectorAll('.aq-witness-plan'));
+   L.forEach(function(w){if(w.__wpl)return;w.__wpl=1;ro.observe(w);show(w,w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]'))})};
+  new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,scan)})}).observe(document.documentElement,{childList:true,subtree:true});
+  if(document.body)scan(document.body)}
  document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t)return;var w=t.closest('.aq-witness-plan');
-  [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t.getAttribute('data-scene'),t)});
- document.addEventListener('pointerover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t||ev.pointerType==='touch')return;show(t.closest('.aq-witness-plan'),t.getAttribute('data-scene'),t)});
+  [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t)});
+ document.addEventListener('pointerover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t||ev.pointerType==='touch')return;show(t.closest('.aq-witness-plan'),t)});
  document.addEventListener('pointerout',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__list');if(!t||(ev.relatedTarget&&t.contains(ev.relatedTarget)))return;
-  var w=t.closest('.aq-witness-plan'),p=w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]');show(w,p?p.getAttribute('data-scene'):'',p)});
- /* arrow keys, Home and End move between the ways and choose (the cards act as one control) */
+  var w=t.closest('.aq-witness-plan');show(w,w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]'))});
+ /* arrow keys, Home and End move between the ways and choose (the rows act as one control) */
  document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t)return;
   var o=[].slice.call(t.closest('.aq-witness-plan__list').querySelectorAll('.aq-witness-plan__opt')),i=o.indexOf(t),n=o.length,k=ev.key,j=-1;
   if(k==='ArrowDown'||k==='ArrowRight')j=(i+1)%n;else if(k==='ArrowUp'||k==='ArrowLeft')j=(i+n-1)%n;else if(k==='Home')j=0;else if(k==='End')j=n-1;

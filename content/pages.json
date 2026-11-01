@@ -3099,27 +3099,27 @@
       {
        "t": "In person",
        "d": "In our test bay, inside the panels.",
-       "scene": "you"
+       "part": "panel"
       },
       {
        "t": "Remote",
        "d": "Cameras and live protocol.",
-       "scene": "camera screen"
+       "part": "camera"
       },
       {
        "t": "Hybrid",
        "d": "One person attends for physical checks, the rest remote.",
-       "scene": "you camera screen"
+       "part": "gauge"
       },
       {
        "t": "Your delegate",
        "d": "A consultant you name witnesses and signs.",
-       "scene": "delegate"
+       "part": "documents"
       },
       {
        "t": "Review only",
        "d": "Unwitnessed; we send raw data and video.",
-       "scene": "record"
+       "part": "analyzer"
       }
      ],
      "look": "witness-plan",
@@ -3255,7 +3255,8 @@
       {
        "t": "Installation qualification (IQ)",
        "d": "Installed as designed: drawings, materials, joints, slopes, instruments.",
-       "label": "IQ"
+       "label": "IQ",
+       "art": "piping"
       },
       {
        "t": "Operational qualification (OQ)",
@@ -3273,7 +3274,7 @@
        "label": "Review"
       }
      ],
-     "look": "binder-tabs"
+     "look": "stage-tiles"
     },
     {
      "type": "table",
@@ -3395,7 +3396,13 @@
      ],
      "fold": 5,
      "fold_noun": "checks",
-     "look": "walkdown-pins"
+     "look": "walkdown-pins",
+     "labels": {
+      "joint": "Loop joint",
+      "analyzer": "Conductivity",
+      "coldest": "Coldest point",
+      "skid": "PP modules"
+     }
     },
     {
      "type": "steps",
@@ -3459,7 +3466,7 @@
       }
      ],
      "note": "CFU: colony-forming units.",
-     "look": "instrument-limits"
+     "look": "cut-band"
     },
     {
      "type": "faq",

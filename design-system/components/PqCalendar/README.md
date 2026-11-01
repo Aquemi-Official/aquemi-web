@@ -1,17 +1,16 @@
-PqCalendar reads PQ phases as a year's sampling calendar: the year in week bars, a zoom from the first weeks to the sample grid (a dot per sample), the total set large (look `pq-calendar`, steps block).
+PqCalendar sets PQ phases as a short numbered stack beside one instrument readout: the sample count as a giant light numeral, the sampling grid that makes it and a tick scale of the year (look `pq-calendar`, steps block).
 
-Concept: Swiss data-graphics direction; the boxed hero figure from services.1 (PQ's 12 months as the hero), built here as a calendar with a zoom instead of a timeline.
+Concept: pass 9b svc-cq.3 (three slash-numbered phase rows beside a readout panel with a giant light sample count and a tick scale), keeping pass 9's sampling grid and year.
 
 ## Markup
-`<section class="aq-section aq-band--limestone aq-pq-calendar-sec">` > section head, `.aq-pq-calendar[data-theme=light]` > `__strip` (`svg.__year` week bars, `__months`, `__ylab`), `svg.__zoom`, `__body` > `__zoomed` (`svg.__grid` dots and hold line, `ol.__phases` with `li.__ph.is-p1|is-p2`) and `__aside` (`p.__total` with `__num`, `__unit`, `__eq`; `ol.__phases--rest`).
+`<section class="aq-section aq-band--limestone aq-pq-calendar-sec">` > section head, `.aq-pq-calendar[data-theme=light][data-on]` > `ol.__phases` > `li.__ph.is-p1|is-p2|is-rest[tabindex=0]` (`--g0/--g1/--y0/--y1` spans; `__n`, `__txt` > `h3.__t` with `__key`, `p.__d`, `p.__hold`) and `__panel` (`p.__total` > `__num`, `__unit`, `__eq`; `__zoomed` > `svg.__grid` + `__reg`; `__strip` > `__scale` > `svg.__year` + `__reg`, `__months`, `__ylab`).
 
 ## Fields
-`h`, `intro`, `items` [{`t`, `d`, `hold`, `days`}] (a phase with `days` is drawn on the grid; one without is the routine plan to the end of the year), `grid` {`points`, `days`, `rows`, `cols`, `unit`} (the total is points x days and must match the intro), `year` {`weeks`, `months`, `label`}.
+`items` [{`t`, `d`, `hold`, `days`}] (a phase without `days` is the routine plan to the year's end), `grid` {`points`, `days`, `rows`, `cols`, `unit`}, `year` {`weeks`, `months`, `label`}. The total shown is points x days.
 
 ## Rules
-- Phase 1 `navy`, phase 2 `flow`, the routine plan a `navy` hatch (svg pattern, not a gradient). Keys under each phase repeat the fills. The figure carries `data-theme="light"` so the fills stay legible on limestone in both themes.
-- The hold point is a dashed line through the grid where the phase with `hold` starts, with "Hold point · Signed by …" under that phase.
-- Phone: strip, zoom and grid at full width, every other month number shown, phases stacked.
+- Limestone band, figure forced light; phase 1 `navy`, phase 2 `flow`, routine ticks `on-limestone-muted`; count Geist light 168 px (phones 104 px).
+- Pointing at or focusing a phase shows the region marker (flow tint, flow edges, handles) over its days and weeks; arrows, Home, End step the phases.
 
 ## Motion
-The week bars rise left to right, the zoom wedge opens, the grid fills a day at a time while the total counts up with it, the hold line drops through at its day, then the phases' words rise. Once, under 5 s.
+The count rolls on its odometer while the grid fills day by day, the hold line drops, then the year's ticks rise and the tag lands; phases rise beside it. Once, under 4 s. The region marker glides 240 ms between phases (region-splice port), instant under reduced motion.

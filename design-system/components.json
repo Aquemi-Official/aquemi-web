@@ -259,16 +259,6 @@
    "summary": "BinderSpines sets an evidence table (who inspects, what they read, where we answer it) as ring binders standing on a QA shelf, one binder per inspector, the clause each one cites set large on its spine."
   },
   {
-   "name": "BinderTabs",
-   "readme": "design-system/components/BinderTabs/README.md",
-   "preview": "design-system/components/BinderTabs/preview.html",
-   "group": "Page sections",
-   "height": "760",
-   "width": "1280",
-   "subtitle": "C&Q: stages filed as signed tab dividers in the open qualification binder",
-   "summary": "BinderTabs files ordered stages as tab dividers in the open qualification binder, each signed off before the next (look `binder-tabs`, steps block)."
-  },
-  {
    "name": "BudgetBento",
    "readme": "design-system/components/BudgetBento/README.md",
    "preview": "design-system/components/BudgetBento/preview.html",
@@ -377,6 +367,16 @@
    "width": "1100",
    "subtitle": "Can you support my site: a tile map of the provinces and territories held beside the region rows; a row lights its tiles",
    "summary": "CoverageMap reads a coverage table by region off a tile map: the provinces and territories as squares on a limestone sheet held in view, the regions as rows beside it, and the row you point at, focus or read lighting its tiles."
+  },
+  {
+   "name": "CutBand",
+   "readme": "design-system/components/CutBand/README.md",
+   "preview": "design-system/components/CutBand/preview.html",
+   "group": "Page sections",
+   "height": "900",
+   "width": "1100",
+   "subtitle": "C&Q: alert and action levels on a navy band cutting across the plant",
+   "summary": "CutBand lays a short table of levels across a hairline drawing of the plant as a full-width navy band, like a cutting plane (look `cut-band`, spec block)."
   },
   {
    "name": "CutawayRail",
@@ -597,16 +597,6 @@
    "width": "1280",
    "subtitle": "Home: one water line teeing into three industries, each standard set large as the evidence",
    "summary": "IndustryFeed sets a few destinations of the same water as editorial type: one twin-wall pipe enters from the page edge and tees down into each column, where the destination's evidence (its standard) is the hero type."
-  },
-  {
-   "name": "InstrumentLimits",
-   "readme": "design-system/components/InstrumentLimits/README.md",
-   "preview": "design-system/components/InstrumentLimits/preview.html",
-   "group": "Page sections",
-   "height": "760",
-   "width": "1280",
-   "subtitle": "C&Q: the action level on a dial, the alert level on a chart recorder",
-   "summary": "InstrumentLimits reads a spec block's levels off two instruments: the action level as an analog dial with its red-line, the alert level as a chart recorder whose alert line is drawn from the data (look `instrument-limits`, spec block `as: \"gauges\"`)."
   },
   {
    "name": "IssuedSet",
@@ -933,10 +923,10 @@
    "readme": "design-system/components/PqCalendar/README.md",
    "preview": "design-system/components/PqCalendar/preview.html",
    "group": "Page sections",
-   "height": "950",
-   "width": "1280",
-   "subtitle": "C&Q: PQ as a year of sampling, the first 28 days zoomed to the sample grid",
-   "summary": "PqCalendar reads PQ phases as a year's sampling calendar: the year in week bars, a zoom from the first weeks to the sample grid (a dot per sample), the total set large (look `pq-calendar`, steps block)."
+   "height": "960",
+   "width": "1100",
+   "subtitle": "C&Q: PQ phases beside the 336-sample readout, grid and year scale",
+   "summary": "PqCalendar sets PQ phases as a short numbered stack beside one instrument readout: the sample count as a giant light numeral, the sampling grid that makes it and a tick scale of the year (look `pq-calendar`, steps block)."
   },
   {
    "name": "ProcessDiagram",
@@ -1203,9 +1193,9 @@
    "readme": "design-system/components/SignatureBlocks/README.md",
    "preview": "design-system/components/SignatureBlocks/preview.html",
    "group": "Page sections",
-   "height": "1300",
-   "width": "1280",
-   "subtitle": "C&Q: who writes and who reviews, as each document's signature block",
+   "height": "1400",
+   "width": "1100",
+   "subtitle": "C&Q: who writes and who reviews as signature blocks; the reviewer signs",
    "summary": "SignatureBlocks sets a roles table (who writes, who reviews) as the signature block at the foot of each document, the party in each field shown by its box (look `signature-blocks`, table block `as: \"roles\"`)."
   },
   {
@@ -1267,6 +1257,16 @@
    "width": "1100",
    "subtitle": "What each stage issues: sheets stacked on the project axis, navy ground",
    "summary": "StageStacks draws what each project stage issues as the document file building up: the stages stand on one project axis, each stage's documents stacked above it as sheets of paper, its name, clause and who approves under the axis."
+  },
+  {
+   "name": "StageTiles",
+   "readme": "design-system/components/StageTiles/README.md",
+   "preview": "design-system/components/StageTiles/preview.html",
+   "group": "Page sections",
+   "height": "900",
+   "width": "1100",
+   "subtitle": "C&Q: stages as navy and limestone tiles with slash numerals; the IQ tile carries the pipe drawing",
+   "summary": "StageTiles sets ordered stages as a Swiss row of navy and limestone tiles, each led by a huge light slash numeral, with the heading in a navy band over them (look `stage-tiles`, steps block)."
   },
   {
    "name": "StairRouter",
@@ -1483,10 +1483,10 @@
    "readme": "design-system/components/WalkdownPins/README.md",
    "preview": "design-system/components/WalkdownPins/preview.html",
    "group": "Page sections",
-   "height": "1250",
-   "width": "1280",
-   "subtitle": "C&Q: IQ and OQ checks pinned to the installed system",
-   "summary": "WalkdownPins pins IQ and OQ checks to the installed system on a drawing sheet, as a walkdown mark-up (look `walkdown-pins`, spec block)."
+   "height": "1200",
+   "width": "1100",
+   "subtitle": "C&Q: IQ and OQ checks as a table beside the installed system, numbers and callouts on the parts",
+   "summary": "WalkdownPins sets IQ and OQ checks as a table beside the installed system they inspect, each check's number on its part and a few parts called out by name (look `walkdown-pins`, spec block)."
   },
   {
    "name": "WasherTrace",
@@ -1534,9 +1534,9 @@
    "preview": "design-system/components/WitnessPlan/preview.html",
    "group": "Page sections",
    "height": "760",
-   "width": "1280",
-   "subtitle": "FAT and SAT: five ways to witness, read off a plan of the test bay",
-   "summary": "WitnessPlan reads the ways to witness a FAT off one plan of the test bay: choosing a way puts its people, cameras, screen or data package on the plan (look `witness-plan`, options block)."
+   "width": "1100",
+   "subtitle": "FAT and SAT: ways to witness as rows whose leaders run into the package in the test bay",
+   "summary": "WitnessPlan sets the ways to witness a FAT as ruled rows whose leader lines run into the package standing in the test bay; choosing a way lights its leader, marker and part (look `witness-plan`, options block)."
   },
   {
    "name": "CompareTable",

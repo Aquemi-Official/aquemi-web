@@ -36,7 +36,8 @@
     {
      "t": "Installation qualification (IQ)",
      "d": "Installed as designed: drawings, materials, joints, slopes, instruments.",
-     "label": "IQ"
+     "label": "IQ",
+     "art": "piping"
     },
     {
      "t": "Operational qualification (OQ)",
@@ -54,7 +55,7 @@
      "label": "Review"
     }
    ],
-   "look": "binder-tabs"
+   "look": "stage-tiles"
   },
   {
    "type": "table",
@@ -176,7 +177,13 @@
    ],
    "fold": 5,
    "fold_noun": "checks",
-   "look": "walkdown-pins"
+   "look": "walkdown-pins",
+   "labels": {
+    "joint": "Loop joint",
+    "analyzer": "Conductivity",
+    "coldest": "Coldest point",
+    "skid": "PP modules"
+   }
   },
   {
    "type": "steps",
@@ -240,7 +247,7 @@
     }
    ],
    "note": "CFU: colony-forming units.",
-   "look": "instrument-limits"
+   "look": "cut-band"
   },
   {
    "type": "faq",

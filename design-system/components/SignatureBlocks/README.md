@@ -13,6 +13,8 @@ As the roles table: `cols` [document, written, reviewed], `rows` (cells strings 
 - Desktop: one block per row (name 4 of 12, fields 8 of 12). The fold applies on phones only.
 
 ## Motion
-The key boxes stamp in; each block draws in from its top left as it scrolls in, its written field fills and its line is ruled, then the reviewer's. Once per block, under 1.5 s.
+The key boxes stamp in; each block draws in from its top left as it scrolls in, its written field fills and its line is ruled, then the reviewer's, and the reviewer's signature inks over its faint impression (signature-draw port). Once per block, under 2 s.
+
+Polish (pass 9b): the reviewer's signature line carries a signature (aria-hidden svg `__sig` with `__imp` and `__ink`).
 
 Polish (pass 9): desktop sets the blocks two to a row (an odd last block runs the full width, name beside its fields); the party in a field is set in Geist, labels stay mono.
