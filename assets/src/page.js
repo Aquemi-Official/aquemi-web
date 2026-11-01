@@ -1,5 +1,7 @@
 /* One content section per block type in pages.json */
-function wBlock(b){var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}
+/* A block with look: "<name>" renders through LOOKS[name] (blocks/look-<name>.js), a section drawn for that content
+   (pass 9); without one, or if that look is missing, it renders by type as before. */
+function wBlock(b){var L=b.look&&LOOKS[b.look];if(L)return L(b,wSecHead(b));var f=BLOCKS[b.type];return f?f(b,wSecHead(b)):''}
 /* Page: NavBar, Hero, SectionNav, sections separated by hairlines on alternating surface and surface-sunken, Closing, Footer, BackToTop.
    A block with a nav label or an anchor gets its section id (jid: the anchor, else s-N-label), so jumps and page#anchor links find it. */
 function wPage(p){var c=p.cta,out='';

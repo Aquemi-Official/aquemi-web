@@ -113,3 +113,5 @@ function gridItem(inner,link){return link&&wp(link)?'<a href="#'+e(link)+'" data
 var TABLE_AS={};
 /* Block renderers register here: BLOCKS[type] = function(block, heading) -> section HTML. See assets/src/blocks/. */
 var BLOCKS={};
+/* Section looks (pass 9): LOOKS[name] = function(block, heading) -> section HTML, chosen by a block's look field. */
+var LOOKS={};
