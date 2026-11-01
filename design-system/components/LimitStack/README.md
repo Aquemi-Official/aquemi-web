@@ -11,3 +11,5 @@ LimitStack sets a page's water-quality limits as an editorial type stack beside 
 ## Motion
 
 Motion: one timeline when the stack scrolls in. Each row steps in from the left a beat after the one above (index decodes, the limit rises out of its line, the reference rule runs out towards the drawing); the pipe draws through `AQiso.timeline`, the water runs in at the top, round the coil and down the outlet run; when it reaches the collar the "Guaranteed" lettering wraps on, the guaranteed row flashes `flow-tint` and the note appears. Under 5 s; nothing under reduced motion.
+
+Pass 9 polish: the section carries `data-theme="light"`, so the limestone sheet keeps its light tokens (white pipe body, flow line, boxed outlet row) in the dark theme. Row labels are Geist, the index and figures Geist Mono.

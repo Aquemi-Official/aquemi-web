@@ -10,3 +10,5 @@ ParamTiles sets a system's design parameters as a Swiss grid of numbered tiles w
 ## Motion
 
 Motion: the grid is assembled like a poster. Tiles wipe into their cells in reading order, each from a different edge in turn; the big number rolls up out of its cell while its digits decode; the slash cuts down; label, value and basis follow. The blueprint cell draws the skid through `AQiso.timeline` (sheet, frame, equipment, then water from RO to EDI). Under 5 s; folded tiles appear whole when opened; nothing under reduced motion.
+
+Pass 9 polish: values are Geist Light (placeholders keep their mono chip); when the count leaves one cell empty in the last row of the four-column grid, the last tile spans two so the grid closes square.

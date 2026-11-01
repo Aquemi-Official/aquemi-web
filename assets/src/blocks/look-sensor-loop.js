@@ -23,18 +23,18 @@ function slScene(){var A=58,B=58,st=function(i,dz){return [A*i,-B*i,dz||0]},o={}
  var hy=o1.ports.in[1],hz=zh-30;
  var hdr=isoPipe([[o1.ports.in[0]-30,hy,hz],[hx,hy,hz]],{r:2.2,to:'pou',caps:false});
  var drops=[o1,o2].map(function(oo){var q=oo.ports.in;return isoPipe([[q[0],hy,hz],[q[0],q[1],hz],q],{r:1.6,to:'pou',caps:false})}).join('');
- /* return: from the header end up and back overhead to the tank's return nozzle */
- var tr=tk.ports.ret,rp=[[hx,hy,hz],[hx,hy,zh]],q=[hx,hy,zh];
- while(q[0]-A>tr[0]+20){q=[q[0]-A,q[1],zh];rp.push(q);q=[q[0],q[1]+B,zh];rp.push(q)}
- rp.push([tr[0],q[1],zh]);if(Math.abs(q[1]-tr[1])>1)rp.push([tr[0],tr[1],zh]);rp.push(tr);
+ /* return: from the header end up, then one straight overhead run back along the line of the plant (level on the
+    drawing, as a pipe rack reads, set back behind the equipment) and a short leg into the tank's return nozzle */
+ var tr=tk.ports.ret,RB=90,p0=[hx,hy,zh],p1=[hx,hy-RB,zh],p2=[tr[0],hx+hy-RB-tr[0],zh],rp=[[hx,hy,hz],p0,p1,p2];
+ if(Math.abs(p2[1]-tr[1])>1)rp.push([tr[0],tr[1],zh]);rp.push(tr);
  var ret=isoPipe(rp,{r:2.2,to:'tank',caps:false,cls:'aq-sensor-loop__ret'});
  /* drain off the divert: a drop to the floor with an arrow */
  var dr=isoPipe([[dv[0]+5,dv[1],zs],[dv[0]+5,dv[1]+18,zs],[dv[0]+5,dv[1]+18,6]],{r:1.6,caps:'end',cls:'aq-sensor-loop__drain'});
- /* return instruments on the last overhead legs before the tank: flow meter, pressure gauge, temperature well */
- var L1=rp[rp.length-4],L2=rp[rp.length-3],mid=function(a,c,f){return [a[0]+(c[0]-a[0])*f,a[1]+(c[1]-a[1])*f,a[2]+(c[2]-a[2])*f]};
- var fm=mid(rp[3],rp[4],0.5),gp=mid(rp[5],rp[6],0.5),t3=mid(rp[rp.length-7],rp[rp.length-6],0.5);t3=[t3[0],t3[1],zh+2.2];
+ /* return instruments on the overhead run, in water order: flow meter, pressure gauge, temperature well */
+ var mid=function(a,c,f){return [a[0]+(c[0]-a[0])*f,a[1]+(c[1]-a[1])*f,a[2]+(c[2]-a[2])*f]},rl=Math.hypot(p2[0]-p1[0],p2[1]-p1[1])||1,rd=[(p2[0]-p1[0])/rl,(p2[1]-p1[1])/rl,0];
+ var fm=mid(p1,p2,0.2),gp=mid(p1,p2,0.45),t3=mid(p1,p2,0.72);t3=[t3[0],t3[1],zh+2.2];
  var ga=isoPart('gauge',gp[0],gp[1],zh+2.4,1,{id:'flow',value:0.5});
- var fx=Math.abs(rp[4][0]-rp[3][0])>1?'x':'y',fmD=isoCylD(fx==='x'?[fm[0]-7,fm[1],fm[2]]:[fm[0],fm[1]-7,fm[2]],fx,14,4.4);
+ var fmD=isoCylD([fm[0]-7*rd[0],fm[1]-7*rd[1],fm[2]],rd,14,4.4);
  /* order: back to front and in water order */
  b+=tk+s1+pu+s2+uv+an1+an2;
  b+=s3+dr+va+s4+hdr+o1+o2+drops+ret+ga+'<path class="aq-iso__eq" d="'+fmD[0]+fmD[1]+'"/>';

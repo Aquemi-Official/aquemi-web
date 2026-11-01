@@ -8,12 +8,16 @@
 .aq-manifold-router__opt { grid-column: 1; position: relative; display: flex; align-items: baseline; gap: var(--space-4); width: 100%; min-height: 44px; margin: 0;
   padding: var(--space-4) var(--space-8) var(--space-4) calc(var(--pipe, var(--space-4)) + var(--reach, var(--space-12)) + var(--space-4)); border: 0; background: none; text-align: left; cursor: pointer;
   font: inherit; color: var(--on-limestone-muted); transition: color 300ms; }
-.aq-manifold-router__seg { position: absolute; left: 0; top: 0; bottom: 0; width: var(--pipe, var(--space-4)); box-sizing: border-box; border-inline: 1.5px solid var(--on-limestone-muted); }
+/* the pipe reads as a pipe, not a comb: its bore is a shade deeper than the sheet, and each branch ends in a flange */
+.aq-manifold-router { --bore: color-mix(in srgb, var(--on-limestone) 8%, var(--limestone)); }
+.aq-manifold-router__seg { position: absolute; left: 0; top: 0; bottom: 0; width: var(--pipe, var(--space-4)); box-sizing: border-box; border-inline: 1.5px solid var(--on-limestone-muted); background: var(--bore, var(--limestone)); }
 .aq-manifold-router__opt.is-first .aq-manifold-router__seg { top: calc(-1 * var(--space-8)); }
 .aq-manifold-router__opt.is-first .aq-manifold-router__seg::before { content: ""; position: absolute; left: 50%; top: 0; width: var(--space-2); height: var(--space-2); border-right: 2px solid var(--flow); border-bottom: 2px solid var(--flow); transform: translate(-50%, -60%) rotate(45deg); }
 .aq-manifold-router__opt.is-last .aq-manifold-router__seg { bottom: calc(50% - var(--pipe, var(--space-4)) / 2); border-bottom: 1.5px solid var(--on-limestone-muted); }
 .aq-manifold-router__branch { position: absolute; left: calc(var(--pipe, var(--space-4)) - 1px); top: calc(50% - var(--pipe, var(--space-4)) / 2); width: var(--reach, var(--space-12)); height: var(--pipe, var(--space-4)); box-sizing: border-box;
-  border-block: 1.5px solid var(--on-limestone-muted); background: var(--limestone); transition: border-color 300ms; }
+  border-block: 1.5px solid var(--on-limestone-muted); background: var(--bore, var(--limestone)); transition: border-color 300ms; }
+.aq-manifold-router__branch::after { content: ""; position: absolute; right: 0; top: calc(-1 * var(--space-1) - 1.5px); bottom: calc(-1 * var(--space-1) - 1.5px); width: var(--space-1);
+  box-sizing: border-box; border: 1.5px solid; border-color: inherit; background: var(--bore, var(--limestone)); }
 .aq-manifold-router__water { position: absolute; background: var(--flow); transition: transform 450ms cubic-bezier(0.65, 0, 0.35, 1); }
 .aq-manifold-router__seg .aq-manifold-router__water { left: 50%; width: 2px; margin-left: -1px; top: 0; bottom: 0; transform: scaleY(0); transform-origin: 50% 0; }
 .aq-manifold-router__branch .aq-manifold-router__water { top: 50%; height: 2px; margin-top: -1px; left: 0; right: 0; transform: scaleX(0); transform-origin: 0 50%; transition-delay: 200ms; }
@@ -65,7 +69,7 @@
   .aq-manifold-router__opt.is-first .aq-manifold-router__seg { top: calc(-1 * var(--space-6)); }
   .aq-manifold-router__t { font-size: 20px; line-height: 26px; }
   .aq-manifold-router__route { grid-column: 1; grid-row: auto !important; margin-left: calc(var(--pipe, var(--space-4)) + var(--reach, var(--space-12)) + var(--space-3)); padding: var(--space-6) var(--space-4); }
-  .aq-manifold-router__route::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(-1 * (var(--pipe, var(--space-4)) + var(--reach, var(--space-12)) + var(--space-3)) - 2px); width: var(--pipe, var(--space-4)); box-sizing: border-box; border-inline: 1px solid var(--on-limestone-muted); }
+  .aq-manifold-router__route::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(-1 * (var(--pipe, var(--space-4)) + var(--reach, var(--space-12)) + var(--space-3)) - 2px); width: var(--pipe, var(--space-4)); box-sizing: border-box; border-inline: 1.5px solid var(--on-limestone-muted); background: var(--bore, var(--limestone)); }
   .aq-manifold-router__opt.is-last + .aq-manifold-router__route::before { display: none; }
   .aq-manifold-router__sit { display: none; }
   .aq-manifold-router__st:not(:last-child)::after { min-height: var(--space-6); }

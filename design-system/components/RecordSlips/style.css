@@ -1,6 +1,6 @@
 /* ---------- RecordSlips: each process and the record it leaves (look "record-slips"). Process in light display type on
    the ground; a navy slot at its right edge; the record as a paper slip (surface-raised, data-theme="light") fed out of
-   the slot, a little off square, with an empty tick box per record. One flow accent: the slip's top edge. ---------- */
+   the slot, square, with an empty tick box per record. One flow accent: the slip's top edge. ---------- */
 .aq-record-slips-sec { position: relative; }
 .aq-record-slips { position: relative; }
 .aq-record-slips__cols { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); padding-bottom: var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
@@ -9,7 +9,7 @@
 .aq-record-slips__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
 .aq-record-slips__row {
   display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); column-gap: 0; align-items: center;
-  padding: var(--space-6) 0; border-bottom: 1px solid var(--line);
+  padding: var(--space-4) 0; border-bottom: 1px solid var(--line);
 }
 .aq-record-slips__proc { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-4); padding-right: var(--space-12); }
 .aq-record-slips__proc > .aq-index { grid-row: 1 / span 3; padding-top: var(--space-2); }
@@ -25,17 +25,16 @@
   box-shadow: inset calc(-1 * var(--space-1)) 0 0 color-mix(in srgb, var(--on-navy) 18%, transparent);
 }
 .aq-record-slips__slip {
-  position: relative; flex: 1 1 auto; margin-left: calc(-1 * var(--space-1)); padding: var(--space-4) var(--space-6) var(--space-6) var(--space-8);
+  position: relative; flex: 1 1 auto; margin-left: calc(-1 * var(--space-1)); padding: var(--space-4) var(--space-6) var(--space-4) var(--space-8);
   background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line); border-left: 0; border-top: 2px solid var(--flow);
-  transform: rotate(-0.5deg); transform-origin: 0 50%; transition: transform 320ms cubic-bezier(0.2, 0, 0, 1);
+  transform-origin: 0 50%; transition: transform 320ms cubic-bezier(0.2, 0, 0, 1);
 }
-.aq-record-slips__row:nth-child(even) .aq-record-slips__slip { transform: rotate(0.5deg); }
 /* perforation where the slip leaves the slot */
 .aq-record-slips__slip::before { content: ""; position: absolute; left: var(--space-3); top: var(--space-2); bottom: var(--space-2); border-left: 1.5px dotted var(--line-strong); }
-.aq-record-slips__recs { list-style: none; margin: var(--space-2) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-record-slips__recs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
 .aq-record-slips__recs li { display: grid; grid-template-columns: var(--space-4) minmax(0, 1fr); column-gap: var(--space-3); align-items: baseline; font: 400 16px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
 .aq-record-slips__box { width: var(--space-3); height: var(--space-3); border: 1.5px solid var(--line-strong); transform: translateY(1px); }
-.aq-record-slips__row:hover .aq-record-slips__slip { transform: translateX(var(--space-3)) rotate(0deg); }
+.aq-record-slips__row:hover .aq-record-slips__slip { transform: translateX(var(--space-3)); }
 .aq-record-slips__row:hover .aq-record-slips__name { color: var(--flow); }
 
 /* Fold: desktop shows every process; the fold works on phones only */

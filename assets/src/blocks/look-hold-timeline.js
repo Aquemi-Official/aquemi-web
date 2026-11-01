@@ -1,5 +1,5 @@
-/* Look "hold-timeline" -> HoldTimeline (pass 9): a steps block drawn as one rising line of stage nodes across a dark
-   macro close-up of a fused pipe joint. Stages climb left to right; each stage's callout hangs off its node like a
+/* Look "hold-timeline" -> HoldTimeline (pass 9): a steps block drawn as one rising line of stage nodes across a pale
+   engraved macro close-up of a fused pipe joint. Stages climb left to right; each stage's callout hangs off its node like a
    flag on a pole, alternately below-right and above-left, so the line never crosses text. A stage with hold
    ("<who signs>") is a hold point: a ringed node and a "Hold point" stamp naming who signs.
    Item title "<stage>, <duration>": the last top-level comma (outside [] and ()) splits it into the stage name and its
@@ -40,11 +40,11 @@ LOOKS['hold-timeline']=function(b,H){var I=b.items||[],n=I.length,G=holdGeo(n);
    +'<span class="aq-hold-timeline__pole" aria-hidden="true"></span><span class="aq-hold-timeline__node" aria-hidden="true"><span class="aq-hold-timeline__halo"></span></span>'
    +'<div class="aq-hold-timeline__c">'
    +'<h3 class="aq-hold-timeline__t"><span class="aq-hold-timeline__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+' /</span> '+nm+'</h3>'
-   +(dur?'<p class="'+(fig?'aq-hold-timeline__fig':'aq-hold-timeline__dur')+'">'+tx(dur)+'</p>':'')
+   +(dur?(fig?'<p class="aq-hold-timeline__fig">'+tx(dur).replace(/(\d+(?:[.,]\d+)?)/,'<span class="aq-hold-timeline__num">$1</span>')+'</p>':'<p class="aq-hold-timeline__dur">'+tx(dur)+'</p>'):'')
    +(it.d?'<p class="aq-hold-timeline__d">'+tx(it.d)+'</p>':'')
    +(it.hold?'<p class="aq-hold-timeline__hold"><span class="aq-hold-timeline__hk">Hold point</span> Signed by '+who(it.hold)+'</p>':'')
    +'</div></li>'}).join('');
- return '<section class="aq-section aq-hold-timeline-sec" data-theme="dark">'+(b.macro===false?'':holdMacro())+'<div class="aq-in aq-stack-l">'+H
+ return '<section class="aq-section aq-hold-timeline-sec">'+(b.macro===false?'':holdMacro())+'<div class="aq-in aq-stack-l">'+H
   +'<div class="aq-hold-timeline" style="--n:'+n+';--w:'+G.w+'%">'
   +'<ol class="aq-hold-timeline__list">'+st
   +'<li class="aq-hold-timeline__band" aria-hidden="true"><svg viewBox="0 0 1000 1000" preserveAspectRatio="none">'

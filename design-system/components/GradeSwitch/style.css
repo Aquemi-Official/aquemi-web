@@ -1,7 +1,7 @@
 /* ---------- GradeSwitch: a grade table as a selector panel, one strip per product, the knob in the minimum ---------- */
-.aq-grade-switch-sec .aq-sec-head .aq-lead { color: var(--on-limestone-muted); }
+.aq-grade-switch-sec .aq-sec-head .aq-lead { color: var(--ink-muted); }
 .aq-grade-switch { position: relative; margin-top: var(--space-8); padding: var(--space-8) var(--space-12) var(--space-6); background: var(--surface-raised); color: var(--ink);
-  border: 1px solid color-mix(in srgb, var(--on-limestone) 30%, transparent); }
+  border: 1px solid var(--line-strong); }
 .aq-grade-switch__screw { position: absolute; width: var(--space-3); height: var(--space-3); border-radius: 50%; border: 1px solid var(--line-strong); }
 .aq-grade-switch__screw::after { content: ""; position: absolute; left: 15%; right: 15%; top: 50%; height: 1px; background: var(--line-strong); transform: rotate(-35deg); }
 .aq-grade-switch__screw:nth-child(1) { left: var(--space-4); top: var(--space-4); }
@@ -42,6 +42,10 @@
 /* Phones: name, selector, then the words; the plate loses its side margins */
 @container (max-width: 860px) {
   .aq-grade-switch { margin-top: var(--space-4); padding: var(--space-6) var(--space-4) var(--space-4); }
+  .aq-grade-switch__screw:nth-child(1), .aq-grade-switch__screw:nth-child(2) { top: var(--space-2); }
+  .aq-grade-switch__screw:nth-child(3), .aq-grade-switch__screw:nth-child(4) { bottom: var(--space-2); }
+  .aq-grade-switch__screw:nth-child(odd) { left: var(--space-2); }
+  .aq-grade-switch__screw:nth-child(even) { right: var(--space-2); }
   .aq-grade-switch__colh { grid-template-columns: minmax(0, 1fr); }
   .aq-grade-switch__colh span + span { display: none; }
   .aq-grade-switch__row { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-3); padding: var(--space-4) 0; }

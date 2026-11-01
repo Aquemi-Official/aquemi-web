@@ -16,7 +16,7 @@
 .aq-membrane-atlas__field { fill: var(--surface-raised); }
 .aq-membrane-atlas__rim { fill: none; stroke: var(--ink); stroke-width: 1.5; }
 .aq-membrane-atlas__tick, .aq-membrane-atlas__cross { fill: none; stroke: var(--line-strong); stroke-width: 1; }
-.aq-membrane-atlas__tex { fill: none; stroke: var(--line-strong); stroke-width: 0.75; opacity: 0.6; }
+.aq-membrane-atlas__tex { fill: none; stroke: var(--line-strong); stroke-width: 0.75; opacity: 0.38; }
 .aq-membrane-atlas__hole { fill: var(--ink); stroke: var(--ink); stroke-width: 1; }
 .aq-membrane-atlas__crack { fill: none; stroke: var(--ink); stroke-width: 1; }
 .aq-membrane-atlas__split { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 3 3; }

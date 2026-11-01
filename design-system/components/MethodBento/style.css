@@ -47,8 +47,8 @@
 
 /* The gap: the method not offered, a dashed empty tile with its name in outline */
 .aq-method-bento__gap { background: transparent; border: 1.5px dashed var(--line-strong); justify-content: space-between; }
-.aq-method-bento__ghost { margin: 0; font: 300 64px/1 var(--font-sans); letter-spacing: -0.03em; color: transparent; -webkit-text-stroke: 1px var(--line-strong);
-  text-decoration: line-through; text-decoration-thickness: 1px; text-decoration-color: var(--line-strong); }
+.aq-method-bento__ghost { margin: 0; font: 300 88px/1 var(--font-sans); letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1px var(--ink-subtle);
+  text-decoration: line-through; text-decoration-thickness: 1px; text-decoration-color: var(--ink-subtle); }
 .aq-method-bento__gapt { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
 
 .aq-method-bento__tile:not(.is-hot):not(.aq-method-bento__gap):hover { border-color: var(--line-strong); }

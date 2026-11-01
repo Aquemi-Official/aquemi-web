@@ -27,7 +27,7 @@
 .aq-pdf-anatomy__field { fill: var(--surface); stroke: var(--flow); stroke-width: 1.5; }
 .aq-pdf-anatomy__cur { fill: var(--flow-tint); }
 .aq-pdf-anatomy__page { fill: var(--surface-raised); stroke: var(--line-strong); stroke-width: 1; }
-.aq-pdf-anatomy__logo { fill: var(--navy); }
+.aq-pdf-anatomy__logo { fill: var(--ink); }
 .aq-pdf-anatomy__hit { fill: var(--flow-tint); stroke: var(--flow); stroke-width: 1.5; }
 .aq-pdf-anatomy__box { fill: none; stroke: var(--line-strong); stroke-width: 1; }
 .aq-pdf-anatomy__box.is-on { stroke: var(--flow); stroke-width: 1.5; }

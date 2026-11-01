@@ -40,13 +40,14 @@ LOOKS['twin-route']=function(b,H){var RL=b.route_labels||[],C=b.cols||[],R=b.row
    +'<h3 class="aq-twin-route__test"><span class="aq-twin-route__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+tcell(r[0])+'</h3>'
    +cell(r[2],'sat',i)+'</li>',b,i)}).join('');
  var head='<div class="aq-twin-route__head" aria-hidden="true">'
-  +'<div class="aq-twin-route__scene aq-twin-route__scene--fat">'+S.fat+'</div>'
+  +'<div class="aq-twin-route__scene aq-twin-route__scene--fat">'+S.fat+'<span class="aq-twin-route__cap">'+tx(C[1]||'')+'</span></div>'
   +'<div class="aq-twin-route__road">'+S.truck+'<span class="aq-twin-route__lane"></span></div>'
-  +'<div class="aq-twin-route__scene aq-twin-route__scene--sat">'+S.sat+'</div></div>'
+  +'<div class="aq-twin-route__scene aq-twin-route__scene--sat">'+S.sat+'<span class="aq-twin-route__cap">'+tx(C[2]||'')+'</span></div></div>'
   +'<div class="aq-twin-route__labels">'
   +'<p class="aq-twin-route__lab aq-twin-route__lab--fat">'+(RL[0]?'<span class="aq-eyebrow">'+tx(RL[0])+'</span>':'')+tx(C[1]||'')+'</p>'
   +'<span class="aq-twin-route__rail aq-twin-route__rail--fat is-cap" aria-hidden="true"><span class="aq-twin-route__water"></span></span>'
   +'<p class="aq-twin-route__lab aq-twin-route__lab--test aq-eyebrow">'+tx(C[0]||'')+'</p>'
+  +'<span class="aq-twin-route__rail aq-twin-route__rail--sat is-cap" aria-hidden="true"><span class="aq-twin-route__water"></span></span>'
   +'<p class="aq-twin-route__lab aq-twin-route__lab--sat">'+(RL[1]?'<span class="aq-eyebrow">'+tx(RL[1])+'</span>':'')+tx(C[2]||'')+'</p></div>';
  var list=wFold(b,R.length,'<ol class="aq-twin-route__rows">'+rows+'</ol>',b.fold_noun||'tests');
  var end=K.length?'<div class="aq-twin-route__end">'

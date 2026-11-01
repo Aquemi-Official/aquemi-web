@@ -12,7 +12,7 @@ LOOKS['fidelity-ladder']=(function(){
  function flat(inner){return '<svg class="aq-fidelity-ladder__svg" viewBox="0 0 360 200" focusable="false" aria-hidden="true">'+inner+'</svg>'}
  /* the isometric spool every later sheet redraws: a run, two elbows and a branch */
  var SP=[[0,0,64],[160,0,64],[160,-128,64],[160,-128,128]],BR=[[80,0,64],[80,0,14]];
- function spool(extra){var o=isoPipe(SP,{r:6,flanges:'ends',caps:true})+isoPipe(BR,{r:5,flanges:'ends',caps:'end'});return isoSvg(360,200,o+(extra||''),'aq-iso--navy aq-fidelity-ladder__svg',{origin:[58,142]})}
+ function spool(extra){var o=isoPipe(SP,{r:8,flanges:'ends',caps:true})+isoPipe(BR,{r:6.5,flanges:'ends',caps:'end'});return isoSvg(360,200,o+(extra||''),'aq-iso--navy aq-fidelity-ladder__svg',{origin:[58,142]})}
  var SHEET={
   matrix:function(){var o='',r,c;for(r=0;r<6;r++)o+=P('M24 '+(30+r*26)+'H336','grid');o+=P('M24 30V160M150 30V160M262 30V160M336 30V160','grid');
    for(r=0;r<5;r++){o+=P('M34 '+(43+r*26)+'H'+(80+(r*37)%60),'txt')+P('M160 '+(43+r*26)+'H'+(200+(r*29)%50),'txt');

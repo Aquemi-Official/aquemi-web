@@ -4,7 +4,7 @@
    sequence: its steps on a water rail, numbered, the rail running on down to the response clock (the terminus), then
    the action.
    Ordinary routes are limestone sheets; the urgent route is the dark sheet with the call bar (the number large in mono,
-   a tel: link once it is real). Sheets share one subgrid (tab, body, clock, action), so the clocks and actions line up.
+   a tel: link once it is real). Sheets share one subgrid (tab, head, call, steps, clock, action), so rails, clocks and actions line up.
    Fields: routes [{t, d, steps: [3 strings], clock, link: "<page id>", phone?, urgent?, current?, action?, intent?}].
    The route for the page being read (current: true, or link = this page) is marked "This page" and its action scrolls
    to this page's form; the others link to their pages (action label defaults to that page's nav label; intent ticks

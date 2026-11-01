@@ -1,21 +1,24 @@
 /* ---------- HirePath: the steps into a role as one path, each step a huge light outline numeral standing on the track ---------- */
 .aq-hire-path-sec { }
 .aq-hire-path { --hp-num: 168px; --hp-y: calc(var(--hp-num, 168px) * 0.78); position: relative; margin-top: var(--space-8); }
-.aq-hire-path__track { position: absolute; left: 0; right: calc(var(--space-8) * -1); top: var(--hp-y, 131px); height: 1px; background: var(--line-strong); }
+.aq-hire-path__track { position: absolute; left: 0; right: calc(var(--space-6) * -1); top: var(--hp-y, 131px); height: 1px; background: var(--line-strong); }
 .aq-hire-path__track::after { content: ""; position: absolute; right: 0; top: calc(var(--space-2) / -2 + 0.5px); width: var(--space-2); height: var(--space-2); border-top: 1px solid var(--line-strong); border-right: 1px solid var(--line-strong); transform: rotate(45deg); }
-.aq-hire-path__water { position: absolute; inset: 0 var(--space-8) 0 0; background: var(--flow); height: 2px; top: -0.5px; transform-origin: 0 50%; transform: scaleX(0); }
+/* the walked path: at rest the water fills the track to the last step and every gate's node is filled */
+.aq-hire-path__water { position: absolute; inset: 0 var(--space-6) 0 0; background: var(--flow); height: 2px; top: -0.5px; transform-origin: 0 50%; }
 .aq-hire-path__steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); column-gap: var(--space-8); }
 .aq-hire-path__step { position: relative; min-width: 0; display: flex; flex-direction: column; gap: var(--space-3); }
 .aq-hire-path__gate { position: relative; display: block; height: calc(var(--hp-y, 131px) + var(--space-8)); }
 .aq-hire-path__num { position: absolute; left: calc(var(--space-2) * -1); bottom: var(--space-8); display: block; font: 300 var(--hp-num, 168px)/0.78 var(--font-sans); letter-spacing: -0.06em;
-  color: transparent; -webkit-text-stroke: 1px var(--line-strong); font-variant-numeric: tabular-nums; transition: color 400ms, -webkit-text-stroke-color 400ms; }
-.aq-hire-path__step:hover .aq-hire-path__num, .aq-hire-path__num.is-wet { color: var(--flow-tint); -webkit-text-stroke-color: var(--flow); }
-.aq-hire-path__node { position: absolute; left: 0; top: calc(var(--hp-y, 131px) - var(--space-2) + 0.5px); width: var(--space-4); height: var(--space-4); background: var(--surface); border: 1px solid var(--ink); transition: background-color 300ms; }
-.aq-section--alt .aq-hire-path__node { background: var(--surface-sunken); }
-.aq-hire-path__step:hover .aq-hire-path__node, .aq-hire-path__node.is-wet { background: var(--flow); border-color: var(--flow); }
+  /* a pale solid fill, not an outline: Geist's overlapping contours show through a text stroke at this size */
+  color: color-mix(in srgb, var(--ink) 13%, transparent); font-variant-numeric: tabular-nums; transition: color 400ms; }
+.aq-hire-path__step:hover .aq-hire-path__num, .aq-hire-path__num.is-wet { color: color-mix(in srgb, var(--flow) 50%, transparent); }
+.aq-hire-path__node { position: absolute; left: 0; top: calc(var(--hp-y, 131px) - var(--space-2) + 0.5px); width: var(--space-4); height: var(--space-4); background: var(--flow); border: 1px solid var(--flow); transition: background-color 300ms, border-color 300ms; }
+/* before the walk (motion only): nodes wait empty until the water reaches them */
+.aq-hire-path.is-pre .aq-hire-path__node:not(.is-wet) { background: var(--surface); border-color: var(--ink); }
+.aq-section--alt .aq-hire-path.is-pre .aq-hire-path__node:not(.is-wet) { background: var(--surface-sunken); }
 .aq-hire-path__t { margin: 0; font: 400 22px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
 .aq-hire-path__d { margin: 0; font: 400 16px/26px var(--font-sans); color: var(--ink-muted); max-width: 32ch; }
-.aq-hire-path__icons { margin: var(--space-2) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.aq-hire-path .aq-hire-path__icons { margin: var(--space-2) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .aq-hire-path__ic { display: grid; place-items: center; width: var(--space-12); height: var(--space-12); border: 1px solid var(--line); color: var(--ink-muted); background: var(--surface-raised); }
 .aq-hire-path__ic .aq-icon { width: var(--space-6); height: var(--space-6); }
 
@@ -28,7 +31,7 @@
   .aq-hire-path { --hp-num: 72px; margin-top: var(--space-4); padding-left: var(--space-8); }
   .aq-hire-path__track { left: var(--space-2); right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
   .aq-hire-path__track::after { right: auto; top: auto; bottom: 0; left: calc(var(--space-2) / -2 + 0.5px); transform: rotate(135deg); }
-  .aq-hire-path__water { inset: 0 0 var(--space-8) 0; width: 2px; height: auto; left: -0.5px; transform-origin: 50% 0; transform: scaleY(0); }
+  .aq-hire-path__water { inset: 0 0 var(--space-8) 0; width: 2px; height: auto; left: -0.5px; transform-origin: 50% 0; }
   .aq-hire-path__steps { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
   .aq-hire-path__gate { height: calc(var(--hp-num, 168px) * 0.78); }
   .aq-hire-path__num { left: 0; bottom: 0; }

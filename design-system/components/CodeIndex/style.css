@@ -1,5 +1,5 @@
 /* ---------- CodeIndex: a short document set as an index in huge outline type (look "code-index"). Each row: the code
-   as outline Geist Mono (text-stroke, no fill) cropped by the page edge, alternating sides (.is-r), the text beside it,
+   as outline Geist Mono (text-stroke under a ground-coloured fill) cropped by the page edge, alternating sides (.is-r), the text beside it,
    and a navy index tab sticking out of the page edge. Key documents (.is-key) draw their code in flow. ---------- */
 .aq-section.aq-code-index-sec { overflow-x: clip; }
 .aq-code-index__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
@@ -8,15 +8,17 @@
   min-height: var(--space-32); padding: var(--space-6) 0; border-bottom: 1px solid var(--line-strong);
 }
 .aq-code-index__code {
-  font: 300 208px/0.9 var(--font-mono); letter-spacing: -0.07em; white-space: nowrap; color: transparent;
-  -webkit-text-stroke: 1.5px var(--line-strong); margin-left: calc(-1 * var(--space-8)); transition: color 300ms cubic-bezier(0.2, 0, 0, 1);
+  font: 300 208px/0.9 var(--font-mono); letter-spacing: -0.07em; white-space: nowrap;
+  /* the stroke is painted under a ground-coloured fill: only its outer half shows, so the variable font's overlapping
+     contours (inside N, Q, R) stay hidden; 3 px reads as a 1.5 px outline */
+  color: var(--surface); -webkit-text-stroke: 3px var(--line-strong); paint-order: stroke fill; margin-left: calc(-1 * var(--space-8)); transition: color 300ms cubic-bezier(0.2, 0, 0, 1);
   user-select: none;
 }
 .aq-code-index__row.is-key .aq-code-index__code { -webkit-text-stroke-color: var(--flow); }
 .aq-code-index__row.is-r { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); }
 .aq-code-index__row.is-r .aq-code-index__code { order: 2; justify-self: end; margin-left: 0; margin-right: calc(-1 * var(--space-8)); }
-.aq-code-index__row:hover .aq-code-index__code { color: color-mix(in srgb, var(--line-strong) 14%, transparent); }
-.aq-code-index__row.is-key:hover .aq-code-index__code { color: color-mix(in srgb, var(--flow) 12%, transparent); }
+.aq-code-index__row:hover .aq-code-index__code { color: var(--surface-sunken); }
+.aq-code-index__row.is-key:hover .aq-code-index__code { color: var(--flow-tint); }
 .aq-code-index__text { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--space-2); max-width: 46ch; }
 .aq-code-index__n { font: 400 13px/16px var(--font-mono); letter-spacing: 0.06em; color: var(--ink-subtle); }
 .aq-code-index__row.is-key .aq-code-index__n { color: var(--flow); }

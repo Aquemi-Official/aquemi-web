@@ -54,6 +54,7 @@ Source: `assets/src/parts/IsoKit.js` (built into `assets/aquemi-site.js`; the fu
 | `wall` (alias `cleanroom`) | Clean-room wall: panel joints, vision window, door with vision panel, coved floor line | `w`, `h` |
 | `building` | Building: parapet, window bands, loading door, roof unit, stack | `w`, `d`, `h` |
 | `clipboard` | Clipboard lying flat: clip, sheet, checklist with ticks in flow | `ticks` |
+| `module` | Plain closed equipment module: a box with an inset front panel, a nameplate line in flow, an inset top panel. Ports `in` (front, low), `out` (right side, low) | `w` (40), `d` (40), `h` (50) |
 
 If a part is missing, draw it in your own renderer from the same primitives (`ISO.box`, `ISO.cyl`, `ISO.ring`, `ISO.band` give path data; wrap them in `<path class="aq-iso__eq">`) and say so, so it can join the kit.
 

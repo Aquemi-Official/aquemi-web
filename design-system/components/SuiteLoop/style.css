@@ -52,6 +52,14 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
 .aq-suite-loop__suite:hover .aq-suite-loop__dw, .aq-suite-loop__suite:focus-within .aq-suite-loop__dw { transform: scaleY(1); }
 .aq-suite-loop__suite:hover .aq-suite-loop__vb, .aq-suite-loop__suite:focus-within .aq-suite-loop__vb { fill: var(--flow); }
 
+/* Wide: every suite spans the same shared rows (number, situation, each field, way out) as a subgrid, so the rules
+   inside the rooms line up across the plan */
+@container (min-width: 1101px) {
+  .aq-suite-loop__suite { display: grid; grid-row: span var(--rows, 5); grid-template-rows: subgrid; align-content: start; }
+  .aq-suite-loop__dl { display: contents; }
+  .aq-suite-loop__go { margin-top: 0; }
+}
+
 @container (max-width: 1100px) {
   .aq-suite-loop { padding-inline: var(--space-6); }
   .aq-suite-loop__suites { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: var(--space-24); }

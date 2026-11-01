@@ -8,7 +8,7 @@ function cphGo(r){return r.link&&wp(r.link)?'<a class="aq-colophon__go" href="#'
 LOOKS['colophon']=function(b,H){var R=b.rows||[],li=-1;R.some(function(r,i){if(r.hl){li=i;return true}});
  var L=li>=0?R[li]:null,rest=R.filter(function(r,i){return i!==li}),num=function(i){return (i<9?'0':'')+(i+1)};
  var lead='';if(L){var v=String(L.v||''),k=v.search(/\.\s+(?=[A-Z\[])/),a=k<0?v:v.slice(0,k+1),z=k<0?'':v.slice(k+1).trim();
-  lead='<div class="aq-colophon__lead"><p class="aq-colophon__lk"><span class="aq-colophon__tick" aria-hidden="true"></span>'+tx(L.p)+'</p>'
+  lead='<div class="aq-colophon__lead"><span class="aq-colophon__tick" aria-hidden="true"></span><p class="aq-colophon__lk"><span class="aq-colophon__n" aria-hidden="true">'+num(0)+'</span><span>'+tx(L.p)+'</span></p>'
    +'<p class="aq-colophon__lv">'+tx(a)+'</p>'+(z?'<p class="aq-colophon__lz">'+tx(z)+'</p>':'')
    +(L.m||cphGo(L)?'<p class="aq-colophon__lm">'+(L.m?'<span>'+tx(L.m)+'</span>':'')+cphGo(L)+'</p>':'')+'</div>'}
  /* the fold counts the rows under the statement */

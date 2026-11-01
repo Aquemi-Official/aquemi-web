@@ -3,7 +3,7 @@
 .aq-pack-matrix { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-16); align-items: center; margin-top: var(--space-8); }
 
 /* The matrix: identical packs on a grid, the axis words, the pulled pack in navy, a leader out to the sheet */
-.aq-pack-matrix__grid { --s: var(--space-12); --g: var(--space-3); display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; column-gap: var(--space-3); row-gap: var(--space-3); }
+.aq-pack-matrix__grid { --s: var(--space-16); --g: var(--space-4); display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; column-gap: var(--space-3); row-gap: var(--space-3); }
 .aq-pack-matrix__ax { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
 .aq-pack-matrix__ax--y { grid-column: 1; grid-row: 1; writing-mode: vertical-rl; transform: rotate(180deg); align-self: center; padding-block: var(--space-2);
   border-right: 1px solid var(--line-strong); padding-right: var(--space-1); }
@@ -38,6 +38,7 @@
 .aq-pack-matrix__t a { color: inherit; }
 .aq-pack-matrix__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
 .aq-pack-matrix__doc.is-key { position: relative; }
+.aq-pack-matrix__doc.is-key:nth-child(-n+2)::before { display: none; }
 .aq-pack-matrix__doc.is-key::before { content: ""; position: absolute; left: 0; top: -1px; width: var(--space-12); height: 2px; background: var(--flow); }
 .aq-pack-matrix__doc.is-key .aq-pack-matrix__n { color: var(--flow); }
 .aq-pack-matrix__doc:hover .aq-pack-matrix__n { color: var(--ink); }
@@ -48,6 +49,7 @@
   .aq-pack-matrix__lead { margin-right: calc(var(--space-8) * -1); }
   .aq-pack-matrix__docs { grid-template-columns: minmax(0, 1fr); }
   .aq-pack-matrix__doc:nth-child(2) { border-top: 1px solid var(--line); }
+  .aq-pack-matrix__doc.is-key:nth-child(2)::before { display: block; }
 }
 
 /* Phones: the matrix small above the sheet, its leader dropping into it; the fold comes back */

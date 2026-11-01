@@ -2,13 +2,13 @@
    After 62-concept-contact-routes: a route line under the heading drops into each sheet's folder tab; each sheet shows
    what happens after you act as a sequence (numbered steps on a water rail) ending at its response clock, then the
    action. Ordinary routes are limestone sheets (data-theme light); the urgent route is the dark sheet with the call bar
-   (data-theme dark). The sheets share one subgrid (tab, body, clock, action) so the rows line up.
+   (data-theme dark). The sheets share one subgrid (tab, head, call, steps, clock, action) so the rows line up.
    Desktop keeps the data order (--o); phones stack in markup order, urgent first, on a riser down the left. */
 .aq-contact-routes-sec { --cr-line: color-mix(in srgb, var(--on-navy-muted) 55%, var(--navy)); }
 .aq-contact-routes {
   --cr-tab: var(--space-8);
   position: relative; list-style: none; margin: var(--space-12) 0 0; padding: 0;
-  display: grid; grid-template-columns: repeat(var(--routes, 3), minmax(0, 1fr)); grid-template-rows: repeat(4, auto);
+  display: grid; grid-template-columns: repeat(var(--routes, 3), minmax(0, 1fr)); grid-template-rows: repeat(6, auto);
   column-gap: var(--space-6);
 }
 /* The route line: runs under the heading and across the band, one drop into each sheet's tab */
@@ -19,7 +19,7 @@
 }
 .aq-contact-routes__route {
   order: var(--o, 0); position: relative; min-width: 0;
-  grid-row: span 4; display: grid; grid-template-rows: subgrid; row-gap: 0;
+  grid-row: span 6; display: grid; grid-template-rows: subgrid; row-gap: 0;
   color: var(--ink); background: none;
 }
 /* The sheet: everything under the tab */
@@ -34,7 +34,15 @@
   border-left: 1.5px dashed var(--cr-line, var(--on-navy-muted)); transform: scaleY(var(--aq-stub, 1)); transform-origin: center top;
 }
 .aq-contact-routes__route > *, .aq-contact-routes__body > * { position: relative; z-index: 1; min-width: 0; margin: 0; padding-inline: var(--space-6); }
-.aq-contact-routes__route > .aq-contact-routes__body { display: flex; flex-direction: column; padding-inline: 0; }
+/* The body opens into the sheet's subgrid: head, call bar, steps, clock and action are rows shared by every sheet, so
+   the step rails, clocks and actions line up across the band (a route without a call bar leaves that row open). */
+.aq-contact-routes__route > .aq-contact-routes__body { display: contents; }
+.aq-contact-routes__tab { grid-row: 1; }
+.aq-contact-routes__main { grid-row: 2; }
+.aq-contact-routes__call { grid-row: 3; }
+.aq-contact-routes__steps { grid-row: 4; }
+.aq-contact-routes__clock { grid-row: 5; }
+.aq-contact-routes__action { grid-row: 6; }
 
 /* Folder tab: Route N · Urgent · This page */
 .aq-contact-routes__tab {
@@ -134,7 +142,6 @@ a.aq-contact-routes__num:hover { text-decoration: underline; text-underline-offs
   .aq-contact-routes__route::after { left: calc(-1 * var(--space-4)); top: calc(var(--cr-tab, var(--space-8)) / 2); width: var(--space-4); height: 0; border-left: 0; border-top: 1.5px dashed var(--cr-line, var(--on-navy-muted));
     transform: scaleX(var(--aq-stub, 1)); transform-origin: left center; }
   .aq-contact-routes__route > *, .aq-contact-routes__body > * { padding-inline: var(--space-4); }
-  .aq-contact-routes__route > .aq-contact-routes__body { padding-inline: 0; }
   .aq-contact-routes__call:not(.is-empty) { margin-inline: var(--space-4) !important; }
   .aq-contact-routes__clock.is-empty { display: none; }
   .aq-contact-routes__steps { flex: none; }

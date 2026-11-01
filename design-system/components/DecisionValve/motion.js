@@ -6,6 +6,7 @@
 AQmotion.fx('DecisionValve', function (root, m) {
   root.querySelectorAll('.aq-decision-valve').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
+    if (window.AQdecisionValve) window.AQdecisionValve.layout(el); // the lines in their real geometry before DrawSVG measures them
     var q = function (s) { return [].slice.call(el.querySelectorAll(s)) };
     var lever = el.querySelector('.aq-decision-valve__lever'), dial = el.querySelector('.aq-decision-valve__dial'), ins = q('.aq-decision-valve__in'), outs = q('.aq-decision-valve__out');
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), wide = !m.narrow();

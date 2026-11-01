@@ -331,6 +331,15 @@ var ISO_PARTS={
    if(i<n)b.add(isoPath(isoPoly([b.p(-7.6,v+1.2,1.6),b.p(-6.4,v+2.6,1.6),b.p(-3.8,v-0.6,1.6)]),ISO_K.acc))}
   b.box(-6,-18.5,1.2,12,5,2.2);b.ring(0,-16,3.6,'z',2.2);
   b.port.top=[0,0,6];b.port.base=[0,0,0]}};
+/* module: a plain closed equipment module (a box standing on its footprint, o.w x o.d x o.h; 40 x 40 x 50): inset
+   front panel, a nameplate line in flow across its top, inset top panel. Ports: in (front, low, where a riser enters),
+   out (right side, low), top, base. Same block as the ModulePlinth look draws. */
+ISO_PARTS.module=function(b,o){var W=o.w||40,D=o.d||40,H=o.h||50,f=D/2;
+ b.bx(0,0,0,W,D,H);
+ b.rect('y',-W/2+6,8,W/2-6,H-8,f);
+ b.line([-W/2+10,f,H-14],[W/2-10,f,H-14],ISO_K.acc);
+ b.rect('z',-W/2+8,-D/2+8,W/2-8,D/2-8,H);
+ b.port.in=[0,f,16];b.port.out=[W/2,0,16];b.port.top=[0,0,H];b.port.base=[0,0,0]};
 ISO_PARTS.board=ISO_PARTS.desk;ISO_PARTS.documents=ISO_PARTS.binder;ISO_PARTS.cleanroom=ISO_PARTS.wall;
 ISO_PARTS.vessel=ISO_PARTS.tank;ISO_PARTS.instrument=ISO_PARTS.analyzer;
 

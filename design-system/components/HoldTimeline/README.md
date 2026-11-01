@@ -1,11 +1,11 @@
-HoldTimeline draws a sequence of stages with hold points as nodes on one rising line across a dark macro close-up of a fused pipe joint, each stage's duration and deliverables hung off its node.
+HoldTimeline draws a sequence of stages with hold points as nodes on one rising line across a pale engraved macro close-up of a fused pipe joint, each stage's duration and deliverables hung off its node.
 
 Pass 9 look `hold-timeline` (`assets/src/blocks/look-hold-timeline.js`), set with `"look": "hold-timeline"` on a `steps` block. Without the look the block renders as ProcessSteps. First used on services ("How long each stage takes, and what it leaves").
 
 ## Markup
 
 ```html
-<section class="aq-section aq-hold-timeline-sec" data-theme="dark">
+<section class="aq-section aq-hold-timeline-sec">
   <div class="aq-hold-timeline__macro" aria-hidden="true"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">…</svg></div>
   <div class="aq-in aq-stack-l">
     <header class="aq-sec-head">…</header>
@@ -39,7 +39,7 @@ Pass 9 look `hold-timeline` (`assets/src/blocks/look-hold-timeline.js`), set wit
 
 ## Rules
 
-- The section carries `data-theme="dark"`: every token inside takes its dark value in both themes, so text keeps its contrast on the deep ground.
+- Light ground (pass 9 polish): the section follows the page theme; on services it sits on the alternate ground between the navy router and the FAQ, so the page has one loud section. A stated duration renders as the boxed figure with its number set large and light (`__num`).
 - The macro is decoration in line art only: a fused pipe drawn huge and cropped (engraving lines closer together towards the edges give it its round body), the weld bead across it, water as a dashed `flow` centre line. No raster, no gradient.
 - Geometry: odd stages hang above-left of their node, even ones below-right; `--w` (callout width) and each `--x` (node position) are chosen per item count so same-side callouts never touch and the line never crosses text. Best for 3 to 7 stages.
 - A hold point is a ringed node and a "Hold point" stamp naming who signs.

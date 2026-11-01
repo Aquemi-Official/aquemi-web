@@ -777,6 +777,15 @@ var ISO_PARTS={
    if(i<n)b.add(isoPath(isoPoly([b.p(-7.6,v+1.2,1.6),b.p(-6.4,v+2.6,1.6),b.p(-3.8,v-0.6,1.6)]),ISO_K.acc))}
   b.box(-6,-18.5,1.2,12,5,2.2);b.ring(0,-16,3.6,'z',2.2);
   b.port.top=[0,0,6];b.port.base=[0,0,0]}};
+/* module: a plain closed equipment module (a box standing on its footprint, o.w x o.d x o.h; 40 x 40 x 50): inset
+   front panel, a nameplate line in flow across its top, inset top panel. Ports: in (front, low, where a riser enters),
+   out (right side, low), top, base. Same block as the ModulePlinth look draws. */
+ISO_PARTS.module=function(b,o){var W=o.w||40,D=o.d||40,H=o.h||50,f=D/2;
+ b.bx(0,0,0,W,D,H);
+ b.rect('y',-W/2+6,8,W/2-6,H-8,f);
+ b.line([-W/2+10,f,H-14],[W/2-10,f,H-14],ISO_K.acc);
+ b.rect('z',-W/2+8,-D/2+8,W/2-8,D/2-8,H);
+ b.port.in=[0,f,16];b.port.out=[W/2,0,16];b.port.top=[0,0,H];b.port.base=[0,0,0]};
 ISO_PARTS.board=ISO_PARTS.desk;ISO_PARTS.documents=ISO_PARTS.binder;ISO_PARTS.cleanroom=ISO_PARTS.wall;
 ISO_PARTS.vessel=ISO_PARTS.tank;ISO_PARTS.instrument=ISO_PARTS.analyzer;
 
@@ -1122,7 +1131,7 @@ BLOCKS['case']=function(b,H){return sec(H+'<div class="aq-cases">'+(b.items||[])
    sequence: its steps on a water rail, numbered, the rail running on down to the response clock (the terminus), then
    the action.
    Ordinary routes are limestone sheets; the urgent route is the dark sheet with the call bar (the number large in mono,
-   a tel: link once it is real). Sheets share one subgrid (tab, body, clock, action), so the clocks and actions line up.
+   a tel: link once it is real). Sheets share one subgrid (tab, head, call, steps, clock, action), so rails, clocks and actions line up.
    Fields: routes [{t, d, steps: [3 strings], clock, link: "<page id>", phone?, urgent?, current?, action?, intent?}].
    The route for the page being read (current: true, or link = this page) is marked "This page" and its action scrolls
    to this page's form; the others link to their pages (action label defaults to that page's nav label; intent ticks
@@ -1530,7 +1539,7 @@ if(typeof document!=='undefined'&&document.addEventListener)['mouseover','mouseo
 /* Look "cert-seals" -> CertSeals (design-system/components/CertSeals): certification status as a row of certificate
    tiles, Swiss in build. Each tile carries a seal (a ring of ticks round the item's line icon), the standard or mark
    it is held to (the item's tag) set large and light, what it covers, and its status. The first tile is navy, the
-   rest limestone in two shades. A tile with a link is the link (an arrow at its foot). Long tags (placeholders) set
+   rest limestone in two shades (paper: data-theme="light", so placeholders keep their light chip in the dark theme). A tile with a link is the link (an arrow at its foot). Long tags (placeholders) set
    smaller so the tile keeps its shape.
    Fields (a grid block): h, intro, items [{t, d, tag, icon, link}]. Phones: tiles two a row, then one. */
 LOOKS['cert-seals']=function(b,H){var I=b.items||[];
@@ -1540,7 +1549,7 @@ LOOKS['cert-seals']=function(b,H){var I=b.items||[];
  var tiles=I.map(function(it,i){var tag=String(it.tag||''),long=tag.length>14,lk=it.link&&wp(it.link);
   var inner=seal(it.icon)+(tag?'<p class="aq-cert-seals__tag'+(long?' is-long':'')+'">'+tx(tag)+'</p>':'')
    +'<h3 class="aq-cert-seals__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-cert-seals__d">'+tx(it.d)+'</p>':'')+(lk?'<span class="aq-cert-seals__go" aria-hidden="true"></span>':'');
-  return '<li class="aq-cert-seals__item" style="--i:'+i+'">'+(lk?'<a class="aq-cert-seals__tile" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-cert-seals__tile">'+inner+'</div>')+'</li>'}).join('');
+  return '<li class="aq-cert-seals__item" style="--i:'+i+'"'+(i?' data-theme="light"':'')+'>'+(lk?'<a class="aq-cert-seals__tile" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-cert-seals__tile">'+inner+'</div>')+'</li>'}).join('');
  return sec(H+'<div class="aq-cert-seals"><ol class="aq-cert-seals__list" role="list" style="--n:'+I.length+'">'+tiles+'</ol></div>','aq-cert-seals-sec')};
 /* Look "check-ledger" -> CheckLedger (design-system/components/CheckLedger): a router table of checks a buyer can run
    (what you check, route, what it does not prove, time to arrange) set as a two-sided ledger on a navy band. One seam
@@ -1628,7 +1637,7 @@ function cphGo(r){return r.link&&wp(r.link)?'<a class="aq-colophon__go" href="#'
 LOOKS['colophon']=function(b,H){var R=b.rows||[],li=-1;R.some(function(r,i){if(r.hl){li=i;return true}});
  var L=li>=0?R[li]:null,rest=R.filter(function(r,i){return i!==li}),num=function(i){return (i<9?'0':'')+(i+1)};
  var lead='';if(L){var v=String(L.v||''),k=v.search(/\.\s+(?=[A-Z\[])/),a=k<0?v:v.slice(0,k+1),z=k<0?'':v.slice(k+1).trim();
-  lead='<div class="aq-colophon__lead"><p class="aq-colophon__lk"><span class="aq-colophon__tick" aria-hidden="true"></span>'+tx(L.p)+'</p>'
+  lead='<div class="aq-colophon__lead"><span class="aq-colophon__tick" aria-hidden="true"></span><p class="aq-colophon__lk"><span class="aq-colophon__n" aria-hidden="true">'+num(0)+'</span><span>'+tx(L.p)+'</span></p>'
    +'<p class="aq-colophon__lv">'+tx(a)+'</p>'+(z?'<p class="aq-colophon__lz">'+tx(z)+'</p>':'')
    +(L.m||cphGo(L)?'<p class="aq-colophon__lm">'+(L.m?'<span>'+tx(L.m)+'</span>':'')+cphGo(L)+'</p>':'')+'</div>'}
  /* the fold counts the rows under the statement */
@@ -1679,16 +1688,25 @@ var covN=0;
 LOOKS['coverage-map']=function(b,H){var C=b.cols||[],R=b.rows||[],M=b.map||[],B=b.base||null,k=++covN;
  var cols=M.reduce(function(a,t){return Math.max(a,(+t.x||0)+1)},1),rws=M.reduce(function(a,t){return Math.max(a,(+t.y||0)+1)},1);
  function rid(i){return 'cov-'+k+'-'+i}
+ /* The readout: the region being read, set in the map's open bottom-left corner (the widest empty block of cells
+    under the tiles, at least 3 columns); one line per row, the lit one shown. Opens on the home row. */
+ var occ={};M.forEach(function(t){occ[(+t.x||0)+','+(+t.y||0)]=1});
+ var best=null;for(var w=1;w<=cols;w++){var h=0;for(var y=rws-1;y>=0;y--){var free=true;for(var x=0;x<w;x++)if(occ[x+','+y])free=false;if(!free)break;h++}
+  if(h&&w>=3&&(!best||w*h>=best.w*best.h))best={w:w,h:h}}
+ var on=-1;if(B)M.forEach(function(t){if(t.c===B.c&&+t.r>=0&&+t.r<R.length)on=+t.r});
+ function lt(i){return +i===on?' is-on':''}
+ var now=best&&R.length?'<li class="aq-coverage-map__now" aria-hidden="true" style="grid-column:1 / span '+best.w+';grid-row:'+(rws-best.h+1)+' / span '+best.h+'">'
+  +R.map(function(r,i){return '<span class="aq-coverage-map__nv'+lt(i)+'" data-r="'+i+'"><span class="aq-coverage-map__ni">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-coverage-map__nt">'+tcell(r[0])+'</span></span>'}).join('')+'</li>':'';
  var tiles=M.map(function(t){var home=B&&B.c===t.c,r=+t.r,has=r>=0&&r<R.length;
-  return '<li class="aq-coverage-map__tile'+(home?' is-home':'')+'" style="grid-column:'+((+t.x||0)+1)+';grid-row:'+((+t.y||0)+1)+'" data-r="'+(has?r:'')+'">'
+  return '<li class="aq-coverage-map__tile'+(home?' is-home':'')+(has&&r===on?' is-on':'')+'" style="grid-column:'+((+t.x||0)+1)+';grid-row:'+((+t.y||0)+1)+'" data-r="'+(has?r:'')+'">'
    +(has?'<button type="button" class="aq-coverage-map__btn" data-cov="'+e(rid(r))+'" aria-label="'+e(t.n||t.c)+'">':'<span class="aq-coverage-map__btn">')
    +'<span class="aq-coverage-map__code" aria-hidden="true">'+e(t.c)+'</span>'+(has?'<span class="aq-coverage-map__ri" aria-hidden="true">'+(r<9?'0':'')+(r+1)+'</span>':'')
    +(has?'</button>':'</span>')+'</li>'}).join('');
  var base=B&&B.label?'<p class="aq-coverage-map__base"><span class="aq-coverage-map__pin" aria-hidden="true"></span>'+tx(B.label)+'</p>':'';
  var sheet='<div class="aq-coverage-map__sheet" data-theme="light"><p class="aq-coverage-map__title" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span></p>'
-  +'<ol class="aq-coverage-map__grid" style="--cols:'+cols+';--rows:'+rws+'" aria-label="'+e(C[0]||'Map')+'">'+tiles+'</ol>'+base+'</div>';
+  +'<ol class="aq-coverage-map__grid" style="--cols:'+cols+';--rows:'+rws+'" aria-label="'+e(C[0]||'Map')+'">'+tiles+now+'</ol>'+base+'</div>';
  var rows=R.map(function(r,i){var codes=M.filter(function(t){return +t.r===i}).map(function(t){return e(t.c)});
-  return '<li class="aq-coverage-map__row" id="'+rid(i)+'" data-r="'+i+'" tabindex="-1">'
+  return '<li class="aq-coverage-map__row'+lt(i)+'" id="'+rid(i)+'" data-r="'+i+'" tabindex="-1">'
    +'<div class="aq-coverage-map__rh"><span class="aq-coverage-map__i" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-coverage-map__t">'+tcell(r[0])+'</h3>'
    +(codes.length?'<p class="aq-coverage-map__codes" aria-hidden="true">'+codes.map(function(c){return '<span>'+c+'</span>'}).join('')+'</p>':'')+'</div>'
    +'<dl class="aq-coverage-map__dl">'+r.slice(1).map(function(c,j){return '<div><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('')+'</dl></li>'}).join('');
@@ -1810,16 +1828,16 @@ function dial(n){var o='<circle class="'+K+'__body" cx="0" cy="0" r="118"/><circ
  o+='<path class="'+K+'__boss" d="M-130 -16H-112V16H-130Z"/>';
  for(i=0;i<n;i++){var a=ang(i,n)*Math.PI/180,c=Math.cos(a),s=Math.sin(a),p=function(r,t){return f1(r*c-t*s)+' '+f1(r*s+t*c)};
   o+='<path class="'+K+'__boss" d="M'+p(112,-11)+'L'+p(130,-11)+'L'+p(130,11)+'L'+p(112,11)+'Z"/>'
-   +'<path class="'+K+'__pos" data-i="'+i+'" d="M'+p(74,0)+'L'+p(92,0)+'"/>'
-   +'<text class="'+K+'__posn" data-i="'+i+'" x="'+f1(60*c)+'" y="'+f1(60*s+4)+'">'+(i<9?'0':'')+(i+1)+'</text>'}
+   +'<path class="'+K+'__pos'+(i?'':' is-on')+'" data-i="'+i+'" d="M'+p(74,0)+'L'+p(92,0)+'"/>'
+   +'<text class="'+K+'__posn'+(i?'':' is-on')+'" data-i="'+i+'" x="'+f1(60*c)+'" y="'+f1(60*s+4)+'">'+(i<9?'0':'')+(i+1)+'</text>'}
  for(i=0;i<36;i++){var b=i*10*Math.PI/180;o+='<path class="'+K+'__tick" d="M'+f1(96*Math.cos(b))+' '+f1(96*Math.sin(b))+'L'+f1(102*Math.cos(b))+' '+f1(102*Math.sin(b))+'"/>'}
  /* the lever: hub, arm and grip, turned to the chosen position */
  o+='<g class="'+K+'__lever" style="--a:'+ang(0,n)+'deg"><path class="'+K+'__arm" d="M-14 -9H150Q160 -9 160 0Q160 9 150 9H-14Q-24 9 -24 0Q-24 -9 -14 -9Z"/>'
   +'<circle class="'+K+'__hub" cx="0" cy="0" r="22"/><circle class="'+K+'__nut" cx="0" cy="0" r="7"/><path class="'+K+'__grip" d="M120 -9V9M130 -9V9M140 -9V9"/></g>';
  return '<svg class="'+K+'__dial" viewBox="-170 -170 340 340" aria-hidden="true" focusable="false">'+o+'</svg>'}
-function lines(n){var i,o='',y=function(i){return f1(400*(i+0.5)/n)};
- for(i=0;i<n;i++)o+='<path class="'+K+'__in" data-i="'+i+'" d="M0 '+y(i)+'C50 '+y(i)+' 40 200 100 200"/>';
- for(i=0;i<n;i++)o+='<path class="'+K+'__out" data-i="'+i+'" d="M100 200C160 200 150 '+y(i)+' 200 '+y(i)+'"/>';
+function lines(n){var i,o='',y=function(i){return f1(400*(i+0.5)/n)},on=function(i){return i?'':' is-on'};
+ for(i=0;i<n;i++)o+='<path class="'+K+'__in'+on(i)+'" data-i="'+i+'" d="M0 '+y(i)+'C50 '+y(i)+' 40 200 100 200"/>';
+ for(i=0;i<n;i++)o+='<path class="'+K+'__out'+on(i)+'" data-i="'+i+'" d="M100 200C160 200 150 '+y(i)+' 200 '+y(i)+'"/>';
  return '<svg class="'+K+'__lines" viewBox="0 0 200 400" preserveAspectRatio="none" aria-hidden="true" focusable="false">'+o+'</svg>'}
 LOOKS['decision-valve']=function(b,H){
  var C=b.cols||[],R=b.rows||[],n=R.length,k=++N;
@@ -1837,7 +1855,26 @@ LOOKS['decision-valve']=function(b,H){
 function pick(w,i){if(!w)return;var n=+getComputedStyle(w).getPropertyValue('--n')||w.querySelectorAll('.'+K+'__src').length;
  [].forEach.call(w.querySelectorAll('[data-i]'),function(x){var on=+x.getAttribute('data-i')===i;x.classList.toggle('is-on',on);if(x.tagName==='BUTTON')x.setAttribute('aria-pressed',on?'true':'false')});
  var lv=w.querySelector('.'+K+'__lever');if(lv)lv.style.setProperty('--a',ang(i,n)+'deg')}
+/* fit the lines to the drawn valve: each supply line runs from its button's centre into the inlet boss, each route
+   line leaves its own outlet boss (radially, at that position's angle) and lands on its card's centre. The static
+   paths above (a 200 x 400 box) are the no-JS fallback; this redraws them in the valve column's real pixels. */
+function layout(w){var v=w.querySelector('.'+K+'__valve'),sv=v&&v.querySelector('.'+K+'__lines'),dl=v&&v.querySelector('.'+K+'__dial');
+ if(!sv||!dl||!sv.getClientRects().length)return;var vb=v.getBoundingClientRect(),dr=dl.getBoundingClientRect(),W=vb.width,Ht=vb.height;if(!W||!Ht||!dr.width)return;
+ var s=dr.width/340,cx=dr.left-vb.left+dr.width/2,cy=dr.top-vb.top+dr.height/2,n=w.querySelectorAll('.'+K+'__src').length,R=128*s;
+ var mid=function(el){var r=el.getBoundingClientRect();return r.top-vb.top+r.height/2};
+ var ix=cx-128*s,i;
+ for(i=0;i<n;i++){var src=w.querySelector('.'+K+'__src[data-i="'+i+'"]'),card=w.querySelector('.'+K+'__card[data-i="'+i+'"]'),pi=sv.querySelector('.'+K+'__in[data-i="'+i+'"]'),po=sv.querySelector('.'+K+'__out[data-i="'+i+'"]');
+  if(src&&pi){var ys=mid(src),k=Math.max(ix*0.55,8);pi.setAttribute('d','M0 '+f1(ys)+'C'+f1(k)+' '+f1(ys)+' '+f1(ix-k)+' '+f1(cy)+' '+f1(ix)+' '+f1(cy))}
+  if(card&&po){var a=ang(i,n)*Math.PI/180,ox=cx+R*Math.cos(a),oy=cy+R*Math.sin(a),yc=mid(card),L=Math.max((W-ox)*0.5,8);
+   po.setAttribute('d','M'+f1(ox)+' '+f1(oy)+'C'+f1(ox+L*Math.cos(a))+' '+f1(oy+L*Math.sin(a))+' '+f1(W-L*0.6)+' '+f1(yc)+' '+f1(W)+' '+f1(yc))}}
+ sv.setAttribute('viewBox','0 0 '+f1(W)+' '+f1(Ht))}
+function scan(){[].forEach.call(document.querySelectorAll('.'+K),function(w){if(!w._dvRO&&typeof ResizeObserver!=='undefined'){w._dvRO=new ResizeObserver(function(){layout(w)});w._dvRO.observe(w)}layout(w)})}
+var queued=0;function soon(){if(queued)return;queued=1;requestAnimationFrame(function(){queued=0;scan()})}
+if(typeof window!=='undefined')window.AQdecisionValve={layout:layout,scan:scan};
 if(typeof document!=='undefined'){
+ if(typeof MutationObserver!=='undefined')new MutationObserver(function(){if(document.querySelector('.'+K+':not([data-dv])')){[].forEach.call(document.querySelectorAll('.'+K+':not([data-dv])'),function(w){w.setAttribute('data-dv','')});soon()}}).observe(document.documentElement,{childList:true,subtree:true});
+ if(document.readyState!=='loading')soon();else document.addEventListener('DOMContentLoaded',soon);
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(soon);
  document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src, .'+K+'__card');if(!t||(ev.target.closest('a')))return;pick(t.closest('.'+K),+t.getAttribute('data-i'))});
  document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src');if(!t)return;var w=t.closest('.'+K);[].forEach.call(w.querySelectorAll('.'+K+'__in, .'+K+'__out'),function(p){p.classList.toggle('is-hint',p.getAttribute('data-i')===t.getAttribute('data-i'))})});
  document.addEventListener('mouseout',function(ev){var t=ev.target.closest&&ev.target.closest('.'+K+'__src');if(!t)return;[].forEach.call(t.closest('.'+K).querySelectorAll('.is-hint'),function(p){p.classList.remove('is-hint')})})}
@@ -1858,7 +1895,7 @@ LOOKS['derivation-sheet']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var lines=R.map(function(r,i){var set=String(r[2]||''),m=set.match(NUM);
   var lim=m?'<p class="aq-derivation-sheet__v"><span class="aq-derivation-sheet__num">'+tx(m[1])+'</span><span class="aq-derivation-sheet__u">'+tx(m[2])+'</span></p>'
     +(m[3]||m[4]?'<p class="aq-derivation-sheet__ref">'+[m[3],m[4]].filter(Boolean).map(tx).join('<span aria-hidden="true"> · </span>')+'</p>':'')
-   :'<p class="aq-derivation-sheet__set">'+tx(set)+'</p>';
+   :'<ul class="aq-derivation-sheet__set">'+set.split(/;\s*/).filter(Boolean).map(function(x){return '<li>'+tx(x)+'</li>'}).join('')+'</ul>';
   return '<li class="aq-derivation-sheet__line'+(m?' is-figure':'')+'"><span class="aq-derivation-sheet__no" aria-hidden="true">('+(i+1)+')</span>'
    +'<div class="aq-derivation-sheet__given"><span class="aq-derivation-sheet__k">'+tx(C[0]||'')+'</span><h3 class="aq-derivation-sheet__t">'+tx(r[0])+'</h3></div>'
    +'<span class="aq-derivation-sheet__op" aria-hidden="true"><svg viewBox="0 0 48 16" focusable="false"><path d="M2 8H44M37 2L45 8L37 14"/></svg></span>'
@@ -1973,7 +2010,7 @@ LOOKS['fidelity-ladder']=(function(){
  function flat(inner){return '<svg class="aq-fidelity-ladder__svg" viewBox="0 0 360 200" focusable="false" aria-hidden="true">'+inner+'</svg>'}
  /* the isometric spool every later sheet redraws: a run, two elbows and a branch */
  var SP=[[0,0,64],[160,0,64],[160,-128,64],[160,-128,128]],BR=[[80,0,64],[80,0,14]];
- function spool(extra){var o=isoPipe(SP,{r:6,flanges:'ends',caps:true})+isoPipe(BR,{r:5,flanges:'ends',caps:'end'});return isoSvg(360,200,o+(extra||''),'aq-iso--navy aq-fidelity-ladder__svg',{origin:[58,142]})}
+ function spool(extra){var o=isoPipe(SP,{r:8,flanges:'ends',caps:true})+isoPipe(BR,{r:6.5,flanges:'ends',caps:'end'});return isoSvg(360,200,o+(extra||''),'aq-iso--navy aq-fidelity-ladder__svg',{origin:[58,142]})}
  var SHEET={
   matrix:function(){var o='',r,c;for(r=0;r<6;r++)o+=P('M24 '+(30+r*26)+'H336','grid');o+=P('M24 30V160M150 30V160M262 30V160M336 30V160','grid');
    for(r=0;r<5;r++){o+=P('M34 '+(43+r*26)+'H'+(80+(r*37)%60),'txt')+P('M160 '+(43+r*26)+'H'+(200+(r*29)%50),'txt');
@@ -2176,7 +2213,7 @@ LOOKS['grade-mains']=function(b,H){var R=b.rows||[],L=b.lanes||[],T=b.taps||[],n
  return sec(H+wFold(b,n,grid,b.fold_noun)+cap,'aq-band--navy aq-grade-mains-sec')};
 })();
 /* Look "grade-switch" -> GradeSwitch (design-system/components/GradeSwitch): a short grade table (as: "grades") set as
-   a selector panel on a limestone band. Each product is a strip on one plate: its name, a selector with one slot per
+   a selector panel on the page ground (the core's alternating surface; the URS line above sits on the sunken ground). Each product is a strip on one plate: its name, a selector with one slot per
    water grade (the knob sits in the minimum; a slot your specification may call for shows as a dashed open slot), then
    the minimum as written and the note. The selector is a picture of the row (aria-hidden); the words carry it.
    Fields, as the grades table: cols, rows [product, minimum, note].
@@ -2195,10 +2232,10 @@ LOOKS['grade-switch']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.positions|
    +'<div class="aq-grade-switch__txt"><p class="aq-grade-switch__min"><span class="aq-grade-switch__k">'+tx(C[1]||'')+'</span>'+tx(r[1])+'</p>'
    +(r[2]?'<p class="aq-grade-switch__note">'+tx(r[2])+'</p>':'')+'</div></li>'}).join('');
  var screws='<span class="aq-grade-switch__screw" aria-hidden="true"></span>'.repeat(4);
- return sec(H+'<div class="aq-grade-switch">'+screws+'<p class="aq-grade-switch__colh"><span>'+tx(C[0]||'')+'</span><span aria-hidden="true">'+P.map(function(p){return e(p.t)}).join(' · ')+'</span></p><ol class="aq-grade-switch__rows">'+rows+'</ol></div>','aq-band--limestone aq-grade-switch-sec')};
+ return sec(H+'<div class="aq-grade-switch">'+screws+'<p class="aq-grade-switch__colh"><span>'+tx(C[0]||'')+'</span><span aria-hidden="true">'+P.map(function(p){return e(p.t)}).join(' · ')+'</span></p><ol class="aq-grade-switch__rows">'+rows+'</ol></div>','aq-grade-switch-sec')};
 })();
 /* Look "hire-path" -> HirePath (design-system/components/HirePath): the steps into a role as one path walked left to
-   right. A single track runs across the section; each step stands on it as a huge light outline numeral (a gate),
+   right. A single track runs across the section; each step stands on it as a huge light numeral (a gate),
    with the step's name and line under it. Where a step names the work it tests (the practical interview), its
    exercises are drawn as a row of line icons under the text, one per exercise. The track ends past the last step.
    Fields (a steps block): h, intro, items [{t, d, icons}]. icons (optional): line icon names (Icon set) drawn under
@@ -2257,8 +2294,8 @@ LOOKS['hmi-trend']=function(b,H){
  document.addEventListener('mouseover',over);document.addEventListener('focusin',over);
  ['mouseout','focusout'].forEach(function(k){document.addEventListener(k,function(ev){var root=ev.target.closest&&ev.target.closest('.aq-hmi-trend');if(root&&!root.contains(ev.relatedTarget))set(root,null)})});
 })();
-/* Look "hold-timeline" -> HoldTimeline (pass 9): a steps block drawn as one rising line of stage nodes across a dark
-   macro close-up of a fused pipe joint. Stages climb left to right; each stage's callout hangs off its node like a
+/* Look "hold-timeline" -> HoldTimeline (pass 9): a steps block drawn as one rising line of stage nodes across a pale
+   engraved macro close-up of a fused pipe joint. Stages climb left to right; each stage's callout hangs off its node like a
    flag on a pole, alternately below-right and above-left, so the line never crosses text. A stage with hold
    ("<who signs>") is a hold point: a ringed node and a "Hold point" stamp naming who signs.
    Item title "<stage>, <duration>": the last top-level comma (outside [] and ()) splits it into the stage name and its
@@ -2299,11 +2336,11 @@ LOOKS['hold-timeline']=function(b,H){var I=b.items||[],n=I.length,G=holdGeo(n);
    +'<span class="aq-hold-timeline__pole" aria-hidden="true"></span><span class="aq-hold-timeline__node" aria-hidden="true"><span class="aq-hold-timeline__halo"></span></span>'
    +'<div class="aq-hold-timeline__c">'
    +'<h3 class="aq-hold-timeline__t"><span class="aq-hold-timeline__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+' /</span> '+nm+'</h3>'
-   +(dur?'<p class="'+(fig?'aq-hold-timeline__fig':'aq-hold-timeline__dur')+'">'+tx(dur)+'</p>':'')
+   +(dur?(fig?'<p class="aq-hold-timeline__fig">'+tx(dur).replace(/(\d+(?:[.,]\d+)?)/,'<span class="aq-hold-timeline__num">$1</span>')+'</p>':'<p class="aq-hold-timeline__dur">'+tx(dur)+'</p>'):'')
    +(it.d?'<p class="aq-hold-timeline__d">'+tx(it.d)+'</p>':'')
    +(it.hold?'<p class="aq-hold-timeline__hold"><span class="aq-hold-timeline__hk">Hold point</span> Signed by '+who(it.hold)+'</p>':'')
    +'</div></li>'}).join('');
- return '<section class="aq-section aq-hold-timeline-sec" data-theme="dark">'+(b.macro===false?'':holdMacro())+'<div class="aq-in aq-stack-l">'+H
+ return '<section class="aq-section aq-hold-timeline-sec">'+(b.macro===false?'':holdMacro())+'<div class="aq-in aq-stack-l">'+H
   +'<div class="aq-hold-timeline" style="--n:'+n+';--w:'+G.w+'%">'
   +'<ol class="aq-hold-timeline__list">'+st
   +'<li class="aq-hold-timeline__band" aria-hidden="true"><svg viewBox="0 0 1000 1000" preserveAspectRatio="none">'
@@ -2412,14 +2449,14 @@ LOOKS['issued-set']=(function(){
 /* Look "joint-tag" -> JointTag (design-system/components/JointTag): one joint, one log line, shown on the joint itself.
    A polypropylene pipe in side view runs across the section and off both edges, two lengths fused in the middle with
    the double-rolled fusion bead; each length carries its printed lot marking, the joint number is stencilled beside
-   the bead, a test coupon lies under it and a dashed cut line marks where a rejected joint would be cut out. A
+   the bead, a fused test coupon lies on the bench under it and a dashed cut line marks where a rejected joint would be cut out. A
    traceability tag hangs from the joint on its wire: the log line as a printed form, one box per field (number, field,
    what it proves, the record). Each field's number is also pinned on the part of the joint it describes; pointing at a
    field lights its pin.
    Fields, as a table: cols [field, what it proves, record], rows, fold, fold_noun. Optional parts (one per row: num,
    lot, welder, bead, visual, coupon, sign, cut; default from the field's words). The fold applies on phones only. */
 LOOKS['joint-tag']=(function(){
- var PIN={num:[812,92],lot:[560,118],welder:[770,262],bead:[640,36],visual:[640,262],coupon:[476,286],sign:[770,316],cut:[940,118]};
+ var PIN={num:[810,76],lot:[560,118],welder:[770,262],bead:[640,36],visual:[640,262],coupon:[372,303],sign:[770,316],cut:[940,118]};
  function pick(s){s=String(s||'');return /joint number/i.test(s)?'num':/material|lot/i.test(s)?'lot':/welder/i.test(s)?'welder':/parameter|setting/i.test(s)?'bead':/visual|examin/i.test(s)?'visual':/test joint/i.test(s)?'coupon':/repair|cut/i.test(s)?'cut':'sign'}
  function str(c){return String(c&&typeof c==='object'?c.t:c==null?'':c)}
  function dots(x0,y,w){var o='';for(var x=x0;x<x0+w;x+=9)o+='<rect x="'+x+'" y="'+(y+((x/9)%3===0?3:0))+'" width="5" height="'+((x/9)%4===1?9:5)+'"/>';return '<g class="aq-joint-tag__print">'+o+'</g>'}
@@ -2441,13 +2478,17 @@ LOOKS['joint-tag']=(function(){
    +'<path class="aq-joint-tag__cut" d="M940 52V248"/><path class="aq-joint-tag__cutm" d="M930 44L950 60M950 44L930 60M930 240L950 256M950 240L930 256"/>';
   /* the wire round the joint and down to the tag */
   o+='<path class="aq-joint-tag__wire" d="M742 70C758 70 758 230 742 230M742 230C718 236 716 252 724 262C730 270 730 284 724 300V340"/>';
-  /* a test coupon, bent, on the bench under the joint */
-  o+='<path class="aq-joint-tag__coupon" d="M390 300H450C472 300 476 270 492 270H562"/><path class="aq-joint-tag__coupon" d="M390 312H450C478 312 484 282 496 282H562"/>';
+  /* the test joint: a short fused coupon of the same pipe, bead in the middle, lying on the bench under the joint */
+  o+='<g class="aq-joint-tag__coupon"><path class="aq-joint-tag__bench" d="M384 324H572"/>'
+   +'<rect class="aq-joint-tag__cb" x="404" y="290" width="144" height="26"/><rect class="aq-joint-tag__cs" x="404" y="307" width="144" height="9"/>'
+   +'<path class="aq-joint-tag__ce" d="M404 290H548V316H404Z"/>'
+   +'<path class="aq-joint-tag__cbd" d="M468 291C465 282 470 278 476 280C482 278 487 282 484 291Z"/><path class="aq-joint-tag__cbd" d="M468 315C465 324 470 328 476 326C482 328 487 324 484 315Z"/>'
+   +'<path class="aq-joint-tag__seam" d="M476 291V315"/></g>';
   return o}
  return function(b,H){var C=b.cols||[],R=b.rows||[],Pt=b.parts||[];
   var parts=R.map(function(r,i){return PIN[Pt[i]]?Pt[i]:pick(str(r[0]))}),pins='',used={};
   parts.forEach(function(p,i){var q=PIN[p].slice(),u=used[p]=(used[p]||0)+1;if(u>1)q=[q[0]+34*(u-1),q[1]];
-   pins+='<g class="aq-joint-tag__pin" data-k="'+i+'"><circle cx="'+q[0]+'" cy="'+q[1]+'" r="15"/><text x="'+q[0]+'" y="'+(q[1]+4.5)+'" text-anchor="middle">'+(i<9?'0':'')+(i+1)+'</text></g>'});
+   pins+='<g class="aq-joint-tag__pin" data-k="'+i+'"><circle cx="'+q[0]+'" cy="'+q[1]+'" r="15"/><text x="'+q[0]+'" y="'+q[1]+'" text-anchor="middle" dominant-baseline="central">'+(i<9?'0':'')+(i+1)+'</text></g>'});
   var svg='<div class="aq-joint-tag__pipe" aria-hidden="true"><svg viewBox="0 0 1200 340" focusable="false">'+pipe()+pins+'</svg></div>';
   var k=function(i){return C[i]?'<p class="aq-joint-tag__k">'+tx(C[i])+'</p>':''};
   var list='<ol class="aq-joint-tag__fields" role="list">'+R.map(function(r,i){
@@ -2558,7 +2599,7 @@ function lbVal(g,v){return g?'<span class="aq-limit-bento__c">'+e(g.c)+'</span><
 function lbColumn(r){var g=gaugeParse(r.v),a=gaugeParse(r.alt&&r.alt.v);if(!g||!a)return '';
  var S=gaugeScale(Math.max(g.n,a.n),false),max=S[0],div=S[1]*2,f=function(n){return Math.min(n/max,1)},ticks='',i;
  for(i=0;i<=div;i++){var y=(100-100*i/div).toFixed(2);ticks+='<li style="top:'+y+'%"'+(i%2?' class="is-minor"':'')+'>'+(i%2?'':'<span>'+gaugeNum(max*i/div)+'</span>')+'</li>'}
- /* the water: a limestone body with a wave on top, its surface at the limit */
+ /* the water: a flow-blue body with a wave on top, the wave midline at the limit */
  var wave='<svg class="aq-limit-bento__wave" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path class="aq-limit-bento__wbody" d="M0 12 C 50 2, 100 2, 150 12 S 250 22, 300 12 S 380 4, 400 10 L400 24 L0 24Z"/><path class="aq-limit-bento__wline" d="M0 12 C 50 2, 100 2, 150 12 S 250 22, 300 12 S 380 4, 400 10"/></svg>';
  return '<figure class="aq-limit-bento__col" style="--lim:'+f(g.n).toFixed(4)+';--alt:'+f(a.n).toFixed(4)+'">'
   +'<figcaption class="aq-limit-bento__cap"><span class="aq-limit-bento__cap-p">'+tx(r.p)+'</span>'+(g.q?'<span class="aq-limit-bento__cap-q">'+tx(g.q)+'</span>':'')+'</figcaption>'
@@ -2617,7 +2658,8 @@ LOOKS['limit-stack']=function(b,H){
   +'<span class="aq-limit-stack__seal" aria-hidden="true" style="'+pos(P.seal)+'">Guaranteed</span>'
   +'<span class="aq-limit-stack__outlet" aria-hidden="true" style="'+pos(P.out)+'">Skid outlet</span>'
   +(b.intro?'<figcaption class="aq-limit-stack__note aq-limit-stack__note--'+P.side+'" style="'+pos(P.note)+'">'+tx(b.intro)+'</figcaption>':'')+'</figure>';
- return sec('<div class="aq-limit-stack">'+'<div class="aq-limit-stack__text">'+head+list+wSpecNote(b)+'</div>'+fig+'</div>','aq-band--limestone aq-limit-stack-sec')};
+ /* The limestone sheet keeps its light tokens in the dark theme too (pipe body, flow line, the boxed outlet row) */
+ return sec('<div class="aq-limit-stack">'+'<div class="aq-limit-stack__text">'+head+list+wSpecNote(b)+'</div>'+fig+'</div>','aq-band--limestone aq-limit-stack-sec').replace(/^<section class="([^"]*)"/,'<section class="$1" data-theme="light"')};
 /* Look "loop-circuit" -> LoopCircuit (design-system/components/LoopCircuit): how a storage and distribution loop works,
    drawn as the loop's own control screen (an HMI mimic on a dark navy band). The tank is shown in section: vent filter
    on the head, spray ball wetting the head space, the water level inside. Generation feeds it from the left; the loop
@@ -2851,7 +2893,7 @@ LOOKS['market-callouts']=(function(){
     +'<h3 class="aq-market-callouts__t"><span class="aq-market-callouts__n" aria-hidden="true">'+n+' /</span> '+tx(it.t)+'</h3>'+body+'</li>'}).join('');
   var svg=isoSvg(VW,VH,sc.g+'<g class="aq-market-callouts__leads">'+lead+'</g>','aq-iso--limestone aq-market-callouts__svg',{});
   return sec(H+'<div class="aq-market-callouts"><div class="aq-market-callouts__stage"><div class="aq-market-callouts__plane" aria-hidden="true">'
-   +'<span class="aq-market-callouts__rail aq-market-callouts__rail--a"></span><span class="aq-market-callouts__rail aq-market-callouts__rail--b"></span>'+svg+marks+'</div>'
+   +svg+marks+'</div>'
    +'<ol class="aq-market-callouts__list">'+list+'</ol></div></div>','aq-band--navy aq-market-callouts-band')}
 })();
 /* Look "marking-match" -> MarkingMatch (design-system/components/MarkingMatch): supplier control seen from the auditor's
@@ -3053,11 +3095,11 @@ function mpScene(n,base){
   var lp=isoP([x+bw/2,y+bd/2,z+h]);marks.push({k:i,p:[lp[0],lp[1]-26],s:lp});
  }
  var loop=isoPipe([[-34,py,pz],[W+34,py,pz]],{r:2.6,flanges:'ends',caps:true});
- var bl=isoP([W*0.5,D,ph*0.5]);
+ var bl=isoP([W*0.3,py+44,0]);
  var inner=plinth+loop+parts.join('')+isoArrow([W+20,py,pz],'x')+marks.map(function(mk){return '<path class="aq-iso__leader-line" d="M'+isoT(mk.s)+'L'+isoT(mk.p)+'"/><circle class="aq-iso__leader-dot" cx="'+isoF(mk.s[0])+'" cy="'+isoF(mk.s[1])+'" r="1.6"/>'}).join('');
  var bx=isoBounds([[-40,0,0],[W+40,0,0],[-40,py+4,0],[W+40,py+4,0],[0,0,90],[W,0,90]],22),w=Math.round(bx.w),hh=Math.round(bx.h+10),org=[-bx.x,-bx.y+10];
  var labs=marks.map(function(mk){var a=isoPct(mk.p,w,hh,org);return '<span class="aq-module-plinth__mk" data-k="'+mk.k+'" style="left:'+a.left+';top:'+a.top+'">'+(mk.k<9?'0':'')+(mk.k+1)+'</span>'}).join('');
- var bp=isoPct([bl[0],bl[1]+34],w,hh,org);
+ var bp=isoPct(bl,w,hh,org);
  return '<div class="aq-iso-figure aq-module-plinth__fig" aria-hidden="true">'+isoSvg(w,hh,inner,'aq-iso--navy aq-module-plinth__svg',{origin:org,under:isoSheet(w,hh,{grid:'iso',m:6,band:0,gridStep:22})})+labs
   +(base?'<span class="aq-module-plinth__base" style="left:'+bp.left+';top:'+bp.top+'">'+e(base)+'</span>':'')+'</div>'}
 LOOKS['module-plinth']=function(b,H){var I=b.items||[],n=I.length;
@@ -3244,7 +3286,7 @@ LOOKS['pdf-anatomy']=(function(){
   var tops={search:58,mark:142,foot:432};
   var callHtml='<ol class="aq-pdf-anatomy__calls" role="list">'+calls.map(function(c,j){return '<li class="aq-pdf-anatomy__call" data-c="'+j+'" style="top:'+(tops[c.part]/520*100).toFixed(2)+'%"><span class="aq-pdf-anatomy__cn" aria-hidden="true">'+(j+1)+'</span><span>'+tx(c.t)+'</span></li>'}).join('')+'</ol>';
   var pins=calls.map(function(c,j){var a=AT[c.part];return '<span class="aq-pdf-anatomy__pin" aria-hidden="true" style="left:'+(a[0]/760*100).toFixed(2)+'%;top:'+(a[1]/520*100).toFixed(2)+'%">'+(j+1)+'</span>'}).join('');
-  var fig='<figure class="aq-pdf-anatomy__plate"><figcaption class="aq-pdf-anatomy__cap">'+k(0)+'<h3 class="aq-pdf-anatomy__h">'+tx(F.p)+'</h3>'+(F.m?'<p class="aq-pdf-anatomy__note">'+tx(F.m)+'</p>':'')+'</figcaption>'
+  var fig='<figure class="aq-pdf-anatomy__plate"><figcaption class="aq-pdf-anatomy__cap">'+k(1)+'<h3 class="aq-pdf-anatomy__h">'+tx(F.p)+'</h3>'+(F.m?'<p class="aq-pdf-anatomy__note">'+tx(F.m)+'</p>':'')+'</figcaption>'
    +'<div class="aq-pdf-anatomy__draw"><div class="aq-pdf-anatomy__crop"><div class="aq-pdf-anatomy__art">'+plate(calls)+pins+'</div></div>'+callHtml+'</div></figure>';
   var side=rows.filter(function(r,i){return i!==hi}).map(function(r){var v=String(r.v||''),ch=v.split(/\s*;\s*/),body;
    if(ch.length>1)body='<ul class="aq-pdf-anatomy__sigs" role="list">'+ch.map(function(c,j){c=c.replace(/^or\s+/i,'');return '<li><span class="aq-pdf-anatomy__sl" aria-hidden="true"></span><span class="aq-pdf-anatomy__sv">'+(j===ch.length-1&&j?'<span class="aq-pdf-anatomy__or">or </span>'+tx(c):tx(c.charAt(0).toUpperCase()+c.slice(1)))+'</span></li>'}).join('')+'</ul>';
@@ -3339,7 +3381,7 @@ function pcPiece(k){var r=function(x,y,w,h,c){return '<rect data-f="'+c+'" x="'+
   case 'pipe':return r(0,0,200,100,'sk')+p('M0 64 H112 A34 34 0 0 0 146 30 V0','pipe')+r(52,46,8,36,'nv')+r(130,10,32,8,'nv')+r(88,64,14,26,'nv')+r(84,88,22,6,'nv')+p('M0 64 H112 A34 34 0 0 0 146 30 V0','fl');
   case 'panel':return r(0,0,100,200,'nv')+r(18,26,64,148,'ls')+p('M50 26 V174','nvl')+r(24,40,20,16,'sf')+c(62,46,3.5,'nv')+c(70,46,3.5,'nv')+c(62,56,3.5,'dot')
    +p('M24 150 H44 M24 156 H44 M24 162 H44','nvl')+r(56,132,20,14,'sf')+p('M58 132 H76 V146 H58 Z','flb');
-  case 'pellets':var s=r(0,0,100,100,'ls');for(var i=0;i<4;i++)for(var j=0;j<4;j++)s+=c(20+20*i,20+20*j,6.5,(i*4+j)%7===2?'nv':'ln');return s;
+  case 'pellets':var s=r(0,0,100,100,'ls');for(var i=0;i<4;i++)for(var j=0;j<4;j++)if(i||j<3)s+=c(20+20*i,20+20*j,6.5,(i*4+j)%7===2?'nv':'ln');return s;
   case 'weld':return r(0,0,200,100,'nv')+r(14,32,78,36,'ls')+r(108,32,78,36,'ls')+p('M100 22 C93 34 93 66 100 78 C107 66 107 34 100 22 Z','bead')+p('M14 50 H186','flo')+p('M92 26 V74 M108 26 V74','nvl');
   case 'arc':return r(0,0,100,100,'sf')+p('M0 70 A30 30 0 0 1 30 100 M0 50 A50 50 0 0 1 50 100 M0 30 A70 70 0 0 1 70 100 M0 10 A90 90 0 0 1 90 100','fl');
   case 'quarter':return r(0,0,100,100,'ls')+p('M100 0 H0 A100 100 0 0 0 100 100 Z','nv')+c(78,22,8,'lsf');
@@ -3348,7 +3390,7 @@ function pcPiece(k){var r=function(x,y,w,h,c){return '<rect data-f="'+c+'" x="'+
 function pcG(k,x,y,lab,i){var g=2,S=PC_SLOT[k]||[x,y,1,1],w=S[2]*100,h=S[3]*100;
  return '<g transform="translate('+(S[0]*100+g)+' '+(S[1]*100+g)+') scale('+((w-2*g)/w).toFixed(4)+' '+((h-2*g)/h).toFixed(4)+')"><g class="aq-pipe-collage__cell'+(i!=null?' is-piece':'')+'"'+(i!=null?' data-pc="'+i+'"':'')+' data-edge="'+(S[0]===0?'l':S[0]+S[2]>=3?'r':'t')+'">'
   +pcPiece(k)+(i!=null?'<rect class="aq-pipe-collage__frame" x="1" y="1" width="'+(w-2)+'" height="'+(h-2)+'"/>':'')
-  +(lab?'<text class="aq-pipe-collage__n" x="8" y="'+(h-10)+'">'+lab+'</text>':'')+'</g></g>'}
+  +(lab?(k==='vessel'?'<text class="aq-pipe-collage__n" x="'+(w-8)+'" y="20" text-anchor="end">':'<text class="aq-pipe-collage__n" x="8" y="'+(h-10)+'">')+lab+'</text>':'')+'</g></g>'}
 LOOKS['pipe-collage']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.pieces||[],used={};
  var cells=PC_FILL.map(function(f){return pcG(f[0],f[1],f[2])}).join('');
  R.forEach(function(r,i){var k=K[i];if(PC_SLOT[k]&&!used[k]){used[k]=1;cells+=pcG(k,0,0,(i<9?'0':'')+(i+1),i)}});
@@ -3731,17 +3773,35 @@ LOOKS['response-lanes']=function(b,H){var C=b.cols||[],R=b.rows||[],seen=false;
    gen, tank, loop, uv, toc, panel); a row without parts leaves the whole plant as existing.
    Phones: no tabs; every upgrade is a card with its terms and its stage drawn small. */
 var rpN=0;
+/* the camera: a rectangle in sheet units framing the picked upgrade's stages (tx, ty, z) and the key-plan window */
+function rpCam(r,VW,VH,PW,PH){if(!r)return {tx:0,ty:Math.round((VH-PH)/2),z:1};
+ var IW=VW-40,IH=VH-40,z=Math.max(1,Math.min(2.3,IW*0.6/r.w,IH*0.72/r.h)),cx=r.x+r.w/2,cy=r.y+r.h/2,tx=VW/2-z*cx,ty=VH/2-z*cy;
+ tx=Math.min(0,Math.max(VW-z*PW,tx));if(z*PH>VH)ty=Math.min(0,Math.max(VH-z*PH,ty));
+ return {tx:Math.round(tx),ty:Math.round(ty),z:+z.toFixed(3)}}
 LOOKS['retrofit-plant']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.parts||[],K='aq-retrofit-plant',pl=vpPlant(),S=pl.S,id='rp'+(++rpN);
  var order=pl.order.filter(function(x){var s=String(x);return s.indexOf('data-iso-id="report"')<0});
  var allP=[];Object.keys(S).forEach(function(k){if(k!=='report')allP=allP.concat(S[k].pts)});
- var bx=isoBounds(allP,26),VW=1080,sc=VW/bx.w,VH=Math.round(bx.h*sc+16),org=[-bx.x,-bx.y+8/sc];
- var on0=String(P[0]||'').split(/\s+/);
- var drawing='<g transform="scale('+sc.toFixed(4)+') translate('+org[0].toFixed(1)+' '+org[1].toFixed(1)+')">'+order.join('').replace(/<g class="(aq\-iso__(?:part|pipe)[^"]*)"([^>]*?data-iso-(?:id|to)="([^"]+)")/g,function(m,c,rest,k){return on0.indexOf(k)>=0?'<g class="'+c+' is-lit"'+rest:m})+'</g>';
- var sheet=isoSheet(VW,VH,{grid:'iso',gridStep:22,title:false,m:0,band:8,cols:9,rows:3});
+ var bx=isoBounds(allP,26),PW=1080,sc=PW/bx.w,PH=Math.round(bx.h*sc+16),org=[-bx.x,-bx.y+8/sc],VW=1080,VH=430;
  var stg=function(i){return String(P[i]||'').split(/\s+/).filter(function(k){return S[k]})};
- var svg='<svg class="aq-iso aq-iso--navy '+K+'__svg is-retro" viewBox="0 0 '+VW+' '+VH+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false" data-on="'+stg(0).join(' ')+'">'+sheet+drawing+'</svg>';
+ /* each row's camera: the bounds of its stages (part ports, padded), in sheet units */
+ var cams=R.map(function(r,i){var ks=stg(i),pts=[];ks.forEach(function(k){pts=pts.concat(S[k].pts)});if(!pts.length)return rpCam(null,VW,VH,PW,PH);
+  var q=isoBounds(pts,34);return rpCam({x:sc*(q.x+org[0]),y:sc*(q.y+org[1])-10,w:sc*q.w,h:sc*q.h+10},VW,VH,PW,PH)});
+ var cam0=rpCam(null,VW,VH,PW,PH),camS=function(c){return 'transform:translate('+c.tx+'px,'+c.ty+'px) scale('+c.z+')'};
+ /* key plan: the whole plant small in the corner, the camera's window on it */
+ var KW=200,ks=KW/PW,KH=Math.round(PH*ks),kx=26,ky=VH-26-KH-14;
+ var win=function(c){var x0=Math.max(0,-c.tx/c.z),x1=Math.min(PW,(VW-c.tx)/c.z),y0=Math.max(0,-c.ty/c.z),y1=Math.min(PH,(VH-c.ty)/c.z);return 'transform:translate('+(x0*ks).toFixed(1)+'px,'+(y0*ks).toFixed(1)+'px) scale('+((x1-x0)*ks).toFixed(1)+','+((y1-y0)*ks).toFixed(1)+')'};
+ var on0=String(P[0]||'').split(/\s+/);
+ var drawing='<g id="'+id+'-plant" transform="scale('+sc.toFixed(4)+') translate('+org[0].toFixed(1)+' '+org[1].toFixed(1)+')">'+order.join('').replace(/<g class="(aq\-iso__(?:part|pipe)[^"]*)"([^>]*?data-iso-(?:id|to)="([^"]+)")/g,function(m,c,rest,k){return on0.indexOf(k)>=0?'<g class="'+c+' is-lit"'+rest:m})+'</g>';
+ var sheet=isoSheet(VW,VH,{grid:'iso',gridStep:22,title:false,m:0,band:8,cols:9,rows:3});
+ var clip='<defs><clipPath id="'+id+'-clip"><rect x="8" y="8" width="'+(VW-16)+'" height="'+(VH-16)+'"/></clipPath></defs>';
+ var key='<g class="'+K+'__key" transform="translate('+kx+' '+ky+')"><rect class="'+K+'__kbox" x="-10" y="-10" width="'+(KW+20)+'" height="'+(KH+34)+'"/>'
+  +'<g class="'+K+'__kplant" transform="scale('+ks.toFixed(4)+')"><use href="#'+id+'-plant"/></g>'
+  +'<rect class="'+K+'__kwin" x="0" y="0" width="1" height="1" vector-effect="non-scaling-stroke" style="'+win(cams[0])+'"/>'
+  +'<text class="aq-iso__sheet-t" x="0" y="'+(KH+14)+'" dominant-baseline="central">KEY PLAN</text></g>';
+ var svg='<svg class="aq-iso aq-iso--navy '+K+'__svg is-retro" viewBox="0 0 '+VW+' '+VH+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false" data-on="'+stg(0).join(' ')+'" data-cam="'+camS(cams[0])+'" data-win="'+win(cams[0])+'" data-cam0="'+camS(cam0)+'" data-win0="'+win(cam0)+'">'+clip+sheet
+  +'<g clip-path="url(#'+id+'-clip)"><g class="'+K+'__cam" style="'+camS(cams[0])+'">'+drawing+'</g></g>'+key+'</svg>';
  var legend='<p class="'+K+'__legend" aria-hidden="true"><span class="'+K+'__sw '+K+'__sw--old"></span>Existing<span class="'+K+'__sw '+K+'__sw--new"></span>This upgrade</p>';
- var tabs='<div class="'+K+'__tabs" role="tablist" aria-label="'+e(C[0]||'Upgrade')+'">'+R.map(function(r,i){return '<button type="button" role="tab" class="'+K+'__tab" id="'+id+'-t'+i+'" aria-controls="'+id+'-p'+i+'" aria-selected="'+(i?'false':'true')+'" tabindex="'+(i?'-1':'0')+'" data-on="'+stg(i).join(' ')+'">'
+ var tabs='<div class="'+K+'__tabs" role="tablist" aria-label="'+e(C[0]||'Upgrade')+'">'+R.map(function(r,i){return '<button type="button" role="tab" class="'+K+'__tab" id="'+id+'-t'+i+'" aria-controls="'+id+'-p'+i+'" aria-selected="'+(i?'false':'true')+'" tabindex="'+(i?'-1':'0')+'" data-on="'+stg(i).join(' ')+'" data-cam="'+camS(cams[i])+'" data-win="'+win(cams[i])+'">'
   +'<span class="'+K+'__tn" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="'+K+'__tt">'+tcell(r[0])+'</span></button>'}).join('')+'</div>';
  var panels=R.map(function(r,i){var ps=stg(i),mini=ps.length&&S[ps[0]].mini.length?vpMini(S[ps[0]],'aq-iso--navy '+K+'__mini'):'';
   var terms=[1,2,3].filter(function(j){return r[j]!=null&&r[j]!==''}).map(function(j){return '<div class="'+K+'__term '+K+'__term--'+j+'"><dt>'+tx(C[j]||'')+'</dt><dd>'+tcell(r[j])+'</dd></div>'}).join('');
@@ -3750,10 +3810,12 @@ LOOKS['retrofit-plant']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.parts||[
    +'<h3 class="'+K+'__pt"><span class="'+K+'__tn" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+tcell(r[0])+'</h3><dl class="'+K+'__terms">'+terms+'</dl>'+go+'</div>'}).join('');
  return sec(H+'<div class="'+K+'"><div class="'+K+'__sheet">'+svg+legend+'</div><div class="'+K+'__pick">'+tabs+'<div class="'+K+'__panels">'+panels+'</div></div></div>','aq-band--navy '+K+'-sec')};
 /* Tabs: pick an upgrade, light its stages; arrow keys move between tabs */
+/* aim the camera and the key-plan window at what the svg's data-cam / data-win say */
+function rpAim(s){var c=s.querySelector('.aq-retrofit-plant__cam'),w=s.querySelector('.aq-retrofit-plant__kwin');if(c)c.setAttribute('style',s.getAttribute('data-cam')||'');if(w)w.setAttribute('style',s.getAttribute('data-win')||'')}
 (function(){function lit(r,on){var svg=r.querySelector('.aq-retrofit-plant__svg');if(!svg)return;[].forEach.call(svg.querySelectorAll('.is-lit'),function(el){el.classList.remove('is-lit')});
   String(on||'').split(' ').forEach(function(k){if(k)[].forEach.call(svg.querySelectorAll('[data-iso-id="'+k+'"],[data-iso-to="'+k+'"]'),function(el){el.classList.add('is-lit')})})}
  function pick(t){var r=t.closest('.aq-retrofit-plant');[].forEach.call(r.querySelectorAll('.aq-retrofit-plant__tab'),function(x){var on=x===t;x.setAttribute('aria-selected',on?'true':'false');x.tabIndex=on?0:-1;
-  var p=document.getElementById(x.getAttribute('aria-controls'));if(p)p.classList.toggle('is-off',!on)});lit(r,t.getAttribute('data-on'));var s=r.querySelector('.aq-retrofit-plant__svg');if(s)s.setAttribute('data-on',t.getAttribute('data-on')||'')}
+  var p=document.getElementById(x.getAttribute('aria-controls'));if(p)p.classList.toggle('is-off',!on)});lit(r,t.getAttribute('data-on'));var s=r.querySelector('.aq-retrofit-plant__svg');if(s){s.setAttribute('data-on',t.getAttribute('data-on')||'');s.setAttribute('data-cam',t.getAttribute('data-cam')||'');s.setAttribute('data-win',t.getAttribute('data-win')||'');rpAim(s)}}
  document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-retrofit-plant__tab');if(t)pick(t)});
  document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-retrofit-plant__tab');if(!t||['ArrowDown','ArrowUp','ArrowRight','ArrowLeft','Home','End'].indexOf(ev.key)<0)return;
   var a=[].slice.call(t.parentNode.querySelectorAll('.aq-retrofit-plant__tab')),i=a.indexOf(t),n=ev.key==='Home'?0:ev.key==='End'?a.length-1:(i+(/Down|Right/.test(ev.key)?1:a.length-1))%a.length;ev.preventDefault();a[n].focus();pick(a[n])});
@@ -3765,7 +3827,8 @@ LOOKS['retrofit-plant']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.parts||[
    one slip per item, and the "When" and "Cost" cells are split the same way when they hold the same number of parts
    (otherwise each slip shows the whole cell). A {t, link, intent} cell becomes a slip whose title is the link.
    Fields, as a table: cols [situation, what comes back, when, cost] (labels used as the slip field names), rows, fold,
-   fold_noun. Hover or focus on a row runs its pipe in flow and lifts its slips. Design system: components/ReturnSlips. */
+   fold_noun. Each slip's ruled header has one mark per slip in its row, its own in flow (slip 2 of 4 lights the second).
+   Hover or focus on a row runs its pipe in flow and lifts its slips. Design system: components/ReturnSlips. */
 (function(){
 function parts(c){return c&&typeof c==='object'?[c]:String(c==null?'':c).split(/\s+·\s+/)}
 function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
@@ -3773,7 +3836,7 @@ LOOKS['return-slips']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var rows=R.map(function(r,i){var got=parts(r[1]),when=parts(r[2]),cost=parts(r[3]),n=got.length;
   var wSplit=when.length===n,cSplit=cost.length===n;
   var slips=got.map(function(g,k){var w=wSplit?when[k]:r[2],c=cSplit?cost[k]:r[3];
-   return '<li class="aq-return-slips__slip" style="--k:'+k+'"><span class="aq-return-slips__ruling" aria-hidden="true"><i></i><i></i><i></i></span>'
+   return '<li class="aq-return-slips__slip" style="--k:'+k+'"><span class="aq-return-slips__ruling" aria-hidden="true">'+got.map(function(_,j){return '<i'+(j===k?' class="is-k"':'')+'></i>'}).join('')+'</span>'
     +'<p class="aq-return-slips__t">'+tcell(cap(g))+'</p>'
     +'<dl class="aq-return-slips__f">'
      +(w!=null&&w!==''?'<div><dt>'+wIcon('clock','aq-return-slips__ic')+tx(C[2]||'When')+'</dt><dd>'+tcell(w)+'</dd></div>':'')
@@ -3890,9 +3953,9 @@ LOOKS['revision-sheet']=(function(){
    /* draft and review: highlighted passages, numbered comments in the margin, a draft tag */
    function(){var s='';[[107,120,180],[167,60,210],[227,140,150]].forEach(function(c,j){s+='<rect class="aq-revision-sheet__hl" x="'+c[1]+'" y="'+(c[0]-6)+'" width="'+c[2]+'" height="10"/>'
      +P('M'+(c[1]+c[2])+' '+(c[0]-1)+'H364','lead')+'<circle class="aq-revision-sheet__cm" cx="374" cy="'+(c[0]-1)+'" r="8"/>'+T(374,c[0]+3,String(j+1),'cm','middle')});
-    return s+'<g class="aq-revision-sheet__draft"><rect x="282" y="74" width="86" height="22" transform="rotate(-6 325 85)"/>'+T(325,90,I[0]?String(I[0].t).split(/\s+/)[0]:'','tag','middle')+'</g>'},
+    return s+'<g class="aq-revision-sheet__dtag"><rect x="282" y="74" width="86" height="22" transform="rotate(-6 325 85)"/>'+T(325,90,I[0]?String(I[0].t).split(/\s+/)[0]:'','tag','middle')+'</g>'},
    /* revision: comments answered, revision triangle raised */
-   function(){var s='';[106,166,226].forEach(function(cy){s+=P('M370 '+cy+'l3 3l6 -7','tickw')});return s+P('M278 92L372 78','strike')+'<path class="aq-revision-sheet__tri" d="M340 30l10 18h-20z"/>'},
+   function(){var s='';[106,166,226].forEach(function(cy){s+='<circle class="aq-revision-sheet__cma" cx="374" cy="'+cy+'" r="8.75"/>'+P('M370 '+cy+'l3 3l6 -7','ticka')});return s+P('M278 92L372 78','strike')+'<path class="aq-revision-sheet__tri" d="M340 30l10 18h-20z"/>'},
    /* first hold: signature */
    function(){return P(SIG[0],'sig" transform="translate(52 384)')},
    /* second hold: data recorded and a second signature */
@@ -4135,18 +4198,18 @@ function slScene(){var A=58,B=58,st=function(i,dz){return [A*i,-B*i,dz||0]},o={}
  var hy=o1.ports.in[1],hz=zh-30;
  var hdr=isoPipe([[o1.ports.in[0]-30,hy,hz],[hx,hy,hz]],{r:2.2,to:'pou',caps:false});
  var drops=[o1,o2].map(function(oo){var q=oo.ports.in;return isoPipe([[q[0],hy,hz],[q[0],q[1],hz],q],{r:1.6,to:'pou',caps:false})}).join('');
- /* return: from the header end up and back overhead to the tank's return nozzle */
- var tr=tk.ports.ret,rp=[[hx,hy,hz],[hx,hy,zh]],q=[hx,hy,zh];
- while(q[0]-A>tr[0]+20){q=[q[0]-A,q[1],zh];rp.push(q);q=[q[0],q[1]+B,zh];rp.push(q)}
- rp.push([tr[0],q[1],zh]);if(Math.abs(q[1]-tr[1])>1)rp.push([tr[0],tr[1],zh]);rp.push(tr);
+ /* return: from the header end up, then one straight overhead run back along the line of the plant (level on the
+    drawing, as a pipe rack reads, set back behind the equipment) and a short leg into the tank's return nozzle */
+ var tr=tk.ports.ret,RB=90,p0=[hx,hy,zh],p1=[hx,hy-RB,zh],p2=[tr[0],hx+hy-RB-tr[0],zh],rp=[[hx,hy,hz],p0,p1,p2];
+ if(Math.abs(p2[1]-tr[1])>1)rp.push([tr[0],tr[1],zh]);rp.push(tr);
  var ret=isoPipe(rp,{r:2.2,to:'tank',caps:false,cls:'aq-sensor-loop__ret'});
  /* drain off the divert: a drop to the floor with an arrow */
  var dr=isoPipe([[dv[0]+5,dv[1],zs],[dv[0]+5,dv[1]+18,zs],[dv[0]+5,dv[1]+18,6]],{r:1.6,caps:'end',cls:'aq-sensor-loop__drain'});
- /* return instruments on the last overhead legs before the tank: flow meter, pressure gauge, temperature well */
- var L1=rp[rp.length-4],L2=rp[rp.length-3],mid=function(a,c,f){return [a[0]+(c[0]-a[0])*f,a[1]+(c[1]-a[1])*f,a[2]+(c[2]-a[2])*f]};
- var fm=mid(rp[3],rp[4],0.5),gp=mid(rp[5],rp[6],0.5),t3=mid(rp[rp.length-7],rp[rp.length-6],0.5);t3=[t3[0],t3[1],zh+2.2];
+ /* return instruments on the overhead run, in water order: flow meter, pressure gauge, temperature well */
+ var mid=function(a,c,f){return [a[0]+(c[0]-a[0])*f,a[1]+(c[1]-a[1])*f,a[2]+(c[2]-a[2])*f]},rl=Math.hypot(p2[0]-p1[0],p2[1]-p1[1])||1,rd=[(p2[0]-p1[0])/rl,(p2[1]-p1[1])/rl,0];
+ var fm=mid(p1,p2,0.2),gp=mid(p1,p2,0.45),t3=mid(p1,p2,0.72);t3=[t3[0],t3[1],zh+2.2];
  var ga=isoPart('gauge',gp[0],gp[1],zh+2.4,1,{id:'flow',value:0.5});
- var fx=Math.abs(rp[4][0]-rp[3][0])>1?'x':'y',fmD=isoCylD(fx==='x'?[fm[0]-7,fm[1],fm[2]]:[fm[0],fm[1]-7,fm[2]],fx,14,4.4);
+ var fmD=isoCylD([fm[0]-7*rd[0],fm[1]-7*rd[1],fm[2]],rd,14,4.4);
  /* order: back to front and in water order */
  b+=tk+s1+pu+s2+uv+an1+an2;
  b+=s3+dr+va+s4+hdr+o1+o2+drops+ret+ga+'<path class="aq-iso__eq" d="'+fmD[0]+fmD[1]+'"/>';
@@ -4303,7 +4366,7 @@ var SF_ROOMS=[[0,0,220,170],[0,190,220,340],[240,0,480,170],[240,190,480,340],[5
 /* station: part builder, where the walker stands (floor point), where the pin sits (3D) */
 var SF_ST={
  design:{p:function(){return isoPart('desk',80,70,0,1.8)},at:[90,140],pin:[80,70,96]},
- front:{p:function(){return isoPart('binder',170,112,0,1.6)},at:[160,150],pin:[168,112,64]},
+ front:{p:function(){return isoPart('binder',170,112,0,1.6)},at:[138,150],pin:[168,112,64]},
  qa:{p:function(){return isoPart('binder',70,262,0,1.5)+isoPart('stamp',160,282,0,2)},at:[110,212],pin:[70,262,60]},
  fab:{p:function(){var sk=isoPart('skid',262,40,0,1,{w:180,d:84});
    var run=isoPipe([[276,82,14],[352,82,14],[352,82,46],[428,82,46]],{r:4,caps:true,flanges:'ends',flow:false});
@@ -4326,13 +4389,13 @@ function sfScene(used){
  var ids=SF_ORDER.slice().sort(function(a,b){var A=SF_ST[a].pin,B=SF_ST[b].pin;return (A[0]+A[1])-(B[0]+B[1])});
  ids.forEach(function(id){o.push('<g class="aq-shop-floor__st'+(used.indexOf(id)<0?' is-idle':'')+'" data-iso-id="'+id+'">'+SF_ST[id].p()+'</g>')});
  /* walking route: in at the door, aisle to aisle, one leg per station in card order */
- var door=[234,356,0],cur=door,legs='';
+ var door=[240,356,0],cur=door,legs='';
  used.forEach(function(id,i){if(i&&id===used[i-1])return;var a=SF_ST[id].at,q=[a[0],a[1],1],pts=[cur];
-  {pts.push([cur[0],180,1]);pts.push([q[0],180,1])}pts.push(q);
+  {pts.push([cur[0],185,1]);pts.push([q[0],185,1])}pts.push(q);
   var P=[];pts.forEach(function(p){var l=P[P.length-1];if(!l||Math.abs(l[0]-p[0])+Math.abs(l[1]-p[1])>0.5)P.push(p)});
   if(P.length>1)legs+=isoPipe(P,{wall:false,r:1,bend:8,caps:false,to:id,cls:'aq-shop-floor__walk'});cur=q});
  o.push(legs);
- o.push(isoPath(isoPoly([[216,354,0],[252,354,0]]),'aq-iso__ln aq-shop-floor__door'));
+ o.push(isoPath(isoPoly([[222,354,0],[258,354,0]]),'aq-iso__ln aq-shop-floor__door'));
  var bx=isoBounds([[-14,-14,-8],[654,-14,-8],[-14,354,-8],[654,354,-8],[-14,-14,40],[654,-14,40],[234,360,0]],14),W=Math.round(bx.w),H=Math.round(bx.h),org=[-bx.x,-bx.y];
  var pins={};SF_ORDER.forEach(function(id){pins[id]=isoPct(isoP(SF_ST[id].pin),W,H,org)});
  return {svg:isoSvg(W,H,o.join(''),'aq-iso--navy aq-shop-floor__svg',{origin:org}),pins:pins}}
@@ -4581,7 +4644,7 @@ LOOKS['stage-stacks']=function(b,H){var C=b.cols||[],R=b.rows||[];
   return fli('<li class="aq-stage-stacks__stage" style="--i:'+i+'">',b,i)
    +'<div class="aq-stage-stacks__head">'+k(0,'is-ph')+'<h3 class="aq-stage-stacks__name"><span class="aq-stage-stacks__no" aria-hidden="true">'+num+'</span><span class="aq-stage-stacks__nm">'+(r[0]&&typeof r[0]==='object'?tcell({t:p[0],link:r[0].link}):tx(p[0]))+'</span>'
     +(p[1]?'<span class="aq-stage-stacks__ref">'+tx(p.slice(1).join(' · '))+'</span>':'')+'</h3></div>'
-   +'<div class="aq-stage-stacks__pile">'+k(2,'is-ph')+'<ul class="aq-stage-stacks__docs" role="list">'+docs+'</ul></div>'
+   +'<div class="aq-stage-stacks__pile">'+k(2,'is-ph')+'<ul class="aq-stage-stacks__docs" role="list" data-theme="light">'+docs+'</ul></div>'
    +'<span class="aq-stage-stacks__axis" aria-hidden="true"><span class="aq-stage-stacks__run"></span><span class="aq-stage-stacks__node"></span></span>'
    +'<div class="aq-stage-stacks__who">'+k(1,'is-ph')+'<p class="aq-stage-stacks__step">'+tcell(r[1])+'</p></div></li>'}).join('');
  return sec(H+'<div class="aq-stage-stacks" style="--n:'+R.length+'">'+wFold(b,R.length,'<ol class="aq-stage-stacks__list" role="list">'+list+'</ol>',b.fold_noun||'stages')+'</div>','aq-band--navy aq-stage-stacks-sec')};
@@ -4591,7 +4654,7 @@ LOOKS['stage-stacks']=function(b,H){var C=b.cols||[],R=b.rows||[];
    sits on it. All routes are open: each card shows every column as a term and value.
    Fields, as the router: cols (first is the situation column), rows (first cell the situation, each other cell a string
    or {t, link, intent}). Optional: labels (one short step title per row, "New system"; the situation sentence then
-   shows as the first term under it; a label equal to the situation drops it), kinetic (["Start", "Go"]: the first word runs as outline type behind the stair,
+   shows under it as the card's subtitle, its term kept for screen readers; a label equal to the situation drops it), kinetic (["Start", "Go"]: the first word runs as outline type behind the stair,
    the last sits large on the wedge; decorative, aria-hidden). A card whose cells link somewhere (the last link wins)
    is clickable as a whole through a pointer-only overlay; the real link stays the keyboard target and its intent rides
    on both. A value that opens with a [placeholder] is a pending value: dashed rule and "To confirm".
@@ -4606,7 +4669,7 @@ LOOKS['stair-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,L=b
  var steps=R.map(function(r,i){var s=val(r[0]),st=r.slice(1),go=-1,lab=L[i];
   st.forEach(function(c,j){if(lnk(c))go=j});var to=go>=0?lnk(st[go]):'',ti=to&&st[go].intent;
   var same=lab&&String(lab).toLowerCase()===String(s).toLowerCase();if(same)lab='';
-  var dl=(lab?'<div class="aq-stair-router__f"><dt>'+tx(C[0]||'')+'</dt><dd>'+tx(s)+'</dd></div>':'')
+  var dl=(lab?'<div class="aq-stair-router__f is-sit"><dt>'+tx(C[0]||'')+'</dt><dd>'+tx(s)+'</dd></div>':'')
    +st.map(function(c,j){var pend=j!==go&&/^\s*\[/.test(val(c)),cl=['aq-stair-router__f'];if(j===go)cl.push('is-go');if(pend)cl.push('is-pending');
     return '<div class="'+cl.join(' ')+'"><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+(pend?' <span class="aq-stair-router__tbc">To confirm</span>':'')+'</dd></div>'}).join('');
   return '<li class="aq-stair-router__step'+(to?' is-link':'')+'" style="--i:'+i+'">'
@@ -4629,9 +4692,9 @@ LOOKS['stair-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,L=b
 LOOKS['standard-tiles']=function(b,H){var I=b.items||[],n=I.length;
  var tiles=I.map(function(it,i){var ic=isIcon(it.icon)?wIcon(it.icon,'aq-standard-tiles__ic'):'';
   var inner='<span class="aq-standard-tiles__top" aria-hidden="true"><span class="aq-standard-tiles__no">'+(i<9?'0':'')+(i+1)+' / '+(n<10?'0':'')+n+'</span>'+ic+'</span>'
-   +(it.tag?'<span class="aq-standard-tiles__tag">'+tx(it.tag)+'</span>':'')
+   +(it.tag?'<span class="aq-standard-tiles__tag'+(/\d/.test(it.tag)?'':' is-word')+'">'+tx(it.tag)+'</span>':'<span></span>')
    +'<div class="aq-standard-tiles__body"><h3 class="aq-standard-tiles__t">'+tx(it.t)+'</h3>'+(it.d?'<span class="aq-standard-tiles__d">'+tx(it.d)+'</span>':'')+'</div>'
-   +(it.link&&wp(it.link)?'<span class="aq-standard-tiles__arrow" aria-hidden="true"></span>':'');
+   +(it.link&&wp(it.link)?'<span class="aq-standard-tiles__arrow" aria-hidden="true"></span>':'<span></span>');
   return '<li class="aq-standard-tiles__tile'+(i===0?' is-lead':'')+'">'+(it.link&&wp(it.link)?'<a class="aq-standard-tiles__in" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-standard-tiles__in">'+inner+'</div>')+'</li>'}).join('');
  return sec(H+'<ol class="aq-standard-tiles" style="--n:'+n+'">'+tiles+'</ol>','aq-standard-tiles-sec')};
 })();
@@ -4657,9 +4720,9 @@ function swArt(k,id){var P=function(kind,x,y,s,o){o=o||{};o.id=id;return isoPart
  return {svg:str,box:[x0,y0,x1,y1],tgt:isoP(tgt)}}
 LOOKS['standard-wires']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var rows=R.map(function(r,i){var go=r[2]&&typeof r[2]==='object'?r[2]:{t:r[2]},k=go.art||SW_ART[wsplit(go.link||'')[0]]||'analyzer',id='sw'+i;
-  var A=swArt(k,id),pad=18,W=300,Hh=170,bw=A.box[2]-A.box[0],bh=A.box[3]-A.box[1],sc=Math.min((W*0.62)/bw,(Hh-2*pad)/bh,1.6);
+  var A=swArt(k,id),pad=10,W=300,Hh=170,bw=A.box[2]-A.box[0],bh=A.box[3]-A.box[1],sc=Math.min((W*0.7)/bw,(Hh-2*pad)/bh,2);
   /* the part sits right of centre; the wire enters at the left edge, mid height, and steps to the target */
-  var ox=W*0.64-sc*(A.box[0]+A.box[2])/2,oy=Hh/2-sc*(A.box[1]+A.box[3])/2+6,tx2=ox+sc*A.tgt[0],ty2=oy+sc*A.tgt[1],kx=Math.max(24,tx2-46);
+  var ox=W*0.6-sc*(A.box[0]+A.box[2])/2,oy=Hh/2-sc*(A.box[1]+A.box[3])/2+2,tx2=ox+sc*A.tgt[0],ty2=oy+sc*A.tgt[1],kx=Math.max(24,tx2-46);
   var wire='<path class="aq-standard-wires__wire" d="M0 '+Hh/2+'H'+kx.toFixed(1)+'L'+(kx+Math.min(26,Math.abs(ty2-Hh/2))).toFixed(1)+' '+(Hh/2+Math.sign(ty2-Hh/2)*Math.min(26,Math.abs(ty2-Hh/2))).toFixed(1)+'V'+ty2.toFixed(1)+'H'+(tx2-4).toFixed(1)+'"/><circle class="aq-standard-wires__end" cx="'+(tx2-2).toFixed(1)+'" cy="'+ty2.toFixed(1)+'" r="2.6"/>';
   var svg='<svg class="aq-iso aq-iso--navy aq-standard-wires__svg" viewBox="0 0 '+W+' '+Hh+'" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false" data-iso-motion="off">'
    +'<g transform="translate('+ox.toFixed(1)+' '+oy.toFixed(1)+') scale('+sc.toFixed(3)+')">'+A.svg+'</g>'+wire+'</svg>';
@@ -4863,7 +4926,7 @@ LOOKS['suite-loop']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
   var dl=mid.map(function(c,j){return '<div class="aq-suite-loop__f'+(lk(c)?' is-link':'')+'"><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('');
   var out=go?'<a class="aq-suite-loop__go" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'><span class="aq-suite-loop__k">'+tx(C[r.length-1]||'')+'</span><span class="aq-suite-loop__to">'+tx(go.t)+'</span></a>'
    :'<p class="aq-suite-loop__go"><span class="aq-suite-loop__k">'+tx(C[r.length-1]||'')+'</span><span class="aq-suite-loop__to">'+tcell(last)+'</span></p>';
-  return '<li class="aq-suite-loop__suite"><span class="aq-suite-loop__drop" aria-hidden="true"><span class="aq-suite-loop__dw"></span><span class="aq-suite-loop__valve">'+VALVE+'</span></span>'
+  return '<li class="aq-suite-loop__suite" style="--rows:'+(mid.length+3)+'"><span class="aq-suite-loop__drop" aria-hidden="true"><span class="aq-suite-loop__dw"></span><span class="aq-suite-loop__valve">'+VALVE+'</span></span>'
    +'<span class="aq-suite-loop__door" aria-hidden="true"></span>'
    +'<span class="aq-suite-loop__tag" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-suite-loop__t">'+tx(r[0])+'</h3><dl class="aq-suite-loop__dl">'+dl+'</dl>'+out+'</li>'}).join('');
  var loop='<span class="aq-suite-loop__loop" aria-hidden="true"><span class="aq-suite-loop__water"></span><span class="aq-suite-loop__arrow"></span></span>';
@@ -5025,7 +5088,8 @@ LOOKS['terms-sheet']=function(b,H){var C=b.cols||[],R=(b.rows||[]).map(function(
    +'<ul class="aq-terms-sheet__v" role="list">'+V.map(function(x){return '<li>'+tx(x)+'</li>'}).join('')+'</ul>'
    +(r.m?'<p class="aq-terms-sheet__m"><span class="aq-terms-sheet__mk">'+tx(C[2]||'')+'</span> '+tcell(r.m)+'</p>':'')
    +(r.link&&wp(r.link)?'<p class="aq-terms-sheet__go">'+wlink(r.link,r.link_label)+'</p>':'')+'</div></li>'}).join('');
- var head='<div class="aq-terms-sheet__head" aria-hidden="true"><span>'+tx(b.nav||C[0]||'')+'</span><span>'+n+' '+e(b.fold_noun||'clauses')+'</span></div>';
+ var hl=String(b.nav||C[0]||''),noun=b.fold_noun||'clauses',same=hl.toLowerCase()===String(noun).toLowerCase();
+ var head='<div class="aq-terms-sheet__head" aria-hidden="true"><span>'+tx(hl)+'</span><span>'+(same?'01 – '+(n<10?'0':'')+n:n+' '+e(noun))+'</span></div>';
  return sec(H+'<div class="aq-terms-sheet" data-theme="light">'+head+wFold(b,n,'<ol class="aq-terms-sheet__list" role="list" style="--rows:'+Math.ceil(n/2)+'">'+cl+'</ol>',b.fold_noun||'terms')+'</div>','aq-terms-sheet-sec')};
 /* Look "test-sheet" -> TestSheet (design-system/components/TestSheet): ordered steps set as the protocol's own test
    sheet, lying on a limestone table. The heading sits on the table; the sheet is a paper form with a header strip
@@ -5037,9 +5101,9 @@ LOOKS['terms-sheet']=function(b,H){var C=b.cols||[],R=(b.rows||[]).map(function(
    omitted, no strip), hold_label (the hold cell's label, default "Hold point"), tear (true: the last step sits below a
    perforation; default true when there are three or more steps).
    Phones: the sheet fills the width; each row's sign-off cell drops under its text. */
-var TS_SIG=['M4 30C14 8 22 6 20 22S12 40 26 24 38 4 44 18 50 34 58 20 66 10 72 22 80 30 92 14',
- 'M4 26C10 10 18 8 22 20S26 36 34 22 44 6 52 20 60 32 70 16 84 26 96 12',
- 'M6 28C16 6 26 10 22 24S30 34 40 18 48 8 56 22 66 30 78 14 88 24'];
+var TS_SIG=['M6 30C10 14 16 4 20 8S16 30 14 34 22 16 28 14 30 26 34 24 38 12 42 14 40 26 46 24 50 16 54 16 54 26 60 22 66 14 70 18 70 26 78 22M30 36C48 32 70 31 96 27',
+ 'M8 24C14 22 20 10 18 8S10 18 12 28 22 30 26 22 30 14 34 18 32 28 38 26 44 16 48 18 48 28 54 26 58 20 62 20 64 28 72 24 80 14 86 16 84 24 92 22',
+ 'M6 32C12 30 18 6 24 6S26 26 22 32 30 22 36 16 40 20 38 28 44 26 50 18 54 20 54 28 62 24 66 16 70 18 72 26 80 22 86 18 94 20M14 36C40 34 62 33 88 30'];
 LOOKS['test-sheet']=function(b,H){var I=b.items||[],n=I.length,C=b.cols||[],tear=b.tear!=null?!!b.tear:n>=3,hk=b.hold_label||'Hold point';
  function who(s){s=String(s);return tx(/^[A-Z][a-z]/.test(s)?s.charAt(0).toLowerCase()+s.slice(1):s)}
  var rows=I.map(function(it,i){var nm=it.link&&wp(it.link)?'<a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t);
@@ -5173,13 +5237,14 @@ LOOKS['twin-route']=function(b,H){var RL=b.route_labels||[],C=b.cols||[],R=b.row
    +'<h3 class="aq-twin-route__test"><span class="aq-twin-route__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+tcell(r[0])+'</h3>'
    +cell(r[2],'sat',i)+'</li>',b,i)}).join('');
  var head='<div class="aq-twin-route__head" aria-hidden="true">'
-  +'<div class="aq-twin-route__scene aq-twin-route__scene--fat">'+S.fat+'</div>'
+  +'<div class="aq-twin-route__scene aq-twin-route__scene--fat">'+S.fat+'<span class="aq-twin-route__cap">'+tx(C[1]||'')+'</span></div>'
   +'<div class="aq-twin-route__road">'+S.truck+'<span class="aq-twin-route__lane"></span></div>'
-  +'<div class="aq-twin-route__scene aq-twin-route__scene--sat">'+S.sat+'</div></div>'
+  +'<div class="aq-twin-route__scene aq-twin-route__scene--sat">'+S.sat+'<span class="aq-twin-route__cap">'+tx(C[2]||'')+'</span></div></div>'
   +'<div class="aq-twin-route__labels">'
   +'<p class="aq-twin-route__lab aq-twin-route__lab--fat">'+(RL[0]?'<span class="aq-eyebrow">'+tx(RL[0])+'</span>':'')+tx(C[1]||'')+'</p>'
   +'<span class="aq-twin-route__rail aq-twin-route__rail--fat is-cap" aria-hidden="true"><span class="aq-twin-route__water"></span></span>'
   +'<p class="aq-twin-route__lab aq-twin-route__lab--test aq-eyebrow">'+tx(C[0]||'')+'</p>'
+  +'<span class="aq-twin-route__rail aq-twin-route__rail--sat is-cap" aria-hidden="true"><span class="aq-twin-route__water"></span></span>'
   +'<p class="aq-twin-route__lab aq-twin-route__lab--sat">'+(RL[1]?'<span class="aq-eyebrow">'+tx(RL[1])+'</span>':'')+tx(C[2]||'')+'</p></div>';
  var list=wFold(b,R.length,'<ol class="aq-twin-route__rows">'+rows+'</ol>',b.fold_noun||'tests');
  var end=K.length?'<div class="aq-twin-route__end">'
@@ -5266,7 +5331,10 @@ function vpMini(st,cls){var P=[];st.mini.forEach(function(p){for(var k in p.port
 LOOKS['visit-plan']=function(b,H){var I=b.items||[],K='aq-visit-plan',pl=vpPlant(),S=pl.S,X=pl.X;
  var parts=function(it){return String(it.part||'').split(/\s+/).filter(function(k){return S[k]})};
  /* walk: a stop on the floor in front of the first stage each item checks; a smooth walk through the stops */
- var stops=[];I.forEach(function(it,i){var ps=parts(it);if(!ps.length)return;var c=S[ps[0]].c,x=c/(2*ISO_C),F=stops.length%2?150:100;stops.push({i:i,p:[x+F/2,-x+F/2,0],ps:ps})});
+ var stops=[];I.forEach(function(it,i){var ps=parts(it);if(!ps.length)return;var c=S[ps[0]].c,x=c/(2*ISO_C),F=stops.length%2?150:100;stops.push({i:i,x:x,F:F,ps:ps})});
+ /* stops too close to read apart (two checks on neighbouring parts) are spread to at least half the mean spacing */
+ if(stops.length>2){var gap=(stops[stops.length-1].x-stops[0].x)/(stops.length-1)*0.5;for(var j=1;j<stops.length-1;j++){if(stops[j].x-stops[j-1].x<gap){var mid=(stops[j].x+stops[j-1].x)/2;stops[j-1].x=Math.min(stops[j-1].x,mid-gap/2);stops[j].x=mid+gap/2}}}
+ stops.forEach(function(s){s.p=[s.x+s.F/2,-s.x+s.F/2,0]});
  var allP=[];Object.keys(S).forEach(function(k){allP=allP.concat(S[k].pts)});allP=allP.concat(stops.map(function(s){return s.p}));
  var bx=isoBounds(allP,28),VW=1080,sc=VW/bx.w,VH=Math.round(bx.h*sc+24),org=[-bx.x,-bx.y+12/sc];
  var T=function(q){var s=isoP(q);return [(s[0]+org[0])*sc,(s[1]+org[1])*sc]};
@@ -5399,7 +5467,7 @@ function wrhMimic(){
  /* the record: a trend window with three log lines */
  s+='<rect class="'+eq+'" x="40" y="252" width="420" height="150"/>'+L('M40 276H460',P+'thin')+T(52,269,'RECORD');
  s+=L('M60 372H300M60 338H300M60 304H300',P+'grid2');
- s+='<polyline class="'+P+'trend" points="60,352 84,348 108,350 132,346 156,349 180,345 204,347 228,344 252,346 276,343 300,345"/>';
+ s+='<polyline class="'+P+'trend" points="60,366 72,360 84,349 96,344 108,347 120,341 132,345 144,339 156,343 168,346 180,340 192,336 204,341 216,344 228,338 240,342 252,337 264,340 276,335 288,339 300,337"/>';
  s+='<polyline class="'+P+'flat" points="60,372 300,372"/>';
  s+=L('M326 300H440M326 322H420M326 344H436M326 366H410',P+'log');
  s+=L('M250 252V200H600V162',P+'sig');
@@ -5444,7 +5512,7 @@ LOOKS['winding-route']=function(b,H){
  var stops=I.map(function(it,i){var high=i%2===1,lab=it.label||String(it.t||'').split(/\s+/)[0],g=wSpot(it.spot||it.icon,'','aq-spot--on-navy aq-winding-route__glyph');
   var seg='<svg class="aq-winding-route__seg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M50 0C50 25 '+(high?70:30)+' 25 '+(high?70:30)+' 50S50 75 50 100"/></svg>';
   return '<li class="aq-winding-route__stop '+(high?'is-high':'is-low')+(i===0?' is-first':'')+(i===n-1?' is-last':'')+'" style="--k:'+i+'">'
-   +'<div class="aq-winding-route__mark" aria-hidden="true">'+seg+g+(it.fx==='gas'?gas:'')+'<span class="aq-winding-route__node"></span></div>'
+   +'<div class="aq-winding-route__mark" aria-hidden="true">'+seg+'<span class="aq-winding-route__tail"></span>'+g+(it.fx==='gas'?gas:'')+'<span class="aq-winding-route__node"></span></div>'
    +'<div class="aq-winding-route__text"><p class="aq-winding-route__code"><span>'+(i<9?'0':'')+(i+1)+'</span> / '+tx(lab)+'</p>'
    +'<h3 class="aq-winding-route__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-winding-route__d">'+tx(it.d)+'</p>':'')+'</div></li>'}).join('');
  return sec(H+'<div class="aq-winding-route" style="--n:'+n+'">'+line+'<span class="aq-winding-route__drop" aria-hidden="true"></span><ol class="aq-winding-route__stops">'+stops+'</ol></div>','aq-band--navy aq-winding-route-sec')};
@@ -5475,8 +5543,8 @@ function wpPlan(z,on){var P='aq-witness-plan'+'__';
  /* the control panel, its door open */
  s+='<rect class="'+P+'eq" x="350" y="170" width="34" height="90"/><path class="'+P+'thin" d="M384 170L410 186"/><path class="'+P+'hid" d="M384 170A30 30 0 0 1 410 186"/>';
  /* actors */
- s+=A('you','<circle class="'+P+'cone" cx="420" cy="230" r="34"/><circle class="'+P+'man" cx="420" cy="230" r="11"/><circle class="'+P+'head" cx="420" cy="230" r="4"/>');
- s+=A('delegate','<circle class="'+P+'cone" cx="215" cy="318" r="34"/><circle class="'+P+'man" cx="215" cy="318" r="11"/><rect class="'+P+'badge" x="208" y="333" width="14" height="9"/>');
+ s+=A('you','<circle class="'+P+'cone" cx="420" cy="230" r="34"/><ellipse class="'+P+'man" cx="420" cy="230" rx="8" ry="15"/><circle class="'+P+'head" cx="420" cy="230" r="6.5"/>');
+ s+=A('delegate','<circle class="'+P+'cone" cx="215" cy="318" r="34"/><ellipse class="'+P+'man" cx="215" cy="318" rx="15" ry="8"/><circle class="'+P+'head" cx="215" cy="318" r="6.5"/><rect class="'+P+'badge" x="208" y="330" width="14" height="9"/>');
  s+=A('camera','<path class="'+P+'fov" d="M52 52L200 150L150 200Z"/><path class="'+P+'fov" d="M418 392L330 270L270 330Z"/>'
   +'<rect class="'+P+'cam" x="40" y="40" width="20" height="14" transform="rotate(45 50 47)"/><rect class="'+P+'cam" x="410" y="386" width="20" height="14" transform="rotate(45 420 393)"/>');
  s+=A('screen','<path class="'+P+'sig" d="M60 40C200 -10 470 40 520 120"/><rect class="'+P+'cam" x="506" y="120" width="68" height="44"/><path class="'+P+'thin" d="M540 164V176M524 178H556"/><path class="'+P+'trace" d="M514 150L528 138L540 146L552 132L566 140"/>');
@@ -5487,14 +5555,18 @@ LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],sc=I.ma
   +'<span class="aq-witness-plan__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
   +'<span class="aq-witness-plan__t">'+tx(it.t)+'</span>'+(it.d?'<span class="aq-witness-plan__d">'+tx(it.d)+'</span>':'')+'</button></li>'}).join('');
  return sec('<div class="aq-witness-plan">'+'<div class="aq-witness-plan__side">'+H+'<ol class="aq-witness-plan__list">'+list+'</ol></div>'
-  +'<div class="aq-witness-plan__board">'+wpPlan(Z,sc[0]||[])+'</div></div>','aq-witness-plan-sec')};
+  +'<div class="aq-witness-plan__board">'+wpPlan(Z,sc[0]||[])
+  +(I[0]?'<p class="aq-witness-plan__now" aria-hidden="true"><span class="aq-witness-plan__now-n">01</span><span class="aq-witness-plan__now-t">'+tx(I[0].t)+'</span></p>':'')+'</div></div>','aq-witness-plan-sec')};
 /* choose a way: put its actors on the plan (press pins it; pointing previews it, leaving restores the pinned one) */
-(function(){function show(w,sc){[].forEach.call(w.querySelectorAll('[data-actor]'),function(a){a.classList.toggle('is-on',(' '+sc+' ').indexOf(' '+a.getAttribute('data-actor')+' ')>-1)})}
+(function(){function show(w,sc,o){[].forEach.call(w.querySelectorAll('[data-actor]'),function(a){a.classList.toggle('is-on',(' '+sc+' ').indexOf(' '+a.getAttribute('data-actor')+' ')>-1)});
+  /* the board's caption names the way on show */
+  var c=w.querySelector('.aq-witness-plan__now'),n=o&&o.querySelector('.aq-witness-plan__n'),t=o&&o.querySelector('.aq-witness-plan__t');
+  if(c&&n&&t){c.querySelector('.aq-witness-plan__now-n').textContent=n.textContent;c.querySelector('.aq-witness-plan__now-t').innerHTML=t.innerHTML}}
  document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t)return;var w=t.closest('.aq-witness-plan');
-  [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t.getAttribute('data-scene'))});
- document.addEventListener('pointerover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t||ev.pointerType==='touch')return;show(t.closest('.aq-witness-plan'),t.getAttribute('data-scene'))});
+  [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t.getAttribute('data-scene'),t)});
+ document.addEventListener('pointerover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t||ev.pointerType==='touch')return;show(t.closest('.aq-witness-plan'),t.getAttribute('data-scene'),t)});
  document.addEventListener('pointerout',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__list');if(!t||(ev.relatedTarget&&t.contains(ev.relatedTarget)))return;
-  var w=t.closest('.aq-witness-plan'),p=w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]');show(w,p?p.getAttribute('data-scene'):'')})})();
+  var w=t.closest('.aq-witness-plan'),p=w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]');show(w,p?p.getAttribute('data-scene'):'',p)})})();
 /* Block "options" -> OptionList: configuration options as rows of the shared list grammar: index, title, one line.
    as: "modules" -> OptionModules: the options drawn as modules around the page's own equipment drawing (the base
    skid), joined to it by dashed connectors. Item fields: t, d, spot (Spot or Icon name, wSpot), tag (category label above

@@ -10,8 +10,10 @@
 .aq-battery-limit__line { position: absolute; left: calc(50% - var(--space-2)); top: 0; height: 100%; width: var(--space-4); overflow: visible; pointer-events: none; }
 .aq-battery-limit__line line { stroke: var(--flow); stroke-width: 1.5; stroke-dasharray: 18 5 3 5; }
 .aq-battery-limit__seam-t {
-  position: absolute; left: calc(50% + var(--space-3)); top: var(--space-16); writing-mode: vertical-rl;
-  font: 500 12px/16px var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-limestone-muted);
+  /* set on the navy side of the line, near the foot, where no card or leader crosses it (at the top the limit card
+     covered it) */
+  position: absolute; right: calc(50% + var(--space-3)); bottom: var(--space-6); writing-mode: vertical-rl; transform: rotate(180deg);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-navy-muted);
 }
 .aq-battery-limit-sec > .aq-in { position: relative; }
 .aq-battery-limit {

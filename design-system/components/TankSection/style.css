@@ -2,10 +2,11 @@
 .aq-tank-section-sec { --ts-ln: var(--on-navy-muted); --ts-fl: color-mix(in srgb, var(--flow) 40%, var(--on-navy)); --ts-hair: color-mix(in srgb, var(--on-navy) 22%, transparent); }
 .aq-tank-section-sec .aq-eyebrow { color: var(--on-navy-muted); }
 .aq-tank-section { position: relative; display: flex; flex-direction: column; gap: var(--space-12); }
-.aq-tank-section__fig { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+.aq-tank-section__fig { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr); }
+/* The drawing grid sits behind the drawing only, so the callout columns read on a clean ground */
+.aq-tank-section__draw { grid-column: 2;
   background-image: linear-gradient(var(--ts-hair, var(--on-navy-muted)) 1px, transparent 1px), linear-gradient(90deg, var(--ts-hair, var(--on-navy-muted)) 1px, transparent 1px);
   background-size: var(--space-12) var(--space-12); background-position: center; }
-.aq-tank-section__draw { grid-column: 2; }
 .aq-tank-section__svg { display: block; width: 100%; height: auto; overflow: visible; }
 .aq-tank-section__svg path, .aq-tank-section__svg circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .aq-tank-section__ln { stroke: var(--on-navy); stroke-width: 1.5; }
@@ -40,7 +41,7 @@
 .aq-tank-section__call.is-r { right: 0; padding-left: var(--space-6); }
 .aq-tank-section__n { font: 500 12px/16px var(--font-mono); color: var(--limestone); }
 .aq-tank-section__p { margin: 0; font: 500 16px/22px var(--font-sans); color: var(--on-navy); }
-.aq-tank-section__v { margin: 0; font: 400 14px/22px var(--font-mono); color: var(--on-navy); }
+.aq-tank-section__v { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--on-navy); }
 .aq-tank-section__m { margin: 0; font: 400 13px/20px var(--font-sans); color: var(--on-navy-muted); }
 .aq-tank-section__m a, .aq-tank-section__link { color: var(--limestone); }
 
@@ -51,7 +52,7 @@
   color: var(--on-navy-muted); border-bottom: 1px solid var(--on-navy-muted); }
 .aq-tank-section__sched tbody th, .aq-tank-section__sched td { padding: var(--space-3) var(--space-4); text-align: left; vertical-align: top; border-top: 1px solid var(--ts-hair, var(--on-navy-muted)); }
 .aq-tank-section__sched tbody th { font: 500 15px/22px var(--font-sans); color: var(--on-navy); width: 22%; }
-.aq-tank-section__sv { font: 400 14px/22px var(--font-mono); color: var(--on-navy); width: 44%; }
+.aq-tank-section__sv { font: 400 15px/22px var(--font-sans); color: var(--on-navy); width: 44%; }
 .aq-tank-section__sm { font: 400 13px/20px var(--font-sans); color: var(--on-navy-muted); }
 .aq-tank-section__block { display: flex; justify-content: flex-end; margin-top: calc(-1 * var(--space-8)); }
 .aq-tank-section__block span { padding: var(--space-1) var(--space-3); border: 1px solid var(--on-navy-muted); border-left: 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
@@ -76,7 +77,8 @@
 }
 @container (max-width: 860px) {
   .aq-tank-section { gap: var(--space-8); }
-  .aq-tank-section__fig { grid-template-columns: minmax(0, 1fr); background-size: var(--space-8) var(--space-8); }
+  .aq-tank-section__fig { grid-template-columns: minmax(0, 1fr); }
+  .aq-tank-section__draw { background-size: var(--space-8) var(--space-8); }
   .aq-tank-section__draw { grid-column: 1; }
   .aq-tank-section__leader { display: none; }
   .aq-tank-section__balloon circle { stroke-width: 2; }

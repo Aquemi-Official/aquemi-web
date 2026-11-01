@@ -15,16 +15,25 @@ var covN=0;
 LOOKS['coverage-map']=function(b,H){var C=b.cols||[],R=b.rows||[],M=b.map||[],B=b.base||null,k=++covN;
  var cols=M.reduce(function(a,t){return Math.max(a,(+t.x||0)+1)},1),rws=M.reduce(function(a,t){return Math.max(a,(+t.y||0)+1)},1);
  function rid(i){return 'cov-'+k+'-'+i}
+ /* The readout: the region being read, set in the map's open bottom-left corner (the widest empty block of cells
+    under the tiles, at least 3 columns); one line per row, the lit one shown. Opens on the home row. */
+ var occ={};M.forEach(function(t){occ[(+t.x||0)+','+(+t.y||0)]=1});
+ var best=null;for(var w=1;w<=cols;w++){var h=0;for(var y=rws-1;y>=0;y--){var free=true;for(var x=0;x<w;x++)if(occ[x+','+y])free=false;if(!free)break;h++}
+  if(h&&w>=3&&(!best||w*h>=best.w*best.h))best={w:w,h:h}}
+ var on=-1;if(B)M.forEach(function(t){if(t.c===B.c&&+t.r>=0&&+t.r<R.length)on=+t.r});
+ function lt(i){return +i===on?' is-on':''}
+ var now=best&&R.length?'<li class="aq-coverage-map__now" aria-hidden="true" style="grid-column:1 / span '+best.w+';grid-row:'+(rws-best.h+1)+' / span '+best.h+'">'
+  +R.map(function(r,i){return '<span class="aq-coverage-map__nv'+lt(i)+'" data-r="'+i+'"><span class="aq-coverage-map__ni">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-coverage-map__nt">'+tcell(r[0])+'</span></span>'}).join('')+'</li>':'';
  var tiles=M.map(function(t){var home=B&&B.c===t.c,r=+t.r,has=r>=0&&r<R.length;
-  return '<li class="aq-coverage-map__tile'+(home?' is-home':'')+'" style="grid-column:'+((+t.x||0)+1)+';grid-row:'+((+t.y||0)+1)+'" data-r="'+(has?r:'')+'">'
+  return '<li class="aq-coverage-map__tile'+(home?' is-home':'')+(has&&r===on?' is-on':'')+'" style="grid-column:'+((+t.x||0)+1)+';grid-row:'+((+t.y||0)+1)+'" data-r="'+(has?r:'')+'">'
    +(has?'<button type="button" class="aq-coverage-map__btn" data-cov="'+e(rid(r))+'" aria-label="'+e(t.n||t.c)+'">':'<span class="aq-coverage-map__btn">')
    +'<span class="aq-coverage-map__code" aria-hidden="true">'+e(t.c)+'</span>'+(has?'<span class="aq-coverage-map__ri" aria-hidden="true">'+(r<9?'0':'')+(r+1)+'</span>':'')
    +(has?'</button>':'</span>')+'</li>'}).join('');
  var base=B&&B.label?'<p class="aq-coverage-map__base"><span class="aq-coverage-map__pin" aria-hidden="true"></span>'+tx(B.label)+'</p>':'';
  var sheet='<div class="aq-coverage-map__sheet" data-theme="light"><p class="aq-coverage-map__title" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span></p>'
-  +'<ol class="aq-coverage-map__grid" style="--cols:'+cols+';--rows:'+rws+'" aria-label="'+e(C[0]||'Map')+'">'+tiles+'</ol>'+base+'</div>';
+  +'<ol class="aq-coverage-map__grid" style="--cols:'+cols+';--rows:'+rws+'" aria-label="'+e(C[0]||'Map')+'">'+tiles+now+'</ol>'+base+'</div>';
  var rows=R.map(function(r,i){var codes=M.filter(function(t){return +t.r===i}).map(function(t){return e(t.c)});
-  return '<li class="aq-coverage-map__row" id="'+rid(i)+'" data-r="'+i+'" tabindex="-1">'
+  return '<li class="aq-coverage-map__row'+lt(i)+'" id="'+rid(i)+'" data-r="'+i+'" tabindex="-1">'
    +'<div class="aq-coverage-map__rh"><span class="aq-coverage-map__i" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-coverage-map__t">'+tcell(r[0])+'</h3>'
    +(codes.length?'<p class="aq-coverage-map__codes" aria-hidden="true">'+codes.map(function(c){return '<span>'+c+'</span>'}).join('')+'</p>':'')+'</div>'
    +'<dl class="aq-coverage-map__dl">'+r.slice(1).map(function(c,j){return '<div><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('')+'</dl></li>'}).join('');

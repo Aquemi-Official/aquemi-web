@@ -10,3 +10,5 @@ DecisionValve draws a router table as a multiport valve on a navy band: supplies
 ## Motion
 
 Motion: on scroll-in the supplies slide in, their lines run to the valve, the dial turns into place, the lever swings from rest to position 01, the lines out run and the cards slide in (under 3 s). On each choice the lever turns (CSS, 500 ms) and the lit lines run again from supply to card. Nothing under reduced motion (the lever still turns, by CSS).
+
+Lines: the renderer writes fallback paths in a 200 x 400 box; on the page a small layout pass (`window.AQdecisionValve.layout`, rerun on resize and called by motion.js before DrawSVG) redraws them in the valve column's real pixels, each supply line into the inlet boss and each route line out of its own outlet boss to its card. Route 01 is lit at render.

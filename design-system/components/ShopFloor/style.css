@@ -12,7 +12,8 @@
 .aq-shop-floor__st.is-idle { opacity: 0.42; }
 .aq-shop-floor__st.is-lit { opacity: 1; }
 .aq-shop-floor__st.is-lit .aq-iso__eq, .aq-shop-floor__st.is-lit .aq-iso__ln, .aq-shop-floor__st.is-lit .aq-iso__thin { stroke: var(--on-navy); }
-.aq-shop-floor__walk .aq-iso__pipe-line { stroke: var(--on-navy); stroke-dasharray: 4 5; opacity: 0.75; }
+/* the walking route: a bold dashed line in full on-navy, so it reads apart from the muted walls and room lines */
+.aq-shop-floor .aq-shop-floor__walk .aq-iso__pipe-line { stroke: var(--on-navy); stroke-width: 3px; stroke-dasharray: 8 6; stroke-linecap: butt; }
 .aq-shop-floor__walk .aq-iso__flow { stroke: transparent; transition: stroke 300ms; }
 .aq-shop-floor__walk.is-lit .aq-iso__flow, .aq-shop-floor.is-walking .aq-shop-floor__walk .aq-iso__flow { stroke: var(--on-navy); }
 .aq-shop-floor__svg .aq-iso__flow--line { stroke-width: 2px; }
@@ -34,9 +35,9 @@
 .aq-shop-floor__n { font: 300 32px/1 var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy-muted); font-variant-numeric: tabular-nums; transition: color 300ms; }
 .aq-shop-floor__card.is-on .aq-shop-floor__n { color: var(--on-navy); }
 .aq-shop-floor__t { margin: 0; font: 300 26px/32px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); text-wrap: balance; }
-.aq-shop-floor__name { margin: var(--space-3) 0 0; font: 400 15px/24px var(--font-sans); color: var(--on-navy); }
-.aq-shop-floor__d { margin: var(--space-2) 0 0; font: 400 16px/26px var(--font-sans); color: var(--on-navy-muted); max-width: 46ch; }
-.aq-shop-floor__go { margin: var(--space-3) 0 0; }
+.aq-shop-floor .aq-shop-floor__name { margin: var(--space-3) 0 0; font: 400 15px/24px var(--font-sans); color: var(--on-navy); }
+.aq-shop-floor .aq-shop-floor__d { margin: var(--space-2) 0 0; font: 400 16px/26px var(--font-sans); color: var(--on-navy-muted); max-width: 46ch; }
+.aq-shop-floor .aq-shop-floor__go { margin: var(--space-2) 0 0; }
 .aq-shop-floor__go a { display: inline-flex; align-items: center; min-height: var(--space-12); color: var(--on-navy); font: 500 14px/20px var(--font-sans); text-decoration: none;
   box-shadow: inset 0 -1px 0 var(--on-navy-muted); }
 .aq-shop-floor__go a::after { content: "→"; margin-left: var(--space-2); transition: transform 200ms; }

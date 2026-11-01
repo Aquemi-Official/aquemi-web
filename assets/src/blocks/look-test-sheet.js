@@ -8,9 +8,9 @@
    omitted, no strip), hold_label (the hold cell's label, default "Hold point"), tear (true: the last step sits below a
    perforation; default true when there are three or more steps).
    Phones: the sheet fills the width; each row's sign-off cell drops under its text. */
-var TS_SIG=['M4 30C14 8 22 6 20 22S12 40 26 24 38 4 44 18 50 34 58 20 66 10 72 22 80 30 92 14',
- 'M4 26C10 10 18 8 22 20S26 36 34 22 44 6 52 20 60 32 70 16 84 26 96 12',
- 'M6 28C16 6 26 10 22 24S30 34 40 18 48 8 56 22 66 30 78 14 88 24'];
+var TS_SIG=['M6 30C10 14 16 4 20 8S16 30 14 34 22 16 28 14 30 26 34 24 38 12 42 14 40 26 46 24 50 16 54 16 54 26 60 22 66 14 70 18 70 26 78 22M30 36C48 32 70 31 96 27',
+ 'M8 24C14 22 20 10 18 8S10 18 12 28 22 30 26 22 30 14 34 18 32 28 38 26 44 16 48 18 48 28 54 26 58 20 62 20 64 28 72 24 80 14 86 16 84 24 92 22',
+ 'M6 32C12 30 18 6 24 6S26 26 22 32 30 22 36 16 40 20 38 28 44 26 50 18 54 20 54 28 62 24 66 16 70 18 72 26 80 22 86 18 94 20M14 36C40 34 62 33 88 30'];
 LOOKS['test-sheet']=function(b,H){var I=b.items||[],n=I.length,C=b.cols||[],tear=b.tear!=null?!!b.tear:n>=3,hk=b.hold_label||'Hold point';
  function who(s){s=String(s);return tx(/^[A-Z][a-z]/.test(s)?s.charAt(0).toLowerCase()+s.slice(1):s)}
  var rows=I.map(function(it,i){var nm=it.link&&wp(it.link)?'<a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t);

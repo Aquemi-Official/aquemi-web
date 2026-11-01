@@ -22,7 +22,7 @@ Pass 9 look `stair-router` (`assets/src/blocks/look-stair-router.js`), set with 
           <a class="aq-stair-router__hit" href="#svc-design" data-wp="svc-design" tabindex="-1" aria-hidden="true"></a>
           <h3 class="aq-stair-router__t">New system</h3>
           <dl class="aq-stair-router__dl">
-            <div class="aq-stair-router__f"><dt>Your situation</dt><dd>…</dd></div>
+            <div class="aq-stair-router__f is-sit"><dt>Your situation</dt><dd>…</dd></div>
             <div class="aq-stair-router__f is-go"><dt>Start with</dt><dd><a href="#svc-design" data-wp="svc-design">Process design: request a URS gap review</a></dd></div>
             …
           </dl>
@@ -37,7 +37,7 @@ Pass 9 look `stair-router` (`assets/src/blocks/look-stair-router.js`), set with 
 ## Fields
 
 - `cols`, `rows`: as the router. The first column is the situation; every other cell is a string or `{t, link, intent}`.
-- `labels` (optional): one short step title per row ("New system", "Skid in build"), taken from the row's own words, never a new claim. The card then shows the situation sentence as its first term. A label equal to the situation is dropped. Without labels the situation is the card title.
+- `labels` (optional): one short step title per row ("New system", "Skid in build"), taken from the row's own words, never a new claim. The card then shows the situation sentence as its subtitle (`is-sit`: the term stays for screen readers only). A label equal to the situation is dropped. Without labels the situation is the card title.
 - `kinetic` (optional): `["Start", "Go"]`. The first word runs as outline type behind the stair, the last sits solid on the limestone wedge. Decorative and `aria-hidden`; leave it out for no type.
 
 ## Rules

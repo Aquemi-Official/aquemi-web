@@ -10,3 +10,5 @@ LoopDock shows a loop's options where they fit on the loop: one isometric storag
 ## Motion
 
 Motion: the loop draws itself with the shared IsoKit choreography (parts back to front, pipes, then the water from the tank through the module and UV out to the points of use and home overhead); each option's marker drops onto its part as the water reaches it and the cards slide in. Under 5 s; nothing under reduced motion.
+
+Pass 9 polish: the base name sits left of the tank with its glyph above the words, flush right (row layout on phones).

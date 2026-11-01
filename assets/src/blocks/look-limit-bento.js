@@ -15,7 +15,7 @@ function lbVal(g,v){return g?'<span class="aq-limit-bento__c">'+e(g.c)+'</span><
 function lbColumn(r){var g=gaugeParse(r.v),a=gaugeParse(r.alt&&r.alt.v);if(!g||!a)return '';
  var S=gaugeScale(Math.max(g.n,a.n),false),max=S[0],div=S[1]*2,f=function(n){return Math.min(n/max,1)},ticks='',i;
  for(i=0;i<=div;i++){var y=(100-100*i/div).toFixed(2);ticks+='<li style="top:'+y+'%"'+(i%2?' class="is-minor"':'')+'>'+(i%2?'':'<span>'+gaugeNum(max*i/div)+'</span>')+'</li>'}
- /* the water: a limestone body with a wave on top, its surface at the limit */
+ /* the water: a flow-blue body with a wave on top, the wave midline at the limit */
  var wave='<svg class="aq-limit-bento__wave" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path class="aq-limit-bento__wbody" d="M0 12 C 50 2, 100 2, 150 12 S 250 22, 300 12 S 380 4, 400 10 L400 24 L0 24Z"/><path class="aq-limit-bento__wline" d="M0 12 C 50 2, 100 2, 150 12 S 250 22, 300 12 S 380 4, 400 10"/></svg>';
  return '<figure class="aq-limit-bento__col" style="--lim:'+f(g.n).toFixed(4)+';--alt:'+f(a.n).toFixed(4)+'">'
   +'<figcaption class="aq-limit-bento__cap"><span class="aq-limit-bento__cap-p">'+tx(r.p)+'</span>'+(g.q?'<span class="aq-limit-bento__cap-q">'+tx(g.q)+'</span>':'')+'</figcaption>'

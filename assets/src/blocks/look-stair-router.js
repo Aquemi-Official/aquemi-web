@@ -4,7 +4,7 @@
    sits on it. All routes are open: each card shows every column as a term and value.
    Fields, as the router: cols (first is the situation column), rows (first cell the situation, each other cell a string
    or {t, link, intent}). Optional: labels (one short step title per row, "New system"; the situation sentence then
-   shows as the first term under it; a label equal to the situation drops it), kinetic (["Start", "Go"]: the first word runs as outline type behind the stair,
+   shows under it as the card's subtitle, its term kept for screen readers; a label equal to the situation drops it), kinetic (["Start", "Go"]: the first word runs as outline type behind the stair,
    the last sits large on the wedge; decorative, aria-hidden). A card whose cells link somewhere (the last link wins)
    is clickable as a whole through a pointer-only overlay; the real link stays the keyboard target and its intent rides
    on both. A value that opens with a [placeholder] is a pending value: dashed rule and "To confirm".
@@ -19,7 +19,7 @@ LOOKS['stair-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,L=b
  var steps=R.map(function(r,i){var s=val(r[0]),st=r.slice(1),go=-1,lab=L[i];
   st.forEach(function(c,j){if(lnk(c))go=j});var to=go>=0?lnk(st[go]):'',ti=to&&st[go].intent;
   var same=lab&&String(lab).toLowerCase()===String(s).toLowerCase();if(same)lab='';
-  var dl=(lab?'<div class="aq-stair-router__f"><dt>'+tx(C[0]||'')+'</dt><dd>'+tx(s)+'</dd></div>':'')
+  var dl=(lab?'<div class="aq-stair-router__f is-sit"><dt>'+tx(C[0]||'')+'</dt><dd>'+tx(s)+'</dd></div>':'')
    +st.map(function(c,j){var pend=j!==go&&/^\s*\[/.test(val(c)),cl=['aq-stair-router__f'];if(j===go)cl.push('is-go');if(pend)cl.push('is-pending');
     return '<div class="'+cl.join(' ')+'"><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+(pend?' <span class="aq-stair-router__tbc">To confirm</span>':'')+'</dd></div>'}).join('');
   return '<li class="aq-stair-router__step'+(to?' is-link':'')+'" style="--i:'+i+'">'

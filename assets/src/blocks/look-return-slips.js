@@ -5,7 +5,8 @@
    one slip per item, and the "When" and "Cost" cells are split the same way when they hold the same number of parts
    (otherwise each slip shows the whole cell). A {t, link, intent} cell becomes a slip whose title is the link.
    Fields, as a table: cols [situation, what comes back, when, cost] (labels used as the slip field names), rows, fold,
-   fold_noun. Hover or focus on a row runs its pipe in flow and lifts its slips. Design system: components/ReturnSlips. */
+   fold_noun. Each slip's ruled header has one mark per slip in its row, its own in flow (slip 2 of 4 lights the second).
+   Hover or focus on a row runs its pipe in flow and lifts its slips. Design system: components/ReturnSlips. */
 (function(){
 function parts(c){return c&&typeof c==='object'?[c]:String(c==null?'':c).split(/\s+·\s+/)}
 function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
@@ -13,7 +14,7 @@ LOOKS['return-slips']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var rows=R.map(function(r,i){var got=parts(r[1]),when=parts(r[2]),cost=parts(r[3]),n=got.length;
   var wSplit=when.length===n,cSplit=cost.length===n;
   var slips=got.map(function(g,k){var w=wSplit?when[k]:r[2],c=cSplit?cost[k]:r[3];
-   return '<li class="aq-return-slips__slip" style="--k:'+k+'"><span class="aq-return-slips__ruling" aria-hidden="true"><i></i><i></i><i></i></span>'
+   return '<li class="aq-return-slips__slip" style="--k:'+k+'"><span class="aq-return-slips__ruling" aria-hidden="true">'+got.map(function(_,j){return '<i'+(j===k?' class="is-k"':'')+'></i>'}).join('')+'</span>'
     +'<p class="aq-return-slips__t">'+tcell(cap(g))+'</p>'
     +'<dl class="aq-return-slips__f">'
      +(w!=null&&w!==''?'<div><dt>'+wIcon('clock','aq-return-slips__ic')+tx(C[2]||'When')+'</dt><dd>'+tcell(w)+'</dd></div>':'')

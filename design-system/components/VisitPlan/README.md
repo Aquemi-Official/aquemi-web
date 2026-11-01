@@ -8,3 +8,5 @@ Look `visit-plan` (`assets/src/blocks/look-visit-plan.js`) on a `grid` block wit
 - Phones: no big sheet; the walk runs down the left, each card a row with its stage drawn small.
 
 Motion: IsoKit's choreography builds the plant and runs the water once; then a flow dot walks the dashed route, each stop's ring strikes as it arrives, its parts light for a moment and its card prints. Once, under 5 s. Pointing at or focusing a card lights its stop and parts.
+
+Polish (pass 9): stops closer than half the mean spacing are spread apart along the walk (the plant drawing itself is unchanged).

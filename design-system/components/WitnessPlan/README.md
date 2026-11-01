@@ -15,3 +15,5 @@ Concept: a flat top-down plan on navy built for this section, after the pool's s
 
 ## Motion
 The walls draw on from the door, the grid and remote edge fade up, the skid and panel draw, then the plan steps through the ways (about half a second each, each card's rule sliding in as its actors come up) and rests on the first. Once, under 5 s.
+
+Polish (pass 9): the board carries a caption naming the way on show (`__now`, aria-hidden: number and title), updated by the cards and by the opening tour.

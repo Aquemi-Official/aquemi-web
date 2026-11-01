@@ -18,8 +18,11 @@
 .aq-param-tiles__n { display: block; overflow: hidden; flex: none; font: 300 64px/60px var(--font-sans); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
 .aq-param-tiles__n > span { display: block; }
 .aq-param-tiles__slash { flex: none; width: 1px; height: var(--space-12); margin-inline: var(--space-1) var(--space-2); background: currentColor; transform: skewX(-18deg); opacity: 0.6; }
-.aq-param-tiles__p { margin: 0; padding-top: var(--space-1); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; }
-.aq-param-tiles__v { margin: 0; font: 400 20px/28px var(--font-mono); letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.aq-param-tiles__p { margin: 0; padding-top: var(--space-1); font: 500 12px/16px var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; }
+/* The value in Geist Light (mono stays for the placeholders and figures inside it) */
+.aq-param-tiles__v { margin: 0; font: 300 22px/30px var(--font-sans); letter-spacing: -0.01em; overflow-wrap: anywhere; }
+/* A count that leaves one cell empty in the last row: the last tile takes it, so the grid closes square */
+.aq-param-tiles__tile:last-child:nth-child(4n+2):not(.is-lead) { grid-column: span 2; }
 .aq-param-tiles__tile.is-lead .aq-param-tiles__v { font-size: 32px; line-height: 42px; font-weight: 300; }
 .aq-param-tiles__m { margin: auto 0 0; padding-top: var(--space-3); border-top: 1px solid color-mix(in srgb, currentColor 30%, transparent);
   display: flex; flex-direction: column; gap: var(--space-2); font: 400 13px/20px var(--font-sans); color: var(--on-limestone-muted); }
@@ -37,6 +40,7 @@
 @container (max-width: 1100px) {
   .aq-param-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .aq-param-tiles__fig { grid-column: 2 / span 2; }
+  .aq-param-tiles__tile:last-child:nth-child(4n+2):not(.is-lead) { grid-column: auto; }
   .aq-param-tiles__n { font-size: 52px; line-height: 50px; }
 }
 
@@ -50,5 +54,5 @@
   .aq-fold:has(> .aq-param-tiles) > .aq-fold__btn { display: flex; }
   .aq-param-tiles__n { font-size: 48px; line-height: 46px; }
   .aq-param-tiles__tile.is-lead .aq-param-tiles__v { font-size: 22px; line-height: 30px; }
-  .aq-param-tiles__v { font-size: 17px; line-height: 26px; }
+  .aq-param-tiles__v { font-size: 18px; line-height: 26px; }
 }

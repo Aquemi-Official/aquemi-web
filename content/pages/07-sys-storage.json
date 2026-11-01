@@ -151,16 +151,16 @@
    ],
    "rows": [
     [
-     "Chemical",
-     "[PP loop sanitization method]; residual tested before use",
-     "A sanitant the PP maker rates",
-     "Loop out of use each cycle"
-    ],
-    [
      "Hot water",
      "Up to [maximum loop sanitization temperature for PP, °C], held at the coldest point",
      "Inside the PP maker's curve; ≥ 65 °C needs an engineer's review",
      "Not for routine 80 °C at loop pressure, a hot-held loop or steam"
+    ],
+    [
+     "Chemical",
+     "[PP loop sanitization method]; residual tested before use",
+     "A sanitant the PP maker rates",
+     "Loop out of use each cycle"
     ],
     [
      "Ultraviolet (UV)",
@@ -171,12 +171,12 @@
    ],
    "look": "method-bento",
    "figs": [
-    "chemical",
     "hot",
+    "chemical",
     "uv"
    ],
    "scale": {
-    "row": 1,
+    "row": 0,
     "marks": [
      {
       "v": 65,

@@ -20,9 +20,9 @@ function swArt(k,id){var P=function(kind,x,y,s,o){o=o||{};o.id=id;return isoPart
  return {svg:str,box:[x0,y0,x1,y1],tgt:isoP(tgt)}}
 LOOKS['standard-wires']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var rows=R.map(function(r,i){var go=r[2]&&typeof r[2]==='object'?r[2]:{t:r[2]},k=go.art||SW_ART[wsplit(go.link||'')[0]]||'analyzer',id='sw'+i;
-  var A=swArt(k,id),pad=18,W=300,Hh=170,bw=A.box[2]-A.box[0],bh=A.box[3]-A.box[1],sc=Math.min((W*0.62)/bw,(Hh-2*pad)/bh,1.6);
+  var A=swArt(k,id),pad=10,W=300,Hh=170,bw=A.box[2]-A.box[0],bh=A.box[3]-A.box[1],sc=Math.min((W*0.7)/bw,(Hh-2*pad)/bh,2);
   /* the part sits right of centre; the wire enters at the left edge, mid height, and steps to the target */
-  var ox=W*0.64-sc*(A.box[0]+A.box[2])/2,oy=Hh/2-sc*(A.box[1]+A.box[3])/2+6,tx2=ox+sc*A.tgt[0],ty2=oy+sc*A.tgt[1],kx=Math.max(24,tx2-46);
+  var ox=W*0.6-sc*(A.box[0]+A.box[2])/2,oy=Hh/2-sc*(A.box[1]+A.box[3])/2+2,tx2=ox+sc*A.tgt[0],ty2=oy+sc*A.tgt[1],kx=Math.max(24,tx2-46);
   var wire='<path class="aq-standard-wires__wire" d="M0 '+Hh/2+'H'+kx.toFixed(1)+'L'+(kx+Math.min(26,Math.abs(ty2-Hh/2))).toFixed(1)+' '+(Hh/2+Math.sign(ty2-Hh/2)*Math.min(26,Math.abs(ty2-Hh/2))).toFixed(1)+'V'+ty2.toFixed(1)+'H'+(tx2-4).toFixed(1)+'"/><circle class="aq-standard-wires__end" cx="'+(tx2-2).toFixed(1)+'" cy="'+ty2.toFixed(1)+'" r="2.6"/>';
   var svg='<svg class="aq-iso aq-iso--navy aq-standard-wires__svg" viewBox="0 0 '+W+' '+Hh+'" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false" data-iso-motion="off">'
    +'<g transform="translate('+ox.toFixed(1)+' '+oy.toFixed(1)+') scale('+sc.toFixed(3)+')">'+A.svg+'</g>'+wire+'</svg>';

@@ -14,3 +14,5 @@ As the roles table: `cols` [document, written, reviewed], `rows` (cells strings 
 
 ## Motion
 The key boxes stamp in; each block draws in from its top left as it scrolls in, its written field fills and its line is ruled, then the reviewer's. Once per block, under 1.5 s.
+
+Polish (pass 9): desktop sets the blocks two to a row (an odd last block runs the full width, name beside its fields); the party in a field is set in Geist, labels stay mono.

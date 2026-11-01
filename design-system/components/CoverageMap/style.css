@@ -32,6 +32,14 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
 .aq-coverage-map__pin { width: var(--space-4); height: var(--space-4); border: 3px solid var(--navy); position: relative; }
 .aq-coverage-map__pin::after { content: ""; position: absolute; inset: 2px; background: var(--navy); }
 
+/* The readout in the map's open corner: the region being read (the lit row), index in flow over the name, large and light */
+.aq-coverage-map__now { contain: size; position: relative; display: flex; align-items: flex-end; min-width: 0; padding: 0 var(--space-4) var(--space-1) 0; }
+.aq-coverage-map__nv { display: none; }
+.aq-coverage-map__nv.is-on { display: flex; flex-direction: column; gap: var(--space-1); padding-left: var(--space-3); border-left: 2px solid var(--flow); }
+.aq-coverage-map__ni { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; color: var(--flow); }
+.aq-coverage-map__nt { font: 300 28px/32px var(--font-sans); letter-spacing: -0.02em; color: var(--on-limestone); text-wrap: balance; overflow-wrap: break-word; }
+.aq-coverage-map__nt .aq-ph { font-size: 13px; line-height: 20px; }
+
 /* The region rows */
 .aq-coverage-map__rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
 .aq-coverage-map__row { position: relative; padding-block: var(--space-8); border-bottom: 1px solid var(--line); scroll-margin-top: var(--space-24); outline: none; }
@@ -51,6 +59,8 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
 @media (prefers-reduced-motion: no-preference) {
   .aq-coverage-map__btn { transition: background-color 240ms, border-color 240ms, color 240ms; }
   .aq-coverage-map__row::before { transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
+  .aq-coverage-map__nv.is-on { animation: aq-coverage-now 320ms cubic-bezier(0.2, 0, 0, 1); }
+  @keyframes aq-coverage-now { from { opacity: 0; transform: translateY(var(--space-1)); } }
 }
 
 @container (max-width: 860px) {
@@ -60,6 +70,7 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
   .aq-coverage-map__btn { padding: var(--space-1); }
   .aq-coverage-map__code { font-size: 14px; line-height: 18px; }
   .aq-coverage-map__ri { display: none; }
+  .aq-coverage-map__now { display: none; }
   .aq-coverage-map__row { padding-block: var(--space-6); }
   .aq-coverage-map__rh { grid-template-columns: var(--space-8) minmax(0, 1fr); }
   .aq-coverage-map__t { font-size: 24px; line-height: 30px; }

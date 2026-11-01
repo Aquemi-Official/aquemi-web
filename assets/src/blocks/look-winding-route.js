@@ -19,7 +19,7 @@ LOOKS['winding-route']=function(b,H){
  var stops=I.map(function(it,i){var high=i%2===1,lab=it.label||String(it.t||'').split(/\s+/)[0],g=wSpot(it.spot||it.icon,'','aq-spot--on-navy aq-winding-route__glyph');
   var seg='<svg class="aq-winding-route__seg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M50 0C50 25 '+(high?70:30)+' 25 '+(high?70:30)+' 50S50 75 50 100"/></svg>';
   return '<li class="aq-winding-route__stop '+(high?'is-high':'is-low')+(i===0?' is-first':'')+(i===n-1?' is-last':'')+'" style="--k:'+i+'">'
-   +'<div class="aq-winding-route__mark" aria-hidden="true">'+seg+g+(it.fx==='gas'?gas:'')+'<span class="aq-winding-route__node"></span></div>'
+   +'<div class="aq-winding-route__mark" aria-hidden="true">'+seg+'<span class="aq-winding-route__tail"></span>'+g+(it.fx==='gas'?gas:'')+'<span class="aq-winding-route__node"></span></div>'
    +'<div class="aq-winding-route__text"><p class="aq-winding-route__code"><span>'+(i<9?'0':'')+(i+1)+'</span> / '+tx(lab)+'</p>'
    +'<h3 class="aq-winding-route__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-winding-route__d">'+tx(it.d)+'</p>':'')+'</div></li>'}).join('');
  return sec(H+'<div class="aq-winding-route" style="--n:'+n+'">'+line+'<span class="aq-winding-route__drop" aria-hidden="true"></span><ol class="aq-winding-route__stops">'+stops+'</ol></div>','aq-band--navy aq-winding-route-sec')};

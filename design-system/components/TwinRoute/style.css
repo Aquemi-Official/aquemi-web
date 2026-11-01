@@ -12,13 +12,18 @@
 .aq-twin-route__scene { grid-column: 1 / span 2; display: flex; justify-content: flex-end; }
 .aq-twin-route__scene--sat { grid-column: 4 / span 2; justify-content: flex-start; }
 .aq-twin-route__svg { display: block; width: 100%; max-width: 380px; height: auto; }
-.aq-twin-route__road { grid-column: 3; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: var(--space-4); }
+/* each scene stands on a floor line; its route pipe drops from that floor (the cap rails in the labels row) */
+.aq-twin-route__scene { flex-direction: column; align-items: flex-end; }
+.aq-twin-route__scene--sat { align-items: flex-start; }
+.aq-twin-route__scene > .aq-twin-route__svg { border-bottom: 1.5px solid var(--line-strong); }
+.aq-twin-route__cap { display: none; }
+.aq-twin-route__road { grid-column: 3; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: var(--space-2); }
 .aq-twin-route__truck-svg { width: 62%; max-width: 160px; position: relative; z-index: 1; }
-.aq-twin-route__lane { position: absolute; left: calc(-1 * var(--space-4)); right: calc(-1 * var(--space-4)); bottom: var(--space-6); border-top: 1.5px dashed var(--line-strong); }
+.aq-twin-route__lane { position: absolute; left: calc(-1 * var(--space-4)); right: calc(-1 * var(--space-4)); bottom: 0; border-top: 1.5px dashed var(--line-strong); }
 
 /* route labels */
-.aq-twin-route__labels { margin-top: var(--space-6); align-items: end; }
-.aq-twin-route__lab { margin: 0; font: 300 28px/34px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); padding-bottom: var(--space-4); }
+.aq-twin-route__labels { align-items: end; }
+.aq-twin-route__lab { margin: 0; font: 300 28px/34px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); padding: var(--space-8) 0 var(--space-4); }
 .aq-twin-route__lab .aq-eyebrow { display: block; margin-bottom: var(--space-2); color: var(--flow); }
 .aq-twin-route__lab--fat { grid-column: 1; text-align: right; }
 .aq-twin-route__lab--test { grid-column: 3; text-align: center; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--ink-muted); }
@@ -32,8 +37,7 @@
   border-left: 1.5px solid var(--line-strong); border-right: 1.5px solid var(--line-strong); background: var(--surface); }
 .aq-section--alt .aq-twin-route__rail::before { background: var(--surface-sunken); }
 .aq-twin-route__water { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; background: var(--flow); transform-origin: 50% 0; }
-.aq-twin-route__rail.is-cap::before { border-top: 1.5px solid var(--line-strong); top: auto; height: var(--space-12); }
-.aq-twin-route__rail.is-cap > .aq-twin-route__water { top: auto; height: var(--space-12); }
+.aq-twin-route__rail.is-cap { margin-top: -1.5px; }
 .aq-twin-route__rail.is-na::before { border-left-style: dashed; border-right-style: dashed; }
 .aq-twin-route__node { position: absolute; left: 50%; top: calc(var(--space-6) - var(--space-1) / 2); width: var(--tr-node, 14px); height: var(--tr-node, 14px); margin-left: calc(var(--tr-node, 14px) / -2);
   border-radius: 50%; background: var(--flow); box-shadow: 0 0 0 3px var(--surface); z-index: 1; }
@@ -79,6 +83,9 @@
   .aq-twin-route__head { grid-template-columns: 1fr 1fr; column-gap: var(--space-3); }
   .aq-twin-route__scene, .aq-twin-route__scene--sat { grid-column: auto; justify-content: center; }
   .aq-twin-route__road { display: none; }
+  .aq-twin-route__scene, .aq-twin-route__scene--sat { align-items: center; }
+  .aq-twin-route__scene > .aq-twin-route__svg { border-bottom: 0; }
+  .aq-twin-route__cap { display: block; margin-top: var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--flow); text-align: center; }
   .aq-twin-route__labels { display: none; }
   .aq-twin-route__row, .aq-twin-route__end { grid-template-columns: var(--tr-rail, var(--space-12)) var(--tr-rail, var(--space-12)) minmax(0, 1fr); column-gap: var(--space-2); }
   .aq-twin-route__row > :not(.aq-twin-route__rail) { border-bottom: 0; padding: 0; }

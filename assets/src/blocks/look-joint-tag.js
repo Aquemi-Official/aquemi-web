@@ -1,14 +1,14 @@
 /* Look "joint-tag" -> JointTag (design-system/components/JointTag): one joint, one log line, shown on the joint itself.
    A polypropylene pipe in side view runs across the section and off both edges, two lengths fused in the middle with
    the double-rolled fusion bead; each length carries its printed lot marking, the joint number is stencilled beside
-   the bead, a test coupon lies under it and a dashed cut line marks where a rejected joint would be cut out. A
+   the bead, a fused test coupon lies on the bench under it and a dashed cut line marks where a rejected joint would be cut out. A
    traceability tag hangs from the joint on its wire: the log line as a printed form, one box per field (number, field,
    what it proves, the record). Each field's number is also pinned on the part of the joint it describes; pointing at a
    field lights its pin.
    Fields, as a table: cols [field, what it proves, record], rows, fold, fold_noun. Optional parts (one per row: num,
    lot, welder, bead, visual, coupon, sign, cut; default from the field's words). The fold applies on phones only. */
 LOOKS['joint-tag']=(function(){
- var PIN={num:[812,92],lot:[560,118],welder:[770,262],bead:[640,36],visual:[640,262],coupon:[476,286],sign:[770,316],cut:[940,118]};
+ var PIN={num:[810,76],lot:[560,118],welder:[770,262],bead:[640,36],visual:[640,262],coupon:[372,303],sign:[770,316],cut:[940,118]};
  function pick(s){s=String(s||'');return /joint number/i.test(s)?'num':/material|lot/i.test(s)?'lot':/welder/i.test(s)?'welder':/parameter|setting/i.test(s)?'bead':/visual|examin/i.test(s)?'visual':/test joint/i.test(s)?'coupon':/repair|cut/i.test(s)?'cut':'sign'}
  function str(c){return String(c&&typeof c==='object'?c.t:c==null?'':c)}
  function dots(x0,y,w){var o='';for(var x=x0;x<x0+w;x+=9)o+='<rect x="'+x+'" y="'+(y+((x/9)%3===0?3:0))+'" width="5" height="'+((x/9)%4===1?9:5)+'"/>';return '<g class="aq-joint-tag__print">'+o+'</g>'}
@@ -30,13 +30,17 @@ LOOKS['joint-tag']=(function(){
    +'<path class="aq-joint-tag__cut" d="M940 52V248"/><path class="aq-joint-tag__cutm" d="M930 44L950 60M950 44L930 60M930 240L950 256M950 240L930 256"/>';
   /* the wire round the joint and down to the tag */
   o+='<path class="aq-joint-tag__wire" d="M742 70C758 70 758 230 742 230M742 230C718 236 716 252 724 262C730 270 730 284 724 300V340"/>';
-  /* a test coupon, bent, on the bench under the joint */
-  o+='<path class="aq-joint-tag__coupon" d="M390 300H450C472 300 476 270 492 270H562"/><path class="aq-joint-tag__coupon" d="M390 312H450C478 312 484 282 496 282H562"/>';
+  /* the test joint: a short fused coupon of the same pipe, bead in the middle, lying on the bench under the joint */
+  o+='<g class="aq-joint-tag__coupon"><path class="aq-joint-tag__bench" d="M384 324H572"/>'
+   +'<rect class="aq-joint-tag__cb" x="404" y="290" width="144" height="26"/><rect class="aq-joint-tag__cs" x="404" y="307" width="144" height="9"/>'
+   +'<path class="aq-joint-tag__ce" d="M404 290H548V316H404Z"/>'
+   +'<path class="aq-joint-tag__cbd" d="M468 291C465 282 470 278 476 280C482 278 487 282 484 291Z"/><path class="aq-joint-tag__cbd" d="M468 315C465 324 470 328 476 326C482 328 487 324 484 315Z"/>'
+   +'<path class="aq-joint-tag__seam" d="M476 291V315"/></g>';
   return o}
  return function(b,H){var C=b.cols||[],R=b.rows||[],Pt=b.parts||[];
   var parts=R.map(function(r,i){return PIN[Pt[i]]?Pt[i]:pick(str(r[0]))}),pins='',used={};
   parts.forEach(function(p,i){var q=PIN[p].slice(),u=used[p]=(used[p]||0)+1;if(u>1)q=[q[0]+34*(u-1),q[1]];
-   pins+='<g class="aq-joint-tag__pin" data-k="'+i+'"><circle cx="'+q[0]+'" cy="'+q[1]+'" r="15"/><text x="'+q[0]+'" y="'+(q[1]+4.5)+'" text-anchor="middle">'+(i<9?'0':'')+(i+1)+'</text></g>'});
+   pins+='<g class="aq-joint-tag__pin" data-k="'+i+'"><circle cx="'+q[0]+'" cy="'+q[1]+'" r="15"/><text x="'+q[0]+'" y="'+q[1]+'" text-anchor="middle" dominant-baseline="central">'+(i<9?'0':'')+(i+1)+'</text></g>'});
   var svg='<div class="aq-joint-tag__pipe" aria-hidden="true"><svg viewBox="0 0 1200 340" focusable="false">'+pipe()+pins+'</svg></div>';
   var k=function(i){return C[i]?'<p class="aq-joint-tag__k">'+tx(C[i])+'</p>':''};
   var list='<ol class="aq-joint-tag__fields" role="list">'+R.map(function(r,i){

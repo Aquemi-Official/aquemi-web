@@ -19,15 +19,15 @@
 .aq-tolerance-scales .aq-tolerance-scales__f { margin: 0; font: 300 44px/50px var(--font-sans); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
 .aq-tolerance-scales__row.is-hl .aq-tolerance-scales__f { font-size: 52px; line-height: 58px; }
 .aq-tolerance-scales .aq-tolerance-scales__t { margin: 0; font: 300 24px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; max-width: 26ch; }
-.aq-tolerance-scales__ruler { display: block; width: 100%; height: var(--space-8); margin-top: var(--space-3); overflow: visible; }
+.aq-tolerance-scales__ruler { display: block; width: 100%; height: var(--space-12); margin-top: var(--space-3); overflow: visible; }
 .aq-tolerance-scales__ruler * { vector-effect: non-scaling-stroke; }
-.aq-tolerance-scales__ticks { fill: none; stroke: var(--line-strong); stroke-width: 1; }
-.aq-tolerance-scales__band { fill: var(--flow-tint); }
-.aq-tolerance-scales__lim { fill: none; stroke: var(--flow); stroke-width: 1.5; }
+.aq-tolerance-scales__ticks { fill: none; stroke: var(--ink-subtle); stroke-width: 1; }
+.aq-tolerance-scales__band { fill: color-mix(in srgb, var(--flow) 22%, transparent); }
+.aq-tolerance-scales__lim { fill: none; stroke: var(--flow); stroke-width: 2; }
 .aq-tolerance-scales__nom { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 2; }
 .aq-tolerance-scales__ref { fill: none; stroke: var(--flow); stroke-width: 1.5; }
 .aq-tolerance-scales__read--span .aq-tolerance-scales__lim, .aq-tolerance-scales__read--ref .aq-tolerance-scales__lim { stroke: var(--ink-muted); }
-.aq-tolerance-scales__row:hover .aq-tolerance-scales__band { fill: color-mix(in srgb, var(--flow-tint) 70%, var(--flow)); }
+.aq-tolerance-scales__row:hover .aq-tolerance-scales__band { fill: color-mix(in srgb, var(--flow) 34%, transparent); }
 .aq-tolerance-scales-sec .aq-tolerance-scales__note { display: flex; align-items: center; gap: var(--space-4); margin-top: var(--space-6); max-width: var(--text-max); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
 .aq-tolerance-scales__seal { flex: none; width: var(--space-12); height: var(--space-12); border: 1.5px solid var(--flow); border-radius: 50%; outline: 1px solid var(--flow); outline-offset: -6px; }
 

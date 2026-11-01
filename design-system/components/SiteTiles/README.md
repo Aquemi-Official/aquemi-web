@@ -5,7 +5,7 @@ SiteTiles sets a short grid of what changes for a site as a Swiss row of tiles, 
 - Figures (`fig`, default from the item's `icon`): `gauge` (a dial with its needle), `stamp` (a registration imprint), `season` (a year of feed temperature under a dashed design line, for `softener`), `route` (a dashed route from a base to the site, for `wrench`). Any other icon shows as a Spot. No figure carries a value.
 - Fields (a `grid` block): `h`, `intro`, `items [{t, d, link, link_label, icon, fig}]`. Best for 3 to 4 items.
 - Tokens: `surface` tiles with a `surface-raised` plate, `line` / `line-strong` drawing, `flow` for the one active line (needle, tick, curve, route), Geist Light 56 numbers, `flow` links. Hover: the number turns flow.
-- Phones: one tile per row with a shorter plate; two columns below 1100 px.
+- Phones: one tile per row; the plate becomes a square figure beside the number and title, the line and link run full width under them; two columns below 1100 px.
 
 ## Motion
 

@@ -1,5 +1,5 @@
 /* ---------- HoldTimeline: stages as nodes on one rising line over a macro pipe joint (look "hold-timeline") ----------
-   A dark section (data-theme="dark" on the section, so every token inside takes its dark value in both themes). Behind
+   A calm light section on the page's alternate ground (the bead is filled with --surface, which --alt sets). Behind
    it, the macro: a fused pipe drawn huge and cropped, its round body in engraving lines, the weld bead across it, water
    as a dashed flow centre line. In front, the line climbs left to right in steps of --rise; each callout hangs off its
    node on a hairline pole (odd stages above-left, even stages below-right), so the line never crosses text.
@@ -13,7 +13,7 @@
 .aq-hold-timeline-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 16ch; }
 
 /* the macro close-up */
-.aq-hold-timeline__macro { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5; }
+.aq-hold-timeline__macro { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.34; }
 .aq-hold-timeline__macro svg { display: block; width: 100%; height: 100%; }
 .aq-hold-timeline__edge { fill: none; stroke: var(--line-strong); stroke-width: 2.2; }
 .aq-hold-timeline__ct { fill: none; stroke: var(--line-strong); stroke-width: 1.1; opacity: 0.6; }
@@ -61,8 +61,12 @@
 .aq-hold-timeline__n { font: 400 14px/28px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
 .aq-hold-timeline__dur { margin: var(--space-2) 0 0; font: 400 14px/20px var(--font-mono); color: var(--ink-muted); }
 .aq-hold-timeline__fig {
-  display: inline-block; margin: var(--space-3) 0 0; padding: var(--space-2) var(--space-4); border: 1px solid var(--flow);
-  font: 400 32px/38px var(--font-mono); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; color: var(--ink); text-align: left;
+  display: inline-block; margin: var(--space-3) 0 0; padding: var(--space-2) var(--space-4) var(--space-3); border: 1px solid var(--flow);
+  font: 400 15px/20px var(--font-sans); color: var(--ink-muted); text-align: left;
+}
+.aq-hold-timeline__num {
+  font: 300 72px/72px var(--font-sans); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: var(--ink);
+  margin: 0 var(--space-1); vertical-align: -0.12em;
 }
 .aq-hold-timeline__d { margin: var(--space-2) 0 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); text-wrap: pretty; }
 .aq-hold-timeline__hold { margin: var(--space-3) 0 0; font: 400 13px/20px var(--font-sans); color: var(--ink); }
@@ -93,5 +97,5 @@
   }
   .aq-hold-timeline__band, .aq-hold-timeline__pole { display: none; }
   .aq-hold-timeline__t { font-size: 20px; }
-  .aq-hold-timeline__fig { font-size: 28px; line-height: 34px; }
+  .aq-hold-timeline__num { font-size: 56px; line-height: 56px; }
 }

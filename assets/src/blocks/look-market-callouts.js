@@ -38,6 +38,6 @@ LOOKS['market-callouts']=(function(){
     +'<h3 class="aq-market-callouts__t"><span class="aq-market-callouts__n" aria-hidden="true">'+n+' /</span> '+tx(it.t)+'</h3>'+body+'</li>'}).join('');
   var svg=isoSvg(VW,VH,sc.g+'<g class="aq-market-callouts__leads">'+lead+'</g>','aq-iso--limestone aq-market-callouts__svg',{});
   return sec(H+'<div class="aq-market-callouts"><div class="aq-market-callouts__stage"><div class="aq-market-callouts__plane" aria-hidden="true">'
-   +'<span class="aq-market-callouts__rail aq-market-callouts__rail--a"></span><span class="aq-market-callouts__rail aq-market-callouts__rail--b"></span>'+svg+marks+'</div>'
+   +svg+marks+'</div>'
    +'<ol class="aq-market-callouts__list">'+list+'</ol></div></div>','aq-band--navy aq-market-callouts-band')}
 })();

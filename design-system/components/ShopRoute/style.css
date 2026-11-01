@@ -18,7 +18,7 @@
 .aq-shop-route__bay.is-back { border-bottom: 0; }
 .aq-shop-route__bay:hover, .aq-shop-route__bay.is-on { background: color-mix(in srgb, var(--limestone) 80%, var(--surface-raised)); }
 /* plan furniture, top right, quiet */
-.aq-shop-route__furn { position: absolute; right: var(--space-4); top: var(--space-4); width: 30%; max-width: 150px; height: auto; overflow: visible; pointer-events: none; }
+.aq-shop-route__furn { position: absolute; right: var(--space-4); top: var(--space-3); width: 26%; max-width: 128px; height: auto; overflow: visible; pointer-events: none; }
 .aq-shop-route__furn * { vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
 .aq-shop-route__ln { fill: color-mix(in srgb, var(--limestone) 70%, var(--surface-raised)); stroke: var(--on-limestone-muted); stroke-width: 1; }
 .aq-shop-route__thin { fill: none; stroke: var(--on-limestone-muted); stroke-width: 1; }

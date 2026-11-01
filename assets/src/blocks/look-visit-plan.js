@@ -56,7 +56,10 @@ function vpMini(st,cls){var P=[];st.mini.forEach(function(p){for(var k in p.port
 LOOKS['visit-plan']=function(b,H){var I=b.items||[],K='aq-visit-plan',pl=vpPlant(),S=pl.S,X=pl.X;
  var parts=function(it){return String(it.part||'').split(/\s+/).filter(function(k){return S[k]})};
  /* walk: a stop on the floor in front of the first stage each item checks; a smooth walk through the stops */
- var stops=[];I.forEach(function(it,i){var ps=parts(it);if(!ps.length)return;var c=S[ps[0]].c,x=c/(2*ISO_C),F=stops.length%2?150:100;stops.push({i:i,p:[x+F/2,-x+F/2,0],ps:ps})});
+ var stops=[];I.forEach(function(it,i){var ps=parts(it);if(!ps.length)return;var c=S[ps[0]].c,x=c/(2*ISO_C),F=stops.length%2?150:100;stops.push({i:i,x:x,F:F,ps:ps})});
+ /* stops too close to read apart (two checks on neighbouring parts) are spread to at least half the mean spacing */
+ if(stops.length>2){var gap=(stops[stops.length-1].x-stops[0].x)/(stops.length-1)*0.5;for(var j=1;j<stops.length-1;j++){if(stops[j].x-stops[j-1].x<gap){var mid=(stops[j].x+stops[j-1].x)/2;stops[j-1].x=Math.min(stops[j-1].x,mid-gap/2);stops[j].x=mid+gap/2}}}
+ stops.forEach(function(s){s.p=[s.x+s.F/2,-s.x+s.F/2,0]});
  var allP=[];Object.keys(S).forEach(function(k){allP=allP.concat(S[k].pts)});allP=allP.concat(stops.map(function(s){return s.p}));
  var bx=isoBounds(allP,28),VW=1080,sc=VW/bx.w,VH=Math.round(bx.h*sc+24),org=[-bx.x,-bx.y+12/sc];
  var T=function(q){var s=isoP(q);return [(s[0]+org[0])*sc,(s[1]+org[1])*sc]};

@@ -10,3 +10,5 @@ MethodBento sets a short comparison of methods as a bento of drawn tiles, one pe
 ## Motion
 
 Motion: the navy tile wipes open from the left, the paper tiles rise, the gap tile's outline name slides in last. In the navy tile the bulb fills and the heat runs up the rail (solid, then dashed, then dotted), each mark dropping in as the heat reaches it. Drawings draw on, the sanitant disperses dot by dot along the pipe, the UV rays flicker on. Under 5 s; nothing under reduced motion.
+
+Pass 9 polish: the ghost name is larger and stroked in `ink-subtle` so it reads in the dark theme too.

@@ -14,7 +14,7 @@ LOOKS['derivation-sheet']=function(b,H){var C=b.cols||[],R=b.rows||[];
  var lines=R.map(function(r,i){var set=String(r[2]||''),m=set.match(NUM);
   var lim=m?'<p class="aq-derivation-sheet__v"><span class="aq-derivation-sheet__num">'+tx(m[1])+'</span><span class="aq-derivation-sheet__u">'+tx(m[2])+'</span></p>'
     +(m[3]||m[4]?'<p class="aq-derivation-sheet__ref">'+[m[3],m[4]].filter(Boolean).map(tx).join('<span aria-hidden="true"> · </span>')+'</p>':'')
-   :'<p class="aq-derivation-sheet__set">'+tx(set)+'</p>';
+   :'<ul class="aq-derivation-sheet__set">'+set.split(/;\s*/).filter(Boolean).map(function(x){return '<li>'+tx(x)+'</li>'}).join('')+'</ul>';
   return '<li class="aq-derivation-sheet__line'+(m?' is-figure':'')+'"><span class="aq-derivation-sheet__no" aria-hidden="true">('+(i+1)+')</span>'
    +'<div class="aq-derivation-sheet__given"><span class="aq-derivation-sheet__k">'+tx(C[0]||'')+'</span><h3 class="aq-derivation-sheet__t">'+tx(r[0])+'</h3></div>'
    +'<span class="aq-derivation-sheet__op" aria-hidden="true"><svg viewBox="0 0 48 16" focusable="false"><path d="M2 8H44M37 2L45 8L37 14"/></svg></span>'

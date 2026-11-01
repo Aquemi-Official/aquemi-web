@@ -32,7 +32,7 @@
 .aq-revision-register__lstd { margin: 0; font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
 .aq-revision-register__fig { position: absolute; right: var(--space-4); top: var(--space-12); opacity: 0.32; pointer-events: none; }
 .aq-revision-register__fig .aq-spot { color: var(--navy); }
-.aq-revision-register__go { position: relative; margin: auto 0 0; padding-top: var(--space-4); font: 400 14px/22px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-revision-register .aq-revision-register__go { position: relative; margin: auto 0 0; padding-top: var(--space-4); font: 400 14px/22px var(--font-sans); color: var(--on-limestone-muted); }
 .aq-revision-register a { color: var(--flow); text-decoration-color: color-mix(in srgb, var(--flow) 40%, transparent); text-underline-offset: 3px; }
 .aq-revision-register a:hover { text-decoration-color: currentColor; }
 .aq-revision-register a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }

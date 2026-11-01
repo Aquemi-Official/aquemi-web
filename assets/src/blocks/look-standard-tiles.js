@@ -8,9 +8,9 @@
 LOOKS['standard-tiles']=function(b,H){var I=b.items||[],n=I.length;
  var tiles=I.map(function(it,i){var ic=isIcon(it.icon)?wIcon(it.icon,'aq-standard-tiles__ic'):'';
   var inner='<span class="aq-standard-tiles__top" aria-hidden="true"><span class="aq-standard-tiles__no">'+(i<9?'0':'')+(i+1)+' / '+(n<10?'0':'')+n+'</span>'+ic+'</span>'
-   +(it.tag?'<span class="aq-standard-tiles__tag">'+tx(it.tag)+'</span>':'')
+   +(it.tag?'<span class="aq-standard-tiles__tag'+(/\d/.test(it.tag)?'':' is-word')+'">'+tx(it.tag)+'</span>':'<span></span>')
    +'<div class="aq-standard-tiles__body"><h3 class="aq-standard-tiles__t">'+tx(it.t)+'</h3>'+(it.d?'<span class="aq-standard-tiles__d">'+tx(it.d)+'</span>':'')+'</div>'
-   +(it.link&&wp(it.link)?'<span class="aq-standard-tiles__arrow" aria-hidden="true"></span>':'');
+   +(it.link&&wp(it.link)?'<span class="aq-standard-tiles__arrow" aria-hidden="true"></span>':'<span></span>');
   return '<li class="aq-standard-tiles__tile'+(i===0?' is-lead':'')+'">'+(it.link&&wp(it.link)?'<a class="aq-standard-tiles__in" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-standard-tiles__in">'+inner+'</div>')+'</li>'}).join('');
  return sec(H+'<ol class="aq-standard-tiles" style="--n:'+n+'">'+tiles+'</ol>','aq-standard-tiles-sec')};
 })();

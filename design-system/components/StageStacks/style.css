@@ -61,9 +61,13 @@
 
 @media (prefers-reduced-motion: reduce) { .aq-stage-stacks__doc { transition: none; } }
 
+/* mid widths: the band labels turn to read up the margin (bottom to top), so every band stays named */
 @container (max-width: 1100px) {
-  .aq-stage-stacks { padding-left: 0; }
-  .aq-stage-stacks__stage:first-child .aq-stage-stacks__k { display: none; }
+  .aq-stage-stacks { padding-left: var(--space-12); }
+  .aq-stage-stacks__stage:first-child .aq-stage-stacks__k {
+    right: calc(100% + var(--space-4)); width: auto; max-inline-size: var(--space-32); writing-mode: vertical-rl; transform: rotate(180deg); text-align: start;
+  }
+  .aq-stage-stacks__stage:first-child .aq-stage-stacks__head > .aq-stage-stacks__k { top: var(--space-4); }
   .aq-stage-stacks__nm { font-size: 19px; line-height: 25px; }
 }
 @container (max-width: 860px) {
@@ -78,11 +82,12 @@
   .aq-stage-stacks__stage:last-child .aq-stage-stacks__run { right: auto; bottom: var(--space-8); }
   .aq-stage-stacks__stage:last-child .aq-stage-stacks__axis::after { right: auto; top: auto; left: calc(var(--space-2) - var(--space-3) / 2 + 1px); bottom: var(--space-6); border-top: 0; border-left: 0; border-right: 2px solid var(--flow); border-bottom: 2px solid var(--flow); transform: rotate(45deg); }
   .aq-stage-stacks__node { left: calc(var(--space-2) - var(--space-3) / 2 + 1px); top: var(--space-2); transform: none; }
+  .aq-stage-stacks { padding-left: 0; }
   .aq-stage-stacks__nm { font-size: 20px; line-height: 26px; }
   .aq-stage-stacks__docs { flex-direction: row; flex-wrap: wrap; gap: var(--space-1); }
   .aq-stage-stacks__doc, .aq-stage-stacks__doc:nth-child(even) { transform: none; }
   .aq-stage-stacks__doc:last-child { clip-path: none; }
-  .aq-stage-stacks__k.is-ph, .aq-stage-stacks__stage:first-child .aq-stage-stacks__k { display: block; position: static; width: auto; text-align: left; margin-bottom: var(--space-2); }
+  .aq-stage-stacks__k.is-ph, .aq-stage-stacks__stage:first-child .aq-stage-stacks__k { display: block; position: static; width: auto; max-inline-size: none; writing-mode: horizontal-tb; transform: none; text-align: left; margin-bottom: var(--space-2); }
   .aq-stage-stacks__head > .aq-stage-stacks__k, .aq-stage-stacks__stage:first-child .aq-stage-stacks__head > .aq-stage-stacks__k { display: none; }
   .aq-stage-stacks__step { border-top: 0; padding-top: 0; }
   .aq-fold:not(.is-open) .aq-stage-stacks__stage.aq-fold-x { display: none; }

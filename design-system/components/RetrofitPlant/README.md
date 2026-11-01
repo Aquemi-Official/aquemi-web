@@ -4,8 +4,9 @@ Look `retrofit-plant` (`assets/src/blocks/look-retrofit-plant.js`) on a `table` 
 
 - Markup: `section.aq-band--navy.aq-retrofit-plant-sec` > `div.aq-retrofit-plant` > `__sheet` (`svg.aq-iso.aq-iso--navy.__svg.is-retro[data-on]`, `p.__legend` with `__sw--old|--new`) + `__pick` (`__tabs[role=tablist]` > `button.__tab[role=tab][data-on]` (`__tn`, `__tt`); `__panels` > `div.__panel[role=tabpanel]` (`is-off`) with `__mfig` (`svg.__mini`), `h3.__pt`, `dl.__terms` > `__term--1..3`, `p.__go` (`__gk`, link)).
 - Fields: `h`, `intro`, `cols`, `rows` (the last cell `{t, link}`); new optional `parts`: one entry per row naming the stage(s) it changes (pre, gen, tank, loop, uv, toc, panel).
+- Camera: the sheet (1080 × 430) frames the picked upgrade: `g.__cam` (inside a clip to the sheet's inner frame) carries a CSS transform per row (computed from the stages' port bounds, zoom 1 to 2.3, clamped so the plant fills the width), written on each tab as `data-cam` and on the svg (`data-cam`, `data-cam0` = the whole plant). A key plan (`g.__key`: the plant again as `<use>`, `rect.__kwin` the camera's window, "KEY PLAN") sits bottom left. A row without parts shows the whole plant.
 - Tokens: navy band with ink remapped to on-navy; existing parts at 28 % opacity, lit parts `flow` (IsoKit `is-lit`); upgrade names Geist 300 22 px; downtime set larger.
 - Phones: no sheet or tabs; every upgrade is a card with its terms and its stage drawn small.
 - Keyboard: tabs move with the arrow keys, Home and End.
 
-Motion: the plant is drawn and the water runs it once at full strength (IsoKit), then the plant drops to "existing" and the picked upgrade's stages light; the tabs and the panel rise. Once, under 5 s. Picking another upgrade fades the sheet over (CSS).
+Motion: the whole plant is drawn and the water runs it once at full strength (IsoKit, `keep: true`), then the plant drops to "existing", the sheet moves in on the picked upgrade (0.9 s CSS transition, key-plan window with it) and its stages light; the tabs and the panel rise. Once, under 5 s. Picking another upgrade fades the sheet over and moves the camera (CSS; none under reduced motion).

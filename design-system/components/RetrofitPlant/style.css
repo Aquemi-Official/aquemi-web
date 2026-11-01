@@ -17,6 +17,12 @@
 .aq-retrofit-plant__svg.is-retro .aq-iso__part, .aq-retrofit-plant__svg.is-retro .aq-iso__pipe { transition: opacity 400ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-retrofit-plant__svg.is-retro .aq-iso__part:not(.is-lit), .aq-retrofit-plant__svg.is-retro .aq-iso__pipe:not(.is-lit) { opacity: 0.28; }
 .aq-retrofit-plant__svg .aq-iso__part.is-lit .aq-iso__eq, .aq-retrofit-plant__svg .aq-iso__part.is-lit .aq-iso__ln { stroke-width: 2; }
+.aq-retrofit-plant__cam { transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1); }
+.aq-retrofit-plant__kbox { fill: var(--navy); stroke: var(--line-strong); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-retrofit-plant__kplant use { fill: var(--navy); stroke: var(--on-navy-muted); }
+/* the clone does not match the navy-sheet rules (their ancestor is outside its shadow tree): it inherits these */
+.aq-retrofit-plant__kwin { fill: color-mix(in srgb, var(--rp-flow, var(--flow)) 12%, transparent); stroke: var(--rp-flow, var(--flow)); stroke-width: 1.5; transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1); }
+@media (prefers-reduced-motion: reduce) { .aq-retrofit-plant__cam, .aq-retrofit-plant__kwin { transition: none; } }
 .aq-retrofit-plant__legend { position: absolute; right: 0; top: 100%; margin: var(--space-2) 0 0; display: flex; align-items: center; gap: var(--space-2); font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
 .aq-retrofit-plant__sw { display: inline-block; width: var(--space-6); border-top: 1.5px solid var(--on-navy-muted); opacity: 0.5; }
 .aq-retrofit-plant__sw--new { border-top: 2px solid var(--rp-flow, var(--flow)); opacity: 1; margin-left: var(--space-4); }
@@ -36,7 +42,7 @@
 .aq-retrofit-plant__term dt { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
 .aq-retrofit-plant__term dd { margin: var(--space-2) 0 0; font: 400 16px/24px var(--font-sans); color: var(--on-navy); text-wrap: pretty; }
 .aq-retrofit-plant__term--3 dd { font: 300 24px/30px var(--font-sans); letter-spacing: -0.01em; }
-.aq-retrofit-plant__go { margin: var(--space-8) 0 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-retrofit-plant .aq-retrofit-plant__go { margin: var(--space-8) 0 0; display: flex; flex-direction: column; gap: var(--space-2); }
 .aq-retrofit-plant__gk { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
 .aq-retrofit-plant__go a { font: 300 28px/34px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); text-decoration: none; }
 .aq-retrofit-plant__go a::after { content: " →"; color: var(--rp-flow, var(--flow)); }
@@ -53,6 +59,6 @@
   .aq-retrofit-plant__pt { display: flex; flex-direction: column; gap: var(--space-1); grid-column: 1; grid-row: 1; margin: 0; font: 300 22px/28px var(--font-sans); color: var(--on-navy); }
   .aq-retrofit-plant__terms { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); margin-top: var(--space-4); }
   .aq-retrofit-plant__term--3 dd { font-size: 20px; line-height: 26px; }
-  .aq-retrofit-plant__go { grid-column: 1 / -1; margin-top: var(--space-6); }
+  .aq-retrofit-plant .aq-retrofit-plant__go { grid-column: 1 / -1; margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--line); }
   .aq-retrofit-plant__go a { font-size: 22px; line-height: 28px; }
 }

@@ -1,5 +1,5 @@
 /* Look "grade-switch" -> GradeSwitch (design-system/components/GradeSwitch): a short grade table (as: "grades") set as
-   a selector panel on a limestone band. Each product is a strip on one plate: its name, a selector with one slot per
+   a selector panel on the page ground (the core's alternating surface; the URS line above sits on the sunken ground). Each product is a strip on one plate: its name, a selector with one slot per
    water grade (the knob sits in the minimum; a slot your specification may call for shows as a dashed open slot), then
    the minimum as written and the note. The selector is a picture of the row (aria-hidden); the words carry it.
    Fields, as the grades table: cols, rows [product, minimum, note].
@@ -18,5 +18,5 @@ LOOKS['grade-switch']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.positions|
    +'<div class="aq-grade-switch__txt"><p class="aq-grade-switch__min"><span class="aq-grade-switch__k">'+tx(C[1]||'')+'</span>'+tx(r[1])+'</p>'
    +(r[2]?'<p class="aq-grade-switch__note">'+tx(r[2])+'</p>':'')+'</div></li>'}).join('');
  var screws='<span class="aq-grade-switch__screw" aria-hidden="true"></span>'.repeat(4);
- return sec(H+'<div class="aq-grade-switch">'+screws+'<p class="aq-grade-switch__colh"><span>'+tx(C[0]||'')+'</span><span aria-hidden="true">'+P.map(function(p){return e(p.t)}).join(' · ')+'</span></p><ol class="aq-grade-switch__rows">'+rows+'</ol></div>','aq-band--limestone aq-grade-switch-sec')};
+ return sec(H+'<div class="aq-grade-switch">'+screws+'<p class="aq-grade-switch__colh"><span>'+tx(C[0]||'')+'</span><span aria-hidden="true">'+P.map(function(p){return e(p.t)}).join(' · ')+'</span></p><ol class="aq-grade-switch__rows">'+rows+'</ol></div>','aq-grade-switch-sec')};
 })();

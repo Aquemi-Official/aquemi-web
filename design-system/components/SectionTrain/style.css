@@ -78,7 +78,15 @@
   .aq-section-train__stage + .aq-section-train__stage { border-left: 0; }
   .aq-section-train__stage::before { content: ""; position: absolute; left: 52px; top: 0; bottom: 0; width: 3px; transform: translateX(-50%);
     border-inline: 1px solid var(--on-limestone); background: var(--surface-raised); z-index: 0; }
-  .aq-section-train__mini { display: block; position: relative; z-index: 1; width: 104px; height: auto; background: var(--limestone); }
+  /* the rail is the pipe: it starts at the feed lens, runs behind every vessel (their walls and beds are filled, the
+     paper round them is not) and ends at the outlet lens */
+  .aq-section-train__stage:first-child::before { top: 78px; }
+  .aq-section-train__stage:last-child::before { bottom: auto; height: 78px; }
+  .aq-section-train__mini { display: block; position: relative; z-index: 1; width: 104px; height: auto; background: transparent; }
+  /* the backflow preventer turns onto the rail; the outlet's arrowhead is the rail's end, so it goes */
+  .aq-section-train__mini .aq-section-train__valve { transform-box: fill-box; transform-origin: center; transform: translate(52px, 0) rotate(90deg); }
+  .aq-section-train__mini .aq-section-train__arrow, .aq-section-train__mini .aq-section-train__dot { display: none; }
+  .aq-section-train__mini .aq-section-train__lead { display: none; }
   .aq-section-train__text { padding-top: var(--space-4); }
   .aq-section-train__t { font-size: 17px; line-height: 24px; }
   .aq-section-train__base { align-items: flex-start; }

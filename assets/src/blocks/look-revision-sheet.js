@@ -35,9 +35,9 @@ LOOKS['revision-sheet']=(function(){
    /* draft and review: highlighted passages, numbered comments in the margin, a draft tag */
    function(){var s='';[[107,120,180],[167,60,210],[227,140,150]].forEach(function(c,j){s+='<rect class="aq-revision-sheet__hl" x="'+c[1]+'" y="'+(c[0]-6)+'" width="'+c[2]+'" height="10"/>'
      +P('M'+(c[1]+c[2])+' '+(c[0]-1)+'H364','lead')+'<circle class="aq-revision-sheet__cm" cx="374" cy="'+(c[0]-1)+'" r="8"/>'+T(374,c[0]+3,String(j+1),'cm','middle')});
-    return s+'<g class="aq-revision-sheet__draft"><rect x="282" y="74" width="86" height="22" transform="rotate(-6 325 85)"/>'+T(325,90,I[0]?String(I[0].t).split(/\s+/)[0]:'','tag','middle')+'</g>'},
+    return s+'<g class="aq-revision-sheet__dtag"><rect x="282" y="74" width="86" height="22" transform="rotate(-6 325 85)"/>'+T(325,90,I[0]?String(I[0].t).split(/\s+/)[0]:'','tag','middle')+'</g>'},
    /* revision: comments answered, revision triangle raised */
-   function(){var s='';[106,166,226].forEach(function(cy){s+=P('M370 '+cy+'l3 3l6 -7','tickw')});return s+P('M278 92L372 78','strike')+'<path class="aq-revision-sheet__tri" d="M340 30l10 18h-20z"/>'},
+   function(){var s='';[106,166,226].forEach(function(cy){s+='<circle class="aq-revision-sheet__cma" cx="374" cy="'+cy+'" r="8.75"/>'+P('M370 '+cy+'l3 3l6 -7','ticka')});return s+P('M278 92L372 78','strike')+'<path class="aq-revision-sheet__tri" d="M340 30l10 18h-20z"/>'},
    /* first hold: signature */
    function(){return P(SIG[0],'sig" transform="translate(52 384)')},
    /* second hold: data recorded and a second signature */

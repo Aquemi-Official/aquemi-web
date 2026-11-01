@@ -1130,16 +1130,16 @@
      ],
      "rows": [
       [
-       "Chemical",
-       "[PP loop sanitization method]; residual tested before use",
-       "A sanitant the PP maker rates",
-       "Loop out of use each cycle"
-      ],
-      [
        "Hot water",
        "Up to [maximum loop sanitization temperature for PP, °C], held at the coldest point",
        "Inside the PP maker's curve; ≥ 65 °C needs an engineer's review",
        "Not for routine 80 °C at loop pressure, a hot-held loop or steam"
+      ],
+      [
+       "Chemical",
+       "[PP loop sanitization method]; residual tested before use",
+       "A sanitant the PP maker rates",
+       "Loop out of use each cycle"
       ],
       [
        "Ultraviolet (UV)",
@@ -1150,12 +1150,12 @@
      ],
      "look": "method-bento",
      "figs": [
-      "chemical",
       "hot",
+      "chemical",
       "uv"
      ],
      "scale": {
-      "row": 1,
+      "row": 0,
       "marks": [
        {
         "v": 65,
@@ -1726,7 +1726,7 @@
        "t": "Feed heat exchanger",
        "d": "Holds RO feed at [feed heat exchanger design temperature, °C] in winter.",
        "spot": "heat-exchanger",
-       "at": 3.9,
+       "at": 3.6,
        "part": "hx",
        "row": "front"
       }
@@ -2365,7 +2365,7 @@
       },
       {
        "q": "How long from URS to water released?",
-       "a": "Design takes [design to DQ, weeks], fabrication [approved design to FAT, weeks] and the factory acceptance test [FAT duration, days]. Installation and site acceptance take [installation and SAT, days], then [IQ/OQ on site, days] of qualification testing. Under WHO TRS 1033, water can be used after at least 2 weeks of sampling, with your quality unit's approval. Sampling continues for a year."
+       "a": "Design takes [design to DQ, weeks], fabrication [approved design to FAT, weeks] and the factory acceptance test [FAT duration, days]. Installation and site acceptance take [installation and SAT, days], then [IQ/OQ on site, days] of qualification. Under WHO TRS 1033, water can be used after at least 2 weeks of sampling, with quality unit approval. Sampling runs for a year."
       }
      ]
     },

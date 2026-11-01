@@ -18,7 +18,7 @@
 .aq-approval-merge__lane-h { text-align: center; color: var(--ink); }
 .aq-approval-merge__lane-h.is-ours { color: var(--flow); }
 .aq-approval-merge__hk--appr { text-align: right; padding: 0; }
-.aq-approval-merge.is-one .aq-approval-merge__hk--appr { visibility: hidden; }
+.aq-approval-merge.is-one .aq-approval-merge__hk--appr { display: none; }
 .aq-approval-merge__body { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--bus, var(--space-32)); }
 .aq-approval-merge:not(.is-one) .aq-approval-merge__body { grid-template-columns: minmax(0, 1fr); }
 .aq-approval-merge__rows { list-style: none; margin: 0; padding: 0; }

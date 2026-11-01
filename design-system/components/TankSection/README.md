@@ -10,3 +10,5 @@ TankSection reads fabrication parameters off a blueprint of the storage tank cut
 ## Motion
 
 Motion: the blueprint is drawn as a draughtsman would: floor, legs and shell outline, the cut wall's hatching fills, nozzles, vent filter and outlet; the water level rises and the spray ball's jets open; the detail circles strike out from their marks; each leader runs to the side, its balloon pops and its label slides in along the hairline; the schedule rows follow. Under 5 s; nothing under reduced motion.
+
+Pass 9 polish: the drawing grid sits behind the drawing column only (callout columns on clean navy); callout and schedule values are Geist, not mono.

@@ -15,7 +15,7 @@ var SF_ROOMS=[[0,0,220,170],[0,190,220,340],[240,0,480,170],[240,190,480,340],[5
 /* station: part builder, where the walker stands (floor point), where the pin sits (3D) */
 var SF_ST={
  design:{p:function(){return isoPart('desk',80,70,0,1.8)},at:[90,140],pin:[80,70,96]},
- front:{p:function(){return isoPart('binder',170,112,0,1.6)},at:[160,150],pin:[168,112,64]},
+ front:{p:function(){return isoPart('binder',170,112,0,1.6)},at:[138,150],pin:[168,112,64]},
  qa:{p:function(){return isoPart('binder',70,262,0,1.5)+isoPart('stamp',160,282,0,2)},at:[110,212],pin:[70,262,60]},
  fab:{p:function(){var sk=isoPart('skid',262,40,0,1,{w:180,d:84});
    var run=isoPipe([[276,82,14],[352,82,14],[352,82,46],[428,82,46]],{r:4,caps:true,flanges:'ends',flow:false});
@@ -38,13 +38,13 @@ function sfScene(used){
  var ids=SF_ORDER.slice().sort(function(a,b){var A=SF_ST[a].pin,B=SF_ST[b].pin;return (A[0]+A[1])-(B[0]+B[1])});
  ids.forEach(function(id){o.push('<g class="aq-shop-floor__st'+(used.indexOf(id)<0?' is-idle':'')+'" data-iso-id="'+id+'">'+SF_ST[id].p()+'</g>')});
  /* walking route: in at the door, aisle to aisle, one leg per station in card order */
- var door=[234,356,0],cur=door,legs='';
+ var door=[240,356,0],cur=door,legs='';
  used.forEach(function(id,i){if(i&&id===used[i-1])return;var a=SF_ST[id].at,q=[a[0],a[1],1],pts=[cur];
-  {pts.push([cur[0],180,1]);pts.push([q[0],180,1])}pts.push(q);
+  {pts.push([cur[0],185,1]);pts.push([q[0],185,1])}pts.push(q);
   var P=[];pts.forEach(function(p){var l=P[P.length-1];if(!l||Math.abs(l[0]-p[0])+Math.abs(l[1]-p[1])>0.5)P.push(p)});
   if(P.length>1)legs+=isoPipe(P,{wall:false,r:1,bend:8,caps:false,to:id,cls:'aq-shop-floor__walk'});cur=q});
  o.push(legs);
- o.push(isoPath(isoPoly([[216,354,0],[252,354,0]]),'aq-iso__ln aq-shop-floor__door'));
+ o.push(isoPath(isoPoly([[222,354,0],[258,354,0]]),'aq-iso__ln aq-shop-floor__door'));
  var bx=isoBounds([[-14,-14,-8],[654,-14,-8],[-14,354,-8],[654,354,-8],[-14,-14,40],[654,-14,40],[234,360,0]],14),W=Math.round(bx.w),H=Math.round(bx.h),org=[-bx.x,-bx.y];
  var pins={};SF_ORDER.forEach(function(id){pins[id]=isoPct(isoP(SF_ST[id].pin),W,H,org)});
  return {svg:isoSvg(W,H,o.join(''),'aq-iso--navy aq-shop-floor__svg',{origin:org}),pins:pins}}

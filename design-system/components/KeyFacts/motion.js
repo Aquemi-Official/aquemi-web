@@ -10,8 +10,9 @@ AQmotion.fx('KeyFacts', function (root, m) {
     var pick = function (s) { return cells.map(function (c) { return c.querySelector(s) }).filter(Boolean) };
     var dts = pick('dt'), vals = pick('.aq-key-facts__value'), units = pick('.aq-key-facts__unit'), dials = pick('.aq-key-facts__dial'), srcs = pick('.aq-key-facts__src');
     gsap.set(dl, { clipPath: 'inset(-8px 100% -8px -8px)' });
-    gsap.set(dts.concat(srcs, units, vals), { autoAlpha: 0 });
-    gsap.set(dials, { rotation: -150, autoAlpha: 0 });
+    var faded = dts.concat(srcs, units, vals); // guard empty lists: gsap.set([]) logs "GSAP target not found"
+    if (faded.length) gsap.set(faded, { autoAlpha: 0 });
+    if (dials.length) gsap.set(dials, { rotation: -150, autoAlpha: 0 });
     m.on(dl, function () {
       var d = inHero && Date.now() - t0 < 400 ? (m.narrow() ? 0.2 : 0.95) : 0, step = m.narrow() ? 0.12 : 0.16;
       var tl = m.tw(gsap.timeline({ delay: d, defaults: { ease: 'power3.out' } }));

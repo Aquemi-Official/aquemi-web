@@ -1,6 +1,6 @@
 /* TimeCard: the card is pulled from the rack and punched. The card rises out of its slot onto the one beneath (which
-   stays put), the column names appear, then each visible line is punched in turn: its slot fills navy for a beat as
-   the line's text types in from the left, then the slot clears. The note's stamp strikes last, once.
+   stays put), the column names appear, then each visible line is punched in turn: its slot (blanked when the timeline is
+   built) fills navy and stays punched as the line's text types in from the left. The note's stamp strikes last, once.
    Under 3 s; folded lines appear whole when opened. Hover: the line's slot fills. */
 AQmotion.fx('TimeCard', function (root, m) {
   root.querySelectorAll('.aq-time-card').forEach(function (el) {
@@ -12,7 +12,7 @@ AQmotion.fx('TimeCard', function (root, m) {
       .from(q('.aq-time-card__head > span'), { autoAlpha: 0, duration: 0.4, stagger: 0.06, clearProps: 'opacity,visibility' }, 0.5);
     q('.aq-time-card__row').filter(function (r) { return r.offsetParent !== null }).forEach(function (r, i) {
       var at = 0.7 + i * 0.22, slot = r.querySelector('.aq-time-card__n i');
-      if (slot) tl.call(function (s) { s.classList.add('is-punched') }, [slot], at).call(function (s) { s.classList.remove('is-punched') }, [slot], at + 0.35);
+      if (slot) { slot.classList.add('is-blank'); tl.call(function (s) { s.classList.remove('is-blank') }, [slot], at) }
       tl.fromTo(q('.aq-time-card__p, .aq-time-card__v, .aq-time-card__m', r), { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.5, stagger: 0.08, ease: 'power2.out', clearProps: 'clipPath' }, at + 0.05);
     });
     var st = el.querySelector('.aq-time-card__stamp');

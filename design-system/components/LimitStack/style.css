@@ -14,8 +14,8 @@
 .aq-limit-stack__row { --step: var(--space-8); position: relative; display: grid; grid-template-columns: minmax(0, 1fr); row-gap: var(--space-1);
   margin-inline-start: calc(var(--i, 0) * var(--step, var(--space-8))); padding-block: var(--space-4) var(--space-3); }
 .aq-limit-stack__p { margin: 0; display: flex; align-items: baseline; gap: var(--space-3); flex-wrap: wrap;
-  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
-.aq-limit-stack__p .aq-index { color: var(--on-limestone-muted); }
+  font: 500 12px/16px var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-limit-stack__p .aq-index { color: var(--on-limestone-muted); font-family: var(--font-mono); }
 .aq-limit-stack__lvl { padding: 0 var(--space-2); border: 1px solid var(--on-limestone-muted); letter-spacing: 0.06em; }
 .aq-limit-stack__v { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); color: var(--on-limestone); }
 .aq-limit-stack__n { font: 300 44px/52px var(--font-mono); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }

@@ -23,9 +23,10 @@ AQmotion.fx('WindingRoute', function (root, m) {
     }
     if (narrow) {
       stops.forEach(function (s, i) {
-        var seg = s.querySelector('.aq-winding-route__seg path'), at = 0.1 + i * 0.32;
-        if (seg) tl.fromTo(seg.parentNode, { clipPath: 'inset(0 -50% 100% -50%)' }, { clipPath: 'inset(0 -50% 0% -50%)', duration: 0.36, ease: 'none', clearProps: 'clipPath' }, at);
-        light(s, at + 0.15);
+        var seg = s.querySelector('.aq-winding-route__seg path'), tail = s.querySelector('.aq-winding-route__tail'), at = 0.1 + i * 0.32;
+        if (seg) tl.fromTo(seg.parentNode, { clipPath: 'inset(0 -50% 100% -50%)' }, { clipPath: 'inset(0 -50% 0% -50%)', duration: 0.2, ease: 'none', clearProps: 'clipPath' }, at);
+        if (tail) tl.fromTo(tail, { scaleY: 0 }, { scaleY: 1, transformOrigin: '50% 0', duration: 0.14, ease: 'none', clearProps: 'transform' }, at + 0.2);
+        light(s, at + 0.1);
       });
       m.on(el, function () { tl.play() }, 'top 80%');
       return;

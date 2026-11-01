@@ -19,7 +19,7 @@
 .aq-module-plinth__n { grid-row: 1; font: 500 13px/24px var(--font-mono); color: var(--on-navy-muted); }
 .aq-module-plinth__spot { grid-row: 1; grid-column: 3; width: var(--space-8); height: var(--space-8); background-color: var(--limestone); }
 .aq-module-plinth__t { grid-row: 1; grid-column: 2; margin: 0; font: 400 19px/24px var(--font-sans); letter-spacing: -0.01em; }
-.aq-module-plinth__t a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); text-underline-offset: 4px; display: inline-flex; min-height: 44px; align-items: center; }
+.aq-module-plinth__t a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); text-underline-offset: 4px; display: inline-block; padding-block: var(--space-2); min-height: 44px; }
 .aq-module-plinth__t a::after { content: "→"; margin-left: var(--space-2); color: var(--limestone); }
 .aq-module-plinth__t a:focus-visible { outline: 2px solid var(--limestone); outline-offset: 2px; }
 .aq-module-plinth__d { grid-row: 2; grid-column: 2 / -1; margin: 0; font: 400 15px/23px var(--font-sans); color: var(--on-navy-muted); }
@@ -59,8 +59,8 @@
 /* Phones: the drawing on top, the cards in one column, the fold back on */
 @container (max-width: 860px) {
   .aq-module-plinth { margin-top: var(--space-4); row-gap: var(--space-6); }
-  .aq-module-plinth__mk { min-width: var(--space-6); height: var(--space-4); font-size: 11px; }
-  .aq-module-plinth__base { font-size: 11px; }
+  .aq-module-plinth__mk { min-width: var(--space-6); height: var(--space-4); font-size: 12px; }
+  .aq-module-plinth__base { font-size: 12px; }
   .aq-module-plinth__cards { grid-template-columns: minmax(0, 1fr); }
   .aq-module-plinth__card { padding: var(--space-4); }
   .aq-module-plinth__t { font-size: 17px; line-height: 22px; }

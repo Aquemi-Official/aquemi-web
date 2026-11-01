@@ -25,8 +25,8 @@ function wpPlan(z,on){var P='aq-witness-plan'+'__';
  /* the control panel, its door open */
  s+='<rect class="'+P+'eq" x="350" y="170" width="34" height="90"/><path class="'+P+'thin" d="M384 170L410 186"/><path class="'+P+'hid" d="M384 170A30 30 0 0 1 410 186"/>';
  /* actors */
- s+=A('you','<circle class="'+P+'cone" cx="420" cy="230" r="34"/><circle class="'+P+'man" cx="420" cy="230" r="11"/><circle class="'+P+'head" cx="420" cy="230" r="4"/>');
- s+=A('delegate','<circle class="'+P+'cone" cx="215" cy="318" r="34"/><circle class="'+P+'man" cx="215" cy="318" r="11"/><rect class="'+P+'badge" x="208" y="333" width="14" height="9"/>');
+ s+=A('you','<circle class="'+P+'cone" cx="420" cy="230" r="34"/><ellipse class="'+P+'man" cx="420" cy="230" rx="8" ry="15"/><circle class="'+P+'head" cx="420" cy="230" r="6.5"/>');
+ s+=A('delegate','<circle class="'+P+'cone" cx="215" cy="318" r="34"/><ellipse class="'+P+'man" cx="215" cy="318" rx="15" ry="8"/><circle class="'+P+'head" cx="215" cy="318" r="6.5"/><rect class="'+P+'badge" x="208" y="330" width="14" height="9"/>');
  s+=A('camera','<path class="'+P+'fov" d="M52 52L200 150L150 200Z"/><path class="'+P+'fov" d="M418 392L330 270L270 330Z"/>'
   +'<rect class="'+P+'cam" x="40" y="40" width="20" height="14" transform="rotate(45 50 47)"/><rect class="'+P+'cam" x="410" y="386" width="20" height="14" transform="rotate(45 420 393)"/>');
  s+=A('screen','<path class="'+P+'sig" d="M60 40C200 -10 470 40 520 120"/><rect class="'+P+'cam" x="506" y="120" width="68" height="44"/><path class="'+P+'thin" d="M540 164V176M524 178H556"/><path class="'+P+'trace" d="M514 150L528 138L540 146L552 132L566 140"/>');
@@ -37,11 +37,15 @@ LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],sc=I.ma
   +'<span class="aq-witness-plan__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
   +'<span class="aq-witness-plan__t">'+tx(it.t)+'</span>'+(it.d?'<span class="aq-witness-plan__d">'+tx(it.d)+'</span>':'')+'</button></li>'}).join('');
  return sec('<div class="aq-witness-plan">'+'<div class="aq-witness-plan__side">'+H+'<ol class="aq-witness-plan__list">'+list+'</ol></div>'
-  +'<div class="aq-witness-plan__board">'+wpPlan(Z,sc[0]||[])+'</div></div>','aq-witness-plan-sec')};
+  +'<div class="aq-witness-plan__board">'+wpPlan(Z,sc[0]||[])
+  +(I[0]?'<p class="aq-witness-plan__now" aria-hidden="true"><span class="aq-witness-plan__now-n">01</span><span class="aq-witness-plan__now-t">'+tx(I[0].t)+'</span></p>':'')+'</div></div>','aq-witness-plan-sec')};
 /* choose a way: put its actors on the plan (press pins it; pointing previews it, leaving restores the pinned one) */
-(function(){function show(w,sc){[].forEach.call(w.querySelectorAll('[data-actor]'),function(a){a.classList.toggle('is-on',(' '+sc+' ').indexOf(' '+a.getAttribute('data-actor')+' ')>-1)})}
+(function(){function show(w,sc,o){[].forEach.call(w.querySelectorAll('[data-actor]'),function(a){a.classList.toggle('is-on',(' '+sc+' ').indexOf(' '+a.getAttribute('data-actor')+' ')>-1)});
+  /* the board's caption names the way on show */
+  var c=w.querySelector('.aq-witness-plan__now'),n=o&&o.querySelector('.aq-witness-plan__n'),t=o&&o.querySelector('.aq-witness-plan__t');
+  if(c&&n&&t){c.querySelector('.aq-witness-plan__now-n').textContent=n.textContent;c.querySelector('.aq-witness-plan__now-t').innerHTML=t.innerHTML}}
  document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t)return;var w=t.closest('.aq-witness-plan');
-  [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t.getAttribute('data-scene'))});
- document.addEventListener('pointerover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t||ev.pointerType==='touch')return;show(t.closest('.aq-witness-plan'),t.getAttribute('data-scene'))});
+  [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t.getAttribute('data-scene'),t)});
+ document.addEventListener('pointerover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t||ev.pointerType==='touch')return;show(t.closest('.aq-witness-plan'),t.getAttribute('data-scene'),t)});
  document.addEventListener('pointerout',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__list');if(!t||(ev.relatedTarget&&t.contains(ev.relatedTarget)))return;
-  var w=t.closest('.aq-witness-plan'),p=w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]');show(w,p?p.getAttribute('data-scene'):'')})})();
+  var w=t.closest('.aq-witness-plan'),p=w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]');show(w,p?p.getAttribute('data-scene'):'',p)})})();

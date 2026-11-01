@@ -11,5 +11,6 @@ LOOKS['terms-sheet']=function(b,H){var C=b.cols||[],R=(b.rows||[]).map(function(
    +'<ul class="aq-terms-sheet__v" role="list">'+V.map(function(x){return '<li>'+tx(x)+'</li>'}).join('')+'</ul>'
    +(r.m?'<p class="aq-terms-sheet__m"><span class="aq-terms-sheet__mk">'+tx(C[2]||'')+'</span> '+tcell(r.m)+'</p>':'')
    +(r.link&&wp(r.link)?'<p class="aq-terms-sheet__go">'+wlink(r.link,r.link_label)+'</p>':'')+'</div></li>'}).join('');
- var head='<div class="aq-terms-sheet__head" aria-hidden="true"><span>'+tx(b.nav||C[0]||'')+'</span><span>'+n+' '+e(b.fold_noun||'clauses')+'</span></div>';
+ var hl=String(b.nav||C[0]||''),noun=b.fold_noun||'clauses',same=hl.toLowerCase()===String(noun).toLowerCase();
+ var head='<div class="aq-terms-sheet__head" aria-hidden="true"><span>'+tx(hl)+'</span><span>'+(same?'01 – '+(n<10?'0':'')+n:n+' '+e(noun))+'</span></div>';
  return sec(H+'<div class="aq-terms-sheet" data-theme="light">'+head+wFold(b,n,'<ol class="aq-terms-sheet__list" role="list" style="--rows:'+Math.ceil(n/2)+'">'+cl+'</ol>',b.fold_noun||'terms')+'</div>','aq-terms-sheet-sec')};

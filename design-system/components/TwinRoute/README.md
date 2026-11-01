@@ -18,3 +18,5 @@ As a versus table: `cols` [test, FAT label, SAT label], `rows` [[test, FAT cell,
 
 ## Motion
 The test bay draws and its water runs (IsoKit choreography), the lane draws and the truck drives across the centre column towards your site, then your site draws and its water runs to the point of use; the route labels rise and the caps fill. Each row is a station: as it scrolls in, water runs down the FAT pipe to its node, then down the SAT pipe (a broken run only shows its open node). The conclusion's turns draw in and the reuse label strikes. Each trigger once, under 5 s; nothing under reduced motion. Hover swells a row's nodes.
+
+Polish (pass 9): each scene stands on a floor line and both routes drop from it (a cap rail on each side in the labels row, the truck lane on the same floor); on phones each scene carries its caption (`__cap`, the FAT / SAT column labels).

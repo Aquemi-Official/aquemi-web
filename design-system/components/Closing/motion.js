@@ -4,7 +4,7 @@
    list themselves and their stubs run into the manifold bus, the pipe is laid across, a droplet travels it with the
    water filling behind it, the turnaround label lands on the pipe, and the returned sheets drop out of the far
    manifold one by one. A proof figure counts up when it is a plain number. Calm on purpose: it ends every page.
-   Everything ends static within about 3.5 s; nothing runs under reduced motion (all custom properties default to 1). */
+   Everything ends static within 2.2 s of the band showing (a long exchange plays faster); nothing runs under reduced motion (all custom properties default to 1). */
 AQmotion.fx('Closing', function (root, m) {
   root.querySelectorAll('.aq-closing').forEach(function (sec) {
     m.claim(sec);
@@ -13,19 +13,20 @@ AQmotion.fx('Closing', function (root, m) {
     var tags = qa('.aq-closing__include > .aq-closing__tag'), send = qa('.aq-closing__include:not(.aq-closing__returns) li'), back = qa('.aq-closing__returns li');
     var turn = q('.aq-closing__turn'), pipe = q('.aq-closing__pipe'), drop = pipe && pipe.querySelector('i'), label = q('.aq-closing__turn-t'), docs = qa('.aq-closing__doc');
     var proof = q('.aq-closing__proof'), val = q('.aq-closing__value'), narrow = m.narrow();
+    /* gsap.set on an empty list logs "GSAP target not found": a closing without include or returns has no rows */
+    var set = function (els, v) { if (els.length) gsap.set(els, v) };
     var vis = function (els) { return els.filter(function (el) { return !!el.offsetParent }) };
     send = vis(send); back = vis(back);
     var s = h && m.split(h, { type: 'lines', mask: 'lines', linesClass: 'aq-m-line' });
     gsap.set(sec, { '--aq-c-run': 0 });
     if (s) gsap.set(s.lines, { yPercent: 105 });
-    gsap.set([lead, btn, label, proof].concat(tags).filter(Boolean), { autoAlpha: 0 });
-    gsap.set(send.concat(back), { '--aq-stub': 0, '--aq-bus': 0 });
-    gsap.set(send.concat(back).map(function (li) { return li.querySelector('.aq-closing__t') }).filter(Boolean), { autoAlpha: 0, x: function (i, el) { return el.closest('.aq-closing__returns') ? 10 : -10 } });
+    set([lead, btn, label, proof].concat(tags).filter(Boolean), { autoAlpha: 0 });
+    set(send.concat(back), { '--aq-stub': 0, '--aq-bus': 0 });
+    set(send.concat(back).map(function (li) { return li.querySelector('.aq-closing__t') }).filter(Boolean), { autoAlpha: 0, x: function (i, el) { return el.closest('.aq-closing__returns') ? 10 : -10 } });
     if (pipe) gsap.set(pipe, { '--aq-pipe': 0, '--aq-water': 0 });
     if (docs.length) gsap.set(docs, { autoAlpha: 0, y: -10, rotation: -8 });
     m.on(sec, function () {
       var tl = m.tw(gsap.timeline({ defaults: { ease: 'power3.out' } })), at;
-      tl.timeScale(1.35); /* the band is the last thing on the page: it should be complete soon after it shows */
       tl.to(sec, { '--aq-c-run': 1, duration: 1.2, ease: 'power2.inOut' }, 0);
       if (s) tl.to(s.lines, { yPercent: 0, duration: 0.9, stagger: 0.1, ease: 'power4.out' }, 0.1);
       if (lead) tl.fromTo(lead, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, 0.45);
@@ -58,8 +59,11 @@ AQmotion.fx('Closing', function (root, m) {
         if (txt) tl.to(txt, { autoAlpha: 1, x: 0, duration: 0.45, clearProps: 'transform,opacity,visibility' }, t + 0.25);
       });
       // rows hidden on phones (beyond the first few) are set back at once so nothing stays hidden
-      tl.add(function () { gsap.set(qa('.aq-closing__t, .aq-closing__doc'), { clearProps: 'transform,opacity,visibility' }) }, '+=0.05');
+      tl.add(function () { set(qa('.aq-closing__t, .aq-closing__doc'), { clearProps: 'transform,opacity,visibility' }) }, '+=0.05');
       if (proof) { tl.fromTo(proof, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 1.2); if (val && /^[<>≤≥]?\s*\d[\d.,]*(\s|$)/.test(val.textContent.trim())) tl.add(function () { m.count(val, { now: true, duration: 1.1 }) }, 1.2) }
+      /* the band is the last thing on the page: it should be complete soon after it shows. A long exchange (four send
+         rows and three returns run to about 3.9 s of timeline) is played faster so the whole band lands within 2.2 s */
+      tl.timeScale(Math.max(1.35, tl.duration() / 2.2));
     }, 'top 95%');
   });
 });

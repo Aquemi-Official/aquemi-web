@@ -32,8 +32,16 @@ a.aq-review-reticles__body:hover .aq-review-reticles__t { color: var(--flow); }
 @container (max-width: 1000px) { .aq-review-reticles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @container (max-width: 860px) {
   .aq-review-reticles-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); }
-  .aq-review-reticles { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
-  .aq-review-reticles__vf { aspect-ratio: 16 / 10; margin-bottom: var(--space-2); }
-  .aq-review-reticles__pic { inset: var(--space-6) var(--space-16); }
-  .aq-review-reticles__t { font-size: 22px; line-height: 28px; }
+  /* phones: an inspection list, a square viewfinder beside each area's name and line */
+  .aq-review-reticles { grid-template-columns: minmax(0, 1fr); gap: 0; border-top: 1px solid color-mix(in srgb, var(--on-limestone-muted) 25%, transparent); }
+  .aq-review-reticles__item { border-bottom: 1px solid color-mix(in srgb, var(--on-limestone-muted) 25%, transparent); padding-block: var(--space-4); }
+  .aq-review-reticles__body { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); grid-template-rows: auto 1fr; column-gap: var(--space-4); row-gap: var(--space-1); }
+  .aq-review-reticles__vf { --in: var(--space-1); grid-row: 1 / span 2; aspect-ratio: 1 / 1; margin: 0; }
+  .aq-review-reticles__br { width: var(--space-4); height: var(--space-4); }
+  .aq-review-reticles__no { left: calc(var(--space-1) + var(--space-2)); top: var(--space-2); }
+  .aq-review-reticles__pic { inset: var(--space-6) var(--space-3) var(--space-3); }
+  .aq-review-reticles__cross::before { top: var(--space-3); bottom: var(--space-3); }
+  .aq-review-reticles__cross::after { left: var(--space-3); right: var(--space-3); }
+  .aq-review-reticles__t { align-self: end; font-size: 22px; line-height: 28px; }
+  .aq-review-reticles__d { font-size: 14px; line-height: 20px; }
 }

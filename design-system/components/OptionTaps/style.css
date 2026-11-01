@@ -34,7 +34,9 @@
 @container (max-width: 860px) {
   .aq-option-taps { gap: var(--space-6); }
   .aq-option-taps__fig { margin-inline: calc(-1 * var(--space-4)); border-inline: 0; }
-  .aq-option-taps__label, .aq-option-taps__mark { display: none; }
+  .aq-option-taps__label { display: none; }
+  /* the markers stay on the small sheet (they pair each dashed part with its card), at a phone size */
+  .aq-option-taps__mark { min-width: var(--space-6); height: var(--space-6); font-size: 12px; }
   .aq-option-taps__cards { grid-template-columns: minmax(0, 1fr); }
   .aq-option-taps__card { display: grid; grid-template-columns: 72px minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-1); align-items: start; }
   .aq-option-taps__no { grid-column: 1 / -1; }

@@ -1,5 +1,5 @@
 /* MarketCallouts: the machine is built, the water runs through it once, then each market is called off the part it
-   is about. The rails behind fall into place; the skid and equipment draw back to front and settle solid (IsoKit
+   is about. The skid and equipment draw back to front and settle solid (IsoKit
    timeline); the water drops down the feed riser and runs the route, lighting each stage as it arrives. Then, per
    callout in turn, the marker pops on its part (the part lights), the leader draws from the part out to the callout
    and the callout's lines follow the line in. The callouts start as the water reaches the RO; parts settle back at the end; about 4 s.
@@ -11,8 +11,6 @@ AQmotion.fx('MarketCallouts', function (root, m) {
     var svg = q('svg.aq-iso'), D = window.DrawSVGPlugin, narrow = m.narrow(), A = window.AQiso;
     var tl = A && svg ? A.timeline(svg, m, { draw: 1.1, pipe: 0.6, flow: 1.2, stagger: 0.06 }) : null;
     if (!tl) { tl = m.tw(gsap.timeline({ paused: true })); if (svg) tl.from(svg, { autoAlpha: 0, duration: 0.6, clearProps: 'opacity,visibility' }, 0) }
-    var rails = qa('.aq-market-callouts__rail');
-    if (rails.length) tl.from(rails, { scaleY: 0, transformOrigin: '50% 0%', duration: 1.2, ease: 'power2.inOut', stagger: 0.15, clearProps: 'transform' }, 0);
     var t0 = tl.labels && tl.labels.flow != null ? tl.labels.flow + 0.2 : 1.6;
     qa('.aq-market-callouts__c').forEach(function (c, i) {
       var id = c.getAttribute('data-c'), mk = q('.aq-market-callouts__mk[data-c="' + id + '"]'), ld = q('.aq-market-callouts__lead[data-c="' + id + '"]');
