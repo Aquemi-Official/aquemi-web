@@ -1,0 +1,47 @@
+/* ---------- OptionTaps: options as dashed parts on dashed tees off the standard train (IsoKit, blueprint on navy) ---------- */
+.aq-option-taps-sec .aq-sec-head .aq-h1 { color: var(--on-navy); }
+.aq-option-taps { display: flex; flex-direction: column; gap: var(--space-8); }
+.aq-option-taps__fig { position: relative; border: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent); }
+.aq-option-taps__svg { display: block; width: 100%; height: auto; }
+/* optional: every line of the part and its tee dashed; lit (hover on its card) in flow */
+.aq-option-taps__svg .aq-option-taps__ghost .aq-iso__eq, .aq-option-taps__svg .aq-option-taps__ghost .aq-iso__ln, .aq-option-taps__svg .aq-option-taps__ghost .aq-iso__thin,
+.aq-option-taps__svg .aq-option-taps__tee .aq-iso__pipe-wall { stroke-dasharray: 4 3; }
+.aq-option-taps__svg .aq-option-taps__ghost .aq-iso__acc, .aq-option-taps__svg .aq-option-taps__ghost .aq-iso__trace { stroke-dasharray: 2 3; }
+.aq-option-taps__label, .aq-option-taps__mark { position: absolute; transform: translate(-50%, -100%); white-space: nowrap; pointer-events: none; }
+.aq-option-taps__label { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-option-taps__mark { display: grid; place-items: center; min-width: var(--space-8); height: var(--space-8); padding: 0 var(--space-1);
+  border: 1px dashed var(--limestone); background: var(--navy); font: 500 13px/1 var(--font-mono); color: var(--on-navy); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-option-taps__mark.is-on { background: var(--limestone); color: var(--on-limestone); border-style: solid; }
+
+/* Cards: one per option, numbered as the markers */
+.aq-option-taps__cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); gap: var(--space-3); }
+.aq-option-taps__card { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4); border: 1px dashed color-mix(in srgb, var(--on-navy-muted) 55%, transparent);
+  color: var(--on-navy); transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-option-taps__card:hover, .aq-option-taps__card.is-on { border-color: var(--limestone); border-style: solid; }
+.aq-option-taps__no { margin: 0; display: flex; justify-content: space-between; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-option-taps__no > span:first-child { color: var(--on-navy); font-size: 13px; }
+.aq-option-taps__t { margin: 0; font: 500 17px/23px var(--font-sans); color: var(--on-navy); }
+.aq-option-taps__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-navy-muted); }
+.aq-option-taps__mini { display: none; }
+.aq-option-taps .aq-fold__btn { color: var(--on-navy); }
+.aq-fold:not(.is-open) .aq-option-taps__card.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-option-taps__cards) > .aq-fold__btn { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-option-taps__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-option-taps__label { display: none; }
+}
+@container (max-width: 860px) {
+  .aq-option-taps { gap: var(--space-6); }
+  .aq-option-taps__fig { margin-inline: calc(-1 * var(--space-4)); border-inline: 0; }
+  .aq-option-taps__label { display: none; }
+  /* the markers stay on the small sheet (they pair each dashed part with its card), at a phone size */
+  .aq-option-taps__mark { min-width: var(--space-6); height: var(--space-6); font-size: 12px; }
+  .aq-option-taps__cards { grid-template-columns: minmax(0, 1fr); }
+  .aq-option-taps__card { display: grid; grid-template-columns: 72px minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-1); align-items: start; }
+  .aq-option-taps__no { grid-column: 1 / -1; }
+  .aq-option-taps__mini { display: block; grid-row: 2 / 4; width: 72px; height: auto; background: transparent; }
+  .aq-option-taps__mini .aq-iso__eq { fill: var(--navy); }
+  .aq-fold:not(.is-open) .aq-option-taps__card.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-option-taps__cards) > .aq-fold__btn { display: flex; }
+}

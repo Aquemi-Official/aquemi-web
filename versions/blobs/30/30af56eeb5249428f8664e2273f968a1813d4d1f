@@ -1,0 +1,74 @@
+/* ---------- PdfAnatomy: delivery terms as a figure plate of the delivered document (look "pdf-anatomy"). The plate is
+   line art on surface-raised (line-strong frame, line text bars, flow for what the callouts point at); callouts sit in
+   the plate's left column on hairline leaders. The other rows stand beside it: choices as signature lines, a single
+   value set large in light type. ---------- */
+.aq-pdf-anatomy-sec { position: relative; }
+.aq-pdf-anatomy__front, .aq-pdf-anatomy__stack, .aq-pdf-anatomy__search { transform-box: fill-box; }
+.aq-pdf-anatomy__go { margin: var(--space-4) 0 0; }
+.aq-pdf-anatomy { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); column-gap: var(--space-12); align-items: start; }
+.aq-pdf-anatomy__plate { margin: 0; }
+.aq-pdf-anatomy__cap { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: var(--space-4); margin-bottom: var(--space-4); }
+.aq-pdf-anatomy__cap .aq-pdf-anatomy__k { grid-column: 1 / -1; }
+.aq-pdf-anatomy__k { margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-pdf-anatomy__h { margin: 0; font: 300 28px/34px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); }
+.aq-pdf-anatomy__note { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+
+/* the plate */
+.aq-pdf-anatomy__draw { position: relative; }
+.aq-pdf-anatomy__crop { position: relative; }
+.aq-pdf-anatomy__art { position: relative; }
+.aq-pdf-anatomy__svg { display: block; width: 100%; height: auto; }
+.aq-pdf-anatomy__win { fill: var(--surface-raised); stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-pdf-anatomy__rule { fill: none; stroke: var(--line); stroke-width: 1; }
+.aq-pdf-anatomy__ln { fill: none; stroke: var(--line-strong); stroke-width: 1.5; stroke-linecap: round; }
+.aq-pdf-anatomy__txt { fill: none; stroke: var(--line); stroke-width: 4; }
+.aq-pdf-anatomy__txtf { fill: none; stroke: var(--flow); stroke-width: 4; }
+.aq-pdf-anatomy__tri { fill: none; stroke: var(--ink-subtle); stroke-width: 1; }
+.aq-pdf-anatomy__field { fill: var(--surface); stroke: var(--flow); stroke-width: 1.5; }
+.aq-pdf-anatomy__cur { fill: var(--flow-tint); }
+.aq-pdf-anatomy__page { fill: var(--surface-raised); stroke: var(--line-strong); stroke-width: 1; }
+.aq-pdf-anatomy__logo { fill: var(--ink); }
+.aq-pdf-anatomy__hit { fill: var(--flow-tint); stroke: var(--flow); stroke-width: 1.5; }
+.aq-pdf-anatomy__box { fill: none; stroke: var(--line-strong); stroke-width: 1; }
+.aq-pdf-anatomy__box.is-on { stroke: var(--flow); stroke-width: 1.5; }
+.aq-pdf-anatomy__leader { fill: none; stroke: var(--ink-muted); stroke-width: 1; }
+.aq-pdf-anatomy__dot { fill: var(--flow); }
+.aq-pdf-anatomy__lead.is-on .aq-pdf-anatomy__leader { stroke: var(--flow); stroke-width: 1.5; }
+
+/* callouts: in the plate's left column, each at its leader's height */
+.aq-pdf-anatomy__calls { list-style: none; margin: 0; padding: 0; position: absolute; left: 0; top: 0; bottom: 0; width: 21.5%; }
+.aq-pdf-anatomy__call { position: absolute; left: 0; right: 0; transform: translateY(-50%); display: flex; flex-direction: column; align-items: flex-end; text-align: right; gap: var(--space-1); padding-right: var(--space-2); font: 400 16px/22px var(--font-sans); color: var(--ink); text-wrap: balance; cursor: default; }
+.aq-pdf-anatomy__cn { font: 500 12px/16px var(--font-mono); color: var(--flow); }
+.aq-pdf-anatomy__pin { display: none; }
+
+/* the other rows */
+.aq-pdf-anatomy__side { display: flex; flex-direction: column; gap: var(--space-12); padding-top: var(--space-12); }
+.aq-pdf-anatomy__row { border-top: 1px solid var(--line-strong); padding-top: var(--space-4); }
+.aq-pdf-anatomy__row > .aq-pdf-anatomy__h { margin-bottom: var(--space-6); }
+.aq-pdf-anatomy__sigs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-6); }
+.aq-pdf-anatomy__sigs li { display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-pdf-anatomy__sl { display: block; height: var(--space-6); border-bottom: 1.5px solid var(--line-strong); position: relative; }
+.aq-pdf-anatomy__sl::before { content: "×"; position: absolute; left: 0; bottom: var(--space-1); font: 400 14px/1 var(--font-mono); color: var(--ink-subtle); }
+.aq-pdf-anatomy__sv { font: 400 15px/22px var(--font-sans); color: var(--ink); }
+.aq-pdf-anatomy__or { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-pdf-anatomy__big { margin: 0; font: 300 30px/38px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+.aq-pdf-anatomy__m { margin-top: var(--space-6); padding-top: var(--space-3); border-top: 1px dashed var(--line); }
+.aq-pdf-anatomy__m p:last-child { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
+
+@container (max-width: 1100px) {
+  .aq-pdf-anatomy { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-pdf-anatomy__side { padding-top: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8); }
+}
+@container (max-width: 860px) {
+  .aq-pdf-anatomy__h { font-size: 24px; line-height: 30px; }
+  .aq-pdf-anatomy__crop { overflow: hidden; }
+  .aq-pdf-anatomy__art { width: 128%; margin-left: -28.7%; }
+  .aq-pdf-anatomy__pin {
+    display: grid; place-items: center; position: absolute; width: var(--space-6); height: var(--space-6); transform: translate(-50%, -50%);
+    background: var(--flow); color: var(--surface-raised); font: 500 12px/1 var(--font-mono); border-radius: var(--radius-pill);
+  }
+  .aq-pdf-anatomy__calls { position: static; width: auto; display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-4); }
+  .aq-pdf-anatomy__call { position: static; transform: none; flex-direction: row; align-items: baseline; text-align: left; gap: var(--space-3); padding: 0; font-size: 15px; }
+  .aq-pdf-anatomy__side { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  .aq-pdf-anatomy__big { font-size: 24px; line-height: 31px; }
+}

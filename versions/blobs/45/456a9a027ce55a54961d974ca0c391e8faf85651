@@ -1,0 +1,10 @@
+PdfAnatomy sets delivery terms as a figure plate of the delivered document: a PDF open in a viewer (bookmark pane, a search hit, the number and revision box in the footer of every page of the stack) with each part of the highlighted row's value as a callout on a leader, and the other rows beside it as signature lines or a large statement.
+
+- On the site: a `spec` block with `"look": "pdf-anatomy"` (renderer `assets/src/blocks/look-pdf-anatomy.js`), cmp-documentation "Delivery and signatures". Origin: no concept of its own; the style atlas's best pairing (a line drawing and its data joined by leaders: 54-concept-explainer-drawing, 77-p9-systems-3).
+- Markup: `<div class="aq-pdf-anatomy">` > `figure.__plate` (`figcaption.__cap` > `__k`, `h3.__h`, `__note`; `__draw` > `__crop` > `__art` > `svg.__svg` + `__pin`s; `ol.__calls` > `li.__call[data-c]`) and `__side` > `__row` (`h3.__h`, `__k`, `ul.__sigs` or `p.__big`, `__m`).
+- Fields: `cols [item, how we deliver it, note]`, `rows [{p, v, m, hl, link, link_label, parts}]`. The first `hl` row (else the first) is drawn; its value splits at commas into callouts, each finding its part by its words (search, bookmark, else number/revision/page = the footer) or by `parts` (`"search"`, `"mark"`, `"foot"`). Another row whose value has ";" becomes signature lines, one per choice ("or" kept as a small mono word); any other value is set large.
+- Tokens: plate `surface-raised` line art in `line-strong` / `line`, what a callout points at in `flow` / `flow-tint`, the logo bar `navy`; callouts 16 px sans; side values 300 weight.
+- Hover: pointing at a callout draws its leader in flow.
+- Phone: the plate is cropped to the viewer with numbered pins, the callouts follow as a numbered list, then the other rows.
+- Motion (`motion.js`): the viewer frame draws, pages fan from under the front page, text prints, the hit and footer boxes light, leaders run out to their callouts; side rows rise, signature lines draw. Under 3.5 s.
+- Not for: specifications with numbers (SpecTable, ParamTiles).

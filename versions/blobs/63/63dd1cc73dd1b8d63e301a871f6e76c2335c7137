@@ -1,0 +1,68 @@
+/* ---------- CheckLedger: checks as a two-sided ledger, what each lets you see | the route on the seam | what it does not prove ---------- */
+.aq-check-ledger-sec { }
+.aq-check-ledger { --cl-cols: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr); margin-top: var(--space-4); }
+.aq-check-ledger__head { display: grid; grid-template-columns: var(--cl-cols, minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr)); column-gap: var(--space-6); padding-bottom: var(--space-4);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 30%, transparent); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-check-ledger__hl, .aq-check-ledger__hr { display: flex; align-items: center; gap: var(--space-2); }
+.aq-check-ledger__hl { padding-left: var(--space-16); }
+.aq-check-ledger__hm { text-align: center; }
+.aq-check-ledger__sq { flex: none; display: inline-block; width: var(--space-3); height: var(--space-3); border: 1px solid var(--on-navy-muted); }
+.aq-check-ledger__sq.is-fill { background: var(--limestone); border-color: var(--limestone); }
+
+.aq-check-ledger__rows { list-style: none; margin: 0; padding: 0; }
+.aq-check-ledger__row { display: grid; grid-template-columns: var(--cl-cols, minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr)); column-gap: var(--space-6); align-items: start;
+  border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 16%, transparent); transition: background-color 300ms; }
+.aq-check-ledger__row:hover { background: color-mix(in srgb, var(--on-navy) 4%, transparent); }
+.aq-check-ledger__l { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-4); padding: var(--space-8) 0; }
+.aq-check-ledger__n { font: 300 40px/36px var(--font-sans); letter-spacing: -0.03em; color: transparent; -webkit-text-stroke: 1px var(--on-navy-muted); font-variant-numeric: tabular-nums; }
+.aq-check-ledger__t { margin: 0; font: 300 26px/34px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); text-wrap: balance; }
+.aq-check-ledger .aq-ph { background: color-mix(in srgb, var(--limestone) 22%, transparent); color: var(--on-navy); }
+
+/* the seam: a hairline pipe down the middle column, a node per row, the route button sitting on it */
+.aq-check-ledger__m { position: relative; align-self: stretch; display: flex; flex-direction: column; align-items: center; gap: var(--space-3); padding: var(--space-8) 0; text-align: center; }
+.aq-check-ledger__pipe { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: color-mix(in srgb, var(--on-navy) 30%, transparent); }
+.aq-check-ledger__flow { position: absolute; inset: 0; background: var(--on-navy); transform-origin: 50% 0; transform: scaleY(0); }
+.aq-check-ledger__node { position: relative; width: var(--space-3); height: var(--space-3); background: var(--navy); border: 1px solid var(--on-navy); transition: background-color 250ms; }
+.aq-check-ledger__node.is-wet, .aq-check-ledger__row:hover .aq-check-ledger__node, .aq-check-ledger__row:focus-within .aq-check-ledger__node { background: var(--limestone); }
+.aq-check-ledger__go { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: var(--space-12); max-width: 100%;
+  padding: var(--space-2) var(--space-4); background: var(--limestone); color: var(--on-limestone); border-radius: var(--radius-sm); text-decoration: none; font: 500 14px/20px var(--font-sans);
+  transition: background-color 200ms; }
+.aq-check-ledger__go::after { content: "→"; transition: transform 200ms; }
+.aq-check-ledger__go:hover { background: var(--on-navy); }
+.aq-check-ledger__go:hover::after { transform: translateX(var(--space-1)); }
+.aq-check-ledger__go:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.aq-check-ledger__go.is-plain { background: none; color: var(--on-navy); }
+.aq-check-ledger__go.is-plain::after { content: none; }
+.aq-check-ledger__time { position: relative; margin: 0; padding: var(--space-1) var(--space-2); background: var(--navy); font: 400 12px/18px var(--font-mono); color: var(--on-navy-muted); max-width: 100%; overflow-wrap: anywhere; }
+
+.aq-check-ledger__r { padding: var(--space-8) 0; }
+.aq-check-ledger__no { margin: 0; display: grid; grid-template-columns: var(--space-3) minmax(0, 1fr); gap: var(--space-3); font: 400 17px/27px var(--font-sans); color: var(--on-navy-muted); }
+.aq-check-ledger__no .aq-check-ledger__sq { margin-top: var(--space-2); }
+/* column names per cell: for screen readers on wide screens (the head row is aria-hidden), shown on phones */
+.aq-check-ledger__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@container (max-width: 1100px) {
+  .aq-check-ledger { --cl-cols: minmax(0, 4fr) minmax(0, 3fr) minmax(0, 3fr); }
+  .aq-check-ledger__t { font-size: 22px; line-height: 30px; }
+  .aq-check-ledger__hl { padding-left: var(--space-12); }
+  .aq-check-ledger__l { grid-template-columns: var(--space-8) minmax(0, 1fr); }
+  .aq-check-ledger__n { font-size: 28px; line-height: 30px; }
+}
+/* Phones: a card per check, the seam a rule down the left edge carrying the node */
+@container (max-width: 860px) {
+  .aq-check-ledger__head { display: none; }
+  .aq-check-ledger__row { grid-template-columns: minmax(0, 1fr); position: relative; padding: var(--space-6) 0 var(--space-6) var(--space-6); }
+  .aq-check-ledger__l { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2); padding: 0; }
+  .aq-check-ledger__n { font-size: 28px; line-height: 30px; }
+  .aq-check-ledger__t { font-size: 22px; line-height: 30px; }
+  .aq-check-ledger__m { position: static; align-items: flex-start; text-align: left; padding: var(--space-4) 0 0; gap: var(--space-2); }
+  .aq-check-ledger__pipe { left: 0; }
+  .aq-check-ledger__node { position: absolute; left: calc(var(--space-3) / -2 + 0.5px); top: var(--space-8); }
+  .aq-check-ledger__time { padding: 0; }
+  .aq-check-ledger__time > .aq-check-ledger__k { position: static; width: auto; height: auto; clip-path: none; margin-right: var(--space-1); }
+  .aq-check-ledger__time > .aq-check-ledger__k::after { content: ":"; }
+  .aq-check-ledger__r { padding: var(--space-4) 0 0; }
+  .aq-check-ledger__r > .aq-check-ledger__k { position: static; width: auto; height: auto; clip-path: none; display: block; margin-bottom: var(--space-1);
+    font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+  .aq-check-ledger__no { font-size: 16px; line-height: 25px; }
+}

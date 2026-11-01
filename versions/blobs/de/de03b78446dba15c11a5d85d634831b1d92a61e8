@@ -1,0 +1,61 @@
+/* ---------- TestSheet: the protocol as a signed test sheet on a limestone table (look "test-sheet") ----------
+   Section on the limestone band. Desktop: the heading on the table at the left (3 of 12), the sheet beside it. The
+   sheet is surface-raised paper with two more sheets' edges showing under it (offset hairlines, no shadow); rows are
+   ruled (line), the step number set large in mono, the sign-off cell at the right behind a vertical rule. Hold rows
+   carry a signature (flow ink) on a line and the HOLD stamp (a navy-ruled box, set slightly askew like a struck stamp).
+   The torn row sits below a perforation (a dashed rule over a strip of the table) as a separate slip. */
+.aq-test-sheet { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: var(--space-12); align-items: start; isolation: isolate; }
+.aq-test-sheet > .aq-sec-head { position: sticky; top: var(--space-24); }
+.aq-test-sheet__paper { position: relative; background: var(--surface-raised); color: var(--ink); border: 1px solid color-mix(in srgb, var(--on-limestone) 18%, transparent); }
+.aq-test-sheet__paper::before, .aq-test-sheet__paper::after { content: ""; position: absolute; z-index: -1; border: 1px solid color-mix(in srgb, var(--on-limestone) 22%, transparent); background: var(--surface); }
+.aq-test-sheet__paper::before { inset: var(--space-2) calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) var(--space-2); }
+.aq-test-sheet__paper::after { inset: var(--space-4) calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) var(--space-4); z-index: -2; }
+.aq-test-sheet__strip { display: grid; grid-template-columns: var(--space-24) minmax(0, 1fr) minmax(0, 15rem); padding: var(--space-3) var(--space-6); border-bottom: 1.5px solid var(--ink);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-test-sheet__rows { list-style: none; margin: 0; padding: 0 var(--space-6); }
+.aq-test-sheet__row { display: grid; grid-template-columns: var(--space-24) minmax(0, 1fr) minmax(0, 15rem); align-items: stretch; border-bottom: 1px solid var(--line); position: relative; }
+.aq-test-sheet__n { padding: var(--space-6) 0; font: 300 40px/40px var(--font-mono); letter-spacing: -0.04em; color: var(--ink-subtle); }
+.aq-test-sheet__row.is-hold .aq-test-sheet__n { color: var(--flow); }
+.aq-test-sheet__body { padding: var(--space-6) var(--space-6) var(--space-6) 0; }
+.aq-test-sheet__t { margin: 0; font: 500 18px/26px var(--font-sans); color: var(--ink); }
+.aq-test-sheet__d { margin: var(--space-1) 0 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); max-width: 60ch; }
+.aq-test-sheet__sign { position: relative; display: flex; align-items: center; justify-content: center; padding: var(--space-4) var(--space-6); border-left: 1px solid var(--line); }
+.aq-test-sheet__box { width: var(--space-8); height: var(--space-8); border: 1.5px solid var(--line-strong); display: inline-flex; }
+.aq-test-sheet__box svg { width: 100%; height: 100%; fill: none; stroke: var(--flow); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.aq-test-sheet__hold { position: relative; width: 100%; display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-test-sheet__hk { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-test-sheet__sig { display: block; width: 70%; height: auto; border-bottom: 1px solid var(--ink-muted); padding-bottom: var(--space-1); overflow: visible; }
+.aq-test-sheet__sig path { fill: none; stroke: var(--flow); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.aq-test-sheet__who { font: 400 14px/20px var(--font-sans); color: var(--ink); }
+.aq-test-sheet__stamp { position: absolute; right: 0; top: var(--space-4); padding: var(--space-1) var(--space-2); border: 2px solid var(--flow); outline: 1px solid var(--flow); outline-offset: 2px;
+  color: var(--flow); font: 500 14px/18px var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; transform: rotate(-8deg); opacity: 0.85; }
+/* the torn slip: the last step happens on site */
+.aq-test-sheet__row.is-torn { margin: var(--space-8) calc(-1 * var(--space-6)) 0; padding: 0 var(--space-6); border-top: 1.5px dashed var(--line-strong); }
+.aq-test-sheet__row.is-torn::before { content: ""; position: absolute; left: -1px; right: -1px; top: calc(-1 * var(--space-8) - 1.5px); height: var(--space-8); background: var(--limestone); }
+.aq-test-sheet__row.is-torn .aq-test-sheet__n { color: var(--ink); }
+.aq-test-sheet__foot { display: flex; justify-content: flex-end; margin: 0 var(--space-6); padding: var(--space-4) 0; }
+.aq-test-sheet__foot span { padding: var(--space-1) var(--space-3); border: 1px solid var(--line); margin-left: -1px; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+
+@container (max-width: 860px) {
+  .aq-test-sheet { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-test-sheet > .aq-sec-head { position: static; }
+  .aq-test-sheet__paper::after { display: none; }
+  .aq-test-sheet__paper::before { inset: var(--space-1) calc(-1 * var(--space-1)) calc(-1 * var(--space-1)) var(--space-1); }
+  .aq-test-sheet__rows { padding: 0 var(--space-4); }
+  .aq-test-sheet__strip { display: none; }
+  .aq-test-sheet__row { grid-template-columns: var(--space-12) minmax(0, 1fr); }
+  .aq-test-sheet__n { padding: var(--space-4) 0; font-size: 24px; line-height: 28px; }
+  .aq-test-sheet__body { padding: var(--space-4) 0 var(--space-3); }
+  .aq-test-sheet__t { font-size: 17px; line-height: 24px; }
+  .aq-test-sheet__d { font-size: 14px; line-height: 22px; }
+  .aq-test-sheet__sign { grid-column: 2; border-left: 0; justify-content: flex-start; padding: 0 0 var(--space-4); }
+  .aq-test-sheet__row:not(.is-hold) .aq-test-sheet__sign { position: absolute; right: 0; top: var(--space-4); padding: 0; }
+  .aq-test-sheet__row:not(.is-hold) .aq-test-sheet__body { padding-right: var(--space-12); }
+  .aq-test-sheet__box { width: var(--space-6); height: var(--space-6); }
+  .aq-test-sheet__row.is-torn { margin: var(--space-6) calc(-1 * var(--space-4)) 0; padding: 0 var(--space-4); }
+  .aq-test-sheet__row.is-torn::before { top: calc(-1 * var(--space-6) - 1.5px); height: var(--space-6); }
+  .aq-test-sheet__foot { margin: 0 var(--space-4); }
+}
+
+/* section hook (the look marks its section) */
+.aq-test-sheet-sec { position: relative; }

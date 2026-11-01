@@ -1,0 +1,12 @@
+RedlineSheet shows qualification failures that start in design as design-review markups on one limestone drawing sheet: each failure is a column with its revision triangle, a small drawing of the design with the mistake ringed by a revision cloud, the mistake struck through and the correction drawn in flow as the markup note.
+
+- On the site: a `table` block with `"look": "redline-sheet"` (renderer `assets/src/blocks/look-redline-sheet.js`), svc-design "Qualification failures that start in design". No concept of its own (Gemini quota); adapted from `research/pass9/concepts/compliance.2.v2.png` (paper, stamps, proof marked on sheets) and `home.3.png` (light drawing sheet with callouts).
+- Markup: `section.aq-redline-sheet-sec` → `div.aq-redline-sheet` (limestone paper, `data-theme="light"`) with `__zones` (zone numbers, aria-hidden), `ol.__list` of `li.__item` (`--i`): `__head` (`__rev` triangle number, `p.__k--fail`, `h3.__fail`), `figure.__fig` (aria-hidden svg: `__mark` group with the cloud `__cl` and its labels, `__fixg` group with the correction `__fixln`), `__err` (`p.__k`, `p.__mistake` struck through), `__fix` (`p.__k--flow`, `p.__note`), then `__block` (title block, aria-hidden). Items share rows through `subgrid`, so heads, figures, mistakes and fixes line up across columns.
+- Fields, as a table: `cols` [fails at qualification, design mistake, what we design in], `rows` (cells strings or `{t, link}`). Optional `figs` (one per row: `peak` demand profile with its average and peak lines, `deadleg` branch drawn without its length, `setpoint` a specification sentence with no setpoint beside the divert valve, `sheet` generic; default picked from the row's words) and `block` (title-block cells; default `["Aquemi", nav]`).
+- Tokens: `limestone` sheet with `on-limestone` hairlines by `color-mix`; `fail` only for the failure (triangle, "Fails at qualification" label, cloud, strike-through: qualification status, always with its words); `flow` for the correction. Figure strokes 1.5 px, non-scaling.
+- Phones: one column; each markup stacked head, figure, mistake, fix.
+- Use it for up to about four failure, cause and fix rows. Not for long lists or monitoring status (FaultList).
+
+## Motion
+
+Motion: one timeline. The sheet unrolls from the top, then markup by markup the figure draws on as designed, the pen rings the mistake with its cloud, the triangle strikes, the mistake is struck through, and the correction draws into the figure in flow while its note wipes in. About 4 s; nothing under reduced motion.

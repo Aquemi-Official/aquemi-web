@@ -1,0 +1,71 @@
+Closing is the call to action at the end of every page: one centred headline in the `h1` style on the navy band, one lead sentence and the primary button, with the lockup (mark and wordmark) faint in the top-left corner. An optional checklist, send-and-return exchange or proof figure sits below the button.
+
+## Markup
+
+```html
+<section class="aq-section aq-band--navy aq-closing">
+  <svg class="aq-closing__mark" viewBox="0 0 2064.7 351.0" aria-hidden="true" focusable="false"><path d="M119.76 61.38A59.88 59.88 0 1 1 0.00 61.38A59.88 59.88 0 1 1 119.76 61.38ZM119.76 218.02A59.88 59.88 0 1 1 59.88 158.14A96.76 96.76 0 0 0 156.64 61.38A59.88 59.88 0 1 1 216.52 121.26A96.76 96.76 0 0 0 119.76 218.02ZM276.40 218.02A59.88 59.88 0 1 1 156.64 218.02A59.88 59.88 0 1 1 276.40 218.02Z"></path><path fill-rule="evenodd" transform="translate(388.72 0)" d="M394.5 351.2C391.7 350.0 391.0 345.7 393.1 343.2C394.2 342.0 394.8 341.9 400.8 341.2C422.0 338.9 429.1 331.3 431.7 308.0C432.7 299.9 432.9 242.1 432.0 238.9C430.9 235.2 429.4 235.8 425.4 241.4C411.6 260.9 398.4 268.8 377.0 270.5C334.4 274.0 296.8 248.7 280.6 205.5C272.4 183.7 269.8 168.2 269.8 142.0C269.9 98.3 277.0 72.0 296.7 43.0C321.9 5.9 384.2 -9.8 423.9 10.9C438.6 18.6 435.7 17.8 448.7 17.6C474.5 17.3 492.6 13.6 503.6 6.4C508.8 3.0 511.7 2.6 514.0 4.9C516.1 7.0 516.1 8.3 513.8 22.8C512.1 32.9 511.0 274.0 512.5 303.0C514.0 332.0 518.3 339.7 534.2 341.3C540.1 341.9 542.0 343.1 542.0 346.3C542.0 351.7 542.0 351.7 515.8 351.2C489.6 350.7 454.7 350.6 420.2 351.1C406.5 351.3 394.9 351.4 394.5 351.2ZM957.8 271.7C919.0 267.8 894.2 255.1 872.2 227.8C843.9 192.5 836.8 136.3 854.0 84.0C863.3 55.7 884.2 29.7 907.8 17.0C923.1 8.7 934.1 4.9 948.5 2.8C1010.3 -6.1 1060.3 24.4 1062.8 72.5C1064.5 105.1 1042.0 131.8 999.0 148.5C995.3 149.9 990.6 151.7 988.5 152.5C980.0 155.8 972.3 157.7 951.5 161.3C931.6 164.7 931.4 164.8 933.5 171.0C941.4 194.6 965.8 210.2 993.3 209.4C1016.8 208.6 1034.4 202.1 1056.7 185.8C1071.2 175.3 1096.5 149.0 1106.3 134.4C1107.5 132.5 1111.3 127.3 1114.6 122.8C1127.1 106.1 1131.4 100.1 1134.6 95.2C1140.2 86.9 1155.5 67.8 1165.7 56.6C1178.5 42.5 1191.2 31.4 1201.8 25.0C1202.8 24.4 1205.3 22.6 1207.2 21.1C1221.7 9.9 1255.6 0.2 1279.8 0.4C1317.0 0.6 1342.2 14.3 1355.3 41.4C1359.9 51.0 1360.6 51.0 1366.3 41.8C1372.8 31.0 1381.6 21.4 1389.5 16.4C1421.2 -3.7 1473.5 -2.4 1492.4 18.9C1506.1 34.4 1506.3 35.6 1507.1 107.5C1507.5 144.8 1507.5 165.4 1507.1 185.0C1506.3 225.2 1506.9 233.5 1511.0 242.4C1514.4 249.6 1517.4 251.9 1525.2 253.5C1530.5 254.6 1532.0 255.8 1532.0 259.0C1532.0 263.4 1531.0 263.8 1518.9 263.6C1513.1 263.6 1486.4 263.5 1459.8 263.4C1404.9 263.2 1408.0 263.5 1407.6 259.5C1407.3 256.8 1408.3 255.7 1414.0 252.7C1430.5 244.1 1430.9 241.4 1428.5 123.5C1428.2 109.1 1427.8 85.8 1427.5 71.8C1426.8 38.1 1426.1 35.2 1417.5 30.8C1397.2 20.3 1372.3 36.8 1365.0 65.5C1364.0 69.8 1362.9 73.8 1362.6 74.6C1359.3 83.2 1359.2 83.9 1359.2 156.8C1359.2 208.8 1359.4 226.0 1359.9 230.0C1361.6 244.3 1365.9 251.3 1374.5 253.7C1379.6 255.2 1381.6 258.9 1379.1 262.0C1377.7 263.8 1374.7 263.9 1350.0 263.3C1334.5 263.0 1319.1 263.0 1296.5 263.5C1264.9 264.1 1263.5 264.0 1261.9 262.6C1258.5 259.7 1260.0 255.8 1265.4 253.3C1273.7 249.3 1275.0 248.0 1278.1 240.2C1281.7 231.4 1281.5 237.9 1280.9 119.2C1280.6 63.5 1280.5 61.4 1278.1 55.3C1272.6 41.2 1262.3 34.8 1247.5 36.4C1226.1 38.6 1214.6 54.7 1212.0 86.0C1211.3 93.8 1211.8 203.3 1212.6 215.8C1214.1 241.3 1216.7 247.8 1227.3 252.8C1233.9 255.9 1236.0 259.5 1232.7 262.5C1231.4 263.7 1231.4 263.7 1221.3 263.7C1208.4 263.6 1146.8 263.6 1122.6 263.7C1103.9 263.8 1103.9 263.8 1102.7 262.3C1099.7 258.8 1101.9 254.6 1107.3 253.5C1123.7 250.3 1128.6 244.7 1131.6 225.9C1132.4 220.6 1132.3 161.1 1131.5 159.5C1130.0 156.8 1128.6 158.3 1120.1 171.1C1114.4 179.6 1110.4 185.0 1099.5 199.1C1090.5 210.6 1070.5 230.4 1059.0 239.3C1045.8 249.5 1023.4 261.5 1010.8 265.3C995.8 269.8 969.9 272.9 957.8 271.7ZM54.0 270.4C37.6 268.9 19.4 258.3 9.7 244.7C-1.5 229.0 -3.4 198.1 5.7 179.3C14.2 161.6 33.9 146.0 61.0 135.5C74.3 130.3 89.7 124.8 99.2 121.6C117.3 115.8 123.5 112.7 132.0 105.7C142.5 97.0 143.8 93.3 143.4 71.2C142.9 42.9 136.2 25.3 123.5 19.1C112.0 13.5 91.6 14.0 79.1 20.3C69.9 24.9 69.8 26.5 78.0 33.7C93.1 47.0 96.9 64.7 88.4 82.5C73.8 112.9 20.8 106.3 15.0 73.3C7.5 30.5 51.5 1.5 123.6 1.5C148.1 1.5 175.6 7.4 187.6 15.1C208.3 28.4 219.3 46.7 221.5 71.0C223.6 94.6 223.6 95.5 224.0 160.2C224.3 213.7 224.5 224.2 225.1 226.5C228.5 239.1 238.1 243.8 249.1 238.3C254.4 235.6 255.6 235.6 257.8 237.7C260.3 240.3 258.6 244.1 251.5 251.7C230.1 274.8 181.8 277.9 160.2 257.4C154.1 251.6 152.5 248.8 148.2 236.3C145.2 227.6 143.6 226.7 140.2 232.1C132.6 244.2 129.1 248.1 119.0 255.3C101.2 268.1 80.3 272.9 54.0 270.4ZM630.5 270.5C603.0 268.7 583.8 253.9 577.5 229.8C573.7 215.4 573.8 217.2 573.5 130.2C573.2 44.5 573.4 50.1 570.2 40.2C566.6 29.3 562.2 25.2 550.6 22.2C543.2 20.3 540.8 16.6 544.5 13.0C545.9 11.5 545.9 11.5 573.5 11.5C605.0 11.5 609.7 11.2 633.9 7.5C637.5 7.0 642.3 6.1 644.5 5.5C649.3 4.3 650.6 4.6 651.5 7.3C652.0 8.9 652.2 29.4 652.2 107.2C652.3 205.2 652.3 205.2 653.6 215.2C656.5 236.8 660.5 243.2 672.9 245.8C695.5 250.6 716.6 234.4 720.9 208.9C722.2 201.0 722.2 59.3 720.9 50.5C718.3 33.5 713.7 26.6 702.2 22.8C694.2 20.0 694.0 19.9 693.2 18.5C692.1 16.3 692.3 14.6 694.0 13.0C695.4 11.5 695.4 11.5 722.1 11.5C736.8 11.5 750.8 11.3 753.2 11.0C755.7 10.7 761.5 10.2 766.0 9.8C776.7 8.8 782.1 7.9 790.9 5.7C798.4 3.8 800.1 3.8 801.1 5.6C801.5 6.5 801.7 29.3 801.6 105.0C801.5 213.2 801.7 220.6 804.5 232.9C807.0 243.4 815.3 251.1 826.2 253.1C831.2 254.0 832.7 255.5 832.4 259.1C831.9 263.9 834.2 263.6 800.0 263.2C758.9 262.8 750.4 263.3 733.7 267.5C722.1 270.4 722.0 270.3 722.0 261.4C722.0 233.9 720.9 230.8 714.3 239.6C697.5 262.4 668.8 273.0 630.5 270.5ZM1548.8 263.8C1548.5 263.7 1547.6 263.4 1546.8 263.3C1545.3 262.9 1544.0 260.6 1544.0 258.0C1544.0 255.4 1545.7 254.2 1551.5 252.8C1567.3 249.0 1572.2 236.9 1572.9 200.0C1573.4 178.2 1572.7 57.0 1572.0 49.2C1570.7 33.1 1566.6 25.7 1557.2 22.7C1551.1 20.8 1548.6 18.0 1549.8 14.6C1551.0 11.3 1550.1 11.4 1579.3 11.4C1610.0 11.5 1615.1 11.2 1637.8 7.4C1648.4 5.7 1649.5 5.7 1650.5 8.3C1651.2 10.0 1651.5 170.3 1650.9 185.2C1649.4 222.7 1649.8 231.7 1653.3 241.1C1655.7 247.4 1659.5 250.6 1667.2 252.7C1674.7 254.8 1677.4 257.3 1676.3 261.0C1675.4 263.6 1674.1 263.8 1656.2 263.5C1634.6 263.2 1566.5 263.3 1556.8 263.6C1552.7 263.8 1549.0 263.9 1548.8 263.8ZM401.6 245.8C416.3 243.2 428.7 228.6 431.7 210.5C433.0 203.1 432.7 28.0 431.4 25.7C426.5 16.8 405.5 11.8 391.5 16.1C365.2 24.2 351.2 67.9 352.2 139.2C352.5 161.6 352.7 164.1 355.5 187.3C358.6 212.0 366.9 233.5 376.3 240.6C383.1 245.9 391.5 247.6 401.6 245.8ZM121.8 232.3C130.6 229.5 137.7 221.6 141.7 210.6C143.2 206.2 143.2 206.2 143.4 162.8C143.6 109.1 144.0 111.7 135.8 118.7C131.2 122.6 123.4 128.4 117.3 132.4C86.4 152.9 73.9 177.3 79.2 206.9C82.9 227.9 101.5 239.0 121.8 232.3ZM936.6 151.5C961.4 143.2 981.2 124.0 988.7 101.0C1000.1 65.9 994.6 25.5 977.2 17.2C961.8 10.0 947.1 16.9 938.0 35.8C925.5 61.7 921.1 99.5 926.0 140.6C927.4 153.0 928.6 154.2 936.6 151.5Z"></path></svg>
+  <div class="aq-in"><div class="aq-closing__frame">
+    <h2 class="aq-closing__h">Tell us the water grade and the flow. We'll do the rest.</h2>
+    <p class="aq-lead aq-closing__lead">Send your URS or a short brief and an engineer will reply with questions, not a sales script.</p>
+    <div class="aq-closing__action"><a class="aq-btn aq-btn--primary" href="#contact-proposal">Request a proposal <span class="aq-btn__arrow">→</span></a></div>
+    <div class="aq-closing__more">…checklist or exchange, then proof…</div>
+  </div></div>
+</section>
+```
+
+- Always on `aq-band--navy` (see Band): it sets the navy ground, `on-navy` text and turns the primary button Limestone.
+- On the site, `wClosing(c, p)` in `assets/src/parts/Closing.js` renders it from the page's `cta` (`h`, `body`, `button`, `link`, `intent`, `include`, `returns`, `turnaround`, `proof`). `aq-closing__more` appears only when the page has a checklist, an exchange or `cta.proof`. The proof shows `cta.proof` and nothing else; it never falls back to the hero facts.
+- A closing that sends the reader to its own page's form (careers, cmp-quality) links the form's block, `"link": "#apply"`, and may still pre-select with `intent`: the jump ticks those options on that form in place, as a link from another page does on arrival (Button; EnquiryForm, "Pre-set from the same page"). `check` reads the intent against that block's fields.
+- The closing action can be a call (DR-006, contact-proposal: "Call [sales phone number]"): `"cta": {"button": "Call [sales phone number]", "link": "tel:[sales phone number]"}`. While the number is a placeholder the action is that line as plain `on-navy` text with the placeholder, no button and no link (`aq-btn--pending`, see Button); once the number is filled in both, it is the Limestone button and dials it.
+
+## Layout
+
+- **Desktop:** everything centred, the one place on the site where text is centred: headline (Geist 400, 40/46 px, -0.02em, sentence case) in `on-navy`, the lead (`body-lg`, at most 52 characters per line) in `on-navy-muted` `space-6` below, then the button. The lockup sits in the top-left corner: the supplied mark and wordmark paths with their fixed spacing, `min(26%, 380px)` wide, inset `space-4` from the top and left edges, filled `limestone` at 6 %, with a left-to-right mask that fades the end of the wordmark into the navy. The band adds `space-8` above the headline so the headline always starts below the lockup. Below the button, under a faint hairline, a centred column (880 px max) holds the checklist or exchange and the proof, left-aligned.
+- **Phone** (`@container (max-width: 860px)`): headline 30/36 px, the lead, a full-width button, then at most four send rows and the turnaround line. No returns list and no proof. The lockup is 72 % of the width, inset `space-2`; the band adds `space-4` above the headline.
+- No frame, title strip, registration marks, ruled boxes or plate: the navy ground, the faded mark and hairlines do the work. It never animates.
+
+## Token rules
+
+- Ground: Navy depth, the brand book's gradient ground for the closing band (`linear-gradient(160deg, navy + 12 % on-navy, navy 45 %, navy + 30 % on-limestone)`), set on `.aq-closing.aq-band--navy`. Body text keeps 5.7:1 or better at every stop in both themes.
+- Ground `navy` (from `aq-band--navy`); text `on-navy`, secondary text `on-navy-muted`. These stay light on navy in both themes (`ink-inverse` would turn dark in the dark theme).
+- Hairlines: 1 px `on-navy-muted` at 30 % strength. Labels ("What to send us", "Proof") in the `eyebrow` style in `on-navy-muted`.
+- Proof value in `font-mono` 300, 40/44 px, tabular figures, `on-navy`; its label 14/22 `on-navy-muted`.
+
+## Writing
+
+- Headline: one sentence, sentence case, naming what the reader should send or ask for. Not a slogan.
+- Lead: what to send and what comes back.
+- Proof: set `cta.proof` only when one figure the page already states evidences what the closing asks for: an Aquemi commitment or a test we run ("100 % of welds visually examined" under "Send your fabrication spec"). A pharmacopoeia limit alone is not proof of anything we do; a count of system families is not proof either. Value with its unit, label with its standard. Never invent or round a number for this box, and never use a `[placeholder]` (`check` rejects it); leave the box out instead.
+
+## When not to use it
+
+- Only once per page, last before the footer. Never next to another navy band.
+- Not for mid-page prompts; use a Button in the section instead.
+
+Origin: concepts 18 (closing) and 49 (send and return) in `design-system/inspiration/gemini/`, now set in the brand's plain closing band (no drawing frame or plate).
+
+## Checklist (`cta.include`)
+
+An optional list of short strings on the page's `cta`, rendered as a compact numbered checklist (below the button), headed "What to send us" (override with `cta.include_label`).
+
+```json
+"cta": {"h": "Send your feed water analysis.", "body": "…", "button": "Request a sizing proposal", "link": "contact-proposal",
+        "include": ["Feed water analysis, last 12 months", "Peak and average demand, L/h", "Lowest feed temperature"]}
+```
+
+```html
+<div class="aq-closing__include"><p class="aq-closing__tag">What to send us</p>
+  <ol><li><span class="aq-index" aria-hidden="true">01</span><span>Feed water analysis, last 12 months</span></li>…</ol></div>
+```
+
+- Use it to fold a page's "what to send us" docs block into the closing: one ask, in one place. Three to seven items, each 8 words or fewer.
+- Rows on `on-navy-muted` hairlines at 30 % strength; text 16/24 `on-navy` (14/22 on phones); index in `on-navy-muted`.
+
+## Exchange (`cta.returns`, `cta.turnaround`)
+
+With `cta.returns` (two to four strings, each a document or answer the page already promises: "Skid sizing for your coldest feed", "Budget range, CAD") the checklist becomes an exchange below the button: what you send, an arrow with `cta.turnaround` (a placeholder until confirmed, `[proposal response time, working days]`), and what comes back, numbered like the send rows. `cta.returns_label` overrides "What comes back". Markup: `.aq-closing__swap` > `.aq-closing__include`, `p.aq-closing__turn`, `.aq-closing__include.aq-closing__returns`. Phones: the send rows and the turnaround line only. Never list a return the page doesn't already promise.
+
+## Motion
+
+Motion (`Closing/motion.js`, plays once when the band scrolls in): the frame unrolls, the title strip decodes, the headline lines rise out of a mask, the lead follows; then the exchange runs in order: the send rows list themselves, the turnaround arrow shoots across, the returns land document by document, and the button arrives last with one nudge of its arrow. A proof figure counts up only when it is a plain number. Skipped under reduced motion.

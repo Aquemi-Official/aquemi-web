@@ -1,0 +1,53 @@
+/* ---------- StandardTiles: a Swiss row of tall linked tiles, the standard tag set as the hero ---------- */
+.aq-standard-tiles-sec { position: relative; }
+.aq-standard-tiles { list-style: none; margin: var(--space-8) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: 1px;
+  background: var(--line-strong); border: 1px solid var(--line-strong); }
+.aq-standard-tiles__tile { display: flex; min-width: 0; background: var(--surface-raised); }
+.aq-standard-tiles__in { position: relative; display: flex; flex-direction: column; gap: var(--space-6); width: 100%; min-height: calc(var(--space-32) * 3.5); padding: var(--space-6);
+  color: var(--ink); text-decoration: none; overflow: hidden; transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-standard-tiles__top { display: flex; align-items: flex-start; justify-content: space-between; }
+.aq-standard-tiles__no { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; color: var(--ink-subtle); }
+.aq-standard-tiles__ic { width: var(--space-16); height: var(--space-16); background-color: var(--ink-muted); transition: background-color 300ms, transform 500ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-standard-tiles__tag { display: block; font: 300 40px/44px var(--font-mono); letter-spacing: -0.04em; color: var(--ink); overflow-wrap: anywhere; min-height: calc(var(--space-12) * 2); }
+.aq-standard-tiles__body { display: flex; flex-direction: column; gap: var(--space-2); margin-top: auto; padding-top: var(--space-4); border-top: 1px solid var(--line); }
+.aq-standard-tiles__t { margin: 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; }
+.aq-standard-tiles__d { font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
+.aq-standard-tiles__arrow { position: relative; display: block; width: var(--space-12); height: var(--space-4); color: var(--flow); }
+.aq-standard-tiles__arrow::before { content: ""; position: absolute; left: 0; right: 1px; top: 50%; height: 1.5px; background: currentColor; transform: scaleX(0.4); transform-origin: 0 50%;
+  transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-standard-tiles__arrow::after { content: ""; position: absolute; left: calc(40% - var(--space-2)); top: 50%; width: var(--space-2); height: var(--space-2); border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor; transform: translateY(-50%) rotate(45deg); transition: left 400ms cubic-bezier(0.2, 0, 0, 1); }
+
+/* Lead tile: navy */
+.aq-standard-tiles__tile.is-lead { background: var(--navy); }
+.is-lead .aq-standard-tiles__in { color: var(--on-navy); }
+.is-lead .aq-standard-tiles__no { color: var(--on-navy-muted); }
+.is-lead .aq-standard-tiles__ic { background-color: var(--limestone); }
+.is-lead .aq-standard-tiles__tag { color: var(--limestone); }
+.is-lead .aq-standard-tiles__body { border-top-color: color-mix(in srgb, var(--on-navy-muted) 40%, transparent); }
+.is-lead .aq-standard-tiles__d { color: var(--on-navy-muted); }
+.is-lead .aq-standard-tiles__arrow { color: var(--limestone); }
+
+/* Hover and focus: the tile tints, the tag turns flow, the icon rises, the arrow runs out */
+a.aq-standard-tiles__in:hover, a.aq-standard-tiles__in:focus-visible { background: var(--flow-tint); }
+a.aq-standard-tiles__in:hover .aq-standard-tiles__tag, a.aq-standard-tiles__in:focus-visible .aq-standard-tiles__tag { color: var(--flow); }
+.is-lead a.aq-standard-tiles__in:hover, .is-lead a.aq-standard-tiles__in:focus-visible { background: color-mix(in srgb, var(--navy) 85%, var(--on-navy)); }
+.is-lead a.aq-standard-tiles__in:hover .aq-standard-tiles__tag { color: var(--on-navy); }
+a.aq-standard-tiles__in:hover .aq-standard-tiles__ic { transform: translateY(calc(var(--space-1) * -1)); }
+a.aq-standard-tiles__in:hover .aq-standard-tiles__arrow::before, a.aq-standard-tiles__in:focus-visible .aq-standard-tiles__arrow::before { transform: scaleX(1); }
+a.aq-standard-tiles__in:hover .aq-standard-tiles__arrow::after, a.aq-standard-tiles__in:focus-visible .aq-standard-tiles__arrow::after { left: calc(100% - var(--space-2) - 1px); }
+a.aq-standard-tiles__in:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+@container (max-width: 1100px) {
+  .aq-standard-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-standard-tiles__in { min-height: calc(var(--space-32) * 2.75); }
+}
+
+/* Phones: one column, compact tiles, the tag still the largest thing in each */
+@container (max-width: 860px) {
+  .aq-standard-tiles { grid-template-columns: minmax(0, 1fr); margin-top: var(--space-4); }
+  .aq-standard-tiles__in { min-height: 0; gap: var(--space-4); padding: var(--space-4) var(--space-4) var(--space-6); }
+  .aq-standard-tiles__ic { width: var(--space-12); height: var(--space-12); }
+  .aq-standard-tiles__tag { font-size: 32px; line-height: 36px; min-height: 0; }
+  .aq-standard-tiles__t { font-size: 18px; line-height: 24px; }
+}

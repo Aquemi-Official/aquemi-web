@@ -1,0 +1,80 @@
+/* ---------- RuleFigures: design rules as a Swiss sheet of small engineering figures ---------- */
+.aq-rule-figures-sec { overflow: hidden; }
+.aq-rule-figures { position: relative; display: flex; flex-direction: column; gap: var(--space-16); }
+.aq-rule-figures__cap { position: absolute; right: 0; top: calc(-1 * var(--space-12)); margin: 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+
+/* Shared drawing strokes (line art, round joins; figures scale with their box, so strokes are set in user units) */
+.aq-rule-figures svg path, .aq-rule-figures svg circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.aq-rule-figures__ln, .aq-rule-figures__wall { stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-rule-figures__wall { stroke: var(--ink); stroke-width: 2; }
+.aq-rule-figures svg .aq-rule-figures__fill { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-rule-figures__th { stroke: var(--line-strong); stroke-width: 1; }
+.aq-rule-figures__dim { stroke: var(--ink-subtle); stroke-width: 1; }
+.aq-rule-figures__fl { stroke: var(--flow); stroke-width: 1.5; }
+.aq-rule-figures__fl.fl-hid { stroke-dasharray: 3 4; }
+.aq-rule-figures__ring { stroke: var(--flow); stroke-width: 1.5; }
+.aq-rule-figures__bub { stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-rule-figures svg .aq-rule-figures__bub { fill: var(--surface); }
+.aq-rule-figures__bub.is-opt { stroke-dasharray: 4 3; }
+.aq-rule-figures__tx { fill: var(--ink-muted); font: 500 11px/1 var(--font-mono); }
+.aq-rule-figures__tx.is-mid { text-anchor: middle; font-size: 10px; }
+
+/* Lead rule: text left, the pipe cut lengthways running off the right edge of the page */
+.aq-rule-figures__lead { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); align-items: center;
+  padding-block: var(--space-8); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); }
+.aq-rule-figures__lead-text { display: flex; flex-direction: column; gap: var(--space-4); }
+.aq-rule-figures__no { margin: 0; font: 300 64px/1 var(--font-mono); letter-spacing: -0.04em; color: var(--flow); }
+.aq-rule-figures__lead-p { margin: 0; font: 300 40px/44px var(--font-sans); letter-spacing: -0.02em; }
+.aq-rule-figures__lead-art { position: relative; margin-right: calc(-1 * var(--space-32) * 2); aspect-ratio: 4 / 1; }
+.aq-rule-figures__pipe { position: absolute; inset: 0; width: 100%; height: 100%; }
+.aq-rule-figures__streak { stroke: var(--flow); stroke-width: 1.2; opacity: 0.85; }
+.aq-rule-figures__eddy { stroke: var(--flow); stroke-width: 1; opacity: 0.7; }
+.aq-rule-figures__arrow { stroke: var(--ink); stroke-width: 1.5; }
+.aq-rule-figures__env { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 4 4; }
+
+/* Rule figure in mono: the number (or its placeholder) that the rule is held to */
+.aq-rule-figures__rule { margin: 0; font: 400 18px/26px var(--font-mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+.aq-rule-figures__rule--lead { font-size: 24px; line-height: 34px; }
+
+.aq-rule-figures__dl { margin: 0; display: grid; gap: var(--space-3); }
+.aq-rule-figures__dl div { display: grid; gap: var(--space-1); }
+.aq-rule-figures__dl dt { font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-rule-figures__dl dd { margin: 0; }
+.aq-rule-figures__v { font: 400 16px/24px var(--font-sans); color: var(--ink); }
+.aq-rule-figures__m { font: 400 13px/20px var(--font-mono); color: var(--ink-muted); }
+.aq-rule-figures__link { color: var(--flow); }
+
+/* The other rules: a three-column grid of figure cards, hairlines between */
+.aq-rule-figures__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-8); row-gap: var(--space-12); }
+.aq-rule-figures__card { display: flex; flex-direction: column; gap: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--line-strong); }
+.aq-rule-figures__figbox { aspect-ratio: 2 / 1; background: var(--surface-sunken); border: 1px solid var(--line); padding: var(--space-3); }
+.aq-section--alt .aq-rule-figures__figbox { background: var(--surface); }
+.aq-rule-figures__fig { display: block; width: 100%; height: 100%; overflow: visible; }
+.aq-rule-figures__head { margin: 0; display: flex; align-items: baseline; gap: var(--space-3); }
+.aq-rule-figures__n { font: 400 28px/1 var(--font-mono); letter-spacing: -0.03em; color: var(--ink-subtle); }
+.aq-rule-figures__p { font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; }
+.aq-rule-figures__card:hover .aq-rule-figures__n { color: var(--flow); }
+.aq-rule-figures__card:hover .aq-rule-figures__figbox { border-color: var(--line-strong); }
+.aq-rule-figures__card:hover .aq-rule-figures__fl { stroke-width: 2.5; }
+
+/* Desktop shows every rule; the fold is for phones */
+.aq-fold:not(.is-open) .aq-rule-figures__card.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-rule-figures__grid) > .aq-fold__btn { display: none; }
+
+.aq-rule-figures__streaks, .aq-rule-figures__eddies, .aq-rule-figures__prof { pointer-events: none; }
+
+@container (max-width: 1100px) {
+  .aq-rule-figures__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container (max-width: 860px) {
+  .aq-rule-figures { gap: var(--space-8); }
+  .aq-rule-figures__cap { position: static; }
+  .aq-rule-figures__lead { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-rule-figures__lead-art { margin-right: calc(-1 * var(--space-4)); margin-left: calc(-1 * var(--space-4)); aspect-ratio: 10 / 3; }
+  .aq-rule-figures__no { font-size: 48px; }
+  .aq-rule-figures__lead-p { font-size: 32px; line-height: 38px; }
+  .aq-rule-figures__rule--lead { font-size: 20px; line-height: 28px; }
+  .aq-rule-figures__grid { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
+  .aq-fold:not(.is-open) .aq-rule-figures__card.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-rule-figures__grid) > .aq-fold__btn { display: flex; }
+}

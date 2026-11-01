@@ -1,0 +1,11 @@
+RevisionRegister keeps technical notes the way a drawing office keeps its revision register: one limestone register sheet on a navy band, topic tabs in its title strip, the lead note set as an editorial page beside ruled register lines.
+
+- On the site: News, "The notes register" (`register` block, `"look": "revision-register"`; renderer `assets/src/blocks/look-revision-register.js`, which also carries its own tab filter). Origin: `design-system/inspiration/gemini/63-concept-notes-register.png` (register sheet with latest update and revision table on a blueprint ground), warmed with an editorial lead (the reader's question as a quotation, the number huge and light).
+- Markup: `section.aq-band--navy` → `div.aq-revision-register[data-theme=light]` → `div.__strip` (`div.__tabs[role=group]` of `button.__tab[aria-pressed][data-topic]` with counts, `p.__count[aria-live=polite]`) and `div.__body` → `aside.__lead` (`p.__lk` status, `p.__big` triangle and number, `blockquote.__q` the note's `d`, `h3.__lt`, `p.__lstd`, `span.__fig` Spot, `p.__go` "Applied on" link) and `div.__reg` (fold → `table.__table`: Status, No., Topic, Title (row header, the link), Standard; the lead's line carries the triangle).
+- Fields (a `register` block): `h`, `intro`, `topics`, `items [{t, topic, std, date, link, featured, spot, d}]`, `fold`, `fold_noun`. Rules kept from NotesRegister: never a date that is not given (a dashed mono "Planned" status), the lead note is `featured`, else the first of the first topic; a tab shows every matching note, folded or not.
+- Tokens: `navy` band, `limestone` sheet with `on-limestone` / `on-limestone-muted` text, `navy` pressed tab, `flow` only for links, the triangle and the quotation rule. Mono for status, numbers, topics and standards only.
+- Phones: the lead note first (no figure), tabs wrap, each register line on rows: title, then status · number · topic, then standard.
+
+## Motion
+
+Motion: the sheet rises onto the navy, the tabs drop in, the lead number decodes and its revision triangle strikes, the quotation rises line by line; then each visible register line is ruled in left to right. Once, under 3.5 s; nothing under reduced motion. Filtering: rows that stay glide to their new places and new ones fade in (GSAP Flip), only when motion is allowed.

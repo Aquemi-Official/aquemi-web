@@ -1,0 +1,86 @@
+/* ---------- RevisionRegister: technical notes as a drawing office's revision register, on a limestone sheet over navy ---------- */
+.aq-revision-register-sec { }
+.aq-revision-register__spot { display: block; }
+.aq-revision-register { margin-top: var(--space-4); background: var(--limestone); color: var(--on-limestone); border: 1px solid var(--limestone); }
+.aq-revision-register__strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3) var(--space-6);
+  padding: var(--space-3) var(--space-6); border-bottom: 2px solid var(--navy); }
+.aq-revision-register__tabs { display: flex; flex-wrap: wrap; gap: 0; }
+.aq-revision-register__tab { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--space-12); padding: 0 var(--space-4); margin: 0; cursor: pointer;
+  background: none; border: 0; border-right: 1px solid color-mix(in srgb, var(--navy) 22%, transparent); color: var(--on-limestone); font: 500 14px/20px var(--font-sans); transition: background-color 200ms, color 200ms; }
+.aq-revision-register__tab:first-child { border-left: 1px solid color-mix(in srgb, var(--navy) 22%, transparent); }
+.aq-revision-register__tab span { font: 400 12px/1 var(--font-mono); color: var(--on-limestone-muted); }
+.aq-revision-register__tab:hover { background: color-mix(in srgb, var(--navy) 8%, transparent); }
+.aq-revision-register__tab[aria-pressed="true"] { background: var(--navy); color: var(--limestone); }
+.aq-revision-register__tab[aria-pressed="true"] span { color: var(--limestone); }
+.aq-revision-register__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-revision-register__count { margin: 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone-muted); }
+
+.aq-revision-register__body { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
+/* the lead note: an editorial page in the left field */
+.aq-revision-register__lead { position: relative; display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-8) var(--space-6) var(--space-8);
+  border-right: 1px solid color-mix(in srgb, var(--navy) 22%, transparent); overflow: hidden; }
+.aq-revision-register__lk { margin: 0; display: flex; gap: var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-revision-register__big { margin: 0; display: flex; align-items: flex-start; gap: var(--space-3); color: var(--navy); }
+.aq-revision-register__bign { font: 300 120px/96px var(--font-sans); letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+.aq-revision-register__tri { flex: none; width: var(--space-6); height: var(--space-6); }
+.aq-revision-register__tri path { fill: none; stroke: var(--flow); stroke-width: 1.5px; stroke-linejoin: round; }
+.aq-revision-register__q { margin: 0; padding-left: var(--space-4); border-left: 2px solid var(--flow); }
+.aq-revision-register__q p { margin: 0; font: 300 24px/32px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); text-wrap: pretty; }
+.aq-revision-register__q p::before { content: "“"; }
+.aq-revision-register__q p::after { content: "”"; }
+.aq-revision-register__lt { margin: 0; font: 500 16px/24px var(--font-sans); color: var(--on-limestone); }
+.aq-revision-register__lstd { margin: 0; font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-revision-register__fig { position: absolute; right: var(--space-4); top: var(--space-12); opacity: 0.32; pointer-events: none; }
+.aq-revision-register__fig .aq-spot { color: var(--navy); }
+.aq-revision-register .aq-revision-register__go { position: relative; margin: auto 0 0; padding-top: var(--space-4); font: 400 14px/22px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-revision-register a { color: var(--flow); text-decoration-color: color-mix(in srgb, var(--flow) 40%, transparent); text-underline-offset: 3px; }
+.aq-revision-register a:hover { text-decoration-color: currentColor; }
+.aq-revision-register a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* the register: ruled lines */
+.aq-revision-register__reg { min-width: 0; padding: var(--space-2) var(--space-6) var(--space-6); }
+.aq-revision-register__table { width: 100%; border-collapse: collapse; }
+.aq-revision-register__table thead th { padding: var(--space-3) var(--space-2); text-align: left; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--on-limestone-muted); border-bottom: 1px solid var(--navy); }
+.aq-revision-register__row td, .aq-revision-register__row th { padding: var(--space-3) var(--space-2); vertical-align: baseline; text-align: left; border-bottom: 1px solid color-mix(in srgb, var(--navy) 16%, transparent); }
+.aq-revision-register__row { transition: background-color 200ms; }
+.aq-revision-register__row:hover { background: color-mix(in srgb, var(--navy) 6%, transparent); }
+.aq-revision-register__row:hover .aq-revision-register__no { color: var(--flow); }
+.aq-revision-register__st, .aq-revision-register__no, .aq-revision-register__topic, .aq-revision-register__std { font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-revision-register__st { white-space: nowrap; width: 1%; }
+.aq-revision-register__planned { padding: 0 var(--space-1); border: 1px dashed color-mix(in srgb, var(--navy) 45%, transparent); }
+.aq-revision-register__no { white-space: nowrap; width: 1%; font-variant-numeric: tabular-nums; }
+.aq-revision-register__no .aq-revision-register__tri { width: var(--space-3); height: var(--space-3); margin-right: var(--space-1); vertical-align: -1px; }
+.aq-revision-register__topic { white-space: nowrap; width: 1%; }
+.aq-revision-register__t { font: 400 15px/22px var(--font-sans); color: var(--on-limestone); }
+.aq-revision-register__std { width: 26%; }
+.aq-revision-register__row.is-lead .aq-revision-register__t { font-weight: 500; }
+.aq-band--navy .aq-revision-register .aq-fold__btn { color: var(--on-limestone-muted); }
+.aq-band--navy .aq-revision-register .aq-fold__btn:hover { color: var(--on-limestone); }
+.aq-revision-register .aq-fold.is-filtered .aq-fold-x { display: table-row; }
+.aq-revision-register .aq-fold.is-filtered .aq-fold-x[hidden], .aq-revision-register tr[hidden] { display: none; }
+.aq-revision-register .aq-fold.is-filtered .aq-fold__btn { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-revision-register__body { grid-template-columns: minmax(0, 1fr); }
+  .aq-revision-register__lead { border-right: 0; border-bottom: 1px solid color-mix(in srgb, var(--navy) 22%, transparent); }
+}
+/* Phones: the lead note first, each register line on two rows (title; then number, topic, status, standard) */
+@container (max-width: 860px) {
+  .aq-revision-register__strip { padding: var(--space-2) var(--space-3); }
+  .aq-revision-register__tab { padding: 0 var(--space-3); font-size: 13px; }
+  .aq-revision-register__lead { padding: var(--space-6) var(--space-4); }
+  .aq-revision-register__bign { font-size: 80px; line-height: 68px; }
+  .aq-revision-register__q p { font-size: 20px; line-height: 28px; }
+  .aq-revision-register__fig { display: none; }
+  .aq-revision-register__reg { padding: 0 var(--space-4) var(--space-4); }
+  .aq-revision-register__table thead { display: none; }
+  .aq-revision-register__row { display: grid; grid-template-columns: auto auto minmax(0, 1fr); column-gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid color-mix(in srgb, var(--navy) 16%, transparent); }
+  .aq-revision-register .aq-fold.is-filtered .aq-fold-x { display: grid; }
+  .aq-revision-register__row td, .aq-revision-register__row th { padding: 0; border: 0; width: auto; }
+  .aq-revision-register__t { grid-column: 1 / -1; grid-row: 1; margin-bottom: var(--space-1); }
+  .aq-revision-register__no { grid-row: 2; }
+  .aq-revision-register__topic { grid-row: 2; }
+  .aq-revision-register__st { grid-row: 2; justify-self: end; }
+  .aq-revision-register__std { grid-column: 1 / -1; grid-row: 3; }
+}

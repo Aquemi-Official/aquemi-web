@@ -1,0 +1,57 @@
+/* ---------- Colophon: company facts as a measured editorial colophon ---------- */
+.aq-colophon-sec { }
+/* The statement at display size, then each fact on a measuring rule: tick and number in the gutter, label, the fact
+   large and light, the evidence as a margin note. Hairlines only; no boxes. */
+.aq-colophon { margin-top: var(--space-4); }
+/* the statement sits on the same four columns as the fact lines below it, so its number, label and text align with theirs */
+.aq-colophon__lead { position: relative; display: grid; grid-template-columns: var(--space-12) minmax(0, 2fr) minmax(0, 5fr) minmax(0, 3fr); column-gap: var(--space-6); row-gap: var(--space-6); align-items: start; padding: var(--space-8) 0 var(--space-12); border-top: 1px solid var(--ink); }
+.aq-colophon__lk { grid-column: 1 / 3; grid-row: 1 / span 3; margin: 0; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-6); align-items: baseline;
+  font: 500 12px/18px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); padding-top: var(--space-6); }
+.aq-colophon__lk .aq-colophon__n { color: var(--flow); }
+.aq-colophon__lv, .aq-colophon__lz, .aq-colophon__lm { grid-column: 3 / -1; }
+/* the major tick: a flow mark on the statement's rule, over the number column */
+.aq-colophon__tick { position: absolute; left: 0; top: -2px; width: var(--space-12); height: 3px; background: var(--flow); }
+.aq-colophon__lv { margin: 0; font: 300 48px/54px var(--font-sans); letter-spacing: -0.025em; color: var(--ink); text-wrap: balance; max-width: 22ch; }
+.aq-colophon__lz { margin: 0; padding-left: var(--space-4); border-left: 1px solid var(--line-strong); font: 300 20px/30px var(--font-sans); color: var(--ink-muted); max-width: 52ch; }
+.aq-colophon__lm { margin: 0; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); font: 400 14px/22px var(--font-sans); color: var(--ink-muted); }
+
+.aq-colophon__rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.aq-colophon__row { position: relative; display: grid; grid-template-columns: var(--space-12) minmax(0, 2fr) minmax(0, 5fr) minmax(0, 3fr); column-gap: var(--space-6);
+  align-items: baseline; padding: var(--space-6) 0; border-bottom: 1px solid var(--line); }
+.aq-colophon__row::before { content: ""; position: absolute; left: 0; top: -1px; width: var(--space-3); height: var(--space-3); border-left: 1px solid var(--line-strong); }
+.aq-colophon__row::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%; background: var(--flow); transform: scaleX(0); transform-origin: 0 50%; transition: transform 450ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-colophon__row:hover::after { transform: scaleX(1); }
+.aq-colophon__n { font: 400 12px/16px var(--font-mono); color: var(--ink-subtle); font-variant-numeric: tabular-nums; padding-left: var(--space-2); }
+.aq-colophon__p { margin: 0; font: 500 12px/18px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+.aq-colophon__v { margin: 0; font: 300 24px/34px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); overflow-wrap: anywhere; }
+.aq-colophon__m { margin: 0; display: flex; flex-direction: column; gap: var(--space-1); font: 400 13px/20px var(--font-sans); color: var(--ink-muted); }
+.aq-colophon__ev { padding-left: var(--space-3); border-left: 1px solid var(--line-strong); }
+.aq-colophon__go { align-self: flex-start; display: inline-flex; align-items: center; min-height: var(--space-12); color: var(--flow); text-decoration: none; font: 500 14px/20px var(--font-sans); }
+.aq-colophon__lm .aq-colophon__go { min-height: auto; }
+.aq-colophon__go::after { content: "→"; margin-left: var(--space-1); transition: transform 200ms; }
+.aq-colophon__go:hover::after { transform: translateX(var(--space-1)); }
+.aq-colophon__go:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-colophon .aq-fold { margin-top: 0; }
+.aq-colophon > .aq-small { margin-top: var(--space-4); }
+
+@container (max-width: 1100px) {
+  .aq-colophon__row { grid-template-columns: var(--space-8) minmax(0, 2fr) minmax(0, 5fr); }
+  .aq-colophon__m { grid-column: 3; margin-top: var(--space-2); }
+  .aq-colophon__lv { font-size: 40px; line-height: 46px; }
+  .aq-colophon__lead { grid-template-columns: var(--space-12) minmax(0, 2fr) minmax(0, 5fr); }
+}
+/* Phones: one column per fact, number and label on one line, the statement still large */
+@container (max-width: 860px) {
+  .aq-colophon__lead { grid-template-columns: minmax(0, 1fr); padding: var(--space-6) 0 var(--space-8); }
+  .aq-colophon__lead { row-gap: var(--space-4); }
+  .aq-colophon__lk { grid-column: 1; grid-row: auto; grid-template-columns: var(--space-8) minmax(0, 1fr); padding-top: 0; }
+  .aq-colophon__lv, .aq-colophon__lz, .aq-colophon__lm { grid-column: 1; }
+  .aq-colophon__tick { width: var(--space-8); }
+  .aq-colophon__lv { font-size: 32px; line-height: 38px; }
+  .aq-colophon__lz { font-size: 17px; line-height: 27px; }
+  .aq-colophon__row { grid-template-columns: var(--space-8) minmax(0, 1fr); row-gap: var(--space-2); padding: var(--space-4) 0 var(--space-6); }
+  .aq-colophon__n { padding-left: var(--space-1); }
+  .aq-colophon__v, .aq-colophon__m { grid-column: 2; }
+  .aq-colophon__v { font-size: 20px; line-height: 30px; }
+  .aq-colophon__m { margin-top: var(--space-1); }
+}

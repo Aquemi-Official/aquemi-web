@@ -1,0 +1,10 @@
+VisitPlan shows a service visit as a route around the system: the whole PW plant in IsoKit line art on a limestone drawing sheet, the technician's walk as a dashed route on the floor in front of it with a numbered stop at each part the visit checks, and one card per stop under the sheet.
+
+Look `visit-plan` (`assets/src/blocks/look-visit-plan.js`) on a `grid` block with `as: "route"`. Used on svc-service, "What a maintenance visit covers". Concept adapted: 56-concept-visit-route (a dashed inspection route around the plant with numbered stops), drawn on the light sheet in the IsoKit hand.
+
+- Markup: `section.aq-band--limestone.aq-visit-plan-sec[data-theme=light]` > `div.aq-visit-plan` > `__sheet` (`svg.aq-iso.aq-iso--limestone.__svg`: IsoKit sheet and plant, `path.__walk`, `g.__mark[data-stop][data-f]` with `__pin`, circle, number or `__tick`) + `ol.__stops` > `li.__stop[data-stop][data-parts]` (`is-end`) > `a|div.__body` (`__fig` with `svg.__mini` and `__n`, `__cap`, `h3.__t`, `p.__d`).
+- The scene `vpPlant()` (shared with RetrofitPlant): control panel, media filter, carbon, softener, RO rack, EDI stack, tank, loop pump, UV, loop supply with TOC analyser and its tee to a point of use, the return overhead with its diaphragm valve, report binders and stamp. Stage ids: panel, pre, gen, tank, loop, uv, toc, wear, report. Drawn inline (not in IsoKit): the walk and the stop pins.
+- Fields: `h`, `items [{t, d, link, spot, end, part}]`; new optional `part`: the stage(s) a stop checks, space-separated; `end: true` on the last item draws its stop as the sign-off tick. Spots are not drawn (the plant replaces them).
+- Phones: no big sheet; the walk runs down the left, each card a row with its stage drawn small.
+
+Motion: IsoKit's choreography builds the plant and runs the water once; then a flow dot walks the dashed route, each stop's ring strikes as it arrives, its parts light for a moment and its card prints. Once, under 5 s. Pointing at or focusing a card lights its stop and parts.

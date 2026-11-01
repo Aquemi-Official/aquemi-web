@@ -40,12 +40,12 @@ CHECKPOINTS = [
      'Section-by-section refinement and per-component GSAP choreography.'),
     ('2d50dbf', 'Brand book',
      'Back on the brand book: Geist Light sentence case, light surface, Lucide-style icons, How we work. Pass 7 motion kept.'),
-    ('7027d23', 'Pass 8: passes A and B',
-     'Two precision passes on every page against 16 site decisions: each page for its readers at their buying stage, '
-     'fewer words, one name per open fact, no unconfirmed fact stated.'),
-    ('44f3015', 'Pass 8: pass C',
-     'Section by section across all 27 pages: heroes, closings, FAQs, technical claims, forms, links and open facts, '
-     'from seven section reviews, notebook cross-checks, buyer panels and four citation checks; form and link fixes.'),
+    ('44f3015', 'Pass 8: copy passes',
+     'Passes A, B and C on every page against 16 site decisions and the buyer library: each page for its readers at '
+     'their buying stage, fewer words, one name per open fact, section reviews, form and link fixes.'),
+    ('30040f0', 'Pass 9: every section its own design',
+     'Each section of all 27 pages redrawn from Gemini concepts in varied art directions (104 looks, IsoKit drawings, '
+     'per-section GSAP), new hero, FAQ, related links, form and closing, then a polish pass. Tag pre-pass9.'),
 ]
 
 # Not part of the site a visitor loads.

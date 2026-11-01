@@ -1,0 +1,54 @@
+/* ---------- SheetStack: documents as an exploded stack of isometric drawing sheets ---------- */
+.aq-sheet-stack { position: relative; display: flex; flex-direction: column; gap: var(--space-8); }
+.aq-sheet-stack__axis { position: absolute; left: calc(100% * 5 / 24); top: 0; bottom: var(--space-16); border-left: 1px dashed var(--line-strong); }
+.aq-sheet-stack__rows { list-style: none; margin: 0; padding: 0; position: relative; display: flex; flex-direction: column; }
+.aq-sheet-stack__row { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; min-height: calc(var(--space-32) + var(--space-12)); }
+.aq-sheet-stack__slot { position: relative; display: grid; place-items: center; height: calc(var(--space-32) + var(--space-12)); perspective: none; }
+.aq-sheet-stack__sheet { display: block; width: min(100%, calc(var(--space-32) * 2 + var(--space-12))); aspect-ratio: 280 / 198; background: var(--surface-raised);
+  border-right: 3px solid var(--line-strong); border-bottom: 3px solid var(--line-strong);
+  transform: rotateX(60deg) rotateZ(-45deg); transition: transform 350ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-sheet-stack__row:hover .aq-sheet-stack__sheet, .aq-sheet-stack__row:focus-within .aq-sheet-stack__sheet { transform: translateY(calc(-1 * var(--space-4))) rotateX(60deg) rotateZ(-45deg); }
+.aq-sheet-stack__sheet svg { display: block; width: 100%; height: 100%; }
+.aq-sheet-stack__sheet path, .aq-sheet-stack__sheet circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.aq-sheet-stack__frame { stroke: var(--line-strong); stroke-width: 1.5; }
+.aq-sheet-stack__tb { stroke: var(--line-strong); stroke-width: 1; }
+.aq-sheet-stack__sheet text { fill: var(--ink); font: 500 13px/1 var(--font-mono); text-anchor: middle; }
+.aq-sheet-stack__ln { stroke: var(--ink-muted); stroke-width: 1.5; }
+.aq-sheet-stack__th { stroke: var(--line-strong); stroke-width: 1; }
+.aq-sheet-stack__bar { stroke: var(--flow); stroke-width: 7; stroke-linecap: butt; }
+.aq-sheet-stack__lim { stroke: var(--ink); stroke-width: 1.2; stroke-dasharray: 4 4; }
+.aq-sheet-stack__flow { stroke: var(--flow); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.aq-sheet-stack__sheet .aq-sheet-stack__fl { fill: var(--flow); stroke: none; }
+.aq-sheet-stack__seal { stroke: var(--flow); stroke-width: 1.5; }
+.aq-sheet-stack__row:hover .aq-sheet-stack__frame { stroke: var(--flow); }
+
+/* The row beside its sheet, a hairline leader running in from the sheet */
+.aq-sheet-stack__text { position: relative; display: flex; flex-direction: column; gap: var(--space-2); padding-left: var(--space-6); }
+.aq-sheet-stack__text::before { content: ""; position: absolute; right: 100%; top: var(--space-3); width: var(--space-16); border-top: 1px solid var(--line-strong); }
+.aq-sheet-stack__code { margin: 0; display: flex; gap: var(--space-4); font: 500 14px/20px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-muted); }
+.aq-sheet-stack__i { color: var(--ink-subtle); font-weight: 400; }
+.is-key .aq-sheet-stack__code { color: var(--flow); }
+.aq-sheet-stack__t { margin: 0; font: 300 30px/36px var(--font-sans); letter-spacing: -0.015em; }
+.aq-sheet-stack__d { margin: 0; max-width: var(--text-max); font: 400 16px/26px var(--font-sans); color: var(--ink-muted); }
+.aq-sheet-stack__more { margin: 0; padding-left: calc(100% * 5 / 12 + var(--space-6)); }
+
+/* Desktop shows every sheet; the fold is for phones */
+.aq-fold:not(.is-open) .aq-sheet-stack__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-sheet-stack__rows) > .aq-fold__btn { display: none; }
+
+.aq-sheet-stack-sec { overflow: hidden; }
+.aq-sheet-stack__k { display: inline-block; }
+
+@container (max-width: 860px) {
+  .aq-sheet-stack__axis { left: calc(var(--space-16) + var(--space-2)); }
+  .aq-sheet-stack__row { grid-template-columns: calc(var(--space-32) + var(--space-4)) minmax(0, 1fr); min-height: 0; align-items: start; padding-block: var(--space-4); }
+  .aq-sheet-stack__slot { height: var(--space-24); }
+  .aq-sheet-stack__sheet { width: calc(var(--space-24) + var(--space-8)); border-right-width: 2px; border-bottom-width: 2px; }
+  .aq-sheet-stack__text { padding-left: var(--space-2); }
+  .aq-sheet-stack__text::before { display: none; }
+  .aq-sheet-stack__t { font-size: 22px; line-height: 28px; }
+  .aq-sheet-stack__d { font-size: 14px; line-height: 22px; }
+  .aq-sheet-stack__more { padding-left: 0; }
+  .aq-fold:not(.is-open) .aq-sheet-stack__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-sheet-stack__rows) > .aq-fold__btn { display: flex; }
+}

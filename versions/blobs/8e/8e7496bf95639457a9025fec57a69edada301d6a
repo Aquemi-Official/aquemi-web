@@ -1,0 +1,12 @@
+BudgetBento sets budget ranges as a Swiss bento of numbered tiles, the whole package as a tall navy lead tile and each module beside it, so a range reads as a price sheet with its scope and basis rather than as a table row.
+
+- On the site: a `spec` block with `"look": "budget-bento"` (renderer `assets/src/blocks/look-budget-bento.js`). Origin: pass 9 concept pool (Swiss numbered tiles, `sys-pw.2`; data-viz range glyphs) for `systems.1`, keeping its idea of equipment beside each scope.
+- Markup: `<div class="aq-budget-bento">` holding `ol.__grid` of `li.__tile` (`is-lead` for the first `hl` row) → `span.__n` (numeral; huge, outlined and cropped on the lead), `span.__spot` (module icon), `div.__body` → `h3.__p` (scope), `div.__val` (`p.__k` key, `p.__v` range in mono, `span.__range` the bracket: ruler ticks, `__band` between `__bk` brackets, aria-hidden), `div.__basis` (key, then `ul.__incl` ticked list on the lead or `p.__m`), optional `a.__link`. Then `div.__notes`: one `div.__note` per note sentence (`p.__nk` label, `ul.__chips`), `is-out` for exclusions, and `p.__more` with the note link.
+- Fields: `h`, `caption` (eyebrow), `intro`, `cols` (keys: the second and third label the range and basis), `rows [{p, v, m, hl, spot, link, link_label}]`, `note`, `note_link`, `note_link_label`. `spot` (new, optional): Spot or Icon name for a module tile. The lead's basis splits on commas into the ticked list. The note becomes chips only when every sentence reads "Label: a, b and c." (a label starting "Not" marks exclusions); otherwise it prints as the spec note.
+- Tokens: hairline grid in `line-strong`, tiles `surface-raised`, lead `navy` with `on-navy` text, Geist Light numerals, Geist Mono ranges, the band `flow-tint` with a `flow` edge (on navy a `flow`/`on-navy` mix). Chips: `line-strong` outline, exclusions dashed in `ink-muted` with a dash glyph. Hover: a module tile's numeral turns `flow`.
+- The bracket is a glyph, not a scale: it never positions a value. Placeholders stay placeholders.
+- Phones: one column, lead first; numerals and range sizes step down; the chips wrap under their labels.
+
+## Motion
+
+Motion: the lead tile prints up from its foot and its numeral slides into the crop; module tiles slide in beside it, numerals first, icons wiping up; every ruler's ticks rise and the band opens from its centre, the brackets dropping on its ends; the included items tick in; the chip rows follow (drivers, then exclusions) and the link. Under 5 s; nothing under reduced motion.
