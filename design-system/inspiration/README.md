@@ -110,8 +110,11 @@ status from the tables in this README and from what the pages use, and makes the
 build) into `record/`. Rerun it after adding any image.
 
 - `archive/`: superseded versions, recovered from git history when a file was replaced.
-- `record/<pass>/<page>-<width>.jpg`, `record/fidelity/`: what the site looked like at each pass.
-- `chats/<source>/*.jpg`: images from other Claude chats, agent scratchpads and earlier passes (browser screenshots, Gemini and notebook sessions, section shots stacked into whole-page sheets), one folder per chat or pass. `chats/index.json` records where each came from, when it was taken and the page it shows; the gallery shows them under "From other chats and agents" with a Source filter. Copied as JPEG (quality 72, at most 1440 px wide; stacked sheets 720 px desktop, 320 px phone), exact and same-picture duplicates dropped, along with anything not about Aquemi.
+- `chats/<source>/*.jpg`: screenshots of Gemini sessions from earlier chats (the generations as they appeared in the
+  chat, the Images gallery and the Library); `chats/index.json` records where each came from. On 2026-11-01 the owner
+  had the ~1,600 build-progress images removed (page snapshots per pass in `record/`, concept-beside-build sheets, and
+  browser screenshots of the site from other chats); they are in git history before commit "Inspiration: drop build
+  progress images" if ever needed.
 
 - `gemini/NN-<kind>-<subject>.png`: the full-resolution original of every Gemini output, numbered oldest first. Add each new one here, then run `python tools/gallery.py`.
 - `concept-<letter>-<section>.png`: the capture a component was rebuilt from (table above).
