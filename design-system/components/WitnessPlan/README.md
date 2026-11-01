@@ -17,3 +17,5 @@ Concept: a flat top-down plan on navy built for this section, after the pool's s
 The walls draw on from the door, the grid and remote edge fade up, the skid and panel draw, then the plan steps through the ways (about half a second each, each card's rule sliding in as its actors come up) and rests on the first. Once, under 5 s.
 
 Polish (pass 9): the board carries a caption naming the way on show (`__now`, aria-hidden: number and title), updated by the cards and by the opening tour.
+
+Pass 9b: arrow keys, Home and End move between the cards and choose. With script, one raised panel with the `flow` rule (`li.__ind`, aria-hidden, the list's first item) springs from card to card (ported from Subframe Motion `sliding-tabs`, MIT: 460 / 34 spring, jumps for keyboard input), and the caption slides in 18 px from the side the new way lies on, 0.24 s, cubic-bezier(.25,1,.5,1) (ported from `transition-panel`, MIT). Without script the pressed card keeps its own rule and raised ground.

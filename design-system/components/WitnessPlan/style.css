@@ -7,7 +7,13 @@
 .aq-witness-plan { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); align-items: start; }
 .aq-witness-plan__side { display: flex; flex-direction: column; gap: var(--space-8); }
 .aq-witness-plan__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.aq-witness-plan__list { position: relative; isolation: isolate; }
 .aq-witness-plan__list li { border-bottom: 1px solid var(--line); }
+/* the sliding indicator (script): one raised panel with the flow rule that springs to the chosen card */
+.aq-witness-plan__list > .aq-witness-plan__ind { display: none; position: absolute; z-index: -1; left: 0; right: 0; top: 0; height: 0; border: 0; border-left: 3px solid var(--flow); background: var(--surface-raised); pointer-events: none; }
+.aq-witness-plan__list.has-ind > .aq-witness-plan__ind { display: block; }
+.aq-witness-plan__list.has-ind .aq-witness-plan__opt[aria-pressed="true"] { background: transparent; }
+.aq-witness-plan__list.has-ind .aq-witness-plan__opt::before { display: none; }
 .aq-witness-plan__opt { position: relative; display: grid; grid-template-columns: var(--space-8) minmax(0, 1fr); column-gap: var(--space-3); width: 100%; min-height: 44px;
   padding: var(--space-4) var(--space-4) var(--space-4) var(--space-3); border: 0; background: transparent; color: var(--ink); text-align: left; cursor: pointer; font: inherit;
   transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1); }

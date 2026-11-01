@@ -5196,6 +5196,7 @@ LOOKS['terms-sheet']=function(b,H){var C=b.cols||[],R=(b.rows||[]).map(function(
    Fields (a steps block): h, intro, items [{t, d, hold, link}], cols (optional header strip: [step, action, sign-off];
    omitted, no strip), hold_label (the hold cell's label, default "Hold point"), tear (true: the last step sits below a
    perforation; default true when there are three or more steps).
+   Each signature is drawn twice: a faint pressed impression under the ink line (motion.js writes the ink along it).
    Phones: the sheet fills the width; each row's sign-off cell drops under its text. */
 var TS_SIG=['M6 30C10 14 16 4 20 8S16 30 14 34 22 16 28 14 30 26 34 24 38 12 42 14 40 26 46 24 50 16 54 16 54 26 60 22 66 14 70 18 70 26 78 22M30 36C48 32 70 31 96 27',
  'M8 24C14 22 20 10 18 8S10 18 12 28 22 30 26 22 30 14 34 18 32 28 38 26 44 16 48 18 48 28 54 26 58 20 62 20 64 28 72 24 80 14 86 16 84 24 92 22',
@@ -5204,7 +5205,7 @@ LOOKS['test-sheet']=function(b,H){var I=b.items||[],n=I.length,C=b.cols||[],tear
  function who(s){s=String(s);return tx(/^[A-Z][a-z]/.test(s)?s.charAt(0).toLowerCase()+s.slice(1):s)}
  var rows=I.map(function(it,i){var nm=it.link&&wp(it.link)?'<a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t);
   var sign=it.hold?'<div class="aq-test-sheet__hold"><span class="aq-test-sheet__hk">'+tx(hk)+'</span>'
-    +'<svg class="aq-test-sheet__sig" viewBox="0 0 100 40" aria-hidden="true" focusable="false"><path d="'+TS_SIG[i%TS_SIG.length]+'"/></svg>'
+    +'<svg class="aq-test-sheet__sig" viewBox="0 0 100 40" aria-hidden="true" focusable="false"><path class="aq-test-sheet__imp" d="'+TS_SIG[i%TS_SIG.length]+'"/><path class="aq-test-sheet__ink" d="'+TS_SIG[i%TS_SIG.length]+'"/></svg>'
     +'<span class="aq-test-sheet__who">Signed by '+who(it.hold)+'</span><span class="aq-test-sheet__stamp" aria-hidden="true">Hold</span></div>'
    :'<span class="aq-test-sheet__box" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>';
   return '<li class="aq-test-sheet__row'+(it.hold?' is-hold':'')+(tear&&i===n-1?' is-torn':'')+'">'
@@ -5319,65 +5320,6 @@ LOOKS['trace-lines']=(function(){
  document.addEventListener('click',function(ev){var k=ev.target.closest&&ev.target.closest('.aq-trace-lines__key');if(k)show(k.closest('.aq-trace-lines-wrap'),k.getAttribute('data-line'))});
  document.addEventListener('mouseover',function(ev){var l=ev.target.closest&&ev.target.closest('.aq-trace-lines__line'),w=l&&l.closest('.aq-trace-lines-wrap');if(w)show(w,l.getAttribute('data-line'))});
 })();
-/* Look "twin-route" -> TwinRoute (design-system/components/TwinRoute): a FAT versus SAT table (table, as "versus")
-   drawn as two routes the same skid takes. At the top, two IsoKit scenes: our test bay (the skid on the bay's feed
-   water, its outlet read by an analyser) and your site (the installed skid, storage tank and loop to a point of use
-   behind the clean-room wall), with the truck between them on the centre column. Under each scene its route runs
-   down the page as a twin-wall pipe; every test is a station on both routes: the FAT result to the left of the FAT
-   pipe, the test named large between the pipes, the SAT result to the right. A cell that starts "Not possible" breaks
-   its pipe (a capped gap and an open node). The conclusion closes the routes: the FAT pipe turns in towards the centre
-   ("Reuse in IQ/OQ"), and the SAT pipe ends at "proven on site only".
-   Fields, as a versus table: cols [test, FAT label, SAT label], rows [[test, FAT cell, SAT cell]] (strings or
-   {t, link}), conclusion [label, FAT side, SAT side], fold, fold_noun (the fold applies on phones only),
-   route_labels (optional small eyebrows over the two route labels, e.g. ["Route 1", "Route 2"]).
-   Phones: the scenes sit side by side over the rows; each row stacks the test, then its FAT and SAT results on two
-   thin rails down the left. */
-function trScenes(){
- /* our test bay: the bay's own feed tank, the skid (RO rack and panel), outlet analyser, the drain */
- var sk=isoPart('skid',0,0,0,1,{w:150,d:62}),ro=isoPart('ro',8,8,9,1,{id:'fat-ro'}),pn=isoPart('panel',134,40,9,0.9,{id:'fat-pn'}),
-  tk=isoPart('tank',-46,-6,0,0.82,{id:'fat-feed'}),an=isoPart('analyzer',178,4,0,0.9,{id:'fat-an'});
- var feed=isoPipe(isoRoute(tk.ports.out,ro.ports.in,'xyz'),{r:1.9,to:'fat-ro',caps:false});
- var out=isoPipe(isoRoute(ro.ports.out,[an.ports.sample[0],ro.ports.out[1],ro.ports.out[2]],'xyz').concat([[an.ports.sample[0]+14,ro.ports.out[1],ro.ports.out[2]],[an.ports.sample[0]+14,ro.ports.out[1],0]]),{r:1.9,to:'fat-an',caps:'end'});
- var A=[tk,feed,sk,ro,pn,out,an].join(''),bA=isoBounds([[-70,-30,0],[200,0,0],[0,70,0],[150,70,0],[-70,-30,72],[200,0,60],[0,70,70]],18);
- /* your site: clean-room wall behind, storage tank, the skid, loop out through the wall to a point of use */
- var wl=isoPart('wall',-30,-34,0,1,{w:220,h:64}),sk2=isoPart('skid',0,0,0,1,{w:150,d:62}),ro2=isoPart('ro',8,8,9,1,{id:'sat-ro'}),
-  tk2=isoPart('tank',178,26,0,0.9,{id:'sat-tank'}),ou=isoPart('outlet',236,70,0,0.9,{id:'sat-pou'});
- var p1=isoPipe(isoRoute(ro2.ports.out,tk2.ports.in,'xyz'),{r:1.9,to:'sat-tank',caps:false});
- var loop=isoPipe(isoRoute(tk2.ports.out,[ou.ports.in[0],ou.ports.in[1],ou.ports.in[2]],'xyz'),{r:1.9,to:'sat-pou',caps:false});
- var B=[wl,sk2,ro2,p1,tk2,loop,ou].join(''),bB=isoBounds([[-30,-34,0],[190,-34,0],[-30,-34,70],[0,70,0],[210,50,0],[190,-34,70],[260,90,0],[250,80,40]],18);
- /* the truck, its load crated */
- var tr=isoPart('truck',0,0,0,1,{id:'truck'}),bT=isoBounds([[0,0,0],[96,0,0],[0,26,0],[96,26,0],[0,0,40],[96,26,30]],8);
- function svg(inner,bx,cls){var W=Math.round(bx.w),H=Math.round(bx.h);return isoSvg(W,H,inner,cls,{origin:[-bx.x,-bx.y]})}
- return {fat:svg(A,bA,'aq-twin-route__svg'),sat:svg(B,bB,'aq-twin-route__svg'),truck:svg(tr,bT,'aq-twin-route__svg aq-twin-route__truck-svg')}}
-LOOKS['twin-route']=function(b,H){var RL=b.route_labels||[],C=b.cols||[],R=b.rows||[],K=b.conclusion||[],S=trScenes();
- function na(c){var t=c&&typeof c==='object'?c.t:c;return /^not possible\b/i.test(String(t||''))}
- function cell(c,side,i){var x=na(c);
-  return '<div class="aq-twin-route__res aq-twin-route__res--'+side+(x?' is-na':'')+'">'
-   +'<span class="aq-twin-route__k">'+tx(C[side==='fat'?1:2]||'')+'</span>'+tcell(c)+'</div>'
-   +'<span class="aq-twin-route__rail aq-twin-route__rail--'+side+(x?' is-na':'')+'" aria-hidden="true">'+(x?'':'<span class="aq-twin-route__water"></span>')+'<span class="aq-twin-route__node"></span></span>'}
- var rows=R.map(function(r,i){
-  return fli('<li class="aq-twin-route__row" style="--i:'+i+'">'
-   +cell(r[1],'fat',i)
-   +'<h3 class="aq-twin-route__test"><span class="aq-twin-route__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+tcell(r[0])+'</h3>'
-   +cell(r[2],'sat',i)+'</li>',b,i)}).join('');
- var head='<div class="aq-twin-route__head" aria-hidden="true">'
-  +'<div class="aq-twin-route__scene aq-twin-route__scene--fat">'+S.fat+'<span class="aq-twin-route__cap">'+tx(C[1]||'')+'</span></div>'
-  +'<div class="aq-twin-route__road">'+S.truck+'<span class="aq-twin-route__lane"></span></div>'
-  +'<div class="aq-twin-route__scene aq-twin-route__scene--sat">'+S.sat+'<span class="aq-twin-route__cap">'+tx(C[2]||'')+'</span></div></div>'
-  +'<div class="aq-twin-route__labels">'
-  +'<p class="aq-twin-route__lab aq-twin-route__lab--fat">'+(RL[0]?'<span class="aq-eyebrow">'+tx(RL[0])+'</span>':'')+tx(C[1]||'')+'</p>'
-  +'<span class="aq-twin-route__rail aq-twin-route__rail--fat is-cap" aria-hidden="true"><span class="aq-twin-route__water"></span></span>'
-  +'<p class="aq-twin-route__lab aq-twin-route__lab--test aq-eyebrow">'+tx(C[0]||'')+'</p>'
-  +'<span class="aq-twin-route__rail aq-twin-route__rail--sat is-cap" aria-hidden="true"><span class="aq-twin-route__water"></span></span>'
-  +'<p class="aq-twin-route__lab aq-twin-route__lab--sat">'+(RL[1]?'<span class="aq-eyebrow">'+tx(RL[1])+'</span>':'')+tx(C[2]||'')+'</p></div>';
- var list=wFold(b,R.length,'<ol class="aq-twin-route__rows">'+rows+'</ol>',b.fold_noun||'tests');
- var end=K.length?'<div class="aq-twin-route__end">'
-  +'<p class="aq-twin-route__res aq-twin-route__res--fat">'+tx(K[1]||'')+'</p>'
-  +'<span class="aq-twin-route__turn aq-twin-route__turn--fat" aria-hidden="true"></span>'
-  +'<p class="aq-twin-route__reuse">'+tx(K[0]||'')+'</p>'
-  +'<span class="aq-twin-route__turn aq-twin-route__turn--sat" aria-hidden="true"></span>'
-  +'<p class="aq-twin-route__res aq-twin-route__res--sat">'+tx(K[2]||'')+'</p></div>':'';
- return sec(H+'<div class="aq-twin-route">'+head+list+end+'</div>','aq-twin-route-sec')};
 /* Look "urs-gate" -> UrsGate (design-system/components/UrsGate): an options block of decisions that must be made before
    a gate, set as one project line running into it. The decisions stand along the line, alternately above and below,
    each on a stem with a huge light numeral; the line ends at the gate: a bar and the gate's word as giant outline
@@ -5397,6 +5339,96 @@ LOOKS['urs-gate']=function(b,H){var I=b.items||[],n=I.length;
   +'<ol class="aq-urs-gate__list">'+items+'</ol>'+gate+'</div>';
  return sec(H+wFold(b,n,body,b.fold_noun),'aq-urs-gate-sec')};
 })();
+/* Look "versus-spread" -> VersusSpread (design-system/components/VersusSpread): a FAT versus SAT table (table, as
+   "versus") set as an editorial spread. A navy mast bleeds off the left edge of the page with the heading at display
+   scale in light type; under it the comparison sits on the page ground as a numbered, hairline-ruled table (test,
+   then the FAT column, then the SAT column), closed by the conclusion row. At the right, one line drawing: the
+   installed system in elevation (the skid with its RO housings, pump, control panel, outlet instrument and divert
+   valve to drain, the field piping up to the storage tank, the distribution loop with its points of use, the site's
+   utilities), with two boundaries: the test bay's around the skid (FAT) and the site's around everything (SAT).
+   Pointing at or focusing a row lights the parts that test covers, so the reader sees what FAT can and cannot reach;
+   the conclusion row lights the FAT boundary itself. The script adds a reading lens (see motion.js).
+   Fields, as a versus table: cols [test, FAT label, SAT label] (the two labels also tag the drawing's boundaries),
+   rows [[test, FAT cell, SAT cell]] (strings or {t, link}), conclusion [label, FAT side, SAT side], fold, fold_noun
+   (the fold applies on phones only), row_parts (optional, one string per row: space-separated drawing parts the test
+   covers, any of skid, ro, pump, panel, inst, valve, pipe, tank, loop, pou, util).
+   Phones: the mast full width, the drawing under it (not sticky), each row stacked: test, then its FAT and SAT cells. */
+var VS_PARTS=['skid','ro','pump','panel','inst','valve','pipe','tank','loop','pou','util'];
+function vsFig(C){var P='aq-versus-spread'+'__';
+ function G(p,inner){return '<g class="'+P+'part" data-p="'+p+'">'+inner+'</g>'}
+ function pipe(d){return '<path class="'+P+'wall" d="'+d+'"/><path class="'+P+'bore" d="'+d+'"/><path class="'+P+'water" d="'+d+'"/>'}
+ function L(d,c){return '<path class="'+P+(c||'eq')+'" d="'+d+'"/>'}
+ var s='';
+ /* boundaries: the site around everything, the test bay around the skid */
+ s+='<rect class="'+P+'bound '+P+'bound--sat" x="8" y="40" width="384" height="552"/>';
+ s+='<rect class="'+P+'bound '+P+'bound--fat" data-p="fat" x="24" y="300" width="212" height="236"/>';
+ /* utilities: the site's header under the skid, two connections up to it */
+ s+=G('util',L('M24 572H236M88 572V520M150 572V520M80 566H96M142 566H158','thin'));
+ /* skid piping: RO outlet to the riser, inside the test bay */
+ s+=G('skid pipe',pipe('M180 443H196V300'));
+ /* field piping: the riser up and over to the storage tank */
+ s+=G('pipe',pipe('M196 300V70H310V96'));
+ /* distribution loop: tank down, round the points of use, back into the tank */
+ s+=G('loop pipe',pipe('M310 236V262H370V560H252V200H272'));
+ /* skid: frame, two membrane housings, pump */
+ s+=G('skid',L('M40 420H216V520H40Z')+L('M40 508H216','thin'));
+ s+=G('ro',L('M52 436H180V450H52Z')+L('M52 460H180V474H52Z')+L('M180 443V467','thin'));
+ s+=G('pump skid',L('M81 498A11 11 0 1 1 59 498A11 11 0 1 1 81 498Z')+L('M65 491L77 498L65 505','thin'));
+ /* control panel, door ajar */
+ s+=G('panel',L('M40 344H80V404H40Z')+L('M48 354H72M48 362H66M48 370H70','thin')+L('M80 344L92 352V412L80 404','thin'));
+ /* outlet instrument on the riser */
+ s+=G('inst',L('M196 400H180','thin')+L('M180 400A10 10 0 1 1 160 400A10 10 0 1 1 180 400Z'));
+ /* three-way divert valve on the riser, branch to drain */
+ s+=G('valve',L('M188 344L196 356L204 344ZM188 368L196 356L204 368Z')+L('M196 356H140V374M128 378H152M132 384H148M137 390H143','thin'));
+ /* storage tank */
+ s+=G('tank',L('M272 126A38 30 0 0 1 348 126V206A38 30 0 0 1 272 206Z')+L('M272 150H348','thin'));
+ /* loop pump and points of use */
+ s+=G('loop',L('M349 262A9 9 0 1 1 331 262A9 9 0 1 1 349 262Z'));
+ s+=G('pou',L('M370 360H346V376M370 470H346V486','thin')+L('M350 354L356 360L350 366ZM362 354L356 360L362 366Z')+L('M350 464L356 470L350 476ZM362 464L356 470L362 476Z'));
+ return '<svg class="'+P+'svg" viewBox="0 0 400 600" aria-hidden="true" focusable="false">'+s+'</svg>'
+  +'<span class="'+P+'tag '+P+'tag--sat" aria-hidden="true">'+tx(C[2]||'')+'</span>'
+  +'<span class="'+P+'tag '+P+'tag--fat" aria-hidden="true">'+tx(C[1]||'')+'</span>'}
+LOOKS['versus-spread']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.conclusion||[],RP=b.row_parts||[],n=R.length;
+ function parts(s){return String(s||'').split(/\s+/).filter(function(p){return VS_PARTS.indexOf(p)>-1}).join(' ')}
+ function na(c){var t=c&&typeof c==='object'?c.t:c;return /^not possible\b/i.test(String(t||''))}
+ function cell(c,k){return '<div class="aq-versus-spread__c aq-versus-spread__c--'+k+(na(c)?' is-na':'')+'" role="cell">'
+  +'<span class="aq-versus-spread__k" aria-hidden="true">'+tx(C[k==='fat'?1:2]||'')+'</span>'+tcell(c)+'</div>'}
+ var rows=R.map(function(r,i){return fli('<div class="aq-versus-spread__row" role="row" tabindex="0" data-i="'+i+'" data-parts="'+parts(RP[i])+'">'
+  +'<div class="aq-versus-spread__test" role="rowheader"><span class="aq-versus-spread__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+  +'<span class="aq-versus-spread__tn">'+tcell(r[0])+'</span></div>'+cell(r[1],'fat')+cell(r[2],'sat')+'</div>',b,i)}).join('');
+ var head='<div class="aq-versus-spread__hrow" role="row">'+[0,1,2].map(function(k){return '<span class="aq-versus-spread__h" role="columnheader">'+tx(C[k]||'')+'</span>'}).join('')+'</div>';
+ var end=K.length?'<div class="aq-versus-spread__end" role="row" tabindex="0" data-i="'+n+'" data-parts="fat">'
+  +'<div class="aq-versus-spread__test" role="rowheader"><span class="aq-versus-spread__reuse">'+tx(K[0]||'')+'</span></div>'
+  +cell(K[1]||'','fat')+cell(K[2]||'','sat')+'</div>':'';
+ var table=wFold(b,n,'<div class="aq-versus-spread__table" role="table" aria-label="'+e(b.h||'')+'">'+head
+  +'<div class="aq-versus-spread__rows" role="rowgroup"><span class="aq-versus-spread__lens" aria-hidden="true"></span>'+rows+'</div></div>',b.fold_noun||'tests');
+ var mast='<div class="aq-versus-spread__mast" data-theme="dark"><div class="aq-versus-spread__top" aria-hidden="true"><span>'+tx(b.nav||'')+'</span><span>'+e(wCount(b,n,'tests'))+'</span></div>'+H+'</div>';
+ var fig='<figure class="aq-versus-spread__fig"><div class="aq-versus-spread__art">'+vsFig(C)+'</div>'
+  +'<figcaption class="aq-versus-spread__now" aria-hidden="true"><span class="aq-versus-spread__count">'+String(n).padStart(2,'0')+' '+e(b.fold_noun||'tests')+'</span>'
+  +'<span class="aq-versus-spread__now-t"></span></figcaption></figure>';
+ return '<section class="aq-section aq-versus-spread-sec"><div class="aq-in"><div class="aq-versus-spread" style="--n:'+n+'">'+mast+fig
+  +'<div class="aq-versus-spread__body">'+table+end+'</div></div></div></section>'};
+/* Point at or focus a row: light the parts its test covers, name it under the drawing. vsShow is shared with motion.js
+   (the reading lens drives the same state); i = -1 clears. Works without GSAP and under reduced motion. */
+function vsShow(w,i){if(!w)return;var rows=[].slice.call(w.querySelectorAll('[data-parts]')),r=rows.filter(function(x){return +x.getAttribute('data-i')===i})[0];
+ var on=r?(' '+r.getAttribute('data-parts')+' '):'';w.classList.toggle('has-on',!!r);
+ rows.forEach(function(x){x.classList.toggle('is-on',x===r)});
+ [].forEach.call(w.querySelectorAll('.aq-versus-spread__part, .aq-versus-spread__bound--fat'),function(p){var ps=p.getAttribute('data-p').split(' ');
+  p.classList.toggle('is-on',ps.some(function(k){return on.indexOf(' '+k+' ')>-1}))});
+ var c=w.querySelector('.aq-versus-spread__count'),t=w.querySelector('.aq-versus-spread__now-t'),total=rows.length-(w.querySelector('.aq-versus-spread__end')?1:0);
+ if(!c||!t)return;
+ if(!c.hasAttribute('data-all'))c.setAttribute('data-all',c.textContent);
+ if(!r){c.textContent=c.getAttribute('data-all');t.textContent='';return}
+ var nm=r.querySelector('.aq-versus-spread__tn, .aq-versus-spread__reuse');
+ c.textContent=i<total?String(i+1).padStart(2,'0')+' / '+String(total).padStart(2,'0'):'';t.textContent=nm?nm.textContent:''}
+window.vsShow=vsShow;
+(function(){function row(ev){return ev.target.closest&&ev.target.closest('.aq-versus-spread [data-parts]')}
+ function back(w){vsShow(w,w&&w.hasAttribute('data-lens')?+w.getAttribute('data-lens'):-1)}
+ document.addEventListener('pointerover',function(ev){var r=row(ev);if(!r||ev.pointerType==='touch')return;var w=r.closest('.aq-versus-spread');w.setAttribute('data-hold','');vsShow(w,+r.getAttribute('data-i'))});
+ document.addEventListener('pointerout',function(ev){var r=row(ev);if(!r||(ev.relatedTarget&&r.contains(ev.relatedTarget)))return;var w=r.closest('.aq-versus-spread');
+  if(ev.relatedTarget&&ev.relatedTarget.closest&&ev.relatedTarget.closest('.aq-versus-spread [data-parts]'))return;w.removeAttribute('data-hold');back(w)});
+ document.addEventListener('focusin',function(ev){var r=row(ev);if(!r)return;var w=r.closest('.aq-versus-spread');w.setAttribute('data-hold','');vsShow(w,+r.getAttribute('data-i'))});
+ document.addEventListener('focusout',function(ev){var r=row(ev);if(!r)return;var w=r.closest('.aq-versus-spread');if(ev.relatedTarget&&ev.relatedTarget.closest&&ev.relatedTarget.closest('.aq-versus-spread [data-parts]'))return;w.removeAttribute('data-hold');back(w)})})();
 /* Look "visit-plan" -> VisitPlan (design-system/components/VisitPlan): a service visit as a route around the system.
    On a limestone drawing sheet the whole plant stands in IsoKit line art, left to right along one water line: control
    panel, pretreatment (media filter, carbon, softener), RO rack and EDI stack, storage tank, loop pump, UV unit, the
@@ -5552,69 +5584,71 @@ LOOKS['washer-trace']=function(b,H){var P=b.points||[],art=(b.figure&&b.figure.a
   +'<h3 class="aq-washer-trace__t">'+tx(p.t)+'</h3>'+(p.d?'<p class="aq-washer-trace__d">'+tx(p.d)+'</p>':'')+'</li>'}).join('');
  return sec(H+'<div class="aq-washer-trace">'+fig+'<ol class="aq-washer-trace__steps">'+steps+'</ol></div>','aq-band--navy aq-washer-trace-sec')};
 })();
-/* Look "wet-run-hmi" -> WetRunHmi (design-system/components/WetRunHmi): an explainer (prose, as "explainer") set as the
-   test bay's operator screen. A dark HMI panel carries a flat process mimic of the skid under test: feed, pump,
-   reverse osmosis, the outlet's conductivity and TOC elements, the three-way divert valve to outlet or drain, and the
-   data record under it with its trend. A two-position switch on the screen's status bar runs the same skid dry or with
-   water: dry, the lines stay empty, the readouts blank and the numbered findings unlit; with water, the water runs
-   the mimic, the readouts trace and each finding lights on the part where water shows it. The points are the alarm
-   list beside the screen; pointing at one lights its marker on the mimic.
-   Fields (a prose block): h, points [{t, d, part}] (part: "divert", "outlet" or "record", the mimic part the point
-   is about; a point without one takes the next free part), modes [dry label, wet label] (the switch's two words,
-   default "Dry", "Water"). at and figure are the fallback renderer's and are ignored here.
-   Phones: the screen first, the alarm list under it; the mimic keeps its HTML markers and drops its drawing labels. */
-var WRH_AT={divert:[80,43],outlet:[71.5,18.6],record:[59,60]};
-function wrhMimic(){
- var P='aq-wet-run-hmi'+'__',ln=P+'ln',fl=P+'fl',eq=P+'eq',tg=P+'tag';
- function L(d,c,id){return '<path class="'+c+'" d="'+d+'"'+(id?' data-run="'+id+'"':'')+'/>'}
+/* Look "wet-run-hmi" -> WetRunHmi (design-system/components/WetRunHmi): an explainer (prose, as "explainer") read
+   along the test bay's water route. On a navy blueprint ground, one continuous double-wall pipe runs across the
+   section and folds down and back up: feed, pump and reverse osmosis, the three-way divert valve with its branch to
+   drain (the first point), the outlet's conductivity and TOC elements on the low run (the second), and the data
+   record on the last run (the third). Each point sits beside its station, so the pipe is the reading path. A
+   two-position switch beside the heading runs the same skid dry or with water: dry, the pipe stays empty, the
+   readouts blank and the station markers unlit; with water, the water runs the route, the readouts trace and each
+   marker lights as the water reaches its station.
+   Fields (a prose block): h, points [{t, d, part, x, y}] (part: "divert", "outlet" or "record", the station the point
+   is about; a point without one takes the next free part; x, y optional: the text block's top left in % of the
+   drawing, default per part), modes [dry label, wet label] (the switch's two words, default "Dry", "Water").
+   at and figure are the fallback renderer's and are ignored here.
+   Up to tablet width the route turns vertical: one pipe down the left, the numbered markers on it, the points beside. */
+var WRH_ST={divert:{m:[320,44],p:[320,90],t:[2,44]},outlet:{m:[590,428],p:[590,380],t:[37,3]},record:{m:[878,34],p:[980,90],t:[70,30]}};
+var WRH_ROUTE='M0 90H376Q400 90 400 114V356Q400 380 424 380H776Q800 380 800 356V114Q800 90 824 90H1200';
+function wrhRoute(){
+ var P='aq-wet-run-hmi'+'__',eq=P+'eq',th=P+'thin',tg=P+'tag';
+ function L(d,c){return '<path class="'+c+'" d="'+d+'"/>'}
  function T(x,y,s,a){return '<text class="'+tg+'" x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+s+'</text>'}
  var s='';
- /* grid of the screen */
- s+='<path class="'+P+'grid" d="'+[60,120,180,240,300,360].map(function(y){return 'M0 '+y+'H800'}).join('')+'"/>';
- /* pipe runs: line first (empty pipe), water over it in the order the water reaches it */
- var runs=[['M20 140H98',1],['M142 140H200',2],['M360 140H578',3],['M622 140H780',4],['M600 162V300',5]];
- runs.forEach(function(r){s+=L(r[0],ln)});
+ /* the pipe: wall, bore, then the water over it (one path, so the water runs the whole route in order) */
+ s+=L(WRH_ROUTE,P+'wall')+L(WRH_ROUTE,P+'bore');
+ /* branch to drain under the divert valve */
+ s+=L('M320 102V150',P+'wall')+L('M320 102V150',P+'bore')+L('M304 158H336M309 165H331M315 172H325',th)+T(344,170,'DRAIN');
+ s+=L(WRH_ROUTE,P+'water');
+ /* feed and outlet arrows */
+ s+=L('M14 78L28 90L14 102',th)+L('M1180 78L1194 90L1180 102',th);
  /* pump */
- s+='<circle class="'+eq+'" cx="120" cy="140" r="22"/>'+L('M106 123L142 140L106 157',P+'thin')+T(120,190,'PUMP','middle');
+ s+='<circle class="'+eq+'" cx="76" cy="90" r="22"/>'+L('M64 75L94 90L64 105',th)+T(76,140,'PUMP','middle');
  /* RO */
- s+='<rect class="'+eq+'" x="200" y="108" width="160" height="64"/>'+L('M200 172L360 108',P+'thin')+T(280,196,'RO','middle');
- /* outlet elements: conductivity and TOC bubbles on stems */
- [[440,'COND'],[516,'TOC']].forEach(function(b){s+=L('M'+b[0]+' 140V102',P+'thin')+'<circle class="'+eq+'" cx="'+b[0]+'" cy="78" r="24"/>'+T(b[0],83,b[1],'middle')});
- /* three-way divert valve: two triangles on the run, one down to drain, actuator on top */
- s+='<path class="'+eq+'" d="M578 128L600 140L578 152Z M622 128L600 140L622 152Z M588 162L600 140L612 162Z"/>'+L('M600 140V116M590 116H610',P+'thin');
- s+=T(780,128,'OUTLET','end')+L('M770 134L780 140L770 146',P+'thin');
- s+=L('M584 300H616M590 308H610M596 316H604',P+'thin')+T(628,312,'DRAIN');
- runs.forEach(function(r){s+=L(r[0],fl,r[1])});
- /* readouts beside the elements */
- [440,516].forEach(function(x,i){s+='<rect class="'+P+'rd" x="'+(x-20)+'" y="34" width="40" height="6"/>'
-  +'<rect class="'+P+'rdv" x="'+(x-20)+'" y="34" width="'+(i?22:30)+'" height="6"/>'});
- /* the record: a trend window with three log lines */
- s+='<rect class="'+eq+'" x="40" y="252" width="420" height="150"/>'+L('M40 276H460',P+'thin')+T(52,269,'RECORD');
- s+=L('M60 372H300M60 338H300M60 304H300',P+'grid2');
- s+='<polyline class="'+P+'trend" points="60,366 72,360 84,349 96,344 108,347 120,341 132,345 144,339 156,343 168,346 180,340 192,336 204,341 216,344 228,338 240,342 252,337 264,340 276,335 288,339 300,337"/>';
- s+='<polyline class="'+P+'flat" points="60,372 300,372"/>';
- s+=L('M326 300H440M326 322H420M326 344H436M326 366H410',P+'log');
- s+=L('M250 252V200H600V162',P+'sig');
- return '<svg class="'+P+'svg" viewBox="0 0 800 420" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">'+s+'</svg>'}
+ s+='<rect class="'+eq+'" x="132" y="64" width="128" height="52"/>'+L('M132 116L260 64',th)+T(196,140,'RO','middle');
+ /* three-way divert valve: two triangles on the run, the third to the drain branch, actuator on top */
+ s+='<path class="'+eq+'" d="M300 78L320 90L300 102ZM340 78L320 90L340 102ZM308 112L320 90L332 112Z"/>'+L('M320 90V64M308 64H332',th);
+ /* outlet elements on the low run: conductivity and TOC on stems, readout bars over them */
+ [[548,'COND'],[632,'TOC']].forEach(function(b,i){s+=L('M'+b[0]+' 368V340',th)+'<circle class="'+eq+'" cx="'+b[0]+'" cy="318" r="22"/>'+T(b[0],323,b[1],'middle')
+  +'<rect class="'+P+'rd" x="'+(b[0]-22)+'" y="278" width="44" height="6"/><rect class="'+P+'rdv" x="'+(b[0]-22)+'" y="278" width="'+(i?26:34)+'" height="6"/>'});
+ /* the record on the last run: a logger with its trend window */
+ s+=L('M980 78V64',th)+'<rect class="'+eq+'" x="904" y="4" width="220" height="60"/>';
+ s+='<polyline class="'+P+'flat" points="918,44 1006,44"/>';
+ s+='<polyline class="'+P+'trend" points="918,46 926,40 934,42 942,34 950,38 958,30 966,34 974,28 982,32 990,26 998,30 1006,27"/>';
+ s+=L('M1024 22H1108M1024 34H1096M1024 46H1104',P+'log');
+ return '<svg class="'+P+'svg" viewBox="0 0 1200 460" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet">'+s+'</svg>'}
 LOOKS['wet-run-hmi']=function(b,H){var Pt=b.points||[],M=b.modes||['Dry','Water'],used={},free=['divert','outlet','record'];
- var parts=Pt.map(function(p){var k=WRH_AT[p.part]?p.part:'';if(!k||used[k])k=free.filter(function(f){return !used[f]})[0]||'record';used[k]=1;return k});
- var marks=Pt.map(function(p,i){var a=WRH_AT[parts[i]];return '<span class="aq-wet-run-hmi__mk" data-part="'+parts[i]+'" style="left:'+a[0]+'%;top:'+a[1]+'%" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'}).join('');
- var list=Pt.map(function(p,i){return '<li class="aq-wet-run-hmi__pt" data-part="'+parts[i]+'" tabindex="0">'
-  +'<span class="aq-wet-run-hmi__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+ var parts=Pt.map(function(p){var k=WRH_ST[p.part]?p.part:'';if(!k||used[k])k=free.filter(function(f){return !used[f]})[0]||'record';used[k]=1;return k});
+ function pc(v){return (Math.round(v/12*10)/10)+'%'}
+ function n2(i){return (i<9?'0':'')+(i+1)}
+ var marks=Pt.map(function(p,i){var a=WRH_ST[parts[i]].m;return '<span class="aq-wet-run-hmi__mk" data-part="'+parts[i]+'" style="left:'+pc(a[0])+';top:'+(Math.round(a[1]/4.6*10)/10)+'%" aria-hidden="true">'+n2(i)+'</span>'}).join('');
+ var list=Pt.map(function(p,i){var t=WRH_ST[parts[i]].t,x=p.x!=null?+p.x:t[0],y=p.y!=null?+p.y:t[1];
+  return '<li class="aq-wet-run-hmi__pt" data-part="'+parts[i]+'" tabindex="0" style="left:'+x+'%;top:'+y+'%">'
+  +'<span class="aq-wet-run-hmi__n" aria-hidden="true">'+n2(i)+'</span>'
   +'<h3 class="aq-wet-run-hmi__t">'+tx(p.t)+'</h3>'+(p.d?'<p class="aq-wet-run-hmi__d">'+tx(p.d)+'</p>':'')+'</li>'}).join('');
- var sw='<div class="aq-wet-run-hmi__switch" role="group" aria-label="'+e(M[0]+' / '+M[1])+'">'
+ var sw='<div class="aq-wet-run-hmi__switch" role="group" aria-label="'+e(M[0]+' / '+M[1])+'"><span class="aq-wet-run-hmi__thumb" aria-hidden="true"></span>'
   +'<button type="button" class="aq-wet-run-hmi__mode" data-wrh-mode="dry" aria-pressed="false">'+tx(M[0])+'</button>'
   +'<button type="button" class="aq-wet-run-hmi__mode" data-wrh-mode="wet" aria-pressed="true">'+tx(M[1])+'</button></div>';
- var screen='<div class="aq-wet-run-hmi__screen is-wet">'
-  +'<div class="aq-wet-run-hmi__bar"><span class="aq-wet-run-hmi__lamp" aria-hidden="true"></span>'+sw+'</div>'
-  +'<div class="aq-wet-run-hmi__mimic">'+wrhMimic()+marks+'</div></div>';
- return '<section class="aq-section aq-wet-run-hmi-sec" data-theme="dark"><div class="aq-in"><div class="aq-wet-run-hmi">'
-  +'<div class="aq-wet-run-hmi__side">'+H+'<ol class="aq-wet-run-hmi__list">'+list+'</ol></div>'+screen+'</div></div></section>'};
-/* the switch: dry or with water (the page reads complete in the "with water" state without script) */
-document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-wrh-mode]');if(!t)return;
- var s=t.closest('.aq-wet-run-hmi__screen'),wet=t.getAttribute('data-wrh-mode')==='wet';if(!s)return;
- s.classList.toggle('is-wet',wet);s.classList.toggle('is-dry',!wet);
- [].forEach.call(s.querySelectorAll('[data-wrh-mode]'),function(x){x.setAttribute('aria-pressed',x===t?'true':'false')})});
+ return '<section class="aq-section aq-wet-run-hmi-sec" data-theme="dark"><div class="aq-in"><div class="aq-wet-run-hmi is-wet">'
+  +'<div class="aq-wet-run-hmi__head">'+H+sw+'</div>'
+  +'<div class="aq-wet-run-hmi__fig">'+wrhRoute()+marks+'<ol class="aq-wet-run-hmi__pts">'+list+'</ol></div></div></div></section>'};
+/* the switch: dry or with water (the page reads complete in the "with water" state without script); arrow keys move
+   between the two positions. wrhMode is shared with motion.js. */
+function wrhMode(w,wet){if(!w)return;w.classList.toggle('is-wet',wet);w.classList.toggle('is-dry',!wet);
+ [].forEach.call(w.querySelectorAll('[data-wrh-mode]'),function(x){x.setAttribute('aria-pressed',(x.getAttribute('data-wrh-mode')==='wet')===wet?'true':'false')})}
+window.wrhMode=wrhMode;window.WRH_ST=WRH_ST;
+document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-wrh-mode]');if(!t)return;wrhMode(t.closest('.aq-wet-run-hmi'),t.getAttribute('data-wrh-mode')==='wet')});
+document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('[data-wrh-mode]');if(!t||!/^(ArrowLeft|ArrowRight|Home|End)$/.test(ev.key))return;
+ ev.preventDefault();var wet=ev.key==='ArrowRight'||ev.key==='End',o=t.parentNode.querySelector('[data-wrh-mode="'+(wet?'wet':'dry')+'"]');if(o){o.focus();o.click()}});
 /* Look "winding-route" -> WindingRoute (design-system/components/WindingRoute): a treatment train as one winding pipe
    across a navy band. Each stage is a stop on the wave (high, low, high …) with its line glyph on the far side of the
    curve; under the band, a column per stage: "01 / label", the stage name and its line. Water enters on a fan of feed
@@ -5649,6 +5683,8 @@ LOOKS['winding-route']=function(b,H){
    Fields (an options block): h, intro, items [{t, d, scene}], zones [bay label, remote label] (short drawing labels,
    aria-hidden). scene: the actors the way puts on the plan, any of "you", "delegate", "camera", "screen", "record"
    (space-separated or a list); an item without one shows the bay alone.
+   Arrow keys, Home and End move between the cards and choose. The list's first item is the sliding indicator (an empty,
+   aria-hidden li that motion.js springs to the chosen card).
    Phones: the plan on top, the cards under it as a list of full-width buttons. */
 function wpScene(s){return (Array.isArray(s)?s:String(s||'').split(/[\s,]+/)).filter(function(a){return /^(you|delegate|camera|screen|record)$/.test(a)})}
 function wpPlan(z,on){var P='aq-witness-plan'+'__';
@@ -5678,7 +5714,7 @@ LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],sc=I.ma
  var list=I.map(function(it,i){return '<li><button type="button" class="aq-witness-plan__opt" data-scene="'+e(sc[i].join(' '))+'" aria-pressed="'+(i?'false':'true')+'">'
   +'<span class="aq-witness-plan__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
   +'<span class="aq-witness-plan__t">'+tx(it.t)+'</span>'+(it.d?'<span class="aq-witness-plan__d">'+tx(it.d)+'</span>':'')+'</button></li>'}).join('');
- return sec('<div class="aq-witness-plan">'+'<div class="aq-witness-plan__side">'+H+'<ol class="aq-witness-plan__list">'+list+'</ol></div>'
+ return sec('<div class="aq-witness-plan">'+'<div class="aq-witness-plan__side">'+H+'<ol class="aq-witness-plan__list"><li class="aq-witness-plan__ind" aria-hidden="true"></li>'+list+'</ol></div>'
   +'<div class="aq-witness-plan__board">'+wpPlan(Z,sc[0]||[])
   +(I[0]?'<p class="aq-witness-plan__now" aria-hidden="true"><span class="aq-witness-plan__now-n">01</span><span class="aq-witness-plan__now-t">'+tx(I[0].t)+'</span></p>':'')+'</div></div>','aq-witness-plan-sec')};
 /* choose a way: put its actors on the plan (press pins it; pointing previews it, leaving restores the pinned one) */
@@ -5690,7 +5726,12 @@ LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],sc=I.ma
   [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t.getAttribute('data-scene'),t)});
  document.addEventListener('pointerover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t||ev.pointerType==='touch')return;show(t.closest('.aq-witness-plan'),t.getAttribute('data-scene'),t)});
  document.addEventListener('pointerout',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__list');if(!t||(ev.relatedTarget&&t.contains(ev.relatedTarget)))return;
-  var w=t.closest('.aq-witness-plan'),p=w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]');show(w,p?p.getAttribute('data-scene'):'',p)})})();
+  var w=t.closest('.aq-witness-plan'),p=w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]');show(w,p?p.getAttribute('data-scene'):'',p)});
+ /* arrow keys, Home and End move between the ways and choose (the cards act as one control) */
+ document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t)return;
+  var o=[].slice.call(t.closest('.aq-witness-plan__list').querySelectorAll('.aq-witness-plan__opt')),i=o.indexOf(t),n=o.length,k=ev.key,j=-1;
+  if(k==='ArrowDown'||k==='ArrowRight')j=(i+1)%n;else if(k==='ArrowUp'||k==='ArrowLeft')j=(i+n-1)%n;else if(k==='Home')j=0;else if(k==='End')j=n-1;
+  if(j<0)return;ev.preventDefault();o[j].focus();o[j].click()})})();
 /* Block "options" -> OptionList: configuration options as rows of the shared list grammar: index, title, one line.
    as: "modules" -> OptionModules: the options drawn as modules around the page's own equipment drawing (the base
    skid), joined to it by dashed connectors. Item fields: t, d, spot (Spot or Icon name, wSpot), tag (category label above

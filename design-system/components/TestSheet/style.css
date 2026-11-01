@@ -26,6 +26,8 @@
 .aq-test-sheet__hk { font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
 .aq-test-sheet__sig { display: block; width: 70%; max-width: 168px; height: auto; border-bottom: 1px solid var(--ink-muted); padding-bottom: var(--space-1); overflow: visible; }
 .aq-test-sheet__sig path { fill: none; stroke: var(--flow); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.aq-test-sheet__sig .aq-test-sheet__ink { stroke: var(--flow); }
+.aq-test-sheet__sig .aq-test-sheet__imp { stroke: var(--line-strong); stroke-width: 2; opacity: 0.22; transform: translate(0.7px, 1px); }
 .aq-test-sheet__who { font: 400 14px/20px var(--font-sans); color: var(--ink); }
 .aq-test-sheet__stamp { position: absolute; right: 0; top: var(--space-4); padding: var(--space-1) var(--space-2); border: 2px solid var(--flow); outline: 1px solid var(--flow); outline-offset: 2px;
   color: var(--flow); font: 500 14px/18px var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; transform: rotate(-8deg); opacity: 0.85; }
@@ -33,6 +35,10 @@
 .aq-test-sheet__row.is-torn { margin: var(--space-8) calc(-1 * var(--space-6)) 0; padding: 0 var(--space-6); border-top: 1.5px dashed var(--line-strong); }
 .aq-test-sheet__row.is-torn::before { content: ""; position: absolute; left: -1px; right: -1px; top: calc(-1 * var(--space-8) - 1.5px); height: var(--space-8); background: var(--limestone); }
 .aq-test-sheet__row.is-torn .aq-test-sheet__n { color: var(--ink); }
+.aq-test-sheet__row.is-torn { transform-origin: 0 0; transition: transform 240ms cubic-bezier(0.19, 1, 0.22, 1); }
+.aq-test-sheet__row.is-torn.is-attached::before { opacity: 0; }
+.aq-test-sheet__row.is-torn.is-tearing { transition: none; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .aq-test-sheet__row.is-torn:hover { transform: translateX(var(--space-1)) rotate(0.3deg); } }
 .aq-test-sheet__foot { display: flex; justify-content: flex-end; margin: 0 var(--space-6); padding: var(--space-4) 0; }
 .aq-test-sheet__foot span { padding: var(--space-1) var(--space-3); border: 1px solid var(--line); margin-left: -1px; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
 

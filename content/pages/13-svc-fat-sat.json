@@ -70,10 +70,15 @@
     "Candidate where transport and installation cannot change the result (Annex 15, 3.6; GUI-0029, 8.1)",
     "Feed water, utilities and field piping: proven on site only"
    ],
-   "look": "twin-route",
-   "route_labels": [
-    "Route 1",
-    "Route 2"
+   "look": "versus-spread",
+   "row_parts": [
+    "panel valve",
+    "util loop",
+    "skid tank loop pou",
+    "ro",
+    "inst panel",
+    "panel",
+    "skid pipe loop pou"
    ]
   },
   {

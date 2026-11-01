@@ -3,7 +3,7 @@ TestSheet sets ordered steps as the protocol's own test sheet lying on a limesto
 Concept: 53-concept-hold-points (stamped hold boxes with a sign line), recast as tactile paper rather than a pipe diagram, so it does not repeat the services page's hold-point timeline.
 
 ## Markup
-`<section class="aq-section aq-band--limestone aq-test-sheet-sec">` > `.aq-test-sheet` > section head and `__paper` > optional `__strip`, `ol.__rows` > `li.__row` (`.is-hold`, `.is-torn`) with `__n`, `__body` (`h3.__t`, `p.__d`), `__sign` (a `__box` tick, or `__hold`: `__hk`, `svg.__sig`, `__who`, `__stamp`), then `__foot` (title block, aria-hidden).
+`<section class="aq-section aq-band--limestone aq-test-sheet-sec">` > `.aq-test-sheet` > section head and `__paper` > optional `__strip`, `ol.__rows` > `li.__row` (`.is-hold`, `.is-torn`) with `__n`, `__body` (`h3.__t`, `p.__d`), `__sign` (a `__box` tick, or `__hold`: `__hk`, `svg.__sig` with `path.__imp` and `path.__ink`, `__who`, `__stamp`), then `__foot` (title block, aria-hidden).
 
 ## Fields
 `h`, `intro`, `items` [{`t`, `d`, `hold`, `link`}], optional `cols` (a mono header strip), `hold_label` (default "Hold point"), `tear` (default true with three or more steps).
@@ -14,4 +14,4 @@ Concept: 53-concept-hold-points (stamped hold boxes with a sign line), recast as
 - Phone: one column; the tick box moves to the row's top right, the hold cell under the text.
 
 ## Motion
-The paper slides onto the table, then the protocol runs down the sheet: each number decodes, its text rises, its tick draws; at a hold point the run waits while the signature writes itself and the stamp strikes. The torn slip drops in last. Once, under 5 s; on phones each row runs as it scrolls in.
+The paper slides onto the table, then the protocol runs down the sheet: each number decodes, its text rises, its tick draws; at a hold point the run waits while the signature writes itself and the stamp strikes. Signatures are drawn over a faint pressed impression with cubic-bezier(.37,.12,.28,1) (ported from Subframe Motion `signature-draw`, MIT). The torn slip arrives attached at the perforation, is pulled along it and tears free with 240 ms cubic-bezier(.19,1,.22,1) (ported from `ticket-tear`, MIT); hovering it pulls it a little along the tear. Once, under 5 s; on phones each row runs as it scrolls in.

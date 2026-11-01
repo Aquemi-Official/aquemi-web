@@ -7,6 +7,8 @@
    Fields (an options block): h, intro, items [{t, d, scene}], zones [bay label, remote label] (short drawing labels,
    aria-hidden). scene: the actors the way puts on the plan, any of "you", "delegate", "camera", "screen", "record"
    (space-separated or a list); an item without one shows the bay alone.
+   Arrow keys, Home and End move between the cards and choose. The list's first item is the sliding indicator (an empty,
+   aria-hidden li that motion.js springs to the chosen card).
    Phones: the plan on top, the cards under it as a list of full-width buttons. */
 function wpScene(s){return (Array.isArray(s)?s:String(s||'').split(/[\s,]+/)).filter(function(a){return /^(you|delegate|camera|screen|record)$/.test(a)})}
 function wpPlan(z,on){var P='aq-witness-plan'+'__';
@@ -36,7 +38,7 @@ LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],sc=I.ma
  var list=I.map(function(it,i){return '<li><button type="button" class="aq-witness-plan__opt" data-scene="'+e(sc[i].join(' '))+'" aria-pressed="'+(i?'false':'true')+'">'
   +'<span class="aq-witness-plan__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
   +'<span class="aq-witness-plan__t">'+tx(it.t)+'</span>'+(it.d?'<span class="aq-witness-plan__d">'+tx(it.d)+'</span>':'')+'</button></li>'}).join('');
- return sec('<div class="aq-witness-plan">'+'<div class="aq-witness-plan__side">'+H+'<ol class="aq-witness-plan__list">'+list+'</ol></div>'
+ return sec('<div class="aq-witness-plan">'+'<div class="aq-witness-plan__side">'+H+'<ol class="aq-witness-plan__list"><li class="aq-witness-plan__ind" aria-hidden="true"></li>'+list+'</ol></div>'
   +'<div class="aq-witness-plan__board">'+wpPlan(Z,sc[0]||[])
   +(I[0]?'<p class="aq-witness-plan__now" aria-hidden="true"><span class="aq-witness-plan__now-n">01</span><span class="aq-witness-plan__now-t">'+tx(I[0].t)+'</span></p>':'')+'</div></div>','aq-witness-plan-sec')};
 /* choose a way: put its actors on the plan (press pins it; pointing previews it, leaving restores the pinned one) */
@@ -48,4 +50,9 @@ LOOKS['witness-plan']=function(b,H){var I=b.items||[],Z=b.zones||['',''],sc=I.ma
   [].forEach.call(w.querySelectorAll('.aq-witness-plan__opt'),function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});show(w,t.getAttribute('data-scene'),t)});
  document.addEventListener('pointerover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t||ev.pointerType==='touch')return;show(t.closest('.aq-witness-plan'),t.getAttribute('data-scene'),t)});
  document.addEventListener('pointerout',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__list');if(!t||(ev.relatedTarget&&t.contains(ev.relatedTarget)))return;
-  var w=t.closest('.aq-witness-plan'),p=w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]');show(w,p?p.getAttribute('data-scene'):'',p)})})();
+  var w=t.closest('.aq-witness-plan'),p=w.querySelector('.aq-witness-plan__opt[aria-pressed="true"]');show(w,p?p.getAttribute('data-scene'):'',p)});
+ /* arrow keys, Home and End move between the ways and choose (the cards act as one control) */
+ document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-witness-plan__opt');if(!t)return;
+  var o=[].slice.call(t.closest('.aq-witness-plan__list').querySelectorAll('.aq-witness-plan__opt')),i=o.indexOf(t),n=o.length,k=ev.key,j=-1;
+  if(k==='ArrowDown'||k==='ArrowRight')j=(i+1)%n;else if(k==='ArrowUp'||k==='ArrowLeft')j=(i+n-1)%n;else if(k==='Home')j=0;else if(k==='End')j=n-1;
+  if(j<0)return;ev.preventDefault();o[j].focus();o[j].click()})})();

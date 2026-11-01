@@ -1429,16 +1429,6 @@
    "summary": "TraceLines shows a traceability table as transit lines: each requirement is a line that starts at its code, set large, and runs down through one station per document, with a dashed pass where a document does not answer it and test-step chips branching off where a document names its tests."
   },
   {
-   "name": "TwinRoute",
-   "readme": "design-system/components/TwinRoute/README.md",
-   "preview": "design-system/components/TwinRoute/preview.html",
-   "group": "Page sections",
-   "height": "1700",
-   "width": "1280",
-   "subtitle": "FAT and SAT: the test bay and your site as two routes, each test a station on both",
-   "summary": "TwinRoute draws a FAT versus SAT comparison as two routes the same skid takes: our test bay and your site, each test a station on both pipes (look `twin-route`, table block `as: \"versus\"`)."
-  },
-  {
    "name": "UrsGate",
    "readme": "design-system/components/UrsGate/README.md",
    "preview": "design-system/components/UrsGate/preview.html",
@@ -1457,6 +1447,16 @@
    "width": "1100",
    "subtitle": "Two routes across a spine of factors, with a verdict or a conclusion band",
    "summary": "Versus sets two routes face to face across a spine of factors, for a buyer choosing one of two (hot or ambient WFI, multi-effect or vapour compression)."
+  },
+  {
+   "name": "VersusSpread",
+   "readme": "design-system/components/VersusSpread/README.md",
+   "preview": "design-system/components/VersusSpread/preview.html",
+   "group": "Page sections",
+   "height": "1300",
+   "width": "1280",
+   "subtitle": "FAT and SAT: an editorial spread, the comparison table beside one drawing of the installed system with the test bay and site boundaries",
+   "summary": "VersusSpread sets a FAT versus SAT table as an editorial spread: a navy mast with the heading at display scale, the numbered comparison table, and one line drawing of the installed system whose parts light for the test being read (look `versus-spread`, table block `as: \"versus\"`)."
   },
   {
    "name": "VisitPlan",
@@ -1513,10 +1513,10 @@
    "readme": "design-system/components/WetRunHmi/README.md",
    "preview": "design-system/components/WetRunHmi/preview.html",
    "group": "Page sections",
-   "height": "700",
+   "height": "800",
    "width": "1280",
-   "subtitle": "FAT and SAT: the test bay operator screen, dry check or with water, findings pinned to the mimic",
-   "summary": "WetRunHmi sets an explainer as the test bay's operator screen: a process mimic of the skid that runs dry or with water, the findings water reveals pinned to its parts (look `wet-run-hmi`, prose block `as: \"explainer\"`)."
+   "subtitle": "FAT and SAT: the explainer read along the test bay water route, dry check or with water",
+   "summary": "WetRunHmi sets an explainer as the test bay's water route on a navy blueprint ground: one double-wall pipe runs across the section and folds down and back up, each point sits beside its station, and a two-position switch runs the skid dry or with water (look `wet-run-hmi`, prose block `as: \"explainer\"`)."
   },
   {
    "name": "WindingRoute",

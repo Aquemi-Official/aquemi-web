@@ -7,6 +7,7 @@
    Fields (a steps block): h, intro, items [{t, d, hold, link}], cols (optional header strip: [step, action, sign-off];
    omitted, no strip), hold_label (the hold cell's label, default "Hold point"), tear (true: the last step sits below a
    perforation; default true when there are three or more steps).
+   Each signature is drawn twice: a faint pressed impression under the ink line (motion.js writes the ink along it).
    Phones: the sheet fills the width; each row's sign-off cell drops under its text. */
 var TS_SIG=['M6 30C10 14 16 4 20 8S16 30 14 34 22 16 28 14 30 26 34 24 38 12 42 14 40 26 46 24 50 16 54 16 54 26 60 22 66 14 70 18 70 26 78 22M30 36C48 32 70 31 96 27',
  'M8 24C14 22 20 10 18 8S10 18 12 28 22 30 26 22 30 14 34 18 32 28 38 26 44 16 48 18 48 28 54 26 58 20 62 20 64 28 72 24 80 14 86 16 84 24 92 22',
@@ -15,7 +16,7 @@ LOOKS['test-sheet']=function(b,H){var I=b.items||[],n=I.length,C=b.cols||[],tear
  function who(s){s=String(s);return tx(/^[A-Z][a-z]/.test(s)?s.charAt(0).toLowerCase()+s.slice(1):s)}
  var rows=I.map(function(it,i){var nm=it.link&&wp(it.link)?'<a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.t)+'</a>':tx(it.t);
   var sign=it.hold?'<div class="aq-test-sheet__hold"><span class="aq-test-sheet__hk">'+tx(hk)+'</span>'
-    +'<svg class="aq-test-sheet__sig" viewBox="0 0 100 40" aria-hidden="true" focusable="false"><path d="'+TS_SIG[i%TS_SIG.length]+'"/></svg>'
+    +'<svg class="aq-test-sheet__sig" viewBox="0 0 100 40" aria-hidden="true" focusable="false"><path class="aq-test-sheet__imp" d="'+TS_SIG[i%TS_SIG.length]+'"/><path class="aq-test-sheet__ink" d="'+TS_SIG[i%TS_SIG.length]+'"/></svg>'
     +'<span class="aq-test-sheet__who">Signed by '+who(it.hold)+'</span><span class="aq-test-sheet__stamp" aria-hidden="true">Hold</span></div>'
    :'<span class="aq-test-sheet__box" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>';
   return '<li class="aq-test-sheet__row'+(it.hold?' is-hold':'')+(tear&&i===n-1?' is-torn':'')+'">'
