@@ -1,0 +1,35 @@
+# Pass 9b concept log
+
+sys-storage.0 | 1 | macro photo of a PP butt-fusion weld with dimension hairlines beside a numbered rules table | pair the rules table with one big annotated weld macro; dimension lines as the only ornament
+sys-storage.1 | 1 | blueprint P&ID strip: generation, tank, pump, exchanger, outlets on one steel-blue line | a horizontal loop drawing whose stations sit over a numbered caption row
+sys-storage.2 | 2 | sanitization comparison table beside an isometric line drawing of pump, UV unit and loop pipework | a 4-column method table anchored by one isometric PP assembly; navy callout for the ozone caveat
+sys-storage.3 | 1 | Swiss tile grid of navy and limestone squares, huge slash numerals, one blueprint tank tile | spec rows split across square tiles; one blue blueprint tile as the visual anchor
+sys-storage.4 | 1 | white PP loop skid in soft 3D with leader lines to each document it ships with | each document is a callout pinned to the part of the skid it describes
+sys-storage.5 | 1 | one navy schematic band of the loop with leader lines out to three option captions | options as callouts from a single loop drawing band, captions on limestone below
+sys-pretreatment.0 | 1 | RO feed targets as a table on a navy drawing sheet with zone border and title block | the drawing-sheet frame (zone letters, title block) does the work; both takes stay table-only, weak
+sys-pretreatment.1 | 2 | duotone macro of a PP butt-fusion bead beside a 7-step numbered train list | a strong material macro as the mood plate next to slash-numbered steps; the macro does not show the train itself
+sys-pretreatment.2 | 1 | condition-effect-design table led by huge slash numerals in navy square tiles | navy numeral tiles as row heads turn a 3-column table into a readable sequence
+sys-pretreatment.3 | 1 | decision table with carbon-bed vessels drawn inside it, numbered pins linking rows to vessels | put the line drawing inside the table between columns; numbered pins tie each option to its hardware
+sys-pretreatment.4 | 1 | one double-line steel-blue pipe with valves snakes through five numbered document stops | a wide low band: the pipe route is the list; each document sits in a bend
+sys-pretreatment.5 | 1 | limestone drawing sheet: huge light title, navy hairline schematic, five notes in a narrow column | sheet border + title block frame; options as drawing notes; builder should pin note numbers onto the schematic
+sys-monitoring.0 | 2 | giant cropped headline on navy over a limestone sheet holding the PLC-HMI-SCADA-DMZ architecture | editorial crop of the headline plus one control-architecture line diagram with numbered callouts
+sys-monitoring.1 | 2 | levels table whose rows run leader lines into a soft-3D white PP skid | row-end leaders into the skid render tie each level to the hardware; neither take shows the levels as lines (weak)
+sys-monitoring.2 | 1 | signals table beside a circular tick-dial readout with a big light conductivity numeral and limit tag | one live-looking instrument dial (numeral, ticks, limit line, outlined tag) anchors the spec table
+sys-monitoring.3 | 1 | clause crosswalk table on navy with leaders from rows into an isometric skid line drawing in a white card | the 4-column clause crosswalk is the content; row leaders into the panel/PLC of the skid locate each control
+sys-monitoring.4 | 1 | navy-limestone checkerboard field on the left, five big slash-numbered option cells on the right | a decorative tile field with one blueprint tile balances a 2+3 option grid; numerals carry the hierarchy
+svc-design.0 | 1 | navy P&ID band above a three-column failure / mistake / design-in table with slash numerals | a schematic band as the table's header image; builder could pin each failure to its spot on the P&ID
+svc-design.1 | 1 | five numbered stage cards on navy, each with a mono doc code, beside an isometric plant with one blue route | give every design stage a mono deliverable code; the isometric plant with one steel-blue route as the picture
+svc-design.2 | 1 | limestone drawing sheet: dimensioned plant elevation, four deliverables as drawing notes, title block | the deliverables list as the notes column of a real GA drawing sheet; vessels read generic, keep them PP
+svc-design.3 | 1 | trace table beside a steel-blue readout tile: huge 1.3 uS/cm, tick scale, outlined limit tag | put the traced requirement's limit on a readout tile next to the trace matrix; pipe ghosts behind
+svc-fabrication.0 | 1 | vertical double-line pipe with joints tagged J-081..J-085 runs beside the joint-log table | a pipe spine down the left with numbered joints, each joint level with its log row
+svc-fabrication.1 | 1 | full-bleed duotone macro of a fusion bead, its contour traced and numbered, standard table at right | trace the weld bead outline in hairline and number it to match the table rows
+svc-fabrication.2 | 1 | huge light headline, dimensioned isometric PP pipe spool, four dossier parts in a split hairline grid | an as-built isometric spool as the hero figure; dossier items as small numbered entries around it
+STOPPED at svc-fabrication.3 (sent, not captured): after the reload the pass-9 chat and the whole chat history stopped rendering (empty conversation, empty sidebar) through 5 reloads over ~6 min; no quota message seen. Resume from svc-fabrication.3 (queue index 24).
+RESUME ATTEMPT: pass-9 chat still blank after reload. Started ONE new chat (Pro): https://gemini.google.com/app/cf066e2f02a40e33 with svc-fabrication.3 as its first prompt; it generated an image (seen in the live page), but reloading that chat also renders blank (no messages, empty sidebar) after 20 s+, so it could not be captured. STOPPED again at svc-fabrication.3 (index 24); 57 items left.
+RESUMED in new chat https://gemini.google.com/app/cf066e2f02a40e33 (loaded on the 3rd 60 s retry).
+svc-fabrication.3 | 1 | navy title column, big dimensioned line drawing of one PP butt-fusion joint tagged J-01, five numbered steps with WP marks | one joint drawn large with tags and dimensions; steps as a numbered rail with witness-point (WP) codes
+STOPPED at svc-fat-sat.0 (index 25; sent to the new chat, not captured): reload blank again after generation; 3 retries at 60 s failed. 55 items left (svc-fat-sat.0 onward).
+svc-fat-sat.0 | 1 | navy headline block cropped by the frame, numbered FAT/SAT comparison rows, a line-drawn loop at right | the cropped oversized headline on navy over a limestone comparison sheet; loop drawing as the one figure
+svc-fat-sat.1 | 1 | one double-line pipe route with valves, pump and meters threads five numbered test points on navy | the loop route as the reading path; each claim sits on a valve or instrument along it
+svc-fat-sat.2 | 1 | near-empty limestone drawing sheet: big light title, abstract hairline routing, six steps in a notes column | only the sheet frame and notes column are usable; both takes weak (diagram means nothing)
+QUOTA at svc-fat-sat.3 (reset: Nov 1, 5:57 PM per the model menu; Flash, 3.1 Pro and Argon all limited). Resume at queue index 29 (svc-fat-sat.3).

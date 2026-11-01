@@ -1,0 +1,2 @@
+- design-system/components/DocHotspots (motion.js), sys-pw: motioncheck 1280/375 reports .aq-doc-hotspots__cross at opacity 0 after the full scroll (hidden-after-scroll 1); it should end visible or be height 0 when idle. (site-wide interaction builder, pass 9b)
+- design-system/components/ShopFloor/README.md, svc-fabrication: its 'Not for' line names ShopRoute, which pass 9b removed (svc-fabrication's steps are now JointSteps); please point it at JointSteps. (svc-fabrication builder, pass 9b)

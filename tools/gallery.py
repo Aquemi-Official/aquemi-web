@@ -38,7 +38,9 @@ GEMINI_USE = {
     '74': 'StrataRun', '75': 'BudgetBento', '76': 'BatteryLimit', '77': 'StandardWires', '78': 'LimitStack',
     '79': 'WindingRoute', '80': 'ParamTiles', '81': 'DocHotspots', '82': 'OptionTags', '83': 'StairRouter',
     '84': 'HoldTimeline', '85': 'PidRoutes', '87': 'MacroLeaders', '88': 'GradeEditorial', '89': 'MarketCallouts',
-    '90': 'LimitBento', '91': 'StandardsOrbit', '93': 'ProofFolders', '94': 'CutawayRail'}
+    '90': 'LimitBento', '91': 'StandardsOrbit', '93': 'ProofFolders', '94': 'CutawayRail',
+    # pass 9b (2026-11-01): the remaining sections, same loop
+    '95': 'RuleFigures', '96': 'LoopCircuit', '98': 'MethodBento', '99': 'TankTiles', '100': 'SheetStack', '101': 'LoopDock', '102': 'MembraneFace', '105': 'SectionTrain', '106': 'MembraneAtlas', '107': 'DecisionValve', '108': 'DocPipe', '109': 'OptionTaps', '111': 'LayerStack', '113': 'HmiTrend', '114': 'SignalDial', '115': 'ClauseCrosswalk', '116': 'OptionChecker', '117': 'RedlineSheet', '118': 'FidelityLadder', '119': 'IssuedSet', '120': 'TraceLines', '121': 'JointSpine', '122': 'JointMacro', '123': 'SpoolDossier', '124': 'JointSteps', '125': 'VersusSpread', '126': 'WetRunHmi', '127': 'TestSheet'}
 GEMINI_REFERENCE = {'58'}
 RETIRED = {'57': 'the cut icons were later replaced by the Lucide-style SVG set; see Archive', '64': 'the cut spots were retired when the site returned to the brand book; see Archive'}  # looked at as a target, not rebuilt as one thing
 # Equipment drawings redrawn on 2026-10-31 to match the offer (polypropylene PW package: no stainless piping, no sterile

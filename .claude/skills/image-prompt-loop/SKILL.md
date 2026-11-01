@@ -63,6 +63,9 @@ negatives) so new prompts follow it.
 3. Keep every image: copy to `design-system/inspiration/gemini/NN-<kind>-<subject>.png` (next numbers), add rows to
    the README table (what it was prompted for, the idea), run `python tools/gallery.py`, then describe them (stage 1)
    so the atlas stays complete.
+4. Make it readable: `python tools/research.py` rewrites `research.html` (the Design research page on the site: every
+   concept beside the section it became, every description, the themes, atlas, build notes and this skill) and copies
+   the pass's text records from `../research/pass9*` into the repo's `research/`. Run it after each of stages 1 and 3.
 
 ## Loop
 

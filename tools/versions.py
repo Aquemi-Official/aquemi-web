@@ -49,7 +49,7 @@ CHECKPOINTS = [
 ]
 
 # Not part of the site a visitor loads.
-SKIP = ('design-system/inspiration/', '.github/', 'tools/', '.claude/', 'versions/', 'versions.html', 'board/', 'research/')
+SKIP = ('design-system/inspiration/', '.github/', 'tools/', '.claude/', 'versions/', 'versions.html', 'research.html', 'board/', 'research/')
 # Count as copy, not design, when deciding what changed.
 COPY = ('content/',)
 
