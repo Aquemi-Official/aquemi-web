@@ -1080,7 +1080,7 @@
 "status": "built",
 "title": "P9 home 0",
 "note": "'One package, one water path' (home), first prompt (blueprint style) → one blueprint pipe run through the four systems' isometric equipment, labels above each",
-"component": null,
+"component": "SystemRun",
 "group": null,
 "order": 68,
 "size": [
@@ -1112,7 +1112,7 @@
 "status": "built",
 "title": "P9 home 1 take2",
 "note": "'Same limits, different evidence by industry' (home), first prompt (blueprint style) → one isometric pipe line feeding three industries' equipment, each with its evidence text",
-"component": null,
+"component": "IndustryFeed",
 "group": null,
 "order": 70,
 "size": [
@@ -1128,7 +1128,7 @@
 "status": "built",
 "title": "P9 home 2",
 "note": "'How a project runs' (home), first prompt (blueprint style) → five steps along one continuous isometric pipe with equipment per step (desk, frame, tanks, panel)",
-"component": null,
+"component": "ProjectRun",
 "group": null,
 "order": 71,
 "size": [
@@ -1144,7 +1144,7 @@
 "status": "built",
 "title": "P9 home 3",
 "note": "'Service after handover' (home), first prompt (blueprint style) → exploded view of a pump with leader-line callouts to the three service promises",
-"component": null,
+"component": "ExplodedService",
 "group": null,
 "order": 72,
 "size": [
@@ -1160,7 +1160,7 @@
 "status": "built",
 "title": "P9 home 4",
 "note": "'Start from where your project is' (home), first prompt (blueprint style) → manifold hub: situations as pipes radiating from one junction to equipment destinations",
-"component": null,
+"component": "ManifoldRouter",
 "group": null,
 "order": 73,
 "size": [
@@ -1176,7 +1176,7 @@
 "status": "built",
 "title": "P9 systems 0",
 "note": "'How the systems fit together' (systems), first prompt (blueprint style) → one continuous pipe run left to right through feed, pretreat, RO/EDI, tank, loop, outlets",
-"component": null,
+"component": "StrataRun",
 "group": null,
 "order": 74,
 "size": [
@@ -1192,7 +1192,7 @@
 "status": "built",
 "title": "P9 systems 1",
 "note": "'Budget ranges before a quote' (systems), first prompt (blueprint style) → budget table framed by a pipe route through tank, skid, filters (old prompt, weak: table)",
-"component": null,
+"component": "BudgetBento",
 "group": null,
 "order": 75,
 "size": [
@@ -1208,7 +1208,7 @@
 "status": "built",
 "title": "P9 systems 2",
 "note": "'What changes on your site' (systems), art direction: split-screen contrast → navy/limestone split where the divide is the battery limit, tie-in points on the seam",
-"component": null,
+"component": "BatteryLimit",
 "group": null,
 "order": 76,
 "size": [
@@ -1224,7 +1224,7 @@
 "status": "built",
 "title": "P9 systems 3",
 "note": "'Start from the standard you cite' (systems), art direction: technical blueprint drawing, used deliberately → standards table whose answers run as leader lines into a line-art plant elevation",
-"component": null,
+"component": "StandardWires",
 "group": null,
 "order": 77,
 "size": [
@@ -1240,7 +1240,7 @@
 "status": "built",
 "title": "P9 sys pw 0",
 "note": "'Purified Water limits' (sys-pw), art direction: editorial magazine spread → oversized editorial headline, limits as a stepped type stack, sculpted pipe loop with GUARANTEED band",
-"component": null,
+"component": "LimitStack",
 "group": null,
 "order": 78,
 "size": [
@@ -1256,7 +1256,7 @@
 "status": "built",
 "title": "P9 sys pw 1",
 "note": "'How water moves through the skid' (sys-pw), art direction: map or route metaphor → wavy route across navy with seven numbered stops, a small glyph per treatment",
-"component": null,
+"component": "WindingRoute",
 "group": null,
 "order": 79,
 "size": [
@@ -1272,7 +1272,7 @@
 "status": "built",
 "title": "P9 sys pw 2",
 "note": "'Skid design parameters' (sys-pw), art direction: Swiss International Typographic Style → Swiss grid of navy/limestone tiles, huge 01-07 numerals, one isometric skid tile",
-"component": null,
+"component": "ParamTiles",
 "group": null,
 "order": 80,
 "size": [
@@ -1288,7 +1288,7 @@
 "status": "built",
 "title": "P9 sys pw 3",
 "note": "'Documents with the skid' (sys-pw), art direction: soft 3D product render → soft white PP skid render with hotspot dots leading to document cards",
-"component": null,
+"component": "DocHotspots",
 "group": null,
 "order": 81,
 "size": [
@@ -1304,7 +1304,7 @@
 "status": "built",
 "title": "P9 sys pw 4",
 "note": "'Configurations and options' (sys-pw), art direction: tactile physical metaphor → flat-lay of shipping tags, folders and sample vials, one tag per option",
-"component": null,
+"component": "OptionTags",
 "group": null,
 "order": 82,
 "size": [
@@ -1320,7 +1320,7 @@
 "status": "built",
 "title": "P9 services 0",
 "note": "'Where to start' (services), art direction: kinetic typography → huge cropped START/GO outline type behind a rising staircase of four situation cards",
-"component": null,
+"component": "StairRouter",
 "group": null,
 "order": 83,
 "size": [
@@ -1336,7 +1336,7 @@
 "status": "built",
 "title": "P9 services 1",
 "note": "'How long each stage takes, and what it leaves' (services), art direction: macro detail → macro weld/water close-up with a rising timeline of hold-point nodes and stage callouts",
-"component": null,
+"component": "HoldTimeline",
 "group": null,
 "order": 84,
 "size": [
@@ -1352,7 +1352,7 @@
 "status": "built",
 "title": "P9 industries 0",
 "note": "'Your situation and where to start' (industries), art direction: technical blueprint drawing, used deliberately → P&ID-style routing: each situation piped through valves to its system, then start point",
-"component": null,
+"component": "PidRoutes",
 "group": null,
 "order": 85,
 "size": [
@@ -1384,7 +1384,7 @@
 "status": "built",
 "title": "P9 industries 1 take2",
 "note": "'Grade, limit and inspector by industry' (industries), art direction: macro detail → macro membrane layers and weld, numbered leaders fanning into industry rows",
-"component": null,
+"component": "MacroLeaders",
 "group": null,
 "order": 87,
 "size": [
@@ -1400,7 +1400,7 @@
 "status": "built",
 "title": "P9 industries 2",
 "note": "'Your first Purified Water system' (industries), art direction: editorial magazine spread → oversized headline over a geometric pipe-collage illustration, five facts as asymmetric editorial blocks",
-"component": null,
+"component": "GradeEditorial",
 "group": null,
 "order": 88,
 "size": [
@@ -1416,7 +1416,7 @@
 "status": "built",
 "title": "P9 industries 3",
 "note": "'Outside drug and device manufacturing' (industries), art direction: soft 3D product render → one white PP skid render centre, three markets as annotated callouts around it",
-"component": null,
+"component": "MarketCallouts",
 "group": null,
 "order": 89,
 "size": [
@@ -1432,7 +1432,7 @@
 "status": "built",
 "title": "P9 compliance 0",
 "note": "'Purified Water limits' (compliance), art direction: an asymmetric bento layout with mixed media → bento: tall visual tile of PP/water render, three limit tiles with big numerals",
-"component": null,
+"component": "LimitBento",
 "group": null,
 "order": 90,
 "size": [
@@ -1448,7 +1448,7 @@
 "status": "built",
 "title": "P9 compliance 1",
 "note": "'Which standard governs each part' (compliance), art direction: data visualization as the hero → standards as nodes on orbit rings around a central plant schematic, each with proof link",
-"component": null,
+"component": "StandardsOrbit",
 "group": null,
 "order": 91,
 "size": [
@@ -1480,7 +1480,7 @@
 "status": "built",
 "title": "P9 compliance 2 take2",
 "note": "'Pharmacopoeias and their proof' (compliance), art direction: tactile physical metaphor → each standard as a manila folder row, proof as clipped papers and stamps",
-"component": null,
+"component": "ProofFolders",
 "group": null,
 "order": 93,
 "size": [
@@ -1496,7 +1496,7 @@
 "status": "built",
 "title": "P9 compliance 3",
 "note": "'Good manufacturing practice (GMP) and qualification' (compliance), art direction: scroll-driven storytelling → sticky cutaway of PP piping with 'active state' tag, standard cards scrolling on a rail beside it",
-"component": null,
+"component": "CutawayRail",
 "group": null,
 "order": 94,
 "size": [

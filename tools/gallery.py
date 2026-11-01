@@ -32,7 +32,13 @@ GEMINI_USE = {
     '48': 'RoleMatrix', '49': 'Closing', '50': 'LimitGauges', '51': 'DocList', '52': 'OptionModules',
     '53': 'ProcessSteps', '54': 'Explainer', '55': 'ParameterCallouts', '56': 'VisitRoute', '57': 'Icon',
     '59': 'StandardsMap', '60': 'CaseStudy', '61': 'VisitRoute', '62': 'ContactRoutes', '63': 'NotesRegister',
-    '64': 'Spot'}
+    '64': 'Spot',
+    # pass 9 (2026-11-01): one concept per section, each became a section look
+    '68': 'SystemRun', '70': 'IndustryFeed', '71': 'ProjectRun', '72': 'ExplodedService', '73': 'ManifoldRouter',
+    '74': 'StrataRun', '75': 'BudgetBento', '76': 'BatteryLimit', '77': 'StandardWires', '78': 'LimitStack',
+    '79': 'WindingRoute', '80': 'ParamTiles', '81': 'DocHotspots', '82': 'OptionTags', '83': 'StairRouter',
+    '84': 'HoldTimeline', '85': 'PidRoutes', '87': 'MacroLeaders', '88': 'GradeEditorial', '89': 'MarketCallouts',
+    '90': 'LimitBento', '91': 'StandardsOrbit', '93': 'ProofFolders', '94': 'CutawayRail'}
 GEMINI_REFERENCE = {'58'}
 RETIRED = {'57': 'the cut icons were later replaced by the Lucide-style SVG set; see Archive', '64': 'the cut spots were retired when the site returned to the brand book; see Archive'}  # looked at as a target, not rebuilt as one thing
 # Equipment drawings redrawn on 2026-10-31 to match the offer (polypropylene PW package: no stainless piping, no sterile

@@ -20,6 +20,7 @@
  "blocks": [
   {
    "type": "table",
+   "look": "approval-merge",
    "as": "roles",
    "anchor": "observation",
    "nav": "Observation",
@@ -66,6 +67,7 @@
   },
   {
    "type": "table",
+   "look": "retrofit-plant",
    "as": "router",
    "nav": "Upgrades",
    "h": "Common upgrades and their requalification",
@@ -137,10 +139,19 @@
       "link": "sys-pw"
      }
     ]
+   ],
+   "parts": [
+    "gen",
+    "pre",
+    "loop",
+    "toc",
+    "panel",
+    "gen loop"
    ]
   },
   {
    "type": "table",
+   "look": "strike-gaps",
    "as": "failures",
    "nav": "Controls",
    "h": "Data integrity gaps in older controls",
@@ -182,6 +193,7 @@
   },
   {
    "type": "grid",
+   "look": "review-reticles",
    "as": "route",
    "nav": "Assessment",
    "h": "What the assessment reviews",
@@ -220,6 +232,7 @@
   },
   {
    "type": "steps",
+   "look": "cutover-schedule",
    "ground": "light",
    "nav": "How it runs",
    "h": "How an upgrade runs",
@@ -245,7 +258,8 @@
      "t": "Requalification",
      "d": "IQ/OQ of what changed, agreed sampling, updated drawings and procedures."
     }
-   ]
+   ],
+   "lane": "Your system"
   },
   {
    "type": "faq",

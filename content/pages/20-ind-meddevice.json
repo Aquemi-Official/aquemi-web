@@ -44,7 +44,8 @@
      "WFI, or water held to its endotoxin limit",
      "2.15 endotoxin units per device (USP <161>)"
     ]
-   ]
+   ],
+   "look": "derivation-sheet"
   },
   {
    "type": "prose",
@@ -81,7 +82,8 @@
      ],
      "d": "Warm water standing between batches grows biofilm; validate a drain-and-refill rule."
     }
-   ]
+   ],
+   "look": "washer-trace"
   },
   {
    "type": "grid",
@@ -116,7 +118,8 @@
      "tag": "Change control",
      "link": "svc-upgrades#observation"
     }
-   ]
+   ],
+   "look": "standard-tiles"
   },
   {
    "type": "table",
@@ -171,7 +174,8 @@
     ]
    ],
    "fold": 2,
-   "fold_noun": "auditors"
+   "fold_noun": "auditors",
+   "look": "reader-split"
   },
   {
    "type": "faq",

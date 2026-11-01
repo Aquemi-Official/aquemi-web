@@ -1,0 +1,52 @@
+/* ---------- WasherTrace: the equipment drawing pinned beside its points, the water route filling hotspot to hotspot ---------- */
+.aq-washer-trace-sec { overflow: clip; }
+.aq-washer-trace-sec .aq-sec-head .aq-h1 { color: var(--on-navy); }
+.aq-washer-trace { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--space-12); margin-top: var(--space-8); align-items: start; }
+.aq-washer-trace__stage { position: sticky; top: var(--space-16); display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6);
+  border: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
+.aq-washer-trace__fig { position: relative; width: min(100%, calc(var(--space-32) * 4.25)); margin-inline: auto; }
+.aq-washer-trace__art { background-color: var(--limestone); opacity: 0.92; }
+.aq-washer-trace__route { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.aq-washer-trace__route path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.aq-washer-trace__pipe { stroke: var(--navy); stroke-width: 14; }
+.aq-washer-trace__water { stroke: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); stroke-width: 4.5; }
+.aq-washer-trace__cap { display: flex; justify-content: flex-end; margin: 0; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-washer-trace__cap span { padding: var(--space-1) var(--space-3); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 40%, transparent); margin-left: -1px; }
+.aq-washer-trace__cap span:empty { display: none; }
+
+.aq-washer-trace__hot { position: absolute; width: var(--space-12); height: var(--space-12); margin: calc(var(--space-6) * -1) 0 0 calc(var(--space-6) * -1); display: grid; place-items: center;
+  border-radius: 50%; background: var(--navy); border: 1.5px solid var(--limestone); color: var(--limestone); font: 500 15px/1 var(--font-mono);
+  transition: background-color 400ms cubic-bezier(0.2, 0, 0, 1), color 400ms, transform 400ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-trace__hot::after { content: ""; position: absolute; inset: calc(var(--space-2) * -1); border-radius: 50%; border: 1px solid color-mix(in srgb, var(--limestone) 50%, transparent); }
+.aq-washer-trace__hot.is-on { background: var(--limestone); color: var(--navy); transform: scale(1.12); }
+.aq-washer-trace.is-scroll .aq-washer-trace__hot:not(.is-on) { opacity: 0.55; }
+
+/* The points: large numbers on a rule, the current one lit */
+.aq-washer-trace__steps { list-style: none; margin: 0; padding: 0; }
+.aq-washer-trace__step { position: relative; display: flex; flex-direction: column; gap: var(--space-3); min-height: calc(var(--space-32) * 3.5); padding: var(--space-6) 0 var(--space-8) var(--space-8);
+  border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); transition: opacity 400ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-trace__step::before { content: ""; position: absolute; left: -1px; top: 0; bottom: 0; width: 3px; background: var(--limestone); transform: scaleY(0); transform-origin: 50% 0;
+  transition: transform 600ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-washer-trace__step.is-on::before { transform: scaleY(1); }
+.aq-washer-trace.is-scroll .aq-washer-trace__step:not(.is-on) { opacity: 0.5; }
+.aq-washer-trace__n { font: 300 64px/60px var(--font-sans); letter-spacing: -0.05em; color: var(--on-navy-muted); }
+.aq-washer-trace__step.is-on .aq-washer-trace__n { color: var(--limestone); }
+.aq-washer-trace__t { margin: 0; font: 300 30px/36px var(--font-sans); letter-spacing: -0.02em; color: var(--on-navy); }
+.aq-washer-trace__d { margin: 0; font: 400 17px/27px var(--font-sans); color: var(--on-navy-muted); max-width: 36ch; }
+
+@container (max-width: 1100px) {
+  .aq-washer-trace { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-8); }
+  .aq-washer-trace__t { font-size: 26px; line-height: 32px; }
+}
+
+/* Phones: the drawing on top with all hotspots, the points as a numbered run under it */
+@container (max-width: 860px) {
+  .aq-washer-trace { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); margin-top: var(--space-4); }
+  .aq-washer-trace__stage { position: relative; top: auto; padding: var(--space-4); }
+  .aq-washer-trace__hot { width: var(--space-8); height: var(--space-8); margin: calc(var(--space-4) * -1) 0 0 calc(var(--space-4) * -1); font-size: 13px; }
+  .aq-washer-trace__step { min-height: 0; padding: var(--space-4) 0 var(--space-6) var(--space-6); gap: var(--space-2); }
+  .aq-washer-trace__step::before { transform: scaleY(1); }
+  .aq-washer-trace__n { font-size: 44px; line-height: 44px; color: var(--limestone); }
+  .aq-washer-trace__t { font-size: 22px; line-height: 28px; }
+  .aq-washer-trace__d { font-size: 16px; line-height: 25px; }
+}

@@ -67,7 +67,16 @@
     ]
    ],
    "as": "router",
-   "intro": "A commercial lead and two technical partners run Aquemi; each role says whether it is open."
+   "intro": "A commercial lead and two technical partners run Aquemi; each role says whether it is open.",
+   "look": "shop-floor",
+   "stations": [
+    "design",
+    "fab",
+    "test",
+    "ctl",
+    "dock",
+    "qa"
+   ]
   },
   {
    "type": "spec",
@@ -122,7 +131,8 @@
    ],
    "note": "The posting and written offer govern.",
    "fold": 3,
-   "fold_noun": "terms"
+   "fold_noun": "terms",
+   "look": "time-card"
   },
   {
    "type": "steps",
@@ -139,13 +149,20 @@
     },
     {
      "t": "Practical interview",
-     "d": "A P&ID review, test joint, protocol walk-through or fault-finding exercise."
+     "d": "A P&ID review, test joint, protocol walk-through or fault-finding exercise.",
+     "icons": [
+      "pid",
+      "weld",
+      "binder",
+      "wrench"
+     ]
     },
     {
      "t": "Visit and decision",
      "d": "Meet the team where you would work. Written decision within [offer time, working days]."
     }
-   ]
+   ],
+   "look": "hire-path"
   },
   {
    "type": "form",

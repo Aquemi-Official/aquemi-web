@@ -30,6 +30,7 @@
  "blocks": [
   {
    "type": "table",
+   "look": "plan-sheets",
    "as": "plans",
    "nav": "Plans",
    "h": "Service plans: response, scope, price",
@@ -104,6 +105,7 @@
   },
   {
    "type": "spec",
+   "look": "cost-balance",
    "nav": "Running cost",
    "anchor": "running-cost",
    "h": "What it costs to run",
@@ -132,7 +134,8 @@
      "p": "Water to drain",
      "v": "RO reject at [design recovery, %] recovery",
      "m": "Feed water chemistry",
-     "link": "sys-pw"
+     "link": "sys-pw",
+     "side": "out"
     },
     {
      "p": "Energy",
@@ -150,6 +153,7 @@
   },
   {
    "type": "spec",
+   "look": "tolerance-scales",
    "nav": "Calibration",
    "h": "Instrument calibration",
    "cols": [
@@ -186,6 +190,7 @@
   },
   {
    "type": "grid",
+   "look": "visit-plan",
    "as": "route",
    "nav": "Visits",
    "h": "What a maintenance visit covers",
@@ -194,47 +199,55 @@
      "t": "Data review",
      "d": "Conductivity, TOC, temperature and alarms since the last visit.",
      "link": "sys-monitoring",
-     "spot": "toc"
+     "spot": "toc",
+     "part": "panel toc"
     },
     {
      "t": "Pretreatment",
      "d": "Softener leakage, carbon or bisulfite, RO inlet chlorine.",
      "link": "sys-pretreatment",
-     "spot": "pretreatment"
+     "spot": "pretreatment",
+     "part": "pre"
     },
     {
      "t": "RO and DI/EDI",
      "d": "Normalized flow, salt passage and pressure drop against baseline.",
      "link": "sys-pw",
-     "spot": "ro-skid"
+     "spot": "ro-skid",
+     "part": "gen"
     },
     {
      "t": "Ultraviolet (UV) and sanitization",
      "d": "Lamp intensity and hours; sanitization verified at the coldest point.",
      "link": "sys-storage#sanitization",
-     "spot": "uv"
+     "spot": "uv",
+     "part": "uv"
     },
     {
      "t": "Loop hydraulics",
      "d": "Return flow against the qualified minimum, pump and valves.",
      "link": "sys-storage",
-     "spot": "pump"
+     "spot": "pump",
+     "part": "loop tank"
     },
     {
      "t": "Wearing parts",
      "d": "Seals and diaphragms like for like, lots recorded; vent filters tested.",
-     "spot": "wrench"
+     "spot": "wrench",
+     "part": "wear"
     },
     {
      "t": "Signed report",
      "d": "As-found, as-left and return-to-service results, signed before we leave.",
      "end": true,
-     "spot": "stamp"
+     "spot": "stamp",
+     "part": "report"
     }
    ]
   },
   {
    "type": "table",
+   "look": "spares-kit",
    "nav": "Like for like",
    "h": "Like for like, or a change?",
    "intro": "Changes wait for your change control.",
@@ -293,6 +306,7 @@
   },
   {
    "type": "steps",
+   "look": "response-clock",
    "nav": "Faults",
    "h": "When something goes wrong",
    "items": [

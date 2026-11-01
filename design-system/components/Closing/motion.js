@@ -25,6 +25,7 @@ AQmotion.fx('Closing', function (root, m) {
     if (docs.length) gsap.set(docs, { autoAlpha: 0, y: -10, rotation: -8 });
     m.on(sec, function () {
       var tl = m.tw(gsap.timeline({ defaults: { ease: 'power3.out' } })), at;
+      tl.timeScale(1.35); /* the band is the last thing on the page: it should be complete soon after it shows */
       tl.to(sec, { '--aq-c-run': 1, duration: 1.2, ease: 'power2.inOut' }, 0);
       if (s) tl.to(s.lines, { yPercent: 0, duration: 0.9, stagger: 0.1, ease: 'power4.out' }, 0.1);
       if (lead) tl.fromTo(lead, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, 0.45);
@@ -59,6 +60,6 @@ AQmotion.fx('Closing', function (root, m) {
       // rows hidden on phones (beyond the first few) are set back at once so nothing stays hidden
       tl.add(function () { gsap.set(qa('.aq-closing__t, .aq-closing__doc'), { clearProps: 'transform,opacity,visibility' }) }, '+=0.05');
       if (proof) { tl.fromTo(proof, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 1.2); if (val && /^[<>≤≥]?\s*\d[\d.,]*(\s|$)/.test(val.textContent.trim())) tl.add(function () { m.count(val, { now: true, duration: 1.1 }) }, 1.2) }
-    }, 'top 80%');
+    }, 'top 95%');
   });
 });

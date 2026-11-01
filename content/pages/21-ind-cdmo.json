@@ -91,7 +91,8 @@
       "link": "ind-pharma#nhp"
      }
     ]
-   ]
+   ],
+   "look": "suite-loop"
   },
   {
    "type": "docs",
@@ -128,7 +129,18 @@
     }
    ],
    "fold": 4,
-   "fold_noun": "documents"
+   "fold_noun": "documents",
+   "look": "pack-matrix",
+   "matrix": {
+    "rows": 3,
+    "cols": 4,
+    "at": [
+     1,
+     2
+    ],
+    "y": "Client",
+    "x": "Period"
+   }
   },
   {
    "type": "options",
@@ -171,7 +183,8 @@
     }
    ],
    "fold": 3,
-   "fold_noun": "options"
+   "fold_noun": "options",
+   "look": "module-plinth"
   },
   {
    "type": "steps",
@@ -194,7 +207,8 @@
      "t": "Release",
      "d": "New section qualified, extra sampling, then your quality unit releases it: [new point of use, order to release, weeks]."
     }
-   ]
+   ],
+   "look": "release-run"
   },
   {
    "type": "faq",

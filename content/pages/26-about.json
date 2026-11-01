@@ -102,7 +102,8 @@
    ],
    "note": "A bracketed fact is not yet confirmed.",
    "fold": 5,
-   "fold_noun": "facts"
+   "fold_noun": "facts",
+   "look": "colophon"
   },
   {
    "type": "grid",
@@ -113,19 +114,23 @@
    "items": [
     {
      "t": "Commercial lead",
-     "d": "[Full name] · [licence or qualification]. Ask about scope, terms and company facts."
+     "d": "[Full name] · [licence or qualification]. Ask about scope, terms and company facts.",
+     "station": "front"
     },
     {
      "t": "Industrial automation engineer",
      "d": "[Full name] · [licence or qualification]. Direct experience on pharmaceutical water systems. Ask about controls and data integrity.",
-     "link": "sys-monitoring"
+     "link": "sys-monitoring",
+     "station": "ctl"
     },
     {
      "t": "Modular manufacturing and design specialist",
      "d": "[Full name] · [licence or qualification]. Ask about design, fabrication and joint records.",
-     "link": "svc-fabrication"
+     "link": "svc-fabrication",
+     "station": "fab"
     }
-   ]
+   ],
+   "look": "shop-floor"
   },
   {
    "type": "grid",
@@ -156,7 +161,8 @@
      "link": "contact-locations#coverage",
      "icon": "wrench"
     }
-   ]
+   ],
+   "look": "site-tiles"
   },
   {
    "type": "faq",

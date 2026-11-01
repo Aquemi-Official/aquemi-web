@@ -63,7 +63,8 @@
       "link": "ind-pharma#nhp"
      }
     ]
-   ]
+   ],
+   "look": "numeral-index"
   },
   {
    "type": "table",
@@ -120,7 +121,57 @@
     ]
    ],
    "fold": 4,
-   "fold_noun": "steps"
+   "fold_noun": "steps",
+   "look": "grade-mains",
+   "lanes": [
+    {
+     "id": "potable",
+     "t": "Potable water"
+    },
+    {
+     "id": "pw",
+     "t": "Purified Water (PW)"
+    },
+    {
+     "id": "wfi",
+     "t": "Water for Injection (WFI)",
+     "note": "We do not supply WFI",
+     "off": true
+    }
+   ],
+   "taps": [
+    [
+     "pw",
+     "wfi?"
+    ],
+    [
+     "pw"
+    ],
+    [
+     "pw",
+     "potable?"
+    ],
+    [
+     "pw?",
+     "wfi?"
+    ],
+    [
+     "potable",
+     "pw?",
+     "wfi?"
+    ],
+    [
+     "wfi"
+    ],
+    [
+     "pw",
+     "wfi?"
+    ],
+    [
+     "wfi",
+     "pw?"
+    ]
+   ]
   },
   {
    "type": "table",
@@ -175,7 +226,30 @@
     ]
    ],
    "fold": 3,
-   "fold_noun": "inspectors"
+   "fold_noun": "inspectors",
+   "look": "binder-spines",
+   "spines": [
+    {
+     "code": "GUI-0001 C.02.009",
+     "read": "PW ≤ 100 CFU/mL (colony-forming units); objectionable organisms by route"
+    },
+    {
+     "code": "21 CFR 211.65",
+     "read": "Non-reactive surfaces; water guide: dead legs, a year's data"
+    },
+    {
+     "code": "GUI-0158 s. 45",
+     "read": "Potable minimum, test records, qualified treatment"
+    },
+    {
+     "code": "Ph. Eur. 0008",
+     "read": "The EMA guideline and Annex 15 qualification"
+    },
+    {
+     "code": "GUI-0119 + Annex 1",
+     "read": "EU good manufacturing practice (GMP): PW quality, dead legs, sanitization, trend review"
+    }
+   ]
   },
   {
    "type": "options",
@@ -207,7 +281,10 @@
    ],
    "fold": 3,
    "fold_noun": "decisions",
-   "as": "decisions"
+   "as": "decisions",
+   "look": "urs-gate",
+   "gate": "URS",
+   "gate_label": "Approved"
   },
   {
    "type": "table",
@@ -241,6 +318,33 @@
      "Products sold abroad as drugs",
      "PW",
      "Under the importing market’s drug rules"
+    ]
+   ],
+   "look": "grade-switch",
+   "positions": [
+    {
+     "id": "potable",
+     "t": "Potable"
+    },
+    {
+     "id": "pw",
+     "t": "PW"
+    }
+   ],
+   "switch": [
+    [
+     "potable",
+     "pw?"
+    ],
+    [
+     "potable",
+     "pw?"
+    ],
+    [
+     "pw"
+    ],
+    [
+     "pw"
     ]
    ]
   },

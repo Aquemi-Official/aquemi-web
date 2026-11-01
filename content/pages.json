@@ -3595,6 +3595,7 @@
    "blocks": [
     {
      "type": "table",
+     "look": "plan-sheets",
      "as": "plans",
      "nav": "Plans",
      "h": "Service plans: response, scope, price",
@@ -3669,6 +3670,7 @@
     },
     {
      "type": "spec",
+     "look": "cost-balance",
      "nav": "Running cost",
      "anchor": "running-cost",
      "h": "What it costs to run",
@@ -3697,7 +3699,8 @@
        "p": "Water to drain",
        "v": "RO reject at [design recovery, %] recovery",
        "m": "Feed water chemistry",
-       "link": "sys-pw"
+       "link": "sys-pw",
+       "side": "out"
       },
       {
        "p": "Energy",
@@ -3715,6 +3718,7 @@
     },
     {
      "type": "spec",
+     "look": "tolerance-scales",
      "nav": "Calibration",
      "h": "Instrument calibration",
      "cols": [
@@ -3751,6 +3755,7 @@
     },
     {
      "type": "grid",
+     "look": "visit-plan",
      "as": "route",
      "nav": "Visits",
      "h": "What a maintenance visit covers",
@@ -3759,47 +3764,55 @@
        "t": "Data review",
        "d": "Conductivity, TOC, temperature and alarms since the last visit.",
        "link": "sys-monitoring",
-       "spot": "toc"
+       "spot": "toc",
+       "part": "panel toc"
       },
       {
        "t": "Pretreatment",
        "d": "Softener leakage, carbon or bisulfite, RO inlet chlorine.",
        "link": "sys-pretreatment",
-       "spot": "pretreatment"
+       "spot": "pretreatment",
+       "part": "pre"
       },
       {
        "t": "RO and DI/EDI",
        "d": "Normalized flow, salt passage and pressure drop against baseline.",
        "link": "sys-pw",
-       "spot": "ro-skid"
+       "spot": "ro-skid",
+       "part": "gen"
       },
       {
        "t": "Ultraviolet (UV) and sanitization",
        "d": "Lamp intensity and hours; sanitization verified at the coldest point.",
        "link": "sys-storage#sanitization",
-       "spot": "uv"
+       "spot": "uv",
+       "part": "uv"
       },
       {
        "t": "Loop hydraulics",
        "d": "Return flow against the qualified minimum, pump and valves.",
        "link": "sys-storage",
-       "spot": "pump"
+       "spot": "pump",
+       "part": "loop tank"
       },
       {
        "t": "Wearing parts",
        "d": "Seals and diaphragms like for like, lots recorded; vent filters tested.",
-       "spot": "wrench"
+       "spot": "wrench",
+       "part": "wear"
       },
       {
        "t": "Signed report",
        "d": "As-found, as-left and return-to-service results, signed before we leave.",
        "end": true,
-       "spot": "stamp"
+       "spot": "stamp",
+       "part": "report"
       }
      ]
     },
     {
      "type": "table",
+     "look": "spares-kit",
      "nav": "Like for like",
      "h": "Like for like, or a change?",
      "intro": "Changes wait for your change control.",
@@ -3858,6 +3871,7 @@
     },
     {
      "type": "steps",
+     "look": "response-clock",
      "nav": "Faults",
      "h": "When something goes wrong",
      "items": [
@@ -3977,6 +3991,7 @@
    "blocks": [
     {
      "type": "table",
+     "look": "approval-merge",
      "as": "roles",
      "anchor": "observation",
      "nav": "Observation",
@@ -4023,6 +4038,7 @@
     },
     {
      "type": "table",
+     "look": "retrofit-plant",
      "as": "router",
      "nav": "Upgrades",
      "h": "Common upgrades and their requalification",
@@ -4094,10 +4110,19 @@
         "link": "sys-pw"
        }
       ]
+     ],
+     "parts": [
+      "gen",
+      "pre",
+      "loop",
+      "toc",
+      "panel",
+      "gen loop"
      ]
     },
     {
      "type": "table",
+     "look": "strike-gaps",
      "as": "failures",
      "nav": "Controls",
      "h": "Data integrity gaps in older controls",
@@ -4139,6 +4164,7 @@
     },
     {
      "type": "grid",
+     "look": "review-reticles",
      "as": "route",
      "nav": "Assessment",
      "h": "What the assessment reviews",
@@ -4177,6 +4203,7 @@
     },
     {
      "type": "steps",
+     "look": "cutover-schedule",
      "ground": "light",
      "nav": "How it runs",
      "h": "How an upgrade runs",
@@ -4202,7 +4229,8 @@
        "t": "Requalification",
        "d": "IQ/OQ of what changed, agreed sampling, updated drawings and procedures."
       }
-     ]
+     ],
+     "lane": "Your system"
     },
     {
      "type": "faq",
@@ -4674,7 +4702,8 @@
         "link": "ind-pharma#nhp"
        }
       ]
-     ]
+     ],
+     "look": "numeral-index"
     },
     {
      "type": "table",
@@ -4731,7 +4760,57 @@
       ]
      ],
      "fold": 4,
-     "fold_noun": "steps"
+     "fold_noun": "steps",
+     "look": "grade-mains",
+     "lanes": [
+      {
+       "id": "potable",
+       "t": "Potable water"
+      },
+      {
+       "id": "pw",
+       "t": "Purified Water (PW)"
+      },
+      {
+       "id": "wfi",
+       "t": "Water for Injection (WFI)",
+       "note": "We do not supply WFI",
+       "off": true
+      }
+     ],
+     "taps": [
+      [
+       "pw",
+       "wfi?"
+      ],
+      [
+       "pw"
+      ],
+      [
+       "pw",
+       "potable?"
+      ],
+      [
+       "pw?",
+       "wfi?"
+      ],
+      [
+       "potable",
+       "pw?",
+       "wfi?"
+      ],
+      [
+       "wfi"
+      ],
+      [
+       "pw",
+       "wfi?"
+      ],
+      [
+       "wfi",
+       "pw?"
+      ]
+     ]
     },
     {
      "type": "table",
@@ -4786,7 +4865,30 @@
       ]
      ],
      "fold": 3,
-     "fold_noun": "inspectors"
+     "fold_noun": "inspectors",
+     "look": "binder-spines",
+     "spines": [
+      {
+       "code": "GUI-0001 C.02.009",
+       "read": "PW ≤ 100 CFU/mL (colony-forming units); objectionable organisms by route"
+      },
+      {
+       "code": "21 CFR 211.65",
+       "read": "Non-reactive surfaces; water guide: dead legs, a year's data"
+      },
+      {
+       "code": "GUI-0158 s. 45",
+       "read": "Potable minimum, test records, qualified treatment"
+      },
+      {
+       "code": "Ph. Eur. 0008",
+       "read": "The EMA guideline and Annex 15 qualification"
+      },
+      {
+       "code": "GUI-0119 + Annex 1",
+       "read": "EU good manufacturing practice (GMP): PW quality, dead legs, sanitization, trend review"
+      }
+     ]
     },
     {
      "type": "options",
@@ -4818,7 +4920,10 @@
      ],
      "fold": 3,
      "fold_noun": "decisions",
-     "as": "decisions"
+     "as": "decisions",
+     "look": "urs-gate",
+     "gate": "URS",
+     "gate_label": "Approved"
     },
     {
      "type": "table",
@@ -4852,6 +4957,33 @@
        "Products sold abroad as drugs",
        "PW",
        "Under the importing market’s drug rules"
+      ]
+     ],
+     "look": "grade-switch",
+     "positions": [
+      {
+       "id": "potable",
+       "t": "Potable"
+      },
+      {
+       "id": "pw",
+       "t": "PW"
+      }
+     ],
+     "switch": [
+      [
+       "potable",
+       "pw?"
+      ],
+      [
+       "potable",
+       "pw?"
+      ],
+      [
+       "pw"
+      ],
+      [
+       "pw"
       ]
      ]
     },
@@ -4969,7 +5101,8 @@
        "WFI, or water held to its endotoxin limit",
        "2.15 endotoxin units per device (USP <161>)"
       ]
-     ]
+     ],
+     "look": "derivation-sheet"
     },
     {
      "type": "prose",
@@ -5006,7 +5139,8 @@
        ],
        "d": "Warm water standing between batches grows biofilm; validate a drain-and-refill rule."
       }
-     ]
+     ],
+     "look": "washer-trace"
     },
     {
      "type": "grid",
@@ -5041,7 +5175,8 @@
        "tag": "Change control",
        "link": "svc-upgrades#observation"
       }
-     ]
+     ],
+     "look": "standard-tiles"
     },
     {
      "type": "table",
@@ -5096,7 +5231,8 @@
       ]
      ],
      "fold": 2,
-     "fold_noun": "auditors"
+     "fold_noun": "auditors",
+     "look": "reader-split"
     },
     {
      "type": "faq",
@@ -5269,7 +5405,8 @@
         "link": "ind-pharma#nhp"
        }
       ]
-     ]
+     ],
+     "look": "suite-loop"
     },
     {
      "type": "docs",
@@ -5306,7 +5443,18 @@
       }
      ],
      "fold": 4,
-     "fold_noun": "documents"
+     "fold_noun": "documents",
+     "look": "pack-matrix",
+     "matrix": {
+      "rows": 3,
+      "cols": 4,
+      "at": [
+       1,
+       2
+      ],
+      "y": "Client",
+      "x": "Period"
+     }
     },
     {
      "type": "options",
@@ -5349,7 +5497,8 @@
       }
      ],
      "fold": 3,
-     "fold_noun": "options"
+     "fold_noun": "options",
+     "look": "module-plinth"
     },
     {
      "type": "steps",
@@ -5372,7 +5521,8 @@
        "t": "Release",
        "d": "New section qualified, extra sampling, then your quality unit releases it: [new point of use, order to release, weeks]."
       }
-     ]
+     ],
+     "look": "release-run"
     },
     {
      "type": "faq",
@@ -6706,7 +6856,8 @@
        "Performance on your feed water",
        "[FAT witness notice, working days], once [shop and test bay ready for visits]"
       ]
-     ]
+     ],
+     "look": "check-ledger"
     },
     {
      "type": "prose",
@@ -6732,7 +6883,8 @@
       }
      ],
      "nav": "Standard",
-     "ground": "light"
+     "ground": "light",
+     "look": "record-anatomy"
     },
     {
      "type": "faq",
@@ -6906,7 +7058,8 @@
      ],
      "note": "A bracketed fact is not yet confirmed.",
      "fold": 5,
-     "fold_noun": "facts"
+     "fold_noun": "facts",
+     "look": "colophon"
     },
     {
      "type": "grid",
@@ -6917,19 +7070,23 @@
      "items": [
       {
        "t": "Commercial lead",
-       "d": "[Full name] · [licence or qualification]. Ask about scope, terms and company facts."
+       "d": "[Full name] · [licence or qualification]. Ask about scope, terms and company facts.",
+       "station": "front"
       },
       {
        "t": "Industrial automation engineer",
        "d": "[Full name] · [licence or qualification]. Direct experience on pharmaceutical water systems. Ask about controls and data integrity.",
-       "link": "sys-monitoring"
+       "link": "sys-monitoring",
+       "station": "ctl"
       },
       {
        "t": "Modular manufacturing and design specialist",
        "d": "[Full name] · [licence or qualification]. Ask about design, fabrication and joint records.",
-       "link": "svc-fabrication"
+       "link": "svc-fabrication",
+       "station": "fab"
       }
-     ]
+     ],
+     "look": "shop-floor"
     },
     {
      "type": "grid",
@@ -6960,7 +7117,8 @@
        "link": "contact-locations#coverage",
        "icon": "wrench"
       }
-     ]
+     ],
+     "look": "site-tiles"
     },
     {
      "type": "faq",
@@ -7120,7 +7278,16 @@
       ]
      ],
      "as": "router",
-     "intro": "A commercial lead and two technical partners run Aquemi; each role says whether it is open."
+     "intro": "A commercial lead and two technical partners run Aquemi; each role says whether it is open.",
+     "look": "shop-floor",
+     "stations": [
+      "design",
+      "fab",
+      "test",
+      "ctl",
+      "dock",
+      "qa"
+     ]
     },
     {
      "type": "spec",
@@ -7175,7 +7342,8 @@
      ],
      "note": "The posting and written offer govern.",
      "fold": 3,
-     "fold_noun": "terms"
+     "fold_noun": "terms",
+     "look": "time-card"
     },
     {
      "type": "steps",
@@ -7192,13 +7360,20 @@
       },
       {
        "t": "Practical interview",
-       "d": "A P&ID review, test joint, protocol walk-through or fault-finding exercise."
+       "d": "A P&ID review, test joint, protocol walk-through or fault-finding exercise.",
+       "icons": [
+        "pid",
+        "weld",
+        "binder",
+        "wrench"
+       ]
       },
       {
        "t": "Visit and decision",
        "d": "Meet the team where you would work. Written decision within [offer time, working days]."
       }
-     ]
+     ],
+     "look": "hire-path"
     },
     {
      "type": "form",
@@ -7588,7 +7763,8 @@
       }
      ],
      "fold": 6,
-     "fold_noun": "notes"
+     "fold_noun": "notes",
+     "look": "revision-register"
     },
     {
      "type": "faq",
