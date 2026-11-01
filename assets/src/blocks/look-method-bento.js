@@ -8,7 +8,8 @@
    short list under their column names.
    Fields (a table block): h, intro, cols, rows [[method, how, fit, trade-off]], anchor, figs [name per row: "chemical",
    "hot", "uv"], scale {row, marks [{v, l}]} (the temperature figure: marks in °C along a 0–100 rail), absent (the
-   missing method's name, shown large in outline on the dashed tile with the intro). Without absent the intro stays in
+   missing method's name, shown large in outline on the dashed tile with the intro). scale.base: the reading below the
+   first mark (motion.js turns the rail into a probe the visitor can drag along it, with detents at the marks). Without absent the intro stays in
    the section head. */
 (function(){
 var K='aq-method-bento';function P(d,c){return '<path class="'+K+'__'+(c||'ln')+'" d="'+d+'"/>'}
@@ -28,7 +29,7 @@ function scale(sc){var M=(sc&&sc.marks)||[],a=M.length?M[0].v:100,z=M.length?M[M
   +P('M0 20H'+(a*10),'hot')+P('M'+(a*10)+' 20H'+(z*10),'hot is-review')+P('M'+(z*10)+' 20H1000','hot is-out')
   +P('M0 30H1000','base')+t+'</svg>';
  var lab=M.map(function(k,i){return '<li class="aq-method-bento__mark'+(i===0&&M.length>1?' is-left':'')+'" style="--at:'+k.v+'%"><span class="aq-method-bento__mv">'+e(k.v)+' °C</span><span class="aq-method-bento__ml">'+tx(k.l)+'</span></li>'}).join('');
- return '<div class="aq-method-bento__scale">'+svg+'<ul class="aq-method-bento__marks" role="list">'+lab+'</ul></div>'}
+ return '<div class="aq-method-bento__scale"'+(sc.base?' data-base="'+e(sc.base)+'"':'')+'>'+svg+'<ul class="aq-method-bento__marks" role="list">'+lab+'</ul></div>'}
 LOOKS['method-bento']=function(b,H){
  var R=b.rows||[],C=b.cols||[],F=b.figs||[],sc=b.scale||null,hasAbs=!!b.absent;
  if(hasAbs)H=wSecHead({eyebrow:b.eyebrow,h:b.h});

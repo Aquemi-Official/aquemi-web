@@ -1407,6 +1407,45 @@ AQmotion.fx('DocList', function (root, m) {
     }
   });
 });
+/* DocPipe: the pipe is laid column by column (wall and bore draw on, the valves set down, the documents rise), once,
+   under 2 s. Then the page's one scroll-linked story: as the band passes through the viewport the water runs along the
+   pipe from the first document to the last, each valve's handle turns open as the water reaches it, and each
+   document's number and code come up from half strength as the water arrives (the names and lines stay at full
+   strength throughout). Scrolling back runs it back; it never pins or changes scroll speed. Reduced motion: nothing
+   runs, the water line is drawn in full.
+   Ported from Subframe Motion "Scroll text reveal" (poem-scroll), MIT, (c) 2026 Subframe (kept: one progress value
+   from the scroll position driving a progress track and each line's strength by 1 - (i - progress * n) * 0.45 with a
+   floor; replaced: the inner scroller with the page scroll, the track with the water in the pipe, the floor raised
+   to 0.45 and applied only to the number and code). */
+AQmotion.fx('DocPipe', function (root, m) {
+  root.querySelectorAll('.aq-doc-pipe').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var items = qa('.aq-doc-pipe__item').filter(function (x) { return x.offsetParent !== null }), D = !!window.DrawSVGPlugin, n = items.length;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    items.forEach(function (it, i) {
+      var at = i * 0.22, walls = qa('.aq-doc-pipe__wall, .aq-doc-pipe__bore', it);
+      if (D && walls.length && walls[0].getBoundingClientRect().width) tl.from(walls, { drawSVG: '0%', duration: 0.6, ease: 'none', clearProps: 'strokeDasharray,strokeDashoffset' }, at);
+      var v = it.querySelector('.aq-doc-pipe__valve');
+      if (v) tl.from(v, { scale: 0.4, autoAlpha: 0, duration: 0.35, ease: 'back.out(2)', clearProps: 'transform,opacity,visibility' }, at + 0.4);
+      tl.from(it.querySelector('.aq-doc-pipe__txt'), { y: 16, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, at + 0.2);
+    });
+    m.on(el, function () { tl.play() }, 'top 80%');
+
+    var flows = items.map(function (it) { return it.querySelector('.aq-doc-pipe__flow') });
+    if (!window.ScrollTrigger || !flows[0] || !flows[0].getBoundingClientRect().width) return;
+    flows.forEach(function (f) { f.setAttribute('pathLength', '1'); f.style.strokeDasharray = '1 1' });
+    var dim = items.map(function (it) { return qa('.aq-doc-pipe__num, .aq-doc-pipe__code', it) }), stems = items.map(function (it) { return it.querySelector('.aq-doc-pipe__stem') }), open = [];
+    function paint(p) {
+      var q = p * n;
+      flows.forEach(function (f, i) { f.style.strokeDashoffset = String(1 - Math.max(0, Math.min(1, q - i))) });
+      dim.forEach(function (set, i) { var o = Math.max(0.45, Math.min(1, 1 - (i - q) * 0.45)); set.forEach(function (x) { x.style.opacity = o.toFixed(3) }) });
+      stems.forEach(function (s, i) { var on = q - i >= 0.76; if (s && on !== !!open[i]) { open[i] = on; gsap.to(s, { rotation: on ? 90 : 0, duration: 0.2, ease: 'power2.out', overwrite: true }) } });
+    }
+    paint(0);
+    m.tw(ScrollTrigger.create({ trigger: el, start: 'top 75%', end: 'bottom 45%', scrub: 0.5, onUpdate: function (st) { paint(st.progress) }, onRefresh: function (st) { paint(st.progress) } }));
+  });
+});
 /* EnquiryForm: the data sheet is drawn up, then filled in by the visitor. Pass 9: the progress is a pipeline; on
    Continue the water runs along the line just passed and the ring (the step marker) slides on to the new node.
    Scroll-in: the title rule rules across, the progress steps (stepped form) or section legends wipe in from the left
@@ -3268,58 +3307,64 @@ AQmotion.fx('LinkGrid', function (root, m) {
     }, 'top 82%');
   });
 });
-/* LoopCircuit: the control screen powers on (a bright line opens to the full screen), the pipes and equipment draw
-   on, then the water runs: from generation into the tank (the level rises), out through the pump and exchanger, up
-   and back past the points of use and return sensors, home through the spray ball (the jets open). Each stage's tag
-   and column light as the water reaches them; the loop's water then runs as a moving dash for a second and stops.
-   One timeline, once, under 5 s. */
+/* LoopCircuit: the strip prints in (column rules, pipes, then each station in reading order) and the captions rise
+   (once, under 2 s). Then the page's one scroll-linked story: as the band passes through the viewport a ringed marker
+   follows the water's route (generation, into the tank, out through pump and exchanger, past the outlets and return
+   sensors, up the riser and home through the spray ball); the water line fills behind it and each station and caption
+   lights as the marker reaches it. Scrolling back runs it back. It never pins or changes scroll speed; the drawing is
+   complete at every position. Under reduced motion nothing runs: the water lines are drawn in full, no marker.
+   Ported from Subframe Motion "Animated route path" (race-replay), MIT, (c) 2026 Subframe
+   (kept: the route painted by one fraction, a pathLength-normalised dash offset behind a ringed marker placed with
+   getPointAtLength, the fraction clamped 0..1; replaced: the play button and timer with scroll position). */
 AQmotion.fx('LoopCircuit', function (root, m) {
   root.querySelectorAll('.aq-loop-circuit').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
     var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
-    var svg = el.querySelector('.aq-loop-circuit__svg'), screen = el.querySelector('.aq-loop-circuit__screen'), stages = qa('.aq-loop-circuit__stage');
-    var FR = function (t, set, v, at) { if (set && set.length !== 0) t.from(set, v, at); return t };
+    var svg = el.querySelector('.aq-loop-circuit__svg'), strip = el.querySelector('.aq-loop-circuit__strip'), stages = qa('.aq-loop-circuit__stage');
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), D = !!window.DrawSVGPlugin;
-    tl.from(stages, { y: 16, autoAlpha: 0, duration: 0.6, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.1);
-    if (!svg || !screen || screen.offsetParent === null) { m.on(el, function () { tl.play() }, 'top 80%'); return }
-    tl.fromTo(screen, { clipPath: 'inset(50% 0 50% 0)' }, { clipPath: 'inset(0% 0 0% 0)', duration: 0.6, ease: 'power4.inOut', clearProps: 'clipPath' }, 0);
-    var lines = qa('.aq-loop-circuit__pipe, .aq-loop-circuit__eq:not(.is-opt), .aq-loop-circuit__ln, .aq-loop-circuit__thin, .aq-loop-circuit__lead', svg);
-    if (D) tl.from(lines, { drawSVG: '0%', duration: 0.9, stagger: 0.008, ease: 'power2.inOut' }, 0.35);
-    else tl.from(lines, { autoAlpha: 0, duration: 0.6 }, 0.35);
-    FR(tl, qa('.aq-loop-circuit__eq.is-opt, .aq-loop-circuit__hid, .aq-loop-circuit__tx, .aq-loop-circuit__chev', svg), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 1.1);
-    FR(tl, qa('.aq-loop-circuit__tag', svg), { autoAlpha: 0, scale: 0.6, transformOrigin: '50% 50%', duration: 0.35, stagger: 0.05, ease: 'back.out(2)', clearProps: 'transform,opacity,visibility' }, 1.0);
-    var feed = svg.querySelector('.aq-loop-circuit__flow--feed'), loop = svg.querySelector('.aq-loop-circuit__flow--loop'), water = svg.querySelector('.aq-loop-circuit__water');
-    var tags = qa('.aq-loop-circuit__tag', svg), byNode = {};
-    tags.forEach(function (t) { byNode[t.getAttribute('data-node')] = t });
-    function light(id) { var t = byNode[id]; if (t) t.classList.add('is-on'); stages.forEach(function (s) { if (s.getAttribute('data-node') === id) s.classList.add('is-on') }) }
-    var T0 = 1.4;
-    if (feed) { if (D) tl.from(feed, { drawSVG: '0%', duration: 0.5, ease: 'none' }, T0); tl.add(function () { light('gen') }, T0) }
-    if (water) tl.from(water, { scaleY: 0, transformOrigin: '50% 100%', duration: 0.7, ease: 'power2.out', clearProps: 'transform' }, T0 + 0.4);
-    tl.add(function () { light('tank') }, T0 + 0.5);
-    if (loop) {
-      var L = loop.getTotalLength(), stops = [];
-      tags.forEach(function (t) { var id = t.getAttribute('data-node'); if (id === 'gen' || id === 'tank') return;
-        var a = (t.getAttribute('data-at') || '').split(',').map(Number), best = 0, bd = 1e9;
-        for (var s = 0; s <= L; s += 4) { var p = loop.getPointAtLength(s), d = (p.x - a[0]) * (p.x - a[0]) + (p.y - a[1]) * (p.y - a[1]); if (d < bd) { bd = d; best = s } }
-        stops.push({ id: id, f: best / L }) });
-      var dur = 1.9, T1 = T0 + 0.6;
-      if (D) tl.from(loop, { drawSVG: '0%', duration: dur, ease: 'none' }, T1);
-      stops.forEach(function (s) { tl.add(function () { light(s.id) }, T1 + s.f * dur) });
-      if (window.MotionPathPlugin) {
-        var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); dot.setAttribute('r', '7'); dot.setAttribute('class', 'aq-loop-circuit__dot'); svg.appendChild(dot);
-        gsap.set(dot, { autoAlpha: 0 });
-        tl.set(dot, { autoAlpha: 1 }, T1).to(dot, { motionPath: { path: loop, align: loop, alignOrigin: [0.5, 0.5] }, duration: dur, ease: 'none' }, T1).set(dot, { autoAlpha: 0 }, T1 + dur);
-        tl.add(function () { if (dot.parentNode) dot.parentNode.removeChild(dot) }, T1 + dur + 0.05);
-      }
-      FR(tl, qa('.aq-loop-circuit__jet', svg), { autoAlpha: 0, scale: 0.2, transformOrigin: '50% 0%', duration: 0.4, stagger: 0.03, clearProps: 'transform,opacity,visibility' }, T1 + dur - 0.1);
-      tl.fromTo(loop, { strokeDasharray: '14 10', strokeDashoffset: 0 }, { strokeDashoffset: -96, duration: 1, ease: 'sine.inOut', immediateRender: false, clearProps: 'strokeDasharray,strokeDashoffset' }, T1 + dur + 0.1);
+    tl.from(stages, { y: 16, autoAlpha: 0, duration: 0.6, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, 0.2);
+    if (!svg || !strip || strip.offsetParent === null) { m.on(el, function () { tl.play() }, 'top 80%'); return }
+    /* print-in: column rules and pipes draw, then the stations left to right */
+    var base = qa('.aq-loop-circuit__col, .aq-loop-circuit__pipe', svg);
+    if (D) tl.from(base, { drawSVG: '0%', duration: 0.8, stagger: 0.03, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0);
+    qa('.aq-loop-circuit__node', svg).forEach(function (n, i) {
+      var ln = qa('.aq-loop-circuit__eq:not(.is-opt), .aq-loop-circuit__ln, .aq-loop-circuit__thin', n);
+      if (D && ln.length) tl.from(ln, { drawSVG: '0%', duration: 0.5, stagger: 0.02, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.3 + i * 0.1);
+      var rest = qa('.aq-loop-circuit__jet, .aq-loop-circuit__tx, .aq-loop-circuit__drop, .aq-loop-circuit__pt, .aq-loop-circuit__det, .aq-loop-circuit__hid, .aq-loop-circuit__eq.is-opt', n);
+      if (rest.length) tl.from(rest, { autoAlpha: 0, duration: 0.3, stagger: 0.015, clearProps: 'opacity,visibility' }, 0.6 + i * 0.1);
+    });
+    var water = svg.querySelector('.aq-loop-circuit__water');
+    if (water) tl.from(water, { scaleY: 0, transformOrigin: '50% 100%', duration: 0.7, ease: 'power2.out', clearProps: 'transform' }, 0.5);
+    m.on(el, function () { tl.play() }, 'top 75%');
+
+    /* the scroll-linked route */
+    var route = svg.querySelector('.aq-loop-circuit__route'), feed = svg.querySelector('.aq-loop-circuit__flow--feed'), loop = svg.querySelector('.aq-loop-circuit__flow--loop');
+    if (!route || !window.ScrollTrigger) return;
+    var L = route.getTotalLength(), Lf = feed ? feed.getTotalLength() : 0, Ll = loop ? loop.getTotalLength() : 0;
+    function near(x, y, from) { var best = from || 0, bd = 1e9; for (var s = from || 0; s <= L; s += 3) { var p = route.getPointAtLength(s), d = (p.x - x) * (p.x - x) + (p.y - y) * (p.y - y); if (d < bd) { bd = d; best = s } } return best }
+    var o0 = loop ? near(300, 262, Lf) : 0;
+    var stops = stages.map(function (s) { var a = (s.getAttribute('data-at') || '').split(',').map(Number); return a.length === 2 ? { s: s, id: s.getAttribute('data-node'), at: near(a[0], a[1]) } : null }).filter(Boolean);
+    var nodes = {}; qa('.aq-loop-circuit__node', svg).forEach(function (n) { nodes[n.getAttribute('data-node')] = n });
+    [feed, loop].forEach(function (f) { if (f) { f.setAttribute('pathLength', '1'); f.style.strokeDasharray = '1 1' } });
+    var NS = 'http://www.w3.org/2000/svg', mk = document.createElementNS(NS, 'g'); mk.setAttribute('class', 'aq-loop-circuit__marker');
+    mk.innerHTML = '<circle class="aq-loop-circuit__mk" r="11"/><circle class="aq-loop-circuit__mk-dot" r="4"/>'; svg.appendChild(mk);
+    var last = -1;
+    function paint(v) {
+      v = Math.max(0, Math.min(1, v)); if (v === last) return; last = v;
+      var s = L * v, p = route.getPointAtLength(s);
+      mk.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ')');
+      if (feed) feed.style.strokeDashoffset = String(1 - Math.min(1, s / Lf));
+      if (loop) loop.style.strokeDashoffset = String(1 - Math.max(0, Math.min(1, (s - o0) / Ll)));
+      stops.forEach(function (st) { var on = s >= st.at - 2; st.s.classList.toggle('is-on', on); if (nodes[st.id]) nodes[st.id].classList.toggle('is-on', on) });
     }
-    m.on(el, function () { tl.play() }, 'top 70%');
+    paint(0);
+    m.tw(ScrollTrigger.create({ trigger: strip, start: 'top 70%', end: 'bottom 30%', scrub: 0.6, onUpdate: function (st) { paint(st.progress) }, onRefresh: function (st) { paint(st.progress) } }));
   });
 });
 /* LoopDock: the loop draws itself with the shared IsoKit choreography (parts back to front, pipes, then the water
    runs from the tank through the module, the UV, out to the points of use and home overhead). Each option's marker
-   drops onto its part as the water reaches it and its card slides in at the same moment. One timeline, once, under
+   drops onto its part as the water reaches it, its leader runs down from the part to the caption row and the caption
+   rises at the same moment. One timeline, once, under
    5 s; nothing under reduced motion. */
 AQmotion.fx('LoopDock', function (root, m) {
   root.querySelectorAll('.aq-loop-dock').forEach(function (el) {
@@ -3335,7 +3380,9 @@ AQmotion.fx('LoopDock', function (root, m) {
       var parts = (c.getAttribute('data-parts') || '').split(' '), at = arrive[parts[0]] != null ? arrive[parts[0]] : fallback + i * 0.2;
       var mk = el.querySelector('.aq-loop-dock__mk[data-c="' + c.getAttribute('data-c') + '"]');
       if (mk) tl.from(mk, { y: -24, autoAlpha: 0, duration: 0.45, ease: 'back.out(2)', clearProps: 'transform,opacity,visibility' }, at);
-      tl.from(c, { x: 32, autoAlpha: 0, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, Math.min(at, 0.6 + i * 0.3));
+      var ld = qa('.aq-loop-dock__leads [data-c="' + c.getAttribute('data-c') + '"]'), path = ld.filter(function (x) { return x.tagName.toLowerCase() === 'path' });
+      if (path.length && window.DrawSVGPlugin && path[0].getBoundingClientRect().width) tl.from(path, { drawSVG: '0%', duration: 0.6, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.1);
+      tl.from(c, { y: 16, autoAlpha: 0, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.4);
     });
     m.on(el, function () { tl.play() }, 'top 70%');
   });
@@ -3547,33 +3594,62 @@ AQmotion.fx('MarkingMatch', function (root, m) {
     });
   });
 });
-/* MembraneAtlas: each plate is put under the scope. The reticle turns into place, the field opens like an iris on the
-   clean membrane texture, then the condition's damage spreads across it (pits, crystals, cake, coat, colonies appear
-   in a quick scatter from the centre out) while the text slides in beside it. Plates follow in reading order as the
-   grid scrolls in (phones: each plate as it arrives). Once, under 3 s per plate.
-   Hover is CSS only (the rim turns flow). The section heading is left to the core. */
+/* MembraneAtlas: each row arrives as the table scrolls in: the navy tile wipes up, its numeral rolls up on the
+   odometer, the micrograph's damage spreads from the centre (pits, crystals, cake, coat, colonies), and the three
+   cells slide in a beat apart. Once per row, under 2 s.
+   Then the scope's lens: pointing at a row brings a sharp ring over its micrograph that follows the pointer, the rest
+   of the field staying soft; leaving the row lets the ring drift back to rest. Pointer devices only; nothing under
+   reduced motion (the micrographs stay soft, everything readable).
+   Lens ported from Subframe Motion "Cursor focus lens" (focus-lens), MIT, (c) 2026 Subframe (kept: a soft layer and a
+   sharp copy masked by a radial gradient at the lens point, the ring following with exponential smoothing at 18 per
+   second, the point clamped inside the plate; replaced: the optical plate with our micrograph). */
 AQmotion.fx('MembraneAtlas', function (root, m) {
   root.querySelectorAll('.aq-membrane-atlas').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
-    var plates = [].slice.call(el.querySelectorAll('.aq-membrane-atlas__plate'));
-    function play(p) {
-      var svg = p.querySelector('svg'), dmg = svg && [].slice.call(svg.querySelectorAll('.aq-membrane-atlas__dmg > *')), text = p.querySelectorAll('.aq-membrane-atlas__t, .aq-membrane-atlas__row');
+    var rows = [].slice.call(el.querySelectorAll('.aq-membrane-atlas__plate'));
+    rows.forEach(function (p) {
+      var tile = p.querySelector('.aq-membrane-atlas__tile'), svg = p.querySelector('.aq-membrane-atlas__scope svg'), num = p.querySelector('.aq-membrane-atlas__n');
+      var dmg = svg ? [].slice.call(svg.querySelectorAll('.aq-membrane-atlas__dmg > *')) : [], cells = p.querySelectorAll('.aq-membrane-atlas__td');
       var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-      tl.from(p.querySelector('.aq-membrane-atlas__scope'), { clipPath: 'circle(0% at 50% 50%)', duration: 0.8, ease: 'power2.inOut', clearProps: 'clipPath' }, 0);
-      if (svg) tl.from(svg.querySelectorAll('.aq-membrane-atlas__tick, .aq-membrane-atlas__cross'), { rotation: -40, svgOrigin: '0 0', duration: 1, clearProps: 'transform' }, 0);
-      if (dmg && dmg.length) {
+      if (tile) tl.fromTo(tile, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 0.6, ease: 'power3.inOut', clearProps: 'clipPath' }, 0);
+      if (num && m.count) tl.add(function () { m.count(num, { duration: 0.8 }) }, 0.2);
+      if (dmg.length) {
         dmg.sort(function (a, b) { var A = a.getBBox ? a.getBBox() : { x: 0, y: 0 }, B = b.getBBox ? b.getBBox() : { x: 0, y: 0 }; return (A.x * A.x + A.y * A.y) - (B.x * B.x + B.y * B.y) });
-        tl.from(dmg, { autoAlpha: 0, duration: 0.3, stagger: { amount: 0.9 }, ease: 'none', clearProps: 'opacity,visibility' }, 0.5);
+        tl.from(dmg, { autoAlpha: 0, duration: 0.25, stagger: { amount: 0.8 }, ease: 'none', clearProps: 'opacity,visibility' }, 0.4);
       }
-      tl.from(text, { x: 14, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 0.25);
-      var f = p.querySelector('.aq-membrane-atlas__fig'); if (f) tl.call(function () { m.scramble(f, 0) }, null, 0.1);
-      return tl;
-    }
-    if (m.narrow()) { plates.forEach(function (p) { var tl = play(p); m.on(p, function () { tl.play() }, 'top 88%') }); return }
-    // desktop: row by row, each row's plates a beat apart
-    var rows = {}; plates.forEach(function (p) { var k = Math.round(p.offsetTop); (rows[k] = rows[k] || []).push(p) });
-    Object.keys(rows).forEach(function (k) { var row = rows[k], tls = row.map(function (p) { return play(p) });
-      m.on(row[0], function () { tls.forEach(function (t, i) { m.tw(gsap.delayedCall(i * 0.18, function () { t.play() })) }) }, 'top 82%') });
+      tl.from(cells, { x: 16, autoAlpha: 0, duration: 0.5, stagger: 0.1, clearProps: 'transform,opacity,visibility' }, 0.25);
+      m.on(p, function () { tl.play() }, 'top 85%');
+    });
+
+    /* the lens */
+    if (!(window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches)) return;
+    rows.forEach(function (p) {
+      var scope = p.querySelector('.aq-membrane-atlas__scope'), svg = scope && scope.querySelector('svg');
+      if (!svg || scope.offsetParent === null) return;
+      var lens = document.createElement('div'); lens.className = 'aq-membrane-atlas__lens';
+      var sharp = svg.cloneNode(true); [].forEach.call(sharp.querySelectorAll('[id]'), function (n) { n.id = n.id + '-l' }); [].forEach.call(sharp.querySelectorAll('[style]'), function (n) { n.removeAttribute('style') });
+      [].forEach.call(sharp.querySelectorAll('[clip-path]'), function (n) { n.setAttribute('clip-path', n.getAttribute('clip-path').replace(/\)$/, '-l)')) });
+      var ring = document.createElement('span'); ring.className = 'aq-membrane-atlas__ring';
+      lens.appendChild(sharp); lens.appendChild(ring); scope.appendChild(lens);
+      var REST = { x: 0.46, y: 0.46 }, pt = { x: REST.x, y: REST.y }, tg = { x: REST.x, y: REST.y }, last = 0, running = false;
+      function paint() {
+        var w = scope.clientWidth, h = scope.clientHeight, x = pt.x * w, y = pt.y * h, r = ring.offsetWidth / 2 || 48;
+        var mk = 'radial-gradient(circle ' + r + 'px at ' + x.toFixed(1) + 'px ' + y.toFixed(1) + 'px, #000 0, #000 70%, transparent 100%)';
+        sharp.style.maskImage = mk; sharp.style.webkitMaskImage = mk;
+        ring.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      }
+      function tick() {
+        var now = performance.now(), k = last ? 1 - Math.exp(-Math.min((now - last) / 1000, 0.05) * 18) : 0.18; last = now;
+        pt.x += (tg.x - pt.x) * k; pt.y += (tg.y - pt.y) * k; paint();
+        if (Math.abs(tg.x - pt.x) + Math.abs(tg.y - pt.y) < 0.0005) { gsap.ticker.remove(tick); running = false; last = 0 }
+      }
+      function go(x, y) { tg.x = Math.max(0.12, Math.min(0.74, x)); tg.y = Math.max(0.12, Math.min(0.74, y)); if (!running) { running = true; gsap.ticker.add(tick) } }
+      p.addEventListener('pointermove', function (ev) { var r = scope.getBoundingClientRect(); go((ev.clientX - r.left) / r.width, (ev.clientY - r.top) / r.height) });
+      p.addEventListener('pointerenter', function () { lens.classList.add('is-on') });
+      p.addEventListener('pointerleave', function () { lens.classList.remove('is-on'); go(REST.x, REST.y) });
+      paint();
+      m.tw({ kill: function () { gsap.ticker.remove(tick) } });
+    });
   });
 });
 /* MembraneFace: the element is wound, then the targets take their places round it. The vessel wall and the permeate
@@ -3610,7 +3686,8 @@ AQmotion.fx('MembraneFace', function (root, m) {
    rise, the empty tile's outline name slides in last. Inside the hot-water tile the bulb fills and the heat runs up
    the rail (solid, then dashed, then the struck part), each temperature mark dropping in as the heat reaches it.
    The line drawings draw on, the sanitant disperses dot by dot along the pipe and the UV rays flicker on.
-   One timeline, once, under 5 s. */
+   One timeline, once, under 5 s. Then the rail becomes a probe the visitor can drag (or key) to any temperature: it
+   snaps to the marks and the tile reads out the zone (slider-detents port, below). */
 AQmotion.fx('MethodBento', function (root, m) {
   root.querySelectorAll('.aq-method-bento').forEach(function (el) {
     if (!m.free(el)) return;
@@ -3641,6 +3718,44 @@ AQmotion.fx('MethodBento', function (root, m) {
       }
     });
     m.on(el, function () { tl.play() }, 'top 75%');
+
+    /* The probe: the visitor drags a reading along the hot-water rail (or uses the arrow keys) and the tile says which
+       zone that temperature falls in. Ported from Subframe Motion "Snapping range slider" (slider-detents), MIT,
+       (c) 2026 Subframe (adapted from ddoemonn/interior, MIT, (c) 2026 ozzy). Kept: detents that attract within 4.5 %
+       of the range while dragging, pointer capture, the spring-driven carriage (stiffness 520, damping 34, mass 0.45),
+       full slider keys (arrows, Page Up/Down, Home, End). Replaced: the demo track with our rail, its marks as detents. */
+    qa('.aq-method-bento__scale').forEach(function (sc) {
+      var marks = qa('.aq-method-bento__mark', sc).map(function (mk) { return { v: parseFloat(mk.style.getPropertyValue('--at')) || 0, l: (mk.querySelector('.aq-method-bento__ml') || {}).textContent || '' } });
+      if (!marks.length || !m.spring) return;
+      var base = sc.getAttribute('data-base') || '', name = (sc.closest('.aq-method-bento__tile').querySelector('.aq-method-bento__t') || {}).textContent || '';
+      var probe = document.createElement('div'); probe.className = 'aq-method-bento__probe';
+      probe.innerHTML = '<div class="aq-method-bento__thumb" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-orientation="horizontal"><span class="aq-method-bento__needle" aria-hidden="true"></span></div>';
+      var read = document.createElement('p'); read.className = 'aq-method-bento__read'; read.setAttribute('aria-live', 'polite');
+      sc.appendChild(probe); sc.parentNode.insertBefore(read, sc.nextSibling);
+      var th = probe.querySelector('.aq-method-bento__thumb'); th.setAttribute('aria-label', name.trim() + ': try a temperature');
+      var val = 50, car = { x: 50 };
+      var sp = m.spring(car, { stiffness: 520, damping: 34, mass: 0.45 }, function (o) { th.style.left = o.x + '%' });
+      function zone(v) { var z = base, k = -1; marks.forEach(function (mk, i) { if (v >= mk.v) { z = mk.l; k = i } }); return { t: z, k: k } }
+      function set(v, snap, jump) {
+        v = Math.max(0, Math.min(100, Math.round(v)));
+        if (snap) marks.forEach(function (mk) { if (Math.abs(v - mk.v) <= 4.5) v = mk.v });
+        val = v; var z = zone(v);
+        th.setAttribute('aria-valuenow', v); th.setAttribute('aria-valuetext', v + ' °C: ' + z.t);
+        read.innerHTML = '<span class="aq-method-bento__rv">' + v + ' °C</span><span class="aq-method-bento__rl"></span>';
+        read.lastChild.textContent = z.t; sc.setAttribute('data-zone', z.k + 1);
+        jump ? sp.jump({ x: v }) : sp.to({ x: v });
+      }
+      set(50, false, true);
+      function at(x) { var r = probe.getBoundingClientRect(); return (x - r.left) / r.width * 100 }
+      probe.addEventListener('pointerdown', function (ev) { if (ev.button) return; probe.setPointerCapture(ev.pointerId); probe.classList.add('is-drag'); th.focus({ preventScroll: true }); set(at(ev.clientX), true); ev.preventDefault() });
+      probe.addEventListener('pointermove', function (ev) { if (probe.hasPointerCapture && probe.hasPointerCapture(ev.pointerId)) set(at(ev.clientX), true) });
+      ['pointerup', 'pointercancel'].forEach(function (t) { probe.addEventListener(t, function () { probe.classList.remove('is-drag') }) });
+      th.addEventListener('keydown', function (ev) {
+        var d = { ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1, PageUp: 10, PageDown: -10 }[ev.key];
+        if (d) set(val + d, false, true); else if (ev.key === 'Home') set(0, false, true); else if (ev.key === 'End') set(100, false, true); else return;
+        ev.preventDefault();
+      });
+    });
   });
 });
 /* ModulePlinth: the drawing is built through the IsoKit choreography (sheet, plinth, then each module drawn back to
@@ -3952,11 +4067,12 @@ AQmotion.fx('OptionTags', function (root, m) {
 });
 /* OptionTaps: the standard train is drawn first and the water runs it (IsoKit choreography: parts draw back to front,
    pipes, then the flow). Then the options appear as what they are, possibilities: each dashed part and its tee fade up
-   in turn while its numbered marker drops onto it and the matching card slides up. Once on scroll-in, under 5 s. */
+   in turn while its numbered pin drops onto it and the matching note slides up. Once on scroll-in, under 5 s. The note
+   numbers frame their part on the drawing (guided-inspection port, in the renderer so it also works under reduced motion). */
 AQmotion.fx('OptionTaps', function (root, m) {
   root.querySelectorAll('.aq-option-taps').forEach(function (el) {
     var fig = el.querySelector('.aq-option-taps__fig'), svg = fig && fig.querySelector('svg.aq-iso');
-    if (!svg || !m.free(fig)) return; m.claim(fig); m.claim(el);
+    if (!svg || !m.free(fig)) return; m.claim(fig); m.claim(el.querySelector('.aq-option-taps__side'));
     var q = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
     var ghosts = q('.aq-option-taps__ghost', svg), tees = q('.aq-option-taps__tee', svg), marks = q('.aq-option-taps__mark'), cards = q('.aq-option-taps__card');
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
@@ -5230,31 +5346,6 @@ AQmotion.fx('SectionTrain', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 70%');
   });
 });
-/* SheetPreviews: the documents are dealt. The sheets start as one squared stack in the first column and deal out to
-   their columns, the top sheet (the last column) first, each turning flat as it lands; the index numerals rise out of their line; then each thumbnail draws
-   itself (grid, curves, logic, seal) and the code decodes, the text following. Once on scroll-in, under 3 s.
-   Phones: no deal; each sheet rises into place as it scrolls in. */
-AQmotion.fx('SheetPreviews', function (root, m) {
-  root.querySelectorAll('ol.aq-sheet-previews').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var items = [].slice.call(el.querySelectorAll('.aq-sheet-previews__item')), q = function (s, r) { return [].slice.call(r.querySelectorAll(s)) };
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), wide = !m.narrow();
-    var x0 = items[0] ? items[0].getBoundingClientRect().left : 0;
-    items.forEach(function (it, i) {
-      var sh = it.querySelector('.aq-sheet-previews__sheet'), dx = x0 - it.getBoundingClientRect().left, at = 0.25 + (items.length - 1 - i) * 0.12;
-      if (sh) {
-        if (wide) tl.from(sh, { x: dx, y: -i * 6, rotation: (i % 2 ? 1 : -1) * (3 + i), duration: 0.9, ease: 'power3.inOut', clearProps: 'transform' }, at);
-        else tl.from(sh, { y: 24, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, i * 0.1);
-        var lines = q('.aq-sheet-previews__svg path, .aq-sheet-previews__svg rect:not(.aq-sheet-previews__paper)', sh);
-        if (window.DrawSVGPlugin && lines.length) tl.fromTo(lines, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.8, stagger: 0.01, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.7);
-      }
-      var num = it.querySelector('.aq-sheet-previews__num'); if (num) tl.from(num, { yPercent: 40, autoAlpha: 0, duration: 0.7, clearProps: 'transform,opacity,visibility' }, i * 0.08);
-      tl.from(q('.aq-sheet-previews__code, .aq-sheet-previews__t, .aq-sheet-previews__d', it), { y: 10, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, at + 0.8);
-      var c = it.querySelector('.aq-sheet-previews__code'); if (c) tl.call(function () { m.scramble(c, 0) }, null, at + 0.8);
-    });
-    m.on(el, function () { tl.play() }, 'top 80%');
-  });
-});
 /* SheetStack: the document set arrives as one pile in the middle of the axis, then explodes apart, each sheet rising
    or sinking to its row (top sheet first) and settling; the axis draws out from the middle; the drawings on the sheets
    draw on (the calculation's bars run out past the limit line); each row slides in beside its sheet, its code
@@ -6126,37 +6217,35 @@ AQmotion.fx('SystemRun', function (root, m) {
     }
   });
 });
-/* TankSection: the blueprint is drawn as a draughtsman would: floor and legs, then the shell's outline, the cut
-   wall's hatching fills in, the head's nozzles and vent filter, the outlet pipe; the water level rises and the spray
-   ball's jets open. The two detail circles strike out from their marks; then each callout's leader runs from the
-   part to the side, its balloon pops and its label slides in along the hairline. The parts schedule rows follow.
-   One timeline, once, under 5 s. */
-AQmotion.fx('TankSection', function (root, m) {
-  root.querySelectorAll('.aq-tank-section').forEach(function (el) {
+/* TankTiles: the checkerboard opens like shutters. Every tile is covered by slats of the opposite tone that retract
+   upward in a diagonal wave from the head tile (the blueprint tile with seven slats, the others with four); as a tile
+   opens its slash numeral rolls up on the odometer and the tank's lines draw on. Once, about 2 s; the slats are
+   removed at the end. Reduced motion: nothing runs, the grid is complete.
+   Ported from Subframe Motion "Staggered shutter reveal" (shutter-scene), MIT, (c) 2026 Subframe
+   (kept: the slats retracting with scaleY from the top, 820 ms on cubic-bezier(.16,1,.3,1), 45 ms between slats;
+   replaced: the scene swap button with a once-on-scroll wave across the tile grid). */
+AQmotion.fx('TankTiles', function (root, m) {
+  root.querySelectorAll('.aq-tank-tiles').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
-    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) }, svg = el.querySelector('.aq-tank-section__svg');
-    var FR = function (t, set, v, at) { if (set && set.length !== 0) t.from(set, v, at); return t };
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), D = !!window.DrawSVGPlugin;
-    var calls = qa('.aq-tank-section__call').filter(function (c) { return c.offsetParent !== null });
-    if (svg) {
-      var lines = qa('.aq-tank-section__floor, .aq-tank-section__thin, .aq-tank-section__ln, .aq-tank-section__bead, .aq-tank-section__dim, .aq-tank-section__det, .aq-tank-section__lead, .aq-tank-section__prof', svg);
-      if (D) tl.from(lines, { drawSVG: '0%', duration: 1.1, stagger: 0.012, ease: 'power2.inOut' }, 0);
-      else tl.from(lines, { autoAlpha: 0, duration: 0.8 }, 0);
-      FR(tl, qa('.aq-tank-section__wall, .aq-tank-section__eq', svg), { autoAlpha: 0, duration: 0.6, stagger: 0.04, clearProps: 'opacity,visibility' }, 0.7);
-      var water = svg.querySelector('.aq-tank-section__water');
-      if (water) tl.from(water, { scaleY: 0, transformOrigin: '50% 100%', duration: 0.9, ease: 'power2.out', clearProps: 'transform' }, 1.0);
-      FR(tl, qa('.aq-tank-section__jet', svg), { autoAlpha: 0, scale: 0.2, transformOrigin: '50% 0%', duration: 0.4, stagger: 0.03, clearProps: 'transform,opacity,visibility' }, 1.5);
-      FR(tl, qa('.aq-tank-section__flow, .aq-tank-section__cut, .aq-tank-section__mark, .aq-tank-section__tx', svg), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 1.3);
-      FR(tl, qa('.aq-tank-section__detail', svg), { scale: 0, transformOrigin: '50% 50%', autoAlpha: 0, duration: 0.6, stagger: 0.2, ease: 'back.out(1.6)', clearProps: 'transform,opacity,visibility' }, 1.6);
-      var leads = qa('.aq-tank-section__leader', svg), balls = qa('.aq-tank-section__balloon', svg);
-      leads.forEach(function (l, i) { var at = 2.1 + i * 0.22;
-        if (D && calls.length) tl.from(l, { drawSVG: '0%', duration: 0.45, ease: 'power2.inOut' }, at);
-        if (balls[i]) tl.from(balls[i], { scale: 0, transformOrigin: '50% 50%', duration: 0.3, ease: 'back.out(2.4)', clearProps: 'transform' }, at + 0.15);
-        if (calls[i]) tl.from(calls[i], { x: calls[i].classList.contains('is-r') ? 24 : -24, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at + 0.35) });
-    }
-    var rows = qa('.aq-tank-section__sched tbody tr').filter(function (r) { return r.offsetParent !== null });
-    if (rows.length) tl.from(rows, { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, 2.6);
-    m.on(el, function () { tl.play() }, 'top 70%');
+    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var ease = window.CustomEase ? (CustomEase.get('aq-shutter') || CustomEase.create('aq-shutter', '.16,1,.3,1')) : 'expo.out';
+    var cells = [el.querySelector('.aq-tank-tiles__head'), el.querySelector('.aq-tank-tiles__bp')].concat(qa('.aq-tank-tiles__tile')).filter(function (c) { return c && c.offsetParent !== null });
+    var x0 = el.getBoundingClientRect(), W = (x0.width / 4) || 1;
+    var tl = m.tw(gsap.timeline({ paused: true })), D = !!window.DrawSVGPlugin, blinds = [];
+    cells.forEach(function (c) {
+      var r = c.getBoundingClientRect(), col = Math.round((r.left - x0.left) / W), row = Math.round((r.top - x0.top) / (r.height || W)), at = Math.min(1.2, (col + row) * 0.09);
+      var bp = c.classList.contains('aq-tank-tiles__bp'), n = bp ? 7 : 4, navy = c.classList.contains('is-navy') || c.classList.contains('aq-tank-tiles__head');
+      var b = document.createElement('div'); b.className = 'aq-tank-tiles__blinds' + (navy || bp ? ' is-on-navy' : ''); b.setAttribute('aria-hidden', 'true');
+      for (var i = 0; i < n; i++) b.appendChild(document.createElement('span'));
+      c.appendChild(b); blinds.push(b);
+      tl.fromTo(b.children, { scaleY: 1 }, { scaleY: 0, transformOrigin: '50% 0%', duration: 0.82, ease: ease, stagger: 0.045 }, at);
+      var num = c.querySelector('.aq-tank-tiles__n');
+      if (num && m.count) tl.add(function () { m.count(num, { duration: 0.8 }) }, at + 0.15);
+      if (bp && D) tl.from(qa('.aq-tank-tiles__ln, .aq-tank-tiles__dim, .aq-tank-tiles__thin, .aq-tank-tiles__level', c), { drawSVG: '0%', duration: 0.9, stagger: 0.03, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.2);
+      if (bp) tl.from(qa('.aq-tank-tiles__jet, .aq-tank-tiles__tx', c), { autoAlpha: 0, duration: 0.3, stagger: 0.03, clearProps: 'opacity,visibility' }, at + 0.9);
+    });
+    tl.add(function () { blinds.forEach(function (b) { if (b.parentNode) b.parentNode.removeChild(b) }) });
+    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
 /* TermsSheet: the sheet is laid down and its clauses are written in. The sheet rises with a slight turn and settles

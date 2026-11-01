@@ -107,3 +107,9 @@ their motion mechanism and values, rewrite the shell.
 | shutter-scene | OptionChecker/motion.js: checkerboard squares open top-down 820 ms, 45 ms apart along diagonals | OptionChecker (sys-monitoring) |
 | exploded-camera | LayerStack style.css: pointed plate lifts 8 px, 600 ms cubic-bezier(.22,1,.36,1) | LayerStack (sys-monitoring) |
 | guided-inspection | RedlineSheet `AQrsCam`: P&ID band camera zooms x1.7 onto a failure's pin with a spotlight; entrance tour visits each pin | RedlineSheet (svc-design) |
+| race-replay | LoopCircuit/motion.js: scroll-linked ringed marker on the water's route, pathLength fill behind it, stations and captions light on arrival (scrub 0.6, no pin) | LoopCircuit (sys-storage, the page's one scroll-linked story) |
+| slider-detents | MethodBento/motion.js: hot-water rail probe, role=slider, detents at the marks (4.5 % pull), spring carriage 520/34/0.45, zone readout aria-live | MethodBento (sys-storage) |
+| shutter-scene | TankTiles/motion.js: each tile's opposite-tone slats retract 820 ms, 45 ms apart, diagonal wave; numerals roll | TankTiles (sys-storage) |
+| focus-lens | MembraneAtlas/motion.js: sharp micrograph copy masked by a radial gradient under a ring that follows the pointer (smoothing 18/s), soft field around it | MembraneAtlas (sys-pretreatment) |
+| poem-scroll | DocPipe/motion.js: scroll progress fills the water along the snaking pipe, number and code strength 1 - (i - p·n)·0.45 (floor 0.45), valves turn open | DocPipe (sys-pretreatment, the page's one scroll-linked story) |
+| guided-inspection | OptionTaps renderer: note numbers frame their part (×1.6, clamped), others dim, Escape/arrows; CSS transition, works under reduced motion | OptionTaps (sys-pretreatment) |

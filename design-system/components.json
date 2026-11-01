@@ -414,9 +414,9 @@
    "preview": "design-system/components/DecisionValve/preview.html",
    "group": "Page sections",
    "height": "980",
-   "width": "1280",
-   "subtitle": "Chlorine or chloramine: supplies routed through a multiport valve to the removal step",
-   "summary": "DecisionValve draws a router table as a multiport valve on a navy band: supplies on the left, the valve with one numbered position per route in the middle, the routes as cards on the right; choosing a supply turns the lever to that position and lights the line in and the line out, while every card stays readable."
+   "width": "1100",
+   "subtitle": "Chlorine or chloramine router as a multiport valve on paper",
+   "summary": "DecisionValve draws a router table as a multiport valve, a navy object on the paper: supplies on the left, the valve with one numbered position per route in the middle, the routes as cards on the right; choosing a supply turns the lever to that position and lights the line in and the line out, while every card stays readable."
   },
   {
    "name": "DerivationSheet",
@@ -447,6 +447,16 @@
    "width": "1100",
    "subtitle": "Documents as a hairline list: code in mono, name, detail; key documents first, code in flow; one link to the full index",
    "summary": "DocList shows the documents delivered with a system as a quiet hairline list: each row gives the short code a validation team files the document under, its name and one line of detail, with the deciding documents first and their code in `flow`."
+  },
+  {
+   "name": "DocPipe",
+   "readme": "design-system/components/DocPipe/README.md",
+   "preview": "design-system/components/DocPipe/preview.html",
+   "group": "Page sections",
+   "height": "640",
+   "width": "1100",
+   "subtitle": "Pretreatment documents along one snaking double-line pipe",
+   "summary": "DocPipe sets a short document list along one double-line pipe that snakes across a navy band: the route is the list, each document sits in its own bend with a valve on its run."
   },
   {
    "name": "EvidenceMap",
@@ -683,20 +693,20 @@
    "readme": "design-system/components/LoopCircuit/README.md",
    "preview": "design-system/components/LoopCircuit/preview.html",
    "group": "Page sections",
-   "height": "1000",
+   "height": "820",
    "width": "1100",
-   "subtitle": "PW storage and distribution loop as an HMI mimic, seven stages tagged",
-   "summary": "LoopCircuit draws how a storage and distribution loop works as the loop's own control screen: an HMI mimic of the tank in section and the loop circuit, every stage tagged on the screen and listed under it."
+   "subtitle": "PW storage and distribution loop as one P&ID strip, a station over each caption",
+   "summary": "LoopCircuit draws how a storage and distribution loop works as one blueprint P&ID strip on a navy band, each station standing over its own numbered caption, under a display-scale headline."
   },
   {
    "name": "LoopDock",
    "readme": "design-system/components/LoopDock/README.md",
    "preview": "design-system/components/LoopDock/preview.html",
    "group": "Page sections",
-   "height": "800",
+   "height": "960",
    "width": "1100",
-   "subtitle": "Three loop options marked on one isometric loop",
-   "summary": "LoopDock shows a loop's options where they fit on the loop: one isometric storage and distribution loop on a limestone band, a numbered marker on the part each option adds, the options as cards beside it."
+   "subtitle": "Loop options on a navy band, leaders to captions on limestone",
+   "summary": "LoopDock shows a loop's options where they fit on the loop: one isometric storage and distribution loop on a full-width navy band, a numbered marker on the part each option adds and a leader from it down to the option's caption on the limestone below."
   },
   {
    "name": "MacroLeaders",
@@ -743,10 +753,10 @@
    "readme": "design-system/components/MembraneAtlas/README.md",
    "preview": "design-system/components/MembraneAtlas/preview.html",
    "group": "Page sections",
-   "height": "1240",
-   "width": "1280",
-   "subtitle": "Feed water conditions as micrograph plates of what each does to the membrane",
-   "summary": "MembraneAtlas reads a feed-water table as an atlas of membrane failures: one plate per condition, a round micrograph of the membrane surface showing what that condition does to it, then the condition, its effect and what we design for."
+   "height": "1250",
+   "width": "1100",
+   "subtitle": "Feed water conditions as a numbered table with navy numeral tiles",
+   "summary": "MembraneAtlas reads a feed-water table as a numbered sequence of membrane failures: each row headed by a navy tile with a huge light slash numeral over a micrograph of what that condition does to the membrane, then the condition, its effect and what we design for."
   },
   {
    "name": "MembraneFace",
@@ -765,7 +775,7 @@
    "group": "Page sections",
    "height": "1100",
    "width": "1100",
-   "subtitle": "Chemical, hot water or UV as drawn tiles; ozone as the empty slot",
+   "subtitle": "Sanitization methods as a bento, hot-water rail with a probe",
    "summary": "MethodBento sets a short comparison of methods as a bento of drawn tiles, one per method, with the method that is not offered shown as an empty dashed tile."
   },
   {
@@ -843,10 +853,10 @@
    "readme": "design-system/components/OptionTaps/README.md",
    "preview": "design-system/components/OptionTaps/preview.html",
    "group": "Page sections",
-   "height": "940",
-   "width": "1280",
-   "subtitle": "Pretreatment options as dashed parts teed off the standard train",
-   "summary": "OptionTaps shows options where they would join the system: the standard train drawn solid in isometric line on a blueprint sheet, and each option as a dashed part (the drawing convention for \"optional\") on its own dashed tee off the main line, with numbered cards under the sheet."
+   "height": "900",
+   "width": "1100",
+   "subtitle": "Pretreatment options on a limestone drawing sheet with notes",
+   "summary": "OptionTaps shows options where they would join the system, as one limestone drawing sheet: the standard train drawn solid in isometric line, each option a dashed part (the drawing convention for \"optional\") on its own dashed tee off the main line, a huge light title, and the options as numbered drawing notes in a narrow column whose numbers frame their part on the drawing."
   },
   {
    "name": "PackMatrix",
@@ -1159,16 +1169,6 @@
    "summary": "SectionTrain draws a pretreatment train as one sectional elevation on a limestone sheet, every vessel cut open so its bed shows and each bed holding what it caught, so the reader sees the water lose its particles, hardness, chlorine and fines stage by stage."
   },
   {
-   "name": "SheetPreviews",
-   "readme": "design-system/components/SheetPreviews/README.md",
-   "preview": "design-system/components/SheetPreviews/preview.html",
-   "group": "Page sections",
-   "height": "840",
-   "width": "1280",
-   "subtitle": "Pretreatment documents as a Swiss row of sheets, each thumbnail showing its kind",
-   "summary": "SheetPreviews sets a short document list as a Swiss row of sheets: a huge index numeral, a paper sheet whose thumbnail shows what kind of document it is, then its code, name and line."
-  },
-  {
    "name": "SheetStack",
    "readme": "design-system/components/SheetStack/README.md",
    "preview": "design-system/components/SheetStack/preview.html",
@@ -1369,14 +1369,14 @@
    "summary": "SystemRun shows a modular package as one continuous water line drawn as a navy blueprint: drinking water enters at the left, runs through each system's equipment in order and leaves at the point of use, with a column per system under the drawing."
   },
   {
-   "name": "TankSection",
-   "readme": "design-system/components/TankSection/README.md",
-   "preview": "design-system/components/TankSection/preview.html",
+   "name": "TankTiles",
+   "readme": "design-system/components/TankTiles/README.md",
+   "preview": "design-system/components/TankTiles/preview.html",
    "group": "Page sections",
-   "height": "1150",
+   "height": "1060",
    "width": "1100",
-   "subtitle": "PP storage tank in section with six callouts and a parts schedule",
-   "summary": "TankSection reads fabrication parameters off a blueprint of the storage tank cut in half on a navy band, each parameter a numbered callout on the part it governs and the rest in a parts schedule."
+   "subtitle": "Tank and pipework on a navy and limestone checkerboard, one blueprint tile",
+   "summary": "TankTiles sets a spec block's parameters on a Swiss checkerboard of square navy and limestone tiles, each led by a huge light slash numeral, with one steel-blue blueprint tile of the storage tank as the anchor."
   },
   {
    "name": "TermsSheet",

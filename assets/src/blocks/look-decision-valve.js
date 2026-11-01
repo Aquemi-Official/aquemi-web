@@ -1,5 +1,5 @@
 /* Look "decision-valve" -> DecisionValve (design-system/components/DecisionValve): a router table drawn as a multiport
-   valve on a navy band. Each situation is a supply line on the left; the valve sits in the middle with one numbered
+   valve, a navy object on the paper (pass 9b concept sys-pretreatment.3 is a light sheet). Each situation is a supply line on the left; the valve sits in the middle with one numbered
    position per route on its plate; each route leaves the valve on its own line to a card on the right (the step, then
    the other columns under their own labels). Choosing a supply turns the valve's lever to that position and lights the
    line in and the line out; every card stays readable. Default: the first route. Phones: the valve heads the section,
@@ -37,7 +37,7 @@ LOOKS['decision-valve']=function(b,H){
     +(rest?'<dl class="'+K+'__dl">'+rest+'</dl>':'')+'</article>'}).join('');
  var heads='<p class="'+K+'__colh '+K+'__colh--src">'+tx(C[0]||'')+'</p><p class="'+K+'__colh '+K+'__colh--card">'+tx(C[1]||'')+'</p>';
  var mid='<div class="'+K+'__valve">'+lines(n)+dial(n)+'</div>';
- return sec(H+'<div class="'+K+'" style="--n:'+n+'">'+heads+mid+rows+'</div>','aq-band--navy '+K+'-sec')};
+ return sec(H+'<div class="'+K+'" style="--n:'+n+'">'+heads+mid+rows+'</div>',K+'-sec')};
 /* choose a route: the lever turns, the line in and the line out light, the card lights; all cards stay visible */
 function pick(w,i){if(!w)return;var n=+getComputedStyle(w).getPropertyValue('--n')||w.querySelectorAll('.'+K+'__src').length;
  [].forEach.call(w.querySelectorAll('[data-i]'),function(x){var on=+x.getAttribute('data-i')===i;x.classList.toggle('is-on',on);if(x.tagName==='BUTTON')x.setAttribute('aria-pressed',on?'true':'false')});

@@ -254,30 +254,26 @@
    "items": [
     {
      "t": "Feed water review and design basis",
-     "d": "Data used, design months and RO inlet targets",
-     "sheet": "basis"
+     "d": "Data used, design months and RO inlet targets"
     },
     {
      "t": "Membrane projections",
-     "d": "At coldest and warmest feed",
-     "sheet": "curves"
+     "d": "At coldest and warmest feed"
     },
     {
      "t": "Functional specification",
-     "d": "Regeneration, backwash, alarms and interlocks",
-     "sheet": "logic"
+     "d": "Regeneration, backwash, alarms and interlocks"
     },
     {
      "t": "Media, resin and material certificates",
-     "d": "Lot numbers; [certificates supplied for PVC parts]",
-     "sheet": "certificate"
+     "d": "Lot numbers; [certificates supplied for PVC parts]"
     }
    ],
    "nav": "Documents",
    "fold_noun": "documents",
    "link": "cmp-documentation#index",
    "link_label": "Full index",
-   "look": "sheet-previews"
+   "look": "doc-pipe"
   },
   {
    "type": "options",
@@ -341,7 +337,8 @@
     },
     {
      "part": "carbon",
-     "label": "Carbon or bisulfite"
+     "label": "Carbon or bisulfite",
+     "ly": -64
     },
     {
      "part": "filter",

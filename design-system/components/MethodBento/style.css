@@ -75,3 +75,18 @@
   .aq-method-bento__ml { font-size: 13px; line-height: 18px; }
   .aq-method-bento__ghost { font-size: 44px; }
 }
+
+/* The probe (added by motion.js): a needle the visitor drags along the rail, snapping to the marks; a readout below */
+.aq-method-bento__probe { position: absolute; left: var(--space-8); right: 0; top: 0; height: var(--space-12); cursor: ew-resize; touch-action: pan-y; }
+.aq-method-bento__thumb { position: absolute; top: calc(-1 * var(--space-1)); width: var(--space-12); height: calc(var(--space-12) + var(--space-2)); margin-left: calc(-1 * var(--space-6)); outline: none; }
+.aq-method-bento__needle { position: absolute; left: calc(50% - 1px); top: 0; bottom: 0; width: 2px; background: var(--limestone); }
+.aq-method-bento__needle::before { content: ""; position: absolute; left: calc(-1 * var(--space-2) + 1px); top: calc(var(--space-3) - 1px); width: var(--space-4); height: var(--space-4); background: var(--flow); border: 2px solid var(--limestone); box-sizing: border-box;
+  transition: transform 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-method-bento__probe.is-drag .aq-method-bento__needle::before, .aq-method-bento__thumb:hover .aq-method-bento__needle::before { transform: scale(1.25); }
+.aq-method-bento__thumb:focus-visible { outline: 2px solid var(--limestone); outline-offset: 2px; }
+.aq-method-bento__read { margin: calc(-1 * var(--space-2)) 0 var(--space-4) var(--space-8); display: flex; align-items: baseline; gap: var(--space-3); min-height: var(--space-6); }
+.aq-method-bento__rv { font: 400 16px/24px var(--font-mono); color: var(--limestone); font-variant-numeric: tabular-nums; min-width: 6ch; }
+.aq-method-bento__rl { font: 400 14px/20px var(--font-sans); color: var(--on-navy); }
+@container (max-width: 860px) {
+  .aq-method-bento__read { margin-left: 0; }
+}

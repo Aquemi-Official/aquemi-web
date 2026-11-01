@@ -1,10 +1,11 @@
 /* OptionTaps: the standard train is drawn first and the water runs it (IsoKit choreography: parts draw back to front,
    pipes, then the flow). Then the options appear as what they are, possibilities: each dashed part and its tee fade up
-   in turn while its numbered marker drops onto it and the matching card slides up. Once on scroll-in, under 5 s. */
+   in turn while its numbered pin drops onto it and the matching note slides up. Once on scroll-in, under 5 s. The note
+   numbers frame their part on the drawing (guided-inspection port, in the renderer so it also works under reduced motion). */
 AQmotion.fx('OptionTaps', function (root, m) {
   root.querySelectorAll('.aq-option-taps').forEach(function (el) {
     var fig = el.querySelector('.aq-option-taps__fig'), svg = fig && fig.querySelector('svg.aq-iso');
-    if (!svg || !m.free(fig)) return; m.claim(fig); m.claim(el);
+    if (!svg || !m.free(fig)) return; m.claim(fig); m.claim(el.querySelector('.aq-option-taps__side'));
     var q = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
     var ghosts = q('.aq-option-taps__ghost', svg), tees = q('.aq-option-taps__tee', svg), marks = q('.aq-option-taps__mark'), cards = q('.aq-option-taps__card');
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));

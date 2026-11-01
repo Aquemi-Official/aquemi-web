@@ -1,49 +1,54 @@
-/* LoopCircuit: the control screen powers on (a bright line opens to the full screen), the pipes and equipment draw
-   on, then the water runs: from generation into the tank (the level rises), out through the pump and exchanger, up
-   and back past the points of use and return sensors, home through the spray ball (the jets open). Each stage's tag
-   and column light as the water reaches them; the loop's water then runs as a moving dash for a second and stops.
-   One timeline, once, under 5 s. */
+/* LoopCircuit: the strip prints in (column rules, pipes, then each station in reading order) and the captions rise
+   (once, under 2 s). Then the page's one scroll-linked story: as the band passes through the viewport a ringed marker
+   follows the water's route (generation, into the tank, out through pump and exchanger, past the outlets and return
+   sensors, up the riser and home through the spray ball); the water line fills behind it and each station and caption
+   lights as the marker reaches it. Scrolling back runs it back. It never pins or changes scroll speed; the drawing is
+   complete at every position. Under reduced motion nothing runs: the water lines are drawn in full, no marker.
+   Ported from Subframe Motion "Animated route path" (race-replay), MIT, (c) 2026 Subframe
+   (kept: the route painted by one fraction, a pathLength-normalised dash offset behind a ringed marker placed with
+   getPointAtLength, the fraction clamped 0..1; replaced: the play button and timer with scroll position). */
 AQmotion.fx('LoopCircuit', function (root, m) {
   root.querySelectorAll('.aq-loop-circuit').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
     var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
-    var svg = el.querySelector('.aq-loop-circuit__svg'), screen = el.querySelector('.aq-loop-circuit__screen'), stages = qa('.aq-loop-circuit__stage');
-    var FR = function (t, set, v, at) { if (set && set.length !== 0) t.from(set, v, at); return t };
+    var svg = el.querySelector('.aq-loop-circuit__svg'), strip = el.querySelector('.aq-loop-circuit__strip'), stages = qa('.aq-loop-circuit__stage');
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } })), D = !!window.DrawSVGPlugin;
-    tl.from(stages, { y: 16, autoAlpha: 0, duration: 0.6, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.1);
-    if (!svg || !screen || screen.offsetParent === null) { m.on(el, function () { tl.play() }, 'top 80%'); return }
-    tl.fromTo(screen, { clipPath: 'inset(50% 0 50% 0)' }, { clipPath: 'inset(0% 0 0% 0)', duration: 0.6, ease: 'power4.inOut', clearProps: 'clipPath' }, 0);
-    var lines = qa('.aq-loop-circuit__pipe, .aq-loop-circuit__eq:not(.is-opt), .aq-loop-circuit__ln, .aq-loop-circuit__thin, .aq-loop-circuit__lead', svg);
-    if (D) tl.from(lines, { drawSVG: '0%', duration: 0.9, stagger: 0.008, ease: 'power2.inOut' }, 0.35);
-    else tl.from(lines, { autoAlpha: 0, duration: 0.6 }, 0.35);
-    FR(tl, qa('.aq-loop-circuit__eq.is-opt, .aq-loop-circuit__hid, .aq-loop-circuit__tx, .aq-loop-circuit__chev', svg), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 1.1);
-    FR(tl, qa('.aq-loop-circuit__tag', svg), { autoAlpha: 0, scale: 0.6, transformOrigin: '50% 50%', duration: 0.35, stagger: 0.05, ease: 'back.out(2)', clearProps: 'transform,opacity,visibility' }, 1.0);
-    var feed = svg.querySelector('.aq-loop-circuit__flow--feed'), loop = svg.querySelector('.aq-loop-circuit__flow--loop'), water = svg.querySelector('.aq-loop-circuit__water');
-    var tags = qa('.aq-loop-circuit__tag', svg), byNode = {};
-    tags.forEach(function (t) { byNode[t.getAttribute('data-node')] = t });
-    function light(id) { var t = byNode[id]; if (t) t.classList.add('is-on'); stages.forEach(function (s) { if (s.getAttribute('data-node') === id) s.classList.add('is-on') }) }
-    var T0 = 1.4;
-    if (feed) { if (D) tl.from(feed, { drawSVG: '0%', duration: 0.5, ease: 'none' }, T0); tl.add(function () { light('gen') }, T0) }
-    if (water) tl.from(water, { scaleY: 0, transformOrigin: '50% 100%', duration: 0.7, ease: 'power2.out', clearProps: 'transform' }, T0 + 0.4);
-    tl.add(function () { light('tank') }, T0 + 0.5);
-    if (loop) {
-      var L = loop.getTotalLength(), stops = [];
-      tags.forEach(function (t) { var id = t.getAttribute('data-node'); if (id === 'gen' || id === 'tank') return;
-        var a = (t.getAttribute('data-at') || '').split(',').map(Number), best = 0, bd = 1e9;
-        for (var s = 0; s <= L; s += 4) { var p = loop.getPointAtLength(s), d = (p.x - a[0]) * (p.x - a[0]) + (p.y - a[1]) * (p.y - a[1]); if (d < bd) { bd = d; best = s } }
-        stops.push({ id: id, f: best / L }) });
-      var dur = 1.9, T1 = T0 + 0.6;
-      if (D) tl.from(loop, { drawSVG: '0%', duration: dur, ease: 'none' }, T1);
-      stops.forEach(function (s) { tl.add(function () { light(s.id) }, T1 + s.f * dur) });
-      if (window.MotionPathPlugin) {
-        var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); dot.setAttribute('r', '7'); dot.setAttribute('class', 'aq-loop-circuit__dot'); svg.appendChild(dot);
-        gsap.set(dot, { autoAlpha: 0 });
-        tl.set(dot, { autoAlpha: 1 }, T1).to(dot, { motionPath: { path: loop, align: loop, alignOrigin: [0.5, 0.5] }, duration: dur, ease: 'none' }, T1).set(dot, { autoAlpha: 0 }, T1 + dur);
-        tl.add(function () { if (dot.parentNode) dot.parentNode.removeChild(dot) }, T1 + dur + 0.05);
-      }
-      FR(tl, qa('.aq-loop-circuit__jet', svg), { autoAlpha: 0, scale: 0.2, transformOrigin: '50% 0%', duration: 0.4, stagger: 0.03, clearProps: 'transform,opacity,visibility' }, T1 + dur - 0.1);
-      tl.fromTo(loop, { strokeDasharray: '14 10', strokeDashoffset: 0 }, { strokeDashoffset: -96, duration: 1, ease: 'sine.inOut', immediateRender: false, clearProps: 'strokeDasharray,strokeDashoffset' }, T1 + dur + 0.1);
+    tl.from(stages, { y: 16, autoAlpha: 0, duration: 0.6, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, 0.2);
+    if (!svg || !strip || strip.offsetParent === null) { m.on(el, function () { tl.play() }, 'top 80%'); return }
+    /* print-in: column rules and pipes draw, then the stations left to right */
+    var base = qa('.aq-loop-circuit__col, .aq-loop-circuit__pipe', svg);
+    if (D) tl.from(base, { drawSVG: '0%', duration: 0.8, stagger: 0.03, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0);
+    qa('.aq-loop-circuit__node', svg).forEach(function (n, i) {
+      var ln = qa('.aq-loop-circuit__eq:not(.is-opt), .aq-loop-circuit__ln, .aq-loop-circuit__thin', n);
+      if (D && ln.length) tl.from(ln, { drawSVG: '0%', duration: 0.5, stagger: 0.02, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.3 + i * 0.1);
+      var rest = qa('.aq-loop-circuit__jet, .aq-loop-circuit__tx, .aq-loop-circuit__drop, .aq-loop-circuit__pt, .aq-loop-circuit__det, .aq-loop-circuit__hid, .aq-loop-circuit__eq.is-opt', n);
+      if (rest.length) tl.from(rest, { autoAlpha: 0, duration: 0.3, stagger: 0.015, clearProps: 'opacity,visibility' }, 0.6 + i * 0.1);
+    });
+    var water = svg.querySelector('.aq-loop-circuit__water');
+    if (water) tl.from(water, { scaleY: 0, transformOrigin: '50% 100%', duration: 0.7, ease: 'power2.out', clearProps: 'transform' }, 0.5);
+    m.on(el, function () { tl.play() }, 'top 75%');
+
+    /* the scroll-linked route */
+    var route = svg.querySelector('.aq-loop-circuit__route'), feed = svg.querySelector('.aq-loop-circuit__flow--feed'), loop = svg.querySelector('.aq-loop-circuit__flow--loop');
+    if (!route || !window.ScrollTrigger) return;
+    var L = route.getTotalLength(), Lf = feed ? feed.getTotalLength() : 0, Ll = loop ? loop.getTotalLength() : 0;
+    function near(x, y, from) { var best = from || 0, bd = 1e9; for (var s = from || 0; s <= L; s += 3) { var p = route.getPointAtLength(s), d = (p.x - x) * (p.x - x) + (p.y - y) * (p.y - y); if (d < bd) { bd = d; best = s } } return best }
+    var o0 = loop ? near(300, 262, Lf) : 0;
+    var stops = stages.map(function (s) { var a = (s.getAttribute('data-at') || '').split(',').map(Number); return a.length === 2 ? { s: s, id: s.getAttribute('data-node'), at: near(a[0], a[1]) } : null }).filter(Boolean);
+    var nodes = {}; qa('.aq-loop-circuit__node', svg).forEach(function (n) { nodes[n.getAttribute('data-node')] = n });
+    [feed, loop].forEach(function (f) { if (f) { f.setAttribute('pathLength', '1'); f.style.strokeDasharray = '1 1' } });
+    var NS = 'http://www.w3.org/2000/svg', mk = document.createElementNS(NS, 'g'); mk.setAttribute('class', 'aq-loop-circuit__marker');
+    mk.innerHTML = '<circle class="aq-loop-circuit__mk" r="11"/><circle class="aq-loop-circuit__mk-dot" r="4"/>'; svg.appendChild(mk);
+    var last = -1;
+    function paint(v) {
+      v = Math.max(0, Math.min(1, v)); if (v === last) return; last = v;
+      var s = L * v, p = route.getPointAtLength(s);
+      mk.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ')');
+      if (feed) feed.style.strokeDashoffset = String(1 - Math.min(1, s / Lf));
+      if (loop) loop.style.strokeDashoffset = String(1 - Math.max(0, Math.min(1, (s - o0) / Ll)));
+      stops.forEach(function (st) { var on = s >= st.at - 2; st.s.classList.toggle('is-on', on); if (nodes[st.id]) nodes[st.id].classList.toggle('is-on', on) });
     }
-    m.on(el, function () { tl.play() }, 'top 70%');
+    paint(0);
+    m.tw(ScrollTrigger.create({ trigger: strip, start: 'top 70%', end: 'bottom 30%', scrub: 0.6, onUpdate: function (st) { paint(st.progress) }, onRefresh: function (st) { paint(st.progress) } }));
   });
 });

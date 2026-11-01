@@ -1,6 +1,7 @@
 /* LoopDock: the loop draws itself with the shared IsoKit choreography (parts back to front, pipes, then the water
    runs from the tank through the module, the UV, out to the points of use and home overhead). Each option's marker
-   drops onto its part as the water reaches it and its card slides in at the same moment. One timeline, once, under
+   drops onto its part as the water reaches it, its leader runs down from the part to the caption row and the caption
+   rises at the same moment. One timeline, once, under
    5 s; nothing under reduced motion. */
 AQmotion.fx('LoopDock', function (root, m) {
   root.querySelectorAll('.aq-loop-dock').forEach(function (el) {
@@ -16,7 +17,9 @@ AQmotion.fx('LoopDock', function (root, m) {
       var parts = (c.getAttribute('data-parts') || '').split(' '), at = arrive[parts[0]] != null ? arrive[parts[0]] : fallback + i * 0.2;
       var mk = el.querySelector('.aq-loop-dock__mk[data-c="' + c.getAttribute('data-c') + '"]');
       if (mk) tl.from(mk, { y: -24, autoAlpha: 0, duration: 0.45, ease: 'back.out(2)', clearProps: 'transform,opacity,visibility' }, at);
-      tl.from(c, { x: 32, autoAlpha: 0, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, Math.min(at, 0.6 + i * 0.3));
+      var ld = qa('.aq-loop-dock__leads [data-c="' + c.getAttribute('data-c') + '"]'), path = ld.filter(function (x) { return x.tagName.toLowerCase() === 'path' });
+      if (path.length && window.DrawSVGPlugin && path[0].getBoundingClientRect().width) tl.from(path, { drawSVG: '0%', duration: 0.6, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.1);
+      tl.from(c, { y: 16, autoAlpha: 0, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.4);
     });
     m.on(el, function () { tl.play() }, 'top 70%');
   });

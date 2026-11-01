@@ -1156,6 +1156,7 @@
      ],
      "scale": {
       "row": 0,
+      "base": "Inside the PP maker's curve",
       "marks": [
        {
         "v": 65,
@@ -1182,42 +1183,22 @@
       {
        "p": "Tank volume",
        "v": "[tank volume range, L]",
-       "m": "Sized from your demand profile",
-       "at": [
-        28.5,
-        48.6
-       ],
-       "part": "volume"
+       "m": "Sized from your demand profile"
       },
       {
        "p": "Product contact",
        "v": "Unpigmented PP, [PP grade]",
-       "m": "[PP material certificates]",
-       "at": [
-        86.7,
-        71.4
-       ],
-       "part": "contact"
+       "m": "[PP material certificates]"
       },
       {
        "p": "Internal surface",
        "v": "[PP internal surface specification, Ra µm]",
-       "m": "[basis for the PP surface specification]",
-       "at": [
-        43.3,
-        20.1
-       ],
-       "part": "surface"
+       "m": "[basis for the PP surface specification]"
       },
       {
        "p": "Joints",
        "v": "[PP joining method]; [PP joint records kept]",
-       "m": "[welder qualification standard for thermoplastics]",
-       "at": [
-        78.7,
-        56.0
-       ],
-       "part": "joint"
+       "m": "[welder qualification standard for thermoplastics]"
       },
       {
        "p": "Budget",
@@ -1228,12 +1209,7 @@
       {
        "p": "Tank design",
        "v": "[PP tank design: atmospheric or pressure-rated]",
-       "m": "[PP tank design standard]",
-       "at": [
-        50.7,
-        29.2
-       ],
-       "part": "design"
+       "m": "[PP tank design standard]"
       },
       {
        "p": "Cleaning before first use",
@@ -1253,15 +1229,14 @@
       {
        "p": "Spray ball",
        "v": "Wets head space and walls continuously",
-       "m": "WHO TRS 1033, 9.2; riboflavin coverage test",
-       "part": "spray"
+       "m": "WHO TRS 1033, 9.2; riboflavin coverage test"
       }
      ],
      "nav": "Fabrication",
      "fold": 5,
      "fold_noun": "parameters",
      "as": "callouts",
-     "look": "tank-section"
+     "look": "tank-tiles"
     },
     {
      "type": "docs",
@@ -1307,20 +1282,20 @@
        ]
       },
       {
-       "t": "Point-of-use coolers",
-       "d": "Single-user coolers that flush to drain until temperature and time are met.",
-       "spot": "heat-exchanger",
-       "part": [
-        "cool"
-       ]
-      },
-      {
        "t": "Prefabricated loop modules",
        "d": "Pump, exchanger, UV and instruments on one skid; [100 %] tested with water before shipping.",
        "spot": "pump",
        "part": [
         "mod",
         "uv"
+       ]
+      },
+      {
+       "t": "Point-of-use coolers",
+       "d": "Single-user coolers that flush to drain until temperature and time are met.",
+       "spot": "heat-exchanger",
+       "part": [
+        "cool"
        ]
       }
      ],
@@ -1658,30 +1633,26 @@
      "items": [
       {
        "t": "Feed water review and design basis",
-       "d": "Data used, design months and RO inlet targets",
-       "sheet": "basis"
+       "d": "Data used, design months and RO inlet targets"
       },
       {
        "t": "Membrane projections",
-       "d": "At coldest and warmest feed",
-       "sheet": "curves"
+       "d": "At coldest and warmest feed"
       },
       {
        "t": "Functional specification",
-       "d": "Regeneration, backwash, alarms and interlocks",
-       "sheet": "logic"
+       "d": "Regeneration, backwash, alarms and interlocks"
       },
       {
        "t": "Media, resin and material certificates",
-       "d": "Lot numbers; [certificates supplied for PVC parts]",
-       "sheet": "certificate"
+       "d": "Lot numbers; [certificates supplied for PVC parts]"
       }
      ],
      "nav": "Documents",
      "fold_noun": "documents",
      "link": "cmp-documentation#index",
      "link_label": "Full index",
-     "look": "sheet-previews"
+     "look": "doc-pipe"
     },
     {
      "type": "options",
@@ -1745,7 +1716,8 @@
       },
       {
        "part": "carbon",
-       "label": "Carbon or bisulfite"
+       "label": "Carbon or bisulfite",
+       "ly": -64
       },
       {
        "part": "filter",

@@ -2330,34 +2330,34 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
 .aq-cutover-schedule-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 20ch; }
 @container (max-width: 860px) { .aq-cutover-schedule-sec .aq-sec-head .aq-h1 { font: 300 36px/42px var(--font-sans); } }
 
-/* ---------- DecisionValve: a router table as a multiport valve on navy ---------- */
+/* ---------- DecisionValve: a router table as a multiport valve, a navy object on the paper ---------- */
 /* Three columns: supplies, the valve (spanning every route row, its lines stretched to the row centres), route cards.
    Rows are equal height so each line meets its row's centre. */
 .aq-decision-valve { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 3fr) minmax(0, 6fr);
-  grid-template-rows: auto repeat(var(--n, 4), minmax(0, 1fr)); column-gap: 0; row-gap: var(--space-3); color: var(--on-navy); }
-.aq-decision-valve-sec .aq-sec-head .aq-h1 { color: var(--on-navy); }
-.aq-decision-valve__colh { grid-row: 1; margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+  grid-template-rows: auto repeat(var(--n, 4), minmax(0, 1fr)); column-gap: 0; row-gap: var(--space-3); color: var(--ink); }
+.aq-decision-valve-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 20ch; }
+.aq-decision-valve__colh { grid-row: 1; margin: 0 0 var(--space-2); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
 .aq-decision-valve__colh--src { grid-column: 1; }
 .aq-decision-valve__colh--card { grid-column: 3; }
 
 /* Supplies: the choice. Large targets, the chosen one in limestone */
 .aq-decision-valve__src { grid-column: 1; grid-row: var(--r, auto); align-self: center; display: flex; align-items: center; gap: var(--space-4); min-height: 64px; width: 100%;
-  padding: var(--space-4) var(--space-4); border: 1px solid color-mix(in srgb, var(--on-navy-muted) 45%, transparent); border-radius: 0;
-  background: transparent; color: var(--on-navy); text-align: left; font: 400 17px/24px var(--font-sans); cursor: pointer;
+  padding: var(--space-4) var(--space-4); border: 1px solid var(--line-strong); border-radius: 0;
+  background: var(--surface-raised); color: var(--ink); text-align: left; font: 400 17px/24px var(--font-sans); cursor: pointer;
   transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1), border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-decision-valve__src:hover { border-color: var(--limestone); }
-.aq-decision-valve__src:focus-visible { outline: 2px solid var(--limestone); outline-offset: 2px; }
-.aq-decision-valve__src.is-on { background: var(--limestone); border-color: var(--limestone); color: var(--on-limestone); }
-.aq-decision-valve__no { flex: none; font: 400 13px/16px var(--font-mono); color: var(--on-navy-muted); }
-.aq-decision-valve__src.is-on .aq-decision-valve__no { color: var(--on-limestone-muted); }
+.aq-decision-valve__src:hover { border-color: var(--navy); }
+.aq-decision-valve__src:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-decision-valve__src.is-on { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+.aq-decision-valve__no { flex: none; font: 400 13px/16px var(--font-mono); color: var(--ink-muted); }
+.aq-decision-valve__src.is-on .aq-decision-valve__no { color: var(--on-navy-muted); }
 
 /* The valve: lines stretched over the rows, the dial centred on them */
 .aq-decision-valve__valve { grid-column: 2; grid-row: 2 / span var(--n, 4); position: relative; display: grid; place-items: center; min-height: 0; }
 .aq-decision-valve__lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.aq-decision-valve__lines path { fill: none; stroke: color-mix(in srgb, var(--on-navy-muted) 40%, transparent); stroke-width: 1.5; vector-effect: non-scaling-stroke;
+.aq-decision-valve__lines path { fill: none; stroke: var(--line-strong); stroke-width: 1.5; vector-effect: non-scaling-stroke;
   transition: stroke 300ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-decision-valve__lines path.is-hint { stroke: var(--on-navy-muted); }
-.aq-decision-valve__lines path.is-on { stroke: var(--limestone); stroke-width: 3; }
+.aq-decision-valve__lines path.is-hint { stroke: var(--ink-muted); }
+.aq-decision-valve__lines path.is-on { stroke: var(--flow); stroke-width: 3; }
 .aq-decision-valve__dial { position: relative; width: min(100%, 300px); height: auto; overflow: visible; }
 .aq-decision-valve__dial * { vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
 .aq-decision-valve__body { fill: var(--navy); stroke: var(--limestone); stroke-width: 1.5; }
@@ -2376,17 +2376,17 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
 
 /* Route cards: all readable; the chosen one on limestone */
 .aq-decision-valve__card { grid-column: 3; grid-row: var(--r, auto); align-self: stretch; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4) var(--space-6);
-  border: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent); cursor: pointer;
+  border: 1px solid var(--line-strong); background: var(--surface-raised); cursor: pointer;
   transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1), border-color 300ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-decision-valve__card.is-on { background: var(--limestone); border-color: var(--limestone); color: var(--on-limestone); }
-.aq-decision-valve__cardno { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-decision-valve__card.is-on { border-color: var(--flow); box-shadow: inset var(--space-1) 0 0 var(--flow); }
+.aq-decision-valve__cardno { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
 .aq-decision-valve__step { margin: 0; font: 300 26px/32px var(--font-sans); letter-spacing: -0.015em; }
 .aq-decision-valve__dl { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-4); }
 .aq-decision-valve__kv { display: flex; flex-direction: column; gap: var(--space-1); }
-.aq-decision-valve__kv dt { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-navy-muted); }
-.aq-decision-valve__kv dd { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-navy-muted); }
-.aq-decision-valve__card.is-on .aq-decision-valve__cardno, .aq-decision-valve__card.is-on .aq-decision-valve__kv dt { color: var(--on-limestone-muted); }
-.aq-decision-valve__card.is-on .aq-decision-valve__kv dd { color: var(--on-limestone); }
+.aq-decision-valve__kv dt { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-decision-valve__kv dd { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
+.aq-decision-valve__card.is-on .aq-decision-valve__cardno { color: var(--ink); }
+.aq-decision-valve__card.is-on .aq-decision-valve__kv dd { color: var(--ink); }
 .aq-decision-valve a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 
 /* Phones: the valve heads the block, then each supply over its card */
@@ -2400,9 +2400,10 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
   .aq-decision-valve__src { margin-top: var(--space-4); }
   .aq-decision-valve__card { position: relative; margin-top: var(--space-4); padding: var(--space-4); }
   .aq-decision-valve__card::before { content: ""; position: absolute; left: var(--space-8); bottom: 100%; height: var(--space-4); width: 0;
-    border-left: 2px solid color-mix(in srgb, var(--on-navy-muted) 50%, transparent); }
-  .aq-decision-valve__card.is-on::before { border-left-color: var(--limestone); }
+    border-left: 2px solid var(--line-strong); }
+  .aq-decision-valve__card.is-on::before { border-left-color: var(--flow); }
   .aq-decision-valve__step { font-size: 22px; line-height: 28px; }
+  .aq-decision-valve-sec .aq-sec-head .aq-h1 { font-size: 36px; line-height: 42px; }
   .aq-decision-valve__dl { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
 }
 
@@ -2606,6 +2607,67 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
   .aq-fold:not(.is-open) .aq-docs > li.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-docs) > .aq-fold__btn { display: flex; }
 }
+
+/* ---------- DocPipe: documents along one double-line pipe that snakes across a navy band ---------- */
+/* The section is dark-themed (data-theme="dark"): flow is the light water blue. Each column is 380 px tall; its pipe
+   piece is a 300 x 380 SVG stretched to the column (strokes do not scale), the run at 50 (high) or 330 (low). */
+.aq-doc-pipe-sec .aq-sec-head .aq-h1 { font: 300 72px/76px var(--font-sans); letter-spacing: -0.03em; max-width: none; color: var(--on-navy); }
+.aq-doc-pipe__top { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; }
+.aq-doc-pipe__more { margin: 0; }
+.aq-doc-pipe { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: 0; }
+.aq-doc-pipe { --dp-h: calc(var(--space-32) * 3 - var(--space-4)); }
+.aq-doc-pipe__item { position: relative; height: var(--dp-h, var(--space-32)); min-width: 0; }
+.aq-doc-pipe__pipe { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.aq-doc-pipe__pipe path { fill: none; stroke-linecap: butt; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-doc-pipe__wall { stroke: var(--on-navy-muted); stroke-width: 12; }
+.aq-doc-pipe__bore { stroke: var(--navy); stroke-width: 9; }
+.aq-doc-pipe__flow { stroke: var(--flow); stroke-width: 2; }
+.aq-doc-pipe__pipe .aq-doc-pipe__cap { stroke: var(--on-navy-muted); stroke-width: 2; }
+
+/* valves on each run, three quarters along; the stem points away from the document */
+.aq-doc-pipe__valve { position: absolute; left: 76%; top: calc(var(--dp-h, var(--space-32)) * 50 / 380); width: var(--space-6); height: var(--space-12); translate: -50% -50%; }
+.is-lo .aq-doc-pipe__valve { top: calc(var(--dp-h, var(--space-32)) * 330 / 380); }
+.aq-doc-pipe__vsvg { display: block; width: 100%; height: 100%; overflow: visible; }
+.aq-doc-pipe__vb { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5; stroke-linejoin: round; }
+.aq-doc-pipe__vs { fill: none; stroke: var(--on-navy); stroke-width: 1.5; stroke-linecap: round; }
+.aq-doc-pipe__stem { transform-box: view-box; transform-origin: 0 0; }
+
+/* the document in its bend */
+.aq-doc-pipe__txt { position: absolute; left: var(--space-12); right: var(--space-4); top: calc(var(--space-24) + var(--space-4)); display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-doc-pipe__num { font: 400 32px/1 var(--font-mono); color: var(--on-navy); font-variant-numeric: tabular-nums; }
+.aq-doc-pipe__t { margin: var(--space-2) 0 0; font: 300 22px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--on-navy); }
+.aq-doc-pipe__t a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.aq-doc-pipe__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-navy-muted); }
+.aq-doc-pipe__code { margin: var(--space-1) 0 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-doc-pipe__item.is-key .aq-doc-pipe__code { color: var(--flow); }
+.aq-doc-pipe__item:hover .aq-doc-pipe__wall { stroke: var(--on-navy); }
+
+/* Desktop shows every document; the fold is for phones */
+.aq-fold:not(.is-open) .aq-doc-pipe__item.aq-fold-x { display: block; }
+.aq-fold:has(> .aq-doc-pipe) > .aq-fold__btn { display: none; }
+
+@container (max-width: 1100px) {
+  .aq-doc-pipe-sec .aq-sec-head .aq-h1 { font-size: 56px; line-height: 60px; }
+  .aq-doc-pipe__t { font-size: 19px; line-height: 25px; }
+}
+/* Phones: the pipe runs down the left, a valve per document, the documents stacked beside it */
+@container (max-width: 860px) {
+  .aq-doc-pipe-sec .aq-sec-head .aq-h1 { font-size: 44px; line-height: 50px; }
+  .aq-doc-pipe { grid-template-columns: minmax(0, 1fr); position: relative; }
+  .aq-doc-pipe::before { content: ""; position: absolute; left: var(--space-3); top: 0; bottom: var(--space-6); width: var(--space-3); box-sizing: border-box;
+    border: 1.5px solid var(--on-navy-muted); border-top: 0; }
+  .aq-doc-pipe::after { content: ""; position: absolute; left: calc(var(--space-4) + var(--space-1) - 1px); top: 0; bottom: var(--space-6); border-left: 2px solid var(--flow); }
+  .aq-doc-pipe__item { height: auto; padding: var(--space-6) 0 var(--space-6) var(--space-12); }
+  .aq-doc-pipe__pipe { display: none; }
+  .aq-doc-pipe__valve, .is-lo .aq-doc-pipe__valve { left: calc(var(--space-4) + var(--space-1) + 1px); top: var(--space-8); height: var(--space-8); width: var(--space-6); translate: -50% -50%; }
+  .aq-doc-pipe__vs { display: none; }
+  .aq-doc-pipe__txt { position: static; }
+  .aq-doc-pipe__num { font-size: 24px; }
+  .aq-fold:not(.is-open) .aq-doc-pipe__item.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-doc-pipe) > .aq-fold__btn { display: flex; }
+}
+/* the water line scales with its piece (the dash that fills it on scroll is measured in the piece's own units) */
+.aq-doc-pipe__pipe path.aq-doc-pipe__flow { vector-effect: none; }
 
 /* ---------- EvidenceMap: requirement -> how we meet it -> the documents that prove it (table block as "evidence") ----------
    A real table drawn as a mapping. Desktop: the requirement column at h3 with the shared mono index and a hairline on
@@ -4518,97 +4580,105 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-linkgrid .aq-rows__t { font-size: 18px; line-height: 26px; }
 }
 
-/* ---------- LoopCircuit: the loop as its own control screen (HMI mimic) on a dark navy band ---------- */
-/* The section carries data-theme="dark", so surface is the deep screen ground and flow the light water blue. */
-.aq-loop-circuit { display: flex; flex-direction: column; gap: var(--space-8); }
-.aq-loop-circuit__screen { background: var(--surface); border: 1px solid var(--line-strong); outline: var(--space-2) solid color-mix(in srgb, var(--navy) 70%, var(--surface)); }
-.aq-loop-circuit__bar { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-4); border-bottom: 1px solid var(--line);
-  font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
-.aq-loop-circuit__count { margin-left: auto; }
-.aq-loop-circuit__lamp { width: var(--space-2); height: var(--space-2); border-radius: var(--radius-pill); background: var(--flow); }
-.aq-loop-circuit__mimic { padding: var(--space-6) var(--space-8); background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: var(--space-8) var(--space-8); background-position: -1px -1px; }
+/* ---------- LoopCircuit: the loop as one blueprint P&ID strip on a navy band, a station over each caption ---------- */
+/* The section carries data-theme="dark", so flow is the light water blue and ink the light line colour. */
+.aq-loop-circuit-sec .aq-sec-head .aq-h1 { font: 300 72px/76px var(--font-sans); letter-spacing: -0.03em; max-width: none; color: var(--on-navy); }
+.aq-loop-circuit { display: flex; flex-direction: column; gap: 0; --col: calc(100% / var(--n, 7)); }
+.aq-loop-circuit__strip { position: relative; border-top: 1px solid var(--line); padding-top: var(--space-8); }
 .aq-loop-circuit__svg { display: block; width: 100%; height: auto; overflow: visible; }
 .aq-loop-circuit__svg path, .aq-loop-circuit__svg circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.aq-loop-circuit__col { stroke: var(--on-navy-muted); stroke-width: 1; opacity: 0.22; }
 .aq-loop-circuit__pipe { stroke: var(--line-strong); stroke-width: 7; }
 .aq-loop-circuit__flow { stroke: var(--flow); stroke-width: 2; }
-.aq-loop-circuit__chev { stroke: var(--surface); stroke-width: 2.5; }
-.aq-loop-circuit__svg .aq-loop-circuit__eq { fill: var(--surface); stroke: var(--ink-muted); stroke-width: 2; }
+.aq-loop-circuit__route { stroke: none; }
+.aq-loop-circuit__chev { stroke: var(--navy); stroke-width: 2.5; }
+.aq-loop-circuit__svg .aq-loop-circuit__eq { fill: var(--navy); stroke: var(--on-navy-muted); stroke-width: 1.5; }
+.aq-loop-circuit__svg .aq-loop-circuit__det { fill: var(--navy); stroke: var(--on-navy-muted); stroke-width: 1; stroke-dasharray: 3 4; }
+.aq-loop-circuit__svg .aq-loop-circuit__pt { fill: var(--on-navy-muted); stroke: none; }
 .aq-loop-circuit__eq.is-opt { stroke-dasharray: 5 4; }
-.aq-loop-circuit__ln { stroke: var(--ink-muted); stroke-width: 2; }
-.aq-loop-circuit__thin { stroke: var(--ink-subtle); stroke-width: 1.2; }
-.aq-loop-circuit__hid { stroke: var(--ink-subtle); stroke-width: 1.5; stroke-dasharray: 4 4; }
-.aq-loop-circuit__level { stroke: var(--flow); stroke-width: 2; }
-.aq-loop-circuit__hatch { stroke: var(--flow); stroke-width: 1; opacity: 0.45; }
+.aq-loop-circuit__ln { stroke: var(--on-navy-muted); stroke-width: 1.5; }
+.aq-loop-circuit__thin { stroke: var(--on-navy-muted); stroke-width: 1; opacity: 0.7; }
+.aq-loop-circuit__hid { stroke: var(--on-navy-muted); stroke-width: 1.2; stroke-dasharray: 4 4; }
+.aq-loop-circuit__level { stroke: var(--flow); stroke-width: 1.5; }
+.aq-loop-circuit__hatch { stroke: var(--flow); stroke-width: 1; opacity: 0.4; }
 .aq-loop-circuit__jet { stroke: var(--flow); stroke-width: 1.2; stroke-dasharray: 2 5; }
 .aq-loop-circuit__drop { stroke: var(--flow); stroke-width: 1.5; }
-.aq-loop-circuit__tx { fill: var(--ink); font: 500 11px/1 var(--font-mono); text-anchor: middle; }
-.aq-loop-circuit__lead { stroke: var(--ink-subtle); stroke-width: 1; }
-.aq-loop-circuit__tag rect { fill: var(--surface); stroke: var(--ink-subtle); stroke-width: 1; }
-.aq-loop-circuit__tag text { fill: var(--ink); font: 500 13px/1 var(--font-mono); text-anchor: middle; }
-.aq-loop-circuit__tag.is-on rect { stroke: var(--flow); }
-.aq-loop-circuit__tag.is-hot rect, .aq-loop-circuit__tag.is-on.is-hot rect { fill: var(--flow); stroke: var(--flow); }
-.aq-loop-circuit__tag.is-hot text { fill: var(--surface); }
-.aq-loop-circuit__node.is-hot .aq-loop-circuit__eq, .aq-loop-circuit__node.is-hot .aq-loop-circuit__ln { stroke: var(--flow); }
+.aq-loop-circuit__tx { fill: var(--on-navy); font: 400 11px/1 var(--font-mono); text-anchor: middle; }
+.aq-loop-circuit__svg .aq-loop-circuit__mk { fill: var(--navy); stroke: var(--flow); stroke-width: 2; }
+.aq-loop-circuit__svg .aq-loop-circuit__mk-dot { fill: var(--flow); stroke: none; }
+.aq-loop-circuit__node.is-hot .aq-loop-circuit__eq, .aq-loop-circuit__node.is-hot .aq-loop-circuit__ln,
+.aq-loop-circuit__node.is-on .aq-loop-circuit__eq { stroke: var(--flow); }
 .aq-loop-circuit__svg * { transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1), fill 200ms cubic-bezier(0.2, 0, 0, 1); }
 
-/* Stages under the screen, one column each, in loop order */
-.aq-loop-circuit__stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 7), minmax(0, 1fr)); gap: var(--space-4); }
-.aq-loop-circuit__stage { display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-3); border-top: 1px solid var(--line-strong); transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-loop-circuit__stage.is-hot, .aq-loop-circuit__stage.is-on { border-top-color: var(--flow); }
+/* Captions: one column per station, the rule continues the strip's column lines */
+.aq-loop-circuit__stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 7), minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line-strong); }
+.aq-loop-circuit__stage { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4) var(--space-4) 0; border-left: 1px solid var(--line); position: relative; }
+.aq-loop-circuit__stage:first-child { border-left: 0; padding-left: 0; }
+.aq-loop-circuit__stage::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; border-top: 2px solid var(--flow); transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-circuit__stage.is-hot::before, .aq-loop-circuit__stage.is-on::before { transform: scaleX(1); }
 .aq-loop-circuit__mark { display: none; }
-.aq-loop-circuit__no { margin: 0; font: 400 24px/1 var(--font-mono); color: var(--flow); font-variant-numeric: tabular-nums; }
+.aq-loop-circuit__no { margin: 0; font: 400 14px/20px var(--font-mono); color: var(--on-navy-muted); font-variant-numeric: tabular-nums; transition: color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-circuit__stage.is-on .aq-loop-circuit__no, .aq-loop-circuit__stage.is-hot .aq-loop-circuit__no { color: var(--flow); }
 .aq-loop-circuit__t { margin: 0; font: 500 16px/22px var(--font-sans); color: var(--on-navy); }
 .aq-loop-circuit__d { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--on-navy-muted); }
 
 .aq-loop-circuit-sec { overflow: hidden; }
-.aq-loop-circuit__flow--feed, .aq-loop-circuit__flow--loop { fill: none; }
 .aq-loop-circuit__spray, .aq-loop-circuit__water { pointer-events: none; }
 
 @container (max-width: 1100px) {
-  .aq-loop-circuit__stages { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: var(--space-8); }
+  .aq-loop-circuit-sec .aq-sec-head .aq-h1 { font-size: 56px; line-height: 60px; }
+  .aq-loop-circuit__stage { padding-left: var(--space-3); padding-right: var(--space-2); }
+  .aq-loop-circuit__d { font-size: 13px; line-height: 20px; }
 }
-/* Phones: the screen gives way to a vertical circuit: stages down a flow rail, a return line back up to the tank */
+/* Phones: the strip gives way to a vertical circuit: stages down a flow rail, a return line back up to the tank */
 @container (max-width: 860px) {
-  .aq-loop-circuit__screen { display: none; }
-  .aq-loop-circuit__stages { position: relative; grid-template-columns: minmax(0, 1fr); gap: 0; padding-left: var(--space-16); }
+  .aq-loop-circuit-sec .aq-sec-head .aq-h1 { font-size: 44px; line-height: 50px; }
+  .aq-loop-circuit__strip { display: none; }
+  .aq-loop-circuit__stages { position: relative; grid-template-columns: minmax(0, 1fr); gap: 0; padding-left: var(--space-16); border-top: 0; }
   .aq-loop-circuit__stages::before { content: ""; position: absolute; left: calc(var(--space-6) - 1px); top: var(--space-6); bottom: var(--space-12); border-left: 2px solid var(--flow); }
   .aq-loop-circuit__stages::after { content: ""; position: absolute; left: 0; width: var(--space-6); top: calc(var(--space-24) + var(--space-16)); bottom: var(--space-6);
     border: 1.5px dashed var(--on-navy-muted); border-right: 0; }
-  .aq-loop-circuit__stage { position: relative; border-top: 0; padding: 0 0 var(--space-6); }
+  .aq-loop-circuit__stage, .aq-loop-circuit__stage:first-child { position: relative; border-left: 0; padding: 0 0 var(--space-6); }
+  .aq-loop-circuit__stage::before { display: none; }
   .aq-loop-circuit__mark { display: grid; place-items: center; position: absolute; left: calc(-1 * var(--space-16) + var(--space-1)); top: 0; width: calc(var(--space-8) + var(--space-2)); height: calc(var(--space-8) + var(--space-2));
     background: var(--navy); border: 1.5px solid var(--flow); }
   .aq-loop-circuit__glyph.aq-spot { width: var(--space-6); height: var(--space-6); }
-  .aq-loop-circuit__no { font-size: 16px; }
+  .aq-loop-circuit__d { font-size: 14px; line-height: 22px; }
 }
-.aq-loop-circuit__svg .aq-loop-circuit__dot { fill: var(--flow); stroke: var(--surface); stroke-width: 2; }
+.aq-loop-circuit__flow--feed, .aq-loop-circuit__flow--loop { fill: none; }
 
-/* ---------- LoopDock: options shown where they fit on one isometric loop, on a limestone band ---------- */
-.aq-loop-dock { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--space-8); align-items: center; }
-.aq-loop-dock__stage { position: relative; }
-.aq-loop-dock__plane { position: relative; aspect-ratio: 900 / 640; }
-.aq-loop-dock__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* ---------- LoopDock: options on one isometric loop drawn on a navy band, leaders down to captions on limestone ---------- */
+.aq-loop-dock-sec .aq-sec-head .aq-h1 { font: 300 72px/76px var(--font-sans); letter-spacing: -0.03em; }
+.aq-loop-dock { display: flex; flex-direction: column; gap: 0; }
+.aq-loop-dock__band { position: relative; background: var(--navy); }
+.aq-loop-dock__plane { position: relative; aspect-ratio: 1200 / 560; }
+.aq-loop-dock__svg, .aq-loop-dock__leads { position: absolute; inset: 0; width: 100%; height: 100%; }
+.aq-loop-dock__leads { overflow: visible; pointer-events: none; }
+.aq-loop-dock__lead { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; vector-effect: non-scaling-stroke; transition: stroke 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-dock__dot { fill: var(--on-navy); stroke: none; transition: fill 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-dock__lead.is-on { stroke: var(--flow); stroke-width: 2; }
+.aq-loop-dock__dot.is-on { fill: var(--flow); }
 .aq-loop-dock__mk { position: absolute; z-index: 1; display: grid; place-items: center; width: var(--space-8); height: var(--space-8); translate: -50% -130%;
-  border-radius: var(--radius-pill); background: var(--navy); color: var(--on-navy); font: 500 12px/1 var(--font-mono); transition: translate 200ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-loop-dock__mk::after { content: ""; position: absolute; left: 50%; top: 100%; height: var(--space-3); border-left: 1px solid var(--navy); }
-.aq-loop-dock__mk.is-on { background: var(--flow); translate: -50% -150%; }
+  background: var(--limestone); color: var(--on-limestone); font: 500 12px/1 var(--font-mono); transition: translate 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-dock__mk::after { content: ""; position: absolute; left: 50%; top: 100%; height: var(--space-3); border-left: 1px solid var(--limestone); }
+.aq-loop-dock__mk.is-on { background: var(--flow); color: var(--navy); translate: -50% -150%; }
 .aq-loop-dock__mk.is-on::after { border-color: var(--flow); }
 /* The base's name left of the tank: glyph over the words, both set flush right against the tank */
 .aq-loop-dock__base { position: absolute; display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-2); translate: calc(-100% - var(--space-6)) -50%; width: max-content; max-width: calc(var(--space-32) + var(--space-8)); text-align: right;
-  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
-.aq-loop-dock__bic.aq-spot { width: var(--space-6); height: var(--space-6); background-color: var(--on-limestone-muted); }
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-loop-dock__bic.aq-spot { width: var(--space-6); height: var(--space-6); }
 
-/* Option cards under the drawing */
-.aq-loop-dock__cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+/* Captions on the limestone below, one column each; the leader lands on each column's top-left */
+.aq-loop-dock__cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 0; }
 .aq-loop-dock__card { display: flex; }
-.aq-loop-dock__body { flex: 1; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6); background: var(--surface-raised); color: var(--ink); text-decoration: none;
-  border-top: 3px solid var(--navy); transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1), transform 200ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-loop-dock__card.is-on .aq-loop-dock__body { border-top-color: var(--flow); transform: translateY(calc(-1 * var(--space-1))); }
-.aq-loop-dock__no { margin: 0; display: flex; align-items: center; justify-content: space-between; font: 400 28px/1 var(--font-mono); color: var(--ink-subtle); }
+.aq-loop-dock__body { flex: 1; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6) var(--space-8) 0 var(--space-6); color: var(--on-limestone); text-decoration: none;
+  border-left: 1px solid var(--on-limestone-muted); transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-loop-dock__card.is-on .aq-loop-dock__body { border-left-color: var(--flow); }
+.aq-loop-dock__no { margin: 0; display: flex; align-items: center; justify-content: space-between; font: 400 24px/1 var(--font-mono); color: var(--on-limestone-muted); }
 .aq-loop-dock__card.is-on .aq-loop-dock__no span { color: var(--flow); }
-.aq-loop-dock__glyph.aq-spot { width: var(--space-8); height: var(--space-8); background-color: var(--ink-muted); }
-.aq-loop-dock__t { margin: 0; font: 400 24px/30px var(--font-sans); letter-spacing: -0.01em; }
-.aq-loop-dock__d { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
+.aq-loop-dock__glyph.aq-spot { width: var(--space-6); height: var(--space-6); background-color: var(--on-limestone-muted); }
+.aq-loop-dock__t { margin: var(--space-2) 0 0; font: 400 24px/30px var(--font-sans); letter-spacing: -0.01em; }
+.aq-loop-dock__d { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--on-limestone-muted); max-width: 36ch; }
 a.aq-loop-dock__body:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
 /* Desktop shows every option; the fold is for phones */
@@ -4617,13 +4687,17 @@ a.aq-loop-dock__body:focus-visible { outline: 2px solid var(--focus); outline-of
 
 .aq-loop-dock-sec { overflow: hidden; }
 
+@container (max-width: 1100px) {
+  .aq-loop-dock-sec .aq-sec-head .aq-h1 { font-size: 56px; line-height: 60px; }
+}
 @container (max-width: 860px) {
-  .aq-loop-dock { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
-  .aq-loop-dock__plane { margin-inline: calc(-1 * var(--space-4)); }
+  .aq-loop-dock-sec .aq-sec-head .aq-h1 { font-size: 44px; line-height: 50px; }
+  .aq-loop-dock__band { margin-inline: calc(-1 * var(--space-4)); padding: var(--space-6) 0 var(--space-4); }
+  .aq-loop-dock__leads { display: none; }
   .aq-loop-dock__mk { width: var(--space-6); height: var(--space-6); font-size: 12px; }
-  .aq-loop-dock__base { position: static; translate: none; white-space: normal; margin-top: var(--space-2); flex-direction: row; align-items: center; width: auto; max-width: none; text-align: left; }
+  .aq-loop-dock__base { position: static; translate: none; white-space: normal; margin: var(--space-2) var(--space-4) 0; flex-direction: row; align-items: center; width: auto; max-width: none; text-align: left; }
   .aq-loop-dock__cards { grid-template-columns: minmax(0, 1fr); }
-  .aq-loop-dock__body { padding: var(--space-4); }
+  .aq-loop-dock__body { padding: var(--space-6) 0 0 var(--space-4); }
   .aq-fold:not(.is-open) .aq-loop-dock__card.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-loop-dock) > .aq-fold__btn { display: flex; }
 }
@@ -4963,68 +5037,80 @@ ellipse.aq-macro-leaders__pp.aq-macro-leaders__ol { fill: var(--surface-sunken);
   .aq-fold:has(> .aq-marking-match__list) > .aq-fold__btn { display: flex; }
 }
 
-/* ---------- MembraneAtlas: feed conditions as plates of what each does to a membrane surface ---------- */
-/* Four columns; the heading takes the first cell, the plates fill the rest, hairlines between them like a printed atlas. */
-.aq-membrane-atlas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
-.aq-membrane-atlas__head { padding: var(--space-6) var(--space-6) var(--space-8) 0; }
-.aq-membrane-atlas__head .aq-h1 { font-size: 40px; line-height: 46px; letter-spacing: -0.03em; font-weight: 300; }
-.aq-membrane-atlas__plates { display: contents; list-style: none; margin: 0; padding: 0; }
-.aq-membrane-atlas__plate { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-6) var(--space-6) var(--space-8);
-  border-left: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.aq-membrane-atlas__plate:nth-child(4n) { border-left: 0; padding-left: 0; }
+/* ---------- MembraneAtlas: feed conditions as a numbered table, each row headed by a navy numeral tile ---------- */
+/* Four columns: the navy tile (huge light slash numeral over a soft micrograph), then condition, effect and design.
+   Column names sit over a heavy rule; hairlines between rows. */
+.aq-membrane-atlas-sec .aq-sec-head .aq-h1 { font: 300 56px/60px var(--font-sans); letter-spacing: -0.03em; max-width: 24ch; }
+.aq-membrane-atlas { --ma-tile: calc(var(--space-32) + var(--space-12)); }
+.aq-membrane-atlas__vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.aq-membrane-atlas__tr { display: grid; grid-template-columns: var(--ma-tile, var(--space-32)) repeat(3, minmax(0, 1fr)); }
+.aq-membrane-atlas__thead .aq-membrane-atlas__tr { border-bottom: 2px solid var(--navy); }
+.aq-membrane-atlas__th { padding: 0 var(--space-6) var(--space-3); font: 400 16px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-membrane-atlas__plate { border-bottom: 1px solid var(--line-strong); }
+.aq-membrane-atlas__td { padding: var(--space-4) var(--space-6) var(--space-6); border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.aq-membrane-atlas__k { display: none; font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
+.aq-membrane-atlas__t { font: 300 24px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-membrane-atlas__c { font: 400 16px/24px var(--font-sans); color: var(--ink-muted); }
+.aq-membrane-atlas__td--ours .aq-membrane-atlas__c { color: var(--ink); }
 
-/* The scope: a round micrograph under a reticle */
-.aq-membrane-atlas__scope { position: relative; width: 100%; max-width: 240px; margin: 0 auto var(--space-2); }
-.aq-membrane-atlas__fig { position: absolute; left: 0; top: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+/* The tile: navy square, the numeral top-left, the micrograph soft behind it at the lower right */
+.aq-membrane-atlas__tile { position: relative; overflow: hidden; background: var(--navy); color: var(--on-navy); min-height: calc(var(--ma-tile, var(--space-32)) * 0.8); }
+.aq-membrane-atlas__n { position: absolute; left: var(--space-4); top: var(--space-3); z-index: 1; font: 300 72px/1 var(--font-sans); letter-spacing: -0.05em; font-variant-numeric: tabular-nums; color: var(--on-navy); }
+.aq-membrane-atlas__sl { color: var(--on-navy-muted); margin-left: 0.02em; }
+.aq-membrane-atlas__scope { position: absolute; right: calc(-1 * var(--space-8)); bottom: calc(-1 * var(--space-8)); width: calc(var(--ma-tile, var(--space-32)) * 0.95); aspect-ratio: 1; }
+.aq-membrane-atlas__scope > .aq-membrane-atlas__svg { opacity: 0.55; filter: blur(1.4px); }
+.aq-membrane-atlas__plate:hover .aq-membrane-atlas__sl, .aq-membrane-atlas__plate:focus-within .aq-membrane-atlas__sl { color: var(--limestone); }
+
+/* The micrograph, drawn in navy-ground inks */
 .aq-membrane-atlas__svg { display: block; width: 100%; height: auto; overflow: visible; }
 .aq-membrane-atlas__svg * { vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
-.aq-membrane-atlas__field { fill: var(--surface-raised); }
-.aq-membrane-atlas__rim { fill: none; stroke: var(--ink); stroke-width: 1.5; }
-.aq-membrane-atlas__tick, .aq-membrane-atlas__cross { fill: none; stroke: var(--line-strong); stroke-width: 1; }
-.aq-membrane-atlas__tex { fill: none; stroke: var(--line-strong); stroke-width: 0.75; opacity: 0.38; }
-.aq-membrane-atlas__hole { fill: var(--ink); stroke: var(--ink); stroke-width: 1; }
-.aq-membrane-atlas__crack { fill: none; stroke: var(--ink); stroke-width: 1; }
-.aq-membrane-atlas__split { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-dasharray: 3 3; }
-.aq-membrane-atlas__perm { fill: none; stroke: var(--flow); stroke-width: 1.5; }
-.aq-membrane-atlas__dot { fill: var(--flow); }
-.aq-membrane-atlas__rod { fill: var(--surface-raised); stroke: var(--ink); stroke-width: 1; }
-.aq-membrane-atlas__cake { fill: none; stroke: var(--ink-muted); stroke-width: 0.9; }
-.aq-membrane-atlas__cake--fill { fill: var(--ink-muted); }
-.aq-membrane-atlas__xtal { fill: var(--surface-sunken); stroke: var(--ink); stroke-width: 1; }
-.aq-membrane-atlas__glass { fill: var(--surface-sunken); stroke: var(--ink); stroke-width: 1; }
-.aq-membrane-atlas__glint { fill: none; stroke: var(--ink-muted); stroke-width: 0.75; }
-.aq-membrane-atlas__rust { fill: var(--ink-muted); }
-.aq-membrane-atlas__eps { fill: var(--surface-sunken); stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 2 2; }
-.aq-membrane-atlas__plate:hover .aq-membrane-atlas__rim { stroke: var(--flow); }
+.aq-membrane-atlas__field { fill: color-mix(in srgb, var(--navy) 85%, var(--on-navy)); }
+.aq-membrane-atlas__rim { fill: none; stroke: var(--on-navy); stroke-width: 1.5; }
+.aq-membrane-atlas__tick, .aq-membrane-atlas__cross { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; }
+.aq-membrane-atlas__tex { fill: none; stroke: var(--on-navy-muted); stroke-width: 0.75; opacity: 0.38; }
+.aq-membrane-atlas__hole { fill: var(--on-navy); stroke: var(--on-navy); stroke-width: 1; }
+.aq-membrane-atlas__crack { fill: none; stroke: var(--on-navy); stroke-width: 1; }
+.aq-membrane-atlas__split { fill: none; stroke: var(--on-navy-muted); stroke-width: 1; stroke-dasharray: 3 3; }
+.aq-membrane-atlas__perm { fill: none; stroke: var(--limestone); stroke-width: 1.5; }
+.aq-membrane-atlas__dot { fill: var(--limestone); }
+.aq-membrane-atlas__rod { fill: color-mix(in srgb, var(--navy) 85%, var(--on-navy)); stroke: var(--on-navy); stroke-width: 1; }
+.aq-membrane-atlas__cake { fill: none; stroke: var(--on-navy-muted); stroke-width: 0.9; }
+.aq-membrane-atlas__cake--fill { fill: var(--on-navy-muted); }
+.aq-membrane-atlas__xtal { fill: color-mix(in srgb, var(--navy) 70%, var(--on-navy)); stroke: var(--on-navy); stroke-width: 1; }
+.aq-membrane-atlas__glass { fill: color-mix(in srgb, var(--navy) 70%, var(--on-navy)); stroke: var(--on-navy); stroke-width: 1; }
+.aq-membrane-atlas__glint { fill: none; stroke: var(--on-navy-muted); stroke-width: 0.75; }
+.aq-membrane-atlas__rust { fill: var(--on-navy-muted); }
+.aq-membrane-atlas__eps { fill: color-mix(in srgb, var(--navy) 70%, var(--on-navy)); stroke: var(--on-navy-muted); stroke-width: 1; stroke-dasharray: 2 2; }
 
-/* Text: the condition, then the effect and our design, each under a mono label */
-.aq-membrane-atlas__t { margin: 0; font: 500 17px/24px var(--font-sans); color: var(--ink); }
-.aq-membrane-atlas__dl { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
-.aq-membrane-atlas__row { display: flex; flex-direction: column; gap: var(--space-1); }
-.aq-membrane-atlas__row dt { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-subtle); }
-.aq-membrane-atlas__row dd { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
-.aq-membrane-atlas__row--ours { padding-left: var(--space-3); border-left: 2px solid var(--flow); }
-.aq-membrane-atlas__row--ours dt { color: var(--flow); }
-.aq-membrane-atlas__row--ours dd { color: var(--ink); }
 
-/* Fold: desktop shows every plate; phones keep the block's fold */
-.aq-fold:not(.is-open) .aq-membrane-atlas__plate.aq-fold-x { display: flex; }
+/* The scope's lens (added by motion.js): a sharp copy of the micrograph shows through a ring that follows the pointer */
+.aq-membrane-atlas__lens { position: absolute; inset: 0; pointer-events: none; clip-path: inset(50%); transition: clip-path 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-membrane-atlas__lens.is-on { clip-path: inset(0); }
+.aq-membrane-atlas__lens > .aq-membrane-atlas__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.aq-membrane-atlas__ring { position: absolute; left: 0; top: 0; width: var(--space-24); height: var(--space-24); margin: calc(-1 * var(--space-12)) 0 0 calc(-1 * var(--space-12)); border: 1px solid var(--limestone); border-radius: var(--radius-pill); pointer-events: none; }
+
+/* Desktop shows every row; the fold is for phones */
+.aq-fold:not(.is-open) .aq-membrane-atlas__plate.aq-fold-x { display: grid; }
 .aq-fold:has(> .aq-membrane-atlas) > .aq-fold__btn { display: none; }
 
 @container (max-width: 1100px) {
-  .aq-membrane-atlas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .aq-membrane-atlas__head { grid-column: 1 / -1; }
-  .aq-membrane-atlas__plate:nth-child(4n) { border-left: 1px solid var(--line); padding-left: var(--space-6); }
-  .aq-membrane-atlas__plate:nth-child(2n+1) { border-left: 0; padding-left: 0; }
+  .aq-membrane-atlas { --ma-tile: calc(var(--space-24) + var(--space-8)); }
+  .aq-membrane-atlas__n { font-size: 56px; }
+  .aq-membrane-atlas__td { padding: var(--space-4); }
+  .aq-membrane-atlas__t { font-size: 20px; line-height: 26px; }
+  .aq-membrane-atlas__c { font-size: 14px; line-height: 22px; }
 }
+/* Phones: the tile becomes a band over its row (numeral left, micrograph right), the cells stack under their names */
 @container (max-width: 860px) {
-  .aq-membrane-atlas { grid-template-columns: minmax(0, 1fr); }
-  .aq-membrane-atlas__head { padding: var(--space-4) 0 var(--space-6); }
-  .aq-membrane-atlas__head .aq-h1 { font-size: 32px; line-height: 38px; }
-  .aq-membrane-atlas__plate, .aq-membrane-atlas__plate:nth-child(n) { display: grid; grid-template-columns: 112px minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-2);
-    padding: var(--space-6) 0; border-left: 0; }
-  .aq-membrane-atlas__scope { grid-row: 1 / 3; margin: 0; }
-  .aq-membrane-atlas__fig { position: static; display: block; margin-bottom: var(--space-1); }
+  .aq-membrane-atlas-sec .aq-sec-head .aq-h1 { font-size: 36px; line-height: 42px; }
+  .aq-membrane-atlas__thead { display: none; }
+  .aq-membrane-atlas__tr { grid-template-columns: minmax(0, 1fr); }
+  .aq-membrane-atlas__plate { padding-bottom: var(--space-4); }
+  .aq-membrane-atlas__tile { min-height: var(--space-24); }
+  .aq-membrane-atlas__n { font-size: 56px; top: var(--space-4); }
+  .aq-membrane-atlas__scope { width: var(--space-32); right: calc(-1 * var(--space-4)); bottom: auto; top: calc(-1 * var(--space-4)); }
+  .aq-membrane-atlas__td { border-left: 0; padding: var(--space-3) 0 0; gap: var(--space-1); }
+  .aq-membrane-atlas__k { display: block; }
   .aq-fold:not(.is-open) .aq-membrane-atlas__plate.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-membrane-atlas) > .aq-fold__btn { display: flex; }
 }
@@ -5181,6 +5267,21 @@ ellipse.aq-macro-leaders__pp.aq-macro-leaders__ol { fill: var(--surface-sunken);
   .aq-method-bento__mv { font-size: 18px; line-height: 22px; white-space: nowrap; }
   .aq-method-bento__ml { font-size: 13px; line-height: 18px; }
   .aq-method-bento__ghost { font-size: 44px; }
+}
+
+/* The probe (added by motion.js): a needle the visitor drags along the rail, snapping to the marks; a readout below */
+.aq-method-bento__probe { position: absolute; left: var(--space-8); right: 0; top: 0; height: var(--space-12); cursor: ew-resize; touch-action: pan-y; }
+.aq-method-bento__thumb { position: absolute; top: calc(-1 * var(--space-1)); width: var(--space-12); height: calc(var(--space-12) + var(--space-2)); margin-left: calc(-1 * var(--space-6)); outline: none; }
+.aq-method-bento__needle { position: absolute; left: calc(50% - 1px); top: 0; bottom: 0; width: 2px; background: var(--limestone); }
+.aq-method-bento__needle::before { content: ""; position: absolute; left: calc(-1 * var(--space-2) + 1px); top: calc(var(--space-3) - 1px); width: var(--space-4); height: var(--space-4); background: var(--flow); border: 2px solid var(--limestone); box-sizing: border-box;
+  transition: transform 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-method-bento__probe.is-drag .aq-method-bento__needle::before, .aq-method-bento__thumb:hover .aq-method-bento__needle::before { transform: scale(1.25); }
+.aq-method-bento__thumb:focus-visible { outline: 2px solid var(--limestone); outline-offset: 2px; }
+.aq-method-bento__read { margin: calc(-1 * var(--space-2)) 0 var(--space-4) var(--space-8); display: flex; align-items: baseline; gap: var(--space-3); min-height: var(--space-6); }
+.aq-method-bento__rv { font: 400 16px/24px var(--font-mono); color: var(--limestone); font-variant-numeric: tabular-nums; min-width: 6ch; }
+.aq-method-bento__rl { font: 400 14px/20px var(--font-sans); color: var(--on-navy); }
+@container (max-width: 860px) {
+  .aq-method-bento__read { margin-left: 0; }
 }
 
 /* ---------- ModulePlinth: options as modules standing on their base, an isometric plinth fed by one loop ---------- */
@@ -5699,52 +5800,79 @@ a.aq-option-modules__box:focus-visible { outline: 2px solid var(--focus); outlin
 }
 .aq-option-tags__vial .aq-option-tags__lab { stroke-width: 1; }
 
-/* ---------- OptionTaps: options as dashed parts on dashed tees off the standard train (IsoKit, blueprint on navy) ---------- */
-.aq-option-taps-sec .aq-sec-head .aq-h1 { color: var(--on-navy); }
-.aq-option-taps { display: flex; flex-direction: column; gap: var(--space-8); }
-.aq-option-taps__fig { position: relative; border: 1px solid color-mix(in srgb, var(--on-navy-muted) 30%, transparent); }
+/* ---------- OptionTaps: options as dashed parts on dashed tees off the standard train, one limestone drawing sheet ---------- */
+/* The sheet: a navy hairline frame, the heading at display scale over the drawing, the notes in a narrow column right of
+   a vertical rule, the title block at its foot. */
+.aq-option-taps { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); border: 1px solid var(--on-limestone); outline: 1px solid var(--on-limestone); outline-offset: var(--space-2); margin: var(--space-2); }
+.aq-option-taps__main { display: flex; flex-direction: column; gap: var(--space-6); padding: var(--space-12) var(--space-8) var(--space-8); min-width: 0; }
+.aq-option-taps__main .aq-sec-head .aq-eyebrow { color: var(--on-limestone-muted); }
+.aq-option-taps__main .aq-sec-head .aq-h1 { font: 300 120px/112px var(--font-sans); letter-spacing: -0.045em; color: var(--on-limestone); max-width: none; }
+.aq-option-taps__side { display: flex; flex-direction: column; border-left: 1px solid var(--on-limestone); min-width: 0; }
+
+/* the drawing: a camera that frames one part when a note is chosen */
+.aq-option-taps__fig { position: relative; overflow: hidden; margin-top: auto; }
+.aq-option-taps__cam { position: relative; transform-origin: 0 0; transition: transform 600ms cubic-bezier(0.2, 0, 0, 1); }
 .aq-option-taps__svg { display: block; width: 100%; height: auto; }
-/* optional: every line of the part and its tee dashed; lit (hover on its card) in flow */
+/* optional: every line of the part and its tee dashed; lit (note hovered or chosen) in flow */
 .aq-option-taps__svg .aq-option-taps__ghost .aq-iso__eq, .aq-option-taps__svg .aq-option-taps__ghost .aq-iso__ln, .aq-option-taps__svg .aq-option-taps__ghost .aq-iso__thin,
 .aq-option-taps__svg .aq-option-taps__tee .aq-iso__pipe-wall { stroke-dasharray: 4 3; }
 .aq-option-taps__svg .aq-option-taps__ghost .aq-iso__acc, .aq-option-taps__svg .aq-option-taps__ghost .aq-iso__trace { stroke-dasharray: 2 3; }
+.aq-option-taps__svg [data-iso-id] { transition: opacity 300ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-option-taps.is-focus .aq-option-taps__svg [data-iso-id]:not(.is-lit) { opacity: 0.35; }
 .aq-option-taps__label, .aq-option-taps__mark { position: absolute; transform: translate(-50%, -100%); white-space: nowrap; pointer-events: none; }
-.aq-option-taps__label { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-option-taps__label { font: 500 12px/16px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--on-limestone-muted); }
 .aq-option-taps__mark { display: grid; place-items: center; min-width: var(--space-8); height: var(--space-8); padding: 0 var(--space-1);
-  border: 1px dashed var(--limestone); background: var(--navy); font: 500 13px/1 var(--font-mono); color: var(--on-navy); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-option-taps__mark.is-on { background: var(--limestone); color: var(--on-limestone); border-style: solid; }
+  border: 1px solid var(--on-limestone); background: var(--limestone); font: 500 13px/1 var(--font-mono); color: var(--on-limestone); transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1), color 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-option-taps__mark.is-on { background: var(--navy); color: var(--on-navy); border-color: var(--navy); }
 
-/* Cards: one per option, numbered as the markers */
-.aq-option-taps__cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); gap: var(--space-3); }
-.aq-option-taps__card { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4); border: 1px dashed color-mix(in srgb, var(--on-navy-muted) 55%, transparent);
-  color: var(--on-navy); transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-option-taps__card:hover, .aq-option-taps__card.is-on { border-color: var(--limestone); border-style: solid; }
-.aq-option-taps__no { margin: 0; display: flex; justify-content: space-between; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
-.aq-option-taps__no > span:first-child { color: var(--on-navy); font-size: 13px; }
-.aq-option-taps__t { margin: 0; font: 500 17px/23px var(--font-sans); color: var(--on-navy); }
-.aq-option-taps__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-navy-muted); }
+/* Notes: numbered like the pins, hairlines between */
+.aq-option-taps__side .aq-fold { flex: 1; }
+.aq-option-taps__cards { list-style: none; margin: 0; padding: var(--space-8) 0 0; display: flex; flex-direction: column; }
+.aq-option-taps__card { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-4) var(--space-6); border-bottom: 1px solid color-mix(in srgb, var(--on-limestone) 22%, transparent); color: var(--on-limestone); }
+.aq-option-taps__no { margin: 0; }
+.aq-option-taps__pin { display: inline-grid; place-items: center; min-width: var(--space-12); min-height: var(--space-12); margin: calc(-1 * var(--space-2)) 0 0 calc(-1 * var(--space-2)); padding: 0;
+  border: 0; background: transparent; color: var(--on-limestone); font: 400 15px/1 var(--font-mono); cursor: pointer; }
+.aq-option-taps__pin::before { content: ""; position: absolute; width: var(--space-8); height: var(--space-8); border: 1px solid var(--on-limestone); box-sizing: border-box; transition: background-color 150ms cubic-bezier(0.2, 0, 0, 1); z-index: -1; }
+.aq-option-taps__pin { position: relative; z-index: 0; }
+.aq-option-taps__pin:hover::before { background: color-mix(in srgb, var(--on-limestone) 10%, transparent); }
+.aq-option-taps__pin[aria-pressed="true"] { color: var(--on-navy); }
+.aq-option-taps__pin[aria-pressed="true"]::before { background: var(--navy); border-color: var(--navy); }
+.aq-option-taps__pin:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-option-taps__t { margin: 0; font: 400 17px/23px var(--font-sans); }
+.aq-option-taps__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-option-taps__card.is-on .aq-option-taps__t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .aq-option-taps__mini { display: none; }
-.aq-option-taps .aq-fold__btn { color: var(--on-navy); }
 .aq-fold:not(.is-open) .aq-option-taps__card.aq-fold-x { display: flex; }
 .aq-fold:has(> .aq-option-taps__cards) > .aq-fold__btn { display: none; }
 
+/* title block */
+.aq-option-taps__block { display: grid; grid-template-columns: minmax(0, 1fr); margin-top: auto; border-top: 1px solid var(--on-limestone); }
+.aq-option-taps__block span { padding: var(--space-2) var(--space-4); border-top: 1px solid color-mix(in srgb, var(--on-limestone) 22%, transparent); font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-option-taps__block span:first-child { border-top: 0; color: var(--on-limestone); }
+
 @container (max-width: 1100px) {
-  .aq-option-taps__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-option-taps__main .aq-sec-head .aq-h1 { font-size: 88px; line-height: 88px; }
   .aq-option-taps__label { display: none; }
+  .aq-option-taps__card { padding: var(--space-3) var(--space-4); }
 }
 @container (max-width: 860px) {
-  .aq-option-taps { gap: var(--space-6); }
-  .aq-option-taps__fig { margin-inline: calc(-1 * var(--space-4)); border-inline: 0; }
+  .aq-option-taps { grid-template-columns: minmax(0, 1fr); margin: var(--space-1); outline-offset: var(--space-1); }
+  .aq-option-taps__main { padding: var(--space-8) var(--space-4) var(--space-4); }
+  .aq-option-taps__main .aq-sec-head .aq-h1 { font-size: 56px; line-height: 56px; }
+  .aq-option-taps__side { border-left: 0; border-top: 1px solid var(--on-limestone); }
   .aq-option-taps__label { display: none; }
-  /* the markers stay on the small sheet (they pair each dashed part with its card), at a phone size */
+  /* the pins stay on the small drawing (they pair each dashed part with its note), at a phone size */
   .aq-option-taps__mark { min-width: var(--space-6); height: var(--space-6); font-size: 12px; }
-  .aq-option-taps__cards { grid-template-columns: minmax(0, 1fr); }
-  .aq-option-taps__card { display: grid; grid-template-columns: 72px minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-1); align-items: start; }
+  .aq-option-taps__fig { padding-top: var(--space-6); }
+  .aq-option-taps__cards { padding-top: var(--space-2); }
+  .aq-option-taps__card { display: grid; grid-template-columns: 72px minmax(0, 1fr); column-gap: var(--space-4); row-gap: var(--space-1); align-items: start; padding: var(--space-4); }
   .aq-option-taps__no { grid-column: 1 / -1; }
   .aq-option-taps__mini { display: block; grid-row: 2 / 4; width: 72px; height: auto; background: transparent; }
-  .aq-option-taps__mini .aq-iso__eq { fill: var(--navy); }
   .aq-fold:not(.is-open) .aq-option-taps__card.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-option-taps__cards) > .aq-fold__btn { display: flex; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aq-option-taps__cam, .aq-option-taps__svg [data-iso-id] { transition: none; }
 }
 
 /* ---------- PackMatrix: one pack per client and period, drawn as a matrix of packs with one pulled out and opened ---------- */
@@ -8062,51 +8190,6 @@ a.aq-review-reticles__body:hover .aq-review-reticles__t { color: var(--flow); }
 }
 .aq-section-train__seep { fill: none; stroke: var(--flow); stroke-width: 1.25; stroke-dasharray: 2 5; opacity: 0.7; }
 
-/* ---------- SheetPreviews: documents as a Swiss row of sheets, each thumbnail showing what kind of document it is ---------- */
-.aq-sheet-previews__top { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; }
-.aq-sheet-previews__more { margin: 0; }
-.aq-sheet-previews { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
-  column-gap: var(--space-6); row-gap: var(--space-12); border-top: 1px solid var(--ink); }
-.aq-sheet-previews__item { position: relative; display: flex; flex-direction: column; gap: var(--space-2); padding-top: var(--space-4); }
-.aq-sheet-previews__num { display: block; margin-bottom: var(--space-4); font: 200 112px/96px var(--font-sans); letter-spacing: -0.06em; color: var(--line-strong);
-  font-variant-numeric: tabular-nums; }
-.aq-sheet-previews__item.is-key .aq-sheet-previews__num { color: var(--ink); }
-
-/* The sheet: limestone paper with a dog-eared corner; the thumbnail in fine on-limestone lines */
-.aq-sheet-previews__sheet { position: relative; width: 100%; max-width: 240px; margin-bottom: var(--space-4); transition: transform 300ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-sheet-previews__item:hover .aq-sheet-previews__sheet, .aq-sheet-previews__item:focus-within .aq-sheet-previews__sheet { transform: translateY(calc(-1 * var(--space-2))); }
-.aq-sheet-previews__svg { display: block; width: 100%; height: auto; overflow: visible; }
-.aq-sheet-previews__svg * { vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
-.aq-sheet-previews__paper { fill: var(--limestone); }
-.aq-sheet-previews__fold { fill: var(--surface); }
-.aq-sheet-previews__ln, .aq-sheet-previews__box { fill: none; stroke: var(--on-limestone); stroke-width: 1; }
-.aq-sheet-previews__box { fill: var(--surface-raised); }
-.aq-sheet-previews__thin { fill: none; stroke: var(--on-limestone-muted); stroke-width: 0.75; }
-.aq-sheet-previews__txt { fill: none; stroke: var(--on-limestone-muted); stroke-width: 3; opacity: 0.45; stroke-linecap: butt; }
-.aq-sheet-previews__hatch { fill: none; stroke: var(--flow); stroke-width: 1; }
-.aq-sheet-previews__curve { fill: none; stroke: var(--flow); stroke-width: 2; }
-.aq-sheet-previews__curve--b { stroke: var(--on-limestone); stroke-dasharray: 5 4; }
-.aq-sheet-previews__seal { fill: none; stroke: var(--flow); stroke-width: 1.5; }
-.aq-sheet-previews__bar { fill: none; stroke: var(--on-limestone); stroke-width: 1.5; stroke-linecap: butt; }
-.aq-sheet-previews__codebox { fill: none; stroke: var(--on-limestone); stroke-width: 1; }
-.aq-sheet-previews__code-t { font: 500 11px/1 var(--font-mono); fill: var(--on-limestone); text-anchor: middle; letter-spacing: 0.06em; }
-.aq-sheet-previews__tiny { font: 400 8px/1 var(--font-mono); fill: var(--on-limestone-muted); text-anchor: middle; }
-
-.aq-sheet-previews__code { margin: 0; font: 500 12px/16px var(--font-mono); letter-spacing: 0.1em; color: var(--ink-subtle); }
-.aq-sheet-previews__item.is-key .aq-sheet-previews__code { color: var(--flow); }
-.aq-sheet-previews__t { margin: 0; font: 500 18px/25px var(--font-sans); color: var(--ink); }
-.aq-sheet-previews__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--ink-muted); }
-.aq-fold:not(.is-open) .aq-sheet-previews__item.aq-fold-x { display: flex; }
-.aq-fold:has(> .aq-sheet-previews) > .aq-fold__btn { display: none; }
-
-@container (max-width: 860px) {
-  .aq-sheet-previews { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-4); row-gap: var(--space-8); }
-  .aq-sheet-previews__num { font-size: 64px; line-height: 56px; margin-bottom: var(--space-2); }
-  .aq-sheet-previews__t { font-size: 16px; line-height: 22px; }
-  .aq-fold:not(.is-open) .aq-sheet-previews__item.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-sheet-previews) > .aq-fold__btn { display: flex; }
-}
-
 /* ---------- SheetStack: documents as an exploded stack of isometric drawing sheets ---------- */
 .aq-sheet-stack { position: relative; display: flex; flex-direction: column; gap: var(--space-8); }
 .aq-sheet-stack__axis { position: absolute; left: calc(100% * 5 / 24); top: 0; bottom: var(--space-16); border-left: 1px dashed var(--line-strong); }
@@ -9616,103 +9699,88 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
 .aq-system-run__stage.is-hot .aq-system-run__t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--sr-flow, var(--flow)); }
 .aq-system-run__fig { cursor: crosshair; }
 
-/* ---------- TankSection: the storage tank cut in half as a navy blueprint, parameters as callouts ---------- */
-.aq-tank-section-sec { --ts-ln: var(--on-navy-muted); --ts-fl: color-mix(in srgb, var(--flow) 40%, var(--on-navy)); --ts-hair: color-mix(in srgb, var(--on-navy) 22%, transparent); }
-.aq-tank-section-sec .aq-eyebrow { color: var(--on-navy-muted); }
-.aq-tank-section { position: relative; display: flex; flex-direction: column; gap: var(--space-12); }
-.aq-tank-section__fig { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr); }
-/* The drawing grid sits behind the drawing only, so the callout columns read on a clean ground */
-.aq-tank-section__draw { grid-column: 2;
-  background-image: linear-gradient(var(--ts-hair, var(--on-navy-muted)) 1px, transparent 1px), linear-gradient(90deg, var(--ts-hair, var(--on-navy-muted)) 1px, transparent 1px);
-  background-size: var(--space-12) var(--space-12); background-position: center; }
-.aq-tank-section__svg { display: block; width: 100%; height: auto; overflow: visible; }
-.aq-tank-section__svg path, .aq-tank-section__svg circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.aq-tank-section__ln { stroke: var(--on-navy); stroke-width: 1.5; }
-.aq-tank-section__thin { stroke: var(--ts-ln, var(--on-navy-muted)); stroke-width: 1; }
-.aq-tank-section__floor { stroke: var(--on-navy); stroke-width: 1.5; }
-.aq-tank-section__svg .aq-tank-section__wall { fill: url(#tsHatch); stroke: none; }
-.aq-tank-section__hl { stroke: var(--ts-ln, var(--on-navy-muted)); stroke-width: 1.2; }
-.aq-tank-section__svg .aq-tank-section__eq { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5; }
-.aq-tank-section__level { stroke: var(--ts-fl, var(--on-navy)); stroke-width: 2; }
-.aq-tank-section__water { stroke: var(--ts-fl, var(--on-navy)); stroke-width: 1; stroke-dasharray: 10 8; opacity: 0.75; }
-.aq-tank-section__jet { stroke: var(--ts-fl, var(--on-navy)); stroke-width: 1.2; stroke-dasharray: 2 5; }
-.aq-tank-section__flow { stroke: var(--ts-fl, var(--on-navy)); stroke-width: 1.5; stroke-dasharray: 6 5; }
-.aq-tank-section__bead { stroke: var(--on-navy); stroke-width: 1.5; }
-.aq-tank-section__prof { stroke: var(--on-navy); stroke-width: 1.2; }
-.aq-tank-section__cut { stroke: var(--on-navy); stroke-width: 1; stroke-dasharray: 3 3; }
-.aq-tank-section__dim { stroke: var(--ts-ln, var(--on-navy-muted)); stroke-width: 1; }
-.aq-tank-section__tx { fill: var(--on-navy-muted); font: 400 12px/1 var(--font-mono); text-anchor: middle; letter-spacing: 0.08em; }
-.aq-tank-section__tx.is-big { font-size: 18px; fill: var(--on-navy); }
-.aq-tank-section__mark { stroke: var(--on-navy); stroke-width: 1; stroke-dasharray: 3 3; }
-.aq-tank-section__det { stroke: var(--on-navy); stroke-width: 1.5; }
-.aq-tank-section__lead { stroke: var(--ts-ln, var(--on-navy-muted)); stroke-width: 1; }
-.aq-tank-section__leader { stroke: var(--limestone); stroke-width: 1; }
-.aq-tank-section__balloon circle { fill: var(--navy); stroke: var(--limestone); stroke-width: 1.2; }
-.aq-tank-section__svg .aq-tank-section__balloon circle { fill: var(--navy); }
-.aq-tank-section__balloon text { fill: var(--limestone); font: 500 11px/1 var(--font-mono); text-anchor: middle; }
+/* ---------- TankTiles: fabrication parameters on a navy and limestone checkerboard of square tiles ---------- */
+/* Four columns of square tiles, no gutters (the checkerboard is the grid). The head sits in the first navy tile, the
+   steel-blue blueprint of the tank in the third; each row is a tile led by a huge light slash numeral. */
+.aq-tank-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: auto; }
+.aq-tank-tiles__list { display: contents; list-style: none; margin: 0; padding: 0; }
+.aq-tank-tiles__head, .aq-tank-tiles__tile, .aq-tank-tiles__bp { aspect-ratio: 1 / 1; min-width: 0; box-sizing: border-box; padding: var(--space-6); }
+.aq-tank-tiles__head { grid-column: 1; grid-row: 1; background: var(--navy); display: flex; flex-direction: column; justify-content: flex-end; }
+.aq-tank-tiles__head .aq-sec-head { margin: 0; }
+.aq-tank-tiles__head .aq-eyebrow { color: var(--on-navy-muted); }
+.aq-tank-tiles__head .aq-h1 { font: 300 44px/48px var(--font-sans); letter-spacing: -0.025em; color: var(--on-navy); max-width: none; }
+.aq-tank-tiles__head .aq-lead, .aq-tank-tiles__head p { color: var(--on-navy-muted); }
 
-/* Callout labels on hairlines, in the side columns, each at its leader's height */
-.aq-tank-section__calls { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; pointer-events: none; }
-.aq-tank-section__call { position: absolute; top: var(--y, 0%); width: 25%; display: flex; flex-direction: column; gap: var(--space-1);
-  padding-top: var(--space-2); border-top: 1px solid var(--limestone); pointer-events: auto; }
-.aq-tank-section__call.is-l { left: 0; padding-right: var(--space-6); }
-.aq-tank-section__call.is-r { right: 0; padding-left: var(--space-6); }
-.aq-tank-section__n { font: 500 12px/16px var(--font-mono); color: var(--limestone); }
-.aq-tank-section__p { margin: 0; font: 500 16px/22px var(--font-sans); color: var(--on-navy); }
-.aq-tank-section__v { margin: 0; font: 400 15px/22px var(--font-sans); color: var(--on-navy); }
-.aq-tank-section__m { margin: 0; font: 400 13px/20px var(--font-sans); color: var(--on-navy-muted); }
-.aq-tank-section__m a, .aq-tank-section__link { color: var(--limestone); }
+/* the blueprint tile: steel blue ground, limestone hairlines, a fine drafting grid */
+.aq-tank-tiles__bp { grid-column: 3; grid-row: 1; position: relative; padding: var(--space-4); overflow: hidden;
+  background-color: color-mix(in srgb, var(--flow) 60%, var(--navy));
+  background-image: linear-gradient(color-mix(in srgb, var(--limestone) 14%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--limestone) 14%, transparent) 1px, transparent 1px);
+  background-size: var(--space-6) var(--space-6); background-position: -1px -1px; }
+.aq-tank-tiles__svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.aq-tank-tiles__svg path, .aq-tank-tiles__svg circle { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.aq-tank-tiles__ln { stroke: var(--limestone); stroke-width: 1.5; }
+.aq-tank-tiles__thin, .aq-tank-tiles__dim { stroke: var(--limestone); stroke-width: 1; opacity: 0.75; }
+.aq-tank-tiles__hl { stroke: var(--limestone); stroke-width: 1; opacity: 0.6; }
+.aq-tank-tiles__svg .aq-tank-tiles__eq { fill: color-mix(in srgb, var(--flow) 60%, var(--navy)); stroke: var(--limestone); stroke-width: 1.5; }
+.aq-tank-tiles__level { stroke: var(--limestone); stroke-width: 1.5; }
+.aq-tank-tiles__water { stroke: var(--limestone); stroke-width: 1; opacity: 0.3; }
+.aq-tank-tiles__jet { stroke: var(--limestone); stroke-width: 1; stroke-dasharray: 2 4; }
+.aq-tank-tiles__tx { fill: var(--limestone); font: 400 11px/1 var(--font-mono); text-anchor: middle; }
+.aq-tank-tiles__bpt { position: absolute; left: var(--space-4); bottom: var(--space-3); font: 400 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--limestone); }
 
-/* Parts schedule: the rows without a part, as a drawing's parts list */
-.aq-tank-section__sched { width: 100%; border-collapse: collapse; border: 1px solid var(--on-navy-muted); }
-.aq-tank-section__sched caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-.aq-tank-section__sched thead th { padding: var(--space-2) var(--space-4); text-align: left; font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--on-navy-muted); border-bottom: 1px solid var(--on-navy-muted); }
-.aq-tank-section__sched tbody th, .aq-tank-section__sched td { padding: var(--space-3) var(--space-4); text-align: left; vertical-align: top; border-top: 1px solid var(--ts-hair, var(--on-navy-muted)); }
-.aq-tank-section__sched tbody th { font: 500 15px/22px var(--font-sans); color: var(--on-navy); width: 22%; }
-.aq-tank-section__sv { font: 400 15px/22px var(--font-sans); color: var(--on-navy); width: 44%; }
-.aq-tank-section__sm { font: 400 13px/20px var(--font-sans); color: var(--on-navy-muted); }
-.aq-tank-section__block { display: flex; justify-content: flex-end; margin-top: calc(-1 * var(--space-8)); }
-.aq-tank-section__block span { padding: var(--space-1) var(--space-3); border: 1px solid var(--on-navy-muted); border-left: 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
-.aq-tank-section__block span:first-child { border-left: 1px solid var(--on-navy-muted); }
+/* row tiles */
+.aq-tank-tiles__tile { display: flex; flex-direction: column; gap: var(--space-2); }
+.aq-tank-tiles__tile.is-navy { background: var(--navy); color: var(--on-navy); }
+.aq-tank-tiles__tile.is-stone { background: var(--limestone); color: var(--on-limestone); }
+.aq-tank-tiles__n { margin: 0 0 auto; font: 300 72px/1 var(--font-sans); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.aq-tank-tiles__sl { margin-left: 0.04em; }
+.is-navy .aq-tank-tiles__sl { color: var(--on-navy-muted); }
+.is-stone .aq-tank-tiles__sl { color: var(--on-limestone-muted); }
+.aq-tank-tiles__p { margin: var(--space-4) 0 0; font: 400 20px/26px var(--font-sans); letter-spacing: -0.01em; }
+.aq-tank-tiles__v { margin: 0; font: 400 14px/22px var(--font-sans); }
+.aq-tank-tiles__m { margin: var(--space-1) 0 0; padding-top: var(--space-2); display: flex; flex-direction: column; gap: var(--space-1); font: 400 13px/20px var(--font-sans); }
+.is-navy .aq-tank-tiles__m { color: var(--on-navy-muted); border-top: 1px solid color-mix(in srgb, var(--on-navy) 25%, transparent); }
+.is-stone .aq-tank-tiles__m { color: var(--on-limestone-muted); border-top: 1px solid color-mix(in srgb, var(--on-limestone) 25%, transparent); }
+.aq-tank-tiles__link { color: inherit; text-decoration: underline; text-underline-offset: 3px; min-height: var(--space-6); display: inline-flex; align-items: center; }
+.is-navy .aq-tank-tiles__link { color: var(--on-navy); }
+.is-stone .aq-tank-tiles__link { color: var(--on-limestone); }
+.aq-tank-tiles__tile:hover .aq-tank-tiles__sl { color: var(--flow); }
+.is-navy:hover .aq-tank-tiles__sl { color: var(--limestone); }
 
-/* Desktop shows every row; the fold is for phones */
-.aq-fold:not(.is-open) .aq-tank-section .aq-fold-x { display: revert; }
-.aq-fold:not(.is-open) .aq-tank-section__call.aq-fold-x { display: flex; }
-.aq-fold:has(> .aq-tank-section) > .aq-fold__btn { display: none; }
-.aq-band--navy .aq-fold__btn { color: var(--on-navy); }
+/* Desktop shows every tile; the fold is for phones */
+.aq-fold:not(.is-open) .aq-tank-tiles__tile.aq-fold-x { display: flex; }
+.aq-fold:has(> .aq-tank-tiles) > .aq-fold__btn { display: none; }
 
-.aq-tank-section__part, .aq-tank-section__dims, .aq-tank-section__jets, .aq-tank-section__detail { pointer-events: none; }
-
-/* Narrow desktop: the side columns get too tight for the labels, so they list under the drawing in two columns */
-@container (max-width: 1180px) {
-  .aq-tank-section__fig { grid-template-columns: minmax(0, 1fr); }
-  .aq-tank-section__draw { grid-column: 1; justify-self: center; width: min(100%, calc(var(--space-32) * 5)); }
-  .aq-tank-section__leader { display: none; }
-  .aq-tank-section__calls { position: static; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6) var(--space-8); margin-top: var(--space-8); }
-  .aq-tank-section__call, .aq-tank-section__call.is-l, .aq-tank-section__call.is-r { position: relative; top: auto; left: auto; right: auto; width: auto; padding: var(--space-2) 0 0 var(--space-12); }
-  .aq-tank-section__n { position: absolute; left: 0; top: var(--space-2); display: grid; place-items: center; width: var(--space-8); height: var(--space-8); border: 1px solid var(--limestone); border-radius: var(--radius-pill); }
+@container (max-width: 1100px) {
+  .aq-tank-tiles__head, .aq-tank-tiles__tile { padding: var(--space-4); }
+  .aq-tank-tiles__n { font-size: 56px; }
+  .aq-tank-tiles__head .aq-h1 { font-size: 36px; line-height: 42px; }
+  .aq-tank-tiles__p { font-size: 18px; line-height: 24px; }
 }
+/* Phones: one column; head, blueprint band, then the tiles alternating navy and limestone, the fold back on */
 @container (max-width: 860px) {
-  .aq-tank-section { gap: var(--space-8); }
-  .aq-tank-section__fig { grid-template-columns: minmax(0, 1fr); }
-  .aq-tank-section__draw { background-size: var(--space-8) var(--space-8); }
-  .aq-tank-section__draw { grid-column: 1; }
-  .aq-tank-section__leader { display: none; }
-  .aq-tank-section__balloon circle { stroke-width: 2; }
-  .aq-tank-section__calls { grid-template-columns: minmax(0, 1fr); margin-top: var(--space-6); }
-  .aq-tank-section__call { position: relative; top: auto; width: auto; left: auto; right: auto; padding: var(--space-2) 0 0 var(--space-12); }
-  .aq-tank-section__call.is-l, .aq-tank-section__call.is-r { padding: var(--space-2) 0 0 var(--space-12); }
-  .aq-tank-section__n { position: absolute; left: 0; top: var(--space-2); display: grid; place-items: center; width: var(--space-8); height: var(--space-8); border: 1px solid var(--limestone); border-radius: var(--radius-pill); }
-  .aq-tank-section__sched, .aq-tank-section__sched tbody, .aq-tank-section__sched tr, .aq-tank-section__sched th, .aq-tank-section__sched td { display: block; width: auto; }
-  .aq-tank-section__sched thead { display: none; }
-  .aq-tank-section__sched { border: 0; border-top: 1px solid var(--on-navy-muted); }
-  .aq-tank-section__sched tr { padding: var(--space-3) 0; border-bottom: 1px solid var(--ts-hair, var(--on-navy-muted)); }
-  .aq-tank-section__sched tbody th, .aq-tank-section__sched td { padding: var(--space-1) 0; border: 0; }
-  .aq-fold:not(.is-open) .aq-tank-section .aq-fold-x, .aq-fold:not(.is-open) .aq-tank-section__call.aq-fold-x { display: none; }
-  .aq-fold:has(> .aq-tank-section) > .aq-fold__btn { display: flex; }
-  .aq-tank-section__block { display: none; }
+  .aq-tank-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aq-tank-tiles__head { grid-column: 1 / -1; grid-row: auto; aspect-ratio: auto; padding: var(--space-6) var(--space-4); }
+  .aq-tank-tiles__bp { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 2 / 1; }
+  .aq-tank-tiles__tile { grid-column: 1 / -1; aspect-ratio: auto; padding: var(--space-6) var(--space-4); }
+  .aq-tank-tiles__tile:nth-child(odd) { background: var(--limestone); color: var(--on-limestone); }
+  .aq-tank-tiles__tile:nth-child(even) { background: var(--navy); color: var(--on-navy); }
+  .aq-tank-tiles__tile:nth-child(odd) .aq-tank-tiles__m { color: var(--on-limestone-muted); border-top-color: color-mix(in srgb, var(--on-limestone) 25%, transparent); }
+  .aq-tank-tiles__tile:nth-child(even) .aq-tank-tiles__m { color: var(--on-navy-muted); border-top-color: color-mix(in srgb, var(--on-navy) 25%, transparent); }
+  .aq-tank-tiles__tile:nth-child(odd) .aq-tank-tiles__sl { color: var(--on-limestone-muted); }
+  .aq-tank-tiles__tile:nth-child(even) .aq-tank-tiles__sl { color: var(--on-navy-muted); }
+  .aq-tank-tiles__tile:nth-child(odd) .aq-tank-tiles__link { color: var(--on-limestone); }
+  .aq-tank-tiles__tile:nth-child(even) .aq-tank-tiles__link { color: var(--on-navy); }
+  .aq-tank-tiles__n { font-size: 48px; }
+  .aq-tank-tiles__bpt { display: none; }
+  .aq-fold:not(.is-open) .aq-tank-tiles__tile.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-tank-tiles) > .aq-fold__btn { display: flex; }
 }
+/* Shutter slats (added by motion.js for the entrance, removed when it ends) */
+.aq-tank-tiles__head, .aq-tank-tiles__tile, .aq-tank-tiles__bp { position: relative; }
+.aq-tank-tiles__blinds { position: absolute; inset: 0; display: flex; pointer-events: none; z-index: 1; }
+.aq-tank-tiles__blinds span { flex: 1; background: var(--navy); }
+.aq-tank-tiles__blinds.is-on-navy span { background: var(--limestone); }
 
 /* ---------- TermsSheet: commercial terms as a contract's terms sheet (look "terms-sheet"). One paper sheet
    (surface-raised on a limestone offset, data-theme="light") with a ruled mono head; clauses in two columns that read down, each with a

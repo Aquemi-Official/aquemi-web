@@ -1,62 +1,71 @@
 /* Look "loop-circuit" -> LoopCircuit (design-system/components/LoopCircuit): how a storage and distribution loop works,
-   drawn as the loop's own control screen (an HMI mimic on a dark navy band). The tank is shown in section: vent filter
-   on the head, spray ball wetting the head space, the water level inside. Generation feeds it from the left; the loop
-   leaves at the bottom through the pump and heat exchanger, runs out and up, back along the top past the points of use
-   (zero-static valves, each with its drop) and the return sensors (instrument bubbles CE, TE, FE and a dashed AE for
-   TOC), and comes home through the spray ball. Each stage has a numbered tag on the screen; the stages are listed
-   under the screen in the same order, and pointing at one lights its tag and equipment.
-   Phones: the screen gives way to a vertical circuit: the stages down a flow rail with their line glyphs, a return
-   line running back up to the tank.
-   Fields (a diagram block): h, stages (or items) [{t, d, spot | icon, node}]. node: which part of the mimic the stage
-   is: gen, tank, pump, hx, pou, sensors, spray (default by position in that order). Optional block field screen:
-   the screen's title (default the page's nav label). */
+   drawn as one blueprint P&ID strip on a navy band under a display-scale headline (pass 9b concept sys-storage.1).
+   The strip is cut into one column per stage and every station stands over its own caption: generation feed with its
+   isolating valve, the tank in section (vent filter, water level, spray ball), loop pump, shell-and-tube exchanger,
+   the points of use on short drops, the return sensors (CE, TE, FE and a dashed AE for TOC), and the return riser
+   with a detail of the spray ball wetting the tank head. The column rules run up through the drawing; the captions sit
+   on a numbered row underneath. Pointing at a caption lights its station.
+   Phones: the strip gives way to a vertical circuit: the stages down a flow rail with their line glyphs, a return line
+   running back up to the tank.
+   Fields (a diagram block): h, stages (or items) [{t, d, spot | icon, node}]. node: which station of the strip the
+   stage is: gen, tank, pump, hx, pou, sensors, spray (default by position in that order). */
 (function(){
 var NODE=['gen','tank','pump','hx','pou','sensors','spray'];
-/* tag centre, leader end (or none) and the point on the water path where the stage sits */
-var TAG={gen:{c:[64,30],at:[0,60]},tank:{c:[340,320],l:[284,320],at:[200,440]},pump:{c:[360,540],l:[360,510],at:[360,480]},
- hx:{c:[540,540],l:[540,512],at:[540,480]},pou:{c:[820,206],l:[820,180],at:[820,110]},sensors:{c:[470,18],l:[470,30],at:[470,110]},
- spray:{c:[64,194],l:[190,194],at:[200,194]}};
-var LOOP='M200 440V480H1100A40 40 0 0 0 1140 440V150A40 40 0 0 0 1100 110H240V178H200V186',FEED='M0 60H160V156';
+/* the point on the water's route where each station sits (the scroll marker lights the station there) */
+var AT={gen:[60,300],tank:[282,200],pump:[500,300],hx:[700,300],pou:[900,300],sensors:[1100,300],spray:[340,96]};
+var Y=300,FEED='M0 '+Y+'H120V40H262V78',LOOP='M300 262V'+Y+'H1290A40 40 0 0 0 1330 260V64A40 40 0 0 0 1290 24H340V72',
+ ROUTE=FEED+'V250H300V'+Y+'H1290A40 40 0 0 0 1330 260V64A40 40 0 0 0 1290 24H340V96';
 var K='aq-loop-circuit';function P(d,c,x){return '<path class="'+K+'__'+c+'"'+(x||'')+' d="'+d+'"/>'}
-function mimic(nodes,nums){
+function C(x,y,r,c){return '<circle class="'+K+'__'+c+'" cx="'+x+'" cy="'+y+'" r="'+r+'"/>'}
+function valve(x,y,v){return v?P('M'+(x-8)+' '+(y-9)+'H'+(x+8)+'L'+(x-8)+' '+(y+9)+'H'+(x+8)+'Z','eq'):P('M'+(x-9)+' '+(y-8)+'V'+(y+8)+'L'+(x+9)+' '+(y-8)+'V'+(y+8)+'Z','eq')}
+function strip(){
  var g='';
- /* pipes, then the water line over them; equipment is filled, so it sits over both */
- g+=P(FEED,'pipe')+P('M200 440V480H1100A40 40 0 0 0 1140 440V150A40 40 0 0 0 1100 110H240V156','pipe');
- g+=P(FEED,'flow aq-loop-circuit__flow--feed')+P(LOOP,'flow aq-loop-circuit__flow--loop');
- [[700,480,'r'],[940,480,'r'],[1140,300,'u'],[1060,110,'l'],[600,110,'l'],[300,110,'l']].forEach(function(a){var x=a[0],y=a[1],d=a[2]==='r'?'M'+(x-5)+' '+(y-6)+'l8 6l-8 6':a[2]==='l'?'M'+(x+5)+' '+(y-6)+'l-8 6l8 6':'M'+(x-6)+' '+(y+5)+'l6 -8l6 8';g+=P(d,'chev')});
- /* tank in section */
- var tank='<g class="aq-loop-circuit__node" data-node="tank">'
-  +P('M120 200C120 162 160 150 200 150C240 150 280 162 280 200V400C280 430 240 440 200 440C160 440 120 430 120 400Z','eq')
-  +'<g class="aq-loop-circuit__water">'+P('M124 260H276','level');
- for(var y=276;y<=420;y+=16)tank+=P('M'+(y>396?150:126)+' '+y+'H'+(y>396?250:274),'hatch');
- tank+='</g>'+P('M160 156V140M152 140H168M240 156V140M232 140H248','ln')+'</g>';
- var vent=P('M200 150V128','ln')+P('M186 84H214V128H186Z','eq')+P('M192 90V122M196 90V122M200 90V122M204 90V122M208 90V122','thin')+P('M200 80V64M195 69L200 64L205 69','thin');
- var spray='<g class="aq-loop-circuit__node" data-node="spray">'+P('M240 156V178H200V186','hid')
-  +'<g class="aq-loop-circuit__spray">'+[[128,236],[136,262],[160,252],[200,246],[240,252],[264,262],[272,236],[150,206],[250,206]].map(function(q){return P('M200 194L'+q[0]+' '+q[1],'jet')}).join('')+'</g>'
-  +'<circle class="aq-loop-circuit__eq" cx="200" cy="194" r="8"/></g>';
- var pump='<g class="aq-loop-circuit__node" data-node="pump"><circle class="aq-loop-circuit__eq" cx="360" cy="480" r="26"/>'+P('M360 454H386','ln')+P('M348 466L376 480L348 494Z','ln')+'</g>';
- var hx='<g class="aq-loop-circuit__node" data-node="hx">'+P('M540 454V438M540 506V522','thin')+'<circle class="aq-loop-circuit__eq" cx="540" cy="480" r="26"/>'+P('M514 480L522 470L532 490L542 470L552 490L560 470L566 480','ln')+'</g>';
- var pou='<g class="aq-loop-circuit__node" data-node="pou">'+P('M640 180H1000M640 174V186M1000 174V186','thin')+[1000,880,760,640].map(function(x){
-  return P('M'+(x-8)+' 118H'+(x+8)+'L'+(x-8)+' 136H'+(x+8)+'Z','eq')+P('M'+x+' 136V150','ln')+P('M'+x+' 158q-3 5 0 8q3-3 0-8','drop')}).join('')+'</g>';
- var sens='<g class="aq-loop-circuit__node" data-node="sensors">'+P('M380 30H560M380 24V36M560 24V36','thin')+[['CE',560],['TE',500],['FE',440],['AE',380]].map(function(q,i){
-  return P('M'+q[1]+' 74V110','ln')+'<circle class="aq-loop-circuit__eq'+(i===3?' is-opt':'')+'" cx="'+q[1]+'" cy="58" r="16"/><text class="aq-loop-circuit__tx" x="'+q[1]+'" y="62">'+q[0]+'</text>'}).join('')+'</g>';
- var gen='<g class="aq-loop-circuit__node" data-node="gen">'+P('M0 52V68','thin')+'</g>';
- g+=gen+tank+vent+spray+pump+hx+pou+sens;
- /* stage tags: numbered boxes with a short leader to the part */
- g+=nodes.map(function(n,i){var T=TAG[n];if(!T)return '';var c=T.c;
-  return '<g class="aq-loop-circuit__tag" data-node="'+n+'" data-at="'+T.at.join(',')+'">'+(T.l?P('M'+(n==='tank'?c[0]-20:n==='spray'?c[0]+20:c[0])+' '+(n==='tank'||n==='spray'?c[1]:c[1]+(T.l[1]>c[1]?11:-11))+'L'+T.l[0]+' '+T.l[1],'lead'):'')
-   +'<rect x="'+(c[0]-20)+'" y="'+(c[1]-11)+'" width="40" height="22"/><text x="'+c[0]+'" y="'+(c[1]+5)+'">'+nums[i]+'</text></g>'}).join('');
- return '<svg class="aq-loop-circuit__svg" viewBox="0 0 1200 560" aria-hidden="true" focusable="false">'+g+'</svg>'}
+ /* column rules: the caption grid runs up through the drawing */
+ for(var i=1;i<7;i++)g+=P('M'+i*200+' 0V400','col');
+ /* pipes, the water over them (filled on scroll), equipment on top */
+ g+=P(FEED,'pipe')+P(LOOP,'pipe')+P(FEED,'flow aq-loop-circuit__flow--feed')+P(LOOP,'flow aq-loop-circuit__flow--loop');
+ g+='<path class="'+K+'__route" d="'+ROUTE+'"/>';
+ [[180,Y,'r'],[1220,Y,'r'],[1330,170,'u'],[1000,24,'l'],[600,24,'l'],[120,170,'u']].forEach(function(a){var x=a[0],y=a[1],d=a[2]==='r'?'M'+(x-5)+' '+(y-6)+'l8 6l-8 6':a[2]==='l'?'M'+(x+5)+' '+(y-6)+'l-8 6l8 6':'M'+(x-6)+' '+(y+5)+'l6 -8l6 8';g+=P(d,'chev')});
+ /* 01 generation: incoming PW, isolating valve, flow arrow */
+ g+='<g class="'+K+'__node" data-node="gen">'+valve(64,Y)+P('M64 292V276M56 276H72','ln')+P('M0 '+(Y-14)+'V'+(Y+14),'thin')+'</g>';
+ /* 02 tank in section: dished head, vent filter, level and water, nozzles */
+ var tank='<g class="'+K+'__node" data-node="tank">'
+  +P('M230 110C230 80 260 66 300 66C340 66 370 80 370 110V240C370 256 340 262 300 262C260 262 230 256 230 240Z','eq')
+  +'<g class="'+K+'__water">'+P('M234 150H366','level');
+ for(var y=164;y<=246;y+=14)tank+=P('M'+(y>236?246:234)+' '+y+'H'+(y>236?354:366),'hatch');
+ tank+='</g>'+P('M300 66V46','ln')+P('M288 14H312V46H288Z','eq')+P('M294 20V40M300 20V40M306 20V40','thin')+P('M300 14V4','thin')
+  +P('M244 262L238 292M356 262L362 292M226 292H252M348 292H374','thin')+'</g>';
+ /* 07 spray ball inside the head, fed by the return */
+ var jets=[[244,140],[252,160],[276,150],[300,146],[324,150],[348,160],[356,140],[262,118],[338,118]];
+ var spray='<g class="'+K+'__node" data-node="spray">'+P('M340 72V92L308 104','hid')
+  +'<g class="'+K+'__spray">'+jets.map(function(q){return P('M300 108L'+q[0]+' '+q[1],'jet')}).join('')+'</g>'+C(300,108,7,'eq')
+  /* detail on the return riser: the ball wetting the head, enlarged */
+  +C(1240,170,62,'det')+P('M1198 140C1218 126 1262 126 1282 140','thin')
+  +'<g class="'+K+'__spray">'+[[1186,196],[1200,216],[1224,226],[1240,228],[1256,226],[1280,216],[1294,196],[1194,160],[1286,160]].map(function(q){return P('M1240 168L'+q[0]+' '+q[1],'jet')}).join('')+'</g>'
+  +P('M1240 108V154','ln')+C(1240,168,13,'eq')+C(1235,164,2.5,'pt')+C(1246,172,2.5,'pt')+C(1242,160,2.5,'pt')
+  +'<text class="'+K+'__tx" x="1240" y="94">A</text><text class="'+K+'__tx" x="278" y="98">A</text></g>';
+ /* 03 loop pump */
+ var pump='<g class="'+K+'__node" data-node="pump">'+C(500,Y,24,'eq')+P('M476 '+(Y-24)+'H500','ln')+P('M490 '+(Y-12)+'L514 '+Y+'L490 '+(Y+12)+'Z','ln')+P('M478 '+(Y+22)+'L470 '+(Y+40)+'H530L522 '+(Y+22),'thin')+'</g>';
+ /* 04 shell-and-tube exchanger: tubes, tube sheets, utility nozzles */
+ var hx='<g class="'+K+'__node" data-node="hx">'+P('M652 '+(Y-18)+'H748V'+(Y+18)+'H652Z','eq')+P('M664 '+(Y-18)+'V'+(Y+18)+'M736 '+(Y-18)+'V'+(Y+18),'ln')
+  +P('M664 '+(Y-8)+'H736M664 '+Y+'H736M664 '+(Y+8)+'H736','thin')+P('M684 '+(Y-18)+'V'+(Y-36)+'M716 '+(Y+18)+'V'+(Y+36),'thin')+'</g>';
+ /* 05 points of use: zero-static valves on short drops, each with its outlet */
+ var pou='<g class="'+K+'__node" data-node="pou">'+[850,900,950].map(function(x){
+  return P('M'+x+' '+Y+'V'+(Y+14),'ln')+valve(x,Y+23,1)+P('M'+(x-8)+' '+(Y+23)+'H'+(x-18),'thin')+P('M'+x+' '+(Y+32)+'V'+(Y+48),'ln')+P('M'+x+' '+(Y+56)+'q-3 5 0 8q3-3 0-8','drop')}).join('')+'</g>';
+ /* 06 return sensors: conductivity, temperature, flow, TOC (dashed: standard or option) */
+ var sens='<g class="'+K+'__node" data-node="sensors">'+[['CE',1040],['TE',1080],['FE',1120],['AE',1160]].map(function(q,i){
+  return P('M'+q[1]+' '+(Y-34)+'V'+Y,'ln')+C(q[1],Y-50,16,'eq'+(i===3?' is-opt':''))+'<text class="'+K+'__tx" x="'+q[1]+'" y="'+(Y-46)+'">'+q[0]+'</text>'}).join('')+'</g>';
+ g+=tank+spray+pump+hx+pou+sens;
+ return '<svg class="'+K+'__svg" viewBox="0 0 1400 400" aria-hidden="true" focusable="false">'+g+'</svg>'}
 LOOKS['loop-circuit']=function(b,H){
- var I=b.stages||b.items||[],n=I.length,pg=wp(WP),nodes=I.map(function(it,i){return it.node||NODE[i]||''}),nums=I.map(function(it,i){return (i<9?'0':'')+(i+1)});
- var head='<div class="aq-loop-circuit__bar" aria-hidden="true"><span class="aq-loop-circuit__lamp"></span><span>'+tx(b.screen||(pg&&pg.nav_label)||'')+'</span><span class="aq-loop-circuit__count">'+n+' '+e(b.fold_noun||'stages')+'</span></div>';
- var screen='<div class="aq-loop-circuit__screen">'+head+'<div class="aq-loop-circuit__mimic">'+mimic(nodes,nums)+'</div></div>';
+ var I=b.stages||b.items||[],n=I.length,nodes=I.map(function(it,i){return it.node||NODE[i]||''}),nums=I.map(function(it,i){return (i<9?'0':'')+(i+1)});
+ var at=nodes.map(function(id){return AT[id]?AT[id].join(','):''});
  var list=I.map(function(it,i){var g=wSpot(it.spot||it.icon,'','aq-spot--on-navy aq-loop-circuit__glyph');
-  return '<li class="aq-loop-circuit__stage" data-node="'+e(nodes[i])+'"><span class="aq-loop-circuit__mark" aria-hidden="true">'+g+'</span>'
-   +'<p class="aq-loop-circuit__no" aria-hidden="true">'+nums[i]+'</p><h3 class="aq-loop-circuit__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-loop-circuit__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
- var html=sec(H+'<div class="aq-loop-circuit" style="--n:'+n+'">'+screen+'<ol class="aq-loop-circuit__stages" role="list">'+list+'</ol></div>','aq-band--navy aq-loop-circuit-sec');
+  return '<li class="'+K+'__stage" data-node="'+e(nodes[i])+'" data-at="'+at[i]+'"><span class="'+K+'__mark" aria-hidden="true">'+g+'</span>'
+   +'<p class="'+K+'__no" aria-hidden="true">'+nums[i]+'</p><h3 class="'+K+'__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="'+K+'__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
+ var html=sec(H+'<div class="'+K+'" style="--n:'+n+'"><div class="'+K+'__strip">'+strip()+'</div><ol class="'+K+'__stages" role="list">'+list+'</ol></div>','aq-band--navy aq-loop-circuit-sec');
  return html.replace(/^<section class="([^"]*)"/,'<section class="$1" data-theme="dark"')};
-/* Pointing at a stage lights its tag and equipment on the screen (colour only) */
+/* Pointing at a stage lights its station on the strip (colour only) */
 function hl(ev,on){var s=ev.target.closest&&ev.target.closest('.aq-loop-circuit__stage');if(!s||s.contains(ev.relatedTarget))return;var r=s.closest('.aq-loop-circuit'),id=s.getAttribute('data-node');
  [].forEach.call(r.querySelectorAll('.aq-loop-circuit__svg [data-node="'+id+'"]'),function(el){el.classList.toggle('is-hot',on)});s.classList.toggle('is-hot',on)}
 document.addEventListener('mouseover',function(ev){hl(ev,true)});document.addEventListener('mouseout',function(ev){hl(ev,false)});

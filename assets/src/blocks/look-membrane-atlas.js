@@ -1,12 +1,14 @@
-/* Look "membrane-atlas" -> MembraneAtlas (design-system/components/MembraneAtlas): a feed-water table read as an atlas
-   of membrane failures. Each row is a plate: a round micrograph of the membrane surface under a reticle, showing what
-   that feed condition does to it (pitted by oxidation, slowed by cold and grown over in summer, caked by fouling, set
-   with carbonate crystals, glazed with silica, coated with iron, colonised by biofilm), then the condition, its effect
-   on the RO and what we design for. The heading sits in the first cell of the grid.
+/* Look "membrane-atlas" -> MembraneAtlas (design-system/components/MembraneAtlas): a feed-water table read as a
+   numbered sequence (pass 9b concept sys-pretreatment.2: navy square numeral tiles as row heads turn a three-column
+   table into a readable sequence). Each row opens on a navy tile: a huge light slash numeral over a round micrograph
+   of the membrane surface showing what that feed condition does to it (pitted by oxidation, slowed by cold and grown
+   over in summer, caked by fouling, set with carbonate crystals, glazed with silica, coated with iron, colonised by
+   biofilm), held soft until the visitor brings the scope's lens over it; then the condition, its effect on the RO and
+   what we design for, under the table's own column names.
    Fields (a table block): h, cols [condition, effect, design], rows [[t, effect, design]], fold, fold_noun.
    New optional field: marks: one micrograph name per row, in row order: "oxidize" | "cold" | "foul" | "scale" |
    "silica" | "coat" | "biofilm" (anything else, or none, draws the clean membrane only).
-   Fold: on phones only (desktop shows every plate). */
+   Fold: on phones only (desktop shows every row). */
 (function(){
 var K='aq-membrane-atlas';
 function rnd(s){return function(){s=(s*16807)%2147483647;return (s-1)/2147483646}}
@@ -40,12 +42,15 @@ function micro(kind,i){var R=rnd(31+i*97),tick='';
   +'<circle class="'+K+'__rim" r="96"/><path class="'+K+'__tick" d="'+tick+'"/><path class="'+K+'__cross" d="M-112 0h10M102 0h10M0 -112v10M0 102v10"/></svg>'}
 LOOKS['membrane-atlas']=function(b,H){
  var C=b.cols||[],R=b.rows||[],M=b.marks||[];
- var plates=R.map(function(r,i){
-  return fli('<li class="'+K+'__plate" data-mark="'+e(M[i]||'')+'">',b,i)
-   +'<div class="'+K+'__scope"><span class="'+K+'__fig" aria-hidden="true">Fig. '+(i<9?'0':'')+(i+1)+'</span>'+micro(M[i],i)+'</div>'
-   +'<h3 class="'+K+'__t">'+tcell(r[0])+'</h3>'
-   +'<dl class="'+K+'__dl">'+(r[1]!=null?'<div class="'+K+'__row"><dt>'+tx(C[1]||'')+'</dt><dd>'+tcell(r[1])+'</dd></div>':'')
-   +(r[2]!=null?'<div class="'+K+'__row '+K+'__row--ours"><dt>'+tx(C[2]||'')+'</dt><dd>'+tcell(r[2])+'</dd></div>':'')+'</dl></li>'}).join('');
- var grid='<div class="'+K+'"><div class="'+K+'__head">'+H+'</div><ol class="'+K+'__plates" role="list">'+plates+'</ol></div>';
- return sec(wFold(b,R.length,grid,b.fold_noun),K+'-sec')};
+ var head='<div class="'+K+'__thead" role="rowgroup"><div class="'+K+'__tr" role="row"><span class="'+K+'__corner" role="columnheader"><span class="'+K+'__vh">No.</span></span>'
+  +[0,1,2].map(function(j){return '<span class="'+K+'__th" role="columnheader">'+tx(C[j]||'')+'</span>'}).join('')+'</div></div>';
+ var rows=R.map(function(r,i){var n=(i<9?'0':'')+(i+1);
+  return fli('<div class="'+K+'__tr '+K+'__plate" role="row" data-mark="'+e(M[i]||'')+'">',b,i)
+   +'<div class="'+K+'__tile" role="cell"><span class="'+K+'__n" aria-hidden="true">'+n+'<span class="'+K+'__sl">/</span></span><span class="'+K+'__vh">'+n+'</span>'
+   +'<div class="'+K+'__scope" aria-hidden="true">'+micro(M[i],i)+'</div></div>'
+   +'<div class="'+K+'__td '+K+'__td--t" role="rowheader"><span class="'+K+'__k" aria-hidden="true">'+tx(C[0]||'')+'</span><span class="'+K+'__t">'+tcell(r[0])+'</span></div>'
+   +'<div class="'+K+'__td" role="cell"><span class="'+K+'__k" aria-hidden="true">'+tx(C[1]||'')+'</span><span class="'+K+'__c">'+tcell(r[1])+'</span></div>'
+   +'<div class="'+K+'__td '+K+'__td--ours" role="cell"><span class="'+K+'__k" aria-hidden="true">'+tx(C[2]||'')+'</span><span class="'+K+'__c">'+tcell(r[2])+'</span></div></div>'}).join('');
+ var grid='<div class="'+K+'" role="table" aria-label="'+e(b.h||'')+'">'+head+'<div class="'+K+'__body" role="rowgroup">'+rows+'</div></div>';
+ return sec(H+wFold(b,R.length,grid,b.fold_noun),K+'-sec')};
 })();
