@@ -100,7 +100,14 @@
     ]
    ],
    "fold": 2,
-   "fold_noun": "sites"
+   "fold_noun": "sites",
+   "look": "site-plates",
+   "art": [
+    "office",
+    "shop",
+    "service",
+    "parts"
+   ]
   },
   {
    "type": "table",
@@ -145,7 +152,105 @@
      "Authorities where the system is installed"
     ]
    ],
-   "as": "router"
+   "as": "router",
+   "look": "coverage-map",
+   "map": [
+    {
+     "c": "YT",
+     "n": "Yukon",
+     "x": 0,
+     "y": 0,
+     "r": 4
+    },
+    {
+     "c": "NT",
+     "n": "Northwest Territories",
+     "x": 1,
+     "y": 0,
+     "r": 4
+    },
+    {
+     "c": "NU",
+     "n": "Nunavut",
+     "x": 2,
+     "y": 0,
+     "r": 4
+    },
+    {
+     "c": "BC",
+     "n": "British Columbia",
+     "x": 0,
+     "y": 1,
+     "r": 2
+    },
+    {
+     "c": "AB",
+     "n": "Alberta",
+     "x": 1,
+     "y": 1,
+     "r": 3
+    },
+    {
+     "c": "SK",
+     "n": "Saskatchewan",
+     "x": 2,
+     "y": 1,
+     "r": 4
+    },
+    {
+     "c": "MB",
+     "n": "Manitoba",
+     "x": 3,
+     "y": 1,
+     "r": 4
+    },
+    {
+     "c": "ON",
+     "n": "Ontario",
+     "x": 4,
+     "y": 1,
+     "r": 0
+    },
+    {
+     "c": "QC",
+     "n": "Quebec",
+     "x": 5,
+     "y": 1,
+     "r": 1
+    },
+    {
+     "c": "NL",
+     "n": "Newfoundland and Labrador",
+     "x": 6,
+     "y": 1,
+     "r": 4
+    },
+    {
+     "c": "NB",
+     "n": "New Brunswick",
+     "x": 5,
+     "y": 2,
+     "r": 4
+    },
+    {
+     "c": "PE",
+     "n": "Prince Edward Island",
+     "x": 6,
+     "y": 2,
+     "r": 4
+    },
+    {
+     "c": "NS",
+     "n": "Nova Scotia",
+     "x": 6,
+     "y": 3,
+     "r": 4
+    }
+   ],
+   "base": {
+    "c": "ON",
+    "label": "Based in Ontario"
+   }
   },
   {
    "type": "form",

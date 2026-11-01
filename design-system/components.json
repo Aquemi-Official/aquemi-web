@@ -223,10 +223,20 @@
    "readme": "design-system/components/ContactRoutes/README.md",
    "preview": "design-system/components/ContactRoutes/preview.html",
    "group": "Page sections",
-   "height": "1100",
+   "height": "1000",
    "width": "1100",
-   "subtitle": "Three ways in as rows on hairlines: proposal (this page), urgent service on limestone with its call line, shop visit; each with a 1-2-3 strip and a response clock",
-   "summary": "ContactRoutes sets the ways into Aquemi as rows on hairlines, each with its own numbered 1 → 2 → 3 strip and response clock, so a visitor on a contact page sees which route fits before the form: request a proposal, production stopped (call the service line), or visit the shop."
+   "subtitle": "Three ways in as route sheets on a navy band: proposal (this page) and supplier audit on limestone, urgent service as the dark sheet with its call bar; each a numbered water rail ending at its response clock",
+   "summary": "ContactRoutes deals the ways into Aquemi onto a navy band as route sheets, each showing what happens after you act as a numbered sequence on a water rail that ends at its response clock, so a buyer on a contact page sees which route fits and what follows before the form."
+  },
+  {
+   "name": "CoverageMap",
+   "readme": "design-system/components/CoverageMap/README.md",
+   "preview": "design-system/components/CoverageMap/preview.html",
+   "group": "Page sections",
+   "height": "1500",
+   "width": "1100",
+   "subtitle": "Can you support my site: a tile map of the provinces and territories held beside the region rows; a row lights its tiles",
+   "summary": "CoverageMap reads a coverage table by region off a tile map: the provinces and territories as squares on a limestone sheet held in view, the regions as rows beside it, and the row you point at, focus or read lighting its tiles."
   },
   {
    "name": "CutawayRail",
@@ -739,6 +749,26 @@
    "summary": "RelatedLinks closes a page with the pages to read next as tiles hung off one pipe: each tile shows its index and section, a picture of the target page and its title with a `flow` arrow."
   },
   {
+   "name": "ResponseLanes",
+   "readme": "design-system/components/ResponseLanes/README.md",
+   "preview": "design-system/components/ResponseLanes/preview.html",
+   "group": "Page sections",
+   "height": "1300",
+   "width": "1100",
+   "subtitle": "Response times by request as lanes on one clock: severities 1 to 4 under huge light numerals, then the other requests; every clause a stop with its placeholder clock",
+   "summary": "ResponseLanes draws a table of response times by request as lanes on one clock: each request runs from where you call or send through its first response into what follows, every clause a stop with its time beneath, and the severities set as a calm scale of huge light numerals."
+  },
+  {
+   "name": "ReturnSlips",
+   "readme": "design-system/components/ReturnSlips/README.md",
+   "preview": "design-system/components/ReturnSlips/preview.html",
+   "group": "Page sections",
+   "height": "1400",
+   "width": "1100",
+   "subtitle": "What each request returns: each situation set large, a pipe across, and the returned items dealt out as paper slips with When and Cost",
+   "summary": "ReturnSlips sets a table of what each request returns as an exchange on a limestone band: each situation large on the left, a pipe across, and what comes back dealt out as paper slips with their \"When\" and \"Cost\" fields."
+  },
+  {
    "name": "RoleMatrix",
    "readme": "design-system/components/RoleMatrix/README.md",
    "preview": "design-system/components/RoleMatrix/preview.html",
@@ -827,6 +857,16 @@
    "width": "1280",
    "subtitle": "C&Q: who writes and who reviews, as each document's signature block",
    "summary": "SignatureBlocks sets a roles table (who writes, who reviews) as the signature block at the foot of each document, the party in each field shown by its box (look `signature-blocks`, table block `as: \"roles\"`)."
+  },
+  {
+   "name": "SitePlates",
+   "readme": "design-system/components/SitePlates/README.md",
+   "preview": "design-system/components/SitePlates/preview.html",
+   "group": "Page sections",
+   "height": "700",
+   "width": "1100",
+   "subtitle": "Where to find us: each site a figure plate with its isometric drawing, the kind set large, address and contact lines; two shown, the rest folded",
+   "summary": "SitePlates sets a table of sites (site, what happens here, address, contact and hours) as figure plates, two to a row, each with an isometric drawing of what stands there, the kind of site set large and light, and its address and contact lines."
   },
   {
    "name": "StairRouter",

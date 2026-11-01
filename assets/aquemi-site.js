@@ -1116,14 +1116,18 @@ BLOCKS['case']=function(b,H){return sec(H+'<div class="aq-cases">'+(b.items||[])
   return it.art||(it.outcomes&&it.outcomes.length)||(it.timeline&&it.timeline.length)?record(it):card(it);
 }).join('')+'</div>');};
 })();
-/* Block "contact-routes" -> ContactRoutes: the ways into Aquemi as rows on hairlines, each with a numbered 1 → 2 → 3
-   strip and its response clock. Fields: routes [{t, d, steps: [3 strings], clock, link: "<page id>", phone?, urgent?,
-   current?, action?, intent?}]. Each route carries an eyebrow "Route N" (data order). The route for the page being
-   read (current: true, or link = this page) is marked "This page" and its action scrolls to this page's form; the
-   others link to their pages (action label defaults to that page's nav label; intent ticks options on its form).
-   The urgent route sits on a limestone panel with a call line (a tel: link once the number is real) and comes first
-   in the markup, so phones show it first; desktop keeps the data order. Every clock stays the page's own placeholder
-   until confirmed. */
+/* Block "contact-routes" -> ContactRoutes (pass 9): the ways into Aquemi as route sheets dealt onto a navy band, after
+   inspiration/gemini/62-concept-contact-routes.png. One route line runs under the heading and drops into each sheet's
+   folder tab ("Route N", plus "Urgent" / "This page"); every sheet shows what happens after you act as a visible
+   sequence: its steps on a water rail, numbered, the rail running on down to the response clock (the terminus), then
+   the action.
+   Ordinary routes are limestone sheets; the urgent route is the dark sheet with the call bar (the number large in mono,
+   a tel: link once it is real). Sheets share one subgrid (tab, body, clock, action), so the clocks and actions line up.
+   Fields: routes [{t, d, steps: [3 strings], clock, link: "<page id>", phone?, urgent?, current?, action?, intent?}].
+   The route for the page being read (current: true, or link = this page) is marked "This page" and its action scrolls
+   to this page's form; the others link to their pages (action label defaults to that page's nav label; intent ticks
+   options on its form). The urgent route comes first in the markup, so phones show it first; desktop keeps the data
+   order (--o). Every clock stays the page's own placeholder until confirmed. */
 var CR_CLOCK=wIcon('clock','aq-contact-routes__icon');
 var CR_PHONE=wIcon('phone','aq-contact-routes__icon');
 /* The call line's number: wtel in core.js, the one phone rule (a tel: link once confirmed, the placeholder until then) */
@@ -1136,20 +1140,18 @@ BLOCKS['contact-routes']=function(b,H){var R=b.routes||[];
  var cards=order.map(function(i){var r=R[i],cur=!!(r.current||(r.link&&r.link===p.id)),urg=!!r.urgent,S=r.steps||[];
   var go=cur?'<a class="aq-btn aq-btn--primary" href="#'+e(p.id||WP)+'" '+(fid?'data-jump="'+e(fid)+'"':'data-routes-form=""')+'>'+tx(r.action||'Use the form below')+' <span class="aq-btn__arrow" aria-hidden="true">↓</span></a>'
    :r.link&&wp(r.link)?wBtn(r.action||wp(r.link).nav_label||r.link,r.link,'secondary',r.intent):'';
-  return '<li class="aq-contact-routes__route'+(urg?' is-urgent':'')+(cur?' is-current':'')+'" style="--o:'+i+'"'+(urg?' data-theme="light"':'')+(cur?' aria-current="page"':'')+'>'
+  return '<li class="aq-contact-routes__route'+(urg?' is-urgent':'')+(cur?' is-current':'')+'" style="--o:'+i+'" data-theme="'+(urg?'dark':'light')+'"'+(cur?' aria-current="page"':'')+'>'
    +'<p class="aq-contact-routes__tab"><span class="aq-contact-routes__rn">Route '+(i+1)+'</span>'
     +(urg?'<span class="aq-contact-routes__mark">Urgent</span>':'')
     +(cur?'<span class="aq-contact-routes__mark">This page</span>':'')+'</p>'
-   +'<div class="aq-contact-routes__head"><div class="aq-contact-routes__main">'
-    +'<h3 class="aq-contact-routes__t">'+tx(r.t)+'</h3>'
+   +'<div class="aq-contact-routes__body"><div class="aq-contact-routes__main"><h3 class="aq-contact-routes__t">'+tx(r.t)+'</h3>'
     +(r.d?'<p class="aq-contact-routes__d">'+tx(r.d)+'</p>':'')+'</div>'
-    +'<div class="aq-contact-routes__side">'
-    +(r.clock?'<p class="aq-contact-routes__clock">'+CR_CLOCK+'<span class="aq-contact-routes__k">Response</span><span class="aq-contact-routes__v">'+tx(r.clock)+'</span></p>':'')
-    +(go?'<div class="aq-contact-routes__action">'+go+'</div>':'')+'</div></div>'
    +(r.phone?'<p class="aq-contact-routes__call">'+CR_PHONE+'<span class="aq-contact-routes__k">Call</span>'+crPhone(r.phone)+'</p>':'')
-   +(S.length?'<ol class="aq-contact-routes__steps">'+S.map(function(s,k){return '<li><span class="aq-contact-routes__n" aria-hidden="true">'+(k+1)+'</span><span class="aq-contact-routes__s">'+tx(s)+'</span>'+(k<S.length-1?'<span class="aq-contact-routes__arrow" aria-hidden="true">→</span>':'')+'</li>'}).join('')+'</ol>':'')
+   +(S.length?'<ol class="aq-contact-routes__steps">'+S.map(function(s,k){return '<li><span class="aq-contact-routes__node" aria-hidden="true"></span><span class="aq-contact-routes__n" aria-hidden="true">'+(k<9?'0':'')+(k+1)+'</span><span class="aq-contact-routes__s">'+tx(s)+'</span></li>'}).join('')+'</ol>':'')+'</div>'
+   +(r.clock?'<p class="aq-contact-routes__clock"><span class="aq-contact-routes__end" aria-hidden="true">'+CR_CLOCK+'</span><span class="aq-contact-routes__k">Response</span><span class="aq-contact-routes__v">'+tx(r.clock)+'</span></p>':'<span class="aq-contact-routes__clock is-empty" aria-hidden="true"></span>')
+   +'<div class="aq-contact-routes__action">'+go+'</div>'
    +'</li>'}).join('');
- return sec(H+'<ul class="aq-contact-routes" style="--routes:'+R.length+'">'+cards+'</ul>');};
+ return sec(H+'<ul class="aq-contact-routes" style="--routes:'+R.length+'">'+cards+'</ul>','aq-band--navy aq-contact-routes-sec');};
 /* Fallback for a page whose form has no nav id: scroll to the first form after the routes */
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('[data-routes-form]');if(!a)return;var f=document.querySelector('.wform');if(!f)return;ev.preventDefault();
  (f.closest('section')||f).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})});
@@ -1500,6 +1502,46 @@ LOOKS['code-index']=function(b,H){
    +'</li>'}).join('');
  var more=b.link&&wp(b.link)?'<p class="aq-code-index__more">'+wBtn(b.link_label||wlabel(b.link),b.link,'link',b.intent)+'</p>':'';
  return sec(H+'<div class="aq-code-index">'+wFold(b,n,'<ol class="aq-code-index__list" role="list">'+li+'</ol>',b.fold_noun||'documents')+more+'</div>','aq-code-index-sec')};
+/* Look "coverage-map" -> CoverageMap (design-system/components/CoverageMap): a coverage table by region (a router table:
+   region, then the columns that answer for it) read off a map. Left, held in view as you read: a tile map of the country
+   on a limestone sheet, one square per province or territory at its rough place (the block's map field: no invented
+   places, only the tiles it lists), the base marked; every tile belongs to one row. Right, the regions as rows: index,
+   the region set large and light, the tile codes it covers, then each column as a labelled field. Pointing at, focusing
+   or (on desktop, with motion) scrolling to a row lights its tiles in flow; pressing a tile lights it and brings its row
+   into view. Every row is always shown: the map only points.
+   Fields, as a table: cols, rows, nav, and
+     map: [{c: "ON", n: "Ontario", x: 4, y: 1, r: 0}] one tile per region: code, name, column and row on the grid, and
+          r, the index of the row that covers it;
+     base: {c: "ON", label: "Based in Ontario"} (optional) the tile marked as home, with its label (copy from the page).
+   Design system: components/CoverageMap. */
+(function(){
+var covN=0;
+LOOKS['coverage-map']=function(b,H){var C=b.cols||[],R=b.rows||[],M=b.map||[],B=b.base||null,k=++covN;
+ var cols=M.reduce(function(a,t){return Math.max(a,(+t.x||0)+1)},1),rws=M.reduce(function(a,t){return Math.max(a,(+t.y||0)+1)},1);
+ function rid(i){return 'cov-'+k+'-'+i}
+ var tiles=M.map(function(t){var home=B&&B.c===t.c,r=+t.r,has=r>=0&&r<R.length;
+  return '<li class="aq-coverage-map__tile'+(home?' is-home':'')+'" style="grid-column:'+((+t.x||0)+1)+';grid-row:'+((+t.y||0)+1)+'" data-r="'+(has?r:'')+'">'
+   +(has?'<button type="button" class="aq-coverage-map__btn" data-cov="'+e(rid(r))+'" aria-label="'+e(t.n||t.c)+'">':'<span class="aq-coverage-map__btn">')
+   +'<span class="aq-coverage-map__code" aria-hidden="true">'+e(t.c)+'</span>'+(has?'<span class="aq-coverage-map__ri" aria-hidden="true">'+(r<9?'0':'')+(r+1)+'</span>':'')
+   +(has?'</button>':'</span>')+'</li>'}).join('');
+ var base=B&&B.label?'<p class="aq-coverage-map__base"><span class="aq-coverage-map__pin" aria-hidden="true"></span>'+tx(B.label)+'</p>':'';
+ var sheet='<div class="aq-coverage-map__sheet" data-theme="light"><p class="aq-coverage-map__title" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span></p>'
+  +'<ol class="aq-coverage-map__grid" style="--cols:'+cols+';--rows:'+rws+'" aria-label="'+e(C[0]||'Map')+'">'+tiles+'</ol>'+base+'</div>';
+ var rows=R.map(function(r,i){var codes=M.filter(function(t){return +t.r===i}).map(function(t){return e(t.c)});
+  return '<li class="aq-coverage-map__row" id="'+rid(i)+'" data-r="'+i+'" tabindex="-1">'
+   +'<div class="aq-coverage-map__rh"><span class="aq-coverage-map__i" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-coverage-map__t">'+tcell(r[0])+'</h3>'
+   +(codes.length?'<p class="aq-coverage-map__codes" aria-hidden="true">'+codes.map(function(c){return '<span>'+c+'</span>'}).join('')+'</p>':'')+'</div>'
+   +'<dl class="aq-coverage-map__dl">'+r.slice(1).map(function(c,j){return '<div><dt>'+tx(C[j+1]||'')+'</dt><dd>'+tcell(c)+'</dd></div>'}).join('')+'</dl></li>'}).join('');
+ return sec(H+'<div class="aq-coverage-map"><div class="aq-coverage-map__map">'+sheet+'</div><ol class="aq-coverage-map__rows">'+rows+'</ol></div>','aq-coverage-map-sec')};
+/* Light a row's tiles: pointing at or focusing a row, or pressing a tile (which also brings its row into view) */
+function lit(w,r){[].forEach.call(w.querySelectorAll('[data-r]'),function(x){x.classList.toggle('is-on',r!==''&&x.getAttribute('data-r')===String(r))})}
+window.AQcoverage=lit;
+document.addEventListener('mouseover',function(ev){var row=ev.target.closest&&ev.target.closest('.aq-coverage-map__row,.aq-coverage-map__tile');if(!row)return;var w=row.closest('.aq-coverage-map');if(w)lit(w,row.getAttribute('data-r'))});
+document.addEventListener('focusin',function(ev){var row=ev.target.closest&&ev.target.closest('.aq-coverage-map__row,.aq-coverage-map__tile');if(!row)return;var w=row.closest('.aq-coverage-map');if(w)lit(w,row.getAttribute('data-r'))});
+document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-cov]');if(!t)return;var row=document.getElementById(t.getAttribute('data-cov'));if(!row)return;
+ var w=t.closest('.aq-coverage-map');if(w)lit(w,row.getAttribute('data-r'));
+ row.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'})});
+})();
 /* Look "cutaway-rail" -> CutawayRail (design-system/components/CutawayRail): an evidence table read beside one sticky
    drawing. Left, a close cutaway of the plant (IsoKit on navy: a section of product-contact pipe cut open, the loop with
    a point-of-use branch and its valve, an analyser on the line, the control panel, the qualification binders) stays in
@@ -3044,6 +3086,63 @@ LOOKS['redline-sheet']=(function(){
   var tb=blk.length?'<div class="aq-redline-sheet__block" aria-hidden="true">'+blk.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'<span>'+R.length+' markups</span></div>':'';
   return sec(H+'<div class="aq-redline-sheet" data-theme="light">'+zones+list+tb+'</div>','aq-redline-sheet-sec')}
 })();
+/* Look "response-lanes" -> ResponseLanes (design-system/components/ResponseLanes): a table of response times by request
+   (your request, first response, what follows) drawn as lanes on one clock. Each request is a lane: it starts where you
+   call or send and runs right through its first response (one stop per clause of that cell, split at "; ") and on into
+   what follows (the same), every stop a node on the line with its clock beneath it, placeholders and all. A request
+   written "Severity N: …" is set with N as a huge light numeral, so the four severities read as a calm scale from
+   production stopped down to routine; the other requests follow under a stronger rule with no numeral. Severity 1's
+   lane is drawn in flow. Stops sit at even spacing: the lanes show the order of events, never a time scale.
+   Fields, as a table: cols [your request, first response, what follows] (the two value labels head the lane zones),
+   rows [request, first response, what follows], intro, nav. Cells may be {t, link, intent}. Design system:
+   components/ResponseLanes. */
+(function(){
+/* clauses: a cell split at "; " outside brackets and parentheses ("Annex 15, 11; GUI-0029, 7" inside a parenthesis stays one) */
+function clauses(c){if(c&&typeof c==='object')return [c];var s=String(c==null?'':c),o=[],d=0,st=0;
+ for(var i=0;i<s.length;i++){var ch=s[i];if(ch==='('||ch==='[')d++;else if((ch===')'||ch===']')&&d)d--;else if(ch===';'&&!d&&/\s/.test(s[i+1]||'')){o.push(s.slice(st,i));st=i+1}}
+ o.push(s.slice(st));return o.map(function(x){return x.trim()}).filter(function(x){return x!==''})}
+function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
+LOOKS['response-lanes']=function(b,H){var C=b.cols||[],R=b.rows||[],seen=false;
+ var rows=R.map(function(r,i){var t=r[0]&&typeof r[0]==='object'?r[0].t:String(r[0]||''),m=t.match(/^Severity\s+(\d+):\s*(.*)$/),sev=m?+m[1]:0;
+  var brk=!sev&&!seen&&i>0;if(!sev)seen=true;
+  function zone(c,k){var E=clauses(c);return '<div class="aq-response-lanes__zone" data-zone="'+k+'"><p class="aq-response-lanes__zk">'+tx(C[k]||'')+'</p><ol class="aq-response-lanes__stops">'
+   +E.map(function(x){return '<li><span class="aq-response-lanes__node" aria-hidden="true"></span><span class="aq-response-lanes__v">'+tcell(cap(x))+'</span></li>'}).join('')+'</ol></div>'}
+  return '<li class="aq-response-lanes__row'+(sev===1?' is-first':'')+(sev?' is-sev':'')+(brk?' is-break':'')+'"'+(sev?' data-sev="'+sev+'"':'')+'>'
+   +'<div class="aq-response-lanes__req">'
+    +(sev?'<span class="aq-response-lanes__num" aria-hidden="true">'+sev+'</span>':'')
+    +'<h3 class="aq-response-lanes__t">'+(sev?'<span class="aq-response-lanes__sev">Severity '+sev+'<span class="aq-response-lanes__sr">: </span></span><span class="aq-response-lanes__what">'+tx(cap(m[2]))+'</span>':tcell(r[0]))+'</h3></div>'
+   +'<div class="aq-response-lanes__lane"><span class="aq-response-lanes__line" aria-hidden="true"><i></i></span><span class="aq-response-lanes__start" aria-hidden="true"></span>'+zone(r[1],1)+zone(r[2],2)+'</div></li>'}).join('');
+ var head='<p class="aq-response-lanes__head" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+wIcon('clock','aq-response-lanes__ic')+tx(C[1]||'')+'</span><span>'+tx(C[2]||'')+'</span></p>';
+ return sec(H+'<div class="aq-response-lanes">'+head+'<ol class="aq-response-lanes__rows">'+rows+'</ol></div>','aq-response-lanes-sec')};
+})();
+/* Look "return-slips" -> ReturnSlips (design-system/components/ReturnSlips): a table of what each request returns, set as
+   an exchange on a limestone band. Each row is one situation: what you have, set large and light on the left; a short
+   pipe with its arrow carries it across; on the right, what comes back is dealt out as paper slips, one per returned
+   item, each with its own "When" and "Cost" fields. A "What comes back" cell holding several items joined by " · " gives
+   one slip per item, and the "When" and "Cost" cells are split the same way when they hold the same number of parts
+   (otherwise each slip shows the whole cell). A {t, link, intent} cell becomes a slip whose title is the link.
+   Fields, as a table: cols [situation, what comes back, when, cost] (labels used as the slip field names), rows, fold,
+   fold_noun. Hover or focus on a row runs its pipe in flow and lifts its slips. Design system: components/ReturnSlips. */
+(function(){
+function parts(c){return c&&typeof c==='object'?[c]:String(c==null?'':c).split(/\s+·\s+/)}
+function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
+LOOKS['return-slips']=function(b,H){var C=b.cols||[],R=b.rows||[];
+ var rows=R.map(function(r,i){var got=parts(r[1]),when=parts(r[2]),cost=parts(r[3]),n=got.length;
+  var wSplit=when.length===n,cSplit=cost.length===n;
+  var slips=got.map(function(g,k){var w=wSplit?when[k]:r[2],c=cSplit?cost[k]:r[3];
+   return '<li class="aq-return-slips__slip" style="--k:'+k+'"><span class="aq-return-slips__ruling" aria-hidden="true"><i></i><i></i><i></i></span>'
+    +'<p class="aq-return-slips__t">'+tcell(cap(g))+'</p>'
+    +'<dl class="aq-return-slips__f">'
+     +(w!=null&&w!==''?'<div><dt>'+wIcon('clock','aq-return-slips__ic')+tx(C[2]||'When')+'</dt><dd>'+tcell(w)+'</dd></div>':'')
+     +(c!=null&&c!==''?'<div><dt>'+tx(C[3]||'Cost')+'</dt><dd>'+tcell(c)+'</dd></div>':'')
+    +'</dl></li>'}).join('');
+  return fli('<li class="aq-return-slips__row" style="--n:'+n+'">',b,i)
+   +'<div class="aq-return-slips__have"><span class="aq-return-slips__i" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-return-slips__s">'+tcell(r[0])+'</h3></div>'
+   +'<span class="aq-return-slips__pipe" aria-hidden="true"><i></i></span>'
+   +'<ol class="aq-return-slips__slips" aria-label="'+e(C[1]||'What comes back')+'">'+slips+'</ol></li>'}).join('');
+ var head='<p class="aq-return-slips__cols" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span></p>';
+ return sec('<div class="aq-return-slips-wrap" data-theme="light">'+H+'<div class="aq-return-slips">'+head+wFold(b,R.length,'<ol class="aq-return-slips__rows">'+rows+'</ol>',b.fold_noun||'rows')+'</div></div>','aq-band--limestone aq-return-slips-sec')};
+})();
 /* Look "rule-figures" -> RuleFigures (design-system/components/RuleFigures): a spec block of design rules set as a
    Swiss rule sheet where each rule is explained by a small engineering figure rather than a table cell. The lead rule
    (the first hl row) is a full-width band: its words set large beside a long pipe cut open lengthways, the water in it
@@ -3468,6 +3567,38 @@ LOOKS['signature-blocks']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.key||[
  var key='<p class="aq-signature-blocks__key"><span class="is-us">'+tx(K[0])+'</span><span class="is-you">'+tx(K[1])+'</span><span class="is-both">'+tx(K[2])+'</span></p>';
  return sec(H+'<div class="aq-signature-blocks">'+key+wFold(b,R.length,'<ol class="aq-signature-blocks__list">'+blocks+'</ol>',b.fold_noun||'documents')+'</div>','aq-signature-blocks-sec')
   .replace(/^<section class="([^"]*)"/,'<section class="$1" data-theme="dark"')};
+/* Look "site-plates" -> SitePlates (design-system/components/SitePlates): a table of sites (site, what happens here,
+   address, contact and hours) set as figure plates, two to a row. Each site is a plate: a small isometric drawing of
+   what stands there (IsoKit, on a limestone panel with a faint grid), its index and place, the kind of site set large
+   and light, then what happens here, the address and the contact lines (a cell's " · " parts each on its own line).
+   The first cell is split at its first ", " into the kind ("Shop and test bay") and the place ("[shop location, city and
+   province]"); a {t, link} first cell links the kind. Fields, as a table: cols, rows, fold, fold_noun, and optional
+   art: one drawing key per row ("office", "shop", "service", "parts"; any other key or none draws no figure).
+   Drawings are drawn here from IsoKit parts (building; skid, RO rack and panel; truck; crates are boxes drawn with the
+   kit's box primitive next to a pump and valve). Design system: components/SitePlates. */
+(function(){
+function eq(d){return '<path class="aq-iso__eq" d="'+d+'"/>'}
+var SCENES={
+ office:function(){return {inner:isoPart('building',0,0,0,1,{w:84,d:56,h:52}),box:[[0,0,0],[84,0,0],[0,56,0],[84,56,0],[0,0,68],[84,0,68],[0,56,68]]}},
+ shop:function(){var sk=isoPart('skid',0,0,0,1,{w:150,d:70}),ro=isoPart('ro',8,6,9,1,{id:'ro'}),pn=isoPart('panel',124,48,9,0.9,{id:'pn'});
+  return {inner:[sk,ro,pn].join(''),box:[[0,0,0],[150,0,0],[0,70,0],[150,70,0],[0,0,70],[150,0,70],[0,70,70]]}},
+ service:function(){return {inner:isoPart('truck',0,0,0,1,{load:false}),box:[[0,0,0],[96,0,0],[0,30,0],[96,30,0],[0,0,40],[96,0,40],[0,30,40]]}},
+ parts:function(){var o=[];[[0,0,0,30,26,22],[34,0,0,30,26,22],[0,0,22,30,26,22],[34,0,22,30,26,18],[68,0,0,24,26,16]].forEach(function(c){o.push(eq(isoBoxD([c[0],c[1],c[2]],c[3],c[4],c[5])))});
+  o.push(isoPart('pump',30,52,0,0.9,{id:'pump'}));o.push(isoPart('valve',86,46,6,1.1,{id:'valve'}));
+  return {inner:o.join(''),box:[[0,0,0],[96,0,0],[0,70,0],[96,70,0],[0,0,48],[96,0,48],[0,70,48]]}}
+};
+function scene(k){var f=SCENES[k];if(!f)return '';var s=f(),bx=isoBounds(s.box,18),W=Math.round(bx.w),H=Math.round(bx.h);
+ return '<div class="aq-site-plates__fig" aria-hidden="true" data-theme="light">'+isoSvg(W,H,s.inner,'aq-iso--limestone aq-site-plates__svg',{origin:[-bx.x,-bx.y]})+'</div>'}
+function lines(c){if(c&&typeof c==='object')return tcell(c);return String(c==null?'':c).split(/\s+·\s+/).map(function(x){return '<span>'+tx(x)+'</span>'}).join('')}
+LOOKS['site-plates']=function(b,H){var C=b.cols||[],R=b.rows||[],A=b.art||[];
+ var li=R.map(function(r,i){var c0=r[0],t=c0&&typeof c0==='object'?c0.t:String(c0||''),k=t.indexOf(', '),kind=k>0?t.slice(0,k):t,place=k>0?t.slice(k+2):'';
+  var kh=c0&&typeof c0==='object'&&c0.link&&wp(c0.link)?wlink(c0.link,kind,c0.intent):tx(kind);
+  var dl=[1,2,3].map(function(j){var v=r[j];if(v==null||v==='')return '';return '<div><dt>'+tx(C[j]||'')+'</dt><dd>'+lines(v)+'</dd></div>'}).join('');
+  return fli('<li class="aq-site-plates__plate">',b,i)+scene(A[i])
+   +'<div class="aq-site-plates__text"><p class="aq-site-plates__at"><span class="aq-site-plates__i" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'+(place?'<span>'+tx(place)+'</span>':'')+'</p>'
+   +'<h3 class="aq-site-plates__t">'+kh+'</h3><dl class="aq-site-plates__dl">'+dl+'</dl></div></li>'}).join('');
+ return sec(H+wFold(b,R.length,'<ol class="aq-site-plates">'+li+'</ol>',b.fold_noun||'rows'),'aq-site-plates-sec')};
+})();
 /* Look "stair-router" -> StairRouter (pass 9): a router table (as: "router") drawn as a rising staircase of situation
    cards over huge cropped outline type. Every situation is a card on its own tread, the first lowest, the last highest;
    the stair line (treads and risers) joins them, a limestone wedge cuts the navy ground bottom right and the end word

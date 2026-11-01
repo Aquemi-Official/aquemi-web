@@ -521,57 +521,89 @@ AQmotion.fx('CompareTable', function (root, m) {
     });
   });
 });
-/* ContactRoutes: the ways in are dealt onto the plate. The dashed route line grows down the left; at each sheet the
-   sheet slides in, its stub runs out from the line and the arrowhead lands, the folder tab rises out of the sheet's top edge, then its 1 > 2 > 3 strip
-   runs: the dashed line draws left to right and each numbered ring pops as the line reaches it, with the arrow and the step after it. The urgent route's red dot pulses twice (1.2 s, then still) and
-   its call bar settles in. Desktop: one timeline in data order (under 4.5 s); phones: each sheet as it scrolls in. */
+/* ContactRoutes: the routes are dealt onto the navy band and the water runs each one. The route line draws across under
+   the heading; at each sheet its drop runs down into the tab, the sheet rises, the tab lifts out of its top edge and the
+   head settles (the urgent call bar presses in); then the water runs down the step rail, each numbered stop lights as it
+   arrives and the response clock strikes at the end of the rail. Desktop: one timeline in data order (under 4.5 s);
+   phones: each sheet as it scrolls in, urgent first. The CSS variables default to 1: complete without motion. */
 AQmotion.fx('ContactRoutes', function (root, m) {
   var CLEAR = 'transform,opacity,visibility';
   function sheet(tl, li, at) {
-    var tab = li.querySelector('.aq-contact-routes__tab'), steps = li.querySelector('.aq-contact-routes__steps'),
-      head = li.querySelectorAll('.aq-contact-routes__main, .aq-contact-routes__side'), call = li.querySelector('.aq-contact-routes__call'), dot = li.querySelector('.aq-contact-routes__dot');
-    tl.fromTo(li, { x: -24, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.55, ease: 'power3.out', clearProps: CLEAR }, at);
-    tl.to(li, { '--aq-stub': 1, duration: 0.3, ease: 'power1.in' }, at + 0.3);
-    if (tab) tl.fromTo(tab, { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: 'power2.out', clearProps: CLEAR }, at + 0.4);
-    if (head.length) tl.fromTo(head, { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: 'power3.out', stagger: 0.1, clearProps: CLEAR }, at + 0.35);
-    if (call) tl.fromTo(call, { scale: 0.97, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.45, ease: 'back.out(2)', clearProps: CLEAR }, at + 0.55);
-    if (dot) tl.fromTo(dot, { scale: 1 }, { keyframes: { scale: [1, 1.9, 1, 1.9, 1] }, duration: 1.2, ease: 'none', clearProps: 'transform' }, at + 0.6);
+    var tab = li.querySelector('.aq-contact-routes__tab'), main = li.querySelector('.aq-contact-routes__main'),
+      call = li.querySelector('.aq-contact-routes__call'), steps = li.querySelector('.aq-contact-routes__steps'),
+      clock = li.querySelector('.aq-contact-routes__clock:not(.is-empty)'), act = li.querySelector('.aq-contact-routes__action');
+    tl.to(li, { '--aq-stub': 1, duration: 0.25, ease: 'power1.in' }, at);
+    tl.fromTo(li, { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, ease: 'power3.out', clearProps: CLEAR }, at + 0.15);
+    if (tab) tl.fromTo(tab, { yPercent: 100 }, { yPercent: 0, duration: 0.4, ease: 'power2.out', clearProps: 'transform' }, at + 0.45);
+    if (main) tl.fromTo(main, { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: 'power3.out', clearProps: CLEAR }, at + 0.35);
+    if (call) tl.fromTo(call, { scale: 0.96, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.45, ease: 'power3.out', clearProps: CLEAR }, at + 0.5);
     var t = at + 0.6;
     if (steps) {
-      var lis = [].slice.call(steps.children), n = lis.length || 1;
-      tl.fromTo(steps, { '--aq-line': 0 }, { '--aq-line': 1, duration: 0.25 * n + 0.15, ease: 'none' }, t);
+      var lis = [].slice.call(steps.children), n = lis.length || 1, per = 0.28;
+      tl.fromTo(steps, { '--aq-line': 0 }, { '--aq-line': 1, duration: per * n, ease: 'none' }, t);
       lis.forEach(function (s, k) {
-        var at2 = t + 0.25 * k;
-        var rn = s.querySelector('.aq-contact-routes__n'), rest = s.querySelectorAll('.aq-contact-routes__s, .aq-contact-routes__arrow');
-        if (rn) tl.fromTo(rn, { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.3, ease: 'back.out(3)', clearProps: CLEAR }, at2);
-        if (rest.length) tl.fromTo(rest, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: 'power2.out', clearProps: CLEAR }, at2 + 0.1);
+        var a2 = t + per * k, node = s.querySelector('.aq-contact-routes__node'), rest = s.querySelectorAll('.aq-contact-routes__n, .aq-contact-routes__s');
+        if (node) tl.fromTo(node, { scale: 0.4 }, { scale: 1, duration: 0.35, ease: 'back.out(3)', clearProps: 'transform' }, a2);
+        if (rest.length) tl.fromTo(rest, { autoAlpha: 0, x: -8 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: 'power2.out', stagger: 0.05, clearProps: CLEAR }, a2 + 0.05);
       });
-      t += 0.25 * n + 0.15;
+      t += per * n;
     }
+    if (clock) {
+      tl.fromTo(clock, { '--aq-line': 0 }, { '--aq-line': 1, duration: 0.15, ease: 'none' }, t);
+      var end = clock.querySelector('.aq-contact-routes__end'), words = clock.querySelectorAll('.aq-contact-routes__k, .aq-contact-routes__v');
+      if (end) tl.fromTo(end, { scale: 1.5, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.3, ease: 'power4.in', clearProps: CLEAR }, t + 0.1);
+      if (words.length) tl.fromTo(words, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.06, ease: 'power2.out', clearProps: CLEAR }, t + 0.3);
+      t += 0.45;
+    }
+    if (act) tl.fromTo(act, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, clearProps: 'opacity,visibility' }, t - 0.1);
     return t;
   }
   function prime(li) {
     gsap.set(li, { '--aq-stub': 0, autoAlpha: 0 });
-    var steps = li.querySelector('.aq-contact-routes__steps'); if (steps) gsap.set(steps, { '--aq-line': 0 });
-    var parts = li.querySelectorAll('.aq-contact-routes__tab, .aq-contact-routes__n, .aq-contact-routes__s, .aq-contact-routes__arrow'); if (parts.length) gsap.set(parts, { autoAlpha: 0 });
+    li.querySelectorAll('.aq-contact-routes__steps, .aq-contact-routes__clock:not(.is-empty)').forEach(function (x) { gsap.set(x, { '--aq-line': 0 }) });
   }
   root.querySelectorAll('.aq-contact-routes').forEach(function (ul) {
-    var lis = [].slice.call(ul.querySelectorAll(':scope > .aq-contact-routes__route')); if (!lis.length) return;
+    var lis = [].slice.call(ul.querySelectorAll(':scope > .aq-contact-routes__route')); if (!lis.length || !m.free(ul)) return;
     m.claim(ul);
-    // data order on desktop (the CSS order), markup order on phones (urgent first)
     var phone = m.narrow(), seq = phone ? lis : lis.slice().sort(function (a, b) { return (parseFloat(a.style.getPropertyValue('--o')) || 0) - (parseFloat(b.style.getPropertyValue('--o')) || 0) });
     gsap.set(ul, { '--aq-riser': 0 }); lis.forEach(prime);
     if (phone) {
-      m.on(ul, function () { m.tw(gsap.to(ul, { '--aq-riser': 1, duration: 1.6, ease: 'power1.inOut' })) }, 'top 82%');
-      seq.forEach(function (li) { m.on(li, function () { sheet(m.tw(gsap.timeline()), li, 0) }, 'top 86%') });
+      m.on(ul, function () { m.tw(gsap.to(ul, { '--aq-riser': 1, duration: 1.4, ease: 'power1.inOut' })) }, 'top 85%');
+      seq.forEach(function (li) { m.on(li, function () { sheet(m.tw(gsap.timeline()), li, 0) }, 'top 88%') });
       return;
     }
     m.on(ul, function () {
-      var tl = m.tw(gsap.timeline({ delay: 0.4 })), t = 0;
-      tl.to(ul, { '--aq-riser': 1, duration: 0.7 + 0.9 * seq.length, ease: 'none' }, 0);
-      seq.forEach(function (li, i) { var end = sheet(tl, li, t); t = Math.max(t + 0.9, end - 0.6) });
+      var tl = m.tw(gsap.timeline({ delay: 0.15 })), t = 0.3;
+      tl.to(ul, { '--aq-riser': 1, duration: 0.9, ease: 'power2.inOut' }, 0);
+      seq.forEach(function (li) { sheet(tl, li, t); t += 0.55 });
       var total = tl.duration(); if (total > 4.4) tl.timeScale(total / 4.4);
     }, 'top 80%');
+  });
+});
+/* CoverageMap: the map is laid tile by tile from west to east (each square drops into its place), the home tile's mark
+   strikes, then the region rows rise in. While you read, the row nearest the middle of the screen lights its tiles on
+   the held map (desktop), so the map always points at what you are reading. One entrance timeline under 2.5 s; the
+   reading sync is a ScrollTrigger per row. Nothing under reduced motion (hover and press still light tiles). */
+AQmotion.fx('CoverageMap', function (root, m) {
+  var CLEAR = 'transform,opacity,visibility';
+  root.querySelectorAll('.aq-coverage-map').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var tiles = [].slice.call(el.querySelectorAll('.aq-coverage-map__tile')), rows = [].slice.call(el.querySelectorAll('.aq-coverage-map__row')),
+      base = el.querySelector('.aq-coverage-map__base'), title = el.querySelector('.aq-coverage-map__title');
+    var col = function (t) { return parseInt(t.style.gridColumnStart || t.style.gridColumn, 10) || 1 };
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    if (title) tl.fromTo(title, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, 0);
+    tiles.forEach(function (t) {
+      tl.fromTo(t, { y: -14, scale: 0.85, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.45, ease: 'back.out(2)', clearProps: CLEAR }, 0.1 + (col(t) - 1) * 0.12 + Math.random() * 0.05);
+    });
+    if (base) tl.fromTo(base, { autoAlpha: 0, x: -8 }, { autoAlpha: 1, x: 0, duration: 0.4, clearProps: CLEAR }, '>-0.1');
+    if (rows.length) tl.fromTo(rows, { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.1, clearProps: CLEAR }, 0.3);
+    var total = tl.duration(); if (total > 2.5) tl.timeScale(total / 2.5);
+    m.on(el, function () { tl.play() }, 'top 75%');
+    if (!m.narrow() && window.AQcoverage) rows.forEach(function (r) {
+      m.tw(ScrollTrigger.create({ trigger: r, start: 'top 55%', end: 'bottom 55%',
+        onToggle: function (s) { if (s.isActive) window.AQcoverage(el, r.getAttribute('data-r')) } }));
+    });
   });
 });
 /* CutawayRail: the cutaway is drawn, then the rail takes over. On scroll-in the sheet and parts draw on back to front
@@ -3101,6 +3133,71 @@ AQmotion.fx('RelatedLinks', function (root, m) {
     }, 'top 85%');
   });
 });
+/* ResponseLanes: the clock starts. Lane by lane, the start mark sets, the line draws out to the right and each stop's
+   node lands as the line reaches it, its clock rising beneath. Severity 1 draws fastest and the rest a little slower in
+   order, so urgency reads from the pace, calmly; a single drop of water then runs severity 1's lane once and fades.
+   Numerals rise out of their slot. One timeline, once on scroll-in, under 4.5 s; nothing under reduced motion. */
+AQmotion.fx('ResponseLanes', function (root, m) {
+  var CLEAR = 'transform,opacity,visibility';
+  root.querySelectorAll('.aq-response-lanes').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var rows = [].slice.call(el.querySelectorAll('.aq-response-lanes__row')), phone = m.narrow();
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var head = el.querySelector('.aq-response-lanes__head');
+    if (head && !phone) tl.fromTo(head, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, 0);
+    rows.forEach(function (r, i) {
+      var sev = +(r.getAttribute('data-sev') || 0), at = 0.15 + i * 0.32, dur = sev ? 0.45 + 0.2 * (sev - 1) : 0.9;
+      var num = r.querySelector('.aq-response-lanes__num'), t = r.querySelector('.aq-response-lanes__t'),
+        line = r.querySelector('.aq-response-lanes__line'), start = r.querySelector('.aq-response-lanes__start'),
+        stops = [].slice.call(r.querySelectorAll('.aq-response-lanes__stops > li'));
+      if (num) tl.fromTo(num, { yPercent: 40, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1, duration: 0.7, ease: 'power4.out', clearProps: CLEAR }, at);
+      if (t) tl.fromTo(t, { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, clearProps: CLEAR }, at + 0.05);
+      if (start) tl.fromTo(start, { scale: 0 }, { scale: 1, duration: 0.25, ease: 'back.out(3)', clearProps: 'transform' }, at + 0.1);
+      if (line) tl.fromTo(line, { '--aq-line': 0 }, { '--aq-line': 1, duration: dur, ease: 'power1.inOut' }, at + 0.15);
+      stops.forEach(function (s, k) {
+        var a2 = at + 0.15 + dur * (k + 1) / (stops.length + 0.5), node = s.querySelector('.aq-response-lanes__node'), v = s.querySelector('.aq-response-lanes__v');
+        if (node) tl.fromTo(node, { scale: 0 }, { scale: 1, duration: 0.3, ease: 'back.out(3)', clearProps: 'transform' }, a2);
+        if (v) tl.fromTo(v, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, clearProps: CLEAR }, a2 + 0.05);
+      });
+      if (sev === 1 && line && !phone) {
+        var drop = line.querySelector('i');
+        if (drop) {
+          tl.fromTo(drop, { x: 0, opacity: 1 }, { x: function () { return line.offsetWidth - drop.offsetWidth }, duration: 1.1, ease: 'power1.inOut', immediateRender: false }, at + 0.15 + dur);
+          tl.to(drop, { opacity: 0, duration: 0.25, clearProps: 'transform,opacity' }, '>-0.1');
+        }
+      }
+    });
+    var total = tl.duration(); if (total > 4.5) tl.timeScale(total / 4.5);
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
+/* ReturnSlips: each request goes in and its papers come back. Row by row, the hairline rule draws across, the situation
+   rises, the pipe lays from it and the water runs to the arrow, then the returned slips are dealt out of the pipe one by
+   one (sliding in from the left, a slight turn settling square). Rows follow one another; folded rows play when shown.
+   One timeline, once on scroll-in, under 4 s; nothing under reduced motion. */
+AQmotion.fx('ReturnSlips', function (root, m) {
+  var CLEAR = 'transform,opacity,visibility';
+  root.querySelectorAll('.aq-return-slips').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var rows = [].slice.call(el.querySelectorAll('.aq-return-slips__row')).filter(function (r) { return r.offsetParent !== null });
+    if (!rows.length) return;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var cols = el.querySelector('.aq-return-slips__cols');
+    if (cols) tl.fromTo(cols, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, 0);
+    rows.forEach(function (r, i) {
+      var at = 0.1 + i * 0.5, have = r.querySelector('.aq-return-slips__have'), pipe = r.querySelector('.aq-return-slips__pipe'),
+        slips = r.querySelectorAll('.aq-return-slips__slip');
+      if (have) tl.fromTo(have, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, clearProps: CLEAR }, at);
+      if (pipe) {
+        tl.fromTo(pipe, { '--aq-pipe': 0 }, { '--aq-pipe': 1, duration: 0.35, ease: 'power2.inOut' }, at + 0.2);
+        tl.fromTo(pipe, { '--aq-water': 0 }, { '--aq-water': 1, duration: 0.3, ease: 'none' }, at + 0.45);
+      }
+      if (slips.length) tl.fromTo(slips, { x: -32, rotation: -2.5, autoAlpha: 0 }, { x: 0, rotation: 0, autoAlpha: 1, duration: 0.55, stagger: 0.09, clearProps: CLEAR }, at + 0.6);
+    });
+    var total = tl.duration(); if (total > 4) tl.timeScale(total / 4);
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
 /* RoleMatrix: the key's three stamps strike first, then each signature block rises into place and its stamps strike
    one after another, left to right, like a document being signed off. Blocks play in reading order as they arrive. */
 AQmotion.fx('RoleMatrix', function (root, m) {
@@ -3458,6 +3555,29 @@ AQmotion.fx('SignatureBlocks', function (root, m) {
     if (key.length) { var k = gsap.timeline({ paused: true }); m.tw(k); k.from(key, { scale: 1.3, autoAlpha: 0, duration: 0.3, stagger: 0.1, ease: 'power3.in', clearProps: 'transform,opacity,visibility' }); m.on(el, function () { k.play() }) }
     // each block on its own trigger, so a block never plays off screen
     blocks.forEach(function (b) { var t = gsap.timeline({ paused: true }); m.tw(t); play(t, b, 0); m.on(b, function () { t.play() }, 'top 88%') });
+  });
+});
+/* SitePlates: each plate is printed. The hairline over it draws across, the drawing's panel wipes up and its line work
+   draws on (stroke), then the index, the kind and the fields rise in. Plates follow one another; folded plates appear
+   as they are. One timeline, once on scroll-in, under 3 s; nothing under reduced motion. */
+AQmotion.fx('SitePlates', function (root, m) {
+  var CLEAR = 'transform,opacity,visibility';
+  root.querySelectorAll('.aq-site-plates').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var plates = [].slice.call(el.querySelectorAll('.aq-site-plates__plate')).filter(function (p) { return p.offsetParent !== null });
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    plates.forEach(function (p, i) {
+      var at = i * 0.35, fig = p.querySelector('.aq-site-plates__fig'), svg = p.querySelector('svg'),
+        words = p.querySelectorAll('.aq-site-plates__at, .aq-site-plates__t, .aq-site-plates__dl > div');
+      if (fig) tl.fromTo(fig, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 0.8, ease: 'power3.inOut', clearProps: 'clipPath' }, at);
+      if (svg && window.DrawSVGPlugin) {
+        var set = m.lines(svg);
+        if (set.solid.length) tl.fromTo(set.solid, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.2, ease: 'power2.inOut', stagger: { amount: 0.5 }, clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.3);
+      }
+      if (words.length) tl.fromTo(words, { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.55, stagger: 0.07, clearProps: CLEAR }, at + 0.25);
+    });
+    var total = tl.duration(); if (total > 3) tl.timeScale(total / 3);
+    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
 /* SpecTable (spec sheet): the column-label strip rules across, then the rows are ruled in reading order (each row's
