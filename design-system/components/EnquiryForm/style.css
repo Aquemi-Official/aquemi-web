@@ -136,6 +136,26 @@
 .aq-form__mark { position: absolute; z-index: 2; left: calc(-1 * var(--space-1)); top: calc(-1 * var(--space-1)); width: calc(var(--space-8) + var(--space-2)); height: calc(var(--space-8) + var(--space-2)); box-sizing: border-box; border: 1.5px solid var(--flow); border-radius: var(--radius-sm); pointer-events: none; }
 .aq-form__actions .aq-btn--primary { min-height: var(--space-12); padding-inline: var(--space-6); }
 @media (prefers-reduced-motion: reduce) { .aq-form__progress li::before, .aq-form__progress li::after, .aq-form .aq-checks label { transition: none; } }
+/* Pass 9b feedback (EnquiryForm/motion.js, ported from Subframe Motion).
+   task-steps: a passed step's node shows a tick instead of its number and springs in (--aq-pop, 0.8 to 1). */
+.aq-form__progress li:has(~ li[aria-current="step"])::before { content: "\2713"; content: "\2713" / ""; font-size: 15px; transform: scale(var(--aq-pop, 1)); }
+/* border-beam: one lap of a flow light round the group being filled in (a conic light in a 1 px ring, just outside it) */
+.wform .aq-field, .wform .aq-fieldset { position: relative; }
+.aq-form__beam {
+  position: absolute; inset: calc(-1 * var(--space-2)); border-radius: var(--radius-md); pointer-events: none; opacity: 0;
+  padding: 1px; background: conic-gradient(from var(--aq-a, 0deg), transparent 0 70%, color-mix(in srgb, var(--flow) 40%, transparent) 84%, var(--flow) 94%, transparent 100%);
+  -webkit-mask: linear-gradient(black, black) content-box, linear-gradient(black, black); -webkit-mask-composite: xor;
+  mask: linear-gradient(black, black) content-box exclude, linear-gradient(black, black);
+}
+/* address-check: the field's border turns over 150 ms; a field put right shows a pass tick after its label */
+.wform .aq-field__input { transition: border-color 150ms cubic-bezier(0.2, 0, 0, 1), box-shadow 150ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-form__ok { display: inline-grid; place-items: center; vertical-align: -2px; margin-left: var(--space-2); color: var(--pass); }
+/* loading-button: the submit's faces share one grid cell, so the button keeps its width through pending and error */
+.aq-form__faces { display: inline-grid; align-items: center; justify-items: center; }
+.aq-form__face { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: var(--space-2); }
+.aq-form__face.is-pending, .aq-form__face.is-error { opacity: 0; visibility: hidden; }
+.aq-form__submit[data-face="error"] { background: var(--fail); border-color: var(--fail); color: var(--surface); }
+@media (prefers-reduced-motion: reduce) { .wform .aq-field__input { transition: none; } }
 
 @container (max-width: 860px) {
   /* Phones: tighter panel, one column, full-width submit */

@@ -44,6 +44,10 @@ function wHeroFigure(p,facts){var n=facts.length,co=function(f){return '<div cla
    48 px grid, masked so they gather behind the right-hand figure and fade out before the headline. Pure decoration;
    the pattern lines take the line-strong token at reduced opacity (style.css). */
 var HERO_SHEET='<svg class="aq-hero__sheet" aria-hidden="true" focusable="false"><defs><pattern id="aqHeroCross" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M24 20.5v7M20.5 24h7"/></pattern></defs><rect width="100%" height="100%" fill="url(#aqHeroCross)"/></svg>';
+/* Home only (pass 9b): light through water, a faint caustic layer (FxCaustics, ambient WebGL) under the sheet, gathered
+   behind the loop drawing and fading out before the headline (mask in style.css). aria-hidden decoration; without
+   WebGL the hero is the same page on its surface ground. */
+var HERO_WATER='<canvas class="aq-fx-shader" data-gl="caustics" aria-hidden="true"></canvas>';
 /* Hub and company pages: an index of the other pages in this page's section, in pages.json order.
    A page whose first section already lists those pages (systems: the seven-families grid) sets "hero_index": false; its hero is then the text stack alone.
    A page alone in its section (projects) lists its own section headings instead; they link only when the block has a nav anchor. */
@@ -145,4 +149,4 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
  var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
  var right=home?wHomeLoop():art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
- return '<section class="aq-hero'+(home?' aq-hero--home':'')+(co?' aq-hero--mist':'')+'">'+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
+ return '<section class="aq-hero'+(home?' aq-hero--home aq-fx-host':'')+(co?' aq-hero--mist':'')+'">'+(home?HERO_WATER:'')+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}

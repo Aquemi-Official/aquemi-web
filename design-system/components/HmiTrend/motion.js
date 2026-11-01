@@ -18,6 +18,9 @@ AQmotion.fx('HmiTrend', function (root, m) {
     tl.from(qa('.aq-hmi-trend__zone, .aq-hmi-trend__ax'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0.9);
     var run = q('.aq-hmi-trend__run');
     if (run) tl.fromTo(run, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: PEN, ease: 'none', clearProps: 'clipPath' }, T);
+    // the phosphor glow (FxPhosphor) is written with the pen: its u_pen follows the canvas's --pen
+    var glow = q('.aq-hmi-trend__plot > .aq-fx-shader');
+    if (glow) tl.fromTo(glow, { '--pen': 0 }, { '--pen': 1, duration: PEN, ease: 'none' }, T);
     var win = q('.aq-hmi-trend__win'), fit = q('.aq-hmi-trend__fit'), mark = q('.aq-hmi-trend__mark'), flag = q('.aq-hmi-trend__flag'), bn = q('.aq-hmi-trend__banner'), row = q('.aq-hmi-trend__row--trend');
     var tw = T + PEN * 0.69, tf = T + PEN * flagAt;
     if (win) tl.from(win, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, tw);

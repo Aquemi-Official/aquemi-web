@@ -156,3 +156,17 @@ a.aq-contact-routes__num:hover { text-decoration: underline; text-underline-offs
   .aq-contact-routes__action { padding-bottom: var(--space-4); align-self: stretch; }
   .aq-contact-routes__tab { align-self: flex-start; }
 }
+
+/* Pass 9b (ContactRoutes/motion.js, animated-beam): the beam that runs a sheet's step rail, a short flow highlight
+   5 px wide, a limestone glint with a flow rim and glow, brightest at its head; placed and moved by the motion layer, removed when it arrives. */
+.aq-contact-routes__route > .aq-contact-routes__pulse {
+  position: absolute; z-index: 2; width: 5px; height: 56px; padding: 0; border-radius: var(--radius-pill); pointer-events: none;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--limestone) 70%, transparent) 60%, var(--limestone));
+  box-shadow: 0 0 0 1.5px var(--flow), 0 6px 14px color-mix(in srgb, var(--flow) 55%, transparent);
+}
+.aq-contact-routes__route .aq-contact-routes__node, .aq-contact-routes__route .aq-contact-routes__end { transform-origin: 50% 50%; }
+/* Press on the urgent call line once its number is a real link */
+@media (prefers-reduced-motion: no-preference) {
+  a.aq-contact-routes__num { display: inline-block; transition: transform 120ms cubic-bezier(0.2, 0, 0, 1); }
+  a.aq-contact-routes__num:active { transform: translateY(1px) scale(0.98); transition-duration: 60ms; }
+}

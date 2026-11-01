@@ -19,3 +19,5 @@ KeyFacts is a strip of up to four of Aquemi's own figures, each with its unit an
 ## Motion
 
 Motion (`KeyFacts/motion.js`): the plate unrolls left to right, then cell by cell the name settles, a plain figure counts up, the unit and the basis follow. Standard numbers and placeholders never count; they fade in. In the hero it waits about 1 s for the headline. Skipped under reduced motion.
+
+Pass 9b: a figure that starts with its number rolls up on odometer wheels (`m.count`, Subframe Motion `sliding-number`); the unit, comparator and any `[placeholder]` stay still, screen readers hear the real value, and the text is restored when the roll ends. The dial settles on `aq-settle` (no elastic).

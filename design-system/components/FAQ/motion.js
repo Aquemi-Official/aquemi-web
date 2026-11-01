@@ -2,7 +2,13 @@
    left one after another, each question rising a step behind its hairline. Open and close ease the answer's height
    with GSAP; the dial turns over to the open question's number ("02", "of 06") and back to the count when all are
    closed. Native <details> stays the source of truth: without JS or under reduced motion it opens and closes
-   instantly (the dial then just switches its number), and Enter/Space on the summary go through the same handler. */
+   instantly (the dial then just switches its number), and so does Enter/Space on the summary.
+   Pass 9b, ported from Subframe Motion "Spring accordion" (spring-accordion), MIT, (c) 2026 Subframe: the height
+   follows the example's spring (duration 0.3, bounce 0: a 0.34 s power3.out open, a 0.24 s close), the answer's lines
+   rise 8 px into place as it opens, any toggle can be interrupted mid-way (it reverses from the height it has reached),
+   and a toggle from the keyboard applies instantly, as the example does (keyboard actions never wait for motion).
+   The key's plus turns into a minus (icon-morph, "plus-minus": rotate 180 deg, the vertical bar lies down) on the
+   example's cell spring (about 260 ms, FAQ style.css). */
 AQmotion.fx('FAQ', function (root, m) {
   root.querySelectorAll('.aq-faq').forEach(function (faq) {
     var cards = [].filter.call(faq.children, function (d) { return d.tagName === 'DETAILS' && d.offsetParent });
@@ -58,18 +64,20 @@ AQmotion.fx('FAQ', function (root, m) {
     // Out of its name group while it closes, so opening another card does not snap this one shut
     if (d.getAttribute('name')) { d.dataset.aqName = d.getAttribute('name'); d.removeAttribute('name') }
     d.classList.add('is-closing'); gsap.killTweensOf(a);
-    gsap.fromTo(a, { height: a.offsetHeight, overflow: 'hidden' }, { height: 0, opacity: 0, duration: 0.34, ease: 'power2.inOut', onComplete: function () { d.open = false; done(d, a) } });
+    gsap.killTweensOf(a.children);
+    gsap.fromTo(a, { height: a.offsetHeight, overflow: 'hidden' }, { height: 0, opacity: 0, duration: 0.24, ease: 'power2.inOut', onComplete: function () { d.open = false; done(d, a) } });
   }
   function open(d) {
     var a = body(d), nm = d.getAttribute('name') || d.dataset.aqName, from = 0;
     if (nm) document.querySelectorAll('details[name="' + nm.replace(/"/g, '') + '"][open]').forEach(function (o) { if (o !== d) close(o) });
     if (d.classList.contains('is-closing')) { from = a.offsetHeight; gsap.killTweensOf(a); done(d, a) }
     d.open = true; if (!a) return;
-    gsap.fromTo(a, { height: from, opacity: from ? 1 : 0, overflow: 'hidden' }, { height: 'auto', opacity: 1, duration: 0.46, ease: 'aq-settle', onComplete: function () { gsap.set(a, { clearProps: 'height,opacity,overflow' }) } });
+    gsap.fromTo(a, { height: from, opacity: from ? 1 : 0, overflow: 'hidden' }, { height: 'auto', opacity: 1, duration: 0.34, ease: 'power3.out', onComplete: function () { gsap.set(a, { clearProps: 'height,opacity,overflow' }) } });
+    if (!from && a.children.length) gsap.fromTo(a.children, { y: 8 }, { y: 0, duration: 0.4, ease: 'power3.out', stagger: 0.04, clearProps: 'transform' });
   }
   document.addEventListener('click', function (ev) {
     var s = ev.target.closest && ev.target.closest('.aq-faq > details > summary');
-    if (!s || reduce || !window.gsap || ev.target.closest('a')) return;
+    if (!s || reduce || !window.gsap || ev.target.closest('a') || ev.detail === 0) return; // keyboard (Enter/Space: detail 0) opens instantly
     var d = s.parentElement; ev.preventDefault();
     if (d.open && !d.classList.contains('is-closing')) close(d); else open(d);
     dial(d.parentElement);

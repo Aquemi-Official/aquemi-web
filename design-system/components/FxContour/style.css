@@ -1,0 +1,4 @@
+/* ---------- FxContour ---------- */
+/* The 'contour' layer's default strength (FxShader rules: faint). A placement sets its own --fx-amt in its component;
+   :where keeps this default at zero specificity, so the placement always wins. */
+:where(.aq-fx-shader[data-gl="contour"]) { --fx-amt: 0.3; }

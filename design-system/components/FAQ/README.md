@@ -62,3 +62,5 @@ DR-009's "one line and a link": an answer whose full version lives on another pa
 ## Motion
 
 `motion.js`: on scroll-in the dial's numerals roll up into view while the rows wipe in from the left one after another, each question rising a step behind its hairline. Open and close ease the answer's height with GSAP (`aq-settle` open, 340 ms close); a row that closes leaves its `name` group while it animates, so opening another never snaps it shut (`is-closing` turns its key and rule back at once). The dial turns over to the open question's number (the old number rolls out, the new one in) and back to the count. The click handler covers Enter and Space on the summary; without JS or under reduced motion `<details>` opens and closes natively and the dial just switches its number.
+
+Pass 9b (Subframe Motion `spring-accordion`, `icon-morph`): 0.34 s open, 0.24 s close, interruptible; the answer's lines rise 8 px; Enter/Space toggle instantly; the key's plus turns into a minus in about 260 ms.

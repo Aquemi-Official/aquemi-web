@@ -253,3 +253,12 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-hero .aq-stack > h1.aq-display-xl { font-size: 46px; line-height: 46px; letter-spacing: -0.035em; overflow-wrap: break-word; }
   .aq-hero .aq-stack > .aq-eyebrow::before { width: var(--space-6); }
 }
+
+/* Home water (pass 9b): the FxCaustics layer behind the loop drawing. Faint: its brightest ridge is a fifth of flow on
+   the surface (dark theme a sixth), masked so it gathers on the right and is gone before the headline and lead. */
+.aq-hero--home > .aq-fx-shader { --fx-amt: 0.2; -webkit-mask-image: radial-gradient(ellipse 55% 75% at 78% 45%, var(--ink) 25%, transparent 80%); mask-image: radial-gradient(ellipse 55% 75% at 78% 45%, var(--ink) 25%, transparent 80%); }
+[data-theme="dark"] .aq-hero--home > .aq-fx-shader { --fx-amt: 0.16; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-hero--home > .aq-fx-shader { --fx-amt: 0.16; } }
+@container (max-width: 860px) {
+  .aq-hero--home > .aq-fx-shader { -webkit-mask-image: radial-gradient(ellipse 75% 22% at 50% 58%, var(--ink) 20%, transparent 100%); mask-image: radial-gradient(ellipse 75% 22% at 50% 58%, var(--ink) 20%, transparent 100%); }
+}

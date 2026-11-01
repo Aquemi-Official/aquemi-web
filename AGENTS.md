@@ -35,7 +35,7 @@ We are drafting. Commit straight to `main` and push; GitHub Pages publishes in a
 | `assets/src/blocks/<type>.js` | Renderer for one block type: `BLOCKS['<type>']=function(b,H){...}` returns that section's `aq-*` markup. |
 | `assets/src/parts/<Name>.js`, `core.js`, `page.js` | Shared helpers (`sec`, `split`, `tx`, `e`, `wp`), NavBar, Footer, Hero, Button and other pieces, and page assembly. |
 | `assets/aquemi-site.js` | **Generated** from `assets/src/`. The site and the guide load it. |
-| `design-system/components/<Name>/motion.js`, `assets/src/motion/core.js` | Motion (GSAP 3.13): the core animates every section the same way; a component's `motion.js` adds its own choreography with `AQmotion.fx('<Name>', fn)`. Plays once, under 5 s, nothing under reduced motion. |
+| `design-system/components/<Name>/motion.js`, `assets/src/motion/core.js`, `gl.js` | Motion (GSAP 3.13): the core animates every section the same way; a component's `motion.js` adds its own choreography with `AQmotion.fx('<Name>', fn)` and may register an ambient WebGL layer with `AQgl.def` (see FxShader). Reveals play once, under 5 s; rules in the brand book, Motion. New motion is ported from the Subframe Motion library (MIT; MCP server in `.mcp.json`). |
 | `assets/motion.js` | **Generated** from the motion sources above. The site loads it. |
 | `assets/site.css` | Draft-bar chrome only. No brand styles here. |
 | `design-system/components/bundle.min.css`, `content/pages.min.json` | **Generated** minified site copies that `index.html` loads. The guide keeps the readable files. |

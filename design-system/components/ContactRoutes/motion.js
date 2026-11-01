@@ -2,7 +2,13 @@
    the heading; at each sheet its drop runs down into the tab, the sheet rises, the tab lifts out of its top edge and the
    head settles (the urgent call bar presses in); then the water runs down the step rail, each numbered stop lights as it
    arrives and the response clock strikes at the end of the rail. Desktop: one timeline in data order (under 4.5 s);
-   phones: each sheet as it scrolls in, urgent first. The CSS variables default to 1: complete without motion. */
+   phones: each sheet as it scrolls in, urgent first. The CSS variables default to 1: complete without motion.
+   Pass 9b, ported from Subframe Motion "Threads coming together" (animated-beam), MIT, (c) 2026 Subframe: a short
+   flow highlight travels a sheet's step rail from the first node to the response clock on the example's strong
+   ease-out spline (0.9 s); each node pops as the beam passes and the clock strikes when it arrives. It runs once to
+   close the entrance (on the route for this page, else the urgent one) and again whenever the pointer or keyboard
+   focus enters a sheet (visitor-driven, once per entry, never a loop). The sheet's tab lifts and its call line and
+   buttons press (CSS, Button). Nothing runs under reduced motion. */
 AQmotion.fx('ContactRoutes', function (root, m) {
   var CLEAR = 'transform,opacity,visibility';
   function sheet(tl, li, at) {
@@ -54,6 +60,42 @@ AQmotion.fx('ContactRoutes', function (root, m) {
       tl.to(ul, { '--aq-riser': 1, duration: 0.9, ease: 'power2.inOut' }, 0);
       seq.forEach(function (li) { sheet(tl, li, t); t += 0.55 });
       var total = tl.duration(); if (total > 4.4) tl.timeScale(total / 4.4);
+      // the close: one beam runs the rail of the route for this page ("This page"), or the urgent one, to its clock
+      var mine = ul.querySelector('.is-current') || ul.querySelector('.is-urgent');
+      if (mine) tl.add(function () { AQrouteBeam(mine) }, total - 0.2);
     }, 'top 80%');
   });
 });
+
+(function () {
+  if (typeof document === 'undefined' || window.AQrouteBeam) return;
+  var still = function () { return !window.gsap || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) };
+  function beam(li) {
+    if (still() || li._aqBeam || !li.offsetParent) return;
+    var nodes = [].slice.call(li.querySelectorAll('.aq-contact-routes__node')), end = li.querySelector('.aq-contact-routes__clock:not(.is-empty) .aq-contact-routes__end');
+    var stops = nodes.concat(end ? [end] : []); if (stops.length < 2) return;
+    var R = li.getBoundingClientRect(), c = function (el) { var r = el.getBoundingClientRect(); return { x: r.left - R.left + r.width / 2, y: r.top - R.top + r.height / 2 } };
+    var a = c(stops[0]), z = c(stops[stops.length - 1]), H = 56, run = z.y - a.y;
+    if (run < H) return;
+    if (window.CustomEase && !CustomEase.get('aq-beam')) CustomEase.create('aq-beam', 'M0,0 C0.16,1 0.3,1 1,1');
+    var p = document.createElement('span'); p.className = 'aq-contact-routes__pulse'; p.setAttribute('aria-hidden', 'true');
+    p.style.left = (a.x - 2.5) + 'px'; p.style.top = (a.y - H) + 'px'; li.appendChild(p); li._aqBeam = 1;
+    var dur = 0.9, ez = window.CustomEase ? 'aq-beam' : 'expo.out', E = gsap.parseEase(ez);
+    var tl = gsap.timeline({ onComplete: function () { p.remove(); li._aqBeam = 0 } });
+    // the beam grows out of the first node and drains into the clock (scaleY from its foot: never a hidden box)
+    gsap.set(p, { transformOrigin: '50% 100%', scaleY: 0 });
+    tl.fromTo(p, { y: 0 }, { y: run + H / 2, duration: dur, ease: ez }, 0)
+      .to(p, { scaleY: 1, duration: 0.15, ease: 'power1.out' }, 0)
+      .to(p, { scaleY: 0, duration: 0.25, ease: 'power1.in' }, dur - 0.2);
+    // each stop pops as the head of the beam reaches it (invert the ease to find the moment)
+    stops.forEach(function (s, i) {
+      var f = (c(s).y - a.y + H) / (run + H / 2), t = 0, lo = 0, hi = 1;
+      for (var k = 0; k < 18; k++) { t = (lo + hi) / 2; if (E(t) < f) lo = t; else hi = t }
+      tl.fromTo(s, { scale: 1 }, { keyframes: { scale: [1, s === end ? 1.12 : 1.3, 1] }, duration: s === end ? 0.4 : 0.3, ease: 'power2.out', clearProps: 'transform' }, Math.min(dur, t * dur));
+    });
+  }
+  window.AQrouteBeam = beam;
+  var fine = function (ev) { return ev.pointerType === 'mouse' };
+  document.addEventListener('pointerover', function (ev) { var li = ev.target.closest && ev.target.closest('.aq-contact-routes__route'); if (li && fine(ev) && !li.contains(ev.relatedTarget)) beam(li) });
+  document.addEventListener('focusin', function (ev) { var li = ev.target.closest && ev.target.closest('.aq-contact-routes__route'); if (li && !li.contains(ev.relatedTarget)) beam(li) });
+})();

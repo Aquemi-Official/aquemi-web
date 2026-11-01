@@ -1,0 +1,2783 @@
+[
+ {
+  "slug": "afterimage-reveal",
+  "title": "Afterimage reveal",
+  "commonName": "Brush reveal image effect",
+  "description": "A monochrome textile develops its original color under a soft brush, then slowly returns to grey.",
+  "look": "Full-bleed damask textile of turquoise oak leaves and flowers on olive silk, an italic cream serif title, small caption and a dark teal rectangular button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "anamorphic-registration",
+  "title": "One exact viewpoint",
+  "commonName": "Anamorphic perspective alignment",
+  "description": "White fragments painted across three black depth planes resolve into one divided ring at a precise viewpoint.",
+  "look": "Three matte-black blades carry a sharp white divided ring against warm grey, with red registration crosshairs and a red alignment control.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "animated-beam",
+  "title": "Threads coming together",
+  "commonName": "Animated beam connections",
+  "description": "Moving highlights trace three measured paths into a shared destination.",
+  "look": "Pale sage page with three small off-white rounded nodes on the left joined by thin grey curves to one larger dark olive rounded tile.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "animated-grid-pattern",
+  "title": "Pieces taking shape",
+  "commonName": "Animated grid background",
+  "description": "Individual cells gently appear and disappear across a fine geometric field.",
+  "look": "Pale cool-grey field with a fine light grid of square cells, a few cells tinted soft blue-grey, edges fading out through a radial mask.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "animated-group",
+  "title": "A few things fall into place",
+  "commonName": "Staggered list entrance",
+  "description": "A small group of related items arrives in a short, measured stagger.",
+  "look": "Warm off-white page with a small uppercase header over three cream rounded list cards, each holding a muted sage, tan or lilac shape and arrow.",
+  "category": "Animation & motion",
+  "runtime": "motion"
+ },
+ {
+  "slug": "animated-shiny-text",
+  "title": "Light across type",
+  "commonName": "Shiny text effect",
+  "description": "A narrow highlight passes across the words, then leaves them at rest.",
+  "look": "Dark charcoal page with a thin-outlined pill caption above a centred two-line grey sans headline, one word catching a white highlight.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "aperture-reveal",
+  "title": "Light matter",
+  "commonName": "Circular image reveal",
+  "description": "A circular crop opens into a silver still life, trading graphic tension for the full image.",
+  "look": "Brushed-silver spiral ribbon on near-black with a monospace caption and flat grey button; closed, only a central circle shows over pale grey display type.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "arc-gallery",
+  "title": "Arc gallery",
+  "commonName": "Circular image carousel",
+  "description": "Botanical plates travel around a circular rail, with a single specimen held upright at its apex.",
+  "look": "Off-white page with five white-matted botanical prints fanned along a downward-curving arc, a small letterspaced header and an italic serif caption between arrows.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "baseline-wave",
+  "title": "Frequency study",
+  "commonName": "Sine wave text",
+  "description": "Individual letters travel along a controllable sine wave.",
+  "look": "Acid lime-green field with heavy royal-blue sans capitals tilted along a curve over five faint staff lines, plus a range slider with monospace label.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "border-beam",
+  "title": "Border beam",
+  "commonName": "Glowing border beam",
+  "description": "A small traveling light traces the edge of a focused surface.",
+  "look": "Dark olive-charcoal page with a rounded, slightly lighter prompt card holding a textarea, a muted green square send button and a pale green border highlight.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "caption-beats",
+  "title": "Say it with rhythm",
+  "commonName": "Karaoke caption highlight",
+  "description": "A warm highlight follows a two-line phrase along a continuous, deliberately paced timeline.",
+  "look": "Slate-navy page with a bold two-line sans-serif phrase in muted grey, one word on an amber rounded highlight, above a round play button and scrubber.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "causal-cadence",
+  "title": "Causal cadence",
+  "commonName": "Event-relative animation timing",
+  "description": "A white point crosses a black strip while a caption follows either its departure or its arrival.",
+  "look": "A large white point and a two-line white caption occupy a black strip on salmon, above a thin time rail and spare native sequence controls.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "chromatic-signal",
+  "title": "Chromatic signal",
+  "commonName": "Glitch text effect",
+  "description": "Cobalt and vermilion type briefly split into clipped, displaced channels before returning to a clean headline.",
+  "look": "Pure white page with heavy, tightly tracked sans-serif display type, a cobalt line over a much larger vermilion line, and a small underlined monospace button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "contact-sheet",
+  "title": "Small editions",
+  "commonName": "Expandable image grid",
+  "description": "An expandable collection of sculptural art prints keeps its place in a contact sheet.",
+  "look": "Warm grey page with a two-by-two grid of off-white mats framing sculptural forms on tan, teal, brick red and pale blue, with serif captions.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "cove-light",
+  "title": "Light weave",
+  "commonName": "Draggable light ribbon",
+  "description": "Coral and white light travels through a suspended woven loop whose curvature changes under a direct drag.",
+  "look": "Fine cream and coral strands form a twisted, translucent wireframe loop on a near-black plum field, with a coral slider and round pause button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "cursor-exhibition",
+  "title": "Loose impressions",
+  "commonName": "Cursor image trail",
+  "description": "A trail of small relief prints follows movement through an exhibition field with three prints visible at rest.",
+  "look": "Warm stone-grey page with a large muted olive serif headline, tilted cream-matted abstract prints with soft shadows, and a thin-ruled text button along the bottom.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "curve-lab",
+  "title": "Three ways to arrive",
+  "commonName": "Easing curves comparison",
+  "description": "Three identical objects traverse equal distances with distinctly different timing.",
+  "look": "Pale cool-grey page with three labelled rails, each starting with a small gradient token (light square, blue circle, slate square), and a white button below.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "departure-board",
+  "title": "The night line",
+  "commonName": "Split-flap departure board",
+  "description": "A mechanical destination board turns a practical selection into a small moment of departure.",
+  "look": "Dark navy board with six slate letter tiles split by a black seam, cream heavy capitals, orange accent square and active button, and monospace labels.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "dimensional-type",
+  "title": "Cast type",
+  "commonName": "3D extruded text",
+  "description": "A solid typographic object turns to show its extruded edges.",
+  "look": "Heavy pale-pink serif letters with deep, darker extruded sides float over a saturated coral-red radial gradient, with a single slider below.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "easing-workbench",
+  "title": "Easing workbench",
+  "commonName": "Cubic bezier easing editor",
+  "description": "Two editable curve handles connect time to a moving white marker on a cobalt timing instrument.",
+  "look": "Cobalt-blue panel with a white bezier curve on a faint grid, hollow white handles, a side track with a large white marker and monospace controls.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "editing-caret",
+  "title": "Editing caret",
+  "commonName": "Typewriter text effect",
+  "description": "A short note types, pauses and corrects one detail with a caret attached to the actual string.",
+  "look": "Warm off-white page with a large dark serif note, its corrected phrase in red, a thin red left margin rule and small monospace labels.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "elastic-artboard",
+  "title": "Pinned study",
+  "commonName": "Springy draggable card",
+  "description": "A suspended drawing moves within its frame and settles back into place.",
+  "look": "Muted grey-green framed mat with one pinned cream sheet showing a fine geometric line drawing inside a thin red circle.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "etched-terraces",
+  "title": "Etched terraces",
+  "commonName": "Generative scanline art",
+  "description": "Fine cyan scanlines bend over two stepped reliefs on a saturated red field.",
+  "look": "Saturated red field with a dense mesh of thin cyan scanlines and faint verticals lifted over two stepped pyramidal reliefs, minimal cyan controls below.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "exploded-camera",
+  "title": "Inside the lens",
+  "commonName": "Exploded product view",
+  "description": "A graphite camera separates into a silver mount, an iris and a coated glass element along one continuous axis.",
+  "look": "Soft grey-white radial backdrop with a graphite compact camera in angled projection, silver lens mount, teal coated glass, soft floor shadow and a pill button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "focus-rail",
+  "title": "Folded contact sheet",
+  "commonName": "Folding photo carousel",
+  "description": "An architectural contact sheet unfolds the selected photograph while its neighbors close into connected paper folds.",
+  "look": "Cobalt-blue field with a strip of architectural photographs, one open flat and the rest folded into zigzag paper pleats, serif caption and round arrow buttons.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "focus-stack",
+  "title": "Botanical focus pull",
+  "commonName": "Depth of field focus pull",
+  "description": "Three sculptural calla lilies resolve at different depths as the focal plane moves through an oxblood still life.",
+  "look": "Deep oxblood vignette backdrop with three ivory calla lilies on green stems at different depths, one sharp and two blurred, plus a thin focus rail.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "focus-triptych",
+  "title": "Three vessels",
+  "commonName": "Focus blur product gallery",
+  "description": "Three individually drawn ceramic forms reveal mineral grain, glazed rims and wheel marks as the selection moves into focus.",
+  "look": "Warm beige studio wall and shelf holding three illustrated ceramic vessels in sage, cream and terracotta, with serif names beneath and the unselected pots blurred.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "folio-stack",
+  "title": "Folio stack",
+  "commonName": "Sticky scroll card stack",
+  "description": "Three graphic folios pin and recede as the next cover enters the reading area.",
+  "look": "Dark slate page with stacked full-width poster cards in red, off-white and cobalt, heavy sans titles, small monospace captions and geometric line art.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "foreground-occlusion-wipe",
+  "title": "Behind the shutter",
+  "commonName": "Foreground occlusion scene transition",
+  "description": "A near-black shutter snaps horizontally across a still photograph, concealing a scene change during a brief fully covered interval.",
+  "look": "Full-bleed concrete architecture with one restrained serif scene title. A near-black mechanical curtain with restrained seams passes horizontally across the photograph.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "fracture-reveal",
+  "title": "Fault line",
+  "commonName": "Shatter transition",
+  "description": "A fractured stone surface opens into a vivid mineral field.",
+  "look": "Dark slate surface split into seven angular charcoal shards, with acid-lime and teal mineral stripes glinting through thin cracks and a small outlined button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "frame-crop",
+  "title": "The changing frame",
+  "commonName": "Aspect ratio crop animation",
+  "description": "A moving aperture reframes a woodblock print while the artwork remains completely still.",
+  "look": "Off-white page with a Japanese woodblock print of a red mountain, vivid inside corner-marked crop bounds and faded beyond them, above a segmented control.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "gravity-letters",
+  "title": "Let it fall",
+  "commonName": "Falling letters animation",
+  "description": "Weighted letter tiles drop into a shallow tray and return to their original line.",
+  "look": "Mustard-yellow field with four red block tiles bearing cream bold serif capitals, resting tilted on a brown shelf, and a small text button below.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "inertial-launcher",
+  "title": "Pull and release",
+  "commonName": "Drag-and-release physics ball",
+  "description": "A satin sphere and its ground shadow turn a bounded pull into a finite rebound.",
+  "look": "Plain warm off-white canvas with a single satin coral-red sphere, soft specular highlight and a blurred contact shadow beneath.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "ink-trail",
+  "title": "Ink trail",
+  "commonName": "Cursor brush trail",
+  "description": "A pointer leaves a bold, persistent brush trail across a yellow print surface.",
+  "look": "Flat bright yellow field with one thick black calligraphic brush stroke in a gentle S-curve and an underlined text button in the corner.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "issue-turn",
+  "title": "Odd one out",
+  "commonName": "Magazine cover page turn",
+  "description": "A cyan culture journal opens around its spine to reveal the first page.",
+  "look": "Bright cobalt-blue field with a tilted magazine, shown open: dark teal inside cover of rotated aqua type beside a cream page of heavy black type.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "justified-image-layout",
+  "title": "Into color",
+  "commonName": "Justified image gallery reflow",
+  "description": "Whole paintings keep their proportions as an expanding collection repacks into aligned rows.",
+  "look": "A warm-white curatorial wall of saturated paintings in two flush rows, with a single round plus control centered beneath the artwork.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "lattice-wave",
+  "title": "Lattice wave",
+  "commonName": "Wave grid animation",
+  "description": "A forest-green line lattice flexes over a violet field as its tension changes.",
+  "look": "Dark green line grid with small square nodes on a vivid violet field, a bold sans label above, a thin slider and monospace readout below.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "linked-image-inspection",
+  "title": "Print proof",
+  "commonName": "Synchronized image pan and zoom",
+  "description": "Inspect a hand-colored bird engraving and its luminance proof through one calibrated camera, even when the images have different raster dimensions.",
+  "look": "A precise charcoal proofing surface with blue-and-ochre bird engraving detail beside its monochrome companion, paired white reticles, source-pixel coordinates and quiet zoom controls.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "liquid-record",
+  "title": "Liquid record",
+  "commonName": "Liquid vinyl record",
+  "description": "Pink lacquer grooves turn and ripple around a small record label.",
+  "look": "Deep plum field with a large wobbly pink vinyl record, fine magenta grooves and pale label, beside a two-line pink serif headline.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "mark-focus",
+  "title": "Mark focus",
+  "commonName": "Logo zoom transition",
+  "description": "An architectural monogram moves from a complete lockup to a precisely framed close-up.",
+  "look": "Flat vermilion page with a heavy black stacked sans wordmark at left, a large black geometric monogram at right and a ruled text button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "marquee",
+  "title": "Passing words",
+  "commonName": "Infinite text marquee",
+  "description": "Two strips of expressive type move in opposite directions.",
+  "look": "Pale sage-green field with two full-width rows of dark olive uppercase type, tight sans-serif above italic serif, words divided by pale asterisks.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "match-cut",
+  "title": "Same circle, new world",
+  "commonName": "Match cut scene transition",
+  "description": "Citrus, vinyl and a wheel share one circular anchor and uninterrupted angular motion through a timed match cut.",
+  "look": "Flat illustrated orange slice centred on a warm cream background, with a small sans label, three dots and a circular outlined arrow button below.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "meteors",
+  "title": "Passing light",
+  "commonName": "Meteor shower background",
+  "description": "Thin streaks of light cross a quiet sky at different speeds.",
+  "look": "Flat dark slate-blue field crossed by a few thin pale-blue diagonal streaks, each a dot head trailing a fading tail.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "mosaic-reveal",
+  "title": "Afterimage",
+  "commonName": "Pixel mosaic transition",
+  "description": "A mosaic of small tiles trades a relief print for its inverse.",
+  "look": "Full-bleed flat vermilion print with thick charcoal curved stripes sweeping into a band, a yellow circle with crosshair, and a round refresh button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "orbiting-circles",
+  "title": "Connected in orbit",
+  "commonName": "Orbiting circles diagram",
+  "description": "Three labels circle one idea while staying upright.",
+  "look": "Pale blue-grey field with a dark slate rounded-square hub, solid and dashed concentric rings, and three small white circle labels on the outer ring.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "paper-fold",
+  "title": "Sine gatefold",
+  "commonName": "Paper unfold reveal",
+  "description": "Two printed cover flaps unfold around real hinges to reveal a continuous concert-edition artwork.",
+  "look": "Pale grey surface with a slightly tilted red-orange folded print bearing bold black type and overlapping line ellipses, above a pill-shaped grey button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "parallax-plates",
+  "title": "Parallax plates",
+  "commonName": "Parallax image carousel",
+  "description": "Photographic plates move through a continuous rail while bounded image crops shift within fully covered frames.",
+  "look": "Off-white page with a horizontal rail of varied-size photographs (surf, white concrete architecture, red running track), a small spaced-caps header and a monospace counter.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "path-typesetter",
+  "title": "Path typesetter",
+  "commonName": "Text on a curved path",
+  "description": "Editable type stretches across a cubic curve with two direct manipulation handles.",
+  "look": "Black serif italic phrase riding a thin grey curve on off-white, with two red bezier handles on dashed guides and a ruled text field below.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "peel-sticker",
+  "title": "Secret ingredient",
+  "commonName": "Peel-off sticker reveal",
+  "description": "A gold foil seal peels across a moving crease to reveal the basil beneath.",
+  "look": "Sage-green packet with a dark green serif wordmark and a round metallic gold foil seal bearing an italic monogram, on a pale sage background.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "pendulum-tempo",
+  "title": "Pendulum tempo",
+  "commonName": "Pendulum metronome",
+  "description": "A metal pendulum and sliding counterweight make an adjustable beat visible.",
+  "look": "Skeuomorphic pale-metal device with soft bevels and a dark green recessed face holding a silver pendulum, tempo scale and counterweight, above round plus-minus buttons.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "perspective-carousel",
+  "title": "Turntable studies",
+  "commonName": "3D ring carousel",
+  "description": "A ring of framed compositions rotates through a spatial collection.",
+  "look": "Pale grey-blue page with cream-framed muted terracotta, teal and ochre art panels on a 3D ring, glassy serif glyphs, and round outlined arrow buttons.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "pinned-pass",
+  "title": "Pinned pass",
+  "commonName": "Physics lanyard badge",
+  "description": "A numbered athletics pass swings from a constrained cord and keeps its weight when released.",
+  "look": "Bright red field with a dark cord hanging from a top rail to a cream event badge with grommet, huge condensed numeral and barcode stripes.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "poem-scroll",
+  "title": "A little further",
+  "commonName": "Scroll text reveal",
+  "description": "A short poem becomes legible line by line as the reader moves through it.",
+  "look": "Deep slate-navy page with large cream serif lines fading to muted grey-blue down the column, and a thin gold vertical progress track at right.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "process-choreography",
+  "title": "Asset crop workflow",
+  "commonName": "Animated workflow diagram",
+  "description": "One original artwork branches into square and portrait crops, with each connection leading to a downloadable result.",
+  "look": "Light lilac-grey workspace with white rounded cards: a magenta-and-plum flower artwork on the left joined by thin purple elbow connectors to square and portrait crops.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "progressive-blur",
+  "title": "A softer edge",
+  "commonName": "Progressive blur",
+  "description": "Layered masks turn a sharp surface into a gradual, adjustable blur.",
+  "look": "Pale blue-grey page with a rounded pale-mint card of tilted teal and sage bars blurring toward the bottom, above a caption and range slider.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "project-index",
+  "title": "Objects in practice",
+  "commonName": "Hover image preview list",
+  "description": "A quiet project list selects dimensional still lifes beside a separate image window.",
+  "look": "Warm off-white page with a hairline-divided serif project list beside a shadowed taupe panel showing a soft sculpted object; the active title is rust.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "race-replay",
+  "title": "Full send",
+  "commonName": "Animated route path",
+  "description": "An acid-yellow racing line draws a complete lap, with a marker and elapsed time bound to one timeline.",
+  "look": "Near-black layout with heavy italic acid-yellow headline, a grey circuit outline traced in neon yellow with a ringed marker, monospace timer, slider and yellow button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "reading-lens",
+  "title": "Reading lens",
+  "commonName": "Fisheye scroll text",
+  "description": "A native scrolling note preserves a readable center while compressing peripheral lines.",
+  "look": "Near-black page with a centred column of cream serif lines that flatten and dim toward the edges, monospace header and counter, and hairline rules.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "redaction-reveal",
+  "title": "On the record",
+  "commonName": "Redacted text reveal",
+  "description": "Heavy redaction bars retract to reveal a short archival note.",
+  "look": "Cream paper with a slightly rotated typewriter-style monospace note, three phrases covered by heavy black redaction bars, a red rubber stamp and italic serif signature.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "reed-field",
+  "title": "Reed field",
+  "commonName": "Interactive grass animation",
+  "description": "Fine gold stems bend in layered wind and part around a passing pointer.",
+  "look": "Dark slate-teal backdrop with dense, layered gold and olive reed blades topped by feathery seed heads, a large serif wind readout and minimal text controls.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "relief-board",
+  "title": "Relief board",
+  "commonName": "Isometric hover grid",
+  "description": "Porcelain columns rise around a selected point on an ultramarine isometric field.",
+  "look": "Saturated ultramarine field with a seven-by-seven isometric grid of off-white columns, one yellow top marked with a cross, and tiny letter-spaced corner captions.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "responsive-creature",
+  "title": "Responsive creature",
+  "commonName": "Reactive character animation",
+  "description": "A violet network changes shape as it is fed, played with, or put to rest.",
+  "look": "Purple line-drawn network creature, a dotted outline with crossing chords, on a flat acid-lime field with an italic serif title and monospace buttons.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "retro-grid",
+  "title": "A moving horizon",
+  "commonName": "Retro grid background",
+  "description": "A crisp perspective grid flows toward the viewer and fades before its lines compress at the horizon.",
+  "look": "Dark navy field with a thin warm-beige perspective grid receding to a horizon line beneath a faint amber glow; small round control button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "ribbon-marquee",
+  "title": "Between the lines",
+  "commonName": "Curved text marquee",
+  "description": "A curved ribbon of text can be dragged by hand or advanced with a range.",
+  "look": "Flat coral-orange field crossed by a thick wavy violet ribbon carrying white Georgia serif text, with a drop shadow and a violet range slider beneath.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "ripple",
+  "title": "Quiet ripples",
+  "commonName": "Pulse ripple animation",
+  "description": "Concentric pulses give a simple focal point a sense of presence.",
+  "look": "Near-black olive-tinted field with seven faint concentric hairline rings fading toward the bottom around a small dark green-grey disc with a pulse-line icon.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "rolling-signal",
+  "title": "Rolling signal",
+  "commonName": "Scrolling signal waveform",
+  "description": "A fine waveform retains recent signal history so it can be held and inspected.",
+  "look": "Warm off-white page with a fine maroon bar waveform over faint vertical gridlines, a monospace time axis, a solid maroon button and a grey slider.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "rope-gallery",
+  "title": "Specimen fan",
+  "commonName": "Fanned card carousel",
+  "description": "Botanical plates fan around one brass binding, bringing the selected specimen upright for inspection.",
+  "look": "Four cream paper cards bearing botanical illustrations fan from a brass rivet over a deep green gradient, with italic serif captions and minimal arrow controls.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "score-follow",
+  "title": "Score follow",
+  "commonName": "Sheet music playhead",
+  "description": "A fine red playhead follows an original four-bar melody across a sharply engraved white score.",
+  "look": "Light grey page with a white sheet of crisp black engraved notation on a five-line staff, red playhead accents and a round red play button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "scroll-turntable",
+  "title": "Scroll turntable",
+  "commonName": "Scroll 360 product viewer",
+  "description": "A glazed studio vessel turns through a cached sequence of thirty-two views on a vermilion plinth.",
+  "look": "Vivid vermilion backdrop with a softly shaded cream stoneware jug and floor shadow, small dark captions, and a bottom bar with slider and arrows.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "scroll-window",
+  "title": "Tidal aperture",
+  "commonName": "Scroll-driven image reveal",
+  "description": "Five offset photographic windows widen and align into a single coastal panorama.",
+  "look": "Saturated vermilion field with a heavy dark-brown sans wordmark beside a stepped column of aerial surf photo slices; thin slider and outlined button below.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "sentence-diff-motion",
+  "title": "Keep the words that survived",
+  "commonName": "Animated sentence revision",
+  "description": "A print-yellow copy proof moves surviving words into a new sentence while red edit marks distinguish additions and removals.",
+  "look": "Saturated yellow proof with oversized ink-black words, fine red insertion underlines, a red deletion rail, and three numbered revision controls.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "shape-morph",
+  "title": "Contour objects",
+  "commonName": "SVG shape morph",
+  "description": "A rounded contour changes between three sculptural silhouettes.",
+  "look": "A soft beige-to-taupe gradient blob with a cream outline and drop shadow on a dusty blue background, above a translucent pill segmented control.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "shine-border",
+  "title": "Shifting border",
+  "commonName": "Animated gradient border",
+  "description": "A softly colored gradient shifts around the edge of a quiet card.",
+  "look": "Blank off-white rounded card on a warm greige page, its thin border tinted with soft peach, mauve and lavender that fades to grey.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "shutter-scene",
+  "title": "A room for light",
+  "commonName": "Staggered shutter reveal",
+  "description": "Ultramarine shutters lift in sequence to reveal two architectural studies.",
+  "look": "Isometric building illustration in stone, grey and cobalt above a cream caption bar with blue sans type, monospace labels and a square blue button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "signature-draw",
+  "title": "Reed in one line",
+  "commonName": "SVG line drawing animation",
+  "description": "A continuous heron emblem draws in oxblood ink across saffron stock, leaving a quiet printed impression underneath.",
+  "look": "Tilted saffron paper square on a vermilion-red field, with a fine oxblood single-line heron illustration, a faint offset impression and a large lowercase serif wordmark.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "sort-choreography",
+  "title": "Manhattan, rising",
+  "commonName": "Bar chart race",
+  "description": "Five landmark elevations grow from the baseline and change rank as dated skyline snapshots advance.",
+  "look": "Pale blue-grey page with five finely drawn skyscraper elevations as bars on a gridded baseline, rust monospace height labels above, and a segmented year control.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "specimen-book",
+  "title": "Specimen book",
+  "commonName": "3D page turn book",
+  "description": "Four botanical engravings fill a clothbound volume with paired page faces, a shaded gutter and layered paper edges.",
+  "look": "Pale sage-grey backdrop with an open dark-green clothbound book showing two hand-coloured botanical engravings on cream paper, round translucent arrow buttons beneath.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "specimen-depth",
+  "title": "Glasshouse",
+  "commonName": "Mouse parallax layers",
+  "description": "Layered botanical silhouettes shift at different depths behind a glass pane.",
+  "look": "Sage-green page with a deep green-framed glass case holding three overlapping translucent fern silhouettes, a diagonal glass glare and a depth slider below.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "sphere-index",
+  "title": "Sphere index",
+  "commonName": "Spherical image gallery",
+  "description": "An image collection wraps over a dark spherical surface, then unfolds one selected work into a flat plate.",
+  "look": "Near-black plum background with woodblock prints and botanical images warped into curved tiles on a sphere, small uppercase header and italic serif caption.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "spinning-text",
+  "title": "Words in orbit",
+  "commonName": "Circular rotating text",
+  "description": "A quiet circular label turns around a stationary center.",
+  "look": "Pale beige page with small, widely spaced olive capitals arranged in a ring around a thin line-drawn atom emblem.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "spotlight-story",
+  "title": "Ultraviolet ink pass",
+  "commonName": "Spotlight reveal effect",
+  "description": "A fluorescent underprint appears beneath a movable ultraviolet lens on an original event pass.",
+  "look": "Dark charcoal page holding an orange notched ticket set in heavy dark-brown sans; a round lens shows a navy underprint with mint guilloche lines.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "stereo-field",
+  "title": "Stereo field",
+  "commonName": "Audio vectorscope",
+  "description": "A stereo vector plot connects phase and width controls to a continuous trace and correlation meter.",
+  "look": "Pale blue-grey instrument card: a circular scope of rings, ticks and dashed axes with a violet ellipse, beside two sliders, monospace readouts and a meter.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "sticker-gravity",
+  "title": "Sticker gravity",
+  "commonName": "Draggable physics stickers",
+  "description": "Eight graphic club seals tumble into a shallow tray and collide as individual draggable bodies.",
+  "look": "Off-white sheet between header and footer rules, with eight flat circular stickers in orange, cobalt, yellow, navy, red, grey and cream piled on the floor.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "tempo-type",
+  "title": "Tempo type",
+  "commonName": "Kinetic typography",
+  "description": "A yellow type specimen lifts, compresses or holds to an adjustable sixteen-beat cadence.",
+  "look": "Saturated yellow field with one huge heavy black tightly tracked sans-serif word, monospace mode tabs, a sixteen-step beat rail and a tempo stepper.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "temporal-volume",
+  "title": "Temporal volume",
+  "commonName": "Video time volume",
+  "description": "An orbitable volume exposes a moving frame and the history along its edges.",
+  "look": "Near-black stage with an off-white 3D box showing red ellipses and a black bar in front, pixel-history smears on its sides, and an orange scrubber.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "tension-fabric",
+  "title": "Tension fabric",
+  "commonName": "Cloth physics simulation",
+  "description": "Plum and green threads hang from a pinned edge and pull against their neighbors.",
+  "look": "Dark plum field with a hanging checkered weave of olive-green and mauve threads pinned along its top edge, with outlined buttons and a slider below.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "tethered-type",
+  "title": "Tethered type",
+  "commonName": "Elastic draggable letters",
+  "description": "Individual letters stretch away from their outline and spring back along a fine elastic tether.",
+  "look": "Hot-pink full-bleed field with four huge black extra-bold sans-serif capitals spanning the width and a small reset control in the corner.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "text-roll",
+  "title": "A fresh turn of phrase",
+  "commonName": "3D text roll",
+  "description": "Two faces of each letter turn together in a compact dimensional reveal.",
+  "look": "Pale lavender-grey page with a centred dark violet-grey sans headline, a light hooked-arrow glyph above and a small caption below.",
+  "category": "Animation & motion",
+  "runtime": "motion"
+ },
+ {
+  "slug": "text-scramble",
+  "title": "A signal in the noise",
+  "commonName": "Text scramble effect",
+  "description": "Random letters settle into a short, readable line from left to right.",
+  "look": "Dark charcoal-green field with a pale lime monospace uppercase headline, a small letterspaced grey-green eyebrow, a thin rule, caption and replay glyph.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "tidal-bitmap",
+  "title": "Tidal bitmap",
+  "commonName": "Interactive dither effect",
+  "description": "Two saturated inks form a pixel field that bends around the pointer and switches into a fractured signal.",
+  "look": "Cobalt-blue field of chunky red pixels forming dithered interference blobs in a diagonal lattice, above a blue footer with white wordmark and monospace controls.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "tile-wave",
+  "title": "Tile wave",
+  "commonName": "Tile distortion text",
+  "description": "A magenta and yellow print breaks into displaced tiles while its type stays recognizable.",
+  "look": "Hot magenta poster with a yellow panel and heavy magenta sans-serif type, sliced into offset rectangular tiles, with dark magenta control chips along the bottom.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "type-press",
+  "title": "Type under pressure",
+  "commonName": "Kinetic poster typography",
+  "description": "Heavy club typography compresses and releases like a sound system finding its voice.",
+  "look": "Flat vermilion poster with huge tightly tracked black grotesque letters stacked in two lines between thick black rules and small monospace captions.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "vector-monitor",
+  "title": "Vector monitor",
+  "commonName": "Radial audio waveform",
+  "description": "A circular signal grows into fine radial strokes around a live elapsed-time readout.",
+  "look": "Deep oxblood field with a ring of fine cream radial strokes and amber ticks around a double circle, a large centred timer and pill button.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "velocity-type",
+  "title": "Fast company",
+  "commonName": "Scroll velocity text skew",
+  "description": "A compact typographic strip leans with scrolling speed and relaxes when movement stops.",
+  "look": "Saturated orange field with stacked oversized type alternating heavy rust sans-serif and dark brown italic serif lines, plus a small circled arrow bottom right.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "viscous-type",
+  "title": "Viscous type",
+  "commonName": "Liquid text distortion",
+  "description": "Deep-red lettering distorts under pointer velocity, then settles across a vivid pink field.",
+  "look": "Huge heavy deep-red sans-serif wordmark set tight on a flat hot-pink field, with a thin rule, text button and small slider along the bottom.",
+  "category": "Animation & motion",
+  "runtime": "react"
+ },
+ {
+  "slug": "word-reveal",
+  "title": "Word by word",
+  "commonName": "Split text reveal",
+  "description": "A measured word-by-word reveal that lets a short headline land.",
+  "look": "Pale sage-green page with a two-line, tightly tracked dark olive sans-serif headline, left-aligned at centre, and a small replay control bottom right.",
+  "category": "Animation & motion",
+  "runtime": "motion"
+ },
+ {
+  "slug": "activity-capsule",
+  "title": "Activity capsule",
+  "commonName": "Background task progress pill",
+  "description": "An export collapses into a small persistent capsule without losing its progress.",
+  "look": "Cool grey page with a dark charcoal rounded card: amber arrow glyph, cream serif filename, beige thumbnail and a row of slate progress segments.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "activity-stamp",
+  "title": "Activity stamp",
+  "commonName": "Habit tracker grid",
+  "description": "A red ink stamp marks each day in a four-week practice grid and keeps the total in sync.",
+  "look": "White panel with a monospace seven-column four-week grid where completed days are glossy red ink circles, plus a red serif tally and thin grey rules.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "address-check",
+  "title": "Address check",
+  "commonName": "Async input validation",
+  "description": "A project-address field moves from checking to an inline validation result.",
+  "look": "Near-white page with a small dark-green square icon, a white rounded text field with a grey suffix, grey helper text and a full-width near-black button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "airmail-note",
+  "title": "Folded note",
+  "commonName": "Fold-to-send form",
+  "description": "A private note folds into a sealed paper billet, retaining its contents when opened again.",
+  "look": "Dark charcoal page with a vermilion letter form in three creased panels: italic serif label, large serif note, monospace caption and maroon button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "allocation-ring",
+  "title": "Allocation ring",
+  "commonName": "Animated donut chart",
+  "description": "A sculpted portfolio ring redistributes across years while a selected holding keeps its identity.",
+  "look": "Near-black dashboard with a gradient donut of green, sand, steel-blue and grey segments inside a circle of ticks, a large balance figure and legend.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "animated-number",
+  "title": "A number in motion",
+  "commonName": "Animated number counter",
+  "description": "A spring-driven value that makes a change in quantity easy to follow.",
+  "look": "Warm off-white page with a small olive-dot caption, a large dark tightly tracked tabular numeral, a thin rule and a small refresh icon button.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "answer-stream",
+  "title": "Answer stream",
+  "commonName": "Streaming chat autoscroll",
+  "description": "A streaming response follows incoming text while preserving the reader’s position when they scroll away.",
+  "look": "Cool blue-grey page with a white rounded chat pane: arrow-mark header, large navy serif heading and body paragraphs, and a small status footer.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "archive-folder",
+  "title": "Archive folder",
+  "commonName": "Folder open animation",
+  "description": "A warm paper folder opens into a small fan of weather prints.",
+  "look": "Mustard-gold paper folder with a darker back tab and the edge of cream prints peeking out, centred on a flat vermilion background.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "atlas-hotspots",
+  "title": "Inside the image",
+  "commonName": "Image hotspots",
+  "description": "Image markers and a compact index share one selection, revealing details without losing the whole picture.",
+  "look": "Off-white page with a Japanese woodblock landscape print marked by numbered white circular pins, beside a large dark serif title and ruled numbered list.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "attachment-composer",
+  "title": "Attachment composer",
+  "commonName": "Chat composer attachments",
+  "description": "Let attachments enter and leave a message without displacing the writing task.",
+  "look": "White rounded composer card on light warm grey with a bordered file chip, system-font message text, a plus icon and a round blue send button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "audio-patchbay",
+  "title": "Patch the signal",
+  "commonName": "Interactive audio patchbay",
+  "description": "Connect two generated sources through a filter or directly to an output, then audition the resulting route.",
+  "look": "Graphite studio panel with steel socket rings, ivory and red cables, restrained module labels and a small measured output level.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "branch-wizard",
+  "title": "Branch wizard",
+  "commonName": "Multi-step form wizard",
+  "description": "A compact export setup preserves decisions as its panels move forward and back.",
+  "look": "Pale grey-blue page with a white bordered card holding a numbered three-step rail, outlined format tiles, a select row and a navy primary button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "breadcrumb-collapse",
+  "title": "Breadcrumb expansion",
+  "commonName": "Collapsible breadcrumbs",
+  "description": "Hidden ancestors unfold inline, keeping the current document anchored in a readable path.",
+  "look": "Pale blue-grey page with a white rounded card: a breadcrumb bar with folder icon, slash separators and ellipsis chip, above a tilted orange cover thumbnail.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "calendar-range",
+  "title": "Calendar range",
+  "commonName": "Date range picker",
+  "description": "Select a short stay with a continuous, legible date range.",
+  "look": "Pale grey-green page with a white rounded calendar card: bold month heading, seven-column day grid, deep green endpoint chips and a mint band between.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "camera-wheel",
+  "title": "Exposure wheel",
+  "commonName": "Exposure dial control",
+  "description": "A knurled exposure ring changes the brightness of an architectural photograph in precise one-third-stop increments.",
+  "look": "Dark graphite camera body with a black-and-white architectural photo and a knurled tick-scale wheel with an amber index, on a flat burnt-orange background.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "card-flip",
+  "title": "The other side",
+  "commonName": "3D card flip",
+  "description": "A quiet front turns to reveal a little more, with details following the card's movement.",
+  "look": "Warm beige page with a single rounded cream card, a soft blurred amber glow at its centre, a dark bold title and bronze double arrow.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "chart-crosshair",
+  "title": "Chart crosshair",
+  "commonName": "Chart crosshair tooltip",
+  "description": "Read an individual point accurately while retaining the shape of the series.",
+  "look": "White rounded card on pale sage: a large dark-green figure above a thin green line chart with faint area fill, dashed gridlines and crosshair.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "chart-range-brush",
+  "title": "Chart range brush",
+  "commonName": "Time series range slider",
+  "description": "Independent endpoints select listening days on one fixed-scale minimap.",
+  "look": "Pale blue-grey page with a white rounded card holding a large total, a steel-blue bar chart and a minimap track with two grip handles.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "chromatic-sampler",
+  "title": "Chromatic sampler",
+  "commonName": "Sound pad buttons",
+  "description": "Six graphic pads invert their ink, depress on contact and play six distinct synthesized notes.",
+  "look": "Six flat saturated colour tiles in a black-gridded two-row layout, each with a bold geometric glyph, small note label and name, under an off-white header.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "collage-board",
+  "title": "Collage board",
+  "commonName": "Draggable collage board",
+  "description": "Three original graphic studies can be moved into a persistent, overlapping composition.",
+  "look": "Light grey board with three tilted, overlapping poster cards: black blob on off-white, black rings on yellow, and white italic serif letters on black.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "color-contrast-lock",
+  "title": "Keep the pair readable",
+  "commonName": "Contrast-locked color pair",
+  "description": "A color proof recomputes its paired ink as the surface changes, preserving an unrounded contrast target within a bounded palette.",
+  "look": "Full-bleed persimmon Arial specimen with oversized Aa, a small pangram, exact ink value and a neutral color-mixing strip.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "command-launcher",
+  "title": "Command launcher",
+  "commonName": "Command palette",
+  "description": "Filter actions and navigate results immediately from the keyboard.",
+  "look": "Charcoal page with a graphite rounded panel: search field, four icon-led action rows with letter keycaps, the first highlighted, and a small hint footer.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "compact-pagination",
+  "title": "Windowed pagination",
+  "commonName": "Sliding pagination",
+  "description": "Keep the active page centered as a long page list advances.",
+  "look": "Cool light-grey background, a white document sheet with skeleton lines and a tilted pale-blue numbered tile, above a white rounded bar of page numbers.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "contact-metal",
+  "title": "Illuminated metal keys",
+  "commonName": "Backlit metal buttons",
+  "description": "Three backlit keys cast amber, white or blue reflections across a shared metal housing.",
+  "look": "Brushed-silver plate on a dark graphite backdrop with three dark glass keys in chrome bezels, line icons, labels, and amber light spilling onto the metal.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "copy-button",
+  "title": "Copy, confirmed",
+  "commonName": "Copy to clipboard button",
+  "description": "A copy icon draws into a check, while its label quietly confirms the action.",
+  "look": "Cool light-grey page with a grey monospace URL above a single white rounded button holding a small line icon and label.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "credential-meter",
+  "title": "Credential meter",
+  "commonName": "Password strength meter",
+  "description": "Four quiet segments track which password requirements are satisfied.",
+  "look": "Near-black green-tinted page with a dark rounded password field, four thin grey meter segments, a two-column requirements list and a divider above status text.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "crop-window",
+  "title": "Crop window",
+  "commonName": "Image crop tool",
+  "description": "A movable crop frame trims a bold modular artwork with direct corner controls.",
+  "look": "Charcoal editor showing a red, cream and black geometric graphic under a white thirds-grid crop frame with corner brackets, dimmed outside, plus pale buttons.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "cue-scrubber",
+  "title": "Cue scrubber",
+  "commonName": "Chapter timeline scrubber",
+  "description": "A segmented timeline makes meaningful chapter boundaries visible and directly seekable.",
+  "look": "Off-white page with a giant dark chapter numeral and title, a segmented grey timeline with one dark segment and red handle, and small chapter labels.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "cursor-adapter",
+  "title": "Cursor adapter",
+  "commonName": "Morphing custom cursor",
+  "description": "A small ink cursor stretches into the exact width of a title in a sharp yellow publishing index.",
+  "look": "Saturated lemon-yellow page with a stacked list of large black sans-serif titles, faint arrow glyphs at right, and a thin ruled footer.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "cursor-menu",
+  "title": "Artwork context menu",
+  "commonName": "Right-click context menu",
+  "description": "A bounded context menu rotates, inverts and duplicates the artwork it belongs to.",
+  "look": "Cool grey page with a pale file window whose dotted artboard holds a cream square printed with bold cobalt geometric shapes.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "curtain-index",
+  "title": "Curtain index",
+  "commonName": "Fullscreen menu overlay",
+  "description": "A full-area curtain opens into an oversized editorial index, with a short stagger between entries.",
+  "look": "Deep plum full-bleed panel listing three oversized pink italic serif section names between hairline rules, with a small text toggle and thin X icon.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "deferred-feed",
+  "title": "Deferred feed",
+  "commonName": "Unread updates feed",
+  "description": "New activity waits behind a compact unread indicator while the current reading position stays put.",
+  "look": "Light warm-grey page with a white bordered activity card: plus-button header, timeline dots on a thin line, grey timestamps and circled initials.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "dictation-draft",
+  "title": "Dictation draft",
+  "commonName": "Live dictation transcript",
+  "description": "Provisional words revise themselves before settling into an editable serif draft.",
+  "look": "Tan background, a cream note card with an orange top rule, large dark serif text ending in muted underlined words, and a round orange button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "dot-announcer",
+  "title": "Dot announcer",
+  "commonName": "LED dot matrix display",
+  "description": "A vermilion dot display changes its illuminated glyph and status with a short column-by-column handoff.",
+  "look": "Vermilion plastic device on a red field, framing a dark maroon grid of round dots with cream lit dots forming an icon and letters.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "dropzone-preview",
+  "title": "Dropzone preview",
+  "commonName": "File drop zone with preview",
+  "description": "A compact import well opens into an actual local image preview.",
+  "look": "Warm off-white page with a pale grey-green dashed drop well, a small two-card upload illustration, a white outlined button and grey helper text.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "editable-document-title",
+  "title": "Inline title edit",
+  "commonName": "Inline editable title",
+  "description": "Keep a document’s identity in place while editing, committing, or cancelling.",
+  "look": "Light grey page with a white rounded card: a tilted pale-green document icon, small grey label, dark sans-serif title with pencil glyph, sage caption.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "elastic-fader",
+  "title": "Elastic fader",
+  "commonName": "Elastic slider",
+  "description": "An orange level control stretches against its limits and settles back around a brushed-metal fill.",
+  "look": "Saturated orange panel with an oversized black level number, monospace scale labels and a vertical black fader track holding a brushed-metal fill and silver cap.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "envelope-shaper",
+  "title": "Give the note its shape",
+  "commonName": "ADSR envelope editor",
+  "description": "Three draggable breakpoints author attack, decay, sustain and release for a held synthesized note.",
+  "look": "Pale aluminum instrument housing, a recessed dark-green display, fine amber envelope line and a tactile hold-to-play key.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "expandable-ledger",
+  "title": "Expandable ledger",
+  "commonName": "Expandable table rows",
+  "description": "Explain a transaction in place instead of navigating away from the ledger.",
+  "look": "Light warm-grey page with a single white rounded card listing expenses: lettered serif avatar tiles, sans names and dates, right-aligned amounts and chevrons.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "expanding-search",
+  "title": "Archive search",
+  "commonName": "Expanding search combobox",
+  "description": "A compact archive tab expands into a searchable document picker and retains your selection.",
+  "look": "Warm stone-grey page with a compact off-white paper strip led by a vermilion index tab holding a search icon, set in plain sans-serif.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "field-console",
+  "title": "Field console",
+  "commonName": "XY pad controller",
+  "description": "A full-width field of fine contours bends under a direct drag, with one orange trace revealing its motion.",
+  "look": "Dark slate-teal field of pale stacked wave contours with one orange trace, above a control bar holding a round pause button and three orange sliders.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "filmstrip-scrubber",
+  "title": "Night signal",
+  "commonName": "Video frame scrubber",
+  "description": "An acid-yellow playhead scrubs a nocturnal scene one frame at a time.",
+  "look": "Near-black editor showing a flat teal silhouette night scene with a pale moon above a seven-thumbnail strip, acid-yellow playhead and monospace timecode.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "filter-builder",
+  "title": "Filter builder",
+  "commonName": "Filter chips builder",
+  "description": "Make a compound filter editable in place without a full settings panel.",
+  "look": "Pale blue-grey page with a white card: a bordered filter chip, dashed add button, grey skeleton rows and a dropdown popover with coloured status dots.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "filter-mosaic",
+  "title": "Filter mosaic",
+  "commonName": "Animated filter grid",
+  "description": "A tiled collection of textile patterns and places rearranges around the selected category.",
+  "look": "White page with pill filter chips over a mixed-width grid of image tiles: botanical textile prints, concrete architecture, a red running track, a woodblock print.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "fluid-tab-rail",
+  "title": "Fluid tab rail",
+  "commonName": "Liquid tab indicator",
+  "description": "A deep-blue navigation rail swells around the focused control while a pale disc follows its silhouette.",
+  "look": "Dark navy page with a centred line icon and large sans-serif label above a slate pill-shaped icon rail whose bulge cradles a pale mint disc.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "focus-lens",
+  "title": "Focus lens",
+  "commonName": "Cursor focus lens",
+  "description": "A moving aperture brings fine silver lines into focus over an ultramarine optical plate.",
+  "look": "Saturated ultramarine field of fine pale silver-blue curved lines and a crescent, blurred except inside a thin circular ring, with an outlined full-width button bar.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "folder-tree",
+  "title": "Folder tree",
+  "commonName": "File tree",
+  "description": "Reveal a project hierarchy while preserving where the selected file lives.",
+  "look": "Off-white rounded card on a warm grey page: a mustard folder icon, hatched file glyphs, thin tree guide lines and a beige selected row.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "format-tooltip",
+  "title": "Format tooltip",
+  "commonName": "Toolbar tooltip",
+  "description": "A shared tooltip moves between formatting controls after one initial hover delay.",
+  "look": "Light grey-green page with a white document card of dark serif text and a pale rounded toolbar of four serif formatting glyph buttons.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "glare-hover",
+  "title": "A glancing reflection",
+  "commonName": "Glare hover card",
+  "description": "A diagonal light glides across a dark material card on hover.",
+  "look": "Dark graphite rounded card with a subtle diagonal gradient, small white label and a champagne-gold circular swatch, centred on a light grey page.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "gradient-stop-editor",
+  "title": "Folded color proof",
+  "commonName": "Gradient stop editor",
+  "description": "Three movable color stops paint a sharply folded paper proof, making color placement and material shading visible together.",
+  "look": "Near-black canvas with a zigzag folded-paper strip shaded vermilion to magenta to aubergine, above a gradient track with rounded swatch handles and monospace hex readout.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "guided-inspection",
+  "title": "Guided inspection",
+  "commonName": "Product tour spotlight",
+  "description": "A library plan moves beneath a precisely aligned spotlight as a three-stop walkthrough explores its rooms.",
+  "look": "Pale sage floor plan with dark green walls, muted green furniture and round trees, orange numbered hotspots, and a dark green button below.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "hold-to-confirm",
+  "title": "A deliberate hold",
+  "commonName": "Hold-to-confirm button",
+  "description": "A progress sweep makes the time needed for an important action visible.",
+  "look": "Warm off-white page with one white rounded button and a grey caption underneath.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "hue-wheel",
+  "title": "Hue wheel",
+  "commonName": "Color wheel picker",
+  "description": "Explore a color continuously with direct manipulation and an exact keyboard value.",
+  "look": "Lavender-grey page with a white rounded card: a pastel rainbow ring around a solid colour disc, a monospace degree readout and six round swatches.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "icon-morph",
+  "title": "Icons between states",
+  "commonName": "Animated icon morph",
+  "description": "A menu, a playback symbol and an add action keep their identity while changing shape.",
+  "look": "Light blue-grey page with three white rounded-square icon buttons in a row showing dark grey menu, play and plus glyphs.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "image-comparison",
+  "title": "Before meets after",
+  "commonName": "Before and after image slider",
+  "description": "A smooth reveal makes two treatments easy to compare in one view.",
+  "look": "Pale sage page with a rounded flat-vector mountain scene, warm colour left and desaturated grey right, divided by a round handle, with a slider below.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "incremental-list",
+  "title": "Incremental list",
+  "commonName": "Load more list with retry",
+  "description": "An archive loads more records in place, with a recoverable failed batch.",
+  "look": "Warm off-white page with a serif heading, a ruled list of publication rows with small red, black and grey geometric covers, and a text button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "inline-diff",
+  "title": "Inline diff",
+  "commonName": "Inline code diff",
+  "description": "Compare a focused code change without leaving its surrounding context.",
+  "look": "Dark slate code card with a file header, monospace lines, a muted red removed row and two green added rows, and a steel-blue accept button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "interactive-hover-button",
+  "title": "An invitation on hover",
+  "commonName": "Fill hover button",
+  "description": "A tiny dot fills the button as a second label and arrow arrive.",
+  "look": "Warm sand-beige page with a single pale cream pill button outlined in tan, with a small brown dot beside a brown sans label.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "interval-clock",
+  "title": "Interval clock",
+  "commonName": "Countdown timer dial",
+  "description": "A single enamel countdown dial depletes around an inset numeric readout, with tactile interval keys.",
+  "look": "Sage-grey rounded console: a silver-bezel clock face with minute ticks and an orange ring around large numerals, beside segmented presets and an orange start key.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "keyframe-snap",
+  "title": "Letter arrival editor",
+  "commonName": "Keyframe timeline editor",
+  "description": "Magnetic keyframes set when three original letterforms arrive, with a scrubber and a live preview of the edited timing.",
+  "look": "Violet band with large pale block letters above a dark aubergine timeline: three tracks with purple bars, diamond keyframes, a monospace ruler and white playhead.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "lasso-selection",
+  "title": "Marquee selection",
+  "commonName": "Drag-to-select rectangle",
+  "description": "A bounded selection rectangle gathers nearby objects with immediate feedback.",
+  "look": "Off-white dotted canvas on a pale sage page with four muted pastel shapes; the selected circle wears a thin green outline and corner handle.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "layered-menu",
+  "title": "Layered menu",
+  "commonName": "Nested drill-down menu",
+  "description": "A compact archive navigation slides between category and subcategory panels without multiplying popovers.",
+  "look": "Pale grey page with a thin top nav of two text dropdowns and a white rounded panel listing categories with grey glyphs, subtitles and arrows.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "letter-collection",
+  "title": "Letter collection",
+  "commonName": "Envelope open reveal",
+  "description": "A sealed coastal envelope opens into a spread of photographs.",
+  "look": "Flat cream paper envelope with a round dark green seal and soft shadow, centred on a dusty blue-grey field above a small letterspaced caption.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "light-position",
+  "title": "Embossed paper proof",
+  "commonName": "Embossed paper lighting",
+  "description": "A movable studio light reveals the shallow relief of a blind-embossed mark on blue paper.",
+  "look": "Matte mid-blue paper card with a blind-embossed nested-arch mark and fine grain, floating on a dark teal-black ground beside a small sun handle.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "like-burst",
+  "title": "A little appreciation",
+  "commonName": "Like button heart burst",
+  "description": "A filled heart, a small burst and a rolling count make a reaction feel responsive.",
+  "look": "Pale blush page with a single white rounded button holding an outline heart icon, a sans-serif label and a small count.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "loading-button",
+  "title": "An action in progress",
+  "commonName": "Async loading button",
+  "description": "A stable button moves through saving, success and error without changing its footprint.",
+  "look": "Warm light-grey page with one white rounded bordered button with a soft shadow, and a small checkbox caption below.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "locked-budget-balance",
+  "title": "A budget that stays balanced",
+  "commonName": "Locked budget allocation",
+  "description": "Changing one allocation redistributes the remaining budget across unlocked lines while the total stays exact.",
+  "look": "A dominant cobalt, silver and graphite allocation ribbon with large percentages, a quiet monetary total and a compact two-column set of fine sliders and lock icons.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "magnetic-button",
+  "title": "Magnetic button",
+  "commonName": "Magnetic hover button",
+  "description": "A gentle pull toward the pointer, followed by a spring back to rest.",
+  "look": "Warm off-white page with a single dark charcoal pill button holding white sans-serif text and a thin arrow icon.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "magnifying-dock",
+  "title": "A dock with a little gravity",
+  "commonName": "Dock magnification effect",
+  "description": "Nearby tools grow gently as the pointer passes across a compact dock.",
+  "look": "Light grey page with a translucent off-white dock holding four pastel rounded-square tool icons in sage, tan, blue-grey and lilac, captioned above.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "microphone-check",
+  "title": "Microphone check",
+  "commonName": "Microphone level meter",
+  "description": "A compact audio preflight reveals available input devices and a measured level meter.",
+  "look": "White rounded card on a pale grey-blue page: microphone icon, device dropdown, a row of thin grey meter bars and a full-width navy button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "mixing-desk",
+  "title": "Make space",
+  "commonName": "Audio mixer faders",
+  "description": "Three oversized digital channels turn level, mute and solo into a graphic rhythm surface.",
+  "look": "Acid-lime page with three near-black fader wells striped by lime meter bars, small white rectangular handles, outlined square toggle buttons and plain sans-serif labels.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "normalized-baseline",
+  "title": "Choose the comparison day",
+  "commonName": "Indexed baseline comparison",
+  "description": "Choosing a date rebases each series to 100 so growth can be compared from the same starting point.",
+  "look": "Warm-white chart card with cobalt, brick and ink lines, a dark baseline peg and compact raw-value summaries.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "notification-deck",
+  "title": "Notification deck",
+  "commonName": "Stacked toast notifications",
+  "description": "Expand stacked notifications without losing their order or origin.",
+  "look": "Pale blue-grey page with one white rounded notification card over two peeking cards, a soft green icon tile, and a faint rounded button below.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "octave-keys",
+  "title": "Octave keys",
+  "commonName": "Piano keyboard",
+  "description": "A one-octave instrument pairs independently raised key faces with opt-in synthesized notes.",
+  "look": "Off-white skeuomorphic keyboard case with an inset keybed of glossy white keys and dark olive sharps, small grey note letters and a toggle button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "optic-toggle",
+  "title": "Optic toggle",
+  "commonName": "Glass toggle switch",
+  "description": "A glass light switch bends the patterned surface beneath its rounded edge.",
+  "look": "A clear glass pill switch with a lensed thumb and lime indicator dot over orange and black diagonal hazard stripes, darkened at the edges.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "orbit-atlas",
+  "title": "Orbit atlas",
+  "commonName": "Pan and zoom image canvas",
+  "description": "An open image archive can be panned, fitted, zoomed and brought into focus one work at a time.",
+  "look": "Off-white board holding six white-bordered prints (woodblock landscapes, a fern cyanotype, sepia photographs) loosely arranged above a floating white zoom toolbar.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "orientation-cube",
+  "title": "Orientation cube",
+  "commonName": "Draggable 3D cube",
+  "description": "A ceramic orange cube orbits under the pointer and snaps to named faces.",
+  "look": "Pale grey-blue page with a matte orange cube whose faces carry thin outlined shapes and labels, a soft floor shadow and three white buttons.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "panel-docking",
+  "title": "Dock, detach, return",
+  "commonName": "Dockable inspector panel",
+  "description": "A floating shape inspector previews edge docking and returns to its previous position without losing its properties.",
+  "look": "Neutral dotted drafting canvas, a yellow or vermilion lightning icon, and one compact white inspector with a title grip and edge-dock buttons.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "passcode-input",
+  "title": "Passcode input",
+  "commonName": "OTP code input",
+  "description": "Show progress through a one-time code while preserving native paste and autofill.",
+  "look": "Pale blue-grey page with a rounded icon tile, dark heading, grey subtitle, six white rounded digit boxes split three and three, and a text button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "perspective-pin",
+  "title": "Poster corner pin",
+  "commonName": "Image perspective warp",
+  "description": "Four corner handles project an original fluorescent poster onto an oblique concrete wall, with one action to restore its fit.",
+  "look": "Pale concrete wall in oblique perspective with a fluorescent yellow-green poster of heavy black block letters, small blue-ringed corner handles and a frosted fit button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "petal-palette",
+  "title": "Painter’s palette",
+  "commonName": "Color picker",
+  "description": "Sculpted pigment daubs select a hue for a knife-painted swatch, with independent lightness and a usable hex value.",
+  "look": "Skeuomorphic wooden palette on warm off-white with two rows of glossy paint daubs, a broad knife stroke, and a hex readout and gradient slider beneath.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "photo-lightbox",
+  "title": "Photo lightbox",
+  "commonName": "Image lightbox with zoom",
+  "description": "An austere photographic index opens a dark, contained viewer with thumbnails, bounded zoom and pan.",
+  "look": "Off-white page with a row of four tall, staggered-height photographs (architecture, surf, running track, tennis courts), each with a small caption and arrow.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "pocket-player",
+  "title": "Pocket player",
+  "commonName": "Audio player",
+  "description": "A cobalt audio sleeve pairs an original soundmark with synchronized seek, transport and playback speed.",
+  "look": "Cobalt-blue field with a square orange cover of curved blue lines, cream sans-serif title, thin seek bar and a round cream play button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "poll-results",
+  "title": "The results are in",
+  "commonName": "Animated poll results",
+  "description": "A choice turns into a small chart, with result fills and percentages moving together.",
+  "look": "Pale olive-cream page with a narrow stack of three off-white rounded option rows, grey and sage fill bars, monospace percentages and olive captions.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "precision-scrub",
+  "title": "Precision scrub",
+  "commonName": "Scrubbable number input",
+  "description": "A compact numerical field sets the spacing of a white typographic specimen on a deep plum proofing surface.",
+  "look": "Deep plum surface with a large off-white sans-serif specimen word between faint guide lines, above a small outlined monospace value chip and reset icon.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "presence-pile",
+  "title": "Presence pile",
+  "commonName": "Avatar stack",
+  "description": "Reveal who is present while keeping collaboration chrome compact.",
+  "look": "Warm off-white page with four pastel circular avatars bearing minimal faces and status dots, a pale round toggle, and a small white name card.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "press-depth",
+  "title": "A button with depth",
+  "commonName": "3D press button",
+  "description": "A raised button presses down from the point you touch, then returns with a spring.",
+  "look": "Pale sage page with one wide off-white rounded button raised on a darker olive base, with a dark grey sans-serif label.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "print-lab",
+  "title": "Print lab",
+  "commonName": "Image filter editor",
+  "description": "A working image proofing bench develops color treatments into a downloadable contact strip.",
+  "look": "Grey workbench with a red-orange still life of folded pale-blue metal and a yellow sphere, a narrow proof strip, underlined tabs and red button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "proposal-ledger",
+  "title": "Proposal ledger",
+  "commonName": "Change approval table",
+  "description": "Proposed settings move into the current column when accepted, with explicit applied and kept states.",
+  "look": "Cool grey page with a white rounded three-row table: muted values, arrows to chip-styled proposals, cross and green check buttons, dark green footer button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "push-navigation",
+  "title": "Push navigation",
+  "commonName": "Push menu drawer",
+  "description": "A cobalt record sleeve moves aside to expose a quiet collection index behind it.",
+  "look": "Saturated cobalt-blue full-bleed plate holding an off-white record sleeve with heavy navy sans-serif title and blue looping ring artwork, plus an outlined pill button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "push-to-talk",
+  "title": "Push to talk",
+  "commonName": "Hold-to-record voice button",
+  "description": "A momentary recording control captures a local voice note and hands off to playback on release.",
+  "look": "Near-black green-tinted page with a large thin-weight seconds counter, a glowing lime dot and a wide lime rounded button with a microphone icon.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "queue-reorder",
+  "title": "Queue reorder",
+  "commonName": "Drag-to-reorder list",
+  "description": "A lifted track follows the pointer while neighboring tracks move into their new slots before release.",
+  "look": "Dark charcoal page with a rounded graphite card listing three tracks, each with square geometric cover art, white title, grey artist and a dotted grip.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "quote-tick",
+  "title": "Quote tick",
+  "commonName": "Stock price ticker",
+  "description": "A changing quote retains its previous value and emphasizes the direction of each update.",
+  "look": "Near-black panel with a large white tabular price, a monospace row comparing previous value and green delta, a tick-mark ruler and underlined text buttons.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "radial-tool-menu",
+  "title": "Within reach",
+  "commonName": "Radial menu",
+  "description": "Six drawing tools unfold around a fixed point on a spare drafting surface.",
+  "look": "Pale grey dot-grid drafting surface with a circular dial of six line icons around a black centre button, plus orange-red accents and a tilted frame.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "range-zoom",
+  "title": "Percussion navigator",
+  "commonName": "Waveform zoom navigator",
+  "description": "A detailed percussion waveform stays connected to a draggable overview as you pan and magnify its transients.",
+  "look": "Deep burgundy backdrop with a cream panel showing a crimson filled waveform on faint gridlines, monospace time labels, a segmented zoom control and a minimap.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "reaction-palette",
+  "title": "Reaction palette",
+  "commonName": "Emoji reaction picker",
+  "description": "Choose a reaction without covering the message being discussed.",
+  "look": "Pale lilac background with a white chat bubble, a small pill reaction button and a white rounded pill of five muted-colour typographic symbols.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "recipient-tokens",
+  "title": "Recipient tokens",
+  "commonName": "Recipient chips input",
+  "description": "Turn addresses into removable recipients without breaking typing flow.",
+  "look": "Pale blue-grey page with a white rounded compose card: pale recipient chips with pastel initial avatars and remove crosses, a bold subject and grey body.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "recurrence-picker",
+  "title": "Recurrence picker",
+  "commonName": "Weekly recurrence picker",
+  "description": "Pressed day keys author a weekly rule and illuminate its next three weeks.",
+  "look": "Off-white card on cool grey: sage switch, a recessed tray of raised day keys with selected ones burnt orange, and a row of date tiles.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "region-splice",
+  "title": "Region splice",
+  "commonName": "Waveform region selector",
+  "description": "Three waveform selections move and resize within shared bounds without colliding.",
+  "look": "Dark plum audio editor card with a pink waveform track, three translucent rounded region boxes (one highlighted with edge handles), monospace ruler and timing readouts.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "reservation-dialog",
+  "title": "Reservation disclosure",
+  "commonName": "Expandable booking card",
+  "description": "Expand a compact reservation into editable details within the same visual anchor.",
+  "look": "Light sage-grey page with a single white rounded card: a small green-toned room illustration, dark title, muted date line and a sage plus icon.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "resizable-inspector",
+  "title": "Resizable inspector",
+  "commonName": "Resizable split pane",
+  "description": "Resize an editing surface while its adjacent controls remain useful.",
+  "look": "Cool blue-grey page with a rounded editor window: dotted canvas with a tilted slate-blue shape, pill drag handle and a compact property inspector.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "review-disclosure",
+  "title": "Approval review",
+  "commonName": "Approval confirmation dialog",
+  "description": "Show exactly what an approval will include before confirming it.",
+  "look": "Pale lavender-grey page with a white rounded, softly shadowed card: lilac icon tile, small grey labels, purple checkboxes and a full-width muted purple button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "ripple-button",
+  "title": "A ripple on touch",
+  "commonName": "Ripple effect button",
+  "description": "A soft circle expands from the exact point where the button is pressed.",
+  "look": "Warm beige page with a single centred caramel-brown rounded button with a darker border and dark sans-serif label.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "rotary-tuner",
+  "title": "Rotary tuner",
+  "commonName": "Rotary knob dial",
+  "description": "A detented olive dial tunes a recessed LCD inside a molded radio enclosure.",
+  "look": "Light warm-grey page with a cream plastic radio: dotted speaker grille, pale green LCD readout in monospace digits, and a knurled dark-green knob.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "schedule-ripple",
+  "title": "Make room in the session",
+  "commonName": "Ripple schedule resize",
+  "description": "Moving or resizing either end of a session shifts its neighbors in both directions while preserving minimum durations and changeover time.",
+  "look": "A charcoal recording timeline with numbered lanes, broad orange and cool-toned time blocks, large duration figures and subtle ruler marks.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "scope-tree-selection",
+  "title": "Select a whole branch",
+  "commonName": "Tri-state file selection",
+  "description": "Folder checkboxes include eligible descendants while partial selections and unavailable files stay explicit.",
+  "look": "Ink-blue file panel with mint checks, narrow connector elbows, quiet branch counts and a persistent export tally.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "seat-picker",
+  "title": "An evening, together",
+  "commonName": "Seat selection map",
+  "description": "A small theatre plan answers every seat choice with a restrained lift and a live reservation total.",
+  "look": "Deep burgundy page with three rows of pale-pink outlined seat icons, muted slashed taken seats, a curved stage line and italic serif summary.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "selection-toolbar",
+  "title": "Selection toolbar",
+  "commonName": "Text selection toolbar",
+  "description": "Keep formatting controls anchored to the words being edited.",
+  "look": "Pale sage-grey page with a cream rounded card of large olive serif text, one phrase highlighted, and a dark olive floating toolbar above.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "sequencer-grid",
+  "title": "Step sequencer",
+  "commonName": "Step sequencer",
+  "description": "Sixteen physical keys hold a pattern beneath a synchronized glass step display.",
+  "look": "Skeuomorphic graphite hardware panel on warm grey with a dark glass display, pale play key, and rows of charcoal and cream keys with amber lights.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "shimmer-button",
+  "title": "Shimmer button",
+  "commonName": "Shimmer border button",
+  "description": "A thin spark travels around a rounded button while the label stays still.",
+  "look": "Dark charcoal-green page with a single pill button in muted dark green, a soft inner highlight and a thin pale-green light on its edge.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "skeleton-handoff",
+  "title": "Skeleton handoff",
+  "commonName": "Skeleton loader",
+  "description": "A publication preview uses a delayed, shape-matched placeholder for slower responses.",
+  "look": "Deep blue page with a publication card: pale sage cover with a big serif letter and arc beside a white two-line serif title.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "sleeve-stack",
+  "title": "Sounds with a shape",
+  "commonName": "Album cover carousel",
+  "description": "Three graphic record sleeves rotate through a compact, tactile collection.",
+  "look": "Cream page with three fanned square record sleeves in red, cream and black, tight bold sans titles and geometric line art, plus outlined arrow buttons.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "slide-text-button",
+  "title": "A second line",
+  "commonName": "Text roll hover button",
+  "description": "A second label rolls into view as you approach the action.",
+  "look": "Warm greige page with one wide dark olive-green rounded button holding a single line of white sans-serif text.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "slider-detents",
+  "title": "A setting that settles",
+  "commonName": "Snapping range slider",
+  "description": "A slider gently catches at meaningful settings and springs into position.",
+  "look": "Pale sage-grey page with a label and value readout above a slim dark-green filled track, white-ringed rounded-square thumb and three small tick marks.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "sliding-number",
+  "title": "Digits on a roll",
+  "commonName": "Odometer digit counter",
+  "description": "Individual digits take the shortest path around a spring-driven number wheel.",
+  "look": "Large regular-weight slate-teal numerals with a small grey unit label on a pale blue-grey page, above a hairline rule and a small refresh icon.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "sliding-tabs",
+  "title": "Sliding selection",
+  "commonName": "Sliding segmented control",
+  "description": "A shared highlight keeps its momentum as you move between options.",
+  "look": "Light warm-grey page with a rounded grey track holding three sans-serif labels, the selected one on a white rounded pill with a faint shadow.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "snap-sheet",
+  "title": "Detent sheet",
+  "commonName": "Bottom sheet with snap points",
+  "description": "Reveal more information with a sheet that settles at deliberate heights.",
+  "look": "Rounded card: a pale sage map with cream roads and a pin, partly covered by a white bottom sheet with grab handle and green button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "spectral-selection",
+  "title": "Spectral selection",
+  "commonName": "Spectrogram selection",
+  "description": "A burnt-orange spectrogram reveals a swept tone and lets you isolate a time-and-frequency region.",
+  "look": "Dark espresso-brown panel with a burnt-orange spectrogram heatmap showing a rising diagonal chirp, a thin cream selection box and monospace axis labels.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "spectrum-stack",
+  "title": "Spectrum stack",
+  "commonName": "Audio spectrum analyzer",
+  "description": "Fine logarithmic frequency bands reveal the harmonics of an adjustable synthesized tone.",
+  "look": "Muted steel-blue panel with forty thin cream vertical bars on a faint grid, a large light-weight frequency readout, log-scale labels, a slider and cream button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "spoken-article",
+  "title": "Spoken article",
+  "commonName": "Text-to-speech reader",
+  "description": "A cobalt reading card follows a short essay sentence by sentence using the browser’s own voice.",
+  "look": "Near-white page in cobalt blue: italic serif headline, three serif sentences, a solid cobalt play button, a thin segmented progress line and rate label.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "spotlight-card",
+  "title": "A little light follows you",
+  "commonName": "Spotlight hover card",
+  "description": "A soft spring-driven light follows the pointer within a quiet card.",
+  "look": "Dark charcoal page with one rounded slate-green card carrying a faint dot grid, a soft pale-green glow near the top and a crosshair icon centred.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "spring-accordion",
+  "title": "An accordion with room to breathe",
+  "commonName": "Animated accordion",
+  "description": "An interruptible height transition that keeps related answers together.",
+  "look": "Warm off-white page with a narrow stack of hairline-divided rows: plain sans-serif headings, plus icons at right, and one open row showing grey body text.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "spring-joystick",
+  "title": "Gimbal control",
+  "commonName": "Spring joystick control",
+  "description": "A tactile grip moves a pan-and-tilt viewfinder and returns to neutral on release.",
+  "look": "Silver hardware panel with screws, a dark grid viewfinder with crosshair, monospace readouts, and an orange ribbed grip in a stepped black well.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "status-board",
+  "title": "Status transfer",
+  "commonName": "Kanban drag and drop",
+  "description": "Move a task between workflow stages with immediate spatial feedback.",
+  "look": "Light blue-grey page with two pale rounded columns: a dashed empty slot in one, a white task card with initials avatar in the other.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "stereo-blend",
+  "title": "Stereo blend",
+  "commonName": "Audio crossfade control",
+  "description": "Two synthesized timbres blend through complementary gain curves drawn on a blue instrument surface.",
+  "look": "Saturated cobalt-blue panel with a thin white grid, crossing cream and pale-blue gain curves, a red vertical marker, a range slider and monospace percentages.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "swipe-actions",
+  "title": "Swipe to archive",
+  "commonName": "Swipe-to-archive list item",
+  "description": "Expose a destructive or secondary action through a deliberate horizontal gesture.",
+  "look": "Pale blue-grey page with a white rounded inbox card holding one message row with a beige initials avatar, grey preview text and chevron.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "switch-button",
+  "title": "Change the light",
+  "commonName": "Theme toggle button",
+  "description": "A turning sun, a crossfade and a passing highlight make a theme change feel considered.",
+  "look": "A single off-white rounded button with a soft top-to-bottom gradient, a gold outline sun icon and a grey label, centred on pale grey.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "tactile-keypad",
+  "title": "Tactile keypad",
+  "commonName": "Tactile keyboard keys",
+  "description": "Four physical keys crop, desaturate and rotate an aerial court photograph; Shift reverses the rotation.",
+  "look": "Burnt-orange background with an aerial tennis-court photo in a dark bezel beside a cream plastic keypad of four chunky keys, one charcoal.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "task-steps",
+  "title": "Progress, step by step",
+  "commonName": "Step progress checklist",
+  "description": "An active step becomes a settled check while the next task takes its turn.",
+  "look": "Pale sage-grey page with an off-white rounded card: three muted green-grey step rows with a thin spinner or tiny dots, and two small buttons.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "thread-reply",
+  "title": "Thread reply",
+  "commonName": "Comment thread reply",
+  "description": "A typed reply becomes part of a compact review thread without moving the composer.",
+  "look": "Warm light-grey page with a white comment panel holding one comment with a brick-red initial avatar and a pale composer with an up-arrow send button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "thumbnail-index",
+  "title": "Thumbnail index",
+  "commonName": "Thumbnail image gallery",
+  "description": "A visible five-image dock selects full-frame architectural photographs with a precise white selection edge.",
+  "look": "Full-bleed architectural photograph with a large white sans caption bottom-left and a dark rounded vertical rail of five numbered thumbnails, the selected one white-framed.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "ticket-tear",
+  "title": "Off the grid",
+  "commonName": "Tear-off ticket animation",
+  "description": "A cobalt-and-orange admission ticket tears along its perforation, leaving a stamped keepsake.",
+  "look": "Saturated cobalt page with an orange admission ticket in heavy, tightly tracked cobalt type, a barcode, monospace details and a dashed perforated stub.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "tilt-card",
+  "title": "A card with some depth",
+  "commonName": "3D tilt card",
+  "description": "Six translucent amber planes shift against a deep frame as a sculpture follows the pointer.",
+  "look": "Warm grey background with a cream-rimmed deep shadow-box frame, dark slate interior and a stack of translucent glowing amber discs at its centre.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "tilt-focus",
+  "title": "Tilt focus",
+  "commonName": "Tilt-shift blur effect",
+  "description": "A sharply focused strip cuts through a blurred concrete elevation, with an adjustable tilt and depth.",
+  "look": "Blurred greyscale photo of a concrete cantilever with one sharp horizontal band under a thin red guide line; pale footer with two red sliders.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "tool-call-stack",
+  "title": "Tool call stack",
+  "commonName": "Agent tool call log",
+  "description": "Keep an agent’s work inspectable without exposing a wall of logs.",
+  "look": "Dark green-charcoal page with a lighter rounded card listing three steps with circular status badges, chevrons and a monospace code line under the open step.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "transcript-follow",
+  "title": "Cue sheet",
+  "commonName": "Synced transcript player",
+  "description": "Timecoded phrases and a compact waveform share a playhead that follows every selected word.",
+  "look": "Sage-grey page with an off-white card of large serif transcript lines, small monospace timestamps, one lime-highlighted word and a dark green waveform transport bar.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "transfer-receipt",
+  "title": "Transfer receipt",
+  "commonName": "Transfer confirmation receipt",
+  "description": "Two account rows join into a single completed transfer receipt.",
+  "look": "Deep forest-green page with two pale sage account cards linked by a thin connector, monospace balances, an underlined amount field and a mint button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "transform-origin",
+  "title": "Move the pivot",
+  "commonName": "Transform origin rotation",
+  "description": "Nine origin positions change how the same sheet rotates through space.",
+  "look": "Pale blue-grey canvas with a blue gradient notebook card over a dashed outline, an orange pivot pin, a white nine-dot grid and a pill button.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "transition-panel",
+  "title": "A change of chapter",
+  "commonName": "Sliding content panel",
+  "description": "A directional crossfade connects one small piece of content to the next.",
+  "look": "Warm off-white page with a small soft-orange circle, a dark grey sans-serif headline and paragraph, a hairline rule, a step counter and arrow buttons.",
+  "category": "Components & interactions",
+  "runtime": "motion"
+ },
+ {
+  "slug": "type-instrument",
+  "title": "Type instrument",
+  "commonName": "Variable font controls",
+  "description": "Four red faders sculpt an oversized black glyph on a yellow proofing field.",
+  "look": "Bright yellow proofing field with one oversized black serif glyph on guide rules, an amber rack of four red-capped vertical faders and a glyph bar.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "undo-removal",
+  "title": "Undo removal",
+  "commonName": "Undo toast",
+  "description": "A removed draft can be restored from a compact notification with a visible lifetime.",
+  "look": "Light warm-grey page with a minimal three-row file list: thin dividers, outline glyph icons, grey metadata and small monospace file sizes.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "upload-queue",
+  "title": "Upload queue",
+  "commonName": "File upload progress list",
+  "description": "Make parallel file progress and cancellation readable in a small space.",
+  "look": "White rounded card on a pale blue-grey page listing three files with pastel file-type tiles, thin sage progress bars, small percentages and remove crosses.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "vector-handles",
+  "title": "Vector handles",
+  "commonName": "Bezier curve editor",
+  "description": "Two generous control points reshape a cubic path without hiding its construction.",
+  "look": "Pale grey page with a white dotted-grid card holding a dark green cubic curve, square endpoints, ring handles on dashed tangents and monospace coordinates.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "voice-audition",
+  "title": "Voice audition",
+  "commonName": "Voice picker",
+  "description": "A sculpted three-voice tray separates narrator selection from tactile playback controls.",
+  "look": "Soft neumorphic grey-blue tray of three rounded voice rows with raised circular play keys; the selected row sits inset with a blue indicator dot.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "voice-turn-taking",
+  "title": "Turn relay",
+  "commonName": "Voice agent status",
+  "description": "An illuminated connection follows the handoff between a typed message and an interruptible reply.",
+  "look": "Dark navy gradient card on pale blue with two round speaker nodes on a thin vertical line above a dark composer and pale-blue send key.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "waveform-trim",
+  "title": "Waveform trim",
+  "commonName": "Audio trim editor",
+  "description": "Fine audio samples and quiet regions make direct range trimming precise and legible.",
+  "look": "Light grey page with a white rounded card holding a fine vertical-bar waveform, a monospace time ruler, dark trim handles and monospace in/out readouts.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "world-clock-orbit",
+  "title": "World clock orbit",
+  "commonName": "Time zone globe",
+  "description": "An oxblood coordinate globe turns toward three cities while their real local clocks stay aligned.",
+  "look": "Oxblood panel with a pale pink wireframe globe, cream and pink city dots with monospace codes, and a right column of large clock times.",
+  "category": "Components & interactions",
+  "runtime": "react"
+ },
+ {
+  "slug": "ascii-relief",
+  "title": "ASCII relief",
+  "commonName": "ASCII art shader",
+  "description": "A folded ring is rebuilt from a few precisely drawn glyphs instead of pixels.",
+  "look": "Burgundy ASCII glyphs (dots, plus signs, hash bars and boxes) forming a shaded oval ring on warm off-white paper, set in a fixed character grid.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "aurora-curtain",
+  "title": "Aurora curtain",
+  "commonName": "Aurora background shader",
+  "description": "Soft green filaments rise from a luminous, slowly folding hem as activity changes the curtain’s shape.",
+  "look": "Deep blue-black night sky with faint stars and layered glowing green curtains of fine vertical filaments rising from wavy luminous hems.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "boolean-studio",
+  "title": "Boolean studio",
+  "commonName": "SDF raymarching shader",
+  "description": "A lacquer-red solid is joined, cut or intersected by a movable sphere.",
+  "look": "Glossy lacquer-red rounded box with a spherical cavity and bright specular highlight on a flat pale grey-blue field; three square-cornered mode buttons top left.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "borrowed-shadow",
+  "title": "Borrowed shadow",
+  "commonName": "Draggable cutout with area-light shadows",
+  "description": "A vermilion interlocked cutout hovers over ivory paper; its projected shadow follows the geometry and softens with distance.",
+  "look": "A lacquer-red interlocked crescent sculpture suspended by a fine wire on warm ivory, with a broad charcoal projected shadow and restrained edge highlights.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "brushed-alloy",
+  "title": "Brushed alloy",
+  "commonName": "Brushed metal shader",
+  "description": "Machined copper catches a rotating pair of elongated highlights.",
+  "look": "Full-bleed dark brown copper surface with fine vertical brushed streaks and two soft diagonal peach-orange highlight bands, one broad and one narrow.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "cellular-stone",
+  "title": "Cellular stone",
+  "commonName": "Voronoi stone shader",
+  "description": "Copper seams settle between softly lit mineral cells.",
+  "look": "Tessellated sage, slate-green and pale grey-green polygon cells with subtle grain and shading, divided by thin dark copper-brown seams, filling the frame.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "chladni-plate",
+  "title": "Chladni plate",
+  "commonName": "Cymatics particle shader",
+  "description": "Granular dark nodes gather into the standing-wave patterns of a pale steel plate.",
+  "look": "Square pale steel plate on dusty blue-grey, speckled with dark grain that collects into crossing diagonal lines and rings, with a thin inset rim.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "cmyk-proof",
+  "title": "CMYK proof",
+  "commonName": "CMYK halftone shader",
+  "description": "A printed citrus study separates into four angled screens as its color plates slip out of register.",
+  "look": "Cream paper with a red-orange citrus and green leaf rendered as coarse cyan, magenta, yellow and black halftone dots, with a dotted diagonal shadow.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "contour-terrain",
+  "title": "Contour terrain",
+  "commonName": "Topographic contour shader",
+  "description": "Slowly shifting elevation bands carve warm paper into a layered topographic relief.",
+  "look": "Burnt-orange field of cream contour lines ringing a pale peak, faint crosshair grid marks, a cream monospace label bar and a serif headline on rust.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "crease-reveal",
+  "title": "Crease reveal",
+  "commonName": "Paper fold shader",
+  "description": "An acid-yellow poster compresses into a faceted paper object and unfolds again.",
+  "look": "A faceted acid-yellow paper poster with heavy black sans type and a large arrow glyph, slightly crumpled, on a near-black olive background with yellow controls.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "crystal-growth",
+  "title": "Crystal growth",
+  "commonName": "Crystal raymarching shader",
+  "description": "A smoky quartz cluster reveals sharp facets as its proportions change.",
+  "look": "Flat warm grey field with one matte sage-green cluster of pointed hexagonal quartz prisms, softly lit from the upper left with faint banding.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "cyanotype-bloom",
+  "title": "Cyanotype bloom",
+  "commonName": "Growing botanical shader",
+  "description": "A branching botanical contact print develops from pale paper into deep cobalt as exposure increases.",
+  "look": "Grainy cream paper giving way to deep cobalt blue along a soft ragged edge, with three pale fern fronds fanned at centre.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "dichroic-film",
+  "title": "Dichroic film",
+  "commonName": "Iridescent film shader",
+  "description": "A thin translucent membrane rolls through olive, cobalt, and rose interference.",
+  "look": "Glossy iridescent sphere banded with teal, magenta, olive and deep blue rings, a white softbox highlight and thin green rim on near-black.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "diffraction-disc",
+  "title": "Diffraction disc",
+  "commonName": "Iridescent CD shader",
+  "description": "A silver disc sends narrow spectral reflections across its fine concentric tracks.",
+  "look": "Flat coral-red field with a centred silver compact disc whose fine concentric grooves carry radiating rainbow bands of cyan, green, magenta and pale blue.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "eclipse-corona",
+  "title": "Eclipse corona",
+  "commonName": "Eclipse glow shader",
+  "description": "A dark lunar disk reveals a fine white corona and a warm crescent.",
+  "look": "Near-black field with a centred black lunar disc ringed by soft white radial corona streaks and a thin warm-gold crescent along its lower edge.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "edge-etch",
+  "title": "Edge etch",
+  "commonName": "Edge detection shader",
+  "description": "A stacked ceramic silhouette resolves into crisp extracted edges on ultramarine.",
+  "look": "Saturated ultramarine field with a centred stack of four pebble-like ellipses drawn as thin white outlines, flat with no fill or shading.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "feedback-echo",
+  "title": "Feedback echo",
+  "commonName": "Feedback trail shader",
+  "description": "A precise luminous orbit leaves a retained echo that slowly stretches and fades.",
+  "look": "Near-black teal field with one glowing teal elliptical ring crossed by a fine diagonal line, faint ghosted afterimages trailing inside it.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "flow-memory",
+  "title": "Flow memory",
+  "commonName": "Fluid simulation shader",
+  "description": "A metallic surface remembers the currents drawn across it as color and refraction.",
+  "look": "Full-bleed silver-grey embossed leather texture with faint lime-green tinted swirls, above a dark green footer bar with a lime slider and outlined button.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "fluted-prism",
+  "title": "Fluted prism",
+  "commonName": "Fluted glass shader",
+  "description": "Sculptural color bends behind a sheet of ribbed architectural glass.",
+  "look": "Off-white vertical fluted glass over a vermilion disc, a black disc and a diagonal cobalt bar, each sliced and offset by the ribs.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "folded-paper-light",
+  "title": "Prismatic relief",
+  "commonName": "Faceted relief shader",
+  "description": "Raised ultramarine facets catch a moving light, revealing sharp ridges and shifting glints.",
+  "look": "Near-black field with a rectangular six-by-four panel of cobalt pyramids with off-centre peaks, shaded deep navy to pale sky-blue highlights.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "frosted-orbit",
+  "title": "Frosted orbit",
+  "commonName": "Frosted glass shader",
+  "description": "A satin glass disk softens the intersection of persimmon and plum.",
+  "look": "Warm sand-beige ground with overlapping flat persimmon-orange and deep plum circles, and a frosted glass disc with a bright rim blurring their intersection.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "gravitational-lens",
+  "title": "Gravitational lens",
+  "commonName": "Lens distortion shader",
+  "description": "A hovering lens bends a precise vermilion drafting grid.",
+  "look": "Cream drafting paper with a fine vermilion square grid and one bold black diagonal band, magnified by a clear glass disc with a grey rim.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "guilloche",
+  "title": "Guilloché",
+  "commonName": "Guilloché pattern shader",
+  "description": "Fine engraved rosettes breathe inside a deep green edition print.",
+  "look": "Deep emerald textured paper with a double hairline frame, a pale-green engraved rosette ring at right, monospace caps and a cream serif headline at left.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "gyroid-cutaway",
+  "title": "Gyroid cutaway",
+  "commonName": "Gyroid raymarching shader",
+  "description": "A saffron porous solid turns slowly, revealing continuous internal tunnels.",
+  "look": "A softly lit saffron-orange porous cube of curving tunnels, rendered in 3D against a flat mid slate-grey background.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "halftone-sculpture",
+  "title": "Halftone sculpture",
+  "commonName": "Halftone dot shader",
+  "description": "A turning organic relief is translated into cobalt ink dots on uncoated paper.",
+  "look": "Warm uncoated off-white paper with a cobalt-blue halftone dot blob, a heavy blue sans headline bottom-left, small spaced monospace labels and a serif numeral.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "heat-signature",
+  "title": "Heat signature",
+  "commonName": "Thermal heatmap shader",
+  "description": "Heat moves through a soft-edged cross in violet, vermilion, and hot white.",
+  "look": "Rounded plus-shaped mark tilted on a near-black violet field, glowing from deep violet through vermilion to a white-hot yellow core.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "highlight-headroom",
+  "title": "Highlight headroom",
+  "commonName": "Interactive highlight roll-off shader",
+  "description": "A blue-striped enamel loop compares controlled highlight compression with hard clipping under the same exposure.",
+  "look": "White enamel ring with a cobalt stripe on near-black; a narrow right-hand clipping comparison and an exposure slider.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "ink-current",
+  "title": "Ink current",
+  "commonName": "Ink marbling shader",
+  "description": "Indigo ink stretches into fine branching currents on pale paper.",
+  "look": "Full-bleed pale paper-grey field with large deep indigo ink pools, feathered edges and fine blue contour lines, like marbled paper.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "jacquard-thread",
+  "title": "Jacquard thread",
+  "commonName": "Woven textile shader",
+  "description": "Cobalt and unbleached threads cross in a visible twill with a burnt-orange stripe.",
+  "look": "Full-bleed tilted twill weave of cobalt warp and unbleached cream weft threads, with evenly spaced burnt-orange warp stripes and fine fibre ridges.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "julia-atlas",
+  "title": "Julia atlas",
+  "commonName": "Fractal shader",
+  "description": "An intricate cyan fractal changes its connected islands as a complex parameter moves.",
+  "look": "Pale icy-cyan lace-like fractal of spiral eyes and filigree islands, point-symmetric and centred on a near-black navy field.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "kiln-section",
+  "title": "Through the kiln",
+  "commonName": "Interactive capped cross-section shader",
+  "description": "A twisting, fluted cobalt ceramic column opens along a light-blue cut face, revealing seven continuous internal channels.",
+  "look": "A sculptural cobalt-blue extrusion with twisting flutes, an angled light-blue cut face, seven internal passages and a thin section control on warm stone white.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "lenticular-grid",
+  "title": "Lenticular grid",
+  "commonName": "Lenticular flip shader",
+  "description": "Black-and-white interlaced artwork flips through narrow red-edged ribs.",
+  "look": "Full-bleed cream and near-black graphic of a sine wave and circle, sliced into narrow vertical ribs with thin red edges and cylindrical shading.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "light-fibre",
+  "title": "Light fibre",
+  "commonName": "Fiber optic light shader",
+  "description": "Fine amber fibres bend around one moving pulse of light.",
+  "look": "Near-black field with a band of thirty-six fine amber-to-rust lines undulating across it, brightened by one soft golden highlight.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "liquid-bridge",
+  "title": "Liquid bridge",
+  "commonName": "Interactive liquid coalescence shader",
+  "description": "Two unequal ink-red lacquer drops form and release a smooth neck as their separation changes.",
+  "look": "Two unequal dark-red glossy drops on a warm bone field, a crisp rectangular reflection and soft contact shadows.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "liquid-chrome",
+  "title": "Liquid chrome",
+  "commonName": "Liquid metal chrome shader",
+  "description": "A sculpted metal loop turns through hard studio highlights and one red reflection.",
+  "look": "Near-black poster with a glossy chrome ring of black and silver bands with red reflections, heavy cream sans-serif title, monospace caption and red side label.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "lunar-regolith",
+  "title": "Lunar regolith",
+  "commonName": "Moon surface shader",
+  "description": "Raking light reveals a rough mineral moon against an icy white field.",
+  "look": "A rough grey-brown pitted sphere with bump-shaded mineral texture, lit from the upper left and fading to black, centred on a pale icy blue-grey field.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "magnetic-field",
+  "title": "Magnetic field",
+  "commonName": "Magnetic field lines shader",
+  "description": "Fine white field lines bend between a pair of quiet cobalt poles.",
+  "look": "Deep navy field with fine pale-blue curved field lines looping between a bright red-orange dot and a pale grey-white dot, flat and diagrammatic.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "metal-emblem",
+  "title": "Metal emblem",
+  "commonName": "Embossed metal text shader",
+  "description": "An editable letter becomes a machined silver relief with directional highlights and a graphite surround.",
+  "look": "Heavy bevelled silver letter with polished highlights and a soft shadow on dark graphite, with small grey header text and outlined input and button.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "mirror-chamber",
+  "title": "Mirror chamber",
+  "commonName": "Kaleidoscope shader",
+  "description": "A folded white motif reflects into a changing peacock-blue radial composition.",
+  "look": "Flat peacock-blue field with six cream petal shapes, each with a leaf-shaped cut-out, ringed around a thin orange star outline and orange dot.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "moire-weave",
+  "title": "Moiré weave",
+  "commonName": "Moiré pattern shader",
+  "description": "Two drifting line screens fold into an acid and violet optical weave.",
+  "look": "Acid-lime and violet interference weave of fine diamond threads filling the frame, with a heavy lime sans-serif headline and monospace labels on violet blocks.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "noise-threshold",
+  "title": "Noise threshold",
+  "commonName": "Noise dissolve transition",
+  "description": "Two bold primary-color prints exchange places through a continuous, seeded erosion field.",
+  "look": "Flat primary-colour poster art: cobalt field with cream concentric rings and red stripes, broken by cloudy yellow patches with black shapes, above a cream slider.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "paper-swarm",
+  "title": "Paper swarm",
+  "commonName": "3D floating paper particles",
+  "description": "Printed sheets tumble through a deep blue volume in a single instanced draw call.",
+  "look": "Saturated royal-blue field scattered with angled orange and pale-grey printed sheets showing dark headline blocks and text lines, plus a translucent slider bar.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "phosphor-trace",
+  "title": "Phosphor trace",
+  "commonName": "Oscilloscope CRT shader",
+  "description": "A synthetic waveform sweeps across phosphor green gridwork with a restrained afterglow.",
+  "look": "Near-black green CRT screen with a faint ruled grid, a glowing lime waveform with soft ghost trails, scanline texture, vignette and small monospace labels.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "pixel-dissolve",
+  "title": "Pixel dissolve",
+  "commonName": "Pixelated logo reveal",
+  "description": "A sculptural monogram breaks into a precise, staggered field of square pixels.",
+  "look": "Pale sage-grey field with a large X monogram of small dark-green square pixels, partly dissolved, with vermilion pixels marking the dissolving edge.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "point-cloud-wave",
+  "title": "Point cloud wave",
+  "commonName": "3D point cloud wave",
+  "description": "An ultramarine point sheet rises into a calm three-dimensional swell.",
+  "look": "Rows of small ultramarine dots form a wavy perspective sheet across the middle of a flat pale blue-grey field, leaving wide empty margins.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "porcelain-candling",
+  "title": "Porcelain candling",
+  "commonName": "Thickness-dependent ceramic transmission shader",
+  "description": "A warm backlight passes through an ivory vessel's thinner walls while the unlit side stays opaque.",
+  "look": "An ivory open cup on warm black, localized amber transmitted light and an opaque unlit wall; a compact backlight slider below.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "poster-sphere",
+  "title": "Engraved orbit",
+  "commonName": "Engraved 3D sphere shader",
+  "description": "Fine silver engravings wrap a polished navy sphere, revealing its curvature as the object rotates in a pale studio.",
+  "look": "Pale powder-blue studio with a glossy navy sphere wrapped in fine pale-silver contour lines, a soft floor shadow, and minimal navy controls.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "prism-carousel",
+  "title": "Prism carousel",
+  "commonName": "Refraction image carousel",
+  "description": "An architectural photo strip bends through a clear optical edge, then expands a selected image into an undistorted inspection view.",
+  "look": "Light gray stage with a strip of architectural photos bent and stretched toward the edges with RGB fringing, an italic serif caption and arrow buttons.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "prismatic-dispersion",
+  "title": "Prismatic dispersion",
+  "commonName": "Prism light shader",
+  "description": "A narrow white beam opens into a spectral fan through a glass wedge.",
+  "look": "Black field with a translucent outlined glass triangle; a cream beam enters from the left and leaves as a soft rainbow fan to the right.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "reaction-lab",
+  "title": "Reaction lab",
+  "commonName": "Reaction-diffusion shader",
+  "description": "Oxblood colonies divide into a living two-chemical pattern on a pale field.",
+  "look": "Full-bleed two-tone pattern of deep oxblood ink and pale cream paper: rounded, soft-edged spots and branching worm shapes like Turing or coral markings.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "recursive-aperture",
+  "title": "Recursive aperture",
+  "commonName": "Infinite zoom shader",
+  "description": "Vermilion and ivory frames fold into a continuous recursive aperture.",
+  "look": "Op-art tunnel of nested square frames with vermilion side and ivory top-and-bottom trapezoids, thick black bands between them, receding to a centre point.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "relief-parallax",
+  "title": "Relief parallax",
+  "commonName": "Parallax relief shader",
+  "description": "Ivory crosses rise above deep blue recesses and occlude each other as the view shifts.",
+  "look": "Grid of pale ivory plus-shaped crosses raised over a deep navy ground, with soft grey shaded sides falling toward the lower right.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "ribbon-gallery",
+  "title": "Ribbon gallery",
+  "commonName": "Ribbon image transition",
+  "description": "A woodblock print separates into narrow, twisting ribbons before the next edition becomes whole.",
+  "look": "Near-black gallery with a centred Japanese woodblock print, small spaced monospace labels, a cream serif title and two outlined circular arrow buttons.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "ripple-memory",
+  "title": "Ripple memory",
+  "commonName": "Water ripple shader",
+  "description": "A silver-green water surface remembers each disturbance as overlapping waves.",
+  "look": "Muted slate-teal liquid surface with glossy silver-green highlights and warped reflected vertical bands, distorted by overlapping ripple rings.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "riso-overprint",
+  "title": "Riso overprint",
+  "commonName": "Risograph grain shader",
+  "description": "Orange and burgundy inks drift through stochastic riso grain on warm uncoated paper and overprint into rust beneath a mark printed in both drums.",
+  "look": "Warm cream paper with a grainy burgundy veil along the top, an orange swell beneath, and a heavy burgundy italic serif wordmark lower left.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "slipstream",
+  "title": "Slipstream",
+  "commonName": "Fluid hero text shader",
+  "description": "Amber and oxblood air flows around a live headline, wrapping its first letter and riding the cap line.",
+  "look": "Glowing orange, amber and deep red streaks flowing around a heavy cream sans-serif wordmark on a dark oxblood field.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "slit-scan",
+  "title": "Slit scan",
+  "commonName": "Slit-scan image shader",
+  "description": "A porcelain frame stretches into an impossible ribbon as each image column samples a different instant.",
+  "look": "Thick porcelain-white rounded frame smeared into a warped, scalloped ribbon with a dark drop shadow on deep teal; a slim slider row below.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "sonic-orb",
+  "title": "Sonic orb",
+  "commonName": "Voice assistant orb",
+  "description": "A luminous blue membrane gathers fine contours while listening and emits expanding ripples while speaking.",
+  "look": "Pale blue-grey page with a glossy cobalt sphere banded by wavy navy contours inside a blue halo, above three state buttons and a slider.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "storm-volume",
+  "title": "Storm volume",
+  "commonName": "Volumetric cloud shader",
+  "description": "A dense cloud turns slowly beneath a cold silver rim.",
+  "look": "A soft, wispy pale blue-grey cloud mass floating on a near-black slate-blue field, lit from the upper left with silvery highlights.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "tidal-caustics",
+  "title": "Tidal caustics",
+  "commonName": "Water caustics shader",
+  "description": "Sunlit turquoise water casts a drifting lattice on pale pool tiles.",
+  "look": "Deep teal water filling the frame, crossed by glowing mint-cyan caustic light lines over faint dark pool-tile grid seams.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "truchet-ribbon",
+  "title": "Truchet ribbon",
+  "commonName": "Truchet tile pattern shader",
+  "description": "Broad honey-colored ribbons join through a wine-red field of curved tiles.",
+  "look": "Thick honey-yellow ribbons with a thin inset rust outline form interlocking rings and S-curves across a flat wine-red field.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "velvet-dunes",
+  "title": "Velvet dunes",
+  "commonName": "Velvet fabric shader",
+  "description": "Deep aubergine cloth catches a narrow silver-blue grazing light.",
+  "look": "Full-bleed deep aubergine cloth with slanted folds, narrow lilac-silver highlights along the ridges and fine thread lines.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "wake-image",
+  "title": "Wake image",
+  "commonName": "Water ripple image effect",
+  "description": "A deep-blue sea photograph bends under short-lived wave fronts left by a moving pointer.",
+  "look": "Full-bleed aerial photograph of turquoise surf breaking over rust-red rocks, with white letterspaced caps header, a white range slider and a translucent pill button.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "walnut-cut",
+  "title": "Walnut cut",
+  "commonName": "Wood grain shader",
+  "description": "Warm walnut changes from end-grain rings to lengthwise growth as the cut turns.",
+  "look": "Full-bleed warm orange-brown walnut surface with dark wavy concentric growth rings around an off-centre pith, fine vertical fibre streaks and pores.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "wet-finish",
+  "title": "After the rain",
+  "commonName": "Paintable wet material and clearcoat shader",
+  "description": "Water brushed across deep green stone accumulates into a glossy region, revealing a sharp grazing reflection beside the same dry material.",
+  "look": "A large beveled mineral-green stone sample seen straight from above on dark green, thin light veins and subdued dark fractures; a brushed wet region catches a crisp white reflection with an irregular absorbent edge.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ },
+ {
+  "slug": "wrap-a-mark",
+  "title": "Wrap a mark",
+  "commonName": "Curved-surface graphic placement shader",
+  "description": "A cream geometric mark follows an unbranded cobalt canister as its surface placement changes and the vessel turns.",
+  "look": "A matte cobalt canister with a quiet lid seam and cream geometric mark on warm stone; a red placement pin appears only during drag.",
+  "category": "WebGL & shaders",
+  "runtime": "webgl"
+ }
+]

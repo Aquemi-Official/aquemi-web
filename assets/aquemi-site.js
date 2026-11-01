@@ -163,12 +163,15 @@ function wClosing(c,p){if(!c||!c.h)return '';
  var swap=ret?'<div class="aq-closing__plate"><div class="aq-closing__swap">'+send+'<p class="aq-closing__turn"><span class="aq-closing__pipe" aria-hidden="true"><i></i></span><span class="aq-closing__turn-t">'+tx(c.turnaround||'')+'</span></p>'+list(' aq-closing__returns',c.returns_label||'What comes back',ret,1)+'</div></div>':send;
  /* The original closing: one centred headline, lead and button, with the brand mark large and faint, cut by the top-left corner.
     A checklist or exchange, when the page has one, sits below the button under a hairline. */
- return '<section class="aq-section aq-band--navy aq-closing">'+MARK_CLOSE+'<div class="aq-in"><div class="aq-closing__frame">'+
+ return '<section class="aq-section aq-band--navy aq-closing aq-fx-host">'+CLOSE_WATER+MARK_CLOSE+'<div class="aq-in"><div class="aq-closing__frame">'+
   '<h2 class="aq-closing__h">'+tx(c.h)+'</h2>'+
   (c.body?'<p class="aq-lead aq-closing__lead">'+tx(c.body)+'</p>':'')+
   '<div class="aq-closing__action">'+wBtn(c.button||'Request a proposal',c.link||'contact-proposal',null,c.intent)+'</div>'+
   (swap||f?'<div class="aq-closing__more">'+swap+(f?'<div class="aq-closing__proof"><span class="aq-closing__tag">Proof</span><span class="aq-closing__value">'+tx(f.v)+'</span>'+(f.l?'<span class="aq-closing__label">'+tx(f.l)+'</span>':'')+'</div>':'')+'</div>':'')+
   '</div></div></section>'}
+/* The band is water (pass 9b): an FxRipple layer under everything, rings trailing the pointer and a slow drop every
+   6.5 s. Optional (data-gl-optional): a page that already has two ambient layers (home) keeps a plain navy band. */
+var CLOSE_WATER='<canvas class="aq-fx-shader" data-gl="ripple" data-gl-optional aria-hidden="true"></canvas>';
 /* The brand mark, large and faint, cut by the band's top-left corner (the mark's supplied path, never redrawn). */
 var MARK_CLOSE='<svg class="aq-closing__mark" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path d="M233.32 159.66A73.66 73.66 0 1 1 86.00 159.66A73.66 73.66 0 1 1 233.32 159.66ZM233.32 352.34A73.66 73.66 0 1 1 159.66 278.68A119.03 119.03 0 0 0 278.68 159.66A73.66 73.66 0 1 1 352.34 233.32A119.03 119.03 0 0 0 233.32 352.34ZM426.00 352.34A73.66 73.66 0 1 1 278.68 352.34A73.66 73.66 0 1 1 426.00 352.34Z"/></svg>';
 /* EnquiryForm pre-set: tick the options named by the linking button's intent (WINTENT) and show the conditional fields they open,
@@ -342,6 +345,10 @@ function wHeroFigure(p,facts){var n=facts.length,co=function(f){return '<div cla
    48 px grid, masked so they gather behind the right-hand figure and fade out before the headline. Pure decoration;
    the pattern lines take the line-strong token at reduced opacity (style.css). */
 var HERO_SHEET='<svg class="aq-hero__sheet" aria-hidden="true" focusable="false"><defs><pattern id="aqHeroCross" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M24 20.5v7M20.5 24h7"/></pattern></defs><rect width="100%" height="100%" fill="url(#aqHeroCross)"/></svg>';
+/* Home only (pass 9b): light through water, a faint caustic layer (FxCaustics, ambient WebGL) under the sheet, gathered
+   behind the loop drawing and fading out before the headline (mask in style.css). aria-hidden decoration; without
+   WebGL the hero is the same page on its surface ground. */
+var HERO_WATER='<canvas class="aq-fx-shader" data-gl="caustics" aria-hidden="true"></canvas>';
 /* Hub and company pages: an index of the other pages in this page's section, in pages.json order.
    A page whose first section already lists those pages (systems: the seven-families grid) sets "hero_index": false; its hero is then the text stack alone.
    A page alone in its section (projects) lists its own section headings instead; they link only when the block has a nav anchor. */
@@ -443,7 +450,7 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
  var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
  var right=home?wHomeLoop():art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
- return '<section class="aq-hero'+(home?' aq-hero--home':'')+(co?' aq-hero--mist':'')+'">'+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
+ return '<section class="aq-hero'+(home?' aq-hero--home aq-fx-host':'')+(co?' aq-hero--mist':'')+'">'+(home?HERO_WATER:'')+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
 /* IsoKit: the shared isometric line-drawing kit (README: design-system/components/IsoKit/README.md). Every look that
    draws equipment, pipes, water or drawing-sheet furniture builds it here, so all sections read as one hand.
    World axes: x runs to the lower right, y to the lower left, z up; 30° isometric, 1 world unit = 1 user unit along an
@@ -932,14 +939,16 @@ function wKeyFacts(facts){
    shown (WP). The service number and hours come from CONTACT (core.js): the number is a tel: link once confirmed and the
    placeholder until then. The hours always travel with the number, so the block never implies round-the-clock help.
    Launch rule (design-system/website.md, Navigation): while the number is unconfirmed the urgent block goes, the
-   "Service request" row stays. */
+   "Service request" row stays.
+   The toggle carries a two-bar mark (aq-nav__burger, aria-hidden) that turns into a cross while the menu is open; its
+   label stays the words "Menu" / "Close" (aq-nav__toggle-t). */
 function wHead(section){var cur=(NAVSECT.filter(function(n){return n[0]===section})[0]||[])[1],pg=wp(WP),jumps=navJumps(pg);
  var cta=function(extra){return '<span class="aq-nav__frame'+(extra||'')+'"><a class="aq-btn aq-btn--primary" href="#contact-proposal" data-wp="contact-proposal">Request a proposal</a></span>'};
  var svc=function(cls){return '<a class="'+cls+'" href="#contact-service" data-wp="contact-service"'+(WP==='contact-service'?' aria-current="page"':'')+'>Service request</a>'};
  return '<nav class="aq-nav" aria-label="Main"><a class="aq-nav__home" href="#home" data-wp="home" aria-label="Aquemi home"><img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-light" src="brand/lockup-navy.svg" alt="aquemi"><img class="aq-nav__logo aq-nav__logo--lockup aq-logo--on-dark" src="brand/lockup-limestone.svg" alt="aquemi"></a>'+
   '<ul class="aq-nav__links">'+NAVSECT.map(function(n,i){return '<li><a href="#'+n[1]+'" data-wp="'+n[1]+'"'+(n[1]===cur?' aria-current="page"':'')+'>'+n[0]+'</a></li>'}).join('')+'</ul>'+
   '<span class="aq-nav__spacer"></span>'+svc('aq-nav__service')+cta()+
-  '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'>'+(WMENU?'Close':'Menu')+'</button></nav>'+
+  '<button class="aq-btn aq-btn--secondary aq-nav__toggle" type="button" id="wmenu" aria-expanded="'+WMENU+'"'+(WMENU?' aria-controls="wmenu-panel"':'')+'><span class="aq-nav__burger" aria-hidden="true"><i></i><i></i></span><span class="aq-nav__toggle-t">'+(WMENU?'Close':'Menu')+'</span></button></nav>'+
  (WMENU?'<div class="aq-menu" id="wmenu-panel">'+
   '<div class="aq-menu__urgent" data-theme="light"><p class="aq-menu__ask">Production stopped?</p>'+wtel(CONTACT.service,'aq-menu__call','<span class="aq-menu__k">Call</span> ')+'<p class="aq-menu__hours">Answered '+tx(CONTACT.hours)+'</p>'+svc('aq-menu__service')+'</div>'+
   '<nav aria-label="Sections"><ol class="aq-menu__list">'+NAVSECT.map(function(n,i){return '<li><a href="#'+n[1]+'" data-wp="'+n[1]+'"'+(n[1]===cur?' aria-current="page"':'')+'>'+n[0]+'</a></li>'}).join('')+'</ol></nav>'+
@@ -948,8 +957,8 @@ function wHead(section){var cur=(NAVSECT.filter(function(n){return n[0]===sectio
 /* Menu behaviour: a section jump closes the menu before the page scrolls; Escape closes it; focus stays on the toggle after it re-renders. */
 if(typeof document!=='undefined'){
  document.addEventListener('click',function(ev){var j=ev.target.closest&&ev.target.closest('.aq-menu a[data-jump]');if(!j||!WMENU)return;
-  WMENU=false;var m=document.getElementById('wmenu-panel'),t=document.getElementById('wmenu');if(m)m.remove();if(t){t.setAttribute('aria-expanded','false');t.removeAttribute('aria-controls');t.textContent='Menu'}},true);
- document.addEventListener('click',function(ev){if(ev.target&&ev.target.id==='wmenu'&&!ev.target.isConnected){var t=document.getElementById('wmenu');if(t)t.focus()}});
+  WMENU=false;var m=document.getElementById('wmenu-panel'),t=document.getElementById('wmenu');if(m)m.remove();if(t){t.setAttribute('aria-expanded','false');t.removeAttribute('aria-controls');var tl=t.querySelector('.aq-nav__toggle-t');if(tl)tl.textContent='Menu';else t.textContent='Menu'}},true);
+ document.addEventListener('click',function(ev){var b=ev.target&&ev.target.closest&&ev.target.closest('#wmenu');if(b&&!b.isConnected){var t=document.getElementById('wmenu');if(t)t.focus()}});
  document.addEventListener('keydown',function(ev){if(ev.key==='Escape'&&WMENU){var t=document.getElementById('wmenu');if(t){t.click();t=document.getElementById('wmenu');if(t)t.focus()}}});
 }
 /* ProcessDiagram: a treatment train as an interactive piping flow in a Plate (also drawn by WaterPath).
@@ -1541,15 +1550,16 @@ if(typeof document!=='undefined'&&document.addEventListener)['mouseover','mouseo
    it is held to (the item's tag) set large and light, what it covers, and its status. The first tile is navy, the
    rest limestone in two shades (paper: data-theme="light", so placeholders keep their light chip in the dark theme). A tile with a link is the link (an arrow at its foot). Long tags (placeholders) set
    smaller so the tile keeps its shape.
+   The navy tile carries a certificate's engraved rosette, drawn by FxGuilloche (ambient WebGL, aria-hidden, faint).
    Fields (a grid block): h, intro, items [{t, d, tag, icon, link}]. Phones: tiles two a row, then one. */
 LOOKS['cert-seals']=function(b,H){var I=b.items||[];
  var ticks='';for(var k=0;k<36;k++){var a=k*10*Math.PI/180,r1=k%3?27:25,r2=30;ticks+='M'+(32+r1*Math.cos(a)).toFixed(1)+' '+(32+r1*Math.sin(a)).toFixed(1)+'L'+(32+r2*Math.cos(a)).toFixed(1)+' '+(32+r2*Math.sin(a)).toFixed(1)}
  var seal=function(ic){return '<span class="aq-cert-seals__seal" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><path class="aq-cert-seals__ticks" d="'+ticks+'"/>'
   +'<circle class="aq-cert-seals__ring" cx="32" cy="32" r="22"/></svg>'+(ic&&isIcon(ic)?wIcon(ic,'aq-cert-seals__icon'):'')+'</span>'};
- var tiles=I.map(function(it,i){var tag=String(it.tag||''),long=tag.length>14,lk=it.link&&wp(it.link);
-  var inner=seal(it.icon)+(tag?'<p class="aq-cert-seals__tag'+(long?' is-long':'')+'">'+tx(tag)+'</p>':'')
+ var tiles=I.map(function(it,i){var tag=String(it.tag||''),long=tag.length>14,lk=it.link&&wp(it.link),fx=i?'':' aq-fx-host';
+  var inner=(i?'':'<canvas class="aq-fx-shader" data-gl="guilloche" aria-hidden="true"></canvas>')+seal(it.icon)+(tag?'<p class="aq-cert-seals__tag'+(long?' is-long':'')+'">'+tx(tag)+'</p>':'')
    +'<h3 class="aq-cert-seals__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-cert-seals__d">'+tx(it.d)+'</p>':'')+(lk?'<span class="aq-cert-seals__go" aria-hidden="true"></span>':'');
-  return '<li class="aq-cert-seals__item" style="--i:'+i+'"'+(i?' data-theme="light"':'')+'>'+(lk?'<a class="aq-cert-seals__tile" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-cert-seals__tile">'+inner+'</div>')+'</li>'}).join('');
+  return '<li class="aq-cert-seals__item" style="--i:'+i+'"'+(i?' data-theme="light"':'')+'>'+(lk?'<a class="aq-cert-seals__tile'+fx+'" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-cert-seals__tile'+fx+'">'+inner+'</div>')+'</li>'}).join('');
  return sec(H+'<div class="aq-cert-seals"><ol class="aq-cert-seals__list" role="list" style="--n:'+I.length+'">'+tiles+'</ol></div>','aq-cert-seals-sec')};
 /* Look "check-ledger" -> CheckLedger (design-system/components/CheckLedger): a router table of checks a buyer can run
    (what you check, route, what it does not prove, time to arrange) set as a two-sided ledger on a navy band. One seam
@@ -1703,7 +1713,8 @@ LOOKS['coverage-map']=function(b,H){var C=b.cols||[],R=b.rows||[],M=b.map||[],B=
    +'<span class="aq-coverage-map__code" aria-hidden="true">'+e(t.c)+'</span>'+(has?'<span class="aq-coverage-map__ri" aria-hidden="true">'+(r<9?'0':'')+(r+1)+'</span>':'')
    +(has?'</button>':'</span>')+'</li>'}).join('');
  var base=B&&B.label?'<p class="aq-coverage-map__base"><span class="aq-coverage-map__pin" aria-hidden="true"></span>'+tx(B.label)+'</p>':'';
- var sheet='<div class="aq-coverage-map__sheet" data-theme="light"><p class="aq-coverage-map__title" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span></p>'
+ /* the sheet is a survey sheet: faint contour lines drift under the tiles (FxContour, ambient WebGL, aria-hidden) */
+ var sheet='<div class="aq-coverage-map__sheet aq-fx-host" data-theme="light"><canvas class="aq-fx-shader" data-gl="contour" aria-hidden="true"></canvas><p class="aq-coverage-map__title" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span></p>'
   +'<ol class="aq-coverage-map__grid" style="--cols:'+cols+';--rows:'+rws+'" aria-label="'+e(C[0]||'Map')+'">'+tiles+now+'</ol>'+base+'</div>';
  var rows=R.map(function(r,i){var codes=M.filter(function(t){return +t.r===i}).map(function(t){return e(t.c)});
   return '<li class="aq-coverage-map__row'+lt(i)+'" id="'+rid(i)+'" data-r="'+i+'" tabindex="-1">'
@@ -2254,7 +2265,8 @@ LOOKS['hire-path']=function(b,H){var I=b.items||[],num=function(i){return (i<9?'
    line keeps one status colour, one shape and its name everywhere (plot label, banner, table).
    Fields: h, intro, cols (three labels), rows [[line, how, what]] (a cell may be {t, link}), lines (the role of each
    row in order: limit | action | alert | trend; default that order), tabs (screen tab names, the first one shown;
-   decoration, aria-hidden). Phones: tabs collapse to the shown one, the plot shortens, the table rows stack. */
+   decoration, aria-hidden). Under the reading a phosphor glow (FxPhosphor, ambient WebGL) follows the same trace.
+   Phones: tabs collapse to the shown one, the plot shortens, the table rows stack. */
 var HMI_Y={limit:52,action:112,alert:172};
 function hmiTrace(){var d='',x,y,pts=[];
  for(x=0;x<=930;x+=10){var n=Math.sin(x*0.071)*7+Math.sin(x*0.23+1.3)*4+Math.sin(x*0.013+0.4)*5,dr=x>600?Math.pow((x-600)/330,1.6)*58:0;y=262+n-dr;pts.push([x,y])}
@@ -2277,7 +2289,7 @@ LOOKS['hmi-trend']=function(b,H){
   +'<path class="aq-hmi-trend__trace" d="'+tr.d+'"/><path class="aq-hmi-trend__now" d="M'+tr.end[0]+' 0V'+Hh+'"/></svg>';
  var pct=function(x,y){return 'left:'+(100*x/W).toFixed(2)+'%;top:'+(100*y/Hh).toFixed(2)+'%'};
  var flag=trendI>=0?'<span class="aq-hmi-trend__flag" data-hmi="'+trendI+'" style="left:'+(100*flagX/W).toFixed(2)+'%"><i class="aq-hmi-trend__pri aq-hmi-trend__pri--trend"></i>'+tx(name(R[trendI]))+'</span>':'';
- var fig='<div class="aq-hmi-trend__plot" aria-hidden="true">'+plot+labels+flag+'<span class="aq-hmi-trend__dot" style="'+pct(tr.end[0],tr.end[1])+'"></span>'
+ var fig='<div class="aq-hmi-trend__plot" aria-hidden="true"><canvas class="aq-fx-shader" data-gl="phosphor" aria-hidden="true"></canvas>'+plot+labels+flag+'<span class="aq-hmi-trend__dot" style="'+pct(tr.end[0],tr.end[1])+'"></span>'
   +'<span class="aq-hmi-trend__ax"><span></span><span></span><span></span><span></span><span></span></span></div>';
  /* the screen's chrome: tabs and the alarm banner (the trend rule's line, as a panel shows its newest alarm) */
  var tabs=T.length?'<span class="aq-hmi-trend__tabs">'+T.map(function(t,i){return '<span class="aq-hmi-trend__tab'+(i?'':' is-on')+'">'+tx(t)+'</span>'}).join('')+'</span>':'';
@@ -2831,7 +2843,8 @@ LOOKS['macro-leaders']=(function(){
    Fields, as the router: cols (first is the situation column, the rest name the route's steps), rows (first cell the
    situation, each other cell a string or {t, link, intent}). A route whose cells link somewhere (the last link wins) is
    clickable as a whole through a pointer-only overlay; the real link stays the keyboard target, its intent rides on
-   both. A value that opens with a [placeholder] is pending: dashed rule and "To confirm" (as Router). Best for 3 to 8 rows. */
+   both. A value that opens with a [placeholder] is pending: dashed rule and "To confirm" (as Router). Best for 3 to 8 rows.
+   Ground: faint pipe tiles (FxTruchet, ambient WebGL, aria-hidden) drift behind the sheet, masked off the manifold. */
 var mfN=0;
 LOOKS['manifold-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,k=++mfN;
  function lnk(c){return c&&typeof c==='object'&&c.link&&wp(c.link)?c.link:''}
@@ -2849,7 +2862,7 @@ LOOKS['manifold-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,
    +'<ol class="aq-manifold-router__stations">'+st.map(function(c,j){var pend=j!==go&&/^\s*\[/.test(val(c)),cl=['aq-manifold-router__st'];if(j===go)cl.push('is-go');if(pend)cl.push('is-pending');
     return '<li class="'+cl.join(' ')+'"><p class="aq-manifold-router__k">'+tx(C[j+1]||'')+'</p><p class="aq-manifold-router__v">'+tcell(c)+(pend?' <span class="aq-manifold-router__tbc">To confirm</span>':'')+'</p></li>'}).join('')
    +'</ol></div>'}).join('');
- return '<section class="aq-section aq-band--limestone aq-manifold-router-sec"><div class="aq-in aq-stack-l">'+H+'<div class="aq-manifold-router" style="--n:'+n+'">'+inner+'</div></div></section>'};
+ return '<section class="aq-section aq-band--limestone aq-manifold-router-sec aq-fx-host"><canvas class="aq-fx-shader" data-gl="truchet" aria-hidden="true"></canvas><div class="aq-in aq-stack-l">'+H+'<div class="aq-manifold-router" style="--n:'+n+'">'+inner+'</div></div></section>'};
 /* One open at a time: the picked branch opens its route; the water fills the manifold down to it */
 document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-manifold-router__opt');if(!t)return;var w=t.closest('.aq-manifold-router'),O=[].slice.call(w.querySelectorAll('.aq-manifold-router__opt')),k=O.indexOf(t);
  O.forEach(function(o,i){var on=o===t;o.setAttribute('aria-expanded',on?'true':'false');o.classList.toggle('is-wet',i<=k);document.getElementById(o.getAttribute('aria-controls')).hidden=!on})});
@@ -2991,6 +3004,8 @@ LOOKS['membrane-atlas']=function(b,H){
    block note as its caption; numbered marks on its rim answer the six target tiles around it. Each tile: index,
    parameter, the target set large in Geist Mono (a placeholder or a worded target set in the sans), the basis under a
    hairline. Phones: heading, the element as a short band, the tiles one by one.
+   Behind the drawn face the element's body runs back, a quarter cut away to show the wound leaves (FxCutaway,
+   ambient WebGL, aria-hidden, faint limestone on the navy).
    Fields (a spec block): h, caption (eyebrow), intro, rows [{p, v, m, hl}], note. No new fields. */
 (function(){
 var K='aq-membrane-face';
@@ -3021,7 +3036,7 @@ LOOKS['membrane-face']=function(b,H){
    +'<h3 class="'+K+'__p">'+idx(i)+'<span>'+tx(r.p)+'</span></h3>'
    +'<p class="'+K+'__v">'+v+'</p>'
    +(r.m?'<p class="'+K+'__m">'+tx(r.m)+'</p>':'')+'</li>'}).join('');
- var core='<figure class="'+K+'__core"><p class="'+K+'__label" aria-hidden="true">RO element · feed end</p>'+face(rows.length)
+ var core='<figure class="'+K+'__core aq-fx-host"><canvas class="aq-fx-shader" data-gl="cutaway" aria-hidden="true"></canvas><p class="'+K+'__label" aria-hidden="true">RO element · feed end</p>'+face(rows.length)
   +(b.note?'<figcaption class="'+K+'__note">'+tx(b.note)+'</figcaption>':'')+'</figure>';
  var head='<div class="'+K+'__head">'+wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro})+'</div>';
  return sec('<div class="'+K+'" style="--n:'+rows.length+'">'+head+core+'<ol class="'+K+'__tiles" role="list">'+tiles+'</ol></div>',K+'-sec')};

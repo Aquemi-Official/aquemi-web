@@ -1,0 +1,90 @@
+---
+name: motion-library
+description: Find, port and ship motion for the Aquemi site from the Subframe Motion library (309 MIT React/WebGL examples - shaders, scroll stories, counters, buttons, diagrams) into our vanilla JS + GSAP stack and design tokens. Use when someone asks for an animation, a hover or press effect, a scroll reveal, a shader or ambient background, "more motion", "use Subframe", or to make a section feel alive; also before writing any new motion.js from scratch.
+---
+
+# Motion library: Subframe Motion → Aquemi
+
+Subframe Motion (https://www.subframe.com/motion) is a library of 309 open-source (MIT) motion examples in three
+categories: Components & interactions, Animation & motion, WebGL & shaders. The examples are React (some need the
+`motion` package) or raw WebGL. Our site is vanilla JS, GSAP 3.13 and design tokens, so we **port** examples: keep
+their motion mechanism and values, rewrite the shell.
+
+| What | Where |
+| --- | --- |
+| MCP server (Claude Code loads it from the repo's `.mcp.json`) | `subframe-motion` → `https://mcp.subframe.com/motion/mcp`, no account. Tools: `search_motion_examples`, `get_motion_example`, `get_motion_guidance` |
+| Same calls without the MCP (subagents, scripts) | `python .claude/skills/motion-library/tools/motion.py search "<words>" \| get <slug> --out <dir> \| guide <topics> \| catalog` |
+| Every example: slug, category, runtime, look, description | `catalog.json` (next to this file; refresh with `motion.py catalog`) |
+| What we ported, where it lives | the table below (keep it current) |
+| Our WebGL runtime (ambient layers) | `assets/src/motion/gl.js` (`AQgl.def`, `AQgl.scan`) + component `FxShader` |
+| Our GSAP layer | `assets/src/motion/core.js` (`AQmotion.fx`, helpers `m.on`, `m.tw`, `m.claim`, `m.split`, `m.count`…) |
+
+## Finding the right example
+
+1. Say what the section must explain, then what should move (atlas and brand book first: steady flow, hairline,
+   navy/limestone, one steel-blue accent). Search in plain words, several phrasings; filter `--runtime webgl` or
+   `--category`. Browse `catalog.json` by `look` when the words don't hit.
+2. `get <slug> --out <scratch dir>`: read `motion`, `adapt` (names the code that drives the motion), `reducedMotion`,
+   `limitations`, `packages`, `assets`, `license`. Read `guide adapting` once, and `scroll` / `ambient` /
+   `text-and-numbers` / `feedback` for that kind of effect.
+3. Reject examples that need photos or assets we don't have, or that would read as consumer/playful (stickers,
+   physics toys, emoji, audio). Never stainless/chrome/brushed-metal looks: Aquemi is polypropylene only.
+
+## Porting rules
+
+- **Keep:** the mechanism (the shader, the spring or easing values, the stagger, the geometry), its reduced-motion
+  branch and keyboard behaviour, and the MIT licence header (paste it at the top of the ported block with
+  `Ported from Subframe Motion "<title>" (<slug>), MIT, (c) 2026 Subframe`).
+- **Replace:** React state with DOM + GSAP (`gsap.to`, `quickTo` for pointer-follow, `ScrollTrigger` for
+  scroll-linked, `Flip` for layout moves, `SplitText` for type); `motion` springs with GSAP eases of the same feel
+  (`aq-settle`, `power3.out`, `elastic` never); demo colours with tokens (CSS `var(--flow)` in DOM, `colors:{u_x:'flow'}`
+  in shaders); demo copy with the section's real copy.
+- **WebGL:** one fragment shader per effect, registered with `AQgl.def('<name>', {frag, colors, uniforms, still,
+  pointer, scale})` in the component's `motion.js` (runs before `AQmotion.fx`). Markup: host gets `aq-fx-host`,
+  first child `<canvas class="aq-fx-shader" data-gl="<name>" aria-hidden="true">`. Multi-pass simulations
+  (feedback buffers) need an AQgl extension; prefer single-pass analytic shaders.
+- **Where the code goes:** a section's effect in that look's `design-system/components/<Look>/motion.js` (+ style.css);
+  a site-wide effect in the shared component (Button, RelatedLinks, FAQ…) or `core.js`. Never add React, the `motion`
+  package or another library.
+- Tokens only in CSS; the design-system check must report 0 problems.
+
+## Motion rules (brand book, Motion)
+
+- **Scroll-triggered reveals** play once and settle within 5 s; travel ≤ 16 px for text.
+- **Visitor-driven feedback** (hover, press, drag, scrub) may repeat; 100–200 ms for hover/press, exits a third faster.
+- **Ambient layers** (FxShader): only while on screen, only the most visible one moves, one visible cycle ≥ 6 s, faint
+  behind text, a still frame under reduced motion, at most two per page.
+- **One pinned or scroll-linked story per page**: readable at every scroll position, skippable, never hijacks scroll
+  speed, static layout under reduced motion.
+- Nothing runs under `prefers-reduced-motion` except still frames and essential state changes.
+- Verify with `research/tools/motioncheck.js <page> 1280` and `375` (0 errors, nothing left hidden) and watch the loud
+  one with `film.js`.
+
+## Ported so far
+
+| Example (slug) | Ported as | Used on |
+| --- | --- | --- |
+| (fill in as you port) | | |
+| tidal-caustics | FxCaustics (`caustics`, flow ink, transparent ground) | home hero (masked behind the loop) |
+| ripple-memory | FxRipple (`ripple`, CPU wave field via AQgl `sim`, sponge edges, pointer trail) | Closing band, every page with < 2 other layers |
+| contour-terrain | FxContour (`contour`, fwidth hairlines, index contours) | CoverageMap sheet, contact-locations |
+| guilloche | FxGuilloche (`guilloche`, rosette placed by --fx-x/y/size) | CertSeals navy tile, cmp-quality |
+| phosphor-trace | FxPhosphor (`phosphor`, glow on HmiTrend's own trace, written with the pen) | HmiTrend plot, sys-monitoring |
+| truchet-ribbon | FxTruchet (`truchet`, twin-wall pipe tiles) | ManifoldRouter band, home |
+| kiln-section | FxCutaway (`cutaway`, oblique ray-march of the RO element behind the SVG face) | MembraneFace tile, sys-pretreatment |
+| sliding-number | `m.count` in core.js: odometer digit wheels (ones turn twice, tens once), separators and units fixed, restores the text node | KeyFacts, LimitBento, SpecTable, Readout, CaseStudy… (every `m.count`) |
+| word-reveal | core.js section heads: words rise out of padded masks, 0.52 s, 75 ms apart, split reverted on landing | every section title |
+| magnetic-button | Button/motion.js: primary leans to the pointer (×0.28, 160 px falloff) via `--aq-mx/--aq-my` | every primary button |
+| slide-text-button | Button/motion.js: secondary label rolls up, its text-shadow copy rolls in | every secondary button (not the menu toggle) |
+| press-depth | Button style.css + motion.js: sink, 0.97, tip ≤ 3° toward the press point (`--aq-px/--aq-py`) | every button but the link variant |
+| spotlight-card | RelatedLinks/motion.js + style.css: flow light and lit border follow the pointer (spring 160/26) | RelatedLinks tiles |
+| spring-accordion | FAQ/motion.js: 0.34 s height open / 0.24 s close, interruptible, lines rise 8 px, keyboard instant | FAQ |
+| icon-morph (plus-minus, menu-close) | FAQ key plus→minus timing; NavBar toggle bars → cross | FAQ, phone menu toggle |
+| border-beam | EnquiryForm/motion.js: one conic-light lap round the field group on focus entry, then removed | every enquiry form |
+| address-check | EnquiryForm/motion.js: error lines drop in, borders turn in 150 ms, a field put right earns a pass tick | every enquiry form |
+| loading-button | EnquiryForm/motion.js: Send's label / pending / alert faces at one footprint, spring crossfade | every enquiry form's Send |
+| task-steps | EnquiryForm: a passed step's node becomes a tick that springs in (`--aq-pop`) | stepped forms (contact-proposal, careers…) |
+| sliding-tabs | `m.spring` in core.js (460/34); SectionNav marker; NavBar flow rule (hover, focus, page to page) | SectionNav, NavBar |
+| fluid-tab-rail | SectionNav/motion.js: flow-tint plate glides under the hovered link (65 ms smoothing) | SectionNav |
+| curtain-index | NavBar/motion.js: phone menu height-push curtain (0.38 s, .76/0/.24/1), entries 35 ms apart | phone menu |
+| animated-beam | ContactRoutes/motion.js `AQrouteBeam`: a glint runs the step rail to the clock, nodes pop as it passes | ContactRoutes (entrance close + hover/focus) |

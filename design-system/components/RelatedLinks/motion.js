@@ -29,3 +29,28 @@ AQmotion.fx('RelatedLinks', function (root, m) {
     }, 'top 85%');
   });
 });
+/* RelatedLinks hover: a light follows the pointer inside the tile.
+   Ported from Subframe Motion "A little light follows you" (spotlight-card), MIT, (c) 2026 Subframe.
+   A soft flow-tinted radial light (and the stretch of the tile's border nearest it) follows a fine pointer on the
+   example's spring (stiffness 160, damping 26: about critically damped, so a 0.45 s power3.out follow) and brightens
+   in 0.2 s; leaving springs it back to the tile's centre as it dims. Keyboard focus lights the tile from its centre
+   (CSS, no motion). Touch never gets a stuck light; nothing runs under reduced motion. */
+(function () {
+  if (typeof document === 'undefined' || window.__aqRelLight) return; window.__aqRelLight = 1;
+  var mq = function (q) { return window.matchMedia && matchMedia(q).matches }, cur = null;
+  function light(card) {
+    var st = { x: card.clientWidth / 2, y: card.clientHeight / 2 }, set = function () { card.style.setProperty('--aq-sx', st.x.toFixed(1) + 'px'); card.style.setProperty('--aq-sy', st.y.toFixed(1) + 'px') };
+    var qx = gsap.quickTo(st, 'x', { duration: 0.45, ease: 'power3.out', onUpdate: set }), qy = gsap.quickTo(st, 'y', { duration: 0.45, ease: 'power3.out', onUpdate: set });
+    set(); return { card: card, st: st, to: function (x, y) { qx(x); qy(y) }, set: set };
+  }
+  document.addEventListener('pointermove', function (ev) {
+    if (ev.pointerType !== 'mouse' || !window.gsap || mq('(prefers-reduced-motion: reduce)')) return;
+    var card = ev.target.closest && ev.target.closest('.aq-related-links__card');
+    if (cur && cur.card !== card) { var o = cur; o.card.classList.remove('is-lit'); o.to(o.card.clientWidth / 2, o.card.clientHeight / 2); cur = null }
+    if (!card) return;
+    if (!cur) { cur = card._aqLight || (card._aqLight = light(card)); card.classList.add('is-lit') }
+    var r = card.getBoundingClientRect();
+    cur.to((ev.clientX - r.left) * card.offsetWidth / r.width, (ev.clientY - r.top) * card.offsetHeight / r.height);
+  }, { passive: true });
+  document.documentElement.addEventListener('pointerleave', function () { if (cur) { cur.card.classList.remove('is-lit'); cur = null } });
+})();

@@ -3,12 +3,12 @@
    -> assets/motion.js. Do not edit assets/motion.js; edit those and rerun the build.
 
    Blueprint behaviour, never decoration for its own sake:
-   - hero headline lines rise out of a mask (SplitText); section titles follow, word by word
+   - hero headline lines rise out of a mask (SplitText); section titles land word by word (word-reveal)
    - mono labels (eyebrows) decode once, like an instrument powering up (ScrambleText)
    - solid line work draws itself on (DrawSVG); dashed runs creep once in the flow direction (stops within 5 s)
    - equipment drawings wipe in from the bottom like a print; drawing plates unroll
    - list rows, stations, folders and modules follow in a short stagger
-   - key figures count up
+   - key figures roll up on odometer wheels (sliding-number)
    Components add their own choreography in design-system/components/<Name>/motion.js:
      AQmotion.fx('Name', function (root, m) { ... })
    and call m.claim(el) on any element they animate, so the generic layer leaves it (and everything in it) alone.
@@ -59,18 +59,61 @@
     if (window.DrawSVGPlugin) gsap.set(set.solid, { drawSVG: '0%' });
     on(svg, function () { draw(set) });
   }
-  // Count a number up inside el (integers and one-decimal values only; text and placeholders untouched)
+  /* Key figures roll in on an odometer.
+     Ported from Subframe Motion "Digits on a roll" (sliding-number), MIT, (c) 2026 Subframe
+     (adapted from Motion Primitives' sliding-number, MIT, (c) 2024 ibelick).
+     The first number in el's first numeric text node becomes a row of digit wheels: each wheel is a column of numerals
+     that rolls up to its digit; the lower places turn over more often (the ones wheel two full turns, the tens one),
+     like a meter coming up to its reading, on the example's firm, non-bouncy spring (stiffness 280, damping 22, mass 0.3:
+     overdamped, so power3.out). Separators (".", ",") and the text around the number (comparator, unit) stay put;
+     [placeholders] are never touched. Each wheel holds an invisible copy of its final digit in flow (tabular figures),
+     so the width and baseline never jump, and the wheels are clipped with clip-path (not overflow) so the baseline holds.
+     Screen readers hear the real value (a visually hidden copy; the wheels are aria-hidden), and when the roll ends the
+     original text node goes back, so the finished page is exactly the static markup. Before the trigger the wheels
+     show a blank leading place and 0s, as the count-up showed 0. Same call as before: count(el, {now, delay, duration}). */
+  var SR = 'position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap';
   function count(el, opt) {
+    opt = opt || {};
     var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), t;
     while ((t = w.nextNode())) {
-      var m = t.nodeValue.match(/^(\D*?)(\d+(?:[.,]\d+)?)(.*)$/); if (!m || t.parentElement.closest('.aq-ph')) continue;
-      var end = parseFloat(m[2].replace(',', '.')), dec = (m[2].split(/[.,]/)[1] || '').length, sep = m[2].indexOf(',') > -1 ? ',' : '.', node = t, o = { v: 0 };
-      if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', el.textContent.trim());
-      node.nodeValue = m[1] + (0).toFixed(dec).replace('.', sep) + m[3];
-      (function (node, m, end, dec, o) {
-        var go = function () { tw(gsap.to(o, { v: end, duration: (opt && opt.duration) || 1.6, ease: 'power2.out', delay: (opt && opt.delay) || 0, onUpdate: function () { node.nodeValue = m[1] + o.v.toFixed(dec).replace('.', sep) + m[3] } })) };
-        if (opt && opt.now) go(); else on(el, go);
-      })(node, m, end, dec, o);
+      var m = t.nodeValue.match(/^(\D*?)(\d+(?:[.,]\d+)*)(.*)$/); if (!m || t.parentElement.closest('.aq-ph')) continue;
+      var node = t, parent = t.parentNode, chars = m[2].split(''), nd = chars.filter(function (c) { return /\d/.test(c) }).length;
+      var intLen = (m[2].match(/^\d+/) || [''])[0].length, fs = parseFloat(getComputedStyle(parent).fontSize) || 16;
+      var odo = document.createElement('span'), sr = document.createElement('span'), wheels = [], r = nd;
+      odo.setAttribute('aria-hidden', 'true'); odo.style.cssText = 'display:inline-block;white-space:nowrap;font-variant-numeric:tabular-nums';
+      sr.style.cssText = SR; sr.textContent = m[2];
+      chars.forEach(function (c, i) {
+        if (!/\d/.test(c)) { odo.appendChild(document.createTextNode(c)); return }
+        r--; var d = +c, turns = Math.max(0, 2 - r), lead = i < intLen - 1, seq = lead ? [' '] : [];
+        for (var k = 0; k < turns; k++) for (var j = 0; j < 10; j++) seq.push(j);
+        for (var q = 0; q <= d; q++) seq.push(q);
+        var col = document.createElement('span'), ghost = document.createElement('span'), strip = document.createElement('span');
+        col.style.cssText = 'display:inline-block;position:relative;clip-path:inset(-0.12em -0.25em)';
+        ghost.style.visibility = 'hidden'; ghost.textContent = c;
+        strip.style.cssText = 'position:absolute;left:0;right:0;top:0;display:flex;flex-direction:column;align-items:center;will-change:transform';
+        seq.forEach(function (n) { var s = document.createElement('span'); s.textContent = n; strip.appendChild(s) });
+        col.appendChild(ghost); col.appendChild(strip); odo.appendChild(col);
+        wheels.push({ strip: strip, steps: seq.length - 1, r: r });
+      });
+      var before = m[1] ? document.createTextNode(m[1]) : null, after = m[3] ? document.createTextNode(m[3]) : null;
+      [before, sr, odo, after].forEach(function (n) { if (n) parent.insertBefore(n, node) });
+      parent.removeChild(node);
+      // the pitch between numerals: one line, plus a gap so a neighbour never shows inside the clip
+      var lh = (wheels.length && wheels[0].strip.parentNode.getBoundingClientRect().height) || fs * 1.2, pitch = lh + 0.3 * fs;
+      wheels.forEach(function (wh) { [].forEach.call(wh.strip.children, function (s) { s.style.cssText = 'display:block;height:' + lh + 'px;margin-bottom:' + (pitch - lh) + 'px' }) });
+      (function (node, parent, before, sr, odo, after, wheels, pitch) {
+        var done = false;
+        function restore() {
+          if (done || !odo.parentNode) return; done = true;
+          parent.insertBefore(node, odo); [before, sr, odo, after].forEach(function (n) { if (n && n.parentNode) n.parentNode.removeChild(n) });
+        }
+        var go = function () {
+          var dur = Math.min(opt.duration || 1.3, 1.4), tl = gsap.timeline({ delay: opt.delay || 0, onComplete: restore });
+          wheels.forEach(function (wh) { tl.to(wh.strip, { y: -wh.steps * pitch, duration: dur * Math.max(0.6, 1 - 0.12 * wh.r), ease: 'power3.out' }, 0) });
+          live.push({ kill: function () { tl.kill(); restore() } });
+        };
+        if (opt.now) go(); else on(el, go);
+      })(node, parent, before, sr, odo, after, wheels, pitch);
       return true;
     }
     return false;
@@ -82,12 +125,32 @@
     tw(gsap.to(el, { duration: Math.min(1.2, 0.3 + txt.length * 0.03), delay: delay || 0, scrambleText: { text: txt, chars: 'upperCase', speed: 0.6, revealDelay: 0.1 }, ease: 'none' }));
   }
 
-  var M = { on: on, tw: tw, claim: claim, free: free, split: split, lines: lines, draw: draw, drawSvg: drawSvg, count: count, scramble: scramble, narrow: narrow };
+  /* A real spring for indicators that should keep their momentum (sliding-tabs: stiffness 460, damping 34, mass 1).
+     spring(state, {stiffness, damping, mass}, onUpdate) -> {to(goals), jump(goals)}: state's numeric keys follow the
+     goals on the GSAP ticker (4 ms sub-steps) and the ticker lets go once every key has settled. */
+  function spring(o, cfg, upd) {
+    var k = cfg.stiffness || 460, c = cfg.damping || 34, ms = cfg.mass || 1, v = {}, goal = {}, running = false;
+    function tick(t, dt) {
+      var left = Math.min(dt || 16, 48) / 1000, moving = false;
+      while (left > 0) { var h = Math.min(0.004, left); left -= h; for (var key in goal) { var a = (-k * (o[key] - goal[key]) - c * (v[key] || 0)) / ms; v[key] = (v[key] || 0) + a * h; o[key] += v[key] * h } }
+      for (var key2 in goal) { if (Math.abs(v[key2]) > 0.02 || Math.abs(o[key2] - goal[key2]) > 0.02) moving = true }
+      if (!moving) { for (var key3 in goal) { o[key3] = goal[key3]; v[key3] = 0 } gsap.ticker.remove(tick); running = false }
+      upd(o);
+    }
+    return {
+      to: function (g) { for (var key in g) goal[key] = g[key]; if (!running) { running = true; gsap.ticker.add(tick) } },
+      jump: function (g) { for (var key in g) { goal[key] = o[key] = g[key]; v[key] = 0 } upd(o) },
+      stop: function () { gsap.ticker.remove(tick); running = false }
+    };
+  }
+
+  var M = { on: on, tw: tw, claim: claim, free: free, split: split, lines: lines, draw: draw, drawSvg: drawSvg, count: count, scramble: scramble, narrow: narrow, spring: spring };
 
   var gen = 0, lastPage = null, CHROME = ['NavBar', 'Hero', 'KeyFacts', 'SectionNav'];
   // Wait for the webfonts so SplitText measures the real lines (Geist Light wraps differently from the fallback)
   function run(root) {
     kill();
+    if (window.AQgl) AQgl.scan(root);   // ambient WebGL layers: a still frame under reduced motion, so they mount first
     if (reduce || !window.gsap || !window.ScrollTrigger || !root) return;
     var g = ++gen;
     // fonts.status can read 'loaded' before a face has been requested, so also ask for the display face by name;
@@ -123,7 +186,12 @@
       if (!s && h1) tl.from(h1, { y: 28, autoAlpha: 0, duration: 0.9 }, 0);
     }
 
-    // Section heads: eyebrow decodes, title words rise out of a mask, intro follows
+    /* Section heads: the mono eyebrow decodes; the title lands word by word; the intro follows the last word.
+       Ported from Subframe Motion "Word reveal" (word-reveal), MIT, (c) 2026 Subframe: each word rises a full line
+       out of its own mask and fades up (0.52 s, cubic-bezier(0.22, 1, 0.36, 1), 75 ms apart); the mask is padded
+       0.12 em below so descenders are never cut. Long titles keep the whole landing under about 1.4 s. The split is
+       reverted when the words have landed, so the heading ends as its static markup. */
+    if (window.CustomEase && !CustomEase.get('aq-word')) CustomEase.create('aq-word', 'M0,0 C0.22,1 0.36,1 1,1');
     root.querySelectorAll('.aq-section').forEach(function (sec) {
       if (sec.closest('.aq-hero')) return;
       var head = sec.querySelector('.aq-sec-head');
@@ -131,16 +199,19 @@
         var t = head.querySelector('.aq-h1, h2'), eb = head.querySelector('.aq-eyebrow');
         var others = [].filter.call(head.children, function (c) { return c !== t && c !== eb });
         var st = t && split(t, { type: 'words', mask: 'words', wordsClass: 'aq-m-word' });
-        if (st) gsap.set(st.words, { yPercent: 110 }); else if (t) gsap.set(t, { y: 24, autoAlpha: 0 });
+        if (st && st.masks) st.masks.forEach(function (k) { k.style.paddingBottom = '0.12em'; k.style.marginBottom = '-0.12em' });
+        if (st) gsap.set(st.words, { yPercent: 100, autoAlpha: 0 }); else if (t) gsap.set(t, { y: 24, autoAlpha: 0 });
         if (eb) gsap.set(eb, { autoAlpha: 0 });
-        if (others.length) gsap.set(others, { y: 20, autoAlpha: 0 });
-        on(sec, function () {
-          var tl = tw(gsap.timeline());
-          if (eb) { tl.to(eb, { autoAlpha: 1, duration: 0.2 }, 0); scramble(eb, 0) }
-          if (st) tl.to(st.words, { yPercent: 0, duration: 0.9, ease: 'power4.out', stagger: 0.05 }, 0.05);
-          else if (t) tl.to(t, { y: 0, autoAlpha: 1, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0);
-          if (others.length) tl.to(others, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power3.out', stagger: 0.07, clearProps: 'transform,opacity,visibility' }, 0.3);
-        }, 'top 88%');
+        if (others.length) gsap.set(others, { y: 16, autoAlpha: 0 });
+        (function (st, t, eb, others) {
+          on(sec, function () {
+            var tl = tw(gsap.timeline()), n = st ? st.words.length : 0, gap = n > 1 ? Math.min(0.075, 0.9 / (n - 1)) : 0, land = 0.05 + gap * Math.max(0, n - 1) + 0.52;
+            if (eb) { tl.to(eb, { autoAlpha: 1, duration: 0.2 }, 0); scramble(eb, 0) }
+            if (st) tl.to(st.words, { yPercent: 0, autoAlpha: 1, duration: 0.52, ease: window.CustomEase ? 'aq-word' : 'expo.out', stagger: gap, onComplete: function () { try { st.revert() } catch (x) {} } }, 0.05);
+            else if (t) tl.to(t, { y: 0, autoAlpha: 1, duration: 0.8, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0);
+            if (others.length) tl.to(others, { y: 0, autoAlpha: 1, duration: 0.6, ease: 'power3.out', stagger: 0.07, clearProps: 'transform,opacity,visibility' }, st ? Math.min(land - 0.25, 1) : 0.3);
+          }, 'top 88%');
+        })(st, t, eb, others);
       }
       // Drawing plates unroll top to bottom
       sec.querySelectorAll('.aq-plate').forEach(function (p) {
@@ -170,7 +241,7 @@
       on(el, function () { tw(gsap.to(el, { clipPath: 'inset(0% 0 0 0)', duration: 1.2, ease: 'power3.inOut', clearProps: 'clipPath' })) }, 'top 92%');
     });
 
-    // Key figures count up
+    // Key figures roll up on odometer wheels
     root.querySelectorAll('.aq-key-facts__value, [class*="__v"] > .aq-num, .aq-case__val').forEach(function (el) { if (free(el)) count(el) });
 
     ScrollTrigger.refresh();

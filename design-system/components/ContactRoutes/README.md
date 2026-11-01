@@ -16,3 +16,5 @@ Origin: `inspiration/gemini/62-concept-contact-routes.png` (pass 9): the route l
 ## Motion
 
 Motion (`motion.js`): the route line draws across under the heading; at each sheet its drop runs into the tab, the sheet rises, the tab lifts out of its top edge and the head settles (the urgent call bar presses in); then the water runs down the rail (`--aq-line`), each node pops as it arrives with its step, and the clock mark strikes at the end of the rail. Desktop: one timeline in data order (under 4.4 s); phones: each sheet as it scrolls in, urgent first. Hover or focus on a sheet lifts its tab and fills its nodes. The variables (`--aq-riser`, `--aq-stub`, `--aq-line`) default to 1, so the drawing is complete without motion.
+
+Pass 9b (Subframe Motion `animated-beam`): a glint runs a sheet's step rail to its response clock, popping each node, once to close the entrance (this page's route, else the urgent one) and again when the pointer or focus enters a sheet; the call number presses.

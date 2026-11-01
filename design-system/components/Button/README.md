@@ -18,4 +18,8 @@ Use classes on a `<button>` or `<a>`; the consumer provides the label and, for l
 
 ## Motion
 
-Motion: the arrow slides 4 px on hover and keyboard focus; on press the button sinks 1 px (`translateY(1px) scale(0.985)`) and the arrow pulls back, like a key going down. CSS transitions only, all dropped under reduced motion.
+Motion: the arrow slides 4 px on hover and keyboard focus. Pass 9b (`Button/motion.js`, ported from Subframe Motion):
+- **Press depth** (`press-depth`), every button but the link variant: on press the button sinks 1 px, shrinks to 0.97 and tips up to 3° toward the point pressed (`--aq-px`, `--aq-py`), 60 ms down, 180 ms back; the arrow pulls back.
+- **Magnetic pull** (`magnetic-button`), primary only, fine pointers only: while the pointer is over the button or within 28 px of it the button leans toward it (offset × max(0, 1 − d/160) × 0.28, `--aq-mx`, `--aq-my`), and springs back when it leaves.
+- **Label roll** (`slide-text-button`), secondary only (not the menu toggle), fine pointers only: the label slides up out of the button as its copy rolls in from below, 200 ms in, 140 ms back. The copy is a text-shadow, so the button keeps one label for screen readers.
+No loops, no shimmer. Under reduced motion none of it runs and the press is a plain state change.

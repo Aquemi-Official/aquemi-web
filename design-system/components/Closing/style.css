@@ -170,3 +170,9 @@
   .aq-closing__swap .aq-closing__returns > .aq-closing__tag { margin-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .aq-closing__action .aq-btn__arrow { transition: none; } }
+
+/* Water (pass 9b): the FxRipple layer fills the band under the mark and the copy. Its brightest glint is on-navy at about
+   18 % (15 % on the dark theme's lighter navy), measured so on-navy-muted list text keeps AA over it. */
+.aq-closing > .aq-fx-shader { --fx-amt: 0.2; }
+[data-theme="dark"] .aq-closing > .aq-fx-shader { --fx-amt: 0.17; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .aq-closing > .aq-fx-shader { --fx-amt: 0.17; } }

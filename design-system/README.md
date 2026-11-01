@@ -187,6 +187,10 @@ Motion should feel like steady flow: slow, smooth and purposeful.
 - Durations 200 ms for controls, 400–600 ms for section reveals. Ease `cubic-bezier(0.2, 0, 0, 1)`.
 - Fade and translate by at most 16 px. No bounce, no scale-pop, no parallax on text. The mark's own animation is the one exception (The mark in motion).
 - Respect `prefers-reduced-motion`: drop translation and keep only opacity.
+- **Scroll reveals** play once and settle within 5 s. **Visitor-driven feedback** (hover, press, drag, scrub) may repeat: 100–200 ms, exits a third faster than entrances.
+- **Ambient layers** (FxShader: water caustics, flow fields, guilloché, contours) are the one material moment on a page: they move only while on screen and only the most visible one at a time, slowly (one visible cycle takes 6 s or more), stay faint behind text, and show a still frame under reduced motion. At most two on a page.
+- **One pinned or scroll-linked story per page** may tie progress to scrolling: readable at every position, skippable, never changes scroll speed, a static layout under reduced motion.
+- **Library.** New motion starts from the Subframe Motion library (MIT, https://www.subframe.com/motion), ported to GSAP and tokens with its licence header kept. In Claude Code use the `motion-library` skill.
 
 ### States
 

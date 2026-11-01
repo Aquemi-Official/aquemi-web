@@ -79,3 +79,9 @@
 }
 .aq-hmi-trend-sec { position: relative; }
 .aq-hmi-trend__run { pointer-events: none; }
+
+/* Phosphor (pass 9b): FxPhosphor glows under the reading inside the plot (its own stacking context, so the canvas sits
+   under the grid and lines; no overflow clip, the line labels hang outside the plot). Flow at about a third at the
+   trace, fading within a few pixels; the vignette darkens the plot's corners slightly. */
+.aq-hmi-trend__plot { isolation: isolate; }
+.aq-hmi-trend__plot > .aq-fx-shader { --fx-amt: 0.85; }

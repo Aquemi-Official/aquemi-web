@@ -36,3 +36,5 @@ RelatedLinks closes a page with the pages to read next as tiles hung off one pip
 ## Motion
 
 `motion.js`: on scroll-in the pipe is laid along the top of the row (down the rail on phones); as it passes each tile the node seats, the drop runs down and the tile rises off it, its picture printing up from the bottom and the index, label and title following; then the water runs the pipe once end to end. Under 3 s, once; nothing under reduced motion.
+
+Pass 9b (Subframe Motion `spotlight-card`): on a fine pointer a soft flow light, and the stretch of border nearest it, follow the pointer inside the tile; keyboard focus lights it from the centre. Off under reduced motion and on touch.

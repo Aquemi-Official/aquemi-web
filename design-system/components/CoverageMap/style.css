@@ -78,3 +78,9 @@ span.aq-coverage-map__btn { cursor: default; border-style: dashed; }
   .aq-coverage-map__dl > div { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-1); }
 }
 .aq-coverage-map-sec { overflow: visible; }
+
+/* Survey sheet (pass 9b): FxContour draws the terrain's contour lines in on-limestone under the tiles, faint (index
+   contours at 12 %, the rest at 7 %: the mono title and labels keep AA), so the tile codes keep their contrast; masked off the bottom-left corner, where the readout and the base label
+   sit (the readout's flow index is only just AA on bare limestone). */
+.aq-coverage-map__sheet > .aq-fx-shader { --fx-amt: 0.12;
+  -webkit-mask-image: linear-gradient(to top right, transparent 34%, var(--ink) 52%); mask-image: linear-gradient(to top right, transparent 34%, var(--ink) 52%); }

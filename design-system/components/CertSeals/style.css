@@ -52,3 +52,7 @@ a.aq-cert-seals__tile:hover .aq-cert-seals__seal svg { transform: rotate(10deg);
   .aq-cert-seals__t { margin: 0; padding-top: var(--space-2); }
   .aq-cert-seals__go { top: var(--space-6); right: var(--space-4); }
 }
+
+/* Engraving (pass 9b): FxGuilloche's rosette on the navy tile, centred low and right so it sits behind the tag and
+   lines as a certificate's security print; on-navy at a ninth, so the white type keeps its contrast. */
+.aq-cert-seals__tile > .aq-fx-shader { --fx-amt: 0.11; --fx-x: 0.72; --fx-y: 0.42; --fx-size: 1.5; }

@@ -18,3 +18,5 @@ The site header: logo, primary sections, a "Service request" link and one call t
 ## Motion
 
 Motion: on hover and keyboard focus a 1 px `flow` rule draws under the section label (and the service link) from its left end and the index number lights (CSS, dropped under reduced motion). `NavBar/motion.js`: the phone menu unrolls from the bar and its rows drop in one after another, the urgent block first; Close rolls it up before the page re-renders, and focus returns to the toggle. The section numbers decode once on a new page (wide screens). The bar is not sticky, so it never hides on scroll.
+
+Pass 9b (Subframe Motion `curtain-index`, `sliding-tabs`, `icon-morph`): the phone menu opens as a curtain that pushes the page down, entries 35 ms apart, and lifts on Close; the toggle's two bars cross while it is open (`aq-nav__burger`, label stays "Menu" / "Close" in `aq-nav__toggle-t`); on the wide bar one flow rule rests under the current section and slides to the hovered or focused link.

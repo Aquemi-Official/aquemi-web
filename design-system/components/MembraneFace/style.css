@@ -66,3 +66,10 @@
   .aq-membrane-face__tile { min-height: 0; padding: var(--space-4); }
   .aq-membrane-face__n { font-size: 44px; line-height: 48px; }
 }
+
+/* Cutaway (pass 9b): FxCutaway draws the element's body behind the face drawing, running back to the lower right with
+   a quarter cut open; limestone at low alpha over the navy, so the rim numbers and the note keep their contrast. */
+.aq-membrane-face__core > .aq-fx-shader { --fx-amt: 0.8; }
+@container (max-width: 860px) {
+  .aq-membrane-face__core > .aq-fx-shader { --fx-amt: 0.55; }
+}

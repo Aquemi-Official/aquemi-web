@@ -1,0 +1,10 @@
+/* ---------- FxShader ---------- */
+/* An ambient WebGL layer (assets/src/motion/gl.js) filling its positioned parent, under the content. Empty and
+   invisible until a shader has drawn a frame, so the section's own ground shows without WebGL or JS. */
+.aq-fx-shader { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; z-index: -1; opacity: 0; transition: opacity 1.2s cubic-bezier(0.2, 0, 0, 1); }
+.aq-fx-shader.is-on { opacity: 1; }
+.aq-fx-host { position: relative; isolation: isolate; overflow: hidden; }   /* z-index -1 in an isolated host: above its ground, below its content */
+
+@container (max-width: 860px) {
+  .aq-fx-shader.is-on { opacity: 0.85; }
+}

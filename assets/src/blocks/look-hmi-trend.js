@@ -5,7 +5,8 @@
    line keeps one status colour, one shape and its name everywhere (plot label, banner, table).
    Fields: h, intro, cols (three labels), rows [[line, how, what]] (a cell may be {t, link}), lines (the role of each
    row in order: limit | action | alert | trend; default that order), tabs (screen tab names, the first one shown;
-   decoration, aria-hidden). Phones: tabs collapse to the shown one, the plot shortens, the table rows stack. */
+   decoration, aria-hidden). Under the reading a phosphor glow (FxPhosphor, ambient WebGL) follows the same trace.
+   Phones: tabs collapse to the shown one, the plot shortens, the table rows stack. */
 var HMI_Y={limit:52,action:112,alert:172};
 function hmiTrace(){var d='',x,y,pts=[];
  for(x=0;x<=930;x+=10){var n=Math.sin(x*0.071)*7+Math.sin(x*0.23+1.3)*4+Math.sin(x*0.013+0.4)*5,dr=x>600?Math.pow((x-600)/330,1.6)*58:0;y=262+n-dr;pts.push([x,y])}
@@ -28,7 +29,7 @@ LOOKS['hmi-trend']=function(b,H){
   +'<path class="aq-hmi-trend__trace" d="'+tr.d+'"/><path class="aq-hmi-trend__now" d="M'+tr.end[0]+' 0V'+Hh+'"/></svg>';
  var pct=function(x,y){return 'left:'+(100*x/W).toFixed(2)+'%;top:'+(100*y/Hh).toFixed(2)+'%'};
  var flag=trendI>=0?'<span class="aq-hmi-trend__flag" data-hmi="'+trendI+'" style="left:'+(100*flagX/W).toFixed(2)+'%"><i class="aq-hmi-trend__pri aq-hmi-trend__pri--trend"></i>'+tx(name(R[trendI]))+'</span>':'';
- var fig='<div class="aq-hmi-trend__plot" aria-hidden="true">'+plot+labels+flag+'<span class="aq-hmi-trend__dot" style="'+pct(tr.end[0],tr.end[1])+'"></span>'
+ var fig='<div class="aq-hmi-trend__plot" aria-hidden="true"><canvas class="aq-fx-shader" data-gl="phosphor" aria-hidden="true"></canvas>'+plot+labels+flag+'<span class="aq-hmi-trend__dot" style="'+pct(tr.end[0],tr.end[1])+'"></span>'
   +'<span class="aq-hmi-trend__ax"><span></span><span></span><span></span><span></span><span></span></span></div>';
  /* the screen's chrome: tabs and the alarm banner (the trend rule's line, as a panel shows its newest alarm) */
  var tabs=T.length?'<span class="aq-hmi-trend__tabs">'+T.map(function(t,i){return '<span class="aq-hmi-trend__tab'+(i?'':' is-on')+'">'+tx(t)+'</span>'}).join('')+'</span>':'';

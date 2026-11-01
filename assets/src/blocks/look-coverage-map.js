@@ -30,7 +30,8 @@ LOOKS['coverage-map']=function(b,H){var C=b.cols||[],R=b.rows||[],M=b.map||[],B=
    +'<span class="aq-coverage-map__code" aria-hidden="true">'+e(t.c)+'</span>'+(has?'<span class="aq-coverage-map__ri" aria-hidden="true">'+(r<9?'0':'')+(r+1)+'</span>':'')
    +(has?'</button>':'</span>')+'</li>'}).join('');
  var base=B&&B.label?'<p class="aq-coverage-map__base"><span class="aq-coverage-map__pin" aria-hidden="true"></span>'+tx(B.label)+'</p>':'';
- var sheet='<div class="aq-coverage-map__sheet" data-theme="light"><p class="aq-coverage-map__title" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span></p>'
+ /* the sheet is a survey sheet: faint contour lines drift under the tiles (FxContour, ambient WebGL, aria-hidden) */
+ var sheet='<div class="aq-coverage-map__sheet aq-fx-host" data-theme="light"><canvas class="aq-fx-shader" data-gl="contour" aria-hidden="true"></canvas><p class="aq-coverage-map__title" aria-hidden="true"><span>Aquemi</span><span>'+tx(b.nav||'')+'</span></p>'
   +'<ol class="aq-coverage-map__grid" style="--cols:'+cols+';--rows:'+rws+'" aria-label="'+e(C[0]||'Map')+'">'+tiles+now+'</ol>'+base+'</div>';
  var rows=R.map(function(r,i){var codes=M.filter(function(t){return +t.r===i}).map(function(t){return e(t.c)});
   return '<li class="aq-coverage-map__row'+lt(i)+'" id="'+rid(i)+'" data-r="'+i+'" tabindex="-1">'

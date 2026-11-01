@@ -20,6 +20,86 @@
  },
  "components": [
   {
+   "name": "FxCaustics",
+   "readme": "design-system/components/FxCaustics/README.md",
+   "preview": "design-system/components/FxCaustics/preview.html",
+   "group": "Foundations",
+   "height": "420",
+   "width": "1000",
+   "subtitle": "Light through water behind a headline: flow ink on the surface, still under reduced motion",
+   "summary": "FxCaustics is light through moving water (ported from Subframe Motion \"Tidal caustics\"), a faint flow-coloured web drifting on the host's own ground; the home hero's ambient layer."
+  },
+  {
+   "name": "FxContour",
+   "readme": "design-system/components/FxContour/README.md",
+   "preview": "design-system/components/FxContour/preview.html",
+   "group": "Foundations",
+   "height": "420",
+   "width": "1000",
+   "subtitle": "Survey-sheet contour lines on limestone, under a coverage map",
+   "summary": "FxContour is contour lines of a slowly drifting terrain (ported from Subframe Motion \"Contour terrain\"), drawn as hairlines with an index contour every fifth, so a map sheet reads as a survey sheet."
+  },
+  {
+   "name": "FxCutaway",
+   "readme": "design-system/components/FxCutaway/README.md",
+   "preview": "design-system/components/FxCutaway/preview.html",
+   "group": "Foundations",
+   "height": "420",
+   "width": "1000",
+   "subtitle": "RO element body cut away behind its drawn feed end",
+   "summary": "FxCutaway is the body of the RO element behind MembraneFace's drawn end face, a quarter cut away to show the wound leaves (ported from Subframe Motion \"Kiln section\": a ray-marched solid with shaded cut faces)."
+  },
+  {
+   "name": "FxGuilloche",
+   "readme": "design-system/components/FxGuilloche/README.md",
+   "preview": "design-system/components/FxGuilloche/preview.html",
+   "group": "Foundations",
+   "height": "420",
+   "width": "1000",
+   "subtitle": "Engraved rosette on the navy certificate tile",
+   "summary": "FxGuilloche is an engraved certificate rosette (ported from Subframe Motion \"Guilloché\"): rings modulated by two petal waves turning very slowly, in on-navy hairlines on a navy tile."
+  },
+  {
+   "name": "FxPhosphor",
+   "readme": "design-system/components/FxPhosphor/README.md",
+   "preview": "design-system/components/FxPhosphor/preview.html",
+   "group": "Foundations",
+   "height": "420",
+   "width": "1000",
+   "subtitle": "Phosphor glow under the trend reading on the dark panel",
+   "summary": "FxPhosphor is the glow of a phosphor screen under a drawn reading (ported from Subframe Motion \"Phosphor trace\"): a halo, a ghost and a slow sweep in flow, following HmiTrend's own trace exactly."
+  },
+  {
+   "name": "FxRipple",
+   "readme": "design-system/components/FxRipple/README.md",
+   "preview": "design-system/components/FxRipple/preview.html",
+   "group": "Foundations",
+   "height": "420",
+   "width": "1000",
+   "subtitle": "Navy closing band whose surface ripples under the pointer",
+   "summary": "FxRipple is a water surface that remembers the pointer (ported from Subframe Motion \"Ripple memory\"): a small wave simulation whose glints trail the pointer across a navy band and fade in about two seconds."
+  },
+  {
+   "name": "FxShader",
+   "readme": "design-system/components/FxShader/README.md",
+   "preview": "design-system/components/FxShader/preview.html",
+   "group": "Foundations",
+   "height": "420",
+   "width": "1000",
+   "subtitle": "Ambient WebGL layer behind a navy band: drawn from the tokens, still under reduced motion",
+   "summary": "FxShader is an ambient WebGL layer (a water surface, a flow field, guilloché, contours) drawn behind one section's content from the design tokens; use it for the one material moment on a page."
+  },
+  {
+   "name": "FxTruchet",
+   "readme": "design-system/components/FxTruchet/README.md",
+   "preview": "design-system/components/FxTruchet/preview.html",
+   "group": "Foundations",
+   "height": "420",
+   "width": "1000",
+   "subtitle": "Twin-wall pipe tiles drifting on a limestone band",
+   "summary": "FxTruchet is a ground of twin-wall pipe tiles (ported from Subframe Motion \"Truchet ribbon\"): quarter-arc tiles that join into endless pipework, drifting slowly sideways, faint on limestone."
+  },
+  {
    "name": "Icon",
    "readme": "design-system/components/Icon/README.md",
    "preview": "design-system/components/Icon/preview.html",

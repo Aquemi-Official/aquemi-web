@@ -4,6 +4,8 @@
    block note as its caption; numbered marks on its rim answer the six target tiles around it. Each tile: index,
    parameter, the target set large in Geist Mono (a placeholder or a worded target set in the sans), the basis under a
    hairline. Phones: heading, the element as a short band, the tiles one by one.
+   Behind the drawn face the element's body runs back, a quarter cut away to show the wound leaves (FxCutaway,
+   ambient WebGL, aria-hidden, faint limestone on the navy).
    Fields (a spec block): h, caption (eyebrow), intro, rows [{p, v, m, hl}], note. No new fields. */
 (function(){
 var K='aq-membrane-face';
@@ -34,7 +36,7 @@ LOOKS['membrane-face']=function(b,H){
    +'<h3 class="'+K+'__p">'+idx(i)+'<span>'+tx(r.p)+'</span></h3>'
    +'<p class="'+K+'__v">'+v+'</p>'
    +(r.m?'<p class="'+K+'__m">'+tx(r.m)+'</p>':'')+'</li>'}).join('');
- var core='<figure class="'+K+'__core"><p class="'+K+'__label" aria-hidden="true">RO element · feed end</p>'+face(rows.length)
+ var core='<figure class="'+K+'__core aq-fx-host"><canvas class="aq-fx-shader" data-gl="cutaway" aria-hidden="true"></canvas><p class="'+K+'__label" aria-hidden="true">RO element · feed end</p>'+face(rows.length)
   +(b.note?'<figcaption class="'+K+'__note">'+tx(b.note)+'</figcaption>':'')+'</figure>';
  var head='<div class="'+K+'__head">'+wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro})+'</div>';
  return sec('<div class="'+K+'" style="--n:'+rows.length+'">'+head+core+'<ol class="'+K+'__tiles" role="list">'+tiles+'</ol></div>',K+'-sec')};

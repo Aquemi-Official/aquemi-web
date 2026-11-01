@@ -52,6 +52,29 @@
 .aq-related-links__card:is(:hover, :focus-visible) :is(.aq-related-links__art, .aq-related-links__spot) { background-color: var(--flow); transform: translateY(calc(-1 * var(--space-1))); }
 .aq-related-links__card:active .aq-related-links__title { transform: translateY(1px); }
 .aq-related-links__card:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* Spotlight (RelatedLinks/motion.js, spotlight-card): a soft flow light under the content at --aq-sx/--aq-sy, and the
+   stretch of the border nearest it lit in flow. Off at rest; on while a fine pointer is over the tile (is-lit), from the
+   centre on keyboard focus. Opacity only in CSS; the position is driven by the pointer. */
+.aq-related-links__card { position: relative; isolation: isolate; }
+.aq-related-links__card::before, .aq-related-links__card::after {
+  content: ""; position: absolute; pointer-events: none; opacity: 0;
+  transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-related-links__card::before {
+  inset: 0; z-index: -1;
+  background: radial-gradient(circle 220px at var(--aq-sx, 50%) var(--aq-sy, 50%), color-mix(in srgb, var(--flow) 14%, transparent), transparent 70%);
+}
+.aq-related-links__card::after {
+  inset: -1px; border: 1px solid transparent;
+  background: radial-gradient(circle 140px at calc(var(--aq-sx, 50%) + 1px) calc(var(--aq-sy, 50%) + 1px), var(--flow), transparent 75%) border-box;
+  -webkit-mask: linear-gradient(black, black) padding-box, linear-gradient(black, black) border-box; -webkit-mask-composite: xor;
+  mask: linear-gradient(black, black) padding-box exclude, linear-gradient(black, black) border-box;
+}
+.aq-related-links__card.is-lit::before, .aq-related-links__card.is-lit::after { opacity: 1; transition-duration: 200ms; }
+.aq-related-links__card:not(.is-lit)::before, .aq-related-links__card:not(.is-lit)::after { transition-duration: 140ms; }
+.aq-related-links__card:focus-visible::before { opacity: 0.8; }
+@media (hover: none) { .aq-related-links__card::before, .aq-related-links__card::after { display: none; } }
+@media (prefers-reduced-motion: reduce) { .aq-related-links__card.is-lit::before, .aq-related-links__card.is-lit::after { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
   .aq-related-links__arrow, .aq-related-links__art, .aq-related-links__spot, .aq-related-links__title, .aq-related-links__card, .aq-related-links > li::before, .aq-related-links > li::after { transition: none; }
 }

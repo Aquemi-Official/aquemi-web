@@ -49,6 +49,11 @@
 .aq-section-nav__links { position: relative; }
 .aq-section-nav__links > .aq-section-nav__mark { position: absolute; left: 0; bottom: 0; width: 100px; height: 1px; background: var(--flow); pointer-events: none; }
 .aq-section-nav.has-mark .aq-section-nav__links a[aria-current="true"] { box-shadow: none; text-decoration: none; border-color: transparent; }
+/* Hover highlight (fluid-tab-rail): a flow-tint plate that glides under the link the pointer is on; it sits behind the
+   links (they stack above it) and is sized and placed by SectionNav/motion.js. Height 0 while it is not showing. */
+.aq-section-nav__links > .aq-section-nav__glow { position: absolute; left: 0; top: 0; width: 0; height: 0; border-radius: var(--radius-sm); background: var(--flow-tint); pointer-events: none; opacity: 0; }
+.aq-section-nav__links > li:not(.aq-section-nav__glow, .aq-section-nav__mark) { position: relative; z-index: 1; }
+.aq-section-nav__links > .aq-section-nav__mark { z-index: 2; }
 
 @container (max-width: 860px) {
   /* Phones: a slim 44 px strip of links; the progress meter becomes a 2 px flow line along its bottom edge, and
