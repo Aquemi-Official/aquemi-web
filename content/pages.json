@@ -1957,8 +1957,7 @@
        "at": [
         37.4,
         46.9
-       ],
-       "site": "toc"
+       ]
       },
       {
        "p": "Conductivity cell",
@@ -1967,8 +1966,7 @@
        "at": [
         49.4,
         57.7
-       ],
-       "site": "cond"
+       ]
       },
       {
        "p": "Temperature",
@@ -1976,8 +1974,7 @@
        "at": [
         48.9,
         41.1
-       ],
-       "site": "temp"
+       ]
       },
       {
        "p": "Divert",
@@ -1986,8 +1983,7 @@
        "at": [
         72.9,
         37.7
-       ],
-       "site": "divert"
+       ]
       },
       {
        "p": "Flow and pressure",
@@ -1996,19 +1992,16 @@
        "at": [
         57.4,
         69.7
-       ],
-       "site": "flow"
+       ]
       },
       {
        "p": "Ultraviolet (UV) units, where fitted",
-       "v": "Intensity at 254 nm, lamp hours, lamp failure",
-       "site": "uv"
+       "v": "Intensity at 254 nm, lamp hours, lamp failure"
       },
       {
        "p": "Data recording",
        "v": "Every quality value at [recording interval, seconds], time-stamped",
-       "m": "One site time source",
-       "site": "data"
+       "m": "One site time source"
       }
      ],
      "note": "Uncompensated conductivity is the record; the 25 °C compensated value is for trending only.",
@@ -2016,7 +2009,7 @@
      "fold": 5,
      "fold_noun": "signals",
      "as": "callouts",
-     "look": "sensor-loop"
+     "look": "signal-dial"
     },
     {
      "type": "table",
@@ -2091,35 +2084,40 @@
       {
        "t": "PLC and SCADA platform",
        "d": "[PLC and SCADA platforms supported].",
-       "spot": "cpu"
+       "spot": "cpu",
+       "part": "plc"
       },
       {
        "t": "Historian and Part 11 boundary",
        "d": "Our historian, or your validated plant historian with ours as a buffer.",
-       "spot": "database"
+       "spot": "database",
+       "part": "historian"
       },
       {
        "t": "Remote access",
        "d": "None, one-way telemetry through your DMZ, or supervised sessions you open.",
-       "spot": "network"
+       "spot": "network",
+       "part": "remote"
       },
       {
        "t": "Integration",
        "d": "OPC UA, Modbus TCP, EtherNet/IP, PROFINET or BACnet to your plant systems.",
-       "spot": "pid"
+       "spot": "pid",
+       "part": "bus"
       },
       {
        "t": "Control panels",
        "d": "Built to [panel standard] and marked to [panel certification mark held, or field evaluation used].",
        "spot": "monitor",
-       "link": "compliance#engineering"
+       "link": "compliance#engineering",
+       "part": "panel"
       }
      ],
      "nav": "Options",
      "fold_noun": "options",
      "as": "modules",
      "base": "Controls",
-     "look": "rail-modules"
+     "look": "option-checker"
     },
     {
      "type": "faq",

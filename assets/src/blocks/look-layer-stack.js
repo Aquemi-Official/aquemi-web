@@ -67,11 +67,15 @@ LOOKS['layer-stack']=function(b,H){
  body+='<path class="aq-layer-stack__route" d="'+rd+'"/>'+lead+'<circle class="aq-layer-stack__packet" r="3" cx="'+isoF(route[0][0])+'" cy="'+isoF(route[0][1])+'"/>';
  var svg=isoSvg(Math.round(VW),Math.round(VH),body,'aq-layer-stack__svg',{origin:org});
  var crop='--ls-zoom:'+(VW/(bx.w)).toFixed(3)+';--ls-shift:'+(-(side-0)/bx.w*100).toFixed(2)+'%';
- return sec(H+'<div class="aq-layer-stack" data-at="'+fr+'" style="'+crop+'"><div class="aq-layer-stack__fig">'+svg+'</div>'
-  +'<ol class="aq-layer-stack__list" role="list">'+items+'</ol></div>'+(b.caption?'<p class="aq-small aq-prose">'+tx(b.caption)+'</p>':''),'aq-layer-stack-sec')};
-/* Hover or focus on a label lights its plate and leader */
+ /* pass 9b (concept sys-monitoring.0): the title set huge and light on a navy field, cropped by a limestone drawing
+    sheet that holds the stack and its numbered callouts and runs off the right and bottom edges */
+ return sec('<div class="aq-layer-stack__spread">'+H+'<div class="aq-layer-stack__sheet" data-theme="light"><div class="aq-layer-stack" data-at="'+fr+'" style="'+crop+'"><div class="aq-layer-stack__fig">'+svg+'</div>'
+  +'<ol class="aq-layer-stack__list" role="list">'+items+'</ol></div>'+(b.caption?'<p class="aq-small aq-prose">'+tx(b.caption)+'</p>':'')+'</div></div>','aq-band--navy aq-layer-stack-sec')};
+/* Pointing at a label or a plate lights both and lifts the plate off the stack (style.css: the lift ported from
+   Subframe Motion "Exploded product view" (exploded-camera), MIT, (c) 2026 Subframe: parts glide 600 ms on
+   cubic-bezier(0.22, 1, 0.36, 1)) */
 (function(){
  function set(root,i){root.classList.toggle('has-hot',i!=null);[].forEach.call(root.querySelectorAll('[data-ls]'),function(el){el.classList.toggle('is-hot',i!=null&&el.getAttribute('data-ls')===i)})}
- document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-layer-stack__item'),root=ev.target.closest&&ev.target.closest('.aq-layer-stack');if(root)set(root,t?t.getAttribute('data-ls'):null)});
+ document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&(ev.target.closest('.aq-layer-stack__item')||ev.target.closest('.aq-layer-stack__layer')),root=ev.target.closest&&ev.target.closest('.aq-layer-stack');if(root)set(root,t?t.getAttribute('data-ls'):null)});
  document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-layer-stack');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
 })();

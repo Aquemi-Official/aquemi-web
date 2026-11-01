@@ -35,6 +35,27 @@ LOOKS['redline-sheet']=(function(){
   sheet:function(n){var o='';for(var i=0;i<7;i++)o+=P('M40 '+(34+i*18)+'H'+(240-(i*23)%90),'txt');
    return '<rect class="aq-redline-sheet__paper" x="24" y="16" width="272" height="152"/>'+o+'<g class="aq-redline-sheet__mark">'+P(cloud(160,88,64,24,12),'cl')+rev(240,50,n)+'</g>'}
  };
+ /* pass 9b (concept svc-design.0): the plant's P&ID as a navy band across the head of the sheet, each failure pinned
+    where it happens (the loop sized at the pump, the branch without its length, the divert after the conductivity
+    instrument). Drawn inline (flat ISA-style symbols, not IsoKit), aria-hidden: the columns carry the words. */
+ var PIN={peak:[690,160],deadleg:[880,132],setpoint:[400,120],sheet:[600,110]};
+ function band(kinds){var L=function(d,c){return '<path class="aq-redline-sheet__p'+(c?' aq-redline-sheet__p--'+c:'')+'" d="'+d+'"/>'},
+   W=function(x,y,s){return '<text class="aq-redline-sheet__pl" x="'+x+'" y="'+y+'" text-anchor="middle">'+s+'</text>'},
+   chev=function(x,y,d){return L(d==='d'?'M'+(x-5)+' '+(y-4)+'L'+x+' '+(y+2)+'L'+(x+5)+' '+(y-4):d==='l'?'M'+(x+4)+' '+(y-5)+'L'+(x-2)+' '+y+'L'+(x+4)+' '+(y+5):d==='u'?'M'+(x-5)+' '+(y+4)+'L'+x+' '+(y-2)+'L'+(x+5)+' '+(y+4):'M'+(x-4)+' '+(y-5)+'L'+(x+2)+' '+y+'L'+(x-4)+' '+(y+5),'chev')};
+  var g='<path class="aq-redline-sheet__grid" d="'+[1,2,3,4,5,6,7,8,9,10,11].map(function(i){return 'M'+i*100+' 0V220'}).join('')+'M0 55H1200M0 110H1200M0 165H1200"/>';
+  g+=L('M20 120H70M110 120H150M230 120H260M320 120H390M410 120H470','w')+chev(40,120)+chev(135,120)+chev(245,120)+chev(450,120);
+  g+=L('M70 96H110V144H70ZM76 102V138M104 102V138')+W(90,166,'PRE');
+  g+=L('M150 98H230V142H150ZM150 142L230 98')+W(190,166,'RO');
+  g+=L('M260 98H320V142H260ZM270 98V142M280 98V142M290 98V142M300 98V142M310 98V142')+W(290,166,'EDI');
+  g+=L('M352 120V100')+'<circle class="aq-redline-sheet__p" cx="352" cy="88" r="12"/>'+W(352,92,'CIT');
+  g+=L('M390 112L410 128V112L390 128Z')+L('M400 128V188','w')+chev(400,170,'d')+L('M390 188H410L400 200Z')+W(400,214,'drain');
+  g+=L('M470 70Q470 44 500 44Q530 44 530 70V170H470Z')+W(500,192,'TANK');
+  g+=L('M530 160H576','w')+'<circle class="aq-redline-sheet__p" cx="590" cy="160" r="14"/>'+L('M583 151L600 160L583 169Z');
+  g+=L('M604 160H1150V60H560Q530 60 530 70','w')+chev(800,160)+chev(1150,110,'u')+chev(1000,60,'l');
+  [760,880,1000].forEach(function(x,i){var y2=i===1?132:96;g+=L('M'+x+' 60V'+(y2-10),'w')+L('M'+(x-8)+' '+(y2-10)+'L'+(x+8)+' '+(y2+6)+'H'+(x-8)+'L'+(x+8)+' '+(y2-10)+'Z')+W(x,y2+24,'POU')});
+  var pins='',spots=[];kinds.forEach(function(k,i){var p=PIN[k]||PIN.sheet;spots.push(p);
+   pins+='<g class="aq-redline-sheet__pin" data-i="'+i+'" transform="translate('+p[0]+' '+p[1]+')"><circle class="aq-redline-sheet__ring" r="26"/><path class="aq-redline-sheet__ptri" d="M14 -46L28 -22H0Z"/><text class="aq-redline-sheet__pn" x="14" y="-26" text-anchor="middle">'+(i+1)+'</text></g>'});
+  return '<div class="aq-redline-sheet__band" data-theme="dark" aria-hidden="true" data-spots="'+spots.map(function(p){return p.join(',')}).join(' ')+'"><svg viewBox="0 0 1200 220" focusable="false" preserveAspectRatio="xMidYMid meet"><g class="aq-redline-sheet__cam">'+g+pins+'<path class="aq-redline-sheet__dim" d=""/></g></svg></div>'}
  function pick(r){var s=r.map(function(c){return String(c&&typeof c==='object'?c.t:c||'')}).join(' ');
   return /peak|average|turbulent|demand/i.test(s)?'peak':/dead leg|branch/i.test(s)?'deadleg':/setpoint|divert|drain|interlock/i.test(s)?'setpoint':'sheet'}
  return function(b,H){var C=b.cols||[],R=b.rows||[],F=b.figs||[],blk=(b.block||['Aquemi',b.nav||'']).filter(Boolean);
@@ -48,5 +69,25 @@ LOOKS['redline-sheet']=(function(){
     +(r[2]!=null?'<div class="aq-redline-sheet__fix">'+k(2,'flow')+'<p class="aq-redline-sheet__note">'+tcell(r[2])+'</p></div>':'')
     +'</li>'}).join('')+'</ol>';
   var tb=blk.length?'<div class="aq-redline-sheet__block" aria-hidden="true">'+blk.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'<span>'+R.length+' markups</span></div>':'';
-  return sec(H+'<div class="aq-redline-sheet" data-theme="light">'+zones+list+tb+'</div>','aq-redline-sheet-sec')}
+  var kinds=R.map(function(r,i){return FIG[F[i]]?F[i]:pick(r)});
+  return sec(H+'<div class="aq-redline-sheet" data-theme="light">'+zones+band(kinds)+list+tb+'</div>','aq-redline-sheet-sec')}
+})();
+/* Pointing at a markup column turns the band's camera onto its pin: ported from Subframe Motion "Product tour
+   spotlight" (guided-inspection), MIT, (c) 2026 Subframe: the plan scales about the stop (x1.7) and recentres in
+   0.55 s on cubic-bezier(0.22, 0.75, 0.22, 1) while the rest dims behind a spotlight; leaving returns the whole plan.
+   CSS transitions, so it stands still under reduced motion. The entrance tour (motion.js) uses the same camera. */
+var RS_CAM={W:1200,H:220,S:1.7};
+function rsCam(band,i){var cam=band&&band.querySelector('.aq-redline-sheet__cam');if(!cam)return;
+ var sp=(band.getAttribute('data-spots')||'').split(' ').map(function(p){return p.split(',').map(Number)}),p=i==null?null:sp[i],dim=band.querySelector('.aq-redline-sheet__dim');
+ [].forEach.call(band.querySelectorAll('.aq-redline-sheet__pin'),function(g){g.classList.toggle('is-on',p!=null&&+g.getAttribute('data-i')===+i)});
+ if(!p){cam.style.transform='';band.classList.remove('is-zoom');clearTimeout(band._rsT);band._rsT=setTimeout(function(){if(!band.classList.contains('is-zoom'))dim.setAttribute('d','')},600);return}
+ var s=RS_CAM.S,tx=Math.min(0,Math.max(RS_CAM.W-RS_CAM.W*s,RS_CAM.W/2-p[0]*s)),ty=Math.min(0,Math.max(RS_CAM.H-RS_CAM.H*s,RS_CAM.H/2-p[1]*s));
+ dim.setAttribute('d','M-200 -200H1400V420H-200ZM'+(p[0]-70)+' '+p[1]+'a70 70 0 1 0 140 0a70 70 0 1 0 -140 0Z');
+ cam.style.transform='translate('+tx.toFixed(1)+'px,'+ty.toFixed(1)+'px) scale('+s+')';band.classList.add('is-zoom')}
+if(typeof window!=='undefined')window.AQrsCam=rsCam;
+(function(){
+ if(typeof document==='undefined')return;
+ document.addEventListener('mouseover',function(ev){var it=ev.target.closest&&ev.target.closest('.aq-redline-sheet__item'),sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(!sh||sh.hasAttribute('data-tour'))return;
+  var list=[].slice.call(sh.querySelectorAll('.aq-redline-sheet__item'));rsCam(sh.querySelector('.aq-redline-sheet__band'),it?list.indexOf(it):null)});
+ document.addEventListener('mouseout',function(ev){var sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(sh&&!sh.contains(ev.relatedTarget)&&!sh.hasAttribute('data-tour'))rsCam(sh.querySelector('.aq-redline-sheet__band'),null)});
 })();

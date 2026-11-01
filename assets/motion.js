@@ -3805,6 +3805,34 @@ AQmotion.fx('NumeralIndex', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 80%');
   });
 });
+/* OptionChecker: the field opens like shutters, then the blueprint draws and the options follow.
+   Ported from Subframe Motion "Staggered shutter reveal" (shutter-scene), MIT, (c) 2026 Subframe: every square opens
+   top-down in 820 ms on the example's cubic-bezier(0.16, 1, 0.3, 1), 45 ms apart (here along the diagonals, so the
+   checkerboard opens as a wave from the top-left corner). Then the blueprint tile's control system draws on (panel,
+   PLC, screen, historian, DMZ, bus), each option cell rises and its slash numeral rolls up on the odometer. The
+   section head stays with the core's word reveal. One timeline, once, < 3.5 s. */
+AQmotion.fx('OptionChecker', function (root, m) {
+  root.querySelectorAll('.aq-option-checker').forEach(function (el) {
+    var field = el.querySelector('.aq-option-checker__field'), list = el.querySelector('.aq-option-checker__cells');
+    if (!field || !list || !m.free(field) || !m.free(list)) return; m.claim(field); m.claim(list);
+    var qa = function (s) { return [].slice.call(el.querySelectorAll(s)) };
+    if (window.CustomEase && !CustomEase.get('aq-shutter')) CustomEase.create('aq-shutter', 'M0,0 C0.16,1 0.3,1 1,1');
+    var tiles = qa('.aq-option-checker__tile'), cells = qa('.aq-option-checker__cell'), bp = qa('.aq-option-checker__bp path, .aq-option-checker__bp rect, .aq-option-checker__bp ellipse');
+    var diag = function (t) { var s = t.style; return (parseInt(s.gridRowStart || s.gridRow, 10) || 1) + (parseInt(s.gridColumnStart || s.gridColumn, 10) || 1) };
+    var tl = m.tw(gsap.timeline({ paused: true }));
+    tiles.forEach(function (t) {
+      tl.fromTo(t, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.82, ease: window.CustomEase ? 'aq-shutter' : 'expo.out', clearProps: 'clipPath' }, (diag(t) - 2) * 0.045 * 2);
+    });
+    if (window.DrawSVGPlugin) tl.fromTo(bp, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.6, stagger: 0.05, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.6);
+    tl.from(qa('.aq-option-checker__bp circle'), { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, 1.5);
+    cells.forEach(function (c, i) {
+      tl.from(c, { y: 16, autoAlpha: 0, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.35 + i * 0.09);
+      var n = c.querySelector('.aq-option-checker__num');
+      if (n) tl.call(function () { m.count(n, { now: true, duration: 0.9 }) }, null, 0.4 + i * 0.09);
+    });
+    m.on(el, function () { tl.play() }, 'top 78%');
+  });
+});
 /* OptionList (plain and decisions; the modules shape belongs to OptionModules): a drawn schedule filling in. Rows
    come in reading order, each hairline ruling across first; the big index decodes digit by digit, the option lands,
    then its line follows. Decisions: the fork mark draws from its stem out to both branches, and the framed "?" strikes
@@ -4542,35 +4570,6 @@ AQmotion.fx('Prose', function (root, m) {
     }, 'top 85%');
   });
 });
-/* RailModules: the panel is fitted. The rail slides along the plate, the nameplate decodes, then the modules drop
-   onto the rail one after another and seat with a small settle; their terminal screws turn home, each lamp tests
-   (lights, then goes back to its rest state), and each module's leader runs down to its callout, which prints.
-   Hover lifts a module off the rail and lights its lamp. One timeline, once, < 5 s. Phones: the vertical rail grows
-   down and the modules slide onto it from the right. */
-AQmotion.fx('RailModules', function (root, m) {
-  root.querySelectorAll('.aq-rail-modules').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var qa = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) }, nar = m.narrow();
-    var mods = qa('.aq-rail-modules__m').filter(function (x) { return !nar || !x.classList.contains('aq-fold-x') });
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    var rail = el.querySelector('.aq-rail-modules__rail'), base = el.querySelector('.aq-rail-modules__base span');
-    if (rail) tl.from(rail, nar ? { scaleY: 0, transformOrigin: '50% 0%', duration: 0.8, clearProps: 'transform' } : { xPercent: -100, duration: 0.9, ease: 'power3.inOut', clearProps: 'transform' }, 0);
-    if (base) { tl.from(base, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, 0.3); if (window.ScrambleTextPlugin) { var s = base.textContent; base.setAttribute('aria-label', s); tl.to(base, { duration: 0.6, scrambleText: { text: s, chars: 'upperCase', speed: 0.6 }, ease: 'none' }, 0.3) } }
-    mods.forEach(function (mo, i) {
-      var t = 0.5 + i * 0.22, body = mo.querySelector('.aq-rail-modules__body'), d = mo.querySelector('.aq-rail-modules__d');
-      tl.from(body, nar ? { x: 40, autoAlpha: 0, duration: 0.55, clearProps: 'transform,opacity,visibility' } : { y: -40, autoAlpha: 0, duration: 0.6, ease: window.CustomEase && CustomEase.get('aq-settle') ? 'aq-settle' : 'power3.out', clearProps: 'transform,opacity,visibility' }, t);
-      tl.from(qa('.aq-rail-modules__term i', mo), { rotation: '-=90', duration: 0.5, stagger: 0.02, ease: 'power2.out', clearProps: 'transform' }, t + 0.35);
-      tl.call(function () { mo.classList.add('is-on') }, null, t + 0.55);
-      tl.call(function () { mo.classList.remove('is-on') }, null, t + 1.25);
-      if (d) {
-        if (!nar) tl.fromTo(d, { '--rm-lead': 0 }, { '--rm-lead': 1, duration: 0.4, ease: 'power2.out', clearProps: '--rm-lead' }, t + 0.5);
-        tl.from(d, { y: 8, autoAlpha: 0, duration: 0.45, clearProps: 'transform,opacity,visibility' }, t + 0.6);
-      }
-      if (nar) gsap.set(mo, { autoAlpha: 1 });
-    });
-    m.on(el, function () { tl.play() }, 'top 75%');
-  });
-});
 /* ReaderSplit: the two halves meet across the seam. Row by row the reader slides in from the left, the node strikes on the seam, the tie shoots across
    and the reading arrives from the right. One timeline, once on scroll-in, under 3.5 s. Folded rows are left alone. */
 AQmotion.fx('ReaderSplit', function (root, m) {
@@ -4667,7 +4666,11 @@ AQmotion.fx('RecordSlips', function (root, m) {
 /* RedlineSheet: a design review in progress. The sheet unrolls from the top, then each markup in turn: the figure
    draws on as it was designed, the reviewer's pen rings the mistake with its revision cloud, the triangle and the
    failure strike, the mistake is struck through, and the correction is drawn into the figure in flow while its note
-   writes in from the left. One timeline, once, under 5 s. The section heading is left to the core. */
+   writes in from the left. Pass 9b: first the P&ID band draws (pipes, then the water route), then a guided tour
+   (Subframe Motion "Product tour spotlight", guided-inspection, MIT, (c) 2026 Subframe; the camera is AQrsCam in the
+   renderer) turns the band's camera onto each failure's pin as its markup is drawn, and pulls back to the whole plan
+   at the end. Pointing is ignored during the tour. One timeline, once, under 5 s. The section heading is left to
+   the core. */
 AQmotion.fx('RedlineSheet', function (root, m) {
   root.querySelectorAll('.aq-redline-sheet').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
@@ -4675,6 +4678,15 @@ AQmotion.fx('RedlineSheet', function (root, m) {
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
     tl.fromTo(el, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.9, ease: 'power3.inOut', clearProps: 'clipPath' }, 0)
       .from(qa('.aq-redline-sheet__zones span, .aq-redline-sheet__block'), { autoAlpha: 0, duration: 0.4, stagger: 0.04, clearProps: 'opacity,visibility' }, 0.5);
+    var band = el.querySelector('.aq-redline-sheet__band'), cam = window.AQrsCam || null, T0 = 0.55;
+    if (band) {
+      el.setAttribute('data-tour', '');
+      tl.from(band, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0.45);
+      var bl = qa('.aq-redline-sheet__p', band), bw = qa('.aq-redline-sheet__p--w, .aq-redline-sheet__p--chev', band);
+      if (D) { tl.fromTo(bl.filter(function (x) { return bw.indexOf(x) < 0 }), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.6, stagger: 0.01, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.5);
+        tl.fromTo(bw, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.7, stagger: 0.02, ease: 'none', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.8); }
+      tl.from(qa('.aq-redline-sheet__pl, .aq-redline-sheet__pin', band), { autoAlpha: 0, duration: 0.3, stagger: 0.02, clearProps: 'opacity,visibility' }, 1.0);
+    } else T0 = 0;
     var draw = function (els, at, dur) {
       els = els.filter(function (x) { return x.getTotalLength });
       if (!els.length) return;
@@ -4682,10 +4694,11 @@ AQmotion.fx('RedlineSheet', function (root, m) {
       else tl.from(els, { autoAlpha: 0, duration: dur, clearProps: 'opacity,visibility' }, at);
     };
     qa('.aq-redline-sheet__item').forEach(function (it, i) {
-      var at = 0.7 + i * 0.75, svg = it.querySelector('svg');
+      var at = 0.7 + T0 + i * 0.75, svg = it.querySelector('svg');
       var head = it.querySelector('.aq-redline-sheet__head'), rev = it.querySelector('.aq-redline-sheet__rev'), err = it.querySelector('.aq-redline-sheet__err'), fix = it.querySelector('.aq-redline-sheet__fix');
       var base = qa('.aq-redline-sheet__ln, .aq-redline-sheet__thin, .aq-redline-sheet__flw', svg), bars = qa('.aq-redline-sheet__bar, .aq-redline-sheet__txt, .aq-redline-sheet__paper, .aq-redline-sheet__avg', svg);
       var marks = qa('.aq-redline-sheet__mark .aq-redline-sheet__cl', svg), mlbl = qa('.aq-redline-sheet__mark text', svg), fixes = qa('.aq-redline-sheet__fixln', svg), flbl = qa('.aq-redline-sheet__fixg text', svg);
+      if (band && cam) tl.call(function () { cam(band, i) }, null, at);
       tl.from(it.querySelector('.aq-redline-sheet__fig'), { autoAlpha: 0, y: 12, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at);
       draw(base, at + 0.1, 0.6);
       if (bars.length) tl.from(bars, { autoAlpha: 0, scaleY: 0, transformOrigin: '50% 100%', duration: 0.4, stagger: 0.012, clearProps: 'transform,opacity,visibility' }, at + 0.2);
@@ -4698,6 +4711,7 @@ AQmotion.fx('RedlineSheet', function (root, m) {
       if (flbl.length) tl.from(flbl, { autoAlpha: 0, duration: 0.25, clearProps: 'opacity,visibility' }, at + 1.5);
       if (fix) tl.from(fix, { clipPath: 'inset(0 100% 0 0)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, at + 1.3);
     });
+    if (band) tl.call(function () { if (cam) cam(band, null); el.removeAttribute('data-tour') }, null, tl.duration() - 0.3);
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
@@ -5216,33 +5230,6 @@ AQmotion.fx('SectionTrain', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 70%');
   });
 });
-/* SensorLoop: the loop is drawn and commissioned. The equipment draws back to front and the water runs the loop
-   once (IsoKit's choreography, AQiso.timeline), each stage lighting as the water reaches it; as the water passes a
-   measuring point its balloon strikes on, then every leader runs from its schedule card down (or up) to the balloon
-   and the card prints. Last the bus: the taps drop into it and the data recording balloon lands at its end. Hover a
-   card to light its leader, balloons and tap. One timeline, once, < 5 s. Phones: the cards rise in order. */
-AQmotion.fx('SensorLoop', function (root, m) {
-  root.querySelectorAll('.aq-sensor-loop').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var qa = function (s) { return [].slice.call(el.querySelectorAll(s)) }, svg = el.querySelector('svg.aq-iso');
-    var cards = qa('.aq-sensor-loop__card').filter(function (c) { return !c.classList.contains('aq-fold-x') || !m.narrow() });
-    var balls = qa('.aq-sensor-loop__ball'), leads = qa('.aq-sensor-loop__lead'), bus = qa('.aq-sensor-loop__bus, .aq-sensor-loop__tap, .aq-sensor-loop__node');
-    var tl = svg && window.AQiso ? AQiso.timeline(svg, m, { draw: 1.3, pipe: 0.6, flow: 1.4, stagger: 0.04 }) : null;
-    if (!tl) { tl = m.tw(gsap.timeline({ paused: true })) }
-    var t0 = tl.duration() ? Math.max(1.3, tl.duration() - 1.2) : 0.3;
-    gsap.set(balls, { autoAlpha: 0 }); gsap.set(bus, { autoAlpha: 0 });
-    var flowAt = tl.labels && tl.labels.flow != null ? tl.labels.flow : t0;
-    tl.to(balls, { autoAlpha: 1, duration: 0.25, stagger: 0.09, clearProps: 'opacity,visibility' }, flowAt + 0.2);
-    tl.from(balls, { scale: 1.6, transformOrigin: '50% 50%', duration: 0.35, stagger: 0.09, ease: 'back.out(2)', clearProps: 'transform' }, flowAt + 0.2);
-    if (!m.narrow()) {
-      if (window.DrawSVGPlugin) { leads.forEach(function (l) { l.setAttribute('vector-effect', 'non-scaling-stroke') });
-        tl.fromTo(leads, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.5, stagger: 0.07, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, flowAt + 0.5) }
-      tl.from(cards, { y: function (i, c) { return c.classList.contains('aq-sensor-loop__card--b') ? 12 : -12 }, autoAlpha: 0, duration: 0.45, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, flowAt + 0.6);
-    } else tl.from(cards, { y: 12, autoAlpha: 0, duration: 0.45, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 0.2);
-    tl.to(bus, { autoAlpha: 1, duration: 0.4, stagger: 0.03, clearProps: 'opacity,visibility' }, flowAt + 1.1);
-    m.on(el, function () { tl.play() }, 'top 70%');
-  });
-});
 /* SheetPreviews: the documents are dealt. The sheets start as one squared stack in the first column and deal out to
    their columns, the top sheet (the last column) first, each turning flat as it lands; the index numerals rise out of their line; then each thumbnail draws
    itself (grid, curves, logic, seal) and the code decodes, the text following. Once on scroll-in, under 3 s.
@@ -5379,6 +5366,32 @@ AQmotion.fx('ShopRoute', function (root, m) {
         .set(spool, { className: 'aq-shop-route__spool', clearProps: 'transform,opacity,visibility' });
     };
     m.on(el, function () { addSpool(); tl.play() }, 'top 70%');
+  });
+});
+/* SignalDial: the transmitter powers up. The bezel's ticks come on round the dial while the bezel sweeps back from
+   the last channel to channel 01 (the drag/turn mechanism ported from Subframe Motion "Exposure dial control",
+   camera-wheel, MIT, (c) 2026 Subframe; its 600 ms settle is the CSS transition the visitor's turns use), the index
+   drops onto 12 o'clock, the channel number rolls up on its odometer, the limit line runs out and the schedule rows
+   follow. One timeline, once, < 3 s. Turning the dial and picking rows is the visitor's to repeat (renderer). */
+AQmotion.fx('SignalDial', function (root, m) {
+  root.querySelectorAll('.aq-signal-dial').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var q = function (s) { return el.querySelector(s) }, qa = function (s) { return [].slice.call(el.querySelectorAll(s)) };
+    var dial = q('.aq-signal-dial__dial'), n = +el.getAttribute('data-n') || 1, st = +el.getAttribute('data-step') || 24;
+    var ticks = qa('.aq-signal-dial__tk'), rows = qa('.aq-signal-dial__row'), lim = q('.aq-signal-dial__lim');
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    gsap.set(ticks, { opacity: 0 });
+    tl.call(function () { dial.classList.add('is-drag') }, null, 0);
+    tl.fromTo(dial, { '--sd-a': (n - 1) * st + 60 }, { '--sd-a': -(+el.getAttribute('data-on') || 0) * st, duration: 1.6, ease: 'power3.inOut' }, 0);
+    tl.call(function () { dial.classList.remove('is-drag') }, null, 1.6);
+    tl.to(ticks, { opacity: function (i, t) { return t.classList.contains('aq-signal-dial__tk--stop') || t.classList.contains('aq-signal-dial__tk--mid') ? 1 : 0.6 }, duration: 0.2, stagger: { amount: 1.1 }, ease: 'none', clearProps: 'opacity' }, 0.05);
+    tl.from(qa('.aq-signal-dial__sn'), { autoAlpha: 0, duration: 0.3, stagger: 0.08, clearProps: 'opacity,visibility' }, 0.6);
+    tl.from(q('.aq-signal-dial__index'), { y: -12, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 1.2);
+    tl.from(qa('.aq-signal-dial__ch, .aq-signal-dial__name, .aq-signal-dial__val, .aq-signal-dial__tag'), { y: 8, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 1.3);
+    if (lim) tl.from(lim, { scaleX: 0, duration: 0.6, ease: 'power2.inOut', clearProps: 'transform' }, 1.4);
+    tl.call(function () { m.count(q('.aq-signal-dial__digits'), { now: true, duration: 0.9 }) }, null, 1.2);
+    tl.from(rows, { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, 0.3);
+    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
 /* SignatureBlocks: the documents are routed for signature. The key's three boxes stamp in, then the blocks follow in

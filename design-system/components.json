@@ -644,8 +644,8 @@
    "preview": "design-system/components/LayerStack/preview.html",
    "group": "Page sections",
    "height": "1000",
-   "width": "1280",
-   "subtitle": "A system's layers as an exploded isometric stack of plates, labels on leaders, one packet riding the data route",
+   "width": "1100",
+   "subtitle": "Huge title on navy cropped by a limestone sheet holding the exploded stack of control layers",
    "summary": "LayerStack shows the layers of one system (field instruments up to the plant network) as an exploded isometric stack of machined plates, each carrying its equipment, with the labels on leaders from the plate corners."
   },
   {
@@ -797,6 +797,16 @@
    "width": "1100",
    "subtitle": "Five situations as a Swiss index under huge outline numerals, each with its start page",
    "summary": "NumeralIndex sets a router table as a Swiss index of situations, each under a huge light outline numeral with its start page as a square go-cell, so a reader finds their situation by scanning large type rather than a table."
+  },
+  {
+   "name": "OptionChecker",
+   "readme": "design-system/components/OptionChecker/README.md",
+   "preview": "design-system/components/OptionChecker/preview.html",
+   "group": "Page sections",
+   "height": "820",
+   "width": "1100",
+   "subtitle": "Options as a Swiss grid beside a checkerboard field with one blueprint tile",
+   "summary": "OptionChecker sets an options block as a Swiss grid: a checkerboard field of navy, limestone and sunken squares with one navy blueprint tile of the control system, beside the section title set large and the options as cells under huge light slash numerals."
   },
   {
    "name": "OptionList",
@@ -969,16 +979,6 @@
    "summary": "Prose is running text in a SplitSection: the heading on the left, the first sentence as a large light lead, then the paragraphs in body size, with white space and nothing else around them."
   },
   {
-   "name": "RailModules",
-   "readme": "design-system/components/RailModules/README.md",
-   "preview": "design-system/components/RailModules/preview.html",
-   "group": "Page sections",
-   "height": "760",
-   "width": "1280",
-   "subtitle": "Options as modules clipped on a DIN rail, in macro close-up, each line on a leader under the plate",
-   "summary": "RailModules shows an options block as a macro close-up of a control panel backplate: one DIN rail across the plate and off both page edges, every option a module clipped onto it (terminal screws, status lamp, number, engraved icon, name), its line hanging on a leader under the plate."
-  },
-  {
    "name": "ReaderSplit",
    "readme": "design-system/components/ReaderSplit/README.md",
    "preview": "design-system/components/ReaderSplit/preview.html",
@@ -1023,9 +1023,9 @@
    "readme": "design-system/components/RedlineSheet/README.md",
    "preview": "design-system/components/RedlineSheet/preview.html",
    "group": "Page sections",
-   "height": "960",
+   "height": "1000",
    "width": "1100",
-   "subtitle": "Qualification failures as design-review markups: revision clouds on the mistake, the correction drawn in flow",
+   "subtitle": "P&ID band with each failure pinned, over three design-review markups on one sheet",
    "summary": "RedlineSheet shows qualification failures that start in design as design-review markups on one limestone drawing sheet: each failure is a column with its revision triangle, a small drawing of the design with the mistake ringed by a revision cloud, the mistake struck through and the correction drawn in flow as the markup note."
   },
   {
@@ -1159,16 +1159,6 @@
    "summary": "SectionTrain draws a pretreatment train as one sectional elevation on a limestone sheet, every vessel cut open so its bed shows and each bed holding what it caught, so the reader sees the water lose its particles, hardness, chlorine and fines stage by stage."
   },
   {
-   "name": "SensorLoop",
-   "readme": "design-system/components/SensorLoop/README.md",
-   "preview": "design-system/components/SensorLoop/preview.html",
-   "group": "Page sections",
-   "height": "1120",
-   "width": "1280",
-   "subtitle": "Signals drawn where they are measured: an instrumented loop with ISA balloons, schedule cards on leaders, the signal bus",
-   "summary": "SensorLoop draws a spec block of signals where each one is measured: one instrumented storage and distribution loop in IsoKit line art with an ISA instrument balloon on every measuring point, instrument schedule cards above and below on leaders, and a dashed signal bus every instrument drops into."
-  },
-  {
    "name": "SheetPreviews",
    "readme": "design-system/components/SheetPreviews/README.md",
    "preview": "design-system/components/SheetPreviews/preview.html",
@@ -1207,6 +1197,16 @@
    "width": "1100",
    "subtitle": "A spool's route through the shop drawn as a floor plan, with hold and witness points",
    "summary": "ShopRoute shows a fabrication sequence as the route a spool takes through the shop, drawn as a floor plan on a limestone sheet: one bay per step (three across, the second row returning right to left as a U-shaped shop runs) with its plan furniture, one route line through every bay with a stop per step, a gate after a hold point, and a ringed stop and tag for each witness point."
+  },
+  {
+   "name": "SignalDial",
+   "readme": "design-system/components/SignalDial/README.md",
+   "preview": "design-system/components/SignalDial/preview.html",
+   "group": "Page sections",
+   "height": "860",
+   "width": "1100",
+   "subtitle": "Signals table beside a multi-channel transmitter dial: pick a row or turn the dial",
+   "summary": "SignalDial sets a spec block of signals as the instrument schedule (the real table) beside one multi-channel transmitter dial whose bezel turns to the chosen signal and reads it out: channel number large and light, the signal's name, a limit line, the design value and the basis on an outlined tag."
   },
   {
    "name": "SignatureBlocks",
@@ -1423,9 +1423,9 @@
    "readme": "design-system/components/TraceLines/README.md",
    "preview": "design-system/components/TraceLines/preview.html",
    "group": "Page sections",
-   "height": "840",
+   "height": "820",
    "width": "1100",
-   "subtitle": "Two requirements traced as transit lines through the design documents to their tests",
+   "subtitle": "Two requirements as transit lines beside a readout tile of the traced limit",
    "summary": "TraceLines shows a traceability table as transit lines: each requirement is a line that starts at its code, set large, and runs down through one station per document, with a dashed pass where a document does not answer it and test-step chips branching off where a document names its tests."
   },
   {

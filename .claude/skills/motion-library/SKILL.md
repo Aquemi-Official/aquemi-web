@@ -102,3 +102,8 @@ their motion mechanism and values, rewrite the shell.
 | guided-inspection | MarketCallouts/motion.js: dimmed drawing with a lit window gliding to the callout's part (550 ms) | MarketCallouts (industries) |
 | orbiting-circles | StandardsOrbit/motion.js: nodes ride the outer orbit a quarter turn into their slots | StandardsOrbit (compliance) |
 | archive-folder | ProofFolders/motion.js: sheets straighten and spread, slip lifts, on hover/focus | ProofFolders (compliance) |
+| camera-wheel | SignalDial (renderer): role=slider dial, drag 54 px a step with snap, Arrow/Home/End; rows turn the bezel (CSS 600 ms) | SignalDial (sys-monitoring) |
+| quote-tick | SignalDial readout and TraceLines readout tile: new figure rises/drops 8 px from 0.2 opacity in 0.22 s (CSS) | sys-monitoring, svc-design |
+| shutter-scene | OptionChecker/motion.js: checkerboard squares open top-down 820 ms, 45 ms apart along diagonals | OptionChecker (sys-monitoring) |
+| exploded-camera | LayerStack style.css: pointed plate lifts 8 px, 600 ms cubic-bezier(.22,1,.36,1) | LayerStack (sys-monitoring) |
+| guided-inspection | RedlineSheet `AQrsCam`: P&ID band camera zooms x1.7 onto a failure's pin with a spotlight; entrance tour visits each pin | RedlineSheet (svc-design) |

@@ -2586,12 +2586,16 @@ LOOKS['layer-stack']=function(b,H){
  body+='<path class="aq-layer-stack__route" d="'+rd+'"/>'+lead+'<circle class="aq-layer-stack__packet" r="3" cx="'+isoF(route[0][0])+'" cy="'+isoF(route[0][1])+'"/>';
  var svg=isoSvg(Math.round(VW),Math.round(VH),body,'aq-layer-stack__svg',{origin:org});
  var crop='--ls-zoom:'+(VW/(bx.w)).toFixed(3)+';--ls-shift:'+(-(side-0)/bx.w*100).toFixed(2)+'%';
- return sec(H+'<div class="aq-layer-stack" data-at="'+fr+'" style="'+crop+'"><div class="aq-layer-stack__fig">'+svg+'</div>'
-  +'<ol class="aq-layer-stack__list" role="list">'+items+'</ol></div>'+(b.caption?'<p class="aq-small aq-prose">'+tx(b.caption)+'</p>':''),'aq-layer-stack-sec')};
-/* Hover or focus on a label lights its plate and leader */
+ /* pass 9b (concept sys-monitoring.0): the title set huge and light on a navy field, cropped by a limestone drawing
+    sheet that holds the stack and its numbered callouts and runs off the right and bottom edges */
+ return sec('<div class="aq-layer-stack__spread">'+H+'<div class="aq-layer-stack__sheet" data-theme="light"><div class="aq-layer-stack" data-at="'+fr+'" style="'+crop+'"><div class="aq-layer-stack__fig">'+svg+'</div>'
+  +'<ol class="aq-layer-stack__list" role="list">'+items+'</ol></div>'+(b.caption?'<p class="aq-small aq-prose">'+tx(b.caption)+'</p>':'')+'</div></div>','aq-band--navy aq-layer-stack-sec')};
+/* Pointing at a label or a plate lights both and lifts the plate off the stack (style.css: the lift ported from
+   Subframe Motion "Exploded product view" (exploded-camera), MIT, (c) 2026 Subframe: parts glide 600 ms on
+   cubic-bezier(0.22, 1, 0.36, 1)) */
 (function(){
  function set(root,i){root.classList.toggle('has-hot',i!=null);[].forEach.call(root.querySelectorAll('[data-ls]'),function(el){el.classList.toggle('is-hot',i!=null&&el.getAttribute('data-ls')===i)})}
- document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-layer-stack__item'),root=ev.target.closest&&ev.target.closest('.aq-layer-stack');if(root)set(root,t?t.getAttribute('data-ls'):null)});
+ document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&(ev.target.closest('.aq-layer-stack__item')||ev.target.closest('.aq-layer-stack__layer')),root=ev.target.closest&&ev.target.closest('.aq-layer-stack');if(root)set(root,t?t.getAttribute('data-ls'):null)});
  document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-layer-stack');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
 })();
 /* Look "limit-bento" -> LimitBento (design-system/components/LimitBento): a spec block's limits as a bento of tiles, one
@@ -3143,6 +3147,48 @@ LOOKS['numeral-index']=function(b,H){var C=b.cols||[],R=b.rows||[];
    +'<div class="aq-numeral-index__body"><h3 class="aq-numeral-index__t">'+tx(r[0])+'</h3>'+need+'</div>'+cell+'</li>'}).join('');
  return sec(H+'<ol class="aq-numeral-index">'+rows+'</ol>','aq-numeral-index-sec')};
 })();
+/* Look "option-checker" -> OptionChecker (design-system/components/OptionChecker): an options block as a Swiss grid.
+   Left, a checkerboard field of navy, limestone and sunken squares with one navy blueprint tile (two by two) that draws
+   the control system the options configure: the panel with its PLC and operator screen, the historian, the DMZ with
+   its one-way exit, the plant bus. Right, the section title large in the top cell, then the options as cells (two
+   wide, then three) under huge light slash numerals. Pointing at an option (or focusing its link) lights its part in
+   the blueprint tile. Concept: research/pass9b/concepts/sys-monitoring.4.png.
+   Fields: h, items [{t, d, link, intent, part}]. part: plc | historian | remote | bus | panel (the blueprint part the
+   option sets; none: no part lights). Phones: the field shortens to two rows over the cells, which stack. */
+var OC_PAT=['n','l','n','s','s','b','b','n','l','b','b','l','n','s','n','l'];
+function ocPlate(){
+ var p=function(k,inner){return '<g class="aq-option-checker__part" data-part="'+k+'">'+inner+'</g>'};
+ return '<svg class="aq-option-checker__bp" viewBox="0 0 200 200" aria-hidden="true" focusable="false">'
+  +'<path class="aq-option-checker__grid" d="M0 50H200M0 100H200M0 150H200M50 0V200M100 0V200M150 0V200"/>'
+  +p('panel','<rect x="18" y="26" width="84" height="118"/><path d="M24 32V138M98 60v14"/>')
+  +p('plc','<rect x="28" y="40" width="64" height="24"/><path d="M38 40v24M46 40v24M54 40v24M62 40v24M70 40v24M78 40v24"/>')
+  +'<g class="aq-option-checker__fixed"><rect x="36" y="82" width="48" height="32"/><path d="M42 104l8-6 7 4 8-9 7 5 6-3M60 114v8M50 122h20"/></g>'
+  +p('historian','<path d="M132 40v34c0 5 10 8 20 8s20-3 20-8V40"/><ellipse cx="152" cy="40" rx="20" ry="7"/><path d="M132 52c0 5 10 8 20 8s20-3 20-8M132 63c0 5 10 8 20 8s20-3 20-8"/>')
+  +p('remote','<rect x="124" y="100" width="56" height="34" stroke-dasharray="4 3"/><path d="M136 110h18v14h-18zM136 117h18M145 110v7M140 117v7M150 117v7M154 117H192M186 112l6 5-6 5"/>')
+  +p('bus','<path d="M8 168H192M60 144V168M152 82V100M145 134V168M30 168v10M90 168v10M170 168v10"/><circle cx="60" cy="168" r="2.5"/><circle cx="145" cy="168" r="2.5"/>')
+  +'<path class="aq-option-checker__link" d="M102 52H132"/></svg>'}
+LOOKS['option-checker']=function(b,H){
+ var I=b.items||[];if(!I.length)return BLOCKS.options(b,H);
+ var tiles=OC_PAT.map(function(k,j){var r=Math.floor(j/4)+1,c=j%4+1;if(k==='b'&&(j!==5))return '';
+  return k==='b'?'<div class="aq-option-checker__tile aq-option-checker__tile--b" data-r="2" style="grid-row:2/span 2;grid-column:2/span 2">'+ocPlate()+'</div>'
+   :'<div class="aq-option-checker__tile aq-option-checker__tile--'+k+'" data-r="'+r+'" style="grid-row:'+r+';grid-column:'+c+'"></div>'}).join('');
+ var top=I.length>3?2:I.length,cells=I.map(function(it,i){
+  var t=it.link&&wp(it.link)?wlink(it.link,it.t,it.intent).replace('</a>',' <span class="aq-option-checker__arrow" aria-hidden="true">&rarr;</span></a>'):tx(it.t);
+  return '<li class="aq-option-checker__cell'+(i<top?' aq-option-checker__cell--wide':'')+'"'+(it.part?' data-part="'+e(it.part)+'"':'')+'>'
+   +'<span class="aq-option-checker__n" aria-hidden="true"><span class="aq-option-checker__num">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-option-checker__sl">/</span></span>'
+   +'<h3 class="aq-option-checker__t">'+t+'</h3>'+(it.d?'<p class="aq-option-checker__d">'+tx(it.d)+'</p>':'')+'</li>'}).join('');
+ return sec('<div class="aq-option-checker" style="--oc-top:'+top+';--oc-rest:'+Math.max(1,I.length-top)+'">'
+  +'<div class="aq-option-checker__field" aria-hidden="true">'+tiles+'</div>'
+  +'<div class="aq-option-checker__body"><div class="aq-option-checker__head">'+H+'</div><ol class="aq-option-checker__cells" role="list">'+cells+'</ol></div></div>','aq-option-checker-sec')};
+/* Pointing at an option, or focusing its link, lights the part of the control system it sets */
+(function(){
+ if(typeof document==='undefined')return;
+ function set(root,k){[].forEach.call(root.querySelectorAll('[data-part]'),function(el){el.classList.toggle('is-hot',!!k&&el.getAttribute('data-part')===k)});root.classList.toggle('has-hot',!!k)}
+ function hit(ev){var c=ev.target.closest&&ev.target.closest('.aq-option-checker__cell'),root=ev.target.closest&&ev.target.closest('.aq-option-checker');if(root)set(root,c&&c.getAttribute('data-part'))}
+ document.addEventListener('mouseover',hit);document.addEventListener('focusin',hit);
+ document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-option-checker');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
+ document.addEventListener('focusout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-option-checker');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
+})();
 /* Look "option-tags" -> OptionTags (design-system/components/OptionTags): configuration options as physical tags laid
    out on a limestone table, the section heading on a paper label card. Each option is a shipping tag on a string
    (eyelet, string, the option's line glyph as a round stamp, its number in mono), a round tag, or a manila folder lying
@@ -3553,26 +3599,6 @@ LOOKS['proof-folders']=function(b,H){var C=b.cols||[],R=b.rows||[];
     +(go?'<div class="aq-proof-folders__go">'+k(3)+'<p class="aq-proof-folders__label">'+go+'</p></div>':'')
    +'</div></li>'}).join('')+'</ol>';
  return sec(H+'<div class="aq-proof-folders">'+heads+wFold(b,R.length,list,b.fold_noun||'standards')+'</div>','aq-proof-folders-sec')};
-/* Look "rail-modules" -> RailModules (design-system/components/RailModules): an options block (as modules) seen as a
-   macro close-up of the control panel's backplate: one DIN rail runs across the plate and off both edges, and every
-   option is a module clipped onto it, drawn front-on and large: terminal rows with screws top and bottom, a status
-   lamp, a mono number, the option engraved as a line icon and its name on the front label. Each module's line drops
-   on a leader to a callout under the plate. The block's base names the plate (a nameplate at the rail's end). A
-   module with a link is the link (its name ends in an arrow). Phones: the rail stands vertical at the left and the
-   modules stack along it as wide cards, the callout inside each.
-   Fields: items [{t, d, spot|icon, link}], base, fold (phones only), fold_noun. */
-LOOKS['rail-modules']=function(b,H){
- var I=b.items||[],n=I.length;if(!n)return BLOCKS.options(b,H);
- var screws=function(k){var s='';for(var j=0;j<k;j++)s+='<i></i>';return '<span class="aq-rail-modules__term" aria-hidden="true">'+s+'</span>'};
- var mods=I.map(function(it,i){var lk=it.link&&wp(it.link),num=(i<9?'0':'')+(i+1),v=wSpot(it.spot||it.icon,'l','aq-rail-modules__ic');
-  var face=screws(4)+'<span class="aq-rail-modules__face"><span class="aq-rail-modules__top" aria-hidden="true"><span class="aq-rail-modules__led"></span><span class="aq-rail-modules__n">'+num+'</span></span>'
-   +v+'<h3 class="aq-rail-modules__t">'+tx(it.t)+(lk?'<span class="aq-rail-modules__go" aria-hidden="true">→</span>':'')+'</h3></span>'+screws(4);
-  var body=lk?'<a class="aq-rail-modules__body" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+face+'</a>':'<div class="aq-rail-modules__body">'+face+'</div>';
-  return fli('<li class="aq-rail-modules__m" data-rm="'+i+'">'+body+(it.d?'<p class="aq-rail-modules__d">'+tx(it.d)+'</p>':'')+'</li>',b,i)}).join('');
- var plate='<div class="aq-rail-modules__plate"><span class="aq-rail-modules__rail" aria-hidden="true"></span>'
-  +(b.base?'<p class="aq-rail-modules__base"><span>'+tx(b.base)+'</span></p>':'')
-  +'<ol class="aq-rail-modules__list" role="list" style="--rm-n:'+n+'">'+mods+'</ol></div>';
- return sec(H+wFold(b,n,'<div class="aq-rail-modules">'+plate+'</div>',b.fold_noun||'options'),'aq-rail-modules-sec')};
 /* Look "reader-split" -> ReaderSplit (design-system/components/ReaderSplit): an evidence table (who, what they read,
    where we answer it) on a band split down the middle: the readers stand on the navy half, what each one reads and
    where we answer it sit across the seam on the limestone half, row against row. The seam is a drawn line with one
@@ -3688,6 +3714,27 @@ LOOKS['redline-sheet']=(function(){
   sheet:function(n){var o='';for(var i=0;i<7;i++)o+=P('M40 '+(34+i*18)+'H'+(240-(i*23)%90),'txt');
    return '<rect class="aq-redline-sheet__paper" x="24" y="16" width="272" height="152"/>'+o+'<g class="aq-redline-sheet__mark">'+P(cloud(160,88,64,24,12),'cl')+rev(240,50,n)+'</g>'}
  };
+ /* pass 9b (concept svc-design.0): the plant's P&ID as a navy band across the head of the sheet, each failure pinned
+    where it happens (the loop sized at the pump, the branch without its length, the divert after the conductivity
+    instrument). Drawn inline (flat ISA-style symbols, not IsoKit), aria-hidden: the columns carry the words. */
+ var PIN={peak:[690,160],deadleg:[880,132],setpoint:[400,120],sheet:[600,110]};
+ function band(kinds){var L=function(d,c){return '<path class="aq-redline-sheet__p'+(c?' aq-redline-sheet__p--'+c:'')+'" d="'+d+'"/>'},
+   W=function(x,y,s){return '<text class="aq-redline-sheet__pl" x="'+x+'" y="'+y+'" text-anchor="middle">'+s+'</text>'},
+   chev=function(x,y,d){return L(d==='d'?'M'+(x-5)+' '+(y-4)+'L'+x+' '+(y+2)+'L'+(x+5)+' '+(y-4):d==='l'?'M'+(x+4)+' '+(y-5)+'L'+(x-2)+' '+y+'L'+(x+4)+' '+(y+5):d==='u'?'M'+(x-5)+' '+(y+4)+'L'+x+' '+(y-2)+'L'+(x+5)+' '+(y+4):'M'+(x-4)+' '+(y-5)+'L'+(x+2)+' '+y+'L'+(x-4)+' '+(y+5),'chev')};
+  var g='<path class="aq-redline-sheet__grid" d="'+[1,2,3,4,5,6,7,8,9,10,11].map(function(i){return 'M'+i*100+' 0V220'}).join('')+'M0 55H1200M0 110H1200M0 165H1200"/>';
+  g+=L('M20 120H70M110 120H150M230 120H260M320 120H390M410 120H470','w')+chev(40,120)+chev(135,120)+chev(245,120)+chev(450,120);
+  g+=L('M70 96H110V144H70ZM76 102V138M104 102V138')+W(90,166,'PRE');
+  g+=L('M150 98H230V142H150ZM150 142L230 98')+W(190,166,'RO');
+  g+=L('M260 98H320V142H260ZM270 98V142M280 98V142M290 98V142M300 98V142M310 98V142')+W(290,166,'EDI');
+  g+=L('M352 120V100')+'<circle class="aq-redline-sheet__p" cx="352" cy="88" r="12"/>'+W(352,92,'CIT');
+  g+=L('M390 112L410 128V112L390 128Z')+L('M400 128V188','w')+chev(400,170,'d')+L('M390 188H410L400 200Z')+W(400,214,'drain');
+  g+=L('M470 70Q470 44 500 44Q530 44 530 70V170H470Z')+W(500,192,'TANK');
+  g+=L('M530 160H576','w')+'<circle class="aq-redline-sheet__p" cx="590" cy="160" r="14"/>'+L('M583 151L600 160L583 169Z');
+  g+=L('M604 160H1150V60H560Q530 60 530 70','w')+chev(800,160)+chev(1150,110,'u')+chev(1000,60,'l');
+  [760,880,1000].forEach(function(x,i){var y2=i===1?132:96;g+=L('M'+x+' 60V'+(y2-10),'w')+L('M'+(x-8)+' '+(y2-10)+'L'+(x+8)+' '+(y2+6)+'H'+(x-8)+'L'+(x+8)+' '+(y2-10)+'Z')+W(x,y2+24,'POU')});
+  var pins='',spots=[];kinds.forEach(function(k,i){var p=PIN[k]||PIN.sheet;spots.push(p);
+   pins+='<g class="aq-redline-sheet__pin" data-i="'+i+'" transform="translate('+p[0]+' '+p[1]+')"><circle class="aq-redline-sheet__ring" r="26"/><path class="aq-redline-sheet__ptri" d="M14 -46L28 -22H0Z"/><text class="aq-redline-sheet__pn" x="14" y="-26" text-anchor="middle">'+(i+1)+'</text></g>'});
+  return '<div class="aq-redline-sheet__band" data-theme="dark" aria-hidden="true" data-spots="'+spots.map(function(p){return p.join(',')}).join(' ')+'"><svg viewBox="0 0 1200 220" focusable="false" preserveAspectRatio="xMidYMid meet"><g class="aq-redline-sheet__cam">'+g+pins+'<path class="aq-redline-sheet__dim" d=""/></g></svg></div>'}
  function pick(r){var s=r.map(function(c){return String(c&&typeof c==='object'?c.t:c||'')}).join(' ');
   return /peak|average|turbulent|demand/i.test(s)?'peak':/dead leg|branch/i.test(s)?'deadleg':/setpoint|divert|drain|interlock/i.test(s)?'setpoint':'sheet'}
  return function(b,H){var C=b.cols||[],R=b.rows||[],F=b.figs||[],blk=(b.block||['Aquemi',b.nav||'']).filter(Boolean);
@@ -3701,7 +3748,27 @@ LOOKS['redline-sheet']=(function(){
     +(r[2]!=null?'<div class="aq-redline-sheet__fix">'+k(2,'flow')+'<p class="aq-redline-sheet__note">'+tcell(r[2])+'</p></div>':'')
     +'</li>'}).join('')+'</ol>';
   var tb=blk.length?'<div class="aq-redline-sheet__block" aria-hidden="true">'+blk.map(function(c){return '<span>'+e(c)+'</span>'}).join('')+'<span>'+R.length+' markups</span></div>':'';
-  return sec(H+'<div class="aq-redline-sheet" data-theme="light">'+zones+list+tb+'</div>','aq-redline-sheet-sec')}
+  var kinds=R.map(function(r,i){return FIG[F[i]]?F[i]:pick(r)});
+  return sec(H+'<div class="aq-redline-sheet" data-theme="light">'+zones+band(kinds)+list+tb+'</div>','aq-redline-sheet-sec')}
+})();
+/* Pointing at a markup column turns the band's camera onto its pin: ported from Subframe Motion "Product tour
+   spotlight" (guided-inspection), MIT, (c) 2026 Subframe: the plan scales about the stop (x1.7) and recentres in
+   0.55 s on cubic-bezier(0.22, 0.75, 0.22, 1) while the rest dims behind a spotlight; leaving returns the whole plan.
+   CSS transitions, so it stands still under reduced motion. The entrance tour (motion.js) uses the same camera. */
+var RS_CAM={W:1200,H:220,S:1.7};
+function rsCam(band,i){var cam=band&&band.querySelector('.aq-redline-sheet__cam');if(!cam)return;
+ var sp=(band.getAttribute('data-spots')||'').split(' ').map(function(p){return p.split(',').map(Number)}),p=i==null?null:sp[i],dim=band.querySelector('.aq-redline-sheet__dim');
+ [].forEach.call(band.querySelectorAll('.aq-redline-sheet__pin'),function(g){g.classList.toggle('is-on',p!=null&&+g.getAttribute('data-i')===+i)});
+ if(!p){cam.style.transform='';band.classList.remove('is-zoom');clearTimeout(band._rsT);band._rsT=setTimeout(function(){if(!band.classList.contains('is-zoom'))dim.setAttribute('d','')},600);return}
+ var s=RS_CAM.S,tx=Math.min(0,Math.max(RS_CAM.W-RS_CAM.W*s,RS_CAM.W/2-p[0]*s)),ty=Math.min(0,Math.max(RS_CAM.H-RS_CAM.H*s,RS_CAM.H/2-p[1]*s));
+ dim.setAttribute('d','M-200 -200H1400V420H-200ZM'+(p[0]-70)+' '+p[1]+'a70 70 0 1 0 140 0a70 70 0 1 0 -140 0Z');
+ cam.style.transform='translate('+tx.toFixed(1)+'px,'+ty.toFixed(1)+'px) scale('+s+')';band.classList.add('is-zoom')}
+if(typeof window!=='undefined')window.AQrsCam=rsCam;
+(function(){
+ if(typeof document==='undefined')return;
+ document.addEventListener('mouseover',function(ev){var it=ev.target.closest&&ev.target.closest('.aq-redline-sheet__item'),sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(!sh||sh.hasAttribute('data-tour'))return;
+  var list=[].slice.call(sh.querySelectorAll('.aq-redline-sheet__item'));rsCam(sh.querySelector('.aq-redline-sheet__band'),it?list.indexOf(it):null)});
+ document.addEventListener('mouseout',function(ev){var sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(sh&&!sh.contains(ev.relatedTarget)&&!sh.hasAttribute('data-tour'))rsCam(sh.querySelector('.aq-redline-sheet__band'),null)});
 })();
 /* Look "release-run" -> ReleaseRun (design-system/components/ReleaseRun): ordered steps (steps block) set as Swiss
    columns under one water line. A twin-wall line runs across the top of the columns, a node where each step starts;
@@ -4188,99 +4255,6 @@ LOOKS['section-train']=function(b,H){
  var base=b.base?'<p class="'+K+'__base"><span class="'+K+'__base-mark" aria-hidden="true"></span>'+tx(b.base)+'</p>':'';
  return sec(H+'<div class="'+K+'" data-theme="light" style="--n:'+n+'">'+svg+'<ol class="'+K+'__stages">'+li+'</ol>'+base+'</div>','aq-band--limestone '+K+'-sec')};
 })();
-/* Look "sensor-loop" -> SensorLoop (design-system/components/SensorLoop): a spec block of signals (signal, design
-   value, basis) drawn where each one is measured: one storage and distribution loop in IsoKit line art (tank, pump,
-   UV unit, TOC and conductivity analysers on the supply, divert valve with its drain, two points of use, the return
-   overhead to the tank) with an instrument balloon (ISA style, the row's number) on every measuring point, and a
-   dashed signal bus along the foot that every instrument drops into (data recording). The rows are instrument
-   schedule cards in a row above and a row below the drawing, each on a leader to its balloon; a signal measured at
-   several points (temperature) shows its number on each. The caption is the section's eyebrow, as on a plain spec.
-   Fields: h, caption, cols, rows [{p, v, m, site}], note, fold, fold_noun. site: toc | cond | temp | divert | flow |
-   uv | data (where the balloon sits; a row without one is a card only). Desktop shows every row; the fold applies on
-   phones, where the cards stack under the drawing beside a vertical signal rail. */
-function slScene(){var A=58,B=58,st=function(i,dz){return [A*i,-B*i,dz||0]},o={},p=[],b='',bus=[],B0=[];
- var tk=isoPart('tank',0,0,0,1.05,{id:'tank'}),pu=isoPart('pump',st(1)[0]+6,st(1)[1]+18,0,0.85,{id:'pump'}),uv=isoPart('uv',st(2)[0]-10,st(2)[1]+6,0,0.8,{id:'uv'});
- var zs=44,zh=112,an1=isoPart('analyzer',st(3)[0]+6,st(3)[1]-16,0,0.9,{id:'toc'}),an2=isoPart('analyzer',st(3)[0]+40,st(3)[1]-16,0,0.9,{id:'cond'});
- var dv=[st(4)[0]+20,st(4)[1]+8,zs],o1=isoPart('outlet',st(5)[0]+14,st(5)[1]+14,0,0.85,{id:'pou'}),o2=isoPart('outlet',st(6)[0]+14,st(6)[1]+14,0,0.85,{id:'pou'});
- /* supply: tank -> pump -> UV -> analyser tee -> divert -> header over the outlets */
- var s1=isoPipe(isoRoute(tk.ports.out,pu.ports.in,'xyz',{via:[[tk.ports.out[0]+10,tk.ports.out[1],tk.ports.out[2]]]}),{r:2.2,to:'pump',caps:false});
- var s2=isoPipe(isoRoute(pu.ports.out,uv.ports.in,'zxy',{via:[[pu.ports.out[0],pu.ports.out[1],zs]]}).concat([]),{r:2.2,to:'uv',caps:false});
- var uo=uv.ports.out,sA=[uo[0],uo[1],zs],sB=[dv[0]-9,dv[1],zs];
- var s3=isoPipe([uo,sA,[sA[0]+14,sA[1],zs],[sA[0]+14,sB[1],zs],sB],{r:2.2,to:'toc',caps:false});
- var va=isoPart('valve',dv[0],dv[1],dv[2],1.2,{id:'divert'});
- var hd1=[dv[0]+9,dv[1],zs],hx=o2.ports.in[0]+30;
- var s4=isoPipe([hd1,[hd1[0]+10,hd1[1],zs],[hd1[0]+10,hd1[1],zh-30],[hd1[0]+10,o1.ports.in[1],zh-30],[o1.ports.in[0]-30,o1.ports.in[1],zh-30]].concat([]),{r:2.2,to:'pou',caps:false});
- var hy=o1.ports.in[1],hz=zh-30;
- var hdr=isoPipe([[o1.ports.in[0]-30,hy,hz],[hx,hy,hz]],{r:2.2,to:'pou',caps:false});
- var drops=[o1,o2].map(function(oo){var q=oo.ports.in;return isoPipe([[q[0],hy,hz],[q[0],q[1],hz],q],{r:1.6,to:'pou',caps:false})}).join('');
- /* return: from the header end up, then one straight overhead run back along the line of the plant (level on the
-    drawing, as a pipe rack reads, set back behind the equipment) and a short leg into the tank's return nozzle */
- var tr=tk.ports.ret,RB=90,p0=[hx,hy,zh],p1=[hx,hy-RB,zh],p2=[tr[0],hx+hy-RB-tr[0],zh],rp=[[hx,hy,hz],p0,p1,p2];
- if(Math.abs(p2[1]-tr[1])>1)rp.push([tr[0],tr[1],zh]);rp.push(tr);
- var ret=isoPipe(rp,{r:2.2,to:'tank',caps:false,cls:'aq-sensor-loop__ret'});
- /* drain off the divert: a drop to the floor with an arrow */
- var dr=isoPipe([[dv[0]+5,dv[1],zs],[dv[0]+5,dv[1]+18,zs],[dv[0]+5,dv[1]+18,6]],{r:1.6,caps:'end',cls:'aq-sensor-loop__drain'});
- /* return instruments on the overhead run, in water order: flow meter, pressure gauge, temperature well */
- var mid=function(a,c,f){return [a[0]+(c[0]-a[0])*f,a[1]+(c[1]-a[1])*f,a[2]+(c[2]-a[2])*f]},rl=Math.hypot(p2[0]-p1[0],p2[1]-p1[1])||1,rd=[(p2[0]-p1[0])/rl,(p2[1]-p1[1])/rl,0];
- var fm=mid(p1,p2,0.2),gp=mid(p1,p2,0.45),t3=mid(p1,p2,0.72);t3=[t3[0],t3[1],zh+2.2];
- var ga=isoPart('gauge',gp[0],gp[1],zh+2.4,1,{id:'flow',value:0.5});
- var fmD=isoCylD([fm[0]-7*rd[0],fm[1]-7*rd[1],fm[2]],rd,14,4.4);
- /* order: back to front and in water order */
- b+=tk+s1+pu+s2+uv+an1+an2;
- b+=s3+dr+va+s4+hdr+o1+o2+drops+ret+ga+'<path class="aq-iso__eq" d="'+fmD[0]+fmD[1]+'"/>';
- /* temperature wells: small stems on the supply after the pump, on the tank and on the return */
- var tw=function(q){return '<path class="aq-iso__ln" d="'+isoPoly([q,[q[0],q[1],q[2]+7]])+'"/><path class="aq-iso__eq" d="'+isoRingD([q[0],q[1],q[2]+7],'z',1.6)+'"/>'};
- var t1=[pu.ports.out[0],pu.ports.out[1],zs+2.2],t2=[tk.ports.top[0]+10,tk.ports.top[1]+10,tk.ports.top[2]-14];
- b+=tw(t1)+tw(t3);
- /* measuring points (balloon anchors, 3D) */
- o.toc=[an1.ports.top];o.cond=[an2.ports.top];o.uv=[uv.ports.top];o.divert=[va.ports.top];
- o.flow=[[fm[0],fm[1],fm[2]+6],ga.ports.top];o.temp=[[t3[0],t3[1],t3[2]+9],[t1[0],t1[1],t1[2]+9],t2];
- /* the bus: under the floor line, a dashed riser from every instrument */
- var fl=function(q){return [q[0],q[1],0]};
- return {svg:b,pts:o,parts:[tk,pu,uv,an1,an2,o1,o2],ext:[[hx+30,hy,0],[hx,hy,zh+20],[-30,30,0],[tr[0],tr[1],zh+20]]}}
-LOOKS['sensor-loop']=function(b,H){H=wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro});
- var R=b.rows||[],sc=slScene(),W=1000;
- /* view box: the scene's bounds, padded for balloons and the bus */
- var all=[];Object.keys(sc.pts).forEach(function(k){sc.pts[k].forEach(function(q){all.push(q)})});all=all.concat(sc.ext);
- var bx=isoBounds(all,30),sx=W/bx.w,VH=Math.round(bx.h*sx+40),org=[-bx.x,-bx.y+50/sx];
- var scale=sx;
- /* balloons: rows with a site, in screen space of the scaled drawing */
- var S=function(q){var p=isoP(q);return [(p[0]+org[0])*scale,(p[1]+org[1])*scale]};
- var used=[],top=[],bot=[];
- R.forEach(function(r,i){var k=r&&r.site,ps=k==='data'?null:(k&&sc.pts[k]);
-  if(k==='data'){used.push({i:i,p:[W*0.86,VH-30],more:[]});return}
-  if(!ps||!ps.length)return;var a=S(ps[0]);a[1]-=26;used.push({i:i,p:a,more:ps.slice(1).map(function(q){var c=S(q);c[1]-=22;return c})})});
- /* rows of cards: the higher balloons to the top row, the lower to the bottom; each row sorted left to right */
- var srt=used.slice().sort(function(a,c){return a.p[1]-c.p[1]}),nt=Math.ceil(used.length/2);
- srt.forEach(function(u,j){(j<nt?top:bot).push(u)});
- [top,bot].forEach(function(L){L.sort(function(a,c){return a.p[0]-c.p[0]})});
- var col={};var lead='',ball='';
- [[top,'t'],[bot,'b']].forEach(function(z){var L=z[0],n=Math.max(L.length,1);L.forEach(function(u,j){var cx=W*(j+0.5)/n,p=u.p,y0=z[1]==='t'?0:VH,kn=z[1]==='t'?p[1]-30-j*6:p[1]+30+j*6;
-   if(z[1]==='b')kn=Math.max(kn,p[1]+30);
-   col[u.i]={row:z[1],c:j+1,n:n};
-   lead+='<path class="aq-sensor-loop__lead" data-sl="'+u.i+'" d="M'+cx.toFixed(1)+' '+y0+'V'+kn.toFixed(1)+'H'+p[0].toFixed(1)+'V'+(p[1]+(z[1]==='t'?-12:12)).toFixed(1)+'"/>'})});
- used.forEach(function(u){var num=(u.i<9?'0':'')+(u.i+1);[u.p].concat(u.more).forEach(function(p,k){
-  ball+='<g class="aq-sensor-loop__ball'+(k?' is-more':'')+'" data-sl="'+u.i+'"><path class="aq-sensor-loop__stem" d="M'+p[0].toFixed(1)+' '+(p[1]+12).toFixed(1)+'v'+(k?14:18)+'"/><circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="12"/><path class="aq-sensor-loop__bar" d="M'+(p[0]-12).toFixed(1)+' '+p[1].toFixed(1)+'h24"/><text x="'+p[0].toFixed(1)+'" y="'+(p[1]-2.5).toFixed(1)+'">'+num+'</text></g>'})});
- /* the bus: along the foot, a dashed drop from each balloon's measuring point */
- var by=VH-30,bus='<path class="aq-sensor-loop__bus" d="M'+(W*0.04).toFixed(1)+' '+by+'H'+(W*0.86-12).toFixed(1)+'"/>';
- used.forEach(function(u){if(R[u.i].site==='data')return;var x=u.p[0];bus+='<path class="aq-sensor-loop__tap" data-sl="'+u.i+'" d="M'+x.toFixed(1)+' '+(u.p[1]+30).toFixed(1)+'V'+by+'"/><circle class="aq-sensor-loop__node" cx="'+x.toFixed(1)+'" cy="'+by+'" r="2.5"/>'});
- var drawing='<g transform="scale('+scale.toFixed(4)+') translate('+org[0].toFixed(1)+' '+org[1].toFixed(1)+')">'+sc.svg+'</g>';
- var svg='<svg class="aq-iso aq-sensor-loop__svg" viewBox="0 0 '+W+' '+VH+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'
-  +'<g class="aq-sensor-loop__busg">'+bus+'</g>'+drawing+lead+ball+'</svg>';
- /* cards: data order in the DOM; placed in the top or bottom row column by column */
- var cards=R.map(function(r,i){var c=col[i],num=(i<9?'0':'')+(i+1),sp=c?Math.round(12/c.n):0,st=c?' style="grid-row:'+(c.row==='t'?1:3)+';grid-column:'+((c.c-1)*sp+1)+' / span '+sp+'"':'';
-  return fli('<li class="aq-sensor-loop__card'+(c?' aq-sensor-loop__card--'+c.row:' aq-sensor-loop__card--free')+'" data-sl="'+i+'"'+st+'><span class="aq-sensor-loop__n" aria-hidden="true">'+num+'</span>'
-   +'<h3 class="aq-sensor-loop__p">'+tx(r.p)+'</h3><p class="aq-sensor-loop__v">'+tx(r.v)+'</p>'+(r.m?'<p class="aq-sensor-loop__m">'+tx(r.m)+'</p>':'')+'</li>',b,i)}).join('');
- var nt2=top.length||1,nb=bot.length||1;
- var inner='<div class="aq-sensor-loop" style="--sl-top:'+nt2+';--sl-bot:'+nb+'"><ol class="aq-sensor-loop__cards" role="list">'+cards+'</ol>'
-  +'<div class="aq-sensor-loop__fig">'+svg+'</div></div>';
- var note=b.note?'<p class="aq-sensor-loop__note">'+tx(b.note)+'</p>':'';
- return sec(H+wFold(b,R.length,inner,b.fold_noun||'signals')+note,'aq-sensor-loop-sec')};
-(function(){
- function set(root,i){[].forEach.call(root.querySelectorAll('[data-sl]'),function(el){el.classList.toggle('is-hot',i!=null&&el.getAttribute('data-sl')===i)});root.classList.toggle('has-hot',i!=null)}
- document.addEventListener('mouseover',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-sensor-loop__card'),root=ev.target.closest&&ev.target.closest('.aq-sensor-loop');if(root)set(root,t?t.getAttribute('data-sl'):null)});
- document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-sensor-loop');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
-})();
 /* Look "sheet-previews" -> SheetPreviews (design-system/components/SheetPreviews): a short document list set as a Swiss
    row of sheets. Each document gets a column: a huge light index numeral, a paper sheet whose thumbnail shows the kind
    of document it is (a month-by-month basis grid, two projection curves, a logic sequence, a certificate with its seal
@@ -4487,6 +4461,91 @@ LOOKS['shop-route']=(function(){
    +'<ol class="aq-shop-route__bays">'+bays+'</ol>'
    +'<span class="aq-shop-route__door aq-shop-route__door--in" aria-hidden="true"></span>'+(rows===2?'<span class="aq-shop-route__door aq-shop-route__door--out" aria-hidden="true"></span>':'')
    +'</div>','aq-shop-route-sec')}
+})();
+/* Look "signal-dial" -> SignalDial (design-system/components/SignalDial): a spec block of signals as the instrument
+   schedule (the real table, left) beside one multi-channel transmitter dial (right). Every row is a channel: a stop
+   on the dial's bezel numbered like the row. The bezel turns to bring the chosen channel under the fixed index and the
+   face reads that channel out: the channel number large and light, the signal's name, a limit line, the design value
+   under it and the basis on an outlined tag. Choosing a row (hover, click, focus) turns the dial to it; the dial is
+   also a slider (drag, arrow keys, Home, End). The readout copies the chosen row's own cells, so no copy lives here.
+   Concept: research/pass9b/concepts/sys-monitoring.2.png (signals table beside a tick-dial readout).
+   Fields: h, caption (eyebrow, as SpecTable prints it), cols [signal, value, basis], rows [{p, v, m, link,
+   link_label, intent}], note, fold, fold_noun. Desktop shows every row; the fold applies on phones.
+   Phones: the dial first (smaller), the rows stacked under it. Without JS: channel 01 is shown, the table is whole. */
+var SD_STEP=24;
+function sdDial(n){var C=200,s='',t,a,r1,r2,cls;
+ /* the turning bezel: a tick every 3 degrees, a stop every 24 degrees from 12 o'clock for each channel */
+ for(t=0;t<120;t++){a=t*3;var st=t%8===0&&t/8<n;r1=192;r2=st?172:t%4===0?182:186;cls=st?'aq-signal-dial__tk aq-signal-dial__tk--stop':t%4===0?'aq-signal-dial__tk aq-signal-dial__tk--mid':'aq-signal-dial__tk';
+  var rad=(a-90)*Math.PI/180,c=Math.cos(rad),si=Math.sin(rad);
+  s+='<path class="'+cls+'"'+(st?' data-sd="'+(t/8)+'"':'')+' d="M'+(C+c*r1).toFixed(1)+' '+(C+si*r1).toFixed(1)+'L'+(C+c*r2).toFixed(1)+' '+(C+si*r2).toFixed(1)+'"/>'}
+ for(var i=0;i<n;i++){a=(i*SD_STEP-90)*Math.PI/180;s+='<text class="aq-signal-dial__sn" data-sd="'+i+'" x="'+(C+Math.cos(a)*158).toFixed(1)+'" y="'+(C+Math.sin(a)*158+4).toFixed(1)+'" transform="rotate('+(i*SD_STEP)+' '+(C+Math.cos(a)*158).toFixed(1)+' '+(C+Math.sin(a)*158).toFixed(1)+')">'+(i<9?'0':'')+(i+1)+'</text>'}
+ /* the fixed face: inner scale, a fine 120-step ring, the index at 12 o'clock */
+ var f='';for(t=0;t<60;t++){a=(t*6-90)*Math.PI/180;var rr=t%5===0?128:132;f+='M'+(C+Math.cos(a)*138).toFixed(1)+' '+(C+Math.sin(a)*138).toFixed(1)+'L'+(C+Math.cos(a)*rr).toFixed(1)+' '+(C+Math.sin(a)*rr).toFixed(1)}
+ return '<svg class="aq-signal-dial__svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">'
+  +'<circle class="aq-signal-dial__rim" cx="200" cy="200" r="197"/><circle class="aq-signal-dial__rim2" cx="200" cy="200" r="146"/>'
+  +'<g class="aq-signal-dial__ring">'+s+'</g>'
+  +'<path class="aq-signal-dial__fine" d="'+f+'"/>'
+  +'<path class="aq-signal-dial__index" d="M200 0V30M194 0H206L200 9Z"/></svg>'}
+LOOKS['signal-dial']=function(b,H){
+ var R=b.rows||[],C=b.cols||['Signal','Design value','Basis'],n=R.length;if(!n)return BLOCKS.spec(b,H);
+ if(b.caption&&!b.eyebrow)H=wSecHead({h:b.h,intro:b.intro,eyebrow:b.caption});
+ var pad=function(i){return (i<9?'0':'')+(i+1)};
+ var rows=R.map(function(r,i){
+  var go=r.link&&wp(r.link)?' <span class="aq-signal-dial__go">'+wlink(r.link,r.link_label||'More',r.intent)+'</span>':'';
+  return fli('<tr class="aq-signal-dial__row'+(i?'':' is-on')+'" data-sd="'+i+'"><th scope="row"><button type="button" class="aq-signal-dial__pick" data-sd="'+i+'" aria-pressed="'+(i?'false':'true')+'">'
+   +'<span class="aq-signal-dial__n" aria-hidden="true">'+pad(i)+'</span><span class="aq-signal-dial__p">'+tx(r.p)+'</span></button></th>'
+   +'<td class="aq-signal-dial__v">'+tx(r.v||'')+'</td><td class="aq-signal-dial__m">'+(r.m?tx(r.m):'')+go+'</td></tr>',b,i)}).join('');
+ var r0=R[0];
+ var read='<div class="aq-signal-dial__read" aria-hidden="true"><span class="aq-signal-dial__ch">CH</span>'
+  +'<span class="aq-signal-dial__num"><span class="aq-signal-dial__digits">'+pad(0)+'</span><span class="aq-signal-dial__of">/ '+pad(n-1)+'</span></span>'
+  +'<span class="aq-signal-dial__name">'+tx(r0.p)+'</span><span class="aq-signal-dial__lim"></span>'
+  +'<span class="aq-signal-dial__val">'+tx(r0.v||'')+'</span><span class="aq-signal-dial__tag"'+(r0.m?'':' hidden')+'>'+(r0.m?tx(r0.m):'')+'</span></div>';
+ var dial='<div class="aq-signal-dial__dial" role="slider" tabindex="0" aria-label="Signal channel" aria-valuemin="1" aria-valuemax="'+n+'" aria-valuenow="1" aria-valuetext="'+e(pad(0)+' '+r0.p)+'" style="--sd-a:0">'
+  +sdDial(n)+read+'</div>';
+ var inner='<div class="aq-signal-dial" data-n="'+n+'" data-step="'+SD_STEP+'"><div class="aq-signal-dial__fig">'+dial+'<p class="aq-signal-dial__hint" aria-hidden="true">Turn the dial or pick a row</p></div>'
+  +'<table class="aq-signal-dial__table"><thead><tr><th scope="col">'+tx(C[0]||'')+'</th><th scope="col">'+tx(C[1]||'')+'</th><th scope="col">'+tx(C[2]||'')+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+ return sec(H+wFold(b,n,inner,b.fold_noun||'signals')+(b.note?'<p class="aq-signal-dial__note">'+tx(b.note)+'</p>':''),'aq-signal-dial-sec')};
+/* The dial's behaviour (works without GSAP and under reduced motion; CSS does the turning, and stands still under
+   reduced motion). Ported from Subframe Motion "Exposure dial control" (camera-wheel), MIT, (c) 2026 Subframe:
+   a role=slider that follows a horizontal drag (54 px a step, the example's scale), snaps to the nearest stop on
+   release, and takes Arrow keys, Home and End; the readout swaps like Subframe's "Stock price ticker" (quote-tick):
+   the new figure rises 8 px (or drops, turning back) from 0.2 opacity in 0.22 s. */
+(function(){
+ if(typeof document==='undefined')return;
+ var pad=function(i){return (i<9?'0':'')+(i+1)};
+ function cell(tr,sel){var c=tr&&tr.querySelector(sel);return c?c.innerHTML:''}
+ function set(root,i,o){o=o||{};var n=+root.getAttribute('data-n')||1,st=+root.getAttribute('data-step')||24;i=Math.max(0,Math.min(n-1,i));
+  var dial=root.querySelector('.aq-signal-dial__dial'),prev=+(root.getAttribute('data-on')||0);
+  if(!o.free)dial.style.setProperty('--sd-a',(-i*st).toFixed(2));
+  if(i===prev&&!o.force)return;root.setAttribute('data-on',i);
+  var tr=root.querySelector('tr[data-sd="'+i+'"]');
+  [].forEach.call(root.querySelectorAll('[data-sd]'),function(el){var on=+el.getAttribute('data-sd')===i;el.classList.toggle('is-on',on);if(el.classList.contains('aq-signal-dial__pick'))el.setAttribute('aria-pressed',on?'true':'false')});
+  var rd=root.querySelector('.aq-signal-dial__read'),q=function(s){return rd.querySelector(s)};
+  q('.aq-signal-dial__digits').textContent=pad(i);
+  q('.aq-signal-dial__name').innerHTML=cell(tr,'.aq-signal-dial__p');
+  q('.aq-signal-dial__val').innerHTML=cell(tr,'.aq-signal-dial__v');
+  var m=tr&&tr.querySelector('.aq-signal-dial__m'),mt=m?m.cloneNode(true):null;if(mt)[].forEach.call(mt.querySelectorAll('.aq-signal-dial__go'),function(g){g.remove()});
+  var tag=q('.aq-signal-dial__tag');tag.innerHTML=mt?mt.innerHTML.trim():'';tag.hidden=!tag.innerHTML;
+  dial.setAttribute('aria-valuenow',i+1);dial.setAttribute('aria-valuetext',pad(i)+' '+(tr?tr.querySelector('.aq-signal-dial__p').textContent:''));
+  rd.style.setProperty('--sd-dir',i>prev?'8px':'-8px');rd.classList.remove('is-tick');void rd.offsetWidth;rd.classList.add('is-tick')}
+ function rootOf(t){return t&&t.closest&&t.closest('.aq-signal-dial')}
+ var drag=null;
+ document.addEventListener('click',function(ev){var p=ev.target.closest&&ev.target.closest('.aq-signal-dial__pick');if(p)set(rootOf(p),+p.getAttribute('data-sd'))});
+ document.addEventListener('focusin',function(ev){var p=ev.target.closest&&ev.target.closest('.aq-signal-dial__pick');if(p)set(rootOf(p),+p.getAttribute('data-sd'))});
+ document.addEventListener('mouseover',function(ev){if(drag)return;var r=ev.target.closest&&ev.target.closest('.aq-signal-dial__row');if(r&&!(ev.relatedTarget&&r.contains(ev.relatedTarget)))set(rootOf(r),+r.getAttribute('data-sd'))});
+ document.addEventListener('keydown',function(ev){var d=ev.target.closest&&ev.target.closest('.aq-signal-dial__dial');if(!d)return;
+  var root=rootOf(d),n=+root.getAttribute('data-n'),i=+(root.getAttribute('data-on')||0),k=ev.key;
+  if(['ArrowLeft','ArrowRight','ArrowDown','ArrowUp','Home','End'].indexOf(k)<0)return;ev.preventDefault();
+  set(root,k==='Home'?0:k==='End'?n-1:i+(k==='ArrowRight'||k==='ArrowUp'?1:-1))});
+ document.addEventListener('pointerdown',function(ev){var d=ev.target.closest&&ev.target.closest('.aq-signal-dial__dial');if(!d||ev.button!==0||drag)return;
+  ev.preventDefault();d.focus({preventScroll:true});var root=rootOf(d);
+  drag={d:d,root:root,x:ev.clientX,v:+(root.getAttribute('data-on')||0),id:ev.pointerId,n:+root.getAttribute('data-n'),st:+root.getAttribute('data-step')};
+  d.classList.add('is-drag');try{d.setPointerCapture(ev.pointerId)}catch(x){}});
+ document.addEventListener('pointermove',function(ev){if(!drag||ev.pointerId!==drag.id)return;
+  var sc=drag.d.offsetWidth/(drag.d.getBoundingClientRect().width||1),v=Math.max(0,Math.min(drag.n-1,drag.v-(ev.clientX-drag.x)*sc/54));
+  drag.d.style.setProperty('--sd-a',(-v*drag.st).toFixed(2));set(drag.root,Math.round(v),{free:true})});
+ function up(ev){if(!drag||ev.pointerId!==drag.id)return;var r=drag.root;drag.d.classList.remove('is-drag');drag=null;set(r,+(r.getAttribute('data-on')||0),{force:true})}
+ document.addEventListener('pointerup',up);document.addEventListener('pointercancel',up);
 })();
 /* Look "signature-blocks" -> SignatureBlocks (design-system/components/SignatureBlocks): a roles table (who writes,
    who reviews) set as the signature blocks at the foot of each document. On a navy ground every document or activity
@@ -5201,14 +5260,42 @@ LOOKS['trace-lines']=(function(){
  return function(b,H){var C=b.cols||[],R=b.rows||[],k=C.length-1,n=R.length;
   var docs='<div class="aq-trace-lines__docs" aria-hidden="true"><span class="aq-trace-lines__dh" style="grid-row:1">'+tx(C[0]||'')+'</span>'
    +R.map(function(r,i){return '<span class="aq-trace-lines__doc" style="grid-row:'+(i+2)+'"><span class="aq-trace-lines__dn">'+(i<9?'0':'')+(i+1)+'</span>'+tcell(r[0])+'</span>'}).join('')+'</div>';
-  var lines='';
-  for(var j=1;j<=k;j++){var h=str(C[j]),m=h.match(/^([^:]{2,16}):\s*(.+)$/);
+  var lines='',j;
+  for(j=1;j<=k;j++){var h=str(C[j]),m=h.match(/^([^:]{2,16}):\s*(.+)$/);
    lines+='<div class="aq-trace-lines__line" data-line="'+(j-1)+'" style="--col:'+(j+1)+'">'
     +'<div class="aq-trace-lines__head" style="grid-row:1">'+(m?'<span class="aq-trace-lines__code">'+tx(m[1])+'</span>':'')+'<h3 class="aq-trace-lines__req">'+tx(m?m[2]:h)+'</h3></div>'
     +'<ol class="aq-trace-lines__stops" role="list">'+R.map(function(r,i){var s=str(r[j]),na=/^not applicable\.?$/i.test(s.trim());
      return '<li class="aq-trace-lines__st'+(na?' is-na':'')+(i===n-1?' is-end':'')+'" style="grid-row:'+(i+2)+'">'
       +'<span class="aq-trace-lines__k">'+tcell(r[0])+'</span>'+(na?'<p class="aq-trace-lines__p">'+tx(s)+'</p>':cell(r[j]))+'</li>'}).join('')+'</ol></div>'}
-  return sec(H+'<div class="aq-trace-lines" style="--k:'+k+';--n:'+n+'">'+docs+lines+'</div>','aq-trace-lines-sec')}
+  /* pass 9b (concept svc-design.3): beside the lines, a readout tile holds the traced limit, figure huge and light on
+     flow with its tick scale and an outlined limit tag, over faint pipe ghosts; one face per requirement whose header
+     states a limit ("name ≤ 1.3 unit @ condition"), switched by the buttons under it or by pointing at a line */
+  var faces='',keys='',fn=0;
+  for(j=1;j<=k;j++){var hh=str(C[j]),mm=hh.match(/^([^:]{2,16}):\s*(.+)$/),req=mm?mm[2]:hh,code=mm?mm[1]:'',
+    lm=req.match(/^(.*?)\s*(≤|≥|<|>|=)\s*([\d.,]+)\s*([^@]*?)\s*(@.*)?$/);if(!lm)continue;
+   var tk='';for(var t=0;t<41;t++)tk+='<i'+(t===30?' class="is-lim"':t%5?'':' class="is-major"')+'></i>';
+   faces+='<div class="aq-trace-lines__face" data-line="'+(j-1)+'"'+(fn?' hidden':'')+'>'
+    +'<p class="aq-trace-lines__rk">'+tx(code)+(lm[1]?' · '+tx(lm[1]):'')+'</p>'
+    +'<p class="aq-trace-lines__fig"><span class="aq-trace-lines__num">'+tx(lm[3])+'</span>'+(lm[4]?'<span class="aq-trace-lines__unit">'+tx(lm[4])+'</span>':'')+'</p>'
+    +'<div class="aq-trace-lines__meter"><div class="aq-trace-lines__scale" aria-hidden="true">'+tk+'</div>'
+    +'<p class="aq-trace-lines__tag"><span>'+tx(lm[2]+' '+lm[3])+'</span>'+(lm[5]?' <span class="aq-trace-lines__at">'+tx(lm[5])+'</span>':'')+'</p></div></div>';
+   keys+='<button type="button" class="aq-trace-lines__key" data-line="'+(j-1)+'" aria-pressed="'+(fn?'false':'true')+'">'+tx(code||('0'+j))+'</button>';fn++}
+  var ghost='<svg class="aq-trace-lines__ghost" viewBox="0 0 400 520" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false"><path d="M60 0V150a40 40 0 0 0 40 40H300a40 40 0 0 1 40 40V520M84 0V150a16 16 0 0 0 16 16H300a64 64 0 0 1 64 64V520M0 380H180a30 30 0 0 1 30 30V520M0 404H180a6 6 0 0 1 6 6V520"/><path d="M52 60h40M52 64h40M332 330h40M332 334h40M150 372v40"/></svg>';
+  var tile=fn?'<div class="aq-trace-lines__panel">'+ghost+'<div class="aq-trace-lines__tile" data-theme="light" role="group" aria-label="Traced limit">'+faces+'</div>'+(fn>1?'<div class="aq-trace-lines__keys">'+keys+'</div>':'')+'</div>':'';
+  return sec(H+'<div class="aq-trace-lines-wrap'+(fn?' has-tile':'')+'"><div class="aq-trace-lines" style="--k:'+k+';--n:'+n+'">'+docs+lines+'</div>'+tile+'</div>','aq-trace-lines-sec')}
+})();
+/* The readout follows the visitor: a key, or pointing at a line, shows that requirement's limit. The swap is ported
+   from Subframe Motion "Stock price ticker" (quote-tick), MIT, (c) 2026 Subframe: the new figure rises 8 px (drops
+   going back) from 0.2 opacity in 0.22 s on cubic-bezier(0.2, 0.8, 0.2, 1); CSS, so it stands still under reduced
+   motion. */
+(function(){
+ if(typeof document==='undefined')return;
+ function show(w,i){var cur=w.querySelector('.aq-trace-lines__face:not([hidden])'),nx=w.querySelector('.aq-trace-lines__face[data-line="'+i+'"]');if(!nx||nx===cur)return;
+  var up=+i>+(cur&&cur.getAttribute('data-line')||0);if(cur)cur.hidden=true;nx.hidden=false;nx.style.setProperty('--tl-dir',up?'8px':'-8px');
+  nx.classList.remove('is-tick');void nx.offsetWidth;nx.classList.add('is-tick');
+  [].forEach.call(w.querySelectorAll('.aq-trace-lines__key'),function(k){k.setAttribute('aria-pressed',k.getAttribute('data-line')===String(i)?'true':'false')})}
+ document.addEventListener('click',function(ev){var k=ev.target.closest&&ev.target.closest('.aq-trace-lines__key');if(k)show(k.closest('.aq-trace-lines-wrap'),k.getAttribute('data-line'))});
+ document.addEventListener('mouseover',function(ev){var l=ev.target.closest&&ev.target.closest('.aq-trace-lines__line'),w=l&&l.closest('.aq-trace-lines-wrap');if(w)show(w,l.getAttribute('data-line'))});
 })();
 /* Look "twin-route" -> TwinRoute (design-system/components/TwinRoute): a FAT versus SAT table (table, as "versus")
    drawn as two routes the same skid takes. At the top, two IsoKit scenes: our test bay (the skid on the bay's feed
