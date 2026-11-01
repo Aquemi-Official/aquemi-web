@@ -2441,6 +2441,7 @@
    "blocks": [
     {
      "type": "table",
+     "look": "redline-sheet",
      "as": "failures",
      "h": "Qualification failures that start in design",
      "intro": "Each is cheap to fix on paper, expensive in a qualified room.",
@@ -2470,6 +2471,7 @@
     },
     {
      "type": "steps",
+     "look": "fidelity-ladder",
      "h": "Design stages, and what you approve",
      "items": [
       {
@@ -2503,6 +2505,7 @@
     },
     {
      "type": "docs",
+     "look": "issued-set",
      "h": "What you receive",
      "items": [
       {
@@ -2512,21 +2515,25 @@
       },
       {
        "t": "P&IDs",
-       "d": "Every line, valve and tag, with slopes, drains and sample points. IQ verifies against them."
+       "d": "Every line, valve and tag, with slopes, drains and sample points. IQ verifies against them.",
+       "use": "IQ"
       },
       {
        "t": "Functional and design specifications",
-       "d": "Setpoints, alarms, interlocks and divert logic, each testable. OQ tests against them."
+       "d": "Setpoints, alarms, interlocks and divert logic, each testable. OQ tests against them.",
+       "use": "OQ"
       },
       {
        "t": "Design review report and traceability matrix",
-       "d": "Evidence the design meets every URS line. Your quality unit approves DQ on it."
+       "d": "Evidence the design meets every URS line. Your quality unit approves DQ on it.",
+       "use": "DQ"
       }
      ],
      "nav": "What you receive"
     },
     {
      "type": "table",
+     "look": "trace-lines",
      "h": "An example: two requirements traced to their tests",
      "cols": [
       "Document",
@@ -2674,6 +2681,7 @@
    "blocks": [
     {
      "type": "table",
+     "look": "joint-tag",
      "h": "One joint, one log line",
      "cols": [
       "Field in the joint log",
@@ -2729,6 +2737,7 @@
     },
     {
      "type": "spec",
+     "look": "fusion-bench",
      "h": "Our fabrication standard",
      "caption": "FABRICATION · POLYPROPYLENE",
      "cols": [
@@ -2815,6 +2824,7 @@
     },
     {
      "type": "docs",
+     "look": "code-index",
      "h": "The fabrication dossier",
      "items": [
       {
@@ -2841,6 +2851,7 @@
     },
     {
      "type": "steps",
+     "look": "shop-route",
      "h": "From pipe to turnover",
      "items": [
       {

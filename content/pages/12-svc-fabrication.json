@@ -19,6 +19,7 @@
  "blocks": [
   {
    "type": "table",
+   "look": "joint-tag",
    "h": "One joint, one log line",
    "cols": [
     "Field in the joint log",
@@ -74,6 +75,7 @@
   },
   {
    "type": "spec",
+   "look": "fusion-bench",
    "h": "Our fabrication standard",
    "caption": "FABRICATION · POLYPROPYLENE",
    "cols": [
@@ -160,6 +162,7 @@
   },
   {
    "type": "docs",
+   "look": "code-index",
    "h": "The fabrication dossier",
    "items": [
     {
@@ -186,6 +189,7 @@
   },
   {
    "type": "steps",
+   "look": "shop-route",
    "h": "From pipe to turnover",
    "items": [
     {

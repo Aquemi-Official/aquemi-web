@@ -209,6 +209,16 @@
    "summary": "Closing is the call to action at the end of every page: one centred display headline on the navy band, one lead sentence and a large primary button, with the brand mark large and faint, cut by the top-left corner."
   },
   {
+   "name": "CodeIndex",
+   "readme": "design-system/components/CodeIndex/README.md",
+   "preview": "design-system/components/CodeIndex/preview.html",
+   "group": "Page sections",
+   "height": "1100",
+   "width": "1100",
+   "subtitle": "The fabrication dossier as an index in huge outline filing codes",
+   "summary": "CodeIndex shows a short document set as an index in huge type: each document's filing code (JNT, MAT, WQR, PT) runs as oversized outline mono across its row, cropped by the page edge on alternating sides, with the document's number, name and contents beside it; the deciding documents' codes are drawn in flow."
+  },
+  {
    "name": "ContactRoutes",
    "readme": "design-system/components/ContactRoutes/README.md",
    "preview": "design-system/components/ContactRoutes/preview.html",
@@ -309,6 +319,26 @@
    "summary": "FaultList lists where things fail and what we design against; each failure opens to its cause and the design control."
   },
   {
+   "name": "FidelityLadder",
+   "readme": "design-system/components/FidelityLadder/README.md",
+   "preview": "design-system/components/FidelityLadder/preview.html",
+   "group": "Page sections",
+   "height": "1220",
+   "width": "1100",
+   "subtitle": "Design stages as one drawing gaining detail, sheet by sheet, with hold-point stamps",
+   "summary": "FidelityLadder shows design stages as one drawing gaining detail on a navy blueprint band: every stage is a sheet with the same water package drawn at that stage's level (matrix, block route, P&ID, dimensioned isometric, frozen isometric, spools with their joints), joined by a run with a node per stage and a closed valve and \"Hold point\" stamp where you sign."
+  },
+  {
+   "name": "FusionBench",
+   "readme": "design-system/components/FusionBench/README.md",
+   "preview": "design-system/components/FusionBench/preview.html",
+   "group": "Page sections",
+   "height": "1300",
+   "width": "1100",
+   "subtitle": "The fabrication standard as a shop drawing of the joining bench and its parts list",
+   "summary": "FusionBench shows a fabrication standard as a shop drawing and its parts list on a navy blueprint band: an isometric of the joining bench (pipe stock, clamps holding two lengths fused at a bead, heater plate, test coupon, procedure clipboard, data logger, test cap and gauge, open bore with the rinse water, certificate binders), a numbered balloon on the part each row is about, and the rows as the drawing's parts list."
+  },
+  {
    "name": "GradeEditorial",
    "readme": "design-system/components/GradeEditorial/README.md",
    "preview": "design-system/components/GradeEditorial/preview.html",
@@ -377,6 +407,26 @@
    "width": "1280",
    "subtitle": "C&Q: the action level on a dial, the alert level on a chart recorder",
    "summary": "InstrumentLimits reads a spec block's levels off two instruments: the action level as an analog dial with its red-line, the alert level as a chart recorder whose alert line is drawn from the data (look `instrument-limits`, spec block `as: \"gauges\"`)."
+  },
+  {
+   "name": "IssuedSet",
+   "readme": "design-system/components/IssuedSet/README.md",
+   "preview": "design-system/components/IssuedSet/preview.html",
+   "group": "Page sections",
+   "height": "800",
+   "width": "1100",
+   "subtitle": "The documents you receive as an issued set of sheets dealt onto a desk, stamped with the step that uses them",
+   "summary": "IssuedSet shows the documents you receive as the issued set itself, dealt onto a desk: each document a sheet of paper at a slight turn with its code large, a miniature of what it looks like, its name and text, and a round stamp of the qualification step that uses it."
+  },
+  {
+   "name": "JointTag",
+   "readme": "design-system/components/JointTag/README.md",
+   "preview": "design-system/components/JointTag/preview.html",
+   "group": "Page sections",
+   "height": "1180",
+   "width": "1100",
+   "subtitle": "The joint log as a traceability tag hanging from the fused joint it records",
+   "summary": "JointTag shows a joint log as a traceability tag hanging from the joint it records: a polypropylene pipe in side view, fused at a double-rolled bead, runs off both page edges, and the tag on its wire carries one form box per log field, each field's number pinned on the part of the joint it describes."
   },
   {
    "name": "LayerStack",
@@ -669,6 +719,16 @@
    "summary": "Readout sets the page's one highlighted figure: the number large in Geist Mono Light in `flow` with its unit, the method on a limit tag, and a short caption."
   },
   {
+   "name": "RedlineSheet",
+   "readme": "design-system/components/RedlineSheet/README.md",
+   "preview": "design-system/components/RedlineSheet/preview.html",
+   "group": "Page sections",
+   "height": "960",
+   "width": "1100",
+   "subtitle": "Qualification failures as design-review markups: revision clouds on the mistake, the correction drawn in flow",
+   "summary": "RedlineSheet shows qualification failures that start in design as design-review markups on one limestone drawing sheet: each failure is a column with its revision triangle, a small drawing of the design with the mistake ringed by a revision cloud, the mistake struck through and the correction drawn in flow as the markup note."
+  },
+  {
    "name": "RelatedLinks",
    "readme": "design-system/components/RelatedLinks/README.md",
    "preview": "design-system/components/RelatedLinks/preview.html",
@@ -747,6 +807,16 @@
    "width": "1100",
    "subtitle": "Four loop documents as an exploded stack of drawing sheets",
    "summary": "SheetStack shows the documents delivered with a system as an exploded stack of isometric drawing sheets, each sheet drawing in miniature what the document is, its row beside it."
+  },
+  {
+   "name": "ShopRoute",
+   "readme": "design-system/components/ShopRoute/README.md",
+   "preview": "design-system/components/ShopRoute/preview.html",
+   "group": "Page sections",
+   "height": "940",
+   "width": "1100",
+   "subtitle": "A spool's route through the shop drawn as a floor plan, with hold and witness points",
+   "summary": "ShopRoute shows a fabrication sequence as the route a spool takes through the shop, drawn as a floor plan on a limestone sheet: one bay per step (three across, the second row returning right to left as a U-shaped shop runs) with its plan furniture, one route line through every bay with a stop per step, a gate after a hold point, and a ringed stop and tag for each witness point."
   },
   {
    "name": "SignatureBlocks",
@@ -847,6 +917,16 @@
    "width": "1280",
    "subtitle": "FAT and SAT: the protocol as a signed test sheet, hold points stamped, SAT torn off",
    "summary": "TestSheet sets ordered steps as the protocol's own test sheet lying on a limestone table: ruled rows, tick boxes, signed and stamped hold points, the last step torn off along a perforation (look `test-sheet`, steps block)."
+  },
+  {
+   "name": "TraceLines",
+   "readme": "design-system/components/TraceLines/README.md",
+   "preview": "design-system/components/TraceLines/preview.html",
+   "group": "Page sections",
+   "height": "840",
+   "width": "1100",
+   "subtitle": "Two requirements traced as transit lines through the design documents to their tests",
+   "summary": "TraceLines shows a traceability table as transit lines: each requirement is a line that starts at its code, set large, and runs down through one station per document, with a dashed pass where a document does not answer it and test-step chips branching off where a document names its tests."
   },
   {
    "name": "TwinRoute",
