@@ -8,11 +8,15 @@
    overrides "What comes back"; turnaround (a placeholder until confirmed) labels the arrow between the two lists. */
 function wClosing(c,p){if(!c||!c.h)return '';
  var f=c.proof&&c.proof.v?c.proof:null,inc=c.include&&c.include.length?c.include:null,ret=inc&&c.returns&&c.returns.length?c.returns:null;
- var list=function(cls,label,items){return '<div class="aq-closing__include'+cls+'"><p class="aq-closing__tag">'+tx(label)+'</p><ol>'+items.map(function(x,i){
-  return '<li>'+idx(i)+'<span>'+tx(x)+'</span></li>'}).join('')+'</ol></div>'};
+ /* Each row: index, text; a returned document also carries a drawn sheet (aq-closing__doc, aria-hidden). */
+ var list=function(cls,label,items,doc){return '<div class="aq-closing__include'+cls+'"><p class="aq-closing__tag">'+tx(label)+'</p><ol>'+items.map(function(x,i){
+  return '<li>'+(doc?'<span class="aq-closing__doc" aria-hidden="true"></span>':'')+idx(i)+'<span class="aq-closing__t">'+tx(x)+'</span></li>'}).join('')+'</ol></div>'};
  var send=inc?list('',c.include_label||'What to send us',inc):'';
  /* Exchange: what you send, the turnaround, what comes back, as two hairline lists on the navy */
- var swap=ret?'<div class="aq-closing__plate"><div class="aq-closing__swap">'+send+'<p class="aq-closing__turn"><span class="aq-closing__arrow" aria-hidden="true">→</span><span>'+tx(c.turnaround||'')+'</span></p>'+list(' aq-closing__returns',c.returns_label||'What comes back',ret)+'</div></div>':send;
+ /* Exchange (pass 9): a small process drawn on the navy. The send rows feed a manifold (a bus down their right side), one
+    pipe carries them across to the returns' manifold, and the turnaround rides the pipe as its label; each returned row
+    is a drawn sheet. The pipe (aq-closing__pipe) is aria-hidden drawing; the turnaround stays real text. */
+ var swap=ret?'<div class="aq-closing__plate"><div class="aq-closing__swap">'+send+'<p class="aq-closing__turn"><span class="aq-closing__pipe" aria-hidden="true"><i></i></span><span class="aq-closing__turn-t">'+tx(c.turnaround||'')+'</span></p>'+list(' aq-closing__returns',c.returns_label||'What comes back',ret,1)+'</div></div>':send;
  /* The original closing: one centred headline, lead and button, with the brand mark large and faint, cut by the top-left corner.
     A checklist or exchange, when the page has one, sits below the button under a hairline. */
  return '<section class="aq-section aq-band--navy aq-closing">'+MARK_CLOSE+'<div class="aq-in"><div class="aq-closing__frame">'+

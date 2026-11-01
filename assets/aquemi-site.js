@@ -152,11 +152,15 @@ function wCall(label,num,kind){num=String(num||'').trim();label=String(label||''
    overrides "What comes back"; turnaround (a placeholder until confirmed) labels the arrow between the two lists. */
 function wClosing(c,p){if(!c||!c.h)return '';
  var f=c.proof&&c.proof.v?c.proof:null,inc=c.include&&c.include.length?c.include:null,ret=inc&&c.returns&&c.returns.length?c.returns:null;
- var list=function(cls,label,items){return '<div class="aq-closing__include'+cls+'"><p class="aq-closing__tag">'+tx(label)+'</p><ol>'+items.map(function(x,i){
-  return '<li>'+idx(i)+'<span>'+tx(x)+'</span></li>'}).join('')+'</ol></div>'};
+ /* Each row: index, text; a returned document also carries a drawn sheet (aq-closing__doc, aria-hidden). */
+ var list=function(cls,label,items,doc){return '<div class="aq-closing__include'+cls+'"><p class="aq-closing__tag">'+tx(label)+'</p><ol>'+items.map(function(x,i){
+  return '<li>'+(doc?'<span class="aq-closing__doc" aria-hidden="true"></span>':'')+idx(i)+'<span class="aq-closing__t">'+tx(x)+'</span></li>'}).join('')+'</ol></div>'};
  var send=inc?list('',c.include_label||'What to send us',inc):'';
  /* Exchange: what you send, the turnaround, what comes back, as two hairline lists on the navy */
- var swap=ret?'<div class="aq-closing__plate"><div class="aq-closing__swap">'+send+'<p class="aq-closing__turn"><span class="aq-closing__arrow" aria-hidden="true">→</span><span>'+tx(c.turnaround||'')+'</span></p>'+list(' aq-closing__returns',c.returns_label||'What comes back',ret)+'</div></div>':send;
+ /* Exchange (pass 9): a small process drawn on the navy. The send rows feed a manifold (a bus down their right side), one
+    pipe carries them across to the returns' manifold, and the turnaround rides the pipe as its label; each returned row
+    is a drawn sheet. The pipe (aq-closing__pipe) is aria-hidden drawing; the turnaround stays real text. */
+ var swap=ret?'<div class="aq-closing__plate"><div class="aq-closing__swap">'+send+'<p class="aq-closing__turn"><span class="aq-closing__pipe" aria-hidden="true"><i></i></span><span class="aq-closing__turn-t">'+tx(c.turnaround||'')+'</span></p>'+list(' aq-closing__returns',c.returns_label||'What comes back',ret,1)+'</div></div>':send;
  /* The original closing: one centred headline, lead and button, with the brand mark large and faint, cut by the top-left corner.
     A checklist or exchange, when the page has one, sits below the button under a hairline. */
  return '<section class="aq-section aq-band--navy aq-closing">'+MARK_CLOSE+'<div class="aq-in"><div class="aq-closing__frame">'+
@@ -332,8 +336,12 @@ function heroLeaders(n,wide){var o='';for(var i=0;i<n;i++){var a=HERO_AT[i],top=
 function wHeroFigure(p,facts){var n=facts.length,co=function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'};
  return '<figure class="aq-hero__figure">'
   +(n?'<dl class="aq-hero__callouts aq-hero__callouts--top">'+facts.slice(0,2).map(co).join('')+'</dl>':'')
-  +'<div class="aq-hero__art"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span>'+(n?heroLeaders(n,true)+heroLeaders(n,false):'')+'</div>'
+  +'<div class="aq-hero__art"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span><span class="aq-hero__scan" aria-hidden="true"></span>'+(n?heroLeaders(n,true)+heroLeaders(n,false):'')+'</div>'
   +(n>2?'<dl class="aq-hero__callouts aq-hero__callouts--bottom">'+facts.slice(2,4).map(co).join('')+'</dl>':'')+'</figure>'}
+/* Hero sheet (pass 9): a faint drawing-sheet ground behind every hero, aria-hidden: small registration crosses on a
+   48 px grid, masked so they gather behind the right-hand figure and fade out before the headline. Pure decoration;
+   the pattern lines take the line-strong token at reduced opacity (style.css). */
+var HERO_SHEET='<svg class="aq-hero__sheet" aria-hidden="true" focusable="false"><defs><pattern id="aqHeroCross" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M24 20.5v7M20.5 24h7"/></pattern></defs><rect width="100%" height="100%" fill="url(#aqHeroCross)"/></svg>';
 /* Hub and company pages: an index of the other pages in this page's section, in pages.json order.
    A page whose first section already lists those pages (systems: the seven-families grid) sets "hero_index": false; its hero is then the text stack alone.
    A page alone in its section (projects) lists its own section headings instead; they link only when the block has a nav anchor. */
@@ -348,8 +356,8 @@ function heroBigIndex(p){var v=p.index,pages=Array.isArray(v)?v.map(wp).filter(B
  return pages.length?{big:true,label:p.section+' index · '+pages.length+' pages',aria:'Pages in '+p.section,items:pages.map(function(q){return {t:q.nav_label||q.headline,wp:q.id}})}:null}
 function wHeroIndex(x){var n=x.items.length;
  return '<nav class="aq-hero__index'+(x.big?' aq-hero__index--big':'')+'" aria-label="'+e(x.aria)+'"><p class="aq-hero__index-label">'+e(x.label)+'</p><ol>'+x.items.map(function(it,i){
-  var t='<span class="aq-hero__index-t">'+tx(it.t)+'</span>';
-  return '<li>'+(it.wp?'<a class="aq-hero__index-item" href="#'+e(it.wp)+'" data-wp="'+e(it.wp)+'">'+t+'</a>':it.jump?'<a class="aq-hero__index-item" href="#'+e(WP)+'" data-jump="'+e(it.jump)+'">'+t+'</a>':'<span class="aq-hero__index-item">'+t+'</span>')+
+  var t='<span class="aq-hero__index-t">'+tx(it.t)+'</span>',ic=it.wp&&pageIcon(it.wp)?wIcon(pageIcon(it.wp),'aq-hero__index-ic'):'';
+  return '<li>'+(it.wp?'<a class="aq-hero__index-item" href="#'+e(it.wp)+'" data-wp="'+e(it.wp)+'">'+t+ic+'</a>':it.jump?'<a class="aq-hero__index-item" href="#'+e(WP)+'" data-jump="'+e(it.jump)+'">'+t+'</a>':'<span class="aq-hero__index-item">'+t+'</span>')+
    (x.big&&i<n-1?'':'')+'</li>'}).join('')+'</ol></nav>'}
 /* Home: fine-line drawing of a figure-eight distribution loop (viewBox 440 x 520). Strokes are currentColor and tokens in style.css.
    Annotations name the loop, its parts and the two USP test chapters at the sensors. No figure is drawn: hero facts are
@@ -435,7 +443,7 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
  var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
  var right=home?wHomeLoop():art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
- return '<section class="aq-hero'+(home?' aq-hero--home':'')+(co?' aq-hero--mist':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
+ return '<section class="aq-hero'+(home?' aq-hero--home':'')+(co?' aq-hero--mist':'')+'">'+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
 /* IsoKit: the shared isometric line-drawing kit (README: design-system/components/IsoKit/README.md). Every look that
    draws equipment, pipes, water or drawing-sheet furniture builds it here, so all sections read as one hand.
    World axes: x runs to the lower right, y to the lower left, z up; 30° isometric, 1 world unit = 1 user unit along an
@@ -1254,16 +1262,19 @@ TABLE_AS.evidence=function(b,H){var C=b.cols||[],R=b.rows||[],RF=[].concat(b.ref
    return fli('<tr class="aq-evidence__row">',b,ri)+'<th scope="row" class="aq-evidence__t"><span class="aq-evidence__n" aria-hidden="true">'+(ri<9?'0':'')+(ri+1)+'</span>'+evName(r[0])+'</th>'
     +'<td class="aq-evidence__how">'+evHow(r[1])+'</td>'
     +'<td class="aq-evidence__proof">'+files+(links?'<p class="aq-evidence__go">'+links+'</p>':'')+'</td></tr>'}).join('')+'</tbody></table>',b.fold_noun||'requirements')+'</div>');};
-/* Block "faq" -> FAQ: hairline accordion rows (index, question, +/−), all closed; a shared name keeps one answer open.
-   The sign is [ glyph ]: a drawn plus whose upright turns flat (minus) when open. FAQ/motion.js eases the height on open/close.
-   Desktop: heading left, questions right (SplitSection).
+/* Block "faq" -> FAQ: question rows (index, question, a square +/− key), all closed; a shared name keeps one answer open.
+   FAQ/motion.js eases the height on open/close.
+   Desktop: heading left, questions right (SplitSection). Pass 9: under the heading a large outline counter, the dial
+   (aq-faq__dial, aria-hidden): the number of questions at rest, the open question's number while one is open ("02 of
+   06"), turned over by FAQ/motion.js; the head column stays in view while the rows scroll.
    One link per answer (DR-009: one line and a link): an item may carry link (a page id or page#anchor), link_label (its
    words; default the linked block's heading, else the page's name, wlabel) and intent (options the linked form ticks
    on arrival). It follows the answer as the Button link variant (wBtn), so page#anchor and intents work as on every
    button. Answer text stays plain: no markup is parsed out of "a". A link to a missing page renders nothing. */
 var faqN=0;
 function faqMore(it){return it.link&&wp(it.link)?'<p class="aq-faq__more">'+wBtn(it.link_label||wlabel(it.link),it.link,'link',it.intent)+'</p>':''}
-BLOCKS['faq']=function(b,H){faqN++;return split(H,'<div class="aq-faq">'+(b.items||[]).map(function(it,i){return '<details name="faq-'+faqN+'"><summary>'+idx(i)+'<span class="aq-faq__q">'+tx(it.q)+'</span><span class="aq-faq__sign" aria-hidden="true"><span class="aq-faq__glyph"></span></span></summary><div class="aq-faq__a"><p>'+tx(it.a)+'</p>'+faqMore(it)+'</div></details>'}).join('')+'</div>');};
+function faqDial(n){var t=(n<10?'0':'')+n;return '<div class="aq-faq__dial" aria-hidden="true" data-total="'+t+'"><span class="aq-faq__dial-n"><span>'+t+'</span></span><span class="aq-faq__dial-of"><span class="aq-faq__dial-k">'+(n===1?'question':'questions')+'</span></span></div>'}
+BLOCKS['faq']=function(b,H){faqN++;var I=b.items||[];return split(H+faqDial(I.length),'<div class="aq-faq">'+I.map(function(it,i){return '<details name="faq-'+faqN+'"><summary>'+idx(i)+'<span class="aq-faq__q">'+tx(it.q)+'</span><span class="aq-faq__sign" aria-hidden="true"><span class="aq-faq__glyph"></span></span></summary><div class="aq-faq__a"><p>'+tx(it.a)+'</p>'+faqMore(it)+'</div></details>'}).join('')+'</div>','aq-faq-section');};
 /* Table as "failures" -> FaultList: where things fail and what we design against. Fields as a table: cols [the failure
    column, then the columns revealed when a row opens, usually "Usual cause" and "What we design in"], rows. Each row is
    a native <details>: index, the failure, a +/− sign; open, the other columns sit side by side, each under its column
@@ -2622,14 +2633,18 @@ document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.targe
  if(fd)fd.classList.toggle('is-filtered',!!t);
  r.querySelector('.aq-notes-register__count').textContent=n+(n===1?' note':' notes')+(t?' in '+t:'');
  if(S)Flip.from(S,{targets:R,duration:0.45,ease:'power2.inOut',onEnter:function(x){return gsap.fromTo(x,{autoAlpha:0,x:-12},{autoAlpha:1,x:0,duration:0.4,stagger:0.03,clearProps:'transform,opacity,visibility'})}})});
-/* Block "related" -> RelatedLinks: the pages to read next. items: page ids. Each is one linked card under a hairline: the
-   index, a thumbnail of the target page, "01 / Systems" as an eyebrow label and the page's title with an arrow.
-   Thumbnail: the target page's icon (pageIcon in core.js). Desktop: up to four to a row; phones: one column of rows. */
-function relThumb(id){var n=pageIcon(id);return n?wIcon(n,'aq-related-links__thumb aq-related-links__icon'):''}
+/* Block "related" -> RelatedLinks: the pages to read next. items: page ids. Pass 9: one pipe runs along the top of the
+   row and every page hangs off it by a drop and a node, as a tile: the index and section label, the target page's
+   picture (its equipment drawing from ART when it has one, else its page icon drawn large as a Spot; aria-hidden), and
+   the page's title with an arrow. The whole tile is the link. Desktop: up to four to a row; phones: one column of rows
+   off a rail down the left. */
+function relVis(id){var s=wsplit(id)[0],n=pageIcon(id);
+ if(ART[s])return '<span class="aq-related-links__vis is-art" aria-hidden="true"><span class="aq-illustration aq-related-links__art" style="'+artMask(s)+'"></span></span>';
+ return n?'<span class="aq-related-links__vis" aria-hidden="true">'+wSpot(n,'l','aq-related-links__spot')+'</span>':''}
 BLOCKS['related']=function(b,H){var I=(b.items||[]).filter(wp);
  return sec(H+'<ol class="aq-related-links" style="--n:'+I.length+'">'+I.map(function(id,i){var p=wp(id),n=(i<9?'0':'')+(i+1);
- return '<li><a class="aq-related-links__card" href="#'+e(id)+'" data-wp="'+e(id)+'"><span class="aq-related-links__n" aria-hidden="true">'+n+'</span>'+relThumb(id)
-  +'<span class="aq-related-links__group"><span aria-hidden="true">'+n+' / </span>'+e(p.section)+'</span>'
+ return '<li><a class="aq-related-links__card" href="#'+e(id)+'" data-wp="'+e(id)+'"><span class="aq-related-links__n" aria-hidden="true">'+n+'</span>'
+  +'<span class="aq-related-links__group"><span aria-hidden="true">'+n+' / </span>'+e(p.section)+'</span>'+relVis(id)
   +'<span class="aq-related-links__title">'+tx(p.nav_label)+'<span class="aq-related-links__arrow" aria-hidden="true">→</span></span></a></li>'}).join('')+'</ol>');};
 /* Table as "roles" -> RoleMatrix: who writes, does or approves each document, like the signature blocks on a controlled
    document. Fields as a table: cols [document, then one column per role], rows. Each role cell is a stamp labelled

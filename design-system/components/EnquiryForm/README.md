@@ -66,14 +66,17 @@ Origin: concept L in design-system/inspiration/ (`concept-l-form.png`), rebuilt 
 
 ## Layout
 
-- **Desktop:** a `surface-raised` panel with one 1 px `line` border and `space-8` padding; the title row over a `line` hairline; each section a legend then a two-column field grid; the submit band under a `line` hairline.
-- **Phone** (`@container (max-width: 860px)`): `space-6` / `space-4` padding, one column, full-width submit.
+- **Desktop:** a `surface-raised` panel with one 1 px `line` border and `space-8` padding; across its top edge the title strip (pass 9); each section a legend then a two-column field grid; the submit band under a `line` hairline.
+- **Title strip:** the title row bleeds to the panel's edges as a `navy` strip (`space-4` / `space-8` padding): "Data sheet" in `on-navy` led by a short rule in `flow` lifted towards `on-navy`, the count in `on-navy-muted`, eyebrow style. Scoped as `.aq-form .aq-form__title` so the page's paragraph reset does not undo its bleed.
+- **Progress (stepped form):** a pipeline. Each step is a `space-8` square node (`radius-sm`, 1 px `line-strong`, its number in mono 13) on one 1 px `line-strong` line running to the next node, the step's name under it (Geist 500 14/20). Steps passed take a `flow` node and a 1.5 px `flow` line; the current node is filled with `action` (`on-action` number); steps ahead stay `line-strong`. With motion a `flow` ring (`aq-form__mark`) sits round the current node and slides to the next one.
+- **Legends:** the section number (`1.0`) in Geist 300 30/28 `flow` before the title.
+- **Phone** (`@container (max-width: 860px)`): `space-4` side padding, the strip bleeding the same way, step names 13/18, one column, full-width submit.
 
 ## Token rules
 
 - Panel on `surface-raised`, 1 px `line`, no shadow. Title row in the `eyebrow` style (mono 12/16, 500, 0.08em, uppercase, `ink-muted`) over a `line` hairline.
 - Section legends in the `h3` style (Geist 500 20/28, 18/26 on phones), sentence case, with the section number in mono 13 `ink-subtle`; item numbers mono 12 `ink-subtle`.
-- Checkbox options are 44 px cells on `surface` with a `line` border and `radius-sm`; a ticked cell gets a `flow` border. That is the only accent. The current step in the progress list is underlined in `flow`.
+- Checkbox options are 44 px cells on `surface` with a `line` border and `radius-sm`; a ticked cell takes a `flow` border, the `flow-tint` ground and a 3 px `flow` edge at its left (200 ms). The submit is `space-12` tall.
 - Inputs keep TextField sizing and radius (44 px tall, `radius-sm`, 2 px `focus` ring with 2 px offset).
 
 ## When not to use
@@ -82,4 +85,4 @@ Not for a one-field signup in a footer or a search box; those don't need a data 
 
 ## Motion
 
-Motion (`motion.js`): the sheet is drawn up on scroll-in (title rule rules across, progress steps and legends wipe in with numbers decoding, fields rise in reading order, revision strip last). In the stepped form the current step is underlined in `flow` (passed steps read in ink); with motion the underline is one marker that slides to the new step with Flip, and the new step slides in from the side it was asked for. Validation (`parts/EnquiryForm.js`, works without motion): a field is checked when the visitor leaves it after typing and live while it shows an error; Continue and Send check every visible field, do not advance, move focus to the first problem and show an `aq-field__error` line under each (joined by `aria-describedby`, inputs `aria-invalid`); Send also says how many need attention. A blocked Continue or Send fires `aq:invalid` and the motion layer gives those fields one short shake.
+Motion (`motion.js`): the sheet is drawn up on scroll-in (title rule rules across, progress steps and legends wipe in with numbers decoding, fields rise in reading order, revision strip last). In the stepped form the progress is a pipeline (above); with motion, on Continue the water runs along the line just passed (`--aq-fill` 0 to 1 on that step) and the ring slides on to the new node with Flip, and the new step slides in from the side it was asked for. Validation (`parts/EnquiryForm.js`, works without motion): a field is checked when the visitor leaves it after typing and live while it shows an error; Continue and Send check every visible field, do not advance, move focus to the first problem and show an `aq-field__error` line under each (joined by `aria-describedby`, inputs `aria-invalid`); Send also says how many need attention. A blocked Continue or Send fires `aq:invalid` and the motion layer gives those fields one short shake.

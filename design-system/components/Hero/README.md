@@ -7,6 +7,16 @@ Hero opens every page: eyebrow, one display headline, one lead sentence, one pri
 - The eyebrow names the system family and the standard: "Water for Injection · USP <1231> · Ph. Eur. 0169".
 - One hero per page. No carousel, no background video.
 
+## Pass 9: the first screen of a product site
+
+What changed for every hero, calm enough to open all 27 pages:
+
+- **Type:** the headline steps up to catalogue size: `aq-display` at `clamp(48px, 5.4cqi, 76px)`/1.02 (-0.035em), `aq-display-xl` on home at `clamp(56px, 6.4cqi, 88px)`/1 (-0.04em); phones 40/42 and 46/46. The eyebrow is led by a `space-8` 1.5 px `flow` rule (`space-6` on phones), the water line of the page. Lead at most 56 characters wide.
+- **Sheet:** `aq-hero__sheet`, the first child of every hero (`HERO_SHEET` in Hero.js, `aria-hidden`): small registration crosses on a 48 px grid (`line-strong` at 55 %), masked to gather at the top right behind the figure and fade before the headline (on phones, a band across the top).
+- **Equipment figure:** text 5 parts, figure 7 (it was 6 / 6), callout values `clamp(16px, 1.9cqi, 26px)`. A `flow` scan line (`aq-hero__scan`, inside `aq-hero__art`, hidden without motion) rides the print edge up the drawing as it wipes in.
+- **Index and system index:** the rows hang off one pipe rail down the left: twin `line-strong` walls `space-2` apart, the `flow` water line in the bore, a tee and a 7 px node into every row. Each linked row ends in its page's icon (`pageIcon`, `aq-hero__index-ic`, `ink-subtle`). Hover or focus lights the row's tee, node, number, title and icon in `flow`, lifts the icon and slides the arrow. The system index sets its numbers in Geist 300 34/32 and titles 22/28. `--aq-rail`, `--aq-water` (on the `ol`) and `--aq-tee`, `--aq-node` (on each `li`) default to 1.
+- Unchanged: every variant, the drawings, callouts and leaders, key facts, CTAs and intents, the hub-page index data, the drawn figures and the home loop.
+
 ## Which variant
 
 | Pages | Right-hand part | Grid class |
@@ -56,7 +66,7 @@ For pages with no equipment drawing, a quiet line-art figure in place of the ind
 ## Section index (hub and company pages)
 
 - Markup: `aq-hero__grid aq-hero__grid--index` (text 7 parts, index 5 parts, vertically centred). On the right `<nav class="aq-hero__index" aria-label="Pages in Systems">` holding `<p class="aq-hero__index-label">Systems · 7 pages</p>` and an `<ol>` of `<li><a class="aq-hero__index-item" href="#sys-pw" data-wp="sys-pw"><span class="aq-hero__index-t">Purified Water (PW) generation</span></a></li>`. An item that cannot link is a `<span class="aq-hero__index-item">`.
-- The shared row grammar: `line` hairlines between rows (at least 44 px tall). The numbers `01`–`0N` are the shared index style (Geist Mono 13/24, `ink-subtle`), from a CSS counter with empty alt text; never write them in the markup. Titles are Geist 400 16/24 sentence case in `ink`; linked titles end in a `flow` arrow. Hover turns the title `flow`; focus adds the 2 px `focus` ring. No fills, cards or drawn routes.
+- The shared row grammar: `line` hairlines between rows (at least 44 px tall). The numbers `01`–`0N` are the shared index style (Geist Mono 13/24, `ink-subtle`), from a CSS counter with empty alt text; never write them in the markup. Titles are Geist 400 16/24 sentence case in `ink`; linked titles end in a `flow` arrow and the page's icon. The rows hang off the pipe rail (Pass 9, above); hover lights the row in `flow`; focus adds the 2 px `focus` ring. No fills or cards.
 - The label above the rows is eyebrow style (Geist Mono 12/16, 0.08em, uppercase, `ink-muted`).
 - Data: the pages whose `section` equals this page's `section`, other than the page itself, in `pages.json` order. On the section's own hub (the page NAVSECT links to: systems, services, industries, compliance, projects, about) the label reads "Systems · 7 pages"; on any other page of the section (cmp-*, careers, news, contact-*) it reads "Also in Company", so the index works as a section switcher.
 - Fallback: a page alone in its section (today only `projects`) lists its own section headings (`blocks[].h`, leaving out `related`, at most seven) under "On this page". Headings link only when their block has a `nav` anchor; the rest are plain items. With fewer than two headings the hero stays text-only.
@@ -70,7 +80,7 @@ The hub's child pages as a larger numbered index beside the headline. On today: 
 
 - Data: `"index": true` lists the other pages of this page's `section` in `pages.json` order (as the section index); `"index": ["sys-pw", "sys-storage"]` lists those page ids in that order (unknown ids are skipped). Titles are each page's `nav_label`; every entry links to its page. `index` wins over `hero_index`. Ignored on `home` and on `sys-*`, `svc-*`, `ind-*` detail pages. Built by `heroBigIndex(p)` in `Hero.js`; nothing else in the hero changes.
 - Markup: the section index markup with `aq-hero__index aq-hero__index--big` on the nav and `aq-hero__grid--big-index` added to the grid (text and index 6 parts each); the label reads "Systems index · 7 pages".
-- Desktop: the section index rows with titles at `h3` (Geist 500 20/28) and `space-4` row padding; no frame. Hover turns the title `flow`. The KeyFacts strip stays below the grid.
+- Desktop: the section index rows on the rail with numbers in Geist 300 34/32, titles 22/28 and `space-4` row padding, icons `space-8`; no frame. Hover turns the title `flow`. The KeyFacts strip stays below the grid.
 - Phone: under the actions (and tags), full width, titles 17/24.
 
 ## Loop drawing (home)
@@ -91,6 +101,10 @@ The hero must fit about 1.5 phone screens including its facts, and the primary b
 
 - Padding `space-12` top and bottom. Headline: `display` 34/38, `display-xl` 40/44; lead 17/26.
 - Order: eyebrow, headline, lead, actions, then the figure. The equipment figure is full width with its callouts above and below the drawing (see above); the KeyFacts strip lists one fact per row. The photograph placeholder is 2:1.
+
+## Motion
+
+`motion.js`: one timeline, cause before effect. The headline lines rise out of their mask while the eyebrow decodes, the lead and actions follow; then the right-hand part builds the way it would be drawn: the equipment drawing prints up behind the flow scan line and each leader grows out of its anchor to its callout; the index rail is laid down the left, each row's tee and node seat as it passes and the row slides off the tee, then the water runs down the rail once; the home loop draws and four flow dots travel it once; drawn figures build piece by piece. Under 5 s; nothing under reduced motion; a re-render that only opened the phone menu keeps the hero still.
 
 ## Flow mist ground
 

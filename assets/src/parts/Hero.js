@@ -38,8 +38,12 @@ function heroLeaders(n,wide){var o='';for(var i=0;i<n;i++){var a=HERO_AT[i],top=
 function wHeroFigure(p,facts){var n=facts.length,co=function(f){return '<div class="aq-hero__callout"><dt>'+tx(f.l)+'</dt><dd>'+tx(f.v)+'</dd></div>'};
  return '<figure class="aq-hero__figure">'
   +(n?'<dl class="aq-hero__callouts aq-hero__callouts--top">'+facts.slice(0,2).map(co).join('')+'</dl>':'')
-  +'<div class="aq-hero__art"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span>'+(n?heroLeaders(n,true)+heroLeaders(n,false):'')+'</div>'
+  +'<div class="aq-hero__art"><span class="aq-illustration" role="img" aria-label="'+e(ART[p.id])+'" style="'+artMask(p.id)+'"></span><span class="aq-hero__scan" aria-hidden="true"></span>'+(n?heroLeaders(n,true)+heroLeaders(n,false):'')+'</div>'
   +(n>2?'<dl class="aq-hero__callouts aq-hero__callouts--bottom">'+facts.slice(2,4).map(co).join('')+'</dl>':'')+'</figure>'}
+/* Hero sheet (pass 9): a faint drawing-sheet ground behind every hero, aria-hidden: small registration crosses on a
+   48 px grid, masked so they gather behind the right-hand figure and fade out before the headline. Pure decoration;
+   the pattern lines take the line-strong token at reduced opacity (style.css). */
+var HERO_SHEET='<svg class="aq-hero__sheet" aria-hidden="true" focusable="false"><defs><pattern id="aqHeroCross" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M24 20.5v7M20.5 24h7"/></pattern></defs><rect width="100%" height="100%" fill="url(#aqHeroCross)"/></svg>';
 /* Hub and company pages: an index of the other pages in this page's section, in pages.json order.
    A page whose first section already lists those pages (systems: the seven-families grid) sets "hero_index": false; its hero is then the text stack alone.
    A page alone in its section (projects) lists its own section headings instead; they link only when the block has a nav anchor. */
@@ -54,8 +58,8 @@ function heroBigIndex(p){var v=p.index,pages=Array.isArray(v)?v.map(wp).filter(B
  return pages.length?{big:true,label:p.section+' index · '+pages.length+' pages',aria:'Pages in '+p.section,items:pages.map(function(q){return {t:q.nav_label||q.headline,wp:q.id}})}:null}
 function wHeroIndex(x){var n=x.items.length;
  return '<nav class="aq-hero__index'+(x.big?' aq-hero__index--big':'')+'" aria-label="'+e(x.aria)+'"><p class="aq-hero__index-label">'+e(x.label)+'</p><ol>'+x.items.map(function(it,i){
-  var t='<span class="aq-hero__index-t">'+tx(it.t)+'</span>';
-  return '<li>'+(it.wp?'<a class="aq-hero__index-item" href="#'+e(it.wp)+'" data-wp="'+e(it.wp)+'">'+t+'</a>':it.jump?'<a class="aq-hero__index-item" href="#'+e(WP)+'" data-jump="'+e(it.jump)+'">'+t+'</a>':'<span class="aq-hero__index-item">'+t+'</span>')+
+  var t='<span class="aq-hero__index-t">'+tx(it.t)+'</span>',ic=it.wp&&pageIcon(it.wp)?wIcon(pageIcon(it.wp),'aq-hero__index-ic'):'';
+  return '<li>'+(it.wp?'<a class="aq-hero__index-item" href="#'+e(it.wp)+'" data-wp="'+e(it.wp)+'">'+t+ic+'</a>':it.jump?'<a class="aq-hero__index-item" href="#'+e(WP)+'" data-jump="'+e(it.jump)+'">'+t+'</a>':'<span class="aq-hero__index-item">'+t+'</span>')+
    (x.big&&i<n-1?'':'')+'</li>'}).join('')+'</ol></nav>'}
 /* Home: fine-line drawing of a figure-eight distribution loop (viewBox 440 x 520). Strokes are currentColor and tokens in style.css.
    Annotations name the loop, its parts and the two USP test chapters at the sensors. No figure is drawn: hero facts are
@@ -141,4 +145,4 @@ function wHero(p){var home=p.id==='home',art=!!ART[p.id]&&!home,detail=/^sys-|^s
  var all=p.facts||[],co=art&&/^sys-/.test(p.id),callouts=co?all.slice(0,4):[],rest=co?all.slice(4):all;
  var right=home?wHomeLoop():art?wHeroFigure(p,callouts):drawn?drawn:detail?'<div class="aq-photo" role="img" aria-label="Photograph placeholder">[Photograph: '+e(p.nav_label||p.headline)+' · cool even light]</div>':idx?wHeroIndex(idx):'';
  var mod=home?' aq-hero__grid--loop':art?' aq-hero__grid--figure':drawn?' aq-hero__grid--figure aq-hero__grid--drawn':idx?' aq-hero__grid--index'+(idx.big?' aq-hero__grid--big-index':''):'';
- return '<section class="aq-hero'+(home?' aq-hero--home':'')+(co?' aq-hero--mist':'')+'"><div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}
+ return '<section class="aq-hero'+(home?' aq-hero--home':'')+(co?' aq-hero--mist':'')+'">'+HERO_SHEET+'<div class="aq-in">'+(right?'<div class="aq-hero__grid'+mod+'">'+left+right+'</div>':left)+wKeyFacts(rest)+'</div></section>'}

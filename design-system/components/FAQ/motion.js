@@ -1,24 +1,27 @@
-/* FAQ: on scroll-in the spine draws down and each question card is hung from it in turn (node pops, connector runs out,
-   card slides off the spine). Open and close ease the answer's height with GSAP; the [ + ] glyph turns in CSS.
-   Native <details> stays the source of truth: without JS or under reduced motion it opens and closes instantly, and
-   Enter/Space on the summary go through the same click handler. */
+/* FAQ: on scroll-in the dial's outline numerals roll up to the number of questions while the rows wipe in from the
+   left one after another, each question rising a step behind its hairline. Open and close ease the answer's height
+   with GSAP; the dial turns over to the open question's number ("02", "of 06") and back to the count when all are
+   closed. Native <details> stays the source of truth: without JS or under reduced motion it opens and closes
+   instantly (the dial then just switches its number), and Enter/Space on the summary go through the same handler. */
 AQmotion.fx('FAQ', function (root, m) {
   root.querySelectorAll('.aq-faq').forEach(function (faq) {
     var cards = [].filter.call(faq.children, function (d) { return d.tagName === 'DETAILS' && d.offsetParent });
     if (!cards.length) return;
     m.claim(faq);
+    var sec = faq.closest('section'), dial = sec && sec.querySelector('.aq-faq__dial'), num = dial && dial.querySelector('.aq-faq__dial-n > span');
+    if (dial && dial.offsetParent) m.claim(dial); else num = null;
     var short = m.narrow();
-    gsap.set(faq, { '--aq-spine': 0 });
-    gsap.set(cards, { '--aq-node': 0, '--aq-link': 0, x: -12, autoAlpha: 0, clipPath: 'inset(0 100% 0 -48px)' });
+    gsap.set(cards, { clipPath: 'inset(0 100% 0 0)' });
+    gsap.set(cards.map(function (d) { return d.querySelector('.aq-faq__q') }), { y: 12, autoAlpha: 0 });
+    if (num) gsap.set(num, { yPercent: 100 });
     m.on(faq, function () {
       var tl = m.tw(gsap.timeline());
-      var per = short ? 0.1 : 0.14;
-      tl.to(faq, { '--aq-spine': 1, duration: 0.25 + cards.length * per, ease: 'none' }, 0);
+      var per = short ? 0.08 : 0.1;
+      if (num) tl.to(num, { yPercent: 0, duration: 0.9, ease: 'power4.out', clearProps: 'transform' }, 0);
       cards.forEach(function (d, i) {
         var at = 0.1 + i * per;
-        tl.to(d, { '--aq-node': 1, duration: 0.3, ease: 'back.out(3)' }, at)
-          .to(d, { '--aq-link': 1, duration: 0.2, ease: 'power2.out' }, at + 0.1)
-          .to(d, { x: 0, autoAlpha: 1, clipPath: 'inset(0 0% 0 -48px)', duration: short ? 0.5 : 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility,clipPath' }, at + 0.18);
+        tl.to(d, { clipPath: 'inset(0 0% 0 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, at)
+          .to(d.querySelector('.aq-faq__q'), { y: 0, autoAlpha: 1, duration: 0.55, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.25);
       });
     }, 'top 82%');
   });
@@ -27,6 +30,24 @@ AQmotion.fx('FAQ', function (root, m) {
   if (window.__aqFaq) return; window.__aqFaq = 1;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   function body(d) { return d.querySelector(':scope > .aq-faq__a') }
+  /* The dial follows the open row: its number and "of NN", or the count of questions when none is open */
+  function dial(faq) {
+    var sec = faq && faq.closest('section'), dl = sec && sec.querySelector('.aq-faq__dial'); if (!dl) return;
+    var rows = [].filter.call(faq.children, function (d) { return d.tagName === 'DETAILS' }), on = -1;
+    rows.forEach(function (d, i) { if (d.open && !d.classList.contains('is-closing')) on = i });
+    var tot = dl.getAttribute('data-total'), want = on < 0 ? tot : (on < 9 ? '0' : '') + (on + 1);
+    var n = dl.querySelector('.aq-faq__dial-n > span'), k = dl.querySelector('.aq-faq__dial-k'); if (!n || n.textContent === want && dl.classList.contains('is-open') === on >= 0) return;
+    dl.classList.toggle('is-open', on >= 0);
+    if (k) k.textContent = on < 0 ? (tot === '01' ? 'question' : 'questions') : 'of ' + tot;
+    if (n.textContent === want) return;
+    if (reduce || !window.gsap || !dl.offsetParent) { n.textContent = want; return }
+    var up = on < 0 || +want > +n.textContent ? 1 : -1;
+    gsap.killTweensOf(n);
+    gsap.timeline().to(n, { yPercent: -100 * up, duration: 0.18, ease: 'power2.in' })
+      .add(function () { n.textContent = want })
+      .fromTo(n, { yPercent: 100 * up }, { yPercent: 0, duration: 0.42, ease: 'power3.out', clearProps: 'transform' });
+  }
+  document.addEventListener('toggle', function (ev) { var d = ev.target; if (d && d.tagName === 'DETAILS' && d.parentElement && d.parentElement.classList.contains('aq-faq')) dial(d.parentElement) }, true);
   function done(d, a) {
     d.classList.remove('is-closing');
     if (d.dataset.aqName) { d.setAttribute('name', d.dataset.aqName); delete d.dataset.aqName }
@@ -51,5 +72,6 @@ AQmotion.fx('FAQ', function (root, m) {
     if (!s || reduce || !window.gsap || ev.target.closest('a')) return;
     var d = s.parentElement; ev.preventDefault();
     if (d.open && !d.classList.contains('is-closing')) close(d); else open(d);
+    dial(d.parentElement);
   });
 })();

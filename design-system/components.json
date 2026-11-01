@@ -185,8 +185,8 @@
    "group": "Page sections",
    "height": "760",
    "width": "1200",
-   "subtitle": "Closing band: centred h1 on navy with the large faint mark cut by the corner, Limestone button; the exchange below a hairline",
-   "summary": "Closing is the call to action at the end of every page: one centred headline in the `h1` style on the navy band, one lead sentence and the primary button, with the brand mark large and faint, cut by the top-left corner."
+   "subtitle": "Closing band: display headline on navy with the large faint mark cut by the corner, large Limestone button; the exchange drawn as send rows, a pipe with the turnaround and returned sheets",
+   "summary": "Closing is the call to action at the end of every page: one centred display headline on the navy band, one lead sentence and a large primary button, with the brand mark large and faint, cut by the top-left corner."
   },
   {
    "name": "ContactRoutes",
@@ -263,10 +263,10 @@
    "readme": "design-system/components/FAQ/README.md",
    "preview": "design-system/components/FAQ/preview.html",
    "group": "Page sections",
-   "height": "520",
-   "width": "1000",
-   "subtitle": "Hairline accordion rows, second one open with its one link",
-   "summary": "FAQ answers the questions engineers and QA ask before they call, as hairline accordion rows: index, question and a + sign, with the answer opening under the question."
+   "height": "620",
+   "width": "1100",
+   "subtitle": "Question rows under the outline counter, five questions all closed",
+   "summary": "FAQ answers the questions engineers and QA ask before they call, as question rows under a large outline counter: index, question and a square +/− key, with the answer opening under the question."
   },
   {
    "name": "FaultList",
@@ -533,10 +533,10 @@
    "readme": "design-system/components/RelatedLinks/README.md",
    "preview": "design-system/components/RelatedLinks/preview.html",
    "group": "Page sections",
-   "height": "420",
+   "height": "520",
    "width": "1100",
-   "subtitle": "Four pages to read next: index, thumbnail, section eyebrow and title",
-   "summary": "RelatedLinks closes a page with the pages to read next as hairline-topped links: an index, a thumbnail of the target page, its section as an eyebrow and its title with a `flow` arrow."
+   "subtitle": "Four next pages as tiles hung off one pipe: drawings for system pages",
+   "summary": "RelatedLinks closes a page with the pages to read next as tiles hung off one pipe: each tile shows its index and section, a picture of the target page and its title with a `flow` arrow."
   },
   {
    "name": "RoleMatrix",

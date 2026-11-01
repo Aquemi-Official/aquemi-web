@@ -5,21 +5,24 @@
   position: relative;
   display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-8);
   max-width: 880px; min-width: 0; box-sizing: border-box;
-  padding: var(--space-8) var(--space-8) var(--space-8);
+  padding: 0 var(--space-8) var(--space-8);
   background: var(--surface-raised);
   border: 1px solid var(--line);
 }
 .aq-form .aq-field { max-width: none; }
 .aq-form__full { grid-column: 1 / -1; }
 
-/* Title row */
-.aq-form__title {
-  display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2) var(--space-6);
-  margin: 0; padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--line);
+/* Title row (pass 9): the sheet's navy title strip, flush with the panel's top edge, led by a short flow rule
+   (scoped under .aq-form so the page's p reset does not undo its bleed) */
+.aq-form .aq-form__title {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-6);
+  margin: -1px calc(-1 * var(--space-8) - 1px) 0; padding: var(--space-4) var(--space-8);
+  background: var(--navy); color: var(--on-navy-muted);
   font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
-  font-variant-numeric: tabular-nums; color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
 }
+.aq-form__title > span:first-child { display: inline-flex; align-items: center; gap: var(--space-3); color: var(--on-navy); }
+.aq-form__title > span:first-child::before { content: ""; width: var(--space-6); height: 1.5px; background: color-mix(in srgb, var(--flow) 55%, var(--on-navy)); }
 
 /* Numbered sections */
 .aq-form__section { border: 0; margin: 0; padding: 0; min-width: 0; }
@@ -29,7 +32,7 @@
   margin: 0 0 var(--space-6); padding: 0;
   font: 500 20px/28px var(--font-sans); letter-spacing: -0.005em; color: var(--ink);
 }
-.aq-form__num { font: 400 13px/28px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-subtle); }
+.aq-form__num { font: 300 30px/28px var(--font-sans); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: var(--flow); }
 .aq-form__grid { clear: both; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
 .aq-form__ref {
   margin-right: var(--space-2);
@@ -45,7 +48,8 @@
   cursor: pointer; overflow-wrap: anywhere;
 }
 .aq-form .aq-checks label:hover { border-color: var(--ink-muted); }
-.aq-form .aq-checks label:has(:checked) { border-color: var(--flow); color: var(--ink); }
+.aq-form .aq-checks label { transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms cubic-bezier(0.2, 0, 0, 1), box-shadow 200ms cubic-bezier(0.2, 0, 0, 1); }
+.aq-form .aq-checks label:has(:checked) { border-color: var(--flow); background: var(--flow-tint); box-shadow: inset 3px 0 0 var(--flow); color: var(--ink); }
 .aq-form .aq-checks input { flex: none; width: var(--space-4); height: var(--space-4); margin: 0; accent-color: var(--flow); }
 .aq-form .aq-checks input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 /* A [placeholder] in an option: in a checkbox or radio cell the label text sits in one span and the placeholder is the
@@ -82,13 +86,32 @@
 .aq-field.is-error .aq-field__file { border-color: var(--fail); box-shadow: inset 3px 0 0 var(--fail); }
 @media (prefers-reduced-motion: reduce) { .aq-field__file::file-selector-button { transition: none; } }
 
-/* Stepped variant: each step is one numbered section; the progress list sits under the title row */
+/* Stepped variant (pass 9): the progress list is a pipeline under the title strip. Each step is a numbered square node
+   on one line; the line runs flow as far as the current step (steps passed take a flow node), the current node is
+   filled with the action colour, steps ahead stay line-strong. Each step's name sits under its node. */
 .aq-form--steps { gap: var(--space-6); }
-.aq-form__progress { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); margin: 0; padding: 0; list-style: none; counter-reset: aq-form-step; }
-.aq-form__progress li { counter-increment: aq-form-step; font: 500 14px/20px var(--font-sans); color: var(--ink-subtle); }
-.aq-form__progress li::before { content: counter(aq-form-step) ".0 "; font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle); }
-.aq-form__progress li[aria-current="step"] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--flow); text-underline-offset: 6px; }
-.aq-form__progress li[aria-current="step"]::before { color: var(--ink-muted); }
+.aq-form__progress { display: flex; margin: 0; padding: 0; list-style: none; counter-reset: aq-form-step; }
+.aq-form__progress li {
+  position: relative; flex: 1 1 0; min-width: 0; counter-increment: aq-form-step;
+  display: flex; flex-direction: column; gap: var(--space-2); padding-right: var(--space-3);
+  font: 500 14px/20px var(--font-sans); color: var(--ink-subtle);
+}
+.aq-form__progress li::before {
+  content: counter(aq-form-step); position: relative; z-index: 1; display: grid; place-items: center;
+  width: var(--space-8); height: var(--space-8); box-sizing: border-box; border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
+  background: var(--surface-raised); font: 400 13px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink-muted);
+  transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1), border-color 300ms cubic-bezier(0.2, 0, 0, 1), color 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+/* the line from this node to the next */
+.aq-form__progress li:not(:last-child)::after {
+  content: ""; position: absolute; left: var(--space-8); right: 0; top: calc(var(--space-4) - 0.5px); height: 1px; background: var(--line-strong);
+  transform-origin: 0 50%; transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-form__progress li:has(~ li[aria-current="step"])::before { border-color: var(--flow); color: var(--flow); }
+.aq-form__progress li:has(~ li[aria-current="step"])::after { height: 1.5px; background: var(--flow); transform: scaleX(var(--aq-fill, 1)); }
+.aq-form__progress li:has(~ li[aria-current="step"]) { color: var(--ink-muted); }
+.aq-form__progress li[aria-current="step"] { color: var(--ink); }
+.aq-form__progress li[aria-current="step"]::before { background: var(--action); border-color: var(--action); color: var(--on-action); }
 .aq-form__step[hidden] { display: none; }
 .aq-form__step > .aq-form__actions { margin-top: var(--space-8); }
 /* The block note under the last step's actions, space-4 below the buttons (scoped so the page's p reset, .aq-page p,
@@ -108,15 +131,18 @@
    on phones, where the button fills the line, it adds no empty row above the note */
 .aq-form__actions > .wform-msg:empty { position: absolute; }
 
-/* With motion the current-step underline is one marker (aq-form__mark, made by EnquiryForm/motion.js) that slides to
-   the new step with Flip; has-mark on the list hides the per-step underline. */
-.aq-form__progress li { position: relative; }
-.aq-form__mark { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--flow); pointer-events: none; }
-.aq-form__progress.has-mark li::after { display: none; }
+/* With motion the current step also wears a ring (aq-form__mark, made by EnquiryForm/motion.js) that slides to the
+   new step's node with Flip, as the water reaches it. */
+.aq-form__mark { position: absolute; z-index: 2; left: calc(-1 * var(--space-1)); top: calc(-1 * var(--space-1)); width: calc(var(--space-8) + var(--space-2)); height: calc(var(--space-8) + var(--space-2)); box-sizing: border-box; border: 1.5px solid var(--flow); border-radius: var(--radius-sm); pointer-events: none; }
+.aq-form__actions .aq-btn--primary { min-height: var(--space-12); padding-inline: var(--space-6); }
+@media (prefers-reduced-motion: reduce) { .aq-form__progress li::before, .aq-form__progress li::after, .aq-form .aq-checks label { transition: none; } }
 
 @container (max-width: 860px) {
   /* Phones: tighter panel, one column, full-width submit */
-  .aq-form { gap: var(--space-6); padding: var(--space-6) var(--space-4); }
+  .aq-form { gap: var(--space-6); padding: 0 var(--space-4) var(--space-6); }
+  .aq-form .aq-form__title { margin-inline: calc(-1 * var(--space-4) - 1px); padding: var(--space-3) var(--space-4); }
+  .aq-form__progress li { font-size: 13px; line-height: 18px; padding-right: var(--space-2); }
+  .aq-form__num { font-size: 22px; line-height: 26px; }
   .aq-form__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
   .aq-form__legend { margin-bottom: var(--space-4); font-size: 18px; line-height: 26px; }
   .aq-form__submit { width: 100%; justify-content: center; }

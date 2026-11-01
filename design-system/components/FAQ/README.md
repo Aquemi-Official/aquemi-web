@@ -1,21 +1,31 @@
-FAQ answers the questions engineers and QA ask before they call, as hairline accordion rows: index, question and a + sign, with the answer opening under the question.
+FAQ answers the questions engineers and QA ask before they call, as question rows under a large outline counter: index, question and a square +/− key, with the answer opening under the question.
 
 ## Markup
 
 ```html
-<div class="aq-faq">
-  <details name="faq-1">
-    <summary><span class="aq-index" aria-hidden="true">01</span><span class="aq-faq__q">How do we size generation against storage?</span><span class="aq-faq__sign" aria-hidden="true"></span></summary>
-    <div class="aq-faq__a"><p>We start from your point-of-use demand profile over a full production day. …</p></div>
-  </details>
-  <details name="faq-1">…</details>
-</div>
+<section class="aq-section aq-faq-section"><div class="aq-in aq-split-section">
+  <div class="aq-split-section__head">
+    <header class="aq-sec-head"><h2 class="aq-h1">Questions engineers ask</h2></header>
+    <div class="aq-faq__dial" aria-hidden="true" data-total="05"><span class="aq-faq__dial-n"><span>05</span></span><span class="aq-faq__dial-of"><span class="aq-faq__dial-k">questions</span></span></div>
+  </div>
+  <div class="aq-split-section__body"><div class="aq-faq">
+    <details name="faq-1">
+      <summary><span class="aq-index" aria-hidden="true">01</span><span class="aq-faq__q">How do we size generation against storage?</span><span class="aq-faq__sign" aria-hidden="true"><span class="aq-faq__glyph"></span></span></summary>
+      <div class="aq-faq__a"><p>We start from your point-of-use demand profile over a full production day. …</p></div>
+    </details>
+    <details name="faq-1">…</details>
+  </div></div>
+</div></section>
 ```
 
 - Native `<details>`/`<summary>`: it opens, closes and is keyboard-operable with no JavaScript. All rows start closed, so the list of questions is the first read.
 - Give every `<details>` in one FAQ the same `name` (unique per FAQ on the page) so only one answer is open at a time.
-- The index is the shared `.aq-index` (`01`, mono, `ink-subtle`). `aq-faq__sign` stays empty; CSS writes `+` or `−`.
-- The site renderer (`assets/src/blocks/faq.js`) puts it in a SplitSection: the standard section head on the left, the rows on the right (stacked on phones).
+- The index is the shared `.aq-index` (`01`, mono). `aq-faq__sign` holds one empty `aq-faq__glyph`; CSS draws the plus and turns it into a minus.
+- The site renderer (`assets/src/blocks/faq.js`) puts it in a SplitSection (`aq-faq-section` on the section): the section head and the dial on the left (sticky, as every split head), the rows on the right (stacked on phones).
+
+## The dial (pass 9)
+
+Under the heading, `aq-faq__dial` (`aria-hidden`, decoration that repeats what the list says): the number of questions in very large outline numerals (Geist 300, `clamp(112px, 13cqi, 188px)`, no fill, a 1 px `line-strong` stroke) over a short rule and the word "questions". While a question is open it shows that question's number and "of 05", its stroke and rule in `flow`; closing the last open row turns it back to the count. `data-total` holds the count. Hidden on phones, where the heading sits right above the rows. Without JavaScript it shows the count.
 
 ## One link per answer
 
@@ -28,20 +38,16 @@ DR-009's "one line and a link": an answer whose full version lives on another pa
 ```
 
 - `link`: a page id or `page#anchor` (opens that page at the block with that `anchor`). A link to a page that does not exist renders nothing, and `check` warns on it and on a missing anchor.
-- `link_label` (optional): the link's words, five or fewer (`check` counts them with the buttons). Without it a `page#anchor` link reads the target block's heading ("Purified Water limits") and a page link the page's name.
+- `link_label` (optional): the link's words, five or fewer (`check` counts them with the buttons). Without it a `page#anchor` link reads the target block's heading and a page link the page's name.
 - `intent` (optional): option labels the linked page's form ticks on arrival, as on a button (`check` fails on labels that tick nothing, DR-014).
-- Markup: after the answer's paragraph, `<p class="aq-faq__more">` holding the Button link variant (`aq-btn aq-btn--link`, `flow`, with its arrow), `space-3` under the answer. One link per item; the link sits inside the answer, so it counts with the answer (not in the page's visible words).
+- Markup: after the answer's paragraph, `<p class="aq-faq__more">` holding the Button link variant (`aq-btn aq-btn--link`, `flow`, with its arrow), `space-4` under the answer.
 
 ## Layout
 
-- Each question is a row between 1 px `line` hairlines, no frame. The summary reads the shared index (`01`, `ink-subtle`), the question in Geist 500 20/28 `ink`, sentence case (18/26 on phones), and a plain `+` / `−` sign in Geist Mono `ink-subtle` at the right. The summary is at least 44 px tall.
-- Hover turns the question `flow`. The open row's sign turns `flow`; its answer sits under the question column. Nothing else changes colour.
-
-## Token rules
-
-- Answer 16/26 (15/24 on phones) in `ink-muted` within `text-max`.
-- Focus: 2 px `focus` ring with 2 px offset on the summary. The answer fades in and rises 8 px over 400 ms; with reduced motion it only fades.
-- No boxes, shadows, spines or bracketed signs.
+- Each question is a row between 1 px `line` hairlines, no frame. The summary: the index (mono, `flow` on hover and while open), the question in Geist 400 22/30 `ink` (18/26 on phones), and the key: a 44 px square (`radius-sm`, 1 px `line-strong`) holding a drawn 14 px plus in `ink`. Rows align to the question's first line.
+- Hover: the question turns `flow` and steps 4 px right, the key's border turns `ink`. Open: a 2 px `flow` rule draws down the row's left edge, the key fills with `action` (navy; Limestone in dark) and its plus turns half a turn into a minus in `on-action`.
+- Answer 17/28 (15/24 on phones) in `ink-muted` within `text-max`, under the question column.
+- Focus: 2 px `focus` ring with 2 px offset on the summary.
 
 ## Writing
 
@@ -55,9 +61,4 @@ DR-009's "one line and a link": an answer whose full version lives on another pa
 
 ## Motion
 
-<summary><span class="aq-index" aria-hidden="true">01</span><span class="aq-faq__q">How do we size generation against storage?</span><span class="aq-faq__sign" aria-hidden="true"><span class="aq-faq__glyph"></span></span></summary>
-- The index is the shared `.aq-index` (`01`, mono, `ink-subtle`). `aq-faq__sign` holds one empty `<span class="aq-faq__glyph"></span>`; CSS draws the brackets and the plus, which turns into a minus when open.
-- Every question is a framed card (`line-strong`, `surface`) hung from one vertical spine on the left by a short connector with a round junction node (CSS only). The summary reads `01 /` (the shared index plus a CSS slash, `ink-subtle`), the question in condensed capitals (`font-display` 600, 22/24; 20/22 on phones, where the index and sign sit on a line above it) and a bracketed `[ + ]` / `[ − ]` sign in mono: brackets from CSS around a drawn glyph (`<span class="aq-faq__glyph">`).
-## Motion
-
-`motion.js`: on scroll-in the spine draws down (`--aq-spine`) and each card is hung from it in turn: the junction node pops (`--aq-node`), the connector runs out (`--aq-link`) and the card slides off the spine. Open and close ease the answer's height with GSAP (`aq-settle` open, 340 ms close); a card that closes leaves its `name` group while it animates, so opening another never snaps it shut, and its frame turns back to `line-strong` at once (`is-closing`). The sign is `[ glyph ]`: a drawn plus (`aq-faq__glyph`) that turns half a turn as its upright lies flat into a minus (CSS transition). The click handler covers Enter and Space on the summary; without JS or under reduced motion `<details>` opens and closes natively.
+`motion.js`: on scroll-in the dial's numerals roll up into view while the rows wipe in from the left one after another, each question rising a step behind its hairline. Open and close ease the answer's height with GSAP (`aq-settle` open, 340 ms close); a row that closes leaves its `name` group while it animates, so opening another never snaps it shut (`is-closing` turns its key and rule back at once). The dial turns over to the open question's number (the old number rolls out, the new one in) and back to the count. The click handler covers Enter and Space on the summary; without JS or under reduced motion `<details>` opens and closes natively and the dial just switches its number.

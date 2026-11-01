@@ -42,6 +42,9 @@
     figure(q('.aq-hero__figure'), function () {
       var f = q('.aq-hero__figure'), art = q('.aq-illustration', f), t = m.tw(gsap.timeline({ defaults: { ease: 'power3.out' } }));
       if (art) { gsap.set(art, { clipPath: 'inset(100% 0 0 0)' }); t.to(art, { clipPath: 'inset(0% 0 0 0)', duration: 1.3, ease: 'power3.inOut', clearProps: 'clipPath' }, 0) }
+      // the flow scan line rides the print edge up the drawing, then fades
+      var scan = q('.aq-hero__scan', f);
+      if (art && scan) t.fromTo(scan, { autoAlpha: 1, top: '98%' }, { top: '2%', duration: 1.3, ease: 'power3.inOut' }, 0).to(scan, { autoAlpha: 0, duration: 0.35, clearProps: 'top' }, 1.3);
       var svg = q(narrow ? '.aq-hero__leaders--narrow' : '.aq-hero__leaders--wide', f), co = qa('.aq-hero__callout', f);
       if (co.length) gsap.set(co, { autoAlpha: 0, y: narrow ? 0 : 8 });
       if (svg) {
@@ -84,12 +87,25 @@
       return t;
     });
 
-    // Index: the spine runs down, entries slide onto it
+    // Index: the rail is laid down the left, each row's tee runs out and its node seats as the rail passes, the row
+    // slides off the tee; then the water runs down the rail's bore once and lights each node it passes, briefly.
     figure(q('.aq-hero__index'), function () {
       var f = q('.aq-hero__index'), ol = q('ol', f), li = qa('ol > li', f), lab = q('.aq-hero__index-label', f), t = m.tw(gsap.timeline({ defaults: { ease: 'power3.out' } }));
+      if (!ol || !li.length) return null;
+      var per = Math.min(0.12, 0.8 / li.length), run = 0.3 + li.length * per;
       if (lab) { t.from(lab, { autoAlpha: 0, duration: 0.2 }, 0); t.add(function () { m.scramble(lab, 0) }, 0) }
-      if (ol) { gsap.set(ol, { clipPath: 'inset(0 0 100% 0)' }); t.to(ol, { clipPath: 'inset(0 0 0% 0)', duration: 0.5 + li.length * 0.09, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.1) }
-      if (li.length) t.from(li, { x: -16, duration: 0.5, stagger: 0.09, clearProps: 'transform' }, 0.15);
+      gsap.set(ol, { '--aq-rail': 0, '--aq-water': 0 });
+      gsap.set(li, { '--aq-tee': 0, '--aq-node': 0 });
+      var rows = li.map(function (l) { return l.firstElementChild }).filter(Boolean);
+      gsap.set(rows, { x: -14, autoAlpha: 0 });
+      t.to(ol, { '--aq-rail': 1, duration: run, ease: 'none' }, 0.05);
+      li.forEach(function (l, i) {
+        var at = 0.05 + (i + 0.5) * per * (run / (li.length * per + 0.3)) + 0.1;
+        t.to(l, { '--aq-tee': 1, duration: 0.25, ease: 'power2.out' }, at)
+          .to(l, { '--aq-node': 1, duration: 0.3, ease: 'back.out(3)' }, at + 0.12);
+        if (rows[i]) t.to(rows[i], { x: 0, autoAlpha: 1, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at + 0.15);
+      });
+      t.to(ol, { '--aq-water': 1, duration: 0.9 + li.length * 0.05, ease: 'power1.inOut' }, run * 0.6);
       return t;
     });
 

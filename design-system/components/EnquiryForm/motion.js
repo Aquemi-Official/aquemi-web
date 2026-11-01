@@ -1,4 +1,5 @@
-/* EnquiryForm: the data sheet is drawn up, then filled in by the visitor.
+/* EnquiryForm: the data sheet is drawn up, then filled in by the visitor. Pass 9: the progress is a pipeline; on
+   Continue the water runs along the line just passed and the ring (the step marker) slides on to the new node.
    Scroll-in: the title rule rules across, the progress steps (stepped form) or section legends wipe in from the left
    with their numbers decoding, the fields of the open step rise in reading order, the revision strip settles last.
    Continue / Back (stepped form): the step marker under the progress list slides to the new step (Flip), the new
@@ -42,7 +43,9 @@ AQmotion.fx('EnquiryForm', function (root, m) {
       requestAnimationFrame(function () {
         var to = fm.querySelector('.aq-form__step:not([hidden])'); if (!to || to === from) return;
         var dir = +to.dataset.step > +(from && from.dataset.step) ? 1 : -1;
-        if (state) { var li = prog.querySelector('[aria-current="step"]'); if (li) { li.appendChild(mark); m.tw(Flip.from(state, { duration: 0.5, ease: 'power3.inOut' })) } }
+        if (state) { var li = prog.querySelector('[aria-current="step"]'); if (li) { li.appendChild(mark); m.tw(Flip.from(state, { duration: 0.5, ease: 'power3.inOut', delay: dir > 0 ? 0.25 : 0 })) } }
+        // forward: the water runs along the line just passed, then the ring arrives at the new node
+        if (dir > 0 && prog) { var was = pli[+to.dataset.step - 1]; if (was) m.tw(gsap.fromTo(was, { '--aq-fill': 0 }, { '--aq-fill': 1, duration: 0.5, ease: 'power2.inOut' })) }
         var tl = m.tw(gsap.timeline());
         tl.fromTo(to, { x: 32 * dir, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: 'power3.out', clearProps: CLEAR }, 0);
         var lg = to.querySelector('.aq-form__legend'); if (lg) tl.fromTo(lg, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.45, ease: 'power2.out', clearProps: 'clipPath' }, 0.05);
