@@ -1,0 +1,46 @@
+/* ---------- WalkdownPins: IQ and OQ checks pinned to the installed system (look "walkdown-pins") ----------
+   Desktop: the drawing sheet (IsoKit, light sheet with its iso grid) on the left, 7 of 12, held in view while the
+   checks scroll beside it (5 of 12). Pins are HTML over the sheet, placed in % of the drawing: a navy disc with the
+   check's number; two pins on one part step apart (--k). Rows: the pin number in a ruled disc, the IQ or OQ tag
+   (IQ ruled in ink, OQ filled flow: installed versus running), the check, what we verify, the basis in mono. A row
+   pointed at or focused lights its part (aq-iso__part is-lit) and swells its pin. */
+.aq-walkdown-pins { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; }
+.aq-walkdown-pins__fig { position: sticky; top: var(--space-24); }
+.aq-walkdown-pins__sheet { position: relative; background: var(--surface-raised); border: 1px solid var(--line); }
+.aq-walkdown-pins__svg { display: block; width: 100%; height: auto; }
+.aq-walkdown-pins__pin { position: absolute; transform: translate(calc(-50% + var(--k, 0) * var(--space-8)), calc(-100% - var(--space-2))); display: inline-flex; align-items: center; justify-content: center;
+  width: var(--space-8); height: var(--space-8); border-radius: 50% 50% 50% 0; background: var(--navy); color: var(--on-navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.02em;
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), background-color 200ms; z-index: 1; }
+.aq-walkdown-pins__pin.is-on { background: var(--flow); color: var(--surface); transform: translate(calc(-50% + var(--k, 0) * var(--space-8)), calc(-100% - var(--space-2))) scale(1.25); z-index: 2; }
+.aq-walkdown-pins__list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.aq-walkdown-pins__row { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); column-gap: var(--space-3); padding: var(--space-4) var(--space-2) var(--space-4) 0; border-bottom: 1px solid var(--line); outline: none; transition: background-color 200ms; }
+.aq-walkdown-pins__row:hover, .aq-walkdown-pins__row:focus-visible { background: var(--surface-raised); }
+.aq-walkdown-pins__row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-walkdown-pins__n { grid-row: 1 / span 3; justify-self: center; display: inline-flex; align-items: center; justify-content: center; width: var(--space-8); height: var(--space-8);
+  border-radius: 50% 50% 50% 0; border: 1.5px solid var(--navy); color: var(--ink); font: 500 12px/1 var(--font-mono); }
+.aq-walkdown-pins__row:hover .aq-walkdown-pins__n, .aq-walkdown-pins__row:focus-visible .aq-walkdown-pins__n { background: var(--flow); border-color: var(--flow); color: var(--surface); }
+.aq-walkdown-pins__t { margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-2); font: 500 17px/24px var(--font-sans); color: var(--ink); }
+.aq-walkdown-pins__tag { padding: 0 var(--space-2); font: 500 12px/20px var(--font-mono); letter-spacing: 0.08em; border: 1.5px solid var(--ink); color: var(--ink); }
+.aq-walkdown-pins__tag--oq { background: var(--flow); border-color: var(--flow); color: var(--surface); }
+.aq-walkdown-pins__v { margin: var(--space-1) 0 0; grid-column: 2; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
+.aq-walkdown-pins__m { margin: var(--space-2) 0 0; grid-column: 2; font: 400 13px/20px var(--font-mono); color: var(--ink-subtle); }
+
+/* the fold is for phones only: desktop shows every check beside the sheet */
+.aq-fold:not(.is-open) .aq-walkdown-pins__row.aq-fold-x { display: grid; }
+.aq-fold:has(> .aq-walkdown-pins__list) > .aq-fold__btn { display: none; }
+
+@container (max-width: 860px) {
+  .aq-walkdown-pins { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-walkdown-pins__fig { position: static; }
+  .aq-walkdown-pins__pin { width: var(--space-6); height: var(--space-6); font-size: 12px; transform: translate(calc(-50% + var(--k, 0) * var(--space-6)), calc(-100% - var(--space-1))); }
+  .aq-walkdown-pins__row { grid-template-columns: var(--space-8) minmax(0, 1fr); }
+  .aq-walkdown-pins__n { width: var(--space-6); height: var(--space-6); }
+  .aq-walkdown-pins__t { font-size: 16px; line-height: 22px; }
+  .aq-walkdown-pins__v { font-size: 14px; line-height: 22px; }
+  .aq-walkdown-pins__m { font-size: 12px; line-height: 18px; }
+  .aq-fold:not(.is-open) .aq-walkdown-pins__row.aq-fold-x { display: none; }
+  .aq-fold:has(> .aq-walkdown-pins__list) > .aq-fold__btn { display: flex; }
+}
+
+/* section hook (the look marks its section) */
+.aq-walkdown-pins-sec { position: relative; }

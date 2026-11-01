@@ -69,6 +69,11 @@
     "Reuse in IQ/OQ",
     "Candidate where transport and installation cannot change the result (Annex 15, 3.6; GUI-0029, 8.1)",
     "Feed water, utilities and field piping: proven on site only"
+   ],
+   "look": "twin-route",
+   "route_labels": [
+    "Route 1",
+    "Route 2"
    ]
   },
   {
@@ -84,7 +89,8 @@
      "at": [
       44,
       40
-     ]
+     ],
+     "part": "divert"
     },
     {
      "t": "Run it, read at the outlet",
@@ -92,7 +98,8 @@
      "at": [
       75,
       58
-     ]
+     ],
+     "part": "outlet"
     },
     {
      "t": "Evidence your team can reuse",
@@ -100,13 +107,19 @@
      "at": [
       86,
       40
-     ]
+     ],
+     "part": "record"
     }
    ],
    "figure": {
     "kind": "art",
     "art": "svc-fat-sat"
-   }
+   },
+   "look": "wet-run-hmi",
+   "modes": [
+    "Dry check",
+    "With water"
+   ]
   },
   {
    "type": "steps",
@@ -140,7 +153,8 @@
      "t": "SAT on your site",
      "d": "Critical tests re-run on site; the report feeds IQ/OQ."
     }
-   ]
+   ],
+   "look": "test-sheet"
   },
   {
    "type": "options",
@@ -150,24 +164,34 @@
    "items": [
     {
      "t": "In person",
-     "d": "In our test bay, inside the panels."
+     "d": "In our test bay, inside the panels.",
+     "scene": "you"
     },
     {
      "t": "Remote",
-     "d": "Cameras and live protocol."
+     "d": "Cameras and live protocol.",
+     "scene": "camera screen"
     },
     {
      "t": "Hybrid",
-     "d": "One person attends for physical checks, the rest remote."
+     "d": "One person attends for physical checks, the rest remote.",
+     "scene": "you camera screen"
     },
     {
      "t": "Your delegate",
-     "d": "A consultant you name witnesses and signs."
+     "d": "A consultant you name witnesses and signs.",
+     "scene": "delegate"
     },
     {
      "t": "Review only",
-     "d": "Unwitnessed; we send raw data and video."
+     "d": "Unwitnessed; we send raw data and video.",
+     "scene": "record"
     }
+   ],
+   "look": "witness-plan",
+   "zones": [
+    "Our test bay",
+    "Remote"
    ]
   },
   {

@@ -3016,6 +3016,11 @@
       "Reuse in IQ/OQ",
       "Candidate where transport and installation cannot change the result (Annex 15, 3.6; GUI-0029, 8.1)",
       "Feed water, utilities and field piping: proven on site only"
+     ],
+     "look": "twin-route",
+     "route_labels": [
+      "Route 1",
+      "Route 2"
      ]
     },
     {
@@ -3031,7 +3036,8 @@
        "at": [
         44,
         40
-       ]
+       ],
+       "part": "divert"
       },
       {
        "t": "Run it, read at the outlet",
@@ -3039,7 +3045,8 @@
        "at": [
         75,
         58
-       ]
+       ],
+       "part": "outlet"
       },
       {
        "t": "Evidence your team can reuse",
@@ -3047,13 +3054,19 @@
        "at": [
         86,
         40
-       ]
+       ],
+       "part": "record"
       }
      ],
      "figure": {
       "kind": "art",
       "art": "svc-fat-sat"
-     }
+     },
+     "look": "wet-run-hmi",
+     "modes": [
+      "Dry check",
+      "With water"
+     ]
     },
     {
      "type": "steps",
@@ -3087,7 +3100,8 @@
        "t": "SAT on your site",
        "d": "Critical tests re-run on site; the report feeds IQ/OQ."
       }
-     ]
+     ],
+     "look": "test-sheet"
     },
     {
      "type": "options",
@@ -3097,24 +3111,34 @@
      "items": [
       {
        "t": "In person",
-       "d": "In our test bay, inside the panels."
+       "d": "In our test bay, inside the panels.",
+       "scene": "you"
       },
       {
        "t": "Remote",
-       "d": "Cameras and live protocol."
+       "d": "Cameras and live protocol.",
+       "scene": "camera screen"
       },
       {
        "t": "Hybrid",
-       "d": "One person attends for physical checks, the rest remote."
+       "d": "One person attends for physical checks, the rest remote.",
+       "scene": "you camera screen"
       },
       {
        "t": "Your delegate",
-       "d": "A consultant you name witnesses and signs."
+       "d": "A consultant you name witnesses and signs.",
+       "scene": "delegate"
       },
       {
        "t": "Review only",
-       "d": "Unwitnessed; we send raw data and video."
+       "d": "Unwitnessed; we send raw data and video.",
+       "scene": "record"
       }
+     ],
+     "look": "witness-plan",
+     "zones": [
+      "Our test bay",
+      "Remote"
      ]
     },
     {
@@ -3232,30 +3256,37 @@
      "items": [
       {
        "t": "Commissioning",
-       "d": "Flush, pressure test, sanitization, start-up, punch list."
+       "d": "Flush, pressure test, sanitization, start-up, punch list.",
+       "label": "Commissioning"
       },
       {
        "t": "Factory and site acceptance tests (FAT and SAT)",
        "d": "Tested before shipping, then on your utilities.",
-       "link": "svc-fat-sat"
+       "link": "svc-fat-sat",
+       "label": "FAT · SAT"
       },
       {
        "t": "Installation qualification (IQ)",
-       "d": "Installed as designed: drawings, materials, joints, slopes, instruments."
+       "d": "Installed as designed: drawings, materials, joints, slopes, instruments.",
+       "label": "IQ"
       },
       {
        "t": "Operational qualification (OQ)",
-       "d": "Operating limits and worst case tested."
+       "d": "Operating limits and worst case tested.",
+       "label": "OQ"
       },
       {
        "t": "Performance qualification (PQ)",
-       "d": "Required quality, reproducibly, across the seasons."
+       "d": "Required quality, reproducibly, across the seasons.",
+       "label": "PQ"
       },
       {
        "t": "Periodic review",
-       "d": "Yearly review of data and changes; requalify where they point."
+       "d": "Yearly review of data and changes; requalify where they point.",
+       "label": "Review"
       }
-     ]
+     ],
+     "look": "binder-tabs"
     },
     {
      "type": "table",
@@ -3307,7 +3338,8 @@
       ]
      ],
      "fold": 5,
-     "fold_noun": "documents"
+     "fold_noun": "documents",
+     "look": "signature-blocks"
     },
     {
      "type": "spec",
@@ -3322,51 +3354,61 @@
       {
        "p": "IQ · Drawings and dead legs",
        "v": "Walkdown: P&ID (piping and instrumentation diagram), isometrics, field piping",
-       "m": "Dead leg register, L/D per branch"
+       "m": "Dead leg register, L/D per branch",
+       "part": "branch"
       },
       {
        "p": "IQ · Joints",
        "v": "[PP joint records kept] for [PP joining method]",
-       "m": "[PP joining standard]"
+       "m": "[PP joining standard]",
+       "part": "joint"
       },
       {
        "p": "OQ · Drain on high conductivity",
        "v": "Divert on a real conductivity rise, then return",
-       "m": "Uncompensated reading"
+       "m": "Uncompensated reading",
+       "part": "analyzer"
       },
       {
        "p": "OQ · Sanitization",
        "v": "Full [PP loop sanitization method] cycle, verified at the coldest point",
-       "m": "Residual tested before use"
+       "m": "Residual tested before use",
+       "part": "coldest"
       },
       {
        "p": "OQ · Hydraulics",
        "v": "Every point of use open at peak demand, then minimum",
-       "m": "Positive return pressure · functional specification"
+       "m": "Positive return pressure · functional specification",
+       "part": "outlets"
       },
       {
        "p": "OQ · Sequences and interlocks",
        "v": "Forced by real condition where safe, else simulated",
-       "m": "FAT results reused where accepted"
+       "m": "FAT results reused where accepted",
+       "part": "panel"
       },
       {
        "p": "IQ · Materials",
        "v": "PP modules and loop, polyvinyl chloride (PVC) pretreatment; elastomers to specification",
-       "m": "[PP material certificates]; [certificates supplied for PVC parts]"
+       "m": "[PP material certificates]; [certificates supplied for PVC parts]",
+       "part": "skid"
       },
       {
        "p": "IQ · Instruments",
        "v": "Installed, ranged, calibrated; critical ones identified",
-       "m": "Traceable via [calibration provider and accreditation held]"
+       "m": "Traceable via [calibration provider and accreditation held]",
+       "part": "gauge"
       },
       {
        "p": "OQ · Data integrity",
        "v": "Roles, audit trail, time sync, backup, restore",
-       "m": "Annex 11; GUI-0050; 21 CFR Part 11"
+       "m": "Annex 11; GUI-0050; 21 CFR Part 11",
+       "part": "panel"
       }
      ],
      "fold": 5,
-     "fold_noun": "checks"
+     "fold_noun": "checks",
+     "look": "walkdown-pins"
     },
     {
      "type": "steps",
@@ -3376,18 +3418,33 @@
      "items": [
       {
        "t": "Phase 1",
-       "d": "At least 2 weeks of daily samples at every step and point of use. No production use."
+       "d": "At least 2 weeks of daily samples at every step and point of use. No production use.",
+       "days": 14
       },
       {
        "t": "Phase 2",
        "d": "At least 2 more weeks, same sampling, procedures in use. Production use with your approval.",
-       "hold": "Your quality unit"
+       "hold": "Your quality unit",
+       "days": 14
       },
       {
        "t": "Phase 3",
        "d": "A reduced routine plan, trended, until the phases cover at least 12 months."
       }
-     ]
+     ],
+     "look": "pq-calendar",
+     "grid": {
+      "points": 12,
+      "days": 28,
+      "rows": "sample points",
+      "cols": "days",
+      "unit": "samples"
+     },
+     "year": {
+      "weeks": 52,
+      "months": 12,
+      "label": "12 months"
+     }
     },
     {
      "type": "spec",
@@ -3414,7 +3471,8 @@
        "m": "WHO TRS 1033, 11.3, 12.7 and 12.8"
       }
      ],
-     "note": "CFU: colony-forming units."
+     "note": "CFU: colony-forming units.",
+     "look": "instrument-limits"
     },
     {
      "type": "faq",

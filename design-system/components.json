@@ -159,6 +159,16 @@
    "summary": "BatteryLimit lays site requirements on a navy and limestone split whose divide is the battery limit, so the reader sees each requirement as a connection point on the line between the package and their site."
   },
   {
+   "name": "BinderTabs",
+   "readme": "design-system/components/BinderTabs/README.md",
+   "preview": "design-system/components/BinderTabs/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1280",
+   "subtitle": "C&Q: stages filed as signed tab dividers in the open qualification binder",
+   "summary": "BinderTabs files ordered stages as tab dividers in the open qualification binder, each signed off before the next (look `binder-tabs`, steps block)."
+  },
+  {
    "name": "BudgetBento",
    "readme": "design-system/components/BudgetBento/README.md",
    "preview": "design-system/components/BudgetBento/preview.html",
@@ -357,6 +367,16 @@
    "width": "1280",
    "subtitle": "Home: one water line teeing into three industries, each standard set large as the evidence",
    "summary": "IndustryFeed sets a few destinations of the same water as editorial type: one twin-wall pipe enters from the page edge and tees down into each column, where the destination's evidence (its standard) is the hero type."
+  },
+  {
+   "name": "InstrumentLimits",
+   "readme": "design-system/components/InstrumentLimits/README.md",
+   "preview": "design-system/components/InstrumentLimits/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1280",
+   "subtitle": "C&Q: the action level on a dial, the alert level on a chart recorder",
+   "summary": "InstrumentLimits reads a spec block's levels off two instruments: the action level as an analog dial with its red-line, the alert level as a chart recorder whose alert line is drawn from the data (look `instrument-limits`, spec block `as: \"gauges\"`)."
   },
   {
    "name": "LayerStack",
@@ -569,6 +589,16 @@
    "summary": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a pressure vessel, a control panel, a flanged elbow, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets."
   },
   {
+   "name": "PqCalendar",
+   "readme": "design-system/components/PqCalendar/README.md",
+   "preview": "design-system/components/PqCalendar/preview.html",
+   "group": "Page sections",
+   "height": "950",
+   "width": "1280",
+   "subtitle": "C&Q: PQ as a year of sampling, the first 28 days zoomed to the sample grid",
+   "summary": "PqCalendar reads PQ phases as a year's sampling calendar: the year in week bars, a zoom from the first weeks to the sample grid (a dot per sample), the total set large (look `pq-calendar`, steps block)."
+  },
+  {
    "name": "ProcessDiagram",
    "readme": "design-system/components/ProcessDiagram/README.md",
    "preview": "design-system/components/ProcessDiagram/preview.html",
@@ -719,6 +749,16 @@
    "summary": "SheetStack shows the documents delivered with a system as an exploded stack of isometric drawing sheets, each sheet drawing in miniature what the document is, its row beside it."
   },
   {
+   "name": "SignatureBlocks",
+   "readme": "design-system/components/SignatureBlocks/README.md",
+   "preview": "design-system/components/SignatureBlocks/preview.html",
+   "group": "Page sections",
+   "height": "1300",
+   "width": "1280",
+   "subtitle": "C&Q: who writes and who reviews, as each document's signature block",
+   "summary": "SignatureBlocks sets a roles table (who writes, who reviews) as the signature block at the foot of each document, the party in each field shown by its box (look `signature-blocks`, table block `as: \"roles\"`)."
+  },
+  {
    "name": "StairRouter",
    "readme": "design-system/components/StairRouter/README.md",
    "preview": "design-system/components/StairRouter/preview.html",
@@ -799,6 +839,26 @@
    "summary": "TankSection reads fabrication parameters off a blueprint of the storage tank cut in half on a navy band, each parameter a numbered callout on the part it governs and the rest in a parts schedule."
   },
   {
+   "name": "TestSheet",
+   "readme": "design-system/components/TestSheet/README.md",
+   "preview": "design-system/components/TestSheet/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1280",
+   "subtitle": "FAT and SAT: the protocol as a signed test sheet, hold points stamped, SAT torn off",
+   "summary": "TestSheet sets ordered steps as the protocol's own test sheet lying on a limestone table: ruled rows, tick boxes, signed and stamped hold points, the last step torn off along a perforation (look `test-sheet`, steps block)."
+  },
+  {
+   "name": "TwinRoute",
+   "readme": "design-system/components/TwinRoute/README.md",
+   "preview": "design-system/components/TwinRoute/preview.html",
+   "group": "Page sections",
+   "height": "1700",
+   "width": "1280",
+   "subtitle": "FAT and SAT: the test bay and your site as two routes, each test a station on both",
+   "summary": "TwinRoute draws a FAT versus SAT comparison as two routes the same skid takes: our test bay and your site, each test a station on both pipes (look `twin-route`, table block `as: \"versus\"`)."
+  },
+  {
    "name": "Versus",
    "readme": "design-system/components/Versus/README.md",
    "preview": "design-system/components/Versus/preview.html",
@@ -819,6 +879,16 @@
    "summary": "VisitRoute lays a visit's checks out as numbered stops on one route line drawn on a Plate, each stop a line drawing of the equipment it covers, for a walk-round whose order matters, such as what a preventive maintenance visit covers, ending at the sign-off."
   },
   {
+   "name": "WalkdownPins",
+   "readme": "design-system/components/WalkdownPins/README.md",
+   "preview": "design-system/components/WalkdownPins/preview.html",
+   "group": "Page sections",
+   "height": "1250",
+   "width": "1280",
+   "subtitle": "C&Q: IQ and OQ checks pinned to the installed system",
+   "summary": "WalkdownPins pins IQ and OQ checks to the installed system on a drawing sheet, as a walkdown mark-up (look `walkdown-pins`, spec block)."
+  },
+  {
    "name": "WaterPath",
    "readme": "design-system/components/WaterPath/README.md",
    "preview": "design-system/components/WaterPath/preview.html",
@@ -829,6 +899,16 @@
    "summary": "WaterPath shows the system families as stations on one pipe, from city feed to point of use, so the reader sees how the systems connect and can open each one's line, standard and page from the drawing."
   },
   {
+   "name": "WetRunHmi",
+   "readme": "design-system/components/WetRunHmi/README.md",
+   "preview": "design-system/components/WetRunHmi/preview.html",
+   "group": "Page sections",
+   "height": "700",
+   "width": "1280",
+   "subtitle": "FAT and SAT: the test bay operator screen, dry check or with water, findings pinned to the mimic",
+   "summary": "WetRunHmi sets an explainer as the test bay's operator screen: a process mimic of the skid that runs dry or with water, the findings water reveals pinned to its parts (look `wet-run-hmi`, prose block `as: \"explainer\"`)."
+  },
+  {
    "name": "WindingRoute",
    "readme": "design-system/components/WindingRoute/README.md",
    "preview": "design-system/components/WindingRoute/preview.html",
@@ -837,6 +917,16 @@
    "width": "1280",
    "subtitle": "Seven treatment stages as stops on one winding pipe across a navy band",
    "summary": "WindingRoute draws a treatment train as one winding pipe across a navy band, each stage a stop on the wave with its line glyph, so the reader follows the water stage by stage."
+  },
+  {
+   "name": "WitnessPlan",
+   "readme": "design-system/components/WitnessPlan/README.md",
+   "preview": "design-system/components/WitnessPlan/preview.html",
+   "group": "Page sections",
+   "height": "760",
+   "width": "1280",
+   "subtitle": "FAT and SAT: five ways to witness, read off a plan of the test bay",
+   "summary": "WitnessPlan reads the ways to witness a FAT off one plan of the test bay: choosing a way puts its people, cameras, screen or data package on the plan (look `witness-plan`, options block)."
   },
   {
    "name": "CompareTable",
