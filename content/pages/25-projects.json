@@ -86,7 +86,13 @@
      "[FAT witness notice, working days], once [shop and test bay ready for visits]"
     ]
    ],
-   "look": "check-ledger"
+   "look": "check-ledger",
+   "fits": {
+    "1": [
+     "cross",
+     "tee"
+    ]
+   }
   },
   {
    "type": "prose",

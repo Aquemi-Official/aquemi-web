@@ -6906,7 +6906,13 @@
        "[FAT witness notice, working days], once [shop and test bay ready for visits]"
       ]
      ],
-     "look": "check-ledger"
+     "look": "check-ledger",
+     "fits": {
+      "1": [
+       "cross",
+       "tee"
+      ]
+     }
     },
     {
      "type": "prose",
@@ -7119,23 +7125,37 @@
      "items": [
       {
        "t": "Commercial lead",
-       "d": "[Full name] · [licence or qualification]. Ask about scope, terms and company facts.",
-       "station": "front"
+       "d": "[Full name] · [licence or qualification]. Ask about scope, terms and company facts."
       },
       {
        "t": "Industrial automation engineer",
        "d": "[Full name] · [licence or qualification]. Direct experience on pharmaceutical water systems. Ask about controls and data integrity.",
-       "link": "sys-monitoring",
-       "station": "ctl"
+       "link": "sys-monitoring"
       },
       {
        "t": "Modular manufacturing and design specialist",
        "d": "[Full name] · [licence or qualification]. Ask about design, fabrication and joint records.",
-       "link": "svc-fabrication",
-       "station": "fab"
+       "link": "svc-fabrication"
       }
      ],
-     "look": "shop-floor"
+     "parts": [
+      {
+       "t": "The package",
+       "by": "We design and fabricate",
+       "part": "package"
+      },
+      {
+       "t": "Instruments",
+       "by": "From their makers",
+       "part": "instruments"
+      },
+      {
+       "t": "Membranes and EDI modules",
+       "by": "From their makers",
+       "part": "modules"
+      }
+     ],
+     "look": "source-skid"
     },
     {
      "type": "grid",

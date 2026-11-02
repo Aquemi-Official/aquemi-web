@@ -313,10 +313,10 @@
    "readme": "design-system/components/CheckLedger/README.md",
    "preview": "design-system/components/CheckLedger/preview.html",
    "group": "Page sections",
-   "height": "1500",
+   "height": "1250",
    "width": "1100",
-   "subtitle": "Six checks before a case study: what each shows, the route, what it does not prove",
-   "summary": "CheckLedger sets a router table of checks a buyer can run before a case study exists as a two-sided ledger on a navy band: what each check lets you see on the left, what it does not prove on the right, and the route to arrange it on the seam between them."
+   "subtitle": "Six checks before a case study as a ledger of tiles: slash numeral, route, what you check, what it does not prove, time",
+   "summary": "CheckLedger sets a router table of checks a buyer can run before a case study exists as a ledger of tiles: each check is one row headed by a navy slash-numeral tile, then the route to arrange it, what you check, what it does not prove, and the time to arrange in mono at the right edge."
   },
   {
    "name": "CheckerRouter",
@@ -353,10 +353,10 @@
    "readme": "design-system/components/Colophon/README.md",
    "preview": "design-system/components/Colophon/preview.html",
    "group": "Page sections",
-   "height": "1200",
+   "height": "1300",
    "width": "1100",
-   "subtitle": "Company facts as a measured editorial colophon",
-   "summary": "Colophon sets a spec block of company facts as a measured editorial colophon: the one highlighted fact as a display-size statement, every other fact as a line on a measuring rule with its evidence as a margin note, so a company's facts read like the masthead of a well-made publication rather than a table."
+   "subtitle": "Company facts as a split ledger: the title straddles a limestone strip on a navy band",
+   "summary": "Colophon sets a spec block of company facts as a split ledger: a navy band with a limestone strip down its left edge, the section title set very large across the strip's edge so the colour split runs through the type and on down through the facts (item on the strip, fact and evidence on the navy)."
   },
   {
    "name": "ContactRoutes",
@@ -1023,10 +1023,10 @@
    "readme": "design-system/components/RecordAnatomy/README.md",
    "preview": "design-system/components/RecordAnatomy/preview.html",
    "group": "Page sections",
-   "height": "1100",
+   "height": "800",
    "width": "1100",
-   "subtitle": "What a published figure carries: a specimen record in four zones with leaders",
-   "summary": "RecordAnatomy explains what a published record carries by drawing the anatomy of one specimen record: a limestone sheet in zones, one small drawing per part of the record, each zone's number led across the gutter to the point that explains it."
+   "subtitle": "What a published figure carries: a drawing sheet with four specimen drawings and a title block",
+   "summary": "RecordAnatomy explains what a published record carries as a drawing sheet: the title large in the sheet's open half, four specimen drawings in a drawing field (one per point, none carrying a value), and the points themselves as the sheet's title block, so every published figure reads as signed off like a drawing."
   },
   {
    "name": "RecordSheet",
@@ -1213,10 +1213,10 @@
    "readme": "design-system/components/SiteTiles/README.md",
    "preview": "design-system/components/SiteTiles/preview.html",
    "group": "Page sections",
-   "height": "800",
+   "height": "1000",
    "width": "1100",
-   "subtitle": "What changes for a Canadian site: four tiles, each opened by a figure plate",
-   "summary": "SiteTiles sets a short grid of what changes for a site as a Swiss row of tiles, each opened by a small flat figure plate that draws the change instead of naming it, then the number large and light, the title, the line and its link."
+   "subtitle": "What changes for a Canadian site: a navy drawing sheet with one isometric part per column",
+   "summary": "SiteTiles sets a short grid of what changes for a site as one navy drawing sheet: a framed sheet with its zone band, the title large in the top left, and one column per item with its number, title, one isometric part (IsoKit) that makes the change visible, its line and its link."
   },
   {
    "name": "SkidTags",
@@ -1227,6 +1227,16 @@
    "width": "1300",
    "subtitle": "Engineering standards keyed to a skid elevation: numbered tags on the parts match the numbered table rows",
    "summary": "SkidTags keys an evidence table to an elevation drawing of a Purified Water skid: numbered square tags stand round the drawing with a leader to the part each standard governs, and the table rows below carry the same numbers, so every standard points at its part."
+  },
+  {
+   "name": "SourceSkid",
+   "readme": "design-system/components/SourceSkid/README.md",
+   "preview": "design-system/components/SourceSkid/preview.html",
+   "group": "Page sections",
+   "height": "950",
+   "width": "1100",
+   "subtitle": "The people you would work with beside a skid whose callouts split what we make from what makers supply",
+   "summary": "SourceSkid sets the people a buyer would work with beside the package they deliver: quiet ruled cards for the people on the left, and on the right one isometric skid whose numbered callouts split what the company designs and fabricates from what comes from the makers, in the words of the block's intro."
   },
   {
    "name": "SpareSheet",
