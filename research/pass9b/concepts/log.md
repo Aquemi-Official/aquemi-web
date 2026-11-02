@@ -33,3 +33,77 @@ svc-fat-sat.0 | 1 | navy headline block cropped by the frame, numbered FAT/SAT c
 svc-fat-sat.1 | 1 | one double-line pipe route with valves, pump and meters threads five numbered test points on navy | the loop route as the reading path; each claim sits on a valve or instrument along it
 svc-fat-sat.2 | 1 | near-empty limestone drawing sheet: big light title, abstract hairline routing, six steps in a notes column | only the sheet frame and notes column are usable; both takes weak (diagram means nothing)
 QUOTA at svc-fat-sat.3 (reset: Nov 1, 5:57 PM per the model menu; Flash, 3.1 Pro and Argon all limited). Resume at queue index 29 (svc-fat-sat.3).
+PAGE DONE sys-storage
+PAGE DONE sys-pretreatment
+PAGE DONE sys-monitoring
+PAGE DONE svc-design
+PAGE DONE svc-fabrication
+svc-fat-sat.3 | 2 | five witness modes as ruled rows whose leader lines run into a white PP skid in its frame | rows with mono numerals leading into one soft-3D skid; take 1 (.v2) was made on Flash-Lite by mistake
+PAGE DONE svc-fat-sat
+svc-cq.0 | 1 | C&Q stages as a row of navy/limestone tiles with huge slash numerals, one blueprint pipe tile | stages read left to right as tiles; the IQ tile carries the drawing because IQ checks the drawing
+svc-cq.1 | 2 | responsibility table on a navy drawing sheet with zone border and an AQ-CQ-001 title block | drawing-sheet frame + numbered rows + doc code in the title block; still table-only (weak, the direction yields tables)
+svc-cq.2 | 1 | IQ/OQ checks table beside a detailed isometric line drawing of the skid with a few labelled check points | table on the left, isometric skid on the right labelled at the spots each check inspects (joint, sensor, sample port)
+svc-cq.3 | 1 | three slash-numbered phase rows beside a readout panel: giant light 336 SAMPLES, tick scale, limit tag | the sample count as the one big instrument numeral; phases as a short numbered stack
+svc-cq.4 | 1 | full-width navy band carrying the two-level table slices across a hairline skid drawing on limestone | a navy band laid over the drawing: the table crosses the plant like a cutting plane
+PAGE DONE svc-cq
+svc-service.0 | 1 | four plan columns as alternating navy/limestone tiles, huge slash numerals, price/response tiles below | a plan comparison as a 4x2 checker grid; tier numerals as the headers, no table rules
+svc-service.1 | 1 | white RO skid in soft 3D with numbered leaders dropping into the running-cost table below | cost rows wired to the consumable they belong to on the skid (membranes, filters, pump)
+svc-service.2 | 1 | calibration table beside a tick-ring dial with a big steel-blue tolerance figure and two outlined limit tags | one tolerance dial (ticks, limit line, outlined tags) as the calibration emblem next to the 4-row table
+svc-service.3 | 1 | navy band with a line-drawn skid and visit checks along its base, the signed report as a closing limestone line | one drawing band holds the checklist captions; the signed report ends the band as a single sentence
+svc-service.4 | 1 | limestone drawing sheet: dimensioned membrane-housing drawing, part list boxed at right, title block | a part drawn as a dimensioned spare on a drawing sheet; builder must restore the 4-column like-for-like logic
+svc-service.5 | 1 | giant cropped headline spanning navy and limestone halves, a tangled pipe knot figure, five slash-numbered steps | headline crosses the colour split; one knotted-pipe drawing says 'something wrong'; call step on navy
+PAGE DONE svc-service
+svc-upgrades.0 | 1 | who-does-what table on limestone, half-page navy panel with an annotated fusion-weld close-up | split page: responsibility table left, one dimensioned weld macro right as the 'we fix the system' image
+svc-upgrades.1 | 1 | navy header band with a P&ID-style plant line drawing over a 5-column upgrade table | header drawing could light up the part each upgrade row replaces; table itself is plain
+svc-upgrades.2 | 1 | gap table with mono clause codes beside an isometric skid line drawing; obsolete-PLC note set in mono next to the headline | mono side note beside the headline for the discontinued PLCs; table + isometric skid is the stock pattern
+svc-upgrades.3 | 2 | review areas as a drawing register: numbered rows with mono codes (01_REC...) on a navy zone-bordered sheet | a drawing-register list with mono area codes and a title block; large light row labels
+svc-upgrades.4 | 1 | horizontal double-line pipe with valves as a timeline; a line icon above each of five steps | the pipe as the process axis, valves as stage gates, one hairline icon per stage
+PAGE DONE svc-upgrades
+ind-pharma.0 | 1 | situation-need-start rows as a checker grid of navy/limestone tiles with slash numerals and two blueprint tiles | a 5-row router: numeral tile, situation, need, start-with link; filler tiles carry tiny skid drawings
+ind-pharma.1 | 1 | vertical grade scale (potable-PW-WFI) with a 'minimum' limit line and big numeral beside the dosage-form table | a water-grade ladder as a tick scale with a minimum line; builder should order it potable < PW < WFI
+ind-pharma.2 | 1 | inspector/reads/answer table with mono codes beside a large isometric PP plant drawing bleeding off the right edge | stock table + isometric pattern; the bleed-off crop of the plant gives it scale
+ind-pharma.3 | 1 | central hairline process schematic with five decisions as numbered callouts on both sides, leader lines into the plant | decisions pinned to the part of the plant they size (headers, loop, membranes, duplex trains)
+ind-pharma.4 | 1 | soft-3D translucent PP column skid with leaders on the left, product/minimum-water table on the right | stock skid + table; 'Potable' set in steel blue in the table is the useful cue (grade as the accent)
+PAGE DONE ind-pharma
+ind-meddevice.0 | 2 | navy panel with a dimensioned line-mesh fusion bead beside the process-step / water-grade table | mood plate (dimensioned bead on navy) + 4-row grade table; picture does not encode grades (weak-ish)
+ind-meddevice.1 | 1 | loop-to-washer line schematic with 3 numbered stations under a navy flow readout (big 12.5 m3/h, ticks, limit tag) | the supply readout sits on the drawing; three stations from loop to wash chamber along one route
+ind-meddevice.2 | 1 | four system links as slash-numbered navy/limestone tiles, one blueprint tile and one abstract steel-blue tile | a 3+3 tile grid of link cards; the blueprint tile and colour-block tile fill the grid without clutter
+ind-meddevice.3 | 1 | auditor table on navy blueprint grid; double-line pipe manifolds with valves feed each row across the columns | pipe headers as the table's column joins: each auditor 'flows' through what they read to where we answer
+PAGE DONE ind-meddevice
+ind-cdmo.0 | 1 | 4-column situation router table on a navy zone-bordered drawing sheet with title block | drawing-sheet frame only; both takes weak (take 2 = empty broken tables); builder should invent the router
+QUOTA at ind-cdmo.1 (reset: Nov 1, 10:57 PM per the model menu; Flash, 3.1 Pro and Argon limited). Resume at queue index 55 (ind-cdmo.1).
+ind-cdmo.1 | 1 | white PP skid in soft 3D centred, the five audit-pack parts as numbered callouts on both sides | each pack document pinned to the part of the system it covers; doc code and period in mono corners
+ind-cdmo.2 | 1 | huge stacked headline, isometric drawing of twin duplex trains, five numbered redundancy cards in a band with mono codes | the duplex pair drawn twice-identical says redundancy; one card highlighted steel blue (storage autonomy)
+ind-cdmo.3 | 1 | four numbered steps with steel-blue placeholder figures beside a ring of isometric line-drawn PP modules | placeholders set in the accent colour; the module ring is generic, builder should show the new outlet being tied in
+PAGE DONE ind-cdmo
+compliance.4 | 1 | skid elevation drawing with five numbered square tags above a 4-column standards table whose rows carry the same numbers | numbered tags on the drawing match the table rows: each standard points at the part it governs
+PAGE DONE compliance
+cmp-documentation.0 | 1 | limestone sheet on navy: huge headline, five numbered package sections in a ruled grid, isometric pipe-frame drawing | package sections as a ruled index grid; one isometric spool frame as the figure
+cmp-documentation.1 | 1 | duotone fusion-joint line drawing with dimension ticks beside a stage / approver / documents table | weld drawing as mood plate next to the stage table; stock pattern, builder could add a stage rail
+cmp-documentation.2 | 1 | five numbered document-lifecycle steps with leader lines into a white soft-3D RO skid | steps as a numbered column wired to the skid; leaders are decorative (lifecycle is not physical), keep the rhythm only
+cmp-documentation.3 | 1 | 3-row delivery table on a navy zone-bordered drawing sheet with doc code DS-001-A and an AQ-DP-04 title block | drawing-sheet frame + mono doc code under the headline; both takes table-only (weak; the drawing-sheet direction always yields tables)
+PAGE DONE cmp-documentation
+cmp-quality.0 | 2 | three ruled columns on a limestone drawing sheet, each entry followed by a tiny hairline record glyph | a small line glyph per record type (register, log, certificate) gives the table a visual vocabulary
+cmp-quality.1 | 1 | six NCR steps as navy/limestone tiles with huge slash numerals; one tile is a dimensioned joint-repair drawing with 'defective region' tags | step 01 tile oversized (hold first); the repair drawing tile shows the cut-out joint
+cmp-quality.2 | 1 | two lead facts (big '12 months' review interval, 'open CAPA stops orders') above a supplier requirements table | promote the two rules to headline-sized facts above the table; the inline gauge in the last row is noise
+cmp-quality.3 | 1 | ruler-framed readout box with a giant light numeral and REQ tag, certifications as a 2x2 grid of mono status lines | each certification as a mono 'readout' line (code, holder, expiry); the ruler frame is the instrument motif
+cmp-quality.4 | 1 | numbered commercial-terms table beside an isometric skid frame bleeding off the right edge | stock table + bleed-off isometric; terms are tabular by nature, keep it a clean ruled table
+PAGE DONE cmp-quality
+projects.0 | 1 | five verification routes as rows of tiles: navy slash-numeral tile, route, check, not-proved, mono time-to-arrange | numeral tiles as row heads + mono lead times at the right edge; two blueprint fitting tiles add texture
+projects.1 | 1 | sparse limestone drawing sheet whose title block rows read Figure / Method / Report / Approval | the four proof fields as a drawing title block (every figure 'signed off' like a drawing); abstract diagram is decorative
+PAGE DONE projects
+about.0 | 1 | giant cropped 'Company facts' headline straddling a limestone/navy split, fact table across it, small skid line drawing | the colour split runs through the headline and table; facts ledger with item / fact / evidence
+about.1 | 1 | three numbered people cards beside a soft-3D skid whose leaders split 'designed by Aquemi' from 'maker-sourced' parts | the skid callouts answer 'what we make vs buy'; people as quiet ruled cards (invented names: ignore)
+about.2 | 1 | navy drawing sheet: four columns, each with one line-drawn part (flange, pipe spool, vessel pair, tank), title block AQ-SEC-CAN-04 | one isometric part per column under each heading; drawing-sheet frame finally holds pictures, not a table
+PAGE DONE about
+careers.0 | 1 | role cards set inside the bends of one double-line pipe loop with valves; open/closed status after each title | each role sits in a loop bay; a valve per role could read open/closed (duplicated commercial-lead card: ignore)
+careers.1 | 1 | numbered terms list (title + mono detail line) beside an isometric PP plant line drawing | stock list + isometric; the term name / mono detail pairing is the reusable bit
+careers.2 | 1 | dimensioned duotone macro of a PP fusion joint beside a vertical four-step rail with gate ticks | the test joint (the practical interview) as the hero photo; steps on a slim vertical rail
+PAGE DONE careers
+news.0 | 1 | limestone drawing sheet: big title left, notes as the sheet's numbered notes column in mono, faint schematic between | the register as a drawing's notes column (numbered, mono); only 5 of 9 shown, builder lists all
+PAGE DONE news
+contact-proposal.2 | 1 | headline cropped off the top-right edge, isometric skid line drawing left, situation / returns / when / cost table with mono turnaround | cropped oversized headline + a short 4-column menu; 'when' in mono, 'free' in the steel-blue accent
+PAGE DONE contact-proposal
+contact-service.2 | 1 | steel-blue riser pipe with a valve per severity row branching out to the response and follow-up columns | a vertical header pipe feeds each severity row; branch lines carry the eye from request to response to follow-up
+PAGE DONE contact-service
+QUOTA at contact-locations.1 (reset: Nov 2, 3:57 AM per the model menu; Flash, 3.1 Pro and Argon limited). Resume at queue index 79 (contact-locations.1); 2 items left.

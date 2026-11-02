@@ -49,3 +49,20 @@ Reviewed 1280 and 375, light and dark, keyboard (rows, switch, cards), reduced m
 
 ## Requests
 None filed.
+
+## Pass 9b · Witness plan
+3 "How you witness": UPGRADED `witness-plan` to concept .3 (take 2; the .v2 was made on the wrong model, ignored).
+- Was: a navy floor-plan board with actors and a caption. Now: the heading and five ruled rows (mono "01.", the way,
+  what it means) on the left; an IsoKit light drawing of the white PP package inside the test bay's open frame on the
+  right (skid, RO rack, tank, panel, outlet analyser, gauge on the feed, protocol binders, a camera on the frame,
+  drawn inline as IsoKit has none). Each row's underline runs on as a leader to the part that way looks at.
+- New field `part` per item (In person: panel; Remote: camera; Hybrid: gauge; Your delegate: documents; Review only:
+  analyzer), replacing `scene`; `zones` now label the frame and the camera. Board caption dropped (it repeated the row).
+- Leaders are laid out from the rendered rows (ResizeObserver in the look); choosing or pointing at a way lights its
+  leader, marker and part. Keyboard (arrows, Home, End), the sliding indicator (sliding-tabs) kept.
+- Motion: IsoKit draw and water, rows rise, leaders draw out and a light runs each to its part (animated-beam port);
+  each choice sends one light down its leader. transition-panel port retired with the caption.
+- Under 1080 px: heading, drawing, rows; leaders off, numbers pair rows and markers.
+- Checks: build + check 0 problems from these files; check --budgets svc-fat-sat 0 overruns; motioncheck 1280 and 375:
+  0 errors, 0 hidden. Light, dark, 375 reviewed.
+- Still weak: the frame's front post and back edges cross some leaders; the "Our test bay" label sits on a frame line.
