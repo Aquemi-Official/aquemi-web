@@ -4305,34 +4305,50 @@ if(typeof window!=='undefined')window.AQrsCam=rsCam;
   var list=[].slice.call(sh.querySelectorAll('.aq-redline-sheet__item'));rsCam(sh.querySelector('.aq-redline-sheet__band'),it?list.indexOf(it):null)});
  document.addEventListener('mouseout',function(ev){var sh=ev.target.closest&&ev.target.closest('.aq-redline-sheet');if(sh&&!sh.contains(ev.relatedTarget)&&!sh.hasAttribute('data-tour'))rsCam(sh.querySelector('.aq-redline-sheet__band'),null)});
 })();
-/* Look "response-lanes" -> ResponseLanes (design-system/components/ResponseLanes): a table of response times by request
-   (your request, first response, what follows) drawn as lanes on one clock. Each request is a lane: it starts where you
-   call or send and runs right through its first response (one stop per clause of that cell, split at "; ") and on into
-   what follows (the same), every stop a node on the line with its clock beneath it, placeholders and all. A request
-   written "Severity N: …" is set with N as a huge light numeral, so the four severities read as a calm scale from
-   production stopped down to routine; the other requests follow under a stronger rule with no numeral. Severity 1's
-   lane is drawn in flow. Stops sit at even spacing: the lanes show the order of events, never a time scale.
-   Fields, as a table: cols [your request, first response, what follows] (the two value labels head the lane zones),
-   rows [request, first response, what follows], intro, nav. Cells may be {t, link, intent}. Design system:
-   components/ResponseLanes. */
+/* Look "request-menu" -> RequestMenu (design-system/components/RequestMenu): a table of what each request returns, set
+   as a short menu on a limestone sheet (pass 9b concept contact-proposal.2). The section title runs oversized across the
+   top right; an isometric line drawing of a packaged skid stands at the left (sticky on desktop) and the menu sits beside
+   it as a real table: a numbered situation heads each group (th scope=rowgroup), and what comes back is set one returned
+   item per line, each with its own "When" (Geist Mono) and "Cost" (flow). A "What comes back" cell holding several items
+   joined by " · " gives one line per item; the "When" and "Cost" cells are split the same way when they hold the same
+   number of parts, otherwise the whole cell spans the group's lines. A {t, link, intent} cell keeps its link.
+   Fields, as a table: cols [situation, what comes back, when, cost] (the column heads, and the phone's field keys), rows,
+   fold, fold_noun. Design system: components/RequestMenu. */
 (function(){
-/* clauses: a cell split at "; " outside brackets and parentheses ("Annex 15, 11; GUI-0029, 7" inside a parenthesis stays one) */
-function clauses(c){if(c&&typeof c==='object')return [c];var s=String(c==null?'':c),o=[],d=0,st=0;
- for(var i=0;i<s.length;i++){var ch=s[i];if(ch==='('||ch==='[')d++;else if((ch===')'||ch===']')&&d)d--;else if(ch===';'&&!d&&/\s/.test(s[i+1]||'')){o.push(s.slice(st,i));st=i+1}}
- o.push(s.slice(st));return o.map(function(x){return x.trim()}).filter(function(x){return x!==''})}
+function parts(c){return c&&typeof c==='object'?[c]:String(c==null?'':c).split(/\s+·\s+/)}
 function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
-LOOKS['response-lanes']=function(b,H){var C=b.cols||[],R=b.rows||[],seen=false;
- var rows=R.map(function(r,i){var t=r[0]&&typeof r[0]==='object'?r[0].t:String(r[0]||''),m=t.match(/^Severity\s+(\d+):\s*(.*)$/),sev=m?+m[1]:0;
-  var brk=!sev&&!seen&&i>0;if(!sev)seen=true;
-  function zone(c,k){var E=clauses(c);return '<div class="aq-response-lanes__zone" data-zone="'+k+'"><p class="aq-response-lanes__zk">'+tx(C[k]||'')+'</p><ol class="aq-response-lanes__stops">'
-   +E.map(function(x){return '<li><span class="aq-response-lanes__node" aria-hidden="true"></span><span class="aq-response-lanes__v">'+tcell(cap(x))+'</span></li>'}).join('')+'</ol></div>'}
-  return '<li class="aq-response-lanes__row'+(sev===1?' is-first':'')+(sev?' is-sev':'')+(brk?' is-break':'')+'"'+(sev?' data-sev="'+sev+'"':'')+'>'
-   +'<div class="aq-response-lanes__req">'
-    +(sev?'<span class="aq-response-lanes__num" aria-hidden="true">'+sev+'</span>':'')
-    +'<h3 class="aq-response-lanes__t">'+(sev?'<span class="aq-response-lanes__sev">Severity '+sev+'<span class="aq-response-lanes__sr">: </span></span><span class="aq-response-lanes__what">'+tx(cap(m[2]))+'</span>':tcell(r[0]))+'</h3></div>'
-   +'<div class="aq-response-lanes__lane"><span class="aq-response-lanes__line" aria-hidden="true"><i></i></span><span class="aq-response-lanes__start" aria-hidden="true"></span>'+zone(r[1],1)+zone(r[2],2)+'</div></li>'}).join('');
- var head='<p class="aq-response-lanes__head" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+wIcon('clock','aq-response-lanes__ic')+tx(C[1]||'')+'</span><span>'+tx(C[2]||'')+'</span></p>';
- return sec(H+'<div class="aq-response-lanes">'+head+'<ol class="aq-response-lanes__rows">'+rows+'</ol></div>','aq-response-lanes-sec')};
+/* the drawing: a packaged skid in an open frame (base frame, posts and top rails), a closed module, a tank and two
+   cartridge housings piped in series; drawn with IsoKit, the frame posts as single centre lines */
+function figure(){var z=15,W=124,D=60,T=104,K={wall:false,flow:false,flanges:false,caps:false,r:1};
+ function post(x,y){return isoPipe([[x,y,9],[x,y,T]],K)}
+ var sk=isoPart('skid',0,0,0,1,{w:W,d:D,id:'frame'});
+ var tk=isoPart('tank',26,20,z,1,{id:'tank'});
+ var f1=isoPart('filter',70,20,z,1,{id:'f1'}),f2=isoPart('filter',96,20,z,1,{id:'f2'});
+ var md=isoPart('module',100,46,z,1,{w:30,d:18,h:28,id:'module'});
+ var a=tk.ports.out,i1=f1.ports.in,x1=i1[0]-5;
+ var p1=isoPipe([a,[x1,a[1],a[2]],[x1,i1[1],i1[2]],i1],{to:'f1',r:1.8,flanges:false,caps:false});
+ var p2=isoPipe([f1.ports.out,f2.ports.in],{to:'f2',r:1.8,flanges:false,caps:false});
+ var o=f2.ports.out,p3=isoPipe([o,[W+12,o[1],o[2]]],{r:1.8,flanges:'ends',caps:'end'});
+ var rails=isoPipe([[2,D-2,T],[2,2,T],[W-2,2,T]],K),front=isoPipe([[2,D-2,T],[W-2,D-2,T],[W-2,2,T]],K);
+ var inner=[sk,post(2,2),post(W-2,2),rails,tk,p1,f1,p2,f2,p3,md,post(2,D-2),post(W-2,D-2),front].join('');
+ var bx=isoBounds([[0,0,0],[W+14,0,0],[0,D,0],[W,D,0],[0,0,T],[W,D,T],[W+14,0,T]],8);
+ return isoSvg(bx.w,bx.h,inner,'aq-iso--limestone aq-request-menu__svg',{origin:[-bx.x,-bx.y]})}
+LOOKS['request-menu']=function(b,H){var C=b.cols||[],R=b.rows||[],F=b.fold>0&&R.length>b.fold?b.fold:0;
+ function k(j,d){return '<span class="aq-request-menu__k" aria-hidden="true">'+tx(C[j]||d)+'</span>'}
+ var groups=R.map(function(r,i){var got=parts(r[1]),when=parts(r[2]),cost=parts(r[3]),n=got.length,wS=when.length===n,cS=cost.length===n;
+  var lines=got.map(function(g,j){var w=wS?when[j]:(j?null:r[2]),c=cS?cost[j]:(j?null:r[3]),span=' rowspan="'+n+'"';
+   return '<tr class="aq-request-menu__line">'
+    +(j?'':'<th scope="rowgroup" rowspan="'+n+'" class="aq-request-menu__s"><span class="aq-request-menu__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><span class="aq-request-menu__st">'+tcell(r[0])+'</span></th>')
+    +'<td class="aq-request-menu__got" data-col="1">'+tcell(cap(g))+'</td>'
+    +(w==null?'':'<td class="aq-request-menu__when" data-col="2"'+(wS||n<2?'':span)+'>'+k(2,'When')+'<span class="aq-request-menu__v">'+tcell(w)+'</span></td>')
+    +(c==null?'':'<td class="aq-request-menu__cost" data-col="3"'+(cS||n<2?'':span)+'>'+k(3,'Cost')+'<span class="aq-request-menu__v">'+tcell(c)+'</span></td>')
+    +'</tr>'}).join('');
+  return '<tbody class="aq-request-menu__set'+(F&&i>=F?' aq-fold-x':'')+'" style="--n:'+n+'">'+lines+'</tbody>'}).join('');
+ var head='<thead><tr>'+[0,1,2,3].map(function(j){return '<th scope="col" class="aq-request-menu__h" data-col="'+j+'">'+(j===2?wIcon('clock','aq-request-menu__ic'):'')+tx(C[j]||'')+'</th>'}).join('')+'</tr></thead>';
+ var table='<table class="aq-request-menu__table">'+head+groups+'</table>';
+ return sec('<div class="aq-request-menu-wrap" data-theme="light"><div class="aq-request-menu__mast">'+H+'</div>'
+  +'<div class="aq-request-menu"><figure class="aq-request-menu__fig" aria-hidden="true">'+figure()+'</figure>'
+  +'<div class="aq-request-menu__body">'+wFold(b,R.length,table,b.fold_noun||'rows')+'</div></div></div>','aq-band--limestone aq-request-menu-sec')};
 })();
 /* Look "retrofit-plant" -> RetrofitPlant (design-system/components/RetrofitPlant): common upgrades shown on the running
    plant, drawn the way a retrofit drawing is: existing equipment faint, the new work bold. A navy blueprint sheet
@@ -4391,35 +4407,6 @@ function rpAim(s){var c=s.querySelector('.aq-retrofit-plant__cam'),w=s.querySele
  document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-retrofit-plant__tab');if(t)pick(t)});
  document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-retrofit-plant__tab');if(!t||['ArrowDown','ArrowUp','ArrowRight','ArrowLeft','Home','End'].indexOf(ev.key)<0)return;
   var a=[].slice.call(t.parentNode.querySelectorAll('.aq-retrofit-plant__tab')),i=a.indexOf(t),n=ev.key==='Home'?0:ev.key==='End'?a.length-1:(i+(/Down|Right/.test(ev.key)?1:a.length-1))%a.length;ev.preventDefault();a[n].focus();pick(a[n])});
-})();
-/* Look "return-slips" -> ReturnSlips (design-system/components/ReturnSlips): a table of what each request returns, set as
-   an exchange on a limestone band. Each row is one situation: what you have, set large and light on the left; a short
-   pipe with its arrow carries it across; on the right, what comes back is dealt out as paper slips, one per returned
-   item, each with its own "When" and "Cost" fields. A "What comes back" cell holding several items joined by " · " gives
-   one slip per item, and the "When" and "Cost" cells are split the same way when they hold the same number of parts
-   (otherwise each slip shows the whole cell). A {t, link, intent} cell becomes a slip whose title is the link.
-   Fields, as a table: cols [situation, what comes back, when, cost] (labels used as the slip field names), rows, fold,
-   fold_noun. Each slip's ruled header has one mark per slip in its row, its own in flow (slip 2 of 4 lights the second).
-   Hover or focus on a row runs its pipe in flow and lifts its slips. Design system: components/ReturnSlips. */
-(function(){
-function parts(c){return c&&typeof c==='object'?[c]:String(c==null?'':c).split(/\s+·\s+/)}
-function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
-LOOKS['return-slips']=function(b,H){var C=b.cols||[],R=b.rows||[];
- var rows=R.map(function(r,i){var got=parts(r[1]),when=parts(r[2]),cost=parts(r[3]),n=got.length;
-  var wSplit=when.length===n,cSplit=cost.length===n;
-  var slips=got.map(function(g,k){var w=wSplit?when[k]:r[2],c=cSplit?cost[k]:r[3];
-   return '<li class="aq-return-slips__slip" style="--k:'+k+'"><span class="aq-return-slips__ruling" aria-hidden="true">'+got.map(function(_,j){return '<i'+(j===k?' class="is-k"':'')+'></i>'}).join('')+'</span>'
-    +'<p class="aq-return-slips__t">'+tcell(cap(g))+'</p>'
-    +'<dl class="aq-return-slips__f">'
-     +(w!=null&&w!==''?'<div><dt>'+wIcon('clock','aq-return-slips__ic')+tx(C[2]||'When')+'</dt><dd>'+tcell(w)+'</dd></div>':'')
-     +(c!=null&&c!==''?'<div><dt>'+tx(C[3]||'Cost')+'</dt><dd>'+tcell(c)+'</dd></div>':'')
-    +'</dl></li>'}).join('');
-  return fli('<li class="aq-return-slips__row" style="--n:'+n+'">',b,i)
-   +'<div class="aq-return-slips__have"><span class="aq-return-slips__i" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-return-slips__s">'+tcell(r[0])+'</h3></div>'
-   +'<span class="aq-return-slips__pipe" aria-hidden="true"><i></i></span>'
-   +'<ol class="aq-return-slips__slips" aria-label="'+e(C[1]||'What comes back')+'">'+slips+'</ol></li>'}).join('');
- var head='<p class="aq-return-slips__cols" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span></p>';
- return sec('<div class="aq-return-slips-wrap" data-theme="light">'+H+'<div class="aq-return-slips">'+head+wFold(b,R.length,'<ol class="aq-return-slips__rows">'+rows+'</ol>',b.fold_noun||'rows')+'</div></div>','aq-band--limestone aq-return-slips-sec')};
 })();
 /* Look "review-reticles" -> ReviewReticles (design-system/components/ReviewReticles): what an assessment reviews, set
    as a drawing register on a limestone sheet (pass 9b concept svc-upgrades.3: numbered rows with mono area codes,
@@ -4607,6 +4594,38 @@ if(typeof document!=='undefined'&&document.addEventListener){var rsQ=0;
  document.addEventListener('mouseout',function(ev){var li=ev.target.closest&&ev.target.closest('.aq-revision-sheet__step');if(!li||(ev.relatedTarget&&li.contains(ev.relatedTarget)))return;var w=li.closest('.aq-revision-sheet');w._rsHover=0;rsTick()});
  if(typeof MutationObserver!=='undefined')new MutationObserver(rsTick).observe(document.documentElement,{childList:true,subtree:true});
  window.AQrevsheet={set:rsSet,scan:rsScan}}
+/* Look "riser-valves" -> RiserValves (design-system/components/RiserValves): a table of response times by request
+   (your request, first response, what follows) on a navy sheet with one riser pipe (pass 9b concept contact-service.2).
+   A vertical twin-wall riser runs down the gutter between the requests and the answers; at every request a branch tees
+   off through a valve into its first response, and a second branch leaves the riser at the foot of the row, runs under
+   the first response and turns up into what follows, so the eye is carried from request to response to follow-up.
+   Requests written "Severity N: …" show "Severity N" over the rest; the first request without a severity opens under a
+   stronger rule. Each value cell is split into lines at "; " outside brackets and parentheses.
+   Fields, as a table: cols [your request, first response, what follows], rows [request, first response, what follows],
+   intro, nav. Cells may be {t, link, intent}. Design system: components/RiserValves. */
+(function(){
+function clauses(c){if(c&&typeof c==='object')return [c];var s=String(c==null?'':c),o=[],d=0,st=0;
+ for(var i=0;i<s.length;i++){var ch=s[i];if(ch==='('||ch==='[')d++;else if((ch===')'||ch===']')&&d)d--;else if(ch===';'&&!d&&/\s/.test(s[i+1]||'')){o.push(s.slice(st,i));st=i+1}}
+ o.push(s.slice(st));return o.map(function(x){return x.trim()}).filter(function(x){return x!==''})}
+function cap(s){return typeof s==='string'?s.charAt(0).toUpperCase()+s.slice(1):s}
+/* drawn parts (fixed size, never scaled): a gate valve with a lever, and the elbow that turns branch B up */
+var VALVE='<svg class="aq-riser-valves__valve" viewBox="-12 -17 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path class="aq-riser-valves__vb" d="M-9 -5L9 5V-5L-9 5Z"/><path class="aq-riser-valves__vs" d="M0 0V-9"/><path class="aq-riser-valves__vl" d="M-6 -10H6"/></svg>';
+var ELBOW='<svg class="aq-riser-valves__elb" viewBox="0 0 15 15" width="15" height="15" aria-hidden="true" focusable="false"><path class="aq-riser-valves__ew" d="M0 15A15 15 0 0 0 15 0M0 5A5 5 0 0 0 5 0"/><path class="aq-riser-valves__ef" pathLength="1" d="M0 10A10 10 0 0 0 10 0"/></svg>';
+LOOKS['riser-valves']=function(b,H){var C=b.cols||[],R=b.rows||[],seen=false,n=R.length;
+ function cell(c,k){return '<div class="aq-riser-valves__cell" data-zone="'+k+'">'
+  +(k===1?'<span class="aq-riser-valves__br aq-riser-valves__br--a" aria-hidden="true"><i class="aq-riser-valves__w"></i>'+VALVE+'</span>'
+   :'<span class="aq-riser-valves__br aq-riser-valves__br--b" aria-hidden="true"><span class="aq-riser-valves__run"><i class="aq-riser-valves__w"></i></span>'+ELBOW+'<span class="aq-riser-valves__rise"><i class="aq-riser-valves__w"></i></span></span>')
+  +'<p class="aq-riser-valves__k">'+tx(C[k]||'')+'</p>'+clauses(c).map(function(x){return '<p class="aq-riser-valves__v">'+tcell(cap(x))+'</p>'}).join('')+'</div>'}
+ var rows=R.map(function(r,i){var t=r[0]&&typeof r[0]==='object'?r[0].t:String(r[0]||''),m=t.match(/^Severity\s+(\d+):\s*(.*)$/),sev=m?+m[1]:0;
+  var brk=!sev&&!seen&&i>0;if(!sev)seen=true;
+  return '<li class="aq-riser-valves__row'+(sev?' is-sev':'')+(sev===1?' is-first-sev':'')+(i===0?' is-top':'')+(i===n-1?' is-end':'')+(brk?' is-break':'')+'"'+(sev?' data-sev="'+sev+'"':'')+'>'
+   +'<span class="aq-riser-valves__riser" aria-hidden="true"><i class="aq-riser-valves__w"></i></span>'
+   +'<div class="aq-riser-valves__req"><span class="aq-riser-valves__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
+   +'<h3 class="aq-riser-valves__t">'+(sev?'<span class="aq-riser-valves__sev">Severity '+sev+'<span class="aq-riser-valves__sr">: </span></span><span class="aq-riser-valves__what">'+tx(cap(m[2]))+'</span>':tcell(r[0]))+'</h3></div>'
+   +cell(r[1],1)+cell(r[2],2)+'</li>'}).join('');
+ var head='<p class="aq-riser-valves__colh" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span><span>'+tx(C[2]||'')+'</span></p>';
+ return sec(H+'<div class="aq-riser-valves">'+head+'<ol class="aq-riser-valves__rows">'+rows+'</ol></div>','aq-band--navy aq-riser-valves-sec')};
+})();
 /* Look "role-loop" -> RoleLoop (design-system/components/RoleLoop): the roles as bays of one pipe loop on the navy
    band (pass 9b concept careers.0). The loop is one twin-wall pipe with water in it; it meanders through the grid of
    role cards, over one card and under the next, so each role sits in a bay of its own, and on the second row it runs

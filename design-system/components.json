@@ -1059,14 +1059,14 @@
    "summary": "RelatedLinks closes a page with the pages to read next as tiles hung off one pipe: each tile shows its index and section, a picture of the target page and its title with a `flow` arrow."
   },
   {
-   "name": "ResponseLanes",
-   "readme": "design-system/components/ResponseLanes/README.md",
-   "preview": "design-system/components/ResponseLanes/preview.html",
+   "name": "RequestMenu",
+   "readme": "design-system/components/RequestMenu/README.md",
+   "preview": "design-system/components/RequestMenu/preview.html",
    "group": "Page sections",
-   "height": "1300",
-   "width": "1100",
-   "subtitle": "Response times by request as lanes on one clock: severities 1 to 4 under huge light numerals, then the other requests; every clause a stop with its placeholder clock",
-   "summary": "ResponseLanes draws a table of response times by request as lanes on one clock: each request runs from where you call or send through its first response into what follows, every clause a stop with its time beneath, and the severities set as a calm scale of huge light numerals."
+   "height": "1500",
+   "width": "1200",
+   "subtitle": "What each request returns as a short menu on a limestone sheet: oversized title, isometric skid drawing, one line per returned item with When and Cost",
+   "summary": "RequestMenu sets a table of what each request returns as a short menu on a limestone sheet: the title oversized across the top right, an isometric skid drawn at the left, and one line per returned item with its When and Cost."
   },
   {
    "name": "RetrofitPlant",
@@ -1077,16 +1077,6 @@
    "width": "1100",
    "subtitle": "Upgrades on the running plant: existing faint, the sheet moves in on the new work",
    "summary": "RetrofitPlant shows common upgrades on the running plant the way a retrofit drawing does: the existing plant faint on a navy blueprint, the stages an upgrade changes lit, and the upgrades as a tab list with the picked one's terms beside it."
-  },
-  {
-   "name": "ReturnSlips",
-   "readme": "design-system/components/ReturnSlips/README.md",
-   "preview": "design-system/components/ReturnSlips/preview.html",
-   "group": "Page sections",
-   "height": "1400",
-   "width": "1100",
-   "subtitle": "What each request returns: each situation set large, a pipe across, and the returned items dealt out as paper slips with When and Cost",
-   "summary": "ReturnSlips sets a table of what each request returns as an exchange on a limestone band: each situation large on the left, a pipe across, and what comes back dealt out as paper slips with their \"When\" and \"Cost\" fields."
   },
   {
    "name": "ReviewReticles",
@@ -1117,6 +1107,16 @@
    "width": "1100",
    "subtitle": "One document taking each review step's marks, pinned beside the steps",
    "summary": "RevisionSheet tells a document review cycle on one document: a paper sheet stays pinned beside the steps and takes each step's marks as the step reaches the middle of the screen (comments, answered comments and a struck draft tag, signatures, recorded data, the current revision), its revision block filling one row per step."
+  },
+  {
+   "name": "RiserValves",
+   "readme": "design-system/components/RiserValves/README.md",
+   "preview": "design-system/components/RiserValves/preview.html",
+   "group": "Page sections",
+   "height": "1400",
+   "width": "1200",
+   "subtitle": "Response times by request on one riser pipe: a valve per request into the first response, a second branch up into what follows",
+   "summary": "RiserValves sets a table of response times by request on a navy sheet with one riser pipe: a valve per request tees into its first response, and a second branch runs under it and turns up into what follows, so the eye goes from request to response to follow-up."
   },
   {
    "name": "RoleLoop",

@@ -5301,44 +5301,52 @@ AQmotion.fx('RelatedLinks', function (root, m) {
   }, { passive: true });
   document.documentElement.addEventListener('pointerleave', function () { if (cur) { cur.card.classList.remove('is-lit'); cur = null } });
 })();
-/* ResponseLanes: the clock starts. Lane by lane, the start mark sets, the line draws out to the right and each stop's
-   node lands as the line reaches it, its clock rising beneath. Severity 1 draws fastest and the rest a little slower in
-   order, so urgency reads from the pace, calmly; a single drop of water then runs severity 1's lane once and fades.
-   Numerals rise out of their slot. One timeline, once on scroll-in, under 4.5 s; nothing under reduced motion. */
-AQmotion.fx('ResponseLanes', function (root, m) {
-  var CLEAR = 'transform,opacity,visibility';
-  root.querySelectorAll('.aq-response-lanes').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var rows = [].slice.call(el.querySelectorAll('.aq-response-lanes__row')), phone = m.narrow();
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    var head = el.querySelector('.aq-response-lanes__head');
-    if (head && !phone) tl.fromTo(head, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, 0);
-    rows.forEach(function (r, i) {
-      var sev = +(r.getAttribute('data-sev') || 0), at = 0.15 + i * 0.32, dur = sev ? 0.45 + 0.2 * (sev - 1) : 0.9;
-      var num = r.querySelector('.aq-response-lanes__num'), t = r.querySelector('.aq-response-lanes__t'),
-        line = r.querySelector('.aq-response-lanes__line'), start = r.querySelector('.aq-response-lanes__start'),
-        stops = [].slice.call(r.querySelectorAll('.aq-response-lanes__stops > li'));
-      if (num) tl.fromTo(num, { yPercent: 40, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1, duration: 0.7, ease: 'power4.out', clearProps: CLEAR }, at);
-      if (t) tl.fromTo(t, { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, clearProps: CLEAR }, at + 0.05);
-      if (start) tl.fromTo(start, { scale: 0 }, { scale: 1, duration: 0.25, ease: 'back.out(3)', clearProps: 'transform' }, at + 0.1);
-      if (line) tl.fromTo(line, { '--aq-line': 0 }, { '--aq-line': 1, duration: dur, ease: 'power1.inOut' }, at + 0.15);
-      stops.forEach(function (s, k) {
-        var a2 = at + 0.15 + dur * (k + 1) / (stops.length + 0.5), node = s.querySelector('.aq-response-lanes__node'), v = s.querySelector('.aq-response-lanes__v');
-        if (node) tl.fromTo(node, { scale: 0 }, { scale: 1, duration: 0.3, ease: 'back.out(3)', clearProps: 'transform' }, a2);
-        if (v) tl.fromTo(v, { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, clearProps: CLEAR }, a2 + 0.05);
-      });
-      if (sev === 1 && line && !phone) {
-        var drop = line.querySelector('i');
-        if (drop) {
-          tl.fromTo(drop, { x: 0, opacity: 1 }, { x: function () { return line.offsetWidth - drop.offsetWidth }, duration: 1.1, ease: 'power1.inOut', immediateRender: false }, at + 0.15 + dur);
-          tl.to(drop, { opacity: 0, duration: 0.25, clearProps: 'transform,opacity' }, '>-0.1');
-        }
-      }
-    });
-    var total = tl.duration(); if (total > 4.5) tl.timeScale(total / 4.5);
-    m.on(el, function () { tl.play() }, 'top 75%');
+/* RequestMenu: the oversized title slides in from beyond the right edge as the sheet scrolls up (scroll-linked, so it
+   reads cropped the way the concept sets it and lands whole before the menu is read), the skid draws itself and the
+   water runs through it once, the menu's lines follow in reading order; pointing at a line bands it and lights its
+   column head. Nothing under reduced motion: the title sits in place and the menu is complete without script. */
+AQmotion.fx('RequestMenu', function (root, m) {
+  root.querySelectorAll('.aq-request-menu-wrap').forEach(function (wrap) {
+    var el = wrap.querySelector('.aq-request-menu');
+    if (!el || !m.free(el)) return; m.claim(el);
+
+    /* Ported from Subframe Motion "Scroll-driven image reveal" (scroll-window), MIT, (c) 2026 Subframe: one scroll
+       progress mapped to a phase with clamp(p * 1.24), so the move completes before the end of its range and holds;
+       here the phase carries the title in from the right edge (no fade: the words stay at full contrast). */
+    var mast = wrap.querySelector('.aq-request-menu__mast');
+    if (mast) {
+      var clamp = function (n) { return Math.max(0, Math.min(1, n)) };
+      var paint = function (p) { var f = clamp(p * 1.24), e = 1 - Math.pow(1 - f, 2); gsap.set(mast, { x: (1 - e) * mast.offsetWidth * (m.narrow() ? 0.18 : 0.26) }) };
+      m.tw(ScrollTrigger.create({ trigger: wrap, start: 'top bottom', end: 'top 30%', onUpdate: function (s) { paint(s.progress) }, onRefresh: function (s) { paint(s.progress) } }));
+    }
+
+    var svg = el.querySelector('svg.aq-iso'), fig = el.querySelector('.aq-request-menu__fig');
+    var tl = svg && window.AQiso ? AQiso.timeline(svg, m, { draw: 1.3, pipe: 0.6, flow: 1.3 }) : null;
+    if (tl && fig) m.on(fig, function () { tl.play() }, 'top 80%');
+
+    var lines = [].filter.call(el.querySelectorAll('.aq-request-menu__line'), function (r) { return !r.closest('.aq-fold-x') });
+    var cells = lines.map(function (r) { return r.children });
+    if (lines.length) {
+      var flat = []; cells.forEach(function (c) { flat.push.apply(flat, c) });
+      gsap.set(flat, { y: 12, autoAlpha: 0 });
+      m.on(el.querySelector('.aq-request-menu__table') || el, function () {
+        m.tw(gsap.to(flat, { y: 0, autoAlpha: 1, duration: 0.5, ease: 'power3.out', stagger: 0.035, clearProps: 'transform,opacity,visibility' }));
+      }, 'top 80%');
+    }
   });
 });
+
+/* Ported from Subframe Motion "Chart crosshair tooltip" (chart-crosshair), MIT, (c) 2026 Subframe: the crosshair snaps
+   to the cell under the pointer (no easing); the row takes the band (CSS) and the column's head lights. Visitor-driven,
+   so it also runs under reduced motion. */
+(function () {
+  function set(tab, col) { tab.querySelectorAll('.aq-request-menu__h').forEach(function (h) { h.classList.toggle('is-on', h.getAttribute('data-col') === col) }) }
+  function at(ev) { var c = ev.target.closest && ev.target.closest('.aq-request-menu__table [data-col]'); if (!c || c.tagName === 'TH' && c.classList.contains('aq-request-menu__h')) return; set(c.closest('table'), c.getAttribute('data-col')) }
+  document.addEventListener('pointerover', at);
+  document.addEventListener('focusin', at);
+  document.addEventListener('pointerout', function (ev) { var t = ev.target.closest && ev.target.closest('.aq-request-menu__table'); if (t && !t.contains(ev.relatedTarget)) set(t, null) });
+  document.addEventListener('focusout', function (ev) { var t = ev.target.closest && ev.target.closest('.aq-request-menu__table'); if (t && !t.contains(ev.relatedTarget)) set(t, null) });
+})();
 /* RetrofitPlant: the existing plant is drawn and the water runs it once at full strength (IsoKit's choreography, the
    faint "existing" state held off until then), then the plant drops back to existing, the sheet moves in on the picked
    upgrade (CSS transition on the camera group, 0.9 s) and its stages light; the tab list and the panel rise. One timeline, once, under 5 s. Picking another upgrade fades the sheet over
@@ -5367,33 +5375,6 @@ AQmotion.fx('RetrofitPlant', function (root, m) {
     tl.from(q('.aq-retrofit-plant__panel:not(.is-off) .aq-retrofit-plant__term, .aq-retrofit-plant__panel:not(.is-off) .aq-retrofit-plant__go'), { y: 14, autoAlpha: 0, duration: 0.45, stagger: 0.08, ease: 'power2.out', clearProps: 'transform,opacity,visibility' }, 1.0);
     tl.from(el.querySelector('.aq-retrofit-plant__legend'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, te);
     m.on(el, function () { tl.play() }, 'top 70%');
-  });
-});
-/* ReturnSlips: each request goes in and its papers come back. Row by row, the hairline rule draws across, the situation
-   rises, the pipe lays from it and the water runs to the arrow, then the returned slips are dealt out of the pipe one by
-   one (sliding in from the left, a slight turn settling square). Rows follow one another; folded rows play when shown.
-   One timeline, once on scroll-in, under 4 s; nothing under reduced motion. */
-AQmotion.fx('ReturnSlips', function (root, m) {
-  var CLEAR = 'transform,opacity,visibility';
-  root.querySelectorAll('.aq-return-slips').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var rows = [].slice.call(el.querySelectorAll('.aq-return-slips__row')).filter(function (r) { return r.offsetParent !== null });
-    if (!rows.length) return;
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    var cols = el.querySelector('.aq-return-slips__cols');
-    if (cols) tl.fromTo(cols, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' }, 0);
-    rows.forEach(function (r, i) {
-      var at = 0.1 + i * 0.5, have = r.querySelector('.aq-return-slips__have'), pipe = r.querySelector('.aq-return-slips__pipe'),
-        slips = r.querySelectorAll('.aq-return-slips__slip');
-      if (have) tl.fromTo(have, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, clearProps: CLEAR }, at);
-      if (pipe) {
-        tl.fromTo(pipe, { '--aq-pipe': 0 }, { '--aq-pipe': 1, duration: 0.35, ease: 'power2.inOut' }, at + 0.2);
-        tl.fromTo(pipe, { '--aq-water': 0 }, { '--aq-water': 1, duration: 0.3, ease: 'none' }, at + 0.45);
-      }
-      if (slips.length) tl.fromTo(slips, { x: -32, rotation: -2.5, autoAlpha: 0 }, { x: 0, rotation: 0, autoAlpha: 1, duration: 0.55, stagger: 0.09, clearProps: CLEAR }, at + 0.6);
-    });
-    var total = tl.duration(); if (total > 4) tl.timeScale(total / 4);
-    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
 /* ReviewReticles: the sheet is drawn up, then read. The frames and zone marks fade in, the register rows rise one by
@@ -5486,6 +5467,45 @@ AQmotion.fx('RevisionSheet', function (root, m) {
       tl.call(function () { el._rsAuto = 0; R.set(el, n) }, null, 0.8 + n * 0.6);
     }
     m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
+/* RiserValves: the page's one scroll-linked story. As the requests scroll up through the viewport, water rises down the
+   riser row by row; at each request it opens the valve and runs branch A into the first response, then branch B under
+   it and up into what follows, before going on to the next request. Scroll back and it drains. The words never fade
+   (they enter once, 12 px, then stay at full contrast). Nothing under reduced motion: every pipe full, every valve open.
+
+   Ported from Subframe Motion "Scroll-driven image reveal" (scroll-window), MIT, (c) 2026 Subframe: one scroll progress
+   fanned into staggered phases, phase_i = clamp((p - i / n) * n * 1.24), so each row completes before the next begins;
+   each row's phase is split again into riser, valve and branch A, branch B run, elbow and rise. */
+AQmotion.fx('RiserValves', function (root, m) {
+  root.querySelectorAll('.aq-riser-valves').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var rows = [].slice.call(el.querySelectorAll('.aq-riser-valves__row')), n = rows.length, list = el.querySelector('.aq-riser-valves__rows');
+    if (!n || !list) return;
+    function clamp(x) { return Math.max(0, Math.min(1, x)) }
+    function seg(f, a, b) { return clamp((f - a) / (b - a)) }
+    function paint(p) {
+      rows.forEach(function (r, i) {
+        var f = clamp((p - i / n) * n * 1.24), s = r.style, a = seg(f, 0.3, 0.6);
+        s.setProperty('--rv-r', seg(f, 0, 0.35).toFixed(3));
+        s.setProperty('--rv-a', a.toFixed(3));
+        s.setProperty('--rv-b', seg(f, 0.5, 0.82).toFixed(3));
+        s.setProperty('--rv-c', seg(f, 0.8, 1).toFixed(3));
+        if (a >= 0.5) r.removeAttribute('data-rv'); else r.setAttribute('data-rv', 'shut');
+      });
+    }
+    paint(0);
+    m.tw(ScrollTrigger.create({ trigger: list, start: 'top 72%', end: 'bottom 62%', onUpdate: function (st) { paint(st.progress) }, onRefresh: function (st) { paint(st.progress) } }));
+
+    var head = el.querySelector('.aq-riser-valves__colh');
+    rows.forEach(function (r, i) {
+      var words = r.querySelectorAll('.aq-riser-valves__req, .aq-riser-valves__k, .aq-riser-valves__v');
+      gsap.set(words, { y: 12, autoAlpha: 0 });
+      m.on(r, function () {
+        m.tw(gsap.to(words, { y: 0, autoAlpha: 1, duration: 0.5, ease: 'power3.out', stagger: 0.05, clearProps: 'transform,opacity,visibility' }));
+      }, 'top 88%');
+    });
+    if (head) { gsap.set(head, { autoAlpha: 0 }); m.on(el, function () { m.tw(gsap.to(head, { autoAlpha: 1, duration: 0.4, clearProps: 'opacity,visibility' })) }, 'top 85%') }
   });
 });
 /* RoleLoop: the loop is filled once. The twin wall draws round the cards, then the water runs the loop at one steady
