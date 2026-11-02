@@ -64,7 +64,7 @@
    ],
    "fold": 3,
    "fold_noun": "processes",
-   "look": "record-slips"
+   "look": "record-sheet"
   },
   {
    "type": "steps",
@@ -97,13 +97,30 @@
      "d": "Every NCR logged in your turnover package; one after shipment reaches you within [NCR notice after shipment, working days]."
     }
    ],
-   "look": "capa-ring"
+   "look": "ncr-tiles",
+   "drawing": {
+    "step": 3,
+    "reject": "Rejected joint",
+    "cut": "Cut out",
+    "remade": "Remade to [PP joint repair rule]",
+    "number": "New number"
+   }
   },
   {
    "type": "table",
    "nav": "Suppliers",
    "h": "What we require from suppliers",
-   "intro": "Reviewed every [supplier review interval, months]; an open CAPA stops new orders.",
+   "facts": [
+    {
+     "k": "Supplier review",
+     "v": "Reviewed every [supplier review interval, months]"
+    },
+    {
+     "k": "Open CAPA",
+     "v": "An open CAPA stops new orders.",
+     "glyph": "gate"
+    }
+   ],
    "cols": [
     "Supply",
     "What we require",
@@ -174,7 +191,7 @@
      "icon": "monitor"
     }
    ],
-   "look": "cert-seals"
+   "look": "cert-readout"
   },
   {
    "type": "spec",

@@ -747,38 +747,6 @@ AQmotion.fx('BudgetBento', function (root, m) {
     b.style.setProperty('--aq-py', c((ev.clientY - r.top) / r.height * 2 - 1));
   }, { passive: true });
 })();
-/* CapaRing: the loop closes. The far ring and its ticks draw, the record's name settles in the centre, then the water
-   runs the ring clockwise from the first node: each node seats as the water reaches it and its step slides in from its
-   side; at a hold node the water waits (the valve shuts with a small jolt) before it goes on; back at the first node
-   the ring closes and the line swells once. One timeline, once, about 4.5 s. Phones: the same ring, the steps rule in
-   under it. */
-AQmotion.fx('CapaRing', function (root, m) {
-  root.querySelectorAll('.aq-capa-ring').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var q = function (s) { return [].slice.call(el.querySelectorAll(s)) };
-    var flow = el.querySelector('.aq-capa-ring__flow'), nodes = q('.aq-capa-ring__node'), steps = q('.aq-capa-ring__step'), core = el.querySelector('.aq-capa-ring__core');
-    var n = nodes.length || 1, narrow = m.narrow(), D = window.DrawSVGPlugin;
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    tl.from(q('.aq-capa-ring__far, .aq-capa-ring__base'), { autoAlpha: 0, scale: 0.92, transformOrigin: '50% 50%', duration: 0.8, clearProps: 'transform,opacity,visibility' }, 0);
-    tl.from(q('.aq-capa-ring__tick'), { autoAlpha: 0, duration: 0.02, stagger: 0.008, clearProps: 'opacity,visibility' }, 0.1);
-    if (core) tl.from(core, { autoAlpha: 0, scale: 0.85, duration: 0.8, clearProps: 'transform,opacity,visibility' }, 0.3);
-    if (narrow && steps.length) tl.from(steps, { clipPath: 'inset(0 100% 0 0)', duration: 0.5, ease: 'power2.inOut', stagger: 0.08, clearProps: 'clipPath' }, 0.4);
-    if (D && flow) gsap.set(flow, { drawSVG: '0% 0%' });
-    var t = 0.7, seg = 0.42;
-    nodes.forEach(function (g, i) {
-      var dot = g.querySelector('.aq-capa-ring__dot'), lead = g.querySelector('.aq-capa-ring__lead'), lab = g.querySelectorAll('text, .aq-capa-ring__valve'), st = steps[i];
-      if (i > 0 && D && flow) { tl.to(flow, { drawSVG: '0% ' + (i / n * 100) + '%', duration: seg, ease: 'none' }, t); t += seg }
-      tl.from(dot, { scale: 0, transformOrigin: '50% 50%', duration: 0.35, ease: 'back.out(2.5)', clearProps: 'transform' }, t);
-      if (lab.length) tl.from(lab, { autoAlpha: 0, duration: 0.2, clearProps: 'opacity,visibility' }, t + 0.1);
-      if (lead && !narrow) tl.from(lead, { autoAlpha: 0, duration: 0.3, clearProps: 'opacity,visibility' }, t + 0.1);
-      if (st && !narrow) tl.from(st, { x: st.classList.contains('is-l') ? -24 : 24, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, t + 0.1);
-      if (g.classList.contains('is-hold')) { tl.to(g, { x: 2, duration: 0.05, yoyo: true, repeat: 3, ease: 'none', clearProps: 'transform' }, t + 0.3); t += 0.55 }
-    });
-    if (D && flow) { tl.to(flow, { drawSVG: '0% 100%', duration: seg, ease: 'none' }, t); t += seg; tl.set(flow, { clearProps: 'strokeDasharray,strokeDashoffset' }, t) }
-    if (flow) tl.to(flow, { strokeWidth: 6, duration: 0.25, yoyo: true, repeat: 1, ease: 'power1.inOut', clearProps: 'strokeWidth' }, t);
-    m.on(el, function () { tl.play() }, 'top 70%');
-  });
-});
 /* CaseStudy: the record is filled in, cause before effect.
    Fact-box case: the facts drop in, the outcome box is cut in, its figure counts up, and the result sentence lands last.
    Project record: facts rows enter; once the drawing has printed (core wipes the illustration) the change pins pop
@@ -876,28 +844,34 @@ AQmotion.fx('CaseStudy', function (root, m) {
     }
   });
 });
-/* CertSeals: the certificates are sealed. Tiles rise in from the left in turn; on each, the seal's ring draws round
-   and its ticks turn into place, then the icon strikes into the centre like a stamp (large and light, down hard, a
-   small jolt through the tile) and the tag and lines settle under it. One timeline, once, under 3 s. */
-AQmotion.fx('CertSeals', function (root, m) {
-  root.querySelectorAll('.aq-cert-seals').forEach(function (el) {
+/* CertReadout: the instrument powers up, then reads each certificate once.
+   Ported from Subframe Motion "Quote tick" (quote-tick), MIT, (c) 2026 Subframe
+   (kept: each new reading enters 8 px from the side of travel in 220 ms ease-out and keeps a tint for 800 ms, the
+   previous value replaced in place, nothing moves under reduced motion; replaced: the price feed with the visitor's
+   pointer or focus on a line, the green/red flash with flow-tint, the delta row with the scale marker that glides along
+   the side ruler. The reading itself is CSS in style.css and the selection is the look's own handler, so it works
+   without GSAP).
+   Entrance, once: the rulers wipe on from their zero ends, the giant reading rises 16 px, the lines follow 0.08 s
+   apart with their top rule drawn; then a single tour reads lines 2 to the last and returns to the first (0.7 s a
+   reading, about 3 s), skipped as soon as the visitor points at or focuses a line. */
+AQmotion.fx('CertReadout', function (root, m) {
+  root.querySelectorAll('.aq-cert-readout').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
-    var tiles = [].slice.call(el.querySelectorAll('.aq-cert-seals__tile')), D = window.DrawSVGPlugin;
+    var box = el.querySelector('.aq-cert-readout__box'), rules = el.querySelectorAll('.aq-cert-readout__rule'), face = el.querySelector('.aq-cert-readout__face'),
+      bits = el.querySelectorAll('.aq-cert-readout__no, .aq-cert-readout__mark'), lines = el.querySelectorAll('.aq-cert-readout__line');
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    tiles.forEach(function (t, i) {
-      var at = i * 0.3, ring = t.querySelector('.aq-cert-seals__ring'), ticks = t.querySelector('.aq-cert-seals__ticks'), icon = t.querySelector('.aq-cert-seals__icon'),
-        words = t.querySelectorAll('.aq-cert-seals__tag, .aq-cert-seals__t, .aq-cert-seals__d, .aq-cert-seals__go');
-      tl.from(t, { y: 40, autoAlpha: 0, duration: 0.7, clearProps: 'transform,opacity,visibility' }, at);
-      if (ring && D) tl.from(ring, { drawSVG: '0%', duration: 0.6, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.25);
-      if (ticks) tl.from(ticks, { rotation: -60, svgOrigin: '32 32', autoAlpha: 0, duration: 0.8, clearProps: 'transform,opacity,visibility' }, at + 0.25);
-      if (icon) {
-        tl.fromTo(icon, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.22, ease: 'power4.in', clearProps: 'opacity,visibility' }, at + 0.75)
-          .to(t, { y: 3, duration: 0.06, yoyo: true, repeat: 1, ease: 'power1.inOut', clearProps: 'transform' }, at + 0.97);
-        tl.set(icon, { clearProps: 'transform' }, at + 1.0);
-      }
-      if (words.length) tl.from(words, { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, at + 0.5);
-    });
-    m.on(el, function () { tl.play() }, 'top 80%');
+    if (box) tl.from(box, { autoAlpha: 0, duration: 0.6, clearProps: 'opacity,visibility' }, 0);
+    if (rules.length) tl.fromTo(rules, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.9, ease: 'power2.inOut', stagger: 0.1, clearProps: 'clipPath' }, 0.15);
+    if (face) tl.from(face, { y: 16, autoAlpha: 0, duration: 0.7, clearProps: 'transform,opacity,visibility' }, 0.35);
+    if (bits.length) tl.from(bits, { autoAlpha: 0, duration: 0.4, stagger: 0.1, clearProps: 'opacity,visibility' }, 0.6);
+    if (lines.length) tl.from(lines, { y: 16, autoAlpha: 0, duration: 0.6, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 0.3);
+    var n = lines.length, R = window.AQcertReadout;
+    if (R && n > 1) {
+      for (var k = 1; k <= n; k++) (function (k) {
+        tl.call(function () { if (!el.hasAttribute('data-touched')) R.select(el, k % n) }, null, 1.4 + (k - 1) * 0.7);
+      })(k);
+    }
+    m.on(el, function () { tl.play() }, 'top 70%');
   });
 });
 /* CheckLedger: the ledger is ruled, then the water runs the seam. The column heads decode; each row's left side slides
@@ -3932,29 +3906,53 @@ AQmotion.fx('MarketCallouts', function (root, m) {
   document.addEventListener('mouseover', over);
   document.addEventListener('mouseout', function (ev) { var el = ev.target.closest && ev.target.closest('.aq-market-callouts'); if (el && !el.contains(ev.relatedTarget)) set(el, null) });
 })();
-/* MarkingMatch: each delivery is checked as it scrolls in. The part draws on, its marking rings in flow with one
-   pulse, the check line runs out from both ends to the middle and the tick seats, then the certificate slides in from
-   the paper side and how we verify it fades up under the line. One timeline per row, once, under 2.2 s. */
+/* MarkingMatch: the two rules land, the water runs to the closed gate, the schedule is read with a crosshair.
+   Ported from Subframe Motion "Chart crosshair" (chart-crosshair), MIT, (c) 2026 Subframe
+   (kept: the crosshair snaps to the nearest data point rather than following the raw pointer, its rules move in
+   ~180 ms on a strong ease-out, the axis label of the point lights, the crosshair hides when the pointer leaves;
+   replaced: the line chart with the schedule: a flow-tint band glides to the pointed row and a flow bar under the head
+   slides to the pointed column, whose name lights).
+   Entrance, once: the facts rise 16 px, 0.12 s apart; on the gate glyph the pipe draws, the water runs up to the valve
+   and the gate drops shut (0.3 s, power4.in). The schedule's head fades in, then rows rise 8 px, 0.07 s apart, each
+   tick drawn as its row lands. Under 3 s. */
 AQmotion.fx('MarkingMatch', function (root, m) {
   root.querySelectorAll('.aq-marking-match').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
-    var narrow = m.narrow(), D = window.DrawSVGPlugin, cols = el.querySelector('.aq-marking-match__cols');
-    if (cols) { var ct = m.tw(gsap.timeline({ paused: true })); ct.from(cols.children, { autoAlpha: 0, y: 8, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }); m.on(cols, function () { ct.play() }, 'top 90%') }
-    [].forEach.call(el.querySelectorAll('.aq-marking-match__row'), function (row) {
-      var q = function (s) { return [].slice.call(row.querySelectorAll(s)) }, one = function (s) { return row.querySelector(s) };
-      var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-      var lines = q('.aq-marking-match__fig path, .aq-marking-match__fig ellipse'), marks = q('.aq-marking-match__mark');
-      if (D && lines.length) tl.from(lines, { drawSVG: '0%', duration: 0.7, stagger: 0.03, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0);
-      else if (lines.length) tl.from(lines, { autoAlpha: 0, duration: 0.5, clearProps: 'opacity,visibility' }, 0);
-      tl.from(one('.aq-marking-match__name'), { autoAlpha: 0, y: 10, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 0.2);
-      if (marks.length) tl.from(marks, { scale: 1.6, autoAlpha: 0, transformOrigin: '50% 50%', duration: 0.4, ease: 'back.out(2)', clearProps: 'transform,opacity,visibility' }, 0.7);
-      var line = one('.aq-marking-match__line'), ok = one('.aq-marking-match__ok');
-      if (line) tl.from(line, narrow ? { scaleY: 0, transformOrigin: '50% 0', duration: 0.5, clearProps: 'transform' } : { scaleX: 0, transformOrigin: '50% 50%', duration: 0.5, ease: 'power2.inOut', clearProps: 'transform' }, 0.9);
-      if (ok) tl.from(ok, { scale: 0, duration: 0.35, ease: 'back.out(2.5)', clearProps: 'transform' }, 1.25);
-      tl.from(one('.aq-marking-match__paper'), { x: narrow ? 0 : 40, y: narrow ? 16 : 0, rotation: narrow ? 0 : 2, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, 0.5);
-      tl.from(one('.aq-marking-match__how'), { autoAlpha: 0, y: 6, duration: 0.45, clearProps: 'transform,opacity,visibility' }, 1.4);
-      m.on(row, function () { tl.play() }, 'top 85%');
+    var D = window.DrawSVGPlugin, facts = el.querySelectorAll('.aq-marking-match__fact'), gate = el.querySelector('.aq-marking-match__gate');
+    var ft = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    if (facts.length) ft.from(facts, { y: 16, autoAlpha: 0, duration: 0.7, stagger: 0.12, clearProps: 'transform,opacity,visibility' }, 0);
+    if (gate) {
+      var pipe = gate.querySelectorAll('.aq-marking-match__pw, .aq-marking-match__vb, .aq-marking-match__vs'), wf = gate.querySelector('.aq-marking-match__wf'), gt = gate.querySelector('.aq-marking-match__gt');
+      if (D) ft.fromTo(pipe, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.7, ease: 'power2.inOut', stagger: 0.08, clearProps: 'strokeDasharray,strokeDashoffset' }, 0.3);
+      if (D && wf) ft.fromTo(wf, { drawSVG: '0% 0%' }, { drawSVG: '0% 100%', duration: 0.8, ease: 'power1.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.9);
+      if (gt) ft.fromTo(gt, { y: -14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.3, ease: 'power4.in', clearProps: 'transform,opacity,visibility' }, 1.55);
+    }
+    m.on(el, function () { ft.play() }, 'top 80%');
+
+    var table = el.querySelector('.aq-marking-match__table'); if (!table) return;
+    var head = table.querySelector('.aq-marking-match__head'), rows = table.querySelectorAll('.aq-marking-match__row');
+    var tt = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    if (head) tt.from(head, { autoAlpha: 0, duration: 0.5, clearProps: 'opacity,visibility' }, 0);
+    [].forEach.call(rows, function (r, i) {
+      tt.from(r, { y: 8, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 0.15 + i * 0.07);
+      var ok = r.querySelector('.aq-marking-match__ok path');
+      if (D && ok) tt.fromTo(ok, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.35, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.4 + i * 0.07);
     });
+    m.on(table, function () { tt.play() }, 'top 85%');
+
+    // crosshair: snap to the pointed cell (desktop layout only)
+    table.classList.add('is-live');
+    var band = table.querySelector('.aq-marking-match__band');
+    table.addEventListener('pointermove', function (ev) {
+      if (m.narrow() || ev.pointerType === 'touch') return;
+      var c = ev.target.closest && ev.target.closest('.aq-marking-match__c'); if (!c) return;
+      var row = c.parentNode, tr = table.getBoundingClientRect(), rr = row.getBoundingClientRect(), col = c.getAttribute('data-c');
+      if (!table.classList.contains('is-x') && band) band.style.transition = 'none';
+      table.style.setProperty('--hy', (rr.top - tr.top) + 'px'); table.style.setProperty('--hh', rr.height + 'px'); table.style.setProperty('--hc', col);
+      table.setAttribute('data-hc', col); table.classList.add('is-x');
+      if (band && band.style.transition) { void band.offsetWidth; band.style.transition = '' }
+    });
+    table.addEventListener('pointerleave', function () { table.classList.remove('is-x'); table.removeAttribute('data-hc') });
   });
 });
 /* MembraneAtlas: each row arrives as the table scrolls in: the navy tile wipes up, its numeral rolls up on the
@@ -4195,6 +4193,63 @@ AQmotion.fx('MethodBento', function (root, m) {
     ul.addEventListener('focusout', function (ev) { if (!ul.contains(ev.relatedTarget)) go(null, true) });
   });
 })();
+/* NcrTiles: the numerals are pressed into their tiles, then the repair is made on the drawing.
+   Ported from Subframe Motion "Type under pressure" (type-press), MIT, (c) 2026 Subframe
+   (kept: each glyph rises from a narrow sliver, translateY 55 % scaleX 0.12 scaleY 0.55 to rest, from its foot, 760 ms
+   cubic-bezier(.16,1,.3,1), 35 ms a glyph, opacity in over the first quarter; replaced: the heavy poster words with the
+   tiles' light slash numerals, the button that swaps editions with each tile scrolling in).
+   Tiles rise 16 px in reading order (0.08 s apart) and press their numeral as they land. The drawing tile then makes
+   the repair: the pipe run draws on, the dimension marks the length to cut, the rejected length lifts clear of the
+   run to its exploded place, the remade length drops into the gap and its two new joints strike in flow, the labels
+   follow. About 3.6 s, once. Pointing at (or focusing into) the drawing or the step it shows replays the repair
+   (visitor-driven). Nothing under reduced motion: the static drawing is the finished, exploded repair. */
+AQmotion.fx('NcrTiles', function (root, m) {
+  root.querySelectorAll('.aq-ncr-tiles').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var press = window.CustomEase ? (CustomEase.get('aq-press') || CustomEase.create('aq-press', 'M0,0 C0.16,1 0.3,1 1,1')) : 'expo.out';
+    var tiles = [].slice.call(el.querySelectorAll('.aq-ncr-tiles__tile')).sort(function (a, b) { return a.compareDocumentPosition(b) & 4 ? -1 : 1 });
+    var tl = m.tw(gsap.timeline({ paused: true }));
+    tiles.forEach(function (t, i) {
+      var at = i * 0.08, n = t.querySelector('.aq-ncr-tiles__n'), rest = t.querySelectorAll('.aq-ncr-tiles__t, .aq-ncr-tiles__d, .aq-ncr-tiles__hold');
+      tl.from(t, { y: 16, autoAlpha: 0, duration: 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at);
+      if (n) {
+        var s = m.split(n, { type: 'chars' }), ch = s ? s.chars : [n];
+        tl.fromTo(ch, { yPercent: 55, scaleX: 0.12, scaleY: 0.55, autoAlpha: 0, transformOrigin: '50% 100%' },
+          { yPercent: 0, scaleX: 1, scaleY: 1, autoAlpha: 1, duration: 0.76, ease: press, stagger: 0.035, clearProps: 'transform,opacity,visibility',
+            onComplete: function () { if (s) s.revert() } }, at + 0.15);
+      }
+      if (rest.length) tl.from(rest, { y: 8, autoAlpha: 0, duration: 0.45, stagger: 0.06, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.3);
+    });
+    m.on(el, function () { tl.play() }, 'top 80%');
+
+    // the repair, on the drawing tile
+    var fig = el.querySelector('.aq-ncr-tiles__fig'); if (!fig) return;
+    var svg = fig.querySelector('svg'), old = fig.querySelector('.aq-ncr-tiles__old'), neu = fig.querySelector('.aq-ncr-tiles__new'),
+      beads = fig.querySelectorAll('.aq-ncr-tiles__nb'), dim = fig.querySelector('.aq-ncr-tiles__dim'), labs = fig.querySelectorAll('.aq-ncr-tiles__lab, .aq-ncr-tiles__figtag');
+    var base = fig.querySelectorAll('.aq-ncr-tiles__base path, .aq-ncr-tiles__base2 path'), D = window.DrawSVGPlugin;
+    // the lift: the old length sits 60 world units (z) above its place; GSAP moves svg groups in user units
+    function liftPx() { return 60 }
+    function repair(fast) {
+      var k = fast ? 0.6 : 1, r = gsap.timeline();
+      r.fromTo(old, { y: liftPx(), autoAlpha: 1 }, { y: 0, duration: 0.8 * k, ease: 'power2.inOut', clearProps: 'transform' }, 0)
+        .fromTo(neu, { y: -liftPx() * 0.6, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6 * k, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.7 * k)
+        .fromTo(beads, { scale: 1.6, transformOrigin: '50% 50%', autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.24 * k, ease: 'power4.in', stagger: 0.12, clearProps: 'transform,opacity,visibility' }, 1.2 * k);
+      return r;
+    }
+    var ft = m.tw(gsap.timeline({ paused: true }));
+    if (D && base.length) ft.fromTo(base, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.9, ease: 'power2.inOut', stagger: 0.02, clearProps: 'strokeDasharray,strokeDashoffset' }, 0);
+    if (dim) ft.from(dim, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0.8);
+    gsap.set(old, { y: liftPx() }); gsap.set(neu, { autoAlpha: 0 });
+    ft.add(repair(false), 1.1);
+    if (labs.length) ft.from(labs, { autoAlpha: 0, y: 6, duration: 0.4, stagger: 0.1, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 2.6);
+    m.on(fig, function () { ft.play() }, 'top 75%');
+
+    // replay on pointing at the drawing or its step (visitor-driven)
+    var step = el.querySelector('.aq-ncr-tiles__tile.is-drawn'), busy = null;
+    function replay() { if (ft.progress() < 1 || (busy && busy.isActive())) return; busy = repair(true) }
+    [fig.parentNode, step].forEach(function (x) { if (x) { x.addEventListener('mouseenter', replay); x.addEventListener('focusin', replay) } });
+  });
+});
 /* NotesRegister: the register is drawn up like a drawing office ledger. The cream plate unrolls, the filter chips
    click in left to right, the featured panel is cut in from the top with its vignette printing in after, then the
    ruled rows are entered one by one (each wipes left to right, as if ruled with a pen), the featured row last to
@@ -5014,26 +5069,40 @@ AQmotion.fx('RecordAnatomy', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
-/* RecordSlips: each process prints its record. Row by row as it scrolls in: the process name rises, the slot drops
-   into place, then the slip feeds out of the slot (clipped at the slot edge, sliding out from behind it) and its
-   record lines tick in one after another. Phones: the slip feeds down out of the slot. One timeline per row, once,
-   under 2 s. Rows behind the phone fold play when opened. */
-AQmotion.fx('RecordSlips', function (root, m) {
-  root.querySelectorAll('.aq-record-slips').forEach(function (el) {
+/* RecordSheet: the schedule is ruled, then each record's glyph is inked over its faint impression.
+   Ported from Subframe Motion "Reed in one line" (signature-draw), MIT, (c) 2026 Subframe
+   (kept: one stroke inked over a faint offset impression, 0.8 s, cubic-bezier(.37,.12,.28,1), the impression shown
+   from the start, nothing under reduced motion; replaced: the heron with each record's glyph, its accent inked after
+   the body, the replay button with pointing at a process, which re-inks that row's glyphs in 0.45 s).
+   Entrance, once per row as it scrolls in: the name and the cells rise 8 px, the glyphs ink one
+   after another (0.12 s apart). Under 2 s a row. */
+AQmotion.fx('RecordSheet', function (root, m) {
+  root.querySelectorAll('.aq-record-sheet').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
-    var narrow = m.narrow();
-    [].forEach.call(el.querySelectorAll('.aq-record-slips__row'), function (row) {
-      var name = row.querySelector('.aq-record-slips__name'), rest = row.querySelectorAll('.aq-record-slips__proc > .aq-index, .aq-record-slips__proc > p'),
-        slot = row.querySelector('.aq-record-slips__slot'), slip = row.querySelector('.aq-record-slips__slip'), recs = row.querySelectorAll('.aq-record-slips__recs li');
-      var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-      if (name) tl.from(name, { yPercent: 40, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, 0);
-      if (rest.length) tl.from(rest, { autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'opacity,visibility' }, 0.15);
-      if (slot) tl.from(slot, narrow ? { scaleX: 0, duration: 0.4, clearProps: 'transform' } : { scaleY: 0, duration: 0.4, clearProps: 'transform' }, 0.2);
-      if (slip) tl.from(slip, narrow ? { yPercent: -60, clipPath: 'inset(60% 0 0 0)', duration: 0.8, ease: 'power2.out', clearProps: 'clipPath' } : { xPercent: -45, clipPath: 'inset(0 0 0 45%)', duration: 0.8, ease: 'power2.out', clearProps: 'clipPath' }, 0.45);
-      if (slip) tl.set(slip, { clearProps: 'transform' });
-      if (recs.length) tl.from(recs, { autoAlpha: 0, x: -8, duration: 0.35, stagger: 0.12, clearProps: 'transform,opacity,visibility' }, 0.9);
-      m.on(row, function () { tl.play() }, 'top 85%');
+    var ink = window.CustomEase ? (CustomEase.get('aq-ink') || CustomEase.create('aq-ink', 'M0,0 C0.37,0.12 0.28,1 1,1')) : 'power2.inOut';
+    var head = el.querySelector('.aq-record-sheet__cols'), tb = el.querySelector('.aq-record-sheet__tb');
+    if (head) { gsap.set(head, { autoAlpha: 0 }); m.on(el, function () { m.tw(gsap.to(head, { autoAlpha: 1, duration: 0.5, clearProps: 'opacity,visibility' })) }, 'top 85%') }
+    [].forEach.call(el.querySelectorAll('.aq-record-sheet__row'), function (row) {
+      var name = row.querySelector('.aq-record-sheet__name'), txt = row.querySelectorAll('.aq-record-sheet__ctl p, .aq-record-sheet__recs li > span, .aq-record-sheet__no'),
+        glyphs = [].slice.call(row.querySelectorAll('.aq-record-sheet__g'));
+      var tl = m.tw(gsap.timeline({ paused: true }));
+      if (name) tl.from(name, { y: 8, autoAlpha: 0, duration: 0.5, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0);
+      if (txt.length) tl.from(txt, { y: 8, autoAlpha: 0, duration: 0.45, stagger: 0.05, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.1);
+      glyphs.forEach(function (g, j) {
+        var a = g.querySelector('.aq-record-sheet__ink'), b = g.querySelector('.aq-record-sheet__acc'), at = 0.3 + j * 0.12;
+        if (a) tl.fromTo(a, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.8, ease: ink, clearProps: 'strokeDashoffset' }, at);
+        if (b) tl.fromTo(b, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.45, ease: ink, clearProps: 'strokeDashoffset' }, at + 0.6);
+      });
+      m.on(row, function () { tl.play() }, 'top 88%');
+      // pointing at a process re-inks its glyphs (visitor-driven: may repeat)
+      var busy = false;
+      row.addEventListener('mouseenter', function () {
+        if (busy || tl.isActive() || tl.progress() < 1) return; busy = true;
+        var paths = row.querySelectorAll('.aq-record-sheet__ink, .aq-record-sheet__acc');
+        gsap.fromTo(paths, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.45, ease: ink, stagger: 0.06, clearProps: 'strokeDashoffset', onComplete: function () { busy = false } });
+      });
     });
+    if (tb) { gsap.set(tb, { autoAlpha: 0, y: 8 }); m.on(tb, function () { m.tw(gsap.to(tb, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power3.out', clearProps: 'transform,opacity,visibility' })) }, 'top 95%') }
   });
 });
 /* RedlineSheet: a design review in progress. The sheet unrolls from the top, then each markup in turn: the figure
@@ -6580,22 +6649,23 @@ AQmotion.fx('TankTiles', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
-/* TermsSheet: the sheet is laid down and its clauses are written in. The sheet rises with a slight turn and settles
-   square, the head rule draws across, then clause by clause (down the first column, then the second) the number rolls
-   up into place, the clause's rule draws and its lines appear. One timeline, once, under 3 s. */
+/* TermsSheet: the terms are ruled in while the skid is drawn beside them. The head rule draws across from the left,
+   then row by row (0.09 s apart) the number and the term rise 8 px and the values follow. The skid
+   builds the IsoKit way (window.AQiso.timeline: parts draw back to front, the pipe, then the water runs to the tank)
+   starting with the table. One timeline each, once, under 4 s. Pointing at a row lights its number (CSS). */
 AQmotion.fx('TermsSheet', function (root, m) {
   root.querySelectorAll('.aq-terms-sheet').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
-    var head = el.querySelector('.aq-terms-sheet__head'), cls = [].slice.call(el.querySelectorAll('.aq-terms-sheet__cl')).filter(function (c) { return c.offsetHeight > 0 });
+    var head = el.querySelector('.aq-terms-sheet__head'), rows = [].slice.call(el.querySelectorAll('.aq-terms-sheet__row')).filter(function (r) { return r.offsetHeight > 0 });
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    tl.from(el, { y: 48, rotation: -1.2, autoAlpha: 0, duration: 0.8, ease: 'power4.out', clearProps: 'transform,opacity,visibility' }, 0);
-    if (head) tl.from(head, { clipPath: 'inset(0 100% 0 0)', duration: 0.6, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.4);
-    cls.forEach(function (c, i) {
-      var at = 0.6 + i * 0.16, num = c.querySelector('.aq-terms-sheet__n'), body = c.querySelector('.aq-terms-sheet__body');
-      if (num) tl.from(num, { yPercent: 70, clipPath: 'inset(0 0 100% 0)', duration: 0.5, clearProps: 'transform,clipPath' }, at);
-      if (body) tl.from(body, { autoAlpha: 0, x: -8, duration: 0.45, clearProps: 'transform,opacity,visibility' }, at + 0.1);
+    if (head) tl.from(head, { clipPath: 'inset(0 100% 0 0)', duration: 0.6, ease: 'power2.inOut', clearProps: 'clipPath' }, 0);
+    rows.forEach(function (r, i) {
+      var at = 0.25 + i * 0.09, lead = r.querySelectorAll('.aq-terms-sheet__n, .aq-terms-sheet__t'), rest = r.querySelectorAll('.aq-terms-sheet__v, .aq-terms-sheet__m, .aq-terms-sheet__note p, .aq-terms-sheet__go');
+      if (lead.length) tl.from(lead, { y: 8, autoAlpha: 0, duration: 0.45, stagger: 0.05, clearProps: 'transform,opacity,visibility' }, at);
+      if (rest.length) tl.from(rest, { y: 8, autoAlpha: 0, duration: 0.45, clearProps: 'transform,opacity,visibility' }, at + 0.1);
     });
-    m.on(el, function () { tl.play() }, 'top 80%');
+    var svg = el.querySelector('.aq-terms-sheet__svg'), it = svg && window.AQiso && AQiso.timeline ? AQiso.timeline(svg, m, { draw: 1.6, pipe: 0.7, flow: 1.0 }) : null;
+    m.on(el, function () { tl.play(); if (it) it.play() }, 'top 80%');
   });
 });
 /* TestSheet: the protocol is executed down the sheet. The paper slides onto the table, then each row is run in turn:

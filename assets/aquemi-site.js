@@ -1623,54 +1623,42 @@ LOOKS['budget-bento']=function(b,H){
    +'<div class="aq-budget-bento__val"><p class="aq-budget-bento__k">'+tx(C[1]||'')+'</p><p class="aq-budget-bento__v">'+tx(r.v)+'</p>'+bbRange(L)+'</div>'
    +(r.m?'<div class="aq-budget-bento__basis"><p class="aq-budget-bento__k">'+tx(C[2]||'')+'</p>'+basis+'</div>':'')+link(r)+'</div></li>'}).join('');
  return sec(wSecHead({eyebrow:b.caption,h:b.h,intro:b.intro})+'<div class="aq-budget-bento"><ol class="aq-budget-bento__grid" role="list">'+tiles+'</ol>'+bbNote(b)+'</div>','aq-budget-bento-sec')};
-/* Look "capa-ring" -> CapaRing (design-system/components/CapaRing): a defect's way from hold to close as one loop that
-   closes. On a navy ground the steps sit around a ring, clockwise from the top right: the first three down the right,
-   the rest back up the left, each joined to its node by a short leader. A hold step's node is drawn as a closed valve
-   and its text names who signs. The water runs the ring once, waits at the hold, lights each node as it arrives and
-   closes the loop back at the first: what the steps mean together (nothing is left open). The ring's centre carries the
-   record's short name, taken from the first step's text (the abbreviation in it, e.g. "NCR"), or the block's "core".
-   Fields (a steps block): h, intro, items [{t, d, hold, link}], core (optional centre word). Six steps fit best (three
-   a side); any count works. Pointing at a step lights its node.
-   Phones: the ring sits over the steps, which follow as a numbered list. */
-LOOKS['capa-ring']=function(b,H){var I=b.items||[],n=I.length,half=Math.ceil(n/2),cx=200,cy=200,r=148;
- var core=b.core||((String(I[0]&&I[0].d||'').match(/\b[A-Z]{3,5}\b/)||[''])[0]);
- var ang=function(i){return (-90+(i+0.5)*360/n)*Math.PI/180},pt=function(i,rr){return [cx+(rr||r)*Math.cos(ang(i)),cy+(rr||r)*Math.sin(ang(i))]};
- var f=function(v){return v.toFixed(1)};
- /* the flow: a full circle from node 1, clockwise, as two arcs */
- var s0=pt(0),opp=[2*cx-s0[0],2*cy-s0[1]],ring='M'+f(s0[0])+' '+f(s0[1])+'A'+r+' '+r+' 0 0 1 '+f(opp[0])+' '+f(opp[1])+'A'+r+' '+r+' 0 0 1 '+f(s0[0])+' '+f(s0[1]);
- var svg='<svg class="aq-capa-ring__svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">'
-  +'<circle class="aq-capa-ring__far" cx="200" cy="200" r="186"/><circle class="aq-capa-ring__base" cx="200" cy="200" r="'+r+'"/>'
-  +'<path class="aq-capa-ring__flow" d="'+ring+'"/>';
- for(var t=0;t<72;t++){var a=t*5*Math.PI/180,r1=180,r2=t%6?184:190;svg+='<path class="aq-capa-ring__tick" d="M'+f(cx+r1*Math.cos(a))+' '+f(cy+r1*Math.sin(a))+'L'+f(cx+r2*Math.cos(a))+' '+f(cy+r2*Math.sin(a))+'"/>'}
- I.forEach(function(it,i){var p=pt(i),right=Math.cos(ang(i))>=0,ex=right?400:0;
-  svg+='<g class="aq-capa-ring__node'+(it.hold?' is-hold':'')+'" data-i="'+i+'"><path class="aq-capa-ring__lead" d="M'+f(p[0]+(right?16:-16))+' '+f(p[1])+'H'+ex+'"/>'
-   +(it.hold?'<rect class="aq-capa-ring__dot" x="'+f(p[0]-15)+'" y="'+f(p[1]-15)+'" width="30" height="30"/><path class="aq-capa-ring__valve" d="M'+f(p[0]-8)+' '+f(p[1]-6)+'L'+f(p[0]+8)+' '+f(p[1]+6)+'V'+f(p[1]-6)+'L'+f(p[0]-8)+' '+f(p[1]+6)+'Z"/>'
-    :'<circle class="aq-capa-ring__dot" cx="'+f(p[0])+'" cy="'+f(p[1])+'" r="15"/><text class="aq-capa-ring__no" x="'+f(p[0])+'" y="'+f(p[1]+4.5)+'" text-anchor="middle">'+(i+1)+'</text>')+'</g>'});
- svg+='</svg>';
- var steps=I.map(function(it,i){var who=it.hold?String(it.hold):'',side=i<half?'r':'l',row=i<half?i+1:n-i;
-  return '<li class="aq-capa-ring__step is-'+side+(it.hold?' is-hold':'')+'" data-i="'+i+'" style="--row:'+row+'"><span class="aq-capa-ring__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-   +'<h3 class="aq-capa-ring__t">'+(it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t))+'</h3>'+(it.d?'<p class="aq-capa-ring__d">'+tx(it.d)+'</p>':'')
-   +(who?'<p class="aq-capa-ring__hold"><span class="aq-capa-ring__hk">Hold</span> <span>Signed by '+tx(/^[A-Z][a-z]/.test(who)?who.charAt(0).toLowerCase()+who.slice(1):who)+'</span></p>':'')+'</li>'}).join('');
- return sec(H+'<div class="aq-capa-ring" style="--rows:'+half+'"><div class="aq-capa-ring__fig">'+svg+(core?'<span class="aq-capa-ring__core" aria-hidden="true">'+e(core)+'</span>':'')+'</div>'
-  +'<ol class="aq-capa-ring__steps" role="list">'+steps+'</ol></div>','aq-band--navy aq-capa-ring-sec')};
-if(typeof document!=='undefined'&&document.addEventListener)['mouseover','mouseout','focusin','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var s=ev.target.closest&&ev.target.closest('.aq-capa-ring__step');if(!s)return;
- if(/out$/.test(t)&&ev.relatedTarget&&s.contains(ev.relatedTarget))return;var g=s.closest('.aq-capa-ring').querySelector('.aq-capa-ring__node[data-i="'+s.getAttribute('data-i')+'"]');if(g)g.classList.toggle('is-hover',/over|in$/.test(t))})});
-/* Look "cert-seals" -> CertSeals (design-system/components/CertSeals): certification status as a row of certificate
-   tiles, Swiss in build. Each tile carries a seal (a ring of ticks round the item's line icon), the standard or mark
-   it is held to (the item's tag) set large and light, what it covers, and its status. The first tile is navy, the
-   rest limestone in two shades (paper: data-theme="light", so placeholders keep their light chip in the dark theme). A tile with a link is the link (an arrow at its foot). Long tags (placeholders) set
-   smaller so the tile keeps its shape.
-   The navy tile carries a certificate's engraved rosette, drawn by FxGuilloche (ambient WebGL, aria-hidden, faint).
-   Fields (a grid block): h, intro, items [{t, d, tag, icon, link}]. Phones: tiles two a row, then one. */
-LOOKS['cert-seals']=function(b,H){var I=b.items||[];
- var ticks='';for(var k=0;k<36;k++){var a=k*10*Math.PI/180,r1=k%3?27:25,r2=30;ticks+='M'+(32+r1*Math.cos(a)).toFixed(1)+' '+(32+r1*Math.sin(a)).toFixed(1)+'L'+(32+r2*Math.cos(a)).toFixed(1)+' '+(32+r2*Math.sin(a)).toFixed(1)}
- var seal=function(ic){return '<span class="aq-cert-seals__seal" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false"><path class="aq-cert-seals__ticks" d="'+ticks+'"/>'
-  +'<circle class="aq-cert-seals__ring" cx="32" cy="32" r="22"/></svg>'+(ic&&isIcon(ic)?wIcon(ic,'aq-cert-seals__icon'):'')+'</span>'};
- var tiles=I.map(function(it,i){var tag=String(it.tag||''),long=tag.length>14,lk=it.link&&wp(it.link),fx=i?'':' aq-fx-host';
-  var inner=(i?'':'<canvas class="aq-fx-shader" data-gl="guilloche" aria-hidden="true"></canvas>')+seal(it.icon)+(tag?'<p class="aq-cert-seals__tag'+(long?' is-long':'')+'">'+tx(tag)+'</p>':'')
-   +'<h3 class="aq-cert-seals__t">'+tx(it.t)+'</h3>'+(it.d?'<p class="aq-cert-seals__d">'+tx(it.d)+'</p>':'')+(lk?'<span class="aq-cert-seals__go" aria-hidden="true"></span>':'');
-  return '<li class="aq-cert-seals__item" style="--i:'+i+'"'+(i?' data-theme="light"':'')+'>'+(lk?'<a class="aq-cert-seals__tile'+fx+'" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-cert-seals__tile'+fx+'">'+inner+'</div>')+'</li>'}).join('');
- return sec(H+'<div class="aq-cert-seals"><ol class="aq-cert-seals__list" role="list" style="--n:'+I.length+'">'+tiles+'</ol></div>','aq-cert-seals-sec')};
+/* Look "cert-readout" -> CertReadout (design-system/components/CertReadout): certification status read like an
+   instrument. At the left a navy readout box framed by rulers (ticks along the top and foot, a vertical scale at the
+   right edge with a marker at the selected line), the selected item's standard or mark (its tag) set giant and light,
+   its title and status under it, its number at the top right; a certificate rosette turns faintly behind
+   (FxGuilloche). At the right the items as mono readout lines, two by two: number and title, the tag, the status, and
+   the page that holds the detail. Pointing at or focusing a line (its title is a button, aria-pressed) puts it on the
+   readout; the readout is an aria-hidden mirror, so every word is in the lines. Long tags (placeholders) set smaller.
+   Fields (a grid block): h, intro, items [{t, d, tag, icon, link}]. Phones: the readout over the lines, one a row. */
+LOOKS['cert-readout']=function(b,H){var I=b.items||[],n=I.length;
+ var nn=function(i){return (i<9?'0':'')+(i+1)},long=function(t){return String(t||'').length>14};
+ var ticks=function(len,step,big,o){var d='';for(var k=0;k<=len;k+=step){var L=k%big?3:7;d+=o==='v'?'M0 '+k+'H'+L:'M'+k+' 0V'+L}return d};
+ var ruler='<svg class="aq-cert-readout__rule is-top" viewBox="0 0 200 8" preserveAspectRatio="none" focusable="false"><path d="'+ticks(200,2,10)+'"/></svg>'
+  +'<svg class="aq-cert-readout__rule is-foot" viewBox="0 0 200 8" preserveAspectRatio="none" focusable="false"><path d="'+ticks(200,2,10)+'"/></svg>'
+  +'<svg class="aq-cert-readout__rule is-side" viewBox="0 0 8 200" preserveAspectRatio="none" focusable="false"><path d="'+ticks(200,2,10,'v')+'"/></svg>';
+ var it0=I[0]||{};
+ var box='<div class="aq-cert-readout__box aq-fx-host" aria-hidden="true" style="--p:0;--n:'+Math.max(1,n-1)+'"><canvas class="aq-fx-shader" data-gl="guilloche" aria-hidden="true"></canvas>'+ruler
+  +'<span class="aq-cert-readout__no">'+nn(0)+'</span><span class="aq-cert-readout__mark"><span>'+nn(0)+' / '+nn(n-1)+'</span></span>'
+  +'<div class="aq-cert-readout__face"><p class="aq-cert-readout__big'+(long(it0.tag)?' is-long':'')+'">'+tx(it0.tag||'')+'</p>'
+  +'<p class="aq-cert-readout__ft">'+tx(it0.t||'')+'</p><p class="aq-cert-readout__fd">'+tx(it0.d||'')+'</p></div></div>';
+ var lines=I.map(function(it,i){var lk=it.link&&wp(it.link);
+  return '<li class="aq-cert-readout__line'+(i?'':' is-on')+'" data-i="'+i+'">'
+   +'<h3 class="aq-cert-readout__k"><button type="button" class="aq-cert-readout__pick" aria-pressed="'+(i?'false':'true')+'"><span class="aq-cert-readout__n">'+nn(i)+' /</span> <span class="aq-cert-readout__t">'+tx(it.t)+'</span></button></h3>'
+   +(it.tag?'<p class="aq-cert-readout__tag'+(long(it.tag)?' is-long':'')+'">'+tx(it.tag)+'</p>':'')
+   +(it.d?'<p class="aq-cert-readout__d">'+tx(it.d)+'</p>':'')
+   +(lk?'<p class="aq-cert-readout__go">'+wlink(it.link)+'</p>':'')+'</li>'}).join('');
+ return sec(H+'<div class="aq-cert-readout">'+box+'<ol class="aq-cert-readout__lines" role="list">'+lines+'</ol></div>','aq-cert-readout-sec')};
+/* selection: puts a line on the readout (quote-tick: the new reading enters from the side of travel, CSS) */
+window.AQcertReadout={select:function(el,i){var L=el.querySelectorAll('.aq-cert-readout__line'),li=L[i],box=el.querySelector('.aq-cert-readout__box');if(!li||!box)return;
+ var was=+(box.getAttribute('data-sel')||0);if(was===i)return;box.setAttribute('data-sel',i);
+ [].forEach.call(L,function(x,j){x.classList.toggle('is-on',j===i);var p=x.querySelector('.aq-cert-readout__pick');if(p)p.setAttribute('aria-pressed',j===i?'true':'false')});
+ var q=function(s){return li.querySelector(s)},f=box.querySelector('.aq-cert-readout__face'),tg=q('.aq-cert-readout__tag'),nn=(i<9?'0':'')+(i+1);
+ f.innerHTML='<p class="aq-cert-readout__big'+(tg&&tg.classList.contains('is-long')?' is-long':'')+'">'+(tg?tg.innerHTML:'')+'</p><p class="aq-cert-readout__ft">'+q('.aq-cert-readout__t').innerHTML+'</p><p class="aq-cert-readout__fd">'+(q('.aq-cert-readout__d')?q('.aq-cert-readout__d').innerHTML:'')+'</p>';
+ box.querySelector('.aq-cert-readout__no').textContent=nn;var mk=box.querySelector('.aq-cert-readout__mark span');mk.textContent=nn+mk.textContent.slice(2);
+ box.style.setProperty('--p',i);f.classList.remove('is-up','is-down');void f.offsetWidth;f.classList.add(i>was?'is-up':'is-down')}};
+if(typeof document!=='undefined'&&document.addEventListener)['mouseover','focusin','click'].forEach(function(t){document.addEventListener(t,function(ev){var li=ev.target.closest&&ev.target.closest('.aq-cert-readout__line');if(!li)return;
+ var el=li.closest('.aq-cert-readout');el.setAttribute('data-touched','');window.AQcertReadout.select(el,+li.getAttribute('data-i'))})});
 /* Look "check-ledger" -> CheckLedger (design-system/components/CheckLedger): a router table of checks a buyer can run
    (what you check, route, what it does not prove, time to arrange) set as a two-sided ledger on a navy band. One seam
    runs down the middle: on its left, what each check lets you see, set large and light; on its right, what it does
@@ -3416,44 +3404,33 @@ LOOKS['market-callouts']=(function(){
    +svg+marks+'</div>'
    +'<ol class="aq-market-callouts__list">'+list+'</ol></div></div>','aq-band--navy aq-market-callouts-band')}
 })();
-/* Look "marking-match" -> MarkingMatch (design-system/components/MarkingMatch): supplier control seen from the auditor's
-   chair. Each supply is drawn as the thing that arrives (PP pipe and fittings with their print line, a gasket ring with
-   its compound tag, PVC pipe with its socket, a membrane element with its serial plate, a vessel with its nameplate),
-   its marking ringed in flow; across the row lies the paper it must match, what we require set as the certificate;
-   between the two, a double-ended check line with how we verify it. Reading across is the receiving check itself.
-   Fields, as a table: cols [supply, what we require, how we verify it], rows (cells strings or {t, link}),
-   figs (optional, one per row: pipe, gasket, pvc, membrane, vessel; default from the supply's words), fold, fold_noun
-   (phones only). Phones: the part, then the check line turned down, then the paper. */
-LOOKS['marking-match']=(function(){
- function P(d,c){return '<path class="aq-marking-match'+'__'+(c||'ln')+'" d="'+d+'"/>'}
- var FIG={
-  pipe:function(){return P('M18 34H140M18 58H140','ln')+'<ellipse class="aq-marking-match__ln" cx="18" cy="46" rx="5" ry="12"/>'+'<ellipse class="aq-marking-match__eq" cx="140" cy="46" rx="5" ry="12"/>'
-   +P('M145 34H156A26 26 0 0 1 182 60V84M145 58H156A2 2 0 0 1 158 60V84','ln')+P('M154 30V62M152 84H188','thin')
-   +P('M30 46H44M50 46H70M76 46H86','print')+'<rect class="aq-marking-match__mark" x="92" y="40" width="34" height="12"/>'+P('M96 46H122','print')},
-  gasket:function(){return '<ellipse class="aq-marking-match__ln" cx="80" cy="50" rx="58" ry="22"/><ellipse class="aq-marking-match__ln" cx="80" cy="50" rx="38" ry="13"/>'
-   +P('M22 50V56A58 22 0 0 0 138 56V50','ln')+P('M132 40L162 30','thin')+'<rect class="aq-marking-match__mark" x="160" y="20" width="30" height="20"/>'+P('M166 27H184M166 33H178','print')},
-  pvc:function(){return P('M14 36H112M14 60H112','ln')+'<ellipse class="aq-marking-match__ln" cx="14" cy="48" rx="5" ry="12"/>'
-   +P('M112 30H176M112 66H176M112 30V66M176 30V66','ln')+'<ellipse class="aq-marking-match__eq" cx="176" cy="48" rx="6" ry="18"/>'
-   +P('M24 48H40M46 48H58','print')+'<rect class="aq-marking-match__mark" x="64" y="42" width="40" height="12"/>'+P('M68 48H100','print')},
-  membrane:function(){return '<ellipse class="aq-marking-match__ln" cx="22" cy="46" rx="7" ry="22"/>'+P('M22 24H156M22 68H156','ln')+'<ellipse class="aq-marking-match__eq" cx="156" cy="46" rx="7" ry="22"/>'
-   +'<ellipse class="aq-marking-match__thin" cx="156" cy="46" rx="2.5" ry="7"/>'+P('M48 24V68M134 24V68','thin')
-   +'<rect class="aq-marking-match__mark" x="70" y="36" width="44" height="20"/>'+P('M76 43H106M76 49H96','print')},
-  vessel:function(){return P('M40 22A22 10 0 0 1 84 22V70A22 10 0 0 1 40 70Z','eq')+P('M40 22A22 10 0 0 0 84 22','thin')+P('M46 78V88M78 78V88','ln')
-   +'<rect class="aq-marking-match__mark" x="50" y="40" width="24" height="16"/>'+P('M54 46H70M54 51H64','print')
-   +'<rect class="aq-marking-match__eq" x="118" y="14" width="58" height="74"/>'+P('M147 14V88','thin')+'<rect class="aq-marking-match__mark" x="124" y="22" width="18" height="10"/>'+P('M126 27H140','print')}};
- function fig(s){s=String(s||'');return /elastomer|gasket/i.test(s)?'gasket':/PVC|pretreat/i.test(s)?'pvc':/membrane|EDI|resin/i.test(s)?'membrane':/vessel|panel|tank/i.test(s)?'vessel':'pipe'}
- return function(b,H){var C=b.cols||[],R=b.rows||[],F=b.figs||[];
-  var k=function(i){return C[i]?'<p class="aq-marking-match__k">'+tx(C[i])+'</p>':''};
-  var cols='<div class="aq-marking-match__cols" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[2]||'')+'</span><span>'+tx(C[1]||'')+'</span></div>';
-  var list=R.map(function(r,i){var name=String(r[0]&&typeof r[0]==='object'?r[0].t:r[0]||''),f=FIG[F[i]]?F[i]:fig(name);
-   return fli('<li class="aq-marking-match__row" style="--i:'+i+'">',b,i)
-    +'<div class="aq-marking-match__sup"><svg class="aq-marking-match__fig" viewBox="0 0 200 96" aria-hidden="true" focusable="false">'+FIG[f]()+'</svg>'
-    +'<h3 class="aq-marking-match__name">'+idx(i)+' '+tcell(r[0])+'</h3></div>'
-    +'<div class="aq-marking-match__req">'+k(1)+'<div class="aq-marking-match__paper" data-theme="light"><span class="aq-marking-match__seal" aria-hidden="true"></span><span class="aq-marking-match__head" aria-hidden="true"></span>'
-    +'<p class="aq-marking-match__rq">'+tcell(r[1])+'</p></div></div>'
-    +'<div class="aq-marking-match__ver">'+k(2)+'<span class="aq-marking-match__line" aria-hidden="true"><span class="aq-marking-match__ok"></span></span><p class="aq-marking-match__how">'+tcell(r[2])+'</p></div>'
-    +'</li>'}).join('');
-  return sec(H+'<div class="aq-marking-match">'+cols+wFold(b,R.length,'<ol class="aq-marking-match__list" role="list">'+list+'</ol>',b.fold_noun||'supplies')+'</div>','aq-marking-match-sec')}})();
+/* Look "marking-match" -> MarkingMatch (design-system/components/MarkingMatch): supplier control as two rules and a
+   clean schedule. The block's two standing rules come first as headline-sized facts (a mono label, the rule set large
+   and light; a fact may carry a small line glyph: "gate", a pipe run whose water stops at a closed valve). Under them
+   the supplies as a ruled table between vertical hairlines: numbered supply, what we require, how we verify it (each
+   check led by a flow tick). Pointing at a cell lights its row and its column head (chart-crosshair, motion.js).
+   Fields, as a table: facts [{k (short label), v (the rule; [placeholders] allowed), glyph ("gate", optional)}], cols
+   [supply, what we require, how we verify it], rows (cells strings or {t, link}), fold, fold_noun (phones only).
+   Phones: facts stack; each supply stacks its three cells with the column names as small labels. */
+LOOKS['marking-match']=function(b,H){var C=b.cols||[],R=b.rows||[],F=b.facts||[];
+ var nn=function(i){return (i<9?'0':'')+(i+1)};
+ var gate='<svg class="aq-marking-match__gate" viewBox="0 0 132 72" aria-hidden="true" focusable="false">'
+  +'<path class="aq-marking-match__pw" d="M2 30H50M2 46H50M82 30H130M82 46H130"/>'
+  +'<path class="aq-marking-match__vb" d="M50 22V54L82 22V54Z"/><path class="aq-marking-match__vs" d="M66 38V10M56 8H76"/>'
+  +'<path class="aq-marking-match__wf" d="M2 38H46"/><path class="aq-marking-match__gt" d="M66 24V52"/></svg>';
+ var facts=F.length?'<div class="aq-marking-match__facts">'+F.map(function(f,i){
+  return '<div class="aq-marking-match__fact'+(f.glyph?' has-glyph':'')+'"><p class="aq-marking-match__fk"><span aria-hidden="true">'+nn(i)+' / </span>'+tx(f.k||'')+'</p>'
+   +'<p class="aq-marking-match__fv">'+tx(f.v||'')+'</p>'+(f.glyph==='gate'?gate:'')+'</div>'}).join('')+'</div>':'';
+ var k=function(i){return C[i]?'<p class="aq-marking-match__k">'+tx(C[i])+'</p>':''};
+ var tick='<svg class="aq-marking-match__ok" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5L6.5 12L13 4.5"/></svg>';
+ var head='<div class="aq-marking-match__head" aria-hidden="true">'+[0,1,2].map(function(i){return '<span data-c="'+i+'">'+tx(C[i]||'')+'</span>'}).join('')+'<i class="aq-marking-match__colbar"></i></div>';
+ var rows=R.map(function(r,i){
+  return fli('<li class="aq-marking-match__row" style="--i:'+i+'">',b,i)
+   +'<div class="aq-marking-match__c" data-c="0">'+k(0)+'<h3 class="aq-marking-match__name"><span class="aq-marking-match__n" aria-hidden="true">'+nn(i)+' /</span><span>'+tcell(r[0])+'</span></h3></div>'
+   +'<div class="aq-marking-match__c" data-c="1">'+k(1)+'<p>'+tcell(r[1])+'</p></div>'
+   +'<div class="aq-marking-match__c" data-c="2">'+k(2)+'<p class="aq-marking-match__how">'+tick+'<span>'+tcell(r[2])+'</span></p></div></li>'}).join('');
+ return sec(H+'<div class="aq-marking-match">'+facts+'<div class="aq-marking-match__table">'+head+wFold(b,R.length,'<ol class="aq-marking-match__list" role="list">'+rows+'</ol>',b.fold_noun||'supplies')
+  +'<i class="aq-marking-match__band" aria-hidden="true"></i></div></div>','aq-marking-match-sec')};
 /* Look "membrane-atlas" -> MembraneAtlas (design-system/components/MembraneAtlas): a feed-water table read as a
    numbered sequence (pass 9b concept sys-pretreatment.2: navy square numeral tiles as row heads turn a three-column
    table into a readable sequence). Each row opens on a navy tile: a huge light slash numeral over a round micrograph
@@ -3599,6 +3576,47 @@ LOOKS['method-bento']=function(b,H){
  var gap=hasAbs?'<li class="aq-method-bento__tile aq-method-bento__gap"><p class="aq-method-bento__ghost" aria-hidden="true">'+tx(b.absent)+'</p><p class="aq-method-bento__gapt">'+tx(b.intro||'')+'</p></li>':'';
  return sec('<div class="aq-method-bento"><div class="aq-method-bento__head">'+H+'</div><ol class="aq-method-bento__tiles" role="list">'+tiles+gap+'</ol></div>','aq-method-bento-sec')};
 })();
+/* Look "ncr-tiles" -> NcrTiles (design-system/components/NcrTiles): how a defect is held and closed, as a bento of
+   navy and limestone tiles, each led by a huge light slash numeral ("01/"). The first step (the hold) takes the
+   oversized tile; a step with `hold` carries a closed-valve tag naming who signs. One tile is a line drawing of the
+   repair step: a PP pipe run in isometric whose rejected joint has been cut out and lifted clear (an exploded view,
+   dashed), with the remade length fused in its place, its two new joints in flow and short labels.
+   Fields (a steps block): h, intro, items [{t, d, hold, link}], drawing (optional): {step (1-based index of the step
+   the drawing shows, e.g. the repair), reject, cut, remade, number (short drawing labels, aria-hidden duplicates of
+   that step's text; [placeholders] allowed)}. Six steps fit best: 01 + 02 + drawing over a row of four.
+   Phones: one column; the drawing follows the step it shows. */
+LOOKS['ncr-tiles']=(function(){
+ var nn=function(i){return (i<9?'0':'')+(i+1)};
+ function drawing(dr,stepTitle,stepNo){
+  var r=10,lift=60,P=function(x,z){return [x,0,z||0]};
+  var bead=function(x,z,cls){var c=isoCylD([x-0.8,0,z||0],[1,0,0],1.6,r*1.28);return '<path class="aq-iso__eq '+(cls||'')+'" d="'+c[0]+c[1]+'"/>'};
+  var A=isoPipe([P(0),P(70)],{r:r,caps:true,flow:false}),
+   B=isoPipe([P(120),P(176),P(176,64)],{r:r,caps:true,flow:false,bend:22}),
+   N=isoPipe([P(70),P(120)],{r:r,caps:false,flow:false,cls:'aq-ncr-tiles__new-pipe'}),
+   O=isoPipe([P(70,lift),P(120,lift)],{r:r,caps:true,flow:false,cls:'aq-ncr-tiles__old-pipe'});
+  var x0=isoP(P(95,lift+r*1.3)),cross='<path class="aq-ncr-tiles__x" d="M'+(x0[0]-5).toFixed(1)+' '+(x0[1]-5).toFixed(1)+'l10 10m0 -10l-10 10"/>';
+  var dim=isoDim(P(70,-r),P(120,-r),{off:[0,0,-16],cls:'aq-ncr-tiles__dim'});
+  var lN=isoLeader(P(70,-r*1.28),[14,116],{cls:'aq-ncr-tiles__ld',shelf:0}),lR=isoLeader(P(120,-r*1.28),[118,124],{cls:'aq-ncr-tiles__ld'}),lO=isoLeader(P(95,lift+r*1.28),[128,-42],{cls:'aq-ncr-tiles__ld'});
+  var W=264,H=214,org=[24,70];
+  var inner='<g class="aq-ncr-tiles__base">'+A+bead(35)+'</g>'
+   +'<g class="aq-ncr-tiles__new">'+N+bead(70,0,'aq-ncr-tiles__nb')+bead(120,0,'aq-ncr-tiles__nb')+lN+lR+'</g>'
+   +'<g class="aq-ncr-tiles__base2">'+B+bead(150)+'</g>'+dim
+   +'<g class="aq-ncr-tiles__old">'+O+bead(95,lift,'aq-ncr-tiles__bad')+cross+lO+'</g>';
+  var at=function(p){var q=isoPct(p,W,H,org);return 'left:'+q.left+';top:'+q.top};
+  var lab=function(p,t,cls){return t?'<span class="aq-ncr-tiles__lab '+cls+'" style="'+at(p)+'">'+tx(t)+'</span>':''};
+  var dm=dim.mid;
+  return '<div class="aq-ncr-tiles__fig" aria-hidden="true">'+isoSvg(W,H,inner,'aq-ncr-tiles__svg',{origin:org})
+   +lab(lO.end,dr.reject,'is-reject is-r')+lab([dm[0],dm[1]+6],dr.cut,'is-cut')+lab([lN.end[0]-4,lN.end[1]+10],dr.number,'is-number')+lab(lR.end,dr.remade,'is-remade is-r')
+   +'<span class="aq-ncr-tiles__figtag">'+e(stepNo)+' / '+tx(stepTitle)+'</span></div>'}
+ return function(b,H){var I=b.items||[],dr=b.drawing&&b.drawing.step&&I[b.drawing.step-1]?b.drawing:null,ds=dr?dr.step-1:-1;
+  var tiles=I.map(function(it,i){var tone=i===0||(i>1&&i%2===0)?'navy':'stone',who=it.hold?String(it.hold):'';
+   return '<li class="aq-ncr-tiles__tile is-'+tone+(i===0?' is-lead':'')+(i===1&&!dr?' is-wide':'')+(it.hold?' is-hold':'')+(i===ds?' is-drawn':'')+'" style="--o:'+(i*2)+'"'+(tone==='stone'?' data-theme="light"':'')+'>'
+    +'<span class="aq-ncr-tiles__n" aria-hidden="true">'+nn(i)+'/</span>'
+    +'<h3 class="aq-ncr-tiles__t">'+(it.link&&wp(it.link)?wlink(it.link,it.t):tx(it.t))+'</h3>'+(it.d?'<p class="aq-ncr-tiles__d">'+tx(it.d)+'</p>':'')
+    +(who?'<p class="aq-ncr-tiles__hold"><svg class="aq-ncr-tiles__valve" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="1" y="1" width="22" height="22"/><path d="M5 7L19 17V7L5 17Z"/></svg>'
+     +'<span><span class="aq-ncr-tiles__hk">Hold</span> · Signed by '+tx(/^[A-Z][a-z]/.test(who)?who.charAt(0).toLowerCase()+who.slice(1):who)+'</span></p>':'')+'</li>'});
+  if(dr)tiles.splice(2,0,'<li class="aq-ncr-tiles__tile is-figure" style="--o:'+(ds*2+1)+'" aria-hidden="true">'+drawing(dr,I[ds].t,nn(ds))+'</li>');
+  return sec(H+'<ol class="aq-ncr-tiles" role="list">'+tiles.join('')+'</ol>','aq-ncr-tiles-sec')}})();
 /* Look "option-checker" -> OptionChecker (design-system/components/OptionChecker): an options block as a Swiss grid.
    Left, a checkerboard field of navy, limestone and sunken squares with one navy blueprint tile (two by two) that draws
    the control system the options configure: the panel with its PLC and operator screen, the historian, the DMZ with
@@ -4094,26 +4112,50 @@ LOOKS['record-anatomy']=function(b,H){var Pt=(b.points||[]).slice(0,4),num=funct
    +(p.d?'<p class="aq-record-anatomy__d">'+tx(p.d)+'</p>':'')+'</div></li>'}).join('');
  return sec(H+'<div class="aq-record-anatomy"><ol class="aq-record-anatomy__rows" role="list">'+rows+'</ol></div>','aq-record-anatomy-sec')};
 })();
-/* Look "record-slips" -> RecordSlips (design-system/components/RecordSlips): each process of the quality system and the
-   record it leaves behind. A process is set large and light on the ground with what it controls under it; at its right
-   edge a slot, and out of the slot comes a paper slip: the record you can inspect, one line per record (split at ";"),
-   each with an empty box an auditor ticks. The records are the evidence; the slips make them the thing you hold.
-   Pointing at a process feeds its slip a little further out. The column names head the list once (desktop) or label
-   each row (phones).
+/* Look "record-sheet" -> RecordSheet (design-system/components/RecordSheet): each process of the quality system and the
+   record it leaves, set as a ruled schedule on a drawing sheet. Three columns (process, what it controls, record you
+   can inspect) between vertical hairlines; the sheet's right margin carries the row numbers as numbered notes, and a
+   title block closes the sheet (the block's nav name, the counts of processes and records). Every record is followed
+   by a small hairline glyph of its kind (register, log, report, certificate, list, request, minutes, check, records),
+   so the record column reads as a vocabulary of the papers an auditor asks for.
+   The glyph kind comes from the record's own words (register, log, certificate, list, minutes, request or assessment,
+   CAPA or check, report or NCR, records); anything else is a plain sheet.
    Fields, as a table: cols [process, what it controls, record you can inspect], rows (cells strings or {t, link}),
-   fold, fold_noun (phones only: desktop shows every process). Phones: the slot runs under the process and the slip
-   hangs below it. */
-LOOKS['record-slips']=function(b,H){var C=b.cols||[],R=b.rows||[];
- var k=function(i){return C[i]?'<p class="aq-record-slips__k">'+tx(C[i])+'</p>':''};
- var list=R.map(function(r,i){var recs=String(r[2]&&typeof r[2]==='object'?r[2].t:r[2]||'').split(/\s*;\s*/).filter(Boolean);
-  return fli('<li class="aq-record-slips__row" style="--i:'+i+'">',b,i)
-   +'<div class="aq-record-slips__proc">'+idx(i)+'<h3 class="aq-record-slips__name">'+tcell(r[0])+'</h3>'+k(1)+'<p class="aq-record-slips__ctl">'+tcell(r[1])+'</p></div>'
-   +'<div class="aq-record-slips__feed"><span class="aq-record-slips__slot" aria-hidden="true"></span>'
-   +'<div class="aq-record-slips__slip" data-theme="light">'+k(2)+'<ul class="aq-record-slips__recs" role="list">'
-   +recs.map(function(x,j){x=x.charAt(0).toUpperCase()+x.slice(1);return '<li style="--j:'+j+'"><span class="aq-record-slips__box" aria-hidden="true"></span><span>'+tx(x)+'</span></li>'}).join('')
-   +'</ul></div></div></li>'}).join('');
- var cols='<div class="aq-record-slips__cols" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[2]||'')+'</span></div>';
- return sec(H+'<div class="aq-record-slips">'+cols+wFold(b,R.length,'<ol class="aq-record-slips__list" role="list">'+list+'</ol>',b.fold_noun||'processes')+'</div>','aq-record-slips-sec')};
+   fold, fold_noun (phones only: desktop shows every process). Records split at ";".
+   Phones: the sheet keeps its border; each process stacks name, what it controls and its records, with the column
+   names as small labels; the title block runs full width under the list. */
+LOOKS['record-sheet']=(function(){
+ var G={
+  register:['M4 3H24V19H4ZM9 3V19M9 8H24M9 12H24M9 16H24',''],
+  log:['M4 3H24V19H4ZM12 7.5H21M12 11.5H21M12 15.5H18','M7 7.5H9M7 11.5H9M7 15.5H9'],
+  report:['M6 2H18L23 7V20H6ZM18 2V7H23M9 11H20M9 14.5H20','M9 18H15'],
+  cert:['M3 4H25V18H3ZM7 8H16M7 11.5H13','M20 10.5A2.6 2.6 0 1 1 20 15.7A2.6 2.6 0 1 1 20 10.5M18.6 15.4L17.8 20L20 18.7L22.2 20L21.4 15.4'],
+  list:['M10 5H23M10 11H23M10 17H19','M4.5 5H7M4.5 11H7M4.5 17H7'],
+  request:['M6 2H22V20H6ZM9 6.5H19M9 10H19','M10 15H18M15.2 12.2L18 15L15.2 17.8'],
+  minutes:['M6 2H22V20H6ZM9 6.5H19M9 10H19','M9 16C10.6 12.6 11.8 18.6 13.6 14.6S16.6 17.8 19.4 14.2'],
+  check:['M6 2H22V20H6ZM9 6.5H19','M10 13L13 16L19 9.5'],
+  stack:['M9 2H24V15H9ZM6 5V18H21M3 8V21H18M12 6.5H21M12 10H18',''],
+  sheet:['M6 2H22V20H6ZM9 7H19M9 10.5H19M9 14H16','']};
+ function kind(s){s=String(s||'');return /certificat/i.test(s)?'cert':/register/i.test(s)?'register':/\blogs?\b/i.test(s)?'log':/minutes/i.test(s)?'minutes':/\blist\b/i.test(s)?'list'
+  :/request|assessment/i.test(s)?'request':/CAPA|check/.test(s)?'check':/reports?\b|\bNCR\b/.test(s)?'report':/records/i.test(s)?'stack':'sheet'}
+ function glyph(s){var g=G[kind(s)],all=g[0]+g[1];
+  return '<svg class="aq-record-sheet__g" viewBox="0 0 28 22" aria-hidden="true" focusable="false"><path class="aq-record-sheet__imp" d="'+all+'" transform="translate(0.8 0.9)"/>'
+   +'<path class="aq-record-sheet__ink" pathLength="1" d="'+g[0]+'"/>'+(g[1]?'<path class="aq-record-sheet__acc" pathLength="1" d="'+g[1]+'"/>':'')+'</svg>'}
+ var nn=function(i){return (i<9?'0':'')+(i+1)};
+ return function(b,H){var C=b.cols||[],R=b.rows||[],count=0;
+  var k=function(i){return C[i]?'<p class="aq-record-sheet__k">'+tx(C[i])+'</p>':''};
+  var rows=R.map(function(r,i){var recs=String(r[2]&&typeof r[2]==='object'?r[2].t:r[2]||'').split(/\s*;\s*/).filter(Boolean);count+=recs.length;
+   return fli('<li class="aq-record-sheet__row" style="--i:'+i+'">',b,i)
+    +'<div class="aq-record-sheet__c aq-record-sheet__proc"><span class="aq-record-sheet__pn" aria-hidden="true">'+nn(i)+'</span>'+k(0)+'<h3 class="aq-record-sheet__name">'+tcell(r[0])+'</h3></div>'
+    +'<div class="aq-record-sheet__c aq-record-sheet__ctl">'+k(1)+'<p>'+tcell(r[1])+'</p></div>'
+    +'<div class="aq-record-sheet__c aq-record-sheet__recs">'+k(2)+'<ul role="list">'
+    +recs.map(function(x,j){x=x.charAt(0).toUpperCase()+x.slice(1);return '<li style="--j:'+j+'"><span>'+tx(x)+'</span>'+glyph(x)+'</li>'}).join('')+'</ul></div>'
+    +'<span class="aq-record-sheet__no" aria-hidden="true">'+nn(i)+'</span></li>'}).join('');
+  var head='<div class="aq-record-sheet__cols" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span><span>'+tx(C[2]||'')+'</span><span></span></div>';
+  var noun=b.fold_noun||'processes',rn=String(C[2]||'').match(/^\s*(\w+)/),rec=rn?rn[1].toLowerCase()+'s':'records';
+  var tb='<div class="aq-record-sheet__tb" aria-hidden="true"><span class="aq-record-sheet__tbt">'+tx(b.nav||C[0]||'')+'</span>'
+   +'<span>'+nn(R.length-1)+' '+e(noun)+'</span><span>'+nn(count-1)+' '+e(rec)+'</span></div>';
+  return sec(H+'<div class="aq-record-sheet">'+head+wFold(b,R.length,'<ol class="aq-record-sheet__list" role="list">'+rows+'</ol>',noun)+tb+'</div>','aq-record-sheet-sec')}})();
 /* Look "redline-sheet" -> RedlineSheet (design-system/components/RedlineSheet): qualification failures caught on paper.
    One limestone drawing sheet (border, zone numbers, title block) carries a column per failure, each a design-review
    markup: a revision triangle and what fails at qualification on top, a small drawing of the design with the mistake
@@ -5665,22 +5707,38 @@ LOOKS['tank-tiles']=function(b,H){
   +'<ol class="'+K+'__list" role="list">'+tiles+'</ol></div>';
  return sec(wFold(b,R.length,grid,b.fold_noun||'parameters'),K+'-sec')};
 })();
-/* Look "terms-sheet" -> TermsSheet (design-system/components/TermsSheet): commercial terms set as the terms sheet of a
-   contract: one paper sheet on a limestone offset with a ruled head (the section's nav name, the clause count), the terms as numbered
-   clauses in two columns, each with its number set large and light, the term, our side of it (a value written
-   "a · b" breaks into lines), and the note under a hairline.
+/* Look "terms-sheet" -> TermsSheet (design-system/components/TermsSheet): how buying works, as a clean numbered terms
+   table beside an isometric line drawing of a purified water skid (IsoKit: base frame, reverse osmosis rack, control
+   panel, storage tank) that bleeds off the right edge of the page: the table says how you buy it, the drawing is what
+   you buy. Each row: number (mono), the term, our side of it (a value written "a · b" breaks into lines), and its
+   note. The note gets its own column only when at least half the rows have one; otherwise it sits under the values,
+   introduced by the third column's name.
    Fields (a spec block): h, intro, cols [term, ours, note], rows [{p, v, m, link, link_label}], fold, fold_noun
-   (phones only: desktop shows every clause). Phones: one column of clauses on the sheet. */
-LOOKS['terms-sheet']=function(b,H){var C=b.cols||[],R=(b.rows||[]).map(function(r){return Array.isArray(r)?{p:r[0],v:r[1],m:r[2]}:r}),n=R.length;
- var cl=R.map(function(r,i){var V=String(r.v||'').split(/\s+·\s+/).filter(Boolean);
-  return fli('<li class="aq-terms-sheet__cl" style="--i:'+i+'">',b,i)+'<span class="aq-terms-sheet__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-   +'<div class="aq-terms-sheet__body"><h3 class="aq-terms-sheet__t">'+tx(r.p)+'</h3>'
-   +'<ul class="aq-terms-sheet__v" role="list">'+V.map(function(x){return '<li>'+tx(x)+'</li>'}).join('')+'</ul>'
-   +(r.m?'<p class="aq-terms-sheet__m"><span class="aq-terms-sheet__mk">'+tx(C[2]||'')+'</span> '+tcell(r.m)+'</p>':'')
-   +(r.link&&wp(r.link)?'<p class="aq-terms-sheet__go">'+wlink(r.link,r.link_label)+'</p>':'')+'</div></li>'}).join('');
- var hl=String(b.nav||C[0]||''),noun=b.fold_noun||'clauses',same=hl.toLowerCase()===String(noun).toLowerCase();
- var head='<div class="aq-terms-sheet__head" aria-hidden="true"><span>'+tx(hl)+'</span><span>'+(same?'01 – '+(n<10?'0':'')+n:n+' '+e(noun))+'</span></div>';
- return sec(H+'<div class="aq-terms-sheet" data-theme="light">'+head+wFold(b,n,'<ol class="aq-terms-sheet__list" role="list" style="--rows:'+Math.ceil(n/2)+'">'+cl+'</ol>',b.fold_noun||'terms')+'</div>','aq-terms-sheet-sec')};
+   (phones only: desktop shows every term). Phones: the drawing is a strip above the table (cropped, not bleeding);
+   rows stack number, term and values. */
+LOOKS['terms-sheet']=(function(){
+ function skid(){
+  var sk=isoPart('skid',0,0,0,1,{w:150,d:62,id:'ro'}),ro=isoPart('ro',8,8,9,1,{id:'ro'}),pn=isoPart('panel',-40,-6,0,1,{id:'panel'}),
+   tk=isoPart('tank',204,10,0,1.15,{id:'tank'});
+  var feed=isoPipe(isoRoute(ro.ports.out,tk.ports.in,'xzy'),{r:1.8,to:'tank',caps:false});
+  var inner=[pn,sk,ro,feed,tk].join('');
+  var bx=isoBounds([[-60,-40,0],[250,-30,0],[250,60,0],[0,70,0],[-60,-40,110],[210,10,130]],8);
+  return isoSvg(Math.round(bx.w),Math.round(bx.h),inner,'aq-terms-sheet__svg',{origin:[-bx.x,-bx.y]})}
+ return function(b,H){var C=b.cols||[],R=(b.rows||[]).map(function(r){return Array.isArray(r)?{p:r[0],v:r[1],m:r[2]}:r}),n=R.length;
+  var notes=R.filter(function(r){return r.m}).length,noteCol=notes*2>=n;
+  var nn=function(i){return (i<9?'0':'')+(i+1)};
+  var rows=R.map(function(r,i){var V=String(r.v||'').split(/\s+·\s+/).filter(Boolean);
+   var note=r.m?(noteCol?'<div class="aq-terms-sheet__c aq-terms-sheet__note"><p class="aq-terms-sheet__k">'+tx(C[2]||'')+'</p><p>'+tcell(r.m)+'</p></div>'
+    :'<p class="aq-terms-sheet__m"><span class="aq-terms-sheet__mk">'+tx(C[2]||'')+'</span> '+tcell(r.m)+'</p>'):(noteCol?'<div class="aq-terms-sheet__c aq-terms-sheet__note"></div>':'');
+   return fli('<li class="aq-terms-sheet__row" style="--i:'+i+'">',b,i)
+    +'<span class="aq-terms-sheet__n" aria-hidden="true">'+nn(i)+'</span>'
+    +'<div class="aq-terms-sheet__c"><h3 class="aq-terms-sheet__t">'+tx(r.p)+'</h3></div>'
+    +'<div class="aq-terms-sheet__c"><p class="aq-terms-sheet__k">'+tx(C[1]||'')+'</p><ul class="aq-terms-sheet__v" role="list">'+V.map(function(x){return '<li>'+tx(x)+'</li>'}).join('')+'</ul>'
+    +(noteCol?'':note)+(r.link&&wp(r.link)?'<p class="aq-terms-sheet__go">'+wlink(r.link,r.link_label)+'</p>':'')+'</div>'+(noteCol?note:'')+'</li>'}).join('');
+  var head='<div class="aq-terms-sheet__head" aria-hidden="true"><span></span><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span>'+(noteCol?'<span>'+tx(C[2]||'')+'</span>':'')+'</div>';
+  return sec(H+'<div class="aq-terms-sheet'+(noteCol?' has-notes':'')+'"><div class="aq-terms-sheet__table">'+head
+   +wFold(b,n,'<ol class="aq-terms-sheet__list" role="list">'+rows+'</ol>',b.fold_noun||'terms')+'</div>'
+   +'<div class="aq-terms-sheet__fig" aria-hidden="true">'+skid()+'</div></div>','aq-terms-sheet-sec')}})();
 /* Look "test-sheet" -> TestSheet (design-system/components/TestSheet): ordered steps set as the protocol's own test
    sheet, lying on a limestone table. The heading sits on the table; the sheet is a paper form with a header strip
    (mono column names), one ruled row per step (step number set large, the step, what happens) and a sign-off cell at
