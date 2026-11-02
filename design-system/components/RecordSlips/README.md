@@ -8,4 +8,4 @@ RecordSlips shows each process of a quality system with the record it leaves: th
 - Fold: phones only.
 - Phone: the slot runs under the process and the slip hangs below it.
 - Motion (`motion.js`): per row, the name rises, the slot drops in, the slip feeds out of the slot (clipped at its edge) and the records tick in. Under 2 s a row.
-- Not for: documents delivered with a system (DocList, SpineShelf).
+- Not for: documents delivered with a system (DocList, IndexSheet).

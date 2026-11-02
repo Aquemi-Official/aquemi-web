@@ -7,6 +7,8 @@
    Without script, and at the end, the sheet shows every mark.
    Fields (a steps block): h, intro, items [{t, d, hold}]. A step's marks follow its place in the order; hold names who
    signs and labels the sheet's signature boxes (first hold: the left box, second: the right).
+   Pass 9b (concept research/pass9b/concepts/cmp-documentation.2.png, its numbered rhythm): steps lead at the left, the
+   sheet stands at the right (style.css).
    Phones: the sheet sits over the steps and plays its marks through once. */
 LOOKS['revision-sheet']=(function(){
  function P(d,c){return '<path class="aq-revision-sheet'+'__'+(c||'ln')+'" d="'+d+'"/>'}

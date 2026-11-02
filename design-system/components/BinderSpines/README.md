@@ -5,7 +5,7 @@ BinderSpines sets an evidence table (who inspects, what they read, where we answ
 - Fields: `cols`, `rows` [who, read, {t, link, intent}], `fold`, `fold_noun` (phones only). Added: `plant` (default true; false drops the drawing), `spines` [{code, read}] per row: the clause shown large and the reading without it (a recast of the row's own words; without it the whole reading shows).
 - Tokens: binders `navy` / `limestone`, label `surface-raised` with a `line` inner frame, shelf `navy`. Hover/focus: the binder lifts out of the row.
 - Under 1100 px the plant is a cropped band above the shelf. Phones: binders lie flat as stacked bands (finger hole at the right), fold back on. The plant bleeding off the right edge comes from pass 9b ind-pharma.2.
-- Note: cmp-documentation's SpineShelf also shows binder spines (the turnover package); keep the two off the same page.
+- Note: cmp-documentation's turnover package index is IndexSheet (a ruled sheet, no spines).
 
 ## Motion
 

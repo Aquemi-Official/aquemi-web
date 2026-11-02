@@ -3011,6 +3011,37 @@ AQmotion.fx('HoldTimeline', function (root, m) {
     });
   });
 });
+/* IndexSheet: the sheet opens. Its leaf arrives folded over the index (its blank back up) and swings open on its
+   crease; the index rules itself in, row by row down both columns, numbers and entries rising after their rule; then
+   the drawing on the opened leaf draws itself (IsoKit: base frame and posts back to front, rails, the spool) and the
+   water runs the spool once. One timeline, once, under 4.5 s. Where the leaf sits over the grid (narrow widths) it does
+   not fold; the rules and the drawing play the same.
+   Ported from Subframe Motion "Paper unfold reveal" (paper-fold), MIT, (c) 2026 Subframe: the wing hinges on its
+   inner edge from rotateY(-180deg) to 0 in 720 ms, cubic-bezier(.25,.75,.2,1), its back a blank face of the same
+   paper with backface-visibility hidden, the sheet settling from a slight turn as it opens. */
+AQmotion.fx('IndexSheet', function (root, m) {
+  if (window.CustomEase && !CustomEase.get('aq-unfold')) CustomEase.create('aq-unfold', 'M0,0 C0.25,0.75 0.2,1 1,1');
+  root.querySelectorAll('.aq-index-sheet').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var q = function (s) { return [].slice.call(el.querySelectorAll(s)) };
+    var sheet = el.querySelector('.aq-index-sheet__sheet'), wing = el.querySelector('.aq-index-sheet__wing'), svg = el.querySelector('.aq-index-sheet__svg');
+    var cells = q('.aq-index-sheet__cell').filter(function (c) { return c.offsetHeight > 0 });
+    var side = wing && getComputedStyle(wing).order !== '-1';
+    var tl = window.AQiso && svg ? AQiso.timeline(svg, m, { at: side ? 1 : 0.3, draw: 1.3, pipe: 0.6, flow: 1.3, stagger: 0.05 }) : null;
+    if (!tl) tl = m.tw(gsap.timeline({ paused: true }));
+    var ease = window.CustomEase ? 'aq-unfold' : 'power3.out';
+    if (sheet) tl.from(sheet, { y: 24, rotation: -0.6, duration: 0.8, ease: 'power3.out', clearProps: 'transform' }, 0);
+    if (wing && side) tl.fromTo(wing, { rotationY: -180, transformPerspective: 2400 }, { rotationY: 0, duration: 0.72, ease: ease, clearProps: 'transform' }, 0.4);
+    var strip = el.querySelector('.aq-index-sheet__strip');
+    if (strip) tl.from(strip, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0);
+    cells.forEach(function (c, i) {
+      var t = 0.35 + Math.floor(i / 2) * 0.12 + (i % 2) * 0.06, rule = c.querySelector('.aq-index-sheet__rule'), rest = c.querySelectorAll('.aq-index-sheet__n, .aq-index-sheet__body');
+      if (rule) tl.from(rule, { scaleX: 0, duration: 0.5, ease: 'power2.inOut', clearProps: 'transform' }, t);
+      tl.from(rest, { y: 10, autoAlpha: 0, duration: 0.45, ease: 'power3.out', stagger: 0.06, clearProps: 'transform,opacity,visibility' }, t + 0.15);
+    });
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
 /* Ported from Subframe Motion "Departure board" (departure-board), MIT, (c) 2026 Subframe
    The evidence (a standard code) arrives like a split-flap board: each character is a cell whose leaf, showing a
    blank glyph on its front and the real character on its back, turns over the cell's centre line (rotateX 0 to
@@ -4463,7 +4494,7 @@ AQmotion.fx('PdfAnatomy', function (root, m) {
     var boxes = q('.aq-pdf-anatomy__box'); if (boxes.length) tl.from(boxes, { autoAlpha: 0, duration: 0.25, stagger: 0.07, clearProps: 'opacity,visibility' }, 1.2);
     q('.aq-pdf-anatomy__lead').forEach(function (g, i) {
       var ln = g.querySelector('.aq-pdf-anatomy__leader'), dot = g.querySelector('.aq-pdf-anatomy__dot'), call = one('.aq-pdf-anatomy__call[data-c="' + g.getAttribute('data-c') + '"]'), t = 1.6 + i * 0.3;
-      if (dot) tl.from(dot, { scale: 0, transformOrigin: '50% 50%', duration: 0.3, ease: 'back.out(3)', clearProps: 'transform' }, t);
+      if (dot) tl.from(dot, { scale: 0, transformOrigin: '50% 50%', duration: 0.3, ease: 'power3.out', clearProps: 'transform' }, t);
       if (ln && window.DrawSVGPlugin) tl.from(ln, { drawSVG: '0%', duration: 0.5, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, t + 0.1);
       if (call && !m.narrow()) tl.from(call, { x: 16, autoAlpha: 0, duration: 0.45, clearProps: 'transform,opacity,visibility' }, t + 0.45);
     });
@@ -5817,28 +5848,6 @@ AQmotion.fx('SpecTable', function (root, m) {
     } }).forEach(m.tw);
   });
 });
-/* SpineShelf: the package is shelved. The shelf board draws across, the spines drop onto it one after another from
-   the left (a short settle), then the key section's spine is pulled up as its index row opens; the index rows wipe in
-   down the list and the open section's documents deal in. One timeline, once, under 3 s. */
-AQmotion.fx('SpineShelf', function (root, m) {
-  root.querySelectorAll('.aq-spine-shelf').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var q = function (s) { return [].slice.call(el.querySelectorAll(s)) };
-    var spines = q('.aq-spine-shelf__spine'), board = el.querySelector('.aq-spine-shelf__board'), cap = el.querySelector('.aq-spine-shelf__cap');
-    var rows = q('.aq-spine-shelf__item').filter(function (r) { return r.offsetHeight > 0 });
-    var open = q('details[open] .aq-spine-shelf__docs li');
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    if (board) tl.from(board, { scaleX: 0, transformOrigin: '0 50%', duration: 0.7, ease: 'power2.inOut', clearProps: 'transform' }, 0);
-    tl.from(spines, { yPercent: -18, autoAlpha: 0, duration: 0.55, ease: 'back.out(1.4)', stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.25);
-    if (cap) tl.from(cap, { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0.9);
-    tl.from(rows, { clipPath: 'inset(0 100% 0 0)', duration: 0.5, ease: 'power2.inOut', stagger: 0.05, clearProps: 'clipPath' }, 0.2);
-    var pulled = spines.filter(function (s) { return s.classList.contains('is-open') });
-    pulled.forEach(function (s) { s.classList.remove('is-open') });
-    tl.call(function () { pulled.forEach(function (s) { var it = el.querySelector('.aq-spine-shelf__item[data-i="' + s.getAttribute('data-i') + '"] details'); if (!it || it.open) s.classList.add('is-open') }) }, null, 1.15);
-    if (open.length) tl.from(open, { x: -12, autoAlpha: 0, duration: 0.4, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 1.3);
-    m.on(el, function () { tl.play() }, 'top 80%');
-  });
-});
 /* SpoolDossier: the spool is drawn the IsoKit way (lengths back to front, the water through it once), then the joints
    are dotted and numbered in order, the lot tags print, and the dossier's parts rise in turn under it. One timeline,
    once, about 3.4 s. The layer each part shows on hover or focus is the project-index port in the renderer. */
@@ -5871,7 +5880,7 @@ AQmotion.fx('StageStacks', function (root, m) {
       var t = 0.15 + i * per, run = s.querySelector('.aq-stage-stacks__run'), node = s.querySelector('.aq-stage-stacks__node'),
         docs = [].slice.call(s.querySelectorAll('.aq-stage-stacks__doc')), head = s.querySelector('.aq-stage-stacks__head'), who = s.querySelector('.aq-stage-stacks__who');
       if (run) tl.from(run, narrow ? { scaleY: 0, transformOrigin: '50% 0', duration: per, ease: 'none', clearProps: 'transform' } : { scaleX: 0, transformOrigin: '0 50%', duration: per, ease: 'none', clearProps: 'transform' }, t);
-      if (node) tl.from(node, { scale: 0, duration: 0.3, ease: 'back.out(2.4)', clearProps: 'transform' }, t);
+      if (node) tl.from(node, { scale: 0, duration: 0.3, ease: 'power3.out', clearProps: 'transform' }, t);
       if (docs.length) tl.from(docs, { y: narrow ? -12 : -48, autoAlpha: 0, duration: 0.4, ease: 'power2.in', stagger: narrow ? 0.03 : 0.05, clearProps: 'transform,opacity,visibility' }, t + 0.05);
       if (head) tl.from(head, { clipPath: 'inset(0 100% 0 0)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, t + 0.1);
       if (who) tl.from(who, { autoAlpha: 0, y: 10, duration: 0.45, clearProps: 'transform,opacity,visibility' }, t + 0.25);

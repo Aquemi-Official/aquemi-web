@@ -649,6 +649,16 @@
    "summary": "HoldTimeline draws a sequence of stages with hold points as nodes on one rising line across a pale engraved macro close-up of a fused pipe joint, each stage's duration and deliverables hung off its node."
   },
   {
+   "name": "IndexSheet",
+   "readme": "design-system/components/IndexSheet/README.md",
+   "preview": "design-system/components/IndexSheet/preview.html",
+   "group": "Page sections",
+   "height": "1560",
+   "width": "1200",
+   "subtitle": "Turnover package index as a ruled numbered sheet on navy with a folded leaf carrying a pipe-frame drawing",
+   "summary": "IndexSheet shows a document package's index as one printed sheet: a limestone sheet on the navy band with the section title set very large, every section numbered in a ruled two-column grid with all its documents in view, and a folded leaf at the right carrying one isometric line drawing of the system the package comes with."
+  },
+  {
    "name": "IndustryFeed",
    "readme": "design-system/components/IndustryFeed/README.md",
    "preview": "design-system/components/IndustryFeed/preview.html",
@@ -1227,16 +1237,6 @@
    "width": "1100",
    "subtitle": "Like for like or a change, on a drawing sheet with one dimensioned spare",
    "summary": "SpareSheet sets like-for-like rules on a limestone drawing sheet: the title, one spare drawn large as a dimensioned part drawing, and the four-column table under them, where choosing a row draws its part."
-  },
-  {
-   "name": "SpineShelf",
-   "readme": "design-system/components/SpineShelf/README.md",
-   "preview": "design-system/components/SpineShelf/preview.html",
-   "group": "Page sections",
-   "height": "1180",
-   "width": "1100",
-   "subtitle": "Turnover package as binder spines on a shelf beside its index that opens",
-   "summary": "SpineShelf shows a document package as the object itself: a row of binder spines standing on one shelf (one per section, each as thick as the section holds documents, the key section navy) beside the package index, whose sections open to list their documents."
   },
   {
    "name": "SpoolDossier",

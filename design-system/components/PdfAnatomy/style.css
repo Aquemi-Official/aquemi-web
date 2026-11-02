@@ -55,6 +55,51 @@
 .aq-pdf-anatomy__m { margin-top: var(--space-6); padding-top: var(--space-3); border-top: 1px dashed var(--line); }
 .aq-pdf-anatomy__m p:last-child { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--ink-muted); }
 
+/* pass 9b (concept cmp-documentation.3): the section drawn on a sheet. Zone band with numbers across and letters down,
+   a title block repeating the section title over blank number and revision fields. All aria-hidden furniture. */
+.aq-pdf-anatomy__sheet { position: relative; padding: var(--space-12) var(--space-12) var(--space-24); }
+.aq-pdf-anatomy__frame { position: absolute; inset: 0; border: 1px solid var(--line-strong); pointer-events: none; }
+.aq-pdf-anatomy__frame::before { content: ""; position: absolute; inset: var(--space-6); border: 1px solid var(--line-strong); }
+.aq-pdf-anatomy__zb { position: absolute; display: grid; font: 500 12px/1 var(--font-mono); color: var(--ink-subtle); }
+.aq-pdf-anatomy__zb span { display: grid; place-items: center; }
+.aq-pdf-anatomy__zb--t, .aq-pdf-anatomy__zb--b { left: var(--space-6); right: var(--space-6); height: var(--space-6); grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.aq-pdf-anatomy__zb--t { top: 0; }
+.aq-pdf-anatomy__zb--b { bottom: 0; }
+.aq-pdf-anatomy__zb--t span + span, .aq-pdf-anatomy__zb--b span + span { border-left: 1px solid var(--line-strong); }
+.aq-pdf-anatomy__zb--l, .aq-pdf-anatomy__zb--r { top: var(--space-6); bottom: var(--space-6); width: var(--space-6); grid-template-rows: repeat(4, minmax(0, 1fr)); }
+.aq-pdf-anatomy__zb--l { left: 0; }
+.aq-pdf-anatomy__zb--r { right: 0; }
+.aq-pdf-anatomy__zb--l span + span, .aq-pdf-anatomy__zb--r span + span { border-top: 1px solid var(--line-strong); }
+.aq-pdf-anatomy__tb {
+  position: absolute; right: var(--space-6); bottom: var(--space-6); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: calc(var(--space-32) * 2.5); border-top: 1px solid var(--line-strong); border-left: 1px solid var(--line-strong);
+  font: 500 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--ink-subtle);
+}
+.aq-pdf-anatomy__tb > span { padding: var(--space-2) var(--space-3); }
+.aq-pdf-anatomy__tb > span + span { border-top: 1px solid var(--line-strong); }
+.aq-pdf-anatomy__tb > span:last-child { border-left: 1px solid var(--line-strong); }
+.aq-pdf-anatomy__tbh { grid-column: 1 / -1; color: var(--ink); }
+
+/* page turner (compact-pagination): a five-wide window of page numbers slides with the current page */
+.aq-pdf-anatomy__pgno { font: 500 12px var(--font-mono); fill: var(--ink-muted); }
+.aq-pdf-anatomy__cur, .aq-pdf-anatomy__hit { transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.aq-pdf-anatomy__box.is-ping { animation: aq-pdf-ping 700ms cubic-bezier(0.2, 0, 0, 1); }
+@keyframes aq-pdf-ping { 0% { stroke: var(--flow); stroke-width: 3.5; } 100% { stroke-width: 1.5; } }
+.aq-pdf-anatomy__pager { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-1); margin-top: var(--space-3); }
+.aq-pdf-anatomy__pgw { width: calc((var(--space-12) - var(--space-1)) * 5); overflow: hidden; }
+.aq-pdf-anatomy__pgr { display: flex; transform: translateX(calc(var(--pg-start, 0) * (var(--space-1) - var(--space-12)))); transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.aq-pdf-anatomy__pgn, .aq-pdf-anatomy__pgs {
+  flex: 0 0 calc(var(--space-12) - var(--space-1)); width: calc(var(--space-12) - var(--space-1)); height: calc(var(--space-12) - var(--space-1));
+  margin: 0; padding: 0; border: 0; border-radius: 0; background: none; cursor: pointer;
+  font: 500 13px/1 var(--font-mono); color: var(--ink-muted); transition: background 150ms cubic-bezier(0.2, 0, 0, 1), color 150ms cubic-bezier(0.2, 0, 0, 1);
+}
+.aq-pdf-anatomy__pgs { font-size: 22px; }
+.aq-pdf-anatomy__pgn:hover, .aq-pdf-anatomy__pgs:hover:not(:disabled) { color: var(--ink); background: var(--surface-sunken); }
+.aq-pdf-anatomy__pgn[aria-current="page"] { background: var(--flow-tint); color: var(--flow); }
+.aq-pdf-anatomy__pgn:focus-visible, .aq-pdf-anatomy__pgs:focus-visible { outline: 2px solid var(--focus); outline-offset: calc(-1 * var(--space-1)); }
+.aq-pdf-anatomy__pgs:disabled { opacity: 0.4; cursor: default; }
+@media (prefers-reduced-motion: reduce) { .aq-pdf-anatomy__cur, .aq-pdf-anatomy__hit, .aq-pdf-anatomy__pgr { transition: none; } .aq-pdf-anatomy__box.is-ping { animation: none; } }
+
 @container (max-width: 1100px) {
   .aq-pdf-anatomy { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
   .aq-pdf-anatomy__side { padding-top: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8); }
@@ -71,4 +116,10 @@
   .aq-pdf-anatomy__call { position: static; transform: none; flex-direction: row; align-items: baseline; text-align: left; gap: var(--space-3); padding: 0; font-size: 15px; }
   .aq-pdf-anatomy__side { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
   .aq-pdf-anatomy__big { font-size: 24px; line-height: 31px; }
+  .aq-pdf-anatomy__sheet { padding: var(--space-8) var(--space-6) calc(var(--space-24) + var(--space-6)); }
+  .aq-pdf-anatomy__frame::before { inset: var(--space-4); }
+  .aq-pdf-anatomy__zb--t, .aq-pdf-anatomy__zb--b { left: var(--space-4); right: var(--space-4); height: var(--space-4); }
+  .aq-pdf-anatomy__zb--l, .aq-pdf-anatomy__zb--r { top: var(--space-4); bottom: var(--space-4); width: var(--space-4); }
+  .aq-pdf-anatomy__tb { right: var(--space-4); bottom: var(--space-4); width: auto; left: var(--space-4); }
+  .aq-pdf-anatomy__pager { justify-content: center; }
 }

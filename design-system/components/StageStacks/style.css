@@ -24,9 +24,25 @@
 }
 .aq-stage-stacks__node {
   position: absolute; left: var(--space-2); top: 50%; width: var(--space-3); height: var(--space-3); transform: translateY(-50%);
-  background: var(--navy); border: 2px solid var(--flow); transition: background 200ms cubic-bezier(0.2, 0, 0, 1);
+  margin: 0; padding: 0; background: var(--navy); border: 2px solid var(--flow); border-radius: 0; cursor: pointer; z-index: 1;
+  transition: background 200ms cubic-bezier(0.2, 0, 0, 1), transform 200ms cubic-bezier(0.2, 0, 0, 1);
 }
-.aq-stage-stacks__stage:hover .aq-stage-stacks__node { background: var(--flow); }
+/* the rail's hit target: 44 px round the node */
+.aq-stage-stacks__node::before { content: ""; position: absolute; inset: calc(-1 * var(--space-4)); }
+.aq-stage-stacks__node:focus-visible { outline: 2px solid var(--on-navy); outline-offset: var(--space-1); }
+.aq-stage-stacks__node[aria-pressed="true"] { background: var(--on-navy); border-color: var(--on-navy); }
+.aq-stage-stacks__stage.is-sel .aq-stage-stacks__node, .aq-stage-stacks__stage:hover .aq-stage-stacks__node { background: var(--flow); }
+.aq-stage-stacks__stage.is-sel .aq-stage-stacks__node[aria-pressed="true"] { background: var(--on-navy); }
+
+/* stage rail: stacks the water has not reached go quiet as outlines (paper fill off, text on-navy-muted, which keeps
+   at least 4.5:1 on navy); text opacity never drops. The sought stage's stack lifts. */
+.aq-stage-stacks__run { transform-origin: 0 50%; }
+.aq-stage-stacks__stage.is-ahead .aq-stage-stacks__doc, .aq-stage-stacks__stage.is-ahead .aq-stage-stacks__doc:nth-child(even) {
+  background: var(--navy); color: var(--on-navy-muted); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--on-navy-muted) 45%, transparent);
+}
+.aq-stage-stacks__stage.is-ahead .aq-stage-stacks__step { border-top-style: dotted; }
+.aq-stage-stacks__stage.is-sel .aq-stage-stacks__doc { transform: translateY(calc(-1 * var(--space-1))); }
+.aq-stage-stacks__stage.is-sel .aq-stage-stacks__doc:nth-child(even) { transform: translate(var(--space-1), calc(-1 * var(--space-1))); }
 
 /* the stage */
 .aq-stage-stacks__name { margin: 0; display: flex; flex-direction: column; gap: var(--space-1); }
@@ -40,7 +56,7 @@
 .aq-stage-stacks__docs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column-reverse; gap: 2px; }
 .aq-stage-stacks__doc {
   position: relative; padding: var(--space-2) var(--space-3); background: var(--limestone); color: var(--on-limestone);
-  font: 400 13px/18px var(--font-sans); text-wrap: pretty; transition: transform 240ms cubic-bezier(0.2, 0, 0, 1);
+  font: 400 13px/18px var(--font-sans); text-wrap: pretty; transition: transform 240ms cubic-bezier(0.2, 0, 0, 1), background 240ms cubic-bezier(0.2, 0, 0, 1), color 240ms cubic-bezier(0.2, 0, 0, 1);
   box-shadow: inset 2px 0 0 color-mix(in srgb, var(--on-limestone) 18%, transparent);
 }
 .aq-stage-stacks__doc:nth-child(even) { transform: translateX(var(--space-1)); background: color-mix(in srgb, var(--limestone) 70%, var(--on-navy)); }
@@ -59,7 +75,7 @@
 .aq-fold:not(.is-open) .aq-stage-stacks__stage.aq-fold-x { display: grid; }
 .aq-fold:has(> .aq-stage-stacks__list) > .aq-fold__btn { display: none; }
 
-@media (prefers-reduced-motion: reduce) { .aq-stage-stacks__doc { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .aq-stage-stacks__doc, .aq-stage-stacks__node { transition: none; } }
 
 /* mid widths: the band labels turn to read up the margin (bottom to top), so every band stays named */
 @container (max-width: 1100px) {
@@ -78,7 +94,7 @@
   .aq-stage-stacks__who { padding-top: var(--space-4); }
   .aq-stage-stacks__axis { grid-column: 1; grid-row: 1 / span 3; position: absolute; left: 0; top: 0; bottom: 0; width: var(--space-8); }
   .aq-stage-stacks__axis::before { left: var(--space-2); right: auto; top: 0; bottom: 0; border-top: 0; border-left: 1px solid color-mix(in srgb, var(--on-navy-muted) 35%, transparent); }
-  .aq-stage-stacks__run { left: var(--space-2); right: auto; top: 0; bottom: 0; margin: 0 0 0 calc(-1 * 1px / 2); border-top: 0; border-left: 2px solid var(--flow); }
+  .aq-stage-stacks__run { left: var(--space-2); right: auto; top: 0; bottom: 0; margin: 0 0 0 calc(-1 * 1px / 2); border-top: 0; border-left: 2px solid var(--flow); transform-origin: 50% 0; }
   .aq-stage-stacks__stage:last-child .aq-stage-stacks__run { right: auto; bottom: var(--space-8); }
   .aq-stage-stacks__stage:last-child .aq-stage-stacks__axis::after { right: auto; top: auto; left: calc(var(--space-2) - var(--space-3) / 2 + 1px); bottom: var(--space-6); border-top: 0; border-left: 0; border-right: 2px solid var(--flow); border-bottom: 2px solid var(--flow); transform: rotate(45deg); }
   .aq-stage-stacks__node { left: calc(var(--space-2) - var(--space-3) / 2 + 1px); top: var(--space-2); transform: none; }

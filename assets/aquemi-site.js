@@ -2757,6 +2757,45 @@ LOOKS['hold-timeline']=function(b,H){var I=b.items||[],n=I.length,G=holdGeo(n);
   +'<li class="aq-hold-timeline__band" aria-hidden="true"><svg viewBox="0 0 1000 1000" preserveAspectRatio="none">'
   +'<polyline class="aq-hold-timeline__rail" points="'+pts+'"/><polyline class="aq-hold-timeline__run" points="'+pts+'"/></svg>'
   +'<span class="aq-hold-timeline__drop"></span></li></ol></div></div></section>'};
+/* Look "index-sheet" -> IndexSheet (design-system/components/IndexSheet): the package's index as one printed sheet.
+   A limestone sheet lies on the navy ground: the section title set very large across its head, the intro under it,
+   then the package's sections in a ruled, numbered index grid (two columns, every section with all its documents in
+   view), and at the right a folded leaf of the sheet carrying one isometric line drawing: a pipe frame on a base
+   frame with a flanged spool run through it, the system the documents are handed over with. The leaf is a real
+   panel; motion unfolds it (paper-fold), then the frame draws and the water runs the spool once.
+   Concept: research/pass9b/concepts/cmp-documentation.0.png (limestone sheet on navy, huge headline, numbered
+   sections in a ruled grid, isometric pipe-frame drawing).
+   Fields (a docs block): h, intro, nav (the strip over the sheet), items [{t, d, key, link}], fold, fold_noun.
+   key: the section's number and rule in flow. The fold applies on phones only (desktop shows the whole index).
+   Phones: the sheet runs edge to edge inside the navy margin, the drawing sits under the intro, the grid is one column. */
+function isFrame(){var W=112,D=72,z=9,T=150,r=2,o=[],P=function(pts,x){return isoPipe(pts,Object.assign({r:r,flow:false,caps:false,flanges:false},x||{}))};
+ var sk=isoPart('skid',0,0,0,1,{w:W,d:D,id:'frame'});o.push(sk);var c=4,zt=z+6,X=W-c,Y=D-c;
+ /* back of the frame first: the back post, the two back rails, the side posts */
+ o.push(P([[c,c,zt],[c,c,T]]));
+ o.push(P([[c,Y,T],[c,c,T],[X,c,T]],{bend:6}));
+ o.push(P([[c,c,72],[X,c,72]]),P([[c,c,72],[c,Y,72]]));
+ o.push(P([[X,c,zt],[X,c,T]]),P([[c,Y,zt],[c,Y,T]]));
+ /* the spool: in at the left flange, up, across with a valve and a gauge, down and out at the right flange */
+ var y0=D*0.55,a=[22,Y-2,40],b=[W-22,Y-2,40];
+ var sp=isoPipe([a,[22,y0,40],[22,y0,118],[W-22,y0,118],[W-22,y0,40],b],{r:2.6,to:'spool',flanges:'ends',bend:8});o.push(sp);
+ o.push(isoPart('valve',W*0.42,y0,118,1,{id:'spool',r:2.6}));o.push(isoPart('gauge',W*0.64,y0,121,0.9,{id:'spool',value:0.55}));
+ o.push(isoArrow([22,y0,80],'z',{size:5}),isoArrow([W-22,y0,80],[0,0,-1],{size:5}));
+ /* front of the frame: the front rails and the front post */
+ o.push(P([[X,c,T],[X,Y,T],[c,Y,T]],{bend:6}));
+ o.push(P([[X,c,72],[X,Y,72]]),P([[c,Y,72],[X,Y,72]]));
+ o.push(P([[X,Y,zt],[X,Y,T]]));
+ var bx=isoBounds([[0,0,0],[W,0,0],[0,D,0],[W,D,0],[0,0,T+4],[W,D,T+4],[W,0,T+4],[0,D,T+4]],10);
+ return isoSvg(bx.w,bx.h,o.join(''),'aq-iso--limestone aq-index-sheet__svg',{origin:[-bx.x,-bx.y]})}
+LOOKS['index-sheet']=function(b,H){var I=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=I.length,K='aq-index-sheet',noun=b.fold_noun||'sections';
+ var cells=I.map(function(x,i){var num=(i<9?'0':'')+(i+1);
+  return fli('<li class="'+K+'__cell'+(x.key?' is-key':'')+'" style="--i:'+i+'">',b,i)+'<span class="'+K+'__rule" aria-hidden="true"></span>'
+   +'<span class="'+K+'__n" aria-hidden="true">'+num+'</span><div class="'+K+'__body"><h3 class="'+K+'__t">'+(x.link&&wp(x.link)?wlink(x.link,x.t):tx(x.t))+'</h3>'
+   +(x.d?'<p class="'+K+'__d">'+tx(x.d)+'</p>':'')+'</div></li>'}).join('');
+ var strip='<p class="'+K+'__strip" aria-hidden="true"><span>'+tx(b.nav||'')+'</span><span>'+n+' '+e(noun)+'</span></p>';
+ var wing='<div class="'+K+'__wing"><div class="'+K+'__face"><div class="aq-iso-figure '+K+'__fig">'+isFrame()+'</div></div><span class="'+K+'__back" aria-hidden="true"></span></div>';
+ var sheet='<div class="'+K+'__sheet" data-theme="light">'+H+'<div class="'+K+'__main"><div class="'+K+'__index">'
+  +wFold(b,n,'<ol class="'+K+'__grid" role="list">'+cells+'</ol>',noun)+'</div>'+wing+'</div></div>';
+ return sec('<div class="'+K+'">'+strip+sheet+'</div>','aq-band--navy '+K+'-sec')};
 /* Look "industry-feed" -> IndustryFeed (design-system/components/IndustryFeed): one water line feeding a few
    destinations, set as editorial type. A twin-wall pipe enters from the page edge under the heading and runs across;
    at each column it drops down a tee into that column, where the destination's evidence (its standard tag) is the
@@ -3740,23 +3779,26 @@ LOOKS['param-tiles']=function(b,H){
    Fields (a spec block): h, intro, cols [item, how we deliver it, note], rows [{p, v, m, hl, part}]. Callouts find
    their part by their words (search, bookmark, else number/revision/page: the footer); rows[].parts (optional) names
    them in order ("search", "mark", "foot"). Phones: the plate, its callouts as a numbered list under it, then the
-   other rows. */
+   other rows. Pass 9b (concept research/pass9b/concepts/cmp-documentation.3.png): the section sits on a drawing sheet
+   (zone band, title block with the section title over blank number and revision fields), and a page turner under the
+   plate turns the drawn document's 12 pages (one per bookmark) while the footer boxes stay: the same on every page. */
 LOOKS['pdf-anatomy']=(function(){
  function P(d,c){return '<path class="aq-pdf-anatomy'+'__'+(c||'ln')+'" d="'+d+'"/>'}
  function R(x,y,w,h,c){return '<rect class="aq-pdf-anatomy'+'__'+c+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"/>'}
- var AT={search:[540,58],mark:[190,142],foot:[362,432]};
+ var AT={search:[540,58],mark:[190,142],foot:[362,432]},PGN=12,PG0=3;
  function page(x,y,front){var o=R(x,y,300,340,'page');if(!front)return o+R(x+16,y+316,84,16,'box')+R(x+230,y+316,54,16,'box');
   o+=R(x+16,y+18,46,14,'logo')+P('M'+(x+76)+' '+(y+22)+'H'+(x+200)+'M'+(x+76)+' '+(y+30)+'H'+(x+160),'txt')+P('M'+(x+16)+' '+(y+44)+'H'+(x+284),'rule');
   var W=[250,268,214,256,240,262,188,250,230,266,206,244,170];
   for(var i=0;i<W.length;i++)o+=P('M'+(x+16)+' '+(y+66+i*18)+'H'+(x+16+W[i]),'txt');
-  o+=R(x+112,y+66+5*18-8,74,16,'hit');
+  o+='<rect class="aq-pdf-anatomy__hit" x="'+(x+112)+'" y="'+(y+66+5*18-8)+'" width="74" height="16"/>';
   o+=P('M'+(x+16)+' '+(y+306)+'H'+(x+284),'rule')+R(x+16,y+316,84,16,'box is-on')+R(x+230,y+316,54,16,'box is-on');
   return o}
  function plate(calls){var o='';
   o+=R(180,40,560,420,'win')+P('M180 76H740M320 76V460','rule');
   o+='<g class="aq-pdf-anatomy__search">'+R(540,49,180,18,'field')+'<circle class="aq-pdf-anatomy__ln" cx="553" cy="58" r="5"/>'+P('M557 62l5 5','ln')+P('M570 58H640','txt')+'</g>';
   /* bookmark pane */
-  for(var i=0;i<12;i++){var y=98+i*22,ind=[0,1,1,0,1,1,1,0,1,0,1,1][i]*14;o+=(i===2?R(184,y-10,132,20,'cur'):'')+P('M'+(194+ind)+' '+(y-3)+'l4 3l-4 3','tri')+P('M'+(206+ind)+' '+y+'H'+(268+ind+(i*13)%30),i===2?'txtf':'txt')}
+  o+='<rect class="aq-pdf-anatomy__cur" x="184" y="88" width="132" height="20" style="transform:translateY('+((PG0-1)*22)+'px)"/>'+'<text class="aq-pdf-anatomy__pgno" x="196" y="446">'+PG0+' / '+PGN+'</text>';
+  for(var i=0;i<PGN;i++){var y=98+i*22,ind=[0,1,1,0,1,1,1,0,1,0,1,1][i]*14;o+=P('M'+(194+ind)+' '+(y-3)+'l4 3l-4 3','tri')+P('M'+(206+ind)+' '+y+'H'+(268+ind+(i*13)%30),'txt')}
   /* pages: two behind, one in front */
   o+='<g class="aq-pdf-anatomy__stack">'+page(372,92,0)+page(358,100,0)+'</g><g class="aq-pdf-anatomy__front">'+page(344,108,1)+'</g>';
   /* leaders to the callouts in the left column */
@@ -3772,17 +3814,41 @@ LOOKS['pdf-anatomy']=(function(){
   var tops={search:58,mark:142,foot:432};
   var callHtml='<ol class="aq-pdf-anatomy__calls" role="list">'+calls.map(function(c,j){return '<li class="aq-pdf-anatomy__call" data-c="'+j+'" style="top:'+(tops[c.part]/520*100).toFixed(2)+'%"><span class="aq-pdf-anatomy__cn" aria-hidden="true">'+(j+1)+'</span><span>'+tx(c.t)+'</span></li>'}).join('')+'</ol>';
   var pins=calls.map(function(c,j){var a=AT[c.part];return '<span class="aq-pdf-anatomy__pin" aria-hidden="true" style="left:'+(a[0]/760*100).toFixed(2)+'%;top:'+(a[1]/520*100).toFixed(2)+'%">'+(j+1)+'</span>'}).join('');
+  var nums='';for(var g=1;g<=PGN;g++)nums+='<button type="button" class="aq-pdf-anatomy__pgn" data-p="'+g+'"'+(g===PG0?' aria-current="page"':'')+(g>5?' tabindex="-1"':'')+' aria-label="Page '+g+'">'+g+'</button>';
+  var pager='<nav class="aq-pdf-anatomy__pager" aria-label="Turn the pages of the drawn document" data-p="'+PG0+'" data-n="'+PGN+'"><button type="button" class="aq-pdf-anatomy__pgs" data-d="-1" aria-label="Previous page"><span aria-hidden="true">&lsaquo;</span></button>'
+   +'<div class="aq-pdf-anatomy__pgw"><div class="aq-pdf-anatomy__pgr" style="--pg-start:0">'+nums+'</div></div><button type="button" class="aq-pdf-anatomy__pgs" data-d="1" aria-label="Next page"><span aria-hidden="true">&rsaquo;</span></button></nav>';
   var fig='<figure class="aq-pdf-anatomy__plate"><figcaption class="aq-pdf-anatomy__cap">'+k(1)+'<h3 class="aq-pdf-anatomy__h">'+tx(F.p)+'</h3>'+(F.m?'<p class="aq-pdf-anatomy__note">'+tx(F.m)+'</p>':'')+'</figcaption>'
-   +'<div class="aq-pdf-anatomy__draw"><div class="aq-pdf-anatomy__crop"><div class="aq-pdf-anatomy__art">'+plate(calls)+pins+'</div></div>'+callHtml+'</div></figure>';
+   +'<div class="aq-pdf-anatomy__draw"><div class="aq-pdf-anatomy__crop"><div class="aq-pdf-anatomy__art">'+plate(calls)+pins+'</div></div>'+callHtml+'</div>'+pager+'</figure>';
   var side=rows.filter(function(r,i){return i!==hi}).map(function(r){var v=String(r.v||''),ch=v.split(/\s*;\s*/),body;
    if(ch.length>1)body='<ul class="aq-pdf-anatomy__sigs" role="list">'+ch.map(function(c,j){c=c.replace(/^or\s+/i,'');return '<li><span class="aq-pdf-anatomy__sl" aria-hidden="true"></span><span class="aq-pdf-anatomy__sv">'+(j===ch.length-1&&j?'<span class="aq-pdf-anatomy__or">or </span>'+tx(c):tx(c.charAt(0).toUpperCase()+c.slice(1)))+'</span></li>'}).join('')+'</ul>';
    else body='<p class="aq-pdf-anatomy__big">'+tx(v)+'</p>';
    return '<div class="aq-pdf-anatomy__row"><h3 class="aq-pdf-anatomy__h">'+tx(r.p)+'</h3>'+k(1)+body+(r.m?'<div class="aq-pdf-anatomy__m">'+k(2)+'<p>'+tcell(r.m)+'</p></div>':'')
     +(r.link&&wp(r.link)?'<p class="aq-pdf-anatomy__go">'+wlink(r.link,r.link_label)+'</p>':'')+'</div>'}).join('');
-  return sec(H+'<div class="aq-pdf-anatomy">'+fig+'<div class="aq-pdf-anatomy__side">'+side+'</div></div>','aq-pdf-anatomy-sec')}})();
+  /* drawing-sheet furniture (concept cmp-documentation.3): zone band, numbers across, letters down, a title block
+     repeating the section title over blank number and revision fields. Decoration only. */
+  var zn=function(t,cls){var o='';for(var z=0;z<4;z++)o+='<span>'+(t==='n'?z+1:'DCBA'.charAt(z))+'</span>';return '<span class="aq-pdf-anatomy__zb aq-pdf-anatomy__zb--'+cls+'">'+o+'</span>'};
+  var frame='<div class="aq-pdf-anatomy__frame" aria-hidden="true">'+zn('n','t')+zn('n','b')+zn('l','l')+zn('l','r')
+   +'<span class="aq-pdf-anatomy__tb"><span class="aq-pdf-anatomy__tbh">'+tx(b.h||'')+'</span><span>No.</span><span>Rev.</span></span></div>';
+  return sec('<div class="aq-pdf-anatomy__sheet">'+frame+H+'<div class="aq-pdf-anatomy">'+fig+'<div class="aq-pdf-anatomy__side">'+side+'</div></div></div>','aq-pdf-anatomy-sec')}})();
 /* Pointing at a callout draws its leader in flow */
 if(typeof document!=='undefined'&&document.addEventListener)['mouseover','mouseout'].forEach(function(t){document.addEventListener(t,function(ev){var c=ev.target.closest&&ev.target.closest('.aq-pdf-anatomy__call');if(!c)return;
  if(t==='mouseout'&&ev.relatedTarget&&c.contains(ev.relatedTarget))return;var l=c.closest('.aq-pdf-anatomy').querySelector('.aq-pdf-anatomy__lead[data-c="'+c.getAttribute('data-c')+'"]');if(l)l.classList.toggle('is-on',t==='mouseover')})});
+/* Page turner. Ported from Subframe Motion "Sliding pagination" (compact-pagination), MIT, (c) 2026 Subframe: a five-wide
+   window of page numbers slides to keep the current page in view (250 ms cubic-bezier(0.2, 0.8, 0.2, 1)), only the
+   numbers in the window are in the tab order, the drawn page answers the turn (230 ms). Turning a page moves the
+   current bookmark and the search hit and turns the front page, while the footer's number and revision boxes stay
+   and light: the same on every page. Instant under reduced motion. */
+function paTurn(nav,p){var n=+nav.getAttribute('data-n'),w=nav.closest('.aq-pdf-anatomy');p=Math.max(1,Math.min(n,p));if(!w)return;nav.setAttribute('data-p',p);
+ var start=Math.max(1,Math.min(n-4,p-2)),row=nav.querySelector('.aq-pdf-anatomy__pgr');if(row)row.style.setProperty('--pg-start',start-1);
+ [].forEach.call(nav.querySelectorAll('.aq-pdf-anatomy__pgn'),function(bt){var g=+bt.getAttribute('data-p');if(g===p)bt.setAttribute('aria-current','page');else bt.removeAttribute('aria-current');bt.tabIndex=g>=start&&g<start+5?0:-1});
+ [].forEach.call(nav.querySelectorAll('.aq-pdf-anatomy__pgs'),function(bt){bt.disabled=(+bt.getAttribute('data-d')<0?p===1:p===n)});
+ var cur=w.querySelector('.aq-pdf-anatomy__cur'),hit=w.querySelector('.aq-pdf-anatomy__front .aq-pdf-anatomy__hit'),no=w.querySelector('.aq-pdf-anatomy__pgno'),fr=w.querySelector('.aq-pdf-anatomy__front');
+ if(cur)cur.style.transform='translateY('+((p-1)*22)+'px)';if(hit)hit.style.transform='translateY('+(((p*5)%11-5)*18)+'px)';if(no)no.textContent=p+' / '+n;
+ var red=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(fr&&fr.animate&&!red)fr.animate([{transform:'translateX(-10px)',opacity:0.35},{transform:'none',opacity:1}],{duration:230,easing:'cubic-bezier(0.2, 0.8, 0.2, 1)'});
+ [].forEach.call(w.querySelectorAll('.aq-pdf-anatomy__front .aq-pdf-anatomy__box'),function(bx){bx.classList.remove('is-ping');void bx.getBoundingClientRect();bx.classList.add('is-ping')})}
+if(typeof document!=='undefined'&&document.addEventListener)document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-pdf-anatomy__pgn,.aq-pdf-anatomy__pgs');if(!b)return;var nav=b.closest('.aq-pdf-anatomy__pager');
+ var p=b.hasAttribute('data-p')?+b.getAttribute('data-p'):+nav.getAttribute('data-p')+(+b.getAttribute('data-d'));paTurn(nav,p);if(b.hasAttribute('data-p'))b.focus()});
 /* Look "pid-routes" -> PidRoutes (design-system/components/PidRoutes): a router table drawn as a P&ID on a navy
    blueprint ground. Three columns (situation, system, start with) joined by pipe runs, each run through its own valve
    symbol; rows whose next cell links the same page are tied by a header line (junction dots where they join, a line
@@ -4363,6 +4429,8 @@ document.addEventListener('click',function(ev){var c=ev.target.closest&&ev.targe
    Without script, and at the end, the sheet shows every mark.
    Fields (a steps block): h, intro, items [{t, d, hold}]. A step's marks follow its place in the order; hold names who
    signs and labels the sheet's signature boxes (first hold: the left box, second: the right).
+   Pass 9b (concept research/pass9b/concepts/cmp-documentation.2.png, its numbered rhythm): steps lead at the left, the
+   sheet stands at the right (style.css).
    Phones: the sheet sits over the steps and plays its marks through once. */
 LOOKS['revision-sheet']=(function(){
  function P(d,c){return '<path class="aq-revision-sheet'+'__'+(c||'ln')+'" d="'+d+'"/>'}
@@ -5047,47 +5115,6 @@ function ssPick(r,i){if(!r)return;var cur=r.getAttribute('data-on')||'0';if(Stri
 window.ssPick=ssPick;
 (function(){function go(ev){var s=ev.target.closest&&ev.target.closest('.aq-spare-sheet__row');if(!s)return;ssPick(s.closest('.aq-spare-sheet'),+s.getAttribute('data-i'))}
  document.addEventListener('mouseover',go);document.addEventListener('focusin',go);document.addEventListener('click',go)})();
-/* Look "spine-shelf" -> SpineShelf (design-system/components/SpineShelf): the turnover package as the object on the
-   shelf and its index that opens. Left, the package stands as a row of binder spines on one shelf, one spine per
-   section, numbered, the section's name on its label holder, each spine as thick as the section holds documents; the
-   key section is the navy spine. Right, the package index: each section is a disclosure (number, name, dotted leader)
-   that opens to the documents it holds, one entry per document. Opening a section pulls its spine off the shelf;
-   pointing at a spine or a row lifts the other. The key section opens first.
-   Fields (a docs block): h, intro, items [{t, d, key, docs}], fold, fold_noun. docs (optional): the section's entries
-   as a list; without it they are read from d, split at ";" or ". ", else at commas outside brackets.
-   The fold applies on phones only (desktop shows the whole index; closed rows are one line each).
-   Phones: the shelf is a short band of numbered spines over the index. */
-function ssComma(s){var o=[],d=0,cur='';for(var i=0;i<s.length;i++){var c=s.charAt(i);if(c==='('||c==='[')d++;else if((c===')'||c===']')&&d)d--;
-  if(c===','&&!d){o.push(cur);cur='';continue}cur+=c}o.push(cur);return o}
-function ssDocs(it){var L=it.docs;if(!L){var s=String(it.d||'').trim();L=s.split(/;\s+|\.\s+(?=[A-Z\[])/);if(L.length<2)L=ssComma(s)}
- return L.map(function(x){x=String(x).trim().replace(/\.$/,'');return x.charAt(0).toUpperCase()+x.slice(1)}).filter(Boolean)}
-LOOKS['spine-shelf']=function(b,H){var I=(b.items||[]).map(function(x){return typeof x==='string'?{t:x}:x}),n=I.length;
- var keyAt=-1;I.forEach(function(x,i){if(x.key&&keyAt<0)keyAt=i});if(keyAt<0)keyAt=0;
- var D=I.map(ssDocs);
- var spines=I.map(function(x,i){var num=(i<9?'0':'')+(i+1);
-  return '<span class="aq-spine-shelf__spine'+(x.key?' is-key':'')+(i===keyAt?' is-open':'')+'" data-i="'+i+'" style="--w:'+(4+D[i].length)+'">'
-   +'<span class="aq-spine-shelf__body"><span class="aq-spine-shelf__no">'+num+'</span>'
-   +'<span class="aq-spine-shelf__holder"><span class="aq-spine-shelf__name">'+tx(x.t)+'</span></span>'
-   +'<span class="aq-spine-shelf__ring"></span></span></span>'}).join('');
- var shelf='<div class="aq-spine-shelf__shelf" aria-hidden="true"><div class="aq-spine-shelf__row">'+spines+'</div>'
-  +'<span class="aq-spine-shelf__board"></span><p class="aq-spine-shelf__cap">'+n+' '+e(b.fold_noun||'sections')+'</p></div>';
- var rows=I.map(function(x,i){var num=(i<9?'0':'')+(i+1);
-  return fli('<li class="aq-spine-shelf__item'+(x.key?' is-key':'')+'" data-i="'+i+'">',b,i)
-   +'<details'+(i===keyAt?' open':'')+'><summary class="aq-spine-shelf__sum"><span class="aq-spine-shelf__n" aria-hidden="true">'+num+'</span>'
-   +'<h3 class="aq-spine-shelf__t">'+tx(x.t)+'</h3><span class="aq-spine-shelf__lead" aria-hidden="true"></span><span class="aq-spine-shelf__mark" aria-hidden="true"></span></summary>'
-   +'<ul class="aq-spine-shelf__docs">'+D[i].map(function(d,j){return '<li style="--j:'+j+'">'+tx(d)+'</li>'}).join('')+'</ul></details></li>'}).join('');
- return sec(H+'<div class="aq-spine-shelf">'+shelf+'<div class="aq-spine-shelf__index">'+wFold(b,n,'<ol class="aq-spine-shelf__list" role="list">'+rows+'</ol>',b.fold_noun||'sections')+'</div></div>','aq-spine-shelf-sec')};
-/* Index and shelf move together: a section opened or closed pulls or returns its spine; pointing at a row or a spine
-   lifts its pair; a click on a spine opens its section (the summary stays the keyboard control). */
-if(typeof document!=='undefined'&&document.addEventListener){
- var ssPair=function(el){var w=el.closest('.aq-spine-shelf'),i=el.getAttribute('data-i');return w?[w.querySelector('.aq-spine-shelf__spine[data-i="'+i+'"]'),w.querySelector('.aq-spine-shelf__item[data-i="'+i+'"]')]:[]};
- document.addEventListener('toggle',function(ev){var d=ev.target;if(!d||!d.closest||!d.closest('.aq-spine-shelf__item'))return;var p=ssPair(d.closest('.aq-spine-shelf__item'));
-  if(p[0])p[0].classList.toggle('is-open',d.open)},true);
- ['mouseover','focusin','mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var el=ev.target.closest&&ev.target.closest('.aq-spine-shelf__spine,.aq-spine-shelf__item');if(!el)return;
-  if(/out$/.test(t)&&ev.relatedTarget&&el.contains(ev.relatedTarget))return;var on=/over|in$/.test(t);ssPair(el).forEach(function(x){if(x)x.classList.toggle('is-hover',on)})})});
- document.addEventListener('click',function(ev){var s=ev.target.closest&&ev.target.closest('.aq-spine-shelf__spine');if(!s)return;var it=ssPair(s)[1];if(!it)return;
-  var f=it.closest('.aq-fold');if(it.classList.contains('aq-fold-x')&&f&&!f.classList.contains('is-open')&&getComputedStyle(it).display==='none'){var bt=f.querySelector('.aq-fold__btn');if(bt)bt.click()}
-  var d=it.querySelector('details');if(d){d.open=!d.open;if(d.open&&it.getBoundingClientRect().top>innerHeight*0.8)it.scrollIntoView({block:'center',behavior:'smooth'})}})}
 /* Look "spool-dossier" -> SpoolDossier (design-system/components/SpoolDossier): a dossier set beside the as-built
    isometric it indexes. On a limestone sheet: the title huge and light at the top left, an isometric polypropylene
    spool at the right (IsoKit pipes: a run with a tee and a branch, two bends, flanged ends, each joint dotted and
@@ -5149,7 +5176,9 @@ LOOKS['spool-dossier']=(function(){
    turnover package building up. On a navy ground the stages stand along one project axis, left to right; above each
    stage its documents are stacked as sheets of paper, one sheet per document, so each stack's height is what that stage
    adds to the file; under the axis, the stage's name with its clause, then your step and who approves it on a signature
-   rule. The table's column names label the three bands once, in the margin left of the first stage. Pointing at a stage lifts its stack.
+   rule. The table's column names label the three bands once, in the margin left of the first stage. The axis is a stage
+   rail: each node is a button; pointing at a stage, focusing its node or pressing it (pressed holds it) seeks the water
+   back or on to that stage, and the stacks still ahead go quiet, so the file reads as it stands at that stage.
    Fields, as a table: cols [stage, your step and who approves, documents issued], rows [[stage, step, documents]]
    (cells strings or {t, link}); stage cells "Name · clause" set the clause under the name; documents are split at ";".
    fold, fold_noun: on phones only (desktop shows the whole axis). Phones: the axis runs down the left, each stage's
@@ -5163,9 +5192,29 @@ LOOKS['stage-stacks']=function(b,H){var C=b.cols||[],R=b.rows||[];
    +'<div class="aq-stage-stacks__head">'+k(0,'is-ph')+'<h3 class="aq-stage-stacks__name"><span class="aq-stage-stacks__no" aria-hidden="true">'+num+'</span><span class="aq-stage-stacks__nm">'+(r[0]&&typeof r[0]==='object'?tcell({t:p[0],link:r[0].link}):tx(p[0]))+'</span>'
     +(p[1]?'<span class="aq-stage-stacks__ref">'+tx(p.slice(1).join(' · '))+'</span>':'')+'</h3></div>'
    +'<div class="aq-stage-stacks__pile">'+k(2,'is-ph')+'<ul class="aq-stage-stacks__docs" role="list" data-theme="light">'+docs+'</ul></div>'
-   +'<span class="aq-stage-stacks__axis" aria-hidden="true"><span class="aq-stage-stacks__run"></span><span class="aq-stage-stacks__node"></span></span>'
+   +'<span class="aq-stage-stacks__axis"><span class="aq-stage-stacks__run" aria-hidden="true"></span><button type="button" class="aq-stage-stacks__node" aria-pressed="false" aria-label="'+e('Show the file up to '+p[0])+'"></button></span>'
    +'<div class="aq-stage-stacks__who">'+k(1,'is-ph')+'<p class="aq-stage-stacks__step">'+tcell(r[1])+'</p></div></li>'}).join('');
- return sec(H+'<div class="aq-stage-stacks" style="--n:'+R.length+'">'+wFold(b,R.length,'<ol class="aq-stage-stacks__list" role="list">'+list+'</ol>',b.fold_noun||'stages')+'</div>','aq-band--navy aq-stage-stacks-sec')};
+ return sec(H+'<div class="aq-stage-stacks" data-n="'+R.length+'" style="--n:'+R.length+'">'+wFold(b,R.length,'<ol class="aq-stage-stacks__list" role="list">'+list+'</ol>',b.fold_noun||'stages')+'</div>','aq-band--navy aq-stage-stacks-sec')};
+/* Stage rail. Ported from Subframe Motion "Chapter timeline scrubber" (cue-scrubber), MIT, (c) 2026 Subframe: one reach
+   value is sought (0.5-0.9 s by distance, power2.inOut; a third faster on the way back to the whole file), the water
+   fills each stage's run as far as the reach, and stages it has not reached go quiet. Reduced motion: the reach jumps.
+   Pointing at a stage or focusing its node seeks it; pressing a node holds that stage until it is pressed again. */
+function stRail(el){if(el._st)return el._st;var S=[].slice.call(el.querySelectorAll('.aq-stage-stacks__stage')),n=S.length,st={reach:n,pin:-1,tw:null};el._st=st;
+ st.apply=function(){var r=st.reach,v=innerWidth<860;S.forEach(function(s,i){var run=s.querySelector('.aq-stage-stacks__run'),f=Math.max(0,Math.min(1,r-i));
+  if(run)run.style.transform=r>=n?'':(v?'scaleY(':'scaleX(')+f.toFixed(3)+')';s.classList.toggle('is-ahead',r<n&&i>r+0.001)})};
+ st.seek=function(k,back){var to=k<0?n:k,red=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  S.forEach(function(s,i){s.classList.toggle('is-sel',i===k)});if(st.tw)st.tw.kill();
+  if(red||!window.gsap){st.reach=to;st.apply();return}
+  var d=Math.min(0.9,0.5+Math.abs(to-st.reach)*0.08)*(back?0.67:1);st.tw=gsap.to(st,{reach:to,duration:d,ease:'power2.inOut',onUpdate:st.apply,onComplete:st.apply})};
+ return st}
+if(typeof document!=='undefined'&&document.addEventListener){
+ var stIdx=function(s){return [].indexOf.call(s.parentNode.children,s)};
+ document.addEventListener('mouseover',function(ev){var s=ev.target.closest&&ev.target.closest('.aq-stage-stacks__stage');if(!s||innerWidth<860)return;var el=s.closest('.aq-stage-stacks'),st=stRail(el);if(st.pin<0)st.seek(stIdx(s))});
+ document.addEventListener('mouseout',function(ev){var el=ev.target.closest&&ev.target.closest('.aq-stage-stacks__list');if(!el||(ev.relatedTarget&&el.contains(ev.relatedTarget)))return;var st=stRail(el.closest('.aq-stage-stacks'));if(st.pin<0)st.seek(-1,true)});
+ document.addEventListener('focusin',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-stage-stacks__node');if(!b)return;var st=stRail(b.closest('.aq-stage-stacks'));if(st.pin<0)st.seek(stIdx(b.closest('.aq-stage-stacks__stage')))});
+ document.addEventListener('focusout',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-stage-stacks__node');if(!b||(ev.relatedTarget&&ev.relatedTarget.closest&&ev.relatedTarget.closest('.aq-stage-stacks__node')))return;var st=stRail(b.closest('.aq-stage-stacks'));if(st.pin<0)st.seek(-1,true)});
+ document.addEventListener('click',function(ev){var b=ev.target.closest&&ev.target.closest('.aq-stage-stacks__node');if(!b)return;var el=b.closest('.aq-stage-stacks'),st=stRail(el),k=stIdx(b.closest('.aq-stage-stacks__stage'));
+  st.pin=st.pin===k?-1:k;[].forEach.call(el.querySelectorAll('.aq-stage-stacks__node'),function(x){x.setAttribute('aria-pressed',x===b&&st.pin===k?'true':'false')});st.seek(st.pin,st.pin<0)})}
 /* Look "stage-tiles" -> StageTiles (design-system/components/StageTiles): ordered stages as a Swiss row of tiles on
    navy and limestone, each led by a huge light slash numeral ("01/"). The heading sits in a navy band over the first
    tiles; with six stages the last two stack in a column at the right (05 beside the heading, 06 under it), so the

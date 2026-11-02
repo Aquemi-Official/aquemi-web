@@ -16,7 +16,7 @@ AQmotion.fx('PdfAnatomy', function (root, m) {
     var boxes = q('.aq-pdf-anatomy__box'); if (boxes.length) tl.from(boxes, { autoAlpha: 0, duration: 0.25, stagger: 0.07, clearProps: 'opacity,visibility' }, 1.2);
     q('.aq-pdf-anatomy__lead').forEach(function (g, i) {
       var ln = g.querySelector('.aq-pdf-anatomy__leader'), dot = g.querySelector('.aq-pdf-anatomy__dot'), call = one('.aq-pdf-anatomy__call[data-c="' + g.getAttribute('data-c') + '"]'), t = 1.6 + i * 0.3;
-      if (dot) tl.from(dot, { scale: 0, transformOrigin: '50% 50%', duration: 0.3, ease: 'back.out(3)', clearProps: 'transform' }, t);
+      if (dot) tl.from(dot, { scale: 0, transformOrigin: '50% 50%', duration: 0.3, ease: 'power3.out', clearProps: 'transform' }, t);
       if (ln && window.DrawSVGPlugin) tl.from(ln, { drawSVG: '0%', duration: 0.5, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, t + 0.1);
       if (call && !m.narrow()) tl.from(call, { x: 16, autoAlpha: 0, duration: 0.45, clearProps: 'transform,opacity,visibility' }, t + 0.45);
     });
