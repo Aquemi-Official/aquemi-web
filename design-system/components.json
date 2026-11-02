@@ -929,16 +929,6 @@
    "summary": "PidRoutes draws a router table (situation, system, start with) as a P&ID on a navy blueprint ground: each situation is piped through its own valve to its system and on to where to start, and rows that share a destination page are tied by a header line."
   },
   {
-   "name": "PipeCollage",
-   "readme": "design-system/components/PipeCollage/README.md",
-   "preview": "design-system/components/PipeCollage/preview.html",
-   "group": "Page sections",
-   "height": "1455",
-   "width": "1300",
-   "subtitle": "Engineering standards as a Swiss poster: a geometric collage, one numbered piece per standard, editorial blocks on brackets",
-   "summary": "PipeCollage sets an evidence table as a Swiss poster: a geometric collage of flat pieces, one numbered piece per standard (a pressure vessel, a control panel, a flanged elbow, resin pellets, a fused joint) among plain filler tiles, beside the rows as asymmetric editorial blocks hung from hairline brackets."
-  },
-  {
    "name": "PlanChecker",
    "readme": "design-system/components/PlanChecker/README.md",
    "preview": "design-system/components/PlanChecker/preview.html",
@@ -1227,6 +1217,16 @@
    "width": "1100",
    "subtitle": "What changes for a Canadian site: four tiles, each opened by a figure plate",
    "summary": "SiteTiles sets a short grid of what changes for a site as a Swiss row of tiles, each opened by a small flat figure plate that draws the change instead of naming it, then the number large and light, the title, the line and its link."
+  },
+  {
+   "name": "SkidTags",
+   "readme": "design-system/components/SkidTags/README.md",
+   "preview": "design-system/components/SkidTags/preview.html",
+   "group": "Page sections",
+   "height": "1120",
+   "width": "1300",
+   "subtitle": "Engineering standards keyed to a skid elevation: numbered tags on the parts match the numbered table rows",
+   "summary": "SkidTags keys an evidence table to an elevation drawing of a Purified Water skid: numbered square tags stand round the drawing with a leader to the part each standard governs, and the table rows below carry the same numbers, so every standard points at its part."
   },
   {
    "name": "SpareSheet",

@@ -6574,87 +6574,6 @@ a.aq-option-modules__box:focus-visible { outline: 2px solid var(--focus); outlin
   .aq-pid-routes__cap { justify-content: flex-start; flex-wrap: wrap; }
 }
 
-/* ---------- PipeCollage: an evidence table as a Swiss poster (look "pipe-collage"). A geometric collage board of flat
-   pieces (fills: navy, limestone, surface tokens; flow only as a line) beside asymmetric editorial blocks hung from
-   hairline brackets. Piece shapes carry data-f (their fill or stroke role). The board is limestone paper
-   (board and thumbs carry data-theme="light", so the poster keeps its light-paper fills in the dark theme). ---------- */
-.aq-pipe-collage { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); align-items: start; }
-.aq-pipe-collage__board { position: sticky; top: calc(var(--space-16) + var(--space-8)); }
-.aq-pipe-collage__board svg { display: block; width: 100%; height: auto; }
-.aq-pipe-collage svg [data-f="ls"] { fill: var(--limestone); }
-.aq-pipe-collage svg [data-f="lsf"] { fill: var(--limestone); }
-.aq-pipe-collage svg [data-f="nv"] { fill: var(--navy); }
-.aq-pipe-collage svg [data-f="sk"] { fill: var(--surface-sunken); }
-.aq-pipe-collage svg [data-f="sf"] { fill: var(--surface-raised); }
-.aq-pipe-collage svg [data-f="ln"] { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
-.aq-pipe-collage svg [data-f="lnb"] { fill: none; stroke: var(--navy); stroke-width: 3; stroke-linecap: square; }
-.aq-pipe-collage svg [data-f="nvl"] { fill: none; stroke: var(--navy); stroke-width: 1.5; }
-.aq-pipe-collage svg [data-f="fl"] { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-linecap: round; }
-.aq-pipe-collage svg [data-f="flb"] { fill: none; stroke: var(--flow); stroke-width: 1.5; }
-.aq-pipe-collage svg [data-f="flo"] { fill: none; stroke: color-mix(in srgb, var(--flow) 45%, var(--on-navy)); stroke-width: 1.5; stroke-dasharray: 6 5; }
-.aq-pipe-collage svg [data-f="pipe"] { fill: none; stroke: var(--navy); stroke-width: 22; }
-.aq-pipe-collage svg [data-f="ring"] { fill: var(--limestone); }
-.aq-pipe-collage svg [data-f="dot"] { fill: var(--flow); }
-.aq-pipe-collage svg [data-f="bead"] { fill: var(--navy); stroke: var(--limestone); stroke-width: 1.5; }
-/* the sunken tiles need an edge on the light ground */
-.aq-pipe-collage svg [data-f="sk"], .aq-pipe-collage svg [data-f="sf"] { stroke: var(--line); stroke-width: 1; }
-.aq-pipe-collage__n { font: 500 12px/1 var(--font-mono); letter-spacing: 0.08em; fill: var(--ink-subtle); }
-.aq-pipe-collage__cell.is-piece .aq-pipe-collage__n { fill: var(--on-limestone); }
-.aq-pipe-collage__cell[data-pc] .aq-pipe-collage__n { paint-order: stroke; stroke: var(--limestone); stroke-width: 6px; stroke-linejoin: round; }
-.aq-pipe-collage__frame { fill: none; stroke: var(--flow); stroke-width: 3; stroke-opacity: 0; }
-.aq-pipe-collage__cell.is-on .aq-pipe-collage__frame { stroke-opacity: 1; }
-.aq-pipe-collage.is-focus .aq-pipe-collage__cell:not(.is-on) { opacity: 0.55; }
-@media (prefers-reduced-motion: no-preference) {
-  .aq-pipe-collage__cell { transition: opacity 200ms; }
-  .aq-pipe-collage__frame { transition: stroke-opacity 200ms; }
-  .aq-pipe-collage__block { transition: border-color 200ms; }
-}
-
-/* Editorial blocks, stepped on a six-column field */
-.aq-pipe-collage__blocks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-12) var(--space-6); }
-.aq-pipe-collage__block { position: relative; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-1) 0 0 var(--space-6); border-left: 1px solid var(--line-strong); min-width: 0; }
-.aq-pipe-collage__block::before { content: ""; position: absolute; left: 0; top: 0; width: var(--space-4); height: 1px; background: var(--line-strong); }
-.aq-pipe-collage__block:nth-child(5n+1) { grid-column: 1 / span 4; }
-.aq-pipe-collage__block:nth-child(5n+2) { grid-column: 3 / span 4; }
-.aq-pipe-collage__block:nth-child(5n+3) { grid-column: 1 / span 3; }
-.aq-pipe-collage__block:nth-child(5n+4) { grid-column: 4 / span 3; }
-.aq-pipe-collage__block:nth-child(5n+5) { grid-column: 2 / span 4; }
-.aq-pipe-collage__block:hover, .aq-pipe-collage__block:focus-within { border-left-color: var(--flow); }
-.aq-pipe-collage__head { display: flex; align-items: baseline; gap: var(--space-3); }
-.aq-pipe-collage__block > .aq-index { margin-bottom: calc(-1 * var(--space-2)); }
-.aq-pipe-collage__std { margin: 0; font: 300 32px/38px var(--font-sans); letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
-.aq-pipe-collage__std .aq-ph { font-size: 22px; line-height: 30px; }
-.aq-pipe-collage__how { margin: 0; font: 400 16px/25px var(--font-sans); color: var(--ink); text-wrap: pretty; }
-.aq-pipe-collage__proof { margin: 0; font: 400 13px/20px var(--font-mono); color: var(--ink-muted); }
-.aq-pipe-collage__k { display: block; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); }
-.aq-pipe-collage__go { margin: 0; }
-.aq-pipe-collage__go .aq-pipe-collage__k { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.aq-pipe-collage__go a { display: inline-flex; align-items: center; min-height: 44px; color: var(--flow); font: 500 15px/22px var(--font-sans); text-decoration: none; }
-.aq-pipe-collage__go a::after { content: "\a0\2192"; }
-.aq-pipe-collage__go a:hover { text-decoration: underline; text-underline-offset: 3px; }
-.aq-pipe-collage__go a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.aq-pipe-collage__thumb { display: none; }
-/* desktop: every block shows beside the whole board; the fold is for phones */
-.aq-pipe-collage .aq-fold:not(.is-open) .aq-pipe-collage__block.aq-fold-x { display: flex; }
-.aq-pipe-collage .aq-fold__btn { display: none; }
-.aq-pipe-collage__block.aq-standards-map-hit { border-left-color: var(--flow); }
-
-.aq-pipe-collage-sec .aq-sec-head { margin-bottom: var(--space-4); }
-.aq-pipe-collage__text { min-width: 0; }
-
-@container (max-width: 860px) {
-  .aq-pipe-collage { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
-  .aq-pipe-collage__board { display: none; }
-  .aq-pipe-collage__blocks { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
-  .aq-pipe-collage__block:nth-child(n) { grid-column: 1; padding-left: var(--space-4); }
-  .aq-pipe-collage__block:nth-child(even) { margin-left: var(--space-6); }
-  .aq-pipe-collage__thumb { display: block; width: var(--space-24); margin-bottom: var(--space-2); }
-  .aq-pipe-collage__thumb svg { display: block; width: 100%; height: auto; max-height: var(--space-24); }
-  .aq-pipe-collage__std { font-size: 26px; line-height: 32px; }
-  .aq-pipe-collage .aq-fold:not(.is-open) .aq-pipe-collage__block.aq-fold-x { display: none; }
-  .aq-pipe-collage .aq-fold__btn { display: flex; margin-top: var(--space-6); }
-}
-
 /* ---------- PlanChecker: service plans as a checker of navy and limestone tiles (look "plan-checker") ----------
    Limestone band (data-theme light). One column per plan, columns alternate navy and a lighter limestone tile with a
    hairline edge; each column is a head tile (slash numeral 300 at up to 112 px, name, who it suits) and a terms tile
@@ -8809,6 +8728,117 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
   .aq-site-tiles__d, .aq-site-tiles .aq-site-tiles__go { grid-column: 1 / -1; }
   .aq-site-tiles__d { margin-top: var(--space-1); }
   .aq-site-tiles__n, .aq-site-tiles__t, .aq-site-tiles__d, .aq-site-tiles__go { padding-inline: var(--space-4); }
+}
+
+/* ---------- SkidTags: an evidence table keyed to an elevation drawing of the skid (look "skid-tags"). Limestone band
+   (data-theme="light"): heading beside the drawing, numbered square tags round it with leaders to the parts, the
+   table below with the same numbers. Selection (tag, row number, row hover or focus) lights the tag, the row, the part
+   and its leader in flow; a crosshair ring glides to the part (atlas-hotspots). ---------- */
+.aq-skid-tags { display: flex; flex-direction: column; gap: var(--space-12); }
+.aq-skid-tags__top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); gap: var(--space-12); align-items: center; }
+.aq-skid-tags__top > .aq-sec-head { margin: 0; align-self: start; }
+.aq-skid-tags-sec .aq-sec-head h2 { font-weight: 300; }
+.aq-skid-tags__stage { min-width: 0; }
+.aq-skid-tags__fig { position: relative; aspect-ratio: 2 / 1; }
+.aq-skid-tags__svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; overflow: visible; }
+
+/* the drawing: fills are the paper, so later pieces hide what is behind them */
+.aq-skid-tags__eq { fill: var(--limestone); stroke: var(--line-strong); stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__fn { fill: none; stroke: var(--line-strong); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__fl { fill: none; stroke: var(--flow); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__gr { fill: none; stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__dim { fill: none; stroke: var(--ink-subtle); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__lab { font: 500 13px/1 var(--font-mono); fill: var(--ink-subtle); }
+.aq-skid-tags__cut { fill: var(--limestone); stroke: none; }
+.aq-skid-tags__sec { fill: var(--ink-muted); stroke: none; }
+.aq-skid-tags__ld { fill: none; stroke: var(--ink-subtle); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.aq-skid-tags__dot { fill: var(--on-limestone); stroke: none; }
+.aq-skid-tags__part.is-on .aq-skid-tags__eq, .aq-skid-tags__part.is-on .aq-skid-tags__fn, .aq-skid-tags__part.is-on .aq-skid-tags__dim,
+.aq-skid-tags__lead.is-on .aq-skid-tags__ld { stroke: var(--flow); }
+.aq-skid-tags__part.is-on .aq-skid-tags__sec, .aq-skid-tags__lead.is-on .aq-skid-tags__dot, .aq-skid-tags__part.is-on .aq-skid-tags__lab { fill: var(--flow); }
+.aq-skid-tags__lead.is-on .aq-skid-tags__ld { stroke-width: 1.5; }
+
+/* numbered square tags: 44 px targets around a navy square */
+.aq-skid-tags__tag, .aq-skid-tags__num { display: grid; place-items: center; width: calc(var(--space-12) - var(--space-1)); height: calc(var(--space-12) - var(--space-1)); padding: 0; border: 0; background: none; color: inherit; cursor: pointer; font: inherit; }
+.aq-skid-tags__tag { position: absolute; transform: translate(-50%, -50%); z-index: 2; }
+.aq-skid-tags__tag > span, .aq-skid-tags__num > span, .aq-skid-tags__num-x { display: grid; place-items: center; width: calc(var(--space-6) + var(--space-1)); height: calc(var(--space-6) + var(--space-1)); background: var(--navy); color: var(--on-navy); font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; }
+.aq-skid-tags__num-x { background: none; color: var(--ink-subtle); }
+.aq-skid-tags__tag:hover > span, .aq-skid-tags__num:hover > span { background: var(--ink); }
+.aq-skid-tags__tag[aria-pressed="true"] > span, .aq-skid-tags__num[aria-pressed="true"] > span { background: var(--flow); color: var(--on-navy); transform: scale(1.12); }
+.aq-skid-tags__tag:focus-visible, .aq-skid-tags__num:focus-visible { outline: none; }
+.aq-skid-tags__tag:focus-visible > span, .aq-skid-tags__num:focus-visible > span { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* the crosshair ring: a full-size layer translated to the chosen anchor (percentages of the drawing) */
+.aq-skid-tags__crossbox { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.aq-skid-tags__cross { position: absolute; inset: 0; pointer-events: none; opacity: 0; transform: translate(var(--cx, 0%), var(--cy, 0%)); }
+.aq-skid-tags__cross.is-on { opacity: 1; }
+.aq-skid-tags__cross::after { content: ""; position: absolute; left: 0; top: 0; width: var(--space-8); height: var(--space-8); border: 1px solid var(--flow); border-radius: 50%; transform: translate(-50%, -50%); }
+.aq-skid-tags__cross::before { content: ""; position: absolute; left: 0; top: 0; width: var(--space-12); height: var(--space-12); transform: translate(-50%, -50%);
+  background: linear-gradient(var(--flow), var(--flow)) 50% 0 / 1px var(--space-2) no-repeat, linear-gradient(var(--flow), var(--flow)) 50% 100% / 1px var(--space-2) no-repeat,
+    linear-gradient(var(--flow), var(--flow)) 0 50% / var(--space-2) 1px no-repeat, linear-gradient(var(--flow), var(--flow)) 100% 50% / var(--space-2) 1px no-repeat; }
+@media (prefers-reduced-motion: no-preference) {
+  .aq-skid-tags__cross { transition: transform 250ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 180ms; }
+  .aq-skid-tags__tag > span, .aq-skid-tags__num > span { transition: background-color 180ms ease, transform 180ms ease; }
+  .aq-skid-tags__eq, .aq-skid-tags__fn, .aq-skid-tags__ld, .aq-skid-tags__dim { transition: stroke 180ms ease; }
+  .aq-skid-tags__row { transition: background-color 180ms ease; }
+}
+
+/* the readout: phones only (the table is far below the drawing there); on desktop it stays for screen readers */
+.aq-skid-tags__detail { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 0; }
+.aq-skid-tags__vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* the table */
+.aq-skid-tags__table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.aq-skid-tags__table th, .aq-skid-tags__table td { text-align: left; vertical-align: top; padding: var(--space-4) var(--space-4) var(--space-4) 0; border-bottom: 1px solid var(--line); }
+.aq-skid-tags__table thead th { font: 400 15px/22px var(--font-sans); color: var(--ink-muted); padding-bottom: var(--space-3); border-bottom: 1px solid var(--line-strong); }
+.aq-skid-tags__table thead th:nth-child(1) { width: calc(var(--space-16) + var(--space-2)); }
+.aq-skid-tags__table thead th:nth-child(2) { width: 22%; }
+.aq-skid-tags__table thead th:nth-child(4) { width: 24%; }
+.aq-skid-tags__table thead th:nth-child(5) { width: 19%; }
+.aq-skid-tags__table td.aq-skid-tags__n { padding-top: var(--space-1); }
+.aq-skid-tags__n { padding-right: var(--space-4); }
+.aq-skid-tags__std { font: 400 17px/24px var(--font-mono); color: var(--ink); letter-spacing: -0.01em; }
+.aq-skid-tags__how { font: 400 16px/24px var(--font-sans); color: var(--ink); text-wrap: pretty; }
+.aq-skid-tags__proof { font: 400 15px/22px var(--font-sans); color: var(--ink-muted); }
+.aq-skid-tags__k { display: none; }
+.aq-skid-tags__go a { display: inline-block; padding: var(--space-3) 0; margin-top: calc(-1 * var(--space-3)); color: var(--flow); font: 500 15px/22px var(--font-sans); text-decoration: none; }
+.aq-skid-tags__go a::after { content: "\a0\2192"; }
+.aq-skid-tags__go a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.aq-skid-tags__go a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.aq-skid-tags__row { box-shadow: inset 0 0 0 0 var(--flow); }
+.aq-skid-tags__row.is-on { background: color-mix(in srgb, var(--surface-raised) 60%, transparent); box-shadow: inset 2px 0 0 0 var(--flow); }
+.aq-skid-tags__row.is-on .aq-skid-tags__std { color: var(--flow); }
+.aq-skid-tags__row.aq-standards-map-hit { background: var(--flow-tint); }
+.aq-skid-tags__row:focus { outline: 2px solid var(--focus); outline-offset: -2px; }
+.aq-skid-tags__row td:first-child { padding-left: var(--space-3); }
+/* desktop: every row shows; the fold is for phones */
+.aq-skid-tags .aq-fold:not(.is-open) .aq-skid-tags__row.aq-fold-x { display: table-row; }
+.aq-skid-tags .aq-fold__btn { display: none; }
+
+@container (max-width: 860px) {
+  .aq-skid-tags { gap: var(--space-8); }
+  .aq-skid-tags__top { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .aq-skid-tags__tag > span { width: var(--space-6); height: var(--space-6); font-size: 12px; }
+  .aq-skid-tags__cross::after { width: var(--space-6); height: var(--space-6); }
+  .aq-skid-tags__cross::before { width: var(--space-8); height: var(--space-8); }
+  .aq-skid-tags__detail { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-1) var(--space-3);
+    margin-top: var(--space-4); padding: var(--space-3) 0 0; border-top: 1px solid var(--line-strong); min-height: calc(var(--space-16) + var(--space-2)); }
+  .aq-skid-tags__dn { grid-row: span 2; display: grid; place-items: center; width: var(--space-6); height: var(--space-6); background: var(--flow); color: var(--on-navy); font: 500 12px/1 var(--font-mono); }
+  .aq-skid-tags__ds { font: 400 16px/22px var(--font-mono); color: var(--ink); }
+  .aq-skid-tags__dh { font: 400 14px/20px var(--font-sans); color: var(--ink-muted); }
+  .aq-skid-tags__table, .aq-skid-tags__table tbody { display: block; }
+  .aq-skid-tags__table thead { display: none; }
+  .aq-skid-tags__row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-2) var(--space-3); padding: var(--space-4) var(--space-3); border-bottom: 1px solid var(--line); }
+  .aq-skid-tags__table .aq-skid-tags__row > * { display: block; padding: 0; border: 0; }
+  .aq-skid-tags__table .aq-skid-tags__row > .aq-skid-tags__n { grid-row: span 4; margin: calc(-1 * var(--space-2)) 0 0 calc(-1 * var(--space-2)); }
+  .aq-skid-tags__row td:first-child { padding-left: 0; }
+  .aq-skid-tags__std { align-self: center; }
+  .aq-skid-tags__k { display: block; font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); margin-bottom: var(--space-1); }
+  .aq-skid-tags__how .aq-skid-tags__k { display: none; }
+  .aq-skid-tags__go .aq-skid-tags__k { display: none; }
+  .aq-skid-tags__go a { margin: calc(-1 * var(--space-2)) 0; }
+  .aq-skid-tags .aq-fold:not(.is-open) .aq-skid-tags__row.aq-fold-x { display: none; }
+  .aq-skid-tags .aq-fold__btn { display: flex; margin-top: var(--space-6); }
 }
 
 /* ---------- SpareSheet: like-for-like rules on a limestone drawing sheet (look "spare-sheet") ----------

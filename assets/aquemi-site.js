@@ -3753,52 +3753,6 @@ LOOKS['pid-routes']=(function(){
  document.addEventListener('mouseout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-pid-routes');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
  document.addEventListener('focusout',function(ev){var root=ev.target.closest&&ev.target.closest('.aq-pid-routes');if(root&&!root.contains(ev.relatedTarget))set(root,null)});
 })();
-/* Look "pipe-collage" -> PipeCollage (design-system/components/PipeCollage): an evidence table as a Swiss poster. Left,
-   a geometric collage of flat pieces (navy, limestone and sunken tiles; flow only as a line): one piece per row (a
-   pressure vessel with its nameplate, a control panel with its label plate, a flanged elbow with a short branch, a
-   grid of resin pellets, two pipe ends fused at a bead) set among plain filler tiles, each piece numbered as its row.
-   Right, the rows as asymmetric editorial blocks hung from hairline brackets: the standard large, what we design to,
-   the proof in mono, where we show it as a link. Hovering or focusing a block frames its piece in flow.
-   Fields, as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}),
-   fold, fold_noun. New optional field: pieces, one per row, naming the piece drawn for it: vessel, panel, pipe,
-   pellets, weld (each at most once; a row without one has no piece). The fold applies on phones only (desktop shows
-   every block beside the whole collage). Phones: the board gives way to each block led by its own piece. */
-var PC_SLOT={vessel:[0,0,1,2],pipe:[1,1,2,1],pellets:[0,2,1,1],panel:[2,2,1,2],weld:[0,3,2,1]};
-var PC_FILL=[['arc',1,0],['quarter',2,0],['diag',1,2]];
-function pcPiece(k){var r=function(x,y,w,h,c){return '<rect data-f="'+c+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"/>'},
-  c=function(x,y,R,cl){return '<circle data-f="'+cl+'" cx="'+x+'" cy="'+y+'" r="'+R+'"/>'},p=function(d,cl){return '<path data-f="'+cl+'" d="'+d+'"/>'};
- switch(k){
-  case 'vessel':return r(0,0,100,200,'ls')+r(46,10,8,16,'nv')+p('M24 50 A26 22 0 0 1 76 50 V150 A26 22 0 0 1 24 150 Z','nv')+r(36,84,28,20,'sf')+p('M40 91 H60 M40 97 H54','ln')
-   +p('M30 166 L26 190 M70 166 L74 190','lnb')+p('M50 26 V8','fl')+c(50,128,5,'ring');
-  case 'pipe':return r(0,0,200,100,'sk')+p('M0 64 H112 A34 34 0 0 0 146 30 V0','pipe')+r(52,46,8,36,'nv')+r(130,10,32,8,'nv')+r(88,64,14,26,'nv')+r(84,88,22,6,'nv')+p('M0 64 H112 A34 34 0 0 0 146 30 V0','fl');
-  case 'panel':return r(0,0,100,200,'nv')+r(18,26,64,148,'ls')+p('M50 26 V174','nvl')+r(24,40,20,16,'sf')+c(62,46,3.5,'nv')+c(70,46,3.5,'nv')+c(62,56,3.5,'dot')
-   +p('M24 150 H44 M24 156 H44 M24 162 H44','nvl')+r(56,132,20,14,'sf')+p('M58 132 H76 V146 H58 Z','flb');
-  case 'pellets':var s=r(0,0,100,100,'ls');for(var i=0;i<4;i++)for(var j=0;j<4;j++)if(i||j<3)s+=c(20+20*i,20+20*j,6.5,(i*4+j)%7===2?'nv':'ln');return s;
-  case 'weld':return r(0,0,200,100,'nv')+r(14,32,78,36,'ls')+r(108,32,78,36,'ls')+p('M100 22 C93 34 93 66 100 78 C107 66 107 34 100 22 Z','bead')+p('M14 50 H186','flo')+p('M92 26 V74 M108 26 V74','nvl');
-  case 'arc':return r(0,0,100,100,'sf')+p('M0 70 A30 30 0 0 1 30 100 M0 50 A50 50 0 0 1 50 100 M0 30 A70 70 0 0 1 70 100 M0 10 A90 90 0 0 1 90 100','fl');
-  case 'quarter':return r(0,0,100,100,'ls')+p('M100 0 H0 A100 100 0 0 0 100 100 Z','nv')+c(78,22,8,'lsf');
-  case 'diag':return r(0,0,100,100,'sk')+p('M0 100 L100 0 V100 Z','nv')+c(70,72,12,'lsf');
- }return ''}
-function pcG(k,x,y,lab,i){var g=2,S=PC_SLOT[k]||[x,y,1,1],w=S[2]*100,h=S[3]*100;
- return '<g transform="translate('+(S[0]*100+g)+' '+(S[1]*100+g)+') scale('+((w-2*g)/w).toFixed(4)+' '+((h-2*g)/h).toFixed(4)+')"><g class="aq-pipe-collage__cell'+(i!=null?' is-piece':'')+'"'+(i!=null?' data-pc="'+i+'"':'')+' data-edge="'+(S[0]===0?'l':S[0]+S[2]>=3?'r':'t')+'">'
-  +pcPiece(k)+(i!=null?'<rect class="aq-pipe-collage__frame" x="1" y="1" width="'+(w-2)+'" height="'+(h-2)+'"/>':'')
-  +(lab?(k==='vessel'?'<text class="aq-pipe-collage__n" x="'+(w-8)+'" y="20" text-anchor="end">':'<text class="aq-pipe-collage__n" x="8" y="'+(h-10)+'">')+lab+'</text>':'')+'</g></g>'}
-LOOKS['pipe-collage']=function(b,H){var C=b.cols||[],R=b.rows||[],K=b.pieces||[],used={};
- var cells=PC_FILL.map(function(f){return pcG(f[0],f[1],f[2])}).join('');
- R.forEach(function(r,i){var k=K[i];if(PC_SLOT[k]&&!used[k]){used[k]=1;cells+=pcG(k,0,0,(i<9?'0':'')+(i+1),i)}});
- Object.keys(PC_SLOT).forEach(function(k){if(!used[k])cells+=pcG(k==='weld'?'arc':k==='pellets'?'quarter':'diag',PC_SLOT[k][0],PC_SLOT[k][1])});
- var board='<div class="aq-pipe-collage__board" data-theme="light" aria-hidden="true"><svg viewBox="0 0 300 400" focusable="false">'+cells+'</svg></div>';
- var blocks='<ol class="aq-pipe-collage__blocks" role="list">'+R.map(function(r,i){var k=K[i],S=PC_SLOT[k],th=S&&used[k]?'<span class="aq-pipe-collage__thumb" data-theme="light" aria-hidden="true"><svg viewBox="0 0 '+S[2]*100+' '+S[3]*100+'" focusable="false">'+pcPiece(k)+'</svg></span>':'';
-  var f=function(j,cls){var c=r[j];if(c==null||c==='')return '';return '<p class="'+cls+'"><span class="aq-pipe-collage__k">'+tx(C[j]||'')+'</span> '+tcell(c)+'</p>'};
-  return fli('<li class="aq-pipe-collage__block" data-pc="'+i+'">',b,i)+th
-   +idx(i)+'<div class="aq-pipe-collage__head"><h3 class="aq-pipe-collage__std">'+tcell(r[0])+'</h3></div>'
-   +'<p class="aq-pipe-collage__how">'+tcell(r[1])+'</p>'+f(2,'aq-pipe-collage__proof')+f(3,'aq-pipe-collage__go')+'</li>'}).join('')+'</ol>';
- return sec(H+'<div class="aq-pipe-collage">'+board+'<div class="aq-pipe-collage__text">'+wFold(b,R.length,blocks,b.fold_noun||'standards')+'</div></div>','aq-pipe-collage-sec')};
-function pcLight(bl,on){var w=bl&&bl.closest('.aq-pipe-collage');if(!w)return;var c=w.querySelector('.aq-pipe-collage__cell[data-pc="'+bl.getAttribute('data-pc')+'"]');
- if(c)c.classList.toggle('is-on',on);w.classList.toggle('is-focus',on&&!!c)}
-if(typeof document!=='undefined'&&document.addEventListener){
- ['mouseover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var x=ev.target.closest&&ev.target.closest('.aq-pipe-collage__block');if(x)pcLight(x,true)})});
- ['mouseout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var x=ev.target.closest&&ev.target.closest('.aq-pipe-collage__block');if(x&&!(ev.relatedTarget&&x.contains(ev.relatedTarget)))pcLight(x,false)})})}
 /* Look "plan-checker" -> PlanChecker (design-system/components/PlanChecker): service plans as a checker of square-cornered
    tiles on limestone, no table rules. One column per plan, alternating navy and limestone; each column is two tiles:
    the head (a huge light slash numeral "01/", the plan name, who it suits) and the terms (each value set first, its
@@ -4859,6 +4813,105 @@ LOOKS['site-tiles']=function(b,H){var I=b.items||[],num=function(i){return (i<9?
    +(go?'<p class="aq-site-tiles__go"><a href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+tx(it.link_label||wlabel(it.link))+'</a></p>':'')+'</li>'}).join('');
  return sec(H+'<ol class="aq-site-tiles" role="list" style="--n:'+I.length+'">'+li+'</ol>','aq-site-tiles-sec')};
 })();
+/* Look "skid-tags" -> SkidTags (design-system/components/SkidTags): an evidence table keyed to an elevation drawing of a
+   Purified Water skid (polypropylene pipework on a base frame: a pressure vessel, a pump, two pressure housings, the
+   product line out, a control panel). Numbered square tags stand round the drawing, a leader from each to the part its
+   standard governs; the table below carries the same numbers, so each row points at its part. Pointing at or focusing
+   a row, or choosing a tag, selects that standard: its tag and row light, its part turns flow and a crosshair ring
+   glides to it (atlas-hotspots, below). Pass 9b concept research/pass9b/concepts/compliance.4.png.
+   Fields, as a table: cols [standard, what we design to, proof, where we show it], rows (cells strings or {t, link}),
+   fold, fold_noun. New optional fields: parts, one per row: the drawn part its standard governs (vessel, panel, deadleg,
+   wall, joint; a row without one gets no tag); tag, the name of the number column and of the drawing's tag group.
+   The drawing is fixed (it names no standard); which row points at which part is data. Desktop shows every row; the
+   fold applies on phones, where a readout under the drawing shows the chosen row. */
+var ST_W=840,ST_H=420;
+/* each part: its anchor on the drawing (leader start, ring) and its tag (leader end) in viewBox units */
+var ST_PART={vessel:{a:[156,181],t:[24,181]},panel:{a:[688,152],t:[816,152]},deadleg:{a:[610,46],t:[610,14]},wall:{a:[720,100],t:[720,14]},joint:{a:[510,304],t:[510,406]}};
+var ST_CL={eq:'aq-skid-tags__eq',fn:'aq-skid-tags__fn',fl:'aq-skid-tags__fl',gr:'aq-skid-tags__gr',dim:'aq-skid-tags__dim',cut:'aq-skid-tags__cut',sec:'aq-skid-tags__sec',ld:'aq-skid-tags__ld',dot:'aq-skid-tags__dot'};
+function stR(x,y,w,h,c){return '<rect class="'+ST_CL[c||'eq']+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"/>'}
+function stP(d,c){return '<path class="'+ST_CL[c||'eq']+'" d="'+d+'"/>'}
+function stC(x,y,r,c){return '<circle class="'+ST_CL[c||'eq']+'" cx="'+x+'" cy="'+y+'" r="'+r+'"/>'}
+/* An orthogonal pipe run drawn as fitted pieces: straight lengths and elbow fittings (bend radius 2r), their joints
+   showing as lines across the pipe; the water as one flow centre line with the same bends. */
+function stPipe(pts,r){var R=2*r,body='',fl='M'+pts[0][0]+' '+pts[0][1],st=pts[0],n=pts.length,
+  seg=function(p,q){var x=Math.min(p[0],q[0]),y=Math.min(p[1],q[1]);if(p[1]===q[1])return stR(x,p[1]-r,Math.abs(q[0]-p[0]),2*r);return stR(p[0]-r,y,2*r,Math.abs(q[1]-p[1]))},
+  dir=function(p,q){return [Math.sign(q[0]-p[0]),Math.sign(q[1]-p[1])]},pt=function(p){return p[0]+' '+p[1]};
+ for(var i=1;i<n;i++){var P=pts[i];if(i<n-1){var a=dir(pts[i-1],P),b=dir(P,pts[i+1]),A=[P[0]-a[0]*R,P[1]-a[1]*R],B=[P[0]+b[0]*R,P[1]+b[1]*R],s=a[0]*b[1]-a[1]*b[0]>0?1:0;
+   body+=seg(st,A)+stP('M'+pt([A[0]-b[0]*r,A[1]-b[1]*r])+' A'+(R+r)+' '+(R+r)+' 0 0 '+s+' '+pt([B[0]+a[0]*r,B[1]+a[1]*r])+' L'+pt([B[0]-a[0]*r,B[1]-a[1]*r])+' A'+(R-r)+' '+(R-r)+' 0 0 '+(1-s)+' '+pt([A[0]+b[0]*r,A[1]+b[1]*r])+' Z');
+   fl+=' L'+pt(A)+' A'+R+' '+R+' 0 0 '+s+' '+pt(B);st=B}else{body+=seg(st,P);fl+=' L'+pt(P)}}
+ return {body:body,flow:stP(fl,'fl')}}
+function stDrawing(){var g=function(k,s){return '<g class="aq-skid-tags__part" data-part="'+k+'">'+s+'</g>'};
+ var A=stPipe([[212,258],[236,258],[236,300],[260,300]],6),B=stPipe([[280,280],[280,96],[480,96],[480,112]],6),C=stPipe([[430,288],[430,304],[540,304],[540,100],[800,100]],6);
+ var floor=stP('M30 362 H810','gr');
+ var frame=stR(72,32,696,8)+stR(72,40,8,290)+stR(760,40,8,290)+stR(72,330,696,14)+stP('M72 335 H768','fn')
+  +[84,412,748].map(function(x){return stR(x-5,344,10,12)+stR(x-10,356,20,6)}).join('');
+ var vessel=stR(134,282,6,48)+stR(200,282,6,48)+stR(167,104,6,16)+stC(170,96,9)+stP('M170 96 L175 91','fn')
+  +stP('M128 140 A42 20 0 0 1 212 140 V270 A42 20 0 0 1 128 270 Z')+stP('M128 140 H212 M128 270 H212','fn')
+  +stR(150,168,40,26,'fn')+stP('M156 177 H184 M156 185 H176','fn');
+ var pump=stR(256,320,120,10)+stR(300,288,6,24)+stR(306,282,60,36)+stP('M318 282 V318 M330 282 V318 M342 282 V318 M354 282 V318','fn')+stR(366,288,8,24)
+  +stC(280,300,20)+stC(280,300,7,'fn')+stR(272,276,16,4);
+ var house=[430,480].map(function(x){return stR(x-15,120,30,160)+stR(x-19,112,38,8)+stR(x-19,280,38,8)+stP('M'+(x-9)+' 124 V276','fn')}).join('')
+  +stR(424,102,12,10)+stR(474,288,12,10);
+ var deadleg=stR(604,74,12,20)+stR(598,60,24,16)+stR(603,50,14,10)+stR(594,44,32,6)+stR(622,63,22,10)+stP('M644 63 V73','fn')+stP('M622 68 H644','fl')
+  +stP('M610 94 V76','fl')+stP('M598 94 H580 M598 76 H580 M586 94 V76 M583 91 L589 97 M583 73 L589 79','dim')+'<text class="aq-skid-tags__lab" x="576" y="89" text-anchor="end">L</text>';
+ var wall=stR(690,92,60,16,'cut')+stR(690,94,60,2.5,'sec')+stR(690,103.5,60,2.5,'sec')+stP('M690 100 H750','fl')+stP('M690 90 L686 96 L694 104 L690 110 M750 90 L746 96 L754 104 L750 110','fn');
+ var joint=stP('M506 298 A4 4 0 0 1 514 298 Z M506 310 A4 4 0 0 0 514 310 Z')+stP('M510 298 V310','fn');
+ var panel=stR(588,322,134,8)+stR(590,130,130,192)+stP('M655 130 V322','fn')+stR(602,150,42,30,'fn')+stP('M606 172 L614 166 L620 169 L628 158 L634 162 L640 156','fl')
+  +stC(610,198,3.5,'fn')+stC(622,198,3.5,'fn')+stC(634,198,3.5,'fn')+stC(623,220,5,'fn')+stP('M623 220 L626 216','fn')+stR(659,220,4,20,'fn')
+  +stR(668,146,40,12,'fn')+stP('M668 290 H708 M668 296 H708 M668 302 H708','fn');
+ var out=stR(798,90,6,20)+stP('M772 96 L778 100 L772 104','fl');
+ var leads='';Object.keys(ST_PART).forEach(function(k){var p=ST_PART[k],a=p.a,t=p.t,h=a[1]===t[1],e2=h?[t[0]+(t[0]<a[0]?14:-14),t[1]]:[t[0],t[1]+(t[1]<a[1]?14:-14)];
+  leads+='<g class="aq-skid-tags__lead" data-part="'+k+'">'+stP('M'+a[0]+' '+a[1]+' L'+e2[0]+' '+e2[1],'ld')+stC(a[0],a[1],2.5,'dot')+'</g>'});
+ return {floor:floor+frame,eq:g('vessel',vessel)+pump+house+A.body+B.body+C.body+g('joint',joint)+g('deadleg',deadleg)+g('wall',wall)+g('panel',panel)+out,
+  flow:A.flow+B.flow+C.flow,leads:leads}}
+function stTxt(c){return String(c&&typeof c==='object'?c.t||'':c==null?'':c)}
+LOOKS['skid-tags']=function(b,H){var C=b.cols||[],R=b.rows||[],P=b.parts||[],K='aq-skid-tags',used={},tags='',D=stDrawing();
+ var num=function(i){return (i<9?'0':'')+(i+1)};
+ R.forEach(function(r,i){var k=P[i],p=ST_PART[k];if(!p||used[k])return;used[k]=1;
+  tags+='<button type="button" class="'+K+'__tag" data-k="'+i+'" data-part="'+k+'" aria-pressed="false" aria-label="'+num(i)+' '+e(stTxt(r[0]))+'" style="left:'+(p.t[0]/ST_W*100).toFixed(3)+'%;top:'+(p.t[1]/ST_H*100).toFixed(3)+'%"><span>'+num(i)+'</span></button>'});
+ /* only the parts some row points at keep their leader */
+ var leads=D.leads.replace(/<g class="aq-skid-tags__lead" data-part="([a-z]+)">.*?<\/g>/g,function(m,k){return used[k]?m:''});
+ var svg='<svg class="'+K+'__svg" viewBox="0 0 '+ST_W+' '+ST_H+'" aria-hidden="true" focusable="false"><g class="'+K+'__ground">'+D.floor+'</g><g class="'+K+'__plant">'+D.eq+'</g><g class="'+K+'__water">'+D.flow+'</g>'+leads+'</svg>';
+ var first=-1;R.forEach(function(r,i){if(first<0&&ST_PART[P[i]])first=i});
+ var fig='<div class="'+K+'__fig" role="group" aria-label="'+e(b.tag||C[0]||'')+'">'+svg+'<span class="'+K+'__crossbox" aria-hidden="true"><span class="'+K+'__cross"></span></span>'+tags+'</div>'
+  +'<p class="'+K+'__detail" aria-live="polite"></p>';
+ var head='<thead><tr><th scope="col" class="'+K+'__nh"><span class="'+K+'__vh">'+tx(b.tag||'')+'</span></th>'+C.slice(0,4).map(function(c){return '<th scope="col">'+tx(c)+'</th>'}).join('')+'</tr></thead>';
+ var body='<tbody>'+R.map(function(r,i){var k=P[i],has=!!(ST_PART[k]&&used[k]);
+  var cell=function(j,cls){var c=r[j];return '<td class="'+K+'__'+cls+'"><span class="'+K+'__k" aria-hidden="true">'+tx(C[j]||'')+'</span>'+(c==null?'':tcell(c))+'</td>'};
+  return fli('<tr class="'+K+'__row" data-k="'+i+'"'+(has?' data-part="'+k+'"':'')+'>',b,i)
+   +'<td class="'+K+'__n">'+(has?'<button type="button" class="'+K+'__num" data-k="'+i+'" aria-pressed="false" aria-label="'+num(i)+' '+e(stTxt(r[0]))+'"><span>'+num(i)+'</span></button>':'<span class="'+K+'__num-x" aria-hidden="true">'+num(i)+'</span>')+'</td>'
+   +'<th scope="row" class="'+K+'__std">'+tcell(r[0])+'</th>'+cell(1,'how')+cell(2,'proof')+cell(3,'go')+'</tr>'}).join('')+'</tbody>';
+ var table='<table class="'+K+'__table">'+head+body+'</table>';
+ return sec('<div class="'+K+'" data-first="'+first+'"><div class="'+K+'__top">'+H+'<div class="'+K+'__stage">'+fig+'</div></div>'
+  +wFold(b,R.length,table,b.fold_noun||'standards')+'</div>','aq-band--limestone '+K+'-sec" data-theme="light')};
+
+// Ported from Subframe Motion "Inside the image" (atlas-hotspots), MIT, (c) 2026 Subframe
+/* One selection shared by the drawing's tags and the table's rows (the library's pins and index): choosing a tag or a
+   row number, pointing at a row or focusing into it selects that standard; its tag and number turn pressed (112 %,
+   180 ms), its part and leader turn flow, and the crosshair ring glides to the part (a full-size layer translated to
+   the anchor's percentages, 250 ms cubic-bezier(.2,.8,.2,1), CSS, so it is instant under reduced motion). Arrow keys,
+   Home and End step through the tags (or the row numbers) and select as they go. The selection stays until another is
+   made; the first tagged row starts selected. The readout (aria-live) names the chosen row. */
+function stPick(w,k){if(!w)return;var s=String(k);if(w.getAttribute('data-k')===s)return;
+ var row=w.querySelector('.aq-skid-tags__row[data-k="'+s+'"]'),part=row&&row.getAttribute('data-part'),p=part&&ST_PART[part];if(!p)return;
+ w.setAttribute('data-k',s);
+ [].forEach.call(w.querySelectorAll('[data-k]'),function(x){if(x===w)return;var on=x.getAttribute('data-k')===s;x.classList.toggle('is-on',on);if(x.hasAttribute('aria-pressed'))x.setAttribute('aria-pressed',on?'true':'false')});
+ [].forEach.call(w.querySelectorAll('.aq-skid-tags__part, .aq-skid-tags__lead'),function(x){x.classList.toggle('is-on',x.getAttribute('data-part')===part)});
+ var cr=w.querySelector('.aq-skid-tags__cross');if(cr){cr.style.setProperty('--cx',(p.a[0]/ST_W*100).toFixed(3)+'%');cr.style.setProperty('--cy',(p.a[1]/ST_H*100).toFixed(3)+'%');cr.classList.add('is-on')}
+ var d=w.querySelector('.aq-skid-tags__detail'),c=row.children;
+ if(d&&c[2]){var how=c[2].cloneNode(true),kk=how.querySelector('.aq-skid-tags__k');if(kk)kk.remove();
+  d.innerHTML='<span class="aq-skid-tags__dn" aria-hidden="true">'+e(c[0].textContent)+'</span><span class="aq-skid-tags__ds">'+c[1].innerHTML+'</span><span class="aq-skid-tags__dh">'+how.innerHTML+'</span>'}}
+function stInit(root){[].forEach.call((root||document).querySelectorAll('.aq-skid-tags:not([data-k])'),function(w){var f=+w.getAttribute('data-first');if(f>=0)stPick(w,f)})}
+if(typeof document!=='undefined'&&document.addEventListener){
+ var stObs=typeof MutationObserver!=='undefined'&&new MutationObserver(function(){if(document.querySelector('.aq-skid-tags:not([data-k])'))stInit()});
+ if(stObs)stObs.observe(document.documentElement,{childList:true,subtree:true});
+ document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-skid-tags__tag, .aq-skid-tags__num');if(t)stPick(t.closest('.aq-skid-tags'),t.getAttribute('data-k'))});
+ ['pointerover','focusin'].forEach(function(n){document.addEventListener(n,function(ev){if(n==='pointerover'&&ev.pointerType&&ev.pointerType!=='mouse')return;
+  var r=ev.target.closest&&ev.target.closest('.aq-skid-tags__row[data-part]');if(r)stPick(r.closest('.aq-skid-tags'),r.getAttribute('data-k'))})});
+ document.addEventListener('keydown',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-skid-tags__tag, .aq-skid-tags__num');if(!t||['ArrowDown','ArrowUp','ArrowLeft','ArrowRight','Home','End'].indexOf(ev.key)<0)return;
+  var w=t.closest('.aq-skid-tags'),L=[].filter.call(w.querySelectorAll(t.classList.contains('aq-skid-tags__tag')?'.aq-skid-tags__tag':'.aq-skid-tags__num'),function(x){return x.offsetParent}),i=L.indexOf(t),n=L.length;if(!n)return;
+  ev.preventDefault();var j=ev.key==='Home'?0:ev.key==='End'?n-1:(i+(ev.key==='ArrowDown'||ev.key==='ArrowRight'?1:n-1))%n;stPick(w,L[j].getAttribute('data-k'));L[j].focus()});
+}
 /* Look "spare-sheet" -> SpareSheet (design-system/components/SpareSheet): like for like, or a change, read off a
    limestone drawing sheet. The sheet has a double border and a title block; the title and intro sit top left, and top
    right one spare is drawn large as a dimensioned part drawing (centre line, overall dimensions A and B with extension
