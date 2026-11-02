@@ -1,31 +1,31 @@
-/* RevisionRegister: the sheet is laid on the board, then the register is written up. The limestone sheet rises onto
-   the navy (clip from the bottom), the title strip's rule draws across and the topic tabs drop in; the lead note's
-   number decodes, its revision triangle strikes, the quotation rises line by line; then each visible register line
-   is ruled in left to right, its number decoding. Once, under 3.5 s. Filtering rows glide (Flip, in the renderer). */
+/* RevisionRegister: the sheet is drawn, then its notes are written down the column. The navy frame rules round the
+   sheet (clip from the top-left), the column's rule drops, the topic tabs drop in, the lead's triangle strikes and its
+   quotation rises line by line; each visible note is then written in order: its number decodes and its line rules in
+   left to right; the drawing plate prints from the bottom and the title block's cells appear. Once, under 3.5 s.
+   Filtering glides (filter-mosaic, in the renderer); the drawing follows the note in hand (project-index, CSS). */
 AQmotion.fx('RevisionRegister', function (root, m) {
   root.querySelectorAll('.aq-revision-register').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
-    var q = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) };
+    var q = function (s, r) { return [].slice.call((r || el).querySelectorAll(s)) }, P = '.aq-revision-register__';
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    tl.fromTo(el, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, 0)
-      .from(q('.aq-revision-register__tab'), { y: -10, autoAlpha: 0, duration: 0.4, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.45)
-      .from(q('.aq-revision-register__count, .aq-revision-register__lk'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0.6);
-    var big = el.querySelector('.aq-revision-register__bign');
-    if (big) {
-      tl.from(big, { yPercent: 40, autoAlpha: 0, duration: 0.7, clearProps: 'transform,opacity,visibility' }, 0.6);
-      if (window.ScrambleTextPlugin) tl.to(big, { duration: 0.7, scrambleText: { text: big.textContent, chars: '0123456789', speed: 0.6 }, ease: 'none' }, 0.6);
-    }
-    var tri = el.querySelector('.aq-revision-register__big .aq-revision-register__tri');
-    if (tri) tl.from(tri, { scale: 1.8, autoAlpha: 0, transformOrigin: '50% 50%', duration: 0.35, ease: 'power4.in', clearProps: 'transform,opacity,visibility' }, 1.1);
-    var qp = el.querySelector('.aq-revision-register__q p'), sp = qp && m.split(qp, { type: 'lines', mask: 'lines' });
-    if (sp && sp.lines.length) tl.from(sp.lines, { yPercent: 105, duration: 0.7, stagger: 0.08, ease: 'power4.out' }, 0.9);
-    var rest = q('.aq-revision-register__lt, .aq-revision-register__lstd, .aq-revision-register__go, .aq-revision-register__fig'); if (rest.length) tl.from(rest, { y: 10, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, 1.2);
-    var rows = q('.aq-revision-register__row').filter(function (r) { return r.offsetParent !== null });
-    tl.from(q('thead th'), { autoAlpha: 0, duration: 0.4, stagger: 0.04, clearProps: 'opacity,visibility' }, 0.8);
-    rows.forEach(function (r, i) {
-      var at = 0.95 + i * 0.1;
-      tl.fromTo(r, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.55, ease: 'power2.inOut', clearProps: 'clipPath' }, at);
+    tl.fromTo(el, { clipPath: 'inset(0 100% 100% 0)' }, { clipPath: 'inset(0 0% 0% 0)', duration: 0.8, ease: 'power3.inOut', clearProps: 'clipPath' }, 0);
+    var col = el.querySelector(P + 'col');
+    if (col) tl.fromTo(col, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.9, ease: 'power2.inOut', clearProps: 'clipPath' }, 0.35);
+    tl.from(q(P + 'tab'), { y: -8, autoAlpha: 0, duration: 0.35, stagger: 0.05, clearProps: 'transform,opacity,visibility' }, 0.5);
+    var tri = el.querySelector(P + 'lk ' + P + 'tri');
+    if (tri) tl.from(tri, { scale: 1.8, autoAlpha: 0, transformOrigin: '50% 50%', duration: 0.35, ease: 'power4.in', clearProps: 'transform,opacity,visibility' }, 0.7);
+    var qp = el.querySelector(P + 'q p'), sp = qp && m.split(qp, { type: 'lines', mask: 'lines' });
+    if (sp && sp.lines.length) tl.from(sp.lines, { yPercent: 105, duration: 0.7, stagger: 0.08, ease: 'power4.out' }, 0.75);
+    var rest = q(P + 'lk span, ' + P + 'lt, ' + P + 'lstd, ' + P + 'go');
+    if (rest.length) tl.from(rest, { y: 8, autoAlpha: 0, duration: 0.45, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.85);
+    q(P + 'note').filter(function (r) { return r.offsetParent !== null }).forEach(function (r, i) {
+      var at = 0.8 + i * 0.16, no = r.querySelector(P + 'no');
+      tl.fromTo(r.querySelector(P + 'nb'), { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.55, ease: 'power2.inOut', clearProps: 'clipPath' }, at);
+      if (no && window.ScrambleTextPlugin) { var t = no.firstChild && no.firstChild.nodeType === 3 ? no.firstChild : null; if (t) { var v = t.nodeValue; tl.to({}, { duration: 0.4, onUpdate: function () { var p = this.progress(); t.nodeValue = p < 1 ? v.replace(/\d/g, function () { return Math.floor(Math.random() * 10) }) : v }, onComplete: function () { t.nodeValue = v } }, at) } }
     });
+    var dw = el.querySelector(P + 'fig');
+    if (dw && dw.offsetParent) tl.fromTo(dw, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 0.8, ease: 'power3.out', clearProps: 'clipPath' }, 1.1);
+    tl.from(q(P + 'tb > *'), { autoAlpha: 0, duration: 0.4, stagger: 0.08, clearProps: 'opacity,visibility' }, 1.3);
     m.on(el, function () { tl.play() }, 'top 78%');
   });
 });

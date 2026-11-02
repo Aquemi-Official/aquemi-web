@@ -4166,44 +4166,61 @@ a.aq-hero__index-item:focus-visible { outline: 2px solid var(--focus); outline-o
   .aq-hero--home > .aq-fx-shader { -webkit-mask-image: radial-gradient(ellipse 75% 22% at 50% 58%, var(--ink) 20%, transparent 100%); mask-image: radial-gradient(ellipse 75% 22% at 50% 58%, var(--ink) 20%, transparent 100%); }
 }
 
-/* ---------- HirePath: the steps into a role as one path, each step a huge light outline numeral standing on the track ---------- */
+/* ---------- HirePath: how we hire as one drawing sheet, the test joint as the plate and the steps on a slim vertical rail ---------- */
 .aq-hire-path-sec { }
-.aq-hire-path { --hp-num: 168px; --hp-y: calc(var(--hp-num, 168px) * 0.78); position: relative; margin-top: var(--space-8); }
-.aq-hire-path__track { position: absolute; left: 0; right: calc(var(--space-6) * -1); top: var(--hp-y, 131px); height: 1px; background: var(--line-strong); }
-.aq-hire-path__track::after { content: ""; position: absolute; right: 0; top: calc(var(--space-2) / -2 + 0.5px); width: var(--space-2); height: var(--space-2); border-top: 1px solid var(--line-strong); border-right: 1px solid var(--line-strong); transform: rotate(45deg); }
-/* the walked path: at rest the water fills the track to the last step and every gate's node is filled */
-.aq-hire-path__water { position: absolute; inset: 0 var(--space-6) 0 0; background: var(--flow); height: 2px; top: -0.5px; transform-origin: 0 50%; }
-.aq-hire-path__steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); column-gap: var(--space-8); }
-.aq-hire-path__step { position: relative; min-width: 0; display: flex; flex-direction: column; gap: var(--space-3); }
-.aq-hire-path__gate { position: relative; display: block; height: calc(var(--hp-y, 131px) + var(--space-8)); }
-.aq-hire-path__num { position: absolute; left: calc(var(--space-2) * -1); bottom: var(--space-8); display: block; font: 300 var(--hp-num, 168px)/0.78 var(--font-sans); letter-spacing: -0.06em;
-  /* a pale solid fill, not an outline: Geist's overlapping contours show through a text stroke at this size */
-  color: color-mix(in srgb, var(--ink) 13%, transparent); font-variant-numeric: tabular-nums; transition: color 400ms; }
-.aq-hire-path__step:hover .aq-hire-path__num, .aq-hire-path__num.is-wet { color: color-mix(in srgb, var(--flow) 50%, transparent); }
-.aq-hire-path__node { position: absolute; left: 0; top: calc(var(--hp-y, 131px) - var(--space-2) + 0.5px); width: var(--space-4); height: var(--space-4); background: var(--flow); border: 1px solid var(--flow); transition: background-color 300ms, border-color 300ms; }
-/* before the walk (motion only): nodes wait empty until the water reaches them */
-.aq-hire-path.is-pre .aq-hire-path__node:not(.is-wet) { background: var(--surface); border-color: var(--ink); }
-.aq-section--alt .aq-hire-path.is-pre .aq-hire-path__node:not(.is-wet) { background: var(--surface-sunken); }
-.aq-hire-path__t { margin: 0; font: 400 22px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
-.aq-hire-path__d { margin: 0; font: 400 16px/26px var(--font-sans); color: var(--ink-muted); max-width: 32ch; }
+.aq-hire-path { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); column-gap: var(--space-12); padding: var(--space-12);
+  border: 1px solid var(--line-strong); }
+.aq-hire-path__main { min-width: 0; display: flex; flex-direction: column; gap: var(--space-8); }
+.aq-hire-path__main .aq-sec-head { margin: 0; }
+.aq-hire-path__fig { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-hire-path__plate { position: relative; aspect-ratio: 8 / 5; background: var(--navy); overflow: hidden; }
+.aq-hire-path__svg { display: block; width: 100%; height: 100%; }
+/* duotone planes: a limestone pipe on the navy, its lit band and its shade band */
+.aq-hire-path__ground { fill: var(--navy); }
+.aq-hire-path__pb { fill: color-mix(in srgb, var(--limestone) 84%, var(--navy)); }
+.aq-hire-path__ph { fill: var(--limestone); }
+.aq-hire-path__ps { fill: color-mix(in srgb, var(--limestone) 58%, var(--navy)); }
+.aq-hire-path__po { fill: none; stroke: color-mix(in srgb, var(--limestone) 40%, var(--navy)); stroke-width: 1.5px; }
+.aq-hire-path__jz { fill: none; stroke: var(--navy); stroke-width: 1.5px; stroke-dasharray: 5 4; }
+.aq-hire-path__jl { fill: none; stroke: var(--navy); stroke-width: 1px; }
+.aq-hire-path__dl { fill: none; stroke: var(--on-navy); stroke-width: 1.2px; stroke-linecap: round; }
+.aq-hire-path__lbl text { fill: var(--on-navy); font: 400 16px var(--font-mono); letter-spacing: 0.04em; }
+.aq-hire-path .aq-hire-path__cap { margin: 0; font: 400 12px/18px var(--font-mono); color: var(--ink-muted); }
+
+/* the rail: one slim line down the steps, a gate tick at each */
+.aq-hire-path__side { position: relative; min-width: 0; padding-top: var(--space-2); }
+.aq-hire-path__steps { position: relative; list-style: none; margin: 0; padding: 0 0 0 var(--space-8); display: flex; flex-direction: column; gap: var(--space-8); }
+.aq-hire-path__steps::before { content: ""; position: absolute; left: var(--space-2); top: var(--space-3); bottom: var(--space-2); width: 2px; background: var(--flow); }
+.aq-hire-path__step { position: relative; min-width: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-hire-path__gate { position: absolute; left: calc(var(--space-8) * -1 + var(--space-1)); top: var(--space-2); width: var(--space-3); height: var(--space-3);
+  background: var(--flow); border: 2px solid var(--flow); transition: background-color 200ms, border-color 200ms; }
+.aq-hire-path .aq-hire-path__n { margin: 0; font: 400 24px/32px var(--font-mono); color: var(--flow); font-variant-numeric: tabular-nums; transition: color 200ms; }
+.aq-hire-path__t { margin: 0; font: 400 20px/28px var(--font-sans); letter-spacing: -0.01em; color: var(--ink); }
+.aq-hire-path__d { margin: 0; font: 400 15px/24px var(--font-sans); color: var(--ink-muted); }
 .aq-hire-path .aq-hire-path__icons { margin: var(--space-2) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-2); }
-.aq-hire-path__ic { display: grid; place-items: center; width: var(--space-12); height: var(--space-12); border: 1px solid var(--line); color: var(--ink-muted); background: var(--surface-raised); }
-.aq-hire-path__ic .aq-icon { width: var(--space-6); height: var(--space-6); }
+.aq-hire-path__ic { display: grid; place-items: center; width: var(--space-8); height: var(--space-8); border: 1px solid var(--line); color: var(--ink-muted); background: var(--surface-raised); }
+.aq-hire-path__ic .aq-icon { width: var(--space-4); height: var(--space-4); }
+/* the playhead: shown only while motion walks it */
+.aq-hire-path__head { position: absolute; left: calc(var(--space-2) - var(--space-2) + 1px); top: 0; width: var(--space-4); height: 2px; background: var(--ink); display: none; }
+.aq-hire-path__head::after { content: ""; position: absolute; left: 100%; top: calc(var(--space-1) * -1 + 1px); border: var(--space-1) solid transparent; border-left-color: var(--ink); }
+.aq-hire-path.is-walk .aq-hire-path__head, .aq-hire-path.is-seek .aq-hire-path__head { display: block; }
+/* before the walk (motion only): the rail is dry and the gates empty until the head passes */
+.aq-hire-path.is-walk .aq-hire-path__steps::before { background: var(--line-strong); }
+.aq-hire-path.is-walk .aq-hire-path__step:not(.is-on) .aq-hire-path__gate { background: transparent; border-color: var(--line-strong); }
+.aq-hire-path.is-walk .aq-hire-path__step:not(.is-on) .aq-hire-path__n { color: var(--ink-muted); }
+.aq-hire-path__step:hover .aq-hire-path__gate { background: var(--ink); border-color: var(--ink); }
 
 @container (max-width: 1100px) {
-  .aq-hire-path { --hp-num: 120px; }
-  .aq-hire-path__steps { column-gap: var(--space-6); }
+  .aq-hire-path { padding: var(--space-8); column-gap: var(--space-8); grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
 }
-/* Phones: the track runs down the left edge, each step's numeral beside its node */
+/* Phones: the plate full width under the title, the rail below it */
 @container (max-width: 860px) {
-  .aq-hire-path { --hp-num: 72px; margin-top: var(--space-4); padding-left: var(--space-8); }
-  .aq-hire-path__track { left: var(--space-2); right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
-  .aq-hire-path__track::after { right: auto; top: auto; bottom: 0; left: calc(var(--space-2) / -2 + 0.5px); transform: rotate(135deg); }
-  .aq-hire-path__water { inset: 0 0 var(--space-8) 0; width: 2px; height: auto; left: -0.5px; transform-origin: 50% 0; }
-  .aq-hire-path__steps { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); }
-  .aq-hire-path__gate { height: calc(var(--hp-num, 168px) * 0.78); }
-  .aq-hire-path__num { left: 0; bottom: 0; }
-  .aq-hire-path__node { left: calc(var(--space-8) * -1 + var(--space-2) - var(--space-3) / 2); top: var(--space-6); width: var(--space-3); height: var(--space-3); }
+  .aq-hire-path { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-8); padding: var(--space-6) var(--space-4); }
+  .aq-hire-path__main { gap: var(--space-6); }
+  /* the whole sheet stays in view; drawing labels drawn larger so they read at 12 px or more */
+  .aq-hire-path__lbl text { font-size: 24px; }
+  .aq-hire-path .aq-hire-path__n { font-size: 20px; line-height: 28px; }
+  .aq-hire-path__t { font-size: 18px; line-height: 26px; }
 }
 
 /* ---------- HmiTrend: alarm lines shown as the operator panel's own screen (look "hmi-trend") ---------- */
@@ -8135,91 +8152,103 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
   .aq-review-reticles__d { grid-column: 2; grid-row: 3; font-size: 14px; line-height: 20px; }
 }
 
-/* ---------- RevisionRegister: technical notes as a drawing office's revision register, on a limestone sheet over navy ---------- */
+/* ---------- RevisionRegister: technical notes as the numbered notes column of one limestone drawing sheet ---------- */
 .aq-revision-register-sec { }
-.aq-revision-register__spot { display: block; }
-.aq-revision-register { margin-top: var(--space-4); background: var(--limestone); color: var(--on-limestone); border: 1px solid var(--limestone); }
-.aq-revision-register__strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3) var(--space-6);
-  padding: var(--space-3) var(--space-6); border-bottom: 2px solid var(--navy); }
-.aq-revision-register__tabs { display: flex; flex-wrap: wrap; gap: 0; }
-.aq-revision-register__tab { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--space-12); padding: 0 var(--space-4); margin: 0; cursor: pointer;
-  background: none; border: 0; border-right: 1px solid color-mix(in srgb, var(--navy) 22%, transparent); color: var(--on-limestone); font: 500 14px/20px var(--font-sans); transition: background-color 200ms, color 200ms; }
-.aq-revision-register__tab:first-child { border-left: 1px solid color-mix(in srgb, var(--navy) 22%, transparent); }
-.aq-revision-register__tab span { font: 400 12px/1 var(--font-mono); color: var(--on-limestone-muted); }
-.aq-revision-register__tab:hover { background: color-mix(in srgb, var(--navy) 8%, transparent); }
-.aq-revision-register__tab[aria-pressed="true"] { background: var(--navy); color: var(--limestone); }
-.aq-revision-register__tab[aria-pressed="true"] span { color: var(--limestone); }
-.aq-revision-register__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
-.aq-revision-register__count { margin: 0; font: 400 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-limestone-muted); }
-
-.aq-revision-register__body { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
-/* the lead note: an editorial page in the left field */
-.aq-revision-register__lead { position: relative; display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-8) var(--space-6) var(--space-8);
-  border-right: 1px solid color-mix(in srgb, var(--navy) 22%, transparent); overflow: hidden; }
-.aq-revision-register__lk { margin: 0; display: flex; gap: var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
-.aq-revision-register__big { margin: 0; display: flex; align-items: flex-start; gap: var(--space-3); color: var(--navy); }
-.aq-revision-register__bign { font: 300 120px/96px var(--font-sans); letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
-.aq-revision-register__tri { flex: none; width: var(--space-6); height: var(--space-6); }
+.aq-revision-register { position: relative; margin-top: var(--space-2); padding: var(--space-12) var(--space-12) 0; background: var(--limestone); color: var(--on-limestone);
+  border: 1px solid var(--navy); }
+.aq-revision-register__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 5fr); column-gap: var(--space-8); align-items: start; }
+.aq-revision-register__left { min-width: 0; display: flex; flex-direction: column; gap: var(--space-8); }
+.aq-revision-register__left .aq-sec-head { margin: 0; }
+.aq-revision-register .aq-sec-head .aq-h1 { font-size: 64px; line-height: 68px; font-weight: 300; letter-spacing: -0.03em; color: var(--on-limestone); }
+.aq-revision-register .aq-sec-head .aq-lead { color: var(--on-limestone-muted); }
+/* the lead note, as the sheet's general note under the title */
+.aq-revision-register__lead { display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-6); border-top: 1px solid var(--navy); }
+.aq-revision-register .aq-revision-register__lk { margin: 0; display: flex; align-items: center; gap: var(--space-3); font: 500 12px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
+.aq-revision-register__tri { flex: none; width: var(--space-4); height: var(--space-4); }
 .aq-revision-register__tri path { fill: none; stroke: var(--flow); stroke-width: 1.5px; stroke-linejoin: round; }
 .aq-revision-register__q { margin: 0; padding-left: var(--space-4); border-left: 2px solid var(--flow); }
 .aq-revision-register__q p { margin: 0; font: 300 24px/32px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); text-wrap: pretty; }
 .aq-revision-register__q p::before { content: "“"; }
 .aq-revision-register__q p::after { content: "”"; }
 .aq-revision-register__lt { margin: 0; font: 500 16px/24px var(--font-sans); color: var(--on-limestone); }
-.aq-revision-register__lstd { margin: 0; font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
-.aq-revision-register__fig { position: absolute; right: var(--space-4); top: var(--space-12); opacity: 0.32; pointer-events: none; }
-.aq-revision-register__fig .aq-spot { color: var(--navy); }
-.aq-revision-register .aq-revision-register__go { position: relative; margin: auto 0 0; padding-top: var(--space-4); font: 400 14px/22px var(--font-sans); color: var(--on-limestone-muted); }
+.aq-revision-register .aq-revision-register__lstd { margin: 0; font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-revision-register .aq-revision-register__go { margin: 0; font: 400 14px/22px var(--font-sans); color: var(--on-limestone-muted); }
 .aq-revision-register a { color: var(--flow); text-decoration-color: color-mix(in srgb, var(--flow) 40%, transparent); text-underline-offset: 3px; }
 .aq-revision-register a:hover { text-decoration-color: currentColor; }
 .aq-revision-register a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
-/* the register: ruled lines */
-.aq-revision-register__reg { min-width: 0; padding: var(--space-2) var(--space-6) var(--space-6); }
-.aq-revision-register__table { width: 100%; border-collapse: collapse; }
-.aq-revision-register__table thead th { padding: var(--space-3) var(--space-2); text-align: left; font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--on-limestone-muted); border-bottom: 1px solid var(--navy); }
-.aq-revision-register__row td, .aq-revision-register__row th { padding: var(--space-3) var(--space-2); vertical-align: baseline; text-align: left; border-bottom: 1px solid color-mix(in srgb, var(--navy) 16%, transparent); }
-.aq-revision-register__row { transition: background-color 200ms; }
-.aq-revision-register__row:hover { background: color-mix(in srgb, var(--navy) 6%, transparent); }
-.aq-revision-register__row:hover .aq-revision-register__no { color: var(--flow); }
-.aq-revision-register__st, .aq-revision-register__no, .aq-revision-register__topic, .aq-revision-register__std { font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
-.aq-revision-register__st { white-space: nowrap; width: 1%; }
+/* the drawing plate between title and notes: faint, it follows the note in hand */
+.aq-revision-register__fig { position: sticky; top: var(--space-24); align-self: start; aspect-ratio: 3 / 4; margin-top: var(--space-16); }
+.aq-revision-register__frame { position: absolute; inset: 0; border: 1px solid color-mix(in srgb, var(--navy) 22%, transparent); }
+/* registration marks at the plate's corners */
+.aq-revision-register__frame::before, .aq-revision-register__frame::after { content: ""; position: absolute; width: var(--space-4); height: var(--space-4); border: 0 solid var(--navy); }
+.aq-revision-register__frame::before { left: calc(var(--space-2) * -1); top: calc(var(--space-2) * -1); border-width: 1px 0 0 1px; }
+.aq-revision-register__frame::after { right: calc(var(--space-2) * -1); bottom: calc(var(--space-2) * -1); border-width: 0 1px 1px 0; }
+.aq-revision-register__dw { position: absolute; inset: var(--space-8) var(--space-6) var(--space-16); display: none; place-items: center; }
+.aq-revision-register__dw.is-on { display: grid; animation: aq-rr-dw 240ms cubic-bezier(.2, .85, .25, 1); }
+@keyframes aq-rr-dw { from { opacity: 0; transform: translateY(var(--space-2)); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .aq-revision-register__dw.is-on { animation: none; } }
+.aq-revision-register__spot { display: block; width: 100%; height: auto; aspect-ratio: 1; max-width: calc(var(--space-32) * 1.4); color: color-mix(in srgb, var(--navy) 55%, transparent); }
+.aq-revision-register__figcap { position: absolute; left: var(--space-3); right: var(--space-3); bottom: var(--space-3); display: grid; }
+.aq-revision-register__figcap span { display: none; font: 400 12px/16px var(--font-mono); color: var(--on-limestone-muted); }
+.aq-revision-register__figcap span.is-on { display: block; }
+
+/* the notes column: a hairline rule, the topic filter, then the numbered notes in mono */
+.aq-revision-register__col { min-width: 0; padding-left: var(--space-6); border-left: 2px solid var(--navy); }
+.aq-revision-register__strip { margin-bottom: var(--space-4); }
+.aq-revision-register__tabs { display: flex; flex-wrap: wrap; gap: 0; }
+.aq-revision-register__tab { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--space-12); padding: 0 var(--space-3); margin: 0 -1px -1px 0; cursor: pointer;
+  background: none; border: 1px solid color-mix(in srgb, var(--navy) 26%, transparent); color: var(--on-limestone); font: 500 13px/18px var(--font-sans); transition: background-color 200ms, color 200ms; }
+.aq-revision-register__tab span { font: 400 12px/1 var(--font-mono); color: var(--on-limestone-muted); }
+.aq-revision-register__tab:hover { background: color-mix(in srgb, var(--navy) 8%, transparent); }
+.aq-revision-register__tab[aria-pressed="true"] { background: var(--navy); color: var(--limestone); border-color: var(--navy); }
+.aq-revision-register__tab[aria-pressed="true"] span { color: var(--limestone); }
+.aq-revision-register__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; position: relative; z-index: 1; }
+.aq-revision-register__notes { list-style: none; margin: 0; padding: 0; }
+.aq-revision-register__note { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); padding: var(--space-3) 0; border-bottom: 1px solid color-mix(in srgb, var(--navy) 14%, transparent); }
+.aq-revision-register__note[hidden] { display: none; }
+.aq-revision-register__no { display: flex; align-items: flex-start; gap: var(--space-1); font: 400 14px/22px var(--font-mono); color: var(--on-limestone-muted); font-variant-numeric: tabular-nums; transition: color 200ms; }
+.aq-revision-register__no .aq-revision-register__tri { width: var(--space-3); height: var(--space-3); margin-top: var(--space-1); }
+.aq-revision-register__note.is-pick .aq-revision-register__no { color: var(--on-limestone); }
+.aq-revision-register__nb { min-width: 0; }
+.aq-revision-register__nt { margin: 0; font: 400 14px/22px var(--font-mono); color: var(--on-limestone); }
+.aq-revision-register__note.is-lead .aq-revision-register__nt { font-weight: 500; }
+.aq-revision-register .aq-revision-register__meta { margin: var(--space-1) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); font: 400 12px/18px var(--font-mono); color: var(--on-limestone-muted); }
 .aq-revision-register__planned { padding: 0 var(--space-1); border: 1px dashed color-mix(in srgb, var(--navy) 45%, transparent); }
-.aq-revision-register__no { white-space: nowrap; width: 1%; font-variant-numeric: tabular-nums; }
-.aq-revision-register__no .aq-revision-register__tri { width: var(--space-3); height: var(--space-3); margin-right: var(--space-1); vertical-align: -1px; }
-.aq-revision-register__topic { white-space: nowrap; width: 1%; }
-.aq-revision-register__t { font: 400 15px/22px var(--font-sans); color: var(--on-limestone); }
-.aq-revision-register__std { width: 26%; }
-.aq-revision-register__row.is-lead .aq-revision-register__t { font-weight: 500; }
-.aq-band--navy .aq-revision-register .aq-fold__btn { color: var(--on-limestone-muted); }
-.aq-band--navy .aq-revision-register .aq-fold__btn:hover { color: var(--on-limestone); }
-.aq-revision-register .aq-fold.is-filtered .aq-fold-x { display: table-row; }
-.aq-revision-register .aq-fold.is-filtered .aq-fold-x[hidden], .aq-revision-register tr[hidden] { display: none; }
+.aq-revision-register .aq-fold__btn { color: var(--on-limestone-muted); margin-top: var(--space-3); }
+.aq-revision-register .aq-fold__btn:hover { color: var(--on-limestone); }
+.aq-revision-register .aq-fold.is-filtered .aq-fold-x { display: grid; }
+.aq-revision-register .aq-fold.is-filtered .aq-fold-x[hidden] { display: none; }
 .aq-revision-register .aq-fold.is-filtered .aq-fold__btn { display: none; }
 
+/* the title block, bottom right, with the live count */
+.aq-revision-register__tb { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; margin: var(--space-12) calc(var(--space-12) * -1) 0 auto; width: min(100% + var(--space-12), calc(var(--space-32) * 4));
+  border-top: 1px solid var(--navy); border-left: 1px solid var(--navy); }
+.aq-revision-register__tb > * { margin: 0; padding: var(--space-3) var(--space-4); font: 400 12px/18px var(--font-mono); color: var(--on-limestone); }
+.aq-revision-register__tb > * + * { border-left: 1px solid var(--navy); }
+.aq-revision-register__tb > :first-child { font: 500 14px/18px var(--font-sans); }
+.aq-revision-register .aq-revision-register__count { color: var(--on-limestone-muted); }
+
 @container (max-width: 1100px) {
-  .aq-revision-register__body { grid-template-columns: minmax(0, 1fr); }
-  .aq-revision-register__lead { border-right: 0; border-bottom: 1px solid color-mix(in srgb, var(--navy) 22%, transparent); }
-}
-/* Phones: the lead note first, each register line on two rows (title; then number, topic, status, standard) */
-@container (max-width: 860px) {
-  .aq-revision-register__strip { padding: var(--space-2) var(--space-3); }
-  .aq-revision-register__tab { padding: 0 var(--space-3); font-size: 13px; }
-  .aq-revision-register__lead { padding: var(--space-6) var(--space-4); }
-  .aq-revision-register__bign { font-size: 80px; line-height: 68px; }
-  .aq-revision-register__q p { font-size: 20px; line-height: 28px; }
+  .aq-revision-register { padding: var(--space-8) var(--space-8) 0; }
+  .aq-revision-register__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); row-gap: var(--space-8); }
   .aq-revision-register__fig { display: none; }
-  .aq-revision-register__reg { padding: 0 var(--space-4) var(--space-4); }
-  .aq-revision-register__table thead { display: none; }
-  .aq-revision-register__row { display: grid; grid-template-columns: auto auto minmax(0, 1fr); column-gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid color-mix(in srgb, var(--navy) 16%, transparent); }
-  .aq-revision-register .aq-fold.is-filtered .aq-fold-x { display: grid; }
-  .aq-revision-register__row td, .aq-revision-register__row th { padding: 0; border: 0; width: auto; }
-  .aq-revision-register__t { grid-column: 1 / -1; grid-row: 1; margin-bottom: var(--space-1); }
-  .aq-revision-register__no { grid-row: 2; }
-  .aq-revision-register__topic { grid-row: 2; }
-  .aq-revision-register__st { grid-row: 2; justify-self: end; }
-  .aq-revision-register__std { grid-column: 1 / -1; grid-row: 3; }
+  .aq-revision-register .aq-sec-head .aq-h1 { font-size: 52px; line-height: 56px; }
+  .aq-revision-register__tb { margin-right: calc(var(--space-8) * -1); width: min(100% + var(--space-8), calc(var(--space-32) * 4)); }
+}
+/* Phones: title, lead note, filter, notes; the title block spans the foot */
+@container (max-width: 860px) {
+  .aq-revision-register { padding: var(--space-6) var(--space-4) 0; }
+  .aq-revision-register__grid { grid-template-columns: minmax(0, 1fr); }
+  .aq-revision-register .aq-sec-head .aq-h1 { font-size: 40px; line-height: 44px; }
+  .aq-revision-register__q p { font-size: 20px; line-height: 28px; }
+  .aq-revision-register__col { padding-left: var(--space-4); }
+  .aq-revision-register__note { grid-template-columns: var(--space-8) minmax(0, 1fr); }
+  .aq-revision-register__no { font-size: 13px; flex-direction: column; }
+  .aq-revision-register__nt { font-size: 13px; line-height: 20px; }
+  .aq-revision-register__tb { margin: var(--space-8) calc(var(--space-4) * -1) 0; width: auto; }
+  .aq-revision-register__tb > :nth-child(2) { display: none; }
+  .aq-revision-register__tb { grid-template-columns: auto minmax(0, 1fr); }
 }
 
 /* ---------- RevisionSheet: one document's way to your file (look "revision-sheet"). A pinned paper sheet
@@ -8292,6 +8321,63 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
   .aq-revision-sheet__n { font-size: 32px; line-height: 36px; }
   .aq-revision-sheet__t { margin-top: 0; font-size: 21px; line-height: 27px; }
   .aq-revision-sheet__d { font-size: 15px; line-height: 23px; }
+}
+
+/* ---------- RoleLoop: the roles as bays of one twin-wall pipe loop on the navy band, a valve on each role's branch ---------- */
+.aq-role-loop-sec { }
+.aq-role-loop { position: relative; margin-top: var(--space-8); padding: var(--space-12) var(--space-12) var(--space-16); }
+.aq-role-loop__pipe { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.aq-role-loop:not(.is-laid) .aq-role-loop__pipe { display: none; }
+.aq-role-loop__pipe path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+/* twin wall: a wide stroke in the line colour, the bore in the band's navy over it, the water down the middle */
+.aq-role-loop__wall { stroke: color-mix(in srgb, var(--on-navy) 62%, transparent); stroke-width: 11px; }
+.aq-role-loop__bore { stroke: var(--navy); stroke-width: 8px; }
+.aq-role-loop__water { stroke: var(--flow); stroke-width: 3px; }
+/* a role's bay of the loop, lit while the role is pointed at */
+.aq-role-loop__seg { stroke: var(--flow); stroke-width: 6px; stroke-opacity: 0; transition: stroke-opacity 120ms; }
+.aq-role-loop__seg.is-lit { stroke-opacity: 1; transition-duration: 180ms; }
+.aq-role-loop__sw { stroke: color-mix(in srgb, var(--on-navy) 62%, transparent); stroke-width: 9px; }
+.aq-role-loop__sb { stroke: var(--navy); stroke-width: 6px; }
+.aq-role-loop__sq { stroke: var(--flow); stroke-width: 3px; }
+.aq-role-loop__vb { fill: var(--navy); stroke: var(--on-navy); stroke-width: 1.5px; }
+.aq-role-loop__vs { stroke: var(--on-navy); stroke-width: 1.5px; }
+/* closed: a filled body; status not given: dashed, and no water enters the branch */
+.aq-role-loop__stub.is-closed .aq-role-loop__vb { fill: var(--on-navy); }
+.aq-role-loop__stub.is-unset .aq-role-loop__sw { stroke-dasharray: 3 3; stroke-linecap: butt; }
+.aq-role-loop__stub.is-unset .aq-role-loop__vb, .aq-role-loop__stub.is-unset .aq-role-loop__vs { stroke: var(--on-navy-muted); stroke-dasharray: 2.5 2; }
+.aq-role-loop__stub.is-unset .aq-role-loop__sq { display: none; }
+.aq-role-loop__stub.is-lit .aq-role-loop__vb, .aq-role-loop__stub.is-lit .aq-role-loop__vs { stroke: var(--flow); }
+
+.aq-role-loop__bays { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-16); row-gap: var(--space-24); }
+.aq-role-loop__bay { min-width: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-role-loop .aq-role-loop__no { margin: 0; padding: 0 0 var(--space-2) var(--space-12); border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 30%, transparent);
+  font: 400 12px/16px var(--font-mono); letter-spacing: 0.04em; color: var(--on-navy-muted); font-variant-numeric: tabular-nums; transition: border-color 180ms; }
+.aq-role-loop__no span { color: var(--on-navy); transition: color 180ms; }
+.aq-role-loop__bay.is-lit .aq-role-loop__no { border-color: var(--flow); }
+.aq-role-loop__t { margin: 0; font: 300 26px/32px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); }
+.aq-role-loop .aq-role-loop__st { margin: 0; display: flex; align-items: flex-start; gap: var(--space-2); font: 400 12px/18px var(--font-mono); color: var(--on-navy); }
+.aq-role-loop__vk { flex: none; width: var(--space-6); height: var(--space-4); margin-top: 1px; }
+.aq-role-loop__vk path { fill: none; stroke: var(--on-navy); stroke-width: 1.5px; stroke-linejoin: round; }
+.aq-role-loop__st.is-closed .aq-role-loop__vk path:first-child { fill: var(--on-navy); }
+.aq-role-loop__st.is-unset .aq-role-loop__vk path { stroke: var(--on-navy); stroke-dasharray: 2.5 2; }
+.aq-role-loop__dl { margin: var(--space-2) 0 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.aq-role-loop__f { display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-role-loop__f dt { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
+.aq-role-loop__f dd { margin: 0; font: 400 15px/23px var(--font-sans); color: var(--on-navy); overflow-wrap: anywhere; }
+/* before the water reaches a bay (motion only) */
+.aq-role-loop.is-pre .aq-role-loop__bay { opacity: 0; }
+.aq-role-loop.is-pre .aq-role-loop__pipe { visibility: hidden; }
+
+@container (max-width: 1100px) {
+  .aq-role-loop { padding-inline: var(--space-8); }
+  .aq-role-loop__bays { column-gap: var(--space-12); }
+  .aq-role-loop__t { font-size: 22px; line-height: 28px; }
+}
+/* Phones: the cards stack; the loop runs down their left and back up their right, each branch off the left run */
+@container (max-width: 860px) {
+  .aq-role-loop { margin-top: var(--space-4); padding: var(--space-8) var(--space-8) var(--space-8) var(--space-12); }
+  .aq-role-loop__bays { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-16); }
+  .aq-role-loop__f dd { font-size: 14px; line-height: 22px; }
 }
 
 /* ---------- RoleMatrix: who writes and who approves (table block as "roles") ----------
@@ -8653,74 +8739,6 @@ a.aq-review-reticles__pick:hover { color: var(--flow); }
   .aq-sheet-stack__more { padding-left: 0; }
   .aq-fold:not(.is-open) .aq-sheet-stack__row.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-sheet-stack__rows) > .aq-fold__btn { display: flex; }
-}
-
-/* ---------- ShopFloor: people or roles placed at their stations on one isometric plan of the shop ---------- */
-.aq-shop-floor-sec { }
-.aq-shop-floor__body { min-width: 0; }
-/* Navy band. Wide: the plan on the left (sticky when the cards run long), the cards on the right on a hairline rail.
-   Pins are square mono tags over the plan; the lit station and its walking leg turn flow, its pin fills limestone. */
-.aq-shop-floor { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-12); align-items: start; margin-top: var(--space-4); }
-.aq-shop-floor.is-long { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); }
-.aq-shop-floor__fig { margin: 0; position: sticky; top: var(--space-24); }
-.aq-shop-floor__plan { position: relative; }
-.aq-shop-floor__svg { display: block; width: 100%; height: auto; }
-.aq-shop-floor__st { transition: opacity 300ms; }
-.aq-shop-floor__st.is-idle { opacity: 0.42; }
-.aq-shop-floor__st.is-lit { opacity: 1; }
-.aq-shop-floor__st.is-lit .aq-iso__eq, .aq-shop-floor__st.is-lit .aq-iso__ln, .aq-shop-floor__st.is-lit .aq-iso__thin { stroke: var(--on-navy); }
-/* the walking route: a bold dashed line in full on-navy, so it reads apart from the muted walls and room lines */
-.aq-shop-floor .aq-shop-floor__walk .aq-iso__pipe-line { stroke: var(--on-navy); stroke-width: 3px; stroke-dasharray: 8 6; stroke-linecap: butt; }
-.aq-shop-floor__walk .aq-iso__flow { stroke: transparent; transition: stroke 300ms; }
-.aq-shop-floor__walk.is-lit .aq-iso__flow, .aq-shop-floor.is-walking .aq-shop-floor__walk .aq-iso__flow { stroke: var(--on-navy); }
-.aq-shop-floor__svg .aq-iso__flow--line { stroke-width: 2px; }
-.aq-shop-floor__door { stroke: var(--on-navy); stroke-width: 3px; }
-
-.aq-shop-floor__pin { position: absolute; transform: translate(-50%, -100%); display: grid; place-items: center; min-width: var(--space-8); height: var(--space-6);
-  padding: 0 var(--space-1); background: var(--navy); color: var(--on-navy); border: 1px solid var(--on-navy-muted);
-  font: 500 12px/1 var(--font-mono); letter-spacing: 0.04em; transition: background-color 250ms, color 250ms, border-color 250ms; }
-.aq-shop-floor__pin::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: var(--space-3); background: var(--on-navy-muted); }
-.aq-shop-floor__pin.is-on { background: var(--limestone); color: var(--on-limestone); border-color: var(--limestone); }
-
-/* Cards: index, title, nameplate or labelled fields */
-.aq-shop-floor__cards { list-style: none; margin: 0; padding: 0; border-top: 1px solid color-mix(in srgb, var(--on-navy) 22%, transparent); }
-.aq-shop-floor__card { position: relative; display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); gap: var(--space-4);
-  padding: var(--space-6) 0; border-bottom: 1px solid color-mix(in srgb, var(--on-navy) 22%, transparent); transition: background-color 300ms; }
-.aq-shop-floor__card::before { content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 100%; background: var(--on-navy);
-  transform: scaleX(0); transform-origin: 0 50%; transition: transform 400ms cubic-bezier(0.2, 0, 0, 1); }
-.aq-shop-floor__card.is-on::before { transform: scaleX(1); }
-.aq-shop-floor__n { font: 300 32px/1 var(--font-sans); letter-spacing: -0.03em; color: var(--on-navy-muted); font-variant-numeric: tabular-nums; transition: color 300ms; }
-.aq-shop-floor__card.is-on .aq-shop-floor__n { color: var(--on-navy); }
-.aq-shop-floor__t { margin: 0; font: 300 26px/32px var(--font-sans); letter-spacing: -0.015em; color: var(--on-navy); text-wrap: balance; }
-.aq-shop-floor .aq-shop-floor__name { margin: var(--space-3) 0 0; font: 400 15px/24px var(--font-sans); color: var(--on-navy); }
-.aq-shop-floor .aq-shop-floor__d { margin: var(--space-2) 0 0; font: 400 16px/26px var(--font-sans); color: var(--on-navy-muted); max-width: 46ch; }
-.aq-shop-floor .aq-shop-floor__go { margin: var(--space-2) 0 0; }
-.aq-shop-floor__go a { display: inline-flex; align-items: center; min-height: var(--space-12); color: var(--on-navy); font: 500 14px/20px var(--font-sans); text-decoration: none;
-  box-shadow: inset 0 -1px 0 var(--on-navy-muted); }
-.aq-shop-floor__go a::after { content: "→"; margin-left: var(--space-2); transition: transform 200ms; }
-.aq-shop-floor__go a:hover::after { transform: translateX(var(--space-1)); }
-.aq-shop-floor a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.aq-shop-floor__dl { margin: var(--space-4) 0 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-4) var(--space-6); }
-.aq-shop-floor__f { min-width: 0; }
-.aq-shop-floor__f:first-child { grid-column: 1 / -1; }
-.aq-shop-floor.is-long .aq-shop-floor__dl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.aq-shop-floor__f dt { font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-navy-muted); }
-.aq-shop-floor__f dd { margin: var(--space-1) 0 0; font: 400 15px/24px var(--font-sans); color: var(--on-navy); overflow-wrap: anywhere; }
-.aq-shop-floor__f:first-child dd { font-size: 17px; line-height: 27px; }
-.aq-shop-floor .aq-ph { background: color-mix(in srgb, var(--limestone) 22%, transparent); color: var(--on-navy); }
-
-@container (max-width: 1100px) {
-  .aq-shop-floor, .aq-shop-floor.is-long { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); }
-  .aq-shop-floor__dl, .aq-shop-floor.is-long .aq-shop-floor__dl { grid-template-columns: minmax(0, 1fr); }
-}
-/* Phones: the plan is a band above the cards (not sticky), pins smaller */
-@container (max-width: 860px) {
-  .aq-shop-floor, .aq-shop-floor.is-long { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
-  .aq-shop-floor__fig { position: relative; top: auto; margin-inline: calc(var(--space-2) * -1); }
-  .aq-shop-floor__pin { min-width: var(--space-6); height: var(--space-4); font-size: 11px; }
-  .aq-shop-floor__card { grid-template-columns: var(--space-8) minmax(0, 1fr); gap: var(--space-3); padding: var(--space-4) 0 var(--space-6); }
-  .aq-shop-floor__n { font-size: 24px; }
-  .aq-shop-floor__t { font-size: 22px; line-height: 28px; }
 }
 
 /* ---------- SignalDial: an instrument schedule beside one multi-channel transmitter dial (look "signal-dial") ---------- */
@@ -10616,7 +10634,7 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
 .aq-time-card__hole { position: absolute; left: 50%; top: var(--space-4); width: var(--space-12); height: var(--space-3); margin-left: calc(var(--space-12) / -2);
   border-radius: var(--radius-sm); background: var(--surface); border: 1px solid color-mix(in srgb, var(--navy) 30%, transparent); }
 .aq-section--alt .aq-time-card__hole { background: var(--surface-sunken); }
-.aq-time-card__head, .aq-time-card__row { display: grid; grid-template-columns: var(--space-16) minmax(0, 3fr) minmax(0, 5fr) minmax(0, 3fr); column-gap: var(--space-6); }
+.aq-time-card__head, .aq-time-card__row { display: grid; grid-template-columns: var(--space-16) minmax(0, 7fr) minmax(0, 3fr); column-gap: var(--space-6); }
 .aq-time-card__head { padding: var(--space-2) 0; border-top: 2px solid var(--navy); border-bottom: 1px solid var(--navy);
   font: 500 11px/16px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-limestone-muted); }
 .aq-time-card__rows { list-style: none; margin: 0; padding: 0; }
@@ -10627,9 +10645,11 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
 .aq-time-card__n i { flex: none; width: var(--space-6); height: var(--space-3); background: var(--navy); border: 1px solid var(--navy); transition: background-color 250ms, border-color 250ms; }
 .aq-time-card__n i.is-blank { background: transparent; border-style: dashed; border-color: color-mix(in srgb, var(--navy) 45%, transparent); }
 .aq-time-card__row:hover .aq-time-card__n i { background: var(--flow); border-style: solid; border-color: var(--flow); }
-.aq-time-card__p { margin: 0; font: 500 14px/22px var(--font-sans); color: var(--on-limestone); }
-.aq-time-card__v { margin: 0; font: 300 20px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); overflow-wrap: anywhere; }
-.aq-time-card__m { margin: 0; font: 400 13px/20px var(--font-sans); color: var(--on-limestone-muted); }
+/* the term-name / mono-detail pairing: the item names the line, the term follows as one mono detail line */
+.aq-time-card__pv { min-width: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.aq-time-card__p { margin: 0; font: 300 22px/30px var(--font-sans); letter-spacing: -0.01em; color: var(--on-limestone); }
+.aq-time-card .aq-time-card__v { margin: 0; font: 400 13px/22px var(--font-mono); color: var(--on-limestone); overflow-wrap: anywhere; }
+.aq-time-card .aq-time-card__m { margin: 0; font: 400 12px/20px var(--font-mono); color: var(--on-limestone-muted); }
 .aq-time-card .aq-fold__btn { color: var(--on-limestone-muted); }
 .aq-time-card .aq-time-card__note { margin: var(--space-6) 0 0; display: flex; justify-content: flex-end; }
 .aq-time-card__stamp { display: inline-block; padding: var(--space-2) var(--space-4); border: 2px solid var(--navy); color: var(--navy);
@@ -10637,7 +10657,7 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
 
 @container (max-width: 1100px) {
   .aq-time-card__stack { max-width: none; }
-  .aq-time-card__head, .aq-time-card__row { grid-template-columns: var(--space-12) minmax(0, 3fr) minmax(0, 5fr) minmax(0, 3fr); column-gap: var(--space-4); }
+  .aq-time-card__head, .aq-time-card__row { grid-template-columns: var(--space-12) minmax(0, 7fr) minmax(0, 3fr); column-gap: var(--space-4); }
   .aq-time-card__n i { display: none; }
 }
 /* Phones: the card fills the width; each line stacks item, term, note beside its number */
@@ -10648,8 +10668,8 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
   .aq-time-card__head { display: none; }
   .aq-time-card__rows { border-top: 2px solid var(--navy); }
   .aq-time-card__row { grid-template-columns: var(--space-8) minmax(0, 1fr); row-gap: var(--space-1); }
-  .aq-time-card__v, .aq-time-card__m { grid-column: 2; }
-  .aq-time-card__v { font-size: 18px; line-height: 27px; }
+  .aq-time-card__m { grid-column: 2; }
+  .aq-time-card__p { font-size: 19px; line-height: 26px; }
   .aq-time-card__stamp { font-size: 11px; }
 }
 

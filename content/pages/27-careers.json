@@ -68,15 +68,7 @@
    ],
    "as": "router",
    "intro": "A commercial lead and two technical partners run Aquemi; each role says whether it is open.",
-   "look": "shop-floor",
-   "stations": [
-    "design",
-    "fab",
-    "test",
-    "ctl",
-    "dock",
-    "qa"
-   ]
+   "look": "role-loop"
   },
   {
    "type": "spec",
@@ -162,6 +154,7 @@
      "d": "Meet the team where you would work. Written decision within [offer time, working days]."
     }
    ],
+   "fig": "Test joint by [PP joining method]",
    "look": "hire-path"
   },
   {

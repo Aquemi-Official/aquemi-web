@@ -5,7 +5,7 @@ SourceSkid sets the people a buyer would work with beside the package they deliv
 - Fields (a `grid` block): `h`, `intro`, `items [{t, d, link}]`, new optional `parts [{t, by, part}]`, the callouts: `part` one of `package` (base frame, open frame, PP pipework), `modules` (membrane housings and the EDI stack), `instruments` (transmitter and pressure gauge); `by` the line under the callout's name. A `d` that opens with a bracketed name line ("[Full name] · [licence]. Ask about ...") shows that line as the nameplate.
 - Tokens: `surface-raised` cards with `line-strong` borders; role `ink-muted`, nameplate Geist Light 22 `ink`; IsoKit light line work; the chosen group's lines `flow`, the rest at 0.32 opacity; callouts `ink` with a `flow` rule and `flow-tint` when chosen; 44 px targets, visible focus.
 - Phones: cards first, then the intro, the drawing (cropped to the skid) with numbered pins, and the callouts listed under it.
-- Not for a tour of roles at their stations in the shop (ShopFloor).
+- Not for job roles and their status (RoleLoop).
 
 ## Motion
 

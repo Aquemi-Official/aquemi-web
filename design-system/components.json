@@ -613,10 +613,10 @@
    "readme": "design-system/components/HirePath/README.md",
    "preview": "design-system/components/HirePath/preview.html",
    "group": "Page sections",
-   "height": "620",
+   "height": "820",
    "width": "1100",
-   "subtitle": "How we hire: four steps on one path",
-   "summary": "HirePath sets the steps into a role as one path walked left to right: a single track across the section, each step standing on it as a huge light numeral with its name and line under it, and the exercises a step tests drawn as a row of line icons."
+   "subtitle": "How we hire: the test joint plate beside the steps on a vertical rail",
+   "summary": "HirePath sets the steps into a role as one drawing sheet: the section title and the practical interview's test joint drawn large as a duotone plate on the left, the steps on a slim vertical rail on the right, each with a gate tick, a mono number, its name and line."
   },
   {
    "name": "HmiTrend",
@@ -1103,10 +1103,10 @@
    "readme": "design-system/components/RevisionRegister/README.md",
    "preview": "design-system/components/RevisionRegister/preview.html",
    "group": "Page sections",
-   "height": "900",
+   "height": "1100",
    "width": "1100",
-   "subtitle": "The notes register as a revision register sheet",
-   "summary": "RevisionRegister keeps technical notes the way a drawing office keeps its revision register: one limestone register sheet on a navy band, topic tabs in its title strip, the lead note set as an editorial page beside ruled register lines."
+   "subtitle": "The notes register as the numbered notes column of a drawing sheet",
+   "summary": "RevisionRegister keeps technical notes as the numbered notes column of one limestone drawing sheet: the title large and light with the lead note under it, a faint drawing of the page a note is applied on, and the register in mono behind a hairline rule, with a topic filter and a title block carrying the live count."
   },
   {
    "name": "RevisionSheet",
@@ -1117,6 +1117,16 @@
    "width": "1100",
    "subtitle": "One document taking each review step's marks, pinned beside the steps",
    "summary": "RevisionSheet tells a document review cycle on one document: a paper sheet stays pinned beside the steps and takes each step's marks as the step reaches the middle of the screen (comments, answered comments and a struck draft tag, signatures, recorded data, the current revision), its revision block filling one row per step."
+  },
+  {
+   "name": "RoleLoop",
+   "readme": "design-system/components/RoleLoop/README.md",
+   "preview": "design-system/components/RoleLoop/preview.html",
+   "group": "Page sections",
+   "height": "1500",
+   "width": "1100",
+   "subtitle": "Roles, base and pay: six roles in the bays of one pipe loop",
+   "summary": "RoleLoop sets a table of roles as the bays of one twin-wall pipe loop on the navy band: the loop meanders over one role card and under the next and runs back on the second row, and each role's branch off the loop carries a valve that reads open or closed only when the role's own copy says so."
   },
   {
    "name": "RoleMatrix",
@@ -1167,16 +1177,6 @@
    "width": "1100",
    "subtitle": "Four loop documents as an exploded stack of drawing sheets",
    "summary": "SheetStack shows the documents delivered with a system as an exploded stack of isometric drawing sheets, each sheet drawing in miniature what the document is, its row beside it."
-  },
-  {
-   "name": "ShopFloor",
-   "readme": "design-system/components/ShopFloor/README.md",
-   "preview": "design-system/components/ShopFloor/preview.html",
-   "group": "Page sections",
-   "height": "900",
-   "width": "1100",
-   "subtitle": "The people you would work with, at their stations on the shop plan",
-   "summary": "ShopFloor places the company's people or roles where their work happens, as numbered stations on one isometric plan of the shop with a walking route through them, so a reader sees the shop and who works where before reading the cards."
   },
   {
    "name": "SignalDial",
