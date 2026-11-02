@@ -64,7 +64,14 @@
      }
     ]
    ],
-   "look": "numeral-index"
+   "look": "checker-router",
+   "draws": [
+    "outlet",
+    "",
+    "",
+    "ro",
+    ""
+   ]
   },
   {
    "type": "table",
@@ -122,21 +129,24 @@
    ],
    "fold": 4,
    "fold_noun": "steps",
-   "look": "grade-mains",
+   "look": "grade-ladder",
    "lanes": [
     {
      "id": "potable",
-     "t": "Potable water"
+     "t": "Potable water",
+     "short": "Potable"
     },
     {
      "id": "pw",
-     "t": "Purified Water (PW)"
+     "t": "Purified Water (PW)",
+     "short": "PW"
     },
     {
      "id": "wfi",
      "t": "Water for Injection (WFI)",
      "note": "We do not supply WFI",
-     "off": true
+     "off": true,
+     "short": "WFI"
     }
    ],
    "taps": [
@@ -258,33 +268,47 @@
    "items": [
     {
      "t": "Product mix in five years",
-     "d": "Generation and headers sized for planned lines, expansion written into the URS."
+     "d": "Generation and headers sized for planned lines, expansion written into the URS.",
+     "part": "headers",
+     "side": "r",
+     "row": 2
     },
     {
      "t": "USP, Ph. Eur. or both",
-     "d": "Both: cheap at design, costly later."
+     "d": "Both: cheap at design, costly later.",
+     "part": "sheet",
+     "side": "r",
+     "row": 3
     },
     {
      "t": "Loop sanitization route",
      "d": "Natural polypropylene (PP) is rated 0 to 80 °C, and its pressure rating falls as it heats.",
-     "link": "sys-storage#sanitization"
+     "link": "sys-storage#sanitization",
+     "part": "loop",
+     "side": "r",
+     "row": 1
     },
     {
      "t": "Canadian feed water",
      "d": "Near freezing in winter, over 20 °C in summer; membranes sized for the coldest month.",
-     "link": "sys-pretreatment"
+     "link": "sys-pretreatment",
+     "part": "membranes",
+     "side": "l",
+     "row": 1
     },
     {
      "t": "Shutdown windows",
-     "d": "Duplex trains and isolable sections let you service without stopping every line."
+     "d": "Duplex trains and isolable sections let you service without stopping every line.",
+     "part": "trains",
+     "side": "l",
+     "row": 2
     }
    ],
    "fold": 3,
    "fold_noun": "decisions",
    "as": "decisions",
-   "look": "urs-gate",
-   "gate": "URS",
-   "gate_label": "Approved"
+   "look": "decision-plant",
+   "gate": "URS"
   },
   {
    "type": "table",

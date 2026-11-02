@@ -253,10 +253,10 @@
    "readme": "design-system/components/BinderSpines/README.md",
    "preview": "design-system/components/BinderSpines/preview.html",
    "group": "Page sections",
-   "height": "860",
+   "height": "900",
    "width": "1100",
-   "subtitle": "Five inspectors as ring binders on the QA shelf: the clause each cites, what they read, where we answer it",
-   "summary": "BinderSpines sets an evidence table (who inspects, what they read, where we answer it) as ring binders standing on a QA shelf, one binder per inspector, the clause each one cites set large on its spine."
+   "subtitle": "Five inspectors as ring binders on the QA shelf beside the PP plant they inspect, bleeding off the page",
+   "summary": "BinderSpines sets an evidence table (who inspects, what they read, where we answer it) as ring binders standing on a QA shelf, one binder per inspector, the clause each one cites set large on its spine, beside a large drawing of the plant they inspect bleeding off the page."
   },
   {
    "name": "BudgetBento",
@@ -307,6 +307,16 @@
    "width": "1100",
    "subtitle": "Six checks before a case study: what each shows, the route, what it does not prove",
    "summary": "CheckLedger sets a router table of checks a buyer can run before a case study exists as a two-sided ledger on a navy band: what each check lets you see on the left, what it does not prove on the right, and the route to arrange it on the seam between them."
+  },
+  {
+   "name": "CheckerRouter",
+   "readme": "design-system/components/CheckerRouter/README.md",
+   "preview": "design-system/components/CheckerRouter/preview.html",
+   "group": "Page sections",
+   "height": "1260",
+   "width": "1100",
+   "subtitle": "Five situations as a Swiss checker of navy, limestone and paper tiles: numeral, situation, need, start page",
+   "summary": "CheckerRouter sets a router table (situation, what you need, start with) as a Swiss checker of square navy, limestone and paper tiles, one band of six tiles per situation, the start page as a go tile."
   },
   {
    "name": "ClauseCrosswalk",
@@ -387,6 +397,16 @@
    "width": "1300",
    "subtitle": "GMP standards on a rail beside a sticky cutaway; the active card lights the parts it governs",
    "summary": "CutawayRail reads an evidence table beside one sticky drawing: a close isometric cutaway of the plant stays in view while one card per standard runs down a rail, and the card being read lights the parts it governs, with an \"active\" tag and a callout naming it."
+  },
+  {
+   "name": "DecisionPlant",
+   "readme": "design-system/components/DecisionPlant/README.md",
+   "preview": "design-system/components/DecisionPlant/preview.html",
+   "group": "Page sections",
+   "height": "900",
+   "width": "1100",
+   "subtitle": "Five decisions as callouts round a hairline schematic of the plant, each leader into the part it sizes",
+   "summary": "DecisionPlant sets an options block of decisions as numbered callouts round one hairline process schematic of the plant they size, each leader running into the part it decides."
   },
   {
    "name": "DecisionValve",
@@ -529,6 +549,16 @@
    "summary": "GradeEditorial sets a short path (a grid block of about five items) as an editorial spread: the heading oversized on a navy mast, a geometric pipe collage facing asymmetric fact blocks whose key words (a grade, a span, a figure) are set huge."
   },
   {
+   "name": "GradeLadder",
+   "readme": "design-system/components/GradeLadder/README.md",
+   "preview": "design-system/components/GradeLadder/preview.html",
+   "group": "Page sections",
+   "height": "1300",
+   "width": "1100",
+   "subtitle": "Eight dosage forms beside one instrument: the row number huge, a fader up potable, PW and WFI (open: not supplied), the minimum line",
+   "summary": "GradeLadder reads a grade table beside one sticky instrument: the row's number set huge and light, a fader up the water grades, and a minimum line at the row's minimum grade; the row in hand (or, while scrolling, the row on the reading line) drives it."
+  },
+  {
    "name": "GradeLanes",
    "readme": "design-system/components/GradeLanes/README.md",
    "preview": "design-system/components/GradeLanes/preview.html",
@@ -537,16 +567,6 @@
    "width": "1100",
    "subtitle": "Minimum water grade by step, on three lanes",
    "summary": "GradeLanes shows the minimum water grade step by step: each step drops a tap into one of three lanes, Potable, PW and WFI."
-  },
-  {
-   "name": "GradeMains",
-   "readme": "design-system/components/GradeMains/README.md",
-   "preview": "design-system/components/GradeMains/preview.html",
-   "group": "Page sections",
-   "height": "960",
-   "width": "1100",
-   "subtitle": "Eight dosage forms dropping to the water mains they take: potable, PW, WFI (dashed, not supplied)",
-   "summary": "GradeMains draws a grade table as water mains on a navy blueprint: one horizontal main per water grade, each product or process step dropping a line to the main(s) it takes water from, with a valve at every tap."
   },
   {
    "name": "GradeSwitch",
@@ -797,16 +817,6 @@
    "width": "1100",
    "subtitle": "Planned notes as a revision register, filtered by topic",
    "summary": "NotesRegister lists technical notes as a register table: date, note number, topic, title and standard, with topic filter chips and the latest or next planned note in a quiet panel beside it."
-  },
-  {
-   "name": "NumeralIndex",
-   "readme": "design-system/components/NumeralIndex/README.md",
-   "preview": "design-system/components/NumeralIndex/preview.html",
-   "group": "Page sections",
-   "height": "1460",
-   "width": "1100",
-   "subtitle": "Five situations as a Swiss index under huge outline numerals, each with its start page",
-   "summary": "NumeralIndex sets a router table as a Swiss index of situations, each under a huge light outline numeral with its start page as a square go-cell, so a reader finds their situation by scanning large type rather than a table."
   },
   {
    "name": "OptionChecker",
@@ -1417,16 +1427,6 @@
    "width": "1100",
    "subtitle": "Two requirements as transit lines beside a readout tile of the traced limit",
    "summary": "TraceLines shows a traceability table as transit lines: each requirement is a line that starts at its code, set large, and runs down through one station per document, with a dashed pass where a document does not answer it and test-step chips branching off where a document names its tests."
-  },
-  {
-   "name": "UrsGate",
-   "readme": "design-system/components/UrsGate/README.md",
-   "preview": "design-system/components/UrsGate/preview.html",
-   "group": "Page sections",
-   "height": "880",
-   "width": "1100",
-   "subtitle": "Five decisions along the project line, before the URS approval gate",
-   "summary": "UrsGate sets decisions that must be made before a gate as one project line running into that gate: decisions stand on stems above and below the line with huge light numerals, and the gate is a bar with its word as giant outline type cut by the page edge."
   },
   {
    "name": "Versus",

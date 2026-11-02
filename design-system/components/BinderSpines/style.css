@@ -5,6 +5,14 @@
   gap: var(--space-3); align-items: end; height: calc(var(--space-32) * 4.75); }
 .aq-fold:not(.is-open) .aq-binder-spines__book.aq-fold-x { display: flex; }
 .aq-fold:has(> .aq-binder-spines) > .aq-fold__btn { display: none; }
+/* With the plant: the binders take the left two thirds, the plant drawing stands on the same floor and bleeds off the
+   right edge of the page */
+.aq-binder-spines-sec { overflow-x: clip; }
+.aq-binder-spines.has-plant { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); grid-template-areas: "row fig" "shelf fig"; column-gap: var(--space-8); }
+.aq-binder-spines.has-plant .aq-binder-spines__row { grid-area: row; padding: 0; }
+.aq-binder-spines.has-plant .aq-binder-spines__shelf { grid-area: shelf; }
+.aq-binder-spines__fig { grid-area: fig; position: relative; min-width: 0; margin-right: calc((min(100cqw, var(--content-max)) - 100cqw) / 2 - var(--space-8)); overflow: hidden; }
+.aq-binder-spines__svg { position: absolute; left: 0; bottom: var(--space-3); width: 240%; height: auto; transform: translateY(calc((1 - var(--drop, 1)) * 100%)); }
 .aq-binder-spines__shelf { display: block; height: var(--space-3); background: var(--navy); border-top: 1px solid var(--line-strong); transform-origin: 0 50%; }
 .aq-binder-spines__shelf::after { content: ""; display: block; height: var(--space-2); margin: var(--space-3) var(--space-8) 0; border-top: 1px solid var(--line-strong); }
 
@@ -27,7 +35,7 @@
 .aq-binder-spines__book.is-lime .aq-binder-spines__label .aq-binder-spines__k { color: var(--ink-subtle); }
 
 .aq-binder-spines__read { display: flex; flex-direction: column; gap: var(--space-3); min-height: 0; }
-.aq-binder-spines__code { margin: 0; font: 300 26px/30px var(--font-mono); letter-spacing: -0.02em; overflow-wrap: anywhere; }
+.aq-binder-spines__code { margin: 0; font: 300 22px/27px var(--font-mono); letter-spacing: -0.03em; overflow-wrap: anywhere; }
 .aq-binder-spines__d { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--on-navy-muted); }
 .aq-binder-spines__book.is-lime .aq-binder-spines__d { color: var(--on-limestone-muted); }
 
@@ -45,8 +53,11 @@ a.aq-binder-spines__go:focus-visible { outline: 2px solid var(--focus); outline-
 
 @container (max-width: 1100px) {
   .aq-binder-spines__row { padding: 0; gap: var(--space-2); height: calc(var(--space-32) * 5.25); }
+  .aq-binder-spines.has-plant { grid-template-columns: minmax(0, 1fr); grid-template-areas: "fig" "row" "shelf"; }
+  .aq-binder-spines__fig { height: calc(var(--space-32) * 2.5); margin-bottom: var(--space-6); }
+  .aq-binder-spines__svg { width: 140%; bottom: 0; }
   .aq-binder-spines__book { padding-inline: var(--space-3); }
-  .aq-binder-spines__code { font-size: 21px; line-height: 26px; }
+  .aq-binder-spines__code { font-size: 22px; line-height: 27px; }
 }
 
 /* Phones: the binders lie flat, stacked on the shelf, spines facing you; the fold comes back */
@@ -61,4 +72,7 @@ a.aq-binder-spines__go:focus-visible { outline: 2px solid var(--focus); outline-
   .aq-binder-spines__code { font-size: 24px; line-height: 28px; }
   .aq-fold:not(.is-open) .aq-binder-spines__book.aq-fold-x { display: none; }
   .aq-fold:has(> .aq-binder-spines) > .aq-fold__btn { display: flex; }
+  .aq-binder-spines.has-plant { grid-template-columns: minmax(0, 1fr); grid-template-areas: "fig" "row" "shelf"; }
+  .aq-binder-spines__fig { height: calc(var(--space-32) * 1.75); margin: 0 calc(var(--space-4) * -1) var(--space-4) 0; }
+  .aq-binder-spines__svg { width: 200%; bottom: 0; }
 }

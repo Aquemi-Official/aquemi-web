@@ -5,7 +5,7 @@ CheckLedger sets a router table of checks a buyer can run before a case study ex
 - Fields: `h`, `intro`, `cols` [check, route, does not prove, time], `rows` (cells strings or `{t, link, intent}`), `fold`, `fold_noun`. Any four-column router of the same meaning can use it.
 - Tokens: `navy` band; `on-navy` check text (Geist Light 26), `on-navy-muted` for what is not proved, numerals as outline text; `limestone` buttons with `on-limestone` labels, `radius-sm`; placeholders as limestone-tinted chips. Hover: the row's node fills limestone.
 - Phones: one card per check, the seam a rule down the left edge carrying the node; route button, time ("Time to arrange:") and the labelled "does not prove" stack under the check.
-- Not for situation-to-page routers (ManifoldRouter, NumeralIndex, StairRouter).
+- Not for situation-to-page routers (ManifoldRouter, CheckerRouter, StairRouter).
 
 ## Motion
 

@@ -515,23 +515,25 @@ AQmotion.fx('BatteryLimit', function (root, m) {
     });
   });
 });
-/* BinderSpines: the shelf is fixed first (it runs out from the left), then the binders are filed onto it one by one,
-   each sliding down into its place with a slight settle; its paper label prints in, the clause decodes, the reading
-   and the answer follow. One timeline, once on scroll-in, under 4 s. Folded binders (phones) are left alone. */
+/* BinderSpines: the plant is drawn first (IsoKit's choreography: parts back to front, pipes along the route, the water
+   once round the loop), the shelf runs out from the left, then the binders are filed onto it one by one, each sliding
+   down into its place and settling; its paper label prints in, the clause decodes, the reading and the answer follow.
+   One timeline, once on scroll-in, under 4.5 s. Folded binders (phones) are left alone; nothing under reduced motion. */
 AQmotion.fx('BinderSpines', function (root, m) {
   root.querySelectorAll('.aq-binder-spines').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
     var nar = m.narrow(), tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    tl.from(el.querySelector('.aq-binder-spines__shelf'), { scaleX: 0, duration: 0.8, ease: 'power2.inOut', clearProps: 'transform' }, 0);
+    var svg = el.querySelector('svg.aq-iso'), pt = svg && window.AQiso ? AQiso.timeline(svg, m, { draw: 1.3, flow: 1.6, keep: false }) : null;
+    tl.from(el.querySelector('.aq-binder-spines__shelf'), { scaleX: 0, duration: 0.8, ease: 'power2.inOut', clearProps: 'transform' }, 0.1);
     var books = [].filter.call(el.querySelectorAll('.aq-binder-spines__book'), function (b) { return b.offsetParent !== null });
     books.forEach(function (b, i) {
-      var at = 0.3 + i * 0.16, code = b.querySelector('.aq-binder-spines__code');
-      tl.from(b, nar ? { x: -40, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' } : { y: -60, rotation: i % 2 ? 2 : -2, transformOrigin: '50% 100%', autoAlpha: 0, duration: 0.7, ease: 'back.out(1.2)', clearProps: 'transform,opacity,visibility' }, at);
+      var at = 0.4 + i * 0.16, code = b.querySelector('.aq-binder-spines__code');
+      tl.from(b, nar ? { x: -40, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' } : { y: -60, rotation: i % 2 ? 2 : -2, transformOrigin: '50% 100%', autoAlpha: 0, duration: 0.7, ease: 'aq-settle', clearProps: 'transform,opacity,visibility' }, at);
       tl.fromTo(b.querySelector('.aq-binder-spines__label'), { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, at + 0.35);
       if (code && window.ScrambleTextPlugin) { if (!code.getAttribute('aria-label')) code.setAttribute('aria-label', code.textContent); tl.to(code, { duration: 0.7, scrambleText: { text: code.textContent, chars: '0123456789.-', speed: 0.6 }, ease: 'none' }, at + 0.45) }
       tl.from(b.querySelectorAll('.aq-binder-spines__d, .aq-binder-spines__go'), { y: 10, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, at + 0.55);
     });
-    m.on(el, function () { tl.play() }, 'top 75%');
+    m.on(el, function () { tl.play(); if (pt) pt.play() }, 'top 75%');
   });
 });
 /* BudgetBento: the sheet is set like type. The lead tile prints up from its foot and its huge numeral slides into its
@@ -839,6 +841,29 @@ AQmotion.fx('CheckLedger', function (root, m) {
       if (n) tl.call(function (n) { n.classList.add('is-wet') }, [n], at + step * 0.3).call(function (n) { n.classList.remove('is-wet') }, [n], at + step + 0.4);
     });
     m.on(el, function () { tl.play() }, 'top 78%');
+  });
+});
+/* CheckerRouter: the checker is set as a mosaic. The empty grid of hairlines is there first; the tiles blink on in
+   scattered order (each a hard step, no fade), then each row's words rise into their tiles, top row first. Once on
+   scroll-in, under 2 s. After that the visitor drives it: the row in hand trades its tiles for their inverse in the same
+   scattered steps (CSS, --d per tile; works under reduced motion as an instant swap).
+   Ported from Subframe Motion "Afterimage" (mosaic-reveal), MIT, (c) 2026 Subframe (kept: a grid of tiles switching
+   with steps(1, end) after scattered delays, ~0.3 s spread per swap, the print traded for its inverse; replaced: the
+   cover tiles over two prints with the router's own tiles and their navy/limestone inverse). */
+AQmotion.fx('CheckerRouter', function (root, m) {
+  root.querySelectorAll('.aq-checker-router').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var tiles = [].slice.call(el.querySelectorAll('.aq-checker-router__tile'));
+    var tl = m.tw(gsap.timeline({ paused: true }));
+    tiles.forEach(function (t, k) {
+      var d = +getComputedStyle(t).getPropertyValue('--d') || 0, at = 0.04 * d + 0.025 * (k % 6) + 0.05 * Math.floor(k / 6);
+      tl.from(t, { autoAlpha: 0, duration: 0.24, ease: 'steps(1)', clearProps: 'opacity,visibility' }, at);
+    });
+    el.querySelectorAll('.aq-checker-router__row').forEach(function (r, i) {
+      tl.from(r.querySelectorAll('.aq-checker-router__k, .aq-checker-router__t, .aq-checker-router__d, .aq-checker-router__to'),
+        { y: 10, autoAlpha: 0, duration: 0.45, stagger: 0.03, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.45 + i * 0.1);
+    });
+    m.on(el, function () { tl.play() }, 'top 80%');
   });
 });
 /* ClauseCrosswalk: the two regulations set in first (their names slide along the edge, their clause chips tick in
@@ -1233,6 +1258,43 @@ AQmotion.fx('CutawayRail', function (root, m) {
         .from(c.querySelectorAll('.aq-cutaway-rail__f'), { y: 10, autoAlpha: 0, duration: 0.45, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, 0.3);
       m.on(c, function () { ct.play() }, 'top 90%');
     });
+  });
+});
+/* DecisionPlant: the schematic is drawn (sheet, then the equipment back to front, then the pipes), the water runs the
+   route once from the feed to the return, and then the decisions branch out of the plant: from each part a leader
+   draws toward its callout and the callout rises in as its leader arrives, 0.12 s apart. Once on scroll-in, under 4 s.
+   Ported from Subframe Motion "Asset crop workflow" (process-choreography), MIT, (c) 2026 Subframe (kept: one clock
+   for the sequence, connector strokes drawn from the source toward each output (1.12 s), each output fading up and
+   scaling in from 0.96 inside its own window as its connector arrives, cubic ease-out; replaced: the artwork and its
+   crops with the plant and the decisions). Nothing under reduced motion: the drawing and leaders are complete. */
+AQmotion.fx('DecisionPlant', function (root, m) {
+  root.querySelectorAll('.aq-decision-plant').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var svg = el.querySelector('.aq-decision-plant__svg'), D = window.DrawSVGPlugin; if (!svg) return;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var q = function (s) { return [].slice.call(svg.querySelectorAll(s)) };
+    tl.from(q('.aq-decision-plant__frame'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0);
+    var parts = q('.aq-decision-plant__part');
+    parts.forEach(function (p, i) { tl.from(p, { autoAlpha: 0, y: 6, duration: 0.45, clearProps: 'opacity,visibility,transform' }, 0.1 + i * 0.08) });
+    var pipes = q('.aq-decision-plant__pipe'), flow = q('.aq-decision-plant__flow');
+    if (D) {
+      tl.from(pipes, { drawSVG: '0%', duration: 0.9, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.3);
+      tl.from(flow, { drawSVG: '0%', duration: 1.4, ease: 'power1.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.9);
+    }
+    var mks = [].slice.call(el.querySelectorAll('.aq-decision-plant__mk'));
+    tl.from(mks, { scale: 0.6, autoAlpha: 0, duration: 0.3, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 1.5);
+    /* the branch: leaders are laid by the look's script; read them when the sequence reaches them */
+    var items = [].filter.call(el.querySelectorAll('.aq-decision-plant__item'), function (x) { return x.offsetParent !== null });
+    items.forEach(function (it) { gsap.set(it, { autoAlpha: 0 }) });
+    tl.call(function () {
+      var leads = el.querySelector('.aq-decision-plant__leads'), shown = leads && getComputedStyle(leads).display !== 'none';
+      items.forEach(function (it, i) {
+        var p = shown && leads.querySelector('.aq-decision-plant__lead[data-i="' + it.getAttribute('data-i') + '"]'), at = i * 0.12, w = 1.12 - 0.12 * (items.length - 1);
+        if (p && D) m.tw(gsap.fromTo(p, { drawSVG: '100% 100%' }, { drawSVG: '0% 100%', duration: Math.max(0.5, w), delay: at, ease: 'power3.out', clearProps: 'strokeDasharray,strokeDashoffset' }));
+        m.tw(gsap.fromTo(it, { autoAlpha: 0, scale: 0.96, transformOrigin: it.classList.contains('is-l') ? '100% 0' : '0 0' }, { autoAlpha: 1, scale: 1, duration: 0.45, delay: at + Math.max(0.5, w) * 0.6, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }));
+      });
+    }, null, 1.7);
+    m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
 /* DecisionValve: the valve is set up, then turned. The supplies slide in from the left, their lines run in to the
@@ -2382,6 +2444,45 @@ AQmotion.fx('GradeEditorial', function (root, m) {
     m.on(el, function () { tl.play() }, 'top 78%');
   });
 });
+/* GradeLadder: the instrument is set up, then it reads along with you. Entrance (once, under 2.5 s): the ruler's ticks
+   run up the scale, the grade labels set in, the fill rises to the first row's minimum and the minimum line sweeps up
+   with it; the rows rise in. Then the page's one scroll-linked story: as the rows pass the reading line (45 % of the
+   viewport; on phones just under the sticky band) the row on it is shown on the instrument, stepwise (no easing between
+   rows; the fader glides 380 ms to the new grade). A row in hand (pointer, focus) takes over until the pointer leaves the
+   rows. Readable at every scroll position; no pin; nothing under reduced motion (the row in hand still shows, instantly).
+   Ported from Subframe Motion "Scroll turntable" (scroll-turntable), MIT, (c) 2026 Subframe (kept: scroll progress
+   mapped stepwise to one indexed view shown in a sticky panel, seeking from the controls syncs the view; replaced: the
+   32 cached jug frames with the table's rows and the instrument).
+   Ported from Subframe Motion "Elastic fader" (elastic-fader), MIT, (c) 2026 Subframe (kept: the oversized level
+   number beside a vertical fader, the fill scaled from its foot, the 380 ms return to the level; replaced: the
+   overshooting cubic-bezier(.18,1.5,.35,1) and the overtravel stretch with a settle (.22,1,.36,1): no bounce). */
+AQmotion.fx('GradeLadder', function (root, m) {
+  root.querySelectorAll('.aq-grade-ladder').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var ins = el.querySelector('.aq-grade-ladder__inst'), nar = m.narrow(); if (!ins) return;
+    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
+    var ticks = [].slice.call(ins.querySelectorAll('.aq-grade-ladder__ruler i')).reverse();
+    tl.from(ticks, nar ? { scaleY: 0, transformOrigin: '50% 100%', duration: 0.3, stagger: 0.015, clearProps: 'transform' } : { scaleX: 0, transformOrigin: '100% 50%', duration: 0.3, stagger: 0.015, clearProps: 'transform' }, 0);
+    tl.from(ins.querySelectorAll('.aq-grade-ladder__mark'), { autoAlpha: 0, y: nar ? 0 : 10, duration: 0.5, stagger: 0.12, clearProps: 'transform,opacity,visibility' }, 0.2);
+    tl.from(ins.querySelector('.aq-grade-ladder__fill'), nar ? { scaleX: 0, duration: 1, ease: 'power2.inOut', clearProps: 'transform' } : { scaleY: 0, duration: 1, ease: 'power2.inOut', clearProps: 'transform' }, 0.45);
+    tl.from(ins.querySelector('.aq-grade-ladder__limit'), nar ? { x: 0, duration: 1, ease: 'power2.inOut', clearProps: 'transform' } : { y: 0, duration: 1, ease: 'power2.inOut', clearProps: 'transform' }, 0.45);
+    tl.from(ins.querySelector('.aq-grade-ladder__read'), { autoAlpha: 0, y: 12, duration: 0.6, clearProps: 'transform,opacity,visibility' }, 0.3);
+    var rows = [].filter.call(el.querySelectorAll('.aq-grade-ladder__row'), function (r) { return r.offsetParent !== null });
+    tl.from(rows, { y: 14, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, 0.35);
+    m.on(el, function () { tl.play() }, 'top 75%');
+
+    /* the reading line picks the row (stepwise) unless one is in hand */
+    var list = el.querySelector('.aq-grade-ladder__rows'), A = window.AQladder;
+    if (!list || !A || !window.ScrollTrigger) return;
+    function read() {
+      if (el.getAttribute('data-by') === 'hand') return;
+      var line = m.narrow() ? ins.getBoundingClientRect().bottom + 24 : innerHeight * 0.45, best = null, bd = 1e9;
+      [].forEach.call(list.children, function (r) { if (r.offsetParent === null) return; var b = r.getBoundingClientRect(), d = line < b.top ? b.top - line : line > b.bottom ? line - b.bottom : 0; if (d < bd) { bd = d; best = r } });
+      if (best && !best.classList.contains('is-on')) A.show(el, best, 'scroll')
+    }
+    m.tw(ScrollTrigger.create({ trigger: list, start: 'top bottom', end: 'bottom top', onUpdate: read, onRefresh: read }));
+  });
+});
 /* GradeLanes: the lane caps drop onto the header rule, then water runs down the three lane pipes row by row; as it
    passes each step the step reads in, its branch fills from the step across to its grade, and the tap there pops
    (the minimum grade with a small overshoot, an alternative or "= product" tap more quietly). Pipe and branch fills
@@ -2415,32 +2516,8 @@ AQmotion.fx('GradeLanes', function (root, m) {
     }, 'top 75%');
   });
 });
-/* GradeMains: the mains are laid first (each twin-wall pipe runs out from the left, the dashed one last), the steps set
-   in across the top, then every column drops its line down to its main and the valves seat with a small overshoot,
-   column by column. Last, the water runs along each supplied main once, and the grades and notes read in under the
-   columns. One timeline, once on scroll-in, under 4.5 s. Folded columns (phones) are left alone. */
-AQmotion.fx('GradeMains', function (root, m) {
-  root.querySelectorAll('.aq-grade-mains').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var vis = function (s) { return [].filter.call(el.querySelectorAll(s), function (x) { return x.offsetParent !== null || getComputedStyle(x).position === 'fixed' }) };
-    var nar = m.narrow(), tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    var pipes = vis('.aq-grade-mains__pipe');
-    tl.from(vis('.aq-grade-mains__lname'), { x: nar ? 0 : -16, y: nar ? 10 : 0, autoAlpha: 0, duration: 0.5, stagger: 0.1, clearProps: 'transform,opacity,visibility' }, 0);
-    tl.from(pipes, nar ? { scaleY: 0, duration: 1, stagger: 0.12, ease: 'power2.inOut', clearProps: 'transform' } : { scaleX: 0, duration: 1, stagger: 0.12, ease: 'power2.inOut', clearProps: 'transform' }, 0.05);
-    var forms = [].filter.call(el.querySelectorAll('.aq-grade-mains__form'), function (f) { var h = f.querySelector('.aq-grade-mains__head'); return h && h.offsetParent !== null });
-    forms.forEach(function (f, i) {
-      var at = 0.5 + i * (nar ? 0.12 : 0.09);
-      tl.from(f.querySelector('.aq-grade-mains__head'), { y: 14, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at);
-      tl.from(f.querySelector('.aq-grade-mains__drop'), nar ? { scaleX: 0, duration: 0.5, ease: 'power2.inOut', clearProps: 'transform' } : { scaleY: 0, duration: 0.55, ease: 'power2.inOut', clearProps: 'transform' }, at + 0.2);
-      tl.from(f.querySelectorAll('.aq-grade-mains__tap svg'), { scale: 0, duration: 0.45, stagger: 0.08, ease: 'back.out(2.2)', clearProps: 'transform' }, at + 0.55);
-      tl.from(f.querySelector('.aq-grade-mains__foot'), { y: 10, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, at + 0.7);
-    });
-    tl.from(vis('.aq-grade-mains__water'), nar ? { scaleY: 0, duration: 1.2, stagger: 0.1, ease: 'power1.inOut', clearProps: 'transform' } : { scaleX: 0, duration: 1.2, stagger: 0.1, ease: 'power1.inOut', clearProps: 'transform' }, 1.4);
-    m.on(el, function () { tl.play() }, 'top 75%');
-  });
-});
 /* GradeSwitch: the plate is screwed down (the screws turn a quarter), the strips wipe in one by one, and on each strip
-   the knob travels from the first slot to the minimum grade and clicks home with a small overshoot; slots your
+   the knob travels from the first slot to the minimum grade and settles home (aq-settle, no bounce); slots your
    specification may call for then trace in, dashed. One timeline, once on scroll-in, under 3.5 s. */
 AQmotion.fx('GradeSwitch', function (root, m) {
   root.querySelectorAll('.aq-grade-switch').forEach(function (el) {
@@ -2451,8 +2528,8 @@ AQmotion.fx('GradeSwitch', function (root, m) {
       var at = 0.2 + i * 0.3, sw = r.querySelector('.aq-grade-switch__sw'), k = sw ? +getComputedStyle(sw).getPropertyValue('--k') || 0 : 0, knob = r.querySelector('.aq-grade-switch__knob');
       tl.fromTo(r, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, at);
       if (knob) {
-        if (k > 0) tl.from(knob, { xPercent: -100 * k, duration: 0.7, ease: 'back.out(1.6)', clearProps: 'transform' }, at + 0.45);
-        else tl.from(knob, { scale: 0.6, autoAlpha: 0, duration: 0.5, ease: 'back.out(2)', clearProps: 'transform,opacity,visibility' }, at + 0.45);
+        if (k > 0) tl.from(knob, { xPercent: -100 * k, duration: 0.7, ease: 'aq-settle', clearProps: 'transform' }, at + 0.45);
+        else tl.from(knob, { scale: 0.6, autoAlpha: 0, duration: 0.5, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, at + 0.45);
       }
       var alt = r.querySelectorAll('.aq-grade-switch__slot.is-alt');
       if (alt.length) tl.from(alt, { autoAlpha: 0, scale: 0.9, duration: 0.4, clearProps: 'transform,opacity,visibility' }, at + 0.9);
@@ -4032,27 +4109,6 @@ AQmotion.fx('NotesRegister', function (root, m) {
       if (fold) tl.to(fold, { autoAlpha: 1, duration: 0.3, clearProps: 'opacity,visibility' }, end);
       if (block && !phone) tl.to(block, { autoAlpha: 1, duration: 0.3, clearProps: 'opacity,visibility' }, end);
     }
-  });
-});
-/* NumeralIndex: the index is ruled and set like type. Each rule draws across from the left, the outline numeral rolls up
-   out of its slot as its digits decode, the situation and its need rise in, and the go-cell wipes open from the left.
-   Rows follow one another down the index. One timeline, once on scroll-in, under 4 s; nothing under reduced motion. */
-AQmotion.fx('NumeralIndex', function (root, m) {
-  root.querySelectorAll('.aq-numeral-index').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var rows = [].slice.call(el.querySelectorAll('.aq-numeral-index__row'));
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    rows.forEach(function (r, i) {
-      var at = i * 0.22, n = r.querySelector('.aq-numeral-index__n > span');
-      tl.from(r.querySelector('.aq-numeral-index__rule'), { scaleX: 0, duration: 0.9, ease: 'power2.inOut', clearProps: 'transform' }, at);
-      if (n) {
-        tl.from(n, { yPercent: 100, duration: 0.9, ease: 'power4.out', clearProps: 'transform' }, at + 0.15);
-        if (window.ScrambleTextPlugin) tl.to(n, { duration: 0.6, scrambleText: { text: n.textContent, chars: '0123456789', speed: 0.6 }, ease: 'none' }, at + 0.15);
-      }
-      tl.from(r.querySelectorAll('.aq-numeral-index__t, .aq-numeral-index__need'), { y: 18, autoAlpha: 0, duration: 0.6, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, at + 0.25);
-      tl.fromTo(r.querySelector('.aq-numeral-index__go'), { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, at + 0.35);
-    });
-    m.on(el, function () { tl.play() }, 'top 80%');
   });
 });
 /* OptionChecker: the field opens like shutters, then the blueprint draws and the options follow.
@@ -6552,30 +6608,6 @@ AQmotion.fx('TraceLines', function (root, m) {
         t += 0.42;
       });
     });
-    m.on(el, function () { tl.play() }, 'top 75%');
-  });
-});
-/* UrsGate: the project line runs out towards the gate; as it passes each decision the stem grows from the line to the
-   decision, its node seats, the numeral rolls up and the words rise in. The water follows along the line, the gate bar
-   drops across its end and the giant word wipes in behind it. One timeline, once on scroll-in, under 4.5 s. */
-AQmotion.fx('UrsGate', function (root, m) {
-  root.querySelectorAll('.aq-urs-gate').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var nar = m.narrow(), tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    var axis = el.querySelector('.aq-urs-gate__axis'), water = el.querySelector('.aq-urs-gate__water');
-    tl.from(axis, nar ? { scaleY: 0, duration: 1.6, ease: 'power1.inOut', clearProps: 'transform' } : { scaleX: 0, duration: 1.6, ease: 'power1.inOut', clearProps: 'transform' }, 0);
-    var items = [].filter.call(el.querySelectorAll('.aq-urs-gate__item'), function (x) { return x.offsetParent !== null });
-    items.forEach(function (it, i) {
-      var at = 0.2 + i * 0.26, n = it.querySelector('.aq-urs-gate__n > span');
-      tl.from(it.querySelector('.aq-urs-gate__stem'), nar ? { scaleX: 0, duration: 0.4, clearProps: 'transform' } : { scaleY: 0, duration: 0.45, ease: 'power2.out', clearProps: 'transform' }, at);
-      tl.from(it.querySelector('.aq-urs-gate__node'), { scale: 0, duration: 0.4, ease: 'back.out(2.5)', clearProps: 'transform' }, at);
-      if (n) tl.from(n, { yPercent: it.classList.contains('is-low') && !nar ? -100 : 100, duration: 0.8, ease: 'power4.out', clearProps: 'transform' }, at + 0.2);
-      tl.from(it.querySelectorAll('.aq-urs-gate__t, .aq-urs-gate__d, .aq-urs-gate__link'), { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.07, clearProps: 'transform,opacity,visibility' }, at + 0.3);
-    });
-    tl.from(water, nar ? { scaleY: 0, duration: 1.4, ease: 'power1.inOut', clearProps: 'transform' } : { scaleX: 0, duration: 1.4, ease: 'power1.inOut', clearProps: 'transform' }, 0.9);
-    tl.from(el.querySelector('.aq-urs-gate__bar'), nar ? { scaleX: 0, duration: 0.5, ease: 'power3.inOut', clearProps: 'transform' } : { scaleY: 0, duration: 0.5, ease: 'power3.inOut', clearProps: 'transform' }, 2.1);
-    tl.fromTo(el.querySelector('.aq-urs-gate__word'), { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1, ease: 'power2.inOut', clearProps: 'clipPath' }, 2.35);
-    tl.from(el.querySelector('.aq-urs-gate__mark'), { autoAlpha: 0, x: -8, duration: 0.4, clearProps: 'transform,opacity,visibility' }, 2.5);
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
