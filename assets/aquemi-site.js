@@ -1400,6 +1400,33 @@ LOOKS['approval-merge']=function(b,H){var C=b.cols||[],R=b.rows||[],K='aq-approv
  var bus=one?'<div class="'+K+'__bus" aria-hidden="true"><span class="'+K+'__busline"></span><span class="'+K+'__buslit"></span><span class="'+K+'__big"><span class="'+K+'__bigk">'+tx(C[2]||'')+'</span><span class="'+K+'__bigv">'+tx(ap[0])+'</span></span></div>':'';
  var inner='<div class="'+K+(one?' is-one':'')+'">'+lh+'<div class="'+K+'__body"><ol class="'+K+'__rows" role="list">'+rows+'</ol>'+bus+'</div></div>';
  return sec(head+wFold(b,R.length,inner,b.fold_noun||b.caption_noun||'requests'),K+'-sec')};
+/* Look "audit-manifold" -> AuditManifold (design-system/components/AuditManifold): an evidence table (who reads, what
+   they read, where we answer it) set on a navy blueprint sheet, where the column joins are pipework. Between the
+   first and second column, and between the second and third, a twin-wall header runs down the table; at every row a
+   branch tees off it, through a diaphragm valve, into the next cell and ends at a flange. Each reader's row is a route:
+   the auditor, through what they read, to the page where we answer it. Pointing at or focusing a row opens its valves
+   and runs the water along its two branches (motion.js).
+   Fields, as the evidence table: h, intro, cols [who, read, answer], rows [who, read, {t, link, intent} or text], fold,
+   fold_noun. Concept: ind-meddevice.3 (auditor table on a navy blueprint grid, double-line manifolds with valves
+   feeding each row across the columns). */
+(function(){
+var VALVE='<svg class="aq-audit-manifold__valve" viewBox="0 0 28 22" aria-hidden="true" focusable="false"><path class="aq-audit-manifold__stem" d="M14 15V5M9 4H19"/><path class="aq-audit-manifold__body" d="M3 9L14 15L3 21ZM25 9L14 15L25 21Z"/></svg>';
+var GRID='<svg class="aq-audit-manifold__grid" aria-hidden="true" focusable="false"><defs><pattern id="amgrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24"/></pattern>'
+ +'<pattern id="amgrid5" width="120" height="120" patternUnits="userSpaceOnUse"><path class="aq-audit-manifold__g5" d="M120 0H0V120"/></pattern></defs><rect width="100%" height="100%" fill="url(#amgrid)"/><rect width="100%" height="100%" fill="url(#amgrid5)"/></svg>';
+function pipe(k){return '<span class="aq-audit-manifold__pipe aq-audit-manifold__pipe--'+k+'" aria-hidden="true"><span class="aq-audit-manifold__hdr"><i class="aq-audit-manifold__w"></i></span>'
+ +'<span class="aq-audit-manifold__br"><i class="aq-audit-manifold__w"></i></span>'+VALVE+'<span class="aq-audit-manifold__fl"></span></span>'}
+LOOKS['audit-manifold']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
+ var rows=R.map(function(r,i){var go=r[2],lk=go&&typeof go==='object'&&go.link&&wp(go.link);
+  var ans=lk?'<a class="aq-audit-manifold__link" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'>'+tx(go.t)+'</a>'
+   :(go?'<span class="aq-audit-manifold__link">'+tcell(go)+'</span>':'');
+  return fli('<li class="aq-audit-manifold__row'+(i===0?' is-first':'')+(i===n-1?' is-last':'')+'" data-k="'+i+'">'
+   +'<div class="aq-audit-manifold__who"><span class="aq-audit-manifold__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-audit-manifold__t">'+tx(r[0])+'</h3></div>'
+   +pipe('a')+'<div class="aq-audit-manifold__read"><span class="aq-audit-manifold__k">'+tx(C[1]||'')+'</span><p class="aq-audit-manifold__v">'+tx(r[1])+'</p></div>'
+   +pipe('b')+'<div class="aq-audit-manifold__go"><span class="aq-audit-manifold__k">'+tx(C[2]||'')+'</span>'+ans+'</div></li>',b,i)}).join('');
+ var colh='<p class="aq-audit-manifold__colh" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span></span><span>'+tx(C[1]||'')+'</span><span></span><span>'+tx(C[2]||'')+'</span></p>';
+ return '<section class="aq-section aq-band--navy aq-audit-manifold-sec">'+GRID+'<div class="aq-in aq-stack-l">'+H
+  +'<div class="aq-audit-manifold">'+colh+wFold(b,n,'<ol class="aq-audit-manifold__rows">'+rows+'</ol>',b.fold_noun)+'</div></div></section>'};
+})();
 /* Look "battery-limit" -> BatteryLimit (design-system/components/BatteryLimit): a spec block of site requirements on a
    split band, navy on the left and limestone on the right; the divide is the battery limit, drawn as a P&ID battery
    limit line (dash and dot) with its name set vertically. The row that is the battery limit itself sits on the seam,
@@ -3914,25 +3941,6 @@ LOOKS['proof-folders']=function(b,H){var C=b.cols||[],R=b.rows||[];
     +(go?'<div class="aq-proof-folders__go">'+k(3)+'<p class="aq-proof-folders__label">'+go+'</p></div>':'')
    +'</div></li>'}).join('')+'</ol>';
  return sec(H+'<div class="aq-proof-folders">'+heads+wFold(b,R.length,list,b.fold_noun||'standards')+'</div>','aq-proof-folders-sec')};
-/* Look "reader-split" -> ReaderSplit (design-system/components/ReaderSplit): an evidence table (who, what they read,
-   where we answer it) on a band split down the middle: the readers stand on the navy half, what each one reads and
-   where we answer it sit across the seam on the limestone half, row against row. The seam is a drawn line with one
-   node per row; hovering a row lights its node and draws a tie across the seam.
-   Fields, as the evidence table: h, intro, cols, rows [who, read, {t, link, intent}], fold, fold_noun.
-   Concept: systems.2 (navy/limestone split where the seam is the boundary; STYLE-ATLAS hybrid 4, "battery-limit split,
-   calm", in light type). */
-(function(){
-LOOKS['reader-split']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
- var rows=R.map(function(r,i){var go=r[2],lk=go&&typeof go==='object'&&go.link&&wp(go.link);
-  return fli('<li class="aq-reader-split__row"><div class="aq-reader-split__who">'+idx(i)+'<h3 class="aq-reader-split__t">'+tx(r[0])+'</h3></div>'
-   +'<span class="aq-reader-split__tie" aria-hidden="true"><span class="aq-reader-split__node"></span></span>'
-   +'<div class="aq-reader-split__what"><p class="aq-reader-split__read">'+tx(r[1])+'</p>'
-   +(lk?'<a class="aq-reader-split__go" href="#'+e(go.link)+'" data-wp="'+e(go.link)+'"'+(go.intent?' data-intent="'+e(go.intent)+'"':'')+'><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tx(go.t)+'</span></a>'
-     :(go?'<p class="aq-reader-split__go"><span class="aq-reader-split__k">'+tx(C[2]||'')+'</span><span>'+tcell(go)+'</span></p>':''))+'</div></li>',b,i)}).join('');
- var colh='<p class="aq-reader-split__colh" aria-hidden="true"><span>'+tx(C[0]||'')+'</span><span>'+tx(C[1]||'')+'</span></p>';
- return '<section class="aq-section aq-band--split aq-reader-split-sec"><span class="aq-reader-split__ground" aria-hidden="true"></span><div class="aq-in"><div class="aq-reader-split">'
-  +'<div class="aq-reader-split__head">'+H+'</div>'+colh+wFold(b,n,'<ol class="aq-reader-split__rows">'+rows+'</ol>',b.fold_noun)+'</div></div></section>'};
-})();
 /* Look "record-anatomy" -> RecordAnatomy (design-system/components/RecordAnatomy): an explainer (prose, as
    "explainer") of what a published record carries, drawn as the anatomy of one specimen record. Left, a limestone
    record sheet in zones, one per point, each zone a small drawing of that part of the record with its number stamped
@@ -5087,21 +5095,52 @@ LOOKS['stair-router']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length,L=b
   +(w1?'<p class="aq-stair-router__go" aria-hidden="true">'+e(w1)+'</p>':'')
   +'<div class="aq-in"><div class="aq-stair-router" style="--n:'+n+'">'+H
   +'<ol class="aq-stair-router__flight">'+steps+'</ol><span class="aq-stair-router__drop" aria-hidden="true"></span></div></div></section>'};
-/* Look "standard-tiles" -> StandardTiles (design-system/components/StandardTiles): a short grid of linked items, each
-   carrying a standard or control tag, set as a Swiss row of tall tiles where the tag is the hero: set large in Geist
-   Mono Light at the top of the tile, the item's line icon drawn large beside the count, the title and one line under a
-   hairline, an arrow at the foot. The first tile is navy. Each tile is one link.
-   Fields, as grid: h, intro, items [{t, d, icon, tag, link}]. Concept: sys-pw.2 (Swiss tiles, oversized values) and
-   home's industry-feed (the standard set huge as the evidence). */
+/* Look "standard-tiles" -> StandardTiles (design-system/components/StandardTiles): a short grid of linked items set as a
+   Swiss tile grid, three across (pass 9b, concept ind-meddevice.2). Each item is one linked tile, alternately navy and
+   limestone: a huge slash-numbered count ("01/") in Geist Mono Light, a hairline, the title and one line, and its
+   standard or control tag in an outlined mono tag. Two more tiles fill the grid: a navy blueprint tile that draws the
+   item being pointed at (IsoKit line drawings chosen by the item's icon: ro-membrane -> RO rack, loop -> tank and
+   loop, conductivity -> analyser and control panel, valve -> a valve on a run with a gauge; first item by default),
+   and a flow-blue block that sets that item's tag large. Both are aria-hidden: they repeat what the tiles say.
+   Fields, as grid: h, intro, items [{t, d, icon, tag, link}]. Concept: ind-meddevice.2 (3 + 3 tile grid of slash-numbered
+   navy and limestone link tiles, one blueprint tile, one abstract steel-blue tile). */
 (function(){
+function stDraw(icon,i){var inner='',pts;
+ if(icon==='ro-membrane'){inner=isoPart('ro',0,0,0,1,{id:'s'})+'';pts=[[0,0,0],[112,0,0],[112,26,0],[0,26,0],[0,0,80],[112,26,70]]}
+ else if(icon==='loop'){var tk=isoPart('tank',0,0,0,1,{id:'s'}),pu=isoPart('pump',62,30,0,1,{id:'s'});
+  var lp=isoPipe(isoRoute(tk.ports.out,pu.ports.in,'xyz'),{r:2.2,caps:false});
+  var rt=isoPipe([pu.ports.out,[pu.ports.out[0],pu.ports.out[1],96],[0,pu.ports.out[1],96],[0,0,96]],{r:2.2,caps:false});
+  inner=[tk,lp,pu,rt].join('');pts=[[-24,-24,0],[90,40,0],[0,0,100],[60,40,100],[-24,24,0]]}
+ else if(icon==='conductivity'){var an=isoPart('analyzer',0,30,0,1.3,{id:'s'}),pn=isoPart('panel',60,0,0,1.3,{id:'s'});
+  var ln=isoPipe([[-40,60,14],[90,60,14]],{r:2.2,caps:'ends'});inner=[pn,ln,an].join('');pts=[[-40,60,14],[90,60,14],[60,0,72],[0,30,70],[40,-10,0],[90,60,0]]}
+ else if(icon==='valve'){var p1=isoPipe([[-60,0,24],[70,0,24]],{r:3,caps:'ends',flanges:'all'}),vl=isoPart('valve',0,0,24,2,{id:'s'}),gg=isoPart('gauge',40,0,27,1.6,{id:'s'});
+  inner=[p1,vl,gg].join('');pts=[[-64,0,24],[74,0,24],[0,0,50],[40,0,48],[-64,0,10]]}
+ else return '';
+ var bx=isoBounds(pts,16),W=Math.round(bx.w),H=Math.round(bx.h);
+ return '<span class="aq-standard-tiles__layer'+(i===0?' is-on':'')+'" data-k="'+i+'">'+isoSvg(W,H,inner,'aq-iso--navy',{origin:[-bx.x,-bx.y]})+'</span>'}
 LOOKS['standard-tiles']=function(b,H){var I=b.items||[],n=I.length;
- var tiles=I.map(function(it,i){var ic=isIcon(it.icon)?wIcon(it.icon,'aq-standard-tiles__ic'):'';
-  var inner='<span class="aq-standard-tiles__top" aria-hidden="true"><span class="aq-standard-tiles__no">'+(i<9?'0':'')+(i+1)+' / '+(n<10?'0':'')+n+'</span>'+ic+'</span>'
-   +(it.tag?'<span class="aq-standard-tiles__tag'+(/\d/.test(it.tag)?'':' is-word')+'">'+tx(it.tag)+'</span>':'<span></span>')
+ var tiles=I.map(function(it,i){var lk=it.link&&wp(it.link);
+  var inner='<span class="aq-standard-tiles__no" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'<span class="aq-standard-tiles__sl">/</span></span>'
+   +(it.tag?'<span class="aq-standard-tiles__tag">'+tx(it.tag)+'</span>':'')
    +'<div class="aq-standard-tiles__body"><h3 class="aq-standard-tiles__t">'+tx(it.t)+'</h3>'+(it.d?'<span class="aq-standard-tiles__d">'+tx(it.d)+'</span>':'')+'</div>'
-   +(it.link&&wp(it.link)?'<span class="aq-standard-tiles__arrow" aria-hidden="true"></span>':'<span></span>');
-  return '<li class="aq-standard-tiles__tile'+(i===0?' is-lead':'')+'">'+(it.link&&wp(it.link)?'<a class="aq-standard-tiles__in" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-standard-tiles__in">'+inner+'</div>')+'</li>'}).join('');
- return sec(H+'<ol class="aq-standard-tiles" style="--n:'+n+'">'+tiles+'</ol>','aq-standard-tiles-sec')};
+   +(lk?'<span class="aq-standard-tiles__arrow" aria-hidden="true"></span>':'');
+  return '<li class="aq-standard-tiles__tile '+(i%2?'is-stone':'is-navy')+'" data-k="'+i+'">'+(lk?'<a class="aq-standard-tiles__in" href="#'+e(it.link)+'" data-wp="'+e(it.link)+'">'+inner+'</a>':'<div class="aq-standard-tiles__in">'+inner+'</div>')+'</li>'}).join('');
+ var layers=I.map(function(it,i){return stDraw(it.icon,i)}).join(''),first=I[0]||{};
+ var extra=(layers?'<li class="aq-standard-tiles__plate" aria-hidden="true"><span class="aq-standard-tiles__frame"></span>'+layers+'</li>':'')
+  +'<li class="aq-standard-tiles__block" aria-hidden="true"><span class="aq-standard-tiles__wedge"></span><span class="aq-standard-tiles__big">'+tx(first.tag||'')+'</span></li>';
+ return sec(H+'<ol class="aq-standard-tiles" style="--n:'+n+'">'+tiles+extra+'</ol>','aq-standard-tiles-sec')};
+/* Pointing at or focusing a tile shows its drawing on the blueprint tile and its tag on the flow block.
+   Ported from Subframe Motion "Hover image preview list" (project-index), MIT, (c) 2026 Subframe: mouse pointer-enter or
+   focus selects, the selection persists (no reset on leave), the panel shows the selected layer in 240 ms
+   (.2/.85/.25/1, CSS); instant under reduced motion. */
+function stPick(t){var w=t.closest('.aq-standard-tiles');if(!w||t.classList.contains('is-on'))return;var k=t.getAttribute('data-k');
+ [].forEach.call(w.querySelectorAll('.aq-standard-tiles__tile'),function(x){x.classList.toggle('is-on',x===t)});
+ var L=w.querySelectorAll('.aq-standard-tiles__layer[data-k="'+k+'"]');if(L.length)[].forEach.call(w.querySelectorAll('.aq-standard-tiles__layer'),function(x){x.classList.toggle('is-on',x.getAttribute('data-k')===k)});
+ var tag=t.querySelector('.aq-standard-tiles__tag'),big=w.querySelector('.aq-standard-tiles__big');
+ if(big&&tag){big.innerHTML=tag.innerHTML;big.classList.remove('is-tick');void big.offsetWidth;big.classList.add('is-tick')}}
+if(typeof document!=='undefined'&&document.addEventListener){
+ document.addEventListener('pointerover',function(ev){if(ev.pointerType!=='mouse')return;var t=ev.target.closest&&ev.target.closest('.aq-standard-tiles__tile');if(t)stPick(t)});
+ document.addEventListener('focusin',function(ev){var t=ev.target.closest&&ev.target.closest('.aq-standard-tiles__tile');if(t)stPick(t)})}
 })();
 /* Look "standard-wires" -> StandardWires (design-system/components/StandardWires): a table of standards (as: "evidence"
    shape: standard, what it asks, where we answer it) on a navy blueprint ground, each answer wired to the equipment
@@ -5797,27 +5836,71 @@ LOOKS['walkdown-pins']=function(b,H){var R=b.rows||[],C=b.cols||[],LB=b.labels||
   var p=w.querySelector('.aq-walkdown-pins__pin[data-row="'+row.getAttribute('data-row')+'"]');if(p)p.classList.toggle('is-on',on)}
  ['pointerover','focusin'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-walkdown-pins__row');if(r)lit(r,true)})});
  ['pointerout','focusout'].forEach(function(t){document.addEventListener(t,function(ev){var r=ev.target.closest&&ev.target.closest('.aq-walkdown-pins__row');if(r&&!(ev.relatedTarget&&r.contains(ev.relatedTarget)))lit(r,false)})})})();
-/* Look "washer-trace" -> WasherTrace (design-system/components/WasherTrace): an explainer (prose, as "explainer") with
-   an art figure, told as the water's way into the machine. On a navy band the page's equipment drawing (assets/
-   illustrations/<art>.webp, painted limestone) stays pinned at the left while the points scroll past on the right;
-   each point owns a numbered hotspot on the drawing (its at: [x, y] in % of the drawing), and the water route runs
-   hotspot to hotspot in point order, as piping (down or up, then across). As a point reaches the middle of the screen its hotspot lights and the route
-   fills up to it. Without script, under reduced motion or on phones every hotspot and the whole route show.
-   Fields: h, intro, figure {kind: "art", art, ratio: [w, h] (the drawing's pixel size, default [740, 813])}, points [{t, d, at}]. Concept: compliance.3 (sticky cutaway beside a
-   rail of cards) with sys-pw.3's hotspots on the equipment. */
+/* Look "washer-trace" -> WasherTrace (design-system/components/WasherTrace): an explainer (prose, as "explainer")
+   told as the water's way from the loop into the machine, on a limestone sheet. One IsoKit line drawing (pass 9b,
+   concept ind-meddevice.1): the loop comes in at floor level, a pump lifts it into a header, the header carries a
+   diaphragm valve and drops into the washer through a sample point, and the water runs on into the wash chamber
+   (the washer is drawn here from IsoKit primitives: the kit has no washer part). Each point is a callout on a leader
+   from its part (point 1 at the header, 2 at the sample point, 3 in the chamber). Over the drawing, a navy readout:
+   a ruler of the route from the loop to the chamber with each point marked where it sits along the water's way, a
+   cursor at the water's reach, the reached point's number set huge and its name in an outlined tag.
+   Each callout's title is a button: pointing at it or focusing it runs the water to that point (motion.js).
+   Fields: h, intro, points [{t, d}] (the first three take the drawing's stations in order; at and figure are not
+   used by this look). Concept: ind-meddevice.1 (route schematic with three stations under a navy flow readout). */
 (function(){
-LOOKS['washer-trace']=function(b,H){var P=b.points||[],art=(b.figure&&b.figure.art)||WP,pts=P.filter(function(p){return p.at&&p.at.length===2});
- var RW=(b.figure&&b.figure.ratio||[740,813])[0],RH=(b.figure&&b.figure.ratio||[740,813])[1];
- var Q=pts.map(function(p){return [p.at[0]*RW/100,p.at[1]*RH/100]}),d='',stops=[0],acc=0;
- /* the route runs as piping: down (or up) from each hotspot, then across to the next */
- Q.forEach(function(q,i){if(!i){d='M'+q[0].toFixed(1)+' '+q[1].toFixed(1);return}var a=Q[i-1];d+='L'+a[0].toFixed(1)+' '+q[1].toFixed(1)+'L'+q[0].toFixed(1)+' '+q[1].toFixed(1);acc+=Math.abs(q[1]-a[1])+Math.abs(q[0]-a[0]);stops.push(Math.round(acc))});
- var hots=P.map(function(p,i){return p.at&&p.at.length===2?'<span class="aq-washer-trace__hot" data-k="'+i+'" style="left:'+(+p.at[0])+'%;top:'+(+p.at[1])+'%" aria-hidden="true"><span>'+(i+1)+'</span></span>':''}).join('');
- var route=d?'<svg class="aq-washer-trace__route" viewBox="0 0 '+RW+' '+RH+'" aria-hidden="true" focusable="false"><path class="aq-washer-trace__pipe" d="'+d+'"/><path class="aq-washer-trace__water" d="'+d+'" data-stops="'+stops.join(' ')+'"/></svg>':'';
- var fig='<div class="aq-washer-trace__stage"><div class="aq-washer-trace__fig" style="--ratio:'+RW+' / '+RH+'"><span class="aq-illustration aq-washer-trace__art" role="img" aria-label="'+e(ART[art]||'')+'" style="'+artMask(art)+'"></span>'+route+hots+'</div>'
-  +'<p class="aq-washer-trace__cap" aria-hidden="true"><span>Aquemi</span><span>'+e(b.nav||'')+'</span><span>'+P.length+' points</span></p></div>';
- var steps=P.map(function(p,i){return '<li class="aq-washer-trace__step" data-k="'+i+'"><span class="aq-washer-trace__n" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span>'
-  +'<h3 class="aq-washer-trace__t">'+tx(p.t)+'</h3>'+(p.d?'<p class="aq-washer-trace__d">'+tx(p.d)+'</p>':'')+'</li>'}).join('');
- return sec(H+'<div class="aq-washer-trace">'+fig+'<ol class="aq-washer-trace__steps">'+steps+'</ol></div>','aq-band--navy aq-washer-trace-sec')};
+var K=1.3;
+function wtWasher(){var b=isoB(0,0,0,1,0),W=150,D=120,H=165,f=D;
+ b.box(0,0,0,W,D,H);
+ /* control strip with a display and a status line */
+ b.rect('y',14,140,W-14,158,f);b.rect('y',22,144,62,154,f,'aq-iso__eq aq-iso__eq--glass');b.line([96,f,149],[130,f,149],'aq-iso__acc');
+ /* the chamber opening and its door frame */
+ b.rect('y',14,14,W-14,134,f);b.rect('y',20,20,W-20,128,f,'aq-iso__eq aq-iso__eq--alt');
+ return b.done('washer',{id:'chamber'})}
+/* the wash chamber seen through the opening: back wall, floor, left wall, a rack and the spray arm, clipped to the opening */
+function wtCavity(){var x0=20,x1=130,z0=20,z1=128,yf=120,yb=34,P=function(p){return isoT(isoP(p))};
+ var clip='M'+P([x0,yf,z0])+'L'+P([x1,yf,z0])+'L'+P([x1,yf,z1])+'L'+P([x0,yf,z1])+'Z';
+ var back=isoPoly([[x0,yb,z0],[x1,yb,z0],[x1,yb,z1],[x0,yb,z1]],1),floor=isoPoly([[x0,yb,z0],[x1,yb,z0],[x1,yf,z0],[x0,yf,z0]],1),left=isoPoly([[x0,yb,z0],[x0,yf,z0],[x0,yf,z1],[x0,yb,z1]],1);
+ /* two instrument baskets on their racks, wire mesh on the fronts */
+ var rack='';[[48,22],[86,20]].forEach(function(q){var z=q[0];rack+=isoBoxD([32,48,z],86,60,q[1])+isoPoly([[x0,48,z],[x1,48,z]]);
+  for(var i=1;i<8;i++){var u=32+i*86/8;rack+=isoPoly([[u,108,z],[u,108,z+q[1]]])}rack+=isoPoly([[32,108,z+q[1]/2],[118,108,z+q[1]/2]])});
+ var arm=isoPoly([[40,70,34],[118,70,34]]),jets='';for(var j=0;j<5;j++){var a=48+j*16;jets+=isoPoly([[a,70,36],[a,70,42]])}
+ return '<defs><clipPath id="wt-cav"><path d="'+clip+'"/></clipPath></defs><g clip-path="url(#wt-cav)" class="aq-iso__part" data-iso-id="chamber">'
+  +isoPath(back,'aq-iso__eq aq-iso__eq--alt')+isoPath(floor,'aq-iso__eq aq-iso__eq--alt')+isoPath(left,'aq-iso__eq')+isoPath(rack,'aq-iso__thin')+isoPath(arm+jets,'aq-iso__ln')
+  +'<path class="aq-iso__flow" data-iso-to="chamber" d="M'+P([110,70,128])+'L'+P([110,70,40])+'L'+P([46,70,40])+'"/></g>'}
+function wtScene(){
+ var pu=isoPart('pump',-200,60,0,1.6,{id:'loop'}),pi=pu.ports.in,po=pu.ports.out,y0=po[1],zH=235,xd=110,xv=40;
+ var p1=isoPipe([[-380,pi[1],pi[2]],pi],{r:3.4,id:'loop',to:'loop',caps:'start',flanges:'ends'});
+ var p2=isoPipe([po,[po[0],y0,zH],[xv,y0,zH]],{r:3.4,id:'loop',to:'inlet',caps:false,flanges:'ends'});
+ var p3=isoPipe([[xv,y0,zH],[xd,y0,zH],[xd,y0,165]],{r:3.4,id:'inlet',to:'chamber',caps:false,flanges:'ends'});
+ var vl=isoPart('valve',xv,y0,zH,1.6,{id:'inlet'});
+ var sp=isoPipe([[xd,y0,198],[xd,y0+24,198]],{r:1.6,id:'inlet',flow:false,caps:'end'}),sv=isoPart('valve',xd,y0+18,198,0.9,{id:'inlet',type:'ball',rot:1});
+ var inner=[p1,pu,wtWasher(),p2,p3,wtCavity(),vl,sp,sv,isoArrow([-330,pi[1],pi[2]],'x',{size:7}),isoArrow([-60,y0,zH],'x',{size:7})].join('');
+ /* the stations: where each point's leader starts (3D), and the route length to it (screen, for the readout's ruler) */
+ var A=[[po[0],y0,zH],[xd,y0+24,198],[80,70,52]];
+ function L2(pts){var s=0;for(var i=1;i<pts.length;i++){var a=isoP(pts[i-1]),c=isoP(pts[i]);s+=Math.hypot(c[0]-a[0],c[1]-a[1])}return s}
+ var l1=L2([[-380,pi[1],pi[2]],pi]),l2=L2([po,[po[0],y0,zH],[xv,y0,zH]]),l3=L2([[xv,y0,zH],[xd,y0,zH],[xd,y0,165]])+L2([[110,70,128],[110,70,40],[46,70,40]]);
+ var T=l1+l2+l3,stops=[l1/T,(l1+l2)/T,1];
+ return {inner:inner,A:A,stops:stops}}
+LOOKS['washer-trace']=function(b,H){var P=(b.points||[]).slice(0,3),n=P.length,S=wtScene(),W=1200,HH=680,org=[640,470];
+ function at(p){var q=isoP(p);return [org[0]+q[0]*K,org[1]+q[1]*K]}
+ /* leaders in viewBox space: 1 left from the header, 2 and 3 right to the callout column */
+ var X=[330,860,860],Y=[null,null,526],ends=[],lead='';
+ S.A.slice(0,n).forEach(function(a,i){var s=at(a),y=Y[i]==null?s[1]:Y[i],e=[X[i],y],mid=i===2?[s[0]+(y-s[1])*0.9,y]:e;
+  lead+='<g class="aq-washer-trace__lead" data-k="'+i+'"><path d="M'+isoF(s[0])+' '+isoF(s[1])+'L'+isoF(mid[0])+' '+isoF(mid[1])+'L'+isoF(e[0])+' '+isoF(e[1])+'"/><circle cx="'+isoF(s[0])+'" cy="'+isoF(s[1])+'" r="3.2"/></g>';
+  ends.push({x:e[0]/W*100,y:e[1]/HH*100,sx:s[0]/W*100,sy:s[1]/HH*100})});
+ var svg='<svg class="aq-iso aq-iso--limestone aq-washer-trace__svg" viewBox="0 0 '+W+' '+HH+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">'
+  +'<g transform="translate('+org[0]+' '+org[1]+') scale('+K+')">'+S.inner+'</g><g class="aq-washer-trace__leads">'+lead+'</g></svg>';
+ var nums=P.map(function(p,i){return '<span class="aq-washer-trace__pin" data-k="'+i+'" style="left:'+ends[i].sx.toFixed(2)+'%;top:'+ends[i].sy.toFixed(2)+'%" aria-hidden="true">'+(i+1)+'</span>'}).join('');
+ var pts=P.map(function(p,i){var E=ends[i];return '<li class="aq-washer-trace__pt'+(i===0?' is-left':'')+'" data-k="'+i+'" style="--x:'+E.x.toFixed(2)+'%;--y:'+E.y.toFixed(2)+'%">'
+  +'<span class="aq-washer-trace__n" aria-hidden="true">0'+(i+1)+'</span><h3 class="aq-washer-trace__t"><button type="button" class="aq-washer-trace__go" data-k="'+i+'">'+tx(p.t)+'</button></h3>'
+  +(p.d?'<p class="aq-washer-trace__d">'+tx(p.d)+'</p>':'')+'</li>'}).join('');
+ /* readout: ruler ticks, the stations marked where they sit along the route, the reached point huge */
+ var ticks='';for(var t=0;t<=40;t++)ticks+='<path d="M'+(t*10)+' '+(t%5?14:8)+'V22"/>';
+ var marks=P.map(function(p,i){return '<span class="aq-washer-trace__mark" data-k="'+i+'" style="left:'+(S.stops[i]*100).toFixed(2)+'%">0'+(i+1)+'</span>'}).join('');
+ var last=P[n-1]||{t:''};
+ var read='<div class="aq-washer-trace__read" aria-hidden="true" style="--reach:1"><div class="aq-washer-trace__ruler"><svg viewBox="0 0 400 22" preserveAspectRatio="none" focusable="false">'+ticks+'</svg>'+marks+'<span class="aq-washer-trace__cur"></span></div>'
+  +'<p class="aq-washer-trace__big"><span class="aq-washer-trace__rn">0'+n+'</span><span class="aq-washer-trace__of">/ 0'+n+'</span></p><p class="aq-washer-trace__tag">'+tx(last.t)+'</p></div>';
+ return sec(H+'<div class="aq-washer-trace" data-stops="'+S.stops.map(function(s){return s.toFixed(4)}).join(' ')+'"><div class="aq-washer-trace__fig"><div class="aq-washer-trace__draw">'+svg+nums+'</div>'+read+'</div><ol class="aq-washer-trace__pts">'+pts+'</ol></div>','aq-band--limestone aq-washer-trace-sec')};
 })();
 /* Look "wet-run-hmi" -> WetRunHmi (design-system/components/WetRunHmi): an explainer (prose, as "explainer") read
    along the test bay's water route. On a navy blueprint ground, one continuous double-wall pipe runs across the

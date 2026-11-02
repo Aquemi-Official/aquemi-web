@@ -8,4 +8,4 @@ DerivationSheet works a grade table as an engineering derivation on a calculatio
 
 ## Motion
 
-The derivation is written out line by line: the margin rule draws down; per line the number is set, the step writes in from the left, the arrow draws, the limit appears (a hero figure counts up to its value), the double arrow draws and the answer is boxed. Once on scroll-in, under 5 s; nothing under reduced motion; complete without script.
+The derivation is written out line by line: the margin rule draws down; per line the number is set, the step writes in from the left, the arrow draws, the limit appears (a hero figure rolls up to its value on odometer wheels, sliding-number via `m.count`), the double arrow draws and the answer is boxed. Once on scroll-in, under 5 s; nothing under reduced motion; complete without script. Pointing at a line re-runs its working: the arrow and then the implication draw again (0.2 s each) while the answer box turns flow.

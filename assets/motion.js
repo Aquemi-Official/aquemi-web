@@ -467,6 +467,62 @@ AQmotion.fx('ApprovalMerge', function (root, m) {
     });
   });
 });
+/* AuditManifold: the water fills the table's pipework the way a workflow runs.
+   Ported from Subframe Motion "Animated workflow diagram" (process-choreography), MIT, (c) 2026 Subframe: one progress
+   value drives everything through overlapping segments (segment(p, start, end) clamped 0..1): the first header fills
+   down row by row, each row's branch fills as the header passes it, then the second header and its branches, and each
+   answer "arrives" when its branch reaches it (opacity, 6 px rise and 0.96 -> 1 scale on a cubic ease-out), as the
+   example's outputs land. One run on scroll-in, 2.4 s, then the markup is exactly the static page.
+   Pointing at or focusing a row is visitor-driven feedback: its valves open (CSS), its two branches run again (0.18 s
+   each, the second after the first) and the other rows step back. Nothing under reduced motion. */
+AQmotion.fx('AuditManifold', function (root, m) {
+  root.querySelectorAll('.aq-audit-manifold').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var rows = [].slice.call(el.querySelectorAll('.aq-audit-manifold__row')).filter(function (r) { return r.offsetParent !== null });
+    var R = rows.length; if (!R) return;
+    function seg(v, a, b) { return Math.max(0, Math.min(1, (v - a) / (b - a))) }
+    function out(v) { return 1 - Math.pow(1 - v, 3) }
+    var parts = rows.map(function (r) {
+      var q = function (s) { return r.querySelector(s) };
+      return { hA: q('.aq-audit-manifold__pipe--a .aq-audit-manifold__hdr .aq-audit-manifold__w'), bA: q('.aq-audit-manifold__pipe--a .aq-audit-manifold__br .aq-audit-manifold__w'),
+        hB: q('.aq-audit-manifold__pipe--b .aq-audit-manifold__hdr .aq-audit-manifold__w'), bB: q('.aq-audit-manifold__pipe--b .aq-audit-manifold__br .aq-audit-manifold__w'),
+        go: q('.aq-audit-manifold__go'), read: q('.aq-audit-manifold__read') };
+    });
+    var st = { p: 0 }, T = 0.3;
+    function paint() {
+      var p = st.p;
+      parts.forEach(function (o, i) {
+        var a0 = T * i / R, a1 = T * (i + 1) / R, am = T * (i + 0.5) / R;
+        if (o.hA) o.hA.style.transform = 'scaleY(' + seg(p, a0, a1).toFixed(3) + ')';
+        if (o.bA) o.bA.style.transform = 'scaleX(' + seg(p, am, am + 0.16).toFixed(3) + ')';
+        if (o.read) { var r = out(seg(p, am + 0.08, am + 0.24)); o.read.style.opacity = (0.35 + 0.65 * r).toFixed(3) }
+        if (o.hB) o.hB.style.transform = 'scaleY(' + seg(p, 0.36 + a0, 0.36 + a1).toFixed(3) + ')';
+        if (o.bB) o.bB.style.transform = 'scaleX(' + seg(p, 0.36 + am, 0.36 + am + 0.16).toFixed(3) + ')';
+        if (o.go) { var g = out(seg(p, 0.36 + am + 0.1, 0.36 + am + 0.3)); o.go.style.opacity = g.toFixed(3); o.go.style.transform = 'translateY(' + ((1 - g) * 6).toFixed(2) + 'px) scale(' + (0.96 + g * 0.04).toFixed(4) + ')' }
+      });
+    }
+    function clear() { parts.forEach(function (o) { [o.hA, o.bA, o.hB, o.bB, o.go, o.read].forEach(function (x) { if (x) { x.style.removeProperty('transform'); x.style.removeProperty('opacity') } }) }) }
+    paint();
+    var tl = m.tw(gsap.timeline({ paused: true }));
+    tl.from(el.querySelectorAll('.aq-audit-manifold__hdr, .aq-audit-manifold__br, .aq-audit-manifold__valve, .aq-audit-manifold__fl'), { autoAlpha: 0, duration: 0.4, stagger: { amount: 0.4 }, ease: 'power1.out', clearProps: 'opacity,visibility' }, 0);
+    tl.to(st, { p: 1, duration: 2.4, ease: 'none', onUpdate: paint, onComplete: clear }, 0.25);
+    m.on(el, function () { tl.play() }, 'top 75%');
+
+    /* rows: the visitor's pointer or focus opens a route */
+    function on(r, yes) {
+      r.classList.toggle('is-on', yes); el.classList.toggle('is-pointing', yes);
+      if (!yes || tl.isActive()) return;
+      var w = r.querySelectorAll('.aq-audit-manifold__br .aq-audit-manifold__w');
+      m.tw(gsap.fromTo(w, { scaleX: 0 }, { scaleX: 1, duration: 0.18, stagger: 0.18, ease: 'power2.out', overwrite: true, clearProps: 'transform' }));
+    }
+    el.querySelectorAll('.aq-audit-manifold__row').forEach(function (r) {
+      r.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse') on(r, true) });
+      r.addEventListener('pointerleave', function (ev) { if (ev.pointerType === 'mouse') on(r, false) });
+      r.addEventListener('focusin', function () { on(r, true) });
+      r.addEventListener('focusout', function (ev) { if (!r.contains(ev.relatedTarget)) on(r, false) });
+    });
+  });
+});
 /* BatteryLimit: the limit is drawn, then each side fills up to it. The battery limit line draws top to bottom and its
    name decodes; the navy half opens out from the seam to the left; the battery-limit card stamps down on the line;
    the side labels decode; then the cards come in from their own side in list order, alternating, and each one's leader
@@ -1334,8 +1390,8 @@ AQmotion.fx('DecisionValve', function (root, m) {
   });
 });
 /* DerivationSheet: the derivation is written out line by line, as on the pad. The margin rule draws down; on each line
-   the number is set, the step writes in from the left, the arrow draws, the limit appears (a hero figure counts up to
-   its value), the double arrow draws and the answer is boxed: the frame traces round it, then the underline. One
+   the number is set, the step writes in from the left, the arrow draws, the limit appears (a hero figure rolls up to
+   its value on odometer wheels, sliding-number via m.count), the double arrow draws and the answer is boxed: the frame traces round it, then the underline. One
    timeline, once on scroll-in, under 5 s; nothing under reduced motion, and the sheet is complete without script. */
 AQmotion.fx('DerivationSheet', function (root, m) {
   root.querySelectorAll('.aq-derivation-sheet').forEach(function (el) {
@@ -1349,15 +1405,20 @@ AQmotion.fx('DerivationSheet', function (root, m) {
       tl.fromTo(ln.querySelector('.aq-derivation-sheet__given'), { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.6, ease: 'power2.inOut', clearProps: 'clipPath' }, at + 0.05);
       if (draw && ops[0]) tl.fromTo(ln.querySelectorAll('.aq-derivation-sheet__op:not(.is-imp) path'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.35, ease: 'power1.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.45);
       tl.from(ln.querySelector('.aq-derivation-sheet__lim'), { autoAlpha: 0, y: 8, duration: 0.45, clearProps: 'transform,opacity,visibility' }, at + 0.6);
-      if (num) {
-        var end = parseFloat(num.textContent), dec = (num.textContent.split('.')[1] || '').length, o = { v: 0 }, txt = num.textContent;
-        if (!isNaN(end)) { num.setAttribute('aria-label', txt); tl.to(o, { v: end, duration: 0.9, ease: 'power2.out', onUpdate: function () { num.textContent = o.v.toFixed(dec) }, onComplete: function () { num.textContent = txt } }, at + 0.6) }
-      }
+      if (num) tl.call(function () { m.count(num, { now: true, duration: 1.1 }) }, null, at + 0.6);
       if (draw) tl.fromTo(ln.querySelectorAll('.aq-derivation-sheet__op.is-imp path'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.35, ease: 'power1.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, at + 0.9);
       tl.from(ln.querySelector('.aq-derivation-sheet__w'), { autoAlpha: 0, x: -8, duration: 0.4, clearProps: 'transform,opacity,visibility' }, at + 1.0);
       tl.fromTo(ln.querySelector('.aq-derivation-sheet__box'), { clipPath: 'polygon(0 0, 0 0, 0 0, 0 0)' }, { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', duration: 0.5, ease: 'power2.inOut', clearProps: 'clipPath' }, at + 1.1);
     });
     m.on(el, function () { tl.play() }, 'top 75%');
+    /* Pointing at a line re-runs its working: the arrow, then the implication, draw again (0.2 s each), the answer box
+       turns flow (CSS). Visitor-driven, so it may repeat; ignored while the entrance is still writing. */
+    if (draw) lines.forEach(function (ln) {
+      ln.addEventListener('pointerenter', function (ev) {
+        if (ev.pointerType !== 'mouse' || tl.isActive()) return;
+        m.tw(gsap.fromTo(ln.querySelectorAll('.aq-derivation-sheet__op path'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.2, stagger: 0.12, ease: 'power2.out', overwrite: true, clearProps: 'strokeDasharray,strokeDashoffset' }));
+      });
+    });
   });
 });
 /* DocHotspots: the skid develops like a print (wipe up from the base), then each document is pinned in turn: its
@@ -4887,25 +4948,6 @@ AQmotion.fx('Prose', function (root, m) {
     }, 'top 85%');
   });
 });
-/* ReaderSplit: the two halves meet across the seam. Row by row the reader slides in from the left, the node strikes on the seam, the tie shoots across
-   and the reading arrives from the right. One timeline, once on scroll-in, under 3.5 s. Folded rows are left alone. */
-AQmotion.fx('ReaderSplit', function (root, m) {
-  root.querySelectorAll('.aq-reader-split-sec').forEach(function (sec) {
-    var el = sec.querySelector('.aq-reader-split__rows'); if (!el || !m.free(el)) return; m.claim(el);
-    var nar = m.narrow(), tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    var rows = [].filter.call(el.querySelectorAll('.aq-reader-split__row'), function (r) { return r.offsetParent !== null });
-    rows.forEach(function (r, i) {
-      var at = 0.1 + i * 0.22;
-      tl.from(r.querySelector('.aq-reader-split__who'), { x: -40, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, at);
-      if (!nar) {
-        tl.from(r.querySelector('.aq-reader-split__node'), { scale: 0, rotation: 45, duration: 0.4, ease: 'back.out(2.5)', clearProps: 'transform' }, at + 0.25);
-        tl.fromTo(r.querySelector('.aq-reader-split__tie'), { clipPath: 'inset(0 50% 0 50%)' }, { clipPath: 'inset(0 0% 0 0%)', duration: 0.4, clearProps: 'clipPath' }, at + 0.3);
-      }
-      tl.from(r.querySelector('.aq-reader-split__what'), { x: nar ? 0 : 40, y: nar ? 12 : 0, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, at + 0.3);
-    });
-    m.on(el, function () { tl.play() }, 'top 75%');
-  });
-});
 /* Readout: the instrument powers up. The tick scale runs out along the bottom, the figure counts up to its value
    (integers and one-decimal values; a placeholder is left alone), the unit and condition drop in beside it, and the
    method tag lands on the reference line last. Under 3 s, once. */
@@ -5998,20 +6040,29 @@ AQmotion.fx('StairRouter', function (root, m) {
     if (go) { gsap.set(go, { clipPath: 'inset(0% 100% 0% 0%)' }); m.on(go, function () { strikeGo(m.tw(gsap.timeline()), 0) }, 'top 95%') }
   });
 });
-/* StandardTiles: the tiles are cut into the row like a poster (each wipes down from the top in turn), the count
-   decodes, the tag types itself in (ScrambleText to its own text) and the icon prints up; the title and line rise
-   last. One timeline, once on scroll-in, under 3 s. */
+/* StandardTiles: the grid is cut in along its diagonals (each tile wipes down from the top, 70 ms apart by row + column),
+   the slash numerals roll up on odometer wheels (sliding-number, m.count), the flow block's square opens from its
+   corner, and the blueprint tile draws its first system the IsoKit way. One timeline, once on scroll-in, under 3 s.
+   The pointer/focus selection (project-index port) lives in the renderer so it also works under reduced motion. */
 AQmotion.fx('StandardTiles', function (root, m) {
   root.querySelectorAll('.aq-standard-tiles').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
     var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    el.querySelectorAll('.aq-standard-tiles__tile').forEach(function (t, i) {
-      var at = i * 0.15, tag = t.querySelector('.aq-standard-tiles__tag');
-      tl.fromTo(t, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.8, ease: 'power3.inOut', clearProps: 'clipPath' }, at);
-      if (tag && window.ScrambleTextPlugin) { var txt = tag.textContent; tag.setAttribute('aria-label', txt); tl.to(tag, { duration: 0.9, scrambleText: { text: txt, chars: '<>0123456789', speed: 0.5, revealDelay: 0.2 }, ease: 'none' }, at + 0.3) }
-      tl.from(t.querySelector('.aq-standard-tiles__ic'), { y: 16, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, at + 0.35);
-      tl.from(t.querySelectorAll('.aq-standard-tiles__t, .aq-standard-tiles__d, .aq-standard-tiles__arrow'), { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, at + 0.5);
+    var cells = [].slice.call(el.children), cols = m.narrow() ? 1 : 3;
+    cells.forEach(function (c, i) {
+      var at = ((i % cols) + Math.floor(i / cols)) * 0.07;
+      tl.fromTo(c, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.7, ease: 'power3.inOut', clearProps: 'clipPath' }, at);
+      var no = c.querySelector('.aq-standard-tiles__no');
+      if (no) tl.call(function () { m.count(no, { now: true, duration: 0.9 }) }, null, at + 0.2);
+      var rise = c.querySelectorAll('.aq-standard-tiles__tag, .aq-standard-tiles__body, .aq-standard-tiles__arrow');
+      if (rise.length) tl.from(rise, { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, at + 0.35);
     });
+    var wedge = el.querySelector('.aq-standard-tiles__wedge');
+    if (wedge) tl.from(wedge, { scale: 0, duration: 0.8, ease: 'power3.inOut', clearProps: 'transform' }, 0.45);
+    var big = el.querySelector('.aq-standard-tiles__big');
+    if (big) tl.from(big, { y: 12, autoAlpha: 0, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 0.9);
+    var svg = el.querySelector('.aq-standard-tiles__layer.is-on svg.aq-iso');
+    if (svg && window.AQiso) { var it = AQiso.timeline(svg, m, { draw: 1, pipe: 0.5, flow: 0.8, drop: false }); if (it) { it.paused(false); tl.add(it, 0.5) } }
     m.on(el, function () { tl.play() }, 'top 80%');
   });
 });
@@ -6835,41 +6886,83 @@ AQmotion.fx('WalkdownPins', function (root, m) {
     m.on(sheet, function () { tl.play() }, 'top 75%');
   });
 });
-/* WasherTrace: on scroll-in the frame is drawn, the drawing prints up and the route's pipe lays from hotspot to
-   hotspot. Then, on desktop, the story follows the reader: as each point passes the middle of the screen its hotspot
-   lights (a small overshoot) and the water runs along the route up to it; scrolling back steps it back. The route
-   length per point is measured, so the water stops exactly at each hotspot. On phones and under reduced motion
-   everything shows at once. Each step tween is under 1 s; nothing loops. */
+/* WasherTrace: the drawing builds the IsoKit way (parts back to front, then the pipes), the leaders draw out to their
+   callouts, then the water runs from the loop to the chamber once: each station lights as the water reaches it, the
+   readout's cursor rides the water's reach along the ruler and its numeral and tag tick over to the station reached.
+   After that, pointing at or focusing a point's title seeks the water to that point (cue-scrubber): the water drains
+   back or runs on, stations ahead go dark and the readout follows; leaving the points runs it back to the chamber.
+   Ported from Subframe Motion "Chapter timeline scrubber" (cue-scrubber), MIT, (c) 2026 Subframe: the seek is one eased tween of a
+   single reach value (0.5 s to 0.9 s by distance, power2.inOut), interruptible, everything else derived from it.
+   Entrance under 5 s, nothing loops; nothing under reduced motion (the drawing, every callout and the readout at the
+   chamber are complete without script). */
 AQmotion.fx('WasherTrace', function (root, m) {
   root.querySelectorAll('.aq-washer-trace').forEach(function (el) {
     if (!m.free(el)) return; m.claim(el);
-    var fig = el.querySelector('.aq-washer-trace__fig'), art = el.querySelector('.aq-washer-trace__art'), pipe = el.querySelector('.aq-washer-trace__pipe'),
-      water = el.querySelector('.aq-washer-trace__water'), hots = [].slice.call(el.querySelectorAll('.aq-washer-trace__hot')), steps = [].slice.call(el.querySelectorAll('.aq-washer-trace__step'));
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    tl.fromTo(el.querySelector('.aq-washer-trace__stage'), { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.8, ease: 'power2.inOut', clearProps: 'clipPath' }, 0);
-    tl.from(art, { autoAlpha: 0, y: 24, duration: 1, clearProps: 'transform,opacity,visibility' }, 0.3);
-    if (pipe && window.DrawSVGPlugin) tl.fromTo(pipe, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.9, ease: 'power2.inOut', clearProps: 'strokeDasharray,strokeDashoffset' }, 0.8);
-    tl.from(hots, { scale: 0, duration: 0.45, stagger: 0.12, ease: 'back.out(2.2)', clearProps: 'transform' }, 1.1);
-    tl.from(steps.map(function (s) { return s.querySelector('.aq-washer-trace__n') }), { yPercent: 60, autoAlpha: 0, duration: 0.6, stagger: 0.1, clearProps: 'transform,opacity,visibility' }, 0.4);
-    if (m.narrow() || !water || !window.ScrollTrigger) { m.on(el, function () { tl.play() }, 'top 75%'); return }
-    // Desktop story: lengths along the route to each hotspot (data-stops, written by the renderer)
-    var L = water.getTotalLength(), cum = (water.getAttribute('data-stops') || '0').split(' ').map(Number);
-    var tot = cum[cum.length - 1] || 1;
-    el.classList.add('is-scroll');
-    water.style.strokeDasharray = L + ' ' + L; water.style.strokeDashoffset = L;
-    function go(k) {
-      steps.forEach(function (s, i) { s.classList.toggle('is-on', i === k) });
-      hots.forEach(function (h) { var i = +h.getAttribute('data-k'); h.classList.toggle('is-on', i === k) });
-      var f = k < 0 ? 0 : (cum[Math.min(k, cum.length - 1)] / tot);
-      if (k === 0) f = 0.02;
-      m.tw(gsap.to(water, { strokeDashoffset: L * (1 - f), duration: 0.9, ease: 'power2.inOut', overwrite: true }));
+    var svg = el.querySelector('svg.aq-iso'); if (!svg || !window.AQiso) return;
+    var read = el.querySelector('.aq-washer-trace__read'), rn = el.querySelector('.aq-washer-trace__rn'), tag = el.querySelector('.aq-washer-trace__tag');
+    var pts = [].slice.call(el.querySelectorAll('.aq-washer-trace__pt')), leads = [].slice.call(el.querySelectorAll('.aq-washer-trace__lead'));
+    var marks = [].slice.call(el.querySelectorAll('.aq-washer-trace__mark')), n = pts.length, IDS = ['loop', 'inlet', 'chamber'];
+    var titles = pts.map(function (p) { var t = p.querySelector('.aq-washer-trace__go'); return t ? t.textContent : '' });
+    var cur = -1;
+    function show(k) {
+      if (k === cur) return; cur = k;
+      if (rn) { rn.textContent = '0' + (k + 1); rn.classList.remove('is-tick'); void rn.offsetWidth; rn.classList.add('is-tick') }
+      if (tag) { tag.textContent = titles[k] || ''; tag.classList.remove('is-tick'); void tag.offsetWidth; tag.classList.add('is-tick') }
+      marks.forEach(function (mk, i) { mk.classList.toggle('is-on', i <= k) });
     }
-    steps.forEach(function (s, i) {
-      m.tw(ScrollTrigger.create({ trigger: s, start: 'top 55%', end: 'bottom 55%', onEnter: function () { go(i) }, onEnterBack: function () { go(i) }, onLeaveBack: function () { if (i === 0) go(-1) } }));
-    });
-    // Leaving the section downwards: leave the full route and every hotspot shown
-    m.tw(ScrollTrigger.create({ trigger: el, start: 'bottom 45%', onEnter: function () { go(steps.length - 1); m.tw(gsap.to(water, { strokeDashoffset: 0, duration: 0.6, overwrite: true })) } }));
-    m.on(el, function () { tl.play() }, 'top 75%');
+    function focus(k) {
+      pts.forEach(function (p, i) { p.classList.toggle('is-on', i === k) });
+      leads.forEach(function (l, i) { l.classList.toggle('is-on', i === k) });
+    }
+    var tl = AQiso.timeline(svg, m, { draw: 1.3, pipe: 0.8, flow: 1.9, keep: true, drop: true,
+      onStage: function (els, id) { var k = IDS.indexOf(id); if (k > -1 && k < n) { show(k); focus(k) } },
+      onDone: function () { focus(-1); ready() } });
+    if (!tl) return;
+    var tf = tl.labels.flow || 0, te = tl.labels.end || tf + 1.9;
+    tl.fromTo(read, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.7, ease: 'power2.inOut', clearProps: 'clipPath' }, 0);
+    tl.call(function () { show(0); marks.forEach(function (mk) { mk.classList.remove('is-on') }) }, null, 0.01);
+    tl.fromTo(read, { '--reach': 0 }, { '--reach': 1, duration: te - tf - 0.1, ease: 'none' }, tf);
+    if (window.DrawSVGPlugin) tl.fromTo(el.querySelectorAll('.aq-washer-trace__lead path'), { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.6, stagger: 0.12, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' }, 'pipes');
+    tl.from(pts, { autoAlpha: 0, y: 12, duration: 0.5, stagger: 0.12, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 'pipes+=0.3');
+    m.on(el, function () { tl.play() }, 'top 70%');
+
+    /* cue-scrubber: one reach value drives the water, the lit stations and the readout */
+    function ready() {
+      if (!window.DrawSVGPlugin) return;
+      var flows = [].slice.call(svg.querySelectorAll('.aq-iso__flow')), L = flows.map(function (f) { try { return f.getTotalLength() } catch (x) { return 1 } });
+      var tot = L.reduce(function (a, b) { return a + b }, 0) || 1, C = [], acc = 0, stops = [];
+      L.forEach(function (l) { C.push(acc); acc += l });
+      IDS.slice(0, n).forEach(function (id, k) {
+        var j = flows.findIndex(function (f) { var h = f.closest('[data-iso-to]'); return (f.getAttribute('data-iso-to') || (h && h.getAttribute('data-iso-to'))) === id });
+        stops[k] = j < 0 ? (k + 1) / n : (C[j] + L[j]) / tot;
+      });
+      stops[n - 1] = 1;
+      marks.forEach(function (mk, i) { mk.style.left = (stops[i] * 100).toFixed(2) + '%' });
+      var st = { r: 1 }, seek = null;
+      function apply() {
+        var R = st.r * tot;
+        flows.forEach(function (f, i) { var p = Math.max(0, Math.min(1, (R - C[i]) / L[i])); gsap.set(f, { drawSVG: '0% ' + (p * 100).toFixed(2) + '%' }) });
+        read.style.setProperty('--reach', st.r.toFixed(4));
+        var k = -1; stops.forEach(function (s, i) { if (st.r >= s - 0.002) k = i });
+        IDS.slice(0, n).forEach(function (id, i) { AQiso.light(svg, id, i <= k) });
+        if (k >= 0) show(k);
+      }
+      function go(k, hold) {
+        var to = k < 0 ? 1 : stops[k], d = Math.abs(to - st.r);
+        if (seek) seek.kill();
+        focus(hold ? k : -1);
+        seek = m.tw(gsap.to(st, { r: to, duration: d < 0.01 ? 0.01 : 0.5 + 0.4 * Math.min(1, d), ease: 'power2.inOut', onUpdate: apply,
+          onComplete: function () { if (st.r >= 1) flows.forEach(function (f) { f.style.removeProperty('stroke-dasharray'); f.style.removeProperty('stroke-dashoffset') }) } }));
+      }
+      pts.forEach(function (p, i) {
+        var b = p.querySelector('.aq-washer-trace__go');
+        p.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse') go(i, true) });
+        if (b) { b.addEventListener('focus', function () { go(i, true) }); b.addEventListener('click', function () { go(i, true) }) }
+      });
+      var list = el.querySelector('.aq-washer-trace__pts');
+      pts.forEach(function (p) { p.addEventListener('pointerleave', function (ev) { if (ev.pointerType === 'mouse' && !el.contains(document.activeElement)) go(-1) }) });
+      list.addEventListener('focusout', function (ev) { if (!list.contains(ev.relatedTarget)) go(-1) });
+    }
   });
 });
 /* WetRunHmi: the route is laid, then the skid runs with water. The pipe walls draw along the route, the symbols draw,

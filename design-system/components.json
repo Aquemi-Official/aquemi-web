@@ -229,6 +229,16 @@
    "summary": "ApprovalMerge shows who prepares and who approves each request as lanes that merge into one approval: each request large on the left, its preparer a node on that party's lane, a wire from every node into one bus that ends in a single stamp naming the approver."
   },
   {
+   "name": "AuditManifold",
+   "readme": "design-system/components/AuditManifold/README.md",
+   "preview": "design-system/components/AuditManifold/preview.html",
+   "group": "Page sections",
+   "height": "640",
+   "width": "1100",
+   "subtitle": "Auditor table on a navy blueprint sheet, pipe headers as the column joins",
+   "summary": "AuditManifold sets an evidence table (who reads, what they read, where we answer it) on a navy blueprint sheet whose column joins are pipe headers, so each reader's row reads as one route from the auditor to our answer."
+  },
+  {
    "name": "Band",
    "readme": "design-system/components/Band/README.md",
    "preview": "design-system/components/Band/preview.html",
@@ -999,16 +1009,6 @@
    "summary": "Prose is running text in a SplitSection: the heading on the left, the first sentence as a large light lead, then the paragraphs in body size, with white space and nothing else around them."
   },
   {
-   "name": "ReaderSplit",
-   "readme": "design-system/components/ReaderSplit/README.md",
-   "preview": "design-system/components/ReaderSplit/preview.html",
-   "group": "Page sections",
-   "height": "580",
-   "width": "1100",
-   "subtitle": "Auditors on the navy half, what they read on the limestone half, across one seam",
-   "summary": "ReaderSplit sets an evidence table on a band split down the middle: the readers (auditors, inspectors) on the navy half, what each reads and where we answer it across the seam on the limestone half, row against row."
-  },
-  {
    "name": "Readout",
    "readme": "design-system/components/Readout/README.md",
    "preview": "design-system/components/Readout/preview.html",
@@ -1293,10 +1293,10 @@
    "readme": "design-system/components/StandardTiles/README.md",
    "preview": "design-system/components/StandardTiles/preview.html",
    "group": "Page sections",
-   "height": "700",
+   "height": "1000",
    "width": "1100",
-   "subtitle": "Four systems as tall Swiss tiles, the standard tag set as the hero",
-   "summary": "StandardTiles sets a short grid of linked items as a Swiss row of tall tiles where each item's standard or control tag is the hero, large in Geist Mono Light, with the item's icon, title and line under it."
+   "subtitle": "Four slash-numbered system tiles, the blueprint tile and the flow block",
+   "summary": "StandardTiles sets a short grid of linked items as a Swiss tile grid three across: each item a slash-numbered navy or limestone tile carrying its standard or control tag, plus a blueprint tile that draws the item being pointed at and a flow block that sets its tag large."
   },
   {
    "name": "StandardWires",
@@ -1483,10 +1483,10 @@
    "readme": "design-system/components/WasherTrace/README.md",
    "preview": "design-system/components/WasherTrace/preview.html",
    "group": "Page sections",
-   "height": "1160",
+   "height": "1000",
    "width": "1100",
-   "subtitle": "The washer drawing with the water route through three numbered points",
-   "summary": "WasherTrace tells an explainer as the water's way into a machine: the page's equipment drawing stays pinned on a navy band while the points scroll past, each point a numbered hotspot on the drawing, the water route filling hotspot to hotspot as you read."
+   "subtitle": "The loop-to-washer route drawn in IsoKit with three callouts and the navy readout",
+   "summary": "WasherTrace tells an explainer as the water's way from the loop into a washer: one IsoKit line drawing on a limestone band, the points as callouts on leaders from their parts, and a navy readout that shows where along the route the water has reached."
   },
   {
    "name": "WaterPath",
