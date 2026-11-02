@@ -333,7 +333,7 @@ var ISO_PARTS={
   b.port.top=[0,0,6];b.port.base=[0,0,0]}};
 /* module: a plain closed equipment module (a box standing on its footprint, o.w x o.d x o.h; 40 x 40 x 50): inset
    front panel, a nameplate line in flow across its top, inset top panel. Ports: in (front, low, where a riser enters),
-   out (right side, low), top, base. Same block as the ModulePlinth look draws. */
+   out (right side, low), top, base. */
 ISO_PARTS.module=function(b,o){var W=o.w||40,D=o.d||40,H=o.h||50,f=D/2;
  b.bx(0,0,0,W,D,H);
  b.rect('y',-W/2+6,8,W/2-6,H-8,f);

@@ -10,6 +10,9 @@
 .aq-suite-loop__arrow { position: absolute; top: calc(var(--bore, 12px) / 2 - var(--space-2) / 2 - 1px); left: var(--space-16); width: var(--space-2); height: var(--space-2);
   border-top: 1.5px solid var(--flow); border-right: 1.5px solid var(--flow); transform: rotate(45deg); }
 
+/* The slug of water the hovered suite calls along the supply run (motion.js; collapsed at rest) */
+.aq-suite-loop__beam { position: absolute; left: 0; top: calc(var(--bore, 12px) / 2 - var(--space-1) + 0.75px); width: var(--space-12); height: var(--space-1); background: var(--flow); opacity: 0; transform: scale(0); }
+
 .aq-suite-loop__suites { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); gap: var(--space-4); }
 
 /* A suite: walls in plan, a door swing in the lower wall, its drop and valve off the loop */
@@ -49,7 +52,7 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
 
 /* Hover or focus a suite: water runs down its drop, the valve fills, the room brightens */
 .aq-suite-loop__suite:hover, .aq-suite-loop__suite:focus-within { background: color-mix(in srgb, var(--on-navy) 75%, transparent); }
-.aq-suite-loop__suite:hover .aq-suite-loop__dw, .aq-suite-loop__suite:focus-within .aq-suite-loop__dw { transform: scaleY(1); }
+.aq-suite-loop__suite:hover .aq-suite-loop__dw, .aq-suite-loop__suite:focus-within .aq-suite-loop__dw { transform: scaleY(1); transition-delay: 220ms; }
 .aq-suite-loop__suite:hover .aq-suite-loop__vb, .aq-suite-loop__suite:focus-within .aq-suite-loop__vb { fill: var(--flow); }
 
 /* Wide: every suite spans the same shared rows (number, situation, each field, way out) as a subgrid, so the rules
@@ -72,6 +75,7 @@ a.aq-suite-loop__go:focus-visible { outline: 2px solid var(--focus); outline-off
   .aq-suite-loop__loop { top: 0; bottom: 0; left: var(--space-2); right: auto; width: calc(var(--bore, 12px) + 3px); border-block: 0; }
   .aq-suite-loop__loop::before { display: none; }
   .aq-suite-loop__water { inset: 0; left: 50%; width: 1.5px; margin-left: -0.75px; border: 0; background: var(--flow); }
+  .aq-suite-loop__beam { left: 50%; top: 0; width: var(--space-1); height: var(--space-12); margin-left: calc(var(--space-1) / -2); }
   .aq-suite-loop__arrow { left: 50%; top: var(--space-12); margin-left: calc(var(--space-2) / -2 - 0.5px); transform: rotate(135deg); }
   .aq-suite-loop__suites, .aq-suite-loop__suites:nth-child(n) { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-6); }
   .aq-suite-loop__suites > :nth-child(n+4) .aq-suite-loop__drop { display: block; }

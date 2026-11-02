@@ -239,6 +239,16 @@
    "summary": "AuditManifold sets an evidence table (who reads, what they read, where we answer it) on a navy blueprint sheet whose column joins are pipe headers, so each reader's row reads as one route from the auditor to our answer."
   },
   {
+   "name": "AuditSkid",
+   "readme": "design-system/components/AuditSkid/README.md",
+   "preview": "design-system/components/AuditSkid/preview.html",
+   "group": "Page sections",
+   "height": "900",
+   "width": "1100",
+   "subtitle": "The client audit pack: six documents pinned to the parts of the system they cover",
+   "summary": "AuditSkid draws a documents block as the system those documents describe: one isometric skid in the middle of a light sheet, each document a numbered callout on a leader to the part it covers."
+  },
+  {
    "name": "Band",
    "readme": "design-system/components/Band/README.md",
    "preview": "design-system/components/Band/preview.html",
@@ -467,6 +477,16 @@
    "width": "1100",
    "subtitle": "Pretreatment documents along one snaking double-line pipe",
    "summary": "DocPipe sets a short document list along one double-line pipe that snakes across a navy band: the route is the list, each document sits in its own bend with a valve on its run."
+  },
+  {
+   "name": "DuplexTrains",
+   "readme": "design-system/components/DuplexTrains/README.md",
+   "preview": "design-system/components/DuplexTrains/preview.html",
+   "group": "Page sections",
+   "height": "1000",
+   "width": "1100",
+   "subtitle": "Redundancy: two identical trains with a swap, the options as a band of numbered cards",
+   "summary": "DuplexTrains sets a redundancy options block as a huge light heading beside a framed drawing of two identical generation trains, a switch that swaps which train is in service, and the options as numbered cards in one band over a navy strip."
   },
   {
    "name": "EvidenceMap",
@@ -809,16 +829,6 @@
    "summary": "MethodBento sets a short comparison of methods as a bento of drawn tiles, one per method, with the method that is not offered shown as an empty dashed tile."
   },
   {
-   "name": "ModulePlinth",
-   "readme": "design-system/components/ModulePlinth/README.md",
-   "preview": "design-system/components/ModulePlinth/preview.html",
-   "group": "Page sections",
-   "height": "930",
-   "width": "1100",
-   "subtitle": "Six redundancy options as modules on the shared site loop's plinth, numbered cards beside",
-   "summary": "ModulePlinth draws an options block with a base as modules standing on that base: an isometric plinth on a navy blueprint carries one block per option, each fed by a riser from the loop along the plinth, with numbered cards beside it."
-  },
-  {
    "name": "NotesRegister",
    "readme": "design-system/components/NotesRegister/README.md",
    "preview": "design-system/components/NotesRegister/preview.html",
@@ -877,16 +887,6 @@
    "width": "1100",
    "subtitle": "Pretreatment options on a limestone drawing sheet with notes",
    "summary": "OptionTaps shows options where they would join the system, as one limestone drawing sheet: the standard train drawn solid in isometric line, each option a dashed part (the drawing convention for \"optional\") on its own dashed tee off the main line, a huge light title, and the options as numbered drawing notes in a narrow column whose numbers frame their part on the drawing."
-  },
-  {
-   "name": "PackMatrix",
-   "readme": "design-system/components/PackMatrix/README.md",
-   "preview": "design-system/components/PackMatrix/preview.html",
-   "group": "Page sections",
-   "height": "710",
-   "width": "1100",
-   "subtitle": "One pack per client and period: a matrix of packs, one pulled out and opened to its six documents",
-   "summary": "PackMatrix draws a docs block that is issued again and again (one pack per client and period) as that repetition: a matrix of identical packs, one pulled out and opened beside it as a sheet of its documents."
   },
   {
    "name": "ParamTiles",
@@ -1047,16 +1047,6 @@
    "width": "1100",
    "subtitle": "Four next pages as tiles hung off one pipe: drawings for system pages",
    "summary": "RelatedLinks closes a page with the pages to read next as tiles hung off one pipe: each tile shows its index and section, a picture of the target page and its title with a `flow` arrow."
-  },
-  {
-   "name": "ReleaseRun",
-   "readme": "design-system/components/ReleaseRun/README.md",
-   "preview": "design-system/components/ReleaseRun/preview.html",
-   "group": "Page sections",
-   "height": "720",
-   "width": "1100",
-   "subtitle": "Four tech-transfer steps as Swiss columns under one water line, the release column navy",
-   "summary": "ReleaseRun sets ordered steps as Swiss columns under one water line: a huge light numeral per step, a node where each step starts, and the last step as the navy column where the water is released."
   },
   {
    "name": "ResponseLanes",
@@ -1407,6 +1397,16 @@
    "width": "1280",
    "subtitle": "FAT and SAT: the protocol as a signed test sheet, hold points stamped, SAT torn off",
    "summary": "TestSheet sets ordered steps as the protocol's own test sheet lying on a limestone table: ruled rows, tick boxes, signed and stamped hold points, the last step torn off along a perforation (look `test-sheet`, steps block)."
+  },
+  {
+   "name": "TieInRun",
+   "readme": "design-system/components/TieInRun/README.md",
+   "preview": "design-system/components/TieInRun/preview.html",
+   "group": "Page sections",
+   "height": "900",
+   "width": "1100",
+   "subtitle": "Tech transfer steps beside a loop gaining a new outlet, stage by stage",
+   "summary": "TieInRun tells ordered steps on one sticky drawing of a qualified loop gaining a new outlet: as the steps pass, the outlet is planned, its change boundary ruled, the branch built and tied in, and the water released into it."
   },
   {
    "name": "TimeCard",

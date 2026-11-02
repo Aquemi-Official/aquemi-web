@@ -523,6 +523,36 @@ AQmotion.fx('AuditManifold', function (root, m) {
     });
   });
 });
+/* AuditSkid: the system is drawn through the IsoKit choreography (equipment back to front, pipes laid, the water run
+   once from the generation rack to the point of use), the pins come in on their parts with the pipes, then each
+   document is pinned: its leader draws from the pin out to the callout and the callout rises in as the leader arrives,
+   0.12 s apart, left side then right. Once on scroll-in, under 5 s; at the end the first document is selected (ring on
+   its pin) without quieting the others. Selection itself lives in the look (hover, focus, click; CSS 0.25 s glide).
+   Nothing under reduced motion: drawing, pins, leaders and callouts are complete. */
+AQmotion.fx('AuditSkid', function (root, m) {
+  root.querySelectorAll('.aq-audit-skid').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var svg = el.querySelector('svg.aq-iso'), D = window.DrawSVGPlugin;
+    var pins = el.querySelectorAll('.aq-audit-skid__pin');
+    var docs = [].filter.call(el.querySelectorAll('.aq-audit-skid__doc'), function (d) { return d.offsetParent !== null });
+    var tl = window.AQiso && AQiso.timeline(svg, m, { draw: 1.4, pipe: 0.7, flow: 1.4 });
+    if (!tl) return;
+    tl.from(pins, { scale: 0.6, autoAlpha: 0, duration: 0.35, stagger: 0.06, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 'pipes');
+    gsap.set(docs, { autoAlpha: 0 });
+    tl.call(function () {
+      var leads = el.querySelector('.aq-audit-skid__leads'), shown = leads && getComputedStyle(leads).display !== 'none';
+      docs.forEach(function (d, i) {
+        var p = shown && leads.querySelector('.aq-audit-skid__lead[data-i="' + d.getAttribute('data-i') + '"]'), at = i * 0.12;
+        if (p && D) m.tw(gsap.fromTo(p, { drawSVG: '100% 100%' }, { drawSVG: '0% 100%', duration: 0.6, delay: at, ease: 'power3.out', clearProps: 'strokeDasharray,strokeDashoffset' }));
+        m.tw(gsap.fromTo(d, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.45, delay: at + 0.35, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }));
+      });
+      m.tw(gsap.delayedCall(docs.length * 0.12 + 0.9, function () {
+        if (window.AQauditSkid && !el.querySelector('.aq-audit-skid__doc.is-on') && docs[0]) { AQauditSkid.show(el, docs[0]); el.classList.remove('is-pointing') }
+      }));
+    }, null, 'flow');
+    m.on(el, function () { tl.play() }, 'top 75%');
+  });
+});
 /* BatteryLimit: the limit is drawn, then each side fills up to it. The battery limit line draws top to bottom and its
    name decodes; the navy half opens out from the seam to the left; the battery-limit card stamps down on the line;
    the side labels decode; then the cards come in from their own side in list order, alternating, and each one's leader
@@ -1562,6 +1592,35 @@ AQmotion.fx('DocPipe', function (root, m) {
     }
     paint(0);
     m.tw(ScrollTrigger.create({ trigger: el, start: 'top 75%', end: 'bottom 45%', scrub: 0.5, onUpdate: function (st) { paint(st.progress) }, onRefresh: function (st) { paint(st.progress) } }));
+  });
+});
+/* DuplexTrains: the drawing is built through the IsoKit choreography (equipment back to front, pipes laid, the water
+   run once through the train in service, the tank, both pumps and the loop), the train tags and the loop label come in
+   with the pipes, and the option cards rise into the band one after another. Once on scroll-in, under 5 s.
+   The swap (visitor-driven, may repeat): the trains trade duty in the drawing; motion runs the water again through the
+   train now in service (0.6 s), while the switch turns its arrows and rolls its letter over (CSS).
+   Ported from Subframe Motion "Theme toggle button" (switch-button), MIT, (c) 2026 Subframe (kept: one aria-pressed
+   button, the icon turning 180 deg in 700 ms cubic-bezier(.645,.045,.355,1), the state label changing in 250 ms (here a roll, not a fade, so no face is left hidden) and
+   a sweep across the button in 500 ms on the same curve; replaced: light/dark with the train in service, the shine
+   gradient with a flow rule). Nothing under reduced motion: the state changes instantly. */
+AQmotion.fx('DuplexTrains', function (root, m) {
+  root.querySelectorAll('.aq-duplex-trains').forEach(function (el) {
+    if (!m.free(el)) return; m.claim(el);
+    var svg = el.querySelector('svg.aq-iso'), D = window.DrawSVGPlugin;
+    var cards = [].filter.call(el.querySelectorAll('.aq-duplex-trains__card'), function (c) { return c.offsetParent !== null });
+    var tl = window.AQiso && AQiso.timeline(svg, m, { draw: 1.4, pipe: 0.7, flow: 1.6 });
+    if (tl) {
+      tl.from(el.querySelectorAll('.aq-duplex-trains__tag, .aq-duplex-trains__base'), { autoAlpha: 0, y: 8, duration: 0.5, stagger: 0.1, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 'pipes');
+      tl.from(cards, { y: 16, autoAlpha: 0, duration: 0.55, stagger: 0.08, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.5);
+      m.on(el.querySelector('.aq-duplex-trains__fig') || svg, function () { tl.play() }, 'top 75%');
+    }
+    window.AQduplexRun = function (w, r) {
+      if (!D) return;
+      var f = [].slice.call(w.querySelectorAll('svg.aq-iso [data-iso-id="train' + r + '"] .aq-iso__flow, svg.aq-iso .aq-iso__flow[data-iso-id="train' + r + '"]'));
+      if (!f.length) return;
+      gsap.killTweensOf(f);
+      gsap.fromTo(f, { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.6, ease: 'power2.out', clearProps: 'strokeDasharray,strokeDashoffset' });
+    };
   });
 });
 /* EnquiryForm: the data sheet is drawn up, then filled in by the visitor. Pass 9: the progress is a pipeline; on
@@ -4031,27 +4090,6 @@ AQmotion.fx('MethodBento', function (root, m) {
     });
   });
 });
-/* ModulePlinth: the drawing is built through the IsoKit choreography (sheet, plinth, then each module drawn back to
-   front, risers and loop laid, the water run along the loop and up each riser in turn). As the water reaches a module
-   its marker drops onto it with a small bounce; the cards are dealt in beside the drawing in the same order. One
-   timeline, once on scroll-in, under 5 s; settles static. Folded cards (phones) are left alone. */
-AQmotion.fx('ModulePlinth', function (root, m) {
-  root.querySelectorAll('.aq-module-plinth').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var svg = el.querySelector('svg.aq-iso'), mks = el.querySelectorAll('.aq-module-plinth__mk');
-    var cards = [].filter.call(el.querySelectorAll('.aq-module-plinth__card'), function (c) { return c.offsetParent !== null });
-    var shown = {};
-    var tl = window.AQiso && AQiso.timeline(svg, m, { draw: 1.5, pipe: 0.7, flow: 1.8,
-      onStage: function (els, id) { var k = String(id).replace('m', ''), mk = el.querySelector('.aq-module-plinth__mk[data-k="' + k + '"]'); if (mk && !shown[k]) { shown[k] = 1; gsap.fromTo(mk, { y: -14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: 'back.out(2.4)', clearProps: 'transform,opacity,visibility' }) } } });
-    if (!tl) return;
-    gsap.set(mks, { autoAlpha: 0 });
-    tl.from(el.querySelector('.aq-module-plinth__base'), { autoAlpha: 0, y: 8, duration: 0.5, clearProps: 'transform,opacity,visibility' }, 'pipes');
-    tl.from(cards, { y: 18, autoAlpha: 0, duration: 0.55, stagger: 0.12, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }, 0.4);
-    // whatever the water timing, every marker is shown by the end
-    tl.add(function () { gsap.set(mks, { clearProps: 'transform,opacity,visibility' }) }, 'end');
-    m.on(el, function () { tl.play() }, 'top 75%');
-  });
-});
 /* NavBar: the phone menu drops like a curtain and pushes the page down, its rows following one after another, the urgent
    block first; Close lifts it before the page re-renders without it. The section numbers on the wide bar decode once
    on a new page. Pass 9b, three Subframe Motion ports:
@@ -4339,30 +4377,6 @@ AQmotion.fx('OptionTaps', function (root, m) {
       if (mk) tl.from(mk, { y: -14, autoAlpha: 0, duration: 0.4, ease: 'power2.in', clearProps: 'transform,opacity,visibility' }, at + 0.15);
     });
     tl.from(cards, { y: 18, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, t0);
-    m.on(el, function () { tl.play() }, 'top 75%');
-  });
-});
-/* PackMatrix: the packs are dealt onto the matrix in a diagonal sweep (client by period), then one is pulled out of
-   its slot and turns navy, the leader runs from it to the sheet, the sheet opens from the left under its strip and the
-   documents are laid in, numerals rolling up. One timeline, once on scroll-in, under 4 s. Folded documents (phones)
-   are left alone. */
-AQmotion.fx('PackMatrix', function (root, m) {
-  root.querySelectorAll('.aq-pack-matrix').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    var pks = [].slice.call(el.querySelectorAll('.aq-pack-matrix__pk')), open = el.querySelector('.aq-pack-matrix__pk.is-open');
-    tl.from(pks, { scale: 0.4, autoAlpha: 0, duration: 0.45, ease: 'back.out(1.8)', stagger: { each: 0.035, from: 'start', grid: 'auto' }, clearProps: 'transform,opacity,visibility' }, 0);
-    if (open) tl.fromTo(open, { backgroundColor: 'transparent' }, { backgroundColor: getComputedStyle(open).backgroundColor, duration: 0.4, clearProps: 'backgroundColor' }, 0.75);
-    tl.from(el.querySelectorAll('.aq-pack-matrix__ax'), { autoAlpha: 0, duration: 0.4, clearProps: 'opacity,visibility' }, 0.3);
-    var lead = el.querySelector('.aq-pack-matrix__lead');
-    if (lead && lead.offsetParent !== null) tl.from(lead, { scaleX: 0, duration: 0.6, ease: 'power2.inOut', clearProps: 'transform' }, 1.0);
-    tl.fromTo(el.querySelector('.aq-pack-matrix__sheet'), { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 0.8, ease: 'power3.inOut', clearProps: 'clipPath' }, 1.3);
-    var docs = [].filter.call(el.querySelectorAll('.aq-pack-matrix__doc'), function (d) { return d.offsetParent !== null });
-    docs.forEach(function (d, i) {
-      var at = 1.7 + i * 0.12;
-      tl.from(d.querySelector('.aq-pack-matrix__n'), { yPercent: 70, autoAlpha: 0, duration: 0.6, clearProps: 'transform,opacity,visibility' }, at);
-      tl.from(d.querySelectorAll('.aq-pack-matrix__t, .aq-pack-matrix__d'), { y: 10, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, at + 0.1);
-    });
     m.on(el, function () { tl.play() }, 'top 75%');
   });
 });
@@ -5099,26 +5113,6 @@ AQmotion.fx('RelatedLinks', function (root, m) {
   }, { passive: true });
   document.documentElement.addEventListener('pointerleave', function () { if (cur) { cur.card.classList.remove('is-lit'); cur = null } });
 })();
-/* ReleaseRun: the line is laid across the columns, then the water runs along it; as it reaches each step the node
-   seats, the numeral rises out of its column filling from outline to solid, and the words follow. At the end the navy
-   column closes up from the bottom under the arriving water. One timeline, once on scroll-in, under 4 s. */
-AQmotion.fx('ReleaseRun', function (root, m) {
-  root.querySelectorAll('.aq-release-run').forEach(function (el) {
-    if (!m.free(el)) return; m.claim(el);
-    var nar = m.narrow(), tl = m.tw(gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } }));
-    var cols = [].slice.call(el.querySelectorAll('.aq-release-run__col')), k = cols.length || 1, run = 2.2;
-    tl.from(el.querySelector('.aq-release-run__line'), nar ? { scaleY: 0, duration: 0.8, ease: 'power2.inOut', clearProps: 'transform' } : { scaleX: 0, duration: 0.8, ease: 'power2.inOut', clearProps: 'transform' }, 0);
-    tl.from(el.querySelector('.aq-release-run__water'), nar ? { scaleY: 0, duration: run, ease: 'none', clearProps: 'transform' } : { scaleX: 0, duration: run, ease: 'none', clearProps: 'transform' }, 0.5);
-    cols.forEach(function (c, i) {
-      var at = 0.5 + run * i / k, n = c.querySelector('.aq-release-run__n'), col = n ? getComputedStyle(n).color : '';
-      if (c.classList.contains('is-end')) tl.fromTo(c, { backgroundColor: 'rgba(0,0,0,0)' }, { backgroundColor: getComputedStyle(c).backgroundColor, duration: 0.6, ease: 'power2.out', clearProps: 'backgroundColor' }, at - 0.1);
-      tl.from(c.querySelector('.aq-release-run__node'), { scale: 0, duration: 0.4, ease: 'back.out(2.5)', clearProps: 'transform' }, at);
-      if (n) tl.fromTo(n, { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8, clearProps: 'transform,opacity,visibility' }, at + 0.05);
-      tl.from(c.querySelectorAll('.aq-release-run__t, .aq-release-run__d'), { y: 14, autoAlpha: 0, duration: 0.5, stagger: 0.08, clearProps: 'transform,opacity,visibility' }, at + 0.25);
-    });
-    m.on(el, function () { tl.play() }, 'top 75%');
-  });
-});
 /* ResponseLanes: the clock starts. Lane by lane, the start mark sets, the line draws out to the right and each stop's
    node lands as the line reaches it, its clock rising beneath. Severity 1 draws fastest and the rest a little slower in
    order, so urgency reads from the pace, calmly; a single drop of water then runs severity 1's lane once and fades.
@@ -6374,12 +6368,36 @@ AQmotion.fx('SuiteLoop', function (root, m) {
       tl.fromTo(s, { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 0.7, ease: 'power2.inOut', clearProps: 'clipPath' }, at);
       if (drop && drop.offsetParent !== null) {
         tl.from(drop, nar ? { scaleX: 0, duration: 0.4, clearProps: 'transform' } : { scaleY: 0, duration: 0.4, clearProps: 'transform' }, at + 0.1);
-        tl.from(s.querySelector('.aq-suite-loop__valve svg'), { scale: 0, duration: 0.4, ease: 'back.out(2.2)', clearProps: 'transform' }, at + 0.35);
+        tl.from(s.querySelector('.aq-suite-loop__valve svg'), { scale: 0, duration: 0.4, ease: 'power3.out', clearProps: 'transform' }, at + 0.35);
         if (!nar && dw) { tl.fromTo(dw, { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: 'power1.in' }, at + 0.7); tl.to(dw, { scaleY: 0.001, duration: 0.5, ease: 'power2.inOut', clearProps: 'transform' }, at + 1.5) }
       }
       tl.from(s.querySelectorAll('.aq-suite-loop__tag, .aq-suite-loop__t, .aq-suite-loop__f, .aq-suite-loop__go'), { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform,opacity,visibility' }, at + 0.4);
     });
     m.on(el, function () { tl.play() }, 'top 75%');
+
+    /* Ported from Subframe Motion "Animated beam connections" (animated-beam), MIT, (c) 2026 Subframe (kept: a light
+       that travels the connector from the source to the target each time the target is pointed at, strong ease-out,
+       played once per visit; replaced: the curved beams with the loop's supply run, the source node with the supply
+       chevron, the target tile with the suite's drop). Pointing at or focusing a suite sends a slug of water along the
+       loop to that suite's drop, then the drop fills (CSS). Visitor-driven, may repeat; 0.25-0.6 s. */
+    var beam = el.querySelector('.aq-suite-loop__beam'), arrow = el.querySelector('.aq-suite-loop__arrow'), cur = null;
+    function run(s) {
+      if (!beam || s === cur) return; cur = s;
+      var drop = s.querySelector('.aq-suite-loop__drop'); if (!drop || drop.offsetParent === null) return;
+      var lr = beam.parentNode.getBoundingClientRect(), dr = drop.getBoundingClientRect(), ar = arrow.getBoundingClientRect(), v = m.narrow();
+      var from = v ? ar.top - lr.top : ar.left - lr.left, to = v ? dr.top + dr.height / 2 - lr.top : dr.left + dr.width / 2 - lr.left;
+      var size = v ? beam.offsetHeight : beam.offsetWidth, d = Math.min(0.6, Math.max(0.25, Math.abs(to - from) / 1600)), p = {};
+      gsap.killTweensOf(beam);
+      p[v ? 'y' : 'x'] = to - size;
+      var f = { x: 0, y: 0, scale: 1, opacity: 1 }; f[v ? 'y' : 'x'] = from;
+      gsap.timeline().fromTo(beam, f, Object.assign({ duration: d, ease: 'power3.out' }, p)).to(beam, { opacity: 0, duration: 0.2, ease: 'power1.out' }).set(beam, { scale: 0 });
+    }
+    el.querySelectorAll('.aq-suite-loop__suite').forEach(function (s) {
+      s.addEventListener('pointerenter', function (ev) { if (ev.pointerType !== 'touch') run(s) });
+      s.addEventListener('focusin', function () { run(s) });
+      s.addEventListener('pointerleave', function () { if (cur === s) cur = null });
+      s.addEventListener('focusout', function (ev) { if (!s.contains(ev.relatedTarget) && cur === s) cur = null });
+    });
   });
 });
 /* Ported from Subframe Motion "Animated beam" (animated-beam), MIT, (c) 2026 Subframe
@@ -6623,6 +6641,37 @@ AQmotion.fx('TestSheet', function (root, m) {
     var at = 0.4;
     rows.forEach(function (row) { var end = run(tl, row, at); at = Math.max(at + 0.3, end - 0.1) });
     m.on(paper, function () { tl.play() }, 'top 75%');
+  });
+});
+/* TieInRun: the page's one scroll-linked story. One progress value, read from the steps list passing the reading line
+   (60 % of the viewport), drives the drawing stage by stage: the new outlet fades in as a dashed planned outline, the
+   change boundary is ruled round it, the branch turns solid (the dashes close up and the fills come in), then the water
+   runs into the new branch; the step on the reading line and its marker take the flow colour, the other steps quiet.
+   Scrubbed with the scroll, never pinned, never changes scroll speed; readable at every position; past the end the
+   drawing rests in its finished, released state. Nothing under reduced motion: the drawing is complete.
+   Ported from Subframe Motion "Scroll-driven image reveal" (scroll-window), MIT, (c) 2026 Subframe (kept: one scroll
+   progress fanned out into staggered per-layer phases, phase = clamp(p * 1.24 - offset), each eased with smoothstep
+   p * p * (3 - 2p) before it moves its layer; replaced: the photo slices and their clip apertures with the drawing's
+   stages and their dash, fill and draw values, the inner scroller with the page's own scroll). */
+AQmotion.fx('TieInRun', function (root, m) {
+  root.querySelectorAll('.aq-tie-in-run').forEach(function (el) {
+    if (!m.free(el) || !window.ScrollTrigger) return; m.claim(el);
+    var steps = [].slice.call(el.querySelectorAll('.aq-tie-in-run__step')), mks = [].slice.call(el.querySelectorAll('.aq-tie-in-run__mk'));
+    var n = Math.min(4, steps.length) || 1, D = window.DrawSVGPlugin, list = el.querySelector('.aq-tie-in-run__steps');
+    var flows = [].slice.call(el.querySelectorAll('.aq-tie-in-run__new .aq-iso__flow'));
+    function sm(x) { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x) }
+    var last = -2;
+    function paint(p) {
+      for (var i = 0; i < 4; i++) el.style.setProperty('--p' + i, sm((p - i / n) * n * 1.24).toFixed(3));
+      if (D && flows.length) gsap.set(flows, { drawSVG: (sm((p - 3 / n) * n * 1.24) * 100).toFixed(1) + '%' });
+      var a = p <= 0 ? -1 : Math.min(n - 1, Math.floor(p * n));
+      el.classList.toggle('is-live', p > 0 && p < 1);
+      if (a === last) return; last = a;
+      steps.forEach(function (s, i) { s.classList.toggle('is-on', i === a) });
+      mks.forEach(function (k, i) { k.classList.toggle('is-on', i === a) });
+    }
+    m.tw(ScrollTrigger.create({ trigger: list, start: 'top 60%', end: 'bottom 60%', onUpdate: function (st) { paint(st.progress) },
+      onRefresh: function (st) { paint(st.progress) } }));
   });
 });
 /* TimeCard: the card is pulled from the rack and punched. The card rises out of its slot onto the one beneath (which

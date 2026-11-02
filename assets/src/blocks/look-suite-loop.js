@@ -2,7 +2,7 @@
    one shared loop serving several suites, on a limestone band. The loop is a twin-wall pipe round the sheet; every
    situation is a suite (a room in plan: walls, a door swing) fed by its own drop and point-of-use valve off the loop.
    Inside the suite: the situation, the water it needs, the systems link and the start page as the suite's way out.
-   Hovering or focusing a suite lights its drop. Phones: the loop runs down the left, suites branch off it.
+   Hovering or focusing a suite sends a slug of water along the loop from the supply to its drop and lights the drop. Phones: the loop runs down the left, suites branch off it.
    Fields, as the router: cols (situation, water, systems, start with), rows (cells: string or {t, link, intent}).
    Concept: industries.0 / home.4 (situations piped from one manifold) set as the CDMO's own plant: one loop, many
    suites (the page drawing ind-cdmo shows the same idea). */
@@ -17,6 +17,6 @@ LOOKS['suite-loop']=function(b,H){var C=b.cols||[],R=b.rows||[],n=R.length;
   return '<li class="aq-suite-loop__suite" style="--rows:'+(mid.length+3)+'"><span class="aq-suite-loop__drop" aria-hidden="true"><span class="aq-suite-loop__dw"></span><span class="aq-suite-loop__valve">'+VALVE+'</span></span>'
    +'<span class="aq-suite-loop__door" aria-hidden="true"></span>'
    +'<span class="aq-suite-loop__tag" aria-hidden="true">'+(i<9?'0':'')+(i+1)+'</span><h3 class="aq-suite-loop__t">'+tx(r[0])+'</h3><dl class="aq-suite-loop__dl">'+dl+'</dl>'+out+'</li>'}).join('');
- var loop='<span class="aq-suite-loop__loop" aria-hidden="true"><span class="aq-suite-loop__water"></span><span class="aq-suite-loop__arrow"></span></span>';
+ var loop='<span class="aq-suite-loop__loop" aria-hidden="true"><span class="aq-suite-loop__water"></span><span class="aq-suite-loop__arrow"></span><span class="aq-suite-loop__beam"></span></span>';
  return sec(H+'<div class="aq-suite-loop" style="--n:'+n+'">'+loop+'<ol class="aq-suite-loop__suites">'+suites+'</ol></div>','aq-band--limestone aq-suite-loop-sec')};
 })();
